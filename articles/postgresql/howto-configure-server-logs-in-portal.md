@@ -9,15 +9,15 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 10/19/2017
-ms.openlocfilehash: 388af25aa7cf623fa3ff4167943cf94fb5c566d8
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 9e22d96d20f3201a8d1618c5ff1878e99d50ad79
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Konfigurieren der und Zugreifen auf die Serverprotokolle im Azure-Portal
 
-Sie können die [Azure Database for MySQL-Serverprotokolle](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
+Sie können die [Azure Database for PostgreSQL-Serverprotokolle](concepts-server-logs.md) im Azure-Portal konfigurieren und auflisten sowie aus dem Portal herunterladen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
@@ -26,7 +26,7 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung
 Konfigurieren Sie den Zugriff auf die Abfrage- und Fehlerprotokolle. 
 
-1. Melden Sie sich auf am [Azure-Portal](http://portal.azure.com/) an.
+1. Melden Sie sich auf dem [Azure-Portal](http://portal.azure.com/)an.
 
 2. Wählen Sie Ihre Azure Database for PostgreSQL-Server aus.
 
@@ -70,7 +70,7 @@ Sobald die Protokollierung beginnt, können Sie eine Liste der verfügbaren Prot
 
 5. Laden Sie einzelne Protokolldateien wie gezeigt über die Schaltfläche **Download** (nach unten gerichtetes Pfeilsymbol) neben jeder Protokolldatei in der Tabellenzeile herunter:
 
-   ![Klicken Sie auf das Symbol "Download".](./media/howto-configure-server-logs-in-portal/6-download.png)
+   ![Klicken Sie auf das Symbol „Download“.](./media/howto-configure-server-logs-in-portal/6-download.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie [Zugriff auf Serverprotokolle in der CLI](howto-configure-server-logs-using-cli.md), um weitere Informationen zum programmgesteuerten Herunterladen von Protokollen zu erhalten.

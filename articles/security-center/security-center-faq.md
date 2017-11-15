@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 35aa45ce09b756dd7413a1df3d3c7b0c428b7a97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71d407050f210c770bcac30259b9c2f2fb27aa3
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – Häufig gestellte Fragen 
 Hier werden häufig gestellte Fragen zu Azure Security Center beantwortet. Azure Security Center ist ein Dienst, der Sie aufgrund von größerer Transparenz und besserer Kontrolle der Sicherheit Ihrer Microsoft Azure-Ressourcen dabei unterstützt, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
@@ -127,6 +127,15 @@ Azure Security Center erkennt Antischadsoftware, die über Azure-Erweiterungen i
 
 ### <a name="why-do-i-get-the-message-missing-scan-data-for-my-vm"></a>Warum erhalte ich die Meldung „Fehlende Überprüfungsdaten“ für meinen virtuellen Computer?
 Diese Meldung wird angezeigt, wenn keine Überprüfungsdaten für einen virtuellen Computer vorhanden sind. Es kann einige Zeit dauern (weniger als eine Stunde), um die Überprüfungsdaten aufzufüllen, nachdem die Datensammlung in Azure Security Center aktiviert wurde. Nach dem ersten Auffüllen der Überprüfungsdaten erhalten Sie diese Meldung möglicherweise, weil überhaupt keine oder keine aktuellen Überprüfungsdaten vorliegen. Überprüfungen werden für beendete virtuelle Computer nicht aufgefüllt. Diese Meldung kann auch angezeigt werden, wenn die Überprüfungsdaten (gemäß der Aufbewahrungsrichtlinie für den Windows-Agenten, die einen Standardwert von 30 Tagen vorgibt) nicht vor kurzem aufgefüllt wurden.
+
+### <a name="how-often-does-security-center-scan-for-operating-system-vulnerabilities-system-updates-and-endpoint-protection-issues"></a>Wie häufig sucht Security Center nach Sicherheitsrisiken des Betriebssystems, Systemupdates und Endpoint Protection-Problemen?
+Wartezeiten bei Security Center-Scans auf Sicherheitsrisiken, Updates und Problemen:
+
+- Sicherheitsrisiken des Betriebssystems (von Microsoft) – Daten werden innerhalb von 48 Stunden aktualisiert.
+- Systemupdates – Daten werden innerhalb von 24 Stunden aktualisiert.
+- Endpoint Protection-Probleme – Daten werden innerhalb von 8 Stunden aktualisiert.
+
+Security Center sucht in der Regel stündlich nach neuen Daten. Die oben genannten Wartezeiten gelten nur im ungünstigsten Fall, wenn kein aktueller Scan ausgeführt wurde oder ein Fehler bei einem Scan auftrat.
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>Warum erhalte ich die Meldung „VM-Agent fehlt“?
 Der VM-Agent muss auf virtuellen Computern installiert sein, um die Datensammlung zu ermöglichen. Der VM-Agent wird standardmäßig für virtuelle Maschinen installiert, die vom Azure Marketplace bereitgestellt werden. Informationen zum Installieren des VM-Agents auf anderen virtuellen Computern finden Sie im Blogbeitrag [VM Agent and Extensions](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)(VM-Agent und Erweiterungen).

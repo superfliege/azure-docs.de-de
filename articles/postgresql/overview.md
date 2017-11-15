@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
 ms.date: 10/20/2017
-ms.openlocfilehash: 5b5da758e966cc5ca536d7b291be74409f02ca73
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 9aa24dd10ef29c716c05cafeb84e0beb23d50628
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Was ist Azure-Datenbank für PostgreSQL?
 
@@ -39,7 +39,7 @@ Eine Reihe von Azure CLI-Beispielen finden Sie unter:
 - [Azure CLI-Beispiele für Azure-Datenbank für PostgreSQL](./sample-scripts-azure-cli.md)
 
 ## <a name="adjust-performance-and-scale-within-seconds"></a>Anpassen von Leistung und Skalierung in nur wenigen Sekunden
-Für den Dienst Azure Database for MySQL gibt es in der Preview zwei Diensttarife: „Basic“ und „Standard“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](concepts-service-tiers.md).
+Für den Azure Database for PostgreSQL-Dienst gibt es in der Vorschauversion zwei Diensttarife: „Basic“ und „Standard“. Jeder Tarif bietet verschiedene Leistungsstufen und Funktionen zur Unterstützung geringer und hoher Datenbankworkloads. Sie können Ihre erste App mit einer kleinen Datenbank für wenige USD im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Einzelheiten hierzu finden Sie unter [Tarife](concepts-service-tiers.md).
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 Wie entscheiden Sie, wann Sie nach oben oder nach unten skalieren? Verwenden Sie die integrierten Features für Leistungsüberwachung und Warnungen in Kombination mit den Leistungsbewertungen nach Compute-Einheit. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens von Compute-Einheiten je nach Ihren derzeitigen oder erwarteten Leistungsanforderungen schnell bewerten. Einzelheiten hierzu finden Sie unter [Warnungen](howto-alert-on-metric.md).
@@ -48,7 +48,7 @@ Wie entscheiden Sie, wann Sie nach oben oder nach unten skalieren? Verwenden Sie
 Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel (SLA) von 99,99% (in der Vorschau nicht verfügbar) sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Mit jedem Azure-Datenbank für PostgreSQL-Server nutzen Sie die integrierte Sicherheit, die Fehlertoleranz und die Datensicherheit, die Sie andernfalls entwerfen oder kaufen, erstellen und verwalten müssten. In Azure-Datenbank für PostgreSQL bietet jeder Diensttarif einen umfassenden Satz von Features für Geschäftskontinuität und Optionen, die sicherstellen, dass Sie den Betrieb aufnehmen können und dieser nicht unterbrochen wird. Über die [Point-in-Time-Wiederherstellung](howto-restore-server-portal.md) können Sie den früheren Status einer Datenbank für bis zu 35 Tage wiederherstellen. Ferner können Sie bei einem Ausfall des Rechenzentrums, in dem Ihre Datenbanken gehostet werden, Ihre Datenbanken aus georedundanten Kopien kürzlich durchgeführter Sicherungen wiederherstellen.
 
 ## <a name="secure-your-data"></a>Sichern der Daten
-Azure-Datenbank für PostgreSQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
+Azure-Datenbank für PostgreSQL führt die Tradition der Datensicherheit von Azure-Datenbankdiensten fort – mit Features zum Einschränken des Zugriffs, zum Schützen ruhender und bewegter Daten und zum Überwachen von Aktivitäten. Weitere Informationen zur Sicherheit der Azure-Plattform finden Sie im [Azure Trust Center](https://www.microsoft.com/TrustCenter/Security/default.aspx).
 
 Die Azure-Datenbank für PostgreSQL-Dienst verwendet Speicherverschlüsselung für ruhende Daten. Daten, einschließlich von Sicherungen, werden auf dem Datenträger verschlüsselt (mit Ausnahme von temporären Dateien, die vom Modul während der Ausführung von Abfragen erstellt werden). Der Dienst verwendet das in der Azure-Speicherverschlüsselung inbegriffene AES-256-Bit-Verschlüsselungsverfahren und die Schlüssel werden vom System verwaltet. Die Speicherverschlüsselung ist immer aktiviert und kann nicht deaktiviert werden.
 

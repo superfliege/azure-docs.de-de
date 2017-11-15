@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/14/2017
+ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: dc9b64062d7f68c83aa090eec96744819a5ca423
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 85fff4c8c5a68a4ebaa63b263e90d0220c273e23
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 In diesem Thema wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Ein ausführliches Tutorial zum Erstellen einer Vorlage finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
@@ -283,7 +283,58 @@ Das nächste Beispiel zeigt eine Variable mit einem komplexen JSON-Typ sowie var
 }
 ```
 
-## <a name="resources"></a>resources
+Sie können die **copy**-Syntax zum Erstellen einer Variablen mit einem Array mehrerer Elemente verwenden. Sie geben eine Zahl für die Anzahl von Elementen an. Jedes Element enthält die Eigenschaften im **input**-Objekt. Sie können „copy“ entweder innerhalb einer Variablen oder zum Erstellen der Variablen verwenden. Im folgenden Beispiel sind beide Ansätze dargestellt:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "disk-array-on-object": {
+      "copy": [
+        {
+          "name": "disks",
+          "count": 5,
+          "input": {
+            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+            "diskSizeGB": "1",
+            "diskIndex": "[copyIndex('disks')]"
+          }
+        }
+      ]
+    },
+    "copy": [
+      {
+        "name": "disks-top-level-array",
+        "count": 5,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks-top-level-array')]"
+        }
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "exampleObject": {
+      "value": "[variables('disk-array-on-object')]",
+      "type": "object"
+    },
+    "exampleArrayOnObject": {
+      "value": "[variables('disk-array-on-object').disks]",
+      "type" : "array"
+    },
+    "exampleArray": {
+      "value": "[variables('disks-top-level-array')]",
+      "type" : "array"
+    }
+  }
+}
+```
+
+## <a name="resources"></a>Ressourcen
 Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden. Dieser Abschnitt kann komplizierter werden, da Sie die Typen, die sie bereitstellen, verstehen müssen, um die richtigen Werte resources zu können. Die ressourcenspezifischen Werte (apiVersion, type und properties), die Sie festlegen müssen, finden Sie unter [Definieren von Ressourcen in Azure Resource Manager-Vorlagen](/azure/templates/). 
 
 Sie definieren Ressourcen mit der folgenden Struktur:

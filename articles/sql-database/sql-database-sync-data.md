@@ -1,6 +1,6 @@
 ---
-title: Synchronisieren von Daten (Vorschauversion) | Microsoft-Dokumentation
-description: "Diese Übersicht enthält eine Einführung in Azure SQL-Datensynchronisierung (Vorschauversion)."
+title: Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
+description: "Diese Übersicht enthält eine Einführung in die Azure SQL-Datensynchronisierung (Vorschauversion)."
 services: sql-database
 documentationcenter: 
 author: douglaslms
@@ -16,13 +16,13 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 34bc9588745eb24d8b8c2e81389a9e5144497b34
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5c4509bc1d05bc422f6bc5599d4635020ded63e9
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/08/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)
 
 SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert und mit dem Sie die ausgewählten Daten bidirektional über mehrere SQL-Datenbanken und SQL Server-Instanzen hinweg synchronisieren können.
 
@@ -44,7 +44,7 @@ Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche�
 -   Die **Synchronisierungsdatenbank** enthält die Metadaten und das Protokoll für die Datensynchronisierung. Bei der Synchronisierungsdatenbank muss es sich um eine Azure SQL-Datenbank handeln, die in derselben Region wie die Hub-Datenbank angeordnet ist. Die Synchronisierungsdatenbank wird vom Kunden erstellt und befindet sich in seinem Besitz.
 
 > [!NOTE]
-> Wenn Sie eine lokale Datenbank verwenden, ist es erforderlich, dass Sie einen [lokalen Agent konfigurieren](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-sql-data-sync).
+> Wenn Sie eine lokale Datenbank verwenden, ist es erforderlich, dass Sie einen [lokalen Agent konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync).
 
 ![Synchronisieren von Daten zwischen Datenbanken](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -58,7 +58,7 @@ Die Datensynchronisierung ist in Fällen nützlich, in denen Daten über mehrere
 
 -   **Global verteilte Anwendungen:** Viele Unternehmen sind in mehreren Regionen oder Ländern ansässig. Es ist ratsam, die Daten jeweils in einer Region in der Nähe vorzuhalten, um die Netzwerklatenz zu verringern. Mit der Datensynchronisierung können Sie Datenbanken in den Regionen weltweit synchron halten.
 
-Für die folgenden Szenarien ist die Datensynchronisierung nicht zu empfehlen:
+Die Datensynchronisierung eignet sich nicht für die folgenden Szenarien:
 
 -   Notfallwiederherstellung
 
@@ -77,48 +77,6 @@ Für die folgenden Szenarien ist die Datensynchronisierung nicht zu empfehlen:
 -   **Beheben von Konflikten:** Die Datensynchronisierung bietet zwei Optionen für die Lösung von Konflikten, und zwar *Hub gewinnt* und *Mitglied gewinnt*.
     -   Wenn Sie *Hub gewinnt* wählen, werden die Änderungen auf dem Mitglied immer durch die Änderungen des Hub überschrieben.
     -   Bei Auswahl von *Mitglied gewinnt* werden die Änderungen auf dem Hub durch die Änderungen auf dem Mitglied überschrieben. Falls mehr als ein Mitglied vorhanden ist, hängt der endgültige Wert davon ab, welches Mitglied zuerst synchronisiert wird.
-
-## <a name="limitations-and-considerations"></a>Einschränkungen und Aspekte
-
-### <a name="performance-impact"></a>Auswirkungen auf die Leistung
-Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihren Tarif, und aktualisieren Sie ihn bei Bedarf.
-
-### <a name="eventual-consistency"></a>Letztliche Konsistenz
-Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung auf Auslösern basiert. Microsoft gewährleistet, dass alle Änderungen letztlich vorgenommen werden und dass es bei der Datensynchronisierung nicht zu Datenverlusten kommt.
-
-### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
-
--   FileStream
-
--   SQL/CLR UDT
-
--   XMLSchemaCollection (XML unterstützt)
-
--   Cursor, Timestamp, Hierarchyid
-
-### <a name="requirements"></a>Anforderungen
-
--   Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie dies tun müssen, löschen Sie die Zeile, und erstellen Sie sie mit dem neuen Wert des Primärschlüssels neu. 
-
--   Eine Tabelle kann keine Identitätsspalte enthalten, die kein Primärschlüssel ist.
-
--   Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
-
--   Die Momentaufnahmeisolation muss aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
-
-### <a name="limitations-on-service-and-database-dimensions"></a>Einschränkungen von Dienst- und Datenbankdimensionen
-
-|                                                                 |                        |                             |
-|-----------------------------------------------------------------|------------------------|-----------------------------|
-| **Dimensionen**                                                      | **Begrenzung**              | **Problemumgehung**              |
-| Maximale Anzahl von Synchronisierungsgruppen, denen eine Datenbank angehören kann       | 5                      |                             |
-| Maximale Anzahl von Endpunkten einer einzelnen Synchronisierungsgruppe              | 30                     | Erstellen mehrerer Synchronisierungsgruppen |
-| Maximale Anzahl von lokalen Endpunkten in einer einzelnen Synchronisierungsgruppe | 5                      | Erstellen mehrerer Synchronisierungsgruppen |
-| Namen von Datenbanken, Tabellen, Schemas und Spalten                       | 50 Zeichen pro Name |                             |
-| Tabellen in einer Synchronisierungsgruppe                                          | 500                    | Erstellen mehrerer Synchronisierungsgruppen |
-| Spalten in einer Tabelle einer Synchronisierungsgruppe                              | 1000                   |                             |
-| Größe von Datenzeilen in einer Tabelle                                        | 24 Mb                  |                             |
-| Minimales Synchronisierungsintervall                                           | 5 Minuten              |                             |
 
 ## <a name="common-questions"></a>Häufig gestellte Fragen
 
@@ -143,15 +101,63 @@ Diese Fehlermeldung besagt, dass eines der beiden folgenden Probleme vorliegt:
 Die Datensynchronisierung beseitigt Zirkelbezüge nicht. Vermeiden Sie sie deshalb unbedingt. 
 
 ### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Wie kann ich eine Datenbank durch Datensynchronisierung exportieren und importieren?
-Nachdem Sie eine Datenbank als BACPAC-Datei exportiert haben und zum Erstellen einer neuen Datenbank importieren, müssen Sie die folgenden zwei Schritte durchführen, um die Datensynchronisierung in der neuen Datenbank durchzuführen:
+Nachdem Sie eine Datenbank als `.bacpac`-Datei exportiert und die Datei zum Erstellen einer neuen Datenbank importiert haben, müssen Sie die folgenden zwei Schritte ausführen, um die Datensynchronisierung in der neuen Datenbank zu verwenden:
 1.  Bereinigen Sie in der **neuen Datenbank** mithilfe [dieses Skripts](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql) die Datensynchronisierungsobjekte und Seitentabellen. Dieses Skript löscht alle erforderlichen Datensynchronisierungsobjekte aus der Datenbank.
 2.  Erstellen Sie die Synchronisierungsgruppe mit der neuen Datenbank neu. Wenn Sie die alte Synchronisierungsgruppe nicht mehr benötigen, löschen Sie sie.
+
+## <a name="sync-req-lim"></a> Anforderungen und Einschränkungen
+
+### <a name="general-requirements"></a>Allgemeine Anforderungen
+
+-   Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie dies tun müssen, löschen Sie die Zeile, und erstellen Sie sie mit dem neuen Wert des Primärschlüssels neu. 
+
+-   Eine Tabelle kann keine Identitätsspalte enthalten, die kein Primärschlüssel ist.
+
+-   Die Namen von Objekten (Datenbanken, Tabellen und Spalten) dürfen nicht die druckbaren Zeichen Punkt (.), linke eckige Klammer ([) oder rechte eckige Klammer (]) enthalten.
+
+-   Die Momentaufnahmeisolation muss aktiviert sein. Weitere Informationen finden Sie unter [Momentaufnahmeisolation in SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+
+### <a name="general-considerations"></a>Allgemeine Hinweise
+
+#### <a name="eventual-consistency"></a>Letztliche Konsistenz
+Die Transaktionskonsistenz ist nicht garantiert, da die Datensynchronisierung auf Auslösern basiert. Microsoft gewährleistet, dass alle Änderungen letztlich vorgenommen werden und dass es bei der Datensynchronisierung nicht zu Datenverlusten kommt.
+
+#### <a name="performance-impact"></a>Auswirkungen auf die Leistung
+Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren und Löschen verwendet, um Änderungen nachzuverfolgen. In der Benutzerdatenbank werden Nebentabellen für die Änderungsnachverfolgung erstellt. Diese Aktivitäten zur Änderungsnachverfolgung haben Auswirkungen auf Ihre Datenbankworkload. Bewerten Sie Ihren Tarif, und aktualisieren Sie ihn bei Bedarf.
+
+### <a name="general-limitations"></a>Allgemeine Einschränkungen
+
+#### <a name="unsupported-data-types"></a>Nicht unterstützte Datentypen
+
+-   FileStream
+
+-   SQL/CLR UDT
+
+-   XMLSchemaCollection (XML unterstützt)
+
+-   Cursor, Timestamp, Hierarchyid
+
+#### <a name="limitations-on-service-and-database-dimensions"></a>Einschränkungen von Dienst- und Datenbankdimensionen
+
+| **Dimensionen**                                                      | **Begrenzung**              | **Problemumgehung**              |
+|-----------------------------------------------------------------|------------------------|-----------------------------|
+| Maximale Anzahl von Synchronisierungsgruppen, denen eine Datenbank angehören kann       | 5                      |                             |
+| Maximale Anzahl von Endpunkten einer einzelnen Synchronisierungsgruppe              | 30                     | Erstellen mehrerer Synchronisierungsgruppen |
+| Maximale Anzahl von lokalen Endpunkten in einer einzelnen Synchronisierungsgruppe | 5                      | Erstellen mehrerer Synchronisierungsgruppen |
+| Namen von Datenbanken, Tabellen, Schemas und Spalten                       | 50 Zeichen pro Name |                             |
+| Tabellen in einer Synchronisierungsgruppe                                          | 500                    | Erstellen mehrerer Synchronisierungsgruppen |
+| Spalten in einer Tabelle einer Synchronisierungsgruppe                              | 1000                   |                             |
+| Größe von Datenzeilen in einer Tabelle                                        | 24 Mb                  |                             |
+| Minimales Synchronisierungsintervall                                           | 5 Minuten              |                             |
+|||
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
--   [Erste Schritte mit der SQL-Datensynchronisierung](sql-database-get-started-sql-data-sync.md)
+-   [Get Started with Azure SQL Data Sync](sql-database-get-started-sql-data-sync.md) (Erste Schritte mit der Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Best practices for Azure SQL Data Sync (Preview)](sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:
     -   [Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken](scripts/sql-database-sync-data-between-sql-databases.md)
@@ -162,5 +168,4 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 Weitere Informationen zu SQL-Datenbank finden Sie unter:
 
 -   [Übersicht über die SQL-Datenbank](sql-database-technical-overview.md)
-
 -   [Datenbank-Lebenszyklusverwaltung](https://msdn.microsoft.com/library/jj907294.aspx)

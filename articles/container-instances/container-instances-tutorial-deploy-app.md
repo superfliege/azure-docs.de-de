@@ -5,7 +5,7 @@ services: container-instances
 documentationcenter: 
 author: seanmck
 manager: timlt
-editor: 
+editor: mmacy
 tags: 
 keywords: 
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 11/07/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 3b651526f5ee3197e7d04accb6a87e2f10bf0791
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 2858f20cd9da469d5983e2bef9176f5922349196
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>Bereitstellen eines Containers für Azure Container Instances
 
@@ -56,31 +56,31 @@ Kennwort der Containerregistrierung:
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-Um das Containerimage aus der Containerregistrierung mit einer Ressourcenanforderung von 1 CPU-Kern und 1 GB Speicher bereitzustellen, führen Sie den folgenden Befehl aus:
+Um das Containerimage aus der Containerregistrierung mit einer Ressourcenanforderung von einem CPU-Kern und 1 GB Speicher bereitzustellen, führen Sie den folgenden Befehl aus. Ersetzen Sie `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den beiden vorhergehenden Befehlen abgerufen haben.
 
 ```azurecli
 az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public -g myResourceGroup
 ```
 
-Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Verwenden Sie zum Anzeigen des Status der Bereitstellung Folgendes:
+Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Verwenden Sie zum Anzeigen des Status der Bereitstellung [az container show](/cli/azure/container#az_container_show):
 
 ```azurecli
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query state
+az container show --name aci-tutorial-app --resource-group myResourceGroup --query instanceView.state
 ```
 
-Sie können den Befehl weiter ausführen, bis sich der Status von *Ausstehend* in *Wird ausgeführt* ändert. Dann können Sie fortfahren.
+Wiederholen Sie den Befehl `az container show`, bis der Status von *Ausstehend* in *Wird ausgeführt* geändert wird. Das sollte maximal eine Minute dauern. Wenn für den Container *Wird ausgeführt* angezeigt wird, fahren Sie mit dem nächsten Schritt fort.
 
 ## <a name="view-the-application-and-container-logs"></a>Anzeigen der Anwendungs- und Containerprotokolle
 
-Öffnen Sie nach der erfolgreichen Bereitstellung im Browser die IP-Adresse, die in der Ausgabe des folgenden Befehls angezeigt wird:
+Wenn die Bereitstellung erfolgreich war, zeigen Sie die öffentliche IP-Adresse des Containers mit dem Befehl [az container show](/cli/azure/container#az_container_show) an:
 
 ```bash
 az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
 ```
 
-```json
-"13.88.176.27"
-```
+Beispielausgabe: `"13.88.176.27"`
+
+Zum Anzeigen der ausgeführten Anwendung navigieren Sie in Ihrem bevorzugten Browser zur öffentlichen IP-Adresse.
 
 ![„Hello World“-Anwendung im Browser][aci-app-browser]
 
@@ -96,6 +96,14 @@ Ausgabe:
 listening on port 80
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://13.88.176.27/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie in dieser Tutorialreihe erstellte Ressourcen nicht mehr benötigen, können Sie den Befehl [az group delete](/cli/azure/group#delete) ausführen, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Dieser Befehl löscht die von Ihnen erstellte Containerregistrierung sowie den ausgeführten Container und alle zugehörigen Ressourcen.
+
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

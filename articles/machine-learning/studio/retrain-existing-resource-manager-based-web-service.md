@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2017
+ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: e7663f931594c0626a173562b846f3f9324d8ba3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Einen vorhandenen prädiktiven Webdienst erneut trainieren
 Dieses Dokument beschreibt das erneute Trainieren für das folgende Szenario:
@@ -86,9 +86,10 @@ Kopieren Sie auf der Seite **Consume** im Abschnitt **Basic consumption info** d
 ### <a name="update-the-azure-storage-information"></a>Aktualisieren der Azure Storage-Informationen
 Der BES-Beispielcode lädt eine Datei von einem lokalen Laufwerk (z.B. „C:\temp\CensusIpnput.csv“) in Azure Storage hoch, verarbeitet sie und schreibt die Ergebnisse zurück in Azure Storage.  
 
-Zum Aktualisieren von Azure Storage Informationen müssen Sie den Namen des Speicherkontos, Schlüssel und Container-Informationen für das Speicherkonto aus dem Azure-Portal abrufen, und dann die entsprechenden Nach Ausführen des Experiments sollte der resultierende Workflow etwa wie folgt aussehen:
+Um die Azure Storage-Informationen zu aktualisieren, müssen Sie über das klassische Azure-Portal den Namen, Schlüssel und Container Ihres Speicherkontos ermitteln und anschließend die entsprechenden Werte im Code aktualisieren.
+Nachdem Sie Ihr Experiment ausgeführt haben, sollte der resultierende Workflow dem folgenden ähneln:
 
-![Resultierender Workflow nach der Ausführung][4]Werte im Code aktualisieren.
+![Resultierender Workflow nach der Ausführung][4]
 
 1. Melden Sie sich am klassischen Azure-Portal an.
 2. Klicken Sie im linken Navigationsbereich auf **Storage**.
@@ -119,7 +120,9 @@ Wenn Sie den Ausgabespeicherort in der Anforderungsnutzlast angeben, muss die Er
             }
         },
 
-Nachfolgend eine Beispielausgabe zum erneuten Trainieren: ![Ausgabe des erneuten Trainings][6]
+Es folgt eine Beispielausgabe zum erneuten Trainieren:
+
+![Ausgabe des erneuten Trainings][6]
 
 ## <a name="evaluate-the-retraining-results"></a>Auswerten der Ergebnisse des erneuten Trainings
 Wenn Sie die Anwendung ausführen, enthält die Ausgabe die URL und das erforderliche SAS-Token für den Zugriff auf die Auswertungsergebnisse.

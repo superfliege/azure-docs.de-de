@@ -10,20 +10,23 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 7e8d97657e03b0eaff76365d3988f51c773e3b55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a85e288fa6f7d6c7138b7fea8319bd8dee01c2c
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
-Über die Einstellungen für die automatische Skalierung können Sie basierend auf vordefinierten Bedingungen Instanzen des Diensts hinzufügen oder entfernen. Diese Einstellungen können über das Portal erstellt werden. Bei dieser Methode wird eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren einer Einstellung für die automatische Skalierung verwendet. Dieses Tutorial führt Sie durch folgende Schritte:
+Über die Einstellungen für die automatische Skalierung können Sie basierend auf vordefinierten Bedingungen Instanzen des Diensts hinzufügen oder entfernen. Diese Einstellungen können über das Portal erstellt werden. Bei dieser Methode wird eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren einer Einstellung für die automatische Skalierung verwendet. 
 
-1. Erstellen eines App Service-Plans
-2. Konfigurieren einer Einstellung für die automatische Skalierung
-3. Auslösen einer Aktion zum horizontalen Hochskalieren
-4. Auslösen einer Aktion zum horizontalen Herunterskalieren
+In diesem Tutorial lernen Sie Folgendes: 
+> [!div class="checklist"]
+> * Erstellen einer Web-App und eines App Service-Plans
+> * Konfigurieren von Regeln für die automatische Skalierung zum horizontalen Herunter- und Hochskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
+> * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
+> * Auslösen einer Aktion zur horizontalen Herunterskalierung und Anzeigen der sinkenden Anzahl von Instanzen
+> * Bereinigen von Ressourcen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -32,12 +35,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Erstellen einer Web-App und eines App Service-Plans
-1. Klicken Sie im linken Navigationsbereich auf die Option **Neu**.
-2. Suchen Sie nach dem Element *Web-App*, wählen Sie es aus, und klicken Sie auf **Erstellen**.
-3. Wählen Sie einen App-Namen wie *MyTestScaleWebApp*. Erstellen Sie eine neue Ressourcengruppe mit dem Namen „myResourceGroup“, und platzieren Sie sie in die Ressourcengruppe Ihrer Wahl.
-4. Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Im restlichen Teil dieses Tutorials beziehen wir uns auf die Web-App und den entsprechenden App Service-Plan, die zuvor erstellt wurden.
+Klicken Sie im linken Navigationsbereich auf die Option **Neu**.
 
-    ![Erstellen eines neuen App Service-Plans im Portal](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
+Suchen Sie nach dem Element *Web-App*, wählen Sie es aus, und klicken Sie auf **Erstellen**.
+
+Wählen Sie einen App-Namen wie *MyTestScaleWebApp*. Erstellen Sie eine neue Ressourcengruppe mit dem Namen „myResourceGroup“, und platzieren Sie sie in die Ressourcengruppe Ihrer Wahl.
+
+Ihre Ressourcen sollten innerhalb weniger Minuten bereitgestellt werden. Im restlichen Teil dieses Tutorials verwenden Sie die Web-App und den zugehörigen App Service-Plan.
+
+    ![Create a new app service in the portal](./media/monitor-tutorial-autoscale-performance-schedule/Web-App-Create.png)
 
 ## <a name="navigate-to-autoscale-settings"></a>Navigieren zu den Einstellungen für die automatische Skalierung
 1. Klicken Sie im linken Navigationsbereich auf die Option **Überwachen**. Nachdem die Seite geladen wurde, wählen Sie die Registerkarte **Automatisch skalieren**.
@@ -54,12 +60,12 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm zur automatische
  ## <a name="configure-default-profile"></a>Konfigurieren des Standardprofils
 1. Geben Sie einen **Namen** für die Einstellung für die automatische Skalierung an.
 2. Vergewissern Sie sich, dass der **Skalierungsmodus** im Standardprofil auf „Auf eine bestimmte Anzahl von Instanzen skalieren“ festgelegt ist.
-3. Legen Sie die Anzahl der Instanzen auf „1“ fest. Durch diese Einstellung wird sichergestellt, dass das die Anzahl der Instanzen im Standardprofil auf „1“ zurückgesetzt wird, wenn kein anderes Profil aktiv oder wirksam ist.
+3. Legen Sie die Anzahl der Instanzen auf **1** fest. Durch diese Einstellung wird sichergestellt, dass das die Anzahl der Instanzen im Standardprofil auf „1“ zurückgesetzt wird, wenn kein anderes Profil aktiv oder wirksam ist.
 
   ![Navigieren zu den Einstellungen für die automatische Skalierung](./media/monitor-tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
-## <a name="create-recurrence-profile"></a>Erstellen eines Wiederholungsprofils
+## <a name="create-recurrance-profile"></a>Erstellen eines Wiederholungsprofils
 
 1. Klicken Sie im Standardprofil auf den Link **Skalierungsbedingung hinzufügen**.
 
@@ -67,11 +73,11 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm zur automatische
 
 3. Stellen Sie sicher, dass der **Skalierungsmodus** auf „Basierend auf einer Metrik skalieren“ festgelegt ist.
 
-4. Legen Sie für **Instanzgrenzwerte** die Option **Minimum** auf „1“, **Maximum** auf „2“ und **Standard** auf „1“ fest. Dadurch wird sichergestellt, dass dieses Profil den Service-Plan nicht automatisch auf weniger als eine Instanz oder mehr als zwei Instanzen skaliert. Wenn das Profil nicht genügend Daten für die Entscheidung aufweist, wird die Standardanzahl der Instanzen (in diesem Fall 1) verwendet.
+4. Legen Sie für **Instanzgrenzwerte** die Option **Minimum** auf „1“, **Maximum** auf „2“ und **Standard** auf „1“ fest. Diese Einstellung stellt sicher, dass dieses Profil den Service-Plan nicht automatisch auf weniger als eine Instanz oder mehr als zwei Instanzen skaliert. Wenn das Profil nicht genügend Daten für die Entscheidung aufweist, wird die Standardanzahl der Instanzen (in diesem Fall 1) verwendet.
 
 5. Wählen Sie für **Zeitplan** die Option „An bestimmten Tagen wiederholen“ aus.
 
-6. Legen Sie fest, dass das Profil montags bis freitags von 09:00 Uhr PST bis 18:00 Uhr PST wiederholt wird. Dadurch wird sichergestellt, dass dieses Profil nur montags bis freitags zwischen 09:00 und 18:00 Uhr aktiv ist und angewendet wird. Ansonsten wird das Profil „Standard“ für die Einstellung für die automatische Skalierung verwendet.
+6. Legen Sie fest, dass das Profil montags bis freitags von 09:00 Uhr PST bis 18:00 Uhr PST wiederholt wird. Durch diese Einstellung wird sichergestellt, dass dieses Profil nur montags bis freitags zwischen 9:00 und 18:00 Uhr aktiv ist und angewendet wird. Ansonsten wird das Profil „Standard“ für die Einstellung für die automatische Skalierung verwendet.
 
 ## <a name="create-a-scale-out-rule"></a>Erstellen einer Regel zum horizontalen Hochskalieren
 
@@ -150,7 +156,7 @@ Die Bedingung zum horizontalen Herunterskalieren in der Einstellung für die aut
 
 6. Ein Diagramm wird angezeigt, dass die Anzahl der Instanzen des App Service-Plans im Zeitverlauf darstellt.
 
-7. In wenigen Minuten sollte die Anzahl der Instanzen von „2“ auf „1“ sinken. Der Vorgang dauert mindestens zehn Minuten.  
+7. In wenigen Minuten sollte die Anzahl der Instanzen von 2 auf 1 sinken. Der Vorgang dauert mindestens 100 Minuten.  
 
 8. Im Diagramm wird die entsprechende Gruppe von Aktivitätsprotokolleinträgen für jede Skalierungsaktion angezeigt, die von dieser Einstellung für die automatische Skalierung durchgeführt wurde.
 
@@ -168,7 +174,16 @@ Die Bedingung zum horizontalen Herunterskalieren in der Einstellung für die aut
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine einfache Web-App und einen einfachen App Service-Plan erstellt. Anschließend haben Sie eine Einstellung für die automatische Skalierung erstellt, die den App Service-Plan basierend auf der Anzahl der Anforderungen, die die Web-App empfängt, skaliert. Um mehr über die Einstellungen für die automatische Skalierung zu erfahren, fahren Sie mit der Übersicht zur automatischen Skalierung fort.
+In diesem Tutorial haben Sie Folgendes durchgeführt:  
+> [!div class="checklist"]
+> * Erstellen einer Web-App und eines App Service-Plans
+> * Konfigurieren von Regeln für die automatische Skalierung zum horizontalen Herunter- und Hochskalieren nach der Anzahl der Anforderungen, die eine Web-App empfängt
+> * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
+> * Auslösen einer Aktion zur horizontalen Hochskalierung und Anzeigen der steigenden Anzahl von Instanzen
+> * Bereinigen von Ressourcen
+
+
+Um mehr über die Einstellungen für die automatische Skalierung zu erfahren, fahren Sie mit der [Übersicht zur automatischen Skalierung](monitoring-overview-autoscale.md) fort.
 
 > [!div class="nextstepaction"]
-> [Archivieren von Überwachungsdaten](./monitor-tutorial-archive-monitoring-data.md)
+> [Archivieren von Überwachungsdaten](monitor-tutorial-archive-monitoring-data.md)

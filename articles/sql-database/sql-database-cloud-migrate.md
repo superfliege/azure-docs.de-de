@@ -13,14 +13,14 @@ ms.custom: migrate
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: sqldb-migrate
-ms.date: 02/08/2017
+ms.workload: Active
+ms.date: 11/07/2017
 ms.author: carlrab
-ms.openlocfilehash: 6147c5d24214933566e0a909ac99c817350578c7
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 4e22a512f7ee11dde14f8eac818506b59791e17f
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud
 Dieser Artikel enthält Informationen zu den beiden Hauptmethoden, mit denen eine SQL Server-Datenbank (ab SQL Server 2005) zu Azure SQL-Datenbank migriert wird. Die erste Methode ist einfacher, aber auch mit einer gewissen (möglicherweise sogar erheblichen) Ausfallzeit während der Migration verbunden. Die zweite Methode ist komplexer, verringert aber deutlich die Ausfallzeit während der Migration.
@@ -28,7 +28,7 @@ Dieser Artikel enthält Informationen zu den beiden Hauptmethoden, mit denen ein
 In beiden Fällen muss mit dem [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) sichergestellt werden, dass die Quelldatenbank mit Azure SQL-Datenbank kompatibel ist. SQL-Datenbank V12 nähert sich der [Featureübereinstimmung](sql-database-features.md) mit SQL Server (abgesehen von Problemen mit Vorgängen auf Serverebene und datenbankübergreifenden Vorgängen). Datenbanken und Anwendungen, die auf [teilweise oder nicht unterstützten Funktionen](sql-database-transact-sql-information.md) basieren, müssen zur Behebung dieser Kompatibilitätsprobleme vor der Migration der SQL Server-Datenbank etwas [umstrukturiert](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues) werden.
 
 > [!NOTE]
-> Informationen zum Migrieren einer SQL Server-fremden Datenbank (einschließlich Microsoft Access, Sybase, MySQL Oracle und DB2) zu einer Azure SQL-Datenbank finden Sie unter [SQL Server-Migrations-Assistent](https://blogs.msdn.microsoft.com/datamigration/2016/12/22/released-sql-server-migration-assistant-ssma-v7-2/).
+> Informationen zum Migrieren einer SQL Server-fremden Datenbank (einschließlich Microsoft Access, Sybase, MySQL Oracle und DB2) zu einer Azure SQL-Datenbank finden Sie unter [SQL Server-Migrations-Assistent](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/).
 > 
 
 ## <a name="method-1-migration-with-downtime-during-the-migration"></a>1. Methode: Migration mit Ausfallzeit
@@ -39,12 +39,11 @@ Die folgende Liste enthält den allgemeinen Workflow für die Migration einer SQ
 
   ![Diagramm der VSSSDT-Migration](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
-1. Untersuchen Sie die Kompatibilität der Datenbank mit der neuesten Version von [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
+1. [Untersuchen](https://docs.microsoft.com/en-us/sql/dma/dma-assesssqlonprem) Sie die Kompatibilität der Datenbank mit der neuesten Version von [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 2. Bereiten Sie alle erforderlichen Korrekturen in Form von Transact-SQL-Skripts vor.
-3. Erstellen Sie eine transaktionskonsistente Kopie der zu migrierenden Quelldatenbank – und stellen Sie sicher, dass an der Quelldatenbank keine weiteren Änderungen vorgenommen werden. (Alternativ können weitere Änderungen nach Abschluss der Migration manuell angewendet werden.) Eine Datenbank kann auf unterschiedliche Weise stillgelegt werden – vom Deaktivieren der Clientkonnektivität bis hin zum Erstellen einer [Datenbankmomentaufnahme](https://msdn.microsoft.com/library/ms175876.aspx).
+3. Erstellen Sie eine transaktionskonsistente Kopie der zu migrierenden Quelldatenbank. Stellen Sie sicher, dass an der Quelldatenbank keine weiteren Änderungen vorgenommen werden. (Alternativ können weitere Änderungen nach Abschluss der Migration manuell angewendet werden.) Eine Datenbank kann auf unterschiedliche Weise stillgelegt werden – vom Deaktivieren der Clientkonnektivität bis hin zum Erstellen einer [Datenbankmomentaufnahme](https://msdn.microsoft.com/library/ms175876.aspx).
 4. Stellen Sie die Transact-SQL-Skripts bereit, um die Korrekturen auf die Datenbankkopie anzuwenden.
-5. [Exportieren](sql-database-export.md) Sie die Datenbankkopie in eine BACPAC-Datei auf einem lokalen Laufwerk.
-6. [Importieren](sql-database-import.md) Sie die BACPAC-Datei mithilfe eines BACPAC-Importtools als neue Azure SQL-Datenbank. Als Tool empfiehlt sich „SQLPackage.exe“, da es die beste Leistung bietet.
+5. [Migrieren](https://docs.microsoft.com/en-us/sql/dma/dma-migrateonpremsql) Sie die Datenbankkopie mithilfe von Data Migration Assistant zu einer neuen Azure SQL-Datenbank.
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>Optimieren der Datenübertragungsleistung während der Migration 
 
@@ -94,7 +93,7 @@ Bei der Transaktionsreplikation werden alle Änderungen an Daten oder Schema in 
 ### <a name="some-tips-and-differences-for-migrating-to-sql-database"></a>Einige Tipps und Informationen zu den Unterschieden, die beim Migrieren zu SQL-Datenbank zu beachten sind
 
 1. Verwendung eines lokalen Verteilers: 
-   - Ein lokaler Verteiler beeinträchtigt die Leistung des Servers. 
+   - Dadurch wird die Leistung des Servers beeinträchtigt. 
    - Falls die Leistungsbeeinträchtigung nicht akzeptabel ist, können Sie einen anderen Server verwenden. Dies erhöht jedoch die Komplexität der Verwaltung und Administration.
 2. Achten Sie bei der Wahl eines Momentaufnahmeordners darauf, dass der Ordner groß genug ist, um darin eine BCP-Datei jeder zu replizierenden Tabelle zu speichern. 
 3. Bei der Momentaufnahmenerstellung werden die betreffenden Tabellen bis zum Abschluss des Vorgangs gesperrt. Planen Sie die Momentaufnahme daher entsprechend. 

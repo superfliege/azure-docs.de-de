@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2017
+ms.date: 11/03/2017
 ms.author: anbacker
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c000a642aa088ac80cc7077453b87e9a47f96900
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5778d54060c9be1b0c90c34bcf7c8e9bacb414d
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deactivate-and-delete-a-storsimple-8000-series-device-via-storsimple-manager-service"></a>Deaktivieren und Löschen von Geräten der StorSimple 8000-Serie über den StorSimple Manager-Dienst
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Den Artikel zum neuen Azure-Portal finden Sie unter [Deaktivieren und Löschen eines StorSimple-Geräts](storsimple-8000-deactivate-and-delete-device.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Möglicherweise möchten Sie ein StorSimple-Gerät außer Betrieb nehmen (z. B. weil Sie es ersetzen oder aufrüsten möchten oder weil Sie StorSimple nicht mehr verwenden). Wenn dies der Fall ist, müssen Sie das Gerät deaktivieren, bevor Sie es löschen können. Das Deaktivieren trennt die Verbindung zwischen dem Gerät und dem entsprechenden StorSimple Manager-Dienst. In diesem Tutorial wird erläutert, wie ein StorSimple-Gerät aus dem Dienst entfernt wird, indem es zuerst deaktiviert und anschließend gelöscht wird. 
 

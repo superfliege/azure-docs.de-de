@@ -15,20 +15,20 @@ ms.date: 10/11/2017
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 28b6885e7e74a44f4d00f4a804a93e74f6eec685
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 976cbb1341493186b9996d250ebca8f2f3688fdf
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="hide-a-third-party-application-from-users-experience-in-azure-active-directory"></a>Ausblenden einer Drittanbieteranwendung auf der Benutzeroberfläche in Azure Active Directory
 
 Wenn Sie eine Drittanbieteranwendung (eine App, die nicht von Microsoft veröffentlicht wurde) besitzen, die nicht im Zugriffsbereich des Benutzers oder im Office 365-Startfeldern angezeigt werden soll, steht Ihnen eine Option zur Verfügung, um diese App-Kachel auszublenden. Benutzer sind weiterhin berechtigt, diese App zu nutzen, wenn Sie diese ausblenden, sie wird jedoch nicht mehr in deren App-Startfeldern angezeigt. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
 
-## <a name="hiding-a-users-access-panel"></a>Ausblenden des Zugriffsbereichs eines Benutzers
-Befolgen Sie folgende Schritte, um den Zugriffsbereich eines Benutzers und die App-Startfelder von Office 365 auszublenden.
+## <a name="hiding-a-third-party-app-from-a-users-experience"></a>Ausblenden einer Drittanbieter-App auf der Benutzeroberfläche
+Befolgen Sie folgende Schritte, um eine Drittanbieter-App auf dem Zugriffsbereich eines Benutzers und in den App-Startfeldern von Office 365 auszublenden.
 
-### <a name="how-do-i-hide-an-app-from-users-access-panel-and-o365-app-launchers"></a>Wie blende ich eine App aus dem Zugriffsbereich des Benutzers und den App-Startfeldern von Office 365 aus?
+### <a name="how-do-i-hide-a-third-party-app-from-users-access-panel-and-o365-app-launchers"></a>Wie blende ich eine Drittanbieter-App aus dem Zugriffsbereich des Benutzers und den App-Startfeldern von Office 365 aus?
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.

@@ -5,20 +5,20 @@ services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: tysonn
+editor: 
 ms.assetid: f07301dc-ca9b-465c-bd5b-a0f99bab606b
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 08/07/2017
+ms.date: 11/08/2017
 ms.author: sethm
-ms.openlocfilehash: 555759073507219188b59af76a82be74b112c57c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d566b74429bf158e0c9cc51419ba35c9e6c32f64
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen analysiert, die zurzeit von Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Mithilfe dieser Informationen können Sie die beiden Technologien vergleichen und abgrenzen und sind in der Lage, besser informierte Entscheidungen darüber zu treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -49,7 +49,7 @@ Als Lösungsarchitekt/-entwickler sollten Sie die **Verwendung von Service Bus-W
 * Die Lösung erfordert von der Warteschlange die Zustellung nach dem FIFO-Prinzip (First-In-First-Out).
 * Sie wünschen eine symmetrische Benutzeroberfläche in Azure- und unter Windows Server (private Cloud). Weitere Informationen finden Sie unter [Service Bus for Windows Server (Service Bus für Windows Server)](https://msdn.microsoft.com/library/dn282144.aspx).
 * Die Lösung muss in der Lage sein, die automatische Duplikaterkennung zu unterstützen.
-* Sie wünschen eine Anwendung, die Nachrichten als parallele Datenströme mit langer Ausführungsdauer verarbeitet (Nachrichten werden mithilfe der [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid?view=azureservicebus-4.0.0#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId)-Eigenschaft für die Nachricht einem Datenstrom zugeordnet). In diesem Modell konkurriert jeder Knoten in der verarbeitenden Anwendung um Datenströme und nicht um Nachrichten. Wenn ein Datenstrom an einen verarbeitenden Knoten übergeben wird, kann der Knoten den Status des Anwendungsdatenstroms mithilfe von Transaktionen untersuchen.
+* Sie wünschen eine Anwendung, die Nachrichten als parallele Datenströme mit langer Ausführungsdauer verarbeitet (Nachrichten werden mithilfe der [SessionId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid)-Eigenschaft für die Nachricht einem Datenstrom zugeordnet). In diesem Modell konkurriert jeder Knoten in der verarbeitenden Anwendung um Datenströme und nicht um Nachrichten. Wenn ein Datenstrom an einen verarbeitenden Knoten übergeben wird, kann der Knoten den Status des Anwendungsdatenstroms mithilfe von Transaktionen untersuchen.
 * Beim Senden oder Empfangen mehrerer Nachrichten über eine Warteschlange muss sich die Lösung durch Transaktionsfähigkeit und Unteilbarkeit auszeichnen.
 * Die Gültigkeitsdauer (Time To Live, TTL) der anwendungsspezifischen Arbeitsauslastung kann sieben Tage überschreiten.
 * Die Anwendung verarbeitet Nachrichten, die zwar 64 KB überschreiten können, die Grenze von 256 KB aber wahrscheinlich nicht erreichen werden.
@@ -61,7 +61,7 @@ Als Lösungsarchitekt/-entwickler sollten Sie die **Verwendung von Service Bus-W
 * Sie möchten in der Lage sein, Nachrichtenbatches zu veröffentlichen und zu verarbeiten.
 
 ## <a name="comparing-storage-queues-and-service-bus-queues"></a>Vergleich von Storage-Warteschlangen und Service Bus-Warteschlangen
-In den Tabellen der folgenden Abschnitte sind die Warteschlangenfunktionen logisch gruppiert. Sie erkennen also auf einen Blick, welche Funktionen in Storage-Warteschlangen und Service Bus-Warteschlangen verfügbar sind.
+In den Tabellen der folgenden Abschnitte sind die Warteschlangenfunktionen logisch gruppiert. Sie erkennen also auf einen Blick, welche Funktionen in Azure Storage-Warteschlangen und Service Bus-Warteschlangen verfügbar sind.
 
 ## <a name="foundational-capabilities"></a>Grundlegende Funktionen
 In diesem Abschnitt werden einige der grundlegenden Warteschlangenfunktionen verglichen, die von Storage-Warteschlangen und Azure Service Bus-Warteschlangen bereitgestellt werden.
@@ -121,7 +121,7 @@ In diesem Abschnitt werden die von Storage-Warteschlangen und Service Bus-Wartes
 * Die automatische Warteschlangenweiterleitung ermöglicht, dass Tausende von Warteschlangen ihre Nachrichten automatisch an eine einzelne Warteschlange weiterleiten, aus der die empfangene Anwendung die Nachricht abruft. Sie können diesen Mechanismus verwenden, um Sicherheit zu erzielen, den Datenfluss zu steuern und Speicher zwischen den einzelnen Nachrichtenverlegern zu isolieren.
 * Storage-Warteschlangen bieten Unterstützung zum Aktualisieren von Nachrichteninhalten. Sie können diese Funktionen verwenden, um Zustandsinformationen und inkrementelle Statusupdates in der Nachricht beizubehalten, sodass sie vom letzten bekannten Prüfpunkt statt von Anfang an verarbeitet wird. Mit Service Bus-Warteschlangen können Sie das gleiche Szenario mithilfe von Nachrichtensitzungen aktivieren. Sitzungen ermöglichen das Speichern und Abrufen des Anwendungsverarbeitungszustands (mithilfe von [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) und [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState)).
 * [Unzustellbare Nachrichten](service-bus-dead-letter-queues.md), die nur von Service Bus-Warteschlangen unterstützt werden, leisten wertvolle Hilfe beim Isolieren von Nachrichten, die von der Empfangsanwendung nicht erfolgreich verarbeitet werden können bzw. die ihr Ziel aufgrund einer abgelaufenen TTL-Eigenschaft (Time-To-Live) nicht erreichen können. Der TTL-Wert gibt an, wie lange eine Nachricht in der Warteschlange verbleibt. Bei Service Bus wird die Nachricht in eine bestimmte Warteschlange mit dem Namen "$DeadLetterQueue" verschoben, sobald die Gültigkeitsdauer abläuft.
-* Für die Suche nach nicht verarbeitbaren Nachrichten in Storage-Warteschlangen überprüft die Anwendung die **[DequeueCount](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.dequeuecount.aspx)**-Eigenschaft der Nachricht, wenn eine Nachricht aus der Warteschlange entfernt wird. Wenn **DequeueCount** über einem angegebenen Schwellenwert liegt, verschiebt die Anwendung die Nachricht in eine von der Anwendung definierte „Warteschlange für unzustellbare Nachrichten“.
+* Für die Suche nach nicht verarbeitbaren Nachrichten in Storage-Warteschlangen überprüft die Anwendung die [DequeueCount](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueuemessage.dequeuecount.aspx)-Eigenschaft der Nachricht, wenn eine Nachricht aus der Warteschlange entfernt wird. Wenn **DequeueCount** über einem angegebenen Schwellenwert liegt, verschiebt die Anwendung die Nachricht in eine von der Anwendung definierte „Warteschlange für unzustellbare Nachrichten“.
 * Bei Storage-Warteschlangen können Sie ein ausführliches Protokoll aller für die Warteschlange ausgeführten Transaktionen sowie aggregierte Metriken abrufen. Beide erleichtern das Debuggen und verdeutlichen, wie Storage-Warteschlangen von der Anwendung verwendet werden. Weiter dienen diese Informationen dazu, die Anwendungsleistung zu optimieren und die Kosten für die Verwendung von Warteschlangen zu senken.
 * Das von Service Bus unterstützte Konzept „Nachrichtensitzung“ macht es möglich, dass Nachrichten, die einer bestimmten logischen Gruppe angehören, einem vorgegebenen Empfänger zugeordnet werden. Auf diese Weise entsteht eine sitzungsähnliche Affinität zwischen Nachrichten und den betreffenden Empfängern. Sie können diese erweiterte Funktionalität in Service Bus aktivieren, indem Sie die [SessionID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid#Microsoft_ServiceBus_Messaging_BrokeredMessage_SessionId)-Eigenschaft für eine Nachricht festlegen. Empfänger können dann auf eine bestimmte Sitzungs-ID lauschen und Nachrichten empfangen, die den angegebenen Sitzungsbezeichner gemeinsam haben.
 * Die von Service Bus-Warteschlangen unterstützte Duplikaterkennung entfernt gemäß dem Wert der [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId)-Eigenschaft automatisch doppelt vorhandene Nachrichten, die an eine Warteschlange bzw. ein Thema gesendet wurden.
@@ -133,7 +133,7 @@ In diesem Abschnitt werden Storage-Warteschlangen und Service Bus-Warteschlangen
 | --- | --- | --- |
 | Maximale Warteschlangengröße |**500 TB**<br/><br/>(beschränkt auf die Kapazität eines [einzelnen Speicherkontos](../storage/common/storage-introduction.md#queue-storage)) |**1 GB bis 80 GB**<br/><br/>(wird bei Erstellung einer Warteschlange und dem [Aktivieren von Partitionierung](service-bus-partitioning.md) definiert – weitere Informationen finden Sie im Abschnitt „Zusätzliche Informationen“) |
 | Maximale Nachrichtengröße |**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64** Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden. |**256 KB** oder **1 MB**<br/><br/>(Einschließlich Header und Text. Die maximale Headergröße beträgt 64 KB).<br/><br/>Hängt von der [Dienstebene](service-bus-premium-messaging.md) ab. |
-| Maximaler TTL-Wert der Nachricht |**7 Tage** |**`TimeSpan.Max`** |
+| Maximaler TTL-Wert der Nachricht |**7 Tage** |**TimeSpan.Max** |
 | Maximale Anzahl von Warteschlangen |**Unbegrenzt** |**10.000**<br/><br/>(pro Dienstnamespace, kann jedoch erhöht werden) |
 | Maximale Anzahl gleichzeitiger Clients |**Unbegrenzt** |**Unbegrenzt**<br/><br/>(Die Beschränkung auf 100 gleichzeitige Verbindungen gilt nur für die Kommunikation über das TCP-Protokoll.) |
 

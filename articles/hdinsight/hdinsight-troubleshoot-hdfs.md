@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: arijitt
-ms.openlocfilehash: 58f3d160c1f2a32025b706f10863e0055d67bfcd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c9d555130d806728f9d3a82f49e81b18c1e5125
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Problembehandlung bei HDFS mit Azure HDInsight
 
 Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit HDFS-Nutzlasten (Hadoop Distributed File System) in Apache Ambari kennen.
 
-## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Wie greife ich aus einem Cluster heraus auf lokales HDFS zu?
+## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>Wie greife ich aus einem Cluster heraus auf das lokale HDFS zu?
 
 ### <a name="issue"></a>Problem
 
@@ -232,3 +232,6 @@ Der HDInsight-Cluster wurde zentral auf sehr wenige Knoten herunterskaliert. Die
     ```apache
     hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
     ```
+
+### <a name="see-also"></a>Weitere Informationen
+[Beheben von Problemen mit Azure HDInsight](hdinsight-troubleshoot-guide.md)

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 05e645ebafd8c8b9f3078524b76732b3e1be05f8
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 11/03/2017
+ms.openlocfilehash: ec362cec28160b5c4827f6e47614661319ba4039
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für die Azure-Datenbank für PostgreSQL mithilfe der Azure CLI
 Mithilfe von Firewallregeln auf Serverebene können Administratoren den Zugriff auf einen Server für Azure-Datenbank für PostgreSQL über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewallregeln für Azure Database for PostgreSQL finden Sie unter [Firewallregeln für Azure Database for PostgreSQL-Server](concepts-firewall-rules.md).
@@ -39,7 +39,7 @@ az postgres server firewall-rule list --resource-group myresourcegroup --server 
 ## <a name="create-firewall-rule"></a>Erstellen einer Firewallregel
 Erstellen Sie mit dem Befehl [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule#create) eine neue Firewallregel auf dem Server. 
 
-Durch die Angabe von 0.0.0.0 als `--start-ip-address`-Bereich und von 255.255.255.255 als `--end-ip-address`-Bereich wird es dem Bereich aller IP-Adressen in diesem Beispiel erlaubt, auf den Server **mypgserver-20170401.postgres.database.azure.com** zuzugreifen.
+Durch die Angabe eines Bereichs mit 0.0.0.0 als `--start-ip-address` und 255.255.255.255 als `--end-ip-address` wird es allen IP-Adressen in diesem Beispiel erlaubt, auf den Server **mypgserver-20170401.postgres.database.azure.com** zuzugreifen.
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup  --server mypgserver-20170401 --name "AllowIpRange" --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
 ```

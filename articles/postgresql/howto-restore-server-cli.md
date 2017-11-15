@@ -1,6 +1,6 @@
 ---
-title: "Sichern und Wiederherstellen eines Servers in Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie einen Server in Azure-Datenbank für PostgreSQL mit Azure CLI sichern und wiederherstellen."
+title: 'Vorgehensweise: Sichern und Wiederherstellen eines Servers in Azure Database for PostgreSQL | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie einen Server in Azure-Datenbank for PostgreSQL mit Azure CLI sichern und wiederherstellen.
 services: postgresql
 author: jasonwhowell
 ms.author: jasonh
@@ -9,14 +9,14 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 06/13/2017
-ms.openlocfilehash: 871887e67d686a965a0648d2c6f0c72b3008db05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: 0cfce63b1523f939dc2d706dba771e56ce9ccd6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure-Datenbank für PostgreSQL mit Azure CLI
+# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Erfahren Sie, wie Sie einen Server in Azure-Datenbank for PostgreSQL mit Azure CLI sichern und wiederherstellen.
 
 Verwenden Sie Azure-Datenbank für PostgreSQL, um eine Serverdatenbank auf ein 7 bis 35 Tage früheres Datum wiederherzustellen.
 
@@ -31,7 +31,7 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 > [!IMPORTANT]
 > Wenn Sie Azure CLI lokal installieren und verwenden möchten, müssen Sie für diesen Leitfaden die Azure CLI-Version 2.0 oder höher ausführen. Geben Sie zum Bestätigen der Version an der Eingabeaufforderung von Azure CLI `az --version` ein. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli).
 
-## <a name="back-up-happens-automatically"></a>Automatische Sicherung
+## <a name="backup-happens-automatically"></a>Automatische Sicherung
 Bei der Verwendung von Azure-Datenbank für PostgreSQL erstellt der Datenbankdienst automatisch alle fünf Minuten eine Sicherung des Diensts. 
 
 Für den Basic-Tarif sind die Sicherungen 7 Tage lang verfügbar. Für den Standard-Tarif sind die Sicherungen 35 Tage lang verfügbar. Weitere Informationen finden Sie unter [Optionen und Leistung von Azure-Datenbank für PostgreSQL: Überblick über die verfügbaren Funktionen in den einzelnen Tarifen](concepts-service-tiers.md).
@@ -56,7 +56,7 @@ Für den Befehl `az postgres server restore` sind folgende Parameter erforderlic
 | --- | --- | --- |
 | resource-group |  myResourceGroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
 | name | mypgserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
-| restore-point-in-time | 2017-04-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Dieses Datum und diese Urzeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2017-04-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2017-04-13T13:59:00Z`. |
+| restore-point-in-time | 2017-04-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2017-04-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2017-04-13T13:59:00Z`. |
 | source-server | mypgserver-20170401 | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
 
 Wenn Sie den Zustand eines Servers zu einem früheren Zeitpunkt wiederherstellen, wird ein neuer Server erstellt. Der ursprüngliche Server und seine Datenbanken aus dem angegebenen Zeitpunkt werden auf den neuen Server kopiert.

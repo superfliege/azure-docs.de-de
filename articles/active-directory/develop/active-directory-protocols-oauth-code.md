@@ -21,19 +21,19 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory
+# <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>Autorisieren des Zugriffs auf Webanwendungen mit OAuth 2.0 und Azure Active Directory
 Azure Active Directory (Azure AD) verwendet OAuth 2.0, um den Zugriff auf Webanwendungen und Web-APIs in Ihrem Azure AD-Mandanten zu autorisieren. Diese sprachunabhängige Anleitung beschreibt das Senden und Empfangen von HTTP-Nachrichten ohne Verwendung unserer Open Source-Bibliotheken.
 
 Der OAuth 2.0-Autorisierungscodefluss wird in [Abschnitt 4.1 der OAuth 2.0-Spezifikation](https://tools.ietf.org/html/rfc6749#section-4.1)beschrieben. Er wird zur Authentifizierung und Autorisierung bei den meisten Anwendungstypen verwendet, einschließlich Web-Apps und nativ installierten Apps.
 
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
 
-## OAuth 2.0-Autorisierungsfluss
+## <a name="oauth-20-authorization-flow"></a>OAuth 2.0-Autorisierungsfluss
 Allgemein sieht der gesamte Autorisierungsfluss für eine Anwendung etwa wie folgt aus:
 
 ![OAuth-Autorisierungscodefluss](media/active-directory-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
-## Anfordern eines Autorisierungscodes
+## <a name="request-an-authorization-code"></a>Anfordern eines Autorisierungscodes
 Der Autorisierungscodefluss beginnt damit, dass der Client den Benutzer auf den `/authorize` -Endpunkt leitet. In dieser Anforderung gibt der Client die Berechtigungen an, die er vom Benutzer abrufen muss. Sie können die OAuth 2.0-Endpunkte von der Seite Ihrer Anwendung im klassischen Azure-Portal beziehen (unten über die Schaltfläche **Endpunkte anzeigen** ).
 
 ```
@@ -68,7 +68,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 Nun wird der Benutzer zur Eingabe der Anmeldeinformationen und zur Zustimmung zu den im Abfrageparameter `scope` angegebenen Berechtigungen aufgefordert. Nach der Authentifizierung und der Zustimmung durch den Benutzer versendet Azure AD eine Antwort an Ihre App unter der `redirect_uri` -Adresse in Ihrer Anforderung.
 
-### Erfolgreiche Antwort
+### <a name="successful-response"></a>Erfolgreiche Antwort
 Eine erfolgreiche Antwort sieht wie folgt aus:
 
 ```
@@ -83,7 +83,7 @@ Location: http://localhost/myapp/?code= AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLE
 | session_state |Ein eindeutiger Wert, der die aktuelle Benutzersitzung identifiziert. Dieser Wert ist eine GUID, sollte jedoch als opaker Wert behandelt werden, der ohne Prüfung übergeben wird. |
 | state |Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Es hat sich bewährt, wenn die Anwendung überprüft, ob die Statuswerte in der Anforderung und in der Antwort identisch sind, bevor die Antwort verwendet wird. Dies trägt zur Erkennung von [Angriffen vom Typ „websiteübergreifende Anforderungsfälschung“](https://tools.ietf.org/html/rfc6749#section-10.12) auf den Client bei. |
 
-### Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 Fehlerantworten können auch an den `redirect_uri` gesendet werden, damit die App diese entsprechend behandeln kann.
 
 ```
@@ -98,7 +98,7 @@ error=access_denied
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
 | state |Der Statuswert ist ein zufällig generierter, nicht wiederverwendeter Wert, der in der Anforderung versendet und in der Antwort zurückgegeben wird, um webseitenübergreifende Anforderungsfälschungen (CSFR) zu vermeiden. |
 
-#### Fehlercodes beim Autorisierungsendpunktfehler
+#### <a name="error-codes-for-authorization-endpoint-errors"></a>Fehlercodes beim Autorisierungsendpunktfehler
 Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -Parameter der Fehlerantwort zurückgegeben werden können:
 
 | Fehlercode | Beschreibung | Clientaktion |
@@ -111,7 +111,7 @@ Die folgende Tabelle beschreibt die verschiedenen Fehlercodes, die im `error` -P
 | temporarily_unavailable |Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. |Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 | invalid_resource |Die Zielressource ist ungültig, da sie nicht vorhanden ist, Azure AD sie nicht findet oder sie nicht ordnungsgemäß konfiguriert ist. |Dies gibt an, dass die Ressource, falls vorhanden, im Mandanten nicht konfiguriert wurde. Die Anwendung kann den Benutzer zum Installieren der Anwendung und zum Hinzufügen zu Azure AD auffordern. |
 
-## Fordern Sie ein Zugriffstoken mithilfe des Autorisierungscodes an.
+## <a name="use-the-authorization-code-to-request-an-access-token"></a>Fordern Sie ein Zugriffstoken mithilfe des Autorisierungscodes an.
 Wenn Sie einen Autorisierungscode erworben und die Berechtigung vom Benutzer erhalten haben, können Sie den Code für ein Zugriffstoken auf die gewünschte Ressource einlösen, indem Sie eine POST-Anforderung an den `/token` -Endpunkt senden:
 
 ```
@@ -142,7 +142,7 @@ grant_type=authorization_code
 
 Klicken Sie zum Ermitteln des App-ID-URI im Azure-Verwaltungsportal nacheinander auf **Active Directory**, das Verzeichnis, die Anwendung und dann auf **Konfigurieren**.
 
-### Erfolgreiche Antwort
+### <a name="successful-response"></a>Erfolgreiche Antwort
 Azure AD gibt bei einer erfolgreichen Antwort ein Zugriffstoken zurück. Um die Anzahl von Netzwerkaufrufen der Clientanwendung und die damit verbundene Latenz zu verringern, sollte die Clientanwendung Zugriffstoken für die Tokenlebensdauer zwischenspeichern, die in der OAuth 2.0-Antwort angegeben ist. Verwenden Sie zum Bestimmen der Tokenlebensdauer entweder den Parameterwert `expires_in` oder `expires_on`.
 
 Wenn eine Web-API-Ressource den Fehlercode `invalid_token` zurückgibt, kann dies darauf hinweisen, dass von der Ressource ein abgelaufenes Token ermittelt wurde. Falls sich die Zeiten der Client- und Ressourcenuhr unterscheiden (als „zeitlicher Versatz“ bezeichnet), wird das Token von der Ressource ggf. als abgelaufen angesehen, bevor das Token aus dem Clientcache entfernt wird. Löschen Sie das Token in diesem Fall auch dann aus dem Cache, wenn der berechnete Lebensdauerzeitraum noch nicht abgelaufen ist.
@@ -174,7 +174,7 @@ Eine erfolgreiche Antwort sieht wie folgt aus:
 | refresh_token |Ein Aktualisierungstoken von OAuth 2.0. Die App kann dieses Token verwenden, um nach Ablauf der aktuellen Zugriffstoken zusätzliche Zugriffstoken zu erhalten.  Aktualisierungstoken sind langlebig und können verwendet werden, um den Zugriff auf Ressourcen für längere Zeit beizubehalten. |
 | id_token |Ein unsigniertes JSON-Webtoken (JWT). Die App kann die Segmente dieses Tokens mit einer base64-URL decodieren, um Informationen über den angemeldeten Benutzer abzurufen. Die App kann die Werte zwischenspeichern und sie anzeigen, sollte sich jedoch nicht für Autorisierungs- und Sicherheitsgrenzen auf sie verlassen. |
 
-### JWT-Tokenansprüche
+### <a name="jwt-token-claims"></a>JWT-Tokenansprüche
 Das JWT-Token im Wert des Parameters `id_token` kann in die folgenden Ansprüche decodiert werden:
 
 ```
@@ -219,7 +219,7 @@ Der Parameter `id_token` umfasst die folgenden Anspruchstypen:
 | upn |Benutzerprinzipalname. |
 | ver |Version. Die Version des JWT-Tokens, in der Regel 1.0. |
 
-### Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 Die Fehler am Tokenausstellungs-Endpunkt sind HTTP-Fehlercodes, da der Client den Tokenausstellungs-Endpunkt direkt aufruft. Zusätzlich zum HTTP-Statuscode gibt der Azure AD-Tokenausstellungs-Endpunkt auch ein JSON-Dokument mit Objekten zurück, die den Fehler beschreiben.
 
 Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
@@ -246,7 +246,7 @@ Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 | trace_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der Diagnose helfen kann |
 | correlation_id |Ein eindeutiger Bezeichner für die Anforderung, die bei der komponentenübergreifenden Diagnose helfen kann |
 
-#### HTTP-Statuscodes
+#### <a name="http-status-codes"></a>HTTP-Statuscodes
 Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-Endpunkt zurückgegeben werden. In einigen Fällen ist der Fehlercode ausreichend, um die Antwort zu beschreiben. Wenn jedoch Fehler auftreten, müssen Sie die zugehörigen JSON-Dokumente analysieren und den Fehlercode überprüfen.
 
 | HTTP-Code | Beschreibung |
@@ -256,7 +256,7 @@ Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-En
 | 403 |Fehler bei der Autorisierung. Der Benutzer verfügt beispielsweise nicht über die Berechtigung zum Zugriff auf die Ressource. |
 | 500 |Ein interner Fehler ist beim Dienst aufgetreten. Wiederholen Sie die Anforderung. |
 
-#### Fehlercodes für Token-Endpunktfehler
+#### <a name="error-codes-for-token-endpoint-errors"></a>Fehlercodes für Token-Endpunktfehler
 | Fehlercode | Beschreibung | Clientaktion |
 | --- | --- | --- |
 | invalid_request |Protokollfehler, z.B. ein fehlender erforderlicher Parameter. |Korrigieren Sie die Anforderung, und senden Sie sie erneut. |
@@ -268,17 +268,17 @@ Die folgende Tabelle enthält die HTTP-Statuscodes, die vom Tokenausstellungs-En
 | interaction_required |Die Anforderung erfordert eine Benutzerinteraktion. Beispielsweise ist ein zusätzlicher Schritt zur Authentifizierung erforderlich. | Wiederholen Sie die Anforderung derselben Ressource mit einer interaktiven Autorisierungsanforderung anstelle einer nicht interaktiven Anforderung. |
 | temporarily_unavailable |Der Server ist vorübergehend überlastet und kann die Anforderung nicht verarbeiten. |Wiederholen Sie die Anforderung. Die Clientanwendung kann dem Benutzer erklären, dass ihre Antwort aufgrund einer temporären Bedingung verzögert ist. |
 
-## Verwenden des Zugriffstokens für den Zugriff auf die Ressource
+## <a name="use-the-access-token-to-access-the-resource"></a>Verwenden des Zugriffstokens für den Zugriff auf die Ressource
 Nachdem Sie erfolgreich ein `access_token` abgerufen haben, können Sie das Token für Anforderungen an Web-APIs verwenden, indem Sie es in den `Authorization`-Header einschließen: Die Spezifikation [RFC 6750](http://www.rfc-editor.org/rfc/rfc6750.txt) erklärt, wie Bearertoken in HTTP-Anforderungen für den Zugriff auf geschützte Ressourcen verwendet werden.
 
-### Beispiel für eine Anforderung
+### <a name="sample-request"></a>Beispiel für eine Anforderung
 ```
 GET /data HTTP/1.1
 Host: service.contoso.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1THdqcHdBSk9NOW4tQSJ9.eyJhdWQiOiJodHRwczovL3NlcnZpY2UuY29udG9zby5jb20vIiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvN2ZlODE0NDctZGE1Ny00Mzg1LWJlY2ItNmRlNTdmMjE0NzdlLyIsImlhdCI6MTM4ODQ0MDg2MywibmJmIjoxMzg4NDQwODYzLCJleHAiOjEzODg0NDQ3NjMsInZlciI6IjEuMCIsInRpZCI6IjdmZTgxNDQ3LWRhNTctNDM4NS1iZWNiLTZkZTU3ZjIxNDc3ZSIsIm9pZCI6IjY4Mzg5YWUyLTYyZmEtNGIxOC05MWZlLTUzZGQxMDlkNzRmNSIsInVwbiI6ImZyYW5rbUBjb250b3NvLmNvbSIsInVuaXF1ZV9uYW1lIjoiZnJhbmttQGNvbnRvc28uY29tIiwic3ViIjoiZGVOcUlqOUlPRTlQV0pXYkhzZnRYdDJFYWJQVmwwQ2o4UUFtZWZSTFY5OCIsImZhbWlseV9uYW1lIjoiTWlsbGVyIiwiZ2l2ZW5fbmFtZSI6IkZyYW5rIiwiYXBwaWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0yNzRhNzJhNzMwOWUiLCJhcHBpZGFjciI6IjAiLCJzY3AiOiJ1c2VyX2ltcGVyc29uYXRpb24iLCJhY3IiOiIxIn0.JZw8jC0gptZxVC-7l5sFkdnJgP3_tRjeQEPgUn28XctVe3QqmheLZw7QVZDPCyGycDWBaqy7FLpSekET_BftDkewRhyHk9FW_KeEz0ch2c3i08NGNDbr6XYGVayNuSesYk5Aw_p3ICRlUV1bqEwk-Jkzs9EEkQg4hbefqJS6yS1HoV_2EsEhpd_wCQpxK89WPs3hLYZETRJtG5kvCCEOvSHXmDE6eTHGTnEgsIk--UlPe275Dvou4gEAwLofhLDQbMSjnlV5VLsjimNBVcSRFShoxmQwBJR_b2011Y5IuD6St5zPnzruBbZYkGNurQK63TJPWmRd3mbJsGM0mf3CUQ
 ```
 
-### Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 Gesicherte Ressourcen, die RFC 6750 implementieren, geben HTTP-Statuscodes zurück. Wenn die Anforderung keine Authentifizierungsinformationen enthält oder wenn das Token fehlt, enthält die Antwort einen `WWW-Authenticate` -Header. Wenn eine Anforderung fehlschlägt, antwortet der Ressourcenserver mit einem HTTP-Statuscode und einem Fehlercode.
 
 Im Folgenden finden Sie ein Beispiel für eine nicht erfolgreiche Antwort, wenn die Clientanforderung das Bearertoken nicht enthält:
@@ -288,7 +288,7 @@ HTTP/1.1 401 Unauthorized
 WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/contoso.com/oauth2/authorize",  error="invalid_token",  error_description="The access token is missing.",
 ```
 
-#### Fehlerparameter
+#### <a name="error-parameters"></a>Fehlerparameter
 | Parameter | Beschreibung |
 | --- | --- |
 | authorization_uri |Der URI (physische Endpunkt) des Autorisierungsservers. Dieser Wert wird auch als Suchschlüssel verwendet, um weitere Informationen über den Server aus einem Discovery-Endpunkt zu erhalten. <p><p> Der Client muss überprüfen, ob der Autorisierungsserver vertrauenswürdig ist. Wenn die Ressource von Azure AD geschützt wird, ist die Prüfung ausreichend, ob die URL mit https://login.microsoftonline.com oder einem anderen Hostnamen beginnt, den Azure AD unterstützt. Eine mandantenspezifische Ressource sollte immer einen mandantenspezifischen Autorisierungs-URI zurückgeben. |
@@ -296,7 +296,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 | error_description |Detailliertere Beschreibung des Fehlers. Diese Meldung ist nicht für den Endbenutzer ausgelegt. |
 | resource_id |Gibt den eindeutigen Bezeichner der Ressource zurück. Die Clientanwendung kann diesen Bezeichner als Wert für den `resource` -Parameter verwenden, wenn sie ein Token für die Ressource anfordert. <p><p> Es ist wichtig, dass die Clientanwendung diesen Wert überprüft, da andernfalls ein schädlicher Dienst möglicherweise einen Angriff mit einer **Erhöhung von Rechten** durchführt. <p><p> Die empfohlene Strategie zur Verhinderung eines Angriffs besteht darin sicherzustellen, dass die `resource_id` mit dem Basiselement der Web-API-URL übereinstimmt, auf die zugegriffen wird. Wenn beispielsweise auf „https://service.contoso.com/data“ zugegriffen wird, kann die `resource_id` „htttps://service.contoso.com/“ lauten. Die Clientanwendung muss eine `resource_id` ablehnen, die nicht mit der Basis-URL beginnt, sofern es kein zuverlässiges alternatives Verfahren zum Überprüfen der ID gibt. |
 
-#### Bearerschema-Fehlercodes
+#### <a name="bearer-scheme-error-codes"></a>Bearerschema-Fehlercodes
 Die Spezifikation RFC 6750 definiert die folgenden Fehler für Ressourcen, die in der Antwort den WWW-Authenticate-Header und das Bearer-Schema verwenden.
 
 | HTTP-Statuscode | Fehlercode | Beschreibung | Clientaktion |
@@ -306,7 +306,7 @@ Die Spezifikation RFC 6750 definiert die folgenden Fehler für Ressourcen, die i
 | 403 |insufficient_scope |Das Zugriffstoken enthält nicht die erforderlichen Berechtigungen zum Identitätswechsel, um auf die Ressource zuzugreifen. |Senden Sie eine neue Autorisierungsanforderung an den Autorisierungsendpunkt. Wenn die Antwort den Bereichsparameter enthält, verwenden Sie den Bereichswert in der Anforderung für die Ressource. |
 | 403 |insufficient_access |Der Antragsteller des Tokens besitzt nicht die Berechtigungen, die für den Zugriff auf die Ressource erforderlich sind. |Der Benutzer wird aufgefordert, ein anderes Konto zu verwenden oder Berechtigungen für die angegebene Ressource anzufordern. |
 
-## Aktualisieren der Zugriffstoken
+## <a name="refreshing-the-access-tokens"></a>Aktualisieren der Zugriffstoken
 Zugriffstoken sind kurzlebig und müssen nach Ablauf aktualisiert werden, damit Sie weiterhin auf Ressourcen zugreifen können. Übermitteln Sie zum Aktualisieren von `access_token` eine weitere `POST`-Anforderung an den `/token`-Endpunkt, und zwar dieses Mal unter Angabe des `refresh_token` anstelle von `code`.
 
 Für Aktualisierungstoken werden keine Lebensdauern angegeben. Normalerweise verfügen Aktualisierungstoken über relativ lange Lebensdauern. In einigen Fällen laufen Aktualisierungstoken aber ab, werden widerrufen oder verfügen nicht über ausreichende Berechtigungen für die gewünschte Aktion. Von Ihrer Anwendung müssen Fehler, die vom Tokenausstellungs-Endpunkt zurückgegeben werden, erwartet und richtig behandelt werden.
@@ -329,7 +329,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
 ```
 
-### Erfolgreiche Antwort
+### <a name="successful-response"></a>Erfolgreiche Antwort
 Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 
 ```
@@ -352,7 +352,7 @@ Eine erfolgreiche Tokenantwort sieht wie folgt aus:
 | access_token |Das neue Zugriffstoken, das angefordert wurde. |
 | refresh_token |Ein neues OAuth 2.0-Aktualisierungstoken, das zum Anfordern neuer Zugriffstoken verwendet werden kann, wenn das Token in dieser Antwort abläuft. |
 
-### Fehlerantwort
+### <a name="error-response"></a>Fehlerantwort
 Eine Beispiel für eine Fehlerantwort sieht wie folgt aus:
 
 ```

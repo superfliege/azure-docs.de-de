@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 06/29/2017
-ms.openlocfilehash: 1a581752e3803e9c9aba826b23db14a76080b4ec
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.date: 11/03/2017
+ms.openlocfilehash: 8b52aeaadf7ba94d6b79ef447600cd7b57e70dfa
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-postgresql-use-go-language-to-connect-and-query-data"></a>Azure-Datenbank für PostgreSQL: Verwenden der Sprache Go zum Herstellen von Verbindungen mit Daten und Durchführen von Abfragen
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Code in der Sprache [Go](https://golang.org/) (golang) eine Verbindung mit einer Azure-Datenbank für PostgreSQL herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Entwicklung unter Verwendung der Sprache Go vertraut sind, aber noch keine Erfahrung mit Azure-Datenbank für PostgreSQL haben.
@@ -88,8 +88,8 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 5. Falls Sie die Informationen für die Serveranmeldung vergessen haben, können Sie zur Seite **Übersicht** navigieren und den Serveradministrator-Anmeldenamen anzeigen. Setzen Sie das Kennwort zurück, falls dies erforderlich ist.
 
 ## <a name="build-and-run-go-code"></a>Erstellen und Ausführen von Go-Code 
-1. Golang-Code kann in einem einfachen Text-Editor wie dem Editor (Microsoft Windows), [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) oder [Nano](https://www.nano-editor.org/) (Ubuntu) oder TextEdit (macOS) geschrieben werden. Falls Sie eine umfangreichere interaktive Entwicklungsumgebung (Interactive Development Environment, IDE) bevorzugen, können Sie [Gogland](https://www.jetbrains.com/go/) von Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) von Microsoft oder [Atom](https://atom.io/) verwenden.
-2. Fügen Sie den Golang-Code aus den Abschnitten weiter unten in Textdateien ein, und speichern Sie sie in Ihrem Projektordner mit der Dateierweiterung „\*.go“ – beispielsweise `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (Windows-Pfad) oder `~/go/src/postgresqlgo/createtable.go` (Linux-Pfad).
+1. Golang-Code kann in einem Nur-Text-Editor wie dem Editor in Microsoft Windows, [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) oder [Nano](https://www.nano-editor.org/) (Ubuntu) oder TextEdit (macOS) geschrieben werden. Falls Sie eine umfangreichere interaktive Entwicklungsumgebung (Interactive Development Environment, IDE) bevorzugen, können Sie [Gogland](https://www.jetbrains.com/go/) von Jetbrains, [Visual Studio Code](https://code.visualstudio.com/) von Microsoft oder [Atom](https://atom.io/) verwenden.
+2. Fügen Sie den Golang-Code aus den folgenden Abschnitten in Textdateien ein, und speichern Sie sie in Ihrem Projektordner mit der Dateiendung „\*.go“ – beispielsweise `%USERPROFILE%\go\src\postgresqlgo\createtable.go` (Windows-Pfad) oder `~/go/src/postgresqlgo/createtable.go` (Linux-Pfad).
 3. Suchen Sie im Code nach den Konstanten `HOST`, `DATABASE`, `USER` und `PASSWORD`, und ersetzen Sie die Beispielwerte durch Ihre eigenen Werte.  
 4. Starten Sie die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie in das Verzeichnis Ihres Projektordners. Beispiel für Windows: `cd %USERPROFILE%\go\src\postgresqlgo\`. Beispiel für Linux: `cd ~/go/src/postgresqlgo/`. Einige der genannten IDE-Umgebungen bieten Debug- und Laufzeitfunktionen ohne Shell-Befehle.
 5. Geben Sie den Befehl `go run createtable.go` ein, um den Code auszuführen und die Anwendung zu kompilieren und auszuführen. 

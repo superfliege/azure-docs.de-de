@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/13/2017
+ms.date: 11/03/2017
 ms.author: tarcher
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 328a4d893637d7150807855e118b485a2c3bbfc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03cd09e37ff7dd0b7731eee19810ada7aed1a875
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>Verwalten aller Richtlinien für ein Lab in Azure DevTest Labs
 
@@ -28,7 +28,11 @@ Mit Azure DevTest Labs können Sie Kosten und unnötigen Aufwand in Ihren Labs m
 ## <a name="set-allowed-virtual-machine-sizes"></a>Festlegen der zulässigen Größen virtueller Computer
 Die Richtlinie für die zulässigen VM-Größen hilft dabei, unnötigen Aufwand im Lab zu minimieren, indem sie Ihnen ermöglicht, die im Lab zulässigen VM-Größen anzugeben. Wenn diese Richtlinie aktiviert ist, können nur VM-Größen aus dieser Liste zum Erstellen von virtuellen Computern verwendet werden.
 
-1. Wählen Sie auf dem Blatt **Konfiguration und Richtlinien** des Labs die Option **Zulässige Größen virtueller Computer**.
+1. Wählen Sie im [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) ein Lab und dann **Konfiguration und Richtlinien** aus.
+
+    ![Zugreifen auf die Konfiguration und die Richtlinien des Labs](./media/devtest-lab-set-lab-policy/policies-menu.png)
+
+1. Wählen Sie im Bereich **Konfiguration und Richtlinien** des Labs die Option **Zulässige Größen virtueller Computer** aus.
    
     ![Allowed virtual machines sizes](./media/devtest-lab-set-lab-policy/allowed-vm-sizes.png)
 
@@ -39,9 +43,9 @@ Die Richtlinie für die zulässigen VM-Größen hilft dabei, unnötigen Aufwand 
 1. Wählen Sie **Speichern**aus.
 
 ## <a name="set-virtual-machines-per-user"></a>Festlegen der virtuellen Computer pro Benutzer
-Mit der Richtlinie für **Virtual machines per user** (VMs pro Benutzer) können Sie die maximale Anzahl von virtuellen Computern angeben, die von einem einzelnen Benutzer erstellt werden können. Wenn ein Benutzer versucht, einen virtuellen Computer zu erstellen oder anzufordern, und das Benutzerlimit erreicht wurde, wird in einer Fehlermeldung darauf hingewiesen, dass der virtuelle Computer nicht erstellt/angefordert werden kann. 
+Mit der Richtlinie für **Virtuelle Computer pro Benutzer** können Sie die maximale Anzahl von virtuellen Computern angeben, die von einem einzelnen Benutzer erstellt werden können. Wenn ein Benutzer versucht, einen virtuellen Computer zu erstellen oder anzufordern, und das Benutzerlimit erreicht wurde, wird in einer Fehlermeldung darauf hingewiesen, dass der virtuelle Computer nicht erstellt/angefordert werden kann. 
 
-1. Wählen Sie im Menü **Konfiguration und Richtlinien** des Labs die Option **Virtuelle Computer pro Benutzer**.
+1. Wählen Sie im Bereich **Konfiguration und Richtlinien** des Labs die Option **Virtuelle Computer pro Benutzer** aus.
    
     ![Virtual machines per user](./media/devtest-lab-set-lab-policy/max-vms-per-user.png)
 
@@ -52,9 +56,9 @@ Mit der Richtlinie für **Virtual machines per user** (VMs pro Benutzer) können
 1. Wählen Sie **Speichern**aus.
 
 ## <a name="set-virtual-machines-per-lab"></a>Festlegen der virtuellen Computer pro Lab
-Mit der Richtlinie für **Virtual machines per lab** (VMs pro Lab) können Sie die maximale Anzahl von virtuellen Computern angeben, die für das aktuelle Lab erstellt werden können. Wenn ein Benutzer versucht, einen virtuellen Computer zu erstellen, und die Labgrenze erreicht wurde, wird in einer Fehlermeldung darauf hingewiesen, dass der virtuelle Computer nicht erstellt werden kann. 
+Mit der Richtlinie für **Virtuelle Computer pro Lab** können Sie die maximale Anzahl von virtuellen Computern angeben, die für das aktuelle Lab erstellt werden können. Wenn ein Benutzer versucht, einen virtuellen Computer zu erstellen, und die Labgrenze erreicht wurde, wird in einer Fehlermeldung darauf hingewiesen, dass der virtuelle Computer nicht erstellt werden kann. 
 
-1. Wählen Sie im Menü **Konfiguration und Richtlinien** des Labs die Option **Virtuelle Computer pro Lab**.
+1. Wählen Sie im Bereich **Konfiguration und Richtlinien** des Labs die Option **Virtuelle Computer pro Lab** aus.
    
     ![Virtual machines per lab](./media/devtest-lab-set-lab-policy/max-vms-per-lab.png)
 
@@ -65,9 +69,9 @@ Mit der Richtlinie für **Virtual machines per lab** (VMs pro Lab) können Sie d
 1. Wählen Sie **Speichern**aus.
 
 ## <a name="set-auto-shutdown"></a>Festlegen des automatischen Herunterfahrens
-Die Auto-Shutdown-Richtlinie hilft dabei, unnötigen Aufwand im Lab zu minimieren, indem sie Ihnen ermöglicht, die Uhrzeit anzugeben, zu der die virtuellen Computer für dieses Lab heruntergefahren werden.
+Die Richtlinie „Automatisch herunterfahren“ hilft dabei, unnötigen Aufwand im Lab zu minimieren, indem sie Ihnen ermöglicht, die Uhrzeit anzugeben, zu der die virtuellen Computer für dieses Lab heruntergefahren werden.
 
-1. Wählen Sie auf dem Blatt **Konfiguration und Richtlinien** des Labs die Option **Automatisch herunterfahren** aus.
+1. Wählen Sie im Bereich **Konfiguration und Richtlinien** des Labs die Option **Automatisch herunterfahren** aus.
    
     ![Auto-shutdown](./media/devtest-lab-set-lab-policy/auto-shutdown.png)
 
@@ -75,16 +79,16 @@ Die Auto-Shutdown-Richtlinie hilft dabei, unnötigen Aufwand im Lab zu minimiere
 
 1. Wenn Sie diese Richtlinie aktivieren, geben Sie die Uhrzeit (und die Zeitzone) an, zu der alle virtuellen Computer im aktuellen Lab heruntergefahren werden sollen.
 
-1. Geben Sie für die Option, mit der 15 Minuten vor der angegebenen Uhrzeit des automatischen Herunterfahrens eine Benachrichtigung gesendet wird, entweder **Ja** oder **Nein** an. Wenn Sie **Ja** festlegen, geben Sie einen Webhook-URL-Endpunkt ein, der die Benachrichtigung empfangen soll. Weitere Informationen zu Webhooks finden Sie unter [Erstellen eines Webhooks oder einer API-Azure-Funktion](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+1. Geben Sie für die Option, mit der 15 Minuten vor der angegebenen Uhrzeit des automatischen Herunterfahrens eine Benachrichtigung gesendet wird, entweder **Ja** oder **Nein** an. Wenn Sie **Ja** auswählen, geben Sie einen Webhook-URL-Endpunkt oder eine E-Mail-Adresse ein, an den die Benachrichtigung veröffentlicht bzw. an die diese gesendet wird. Weitere Informationen zu Webhooks finden Sie unter [Erstellen eines Webhooks oder einer API-Azure-Funktion](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 1. Wählen Sie **Speichern**aus.
 
-    Standardmäßig gilt diese Richtlinie nach der Aktivierung für alle virtuellen Computer im aktuellen Lab. Um diese Einstellung von einem bestimmten virtuellen Computer zu entfernen, öffnen Sie das Blatt des virtuellen Computers, und ändern Sie die Einstellung **Auto shutdown** (Automatisches Herunterfahren). 
+Standardmäßig gilt diese Richtlinie nach der Aktivierung für alle virtuellen Computer im aktuellen Lab. Um diese Einstellung von einem bestimmten virtuellen Computer zu entfernen, öffnen Sie den Verwaltungsbereich des virtuellen Computers, und ändern Sie die Einstellung **Automatisch herunterfahren**.
 
 ## <a name="set-auto-start"></a>Festlegen des automatischen Startens
-Mit der Autostart-Richtlinie können Sie angeben, wann die virtuellen Computer im aktuellen Lab gestartet werden sollen.  
+Mit der Richtlinie „Automatisch starten“ können Sie angeben, wann die virtuellen Computer im aktuellen Lab gestartet werden sollen.  
 
-1. Wählen Sie auf dem Blatt **Konfiguration und Richtlinien** des Labs die Option **Automatisch starten** aus.
+1. Wählen Sie im Bereich **Konfiguration und Richtlinien** des Labs die Option **Automatisch starten** aus.
    
     ![Auto-start](./media/devtest-lab-set-lab-policy/auto-start.png)
 
@@ -94,10 +98,10 @@ Mit der Autostart-Richtlinie können Sie angeben, wann die virtuellen Computer i
 
 4. Wählen Sie **Speichern**aus.
 
-    Nach der Aktivierung wird diese Richtlinie nicht automatisch auf alle virtuellen Computer im aktuellen Lab angewendet. Um diese Einstellung auf einen bestimmten virtuellen Computer anzuwenden, öffnen Sie das Blatt des virtuellen Computers, und ändern Sie die Einstellung **Auto start** (Automatisches Starten). 
+Nach der Aktivierung wird diese Richtlinie nicht automatisch auf alle virtuellen Computer im aktuellen Lab angewendet. Um diese Einstellung auf einen bestimmten virtuellen Computer anzuwenden, öffnen Sie den Verwaltungsbereich des virtuellen Computers, und ändern Sie die Einstellung **Automatisch starten**.
 
 ## <a name="set-expiration-date"></a>Festlegen des Ablaufdatums
-Sie können beim [Erstellen des virtuellen Computers](devtest-lab-add-vm.md) ein Ablaufdatum festlegen. Wählen Sie in **Erweiterte Einstellungen** zum Festlegen einer Ablaufoption das Symbol „Kalender“ aus, um ein Datum anzugeben, an dem der virtuelle Computer automatisch gelöscht wird.  Standardmäßig läuft der virtuelle Computer nie ab.
+Sie können beim [Erstellen des virtuellen Computers](devtest-lab-add-vm.md) ein Ablaufdatum festlegen. Wählen Sie in **Erweiterte Einstellungen** zum Festlegen einer Ablaufoption das Kalendersymbol aus, um ein Datum anzugeben, an dem der virtuelle Computer automatisch gelöscht wird. Standardmäßig läuft der virtuelle Computer nie ab.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

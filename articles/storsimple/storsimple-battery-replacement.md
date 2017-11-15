@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: f8b89b3f6851ec9ee0570f551b5407419fdba2d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1646d800692d93d7dfc2e9a9c48c3671c280e02
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Ersetzen des Notfallakkus auf dem StorSimple-Gerät
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Den Artikel zum neuen Azure-Portal finden Sie unter [Ersetzen des Notfallakkus auf dem StorSimple-Gerät](storsimple-8000-battery-replacement.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Die Stromversorgungs- und Kühleinheit (PCM) im primären Gehäuse des Microsoft Azure StorSimple-Geräts verfügt über einen zusätzlichen Akku. Dieser Akku stellt die Stromversorgung bereit, damit das StorSimple-Gerät Daten speichern kann, wenn ein Stromausfall im primären Gehäuse auftritt. Dieser Akku wird als *Notfallakku*bezeichnet. Der Notfallakku ist nur für das primäre Gehäuse Ihres StorSimple-Geräts vorhanden (das EBOD-Gehäuse enthält keinen Notfallakku). 
 

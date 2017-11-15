@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: af135518f66eb8c94c183f28191f016fcd601ae1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 811c06c6355ae881037cceb573ae0f96fa1ec2ad
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikel für das neue Azure-Portal finden Sie unter [Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts](storsimple-8000-windows-powershell-administration.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Windows PowerShell für StorSimple stellt eine Befehlszeilenschnittstelle zur Verfügung, die Sie zum Verwalten Ihres Microsoft Azure StorSimple-Geräts verwenden können. Wie der Name schon sagt, handelt es um eine auf Windows PowerShell basierende Befehlszeilenschnittstelle in einem eingeschränkten Runspace. Aus Sicht des Benutzers an der Befehlszeile wird ein eingeschränkter Runspace als eingeschränkte Version von Windows PowerShell angezeigt. Obwohl einige grundlegende Funktionen von Windows PowerShell erhalten bleiben, verfügt diese Schnittstelle über weitere dedizierte Cmdlets, die auf die Verwaltung des Microsoft Azure StorSimple-Geräts ausgelegt sind. 
 

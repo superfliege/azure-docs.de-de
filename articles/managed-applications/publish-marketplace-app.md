@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/20/2017
+ms.date: 11/08/2017
 ms.author: gauravbh
-ms.openlocfilehash: b4fda06f85c7dab52ff38558b0d928193e0694f6
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 41eaff13cf55d58f58b33bc05d39a6665d51ea29
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -122,7 +122,7 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
    Füllen Sie folgende Felder aus:
 
    * **Aktuelle Version**: Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
-   * **Paketdatei auswählen**: Dieses Paket enthält die erforderliche Datei, die in eine ZIP-Datei komprimiert wird. Weitere Informationen finden Sie unter [Erstellen einer Dienstkataloganwendung](publish-service-catalog-app.md).
+   * **Paketdatei auswählen**: Dieses Paket enthält zwei erforderliche Dateien, die in einer ZIP-Datei komprimiert werden. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
    * **PrincipalId**: Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
    * **Rollendefinition**: Bei dieser Eigenschaft handelt es sich um eine Liste von allen integrierten rollenbasierten Zugriffssteuerungsrollen (RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
 

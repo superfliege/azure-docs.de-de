@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 23d819ddc3bbcbaf2847cdcc9191407ead0ff43d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6834e00fd225261296f92b463f9847deecffcdb
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>Austauschen des EBOD-Controllers eines StorSimple-Geräts
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikel für das neue Azure-Portal finden Sie unter [Austauschen des EBOD-Controllers eines StorSimple-Geräts](storsimple-8000-ebod-controller-replacement.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial wird erläutert, wie ein fehlerhaftes EBOD-Controllermodul in Ihrem Microsoft Azure StorSimple-Gerät ausgetauscht wird. Führen Sie zum Austauschen eines EBOD-Controllermoduls die folgenden Schritte aus:
 

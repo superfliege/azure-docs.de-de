@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/18/2016
+ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: c059fd74854813615754e67547497b7ededbe4dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87a0a59d0c980baa87aa5d7f5f0e8098884b5ec9
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-03-release-notes---february-2015"></a>Versionsanmerkungen zu Update 0.3 der StorSimple 8000-Serie – Februar 2015
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Die folgenden Versionsanmerkungen weisen auf wichtige offene Punkte bei Update 0.3 der StorSimple 8000-Serie von Februar 2015 hin. Es enthält auch eine Liste der StorSimple-Software- und -Firmware-Updates, die in dieser Version enthalten sind. Dies ist die dritte Version, nachdem die Freigabeversion der StorSimple 8000-Serie im Juli 2014 allgemein verfügbar gemacht wurde.
 

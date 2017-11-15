@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/22/2017
+ms.date: 11/8/2017
 ms.author: raiye
-ms.openlocfilehash: 7a42f4b981883881681a7e7ecdb102ee28772c49
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: b94001e16068f1163beaac81053a03600af5f768
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem deaktiviert wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings] beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -43,6 +43,8 @@ Sind Sie unsicher, was das Gast-BS ist oder wie Gast-BS-Releases funktionieren? 
 
 ## <a name="news-updates"></a>Neuigkeiten
 
+###### <a name="november-8-2017"></a>**8. November 2017**
+Das Gastbetriebssystem für Oktober wurde veröffentlicht.
 
 ###### <a name="october-6-2017"></a>**6. Oktober 2017**
 Das Gastbetriebssystem für September wurde veröffentlicht. Für die Windows Server 2016-Version vom September ist netfx3 standardmäßig aktiviert. Kunden müssen „dism /online /disable-feature /featurename:netfx3“ zu „OnStart“ hinzufügen, wenn für ihren Workflow eine .NET 2.x-App mit einer 4.x-Runtime ausgeführt werden muss oder wenn eine .NET 2.x-App ausgeführt, ein Fehler behandelt und anschließend eine .NET 4.x-App ausgeführt wurde.
@@ -71,12 +73,6 @@ Das Gast-BS für Mai wurde veröffentlicht.
 ###### <a name="may-17-2017"></a>**17. Mai 2017**
 Aufgrund eines Sicherheitsfehlers deaktivieren wir die folgenden Betriebssystemreleases von Dezember 2016 und Januar 2017, für die keine [Fehlerbehebung] aus dem Portal verfügbar ist: WA-GUEST-OS-5.4_201612-01, WA-GUEST-OS-4.39_201612-01, WA-GUEST-OS-3.46_201612-01, WA-GUEST-OS-2.59_201701-01
 
-###### <a name="may-12-2017"></a>**12. Mai 2017**
-Das Rollout der Maiversion des Gast-BS beginnt am 12. Mai. Die Veröffentlichung ist für den 13. Juni geplant.
-
-###### <a name="april-18-2017"></a>**18. April 2017**
-Das Rollout der Aprilversion des Gast-BS beginnt am 18. April. Die Veröffentlichung ist für den 9. Mai geplant.
-
 
 ## <a name="releases"></a>Releases
 ## <a name="family-5-releases"></a>Releases von Familie 5
@@ -92,16 +88,16 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.12_201710-01 |8. November 2017 |Post 5.14 |TBD |
 | WA-GUEST-OS-5.11_201709-01 |6. Oktober 2017 |Post 5.13 |TBD |
 | WA-GUEST-OS-5.10_201708-01 |24. August 2017 |Post 5.12 |TBD |
-| WA-GUEST-OS-5.9_201707-01 |3. August 2017 |Post 5.11 |TBD |
+|~~WA-GUEST-OS-5.9_201707-01~~ |3. August 2017 |8. November 2017 |TBD |
 |~~WA-GUEST-OS-5.8_201706-01~~ |7. Juli 2017 |6. Oktober 2017 |TBD |
 |~~WA-GUEST-OS-5.7_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-5.6_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
 |~~WA-GUEST-OS-5.5_201703-01~~ |10. April 2017 |7. Juli 2017 |TBD |
 |~~WA-GUEST-OS-5.4_201612-01~~ |10. Januar 2017 |5. Juni 2017|TBD |
 |~~WA-GUEST-OS-5.3_201611-01~~ |14. Dezember 2016 |9. Mai 2017 |TBD |
-|~~WA-GUEST-OS-5.2_201610-02~~ |1. November 2016 |10. April 2017 |TBD |
 
 ## <a name="family-4-releases"></a>Releases von Familie 4
 **Windows Server 2012 R2**
@@ -115,20 +111,16 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.47_201710-01 |8. November 2017 |Post 4.49 |TBD |
 | WA-GUEST-OS-4.46_201709-01 |6. Oktober 2017 |Post 4.48 |TBD |
 | WA-GUEST-OS-4.45_201708-01 |24. August 2017 |Post 4.47 |TBD |
-| WA-GUEST-OS-4.44_201707-01 |3. August 2017 |Post 4.46 |TBD |
+|~~WA-GUEST-OS-4.44_201707-01~~ |3. August 2017 |8. November 2017 |TBD |
 |~~WA-GUEST-OS-4.43_201706-01~~ |7. Juli 2017 |6. Oktober 2017 |TBD |
 |~~WA-GUEST-OS-4.42_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-4.41_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
 |~~WA-GUEST-OS-4.40_201703-01~~ |10. April 2017 |7. Juli 2017 |TBD |
 |~~WA-GUEST-OS-4.39_201612-01~~ |10. Januar 2017 |5. Juni 2017 |TBD |
 |~~WA-GUEST-OS-4.38_201611-01~~ |14. Dezember 2016 |9. Mai 2017 |TBD |
-|~~WA-GUEST-OS-4.37_201610-02~~ |16. November 2016 |10. April 2017 |TBD |
-|~~WA-GUEST-OS-4.36_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
-|~~WA-GUEST-OS-4.35_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
-|~~WA-GUEST-OS-4.34_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
-
 
 ## <a name="family-3-releases"></a>Releases von Familie 3
 **Windows Server 2012**
@@ -142,20 +134,16 @@ Installierte .NET Framework-Versionen: 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.54_201710-01 |8. November 2017 |Post 3.56 |TBD |
 | WA-GUEST-OS-3.53_201709-01 |6. Oktober 2017 |Post 3.55 |TBD |
 | WA-GUEST-OS-3.52_201708-01 |24. August 2017 |Post 3.54 |TBD |
-| WA-GUEST-OS-3.51_201707-01 |3. August 2017 |Post 3.53 |TBD |
+|~~WA-GUEST-OS-3.51_201707-01~~ |3. August 2017 |8. November 2017 |TBD |
 |~~WA-GUEST-OS-3.50_201706-01~~ |7. Juli 2017 |6. Oktober 2017 |TBD |
 |~~WA-GUEST-OS-3.49_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-3.48_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
 |~~WA-GUEST-OS-3.47_201703-01~~ |10. April 2017 |7. Juli 2017 |TBD |
 |~~WA-GUEST-OS-3.46_201612-01~~ |10. Januar 2017 |5. Juni 2017 |TBD |
 |~~WA-GUEST-OS-3.45_201611-01~~ |14. Dezember 2016 |9. Mai 2017 |TBD |
-|~~WA-GUEST-OS-3.44_201610-02~~ |16. November 2016 |1. Mai 2017 |TBD |
-|~~WA-GUEST-OS-3.43_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
-|~~WA-GUEST-OS-3.42_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
-|~~WA-GUEST-OS-3.41_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
-
 
 ## <a name="family-2-releases"></a>Releases von Familie 2
 **Windows Server 2008 R2 SP1**
@@ -169,9 +157,10 @@ Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Herausgabedatum | Deaktivierungsdatum | Abgelaufenes Datum |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.67_201710-01 |8. November 2017 |Post 2.69 |TBD |
 | WA-GUEST-OS-2.66_201709-01 |6. Oktober 2017 |Post 2.68 |TBD |
 | WA-GUEST-OS-2.65_201708-01 |24. August 2017 |Post 2.67 |TBD |
-| WA-GUEST-OS-2.64_201707-01 |3. August 2017 |Post 2.66 |TBD |
+|~~WA-GUEST-OS-2.64_201707-01~~ |3. August 2017 |8. November 2017 |TBD |
 |~~WA-GUEST-OS-2.63_201706-01~~ |7. Juli 2017 |6. Oktober 2017 |TBD |
 |~~WA-GUEST-OS-2.62_201705-01~~ |5. Juni 2017 |24. August 2017 |TBD |
 |~~WA-GUEST-OS-2.61_201704-01~~ |9. Mai 2017 |3. August 2017 |TBD |
@@ -179,11 +168,6 @@ Installierte .NET Framework-Versionen: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-2.59_201701-01~~ |10. Januar 2017 |5. Juni 2017 |TBD |
 |~~WA-GUEST-OS-2.58_201612-01~~ |10. Januar 2017 |9. Mai 2017|TBD |
 |~~WA-GUEST-OS-2.57_201611-01~~ |14. Dezember 2016 |10. April 2017 |TBD |
-|~~WA-GUEST-OS-2.56_201610-02~~ |16. November 2016 |10. Februar 2017 |TBD |
-|~~WA-GUEST-OS-2.55_201609-01~~ |13. Oktober 2016 |14. Januar 2017 |TBD |
-|~~WA-GUEST-OS-2.54_201608-01~~ |13. September 2016 |16. Dezember 2016 |TBD |
-|~~WA-GUEST-OS-2.53_201607-01~~ |8. August 2016 |13. November 2016 |TBD |
-
 
 
 ## <a name="msrc-patch-updates"></a>MSRC-Patch-Updates

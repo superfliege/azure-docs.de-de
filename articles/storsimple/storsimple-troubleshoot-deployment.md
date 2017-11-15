@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 230a652ceca8b4643d1984d81383c6628b8e1f5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a46b68e63ddd039760d71ca85eeabe8fd07e80bd
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="troubleshoot-storsimple-device-deployment-issues"></a>Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikel für das neue Azure-Portal finden Sie unter [Beheben von Problemen mit der Bereitstellung von StorSimple-Geräten](storsimple-8000-troubleshoot-deployment.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Dieser Artikel bietet hilfreiche Anleitungen zur Behandlung von Problemen bei der Microsoft Azure StorSimple-Bereitstellung . Er beschreibt allgemeine Probleme, mögliche Ursachen und empfohlene Schritte zum Beheben von Problemen bei der StorSimple-Konfiguration. Diese Informationen gelten sowohl für lokale physische als auch für virtuelle StorSimple-Geräte.
 

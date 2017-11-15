@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/23/2017
-ms.openlocfilehash: d9ec4556d57ff1975a93d806237ad0c7416b9988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: ae7e57e9b40f5194c15525a48843060bbccaa956
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-mysql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Optionen und Leistung von Azure-Datenbank für MySQL: Übersicht über die verfügbaren Funktionen in den einzelnen Tarifen
 Wenn Sie einen Azure-Datenbank für MySQL-Server erstellen, treffen Sie drei Hauptentscheidungen zur Konfiguration der Ressourcen, die diesem Server zugeordnet werden. Diese Entscheidungen beeinflussen die Leistung und Skalierung des Servers.
@@ -52,7 +52,7 @@ Um eine Auswahl für einen Tarif zu treffen, müssen Sie zunächst festlegen, ob
 Sie können den Tarif während der Vorschauphase nicht wechseln, nachdem der Server erstellt wurde. In Zukunft wird es jedoch möglich sein, Upgrades oder Downgrades zwischen den Tarifen für Server durchzuführen.
 
 ## <a name="understand-the-price"></a>Informationen zum Preis
-Klicken Sie beim Erstellen einer neuen Azure-Datenbank für MySQL im [Azure-Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) auf das Blatt **Tarif**, dann werden die monatlichen Kosten angezeigt, basierend auf den ausgewählten Optionen. Wenn Sie nicht über ein Azure-Abonnement verfügen, verwenden Sie den Azure-Preisrechner, um einen geschätzten Preis zu erhalten. Besuchen Sie die Website des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/), klicken Sie auf **Elemente hinzufügen**, erweitern Sie die Kategorie **Datenbanken**, und wählen Sie **Azure-Datenbank für MySQL** aus, um die Optionen anzupassen.
+Wählen Sie beim Erstellen einer neuen Azure Database for MySQL-Instanz im [Azure-Portal](https://portal.azure.com/#create/Microsoft.MySQLServer) die Seite **Tarif** aus. Damit werden die monatlichen Kosten basierend auf den ausgewählten Optionen angezeigt. Wenn Sie nicht über ein Azure-Abonnement verfügen, verwenden Sie den Azure-Preisrechner, um einen geschätzten Preis zu erhalten. Besuchen Sie die Website des [Azure-Preisrechners](https://azure.microsoft.com/pricing/calculator/), klicken Sie auf **Elemente hinzufügen**, erweitern Sie die Kategorie **Datenbanken**, und wählen Sie **Azure-Datenbank für MySQL** aus, um die Optionen anzupassen.
 
 ## <a name="choose-a-performance-level-compute-units"></a>Auswählen einer Leistungsebene (Computeeinheiten)
 Nachdem Sie den Tarif für Ihren Azure-Datenbank für MySQL-Server ermittelt haben, können Sie die Leistungsebene durch Auswählen der Anzahl von Computeeinheiten festlegen. Die 200 und 400 Computeeinheiten im Tarif Standard sind häufig ein guter Ausgangspunkt für Anwendungen, die eine höhere Benutzerparallelität für ihre Web- oder Analyseworkloads erfordern. Sie werden bei Bedarf inkrementell angepasst. 
@@ -92,11 +92,11 @@ Die IOPS-Konfiguration in jeder Leistungsebene bezieht sich auf den Tarif und di
 > In der Vorschauversion wählen Sie die Menge des Speichers beim Erstellen des Servers aus. Das Ändern der Speichergröße auf einem vorhandenen Server wird noch nicht unterstützt. 
 
 ## <a name="scaling-a-server-up-or-down"></a>Zentrales Hoch- oder Herunterskalieren eines Servers
-Sie wählen den Tarif und die Leistungsebene anfänglich beim Erstellen Ihrer Instanz von Azure-Datenbank für MySQL aus. Später können Sie die Computeeinheiten innerhalb des Tarifbereichs dynamisch zentral hoch- oder herunterskalieren. Schieben Sie im Azure-Portal die Computeeinheiten auf dem Tarifblatt des Servers, oder erstellen Sie ein Skript anhand des folgenden Beispiels: [Überwachen und Skalieren eines Azure-Datenbank für MySQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle](scripts/sample-scale-server.md).
+Sie wählen den Tarif und die Leistungsebene anfänglich beim Erstellen Ihrer Instanz von Azure-Datenbank für MySQL aus. Später können Sie die Computeeinheiten innerhalb des Tarifbereichs dynamisch zentral hoch- oder herunterskalieren. Schieben Sie im Azure-Portal die Computeeinheiten auf der Tarifseite des Servers, oder erstellen Sie ein Skript anhand des folgenden Beispiels: [Überwachen und Skalieren eines Azure Database for MySQL-Servers mithilfe der Azure-Befehlszeilenschnittstelle](scripts/sample-scale-server.md).
 
 Das Skalieren der Computeeinheiten erfolgt unabhängig von der maximalen Speichergröße, die Sie ausgewählt haben.
 
-Wenn Sie die Leistungsebene einer Datenbank ändern, wird im Hintergrund ein Replikat der ursprünglichen Datenbank mit der neuen Leistungsebene erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, ist das Zeitfenster unter Umständen größer.
+Wenn Sie die Leistungsebene einer Datenbank ändern, wird im Hintergrund eine Kopie des ursprünglichen Servers mit der neuen Leistungsebene erstellt, und anschließend werden die Verbindungen auf den kopierten Server umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während das System kurz auf die neue Kopie des Servers umgestellt wird. Daher wird möglicherweise für einige aktive Transaktionen ein Rollback ausgeführt. Dieses Zeitfenster variiert, ist aber durchschnittlich kleiner als vier Sekunden und in mehr als 99 % der Fälle kürzer als 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, ist das Zeitfenster unter Umständen größer.
 
 Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Tarif des Servers vor und nach der Änderung ab. Beispielsweise sollte ein Server beim Ändern von Computeeinheiten in den oder aus dem Tarif Standard bzw. innerhalb dieses Tarifs in wenigen Minuten zentral hochskalieren. Die neuen Eigenschaften für den Server werden erst angewendet, wenn die Änderungen abgeschlossen sind.
 

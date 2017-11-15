@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: v-dotren
-ms.openlocfilehash: 3c62bff7ba37f7e45d73fa2cf67a4aee3b4a7a38
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: f34647afc600b72704859952d0a40edad4a3b40f
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Erstellen eines Azure Batch-Pools in einem virtuellen Netzwerk
 
@@ -47,7 +47,7 @@ Wenn Sie Ihr VNET erstellt und einem Subnetz zugewiesen haben, können Sie einen
 2. Wählen Sie links im Fenster **Einstellungen** die Menüoption **Pools** aus.
 3. Wählen Sie im Fenster **Pools** den Befehl **Hinzufügen** aus.
 4. Wählen Sie im Fenster **Pool hinzufügen** die Option, die Sie verwenden möchten, in der Dropdownliste **Imagetyp** aus. 
-5. Wählen Sie **Verleger/Angebot/SKU** für Ihre benutzerdefiniertes Image aus.
+5. Wählen Sie **Verleger/Angebot/SKU** für Ihr benutzerdefiniertes Image aus.
 6. Geben Sie die übrigen erforderlichen Einstellungen an, einschließlich **Knotengröße**, **Ziel für dedizierte Knoten** und **Knoten mit niedriger Priorität**, sowie alle gewünschten optionalen Einstellungen.
 7. Wählen Sie unter **Virtuelles Netzwerk** das virtuelle Netzwerk und Subnetz aus, die Sie verwenden möchten.
   
@@ -62,7 +62,12 @@ Um sicherzustellen, dass die Computeknoten Ihres Azure Batch-Pools in einem VNET
 * Der Batch-Dienst muss für die zeitliche Planung von Tasks mit den Computeknoten des Pools kommunizieren. Um diese Kommunikation zu ermöglichen, fügen Sie eine benutzerdefinierte für jede IP-Adresse hinzu, die vom Batch-Dienst in der Region Ihres Batch-Kontos verwendet werden. Wenden Sie sich an den Azure-Support, um die Liste der IP-Adressen des Batch-Diensts zu erhalten.
 
 * Stellen Sie sicher, dass ausgehender Datenverkehr an Azure Storage (also URLs im Format `<account>.table.core.windows.net`, `<account>.queue.core.windows.net` und `<account>.blob.core.windows.net`) nicht über Ihr lokales Netzwerkgerät blockiert wird.
-    
+
+Wenn Sie eine benutzerdefinierte Route hinzufügen, definieren Sie die Route für jedes zugehörige Batch-IP-Adresspräfix und legen **Typ des nächsten Hops** auf **Internet** fest. Siehe folgendes Beispiel:
+
+![Benutzerdefinierte Route](./media/batch-virtual-network/user-defined-route.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Eine detaillierte Übersicht über Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md).
+- Weitere Informationen zum Erstellen einer benutzerdefinierten Route finden Sie unter [Erstellen einer benutzerdefinierten Route – Azure-Portal](../virtual-network/create-user-defined-route-portal.md).

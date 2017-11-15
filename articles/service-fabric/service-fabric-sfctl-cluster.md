@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: dc2ed59d6adaca97b23dddcb7ec968d90171b483
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2af214a9aa3c67818e8ce64f204ebda32c35abc7
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="sfctl-cluster"></a>sfctl cluster
 Ermöglicht es, Service Fabric-Cluster auszuwählen, zu verwalten und zu betreiben.
@@ -54,36 +54,12 @@ Ruft die Integrität eines Service Fabric-Clusters ab. Verwenden Sie „EventsHe
 
 |Argument|Beschreibung|
 | --- | --- |
-| --applications-health-state-filter| Ermöglicht ein Filtern der Integritätsstatus von Anwendungen.
-                                                    objects returned in the result of cluster health
-                                                    query based on their health state. The possible
-                                                    values for this parameter include integer value
-                                                    obtained from members or bitwise operations on
-                                                    members of HealthStateFilter enumeration. Only
-                                                    applications that match the filter are returned.
-                                                    All applications are used to evaluate the
-                                                    aggregated health state. If not specified, all
-                                                    entries are returned. The state values are flag
-                                                    based enumeration, so the value could be a
-                                                    combination of these values obtained using
-                                                    bitwise 'OR' operator. For example, if the
-                                                    provided value is 6 then health state of
-                                                    applications with HealthState value of OK (2)
-                                                    and Warning (4) are returned. - Default -
-                                                    Default value. Matches any HealthState. The
-                                                    value is zero. - None - Filter that doesn't
-                                                    match any HealthState value. Used in order to
-                                                    return no results on a given collection of
-                                                    states. The value is 1. - Ok - Filter that
-                                                    matches input with HealthState value Ok. The
-                                                    value is 2. - Warning - Filter that matches
-                                                    input with HealthState value Warning. The value
-                                                    is 4. - Error - Filter that matches input with
-                                                    HealthState value Error. The value is 8. - All -
-                                                    Filter that matches input with any HealthState value. The value is 65535.|
-| – events-health-state-filter | Ermöglicht das Filtern der Sammlung zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warnung (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat.
-Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.| |--exclude-health-statistics | Gibt an, ob die Integritätsstatistiken als Bestandteil des Abfrageergebnisses zurückgegeben werden sollen. Der Standardwert ist gleich „False“. Die Statistiken zeigen die Anzahl von untergeordneten Entitäten, die einen der Integritätsstatus „Ok“, „Warning“ oder „Error“ haben.| | --include-system-application-health-statistics| Gibt an, ob die Integritätsstatistiken die Integritätsstatistiken der Systemanwendung von Fabric (fabric:/System) enthalten sollen. Der Standardwert ist gleich „False“. Ist „IncludeSystemApplicationHealthStatistics“ auf „true“ festgelegt, enthalten die Integritätsstatistiken die Entitäten, die zur Systemanwendung von Fabric gehören. Andernfalls enthält das Abfrageergebnis nur Integritätsstatistiken für Benutzeranwendungen. Die Integritätsstatistiken müssen im Abfrageergebnis enthalten sein, damit dieser Parameter angewendet wird. | | --nodes-health-state-filter | Ermöglicht ein Filtern der Knotenintegritätsstatusobjekte, die im Ergebnis der Clusterintegritätsabfrage zurückgegeben wurden, anhand ihres Integritätsstaus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Knoten zurückgegeben, die dem Filter entsprechen. Alle Knoten werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine kennzeichenbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden Integritätsstatus der Knoten zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warnung (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statussammlung zurückzugeben. Der Wert ist gleich „1“. – Ok: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Ok“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat.
-Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.| | --timeout -t | Servertimeout in Sekunden.  Standardwert: 60.|
+| --applications-health-state-filter| Ermöglicht es, die Anwendungsintegritäts-Statusobjekte, die im Ergebnis einer Dienstintegritätsabfrage zurückgegeben werden, anhand des Integritätsstatus zu filtern. Mögliche Werte für diesen Parameter sind ganzzahlige Werte, die von Membern oder über bitweise Vorgänge an Membern der Enumeration „HealthStateFilter“ abgerufen werden können. Es werden nur Anwendung zurückgegeben, die dem Filter entsprechen.  Alle Anwendungen werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine flagbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen OR-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich „6“, werden Integritätsstatus der Anwendungen zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit jedem Integritätsstatus (HealthState) überein. Der Wert ist 0 (null). – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statusauflistung zurückzugeben. Der Wert ist gleich „1“. – OK: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „OK“ hat. Der Wert ist 2. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat. Der Wert ist 4. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist gleich „8“. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
+| --events-health-state-filter   | Ermöglicht das Filtern der Auflistung zurückgegebener HealthEvent-Objekte anhand des Integritätsstatus. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Ereignisse zurückgegeben, die dem Filter entsprechen. Alle Ereignisse werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine flagbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen ODER-Operator abgerufen werden. Ist der angegebene Wert beispielsweise gleich 6, werden alle Ereignisse zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit einem beliebigen Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statusauflistung zurückzugeben. Der Wert ist gleich „1“. – OK: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „OK“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat.  Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist 8. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
+|--exclude-health-statistics                   | Gibt an, ob die Integritätsstatistiken als Bestandteil des Abfrageergebnisses zurückgegeben werden sollen. Der Standardwert ist „FALSE“. Die Statistiken zeigen die Anzahl von untergeordneten Entitäten, die einen der Integritätsstatus „OK“, „Warning“ oder „Error“ haben.|
+ |   --include-system-application-health-statistics| Gibt an, ob die Integritätsstatistiken in die Anwendungsintegritätsstatistik von fabric:/System einbezogen werden sollen. Der Standardwert ist gleich „False“. Ist „IncludeSystemApplicationHealthStatistics“ auf „TRUE“ festgelegt, enthalten die Integritätsstatistiken die Entitäten, die zur fabric:/System-Anwendung gehören. Andernfalls enthält das Abfrageergebnis nur Integritätsstatistiken für Benutzeranwendungen. Die Integritätsstatistiken müssen für den anzuwendenden Parameter in das Abfrageergebnis einbezogen werden.|
+| --nodes-health-state-filter    | Ermöglicht es, die Knotenintegritäts-Statusobjekte, die im Ergebnis einer Dienstintegritätsabfrage zurückgegeben werden, anhand des Integritätsstatus zu filtern. Die möglichen Werte für diesen Parameter entsprechen dem jeweiligen ganzzahligen Wert von einem der folgenden Integritätsstatus. Es werden nur Knoten zurückgegeben, die dem Filter entsprechen. Alle Knoten werden verwendet, um den aggregierten Integritätsstatus auszuwerten. Ist kein Filter angegeben, werden alle Einträge zurückgegeben. Ein Statuswert ist eine flagbasierte Enumeration, sodass der Wert eine Kombination der Werte sein kann, die mit dem bitweisen OR-Operator abgerufen werden. Ist der angegebene Wert beispielsweise 6, werden Integritätsstatus der Knoten zurückgegeben, für die „HealthState“ den Wert für OK (2) oder Warning (4) hat. – Default: Standardwert. Stimmt mit einem beliebigen Integritätsstatus (HealthState) überein. Der Wert ist gleich null. – None: Filter, der mit keinem Wert für „HealthState“ übereinstimmt. Wird verwendet, um keine Ergebnisse für eine angegebene Statusauflistung zurückzugeben. Der Wert ist gleich „1“. – OK: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „OK“ hat. Der Wert ist gleich „2“. – Warning: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Warning“ hat.  Der Wert ist gleich „4“. – Error: Filter, der mit Eingaben übereinstimmt, für die „HealthState“ den Wert „Error“ hat. Der Wert ist 8. – All: Filter, der mit Eingaben übereinstimmt, die einen beliebigen Wert für „HealthState“ haben. Der Wert ist gleich „65535“.|
+| --timeout -t                   | Servertimeout in Sekunden.  Standardwert: 60.|
 
 ### <a name="global-arguments"></a>Globale Argumente
 
@@ -118,8 +94,7 @@ Ruft das Service Fabric-Clustermanifest ab. Das Clustermanifest enthält Eigensc
 
 ## <a name="sfctl-cluster-provision"></a>sfctl cluster provision
 Stellt die Code- oder Konfigurationspakete eines Service Fabric-Clusters bereit.
-
-        Validate and provision the code or configuration packages of a Service Fabric cluster.
+Überprüfen und Bereitstellen der Code- oder Konfigurationspakete eines Service Fabric-Clusters.
 
 ### <a name="arguments"></a>Argumente
 
@@ -167,9 +142,9 @@ Wird eine Verbindung mit einem sicheren Cluster hergestellt, geben Sie eine Zert
 | --verbose         | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="sfctl-cluster-unprovision"></a>sfctl cluster unprovision
-Hebt die Bereitstellung der Code- oder Konfigurationspakete eines Service Fabric-Clusters auf.
+Aufheben der Bereitstellung der Code- oder Konfigurationspakete eines Service Fabric-Clusters
 
-        Unprovision the code or configuration packages of a Service Fabric cluster.
+Hebt die Bereitstellung der Code- oder Konfigurationspakete eines Service Fabric-Clusters auf.
 
 ### <a name="arguments"></a>Argumente
 |Argument|Beschreibung|
@@ -184,43 +159,46 @@ Hebt die Bereitstellung der Code- oder Konfigurationspakete eines Service Fabric
 |--debug         | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
  |   --help -h       | Zeigt diese Hilfemeldung an und beendet.|
  |   --output -o     | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.  Standardwert: json.|
- |   --query         | JMESPath-Abfragezeichenfolge. Unter „http://jmespath.org/“ finden Sie weitere Informationen und
-                      Beispiele.|
+ |   --query         | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
  |   --verbose       | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 
 ## <a name="sfctl-cluster-upgrade"></a>sfctl cluster upgrade
 Startet ein Upgraden der Code- oder Konfigurationsversion eines Service Fabric-Clusters.
-
-        Validate the supplied upgrade parameters and start upgrading the code or configuration
-        version of a Service Fabric cluster if the parameters are valid.
+Überprüfung der bereitgestellten Upgradeparameter und Starten des Upgrades des Codes oder der Konfigurationsversion eines Service Fabric-Clusters, wenn die Parameter zulässig sind
 
 ### <a name="arguments"></a>Argumente
 |Argument|Beschreibung|
 | --- | --- |
-|    --app-health-map                      | JSON-codiertes Wörterbuch mit Paaren aus Anwendungsname und
-                                            maximalem Prozentsatz für „fehlerhaft“, bevor ein Fehler ausgelöst wird.|
- |   --app-type-health-map                 | JSON-codiertes Wörterbuch mit Paaren aus Anwendungstyp.
-                                            name and maximum percentage unhealthy before raising
-                                            error.|
- | --code-version | Die Version des Clustercodes.| | --config-version | Die Version der Clusterkonfiguration.| | --delta-health-evaluation | Ermöglicht Delta-Integritätsbewertung statt absoluter Integritätsbewertung nach Abschluss jeder Upgradedomäne.| | --delta-unhealthy-nodes | Der während Clusterupgrades maximal zulässige Prozentsatz für eine Integritätsminderung von Knoten.  Standardwert: 10
-Das Delta wird zwischen den Status der Knoten am Anfang des Upgrades und den Status der Knoten zum Zeitpunkt der Integritätsbewertung gemessen. Die Überprüfung wird ausgeführt, sobald ein Upgrade einer Upgradedomäne abgeschlossen ist. So wird sichergestellt, dass der globale Status des Clusters innerhalb der zulässigen Grenzwerte liegt.| |   --failure-action                      | Folgende Werte sind möglich: „Invalid“, „Rollback“, „Manual“.| |   --force-restart                       | Neustart erzwingen.| |   --health-check-retry                  | Timeout für Wiederholung von Integritätsprüfung, gemessen in Millisekunden.| |   --health-check-stable                 | Stabile Dauer für Integritätsprüfung, gemessen in Millisekunden.| |  --health-check-wait                   | Wartezeit für Integritätsprüfung, gemessen in Millisekunden.| |  --replica-set-check-timeout           | Timeout für Upgradeprüfung von Replikatgruppe, gemessen in Sekunden.| |   --rolling-upgrade-mode                | Folgende Werte sind möglich: „Invalid“, „UnmonitoredAuto“, „UnmonitoredManual“, „Monitored“.  Standardwert: UnmonitoredAuto.| | --timeout -t | Servertimeout in Sekunden.  Standardwert: 60.| |  --unhealthy-applications              | Der maximal zulässige Prozentsatz fehlerhafter Anwendungen, bevor ein Fehler gemeldet wird.
-Soll es z. B.zulässig sein, dass 10 % der Anwendungen fehlerhaft sind, muss dieser Wert gleich „10“ sein. Der Prozentsatz entspricht dem maximalen tolerierten Prozentsatz an Anwendungen, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Wird der Prozentsatz eingehalten, gibt es aber mindestens eine fehlerhafte Anwendung, wird die Integrität als „Warning“ ausgewertet. Dies wird berechnet, indem die Anzahl von fehlerhaften Anwendungen durch die Gesamtanzahl von Anwendungsinstanzen im Cluster dividiert wird, wobei Anwendungen mit Anwendungstypen ausgeschlossen werden, die in „ApplicationTypeHealthPolicyMap“ enthalten sind. Bei der Berechnung wird aufgerundet, um einen Fehler bei einer kleinen Anzahl von Anwendungen zu tolerieren.| |   --unhealthy-nodes                     | Der maximal zulässige Prozentsatz fehlerhafter Knoten, bevor ein Fehler gemeldet.
-Soll es z. B.zulässig sein, dass 10 % der Knoten fehlerhaft sind, muss dieser Wert gleich „10“ sein. Der Prozentsatz entspricht dem maximalen tolerierten Prozentsatz an Knoten, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Wird der Prozentsatz eingehalten, gibt es aber mindestens einen fehlerhaften Knoten, wird die Integrität als „Warning“ ausgewertet. Der Prozentsatz wird berechnet, indem die Anzahl von fehlerhaften Knoten durch die Gesamtanzahl von Knoten im Cluster dividiert wird. Die Berechnung wird aufgerundet, um einen Fehler auf einer kleinen Anzahl von Knoten zu tolerieren. In großen Clustern sind einige Knoten immer heruntergefahren oder für Reparaturen außer Betrieb. Daher sollte dieser Prozentsatz so konfiguriert sein, dass dies berücksichtigt ist.| | --upgrade-domain-delta-unhealthy-nodes| Der während eines Clusterupgrades maximal zulässige Prozentsatz für die Integritätsminderung von Upgradedomänenknoten.
-Stadardwert: 15.
-Das Delta wird zwischen den Status der Upgradedomänenknoten am Anfang des Upgrades und den Status der Upgradedomänenknoten zum Zeitpunkt der Integritätsbewertung gemessen. Die Überprüfung wird ausgeführt, sobald ein Upgrade einer Upgradedomäne abgeschlossen ist. So wird sichergestellt, dass der globale Status des Clusters innerhalb der zulässigen Grenzwerte liegt.| |   --upgrade-domain-timeout              | Timeout für eine Upgradedomäne, gemessen in Millisekunden.| |   --upgrade-timeout                     | Upgradetimeout, gemessen in Millisekunden.| |   --warning-as-error                    | Warnungen werden mit demselben Schweregrad berücksichtigt wie Fehler.|
+|    --app-health-map                      | JSON-codiertes Wörterbuch von Paaren aus Anwendungsname und dem Höchstprozentsatz an Integritätseinbußen vor der Auslösung eines Fehlers|
+ |   --app-type-health-map                 | JSON-codiertes Wörterbuch von Paaren aus Anwendungstyp und dem Höchstprozentsatz an Integritätseinbußen vor der Auslösung eines Fehlers|
+ |   --code-version                        | Die Clustercodeversion|
+ |   --config-version                      | Die Clusterkonfigurationsversion|
+ |   --delta-health-evaluation             | Ermöglicht die Bewertung von relativen Integritätsänderungen anstelle von absoluten Integritätswerten nachdem jede Upgradedomäne erfolgreich abgeschlossen wurde.|
+ |   --delta-unhealthy-nodes               | Der während eines Clusterupgrades zulässige Höchstprozentsatz der Integritätsminderung von Knoten.  Standardwert: 10 Das Delta wird zwischen den Status der Knoten am Anfang des Upgrades und den Status der Knoten zum Zeitpunkt der Integritätsbewertung gemessen. Diese Überprüfung wird nach jedem erfolgreichen Upgrade einer Upgradedomäne durchgeführt, um sicherzustellen, dass sich der globale Clusterstatus innerhalb eines zulässigen Rahmens befindet.|
+ |   --failure-action                      | Folgende Werte sind möglich: „Invalid“, „Rollback“, „Manual“.|
+ |   --force-restart                       | Erzwingt einen Neustart.|
+ |   --health-check-retry                  | Timeout der Wiederholung einer Integritätsprüfung, gemessen in Millisekunden|
+ |   --health-check-stable                 | Stabile Dauer für Integritätsprüfung, gemessen in Millisekunden.|
+  |  --health-check-wait                   | Wartezeit für Integritätsprüfung, gemessen in Millisekunden.|
+  |  --replica-set-check-timeout           | Timeout der Upgradeprüfung von Replikatgruppe, gemessen in Sekunden|
+ |   --rolling-upgrade-mode                | Folgende Werte sind möglich: „Invalid“ (unzulässig), „UnmonitoredAuto“ (nicht überwacht automatisch), „UnmonitoredManual“ (nicht überwacht manuell), „Monitored“ (überwacht).  Standardwert: UnmonitoredAuto.|
+  |  --timeout -t                          | Servertimeout in Sekunden.  Standardwert: 60.|
+  |  --unhealthy-applications              | Der maximal zulässige Prozentsatz fehlerhafter Anwendungen, bevor ein Fehler gemeldet wird. Soll es z. B.zulässig sein, dass 10 % der Anwendungen fehlerhaft sind, muss dieser Wert gleich „10“ sein. Der Prozentsatz entspricht dem maximalen tolerierten Prozentsatz an Anwendungen, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Wird der Prozentsatz eingehalten, gibt es aber mindestens eine fehlerhafte Anwendung, wird die Integrität als „Warning“ ausgewertet. Dies wird berechnet, indem die Anzahl von fehlerhaften Anwendungen durch die Gesamtanzahl von Anwendungsinstanzen im Cluster dividiert wird, wobei Anwendungen mit Anwendungstypen ausgeschlossen werden, die in „ApplicationTypeHealthPolicyMap“ enthalten sind. Die Berechnung wird aufgerundet, um einen Fehler bei einer kleinen Anzahl von Anwendungen zu tolerieren.|
+ |   --unhealthy-nodes                     | Der maximal zulässige Prozentsatz fehlerhafter Knoten, bevor ein Fehler gemeldet wird. Soll es z. B.zulässig sein, dass 10 % der Knoten fehlerhaft sind, muss dieser Wert gleich „10“ sein. Der Prozentsatz entspricht dem maximalen tolerierten Prozentsatz an Knoten, die fehlerhaft sein können, bevor der Cluster als fehlerhaft behandelt wird. Wird der Prozentsatz eingehalten, gibt es aber mindestens einen fehlerhaften Knoten, wird die Integrität als „Warning“ ausgewertet. Der Prozentsatz wird berechnet, indem die Anzahl von fehlerhaften Knoten durch die Gesamtanzahl von Knoten im Cluster dividiert wird. Die Berechnung wird aufgerundet, um einen Fehler auf einer kleinen Anzahl von Knoten zu tolerieren. Beim Konfigurieren dieses Prozentsatzes muss berücksichtigt werden, dass in großen Clustern immer einige Knoten inaktiv oder aufgrund von Wartungsarbeiten nicht verfügbar sind.|
+ |   --upgrade-domain-delta-unhealthy-nodes| Der während eines Clusterupgrades zulässige Höchstprozentsatz der Integritätsminderung von Upgradedomänenknoten. Stadardwert: 15. Das Delta wird zwischen den Status der Upgradedomänenknoten am Anfang des Upgrades und den Status der Upgradedomänenknoten zum Zeitpunkt der Integritätsbewertung gemessen. Diese Überprüfung wird nach jedem erfolgreichen Upgrade einer Upgradedomäne für alle abgeschlossenen Upgradedomänen durchgeführt, um sicherzustellen, dass sich der globale Clusterstatus innerhalb eines zulässigen Rahmens befindet.|
+ |   --upgrade-domain-timeout              | Timeout der Upgradedomäne, gemessen in Millisekunden|
+ |   --upgrade-timeout                     | Timeout des Upgrades, gemessen in Millisekunden|
+ |   --warning-as-error                    | Warnungen werden mit demselben Schweregrad berücksichtigt wie Fehler.|
 
 ### <a name="global-arguments"></a>Globale Argumente
-    |Argument|Beschreibung|
+|Argument|Beschreibung|
 | --- | --- |
 |--debug                               | Erhöht die Protokollierungsausführlichkeit, sodass alle Debugprotokolle angezeigt werden.|
 |    --help -h                             | Zeigt diese Hilfemeldung an und beendet.|
-|    --output -o                           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv.
-                                            Standardwert: json.|
-|    --query                               | JMESPath-Abfragezeichenfolge. Unter „http://jmespath.org/“ finden Sie weitere
-                                            Informationen und Beispiele.|
-|    --verbose                             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige
-                                            Debugprotokolle wünschen.|
+|    --output -o                           | Das Ausgabeformat.  Zulässige Werte sind: json, jsonc, table, tsv. Standardwert: json.|
+|    --query                               | JMESPath-Abfragezeichenfolge. Weitere Informationen und Beispiele finden Sie unter „http://jmespath.org/“.|
+|    --verbose                             | Erhöht die Protokollierungsausführlichkeit. Verwenden Sie „--debug“, wenn Sie vollständige Debugprotokolle wünschen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Einrichten](service-fabric-cli.md) der Service Fabric-Befehlszeilenschnittstelle

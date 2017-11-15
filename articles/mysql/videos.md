@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/05/2017
-ms.openlocfilehash: 49d81c5b449b9af7ac025296982aa5ff82aa8b09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/03/2017
+ms.openlocfilehash: 88a3114271088ad49a3d4231facc88ee6f89b54b
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="azure-database-for-mysql-videos"></a>Videos zu Azure-Datenbank für MySQL
 
@@ -21,4 +21,4 @@ ms.lasthandoff: 10/11/2017
 
 <iframe src="https://channel9.msdn.com/Events/Build/2017/B8045/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
 
-In diesem Video von der Microsoft //Build-Konferenz im Mai 2017 wird das verwaltete MySQL-Angebot von Microsoft in Azure vorgestellt. Die Microsoft-Strategie für die Unterstützung von Open-Source-Datenbanksysteme in Azure wird schrittweise erläutert. Es wird erklärt, was es für Sie als Entwickler bedeutet, Anwendungen zu entwickeln oder bereitzustellen, die MySQL in Azure verwenden. Sie erhalten einen Überblick über die Architektur des Dienstes; zudem wird vorgeführt, dass Azure-Datenbank für MySQL mit anderen Azure-Diensten wie Web-Apps integriert ist.
+In diesem Video von der Microsoft //Build-Konferenz im Mai 2017 wird das verwaltete MySQL-Angebot von Microsoft in Azure vorgestellt. Im Video wird die Microsoft-Strategie für die Unterstützung von Open-Source-Datenbanksystemen in Azure ausführlich erläutert. Das Video erklärt, was es für Sie als Entwickler bedeutet, Anwendungen zu entwickeln oder bereitzustellen, die MySQL in Azure verwenden. Sie erhalten im Video eine Übersicht über die Architektur des Diensts. Zudem wird gezeigt, dass Azure Database for MySQL in anderen Azure-Diensten wie Web-Apps integriert ist.

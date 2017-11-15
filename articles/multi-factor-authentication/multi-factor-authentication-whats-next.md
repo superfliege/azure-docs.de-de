@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
-ms.openlocfilehash: 8ff991ffb05bb92f047cc8dfc40e80b704379898
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
+ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/08/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen – öffentliche Vorschau
 
@@ -29,6 +29,7 @@ Dieser Artikel bietet Unterstützung bei der Verwaltung der Azure Multi-Factor A
 
 | Feature | Beschreibung | 
 |:--- |:--- |
+| [Benutzer sperren/zulassen](#block/unblock-users) |Mit „Benutzer sperren/zulassen“ kann verhindert werden, dass Benutzer Authentifizierungsanforderungen erhalten. |
 | [Betrugswarnung](#fraud-alert) |Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. |
 | [Einmalumgehung](#one-time-bypass) |Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, indem er die mehrstufige Authentifizierung "umgeht". |
 | [Benutzerdefinierte Sprachnachrichten](#custom-voice-messages) |Mit benutzerdefinierten Sprachnachrichten können Sie Ihre eigenen Aufzeichnungen oder Begrüßungen mit mehrstufiger Authentifizierung verwenden. |
@@ -37,6 +38,23 @@ Dieser Artikel bietet Unterstützung bei der Verwaltung der Azure Multi-Factor A
 | [App-Kennwörter](#app-passwords) |Durch ein App-Kennwort kann eine Anwendung, die MFA nicht erkennt, Multi-Factor Authentication umgehen, und weiter ausgeführt werden. |
 | [Speichern der Multi-Factor Authentication für gespeicherte Geräte und Browser](#remember-multi-factor-authentication-for-devices-that-users-trust) |Mit dieser Funktion können Sie Geräte für eine festgelegte Anzahl von Tagen speichern, nachdem ein Benutzer erfolgreich mit MFA angemeldet wurde. |
 | [Auswählbare Verifizierungsmethoden](#selectable-verification-methods) |Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten. |
+
+## <a name="blockunblock-users"></a>Benutzer sperren/zulassen
+Mit „Benutzer sperren/zulassen“ kann verhindert werden, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch verweigert. Gesperrte Benutzer bleiben ab Zeitpunkt der Sperrung 90 Tage lang gesperrt.
+
+### <a name="block-a-user"></a>Sperren eines Benutzers
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
+2. Navigieren Sie zu **Azure Active Directory** > **MFA Server** > **Benutzer sperren/zulassen**.
+3. Klicken Sie auf **Hinzufügen**, um einen Benutzer zu sperren.
+4. Wählen Sie die **Replikationsgruppe**, geben Sie den gesperrten Benutzernamen im Format **username@domain.com** ein, und fügen Sie einen Kommentar im Feld **Grund** hinzu.
+5. Klicken Sie auf **Hinzufügen**, um das Sperren des Benutzers abzuschließen.
+
+### <a name="unblock-a-user"></a>Zulassen eines Benutzers
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
+2. Navigieren Sie zu **Azure Active Directory** > **MFA Server** > **Benutzer sperren/zulassen**.
+3. Klicken Sie neben dem Benutzer, den Sie entsperren möchten, in der Spalte **Aktion** auf **Zulassen**.
+4. Geben Sie im Feld **Grund für Entsperren** einen Kommentar ein.
+5. Klicken Sie auf **Zulassen**, um das Entsperren des Benutzers abzuschließen.
 
 ## <a name="fraud-alert"></a>Betrugswarnung
 Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können.  Benutzer können entweder mit der mobilen App oder über ihre Rufnummer den Betrug melden.

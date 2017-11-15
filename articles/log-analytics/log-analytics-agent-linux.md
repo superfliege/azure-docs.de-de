@@ -1,6 +1,6 @@
 ---
-title: Verbinden Ihrer Linux-Computer mit Operations Management Suite (OMS) | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie in Azure, einer anderen Cloud oder lokal gehostete Linux-Computer mit dem OMS Agent für Linus mit OMS verbunden werden können."
+title: Verbinden von Linux-Computern mit Azure Log Analytics | Microsoft-Dokumentation
+description: "In diesem Artikel wird beschrieben, wie Linux-Computer, die in Azure, einer anderen Cloud oder lokal gehostet werden, über Log Analytics mit dem OMS-Agent für Linux verbunden werden können."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/29/2017
+ms.date: 11/07/2017
 ms.author: magoedte
-ms.openlocfilehash: c9902e1b8644c2b0a894f9cde98f2056564775c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 56c666d1a18937df21a6aca8acde87beda1cad8e
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
-# <a name="connect-your-linux-computers-to-operations-management-suite-oms"></a>Verbinden Ihrer Linux-Computer mit Operations Management Suite (OMS) 
+# <a name="connect-your-linux-computers-to-log-analytics"></a>Verbinden Ihrer Linux-Computer mit Log Analytics 
 
-Mit Microsoft Operations Management Suite (OMS) können Sie Daten sammeln und verarbeiten, die auf Linux-Computern oder in Containerlösungen wie Docker generiert wurden – als physische Server oder virtuelle Computer in Ihrem lokalen Rechenzentrum oder als virtuelle Computer in einem cloudgehosteten Dienst wie Amazon Web Services (AWS) oder Microsoft Azure. Sie können auch in OMS verfügbare Verwaltungslösungen verwenden, z.B. die Änderungsnachverfolgung zum Identifizieren von Konfigurationsänderungen oder die Updateverwaltung zum Verwalten von Softwareupdates, um den Lebenszyklus Ihrer virtuellen Linux-Computer proaktiv zu verwalten. 
+Mit Azure Log Analytics können Sie Daten sammeln und verarbeiten, die auf Linux-Computern oder in Containerlösungen wie Docker generiert wurden – als physische Server oder virtuelle Computer in Ihrem lokalen Rechenzentrum oder als virtuelle Computer in einem cloudgehosteten Dienst wie Amazon Web Services (AWS) oder Microsoft Azure. Sie können auch in [Azure Automation](../automation/automation-intro.md) verfügbare Verwaltungslösungen verwenden, z.B. die Änderungsnachverfolgung zum Identifizieren von Konfigurationsänderungen oder die Updateverwaltung zum Verwalten von Softwareupdates, um den Lebenszyklus Ihrer virtuellen Linux-Computer aktiv zu verwalten. 
 
-Der OMS-Agent für Linux kommuniziert ausgehend über TCP-Port 443 mit dem OMS-Dienst. Falls der Computer für die Kommunikation über das Internet eine Verbindung mit einer Firewall oder einem Proxyserver herstellt, finden Sie unter [Konfigurieren des Agents für die Verwendung mit einem HTTP-Proxyserver oder dem OMS-Gateway](#configuring-the-agent-for-use-with-an-http-proxy-server-or-oms-gateway) weitere Informationen zu den Konfigurationsänderungen, die angewendet werden müssen.  Wenn Sie den Computer mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwachen, kann er mit dem OMS-Dienst mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht werden kann.  Linux-Computer, die durch eine in OMS integrierte Operations Manager-Verwaltungsgruppe überwacht werden, empfangen keine Konfiguration für Datenquellen und weitergeleitete Daten über die Verwaltungsgruppe.  Der OMS-Agent kann nicht für die Berichterstattung für mehr als einen Arbeitsbereich konfiguriert werden.  
+Der OMS-Agent für Linux kommuniziert ausgehend über TCP-Port 443 mit den Diensten für Log Analytics und Azure Automation. Wenn der Computer für die Kommunikation über das Internet eine Verbindung mit einer Firewall oder einem Proxyserver herstellt, finden Sie unter [Konfigurieren des Agents für die Verwendung mit einem Proxyserver oder dem OMS-Gateway](#configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway) weitere Informationen zu den Konfigurationsänderungen, die angewendet werden müssen.  Wenn Sie den Computer mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwachen, kann er mit dem Log Analytics-Dienst mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht werden kann.  Linux-Computer, die durch eine in Log Analytics integrierte Operations Manager-Verwaltungsgruppe (derzeit in der Operations Manager-Betriebskonsole als Operations Management Suite bezeichnet) überwacht werden, empfangen keine Konfiguration für Datenquellen und weitergeleitete Daten über die Verwaltungsgruppe.  Der OMS-Agent kann nicht für die Berichterstattung für mehrere Log Analytics-Arbeitsbereiche konfiguriert werden.  
 
-Sofern nach Ihren IT-Sicherheitsrichtlinien Computer in Ihrem Netzwerk keine Internetverbindung herstellen dürfen, kann der Agent so konfiguriert werden, dass er eine Verbindung mit dem OMS-Gateway herstellt, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden. Weitere Informationen und Anleitungen zum Konfigurieren Ihres OMS-Linux-Agents für die Kommunikation mit dem OMS-Dienst über ein OMS-Gateway finden Sie unter [Verbinden von Computern mit OMS über das OMS-Gateway](log-analytics-oms-gateway.md).  
+Sofern nach Ihren IT-Sicherheitsrichtlinien Computer in Ihrem Netzwerk keine Internetverbindung herstellen dürfen, kann der Agent so konfiguriert werden, dass er eine Verbindung mit dem OMS-Gateway herstellt, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden. Weitere Informationen und Anleitungen zum Konfigurieren Ihres OMS-Linux-Agents für die Kommunikation mit den Diensten über ein OMS-Gateway finden Sie unter [Verbinden von Computern mit OMS über das OMS-Gateway](log-analytics-oms-gateway.md).  
 
-Das folgende Diagramm zeigt die Verbindung zwischen dem durch einen Agent verwalteten Linux-Computer und OMS, einschließlich der Richtung und der Ports.
+Das folgende Diagramm zeigt die Verbindung zwischen dem durch einen Agent verwalteten Linux-Computer und Log Analytics, einschließlich der Richtung und der Ports.
 
-![Diagramm für die Kommunikation direkter Agents mit OMS](./media/log-analytics-agent-linux/log-analytics-agent-linux-communication.png)
+![Diagramm für die direkte Kommunikation von Agents mit Azure-Diensten](./media/log-analytics-agent-linux/log-analytics-agent-linux-communication.png)
 
 ## <a name="system-requirements"></a>Systemanforderungen
 Prüfen Sie zunächst anhand der folgenden Informationen, ob die Voraussetzungen erfüllt sind.
@@ -47,7 +47,7 @@ Die folgenden Linux-Distributionen werden offiziell unterstützt.  Der OMS-Agent
 * SUSE Linux Enterprise Server 11 und 12 (x86/x64)
 
 ### <a name="network"></a>Netzwerk
-Die Aufstellung unten enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Linux-Agent benötigt, um mit OMS zu kommunizieren. Ausgehender Datenverkehr von Ihrem Netzwerk zum OMS-Dienst. 
+Die Aufstellung unten enthält die Proxy- und Firewall-Konfigurationsinformationen, die der Linux-Agent benötigt, um mit Log Analytics und Azure Automation zu kommunizieren. Der Datenverkehr fließt ausgehend von Ihrem Netzwerk zum Dienst. 
 
 |Agent-Ressource| Ports |  
 |------|---------|  
@@ -73,7 +73,7 @@ Der Agent umfasst mehrere Pakete. Die Release-Datei enthält die folgenden Paket
 
 **Paket** | **Version** | **Beschreibung**
 ----------- | ----------- | --------------
-omsagent | 1.4.1 | Der Operations Management Suite-Agent für Linux
+omsagent | 1.4.0 | Der Operations Management Suite-Agent für Linux
 omsconfig | 1.1.1 | Konfigurations-Agent für den OMS-Agent
 omi | 1.2.0 | Open Management Infrastructure (OMI) – ein kompakter CIM-Server
 scx | 1.6.3 | OMI-CIM-Anbieter für Leistungsmetriken für das Betriebssystem
@@ -91,22 +91,31 @@ Der OMS-Agent für Linux gibt Binärdateien für System Center Operations Manage
 ### <a name="system-configuration-changes"></a>Systemkonfigurationsänderungen
 Nach der Installation des OMS-Agents für Linux-Pakete werden die folgenden zusätzlichen systemweiten Konfigurationsänderungen angewendet. Diese Artefakte werden entfernt, wenn das „omsagent“-Paket deinstalliert wird.
 
-* Ein Benutzer ohne Berechtigungen mit dem Namen `omsagent` wird erstellt. Der omsagent-Daemon wird unter diesem Konto ausgeführt.
-* Eine „include“-Datei für sudo-Benutzer wird unter „/etc/sudoers.d/omsagent“ erstellt. Diese Datei autorisiert omsagent dazu, die syslog- und omsagent-Daemons neu zu starten. Falls „include“-sudo-Direktiven nicht in der installierten Version von sudo unterstützt werden, werden diese Einträge in „/etc/sudoers“ geschrieben.
-* Die syslog-Konfiguration wird geändert, um eine Teilmenge von Ereignissen an den Agent weiterzuleiten. Weitere Informationen finden Sie unten im Abschnitt **Konfigurieren der Datensammlung**.
+* Ein Benutzer ohne Berechtigungen mit dem Namen `omsagent` wird erstellt. Dies ist das Konto, unter dem der omsagent-Daemon ausgeführt wird.
+* Eine „include“-Datei für sudo-Benutzer wird unter „/etc/sudoers.d/omsagent“ erstellt. Diese autorisiert omsagent dazu, die syslog- und omsagent-Daemons neu zu starten. Falls „include“-sudo-Direktiven nicht in der installierten Version von sudo unterstützt werden, werden diese Einträge in „/etc/sudoers“ geschrieben.
+* Die syslog-Konfiguration wird geändert, um eine Teilmenge von Ereignissen an den Agent weiterzuleiten. Weitere Informationen finden Sie unten im Abschnitt **Konfigurieren der Datensammlung**
 
 ### <a name="upgrade-from-a-previous-release"></a>Upgrade von einem früheren Release
 Ein Upgrade von Versionen vor 1.0.0-47 wird in diesem Release unterstützt. Beim Ausführen der Installation mit dem Befehl `--upgrade` wird für alle Komponenten des Agents ein Upgrade auf die neueste Version durchgeführt.
 
 ## <a name="installing-the-agent"></a>Installieren des Agents
 
-Dieser Abschnitt beschreibt, wie der OMS-Agent für Linux mit einem Bundle installiert wird, das Debian- und RPM-Pakete für die einzelnen Agent-Komponenten enthält.  Er kann direkt installiert oder zum Abrufen der einzelnen Pakete extrahiert werden.  
+Dieser Abschnitt beschreibt, wie der OMS-Agent für Linux manuell mit einem Bundle installiert wird, das Debian- und RPM-Pakete für die einzelnen Agent-Komponenten enthält.  Er kann direkt installiert oder zum Abrufen der einzelnen Pakete extrahiert werden.  Wenn Sie beabsichtigen, den Agent auf einem virtuellen Azure-Linux-Computer zu installieren, finden Sie im Thema [Sammeln von Daten zu Azure Virtual Machines](log-analytics-quick-collect-azurevm.md) Informationen zum Installieren des Agents über die Log Analytics-VM-Erweiterung.  Befolgen Sie die Schritte im Abschnitt *Aktivieren der Log Analytics-VM-Erweiterung*.  Für in Ihrer Umgebung gehostete Linux-Computer können Sie den Installationsvorgang mit einer skriptgesteuerten Methode vereinfachen, die im Artikel [Sammeln von Daten von in Ihrer Umgebung gehosteten Linux-Computern](log-analytics-quick-collect-linux-computer.md) beschrieben wird.  
 
-Zuerst benötigen Sie Ihre ID und den Schlüssel für den OMS-Arbeitsbereich. Diese Daten erhalten Sie, indem Sie zum [klassischen OMS-Portal](https://mms.microsoft.com) wechseln.  Wählen Sie auf der Seite **Übersicht** im oberen Menü die Option **Einstellungen**, und navigieren Sie anschließend zu **Verbundene Quellen\Linux-Server**.  Der Wert wird jeweils rechts von **Arbeitsbereichs-ID** und **Primärschlüssel** angezeigt.  Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.    
+> [!NOTE]
+> Die beiden oben genannten Artikel sind zwar für Personen vorgesehen, die noch keine Erfahrungen mit Log Analytics haben und schnell mit dem Verwenden des Diensts beginnen möchten, die Schritte zum Konfigurieren des Computers sind jedoch relevant.  Wenn Sie bereits einen Arbeitsbereich haben und erfahren möchten, wie Sie eine Verbindung mit dem Linux-Computer herstellen, wählen Sie bei einer Azure-Linux-VM einen vorhandenen Arbeitsbereich aus, oder kopieren Sie bei einem außerhalb von Azure gehosteten Computer die Arbeitsbereichs-ID und den Schlüssel zum Übergeben an das Skript.  
 
-1. Laden Sie den aktuellen [OMS-Agent für Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x64.sh) oder [OMS-Agent für Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x86.sh) über GitHub herunter.  
-2. Übertragen Sie das entsprechende Paket (x86 oder x64) mithilfe von scp/sftp auf Ihren Linux-Computer.
-3. Installieren Sie das Paket mit einem der Argumente `--install` oder `--upgrade`. 
+Vor der Installation des OMS-Agents für Linux benötigen Sie die Arbeitsbereichs-ID und den Schlüssel für Ihren Log Analytics-Arbeitsbereich.  
+
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) im Azure-Portal an. 
+2. Klicken Sie im Azure-Portal unten links auf **Weitere Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.
+3. Wählen Sie in der Liste der Log Analytics-Arbeitsbereiche den Arbeitsbereich aus, dem der Computer untergeordnet sein soll.
+3. Wählen Sie **Erweiterte Einstellungen**.<br><br> ![Erweiterte Einstellungen für Log Analytics](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
+4. Wählen Sie **Verbundene Quellen** und dann **Linux Server** aus.   
+5. Der Wert rechts von **Arbeitsbereichs-ID** und **Primärschlüssel**. Kopieren Sie beide Angaben, und fügen Sie sie in den von Ihnen bevorzugten Editor ein.  
+6. Laden Sie den aktuellen [OMS-Agent für Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x64.sh) oder [OMS-Agent für Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x86.sh) über GitHub herunter.  
+7. Übertragen Sie das entsprechende Paket (x86 oder x64) mithilfe von scp/sftp auf Ihren Linux-Computer.
+8. Installieren Sie das Paket mit einem der Argumente `--install` oder `--upgrade`. 
 
     > [!NOTE]
     > Wenn bereits Pakete installiert sind, z.B. wenn der System Center Operations Manager-Agent für Linux bereits installiert ist, verwenden Sie das Argument `--upgrade`. Geben Sie für die Verbindung mit Operations Management Suite während der Installation die Parameter `-w <WorkspaceID>` und `-s <Shared Key>` an.
@@ -128,7 +137,7 @@ sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <sh
 ```
 
 ## <a name="configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway"></a>Konfigurieren des Agents für die Verwendung mit einem Proxyserver oder OMS-Gateway
-Der OMS-Agent für Linux unterstützt die Kommunikation mit dem OMS-Dienst über einen Proxyserver oder ein OMS-Gateway mithilfe des HTTPS-Protokolls.  Es wird sowohl die anonyme als auch die Standardauthentifizierung (Benutzername und Kennwort) unterstützt.  
+Der OMS-Agent für Linux unterstützt die Kommunikation mit dem OMS-Dienst über einen Proxyserver oder ein Log Analytics-Gateway mithilfe des HTTPS-Protokolls.  Es wird sowohl die anonyme als auch die Standardauthentifizierung (Benutzername und Kennwort) unterstützt.  
 
 ### <a name="proxy-configuration"></a>Proxykonfiguration
 Der Wert für die Proxykonfiguration weist die folgende Syntax auf:
@@ -171,8 +180,8 @@ sudo rm /etc/opt/microsoft/omsagent/proxy.conf /etc/opt/microsoft/omsagent/conf/
 sudo /opt/microsoft/omsagent/bin/service_control restart 
 ```
 
-## <a name="onboarding-with-operations-management-suite"></a>Integration in die Operations Management Suite
-Wenn eine Arbeitsbereichs-ID und der zugehörige Schlüssel nicht während der Paketinstallation bereitgestellt wurden, muss der Agent anschließend bei Operations Management Suite registriert werden.
+## <a name="onboarding-with-log-analytics"></a>Onboarding mit Log Analytics
+Wenn eine Arbeitsbereichs-ID und der zugehörige Schlüssel nicht während der Paketinstallation bereitgestellt wurden, muss der Agent anschließend bei Log Analytics registriert werden.
 
 ### <a name="onboarding-using-the-command-line"></a>Integrieren über die Befehlszeile
 Führen Sie den Befehl „omsadmin.sh“ unter Angabe der Arbeitsbereichs-ID und des Schlüssels für den Arbeitsbereich aus. Dieser Befehl muss als Root-Benutzer (mit erhöhten Rechten durch sudo) ausgeführt werden:
@@ -181,7 +190,7 @@ cd /opt/microsoft/omsagent/bin
 sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key>
 ```
 
-### <a name="onboarding-using-a-file"></a>Integrieren mithilfe einer Datei
+### <a name="register-using-a-file"></a>Registrieren mithilfe einer Datei
 1.  Erstellen Sie die Datei `/etc/omsagent-onboard.conf`. Die Datei muss für Root lesbar und schreibbar sein.
 `sudo vi /etc/omsagent-onboard.conf`
 2.  Fügen Sie die folgenden Zeilen mit Ihrer Arbeitsbereichs-ID und dem gemeinsam verwendeten Schlüssel in die Datei ein:
@@ -189,7 +198,7 @@ sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key>
         WORKSPACE_ID=<WorkspaceID>  
         SHARED_KEY=<Shared Key>  
    
-3.  Führen Sie den folgenden Befehl aus, um die Integration mit OMS durchzuführen: `sudo /opt/microsoft/omsagent/bin/omsadmin.sh`
+3.  Führen Sie den folgenden Befehl aus, um eine Registrierung bei Log Analytics durchzuführen: `sudo /opt/microsoft/omsagent/bin/omsadmin.sh`
 4.  Die Datei wird nach dem Onboarding gelöscht.
 
 ## <a name="enable-the-oms-agent-for-linux-to-report-to-system-center-operations-manager"></a>Aktivieren des OMS-Agents für Linux für das Senden von Meldungen an System Center Operations Manager
@@ -228,18 +237,18 @@ Die Agent-Pakete können deinstalliert werden, indem Sie die SH-Bundledatei mit 
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-### <a name="issue-unable-to-connect-through-proxy-to-oms"></a>Problem: keine Verbindung über den Proxy mit OMS möglich
+### <a name="issue-unable-to-connect-through-proxy-to-log-analytics"></a>Problem: keine Verbindung über den Proxy mit Log Analytics möglich
 
 #### <a name="probable-causes"></a>Mögliche Ursachen
 * Der während der Integration angegebene Proxy war falsch.
-* Die OMS-Dienstendpunkte sind nicht in der Zulassungsliste in Ihrem Rechenzentrum enthalten. 
+* Die Dienstendpunkte für Log Analytics und Azure Automation sind nicht in der Whitelist in Ihrem Rechenzentrum enthalten. 
 
 #### <a name="resolutions"></a>Lösungen
-1. Führen Sie das Onboarding des OMS-Diensts mit dem OMS-Agent für Linux durch, indem Sie dem folgenden Befehl mit der Option `-v` ausführen. Diese Einstellung ermöglicht die ausführliche Ausgabe des Agents über eine Proxy-Verbindung an den OMS-Dienst. 
+1. Führen Sie das Onboarding des Log Analytics-Diensts mit dem OMS-Agent für Linux erneut durch, indem Sie dem folgenden Befehl mit der Option `-v` ausführen. Dadurch wird die ausführliche Ausgabe des Agents über eine Proxy-Verbindung an den OMS-Dienst möglich. 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
 2. Lesen Sie den Abschnitt [Konfigurieren des Agents für die Verwendung mit einem Proxyserver oder OMS-Gateway](#configuring the-agent-for-use-with-a-proxy-server-or-oms-gateway), um sicherzustellen, dass der Agent ordnungsgemäß für die Kommunikation über einen Proxyserver konfiguriert wurde.    
-* Vergewissern Sie sich erneut, dass die folgenden OMS-Dienstendpunkte in der Zulassungsliste enthalten sind:
+* Vergewissern Sie sich erneut, dass die folgenden Log Analytics-Dienstendpunkte in der Whitelist enthalten sind:
 
     |Agent-Ressource| Ports |  
     |------|---------|  
@@ -261,22 +270,36 @@ Die Agent-Pakete können deinstalliert werden, indem Sie die SH-Bundledatei mit 
 3. Führen Sie das Onboarding gemäß den obigen Installationsanweisungen in diesem Thema mit korrekten Daten für die Arbeitsbereich-ID und den Arbeitsbereichsschlüssel erneut durch.
 
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>Problem: In der Protokolldatei sind direkt nach der Integration die Fehler 500 und 404 enthalten.
-Dieser Fehler ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in einen OMS-Arbeitsbereich auftritt. Gesendete Daten und die Ausführung des Diensts sind von diesem Fehler nicht betroffen.
+Dies ist ein bekanntes Problem, das beim ersten Hochladen von Linux-Daten in einen Log Analytics-Arbeitsbereich auftritt. Gesendete Daten und die Ausführung des Diensts sind davon nicht betroffen.
 
-### <a name="issue-you-are-not-seeing-any-data-in-the-oms-portal"></a>Problem: Im OMS-Portal werden keine Daten angezeigt.
+### <a name="issue-you-are-not-seeing-any-data-in-the-azure-portal"></a>Problem: Im Azure-Portal werden keine Daten angezeigt.
 
 #### <a name="probable-causes"></a>Mögliche Ursachen
 
-- Fehler beim Onboarding zum OMS-Dienst
-- Verbindung zum OMS-Dienst ist blockiert
+- Fehler beim Onboarding zum Log Analytics-Dienst
+- Die Verbindung mit dem Log Analytics-Dienst ist blockiert.
 - Der OMS-Agent für Linux-Daten ist überlastet.
 
 #### <a name="resolutions"></a>Lösungen
-1. Überprüfen Sie, ob die Integration des OMS-Diensts erfolgreich war, indem Sie überprüfen, ob die folgende Datei vorhanden ist: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
+1. Überprüfen Sie, ob die Integration des Log Analytics-Diensts erfolgreich war, indem Sie überprüfen, ob die folgende Datei vorhanden ist: `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsadmin.conf`
 2. Erneutes Onboarding mithilfe der Befehlszeilenanweisungen `omsadmin.sh`
 3. Wenn Sie einen Proxy verwenden, lesen Sie die Proxylösungsschritte weiter oben.
-4. In einigen Fällen, wenn der OMS-Agent für Linux nicht mit dem OMS-Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße von 50 MB in eine Warteschlange gestellt. Der OMS-Agent für Linux sollte über den folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
+4. In einigen Fällen, wenn der OMS-Agent für Linux nicht mit dem Dienst kommunizieren kann, werden Daten auf dem Agent bis zur vollständigen Puffergröße von 50 MB in eine Warteschlange gestellt. Der OMS-Agent für Linux sollte über den folgenden Befehl neu gestartet werden: `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]`. 
 
     >[!NOTE]
     >Dieses Problem wurde ab der Agent-Version 1.1.0-28 behoben.
 
+### <a name="issue-omsagent-creates-excessive-number-of-user-process-on-computer-and-never-terminates-them"></a>Problem: OMSAgent erstellt eine übermäßige Anzahl von Benutzerprozessen auf dem Computer und beendet diese nie.
+Wenn Sie Verwaltungslösungen aktivieren, die die Verwaltung Ihrer Linux-VMs unterstützen, wird eine Reihe von Prozessen auf dem Linux-Agent initiiert. Bevor der Prozess jedoch endet, wird aufgrund eines bekannten Problems ein anderer Prozess gestartet. 
+
+#### <a name="resolutions"></a>Lösungen
+Um die Anzahl der Benutzerprozesse zu ändern, die von OMSAgent generiert werden können, konfigurieren Sie den Agent über „omsadmin.sh“.  Die Anzahl der generierten Prozesse beträgt in der Standardeinstellung 75. Bevor Sie diesen Grenzwert ändern, sollten Sie zuerst den folgenden Befehl ausführen, um festzustellen, wie viele OMSAgent-Prozesse derzeit ausgeführt werden: `ps aux | grep -E '^omsagent' | wc -l`.  
+Sie können den aktuellen Grenzwert mit dem folgenden Befehl überprüfen: `cat /etc/security/limits.conf | grep -E '^omsagent'`
+
+Verwenden Sie die folgenden Befehle, um einen benutzerdefinierten Prozessgrenzwert zu konfigurieren oder den Prozessgrenzwert wieder auf den Standardwert festzulegen.
+
+1. So legen Sie den Prozessgrenzwert für OMSAgent fest: `sudo /opt/microsoft/omsagent/bin/omsadmin.sh -n <specific number limit>`.<br>Beachten Sie, dass der Mindestwert für den Grenzwert 5 beträgt.  
+
+2. So legen Sie den Grenzwert für OMSAgent wieder auf den Standardwert fest: `sudo /opt/microsoft/omsagent/bin/omsadmin.sh -N`.
+
+Vergewissern Sie sich, dass die neue Einstellung übernommen wurde, indem Sie den folgenden Befehl ausführen: `cat /etc/security/limits.conf | grep -E '^omsagent'`.  Wenn die neue Konfiguration nicht angewendet wurde, ist möglicherweise der Prozessgrenzwert zu niedrig festgelegt.  

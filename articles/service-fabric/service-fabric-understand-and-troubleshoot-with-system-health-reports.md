@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: b02b1260cedcade9bf69a99453ab0f5aa2c3c7b1
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -55,6 +55,18 @@ Im Bericht wird das Global Lease-Timeout als Gültigkeitsdauer (Time to Live, TT
 * **SourceId**: System.Federation
 * **Property**: Beginnt mit **Neighborhood** und enthält Knoteninformationen.
 * **Next steps**: Untersuchen Sie, warum die Nachbarschaft verloren geht. Überprüfen Sie beispielsweise die Kommunikation zwischen Clusterknoten.
+
+### <a name="rebuild"></a>Neu erstellen
+
+Der Dienst **Failover-Manager** (**FM**) verwaltet Informationen zu den Clusterknoten. Im Falle eines Datenverlusts im FM sind die Informationen zu den Clusterknoten unter Umständen nicht auf dem neuesten Stand. In diesem Fall wird für das System eine **Neuerstellung** durchgeführt, und **System.FM** sammelt Daten von allen Knoten im Cluster, um den Zustand neu zu erstellen. Manchmal kann die Neuerstellung aufgrund von Netzwerk- oder Knotenproblemen hängen bleiben oder angehalten werden. Das gleiche Problem kann beim **Failover-Manager-Master**-Dienst (**FMM**) auftreten. Der **FMM** ist ein zustandsloser Systemdienst, der die Position aller **FMs** im Cluster nachverfolgt. Der Primärknoten von **FMMs** ist immer der Knoten, dessen ID am nächsten bei 0 liegt. Wird dieser Knoten verworfen, wird eine **Neuerstellung** ausgelöst.
+Im Falle einer dieser Bedingungen weist **System.FM** oder **System.FMM** mithilfe eines Fehlerberichts darauf hin. Die Neuerstellung kann in einer von zwei Phasen hängen bleiben:
+
+* Warten auf die Übertragung: **FM/FMM** wartet auf eine Antwort auf die Broadcastmeldung durch die anderen Knoten. **Nächste Schritte:** Überprüfen Sie, ob ein Netzwerkverbindungsfehler zwischen Knoten aufgetreten ist.   
+* Warten auf Knoten: **FM/FMM** hat von den anderen Knoten bereits eine Antwort auf die Broadcastmeldung erhalten und wartet auf die Antwort von bestimmten Knoten. Im Integritätsbericht sind die Knoten aufgeführt, auf deren Antwort **FM/FMM** wartet. **Nächste Schritte:** Überprüfen Sie die Netzwerkverbindung zwischen **FM/FMM** und den aufgeführten Knoten. Untersuchen Sie alle aufgeführten Knoten auf andere mögliche Probleme.
+
+* **SourceID**: „System.FM“ oder „System.FMM“
+* **Property**: Rebuild.
+* **Nächste Schritte:** Überprüfen Sie die Netzwerkverbindung zwischen den Knoten sowie den Zustand bestimmter Knoten, die in der Beschreibung des Integritätsberichts aufgeführt sind.
 
 ## <a name="node-system-health-reports"></a>Knoten-Systemintegritätsberichte
 **System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, mit der die Informationen zu Clusterknoten verwaltet werden. Jeder Knoten sollte über einen Bericht von System.FM verfügen, in dem der Zustand angegeben wird. Die Knotenentitäten werden entfernt, wenn der Knotenstatus entfernt wird. Weitere Informationen finden Sie unter [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync).

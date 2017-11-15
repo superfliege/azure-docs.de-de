@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 2a956de58b279a013913631a077d7b03c6327f72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7031aff9d4797e99e6523a65ded7495c88aff282
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikel für das neue Azure-Portal finden Sie unter [Austauschen eines Moduls für Stromversorgung und Kühlung eines StorSimple-Geräts](storsimple-8000-power-cooling-module-replacement.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Ein Modul für Stromversorgung und Kühlung (Power and Cooling Module, PCM) in einem Microsoft Azure StorSimple-Gerät umfasst eine Stromversorgung sowie Lüfter, die über das primäre und das EBOD-Gehäuse gesteuert werden. Es gibt nur ein PCM-Modell, das für das jeweilige Gehäuse zertifiziert ist. Das primäre Gehäuse ist für ein PCM mit 764 W und das EBOD-Gehäuse für ein PCM mit 580 W zertifiziert. Obwohl die PCMs für das primäre Gerät und das EBOD-Gerät unterschiedlich sind, ist die Vorgehensweise zum Austauschen gleich.
 

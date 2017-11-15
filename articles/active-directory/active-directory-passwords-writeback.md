@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 8ce4d6d9024dc4ce3956220eb0678a6295b0b7ab
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9733774570f3148e0092f42c1321b4fac1c80b54
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-writeback-overview"></a>Übersicht über die Kennwortrückschreibung
 
@@ -91,6 +91,8 @@ Bei den folgenden Schritten wird davon ausgegangen, dass Azure AD Connect bereit
    ![Aktivieren des Kennwortrückschreibens in Azure AD Connect][Writeback]
 7. Klicken Sie auf dem Bildschirm „Bereit zur Konfiguration“ auf **Konfigurieren**, und warten Sie, bis der Vorgang abgeschlossen ist.
 8. Wenn die Konfiguration abgeschlossen ist, klicken Sie auf **Beenden**.
+
+Informationen zu allgemeinen Aufgaben zur Problembehandlung im Zusammenhang mit dem Kennwortrückschreiben finden Sie im Artikel zur Problembehandlung im Abschnitt [Problembehandlung: Kennwortrückschreiben](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback).
 
 ## <a name="active-directory-permissions"></a>Active Directory-Berechtigungen
 
@@ -212,16 +214,16 @@ Die Größe der einzelnen oben beschriebenen Nachrichten beträgt in der Regel w
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Wie führe ich ein erfolgreiches Rollout der SSPR durch?](active-directory-passwords-best-practices.md)
-* [Setzen Sie Ihr Kennwort zurück bzw. ändern Sie es](active-directory-passwords-update-your-own-password.md).
-* [Registrieren Sie sich für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
-* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
-* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
-* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](active-directory-passwords-best-practices.md)
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md)
+* [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
+* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
+* [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
+* [Authentifizierungsmethoden](active-directory-passwords-how-it-works.md#authentication-methods)
 * [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
 * [Wie melde ich eine Aktivität bei SSPR?](active-directory-passwords-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
+* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
-* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
+* [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md)
 
 [Writeback]: ./media/active-directory-passwords-writeback/enablepasswordwriteback.png "Aktivieren des Kennwortrückschreibens in Azure AD Connect"

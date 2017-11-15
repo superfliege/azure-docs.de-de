@@ -21,7 +21,7 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
+# <a name="v20-protocols---spas-using-the-implicit-flow"></a>v2.0-Protokolle – SPAs unter Verwendung des impliziten Flusses
 Mit dem v2.0-Endpunkt können Sie Benutzer sowohl mit persönlichen Konten als auch mit Geschäfts-, Schul- oder Unikonten von Microsoft bei Apps mit einer Seite anmelden.  Bei einseitigen Apps und anderen JavaScript-Apps, die hauptsächlich im Browser ausgeführt werden, gibt es in Bezug auf die Authentifizierung einige interessante Herausforderungen:
 
 * Die Sicherheitsmerkmale dieser Apps unterscheiden sich grundlegend von herkömmlichen serverbasierten Webanwendungen.
@@ -39,12 +39,12 @@ Wenn Sie jedoch in Ihrer einseitigen App keine Bibliothek verwenden und Protokol
 > 
 > 
 
-## Protokolldiagramm
+## <a name="protocol-diagram"></a>Protokolldiagramm
 Der vollständige implizite Anmeldevorgang sieht in etwa wie folgt aus. Die einzelnen Schritte werden unten im Detail beschrieben.
 
 ![OpenId Connect-Verantwortlichkeitsbereiche](../../media/active-directory-v2-flows/convergence_scenarios_implicit.png)
 
-## Senden der Anmeldeanforderung
+## <a name="send-the-sign-in-request"></a>Senden der Anmeldeanforderung
 Zur anfänglichen Anmeldung des Benutzers bei Ihrer App können Sie eine [OpenID Connect](active-directory-v2-protocols-oidc.md)-Autorisierungsanforderung senden und ein `id_token` vom v2.0-Endpunkt abrufen:
 
 ```
@@ -84,7 +84,7 @@ Zu diesem Zeitpunkt wird der Benutzer dazu aufgefordert, seine Anmeldeinformatio
 
 Sobald der Benutzer authentifiziert ist und seine Zustimmung erteilt hat, gibt der v2.0-Endpunkt mithilfe der Methode im festgelegten `response_mode`-Parameter eine Antwort auf dem angegebenen `redirect_uri` an Ihre App zurück.
 
-#### Erfolgreiche Antwort
+#### <a name="successful-response"></a>Erfolgreiche Antwort
 Eine erfolgreiche Antwort mithilfe von `response_mode=fragment` und `response_type=id_token+token` sieht wie folgt aus, wobei die Zeilenumbrüche der Lesbarkeit dienen:
 
 ```
@@ -106,7 +106,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | id_token |Das ID-Token, das die Anwendung angefordert hat. Sie können mit dem ID-Token die Identität des Benutzers überprüfen und eine Sitzung mit dem Benutzer beginnen.  Weitere Informationen zu ID-Token und deren Inhalt finden Sie in der [Referenz für den v2.0-Endpunkttoken](active-directory-v2-tokens.md). |
 | state |Wenn ein Statusparameter in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die Statuswerte in der Anforderung und in der Antwort identisch sind. |
 
-#### Fehlerantwort
+#### <a name="error-response"></a>Fehlerantwort
 Fehlerantworten können auch an den `redirect_uri` gesendet werden, damit die App diese angemessen behandeln kann:
 
 ```
@@ -120,7 +120,7 @@ error=access_denied
 | error |Eine Fehlercodezeichenfolge, die verwendet werden kann, um unterschiedliche Arten auftretender Fehler zu klassifizieren und um auf Fehler zu reagieren. |
 | error_description |Eine spezifische Fehlermeldung, mit der Entwickler die Hauptursache eines Authentifizierungsfehlers identifizieren können. |
 
-## Überprüfen des ID-Tokens
+## <a name="validate-the-idtoken"></a>Überprüfen des ID-Tokens
 Das Empfangen eines ID-Tokens allein reicht nicht aus, um den Benutzer zu authentifizieren. Sie müssen die Signatur des ID-Tokens validieren und die Ansprüche im Token gemäß der App-Anforderungen überprüfen.  Der v2.0-Endpunkt verwendet [JSON-Webtoken (JSTs)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) und die Verschlüsselung mit öffentlichem Schlüssel, um Token zu signieren und deren Gültigkeit zu überprüfen.
 
 Sie können `id_token` auch im Clientcode überprüfen. Es ist jedoch eine bewährte Methode, `id_token` an einen Back-End-Server zu senden und die Überprüfung dort auszuführen.  Nachdem Sie die Signatur des ID-Tokens validiert haben, müssen Sie noch einige Ansprüche überprüfen.  Weitere Informationen finden Sie in der [v2.0-Tokenreferenz](active-directory-v2-tokens.md). Dort finden Sie auch Einzelheiten zum [Überprüfen von Token](active-directory-v2-tokens.md#validating-tokens) und wichtige Informationen zum Signaturschlüsselrollover ([Überprüfen der Signatur](active-directory-v2-tokens.md#validating-tokens)).  Wir empfehlen, zum Analysieren und Überprüfen von Token eine Bibliothek zu verwenden. Für die meisten Sprachen und Plattformen ist mindestens eine Bibliothek verfügbar.
@@ -136,7 +136,7 @@ Weitere Informationen zu den Ansprüchen in einem ID-Token finden Sie in der [To
 
 Nachdem Sie das ID-Token vollständig überprüft haben, können Sie mit dem Benutzer eine Sitzung beginnen und die Ansprüche im ID-Token zum Abrufen von Informationen über den Benutzer in der App verwenden.  Diese Informationen kann für die Anzeige, für Datensätze, für die Autorisierung usw. verwendet werden.
 
-## Abrufen von Zugriffstoken
+## <a name="get-access-tokens"></a>Abrufen von Zugriffstoken
 Nachdem Sie den Benutzer bei der einseitigen App angemeldet haben, können Sie Zugriffstoken zum Aufrufen der von Azure AD gesicherten Web-APIs abrufen, etwa [Microsoft Graph](https://graph.microsoft.io).  Auch wenn Sie mithilfe des Antworttyps `token` bereits ein Token erhalten haben, können Sie diese Methode zum Abrufen von Token für zusätzliche Ressourcen verwenden, ohne den Benutzer zur erneuten Anmeldung umzuleiten.
 
 Im herkömmlichen OpenID Connect/OAuth-Fluss senden Sie dazu eine Anforderung an den v2.0-Endpunkt `/token` .  Der v2.0-Endpunkt unterstützt jedoch keine CORS-Anforderungen, daher kommen AJAX-Aufrufe zum Abrufen und Aktualisieren von Token nicht infrage.  Stattdessen können Sie den impliziten Fluss in einem ausgeblendeten IFrame verwenden, um neue Token für andere Web-APIs zu erhalten: 
@@ -180,7 +180,7 @@ https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de7
 
 Dank des Parameters `prompt=none` ist diese Anforderung entweder erfolgreich oder sie schlägt direkt fehl und kehrt zu Ihrer Anwendung zurück.  Eine erfolgreiche Antwort wird an Ihre App an den angegebenen Umleitungs-URI (`redirect_uri`) gesendet. Dabei wird die im Parameter `response_mode` angegebene Methode verwendet.
 
-#### Erfolgreiche Antwort
+#### <a name="successful-response"></a>Erfolgreiche Antwort
 Eine erfolgreiche Antwort mit `response_mode=fragment` sieht wie folgt aus:
 
 ```
@@ -200,7 +200,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | expires_in |Gibt an, wie lange das Zugriffstoken (in Sekunden) gültig ist. |
 | Bereich |Die Bereiche, für die das Zugriffstoken gültig ist. |
 
-#### Fehlerantwort
+#### <a name="error-response"></a>Fehlerantwort
 Fehlerantworten können auch an den `redirect_uri` gesendet werden, damit die App diese angemessen behandeln kann:  Im Fall von `prompt=none` wird folgender Fehler erwartet:
 
 ```
@@ -216,10 +216,10 @@ error=user_authentication_required
 
 Wenn Sie diesen Fehler in der IFrame-Anforderung erhalten, muss sich der Benutzer erneut anmelden, um ein neues Token abzurufen.  Diesen Fall können Sie so behandeln, wie es für Ihre Anwendung am sinnvollsten ist.
 
-## Aktualisieren von Token
+## <a name="refreshing-tokens"></a>Aktualisieren von Token
 `id_token`s und `access_token`s laufen nach kurzer Zeit ab. Ihre App muss daher diese Token in regelmäßigen Abständen aktualisieren.  Zum Aktualisieren beider Tokentypen können Sie die oben erwähnte verborgene IFrame-Anforderung unter Verwendung des Parameters `prompt=none` ausführen, um das Verhalten von Azure AD zu steuern.  Wenn Sie ein neues `id_token` erhalten möchten, verwenden Sie unbedingt `response_type=id_token` und `scope=openid`, sowie den Parameter `nonce`.
 
-## Senden einer Abmeldungsanforderung
+## <a name="send-a-sign-out-request"></a>Senden einer Abmeldungsanforderung
 Die OpenIdConnect `end_session_endpoint` ermöglicht Ihrer App das Senden einer Anforderung an den v2.0-Endpunkt zum Beenden der Sitzung eines Benutzers und zum Löschen von Cookies, die vom v2.0-Endpunkt festgelegt wurden.  Um einen Benutzer vollständig von einer Webanwendung abzumelden, muss Ihre App ihre eigene Sitzung mit dem Benutzer beenden (in der Regel durch Löschen eines Tokencaches oder von Cookies) und dann den Browser zu folgender Adresse umleiten:
 
 ```

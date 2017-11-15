@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/06/2017
 ms.author: fimguy
-ms.openlocfilehash: 98eb9b3a58737da2436eed591d69a900166c6af9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6df124a38c748294e92183df272dc266a0afc51
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="connector-version-release-history"></a>Connector – Versionsveröffentlichungsverlauf
 Die Connectors für Forefront Identity Manager (FIM) und Microsoft Identity Manager (MIM) werden regelmäßig aktualisiert.
 
 > [!NOTE]
 > Dieses Thema behandelt nur FIM und MIM. Die Installation dieser Connectors wird für Azure AD Connect nicht unterstützt. Bei einem Upgrade auf den angegebenen Build werden veröffentlichte Connectors in AADConnect vorinstalliert.
+
 
 In diesem Thema sind alle veröffentlichten Connector-Versionen aufgeführt.
 
@@ -37,6 +38,29 @@ Verwandte Links:
 * [PowerShell-Connector](active-directory-aadconnectsync-connector-powershell.md) – Referenzdokumentation
 * [Lotus Domino-Connector](active-directory-aadconnectsync-connector-domino.md) – Referenzdokumentation
 
+## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
+
+### <a name="fixed-issues"></a>Behobene Probleme:
+
+* Lotus Notes:
+  * Option zum Filtern benutzerdefinierter Zertifizierer
+  * Beim Importieren der Klasse „ImportOperations“ wurde die Definition korrigiert, welche Vorgänge im Modus „Ansichten“ und im Modus „Suche“ ausgeführt werden können.
+* LDAP (generisch):
+  * Das Verzeichnis „OpenLDAP“ verwendet DN als Anker, statt „entryUUI“. Neue Option für den GLDAP-Connector, mit der der Anker geändert werden kann
+* SQL (generisch):
+  * Korrigierter Export in das Feld mit dem Typ „varbinary(max)“.
+  * Beim Hinzufügen von Binärdaten aus einer Datenquelle zum CSEntry-Objekt tritt ein Fehler bei der DataTypeConversion-Funktion bei null Bytes auf. Korrigierte DataTypeConversion-Funktion der CSEntryOperationBase-Klasse.
+
+
+
+
+### <a name="enhancements"></a>Verbesserungen:
+
+* SQL (generisch):
+  * Die Möglichkeit, den Modus zum Ausführen gespeicherter Prozeduren mit benannten oder nicht benannten Parametern zu konfigurieren, wurde in einem Konfigurationsfenster des Agents für die generische SQL-Verwaltung auf der Seite „Globale Parameter“ hinzugefügt. Auf der Seite „Globale Parameter“ gibt es ein Kontrollkästchen mit der Bezeichnung „Benannte Parameter zum Ausführen einer gespeicherten Prozedur verwenden“, das den Modus für die Ausführung gespeicherter Prozeduren mit oder ohne benannte Parameter steuert.
+    * Derzeit kann die Funktion zur Ausführung gespeicherter Prozeduren mit benannten Parametern nur für IBM DB2- und MSSQL-Datenbanken genutzt werden. Dieser Ansatz funktioniert für Oracle- und MySQL-Datenbanken nicht: 
+      * Die SQL-Syntax von MySQL unterstützt benannte Parameter in gespeicherten Prozeduren nicht.
+      * Der ODBC-Treiber für Oracle unterstützt benannte Parameter für benannte Parameter in gespeicherten Prozeduren nicht.
 
 ## <a name="116040-aadconnect-116140"></a>1.1.604.0 (AADConnect 1.1.614.0)
 
@@ -58,7 +82,7 @@ Verwandte Links:
     * Der Datei „WSConfigTool.exe.config“ kann ein Ersetzungsmuster hinzugefügt werden, z.B. ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```.
 
 * Lotus Notes:
-  * Wenn die Option zum Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten**** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. 
+  * Wenn die Option zum **Zulassen benutzerdefinierter Zertifizierer für Organisationen/Organisationseinheiten** deaktiviert ist, tritt für den Connector ein Fehler beim Export auf. Update: Nach dem Exportfluss werden alle Attribute in Domino exportiert, zum Zeitpunkt des Exports wird jedoch ein KeyNotFoundException-Fehler an Sync zurückgegeben. 
     * Der Grund: Beim Umbenennungsvorgang tritt ein Fehler auf, wenn versucht wird, DN (UserName-Attribut) durch Ändern eines der folgenden Attribute zu ändern:  
       - LastName
       - FirstName
@@ -203,6 +227,22 @@ Vor März 2016 wurden die Connectors als Support-Themen veröffentlicht.
 * [KB2932635](https://support.microsoft.com/kb/2932635) -5.3.1003, Februar 2014  
 * [KB2899874](https://support.microsoft.com/kb/2899874) -5.3.0721, Oktober 2013
 * [KB2875551](https://support.microsoft.com/kb/2875551) -5.3.0534, August 2013
+
+## <a name="troubleshooting"></a>Problembehandlung 
+
+> [!NOTE]
+> Beim Aktualisieren von Microsoft Identity Manager oder AADConnect mit Nutzung eines ECMA2-Connectors. 
+
+Sie müssen die Connectordefinition nach dem Upgrade entsprechend aktualisieren, oder Sie erhalten den folgenden Fehler im Ereignisprotokoll der Anwendung mit der Warnungs-ID 6947: „Assemblyversion in der AAD-Connector-Konfiguration („X.X.XXX.X“) ist älter als die aktuelle Version („X.X.XXX.X“) von „C:\Programme\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll“.“
+
+So aktualisieren Sie die Definition
+* Öffnen Sie die Eigenschaften für die Connectorinstanz.
+* Klicken Sie auf die Registerkarte „Verbindung/Verbinden mit“.
+  * Geben Sie das Kennwort für das Connectorkonto ein.
+* Klicken Sie nacheinander auf die einzelnen Eigenschaftenregisterkarten.
+  * Wenn dieser Connectortyp eine Registerkarte „Partitionen“ mit einer Schaltfläche „Aktualisieren“ aufweist, klicken Sie auf die Schaltfläche „Aktualisieren“ auf dieser Registerkarte.
+* Nachdem Sie auf alle Eigenschaftenregisterkarten zugegriffen haben, klicken Sie auf die Schaltfläche „OK“, um die Änderungen zu speichern.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](active-directory-aadconnectsync-whatis.md) .

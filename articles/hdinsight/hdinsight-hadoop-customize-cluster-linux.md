@@ -14,15 +14,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/06/2017
 ms.author: larryfr
-ms.openlocfilehash: 0c5d00b6cb9f68a1a0e474f81c969eb1b5654c67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f166158d09cd867718acecc6c97ce16b839f49bd
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
-# <a name="customize-linux-based-hdinsight-clusters-using-script-action"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
+# <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Anpassen Linux-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 
 HDInsight verfügt über eine Konfigurationsoption mit der Bezeichnung **Skriptaktion** , mit der benutzerdefinierte Skripts zum Anpassen des Clusters aufgerufen werden. Diese Skripts werden auch zum Installieren weitere Komponenten und zum Ändern von Konfigurationseinstellungen verwendet. Skriptaktionen können während oder nach der Clustererstellung verwendet werden.
 
@@ -40,7 +40,7 @@ Wenn Sie einen in die Domäne eingebundenen HDInsight-Cluster verwenden, sind be
 * **AMBARI.RUN\_CUSTOM\_COMMAND**: Die Rolle „Ambari-Administrator“ verfügt standardmäßig über diese Berechtigung.
 * **CLUSTER.RUN\_CUSTOM\_COMMAND**: Sowohl der HDInsight-Clusteradministrator als auch der Ambari-Administrator verfügt standardmäßig über diese Berechtigung.
 
-Weitere Informationen zur Verwendung von Berechtigungen mit in die Domäne eingebundenem HDInsight finden Sie unter [Manage Domain-joined HDInsight clusters (Preview)](hdinsight-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)).
+Weitere Informationen zur Verwendung von Berechtigungen mit in die Domäne eingebundenem HDInsight finden Sie unter [Manage Domain-joined HDInsight clusters (Preview)](./domain-joined/apache-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)).
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
@@ -55,7 +55,7 @@ Weitere Informationen zur Verwendung der Zugriffsverwaltung finden Sie in den fo
 
 ## <a name="understanding-script-actions"></a>Grundlegendes zu Skriptaktionen
 
-Eine Skriptaktion ist einfach ein Bash-Skript, für das Sie einen URI und die Parameter angeben. Das Skript wird dann auf den HDInsight-Clusterknoten ausgeführt. Unten sind die Merkmale und Features von Skriptaktionen aufgeführt.
+Eine Skriptaktion ist ein Bash-Skript, für das Sie einen URI und Parameter angeben. Das Skript wird dann auf den HDInsight-Clusterknoten ausgeführt. Unten sind die Merkmale und Features von Skriptaktionen aufgeführt.
 
 * Sie müssen als URI gespeichert werden, der über den HDInsight-Cluster verfügbar ist. Dies sind zwei mögliche Speicherorte:
 
@@ -150,7 +150,7 @@ Beim Anwenden eines Skripts auf einen Cluster ändert sich der Clusterstatus fü
 > [!NOTE]
 > Wenn Sie nach dem Erstellen des Clusters das Kennwort für den Clusterbenutzer (Admin) ändern, können Skriptaktionen, die für diesen Cluster ausgeführt werden, möglicherweise Fehler verursachen. Wenn Sie Skriptaktionen beibehalten, deren Ziel Workerknoten sind, können sie zu Fehlern führen, wenn Sie den Cluster skalieren.
 
-## <a name="example-script-action-scripts"></a>Script Action-Beispielskripts
+## <a name="example-script-action-scripts"></a>Beispielskripts für Skriptaktionen
 
 Skripts für Skriptaktionen können über die folgenden Hilfsprogramme verwendet werden:
 
@@ -213,227 +213,27 @@ Dieser Abschnitt enthält Beispiele für die verschiedenen Möglichkeiten der Ve
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Verwenden einer Skriptaktion über Azure Resource Manager-Vorlagen
 
-In den Beispielen in diesem Abschnitt wird veranschaulicht, wie Skriptaktionen mit Azure Resource Manager-Vorlagen verwendet werden.
+Skriptaktionen können mit Azure Resource Manager-Vorlagen verwendet werden. Ein Beispiel finden Sie unter [https://azure.microsoft.com/resources/templates/hdinsight-linux-run-script-action/](https://azure.microsoft.com/en-us/resources/templates/hdinsight-linux-run-script-action/).
 
-#### <a name="before-you-begin"></a>Voraussetzungen
+In diesem Beispiel wird die Skriptaktion mit dem folgenden Code hinzugefügt:
 
-* Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight Powershell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure-PowerShell](/powershell/azure/overview).
-* Anweisungen zum Erstellen von Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
-* Wenn Sie Azure PowerShell noch nicht mit dem Resource Manager verwendet haben, finden Sie unter [Verwenden von Windows PowerShell mit dem Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)weitere Informationen.
-
-#### <a name="create-clusters-using-script-action"></a>Erstellen von Clustern mithilfe von Skriptaktionen
-
-1. Kopieren Sie die folgende Vorlage in einen Speicherort auf Ihrem Computer. Mit dieser Vorlage wird Giraph auf den Haupt- und Workerknoten im Cluster installiert. Sie können zudem überprüfen, ob die JSON-Vorlage gültig ist. Fügen Sie den Vorlageninhalt in [JSONLint](http://jsonlint.com/)(ein JSON-Onlineüberprüfungstool) ein.
-
-            {
-            "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-            "contentVersion": "1.0.0.0",
-            "parameters": {
-                "clusterLocation": {
-                    "type": "string",
-                    "defaultValue": "West US",
-                    "allowedValues": [ "West US" ]
-                },
-                "clusterName": {
-                    "type": "string"
-                },
-                "clusterUserName": {
-                    "type": "string",
-                    "defaultValue": "admin"
-                },
-                "clusterUserPassword": {
-                    "type": "securestring"
-                },
-                "sshUserName": {
-                    "type": "string",
-                    "defaultValue": "username"
-                },
-                "sshPassword": {
-                    "type": "securestring"
-                },
-                "clusterStorageAccountName": {
-                    "type": "string"
-                },
-                "clusterStorageAccountResourceGroup": {
-                    "type": "string"
-                },
-                "clusterStorageType": {
-                    "type": "string",
-                    "defaultValue": "Standard_LRS",
-                    "allowedValues": [
-                        "Standard_LRS",
-                        "Standard_GRS",
-                        "Standard_ZRS"
-                    ]
-                },
-                "clusterStorageAccountContainer": {
-                    "type": "string"
-                },
-                "clusterHeadNodeCount": {
-                    "type": "int",
-                    "defaultValue": 1
-                },
-                "clusterWorkerNodeCount": {
-                    "type": "int",
-                    "defaultValue": 2
-                }
-            },
-            "variables": {
-            },
-            "resources": [
-                {
-                    "name": "[parameters('clusterStorageAccountName')]",
-                    "type": "Microsoft.Storage/storageAccounts",
-                    "location": "[parameters('clusterLocation')]",
-                    "apiVersion": "2015-05-01-preview",
-                    "dependsOn": [ ],
-                    "tags": { },
-                    "properties": {
-                        "accountType": "[parameters('clusterStorageType')]"
-                    }
-                },
-                {
-                    "name": "[parameters('clusterName')]",
-                    "type": "Microsoft.HDInsight/clusters",
-                    "location": "[parameters('clusterLocation')]",
-                    "apiVersion": "2015-03-01-preview",
-                    "dependsOn": [
-                        "[concat('Microsoft.Storage/storageAccounts/', parameters('clusterStorageAccountName'))]"
-                    ],
-                    "tags": { },
-                    "properties": {
-                        "clusterVersion": "3.2",
-                        "osType": "Linux",
-                        "clusterDefinition": {
-                            "kind": "hadoop",
-                            "configurations": {
-                                "gateway": {
-                                    "restAuthCredential.isEnabled": true,
-                                    "restAuthCredential.username": "[parameters('clusterUserName')]",
-                                    "restAuthCredential.password": "[parameters('clusterUserPassword')]"
-                                }
-                            }
-                        },
-                        "storageProfile": {
-                            "storageaccounts": [
-                                {
-                                    "name": "[concat(parameters('clusterStorageAccountName'),'.blob.core.windows.net')]",
-                                    "isDefault": true,
-                                    "container": "[parameters('clusterStorageAccountContainer')]",
-                                    "key": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('clusterStorageAccountName')), '2015-05-01-preview').key1]"
-                                }
-                            ]
-                        },
-                        "computeProfile": {
-                            "roles": [
-                                {
-                                    "name": "headnode",
-                                    "targetInstanceCount": "[parameters('clusterHeadNodeCount')]",
-                                    "hardwareProfile": {
-                                        "vmSize": "Large"
-                                    },
-                                    "osProfile": {
-                                        "linuxOperatingSystemProfile": {
-                                            "username": "[parameters('sshUserName')]",
-                                            "password": "[parameters('sshPassword')]"
-                                        }
-                                    },
-                                    "scriptActions": [
-                                        {
-                                            "name": "installGiraph",
-                                            "uri": "https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh",
-                                            "parameters": ""
-                                        }
-                                    ]
-                                },
-                                {
-                                    "name": "workernode",
-                                    "targetInstanceCount": "[parameters('clusterWorkerNodeCount')]",
-                                    "hardwareProfile": {
-                                        "vmSize": "Large"
-                                    },
-                                    "osProfile": {
-                                        "linuxOperatingSystemProfile": {
-                                            "username": "[parameters('sshUserName')]",
-                                            "password": "[parameters('sshPassword')]"
-                                        }
-                                    },
-                                    "scriptActions": [
-                                        {
-                                            "name": "installR",
-                                            "uri": "https://hdiconfigactions.blob.core.windows.net/linuxrconfigactionv01/r-installer-v01.sh",
-                                            "parameters": ""
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
-                    }
-                }
-            ],
-            "outputs": {
-                "cluster":{
-                    "type" : "object",
-                    "value" : "[reference(resourceId('Microsoft.HDInsight/clusters',parameters('clusterName')))]"
-                }
-            }
+    "scriptActions": [
+        {
+            "name": "setenvironmentvariable",
+            "uri": "[parameters('scriptActionUri')]",
+            "parameters": "headnode"
         }
-2. Starten Sie Azure PowerShell, und melden Sie sich bei Ihrem Azure-Konto an. Nach der Eingabe Ihrer Anmeldeinformationen gibt der Befehl die Informationen zu Ihrem Konto zurück.
+    ]
 
-        Add-AzureRmAccount
+Weitere Informationen zum Bereitstellen einer Vorlage finden Sie in den folgenden Dokumenten:
 
-        Id                             Type       ...
-        --                             ----
-        someone@example.com            User       ...
-3. Wenn Sie über mehrere Abonnements verfügen, geben Sie die Abonnement-ID ein, die Sie für die Bereitstellung verwenden möchten.
+* [Bereitstellen von Ressourcen mit Vorlagen und Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 
-        Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
-
-    > [!NOTE]
-    > Sie können `Get-AzureRmSubscription` verwenden, um eine Liste aller Abonnements abzurufen, die Ihrem Konto zugeordnet sind, einschließlich der Abonnement-ID jedes Abonnements.
-
-4. Erstellen Sie eine Ressourcengruppe, wenn noch keine vorhanden ist. Geben Sie den Namen der Ressourcengruppe und des gewünschten Speicherorts ein. Es wird eine Zusammenfassung der neuen Ressourcengruppe zurückgegeben.
-
-        New-AzureRmResourceGroup -Name myresourcegroup -Location "West US"
-
-        ResourceGroupName : myresourcegroup
-        Location          : westus
-        ProvisioningState : Succeeded
-        Tags              :
-        Permissions       :
-                            Actions  NotActions
-                            =======  ==========
-                            *
-        ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
-
-5. Führen Sie zum Erstellen einer Bereitstellung für die Ressourcengruppe den Befehl **New-AzureRmResourceGroupDeployment** aus, und geben Sie die erforderlichen Parameter ein. Die Parameter enthalten die folgenden Daten:
-
-    * Einen Namen für Ihre Bereitstellung
-    * Den Namen Ihrer Ressourcengruppe
-    * Den Pfad oder die URL für die erstellte Vorlage
-
-  Wenn Ihre Vorlage Parameter erfordert, müssen Sie auch diese Parameter übergeben. In diesem Fall sind für die Skriptaktion zum Installieren von R auf dem Cluster keine Parameter erforderlich.
-
-        New-AzureRmResourceGroupDeployment -Name mydeployment -ResourceGroupName myresourcegroup -TemplateFile <PathOrLinkToTemplate>
-
-    Sie werden aufgefordert, Werte für die in der Vorlage definierten Parameter anzugeben.
-
-1. Wenn die Ressourcengruppe bereitgestellt wurde, wird eine Zusammenfassung der Bereitstellung angezeigt.
-
-          DeploymentName    : mydeployment
-          ResourceGroupName : myresourcegroup
-          ProvisioningState : Succeeded
-          Timestamp         : 8/14/2017 7:00:27 PM
-          Mode              : Incremental
-          ...
-
-2. Wenn die Bereitstellung fehlschlägt, können Sie mithilfe der folgenden Cmdlets Informationen zu den Fehlern abrufen.
-
-        Get-AzureRmResourceGroupDeployment -ResourceGroupName myresourcegroup -ProvisioningState Failed
+* [Bereitstellen von Ressourcen mit Vorlagen und der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>Verwenden einer Skriptaktion während der Clustererstellung mit Azure PowerShell
 
-In diesem Abschnitt verwenden wir das Cmdlet [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx) , um Skripts mithilfe von „Skriptaktion“ zum Anpassen eines Clusters aufzurufen. Stellen Sie vor dem Fortfahren sicher, dass Azure PowerShell installiert und konfiguriert ist. Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+In diesem Abschnitt verwenden Sie das Cmdlet [Add-AzureRmHDInsightScriptAction](https://msdn.microsoft.com/library/mt603527.aspx), um Skripts zum Anpassen eines Clusters aufzurufen. Stellen Sie vor dem Fortfahren sicher, dass Azure PowerShell installiert und konfiguriert ist. Weitere Informationen zum Konfigurieren einer Arbeitsstation für die Ausführung von HDInsight PowerShell-Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 Das folgende Skript zeigt, wie Sie eine Skriptaktion anwenden, wenn Sie einen Cluster mithilfe von PowerShell erstellen:
 
@@ -535,7 +335,7 @@ Stellen Sie vor dem Fortfahren sicher, dass die Azure-CLI installiert und konfig
 
 ### <a name="apply-a-script-action-to-a-running-cluster-using-rest-api"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster mithilfe einer REST-API
 
-Informationen hierzu finden Sie unter [Ausführen von Skriptaktionen in einem ausgeführten Cluster](https://msdn.microsoft.com/library/azure/mt668441.aspx).
+Weitere Informationen finden Sie unter [Ausführen von Skriptaktionen in einem ausgeführten Cluster](https://msdn.microsoft.com/library/azure/mt668441.aspx).
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-hdinsight-net-sdk"></a>Anwenden einer Skriptaktion auf einen ausgeführten Cluster über das HDInsight .NET SDK
 
@@ -647,7 +447,7 @@ Der HDInsight-Dienst bietet mehrere Möglichkeiten, benutzerdefinierte Komponent
 
 ### <a name="access-logs-from-the-default-storage-account"></a>Rufen Sie Protokolle über das Standardspeicherkonto auf.
 
-Wenn bei der Clustererstellung aufgrund eines Fehlers in einer Skriptaktion ein Fehler auftritt, können Sie über das Clusterspeicherkonto auf die Protokolle zugreifen.
+Wenn bei der Clustererstellung aufgrund eines Fehlers in einem Skript ein Fehler auftritt, finden Sie die Protokolle im Clusterspeicherkonto.
 
 * Die Speicherprotokolle stehen unter `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`zur Verfügung.
 
@@ -703,7 +503,7 @@ Informationen zum Herstellen einer Verbindung mit dem Cluster per SSH finden Sie
 
 ### <a name="history-doesnt-show-scripts-used-during-cluster-creation"></a>Verlauf zeigt keine Skripts an, die bei der Clustererstellung verwendet wurden
 
-Wenn der Cluster vor dem 15. März 2016 erstellt wurde, wird im Verlauf der Skriptaktionen unter Umständen kein Eintrag angezeigt. Wenn Sie nach dem 15. März 2016 die Größe des Clusters ändern, werden die während der Clustererstellung verwendeten Skripts im Verlauf angezeigt, wenn sie im Rahmen der Größenänderung auf neue Knoten im Cluster angewendet werden.
+Wenn der Cluster vor dem 15. März 2016 erstellt wurde, wird im Verlauf der Skriptaktionen unter Umständen kein Eintrag angezeigt. Durch das Ändern der Größe des Clusters werden die Skripts im Skriptaktionsverlaufs angezeigt.
 
 Hierfür gelten zwei Ausnahmen:
 
@@ -715,7 +515,7 @@ Hierfür gelten zwei Ausnahmen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Entwickeln von Script Action-Skripts für HDInsight](hdinsight-hadoop-script-actions-linux.md)
+* [Entwickeln von Skriptaktionsskripts für HDInsight](hdinsight-hadoop-script-actions-linux.md)
 * [Installieren und Verwenden von Solr in HDInsight-Clustern](hdinsight-hadoop-solr-install-linux.md)
 * [Installieren und Verwenden von Giraph in HDInsight-Clustern](hdinsight-hadoop-giraph-install-linux.md)
 * [Hinzufügen von zusätzlichem Speicher zu einem HDInsight-Cluster](hdinsight-hadoop-add-storage.md)

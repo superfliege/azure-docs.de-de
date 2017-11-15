@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 08/10/2017
-ms.openlocfilehash: 3a76e816f9b1fa484789f548899d7e8e7043febb
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 11/03/2017
+ms.openlocfilehash: b78009a4b2683bb7ee881808ddbbc792d66dea6c
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Erstellen eines Azure-Datenbank für PostgreSQL-Servers im Azure-Portal
 
@@ -151,7 +151,7 @@ Es gibt verschiedene Anwendungen, mit denen Sie eine Verbindung mit Ihrem Azure-
     > [!TIP]
     > Wenn die Firewall nicht zum Zulassen der IP-Adresse von Cloud Shell konfiguriert ist, tritt der folgende Fehler auf:
     > 
-    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required.Specify SSL options and retry.
+    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required. Specify SSL options and retry.
     > 
     > Vergewissern Sie sich zur Behebung des Fehlers, dass die Serverkonfiguration gemäß den Schritten im Abschnitt „Konfigurieren einer Firewallregel auf Serverebene“ in diesem Artikel durchgeführt wurde.
 
@@ -199,13 +199,13 @@ So stellen Sie eine Verbindung mit dem Azure-PostgreSQL-Server mithilfe des GUI-
 
 6. Erweitern Sie im linken Bereich **Browser** den Knoten **Server**. Wählen Sie Ihren Server aus (z.B. **Azure PostgreSQL Server**). Durch Klicken stellen Sie eine Verbindung her.
 
-7. Erweitern Sie den Serverknoten und anschließend darunter den Eintrag **Datenbanken**. Die Liste sollte Ihre vorhandene *postgres*-Datenbank und alle im vorherigen Abschnitt neu erstellten Benutzerdatenbanken enthalten, beispielsweise **mypgsqldb**. Beachten Sie, dass Sie mit Azure-Datenbank für PostgreSQL mehrere Datenbanken pro Server erstellen können.
+7. Erweitern Sie den Serverknoten und anschließend darunter den Eintrag **Datenbanken**. Die Liste sollte Ihre vorhandene *postgres*-Datenbank und alle im vorherigen Abschnitt neu erstellten Benutzerdatenbanken, beispielsweise **mypgsqldb**, enthalten. Beachten Sie, dass Sie mit Azure-Datenbank für PostgreSQL mehrere Datenbanken pro Server erstellen können.
 
 8. Klicken Sie mit der rechten Maustaste auf **Datenbanken**, wählen Sie das Menü **Erstellen** und dann **Datenbank** aus.
 
 9. Geben Sie einen Datenbanknamen Ihrer Wahl in das Feld **Datenbank** ein, etwa **mypgsqldb** wie im gezeigten Beispiel.
 
-10. Wählen Sie im Listenfeld den **Besitzer** der Datenbank aus. Wählen Sie den Anmeldenamen des Serveradministrators aus (in unserem Beispiel **mylogin**).
+10. Wählen Sie im Listenfeld den **Besitzer** der Datenbank aus. Wählen Sie den Anmeldenamen des Serveradministrators aus (in diesem Beispiel **mylogin**).
 
 11. Wählen Sie **Speichern** aus, um eine neue leere Datenbank zu erstellen.
 
@@ -221,9 +221,9 @@ Die im Rahmen dieser Schnellstartanleitung erstellten Ressourcen können auf zwe
 > Andere Schnellstartanleitungen in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie weitere Schnellstartanleitungen verwenden möchten, überspringen Sie die Bereinigung der in dieser Schnellstartanleitung erstellten Ressourcen. Falls Sie nicht fortfahren möchten, können Sie die in dieser Schnellstartanleitung erstellten Ressourcen anhand der folgenden Schritte im Azure-Portal löschen.
 
 So löschen Sie die gesamte Ressourcengruppe, einschließlich des neu erstellten Servers
-1. Navigieren Sie im Portal zu Ihrer Ressourcengruppe. Wählen Sie im Menü auf der linken Seite **Ressourcengruppen** aus. Wählen Sie anschließend den Namen Ihrer Ressourcengruppe (in unserem Beispiel **myresourcegroup**) aus.
+1. Navigieren Sie im Portal zu Ihrer Ressourcengruppe. Wählen Sie im Menü auf der linken Seite **Ressourcengruppen** aus. Wählen Sie anschließend den Namen Ihrer Ressourcengruppe (in diesem Beispiel **myresourcegroup**) aus.
 
-2. Wählen Sie auf der Ressourcengruppenseite die Option **Löschen** aus. Geben Sie dann den Namen der Ressourcengruppe (in unserem Beispiel **myresourcegroup**) in das Textfeld ein, um das Löschen zu bestätigen. Klicken Sie auf **Löschen**.
+2. Wählen Sie auf der Ressourcengruppenseite die Option **Löschen** aus. Geben Sie dann den Namen der Ressourcengruppe (in diesem Beispiel **myresourcegroup**) in das Textfeld ein, um das Löschen zu bestätigen. Klicken Sie auf **Löschen**.
 
 So löschen Sie ausschließlich den neu erstellten Server
 1. Navigieren Sie im Portal zu Ihrem Server, falls er nicht geöffnet ist. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Suchen Sie anschließend nach dem Server, den Sie erstellt haben.
@@ -232,7 +232,7 @@ So löschen Sie ausschließlich den neu erstellten Server
 
     ![Die Schaltfläche „Löschen“](./media/quickstart-create-database-portal/12-delete.png)
 
-3. Bestätigen Sie den Servernamen, den Sie löschen möchten, und zeigen Sie die betroffenen Datenbanken auf diesem Server an. Geben Sie den Servernamen (in unserem Beispiel **mypgserver-20170401**) in das Textfeld ein. Klicken Sie auf **Löschen**.
+3. Bestätigen Sie den Servernamen, den Sie löschen möchten, und zeigen Sie die betroffenen Datenbanken auf diesem Server an. Geben Sie den Servernamen (in diesem Beispiel **mypgserver-20170401**) in das Textfeld ein. Klicken Sie auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

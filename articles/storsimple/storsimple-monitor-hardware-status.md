@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 93df79c9d349c294b692148a19c9d881c4de4f7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 686a4faf37342e844f3aa0166d9311a438fa753a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-monitor-hardware-components-and-status"></a>Überwachen von Hardwarekomponenten und Status mithilfe des StorSimple Manager-Diensts
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikel für das neue Azure-Portal finden Sie unter [Überwachen von Hardwarekomponenten und Status mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-monitor-hardware-status.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Dieser Artikel beschreibt die verschiedenen physischen und logischen Komponenten Ihres lokalen StorSimple-Geräts. Darüber hinaus wird erläutert, wie Sie den Status der Gerätekomponenten auf der Seite **Wartung** des StorSimple Manager-Diensts überwachen. 
 
@@ -54,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um den Hardwarestatus einer Gerätekompo
    * **Gelb**: Für die Komponente liegt eine **Warnung** vor.
    * **Rotes Ausrufezeichen**: Der Status der Komponente lautet **Fehlerhaft** oder **Eingreifen erforderlich**.
    * **Weiß mit schwarzem Text** : Die Komponente ist nicht vorhanden.
-4. Sollte sich eine Komponente nicht in einem fehlerfreien **** Zustand befinden, wenden Sie sich an den Support von Microsoft. Sind Warnungen auf dem Gerät aktiviert, werden Sie per E-Mail benachrichtigt. Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
+4. Sollte sich eine Komponente nicht in einem **fehlerfreien** Zustand befinden, wenden Sie sich an den Support von Microsoft. Sind Warnungen auf dem Gerät aktiviert, werden Sie per E-Mail benachrichtigt. Informationen zum Austauschen fehlerhafter Hardwarekomponenten finden Sie unter [Austausch von StorSimple-Hardwarekomponenten](storsimple-hardware-component-replacement.md).
 
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>Komponentenliste für das primäre Gehäuse eines StorSimple-Geräts
 Die folgende Tabelle gibt Aufschluss über die physischen und logischen Komponenten im primären Gehäuse Ihres lokalen StorSimple-Geräts.

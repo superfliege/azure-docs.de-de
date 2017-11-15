@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/03/2017
 ms.author: larryfr
-ms.openlocfilehash: 934de9ca2df48b29ef7a56d5729d59d77875ea7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a0dd7388b3fa7517b97f4dd66eb121ebfd98d4a4
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-hadoop-in-hdinsight-powershell"></a>Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Hadoop in HDInsight (PowerShell)
 
@@ -32,8 +32,8 @@ Erfahren Sie, wie Sie Filmempfehlungen mit der [Apache Mahout](http://mahout.apa
 
 * Ein Linux-basierter HDInsight-Cluster. Informationen zu dessen Erstellung finden Sie unter [Erste Schritte mit Linux-basiertem Hadoop in HDInsight][getstarted].
 
-> [!IMPORTANT]
-> Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
+    > [!IMPORTANT]
+    > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
 
 * [Azure PowerShell](/powershell/azure/overview)
 
@@ -42,7 +42,7 @@ Erfahren Sie, wie Sie Filmempfehlungen mit der [Apache Mahout](http://mahout.apa
 > [!WARNING]
 > Der Auftrag in diesem Abschnitt verwendet Azure PowerShell. Viele der mit Mahout bereitgestellten Klassen funktionieren derzeit mit Azure PowerShell nicht. Eine Liste der Klassen, die nicht mit Azure PowerShell funktionieren, finden Sie im Abschnitt [Problembehandlung](#troubleshooting).
 >
-> Ein Beispiel für die Verwendung von SSH zum Herstellen einer Verbindung mit HDInsight und zum Ausführen von Mahout-Beispielen direkt im Cluster finden Sie unter [Erstellen von Filmempfehlungen mit Mahout und HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
+> Ein Beispiel für die Verwendung von SSH zum Herstellen einer Verbindung mit HDInsight und zum Ausführen von Mahout-Beispielen direkt im Cluster finden Sie unter [Erstellen von Filmempfehlungen mit Mahout und HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 Eine der von Mahout bereitgestellten Funktionen ist ein Empfehlungsmodul. Dieses Modul akzeptiert Daten im Format `userID`, `itemId` und `prefValue` (Benutzervoreinstellung für das Element). Mahout verwendet die Daten, um die Benutzer mit ähnlichen Vorlieben für Elemente zu ermitteln, aus denen sich Empfehlungen erstellen lassen.
 
@@ -56,16 +56,16 @@ Das folgende Beispiel ist eine vereinfachte exemplarische Vorgehensweise der Fun
 
 ### <a name="understanding-the-data"></a>Grundlegendes zu den Daten
 
-[GroupLens Research][movielens] stellt Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples//HdiSamples/MahoutMovieData` verfügbar.
+[GroupLens Research][movielens] stellt Bewertungsdaten für Filme in einem Mahout-kompatiblen Format zur Verfügung. Diese Daten sind im Standardspeicher Ihres Clusters unter `/HdiSamples/HdiSamples/MahoutMovieData` verfügbar.
 
 Es existieren zwei Dateien, `moviedb.txt` (Informationen zu den Filmen) und `user-ratings.txt`. Die Datei `user-ratings.txt` wird während der Analyse verwendet. Die Datei `moviedb.txt` wird verwendet, um beim Anzeigen der Ergebnisse der Analyse benutzerfreundliche Texte bereitzustellen.
 
-Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben die Struktur von `userID`, `movieID`, `userRating` und `timestamp`, anhand der die Bewertung eines Films durch die einzelnen Benutzer ersichtlich wird. Hier sehen Sie ein Beispiel für die Daten:
+Die Daten in der Datei „user-ratings.txt“ der Benutzerbewertung haben die Struktur `userID`, `movieID`, `userRating` und `timestamp`, anhand der die Bewertung eines Films durch die einzelnen Benutzer ersichtlich wird. Hier sehen Sie ein Beispiel für die Daten:
 
     196    242    3    881250949
     186    302    3    891717742
-    22    377    1    878887116
-    244    51    2    880606923
+    22     377    1    878887116
+    244    51     2    880606923
     166    346    1    886397596
 
 ### <a name="run-the-job"></a>Ausführen des Auftrags
@@ -208,21 +208,21 @@ Mahout-Aufträge, die die folgenden Klassen verwenden, geben zahlreiche Fehlerme
 * org.apache.mahout.classifier.sequencelearning.hmm.RandomSequenceGenerator
 * org.apache.mahout.classifier.df.tools.Describe
 
-Um Aufträge auszuführen, die diese Klassen verwenden, stellen Sie über SSH eine Verbindung mit dem HDInsight-Cluster her, und führen Sie die Aufträge über die Befehlszeile aus. Ein Beispiel für die Ausführung von Mahout-Aufträgen über SSH finden Sie unter [Erstellen von Filmempfehlungen mit Mahout und HDInsight (SSH)](hdinsight-hadoop-mahout-linux-mac.md).
+Um Aufträge auszuführen, die diese Klassen verwenden, stellen Sie über SSH eine Verbindung mit dem HDInsight-Cluster her, und führen Sie die Aufträge über die Befehlszeile aus. Ein Beispiel für die Ausführung von Mahout-Aufträgen über SSH finden Sie unter [Erstellen von Filmempfehlungen mit Mahout und HDInsight (SSH)](hadoop/apache-hadoop-mahout-linux-mac.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie sich mit Mahout vertraut gemacht haben, können Sie sich anderen Methoden der Datenverarbeitung in HDInsight zuwenden:
 
-* [Hive mit HDInsight](hdinsight-use-hive.md)
-* [Pig mit HDInsight](hdinsight-use-pig.md)
-* [MapReduce mit HDInsight](hdinsight-use-mapreduce.md)
+* [Hive mit HDInsight](hadoop/hdinsight-use-hive.md)
+* [Pig mit HDInsight](hadoop/hdinsight-use-pig.md)
+* [MapReduce mit HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 [build]: http://mahout.apache.org/developers/buildingmahout.html
 [aps]: /powershell/azureps-cmdlets-docs
 [movielens]: http://grouplens.org/datasets/movielens/
 [100k]: http://files.grouplens.org/datasets/movielens/ml-100k.zip
-[getstarted]: hdinsight-hadoop-linux-tutorial-get-started.md
+[getstarted]:hadoop/apache-hadoop-linux-tutorial-get-started.md
 [upload]: hdinsight-upload-data.md
 [ml]: http://en.wikipedia.org/wiki/Machine_learning
 [forest]: http://en.wikipedia.org/wiki/Random_forest

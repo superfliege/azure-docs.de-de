@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/02/2017
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: cdb5fdb094a185db12ee08969a12e556dab96389
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 40b29ccb454caf5462807d6c24ca3f470865d368
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>Erstellen einer .NET Service Fabric-Anwendung in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -87,30 +87,30 @@ Beim Abstimmen in der Anwendung treten die folgenden Ereignisse ein:
 3. Der Back-End-Dienst erhält die eingehende Anforderung und speichert das aktualisierte Ergebnis in einem zuverlässigen Wörterbuch, das auf mehreren Knoten im Cluster repliziert und dauerhaft auf dem Datenträger gespeichert wird. Alle Daten der Anwendung werden im Cluster gespeichert, sodass keine Datenbank erforderlich ist.
 
 ## <a name="debug-in-visual-studio"></a>Debuggen in Visual Studio
-Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Sie haben die Möglichkeit, Ihre Oberfläche für das Debuggen an Ihr Szenario anzupassen. In dieser Anwendung speichern wir Daten in unserem Back-End-Dienst, indem wir ein zuverlässiges Wörterbuch verwenden. Standardmäßig wird die Anwendung von Visual Studio entfernt, wenn Sie den Debugger beenden. Die Entfernung der Anwendung führt dazu, dass auch die Daten im Back-End-Dienst entfernt werden. Um die Daten zwischen den Debugsitzungen beizubehalten, können Sie den **Debugmodus für die Anwendung** als Eigenschaft im Projekt **Voting** in Visual Studio ändern.
+Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service Fabric-Entwicklungscluster. Sie haben die Möglichkeit, Ihre Oberfläche für das Debuggen an Ihr Szenario anzupassen. In dieser Anwendung werden Daten mithilfe eines zuverlässigen Wörterbuchs in einem Back-End-Dienst gespeichert. Standardmäßig wird die Anwendung von Visual Studio entfernt, wenn Sie den Debugger beenden. Die Entfernung der Anwendung führt dazu, dass auch die Daten im Back-End-Dienst entfernt werden. Um die Daten zwischen den Debugsitzungen beizubehalten, können Sie den **Debugmodus für die Anwendung** als Eigenschaft im Projekt **Voting** in Visual Studio ändern.
 
 Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
-1. Öffnen Sie die Datei **VotesController.cs**, und legen Sie in der **Put**-Methode der Web-API (Zeile 47) einen Breakpoint fest. Sie können in Visual Studio im Projektmappen-Explorer nach der Datei suchen.
+1. Öffnen Sie die Datei **/VotingWeb/Controllers/VotesController.cs**, und legen Sie in der **Put**-Methode der Web-API (Zeile 47) einen Breakpoint fest. Sie können in Visual Studio im Projektmappen-Explorer nach der Datei suchen.
 
-2. Öffnen Sie die Datei **VoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 50) einen Breakpoint fest.
+2. Öffnen Sie die Datei **/VotingData/ControllersVoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 50) einen Breakpoint fest.
 
 3. Wechseln Sie zurück in den Browser, und klicken Sie auf eine Abstimmungsoption, oder fügen Sie eine neue Abstimmungsoption hinzu. Sie stoßen im API-Controller des Web-Front-Ends auf den ersten Breakpoint.
     - An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
     
     ![Front-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    - Zunächst erstellen wir die URL zum Reverseproxy für unseren Back-End-Dienst **(1)**.
-    - Anschließend senden wir die HTTP-Anforderung PUT an den Reverseproxy **(2)**.
-    - Zum Schluss geben wir die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
+    - Erstellen Sie zunächst die URL zum Reverseproxy für den Back-End-Dienst **(1)**.
+    - Senden Sie anschließend die HTTP-Anforderung PUT an den Reverseproxy **(2)**.
+    - Geben Sie zum Schluss die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
 
 4. Drücken Sie **F5**, um fortzufahren.
     - Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
     
     ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    - In der ersten Zeile der Methode **(1)** verwenden wir das `StateManager`-Element, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
+    - In der ersten Zeile der Methode **(1)** wird das `StateManager`-Element verwendet, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
     - Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
-    - In der Transaktion aktualisieren wir dann den Wert des relevanten Schlüssels für die Abstimmungsoption und committen den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
+    - Aktualisieren Sie in der Transaktion den Wert des relevanten Schlüssels für die Abstimmungsoption, und committen Sie den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
 5. Drücken Sie **F5**, um fortzufahren.
 
 Drücken Sie **UMSCHALT+F5**, um die Debugsitzung zu beenden.
@@ -143,7 +143,7 @@ Nachdem die Anwendung nun bereit ist, können Sie sie direkt aus Visual Studio i
 ![Front-End der Anwendung](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 
 ## <a name="scale-applications-and-services-in-a-cluster"></a>Skalieren von Anwendungen und Diensten in einem Cluster
-Service Fabric-Dienste können für einen Cluster auf einfache Weise skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Sie haben mehrere Möglichkeiten, Ihre Dienste zu skalieren. Sie können Skripts oder Befehle aus PowerShell oder der Service Fabric CLI (sfctl) verwenden. In diesem Beispiel verwenden wir Service Fabric Explorer.
+Service Fabric-Dienste können für einen Cluster auf einfache Weise skaliert werden, um eine Änderung der Last für die Dienste auszugleichen. Sie skalieren einen Dienst, indem Sie die Anzahl von Instanzen ändern, die im Cluster ausgeführt werden. Sie haben mehrere Möglichkeiten, Ihre Dienste zu skalieren. Sie können Skripts oder Befehle aus PowerShell oder der Service Fabric CLI (sfctl) verwenden. In diesem Beispiel verwenden Sie Service Fabric Explorer.
 
 Service Fabric Explorer wird in allen Service Fabric-Clustern ausgeführt und ist über einen Browser zugänglich, indem auf den HTTP-Verwaltungsport (19080) der Cluster zugegriffen wird, z.B. `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
 
@@ -161,22 +161,17 @@ Führen Sie die folgenden Schritte aus, um den Web-Front-End-Dienst zu skalieren
 
     ![Service Fabric Explorer – Dienst skalieren](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scaled-service.png)
 
-    Sie sehen nun, dass der Dienst über zwei Instanzen verfügt, und in der Strukturansicht ist zu erkennen, auf welchen Knoten die Instanzen ausgeführt werden.
+    Nach einer Verzögerung sehen Sie, dass der Dienst über zwei Instanzen verfügt.  In der Strukturansicht wird angezeigt, auf welchen Knoten die Instanzen ausgeführt werden.
 
-Mit dieser einfachen Verwaltungsaufgabe haben wir die Ressourcen verdoppelt, die für unseren Front-End-Dienst zum Verarbeiten der Benutzerauslastung verfügbar sind. Es ist wichtig zu verstehen, dass Sie nicht mehrere Instanzen eines Diensts benötigen, damit er zuverlässig ausgeführt wird. Wenn ein Dienst ausfällt, wird von Service Fabric sichergestellt, dass im Cluster eine neue Dienstinstanz ausgeführt wird.
+Mit dieser einfachen Verwaltungsaufgabe wurden die verfügbaren Ressourcen für den Front-End-Dienst zum Verarbeiten der Benutzerauslastung verdoppelt. Es ist wichtig zu verstehen, dass Sie nicht mehrere Instanzen eines Diensts benötigen, damit er zuverlässig ausgeführt wird. Wenn ein Dienst ausfällt, wird von Service Fabric sichergestellt, dass im Cluster eine neue Dienstinstanz ausgeführt wird.
 
 ## <a name="perform-a-rolling-application-upgrade"></a>Durchführen eines parallelen Anwendungsupgrades
 Beim Bereitstellen von neuen Updates für Ihre Anwendung führt Service Fabric den Rollout des Updates auf sichere Weise durch. Bei parallelen Upgrades kommt es während des Vorgangs nicht zu Ausfallzeiten, und bei Fehlern wird ein automatischer Rollback durchgeführt.
 
 Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
 
-1. Öffnen Sie in Visual Studio die Datei **Index.cshtml**. Sie können in Visual Studio im Projektmappen-Explorer nach der Datei suchen.
-2. Ändern Sie die Überschrift auf der Seite, indem Sie Text hinzufügen. Beispiel:
-    ```html
-        <div class="col-xs-8 col-xs-offset-2 text-center">
-            <h2>Service Fabric Voting Sample v2</h2>
-        </div>
-    ```
+1. Öffnen Sie die Datei **/VotingWeb/Views/Home/Index.cshtml** in Visual Studio.
+2. Ändern Sie die <h2> Überschrift auf der Seite durch Hinzufügen oder Aktualisieren des Texts. Ändern Sie beispielsweise die Überschrift in „Service Fabric Voting Sample v2“.
 3. Speichern Sie die Datei.
 4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 5. Klicken Sie auf die Schaltfläche **Manifestversion**, um die Version des Diensts und der Anwendung zu ändern.
@@ -187,7 +182,7 @@ Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
 
     ![Dialogfeld „Veröffentlichen“ – Einstellung für Upgrade](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 8. Öffnen Sie Ihren Browser, und navigieren Sie zu der Clusteradresse an Port 19080, z.B. `http://winh1x87d1d.westus.cloudapp.azure.com:19080`.
-9. Klicken Sie in der Strukturansicht auf den Knoten **Anwendungen** und dann im rechten Bereich auf **Upgrades in Progress** (Laufende Upgrades). Sie sehen, wie das Upgrade die Upgradedomänen in Ihrem Cluster durchläuft und wie sichergestellt wird, dass jede Domäne fehlerfrei ist, bevor mit der nächsten Domäne fortgefahren wird.
+9. Klicken Sie in der Strukturansicht auf den Knoten **Anwendungen** und dann im rechten Bereich auf **Upgrades in Progress** (Laufende Upgrades). Sie sehen, wie das Upgrade die Upgradedomänen in Ihrem Cluster durchläuft und wie sichergestellt wird, dass jede Domäne fehlerfrei ist, bevor mit der nächsten Domäne fortgefahren wird. Eine Upgradedomäne wird in der Statusanzeige grün angezeigt, wenn die Integrität der Domäne überprüft wurde.
     ![Upgradeansicht im Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Mit Service Fabric werden Upgrades sicher gemacht, indem nach dem Aktualisieren des Diensts auf einem Knoten im Cluster jeweils zwei Minuten gewartet wird. Rechnen Sie damit, dass der gesamte Updatevorgang ca. acht Minuten dauert.

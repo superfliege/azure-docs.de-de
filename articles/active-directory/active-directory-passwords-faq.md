@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 53075d20aff073ff46dcd6dccaefea5fc8ec3483
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 14c565bb67480681e1d398a0a21a11448f405e4e
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -176,6 +176,11 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   > **A:** Die Sitzungsdauer für das Zurücksetzen von Kennwörtern beträgt 15 Minuten. Ab dem Beginn des Vorgangs zur Kennwortzurücksetzung hat der Benutzer 15 Minuten Zeit, das Kennwort zurückzusetzen. Die E-Mail- und SMS-Einmalkennungen sind nach Ablauf dieses Zeitraums ungültig.
   >
   >
+* **F: Kann ich das Zurücksetzen von Kennwörtern durch Benutzer blockieren?**
+
+  > **A:** Ja. Wenn Sie eine Gruppe verwenden, um die Self-Service-Kennwortzurücksetzung zu ermöglichen, können Sie Benutzer aus dieser Gruppe entfernen.
+  >
+  >
 
 ## <a name="password-change"></a>Kennwortänderung
 
@@ -187,6 +192,11 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * **F: Können meine Benutzer im Office-Portal benachrichtigt werden, wenn ihr lokales Kennwort abläuft?**
 
   > **A:** Dies ist aktuell möglich, wenn Sie AD FS verwenden. Eine entsprechende Anleitung finden Sie unter [Configure AD FS to Send Password Expiry Claims](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/operations/configure-ad-fs-to-send-password-expiry-claims?f=255&MSPPError=-2147217396) (Konfigurieren von AD FS zum Senden von Kennwortablaufansprüchen). Bei Verwendung der Kennworthashsynchronisierung ist dies derzeit nicht möglich. Da wir keine Kennwortrichtlinien aus der lokalen Umgebung synchronisieren, können wir auch keine Ablaufbenachrichtigungen in Cloudumgebungen veröffentlichen. In beiden Fällen können Sie [Benutzer, deren Kennwörter demnächst ablaufen, auch mithilfe von PowerShell benachrichtigen](https://social.technet.microsoft.com/wiki/contents/articles/23313.notify-active-directory-users-about-password-expiry-using-powershell.aspx).
+  >
+  >
+* **F: Kann ich das Ändern von Kennwörtern durch Benutzer blockieren?**
+
+  > **A:** Für reine Cloudbenutzer kann diese Aktion nicht blockiert werden. Für lokale Benutzer können Sie `User cannot change password` aktivieren, und diese Benutzer können Ihr Kennwort nicht ändern.
   >
   >
 
@@ -263,14 +273,14 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Wie führe ich ein erfolgreiches Rollout der SSPR durch?](active-directory-passwords-best-practices.md)
-* [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](active-directory-passwords-best-practices.md)
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
-* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
-* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
-* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
-* [Wie melde ich eine Aktivität bei SSPR?](active-directory-passwords-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
+* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
+* [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
+* [Authentifizierungsmethoden](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](active-directory-passwords-policy.md)
+* [Übersicht über die Kennwortrückschreibung](active-directory-passwords-writeback.md)
+* [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](active-directory-passwords-reporting.md)
+* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)

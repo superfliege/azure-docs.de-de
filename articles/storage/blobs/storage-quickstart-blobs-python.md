@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 44ec416a814ff6a5fef79ef21e2f54ce4ce4da17
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 76e23d85b392f8120914f6170040c6b3c450aba6
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/03/2017
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit Python
 In diesem Schnellstart erfahren Sie, wie Sie mit Python Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. 
@@ -32,25 +32,7 @@ So führen Sie diesen Schnellstart durch:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="create-a-storage-account-using-the-azure-portal"></a>Erstellen eines Speicherkontos mit dem Azure-Portal
-
-Erstellen Sie zunächst ein neues allgemeines Speicherkonto zur Verwendung für diesen Schnellstart. 
-
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an. 
-2. Wählen Sie im Menü „Hub“ die Option **Neu** > **Speicher** > **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus. 
-3. Geben Sie einen Namen für Ihr Speicherkonto ein. Der Name muss zwischen 3 und 24 Zeichen lang sein und darf nur Zahlen und Kleinbuchstaben enthalten. Er muss außerdem eindeutig sein.
-4. Legen Sie `Deployment model` auf **Ressourcen-Manager** fest.
-5. Legen Sie `Account kind` auf **Allgemeiner Zweck** fest.
-6. Legen Sie `Performance` auf **Standard** fest. 
-7. Legen Sie `Replication` auf **Lokal redundanter Speicher (LRS)** fest.
-8. Legen Sie `Storage service encryption` auf **Deaktiviert** fest.
-9. Legen Sie `Secure transfer required` auf **Deaktiviert** fest.
-10. Wählen Sie Ihr Abonnement aus. 
-11. Erstellen Sie für `resource group` eine neue Ressourcengruppe, und geben sie ihr einen eindeutigen Namen. 
-12. Wählen Sie unter `Location` den Standort aus, der für das Speicherkonto verwendet werden soll.
-13. Aktivieren Sie **An Dashboard anheften**, und klicken Sie auf **Erstellen**, um das Speicherkonto zu erstellen. 
-
-Nachdem das Speicherkonto erstellt wurde, wird es an das Dashboard angeheftet. Klicken Sie darauf, um es zu öffnen. Klicken Sie unter **EINSTELLUNGEN** auf **Zugriffsschlüssel**. Wählen Sie einen Schlüssel aus, kopieren Sie den Speicherkontonamen in die Zwischenablage, und fügen Sie ihn für die spätere Verwendung in Editor ein.
+[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
 
 ## <a name="download-the-sample-application"></a>Herunterladen der Beispielanwendung
 Die in diesem Schnellstart verwendete [Beispielanwendung](https://github.com/Azure-Samples/storage-blobs-python-quickstart.git) ist eine einfache Python-Anwendung.  
@@ -100,8 +82,10 @@ Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreife
 
 Sobald Sie über den Cloud-Blobcontainer verfügen, können Sie das **CloudBlockBlob**-Objekt instanziieren, das auf den speziellen Blob verweist, der für Sie von Interesse ist, und Vorgänge wie einen Upload-, Download- oder Kopiervorgang ausführen.
 
-In diesem Abschnitt instanziieren Sie die Objekte, erstellen einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind. Der Name des Containers lautet **quickstartblobs**. 
+> [!IMPORTANT]
+> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
+In diesem Abschnitt instanziieren Sie die Objekte, erstellen einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind. Der Name des Containers lautet **quickstartblobs**. 
 
 ```python 
 # Create the BlockBlockService that is used to call the Blob service for the storage account

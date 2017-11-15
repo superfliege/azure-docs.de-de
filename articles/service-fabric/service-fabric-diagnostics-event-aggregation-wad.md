@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2017
+ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 5773361fdec4cb8ee54fa2856f6aa969d5dac4e9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e417458a16a5f23d8b89cbf87ab2713fab352046
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Ereignisaggregation und -sammlung mit der Windows Azure-Diagnose
 > [!div class="op_single_selector"]
@@ -174,7 +174,7 @@ Nachdem Sie die Datei „template.json“ wie beschrieben geändert haben, verö
 
 Ab Version 5.4 von Service Fabric können Integritäts- und Auslastungsmetrikereignisse gesammelt werden. Diese Ereignisse spiegeln Ereignisse wider, die vom System oder von Ihrem Code mithilfe der APIs zum Melden der Integrität oder Auslastung (beispielsweise [ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) oder [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx)) generiert wurden. Dies ermöglicht eine aggregierte Betrachtung der Systemintegrität im Laufe der Zeit sowie die Generierung von Warnungen auf der Grundlage von Integritäts- oder Auslastungsereignissen. Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie „Microsoft-ServiceFabric:4:0x4000000000000008“ zur Liste mit den ETW-Anbietern hinzufügen.
 
-Ändern Sie zum Sammeln der Ereignisse die Resource Manager-Vorlage, sodass sie Folgendes enthält:
+Ändern Sie zum Sammeln von Ereignissen in Ihrem Cluster `scheduledTransferKeywordFilter` im WadCfg-Element der Resource Manager-Vorlage in `4611686018427387912`.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -191,11 +191,15 @@ Ab Version 5.4 von Service Fabric können Integritäts- und Auslastungsmetrikere
 
 ## <a name="collect-reverse-proxy-events"></a>Sammeln von Reverseproxyereignissen
 
-Ab Version 5.7 von Service Fabric können [Reverseproxyereignisse](service-fabric-reverseproxy.md) gesammelt werden.
-Der Reverseproxy gibt Ereignisse in zwei Kanälen aus, einem mit Fehlerereignissen bezüglich Verarbeitungsfehlern und einem weiteren mit ausführlichen Ereignissen zu allen beim Reverseproxy verarbeiteten Anforderungen. 
+Ab Version 5.7 von Service Fabric können [Reverseproxyereignisse](service-fabric-reverseproxy.md) über die Daten- und Messagingkanäle gesammelt werden. 
 
-1. Sammeln von Fehlerereignissen: Diese Ereignisse können Sie in der Diagnoseereignisansicht von Visual Studio anzeigen, indem Sie der Liste der ETW-Anbieter „Microsoft-ServiceFabric:4:0x4000000000000010“ hinzufügen.
-Ändern Sie zum Sammeln der Ereignisse aus Azure-Clustern die Resource Manager-Vorlage, sodass sie Folgendes enthält:
+Der Reverseproxy überträgt nur Fehlereignisse per Push über den Daten- und Messaginghauptkanal: Anforderungsverarbeitungsfehler und schwerwiegende Probleme. Der detaillierte Kanal enthält ausführliche Ereignisse zu allen Anforderungen, die vom Reverseproxy verarbeitet werden. 
+
+Die Fehlerereignisse können Sie in der Diagnoseereignisanzeige von Visual Studio anzeigen, indem Sie der Liste der ETW-Anbieter „Microsoft-ServiceFabric:4:0x4000000000000010“ hinzufügen. Aktualisieren Sie für die gesamte Anforderungstelemetrie den Microsoft Service Fabric-Eintrag in der Liste der ETW-Anbieter auf „Microsoft-ServiceFabric:4:0x4000000000000020“.
+
+In Azure ausgeführte Cluster:
+
+Ändern Sie zum Übernehmen der Ablaufverfolgungen im Daten- und Messaginghauptkanal im WadCfg-Element der Resource Manager-Vorlage den Wert `scheduledTransferKeywordFilter` in `4611686018427387920`.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -210,8 +214,7 @@ Der Reverseproxy gibt Ereignisse in zwei Kanälen aus, einem mit Fehlerereigniss
     }
 ```
 
-2. Sammeln aller Anforderungsverarbeitungsereignisse: Aktualisieren Sie in der Diagnoseereignisansicht von Visual Studio den Microsoft Service Fabric-Eintrag in der Liste der ETW-Anbieter in „Microsoft-ServiceFabric:4:0x4000000000000020“.
-Für Azure Service Fabric-Cluster ändern Sie die Resource Manager-Vorlage, sodass sie Folgendes enthält:
+Um alle Anforderungsverarbeitungsereignisse zu sammeln, aktivieren Sie den ausführlichen Daten- und Messagingkanal, indem Sie im WadCfg-Element der Resource Manager-Vorlage den Wert `scheduledTransferKeywordFilter` in `4611686018427387936` ändern.
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -225,9 +228,8 @@ Für Azure Service Fabric-Cluster ändern Sie die Resource Manager-Vorlage, soda
       }
     }
 ```
-> Es wird empfohlen, das Sammeln von Ereignissen aus diesem Kanal mit Vorsicht zu aktivieren, da hierbei der gesamte Datenverkehr über den Reverseproxy gesammelt wird und dies schnell die Speicherkapazität aufbrauchen kann.
 
-Für Azure Service Fabric-Cluster werden die Ereignisse von allen Knoten gesammelt und in der SystemEventTable aggregiert.
+Wenn Sie die Sammlung von Ereignissen aus diesem ausführlichen Kanal aktivieren, werden als Folge schnell zahlreiche Ablaufverfolgungen erstellt, die Speicherkapazität aufbrauchen können. Aktivieren Sie sie also nur, wenn es unbedingt erforderlich ist.
 Eine ausführliche Problembehandlung der Reverseproxyereignisse finden Sie im [Reverseproxy-Diagnosehandbuch](service-fabric-reverse-proxy-diagnostics.md).
 
 ## <a name="collect-from-new-eventsource-channels"></a>Erfassen aus neuen EventSource-Kanälen
@@ -252,27 +254,9 @@ Um Leistungsindikatoren oder Ereignisprotokolle zu sammeln, ändern Sie die Reso
 
 ## <a name="collect-performance-counters"></a>Erfassen von Leistungsindikatoren
 
-Fügen Sie zu „WadCfg“ > „DiagnosticMonitorConfiguration“ in der Resource Manager-Vorlage für Ihren Cluster die Leistungsindikatoren hinzu, um Leistungsmetriken Ihres Clusters zu erfassen. Informationen zu den Leistungsindikatoren, deren Erfassung wir empfehlen, finden Sie unter [Service Fabric Performance Counters](service-fabric-diagnostics-event-generation-perf.md) (Service Fabric-Leistungsindikatoren).
-
-Hier wird beispielsweise ein Leistungsindikator festgelegt, der alle 15 Sekunden als Stichprobe abgerufen wird (dies kann geändert werden, und hat das Format „PT\<Zeit>\<Einheit>“; PT3M bedeutet beispielsweise, dass in Intervallen von drei Minuten Stichproben abgerufen werden) und anschließend einmal pro Minute an die entsprechende Speichertabelle übermittelt wird.
-
-  ```json
-  "PerformanceCounters": {
-      "scheduledTransferPeriod": "PT1M",
-      "PerformanceCounterConfiguration": [
-          {
-              "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-              "sampleRate": "PT15S",
-              "unit": "Percent",
-              "annotation": [
-              ],
-              "sinks": ""
-          }
-      ]
-  }
-  ```
+Fügen Sie zu „WadCfg“ > „DiagnosticMonitorConfiguration“ in der Resource Manager-Vorlage für Ihren Cluster die Leistungsindikatoren hinzu, um Leistungsmetriken Ihres Clusters zu erfassen. Unter [Performance monitoring with Windows Azure Diagnostics extension](service-fabric-diagnostics-perf-wad.md) (Leistungsüberwachung mit der Microsoft Azure-Diagnoseerweiterung) finden Sie Schritte zum Ändern von `WadCfg`, um bestimmte Leistungsindikatoren zu sammeln. Eine Liste der Leistungsindikatoren, deren Erfassung wir empfehlen, finden Sie unter [Leistungsmetriken](service-fabric-diagnostics-event-generation-perf.md).
   
-Wenn Sie eine Application Insights-Senke verwenden (siehe dazu den folgenden Abschnitt) und möchten, dass diese Metriken in Application Insights angezeigt werden, dann fügen Sie den Namen der Senke im Abschnitt „sinks“ (s.o.) ein. Darüber hinaus sollten Sie ggf. eine separate Tabelle erstellen, an die Ihre Leistungsindikatoren gesendet werden, damit sie nicht mit den Daten aus den anderen aktivierten Protokollierungskanälen vermischt werden.
+Wenn Sie eine Application Insights-Senke verwenden (siehe dazu den folgenden Abschnitt) und möchten, dass diese Metriken in Application Insights angezeigt werden, dann fügen Sie den Namen der Senke im Abschnitt „sinks“ (s.o.) ein. Dadurch werden die einzeln konfigurierten Leistungsindikatoren automatisch an Ihre Application Insights-Ressource gesendet.
 
 
 ## <a name="send-logs-to-application-insights"></a>Senden von Protokollen an Application Insights

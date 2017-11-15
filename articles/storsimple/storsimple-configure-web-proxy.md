@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2016
+ms.date: 11/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 66ee6ce15e51b14366eac0512c899d1c425c6092
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be4a8facc2f5951b6ebc027088d43ef47504acd1
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="configure-web-proxy-for-your-storsimple-device"></a>Konfigurieren des Webproxys für Ihr StorSimple-Gerät
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikels zum neuen Azure-Portal finden Sie unter [Configure web proxy for your StorSimple device (Konfigurieren von Webproxy für Ihr StorSimple-Gerät)](storsimple-8000-configure-web-proxy.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [FAQ: Move to Azure portal (Verschieben in das Azure-Portal: häufig gestellte Fragen (FAQ))](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 In diesem Tutorial erfahren Sie, wie Sie mithilfe von Windows PowerShell für StorSimple Webproxyeinstellungen für Ihr StorSimple-Gerät konfigurieren und anzeigen. Die Webproxyeinstellungen werden vom StorSimple-Gerät bei der Kommunikation mit der Cloud verwendet. Ein Webproxyserver erhöht die Sicherheit, filtert Inhalte, verringert dank Zwischenspeicherung die Bandbreitenanforderungen und ist sogar bei der Analyse hilfreich.
 
@@ -54,7 +57,7 @@ Der Setup-Assistent führt Sie durch die einzelnen Schritte für die Webproxykon
    
     `Invoke-HcsSetupWizard`
 2. Bei erstmaliger Verwendung des Setup-Assistenten für die Geräteregistrierung müssen Sie alle erforderlichen Netzwerkeinstellungen konfigurieren, um zur Webproxykonfiguration zu gelangen. Ist Ihr Gerät bereits registriert, können Sie alle konfigurierten Netzwerkeinstellungen akzeptieren, bis Sie die Webproxykonfiguration erreichen. Geben Sie im Setup-Assistenten **Ja**ein, wenn Sie zum Konfigurieren der Webproxyeinstellungen aufgefordert werden.
-3. Geben Sie als Webproxy-URL ****die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
+3. Geben Sie als **Webproxy-URL** die IP-Adresse oder den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des Webproxyservers sowie die TCP-Portnummer ein, die das Gerät bei der Kommunikation mit der Cloud verwenden soll. Verwenden Sie das folgende Format:
    
     `http://<IP address or FQDN of the web proxy server>:<TCP port number>`
    

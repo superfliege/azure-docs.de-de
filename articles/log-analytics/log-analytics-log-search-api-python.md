@@ -4,23 +4,26 @@ description: "Die Log Analytics-Protokollsuch-API ermöglicht einem beliebigem R
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.service: log-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/28/2017
+ms.date: 11/03/2017
 ms.author: bwren
-ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8a4ec7a6ddf2daeca6ead11460fa076a7eb5c94
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Abrufen von Daten aus Log Analytics mit einem Python-Skript
 Die [Log Analytics-Protokollsuch-API](log-analytics-log-search-api.md) ermöglicht einem beliebigem REST-API-Client den Abruf von Daten aus einem Log Analytics-Arbeitsbereich.  In diesem Artikel wird ein Python-Beispielskript gezeigt, das die Log Analytics-Protokollsuch-API verwendet.  
+
+>[!NOTE]
+> In diesem Artikel wird die Protokollsuch-API für die alte Abfragesprache in Log Analytics verwendet.  Eine Aktualisierung dieses Artikels wird für Arbeitsbereiche bereitgestellt, die auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) aktualisiert wurden.
 
 ## <a name="authentication"></a>Authentifizierung
 Dieses Skript verwendet zur Authentifizierung beim Arbeitsbereich einen Dienstprinzipal in Azure Active Directory.  Durch Dienstprinzipale kann eine Clientanwendung anfordern, dass der Dienst selbst dann ein Konto authentifiziert, wenn der Client keinen Kontonamen aufweist. Vor der Ausführung dieses Skripts müssen Sie einen Dienstprinzipal über den Prozess erstellen, der unter [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md) beschrieben wird.  Sie müssen die Anwendungs-ID, die Mandanten-ID und den Authentifizierungsschlüssel für das Skript angeben. 

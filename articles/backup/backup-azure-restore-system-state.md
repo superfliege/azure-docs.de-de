@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 320c85f8045d9b72cf7f430d2e2736ba8e5ec269
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 971f7979ca27bce5d147a9d479248c808dc658e3
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
-In diesem Artikel wird erläutert, wie Sicherungen des Windows Server-Systemstatus aus einem Azure Recovery Services-Tresor wiederhergestellt werden. Um den Systemstatus wiederherstellen zu können, benötigen Sie eine Sicherung des Systemstatus (erstellt mithilfe der Anweisungen in [Sichern des Systemstatus](backup-azure-system-state.md#back-up-windows-server-system-state-preview)). Stellen Sie außerdem sicher, dass die [neueste Version des Microsoft Azure Recovery Services-Agents (MARS)](http://aka.ms/azurebackup_agent) installiert ist. Das Wiederherstellen von Daten des Windows Server-Systemstatus aus einem Azure Recovery Services-Tresor ist ein zweistufiger Prozess:
+In diesem Artikel wird erläutert, wie Sicherungen des Windows Server-Systemstatus aus einem Azure Recovery Services-Tresor wiederhergestellt werden. Um den Systemstatus wiederherstellen zu können, benötigen Sie eine Sicherung des Systemstatus (erstellt mithilfe der Anweisungen in [Sichern des Systemstatus](backup-azure-system-state.md#back-up-windows-server-system-state)). Stellen Sie außerdem sicher, dass die [neueste Version des Microsoft Azure Recovery Services-Agents (MARS)](http://aka.ms/azurebackup_agent) installiert ist. Das Wiederherstellen von Daten des Windows Server-Systemstatus aus einem Azure Recovery Services-Tresor ist ein zweistufiger Prozess:
 
 1. Stellen Sie den Systemstatus als Dateien aus Azure Backup wieder her. Beim Wiederherstellen des Systemstatus als Dateien aus Azure Backup haben Sie folgende Möglichkeiten:
   * Wiederherstellen des Systemstatus auf dem gleichen Server, auf dem die Sicherungen erstellt wurden, oder

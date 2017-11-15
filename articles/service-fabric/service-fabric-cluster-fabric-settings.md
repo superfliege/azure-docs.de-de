@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: bfbfc5b46985d3413510ba69cbdfc688f46f0f1b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c6289df50d17de1ef542abbf617eb1cdb2f32311
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
@@ -596,7 +596,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 | PeriodicApiSlowTraceInterval | Zeit in Sekunden, Standardwert 5 Minuten |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. PeriodicApiSlowTraceInterval definiert das Intervall, in dem langsame API-Aufrufe vom API-Monitor zurückverfolgt werden. |
 | NodeDeactivationMaxReplicaCloseDuration | Zeit in Sekunden, Standardwert 900 |Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Die Dauer, die das System wartet, bevor Diensthosts beendet werden, deren Replikate während der Knotendeaktivierung nicht geöffnet werden können. |
 | FabricUpgradeMaxReplicaCloseDuration | Zeit in Sekunden, Standardwert 900 |Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Die Dauer, die das System wartet, bevor Diensthosts beendet werden, deren Replikate während des Fabric-Upgrades nicht geöffnet werden können. |
-|GracefulReplicaShutdownMaxDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Die Dauer, die das System wartet, bevor Diensthosts beendet werden, deren Replikate nicht geöffnet werden können.|
+|GracefulReplicaShutdownMaxDuration|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Die Dauer, die das System wartet, bevor Diensthosts beendet werden, deren Replikate nicht geöffnet werden können. Wenn der Wert auf 0 (null) festgelegt ist, werden keine Replikate zum Schließen angewiesen.|
 |ReplicaChangeRoleFailureRestartThreshold|Ganze Zahl, Standardwert 10|Dynamisch| Eine ganze Zahl. Gibt die Anzahl der API-Fehler bei der Heraufstufung des primären Replikators an, nach der eine automatische Minderungsaktion (Replikatneustart) angewendet wird. |
 |ReplicaChangeRoleFailureWarningReportThreshold|Ganze Zahl, Standardwert 2147483647|Dynamisch| Eine ganze Zahl. Gibt die Anzahl der API-Fehler bei der Heraufstufung des primären Replikators an, nach der ein Warnungsintegritätsbericht ausgelöst wird.|
 

@@ -4,7 +4,7 @@ description: "Informationen über den Client für die Multi-Factor Authenticatio
 keywords: 
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 
@@ -14,18 +14,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
-ms.author: kgremban
-ms.openlocfilehash: cacb027fad4127072e542f554373881932870841
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: joflore
+ms.openlocfilehash: e2f13f34d5707f3f7b6707fd6100e88ee9783059
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Beziehen von Azure Multi-Factor Authentication
 
 Zum Schutz Ihrer Konten sollte die Überprüfung in zwei Schritten in Ihrem Unternehmen Standard sein. Dieses Feature ist insbesondere für Administratorkonten wichtig, die privilegierten Zugriff auf Ressourcen haben. Aus diesem Grund bietet Microsoft grundlegende Features zur Überprüfung in zwei Schritten für Office 365- und Azure-Administratoren ohne Zusatzkosten. Wenn Sie für die Features für Ihre Administratoren ein Upgrade durchführen oder die Überprüfung in zwei Schritten auf den Rest Ihrer Benutzer ausweiten möchten, können Sie Azure Multi-Factor Authentication erwerben. 
 
 Dieser Artikel erläutert den Unterschied zwischen den Versionen für Administratoren und der vollständigen Azure MFA-Version. Wenn Sie das vollständige Azure MFA-Angebot bereitstellen möchten, finden Sie in den späteren Abschnitten Informationen dazu, welche Implementierungsoptionen es gibt und wie Microsoft den Verbrauch berechnet.
+
 
 >[!IMPORTANT]
 >Dieser Artikel bietet einen Überblick über die verschiedenen Möglichkeiten zum Erwerb der Azure Multi-Factor Authentication. Ausführliche Informationen zur Preisgestaltung und Abrechnung finden Sie auf der Seite [Multi-Factor Authentication Preise ](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
@@ -55,6 +56,7 @@ In der folgenden Tabelle werden die Features aufgeführt, die in den verschieden
 | SMS als zweiter Faktor |● |● |● |
 | App-Kennwörter für Clients, die MFA nicht unterstützen |● |● |● |
 | Administrative Kontrolle über Überprüfungsmethoden |● |● |● |
+| Schutz von Nicht-Administrator-Konten mit MFA | | |● |
 | PIN-Modus | | |● |
 | Betrugswarnung | | |● |
 | MFA-Berichte | | |● |
@@ -87,7 +89,7 @@ Erstellen Sie einen Azure Multi-Factor Authentication-Anbieter in einem Azure-Ab
 
 Bei Verwendung eines Azure Multi-Factor Authentication-Anbieters stehen zwei Nutzungsmodelle zur Verfügung, die über Ihr Azure-Abonnement abgerechnet werden:  
 
-1. **Pro Benutzer** – Diese Option ist für Unternehmen geeignet, die die Überprüfung in zwei Schritten für eine feste Anzahl von Mitarbeitern aktivieren möchten, welche die Authentifizierung regelmäßig benötigen. Die Abrechnung pro Benutzer basiert auf der Anzahl der Benutzer in Ihrem Azure AD-Mandanten und auf Ihrem Azure MFA-Server, für die MFA aktiviert ist. Wenn MFA für Benutzer sowohl in Azure AD als auch auf dem Azure MFA-Server aktiviert ist und die Domänensynchronisierung (Azure AD Connect) ebenfalls aktiviert ist, berechnen wir die größere Benutzergruppe. Wenn die Domänensynchronisierung nicht aktiviert ist, berechnen wir die Summe aller Benutzer, für die MFA in Azure AD und auf dem Azure MFA-Server aktiviert ist. Die Abrechnung erfolgt anteilsmäßig und wird täglich an das Commerce-System berichtet. 
+1. **Pro aktiviertem Benutzer:** Diese Option ist für Unternehmen geeignet, die die Überprüfung in zwei Schritten für eine feste Anzahl von Mitarbeitern aktivieren möchten, die die Authentifizierung regelmäßig benötigen. Die Abrechnung pro Benutzer basiert auf der Anzahl der Benutzer in Ihrem Azure AD-Mandanten und auf Ihrem Azure MFA-Server, für die MFA aktiviert ist. Wenn MFA für Benutzer sowohl in Azure AD als auch auf dem Azure MFA-Server aktiviert ist und die Domänensynchronisierung (Azure AD Connect) ebenfalls aktiviert ist, berechnen wir die größere Benutzergruppe. Wenn die Domänensynchronisierung nicht aktiviert ist, berechnen wir die Summe aller Benutzer, für die MFA in Azure AD und auf dem Azure MFA-Server aktiviert ist. Die Abrechnung erfolgt anteilsmäßig und wird täglich an das Commerce-System berichtet. 
 
   > [!NOTE]
   > Abrechnungsbeispiel 1: Für MFA sind heute 5.000 Benutzer aktiviert. Das MFA-System teilt diese Zahl durch 31 und meldet 161,29 Benutzer für diesen Tag. Morgen aktivieren Sie 15 weitere Benutzer, sodass das MFA-System für diesen Tag 161,77 Benutzer meldet. Am Ende des Abrechnungszyklus beträgt die Gesamtzahl der Benutzer, die im Rahmen Ihres Azure-Abonnements abgerechnet werden, 5.000. 

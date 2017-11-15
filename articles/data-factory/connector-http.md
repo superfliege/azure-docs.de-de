@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: jingwang
-ms.openlocfilehash: 07f6d0ddac0daf5810d5433c1089114966e80719
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 54afc7d993058ac2b3d2990ba131d334e9332555
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (General Availability, GA) ist, lesen Sie [HTTP-Connector in V1](v1/data-factory-http-connector.md).
 
-## <a name="supported-scenarios"></a>Unterstützte Szenarien
+## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 Sie können Daten aus einer HTTP-Quelle in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
@@ -72,11 +72,9 @@ Legen Sie die Eigenschaft „authenticationType“ auf **Basic**, **Digest** ode
 ```json
 {
     "name": "HttpLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "HttpServer",
-        "typeProperties":
-        {
+        "typeProperties": {
             "authenticationType": "Basic",
             "url" : "<HTTP endpoint>",
             "userName": "<username>",
@@ -115,11 +113,9 @@ Wenn Sie „certThumbprint“ für die Authentifizierung verwenden und das Zerti
 ```json
 {
     "name": "HttpLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "HttpServer",
-        "typeProperties":
-        {
+        "typeProperties": {
             "authenticationType": "ClientCertificate",
             "url": "<HTTP endpoint>",
             "certThumbprint": "<thumbprint of certificate>"
@@ -137,11 +133,9 @@ Wenn Sie „certThumbprint“ für die Authentifizierung verwenden und das Zerti
 ```json
 {
     "name": "HttpLinkedService",
-    "properties":
-    {
+    "properties": {
         "type": "HttpServer",
-        "typeProperties":
-        {
+        "typeProperties": {
             "authenticationType": "ClientCertificate",
             "url": "<HTTP endpoint>",
             "embeddedCertData": "<base64 encoded cert data>",
@@ -260,4 +254,4 @@ Legen Sie zum Kopieren von Daten von HTTP den Quelltyp in der Kopieraktivität a
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md##supported-data-stores-and-formats).
+Eine Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität in Azure Data Factory unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).

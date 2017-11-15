@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: d8c357474e040f2e35c51dec0c7785cf98381a37
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 533add8948544e37dc27623a2f51aad1054b1bef
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure
  
 Terraform bietet eine einfache Möglichkeit, Cloudinfrastruktur mit der [einfachen Vorlagensprache](https://www.terraform.io/docs/configuration/syntax.html) zu definieren, eine Vorschau anzuzeigen und bereitzustellen. In diesem Artikel werden die notwendigen Schritte zum Bereitstellen von Ressourcen in Azure mithilfe von Terraform beschrieben. 
 
 > [!TIP]
-> Terraform ist Teil der [Azure Cloud Shell Bash-Funktionalität](/azure/cloud-shell/quickstart) und wird mit Anmeldeinformationen und [Azure Terraform-Modulen](https://registry.terraform.io/modules/Azure) vorkonfiguriert.
+> Terraform wird standardmäßig in der [Bash-Umgebung in Azure Cloud Shell](/azure/cloud-shell/quickstart) installiert. Die Anwendung wird darüber hinaus vorab mit Anmeldeinformationen und [Azure Terraform-Modulen](https://registry.terraform.io/modules/Azure) konfiguriert. Durch die Verwendung von Cloud Shell können Sie die Installations-/Einrichtungsabschnitte dieses Dokuments überspringen.
 
 ## <a name="install-terraform"></a>Installieren von Terraform
 
@@ -47,9 +47,7 @@ Es gibt mehrere Möglichkeiten, eine Azure AD-Anwendung und einen Azure AD-Diens
 
 Melden Sie sich für die Verwaltung Ihres Azure-Abonnements an. Geben Sie hierzu den folgenden Befehl aus:
 
-```azurecli-interactive
-az login
-```
+   `az login`
 
 Wenn Sie über mehrere Azure-Abonnements verfügen, werden deren Details vom Befehl `az login` zurückgegeben. Legen Sie die `SUBSCRIPTION_ID`-Umgebungsvariable so fest, dass sie den Wert des zurückgegebenen Feldes `id` für das gewünschte Abonnement enthält. 
 

@@ -12,15 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/17/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ac1f6fbd40770374f68d0d280fc1cc040e41b1ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36be252baffe3b6ff84fcdf2d85a97101bec2371
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikel für das neue Azure-Portal finden Sie unter [Technische Spezifikationen und Kompatibilität des StorSimple-Geräts](storsimple-8000-technical-specifications-and-compliance.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Die Hardwarekomponenten des Microsoft Azure StorSimple-Geräts verfügen über die in diesem Artikel beschriebenen technischen Spezifikationen und entsprechen den aufgeführten gesetzlichen Richtlinien. In den technischen Spezifikationen werden die Stromversorgungs- und Kühleinheiten (PCMs), Laufwerke, Speicherkapazität und Gehäuse beschrieben. Die Richtlinieninformationen umfassen z. B. internationale Standards sowie Sicherheits-, Emissions- sowie Verkabelungsbestimmungen.
 

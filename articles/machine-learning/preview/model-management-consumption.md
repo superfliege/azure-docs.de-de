@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 8b2f806b81bbc6d9328ab179644b79b97d68e7b9
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 39023712f72d5ac874de1f20a110bef9703ed5e8
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="consuming-web-services"></a>Nutzen von Webdiensten
 Sobald Sie ein Modell als in Echtzeit arbeitenden Webdienst bereitgestellt haben, können Sie Daten an ihn senden und Vorhersagen von verschiedenen Plattformen und Anwendungen abrufen. Der in Echtzeit arbeitende Webdienst macht eine REST-API zum Abrufen von Vorhersagen verfügbar. Sie können Daten im ein- oder mehrzeiligen Format an den Webdienst senden, um eine oder mehrere Vorhersagen gleichzeitig zu erhalten.
 
-Bei Nutzung eines Azure Machine Learning-Webdiensts kommuniziert eine externe Anwendung synchron mit einem Vorhersagemodell, indem ein HTTP POST-Aufruf an die Dienst-URL gerichtet wird. Um einen Webdienst aufrufen zu können, muss die Clientanwendung den API-Schlüssel angeben, der beim Bereitstellen einer Vorhersage erstellt wird, und die Anforderungsdaten in den POST-Anforderungstext einfügen.
+Bei Nutzung eines [Azure Machine Learning-Webdiensts](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-service-deploy) kommuniziert eine externe Anwendung synchron mit einem Vorhersagemodell, indem ein HTTP POST-Aufruf an die Dienst-URL gerichtet wird. Um einen Webdienst aufrufen zu können, muss die Clientanwendung den API-Schlüssel angeben, der beim Bereitstellen einer Vorhersage erstellt wird, und die Anforderungsdaten in den POST-Anforderungstext einfügen.
 
 Beachten Sie, dass API-Schlüssel nur im Modus für die Bereitstellung in einem Cluster verfügbar sind. Lokale Webdienste haben keine Schlüssel.
 

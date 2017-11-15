@@ -5,16 +5,17 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
+editor: jasonwhowell
 ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: tutorial
-ms.date: 06/13/2017
+ms.date: 11/03/2017
 ms.custom: mvc
-ms.openlocfilehash: 0e6a92eeb9711b086359ab2cd1aea87a57f1fc36
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dcd59442c0b3aa5d6ed1a9ef287949d1d17fa80f
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>Entwerfen Ihrer ersten Azure-Datenbank für MySQL
 
@@ -23,7 +24,7 @@ Azure-Datenbank für MySQL ist ein relationaler Datenbankdienst in der Microsoft
 > [!div class="checklist"]
 > * Erstellen einer Azure-Datenbank für MySQL
 > * Konfigurieren der Serverfirewall
-> * Verwendung des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Erstellen einer Datenbank
+> * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
 > * Abfragen von Daten
 > * Aktualisieren von Daten
@@ -33,7 +34,7 @@ Sie können Azure Cloud Shell im Browser verwenden oder [Azure CLI 2.0 auf dem l
 
 [!INCLUDE [cloud-shell-try-it](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Artikel die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource vorhanden ist oder in Rechnung gestellt wird. Wählen Sie eine bestimmte Abonnement-ID unter Ihrem Konto mit dem Befehl [az account set](/cli/azure/account#set) aus.
 ```azurecli-interactive
@@ -102,7 +103,7 @@ Das Ergebnis liegt im JSON-Format vor. Notieren Sie sich die Werte für **fullyQ
 ```
 
 ## <a name="connect-to-the-server-using-mysql"></a>Herstellen einer Verbindung mit dem Server unter Verwendung von mysql
-Verwenden Sie das [mysql-Befehlszeilentool](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Herstellen einer Verbindung mit Ihrem Azure-Datenbank für MySQL-Server. In diesem Beispiel lautet der Befehl:
+Verwenden Sie das [mysql-Befehlszeilentool](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Herstellen einer Verbindung mit Ihrem Azure Database for MySQL-Server. In diesem Beispiel lautet der Befehl:
 ```cmd
 mysql -h mycliserver.database.windows.net -u myadmin@mycliserver -p
 ```
@@ -119,9 +120,9 @@ mysql> USE mysampledb;
 ```
 
 ## <a name="create-tables-in-the-database"></a>Erstellen von Tabellen in der Datenbank
-Da Sie nun wissen, wie Sie eine Verbindung mit Azure-Datenbank für MySQL herstellen, können wir die Ausführung einiger grundlegender Aufgaben erörtern.
+Da Sie nun wissen, wie Sie eine Verbindung mit einer Azure Database for MySQL-Datenbank herstellen, können Sie einige grundlegende Aufgaben ausführen:
 
-Zunächst können wir eine Tabelle erstellen und mit einigen Daten füllen. Wir erstellen eine Tabelle, die Bestandsinformationen speichert.
+Zunächst erstellen Sie eine Tabelle und füllen sie mit einigen Daten auf. Wir erstellen eine Tabelle, die Bestandsinformationen speichert.
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -131,7 +132,7 @@ CREATE TABLE inventory (
 ```
 
 ## <a name="load-data-into-the-tables"></a>Laden von Daten in die Tabellen
-Jetzt können wir einige Daten in die Tabelle einfügen. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus.
+Jetzt können Sie Daten in die Tabelle einfügen. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus.
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);
@@ -176,7 +177,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Erstellen einer Azure-Datenbank für MySQL
 > * Konfigurieren der Serverfirewall
-> * Verwendung des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Erstellen einer Datenbank
+> * Verwenden des [mysql-Befehlszeilentools](https://dev.mysql.com/doc/refman/5.6/en/mysql.html) zum Erstellen einer Datenbank
 > * Laden von Beispieldaten
 > * Abfragen von Daten
 > * Aktualisieren von Daten

@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/14/2017
-ms.openlocfilehash: 5c3a642940bbaf766b87c74522a97b145632291f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/03/2017
+ms.openlocfilehash: 937423d0b844f6ce30e532bbae12b85071a6f8d4
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="migrate-your-postgresql-database-using-export-and-import"></a>Migrieren der PostgreSQL-Datenbank mit Export und Import
 Sie können mit [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) eine PostgreSQL-Datenbank in eine Skriptdatei extrahieren und die Daten mit [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) aus dieser Datei in die Zieldatenbank importieren.
@@ -37,7 +37,7 @@ pg_dump --host=localhost --username=masterlogin --dbname=testdb --file=testdb.sq
 ```
 
 ## <a name="import-the-data-on-target-azure-database-for-postrgesql"></a>Importieren der Daten in die Azure-Zieldatenbank für PostgreSQL
-Sie können die psql-Befehlszeile und den Parameter „-d, --dbname“ verwenden, um die Daten in die erstellte Azure-Datenbank für PostrgeSQL zu importieren und die Daten aus der SQL-Datei zu laden.
+Sie können die psql-Befehlszeile und den Parameter --dbname (-d) verwenden, um die Daten auf den Azure Database for PostgreSQL-Server zu importieren und Daten aus der SQL-Datei zu laden.
 ```bash
 psql --file=<database>.sql --host=<server name> --port=5432 --username=<user@servername> --dbname=<target database name>
 ```

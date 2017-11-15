@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/02/2017
 ms.author: bwren
-ms.openlocfilehash: bf48cbc52a1ed96ed1bb49b1879d5cd7aece945c
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1ec815a12cea98228dd4b7ac7361fe5e3554b5d3
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Neue Protokollsuche in Log Analytics – häufig gestellte Fragen und bekannte Probleme
 
@@ -39,13 +39,6 @@ Nein. Es wurden einige Änderungen an den Webhook- und Runbook-Aktionen vorgenom
 ### <a name="question-im-getting-errors-when-trying-to-use-computer-groups--has-their-syntax-changed"></a>Frage: Ich erhalte Fehler, wenn ich versuche, Computergruppen zu verwenden.  Hat sich deren Syntax geändert?
 Ja, die Syntax für die Verwendung von Computergruppen hat sich geändert, wenn Sie ein Upgrade Ihres Arbeitsbereichs durchgeführt haben.  Weitere Informationen finden Sie unter [Computergruppen in Log Analytics-Protokollsuchen](log-analytics-computer-groups.md).
 
-### <a name="known-issue-groups-imported-from-active-directory"></a>Bekanntes Problem: Aus Active Directory importierte Gruppen
-Sie können derzeit keine Abfrage erstellen, die eine aus Active Directory importierte Computergruppe verwendet.  Bis dieses Problem behoben wurde, erstellen Sie als Umgehung eine neue Computergruppe anhand der aus Active Directory importierten Gruppe und verwenden diese neue Gruppe in der Abfrage.
-
-Im Folgenden sehen Sie eine Beispielabfrage zum Erstellen einer neuen Computergruppe, die eine aus Active Directory importierte Gruppe enthält:
-
-    ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "AD Group Name" and TimeGenerated >= ago(24h) | distinct Computer
-
 
 ## <a name="dashboards"></a>Dashboards
 
@@ -64,8 +57,8 @@ Ergebnisse werden in der neuen Abfragesprache standardmäßig nicht sortiert.  V
 ### <a name="question-where-did-the-metrics-view-go-after-i-upgraded"></a>Frage: Wo befindet sich die Metrikansicht nach dem Upgrade?
 In der Metrikansicht wurden Leistungsdaten aus einer Protokollsuche graphisch dargestellt.  Diese Ansicht ist nach dem Upgrade nicht mehr verfügbar.  Sie können den [Render-Operator](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) nutzen, um Ausgaben aus einer Abfrage in einem Zeitdiagramm zu formatieren.
 
-### <a name="question-where-did-minify-go-after-i-upgraded"></a>Frage: Wo befindet sich „Minimieren“ nach dem Upgrade?
-„Minimieren“ ist ein Feature, mit dem eine Übersicht über Ihre Suchergebnisse angezeigt werden kann.  Nach dem Upgrade wird die Option „Minimieren“ nicht mehr im Portal für die Protokollsuche angezeigt.  Eine ähnliche Funktionalität erhalten Sie mit der neuen Suchsprache unter Verwendung von [reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) oder [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster). 
+### <a name="question-where-did-minify-go-after-i-upgraded"></a>Frage: Wo befindet sich die Minifyfunktion nach dem Upgrade?
+Mit der Minifyfunktion kann eine Übersicht über Ihre Suchergebnisse angezeigt werden.  Nach dem Upgrade wird die Minifyoption nicht mehr im Portal für die Protokollsuche angezeigt.  Eine ähnliche Funktionalität erhalten Sie mit der neuen Suchsprache unter Verwendung von [reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) oder [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster). 
 
     Event
     | where TimeGenerated > ago(10h)
@@ -76,11 +69,6 @@ In der Metrikansicht wurden Leistungsdaten aus einer Protokollsuche graphisch da
     | evaluate autocluster_v2()
 
 
-### <a name="known-issue-search-results-in-a-list-may-include-properties-with-no-data"></a>Bekanntes Problem: Suchergebnisse in einer Liste können Eigenschaften ohne Daten enthalten.
-In den Suchergebnissen in einer Liste können Eigenschaften ohne Daten angezeigt werden.  Vor dem Upgrade wären solche Eigenschaften nicht enthalten gewesen.  Dieses Problem wird behoben, damit leere Eigenschaften nicht angezeigt werden.
-
-### <a name="known-issue-selecting-a-value-in-a-chart-doesnt-display-detailed-results"></a>Bekanntes Problem: Durch Auswählen eines Werts in einem Diagramm werden keine ausführlichen Ergebnisse angezeigt.
-Wenn Sie vor dem Upgrade einen Wert in einem Diagramm ausgewählt hatten, wurde eine detaillierte Liste der Datensätze zurückgeben, die dem ausgewählten Wert entsprachen.  Nach dem Upgrade wird nur eine zusammengefasste Zeile zurückgegeben.  Dieses Problem wird zurzeit untersucht.
 
 ## <a name="log-search-api"></a>Protokollsuch-API
 
@@ -109,11 +97,9 @@ Ihr Browser erfordert Zugriff auf die folgenden Adressen, um Log Analytics-Abfra
 ## <a name="power-bi"></a>Power BI
 
 ### <a name="question-does-anything-change-with-powerbi-integration"></a>Frage: Ändert sich etwas bei der Power BI-Integration?
-Ja.  Sobald für Ihren Arbeitsbereich ein Upgrade durchgeführt wurde, funktioniert dieses Verfahren zum Exportieren von Log Analytics-Daten in Power BI nicht mehr.  Alle vorhandenen Zeitpläne, die Sie vor dem Upgrade erstellt haben, werden deaktiviert.  Nach dem Upgrade verwendet Azure Log Analytics dieselbe Plattform wie Application Insights, und Sie verwenden zum Exportieren von Log Analytics-Abfragen nach Power BI dasselbe Verfahren wie zum [Exportieren von Application Insights-Abfragen nach Power BI](../application-insights/app-insights-export-power-bi.md#export-analytics-queries).
+Ja.  Sobald für Ihren Arbeitsbereich ein Upgrade durchgeführt wurde, funktioniert dieses Verfahren zum Exportieren von Log Analytics-Daten in Power BI nicht mehr.  Alle vorhandenen Zeitpläne, die Sie vor dem Upgrade erstellt haben, werden deaktiviert.  
 
-### <a name="known-issue-power-bi-request-size-limit"></a>Bekanntes Problem: Größenbeschränkung für Power BI-Anforderungen
-Derzeit gilt eine Größenbeschränkung von 8 MB für Log Analytics-Abfragen, die nach Power BI exportiert werden können.  Dieses Limit wird demnächst erhöht.
-
+Nach dem Upgrade verwendet Azure Log Analytics dieselbe Plattform wie Application Insights, und Sie verwenden zum Exportieren von Log Analytics-Abfragen nach Power BI dasselbe Verfahren wie zum [Exportieren von Application Insights-Abfragen nach Power BI](../application-insights/app-insights-export-power-bi.md#export-analytics-queries).  Der Export nach Power BI ruft nun direkt den API-Endpunkt auf. Dadurch können Sie bis zu 500.000 Zeilen oder 64.000.000 Byte an Daten abrufen, lange Abfragen exportieren und das Timeout der Abfrage anpassen (das Standardtimeout beträgt 3 Minuten, und das maximale Timeout beträgt 10 Minuten).
 
 ## <a name="powershell-cmdlets"></a>PowerShell-Cmdlets
 
@@ -153,14 +139,11 @@ Ja.  Sie müssen die API-Version 2017-03-15-preview verwenden und wie im folgend
 ### <a name="question-will-my-solutions-continue-to-work"></a>Frage: Bleiben meine Lösungen weiterhin funktionsfähig?
 Alle Lösungen bleiben in einem aktualisierten Arbeitsbereich weiterhin funktionsfähig. Ihre Leistung verbessert sich jedoch, wenn sie in die neue Abfragesprache konvertiert werden.  Es gibt bekannte Probleme mit einigen vorhandenen Lösungen, die in diesem Abschnitt beschrieben werden.
 
-### <a name="known-issue-capacity-and-performance-solution"></a>Bekanntes Problem: Lösung „Kapazität und Leistung“
-Einige der Teile in der Ansicht [Kapazität und Leistung](log-analytics-capacity.md) sind eventuell leer.  Eine Korrektur für dieses Problem wird in Kürze verfügbar sein.
-
-### <a name="known-issue-application-insights-connector"></a>Bekanntes Problem: Application Insights-Connector
-In einem aktualisierten Arbeitsbereich werden Perspektiven in der Lösung [Application Insights-Connector](log-analytics-app-insights-connector.md) derzeit nicht unterstützt.  Eine Korrektur für dieses Problem wird derzeit untersucht.
+### <a name="known-issue-perspectives-in-application-insights-connector"></a>Bekanntes Problem: Perspektiven im Application Insights-Connector
+Perspektiven werden im [Application Insights-Connector](log-analytics-app-insights-connector.md) nicht mehr unterstützt.  Sie können mit dem Ansicht-Designer benutzerdefinierte Ansichten mit Application Insights-Daten erstellen.
 
 ### <a name="known-issue-backup-solution"></a>Bekanntes Problem: Sicherungslösung
-Die Sicherungslösung sammelt in einem aktualisierten Arbeitsbereich keine Daten. Eine neue Sicherungslösung, die mit dem aktualisierten Arbeitsbereich funktioniert, wird in Kürze angekündigt.
+Die Sicherungslösung sammelt möglicherweise keine Daten, wenn sie vor dem Aktualisieren eines Arbeitsbereichs installiert wurde. Deinstallieren Sie die Lösung, und installieren Sie dann die neueste Version.  Die neue Version der Lösung unterstützt keine klassischen Sicherungstresore, daher müssen Sie auch die Recovery Services-Tresore aktualisieren, um die Lösung weiterhin zu verwenden.
 
 ## <a name="upgrade-process"></a>Upgradeprozess
 
@@ -182,9 +165,6 @@ Vor der allgemeinen Verfügbarkeit könnten Sie Ihren Arbeitsbereich nach dem Up
 
 ### <a name="question-how-do-i-create-a-new-view-with-view-designer"></a>Frage: Wie erstelle ich mit dem Ansicht-Designer eine neue Ansicht?
 Vor dem Upgrade konnten Sie mit dem Ansicht-Designer eine neue Ansicht aus einer Kachel im Hauptdashboard erstellen.  Nach dem Upgrade Ihres Arbeitsbereichs wird diese Kachel entfernt.  Sie können eine neue Ansicht mit dem Ansicht-Designer im OMS-Portal erstellen, indem Sie auf das grüne Pluszeichen (+) im linken Menü klicken.
-
-### <a name="known-issue-see-all-option-for-line-charts-in-views-doesnt-result-in-a-line-chart"></a>Bekanntes Problem: Die Option „Alle anzeigen“ für Liniendiagramme in Ansichten führt nicht zu einem Liniendiagramm.
-Wenn Sie in einer Ansicht unten im Bereich des Liniendiagramms auf die Option *Alle anzeigen* klicken, wird eine Tabelle angezeigt.  Vor dem Upgrade wurde anschließend ein Liniendiagramm angezeigt.  Dieses Problem wird auf eine potenzielle Änderung hin analysiert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

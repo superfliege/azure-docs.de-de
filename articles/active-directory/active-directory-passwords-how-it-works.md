@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 71310534ec62b62bcd408d75060859c79bc470cf
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: fd9515120049dd3837a43c95de8a9b6822719e19
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -88,6 +88,23 @@ Diese Option bestimmt die Mindestanzahl der verfügbaren Authentifizierungsmetho
 Benutzer können wählen, weitere Authentifizierungsmethoden bereitzustellen, wenn sie vom Administrator aktiviert sind.
 
 Sind für einen Benutzer nicht die mindestens erforderlichen Methoden registriert, wird eine Fehlerseite angezeigt, die ihn auffordert, einen Administrator zu bitten, sein Kennwort zurückzusetzen.
+
+#### <a name="changing-authentication-methods"></a>Ändern der Authentifizierungsmethoden
+
+Was passiert, wenn Sie mit einer Richtlinie beginnen, bei der zum Zurücksetzen oder Entsperren der Registrierung nur eine einzelne Authentifizierungsmethode erforderlich ist, und Sie dies in zwei Authentifizierungsmethoden ändern?
+
+| Anzahl der registrierten Methoden | Anzahl der erforderlichen Methoden | Ergebnis |
+| :---: | :---: | :---: |
+| Mindestens 1 | 1 | **Kann** zurücksetzen oder entsperren |
+| 1 | 2 | **Kann nicht** zurücksetzen oder entsperren |
+| 2 oder mehr | 2 | **Kann** zurücksetzen oder entsperren |
+
+Wenn Sie die den Benutzern zur Verfügung stehenden Arten von Authentifizierungsmethoden ändern, können Benutzer unter Umständen SSPR nicht mehr verwenden, wenn ihnen nicht genügend Daten zur Verfügung stehen.
+
+Beispiel: 
+1. Die mit zwei Authentifizierungsmethoden konfigurierte ursprüngliche Richtlinie erforderte die ausschließliche Verwendung von geschäftlichen Telefonnummern und Sicherheitsfragen. 
+2. Der Administrator ändert die Richtlinie so, dass anstelle von Sicherheitsfragen ein Mobiltelefon und eine alternative E-Mail-Adresse verwendet werden.
+3. Benutzer, für die die Felder für Mobiltelefon und alternative E-Mail-Adresse nicht aufgefüllt werden, können ihre Kennwörter nicht zurücksetzen.
 
 ### <a name="how-secure-are-my-security-questions"></a>Wie sicher sind meine Sicherheitsfragen?
 
@@ -169,6 +186,7 @@ Wenn dies deaktiviert wird, können Benutzer ihre Kontaktinformationen weiterhin
 > [!NOTE]
 > Benutzer können das Registrierungsportal für die Kennwortzurücksetzung durch Klicken auf „Abbrechen“ oder durch Schließen des Fensters schließen, werden aber bis zum Abschluss der Registrierung bei jeder Anmeldung erneut dazu aufgefordert.
 >
+> Dadurch wird die Verbindung des Benutzers nicht unterbrochen, wenn er bereits angemeldet ist.
 
 ### <a name="number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Anzahl der Tage, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
 
@@ -190,7 +208,7 @@ Beispiel: Es gibt vier Administratoren in einer Umgebung. Administrator A setzt 
 
 ## <a name="on-premises-integration"></a>Lokale Integration
 
-Wenn Sie Azure AD Connect installiert, konfiguriert und aktiviert haben, stehen folgende zusätzliche Optionen für lokale Integrationen zur Verfügung.
+Wenn Sie Azure AD Connect installiert, konfiguriert und aktiviert haben, stehen folgende zusätzliche Optionen für lokale Integrationen zur Verfügung. Wenn diese Optionen abgeblendet sind, wurde das Rückschreiben nicht richtig konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren des Kennwortrückschreibens](active-directory-passwords-writeback.md#configuring-password-writeback).
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Kennwörter in Ihr lokales Verzeichnis zurückschreiben?
 
@@ -215,20 +233,23 @@ Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfiguratione
 
 Navigieren Sie zum Testen dieses Szenarios mit einem dieser Partnerbenutzer zu „http://passwordreset.microsoftonline.com“. Sofern keine alternative E-Mail-Adresse und keine E-Mail-Adresse für die Authentifizierung definiert sind, funktioniert die Kennwortzurücksetzung wie erwartet.
 
+> [!NOTE]
+> Microsoft-Konten (etwa Hotmail.com, Outlook.com oder eine andere persönliche E-Mail-Adresse), denen der Gastzugriff auf Ihren Azure AD-Mandanten gewährt wurde, können Azure AD SSPR nicht nutzen. Für diese Konten muss das Kennwort anhand der Informationen im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) zurückgesetzt werden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
-* [Wie führe ich ein erfolgreiches Rollout der SSPR durch?](active-directory-passwords-best-practices.md)
-* [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
+* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](active-directory-passwords-best-practices.md)
+* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
-* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
-* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
-* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
-* [Wie melde ich eine Aktivität bei SSPR?](active-directory-passwords-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
+* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
+* [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
+* [Authentifizierungsmethoden](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](active-directory-passwords-policy.md)
+* [Übersicht über die Kennwortrückschreibung](active-directory-passwords-writeback.md)
+* [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](active-directory-passwords-reporting.md)
+* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 

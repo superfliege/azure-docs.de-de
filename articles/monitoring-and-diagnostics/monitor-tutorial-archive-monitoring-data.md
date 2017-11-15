@@ -10,15 +10,23 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: 445901a740920a74f259aaa9c6b862680c1c807e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f19cf8fddd9ffcf08b8ce18db070a7482ce012df
+ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="archive-azure-monitoring-data"></a>Archivieren von Azure-Überwachungsdaten
 
 Auf mehreren Ebenen Ihrer Azure-Umgebung werden Protokoll- und Metrikdaten generiert, die in einem Azure Storage-Konto archiviert werden können. Dies bietet sich an, um einen Verlauf von Überwachungsdaten über einen längeren Zeitraum in einem preiswerten, nicht durchsuchbaren Speicher beizubehalten, nachdem die Daten die Aufbewahrungsfrist in Log Analytics oder Azure Monitor überschritten haben. In diesem Tutorial durchlaufen Sie die Schritte zum Konfigurieren Ihrer Azure-Umgebung für das Archivieren von Daten in einem Speicherkonto.
+
+> [!div class="checklist"]
+> * Erstellen eines Speicherkontos zum Speichern der Überwachungsdaten
+> * Weiterleiten von Abonnementprotokollen an dieses Konto 
+> * Weiterleiten von Ressourcen an dieses Konto 
+> * Weiterleiten von Daten des virtuellen Computers (Gastbetriebssystems) an das Konto 
+> * Anzeigen der Überwachungsdaten im Konto 
+> * Bereinigen von Ressourcen 
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -158,7 +166,18 @@ Sie haben das Archivieren von Überwachungsdaten in einem Speicherkonto erfolgre
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie die Archivierung von Überwachungsdaten aus Ihrer Azure-Umgebung (Abonnement, Ressource und Gastbetriebssystem) in einem Speicherkonto einrichten. Um Ihre Daten besser auswerten und interpretieren zu können, senden Sie Ihre Daten auch an Log Analytics.
+In diesem Tutorial haben Sie gelernt, wie Sie die Archivierung von Überwachungsdaten aus Ihrer Azure-Umgebung (Abonnement, Ressource und Gastbetriebssystem) in einem Speicherkonto einrichten. 
+
+
+> [!div class="checklist"]
+> * Erstellen eines Speicherkontos zum Speichern der Überwachungsdaten
+> * Weiterleiten von Abonnementprotokollen an dieses Konto 
+> * Weiterleiten von Ressourcen an dieses Konto 
+> * Weiterleiten von Daten des virtuellen Computers (Gastbetriebssystems) an das Konto 
+> * Anzeigen der Überwachungsdaten im Konto 
+> * Bereinigen von Ressourcen 
+
+Um Ihre Daten optimal auszunutzen und zusätzliche Erkenntnisse zu gewinnen, übermitteln Sie Ihre Daten an Log Analytics.
 
 > [!div class="nextstepaction"]
 > [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md)

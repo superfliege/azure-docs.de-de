@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2017
 ms.author: dobett
-ms.openlocfilehash: 9dfb0c898e74063719b3fd242d1fa9be2b89246c
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 63b059cb91956231fd3bafbe9770a04a0b7e347a
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>Häufig gestellte Fragen zu IoT Suite
 
@@ -30,7 +30,7 @@ Informationen finden Sie auch in den [häufig gestellten Fragen](iot-suite-faq-c
 Der Quellcode wird in den folgenden GitHub-Repositorys gespeichert:
 
 * [Remote monitoring preconfigured solution (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) (Vorkonfigurierte Remoteüberwachungslösung [.NET])
-* [Remote monitoring preconfigured solution (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) (Vorkonfigurierte Remoteüberwachungslösung [.NET])
+* [Remote monitoring preconfigured solution (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) (Vonkonfigurierte Remoteüberwachungslösung (Java))
 * [Predictive maintenance preconfigured solution](https://github.com/Azure/azure-iot-predictive-maintenance) (Vorkonfigurierte Predictive Maintenance-Lösung)
 * [Connected factory preconfigured solution](https://github.com/Azure/azure-iot-connected-factory) (Vorkonfigurierte Lösung für eine verbundene Factory)
 

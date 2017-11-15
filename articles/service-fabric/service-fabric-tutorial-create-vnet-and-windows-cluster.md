@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/26/2017
+ms.date: 11/02/2017
 ms.author: ryanwi
-ms.openlocfilehash: d1eabaa1a2f1f8ba8102d567fee97c65d04ca5f7
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 31e35432ecc10b06c7a6400a1e0904e7bc2cd8c9
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk
 Dieses Tutorial ist der erste Teil einer Serie. Hier erfahren Sie, wie Sie mithilfe der PowerShell einen Service Fabric-Windows-Cluster in einem vorhandenen virtuellen Azure-Netzwerk (VNET) und Subnetz bereitstellen. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können.  Informationen zum Erstellen eines Linux-Clusters per Azure CLI finden Sie unter [Erstellen eines sicheren Linux-Clusters in Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
@@ -78,43 +78,51 @@ Laden Sie die folgende Resource Manager-Vorlage und -Parameterdatei herunter:
 Verwenden Sie den folgenden PowerShell-Befehl, um die Resource Manager-Vorlagen- und -Parameterdateien für die Netzwerkeinrichtung bereitzustellen:
 
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
+New-AzureRmResourceGroupDeployment -ResourceGroupName $groupname -TemplateFile C:\winclustertutorial\network.json -TemplateParameterFile C:\winclustertutorial\network.parameters.json -Verbose
 ```
 
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 ## <a name="deploy-the-service-fabric-cluster"></a>Bereitstellen des Service Fabric-Clusters
-Nachdem die Bereitstellung der Netzwerkressourcen abgeschlossen ist, besteht der nächste Schritt in der Bereitstellung von Service Fabric-Clustern für das VNET im Subnetzt und in der NSG, die für den Service Fabric-Cluster angegeben wurden. Für die Bereitstellung eines Clusters in einem vorhandenen VNET und Subnetz (weiter oben in diesem Artikel bereitgestellt) ist eine Resource Manager-Vorlage erforderlich.  Weitere Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Für diese Tutorialreihe ist die Vorlage so vorkonfiguriert, dass die Namen des VNET, des Subnetzes und der NSG verwendet werden, die in einem vorherigen Schritt eingerichtet wurden.  Laden Sie die folgende Resource Manager-Vorlage und -Parameterdatei herunter:
+Nachdem die Bereitstellung der Netzwerkressourcen abgeschlossen ist, besteht der nächste Schritt in der Bereitstellung von Service Fabric-Clustern für das VNET im Subnetzt und in der NSG, die für den Service Fabric-Cluster angegeben wurden. Für die Bereitstellung eines Clusters in einem vorhandenen VNET und Subnetz (weiter oben in diesem Artikel bereitgestellt) ist eine Resource Manager-Vorlage erforderlich.  Für diese Tutorialreihe ist die Vorlage so vorkonfiguriert, dass die Namen des VNET, des Subnetzes und der NSG verwendet werden, die in einem vorherigen Schritt eingerichtet wurden.  
+
+Laden Sie die folgende Resource Manager-Vorlage und -Parameterdatei herunter:
 - [cluster.json][cluster-arm]
 - [cluster.parameters.json][cluster-parameters-arm]
 
-Zum Sichern der Knoten-zu-Knoten-Kommunikation für Ihren Cluster und zum Verwalten des Benutzerzugriffs auf Ihre Service Fabric-Cluster wird ein Zertifikat verwendet. API Management verwendet auch dieses Zertifikat, um auf den Service Fabric Naming Service für die Dienstermittlung zuzugreifen. 
+Verwenden Sie diese Vorlage, um einen sicheren Cluster zu erstellen.  Ein Clusterzertifikat ist ein X.509-Zertifikat, das zum Sichern einer Knoten-zu-Knoten-Kommunikation und zur Authentifizierung der Endpunkte der Clusterverwaltung bei einem Verwaltungsclient verwendet wird.  Dieses Clusterzertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit. Zertifikate für Service Fabric-Cluster in Azure werden in Azure Key Vault verwaltet.  Wenn ein Cluster in Azure bereitgestellt wird, ruft der für die Erstellung von Service Fabric-Clustern zuständige Azure-Ressourcenanbieter Zertifikate aus dem Schlüsseltresor ab und installiert sie auf den virtuellen Clustercomputern. 
 
-Das folgende Skript verwendet das Cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster), um einen neuen Cluster in Azure bereitzustellen. Das Cmdlet erstellt auch einen Schlüsseltresor in Azure sowie ein selbstsigniertes Zertifikat und lädt das Zertifikat in einen lokalen Speicherort herunter.   
+Sie können ein Zertifikat aus einer Zertifizierungsstelle als Clusterzertifikat verwenden. Erstellen Sie zu Testzwecken alternativ ein selbstsigniertes Zertifikat. Für das Clusterzertifikat muss Folgendes gelten:
+
+- Es muss einen privaten Schlüssel enthalten.
+- Es muss für den Schlüsselaustausch erstellt werden, um in eine PFX-Datei (Personal Information Exchange) exportiert werden zu können.
+- Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Diese Übereinstimmung ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne „.cloudapp.azure.com“ können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
+
+Füllen Sie diese leeren Parameter in der *cluster.parameters.json*-Datei für Ihre Bereitstellung ein:
+
+|Parameter|Wert|
+|---|---|
+|adminPassword|Password#1234|
+|adminUserName|vmadmin|
+|clusterName|mysfcluster|
+|location|southcentralus|
+
+Lassen Sie die Parameter *certificateThumbprint*, *certificateUrlValue* und *sourceVaultValue* leer, um ein selbstsigniertes Zertifikat zu erstellen.  Wenn Sie ein vorhandenes Zertifikat verwenden möchten, das zuvor in einen Schlüsseltresor hochgeladen wurde, geben Sie die entsprechenden Parameterwerte ein.
+
+Das folgende Skript verwendet das Cmdlet [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster), um einen neuen Cluster in Azure bereitzustellen. Das Cmdlet erstellt auch einen neuen Schlüsseltresor in Azure, fügt diesem ein neues selbstsigniertes Zertifikat hinzu und lädt das Zertifikat an einen lokalen Speicherort herunter. Sie können ein vorhandenes Zertifikat und/oder einen vorhandenen Schlüsseltresor angeben, indem Sie andere Parameter des Cmdlets [New-AzureRmServiceFabricCluster](/powershell/module/azurerm.servicefabric/New-AzureRmServiceFabricCluster) verwenden.
 
 ```powershell
-# Certificate variables.
+# Variables.
 $certpwd="q6D7nN%6ck@6" | ConvertTo-SecureString -AsPlainText -Force
 $certfolder="c:\mycertificates\"
-
-# Variables for VM admin.
-$adminuser="vmadmin"
-$adminpwd="Password#1234" | ConvertTo-SecureString -AsPlainText -Force 
-
-# Variables for common values
 $clustername = "mysfcluster"
-$vmsku = "Standard_D2_v2"
-$vaultname = "clusterkeyvault"
-$vaultgroupname="clusterkeyvaultgroup"
+$vaultname = "clusterkeyvault111"
+$vaultgroupname="clusterkeyvaultgroup111"
 $subname="$clustername.$clusterloc.cloudapp.azure.com"
 
-# Set the number of cluster nodes. Possible values: 1, 3-99
-$clustersize=5 
-
 # Create the Service Fabric cluster.
-New-AzureRmServiceFabricCluster -Name $clustername -ResourceGroupName $groupname -Location $clusterloc `
--ClusterSize $clustersize -VmUserName $adminuser -VmPassword $adminpwd -CertificateSubjectName $subname `
--CertificatePassword $certpwd -CertificateOutputFolder $certfolder `
--OS WindowsServer2016DatacenterwithContainers -VmSku $vmsku -KeyVaultName $vaultname -KeyVaultResouceGroupName $vaultgroupname
+New-AzureRmServiceFabricCluster  -ResourceGroupName $groupname -TemplateFile 'C:\winclustertutorial\cluster.json' `
+-ParameterFile 'C:\winclustertutorial\cluster.parameters.json' -CertificatePassword $certpwd `
+-CertificateOutputFolder $certfolder -KeyVaultName $vaultname -KeyVaultResouceGroupName $vaultgroupname -CertificateSubjectName $subname
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>Herstellen einer Verbindung mit dem sicheren Cluster
@@ -166,9 +174,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Herstellen einer Verbindung mit dem Cluster über PowerShell
 > * Entfernen eines Clusters
 
-Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie API Management mit Service Fabric bereitstellen.
+Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Ihren Cluster skalieren.
 > [!div class="nextstepaction"]
-> [Bereitstellen von API Management](service-fabric-tutorial-deploy-api-management.md)
+> [Skalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
 
 
 [network-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/network.json

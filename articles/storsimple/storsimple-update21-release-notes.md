@@ -12,17 +12,20 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/18/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 3793df974175a5c41b83800f73748c52c8223572
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06c14bdd24dd24a98b3838a2ba73b657ce56785a
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>Versionsanmerkungen zu Update 2.2 der StorSimple 8000-Serie
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
-Die folgenden Versionsanmerkungen beschreiben die neuen Features und weisen auf wichtige offene Probleme bei Update 2.2 der StorSimple 8000-Serie hin. Es enthält auch eine Liste der StorSimple-Software-Updates, die in dieser Version enthalten sind. 
+Die folgenden Versionsanmerkungen beschreiben die neuen Features und weisen auf wichtige offene Probleme bei Update 2.2 der StorSimple 8000-Serie hin. Es enthält auch eine Liste der StorSimple-Software-Updates, die in dieser Version enthalten sind.
 
 Update 2.2 kann auf alle StorSimple-Geräte angewendet werden, auf denen Release (GA) oder Update 0.1 bis Update 2.1 ausgeführt wird. Update 2.2 ist die Geräteversion 6.3.9600.17708 zugeordnet.
 

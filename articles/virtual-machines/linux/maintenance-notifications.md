@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: zivr
-ms.openlocfilehash: be062ce9cfbe7486ef500dd9d27418cbf245d6e0
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: b31955e19883f9fe2e7ed6cf7f5076eaf52577c0
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Linux-Computer
 
@@ -65,6 +65,8 @@ Unter „MaintenanceRedeployStatus“ werden folgende Werte zurückgegeben:
 | LastOperationResultCode               | Das Ergebnis des letzten Wartungsinitiierungsversuchs für den virtuellen Computer. ||
 
 
+
+
 ## <a name="start-maintenance-on-your-vm-using-cli"></a>Starten der Wartung für Ihren virtuellen Computer über die Befehlszeilenschnittstelle
 
 Der folgende Aufruf initiiert die Wartung für einen virtuellen Computer, wenn `IsCustomerInitiatedMaintenanceAllowed` auf „true“ festgelegt ist:
@@ -74,6 +76,28 @@ az vm perform-maintenance rgName vmName
 ```
 
 [!INCLUDE [virtual-machines-common-maintenance-notifications](../../../includes/virtual-machines-common-maintenance-notifications.md)]
+
+## <a name="classic-deployments"></a>Klassische Bereitstellungen
+
+Wenn Sie noch ältere virtuelle Computer besitzen, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden, können Sie mit CLI 1.0 virtuelle Computer abfragen und die Wartung initiieren.
+
+Stellen Sie sicher, dass Sie den richtigen Modus für die Nutzung klassischer virtueller Computer verwenden. Geben Sie dazu Folgendes ein:
+
+```
+azure config mode asm
+```
+
+Geben Sie zum Abrufen des Wartungsstatus eines virtuellen Computers mit dem Namen *myVM* Folgendes ein:
+
+```
+azure vm show myVM 
+``` 
+
+Wenn Sie die Wartung auf dem klassischen virtuellen Computer *myVM* im Dienst *myService* und der Bereitstellung *myDeployment* starten möchten, geben Sie Folgendes ein:
+
+```
+azure compute virtual-machine initiate-maintenance --service-name myService --name myDeployment --virtual-machine-name myVM
+```
 
 
 ## <a name="faq"></a>Häufig gestellte Fragen

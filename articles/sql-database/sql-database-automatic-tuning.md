@@ -4,8 +4,8 @@ description: "Azure SQL-Datenbank analysiert SQL-Abfragen und führt eine automa
 services: sql-database
 documentationcenter: 
 author: jovanpop-msft
-manager: jhubbard
-editor: 
+manager: drasumic
+editor: danimir
 ms.assetid: 
 ms.service: sql-database
 ms.custom: monitor & tune
@@ -15,35 +15,66 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 09/19/2017
 ms.author: jovanpop
-ms.openlocfilehash: 10f8cca8e519b28f0fe29605419b860f73e04a87
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1e884754682ecab4cdf097bd75caa6fcf2e0a29c
+ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Automatische Optimierung in Azure SQL-Datenbank
 
-Azure SQL-Datenbank ist ein vollständig verwalteter Datendienst zum Überwachen der Abfragen, die in der Datenbank ausgeführt werden und verbessert die Leistung bei der Bewältigung der Datenbankworkload automatisch. Azure SQL-Datenbank verfügt über eine integrierte [automatische Optimierung](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning), mit der die Leistung Ihrer Abfragen automatisch optimiert und verbessert werden kann, indem die Datenbank dynamisch an Ihre Workload angepasst wird. Die automatische Optimierung in Azure SQL-Datenbank ist unter Umständen eines der wichtigsten Features, das Sie in Azure SQL-Datenbank aktivieren können, um die Leistung Ihrer Abfragen zu optimieren.
+Die automatische Optimierung von Azure SQL-Datenbank sorgt dank kontinuierlicher, KI-basierter Leistungsoptimierung für optimale Leistung und stabile Workloads.
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure-in-the-Enterprise/Enabling-Azure-SQL-Database-Auto-Tuning-at-Scale-for-Microsoft-IT/player]
+Bei der automatischen Optimierung handelt es sich um einen vollständig verwalteten Dienst mit integrierter Intelligenz, der kontinuierlich Abfragen für eine Datenbank überwacht und automatisch deren Leistung verbessert. Dies wird durch eine dynamische Anpassung der Datenbank an die unterschiedlichen Workloads sowie durch die Anwendung von Optimierungsempfehlungen erreicht. Dank künstlicher Intelligenz lernt die automatische Optimierung horizontal von allen Datenbanken in Azure und verbessert dynamisch ihre Optimierungsmaßnahmen. Je länger die automatische Optimierung für eine Azure SQL-Datenbank verwendet wird, desto besser ist ihre Leistung.
+
+Die automatische Optimierung von Azure SQL-Datenbank ist vielleicht eines der wichtigsten Features, die Sie aktivieren können, um stabile Workloads mit optimaler Leistung zu erhalten.
+
+## <a name="what-can-automatic-tuning-do-for-you"></a>Vorteile der automatischen Optimierung
+
+- Automatisierte Optimierung der Leistung von Azure SQL-Datenbanken
+- Automatisierte Überprüfung von Leistungszuwächsen
+- Automatisches Rollback und automatische Korrektur
+- Protokollierung des Optimierungsverlaufs
+- Optimierung von T-SQL-Aktionsskripts für manuelle Bereitstellungen
+- Proaktive Überwachung der Workloadleistung
+- Funktion für das horizontale Hochskalieren von einigen Hunderttausend Datenbanken
+- Positive Auswirkung auf DevOps-Ressourcen und die Gesamtkosten
+
+## <a name="safe-reliable-and-proven"></a>Sicher, zuverlässig und bewährt
+
+Die Leistung anspruchsvoller Workloads wird durch auf Azure SQL-Datenbanken angewendete Optimierungsmaßnahmen in keinem Fall beeinträchtigt. Bei der Entwicklung des Systems wurde sehr genau darauf geachtet, dass es zu keinerlei Störung der Benutzerworkloads kommt. Empfehlungen der automatisierten Optimierung werden nur bei geringer Auslastung angewendet. Zur Wahrung der Workloadleistung kann das System automatische Optimierungsmaßnahmen auch vorübergehend deaktivieren. In diesem Fall wird im Azure-Portal eine entsprechende Meldung angezeigt. Die automatische Optimierung betrachtet Workloads mit der höchsten Ressourcenpriorität.
+
+Die Mechanismen für die automatische Optimierung sind ausgereift und wurden auf der Grundlage hunderttausender, in Azure ausgeführter Datenbanken perfektioniert. Angewendete automatisierte Optimierungsmaßnahmen werden automatisch überprüft, um sicherzustellen, dass sie sich positiv auf die Workloadleistung auswirken. Zurückgestellte Leistungsempfehlungen werden dynamisch erkannt und unverzüglich zurückgesetzt. Die Optimierungsverbesserungen, die für die einzelnen Azure SQL-Datenbanken vorgenommen wurden, werden transparent im Optimierungsverlaufsprotokoll dokumentiert. 
+
+Im folgenden Video können Sie sich einen Überblick über die Funktionsweise der automatischen Optimierung in typischen Verwendungsszenarien verschaffen:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning/player]
 >
+
+Die automatische Optimierung von Azure SQL-Datenbank teilt sich seine Kernlogik mit dem automatischen Optimierungsmodul von SQL Server. Weitere technische Informationen zum integrierten Intelligenzmechanismus finden Sie unter [Automatic tuning](https://docs.microsoft.com/en-us/sql/relational-databases/automatic-tuning/automatic-tuning) (Automatische Optimierung).
+
+## <a name="use-automatic-tuning"></a>Verwenden der automatischen Optimierung
+
+Die automatische Optimierung muss für Ihr Abonnement manuell aktiviert werden. Informationen zum Aktivieren der automatischen Optimierung über das Azure-Portal finden Sie unter [Aktivieren der automatischen Optimierung](sql-database-automatic-tuning-enable.md).
+
+Die automatische Optimierung kann autonom arbeiten, automatisch Optimierungsempfehlungen anwenden und Leistungszuwächse automatisch überprüfen. 
+
+Zur präziseren Steuerung können Sie die automatische Anwendung von Optimierungsempfehlungen deaktivieren und Optimierungsempfehlungen manuell über das Azure-Portal anwenden. Sie können die Lösung auch zum reinen Anzeigen von Empfehlungen der automatischen Optimierung verwenden und sie über Skripts und Tools Ihrer Wahl manuell anwenden. 
 
 ## <a name="automatic-tuning-options"></a>Optionen für die automatische Optimierung
 
-Folgende Optionen für die [automatische Optimierung](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) sind in Azure SQL-Datenbank verfügbar:
+In Azure SQL-Datenbank stehen folgende Optionen für die automatische Optimierung zur Verfügung:
  1. **CREATE INDEX**: Identifiziert die Indizes, die die Leistung Ihrer Workload verbessern können, erstellt die Indizes und überprüft, dass diese die Leistung von Abfragen verbessern.
  2. **DROP INDEX**: Identifiziert redundante und doppelte Indizes sowie Indizes, die über einen langen Zeitraum hinweg nicht verwendet wurden.
- 3. **PLAN REGRESSION CORRECTION**: Identifiziert die SQL-Abfragen, die einen Ausführungsplan verwenden, der langsamer als der vorherige gute Plan ist und verwendet den letzten bekannten guten Plan statt des zurückgestellten Plans.
+ 3. **FORCE LAST GOOD PLAN**: Identifiziert SQL-Abfragen, die einen Ausführungsplan verwenden, der langsamer als der vorherige gute Plan ist, und verwendet den letzten bekannten guten Plan statt des zurückgestellten Plans.
 
-Azure SQL-Datenbank identifiziert die Empfehlungen von **CREATE INDEX**, **DROP INDEX** und **PLAN REGRESSION CORRECTION**, die Ihre Datenbank optimieren können und zeigt diese im Azure-Portal an. Weitere Informationen zur Identifikation von Indizes, die geändert werden sollten, finden Sie unter [Azure SQL Database Advisor im Azure-Portal](sql-database-advisor-portal.md). Sie können Empfehlungen entweder manuell anwenden, indem Sie das Portal verwenden, oder Sie können einstellen, dass Azure SQL-Datenbank Empfehlungen automatisch anwendet, die Workload nach den Änderungen überwacht und überprüft, dass die Empfehlung die Leistung Ihrer Workload verbessert.
+Azure SQL-Datenbank identifiziert die Empfehlungen von **CREATE INDEX**, **DROP INDEX** und **FORCE LAST GOOD PLAN**, die Ihre Datenbank optimieren können, und zeigt sie im Azure-Portal an. Weitere Informationen zur Identifikation von Indizes, die geändert werden sollten, finden Sie unter [Azure SQL Database Advisor im Azure-Portal](sql-database-advisor-portal.md). Sie können Empfehlungen entweder manuell anwenden, indem Sie das Portal verwenden, oder Sie können einstellen, dass Azure SQL-Datenbank Empfehlungen automatisch anwendet, die Workload nach den Änderungen überwacht und überprüft, dass die Empfehlung die Leistung Ihrer Workload verbessert.
 
-Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf einem logischen Server konfiguriert und auf jede Datenbank angewendet werden, die Einstellungen von diesem Server erbt. Das Konfigurieren der Optionen für die [automatische Optimierung](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.
-
-Die erforderlichen Schritte für das Azure-Portal finden Sie im Artikel [Aktivieren der automatischen Optimierung](sql-database-automatic-tuning-enable.md).
+Die Optionen für die automatische Optimierung können unabhängig pro Datenbank aktiviert oder deaktiviert werden. Sie können auch auf einem logischen Server konfiguriert und auf jede Datenbank angewendet werden, die Einstellungen von diesem Server erbt. Das Konfigurieren der Optionen für die automatische Optimierung auf dem Server und das Erben von Einstellungen durch die Datenbanken auf dem Server wird für die Konfiguration der automatischen Optimierung empfohlen, da es die Verwaltung der Optionen für die automatische Optimierung bei einer großen Anzahl von Datenbanken vereinfacht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zur Aktivierung der automatischen Optimierung in Azure SQL-Datenbank und zur Verwendung für die vollständige Verwaltung Ihrer Workload finden Sie unter [Aktivieren der automatischen Optimierung](sql-database-automatic-tuning-enable.md).
-- Bei der Verwendung der manuellen Optimierung helfen Ihnen die Informationen unter [Azure SQL Database Advisor im Azure-Portal](sql-database-advisor-portal.md) weiter. Außerdem können Sie manuell die Empfehlungen anwenden, die zu einer Verbesserung der Leistung Ihrer Abfragen führen.
-- Hier finden Sie weitere Informationen zu der integrierten Logik, die [Azure SQL-Datenbank](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/) optimiert.
-- Hier finden Sie weitere Informationen zur [automatischen Optimierung](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) in Azure SQL-Datenbank und SQL Server 2017.
+- Informationen zum Aktivieren der automatischen Optimierung in Azure SQL-Datenbank und zum Verwalten Ihrer Workload finden Sie unter [Aktivieren der automatischen Optimierung](sql-database-automatic-tuning-enable.md).
+- Informationen zum manuellen Überprüfen und Anwenden von Empfehlungen der automatischen Optimierung finden Sie unter [Suchen und Anwenden von Empfehlungen zur Leistung](sql-database-advisor-portal.md).
+- Weitere Informationen zur integrierten Intelligenz, die bei der automatischen Optimierung zum Einsatz kommt, finden Sie unter [Artificial Intelligence tunes Azure SQL Databases](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/) (Optimierung von Azure SQL-Datenbanken durch künstliche Intelligenz).
+- Weitere Informationen zur Funktionsweise der automatischen Optimierung in Azure SQL-Datenbank und SQL Server 2017 finden Sie unter [Automatic tuning](https://docs.microsoft.com/en-us/sql/relational-databases/automatic-tuning/automatic-tuning) (Automatische Optimierung).

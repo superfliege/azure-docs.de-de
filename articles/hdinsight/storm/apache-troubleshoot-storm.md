@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: 70a3d762431d90acdd6ed2a432a569f34d0ce447
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 399ed17e997baf5dcf484f7798d3c4679522c633
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Problembehandlung bei Storm mit Azure HDInsight
 
@@ -42,7 +42,7 @@ Beispiel:
 
  https://stormcluster.azurehdinsight.net/stormui
 
-## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Wie übertrage ich Storm-EventHub-Spout-Prüfpunktinformationen von einer Topologie in eine andere?
+## <a name="how-do-i-transfer-storm-event-hub-spout-checkpoint-information-from-one-topology-to-another"></a>Wie übertrage ich Storm-EventHub-Spout-Prüfpunktinformationen von einer Topologie zu einer anderen?
 
 Beim Entwickeln von Topologien, die Daten aus Azure Event Hubs mithilfe der JAR-Datei des EventHub-Spouts von HDInsight Storm lesen, müssen Sie eine Topologie bereitstellen, die in einem neuen Cluster den gleichen Namen hat. Sie müssen jedoch die Prüfpunktdaten beibehalten, die im alten Cluster in Apache ZooKeeper committet wurden.
 
@@ -152,3 +152,5 @@ Die Worker Log4J-Konfiguration wird aus „usr/hdp/\<HDP-Version\>/storm/log4j2/
  
 Beispiele: /usr/hdp/2.6.0.2-76/storm/log4j2/cluster.xml, /usr/hdp/2.6.0.2-76/storm/log4j2/worker.xml
 
+### <a name="see-also"></a>Weitere Informationen
+[Problembehandlung mit Azure HDInsight](../../hdinsight/hdinsight-troubleshoot-guide.md)

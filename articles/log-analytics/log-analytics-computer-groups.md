@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 11/02/2017
 ms.author: bwren
-ms.openlocfilehash: f27f038e0507270c0bfe200cb8c86622ebac5372
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
 
@@ -109,13 +109,29 @@ Klicken Sie auf das **x** in der Spalte **Entfernen**, um die Computergruppe zu 
 
 
 ## <a name="using-a-computer-group-in-a-log-search"></a>Verwenden einer Computergruppe in einer Protokollsuche
-Sie können eine Computergruppe in einer Abfrage verwenden, indem Sie den zugehörigen Alias als Funktion behandeln. Üblicherweise nutzen Sie dabei die folgende Syntax:
+Sie können eine aus einer Protokollsuche erstellte Computergruppe in einer Abfrage verwenden, indem Sie den zugehörigen Alias als Funktion behandeln. Üblicherweise nutzen Sie dabei die folgende Syntax:
 
   `Table | where Computer in (ComputerGroup)`
 
 Mit dem folgenden Codebeispiel geben Sie ausschließlich UpdateSummary-Datensätze von Computern der Computergruppe „mycomputergroup“ zurück.
  
   `UpdateSummary | where Computer in (mycomputergroup)`
+
+
+Importierte Computergruppen und die enthaltenen Computer werden in der Tabelle **ComputerGroup** gespeichert.  Die folgende Abfrage würde beispielsweise eine Liste der Computer in der Gruppe „Domain Computers“ aus Active Directory zurückzugeben. 
+
+  `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
+
+Die folgende Abfrage würde UpdateSummary-Datensätze ausschließlich für Computer in „Domain Computers“ zurückgeben.
+
+  ```
+  let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
+  UpdateSummary | where Computer in (ADComputers)
+  ```
+
+
+
+  
 
 >[!NOTE]
 > Wenn Sie für Ihren Arbeitsbereich die [Legacyversion der Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) verwenden, nutzen Sie die folgende Syntax, um in einer Protokollsuche auf eine Computergruppe zu verweisen:  Die Angabe der **Kategorie** ist optional und nur erforderlich, wenn Sie über mehrere Computergruppen mit demselben Namen in verschiedenen Kategorien verfügen. 

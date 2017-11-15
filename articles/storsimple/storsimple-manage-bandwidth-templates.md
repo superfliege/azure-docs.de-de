@@ -12,15 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/16/2016
+ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: df3ae8bf775370432b3648459a7c942afe69fb17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b426a0fc8e0a6c8615b348d3e832c134be4dfbaf
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-storsimple-bandwidth-templates"></a>Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple Manager-Diensts
+> [!NOTE]
+> Das klassische Portal für StorSimple ist veraltet. Ihre StorSimple-Geräte-Manager werden gemäß dem Zeitplan für die Abschaltung automatisch in das neue Azure-Portal verschoben. Sie erhalten zu dieser Verschiebung eine E-Mail und eine Portalbenachrichtigung. Dieses Dokument wird ebenfalls bald entfernt. Die Version dieses Artikel für das neue Azure-Portal finden Sie unter [Verwalten von StorSimple-Bandbreitenvorlagen mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-manage-bandwidth-templates.md). Antworten auf Fragen zu dieser Verschiebung finden Sie unter [Verschieben des StorSimple Device Manager-Diensts vom klassischen Portal in das Azure-Portal: häufig gestellte Fragen (FAQ)](storsimple-8000-move-azure-portal-faq.md).
+
 ## <a name="overview"></a>Übersicht
 Bandbreitenvorlagen ermöglichen es Ihnen, die Netzwerkbandbreitennutzung für mehrere Zeitpläne für bestimmte Tageszeiten einzurichten, um den Datenverkehr vom StorSimple-Gerät zur Cloud zu konfigurieren.
 

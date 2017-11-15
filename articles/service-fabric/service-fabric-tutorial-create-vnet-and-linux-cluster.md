@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: ryanwi
-ms.openlocfilehash: b2542af86be236b8d575fcaf7687222cd74af661
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 33a3474ed91194efbaf2ef96957ad268f43a717e
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="deploy-a-service-fabric-linux-cluster-into-an-azure-virtual-network"></a>Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk
 Dieses Tutorial ist der erste Teil einer Serie. Hier erfahren Sie, wie Sie mithilfe der Azure CLI einen Service Fabric-Linux-Cluster in einem vorhandenen virtuellen Azure-Netzwerk (VNET) und Subnetz bereitstellen. Wenn Sie fertig sind, verfügen Sie über einen Cluster, der in der Cloud ausgeführt wird und für den Sie Anwendungen bereitstellen können. Informationen zum Erstellen eines Windows-Clusters mithilfe von PowerShell finden Sie unter [Bereitstellen eines sicheren Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
@@ -84,17 +84,35 @@ az group deployment create \
 ```
 <a id="createvaultandcert" name="createvaultandcert_anchor"></a>
 ## <a name="deploy-the-service-fabric-cluster"></a>Bereitstellen des Service Fabric-Clusters
-Nachdem die Bereitstellung der Netzwerkressourcen abgeschlossen ist, besteht der nächste Schritt in der Bereitstellung von Service Fabric-Clustern für das VNET im Subnetzt und in der NSG, die für den Service Fabric-Cluster angegeben wurden. Für die Bereitstellung eines Clusters in einem vorhandenen VNET und Subnetz (weiter oben in diesem Artikel bereitgestellt) ist eine Resource Manager-Vorlage erforderlich.  Weitere Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Für diese Tutorialreihe ist die Vorlage so vorkonfiguriert, dass die Namen des VNET, des Subnetzes und der NSG verwendet werden, die in einem vorherigen Schritt eingerichtet wurden.  Laden Sie die folgende Resource Manager-Vorlage und -Parameterdatei herunter:
+Nachdem die Bereitstellung der Netzwerkressourcen abgeschlossen ist, besteht der nächste Schritt in der Bereitstellung von Service Fabric-Clustern für das VNET im Subnetzt und in der NSG, die für den Service Fabric-Cluster angegeben wurden. Für die Bereitstellung eines Clusters in einem vorhandenen VNET und Subnetz (weiter oben in diesem Artikel bereitgestellt) ist eine Resource Manager-Vorlage erforderlich.  Weitere Informationen finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md). Für diese Tutorialreihe ist die Vorlage so vorkonfiguriert, dass die Namen des VNET, des Subnetzes und der NSG verwendet werden, die in einem vorherigen Schritt eingerichtet wurden.  
+
+Laden Sie die folgende Resource Manager-Vorlage und -Parameterdatei herunter:
 - [linuxcluster.json][cluster-arm]
 - [linuxcluster.parameters.json][cluster-parameters-arm]
 
-Füllen Sie für die Bereitstellung die leeren Parameter **clusterName**, **adminUserName** und **adminPassword** in der Datei *linuxcluster.parameters.json* aus.  Lassen Sie die Parameter **certificateThumbprint**, **certificateUrlValue** und **sourceVaultValue** leer, wenn Sie ein selbstsigniertes Zertifikat erstellen möchten.  Wenn Sie ein vorhandenes Zertifikat zuvor in einen Schlüsseltresor hochgeladen haben, geben Sie die entsprechenden Parameterwerte ein.
+Verwenden Sie diese Vorlage, um einen sicheren Cluster zu erstellen.  Ein Clusterzertifikat ist ein X.509-Zertifikat, das zum Sichern einer Knoten-zu-Knoten-Kommunikation und zur Authentifizierung der Endpunkte der Clusterverwaltung bei einem Verwaltungsclient verwendet wird.  Dieses Clusterzertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit. Zertifikate für Service Fabric-Cluster in Azure werden in Azure Key Vault verwaltet.  Wenn ein Cluster in Azure bereitgestellt wird, ruft der für die Erstellung von Service Fabric-Clustern zuständige Azure-Ressourcenanbieter Zertifikate aus dem Schlüsseltresor ab und installiert sie auf den virtuellen Clustercomputern. 
 
-Verwenden Sie das folgende Skript, um den Cluster mithilfe der Resource Manager-Vorlagendatei und der Parameterdatei bereitzustellen.  Ein selbstsigniertes Zertifikat wird im angegebenen Schlüsseltresor erstellt und zum Sichern des Clusters verwendet.  Das Zertifikat wird zudem lokal heruntergeladen.
+Sie können ein Zertifikat aus einer Zertifizierungsstelle als Clusterzertifikat verwenden. Erstellen Sie zu Testzwecken alternativ ein selbstsigniertes Zertifikat. Für das Clusterzertifikat muss Folgendes gelten:
+
+- Es muss einen privaten Schlüssel enthalten.
+- Das Zertifikat muss für den Schlüsselaustausch erstellt werden, um in eine PFX-Datei (Personal Information Exchange; privater Informationsaustausch) exportiert werden zu können.
+- Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Diese Übereinstimmung ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne „.cloudapp.azure.com“ können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
+
+Geben Sie für die Bereitstellung die leeren Parameter in der Datei *linuxcluster.parameters.json* an:
+
+|Parameter|Wert|
+|---|---|
+|adminPassword|Password#1234|
+|adminUserName|vmadmin|
+|clusterName|mysfcluster|
+
+Lassen Sie die Parameter **certificateThumbprint**, **certificateUrlValue** und **sourceVaultValue** leer, um ein selbstsigniertes Zertifikat zu erstellen.  Wenn Sie ein vorhandenes Zertifikat verwenden möchten, das zuvor in einen Schlüsseltresor hochgeladen wurde, geben Sie die entsprechenden Parameterwerte ein.
+
+Das folgende Skript verwendet den Befehl und die Vorlage [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create), um einen neuen Cluster in Azure bereitzustellen. Das Cmdlet erstellt auch einen neuen Schlüsseltresor in Azure, fügt diesem ein neues selbstsigniertes Zertifikat hinzu und lädt das Zertifikat an einen lokalen Speicherort herunter. Sie können ein vorhandenes Zertifikat und/oder einen vorhandenen Schlüsseltresor angeben, indem Sie andere Parameter des Befehls [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) verwenden.
 
 ```azurecli
 Password="q6D7nN%6ck@6"
-Subject="aztestcluster.southcentralus.cloudapp.azure.com"
+Subject="mysfcluster.southcentralus.cloudapp.azure.com"
 VaultName="linuxclusterkeyvault"
 az group create --name $ResourceGroupName --location $Location
 
@@ -138,9 +156,9 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Herstellen einer Verbindung mit dem Cluster mit der Service Fabric-Befehlszeilenschnittstelle
 > * Entfernen eines Clusters
 
-Als Nächstes fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie API Management mit Service Fabric bereitstellen.
+Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie Ihren Cluster skalieren.
 > [!div class="nextstepaction"]
-> [Bereitstellen von API Management](service-fabric-tutorial-deploy-api-management.md)
+> [Skalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
 
 
 [network-arm]:https://github.com/Azure-Samples/service-fabric-api-management/blob/master/network.json

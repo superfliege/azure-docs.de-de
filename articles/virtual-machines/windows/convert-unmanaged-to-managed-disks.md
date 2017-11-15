@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 445117371fde91d0a0fcb96f06e42e2033692789
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 3f3075fc5c6f3a47bde13d98d0b705c29b98112b
+ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/07/2017
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
@@ -31,6 +31,7 @@ In diesem Artikel wird beschrieben, wie Sie VMs mithilfe von Azure PowerShell ko
 
 
 * Lesen Sie den Abschnitt [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
+* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](faq-for-disks.md#migrate-to-managed-disks).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 
@@ -92,7 +93,6 @@ Falls sich die VMs, die Sie in verwaltete Datenträger konvertieren möchten, in
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 
@@ -100,6 +100,7 @@ Falls sich die VMs, die Sie in verwaltete Datenträger konvertieren möchten, in
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Wenn während der Konvertierung ein Fehler auftritt oder sich eine VM aufgrund von Problemen bei einer vorherigen Konvertierung in einen fehlerhaften Zustand befindet, führen Sie das Cmdlet `ConvertTo-AzureRmVMManagedDisk` erneut aus. Derartige Probleme können normalerweise durch eine einfache Wiederholung behoben werden.
+Stellen Sie vor dem Konvertieren sicher, dass alle VM-Erweiterungen den Zustand „Bereitstellung erfolgreich“ aufweisen. Andernfalls tritt bei der Konvertierung ein Fehler mit Fehlercode 409 auf.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

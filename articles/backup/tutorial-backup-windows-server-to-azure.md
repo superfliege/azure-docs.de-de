@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.openlocfilehash: f81f23862e783de07b5ec5aebad7f0a781168bd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7caf1dd3fa5ef295c2472cc11deb2895fc2a7111
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
 
@@ -116,24 +116,20 @@ Verwenden Sie den Microsoft Azure Recovery Services-Agent, um die Zeitpunkte fü
 
 3. Klicken Sie auf **Weiter**, um zur Seite **Zu sichernde Elemente auswählen** zu navigieren.
 
-4. Klicken Sie auf **Elemente hinzufügen**, und wählen Sie im angezeigten Dialogfeld die Option **Systemstatus** sowie die Dateien oder Ordner, die Sie sichern möchten, aus. Klicken Sie dann auf **OK**.
+4. Klicken Sie auf **Elemente hinzufügen**, und wählen Sie im angezeigten Dialogfeld die Option **Systemstatus** sowie die Dateien oder Ordner aus, die Sie sichern möchten. Klicken Sie dann auf **OK**.
 
 5. Klicken Sie auf **Weiter**.
 
 
-6. Geben Sie auf der Seite **Sicherungszeitplan festlegen** an, zu welchen Tageszeiten oder wann in der Woche Sicherungen für Dateien und Ordner ausgelöst werden sollen. Der Zeitplan für Systemstatussicherungen wird automatisch konfiguriert. 
+6. Geben Sie auf der Seite **Sicherungszeitplan angeben (Systemstatus)** an, zu welchen Tageszeiten oder wann in der Woche Sicherungen für den Systemstatus ausgelöst werden sollen. Klicken Sie anschließend auf **Weiter**. 
 
-    ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
- 
-
-
-7.  Wählen Sie auf der Seite **Aufbewahrungsrichtlinie auswählen** die Aufbewahrungsrichtlinie für die Sicherungskopien von Dateien und Ordnern aus. Die Aufbewahrungsdauer für Systemstatussicherungen wird automatisch auf 60 Tage festgelegt.
+7.  Wählen Sie auf der Seite **Aufbewahrungsrichtlinie auswählen (Systemstatus)** die Aufbewahrungsrichtlinie für die Sicherungskopien des Systemstatus aus, und klicken Sie auf **Weiter**.
+8. Wählen Sie analog den Sicherungszeitplan und die Aufbewahrungsrichtlinie für Dateien und Ordner aus. 
 8.  Lassen Sie auf der Seite **Erstsicherungstyp wählen** die Option **Automatisch über das Netzwerk** aktiviert, und klicken Sie auf **Weiter**.
 9.  Lesen Sie sich die Informationen auf der Seite **Bestätigung** durch, und klicken Sie dann auf **Fertig stellen**.
 10. Klicken Sie auf **Schließen**, nachdem der Assistent die Erstellung des Sicherungszeitplans abgeschlossen hat.
 
 ## <a name="perform-an-ad-hoc-back-up"></a>Durchführen einer Ad-hoc-Sicherung
-
 
 Sie haben den Zeitplan für die Ausführung von Sicherungsaufträgen eingerichtet. Sie haben allerdings den Server noch nicht gesichert. Es wird für die Notfallwiederherstellung empfohlen, eine manuelle Sicherung durchzuführen, um auf dem Server Datenresilienz sicherzustellen.
 
@@ -141,8 +137,9 @@ Sie haben den Zeitplan für die Ausführung von Sicherungsaufträgen eingerichte
 
     ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
 
-2.  Überprüfen Sie auf der Seite **Bestätigung** die Einstellungen, die vom Assistenten für **Jetzt sichern** zum Sichern des Servers verwendet werden. Klicken Sie dann auf **Sichern**.
-3.  Klicken Sie auf **Schließen** , um den Assistenten zu schließen. Wenn Sie den Assistenten schließen, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
+2.  Wählen Sie im Assistenten **Jetzt sichern** entweder **Dateien und Ordner** oder **Systemstatus** aus (je nachdem, was Sie sichern möchten), und klicken Sie auf **Weiter**. 
+3. Überprüfen Sie auf der Seite **Bestätigung** die Einstellungen, die vom Assistenten für **Jetzt sichern** zum Sichern des Servers verwendet werden. Klicken Sie dann auf **Sichern**.
+4.  Klicken Sie auf **Schließen** , um den Assistenten zu schließen. Wenn Sie den Assistenten schließen, bevor der Sicherungsvorgang abgeschlossen ist, wird der Assistent im Hintergrund weiter ausgeführt.
 4.  Nach Abschluss der ersten Sicherung wird in der Konsole des MARS-Agents im Bereich **Aufträge** als Status **Auftrag abgeschlossen** angezeigt.
 
 

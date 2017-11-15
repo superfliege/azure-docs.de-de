@@ -1,27 +1,35 @@
 ---
 title: Neuerungen Anmerkungen zur Version Azure Active Directory Premium | Microsoft-Dokumentation
-description: "Verwenden Sie diese Anmerkungen zu dieser Version, um bei den aktuellen Versionen, bekannten Problemen, Fehlerbehebungen, bei veralteter Funktionalität und Plänen für Änderungen in Azure Active Directory auf dem Laufenden zu bleiben."
+description: "Hier finden Sie Informationen zu den Neuerungen in Azure Active Directory (Azure AD), u.a. aktuelle Versionshinweise, bekannte Probleme, Fehlerbehebungen, veraltete Funktionen und anstehende Änderungen."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
 manager: femila
 editor: 
+featureFlags: clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 11/06/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 1d98233e1bfc2c9a926d7c61737286ec6e4fc422
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 766ab10c853eb56a1203686d21d0e131c44a41b5
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
+
+
+
+
+> Abonnieren Sie diesen [Feed](https://docs.microsoft.com/api/search/rss?search=%22what%27s%20new%20in%20azure%20active%20directory%3F%22&locale=en-us) in Ihrem bevorzugten RSS-Feedreader, um in Bezug auf Neuerungen in Azure Active Directory auf dem Laufenden zu bleiben.
+
+
 
 Wir nehmen laufend Verbesserungen an Azure Active Directory vor. Damit Sie bei den neuesten Entwicklungen auf dem neuesten Stand bleiben, bietet dieses Thema Informationen zu Folgendem:
 
@@ -32,6 +40,18 @@ Wir nehmen laufend Verbesserungen an Azure Active Directory vor. Damit Sie bei d
 -   Pläne für Änderungen 
 
 Besuchen Sie diese Seite regelmäßig, da wir sie monatlich aktualisieren.
+
+## <a name="november-2017"></a>November 2017
+
+**Typ:** Veraltete Funktionen  
+**Dienstkategorie:** ACS  
+**Produktfunktion:** Access Control Service 
+
+<a name="acs-retirement"></a>
+
+Microsoft Azure Active Directory Access Control (auch als Access Control Service oder ACS bezeichnet) wird Ende 2018 eingestellt.  Weitere Informationen, u.a. ein ausführlicher Zeitplan und allgemeine Migrationsanweisungen, werden in den nächsten Wochen bereitgestellt. Hinterlassen Sie in der Zwischenzeit Kommentare auf dieser Seite, wenn Sie Fragen zu ACS haben. Ein Mitglied unseres Teams wird sich dann mit Ihnen in Verbindung setzen.
+
+---
 
 
 ## <a name="october-2017"></a>Oktober 2017

@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/7/2017
+ms.date: 11/2/2017
 ms.author: dharmeshkakadia
-ms.openlocfilehash: 53e9685458190efe6a586504721b8e7baadaed60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 398cc7cd0fa815f12ba5b503a1328688e1159eee
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Problembehandlung bei Hive mit Azure HDInsight
 
@@ -54,7 +54,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 - [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Wie finde ich Hive-Protokolle auf einem Cluster?
+## <a name="how-do-i-locate-hive-logs-on-a-cluster"></a>Wie finde ich Hive-Protokolle in einem Cluster?
 
 ### <a name="resolution-steps"></a>Lösungsschritte
 
@@ -83,7 +83,7 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 - [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
-## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Wie starte ich die Hive-Shell mit bestimmten Konfigurationen auf einem Cluster?
+## <a name="how-do-i-launch-the-hive-shell-with-specific-configurations-on-a-cluster"></a>Wie starte ich die Hive-Shell mit bestimmten Konfigurationen in einem Cluster?
 
 ### <a name="resolution-steps"></a>Lösungsschritte
 
@@ -177,6 +177,8 @@ Es gibt zwei Möglichkeiten zum Erfassen der Tez DAG-Daten:
 [Herstellen einer Verbindung mit einem HDInsight-Cluster mit SSH](hdinsight-hadoop-linux-use-ssh-unix.md)
 
 
+### <a name="see-also"></a>Weitere Informationen
+[Beheben von Problemen mit Azure HDInsight](hdinsight-troubleshoot-guide.md)
 
 
 

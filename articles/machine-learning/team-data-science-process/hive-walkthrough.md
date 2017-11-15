@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 238b7d6bb6289b5f2e8d2a20f4335724087dfd48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1be39ab258235740c7e0875a5c0c29ee4a665a71
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Der Team Data Science-Prozess in Aktion: Verwenden von Azure HDInsight Hadoop-Clustern
 In dieser exemplarischen Vorgehensweise nutzen Sie den [Team Data Science-Prozess (TDSP)](overview.md) in einem vollständigen Szenario mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/), um Daten aus dem öffentlich zugänglichen [NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/)-Dataset zu speichern und zu untersuchen, Features zu entwickeln und ein Downsampling auf die Daten anzuwenden. Modelle der Daten werden mit Azure Machine Learning entwickelt, um eine binäre Klassifizierung und eine Multiklassenklassifizierung sowie Regressionsvorhersageaufgaben durchzuführen.
@@ -59,15 +59,15 @@ Hier sehen Sie drei Beispiele für Vorhersageprobleme, die in dieser exemplarisc
 
 1. **Binäre Klassifizierung**: Vorhersagen, ob ein Trinkgeld bezahlt wurde, d. h. ein *tip\_amount* größer als 0 $ ist eine positive Probe, während ein *tip\_amount* gleich 0 $ eine negative Probe ist.
    
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0
+        Class 0: tip_amount = $0
+        Class 1: tip_amount > $0
 2. **Multiklassenklassifizierung**: Vorhersage des Trinkgeldbereichs für die Fahrt. Wir teilen *tip\_amount* in fünf Fächer oder Klassen auf:
    
-        Class 0 : tip_amount = $0
-        Class 1 : tip_amount > $0 and tip_amount <= $5
-        Class 2 : tip_amount > $5 and tip_amount <= $10
-        Class 3 : tip_amount > $10 and tip_amount <= $20
-        Class 4 : tip_amount > $20
+        Class 0: tip_amount = $0
+        Class 1: tip_amount > $0 and tip_amount <= $5
+        Class 2: tip_amount > $5 and tip_amount <= $10
+        Class 3: tip_amount > $10 and tip_amount <= $20
+        Class 4: tip_amount > $20
 3. **Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für die Fahrt.  
 
 ## <a name="setup"></a>Einrichten eines HDInsight Hadoop-Clusters für die erweiterte Analyse
@@ -132,7 +132,7 @@ Die Daten sollten jetzt im Azure-Blobspeicher vorliegen und zur Verarbeitung im 
 > 
 > 
 
-Um für eine explorative Datenanalyse und eine Komprimierung der Daten auf den Hauptknoten des Clusters zuzugreifen, folgen Sie den Anweisungen unter [Zugreifen auf den Hauptknoten des Hadoop-Clusters](customize-hadoop-cluster.md#headnode).
+Um für eine explorative Datenanalyse und eine Komprimierung der Daten auf den Hauptknoten des Clusters zuzugreifen, folgen Sie den Anweisungen unter [Zugreifen auf den Hauptknoten des Hadoop-Clusters](customize-hadoop-cluster.md).
 
 In dieser exemplarischen Vorgehensweise werden vorwiegend in [Hive](https://hive.apache.org/) geschriebene Abfragen verwendet. Hive ist eine SQL-ähnliche Abfragesprache zur Durchführung von Vorabdatenuntersuchungen. Die Hive-Abfragen werden in HQL-Dateien gespeichert. Anschließend komprimieren wir diese Daten, um sie für die Modellentwicklung in Azure Machine Learning zu nutzen.
 
@@ -557,7 +557,7 @@ Führen Sie an der Hive-Eingabeaufforderung den folgenden Befehl aus:
 
 Die Abfrageergebnisse werden in 9 Azure-Blobs von ***queryoutputdir/000000\_0*** bis ***queryoutputdir/000008\_0*** im Standardcontainer des Hadoop-Clusters geschrieben.
 
-Um die Größe der einzelnen Blobs anzuzeigen, führen wir den folgenden Befehl von der Hive-Eingabeaufforderung aus:
+Um die Größe der einzelnen Blobs anzuzeigen, führen wir den folgenden Befehl in der Hive-Eingabeaufforderung aus:
 
     hdfs dfs -ls wasb:///queryoutputdir
 
@@ -725,13 +725,13 @@ Einige Details zum [Import Data][import-data]-Modul sowie zu den Parametern für
 
 **HCatalog-Server-URI**: Wenn der Clustername „abc123“ lautet, ist dies einfach: https://abc123.azurehdinsight.net
 
-**Hadoop-Benutzerkontoname**: Der bei der Bereitstellung des Clusters ausgewählte Benutzername (**nicht** der Benutzername für den Remotezugriff).
+**Hadoop-Benutzerkontoname**: Der für den Cluster ausgewählte Benutzername (**nicht** der Benutzername für den Remotezugriff)
 
-**Hadoop-Kontokennwort**: Das gewählte Kennwort für den Cluster (**nicht** das Kennwort für den Remotezugriff).
+**Hadoop-Kontokennwort**: Das gewählte Kennwort für den Cluster (**nicht** das Kennwort für den Remotezugriff)
 
-**Speicherort der Ausgabedaten** : Wird von Azure festgelegt.
+**Speicherort der Ausgabedaten**: Wird von Azure festgelegt.
 
-**Azure-Speicherkontoname** : Der Name des dem Cluster zugeordneten standardmäßigen Speicherkontos.
+**Azure-Speicherkontoname**: Der Name des dem Cluster zugeordneten Standardspeicherkontos
 
 **Azure-Containername**: Dies ist der standardmäßige Containername für den Cluster. Dieser stimmt üblicherweise mit dem Clusternamen überein. Wenn der Cluster "abc123" heißt, lautet dieser Name "abc123".
 
@@ -783,7 +783,7 @@ Als Ergebnis erhalten wir einen AUC-Wert (Area Under Curve) von 0,987, wie in de
 
 a. Für dieses Problem lautet unser Zielbezeichner (oder die Zielklasse) „tip\_class“ und kann einen von fünf Werten annehmen (0,1,2,3,4). Wie bei der binären Klassifizierung sind Spalten vorhanden, die Datenlecks für dieses Experiment darstellen. Dies sind insbesondere: „tipped“, „tip\_amount“ und „total\_amount“. Diese Spalten enthalten Informationen zum Zielbezeichner, die zum Testzeitpunkt nicht zur Verfügung stehen. Wir entfernen diese Spalten mithilfe des [Select Columns in Dataset][select-columns]-Moduls.
 
-Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage, wann ein Trinkgeld wahrscheinlich niedriger ausfällt ( Class 0: tip = $0, class 1 : tip > $0 and tip <= $5, Class 2 : tip > $5 and tip <= $10, Class 3 : tip > $10 and tip <= $20, Class 4 : tip > $20)
+Der nachstehende Screenshot zeigt unser Experiment zur Vorhersage, wann ein Trinkgeld wahrscheinlich niedriger ausfällt (Class 0: tip = $0, class 1 : tip > $0 and tip <= $5, Class 2: tip > $5 and tip <= $10, Class 3: tip > $10 and tip <= $20, Class 4: tip > $20)
 
 ![Momentaufnahme des Experiments](./media/hive-walkthrough/5ztv0n0.png)
 
@@ -795,7 +795,7 @@ b. Für diese Experiment verwenden wir eine Konfusionsmatrix, um die Vorhersageg
 
 ![Konfusionsmatrix](./media/hive-walkthrough/cxFmErM.png)
 
-Beachten Sie Folgendes: Während die Klassengenauigkeit bei den häufig vorkommenden Klassen recht gut ist, zeigt das Modell keine gute "Lernkurve" bei den selteneren Klassen.
+Beachten Sie Folgendes: Während die Klassengenauigkeit bei den häufig vorkommenden Klassen recht gut ist, zeigt das Modell keine gute „Lernkurve“ bei den selteneren Klassen.
 
 **3. Regressionsaufgabe**: Vorhersage des Trinkgeldbetrags für eine Fahrt.
 
@@ -819,7 +819,7 @@ Wir sehen, dass der Bestimmungskoeffizient 0,709 lautet, was impliziert, dass et
 > 
 
 ## <a name="license-information"></a>Lizenzinformationen
-Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei LICENSE.txt im Verzeichnis mit dem Beispielcode auf GitHub.
+Diese exemplarische Vorgehensweise und die zugehörigen Skripts werden von Microsoft unter MIT-Lizenz bereitgestellt. Weitere Informationen finden Sie in der Datei „LICENSE.txt“ im Verzeichnis mit dem Beispielcode auf GitHub.
 
 ## <a name="references"></a>Referenzen
 •    [NYC Taxi Trips: Download Page von Andrés Monroy](http://www.andresmh.com/nyctaxitrips/)  

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.openlocfilehash: 0c8c2ab8c7daceb13fd39d2a109148a40430d59a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a967a8fccfe0dc051a7cf3a4a2fcefad2a2f187f
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="create-features-for-data-in-an-hadoop-cluster-using-hive-queries"></a>Erstellen von Features für Daten in einem Hadoop-Cluster mit Hive-Abfragen
 Dieses Dokument veranschaulicht, wie Features für Daten in einem Azure HDInsight Hadoop-Cluster mithilfe von Hive-Abfragen erstellt werden. Diese Hive-Abfragen verwenden eingebettete Hive-UDFs (User Defined Function, benutzerdefinierte Funktion), für die die Skripts bereitgestellt werden.
@@ -37,7 +37,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 * Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
 * Sie haben einen angepassten Hadoop-Cluster mit dem HDInsight-Dienst bereitgestellt.  Anweisungen hierzu finden Sie unter [Anpassen von Azure HDInsight Hadoop-Clustern für die erweiterte Analyse](customize-hadoop-cluster.md).
 * Sie haben die Daten in Hive-Tabellen auf Azure HDInsight Hadoop-Clustern hochgeladen. Wenn dies nicht der Fall ist, führen Sie die unter [Erstellen und Laden von Daten in Hive-Tabellen](move-hive-tables.md) beschriebenen Schritte zum Hochladen von Daten in Hive-Tabellen aus.
-* Sie haben den Remotezugriff auf den Cluster aktiviert. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](customize-hadoop-cluster.md#headnode).
+* Sie haben den Remotezugriff auf den Cluster aktiviert. Anweisungen finden Sie unter [Zugreifen auf den Hauptknoten von Hadoop-Clustern](customize-hadoop-cluster.md).
 
 ## <a name="hive-featureengineering"></a>Generieren von Funktionen
 In diesem Abschnitt sind verschiedene Beispiele dafür enthalten, wie Funktionen mithilfe von Hive-Abfragen generiert werden können. Wenn Sie zusätzliche Funktionen generiert haben, können Sie diese als Spalten in der vorhandenen Tabelle hinzufügen oder eine neue Tabelle mit den zusätzlichen Funktionen und einem Primärschlüssel erstellen, die dann mit der ursprünglichen Tabelle zusammengeführt werden kann. Beispiele:
@@ -88,7 +88,7 @@ In diesem Beispiel werden die Variablen `smooth_param1` und `smooth_param2` zum 
 Nach dem Berechnen der Risikotabelle können Sie einer Tabelle Risikowerte zuweisen, indem Sie sie mit der Risikotabelle zusammenführen. Die Hive-Abfrage für das Zusammenführen wurde im vorherigen Abschnitt beschrieben.
 
 ### <a name="hive-datefeatures"></a>Extrahieren von Funktionen aus "datetime"-Feldern
-Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In Hive lautet das Standardformat für "datetime" "JJJJ-MM-TT 00:00:00" (wie z. B. in "1970-01-01 12:21:32"). In diesem Abschnitt werden Beispiele für das Extrahieren des Tags eines Monats und des Monats aus einem "datetime"-Feld gezeigt. Außerdem gibt es Beispiele zum Konvertieren einer "datetime"-Zeichenfolge in ein anderes Format als das Standardformat.
+Hive bietet eine Reihe von UDFs für die Verarbeitung von "datetime"-Feldern. In Hive lautet das Standardformat für "datetime" "JJJJ-MM-TT 00:00:00" (wie z. B. in "1970-01-01 12:21:32"). In diesem Abschnitt werden Beispiele für das Extrahieren des Tags eines Monats und des Monats aus einem datetime-Feld gezeigt. Außerdem gibt es Beispiele zum Konvertieren einer datetime-Zeichenfolge in einem anderen Format als dem Standardformat in eine datetime-Zeichenfolge im Standardformat.
 
         select day(<datetime field>), month(<datetime field>)
         from <databasename>.<tablename>;
@@ -114,7 +114,7 @@ Wenn die Hive-Tabelle ein Textfeld enthält, das eine Zeichenfolge von durch Lee
         from <databasename>.<tablename>;
 
 ### <a name="hive-gpsdistance"></a>Berechnen der Entfernung zwischen GPS-Koordinaten
-Die in diesem Abschnitt angegebene Abfrage kann direkt auf die "NYC Taxi Trip"-Daten angewendet werden. Diese Abfrage soll veranschaulichen, wie Sie die eingebetteten mathematischen Funktionen in Hive zum Generieren von Funktionen verwenden.
+Die in diesem Abschnitt angegebene Abfrage kann direkt auf die "NYC Taxi Trip"-Daten angewendet werden. Diese Abfrage soll veranschaulichen, wie Sie eine eingebettete mathematische Funktion in Hive zum Generieren von Funktionen verwenden.
 
 Die in dieser Abfrage verwendeten Felder sind GPS-Koordinaten von Start- und Zielorten mit den Bezeichnungen *pickup\_longitude*, *pickup\_latitude*, *dropoff\_longitude* und *dropoff\_latitude*. Die Abfragen zur Berechnung der direkten Entfernung zwischen den Start- und Zielkoordinaten sind:
 
@@ -156,7 +156,7 @@ Die Standardeinstellungen für die Parameter von Hive-Clustern eignen sich mögl
 2. **Optimieren von Join-Vorgängen in Hive**: Join-Vorgänge im Map/Reduce-Framework erfolgen meist in der Reduce-Phase. In einigen Fällen können jedoch enorme Vorteile erzielt werden, indem die Join-Vorgänge in die Map-Phase verlegt werden (so genannte „mapjoins“). Damit Hive dies möglichst häufig durchführt, legen Sie Folgendes fest:
    
         set hive.auto.convert.join=true;
-3. **Angeben der Anzahl von Mappern für Hive**: Hadoop erlaubt das Festlegen der Anzahl von Reducern. Die Anzahl der Mapper kann aber in der Regel nicht vom Benutzer festgelegt werden. Mit einem Trick erhalten Sie ein gewisses Maß an Kontrolle über diese Anzahl: Wählen Sie die Hadoop-Variablen *mapred.min.split.size* und *mapred.max.split.size* aus, da die Größe der einzelnen Map-Aufgaben durch Folgendes bestimmt wird:
+3. **Angeben der Anzahl von Zuordnungen für Hive**: Hadoop erlaubt das Festlegen der Anzahl von Reducern. Die Anzahl der Zuordnungen kann aber in der Regel nicht vom Benutzer festgelegt werden. Mit einem Trick erhalten Sie ein gewisses Maß an Kontrolle über diese Anzahl: Wählen Sie die Hadoop-Variablen *mapred.min.split.size* und *mapred.max.split.size* aus, da die Größe der einzelnen Map-Aufgaben durch Folgendes bestimmt wird:
    
         num_maps = max(mapred.min.split.size, min(mapred.max.split.size, dfs.block.size))
    

@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 11/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: d6dc0ffac1a3e688f93af903f51f798270b63711
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ebb469289afc36b08c90ae9839f5bdba41cd90b
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
-In diesem Thema werden einige häufige Azure-Bereitstellungsfehler beschrieben, die ggf. auftreten können, und es enthält auch Informationen zur Behebung der Fehler. Sie können unter [Ermitteln des Fehlercodes](#find-error-code) nachsehen, falls Sie den Fehlercode für Ihren Bereitstellungsfehler nicht kennen.
+In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben, die ggf. auftreten können. Er enthält darüber hinaus Informationen zur Behebung der Fehler. Sie können unter [Ermitteln des Fehlercodes](#find-error-code) nachsehen, falls Sie den Fehlercode für Ihren Bereitstellungsfehler nicht kennen.
 
 ## <a name="error-codes"></a>Fehlercodes
 
@@ -61,6 +61,7 @@ In diesem Thema werden einige häufige Azure-Bereitstellungsfehler beschrieben, 
 | PrivateIPAddressNotInSubnet | Die angegebene IP-Adresse liegt außerhalb des Subnetzbereichs. Ändern Sie die IP-Adresse so, das Sie innerhalb des Subnetzbereichs liegt. | [IP-Adressen](../virtual-network/virtual-network-ip-addresses-overview-arm.md) |
 | PropertyChangeNotAllowed | Einige Eigenschaften können auf einer bereitgestellten Ressource nicht geändert werden. Beschränken Sie Ihre Änderungen beim Aktualisieren einer Ressource auf die zulässigen Eigenschaften. | [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource) |
 | RequestDisallowedByPolicy | Ihr Abonnement enthält eine Ressourcenrichtlinie, durch die eine Aktion verhindert wird, die Sie während der Bereitstellung ausführen möchten. Suchen Sie nach der Richtlinie, die die Aktion blockiert. Ändern Sie Ihre Bereitstellung nach Möglichkeit so, dass die Einschränkungen der Richtlinie beachtet werden. | [Beheben von Fehlern für Richtlinien](resource-manager-policy-requestdisallowedbypolicy-error.md) |
+| ReservedResourceName | Geben Sie einen Ressourcennamen an, der keinen reservierten Name enthält. | [Resolve reserved resource name errors](resource-manager-reserved-resource-name.md) (Beheben von Fehlern mit reservierten Ressourcennamen) |
 | ResourceGroupBeingDeleted | Warten Sie, bis der Löschvorgang abgeschlossen ist. | |
 | ResourceGroupNotFound | Überprüfen Sie den Namen der Zielressourcengruppe für die Bereitstellung. Er muss in Ihrem Abonnement bereits vorhanden sein. Überprüfen Sie Ihren Abonnementkontext. | [Azure CLI](/cli/azure/account?#az_account_set) [PowerShell](/powershell/module/azurerm.profile/set-azurermcontext) |
 | ResourceNotFound | Ihre Bereitstellung verweist auf eine Ressource, die nicht aufgelöst werden kann. Überprüfen Sie, ob Ihre Verwendung der Funktion **reference** die für Ihr Szenario erforderlichen Parameter enthält. | [Beheben von Fehlern für Verweise](resource-manager-not-found-errors.md) |

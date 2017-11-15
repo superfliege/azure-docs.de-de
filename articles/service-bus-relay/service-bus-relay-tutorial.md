@@ -1,6 +1,6 @@
 ---
 title: Tutorial zu Azure Service Bus WCF Relay | Microsoft-Dokumentation
-description: Erstellen Sie eine Service Bus-Clientanwendung und einen Service Bus-Dienst mithilfe von WCF-Relay.
+description: Erstellen einer Client- und Dienstanwendung mit WCF-Relay.
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/02/2017
+ms.date: 11/02/2017
 ms.author: sethm
-ms.openlocfilehash: 0298a93da0d8cd0b1f2e15146a708c8dd6ecb8e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a0b06c32cf5f154cf5eb01842d9b917dcb35f7b3
+ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/04/2017
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Tutorial zu Azure WCF Relay
 
@@ -54,7 +54,7 @@ Der Dienstvertrag gibt an, welche Vorgänge (Webdienstterminologie für Methoden
 
 3. Installieren Sie das NuGet-Paket für Service Bus. Dieses Paket fügt automatisch Verweise auf die Service Bus-Bibliotheken sowie **System.ServiceModel** (WCF) hinzu. [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) ist der Namespace, der den programmgesteuerten Zugriff auf die grundlegenden Funktionen von WCF ermöglicht. Service Bus verwendet viele Objekte und Attribute von WCF, um Dienstverträge zu definieren.
 
-    Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach `Microsoft Azure Service Bus`. Vergewissern Sie sich, dass im Feld **Version(en)** der Projektname ausgewählt ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
+    Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie dann auf **NuGet-Pakete verwalten**. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **WindowsAzure.ServiceBus**. Vergewissern Sie sich, dass im Feld **Version(en)** der Projektname ausgewählt ist. Klicken Sie auf **Installieren**, und akzeptieren Sie die Nutzungsbedingungen.
 
     ![][3]
 4. Doppelklicken Sie im Projektmappen-Explorer auf die Datei „Program.cs“, um sie im Editor zu öffnen (sofern sie nicht bereits geöffnet ist).

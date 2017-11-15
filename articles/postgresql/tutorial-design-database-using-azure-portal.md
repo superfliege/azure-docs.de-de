@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.openlocfilehash: 9f1c8241d0d7e68abd175c7c1c3b023d18b24a68
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 11/03/2017
+ms.openlocfilehash: 1a210f813319a4f21c7c246002c968b8093f8a4e
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="design-your-first-azure-database-for-postgresql-using-the-azure-portal"></a>Entwerfen Ihrer ersten Azure-Datenbank für PostgreSQL mithilfe des Azure-Portals
 
@@ -71,13 +71,13 @@ Erstellen Sie einen Azure-Datenbank für PostgreSQL-Server in diesen Schritten:
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurieren einer Firewallregel auf Serverebene
 
-Der Azure-Datenbank für PostgreSQL-Dienst erstellt eine Firewall auf der Serverebene. Diese Firewall hindert standardmäßig alle externen Anwendungen und Tools daran, eine Verbindung mit dem Server und den Datenbanken auf dem Server herzustellen (sofern keine Firewallregel erstellt wird, um die Firewall für einen bestimmten Bereich von IP-Adressen zu öffnen). 
+Der Azure Database for PostgreSQL-Dienst verwendet eine Firewall auf der Serverebene. Diese Firewall hindert standardmäßig alle externen Anwendungen und Tools daran, eine Verbindung mit dem Server und den Datenbanken auf dem Server herzustellen (sofern keine Firewallregel erstellt wird, um die Firewall für einen bestimmten Bereich von IP-Adressen zu öffnen). 
 
 1.  Klicken Sie nach Abschluss der Bereitstellung im linken Menü auf **Alle Ressourcen**, und geben Sie den Namen **mypgserver-20170401** ein, um nach dem neu erstellten Server zu suchen. Klicken Sie auf den im Suchergebnis aufgelisteten Servernamen. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
  
  ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
-2.  Wählen Sie auf dem Serverblatt **Verbindungssicherheit** aus. 
+2.  Wählen Sie auf der Serverseite die Option **Verbindungssicherheit** aus. 
 3.  Klicken Sie in das Textfeld unter **Regelname**, und fügen Sie eine neue Firewallregel hinzu, um den IP-Adressbereich auf die Whitelist für die Konnektivität zu setzen. Für dieses Tutorial lassen wir durch Eingabe von **Regelname = AllowAllIps**, **Start-IP = 0.0.0.0** und **End-IP = 255.255.255.255** alle IP-Adressen zu und klicken dann auf **Speichern**. Sie können eine bestimmte Firewallregel festlegen, die einen kleineren Bereich von IP-Adressen abdeckt, mit denen Verbindungen aus dem Netzwerk hergestellt werden können.
  
  ![Azure-Datenbank für PostgreSQL – Erstellen von Firewallregeln](./media/tutorial-design-database-using-azure-portal/5-firewall-2.png)
@@ -91,13 +91,14 @@ Der Azure-Datenbank für PostgreSQL-Dienst erstellt eine Firewall auf der Server
 
 ## <a name="get-the-connection-information"></a>Abrufen der Verbindungsinformationen
 
-Sobald wir unsere Azure-Datenbank für PostgreSQL-Server erstellt haben, wird die Standarddatenbank **postgres** auch erstellt. Zum Herstellen einer Verbindung mit dem Datenbankserver müssen Sie Hostinformationen und Anmeldeinformationen für den Zugriff angeben.
+Als Sie den Azure Database for PostgreSQL-Server erstellt haben, wurde auch die Standarddatenbank **postgres** erstellt. Zum Herstellen einer Verbindung mit dem Datenbankserver müssen Sie Hostinformationen und Anmeldeinformationen für den Zugriff angeben.
 
 1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem Server **mypgserver-20170401**, den Sie soeben erstellt haben.
 
   ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 3. Klicken Sie auf den Servernamen **mypgserver-20170401**.
+
 4. Wählen Sie die Seite **Übersicht** des Servers aus. Notieren Sie sich den **Servernamen** und den **Anmeldenamen des Serveradministrators**.
 
  ![Azure-Datenbank für PostgreSQL-Server – Anmeldename des Serveradministrators](./media/tutorial-design-database-using-azure-portal/6-server-name.png)
@@ -136,9 +137,9 @@ Führen Sie an der Eingabeaufforderung den folgenden Befehl zum Wechseln der Ver
 \c mypgsqldb
 ```
 ## <a name="create-tables-in-the-database"></a>Erstellen von Tabellen in der Datenbank
-Da Sie nun wissen, wie Sie eine Verbindung mit der Azure-Datenbank für PostgreSQL herstellen, können wir die Ausführung einiger grundlegender Aufgaben erörtern.
+Da Sie nun wissen, wie Sie eine Verbindung mit Azure Database for PostgreSQL herstellen, können Sie einige grundlegende Aufgaben ausführen:
 
-Zunächst können wir eine Tabelle erstellen und mit einigen Daten füllen. Wir erstellen eine Tabelle, die Bestandsinformationen verfolgt.
+Zunächst erstellen Sie eine Tabelle und füllen sie mit einigen Daten auf. Erstellen Sie nun mit dem folgenden SQL-Code eine Tabelle, die Bestandsinformationen nachverfolgt:
 ```sql
 CREATE TABLE inventory (
     id serial PRIMARY KEY, 
@@ -153,7 +154,7 @@ Um die neu erstellte Tabelle in der Liste der Tabellen anzuzeigen, geben Sie Fol
 ```
 
 ## <a name="load-data-into-the-tables"></a>Laden von Daten in die Tabellen
-Jetzt können wir einige Daten in die Tabelle einfügen. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus.
+Jetzt können Sie einige Daten in die Tabelle einfügen. Führen Sie im geöffneten Eingabeaufforderungsfenster die folgende Abfrage zum Einfügen einiger Datenzeilen aus.
 ```sql
 INSERT INTO inventory (id, name, quantity) VALUES (1, 'banana', 150); 
 INSERT INTO inventory (id, name, quantity) VALUES (2, 'orange', 154);

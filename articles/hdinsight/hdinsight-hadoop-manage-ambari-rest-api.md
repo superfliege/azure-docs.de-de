@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/07/2017
+ms.date: 11/02/2017
 ms.author: larryfr
-ms.openlocfilehash: 7960d83bce22d4f671d61e9aaf55561bc24308f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33ff4b69a4a914e6c183b10bc47a077eea537e61
+ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/03/2017
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API
 
@@ -32,16 +32,16 @@ Apache Ambari vereinfacht die Verwaltung und Überwachung von Hadoop-Clustern du
 
 ## <a id="whatis"></a>Was ist Ambari?
 
-Über die Web-Benutzeroberfläche von [Apache Ambari](http://ambari.apache.org) können Hadoop-Cluster bereitgestellt, verwaltet und überwacht werden. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
+Über die Webbenutzeroberfläche von [Apache Ambari](http://ambari.apache.org) können Hadoop-Cluster verwaltet und überwacht werden. Entwickler können diese Funktionen mithilfe der [Ambari-REST-APIs](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)in ihre Anwendungen integrieren.
 
 Ambari wird standardmäßig mit Linux-basierten Clustern bereitgestellt.
 
 ## <a name="how-to-use-the-ambari-rest-api"></a>Verwenden der Ambari-REST-API
 
 > [!IMPORTANT]
-> Die Informationen und Beispiele in diesem Dokument erfordern einen HDInsight-Cluster, der Linux als Betriebssystem nutzt. Weitere Informationen finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hdinsight-hadoop-linux-tutorial-get-started.md).
+> Die Informationen und Beispiele in diesem Dokument erfordern einen HDInsight-Cluster, der Linux als Betriebssystem nutzt. Weitere Informationen finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 
-In diesem Dokument finden Sie sowohl Beispiele für die Bourne-Shell (Bash) als auch PowerShell. Die Bash-Beispiele wurden mit GNU-Bash 4.3.11 getestet, sollten jedoch mit anderen Unix-Shells funktionieren. Die PowerShell-Beispiele wurden mit PowerShell 5.0 getestet, sollten jedoch mit PowerShell 3.0 oder höher funktionieren.
+In diesem Dokument finden Sie sowohl Beispiele für die Bourne-Shell (Bash) als auch PowerShell. Die Bash-Beispiele wurden mit GNU-Bash, Version 4.3.11, getestet, sollten jedoch auch mit anderen Unix-Shells funktionieren. Die PowerShell-Beispiele wurden mit PowerShell 5.0 getestet, sollten jedoch mit PowerShell 3.0 oder höher funktionieren.
 
 Zur Verwendung der __Bourne-Shell__ (Bash) müssen Sie Folgendes installiert haben:
 
@@ -75,15 +75,15 @@ Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. 
 In den folgenden Beispielen wird veranschaulicht, wie Sie eine GET-Anforderung mit der Basis-Ambari-REST-API durchführen:
 
 ```bash
-curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
+curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
 ```
 
 > [!IMPORTANT]
 > Für die Bash-Beispiele in diesem Dokument gelten die folgenden Annahmen:
 >
 > * Der Anmeldename für den Cluster ist der Standardwert von `admin`.
-> * `$PASSWORD` enthält das Kennwort für den HDInsight-Anmeldebefehl. Sie können diesen Wert mit `PASSWORD='mypassword'` festlegen.
 > * `$CLUSTERNAME` enthält den Namen des Clusters. Sie können diesen Wert mit `set CLUSTERNAME='clustername'` festlegen.
+> * Geben Sie bei entsprechender Aufforderung das Kennwort für die Anmeldung beim Cluster (Administrator) ein.
 
 ```powershell
 $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName" `
@@ -124,7 +124,7 @@ Beide Beispiele geben ein JSON-Dokument zurück, das in etwa wie folgt beginnt:
 Im folgenden Beispiel wird `jq` verwendet, um das JSON-Antwortdokument zu analysieren und nur die `health_report`-Informationen aus den Ergebnissen anzuzeigen.
 
 ```bash
-curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME" \
+curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME" \
 | jq '.Clusters.health_report'
 ```
 
@@ -149,7 +149,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 * **Alle Knoten**
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" \
     | jq '.items[].Hosts.host_name'
     ```
 
@@ -163,7 +163,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 * **Hauptknoten**
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/NAMENODE" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/NAMENODE" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -177,7 +177,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 * **Workerknoten**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/DATANODE" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/HDFS/components/DATANODE" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -191,7 +191,7 @@ Bei der Arbeit mit HDInsight müssen Sie möglicherweise den vollqualifizierten 
 * **Zookeeper-Knoten**
 
     ```bash
-    curl -u admin:PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" \
     | jq '.host_components[].HostRoles.host_name'
     ```
 
@@ -214,10 +214,13 @@ Zum Ermitteln der IP-Adresse muss Ihnen der interne vollqualifizierte Domänenna
 ```bash
 for HOSTNAME in $(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts" | jq -r '.items[].Hosts.host_name')
 do
-    IP=$(curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts/$HOSTNAME" | jq -r '.Hosts.ip')
+    IP=$(curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/hosts/$HOSTNAME" | jq -r '.Hosts.ip')
   echo "$HOSTNAME <--> $IP"
 done
 ```
+
+> [!TIP]
+> In den vorherigen Beispielen wurden Sie zur Eingabe des Kennworts aufgefordert. In diesem Beispiel wird der Befehl `curl` mehrmals ausgeführt, damit das Kennwort als `$PASSWORD` bereitgestellt wird, um mehrere Aufforderungen zu vermeiden.
 
 ```powershell
 $uri = "https://$clusterName.azurehdinsight.net/api/v1/clusters/$clusterName/hosts"
@@ -240,7 +243,7 @@ Wenn Sie einen HDInsight-Cluster erstellen, müssen Sie ein Azure-Speicherkonto 
 Die folgenden Beispiele rufen die Standardspeicherkonfiguration aus dem Cluster ab:
 
 ```bash
-curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
 | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'
 ```
 
@@ -263,7 +266,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
     Um den Kontonamen des Data Lake Store zu ermitteln, verwenden Sie die folgenden Beispiele:
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
     | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
     ```
 
@@ -279,7 +282,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
     Um das Verzeichnis in Data Lake Store zu suchen, das den Speicher für den Cluster enthält, verwenden Sie die folgenden Beispiele:
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" \
     | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'
     ```
 
@@ -301,7 +304,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 1. Rufen Sie die verfügbaren Konfigurationen für Ihren Cluster ab.
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
     ```
 
     ```powershell
@@ -333,7 +336,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 2. Rufen Sie die Konfiguration für die Komponente ab, die Sie interessiert. Ersetzen Sie im folgenden Beispiel `INITIAL` mit dem Tagwert, der von der vorherigen Anforderung zurückgegeben wurde.
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=core-site&tag=INITIAL"
     ```
 
     ```powershell
@@ -349,7 +352,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 1. Rufen Sie die aktuelle Konfiguration ab, die von Ambari als „gewünschte Konfiguration“ gespeichert wird:
 
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME?fields=Clusters/desired_configs"
     ```
 
     ```powershell
@@ -382,7 +385,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 2. Rufen Sie die Konfiguration für die Komponente ab, und kennzeichnen Sie sie mit den unten angegebenen Befehlen:
    
     ```bash
-    curl -u admin:$PASSWORD -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
+    curl -u admin -sS -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/configurations?type=spark-thrift-sparkconf&tag=INITIAL" \
     | jq --arg newtag $(echo version$(date +%s%N)) '.items[] | del(.href, .version, .Config) | .tag |= $newtag | {"Clusters": {"desired_config": .}}' > newconfig.json
     ```
 
@@ -438,7 +441,7 @@ Der Rückgabewert ähnelt einem der folgenden Beispiele:
 4. Verwenden Sie die folgenden Befehle, um die aktualisierte Konfiguration an Ambari zu übermitteln.
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
+    curl -u admin -sS -H "X-Requested-By: ambari" -X PUT -d @newconfig.json "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME"
     ```
 
     ```powershell
@@ -460,7 +463,7 @@ Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der 
 1. Verwenden Sie Folgendes, um den Wartungsmodus für den Spark-Dienst zu aktivieren:
 
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo": {"context": "turning on maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"ON"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```
@@ -477,7 +480,7 @@ Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der 
     Diese Befehle senden ein JSON-Dokument an den Server, der den Wartungsmodus aktiviert. Mit der folgenden Anforderung können Sie überprüfen, ob sich der Dienst nun im Wartungsmodus befindet:
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK" \
     | jq .ServiceInfo.maintenance_state
     ```
@@ -494,7 +497,7 @@ Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der 
 2. Deaktivieren Sie als Nächstes folgendermaßen den Dienst:
 
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"INSTALLED"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```
@@ -526,7 +529,7 @@ Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der 
     Die folgenden Befehle rufen den Status der Anforderung ab:
 
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/requests/29" \
     | jq .Requests.request_status
     ```
@@ -543,7 +546,7 @@ Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der 
 3. Verwenden Sie Folgendes, um den Dienst zu starten, nachdem die vorherige Anforderung abgeschlossen wurde:
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo":{"context":"_PARSE_.STOP.SPARK","operation_level":{"level":"SERVICE","cluster_name":"CLUSTERNAME","service_name":"SPARK"}},"Body":{"ServiceInfo":{"state":"STARTED"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```
@@ -560,7 +563,7 @@ Wenn Sie an diesem Punkt die Ambari-Webbenutzeroberfläche betrachten, gibt der 
 4. Verwenden Sie abschließend Folgendes, um den Wartungsmodus zu deaktivieren:
    
     ```bash
-    curl -u admin:$PASSWORD -sS -H "X-Requested-By: ambari" \
+    curl -u admin -sS -H "X-Requested-By: ambari" \
     -X PUT -d '{"RequestInfo": {"context": "turning off maintenance mode for SPARK"},"Body": {"ServiceInfo": {"maintenance_state":"OFF"}}}' \
     "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/SPARK"
     ```

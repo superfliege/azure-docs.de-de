@@ -14,25 +14,32 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: c1a3370d29b47da752e4ab1ea67ccc1a4cdd94df
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: cf077fef6df2fd21cf51f6b4fd4e26a4b5081247
+ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 11/06/2017
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)
 
-Dieser Artikel enthält die Versionshinweise für Azure Storage-Explorer 0.9.0 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
+Dieser Artikel enthält die Versionshinweise für Azure Storage-Explorer 0.9.2 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
 
 Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, MacOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
 
-## <a name="version-091--090-preview"></a>Version 0.9.1/0.9.0 (Vorschauversion)
-10/20/2017
+## <a name="version-092"></a>Version 0.9.2
+01.11.2017
 
-### <a name="download-azure-storage-explorer-091-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.1 (Vorschauversion)
-- [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Macintosh](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-092-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.2 (Vorschauversion)
+- [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Macintosh](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="hotfixes"></a>Hotfixes
+* Abhängig von der lokalen Zeitzone waren beim Bearbeiten von Edm.DateTime-Werten für Tabellenentitäten unerwartete Datenänderungen möglich. Der Editor verwendet nun ein Nur-Text-Feld, mit dem die Edm.DateTime-Werte präzise und einheitlich gesteuert werden können.
+* Der Upload/Download einer Gruppe von Blobs wurde nicht gestartet, wenn ein Name und Schlüssel angefügt war. Dies wurde korrigiert.
+* Zuvor wurden Sie von Storage-Explorer nur zur erneuten Authentifizierung eines veralteten Kontos aufgefordert, wenn mindestens ein Abonnement des Kontos ausgewählt wurde. Nun fordert Sie Storage-Explorer auch dazu auf, wenn das Konto vollständig herausgefiltert wurde.
+* Die Endpunktdomäne für Azure US Government war falsch. Dies wurde korrigiert.
+* Manchmal war es schwierig, im Bereich „Konten verwalten“ auf die Schaltfläche „Anwenden“ zu klicken. Dieses Problem sollte nicht mehr auftreten.
 
 ### <a name="new"></a>Neu
 * Unterstützung der Vorschau für Azure Cosmos DB:
@@ -86,13 +93,91 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-0816-preview"></a>Version 0.8.16 (Vorschauversion)
-21.08.2017
 
-### <a name="download-azure-storage-explorer-0816-preview"></a>Herunterladen des Azure-Speicher-Explorers 0.8.16 (Vorschauversion)
-* [Azure Storage-Explorer 0.8.16 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Azure Storage-Explorer 0.8.16 (Vorschauversion) für Macintosh herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Azure Storage-Explorer 0.8.16 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+## <a name="version-091--090-preview"></a>Version 0.9.1/0.9.0 (Vorschauversion)
+10/20/2017
+### <a name="download-azure-storage-explorer-091-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.1 (Vorschauversion)
+* [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Mac herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Azure Storage Explorer 0.9.1 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+### <a name="new"></a>Neu
+* Unterstützung der Vorschau für Azure Cosmos DB:
+    * [Onlinedokumentation](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * Erstellen von Datenbanken und Sammlungen
+    * Bearbeiten von Daten
+    * Abfragen, Erstellen oder Löschen von Dokumenten
+    * Aktualisieren von gespeicherten Prozeduren, benutzerdefinierten Funktionen oder Triggern
+    * Verwenden von Verbindungszeichenfolgen zum Verbinden und Verwalten Ihrer Datenbanken
+* Die Leistung beim Hochladen/Herunterladen zahlreicher kleiner Blobs wurde verbessert.
+* Es wurde die Aktion „Alle wiederholen“ hinzugefügt, falls in einer Upload- oder Downloadgruppe für Blobs Fehler auftreten.
+* Storage-Explorer hält jetzt die Iteration beim Hochladen/Herunterladen von Blobs an, wenn erkennt wird, dass Ihre Netzwerkverbindung unterbrochen ist. Sie können die Iteration dann fortsetzen, sobald die Verbindung wiederhergestellt wurde.
+* Die Optionen „Alle schließen“, „Andere schließen“ und „Schließen“ wurden für Registerkarten zum Kontextmenü hinzugefügt.
+* Storage-Explorer verwendet jetzt native Dialogfelder und native Kontextmenüs.
+* Storage-Explorer ist jetzt leichter zugänglich. Die Verbesserungen umfassen:
+    * Verbesserte Unterstützung für die Sprachausgabe für NVDA unter Windows und für VoiceOver unter Mac
+    * Verbesserte Designs mit hohem Kontrast
+    * Fehlerbehebungen für TAB-TASTE und Tastaturfokus
+
+### <a name="fixes"></a>Fehlerbehebungen
+* Wenn Sie versucht haben, einen Blob mit einem ungültigen Windows-Dateinamen zu öffnen oder herunterzuladen, ist bei dem Vorgang ein Fehler aufgetreten. Storage-Explorer erkennt jetzt, ob ein Blobname ungültig ist und fragt Sie, ob Sie den Blob codieren oder überspringen möchten. Storage-Explorer erkennt zudem, ob ein Dateiname codiert ist und fragt Sie, ob Sie den Dateinamen vor dem Hochladen decodieren möchten.
+* Der Editor für den Blobzielcontainer würde beim Hochladen des Blobs in einigen Fällen nicht ordnungsgemäß aktualisiert werden. Dies wurde korrigiert.
+* Die Unterstützung für verschiedene Typen von Verbindungszeichenfolgen und SAS-URIs ist rückläufig. Wir haben alle bekannten Probleme behandelt. Senden Sie jedoch weiterhin Feedback, wenn weitere Probleme auftreten.
+* Die Updatebenachrichtigung hat für einige Benutzer in Version 0.9.0 nicht funktioniert. Dieses Problem wurde behoben. Die von diesem Fehler betroffenen Benutzer können die neueste Version von Storage-Explorer [hier](https://azure.microsoft.com/en-us/features/storage-explorer/) herunterladen.
+
+### <a name="known-issues"></a>Bekannte Probleme
+* Storage-Explorer unterstützt keine ADFS-Konten.
+* Tastenkombinationen für „Explorer anzeigen“ und „Kontenverwaltung anzeigen“ sollten entsprechend STRG/BEFEHL+UMSCHALT+E oder STRG/BEFEHL+UMSCHALT+A sein.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+```
+./StorageExplorer.exe --disable-gpu
+```
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+
+
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
+* [Version 0.8.9 / 0.8.8](#version-089--088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
+
+## <a name="version-0816"></a>Version 0.8.16
+21.08.2017
 
 ### <a name="new"></a>Neu
 * Beim Öffnen eines Blobs fordert Speicher-Explorer Sie zum Hochladen der heruntergeladenen Datei auf, wenn eine Änderung erkannt wird
@@ -130,26 +215,6 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [Version 0.8.9 / 0.8.8](#version-089--088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
-
 
 ### <a name="version-0814"></a>Version 0.8.14
 22.06.2017

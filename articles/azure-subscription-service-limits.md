@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: byvinyal
-ms.openlocfilehash: 2cdf7ad766fe47f2d2848815860ad545b43aec72
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: ee021f5679d3c5a37cd8a795732721b37aaf66ea
+ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um größere Teile der Plattform abzudecken.
@@ -27,10 +27,10 @@ In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azu
 Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/) . Dort können Sie mithilfe des [Preisrechners](https://azure.microsoft.com/pricing/calculator/) oder durch Aufruf der Seite mit der Preisübersicht für einen Dienst (beispielsweise [Windows-VMs](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)) Ihre Kosten bestimmen. Tipps zum Verwalten Ihrer Kosten finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing/billing-getting-started.md).
 
 > [!NOTE]
-> Wenn Sie eine Einschränkung oder ein Kontingent über den **Standardgrenzwert** anheben möchten, [öffnen Sie eine gebührenfreie Onlinekundensupport-Anforderung](azure-supportability/resource-manager-core-quotas-request.md). Die Einschränkungen können nicht über den Wert unter **Maximales Limit** in den folgenden Tabellen angehoben werden. Falls die Spalte **Maximales Limit** nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Einschränkungen. 
-> 
+> Wenn Sie eine Einschränkung oder ein Kontingent über den **Standardgrenzwert** anheben möchten, [öffnen Sie eine gebührenfreie Onlinekundensupport-Anforderung](azure-supportability/resource-manager-core-quotas-request.md). Die Einschränkungen können nicht über den Wert unter **Maximales Limit** in den folgenden Tabellen angehoben werden. Falls die Spalte **Maximales Limit** nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Einschränkungen.
+>
 > Bei Abonnements mit einer kostenlosen Testversion sind Einschränkungs- oder Kontingenterhöhungen nicht möglich. Wenn Sie über eine kostenlose Testversion verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade einer kostenlosen Azure-Testversion auf nutzungsbasierte Bezahlung](billing/billing-upgrade-azure-subscription.md).
-> 
+>
 
 ## <a name="limits-and-the-azure-resource-manager"></a>Grenzwerte und der Azure-Ressourcen-Manager
 Es ist jetzt möglich, mehrere Azure-Ressourcen in einer einzigen Azure-Ressourcengruppe zu kombinieren. Bei der Verwendung von Ressourcengruppen werden Grenzwerte, die bisher global waren, auf einer regionalen Ebene mit dem Azure-Ressourcen-Manager verwaltet. Weitere Informationen zu Azure-Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](azure-resource-manager/resource-group-overview.md).
@@ -41,8 +41,8 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 > Wichtig ist, dass der Zugriff Ihres Abonnements auf Kontingente für Ressourcen in Azure-Ressourcengruppen pro Region erfolgt und nicht pro Abonnement wie bei Dienstverwaltungskontingenten. Verwenden wir Kernspeicherkontingente als Beispiel. Wenn Sie eine Erhöhung des Kontingents mit Unterstützung für Kernspeicher anfordern müssen, müssen Sie entscheiden, wie viel Kernspeicher Sie in den einzelnen Regionen verwenden möchten, und anschließend eine spezifische Anforderung für Azure-Ressourcengruppen-Kernspeicherkontingente für die gewünschten Beträge und Regionen vornehmen. Wenn Sie für die Ausführung Ihrer Anwendung 30 Kerne in Westeuropa benötigen, sollten Sie daher 30 Kerne in Westeuropa anfordern. In anderen Regionen erfolgt jedoch keine Erhöhung des Kernspeicherkontingents. Das Kontingent von 30 Kernen gilt nur für Westeuropa.
 > <!-- -->
 > Daher sollten Sie gegebenenfalls überlegen, wie hoch Ihre Azure-Ressourcengruppenkontingente für Ihre Workload in jeder Region sein müssen, und diesen Betrag in jeder Region anfordern, in der Sie eine Bereitstellung in Betracht ziehen. Weitere Informationen zum Ermitteln Ihrer aktuellen Kontingente für bestimmte Regionen finden Sie unter [Problembehandlung bei der Bereitstellung](resource-manager-common-deployment-errors.md) .
-> 
-> 
+>
+>
 
 ## <a name="service-specific-limits"></a>Dienstspezifische Grenzwerte
 * [Active Directory](#active-directory-limits)
@@ -60,6 +60,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [CDN](#cdn-limits)
 * [Cloud Services](#cloud-services-limits)
 * [Containerinstanzen](#container-instances-limits)
+* [Containerregistrierung](#container-registry-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
@@ -120,6 +121,11 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und
 ### <a name="container-instances-limits"></a>Grenzwerte für Container Instances
 [!INCLUDE [container-instances-limits](../includes/container-instances-limits.md)]
 
+### <a name="container-registry-limits"></a>Grenzwerte für die Containerregistrierung
+In der folgenden Tabelle werden die Features und Grenzwerte der [Dienstebenen](./container-registry/container-registry-skus.md) Basic, Standard und Premium dargestellt.
+
+[!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
+
 ### <a name="networking-limits"></a>Grenzwerte für Netzwerke
 [!INCLUDE [expressroute-limits](../includes/expressroute-limits.md)]
 
@@ -141,7 +147,7 @@ Die folgenden Grenzwerte gelten bei Verwendung des Azure-Ressourcen-Managers und
 ### <a name="storage-limits"></a>Speichergrenzwerte
 Weitere Informationen zu Grenzwerten für Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage/common/storage-scalability-targets.md).
 
-<!--like # storage accts --> 
+<!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
@@ -164,7 +170,7 @@ Weitere Informationen zu Azure Files-Limits finden Sie unter [Azure Files scalab
 [!INCLUDE [storage-tables-scale-targets](../includes/storage-tables-scale-targets.md)]
 
 <!-- conceptual info about disk limits -- applies to unmanaged and managed -->
-#### <a name="virtual-machine-disk-limits"></a>Grenzwerte für Datenträger virtueller Computer 
+#### <a name="virtual-machine-disk-limits"></a>Grenzwerte für Datenträger virtueller Computer
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
 Weitere Informationen finden Sie unter [Größen virtueller Computer](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) .
