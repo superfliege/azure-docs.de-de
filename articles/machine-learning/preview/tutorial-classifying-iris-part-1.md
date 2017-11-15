@@ -97,15 +97,15 @@ Sie können die Anweisungen im Artikel mit der [Schnellstartanleitung zur Erstel
 
    ![Umbenennen der Spalten](media/tutorial-classifying-iris/rename_column.png)
 
-8. Wählen Sie zum Zählen von unterschiedlichen Werten die Spalte **Species** aus, und klicken Sie mit der rechten Maustaste darauf, um sie zu markieren. Wählen Sie im Dropdownmenü die Option **Value Counts** (Wert-Anzahlen). 
+8. Wählen Sie zum Zählen von unterschiedlichen Werten die Spalte **Species** aus, und klicken Sie mit der rechten Maustaste darauf, um sie zu markieren. Wählen Sie im Dropdownmenü die Option **Value Counts** (Wertanzahl). 
 
-   ![Auswählen von Wert-Anzahlen](media/tutorial-classifying-iris/value_count.png)
+   ![Auswählen der Wertanzahl](media/tutorial-classifying-iris/value_count.png)
 
    Der Bereich **Inspektoren** wird geöffnet, und es wird ein Histogramm mit vier Balken angezeigt. Die Zielspalte enthält die drei unterschiedlichen Werte **Iris_virginica**, **Iris_versicolor** und **Iris-setosa** und zusätzlich den Wert **(null)**.
 
 9. Wählen Sie zum Herausfiltern von NULL-Werten den Balken des Graphen aus, der für den NULL-Wert steht. Es ist eine Zeile mit dem Wert **(null)** vorhanden. Wählen Sie das Minuszeichen (**-**), um diese Zeile zu entfernen.
 
-   ![Histogramm mit Wert-Anzahl](media/tutorial-classifying-iris/filter_out.png)
+   ![Histogramm mit Wertanzahl](media/tutorial-classifying-iris/filter_out.png)
 
 10. Beachten Sie die einzelnen Schritte im Bereich **SCHRITTE**. Als Sie die Spalten umbenannt und die Zeilen mit den NULL-Werten gefiltert haben, wurde jede Aktion als Datenvorbereitungsschritt aufgezeichnet. Sie können die einzelnen Schritte bearbeiten, um die Einstellungen anzupassen, und die Schritte neu anordnen und entfernen.
 
