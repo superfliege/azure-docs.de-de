@@ -20,7 +20,7 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/07/2017
 ---
-# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronisieren  von Inhalt aus einem Cloudordner in Azure App Service
+# <a name="sync-content-from-a-cloud-folder-to-azure-app-service"></a>Synchronisieren von Inhalt aus einem Cloudordner in Azure App Service
 In diesem Tutorial erfahren Sie, wie Sie Ihre Inhalte in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) bereitstellen, in dem Sie die Inhalte aus beliebten Cloudspeicherdiensten wie Dropbox und OneDrive synchronisieren. 
 
 ## <a name="overview"></a>Übersicht über die Bereitstellung von Inhaltssynchronisierung
