@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/16/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: ef38517b55b352acf036e62d407f1ff840d6f804
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ba213ff9e5f2f1cb71d1ae6bbe38d4989f882255
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>Verbinden Ihres Geräts mit der vorkonfigurierten Remoteüberwachungslösung (Windows)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-In diesem Tutorial wird gezeigt, wie Sie die Verbindung eines physischen Geräts mit der vorkonfigurierten Lösung für die Remoteüberwachung herstellen.
+In diesem Tutorial wird gezeigt, wie Sie ein physisches Gerät mit der vorkonfigurierten Remoteüberwachungslösung verbinden.
 
 ## <a name="create-a-c-client-solution-on-windows"></a>Erstellen einer C-Clientlösung unter Windows
 

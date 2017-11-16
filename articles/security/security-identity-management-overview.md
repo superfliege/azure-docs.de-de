@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2017
 ms.author: terrylan
-ms.openlocfilehash: 8d00882caf5411240c5f0a3533c78c3dbe361ef2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e816f151ea1f71770f00d6d77b65395fe080da3
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen, wobei zusätzliche Ebenen der Überprüfungen aktiviert werden, z.B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. Die Überwachung verdächtiger Aktivitäten über erweiterte Sicherheitsberichtserstellung, Überwachung und Warnung trägt dazu bei, potenzielle Sicherheitsprobleme zu verringern. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) ermöglicht einmaliges Anmelden bei Tausenden von Cloudanwendungen (SaaS) und Zugriff auf Webanwendungen, die Sie lokal ausführen.
@@ -57,7 +57,7 @@ Weitere Informationen:
 
 * [Übersicht über „Einmaliges Anmelden“](https://azure.microsoft.com/documentation/videos/overview-of-single-sign-on/)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../active-directory/active-directory-appssoaccess-whatis.md)
-* [Integrieren des einmaligen Anmeldens mit Azure Active Directory in SaaS-Apps](../active-directory/active-directory-sso-integrate-saas-apps.md)
+* [Integrieren des einmaligen Anmeldens mit Azure Active Directory in SaaS-Apps](../active-directory/active-directory-enterprise-apps-manage-sso.md)
 
 ## <a name="reverse-proxy"></a>Reverseproxy
 Der Azure AD-Anwendungsproxy ermöglicht Ihnen das Veröffentlichen von lokalen Anwendungen, z.B. [SharePoint](https://support.office.com/article/What-is-SharePoint-97b915e6-651b-43b2-827d-fb25777f446f?ui=en-US&rs=en-US&ad=US)-Websites, [Outlook Web App](https://technet.microsoft.com/library/jj657718.aspx) und [IIS](http://www.iis.net/)-basierte Apps innerhalb Ihres privaten Netzwerks und bietet sicheren Zugriff für Benutzer außerhalb Ihres Netzwerks. Der Anwendungsproxy bietet Remotezugriff und einmaliges Anmelden für eine Vielzahl von lokalen Webanwendungen sowie Tausende von SaaS-Anwendungen, die Azure AD unterstützt werden. Mitarbeiter können sich auf ihren eigenen Geräten von zu Hause aus bei Ihren Apps anmelden und sich über diesen cloudbasierten Proxy authentifizieren.
@@ -67,7 +67,7 @@ Weitere Informationen:
 * [Aktivieren des Azure AD-Anwendungsproxys](../active-directory/active-directory-application-proxy-enable.md)
 * [Veröffentlichen von Anwendungen mit Azure AD-Anwendungsproxy](../active-directory/active-directory-application-proxy-publish.md)
 * [Einmaliges Anmelden mit Anwendungsproxy](../active-directory/active-directory-application-proxy-sso-using-kcd.md)
-* [Arbeiten mit bedingtem Zugriff](../active-directory/active-directory-application-proxy-conditional-access.md)
+* [Arbeiten mit bedingtem Zugriff](../active-directory/application-proxy-enable-remote-access-sharepoint.md)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 Azure Multi-Factor Authentication (MFA) ist eine Authentifizierungsmethode, für die die Verwendung von mehr als einer Verifizierungsmethode erforderlich ist und die eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen darstellt. MFA hilft beim Schützen des Zugriffs auf Daten und Anwendungen und erfüllt gleichzeitig die Anforderungen von Benutzern an ein einfaches Anmeldeverfahren. Sie bietet eine leistungsfähige Authentifizierung mit verschiedenen Überprüfungsoptionen – Telefonanruf, SMS oder per Benachrichtigung bzw. Überprüfungscode in einer mobilen App sowie OAuth-Token von Drittanbietern.

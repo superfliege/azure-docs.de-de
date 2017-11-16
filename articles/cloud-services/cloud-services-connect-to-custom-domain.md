@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 17f6918371678ac849198bff4e3b3eea8678c660
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2aadf6a103e92a4fbb11223a449280a36dea6b4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="connecting-azure-cloud-services-roles-to-a-custom-ad-domain-controller-hosted-in-azure"></a>Verbinden von Azure Cloud Services-Rollen mit einem in Azure gehosteten AD-Domänencontroller
 Zunächst richten wir ein Virtual Network (VNet) in Azure ein. Anschließend fügen wir dem VNet einen Active Directory-Domänencontroller (gehostet auf einem virtuellen Azure-Computer) hinzu. Danach fügen wir dem erstellten VNET vorhandene Clouddienstrollen hinzu und verbinden diese mit dem Domänencontroller.
@@ -128,7 +128,7 @@ Als Nächstes müssen Sie Ihre Clouddienstbereitstellung dem neuen VNET hinzufü
 </ServiceConfiguration>
 ```
 
-Anschließend erstellen Sie Ihr Clouddienstprojekt und stellen es in Azure bereit. Unterstützung bei der Bereitstellung Ihres Clouddienstpakets in Azure erhalten Sie unter [Erstellen und Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy.md#how-to-deploy-a-cloud-service)
+Anschließend erstellen Sie Ihr Clouddienstprojekt und stellen es in Azure bereit. Unterstützung bei der Bereitstellung Ihres Clouddienstpakets in Azure erhalten Sie unter [Erstellen und Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)
 
 ## <a name="connect-your-webworker-roles-to-the-domain"></a>Verbinden der Web- und Workerrollen mit der Domäne
 Sobald Ihr Clouddienstprojekt auf Azure bereitgestellt ist, verbinden Sie Ihre Rolleninstanzen mithilfe der AD-Domänenerweiterung mit der benutzerdefinierten AD-Domäne. Führen Sie in PowerShell folgende Befehle aus, um die AD-Domänenerweiterung zu Ihrer vorhandenen Clouddienstbereitstellung hinzuzufügen und der benutzerdefinierten Domäne beizutreten:

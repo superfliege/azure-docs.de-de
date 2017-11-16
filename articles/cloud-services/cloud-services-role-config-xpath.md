@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: fd6efac829d3fd9e2840362b8d2ff423add566d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e71adbca34390bda3a7d4067742ffb3a28201449
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="expose-role-configuration-settings-as-an-environment-variable-with-xpath"></a>Verfügbarmachen von Rollenkonfigurationseinstellungen als Umgebungsvariable mit XPath
 In der Dienstdefinitionsdatei der Clouddienst-Worker- oder Webrolle können Sie Laufzeitkonfigurationswerte als Umgebungsvariablen verfügbar machen. Die folgenden XPath-Werte (die API-Werten entsprechen) werden unterstützt.
@@ -166,5 +166,5 @@ Erfahren Sie mehr über die Datei [ServiceConfiguration.cscfg](cloud-services-mo
 
 Erstellen Sie ein [ServicePackage.cspkg](cloud-services-model-and-package.md#servicepackagecspkg) -Paket.
 
-Aktivieren Sie [Remotedesktop](cloud-services-role-enable-remote-desktop.md) für eine Rolle.
+Aktivieren Sie [Remotedesktop](cloud-services-role-enable-remote-desktop-new-portal.md) für eine Rolle.
 

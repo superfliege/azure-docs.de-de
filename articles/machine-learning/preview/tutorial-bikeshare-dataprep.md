@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 4918a820ca07a7d83dfb544ee9f0bbeb66d22722
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: acd61e9980b143ebbb81d2d144bdac9134e20a11
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Bikesharing-Tutorial: Erweiterte Datenvorbereitung mit der Azure Machine Learning Workbench
 Azure Machine Learning-Dienste (Vorschau) ist eine integrierte, End-to-End Data Science- und erweiterte Analyselösung für professionelle Datenspezialisten zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau.
@@ -348,7 +348,6 @@ Durch das Ändern der Daten in den numerischen Spalten in einen Bereich von 0-1 
     > Das Skript erwartet die bisher in diesem Tutorial verwendeten Spaltennamen. Sollten Sie andere Spaltennamen angegeben haben, müssen Sie die Namen im Skript ändern.
 
    ```python
-   maxVal = max(df["HOURLYDRYBULBTEMPF_Mean"])
    maxVal = max(df["HOURLYDRYBULBTEMPF_Mean"])
    minVal = min(df["HOURLYDRYBULBTEMPF_Mean"])
    df["HOURLYDRYBULBTEMPF_Mean"] = (df["HOURLYDRYBULBTEMPF_Mean"]-minVal)/(maxVal-minVal)

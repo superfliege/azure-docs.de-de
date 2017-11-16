@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/06/2017
 ms.author: babanisa
-ms.openlocfilehash: a0bcc9650fda10c099887b74b408551b12cde667
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 5b522b40b136e354c6ca83a56ac7ad690151ad7d
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Einführung in Azure Event Grid
 
@@ -25,6 +25,30 @@ In der Vorschauversion unterstützt Event Grid die Standorte **westus2** und **w
 Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md).
 
 ![Event Grid – funktionales Modell](./media/overview/event-grid-functional-model.png)
+
+## <a name="event-publishers"></a>Ereignisherausgeber
+
+Derzeit bieten die folgenden Azure-Dienste integrierte Herausgeberunterstützung für Event Grid:
+
+* Ressourcengruppen (Verwaltungsvorgänge)
+* Azure-Abonnements (Verwaltungsvorgänge)
+* Event Hubs
+* Speicherblob
+* Benutzerdefinierte Themen
+
+Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
+
+## <a name="event-handlers"></a>Ereignishandler
+
+Derzeit bieten die folgenden Azure-Dienste integrierte Handlerunterstützung für Event Grid: 
+
+* Azure-Funktionen
+* Logik-Apps
+* Azure-Automatisierung
+* WebHooks
+* Microsoft Flow
+
+Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
 
 ## <a name="concepts"></a>Konzepte
 
@@ -52,34 +76,6 @@ Azure Event Grid bietet unter anderem folgende zentrale Features:
 * **Benutzerdefinierte Ereignisse**: Nutzen Sie die Weiterleitungs- und Filterfunktionen von Event Grid, um zuverlässig benutzerdefinierte Ereignisse in Ihre App zu übertragen.
 
 Einen Vergleich von Event Grid, Event Hubs und Service Bus finden Sie unter [Auswählen zwischen Azure-Diensten für die Übermittlung von Nachrichten](compare-messaging-services.md).
-
-## <a name="built-in-publisher-and-handler-integration"></a>Integrierte Herausgeber- und Handlerintegration
-
-Azure bietet integrierte Ereignisunterstützung mit zahlreichen Diensten einschließlich Herausgebern und Handlern.
-
-### <a name="publishers"></a>Herausgeber
-
-Derzeit bieten die folgenden Azure-Dienste integrierte Herausgeberunterstützung für Event Grid:
-
-* Ressourcengruppen (Verwaltungsvorgänge)
-* Azure-Abonnements (Verwaltungsvorgänge)
-* Event Hubs
-* Speicherblob
-* Benutzerdefinierte Themen
-
-Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
-
-### <a name="handlers"></a>Handler
-
-Derzeit bieten die folgenden Azure-Dienste integrierte Handlerunterstützung für Event Grid: 
-
-* Azure-Funktionen
-* Logik-Apps
-* Azure-Automatisierung
-* WebHooks
-* Microsoft Flow
-
-Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
 
 ## <a name="what-can-i-do-with-event-grid"></a>Welche Möglichkeiten bietet Event Grid?
 

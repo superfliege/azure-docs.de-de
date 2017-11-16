@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.openlocfilehash: e584a9adb75510c92fc2a25b657f55df88372e6b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9a941ce5c6f0989749c5a6db4348757f898a46f1
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>Erste Schritte mit R Server in HDInsight
 
@@ -784,6 +784,5 @@ Falls beim Erstellen von HDInsight-Clustern Probleme auftreten, sehen Sie sich d
 
 Jetzt sollten Sie verstehen, wie Sie einen neuen HDInsight-Cluster erstellen, der R Server enthält, und Sie sollten die Grundlagen der Verwendung der R-Konsole aus einer SSH-Sitzung kennen. In den folgenden Themen werden andere Methoden zum Verwalten von und Arbeiten mit R Server unter HDInsight erläutert:
 
-* [Hinzufügen von RStudio Server zu HDInsight (falls die Installation nicht bereits während der Clustererstellung durchgeführt wurde)](r-server-install-r-studio.md)
 * [Rechenkontextoptionen für R Server in HDInsight](r-server-compute-contexts.md)
 * [Azure Storage-Optionen für R Server in HDInsight](r-server-storage.md)

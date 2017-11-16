@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: f5d244fc747b923989407afd50927cda2b8d4a0f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: afda0bc79a26c8cb9736c754a681ebb602e41af1
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
-> [!div class="op_single_selector"]
-> * [Azure-Portal](cloud-services-custom-domain-name-portal.md)
-> * [Klassisches Azure-Portal](cloud-services-custom-domain-name.md)
-> 
-> 
-
 Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie „http://contoso.cloudapp.net“ zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
 
 Sie können Ihre Anwendung jedoch auch unter Ihrem eigenen Domänennamen zur Verfügung stellen, beispielsweise **contoso.com**. In diesem Artikel erfahren Sie, wie Sie einen benutzerdefinierten Domänennamen für Clouddienst-Webrollen reservieren oder konfigurieren.
@@ -62,7 +56,7 @@ Ein *A*-Eintrag weist einer IP-Adresse eine Domäne wie **contoso.com** oder **w
 > [!NOTE]
 > Da ein A-Datensatz einer statischen IP-Adresse zugeordnet ist, kann er Änderungen an der IP-Adresse des Clouddiensts nicht automatisch auflösen. Die von Ihrem Clouddienst verwendete IP-Adresse wird zum ersten Mal zugewiesen, wenn Sie sie an einem leeren Steckplatz bereitstellen (entweder Produktion oder Staging). Wenn Sie die Bereitstellung für den Steckplatz löschen, wird die IP-Adresse von Azure freigegeben und zukünftigen Bereitstellungen an dem Steckplatz wird eine neue IP-Adresse zugewiesen.
 > 
-> Die IP-Adresse eines bestimmten Bereitstellungs-Steckplatzes (Produktion oder Staging) wird beim Austausch von Staging- und Produktionsbereitstellung oder beim Durchführen eines direkten Upgrades einer vorhandenen Bereitstellung beibehalten. Weitere Informationen zum Durchführen dieser Aktionen finden Sie unter [Verwalten von Cloud Services](cloud-services-how-to-manage.md).
+> Die IP-Adresse eines bestimmten Bereitstellungs-Steckplatzes (Produktion oder Staging) wird beim Austausch von Staging- und Produktionsbereitstellung oder beim Durchführen eines direkten Upgrades einer vorhandenen Bereitstellung beibehalten. Weitere Informationen zum Durchführen dieser Aktionen finden Sie unter [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md).
 > 
 > 
 
@@ -139,7 +133,7 @@ Dieses Beispiel zeigt das Erstellen eines A-Datensatzes für die Stammdomäne. W
 > 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwalten von Cloud Services](cloud-services-how-to-manage.md)
+* [Verwalten von Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Zuordnen von CDN-Inhalt (Content Delivery Network) zu einer benutzerdefinierten Domäne](../cdn/cdn-map-content-to-custom-domain.md)
 * [Allgemeine Konfiguration Ihres Clouddiensts](cloud-services-how-to-configure-portal.md)
 * Weitere Informationen zum [Bereitstellen eines Clouddiensts](cloud-services-how-to-create-deploy-portal.md)

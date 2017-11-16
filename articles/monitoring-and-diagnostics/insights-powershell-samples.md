@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: robb
-ms.openlocfilehash: 60048ab8e0118bc67850aa6ad91c82dcf8122b1d
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 21123299fbab59b388aacc4a802f3a9ec1d80632
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor – PowerShell-Schnellstartbeispiele
 In diesem Artikel werden PowerShell-Beispielbefehle beschrieben, mit denen Sie auf Azure Monitor-Features zugreifen können. Azure Monitor ermöglicht Ihnen die automatische Skalierung von Clouddiensten, virtuellen Computern und Web-Apps. Sie können damit auch Warnbenachrichtigungen senden oder Web-URLs basierend auf Werten von konfigurierten Telemetriedaten aufrufen.
@@ -202,7 +202,7 @@ Eine vollständige Liste der verfügbaren Optionen für `Get-AzureRmMetricDefini
 
 ## <a name="create-and-manage-autoscale-settings"></a>Erstellen und Verwalten von Einstellungen zur automatischen Skalierung
 Für eine Ressource (Web-App, virtueller Computer, Clouddienst oder VM-Skalierungsgruppe) kann nur eine Einstellung zur automatischen Skalierung konfiguriert werden.
-Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasiertes Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../cloud-services/cloud-services-how-to-scale.md).
+Allerdings kann jede Einstellung zur automatischen Skalierung mehrere Profile aufweisen. Beispielsweise kann ein Profil ein leistungsbasiertes Skalierungsprofil und ein zweites ein zeitplanbasiertes Profil sein. Für jedes Profil können mehrere Regeln konfiguriert werden. Weitere Informationen zur automatischen Skalierung finden Sie unter [Automatisches Skalieren einer Anwendung](../cloud-services/cloud-services-how-to-scale-portal.md).
 
 Gehen Sie wie folgt vor:
 

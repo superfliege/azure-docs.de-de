@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/30/2017
+ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6e88c590e11aa8d2f4ae17e8b5e164483f0a6820
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 11457e6556e6400d8f58f71c71ab1e790bcef8f1
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="using-azure-files-with-kubernetes"></a>Verwenden von Azure Files mit Kubernetes
 
@@ -35,7 +35,7 @@ Eine vorhandene Azure-Dateifreigabe kann mit Azure Container Service verwendet w
 Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe für die Azure-Dateifreigabe. Die Ressourcengruppe des Speicherkontos und der Kubernetes-Cluster müssen sich in derselben Region befinden.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location westus2
+az group create --name myResourceGroup --location eastus
 ```
 
 Verwenden Sie den Befehl [az storage account create][az-storage-create], um ein Azure Storage-Konto zu erstellen. Der Name des Speicherkontos muss eindeutig sein. Aktualisieren Sie den Wert des `--name`-Arguments mit einem eindeutigen Wert.

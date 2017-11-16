@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: e29c381643b233d38b10f89aed5469043c699f45
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: f0cb50c5ad991073b83dc5e87fbfb0300f40fc03
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy
 In diesem Artikel wird das Konfigurieren von Azure Security Center-Sicherheitsrichtlinien beschrieben, die auf Azure Policy basieren. 
@@ -60,7 +60,7 @@ Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements
     ![Verfügbare Richtliniendefinitionen](./media/security-center-policies/security-center-policies-fig11.png)
 
     * Eine ausführliche Erläuterung einer Richtlinie erhalten Sie, wenn Sie sie auswählen.  
-    Für die Definition wird das Fenster **Vorschau** geöffnet. Es enthält eine Beschreibung der Definition und einen Link zum JSON-Code, über den die Struktur der [Richtliniendefinition](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy/#policy-definition-structure) bereitgestellt wird.
+    Für die Definition wird das Fenster **Vorschau** geöffnet. Es enthält eine Beschreibung der Definition und einen Link zum JSON-Code, über den die Struktur der [Richtliniendefinition](../azure-policy/policy-definition.md) bereitgestellt wird.
 
     ![Fenster „Vorschau“ für die Definition](./media/security-center-policies/security-center-policies-fig14.png)
 
@@ -72,7 +72,7 @@ Die folgende Tabelle gibt Aufschluss über die verfügbaren Richtliniendefinitio
 
 | Richtlinie | Zweck der aktivierten Richtlinie |
 | --- | --- |
-| Systemupdates |Ruft eine tägliche Liste mit verfügbaren Sicherheitsupdates und kritischen Updates von Windows Update oder Windows Server Update Services ab. Die abgerufene Liste richtet sich nach dem Dienst, der für Ihre virtuellen Computer konfiguriert wurde. Darin wird empfohlen, die fehlenden Updates anzuwenden. Bei Linux-Systemen wird für die Richtlinie das von der Distribution bereitgestellte Paketverwaltungssystem genutzt, um Pakete mit verfügbaren Updates zu ermitteln. Außerdem werden Sicherheitsupdates und kritische Updates für [Azure Cloud Services](../cloud-services/cloud-services-how-to-configure.md)-VMs ermittelt. |
+| Systemupdates |Ruft eine tägliche Liste mit verfügbaren Sicherheitsupdates und kritischen Updates von Windows Update oder Windows Server Update Services ab. Die abgerufene Liste richtet sich nach dem Dienst, der für Ihre virtuellen Computer konfiguriert wurde. Darin wird empfohlen, die fehlenden Updates anzuwenden. Bei Linux-Systemen wird für die Richtlinie das von der Distribution bereitgestellte Paketverwaltungssystem genutzt, um Pakete mit verfügbaren Updates zu ermitteln. Außerdem werden Sicherheitsupdates und kritische Updates für [Azure Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md)-VMs ermittelt. |
 | Sicherheitsrisiken des Betriebssystems |Führt eine tägliche Analyse von Betriebssystemkonfigurationen durch, um Probleme zu ermitteln, die mit einer Anfälligkeit des virtuellen Computers für Angriffe verbunden sind. Außerdem werden in der Richtlinie Konfigurationsänderungen empfohlen, um diesen Sicherheitsrisiken zu begegnen. Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (Zu diesem Zeitpunkt wird Windows Server 2016 nicht vollständig unterstützt.) |
 | Endpoint Protection |Empfiehlt die Einrichtung von Endpoint Protection für alle virtuellen Windows-Computer (VMs), um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. |
 | Datenträgerverschlüsselung |Empfiehlt die Aktivierung der Datenträgerverschlüsselung auf allen virtuellen Computern, um den Datenschutz im Ruhezustand zu optimieren. |

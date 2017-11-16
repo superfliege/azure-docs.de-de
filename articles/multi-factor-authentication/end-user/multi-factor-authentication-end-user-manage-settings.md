@@ -6,7 +6,7 @@ keywords: "Client für Multi-Factor Authentication, Authentifizierungsproblem, K
 documentationcenter: 
 author: barlanmsft
 manager: femila
-editor: yossib
+ms.reviewer: richagi
 ms.assetid: d3372d9a-9ad1-4609-bdcf-2c4ca9679a3b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 87b1b6b03f5aaab5da6491c86132d4193693055a
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 58f4b911944523ff78bc420dbe52bf321243f990
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Verwalten der Einstellungen für die Überprüfung in zwei Schritten
 Dieser Artikel enthält Antworten auf Fragen zum Aktualisieren der Einstellungen für die Überprüfung in zwei Schritten oder die Multi-Factor Authentication. Wenn bei der Anmeldung bei Ihrem Konto Probleme auftreten, finden Sie Hilfe unter [Probleme bei der Überprüfung in zwei Schritten](multi-factor-authentication-end-user-troubleshoot.md).

@@ -250,8 +250,6 @@
 ### [Debuggen eines Java-Diensts in Eclipse](service-fabric-debugging-your-application-java.md)
 ### [Lokales Überwachen und Diagnostizieren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## [Bereitstellen von API Management und Service Fabric in Azure](service-fabric-api-management-quick-start.md)
-
 ## Migrieren aus Cloud Services
 ### [Unterschiede zwischen Cloud Services und Service Fabric](service-fabric-cloud-services-migration-differences.md)
 ### [Migrieren zu Service Fabric](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
@@ -265,7 +263,6 @@
 #### [Azure Resource Manager](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric-Befehlszeilenschnittstelle](service-fabric-application-lifecycle-sfctl.md)
-#### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient-APIs](service-fabric-deploy-remove-applications-fabricclient.md)
 
 ### Upgrade von Anwendungen
@@ -281,11 +278,8 @@
 ##### [Bei Ausführung von Workloads](service-fabric-testability-workload-tests.md)
 ##### [Verwenden von Testszenarien](service-fabric-testability-scenarios.md)
 ##### [Verwenden der Knotenübergang-APIs](service-fabric-node-transition-apis.md)
-#### [Durchführen eines Auslastungstests für Ihre Anwendung](service-fabric-vso-load-test.md)
 
-### Einrichten von Continuous Integration
-#### [Einrichten von Continuous Integration mit VSTS](service-fabric-set-up-continuous-integration.md)
-#### [Bereitstellen einer Linux-Java-Anwendung mithilfe von Jenkins](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
+### [Bereitstellen einer Linux-Java-Anwendung mithilfe von Jenkins](service-fabric-cicd-your-linux-java-application-with-jenkins.md)
 
 ## Erstellen und Verwalten von Clustern
 ### Cluster in Azure
@@ -319,21 +313,6 @@
 ### [Visualisieren eines Clusters](service-fabric-visualizing-your-cluster.md)
 ### [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md)
 ### [Patchen von Clusterknoten](service-fabric-patch-orchestration-application.md)
-
-### Verwalten und Orchestrieren von Clusterressourcen
-#### [Übersicht über den Clusterressourcen-Manager](service-fabric-cluster-resource-manager-introduction.md)
-#### [Architektur des Clusterressourcen-Managers](service-fabric-cluster-resource-manager-architecture.md)
-#### [Beschreiben eines Clusters](service-fabric-cluster-resource-manager-cluster-description.md)
-#### [Übersicht über Anwendungsgruppen](service-fabric-cluster-resource-manager-application-groups.md)
-#### [Konfigurieren der Einstellungen des Clusterressourcen-Managers](service-fabric-cluster-resource-manager-configure-services.md)
-#### [Metriken zum Ressourcenverbrauch](service-fabric-cluster-resource-manager-metrics.md)
-#### [Nutzen der Dienstaffinität](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-#### [Richtlinien zur Dienstplatzierung](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)
-#### [Verwalten eines Clusters](service-fabric-cluster-resource-manager-management-integration.md)
-#### [Clusterdefragmentierung](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
-#### [Ausbalancieren eines Clusters](service-fabric-cluster-resource-manager-balancing.md)
-#### [Drosselung](service-fabric-cluster-resource-manager-advanced-throttling.md)
-#### [Dienstverschiebung](service-fabric-cluster-resource-manager-movement-cost.md)
 
 ## Überwachen und Diagnostizieren
 ### OMS

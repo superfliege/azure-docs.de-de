@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 2d6a09e234ee8ec63454d42a91613ed8da9d1c4b
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 5c5fa4927073ff52418a940fce59ca1f6b57daa6
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-iot-suite"></a>Was ist Azure IoT Suite?
 
@@ -90,7 +90,7 @@ Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden während des Bereit
 
 * [Azure IoT Hub](../iot-hub/index.md): Dieser Dienst stellt die D2C- und C2D-Messagingfunktionen (Gerät zu Cloud und Cloud zu Gerät) und fungiert als Gateway für die Cloud und andere wichtige Dienste der IoT-Suite. Der Dienst ermöglicht das Empfangen von Nachrichten von Ihren verwendeten Geräten und das Senden von Befehlen an diese Geräte. Außerdem können Sie mit dem Dienst Ihre [Geräte verwalten](../iot-hub/iot-hub-device-management-overview.md). Beispielsweise können Sie für Geräte, die mit dem Hub verbunden sind, die Konfiguration, einen Neustart oder das Zurücksetzen auf die Werkseinstellungen durchführen.
 * [Azure Event Hubs](../event-hubs/index.md): Dieser Dienst ermöglicht eine Ereigniserfassung in der Cloud in hohem Umfang. Siehe [Vergleich zwischen Azure IoT Hub und Azure Event Hubs](../iot-hub/iot-hub-compare-event-hubs.md).
-* [Azure Time Series Insights](../time-series-insights/index.md): Dieser Dienst wird von den vorkonfigurierten Lösungen verwendet, um die Telemetriedaten Ihrer Geräte zu analysieren und anzuzeigen.
+* [Azure Time Series Insights](../time-series-insights/index.yml): Dieser Dienst wird von den vorkonfigurierten Lösungen verwendet, um die Telemetriedaten Ihrer Geräte zu analysieren und anzuzeigen.
 * [Azure Container Service](../container-service/index.yml): Dieser Dienst hostet und verwaltet die Microservices in den vorkonfigurierten Lösungen.
 * [Azure Cosmos DB](../cosmos-db/index.yml) und [Azure Storage](../storage/index.yml) für die Datenspeicherung.
 * [Azure Stream Analytics](../stream-analytics/index.md): Die vorkonfigurierte Lösung für die vorbeugende Wartung nutzt diesen Dienst zum Verarbeiten von eingehenden Telemetriedaten, Durchführen der Aggregation und Erkennen von Ereignissen. Diese vorkonfigurierte Lösung verwendet Stream Analytics auch für die Verarbeitung informativer Meldungen, die Daten wie Metadaten oder Antworten auf Befehle von Geräten enthalten.

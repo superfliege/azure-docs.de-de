@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 105dc8a17d0bf8862b772ad241f4522e4c658095
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e962016a96cbbdafabc512b055248900b2c68a69
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm"></a>Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM
-Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie das lokale Administratorkennwort oder die Konfiguration des Remotedesktopdiensts zurücksetzen. Das Kennwort kann entweder über das Azure-Portal oder über die VM-Zugriffserweiterung in Azure PowerShell zurückgesetzt werden. Wenn Sie PowerShell verwenden, stellen Sie sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azure/overview) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](reset-rdp.md) erstellt wurden.
+Wenn Sie keine Verbindung mit einem virtuellen Windows-Computer herstellen können, können Sie das lokale Administratorkennwort oder die Konfiguration des Remotedesktopdiensts zurücksetzen. Das Kennwort kann entweder über das Azure-Portal oder über die VM-Zugriffserweiterung in Azure PowerShell zurückgesetzt werden. Wenn Sie PowerShell verwenden, stellen Sie sicher, dass das [neueste PowerShell-Modul installiert und konfiguriert](/powershell/azure/overview) ist und Sie bei Ihrem Azure-Abonnement angemeldet sind. Sie können diese Schritte auch für virtuelle Computer durchführen, die mit dem [klassischen Bereitstellungsmodell](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/classic/reset-rdp) erstellt wurden.
 
 ## <a name="ways-to-reset-configuration-or-credentials"></a>Methoden zum Zurücksetzen der Konfiguration oder der Anmeldeinformationen
 Sie können Remotedesktopdienste und -Anmeldeinformationen auf verschiedene Weise zurücksetzen, je nach Ihren Anforderungen:

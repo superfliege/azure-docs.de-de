@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/23/2017
+ms.date: 11/13/2017
 ms.author: larryfr
-ms.openlocfilehash: d474cce902dad1390d55ed7bad556d9b0610605f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a55180b5d65b268d7c9b51307581a5fe777a26fe
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Ports für Hadoop-Dienste in HDInsight
 
@@ -169,8 +169,8 @@ Beispiele:
 | Dienst | Nodes | Port | Protocol | URL-Pfad | Beschreibung |
 | --- | --- | --- | --- | --- | --- |
 | Spark Thrift-Server |Hauptknoten |10002 |Thrift | &nbsp; | Dienst für die Verbindung mit Spark SQL (Thrift/JDBC) |
-| Livy-Server | Hauptknoten | 8998 | HTTP | /batches | Dienst für die Ausführung von Anweisungen, Aufträgen und Anwendungen |
+| Livy-Server | Hauptknoten | 8998 | HTTP | &nbsp; | Dienst für die Ausführung von Anweisungen, Aufträgen und Anwendungen |
 
 Beispiele:
 
-* Livy: `curl "http://10.0.0.11:8998/batches"`. In diesem Beispiel ist `10.0.0.11` die IP-Adresse des Hauptknotens, der den Livy-Dienst hostet.
+* Livy: `curl -u admin -G "http://10.0.0.11:8998/"`. In diesem Beispiel ist `10.0.0.11` die IP-Adresse des Hauptknotens, der den Livy-Dienst hostet.

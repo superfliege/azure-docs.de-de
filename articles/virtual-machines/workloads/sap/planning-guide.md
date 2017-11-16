@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fe6b9da2da2b0cf92bc479cdbe0e86475226751
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 7eb4f6c8c7ddfe0cb0d8a37e27d4e697e760107a
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -247,7 +247,7 @@ ms.lasthandoff: 10/18/2017
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md
-[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -342,7 +342,7 @@ Im gesamten Dokument werden die folgenden Begriffe verwendet:
 * SAP-Umgebung: eine oder mehrere SAP-Komponenten, die logisch gruppiert sind, um eine Geschäftsfunktion wie Entwicklung, QAS, Schulung, DR oder Produktion auszuführen.
 * SAP-Landschaft: Dies bezieht sich auf alle SAP-Assets in der IT-Landschaft eines Kunden. Die SAP-Landschaft umfasst alle Produktions- und anderen Umgebungen.
 * SAP-System: Die Kombination aus DBMS-Schicht und Anwendungsschicht in einem SAP ERP-Entwicklungssystem, einem SAP BW-Testsystem, einem SAP CRM-Produktionssystem usw. In Azure-Bereitstellungen wird die Aufteilung dieser beiden Ebenen zwischen lokalen Systemen und Azure nicht unterstützt. Das bedeutet, dass ein SAP-System entweder lokal oder in Azure bereitgestellt wird. Allerdings können Sie die verschiedenen Systeme einer SAP-Landschaft in Azure oder lokal bereitstellen. Sie konnte z.B. die SAP CRM-Entwicklungs- und Testsysteme in Azure und die SAP CRM-Produktionssysteme lokal bereitstellen.
-* Nur-Cloud-Bereitstellung: Eine Bereitstellung, in der das Azure-Abonnement nicht über eine Site-to-Site- oder ExpressRoute-Verbindung mit der lokalen Netzwerkinfrastruktur verbunden ist. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als „Cloud-Only“-Bereitstellungen bezeichnet. Der Zugriff auf mit dieser Methode bereitgestellte virtuelle Computer erfolgt über das Internet und eine öffentliche IP-Adresse und/oder einen öffentlichen DNS-Namen, die bzw. der den virtuellen Computern in Azure zugewiesen wird. Für Microsoft Windows werden das lokale Active Directory (AD) und DNS in diesen Bereitstellungen nicht auf Azure ausgeweitet. Daher sind die virtuellen Computer nicht Teil des lokalen Active Directory. Dasselbe gilt für Linux-Implementierungen, z.B. mit OpenLDAP und Kerberos.
+* Nur-Cloud-Bereitstellung: Eine Bereitstellung, in der das Azure-Abonnement nicht über eine Site-to-Site- oder ExpressRoute-Verbindung mit der lokalen Netzwerkinfrastruktur verbunden ist. In der allgemeinen Azure-Dokumentation werden diese Arten von Bereitstellungen auch als „Cloud-Only“-Bereitstellungen bezeichnet. Der Zugriff auf mit dieser Methode bereitgestellte virtuelle Computer erfolgt über das Internet und eine öffentliche IP-Adresse und/oder einen öffentlichen DNS-Namen, die bzw. der den virtuellen Computern in Azure zugewiesen wird. Für Microsoft Windows werden das lokale Active Directory (AD) und DNS in diesen Bereitstellungen nicht auf Azure ausgeweitet. Daher sind die virtuellen Computer nicht Teil des lokalen Active Directory. Dasselbe gilt für Linux-Implementierungen, z.B. mit OpenLDAP und Kerberos.
 
 > [!NOTE]
 > Die Nur-Cloud-Bereitstellung wird in diesem Dokument als vollständige SAP-Umgebungen definiert, die ausschließlich in Azure ohne Erweiterung von Active Directory/OpenLDAP oder Namensauflösung vom lokalen System in die öffentliche Cloud ausgeführt werden. Nur-Cloud-Konfigurationen werden für die SAP-Produktionssysteme oder Konfigurationen nicht unterstützt, bei denen SAP STMS oder andere lokale Ressourcen zwischen in Azure gehosteten SAP-Systemen und lokalen Ressourcen verwendet werden müssen.
@@ -352,7 +352,7 @@ Im gesamten Dokument werden die folgenden Begriffe verwendet:
 * Standortübergreifend: Beschreibt ein Szenario, in dem virtuelle Computer mit einem Azure-Abonnement bereitgestellt werden, das Site-to-Site-, Multisite- oder ExpressRoute-Verbindungen zwischen den lokalen Rechenzentren und Azure umfasst. In allgemeinen Azure-Dokumentationen werden diese Arten von Bereitstellungen auch als standortübergreifende Szenarios bezeichnet. Durch die Verbindung sollen lokale Domänen, das lokale Active Directory/OpenLDAP und lokales DNS auf Azure erweitert werden. Die lokale Landschaft wird auf die Azure-Ressourcen des Abonnements erweitert. Durch diese Erweiterung können die virtuellen Computer Teil der lokalen Domäne sein. Domänenbenutzer der lokalen Domäne können auf die Server zugreifen und Dienste auf diesen virtuellen Computern ausführen (z.B. DBMS-Dienste). Die Kommunikation und Namensauflösung zwischen lokal bereitgestellten virtuellen Computern und in Azure bereitgestellten virtuellen Computern ist möglich. In diesem Szenario werden wahrscheinlich die meisten SAP-Assets bereitgestellt. In [diesem][vpn-gateway-cross-premises-options] und in [diesem Artikel][vpn-gateway-site-to-site-create] finden Sie weitere Informationen.
 
 > [!NOTE]
-> Standortübergreifende Bereitstellungen von SAP-Systemen, in denen virtuelle Azure-Computer mit SAP-Systemen Mitglieder einer lokalen Domäne sind, werden für SAP-Produktionssysteme unterstützt. Standortübergreifende Konfigurationen werden für die Bereitstellung von Teilen von SAP-Landschaften oder vollständigen SAP-Landschaften in Azure unterstützt. Auch für das Ausführen von vollständigen SAP-Landschaften in Azure müssen diese virtuellen Computer Teil der lokalen Domäne und ADS/OpenLDAP sein. In früheren Versionen der Dokumentation wurden Hybrid-IT-Szenarien beschrieben, wobei sich *Hybrid* darauf bezieht, dass es eine standortübergreifende Konnektivität zwischen lokalen Systemen und Azure gibt. Außerdem ist es wichtig, dass die virtuellen Computer in Azure Teil des lokalen Active Directory/OpenLDAP sind.
+> Standortübergreifende Bereitstellungen von SAP-Systemen, in denen virtuelle Azure-Computer mit SAP-Systemen Mitglieder einer lokalen Domäne sind, werden für SAP-Produktionssysteme unterstützt. Standortübergreifende Konfigurationen werden für die Bereitstellung von Teilen von SAP-Landschaften oder vollständigen SAP-Landschaften in Azure unterstützt. Auch für das Ausführen von vollständigen SAP-Landschaften in Azure müssen diese virtuellen Computer Teil der lokalen Domäne und ADS/OpenLDAP sein. In früheren Versionen der Dokumentation wurden Hybrid-IT-Szenarios beschrieben, wobei sich der Begriff *Hybrid* darauf bezieht, dass eine standortübergreifende Konnektivität zwischen lokalen Systemen und Azure besteht. Außerdem ist es wichtig, dass die virtuellen Computer in Azure Teil des lokalen Active Directory/OpenLDAP sind.
 >
 >
 
@@ -942,7 +942,7 @@ Wenn die VM ausreichend vorbereitet ist, um generisch und letztendlich unabhäng
 >
 > Der letzte Schritt ist die Anmeldung bei einer VM mit einem Administratorkonto. Öffnen Sie als *Administrator* ein Windows-Befehlsfenster. Wechseln Sie zu %windir%\windows\system32\sysprep and execute sysprep.exe.
 > Daraufhin wird ein kleines Fenster geöffnet. Aktivieren Sie hier das Kontrollkästchen **Verallgemeinern** (das standardmäßig deaktiviert ist), und ändern Sie die Option für das Herunterfahren von der Standardeinstellung „Neu starten“ in „Herunterfahren“. Dieses Verfahren setzt voraus, dass der sysprep-Prozess lokal auf dem Gastbetriebssystem einer VM ausgeführt wird.
-> Wenn Sie diesen Vorgang für einen bereits in Azure ausgeführten virtuellen Computer durchführen möchten, folgen Sie den in [diesem Artikel](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource) beschriebenen Schritten.
+> Wenn Sie diesen Vorgang für einen bereits in Azure ausgeführten virtuellen Computer durchführen möchten, folgen Sie den in [diesem Artikel](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) beschriebenen Schritten.
 >
 > ![Linux][Logo_Linux] Linux
 >

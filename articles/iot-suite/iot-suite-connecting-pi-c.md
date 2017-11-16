@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 2f5915093a0d7984f0350af21aa438cdd588bbf2
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 45f4de7e9ec880775f9ccf77b7d945766d465aa7
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-c"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und der vorkonfigurierten Remoteüberwachungslösung (C)
 
@@ -115,13 +115,13 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
 
 ## <a name="add-code-to-run-the-app"></a>Hinzufügen von Code zum Ausführen der App
 
-Öffnen Sie die Datei `remote_monitoring.h` in einem Text-Editor. Fügen Sie den folgenden Code hinzu:
+Öffnen Sie in einem Text-Editor die Datei `remote_monitoring.h`. Fügen Sie den folgenden Code hinzu:
 
 ```c
 void remote_monitoring_run(void);
 ```
 
-Öffnen Sie die Datei `main.c` in einem Text-Editor. Fügen Sie den folgenden Code hinzu:
+Öffnen Sie in einem Text-Editor die Datei `main.c`. Fügen Sie den folgenden Code hinzu:
 
 ```c
 #include "remote_monitoring.h"
@@ -138,7 +138,7 @@ int main(void)
 
 Die folgenden Schritte beschreiben, wie Sie *CMake* verwenden, um Ihre Clientanwendung zu erstellen.
 
-1. Öffnen Sie die Datei **CMakeLists.txt** aus dem Ordner `remote_monitoring` in einem Text-Editor.
+1. Öffnen Sie in einem Text-Editor die Datei **CMakeLists.txt** im Ordner `remote_monitoring`.
 
 1. Fügen Sie die folgenden Anweisungen hinzu, um zu definieren, wie Sie Ihre Clientanwendung erstellen:
 
@@ -189,7 +189,7 @@ Die folgenden Schritte beschreiben, wie Sie *CMake* verwenden, um Ihre Clientanw
     )
     ```
 
-1. Erstellen Sie im Ordner `remote_monitoring` einen Ordner zum Speichern der von CMake generierten *make*-Dateien. Führen Sie dann die Befehle **cmake** und **make** aus:
+1. Erstellen Sie im Ordner `remote_monitoring` einen Ordner zum Speichern der *make*-Dateien, die CMake generiert. Führen Sie dann die Befehle **cmake** und **make** wie folgt aus:
 
     ```sh
     mkdir cmake

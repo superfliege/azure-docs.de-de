@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 07/10/2017
 ms.author: rickbyh
-ms.openlocfilehash: d1a73da7ba3e92f5229faf73cb932dd50b50dfe1
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f0c9578217beff22b4a322b363c7499943311d88
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure AD erstellen und auffüllen un
 ## <a name="create-and-populate-an-azure-ad"></a>Erstellen und Auffüllen von Azure AD
 Erstellen Sie ein Azure Active Directory-Verzeichnis, und füllen Sie es mit Benutzern und Gruppen. Azure AD kann die verwaltete Azure AD-Anfangsdomäne sein. Azure AD kann auch ein lokaler Active Directory Domain Services im Verbund mit Azure AD sein.
 
-Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../active-directory/active-directory-add-domain.md), [Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Verwalten Ihres Azure AD-Verzeichnisses](https://msdn.microsoft.com/library/azure/hh967611.aspx)[ sowie unter Verwalten von Azure AD mit Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) und [erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/active-directory-aadconnect-ports.md).
+Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Verwalten Ihres Azure AD-Verzeichnisses](https://msdn.microsoft.com/library/azure/hh967611.aspx)[ sowie unter Verwalten von Azure AD mit Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) und [erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/active-directory-aadconnect-ports.md).
 
 ## <a name="optional-associate-or-change-the-active-directory-that-is-currently-associated-with-your-azure-subscription"></a>Optional: Zuordnen oder Ändern des aktiven Verzeichnisses für Ihr Azure-Abonnement
 Um Ihre Datenbank dem Azure AD-Verzeichnis für Ihre Organisation zuzuordnen, kennzeichnen Sie das Verzeichnis für das Azure-Abonnement, das die Datenbank hostet, als vertrauenswürdiges Verzeichnis. Weitere Informationen zu Azure-Abonnements finden Sie unter [Wie Azure-Abonnements mit Azure AD verknüpft sind](https://msdn.microsoft.com/library/azure/dn629581.aspx).
