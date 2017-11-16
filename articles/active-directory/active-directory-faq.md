@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 4c8a3885f34942bbd85d34f26e26ff5d7a432189
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 241ad78abfa964c9f64e97cc8201933913f88e1e
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -56,7 +56,7 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen a
 Andere Benutzer, die sich mithilfe des gleichen Abonnements anmelden und auf die Dienste zugreifen müssen, können als Co-Administratoren hinzugefügt werden. Diese Rolle verfügt über die gleichen Zugriffsrechte wie der Dienstadministrator, kann jedoch die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern.  Weitere Informationen zu Abonnementadministratoren finden Sie unter [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md) (Hinzufügen oder Ändern von Azure-Administratorrollen) sowie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
 
 
-In Azure AD werden für die Verwaltung von Verzeichnis- und Identitätsfeatures andere Administratorrollen verwendet.  Diese Administratoren haben Zugriff auf verschiedene Features des Azure-Portals oder des klassischen Azure-Portals. Die Administratorrolle bestimmt, welche Aktionen der Administrator ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles.md).
+In Azure AD werden für die Verwaltung von Verzeichnis- und Identitätsfeatures andere Administratorrollen verwendet.  Diese Administratoren haben Zugriff auf verschiedene Features des Azure-Portals oder des klassischen Azure-Portals. Die Administratorrolle bestimmt, welche Aktionen der Administrator ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md).
 
 Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen zudem andere Webdienste wie Office 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
 
@@ -132,7 +132,6 @@ Für Office 365-Benutzer kann der Administrator das Kennwort mithilfe der Anleit
 Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden Methoden zurücksetzen:
 
 - [Zurücksetzen der Konten im Azure-Portal](active-directory-users-reset-password-azure-portal.md)
-- [Zurücksetzen der Konten im klassischen Portal](active-directory-create-users-reset-password.md)
 - [Verwenden von PowerShell](/powershell/module/msonline/set-msoluserpassword?view=azureadps-1.0)
 
 
@@ -199,7 +198,7 @@ Weitere Informationen finden Sie unter [Bereitstellen von sicherem Remotezugriff
 
 **A:** Mit dem bedingten Zugriff von Azure AD können Sie jeder Anwendung eine individuelle Zugriffsrichtlinie zuweisen. In dieser Richtlinie können Sie festlegen, dass die mehrstufige Authentifizierung immer oder nur dann erforderlich sein soll, wenn Benutzer gerade nicht mit dem lokalen Netzwerk verbunden sind.  
 
-Weitere Informationen finden Sie unter [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access.md).
+Weitere Informationen finden Sie unter [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-azure-portal.md).
 
 - - -
 **F: Was ist die automatisierte Benutzerbereitstellung für SaaS-Apps?**
