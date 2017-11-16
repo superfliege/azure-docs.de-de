@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/18/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: fb5e1e6f03c47afc8eba5f469a985a38c0e542d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b658bc91723c8384b91eb62e8506c82aa5112509
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="enable-password-synchronization-to-azure-active-directory-domain-services"></a>Aktivieren der Kennwortsynchronisierung für Azure Active Directory Domain Services
 In vorherigen Aufgaben haben Sie Azure Active Directory Domain Services für Ihren Azure AD-Mandanten (Azure Active Directory) aktiviert. Die nächste Aufgabe besteht darin, die Synchronisierung der Anmeldeinformationshashes, die für die NTLM- (NT LAN Manager) und Kerberos-Authentifizierung erforderlich sind, mit Azure AD Domain Services zu ermöglichen. Nach der Einrichtung der Synchronisierung von Anmeldeinformationen können sich Benutzer mit ihren Unternehmensanmeldeinformationen bei der verwalteten Domäne anmelden.
@@ -62,7 +62,7 @@ Installationshinweise für Azure AD Connect finden Sie im folgenden Artikel: [Er
 ### <a name="enable-synchronization-of-ntlm-and-kerberos-credential-hashes-to-azure-ad"></a>Aktivieren der Synchronisierung von Hashes für NTLM- und Kerberos-Anmeldeinformationen mit Azure AD
 Führen Sie für jede Active Directory-Gesamtstruktur das folgende PowerShell-Skript aus. Dadurch können die NTLM- und Kerberos-Kennworthashes aller lokalen Benutzer mit Ihrem Azure AD-Mandanten synchronisiert werden. Darüber hinaus initiiert das Skript eine vollständige Synchronisierung in Azure AD Connect.
 
-```
+```powershell
 $adConnector = "<CASE SENSITIVE AD CONNECTOR NAME>"  
 $azureadConnector = "<CASE SENSITIVE AZURE AD CONNECTOR NAME>"  
 Import-Module adsync  

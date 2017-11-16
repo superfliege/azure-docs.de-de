@@ -69,10 +69,6 @@
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
 
-## Festlegen von Ressourcenrichtlinien
-### [Was sind Ressourcenrichtlinien?](resource-manager-policy.md)
-### [Benennungskonventionen](resource-manager-policy-naming-convention.md)
-
 ## Audit
 ### [Anzeigen von Aktivitätsprotokollen](resource-group-audit.md)
 ### [Bereitstellungsvorgänge anzeigen](resource-manager-deployment-operations.md)
