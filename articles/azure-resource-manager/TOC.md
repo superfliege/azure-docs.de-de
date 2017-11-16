@@ -9,14 +9,6 @@
 ## [VS-Codeerweiterung für Vorlagen](resource-manager-vscode-extension.md)
 ## [Visual Studio mit Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
-# Beispiele
-## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## Azure PowerShell
-### [Bereitstellen der Vorlage](resource-manager-samples-powershell-deploy.md)
-
-## Azure-Befehlszeilenschnittstelle
-### [Bereitstellen der Vorlage](resource-manager-samples-cli-deploy.md)
-
 # Anleitung
 ## Erstellen von Vorlagen
 ### [Vorlagenabschnitte](resource-group-authoring-templates.md)
