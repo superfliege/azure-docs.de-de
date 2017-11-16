@@ -90,6 +90,7 @@
 ## Referenz
 ### [Versionshinweise](active-directory-b2c-developer-notes-custom.md)
 ### [SSO-Sitzungsanbieter](active-directory-b2c-reference-sso-custom.md)
+### [Sprachanpassung](active-directory-b2c-language-customization-custom.md)
 ### [Vertrauensframeworkdefinition](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 
 # Referenz
