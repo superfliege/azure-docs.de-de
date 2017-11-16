@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/23/2017
 ms.author: joflore
-ms.reviewer: alexwe
+ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: bf758d1241f2a56eba4d5c92ace713d6e563df65
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d1e8d62127a3c5c888804278fbcd9a4fe81e33f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="enable-mobile-app-authentication-with-azure-multi-factor-authentication-server"></a>Aktivieren der Mobile App-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
 
@@ -29,7 +29,7 @@ Die Verwendung einer mobilen App für die Prüfung in zwei Schritten empfiehlt s
 
 Abhängig von Ihrer Umgebung können Sie den Webdienst der mobilen App auf dem gleichen Server wie den Azure Multi-Factor Authentication-Server oder auf einem anderen, mit dem Internet verbundenen Server bereitstellen.
 
-## <a name="requirements"></a>Requirements (Anforderungen)
+## <a name="requirements"></a>Anforderungen
 
 Zur Verwendung der Microsoft Authenticator-App müssen folgende Voraussetzungen erfüllt sein, damit die App erfolgreich mit dem Webdienst der mobilen App kommunizieren kann:
 

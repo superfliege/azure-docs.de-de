@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: get-started-article
 ms.date: 09/12/2017
-ms.openlocfilehash: 680c1afab1af31cfef51b1c82d2db49f452ba6ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 400fc384519f2ff5c9bb7d83dab6499f5008a833
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="visual-studio-code-tools-for-ai"></a>Visual Studio Code Tools for AI
 Visual Studio Code Tools for AI ist eine Entwicklungserweiterung zum Erstellen, Testen und Bereitstellen von Deep Learning- und KI-Lösungen. Die Erweiterung lässt sich nahtlos in Azure Machine Learning integrieren und zeigt den Ausführungsverlauf sowie die Leistung vorheriger Trainings und benutzerdefinierter Metriken an. Sie bietet eine Explorer-Ansicht mit Beispielen zum Durchsuchen und Durchführen eines Bootstraps eines neuen Projekts mit dem [Microsoft Cognitive Toolkit](http://www.microsoft.com/en-us/cognitive-toolkit) (früher als CNTK bezeichnet), [Google TensorFlow](https://www.tensorflow.org) und anderen Deep Learning-Frameworks. Sie bietet zudem einen Explorer für Computeziele, mit dem Sie Aufträge übermitteln können, um Modelle in Remoteumgebungen wie Azure Virtual Machines oder Linux-Servern mit GPU zu trainieren. 
@@ -70,7 +70,6 @@ Sobald die Aufträge übermittelt wurden, können Sie die Aufträge im Ausführu
 1. Öffnen Sie die Befehlspalette (Menü „Ansicht“ > **Befehlspalette** oder **STRG+UMSCHALTTASTE+P**).
 2. Geben Sie „AI List“ („KI auflisten“) ein.
 3. Sie erhalten eine Empfehlung für „AI: List Jobs“ („KI: Aufträge auflisten“). Wählen Sie die Empfehlung aus, und drücken Sie die EINGABETASTE.
-4. Wählen Sie die Plattform „Azure Machine Learning“ aus.
 
 Die Auftragslistenansicht wird geöffnet und zeigt alle Ausführungen sowie einige zugehörige Informationen an.
 

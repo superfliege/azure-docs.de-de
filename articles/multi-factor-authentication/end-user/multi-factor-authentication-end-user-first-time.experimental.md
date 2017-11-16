@@ -6,7 +6,7 @@ keywords: Verwenden von Azure Active Directory, Active Directory in der Cloud, T
 documentationcenter: 
 author: barlanmsft
 manager: angrobe
-editor: pblachar
+ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/12/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: a345cacfe53f37f851eebb76b5b8997cb9c0b54b
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: e0f7b08f7ad00679434992874ff5215f2b2c9dd3
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die Überprüfung in zwei Schritten
 Die Überprüfung in zwei Schritten ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.

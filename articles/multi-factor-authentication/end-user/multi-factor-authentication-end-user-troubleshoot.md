@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: barlan
-ms.reviewer: yossib
+ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 7455d98f2cb5ecc9c78a11b229e9a8f7b9fab603
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 0ffa3070cef8631c4b38b2aa00ac3dca0d88590b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="get-help-with-two-step-verification"></a>Hilfe bei der Überprüfung in zwei Schritten
 Dieser Artikel behandelt die häufigsten Fragen von Anwendern zur Überprüfung in zwei Schritten.
@@ -29,7 +29,7 @@ Dieser Artikel behandelt die häufigsten Fragen von Anwendern zur Überprüfung 
 
 Die Überprüfung in zwei Schritten ist eine Sicherheitsfunktion, die von Ihrer Organisation zum Schutz Ihrer Konten ausgewählt wurde. Sie ist sicherer als nur ein Kennwort, da sie auf zwei Formen der Authentifizierung basiert: etwas, das Sie wissen, und etwas, das Sie bei sich tragen. Was Sie wissen, ist Ihr Kennwort. Was Sie bei sich tragen, ist ein Smartphone oder ein anderes Gerät, das Sie häufig mit sich führen. Wird Ihr Konto durch die Überprüfung in zwei Schritten geschützt, so kann sich kein böswilliger Hacker, der auf irgendeine Weise an Ihr Kennwort gelangt ist, als Sie selbst anmelden, da er nicht zugleich Zugriff auf Ihr Smartphone besitzt.
 
-Microsoft bietet die Überprüfung in zwei Schritten an, doch Ihre Organisation hat sich dazu entschieden, die Funktion zu verwenden. Sie können die Funktion nicht deaktivieren, wenn der Unternehmenssupport sie verlangt, genauso wie Sie die Verwendung eines Kennworts zum Schutz Ihres Kontos nicht deaktivieren können.
+Microsoft bietet die Überprüfung in zwei Schritten an, doch Ihre Organisation hat sich dazu entschieden, die Funktion zu verwenden. Sie können die Funktion nicht deaktivieren, wenn sie vom Unternehmenssupport verlangt wird, genauso wie Sie die Verwendung eines Kennworts zum Schutz Ihres Kontos nicht deaktivieren können.
 
 Wenn die Überprüfung in zwei Schritten für Ihr persönliches Microsoft-Konto aktiviert ist und Sie Ihre Einstellungen ändern möchten, lesen Sie die Informationen zur [Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
@@ -45,12 +45,12 @@ An manchen Tagen lassen Sie Ihr Smartphone möglicherweise zu Hause, müssen sic
 3. Wählen Sie die Überprüfungsoption aus, die Sie verwenden möchten.
 4. Fahren Sie mit der Überprüfung in zwei Schritten fort.
 
-Wenn die Verknüpfung **Andere Überprüfungsoption verwenden** nicht angezeigt wird, haben Sie bei der ersten Registrierung zur Überprüfung in zwei Schritten keine alternativen Methoden eingerichtet. Wenden Sie sich an den Unternehmenssupport, um Hilfe bei der Anmeldung bei Ihrem Konto zu bekommen. Sobald Sie sich angemeldet haben, [verwalten Sie Ihre Einstellungen](multi-factor-authentication-end-user-manage-settings.md), und fügen Sie für das nächste Mal zusätzliche Überprüfungsmethoden hinzu.
+Wenn die Verknüpfung **Andere Überprüfungsoption verwenden** nicht angezeigt wird, haben Sie bei der ersten Registrierung zur Überprüfung in zwei Schritten keine alternativen Methoden eingerichtet. Wenden Sie sich an den Unternehmenssupport, um Hilfe bei der Anmeldung bei Ihrem Konto zu erhalten. Sobald Sie sich angemeldet haben, [verwalten Sie Ihre Einstellungen](multi-factor-authentication-end-user-manage-settings.md), und fügen Sie für das nächste Mal zusätzliche Überprüfungsmethoden hinzu.
 
 Wenn die Verknüpfung **Andere Überprüfungsoption verwenden** zwar angezeigt wird, Sie aber auch keinen Zugriff auf Ihre alternativen Überprüfungsmethoden haben, wenden Sie sich an den Unternehmenssupport, um Hilfe bei der Anmeldung bei Ihrem Konto zu bekommen.
 
 ## <a name="i-lost-my-phone-or-got-a-new-number"></a>Ich habe mein Smartphone verloren oder habe eine neue Nummer
-Es gibt zwei Möglichkeiten, um wieder auf Ihr Konto zuzugreifen. Die erste besteht darin, die Nummer Ihres alternativen Authentifizierungstelefons zu verwenden, falls Sie eine solche eingerichtet haben. Die zweite besteht darin, den Unternehmenssupport zu bitten, Ihre Einstellungen zu löschen.
+Es gibt zwei Möglichkeiten, um wieder auf Ihr Konto zuzugreifen. Die erste besteht darin, die Nummer Ihres alternativen Authentifizierungstelefons zu verwenden, falls Sie eine solche eingerichtet haben. Die zweite Möglichkeit besteht darin, den Unternehmenssupport zu bitten, Ihre Einstellungen zu löschen.
 
 Wenn Ihr Smartphone verloren gegangen ist oder gestohlen wurde, empfiehlt es sich, den Unternehmenssupport darüber zu informieren, damit Ihre App-Kennwörter zurückgesetzt und alle gespeicherten Geräte gelöscht werden.
 

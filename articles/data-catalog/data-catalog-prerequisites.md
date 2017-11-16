@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 10/01/2017
 ms.author: maroche
-ms.openlocfilehash: cf32ef4c80fa0ee68ce3dc1289467a419aab39c9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7d4ed0cc06e8b218b2b63c1d899701ba2eafd648
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure Data Catalog-Voraussetzungen
 
@@ -28,7 +28,7 @@ Es gibt einige Dinge, die Sie erledigen müssen, bevor Sie Azure Data Catalog ei
 ## <a name="azure-subscription"></a>Azure-Abonnement
 Um Data Catalog einzurichten, müssen Sie Besitzer oder Mitbesitzer eines Azure-Abonnements sein.
 
-Mit Azure-Abonnements können Sie den Zugriff auf die Clouddienstressourcen wie Data Catalog organisieren. Mit Abonnements können Sie darüber hinaus steuern, wie die Ressourcennutzung gemeldet, abgerechnet und bezahlt wird. Jedes Abonnement kann in Bezug auf Abrechnung und Zahlung unterschiedlich eingerichtet sein. Daher können Sie je nach Abteilung, Projekt, Niederlassung usw. mit verschiedenen Abonnements und Plänen arbeiten. Jeder Clouddienst gehört zu einem Abonnement, und Sie benötigen ein Abonnement, ehe Sie Data Catalog einrichten können. Weitere Informationen finden Sie unter [Verwalten von Konten, Abonnements und Administratorrollen](../active-directory/active-directory-assign-admin-roles.md).
+Mit Azure-Abonnements können Sie den Zugriff auf die Clouddienstressourcen wie Data Catalog organisieren. Mit Abonnements können Sie darüber hinaus steuern, wie die Ressourcennutzung gemeldet, abgerechnet und bezahlt wird. Jedes Abonnement kann in Bezug auf Abrechnung und Zahlung unterschiedlich eingerichtet sein. Daher können Sie je nach Abteilung, Projekt, Niederlassung usw. mit verschiedenen Abonnements und Plänen arbeiten. Jeder Clouddienst gehört zu einem Abonnement, und Sie benötigen ein Abonnement, ehe Sie Data Catalog einrichten können. Weitere Informationen finden Sie unter [Verwalten von Konten, Abonnements und Administratorrollen](../active-directory/active-directory-assign-admin-roles-azure-portal.md).
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 Zum Einrichten von Data Catalog müssen Sie sich mit einem Azure Active Directory-Benutzerkonto (Azure AD) anmelden.

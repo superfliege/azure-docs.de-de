@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.openlocfilehash: e72dd7e84ce3961274cf312649cc679abc576aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b71c7e7f1ea58a273beb58717102522ad0f8c4a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="security-in-azure-data-lake-store"></a>Sicherheit im Azure Data Lake-Speicher
 Viele Unternehmen nutzen Big-Data-Analysen zur Gewinnung von Unternehmenseinblicken, um fundierte Entscheidungen treffen zu können. Ein Unternehmen verfügt unter Umständen über eine komplexe und regulierte Umgebung mit einer wachsenden Zahl von unterschiedlichen Benutzern. Unternehmen müssen sicherstellen, dass wichtige Geschäftsdaten sicherer gespeichert werden und dass einzelnen Benutzern die richtige Zugriffsebene gewährt wird. Azure Data Lake Store ist so konzipiert, dass diese Sicherheitsanforderungen besser erfüllt werden können. In diesem Artikel werden die Sicherheitsfunktionen von Data Lake Store beschrieben, z.B.:
@@ -65,7 +65,7 @@ Eine Anleitung finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen 
 ### <a name="using-acls-for-operations-on-file-systems"></a>Verwenden von ACLs für Vorgänge in Dateisystemen
 Data Lake Store ist ein hierarchisches Dateisystem, wie beispielsweise Hadoop Distributed File System (HDFS), und unterstützt [POSIX-ACLs](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists). Es steuert die Berechtigungen Lesen, Schreiben und Ausführen (read (r), write (w) und execute (x)) für Ressourcen für die Rolle „Besitzer“, für die Gruppe „Besitzer“ und für andere Benutzer und Gruppen. In der öffentlichen Vorschauversion von Data Lake Store (aktuelle Version) können ACLs für Stammordner, Unterordner und einzelne Dateien aktiviert werden. Weitere Informationen zur Funktionsweise von ACLs im Kontext von Data Lake Store finden Sie unter [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md).
 
-Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/active-directory-accessmanagement-manage-groups.md)ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie benutzerdefinierten Zugriff gewähren möchten, da Sie hierfür nur maximal neun Einträge hinzufügen können. Weitere Informationen dazu, wie Sie in Data Lake Store gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](data-lake-store-secure-data.md#filepermissions).
+Es wird empfohlen, mit [Sicherheitsgruppen](../active-directory/active-directory-groups-create-azure-portal.md)ACLs für mehrere Benutzer zu definieren. Fügen Sie Benutzer einer Sicherheitsgruppe hinzu, und weisen Sie dieser Sicherheitsgruppe dann die ACLs für eine Datei oder einen Ordner zu. Dies ist hilfreich, wenn Sie benutzerdefinierten Zugriff gewähren möchten, da Sie hierfür nur maximal neun Einträge hinzufügen können. Weitere Informationen dazu, wie Sie in Data Lake Store gespeicherte Daten mit Azure Active Directory-Sicherheitsgruppen besser schützen können, finden Sie unter [Zuweisen von Benutzern oder Sicherheitsgruppen als Zugriffssteuerungslisten zum Azure Data Lake-Speicher-Dateisystem](data-lake-store-secure-data.md#filepermissions).
 
 ![Auflisten von Standardzugriff und benutzerdefiniertem Zugriff](./media/data-lake-store-security-overview/adl.acl.2.png "Auflisten von Standardzugriff und benutzerdefiniertem Zugriff")
 

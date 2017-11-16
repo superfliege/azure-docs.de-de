@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: ee334186dffaa1f88cf05717b6a5ba1e819a8cdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9b7490fd51a2a39e6438856041fb25110ddde69
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Häufig gestellte Fragen zu Service Fabric
 
@@ -79,7 +79,7 @@ Die Clusterkonfiguration mit drei Knoten wird für Dev/Test unterstützt, da Sie
 
 Im Allgemeinen nicht. Service Fabric speichert den Zustand auf lokalen, kurzlebigen Festplatten. Dies bedeutet beim Verschieben des virtuellen Computers auf einen anderen Host, dass die Daten nicht mit verschoben werden. Im normalen Betrieb ist das kein Problem, da der neue Knoten von anderen Knoten auf den neuesten Stand gebracht wird. Wenn Sie jedoch alle Knoten beenden und später neu starten, besteht die erhebliche Möglichkeit, dass die meisten der Knoten auf neuen Hosts gestartet werden, sodass das System nicht wiederhergestellt werden kann.
 
-Wenn Sie Cluster erstellen möchten, um Ihre Anwendung vor der Bereitstellung zu testen, empfiehlt es sich, diese Cluster dynamisch als Teil Ihrer [Continuous Integration/Continuous Deployment-Pipeline](service-fabric-set-up-continuous-integration.md) zu erstellen.
+Wenn Sie Cluster erstellen möchten, um Ihre Anwendung vor der Bereitstellung zu testen, empfiehlt es sich, diese Cluster dynamisch als Teil Ihrer [Continuous Integration/Continuous Deployment-Pipeline](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) zu erstellen.
 
 
 ### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>Wie aktualisiere ich mein Betriebssystem (z.B. von Windows Server 2012 auf Windows Server 2016)?

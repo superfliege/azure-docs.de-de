@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: d401dde25bf4ab430ac045fb6cfd90050a7ec2e7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 5242d6d7abba1dc06f8e01b26a2d3bfdecb1d630
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-your-raspberry-pi-device-to-the-remote-monitoring-preconfigured-solution-nodejs"></a>Herstellen einer Verbindung zwischen Ihrem Raspberry Pi-Gerät und der vorkonfigurierten Remoteüberwachungslösung (Node.js)
 
 [!INCLUDE [iot-suite-selector-connecting](../../includes/iot-suite-selector-connecting.md)]
 
-Dieses Tutorial zeigt, wie Sie eine Verbindung zwischen einem physischen Gerät und der vorkonfigurierten Remoteüberwachungslösung herstellen. Das in diesem Tutorial verwendete Node.js ist eine gute Wahl für Umgebungen mit minimalen Ressourceneinschränkungen.
+Dieses Tutorial zeigt, wie Sie eine Verbindung zwischen einem physischen Gerät und der vorkonfigurierten Remoteüberwachungslösung herstellen. In diesem Tutorial verwenden Sie Node.js. Dies ist eine gute Wahl für Umgebungen mit minimalen Ressourceneinschränkungen.
 
 ### <a name="required-hardware"></a>Erforderliche Hardware
 
@@ -94,7 +94,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
     npm install azure-iot-device azure-iot-device-mqtt --save
     ```
 
-1. Erstellen Sie im Ordner `RemoteMonitoring` eine Datei namens **remote_monitoring.js**. Öffnen Sie diese Datei in einem Texteditor. Auf dem Raspberry Pi können Sie den Text-Editor `nano` oder `vi` verwenden.
+1. Erstellen Sie im Ordner `RemoteMonitoring` eine Datei mit dem Namen **remote_monitoring.js**. Öffnen Sie diese Datei in einem Texteditor. Auf dem Raspberry Pi können Sie den Text-Editor `nano` oder `vi` verwenden.
 
 1. Fügen Sie der Datei **remote_monitoring.js** die folgenden `require`-Anweisungen hinzu:
 
@@ -107,7 +107,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
     var Message = require('azure-iot-device').Message;
     ```
 
-1. Fügen Sie die folgenden Variablendeklarationen nach den `require` -Anweisungen hinzu. Ersetzen Sie die Platzhalterwerte `{Device Id}` und `{Device Key}` durch die Werte, die Sie sich für das Gerät notiert haben, das Sie in der Remoteüberwachungslösung bereitgestellt haben. Ersetzen Sie `{IoTHub Name}` durch den IoT Hub-Hostnamen aus der Lösung. Wenn der IoT Hub-Hostname also beispielsweise `contoso.azure-devices.net` lautet, ersetzen Sie `{IoTHub Name}` durch `contoso`:
+1. Fügen Sie die folgenden Variablendeklarationen nach den `require` -Anweisungen hinzu. Ersetzen Sie die Platzhalterwerte `{Device Id}` und `{Device Key}` durch die Werte, die Sie für das Gerät, das Sie in der Remoteüberwachungslösung bereitgestellt haben, notiert haben. Ersetzen Sie `{IoTHub Name}` durch den IoT Hub-Hostnamen aus der Lösung. Wenn der IoT Hub-Hostname z.B. `contoso.azure-devices.net` lautet, ersetzen Sie `{IoTHub Name}` durch `contoso`:
 
     ```nodejs
     var connectionString = 'HostName={IoTHub Name}.azure-devices.net;DeviceId={Device Id};SharedAccessKey={Device Key}';
@@ -140,7 +140,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
     var deviceLongitude = -122.13476;
     ```
 
-1. Fügen Sie die folgende Variable hinzu, um die gemeldeten Eigenschaften zu definieren, die an die Lösung gesendet werden sollen. Zu diesen Eigenschaften zählen Metadaten zur Beschreibung der Methoden und Telemetrie, die das Gerät verwendet:
+1. Fügen Sie die folgende Variable hinzu, um die gemeldeten Eigenschaften zu definieren, die an die Lösung gesendet werden. Zu diesen Eigenschaften zählen Metadaten, die die Methoden und die Telemetrie beschreiben, die das Gerät verwendet:
 
     ```nodejs
     var reportedProperties = {
@@ -193,7 +193,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
     }
     ```
 
-1. Fügen Sie die folgende Hilfsfunktion hinzu, um die Ergebnisse des Vorgangs auszugeben:
+1. Fügen Sie die folgende Hilfsfunktion hinzu, um Ergebnisse des Vorgangs auszugeben:
 
     ```nodejs
     function printErrorFor(op) {
@@ -211,7 +211,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
     }
     ```
 
-1. Fügen Sie die folgende Funktion hinzu, um Direktmethodenaufrufe aus der Lösung zu behandeln. Die Lösung verwendet direkte Methoden, um Aktionen für Geräte auszuführen:
+1. Fügen Sie die folgende Funktion zur Verarbeitung der Aufrufe von direkten Methoden aus der Lösung hinzu. Die Lösung verwendet direkte Methoden, die auf Geräte einwirken:
 
     ```nodejs
     function onDirectMethod(request, response) {
@@ -231,7 +231,7 @@ Verwenden Sie für die folgenden Schritte die `ssh`-Verbindung mit Ihrem Raspber
     }
     ```
 
-1. Fügen Sie den folgenden Code hinzu, um Telemetriedaten an die Lösung zu senden. Die Clientanwendung fügt der Nachricht Eigenschaften zur Identifizierung des Nachrichtenschemas hinzu:
+1. Fügen Sie den folgenden Code zum Senden von Telemetriedaten an die Lösung hinzu. Die Clientanwendung fügt der Nachricht Eigenschaften zur Identifizierung des Nachrichtenschemas hinzu:
 
     ```node.js
     function sendTelemetry(data, schema) {

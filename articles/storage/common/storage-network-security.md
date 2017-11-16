@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: b178be71824e427d88a811d87f1aeb6e5f80dbcc
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 2e155231e430a8333095fdcd92a727a17c6d1e8c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
@@ -81,7 +81,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 1. [Installieren Sie Azure CLI 2.0](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 2. Zeigen Sie den Status der Standardregel für das Speicherkonto an.
 ```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkAcls.defaultAction
+az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
 ```
 
 3. Legen Sie die Standardregel auf das standardmäßige Verweigern jeglichen Netzwerkzugriffs fest.  
@@ -173,14 +173,14 @@ az network vnet subnet update --resource-group "myresourcegroup" --vnet-name "my
 
 3. Fügen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz hinzu.  
 ```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "TestVNET" --name "default" --query id --output tsv)
-az storage account network-rule add --resource-group myresourcegroup --account-name mystorageaccount --subnet $subnetid
+subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+az storage account network-rule add --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
 ```
 
 4. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz. 
 ```azurecli
-subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "TestVNET" --name "default" --query id --output tsv)
-az storage account network-rule remove --resource-group myresourcegroup --account-name mystorageaccount --subnet $subnetid
+subnetid=$(az network vnet subnet show --resource-group "myresourcegroup" --vnet-name "myvnet" --name "mysubnet" --query id --output tsv)
+az storage account network-rule remove --resource-group "myresourcegroup" --account-name "mystorageaccount" --subnet $subnetid
 ```
 
 > [!IMPORTANT]
@@ -340,7 +340,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 1. [Installieren Sie Azure CLI 2.0](/cli/azure/install-azure-cli), und [melden Sie sich an](/cli/azure/authenticate-azure-cli).
 2. Zeigen Sie die Ausnahmen für die Speicherkonto-Netzwerkregeln an.
 ```azurecli
-az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkAcls.bypass
+az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass
 ```
 
 3. Konfigurieren Sie die Ausnahmen von den Speicherkonto-Netzwerkregeln.

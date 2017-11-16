@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 3f6a47a15b74a7ceb6504b2834be62e76ab70bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Verwenden von Visual Studio zum Vereinfachen des Schreibens und Verwaltens Ihrer Service Fabric-Anwendung
 Sie können Ihre Azure Service Fabric-Anwendungen und -Dienste in Visual Studio verwalten. Sobald Sie die [Einrichtung Ihrer Entwicklungsumgebung](service-fabric-get-started.md)abgeschlossen haben, können Sie mit Visual Studio Service Fabric-Anwendungen erstellen, Dienste hinzufügen und Anwendungen packen, registrieren und im lokalen Entwicklungscluster bereitstellen.
@@ -32,7 +32,7 @@ Beim Bereitstellen einer Anwendung werden die folgenden Schritte standardmäßig
 4. Entfernen ausgeführter Anwendungsinstanzen
 5. Erstellen einer Anwendungsinstanz
 
-Sie können in Visual Studio **F5** drücken, um die Anwendung bereitzustellen und den Debugger an alle Anwendungsinstanzen anzufügen. Mit **STRG+F5** können Sie eine Anwendung ohne Debuggen bereitstellen oder sie mithilfe des Veröffentlichungsprofils in einem lokalen bzw. Remotecluster veröffentlichen. Weitere Informationen finden Sie unter [Veröffentlichen einer Anwendung in einem Remotecluster mit Visual Studio](service-fabric-publish-app-remote-cluster.md).
+Sie können in Visual Studio **F5** drücken, um die Anwendung bereitzustellen und den Debugger an alle Anwendungsinstanzen anzufügen. Mit **STRG+F5** können Sie eine Anwendung ohne Debuggen bereitstellen oder sie mithilfe des Veröffentlichungsprofils in einem lokalen bzw. Remotecluster veröffentlichen. 
 
 ### <a name="application-debug-mode"></a>Debugmodus für die Anwendung
 Visual Studio stellt eine Eigenschaft mit dem Namen **Anwendungsdebugmodus** bereit, die steuert, wie Visual Studio Anwendungsbereitstellungen im Rahmen des Debuggens behandeln soll.

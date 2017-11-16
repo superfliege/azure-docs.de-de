@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 09/16/2017
+ms.date: 11/10/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 222050410bfc809991f03a452eb6640e5f9e1802
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: f4461b5c10ea4e4cce4c13cb590dd398c37cb7b6
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung
 
@@ -73,7 +73,7 @@ Die folgende Tabelle enthält eine Zusammenfassung der Typen von bereitgestellte
 
 Die Bediener bei Contoso kennen die Schwellenwerte, die bestimmen, ob ein Gerät richtig funktioniert. Eine Kältemaschine funktioniert beispielsweise nicht richtig, wenn der gemeldete Druck höher als 250 PSI ist. In der folgenden Tabelle sind die Regeln auf Schwellenwertbasis aufgeführt, die von Contoso für die einzelnen Gerätetypen definiert werden:
 
-| Regelname | Beschreibung | Schwellenwert | Schweregrad | Betroffene Geräte |
+| Regelname | Beschreibung | Schwellenwert | Severity | Betroffene Geräte |
 | --------- | ----------- | --------- | -------- | ---------------- |
 | Druck der Kältemaschine zu hoch | Warnung, wenn Kältemaschinen einen höheren Druck als normal aufweisen   |Druck > 250 psi       | Kritisch | Kältemaschinen            |
 | Temperatur des Geräts für die Prototyperstellung zu hoch  | Warnung, wenn Geräte für die Prototyperstellung höhere Temperaturen als normal aufweisen  |Temperatur > 80 &deg;F |Kritisch | Geräte für die Prototyperstellung |
