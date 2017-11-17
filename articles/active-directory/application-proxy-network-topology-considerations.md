@@ -15,11 +15,11 @@ ms.date: 07/28/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15c392c6e94abaff7c28bc672cfe61c7551ede4d
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="network-topology-considerations-when-using-azure-active-directory-application-proxy"></a>Aspekte der Netzwerktopologie bei Verwendung des Azure Active Directory-Anwendungsproxys
 
@@ -102,7 +102,7 @@ Der Schwerpunkt dieses Artikels ist zwar die Anordnung des Connectors, aber Sie 
 
 Immer mehr Organisationen verschieben ihre Netzwerke in gehostete Umgebungen. Auf diese Weise können sie ihre Apps in einer gehosteten Umgebung anordnen, die gleichzeitig Teil ihres Unternehmensnetzwerks ist und sich noch innerhalb der Domäne befindet. In diesem Fall können die in den vorherigen Abschnitten beschriebenen Muster auf den neuen Anwendungsspeicherort angewendet werden. Informationen zu diesem Ansatz finden Sie unter [Azure AD Domain Services](../active-directory-domain-services/active-directory-ds-overview.md).
 
-Erwägen Sie außerdem, Ihre Connectors mithilfe von [Connectorgruppen](active-directory-application-proxy-connectors.md) für Apps zu organisieren, die sich an verschiedenen Standorten bzw. in verschiedenen Netzwerken befinden. 
+Erwägen Sie außerdem, Ihre Connectors mithilfe von [Connectorgruppen](active-directory-application-proxy-connectors-azure-portal.md) für Apps zu organisieren, die sich an verschiedenen Standorten bzw. in verschiedenen Netzwerken befinden. 
 
 ## <a name="common-use-cases"></a>Gängige Anwendungsfälle
 
@@ -174,5 +174,5 @@ In dieser Situation können Sie auch eine andere Variante verwenden. Wenn sich d
 
 - [Aktivieren des Anwendungsproxys](active-directory-application-proxy-enable.md)
 - [Aktivieren der einmaligen Anmeldung](active-directory-application-proxy-sso-using-kcd.md)
-- [Aktivieren des bedingten Zugriffs](active-directory-application-proxy-conditional-access.md)
+- [Aktivieren des bedingten Zugriffs](application-proxy-enable-remote-access-sharepoint.md)
 - [Problembehandlung von Anwendungsproxys](active-directory-application-proxy-troubleshoot.md)

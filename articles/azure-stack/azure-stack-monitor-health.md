@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/10/2017
 ms.author: twooley
-ms.openlocfilehash: b2ba7ec922341464ea7160d08e475999c941c42a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf454a438f088d8079352ac60ce845185b741327
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Überwachen von Integrität und Warnungen in Azure Stack
 
@@ -36,7 +36,7 @@ Azure Stack umfasst Funktionen zur Infrastrukturüberwachung, mit denen Sie Info
  
  Als Azure Stack-Betreiber können Sie den Integritätsstatus der Komponenten im Administratorportal und über die Rest-API und PowerShell anzeigen.
  
-Um den Integritätsstatus im Portal anzuzeigen, klicken Sie auf die Region, die in der Kachel **Regionsverwaltung** angezeigt werden soll. Sie können den Integritätsstatus der Infrastrukturrollen und der Ressourcenanbieter anzeigen. Der Computeressourcenanbieter meldet in dieser Version nicht den Integritätsstatus.
+Um den Integritätsstatus im Portal anzuzeigen, klicken Sie auf die Region, die in der Kachel **Regionsverwaltung** angezeigt werden soll. Sie können den Integritätsstatus der Infrastrukturrollen und der Ressourcenanbieter anzeigen.
 
 ![Liste von Infrastrukturrollen](media/azure-stack-monitor-health/image2.png)
 

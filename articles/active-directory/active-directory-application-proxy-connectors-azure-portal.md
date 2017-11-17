@@ -15,17 +15,13 @@ ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 1b08a0b376cbcae8522364c9b6ef22e9c0176438
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 477f20bd552460176be92f1db70bb0f76de8bac1
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Veröffentlichen von Anwendungen in getrennten Netzwerken und an getrennten Standorten mithilfe von Connectorgruppen
-> [!div class="op_single_selector"]
-> * [Azure-Portal](active-directory-application-proxy-connectors-azure-portal.md)
-> * [klassischen Azure-Portal](active-directory-application-proxy-connectors.md)
->
 
 Kunden verwenden den Azure AD-Anwendungsproxy für immer mehr Szenarien und Anwendungen. Daher haben wir den Anwendungsproxy durch Aktivieren weiterer Topologien noch flexibler gestaltet. Sie können Anwendungsproxy-Connectorgruppen erstellen, um bestimmte Connectors bestimmten Anwendungen zuzuweisen. Diese Funktion bietet Ihnen mehr Kontrolle sowie Möglichkeiten zur Optimierung der Anwendungsproxybereitstellung. 
 

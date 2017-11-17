@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: bdbdebe069b3150bed4aa26f1f6e677a66f75f32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e4af248a1aafbd34a62c75e792746514456577b
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory-PoC-Playbook: Bausteine
 
@@ -99,10 +99,10 @@ Geschätzter Zeitaufwand: 15 Minuten
 | Schritt | Ressourcen |
 | --- | --- |
 | Wechseln Sie zum Azure AD-Verwaltungsportal. | [Azure AD-Verwaltungsportal: Unternehmensbranding](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/LoginTenantBranding) |
-| Laden Sie die Assets für die Anmeldeseite hoch (Herologo, kleines Logo, Label usw.). Optional: Wenn Sie über AD FS verfügen, passen Sie diese Assets an die AD FS-Anmeldeseiten an. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite: Anpassbare Elemente](active-directory-add-company-branding.md) |
+| Laden Sie die Assets für die Anmeldeseite hoch (Herologo, kleines Logo, Label usw.). Optional: Wenn Sie über AD FS verfügen, passen Sie diese Assets an die AD FS-Anmeldeseiten an. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite: Anpassbare Elemente](customize-branding.md) |
 | Warten Sie einige Minuten, bis die Änderung vollständig wirksam wird. |  |
 | Melden Sie sich mit den PoC-Benutzeranmeldeinformationen unter https://myapps.microsoft.com an. |  |
-| Überprüfen Sie das Aussehen und Verhalten im Browser. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite](active-directory-add-company-branding.md) |
+| Überprüfen Sie das Aussehen und Verhalten im Browser. | [Hinzufügen Ihres Unternehmensbrandings zur Anmelde- und Zugriffsbereichsseite](customize-branding.md) |
 | Optional: Überprüfen Sie das Aussehen und Verhalten auf anderen Geräten. |  |
 
 ### <a name="considerations"></a>Überlegungen
@@ -379,7 +379,7 @@ Geschätzter Zeitaufwand: 15 Minuten
 
 | Voraussetzung | Ressourcen |
 | --- | --- |
-| Aktivieren Sie die Self-Service-Kennwortverwaltung in Ihrem Mandanten. | [Azure Active Directory – Zurücksetzen von Kennwörtern für IT-Administratoren](active-directory-passwords.md) |
+| Aktivieren Sie die Self-Service-Kennwortverwaltung in Ihrem Mandanten. | [Azure Active Directory – Zurücksetzen von Kennwörtern für IT-Administratoren](active-directory-passwords-update-your-own-password.md) |
 | Aktivieren Sie das Kennwortrückschreiben, um Kennwörter lokal zu verwalten. Hinweis: Dies erfordert bestimmte Azure AD Connect-Versionen. | [Voraussetzungen für das Zurückschreiben von Kennwörtern](active-directory-passwords-writeback.md) |
 | Identifizieren Sie die PoC-Benutzer, die diese Funktion verwenden werden, und stellen Sie sicher, dass sie Mitglied einer Sicherheitsgruppe sind. Bei diesen Benutzern muss es sich um Nicht-Administratoren handeln, da die Funktion sonst nicht vollständig vorgestellt werden kann. | [Anpassen: Azure AD-Kennwortverwaltung: Zugriff auf die Kennwortrücksetzung beschränken](active-directory-passwords-writeback.md) |
 

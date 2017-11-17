@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/11/2017
 ms.author: helaw
-ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a8e871a3a44cb14503832d2f3a096712f8112a7
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Problembehandlung für Microsoft Azure Stack
 
@@ -37,16 +37,6 @@ Wenn während der Installation ein Fehler auftritt, können Sie die Option „re
 
 ### <a name="at-the-end-of-the-deployment-the-powershell-session-is-still-open-and-doesnt-show-any-output"></a>Am Ende der Bereitstellung ist die PowerShell-Sitzung noch geöffnet, und es wird keine Ausgabe angezeigt.
 Dies ist wahrscheinlich nur auf das Standardverhalten des PowerShell-Befehlsfensters zurückzuführen, wenn dieses ausgewählt wurde. Die Bereitstellung des Development Kits war eigentlich erfolgreich, das Skript wurde jedoch bei der Auswahl des Fensters angehalten. Sie können überprüfen, ob dies der Fall ist, indem Sie in der Titelleiste des Befehlsfensters nach dem Wort „select“ suchen.  Drücken Sie die ESC-Taste, um die Auswahl aufzuheben. Danach sollte die Abschlussmeldung angezeigt werden.
-
-## <a name="templates"></a>Vorlagen
-### <a name="azure-template-wont-deploy-to-azure-stack"></a>Die Azure-Vorlage wird nicht in Azure Stack bereitgestellt.
-Überprüfen Sie Folgendes:
-
-* Die Vorlage verwendet einen Microsoft Azure-Dienst, der bereits verfügbar oder als Vorschau in Azure Stack verfügbar ist.
-* Die für eine bestimmte Ressource verwendeten APIs werden von der lokalen Azure Stack-Instanz unterstützt, und der von Ihnen als Ziel angegebene Speicherort ist gültig („local“ im Azure Stack Development Kit gegenüber „USA, Osten“ oder „Indien, Süden“ in Azure).
-* Sie haben [diesen Artikel](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md) zu den Test-AzureRmResourceGroupDeployment-Cmdlets gelesen, die geringfügige Unterschiede in der Azure Resource Manager-Syntax erfassen.
-
-Sie können auch die Azure Stack-Vorlagen verwenden, die bereits im [GitHub-Repository](http://aka.ms/AzureStackGitHub/) bereitgestellt wurden, um Ihnen den Einstieg zu erleichtern.
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
 ### <a name="default-image-and-gallery-item"></a>Standardimage und Katalogelement
@@ -75,20 +65,6 @@ Weitere Informationen zum Konfigurieren des Schwellenwerts für die Aufbewahrung
 ## <a name="storage"></a>Speicher
 ### <a name="storage-reclamation"></a>Freigabe von Speicherplatz
 Es dauert unter Umständen bis zu 14 Stunden, bis freigegebene Kapazität im Portal angezeigt wird. Die Freigabe von Speicherplatz hängt von verschiedenen Faktoren ab, einschließlich der prozentualen Auslastung von internen Containerdateien im Blockblobspeicher. Je nach gelöschter Datenmenge besteht daher keine Garantie für die Menge des Speicherplatzes, der freigegeben werden kann, wenn der Garbage Collector ausgeführt wird.
-
-## <a name="powershell"></a>PowerShell
-### <a name="resource-providers-not-registered"></a>Ressourcenanbieter nicht registriert
-Beim Herstellen einer Verbindung mit Mandantenabonnements mit PowerShell bemerken Sie unter Umständen, dass Ressourcenanbieter nicht automatisch registriert werden. Verwenden Sie das [Connect-Modul](https://github.com/Azure/AzureStack-Tools/tree/master/Connect), oder führen Sie den folgenden Befehl in PowerShell aus (nach dem [Installieren und Herstellen einer Verbindung](azure-stack-connect-powershell.md) als Mandant): 
-  
-       Get-AzureRMResourceProvider | Register-AzureRmResourceProvider
-
-## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-
-* Der interaktive CLI-Modus, d.h. der Befehl `az interactive`, wird in Azure Stack noch nicht unterstützt.
-* Verwenden Sie zum Abrufen der Liste der in Azure Stack verfügbaren VM-Images den Befehl `az vm images list --all` anstelle des Befehls `az vm image list`. Wenn Sie die Option `--all` angeben, stellt dies sicher, dass die Antwort nur die Images zurückgibt, die in Ihrer Azure Stack-Umgebung verfügbar sind. 
-* VM-Imagealiase, die in Azure verfügbar sind, gelten möglicherweise nicht für Azure Stack. Wenn Sie VM-Images verwenden, müssen Sie den gesamten URN-Parameter (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) anstelle des Imagealias verwenden. Dieser URN muss mit den Imagespezifikationen übereinstimmen, die vom Befehl `az vm images list` abgerufen wurden.
-* Standardmäßig verwendet die CLI 2.0 „Standard_DS1_v2“ als Standardgröße für VM-Images. Diese Größe ist in Azure Stack allerdings noch nicht verfügbar, daher müssen Sie den Parameter `--size` beim Erstellen eines virtuellen Computers explizit angeben. Sie können die Liste der in Azure Stack verfügbaren VM-Größen mit dem Befehl `az vm list-sizes --location <locationName>` abrufen.
-
 
 ## <a name="windows-azure-pack-connector"></a>Windows Azure Pack-Connector
 * Wenn Sie das Kennwort des azurestackadmin-Kontos nach der Bereitstellung des Azure Stack Development Kits ändern, können Sie den Modus mit mehreren Clouds nicht mehr konfigurieren. Daher können Sie keine Verbindung mit der Windows Azure Pack-Zielumgebung herstellen.

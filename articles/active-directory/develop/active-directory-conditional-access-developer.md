@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: 321c87f242f2c24eb2b28be2dc69cde278117b97
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: eddc1988e094a50ba7e41331a576846aa26f77a4
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -28,7 +28,7 @@ Azure Active Directory (AD) bietet verschiedene Methoden zum Sichern Ihrer App u
 * Ermöglicht nur bei Intune registrierten Geräten den Zugriff auf bestimmte Dienste
 * Einschränken von Benutzerstandorten und IP-Adressbereichen
 
-Weitere Informationen über alle Funktionen des bedingten Zugriffs finden Sie unter [Bedingter Zugriff im klassischen Azure-Portal](../active-directory-conditional-access.md). 
+Weitere Informationen über alle Funktionen des bedingten Zugriffs finden Sie unter [Bedingter Zugriff im klassischen Azure-Portal](../active-directory-conditional-access-azure-portal.md). 
 
 In diesem Artikel konzentrieren wir uns auf die Bedeutung des bedingten Zugriffs für Entwickler, die Apps für Azure AD erstellen.  Dabei werden Kenntnisse über [einzel](active-directory-integrating-applications.md)- und [mehrinstanzenfähige](active-directory-devhowto-multi-tenant-overview.md) Apps sowie über [allgemeine Authentifizierungsmuster](active-directory-authentication-scenarios.md) vorausgesetzt.
 
@@ -48,7 +48,7 @@ Insbesondere die folgenden Szenarien erfordern Code zum Behandeln der speziellen
 * Einzelseiten-Apps, die ADAL.js verwenden
 * Web-Apps, die eine Ressource aufrufen
 
-Sie können Richtlinien für den bedingten Zugriff auf die App anwenden, aber auch auf eine Web-API, auf die Ihre App zugreift. Weitere Informationen zum Konfigurieren einer Richtlinie für den bedingten Zugriff finden Sie unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](../active-directory-conditional-access-azuread-connected-apps.md).
+Sie können Richtlinien für den bedingten Zugriff auf die App anwenden, aber auch auf eine Web-API, auf die Ihre App zugreift. Weitere Informationen zum Konfigurieren einer Richtlinie für den bedingten Zugriff finden Sie unter [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](../active-directory-conditional-access-azure-portal-get-started.md).
 
 Abhängig vom jeweiligen Szenario können Unternehmenskunden jederzeit Richtlinien für den bedingten Zugriff anwenden und entfernen.  Damit Ihre App beim Anwenden einer neuen Richtlinie weiterhin funktioniert, müssen Sie die Behandlung der speziellen Anforderungen implementieren. Die folgenden Beispiele veranschaulichen die Behandlung dieser Anforderungen. 
 
@@ -218,7 +218,7 @@ Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-vo
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure AD](../active-directory-conditional-access.md).
+* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure AD](../active-directory-conditional-access-azure-portal.md).
 * Weitere Azure AD-Codebeispiele finden Sie im [GitHub-Repository mit Codebeispielen](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory). 
 * Weitere Informationen zum ADAL-SDK und zum Zugriff auf die Referenzdokumentation finden Sie in der [Bibliotheksanleitung](active-directory-authentication-libraries.md).
 * Weitere Informationen zu Szenarien mit mehreren Mandanten finden Sie unter [Anmelden von Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](active-directory-devhowto-multi-tenant-overview.md).

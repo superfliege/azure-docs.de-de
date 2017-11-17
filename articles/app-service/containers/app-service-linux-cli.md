@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 28dfa62c3408c43d3919a9657339bb8d25f6dcdf
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 54c979313a6ffa43008aa9870332b92d2b2f182a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Verwalten von Web-App für Container mithilfe der Azure CLI
 
 Mit den Befehlen in diesem Artikel können Sie eine Web-App für Container mit der Azure CLI 2.0 erstellen und verwalten.
 Sie können die neue Version der Befehlszeilenschnittstelle auf zwei Arten einrichten:
 
-* Durch [Installieren von Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) auf Ihrem Computer
+* Durch [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) auf Ihrem Computer
 * Mithilfe der [Azure Cloud Shell (Vorschau)](../../cloud-shell/overview.md)
 
 ## <a name="create-a-linux-app-service-plan"></a>Erstellen eines Linux-App Service-Plans
@@ -34,7 +34,7 @@ Sie können die neue Version der Befehlszeilenschnittstelle auf zwei Arten einri
 Um einen Linux-App Service-Plan zu erstellen, können Sie den folgenden Befehl verwenden:
 
 ```azurecli-interactive
-az appservice plan create -n appname -g rgname --islinux -l "South Central US" --sku S1 --number-of-workers 1
+az appservice plan create -n appname -g rgname --is-linux -l "South Central US" --sku S1 --number-of-workers 1
 ```
 
 ## <a name="create-a-custom-docker-container-web-app"></a>Erstellen einer benutzerdefinierten Docker-Container-Web-App
@@ -104,7 +104,7 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was ist Azure App Service unter Linux?](app-service-linux-intro.md)
-* [Installieren der Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+* [Installieren der Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (Vorschau)](../../cloud-shell/overview.md)
 * [Einrichten von Stagingumgebungen in Azure App Service](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Continuous Deployment mit Web-App für Container](app-service-linux-ci-cd.md)

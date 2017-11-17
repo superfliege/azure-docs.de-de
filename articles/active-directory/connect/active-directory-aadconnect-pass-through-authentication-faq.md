@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: e1bd58797124210f7c31e90fb20d728289a04ba2
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 821d70ec7236e165d4f60ed6217c49d10de1cfc3
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -36,17 +36,17 @@ Ja, es handelt sich um eine kostenlose Funktion, sodass Sie keine kostenpflichti
 
 Nein, die Passthrough-Authentifizierung ist nur in der weltweiten Instanz von Azure AD verfügbar.
 
-## <a name="does-conditional-accessactive-directory-conditional-accessmd-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../active-directory-conditional-access.md) mit der Passthrough-Authentifizierung?
+## <a name="does-conditional-accessactive-directory-conditional-access-azure-portalmd-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../active-directory-conditional-access-azure-portal.md) mit der Passthrough-Authentifizierung?
 
-Ja, alle Funktionen des bedingten Zugriffs, einschließlich der Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
+Ja, alle Funktionen mit bedingtem Zugriff, einschließlich Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Unterstützt die Passthrough-Authentifizierung eine alternative Anmelde-ID (Alternate ID) anstelle von „UserPrincipalName“ als Benutzernamen?
 
 Ja. Die Passthrough-Authentifizierung unterstützt `Alternate ID` als Benutzername, wenn dies in Azure AD Connect wie [hier](active-directory-aadconnect-get-started-custom.md) beschrieben entsprechend konfiguriert ist. Nicht alle Office 365-Anwendungen unterstützen `Alternate ID`. Angaben zur Supporterklärung finden Sie in der Dokumentation der jeweiligen Anwendung.
 
-## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback auf die Passthrough-Authentifizierung verwendet werden?
+## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Kann die Kennworthashsynchronisierung als Fallback für die Passthrough-Authentifizierung verwendet werden?
 
-Nein. Bei der Pass-Through-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Es dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) konfigurieren.
+Nein. Bei der Pass-Through-Authentifizierung wird _kein_ automatisches Failover auf die Kennworthashsynchronisierung ausgeführt. Sie dient nur als Fallback für [Szenarios, die zurzeit noch nicht von der Passthrough-Authentifizierung unterstützt werden](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios). Um Benutzeranmeldefehler zu vermeiden, sollten Sie die Passthrough-Authentifizierung für eine [hohe Verfügbarkeit](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability) konfigurieren.
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>Kann ich einen [Azure AD-Anwendungsproxy](../active-directory-application-proxy-get-started.md)-Connector auf demselben Server wie dem eines Passthrough-Authentifizierungs-Agents installieren?
 
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie [in diesem Artikel](active-directory-aadconnect
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Können die Passthrough-Authentifizierungs-Agents über einen ausgehenden Webproxyserver kommunizieren?
 
-Ja. Wenn in Ihrer lokalen Umgebung WPAD (Web Proxy Auto-Discovery) aktiviert ist, versuchen die Authentifizierungs-Agents automatisch, einen Webproxyserver im Netzwerk zu suchen und zu verwenden.
+Ja. Wenn in Ihrer lokalen Umgebung WPAD (Web Proxy Auto-Discovery) aktiviert ist, versuchen die Authentifizierungs-Agents automatisch, einen Webproxyserver im Netzwerk zu finden und zu verwenden.
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>Kann ich zwei oder mehr Passthrough-Authentifizierungs-Agents auf dem gleichen Server installieren?
 
@@ -84,9 +84,9 @@ Nein, Sie können nur einen Passthrough-Authentifizierungs-Agent auf einem einze
 
 ## <a name="i-already-use-active-directory-federation-services-ad-fs-for-azure-ad-sign-in-how-do-i-switch-it-to-pass-through-authentication"></a>Ich verwende bereits die Active Directory-Verbunddienste (AD FS) für die Anmeldung in Azure AD. Wie kann ich zur Passthrough-Authentifizierung wechseln?
 
-Wenn Sie AD FS mit dem Azure AD Connect-Assistenten als Ihre Anmeldemethode konfiguriert haben, ändern Sie die Anmeldemethode für Benutzer in die Passthrough-Authentifizierung. Diese Änderung ermöglicht die Passthrough-Authentifizierung für den Mandanten und konvertiert _alle_ Ihre Verbunddomänen in verwaltete Domänen. Alle nachfolgenden Anmeldeanforderungen in Ihrem Mandanten werden mit der Passthrough-Authentifizierung verarbeitet. Derzeit besteht in Azure AD Connect keine Möglichkeit, eine AD FS und die Passthrough-Authentifizierung domänenübergreifend zusammen zu verwenden.
+Wenn Sie AD FS mit dem Azure AD Connect-Assistenten als Ihre Anmeldemethode konfiguriert haben, ändern Sie die Anmeldemethode für Benutzer in die Passthrough-Authentifizierung. Diese Änderung ermöglicht die Passthrough-Authentifizierung für den Mandanten und konvertiert _alle_ Ihre Verbunddomänen in verwaltete Domänen. Alle nachfolgenden Anmeldeanforderungen in Ihrem Mandanten werden mit der Passthrough-Authentifizierung verarbeitet. Derzeit besteht in Azure AD Connect keine Möglichkeit, AD FS und die Passthrough-Authentifizierung domänenübergreifend zusammen zu verwenden.
 
-Wenn AD FS als Anmeldemethode _außerhalb_ des Azure AD Connect-Assistenten konfiguriert wurde, ändern Sie die Anmeldemethode für Benutzer in die Passthrough-Authentifizierung (über die Optionen „Nicht konfigurieren“). Diese Änderung lässt die Passthrough-Authentifizierung auf dem Mandanten zu. All Ihre Verbunddomänen verwenden weiterhin AD FS für die Anmeldung. Mit PowerShell lassen sich einige oder alle dieser Verbunddomänen manuell in verwaltete Domänen konvertieren. Daraufhin werden alle Anmeldeanforderungen für verwalteten Domänen (_ausschließlich_) von der Passthrough-Authentifizierung verarbeitet.
+Wenn AD FS als Anmeldemethode _außerhalb_ des Azure AD Connect-Assistenten konfiguriert wurde, ändern Sie die Anmeldemethode für Benutzer in die Passthrough-Authentifizierung (über die Option „Nicht konfigurieren“). Diese Änderung lässt die Passthrough-Authentifizierung auf dem Mandanten zu. All Ihre Verbunddomänen verwenden weiterhin AD FS für die Anmeldung. Mit PowerShell lassen sich einige oder alle dieser Verbunddomänen manuell in verwaltete Domänen konvertieren. Daraufhin werden alle Anmeldeanforderungen für verwaltete Domänen (_ausschließlich_) von der Passthrough-Authentifizierung verarbeitet.
 
 >[!IMPORTANT]
 >Die Passthrough-Authentifizierung verarbeitet jedoch nicht die Anmeldung für ausschließlich cloudbasierte Azure AD-Benutzer.
@@ -124,7 +124,7 @@ Führen Sie den Azure AD Connect-Assistenten erneut aus, und ändern Sie die Anm
 
 ## <a name="what-happens-when-i-uninstall-a-pass-through-authentication-agent"></a>Was geschieht, wenn ich einen Passthrough-Authentifizierungs-Agent deinstalliere?
 
-Durch die Deinstallation eines Passthrough-Authentifizierungs-Agent von einem Server werden keine Anmeldeanforderungen mehr angenommen. Stellen Sie sicher, dass ein anderer Authentifizierungs-Agent ausgeführt wird, bevor Sie diesen Vorgang ausführen, um eine Unterbrechung bei der Benutzeranmeldung für Ihren Mandanten zu vermeiden.
+Nach der Deinstallation eines Passthrough-Authentifizierungs-Agents von einem Server werden keine Anmeldeanforderungen mehr angenommen. Stellen Sie sicher, dass ein anderer Authentifizierungs-Agent ausgeführt wird, bevor Sie diesen Vorgang ausführen, um eine Unterbrechung bei der Benutzeranmeldung für Ihren Mandanten zu vermeiden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [**Aktuelle Einschränkungen**](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien

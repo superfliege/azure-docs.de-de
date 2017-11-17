@@ -10,11 +10,11 @@ ms.topic: overview
 ms.service: azure-policy
 manager: jochan
 ms.custom: mvc
-ms.openlocfilehash: b784c79166eb614988d84b4553bb95e4d1e457af
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ef1114f6b1259e4f0d60260febb39bc70b181fbc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -51,7 +51,7 @@ In Azure Policy bieten wir einige integrierte Richtlinien an, die Ihnen standard
 
 Sie können diese Richtlinien über das Azure-Portal, PowerShell oder die Azure CLI zuweisen.
 
-Weitere Informationen zu den Strukturen von Richtliniendefinitionen finden Sie im Artikel [Struktur von Richtliniendefinitionen](../azure-resource-manager/resource-manager-policy.md#policy-definition-structure).
+Weitere Informationen zu den Strukturen von Richtliniendefinitionen finden Sie im Artikel [Struktur von Richtliniendefinitionen](policy-definition.md).
 
 ## <a name="policy-assignment"></a>Richtlinienzuweisung
 
@@ -68,7 +68,7 @@ Parameter werden beim Erstellen einer Richtliniendefinition definiert bzw. erste
 <!--
 Next link should point to new Concept page for Parameters
 -->
-Weitere Informationen zu Richtlinienparametern finden Sie unter [Übersicht über Ressourcenrichtlinien – Parameter](../azure-resource-manager/resource-manager-policy.md#parameters).
+Weitere Informationen zu Richtlinienparametern finden Sie unter [Übersicht über Ressourcenrichtlinien – Parameter](policy-definition.md#parameters).
 
 ## <a name="initiative-definition"></a>Initiativdefinition
 Eine Initiativdefinition ist eine Auflistung von Richtliniendefinitionen, die auf das Erreichen eines einzigen übergeordneten Ziels ausgerichtet sind. Initiativdefinitionen vereinfachen das Verwalten und Zuweisen von Richtliniendefinitionen. Die Vereinfachung besteht im Gruppieren einer Reihe von Richtlinien zu einem einzelnen Element. Beispielsweise können Sie eine Initiative mit dem Titel **Überwachung im Azure Security Center aktivieren** mit dem Ziel erstellen, alle vorhandenen Sicherheitsempfehlungen in Ihrem Azure Security Center zu überwachen.

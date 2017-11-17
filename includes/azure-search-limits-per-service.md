@@ -11,7 +11,6 @@ Der Speicher ist durch den Festplattenspeicher oder einen festen Grenzwert für 
 | Maximale Anzahl von Indexern |3 |5 |50 |200 |200 |Keine Indexer-Unterstützung |
 | Maximale Datenquellen |3 |5 |50 |200 |200 |Keine Indexer-Unterstützung |
 | Maximale Anzahl von Dokumenten |10.000 |1 Mio. |15 Millionen pro Partition oder 180 Millionen pro Dienst |60 Millionen pro Partition oder 720 Millionen pro Dienst |120 Millionen pro Partition oder 1,4 Milliarden pro Dienst |1 Millionen pro Index oder 200 Millionen pro Partition |
-| Geschätzte Anzahl von Abfragen pro Sekunde (QPS) |– |~3 pro Replikat |~15 pro Replikat |~60 pro Replikat |~60 pro Replikat |>60 pro Replikat |
 
 <sup>1</sup> Für Funktionen der Free- und Vorschauversion gilt keine Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Für alle abrechenbaren Tarife gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Zwei oder mehr Replikate sind für die Abfrage-SLA (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLA (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für die SLA nicht berücksichtigt. 
 
