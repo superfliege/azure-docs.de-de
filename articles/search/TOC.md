@@ -3,7 +3,6 @@
 
 # Erste Schritte
 
-## [Auswählen einer SKU](search-sku-tier.md)
 ## [Erstellen eines Diensts](search-create-service-portal.md)
 ## [Erstellen eines Index](search-what-is-an-index.md)
 ### [Azure-Portal](search-create-index-portal.md)
@@ -18,23 +17,26 @@
 ### [.NET](search-query-dotnet.md)
 ### [REST](search-query-rest-api.md)
 
-# Tutorials
+# Lernprogramme
 
-## [.NET](search-howto-dotnet-sdk.md)
-## [.NET-Synonymvorschau](search-synonyms-tutorial-sdk.md)
-## [Portal](search-get-started-portal.md)
+## [Entwickeln in .NET](search-howto-dotnet-sdk.md)
+## [Synonymvorschau in .NET](search-synonyms-tutorial-sdk.md)
+## [SQL-Daten-Indexer in .NET](search-indexer-tutorial.md)
+## [Präsentation der Portalfunktionen](search-get-started-portal.md)
 ## [Durchsuchen semistrukturierter Daten](search-semi-structured-data.md)
-## [Node.js](search-get-started-nodejs.md)
-## [Java](search-get-started-java.md)
+## [Erkunden der REST-API](search-fiddler.md)
 
 # Anleitung
 
 ## Planen und Entwerfen
+### [Auswählen einer SKU](search-sku-tier.md)
 ### [Diensteinschränkungen](search-limits-quotas-capacity.md)
 ### [Dienstskalierbarkeit](search-capacity-planning.md)
 ### [Entwurfsmuster für Mehrinstanzenfähigkeit](search-modeling-multitenant-saas-applications.md)
 ## Entwickeln
 ### [API-Versionen](search-api-versions.md)
+### [Entwickeln in Node.js](search-get-started-nodejs.md)
+### [Entwickeln in Java](search-get-started-java.md)
 ### [Upgraden des SDK](search-dotnet-sdk-migration.md)
 ### [Upgraden der REST-API](search-api-migration.md)
 ### [Modellieren von komplexen Datentypen](search-howto-complex-data-types.md)

@@ -106,7 +106,8 @@
 
 ## [Live streamen](media-services-manage-channels-overview.md)
 ### [Lokale Encoder](media-services-live-streaming-with-onprem-encoders.md)
-#### [Portal](media-services-portal-live-passthrough-get-started.md)
+#### [Empfohlene lokale Encoder](media-services-recommended-encoders.md)
+#### [Azure-Portal](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 ### [Livestreaming mit Cloudencoder](media-services-manage-live-encoder-enabled-channels.md)
 #### [Azure-Portal](media-services-portal-creating-live-encoder-enabled-channel.md)
@@ -118,6 +119,13 @@
 #### [Wirecast-Encoder](media-services-configure-wirecast-live-encoder.md)
 ### [Behandeln von Vorgängen mit langer Ausführungsdauer](media-services-dotnet-long-operations.md)
 ### [Spezifikation für die Liveerfassung von fragmentiertem MP4](media-services-fmp4-live-ingest-overview.md)
+
+## [Clip content (Clip-Inhalt)](media-services-azure-media-clipper-overview.md)
+### [Get started with Azure Media Clipper (Erste Schritte mit Azure Media Clipper)](media-services-azure-media-clipper-getting-started.md)
+### [Load assets into Azure Media Clipper (Laden von Medienobjekten in Azure Media Clipper)](media-services-azure-media-clipper-load-assets.md)
+### [Configure custom keyboard shortcuts (Konfigurieren von benutzerdefinierten Tastenkombinationen)](media-services-azure-media-clipper-keyboard-shortcuts.md)
+### [Submit clipping jobs (Übermitteln von Beschneidungsaufträgen)](media-services-azure-media-clipper-submit-job.md)
+### [Azure-Portal](media-services-azure-media-clipper-portal.md)
 
 ## [Schützen](media-services-content-protection-overview.md)
 ### [Konfigurieren von Content Protection im Azure-Portal](media-services-portal-protect-content.md)

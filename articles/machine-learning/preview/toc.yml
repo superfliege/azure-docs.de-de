@@ -41,6 +41,8 @@
           href: roaming-and-collaboration.md
     - name: Verwenden von Visual Studio Code-Tools für KI
       href: quickstart-visual-studio-tools.md
+    - name: Verwenden des Azure IoT Edge-KI-Toolkits
+      href: use-azure-iot-edge-ai-toolkit.md
     - name: Konfigurieren der Compute-Umgebung
       items:
         - name: Konfigurieren des Experimentierens
@@ -88,6 +90,8 @@
           href: how-to-scale-clusters.md
         - name: Bereitstellen eines Webdiensts
           href: model-management-service-deploy.md
+        - name: Bereitstellen eines IoT Edge-Geräts
+          href: deploy-to-iot-edge-device.md
         - name: Verwenden eines Webdiensts
           href: model-management-consumption.md
         - name: Sammeln von Modelldaten

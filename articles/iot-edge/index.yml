@@ -1,0 +1,46 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure IoT Edge
+metadata:
+  document_id: null
+  title: 'Azure IoT Edge – Tutorials, API-Referenz'
+  meta.description: Use Azure IoT Edge to deploy Azure services and custom business logic to devices at the edge.
+  services: iot-edge
+  author: kgremban
+  manager: timlt
+  ms.service: iot-edge
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/08/2017
+  ms.author: kgremban
+abstract:
+  description: 'Azure IoT Edge ist ein IoT-Dienst (Internet of Things, Internet der Dinge), der auf IoT Hub aufbaut. Dieser Dienst ist für Kunden bestimmt, die Daten auf Geräten (im „Edge“-Bereich des Netzwerks) analysieren möchten, anstatt in der Cloud. Indem Teile Ihrer Workload in den Edge-Bereich verschoben werden, benötigen Ihre Geräte weniger Zeit für das Senden von Nachrichten in die Cloud und können schneller auf Statusänderungen reagieren.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Stellen Sie Ihr erstes IoT Edge-Modul bereit, und verarbeiten Sie Daten auf einem simulierten Gerät:'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/virtual-machines/linux/media/index/portal.svg
+            text: Windows
+            href: /azure/iot-edge/quickstart
+          - image:
+              src: /azure/virtual-machines/linux/media/index/portal.svg
+            text: Linux
+            href: /azure/iot-edge/quickstart-linux
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie IoT Edge installieren und konfigurieren, Module bereitstellen und Azure-Dienste wie Stream Analytics im Edge-Bereich nutzen.'
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/iot-edge/tutorial-simulate-device-windows">Simulieren eines IoT Edge-Geräts unter Windows</a>
+          - html: <a href="/azure/iot-edge/tutorial-simulate-device-Linux">Simulieren eines IoT Edge-Geräts unter Linux</a>
+          - html: '<a href="/azure/iot-edge/tutorial-csharp-module">Entwickeln und Bereitstellen eines C#-Moduls</a>'
+          - html: <a href="/azure/iot-edge/tutorial-deploy-stream-analytics">Bereitstellen von Azure Stream Analytics als Modul</a>
+          - html: <a href="/azure/iot-edge/tutorial-deploy-function">Bereitstellen von Azure Functions als Modul</a>

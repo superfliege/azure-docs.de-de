@@ -37,6 +37,8 @@
       href: container-instances-mounting-azure-files-volume.md
     - name: Bereitstellen aus Azure Container Registry
       href: container-instances-using-azure-container-registry.md
+    - name: Ausführen von Aufgaben in Containern
+      href: container-instances-restart-policy.md
     - name: Behandeln von Bereitstellungsproblemen
       href: container-instances-troubleshooting.md
 - name: Referenz

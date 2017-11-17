@@ -17,6 +17,8 @@
       href: functions-create-your-first-function-visual-studio.md
     - name: Erstellen von Funktionen – Java/Maven
       href: functions-create-first-java-maven.md
+    - name: Erstellen von Funktionen – Linux
+      href: functions-create-first-azure-function-azure-cli-linux.md
     - name: Trigger
       items:
         - name: Blob Storage
@@ -47,6 +49,8 @@
       href: functions-openapi-definition.md
     - name: '4: Erneutes Ändern der Imagegröße mit Event Grid'
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: '5: Funktionen für ein benutzerdefiniertes Image'
+      href: functions-create-function-linux-custom-image.md
 - name: Beispiele
   items:
     - name: Codebeispiele
