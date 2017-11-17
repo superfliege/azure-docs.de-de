@@ -12,20 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2016
+ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 4edac05325ad12596d982d113df0db7461124b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b00f756fdbd059b917ac7d28f24b1a0ec22594a9
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect-Synchronisierung: Grundlagen und Anpassung der Synchronisierung
 Die Azure Active Directory Connect-Synchronisierungsdienste (Azure AD Connect Sync) sind eine Hauptkomponente von Azure AD Connect. Die Dienste verarbeiten alle Vorgänge in Bezug auf die Synchronisierung von Identitätsdaten zwischen Ihrer lokalen Umgebung und Azure AD. Azure AD Connect Sync ist der Nachfolger von DirSync, Azure AD Sync und Forefront Identity Manager mit konfiguriertem Azure Active Directory-Connector.
 
 Dieses Thema ist das zentrale Thema für **Azure AD Connect Sync** (auch als **Synchronisierungsmodul bezeichnet**) und enthält eine Liste mit Links zu allen anderen verwandten Themen. Links zu Azure AD Connect finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](active-directory-aadconnect.md).
 
-Der Synchronisierungsdienst besteht aus zwei Komponenten: der lokalen **Azure AD Connect-Synchronisierungskomponente** und der Dienstseite in Azure AD, die als **Azure AD Connect-Synchronisierungsdienst** bezeichnet wird. Der Dienst wird für DirSync, Azure AD Sync und Azure AD Connect gemeinsam verwendet.
+Der Synchronisierungsdienst besteht aus zwei Komponenten: der lokalen **Azure AD Connect-Synchronisierungskomponente** und der Dienstseite in Azure AD, die als **Azure AD Connect-Synchronisierungsdienst** bezeichnet wird. 
 
 ## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect Sync-Themen
 | Thema | Inhalt und Relevanz |

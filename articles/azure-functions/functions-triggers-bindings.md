@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: glenga
-ms.openlocfilehash: 74933d9c3535ab71f47c792e20bfbc35e589ec08
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 Azure Functions ermöglicht Ihnen das Schreiben von Code, in dem über *Trigger* und *Bindungen* auf Ereignisse in Azure und anderen Diensten reagiert wird. Dieser Artikel ist eine konzeptionelle Übersicht über Trigger und Bindungen für alle unterstützten Programmiersprachen. Hier sind die Funktionen beschrieben, die für alle Bindungen identisch sind.
@@ -243,7 +243,7 @@ Beispielsweise unterstützt ein Azure Queue Storage-Trigger die folgenden Eigens
 
 Details der Metadateneigenschaften für jeden Trigger sind im entsprechenden Referenzthema beschrieben. Dokumentation ist auch im Portal auf der Registerkarte **Integrieren** im Abschnitt **Dokumentation** verfügbar, der sich unter dem Bereich für Bindungskonfigurationen befindet.  
 
-Da Blobtrigger einige Verzögerungen haben, können Sie beispielsweise einen Warteschlangentrigger verwenden, um Ihre Funktion auszuführen (siehe [Blob Storage-Trigger](functions-bindings-storage-blob.md#storage-blob-trigger)). Die Warteschlangennachricht würde den Namen der Blobdatei enthalten, für die ausgelöst werden soll. Durch Verwenden der `queueTrigger`-Metadateneigenschaft können Sie dieses Verhalten vollständig in Ihrer Konfiguration statt in Ihrem Code angeben.
+Da Blobtrigger einige Verzögerungen haben, können Sie beispielsweise einen Warteschlangentrigger verwenden, um Ihre Funktion auszuführen (siehe [Blob Storage-Trigger](functions-bindings-storage-blob.md#blob-storage-trigger)). Die Warteschlangennachricht würde den Namen der Blobdatei enthalten, für die ausgelöst werden soll. Durch Verwenden der `queueTrigger`-Metadateneigenschaft können Sie dieses Verhalten vollständig in Ihrer Konfiguration statt in Ihrem Code angeben.
 
 ```json
   "bindings": [

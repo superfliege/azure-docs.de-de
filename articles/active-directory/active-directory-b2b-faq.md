@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: bfedbbf8b26e1b129584a6a644e64a15635f5723
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e3ae7f176f41b4b0984dbef0748451c7ebff9e7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -29,7 +29,7 @@ Diese häufig gestellten Fragen (FAQs) zur Azure AD B2B-Zusammenarbeit (Azure Ac
 Nein. Die Funktionen für die Azure AD B2B-Zusammenarbeit sind nur im [Azure-Portal](https://portal.azure.com) und im [Zugriffsbereich](https://myapps.microsoft.com/) verfügbar. 
 
 ### <a name="can-we-customize-our-sign-in-page-so-it-is-more-intuitive-for-our-b2b-collaboration-guest-users"></a>Können wir unsere Anmeldeseite anpassen, damit sie für Gastbenutzer der B2B-Zusammenarbeit intuitiver ist?
-Auf jeden Fall. Lesen Sie unseren [Blogbeitrag zu diesem Feature](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Weitere Informationen zum Anpassen der Anmeldeseite Ihrer Organisation finden Sie unter [Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten](active-directory-add-company-branding.md).
+Auf jeden Fall. Lesen Sie unseren [Blogbeitrag zu diesem Feature](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/). Weitere Informationen zum Anpassen der Anmeldeseite Ihrer Organisation finden Sie unter [Hinzufügen von Unternehmensbranding zu Anmelde- und Zugriffsbereichsseiten](customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>Können B2B-Zusammenarbeitsbenutzer auf SharePoint Online und OneDrive zugreifen?
 Ja. Allerdings ist die Möglichkeit, in SharePoint Online mithilfe der Personenauswahl nach vorhandenen Gastbenutzern zu suchen, standardmäßig auf **Aus** gesetzt. Um die Option zum Suchen nach vorhandenen Gastbenutzern zu aktivieren, setzen Sie **ShowPeoplePickerSuggestionsForGuestUsers** auf **Ein**. Sie können diese Einstellung entweder auf Mandantenebene oder Websitesammlungsebene aktivieren. Sie können diese Einstellung mithilfe der Cmdlets „Set-SPOTenant“ und „Set-SPOSite“ ändern. Mit diesen Cmdlets können Mitglieder nach allen vorhandenen Gastbenutzern im Verzeichnis suchen. Änderungen im Mandantenbereich wirken sich nicht auf SharePoint Online-Websites aus, die bereits bereitgestellt wurden.

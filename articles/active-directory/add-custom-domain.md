@@ -14,11 +14,11 @@ ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: 2ea119b56f467f57b5929dec05bfd645028578ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2f0287202e1b39f395354b1124078b7b0dc95a7
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="quickstart-add-a-custom-domain-name-to-azure-active-directory"></a>Schnellstart: Hinzufügen eines benutzerdefinierten Domänennamens zu Azure Active Directory
 
@@ -78,7 +78,7 @@ Probieren Sie die folgenden Schritte zur Problembehandlung aus, wenn Sie einen b
 Wenn Sie in Ihrer Organisation mehrere benutzerdefinierte Domänennamen verwenden, z.B. „contoso.com“ und „contosobank.com“, können Sie maximal 900 Domänennamen hinzufügen. Die Schritte in diesem Artikel können Ihnen helfen, die einzelnen Domänennamen hinzuzufügen.
 
 ### <a name="learn-more"></a>Weitere Informationen
-[Konzeptionelle Übersicht über benutzerdefinierte Domänennamen in Azure AD](active-directory-add-domain-concepts.md)
+[Konzeptionelle Übersicht über benutzerdefinierte Domänennamen in Azure AD](active-directory-domains-manage-azure-portal.md)
 
 [Verwalten von benutzerdefinierten Domänennamen](active-directory-domains-manage-azure-portal.md)
 

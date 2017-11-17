@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-ms.openlocfilehash: ea0cf7ad074f95c2b49a92f9a8e32270a1d39b3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50a965f9773524a36bedc3d040bf1a1ca391507f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Freigeben von Azure-Dashboards mithilfe der rollenbasierter Zugriffssteuerung
 Nach der Konfiguration eines Dashboards können Sie es veröffentlichen und für andere Benutzer in Ihrer Organisation freigeben. Sie gewähren anderen Benutzern den Zugriff auf Ihr Dashboard über die [rollenbasierte Zugriffssteuerung](../active-directory/role-based-access-control-configure.md) von Azure. Sie weisen einem Benutzer oder einer Gruppe von Benutzern einer Rolle zu, und mit dieser Rolle wird dann definiert, ob diese Benutzer das veröffentlichte Dashboard anzeigen oder ändern können. 
@@ -44,7 +44,7 @@ Beispiel:  Ein Beispiel: Sie verfügen über ein Azure-Abonnement, und verschied
 Sie können aber der Ressourcengruppe mit mehreren Dashboards oder einem einzelnen Dashboard Berechtigungen zuweisen. Beispielsweise können Sie entscheiden, dass eine Gruppe von Benutzern über begrenzte Berechtigungen in Bezug auf das Abonnement und gleichzeitig über einen besseren Zugriff auf ein bestimmtes Dashboard verfügen soll. Sie weisen diese Benutzer einer Rolle für das Dashboard zu. 
 
 ## <a name="publish-dashboard"></a>Veröffentlichen des Dashboards
-Angenommen, Sie haben die Konfiguration eines Dashboards abgeschlossen, das Sie für eine Gruppe von Benutzern im Abonnement freigeben möchten. In den Schritten unten wird eine angepasste Gruppe mit dem Namen „Storage Managers“ verwendet, aber Sie können der Gruppe einen beliebigen Namen geben. Informationen zum Erstellen einer Active Directory-Gruppe und Hinzufügen von Benutzern zu dieser Gruppe finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/active-directory-accessmanagement-manage-groups.md).
+Angenommen, Sie haben die Konfiguration eines Dashboards abgeschlossen, das Sie für eine Gruppe von Benutzern im Abonnement freigeben möchten. In den Schritten unten wird eine angepasste Gruppe mit dem Namen „Storage Managers“ verwendet, aber Sie können der Gruppe einen beliebigen Namen geben. Informationen zum Erstellen einer Active Directory-Gruppe und Hinzufügen von Benutzern zu dieser Gruppe finden Sie unter [Verwalten von Gruppen in Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md).
 
 1. Wählen Sie im Dashboard die Option **Freigeben**.
    

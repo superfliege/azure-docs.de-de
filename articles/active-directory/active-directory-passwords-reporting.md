@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 1e715b54c78d42d88d2082e9b0e9f942bec72abd
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: e4524704c6db0d21388ea407870c65d4f69a6323
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -31,7 +31,7 @@ Nach der Bereitstellung möchten viele Organisationen wissen, wie oder ob SSPR t
 Die folgenden Fragen können mit Berichten beantwortet werden, die im [Azure-Portal] (https://portal.azure.com/) vorhanden sind.
 
 > [!NOTE]
-> Sie müssen [ein globaler Administrator](active-directory-assign-admin-roles.md) sein und müssen aktivieren, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden, indem Sie die Registerkarte „Berichterstellung“ oder Überwachungsprotokolle mindestens einmal besuchen. Bis dahin werden für Ihre Organisation keine Daten gesammelt.
+> Sie müssen [ein globaler Administrator](active-directory-assign-admin-roles-azure-portal.md) sein und müssen aktivieren, dass diese Daten im Auftrag Ihres Unternehmens erfasst werden, indem Sie die Registerkarte „Berichterstellung“ oder Überwachungsprotokolle mindestens einmal besuchen. Bis dahin werden für Ihre Organisation keine Daten gesammelt.
 
 * Wie viele Personen haben sich für die Kennwortzurücksetzung registriert?
 * Wer hat sich für das Zurücksetzen von Kennwörtern registriert?
