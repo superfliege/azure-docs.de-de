@@ -34,32 +34,21 @@
 #### [Installieren von .NET mithilfe eines Tasks auf einer Cloud Services-Rolle](cloud-services-dotnet-install-dotnet.md)
 
 ### Konfigurieren von Remotedesktop
-#### [Azure-Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
-#### [Klassisches Portal](cloud-services-role-enable-remote-desktop.md)
-#### [Azure PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
+#### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
 
 ## Bereitstellen
-### Erstellen und Bereitstellen eines Clouddiensts im Portal
-#### [Azure-Portal](cloud-services-how-to-create-deploy-portal.md)
-#### [Klassisches Portal](cloud-services-how-to-create-deploy.md)
+### [Erstellen und Bereitstellen eines Clouddiensts im Portal](cloud-services-how-to-create-deploy-portal.md)
 ### [Erstellen eines leeren Clouddienstcontainers in PowerShell](cloud-services-powershell-create-cloud-container.md)
-### Konfigurieren eines benutzerdefinierten Domänennamens
-#### [Portal](cloud-services-custom-domain-name-portal.md)
-#### [Klassisches Portal](cloud-services-custom-domain-name.md)
+### [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
 ### [Bereitstellen eines Clouddiensts (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [Herstellen einer Verbindung mit einem benutzerdefinierten Domänencontroller](cloud-services-connect-to-custom-domain.md)
 
 ## Verwalten eines Diensts
-### Allgemeine Verwaltungsaufgaben
-#### [Azure-Portal](cloud-services-how-to-manage-portal.md)
-#### [Klassisches Portal](cloud-services-how-to-manage.md)
-### Konfigurieren eines Clouddiensts
-#### [Azure-Portal](cloud-services-how-to-configure-portal.md)
-#### [Klassisches Portal](cloud-services-how-to-configure.md)
+### [Allgemeine Verwaltungsaufgaben](cloud-services-how-to-manage-portal.md)
+### [Konfigurieren eines Clouddiensts](cloud-services-how-to-configure-portal.md)
 ### [Verwalten einer Cloud Services-Instanz mit Azure Automation](automation-manage-cloud-services.md)
-### Konfigurieren der automatischen Skalierung
-#### [Azure-Portal](cloud-services-how-to-scale-portal.md)
-#### [Klassisches Portal](cloud-services-how-to-scale.md)
+### [Konfigurieren der automatischen Skalierung](cloud-services-how-to-scale-portal.md)
 ### [Verwenden von Python zum Verwalten von Azure-Ressourcen](cloud-services-python-how-to-use-service-management.md)
 
 ### [Patches für Gastbetriebssysteme](cloud-services-guestos-msrc-releases.md)
@@ -71,9 +60,7 @@
 
 ## Verwalten von Zertifikaten
 ### [Cloud Services und Verwaltungszertifikate](cloud-services-certs-create.md)
-### Konfigurieren von SSL 
-#### [Portal](cloud-services-configure-ssl-certificate-portal.md)
-#### [Klassisches Portal](cloud-services-configure-ssl-certificate.md)
+### [Konfigurieren von SSL](cloud-services-configure-ssl-certificate-portal.md)
 
 ## Überwachen
 ### [Überwachen von Clouddiensten](cloud-services-how-to-monitor.md)

@@ -10,7 +10,11 @@
     - name: Einrichten der automatischen Bereitstellung
       href: quick-setup-auto-provision.md
     - name: Erstellen eines simulierten Geräts
-      href: quick-create-simulated-device.md
+      items:
+        - name: TPM
+          href: quick-create-simulated-device.md
+        - name: X.509
+          href: quick-create-simulated-device-x509.md
 - name: Lernprogramme
   items:
     - name: '1: Einrichten von Cloudressourcen'
@@ -29,7 +33,6 @@
       href: concepts-service.md
     - name: Sicherheitskonzepte
       href: concepts-security.md
-    - name: Sicherheit
 - name: Anleitungen
   items:
     - name: Verwalten der Geräteregistrierungen

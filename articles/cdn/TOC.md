@@ -11,7 +11,7 @@
 ### [Speicher](cdn-create-a-storage-account-with-cdn.md)
 ### [Cross-Origin Resource Sharing](cdn-cors.md)
 ### [Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
-### [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
+### [Konfigurieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
 ## Optimieren von Inhalten
 ### [Übersicht über die Optimierung](cdn-optimization-overview.md)
 ####[Optimierung großer Dateien](cdn-large-file-optimization.md)

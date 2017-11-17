@@ -14,6 +14,9 @@
 ## [Persisting storage in PowerShell](persisting-shell-storage-powershell.md) (Beibehalten von Speicher in PowerShell)
 ## [Verwenden des Fensters](using-the-shell-window.md)
 
+# Beispiele
+## [Deploy Azure resources with Terraform in Bash (Bereitstellen von Azure-Ressourcen mit Terraform in Bash)](example-terraform-bash.md)
+
 # [Preise](pricing.md)
 
 # [Problembehandlung](troubleshooting.md)

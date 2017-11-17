@@ -143,6 +143,17 @@
               href: ssh-from-windows.md
             - name: Ausführliche Schritte
               href: create-ssh-keys-detailed.md
+    - name: Schützen von virtuellen Computern
+      href: ../../backup/backup-introduction-to-azure-backup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+      items:
+        - name: Sichern eines einzelnen virtuellen Computers
+          href: ../../backup/quick-backup-vm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Sichern von mehreren virtuellen Computern
+          href: ../../backup/tutorial-backup-vm-at-scale.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Wiederherstellen eines Datenträgers
+          href: ../../backup/tutorial-restore-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
+        - name: Wiederherstellen einzelner Dateien
+          href: ../../backup/tutorial-restore-files.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Verwalten von VMs
       items:
         - name: Allgemeine CLI-Aufgaben

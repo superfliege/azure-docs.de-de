@@ -1,0 +1,37 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation für Azure Time Series Insights
+metadata:
+  title: 'Dokumentation für Azure Time Series Insights – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Hier erfahren Sie, wie Sie IoT-Analysen in der Cloud mit vollständig verwalteter Ereignisverarbeitung durchführen. Analysieren Sie Daten von Anwendungen, Sensoren, Geräten und mehr in Echtzeit.'
+  services: time-series-insights
+  author: kfile
+  manager: jhubbard
+  ms.service: time-series-insights
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/13/2017
+  ms.author: kfile
+abstract:
+  description: 'Erfahren Sie, wie Sie eine Time Series Insights-Umgebung einrichten und Zeitreihendaten der IoT-Lösungen oder verbundenen Datenquellen untersuchen und analysieren. In der Dokumentation werden Voraussetzungen, Anleitungen und API-Referenzen beschrieben, und es wird auf weitere Artikel verwiesen, damit Sie in wenigen Minuten startklar sind.'
+sections:
+  - title: Fünfminütige Schnellstarts
+    items:
+      - type: paragraph
+        text: 'Es wird beschrieben, wie Sie Log Analytics bereitstellen und das Sammeln von Daten von Azure, anderen Cloudanbietern und lokalen Ressourcen konfigurieren.'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/en-us/azure/time-series-insights/media/index/time-series-insights.svg'
+            text: Erkunden von Azure Time Series Insights
+            href: /azure/time-series-insights/time-series-quickstart
+  - title: Referenz
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: APIs
+            html: <p><a href="/rest/api/time-series-insights/time-series-insights-reference-queryapi">Abfrage-API</a></p><p><a href="/rest/api/time-series-insights/time-series-insights-reference-query-syntax">Abfragesyntax</a></p>

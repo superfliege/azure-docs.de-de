@@ -63,6 +63,7 @@
 #### [PowerShell](create-public-ip-availability-zone-powershell.md)
 
 ### Virtuelle Computer
+#### [Virtual machine network throughput (VM-Netzwerkdurchsatz)](virtual-machine-network-throughput.md)
 #### Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse
 ##### [Azure-Portal](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
