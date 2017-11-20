@@ -1,32 +1,31 @@
 ---
 title: 'Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung | Microsoft-Dokumentation'
-description: "In diesem Tutorial erfahren Sie, wie Sie Ihre Azure Time Series Insights-Umgebung skalieren können."
-keywords: 
+description: "In diesem Artikel erfahren Sie, wie Sie Ihre Azure Time Series Insights-Umgebung skalieren. Verwenden Sie das Azure-Portal, um die Kapazität innerhalb einer Preis-SKU zu erhöhen oder zu verringern."
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: sandshadow
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 04/19/2017
 ms.author: edett
-ms.openlocfilehash: ba6bd1ab05bb7e24dd1bc307218e7a772fbde601
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: a6f10e14e3f9e5761734738caddc247d9e4a90cd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Time Series Insights-Umgebung skalieren können.
+In diesem Artikel erfahren Sie, wie Sie die Kapazität Ihrer Time Series Insights-Umgebung über das Azure-Portal ändern. Die Kapazität ist der Multiplikator, der auf die Erfassungsrate, Speicherkapazität und Kosten der gewählten SKU angewendet wird. 
 
-> [!NOTE]
-> Ein zentrales Hochskalieren zwischen verschiedenen SKU-Typen ist nicht zulässig. Eine Umgebung mit der SKU „S1“ kann nicht in eine S2-Umgebung konvertiert werden.
+Über das Azure-Portal können Sie die Kapazität innerhalb einer bestimmten Preis-SKU erhöhen oder verringern. 
+
+Die Tarif-SKU darf hingegen nicht geändert werden. Eine Umgebung mit der SKU „S1“ kann also beispielsweise nicht in eine S2-Umgebung konvertiert werden (und umgekehrt). 
+
 
 ## <a name="s1-sku-ingress-rates-and-capacities"></a>SKU „S1“: Erfassungsraten und Kapazitäten
 
@@ -42,14 +41,22 @@ In diesem Tutorial erfahren Sie, wie Sie Ihre Time Series Insights-Umgebung skal
 | 1 | 10 GB (10 Mio. Ereignisse) | 300 GB (300 Mio. Ereignisse) pro Monat |
 | 10 | 100 GB (100 Mio. Ereignisse) | 3 TB (3 Mrd. Ereignisse) pro Monat |
 
-Kapazitäten werden linear skaliert, sodass eine SKU des Typs S1 mit Kapazität 2 als Erfassungsrate 2 GB (2 Mio.) Ereignisse pro Tag und 60 GB (60 Mio. Ereignisse) pro Monat unterstützt.
+Kapazitäten werden linear skaliert, sodass eine S1-SKU mit der Kapazität „2“ eine Erfassungsrate von 2 GB (2 Mio. Ereignisse) pro Tag und 60 GB (60 Mio. Ereignisse) pro Monat unterstützt.
 
-## <a name="changing-the-capacity-of-your-environment"></a>Ändern der Kapazität Ihrer Umgebung
+## <a name="change-the-capacity-of-your-environment"></a>Ändern der Kapazität Ihrer Umgebung
+1. Navigieren Sie im Azure-Portal zu Ihrer Time Series Insights-Umgebung, und wählen Sie sie aus. 
 
-1. Wählen Sie im Azure-Portal die Umgebung, deren Kapazität Sie ändern möchten.
-1. Klicken Sie unter „Einstellungen“ auf „Konfigurieren“.
-1. Bewegen Sie den Schieberegler „Kapazität“, um die Kapazität auszuwählen, die die Anforderungen an Erfassungsrate und Speicherkapazität erfüllt.
+2. Klicken Sie unter der Überschrift **Einstellungen** auf **Konfigurieren**.
+
+   ![configure.png](media/scale-your-environment/configure.png)
+
+3. Passen Sie die Kapazität mithilfe des Schiebereglers **Kapazität** an Ihre Anforderungen in den Bereichen Erfassungsrate und Speicherkapazität an. Erfassungsrate, Speicherkapazität und voraussichtliche Kosten werden dynamisch aktualisiert, um die Auswirkungen der Änderung zu zeigen. 
+
+   ![Schieberegler](media/scale-your-environment/slider.png)
+
+   Alternativ können Sie die Zahl für den Kapazitätsmultiplikator in das Textfeld rechts neben dem Schieberegler eingeben. 
+
+4. Klicken Sie auf **Speichern**, um die Umgebung zu skalieren. Die Statusanzeige wird angezeigt, bis die Änderung committet wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-* Stellen Sie sicher, dass die neue Kapazität ausreichend ist, um eine Drosselung zu verhindern. Weitere Informationen finden Sie [hier](time-series-insights-diagnose-and-solve-problems.md) im Abschnitt *Ihre Umgebung wird möglicherweise gedrosselt*.
+Stellen Sie sicher, dass die neue Kapazität ausreichend ist, um eine Drosselung zu verhindern. Weitere Informationen finden Sie unter [Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md).

@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/06/2017
+ms.date: 11/10/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 8961576d1a7de268bab2f4adf01d89dde1fc8776
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 23621c418663ee5b4ed83ab989663a882e7000bd
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH
 
@@ -48,26 +48,24 @@ HDInsight kann Linux (Ubuntu) als Betriebssystem für Knoten im Hadoop-Cluster v
 > [!TIP]
 > Wenn Sie zum ersten Mal eine Verbindung mit HDInsight herstellen, zeigt der SSH-Client unter Umständen eine Warnung mit dem Hinweis an, dass die Echtheit des Hosts nicht bestätigt werden kann. Klicken Sie in diesem Fall auf „Ja“, um den Host der Liste mit den vertrauenswürdigen Servern des SSH-Clients hinzuzufügen.
 >
-> Wenn Sie zuvor eine Verbindung mit einem Server mit dem gleichen Namen hergestellt haben, erscheint unter Umständen eine Warnung mit dem Hinweis, dass der gespeicherte Hostschlüssel nicht dem Hostschlüssel des Servers entspricht. In diesem Fall verweigert der SSH-Client möglicherweise die Verbindungsherstellung mit dem Cluster. Informationen zum Entfernen des Eintrags für den Servernamen finden Sie in der Dokumentation Ihres SSH-Clients.
+> Wenn Sie zuvor eine Verbindung mit einem Server mit dem gleichen Namen hergestellt haben, erscheint unter Umständen eine Warnung mit dem Hinweis, dass der gespeicherte Hostschlüssel nicht dem Hostschlüssel des Servers entspricht. Informationen zum Entfernen des Eintrags für den Servernamen finden Sie in der Dokumentation Ihres SSH-Clients.
 
 ## <a name="ssh-clients"></a>SSH-Clients
 
 Linux-, Unix- und macOS-Systeme bieten die Befehle `ssh` und `scp`. Der `ssh`-Client wird häufig verwendet, um eine Remote-Befehlszeilensitzung mit einem Linux- oder Unix-basierten System zu erstellen. Der `scp`-Client wird verwendet, um Dateien zwischen Ihrem Client und dem Remotesystem sicher zu kopieren.
 
-In Microsoft Windows wird standardmäßig kein SSH-Client bereitgestellt. Die `ssh`- und `scp`-Clients sind für Windows über die folgenden Pakete verfügbar:
+In Microsoft Windows werden standardmäßig keine SSH-Clients installiert. Die `ssh`- und `scp`-Clients sind für Windows über die folgenden Pakete verfügbar:
 
-* [Azure Cloud Shell](../cloud-shell/quickstart.md): Die Cloud Shell stellt eine Bash-Umgebung in Ihrem Browser bereit und bietet die Befehle `ssh` und `scp` sowie weitere gängige Linux-Befehle.
+* OpenSSH Client (Beta): Navigieren Sie im Fall Creators Update zu __Einstellungen__ > __Apps & Features__ > __Optionale Features verwalten__ > __Feature hinzufügen__, und wählen Sie den __OpenSSH Client__ aus. 
+
+    > [!NOTE]
+    > Melden Sie sich ab und wieder an, wenn die Befehle `ssh` und `scp` in PowerShell nach der Aktivierung dieses Features nicht verfügbar sind.
 
 * [Bash auf Ubuntu unter Windows 10](https://msdn.microsoft.com/commandline/wsl/about): Die Befehle `ssh` und `scp` sind per Bash über die Windows-Befehlszeile verfügbar.
 
+* [Azure Cloud Shell](../cloud-shell/quickstart.md): Die Cloud Shell stellt eine Bash-Umgebung in Ihrem Browser bereit und bietet die Befehle `ssh` und `scp` sowie weitere gängige Linux-Befehle.
+
 * [Git (https://git-scm.com/)](https://git-scm.com/): Die Befehle `ssh` und `scp` sind über die GitBash-Befehlszeile verfügbar.
-
-* [GitHub Desktop (https://desktop.github.com/)](https://desktop.github.com/): Die Befehle `ssh` und `scp` sind über die GitHub-Shellbefehlszeile verfügbar. GitHub Desktop kann für die Verwendung von Bash, die Windows-Eingabeaufforderung oder PowerShell als Befehlszeile für die Git-Shell konfiguriert werden.
-
-* [OpenSSH (https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH)](https://github.com/PowerShell/Win32-OpenSSH/wiki/Install-Win32-OpenSSH): Das PowerShell-Team portiert OpenSSH zu Windows und stellt Testversionen bereit.
-
-    > [!WARNING]
-    > Das OpenSSH-Paket enthält die SSH-Serverkomponente `sshd`. Mit dieser Komponente wird ein SSH-Server auf Ihrem System gestartet, sodass andere Benutzer eine Verbindung damit herstellen können. Sie sollten diese Komponente nur konfigurieren und Port 22 nur öffnen, wenn Sie auf Ihrem System einen SSH-Server hosten möchten. Für die Kommunikation mit HDInsight ist dies nicht erforderlich.
 
 Es gibt auch mehrere grafische SSH-Clients, z.B. [PuTTY (http://www.chiark.greenend.org.uk/~sgtatham/putty/)](http://www.chiark.greenend.org.uk/~sgtatham/putty/) und [MobaXterm (http://mobaxterm.mobatek.net/)](http://mobaxterm.mobatek.net/). Diese Clients können zum Herstellen einer Verbindung mit HDInsight verwendet werden, aber der Prozess der Verbindungsherstellung ist anders als bei der Nutzung des Hilfsprogramms `ssh`. Weitere Informationen finden Sie in der Dokumentation des grafischen Clients, den Sie verwenden.
 
@@ -116,7 +114,7 @@ Beim Erstellen des Schlüssels werden Sie zum Eingeben von Informationen aufgefo
 SSH-Konten können mit einem Kennwort geschützt werden. Beim Herstellen der Verbindung mit HDInsight per SSH werden Sie zum Eingeben des Kennworts aufgefordert.
 
 > [!WARNING]
-> Es ist nicht ratsam, für SSH die Kennwortauthentifizierung zu verwenden. Kennwörter können erraten werden und sind anfällig für Brute-Force-Angriffe. Stattdessen empfehlen wir die Verwendung von [SSH-Schlüsseln für die Authentifizierung](#sshkey).
+> Microsoft rät davon ab, für SSH die Kennwortauthentifizierung zu verwenden. Kennwörter können erraten werden und sind anfällig für Brute-Force-Angriffe. Stattdessen empfehlen wir die Verwendung von [SSH-Schlüsseln für die Authentifizierung](#sshkey).
 
 ### <a name="create-hdinsight-using-a-password"></a>Erstellen eines HDInsight-Clusters mit einem Kennwort
 
@@ -176,7 +174,7 @@ Auf die Worker- und Zookeeper-Knoten kann nicht direkt über das Internet zugegr
 
         ssh sshuser@wn0-myhdi
 
-    Informationen zum Abrufen einer Liste mit den Domänennamen der Knoten im Cluster finden Sie im Dokument [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
+    Informationen zum Abrufen der Liste mit den Knotennamen finden Sie im Dokument [Verwalten von HDInsight-Clustern mithilfe der Ambari-REST-API](hdinsight-hadoop-manage-ambari-rest-api.md#example-get-the-fqdn-of-cluster-nodes).
 
 Wenn das SSH-Konto mit einem __Kennwort__ gesichert wird, geben Sie das Kennwort ein, wenn Sie eine Verbindung herstellen.
 

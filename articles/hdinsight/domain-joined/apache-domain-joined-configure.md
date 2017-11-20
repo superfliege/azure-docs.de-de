@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
-ms.openlocfilehash: af75d63caca24f389345c964e2dc506a255bec19
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 2c844ce8aec04c74a9c2dbecdd1b3effb286df97
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern (Vorschau)
 
@@ -31,13 +31,7 @@ Erfahren Sie, wie man Azure HDInsight-Cluster mit Azure Active Directory (Azure 
 Dieser Artikel ist das erste Tutorial einer Reihe:
 
 * Erstellen eines HDInsight-Clusters mit Verbindung zu Azure AD (über die Eigenschaft „Azure Directory Domain Services“) mit Apache Ranger aktiviert.
-* Erstellen und Anwenden von Hive-Richtlinien durch Apache Ranger, und Erteilen der Erlaubnis an Nutzer (z.B. Datenanalysten), sich mithilfe von ODBC-basierten Tools, z.B. Excel, Tableau usw. mit Hive zu verbinden. Microsoft arbeitet daran, schon bald andere Workloads, wie z.B. HBase, Spark und Storm zu in HDInsight mit Domänenverknüpfung hinzuzufügen.
-
-Ein Beispiel für die fertige Topologie sehen Sie hier:
-
-![In die Domäne eingebundene HDInsight-Topologie](./media/apache-domain-joined-configure/hdinsight-domain-joined-topology.png)
-
-Azure AD unterstützt zur Zeit nur klassische virtuelle Netzwerke (VNets), und Linux-basierte HDInsight-Cluster nur Azure Resource Manager-basierte VNets. Daher erfordert die Integration von HDInsight und Azure AD zwei VNets und Peering zwischen ihnen. Informationen über den Vergleich der beiden Bereitstellungsmodelle finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen](../../azure-resource-manager/resource-manager-deployment-model.md). Die beiden VNets müssen sich in der gleichen Region wie die Azure AD DS befinden.
+* Erstellen und Anwenden von Hive-Richtlinien durch Apache Ranger, und Erteilen der Erlaubnis an Nutzer (z.B. Datenanalysten), sich mithilfe von ODBC-basierten Tools, z.B. Excel, Tableau usw. mit Hive zu verbinden. Microsoft arbeitet daran, schon bald andere Workloads, wie z.B. HBase und Storm zu in HDInsight mit Domänenverknüpfung hinzuzufügen.
 
 Namen für Azure-Dienste müssen global eindeutig sein. In diesem Tutorial werden die folgenden Namen verwendet. Contoso ist ein fiktiver Name. Sie müssen *contoso* durch einen anderen Namen ersetzen, wenn Sie das Tutorial durcharbeiten. 
 
@@ -45,8 +39,6 @@ Namen für Azure-Dienste müssen global eindeutig sein. In diesem Tutorial werde
 
 | Eigenschaft | Wert |
 | --- | --- |
-| Azure AD VNet |contosoaadvnet |
-| Azure AD VNet-Ressourcengruppe |contosoaadrg |
 | Azure AD-Verzeichnis |contosoaaddirectory |
 | Name Ihrer Azure AD-Domäne |contoso (contoso.onmicrosoft.com) |
 | HDInsight VNet |contosohdivnet |
@@ -58,45 +50,50 @@ In diesem Tutorial finden Sie die Schritte zum Konfigurieren eines in die Domän
 ## <a name="prerequisite"></a>Voraussetzung:
 * Machen Sie sich mit [Azure AD-Domänendiensten](https://azure.microsoft.com/services/active-directory-ds/) und deren [Preis](https://azure.microsoft.com/pricing/details/active-directory-ds/)-Struktur vertraut.
 * Stellen Sie sicher, dass sich Ihre Abonnement auf der Zulassungsliste befindet. Dazu können Sie eine E-Mail mit Ihrer Abonnement-ID an hdipreview@microsoft.com senden.
-* Ein SSL-Zertifikat, das von einer Signaturstelle für Ihre Domäne signiert ist. Es wird ein Zertifikat für sicheres LDAP benötigt. Selbstsignierte Zertifikate können nicht verwendet werden.
+* Ein SSL-Zertifikat, das von einer Signierstelle oder einem selbstsignierten Zertifikat für Ihre Domäne signiert wurde. Es wird ein Zertifikat für sicheres LDAP benötigt.
 
 ## <a name="procedures"></a>Prozeduren
-1. Erstellen Sie ein klassisches Azure-VNet für Azure AD.  
+1. Erstellen Sie ein HDInsight-VNet im Ressourcenverwaltungsmodus von Azure.
 2. Erstellen und konfigurieren Sie Azure AD und Azure AD DS.
-3. Erstellen Sie ein HDInsight-VNet im Ressourcenverwaltungsmodus von Azure.
-4. Führen Sie das Peering der beiden VNets durch.
-5. Erstellen Sie ein HDInsight-Cluster.
+3. Erstellen Sie ein HDInsight-Cluster.
 
 > [!NOTE]
-> In diesem Lernprogramm wird davon ausgegangen, dass Sie noch nicht über Azure AD verfügen. Wenn Sie bereits darüber verfügen, können Sie diesen Teil in Schritt 2 überspringen.
+> In diesem Lernprogramm wird davon ausgegangen, dass Sie noch nicht über Azure AD verfügen. Wenn Sie bereits darüber verfügen, können Sie diesen Teil überspringen.
 > 
 > 
 
-## <a name="create-an-azure-virtual-network-classic"></a>Erstellen virtueller Azure-Netzwerke (klassisch)
-In diesem Abschnitt erstellen Sie mit dem Azure-Portal ein virtuelles Netzwerk (klassisch). Im nächsten Abschnitt aktivieren Sie Azure AD DS für Azure AD in diesem virtuellen Netzwerk. Weitere Informationen zur folgenden Vorgehensweise und zur Verwendung anderer Methoden zum Erstellen virtueller Netzwerke finden Sie unter [Erstellen virtueller Netzwerke (klassisch) über das Azure-Portal](../../virtual-network/virtual-networks-create-vnet-classic-pportal.md).
+## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>Erstellen Sie ein Resource Manager-VNet für HDInsight-Cluster
+In diesem Abschnitt erstellen Sie ein Azure Ressource Manager-VNet, das für HDInsight-Cluster verwendet wird. Weitere Informationen zum Erstellen eines Azure-VNet mit anderen Methoden finden Sie unter [Erstellen eines virtuellen Netzwerks](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
 
-**Um ein klassisches VNet zu erstellen**
+Nach dem Erstellen des VNet konfigurieren Sie die Azure AD DS zur Verwendung dieses virtuellen Netzwerks.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
-2. Klicken Sie auf **Neu** > **Netzwerk** > **Virtuelles Netzwerk**.
-3. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Klassisch** aus, und klicken Sie dann auf **Erstellen**.
+**Erstellen eines Resource Manager-VNET**
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+2. Klicken Sie auf **Neu**, **Netzwerk**, und dann auf **Virtuelles Netzwerk**. 
+3. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Resource Manager**, und klicken Sie auf **Erstellen**.
 4. Geben Sie folgende Werte ein bzw. wählen diese aus:
    
-   * **Name**: contosoaadvnet
-   * **Adressraum**: 10.1.0.0/16
+   * **Name**: contosohdivnet
+   * **Adressraum**: 10.0.0.0/16.
    * **Subnetzname**: Subnet1
-   * **Subnetzadressbereich**: 10.1.0.0/24
-   * **Abonnement** : (Wählen Sie ein Abonnement aus, das für die Erstellung dieses VNet verwendet wird.)
-   * **ResourceGroup**: contosoaadrg
-   * **Standort**: (Wählen Sie eine Region für Ihren HDInsight-Cluster.)
+   * **Subnetzadressbereich**: 10.0.0.0/24
+   * **Abonnement**: (Wählen Sie Ihr Azure-Abonnement aus.)
+   * **Ressourcengruppe**: contosohdirg
+   * **Speicherort**: (Wählen Sie den gleichen Speicherort wie für das Azure AD-VNet aus, z. B. contosoaadvnet.)
+5. Klicken Sie auf **Erstellen**.
+
+**Konfigurieren von DNS für das Resource Manager-VNET**
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Weitere Dienste** > **Virtuelle Netzwerke**. Achten Sie darauf, dass Sie nicht auf **Virtuelle Netzwerke (klassisch)** klicken.
+2. Klicken Sie auf **contosohdivnet**.
+3. Klicken Sie auf der linken Seite des neuen Blatts auf **DNS-Server**.
+4. Klicken Sie auf **Benutzerdefiniert**, und geben Sie die folgenden Werte ein:
+   
+   * 10.0.0.4
+   * 10.0.0.5     
      
-     > [!IMPORTANT]
-     > Sie müssen einen Speicherort auswählen, der Azure AD DS unterstützt. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/en-us/regions/services/). 
-     > 
-     > Das klassische VNet und die Ressourcengruppe müssen sich in der gleichen Region befinden wie Azure AD DS.
-     > 
-     > 
-5. Klicken Sie auf **Erstellen**, um das VNet zu erstellen.
+5. Klicken Sie auf **Speichern**.
 
 ## <a name="create-and-configure-azure-ad-ds-for-your-azure-ad"></a>Erstellen und Konfigurieren von Azure AD DS für Azure AD
 In diesem Abschnitt werden Sie:
@@ -121,44 +118,42 @@ Wenn Sie lieber ein vorhandenes Azure AD verwenden möchten, können Sie die Sch
 
 **Einen Azure AD-Benutzer erstellen**
 
-1. Öffnen Sie das [klassische Azure-Portal](https://manage.windowsazure.com), und klicken Sie auf **Active Directory** -> **contosoaaddirectory**. 
-2. Klicken Sie im Menü am oberen Rand auf **Benutzer** .
-3. Klicken Sie auf **Benutzer hinzufügen**.
-4. Geben Sie den **Benutzername** ein, und klicken Sie dann auf **Weiter**. 
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Azure Active Directory** > **contosoaaddirectory** > **Benutzer und Gruppen**. 
+2. Klicken Sie im Menü auf **Alle Benutzer**.
+3. Klicken Sie auf **Neuer Benutzer**.
+4. Geben Sie den **Namen** und **Benutzernamen** ein, und klicken Sie dann auf **Weiter**. 
 5. Konfigurieren Sie das Benutzerprofil. Wählen Sie **Globaler Administrator** in **Rolle**, und klicken Sie dann auf **Weiter**.  Die Rolle „Globaler Administrator“ ist notwendig, um Organisationseinheiten zu erstellen.
-6. Klicken Sie auf **Erstellen**, um ein temporäres Kennwort zu erhalten.
-7. Erstellen Sie eine Kopie des Kennworts, und klicken Sie dann auf **Fertig stellen**. Weiter unten in diesem Tutorial verwenden Sie diesen globalen Administratorbenutzer zum Erstellen des HDInsight-Clusters.
+6. Erstellen Sie eine Kopie des temporären Kennworts.
+7. Klicken Sie auf **Erstellen**. Weiter unten in diesem Tutorial verwenden Sie diesen globalen Administratorbenutzer zum Erstellen des HDInsight-Clusters.
 
 Verfahren Sie auf das gleiche Verfahren, um zwei weitere Benutzer mit der Rolle **Benutzer** hinzuzufügen: hiveuser1 und hiveuser2. Die folgenden Benutzer werden in [Configure Hive policies for Domain-joined HDInsight clusters (Konfigurieren von Hive-Richtlinien für in die Domäne eingebundene HDInsight-Cluster)](apache-domain-joined-run-hive.md) verwendet.
 
 **Erstellen einer AAD DC-Administratorengruppe und Hinzufügen eines Azure AD-Benutzers**
 
-1. Öffnen Sie das [klassische Azure-Portal](https://manage.windowsazure.com), und klicken Sie auf **Active Directory** > **contosoaaddirectory**. 
-2. Klicken Sie im Menü am oberen Rand auf **Gruppen**.
-3. Klicken Sie auf **Gruppe hinzufügen** oder **Gruppen hinzufügen**.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Azure Active Directory** > **contosoaaddirectory** > **Benutzer und Gruppen**. 
+2. Klicken Sie im Menü am oberen Rand auf **Alle Gruppen**.
+3. Klicken Sie auf **Neue Gruppe**.
 4. Geben Sie folgende Werte ein bzw. wählen diese aus:
    
    * **Name**: AAD DC Administrators.  Ändern Sie nicht den Gruppennamen.
-   * **Gruppentyp**: Sicherheit.
-5. Klicken Sie auf **Fertig stellen**.
-6. Klicken Sie auf **AAD DC Administrators** um die Gruppe zu öffnen.
-7. Klicken Sie auf **Mitglieder hinzufügen**.
-8. Wählen Sie den im vorherigen Schritt erstellten Benutzer aus, und klicken Sie auf **Fertig stellen**.
-9. Führen Sie die gleichen Schritte erneut aus, um eine weitere Gruppe mit dem Namen **HiveUsers** zu erstellen, und fügen Sie die beiden Hive-Benutzer zur Gruppe hinzu.
+   * **Mitgliedschaftstyp**: Zugewiesen.
+5. Klicken Sie auf **Auswählen**.
+6. Klicken Sie auf **Mitglieder**.
+7. Wählen Sie den im vorherigen Schritt erstellten Benutzer aus, und klicken Sie auf **Auswählen**.
+8. Führen Sie die gleichen Schritte erneut aus, um eine weitere Gruppe mit dem Namen **HiveUsers** zu erstellen, und fügen Sie die beiden Hive-Benutzer zur Gruppe hinzu.
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Domain Services – Erstellen der Administratorengruppe für Azure AD-Domänencontroller](../../active-directory-domain-services/active-directory-ds-getting-started.md).
 
 **Aktivieren von Azure AD DS für Azure AD**
 
-1. Öffnen Sie das [klassische Azure-Portal](https://manage.windowsazure.com), und klicken Sie auf **Active Directory** > **contosoaaddirectory**. 
-2. Klicken Sie im oberen Menü auf **Konfigurieren**.
-3. Scrollen Sie zu **Domain Services** herunter und legen Sie die folgenden Werte fest:
-   
-   * **Domänendienste für dieses Verzeichnis aktivieren**: Ja.
-   * **DNS-Domänennamen der Domänendienste**: Zeigt den standardmäßigen DNS-Namen des Azure-Verzeichnis an. Zum Beispiel contoso.onmicrosoft.com.
-   * **Domänendienste mit diesem virtuellen Netzwerk verbinden**: Wählen Sie das klassische virtuelle Netzwerk aus, das Sie erstellt haben, d.h. **contosoaadvnet**.
-4. Klicken Sie unten auf der Seite auf **Speichern**. Neben **Domänendienste für dieses Verzeichnis aktivieren** erscheint **Pending...**.  
-5. Warten Sie, bis **Ausstehend...** ausgeblendet wurde und **IP-Adresse** aufgefüllt wird. Zwei IP-Adressen werden aufgefüllt. Dies sind die IP-Adressen der Domänencontroller, die von den Domänendiensten bereitgestellt werden. Jede IP-Adresse wird angezeigt, sobald der entsprechende Domänencontroller bereitgestellt wurde und bereit ist. Notieren Sie sich die beiden IP-Adressen. Diese werden später benötigt werden.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen** > **Sicherheit + Identität** > **Azure AD Domain Services** > **Hinzufügen**. 
+2. Geben Sie folgende Werte ein bzw. wählen diese aus:
+   * **Verzeichnisname**: contosoaaddirectory
+   * **DNS-Domänenname**: Zeigt den standardmäßigen DNS-Namen des Azure-Verzeichnis an. Zum Beispiel contoso.onmicrosoft.com.
+   * **Standort**: Wählen Sie Ihre Region aus.
+   * **Netzwerk**: Wählen Sie das zuvor erstellte virtuelle Netzwerk und Subnetz aus, z. B. **contosohdivnet**.
+3. Klicken Sie auf der Seite „Zusammenfassung“ auf **OK**. Unter den Benachrichtigungen wird **Bereitstellung wird ausgeführt...** angezeigt.
+4. Warten Sie, bis **Bereitstellung wird ausgeführt...** ausgeblendet wurde und **IP-Adresse** aufgefüllt wird. Zwei IP-Adressen werden aufgefüllt. Dies sind die IP-Adressen der Domänencontroller, die von den Domänendiensten bereitgestellt werden. Jede IP-Adresse wird angezeigt, sobald der entsprechende Domänencontroller bereitgestellt wurde und bereit ist. Notieren Sie sich die beiden IP-Adressen. Diese werden später benötigt werden.
 
 Weitere Informationen finden Sie unter [Aktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals](../../active-directory-domain-services/active-directory-ds-getting-started.md).
 
@@ -168,13 +163,11 @@ Wenn Sie Ihre eigene Domäne verwenden, müssen Sie das Kennwort synchronisieren
 
 **Konfigurieren von LDAPS für Azure AD**
 
-1. Rufen Sie für Ihre Domäne ein SSL-Zertifikat ab, das von einer Signierstelle signiert wurde. Wenn Sie ein selbst signiertes Zertifikat verwenden möchten, wenden Sie sich für eine Ausnahme an hdipreview@microsoft.com.
-2. Öffnen Sie das [klassische Azure-Portal](https://manage.windowsazure.com), und klicken Sie auf **Active Directory** > **contosoaaddirectory**. 
-3. Klicken Sie im oberen Menü auf **Konfigurieren**.
-4. Scrollen Sie zu **domain services** herunter.
-5. Klicken Sie auf **Zertifikat konfigurieren**.
-6. Folgen Sie den Anweisungen, um die Zertifikatsdatei und das Kennwort anzugeben. Neben **Domänendienste für dieses Verzeichnis aktivieren** erscheint **Pending...**.  
-7. Warten Sie, bis **Ausstehend...** ausgeblendet und **sicheres LDAP-Zertifikat** aufgefüllt ist.  Das kann 10 Minuten oder mehr dauern.
+1. Rufen Sie für Ihre Domäne ein SSL-Zertifikat ab, das von einer Signierstelle signiert wurde.
+2. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Azure AD Domain Services** > **contoso.onmicrosoft.com**. 
+3. Aktivieren Sie **Secure LDAP**.
+6. Folgen Sie den Anweisungen, um die Zertifikatsdatei und das Kennwort anzugeben.  
+7. Warten Sie, bis **Secure LDAP-Zertifikat** aufgefüllt ist. Das kann 10 Minuten oder mehr dauern.
 
 > [!NOTE]
 > Wenn gerade Hintergrundaufgaben unter Azure AD DS ausgeführt werden, erhalten Sie möglicherweise eine Fehlermeldung beim Hochladen des Zertifikats – <i>There is an operation being performed for this tenant. Please try again later (Für diesen Mandanten wird gerade eine Operation ausgeführt.Versuchen Sie es später erneut)</i>.  Für den Fall, dass dieser Fehler auftritt, versuchen Sie es bitte später noch einmal. Bei der zweiten Domänencontroller-IP kann es bis zu 3 Stunden dauern, bis diese bereitgestellt wird.
@@ -182,59 +175,6 @@ Wenn Sie Ihre eigene Domäne verwenden, müssen Sie das Kennwort synchronisieren
 > 
 
 Weitere Informationen finden Sie unter [Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne](../../active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md).
-
-## <a name="create-a-resource-manager-vnet-for-hdinsight-cluster"></a>Erstellen Sie ein Resource Manager-VNet für HDInsight-Cluster
-In diesem Abschnitt erstellen Sie ein Azure Ressource Manager-VNet, das für HDInsight-Cluster verwendet wird. Weitere Informationen zum Erstellen eines Azure-VNET mit anderen Methoden finden Sie unter [Erstellen eines virtuellen Netzwerks](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md).
-
-Nachdem Sie das VNet erstellt haben, konfigurieren Sie das Resource Manager-VNET, um die gleichen DNS-Server zu verwenden, wie beim Azure AD-VNET. Wenn Sie die Schritte in diesem Tutorial befolgt haben, um das klassische VNet und Azure AD zu erstellen, sind die DNS-Server 10.1.0.4 und 10.1.0.5.
-
-**Erstellen eines Resource Manager-VNET**
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie auf **Neu**, **Netzwerk**, und dann auf **Virtuelles Netzwerk**. 
-3. Wählen Sie unter **Bereitstellungsmodell auswählen** die Option **Resource Manager**, und klicken Sie auf **Erstellen**.
-4. Geben Sie folgende Werte ein bzw. wählen diese aus:
-   
-   * **Name**: contosohdivnet
-   * **Adressraum**: 10.2.0.0/16. Stellen Sie sicher, dass dieser Adressbereich nicht mit dem IP-Adressenbereich des klassischen VNet überlappt.
-   * **Subnetzname**: Subnet1
-   * **Subnetzadressbereich**: 10.2.0.0/24
-   * **Abonnement**: (Wählen Sie Ihr Azure-Abonnement aus.)
-   * **Ressourcengruppe**: contosohdirg
-   * **Standort**: (Wählen Sie den gleichen Standort aus wie für das Azure AD-VNet, d.h. contosoaadvnet.)
-5. Klicken Sie auf **Erstellen**.
-
-**Konfigurieren von DNS für das Resource Manager-VNET**
-
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Weitere Dienste** -> **Virtuelle Netzwerke**. Achten Sie darauf, dass Sie nicht auf **Virtuelle Netzwerke (klassisch)** klicken.
-2. Klicken Sie auf **contosohdivnet**.
-3. Klicken Sie auf der linken Seite des neuen Blatts auf **DNS-Server**.
-4. Klicken Sie auf **Benutzerdefiniert**, und geben Sie die folgenden Werte ein:
-   
-   * 10.1.0.4
-   * 10.1.0.5
-     
-     Diese IP-Adressen der DNS-Server müssen mit den DNS-Servern im Azure AD-VNet (klassisches VNet) übereinstimmen.
-5. Klicken Sie auf **Speichern**.
-
-## <a name="peer-the-azure-ad-vnet-and-the-hdinsight-vnet"></a>Führen Sie das Peering der Netzwerke Azure AD-VNet und HDInsight VNet durch.
-**Durchführen des Peering der beiden VNets**
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
-2. Klicken Sie im linken Menü auf **Weitere Dienste**.
-3. Klicken Sie auf **Virtuelle Netzwerke**. Klicken Sie nicht auf **Virtuelle Netzwerke (klassisch)**.
-4. Klicken Sie auf **contosohdivnet**.  Dies ist das HDInsight-VNet.
-5. Klicken Sie im linken Menü des Blatts auf **Peering**.
-6. Klicken Sie im Menü am oberen Rand auf **Hinzufügen**. Damit wird das Blatt **Peering hinzufügen** geöffnet.
-7. Legen Sie im Blatt **Peering hinzufügen** die folgenden Werte fest, oder wählen Sie diese aus:
-   
-   * **Name**: ContosoAADHDIVNetPeering
-   * **Bereitstellungsmodell für das virtuelle Netzwerk**: Klassisch
-   * **Abonnement**: Wählen Sie den Namen Ihres Abonnements aus, das für das klassische (Azure AD) VNet verwendet wird.
-   * **Virtuelles Netzwerk**: contosoaadvnet.
-   * **Zugriff auf virtuelles Netzwerk zulassen**: (aktivieren)
-   * **Weitergeleiteten Datenverkehr zulassen**: (aktivieren) Lassen Sie die beiden anderen Kontrollkästchen deaktiviert.
-8. Klicken Sie auf **OK**.
 
 ## <a name="create-hdinsight-cluster"></a>Erstellen des HDInsight-Clusters
 In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsight, entweder mithilfe des Azure-Portals oder einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-group-template-deploy.md). Andere Methoden zur Erstellung von Clustern und Informationen zu den Einstellungen finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md). Weitere Informationen zur Verwendung einer Resource Manager-Vorlage zum Erstellen von Hadoop-Clustern in HDInsight finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mithilfe von Resource Manager-Vorlagen](../hdinsight-hadoop-create-windows-clusters-arm-templates.md)
@@ -249,7 +189,7 @@ In diesem Abschnitt erstellen Sie einen Linux-basierten Hadoop-Cluster in HDInsi
    * **Abonnement** : Wählen Sie ein Azure-Abonnement aus, das für die Erstellung dieses Clusters verwendet wird.
    * **Clusterkonfiguration**:
      
-     * **Clustertyp**: Hadoop. HDInsight mit Domänenverknüpfung wird derzeit nur auf Hadoop-Clustern unterstützt.
+     * **Clustertyp**: Hadoop. HDInsight mit Domänenverknüpfung wird derzeit nur auf Hadoop-, Spark- und Interactive Query-Clustern unterstützt.
      * **Betriebssystem**: Linux.  HDInsight mit Domänenverknüpfung wird derzeit nur auf Linux-basierten HDInsight-Clustern unterstützt.
      * **Version:** HDI 3.6. HDInsight mit Domänenverknüpfung wird derzeit nur auf HDInsight-Clustern, Version 3.6 unterstützt.
      * **Clustertyp**: PREMIUM
