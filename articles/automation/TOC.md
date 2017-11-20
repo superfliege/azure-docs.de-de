@@ -32,6 +32,7 @@
 ### [Konfigurieren von Runbookeingabeparametern](automation-runbook-input-parameters.md)
 ### [Fehlerbehandlung bei grafischen Runbooks](automation-runbook-graphical-error-handling.md)
 ### [Nachverfolgen eines Runbookauftrags](automation-runbook-execution.md)
+### [Erstellen einer Watcher-Aufgabe](automation-watchers-tutorial.md)
 ### [Ändern der Runbookeinstellungen](automation-runbook-settings.md)
 ### [Verwalten von Azure Automation-Daten](automation-managing-data.md)
 ### [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](automation-invoke-runbook-from-omsla-alert.md)
