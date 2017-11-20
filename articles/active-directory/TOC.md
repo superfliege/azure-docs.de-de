@@ -248,12 +248,12 @@
 ## Verwalten Ihres Verzeichnisses
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### Benutzerdefinierte Domänennamen
-#### [Übersicht](active-directory-domains-manage-azure-portal.md)
-#### [Verwalten von Domänennamen](active-directory-domains-manage-azure-portal.md)
+#### [Schnellstart](add-custom-domain.md)
+#### [Hinzufügen benutzerdefinierter Domänennamen](active-directory-domains-manage-azure-portal.md)
 ### [Verwalten Ihres Verzeichnisses](active-directory-administer.md)
 ### [Mehrere Verzeichnisse](active-directory-licensing-directory-independence.md)
 ### [Self-Service-Registrierung](active-directory-self-service-signup.md)
-#### [Übernehmen eines nicht verwalteten Verzeichnisses](domains-admin-takeover.md)
+### [Übernehmen eines nicht verwalteten Verzeichnisses](domains-admin-takeover.md)
 ### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [Aktivieren](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [Gruppenrichtlinieneinstellungen](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)

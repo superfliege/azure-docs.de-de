@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
-ms.date: 11/2/2017
-ms.openlocfilehash: b6cdd135d2d264c8b4ede1592c686cdeea3d0a59
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.date: 11/14/2017
+ms.openlocfilehash: 7fa7eb53876746f1934af8ca3428cfdacb56382d
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Klassifizieren von Iris, Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning-Diensten (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -119,8 +119,7 @@ Zum Bereitstellen des Webdiensts zusammen mit der Modelldatei benötigen Sie auc
 
 Als Nächstes können Sie Ihre Umgebung für die Operationalisierung des Modells vorbereiten.
 
->[!NOTE]
->Für die Bereitstellung von Modellen benötigen Sie Besitzerzugriff auf ein Azure-Abonnement.
+
 
 ## <a name="prepare-to-operationalize-locally"></a>Vorbereiten der lokalen Operationalisierung
 Verwenden Sie für Docker-Container auf Ihrem lokalen Computer die Bereitstellung vom Typ _Lokaler Modus_.
@@ -162,7 +161,9 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Das Docker
 
    In der dritten Zeile der Ausgabe wird **"registrationState": "Registering"** angezeigt. Warten Sie kurz ab, und wiederholen Sie dann den Befehl **show**, bis in der Ausgabe **"registrationState": "Registered"** angezeigt wird.
 
-3. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten:
+3. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
+
+Beachten Sie, dass für den folgenden Befehl zum Einrichten der Zugriffstyp „Mitwirkender“ für das Abonnement erforderlich ist. Wenn Sie nicht über die erforderlichen Berechtigungen verfügen, benötigen Sie zumindest Zugriff als Mitwirkender auf die Ressourcengruppe, in der die Bereitstellung erfolgt. Hierzu müssen Sie den Ressourcengruppennamen mithilfe des Flags `-g` als Teil des Einrichtungsbefehls angeben. 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>

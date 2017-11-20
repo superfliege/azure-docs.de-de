@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/28/2017
-ms.openlocfilehash: cabba8ce04d62d35ca40b3ae35d9d40a6ec7b2b9
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: fcef59d38cce5f8860508ebeeda0b1b97f5e83f1
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="classify-iris-part-1-prepare-the-data"></a>Klassifizieren von Iris – Teil 1: Vorbereiten der Daten
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
@@ -69,7 +69,9 @@ Sie können die Anweisungen im Artikel mit der [Schnellstartanleitung zur Erstel
    ![Auswählen von „iris“](media/tutorial-classifying-iris/select_iris_csv.png)
 
    >[!IMPORTANT]
-   >Achten Sie darauf, dass Sie für diese Übung die Datei **iris.csv** aus dem aktuellen Projektverzeichnis auswählen. Sonst kann es sein, dass die nachfolgenden Schritte fehlschlagen. 
+   >Achten Sie darauf, dass Sie für diese Übung die Datei **iris.csv** aus dem aktuellen Projektverzeichnis auswählen. Sonst kann es sein, dass die nachfolgenden Schritte fehlschlagen.
+   
+4. Klicken Sie nach dem Auswählen der Datei auf die Schaltfläche **Fertig stellen**.
 
 4. Eine neue Datei mit dem Namen **iris-1.dsource** wird erstellt. Die Datei ist mit dem Zusatz „-1“ eindeutig benannt, da das Beispielprojekt bereits über eine nicht nummerierte Datei **iris.dsource** verfügt.  
 
@@ -105,7 +107,7 @@ Sie können die Anweisungen im Artikel mit der [Schnellstartanleitung zur Erstel
 
 9. Wählen Sie zum Herausfiltern von NULL-Werten den Balken des Graphen aus, der für den NULL-Wert steht. Es ist eine Zeile mit dem Wert **(null)** vorhanden. Wählen Sie das Minuszeichen (**-**), um diese Zeile zu entfernen.
 
-   ![Histogramm mit Wertanzahl](media/tutorial-classifying-iris/filter_out.png)
+   ![Histogramm mit Wert-Anzahl](media/tutorial-classifying-iris/filter_out.png)
 
 10. Beachten Sie die einzelnen Schritte im Bereich **SCHRITTE**. Als Sie die Spalten umbenannt und die Zeilen mit den NULL-Werten gefiltert haben, wurde jede Aktion als Datenvorbereitungsschritt aufgezeichnet. Sie können die einzelnen Schritte bearbeiten, um die Einstellungen anzupassen, und die Schritte neu anordnen und entfernen.
 
