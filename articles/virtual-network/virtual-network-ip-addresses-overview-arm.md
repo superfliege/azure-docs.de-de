@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: jdial
-ms.openlocfilehash: d243455be9439a686ecdf6dfa3aadf2802a0714d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 95f2b57b2012df816c76a1b6ec55ca9f92e134a3
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -145,29 +145,22 @@ Private IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. Privaten 
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
 
-Eine private IP-Adresse wird aus dem Adressbereich des Subnetzes zugeordnet, dem die Ressource hinzugefügt wurde. Der Adressbereich des Subnetzes selbst ist ein Teil des Adressbereichs eines virtuellen Netzwerks.
+Eine private IP-Adresse wird aus dem Adressbereich des VNET-Subnetzes zugeteilt, in dem eine Ressource bereitgestellt wurde. Es gibt zwei Methoden zum Zuordnen von privaten IP-Adressen:
 
-Es gibt zwei Methoden zum Zuordnen von privaten IP-Adressen: *dynamisch* oder *statisch*. Die Standardmethode ist die *dynamische* Zuordnung. Dabei wird die IP-Adresse aus dem Subnetz der Ressource per DHCP automatisch zugewiesen. Wenn Sie die Ressource beenden und wieder starten, kann sich diese IP-Adresse ändern.
-
-Sie können die Zuordnungsmethode auf *statisch* festlegen, damit die IP-Adresse unverändert bleibt. Beim Angeben von *statisch* geben Sie eine gültige IP-Adresse an, die Teil des Ressourcensubnetzes ist.
-
-Statische private IP-Adressen werden häufig für Folgendes verwendet:
-
-* Virtuelle Computer, die als Domänencontroller oder DNS-Server fungieren.
-* Ressourcen, die Firewallregeln mit IP-Adressen erfordern
-* Ressourcen, auf die von anderen Apps oder Ressourcen über eine IP-Adresse zugegriffen wird.
+- **Dynamisch**: In Azure sind die ersten vier Adressen jedes Subnetz-Adressbereichs reserviert, und die Adressen werden nicht zugewiesen. Azure weist die nächste verfügbare Adresse einer Ressource aus dem Subnetz-Adressbereich zu. Wenn der Adressbereich des Subnetzes beispielsweise 10.0.0.0/16 lautet und die Adressen 10.0.0.0.4 bis 10.0.0.14 bereits zugewiesen sind (.0 bis .3 sind reserviert), weist Azure der Ressource die Adresse 10.0.0.15 zu. „Dynamisch“ ist das Standardverfahren für die Zuteilung. Nach der Zuweisung werden dynamische IP-Adressen nur veröffentlicht, wenn eine Netzwerkschnittstelle gelöscht wird oder einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird oder wenn die Zuordnungsmethode in „Statisch“ geändert und eine andere IP-Adresse angegeben wird. Standardmäßig wird in Azure die zuvor dynamisch zugewiesene Adresse als statische Adresse zugewiesen, wenn Sie die Zuteilungsmethode von „Dynamisch“ in „Statisch“ ändern.
+- **Statisch**: Sie wählen eine Adresse aus dem Adressbereich des Subnetzes aus und weisen sie zu. Die von Ihnen zugewiesene Adresse kann eine beliebige Adresse innerhalb des Subnetz-Adressbereichs sein, bei der es sich nicht um eine der ersten vier Adressen im Subnetz-Adressbereich handelt und die derzeit keiner anderen Ressource im Subnetz zugewiesen ist. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuteilungsmethode in „Statisch“ ändern, wird in Azure dynamisch die zuvor zugewiesene statische IP-Adresse als dynamische Adresse zugewiesen. Dies gilt auch dann, wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
 
-Eine private IP-Adresse wird der **Netzwerkschnittstelle** eines virtuellen [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computers zugewiesen. Wenn der virtuelle Computer über mehrere Netzwerkschnittstellen verfügt, wird jeder Netzwerkschnittstelle eine private IP-Adresse zugewiesen. Für eine Netzwerkschnittstelle können Sie als Zuordnungsmethode „dynamisch“ oder „statisch“ angeben.
+Eine oder mehrere private IP-Adressen werden mindestens einer **Netzwerkschnittstelle** eines virtuellen [Windows](../virtual-machines/windows/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computers zugewiesen. Für jede private IP-Adresse können Sie als Zuteilungsmethode „Dynamisch“ oder „Statisch“ angeben.
 
 #### <a name="internal-dns-hostname-resolution-for-virtual-machines"></a>Interne DNS-Hostnamensauflösung (für virtuelle Computer)
 
 Alle virtuellen Azure-Computer werden standardmäßig mit [von Azure verwalteten DNS-Servern](virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) konfiguriert, sofern nicht explizit benutzerdefinierte DNS-Server konfiguriert werden. Diese DNS-Server stellen die interne Namensauflösung für virtuelle Computer in demselben virtuellen Netzwerk bereit.
 
-Beim Erstellen eines virtuellen Computers wird den von Azure verwalteten DNS-Servern eine Hostnamenzuordnung für die private IP-Adresse hinzugefügt. Bei einem virtuellen Computer mit mehreren Netzwerkschnittstellen wird der Hostname der privaten IP-Adresse der primären Netzwerkschnittstelle zugeordnet.
+Beim Erstellen eines virtuellen Computers wird den von Azure verwalteten DNS-Servern eine Hostnamenzuordnung für die private IP-Adresse hinzugefügt. Wenn ein virtueller Computer über mehrere Netzwerkschnittstellen oder mehrere IP-Konfigurationen für eine Netzwerkschnittstelle verfügt, wird der Hostname der privaten IP-Adresse für die primäre IP-Konfiguration der primären Netzwerkschnittstelle zugeordnet.
 
-Virtuelle Computer, die mit von Azure verwalteten DNS-Servern konfiguriert sind, können die Hostnamen aller virtuellen Computer in demselben virtuellen Netzwerk in ihre privaten IP-Adressen auflösen.
+Virtuelle Computer, die mit von Azure verwalteten DNS-Servern konfiguriert sind, können die Hostnamen aller virtuellen Computer in demselben virtuellen Netzwerk in ihre privaten IP-Adressen auflösen. Sie müssen einen benutzerdefinierten DNS-Server verwenden, um Hostnamen von virtuellen Computern in verbundenen virtuellen Netzwerken aufzulösen.
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>Interner Lastenausgleich (Internal Load Balancer, ILB) und Anwendungsgateways
 

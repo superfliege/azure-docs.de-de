@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.openlocfilehash: 6dcc5c55fae5e2494526c492a1453747b4d6e179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b5552bbb3a56a95e616a79bf9adeabe68d01216
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Pipelines und Aktivitäten in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](v1/data-factory-create-pipelines.md)
-> * [Version 2 – Vorschauversion](concepts-pipelines-activities.md)
+> * [Version 2: Vorschauversion](concepts-pipelines-activities.md)
 
 In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Azure Data Factory und erfahren, wie diese zum Erstellen datengesteuerter lückenloser Workflows für Ihre Datenverschiebungs- und Datenverarbeitungsszenarien genutzt werden können.
 
@@ -32,7 +32,7 @@ In diesem Artikel erhalten Sie Informationen zu Pipelines und Aktivitäten in Az
 > Dieser Artikel setzt voraus, dass Sie die [Einführung in Azure Data Factory](introduction.md) und das [Schnellstart-Tutorial](quickstart-create-data-factory-powershell.md) gelesen haben.
 
 ## <a name="overview"></a>Übersicht
-Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Eine Pipeline kann z.B. eine Gruppe von Aktivitäten enthalten, die Protokolldaten erfassen und bereinigen. Anschließend wird ein Spark-Auftrag in einem HDInsight-Cluster gestartet, um die Protokolldaten zu analysieren. Der Vorteil hierbei ist, dass Sie mit der Pipeline die Aktivitäten als Gruppe verwalten können, anstatt jede Aktivität einzeln. Beispielsweise können Sie die Pipeline bereitstellen und planen, anstatt dies für die Aktivitäten jeweils individuell durchzuführen.  
+Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Eine Pipeline kann z.B. eine Gruppe von Aktivitäten enthalten, die Protokolldaten erfassen und bereinigen. Anschließend wird ein Spark-Auftrag in einem HDInsight-Cluster gestartet, um die Protokolldaten zu analysieren. Der Vorteil hierbei besteht darin, dass Sie mit der Pipeline nicht jede Aktivität einzeln verwalten müssen, sondern dies als Gruppe tun können. Beispielsweise können Sie die Pipeline bereitstellen und planen, anstatt dies für die Aktivitäten jeweils individuell durchzuführen.  
 
 Die Aktivitäten in einer Pipeline definieren Aktionen, die Sie auf Ihre Daten anwenden. Sie können z.B. mit einer Kopieraktivität Daten aus einer lokalen SQL Server-Instanz in eine Instanz von Azure Blob Storage kopieren. Verwenden Sie dann eine Hive-Aktivität, die ein Hive-Skript auf einen Azure HDInsight-Cluster anwendet, um Daten aus dem Blob Storage zu verarbeiten/transformieren, um Ausgabedaten zu produzieren. Kopieren Sie die Ausgabedaten schließlich mit einer zweiten Kopieraktivität in ein Azure SQL Data Warehouse, auf Basis dessen Business Intelligence-Berichtslösungen (BI) erstellt werden.
 
@@ -66,7 +66,7 @@ Datentransformationsaktivität | Compute-Umgebung
 Weitere Informationen finden Sie im Artikel [Datentransformationsaktivitäten](transform-data.md). 
 
 ## <a name="control-activities"></a>Steuerungsaktivitäten
-Die folgenden Ablaufsteuerungsaktivitäten werden unterstützt:
+Die folgenden Steuerungsablaufaktivitäten werden unterstützt:
 
 Steuerungsaktivität | Beschreibung
 ---------------- | -----------
@@ -75,11 +75,12 @@ Steuerungsaktivität | Beschreibung
 [Aktivität „Web“](control-flow-web-activity.md) | Die Web-Aktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpunkt aus einer Data Factory-Pipeline aufzurufen. Sie können Datasets und verknüpfte Dienste zur Verwendung und für den Zugriff durch die Aktivität übergeben. 
 [Aktivität „Lookup“](control-flow-lookup-activity.md) | Mit der Lookup-Aktivität können Sie einen Datensatz/Tabellennamen/Wert in einer externen Quelle lesen oder suchen. Auf die Ausgabe kann durch nachfolgende Aktivitäten verwiesen werden. 
 [Aktivität „Metadaten abrufen“](control-flow-get-metadata-activity.md) | Die Aktivität „Metadaten abrufen“ kann zum Abrufen von Metadaten für alle Daten in Azure Data Factory verwendet werden. 
-Aktivität „Wiederholen bis“ | Es wird eine „Wiederholen bis“-Schleife implementiert, die der Schleifenstruktur „Wiederholen bis“ in Programmiersprachen ähnelt.
-Aktivität „Falls-Bedingung“ | Die Falls-Bedingung kann je nach Verzweigung für Bedingungen verwendet werden, die als TRUE oder FALSE ausgewertet werden. 
+[Until-Aktivität](control-flow-until-activity.md) | Es wird eine „Wiederholen bis“-Schleife implementiert, die der Struktur einer Do-Until-Schleife in Programmiersprachen ähnelt. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben.
+[Aktivität „If Condition“](control-flow-if-condition-activity.md) | „If Condition“ kann zum Einrichten einer Verzweigung für Bedingungen verwendet werden, die als TRUE oder FALSE ausgewertet werden. Die Aktivität „If Condition“ bietet die gleiche Funktionalität wie eine If-Anweisung in Programmiersprachen. Sie wertet eine Aktivitätengruppe aus, wenn die Bedingung als `true` ausgewertet wird, und eine weitere Aktivitätengruppe, wenn die Bedingung als `false` ausgewertet wird.
+[Aktivität „Warten“](control-flow-wait-activity.md) | Wenn Sie eine Warteaktivität in einer Pipeline verwenden, wartet die Pipeline den angegebenen Zeitraum, bevor Sie die Ausführung nachfolgender Aktivitäten fortsetzt. 
 
 ## <a name="pipeline-json"></a>Pipeline-JSON
-Sehen wir uns an, wie eine Pipeline im JSON-Format definiert wird. Die generische Struktur für eine Pipeline sieht wie folgt aus:
+Eine Pipeline wird wie folgt im JSON-Format definiert: 
 
 ```json
 {
@@ -101,7 +102,7 @@ Tag | Beschreibung | Typ | Erforderlich
 name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, die die Pipeline durchführt. <br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (_) enden.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\“.</li></ul> | String | Ja
 Beschreibung | Geben Sie den Text an, der beschreibt, wofür die Pipeline verwendet wird. | String | Nein
 Aktivitäten | Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Weitere Informationen zum JSON-Element der Aktivitäten finden Sie im Abschnitt [Aktivitäts-JSON](#activity-json). | Array | Ja
-Parameter | Im Abschnitt **Parameter** kann mindestens ein Parameter in der Pipeline definiert werden. Dadurch wird die Pipeline für die Wiederverwendung flexibel. | Auflisten | Nein
+Parameter | Im Abschnitt **Parameter** kann mindestens ein Parameter in der Pipeline definiert werden. Dadurch wird die Pipeline flexibel wiederverwendbar. | Auflisten | Nein
 
 ## <a name="activity-json"></a>JSON-Definition der Aktivität
 Im Abschnitt **activities** kann mindestens eine Aktivität definiert werden. Es gibt zwei Haupttypen von Aktivitäten: Ausführungs- und Steuerungsaktivitäten.
@@ -358,9 +359,9 @@ Sie können zwei Aktivitäten mithilfe der [Aktivitätsabhängigkeit](#activity-
 ## <a name="scheduling-pipelines"></a>Planen von Pipelines
 Pipelines werden von Triggern geplant. Es gibt verschiedene Arten von Triggern (Planer-Trigger, bei denen Pipelines nach einem Zeitplan ausgelöst werden, sowie manuelle Trigger, bei denen Pipelines bei Bedarf ausgelöst werden). Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md). 
 
-Damit der Trigger die Ausführung der Pipeline startet, müssen Sie in die Triggerdefinition einen Pipelineverweis auf die jeweilige Pipeline einschließen. Pipelines und Trigger haben eine n:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, und ein einzelner Trigger kann mehrere Pipelines starten. Sobald der Trigger definiert wurde, müssen Sie ihn starten, damit er mit dem Auslösen der Pipeline beginnen kann. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md). 
+Damit der Trigger die Ausführung der Pipeline startet, müssen Sie in die Triggerdefinition einen Pipelineverweis auf die jeweilige Pipeline einschließen. Zwischen Pipelines und Triggern besteht eine n:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, und ein einzelner Trigger kann mehrere Pipelines starten. Sobald der Trigger definiert wurde, müssen Sie ihn starten, damit er mit dem Auslösen der Pipeline beginnen kann. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md). 
 
-Angenommen, Sie verfügen über einen Planer-Trigger „Trigger A“, der die Pipeline „MyCopyPipeline“ starten soll. Definieren Sie den Trigger wie in folgendem Beispiel gezeigt:
+Angenommen, Sie verfügen über einen Planertrigger „Trigger A“, der die Pipeline „MyCopyPipeline“ starten soll. Definieren Sie den Trigger wie in folgendem Beispiel gezeigt:
 
 ### <a name="trigger-a-definition"></a>Definition Trigger A
 

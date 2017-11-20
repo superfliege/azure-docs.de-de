@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Azure Search-Indexes | Microsoft Azure | Gehosteter Cloudsuchdienst
-description: Was ist ein Azure Search-Index, und wie wird er verwendet?
+title: Indizes in Azure Search | Microsoft-Dokumentation
+description: Es wird beschrieben, welche Indexkonzepte es in Azure Search gibt und wie Indizes verwendet werden.
 services: search
 documentationcenter: 
 author: ashmaka
@@ -10,15 +10,15 @@ ms.devlang: na
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 12/08/2016
+ms.date: 11/08/2017
 ms.author: ashmaka
-ms.openlocfilehash: 7fc45273c0f71c727b7087949cc63bbb4111f866
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87f1121594d8577b5dacac4026aa7d86b2921d10
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="create-an-azure-search-index"></a>Erstellen eines Azure Search-Index
+# <a name="indexes-in-azure-search"></a>Indizes in Azure Search
 > [!div class="op_single_selector"]
 > * [Übersicht](search-what-is-an-index.md)
 > * [Portal](search-create-index-portal.md)
@@ -27,8 +27,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="what-is-an-index"></a>Was ist ein Index?
-Ein *Index* ist ein dauerhafter Speicher von *Dokumenten* und anderen Konstrukten, die von einem Azure Search-Dienst verwendet werden. Ein Dokument ist eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Internetversandhändler hat beispielsweise ein Dokument für jeden angebotenen Artikel, eine Nachrichtenagentur hat ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Index* entspricht etwa einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
+In Azure Search ist ein *Index* ein dauerhafter Speicher mit *Dokumenten* und anderen Konstrukten, die von einem Azure Search-Dienst verwendet werden. Ein Dokument ist eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Internetversandhändler verfügt beispielsweise über ein Dokument für jeden angebotenen Artikel, eine Nachrichtenagentur über ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Index* entspricht etwa einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
 
 Wenn Sie Dokumente hinzufügen/hochladen und Suchabfragen an Azure Search übermitteln, übermitteln Sie Ihre Anforderungen an einen bestimmten Index in Ihrem Suchdienst.
 

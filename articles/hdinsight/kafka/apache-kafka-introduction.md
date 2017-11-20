@@ -13,25 +13,27 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/23/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 5e05f07f2d9a15ab57f993e88b7cdeb03550f8ac
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c4e0d792ae8f4c17d53430f49d81d179e56b9722
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="introducing-apache-kafka-on-hdinsight-preview"></a>Einführung in Apache Kafka in HDInsight (Vorschau)
+# <a name="introducing-apache-kafka-on-hdinsight"></a>Einführung in Apache Kafka in HDInsight
 
 [Apache Kafka](https://kafka.apache.org) ist eine verteilte Open Source-Streamingplattform, die zum Erstellen von Datenpipelines und Anwendungen mit Echtzeitstreaming verwendet werden kann. Kafka verfügt auch über Nachrichtenbrokerfunktionen, die einer Nachrichtenwarteschlange ähneln, über die Sie benannte Datenströme veröffentlichen und diese abonnieren können. Bei Kafka in HDInsight erhalten Sie einen verwalteten, hoch skalierbaren und hoch verfügbaren Dienst in der Microsoft Azure-Cloud.
 
 ## <a name="why-use-kafka-on-hdinsight"></a>Gründe für Kafka in HDInsight
 
-Kafka verfügt über die folgenden Features:
+Kafka in HDInsight umfasst die folgenden Features:
+
+* Vereinbarung zum Servicelevel (SLA): [SLA für HDInsight](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/).
 
 * Veröffentlichen-Abonnieren-Messagingmuster: Kafka umfasst eine Producer-API zum Veröffentlichen von Datensätzen in einem Kafka-Thema. Die Consumer-API wird verwendet, wenn Sie ein Thema abonnieren.
 
-* Datenstromverarbeitung: Kafka wird häufig zusammen mit Apache Storm oder Spark für die Echtzeit-Datenstromverarbeitung eingesetzt. Mit Kafka 0.10.0.0 (HDInsight-Version 3.5) wurde eine Streaming-API eingeführt, mit der Sie Streaminglösungen erstellen können, ohne dass Sie dafür Storm oder Spark benötigen.
+* Datenstromverarbeitung: Kafka wird häufig zusammen mit Apache Storm oder Spark für die Echtzeit-Datenstromverarbeitung eingesetzt. Mit Kafka 0.10.0.0 (HDInsight-Version 3.5 und 3.6) wurde eine Streaming-API eingeführt, mit der Sie Streaminglösungen erstellen können, ohne dass Sie dafür Storm oder Spark benötigen.
 
 * Horizontale Skalierung: Bei Kafka werden Datenströme über die Knoten im HDInsight-Cluster hinweg partitioniert. Consumerprozesse können einzelnen Partitionen zugeordnet werden, um beim Nutzen von Datensätzen für einen Lastenausgleich zu sorgen.
 

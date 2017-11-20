@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: shlo
-ms.openlocfilehash: 58e141498ed5cbaa110622d949a9627c98827ac3
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: b797ee3ef270ff3420ff9e7f4aa8032641714d7a
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -172,11 +172,11 @@ Weitere Informationen zu den Data Factory-Konzepten finden Sie in den folgenden 
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Derzeit können Data Factorys in den Regionen „USA, Osten“ und „USA, Osten 2“ erstellt werden. Eine Data Factory kann jedoch auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten.
+Derzeit können Data Factorys in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ erstellt werden. Eine Data Factory kann jedoch auf Datenspeicher und Compute Services in anderen Azure-Regionen zugreifen, um Daten zwischen Datenspeichern zu verschieben oder Daten mithilfe von Computediensten zu verarbeiten.
 
 In Azure Data Factory selbst werden keine Daten gespeichert. Der Dienst ermöglicht das Erstellen von datengesteuerten Workflows, um die Verschiebung von Daten zwischen unterstützten Datenspeichern und die Verarbeitung von Daten mithilfe von Computediensten in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem können Sie mit programmgesteuerten und UI-basierten Mechanismen Workflows überwachen und verwalten.
 
-Data Factory ist zwar nur in den Regionen „USA, Osten“ und „USA, Osten 2“ verfügbar, aber der Datenverschiebungsdienst für Data Factory steht global in verschiedenen Regionen zur Verfügung. Wenn sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einem in der lokalen Umgebung installierten Datenverwaltungsgateway verschoben.
+Data Factory ist zwar nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ verfügbar, aber der Datenverschiebungsdienst für Data Factory steht global in verschiedenen Regionen zur Verfügung. Wenn sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einem in der lokalen Umgebung installierten Datenverwaltungsgateway verschoben.
 
 Nehmen wir beispielsweise an, dass Ihre Compute-Umgebungen wie Azure HDInsight-Cluster und Azure Machine Learning in der Region „Europa, Westen“ ausgeführt werden. Sie können eine Azure Data Factory-Instanz in der Region „Europa, Norden“ erstellen und mit ihr Aufträge in Ihren Computeumgebungen in der Region „Europa, Westen“ planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Compute-Umgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Compute-Umgebung ändert sich aber nicht.
 

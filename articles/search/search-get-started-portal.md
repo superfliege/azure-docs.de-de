@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen Ihres ersten Azure Search-Index im Portal | Microsoft-Dokumentation'
+title: Indizes, Abfragen und Filter auf den Seiten des Azure Search-Portals | Microsoft-Dokumentation
 description: Generieren Sie im Azure-Portal einen Index auf der Grundlage vordefinierter Beispieldaten. Machen Sie sich unter anderem mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut.
 services: search
 documentationcenter: 
@@ -15,17 +15,17 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 06/26/2017
 ms.author: heidist
-ms.openlocfilehash: c49989058fdd98d623c5517060f725e5f7e436d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a67de3d385ccb1f65d026acfa0d4413df889bafe
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="tutorial-create-your-first-azure-search-index-in-the-portal"></a>Tutorial: Erstellen Ihres ersten Azure Search-Index im Portal
+# <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Erstellen, Abfragen und Filtern eines Azure Search-Index im Portal
 
 Generieren Sie im Azure-Portal mithilfe des **Datenimport-Assistenten** auf der Grundlage eines vordefinierten Beispieldatasets im Handumdrehen einen Index. Verwenden Sie den **Suchexplorer**, um sich mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut zu machen.  
 
-Diese codefreie Einführung erleichtert Ihnen den Einstieg mit vordefinierten Daten, sodass Sie umgehend interessante Abfragen schreiben können. Portaltools sind zwar kein Ersatz für Code, eignen sich aber für folgende Aufgaben:
+Diese codefreie Einführung erleichtert Ihnen den Einstieg mit vordefinierten Daten, sodass Sie umgehend interessante Abfragen schreiben können. Die Portaltools sind kein Ersatz für Code, aber sie können für die folgenden Aufgaben nützlich sein:
 
 + Praktisches Lernen mit minimaler Vorbereitung
 + Erstellen eines Indexprototyps vor dem Schreiben von Code in **Daten importieren**
@@ -128,7 +128,7 @@ Sie verfügen jetzt über einen Suchindex, der bereit für Abfragen ist. **Suche
 
 **`search=seattle`**
 
-+ Der Parameter `search` dient zum Eingeben eines Schlüsselworts für die Volltextsuche. In diesem Fall werden Angebote in King County (Washington) zurückgeben, die *Seattle* in einem beliebigen durchsuchbaren Feld des Dokuments enthalten. 
++ Der Parameter **search** dient zum Eingeben eines Schlüsselworts für die Volltextsuche. In diesem Fall werden Angebote in King County (Washington) zurückgeben, die *Seattle* in einem beliebigen durchsuchbaren Feld des Dokuments enthalten. 
 
 + Der **Suchexplorer** gibt Ergebnisse im JSON-Format zurück. Dieses Format ist sehr ausführlich und in Dokumenten mit einer dichten Struktur nur schwer lesbar. Abhängig von Ihren Dokumenten müssen Sie unter Umständen Code schreiben, um die Suchergebnisse zu verarbeiten und wichtige Elemente zu extrahieren. 
 
@@ -136,35 +136,48 @@ Sie verfügen jetzt über einen Suchindex, der bereit für Abfragen ist. **Suche
 
 **`search=seattle&$count=true&$top=100`**
 
-+ Das `&`-Symbol dient zum Anfügen von Suchparametern. Diese können in beliebiger Reihenfolge angegeben werden. 
++ Das Symbol **&** dient zum Anfügen von Suchparametern. Diese können in beliebiger Reihenfolge angegeben werden. 
 
-+  Der Parameter `$count=true` gibt die Gesamtanzahl aller zurückgegeben Dokumente zurück. Zur Überprüfung von Filterabfragen können Sie von `$count=true` gemeldete Änderungen überwachen. 
++  Der Parameter **$count=true** gibt die Gesamtanzahl aller zurückgegebenen Dokumente zurück. Zur Überprüfung von Filterabfragen können Sie von **$count=true** gemeldete Änderungen überwachen. 
 
-+ `$top=100` gibt von allen Dokumenten die 100 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Search die ersten 50 der besten Treffer zurück. Die Menge kann mithilfe von `$top` erhöht oder verringert werden.
++ **$top=100** gibt von allen Dokumenten die 100 Dokumente mit dem höchsten Rang zurück. Standardmäßig gibt Azure Search die ersten 50 der besten Treffer zurück. Die Menge kann mithilfe von **$top** erhöht oder verringert werden.
 
-**`search=*&facet=city&$top=2`**
 
-+ `search=*` ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Faceting-Navigationsstruktur alle Städte im Index enthalten soll.
+## <a name="filter-query"></a> Filtern der Abfrage
 
-+  `facet` gibt eine Navigationsstruktur zurück, die Sie an ein Benutzeroberflächenelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren die Kategorien auf der Anzahl von Städten. In Azure Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
-
-+ `$top=2` gibt zwei Dokumente zurück und zeigt, dass Sie mithilfe von `top` die Ergebnisse sowohl verringern als auch erhöhen können.
-
-**`search=seattle&facet=beds`**
-
-+ Bei dieser Abfrage handelt es sich um ein Facet für Betten bei einer Textsuche nach *Seattle*. `"beds"` kann als Facet angegeben werden, da das Feld im Index als filterbar und facettierbar markiert ist und die enthaltenen Werte (numerische Werte von 1 bis 5) für die Kategorisierung von Angeboten in Gruppen (Angebote mit drei Schlafzimmern, vier Schlafzimmern...) geeignet ist. 
-
-+ Nur filterbare Felder können facettiert werden. In den Ergebnissen können nur abrufbare Felder zurückgegeben werden.
+Filter werden in Suchanfragen eingefügt, wenn Sie den Parameter **$filter** anfügen. 
 
 **`search=seattle&$filter=beds gt 3`**
 
-+ `filter` gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: mehr als drei Schlafzimmer. 
++ Der Parameter **$filter** gibt Ergebnisse zurück, die den angegebenen Kriterien entsprechen. In diesem Fall: mehr als drei Schlafzimmer. 
 
 + Bei der Filtersyntax handelt es sich um eine OData-Konstruktion. Weitere Informationen finden Sie unter [OData Expression Syntax for Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) (OData-Ausdruckssyntax für Azure Search).
 
+## <a name="facet-query"></a> Facettieren der Abfrage
+
+Facettenfilter werden in Suchanfragen eingebunden. Sie können den Parameter „facet“ verwenden, um eine aggregierte Anzahl von Dokumenten zurückzugeben, die mit einem von Ihnen angegebenen Facetwert übereinstimmen. 
+
+**`search=*&facet=city&$top=2`**
+
++ **search=*** ist eine leere Suche. Bei einer leeren Suche wird alles durchsucht. Eine leere Abfrage kann beispielsweise übermittelt werden, um den vollständigen Satz von Dokumenten zu filtern oder zu facettieren – etwa, wenn eine Faceting-Navigationsstruktur alle Städte im Index enthalten soll.
+
++  **facet** gibt eine Navigationsstruktur zurück, die Sie an ein Benutzeroberflächenelement übergeben können. Er gibt Kategorien und eine Anzahl zurück. In diesem Fall basieren die Kategorien auf der Anzahl von Städten. In Azure Search steht zwar keine Aggregation zur Verfügung, mit `facet` lässt sich jedoch eine Art Aggregation erreichen, die eine Anzahl von Dokumenten in den einzelnen Kategorien liefert.
+
++ **$top=2** gibt zwei Dokumente zurück und zeigt, dass Sie mithilfe von `top` die Ergebnisse sowohl verringern als auch erhöhen können.
+
+**`search=seattle&facet=beds`**
+
++ Bei dieser Abfrage handelt es sich um ein Facet für Betten bei einer Textsuche nach *Seattle*. Der Ausdruck *beds* kann als Facet angegeben werden, da das Feld im Index als filterbar und facettierbar markiert ist und die enthaltenen Werte (numerische Werte von 1 bis 5) für die Kategorisierung von Angeboten in Gruppen (Angebote mit drei Schlafzimmern, vier Schlafzimmern...) geeignet ist. 
+
++ Nur filterbare Felder können facettiert werden. In den Ergebnissen können nur abrufbare Felder zurückgegeben werden.
+
+## <a name="highlight-query"></a> Hinzufügen der Treffermarkierung
+
+Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer Formatierung versehen (sofern Treffer in einem bestimmten Feld gefunden werden). Falls Ihr Suchbegriff Teil einer umfangreicheren Beschreibung ist, können Sie ihn mithilfe einer Treffermarkierung hervorheben. 
+
 **`search=granite countertops&highlight=description`**
 
-+ Bei Treffermarkierungen wird Text, der dem Schlüsselwort entspricht, mit einer Formatierung versehen (sofern Treffer in einem bestimmten Feld gefunden werden). Falls Ihr Suchbegriff Teil einer umfangreicheren Beschreibung ist, können Sie ihn mithilfe einer Treffermarkierung hervorheben. In diesem Fall ist der formatierte Ausdruck `"granite countertops"` im Beschreibungsfeld leichter zu erkennen.
++ In diesem Beispiel ist der formatierte Ausdruck *granite countertops* im Beschreibungsfeld leichter zu erkennen.
 
 **`search=mice&highlight=description`**
 
@@ -172,23 +185,29 @@ Sie verfügen jetzt über einen Suchindex, der bereit für Abfragen ist. **Suche
 
 + Azure Search unterstützt 56 Analysen von Lucene und Microsoft. Standardmäßig verwendet Azure Search die Standardanalyse von Lucene. 
 
+## <a name="fuzzy-search"></a> Verwenden der Fuzzysuche
+
+Für falsch geschriebene Wörter wie *samamish* für das Samammish-Plateau in der Seattle-Region werden bei einer typischen Suche keine Treffer zurückgegeben. Zur Kompensierung von Schreibfehlern können Sie eine Fuzzysuche verwenden, wie im nächsten Beispiel beschrieben.
+
 **`search=samamish`**
 
-+ Für falsch geschriebene Wörter wie „Samamish“ für das Samammish-Plateau in der Seattle-Region werden bei einer typischen Suche keine Treffer zurückgegeben. Zur Kompensierung von Schreibfehlern können Sie eine Fuzzysuche verwenden, wie im nächsten Beispiel beschrieben.
++ In diesem Beispiel ist ein Ort in der Region Seattle falsch geschrieben.
 
 **`search=samamish~&queryType=full`**
 
-+ Eine Fuzzysuche wird aktiviert, wenn Sie das `~`-Symbol angeben und den Parser für die vollständige Abfrage verwenden, der die `~`-Syntax interpretiert und ordnungsgemäß analysiert. 
++ Eine Fuzzysuche wird aktiviert, wenn Sie das Symbol **~** angeben und den Parser für die vollständige Abfrage verwenden, der die **~**-Syntax interpretiert und richtig analysiert. 
 
-+ Die Fuzzysuche ist verfügbar, wenn Sie sich für die Verwendung des Parsers für vollständige Abfragen entscheiden (durch Festlegen von `queryType=full`). Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search).
++ Die Fuzzysuche ist verfügbar, wenn Sie sich für die Verwendung des Parsers für vollständige Abfragen entscheiden (durch Festlegen von **queryType=full**). Weitere Informationen zu möglichen Abfrageszenarien mit dem Parser für vollständige Abfragen finden Sie unter [Lucene query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) (Lucene-Abfragesyntax in Azure Search).
 
-+ Ohne Angabe von `queryType` wird der standardmäßige Parser für einfache Abfragen verwendet. Der Parser für einfache Abfragen ist zwar schneller, Fuzzysuche, reguläre Ausdrücke, NEAR-Suche und andere erweiterte Abfragetypen stehen jedoch nur bei Verwendung der vollständigen Syntax zur Verfügung. 
++ Ohne Angabe von **queryType** wird der standardmäßige Parser für einfache Abfragen verwendet. Der Parser für einfache Abfragen ist zwar schneller, Fuzzysuche, reguläre Ausdrücke, NEAR-Suche und andere erweiterte Abfragetypen stehen jedoch nur bei Verwendung der vollständigen Syntax zur Verfügung. 
+
+## <a name="geo-search"></a> Ausprobieren der Geosuche
+
+Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben. 
 
 **`search=*&$count=true&$filter=geo.distance(location,geography'POINT(-122.121513 47.673988)') le 5`**
 
-+ Die Geosuche wird über den [Datentyp „edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für ein Feld mit Koordinaten unterstützt. Die Geosuche ist ein Filtertyp und wird in der [OData-Ausdruckssyntax für Azure Search](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search) angegeben. 
-
-+ Die Beispielabfrage filtert alle Ergebnisse nach Positionsdaten und gibt Ergebnisse zurück, die weniger als fünf Kilometer von einem bestimmten Punkt (angegeben als Koordinaten mit Breiten-und Längengrad) entfernt sind. Durch Hinzufügen von `$count` sehen Sie, wie viele Ergebnisse zurückgegeben werden, wenn Sie die Entfernung oder die Koordinaten ändern. 
++ Die Beispielabfrage filtert alle Ergebnisse nach Positionsdaten und gibt Ergebnisse zurück, die weniger als fünf Kilometer von einem bestimmten Punkt (angegeben als Koordinaten mit Breiten-und Längengrad) entfernt sind. Durch Hinzufügen von **$count** sehen Sie, wie viele Ergebnisse zurückgegeben werden, wenn Sie die Entfernung oder die Koordinaten ändern. 
 
 + Die Geosuche ist hilfreich, wenn Ihre Suchanwendung über eine Umgebungssuche oder Kartennavigation verfügt. Es ist allerdings keine Volltextsuche. Falls eine Suche nach Städte- oder Ländernamen möglich sein muss, fügen Sie zusätzlich zu den Koordinaten Felder mit Städte- oder Ländernamen hinzu.
 

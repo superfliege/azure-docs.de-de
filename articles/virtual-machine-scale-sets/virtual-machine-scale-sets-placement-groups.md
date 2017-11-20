@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/1/2017
+ms.date: 11/9/2017
 ms.author: guybo
-ms.openlocfilehash: 12303e4283de3d179590e599d4d2fe8f14167eda
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3679ca32af5cee82660bbfda70046a0202d47c3e
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Verwenden umfangreicher VM-Skalierungsgruppen
 Sie können nun [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
@@ -37,7 +37,7 @@ Die effektive Nutzung umfangreicher Skalierungsgruppen durch eine Anwendung hän
 - Umfangreiche Skalierungsgruppen erfordern Azure Managed Disks. Für Skalierungsgruppen, die nicht mit Managed Disks erstellt wurden, sind mehrere Speicherkonten (jeweils eins pro 20 virtuelle Computer) erforderlich. Umfangreiche Skalierungsgruppen wurden exklusiv für die Verwendung mit Managed Disks konzipiert, um die Speicherverwaltung zu vereinfachen und um zu verhindern, dass Abonnementgrenzwerte für Speicherkonten erreicht werden. Ohne Managed Disks ist Ihre Skalierungsgruppe auf 100 virtuelle Computer beschränkt.
 - Skalierungsgruppen, die auf der Grundlage von Azure Marketplace-Images erstellt wurden, können auf bis zu 1.000 virtuelle Computer skaliert werden.
 - Skalierungsgruppen, die auf Grundlage von benutzerdefinierten Images (selbst erstellte und hochgeladene VM-Images) erstellt wurden, können derzeit auf bis zu 300 virtuelle Computer skaliert werden.
-- Für Skalierungsgruppen mit mehreren Platzierungsgruppen wird noch kein Layer-4-Lastenausgleich mit Azure Load Balancer unterstützt. Falls Sie Azure Load Balancer verwenden müssen, achten Sie darauf, dass die Skalierungsgruppe für die Verwendung einer einzelnen Platzierungsgruppe konfiguriert ist. (Dies ist die Standardeinstellung.)
+- Für den Layer-4-Lastenausgleich mit Skalierungsgruppen bestehend aus mehreren Platzierungsgruppen ist die [Standard-SKU von Azure Load Balancer](../load-balancer/load-balancer-standard-overview.md) erforderlich. Mit der Standard-SKU von Azure Load Balancer profitieren Sie von weiteren Vorteilen, z.B. der Möglichkeit zum Durchführen des Lastenausgleichs zwischen mehreren Skalierungsgruppen. Außerdem ist es für die Standard-SKU erforderlich, dass der Skalierungsgruppe eine Netzwerksicherheitsgruppe zugeordnet ist. Andernfalls funktionieren NAT-Pools nicht richtig. Falls Sie die Azure Load Balancer Basic-SKU verwenden müssen, sollten Sie darauf achten, dass die Skalierungsgruppe für die Verwendung einer einzelnen Platzierungsgruppe konfiguriert ist. Dies ist die Standardeinstellung.
 - Layer-7-Lastenausgleich mit Azure Application Gateway wird für alle Skalierungsgruppen unterstützt.
 - Eine Skalierungsgruppe ist mit einem einzelnen Subnetz definiert. Vergewissern Sie sich daher, dass Ihr Subnetz über einen ausreichend großen Adressbereich für alle benötigten virtuellen Computer verfügt. Zur Verbesserung der Zuverlässigkeit und der Leistung der Bereitstellung findet bei Skalierungsgruppen standardmäßig eine Überbereitstellung statt. (Zur Bereitstellungszeit oder beim horizontalen Hochskalieren werden also zusätzliche virtuelle Computer erstellt.) Die Größe des Adressraums sollte daher die geplante Anzahl von virtuellen Computern, auf die Sie skalieren möchten, um etwa 20 Prozent übersteigen.
 - Wenn Sie viele virtuelle Computer bereitstellen möchten, ist unter Umständen eine Erhöhung der Compute-Kernkontingentgrenzwerte erforderlich.
@@ -83,6 +83,6 @@ Ein vollständiges Beispiel für eine umfangreiche Skalierungsgruppenvorlage fin
 Wenn eine vorhandene VM-Skalierungsgruppe auf über 100 virtuelle Computer skalierbar sein soll, muss die Eigenschaft _singlePlacementGroup_ im Skalierungsgruppenmodell auf _false_ festgelegt werden. Sie können das Ändern dieser Eigenschaft mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com/) testen. Navigieren Sie zu einer vorhandenen Skalierungsgruppe, wählen Sie _Bearbeiten_ aus, und ändern Sie die Eigenschaft _singlePlacementGroup_. Sollte die Eigenschaft nicht angezeigt werden, betrachten Sie die Skalierungsgruppe möglicherweise mit einer älteren Version der Microsoft.Compute-API.
 
 >[!NOTE] 
-Eine Skalierungsgruppe, die nur eine einzelne Platzierungsgruppe unterstützt (Standardverhalten), kann in eine Skalierungsgruppe konvertiert werden, die mehrere Skalierungsgruppen unterstützt, aber nicht umgekehrt. Machen Sie sich daher vor der Konvertierung sorgfältig mit den Eigenschaften umfangreicher Skalierungsgruppen vertraut. Vergewissern Sie sich insbesondere, dass Sie keinen Layer-4-Lastenausgleich mit Azure Load Balancer benötigen.
+Eine Skalierungsgruppe, die nur eine einzelne Platzierungsgruppe unterstützt (Standardverhalten), kann in eine Skalierungsgruppe konvertiert werden, die mehrere Skalierungsgruppen unterstützt, aber nicht umgekehrt. Machen Sie sich daher vor der Konvertierung sorgfältig mit den Eigenschaften umfangreicher Skalierungsgruppen vertraut.
 
 

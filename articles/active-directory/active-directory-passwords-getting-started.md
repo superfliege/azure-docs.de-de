@@ -16,61 +16,60 @@ ms.topic: get-started-article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 7d97fad04a0aa549d0e3a182282f898302e8e41a
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c5ba922175a25776c6e27ee03fae9b2941235881
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD
 
 > [!IMPORTANT]
-> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen zum [Ändern und Zurücksetzen Ihres eigenen Kennworts](active-directory-passwords-update-your-own-password.md).
+> **Sind Sie hier, weil Sie Probleme bei der Anmeldung haben?** Wenn ja, helfen Ihnen die Informationen unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md) weiter.
 
-Die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen oder Entsperren ihrer Kennwörter oder Konten zu erlauben. Das System verfügt über eine ausführliche Berichterstellung zur Nutzung des Systems durch Benutzer sowie über eine Benachrichtigungsfunktion, damit Sie über eine fehlerhafte oder missbräuchliche Nutzung informiert sind.
+Die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen oder Entsperren ihrer Kennwörter oder Konten zu erlauben. Das System verfügt über eine ausführliche Berichterstellung, bei der der Benutzerzugriff auf das System nachverfolgt wird, sowie über eine Benachrichtigungsfunktion, mit der Sie über eine fehlerhafte oder missbräuchliche Nutzung informiert werden.
 
-In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionierenden Testmandanten oder einen lizenzierten Azure AD-Mandanten verfügen. Hilfe zur Einrichtung von Azure AD finden Sie im Artikel [Erste Schritte mit einem Azure-Abonnement](https://azure.microsoft.com/trial/get-started-active-directory/).
+In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionierenden Testmandanten oder einen lizenzierten Azure AD-Mandanten (Azure Active Directory) verfügen. Hilfe zur Einrichtung von Azure AD finden Sie unter [Erste Schritte mit einem Azure-Abonnement](https://azure.microsoft.com/trial/get-started-active-directory/).
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Aktivieren der SSPR für Ihren Azure AD-Mandanten
 
 1. Wählen Sie unter Ihrem vorhandenen Azure AD-Mandanten die Option **Kennwortzurücksetzung**.
 
-2. Wählen Sie auf dem Bildschirm **Eigenschaften** unter „Self-Service-Kennwortzurücksetzung aktiviert“ eine der folgenden Optionen:
-    * Niemand: Niemand kann die SSPR-Funktion nutzen.
-    * Selected (Ausgewählte): Nur Mitglieder einer bestimmten Azure AD-Gruppe, die Sie ausgewählt haben, können die SSPR-Funktion nutzen. Es wird empfohlen, eine Gruppe von Benutzern zu definieren und diese Einstellung bei der Bereitstellung als Proof of Concept zu verwenden.
-    * Alle: Alle Benutzer mit Konten unter Ihrem Azure AD-Mandanten können die SSPR-Funktion nutzen. Diese Option wird empfohlen, wenn Sie bereit sind, die Funktion nach Ausführung eines Proof of Concept im gesamten Mandanten bereitzustellen.
+2. Wählen Sie auf der Seite **Eigenschaften** unter **Self-Service-Kennwortzurücksetzung aktiviert** eine der folgenden Optionen:
+    * **None** (Keine): Niemand kann die SSPR-Funktionalität nutzen.
+    * **Selected** (Ausgewählte): Nur Mitglieder einer bestimmten Azure AD-Gruppe, die Sie ausgewählt haben, können die SSPR-Funktionalität nutzen. Es wird empfohlen, eine Gruppe mit Benutzern zu definieren und diese Einstellung zu verwenden, wenn Sie diese Funktionalität für einen Proof of Concept-Vorgang bereitstellen.
+    * **All** (Alle): Alle Benutzer mit Konten unter Ihrem Azure AD-Mandanten können die SSPR-Funktionalität nutzen. Diese Einstellung wird empfohlen, wenn Sie nach Abschluss eines Proof of Concept-Vorgangs bereit sind, die Funktion im gesamten Mandanten bereitzustellen.
 
-3. Wählen Sie in der Bildschirmansicht **Authentifizierungsmethoden** Folgendes:
-    * Anzahl von Methoden, die zurückgesetzt werden müssen: Hierfür werden eine oder zwei Methoden unterstützt.
-    * Für Benutzer verfügbare Methoden: Mindestens eine Methode ist erforderlich, aber es kann nicht schaden, wenn noch mehr Auswahl besteht.
-        * Mit der Option **E-Mail** wird eine E-Mail mit einem Code an die E-Mail-Adresse des Benutzers gesendet, die für die Authentifizierung konfiguriert ist.
-        * Mit der Option **Mobiltelefon** können Benutzer einen Anruf oder eine SMS mit einem Code unter der konfigurierten Mobiltelefonnummer erhalten.
-        * Bei der Option **Bürotelefon** erhalten Benutzer einen Anruf mit einem Code unter der konfigurierten Bürotelefonnummer.
-        * Unter **Sicherheitsfragen** besteht die folgende Auswahl:
-            * Anzahl der für die Registrierung erforderlichen Fragen: Gibt die Mindestanzahl an, die für eine erfolgreiche Registrierung erforderlich ist. Ein Benutzer kann also auch mehr Fragen beantworten, um einen Pool mit verfügbaren Fragen zu erstellen. Sie können für diese Option einen Wert von 3 bis 5 festlegen, und der Wert muss größer oder gleich der Anzahl von Fragen sein, die für das Zurücksetzen erforderlich sind.
-                * Sie können benutzerdefinierte Fragen hinzufügen, indem Sie beim Auswählen der Sicherheitsfragen auf die Schaltfläche „Benutzerdefiniert“ klicken.
-            * Anzahl der für die Zurücksetzung erforderlichen Fragen: Sie können für diese Option einen Wert von 3 bis 5 Fragen festlegen, die richtig beantwortet werden müssen, bevor das Kennwort eines Benutzers zurückgesetzt oder entsperrt werden kann.
+3. Wählen Sie auf der Seite **Authentifizierungsmethoden** Folgendes aus:
+    * **Anzahl von Methoden, die zurückgesetzt werden müssen**: Hierfür werden eine oder zwei Methoden unterstützt.
+    * **Für Benutzer verfügbare Methoden**: Mindestens eine Methode ist erforderlich, aber es kann nicht schaden, wenn noch mehr Auswahl besteht.
+        * **E-Mail**: Mit dieser Option wird eine E-Mail mit einem Code an die E-Mail-Adresse des Benutzers gesendet, die für die Authentifizierung konfiguriert ist.
+        * **Mobiltelefon**: Mit dieser Option können Benutzer einen Anruf oder eine SMS mit einem Code unter der konfigurierten Mobiltelefonnummer erhalten.
+        * **Bürotelefon**: Mit dieser Option erhalten Benutzer einen Anruf mit einem Code unter der konfigurierten Bürotelefonnummer.
+        * **Sicherheitsfragen**: Wählen Sie hier Folgendes aus:
+            * **Anzahl der für die Registrierung erforderlichen Fragen**: Das Minimum für eine erfolgreiche Registrierung. Ein Benutzer kann auswählen, dass er mehr Fragen beantworten möchte, um einen Pool mit möglichen Fragen zu erstellen. Diese Option kann auf drei bis fünf Fragen festgelegt werden und muss größer oder gleich der Anzahl von Fragen sein, die zum Zurücksetzen des Kennworts erforderlich sind. Benutzer können benutzerdefinierte Fragen hinzufügen, indem sie beim Auswählen der Sicherheitsfragen die Schaltfläche **Benutzerdefiniert** wählen.
+            * **Anzahl der für die Zurücksetzung erforderlichen Fragen**: Sie können für diese Option drei bis fünf Fragen festlegen, die richtig beantwortet werden müssen, bevor Sie zulassen, dass das Kennwort eines Benutzers zurückgesetzt oder entsperrt wird.
             
     ![Authentifizierung][Authentication]
 
-4. EMPFOHLEN: Mit der Option **Anpassung** können Sie den Link „Wenden Sie sich an Ihren Administrator.“ so ändern, dass er auf eine von Ihnen definierte Seite oder E-Mail-Adresse verweist. Es wird empfohlen, diesen Link für Ihre Benutzer beispielsweise auf eine vertraute E-Mail-Adresse oder Website für den Support festzulegen.
+4. Empfohlen: Mit der Option **Anpassung** können Sie den Link **Wenden Sie sich an Ihren Administrator.** so ändern, dass er auf eine von Ihnen definierte Seite oder E-Mail-Adresse verweist. Es wird empfohlen, diesen Link für Ihre Benutzer beispielsweise auf eine vertraute E-Mail-Adresse oder Website festzulegen, die von Ihren Benutzern bereits für Fragen an den Support verwendet wird.
 
-5. OPTIONAL: Die Bildschirmansicht **Registrierung** enthält die folgenden Optionen für Administratoren:
-    * Registrierung von Benutzern bei der Anmeldung verlangen
-    * Anzahl der Tage, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
+5. Optional: Die Seite **Registrierung** enthält folgende Optionen für Administratoren:
+    * Erzwingen der Registrierung für Benutzer bei der Anmeldung
+    * Festlegen der Anzahl von Tagen, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
 
-6. OPTIONAL: Die Bildschirmansicht **Benachrichtigung** enthält die folgenden Optionen für Administratoren:
-    * Benutzer über Kennwortzurücksetzungen benachrichtigen?
-    * Sollen alle Administratoren benachrichtigt werden, wenn andere Administratoren ihr Kennwort zurücksetzen?
+6. Optional: Die Seite **Benachrichtigungen** enthält folgende Optionen für Administratoren:
+    * Benachrichtigen von Benutzern über Kennwortzurücksetzungen
+    * Benachrichtigen aller Administratoren, wenn andere Administratoren ihr Kennwort zurücksetzen
 
-**Sie haben SSPR jetzt für Ihren Azure AD-Mandanten konfiguriert**. Ihre Benutzer können nun ihr Kennwort ohne Eingreifen des Administrators anhand der Anweisungen unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) und [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md) aktualisieren. Sie können hier aufhören, wenn Sie nur die Cloud verwenden, oder weitermachen, um die Synchronisierung von Kennwörtern in einer lokalen AD-Domäne zu konfigurieren.
+Sie haben SSPR jetzt für Ihren Azure AD-Mandanten konfiguriert. Ihre Benutzer können nun ihr Kennwort ohne Eingreifen des Administrators anhand der Anweisungen unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) und [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md) aktualisieren. Sie können den Vorgang hier beenden, wenn Sie nur in der Cloud arbeiten. Oder Sie können mit dem nächsten Abschnitt fortfahren, um die Synchronisierung von Kennwörtern für eine lokale Active Directory-Domäne zu konfigurieren.
 
 > [!IMPORTANT]
 > Testen Sie SSPR nicht als Administrator, sondern als normaler Benutzer, da Microsoft für Azure-Administratorkonten strenge Anforderungen an die Authentifizierung stellt. Weitere Informationen zur Richtlinie für Administratorkennwörter finden Sie im Artikel zu [Kennwortrichtlinien](active-directory-passwords-policy.md#administrator-password-policy-differences).
 
-## <a name="configure-synchronization-to-existing-identity-source"></a>Konfigurieren der Synchronisierung mit der vorhandenen Identitätsquelle
+## <a name="configure-synchronization-to-an-existing-identity-source"></a>Konfigurieren der Synchronisierung mit einer vorhandenen Identitätsquelle
 
-Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Sie [Azure AD Connect](./connect/active-directory-aadconnect.md) auf einem Server Ihrer Organisation installieren und konfigurieren. Mit dieser Anwendung wird die Synchronisierung von Benutzern und Gruppen von Ihrer vorhandenen Identitätsquelle mit Ihrem Azure AD-Mandanten durchgeführt.
+Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Sie [Azure AD Connect](./connect/active-directory-aadconnect.md) auf einem Server Ihrer Organisation installieren und konfigurieren. Mit dieser Anwendung wird die Synchronisierung von Benutzern und Gruppen von Ihrer vorhandenen Identitätsquelle mit Ihrem Azure AD-Mandanten durchgeführt. Weitere Informationen finden Sie unter:
 
 * [Aktualisieren der Windows Azure Active Directory-Synchronisierung und Azure Active Directory-Synchronisierung](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](./connect/active-directory-aadconnect-get-started-express.md)
@@ -78,42 +77,43 @@ Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Si
 
 ### <a name="on-premises-policy-change"></a>Änderung der lokalen Richtlinie
 
-Wenn Sie Benutzer aus einer lokalen Active Directory-Domäne synchronisieren und Benutzern die sofortige Zurücksetzung ihrer Kennwörter ermöglichen möchten, ändern Sie die lokale Kennwortrichtlinie wie folgt:
+Ändern Sie die lokale Kennwortrichtlinie wie folgt, wenn Sie Benutzer aus einer lokalen Active Directory-Domäne synchronisieren und Benutzern die sofortige Zurücksetzung ihrer Kennwörter ermöglichen möchten:
 
-**Computerkonfiguration** > **Richtlinien** > **Windows-Einstellungen** > **Sicherheitseinstellungen** > **Kontorichtlinien** > **Kennwortrichtlinie**
+1. Navigieren Sie zu **Computerkonfiguration** > **Richtlinien** > **Windows-Einstellungen** > **Sicherheitseinstellungen** > **Kontorichtlinien** > **Kennwortrichtlinie**.
 
-**Minimales Kennwortalter** – 0 Tage
+2. Legen Sie **Minimales Kennwortalter** auf **0 Tage** fest.
 
-Diese Sicherheitseinstellung bestimmt den Zeitraum (in Tagen), für den ein Kennwort verwendet werden muss, bevor der Benutzer es ändern kann. Die Einstellung **0 Tage** ermöglicht Benutzern die Verwendung der SSPR, wenn ihre Kennwörter von den Supportteams geändert werden.
+Diese Sicherheitseinstellung bestimmt den Zeitraum in Tagen, für den ein Kennwort verwendet werden muss, bevor der Benutzer es ändern kann. Wenn Sie die Einstellung für die Mindestnutzungsdauer auf **0 Tage** festlegen, können Benutzer SSPR verwenden, wenn ihre Kennwörter von den Supportteams geändert werden.
 
 ![Richtlinie][Policy]
 
-## <a name="disabling-self-service-password-reset"></a>Deaktivieren der Self-Service-Kennwortzurücksetzung
+## <a name="disable-self-service-password-reset"></a>Deaktivieren der Self-Service-Kennwortzurücksetzung
 
-Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung > Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Keine**.
+Das Deaktivieren der Self-Service-Kennwortzurücksetzung ist einfach. Öffnen Sie Ihren Azure AD-Mandanten, und navigieren Sie zu **Kennwortzurücksetzung** > **Eigenschaften**, und wählen Sie unter **Self-Service-Kennwortzurücksetzung aktiviert** die Option **Keine**.
 
 ### <a name="learn-more"></a>Weitere Informationen
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
+Die folgenden Artikel führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
-* [Wie führe ich ein erfolgreiches Rollout der SSPR durch?](active-directory-passwords-best-practices.md)
+* [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](active-directory-passwords-best-practices.md)
 * [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
-* [Haben Sie eine Frage zur Lizenzierung?](active-directory-passwords-licensing.md)
-* [Welche Daten werden von SSPR verwendet, und welche Daten sollten Sie für Ihre Benutzer angeben?](active-directory-passwords-data.md)
-* [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
-* [Welche Richtlinienoptionen stehen mit SSPR zur Verfügung?](active-directory-passwords-policy.md)
-* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
-* [Wie melde ich eine Aktivität bei SSPR?](active-directory-passwords-reporting.md)
-* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
-* [Ich glaube, ein Fehler ist aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
-* [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
+* [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
+* [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
+* [Authentifizierungsmethoden](active-directory-passwords-how-it-works.md#authentication-methods)
+* [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](active-directory-passwords-policy.md)
+* [Übersicht über die Kennwortrückschreibung](active-directory-passwords-writeback.md)
+* [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](active-directory-passwords-reporting.md)
+* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
+* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
+* [Häufig gestellte Fragen zur Kennwortverwaltung](active-directory-passwords-faq.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie gelernt, wie Sie die Self-Service-Kennwortzurücksetzung für Ihre Benutzer konfigurieren. Klicken Sie auf den Link unten zum Portal, um diese Schritte im Azure-Portal auszuführen.
+In diesem Schnellstart haben Sie gelernt, wie Sie die Self-Service-Kennwortzurücksetzung für Ihre Benutzer konfigurieren. Fahren Sie zum Ausführen dieser Schritte im Azure-Portal fort:
 
 > [!div class="nextstepaction"]
 > [Aktivieren der Self-Service-Kennwortzurücksetzung](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
 
 [Authentication]: ./media/active-directory-passwords-getting-started/sspr-authentication-methods.png "Verfügbare Azure AD-Authentifizierungsmethoden und erforderliche Menge"
 [Policy]: ./media/active-directory-passwords-getting-started/password-policy.png "Lokale Kennwortgruppenrichtlinie festgelegt auf „0 Tage“"
+

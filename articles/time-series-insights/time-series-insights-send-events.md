@@ -1,55 +1,63 @@
 ---
-title: Senden von Ereignissen an die Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
-description: "In diesem Tutorial erfahren Sie, wie Sie Ereignisse mithilfe von Push an die Time Series Insights-Umgebung übertragen."
-keywords: 
-services: tsi
-documentationcenter: 
+title: Senden von Ereignissen an eine Azure Time Series Insights-Umgebung | Microsoft-Dokumentation
+description: "In diesem Tutorial erfahren Sie, wie Sie Event Hubs erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse für die Anzeige in Azure Time Series Insights mithilfe von Push zu übertragen."
+services: time-series-insights
+ms.service: time-series-insights
 author: venkatgct
-manager: jhubbard
-editor: 
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 07/21/2017
 ms.author: venkatja
-ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MarkMcGeeAtAquent
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 543fafac63423ab874c6c8e40d91a1ce0f161987
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe von Event Hub
-
-In diesem Tutorial wird erläutert, wie Sie Event Hub erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, sehen Sie sich Ihre Umgebung in [Time Series Insights](https://insights.timeseries.azure.com) an.
+In diesem Artikel erfahren Sie, wie Sie Event Hubs erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, sehen Sie sich Ihre Umgebung in [Time Series Insights](https://insights.timeseries.azure.com) an.
 
 ## <a name="configure-an-event-hub"></a>Konfigurieren eines Event Hubs
-1. Führen Sie zum Erstellen eines Event Hubs die in der [Event Hub-Dokumentation](https://docs.microsoft.com/azure/event-hubs/event-hubs-create) beschriebenen Schritte aus.
+1. Führen Sie zum Erstellen eines Event Hubs die in der [Event Hub-Dokumentation](../event-hubs/event-hubs-create.md) beschriebenen Schritte aus.
 
-2. Erstellen Sie eine Consumergruppe, die ausschließlich von Ihrer Time Series Insights-Ereignisquelle verwendet wird.
+2. Suchen Sie über die Suchleiste nach **Event Hub**. Klicken Sie in der Liste mit den zurückgegebenen Ergebnissen auf **Event Hubs**.
 
-  > [!IMPORTANT]
-  > Achten Sie darauf, dass diese Consumergruppe nicht von einem anderen Dienst (beispielsweise durch einen Stream Analytics-Auftrag oder durch eine andere Time Series Insights-Umgebung) verwendet wird. Wenn die Consumergruppe von anderen Diensten verwendet wird, wirkt sich das negativ auf Lesevorgänge für diese Umgebung und andere Dienste aus. Wenn Sie „$Default“ als Consumergruppe verwenden, wird sie unter Umständen von anderen Lesern wiederverwendet.
+3. Klicken Sie auf den Namen Ihres Event Hubs, um ihn auszuwählen.
+
+4. Klicken Sie unter „Entitäten“ im mittleren Konfigurationsfenster erneut auf **Event Hubs**.
+
+5. Wählen Sie den Namen des Event Hubs aus, um ihn zu konfigurieren.
 
   ![Auswählen der Event Hub-Consumergruppe](media/send-events/consumer-group.png)
 
-3. Erstellen Sie auf dem Event Hub die Richtlinie „MySendPolicy“. Diese wird im CSharp-Beispiel zum Senden von Ereignissen verwendet.
+6. Klicken Sie unter **Entitäten** auf **Consumergruppen**.
+ 
+7. Erstellen Sie eine Consumergruppe, die ausschließlich von Ihrer Time Series Insights-Ereignisquelle verwendet wird.
+
+   > [!IMPORTANT]
+   > Achten Sie darauf, dass diese Consumergruppe nicht von einem anderen Dienst (beispielsweise durch einen Stream Analytics-Auftrag oder durch eine andere Time Series Insights-Umgebung) verwendet wird. Wenn die Consumergruppe von anderen Diensten verwendet wird, wirkt sich das negativ auf Lesevorgänge für diese Umgebung und andere Dienste aus. Wenn Sie „$Default“ als Consumergruppe verwenden, wird sie unter Umständen von anderen Lesern wiederverwendet.
+
+8. Klicken Sie unter der Überschrift **Einstellungen** auf **Freigegebene Zugriffsrichtlinien**.
+
+9. Erstellen Sie für den Event Hub die Richtlinie **MySendPolicy**. Diese wird im CSharp-Beispiel zum Senden von Ereignissen verwendet.
 
   ![Auswählen von „SAS-Richtlinien“ und Klicken auf „Hinzufügen“](media/send-events/shared-access-policy.png)  
 
   ![Hinzufügen der neuen SAS-Richtlinie](media/send-events/shared-access-policy-2.png)  
 
 ## <a name="create-time-series-insights-event-source"></a>Erstellen der Time Series Insights-Ereignisquelle
-1. Falls Sie noch keine Ereignisquelle erstellt haben, führen Sie [diese Schritte](time-series-insights-add-event-source.md) aus.
+1. Falls Sie noch keine Ereignisquelle erstellt haben, führen Sie [diese Schritte](time-series-insights-how-to-add-an-event-source-eventhub.md) aus.
 
-2. Geben Sie „deviceTimestamp“ als Name der timestamp-Eigenschaft an. Diese Eigenschaft wird im CSharp-Beispiel als tatsächlicher Zeitstempel verwendet. Bei der timestamp-Eigenschaft muss die Groß-/Kleinschreibung beachtet werden, und Werte müssen das Format __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ besitzen, wenn sie als JSON-Code an Event Hub gesendet werden. Sollte die Eigenschaft im Ereignis nicht vorhanden sein, wird der Zeitpunkt verwendet, zu dem der Event Hub in die Warteschlange eingereiht wurde.
+2. Geben Sie **deviceTimestamp** als Name der timestamp-Eigenschaft an. Diese Eigenschaft wird im C#-Beispiel als tatsächlicher Zeitstempel verwendet. Bei der timestamp-Eigenschaft muss die Groß-/Kleinschreibung beachtet werden, und Werte müssen das Format __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ besitzen, wenn sie als JSON-Code an Event Hub gesendet werden. Sollte die Eigenschaft im Ereignis nicht vorhanden sein, wird der Zeitpunkt verwendet, zu dem der Event Hub in die Warteschlange eingereiht wurde.
 
   ![Erstellen der Ereignisquelle](media/send-events/event-source-1.png)
 
 ## <a name="sample-code-to-push-events"></a>Beispielcode zum Übertragen von Ereignissen mithilfe von Push
-1. Navigieren Sie zur Event Hub-Richtlinie „MySendPolicy“, und kopieren Sie die Verbindungszeichenfolge mit dem Richtlinienschlüssel.
+1. Navigieren Sie zur Event Hub-Richtlinie **MySendPolicy**. Kopieren Sie die **Verbindungszeichenfolge** mit dem Richtlinienschlüssel.
 
   ![Kopieren der MySendPolicy-Verbindungszeichenfolge](media/send-events/sample-code-connection-string.png)
 
@@ -163,6 +171,7 @@ Ein JSON-Array mit zwei JSON-Objekten. Jedes JSON-Objekt wird in ein Ereignis ko
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
+
 ### <a name="sample-3"></a>Beispiel 3
 
 #### <a name="input"></a>Eingabe
@@ -235,5 +244,4 @@ Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enth�
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-* Anzeigen Ihrer Umgebung im [Time Series Insights-Portal](https://insights.timeseries.azure.com)
+Anzeigen Ihrer Umgebung im [Time Series Insights-Explorer](https://insights.timeseries.azure.com)
