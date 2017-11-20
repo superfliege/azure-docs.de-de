@@ -6,6 +6,7 @@
 ## [Anmelden mit Office 365-Konto](billing-use-existing-office-365-account-azure-subscription.md)
 ## [Registrieren für Office 365 mit einem Azure-Konto](billing-use-existing-azure-account-for-office-365-subscription.md)
 ## [Organisieren von Ressourcen mit Verwaltungsgruppen](billing-enterprise-mgmt-group-overview.md)
+## [Geld sparen mit reservierten VM-Instanzen](billing-save-compute-costs-reservations.md)
 ## [Grenzen und Kontingente](../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json)
 
 # Anleitung
@@ -17,9 +18,13 @@
 ### [Grundlegendes zu Bedingungen Ihrer Nutzung](billing-understand-your-usage.md)
 ### [Grundlegendes zu Gebühren für externe Dienste](billing-understand-your-azure-marketplace-charges.md)
 ### [Grundlegendes zur Abrechnungszuordnung für kostenlose Dienste](billing-understand-free-service-meter-mapping.md)
+### [Reservierte VM-Instanzen – Windows-Kosten](billing-reserved-instance-windows-software-costs.md)
+### [Grundlegendes zur Anwendung von Rabatten auf reservierte VM-Instanzen](billing-understand-vm-reservation-charges.md)
 ### [Grundlegendes zum Ausgabenlimit](billing-spending-limit.md)
 ### [Einrichten von Abrechnungswarnungen](billing-set-up-alerts.md)
 ### [Begleichen überfälliger Zahlungen](billing-azure-subscription-past-due-balance.md)
+### [Grundlegendes zur Nutzung reservierter Instanzen für nutzungsbasierte Zahlung](billing-understand-reserved-instance-usage.md)
+### [Grundlegendes zur Nutzung reservierter Instanzen für Enterprise](billing-understand-reserved-instance-usage-ea.md)
 
 ## Verwalten von Abonnements
 ### [Verwalten von Administratorrollen](billing-add-change-azure-subscription-administrator.md)
@@ -34,6 +39,7 @@
 ### [Aktualisieren von Zahlungsinformationen](billing-how-to-change-credit-card.md)
 ### [Verknüpfen des Office 365-Mandanten](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [Zahlen für Abonnements per Rechnung](billing-how-to-pay-by-invoice.md)
+## [Verwalten reservierter VM-Instanzen](billing-manage-reserved-vm-instance.md)
 ## Problembehandlung
 ### [Probleme bei der Registrierung](https://support.microsoft.com/en-us/help/4042959)
 ### [Karte abgelehnt](https://support.microsoft.com/en-us/help/4042960)

@@ -12,13 +12,16 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e8e97f0a0d18bafac581ce0fa31a69e385669bcf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 645f037f40893112e01117e7541322a3a547140a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="create-and-provision-a-simulated-device-using-iot-hub-device-provisioning-service-preview"></a>Erstellen und Bereitstellen eines simulierten Geräts mithilfe des IoT Hub Device Provisioning-Diensts (Vorschauversion)
+> [!div class="op_single_selector"]
+> * [TPM](quick-create-simulated-device.md)
+> * [X.509](quick-create-simulated-device-x509.md)
 
 Die folgenden Schritte zeigen, wie Sie auf Ihrem Entwicklungscomputer unter dem Windows-Betriebssystem ein simuliertes Gerät erstellen, den Windows-TPM-Simulator als [Hardwaresicherheitsmodul (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) des Geräts ausführen und dieses simulierte Gerät mithilfe des Codebeispiels mit dem Device Provisioning-Dienst und Ihrer IoT Hub-Instanz verbinden. 
 
@@ -91,7 +94,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 
 2. Wählen Sie auf Ihrem Computer in Visual Studio das Beispielprojekt **dps_client_sample** aus, und öffnen Sie die Datei **dps_client_sample.c**.
 
-3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der globale__ Geräteendpunkt. 
+3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der _globale Geräteendpunkt_. 
 
     ```c
     static const char* dps_uri = "global.azure-devices-provisioning.net";
