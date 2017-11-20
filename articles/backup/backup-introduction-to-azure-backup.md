@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 9/29/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3be12abaaedf5b0d66a484cbee48fe3df77f63fe
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1d26fb8caacdd775b62d704a4b474e68e2f5a3ec
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -224,7 +224,10 @@ Ein Recovery Services-Tresor ist eine Onlinespeicherentität in Azure, die zum S
 Sicherungstresore, die auf Azure Service Manager basieren, waren die erste Version eines Tresors. Recovery Services-Tresore, die um die Azure Resource Manager-Modellfunktionen ergänzt wurden, sind die zweite Version. Eine vollständige Beschreibung der Funktionsunterschiede finden Sie im [Übersichtsartikel zu Recovery Services-Tresoren](backup-azure-recovery-services-vault-overview.md). Sicherungstresors werden weiterhin unterstützt, Sie können aber keine neuen Sicherungstresore im Azure-Portal mehr erstellen. Sie müssen das Azure-Portal nutzen, um Ihre Sicherungstresore zu verwalten.
 
 > [!IMPORTANT]
-> Sie können nun ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchführen. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> Nach dem **15. Oktober 2017** können mit PowerShell keine Sicherungstresore mehr erstellt werden. <br/> Bis zum **1. November 2017** wird für alle verbleibenden Sicherungstresore automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
+> Sie können Ihre Sicherungstresore auf Recovery Services-Tresore upgraden. Detaillierte Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md). Microsoft empfiehlt, ein Upgrade für Ihre Sicherungstresore auf Recovery Services-Tresore durchzuführen.<br/> Nach dem **30. November 2017** können mit PowerShell keine Sicherungstresore mehr erstellt werden. <br/>
+Ab dem 30. November 2017 gilt Folgendes:
+- Für alle verbleibenden Sicherungstresore wird automatisch ein Upgrade auf Recovery Services-Tresore durchgeführt.
+- Der Zugriff auf Ihre Sicherungsdaten im klassischen Portal wird nicht möglich sein. Verwenden Sie stattdessen das Azure-Portal, um auf Ihre Sicherungsdaten in Recovery Services-Tresoren zuzugreifen.
 
 
 

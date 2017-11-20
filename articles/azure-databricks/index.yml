@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure Databricks (Vorschauversion) – Dokumentation
 metadata:
   title: Azure Databricks-Dokumentation – Tutorials | Microsoft-Dokumentation
-  description: 'Es wird beschrieben, wie Sie Databricks in Microsoft Azure verwenden.'
+  description: 'Verwenden Sie den Schnellstart und die anderen hier angegebenen Links, um sich über die Nutzung von Azure Databricks zu informieren. Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die für die Microsoft Azure-Clouddienstplattform optimiert ist.'
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2017
   ms.author: nitinme
 abstract:
-  description: 'Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die für die Microsoft Azure-Clouddienstplattform optimiert ist. Databricks wurde zusammen mit den Gründern von Apache Spark entworfen und ist in Azure integriert, um Folgendes zu ermöglichen: Einrichtung per Klick, optimierte Workflows und einen interaktiven Arbeitsbereich für die Kollaboration zwischen Data Scientists, Data Engineers und Business Analysts. Verwenden Sie den Schnellstart und die anderen hier angegebenen Links, um sich über die Nutzung von Azure Databricks zu informieren.'
+  description: 'Verwenden Sie den Schnellstart und die anderen hier angegebenen Links, um sich über die Nutzung von Azure Databricks zu informieren. Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die für die Microsoft Azure-Clouddienstplattform optimiert ist. Databricks wurde zusammen mit den Gründern von Apache Spark entworfen und ist in Azure integriert, um Folgendes zu ermöglichen: Einrichtung per Klick, optimierte Workflows und einen interaktiven Arbeitsbereich für die Kollaboration zwischen Data Scientists, Data Engineers und Business Analysts.'
 sections:
   - title: Fünfminütige Schnellstarts
     items:

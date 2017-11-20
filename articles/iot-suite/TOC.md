@@ -25,11 +25,8 @@
 ###### [Simulierte Daten](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
 ###### [Verwenden echter Sensoren](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
 ###### [Implementieren eines Firmwareupdates](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
-#### Verbinden Ihres NUC-Gateways
-##### [Simulierte Daten](iot-suite-v1-gateway-kit-get-started-simulator.md)
-##### [Verwenden eines echten Sensors](iot-suite-v1-gateway-kit-get-started-sensortag.md)
 
-### Anleitung
+### Anleitungen
 #### Verbinden eines simulierten Geräts
 ##### [C unter Windows](iot-suite-v1-connecting-devices.md)
 ##### [C unter Linux](iot-suite-v1-connecting-devices-linux.md)
@@ -51,7 +48,7 @@
 ### [Übersicht über die Lösung für verbundene Factorys](iot-suite-connected-factory-overview.md)
 ### [Exemplarische Vorgehensweise für die Lösung für verbundene Factorys](iot-suite-connected-factory-sample-walkthrough.md)
 
-# Anleitung
+# Anleitungen
 ## Remoteüberwachung
 ### [Ausführen der erweiterten Überwachung](iot-suite-remote-monitoring-monitor.md)
 ### [Erkennen von Problemen mithilfe von Regeln](iot-suite-remote-monitoring-automate.md)

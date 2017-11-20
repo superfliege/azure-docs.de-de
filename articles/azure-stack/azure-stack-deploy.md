@@ -3,8 +3,8 @@ title: "Voraussetzungen für die Azure Stack Development Kit-Bereitstellung | Mi
 description: "Erfahren Sie, welche Umgebungs- und Hardwareanforderungen für das Azure Stack Development Kit (Cloudbetreiber) gelten."
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: jeffgilb
+manager: femila
 editor: 
 ms.assetid: 32a21d9b-ee42-417d-8e54-98a7f90f7311
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/11/2017
-ms.author: erikje
-ms.openlocfilehash: 73e7efb7d789fe12846d68066c0927bb123831a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/14/2017
+ms.author: jeffgilb
+ms.openlocfilehash: 8a0d23e14ef50034d5f9595cf154c3513a09c464
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Voraussetzungen für die Azure Stack-Bereitstellung
 
@@ -40,7 +40,7 @@ Stellen Sie vor der Bereitstellung des [Azure Stack Development Kits](azure-stac
 
 \*Sie benötigen mehr als diese empfohlene Kapazität, wenn Sie viele [Marketplace-Elemente](azure-stack-download-azure-marketplace-item.md) aus Azure hinzufügen möchten.
 
-**Laufwerkkonfiguration des Datenträgers:** Alle Datenlaufwerke müssen den gleichen Typ (SAS oder SATA) und die gleiche Kapazität aufweisen. Wenn SAS-Laufwerke verwendet werden, müssen diese über einen einzelnen Pfad angefügt werden (MPIO, Multipfad-Unterstützung wird nicht bereitgestellt).
+**Laufwerkkonfiguration des Datenträgers:** Alle Datenlaufwerke müssen den gleichen Typ (SAS, SATA oder NVMe) und die gleiche Kapazität aufweisen. Wenn SAS-Laufwerke verwendet werden, müssen diese über einen einzelnen Pfad angefügt werden (MPIO, Multipfad-Unterstützung wird nicht bereitgestellt).
 
 **HBA-Konfigurationsoptionen**
 
@@ -56,6 +56,7 @@ Stellen Sie vor der Bereitstellung des [Azure Stack Development Kits](azure-stac
 * RAID-SSD (wenn der Medientyp nicht angegeben/unbekannt\* ist)
 * SATA-SSD + SATA-HDD
 * SAS-SSD + SAS-HDD
+* NVMe
 
 \*RAID-Controller ohne Durchleitungsfunktion können den Medientyp nicht erkennen. Domänencontroller dieser Art kennzeichnen HDD und SSD als unbekannt. In diesem Fall wird die SSD als persistenter Speicher und nicht als Cachegerät verwendet. Daher können Sie das Development Kit auf diesen SSDs bereitstellen.
 

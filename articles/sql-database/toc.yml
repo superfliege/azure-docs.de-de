@@ -370,6 +370,8 @@
           items:
             - name: Bereitstellen der Beispiel-App
               href: saas-multitenantdb-get-started-deploy.md
+            - name: Bereitstellen von Mandanten
+              href: saas-multitenantdb-provision-and-catalog.md
             - name: Überwachen der Datenbankleistung
               href: saas-multitenantdb-performance-monitoring.md
             - name: Ausführen von Ad-hoc-Abfragen
