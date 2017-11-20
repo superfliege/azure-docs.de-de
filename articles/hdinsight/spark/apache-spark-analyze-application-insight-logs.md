@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2017
+ms.date: 11/10/2017
 ms.author: larryfr
-ms.openlocfilehash: 6ea3114a30b0ae313efb14495f5556e5484bef06
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: d7e4e064a451831c7cf0753064522d0a0b4f5d63
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-spark-on-hdinsight"></a>Analysieren von Application Insights-Telemetrieprotokollen mit Spark in HDInsight
 
@@ -61,7 +61,7 @@ Application Insights kann für den fortlaufenden Export von Telemetriedaten in B
 
 * **Blobtyp**: HDInsight unterstützt nur Blockblobs. Application Insights verwendet standardmäßig Blockblobs, deshalb sollten Sie standardmäßig mit HDInsight arbeiten.
 
-Informationen zum Hinzufügen von zusätzlichem Speicher zu einem vorhandenen HDInsight-Cluster finden Sie im Dokument [Hinzufügen zusätzlicher Speicherkonten](../hdinsight-hadoop-add-storage.md).
+Informationen zum Hinzufügen von Speicher zu einem vorhandenen Cluster finden Sie im Dokument [Hinzufügen zusätzlicher Speicherkonten](../hdinsight-hadoop-add-storage.md).
 
 ### <a name="data-schema"></a>Datenschema
 
@@ -79,7 +79,7 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
 ## <a name="analyze-the-data-pyspark"></a>Analysieren der Daten: PySpark
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt **Quick Links** zunächst **Cluster Dashboards** und dann im Abschnitt für Clusterdashboards die Option **Jupyter Notebook** aus.
 
     ![Clusterdashboards](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
 
@@ -222,7 +222,7 @@ Verwenden Sie zum Hinzufügen des Azure-Speicherkontos zu einem vorhandenen Clus
 
 ## <a name="analyze-the-data-scala"></a>Analysieren der Daten: Scala
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt zunächst **Quick Links** und dann **Cluster-Dashboards** aus,und wählen Sie dann auf dem Blatt für Cluster-Dashboards **Jupyter Notebook** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com)Ihren Spark in HDInsight-Cluster aus. Wählen Sie im Abschnitt **Quick Links** zunächst **Cluster Dashboards** und dann im Abschnitt für Clusterdashboards die Option **Jupyter Notebook** aus.
 
     ![Clusterdashboards](./media/apache-spark-analyze-application-insight-logs/clusterdashboards.png)
 2. Wählen Sie oben rechts auf der Jupyter-Seite **Neu** und anschließend **Scala** aus. Eine neue Browserregisterkarte, die ein Scala-basiertes Jupyter-Notebook enthält, wird angezeigt.
