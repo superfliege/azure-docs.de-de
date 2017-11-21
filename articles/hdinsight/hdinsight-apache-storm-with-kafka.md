@@ -13,15 +13,15 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/12/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 97b89b9c6ef88c1611ccad7963a0aa8e7eb82318
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 50a22877241c77ccb1a7df24ab7df006094a439f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>Verwenden von Apache Kafka (Vorschau) mit Storm in HDInsight
+# <a name="use-apache-kafka-with-storm-on-hdinsight"></a>Verwenden von Apache Kafka mit Storm in HDInsight
 
 Erfahren Sie, wie Sie mithilfe von Apache Storm Lese- und Schreibvorgänge in Apache Kafka ausführen. In diesem Beispiel wird außerdem erläutert, wie Sie Daten aus einer Storm-Topologie in das von HDInsight verwendete HDFS-kompatible Dateisystem speichern.
 
@@ -68,7 +68,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, Kafka-Cluster und Storm-Clu
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Die Azure Resource Manager-Vorlage befindet sich unter **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v1.json**. Er erstellt die folgenden Ressourcen:
+    Die Azure Resource Manager-Vorlage befindet sich unter **https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v2.json**. Die folgenden Ressourcen werden erstellt:
     
     * Azure-Ressourcengruppe
     * Azure Virtual Network
