@@ -45,7 +45,7 @@ Klicken Sie zunächst im Azure-Portal für Ihren API Management-Dienst auf **Ent
 
 ![Herausgeberportal][api-management-management-console]
 
-Klicken Sie auf der linken Seite im Menü **API Management **auf** APIs**, und klicken Sie anschließend auf **Echo API**.
+Klicken Sie auf der linken Seite im Menü **API Management** auf **APIs** , und klicken Sie anschließend auf **Echo API**.
 
 ![Echo API][api-management-echo-api]
 
