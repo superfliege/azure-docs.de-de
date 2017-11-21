@@ -1,5 +1,5 @@
 ---
-title: Kopieren von lokalen Daten in die Cloud mithilfe von Azure Data Factory | Microsoft-Dokumentation
+title: Kopieren von Daten aus SQL Server in Blob Storage mithilfe von Azure Data Factory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe der selbstgehosteten Integration Runtime in Azure Data Factory Daten aus einem lokalen Datenspeicher in die Azure-Cloud kopieren.
 services: data-factory
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/14/2017
 ms.author: jingwang
-ms.openlocfilehash: 24a4255a23f0b9b9da5d8c3cefeefb8fe250f2f1
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: afd7735712d03110a67509a7e94d336219a65b34
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="tutorial-copy-data-between-on-premises-and-cloud"></a>Tutorial: Kopieren von Daten zwischen lokalen Quellen und der Cloud
+# <a name="tutorial-copy-data-from-on-premises-sql-server-to-azure-blob-storage"></a>Tutorial: Kopieren von Daten aus einer lokalen SQL Server-Instanz in Azure Blob Storage
 In diesem Tutorial verwenden Sie Azure PowerShell, um eine Data Factory-Pipeline zu erstellen, die Daten aus einer lokalen SQL Server-Datenbank in einen Azure Blob Storage verschiebt. Sie erstellen und verwenden eine selbstgehostete Integration Runtime (IR) von Azure Data Factory, die eine Integration von lokalen Datenspeichern und Clouddatenspeichern ermöglicht.  Informationen zur Verwendung von anderen Tools/SDKs zum Erstellen einer Data Factory finden Sie unter [Schnellstarts](quickstart-create-data-factory-dot-net.md).
 
 Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dienst. Eine Einführung in den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](introduction.md). 
@@ -30,13 +30,13 @@ Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dien
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Erstellen einer Data Factory
-> * Erstellen einer selbstgehosteten Integration Runtime
+> * Erstellen einer Data Factory.
+> * Erstellen Sie eine selbstgehostete Integration Runtime.
 > * Erstellen von verknüpften SQL Server- und Azure Storage-Diensten 
 > * Erstellen von SQL Server- und Azure Blob-Datasets
 > * Erstellen einer Pipeline mit Kopieraktivität zum Verschieben der Daten
 > * Starten einer Pipelineausführung
-> * Überwachen der Pipelineausführung
+> * Überwachen der Pipelineausführung.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
