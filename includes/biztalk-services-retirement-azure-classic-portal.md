@@ -1,0 +1,2 @@
+> [!IMPORTANT]
+> Das Portal ist veraltet. Informationen zum Verwalten Ihrer MABS-Instanzen finden Sie unter [REST API for Managing BizTalk Services on Azure](https://msdn.microsoft.com/library/azure/dn232347.aspx) (REST-API für die Verwaltung von BizTalk Services in Azure).
