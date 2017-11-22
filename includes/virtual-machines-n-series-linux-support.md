@@ -6,7 +6,11 @@
 
 | Verteilung | Treiber |
 | --- | --- | 
-| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>7.3 (CentOS-basiert) | NVIDIA GRID 4.3, Treiberbranch R367|
+| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>7.3 (CentOS-basiert) | NVIDIA GRID 5.0, Treiberbranch R384|
+
+> [!NOTE]
+> Microsoft vertreibt Installationsprogramme für NVIDIA GRID-Treiber für virtuelle NV-Computer weiter. Installieren Sie auf virtuellen Azure NV-Computern nur diese GRID-Treiber. In diesen Treibern ist die Lizenzierung für virtuelle GRID-GPU-Software in Azure enthalten.
+>
 
 ### <a name="nc-instances---nvidia-tesla-drivers"></a>NC-Instanzen – NVIDIA Tesla-Treiber
 | Verteilung | Treiber |

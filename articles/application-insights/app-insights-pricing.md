@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5b3d1b9e0d176f29fbcc90410f1fe80085ec5fa8
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ecb6dd0343c36a0f1571b416817aad5e7a52fccb
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Verwalten von Preisen und Datenvolumen in Application Insights
 
@@ -39,7 +39,7 @@ Aktuelle Preise in Ihrer Währung finden Sie auf der [Application Insights-Seite
 Der Basic-Tarif ist die Standardeinstellung, wenn eine neue Application Insights-Ressource erstellt wird. Er ist für die meisten Kunden ausreichend.
 
 * Im Basic-Tarif erfolgt die Abrechnung nach Datenvolumen: Anzahl von Bytes an Telemetriedaten, die von Application Insights empfangen werden. Das Datenvolumen wird anhand der Größe des nicht komprimierten JSON-Datenpakets gemessen, das Application Insights aus Ihrer Anwendung empfängt.
-Für [in Analytics importierte Tabellendaten](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics-import) wird das Datenvolumen als die unkomprimierte Größe von Dateien gemessen, die an Application Insights gesendet werden.  
+Für [in Analytics importierte Tabellendaten](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import) wird das Datenvolumen als die unkomprimierte Größe von Dateien gemessen, die an Application Insights gesendet werden.  
 * Für jede App ist 1 GB kostenlos. Wenn Sie also nur experimentieren oder entwickeln, ist es unwahrscheinlich, dass Sie dafür zahlen müssen.
 * [Live Metrics Stream](app-insights-live-stream.md)-Daten werden bei der Preisgestaltung nicht berechnet.
 * [Fortlaufender Export](app-insights-export-telemetry.md) ist im Basic-Tarif gegen eine Zusatzgebühr pro GB verfügbar.
@@ -110,7 +110,7 @@ Die Gebühren für Application Insights werden Ihrer Azure-Rechnung hinzugefügt
 Es gibt drei Möglichkeiten zum Begrenzen des gesendeten Datenvolumens:
 
 * **Stichprobenerstellung**: Dieser Mechanismus kann die Menge der von Ihrem Server und Ihren Client-Apps gesendeten Telemetriedaten bei minimaler Verzerrung von Metriken verringern. Dies ist Ihr wichtigstes Tool zum Optimieren der Menge der Daten. Erfahren Sie mehr über die [Merkmale von Stichproben](app-insights-sampling.md). 
-* **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource über das Azure-Portal wird dieser Wert auf 500 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource in Visual Studio ist niedrig (nur 32,3 MB pro Tag) und nur zum Vereinfachen von Tests gedacht. In diesem Fall ist es vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. Die Obergrenze ist 500 GB pro Tag, es sei denn, Sie haben einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr angefordert. Seien Sie beim Festlegen der täglichen Obergrenze aufmerksam, da es Ihre Absicht sein muss, **die tägliche Obergrenze niemals zu erreichen**, weil dann für den Rest des Tages Daten verloren gehen und Sie nicht in der Lage sein werden, Ihre Anwendung zu überwachen. Diese Einstellung können Sie auf dem Blatt „Volumenbegrenzung pro Tag“ ändern, das über das Blatt „Datenverwaltung“ geöffnet wird (siehe unten). Beachten Sie, dass einige Abonnementtypen Guthaben aufweisen, das nicht für Application Insights verwendet werden kann. Wenn für das Abonnement ein Ausgabenlimit gilt, enthält das Blatt mit der täglichen Obergrenze Anweisungen, wie es aufzuheben ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.  
+* **Tägliche Obergrenze**: Beim Erstellen einer Application Insights-Ressource über das Azure-Portal ist dieser Wert auf 100 GB pro Tag festgelegt. Die Standardeinstellung beim Erstellen einer Application Insights-Ressource in Visual Studio ist niedrig (nur 32,3 MB pro Tag) und nur zum Vereinfachen von Tests gedacht. In diesem Fall ist es vorgesehen, dass der Benutzer vor dem Bereitstellen der App in der Produktion die tägliche Obergrenze erhöht. Die Obergrenze liegt bei 1.000 GB pro Tag, es sei denn, Sie haben einen höheren Maximalwert für eine Anwendung mit hohem Datenverkehr angefordert. Seien Sie beim Festlegen der täglichen Obergrenze aufmerksam, da es Ihre Absicht sein muss, **die tägliche Obergrenze niemals zu erreichen**, weil dann für den Rest des Tages Daten verloren gehen und Sie nicht in der Lage sein werden, Ihre Anwendung zu überwachen. Diese Einstellung können Sie auf dem Blatt „Volumenbegrenzung pro Tag“ ändern, das über das Blatt „Datenverwaltung“ geöffnet wird (siehe unten). Beachten Sie, dass einige Abonnementtypen Guthaben aufweisen, das nicht für Application Insights verwendet werden kann. Wenn für das Abonnement ein Ausgabenlimit gilt, enthält das Blatt mit der täglichen Obergrenze Anweisungen, wie es aufzuheben ist und wie die tägliche Obergrenze über 32,3 MB pro Tag erhöht werden kann.  
 * **Drosselung**: Hiermit wird die Datenrate auf 32.000 Ereignisse pro Sekunde ein (gemittelt über 1 Minute) eingeschränkt. 
 
 

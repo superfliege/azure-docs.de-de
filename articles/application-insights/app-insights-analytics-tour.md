@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: 26a5854735bd197fb114fce409a093251dc5c2f0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33fedd765acde666eef280ba7dfa72536bf1bd2
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Einführung in Analytics in Application Insights
 [Analytics](app-insights-analytics.md) ist die leistungsfähige Suchfunktion von [Application Insights](app-insights-overview.md). Auf diesen Seiten wird die Log Analytics-Abfragesprache beschrieben.
@@ -54,7 +54,7 @@ Erweitern Sie ein Element, um die Details anzuzeigen:
 ![Wählen Sie „Tabelle“ aus, und verwenden Sie „Spalten konfigurieren“.](./media/app-insights-analytics-tour/040.png)
 
 > [!NOTE]
-> Klicken Sie auf den Anfang einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse neu zu ordnen. Beachten Sie aber, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Diese Sortierung zeigt Ihnen nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente an. Verwenden Sie den Operator `top` oder `sort`, um die Elemente zuverlässig zu sortieren.
+> Klicken Sie auf die Überschrift einer Spalte, um die im Webbrowser zur Verfügung stehenden Ergebnisse anders zu sortieren. Beachten Sie aber, dass die Anzahl von in den Browser heruntergeladen Zeilen bei einem großen Resultset beschränkt ist. Durch diese Sortierung wird lediglich das zurückgegebene Resultset sortiert. Es werden nicht unbedingt die tatsächlichen höchsten oder niedrigsten Elemente angezeigt. Verwenden Sie den Operator `top` oder `sort`, um die Elemente zuverlässig zu sortieren.
 >
 >
 
@@ -92,7 +92,7 @@ Zeigen Sie die ersten n Zeilen, sortiert nach einer bestimmten Spalte an:
 
 Das Ergebnis wäre identisch, würde jedoch etwas langsamer ausgeführt. (Sie können auch `order` schreiben, wobei es sich um einen Alias von `sort` handelt.)
 
-Die Spaltenüberschriften in der Tabellenansicht können auch zum Sortieren der Ergebnisse auf dem Bildschirm verwendet werden. Wenn Sie aber `take` oder `top` verwendet haben, um nur einen Teil einer Tabelle abzurufen, ordnen Sie nur die Reihenfolge der abgerufenen Datensätze neu.
+Die Spaltenüberschriften in der Tabellenansicht können auch zum Sortieren der Ergebnisse auf dem Bildschirm verwendet werden. Wenn Sie aber `take` oder `top` verwendet haben, um nur einen Teil einer Tabelle abzurufen, werden durch Klicken auf die Überschrift nur die abgerufenen Datensätze neu sortiert.
 
 ## <a name="wherehttpsdocsloganalyticsioquerylanguagequerylanguagewhereoperatorhtml-filtering-on-a-condition"></a>[where:](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)Filtern nach einer Bedingung
 
@@ -115,8 +115,9 @@ Der `where` -Operator akzeptiert einen booleschen Ausdruck. Dazu einige wichtige
 
 <!---Read all about [scalar expressions]().--->
 
-### <a name="getting-the-right-type"></a>Abrufen des richtigen Typs
-Suchen Sie nach nicht erfolgreichen Anforderungen:
+### <a name="find-unsuccessful-requests"></a>Suchen nach nicht erfolgreichen Anforderungen
+
+Konvertieren Sie einen Zeichenfolgenwert in eine ganze Zahl, um den Größer-als-Vergleich zu verwenden:
 
 ```AIQL
 
@@ -127,7 +128,7 @@ Suchen Sie nach nicht erfolgreichen Anforderungen:
 `resultCode` has type string, so we must cast it app-insights-analytics-reference.md#casts for a numeric comparison.
 --->
 
-## <a name="time"></a>Time
+## <a name="time"></a>Zeit
 
 Standardmäßig sind Ihre Abfragen auf die letzten 24 Stunden beschränkt. Doch Sie können diesen Wert ändern:
 
@@ -240,7 +241,7 @@ Wir können das Ergebnis auch in Anforderungen mit unterschiedlichen Namen unter
 
 ![](./media/app-insights-analytics-tour/420.png)
 
-`Summarize` erfasst die Datenpunkte im Datenstrom und fasst sie zu Gruppen zusammen, für die die `by`-Klausel gleich ausgewertet wird. Jeder Wert im Ausdruck `by` – jeder Vorgangsname im obigen Beispiel – ergibt eine Zeile in der Ergebnistabelle.
+`Summarize` erfasst die Datenpunkte im Datenstrom und fasst sie zu Gruppen zusammen, für die die `by`-Klausel gleich ausgewertet wird. Jeder Wert im Ausdruck `by` (jeder individuelle Vorgangsname im obigen Beispiel) ergibt eine Zeile in der Ergebnistabelle.
 
 Außerdem können Ergebnisse nach der Tageszeit gruppiert werden:
 
@@ -402,7 +403,7 @@ Wie viele Sitzungen unterschiedlicher Längen gibt es?
     | project d = sessionDuration + datetime("2016-01-01"), count_
 ```
 
-Die letzte Zeile wird zum Konvertieren von Datum und Uhrzeit benötigt. Derzeit wird die x-Achse eines Diagramms nur als Skalar angezeigt, wenn sie das Datum/Uhrzeit-Format aufweist.
+Die letzte Zeile wird zum Konvertieren von Datum und Uhrzeit benötigt. Derzeit wird die x-Achse eines Diagramms nur als Skalar angezeigt, wenn es sich um ein Datum/eine Uhrzeit handelt.
 
 Die `where` -Klausel schließt einmalige Sitzungen (sessionDuration==0) aus und legt die Länge der x-Achse fest.
 

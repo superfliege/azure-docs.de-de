@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 11/10/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e5dc642399ae58120f1757ffacff45a4188681d
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 56a2aff21a728d5ac0355516fc6988512c062b4c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -57,6 +57,12 @@ Die Features des Azure Cosmos DB .NET Core SDKs sind mit den Features der neuest
 > [!NOTE] 
 > Das Azure Cosmos DB .NET Core SDK ist noch nicht mit UWP-Apps (Universelle Windows-Plattform) kompatibel. Senden Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com), um Informationen zum .NET Core SDK zu erhalten, mit dem UWP-Apps unterstützt werden.
 
+### <a name="a-name170170"></a><a name="1.7.0"/>1.7.0
+ 
+ * Brandingänderung von Azure DocumentDB in Azure Cosmos DB in der API-Referenzdokumentation, in Metadateninformationen in Assemblys sowie im NuGet-Paket. 
+ * Verfügbarmachung von Diagnoseinformationen und Wartezeit aus der Antwort gesendeter Anforderungen mit dem direkten Konnektivitätsmodus. Die Eigenschaftsnamen für die Klasse „ResourceResponse“ lauten „RequestDiagnosticsString“ und „RequestLatency“.
+ * Für dieses SDK muss die neueste Version des Azure Cosmos DB-Emulators vorhanden sein. Diese können Sie unter https://aka.ms/cosmosdb-emulator herunterladen.
+ 
 ### <a name="a-name160160"></a><a name="1.6.0"/>1.6.0
 
 * Mehrere Korrekturen und Verbesserungen hinsichtlich der Zuverlässigkeit wurden hinzugefügt.
@@ -144,6 +150,7 @@ Wenn Sie Fragen zu diesem SDK haben, stellen Sie diese bei [StackOverflow](http:
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.7.0](#1.7.0) |10. November 2017 |--- |
 | [1.6.0](#1.6.0) |17. Oktober 2017 |--- |
 | [1.5.1](#1.5.1) |02. Oktober 2017 |--- |
 | [1.5.0](#1.5.0) |10. August 2017 |--- | 

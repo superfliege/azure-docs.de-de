@@ -15,22 +15,24 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: 1a40c4cc064b32aced7e976f40f6ed6a57e62204
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 1860ede19202566947b68b715e6bd354f64c1085
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="deploy-openshift-origin-in-azure"></a>Bereitstellen von OpenShift Origin in Azure
 
-Es gibt mehrere Möglichkeiten, OpenShift Origin in Azure bereitzustellen. Sie können manuell die erforderlichen Azure-Infrastrukturkomponenten bereitstellen und dann die [Dokumentation](https://docs.openshift.org/3.6/welcome/index.html) von OpenShift Origin befolgen.
-Sie können auch eine vorhandene Resource Manager-Vorlage verwenden, die die Bereitstellung des OpenShift Origin-Clusters vereinfacht. Eine solche Vorlage finden Sie [hier](https://github.com/Microsoft/openshift-origin).
+Sie können eine von zwei Methoden verwenden, um OpenShift Origin in Azure bereitzustellen:
 
-## <a name="deploy-using-the-openshift-origin-template"></a>Bereitstellen mithilfe der OpenShift Origin-Vorlage
+- Sie können manuell die erforderlichen Azure-Infrastrukturkomponenten bereitstellen und dann die [Dokumentation](https://docs.openshift.org/3.6/welcome/index.html) von OpenShift Origin befolgen.
+- Sie können auch eine vorhandene [Ressourcen-Manager-Vorlage](https://github.com/Microsoft/openshift-origin) verwenden, die die Bereitstellung des OpenShift Origin-Clusters vereinfacht.
 
-Verwenden Sie den `appId` Wert des zuvor erstellten Dienstprinzipals für den `aadClientId`-Parameter.
+## <a name="deploy-by-using-the-openshift-origin-template"></a>Bereitstellen mithilfe der OpenShift Origin-Vorlage
 
-Das folgende Beispiel erstellt die Parameterdatei **azuredeploy.parameters.json** mit allen erforderlichen Eingaben.
+Verwenden Sie den Wert `appId` des zuvor erstellten Dienstprinzipals für den `aadClientId`-Parameter.
+
+Das folgende Beispiel erstellt die Parameterdatei „azuredeploy.parameters.json“ mit allen erforderlichen Eingaben.
 
 ```json
 {
@@ -92,13 +94,13 @@ Das folgende Beispiel erstellt die Parameterdatei **azuredeploy.parameters.json*
 }
 ```
 
-### <a name="deploy-using-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
+### <a name="deploy-by-using-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
 
 
 > [!NOTE] 
-> Der folgende Befehl erfordert Azure CLI 2.0.8 oder höher. Sie können die Azure CLI-Version mit dem `az --version`-Befehl überprüfen. Informationen zum Aktualisieren der CLI-Version finden Sie unter [Installieren der Azure CLI 2.0]( /cli/azure/install-azure-cli).
+> Der folgende Befehl erfordert Azure CLI 2.0.8 oder höher. Sie können die CLI-Version mit dem `az --version`-Befehl überprüfen. Informationen zum Aktualisieren der CLI-Version finden Sie unter [Installieren der Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-Im folgende Beispiel werden der OpenShift-Cluster und alle zugehörigen Ressourcen in der Ressourcengruppe myResourceGroup mit dem Bereitstellungsnamen myOpenShiftCluster bereitgestellt. Auf die Vorlage wird direkt aus dem GitHub-Repository verwiesen. Außerdem wird die lokale Parameterdatei **azuredeploy.parameters.json** verwendet.
+Im folgende Beispiel werden der OpenShift-Cluster und alle zugehörigen Ressourcen in der Ressourcengruppe myResourceGroup mit dem Bereitstellungsnamen myOpenShiftCluster bereitgestellt. Auf die Vorlage wird direkt aus dem GitHub-Repository verwiesen. Dazu wird eine lokale Parameterdatei namens „azuredeploy.parameters.json“ verwendet.
 
 ```azurecli 
 az group deployment create -g myResourceGroup --name myOpenShiftCluster \
@@ -135,4 +137,4 @@ az group delete --name myResourceGroup
 
 - [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
 - [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-troubleshooting.md)
-- [Getting Started with OpenShift Origin (Erste Schritte mit OpenShift Origin)](https://docs.openshift.org/latest/getting_started/index.html)
+- [Getting started with OpenShift Origin (Erste Schritte mit OpenShift Origin)](https://docs.openshift.org/latest/getting_started/index.html)

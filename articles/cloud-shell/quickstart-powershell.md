@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: fd1d340bc0408eaeb0b7b18235df109224eae5f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 995a5bf0b28f6bfa0e501f5930b9efcad9041b8c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Schnellstart für PowerShell in Azure Cloud Shell
+# <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Schnellstartanleitung für PowerShell in Azure Cloud Shell (Vorschauversion)
 
 Dieses Dokument erläutert die Verwendung von PowerShell in Cloud Shell im [Azure-Portal](https://aka.ms/PSCloudPreview).
 
@@ -227,7 +227,7 @@ Sie können auch zuerst zum Verzeichnis `virtualMachines` navigieren und `Enter-
 
 ### <a name="discover-webapps"></a>Erkunden von WebApps
 
-Durch den Wechsel in den `WebApps`-Ordner können Sie einfach zu Ihren Speicherressourcen navigieren.
+Durch den Wechsel in den Ordner `WebApps` können Sie ganz einfach zu Ihren Web-App-Ressourcen navigieren.
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -243,15 +243,15 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 
 
-# You can use Azure cmdlets to Start/Stop your web apps for example,
+# You can use Azure cmdlets to Start/Stop your web apps
 PS Azure:\MySubscriptionName\WebApps> Start-AzureRmWebApp -Name mywebapp1 -ResourceGroupName MyResourceGroup1
 
 Name           State    ResourceGroup        EnabledHostNames                   Location
 ----           -----    -------------        ----------------                   --------
 mywebapp1      Running  MyResourceGroup1     {mywebapp1.azurewebsites.net ...   West US
 
-# Refresh the current state with -force
-PS Azure:\MySubscriptionName\WebApps> dir -force
+# Refresh the current state with -Force
+PS Azure:\MySubscriptionName\WebApps> dir -Force
 
     Directory: Azure:\MySubscriptionName\WebApps
 
@@ -266,7 +266,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ## <a name="list-available-commands"></a>Auflisten verfügbarer Befehle
 
-Geben Sie unter dem `Azure`-Laufwerk `Get-AzureRmCommand` ein, um kontextabhängige Azure-Befehle abzurufen.
+Geben Sie unter dem Laufwerk `Azure` die Zeichenfolge `Get-AzureRmCommand` ein, um kontextabhängige Azure-Befehle zu erhalten.
 
 Alternativ können Sie immer `Get-Command *azurerm* -Module AzureRM.*` verwenden, um die verfügbaren Azure-Befehle zu ermitteln.
 
@@ -282,7 +282,7 @@ Geben Sie `Get-Help` ein, um Informationen zu PowerShell in Azure Cloud Shell ab
 PS Azure:\> Get-Help
 ```
 
-Für einen bestimmten Befehl können Sie weiterhin „Get-Help“ gefolgt von einem Cmdlet ausführen. Beispiel:
+Für einen bestimmten Befehl können Sie weiterhin „Get-Help“ gefolgt von einem Cmdlet ausführen.
 
 ``` Powershell
 PS Azure:\> Get-Help Get-AzureRmVM
@@ -290,7 +290,7 @@ PS Azure:\> Get-Help Get-AzureRmVM
 
 ## <a name="use-azure-file-storage-to-store-your-data"></a>Verwenden von Azure File Storage zum Speichern Ihrer Daten
 
-Sie können ein Skript erstellen, z. B. `helloworld.ps1`, und es in Ihrem clouddrive-Verzeichnis speichern, um es für verschiedene Shellsitzungen zu verwenden.
+Sie können ein Skript erstellen (beispielsweise `helloworld.ps1`) und es in Ihrem `CloudDrive` speichern, um es für verschiedene Shellsitzungen zu verwenden.
 
 ``` Powershell
 cd C:\users\ContainerAdministrator\CloudDrive
@@ -310,13 +310,13 @@ Informationen zum Erstellen von Profilen finden Sie unter [Informationen zu Prof
 
 ## <a name="use-git"></a>Verwenden von Git
 
-Wenn Sie in Cloud Shell ein Git-Repository klonen möchten, müssen Sie ein [persönliches Zugriffstoken][githubtoken] erstellen und es als Benutzername verwenden. Nachdem Sie über das Token verfügen, klonen Sie das Repository wie folgt:
+Wenn Sie in Cloud Shell ein Git-Repository klonen möchten, müssen Sie ein [persönliches Zugriffstoken][githubtoken] erstellen und es als Benutzername verwenden. Wenn Sie über das Token verfügen, gehen Sie wie folgt vor, um das Repository zu klonen:
 
  ``` PowerShell
   git clone https://<your-access-token>@github.com/username/repo.git
 
 ```
-Da Sitzungen in Cloud Shell nicht beibehalten werden, wenn Sie sich abmelden oder das Zeitlimit der Sitzung erreicht wurde, ist die Git-Konfigurationsdatei bei der nächsten Anmeldung nicht vorhanden. Damit Ihre Git-Konfiguration erhalten bleibt, müssen Sie Ihre .gitconfig-Datei in Ihrem `CloudDrive` speichern und sie kopieren oder einen Symlink erstellen, wenn die `CloudShell` gestartet wird. Verwenden Sie den folgenden Codeausschnitt aus Ihrer „profile.ps1“, um einen Symlink zum `CloudDrive` zu erstellen.
+Da Sitzungen in Cloud Shell nicht beibehalten werden, wenn Sie sich abmelden oder das Zeitlimit der Sitzung erreicht wurde, ist die Git-Konfigurationsdatei bei der nächsten Anmeldung nicht mehr vorhanden. Damit Ihre Git-Konfiguration erhalten bleibt, müssen Sie Ihre GITCONFIG-Datei in Ihrem `CloudDrive` speichern und sie kopieren oder einen Symlink erstellen, wenn Cloud Shell gestartet wird. Verwenden Sie den folgenden Codeausschnitt aus Ihrer „profile.ps1“, um einen Symlink zum `CloudDrive` zu erstellen.
 
  ``` PowerShell
  

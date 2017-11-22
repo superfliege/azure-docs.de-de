@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 11/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a13a5777161ab18840501d7d7e1d52192c22315
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB-Node.js-SDK: Anmerkungen zu Releases und Ressourcen
 > [!div class="op_single_selector"]
@@ -60,6 +60,14 @@ ms.lasthandoff: 10/11/2017
 </table></br>
 
 ## <a name="release-notes"></a>Versionshinweise
+
+### <a name="1.14.0"/>1.14.0</a>
+* Unterstützung für Sitzungskonsistenz hinzugefügt.
+* Für dieses SDK muss die neueste Version des Azure Cosmos DB-Emulators vorhanden sein. Diese können Sie unter https://aka.ms/cosmosdb-emulator herunterladen.
+
+### <a name="1.13.0"/>1.13.0</a>
+* Partitionsübergreifende Abfragen sind jetzt aufteilungssicher.
+* Unterstützung für Ressourcenlinks mit führenden und nachgestellten Schrägstrichen (und entsprechende Tests) hinzugefügt.
 
 ### <a name="1.12.2"/>1.12.2</a>
 *   npm-Dokumentation wurde berichtigt.
@@ -177,6 +185,8 @@ Anforderungen an Cosmos DB mithilfe eines deaktivierten SDK werden vom Dienst ab
 
 | Version | Herausgabedatum | Deaktivierungstermine |
 | --- | --- | --- |
+| [1.14.0](#1.14.0) |09. November 2017 |--- |
+| [1.13.0](#1.13.0) |11. Oktober 2017 |--- |
 | [1.12.2](#1.12.2) |10. August 2017 |--- |
 | [1.12.1](#1.12.1) |10. August 2017 |--- |
 | [1.12.0](#1.12.0) |10. Mai 2017 |--- |

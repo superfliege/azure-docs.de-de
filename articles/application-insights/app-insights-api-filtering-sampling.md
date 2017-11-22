@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: borooji;mbullwin
-ms.openlocfilehash: 9261f44a0c0400a0a8d908b0ff72318c637771de
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 5f4db2e79575202d3d9fa1601fb182c7a0881338
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Filterung und Vorverarbeitung von Telemetriedaten im Application Insights-SDK
 
@@ -335,6 +335,9 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 * Mit Telemetrieprozessoren können Sie ein Telemetrieelement vollständig ersetzen oder verwerfen.
 * Telemetrieprozessoren verarbeiten keine Telemetrie von Leistungsindikatoren.
 
+## <a name="troubleshooting-applicationinsightsconfig"></a>Behandeln von Problemen mit „ApplicationInsights.config“
+* Vergewissern Sie sich, dass der vollqualifizierte Typname und der Assemblyname korrekt sind.
+* Vergewissern Sie sich, dass sich die Datei „applicationinsights.config“ in Ihrem Ausgabeverzeichnis befindet und auf dem neuesten Stand ist.
 
 ## <a name="reference-docs"></a>Referenz
 * [API-Übersicht](app-insights-api-custom-events-metrics.md)

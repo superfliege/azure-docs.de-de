@@ -12,15 +12,15 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 9eb39989bdec330e47e6233be5c1347ff716bed2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: df767617842d5f331b5c4dda6d87d6a999ee1d1b
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>Verwenden Sie strukturiertes Spark-Streaming mit Kafka (Vorschau) auf HDInsight
+# <a name="use-spark-structured-streaming-with-kafka-on-hdinsight"></a>Verwenden von strukturiertem Spark-Streaming mit Kafka in HDInsight
 
 Erfahren Sie, wie Sie strukturiertes Spark-Streaming verwenden, um Daten aus Apache Kafka auf Azure HDInsight zu lesen.
 
@@ -52,7 +52,7 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
     Diese Vorlage erstellt die folgenden Ressourcen:
 
-    * Ein Kafka-auf-HDInsight-3.5-Cluster.
+    * Ein Kafka-auf-HDInsight-3.6-Cluster.
     * Ein Spark-auf-HDInsight-3.6-Cluster.
     * Ein Azure Virtual Network, das die HDInsight-Cluster enthält.
 

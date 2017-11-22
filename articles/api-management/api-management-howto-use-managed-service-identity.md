@@ -11,22 +11,22 @@ ms.workload: integration
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: apimpm
-ms.openlocfilehash: 70bf207cc173caf7d8cae3c4c9111ee2f427405b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: ded0809fa90e98b2e845d328fbeec6d21507c46b
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="how-to-use-azure-managed-service-identity-in-azure-api-management"></a>Verwenden der verwalteten Azure-Dienstidentität in Azure API Management
+# <a name="use-azure-managed-service-identity-in-azure-api-management"></a>Verwenden der verwalteten Azure-Dienstidentität in Azure API Management
 
 > [!Note]
 > Die verwaltete Dienstidentität für Azure API Management befindet sich derzeit in der Vorschauversion.
 
-In diesem Thema erfahren Sie, wie Sie eine verwaltete Dienstidentität für eine API Management-Dienstinstanz erstellen und auf andere Ressourcen zugreifen. Mithilfe einer von Azure Active Directory (AAD) generierten verwalteten Dienstidentität kann Ihre API Management-Instanz einfach und sicher auf andere mit AAD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die verwaltete Dienstidentität von Azure verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zur verwalteten Azure-Dienstidentität finden Sie in der [Übersicht über die verwaltete Dienstidentität](../active-directory/msi-overview.md).
+In diesem Artikel erfahren Sie, wie Sie eine verwaltete Dienstidentität für eine API Management-Dienstinstanz erstellen und auf andere Ressourcen zugreifen. Mithilfe einer von Azure Active Directory (Azure AD) generierten verwalteten Dienstidentität kann Ihre API Management-Instanz einfach und sicher auf andere mit Azure AD geschützte Ressourcen wie Azure Key Vault zugreifen. Da die verwaltete Dienstidentität von Azure verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zur verwalteten Azure-Dienstidentität finden Sie unter [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/msi-overview.md).
 
-## <a name="creating-an-api-management-instance-with-an-identity-using-an-azure-resource-manager-template"></a>Erstellen einer API Management-Instanz mit einer Identität anhand einer Azure Resource Manager-Vorlage
+## <a name="create-an-api-management-instance-with-an-identity-by-using-a-resource-manager-template"></a>Erstellen einer API Management-Instanz mit einer Identität anhand einer Resource Manager-Vorlage
 
-Eine API Management-Instanz kann mit einer Identität erstellt werden, indem die folgende Eigenschaft in die Ressourcendefinition aufgenommen wird. 
+Sie können eine API Management-Instanz mit einer Identität erstellen, indem die folgende Eigenschaft in die Ressourcendefinition aufgenommen wird: 
 
 ```json
 "identity" : {
@@ -34,9 +34,9 @@ Eine API Management-Instanz kann mit einer Identität erstellt werden, indem die
 }
 ```
 
-Hierdurch erhält Azure die Anweisung, die Identität für Ihre API Management-Instanz zu erstellen und zu verwalten. 
+Diese Eigenschaft weist Azure an, die Identität für Ihre API Management-Instanz zu erstellen und zu verwalten. 
 
-Eine vollständige Vorlage kann beispielsweise wie folgt aussehen:
+Eine vollständige Azure Resource Manager-Vorlage kann beispielsweise wie folgt aussehen:
 
 ```json
 {
@@ -109,13 +109,13 @@ Eine vollständige Vorlage kann beispielsweise wie folgt aussehen:
 }
 ```
 
-## <a name="obtaining-a-certificate-from-azure-key-vault"></a>Anfordern eines Zertifikats von Azure Key Vault
+## <a name="obtain-a-certificate-from-azure-key-vault"></a>Anfordern eines Zertifikats von Azure Key Vault
 
-Das folgenden Beispiel zeigt, wie Sie ein Zertifikat von Azure Key Vault erhalten. Es umfasst die folgenden Schritte:
+Das folgende Beispiel zeigt, wie Sie ein Zertifikat von Azure Key Vault erhalten. Es umfasst die folgenden Schritte:
 
-* Erstellen einer API Management-Instanz mit einer Identität
-* Aktualisieren der Zugriffsrichtlinien einer Azure Key Vault-Instanz und Gestatten des Abrufs von Geheimnissen aus diesem Key Vault durch die API Management-Instanz
-* Aktualisieren der API Management-Instanz durch Festlegen eines benutzerdefinierten Domänennamens mithilfe eines Zertifikats aus der Key Vault-Instanz
+1. Erstellen einer API Management-Instanz mit einer Identität
+2. Aktualisieren der Zugriffsrichtlinien einer Azure Key Vault-Instanz und Gestatten des Abrufs von Geheimnissen aus diesem Key Vault durch die API Management-Instanz
+3. Aktualisieren der API Management-Instanz durch Festlegen eines benutzerdefinierten Domänennamens über ein Zertifikats aus der Key Vault-Instanz
 
 > [!Important]
 > Wenn die Objektversion des Zertifikats nicht angegeben wird, erhält API Management automatisch die neuere Version des Zertifikats, nachdem sie in Key Vault hochgeladen wurde. 
@@ -245,7 +245,8 @@ Das folgenden Beispiel zeigt, wie Sie ein Zertifikat von Azure Key Vault erhalte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur verwalteten Azure-Dienstidentität
-  * [Übersicht über verwaltete Dienstidentitäten](../active-directory/msi-overview.md)
-  * [Weitere Azure Resource Manager-Vorlagen](https://github.com/Azure/azure-quickstart-templates)
+Weitere Informationen zur verwalteten Azure-Dienstidentität:
+
+* [Verwaltete Dienstidentität für Azure-Ressourcen](../active-directory/msi-overview.md)
+* [Azure-Ressourcen-Manager-Vorlagen](https://github.com/Azure/azure-quickstart-templates)
 

@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: denlee
 ms.custom: mvc
-ms.openlocfilehash: b1419e5aad9446b9d96450cfad79b200cda9a518
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613956416d35687c5f2fe0123a9a59182390b440
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-graph-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Graph-API in .NET
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen. 
@@ -53,7 +53,6 @@ Zunächst erstellen wir ein Azure Cosmos DB-Konto im Azure-Portal.
 
 > [!TIP]
 > * Besitzen Sie bereits ein Azure Cosmos DB-Konto? Wenn dies der Fall ist, fahren Sie mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort.
-> * Besaßen Sie einmal ein Azure DocumentDB-Konto? Wenn dies der Fall ist, ist Ihr Konto jetzt ein Azure Cosmos DB-Konto, und Sie können mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fortfahren.  
 > * Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie bitte die Schritte unter [Azure Cosmos DB-Emulator](local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten Ihrer Visual Studio-Projektmappe](#SetupVS) fort. 
 >
 > 
@@ -86,7 +85,7 @@ Navigieren Sie im Azure-Portal zu Ihrem Azure Cosmos DB-Konto, klicken Sie auf *
 
 Kopieren Sie den URI vom Portal, und fügen Sie ihn über `Endpoint` in die obige Endpunkteigenschaft ein. Kopieren Sie anschließend den PRIMÄRSCHLÜSSEL aus dem Portal, und fügen Sie ihn in die obige `AuthKey`-Eigenschaft ein. 
 
-![Screenshot des Azure-Portals, das vom Tutorial zum Erstellen einer C#-Anwendung verwendet wird. Zeigt ein Azure Cosmos DB-Konto, wobei die SCHLÜSSEL-Schaltfläche in der Azure Cosmos DB-Navigation und der URI und die PRIMÄRSCHLÜSSEL-Werte auf dem Blatt „Schlüssel“ hervorgehoben sind.][Schlüssel] 
+![Screenshot des Azure-Portals, das im Tutorial zum Erstellen einer C#-Anwendung verwendet wird. Zeigt ein Azure Cosmos DB-Konto, wobei die SCHLÜSSEL-Schaltfläche in der Azure Cosmos DB-Navigation und der URI und die PRIMÄRSCHLÜSSEL-Werte auf dem Blatt „Schlüssel“ hervorgehoben sind.](./media/tutorial-develop-graph-dotnet/keys.png) 
  
 ## <a id="instantiate"></a>Instanziieren des DocumentClient 
 Erstellen Sie als Nächstes eine neue Instanz des **DocumentClient**.  

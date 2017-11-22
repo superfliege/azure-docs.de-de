@@ -6,29 +6,28 @@ documentationcenter: na
 author: tfitzmac
 manager: timlt
 editor: tysonn
-ms.assetid: 7ae0ffa3-c8da-4151-bdcc-8f4f69290fb4
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 060680fd4a7ce6e0cde406cc4a8f6f3a21d3c588
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2144e3527b44e3cf508d23fedf7abb4cda595bbf
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
-In diesem Thema erfahren Sie mehr zum Azure Resource Manager-Bereitstellungsmodell und zum klassischen Bereitstellungsmodell, zum Zustand Ihrer Ressourcen und zu den Gründen für die Wahl des für Ihre Ressourcen verwendeten Bereitstellungsmodells. Das Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sind zwei unterschiedliche Methoden zum Bereitstellen und Verwalten Ihrer Azure-Lösungen. Sie nutzen sie unter Verwendung von zwei verschiedenen API-Sätzen, und die bereitgestellten Ressourcen weisen unter Umständen erhebliche Unterschiede auf. Die beiden Modelle sind nicht vollständig kompatibel. In diesem Thema werden diese Unterschiede beschrieben.
+In diesem Artikel wird sowohl das Azure Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell erläutert. Das Resource Manager-Bereitstellungsmodell und das klassische Bereitstellungsmodell sind zwei unterschiedliche Methoden zum Bereitstellen und Verwalten Ihrer Azure-Lösungen. Sie nutzen sie unter Verwendung von zwei verschiedenen API-Sätzen, und die bereitgestellten Ressourcen weisen unter Umständen erhebliche Unterschiede auf. Die beiden Modelle sind nicht miteinander kompatibel. In diesem Artikel werden diese Unterschiede beschrieben.
 
 Um die Bereitstellung und Verwaltung der Ressourcen zu vereinfachen, empfiehlt Microsoft die Verwendung von Resource Manager für alle neuen Ressourcen. Darüber hinaus empfiehlt Microsoft nach Möglichkeit die erneute Bereitstellung vorhandener Ressourcen über den Resource Manager.
 
 Falls der Resource Manager neu für Sie ist, ist es ratsam, zuerst die Terminologiedefinitionen unter [Übersicht über Azure Resource Manager](resource-group-overview.md)durchzulesen.
 
 ## <a name="history-of-the-deployment-models"></a>Verlauf der Bereitstellungsmodelle
-In Azure war ursprünglich nur das klassische Bereitstellungsmodell verfügbar. In diesem Modell war jede Ressource unabhängig von den anderen vorhanden. Zusammengehörige Ressourcen konnten nicht gruppiert werden. Stattdessen mussten Sie manuell nachverfolgen, aus welchen Ressourcen die Lösung oder Anwendung bestand, und daran denken, sie mit einem koordinierten Ansatz zu verwalten. Zum Bereitstellen einer Lösung mussten Sie entweder jede Ressource einzeln über das klassische Portal oder ein Skript erstellen, mit dem alle Ressourcen in der richtigen Reihenfolge bereitgestellt wurden. Beim Löschen einer Lösung mussten Sie jede Ressource einzeln löschen. Es war nicht einfach möglich, Richtlinien für die Zugriffssteuerung für zusammengehörige Ressourcen anzuwenden und zu aktualisieren. Außerdem gab es keinen Weg, Tags auf Ressourcen anzuwenden, um diese zur Unterstützung der Überwachung Ihrer Ressourcen und der Abrechnungsverwaltung mit Begriffen zu versehen.
+In Azure war ursprünglich nur das klassische Bereitstellungsmodell verfügbar. In diesem Modell war jede Ressource unabhängig von den anderen vorhanden. Zusammengehörige Ressourcen konnten nicht gruppiert werden. Stattdessen mussten Sie manuell nachverfolgen, aus welchen Ressourcen die Lösung oder Anwendung bestand, und daran denken, sie mit einem koordinierten Ansatz zu verwalten. Zum Bereitstellen einer Lösung mussten Sie entweder jede Ressource einzeln über das Portal oder ein Skript erstellen, mit dem alle Ressourcen in der richtigen Reihenfolge bereitgestellt wurden. Beim Löschen einer Lösung mussten Sie jede Ressource einzeln löschen. Es war nicht einfach möglich, Richtlinien für die Zugriffssteuerung für zusammengehörige Ressourcen anzuwenden und zu aktualisieren. Außerdem gab es keinen Weg, Tags auf Ressourcen anzuwenden, um diese zur Unterstützung der Überwachung Ihrer Ressourcen und der Abrechnungsverwaltung mit Begriffen zu versehen.
 
 Im Jahr 2014 wurden Resource Manager und das Konzept der Ressourcengruppen von Azure eingeführt. Eine Ressourcengruppe ist ein Container für Ressourcen, die über einen gemeinsamen Lebenszyklus verfügen. Das Resource Manager-Bereitstellungsmodell bietet verschiedene Vorteile:
 
@@ -39,20 +38,14 @@ Im Jahr 2014 wurden Resource Manager und das Konzept der Ressourcengruppen von A
 * Sie können JavaScript Object Notation (JSON) verwenden, um die Infrastruktur für Ihre Lösung zu definieren. Die JSON-Datei wird als Resource Manager-Vorlage bezeichnet.
 * Sie können die Abhängigkeiten zwischen Ressourcen definieren, sodass diese in der richtigen Reihenfolge bereitgestellt werden.
 
-Nach Einführung des Ressourcen-Managers wurden alle Ressourcen nachträglich zu Standardressourcengruppen hinzugefügt. Wenn Sie jetzt eine Ressource über die klassische Bereitstellung erstellen, wird diese automatisch in einer standardmäßigen Ressourcengruppe für diesen Dienst erstellt, auch wenn Sie während der Bereitstellung diese Ressourcengruppe nicht angegeben haben. Jedoch bedeutet die bloße Tatsache, dass eine Ressource sich in einer Ressourcengruppe befindet, noch nicht, dass diese Ressource in das Ressourcen-Manager-Modell konvertiert wurde. Im nächsten Abschnitt wird beschrieben, wie die einzelnen Dienste die beiden Bereitstellungsmodelle behandeln. 
+Nach Einführung des Ressourcen-Managers wurden alle Ressourcen nachträglich zu Standardressourcengruppen hinzugefügt. Wenn Sie jetzt eine Ressource über die klassische Bereitstellung erstellen, wird diese automatisch in einer standardmäßigen Ressourcengruppe für diesen Dienst erstellt, auch wenn Sie während der Bereitstellung diese Ressourcengruppe nicht angegeben haben. Jedoch bedeutet die bloße Tatsache, dass eine Ressource sich in einer Ressourcengruppe befindet, noch nicht, dass diese Ressource in das Ressourcen-Manager-Modell konvertiert wurde.
 
 ## <a name="understand-support-for-the-models"></a>Grundlagen der Unterstützung von Modellen
-Bei der Entscheidung, welches Bereitstellungsmodell Sie für Ihre Ressourcen verwenden, sollten drei Szenarien berücksichtigt werden:
+Es sind drei Szenarien möglich:
 
-1. Der Dienst unterstützt Resource Manager und stellt nur einen einzelnen Typ bereit.
-2. Der Dienst unterstützt Resource Manager, stellt aber zwei Typen bereit: einen für Resource Manager und einen für das klassische Modell. Dieses Szenario gilt nur für virtuelle Computer, Speicherkonten und virtuelle Netzwerke.
-3. Der Dienst weist keine Unterstützung von Resource Manager auf.
-
-Informationen zur Ermittlung, ob ein Dienst Resource Manager unterstützt, finden Sie unter [Ressourcenanbieter und -typen](resource-manager-supported-services.md).
-
-Wenn der gewünschte Dienst Resource Manager nicht unterstützt, müssen Sie weiterhin die klassische Bereitstellung verwenden.
-
-Falls der Dienst Resource Manager unterstützt und **kein** virtueller Computer, Speicherkonto oder virtuelles Netzwerk ist, können Sie Resource Manager ohne Komplikationen nutzen.
+1. Cloud Services bietet keine Unterstützung für das Resource Manager-Bereitstellungsmodell.
+2. Virtuelle Computer, Speicherkonten und virtuelle Netzwerke unterstützen sowohl das Resource Manager-Bereitstellungsmodell als auch das klassische Bereitstellungsmodell.
+3. Alle anderen Azure-Dienste unterstützen Resource Manager.
 
 Für virtuelle Computer, Speicherkonten und virtuelle Netzwerke gilt: Wenn die Ressource über die klassische Bereitstellung erstellt wurde, müssen Sie diese weiterhin mit klassischen Vorgängen ausführen. Falls der virtuelle Computer, das Speicherkonto oder das virtuelle Netzwerk per Resource Manager-Bereitstellung erstellt wurde, müssen Sie weiterhin Resource Manager-Vorgänge verwenden. Diese Unterscheidung kann verwirrend sein, wenn Ihr Abonnement eine Mischung aus Ressourcen enthält, die mit Resource Manager und mit der klassischen Bereitstellung erstellt wurden. Diese Ressourcenkombination kann zu unerwarteten Ergebnissen führen, da die Ressourcen nicht die gleichen Vorgänge unterstützen.
 
@@ -81,66 +74,6 @@ Get-AzureRmVM -ResourceGroupName ExampleGroup
 ```
 
 Nur Ressourcen, die mit dem Ressourcen-Manager erstellt wurden, unterstützen Tags. Sie können keine Tags auf klassische Ressourcen anwenden.
-
-## <a name="resource-manager-characteristics"></a>Merkmale des Ressourcen-Managers
-Zum besseren Verständnis der beiden Modelle sehen wir uns nun die Merkmale der Resource Manager-Typen an:
-
-* Erstellt mit dem [Azure-Portal](https://portal.azure.com/).
-  
-     ![Azure-Portal](./media/resource-manager-deployment-model/portal.png)
-  
-     Für Compute-, Speicher- und Netzwerkressourcen haben Sie die Möglichkeit, entweder den Resource Manager oder die klassische Bereitstellung zu nutzen. Wählen Sie **Ressourcen-Manager**.
-  
-     ![Resource Manager-Bereitstellung](./media/resource-manager-deployment-model/select-resource-manager.png)
-* Erstellt mit der Resource Manager-Version der Azure PowerShell-Cmdlets. Diese Befehle haben das Format *Verb-AzureRmNoun*.
-
-  ```powershell
-  New-AzureRmResourceGroupDeployment
-  ```
-
-* Erstellt mit der [Azure Resource Manager-REST-API](https://docs.microsoft.com/rest/api/resources/) für REST-Vorgänge.
-* Erstellt mit Befehlen der Azure-Befehlszeilenschnittstelle, die im Modus **arm** ausgeführt werden.
-  
-  ```azurecli
-  azure config mode arm
-  azure group deployment create
-  ```
-
-* Der Name des Ressourcentyps enthält nicht das Wort **(klassisch)** . Die folgende Abbildung zeigt den Typ **Speicherkonto**.
-  
-    ![Web-App](./media/resource-manager-deployment-model/resource-manager-type.png)
-
-## <a name="classic-deployment-characteristics"></a>Merkmale der klassischen Bereitstellung
-Das klassische Bereitstellungsmodell ist Ihnen möglicherweise unter den Bezeichnungen "Service-Management-Modell" oder "Dienstverwaltungsmodell" bekannt.
-
-Ressourcen, die im klassischen Bereitstellungsmodell erstellt wurden, weisen folgende Merkmale auf:
-
-* Erstellt mit dem [klassischen Portal](https://manage.windowsazure.com)
-  
-     ![klassischen Portal](./media/resource-manager-deployment-model/classic-portal.png)
-  
-     Alternativ können Sie das Azure-Portal nutzen und eine **klassische** Bereitstellung (für Compute-, Speicher- und Netzwerkressourcen) festlegen.
-  
-     ![Klassische Bereitstellung](./media/resource-manager-deployment-model/select-classic.png)
-* Erstellt mit der Dienstverwaltungsversion der Azure PowerShell-Cmdlets. Diese Befehlsnamen haben das Format *Verb-AzureNoun*.
-
-  ```powershell
-  New-AzureVM
-  ```
-
-* Erstellt mit der [Dienstverwaltungs-REST-API](https://msdn.microsoft.com/library/azure/ee460799.aspx) für REST-Vorgänge.
-* Erstellt mit Befehlen der Azure-Befehlszeilenschnittstelle, die im Modus **asm** ausgeführt werden.
-
-  ```azurecli
-  azure config mode asm
-  azure vm create
-  ```
-   
-* Der Name des Ressourcentyps enthält das Wort **(klassisch)** . Die folgende Abbildung zeigt den Typ **Speicherkonto (klassisch)**.
-  
-    ![Klassischer Typ](./media/resource-manager-deployment-model/classic-type.png)
-
-Sie können das Azure-Portal zur Verwaltung von Ressourcen verwenden, die über die klassische Bereitstellung erstellt wurden.
 
 ## <a name="changes-for-compute-network-and-storage"></a>Änderungen für Compute-, Netzwerk- und Speicherressourcen
 Das folgende Diagramm zeigt die Compute-, Netzwerk- und Speicherressourcen, die über Resource Manager bereitgestellt werden.
@@ -176,9 +109,9 @@ In der folgenden Tabelle werden die Änderungen in der Interaktion von Compute-,
 | Verfügbarkeitsgruppen |Die Plattformverfügbarkeit wurde durch das Konfigurieren des gleichen „AvailabilitySetName“ auf den virtuellen Computern angezeigt. Die maximale Anzahl von Fehlerdomänen betrug 2. |Verfügbarkeitsgruppen sind Ressourcen, die vom Microsoft.Compute-Anbieter bereitgestellt werden. Virtuelle Computer, für die eine hohe Verfügbarkeit erforderlich ist, müssen in der Verfügbarkeitsgruppe enthalten sein. Die maximale Anzahl von Fehlerdomänen beträgt nun 3. |
 | Affinitätsgruppen |Zum Erstellen von virtuellen Netzwerken waren Affinitätsgruppen erforderlich. Dies ist jedoch seit der Einführung regionaler virtueller Netzwerke nicht mehr erforderlich. |Zur Vereinfachung ist das Affinitätsgruppenkonzept in über den Azure-Ressourcen-Manager verfügbaren APIs nicht vorhanden. |
 | Lastenausgleich |Durch das Erstellen von Clouddiensten ist ein impliziter Lastenausgleich für die bereitgestellten virtuellen Computer verfügbar. |Der Lastenausgleich ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die primäre Netzwerkschnittstelle der virtuellen Computer, die mit einem Lastenausgleich versehen werden soll, muss auf das Lastenausgleichsmodul verweisen. Lastenausgleichsmodule können intern oder extern sein. Eine Lastenausgleichsinstanz verweist auf den Back-End-Pool von IP-Adressen, die die NIC eines virtuellen Computers enthalten (optional) und auf eine öffentliche oder private IP-Adresse für den Lastenausgleich (optional). [Weitere Informationen](../virtual-network/resource-groups-networking.md) |
-| Virtuelle IP-Adresse |Cloud Services erhalten eine Standard-VIP (virtuelle IP-Adresse), wenn einem Clouddienst ein virtueller Computer hinzugefügt wird. Die virtuelle IP-Adresse ist dem impliziten Lastenausgleich zugeordnet. |Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. Dynamische öffentliche IP-Adressen können einem Lastenausgleich zugewiesen werden. Öffentliche IP-Adressen können mithilfe von Sicherheitsgruppen gesichert werden. |
-| Reservierte IP-Adresse |Sie können eine IP-Adresse in Azure reservieren und einem Clouddienst zuordnen, um die Persistenz der IP-Adresse sicherzustellen. |Die Öffentliche IP-Adresse kann im Modus „Static“ erstellt werden. Sie bietet die gleiche Funktionalität wie eine reservierte IP-Adresse („Reserved IP Address“). Statische öffentliche IP-Adressen können nur direkt einem Lastenausgleich zugewiesen werden. |
-| Öffentliche IP-Adresse (PIP) pro virtuellem Computer |Öffentliche IP-Adressen können virtuellen Computern auch direkt zugeordnet werden. |Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. Netzwerkschnittstellen können jedoch nur dynamische öffentliche IP-Adressen zugewiesen werden, um direkt öffentliche IPs pro virtuellem Computer abzurufen. |
+| Virtuelle IP-Adresse |Cloud Services erhält eine Standard-VIP (virtuelle IP-Adresse), wenn einem Clouddienst ein virtueller Computer hinzugefügt wird. Die virtuelle IP-Adresse ist dem impliziten Lastenausgleich zugeordnet. |Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. Dynamische öffentliche IP-Adressen können einem Lastenausgleich zugewiesen werden. Öffentliche IP-Adressen können mithilfe von Sicherheitsgruppen gesichert werden. |
+| Reservierte IP-Adresse |Sie können eine IP-Adresse in Azure reservieren und einem Clouddienst zuordnen, um die Persistenz der IP-Adresse sicherzustellen. |Die öffentliche IP-Adresse kann im statischen Modus erstellt werden. Sie bietet die gleiche Funktionalität wie eine reservierte IP-Adresse. |
+| Öffentliche IP-Adresse (PIP) pro virtuellem Computer |Öffentliche IP-Adressen können virtuellen Computern auch direkt zugeordnet werden. |Die öffentliche IP-Adresse ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Die öffentliche IP-Adresse kann statisch (reserviert) oder dynamisch sein. |
 | Endpunkte |Eingabeendpunkte mussten auf virtuellen Computern konfiguriert werden, um Konnektivität für bestimmte Ports zu ermöglichen. Zu den häufigen Verbindungsmodi mit virtuellen Computern gehört das Einrichten von Eingabeendpunkten. |Es können auch eingehende NAT-Regeln auf Lastenausgleichsmodulen konfiguriert werden, um Endpunkte auf bestimmten Ports zum Herstellen einer Verbindung mit den virtuellen Computern zu aktivieren. |
 | DNS-Name |Clouddienste erhielten implizite global eindeutige DNS-Namen. Beispiel: `mycoffeeshop.cloudapp.net`. |DNS-Namen sind optionale Parameter, die auf öffentlichen IP-Adressressourcen angegeben werden können. Der FQDN weist das folgende Format auf: `<domainlabel>.<region>.cloudapp.azure.com`. |
 | Netzwerkschnittstellen |Primäre und sekundäre Netzwerkschnittstellen und deren Eigenschaften wurden als Netzwerkkonfiguration eines virtuellen Computers definiert. |Die Netzwerkschnittstelle ist eine Ressource, die vom Microsoft.Network-Anbieter bereitgestellt wird. Der Lebenszyklus von Netzwerkschnittstellen ist nicht an virtuelle Computer gebunden. Die Netzwerkschnittstelle verweist auf die dem virtuellen Computer zugewiesene IP-Adresse (erforderlich), das Subnetz des virtuellen Netzwerks für den virtuellen Computer (erforderlich) und eine Netzwerksicherheitsgruppe (optional). |
@@ -194,13 +127,13 @@ Wenn Sie bereit zum Migrieren Ihrer Ressourcen von der klassischen Bereitstellun
 4. [Migrieren von IaaS-Ressourcen aus dem klassischen Bereitstellungsmodell zu Azure Resource Manager mithilfe der Azure-Befehlszeilenschnittstelle](../virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-**Kann ich mit Azure Resource Manager einen virtuellen Computer erstellen, der in einem virtuellen Netzwerk bereitgestellt wird, das mithilfe der klassischen Bereitstellung erstellt wurde?**
+**Kann ich mit Resource Manager einen virtuellen Computer erstellen, der in einem virtuellen Netzwerk bereitgestellt wird, das mithilfe der klassischen Bereitstellung erstellt wurde?**
 
-Dies wird nicht unterstützt. Sie können Azure Resource Manager nicht zum Bereitstellen eines virtuellen Computers in einem virtuellen Netzwerk verwenden, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde.
+Diese Konfiguration wird nicht unterstützt. Sie können Resource Manager nicht zum Bereitstellen eines virtuellen Computers in einem virtuellen Netzwerk verwenden, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde.
 
-**Kann ich mit Azure Resource Manager einen virtuellen Computer aus einem Benutzerimage erstellen, das mithilfe der Azure-Dienstverwaltungs-APIs erstellt wurde?**
+**Kann ich mit Resource Manager einen virtuellen Computer aus einem Benutzerimage erstellen, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde?**
 
-Dies wird nicht unterstützt. Sie können jedoch die VHD-Dateien aus einem Speicherkonto kopieren, das mithilfe der Dienstverwaltungs-APIs erstellt wurde, und einem neuen Konto hinzufügen, das mit Azure Resource Manager erstellt wurde.
+Diese Konfiguration wird nicht unterstützt. Sie können jedoch die VHD-Dateien aus einem Speicherkonto kopieren, das mithilfe des klassischen Bereitstellungsmodells erstellt wurde, und einem neuen Konto hinzufügen, das mit Resource Manager erstellt wurde.
 
 **Welche Auswirkungen gibt es auf das Kontingent meines Abonnements?**
 

@@ -1,29 +1,26 @@
 ---
-title: "Konfigurieren der Authentifizierung und Autorisierung für eine benutzerdefinierte Anwendung, die die Azure Time Series Insights-API aufruft | Microsoft-Dokumentation"
-description: "In diesem Tutorial wird die Konfiguration der Authentifizierung und Autorisierung für eine benutzerdefinierte Anwendung erläutert, die die Azure Time Series Insights-API aufruft."
-keywords: 
+title: "Konfigurieren der Authentifizierung und Autorisierung für eine benutzerdefinierte Anwendung zum Aufrufen der Azure Time Series Insights-API | Microsoft-Dokumentation"
+description: "In diesem Artikel wird die Konfiguration der Authentifizierung und Autorisierung für eine benutzerdefinierte Anwendung erläutert, die die Azure Time Series Insights-API aufruft."
 services: time-series-insights
-documentationcenter: 
+ms.service: time-series-insights
 author: dmdenmsft
-manager: almineev
-editor: cgronlun
-ms.assetid: 
-ms.service: tsi
-ms.devlang: na
-ms.topic: how-to-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 05/24/2017
 ms.author: dmden
-ms.openlocfilehash: abc3b5400e6961a798e1e6bf9e4986304046e845
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: jhubbard
+editor: MicrosoftDocs/tsidocs
+ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.devlang: csharp
+ms.workload: big-data
+ms.topic: article
+ms.date: 11/15/2017
+ms.openlocfilehash: 7772f6be0c60c1c2e59499d46e3c56975053e551
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Authentifizierung und Autorisierung für die Azure Time Series Insights-API
 
-In diesem Artikel wird erläutert, wie Sie eine benutzerdefinierte Anwendung konfigurieren, die die Azure Time Series Insights-API aufruft.
+In diesem Artikel wird die Konfiguration der in einer benutzerdefinierten Anwendung verwendeten Authentifizierung und Autorisierung erläutert, die die Azure Time Series Insights-API aufruft.
 
 ## <a name="service-principal"></a>Dienstprinzipal
 
@@ -102,11 +99,9 @@ Ausführliche Erläuterung der Schritte:
     string accessToken = token.AccessToken;
     ```
 
+Verwenden Sie die Anwendungs-ID und den Anwendungsschlüssel in Ihrer Anwendung für die Authentifizierung bei Azure Time Series Insight. 
+
 ## <a name="next-steps"></a>Nächste Schritte
-
-Verwenden Sie die Anwendungs-ID und den Schlüssel in Ihrer Anwendung. Beispielcode, in dem die Time Series Insights-API aufgerufen wird, finden Sie unter [Abfragen von Daten aus einer Azure Time Series Insights-Umgebung mit C#](time-series-insights-query-data-csharp.md).
-
-## <a name="see-also"></a>Weitere Informationen
-
-* Vollständige Referenz zur Abfrage-API im Dokument zur [Abfrage-API](/rest/api/time-series-insights/time-series-insights-reference-queryapi)
-* [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Azure-Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+- Beispielcode, in dem die Time Series Insights-API aufgerufen wird, finden Sie unter [Abfragen von Daten aus einer Azure Time Series Insights-Umgebung mit C#](time-series-insights-query-data-csharp.md).
+- API-Referenzinformationen finden Sie in der Referenz zur [Abfrage-API](/rest/api/time-series-insights/time-series-insights-reference-queryapi).
+- [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Azure-Portals](../azure-resource-manager/resource-group-create-service-principal-portal.md)

@@ -12,26 +12,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2016
+ms.date: 11/15/2016
 ms.author: tomfitz
-ms.openlocfilehash: 7a94fd5065de93384460e851627a9813d439956b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27213482c3ef6b35e1e3f887c9a336b946850802
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="manage-azure-resources-through-portal"></a>Verwalten von Azure-Ressourcen über das Portal
-> [!div class="op_single_selector"]
-> * [Azure PowerShell](powershell-azure-resource-manager.md)
-> * [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
-> * [Portal](resource-group-portal.md) 
-> * [REST-API](resource-manager-rest-api.md)
-> 
-> 
 
-In diesem Thema wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](resource-group-overview.md) Ihre Azure-Ressourcen verwalten. Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
-
-Das Portal und der Ressourcen-Manager werden derzeit nicht von allen Diensten unterstützt. Für diese Dienste müssen Sie das [klassische Portal](https://manage.windowsazure.com)verwenden. Den Status der einzelnen Dienste finden Sie im [Verfügbarkeitsdiagramm der Azure-Portale](https://azure.microsoft.com/features/azure-portal/availability/).
+In diesem Artikel wird veranschaulicht, wie Sie mit dem [Azure-Portal](https://portal.azure.com) und [Azure Resource Manager](resource-group-overview.md) Ihre Azure-Ressourcen verwalten. Informationen zum Bereitstellen von Ressourcen über das Portal finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
 
 ## <a name="manage-resource-groups"></a>Verwalten von Ressourcengruppen
 
@@ -58,7 +49,7 @@ In der Ressourcengruppe werden Metadaten zu den Ressourcen gespeichert. Wenn Sie
    
     ![Spalten hinzufügen](./media/resource-group-portal/add-columns.png)
 7. Informationen zum Bereitstellen von Ressourcen für die neue Ressourcengruppe finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-Portal](resource-group-template-deploy-portal.md).
-8. Um den schnellen Zugriff auf eine Ressourcengruppe zu ermöglichen, können Sie das Blatt in Ihrem Dashboard anheften.
+8. Um den schnellen Zugriff auf eine Ressourcengruppe zu ermöglichen, können Sie die Ressourcengruppe an Ihr Dashboard anheften.
    
     ![Ressourcengruppe anheften](./media/resource-group-portal/pin-group.png)
 9. Im Dashboard wird die Ressourcengruppe mit den zugehörigen Ressourcen angezeigt. Sie können entweder die Ressourcengruppen oder eine der Ressourcen auswählen, um zum jeweiligen Element zu navigieren.
@@ -71,12 +62,12 @@ Sie können Ressourcengruppen und Ressourcen Tags zuordnen, um sie logisch zu or
 [!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
 
 ## <a name="monitor-resources"></a>Überwachen von Ressourcen
-Wenn Sie eine Ressource auswählen, werden auf dem Ressourcenblatt Standarddiagramme und -tabellen zur Überwachung des Ressourcentyps angezeigt.
+Wenn Sie eine Ressource auswählen, werden im Portal Standarddiagramme und -tabellen zur Überwachung dieses Ressourcentyps angezeigt.
 
 1. Wählen Sie eine Ressource aus, und beachten Sie den Abschnitt **Überwachen** . Dieser enthält Diagramme, die für den Ressourcentyp relevant sind. Die folgende Abbildung zeigt die standardmäßigen Überwachungsdaten für ein Speicherkonto.
    
     ![Überwachung anzeigen](./media/resource-group-portal/show-monitoring.png)
-2. Sie können einen Abschnitt des Blatts an das Dashboard anheften, indem Sie auf die Auslassungspunkte (...) oberhalb des Abschnitts klicken. Außerdem können Sie die Größe des Abschnitts im Blatt anpassen oder ihn vollständig entfernen. Die folgende Abbildung veranschaulicht, wie Sie den Abschnitt „CPU und Arbeitsspeicher“ anheften, anpassen oder entfernen.
+2. Sie können einen Abschnitt an das Dashboard anheften, indem Sie auf die Auslassungspunkte (...) oberhalb des Abschnitts klicken. Außerdem können Sie die Größe des Abschnitts anpassen oder ihn vollständig entfernen. Die folgende Abbildung veranschaulicht, wie Sie den Abschnitt „CPU und Arbeitsspeicher“ anheften, anpassen oder entfernen.
    
     ![Abschnitt anheften](./media/resource-group-portal/pin-cpu-section.png)
 3. Nach dem Anheften des Abschnitts im Dashboard wird die Zusammenfassung im Dashboard angezeigt. Wenn Sie diese auswählen, werden sofort weitere Details zu den Daten eingeblendet.
@@ -92,7 +83,7 @@ Wenn Sie eine Ressource auswählen, werden auf dem Ressourcenblatt Standarddiagr
      Um sich mit der Verwendung von Dashboards vertraut zu machen, lesen Sie [Erstellen und Freigeben von Dashboards im Azure-Portal](../azure-portal/azure-portal-dashboards.md).
 
 ## <a name="manage-resources"></a>Verwalten von Ressourcen
-Auf dem Blatt für eine Ressource sehen Sie die Optionen, die Ihnen zum Verwalten der Ressource zur Verfügung stehen. Das Portal zeigt Verwaltungsoptionen für diesen speziellen Ressourcentyp an. Im oberen Bereich und auf der linken Seite des Ressourcenblatts sehen Sie die verfügbaren Verwaltungsbefehle.
+Wenn Sie eine Ressource im Portal anzeigen, sehen Sie die Optionen für die Verwaltung dieser bestimmten Ressource.
 
 ![Verwalten von Ressourcen](./media/resource-group-portal/manage-resources.png)
 
@@ -111,7 +102,7 @@ Sie können Informationen zu Ihrem Abonnement und die zusammengefassten Kosten f
 
 ![Abonnement](./media/resource-group-portal/select-subscription.png)
 
-Auf dem Blatt „Abonnement“ wird eine Verbrauchsrate angezeigt.
+Die Verbrauchsrate wird angezeigt.
 
 ![Verbrauchsrate](./media/resource-group-portal/burn-rate.png)
 
@@ -128,7 +119,7 @@ Nach dem Einrichten der Ressourcengruppe kann es sein, dass Sie die Resource Man
 Eine Schrittanleitung finden Sie unter [Exportieren einer Azure Resource Manager-Vorlage aus vorhandenen Ressourcen](resource-manager-export-template.md).
 
 ## <a name="delete-resource-group-or-resources"></a>Löschen von Ressourcen oder Ressourcengruppen
-Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen gelöscht. Sie können auch einzelne Ressourcen in einer Ressourcengruppe löschen. Gehen Sie beim Löschen einer Ressourcengruppe mit Bedacht vor, da Ressourcen in anderen Ressourcengruppen damit verknüpft sein können. Resource Manager löscht verknüpfte Ressourcen nicht, aber ohne die erwarteten Ressourcen funktionieren sie unter Umständen nicht richtig.
+Beim Löschen einer Ressourcengruppe werden alle darin enthaltenen Ressourcen gelöscht. Sie können auch einzelne Ressourcen in einer Ressourcengruppe löschen. Seien Sie vorsichtig, wenn Sie eine Ressourcengruppe löschen. Diese Ressourcengruppe enthält möglicherweise Ressourcen, von denen Ressourcen in anderen Ressourcengruppen abhängig sind.
 
 ![Gruppe löschen](./media/resource-group-portal/delete-group.png)
 

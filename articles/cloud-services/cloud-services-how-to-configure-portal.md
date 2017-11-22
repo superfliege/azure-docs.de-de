@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: adegeo
-ms.openlocfilehash: a7e891d05ffe4cc2b4f68dce072a81499cc6de80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 409b3bb26648ef1b811dfaaf37690c8220046729
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-configure-cloud-services"></a>Konfigurieren von Clouddiensten
-> [!div class="op_single_selector"]
-> * [Azure-Portal](cloud-services-how-to-configure-portal.md)
-> * [Klassisches Azure-Portal](cloud-services-how-to-configure.md)
->
->
-
 Im Azure-Portal können Sie die am häufigsten für einen Clouddienst verwendeten Einstellungen konfigurieren. Wenn Sie die Konfigurationsdateien jedoch direkt aktualisieren möchten, laden Sie eine zu aktualisierende Konfigurationsdatei herunter, laden Sie anschließend die aktualisierte Datei hoch, und aktualisieren Sie den Clouddienst mit den Konfigurationsänderungen. In beiden Fällen wird die aktualisierte Konfiguration an alle Rolleninstanzen übermittelt.
 
 Sie können die Instanzen Ihrer Clouddienstrollen außerdem verwalten oder eine Remotedesktopverbindung mit ihnen herstellen.
@@ -77,9 +71,9 @@ Statt die Ansicht **Einstellungen** > **Warnungsregeln** zu verwenden, können S
 Von hier aus können Sie das in der Kachel verwendete Diagramm anpassen oder eine Warnungsregel hinzufügen.
 
 ## <a name="reboot-reimage-or-remote-desktop"></a>Neustart, Reimaging oder Remotedesktop
-Momentan ist eine Konfiguration von Remotedesktop mit dem **Azure-Portal**nicht möglich. Sie können die Konfiguration stattdessen jedoch über das [klassische Azure-Portal](cloud-services-role-enable-remote-desktop.md), mithilfe von [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) oder [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) durchführen.
+Sie können einen Remotedesktop über das [Azure-Portal (Remotedesktop einrichten)](cloud-services-role-enable-remote-desktop-new-portal.md), mit [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md) oder über [Visual Studio](../vs-azure-tools-remote-desktop-roles.md) einrichten.
 
-Klicken Sie zunächst auf die Instanz des Clouddiensts.
+Für Neustart, Reimaging oder Remoteverbindung mit einem Clouddienst klicken Sie auf die Clouddienstinstanz.
 
 ![Clouddienstinstanz](./media/cloud-services-how-to-configure-portal/cs-instance.png)
 

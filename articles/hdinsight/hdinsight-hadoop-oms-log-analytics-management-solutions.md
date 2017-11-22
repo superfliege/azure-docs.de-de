@@ -13,15 +13,15 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2017
+ms.date: 11/08/2017
 ms.author: nitinme
-ms.openlocfilehash: 21b474e37ef0a6037e05ee1fe8e5088cb3e3601d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc959f763e9a84199130bae845cb62c493676977
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="add-hdinsight-cluster-management-solutions-to-log-analytics-preview"></a>Hinzufügen von HDInsight-Clusterverwaltungslösungen zu Azure Log Analytics (Vorschau)
+# <a name="add-hdinsight-cluster-management-solutions-to-log-analytics"></a>Hinzufügen von HDInsight-Clusterverwaltungslösungen zu Log Analytics
 
 HDInsight bietet clusterspezifische Verwaltungslösungen, die Sie Azure Log Analytics hinzufügen können. [Verwaltungslösungen](../log-analytics/log-analytics-add-solutions.md) erweitern den Funktionsumfang von OMS und stellen zusätzliche Daten und Analysetools für Log Analytics bereit. Diese Lösungen sammeln wichtige Leistungsmetriken aus Ihrem HDInsight-Cluster und stellen die Tools bereit, um die Metriken zu durchsuchen. Außerdem bieten diese Lösungen Visualisierungen und Dashboards für die meisten in HDInsight unterstützten Clustertypen. Anhand der mit der Lösung erfassten Kennzahlen können Sie benutzerdefinierte Überwachungsregeln und -warnungen erstellen. 
 
@@ -33,21 +33,25 @@ In diesem Artikel erfahren Sie, wie Sie einem OMS-Arbeitsbereich clusterspezifis
 
 ## <a name="add-cluster-specific-management-solutions"></a>Hinzufügen von clusterspezifischen Verwaltungslösungen
 
-In diesem Abschnitt fügen Sie eine HBase-Clusterverwaltungslösung einem vorhandenen OMS-Arbeitsbereich hinzu. Ähnliche Lösungen für andere HDInsight-Clustertypen werden bald verfügbar sein.
+In diesem Abschnitt fügen Sie eine HBase-Clusterverwaltungslösung einem vorhandenen OMS-Arbeitsbereich hinzu.
 
-1. Öffnen Sie das OMS-Dashboard. Öffnen Sie im Azure-Portal das HDInsight-Clusterblatt, das Sie mit Azure Log Analytics zugeordnet haben, klicken Sie auf die Registerkarte „Überwachung“ und dann auf **OMS-Dashboard öffnen**.
+1. Öffnen Sie einen HDInsight-Cluster im Azure-Portal, klicken Sie auf **Überwachung** und dann auf **OMS-Dashboard öffnen**.
 
     ![OMS-Dashboard öffnen](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-log-analytics-open-oms-dashboard.png "OMS-Dashboard öffnen")
 
-1. Klicken Sie im OMS-Dashboard auf **Lösungskatalog** oder das Ansicht-Designer-Symbol im linken Bereich.
+1. Klicken Sie im OMS-Dashboard auf **Lösungskatalog** oder auf das Symbol **Designer anzeigen** im linken Bereich.
 
     ![Hinzufügen einer Verwaltungslösung in OMS](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/hdinsight-add-management-solution-oms-portal.png "Hinzufügen einer Verwaltungslösung in OMS")
 
-2. Suchen Sie im Lösungskatalog **HDInsight HBase-Überwachung**, und klicken Sie dann auf die Kachel.
+2. Klicken Sie im Lösungskatalog auf eine der folgenden Kacheln:
 
-    ![Suchen der HBase-Verwaltungslösung](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/find-hbase-management-solution.png "Suchen der HBase-Verwaltungslösung")
+    - HDInsight Hadoop-Überwachung
+    - HDInsight HBase-Überwachung (Vorschau)
+    - HDInsight Kafka-Überwachung
+    - HDInsight Storm-Überwachung
+    - HDInsight Spark-Überwachung
 
-3. Klicken Sie im nächsten Bildschirm auf **Hinzufügen**.
+3. Klicken Sie im nächsten Bildschirm auf **Hinzufügen**.  Im folgenden Screenshot ist die Schaltfläche „Hinzufügen“ für die HBase-Überwachung dargestellt.
 
      ![Hinzufügen der HBase-Verwaltungslösung](./media/hdinsight-hadoop-oms-log-analytics-management-solutions/add-hbase-management-solution.png "Hinzufügen der HBase-Verwaltungslösung")
 

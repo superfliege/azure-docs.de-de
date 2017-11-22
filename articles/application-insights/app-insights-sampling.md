@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: af184574bdfa7d3a11baf75d8cdfbf80f1544dde
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: bf5f12e4a20d9692e311550fc7a02f14f0b4aaad
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -38,9 +38,9 @@ Die Stichprobenerstellung reduziert Datenverkehr und Datenkosten und unterstütz
 ## <a name="types-of-sampling"></a>Arten der Stichprobenerstellung
 Es gibt drei alternative Methoden zur Stichprobenerstellung:
 
-* **Adaptive Stichprobenerstellung** : Hierbei wird die Menge der Telemetriedaten, die vom SDK in Ihrer ASP.NET-App gesendet wird, automatisch angepasst. Standardmäßig ist dies SDK-Version 2.0.0-beta3. Derzeit nur für serverseitige Telemetrie bei ASP.NET verfügbar. 
+* **Adaptive Stichprobenerstellung** : Hierbei wird die Menge der Telemetriedaten, die vom SDK in Ihrer ASP.NET-App gesendet wird, automatisch angepasst. Ab der SDK-Version 2.0.0-beta3 ist diese Methode die Standardmethode für die Stichprobenerstellung. Die adaptive Stichprobenerstellung ist derzeit nur für serverseitige Telemetriedaten von ASP.NET verfügbar. 
 * **Stichprobenerstellung mit festem Prozentsatz** : Verringert die Menge an Telemetriedaten, die von Ihrem ASP.NET-Server und von den Benutzerbrowsern gesendet wird. Sie legen den Prozentsatz fest. Client und Server synchronisieren ihre Stichprobenerstellung, sodass Sie in der Suche zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
-* **Erfassungs-Stichprobenerstellung** funktioniert im Azure-Portal. Einige Telemetriedaten, die von Ihrer App eingehen, werden mit dem benutzerdefinierten Prozentsatz verworfen. Obwohl dies nicht den Telemetriedatenverkehr verringert, werden Sie dabei unterstützt, Ihr monatliches Kontingent einzuhalten. Der große Vorteil der Erfassungs-Stichprobenerstellung ist, dass dieser ohne erneute Bereitstellung Ihrer App festgelegt werden kann und einheitlich für alle Server und Clients funktioniert. 
+* **Erfassungs-Stichprobenerstellung** funktioniert im Azure-Portal. Bei dieser Methode werden einige Telemetriedaten, die von Ihrer App eingehen, mit der von Ihnen angegebenen Stichprobenerstellungsrate verworfen. Die Methode verringert zwar nicht den von Ihrer App gesendeten Telemetriedatenverkehr, trägt aber zur Einhaltung Ihres monatlichen Kontingents bei. Der Hauptvorteil der Erfassungs-Stichprobenerstellung besteht darin, dass die Stichprobenerstellungsrate ohne erneute Bereitstellung Ihrer App festgelegt werden kann und einheitlich für alle Server und Clients funktioniert. 
 
 Während die Stichprobenerstellung mit adaptivem oder festem Prozentsatz aktiv ist, wird die Erfassungs-Stichprobenerstellung deaktiviert.
 
@@ -67,15 +67,19 @@ Die Erfassungs-Stichprobenerstellung wird nicht ausgeführt, wenn gleichzeitig e
 ## <a name="adaptive-sampling-at-your-web-server"></a>Adaptive Stichprobenerstellung auf Ihrem Webserver
 Die adaptive Stichprobenerstellung steht für das Application Insights-SDK für ASP.NET-Version 2.0.0-beta3 und höher zur Verfügung und ist standardmäßig aktiviert. 
 
-Die adaptive Stichprobenermittlung wirkt sich auf die Menge der Telemetriedaten aus, die von Ihrer Webserver-App an den Application Insights-Dienst gesendet werden. Die Menge wird automatisch angepasst, um innerhalb einer festgelegten Maximalrate für den Datenverkehr zu bleiben.
+Die adaptive Stichprobenermittlung wirkt sich auf die Menge der Telemetriedaten aus, die von Ihrer Webserver-App an den Application Insights-Dienstendpunkt gesendet werden. Die Menge wird automatisch angepasst, um innerhalb einer festgelegten Maximalrate für den Datenverkehr zu bleiben.
 
 Diese Methode funktioniert nicht für geringe Mengen an Telemetriedaten, deshalb wirkt sie sich nicht auf eine App im Debugmodus oder eine Website mit niedriger Nutzung aus.
 
-Um die festgelegte Zielmenge zu erhalten, werden einige der generierten Telemetriedaten verworfen. Aber wie bei den anderen Methoden für die Stichprobenerstellung behält der Algorithmus zugehörige Telemetrieelemente bei. So sind Sie beispielsweise in der Lage, in Search die zu einer bestimmten Ausnahme gehörende Anforderung in den Telemetriedaten zu ermitteln. 
+Um die Zielmenge zu erreichen, werden einige der generierten Telemetriedaten verworfen. Aber wie bei den anderen Methoden für die Stichprobenerstellung behält der Algorithmus zugehörige Telemetrieelemente bei. So sind Sie beispielsweise in der Lage, in Search die zu einer bestimmten Ausnahme gehörende Anforderung in den Telemetriedaten zu ermitteln. 
 
 Metrikwerte wie z. B. die Anforderungs- und Ausnahmerate werden zum Kompensieren der Stichprobenrate angepasst, sodass im Metrik-Explorer annähernd korrekte Werte angezeigt werden.
 
-**Aktualisieren Sie die NuGet-Pakete Ihres Projekts** auf die neueste *Vorabversion* von Application Insights: Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie „NuGet-Pakete verwalten“ aus, aktivieren Sie **Vorabversion einschließen**, und suchen Sie nach „Microsoft.ApplicationInsights.Web“. 
+### <a name="update-nuget-packages"></a>Aktualisieren von NuGet-Paketen ###
+
+Aktualisieren Sie die NuGet-Pakete Ihres Projekts auf die neueste *Vorabversion* von Application Insights. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf „NuGet-Pakete verwalten“, aktivieren Sie das Kontrollkästchen **Vorabversion einschließen**, und suchen Sie nach „Microsoft.ApplicationInsights.Web“. 
+
+### <a name="configuring-adaptive-sampling"></a>Konfigurieren der adaptiven Stichprobenerstellung ###
 
 In [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) können Sie verschiedene Parameter im `AdaptiveSamplingTelemetryProcessor`-Knoten anpassen. Die folgenden Zahlen veranschaulichen die Standardwerte:
 
@@ -116,7 +120,7 @@ In [ApplicationInsights.config](app-insights-configuration-with-applicationinsig
 Entfernen Sie **zum Deaktivieren** der adaptiven Stichprobenerstellung den AdaptiveSamplingTelemetryProcessor-Knoten aus „applicationinsights-config“.
 
 ### <a name="alternative-configure-adaptive-sampling-in-code"></a>Alternative: Konfigurieren der adaptiven Stichprobenerstellung in Code
-Anstatt die Stichproben in der config-Datei anzupassen, können Sie Code verwenden. Dadurch können Sie eine Rückruffunktion angeben, die aufgerufen wird, wenn die Stichprobenrate neu ausgewertet wird. Zum Beispiel können Sie herausfinden, welcher Stichproben-Prozentsatz verwendet wird.
+Anstatt den Stichprobenerstellungsparameter in der CONFIG-Datei festzulegen, können Sie die Werte auch programmgesteuert festlegen. Dadurch können Sie eine Rückruffunktion angeben, die aufgerufen wird, wenn die Stichprobenrate neu ausgewertet wird. Zum Beispiel können Sie herausfinden, welcher Stichproben-Prozentsatz verwendet wird.
 
 Entfernen Sie den `AdaptiveSamplingTelemetryProcessor` -Knoten aus der .config-Datei.
 
@@ -168,7 +172,7 @@ Entfernen Sie den `AdaptiveSamplingTelemetryProcessor` -Knoten aus der .config-D
 ## <a name="sampling-for-web-pages-with-javascript"></a>Erstellen von Stichproben für Webseiten mit JavaScript
 Sie können einen beliebigen Server verwenden, um Webseiten für die Erstellung von Stichproben mit festem Prozentsatz zu konfigurieren. 
 
-Ändern Sie beim [Konfigurieren der Webseiten für Application Insights](app-insights-javascript.md) den Codeausschnitt, den Sie vom Application Insights-Portal erhalten. (In ASP.NET-Apps wird der Codeausschnitt normalerweise in _Layout.cshtml eingefügt.)  Fügen Sie vor dem Instrumentierungsschlüssel eine Zeile wie `samplingPercentage: 10,` ein:
+Ändern Sie beim [Konfigurieren der Webseiten für Application Insights](app-insights-javascript.md) den JavaScript-Codeausschnitt aus dem Application Insights-Portal. (In ASP.NET-Apps wird der Codeausschnitt normalerweise in _Layout.cshtml eingefügt.)  Fügen Sie vor dem Instrumentierungsschlüssel eine Zeile wie `samplingPercentage: 10,` ein:
 
     <script>
     var appInsights= ... 
@@ -191,13 +195,15 @@ Für den Prozentsatz der Stichprobenerstellung wählen Sie einen Prozentsatz, de
 Wenn Sie auch auf dem Server die Stichprobenerstellung mit festem Prozentsatz aktivieren, wird die Stichprobenerstellung zwischen Client und Server synchronisiert, sodass Sie in Search zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
 
 ## <a name="fixed-rate-sampling-for-aspnet-web-sites"></a>Stichprobenerstellung mit festem Prozentsatz für ASP.NET-Websites
-Bei der Stichprobenerstellung mit festem Prozentsatz wird der Datenverkehr verringert, der von Ihren Webservern und Webbrowsern gesendet wird. Im Gegensatz zur adaptiven Stichprobenerstellung werden die Telemetriedaten nach einem von Ihnen festgelegten Prozentsatz verringert. Darüber hinaus wird die Stichprobenerstellung für Client und Server synchronisiert, sodass zugehörige Elemente beibehalten werden. Auf diese Weise können Sie bei der Anzeige einer Seite in Search die zugehörige Anforderung ermitteln.
+Bei der Stichprobenerstellung mit festem Prozentsatz wird der Datenverkehr verringert, der von Ihren Webservern und Webbrowsern gesendet wird. Im Gegensatz zur adaptiven Stichprobenerstellung werden die Telemetriedaten nach einem von Ihnen festgelegten Prozentsatz verringert. Darüber hinaus wird die Stichprobenerstellung für Client und Server synchronisiert, sodass zugehörige Elemente beibehalten werden. Wenn Sie also beispielsweise eine Seitenansicht in Search betrachten, können Sie die dazugehörige Anforderung ermitteln.
 
-Der Stichprobenalgorithmus behält zugehörige Elemente bei. Für jedes HTTP-Anforderungsereignis werden die Anforderung selbst und zugehörige Ereignisse entweder verworfen oder übermittelt. 
+Der Stichprobenalgorithmus behält zugehörige Elemente bei. Für jedes HTTP-Anforderungsereignis werden die Anforderung selbst und die dazugehörigen Ereignisse entweder gemeinsam verworfen oder übermittelt. 
 
 Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderungen und Ausnahmen mit einem Faktor multipliziert, um die Stichprobenrate zu kompensieren und annähernd korrekte Werte zu erhalten.
 
-1. **Aktualisieren Sie die NuGet-Pakete Ihres Projekts** auf die neueste *Vorabversion* von Application Insights. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, wählen Sie „NuGet-Pakete verwalten“ aus, aktivieren Sie **Vorabversion einschließen** , und suchen Sie nach „Microsoft.ApplicationInsights.Web“. 
+### <a name="configuring-fixed-rate-sampling"></a>Konfigurieren der Stichprobenerstellung mit festem Prozentsatz ###
+
+1. **Aktualisieren Sie die NuGet-Pakete Ihres Projekts** auf die neueste *Vorabversion* von Application Insights. Klicken Sie in Visual Studio im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, klicken Sie auf „NuGet-Pakete verwalten“, aktivieren Sie das Kontrollkästchen **Vorabversion einschließen**, und suchen Sie nach „Microsoft.ApplicationInsights.Web“. 
 2. **Deaktivieren Sie die adaptive Stichprobenerstellung**: Entfernen Sie in [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) den `AdaptiveSamplingTelemetryProcessor` Knoten, oder kommentieren Sie ihn aus.
    
     ```xml
@@ -233,7 +239,7 @@ Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderu
 > 
 
 ### <a name="alternative-enable-fixed-rate-sampling-in-your-server-code"></a>Alternative: Aktivieren der Stichprobenerstellung mit festem Prozentsatz in Ihrem Servercode
-Anstatt den Stichprobenerstellungsparameter in der config-Datei festzulegen, können Sie Code verwenden. 
+Anstatt den Stichprobenerstellungsparameter in der CONFIG-Datei festzulegen, können Sie die Werte auch programmgesteuert festlegen. 
 
 *C#*
 
@@ -256,9 +262,9 @@ Anstatt den Stichprobenerstellungsparameter in der config-Datei festzulegen, kö
 ([Informieren Sie sich über Telemetrieprozessoren](app-insights-api-filtering-sampling.md#filtering).)
 
 ## <a name="when-to-use-sampling"></a>Wann sollten Sie die Stichprobenerstellung nutzen?
-Die adaptive Stichprobenerstellung ist automatisch aktiviert, wenn Sie das ASP.NET-SDK ab Version 2.0.0-beta3 verwenden. Die Erfassungs-Stichprobenerstellung kann unabhängig von der verwendeten SDK-Version (auf unserem Server) verwendet werden.
+Die adaptive Stichprobenerstellung ist automatisch aktiviert, wenn Sie das ASP.NET-SDK ab Version 2.0.0-beta3 verwenden. Unabhängig von der verwendeten SDK-Version können Sie die Erfassungs-Stichprobenerstellung aktivieren, um Application Insights die Stichprobenerstellung für die gesammelten Daten zu ermöglichen.
 
-Für die meisten kleinen und mittelgroßen Anwendungen ist keine Stichprobenerstellung erforderlich. Die nützlichsten Diagnoseinformationen und präzisesten Statistiken werden abgerufen, indem Sie Daten zu sämtlichen Benutzeraktivitäten erfassen. 
+Für die meisten kleinen und mittelgroßen Anwendungen ist im Allgemeinen keine Stichprobenerstellung erforderlich. Die nützlichsten Diagnoseinformationen und präzisesten Statistiken werden abgerufen, indem Sie Daten zu sämtlichen Benutzeraktivitäten erfassen. 
 
 Die Hauptvorteile von Stichproben sind:
 
@@ -281,7 +287,7 @@ Die Hauptvorteile von Stichproben sind:
 
 **Verwendung der adaptiven Stichprobenerstellung:**
 
-In allen anderen Fällen empfehlen wir die adaptive Stichprobenerstellung. Diese ist im ASP.NET-Server-SDK Version 2.0.0-beta3 oder höher standardmäßig aktiviert,  Diese Methode führt unterhalb einer bestimmten Mindestrate zu keiner Verringerung des Datenverkehrs und wirkt sich daher nicht auf Websites mit geringer Nutzung aus.
+Wenn die Bedingungen für die Verwendung der anderen Stichprobenerstellungsarten nicht erfüllt sind, empfiehlt sich die Verwendung der adaptiven Stichprobenerstellung. Diese ist im ASP.NET-Server-SDK Version 2.0.0-beta3 oder höher standardmäßig aktiviert,  Der Datenverkehr wird erst ab einer bestimmten Mindestrate verringert. Wenig genutzte Websites sind daher nicht betroffen.
 
 ## <a name="how-do-i-know-whether-sampling-is-in-operation"></a>Woher weiß ich, dass die Stichprobenerfassung ausgeführt wird?
 Verwenden Sie etwa folgende [Analytics-Abfrage](app-insights-analytics.md) , um den tatsächlichen Stichproben-Prozentsatz unabhängig davon zu ermitteln, wo er angewendet wird:
@@ -330,7 +336,7 @@ Das clientseitige (JavaScript) SDK führt die Stichprobenerstellung mit festem P
 
 * Eine Möglichkeit ist, mit der adaptiven Stichprobenerstellung zu beginnen, herauszufinden, bei welchem Wert sie sich einstellt (siehe die oben gestellt Frage), und dann mit diesem Wert zur Stichprobenerstellung mit festem Prozentsatz zu wechseln. 
   
-    Andernfalls müssen Sie raten. Analysieren Sie Ihre aktuelle Nutzung der Telemetriedaten in Application Insights, beobachten Sie die auftretende Drosselung, und schätzen Sie die Menge der erfassten Telemetriedaten. In Kombination mit Ihrem ausgewählten Tarif geben diese drei Faktoren Auskunft darüber, um wie viel Sie die Menge der erfassten Telemetriedaten gegebenenfalls reduzieren sollten. Allerdings kann eine Zunahme der Benutzeranzahl oder eine andere Verschiebung in der Menge der Telemetriedaten Ihre Schätzung ungültig werden lassen.
+    Andernfalls müssen Sie raten. Analysieren Sie Ihre aktuelle Nutzung der Telemetriedaten in Application Insights, beobachten Sie ggf. auftretende Drosselungen, und schätzen Sie den Umfang der erfassten Telemetriedaten. In Kombination mit Ihrem ausgewählten Tarif geben diese drei Faktoren Auskunft darüber, um wie viel Sie die Menge der erfassten Telemetriedaten gegebenenfalls reduzieren sollten. Allerdings kann eine Zunahme der Benutzeranzahl oder eine andere Verschiebung in der Menge der Telemetriedaten Ihre Schätzung ungültig werden lassen.
 
 *Was geschieht, wenn ich einen zu geringen Prozentsatz für die Stichprobenerstellung konfiguriere?*
 

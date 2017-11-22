@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: e59cfa85c6bf584e44bdc6e88cc19d67df390041
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbb752692fbd618d9e7e14c8a80b582aad657b38
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api-preview"></a>Azure Cosmos DB: Wie werden Tabellendaten mit der Tabellen-API (Vorschauversion) abgefragt?
+# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB: Abfragen von Tabellendaten mithilfe der Table-API
 
-Die [Tabellen-API](table-introduction.md) (Vorschau) von Azure Cosmos DB unterstützt OData- und [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-Abfragen von Schlüssel-/Wertdaten (Tabellendaten).  
+Die [Table-API](table-introduction.md) von Azure Cosmos DB unterstützt OData- und [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service)-Abfragen von Schlüssel-/Wertdaten (Tabellendaten).  
 
 In diesem Artikel werden die folgenden Aufgaben behandelt: 
 
@@ -38,13 +38,13 @@ Die Abfragen in diesem Artikel verwenden die folgende Beispieltabelle `People`:
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-Da Azure Cosmos DB mit den Azure Table Storage-APIs kompatibel ist, informieren Sie sich unter [Querying Tables and Entities] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) (Abfragen von Tabellen und Entitäten) näher über Abfragen mit der Tabellen-API. 
+Ausführlichere Informationen zu Abfragen mit der Table-API finden Sie unter [Querying Tables and Entities] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) (Abfragen von Tabellen und Entitäten). 
 
-Weitere Informationen zu Premium-Funktionen von Azure Cosmos DB finden Sie unter [Azure Cosmos DB: Tabellen-API](table-introduction.md) und [Entwickeln mit der Tabellen-API mit .NET](tutorial-develop-table-dotnet.md). 
+Weitere Informationen zu den Premiumfunktionen von Azure Cosmos DB finden Sie unter [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md) sowie unter [Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET](tutorial-develop-table-dotnet.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Diese Abfragen können nur funktionieren, wenn Sie über ein Azure Cosmos DB-Konto verfügen und Entitätsdaten im Container vorliegen. Sie haben beides nicht? Absolvieren Sie den [5-Minuten-Schnellstart](https://aka.ms/acdbtnetqs) oder das [Entwicklertutorial](https://aka.ms/acdbtabletut) zum Erstellen eines Kontos und Auffüllen Ihrer Datenbank.
+Diese Abfragen können nur funktionieren, wenn Sie über ein Azure Cosmos DB-Konto verfügen und Entitätsdaten im Container vorliegen. Sie haben beides nicht? Absolvieren Sie den [5-Minuten-Schnellstart](create-table-dotnet.md) oder das [Entwicklertutorial](tutorial-develop-table-dotnet.md) zum Erstellen eines Kontos und Auffüllen Ihrer Datenbank.
 
 ## <a name="query-on-partitionkey-and-rowkey"></a>Abfragen nach PartitionKey und RowKey
 Da die Eigenschaften PartitionKey und RowKey den Primärschlüssel einer Entität bilden, können Sie die folgende spezielle Syntax verwenden, um die Entität zu identifizieren: 
@@ -109,9 +109,9 @@ await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 
 > [!div class="checklist"]
-> * Sie haben erfahren, wie Sie Abfragen mit der Tabellen-API (Vorschauversion) erstellen. 
+> * Sie haben erfahren, wie Sie Abfragen mit der Table-API erstellen.
 
 Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie Ihre Daten global verteilen.
 
 > [!div class="nextstepaction"]
-> [Globales Verteilen Ihrer Daten](tutorial-global-distribution-documentdb.md)
+> [Globales Verteilen Ihrer Daten](tutorial-global-distribution-table.md)
