@@ -78,7 +78,7 @@ Weitere Informationen zum Erstellen von Gruppen finden Sie im Artikel [Verwalten
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Intune**.
 2. Suchen Sie wie folgt nach dem zuvor erstellten Profil für die Gerätekonfiguration: Navigieren Sie zu **Gerätekonfiguration** > **Profile**, und klicken Sie auf das erstellte Profil.
 3. Weisen Sie das Profil einer Gruppe mit Geräten zu. 
-   * Klicken Sie unter **Include** > **Select groups to include** (Einschließen > Wählen Sie die Gruppen aus, die eingeschlossen werden sollen.) auf **Assignments** (Zuweisungen).
+   * Klicken Sie unter **Include** > **Select groups to include** (Einschließen > Einzuschließende Gruppen auswählen) auf **Assignments** (Zuweisungen).
    * Wählen Sie die zuvor erstellte Gruppe aus, und klicken Sie auf **Auswählen**.
    * Klicken Sie im Menü „Einstellungen“ auf **Speichern**
 
