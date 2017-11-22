@@ -378,6 +378,8 @@
               href: saas-multitenantdb-adhoc-reporting.md
             - name: Verwalten des Mandantenschemas
               href: saas-multitenantdb-schema-management.md
+            - name: ETL für die Analyse
+              href: saas-multitenantdb-tenant-analytics.md
     - name: Entwickeln von Apps
       items:
         - name: C und C ++
