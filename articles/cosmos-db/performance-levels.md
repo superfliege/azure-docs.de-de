@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6692d5b75954b2162862e6be7c2e39c63fa8408b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a0567df53dff15d7fbacf4850f6eae07c8985598
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
 
@@ -44,7 +44,7 @@ Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3.
 
 ## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Warum werden die Leistungsebenen S1, S2 und S3 ausgesondert?
 
-Die Leistungsebenen S1, S2 und S3 bieten nicht die Flexibilität wie DocumentDB-API-Sammlungen. Bei den Leistungsebenen S1, S2 und S3 waren sowohl der Durchsatz als auch die Speicherkapazität voreingestellt. Sie haben keine Elastizität bereitgestellt. Mit Azure Cosmos DB können Sie den Durchsatz und den Speicher jetzt anpassen, sodass Sie viel flexibler skalieren können, wenn sich Ihre Anforderungen ändern.
+Die Leistungsebenen S1, S2 und S3 bieten nicht die gleiche Flexibilität wie DocumentDB-API-Sammlungen. Bei den Leistungsebenen S1, S2 und S3 waren sowohl der Durchsatz als auch die Speicherkapazität voreingestellt. Sie haben keine Elastizität bereitgestellt. Mit Azure Cosmos DB können Sie den Durchsatz und den Speicher jetzt anpassen, sodass Sie viel flexibler skalieren können, wenn sich Ihre Anforderungen ändern.
 
 <a name="compare"></a>
 
@@ -71,7 +71,7 @@ Nichts. Die Migration wird von Cosmos DB für Sie durchgeführt. Wenn Sie eine S
 
 ## <a name="how-will-my-collection-change-after-the-migration"></a>Wie verändert sich meine Sammlung nach der Migration?
 
-Bei Verwendung einer S1-Sammlung wird die Migration zu einer Sammlung mit nur einer Partition und einem Durchsatz von 400 RU/s durchgeführt. 400 RU/s ist der niedrigste Durchsatz, der für Sammlungen mit nur einer Partition verfügbar ist. Die Kosten für 400 RU/s bei einer Sammlung mit nur einer Partition entsprechen ungefähr den Kosten für eine S1-Sammlung mit 250 RU/s. Sie erhalten die zusätzlichen 150 RU/s also ohne weitere Kosten.
+Bei Verwendung einer S1-Sammlung wird die Migration zu einer Sammlung mit nur einer Partition und einem Durchsatz von 400 RU/s durchgeführt. 400 RU/s ist der niedrigste Durchsatz, der für Sammlungen mit nur einer Partition verfügbar ist. Die Kosten für 400 RU/s in einer Sammlung mit einer einzelnen Partition entsprechen ungefähr den Kosten für eine S1-Sammlung mit 250 RU/s. Sie erhalten die zusätzlichen 150 RU/s also ohne weitere Kosten.
 
 Bei Verwendung einer S2-Sammlung wird die Migration zu einer Sammlung mit nur einer Partition und 1.000 RU/s durchgeführt. Die Durchsatzstufe ändert sich für Sie nicht.
 
@@ -119,20 +119,20 @@ Sie können von den Leistungsebenen S1, S2 und S3 die Migration zu Sammlungen mi
 
 1. Klicken Sie im [**Azure-Portal**](https://portal.azure.com) auf **Azure Cosmos DB**, und wählen Sie dann das zu ändernde Cosmos DB-Konto aus. 
  
-    Wenn **Azure Cosmos DB** in der Navigationsleiste nicht angezeigt wird, klicken Sie auf „>“, scrollen Sie zu **Datenbanken**, wählen Sie **Azure Cosmos DB** und dann das DocumentDB-Konto aus.  
+    Wenn **Azure Cosmos DB** auf der Navigationsleiste nicht angezeigt wird, klicken Sie auf „>“, scrollen Sie zu **Datenbanken**, klicken Sie auf **Azure Cosmos DB**, und wählen Sie dann das Konto aus.  
 
-2. Klicken Sie im Ressourcenmenü unter **Container** auf **Skalieren**, wählen Sie in der Dropdownliste die zu ändernde Sammlung aus, und klicken Sie dann auf **Tarif**. Für Konten mit vordefiniertem Durchsatz gilt der Tarif S1, S2 oder S3.  Klicken Sie auf dem Blatt **Preisstufe auswählen** auf **Standard**, um den benutzerdefinierten Durchsatz zu ändern, und anschließend auf **Auswählen**, um die Änderung zu speichern.
+2. Klicken Sie im Ressourcenmenü unter **Container** auf **Skalieren**, wählen Sie in der Dropdownliste die zu ändernde Sammlung aus, und klicken Sie dann auf **Tarif**. Für Konten mit vordefiniertem Durchsatz gilt der Tarif S1, S2 oder S3.  Klicken Sie auf der Seite **Preisstufe auswählen** auf **Standard**, um zum benutzerdefinierten Durchsatz zu wechseln, und klicken Sie anschließend auf **Auswählen**, um die Änderung zu speichern.
 
-    ![Screenshot des Blatts „Einstellungen“, der veranschaulicht, wo Sie den Durchsatzwert ändern können](./media/performance-levels/change-performance-set-thoughput.png)
+    ![Screenshot der Seite „Einstellungen“, der veranschaulicht, wo Sie den Durchsatzwert ändern können](./media/performance-levels/change-performance-set-thoughput.png)
 
-3. Auf dem Blatt **Skalieren** wurde der **Tarif** in **Standard** geändert, und im Feld **Durchsatz (RU/s)** wird als Standardwert „400“ angezeigt. Legen Sie den Durchsatz auf einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](request-units.md)/Sekunde (RU/s) fest. Die **Geschätzte monatliche Rechnung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten anzugeben. 
+3. Auf der Seite **Skalieren** wurde der **Tarif** in **Standard** geändert, und im Feld **Durchsatz (RU/s)** wird als Standardwert „400“ angezeigt. Legen Sie den Durchsatz auf einen Wert zwischen 400 und 10.000 [Anforderungseinheiten](request-units.md)/Sekunde (RU/s) fest. Die **Geschätzte monatliche Rechnung** am unteren Rand der Seite wird automatisch aktualisiert, um eine Schätzung der monatlichen Kosten anzugeben. 
 
     >[!IMPORTANT] 
     > Nachdem Sie Ihre Änderungen gespeichert haben und zum Standard-Tarif gewechselt sind, ist kein Rollback zu den Leistungsebenen S1, S2 oder S3 mehr möglich.
 
 4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
-    Wenn Sie feststellen, dass Sie einen höheren Durchsatz (größer als 10.000 RU/s) oder mehr Speicher (größer als 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Informationen zur Migration einer Sammlung mit nur einer Partition zu einer partitionierten Sammlung finden Sie unter [Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen](documentdb-partition-data.md#migrating-from-single-partition).
+    Wenn Sie feststellen, dass Sie einen höheren Durchsatz (über 10.000 RU/s) oder mehr Speicher (über 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Informationen zur Migration einer Sammlung mit nur einer Partition zu einer partitionierten Sammlung finden Sie unter [Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen](documentdb-partition-data.md#migrating-from-single-partition).
 
     > [!NOTE]
     > Die Umstellung von S1, S2 oder S3 auf Standard kann bis zu zwei Minuten dauern.
@@ -141,7 +141,7 @@ Sie können von den Leistungsebenen S1, S2 und S3 die Migration zu Sammlungen mi
 
 **So migrieren Sie Sammlungen mit nur einer Partition über das .NET SDK**
 
-Eine weitere Möglichkeit zum Ändern der Leistungsstufen Ihrer Sammlungen stellen unsere SDK dar. In diesem Abschnitt wird nur das Ändern einer Sammlung mit unserer [DocumentDB .NET API](documentdb-sdk-dotnet.md) behandelt. Die Vorgehensweise bei unseren anderen SDKs ist jedoch ähnlich.
+Eine weitere Möglichkeit zum Ändern der Leistungsstufen Ihrer Sammlungen sind die Azure Cosmos DB SDKs. In diesem Abschnitt wird nur das Ändern der Leistungsstufe einer Sammlung mithilfe der [DocumentDB-.NET-API](documentdb-sdk-dotnet.md) behandelt. Die Vorgehensweise ist bei den anderen SDKs jedoch ähnlich.
 
 Hier ist ein Codeausschnitt zum Ändern des Sammlungsdurchsatzes auf 5.000 Anforderungseinheiten pro Sekunde angegeben:
     

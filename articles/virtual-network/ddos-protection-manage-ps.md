@@ -1,10 +1,10 @@
 ---
-title: Verwalten des Azure DDoS-Schutzstandards mithilfe von Azure PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Azure DDoS-Schutzstandard mithilfe von Azure PowerShell verwalten.
+title: Verwalten von Azure DDoS-Schutz Standard mithilfe von Azure PowerShell | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Azure DDoS-Schutz Standard mithilfe von Azure PowerShell verwalten.
 services: virtual-network
 documentationcenter: na
-author: kumudD
-manager: timlt
+author: jimdial
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,34 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
-ms.author: kumud
-ms.openlocfilehash: a1a3688d4ff215d05d2f78cdfa7d402e3fc20be2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/13/2017
+ms.author: jdial
+ms.openlocfilehash: baac97db61b84000557e7150a64ffb64d81ce00c
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
-# <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Verwalten des Azure DDoS-Schutzstandards mithilfe von Azure PowerShell
+# <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Verwalten von Azure DDoS-Schutz Standard mithilfe von Azure PowerShell
+
+Erfahren Sie, wie Sie den DDoS-Schutz (Distributed Denial of Service) aktivieren oder deaktivieren und die Telemetrie von Azure DDoS-Schutz Standard verwenden, um einen DDoS-Angriff zu entschärfen. Der DDoS-Schutz Standard schützt Azure-Ressourcen wie virtuelle Computer, Lastenausgleichsmodule und Anwendungsgateways, denen eine [öffentliche Azure-IP-Adresse](virtual-network-public-ip-address.md) zugewiesen ist. Weitere Informationen zum DDoS-Schutz Standard und seinen Funktionen finden Sie unter [Übersicht über den DDoS-Schutz Standard](ddos-protection-overview.md). 
 
 >[!IMPORTANT]
->Der Azure DDoS-Schutzstandard (DDoS-Schutz) befindet sich derzeit in der Vorschauversion. Der DDoS-Schutz wird von einer begrenzten Anzahl von Azure-Ressourcen und in ausgewählten Regionen unterstützt. Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um den DDoS-Schutz für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung, um Sie durch den Aktivierungsprozess zu leiten. Der DDoS-Schutz ist in den Regionen „USA, Osten“, „USA, Westen“ und „USA, Westen-Mitte“ verfügbar. Während der Vorschauphase entstehen für Sie für die Nutzung des Diensts keine Kosten.
+>Der Azure DDoS-Schutz Standard (DDoS-Schutz) befindet sich derzeit in der Vorschauversion. Der DDoS-Schutz wird von einer begrenzten Anzahl von Azure-Ressourcen unterstützt und ist nur in ausgewählten Regionen verfügbar. Eine Liste der verfügbaren Regionen finden Sie unter [Übersicht über den DDoS-Schutz Standard](ddos-protection-overview.md). Sie müssen sich während der eingeschränkten Vorschau [für den Dienst registrieren](http://aka.ms/ddosprotection), um den DDoS-Schutz für Ihr Abonnement zu aktivieren. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung und führt Sie durch den Aktivierungsprozess.
 
-In diesem Artikel erfahren Sie, wie Sie Azure PowerShell für die Aktivierung und Deaktivierung des DDoS-Schutzes und für die Nutzung der Telemetrie zur Entschärfung eines Angriffs verwenden.
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. Wenn Sie PowerShell installieren oder aktualisieren müssen, finden Sie weitere Informationen unter [Install Azure PowerShell module (Installieren des Azure PowerShell-Moduls)](/powershell/azure/install-azurerm-ps).
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. Wenn Sie PowerShell installieren oder aktualisieren müssen, finden Sie weitere Informationen unter [Install Azure PowerShell module (Installieren des Azure PowerShell-Moduls)](/powershell/azure/install-azurerm-ps).
 
 ```powershell
 Login-AzureRmAccount
 ```
 
-## <a name="enable-ddos-protection"></a>Aktivieren des DDoS-Schutzes
-
-### <a name="create-a-new-virtual-network-and-enable-ddos-protection"></a>Erstellen eines neuen virtuellen Netzwerks und Aktivieren des DDoS-Schutzes
+## <a name="enable-ddos-protection-standard---new-virtual-network"></a>Aktivieren von DDoS-Schutz Standard – Neues virtuelles Netzwerk
 
 Führen Sie das folgende Beispiel aus, um ein virtuelles Netzwerk mit aktiviertem DDoS-Schutz zu erstellen:
 
@@ -48,20 +45,26 @@ Führen Sie das folgende Beispiel aus, um ein virtuelles Netzwerk mit aktivierte
 New-AzureRmResourceGroup -Name <ResourceGroupName> -Location westcentralus 
 $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name <frontendSubnet> -AddressPrefix "10.0.1.0/24" 
 $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name <backendSubnet> -AddressPrefix "10.0.2.0/24" 
-New-AzureRmVirtualNetwork -Name <MyVirtualNetwork> -ResourceGroupName <ResourceGroupName>  -Location westcentralus  -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet -DnsServer 10.0.1.5,10.0.1.6 -EnableDDoSProtection
+New-AzureRmVirtualNetwork -Name <MyVirtualNetwork> -ResourceGroupName <ResourceGroupName>  -Location westcentralus  -AddressPrefix "10.0.0.0/16" -Subnet $frontendSubnet,$backendSubnet -EnableDDoSProtection
 ```
 
 Dieses Beispiel erstellt ein virtuelles Netzwerk mit zwei Subnetzen und zwei DNS-Servern. Als Auswirkung der Angabe von DNS-Servern im virtuellen Netzwerk erben die in diesem virtuellen Netzwerk bereitgestellten NICs/VMs die DNS-Server als Standards. Der DDoS-Schutz ist für alle geschützten Ressourcen im virtuellen Netzwerk aktiviert.
 
-### <a name="enable-ddos-protection-on-an-existing-virtual-network"></a>Aktivieren des DDoS-Schutzes in einem vorhandenen virtuellen Netzwerk
+> [!WARNING]
+> Beim Auswählen einer Region wählen Sie eine unterstützte Region aus der Liste in der [Übersicht über den Azure DDoS-Schutz Standard](ddos-protection-overview.md) aus.
+
+## <a name="enable-ddos-protection-on-an-existing-virtual-network"></a>Aktivieren des DDoS-Schutzes in einem vorhandenen virtuellen Netzwerk
 
 Führen Sie das folgende Beispiel aus, um den DDoS-Schutz in einem vorhandenen virtuellen Netzwerk zu aktivieren:
 
 ```powershell
 $vnetProps = (Get-AzureRmResource -ResourceType "Microsoft.Network/virtualNetworks" -ResourceGroup <ResourceGroupName> -ResourceName <ResourceName>).Properties
 $vnetProps.enableDdosProtection = $true
-Set-AzureRmResource -PropertyObject $vnetProps -ResourceGroupName "ResourceGroupName" -ResourceName "ResourceName" -ResourceType Microsoft.Network/virtualNetworks
+Set-AzureRmResource -PropertyObject $vnetProps -ResourceGroupName "ResourceGroupName" -ResourceName "ResourceName" -ResourceType Microsoft.Network/virtualNetworks -Force
 ```
+
+> [!WARNING]
+> Das virtuelle Netzwerk muss in einer unterstützten Region vorhanden sein. Eine Liste der unterstützten Regionen finden Sie unter [Übersicht über den Azure DDoS-Schutz Standard](ddos-protection-overview.md).
 
 ## <a name="disable-ddos-protection-on-a-virtual-network"></a>Deaktivieren des DDoS-Schutzes in einem virtuellen Netzwerk
 
@@ -70,10 +73,10 @@ Führen Sie das folgende Beispiel aus, um den DDoS-Schutz in einem virtuellen Ne
 ```powershell
 $vnetProps = (Get-AzureRmResource -ResourceType "Microsoft.Network/virtualNetworks" -ResourceGroup <ResourceGroupName> -ResourceName <ResourceName>).Properties
 $vnetProps.enableDdosProtection = $false
-Set-AzureRmResource -PropertyObject $vnetProps -ResourceGroupName <RessourceGroupName> -ResourceName <ResourceName> -ResourceType "Microsoft.Network/virtualNetworks"
+Set-AzureRmResource -PropertyObject $vnetProps -ResourceGroupName <RessourceGroupName> -ResourceName <ResourceName> -ResourceType "Microsoft.Network/virtualNetworks" -Force
 ```
 
-## <a name="review-the-ddos-protection-status-of-virtual-networks"></a>Überprüfen des DDoS-Schutzstatus von virtuellen Netzwerken 
+## <a name="review-the-ddos-protection-status-of-a-virtual-network"></a>Überprüfen des DDoS-Schutzstatus eines virtuellen Netzwerks 
 
 ```powershell
 $vnetProps = (Get-AzureRmResource -ResourceType "Microsoft.Network/virtualNetworks" -ResourceGroup <ResourceGroupName> -ResourceName <ResourceName>).Properties
@@ -88,7 +91,7 @@ Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitges
 
 Durch die Nutzung der Warnungskonfiguration von Azure Monitor können Sie jede der verfügbaren DDoS-Schutzmetriken zum Warnen auswählen, wenn während eines Angriffes eine aktive Entschärfung vorhanden ist.
 
-#### <a name="configure-email-alert-rules-via-azure-powershell"></a>Konfigurieren von E-Mail-Warnungsregeln über Azure PowerShell
+#### <a name="configure-email-alert-rules-via-azure"></a>Konfigurieren von E-Mail-Warnungsregeln über Azure
 
 1. Rufen Sie eine Liste der Abonnements ab, die Ihnen zur Verfügung stehen. Stellen Sie sicher, dass Sie das richtige Abonnement verwenden. Falls nicht, legen Sie mithilfe der Ausgabe von „Get-AzureRmSubscription“ das richtige Abonnement fest. 
 
@@ -104,35 +107,34 @@ Durch die Nutzung der Warnungskonfiguration von Azure Monitor können Sie jede d
     Get-AzureRmAlertRule -ResourceGroup <myresourcegroup> -DetailedOutput
     ```
 
-3. Um eine Regel zu erstellen, benötigen Sie zunächst verschiedene wichtige Informationen. 
+3. Zum Erstellen einer Regel benötigen Sie zuerst die folgenden Informationen: 
 
     - Die Ressourcen-ID der Ressource, für die Sie eine Warnung festlegen möchten
-    - Die für diese Ressource verfügbaren Metrikdefinitionen. Eine Möglichkeit zum Abrufen der Ressourcen-ID ist das Azure-Portal. Falls die Ressource bereits erstellt wurde, wählen Sie sie im Azure-Portal aus. Klicken Sie anschließend auf der nächsten Seite im Abschnitt *Einstellungen* auf *Eigenschaften*. Die **Ressourcen-ID** ist ein Feld auf der nächsten Seite. Eine andere Möglichkeit ist der [Azure-Ressourcen-Explorer](https://resources.azure.com/). Ein Beispiel einer Ressourcen-ID für eine IP ist `/subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Network/publicIPAddresses/mypublicip`.
+    - Die für diese Ressource verfügbaren Metrikdefinitionen. Eine Möglichkeit zum Abrufen der Ressourcen-ID ist das Azure-Portal. Falls die Ressource bereits erstellt wurde, wählen Sie sie im Azure-Portal aus. Klicken Sie anschließend auf der nächsten Seite im Abschnitt *Einstellungen* auf *Eigenschaften*. Die **Ressourcen-ID** ist ein Feld auf der nächsten Seite. Eine andere Möglichkeit ist der [Azure-Ressourcen-Explorer](https://resources.azure.com/). Ein Beispiel einer Ressourcen-ID für eine IP ist `/subscriptions/<Id>/resourceGroups/myresourcegroupname/providers/Microsoft.Network/publicIPAddresses/mypublicip`.
 
-    Das folgende Beispiel richtet eine Warnung auf einer öffentlichen IP ein, die einem virtuellen Netzwerk zugeordnet ist. Die Metrik, für die ein Wert erstellt werden soll, steht **Unter DDoS-Angriff oder nicht**. Dies ist ein boolescher Wert 1 oder 0. **1** bedeutet, dass Sie angegriffen werden. **0** bedeutet, dass Sie nicht angegriffen werden. Die Warnung wird erstellt, wenn Sie innerhalb der letzten fünf Minuten dem Angriff ausgesetzt waren.
+    Im folgenden Beispiel wird eine Warnung für eine öffentliche IP-Adresse erstellt, die einer Ressource in einem virtuellen Netzwerk zugeordnet ist. Die Metrik, für die ein Wert erstellt werden soll, steht **Unter DDoS-Angriff oder nicht**. Dies ist ein boolescher Wert 1 oder 0. **1** bedeutet, dass Sie angegriffen werden. **0** bedeutet, dass Sie nicht angegriffen werden. Die Warnung wird erstellt, wenn ein Angriff innerhalb der letzten 5 Minuten gestartet wurde.
 
-    Sie müssen zunächst die E-Mail und/oder Webhooks erstellen, um bei der Erstellung einer Warnung einen Webhook zu erstellen oder eine E-Mail zu senden. Erstellen Sie anschließend sofort die Regel mit dem „-Actions“-Tag (wie im folgenden Beispiel gezeigt). Sie können Webhooks oder E-Mails nicht mit bereits erstellten Regeln zuordnen, indem Sie PowerShell verwenden.
+    Um beim Erstellen einer Warnung einen Webhook zu erstellen oder eine E-Mail zu senden, muss zunächst die E-Mail und/oder der Webhook erstellt werden. Nachdem Sie die E-Mail oder den Webhook erstellt haben, erstellen Sie sofort die Regel mit dem `-Actions`-Tag, wie es im folgenden Beispiel gezeigt ist. Sie können Webhooks oder E-Mails keine vorhandenen Regeln mithilfe von PowerShell zuordnen.
 
     ```powershell
     $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail myname@company.com 
-    Add-AzureRmMetricAlertRule -Name <myMetricRuleWithEmail> -Location "West Central US" -ResourceGroup <myresourcegroup> -TargetResourceId /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroup/providers/Microsoft.Network/publicIPAddresses/mypublicip -MetricName "IfUnderDDoSAttack" -Operator GreaterThan -Threshold 0 -WindowSize 00:05:00 -TimeAggregationOperator Total -Actions $actionEmail-Description "Under DDoS Attack" 
+    Add-AzureRmMetricAlertRule -Name <myMetricRuleWithEmail> -Location "West Central US" -ResourceGroup <myresourcegroup> -TargetResourceId /subscriptions/<Id>/resourceGroups/myresourcegroup/providers/Microsoft.Network/publicIPAddresses/mypublicip -MetricName "IfUnderDDoSAttack" -Operator GreaterThan -Threshold 0 -WindowSize 00:05:00 -TimeAggregationOperator Total -Actions $actionEmail -Description "Under DDoS Attack"
     ```
 
-4. Überprüfen Sie, ob die Warnungen ordnungsgemäß erstellt wurden, indem Sie die einzelnen Regeln untersuchen.
+4. Überprüfen Sie, ob die Warnung ordnungsgemäß erstellt wurde, indem Sie sich die Regel ansehen:
 
     ```powershell
     Get-AzureRmAlertRule -Name myMetricRuleWithEmail -ResourceGroup myresourcegroup -DetailedOutput 
-    Get-AzureRmAlertRule -Name myLogAlertRule -ResourceGroup myresourcegroup -DetailedOutput
     ```
 
-Sie können auch mehr über das [Konfigurieren von Webhooks](../monitoring-and-diagnostics/insights-webhooks-alerts.md) und über [Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) für die Erstellung von Warnungen erfahren.
+Sie können auch mehr über das [Konfigurieren von Webhooks](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und über [Logik-Apps](../logic-apps/logic-apps-what-are-logic-apps.md) für die Erstellung von Warnungen erfahren.
 
 ## <a name="configure-logging-on-ddos-protection-metrics"></a>Konfigurieren der Protokollierung in DDoS-Schutzmetriken
 
-Weitere Informationen über den Zugriff und das Konfigurieren der Azure-Diagnoseprotokollierung über PowerShell finden Sie unter [PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md).
+Weitere Informationen über den Zugriff und das Konfigurieren der Azure-Diagnoseprotokollierung über PowerShell finden Sie unter [PowerShell-Schnellstartbeispiele](../monitoring-and-diagnostics/insights-powershell-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Weitere Informationen zu Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)
-- [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../log-analytics/log-analytics-azure-storage.md)
-- [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
+- [Weitere Informationen zu Azure-Diagnoseprotokollen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../log-analytics/log-analytics-azure-storage.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+- [Erste Schritte mit Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

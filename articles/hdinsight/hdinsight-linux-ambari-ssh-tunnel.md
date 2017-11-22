@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/21/2017
+ms.date: 11/10/2017
 ms.author: larryfr
-ms.openlocfilehash: 4b606ea3797d685b9deacf72f1bd31e0ef007f98
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f55abc84a8afea398cf0e95761d922b77e1c248
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>Verwenden von SSH-Tunneling zum Zugriff auf die Ambari-Webbenutzeroberfläche, JobHistory, NameNode, Oozie und andere Webbenutzeroberflächen
 
@@ -48,7 +48,7 @@ Wenn Sie für die Clusteranpassung Skriptaktionen verwenden, benötigen Sie für
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Einen SSH-Client. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
+* SSH-Client. Die meisten Betriebssysteme stellen einen SSH-Client über den Befehl `ssh` bereit. Weitere Informationen finden Sie unter [Verwenden von SSH mit Linux-basiertem Hadoop in HDInsight unter Linux, Unix oder OS X](hdinsight-hadoop-linux-use-ssh-unix.md).
 
 * Einen Webbrowser, der für die Verwendung eines SOCKS5-Proxys konfiguriert werden kann.
 
@@ -74,9 +74,9 @@ Durch diesen Befehl wird eine Verbindung erstellt, über die der Datenverkehr ü
 * **C** : Alle Daten werden komprimiert, da der Webdatenverkehr hauptsächlich aus Text besteht.
 * **2** : SSH zwingen, nur Protokollversion 2 zu verwenden.
 * **q** : Stiller Modus.
-* **T** : Pseudo-TTY-Zuordnung deaktivieren, da lediglich ein Port weitergeleitet wird.
-* **n:** verhindert den Lesevorgang für STDIN, da lediglich ein Port weitergeleitet wird
-* **N** : Keine Remotebefehle ausführen, da lediglich ein Port weitergeleitet wird.
+* **T**: Pseudo-TTY-Zuordnung deaktivieren, da lediglich ein Port weitergeleitet wird.
+* **n**: Verhindert den Lesevorgang für STDIN, da lediglich ein Port weitergeleitet wird.
+* **N**: Keine Remotebefehle ausführen, da lediglich ein Port weitergeleitet wird.
 * **f** : Im Hintergrund ausführen.
 
 Nach Abschluss des Befehls wird der an den Port 9876 des lokalen Computers gesendete Datenverkehr an den Hauptknoten des Clusters weitergeleitet.

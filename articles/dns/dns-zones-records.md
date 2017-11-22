@@ -15,11 +15,11 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
-ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 00f6309114039db23a1d22f1eb70076b842dadca
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 
@@ -54,6 +54,16 @@ In Azure DNS wird der TTL-Wert für den Ressourceneintragssatz und nicht für je
 Azure DNS unterstützt [Platzhalterdatensätze](https://en.wikipedia.org/wiki/Wildcard_DNS_record). Platzhalterdatensätze werden für alle Abfragen mit einem übereinstimmenden Namen zurückgegeben (es sei denn, es gibt eine genauere Übereinstimmung aus einem Ressourceneintragssatz ohne Platzhalter). Azure DNS unterstützt Ressourceneintragssätze mit Platzhaltern für alle Eintragstypen mit Ausnahme von NS und SOA.
 
 Verwenden Sie zum Erstellen eines Ressourceneintragssatzes mit Platzhaltern den Ressourceneintragssatz-Namen „\*“. Alternativ können Sie einen Namen mit „\*“ als Bezeichnung an der linken Stelle verwenden, z.B. „\*.foo“.
+
+### <a name="caa-records"></a>CAA-Einträge
+
+Mit CAA-Einträgen können Domänenbesitzer angeben, welche Zertifizierungsstellen zum Ausstellen von Zertifikaten für ihre Domäne autorisiert sind. Dadurch können Zertifizierungsstellen ein falsches Ausstellen von Zertifikaten in einigen Fällen verhindern. CAA-Einträge weisen drei Eigenschaften auf:
+* **Flags**: Dies ist eine ganze Zahl zwischen 0 und 255, mit der das kritische Flag dargestellt wird, das gemäß [RFC](https://tools.ietf.org/html/rfc6844#section-3) eine besondere Bedeutung hat.
+* **Tag**: Eine ASCII-Zeichenfolge, bei der es sich um eine der folgenden Optionen handeln kann:
+    * **issue**: Verwenden Sie diese Option, wenn Sie Zertifizierungsstellen angeben möchten, denen das Ausstellen von Zertifikaten (alle Typen) gestattet ist.
+    * **issuewild**: Verwenden Sie diese Option, wenn Sie Zertifizierungsstellen angeben möchten, denen das Ausstellen von Zertifikaten (nur Platzhalterzertifikate) gestattet ist.
+    * **iodef**: Geben Sie eine E-Mail-Adresse oder einen Hostnamen an, an die bzw. den Zertifizierungsstellen eine Benachrichtigung senden können, falls die Ausstellung eines nicht autorisierten Zertifikats angefordert wird.
+* **Value**: Der Wert für das jeweils ausgewählte Tag.
 
 ### <a name="cname-records"></a>CNAME-Einträge
 

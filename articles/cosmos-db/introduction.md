@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/14/2017
+ms.date: 11/15/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: d5ae2a68f749310d4d6a2514055fb258978eec9c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: f34790ad670b488159e945be9bf4ba378cc5e94a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 
@@ -42,8 +42,9 @@ Als global verteilter Datenbankdienst bietet Azure Cosmos DB die folgenden Funkt
     * APIs für die folgenden Datenmodelle werden über SDKs unterstützt, die in verschiedenen Sprachen verfügbar sind:
         * [DocumentDB-API](documentdb-introduction.md): Ein schemaloses JSON-Datenbankmodul mit SQL-Abfragefunktionen
         * [MongoDB-API](mongodb-introduction.md): Ein MongoDB-Datenbankdienst, der auf Cosmos DB aufbaut. Kompatibel mit bestehenden MongoDB-Bibliotheken, -Treibern, -Tools und -Anwendungen.
-        * [Tabellen-API](table-introduction.md): Ein Datenbankdienst für Schlüssel-Wert-Speicher, der erstellt wurde, um Premiumfunktionen für Azure-Tabellenspeicheranwendungen bereitzustellen.
+        * [Table-API](table-introduction.md): Ein Schlüssel-Wert-Datenbankdienst zur Bereitstellung von Premiumfunktionen für Azure Table Storage-Anwendungen.
         * [Graph-API (Gremlin)](graph-introduction.md): Ein Datenbankdienst für Graphen, der den [Apache TinkerPop-Spezifikationen](http://tinkerpop.apache.org/) entsprechend erstellt wurde.
+        * [Cassandra-API](cassandra-introduction.md): Ein auf der [Apache Cassandra](https://cassandra.apache.org/)-Implementierung basierender Schlüssel/Wert-Speicher. 
         * Weitere Datenmodelle folgen in Kürze.
 
 * **Elastische Skalierung von Durchsatz und Speicher – bedarfsorientiert und weltweit**
@@ -55,7 +56,7 @@ Als global verteilter Datenbankdienst bietet Azure Cosmos DB die folgenden Funkt
     * Für ein typisches 1-KB-Element garantiert Cosmos DB eine End-to-End-Wartezeit für Lesevorgänge von weniger als 10 ms und für indizierte Schreibvorgänge von weniger als 15 ms im 99. Perzentil innerhalb derselben Azure-Region. Die mittlere Wartezeit liegt deutlich niedriger (unter 5 ms).
 
 * **Sicherstellen der AlwaysOn-Verfügbarkeit**
-    * 99,99 % Verfügbarkeit innerhalb einer Region.
+    * SLA mit einer Verfügbarkeit von 99,99 Prozent für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz sowie eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen.
     * Nehmen Sie die Bereitstellung für höhere Verfügbarkeit in einer beliebigen Anzahl von [Azure-Regionen](https://azure.microsoft.com/regions) vor.
     * [Simulieren Sie den Ausfall](regional-failover.md) einer oder mehrerer Regionen garantiert ohne Datenverluste. 
 

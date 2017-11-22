@@ -1,5 +1,5 @@
 ---
-title: "Schnellstart für Bash in Azure Cloud Shell (Vorschau) | Microsoft-Dokumentation"
+title: "Schnellstartanleitung für Bash in Azure Cloud Shell | Microsoft-Dokumentation"
 description: "Schnellstart für Bash in Cloud Shell"
 services: 
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: bbad2735acf06ebefda020410731fb307c4ec614
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ed83b28fe5f0f1e9626115390f8697dfb2c8ead
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Schnellstart für Bash in Azure Cloud Shell
 
@@ -30,7 +30,7 @@ Dieses Dokument erläutert die Verwendung von Bash in Azure Cloud Shell im [Azur
 ## <a name="start-cloud-shell"></a>Starten von Cloud Shell
 1. Starten Sie **Cloud Shell** aus dem oberen Navigationsbereich im Azure-Portal. <br>
 ![](media/quickstart/shell-icon.png)
-2. Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Azure-Dateifreigabe erstellt werden sollen.
+2. Wählen Sie ein Abonnement aus, in dem ein Speicherkonto und eine Microsoft Azure Files-Freigabe erstellt werden sollen.
 3. Wählen Sie „Speicher erstellen“ aus.
 
 > [!TIP]
@@ -59,7 +59,7 @@ Erstellen Sie einen virtuellen Ubuntu-Computer in Ihrer neuen Ressourcengruppe. 
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> Die öffentlichen und privaten Schlüssel, mit denen Ihr virtueller Computer authentifiziert wird, werden von der Azure CLI 2.0 standardmäßig in `/User/.ssh/id_rsa` und `/User/.ssh/id_rsa.pub` gespeichert. Der SSH-Ordner wird im 5 GB großen Image der angefügten Azure-Dateifreigabe beibehalten.
+> Die öffentlichen und privaten Schlüssel, mit denen Ihr virtueller Computer authentifiziert wird, werden von der Azure CLI 2.0 standardmäßig in `/User/.ssh/id_rsa` und `/User/.ssh/id_rsa.pub` gespeichert. Der SSH-Ordner bleibt im 5 GB großen Image der angefügten Azure Files-Freigabe erhalten.
 
 Ihr Benutzername auf diesem virtuellen Computer ist der Benutzername, der in Cloud Shell verwendet wird ($User@Azure:).
 
@@ -79,4 +79,4 @@ Führen Sie `az group delete -n MyRG` aus.
 ## <a name="next-steps"></a>Nächste Schritte
 [Erfahren Sie mehr über das Beibehalten von Dateien für Bash in Cloud Shell](persisting-shell-storage.md) <br>
 [Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/). <br>
-[Erfahren Sie mehr über Azure File Storage](../storage/files/storage-files-introduction.md). <br>
+[Erfahren Sie mehr über Azure Files Storage](../storage/files/storage-files-introduction.md). <br>

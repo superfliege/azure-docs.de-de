@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d3df59afe595265fba88f7274154a36d42139859
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d59ef16de433ac9691f6996eab2bf56f056feb88
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimieren der Leistung und Zuverlässigkeit von Azure Functions
 
@@ -66,8 +66,7 @@ Wie reagiert Ihr Code, wenn nach dem Einfügen von 5.000 dieser Elemente in eine
 
 Wenn ein Warteschlangenelement bereits verarbeitet wurde, sollte es möglich sein, dass die Funktion eine No-Op-Funktion ist.
 
-Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten** in der Dokumentation zu [Azure Storage-Warteschlangentriggern](functions-bindings-storage-queue.md#trigger).
- 
+Nutzen Sie Verteidigungsmaßnahmen, die für auf der Azure Functions-Plattform verwendete Komponenten bereits bereitgestellt wurden. Informationen hierzu finden Sie beispielsweise in der [Dokumentation zu Azure Storage-Warteschlangentriggern und -bindungen](functions-bindings-storage-queue.md#trigger---poison-messages) unter **Behandeln von Nachrichten in der Warteschlange für nicht verarbeitbare Nachrichten**. 
 
 ## <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Vermeiden Sie es, Test- und Produktionscodes in der derselben Funktionen-App zu mischen.
 
@@ -97,4 +96,3 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 
 Da Azure App Service in Azure Functions verwendet wird, sollten Sie auch die App Service-Richtlinien beachten.
 * [Patterns and Practices HTTP Performance Optimizations](https://docs.microsoft.com/azure/architecture/antipatterns/improper-instantiation/) (Muster und Methoden – HTTP-Leistungsoptimierungen)
-

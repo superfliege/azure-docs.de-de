@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.openlocfilehash: 630d9022da0d51e533534ea43f50f27e8eb09a78
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7c3933210c01c81077b594abb8c3183d6e3c58a0
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-a-serverless-api-using-azure-functions"></a>Erstellen einer serverlosen API mit Azure Functions
 
@@ -67,7 +67,7 @@ Als Nächstes testen Sie die Funktion, um zu sehen, wie sie mit der neuen API-Ob
 
 ## <a name="proxies-overview"></a>Übersicht über Proxy
 
-Im nächsten Abschnitt zeigen Sie Ihre API über einen Proxy an. Azure Functions-Proxys sind eine Vorschaufunktion, mit der Sie Anforderungen an andere Ressourcen weiterleiten können. Sie definieren einen HTTP-Endpunkt wie für HTTP-Trigger, statt aber Code zu schreiben, der ausgeführt wird, wenn dieser Endpunkt aufgerufen wird, geben Sie eine URL für eine Remoteimplementierung an. Dadurch können Sie mehrere API-Quellen in einer einzelnen API-Oberfläche zusammenstellen, die Clients einfach nutzen können. Dies ist besonders nützlich, wenn Sie Ihre API als Microservices erstellen möchten.
+Im nächsten Abschnitt zeigen Sie Ihre API über einen Proxy an. Mit Azure-Funktionsproxys können Sie Anforderungen an andere Ressourcen weiterleiten. Sie definieren einen HTTP-Endpunkt wie für HTTP-Trigger, statt aber Code zu schreiben, der ausgeführt wird, wenn dieser Endpunkt aufgerufen wird, geben Sie eine URL für eine Remoteimplementierung an. Dadurch können Sie mehrere API-Quellen in einer einzelnen API-Oberfläche zusammenstellen, die Clients einfach nutzen können. Dies ist besonders nützlich, wenn Sie Ihre API als Microservices erstellen möchten.
 
 Ein Proxy kann auf HTTP-Ressourcen wie die folgenden verweisen:
 - Azure-Funktionen 
@@ -97,7 +97,7 @@ Wiederholen Sie die Schritte zum [Erstellen einer Funktionen-App](https://docs.m
 ### <a name="creating-a-proxy-on-the-frontend"></a>Erstellen eines Proxys auf dem Front-End
 
 1. Navigieren Sie zurück zu Ihrer Front-End-Funktionen-App im Portal.
-1. Klicken Sie im linken Navigationsbereich auf das Pluszeichen „+“ neben „Proxys (Vorschau)“.
+1. Klicken Sie im linken Navigationsbereich neben „Proxys“ auf das Pluszeichen „+“.
     ![Erstellen eines Proxys](./media/functions-create-serverless-api/creating-proxy.png)
 1. Verwenden Sie die Proxyeinstellungen, wie in der Tabelle angegeben. 
 

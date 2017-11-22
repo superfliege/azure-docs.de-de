@@ -13,15 +13,15 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 1721f985214b9a9fbefed628308b1a72f5cc186a
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 2b55de4de6bb94be78649112161211346090b23a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="connect-to-kafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Kafka in HDInsight (Vorschau) über ein virtuelles Azure-Netzwerk
+# <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Herstellen einer Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk
 
 Erfahren Sie, wie Sie eine direkte Verbindung mit Kafka in HDInsight über ein virtuelles Azure-Netzwerk herstellen. Dieses Dokument enthält Informationen zum Verbinden mit Kafka mithilfe der folgenden Konfigurationen:
 
@@ -32,7 +32,7 @@ Erfahren Sie, wie Sie eine direkte Verbindung mit Kafka in HDInsight über ein v
 
 HDInsight erlaubt keine direkten Verbindungen zu Kafka über das öffentliche Internet. Kafka-Clients (Producer und Consumer) müssen stattdessen eine der folgenden Verbindungsmethoden verwenden:
 
-* Führen Sie den Client im selben virtuellen Netzwerk wie Kafka auf HDInsight aus. Diese Konfiguration wird im Dokument [Erste Schritte mit Apache Kafka (Vorschau) in HDInsight](apache-kafka-get-started.md) verwendet. Der Client wird direkt auf dem HDInsight-Clusterknoten oder auf einem anderen virtuellen Computer im selben Netzwerk ausgeführt.
+* Führen Sie den Client im selben virtuellen Netzwerk wie Kafka auf HDInsight aus. Diese Konfiguration wird im Dokument [Erste Schritte mit Apache Kafka in HDInsight](apache-kafka-get-started.md) verwendet. Der Client wird direkt auf dem HDInsight-Clusterknoten oder auf einem anderen virtuellen Computer im selben Netzwerk ausgeführt.
 
 * Verbinden Sie ein privates Netzwerk, z.B. Ihr lokalen Netzwerk, mit dem virtuellen Netzwerk. Diese Konfiguration ermöglicht es Clients, in Ihrem lokalen Netzwerk direkt mit Kafka zu arbeiten. Um diese Konfiguration zu aktivieren, führen Sie die folgenden Aufgaben aus:
 

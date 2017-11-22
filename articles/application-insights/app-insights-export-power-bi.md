@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: mbullwin
-ms.openlocfilehash: fe708b14fac971d18d95fd1619907023ec35af89
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ae204b79be228d55b30bb543dd25efdd9c3f0436
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](http://www.powerbi.com/) ist eine Suite aus Business Analytics-Tools zum Analysieren von Daten und Teilen von Einblicken. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](app-insights-overview.md).
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/01/2017
 Es gibt drei empfohlene Methoden zum Exportieren von Application Insights-Daten nach Power BI. Diese können Sie separat oder zusammen verwenden.
 
 * [**Power BI-Adapter**](#power-pi-adapter): Richten Sie ein vollständiges Dashboard mit den Telemetriedaten Ihrer App ein. Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
-* [**Exportieren von Analytics-Abfragen**](#export-analytics-queries): Schreiben Sie mit Analytics eine beliebige Abfrage, und exportieren Sie sie nach Power BI. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
+* [**Exportieren von Analytics-Abfragen**](#export-analytics-queries): Schreiben Sie mit Analytics oder über die Verwendungstrichter eine beliebige Abfrage, und exportieren Sie sie in Power BI. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
 * [**Fortlaufender Export und Stream Analytics**](app-insights-export-stream-analytics.md): Hierfür fällt mehr Einrichtungsaufwand an. Dies ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume aufbewahren möchten. Andernfalls sind eher die anderen Methoden zu empfehlen.
 
 ## <a name="power-bi-adapter"></a>Power BI-Adapter
@@ -48,7 +48,7 @@ Sie können das Dashboard bearbeiten und die Application Insights-Diagramme mit 
 Nach dem anfänglichen Import werden das Dashboard und die Berichte täglich aktualisiert. Sie können den Aktualisierungszeitplan im Dataset steuern.
 
 ## <a name="export-analytics-queries"></a>Exportieren von Analytics-Abfragen
-Mit dieser Route können Sie eine beliebige Analytics-Abfrage schreiben und dann in ein Power BI-Dashboard exportieren. (Sie können dem mit dem Adapter erstellten Dashboard Elemente hinzufügen.)
+Mit dieser Route können Sie eine beliebige Analytics-Abfrage schreiben oder aus Verwendungstrichtern exportieren und dann in ein Power BI-Dashboard exportieren. (Sie können dem mit dem Adapter erstellten Dashboard Elemente hinzufügen.)
 
 ### <a name="one-time-install-power-bi-desktop"></a>Einmalig: Installieren von Power BI Desktop
 Zum Importieren Ihrer Application Insights-Abfrage verwenden Sie die Desktopversion von Power BI. Diese können Sie dann aber im Web oder in Ihrem Power BI-Cloudarbeitsbereich veröffentlichen. 
@@ -82,10 +82,32 @@ Installieren Sie [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/
     ![Auswählen der Visualisierung](./media/app-insights-export-power-bi/publish-power-bi.png)
 4. Aktualisieren Sie den Bericht in bestimmten Abständen manuell, oder richten Sie auf der Seite mit den Optionen eine geplante Aktualisierung ein.
 
+### <a name="export-a-funnel"></a>Exportieren eines Trichters
+1. [Erstellen Sie Ihren Trichter.](usage-funnels.md)
+2. Klicken Sie auf die Power BI-Schaltfläche. 
+
+   ![Power BI-Schaltfläche](./media/app-insights-export-power-bi/button.png)
+   
+3. Klicken Sie in Power BI Desktop auf **Get Data (Daten abrufen) > Leere Abfrage** und anschließend im Abfrage-Editor unter **Ansicht** auf **Editor für erweiterte Abfragen**.
+
+   ![Leere Abfrage](./media/app-insights-export-power-bi/blankquery.png)
+
+   Fügen Sie das exportierte M-Sprachskript in den Editor für erweiterte Abfragen ein. 
+
+   ![Editor für erweiterte Abfragen](./media/app-insights-export-power-bi/advancedquery.png)
+
+4. Wählen Sie Elemente aus der Abfrage aus, und klicken Sie auf die Trichtervisualisierung.
+
+   ![Auswählen von Sequenz und Trichter](./media/app-insights-export-power-bi/selectsequence.png)
+
+5. Geben Sie einen aussagekräftigen Titel an, und veröffentlichen Sie den Bericht in Ihrem Power BI-Cloudarbeitsbereich. 
+
+   ![Ändern des Titels](./media/app-insights-export-power-bi/changetitle.png)
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 ### <a name="401-or-403-unauthorized"></a>401 oder 403: Nicht autorisiert 
-Dies kann geschehen, wenn Ihr Aktualisierungstoken nicht aktualisiert wurde. Probieren Sie diese Schritte aus, um sicherzustellen, dass Sie weiterhin Zugriff haben. Wenn Sie Zugriff haben und das Aktualisieren der Anmeldeinformationen nicht funktioniert, öffnen Sie ein Supportticket.
+Dieser Fall kann eintreten, wenn Ihr Aktualisierungstoken nicht aktualisiert wurde. Probieren Sie diese Schritte aus, um sicherzustellen, dass Sie weiterhin Zugriff haben. Falls Sie Zugriff haben und die Aktualisierung der Anmeldeinformationen das Problem nicht behebt, erstellen Sie ein Supportticket.
 
 1. Melden Sie sich beim Azure-Portal an, und stellen Sie sicher, dass Sie auf die Ressource zugreifen können.
 2. Versuchen Sie, die Anmeldeinformationen für das Dashboard zu aktualisieren.

@@ -1,6 +1,6 @@
 ---
-title: "Übersicht zu Durable Functions – Azure"
-description: "Einführung zur Erweiterung Durable Functions für Azure Functions."
+title: "Übersicht über Durable Functions – Azure (Vorschauversion)"
+description: "Einführung in die Durable Functions-Erweiterung für Azure Functions."
 services: functions
 author: cgillum
 manager: cfowler
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 04d660d5fdd878788c09e46b078b2e2b043b7dbb
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="durable-functions-overview-azure-functions"></a>Übersicht zu Durable Functions (Azure Functions)
+# <a name="durable-functions-overview-preview"></a>Übersicht über Durable Functions (Vorschauversion)
 
 *Durable Functions* ist eine Erweiterung von [Azure Functions](functions-overview.md) und [Azure WebJobs](../app-service/web-sites-create-web-jobs.md), mit der Sie zustandsbehaftete Funktionen in einer serverlosen Umgebung schreiben können. Die Erweiterung verwaltet Status, Prüfpunkte und Neustarts für Sie.
 
@@ -31,7 +31,7 @@ Mit der Erweiterung können Sie zustandsbehaftete Workflows in einer neuen, als 
 * Sie erstellen immer dann, wenn die Funktion wartet, automatisch Prüfpunkte zu ihrem Status. Der lokale Zustand geht nie verloren, wenn der Prozess oder virtuelle Computer neu gestartet wird.
 
 > [!NOTE]
-> Durable Functions ist eine fortgeschrittene Erweiterung für Azure Functions und nicht für alle Anwendungen geeignet. Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie mit den Konzepten von [Azure Functions](functions-overview.md) und den Herausforderungen serverloser Anwendungsentwicklung bestens vertraut sind.
+> Durable Functions befindet sich momentan in der Vorschauphase und ist eine fortschrittliche Erweiterung für Azure Functions, die nicht für alle Anwendungen geeignet ist. Im weiteren Verlauf dieses Artikels wird vorausgesetzt, dass Sie mit den Konzepten von [Azure Functions](functions-overview.md) und den Herausforderungen serverloser Anwendungsentwicklung bestens vertraut sind.
 
 Der primäre Anwendungsfall für Durable Functions ist die Vereinfachung komplexer, zustandsbehafteter Koordinationsprobleme in serverlosen Anwendungen. In den folgenden Abschnitten werden einige typische Anwendungsmuster beschrieben, die von Durable Functions profitieren können.
 

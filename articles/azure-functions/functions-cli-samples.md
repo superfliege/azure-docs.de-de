@@ -1,26 +1,6 @@
----
-title: "Azure CLI-Beispiele – Azure Functions | Microsoft-Dokumentation"
-description: "Azure CLI-Beispiele – Azure Functions"
-services: functions
-documentationcenter: functions
-author: syntaxc4
-manager: cfowler
-editor: ggailey777
-tags: azure-service-management
-ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0
-ms.service: functions
-ms.devlang: na
-ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: functions
-ms.date: 04/11/2017
-ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: f3c9fc67c082a759432f1db0b44b42513f2fb733
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+-- title: Azure CLI-Beispiele – Azure Functions | Microsoft-Dokumentation description: Azure CLI-Beispiele – Azure Functions services: functions documentationcenter: functions author: syntaxc4 manager: cfowler editor: ggailey777 tags: azure-service-management
+
+ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0 ms.service: functions ms.devlang: na ms.topic: sample ms.tgt_pltfrm: na ms.workload: functions ms.date: 04/11/2017 ms.author: glenga ms.custom: mvc
 ---
 # <a name="azure-cli-samples"></a>Azure CLI-Beispiele
 
@@ -29,8 +9,8 @@ Die folgende Tabelle enthält Links zu Bash-Skripts für Azure Functions, die di
 | | |
 |-|-|
 |**Erstellen einer App**||
-| [Erstellen einer Funktionen-App für die serverlose Ausführung](scripts/functions-cli-create-serverless.md) | Erstellt eine Funktionen-App in einem Verbrauchsplan.  |
-| [Erstellen einer Funktionen-App in einem App Service-Plan](scripts/functions-cli-create-app-service-plan.md) | Erstellen Sie eine Funktionen-App in einem dedizierten App Service-Plan. |
+| [Erstellen einer Funktionen-App für die serverlose Ausführung](scripts/functions-cli-create-serverless.md) | Erstellen Sie eine Funktions-App in einem Verbrauchsplan.  |
+| [Erstellen einer Funktionen-App in einem App Service-Plan](scripts/functions-cli-create-app-service-plan.md) | Erstellen Sie eine Funktions-App in einem dedizierten App Service-Plan. |
 | | |
 |**Integrieren**||
 | [Erstellen einer Funktionen-App und Herstellen der Verbindung mit einem Speicherkonto](scripts/functions-cli-create-function-app-connect-to-storage-account.md) | Erstellen Sie eine Funktionen-App, und verbinden Sie sie mit einem Speicherkonto. |

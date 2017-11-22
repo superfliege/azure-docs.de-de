@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: owend
-ms.openlocfilehash: 0e58862684e62a65cf11266cc0320a9acd781f07
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: a97f9648efef7f07659110d720c200dcd0a241a9
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-analysis-services-scale-out"></a>Horizontales Hochskalieren von Azure Analysis Services
 
@@ -32,7 +32,7 @@ Mit der horizontalen Hochskalierung können Sie einen Abfragepool mit bis zu sie
 
 Verarbeitungsworkloads werden unabhängig von der Anzahl von Abfragereplikaten in einem Abfragepool nicht auf Abfragereplikate verteilt. Ein einzelner Server fungiert als Verarbeitungsserver. Abfragereplikate bedienen ausschließlich Abfragen für die Modelle, die zwischen den einzelnen Replikaten im Abfragepool synchronisiert werden. 
 
-Nach Abschluss von Verarbeitungsvorgängen ist eine Synchronisierung zwischen dem Verarbeitungsserver und den Abfragereplikatservern erforderlich. Wenn Verarbeitungsvorgänge automatisiert werden, muss auch ein Synchronisierungsvorgang konfiguriert werden, der nach erfolgreicher Durchführung von Verarbeitungsvorgängen ausgeführt wird.
+Nach Abschluss von Verarbeitungsvorgängen ist eine Synchronisierung zwischen dem Verarbeitungsserver und den Abfragereplikatservern erforderlich. Wenn Verarbeitungsvorgänge automatisiert werden, muss auch ein Synchronisierungsvorgang konfiguriert werden, der nach erfolgreicher Durchführung von Verarbeitungsvorgängen ausgeführt wird. Die Synchronisierung kann manuell im Portal oder mithilfe von PowerShell oder der REST-API ausgeführt werden.
 
 > [!NOTE]
 > Horizontales Hochskalieren ist für Server im Standardtarif verfügbar. Jedes Abfragereplikat wird mit dem gleichen Tarif abgerechnet wie Ihr Server.
@@ -58,12 +58,10 @@ Nach Abschluss von Verarbeitungsvorgängen ist eine Synchronisierung zwischen de
 
 Tabellarische Modelle auf Ihrem primären Server werden mit den Replikatservern synchronisiert. Nach Abschluss der Synchronisierung beginnt der Abfragepool mit der Verteilung eingehender Abfragen auf die Replikatserver. 
 
-### <a name="powershell"></a>PowerShell
-Verwenden Sie das Cmdlet [Set-AzureRmAnalysisServicesServer](/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Geben Sie den `-Capacity`-Parameterwert >1 an.
 
 ## <a name="synchronization"></a>Synchronisierung 
 
-Wenn Sie neue Abfragereplikate bereitstellen, repliziert Azure Analysis Services Ihre Modelle automatisch in allen Replikaten. Sie können auch eine manuelle Synchronisierung durchführen. Wenn Sie Ihre Modelle verarbeiten, sollten Sie eine Synchronisierung durchführen, damit Aktualisierungen zwischen Abfragereplikaten synchronisiert werden.
+Wenn Sie neue Abfragereplikate bereitstellen, repliziert Azure Analysis Services Ihre Modelle automatisch in allen Replikaten. Sie können auch eine manuelle Synchronisierung mithilfe des Portals oder der REST-API ausführen. Wenn Sie Ihre Modelle verarbeiten, sollten Sie eine Synchronisierung durchführen, damit Aktualisierungen zwischen Ihren Abfragereplikaten synchronisiert werden.
 
 ### <a name="in-azure-portal"></a>Im Azure-Portal
 
@@ -72,12 +70,16 @@ Klicken Sie in der **Übersicht** für das Modell auf das Symbol **Modell synchr
 ![Schieberegler für horizontales Hochskalieren](media/analysis-services-scale-out/aas-scale-out-sync.png)
 
 ### <a name="rest-api"></a>REST-API
+Verwenden Sie die **sync**-Operation.
 
-Synchronisieren eines Modells   
-`POST https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
+#### <a name="synchronize-a-model"></a>Synchronisieren eines Modells   
+`POST https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
 
-Abrufen des Status einer Modellsynchronisierung  
-`GET https://<region>.asazure.windows.net/servers/<servername>/models/<modelname>/sync`
+#### <a name="get-sync-status"></a>Abrufen des Synchronisierungsstatus  
+`GET https://<region>.asazure.windows.net/servers/<servername>:rw/models/<modelname>/sync`
+
+### <a name="powershell"></a>PowerShell
+Um die Synchronisierung über PowerShell auszuführen, nehmen Sie eine [Aktualisierung auf das neueste](https://github.com/Azure/azure-powershell/releases) AzureRM-Modul, Version 5.01 oder höher, vor. Verwendung Sie [Sync-AzureAnalysisServicesInstance](https://docs.microsoft.com/en-us/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
 
 ## <a name="connections"></a>Verbindungen
 
