@@ -48,7 +48,7 @@ Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
     | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
     | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Lokaler Computer\Vertrauenswürdige Stammzertifizierungsstellen|
 
-2. Navigieren Sie zu „Users\<Benutzername>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>“, und installieren Sie manuell das Zertifikat (CER-Datei) im Computerspeicher des Benutzers.
+2. Navigieren Sie zu „Users\<Benutzername>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID>“, und installieren Sie manuell das Zertifikat (*.CER-Datei) im Computerspeicher des Benutzers.
 
 Weitere Informationen zum Installieren des Clientzertifikats finden Sie unter [Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell](vpn-gateway-certificates-point-to-site.md).
 
@@ -146,7 +146,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung:
 
-**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Die Daten für die &lt;*Zertifikat-ID*&gt; des Zertifikats sind ungültig.**
+**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;* Gatewayname* &gt;. Die Daten für die &lt;*Zertifikat-ID*&gt; des Zertifikats sind ungültig.**
 
 ### <a name="cause"></a>Ursache 
 
@@ -181,7 +181,7 @@ Stellen Sie sicher, dass die Daten im Zertifikat keine ungültigen Zeichen wie Z
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung: 
 
-**Fehler beim Speichern des Gateways für virtuelle Netzwerke* Gatewayname*&gt;. Fehler: Der Ressourcenname &lt;*Zertifikatname, den Sie versuchen hochzuladen,*&gt; ist ungültig.
+**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;* Gatewayname* &gt;. Fehler: Der Ressourcenname &lt;*Zertifikatname, den Sie versuchen hochzuladen,*&gt; ist ungültig.
 
 ### <a name="cause"></a>Ursache
 
