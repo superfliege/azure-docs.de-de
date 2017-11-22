@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/24/2016
 ms.author: heidist
-ms.openlocfilehash: f9f3a7b2369818791ffac1c8eeccef45216c2ff0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 781683f27c943e25d5629dd846da357f51c9d4f9
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="choose-a-sku-or-pricing-tier-for-azure-search"></a>Auswählen einer SKU oder eines Tarifs für Azure Search
 In Azure Search erfolgt die [Bereitstellung eines Diensts](search-create-service-portal.md) für einen bestimmten Tarif oder eine bestimmte SKU. Folgende Optionen stehen zur Verfügung: **Free**, **Basic** und **Standard**, wobei **Standard** mit verschiedenen Konfigurationen und Kapazitäten verfügbar ist.
@@ -43,9 +43,9 @@ Zwischen der Kapazität und den Kosten für die Dienstausführung besteht ein di
 
 * Anzahl und Größe der zu erstellenden Indizes
 * Anzahl und Größe der hochzuladenden Dokumente
-* Ungefähre Vorstellung des Abfrageaufkommens (Abfragen pro Sekunde)
+* Ungefähre Vorstellung des Abfrageaufkommens (Abfragen pro Sekunde). Anleitungen finden Sie unter [Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
-Anzahl und Größe sind wichtig, da Obergrenzen durch einen festen Grenzwert für die Anzahl von Indizes oder Dokumenten in einem Dienst oder für vom Dienst verwendete Ressourcen (Speicher oder Replikate) erreicht werden. Der tatsächliche Grenzwert für den Dienst ist dann der Wert, der jeweils zuerst aufgebraucht ist: Ressourcen oder Objekte.
+Anzahl und Größe sind wichtig, da Obergrenzen durch einen festen Grenzwert für die Anzahl von Indizes pro Dienst oder für vom Dienst verwendete Ressourcen (Speicher oder Replikate) erreicht werden. Der tatsächliche Grenzwert für den Dienst ist dann der Wert, der jeweils zuerst aufgebraucht ist: Ressourcen oder Objekte.
 
 Wenn Sie über diese Schätzwerte verfügen, gehen Sie der Einfachheit halber wie folgt vor:
 
@@ -60,10 +60,10 @@ In der folgenden Tabelle werden die einzelnen Tarife beschrieben:
 | --- | --- |
 | **Free** |Ein gemeinsam genutzter, kostenloser Dienst für Evaluierung, Untersuchung oder kleine Workloads. Da der Dienst gemeinsam mit anderen Abonnenten genutzt wird, hängen Abfragedurchsatz und Indizierung davon ab, wer den Dienst sonst noch verwendet. Kapazität: gering (50 MB oder drei Indizes mit je bis zu 10.000 Dokumenten). |
 | **Basic** |Kleine Produktionsworkloads auf dedizierter Hardware. Hochverfügbar. Kapazität: bis zu drei Replikate und eine Partition (2 GB). |
-| **S1** |Standard 1 unterstützt flexible Kombinationen aus Partitionen (12) und Replikaten (12) für mittlere Produktionsworkloads auf dedizierter Hardware. Sie können Kombinationen aus Partitionen und Replikaten mit Unterstützung von maximal 36 abrechenbaren Sucheinheiten zuordnen. Auf dieser Ebene beträgt die Partitionsgröße jeweils 25 GB, und der QPS-Wert liegt bei etwa 15 Abfragen pro Sekunde. |
-| **S2** |Standard 2 führt größere Produktionsworkloads mit den gleichen 36 Sucheinheiten wie bei S1, aber mit größeren Partitionen und Replikaten aus. Auf dieser Ebene beträgt die Partitionsgröße jeweils 100 GB, und der QPS-Wert liegt bei ca. 60 Abfragen pro Sekunde. |
-| **S3** |Standard 3 führt proportional größere Produktionsworkloads auf leistungsstärkeren Systemen in Konfigurationen mit bis zu 12 Partitionen oder 12 Replikaten unter 36 Sucheinheiten aus. Auf dieser Ebene beträgt die Partitionsgröße jeweils 200 GB, und der QPS-Wert liegt bei über 60 Abfragen pro Sekunde. |
-| **S3 HD** |Standard 3 mit hoher Dichte ist für eine große Anzahl von kleineren Indizes konzipiert. Bis zu 3 Partitionen mit jeweils 200 GB sind möglich. Mehr als 60 Abfragen pro Sekunde. |
+| **S1** |Standard 1 unterstützt flexible Kombinationen aus Partitionen (12) und Replikaten (12) für mittlere Produktionsworkloads auf dedizierter Hardware. Sie können Kombinationen aus Partitionen und Replikaten mit Unterstützung von maximal 36 abrechenbaren Sucheinheiten zuordnen. Auf dieser Ebene weisen Partitionen jeweils 25 GB auf. |
+| **S2** |Standard 2 führt größere Produktionsworkloads mit den gleichen 36 Sucheinheiten wie bei S1, aber mit größeren Partitionen und Replikaten aus. Auf dieser Ebene weisen Partitionen jeweils 100 GB auf. |
+| **S3** |Standard 3 führt proportional größere Produktionsworkloads auf leistungsstärkeren Systemen in Konfigurationen mit bis zu 12 Partitionen oder 12 Replikaten unter 36 Sucheinheiten aus. Auf dieser Ebene weisen Partitionen jeweils 200 GB auf. |
+| **S3 HD** |Standard 3 mit hoher Dichte ist für eine große Anzahl von kleineren Indizes konzipiert. Bis zu 3 Partitionen mit jeweils 200 GB sind möglich.|
 
 > [!NOTE]
 > Maximalwerte für Replikate und Partitionen werden als Sucheinheiten (36 Einheiten pro Dienst) abgerechnet. Dadurch ergibt sich effektiv ein niedrigerer Grenzwert als der Maximalwert zunächst vermuten lässt. Wenn Sie also etwa die maximal zulässige Anzahl von 12 Replikaten verwenden möchten, können maximal drei Partitionen (12 * 3 = 36 Einheiten) vorhanden sein. Analog dazu gilt: Wenn Sie die maximale Anzahl von Partitionen verwenden möchten, muss die Anzahl der Replikate auf drei verringert werden. Eine Tabelle mit zulässigen Kombinationen finden Sie unter [Skalieren von Ressourcenebenen für Abfrage und Indizierung von Workloads in Azure Search](search-capacity-planning.md).
@@ -81,7 +81,6 @@ Das folgende Diagramm stellt einen Teil der Grenzwerte aus [Grenzwerte für den 
 | Maximale Anzahl der Partitionen |– |1 |12 |12 |12 |3 <sup>2</sup> |
 | Partitionsgröße |50 MB insgesamt |2 GB pro Dienst |25 GB pro Partition |100 GB pro Partition (bis zu maximal 1,2 TB pro Dienst) |200 GB pro Partition (bis zu maximal 2,4 TB pro Dienst) |200 GB (bis zu maximal 600 GB pro Dienst) |
 | Maximale Anzahl der Replikate |– |3 |12 |12 |12 |12 |
-| Abfragen pro Sekunde |– |~3 pro Replikat |~15 pro Replikat |~60 pro Replikat |>60 pro Replikat |>60 pro Replikat |
 
 <sup>1</sup> Für Funktionen der Free- und Vorschauversion gilt keine Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Für alle abrechenbaren Tarife gelten SLAs, wenn Sie genügend Redundanz für Ihren Dienst bereitstellen. Zwei oder mehr Replikate sind für die Abfrage-SLA (Lesezugriff) erforderlich. Drei oder mehr Replikate sind für die Abfrage- und Indizierungs-SLA (Lese-/Schreibzugriff) erforderlich. Die Anzahl der Partitionen wird für die SLA nicht berücksichtigt. 
 

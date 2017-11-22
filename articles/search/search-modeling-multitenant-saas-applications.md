@@ -11,19 +11,19 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 10/26/2016
+ms.date: 11/09/2017
 ms.author: ashmaka
-ms.openlocfilehash: 33897e7966de5d467602f6cb36fe16caf0786ffd
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 622ae64e118dd2498aff0bf2e9f6c1dbfb0ab045
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und Azure Search
 Eine mehrinstanzenfähige Anwendung bietet dieselben Dienste und Funktionen einer beliebigen Anzahl von Mandanten, die die Daten der anderen Mandaten nicht anzeigen oder mit diesen gemeinsam nutzen können. In diesem Dokument werden Strategien zur Isolierung von Mandanten für mehrinstanzenfähige Anwendungen erläutert, die mit Azure Search erstellt werden.
 
 ## <a name="azure-search-concepts"></a>Azure Search-Konzepte
-Azure Search ist eine Search-as-a-Service-Lösung, die Entwicklern ermöglicht, Anwendungen umfassende Suchfunktionen hinzuzufügen, ohne Infrastruktur verwalten oder Experte für Suchfunktionalität werden zu müssen. Daten werden in den Dienst hochgeladen und dann in der Cloud gespeichert. Mithilfe einfacher an die Azure Search-API gerichteter Anforderungen können die Daten geändert und durchsucht werden. Eine Übersicht über den Dienst finden Sie im [in diesem Artikel](http://aka.ms/whatisazsearch). Ehe wir näher auf Entwurfsmuster eingehen, ist es wichtig, einige Konzepte von Azure Search zu verstehen.
+Azure Search ist eine Search-as-a-Service-Lösung, die Entwicklern ermöglicht, Anwendungen umfassende Suchfunktionen hinzuzufügen, ohne Infrastruktur verwalten oder Experte für das Abrufen von Informationen werden zu müssen. Daten werden in den Dienst hochgeladen und dann in der Cloud gespeichert. Mithilfe einfacher an die Azure Search-API gerichteter Anforderungen können die Daten geändert und durchsucht werden. Eine Übersicht über den Dienst finden Sie im [in diesem Artikel](http://aka.ms/whatisazsearch). Ehe wir näher auf Entwurfsmuster eingehen, ist es wichtig, einige Konzepte von Azure Search zu verstehen.
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Suchdienste, Indizes, Felder und Dokumente
 Zur Verwendung von Azure Search muss ein *Suchdienst*abonniert werden. Die in Azure Search hochgeladenen Daten werden in einem *Index* innerhalb des Suchdiensts gespeichert. In einem einzelnen Dienst kann es mehrere Indizes geben. Analog zu den vertrauten Konzepten von Datenbanken kann der Suchdienst mit einer Datenbank verglichen werden, während die Indizes im Dienst mit Tabellen in einer Datenbank vergleichbar sind.

@@ -1,6 +1,6 @@
 ---
 title: "Übersicht zu OpenShift in Azure | Microsoft-Dokumentation"
-description: "Übersicht zu OpenShift in Azure"
+description: "Eine Übersicht zu OpenShift in Azure."
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldw
@@ -15,55 +15,55 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: f9641b52db91a4356f6d5789a8cd78a6bb3da02b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 5d154a1c860a5ebd7af2efd55b470bb14efe6c67
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="openshift-overview"></a>OpenShift – Übersicht
+# <a name="openshift-in-azure"></a>OpenShift in Azure
 
 OpenShift ist eine offene und erweiterbare Containeranwendungsplattform, die Docker und Kubernetes in das Unternehmen einführt.  
 
-OpenShift enthält Kubernetes für die Containerorchestrierung und -verwaltung. Es fügt Entwicklertools und vorgangssorientierte Tools hinzu, mit denen Folgendes ermöglicht wird:
+OpenShift enthält Kubernetes für die Containerorchestrierung und -verwaltung. Es fügt Entwicklertools und vorgangsorientierte Tools hinzu, mit denen Folgendes ermöglicht wird:
 
 - Schnelle Anwendungsentwicklung
 - Einfache Bereitstellung und Skalierung
 - Langfristige Lebenszykluswartung für Teams und Anwendungen
 
-Es gibt mehrere Angebote von OpenShift, von denen zwei in Azure ausgeführt werden können.
+Es gibt mehrere Versionen von OpenShift, von denen zwei in Azure ausgeführt werden können:
 
 - OpenShift Origin
 - OpenShift Container Platform
 - OpenShift Online
 - OpenShift Dedicated
 
-Von den vier behandelten Angeboten sind zwei für Kunden für die eigene Bereitstellung in Azure verfügbar – OpenShift Origin und OpenShift Container Platform.
+Von den vier in diesem Artikel behandelten Versionen sind zwei für Kunden für die eigene Bereitstellung in Azure verfügbar: OpenShift Origin und OpenShift Container Platform.
 
 ## <a name="openshift-origin"></a>OpenShift Origin
 
-[Open Source](https://www.openshift.org/) Upstream-Projekt von OpenShift, das von der Community unterstützt wird. Origin kann unter CentOS oder RHEL installiert werden.
+Origin ist ein [Open Source](https://www.openshift.org/) Upstream-Projekt von OpenShift, das von der Community unterstützt wird. Origin kann auf CentOS oder Red Hat Enterprise Linux (RHEL) installiert werden.
 
 ## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
-Unternehmensgerechte ([kommerzielles Angebot](https://www.openshift.com)) Version von Red Hat, die von Red Hat unterstützt wird. Der Kunde erwirbt die erforderlichen Berechtigungen für OpenShift Container Platform und ist für die Installation und Verwaltung der gesamten Infrastruktur zuständig.
+Container Platform ist eine [kommerzielle Version](https://www.openshift.com) für unternehmen von und unterstützt von Red Hat. Mit dieser Version erwirbt der Kunde die erforderlichen Berechtigungen für OpenShift Container Platform und ist für die Installation und Verwaltung der gesamten Infrastruktur zuständig.
 
-Da der Kunde der Besitzer der gesamten Plattform ist, kann die Installation in seinem lokalen Rechenzentrum, in der öffentlichen Cloud (Azure, AWS, Google und weitere) usw. erfolgen.
+Da der Kunde der Besitzer der gesamten Plattform ist, kann die Installation in seinem lokalen Rechenzentrum oder in einer öffentlichen Cloud (z. B. Azure, AWS oder Google) erfolgen.
 
 ## <a name="openshift-online"></a>OpenShift Online
 
-Von Red Hat verwaltetes OpenShift für **mehrere Mandanten** (mithilfe von Container Platform). Die gesamte zugrunde liegende Infrastruktur (virtuelle Computer, OpenShift-Cluster, Netzwerk, Speicher usw.) wird von Red Hat verwaltet. 
+Online ist ein von Red Hat verwaltetes OpenShift für *mehrere Mandanten*, das Container Platform verwendet. Die gesamte zugrunde liegende Infrastruktur (virtuelle Computer, OpenShift-Cluster, Netzwerke und Speicher) wird von Red Hat verwaltet. 
 
-Der Kunde stellt Container bereit, hat jedoch keinen Einfluss darauf, auf welchen Hosts die Container ausgeführt werden. Da es für mehrere Mandanten vorgesehen ist, können sich Container auf den gleichen VM-Hosts wie Container von anderen Kunden befinden. Die Kosten werden pro Container berechnet.
+Mit dieser Version stellt der Kunde Container bereit, hat jedoch keinen Einfluss darauf, auf welchen Hosts die Container ausgeführt werden. Da Online für mehrere Mandanten vorgesehen ist, können sich Container auf den gleichen VM-Hosts wie Container von anderen Kunden befinden. Die Kosten werden pro Container berechnet.
 
 ## <a name="openshift-dedicated"></a>OpenShift Dedicated
 
-Von Red Hat verwaltetes OpenShift für einen **einzelnen Mandanten** (mithilfe von Container Platform). Die gesamte zugrunde liegende Infrastruktur (virtuelle Computer, OpenShift-Cluster, Netzwerk, Speicher usw.) wird von Red Hat verwaltet. Der Cluster ist für einen einzelnen Kunden bestimmt und wird in einer öffentlichen Cloud (AWS, Google, Azure – Anfang 2018 verfügbar) ausgeführt. Der Startcluster umfasst vier Anwendungsknoten für 48T USD/Jahr (Vorauszahlung für ein ganzes Jahr).
+Dedicated ist ein von Red Hat verwaltetes OpenShift für einen *einzelnen Mandanten*, das Container Platform verwendet. Die gesamte zugrunde liegende Infrastruktur (virtuelle Computer, OpenShift-Cluster, Netzwerk, Speicher usw.) wird von Red Hat verwaltet. Der Cluster ist für einen einzelnen Kunden bestimmt und wird in einer öffentlichen Cloud (z. B. AWS oder Google) ausgeführt (Azure wird Anfang 2018 verfügbar sein). Ein erster Cluster enthält vier Anwendungsknoten für 48.000 $ pro Jahr (im voraus bezahlt).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Konfigurieren allgemeiner Voraussetzungen für OpenShift in Azure](./openshift-prerequisites.md)
-- [Bereitstellen von OpenShift Origin](./openshift-origin.md)
-- [Bereitstellen von OpenShift Container Platform](./openshift-container-platform.md)
+- [Bereitstellen von OpenShift Origin in Azure](./openshift-origin.md)
+- [Bereitstellen von OpenShift Container Platform in Azure](./openshift-container-platform.md)
 - [Aufgaben nach der Bereitstellung](./openshift-post-deployment.md)
 - [Beheben von Problemen bei der Bereitstellung von OpenShift](./openshift-troubleshooting.md)
