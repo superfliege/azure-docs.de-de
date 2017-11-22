@@ -67,11 +67,11 @@ In diesem Tutorial verwenden Sie eine lokale SQL Server-Datenbank als **Quelldat
     INSERT INTO emp VALUES ('Jane', 'Doe')
     ```
 
-### <a name="azure-storage-account"></a>Azure-Speicherkonto
+### <a name="azure-storage-account"></a>Azure Storage-Konto
 Sie verwenden in diesem Tutorial ein Azure Storage-Allzweckkonto (Blob Storage) als **Ziel/Senke**-Datenspeicher. Falls Sie noch nicht über ein Azure Storage-Allzweckkonto verfügen, helfen Ihnen die Informationen unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) weiter.
 
 #### <a name="get-storage-account-name-and-account-key"></a>Abrufen des Speicherkontonamens und des Kontoschlüssels
-In diesem Schnellstart verwenden Sie Name und Schlüssel Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto. 
+In diesem Schnellstart verwenden Sie Name und Schlüssel Ihres Azure Storage-Kontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto. 
 
 1. Starten Sie einen Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com). Melden Sie sich mit Ihrem Azure-Benutzernamen und -Kennwort an. 
 2. Klicken Sie im Menü auf der linken Seite auf **Weitere Dienste >**, filtern Sie nach dem Schlüsselwort **Speicher**, und wählen Sie **Speicherkonten**.
@@ -88,9 +88,9 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen „adftutori
 
 1. Installieren Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), falls er auf Ihrem Computer noch nicht vorhanden ist. 
 2. Starten Sie den **Microsoft Azure Storage-Explorer** auf Ihrem Computer.   
-3. Wählen Sie im Fenster **Connect to Azure Storage** (Verbindung mit Azure-Speicher herstellen) die Option **Use a storage account name and key** (Einen Speicherkontonamen und -schlüssel verwenden), und klicken Sie auf **Weiter**. Falls das Fenster **Connect to Azure Storage** (Verbindung mit Azure-Speicher herstellen) nicht angezeigt wird, können Sie in der Strukturansicht mit der rechten Maustaste auf **Speicherkonten** und anschließend auf **Connect to Azure storage** (Verbindung mit Azure-Speicher herstellen) klicken. 
+3. Wählen Sie im Fenster **Connect to Azure Storage** (Verbindung mit Azure Storage herstellen) die Option **Use a storage account name and key** (Einen Speicherkontonamen und -schlüssel verwenden), und klicken Sie auf **Weiter**. Falls das Fenster **Connect to Azure Storage** (Verbindung mit Azure Storage herstellen) nicht angezeigt wird, können Sie in der Strukturansicht mit der rechten Maustaste auf **Speicherkonten** und anschließend auf **Connect to Azure storage** (Verbindung mit Azure Storage herstellen) klicken. 
 
-    ![Herstellen einer Verbindung mit Azure-Speicher](media/tutorial-hybrid-copy-powershell/storage-explorer-connect-azure-storage.png)
+    ![Herstellen einer Verbindung mit Azure Storage](media/tutorial-hybrid-copy-powershell/storage-explorer-connect-azure-storage.png)
 4. Fügen Sie im Fenster **Attach using Name and Key** (Mit Name und Schlüssel anfügen) den **Kontonamen** und **Kontoschlüssel** aus dem vorherigen Schritt ein. Klicken Sie auf **Weiter**. 
 5. Klicken Sie im Fenster **Verbindungszusammenfassung** auf **Verbinden**.
 6. Vergewissern Sie sich, dass Ihr Speicherkonto in der Strukturansicht unter **(Local and Attached) ((Lokal und angefügt))** -> **Speicherkonten** angezeigt wird. 
@@ -246,7 +246,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 4. Klicken Sie auf der Seite **Zielordner** auf **Weiter**. 
 5. Klicken Sie unter **Ready to install Microsoft Integration Runtime** (Bereit für Installation der Microsoft Integration Runtime) auf **Installieren**. 
 6. Klicken Sie auf **OK**, wenn eine Warnmeldung mit dem Hinweis angezeigt wird, dass der zu konfigurierende Computer in den Energiesparmodus oder den Ruhezustand versetzt wird, falls er nicht verwendet wird. 
-7. Klicken Sie auf der Seite **Completed the Microsoft Integration Runtime Setup Wizard** (Einrichtungsassistent für Microsoft Integration Runtime abgeschlossen) auf **Fertig stellen**.
+7. Klicken Sie auf der Seite **Completed the Microsoft Integration Runtime Setup Wizard** (Einrichtungs-Assistent für Microsoft Integration Runtime abgeschlossen) auf **Fertig stellen**.
 8. Fügen Sie auf der Seite **Integrationslaufzeit (selbstgehostet) registrieren** den Schlüssel ein, den Sie im vorherigen Abschnitt gespeichert haben, und klicken Sie auf **Registrieren**. 
 
    ![Registrieren der Integration Runtime](media/tutorial-hybrid-copy-powershell/register-integration-runtime.png)
@@ -272,7 +272,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureStorageLinkedService.json** im Ordner **C:\ADFv2Tutorial** und dem folgenden Inhalt: Erstellen Sie den Ordner „ADFv2Tutorial“, wenn dieser noch nicht vorhanden ist.  
 
     > [!IMPORTANT]
-    > Ersetzen Sie &lt;accountname&gt; und &lt;accountkey&gt; durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos, bevor Sie die Datei speichern.
+    > Ersetzen Sie &lt;accountname&gt; und &lt;accountkey&gt; durch den Namen bzw. Schlüssel Ihres Azure Storage-Kontos, bevor Sie die Datei speichern.
 
    ```json
     {

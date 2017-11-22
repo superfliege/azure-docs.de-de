@@ -41,7 +41,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Sie verwenden in diesem Schnellstart ein Azure Storage-Allzweckkonto (Blob Storage) als Datenspeicher vom Typ **Quelle** und vom Typ **Senke/Ziel**. Falls Sie noch nicht über ein Azure Storage-Allzweckkonto verfügen, helfen Ihnen die Informationen unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) weiter. 
 
 #### <a name="get-storage-account-name-and-account-key"></a>Abrufen des Speicherkontonamens und des Kontoschlüssels
-In diesem Schnellstart verwenden Sie Name und Schlüssel Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto. 
+In diesem Schnellstart verwenden Sie Name und Schlüssel Ihres Azure Storage-Kontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto. 
 
 1. Starten Sie einen Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com). Melden Sie sich mit Ihrem Azure-Benutzernamen und -Kennwort an. 
 2. Klicken Sie im Menü auf der linken Seite auf **Weitere Dienste >**, filtern Sie nach dem Schlüsselwort **Speicher**, und wählen Sie **Speicherkonten**.
@@ -58,9 +58,9 @@ In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen „adftutori
 
 1. Installieren Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), falls er auf Ihrem Computer noch nicht vorhanden ist. 
 2. Starten Sie den **Microsoft Azure Storage-Explorer** auf Ihrem Computer.   
-3. Wählen Sie im Fenster **Connect to Azure Storage** (Verbindung mit Azure-Speicher herstellen) die Option **Use a storage account name and key** (Einen Speicherkontonamen und -schlüssel verwenden), und klicken Sie auf **Weiter**. Falls das Fenster **Connect to Azure Storage** (Verbindung mit Azure-Speicher herstellen) nicht angezeigt wird, können Sie in der Strukturansicht mit der rechten Maustaste auf **Speicherkonten** und anschließend auf **Connect to Azure storage** (Verbindung mit Azure-Speicher herstellen) klicken. 
+3. Wählen Sie im Fenster **Connect to Azure Storage** (Verbindung mit Azure Storage herstellen) die Option **Use a storage account name and key** (Einen Speicherkontonamen und -schlüssel verwenden), und klicken Sie auf **Weiter**. Falls das Fenster **Connect to Azure Storage** (Verbindung mit Azure Storage herstellen) nicht angezeigt wird, können Sie in der Strukturansicht mit der rechten Maustaste auf **Speicherkonten** und anschließend auf **Connect to Azure storage** (Verbindung mit Azure Storage herstellen) klicken. 
 
-    ![Herstellen einer Verbindung mit Azure-Speicher](media/quickstart-create-data-factory-powershell/storage-explorer-connect-azure-storage.png)
+    ![Herstellen einer Verbindung mit Azure Storage](media/quickstart-create-data-factory-powershell/storage-explorer-connect-azure-storage.png)
 4. Fügen Sie im Fenster **Attach using Name and Key** (Mit Name und Schlüssel anfügen) den **Kontonamen** und **Kontoschlüssel** aus dem vorherigen Schritt ein. Klicken Sie auf **Weiter**. 
 5. Klicken Sie im Fenster **Verbindungszusammenfassung** auf **Verbinden**.
 6. Vergewissern Sie sich, dass Ihr Speicherkonto in der Strukturansicht unter **(Local and Attached) ((Lokal und angefügt))** -> **Speicherkonten** angezeigt wird. 
@@ -168,7 +168,7 @@ Erstellen Sie verknüpfte Dienste in einer Data Factory, um Ihre Datenspeicher u
 1. Erstellen Sie eine JSON-Datei mit dem Namen **AzureStorageLinkedService.json** im Ordner **C:\ADFv2QuickStartPSH** und dem folgenden Inhalt (erstellen Sie den Ordner „ADFv2QuickStartPSH“, wenn dieser noch nicht vorhanden ist): 
 
     > [!IMPORTANT]
-    > Ersetzen Sie &lt;accountname&gt; und &lt;accountkey&gt; durch den Namen bzw. Schlüssel Ihres Azure-Speicherkontos, bevor Sie die Datei speichern.
+    > Ersetzen Sie &lt;accountname&gt; und &lt;accountkey&gt; durch den Namen bzw. Schlüssel Ihres Azure Storage-Kontos, bevor Sie die Datei speichern.
 
     ```json
     {
