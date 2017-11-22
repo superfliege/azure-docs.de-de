@@ -13,18 +13,18 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/08/2017
+ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 26f5e71f3d00161a92de702209e224008ec8a5ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47dcd5366ef8ba3d4598e6d418b11997c61bddea
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Skalieren von Ressourcenebenen für Abfrage und Indizierung von Arbeitslasten in Azure Search
 Nach dem [Auswählen eines Tarifs](search-sku-tier.md) und dem [Bereitstellen eines Suchdiensts](search-create-service-portal.md) kann im nächsten Schritt optional die Anzahl der von dem Dienst verwendeten Replikate oder Partitionen erhöht werden. Jeder Tarif bietet eine feste Anzahl von Abrechnungseinheiten. In diesem Artikel wird erläutert, wie Sie diese Einheiten für eine optimale Konfiguration zuordnen, bei der Ihre Anforderungen für die Abfrageausführung, Indizierung und Speicherung ausgeglichen sind.
 
-Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tarif](http://aka.ms/azuresearchbasic) oder zu einem der [Standard-Tarife](search-limits-quotas-capacity.md) bereitstellen. Bei abrechenbaren Diensten wie diesen Tarifen wird die Kapazität in Abstufungen von *Sucheinheiten* (Search Units, SUs) erworben, wobei jede Partition und jedes Replikat jeweils als einzelne SU zählt. 
+Die Ressourcenkonfiguration ist verfügbar, wenn Sie einen Dienst zum [Basic-Tarif](http://aka.ms/azuresearchbasic) oder zu einem der [Standard-Tarife](search-limits-quotas-capacity.md) bereitstellen. Bei Diensten in diesen Tarifen wird die Kapazität in Abstufungen von *Sucheinheiten* (Search Units, SUs) erworben, wobei jede Partition und jedes Replikat jeweils als einzelne SU zählt. 
 
 Bei Verwendung von weniger Sucheinheiten fällt die Rechnung entsprechend niedriger aus. Die Abrechnung ist aktiviert, solange der Dienst bereitgestellt wird. Wenn Sie einen Dienst vorübergehend nicht verwenden und eine Abrechnung vermeiden möchten, müssen Sie den Dienst löschen und später bei Bedarf neu erstellen.
 
@@ -51,7 +51,7 @@ Wir empfehlen, die Replikat- und Partitionszuordnung über das Azure-Portal zu e
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und wählen Sie den Suchdienst aus.
 2. Öffnen Sie in den **Einstellungen** das Blatt **Skalieren**, und passen Sie mithilfe der Schieberegler die Anzahl von Partitionen und Replikaten an.
 
-Als Alternative zum Portal kann die [Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn832687.aspx) verwendet werden, wenn die Bereitstellung skript- oder codebasiert erfolgen soll.
+Als Alternative zum Portal kann die [Verwaltungs-REST-API](https://docs.microsoft.com/rest/api/searchmanagement/services) verwendet werden, wenn die Bereitstellung skript- oder codebasiert erfolgen soll.
 
 Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbesondere, wenn die Dienstvorgänge auf Abfrageworkloads ausgerichtet sind. Warum das so ist, erfahren Sie im [Abschnitt zu hoher Verfügbarkeit](#HA) .
 
@@ -63,9 +63,7 @@ Allgemein gilt: Suchanwendungen benötigen mehr Replikate als Partitionen, insbe
 <a id="HA"></a>
 
 ## <a name="high-availability"></a>Hohe Verfügbarkeit
-Da ein Hochskalieren einfach und relativ schnell durchzuführen ist, wird im Allgemeinen empfohlen, mit einer Partition und einem oder zwei Replikaten zu beginnen und dann bei steigenden Abfragevolumen hochzuskalieren. Bei vielen Diensten unter dem Basic- oder S1-Tarif ist die Speicher- und E/A-Kapazität einer einzelnen Partition (mit 15 Millionen Dokumenten pro Partition) ausreichend.
-
-Abfrageworkloads werden in erster Linie auf Replikaten ausgeführt. Wenn Sie einen höheren Durchsatz oder hohe Verfügbarkeit benötigen, sind wahrscheinlich zusätzliche Replikate erforderlich.
+Da ein Hochskalieren einfach und relativ schnell durchzuführen ist, wird im Allgemeinen empfohlen, mit einer Partition und einem oder zwei Replikaten zu beginnen und dann bei steigenden Abfragevolumen hochzuskalieren. Abfrageworkloads werden in erster Linie auf Replikaten ausgeführt. Wenn Sie einen höheren Durchsatz oder hohe Verfügbarkeit benötigen, sind wahrscheinlich zusätzliche Replikate erforderlich.
 
 Allgemeine Empfehlungen für hohe Verfügbarkeit sind:
 
@@ -73,6 +71,8 @@ Allgemeine Empfehlungen für hohe Verfügbarkeit sind:
 * Drei oder mehr Replikate für hohe Verfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung, wenn einzelne Dokumente hinzugefügt, aktualisiert oder gelöscht werden)
 
 Vereinbarungen zum Servicelevel (Service Level Agreements, SLAs) für Azure Search sind auf Abfragevorgänge und auf Indexupdates (Hinzufügen, Aktualisieren oder Löschen von Dokumenten) ausgerichtet.
+
+Der Tarif „Basic“ erreicht den Höchstwert bei einer Partition und drei Replikaten. Wenn Sie die Flexibilität benötigen, auf Schwankungen beim Bedarf an Indizierungen und Abfragedurchsatz sofort zu reagieren, ziehen Sie einen der Standard-Tarife in Betracht.
 
 ### <a name="index-availability-during-a-rebuild"></a>Indexverfügbarkeit während einer Neuerstellung
 
@@ -89,9 +89,9 @@ Derzeit steht kein integrierter Mechanismus für die Notfallwiederherstellung be
 ## <a name="increase-query-performance-with-replicas"></a>Erhöhen der Abfrageleistung mit Replikaten
 Eine Abfragelatenz deutet darauf hin, dass zusätzliche Replikate erforderlich sind. Im Allgemeinen besteht der erste Schritt zum Verbessern der Abfrageleistung im Hinzufügen weiterer Instanzen dieser Ressource. Beim Hinzufügen von Replikaten werden zusätzliche Kopien des Index online geschaltet, um größere Abfrageworkloads zu unterstützen und die Anforderungslast gleichmäßig auf mehrere Replikate zu verteilen.
 
-Es können keine festen Schätzungen für die Abfragen pro Sekunde (Queries Per Second, QPS) abgegeben werden: Die Abfrageleistung kann je nach Komplexität der jeweiligen Abfrage und konkurrierenden Workloads stark variieren. Im Schnitt verarbeitet ein Replikat unter der Basic- oder S1-SKU etwa 15 Abfragen pro Sekunde, der Durchsatz kann jedoch abhängig von der Komplexität der Abfrage (Facetabfragen sind komplexer) und der Netzwerklatenz höher oder niedriger ausfallen. Darüber hinaus ist zu beachten, dass beim Hinzufügen von Replikaten zwar die Skalierung und Leistung erhöht werden, das Endergebnis aber nicht streng linear ist: Das Hinzufügen von 3 Replikaten garantiert keinen dreifachen Durchsatz.
+Es können keine festen Schätzungen für die Abfragen pro Sekunde (Queries Per Second, QPS) abgegeben werden: Die Abfrageleistung kann je nach Komplexität der jeweiligen Abfrage und konkurrierenden Workloads stark variieren. Obwohl das Hinzufügen von Replikaten die Leistung deutlich erhöht, ist das Endergebnis aber nicht streng linear: Das Hinzufügen von 3 Replikaten garantiert keinen dreifachen Durchsatz.
 
-Weitere Informationen zu QPS (einschließlich Konzepte zur Schätzung der QPS für Ihre Workloads) finden Sie unter [Verwalten des Search-Dienstes](search-manage.md).
+Anleitungen zum Schätzen der Abfragen pro Sekunde (QPS) für Ihre Workloads finden Sie unter [Überlegungen zur Leistung und Optimierung von Azure Search](search-performance-optimization.md).
 
 ## <a name="increase-indexing-performance-with-partitions"></a>Erhöhen der Indizierungsleistung mit Partitionen
 Suchanwendungen, die Datenaktualisierung nahezu in Echtzeit erfordern, benötigen proportional mehr Partitionen als Replikate. Das Hinzufügen von Partitionen verteilt Lese-/ Schreibvorgänge über eine größere Anzahl von Computerressourcen. Außerdem erhalten Sie mehr Speicherplatz auf dem Datenträger zum Speichern zusätzlicher Indizes und Dokumente.

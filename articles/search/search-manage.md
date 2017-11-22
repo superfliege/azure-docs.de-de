@@ -13,13 +13,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 06/18/2017
+ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: c293de5b43103c8cbec01f61a26b8b28ac7e9116
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 916a08aacca428530bc4f728d5de422e04bed8bc
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -34,13 +34,10 @@ Azure Search ist ein vollständig verwalteter cloudbasierter Suchdienst zum Erst
 * Anpassen der Dienstkapazität, indem Sie die Zuordnung von Partitionen und Replikaten ändern
 * Überwachen der Ressourcennutzung relativ zu den Grenzwerten Ihrer Dienstebene
 
-**Nicht behandelte Bereiche** 
+Beachten Sie, dass *Upgrade* nicht als administrativer Task aufgeführt ist. Da beim Bereitstellen des Diensts Ressourcen zugewiesen werden, erfordert das Verschieben zu einer anderen Preisstufe einen neuen Dienst. Weitere Informationen finden Sie unter [Erstellen eines Azure Search-Diensts](search-create-service-portal.md).
 
-*Content Management* (oder Indexverwaltung) bezieht sich auf Vorgänge wie z.B. das Analysieren von Suchdatenverkehr, mit dem Ziel, Informationen zum Abfragevolumen und verwendeten Suchbegriffen zu erhalten und zu ermitteln, wie erfolgreich die Suchergebnisse Kunden zu bestimmten Dokumenten in Ihrem Index leiten. Hilfe für diesen Bereich finden Sie unter [„Datenverkehrsanalyse durchsuchen“ für Azure Search](search-traffic-analytics.md).
-
-*Abfrageleistung* wird in diesem Artikel ebenfalls nicht eingegangen. Weitere Informationen finden Sie unter [Überwachen der Nutzung und Abfragemetriken](search-monitor-usage.md) und [Leistung und Optimierung](search-performance-optimization.md).
-
-*Upgrade* ist kein administrativer Task. Da beim Bereitstellen des Diensts Ressourcen zugewiesen werden, erfordert das Verschieben zu einer anderen Preisstufe einen neuen Dienst. Weitere Informationen finden Sie unter [Erstellen eines Azure Search-Diensts](search-create-service-portal.md).
+> [!Tip]
+> Suchen Sie Hilfe zur Analyse von Suchdatenverkehr oder Abfrageleistung? Verschaffen Sie sich Erkenntnisse über das Abfragevolumen, über die Begriffe, nach denen Personen suchen, und darüber, wie erfolgreich Suchergebnisse Kunden zu bestimmten Dokumenten im Index leiten. Anleitungen finden Sie unter [Durchsuchen der Datenverkehrsanalyse für Azure Search](search-traffic-analytics.md), [Überwachen von Nutzung und Abfragemetriken](search-monitor-usage.md) sowie [Leistung und Optimierung](search-performance-optimization.md).
 
 <a id="admin-rights"></a>
 
@@ -113,15 +110,10 @@ Eine weitere Möglichkeit zum Anzeigen der Zugriffsberechtigungen besteht darin,
 ## <a name="monitor-resource-usage"></a>Überwachen der Ressourcenauslastung
 Die Ressourcenüberwachung im Dashboard ist auf die Informationen im Dienst-Dashboard und einige weitere Metriken beschränkt, die Sie durch Abfragen an den Dienst erhalten. Im Bereich Nutzung im Dienst-Dashboard können Sie direkt ablesen, ob die Partitionsressourcen für Ihre Anwendung angemessen sind.
 
-Mit der Suchdienst-API können Sie Gesamtzahlen für Dokumente und Indizes abrufen. Für diese Werte gelten feste Obergrenzen basierend auf dem Tarif. Weitere Informationen finden Sie unter [Einschränkungen für Suchdienste](search-limits-quotas-capacity.md). 
+Mit der Suchdienst-REST API können Sie Gesamtzahlen für Dokumente und Indizes programmgesteuert abrufen: 
 
-* [Abrufen von Indexstatistiken](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
+* [Indexstatistiken abrufen](https://docs.microsoft.com/rest/api/searchservice/Get-Index-Statistics)
 * [Dokumentenanzahl](https://docs.microsoft.com/rest/api/searchservice/count-documents)
-
-> [!NOTE]
-> Durch Caching-Eigenheiten können die Obergrenzen vorübergehend überschritten werden. Wenn Sie z. B. den gemeinsam genutzten Dienst verwenden, kann es passieren, dass eine Dokumentenanzahl oberhalb der Grenze von 10.000 Dokumenten angezeigt wird. Dies ist vorübergehend und wird bei der nächsten Einhaltungsprüfung für die Obergrenze entdeckt. 
-> 
-> 
 
 ## <a name="disaster-recovery-and-service-outages"></a>Notfallwiederherstellung und Dienstausfälle
 
