@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 18719a8f49c74973947517161f7306c233a9323f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9605fc3a1096d053bfeffb2544499935601b2c0f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="decode-x12-messages-for-azure-logic-apps-with-the-enterprise-integration-pack"></a>Decodieren von X12-Nachrichten für Azure Logic Apps mit dem Enterprise Integration Pack
 
@@ -65,6 +65,16 @@ Sie benötigen Folgendes:
     Beispiel:
 
     ![Zu decodierende X12-Flatfilenachricht auswählen](media/logic-apps-enterprise-integration-x12-decode/x12decodeimage7.png) 
+
+   > [!NOTE]
+   > Der eigentliche Nachrichteninhalt oder die Nutzlast für das Nachrichtenarray, ob positiv oder negativ, ist Base64-codiert. Daher müssen Sie einen Ausdruck angeben, der diesen Inhalt verarbeitet.
+   > Hier sehen Sie ein Beispiel zum Verarbeiten des Inhalts als XML, das Sie in der Codeansicht oder über den Ausdrucks-Generator im Designer eingeben können.
+   > ``` json
+   > "content": "@xml(base64ToBinary(item()?['Payload']))"
+   > ```
+   > ![Inhaltsbeispiel](media/logic-apps-enterprise-integration-x12-decode/content-example.png)
+   >
+
 
 ## <a name="x12-decode-details"></a>Details des Decodierens von X12-Nachrichten
 

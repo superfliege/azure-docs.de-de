@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2017
 ms.author: yurid
-ms.openlocfilehash: 50f9073d3c35bd9dcfd826ff44e767fb69558757
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d80fdd5a2e4339823c05368d76de333f3314d4ec
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 Die Identität wird häufig als neue Grenzschicht für die Sicherheit angesehen, indem diese Rolle vom herkömmlichen netzwerkzentrierten Ansatz übernommen wird. Die Weiterentwicklung dieses Dreh- und Angelpunkts für die Bereiche Sicherheit und Investitionen basiert darauf, dass Umkreisnetzwerke immer durchlässiger geworden sind und die Verteidigung des Umkreisnetzwerks nicht mehr so effektiv wie vor der immensen Nutzung von [BYOD](http://aka.ms/byodcg)-Geräten und Cloudanwendungen sein kann.
@@ -115,7 +115,7 @@ Nutzen Sie [Azure Resource Manager](../azure-resource-manager/resource-group-ove
 
 Organisationen, die die Erstellung von Ressourcen nicht steuern, sind anfälliger dafür, dass Benutzer den Dienst durch die Erstellung von mehr Ressourcen als benötigt missbrauchen. Das Absichern der Ressourcenerstellung ist ein wichtiger Schritt zum Schützen eines Szenarios mit mehreren Mandanten.
 
-Weitere Informationen zur Erstellung von Richtlinien mit Azure Resource Manager finden Sie im Artikel [Verwenden von Richtlinien für Ressourcenverwaltung und Zugriffssteuerung](../azure-resource-manager/resource-manager-policy.md).
+Weitere Informationen zur Erstellung von Richtlinien mit Azure Resource Manager finden Sie im Artikel [Was ist Azure Policy](../azure-policy/azure-policy-introduction.md).
 
 ## <a name="guide-developers-to-leverage-identity-capabilities-for-saas-apps"></a>Anleiten von Entwicklern zur Nutzung von Identitätsfunktionen für SaaS-Apps
 Die Benutzeridentität wird in vielen Szenarien genutzt, wenn Benutzer auf [SaaS-Apps](https://azure.microsoft.com/marketplace/active-directory/all/) zugreifen, die in ein lokales Verzeichnis oder ein Cloudverzeichnis integriert werden können. Zuallererst empfehlen wir, dass Entwickler zum Entwickeln dieser Apps eine sichere Methodik verwenden, z.B. [Microsoft Security Development Lifecycle (SDL)](https://www.microsoft.com/sdl/default.aspx). Azure AD vereinfacht die Authentifizierung für Entwickler mittels Identity as a Service durch Unterstützung branchenüblicher Protokolle wie [OAuth 2.0](http://oauth.net/2/) und [OpenID Connect](http://openid.net/connect/) sowie durch offene Quellbibliotheken für verschiedene Plattformen.

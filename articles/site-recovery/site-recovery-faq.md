@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/19/2017
 ms.author: raynew
-ms.openlocfilehash: 0b2a36c293e899ebed9d1220dff043a85321cacf
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: ad6f70cf9c2f420e887031c8b240d2f831e6c359
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure Site Recovery
 Dieser Artikel enthält häufig gestellte Fragen zur Azure Site Recovery. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
@@ -75,22 +75,7 @@ Zum Schützen von VMware-VMs benötigen Sie einen vSphere-Hypervisor und virtuel
 Ja. Wenn Sie Site Recovery zum Orchestrieren von Replikation und Failover in Zweigstellen verwenden, erhalten Sie eine einheitliche Orchestrierung und Anzeige der Workloads aller Zweigstellen an einer zentralen Stelle. Sie können problemlos über Ihren Hauptsitz für alle Zweigstellen Failover ausführen und die Notfallwiederherstellung verwalten, ohne die Zweigstellen zu besuchen.
 
 ## <a name="pricing"></a>Preise
-
-### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Welche Gebühren fallen bei der Verwendung von Azure Site Recovery an?
-Bei der Verwendung von Site Recovery fallen Gebühren für die Site Recovery-Lizenz, für Azure Storage, für Speichertransaktionen und für ausgehende Datenübertragungen an. [Weitere Informationen](https://azure.microsoft.com/pricing/details/site-recovery).
-
-Die Site Recovery-Lizenz gilt pro geschützter Instanz. Eine Instanz kann ein virtueller Computer oder ein physischer Server sein.
-
-- Falls ein VM-Datenträger in einem Standard-Speicherkonto repliziert wird, wird die Gebühr für Azure-Speicher auf den Speicherverbrauch erhoben. Wenn der Quelldatenträger also beispielsweise eine Größe von 1 TB hat und 400 GB davon genutzt werden, erstellt Site Recovery in Azure eine VHD mit einer Kapazität von 1 TB, es werden jedoch lediglich 400 GB (zuzüglich des benötigten Speicherplatzes für Replikationsprotokolle) in Rechnung gestellt.
-- Falls ein VM-Datenträger in einem Premium-Speicherkonto repliziert wird, wird die Gebühr für Azure-Speicher auf die Größe des bereitgestellten Speichers erhoben (auf-/abgerundet auf die nächste Storage Premium-Datenträgeroption). Wenn der Quelldatenträger also beispielsweise eine Größe von 50 GB hat, erstellt Site Recovery in Azure einen Datenträger mit einer Kapazität von 50 GB, und Azure ordnet diesen dem nächsthöheren/-niedrigeren Storage Premium-Datenträger (P10) zu.  Die Kosten werden für P10 und nicht für die Datenträgergröße von 50 GB berechnet.  [detaillierte Kapazitätsplanung](https://aka.ms/premium-storage-pricing)  Bei Verwendung von Storage Premium wird auch ein Standard-Speicherkonto für die Protokollierung der Replikation benötigt, und der von den Protokollen beanspruchte Standard-Speicherplatz wird ebenfalls in Rechnung gestellt.
-- Bis zu einem Testfailover oder einem Failover werden keine Datenträger erstellt. Im Replikationszustand werden Speichergebühren der Kategorie „Seitenblob und Datenträger“ gemäß dem [Storage-Preisrechner](https://azure.microsoft.com/en-in/pricing/calculator/) berechnet. Diese Gebühren basieren auf dem Speichertyp (Premium/Standard) und dem Datenredundanztyp (LRS, GRS, RA-GRS usw.).
-- Wenn die Option für die Verwendung von Managed Disks in einem Failover ausgewählt wurde, gelten die [Gebühren für Managed Disks](https://azure.microsoft.com/en-in/pricing/details/managed-disks/) nach einem Failover/Testfailover. Die Gebühren für Managed Disks fallen während der Replikation nicht an.
-- Wenn die Option für die Verwendung von Managed Disks in einem Failover nicht ausgewählt wurde, werden die Storage-Gebühren der Kategorie „Seitenblob und Datenträger“ nach einem Failover gemäß dem [Storage-Preisrechner](https://azure.microsoft.com/en-in/pricing/calculator/) berechnet. Diese Gebühren basieren auf dem Speichertyp (Premium/Standard) und dem Datenredundanztyp (LRS, GRS, RA-GRS usw.).
-- Die Speichertransaktionen werden während der Replikation im stabilen Zustand und für normalen Vorgänge mit virtuellen Computern nach einem Failover/Testfailover berechnet. Diese Gebühren sind jedoch unerheblich.
-
-Kosten fallen auch bei einem Testfailover an. Dabei werden die Kosten für den virtuellen Computer, für Speicher, für ausgehende Daten und für Speichertransaktionen berechnet.
-
-
+Bei Fragen in Zusammenhang mit Preisen lesen Sie die FAQs unter [Site Recovery – Preise ](https://azure.microsoft.com/en-in/pricing/details/site-recovery/).
 
 ## <a name="security"></a>Sicherheit
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Werden Replikationsdaten an den Site Recovery-Dienst gesendet?

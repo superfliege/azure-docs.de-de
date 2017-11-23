@@ -4,7 +4,7 @@ description: "In diesem zweiten Tutorial der Reihe zur StorSimple Virtual Array-
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
@@ -12,25 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/15/2017
+ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen in VMware
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
 
 ## <a name="overview"></a>Übersicht
-In diesem Tutorial wird beschrieben, wie Sie ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.5 und höher bereitstellen und die Verbindung dafür herstellen. Dieser Artikel bezieht sich auf die Bereitstellung von StorSimple Virtual Arrays im Azure-Portal und in der Microsoft Azure Government-Cloud.
+In diesem Tutorial wird beschrieben, wie Sie ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 bereitstellen und eine Verbindung dafür herstellen. Dieser Artikel bezieht sich auf die Bereitstellung von StorSimple Virtual Arrays im Azure-Portal und in der Microsoft Azure Government-Cloud.
 
 Sie benötigen Administratorrechte, um ein virtuelles Gerät bereitzustellen und zu verbinden. Die Bereitstellung und die anfängliche Einrichtung dauern ca. 10 Minuten.
 
 ## <a name="provisioning-prerequisites"></a>Voraussetzungen für die Bereitstellung
-Hier finden Sie die Voraussetzungen zum Bereitstellen eines virtuellen Geräts auf einem Hostsystem mit VMware ESXi 5.5 und höher.
+Im Folgenden werden die Voraussetzungen zum Bereitstellen eines virtuellen Geräts auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 erläutert.
 
 ### <a name="for-the-storsimple-device-manager-service"></a>Voraussetzungen für den StorSimple-Geräte-Manager-Dienst
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
@@ -64,7 +64,7 @@ Zum Bereitstellen und Herstellen der Verbindung mit einem virtuellen Gerät müs
 ## <a name="step-1-ensure-host-system-meets-minimum-virtual-device-requirements"></a>Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Geräte erfüllt
 Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
 
-* Zugriff auf ein Hostsystem mit VMware ESXi Server 5.5 und höher
+* Zugriff auf ein Hostsystem mit VMware ESXi Server 5.0, 5.5 oder 6.0
 * VMware vSphere-Client auf Ihrem System zum Verwalten des ESXi-Hosts
 
   * Mindestens 4 Kerne
@@ -120,7 +120,8 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image15.png)
 15. Das Fenster **Neuen virtuellen Computer erstellen** wird angezeigt. Wählen Sie auf der Seite **Konfiguration** die Option **Benutzerdefiniert**. Klicken Sie auf **Weiter**.
-    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
+    
+![](./media/storsimple-virtual-array-deploy2-provision-vmware/image16.png)
 16. Geben Sie auf der Seite **Name und Speicherort** den Namen der virtuellen Maschine an. Dieser Name sollte mit dem Ordnernamen übereinstimmen, den Sie in Schritt 8 angegeben haben (empfohlene bewährte Methode).
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image17.png)
@@ -135,8 +136,10 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. Passen Sie auf der Seite **CPUs** die Optionen **Anzahl von virtuellen Sockets** und **Anzahl von Kernen pro virtuellem Socket** so an, dass die **Gesamtzahl der Kerne** 4 (oder mehr) beträgt. Klicken Sie auf **Weiter**.
 
+
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image21.png)
 21. Geben Sie auf der Seite **Arbeitsspeicher** den Wert „8 GB“ (oder mehr) an. Klicken Sie auf **Weiter**.
+
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image22.png)
 22. Geben Sie auf der Seite **Netzwerk** die Anzahl der Netzwerkschnittstellen an. Als Mindestanforderung muss eine Netzwerkschnittstelle vorhanden sein.
@@ -147,8 +150,10 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
 24. Wählen Sie auf der Seite **Datenträger auswählen** die Option **Vorhandenen virtuellen Datenträger verwenden**. Klicken Sie auf **Weiter**.
 
+
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image25.png)
 25. Klicken Sie auf der Seite **Vorhandenen Datenträger auswählen** unter **Datenträger-Dateipfad** auf **Durchsuchen**. Das Dialogfeld **Datenspeicher durchsuchen** wird geöffnet. Navigieren Sie zu dem Speicherort, an den Sie das VMDK hochgeladen haben. Sie sehen jetzt nur eine Datei im Datenspeicher, da die beiden Dateien, die Sie ursprünglich hochgeladen haben, zusammengeführt wurden. Wählen Sie die Datei aus, und klicken Sie auf **OK**. Klicken Sie auf **Weiter**.
+
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image26.png)
 26. Übernehmen Sie auf der Seite **Erweiterte Optionen** die Standardeinstellung, und klicken Sie auf **Weiter**.
@@ -165,8 +170,10 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image30.png)
 30. Wählen Sie auf der Seite **Datenträger auswählen** die Option **Neuen virtuellen Datenträger erstellen**. Klicken Sie auf **Weiter**.
 
+
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
 31. Ändern Sie auf der Seite **Datenträger erstellen** die **Datenträgergröße** in 500 GB (oder mehr). 500 GB sind die Mindestanforderung, aber Sie können auch einen größeren Datenträger bereitstellen. Beachten Sie hierbei, dass Sie den Datenträger nach der Bereitstellung nicht mehr erweitern oder verkleinern können. Weitere Informationen zur Größe des bereitzustellenden Datenträgers finden Sie im Abschnitt zum Festlegen der Größe im Dokument mit [Best Practices](storsimple-ova-best-practices.md). Wählen Sie unter **Datenträgerbereitstellung** die Option **Thin-Bereitstellung**. Klicken Sie auf **Weiter**.
+
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. Übernehmen Sie auf der Seite **Erweiterte Optionen** die Standardeinstellung.
@@ -183,6 +190,9 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät im Hypervisor b
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
 Ihre virtuelle Maschine wird nun bereitgestellt. Der nächste Schritt umfasst das Inbetriebnehmen der Maschine und das Abrufen der IP-Adresse.
+
+> [!NOTE]
+> Es wird empfohlen, VMware-Tools nicht auf Ihrem virtuellen Array zu installieren (wie oben beschrieben wird). Die Installation von VMware-Tools führt zu einer nicht unterstützten Konfiguration.
 
 ## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>Schritt 3: Starten des virtuellen Geräts und Abrufen der IP-Adresse
 Führen Sie die folgenden Schritte aus, um Ihr virtuelles Gerät zu starten und eine Verbindung dafür herzustellen.
