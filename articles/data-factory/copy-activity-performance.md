@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/13/2017
 ms.author: jingwang
-ms.openlocfilehash: b0351e4c4dcf19f9e4b6ec11c59c4dd00f0013a2
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 841e053418dedb6b41262d1277ab4bdc9d4800c6
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -88,7 +88,7 @@ Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist ein
 
 | Kopierszenario | Vom Dienst bestimmte Standard-DMUs |
 |:--- |:--- |
-| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 16, abhängig von der Anzahl und Größe der Dateien |
+| Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 32, abhängig von der Anzahl und Größe der Dateien. |
 | Alle anderen Kopierszenarios | 4 |
 
 Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Die **zulässigen Werte** für die Eigenschaft **cloudDataMovementUnits** sind: 2, 4, 8, 16, 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
@@ -133,7 +133,7 @@ Für jede Kopieraktivitätsausführung ermittelt Data Factory die Anzahl paralle
 
 | Kopierszenario | Standardanzahl der vom Dienst ermittelten parallelen Kopien |
 | --- | --- |
-| Kopieren von Daten zwischen dateibasierten Speichern |Zwischen 1 und 32. Dies ist abhängig von der Größe der Dateien und der Anzahl von Einheiten für Clouddatenverschiebungen (DMUs), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
+| Kopieren von Daten zwischen dateibasierten Speichern |Zwischen 1 und 64. Dies ist abhängig von der Größe der Dateien und der Anzahl von Einheiten für Clouddatenverschiebungen (DMUs), die zum Kopieren von Daten zwischen zwei Clouddatenspeichern verwendet werden, oder von der physischen Konfiguration des Computers der selbstgehosteten Integration Runtime-Infrastruktur. |
 | Kopieren von Daten aus einem beliebigen Quelldatenspeicher im Azure-Tabellenspeicher |4 |
 | Alle anderen Kopierszenarios |1 |
 

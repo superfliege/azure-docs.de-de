@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 11/11/2017
 ms.author: sngun
-ms.openlocfilehash: 5ef64e727615d17ae550efbc7ea427936d7d4c3b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 60b06cf41ea632219d2f16b29607899bd2e8d789
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Installieren und Konfigurieren der CLI für die Verwendung mit Azure Stack
 
@@ -204,6 +204,15 @@ az group create \
 Wenn die Ressourcengruppe erfolgreich erstellt wurde, werden mit dem vorherigen Befehl die folgenden Eigenschaften der neu erstellten Ressource ausgegeben:
 
 ![Ausgabe der Ressourcengruppenerstellung](media/azure-stack-connect-cli/image1.png)
+
+## <a name="known-issues"></a>Bekannte Probleme
+Beachten Sie bei der Verwendung der CLI in Azure Stack folgende bekannte Probleme:
+
+* Der interaktive CLI-Modus, d.h. der Befehl `az interactive`, wird in Azure Stack noch nicht unterstützt.
+* Verwenden Sie zum Abrufen der Liste der in Azure Stack verfügbaren VM-Images den Befehl `az vm images list --all` anstelle des Befehls `az vm image list`. Wenn Sie die Option `--all` angeben, stellt dies sicher, dass die Antwort nur die Images zurückgibt, die in Ihrer Azure Stack-Umgebung verfügbar sind. 
+* VM-Imagealiase, die in Azure verfügbar sind, gelten möglicherweise nicht für Azure Stack. Wenn Sie VM-Images verwenden, müssen Sie den gesamten URN-Parameter (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) anstelle des Imagealias verwenden. Dieser URN muss mit den Imagespezifikationen übereinstimmen, die vom Befehl `az vm images list` abgerufen wurden.
+* Standardmäßig verwendet die CLI 2.0 „Standard_DS1_v2“ als Standardgröße für VM-Images. Diese Größe ist in Azure Stack allerdings noch nicht verfügbar, daher müssen Sie den Parameter `--size` beim Erstellen eines virtuellen Computers explizit angeben. Sie können die Liste der in Azure Stack verfügbaren VM-Größen mit dem Befehl `az vm list-sizes --location <locationName>` abrufen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

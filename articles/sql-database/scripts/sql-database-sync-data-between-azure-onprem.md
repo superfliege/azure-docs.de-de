@@ -17,13 +17,13 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: f0729286afdf01ea0ce0e0060f4d7415fa122014
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8d021538b34c96c1d486c9508df9d4ee91404337
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="use-powershell-to-sync-between-an-azure-sql-database-and-a-sql-server-on-premises-database"></a>Verwenden Sie Azure PowerShell für die Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einer lokalen SQL Server-Datenbank.
+# <a name="use-powershell-to-sync-between-a-sql-database-and-a-sql-server-on-premises-database"></a>Verwenden von PowerShell zum Synchronisieren zwischen einer SQL-Datenbank und einer lokalen SQL Server-Datenbank
 
 Dieses PowerShell-Beispiel konfiguriert Data Sync für die Synchronisierung zwischen einer Azure SQL-Datenbank-Instanz und einem lokalen SQL-Server. 
 
@@ -393,8 +393,9 @@ Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie unter [Azu
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
 -   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](../sql-database-sync-data.md)
--   [Get Started with Azure SQL Data Sync](../sql-database-get-started-sql-data-sync.md) (Erste Schritte mit der Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Erste Schritte mit der Azure SQL-Datensynchronisierung (Vorschauversion)](../sql-database-get-started-sql-data-sync.md)
 -   [Best practices for Azure SQL Data Sync (Preview)](../sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Überwachen der Azure SQL-Datensynchronisierung-Vorschauversion mit OMS Log Analytics](../sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with SQL Data Sync (Preview)](../sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:

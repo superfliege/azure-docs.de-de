@@ -4,7 +4,7 @@ description: Es werden die Unterschiede und Aspekte beim Verwenden von virtuelle
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
-manager: byronr
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 11/14/2017
 ms.author: sngun
-ms.openlocfilehash: 7d841dba798c2b706c26dcf51361ce0447710b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa4816079660467e530237fef62aeadfef7fa8bd
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Aspekte von virtuellen Computern in Azure Stack
 
@@ -47,11 +47,13 @@ Das Azure Stack Development Kit unterstützt die folgenden Größen:
 | Typ | Größe | Bereich der unterstützten Größen |
 | --- | --- | --- |
 |Allgemeiner Zweck |Basic A|A0 - A4|
-|Allgemeiner Zweck |Standard A|A0–A7|
-|Allgemeiner Zweck |Standard D|D1 - D4|
-|Allgemeiner Zweck |Standard Dv2|D1v2 - D5v2|
-|Arbeitsspeicheroptimiert|D-Serie|D11 - D14|
-|Arbeitsspeicheroptimiert |Dv2-Serie|D11v2 - D14v2|
+|Allgemeiner Zweck |Standard A|A0 - A7|
+|Allgemeiner Zweck |D-Serie|D1 - D4|
+|Allgemeiner Zweck |Dv2-Serie|D1_v2 - D5_v2|
+|Allgemeiner Zweck |DS-Serie|DS1 - DS4|
+|Allgemeiner Zweck |DSv2-Serie|DS1_v2 - DS5_v2|
+|Arbeitsspeicheroptimiert|DS-Serie|DS11 - DS14|
+|Arbeitsspeicheroptimiert |DSv2-Serie|DS11_v2 - DS14_v2|
 
 Die VM-Größen und ihre zugeordneten Ressourcenmengen sind für Azure Stack und Azure konsistent. Dies umfasst beispielsweise die Arbeitsspeichermenge, die Anzahl von Kernen und die Anzahl bzw. Größe von Datenträgern für Daten, die erstellt werden können. Die Leistung der gleichen VM-Größe in Azure Stack richtet sich aber nach den zugrunde liegenden Merkmalen der jeweiligen Azure Stack-Umgebung.
 

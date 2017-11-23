@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: sngun
-ms.openlocfilehash: ae489cfab1effca8fa33c4e2693b8b5229eda9c5
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: f45b65c1cb16a79a44e873e3e001e0f5c12a8e37
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-powershell-for-azure-stack"></a>Installieren von PowerShell für Azure Stack  
 
@@ -56,7 +56,7 @@ In den folgenden Abschnitten werden die Schritte beschrieben, die zum Installier
 Mit Azure Stack kompatible AzureRM-Module werden über API-Versionsprofile installiert. Für Azure Stack ist das API-Versionsprofil **2017-03-09-profile** erforderlich, das durch Installation des AzureRM.Bootstrapper-Moduls zur Verfügung gestellt wird. Informationen zu API-Versionsprofilen und den von ihnen bereitgestellten Cmdlets finden Sie unter [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md) (Verwalten von API-Versionsprofilen in Azure Stack). Zusätzlich zu den AzureRM-Modulen müssen die Azure Stack-spezifischen PowerShell-Module installiert werden. Führen Sie zum Installieren dieser Module auf der Entwicklungsarbeitsstation das folgende PowerShell-Skript aus:
 
 > [!IMPORTANT]
-> Die Version des PowerShell-Moduls AzureRM 1.2.11 enthält eine Liste mit wichtigen Änderungen. Um ein Upgrade von Version 1.2.10 durchzuführen, lesen Sie das Migrationshandbuch unter [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+> Das Release des PowerShell-Moduls AzureRM 1.2.11 enthält eine Liste mit wichtigen Änderungen. Um ein Upgrade aus Version 1.2.10 auszuführen, lesen Sie das Migrationshandbuch unter [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
 
   ```powershell
   # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet 
@@ -82,10 +82,10 @@ Führen Sie den folgenden Befehl aus, um die Installation zu überprüfen:
 
 ## <a name="install-powershell-in-a-disconnected-or-in-a-partially-connected-scenario"></a>Installieren von PowerShell in einem nicht verbundenen oder einem partiell verbundenen Szenario
 
-In einem nicht verbundenen Szenario müssen Sie zuerst die PowerShell-Module auf einen Computer mit Internetverbindung herunterladen und sie dann für die Installation in das Azure Stack Development Kit übertragen.
+In einem nicht verbundenen oder einem partiell verbundenen Szenario müssen Sie zuerst die PowerShell-Module auf einen Computer mit Internetverbindung herunterladen und sie dann für die Installation in das Azure Stack Development Kit übertragen.
 
 > [!IMPORTANT]
-> Die Version des PowerShell-Moduls AzureRM 1.2.11 enthält eine Liste mit wichtigen Änderungen. Um ein Upgrade von Version 1.2.10 durchzuführen, lesen Sie das Migrationshandbuch unter [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
+> Das Release des PowerShell-Moduls AzureRM 1.2.11 enthält eine Liste mit wichtigen Änderungen. Um ein Upgrade aus Version 1.2.10 auszuführen, lesen Sie das Migrationshandbuch unter [https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration).
 
 1. Melden Sie sich bei einem Computer mit Internetverbindung an, und laden Sie mithilfe des folgenden Skripts die AzureRM- und AzureStack-Pakete auf den lokalen Computer herunter:
 

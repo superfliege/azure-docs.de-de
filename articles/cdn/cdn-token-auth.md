@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/03/2017
 ms.author: mezha
-ms.openlocfilehash: 700f4c49bbcda1eccbcc7eafc703e625697fa2b4
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 2f62c0c6783c3cdaf1ffda3299673071b8e4a6f2
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Schützen von Azure Content Delivery Network-Assets mit Tokenauthentifizierung
 
@@ -42,8 +42,6 @@ Bei der Tokenauthentifizierung wird überprüft, ob Anforderungen von einer vert
 
 Weitere Informationen finden Sie in den ausführlichen Konfigurationsbeispielen für jeden Parameter unter [Einrichten der Tokenauthentifizierung](#setting-up-token-authentication).
 
-Nachdem Sie ein verschlüsseltes Token generiert haben, fügen Sie es als Abfragezeichenfolge am Ende des Datei-URL-Pfads an. Beispiel: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
-
 ## <a name="reference-architecture"></a>Referenzarchitektur
 
 Im folgenden Workflowdiagramm wird beschrieben, wie das CDN die Tokenauthentifizierung verwendet, um mit der Web-App zu arbeiten.
@@ -64,15 +62,21 @@ Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderun
 
 2. Zeigen Sie mit der Maus auf **HTTP Large**, und klicken Sie im Flyout dann auf **Token Auth**. Sie können dann den Verschlüsselungsschlüssel und Verschlüsselungsparameter wie folgt einrichten:
 
-    1. Geben Sie einen eindeutigen Verschlüsselungsschlüssel in das Feld **Primärschlüssel** ein, und geben Sie optional einen Sicherungsschlüssel in das Feld **Sicherungsschlüssel** ein.
-
-        ![CDN-Tokenauthentifizierung – Einrichten des Schlüssels](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+    1. Erstellen Sie einen oder mehrere Verschlüsselungsschlüssel. Bei einem Verschlüsselungsschlüssel muss die Groß-/Kleinschreibung beachtet werden, und er kann eine beliebige Kombination aus alphanumerischen Zeichen enthalten. Alle anderen Arten von Zeichen, einschließlich Leerzeichen, sind nicht zulässig. Die maximale Länge beträgt 250 Zeichen. Um sicherzustellen, dass die Verschlüsselungsschlüssel auf Zufallsbasis generiert werden, sollten sie mit dem OpenSSL-Tool erstellt werden. Das OpenSSL-Tool hat die folgende Syntax: `rand -hex <key length>`. Beispiel: `OpenSSL> rand -hex 32`. Erstellen Sie sowohl einen Primär- als auch einen Sicherungsschlüssel, um Downtime zu vermeiden. Ein Sicherungsschlüssel ermöglicht während der Aktualisierung des Primärschlüssels unterbrechungsfreien Zugriff auf Ihre Inhalte.
     
-    2. Richten Sie Verschlüsselungsparameter mit dem Verschlüsselungstool ein. Mit dem Verschlüsselungstool können Sie Anforderungen basierend auf Ablaufzeit, Land, Verweiser, Protokoll und Client-IP (in beliebigen Kombinationen) zulassen oder ablehnen. 
+    2. Geben Sie einen eindeutigen Verschlüsselungsschlüssel in das Feld **Primärschlüssel** ein, und geben Sie optional einen Sicherungsschlüssel in das Feld **Sicherungsschlüssel** ein.
 
-        ![CDN-Verschlüsselungstool](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+    3. Wählen Sie in der Dropdownliste **Minimum Encryption Version** (Verschlüsselungsmindestversion) die Verschlüsselungsmindestversion aus, und klicken Sie dann auf **Aktualisieren**:
+       - **V2**: Gibt an, dass mit dem Schlüssel Token der Version 2.0 und 3.0 generiert werden können. Verwenden Sie diese Option nur bei der Umstellung von einem älteren Verschlüsselungsschlüssel der Version 2.0 auf einen Schlüssel der Version 3.0.
+       - **V3**: (Empfohlen) Gibt an, dass mit dem Schlüssel nur Token der Version 3.0 generiert werden können.
 
-       Geben Sie Werte für einen oder mehrere der folgenden Verschlüsselungsparameter im Bereich für das **Verschlüsselungstool** ein:  
+    ![CDN-Tokenauthentifizierung – Einrichten des Schlüssels](./media/cdn-token-auth/cdn-token-auth-setupkey.png)
+    
+    4. Verwenden Sie das Verschlüsselungstool, um Verschlüsselungsparameter einzurichten und ein Token zu generieren. Mit dem Verschlüsselungstool können Sie Anforderungen basierend auf Ablaufzeit, Land, Verweiser, Protokoll und Client-IP (in beliebigen Kombinationen) zulassen oder ablehnen. Anzahl und Art der Parameter, die zur Bildung eines Tokens kombiniert werden können, sind zwar nicht beschränkt, die Gesamtlänge des Tokens darf jedoch maximal 512 Zeichen betragen. 
+
+       ![CDN-Verschlüsselungstool](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
+
+       Geben Sie Werte für einen oder mehrere der folgenden Verschlüsselungsparameter im Abschnitt für das **Verschlüsselungstool** ein:  
 
        - **ec_expire**: Dient zum Zuweisen einer Ablaufzeit zu einem Token, nach der das Token abläuft. Anforderungen, die nach der Ablaufzeit übermittelt werden, werden abgelehnt. Dieser Parameter verwendet einen UNIX-Zeitstempel, der auf der Anzahl der Sekunden seit Beginn der Standardepoche `1/1/1970 00:00:00 GMT` basiert. (Sie können Onlinetools für die Konvertierung zwischen der Standardzeit und der UNIX-Zeit verwenden.) Wenn das Token beispielsweise am `12/31/2016 12:00:00 GMT` ablaufen soll, verwenden Sie den UNIX-Zeitstempelwert `1483185600` wie folgt. 
     
@@ -98,7 +102,7 @@ Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderun
     
        - **ec_ref_allow**: Es werden nur Anforderungen vom angegebenen Verweiser zugelassen. Mit einem Verweiser wird die URL der Webseite identifiziert, die als Link zur angeforderten Ressource dient. Nehmen Sie das Protokoll nicht in den Parameterwert des Verweisers auf. Die folgenden Typen von Eingaben sind für den Parameterwert zulässig:
            - Ein Hostname oder ein Hostname und ein Pfad.
-           - Mehrere Verweiser. Um mehrere Verweiser hinzuzufügen, trennen Sie die Verweiser durch Kommas. Wenn Sie einen Verweiserwert angeben, die entsprechenden Informationen aufgrund der Browserkonfiguration aber nicht mit der Anforderung gesendet werden, werden diese Anforderungen standardmäßig abgelehnt. 
+           - Mehrere Verweiser. Um mehrere Verweiser hinzuzufügen, trennen Sie die Verweiser durch Kommas. Wenn Sie einen Verweiserwert angeben, die entsprechenden Informationen aufgrund der Browserkonfiguration aber nicht mit der Anforderung gesendet werden, wird die Anforderung standardmäßig abgelehnt. 
            - Anforderungen mit fehlenden Verweiserinformationen. Um diese Typen von Anforderungen zuzulassen, geben Sie den Text „missing“ oder einen leeren Wert ein. 
            - Unterdomänen. Um Unterdomänen zuzulassen, geben Sie ein Sternchen (\*) ein. Um beispielsweise alle Unterdomänen von `consoto.com` zuzulassen, geben Sie `*.consoto.com` ein. 
            
@@ -116,13 +120,17 @@ Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderun
             
          ![CDN-Beispiel für „ec_clientip“](./media/cdn-token-auth/cdn-token-auth-clientip.png)
 
-    3. Nach der Eingabe von Werten für die Verschlüsselungsparameter wählen Sie den Typ des Schlüssels zum Verschlüsseln (wenn Sie einen primären und einen Sicherungsschlüssel erstellt haben) aus der Liste **Schlüssel zum Verschlüsseln** und eine Verschlüsselungsversion aus der Liste **Verschlüsselungsversion** aus und klicken dann auf **Verschlüsseln**.
+    5. Nach der Eingabe von Werten für die Verschlüsselungsparameter wählen Sie den Schlüssel zum Verschlüsseln (wenn Sie einen Primär- und einen Sicherungsschlüssel erstellt haben) aus der Liste **Schlüssel zum Verschlüsseln** aus.
+    
+    6. Wählen Sie eine Verschlüsselungsversion aus der Liste **Verschlüsselungsversion** aus: **V2** für Version 2 bzw. **V3** für Version 3 (empfohlen). Klicken Sie auf **Verschlüsseln**, um das Token zu generieren.
+
+    Nachdem das Token generiert wurde, wird es im Feld **Generated Token** (Generiertes Token) angezeigt. Zur Verwendung des Tokens fügen Sie es als Abfragezeichenfolge am Ende der Datei im URL-Pfad ein. Beispiel: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-    4. Sie können Ihr Token optional mit dem Entschlüsselungstool testen. Fügen Sie den Tokenwert in das Feld **Token zum Entschlüsseln** ein. Wählen Sie den Typ des Verschlüsselungsschlüssels zum Entschlüsseln aus der Dropdownliste **Schlüssel zum Entschlüsseln** aus, und klicken Sie auf **Entschlüsseln**.
+    7. Sie können Ihr Token optional mit dem Entschlüsselungstool testen. Fügen Sie den Tokenwert in das Feld **Token zum Entschlüsseln** ein. Wählen Sie die Nutzung des Verschlüsselungsschlüssels aus der Dropdownliste **Schlüssel zum Entschlüsseln** aus, und klicken Sie auf **Entschlüsseln**.
 
-    5. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie den Code aus der Dropdownliste **Antwortcode** aus, und klicken Sie auf **Speichern**. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. Für bestimmte Antwortcodes können Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. 
+    Nach der Entschlüsselung des Tokens werden seine Parameter im Feld **Ursprüngliche Parameter** angezeigt.
 
-    6. Nachdem Sie ein verschlüsseltes Token generiert haben, fügen Sie es als Abfragezeichenfolge am Ende der Datei im URL-Pfad ein. Beispiel: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
+    8. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie den Code aus der Dropdownliste **Antwortcode** aus, und klicken Sie auf **Speichern**. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. Für bestimmte Antwortcodes können Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. 
 
 3. Klicken Sie unter **HTTP Large** auf **Regelmodul**. Sie verwenden das Regelmodul, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regelmodul](cdn-rules-engine-reference.md).
 
@@ -151,4 +159,4 @@ Verfügbare Sprachen:
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Preise für Azure CDN-Funktionen und -Anbieter
 
-Informationen finden Sie unter [Übersicht über das Azure Content Delivery Network (CDN)](cdn-overview.md).
+Informationen zu Features finden Sie unter [Übersicht über das Azure Content Delivery Network (CDN)](cdn-overview.md). Weitere Informationen zur Preisgestaltung finden Sie unter [Azure Content Delivery Network – Preise ](https://azure.microsoft.com/pricing/details/cdn/).

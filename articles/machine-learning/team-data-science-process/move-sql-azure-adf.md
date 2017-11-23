@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 8f0186900caf6bff19e15ef6b99c1f49fbf90a81
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bbf969927e96053df055ac6e347bb8fb746054c8
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Verschieben von Daten von einer lokalen SQL Server-Instanz zu SQL Azure mithilfe von Azure Data Factory
 In diesem Thema wird gezeigt, wie Sie mithilfe von Azure Data Factory (ADF) Daten aus einer lokalen SQL Server-Datenbank über Azure Blob Storage in eine SQL Azure-Datenbank verschieben.
@@ -80,32 +80,14 @@ Das Datenverwaltungsgateway serialisiert und deserialisiert die Quell- und Senke
 Setupanweisungen und Informationen zum Datenverwaltungsgateway finden Sie unter [Move data between on-premises sources and cloud with Data Management Gateway](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md)
 
 ## <a name="adflinkedservices"></a>Erstellen von verknüpften Diensten zum Herstellen einer Verbindung mit den Datenressourcen
-Ein verknüpfter Dienst definiert die Informationen, die Azure Data Factory für das Herstellen einer Verbindung mit einer Datenquelle benötigt. Die schrittweise Anleitung zum Erstellen von verknüpften Diensten finden Sie unter [Erstellen von verknüpften Diensten](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
+Ein verknüpfter Dienst definiert die Informationen, die Azure Data Factory für das Herstellen einer Verbindung mit einer Datenquelle benötigt. Wir haben drei Ressourcen in diesem Szenario, für die verknüpfte Dienste erforderlich sind:
 
-Wir haben drei Ressourcen in diesem Szenario, für die verknüpfte Dienste erforderlich sind.
+1. Lokaler SQL Server
+2. Azure Blob Storage
+3. Azure SQL-Datenbank
 
-1. [Verknüpfter Dienst für lokale SQL Server-Instanz](#adf-linked-service-onprem-sql)
-2. [Verknüpfter Dienst für Azure-Blob-Speicher](#adf-linked-service-blob-store)
-3. [Verknüpfter Dienst für Azure SQL-Datenbank](#adf-linked-service-azure-sql)
+Die schrittweise Anleitung zum Erstellen von verknüpften Diensten finden Sie unter [Erstellen von verknüpften Diensten](../../data-factory/v1/data-factory-move-data-between-onprem-and-cloud.md#create-linked-services).
 
-### <a name="adf-linked-service-onprem-sql"></a>Verknüpfter Dienst für lokale SQL Server-Datenbank
-So erstellen Sie den verknüpften Dienst für die lokale SQL Server-Instanz:
-
-* Klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf den **Datenspeicher** .
-* Wählen Sie **SQL** aus, und geben Sie den *Benutzernamen* und das *Kennwort* als Anmeldeinformationen für die lokale SQL Server-Instanz ein. Sie müssen den Servernamen in der Form **vollqualifizierter Servername umgekehrter Schrägstrich Instanzname (Servername\Instanzname)** eingeben. Nennen Sie den verknüpften Dienst *adfonpremsql*.
-
-### <a name="adf-linked-service-blob-store"></a>Verknüpfter Dienst für Blob
-So erstellen Sie einen verknüpften Dienst für das Azure Blob Storage-Konto
-
-* Klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf den **Datenspeicher** .
-* Wählen Sie **Azure Storage Account**
-* Geben Sie den Schlüssel des Azure Blob Storage-Kontos und den Containernamen ein. Nennen Sie den verknüpften Dienst *adfds*.
-
-### <a name="adf-linked-service-azure-sql"></a>Verknüpfter Dienst für Azure SQL-Datenbank
-So erstellen Sie den verknüpften Dienst für die Azure SQL-Datenbank
-
-* Klicken Sie im klassischen Azure-Portal auf der ADF-Startseite auf den **Datenspeicher** .
-* Wählen Sie **Azure SQL** aus, und geben Sie den *Benutzernamen* und das *Kennwort* als Anmeldeinformationen für die Azure SQL-Datenbank ein. Der *Benutzername* muss im Format *user@servername* angegeben werden.   
 
 ## <a name="adf-tables"></a>Definieren und Erstellen von Tabellen, um die Art des Zugriffs auf Datasets anzugeben
 Erstellen Sie Tabellen, in denen die Struktur, der Speicherort und die Verfügbarkeit der Datasets angegeben werden, mit den folgenden skriptbasierten Verfahren. Zum Definieren der Tabellen werden JSON-Dateien verwendet. Weitere Informationen zur Struktur dieser Dateien finden Sie unter [Datasets](../../data-factory/v1/data-factory-create-datasets.md).
@@ -311,9 +293,6 @@ Kopieren Sie diese JSON-Definition der Pipeline in eine Datei namens *pipelinede
 
     New-AzureDataFactoryPipeline  -ResourceGroupName adfdsprg -DataFactoryName adfdsp -File C:\temp\pipelinedef.json
 
-Vergewissern Sie sich, dass die Pipeline im klassischen Azure-Portal für die ADF wie folgt angezeigt wird (wenn Sie auf das Diagramm klicken).
-
-![ADF-Pipeline](./media/move-sql-azure-adf/DJP1kji.png)
 
 ## <a name="adf-pipeline-start"></a>Starten der Pipeline
 Die Pipeline kann jetzt mithilfe der folgenden Befehle ausgeführt werden:

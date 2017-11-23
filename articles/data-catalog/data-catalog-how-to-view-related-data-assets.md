@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 11/01/2017
 ms.author: maroche
-ms.openlocfilehash: 0623847ea1e79c3a45a8fbdcc1d3a551864aefd6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: da7ac8f323f9b2ec6303fbc85aa570373a538bcf
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Anzeigen verknüpfter Datenobjekte in Azure Data Catalog
 Azure Data Catalog ermöglicht Ihnen das Anzeigen von Datenobjekten, die mit einem ausgewählten Datenobjekt verknüpft sind, und der Beziehungen zwischen beiden. 
@@ -30,6 +30,9 @@ Wenn Sie Datenobjekte aus den folgenden Datenquellen registrieren, registriert A
 - Azure SQL-Datenbank
 - MySQL
 - Oracle
+
+> [!NOTE]
+> Damit Data Catalog die Beziehung zwischen zwei Datenobjekten importiert, müssen Sie beide Objekte zum gleichen Zeitpunkt registrieren. Wenn Sie ein Objekt separat hinzugefügt haben, fügen Sie dieses und das andere Datenobjekt erneut hinzu, um die Beziehung zwischen ihnen zu importieren.
 
 ## <a name="view-related-data-assets"></a>Anzeigen verknüpfter Datenobjekte
 Verwenden Sie zum Anzeigen von Datenobjekten, die mit einem ausgewählten Dataset verknüpft sind, die Registerkarte **Beziehungen** wie in der folgenden Abbildung gezeigt: 

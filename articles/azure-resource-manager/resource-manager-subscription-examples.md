@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 6e8335b9c2f3609bf0c48c563205ffaee8575b20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab816d0392816c2293f9d70eb249bbcfa09bfba
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Beispiele für das Implementieren eines Azure-Unternehmensgerüsts
 Dieses Thema enthält Beispiele dafür, wie ein Unternehmen die Empfehlungen für ein [Azure-Unternehmensgerüst](resource-manager-subscription-governance.md) implementieren kann. Ein fiktives Unternehmen mit dem Namen Contoso wird verwendet, um die bewährten Methoden für allgemeine Szenarien zu veranschaulichen.
@@ -68,7 +68,7 @@ Dave hat die folgenden Anforderungen für die Verwaltung von Ressourcen im Abonn
 * Er macht sich Gedanken über die Kosten. Aus diesem Grund möchte er verhindern, dass Anwendungsbesitzer unnötig teure virtuelle Computer erstellen.  
 * Da diese Anwendung Entwicklern in vielen Unternehmenseinheiten dient, möchte er jede Ressource mit der Unternehmenseinheit und dem Anwendungsbesitzer kennzeichnen. Mithilfe dieser Tags kann ETS die Ressourcen den richtigen Teams in Rechnung stellen.
 
-Er erstellt die folgenden [Resource Manager-Richtlinien](resource-manager-policy.md):
+Er erstellt die folgenden [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md):
 
 | Feld | Effekt | Beschreibung |
 | --- | --- | --- |

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
 ms.author: andredm
-ms.openlocfilehash: cb6e5a398a1d7e20efbcc4a8900f9e8dea43ad2c
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: c1f49e2c7836a56f37aafcaad0cb74278213a720
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>Erhöhen der Rechte als Mandantenadministrator mit der rollenbasierten Zugriffssteuerung
 
@@ -43,6 +43,30 @@ Dieses Feature ist wichtig, weil es dem Mandantenadministrator die Anzeige aller
 > Dies scheint auf den ersten Blick eine globale Eigenschaft für Azure Active Directory zu sein, sie funktioniert jedoch auf Benutzerbasis für den derzeit angemeldeten Benutzer. Wenn Sie in Azure Active Directory über globale Administratorrechte verfügen, können Sie das elevateAccess-Feature für den Benutzernamen aufrufen, mit dem Sie derzeit bei Azure Active Directory Admin Center angemeldet sind.
 
 ![Azure AD Admin Center – Eigenschaften – globaler Administrator kann Azure-Abonnement verwalten – Screenshot](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+
+## <a name="view-role-assignments-at-the--scope-using-powershell"></a>Anzeigen von Rollenzuweisungen im Bereich „/“ mithilfe von PowerShell
+Wenn Sie die Zuweisung **Benutzerzugriffsadministrator** im Bereich **/** anzeigen möchten, verwenden Sie das PowerShell-Cmdlet `Get-AzureRmRoleAssignment`.
+    
+```
+Get-AzureRmRoleAssignment* | where {$_.RoleDefinitionName -eq "User Access Administrator" -and $_SignInName -eq "<username@somedomain.com>" -and $_.Scope -eq "/"}
+```
+
+**Beispielausgabe:**
+
+RoleAssignmentId   : /providers/Microsoft.Authorization/roleAssignments/098d572e-c1e5-43ee-84ce-8dc459c7e1f0    
+Scope              : /    
+DisplayName        : username    
+SignInName         : username@somedomain.com    
+RoleDefinitionName : User Access Administrator    
+RoleDefinitionId   : 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9    
+ObjectId           : d65fd0e9-c185-472c-8f26-1dafa01f72cc    
+ObjectType         : User    
+
+## <a name="delete-the-role-assignment-at--scope-using-powershell"></a>Löschen der Rollenzuweisung im Bereich „/“ mithilfe von Powershell:
+Sie können die Zuweisung mithilfe des folgenden PowerShell-Cmdlets löschen:
+```
+Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefinitionName "User Access Administrator" -Scope "/" 
+```
 
 ## <a name="use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>Verwenden von elevateAccess zum Erteilen von Zugriff an Mandanten mit der REST-API
 

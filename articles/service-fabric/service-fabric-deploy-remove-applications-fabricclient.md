@@ -14,16 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 480f574640d4a9ccd4da97a98adc8b284d373855
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d737e354f5e7ee57c2e2c3d9b5599d4ba2b09af
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>Bereitstellen und Entfernen von Anwendungen mithilfe von FabricClient
 > [!div class="op_single_selector"]
+> * [Ressourcen-Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
-> * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
+> * [Service Fabric-Befehlszeilenschnittstelle](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient-APIs](service-fabric-deploy-remove-applications-fabricclient.md)
 > 
 > 
@@ -42,7 +43,7 @@ Nachdem eine Anwendung bereitgestellt wurde und eine Instanz im Cluster ausgefü
 1. Entfernen (oder Löschen) der ausgeführten Anwendungsinstanz
 2. Aufheben der Registrierung des Anwendungstyps, wenn er nicht mehr benötigt wird
 
-Wenn Sie [Visual Studio zum Bereitstellen und Debuggen von Anwendungen](service-fabric-publish-app-remote-cluster.md) in Ihrem lokalen Entwicklungscluster verwenden, werden alle vorherigen Schritte automatisch über ein PowerShell-Skript ausgeführt.  Dieses Skript befindet sich im Ordner *Skripts* des Anwendungsprojekts. In diesem Artikel wird die grundlegende Funktionsweise dieses Skripts erläutert, sodass Sie die gleichen Vorgänge außerhalb von Visual Studio ausführen können. 
+Wenn Sie Visual Studio zum Bereitstellen und Debuggen von Anwendungen in Ihrem lokalen Entwicklungscluster verwenden, werden alle vorherigen Schritte automatisch über ein PowerShell-Skript ausgeführt.  Dieses Skript befindet sich im Ordner *Skripts* des Anwendungsprojekts. In diesem Artikel wird die grundlegende Funktionsweise dieses Skripts erläutert, sodass Sie die gleichen Vorgänge außerhalb von Visual Studio ausführen können. 
  
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
 Stellen Sie durch Erstellen einer [FabricClient](/dotnet/api/system.fabric.fabricclient)-Instanz eine Verbindung mit dem Cluster her, bevor Sie die Codebeispiele in diesem Artikel ausführen. Beispiele für das Herstellen einer Verbindung mit einem lokalen Entwicklungscluster oder einem Remotecluster bzw. einem mit Azure Active Directory, X509-Zertifikaten oder Windows Active Directory gesicherten Cluster finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-the-fabricclient-apis). Führen Sie zum Herstellen der Verbindung mit dem lokalen Entwicklungscluster den folgenden Befehl aus:
@@ -71,7 +72,7 @@ Mit der [ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.appli
 Die [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync)-API enthält Informationen über alle erfolgreich registrierten Anwendungstypen. Sie können mithilfe dieser API ermitteln, wann die Registrierung abgeschlossen ist.
 
 ## <a name="remove-an-application-package-from-the-image-store"></a>Entfernen eines Anwendungspakets aus dem Imagespeicher
-Es wird empfohlen, das Anwendungspaket nach erfolgreicher Registrierung der Anwendung zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Nicht verwendete Anwendungspakete nehmen Speicherplatz in Anspruch und führen zu Leistungsproblemen der Anwendung. Löschen Sie das Anwendungspaket aus dem Imagespeicher mithilfe der API [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage).
+Es wird empfohlen, nach erfolgreicher Registrierung der Anwendung das Anwendungspaket zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Nicht verwendete Anwendungspakete nehmen Speicherplatz in Anspruch und führen zu Leistungsproblemen der Anwendung. Löschen Sie das Anwendungspaket aus dem Imagespeicher mithilfe der API [RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage).
 
 ## <a name="create-an-application-instance"></a>Erstellen einer Anwendungsinstanz
 Sie können eine Anwendung mit einem beliebigen Anwendungstyp instanziieren, der mit der [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync)-API erfolgreich registriert wurde. Der Name jeder Anwendung muss mit dem *„fabric:“*-Schema beginnen und für jede Anwendungsinstanz (innerhalb eines Clusters) eindeutig sein. Wenn im Anwendungsmanifest des Zielanwendungstyps Standarddienste festgelegt wurden, werden diese ebenfalls erstellt.

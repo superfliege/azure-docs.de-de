@@ -13,18 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 11/13/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 8f175f5711b9798153d209f6645aa8bae9f2a00b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9595b318b8bd974f778dc12b38cccd949a4e7a1a
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="help-i-forgot-my-azure-ad-password"></a>Ich habe mein Azure AD-Kennwort vergessen. Was nun?
+# <a name="reset-your-work-or-school-password"></a>Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos
 
-Falls Sie Ihr Kennwort vergessen haben, von der IT-Abteilung kein Kennwort erhalten haben, aus Ihrem Konto ausgesperrt wurden oder Ihr Kennwort ändern möchten, können wir Ihnen weiterhelfen. Falls Sie Ihr Kennwort kennen und es lediglich ändern möchten, lesen Sie im Abschnitt [Ändern des eigenen Kennworts](#change-my-password) weiter.
+Falls Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens kein Kennwort erhalten haben, aus Ihrem Konto ausgesperrt wurden oder Ihr Kennwort ändern möchten, können wir Ihnen weiterhelfen. Falls Sie Ihr Kennwort kennen und es lediglich ändern möchten, lesen Sie im Abschnitt [Ändern des eigenen Kennworts](#change-my-password) weiter.
 
    > [!NOTE]
    > Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-Konto, „hotmail.com“ oder „outlook.com“) zu erlangen, probieren Sie die [Vorschläge in diesem Artikel](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.
@@ -64,7 +64,7 @@ Rufen Sie mithilfe der folgenden Schritte die Self-Service-Kennwortzurücksetzun
    ![Überprüfen Ihrer Authentifizierungsdaten][Verification]
 
 4. Unter Umständen müssen Sie Schritt 3 erneut ausführen, falls das IT-Personal eine weitere Überprüfung erfordert.
-5. Geben Sie auf der Seite **Neues Kennwort auswählen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Fertig stellen**. Wir empfehlen ein Kennwort mit 8 bis 16 Zeichen, Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
+5. Geben Sie auf der Seite **Neues Kennwort auswählen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Fertig stellen**. Für das Kennwort Ihres Geschäfts-, Schul- oder Unikontos gelten unter Umständen bestimmte Anforderungen. Wir empfehlen ein Kennwort mit 8 bis 16 Zeichen, Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
 6. Wenn **Das Kennwort wurde zurückgesetzt.** erscheint, können Sie sich mit Ihrem neuen Kennwort anmelden.
 
     ![Das Kennwort wurde zurückgesetzt.][Complete]
@@ -95,6 +95,27 @@ Verwenden Sie die folgende Methode, falls Sie für gewöhnlich über das Azure Z
 3. Klicken Sie auf **Kennwort ändern**.
 4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und klicken Sie anschließend auf **Absenden**.
 
+## <a name="reset-password-at-login"></a>Zurücksetzen des Kennworts bei der Anmeldung
+
+Fall der Administrator diese Funktion aktiviert hat, wird nun auf dem Anmeldebildschirm unter Windows 10 Fall Creators Update unter Umständen der Link **Kennwort zurücksetzen** angezeigt.
+
+![LoginScreen][LoginScreen]
+
+Wenn Sie auf den Link **Kennwort zurücksetzen** klicken, wird die SSPR-Oberfläche auf dem Anmeldebildschirm angezeigt, sodass Sie Ihr Kennwort zurücksetzen können, ohne sich anmelden und auf die normale webbasierte Oberfläche zugreifen zu müssen.
+
+1. Bestätigen Sie Ihre Benutzer-ID, und klicken Sie auf **Weiter**.
+2. Wählen Sie eine Kontaktmethode für die Überprüfung aus, und bestätigen Sie sie. Unter Umständen müssen Sie diesen Schritt mit einer anderen Auswahl erneut ausführen, falls das IT-Personal eine weitere Überprüfung erfordert.
+
+   ![ContactMethod][ContactMethod]
+
+3. Geben Sie auf der Seite **Neues Kennwort erstellen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Weiter**. Wir empfehlen ein Kennwort mit 8 bis 16 Zeichen, Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
+
+   ![ResetPassword][ResetPassword]
+
+4. Wenn **Das Kennwort wurde zurückgesetzt.** angezeigt wird, klicken Sie auf **Fertig stellen**.
+
+Sie sollten nun auf Ihr Konto zugreifen können. Falls nicht, wenden Sie sich an das IT-Personal Ihrer Organisation, um weitere Hilfe zu erhalten.
+
 ## <a name="common-problems-and-their-solutions"></a>häufige Probleme und Lösungen
 
  Hier finden Sie einige häufige Fehler und die passenden Lösungen:
@@ -116,3 +137,6 @@ Verwenden Sie die folgende Methode, falls Sie für gewöhnlich über das Azure Z
 [Verification]: ./media/active-directory-passwords-update-your-own-password/reset-2-verification.png "Überprüfen Ihrer Authentifizierungsdaten"
 [Change]: ./media/active-directory-passwords-update-your-own-password/reset-3-change.png "Ändern des Kennworts"
 [Complete]: ./media/active-directory-passwords-update-your-own-password/reset-4-complete.png "Kennwort wurde zurückgesetzt"
+[LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Link „Kennwort zurücksetzen“ auf dem Windows 10 Fall Creators Update-Anmeldebildschirm"
+[ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "Überprüfen Ihrer Authentifizierungsdaten"
+[ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "Ändern des Kennworts"

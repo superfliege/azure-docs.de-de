@@ -3,7 +3,7 @@ title: Erstellen einer selbstgehosteten Integrationslaufzeit in Azure Data Facto
 description: "Es wird beschrieben, wie Sie in Azure Data Factory eine selbstgehostete Integrationslaufzeit erstellen, mit der Data Factorys das Zugreifen auf Datenspeicher in einem privaten Netzwerk ermöglicht wird."
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: nabhishek
 manager: jhubbard
 editor: monicar
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
-ms.author: spelluru
-ms.openlocfilehash: 63e4bb600d053a43c500b601a3942eb96ac16b07
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.author: abnarain
+ms.openlocfilehash: 0fcc245369d90042066cbfc516a8c32db7272bd3
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
@@ -103,11 +103,11 @@ Sie können die selbstgehostete Integrationslaufzeit installieren, indem Sie aus
 
 
 ## <a name="high-availability-and-scalability"></a>Hochverfügbarkeit und Skalierbarkeit
-Eine selbstgehostete Integrationslaufzeit kann mehreren lokalen Computern zugeordnet werden. Diese Computer werden als Knoten bezeichnet. Einer selbstgehosteten Integrationslaufzeit können bis zu vier Knoten zugeordnet sein. Die Vorteile der Nutzung mehrerer Knoten (lokale Computer mit installiertem Gateway) für ein logisches Gateway sind:
+Eine selbstgehostete Integration Runtime kann mehreren lokalen Computern zugeordnet werden. Diese Computer werden als Knoten bezeichnet. Einer selbstgehosteten Integrationslaufzeit können bis zu vier Knoten zugeordnet sein. Die Vorteile der Nutzung mehrerer Knoten (lokale Computer mit installiertem Gateway) für ein logisches Gateway sind:
 1. Höhere Verfügbarkeit der selbstgehosteten Integrationslaufzeit, damit es sich nicht mehr um die einzige Fehlerquelle (Single Point of Failure) in Ihrer Big Data-Lösung oder Clouddatenintegration mit Azure Data Factory handelt. Auf diese Weise wird die Kontinuität mit bis zu vier Knoten sichergestellt.
 2. Verbesserung in Bezug auf die Leistung und den Durchsatz während der Datenverschiebung zwischen lokalen und Clouddatenspeichern. Informieren Sie sich über [Leistungsvergleiche](copy-activity-performance.md).
 
-Sie können mehrere Knoten zuordnen, indem Sie einfach die Software für die selbstgehostete Integrationslaufzeit aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) installieren und registrieren und einen der Authentifizierungsschlüssel verwenden, der mit dem New-AzureRmDataFactoryV2IntegrationRuntimeKey-Cmdlet ermittelt wurde. Dies ist im entsprechenden [Tutorial](tutorial-hybrid-copy-powershell.md) beschrieben.
+Sie können mehrere Knoten zuordnen, indem Sie einfach die Software für die selbstgehostete Integration Runtime aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) installieren und registrieren und einen der Authentifizierungsschlüssel verwenden, der mit dem New-AzureRmDataFactoryV2IntegrationRuntimeKey-Cmdlet ermittelt wurde. Dies ist im entsprechenden [Tutorial](tutorial-hybrid-copy-powershell.md) beschrieben.
 
 > [!NOTE]
 > Für die Zuordnung zu den einzelnen Knoten müssen Sie nicht jeweils eine neue selbstgehostete Integrationslaufzeit erstellen.

@@ -14,23 +14,20 @@ ms.workload: identity
 ms.date: 04/28/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: cf6a9213fa0a1cba8725aabb42abe51b805ece7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 90aec90edcbbfb7833efd85752afc8f1937f5b5a
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="approvals-preview"></a>Genehmigungen (Vorschau)
+# <a name="approvals"></a>Genehmigungen
 
 ## <a name="overview"></a>Übersicht
 
 Mit Genehmigungen für Privileged Identity Management können Sie Rollen konfigurieren, um die Genehmigung für die Aktivierung anzufordern, und einen oder mehrere Benutzer oder Gruppen als delegierte genehmigende Personen auswählen. Im Folgenden erfahren Sie, wie Sie Rollen konfigurieren und genehmigende Personen auswählen.
 
->[!NOTE]
-Bitte denken Sie daran, dass sich dieses Feature noch in der Entwicklungsphase befindet, und Fehler auftreten können. Die Funktionalität, einschließlich Text und Benennungskonventionen, kann noch geändert werden und sollte nicht als final betrachtet werden.
 
-
-## <a name="key-terminology"></a>Wesentliche Terminologie
+## <a name="new-terminology"></a>Neue Terminologie
 
 *Benutzer mit berechtigter Rolle*: Ein Benutzer mit berechtigter Rolle ist ein Benutzer in Ihrer Organisation, der einer Rolle in Azure AD als berechtigt zugewiesen ist (Rolle erfordert Aktivierung).
 

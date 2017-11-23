@@ -12,16 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/6/2017
+ms.date: 11/8/2017
 ms.author: raiye
-ms.openlocfilehash: b728e794132ab8eb91d5d77b3ed452f0c84b8823
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f753a30fa833aaf19069b01607c8beaadcc667f5
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+## <a name="october-guest-os"></a>Gastbetriebssystem Oktober
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+| Rel 17-10 | [4041691] |Windows 10-Updates |5.12 |10. Oktober 2017 |
+| Rel 17-10 | [4041678], [4041679], [4041687] |Nur Windows-Sicherheit |2.67, 3.54, 4.47 |10. Oktober 2017 |
+| Rel 17-10 | [4040685], |Internet Explorer |2.67, 3.54, 4.47 |10. Oktober 2017 |
+| Rel 17-10 | [4041681], [4041690], [4041693] |Monatliche Windows-Rollups |2.67, 3.54, 4.47 |10. Oktober 2017 |
+| N/V | [4038777] |Nicht sicherheitsrelevanter Rollup für September |2.67 |12. September 2017 |
+| N/V | [4038799] |Nicht sicherheitsrelevanter Rollup für September |3.54 |12. September 2017 |
+| N/V | [4038792] |Nicht sicherheitsrelevanter Rollup für September |4.47 |12. September 2017 |
+| N/V | [4040980] |Nicht sicherheitsrelevanter .NET-Rollup für September |2.67 |12. September 2017 |
+| N/V | [4040979] |Nicht sicherheitsrelevanter .NET-Rollup für September |3.54 |12. September 2017 |
+| N/V | [4040981] |Nicht sicherheitsrelevanter .NET-Rollup für September |4.47 |12. September 2017 |
 
 ## <a name="september-guest-os"></a>Gastbetriebssystem September
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
@@ -535,6 +549,20 @@ Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MS
 | – |[2999802] |In Windows werden durchgezogene Linien statt gepunktete Linien gedruckt |4.15, 3.22, 2.34 |13. Januar 2015 |
 | – |[2896881] |Lange Anmeldezeit bei der Verwendung des VBScript-Befehls "AddPrinterConnection" zum Zuordnen von Druckern zu Benutzern während des Anmeldeprozesses in Windows |4.15, 3.22, 2.34 |13. Januar 2015 |
 
+[4041691]: http://support.microsoft.com/kb/4041691 
+[4041678]: http://support.microsoft.com/kb/4041678 
+[4041679]: http://support.microsoft.com/kb/4041679
+[4041687]: http://support.microsoft.com/kb/4041687
+[4040685]: http://support.microsoft.com/kb/4040685
+[4041681]: http://support.microsoft.com/kb/4041681
+[4041690]: http://support.microsoft.com/kb/4041690
+[4041693]: http://support.microsoft.com/kb/4041693
+[4038777]: http://support.microsoft.com/kb/4038777
+[4038799]: http://support.microsoft.com/kb/4038799
+[4038792]: http://support.microsoft.com/kb/4038792
+[4040980]: http://support.microsoft.com/kb/4040980
+[4040979]: http://support.microsoft.com/kb/4040979
+[4040981]: http://support.microsoft.com/kb/4040981
 
 [4038782]: http://support.microsoft.com/kb/4038782
 [4038779]: http://support.microsoft.com/kb/4038779

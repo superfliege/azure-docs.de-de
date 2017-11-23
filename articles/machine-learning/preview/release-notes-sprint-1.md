@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: a294a3f92163f78bace56654c284c4e83623b829
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 2b2f35b3241bd1700bb1fb3319d38fdfda2545f9
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="sprint-1---november-2017"></a>Sprint 1 – November 2017 
 
@@ -105,7 +105,7 @@ Unten ist eine Liste mit detaillierten Aktualisierungen für jeden Komponentenbe
 - MMLSpark enthält jetzt eine Transformation für die Antragstellercodierung („Mesh Encoding“) für medizinische Dokumente.
 - Version 2.1.0 von `matplotlib` ist jetzt im Lieferumfang von Workbench enthalten.
 
-### <a name="jupyter-notebook"></a>Jupyter-Notebook
+### <a name="jupyter-notebook"></a>Jupyter Notebook
 - Die Notebook-Namenssuche funktioniert in der Ansicht „Notebooks“ jetzt richtig.
 - Sie können ein Notebook jetzt in der Ansicht „Notebooks“ löschen.
 - Das neue Magic-Element `%upload_artifact` wurde hinzugefügt, um Dateien, die in der Notebook-Ausführungsumgebung erzeugt wurden, in den Ausführungsverlauf-Datenspeicher hochzuladen.
@@ -127,13 +127,13 @@ Unten ist eine Liste mit detaillierten Aktualisierungen für jeden Komponentenbe
 - Der Imageerstellungsdienst unterstützt jetzt das Erstellen von Images für Azure IoT-Dienste und -Geräte.
 
 ### <a name="sample-projects"></a>Beispielprojekte
-- Beispielprojekt _Klassifizieren von Iris_:
+- Beispielprojekt [_Klassifizieren von Iris_](./tutorial-classifying-iris-part-1.md):
     - `iris_pyspark.py` wird umbenannt in `iris_spark.py`.
-    - `iris_score.py` wird umbenannt in `iris-score.py`.
+    - `iris_score.py` wird umbenannt in `score_iris.py`.
     - `iris.dprep` und `iris.dsource` wurden aktualisiert, um die neuesten Aktualisierungen für das Datenvorbereitungsmodul widerzuspiegeln.
     - Das Notebook `iris.ipynb` wurde geändert, damit es in einem HDInsight-Cluster funktioniert.
     - Der Ausführungsverlauf wurde in Zellen des Notebooks `iris.ipynb` aktiviert.
-- Für das Beispielprojekt _Advanced Data Prep using Bike Share Data_ (Erweiterte Datenvorbereitung mit Daten für Leihfahrräder) wurde der Schritt „Handle Error Value“ (Behandeln des Fehlerwerts) korrigiert.
-- Das `docker.runconfig`-Format des Beispielprojekts _MMLSpark on Adult Census Data_ (MMLSpark für Volkszählungsdaten) wurde von JSON in YAML aktualisiert.
-- Das `docker.runconfig`-Format des Beispielprojekts „Distributed Hyperparameter Tuning“ (Optimierung von verteilten Hyperparametern) wurde von JSON in YAML aktualisiert.
-- Es ist ein neues Beispielprojekt mit dem Namen _Bildklassifizierung mit CNTK_ verfügbar.
+- Für das Beispielprojekt [_Advanced Data Prep using Bike Share Data_](./tutorial-bikeshare-dataprep.md) (Erweiterte Datenaufbereitung mit Daten für Leihfahrräder) wurde der Schritt „Handle Error Value“ (Behandeln des Fehlerwerts) korrigiert.
+- Das `docker.runconfig`-Format des Beispielprojekts [_MMLSpark on Adult Census Data_](https://github.com/Azure/MachineLearningSamples-mmlspark) (MMLSpark für Volkszählungsdaten) wurde von JSON in YAML aktualisiert.
+- Das `docker.runconfig`-Format des Beispielprojekts [_Distributed Hyperparameter Tuning_](./scenario-distributed-tuning-of-hyperparameters.md) (Optimierung von verteilten Hyperparametern) wurde von JSON in YAML aktualisiert.
+- Es ist ein neues Beispielprojekt mit dem Namen [_Bildklassifizierung mit CNTK_](./scenario-image-classification-using-cntk.md) verfügbar.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/13/2017
+ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e817e327b8890c91bd7db640b083fd6c5c11aa14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurieren von Azure Backup-Berichten
 In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für Azure Backup mithilfe von Recovery Services-Tresor beschrieben und wie Sie auf diese mithilfe von PowerBI zugreifen können. Nachdem Sie diese Schritte ausgeführt haben, können Sie direkt in Power BI alle Berichte anzeigen, Berichte anpassen und erstellen. 
@@ -29,6 +29,7 @@ In diesem Artikel werden die Schritte für das Konfigurieren von Berichten für 
 2. Berichte über Azure SQL, DPM und Azure Backup Server werden derzeit nicht unterstützt.
 3. Sie können die Berichte in allen Tresoren mit allen Abonnements anzeigen, sofern für alle Tresore dasselbe Speicherkonto verwendet wird. Das ausgewählte Speicherkonto muss sich in derselben Region wie der Recovery Services-Tresor befinden.
 4. Die Häufigkeit der geplanten Aktualisierungen für die Berichte beträgt in Power BI 24 Stunden. In Power BI können Sie die Berichte auch ad hoc aktualisieren. In diesem Fall werden die aktuellsten Daten im Kundenspeicherkonto zum Rendern der Berichte verwendet. 
+5. Azure Backup-Berichte werden in nationalen Clouds derzeit nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Erstellen Sie ein [Azure-Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account), um Berichte zu konfigurieren. Dieses Speicherkonto wird zum Speichern von berichtsbezogenen Daten verwendet.
@@ -50,19 +51,26 @@ Mit den folgenden Schritten konfigurieren Sie das Speicherkonto für Recovery Se
 2. Klicken Sie in der unter dem Tresor angezeigten Liste im Abschnitt „Überwachung und Berichte“ auf das Element **Sicherungsberichte**, um das Speicherkonto für Berichte zu konfigurieren.
 
       ![Wählen Sie in „Sicherungsberichte“ das Menüelement „Schritt 2“](./media/backup-azure-configure-reports/backup-reports-settings.PNG)
-3. Klicken Sie auf dem Blatt „Sicherungsberichte“ auf die Schaltfläche **Konfigurieren**. Es wird das Blatt „Azure Application Insights“ geöffnet, das für das Übertragen der Daten per Push an das Speicherkonto des Kunden verwendet wird.
+3. Klicken Sie auf dem Blatt „Sicherungsberichte“ auf den Link **Diagnoseeinstellungen**. Dadurch wird die Benutzeroberfläche für Diagnoseeinstellungen geöffnet, die zum Übertragen der Daten per Push an das Speicherkonto des Kunden verwendet wird.
 
-      ![Schritt 3: Konfigurieren des Speicherkontos](./media/backup-azure-configure-reports/configure-storage-account.PNG)
-4. Legen Sie die Umschaltfläche für den Status auf **Ein** fest, und aktivieren Sie das Kontrollkästchen **In einem Speicherkonto archivieren**, damit die Berichtsdaten an das Speicherkonto übermittelt werden können.
+      ![Schritt 3: Aktivieren der Diagnose](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
+4. Klicken Sie auf den Link **Diagnose aktivieren**. Dadurch wird die Benutzeroberfläche zum Konfigurieren des Speicherkontos geöffnet. 
 
-      ![Schritt 4: Aktivieren der Diagnose](./media/backup-azure-configure-reports/set-status-on.png)
-5. Klicken Sie in der Speicherkontoauswahl in der Liste für das Speichern der Berichtsdaten auf das Speicherkonto, und klicken Sie auf **OK**.
+      ![Schritt 4: Aktivieren der Diagnose](./media/backup-azure-configure-reports/enable-diagnostics.png)
+5. Geben Sie den Einstellungsnamen im Feld **Name** ein, und aktivieren Sie das Kontrollkästchen **In einem Speicherkonto archivieren**, damit die Berichtsdaten an das Speicherkonto übermittelt werden können.
 
-      ![Schritt 5: Auswählen des Speicherkontos](./media/backup-azure-configure-reports/select-storage-account.png)
-6. Aktivieren Sie das Kontrollkästchen **AzureBackupReport**, und wählen Sie mit dem Schieberegler die Aufbewahrungsdauer für diese Berichtsdaten aus. Die Berichtsdaten werden für den mit diesem Schieberegler ausgewählten Zeitraum im Speicherkonto beibehalten.
+      ![Schritt 5: Aktivieren der Diagnose](./media/backup-azure-configure-reports/select-setting-name.png)
+6. Klicken Sie in der Speicherkontoauswahl in der Liste für das Speichern der Berichtsdaten auf das entsprechende Abonnement und Speicherkonto, und klicken Sie auf **OK**.
 
-      ![Schritt 6: Auswählen des Speicherkontos](./media/backup-azure-configure-reports/save-configuration.png)
-7. Überprüfen Sie alle Änderungen, und klicken Sie oben auf die Schaltfläche **Speichern**, wie in der obigen Abbildung gezeigt. Dadurch wird sichergestellt, dass alle Änderungen gespeichert werden und das Speicherkonto nun für das Speichern von Berichtsdaten konfiguriert ist.
+      ![Schritt 6: Auswählen des Speicherkontos](./media/backup-azure-configure-reports/select-subscription-sa.png)
+7. Aktivieren Sie im Protokollabschnitt das Kontrollkästchen **AzureBackupReport**, und wählen Sie mit dem Schieberegler die Aufbewahrungsdauer für diese Berichtsdaten aus. Die Berichtsdaten werden für den mit diesem Schieberegler ausgewählten Zeitraum im Speicherkonto beibehalten.
+
+      ![Schritt 7: Speichern des Speicherkontos](./media/backup-azure-configure-reports/save-diagnostic-settings.png)
+8. Überprüfen Sie alle Änderungen, und klicken Sie oben auf die Schaltfläche **Speichern**, wie in der obigen Abbildung gezeigt. Dadurch wird sichergestellt, dass alle Änderungen gespeichert werden und das Speicherkonto nun für das Speichern von Berichtsdaten konfiguriert ist.
+
+9. In der Tabelle mit den Diagnoseeinstellungen sollte nun die neue, aktivierte Einstellung für den Tresor angezeigt werden. Wird sie nicht angezeigt, aktualisieren Sie die Tabelle, um die aktualisierte Einstellung anzuzeigen.
+
+      ![Schritt 9: Anzeigen der Diagnoseeinstellung](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
 > Nachdem Sie die Speicherung der Berichte im Konto konfiguriert haben **warten Sie 24 Stunden**, bis die erste Pushübertragung von Daten abgeschlossen ist. Importieren Sie das Azure Backup-Inhaltspaket erst nach diesem Zeitraum in Power BI. Weitere Informationen finden Sie im [Abschnitt mit häufig gestellten Fragen](#frequently-asked-questions). 

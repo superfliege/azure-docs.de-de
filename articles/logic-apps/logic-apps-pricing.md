@@ -12,49 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/11/2017
 ms.author: LADocs; klam
-ms.openlocfilehash: 63784c5e3af360b2f3f8cb330a9df8b27a85d859
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2a92e45b8a759d2d8193ac188efdcfc694a3e6d
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="logic-apps-pricing-model"></a>Preismodell für Logik-Apps
-Mit Azure Logic Apps können Sie Integrationsworkflows in der Cloud skalieren und ausführen.  Weiter unten finden Sie Details zum Abrechnungsplan und zu den Tarifen für Logic Apps.
-## <a name="consumption-pricing"></a>Nutzungspreise
-Für neu erstellte Logik-Apps wird ein Nutzungsplan verwendet. Beim Preismodell, das auf der Nutzung von Logik-Apps basiert, ist die Bezahlung nutzungsabhängig.  Logik-Apps werden bei Verwendung eines Nutzungsplans nicht gedrosselt.
-Alle in einer Ausführung einer Logik-App-Instanz ausgeführten Aktionen werden gemessen.
+Sie können automatisierte skalierbare Integrationsworkflows in der Cloud mit Azure Logic Apps erstellen und ausführen. Hier sind die Details zur Abrechnung und zu den Preisen für Logic Apps angegeben.
+## <a name="consumption-pricing-model"></a>Modell für nutzungsbasierte Preise
+Bei neu erstellten Logik-Apps zahlen Sie nur für die Ressourcen, die Sie wirklich nutzen. Für neue Logik-Apps werden ein Verbrauchsplan und ein Preismodell verwendet. Dies bedeutet, dass alle Ausführungen, die von einer Logik-App-Instanz durchgeführt werden, nutzungsbezogen abgerechnet werden.
 ### <a name="what-are-action-executions"></a>Was sind Aktionsausführungen?
-Jeder Schritt einer Logik-App-Definition ist eine Aktion. Beispiele hierfür sind Trigger, Ablaufsteuerungsschritte wie Bedingungen, Bereiche, For-Each-Schleifen und Do-Until-Schleifen, Aufrufe von Connectors und Aufrufe von nativen Aktionen.
-Trigger sind spezielle Aktionen, die für das Instanziieren einer neuen Instanz einer Logik-App beim Auftreten eines bestimmten Ereignisses ausgelegt sind.  Es gibt eine Reihe von verschiedenen Verhalten für Trigger, die sich darauf auswirken können, wie die Logik-App gemessen wird.
-* **Abfragetrigger**: Mit diesem Trigger wird ein Endpunkt fortlaufend abgefragt, bis er eine Nachricht empfängt, die die Kriterien für die Erstellung der Instanz einer Logik-App erfüllt.  Das Abrufintervall kann mit dem Logik-App-Designer im Trigger konfiguriert werden.  Jede Abfrageanforderung wird als Aktionsausführung gezählt. Dies gilt auch, wenn keine Instanz einer Logik-App erstellt wird.
-* **Webhooktrigger** : Dieser Trigger wartet darauf, dass von einem Client eine Anforderung an einen bestimmten Endpunkt gesendet wird.  Jede Anforderung, die an den Webhookendpunkt gesendet wird, wird als eine Aktionsausführung gezählt. Sowohl beim Anforderungstrigger als auch beim HTTP-Webhooktrigger handelt es sich um Webhooktrigger.
-* **Wiederholungstrigger**: Dieser Trigger erstellt eine Instanz der Logik-App basierend auf dem Wiederholungsintervall, das im Trigger konfiguriert ist.  Beispielsweise kann ein Wiederholungstrigger so konfiguriert werden, dass er alle drei Tage oder auch jede Minute ausgeführt wird.
+Jeder Schritt einer Logik-App-Definition ist eine Aktion, die Trigger, Ablaufsteuerungsschritte und Aufrufe von integrierten Aktionen und Connectors umfasst.
+### <a name="triggers"></a>Trigger
+Trigger sind spezielle Aktionen, mit denen eine Logik-App-Instanz erstellt wird, wenn ein bestimmtes Ereignis eintritt. Trigger verfügen über mehrere unterschiedliche Verhalten, die sich darauf auswirken, wie die Logik-App nutzungsbezogen abgerechnet wird.
+* **Abfragetrigger**: Mit diesem Trigger wird ein Endpunkt fortlaufend überprüft, bis er eine Nachricht empfängt, die die Kriterien für die Erstellung einer Logik-App-Instanz zum Starten des Workflows erfüllt. Sie können das Abrufintervall im Trigger über den Logik-App-Designer einrichten. Jede Abrufanforderung zählt auch dann als Ausführung, wenn keine Logik-App-Instanz erstellt wird.
+* **Webhooktrigger**: Dieser Trigger wartet darauf, dass von einem Client eine Anforderung an einen bestimmten Endpunkt gesendet wird. Jede Anforderung, die an den Webhookendpunkt gesendet wird, wird als eine Aktionsausführung gezählt. Sowohl beim Anforderungstrigger als auch beim HTTP-Webhooktrigger handelt es sich beispielsweise um Webhooktrigger.
+* **Wiederholungstrigger**: Dieser Trigger erstellt eine Logik-App-Instanz basierend auf dem Wiederholungsintervall, das Sie im Trigger einrichten. Sie können beispielsweise einen Wiederholungstrigger einrichten, der alle drei Tage oder nach einem komplexeren Zeitplan ausgeführt wird.
 
-Triggerausführungen werden auf dem Ressourcenblatt „Logik-Apps“ unter dem „Triggerverlauf“ angezeigt.
+Sie finden Triggerausführungen im Bereich „Übersicht“ Ihrer Logik-App unter dem Abschnitt „Triggerverlauf“.
 
-Alle Aktionen, die ausgeführt wurden – ob erfolgreich oder nicht – werden als Aktionsausführung gemessen.  Aktionen, die aufgrund einer nicht erfüllten Bedingung übersprungen wurden, oder Aktionen, die aufgrund einer Beendigung der Logik-App vor dem Abschluss nicht ausgeführt wurden, werden nicht als Aktionsausführungen gezählt.
+### <a name="actions"></a>Aktionen
+Integrierte Aktionen (z.B. Aktionen zum Aufrufen von HTTP, Azure Functions oder API Management) und Ablaufsteuerungsschritte werden als native Aktionen nutzungsbezogen abgerechnet und haben jeweils einen eigenen Typ. Aktionen, mit denen [Connectors](https://docs.microsoft.com/connectors) aufgerufen werden, haben den Typ „ApiConnection“. Connectors sind entweder als Standard- oder Unternehmensconnectors klassifiziert, und der Verbrauch wird zu den jeweiligen [Preisen][pricing] gemessen.
+Alle erfolgreich und nicht erfolgreich ausgeführten Aktionen werden als Aktionsausführungen gezählt und nutzungsbezogen abgerechnet. Aktionen, die aufgrund von nicht erfüllten Bedingungen übersprungen werden, oder Aktionen, die aufgrund einer Beendigung der Logik-App vor ihrem Abschluss nicht ausgeführt werden, werden nicht als Aktionsausführungen gezählt. Deaktivierte Logik-Apps können keine neuen Instanzen initiieren, sodass keine Gebühren anfallen, während sie deaktiviert sind.
 
-Innerhalb von Schleifen ausgeführte Aktionen werden pro Iteration der Schleife gezählt.  Eine einzelne Aktion in einer For-Each-Schleife, die eine Liste mit zehn Einträgen durchläuft, wird wie folgt gezählt: Anzahl von Einträgen in der Liste (10) multipliziert mit der Anzahl von Aktionen in der Schleife (1) plus eine Aktion für die Initiierung der Schleife. Für dieses Beispiel ergeben sich also (10 · 1) + 1 = 11 Aktionsausführungen.
-Für deaktivierte Logik-Apps können keine neuen Instanzen instanziiert werden. Daher werden sie für die Dauer der Deaktivierung auch nicht berechnet.  Beachten Sie, dass es nach dem Deaktivieren einer Logik-App etwas dauern kann, bis die Instanzen stillgelegt werden und vollständig deaktiviert sind.
+> [!NOTE]
+> Nachdem Sie eine Logik-App deaktiviert haben, kann es einige Zeit dauern, bis die derzeit ausgeführten Instanzen vollständig beendet wurden.
+
+Aktionen, die innerhalb von Schleifen ausgeführt werden, werden pro Schleifenzyklus gezählt. Eine einzelne Aktion in einer „for each“-Schleife, mit der eine Liste mit zehn Einträgen verarbeitet wird, wird beispielsweise wie folgt gezählt: Die Anzahl von Listeneinträgen (10) wird mit der Anzahl von Aktionen in der Schleife (1) multipliziert, und anschließend wird der Wert 1 für das Starten der Schleife addiert. Die Berechnung für dieses Beispiel lautet also (10 * 1) + 1, sodass sich insgesamt elf Aktionsausführungen ergeben.
+
 ### <a name="integration-account-usage"></a>Nutzung des Integrationskontos
-Teil der verbrauchsbasierten Nutzung ist ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md) für Untersuchungs-, Entwicklungs- und Testzwecke, damit Sie die Features [B2B/EDI](logic-apps-enterprise-integration-b2b.md) und [XML-Verarbeitung](logic-apps-enterprise-integration-xml.md) von Logik-Apps ohne zusätzliche Kosten verwenden können. Sie können maximal ein Konto pro Region erstellen und bis zu zehn Vereinbarungen und 25 Zuordnungen speichern. Für Schemas, Zertifikate und Partner gelten keine Grenzwerte, und Sie können so viele hochladen, wie Sie benötigen.
+Die verbrauchsbasierte Nutzung umfasst ein [Integrationskonto](logic-apps-enterprise-integration-create-integration-account.md), unter dem Sie die Features [B2B/EDI](logic-apps-enterprise-integration-b2b.md) und [XML-Verarbeitung](logic-apps-enterprise-integration-xml.md) von Logic Apps ohne zusätzliche Kosten erkunden, entwickeln und testen können. Sie können eines dieser Integrationskonten pro Region verwenden und bis zu 10 Vereinbarungen und 25 Zuordnungen speichern. Sie können eine unbegrenzte Zahl von Partnern, Schemas und Zertifikaten nutzen und hochladen.
 
-Zusätzlich zur Einbindung von Integrationskonten in den Verbrauch können Sie auch Standardintegrationskonten ohne diese Grenzwerte und mit unserem Standard-SLA für Logik-Apps erstellen. Weitere Informationen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/details/logic-apps).
+Für Logic Apps sind außerdem Basic- und Standard-Integrationskonten mit unterstützter Logic Apps-SLA verfügbar. Sie können Basic-Integrationskonten verwenden, wenn Sie entweder nur die Behandlung von Nachrichten nutzen oder als Partner für ein kleines Unternehmen fungieren möchten, das eine Handelspartnerbeziehung mit einem größeren Unternehmen eingegangen ist. Standard-Integrationskonten unterstützen komplexere B2B-Beziehungen und erhöhen die Anzahl von Entitäten, die Sie verwalten können. Weitere Informationen finden Sie in der [Azure-Preisübersicht](https://azure.microsoft.com/pricing/details/logic-apps).
 
-## <a name="app-service-plans"></a>App Service-Pläne
-Zuvor erstellte Logik-Apps, für die auf einen App Service-Plan verwiesen wird, verhalten sich wie bisher. Je nach gewähltem Plan erfolgt die Drosselung nach dem Erreichen der vorgeschriebenen täglichen Ausführungen, aber die Abrechnung wird über die Messung der Aktionsausführungen durchgeführt.
-EA-Kunden, die in ihrem Abonnement über einen App Service-Plan verfügen (der der Logik-App nicht explizit zugeordnet sein muss), erhalten den entsprechenden Mengenrabatt.  Wenn Sie beispielsweise in Ihrem EA-Abonnement über einen App Service-Standardplan und in demselben Abonnement über eine Logik-App verfügen, werden Ihnen nicht 10.000 Aktionsausführungen pro Tag berechnet (siehe folgende Tabelle). 
-
-App Service-Pläne und ihre täglich zulässigen Aktionsausführungen:
-|  | Free/Shared/Basic | Standard | Premium |
-| --- | --- | --- | --- |
-| Aktionsausführungen pro Tag |200 |10.000 |50.000 |
-### <a name="convert-from-app-service-plan-pricing-to-consumption"></a>Umstellung von einem App Service-Plan auf den nutzungsbasierten Tarif
-Um eine Logik-App mit zugeordnetem App Service-Plan in ein Verbrauchsmodell zu ändern, entfernen Sie den Verweis auf den App Service-Plan in der Logik-App-Definition.  Diese Änderung ist durch einen Aufruf eines PowerShell-Cmdlets möglich: `Set-AzureRmLogicApp -ResourceGroupName ‘rgname’ -Name ‘wfname’ –UseConsumptionModel -Force`
 ## <a name="pricing"></a>Preise
-Eine Preisübersicht finden Sie unter [Logik-Apps Preise](https://azure.microsoft.com/pricing/details/logic-apps).
+Weitere Informationen finden Sie unter [Logik-Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Übersicht über Logic Apps][whatis]

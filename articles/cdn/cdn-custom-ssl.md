@@ -1,5 +1,5 @@
 ---
-title: "Aktivieren oder Deaktivieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne | Microsoft-Dokumentation"
+title: "Konfigurieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie HTTPS für Ihren Azure CDN-Endpunkt mit einer benutzerdefinierten Domäne aktivieren oder deaktivieren."
 services: cdn
 documentationcenter: 
@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: casoper
-ms.openlocfilehash: 68a171ee6da58e6d84b466daf573577c909c7f5c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 82de79cde208cdce1ed7cbd600f1e804ff1d45ff
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="enable-or-disable-https-on-an-azure-content-delivery-network-custom-domain"></a>Aktivieren oder Deaktivieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne
+# <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Konfigurieren von HTTPS in einer benutzerdefinierten Azure Content Delivery Network-Domäne
 
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
 
-Dank der HTTPS-Unterstützung für benutzerdefinierte Microsoft Azure CDN-Domänen (Content Delivery Network) können Sie unter Verwendung Ihres eigenen Domänennamens sichere Inhalte über SSL bereitstellen und so die Datensicherheit bei der Übertragung verbessern. Der End-to-End-Workflow zur Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne wird durch die Möglichkeit zur Aktivierung mit nur einem Klick sowie durch eine umfassende Zertifikatverwaltung vereinfacht – alles ohne zusätzliche Kosten.
+Microsoft unterstützt das HTTPS-Protokoll für benutzerdefinierte Domänen im Azure Content Delivery Network (CDN). Dank der HTTPS-Unterstützung für benutzerdefinierte Domänen können Sie unter Verwendung Ihres eigenen Domänennamens sichere Inhalte über SSL bereitstellen und so die Datensicherheit bei der Übertragung verbessern. Der Workflow zur Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne wird durch die Möglichkeit zur Aktivierung mit nur einem Klick sowie durch eine umfassende Zertifikatverwaltung vereinfacht – alles ohne zusätzliche Kosten.
 
-Während der Datenübertragung müssen Schutz und Integrität sämtlicher sensibler Webanwendungsdaten unbedingt gewährleistet sein. Die Verwendung des HTTPS-Protokolls stellt sicher, dass Ihre sensible Daten verschlüsselt sind, wenn sie über das Internet gesendet werden. Das Protokoll sorgt für Vertrauen und bietet Authentifizierung und Angriffsschutz für Ihre Webanwendungen. Azure CDN unterstützt HTTPS standardmäßig für einen CDN-Endpunkt. Wenn Sie also etwa über Azure CDN einen CDN-Endpunkt erstellen (beispielsweise `https://contoso.azureedge.net`), ist HTTPS automatisch aktiviert. Dank der Unterstützung von HTTPS für benutzerdefinierte Domänen können Sie auch eine sichere Bereitstellung für eine benutzerdefinierte Domäne (beispielsweise `https://www.contoso.com`) aktivieren. 
+Während der Datenübertragung müssen Schutz und Integrität der sensiblen Webanwendungsdaten unbedingt gewährleistet sein. Durch die Verwendung des HTTPS-Protokolls stellen Sie sicher, dass Ihre sensiblen Daten verschlüsselt sind, wenn sie über das Internet gesendet werden. Das Protokoll sorgt für Vertrauen und bietet Authentifizierung und Angriffsschutz für Ihre Webanwendungen. Azure CDN unterstützt HTTPS standardmäßig für einen CDN-Endpunkt. Wenn Sie also etwa über Azure CDN einen CDN-Endpunkt erstellen (beispielsweise `https://contoso.azureedge.net`), ist HTTPS automatisch aktiviert. Dank der Unterstützung von HTTPS für benutzerdefinierte Domänen können Sie auch eine sichere Bereitstellung für eine benutzerdefinierte Domäne (beispielsweise `https://www.contoso.com`) aktivieren. 
 
 Zu den wichtigsten Attributen des HTTPS-Features zählen unter anderem folgende:
 
@@ -41,7 +41,7 @@ Zu den wichtigsten Attributen des HTTPS-Features zählen unter anderem folgende:
 
 ## <a name="enabling-https"></a>Aktivieren von HTTPS
 
-Gehen Sie folgendermaßen vor, um HTTPS zu aktivieren:
+Um HTTPS für eine benutzerdefinierte Domäne zu aktivieren, führen Sie die folgenden Schritte aus:
 
 ### <a name="step-1-enable-the-feature"></a>Schritt 1: Aktivieren des Features 
 
@@ -66,7 +66,7 @@ Gehen Sie folgendermaßen vor, um HTTPS zu aktivieren:
 Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft die DigiCert-Zertifizierungsstelle, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registrant der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. 
 
 >[!NOTE]
->Wenn Sie über einen CAA-Datensatz (Certificate Authority Authorization) bei Ihrem DNS-Anbieter verfügen, muss dieser DigiCert als gültige Zertifizierungsstelle enthalten. Ein CAA-Datensatz ermöglicht es Domänenbesitzern, ihrem jeweiligen DNS-Anbieter mitzuteilen, welche Zertifizierungsstellen zum Ausstellen von Zertifikaten für ihre Domäne autorisiert sind. Wenn eine Zertifizierungsstelle einen Auftrag für ein Zertifikat für eine Domäne empfängt, für die ein CAA-Datensatz vorliegt und die Zertifizierungsstelle nicht als autorisierter Aussteller angegeben ist, darf sie das Zertifikat für die Domäne oder Unterdomäne nicht ausstellen.
+>Wenn Sie über einen CAA-Datensatz (Certificate Authority Authorization) bei Ihrem DNS-Anbieter verfügen, muss dieser DigiCert als gültige Zertifizierungsstelle enthalten. Ein CAA-Datensatz ermöglicht es Domänenbesitzern, ihrem jeweiligen DNS-Anbieter mitzuteilen, welche Zertifizierungsstellen zum Ausstellen von Zertifikaten für ihre Domäne autorisiert sind. Wenn eine Zertifizierungsstelle einen Auftrag für ein Zertifikat für eine Domäne empfängt, für die ein CAA-Datensatz vorliegt und die Zertifizierungsstelle nicht als autorisierter Aussteller angegeben ist, darf sie das Zertifikat für die Domäne oder Unterdomäne nicht ausstellen. Informationen zum Verwalten von CAA-Einträgen finden Sie unter [Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/) (Verwalten von CAA-Einträgen). Ein Tool für CAA-Einträge finden Sie unter [CAA Record Helper](https://sslmate.com/caa/) (Hilfsprogramm für CAA-Einträge).
 
 ![WHOIS-Datensatz](./media/cdn-custom-ssl/whois-record.png)
 
@@ -128,7 +128,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="disabling-https"></a>Deaktivieren von HTTPS
 
-Wenn Sie HTTPS aktiviert haben, können Sie es später deaktivieren. Gehen Sie folgendermaßen vor, um HTTPS zu deaktivieren:
+Wenn Sie HTTPS für eine benutzerdefinierte Domäne aktiviert haben, können Sie es später deaktivieren. Gehen Sie folgendermaßen vor, um HTTPS zu deaktivieren:
 
 ### <a name="step-1-disable-the-feature"></a>Schritt 1: Deaktivieren des Features 
 

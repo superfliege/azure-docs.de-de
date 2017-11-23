@@ -1,5 +1,5 @@
 ---
-title: "Verwalten von Geräten im Azure-Portal – Vorschau | Microsoft-Dokumentation"
+title: "Verwalten von Geräten mit dem Azure-Portal | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie Geräte über das Azure-Portal verwalten."
 services: active-directory
 documentationcenter: 
@@ -12,19 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/24/2017
+ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4b46e1627a229b0649d9ccd2550cd28fda9849f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd13ecf50cf03c362f8da2da83ab698c4e8ba0cc
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="managing-devices-using-the-azure-portal---preview"></a>Verwalten von Geräten im Azure-Portal – Vorschau
-
->[!NOTE]
->Diese Funktion befindet sich derzeit in der Public Preview. Seien Sie darauf vorbereitet, Änderungen zurückzusetzen bzw. zu löschen. Während der Public Preview ist die Funktion in allen Azure Active Directory-Abonnements verfügbar. Sobald die Funktion aber allgemeine verfügbar wird, ist für einige Aspekte des Features unter Umständen ein Azure Active Directory Premium-Abonnement erforderlich.
+# <a name="managing-devices-using-the-azure-portal"></a>Verwalten von Geräten mit dem Azure-Portal
 
 
 Mit der Geräteverwaltung in Azure Active Directory (Azure AD) können Sie sicherstellen, dass Benutzer auf Ihre Ressourcen über Geräte zugreifen, die Ihren Standards für Sicherheit und Konformität entsprechen. 
@@ -36,50 +33,45 @@ Dieses Thema:
 - Enthält Informationen zum Verwalten Ihrer Geräte mithilfe des Azure-Portals.
 
 
-Um Geräte im Azure-Portal zu verwalten, müssen Sie im Abschnitt **Verwalten** des Blatts **Azure Active Directory** auf **Geräte** klicken.
-
-![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/11.png)
-
-
-
 
 ## <a name="configure-device-settings"></a>Konfigurieren der Geräteeinstellungen
 
-Damit Ihre Geräte im Azure-Portal verwaltet werden können, müssen sie in Azure AD registriert oder eingebunden (d. h. mit Azure AD verknüpft) werden. Als Administrator können Sie den Prozess der Registrierung und Verknüpfung von Geräten optimieren, indem Sie die Geräteeinstellungen konfigurieren.
+Damit Ihre Geräte im Azure-Portal verwaltet werden können, müssen diese in Azure AD [registriert oder eingebunden](device-management-introduction.md#getting-devices-under-the-control-of-azure-ad) (d.h. mit Azure AD verknüpft) werden. Als Administrator können Sie den Prozess der Registrierung und Verknüpfung von Geräten optimieren, indem Sie die Geräteeinstellungen konfigurieren. 
 
-![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/22.png)
+![Konfigurieren der Geräteeinstellungen](./media/device-management-azure-portal/22.png)
+
+Auf der Seite mit den Geräteeinstellungen können Sie Folgendes konfigurieren:
+
+![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/21.png)
 
 
-Auf dem Blatt für die Geräteeinstellungen können Sie Folgendes konfigurieren:
-
-- **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung ermöglicht Ihnen die Auswahl der Benutzer, die Geräte in Azure AD einbinden können. Die Standardeinstellung ist **Alle**.
+- **Benutzer dürfen Geräte in Azure AD einbinden**: Diese Einstellung ermöglicht Ihnen die Auswahl der Benutzer, die [Geräte in Azure AD einbinden](device-management-introduction.md#azure-ad-joined-devices) können. Die Standardeinstellung ist **Alle**.
 
 - **Weitere lokale Administratoren für in Azure AD eingebundene Geräte**: Sie können die Benutzer auswählen, denen lokale Administratorrechte auf einem Gerät erteilt werden. Hier hinzugefügte Benutzer werden der Rolle *Geräteadministratoren* in Azure AD hinzugefügt. Globale Administratoren in Azure AD und Gerätebesitzer erhalten standardmäßig lokale Administratorrechte. Diese Option ist eine Premium Edition-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht. 
 
-- **Benutzer dürfen ihre Geräte für Azure AD registrieren**: Sie müssen diese Einstellung konfigurieren, um die Registrierung von Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht registriert werden, sofern sie nicht in Azure AD eingebunden oder hybrid in Azure AD eingebunden sind. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung für Office 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
+- **Benutzer dürfen ihre Geräte für Azure AD registrieren**: Sie müssen diese Einstellung konfigurieren, um die [Registrierung](device-management-introduction.md#azure-ad-registered-devices) von Geräten in Azure AD zuzulassen. Bei Auswahl von **Keine** dürfen Geräte nicht registriert werden, sofern sie nicht in Azure AD eingebunden oder hybrid in Azure AD eingebunden sind. Für die Registrierung bei Microsoft Intune oder der mobilen Geräteverwaltung für Office 365 ist eine Registrierung erforderlich. Wenn Sie einen dieser Dienste konfiguriert haben, wird **ALLE** ausgewählt, und die Option **KEINE** ist nicht verfügbar.
 
-- **Multi-factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen sekundären Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät mit Azure AD zu verknüpfen. Der Standardwert lautet **Nein**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../multi-factor-authentication/multi-factor-authentication-get-started.md). 
+- **Multi-factor Auth zum Hinzufügen von Geräten erforderlich**: Sie können auswählen, ob Benutzer einen sekundären Authentifizierungsfaktor bereitstellen müssen, um ihr Gerät in [Azure AD](device-management-introduction.md#azure-ad-joined-devices) einzubinden. Der Standardwert lautet **Nein**. Es wird empfohlen, beim Registrieren eines Geräts die mehrstufige Authentifizierung zu verwenden. Bevor Sie die mehrstufige Authentifizierung für diesen Dienst aktivieren, müssen Sie sicherstellen, dass sie für die Benutzer konfiguriert ist, die ihre Geräte registrieren. Weitere Informationen zu verschiedenen Azure-Diensten mit mehrstufiger Authentifizierung finden Sie in den [ersten Schritten mit der mehrstufigen Azure-Authentifizierung](../multi-factor-authentication/multi-factor-authentication-get-started.md). 
 
 - **Maximale Anzahl von Geräten pro Benutzer**: Mit dieser Einstellung können Sie die maximale Anzahl von Geräten festlegen, die ein Benutzer in Azure AD haben kann. Wenn ein Benutzer diese Anzahl erreicht, kann er keine weiteren Geräte hinzufügen, bis mindestens eines der vorhandenen Geräte entfernt wird. Das Geräteangebot wird für alle Geräte gezählt, die heute mit Azure AD verknüpft oder in Azure AD registriert sind. Der Standardwert ist **20**.
 
 - **Benutzer können Einstellungen und App-Daten geräteübergreifend synchronisieren**: Diese Einstellung ist standardmäßig auf **KEINE** festgelegt. Wenn Sie bestimmte Benutzer oder Gruppen oder „ALLE“ auswählen, können die Einstellungen und App-Daten der Benutzer auf ihren Windows 10-Geräten synchronisiert werden. Erfahren Sie mehr über die Funktionsweise der Synchronisierung in Windows 10.
 Diese Option ist eine Premium-Funktion, die über Produkte wie Azure AD Premium oder die Enterprise Mobility Suite (EMS) zur Verfügung steht.
  
-    ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/21.png)
 
 
 
 
 ## <a name="locate-devices"></a>Suchen nach Geräten
 
-Als Administrator haben Sie im Azure-Portal zwei Möglichkeiten zur Suche nach registrierten und verknüpften Geräten:
+Sie haben zwei Optionen, um nach registrierten und eingebundenen Geräten zu suchen:
 
-- **Alle Geräte** im Abschnitt **Verwalten** des Blatts **Geräte**  
+- **Alle Geräte** im Abschnitt **Verwalten** der Seite **Geräte**  
 
     ![Alle Geräte](./media/device-management-azure-portal/41.png)
 
 
-- **Geräte** im Abschnitt **Verwalten** des Blatts **Benutzer**
+- **Geräte** im Abschnitt **Verwalten** der Seite **Benutzer**
  
     ![Alle Geräte](./media/device-management-azure-portal/43.png)
 
@@ -103,45 +95,73 @@ Bei beiden Optionen erhalten Sie eine Ansicht, die:
 Als Administrator können Sie die registrierten oder verknüpften Geräte verwalten. Dieser Abschnitt enthält Informationen zu allgemeinen Geräteverwaltungsaufgaben.
 
 
-**Verwalten von Intune-Geräten**: Wenn Sie ein Intune-Administrator sind, können Sie Geräte, die mit **Microsoft Intune** markiert sind, verwalten. Ein Administrator kann zusätzliche Gerät anzeigen. 
+### <a name="manage-an-intune-device"></a>Verwalten eines Intune-Geräts
+
+Wenn Sie ein Intune-Administrator sind, können Sie Geräte verwalten, die mit der Kennzeichnung **Microsoft Intune** versehen sind. Ein Administrator kann zusätzliche Gerät anzeigen. 
 
 ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/31.png)
 
 
-**Aktivieren/Deaktivieren von Azure AD-Geräten**
+### <a name="enable--disable-an-azure-ad-device"></a>Aktivieren/Deaktivieren von Azure AD-Geräten
 
-Zum Aktivieren oder Deaktivieren eines Geräts, müssen Sie ein globaler Administrator in Azure AD sein. Durch das Deaktivieren eines Geräts verhindern Sie, dass über das Gerät auf Ihre Azure AD-Ressourcen zugegriffen wird.  Sie können zum Deaktivieren des Geräts auf die Auslassungspunkte (*...*) oder auf das Gerät klicken, um weitere Details anzuzeigen.
+Sie haben zwei Optionen, um ein Gerät zu aktivieren bzw. zu deaktivieren:
+
+- Aufgabenmenü („...“) auf der Seite **Alle Geräte**
+
+    ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/71.png)
+
+- Symbolleiste auf der Seite **Geräte**
+
+    ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/32.png)
+
+
+**Hinweise:**
+
+- Zum Aktivieren oder Deaktivieren eines Geräts müssen Sie ein globaler Administrator in Azure AD sein. 
+- Durch das Deaktivieren eines Geräts verhindern Sie, dass über das Gerät auf Ihre Azure AD-Ressourcen zugegriffen wird. 
+
+
+
+### <a name="delete-an-azure-ad-device"></a>Löschen eines Azure AD-Geräts
+
+Sie haben zwei Optionen, um ein Gerät zu löschen:
+
+- Aufgabenmenü („...“) auf der Seite **Alle Geräte**
+
+    ![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/72.png)
+
+- Symbolleiste auf der Seite **Geräte**
+
+    ![Gerät löschen](./media/device-management-azure-portal/34.png)
+
+
+**Hinweise:**
+
+- Zum Löschen eines Geräts müssen Sie ein globaler Administrator in Azure AD sein.  
+
+- Das Löschen eines Geräts:
+ 
+    - Verhindert, dass über das Gerät auf Ihre Azure AD-Ressourcen zugegriffen wird 
+
+    - Entfernt alle Details, die an das Gerät angefügt wurden, z.B. BitLocker-Schlüssel für Windows-Geräte  
+
+    - Stellt eine Aktivität dar, die nicht rückgängig gemacht werden kann, und wird nur empfohlen, wenn das Löschen notwendig ist
+
+Wenn ein Gerät von einer anderen Verwaltungsautorität (z.B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt bzw. außer Kraft gesetzt wurde.
 
  
-![Verwalten eines Intune-Geräts](./media/device-management-azure-portal/33.png)
-
-Wenn ein Gerät deaktiviert wird, ändert sich der Zustand in der Spalte **Aktiviert** in **Nein**.
-
-![Deaktivieren eines Geräts](./media/device-management-azure-portal/32.png)
 
 
-**Löschen von Azure AD-Geräten:** Zum Löschen eines Geräts müssen Sie ein globaler Administrator in Azure AD sein.  
-Das Löschen eines Geräts:
- 
-- Verhindert, dass über das Gerät auf Ihre Azure AD-Ressourcen zugegriffen wird. 
+### <a name="view-or-copy-device-id"></a>Anzeigen oder Kopieren einer Geräte-ID
 
-- Entfernt alle Details, die dem Gerät angefügt wurden, z. B. BitLocker-Schlüssel für Windows-Geräte.  
-
-- Stellt eine Aktivität dar, die nicht rückgängig gemacht werden kann, und wird nur empfohlen, wenn das Löschen notwendig ist.
-
-Wenn ein Gerät von einer anderen Verwaltungsautorität (z. B. Microsoft Intune) verwaltet wird, sollten Sie vor dem Löschen des Geräts in Azure AD sicherstellen, dass es zurückgesetzt/außer Kraft gesetzt wurde.
-
-Sie können zum Löschen des Geräts auf die Auslassungspunkte (...) oder auf das Gerät klicken, um weitere Details anzuzeigen.
- 
-![Gerät löschen](./media/device-management-azure-portal/34.png)
-
-
-**Anzeigen oder Kopieren der Geräte-ID:** Sie können während der Problembehandlung eine Geräte-ID oder PowerShell verwenden, um die ID-Details eines Geräts zu überprüfen. Klicken Sie auf das Gerät, um den Kopierbefehl anzuzeigen.
+Sie können während der Problembehandlung eine Geräte-ID oder PowerShell verwenden, um die ID-Details eines Geräts zu überprüfen. Klicken Sie auf das Gerät, um den Kopierbefehl anzuzeigen.
 
 ![Anzeigen der Geräte-ID](./media/device-management-azure-portal/35.png)
   
 
-**Anzeigen oder Kopieren von BitLocker-Schlüsseln**: Wenn Sie ein Administrator sind, können Sie die BitLocker-Schlüssel anzeigen und kopieren, um Benutzern die Wiederherstellung verschlüsselter Laufwerke zu ermöglichen. Diese Schlüssel sind nur für Windows-Geräte verfügbar, die verschlüsselt sind und deren Schlüssel in Azure AD gespeichert sind. Sie können die Schlüssel kopieren, wenn Sie auf die Details des Geräts zugreifen.
+### <a name="view-or-copy-bitlocker-keys"></a>Anzeigen oder Kopieren von BitLocker-Schlüsseln
+
+Wenn Sie ein Administrator sind, können Sie die BitLocker-Schlüssel anzeigen und kopieren, um Benutzern die Wiederherstellung verschlüsselter Laufwerke zu ermöglichen. Diese Schlüssel sind nur für Windows-Geräte verfügbar, die verschlüsselt sind und deren Schlüssel in Azure AD gespeichert sind. Sie können die Schlüssel kopieren, wenn Sie auf die Details des Geräts zugreifen.
  
 ![BitLocker-Schlüssel anzeigen](./media/device-management-azure-portal/36.png)
 
@@ -150,7 +170,7 @@ Sie können zum Löschen des Geräts auf die Auslassungspunkte (...) oder auf da
 ## <a name="audit-logs"></a>Überwachungsprotokolle
 
 
-Die Geräteaktivitäten sind über die Aktivitätsprotokolle verfügbar. Dazu zählen vom Geräteregistrierungsdienst oder vom Benutzer ausgelöste Aktivitäten:
+Geräteaktivitäten sind über die Aktivitätsprotokolle verfügbar. Hierzu zählen vom Geräteregistrierungsdienst und von Benutzern ausgelöste Aktivitäten:
 
 - Erstellen von Geräten und Hinzufügen von Besitzern/Benutzern auf dem Gerät
 
@@ -158,7 +178,7 @@ Die Geräteaktivitäten sind über die Aktivitätsprotokolle verfügbar. Dazu z�
 
 - Gerätevorgänge wie beispielsweise das Löschen oder Aktualisieren eines Geräts
  
-Ihr Einstiegspunkt für die Überwachungsdaten ist die Option **Überwachungsprotokolle** im Abschnitt **Aktivität** des Blatts **Geräte*.
+Ihr Einstiegspunkt für die Überwachungsdaten ist die Option **Überwachungsprotokolle** im Abschnitt **Aktivität** der Seite **Geräte**.
 
 ![Überwachungsprotokolle](./media/device-management-azure-portal/61.png)
 
@@ -182,7 +202,7 @@ Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spal
 
 Sie können die Überwachungsdaten mit den folgenden Feldern filtern, um die gemeldeten Daten gemäß Ihren Bedürfnissen einzugrenzen:
 
-- Kategorie
+- Category (Kategorie)
 - Aktivitätsressourcentyp
 - Aktivität
 - Datumsbereich

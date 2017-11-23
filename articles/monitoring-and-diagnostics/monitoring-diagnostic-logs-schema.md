@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: johnkem
-ms.openlocfilehash: 2e99b7afa4e458e9ef62314e65d9e386657a747b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f571a723d91db060a1aff5e14bc452d56794db6c
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Unterstützte Dienste, Schemas und Kategorien für Azure-Diagnoseprotokolle
 
@@ -56,20 +56,36 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 ## <a name="supported-log-categories-per-resource-type"></a>Unterstützte Protokollkategorien pro Ressourcentyp
 |Ressourcentyp|Kategorie|Anzeigename der Kategorie|
 |---|---|---|
+|Microsoft.AnalysisServices/servers|Motor|Motor|
+|Microsoft.AnalysisServices/servers|Dienst|Dienst|
 |Microsoft.ApiManagement/service|GatewayLogs|Protokolle im Zusammenhang mit dem ApiManagement-Gateway|
 |Microsoft.Automation/automationAccounts|JobLogs|Auftragsprotokolle|
 |Microsoft.Automation/automationAccounts|JobStreams|Auftragsdatenströme|
 |Microsoft.Automation/automationAccounts|DscNodeStatus|DSC-Knotenstatus|
 |Microsoft.Batch/batchAccounts|ServiceLog|Dienstprotokolle|
-|Microsoft.Cdn/profiles/endpoints|CoreAnalytics|Ruft die Metriken des Endpunkts ab, z.B. Bandbreite, ausgehenden Datenverkehr usw.|
 |Microsoft.CustomerInsights/hubs|AuditEvents|AuditEvents|
+|Microsoft.DataFactory/factories|ActivityRuns|Pipeline-Aktivitätsausführungsprotokoll|
+|Microsoft.DataFactory/factories|PipelineRuns|Pipelineausführungsprotokoll|
+|Microsoft.DataFactory/factories|TriggerRuns|Triggerausführungsprotokoll|
 |Microsoft.DataLakeAnalytics/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeAnalytics/accounts|Requests|Anforderungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Audit|Überwachungsprotokolle|
 |Microsoft.DataLakeStore/accounts|Requests|Anforderungsprotokolle|
+|Microsoft.Devices/IotHubs|Verbindungen|Verbindungen|
+|Microsoft.Devices/IotHubs|DeviceTelemetry|Gerätetelemetrie|
+|Microsoft.Devices/IotHubs|C2DCommands|C2D-Befehle|
+|Microsoft.Devices/IotHubs|DeviceIdentityOperations|Geräteidentitätsvorgänge|
+|Microsoft.Devices/IotHubs|FileUploadOperations|Dateiuploadvorgänge|
+|Microsoft.Devices/IotHubs|Routen|Routen|
+|Microsoft.Devices/IotHubs|D2CTwinOperations|D2CTwinOperations|
+|Microsoft.Devices/IotHubs|C2DTwinOperations|C2D-Zwillingsvorgänge|
+|Microsoft.Devices/IotHubs|TwinQueries|Zwillingsabfragen|
+|Microsoft.Devices/IotHubs|JobsOperations|Auftragsvorgänge|
+|Microsoft.Devices/IotHubs|DirectMethods|Direkte Methoden|
 |Microsoft.Devices/provisioningServices|DeviceOperations|Gerätevorgänge|
 |Microsoft.Devices/provisioningServices|ServiceOperations|Dienstoperationen|
 |Microsoft.DocumentDB/databaseAccounts|DataPlaneRequests|DataPlaneRequests|
+|Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Microsoft.EventHub/namespaces|ArchiveLogs|Archivprotokolle|
 |Microsoft.EventHub/namespaces|OperationalLogs|Betriebsprotokolle|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|Protokolle zur automatischen Skalierung|
@@ -78,6 +94,7 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|Integrationskonto –Nachverfolgen von Ereignissen|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupEvent|Ereignis der Netzwerksicherheitsgruppe|
 |Microsoft.Network/networksecuritygroups|NetworkSecurityGroupRuleCounter|Regelzähler der Netzwerksicherheitsgruppe|
+|Microsoft.Network/networksecuritygroups|NetworkSecurityGroupFlowEvent|Regelflussereignis der Netzwerksicherheitsgruppe|
 |Microsoft.Network/loadBalancers|LoadBalancerAlertEvent|Load Balancer-Warnereignisse|
 |Microsoft.Network/loadBalancers|LoadBalancerProbeHealthStatus|Integritätsstatus der Load Balancer-Stichprobe|
 |Microsoft.Network/publicIPAddresses|DDoSProtectionNotifications|DDoS-Schutz-Benachrichtigungen|
@@ -85,6 +102,11 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|Application Gateway-Zugriffsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|Application Gateway-Leistungsprotokoll|
 |Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|Application Gateway-Firewallprotokoll|
+|Microsoft.Network/virtualNetworkGateways|GatewayDiagnosticLog|Gatewaydiagnoseprotokolle|
+|Microsoft.Network/virtualNetworkGateways|TunnelDiagnosticLog|Tunneldiagnoseprotokolle|
+|Microsoft.Network/virtualNetworkGateways|RouteDiagnosticLog|Routendiagnoseprotokolle|
+|Microsoft.Network/trafficManagerProfiles|ProbeHealthStatusEvents|Traffic Manager-Testintegritätsergebnisse (Ereignis)|
+|Microsoft.Network/expressRouteCircuits|GWMCountersTable|Tabelle der GWM-Leistungsindikatoren|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Azure Backup-Berichtsdaten|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Azure Site Recovery-Aufträge|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Azure Site Recovery-Ereignisse|
@@ -93,7 +115,6 @@ Das Schema für Diagnoseprotokolle für Ressourcen variiert abhängig von der Re
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryRecoveryPoints|Azure Site Recovery-Wiederherstellungspunkte|
 |Microsoft.Search/searchServices|OperationLogs|Vorgangsprotokolle|
 |Microsoft.ServiceBus/namespaces|OperationalLogs|Betriebsprotokolle|
-|Microsoft.Sql/servers/databases|QueryStore|Abfragespeicher|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|Laufzeitstatistik des Abfragespeichers|
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|Wartestatistik des Abfragespeichers|
 |Microsoft.Sql/servers/databases|Errors|Errors|

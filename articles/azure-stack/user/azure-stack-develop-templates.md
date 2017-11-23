@@ -12,19 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 11/13/2017
 ms.author: helaw
-ms.openlocfilehash: ffad7bfd4ffcd9159dea23b70640f0ee761fbae0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9109c58b29d5f09f1a86068a87c5e7f839228af
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Aspekte zu Azure Resource Manager-Vorlagen
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
 Bei der Entwicklung Ihrer Anwendung ist es wichtig, die Portabilität von Vorlagen zwischen Azure und Azure Stack sicherzustellen.  In diesem Thema werden Aspekte beim Entwickeln von Azure Resource Manager-[Vorlagen](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf) behandelt, sodass Sie Prototypen Ihrer Anwendung erstellen und die Bereitstellung in Azure ohne Zugriff auf eine Azure Stack-Umgebung testen können.
+
+## <a name="resource-provider-availability"></a>Verfügbarkeit des Ressourcenanbieters
+Die Vorlage, die Sie bereitstellen möchten, verwendet einen Microsoft Azure-Dienst, der bereits verfügbar oder als Vorschau in Azure Stack verfügbar ist.
 
 ## <a name="public-namespaces"></a>Öffentliche Namespaces
 Da Azure Stack in Ihrem Rechenzentrum gehostet wird, weist die Lösung andere Dienstendpunkt-Namespaces als die öffentliche Azure-Cloud auf. Daher verursachen hartcodierte öffentliche Endpunkte in Resource Manager-Vorlagen Fehler, wenn Sie versuchen, sie in Azure Stack bereitzustellen. Stattdessen können Sie die Funktionen *reference* und *concatenate* verwenden, um den Dienstendpunkt basierend auf Werten dynamisch zu erstellen, die während der Bereitstellung vom Ressourcenanbieter abgerufen wurden. Statt beispielsweise *blob.core.windows.net* in Ihrer Vorlage anzugeben, rufen Sie [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) ab, um den Endpunkt *osDisk.URI* dynamisch festzulegen:
@@ -73,7 +76,6 @@ Resource Manager-Vorlagen nutzen das Attribut „location“ zum Angeben des Spe
       }
     }
     ]
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Bereitstellen von Vorlagen mit PowerShell](azure-stack-deploy-template-powershell.md)

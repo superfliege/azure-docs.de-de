@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: sethm;babanisa
-ms.openlocfilehash: db8b119178de0e565b2064e9a52d5e9989d60d38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613ea691e38b6f0bcd8873fc2ec6bcafb3cc6c78
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -34,7 +34,7 @@ Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von 
 | Herausgeberrichtlinien | Ja | Ja |   
 | Verbrauchergruppen | 20 | 20 |
 | Nachrichtenwiederholung | Ja | Ja |
-| Maximale Durchsatzeinheiten | 20 (flexibel bis 100)   | 1 CU≈200 |
+| Maximale Durchsatzeinheiten | 20 (flexibel bis 100)   | 1 CU≈50 |
 | Brokerverbindungen | 1.000 enthalten | 100.000 enthalten |
 | Zusätzliche Brokerverbindungen | Ja | Ja |
 | Nachrichtenaufbewahrung | 1 Tag enthalten | Bis zu 7 Tage enthalten |
@@ -48,18 +48,25 @@ Die Verwendung der Event Hubs Dedicated-Kapazität bietet die folgenden Vorteile
 * Erweiterung der Nachrichtengröße auf 1 MB im Vergleich zu 256 KB für Standard
 * Jedes Mal wiederholbare Leistung
 * Garantierte Kapazität, die Ihre Burstanforderungen erfüllt
-* Skalierbar zwischen 1 und 8 Kapazitäteinheiten (Capacity Units, CU) – Bereitstellung von bis zu 2 Millionen Eingangsereignissen pro Sekunde
-  * Kapazitätseinheiten verwalten die Staffelung für Event Hubs Dedicated, wobei jede Kapazitätseinheiten ungefähr die Entsprechung von 200 Durchsatzeinheiten (Throughput Units, TU) bereitstellen kann.
+* Enthält die [Capture](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)-Funktion von Azure Event Hubs für die Bereitstellung der Integration mit Microbatch und langfristiger Aufbewahrung
 * Keine Wartung: Wir verwalten den Lastenausgleich, Betriebssystemupdates, Sicherheitspatches und Partitionierung.
-* Monatlicher Festpreis
+* Fester Stundensatz
+* Nachrichtenbeibehaltung von bis zu sieben Tagen ohne zusätzliche Gebühren
 
 Mit Event Hubs Dedicated entfallen auch einige der Durchsatzeinschränkungen des Standard-Angebots. Durchsatzeinheiten im Standard-Tarif berechtigen Sie zu 1.000 Ereignissen pro Sekunde oder 1 MB pro Sekunde an eingehendem Datenverkehr pro TU und die zweifache Menge an ausgehendem Datenverkehr. Das Dedicated-Staffelungsangebot weist keine Einschränkungen der Anzahl von ein- und ausgehenden Ereignissen auf. Diese Grenzwerte werden nur durch die Verarbeitungskapazität der erworbenen Event Hubs geregelt.
+
+Diese reservierte, dedizierte Umgebung bietet andere für diese Ebene spezifische Funktionen:
+
+* Steuern der Anzahl von Namespaces im Cluster
+* Angeben von Durchsatzlimits für die einzelnen Namespaces
+* Konfigurieren der Anzahl von Event Hubs unter jedem Namespace
+* Festlegen des Limits für die Anzahl von Partitionen
 
 Dieser Dienst ist auf große Telemetriebenutzer ausgerichtet und steht Kunden mit einem Enterprise Agreement zur Verfügung.
 
 ## <a name="how-to-onboard"></a>Onboardingmethoden
 
-Die Event Hubs Dedicated-Plattform ist für über ein Enterprise Agreement mit CUs unterschiedlicher Größe verfügbar. Jede CU stellt ungefähr die Entsprechung von 200 Durchsatzeinheiten bereit. Sie können Ihre Kapazität während des gesamten Monats nach oben oder unten skalieren, um Ihre Anforderungen durch Hinzufügen oder Entfernen von CUs zu erfüllen. Der Dedicated-Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. 
+Sie können Ihre Kapazität während des gesamten Monats nach oben oder unten skalieren, um Ihre Anforderungen durch Hinzufügen oder Entfernen von CUs zu erfüllen. Der Dedicated-Plan ist einzigartig, da Sie ein äußerst praxisorientiertes Onboarding vom Event Hubs-Produktteam erhalten, um genau die richtige flexible Bereitstellung für Sie zu ermitteln. Wenden Sie sich für das Onboarding für diese SKU an den (Abrechnungssupport)[https://ms.portal.azure.com/#create/Microsoft.Support] oder Ihren Microsoft-Kundenbetreuer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Wenden Sie sich an Ihren Microsoft-Vertriebsmitarbeiter oder den Microsoft-Support, um weitere Details zur Dedicated Event Hubs-Kapazität zu erhalten. Weitere Informationen zu Event Hubs finden Sie auch unter den folgenden Links:

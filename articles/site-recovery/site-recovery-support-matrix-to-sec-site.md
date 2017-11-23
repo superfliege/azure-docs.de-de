@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: c0f86e13e21f2af323e0a306b381054b6eb76755
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Unterstützungsmatrix für die Replikation an einen sekundären Standort mit Azure Site Recovery
 
@@ -28,7 +28,7 @@ Dieser Artikel beschreibt, was unterstützt wird, wenn Sie den [Azure Site Recov
 
 **Bereitstellung** | **Details** 
 --- | ---
-**VMware zu VMware** | Notfallwiederherstellung von lokalen VMware-VMs zu einem sekundären VMware-Standort.<br/><br/> Herunterladen des [InMage Scout-Benutzerhandbuchs](http://download.microsoft.com/download/E/0/8/E08B3BCE-3631-4CED-8E65-E3E7D252D06D/InMage_Scout_Standard_User_Guide_8.0.1.pdf).
+**VMware zu VMware** | Notfallwiederherstellung von lokalen VMware-VMs zu einem sekundären VMware-Standort.<br/><br/> Herunterladen des [InMage Scout-Benutzerhandbuchs](https://aka.ms/asr-scout-user-guide).
 **Hyper-V zu Hyper-V** | Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds zu einer sekundären VMM-Cloud.<br></br> Ohne VMM nicht unterstützt.
 
 
@@ -39,7 +39,7 @@ Dieser Artikel beschreibt, was unterstützt wird, wenn Sie den [Azure Site Recov
 
 **Bereitstellung** | **Unterstützung**
 --- | ---
-**VMware-VM/physische Server** | vCenter 5.5 oder 6.0 (Unterstützung nur für 5.5-Features) 
+**VMware-VM/physische Server** | vCenter 5.5, 6.0 und 6.5 (Unterstützung nur für 5.5-Features)
 **Hyper-V mit VMM** | Windows Server 2016 und Windows Server 2012 R2 mit den neuesten Updates.<br/><br/> Windows Server 2016-Hosts müssen mit VMM 2016 verwaltet werden.<br/><br/> VMM 2016-Clouds mit einer Mischung aus Windows Server 2016- und Windows Server 2012 R2-Hosts werden derzeit nicht unterstützt.<br/><br/> Bereitstellungen, die ein Upgrade für eine vorhandene VMM 2012 R2-Instanz auf System Center 2016 umfassen, werden derzeit nicht unterstützt.
 
 
@@ -49,7 +49,7 @@ In der folgenden Tabelle werden die unterstützten Betriebssysteme für mit Site
 
 **VMware-/physische Server** | **Hyper-V (mit VMM)**
 --- | ---
-64-Bit-Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/><br/> Red Hat Enterprise Linux 6.7, 7.1, 7.2 <br/><br/> CentOS 6.5, 6.6, 6.7, 7.0, 7.1, 7.2 <br/><br/> Oracle Enterprise Linux 6.4 oder 6.5, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/> SUSE Linux Enterprise Server 11 SP3 | Alle [von Hyper-V unterstützten](https://technet.microsoft.com/library/mt126277.aspx) Gastbetriebssysteme
+64-Bit-Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/><br/> Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.1, 7.2 <br/><br/> CentOS 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2 <br/><br/> Oracle Enterprise Linux 6.4, 6.5, 6.8, unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4  | Alle [von Hyper-V unterstützten](https://technet.microsoft.com/library/mt126277.aspx) Gastbetriebssysteme
 
 ## <a name="linux-machine-storage"></a>Speicher eines Linux-Computers
 
@@ -104,15 +104,15 @@ VHD/VHDX | N/V | Ja (bis zu 16 Datenträger)
 Gen 2-VM | – | Ja
 Freigegebener Clusterdatenträger | Ja  | Nein
 Verschlüsselter Datenträger | Nein | Nein
-UEFI| Nein | –
+UEFI| Ja | N/V
 NFS | Nein | Nein
 SMB 3.0 | Nein | Nein
 RDM | Ja | N/V
-Datenträger > 1 TB | Nein | Ja
+Datenträger > 1 TB | Ja | Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja | Ja
 Speicherplätze | Nein | Ja
-Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein | Nein
-Ausschließen von Datenträgern | Nein | Ja
+Datenträger laufendem Systembetrieb hinzufügen/entfernen | Ja | Nein
+Ausschließen von Datenträgern | Ja | Ja
 Multipfad (MPIO) | N/V | Ja
 
 ## <a name="vaults"></a>Tresore

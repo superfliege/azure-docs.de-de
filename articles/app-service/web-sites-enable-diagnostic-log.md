@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: 1366cd79248b2e0008234a5da0d87552e6530d80
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a9c5743c92ac48202c19c2f6f024238c147d8444
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
-Azure bietet integrierte Diagnosefunktionen zur Unterstützung beim Debuggen einer [App Service-Web-App](http://go.microsoft.com/fwlink/?LinkId=529714). In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung aktivieren und Ihrer Anwendung Instrumentierung hinzufügen sowie wie Sie die von Azure protokollierten Informationen abrufen.
+Azure bietet integrierte Diagnosefunktionen zur Unterstützung beim Debuggen einer [App Service-Web-App](http://go.microsoft.com/fwlink/?LinkId=529714). In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung aktivieren und Ihrer Anwendung Instrumentierung hinzufügen und wie Sie die von Azure protokollierten Informationen abrufen.
 
-In diesem Artikel wird die Verwendung von Diagnoseprotokollen mit dem [Azure-Portal](https://portal.azure.com), Azure PowerShell und der Azure-Befehlszeilenschnittstelle (Azure-CLI) beschrieben. Informationen zum Arbeiten mit Diagnoseprotokollen in Visual Studio finden Sie unter [Problembehandlung von Azure in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
+In diesem Artikel wird die Verwendung von Diagnoseprotokollen mit dem [Azure-Portal](https://portal.azure.com), Azure PowerShell und der Azure-Befehlszeilenschnittstelle (Azure CLI) beschrieben. Informationen zum Arbeiten mit Diagnoseprotokollen in Visual Studio finden Sie unter [Problembehandlung von Azure in Visual Studio](web-sites-dotnet-troubleshoot-visual-studio.md).
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -48,7 +48,7 @@ Sie können diese Protokolle zur Laufzeit abrufen und bei der Problembehandlung 
 App Service-Web-Apps protokollieren auch Bereitstellungsinformationen, wenn Sie Inhalte in einer Web-App veröffentlichen. Dies erfolgt automatisch, und es gibt keine Konfigurationseinstellung für die Bereitstellungsprotokollierung. Anhand der Bereitstellungsprotokollierung können Sie bestimmen, warum eine Bereitstellung fehlgeschlagen ist. Wenn Sie beispielsweise ein benutzerdefiniertes Bereitstellungsskript verwenden, können Sie die Bereitstellungsprotokollierung verwenden, um festzustellen, warum das Skript fehlgeschlagen ist.
 
 ## <a name="enablediag"></a>Aktivieren der Diagnose
-Zum Aktivieren der Diagnose im [Azure-Portal](https://portal.azure.com) navigieren Sie zum Blatt für Ihre Web-App und klicken auf **Einstellungen > Diagnoseprotokolle**.
+Zum Aktivieren der Diagnose im [Azure-Portal](https://portal.azure.com) navigieren Sie zur Seite für Ihre Web-App und klicken auf **Einstellungen > Diagnoseprotokolle**.
 
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Protokolle Teil](./media/web-sites-enable-diagnostic-log/logspart.png)
@@ -113,7 +113,7 @@ Starten Sie zum Herunterladen der Protokolldateien eine neue Instanz von Azure P
 
     Save-AzureWebSiteLog -Name webappname
 
-Daraufhin werden die Protokolle für die Web-App, die durch den **-Name**-Parameter angegeben wird, in der Datei **logs.zip** im aktuellen Verzeichnis gespeichert.
+Mit diesem Befehl werden die Protokolle für die Web-App, die durch den Parameter **-Name** angegeben wird, in der Datei **logs.zip** im aktuellen Verzeichnis gespeichert.
 
 > [!NOTE]
 > Wenn Sie Azure PowerShell nicht installiert haben oder nicht zur Verwendung des Azure-Abonnements konfiguriert haben, finden Sie weitere Informationen unter [Verwenden von Azure PowerShell](/develop/nodejs/how-to-guides/powershell-cmdlets/).
@@ -125,7 +125,7 @@ Zum Herunterladen der Protokolldateien mit der Azure-Befehlszeilenschnittstelle 
 
     azure site log download webappname
 
-Damit werden die Protokolle für die Web-App namens 'webappname' in der Datei **diagnostics.zip** im aktuellen Verzeichnis gespeichert.
+Mit diesem Befehl werden die Protokolle für die Web-App mit dem Namen „webappname“ in der Datei **diagnostics.zip** im aktuellen Verzeichnis gespeichert.
 
 > [!NOTE]
 > Wenn Sie die Azure-Befehlszeilenschnittstelle (Azure-CLI) nicht installiert oder nicht für Ihr Azure-Abonnement konfiguriert haben, lesen Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)weiter.
@@ -136,11 +136,11 @@ Damit werden die Protokolle für die Web-App namens 'webappname' in der Datei **
 Visual Studio Application Insights bietet Tools zum Filtern und Suchen von Protokollen sowie zu Korrelation der Protokolle mit Anforderungen und anderen Ereignissen.
 
 1. Fügen Sie Ihrem Projekt in Visual Studio Application Insights SDK hinzu.
-   * Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie "Application Insights hinzufügen" aus. Sie werden durch Schritte geführt, zu denen auch die Erstellung einer Application Insights-Ressource gehört. [Weitere Informationen](../application-insights/app-insights-asp-net.md)
+   * Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie „Application Insights hinzufügen“ aus. Auf der Benutzeroberfläche werden Sie durch Schritte geführt, zu denen auch die Erstellung einer Application Insights-Ressource gehört. [Weitere Informationen](../application-insights/app-insights-asp-net.md)
 2. Fügen Sie Ihrem Projekt das Ablaufverfolgungs-Listener-Paket hinzu.
-   * Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie "NuGet-Pakete verwalten" aus. Falls die Protokolle automatisch gelöscht werden sollen, wählen Sie `Microsoft.ApplicationInsights.TraceListener` [Weitere Informationen](../application-insights/app-insights-asp-net-trace-logs.md)
+   * Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie „NuGet-Pakete verwalten“. Falls die Protokolle automatisch gelöscht werden sollen, wählen Sie `Microsoft.ApplicationInsights.TraceListener` [Weitere Informationen](../application-insights/app-insights-asp-net-trace-logs.md)
 3. Laden Sie das Projekt hoch, und führen sie es zum Generieren von Protokolldaten aus.
-4. Navigieren Sie im [Azure-Portal](https://portal.azure.com/)zu der neuen Application Insights-Ressource, und öffnen Sie **Suche**. Ihre Protokolldaten werden zusammen mit der Anforderung, Nutzung und sonstiger Telemetrie angezeigt. Einige Telemetrie kann einige Minuten in Anspruch nehmen, bis sie angezeigt wird: Klicken Sie auf "Aktualisieren". [Weitere Informationen](../application-insights/app-insights-diagnostic-search.md)
+4. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu der neuen Application Insights-Ressource, und öffnen Sie die Option **Suche**. Ihre Protokolldaten sollten zusammen mit der Anforderung, Nutzungsdaten und sonstigen Telemetriedaten angezeigt werden. Einige Telemetrie kann einige Minuten in Anspruch nehmen, bis sie angezeigt wird: Klicken Sie auf "Aktualisieren". [Weitere Informationen](../application-insights/app-insights-diagnostic-search.md)
 
 [Erfahren Sie mehr über die Leistungsüberwachung mit Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
@@ -151,7 +151,7 @@ Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen
 > Einige Protokolltypen puffern die Schreibvorgänge in die Protokolldatei, was zu Störereignissen im Stream führen kann. Beispielsweise kann ein Anwendungsprotokolleintrag für den Besuch einer Seite im Stream vor dem zugehörigen HTTP-Protokolleintrag für die Seitenanforderung angezeigt werden.
 >
 > [!NOTE]
-> Das Protokollstreaming zeigt auch Informationen an, die in eine Textdatei im Ordner **D:\\home\\LogFiles\\** geschrieben werden.
+> Beim Protokollstreaming werden auch Informationen gestreamt, die in eine Textdatei im Ordner **D:\\home\\LogFiles\\** geschrieben werden.
 >
 >
 
@@ -160,7 +160,7 @@ Starten Sie zum Streaming der Protokollinformationen eine neue Instanz von Azure
 
     Get-AzureWebSiteLog -Name webappname -Tail
 
-Dadurch wird eine Verbindung zu der Web-App hergestellt, die durch den Parameter **-Name** angegeben ist, und das Streaming von Informationen in das PowerShell-Fenster wird gestartet, sobald Protokollereignisse in der Web-App auftreten. Alle Informationen, die in Dateien mit der Erweiterung TXT, LOG oder HTM geschrieben werden, die sich im Verzeichnis "/LogFiles" (d:/home/logfiles) befinden, werden an die lokale Konsole gestreamt.
+Mit diesem Befehl wird eine Verbindung zu der Web-App hergestellt, die durch den Parameter **-Name** angegeben ist, und das Streaming von Informationen in das PowerShell-Fenster wird gestartet, sobald Protokollereignisse in der Web-App auftreten. Alle Informationen, die in Dateien mit der Erweiterung TXT, LOG oder HTM im Verzeichnis „/LogFiles“ (d:/home/logfiles) geschrieben werden, werden an die lokale Konsole gestreamt.
 
 Um bestimmte Ereignisse wie beispielsweise Fehler zu filtern, verwenden Sie den Parameter **-Message** . Beispiel:
 
@@ -182,7 +182,7 @@ Zum Streaming der Protokollinformationen öffnen Sie eine neue Eingabeaufforderu
 
     az webapp log tail --name webappname --resource-group myResourceGroup
 
-Dadurch wird eine Verbindung zu der Web-App namens 'webappname' hergestellt, und das Streaming von Informationen in das Fenster wird gestartet, sobald Protokollereignisse in der Web-App auftreten. Alle Informationen, die in Dateien mit der Erweiterung TXT, LOG oder HTM geschrieben werden, die sich im Verzeichnis "/LogFiles" (d:/home/logfiles) befinden, werden an die lokale Konsole gestreamt.
+Mit diesem Befehl wird eine Verbindung zu der Web-App „webappname“ hergestellt, und das Streaming von Informationen in das Fenster wird gestartet, sobald Protokollereignisse in der Web-App auftreten. Alle Informationen, die in Dateien mit der Erweiterung TXT, LOG oder HTM im Verzeichnis „/LogFiles“ (d:/home/logfiles) geschrieben werden, werden an die lokale Konsole gestreamt.
 
 Um bestimmte Ereignisse wie beispielsweise Fehler zu filtern, verwenden Sie den Parameter **--Filter** . Beispiel:
 
@@ -205,13 +205,13 @@ Die Anwendungsdiagnose speichert Informationen in einem bestimmten Format für .
 
 Jede im Dateisystem protokollierte oder per Streaming empfangene Zeile hat das folgende Format:
 
-    {Date}  PID[{process id}] {event type/level} {message}
+    {Date}  PID[{process ID}] {event type/level} {message}
 
 Beispielsweise würde ein Fehlerereignis in etwa wie folgt aussehen:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
-Bei der Protokollierung im Dateisystem erhalten Sie nur die grundlegendsten Informationen der drei verfügbaren Methoden, nämlich Zeit, Prozess-ID, Ereignistyp und Meldung.
+Bei der Protokollierung im Dateisystem erhalten Sie nur die grundlegendsten Informationen der drei verfügbaren Methoden, nämlich Zeit, Prozess-ID, Ereignisebene und Meldung.
 
 **Table Storage**
 
@@ -258,7 +258,7 @@ In einem Blob gespeicherte Daten sehen in etwa wie folgt aus:
 >
 
 ### <a name="failed-request-traces"></a>Protokolle für fehlgeschlagene Anforderungen
-Die Verfolgungsprotokolle für fehlerhafte Anforderungen werden in XML-Dateien mit dem Namen **fr######.xml** gespeichert. Um das Anzeigen der protokollierten Informationen zu erleichtern, wird ein XSL-Stylesheet namens **freb.xsl** im selben Verzeichnis wie die XML-Dateien bereitgestellt. Wenn Sie eine der XML-Dateien in Internet Explorer öffnen, wird das XSL-Stylesheet verwendet, um eine formatierte Ansicht der Verfolgungsinformationen anzuzeigen. Diese sieht in etwa wie folgt aus:
+Die Verfolgungsprotokolle für fehlerhafte Anforderungen werden in XML-Dateien mit dem Namen **fr######.xml** gespeichert. Um das Anzeigen der protokollierten Informationen zu erleichtern, wird ein XSL-Stylesheet namens **freb.xsl** im selben Verzeichnis wie die XML-Dateien bereitgestellt. Wenn Sie eine der XML-Dateien in Internet Explorer öffnen, wird das XSL-Stylesheet in Internet Explorer verwendet, um eine formatierte Ansicht mit den Verfolgungsinformationen anzuzeigen. Dies sieht in etwa wie folgt aus:
 
 ![Anzeige fehlgeschlagener Anforderungen im Browser](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 
@@ -282,7 +282,3 @@ Webserverprotokolle werden im [erweiterten W3C-Protokolldateiformat](http://msdn
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.
 >
 >
-
-## <a name="whats-changed"></a>Änderungen
-* Hinweise zu den Veränderungen von Websites zum App Service finden Sie unter: [Azure App Service und vorhandene Azure-Dienste](http://go.microsoft.com/fwlink/?LinkId=529714)
-* Hinweise zu den Veränderungen des neuen Portals gegenüber dem alten finden Sie unter [Referenz zur Navigation im Azure-Portal](http://go.microsoft.com/fwlink/?LinkId=529715)

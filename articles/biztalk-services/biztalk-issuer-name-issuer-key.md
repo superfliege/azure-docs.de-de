@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: b9fd985c23558596408e78eadae00dd0f95c4214
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18eac72d75680ab12c4a0bea9dfc5ac8a5fce566
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Name und Schlüssel des Ausstellers
 
@@ -76,15 +76,11 @@ Weitere Informationen zum [New-AzureSBNamespace](https://msdn.microsoft.com/libr
 Service Bus-Ausstellername und -schlüssel werden von BizTalk-Adapterdiensten verwendet. In Ihrem BizTalk Services-Projekt in Visual Studio können Sie die BizTalk-Adapterdienste verwenden, um sich mit einem lokalen LOB-System (Line of Business) zu verbinden. Erstellen Sie dazu das LOB-Relay und geben Sie Ihre LOB-Systemdetails ein. Bei diesem Prozess geben Sie ebenfalls Ihren Service Bus-Ausstellernamen und -schlüssel ein.
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>Abrufen von Service Bus-Ausstellername und -schlüssel
-1. Melden Sie sich am [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885)an.
-2. Klicken Sie im linken Navigationsbereich auf **Service Bus**.
-3. Wählen Sie Ihren Namespace aus. Klicken Sie in der Taskleiste auf **Verbindungsinformationen**. Daraufhin werden **Standardaussteller** (Ausstellername) und **Standardschlüssel** (Ausstellerschlüssel) angezeigt. Diese Werte können kopiert werden.  
+1. Melden Sie sich auf dem [Azure-Portal](http://portal.azure.com)an.
+2. Suchen Sie nach **Service Bus**, und wählen Sie Ihren Namespace aus. 
+3. Öffnen Sie die Eigenschaften für **Freigegebene Zugriffsrichtlinien**, wählen Sie Ihre Richtlinie aus, und zeigen Sie die **Verbindungszeichenfolge** für die Werte des Namens und des Schlüssels an.  
 
-Zusammenfassung:  
-Ausstellername = Standardaussteller  
-Ausstellerschlüssel = Standardschlüssel
-
-## <a name="next"></a>Weiter
+## <a name="next"></a>Next (Weiter)
 Zusätzliche Azure BizTalk Services-Themen:
 
 * [Installieren des Azure BizTalk Services SDK](http://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
@@ -95,7 +91,7 @@ Zusätzliche Azure BizTalk Services-Themen:
 ## <a name="see-also"></a>Weitere Informationen
 * [Verwenden des ACS-Verwaltungsdiensts zum Konfigurieren von Dienstidentitäten](http://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
 * [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [BizTalk Services: Bereitstellen mithilfe des klassischen Azure-Portals](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [Konfigurieren von BizTalk Services im Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk Services: Bereitstellungsstatusübersicht](http://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
 * [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk Services: Sichern und Wiederherstellen](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

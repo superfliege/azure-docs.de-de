@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: 0598ee93a38c07aa7b1102cdaf228c2a4b4dcf71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8a42638c79a8a53f80102fc344eccb521e4c1c5
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mithilfe einer Azure Resource Manager-Vorlage
 
@@ -50,7 +50,7 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 ## <a name="parameters"></a>Parameter
 Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens `Parameters` , der alle Parameterwerte enthält. Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
 
-Diese Vorlage definiert die folgenden Parameter.
+Diese Vorlage definiert die folgenden Parameter:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 Der Name des zu erstellenden Service Bus-Namespace.
@@ -81,7 +81,7 @@ Der Name der zu erstellenden Service Bus- [SKU](https://azure.microsoft.com/pric
 
 ```
 
-Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Standard oder Premium), und weist einen Standardwert (Standard) zu, wenn kein Wert angegeben wird.
+Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Standard oder Premium). Wenn kein Wert angegeben ist, weist Resource Manager einen Standardwert (Standard) zu.
 
 Weitere Informationen zu Service Bus-Preisen finden Sie unter [Service Bus – Preise und Abrechnung][Service Bus pricing and billing].
 
@@ -91,7 +91,7 @@ Die Service Bus-API-Version der Vorlage.
 ```json
 "serviceBusApiVersion": { 
        "type": "string", 
-       "defaultValue": "2015-08-01", 
+       "defaultValue": "2017-04-01", 
        "metadata": { 
            "description": "Service Bus ApiVersion used by the template" 
        } 

@@ -1,5 +1,5 @@
 ---
-title: Verwalten des Ablaufs von Azure Storage-Blobs in Azure CDN | Microsoft-Dokumentation
+title: Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network | Microsoft-Dokumentation
 description: "Informationen zu den Optionen für das Festlegen der Gültigkeitsdauer von Blobs beim Azure CDN-Zwischenspeichern."
 services: cdn
 documentationcenter: 
@@ -12,31 +12,30 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: d4741921806e443d92c385a04b781cec296c2ae8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b8f9d439184b91f8105e6bd136e48525632a85
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
-# <a name="manage-expiration-of-azure-storage-blobs-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Storage-Blobs in Azure CDN
+# <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network
 > [!div class="op_single_selector"]
 > * [Azure-Web-Apps/Cloud Services, ASP.NET oder IIS](cdn-manage-expiration-of-cloud-service-content.md)
-> * [Azure Storage Blob-Dienst](cdn-manage-expiration-of-blob-content.md)
+> * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 > 
 
-Der [Blobdienst](../storage/common/storage-introduction.md#blob-storage) in [Azure Storage](../storage/common/storage-introduction.md) ist einer von verschiedenen Azure-basierten Ursprüngen, die in Azure CDN integriert wurden.  Jeder öffentlich zugängliche Blobinhalt kann in Azure CDN zwischengespeichert werden, bis seine Gültigkeitsdauer abläuft.  Die Gültigkeitsdauer wird durch den [*Cache-Control* -Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) in der HTTP-Antwort von Azure Storage bestimmt.
+Der [Blobdienst](../storage/common/storage-introduction.md#blob-storage) in [Azure Storage](../storage/common/storage-introduction.md) ist einer von verschiedenen Azure-basierten Ursprüngen, die in Azure Content Delivery Network (CDN) integriert wurden. Jeder öffentlich zugängliche Blobinhalt kann in Azure CDN zwischengespeichert werden, bis seine Gültigkeitsdauer abläuft. Die Gültigkeitsdauer wird durch den [`Cache-Control`-Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) in der HTTP-Antwort von Azure Storage bestimmt.
 
 > [!TIP]
-> Sie haben auch die Möglichkeit, für einen Blob keine Gültigkeitsdauer festzulegen.  In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an.
+> Sie haben auch die Möglichkeit, keine Gültigkeitsdauer für ein Blob festzulegen. In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an.
 > 
-> Weitere Informationen dazu, wie Azure CDN den Zugriff auf Blobs und andere Dateien beschleunigen kann, finden Sie in der [Übersicht über das Azure Content Delivery Network (CDN)](cdn-overview.md).
+> Weitere Informationen dazu, wie Azure CDN den Zugriff auf Blobs und andere Dateien beschleunigen kann, finden Sie in der [Übersicht über Azure Content Delivery Network](cdn-overview.md).
 > 
-> Weitere Informationen zum Azure Storage-Blobdienst finden Sie unter [Konzepte des Blobdiensts](https://msdn.microsoft.com/library/dd179376.aspx). 
-> 
-> 
+> Weitere Informationen zu Azure Blob Storage finden Sie unter [Einführung in Blob Storage](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blobs-introduction).
+ 
 
 Dieses Tutorial zeigt verschiedene Methoden, mit denen Sie die Gültigkeitsdauer für ein Blob in Azure Storage festlegen können.  
 
@@ -93,14 +92,14 @@ class Program
 ```
 
 > [!TIP]
-> Unter [Azure Blob Storage Samples for .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)(Azure-Blobspeicher-Beispiele für .NET) finden Sie weitere .NET-Codebeispiele.
+> Unter [Azure Blob Storage Samples for .NET](https://azure.microsoft.com/documentation/samples/storage-blob-dotnet-getting-started/)(Azure Blob Storage-Beispiele für .NET) finden Sie weitere .NET-Codebeispiele.
 > 
 > 
 
 ## <a name="other-methods"></a>Andere Methoden
 * [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md)
   
-    Legen Sie beim Hochladen von Blobs die Eigenschaft *cacheControl* mit dem Switch `-p` fest.  In diesem Beispiel wird die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgesetzt.
+    Legen Sie beim Hochladen von Blobs die Eigenschaft *cacheControl* mit dem Switch `-p` fest. In diesem Beispiel wird die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgesetzt.
   
     ```text
     azure storage blob upload -c <connectionstring> -p cacheControl="public, max-age=3600" .\test.txt myContainer test.txt
@@ -112,10 +111,10 @@ class Program
   
     Einige Azure Storage-Verwaltungstools von Drittanbietern erlauben es Ihnen, die Eigenschaft *CacheControl* für Blobs festzulegen. 
 
-## <a name="testing-the-cache-control-header"></a>Testen des *Cache-Control* -Headers
-Sie können die Gültigkeitsdauer Ihrer Blobs einfach überprüfen.  Mithilfe der [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)Ihres Browsers können Sie prüfen, ob Ihr Blob den *Cache-Control* -Antwortheader enthält.  Sie können auch ein Tool wie **wget**, [Postman](https://www.getpostman.com/) oder [Fiddler](http://www.telerik.com/fiddler) verwenden, um die Antwortheader zu untersuchen.
+## <a name="testing-the-cache-control-header"></a>Testen des Cache-Control-Headers
+Sie können die Gültigkeitsdauer Ihrer Blobs einfach überprüfen.  Mithilfe der [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers können Sie prüfen, ob Ihr Blob den `Cache-Control`-Antwortheader enthält. Sie können auch ein Tool wie **wget**, [Postman](https://www.getpostman.com/) oder [Fiddler](http://www.telerik.com/fiddler) verwenden, um die Antwortheader zu untersuchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Weitere Informationen zum *Cache-Control*-Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
+* [Informationen zum `Cache-Control`-Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9)
 * [Erfahren Sie, wie Sie den Ablauf von Clouddienstinhalten in Azure CDN verwalten können.](cdn-manage-expiration-of-cloud-service-content.md)
 

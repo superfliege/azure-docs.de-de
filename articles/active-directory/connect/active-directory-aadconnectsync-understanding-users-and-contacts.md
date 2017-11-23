@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern und Kontakten | Microsoft Docs'
-description: "Erläutert Benutzer und Kontakte in der Azure AD Connect-Synchronisierung."
+title: 'Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten | Microsoft-Dokumentation'
+description: "Hier werden Benutzer, Gruppen und Kontakte in der Azure AD Connect-Synchronisierung erläutert."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -13,24 +13,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi;andkjell
-ms.openlocfilehash: 0ad3194a0827c4ef68267ce5e3e3fcbe225e8a3d
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: c298a2f99750ead099b8761699c914a3a6e41ce1
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="azure-ad-connect-sync-understanding-users-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern und Kontakten
+# <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten
 Es gibt verschiedene Gründe, weshalb Sie möglicherweise über mehrere Active Directory-Gesamtstrukturen verfügen, und es gibt eine Reihe unterschiedlicher Bereitstellungstopologien. Häufige Modelle umfassen eine Kontoressourcenbereitstellung und per GAL synchronisierte Gesamtstrukturen nach einer Unternehmensfusion oder -übernahme. Es gibt zwar reine Modelle, Hybridmodelle sind jedoch ebenfalls häufig vorhanden. Die Standardkonfiguration der Azure AD Connect-Synchronisierung geht von keinem bestimmten Modell aus. Es können jedoch auf Basis des im Installationshandbuch ausgewählten Benutzerabgleichs unterschiedliche Verhaltensweisen beobachtet werden.
 
 In diesem Thema wird erläutert, wie sich die Standardkonfiguration in bestimmten Topologien verhält. Die Konfiguration wird durchlaufen, und der Synchronisierungsregel-Editor kann verwendet werden, um die Konfiguration anzuzeigen.
 
 Die Konfiguration geht von einigen wenigen allgemeinen Regeln aus:
-
 * Unabhängig davon, in welcher Reihenfolge die Active Directory-Quellen importiert werden, sollte das Endergebnis immer identisch sein.
 * Ein aktives Konto trägt immer Anmeldeinformationen bei, einschließlich **userPrincipalName** und **sourceAnchor**.
 * Ein deaktiviertes Konto trägt "userPrincipalName" und "sourceAnchor" bei (falls kein aktives Konto gefunden wurde), es sei denn, es handelt sich um ein verknüpftes Postfach.
 * Ein Konto mit einem verknüpften Postfach wird niemals für "userPrincipalName" und "sourceAnchor" verwendet. Es wird angenommen, dass später ein aktives Konto gefunden wird.
 * Ein Kontaktobjekt wird Azure AD möglicherweise als Kontakt oder Benutzer bereitgestellt. Sie werden dies erst dann genau wissen, wenn alle Active Directory-Quellgesamtstrukturen verarbeitet wurden.
+
+## <a name="groups"></a>Gruppen
+Wichtige Punkte, die beim Synchronisieren von Gruppen in Active Directory mit Azure AD beachtet werden sollten:
+
+* Azure AD Connect schließt integrierte Sicherheitsgruppen von der Verzeichnissynchronisierung aus.
+
+* Azure AD Connect unterstützt nicht die Synchronisierung von [Mitgliedschaften in primären Gruppen](https://technet.microsoft.com/library/cc771489(v=ws.11).aspx) mit Azure AD.
+
+* Azure AD Connect unterstützt nicht die Synchronisierung von [Mitgliedschaften in dynamischen Verteilergruppen](https://technet.microsoft.com/library/bb123722(v=exchg.160).aspx) mit Azure AD.
+
+* So synchronisieren Sie eine Active Directory-Gruppe mit Azure AD als E-Mail-aktivierte Gruppe:
+
+    * Wenn das *proxyAddress*-Attribut der Gruppe leer ist, muss das *mail*-Attribut einen Wert enthalten. ODER 
+
+    * Wenn das *proxyAddress*-Attribut der Gruppe nicht leer ist, muss es zusätzlich einen Wert für eine primäre SMTP-Proxyadresse enthalten (wird durch das groß geschriebene Präfix **SMTP** angegeben). Hier einige Beispiele:
+    
+      * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* hat, ist in Azure AD nicht E-Mail-aktiviert. Es enthält keine primäre SMTP-Adresse.
+      
+      * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* hat, ist in Azure AD nicht E-Mail-aktiviert. Es enthält eine smtp-Adresse, diese ist aber nicht primär.
+      
+      * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup", "SMTP:johndoe@contoso.com"}* hat, ist in Azure AD E-Mail-aktiviert.
 
 ## <a name="contacts"></a>Kontakte
 Nach einer Unternehmensfusion oder -übernahme kommt es häufig vor, dass Kontakte einen Benutzer in einer anderen Gesamtstruktur darstellen und eine GALSynch-Lösung zwei oder mehr Exchange-Gesamtstrukturen verbindet. Das Kontaktobjekt wird immer mithilfe des Attributs "mail" vom Connectorbereich mit dem Metaverse verknüpft. Wenn bereits ein Kontakt- oder Benutzerobjekt mit derselben E-Mail-Adresse vorhanden ist, werden die Objekte miteinander verknüpft. Dies wird in der Regel **In from AD – Contact Join** konfiguriert. Es gibt auch eine Regel namens **In from AD – Contact Common** mit einem Attributfluss zum Metaverseattribut **sourceObjectType** mit der Konstante **Contact**. Diese Regel hat eine sehr niedrige Rangfolge. Wenn daher ein Benutzerobjekt mit demselben Metaverseobjekt verknüpft ist, trägt die Regel **In from AD – User Common** den Wert „User“ zu diesem Attribut bei. Bei dieser Regel weist dieses Attribut den Wert "Contact" auf, wenn kein Benutzer verknüpft wurde, und den Wert "User", wenn mindestens ein Benutzer gefunden wurde.

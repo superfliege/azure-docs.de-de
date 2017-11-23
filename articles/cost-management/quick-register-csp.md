@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2017
+ms.date: 11/13/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: bcb072a2f2ab8c0e5097fca2c95309464483cb53
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 84f2fec61f791d4fc9264eaa01e24180696da853
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>Registrieren beim CSP-Partnerprogramm und Anzeigen von Kostendaten
 
@@ -22,7 +22,13 @@ Als CSP-Partner können Sie sich bei der Azure-Kostenverwaltung von Cloudyn regi
 
 
 >[!NOTE]
->Sie müssen ein Administrator des Partnerprogramms mit Zugriff auf die Partner Center-API sein, um die Registrierung abzuschließen. Die Konfiguration der Partner Center-API ist für die Authentifizierung und den Datenzugriff erforderlich. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Partner Center-API](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx). Darüber hinaus können indirekte CSP-Benutzer Cloudyn nur verwenden, wenn ihre direkten CSP-Handelspartner sich bei Cloudyn registrieren, um Zugriff auf ihre Kunden und Abonnements zu ermöglichen.
+
+>Die Cloudyn-Registrierung kann nur von direkten CSP-Partnern und indirekten CSP-Anbietern ausgeführt werden.
+>
+>Die Konfiguration der Partner Center-API ist für die Authentifizierung und den Datenzugriff erforderlich. Für die Bereitstellung des API-Zugriffs ist ein globales Partner Center-Administratorkonto erforderlich.
+Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Partner Center-API](https://msdn.microsoft.com/library/partnercenter/mt709136.aspx).
+>
+>Indirekten CSP-Resellern kann der Zugriff auf Cloudyn erteilt werden, nachdem sich ihr indirekter CSP-Anbieter bei Cloudyn registriert hat. Indirekte CSP-Reseller können anschließend Azure-Kunden und -Abonnements den Cloudyn-Zugriff gewähren.
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 

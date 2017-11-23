@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit der Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
-description: "Dieses Tutorial unterstützt Sie bei den ersten Schritten mit der Azure SQL-Datensynchronisierung (Vorschauversion)."
+title: Einrichten der Azure SQL-Datensynchronisierung (Vorschauversion) | Microsoft-Dokumentation
+description: In diesem Tutorial erfahren Sie, wie Sie die Azure SQL-Datensynchronisierung (Vorschauversion) einrichten.
 services: sql-database
 documentationcenter: 
 author: douglaslms
@@ -13,16 +13,16 @@ ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: ddcf6868a0fca88a52774e20623d25de31c063bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b356bc9db9e883c2514953b516d6dd51c1807610
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="get-started-with-azure-sql-data-sync-preview"></a>Erste Schritte mit der Azure SQL-Datensynchronisierung (Vorschauversion)
+# <a name="set-up-sql-data-sync-preview"></a>Einrichten der SQL-Datensynchronisierung (Vorschauversion)
 In diesem Tutorial erfahren Sie, wie sie Azure SQL-Datensynchronisierung einrichten können, indem Sie eine hybride Synchronisierungsgruppe erstellen, die Azure SQL-Datenbank und SQL Server-Instanzen enthält. Die neue Synchronisierungsgruppe ist vollständig konfiguriert und synchronisiert mit dem von Ihnen festgelegten Zeitplan.
 
 In diesem Tutorial wird davon ausgegangen, dass Sie über eine gewisse Erfahrung mit SQL-Datenbank und SQL Server verfügen. 
@@ -110,7 +110,7 @@ Führen Sie auf der Seite **Azure-Datenbank konfigurieren** die folgenden Schrit
 
     ![Das neue Synchronisierungsmitglied von SQL-Datenbank wurde hinzugefügt.](media/sql-database-get-started-sql-data-sync/datasync-preview-memberadded.png)
 
-### <a name="add-an-on-premises-sql-server-database"></a>Hinzufügen einer lokalen SQL Server-Datenbank
+### <a name="add-on-prem"></a> Hinzufügen einer lokalen SQL Server-Datenbank
 
 Im Abschnitt **Mitgliedsdatenbank** können Sie optional einen lokalen SQL-Server zur Synchronisierungsgruppe hinzufügen, indem Sie auf **Lokale Datenbank hinzufügen** klicken. Die Seite **Lokale Konfiguration** wird geöffnet.
 
@@ -193,6 +193,83 @@ Nachdem die neuen Mitglieder der Synchronisierungsgruppe erstellt und bereitgest
 
 4.  Klicken Sie abschließend auf **Speichern**.
 
+## <a name="faq-about-setup-and-configuration"></a>Häufig gestellte Fragen zur Einrichtung und Konfiguration
+
+### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>Wie häufig kann die Datensynchronisierung für meine Daten erfolgen? 
+Die Mindesthäufigkeit ist alle fünf Minuten.
+
+### <a name="does-sql-data-sync-fully-create-and-provision-tables"></a>Werden von der SQL-Datensynchronisierung Tabellen vollständig erstellt und bereitgestellt?
+
+Wenn die Synchronisierungsschematabellen in der Zieldatenbank noch nicht erstellt wurden, werden sie von der SQL-Datensynchronisierung-Vorschauversion mit den von Ihnen ausgewählten Spalten erstellt. Allerdings wird dabei aus den folgenden Gründen kein vollständig identisches Schema erstellt:
+
+-   In der Zieltabelle werden nur die von Ihnen ausgewählten Spalten erstellt. Falls also einige Spalten in der Quelltabelle nicht Teil der Synchronisierungsgruppe sind, werden sie nicht in den Zieltabellen bereitgestellt.
+
+-   Indizes werden nur für die ausgewählten Spalten erstellt. Enthält der Quelltabellenindex Spalten, die nicht Teil der Synchronisierungsgruppe sind, werden diese Indizes nicht in den Zieltabellen bereitgestellt.
+
+-   Indizes für XML-Spalten werden nicht bereitgestellt.
+
+-   CHECK-Einschränkungen werden nicht bereitgestellt.
+
+-   Vorhandene Trigger für die Quelltabellen werden nicht bereitgestellt.
+
+-   Sichten und gespeicherte Prozeduren werden in der Zieldatenbank nicht erstellt.
+
+Aufgrund dieser Einschränkungen wird Folgendes empfohlen:
+-   Stellen Sie für Produktionsumgebungen das vollständig identische Schema selbst bereit.
+-   Zum Testen des Diensts ist die Funktion für die automatische Bereitstellung der SQL-Datensynchronisierung (Vorschauversion) gut geeignet.
+
+### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Warum sehe ich Tabellen, die ich nicht erstellt habe?  
+Bei der Datensynchronisierung werden Nebentabellen für die Änderungsnachverfolgung erstellt. Löschen Sie diese nicht, da ansonsten die Datensynchronisierung nicht mehr funktioniert.
+
+### <a name="is-my-data-convergent-after-a-sync"></a>Sind meine Daten nach einer Synchronisierung konvergent?
+
+Nicht unbedingt. In einer Synchronisierungsgruppe mit einem Hub und drei Spokes (A, B und C) erfolgen die Synchronisierungen zwischen dem Hub und A, dem Hub und B und dem Hub und C. Wenn die Datenbank A *nach* der Synchronisierung des Hubs mit A geändert wird, wird diese Änderung erst bei der nächsten Synchronisierungsaufgabe in Datenbank B und Datenbank C geschrieben.
+
+### <a name="how-do-i-get-schema-changes-into-a-sync-group"></a>Wie übertrage ich Schemaänderungen in eine Synchronisierungsgruppe?
+
+Schemaänderungen müssen manuell vorgenommen werden.
+
+### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Wie kann ich eine Datenbank durch Datensynchronisierung exportieren und importieren?
+Nachdem Sie eine Datenbank als `.bacpac`-Datei exportiert und die Datei zum Erstellen einer neuen Datenbank importiert haben, müssen Sie die folgenden zwei Schritte ausführen, um die Datensynchronisierung in der neuen Datenbank zu verwenden:
+1.  Bereinigen Sie in der **neuen Datenbank** mithilfe [dieses Skripts](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql) die Datensynchronisierungsobjekte und Seitentabellen. Dieses Skript löscht alle erforderlichen Datensynchronisierungsobjekte aus der Datenbank.
+2.  Erstellen Sie die Synchronisierungsgruppe mit der neuen Datenbank neu. Wenn Sie die alte Synchronisierungsgruppe nicht mehr benötigen, löschen Sie sie.
+
+## <a name="faq-about-the-client-agent"></a>Häufig gestellte Fragen zum Client-Agent
+
+### <a name="why-do-i-need-a-client-agent"></a>Wozu benötige ich einen Client-Agent?
+
+Der Dienst der SQL-Datensynchronisierung-Vorschauversion kommuniziert über den Client-Agent mit SQL Server-Datenbanken. Diese Sicherheitsfunktion verhindert die direkte Kommunikation mit Datenbanken hinter einer Firewall. Bei der Kommunikation des Diensts der SQL-Datensynchronisierung-Vorschauversion mit dem Agent werden verschlüsselte Verbindungen und ein eindeutiges Token bzw. ein eindeutiger *Agent-Schlüssel* verwendet. Die SQL Server-Datenbanken authentifizieren den Agent mit der Verbindungszeichenfolge und dem Agent-Schlüssel. Diese Vorgehensweise bietet ein hohes Maß an Sicherheit für Ihre Daten.
+
+### <a name="how-many-instances-of-the-local-agent-ui-can-be-run"></a>Wie viele Instanzen der lokalen Agent-Benutzeroberfläche können ausgeführt werden?
+
+Es kann nur eine Instanz der Benutzeroberfläche ausgeführt werden.
+
+### <a name="how-can-i-change-my-service-account"></a>Wie kann ich mein Dienstkonto ändern?
+
+Nach der Installation eines Client-Agents besteht die einzige Möglichkeit zum Ändern des Dienstkontos darin, ihn zu deinstallieren und einen neuen Client-Agent mit dem neuen Dienstkonto zu installieren.
+
+### <a name="how-do-i-change-my-agent-key"></a>Wie ändere ich meinen Agent-Schlüssel?
+
+Ein Agent-Schlüssel kann nur einmal von einem Agent verwendet werden. Er kann nicht wiederverwendet werden, wenn Sie einen Agent entfernen und dann einen neuen Agent installieren, und er kann nicht von mehreren Agents verwendet werden. Wenn Sie einen neuen Schlüssel für einen vorhandenen Agent erstellen müssen, müssen Sie sicherstellen, dass derselbe Schlüssel beim Client-Agent und beim Dienst der SQL-Datensynchronisierung-Vorschauversion hinterlegt wird.
+
+### <a name="how-do-i-retire-a-client-agent"></a>Wie setze ich einen Client-Agent außer Kraft?
+
+Wenn Sie einen Agent umgehend für ungültig erklären oder außer Kraft setzen möchten, generieren Sie erneut seinen Schlüssel im Portal, übergeben ihn jedoch nicht an die Agent-Benutzeroberfläche. Durch das erneute Generieren eines Schlüssels wird der vorherige Schlüssel ungültig gemacht – unabhängig davon, ob der entsprechende Agent online oder offline ist.
+
+### <a name="how-do-i-move-a-client-agent-to-another-computer"></a>Wie verschiebe ich einen Client-Agent auf einen anderen Computer?
+
+Wenn Sie den lokalen Agent auf einem anderen Computer als dem ausführen möchten, auf dem er sich gerade befindet, führen Sie folgende Schritte aus:
+
+1. Installieren Sie den Agent auf dem gewünschten Computer.
+
+2. Melden Sie sich beim Portal der SQL-Datensynchronisierung-Vorschauversion an, und generieren Sie erneut einen Agent-Schlüssel für den neuen Agent.
+
+3. Übergeben Sie den neuen Agent-Schlüssel über die Benutzeroberfläche des neuen Agents.
+
+4. Warten Sie, während der Client-Agent die Liste der zuvor registrierten lokalen Datenbanken herunterlädt.
+
+5. Geben Sie Datenbankanmeldeinformationen für alle Datenbanken ein, die als nicht erreichbar angezeigt werden. Diese Datenbanken müssen auf dem neuen Computer erreichbar sein, auf denen der Agent installiert ist.
+
 ## <a name="next-steps"></a>Nächste Schritte
 Herzlichen Glückwunsch. Sie haben nun eine Synchronisierungsgruppe erstellt, die sowohl eins SQL-Datenbank-Instanz als auch eine SQL Server-Datenbank enthält.
 
@@ -200,6 +277,7 @@ Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
 -   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md)
 -   [Best practices for Azure SQL Data Sync (Preview)](sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Überwachen der Azure SQL-Datensynchronisierung-Vorschauversion mit OMS Log Analytics](sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:

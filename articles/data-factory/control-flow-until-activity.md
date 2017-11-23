@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 11/09/2017
 ms.author: shlo
-ms.openlocfilehash: 25581fa1aa2086accabc9b480d936ebae0338dd3
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8fb656a86689e59c3408b1e2a9274737430eb127
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="until-activity-in-azure-data-factory"></a>Until-Aktivität in Azure Data Factory
 Die Until-Aktivität erfüllt die gleiche Funktion wie eine do-until-Schleifenstruktur in Programmiersprachen. Sie führt eine Reihe von Aktivitäten in einer Schleife aus, bis die der Aktivität zugeordnete Bedingung als „true“ ausgewertet wird. In Data Factory können Sie einen Timeoutwert für die Until-Aktivität angeben. 
@@ -60,7 +60,7 @@ Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 name | Der Name der `Until`-Aktivität. | String | Ja
 Typ | Muss auf **Until** festgelegt werden. | String | Ja
 expression | Ausdruck, der als „true“ oder „false“ ausgewertet werden muss. | Ausdruck  | Ja
-timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. | Nein
+timeout | Für die do-until-Schleife tritt nach der hier angegebenen Zeit ein Timeout auf. | Eine Zeichenfolge. `d.hh:mm:ss` oder `hh:mm:ss`. Standardwert: sieben Tage. Maximalwert: 90 Tage. | Nein
 Aktivitäten | Reihe von Aktivitäten, die ausgeführt werden, bis der Ausdruck als `true` ausgewertet wird. | Array von Aktivitäten |  Ja
 
 ## <a name="example-1"></a>Beispiel 1

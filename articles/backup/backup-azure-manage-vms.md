@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
-ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 597d8e12377ca19b0c58eb2fc8bdb7597c1c6c07
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Verwalten der Sicherung virtueller Computer
 > [!div class="op_single_selector"]
@@ -32,10 +32,10 @@ Dieser Artikel enthält hilfreiche Informationen zum Verwalten von VM-Sicherunge
 ## <a name="manage-vaults-and-protected-virtual-machines"></a>Verwalten von Tresoren und geschützten virtuellen Computern
 Im Azure-Portal ermöglicht das Dashboard für den Recovery Services-Tresor den Zugriff auf Informationen zum Tresor, z.B.:
 
-* Letzte Sicherungsmomentaufnahme, die gleichzeitig der letzte Wiederherstellungspunkt ist <br\>
-* Die Sicherungsrichtlinie <br\>
-* Gesamtgröße aller Sicherungsmomentaufnahmen <br\>
-* Anzahl von virtuellen Computern, die durch den Tresor geschützt sind <br\>
+* Letzte Sicherungsmomentaufnahme, die gleichzeitig der letzte Wiederherstellungspunkt ist
+* Sicherungsrichtlinie
+* Gesamtgröße aller Sicherungsmomentaufnahmen
+* Anzahl von virtuellen Computern, die durch den Tresor geschützt sind
 
 Bei vielen Verwaltungsaufgaben mit einer VM-Sicherung muss zunächst der Tresor über das Dashboard geöffnet werden. Da Tresore aber zum Schützen mehrerer Elemente (bzw. mehrerer virtueller Computer) verwendet werden können, müssen Sie zum Anzeigen der Details zu einem bestimmten virtuellen Computer das Dashboard für Tresorelemente öffnen. Im folgenden Verfahren wird veranschaulicht, wie Sie das *Tresordashboard* öffnen und dann mit dem *Dashboard für Tresorelemente* fortfahren. Beide Verfahren enthalten Tipps dazu, wie Sie den Tresor und das Tresorelement dem Azure-Dashboard hinzufügen, indem Sie den Befehl „An Dashboard anheften“ verwenden. Mit der Option „An Dashboard anheften“ können Sie eine Verknüpfung zum Tresor oder Element erstellen. Über die Verknüpfung können Sie auch häufig verwendete Befehle ausführen.
 
@@ -50,11 +50,11 @@ Bei vielen Verwaltungsaufgaben mit einer VM-Sicherung muss zunächst der Tresor 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
 
-    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png) <br/>
+    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-vms/browse-to-rs-vaults.png)
 
     Die Liste mit den Recovery Services-Tresoren wird angezeigt.
 
-    ![Liste der Recovery Services-Tresore ](./media/backup-azure-manage-vms/list-o-vaults.png) <br/>
+    ![Liste der Recovery Services-Tresore ](./media/backup-azure-manage-vms/list-o-vaults.png)
 
    > [!TIP]
    > Wenn Sie einen Tresor an das Azure-Dashboard anheften, ist der Tresor nach dem Öffnen des Azure-Portals sofort verfügbar. Klicken Sie zum Anheften eines Tresors an das Dashboard in der Tresorliste mit der rechten Maustaste auf den Tresor, und wählen Sie **An Dashboard anheften**.
@@ -89,13 +89,13 @@ Im vorherigen Verfahren haben Sie das Tresor-Dashboard geöffnet. So öffnen Sie
 
     Über das Dashboard für die Tresorelemente können Sie viele wichtige Verwaltungsaufgaben durchführen, z.B.:
 
-   * Ändern von Richtlinien oder Erstellen einer neuen Sicherungsrichtlinie<br\>
-   * Anzeigen von Wiederherstellungspunkten und des Konsistenzstatus<br\>
-   * Bedarfsgesteuerte Sicherung eines virtuellen Computers <br\>
-   * Beenden des Schutzes virtueller Computer <br\>
-   * Fortsetzen des Schutzes eines virtuellen Computers <br\>
-   * Löschen von Sicherungsdaten (oder eines Wiederherstellungspunkts) <br\>
-   * [Wiederherstellen von Sicherungsdatenträgern](backup-azure-arm-restore-vms.md#restore-backed-up-disks)  &lt;br\>
+   * Ändern von Richtlinien oder Erstellen einer neuen Sicherungsrichtlinie
+   * Anzeigen von Wiederherstellungspunkten und des Konsistenzstatus
+   * On-Demand-Sicherung eines virtuellen Computers
+   * Beenden des Schutzes für virtuelle Computer
+   * Fortsetzen des Schutzes eines virtuellen Computers
+   * Löschen von Sicherungsdaten (oder eines Wiederherstellungspunkts)
+   * [Wiederherstellen von Sicherungsdatenträgern](backup-azure-arm-restore-vms.md#restore-backed-up-disks)
 
 Für die folgenden Verfahren ist der Startpunkt das Dashboard für die Tresorelemente.
 
@@ -110,7 +110,7 @@ Für die folgenden Verfahren ist der Startpunkt das Dashboard für die Tresorele
     ![Blatt „Sicherungsrichtlinie“](./media/backup-azure-manage-vms/backup-policy-blade.png)
 3. Im Menü **Sicherungsrichtlinie auswählen** :
 
-   * Wählen Sie zum Ändern von Richtlinien eine andere Richtlinie aus, und klicken Sie auf **Speichern**. Die neue Richtlinie wird sofort auf den Tresor angewendet. <br\>
+   * Wählen Sie zum Ändern von Richtlinien eine andere Richtlinie aus, und klicken Sie auf **Speichern**. Die neue Richtlinie wird sofort auf den Tresor angewendet.
    * Wählen Sie zum Erstellen einer Richtlinie die Option **Neu erstellen**aus.
 
      ![Sicherung virtueller Computer](./media/backup-azure-manage-vms/backup-policy-create-new.png)
@@ -148,7 +148,7 @@ So lösen Sie eine bedarfsabhängige Sicherung eines virtuellen Computers aus
 Wenn Sie sich für das Beenden des Schutzes für einen virtuellen Computer entscheiden, werden Sie gefragt, ob Sie die Wiederherstellungspunkte beibehalten möchten. Der Schutz für virtuelle Computer kann auf zwei Arten beendet werden:
 
 * Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte oder
-* Beenden aller zukünftigen Sicherungsaufträge und Beibehaltung der Wiederherstellungspunkte  <br/>
+* Beenden aller zukünftigen Sicherungsaufträge und Beibehaltung der Wiederherstellungspunkte 
 
 Mit der Beibehaltung der Wiederherstellungspunkte im Speicher sind Kosten verbunden. Der Vorteil der Beibehaltung von Wiederherstellungspunkten ist, dass Sie den virtuellen Computer bei Bedarf später wiederherstellen können. Informationen zu den Kosten, die durch die Beibehaltung der Wiederherstellungspunkte entstehen, finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/backup/). Wenn Sie alle Wiederherstellungspunkte löschen, kann der virtuelle Computer nicht mehr wiederhergestellt werden.
 

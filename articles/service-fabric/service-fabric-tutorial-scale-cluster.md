@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2017
 ms.author: adegeo
-ms.openlocfilehash: b8a9204b9eece396fbc30eacc8912ba9e655b963
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d203580f676d55acbad4936160982a40592af1d0
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="scale-a-service-fabric-cluster"></a>Skalieren eines Service Fabric-Clusters
 
-Dieses Tutorial ist der dritte Teil einer Reihe und zeigt, wie Sie Ihren vorhandenen Cluster horizontal hoch- und herunterskalieren. In diesem Tutorial erfahren Sie, wie Sie Ihren Cluster skalieren und gegebenenfalls zurückgebliebene Ressourcen bereinigen.
+Dieses Tutorial ist der zweite Teil einer Reihe und zeigt, wie Sie Ihren vorhandenen Cluster horizontal hoch- und herunterskalieren. In diesem Tutorial erfahren Sie, wie Sie Ihren Cluster skalieren und gegebenenfalls zurückgebliebene Ressourcen bereinigen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -79,7 +79,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 
 Nach dem Herstellen der Verbindung können Sie mithilfe eines Befehls den Status der einzelnen Knoten im Cluster abrufen. Verwenden Sie für PowerShell den Befehl `Get-ServiceFabricClusterHealth` und für **sfctl** den ``-Befehl.
 
-## <a name="scale-out"></a>Horizontales Hochskalieren
+## <a name="scale-out"></a>Horizontales Skalieren
 
 Beim horizontalen Hochskalieren werden der Skalierungsgruppe mehr VM-Instanzen hinzugefügt. Diese Instanzen werden zu den Knoten, die Service Fabric verwendet. Service Fabric erkennt, wenn der Skalierungsgruppe durch horizontales Hochskalieren weitere Instanzen hinzugefügt werden, und reagiert automatisch. Der folgende Code ruft eine Skalierungsgruppe anhand ihres Namens ab und erhöht die **Kapazität** der Skalierungsgruppe um 1:
 

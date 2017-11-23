@@ -4,7 +4,7 @@ description: Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: ff90fdb0-5bc7-49e8-aee7-678b54f901c8
 ms.service: machine-learning
@@ -12,24 +12,25 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 11/09/2017
 ms.author: bradsev
-ms.openlocfilehash: 899f20b3642612386f2513c9c8649cd845be826e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77638ff52edbc2b782b21a4ca1c727a2b46f22f3
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>Paralleler Massenimport mithilfe von partitionierten SQL-Tabellen
 In diesem Dokument wird das Erstellen partitionierter Tabellen für das schnelle parallele Massenimportieren von Daten in eine SQL Server-Datenbank beschrieben. Die Leistung beim Laden/Übertragen/Importieren großer Datenmengen in eine SQL-Datenbank und bei den nachfolgenden Abfragen kann mithilfe von *partitionierten Tabellen und Sichten* verbessert werden. 
 
 ## <a name="create-a-new-database-and-a-set-of-filegroups"></a>Erstellen einer neuen Datenbank und eines Satzes von Dateigruppen
 * [Erstellen einer neuen Datenbank](https://technet.microsoft.com/library/ms176061.aspx), falls noch nicht vorhanden.
-* Fügen Sie Datenbank-Dateigruppen der Datenbank hinzu, in der die partitionierten physischen Dateien gespeichert werden. Dies erreichen Sie mit [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx), wenn Sie eine Datenbank neu erstellen, oder mit [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) wenn die Datenbank bereits vorhanden ist.
+* Fügen Sie der Datenbank Datenbankdateigruppen hinzu, die die partitionierten physischen Dateien enthalten. 
+* Dies kann bei einer neuen Datenbank mit [CREATE DATABASE](https://technet.microsoft.com/library/ms176061.aspx) und bei einer bereits vorhandenen Datenbank mit [ALTER DATABASE](https://msdn.microsoft.com/library/bb522682.aspx) erfolgen.
 * Fügen Sie (je nach Anforderungen) den einzelnen Datenbank-Dateigruppen eine oder mehrere Dateien hinzu.
   
   > [!NOTE]
-  > Geben Sie die Zieldateigruppe an, die die Daten für diese Partition enthalten wird, und die Dateinamen der physischen Datenbank, in der die Dateigruppendaten gespeichert werden.
+  > Geben Sie die Zieldateigruppe, die die Daten für diese Partition enthält, und die Dateinamen der physischen Datenbank an, in der die Dateigruppendaten gespeichert sind.
   > 
   > 
 
@@ -55,18 +56,19 @@ Mit dem folgenden Beispiel wird eine neue Datenbank mit drei Dateigruppen erstel
     ')
 
 ## <a name="create-a-partitioned-table"></a>Erstellen einer partitionierten Tabelle
-Erstellen Sie die partitionierten Tabellen gemäß dem Datenschema, das den im vorherigen Schritt erstellten Datenbank-Dateigruppen zugeordnet ist. Wenn die Daten per Massenimport in die partitionierten Tabellen importiert werden, werden die Datensätze gemäß einem Partitionsschema wie unten beschrieben auf Dateigruppen verteilt.
+Um die partitionierten Tabellen gemäß dem Datenschema zu erstellen, das den im vorherigen Schritt erstellten Datenbankdateigruppen zugeordnet ist, müssen Sie zunächst eine Partitionsfunktion und ein Partitionsschema erstellen. Wenn die Daten per Massenimport in die partitionierten Tabellen importiert werden, werden die Datensätze gemäß einem Partitionsschema wie unten beschrieben auf Dateigruppen verteilt.
 
-**So erstellen Sie eine Partitionstabelle:**
-
-* [Erstellen Sie eine Partitionsfunktion](https://msdn.microsoft.com/library/ms187802.aspx), die den Datenbereich/die Grenzen für die einzelnen Partitionstabellen definiert. Im folgenden Beispiel werden die Partitionen nach „month(some\_datetime\_field)“ im Jahr 2013 begrenzt:
+### <a name="1-create-a-partition-function"></a>1. Erstellen einer Partitionsfunktion
+[Erstellen Sie eine Partitionsfunktion](https://msdn.microsoft.com/library/ms187802.aspx), die den Datenbereich/die Grenzen für die einzelnen Partitionstabellen definiert. Im folgenden Beispiel werden die Partitionen nach „month(some\_datetime\_field)“ im Jahr 2013 begrenzt:
   
         CREATE PARTITION FUNCTION <DatetimeFieldPFN>(<datetime_field>)  
         AS RANGE RIGHT FOR VALUES (
             '20130201', '20130301', '20130401',
             '20130501', '20130601', '20130701', '20130801',
             '20130901', '20131001', '20131101', '20131201' )
-* [Erstellen Sie ein Partitionsschema](https://msdn.microsoft.com/library/ms179854.aspx), das jeden Partitionsbereich in der Partitionsfunktion einer physischen Dateigruppe zuordnet. Beispiel:
+
+### <a name="2-create-a-partition-scheme"></a>2. Erstellen eines Partitionsschemas
+[Erstellen Sie ein Partitionschema](https://msdn.microsoft.com/library/ms179854.aspx). Dieses Schema ordnet jeden Partitionsbereich in der Partitionsfunktion einer physischen Dateigruppe zu. Beispiel:
   
         CREATE PARTITION SCHEME <DatetimeFieldPScheme> AS  
         PARTITION <DatetimeFieldPFN> TO (
@@ -83,7 +85,9 @@ Erstellen Sie die partitionierten Tabellen gemäß dem Datenschema, das den im v
         INNER JOIN sys.partition_schemes psch ON pfun.function_id = psch.function_id
         INNER JOIN sys.partition_range_values prng ON prng.function_id=pfun.function_id
         WHERE pfun.name = <DatetimeFieldPFN>
-* [Erstellen Sie die partitionierten Tabellen](https://msdn.microsoft.com/library/ms174979.aspx) gemäß dem Datenschema, und geben Sie das Partitionsschema und das Einschränkungsfeld zur Partitionierung der Tabelle an. Beispiel:
+
+### <a name="3-create-a-partition-table"></a>3. Erstellen einer Partitionstabelle
+[Erstellen Sie die partitionierten Tabellen](https://msdn.microsoft.com/library/ms174979.aspx) gemäß dem Datenschema, und geben Sie das Partitionsschema und das Einschränkungsfeld zur Partitionierung der Tabelle an. Beispiel:
   
         CREATE TABLE <table_name> ( [include schema definition here] )
         ON <TablePScheme>(<partition_field>)
@@ -91,6 +95,7 @@ Erstellen Sie die partitionierten Tabellen gemäß dem Datenschema, das den im v
 Weitere Informationen finden Sie unter [Erstellen partitionierter Tabellen und Indizes](https://msdn.microsoft.com/library/ms188730.aspx).
 
 ## <a name="bulk-import-the-data-for-each-individual-partition-table"></a>Massenimport der Daten für die einzelne Partitionstabellen
+
 * Sie können BCP, BULK INSERT oder andere Methoden wie den [SQL-Datenbankmigrations-Assistenten](http://sqlazuremw.codeplex.com/)verwenden. Im Beispiel wird BPC verwendet.
 * [Ändern Sie für die Datenbank](https://msdn.microsoft.com/library/bb522682.aspx) das Transaktionsprotokollierungsschema in BULK_LOGGED, um den Aufwand für die Protokollierung zu minimieren. Beispiel:
   
@@ -178,5 +183,5 @@ Das folgende PowerShell-Skript ist ein Beispiel für das parallele Laden von Dat
   > 
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>Advanced Analytics Process and Technology in Aktion – Beispiel
-Eine umfassende exemplarische Vorgehensweise zur Verwendung des Cortana-Analyseprozesses mit einem öffentlichen DataSet finden Sie unter [Cortana-Analyseprozess in Aktion: Verwenden von SQL Server](sql-walkthrough.md).
+Eine lückenlose exemplarische Vorgehensweise zur Verwendung des Team Data Science-Prozesses mit einem öffentlichen Dataset finden Sie unter [Der Team Data Science-Prozess in Aktion: Verwenden von SQL Server](sql-walkthrough.md).
 

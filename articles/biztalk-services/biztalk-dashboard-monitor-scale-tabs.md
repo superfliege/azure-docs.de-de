@@ -1,6 +1,6 @@
 ---
 title: "Dashboard, Überwachen, Skalieren, Konfigurieren und Hybridverbindungen in BizTalk Services | Microsoft Docs"
-description: "Erfahren Sie mehr über die Steuerelemente und Leistungsüberwachung auf den Registerkarten des klassischen Portals für BizTalk Services: „Dashboard“, „Überwachen“, „Skalieren“, „Konfigurieren“ und „Hybridverbindungen“. MABS, WABS"
+description: "Erfahren Sie mehr über die Steuerelemente und Leistungsüberwachung für BizTalk Services."
 services: biztalk-services
 documentationcenter: 
 author: MandiOhlinger
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 62bef0ee0141f6a7a92146ef230f0766a85aee5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 351809cd5f165a863dc02bfadf78fa59cbaabfd7
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>Registerkarten "Dashboard", "Überwachen", "Skalieren", "Konfigurieren" und "Hybridverbindungen"
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 Nachdem Sie Ihren BizTalk Service erstellt und Ihre Anwendung bereitgestellt haben, können Sie einige der BizTalk Service-Einstellungen ändern und die Anwendungsleistung überwachen. 
 
-Wenn Sie das klassische Azure-Portal zum ersten Mal öffnen, ist automatisch die Registerkarte **ALLE ELEMENTE** geöffnet. Wenn Sie Ihren BizTalk-Dienst anzeigen möchten, wählen Sie diesen auf der Registerkarte **ALLE ELEMENTE** aus. Alternativ können Sie auf der Registerkarte **BIZTALK SERVICES** den Namen des BizTalk-Diensts auswählen.
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Dadurch wird ein neues Fenster mit den folgenden Registerkarten geöffnet. In diesem Thema werden diese Registerkarten beschrieben.
 
@@ -84,9 +84,9 @@ Angenommen, Sie möchten, dass der BizTalk Service einen neuen Primärschlüssel
 <br/><br/>
 <ol>
 <li>Wählen Sie Ihren BizTalk-Dienst und die Option <strong>Synchronisierungsschlüssel</strong> aus. Wählen Sie den Sekundärschlüssel aus. Wenn Sie dies tun, startet der BizTalk Service die Verwendung des Sekundärschlüssels.</li>
-<li>Wählen Sie im klassischen Azure-Portal Ihr Speicherkonto aus und generieren Sie den Primärschlüssel neu. Denken Sie daran, dass Ihr BizTalk Service den Sekundärschlüssel verwendet.</li>
+<li>Wählen Sie Ihr Speicherkonto aus, und generieren Sie den Primärschlüssel erneut. Denken Sie daran, dass Ihr BizTalk Service den Sekundärschlüssel verwendet.</li>
 <li>Wählen Sie Ihren BizTalk-Dienst und die Option <strong>Synchronisierungsschlüssel</strong> aus. Wählen Sie nun den Primärschlüssel. Dies ist der neue Primärschlüssel, den Sie generiert haben.</li>
-<li>Wählen Sie im klassischen Azure-Portal Ihr Speicherkonto aus und generieren Sie den Sekundärschlüssel neu.</li>
+<li>Wählen Sie Ihr Speicherkonto aus, und generieren Sie den Sekundärschlüssel erneut.</li>
 </ol>
 <br/>
 Man spricht hier von "Rollover-Schlüsseln". Der Zweck ist, zwischen dem Primär- und dem Sekundärschlüssel umzuschalten, ohne den BizTalk Service zu unterbrechen.</td>
@@ -169,7 +169,7 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 </tr>
 <tr>
 <td><strong>Abonnementname</strong></td>
-<td>Führt das Abonnement auf, in dem Ihr BizTalk Service gehostet wird. Das Abonnement regelt den Zugriff auf das klassische Azure-Portal.</td>
+<td>Führt das Abonnement auf, in dem Ihr BizTalk Service gehostet wird. Das Abonnement regelt den Zugriff.</td>
 </tr>
 <tr>
 <td><strong>Abonnement-ID</strong></td>
@@ -177,7 +177,7 @@ Eine Beschreibung dieser Leistungsmetriken finden Sie in diesem Thema unter [Ver
 </tr>
 </table>
 
-[Konfigurieren von BizTalk Services im klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280) enthält die Schritte zur Erstellung eines BizTalk Service.
+[Konfigurieren von BizTalk Services im Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=302280) enthält die Schritte zur Erstellung eines BizTalk Service.
 
 ##### <a name="manage-connection-information-sync-keys-and-delete-in-the-task-bar"></a>"Verwalten", "Verbindungsinformationen", "Synchronisierungsschlüssel" und "Löschen" in der Taskleiste:
 <table border="1">
@@ -206,9 +206,9 @@ Angenommen, Sie möchten, dass der BizTalk Service einen neuen Primärschlüssel
 <br/><br/>
 <ol>
 <li>Wählen Sie Ihren BizTalk-Dienst und die Option <strong>Synchronisierungsschlüssel</strong> aus. Wählen Sie den Sekundärschlüssel aus. Wenn Sie dies tun, startet der BizTalk Service die Verwendung des Sekundärschlüssels.</li>
-<li>Wählen Sie im klassischen Azure-Portal Ihr Speicherkonto aus und generieren Sie den Primärschlüssel neu. Denken Sie daran, dass Ihr BizTalk Service den Sekundärschlüssel verwendet.</li>
+<li>Wählen Sie Ihr Speicherkonto aus, und generieren Sie den Primärschlüssel erneut. Denken Sie daran, dass Ihr BizTalk Service den Sekundärschlüssel verwendet.</li>
 <li>Wählen Sie Ihren BizTalk-Dienst und die Option <strong>Synchronisierungsschlüssel</strong> aus. Wählen Sie nun den Primärschlüssel. Dies ist der neue Primärschlüssel, den Sie generiert haben.</li>
-<li>Wählen Sie im klassischen Azure-Portal Ihr Speicherkonto aus und generieren Sie den Sekundärschlüssel neu.</li>
+<li>Wählen Sie Ihr Speicherkonto aus, und generieren Sie den Sekundärschlüssel erneut.</li>
 </ol>
 <br/>
 Man spricht hier von "Rollover-Schlüsseln". Der Zweck ist, zwischen dem Primär- und dem Sekundärschlüssel umzuschalten, ohne den BizTalk Service zu unterbrechen.</td>
@@ -329,7 +329,7 @@ Stellt den Sicherungsstatus auf "Keine" oder "Automatisch" ein. Bei Einstellung 
 [BizTalk Services: Sichern und Wiederherstellen](biztalk-backup-restore.md) enthält Einzelheiten dazu. 
 
 ## <a name="HybridConnections"></a>Hybridverbindungen
-Über Hybridverbindungen werden Azure-Anwendungen wie Web-Apps oder Mobile Apps in Azure App Service mit einer lokalen Ressource (wie SQL Server, MySQL, HTTP Web-APIs und die meisten benutzerdefinierten Webdienste) verbunden, die einen statischen TCP-Port verwendet. Hybridverbindungen werden in BizTalk Services über das klassische Azure-Portal verwaltet.
+Über Hybridverbindungen werden Azure-Anwendungen wie Web-Apps oder Mobile Apps in Azure App Service mit einer lokalen Ressource (wie SQL Server, MySQL, HTTP Web-APIs und die meisten benutzerdefinierten Webdienste) verbunden, die einen statischen TCP-Port verwendet. Hybrid Connections wird in BizTalk Services verwaltet.
 
 Informationen zum Erstellen oder Verwalten von Hybridverbindungen in Azure BizTalk Services finden Sie unter [Hybridverbindungen](integration-hybrid-connection-overview.md).
 
@@ -343,7 +343,7 @@ Nun, da Sie mit den verschiedenen Registerkarten vertraut sind, können Sie mehr
 ## <a name="see-also"></a>Weitere Informationen
 * [Hybridverbindungen](integration-hybrid-connection-overview.md)  
 * [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)  
-* [BizTalk Services: Bereitstellen mithilfe des klassischen Azure-Portals](biztalk-provision-services.md)  
+* [Konfigurieren von BizTalk Services im Azure-Portal](biztalk-provision-services.md)  
 * [BizTalk Services: BizTalk-Dienststatusübersicht](biztalk-service-state-chart.md)  
 * [Wie verwende ich das Azure BizTalk Services SDK?](http://go.microsoft.com/fwlink/p/?LinkID=302335)
 

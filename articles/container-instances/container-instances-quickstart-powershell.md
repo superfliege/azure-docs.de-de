@@ -14,40 +14,34 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/15/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: fbd1bee04c5180beda23c04607b313eec9edcab4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca10274fc6a23d7f5e7436dbaf72a6e7a918f275
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Erstellen Ihres ersten Containers in Azure Container Instances
 
 Azure Container Instances erleichtert die Erstellung und Verwaltung von Docker-Containern in Azure, ohne dass Sie virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen.
 
-In dieser Schnellstartanleitung erstellen Sie einen Windows-Container in Azure und machen ihn mit einer öffentlichen IP-Adresse über das Internet verfügbar. Dieser Vorgang wird mit einem einzelnen Befehl durchgeführt. Nach wenigen Augenblicken wird in Ihrem Browser Folgendes angezeigt:
+In dieser Schnellstartanleitung erstellen Sie einen Windows-Container in Azure und machen ihn mit einer öffentlichen IP-Adresse über das Internet verfügbar. Dieser Vorgang wird mit einem einzelnen Befehl durchgeführt. Nach kurzer Zeit sehen Sie die ausgeführte Anwendung in Ihrem Browser:
 
 ![Mit Azure Container Instances bereitgestellte App im Browser][qs-powershell-01]
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 4.4 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
-
-Melden Sie sich mit dem Befehl `Login-AzureRmAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
-
-```powershell
-Login-AzureRmAccount
-```
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
 Erstellen Sie mit [New-AzureRmResourceGroup][New-AzureRmResourceGroup] eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-```powershell
+ ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
@@ -55,13 +49,13 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 Zum Erstellen eines Containers müssen Sie einen Namen, ein Docker-Image und eine Azure-Ressourcengruppe für das Cmdlet [New-AzureRmContainerGroup][New-AzureRmContainerGroup] angeben. Der Container kann außerdem mit einer öffentlichen IP-Adresse über das Internet verfügbar gemacht werden, dies ist jedoch optional. Wir verwenden in diesem Fall einen Windows Nano Server-Container mit Internetinformationsdienste (Internet Information Services, IIS).
 
-```powershell
+ ```azurepowershell-interactive
 New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -IpAddressType Public
 ```
 
-Innerhalb weniger Sekunden erhalten Sie eine Antwort auf Ihre Anforderung. Der Container befindet sich zunächst im Status **Wird erstellt**, wird aber in ein bis zwei Minuten gestartet. Überprüfen Sie den Status mithilfe des Cmdlets [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]:
+Innerhalb weniger Sekunden erhalten Sie eine Antwort auf Ihre Anforderung. Der Container befindet sich zunächst im Zustand **Wird erstellt...**, wird aber innerhalb von ein bis zwei Minuten gestartet. Überprüfen Sie den Status mithilfe des Cmdlets [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup]:
 
-```powershell
+ ```azurepowershell-interactive
 Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
@@ -92,7 +86,7 @@ Sobald **ProvisioningState** für den Container `Succeeded` lautet, ist er über
 
 Wenn Sie den Container nicht mehr benötigen, können Sie ihn mithilfe des Cmdlets [Remove-AzureRmContainerGroup][Remove-AzureRmContainerGroup] entfernen:
 
-```powershell
+ ```azurepowershell-interactive
 Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 

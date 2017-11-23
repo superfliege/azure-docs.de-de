@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 7ee2e42e05fb4866d32c24b0d4c788b0197970ad
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b8a770323d115390d323352826457eee62be5f6f
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 > [!div class="op_single_selector"]
@@ -56,6 +56,12 @@ Bitte machen Sie sich vor der Vorbereitung der Umgebung mit den Einschränkungen
 
 * Die Sicherung von virtuellen Computern mit mehr als 16 Datenträgern wird nicht unterstützt.
 * Das Sichern virtueller Computer mit Datenträgern, die größer als 1.023 GB sind, wird nicht unterstützt.
+
+> [!NOTE]
+> Es gibt eine private Vorschauversion zur Unterstützung von Sicherungen für virtuelle Computer mit nicht verwalteten Datenträgern, die größer sind als 1 TB. Einzelheiten entnehmen Sie dem Dokument für die [private Vorschauversion für die Unterstützung von Sicherungen virtueller Computer mit großen Datenträgern](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a).
+>
+>
+
 * Die Sicherung von virtuellen Computern mit einer reservierten IP-Adresse und ohne definierten Endpunkt wird nicht unterstützt.
 * Die Sicherung von virtuellen Computern, die nur mit BEK verschlüsselt sind, wird nicht unterstützt. Die Sicherung von virtuellen Linux-Computern, die mit LUKS-Verschlüsselung verschlüsselt sind, wird nicht unterstützt.
 * Das Sichern von virtuellen Computern mit freigegebenen Clustervolumes (CSV) oder einer Konfiguration mit horizontal hochskalierten Dateiservern wird nicht empfohlen, da hierfür während der Momentaufnahmeaufgabe alle virtuellen Computer in die Clusterkonfiguration einbezogen werden müssen. Azure Backup unterstützt keine Multi-VM-Konsistenz. 

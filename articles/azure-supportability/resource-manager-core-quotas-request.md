@@ -1,25 +1,25 @@
 ---
-title: "Anforderungen zur Erhöhung von Azure Resource Manager-Kernkontingenten | Microsoft-Dokumentation"
-description: "Anforderungen zur Erhöhung von Azure Resource Manager-Kernkontingenten"
+title: "Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten | Microsoft-Dokumentation"
+description: "Anforderungen zur Erhöhung von Azure Resource Manager-vCPU-Kontingenten"
 author: ganganarayanan
 ms.author: gangan
 ms.date: 1/18/2017
 ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: cb6c5b3e86f126d4110d1cd29d8c9891e356e414
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c22a6dde0067385a1bf8d889cc76178bb44dd0ac
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="resource-manager-core-quota-increase-requests"></a>Anforderungen zur Erhöhung von Resource Manager-Kernkontingenten
+# <a name="resource-manager-vcpu-quota-increase-requests"></a>Anforderungen zur Erhöhung von Resource Manager-vCPU-Kontingenten
 
-Resource Manager-Kernkontingente werden auf Regionsebene und auf der Ebene der SKU-Familie erzwungen.
+Resource Manager-vCPU-Kontingente werden auf Regionsebene und auf der Ebene der SKU-Familie erzwungen.
 Weitere Informationen zur Erzwingung von Kontingenten finden Sie auf der Seite [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](http://aka.ms/quotalimits).
 Auf der Seite [Virtuelle Windows-Computer – Preise](http://aka.ms/pricingcompute) können Sie die Kosten und die Leistung vergleichen und sich ausführlicher über SKU-Familien informieren.
 
-Wenn Sie eine Erhöhung anfordern möchten, erstellen Sie im Azure-Portal ([https://portal.azure.com](https://portal.azure.com)) eine kontingentbezogene Supportanfrage.
+Wenn Sie eine Erhöhung anfordern möchten, erstellen Sie im Azure-Portal ([https://portal.azure.com](https://portal.azure.com)) eine kontingentbezogene Supportanfrage für vCPUs.
 
 > [!NOTE]
 > Informationen zum Erstellen einer Supportanfrage im Azure-Portal finden Sie [hier](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).

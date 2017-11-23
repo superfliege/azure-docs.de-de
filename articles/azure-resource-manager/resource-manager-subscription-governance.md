@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/31/2017
 ms.author: rodend;karlku;tomfitz
-ms.openlocfilehash: 3a19f2cf7566f38f80639d7c966638a3ec900cf4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5950bad397e4b0f08f998ea6756e3c258e84b63e
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-enterprise-scaffold---prescriptive-subscription-governance"></a>Azure-Unternehmensgerüst – präskriptive Abonnementgovernance
 Immer mehr Unternehmen führen für Mobilität und Flexibilität eine öffentliche Cloud ein. Sie nutzen die Stärken der Cloud, um Umsatz zu generieren oder Ressourcen für das Unternehmen zu optimieren. Microsoft Azure bietet eine Vielzahl von Diensten, die Unternehmen wie Bausteine zusammenstellen können, um ein großes Spektrum von Workloads und Anwendungen zu berücksichtigen. 
@@ -89,7 +89,7 @@ Die erste Säule des Gerüsts sind Benennungsstandards. Mit sorgfältig konzipie
 > Die vorstehenden Tipps sollen Ihnen das Implementieren einer einheitlichen Benennungskonvention erleichtern.
 
 ## <a name="policies-and-auditing"></a>Richtlinien und Überwachung
-Die zweite Säule des Gerüsts umfasst das Erstellen von [Azure Resource Manager-Richtlinien](resource-manager-policy.md) und das [Überwachen des Aktivitätsprotokolls](resource-group-audit.md). Resource Manager-Richtlinien bieten Ihnen die Möglichkeit, mit Risiken in Azure umzugehen. Sie können Richtlinien definieren, die die Datenhoheit sicherstellen, indem Sie bestimmte Aktionen einschränken, erzwingen oder überwachen. 
+Die zweite Säule des Gerüsts umfasst das Erstellen von [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md) und das [Überwachen des Aktivitätsprotokolls](resource-group-audit.md). Resource Manager-Richtlinien bieten Ihnen die Möglichkeit, mit Risiken in Azure umzugehen. Sie können Richtlinien definieren, die die Datenhoheit sicherstellen, indem Sie bestimmte Aktionen einschränken, erzwingen oder überwachen. 
 
 * Richtlinien sind standardmäßig ein **Zulassungssystem**. Aktionen werden durch das Definieren und Zuweisen von Richtlinien zu Ressourcen gesteuert, die Aktionen für Ressourcen verweigern oder überwachen.
 * Richtlinien werden von Richtliniendefinitionen in einer Richtliniendefinitionssprache (If-Then-Bedingungen) beschrieben.
