@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2503e7e6025e6f064574f14855468ae9b1b97fa0
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: ebfe845fa4f695064773a03f6d765da37ab44189
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit .NET und Azure Cosmos DB
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von .NET und der [Cassandra-API](cassandra-introduction.md) von Azure Cosmos DB eine Profil-App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird in dieser Schnellstartanleitung die Erstellung eines Azure Cosmos DB-Kontos über das webbasierte Azure-Portal gezeigt.   
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
+Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB bietet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Zugriff auf das Vorschauprogramm für die Cassandra-API von Azure Cosmos DB. Falls Sie noch keinen Zugriff angefordert haben, können Sie sich [hier](https://aka.ms/cosmosdb-cassandra-signup) registrieren.
-
-Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativ können Sie [Azure Cosmos DB ohne Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtung.
 
-Installieren Sie [Git](https://www.git-scm.com/), um das Beispiel zu klonen.
+Sie benötigen Zugriff auf das Vorschauprogramm für die Cassandra-API von Azure Cosmos DB. Falls Sie noch keinen Zugriff angefordert haben, können Sie sich [hier](cassandra-introduction.md#sign-up-now) registrieren.
+
+Außerdem haben Sie folgende Möglichkeiten: 
+* Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
+* Installieren Sie [Git](https://www.git-scm.com/), um das Beispiel zu klonen.
 
 <a id="create-account"></a>
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
@@ -100,7 +100,7 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie die Datenbankressou
    }
     ```
     
- * Fragen Sie die Informationen eines einzelnen Benutzers ab.
+ * Führen Sie eine Abfrage zum Abrufen der Informationen eines einzelnen Benutzers aus.
 
     ```csharp
     mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);

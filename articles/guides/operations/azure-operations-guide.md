@@ -15,14 +15,12 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
-ms.contentlocale: de-de
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Einführung in Cloud Computing und Microsoft Azure
 
 Dieser Leitfaden enthält eine Einführung in die wichtigsten Konzepte im Zusammenhang mit der Bereitstellung und Verwaltung einer Microsoft Azure-Infrastruktur. Wenn Sie mit Cloud Computing oder Azure selbst noch nicht vertraut sind, ermöglicht dieser Leitfaden Ihnen den schnellen Einstieg in Konzeptdetails, Bereitstellungsvorgänge und die Verwaltung. In vielen Abschnitten wird ein Vorgang beschrieben, z.B. die Bereitstellung eines virtuellen Computers, und anschließend ein Link zu weiterführenden technischen Details angegeben.
@@ -517,4 +515,3 @@ Sie können virtuelle Azure-Netzwerke mit einer Netzwerksicherheitsgruppe schüt
 
 - [Erstellen eines virtuellen Windows-Computers](/virtual-machines/windows/quick-create-portal.md)
 - [Erstellen eines virtuellen Linux-Computers](../../virtual-machines/linux/quick-create-portal.md)
-

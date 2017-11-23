@@ -3,7 +3,7 @@ title: Verbinden von Windows-Computern mit Azure Log Analytics | Microsoft Docs
 description: "Dieser Artikel beschreibt die Schritte, mit denen Sie die Windows-Computer in Ihrer lokalen Infrastruktur mit dem Log Analytics-Dienst verbinden können, indem Sie eine benutzerdefinierte Version des Microsoft Monitoring Agents (MMA) verwenden."
 services: log-analytics
 documentationcenter: 
-author: MGoedtel
+author: mgoedtel
 manager: carmonm
 editor: 
 ms.assetid: 932f7b8c-485c-40c1-98e3-7d4c560876d2
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e5f04f3b9135167c0f339c58323ebd931b260109
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aaf3e596f8c287c60531a6911c5797b3de26e570
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure
 
@@ -28,7 +28,7 @@ Dieser Artikel beschreibt die Schritte, mit denen Sie Windows-Computer in Ihrer 
 Sie können Agents über das Setup, eine Befehlszeile oder durch eine Konfiguration des gewünschten Zustands in Azure Automation installieren.  
 
 >[!NOTE]
-Für virtuelle Computer in Azure können Sie die Installation vereinfachen, indem Sie die [VM-Erweiterung](log-analytics-azure-vm-extension.md) verwenden.
+Für virtuelle Computer in Azure können Sie die Installation vereinfachen, indem Sie die [VM-Erweiterung](../virtual-machines/windows/extensions-oms.md) verwenden.
 
 Auf Computern mit Internetverbindung nutzt der Agent die Internetverbindung, um Daten an OMS zu senden. Bei Computern ohne Internetverbindung können Sie einen Proxy oder das [OMS-Gateway](log-analytics-oms-gateway.md) verwenden.
 

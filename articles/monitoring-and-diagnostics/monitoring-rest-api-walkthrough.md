@@ -18,12 +18,11 @@ ms.dyn365.ops.version:
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: mcollier
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ab522b444c234e1159acfea1780bae1801c4d047
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Exemplarische Vorgehensweise für die Azure Monitoring-REST-API
 In diesem Artikel erfahren Sie, wie Sie die Authentifizierungen so durchführen, dass Ihr Code die [REST-API-Referenz für Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx)nutzen kann.         
@@ -195,7 +194,7 @@ Nachdem die verfügbaren Metrikdefinitionen bekannt sind, gibt es möglicherweis
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&resultType=metadata&api-version=*{apiVersion}*
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&amp;timespan=*{starttime/endtime}*&amp;$filter=*{filter}*&amp;resultType=metadata&amp;api-version=*{apiVersion}*
 
 Zum Abrufen der Liste potenzieller Werte der Dimension „API-Namen“ für die Metrik „Transaktionen“ während eines angegebenen Zeitbereichs würde die Anforderung beispielsweise folgendermaßen aussehen:
 
@@ -284,7 +283,7 @@ Sobald die verfügbaren Metrikdefinitionen und alle möglichen Dimensionswerte b
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&timespan=*{starttime/endtime}*&$filter=*{filter}*&interval=*{timeGrain}*&aggregation=*{aggreation}*&api-version=*{apiVersion}*
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?metric=*{metric}*&amp;timespan=*{starttime/endtime}*&amp;$filter=*{filter}*&amp;interval=*{timeGrain}*&amp;aggregation=*{aggreation}*&amp;api-version=*{apiVersion}*
 
 Zum Abrufen der Metrikwerte der Speichermetrik „Transaktionen“ für alle Transaktionen zum API-Namen „GetBlobProperties“ während eines Zeitraums von fünf Minuten würde die Anfrage beispielsweise folgendermaßen aussehen:
 
@@ -428,7 +427,7 @@ Sobald die verfügbaren Metrikdefinitionen bekannt sind, können die entsprechen
 
 **Methode**: GET
 
-**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&api-version=*{apiVersion}*
+**Anforderungs-URI**: https://management.azure.com/subscriptions/*{subscription-id}*/resourceGroups/*{resource-group-name}*/providers/*{resource-provider-namespace}*/*{resource-type}*/*{resource-name}*/providers/microsoft.insights/metrics?$filter=*{filter}*&amp;api-version=*{apiVersion}*
 
 Um zum Beispiel RunsSucceeded-Metrikdatenpunkte für einen bestimmten Zeitraum und ein Aggregationsintervall von einer Stunde abzurufen, sähe die Anforderung wie folgt aus:
 
@@ -677,4 +676,3 @@ Invoke-RestMethod -Uri $request `
 * Lesen Sie [Unterstützte Metriken von Azure Monitor](monitoring-supported-metrics.md).
 * Lesen Sie die [REST-API-Referenz zu Microsoft Azure Monitor](https://msdn.microsoft.com/library/azure/dn931943.aspx).
 * Schlagen Sie in der [Azure-Verwaltungsbibliothek](https://msdn.microsoft.com/library/azure/mt417623.aspx)nach.
-

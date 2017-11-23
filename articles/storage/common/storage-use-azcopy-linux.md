@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 28/9/2017
 ms.author: seguler
-ms.openlocfilehash: d77ac39b7fcf6a23ebc58a2bbf9dc7de664edbb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e73a2424d3eb633f6bec63189786a67161750d4f
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>Übertragen von Daten mit AzCopy unter Linux
 AzCopy unter Linux ist ein Befehlszeilenprogramm, das zum Kopieren von Daten zu und von Microsoft Azure Blob und File Storage entwickelt wurde, wobei durch einfache Befehle optimale Leistung erzielt wird. Sie können Daten von einem Objekt zu einem anderen innerhalb Ihres Speicherkontos oder von einem Speicherkonto zu einem anderen kopieren.
@@ -559,7 +559,7 @@ azcopy \
     --recursive
 ```
 
-Beachten Sie, dass AzCopy zurzeit nur die [Konto-SAS](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-shared-access-signature-part-1) unterstützt.
+Beachten Sie, dass AzCopy zurzeit nur die [Konto-SAS](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) unterstützt.
 
 ### <a name="journal-file-folder"></a>Journaldateiordner
 Sobald ein Befehl für AzCopy ausgeführt wird, prüft es, ob eine Journaldatei im Standardordner oder in einem Ordner vorhanden ist, den Sie über diese Option angegeben haben. Wenn die Journaldatei in keinem dieser Ordner vorhanden ist, behandelt AzCopy diesen Vorgang als neuen Vorgang und generiert somit eine neue Journaldatei.
@@ -673,7 +673,7 @@ Weitere Informationen zu Azure Storage und zu AzCopy finden Sie in den folgenden
 ### <a name="azure-storage-documentation"></a>Azure Storage-Dokumentation:
 * [Einführung in Azure Storage](../storage-introduction.md)
 * [Erstellen Sie ein Speicherkonto](../storage-create-storage-account.md)
-* [Verwalten von Blobs mit Speicher-Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs)
+* [Verwalten von Blobs mit Speicher-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs)
 * [Verwenden der Azure CLI 2.0 mit Azure Storage](../storage-azure-cli.md)
 * [Verwenden des BLOB-Speichers mit C++](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Gewusst wie: Verwenden von Blob Storage mit Java](../blobs/storage-java-how-to-use-blob-storage.md)

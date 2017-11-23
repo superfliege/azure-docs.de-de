@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2017
 ms.author: shlo
-ms.openlocfilehash: 10c0dd2156e850b421d80901b6f0b40c7d384cef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 183880d2225c1dcc628349733c4fcaa8ddefe6eb
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>ForEach-Aktivität in Azure Data Factory
 Mit der ForEach-Aktivität wird eine wiederholte Ablaufsteuerung in Ihrer Pipeline definiert. Diese Aktivität wird verwendet, um eine Sammlung zu durchlaufen. Sie führt die angegebenen Aktivitäten in einer Schleife aus. Die Schleifenimplementierung dieser Aktivität ähnelt der Foreach-Schleifenstruktur in Programmiersprachen.
@@ -34,7 +34,10 @@ Die Eigenschaften werden weiter unten in diesem Artikel beschrieben. Die Eigensc
    "type":"ForEach",
    "typeProperties":{  
       "isSequential":"true",
-      "items":"@pipeline().parameters.mySinkDatasetFolderPathCollection",
+        "items": {
+            "value": "@pipeline().parameters.mySinkDatasetFolderPathCollection",
+            "type": "Expression"
+        },
       "activities":[  
          {  
             "name":"MyCopyActivity",
@@ -71,7 +74,7 @@ Die Eigenschaften werden weiter unten in diesem Artikel beschrieben. Die Eigensc
 
 Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich
 -------- | ----------- | -------------- | --------
-Name | Name der ForEach-Aktivität. | String | Ja
+name | Name der ForEach-Aktivität. | String | Ja
 Typ | Muss auf **ForEach** festgelegt sein. | String | Ja
 isSequential | Gibt an, ob die Schleife sequenziell oder parallel ausgeführt werden soll.  Maximal 20 Schleifeniterationen können gleichzeitig parallel ausgeführt werden. Beispiel: Bei einer ForEach-Aktivität, die eine Kopieraktivität mit 10 unterschiedlichen Quell- und Senkendatasets durchläuft, während **isSequential** auf „false“ festgelegt ist, werden alle Kopien gleichzeitig ausgeführt. Die Standardeinstellung ist "False". <br/><br/> Wenn „isSequential“ auf „false“ festgelegt ist, stellen Sie sicher, dass die Konfiguration die Ausführung mehrerer ausführbarer Dateien ermöglicht. Andernfalls sollte diese Eigenschaft vorsichtig verwendet werden, um Schreibkonflikte zu vermeiden. Weitere Informationen finden Sie im Abschnitt [Parallele Ausführung](#parallel-execution). | Boolean | Nein. Die Standardeinstellung ist "False".
 Items | Ein Ausdruck, der ein JSON-Array zurückgibt, das durchlaufen werden soll. | Ausdruck (der ein JSON-Array zurückgibt) | Ja
@@ -98,7 +101,10 @@ Geben Sie in der ForEach-Aktivität für die Eigenschaft **items** ein Array an,
                 "type": "ForEach",
                 "typeProperties": {
                     "isSequential": "true",
-                    "items": "@pipeline().parameters.mySinkDatasetFolderPath",
+                    "items": {
+                        "value": "@pipeline().parameters.mySinkDatasetFolderPath",
+                        "type": "Expression"
+                    },
                     "activities": [
                         {
                             "name": "MyCopyActivity",

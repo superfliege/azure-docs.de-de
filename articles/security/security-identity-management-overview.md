@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/09/2017
+ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 6e816f151ea1f71770f00d6d77b65395fe080da3
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 85ea328bdea1aad28765712e3639f6719deab7e2
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-identity-management-security-overview"></a>Übersicht über die Sicherheit der Azure-Identitätsverwaltung
 Lösungen zur Identitäts- und Zugriffsverwaltung von Microsoft unterstützen IT-Profis dabei, den Zugriff auf Anwendungen und Ressourcen über das Unternehmensrechenzentrum und in der Cloud zu schützen, wobei zusätzliche Ebenen der Überprüfungen aktiviert werden, z.B. mehrstufige Authentifizierung und Richtlinien für bedingten Zugriff. Die Überwachung verdächtiger Aktivitäten über erweiterte Sicherheitsberichtserstellung, Überwachung und Warnung trägt dazu bei, potenzielle Sicherheitsprobleme zu verringern. [Azure Active Directory Premium](../active-directory/active-directory-editions.md) ermöglicht einmaliges Anmelden bei Tausenden von Cloudanwendungen (SaaS) und Zugriff auf Webanwendungen, die Sie lokal ausführen.

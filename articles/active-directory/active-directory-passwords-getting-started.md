@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: c5ba922175a25776c6e27ee03fae9b2941235881
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0320cb33dcab63ea394cf8e13e9aef5cc75951fa
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-self-service-password-reset-rapid-deployment"></a>Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/15/2017
 
 Die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) ist für IT-Administratoren eine einfache Möglichkeit, Benutzern das Zurücksetzen oder Entsperren ihrer Kennwörter oder Konten zu erlauben. Das System verfügt über eine ausführliche Berichterstellung, bei der der Benutzerzugriff auf das System nachverfolgt wird, sowie über eine Benachrichtigungsfunktion, mit der Sie über eine fehlerhafte oder missbräuchliche Nutzung informiert werden.
 
-In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionierenden Testmandanten oder einen lizenzierten Azure AD-Mandanten (Azure Active Directory) verfügen. Hilfe zur Einrichtung von Azure AD finden Sie unter [Erste Schritte mit einem Azure-Abonnement](https://azure.microsoft.com/trial/get-started-active-directory/).
+In dieser Anleitung wird vorausgesetzt, dass Sie bereits über einen funktionierenden Testmandanten oder einen lizenzierten Azure AD-Mandanten (Azure Active Directory) verfügen. Hilfe zur Einrichtung von Azure AD finden Sie unter [Erste Schritte mit einem Azure-Abonnement](get-started-azure-ad.md).
 
 ## <a name="enable-sspr-for-your-azure-ad-tenant"></a>Aktivieren der SSPR für Ihren Azure AD-Mandanten
 
@@ -73,7 +73,7 @@ Um die lokale Identitätssynchronisierung mit Azure AD zu aktivieren, müssen Si
 
 * [Aktualisieren der Windows Azure Active Directory-Synchronisierung und Azure Active Directory-Synchronisierung](./connect/active-directory-aadconnect-dirsync-deprecated.md)
 * [Erste Schritte mit Azure AD Connect mit Expresseinstellungen](./connect/active-directory-aadconnect-get-started-express.md)
-* [Konfigurieren Sie das Kennwortrückschreiben](active-directory-passwords-writeback.md#configuring-password-writeback), um Kennwörter aus Azure AD wieder in Ihr lokales Verzeichnis zu schreiben.
+* [Konfigurieren Sie das Kennwortrückschreiben](active-directory-passwords-writeback.md#configure-password-writeback), um Kennwörter aus Azure AD wieder in Ihr lokales Verzeichnis zu schreiben.
 
 ### <a name="on-premises-policy-change"></a>Änderung der lokalen Richtlinie
 

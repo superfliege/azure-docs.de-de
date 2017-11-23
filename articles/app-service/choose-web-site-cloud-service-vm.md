@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: edd5099d2804fdb5867b4be5b11a361004db1665
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
 ## <a name="overview"></a>Übersicht
@@ -48,7 +48,7 @@ In der folgenden Tabelle werden die Funktionen von App Service, Cloud Services, 
 | Zugriff auf Dienste wie Service Bus, Storage und SQL-Datenbank |X |X |X |X | |
 | Hosten der Web- oder Webdienstebene einer mehrschichtigen Architektur |X |X |X |X | |
 | Hosten der mittleren Ebene einer mehrschichtigen Architektur |X |X |X |X |App Service kann problemlos für das Hosten einer REST-API der mittleren Ebene genutzt werden, über die Funktion [WebJobs](http://go.microsoft.com/fwlink/?linkid=390226) können Hintergrundverarbeitungsaufträge gehostet werden. Sie können WebJobs auf einer dedizierten Website ausführen, um eine unabhängige Skalierbarkeit für die entsprechende Ebene zu erzielen. |
-| Integrierte Unterstützung von MySQL-as-a-Service |X |X |X | |Cloud Services können in MySQL-as-a-Service über Angebote von ClearDB integriert werden, jedoch nicht als Bestandteil des Azure-Portal-Workflows. |
+| Integrierte Unterstützung von MySQL-as-a-Service |X |X | | | |
 | Unterstützung von ASP.NET, klassischem ASP, Node.js, PHP, Python |X |X |X |X |Service Fabric unterstützt die Erstellung eines Web-Front-Ends mit [ASP.NET 5](../service-fabric/service-fabric-add-a-web-frontend.md). Zudem können Sie jede Art von Anwendung (Node.js, Java usw.) als [ausführbare Gastanwendungsdatei](../service-fabric/service-fabric-deploy-existing-app.md) bereitstellen. |
 | Horizontale Skalierung auf mehrere Instanzen ohne erneute Bereitstellung |X |X |X |X |Bei virtuellen Computern ist eine horizontale Skalierung auf mehrere Instanzen möglich. Die Dienste, die auf diesen Computern ausgeführt werden, müssen jedoch so geschrieben werden, dass sie diese horizontale Skalierung unterstützen. Sie müssen einen Lastenausgleich konfigurieren, um Anforderungen über die Computer weiterzuleiten. Zudem müssen Sie eine Affinitätsgruppe erstellen, um gleichzeitigen Neustarts aller Instanzen aufgrund von Wartungs- oder Hardware-Fehlern vorzubeugen. |
 | SSL-Unterstützung |X |X |X |X |Für App Service-Web-Apps wird SSL für benutzerdefinierte Domänen nur in den Modi "Basic" und "Standard" unterstützt. Weitere Informationen zur Verwendung von SSL mit Web-Apps finden Sie unter [Konfigurieren eines SSL-Zertifikats für eine Azure-Website](app-service-web-tutorial-custom-ssl.md). |
@@ -97,7 +97,7 @@ Azure App Service stellt eine hervorragende Lösung für das Hosten von Unterneh
 * Integration in Active Directory.
 
 ### <a id="iis6"></a> Ich verfüge über eine IIS6-Anwendung, die unter Windows Server 2003 ausgeführt wird.
-Mit Azure App Service lassen sich die mit dem Migrieren von älteren IIS6-Anwendungen verbundenen Infrastrukturkosten ganz einfach vermeiden. Microsoft hat [einfach zu verwendende Migrationstools und eine detaillierte Migrationsanleitung](https://www.movemetowebsites.net/) erstellt, mit deren Hilfe Sie die Kompatibilität überprüfen und etwaige vorzunehmende Änderungen identifizieren können. Die Integration in Visual Studio, TFS oder allgemeine CMS-Tools erleichtert die Bereitstellung von IIS6-Anwendungen direkt in der Cloud. Sobald eine Bereitstellung erfolgt ist, stellt das Azure-Portal stabile Verwaltungstools zur Verfügung. Mit diesen können Sie eine Skalierung nach unten oder oben vornehmen, um je nach Bedarf Kosten zu verwalten oder Anforderungen zu erfüllen. Mit dem Migrationstool können Sie folgende Aktionen vornehmen:
+Mit Azure App Service lassen sich die mit dem Migrieren von älteren IIS6-Anwendungen verbundenen Infrastrukturkosten ganz einfach vermeiden. Microsoft hat [einfach zu verwendende Migrationstools und eine detaillierte Migrationsanleitung](https://www.migratetoazure.net/) erstellt, mit deren Hilfe Sie die Kompatibilität überprüfen und etwaige vorzunehmende Änderungen identifizieren können. Die Integration in Visual Studio, TFS oder allgemeine CMS-Tools erleichtert die Bereitstellung von IIS6-Anwendungen direkt in der Cloud. Sobald eine Bereitstellung erfolgt ist, stellt das Azure-Portal stabile Verwaltungstools zur Verfügung. Mit diesen können Sie eine Skalierung nach unten oder oben vornehmen, um je nach Bedarf Kosten zu verwalten oder Anforderungen zu erfüllen. Mit dem Migrationstool können Sie folgende Aktionen vornehmen:
 
 * Schnelles und einfaches Migrieren der Windows Server 2003 Legacy-Webanwendungen zur Cloud.
 * Auswählen der lokalen angefügten SQL-Datenbank für die Erstellung einer Hybridanwendung
@@ -174,7 +174,6 @@ Informationen zum Einstieg in die ausgewählte(n) Option(en) für Ihre Anwendung
 [Cloud Services]: /azure/cloud-services/
 [Virtual Machines]: /azure/virtual-machines/
 [Service Fabric]: /azure/service-fabric/
-[ClearDB]: http://www.cleardb.com/
 [WebJobs]: http://go.microsoft.com/fwlink/?linkid=390226&clcid=0x409
 [Configuring an SSL certificate for an Azure Website]: app-service-web-tutorial-custom-ssl.md
 [azurestore]: https://azuremarketplace.microsoft.com/en-us/marketplace/apps

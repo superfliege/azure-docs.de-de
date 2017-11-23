@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: bryanla
-ms.openlocfilehash: e77915c1d982ccf6262ffcbc09dc91dfd986dac5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1535d3e94846ae8fa7c277bbdd0005f5d5313caa
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Zuweisen des MSI-Zugriffs (Managed Service Identity, verwaltete Dienstidentität) auf eine Ressource mit der Azure-CLI
 
@@ -27,7 +27,7 @@ Nachdem Sie eine Azure-Ressource mit einer MSI konfiguriert haben, können Sie d
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [msi-qs-configure-prereqs](../../includes/msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 Um die CLI-Skriptbeispiele auszuführen, haben Sie drei Möglichkeiten:
 

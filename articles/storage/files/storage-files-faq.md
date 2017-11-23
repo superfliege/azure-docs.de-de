@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: renash
-ms.openlocfilehash: 871fc85d0b406d2de35a79eb2906ff2d6ada9570
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: da8ccf35dcc873a5c31842c6eb7bdf72879854c2
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Häufig gestellte Fragen zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/07/2017
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung von Azure File Sync mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
 1. Im Abschnitt „Kommentare“ dieses Artikels.
-2. [Azure Storage-Forum](https://social.msdn.microsoft.com/Forums/home?forum=windowsazuredata)
+2. [Azure Storage-Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuredata)
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 
 4. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
 

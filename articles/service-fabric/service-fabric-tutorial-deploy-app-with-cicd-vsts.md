@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: d0f67b1a63c36e878ed5f7c9aa1c45267e5b156c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: acfeb5a3f27f6451309017bad88c687b408872b6
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>Bereitstellen einer Anwendung mit CI/CD in einem Service Fabric-Cluster
 Dieses Tutorial ist der dritte Teil einer Serie und beschreibt, wie Continuous Integration und Continuous Deployment für eine Azure Service Fabric-Anwendung mithilfe von Visual Studio Team Services eingerichtet werden.  Es ist eine vorhandene Service Fabric-Anwendung erforderlich. Die im Artikel [Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md) erstellte Anwendung wird als Beispiel verwendet.
@@ -45,7 +45,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 - [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) und die Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
 - [Installieren Sie das Service Fabric-SDK](service-fabric-get-started.md).
 - Erstellen Sie eine Service Fabric-Anwendung, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-dotnet-app.md). 
-- Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-cluster-azure-ps.md).
+- Erstellen Sie einen Windows Service Fabric-Cluster in Azure, z.B. durch das [Ausführen der Schritte in diesem Tutorial](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 - Erstellen Sie ein [Team Services-Konto](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services).
 
 ## <a name="download-the-voting-sample-application"></a>Laden Sie die Beispielanwendung „Voting“ herunter.
