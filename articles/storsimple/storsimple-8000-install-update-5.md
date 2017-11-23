@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/02/2017
+ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 9f5b5cc597da714369d4c452edce42ea7fe205dd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: eefeedfb87bd30630439d13a434b246508defa96
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>Installieren von Update 5 auf Ihrem StorSimple-Gerät
 
@@ -29,6 +29,7 @@ In diesem Tutorial erfahren Sie, wie Sie Update 5 über das Azure-Portal und mit
 Update 5 umfasst Updates für Gerätesoftware, Storport und Spaceport sowie Sicherheitsupdates für das Betriebssystem, allgemeine Betriebssystemupdates und Updates für Datenträgerfirmware.  Die Updates für Gerätesoftware, Spaceport, Storport, Sicherheit und andere Betriebssystemupdates sind unterbrechungsfreie Updates. Die unterbrechungsfreien und regulären Updates können über das Azure-Portal oder die Hotfixmethode angewendet werden. Die Updates für die Datenträgerfirmware führen zu einer Betriebsunterbrechung und werden unter Verwendung der Hotfixmethode über die Windows PowerShell-Schnittstelle des Geräts angewendet, wenn sich das Gerät im Wartungsmodus befindet.
 
 > [!IMPORTANT]
+> * Update 5 ist ein obligatorisches Update und sollte sofort installiert werden. Weitere Informationen finden Sie in den [Versionshinweisen zu Update 5](storsimple-update5-release-notes.md).
 > * Vor der Installation wird ein Satz manueller und automatischer Vorabprüfungen durchgeführt, mit denen die Geräteintegrität in Bezug auf Hardwarestatus und Netzwerkkonnektivität ermittelt wird. Diese Vorabprüfungen werden nur ausgeführt, wenn Sie die Updates aus dem Azure-Portal ausführen.
 > * Bei der Aktualisierung eines Geräts, auf dem Versionen vor Update 3 ausgeführt werden, wird ausdrücklich empfohlen, Updates mithilfe der Hotfixmethode zu installieren. Wenn Probleme auftreten, [ log a support ticket](storsimple-8000-contact-microsoft-support.md) (erstellen Sie ein Supportticket).
 > * Wir empfehlen, die Software und anderen regulären Updates über das Azure-Portal zu installieren. Sie sollten nur dann die Windows PowerShell-Schnittstelle des Geräts (zum Installieren der Updates) verwenden, wenn die Vorabprüfung für das Gateway im Portal fehlschlägt. Abhängig von der Version, von der aus Sie aktualisieren, dauert die Installation des Updates mindestens vier Stunden. Wartungsmodusupdates müssen über die Windows PowerShell-Schnittstelle des Geräts ausgeführt werden. Da Updates im Wartungsmodus den Betrieb unterbrechen, führen sie zu einer Ausfallzeit für Ihr Gerät.

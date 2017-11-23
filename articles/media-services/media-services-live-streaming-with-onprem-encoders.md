@@ -14,17 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 3f6569d32708c42247e0ffec70389f2e0f07389e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7c33dc0a3c1f01cc53a91e05feb33272cb21f47
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Livestreaming mit lokalen Encodern, die Datenströme mit Mehrfachbitrate erstellen
 ## <a name="overview"></a>Übersicht
 In Azure Media Services stellt ein *Kanal* eine Pipeline zum Verarbeiten von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabedatenströme von Kanälen empfangen werden können:
 
-* Von einem lokalen Liveencoder wird ein RTMP- oder Smooth Streaming-Datenstrom (Fragmentiertes MP4) mit Mehrfachbitrate an den Kanal gesendet, der nicht für die Livecodierung mit Media Services aktiviert ist. Die erfassten Datenströme durchlaufen Kanäle ohne weitere Verarbeitung. Diese Methode wird als *Pass-Through-Methode* bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: Media Excel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder, Telestream Wirecast, Haivision, Teradek und TriCaster. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies ist aber nicht zu empfehlen. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird ein RTMP- oder Smooth Streaming-Datenstrom (Fragmentiertes MP4) mit Mehrfachbitrate an den Kanal gesendet, der nicht für die Livecodierung mit Media Services aktiviert ist. Die erfassten Datenströme durchlaufen Kanäle ohne weitere Verarbeitung. Diese Methode wird als *Pass-Through-Methode* bezeichnet. Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für Live Encoding konfiguriert ist. Dies ist aber nicht zu empfehlen. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
 
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
@@ -34,13 +34,13 @@ In Azure Media Services stellt ein *Kanal* eine Pipeline zum Verarbeiten von Liv
 
 Ab Version Media Services 2.10 können Sie beim Erstellen eines Kanals angeben, wie der Kanal den Eingabedatenstrom empfangen soll. Sie können auch angeben, ob der Kanal den Live Encoding-Prozess für Ihren Datenstrom durchführen soll. Sie haben zwei Möglichkeiten:
 
-* **Pass-Through:** Geben Sie diesen Wert an, wenn ein lokaler Liveencoder verwendet werden soll, von dem ein Mehrfachbitraten-Datenstrom (Pass-Through-Datenstrom) ausgegeben wird. In diesem Fall wird der Eingabedatenstrom ohne Codierung an die Ausgabe geleitet. Dies ist das Verhalten eines Kanals für ältere Versionen als Version 2.10. Dieses Thema enthält Details zum Arbeiten mit Kanälen dieses Typs.
-* **Live Encoding:** Wählen Sie diesen Wert aus, wenn Sie Media Services verwenden möchten, um einen Einzelbitraten-Livedatenstrom in einen Mehrfachbitraten-Datenstrom zu codieren. Beachten Sie, dass beim Belassen eines Live Encoding-Kanals im Status **Wird ausgeführt** Gebühren anfallen. Wir empfehlen Ihnen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
+* **Pass-Through:** Geben Sie diesen Wert an, wenn ein lokaler Liveencoder verwendet werden soll, der einen Mehrfachbitraten-Datenstrom (Pass-Through-Datenstrom) ausgibt. In diesem Fall wird der Eingabedatenstrom ohne Codierung an die Ausgabe geleitet. Dies ist das Verhalten eines Kanals für ältere Versionen als Version 2.10. Dieser Artikel enthält Details zum Arbeiten mit Kanälen dieses Typs.
+* **Live Encoding:** Wählen Sie diesen Wert aus, wenn Sie Media Services verwenden möchten, um einen Einzelbitraten-Livedatenstrom in einen Mehrfachbitraten-Datenstrom zu codieren. Beim Belassen eines Liveencodingkanals im Status **Wird ausgeführt** fallen Gebühren an. Wir empfehlen Ihnen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. Der Datenstrom wird für Kunden, die dies anfordern, von Media Services bereitgestellt.
 
 > [!NOTE]
-> In diesem Thema werden die Attribute der Kanäle erläutert, die nicht zum Ausführen der Livecodierung aktiviert sind. Informationen zum Arbeiten mit Kanälen, die zum Ausführen der Livecodierung aktiviert sind, finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+> In diesem Artikel werden die Attribute der Kanäle erläutert, die nicht zum Ausführen der Livecodierung aktiviert sind. Informationen zum Arbeiten mit Kanälen, die zum Ausführen der Livecodierung aktiviert sind, finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 >
->
+>Informationen zu empfohlenen lokalen Encodern finden Sie unter [Empfohlene lokale Encoder](media-services-recommended-encoders.md).
 
 Im folgenden Diagramm ist ein Livestreaming-Workflow dargestellt, der über einen lokalen Liveencoder RTMP- oder Fragmentiertes MP4-Datenstrom (Smooth Streaming) mit Mehrfachbitrate ausgibt.
 
@@ -94,7 +94,7 @@ Verwenden Sie die sekundäre URL, um die Beständigkeit und Fehlertoleranz des E
 
 - Mehrere Encoder, bei denen jeder Encoder einen Push zu einem dedizierten Endpunkt durchführt:
 
-    Dieses Szenario bietet Redundanz für Encoder sowie Erfassung. In diesem Szenario überträgt encoder1 Daten an die primäre URL und encoder2 an die sekundäre URL. Bei einem Ausfall eines Encoders kann der andere Encoder das Senden der Daten fortsetzen. Die Datenredundanz kann erhalten werden, da Media Services primäre und sekundäre URLs nicht zur gleichen Zeit trennt. Bei diesem Szenario wird davon ausgegangen, dass die Encoder zeitlich synchronisiert sind und exakt die gleichen Daten bereitstellen.  
+    Dieses Szenario bietet Redundanz für Encoder und Erfassung. In diesem Szenario überträgt encoder1 Daten an die primäre URL und encoder2 an die sekundäre URL. Bei einem Ausfall eines Encoders kann der andere Encoder das Senden der Daten fortsetzen. Die Datenredundanz kann erhalten werden, da Media Services primäre und sekundäre URLs nicht zur gleichen Zeit trennt. Bei diesem Szenario wird davon ausgegangen, dass die Encoder zeitlich synchronisiert sind und exakt die gleichen Daten bereitstellen.  
 
 - Mehrere Encoder, die einen doppelten Push zu primären und sekundären URLs durchführen:
 
@@ -124,7 +124,7 @@ Sie können das Verhältnis der Fragmente pro Segment ändern, indem Sie den Aus
 
 Sie können den Keyframe-Intervallwert auch durch Festlegen der KeyFrameInterval-Eigenschaft für ChannelInput ändern. Wenn Sie das KeyFrameInterval explizit festlegen, wird FragmentsPerSegment für das Paketerstellungsverhältnis für HLS-Segmente anhand der oben beschriebenen Regeln berechnet.  
 
-Wenn Sie sowohl KeyFrameInterval als auch FragmentsPerSegment explizit festlegen, werden von Media Services die von Ihnen festgelegten Werte verwendet.
+Wenn Sie sowohl KeyFrameInterval als auch FragmentsPerSegment explizit festlegen, verwendet Media Services die von Ihnen festgelegten Werte.
 
 #### <a name="allowed-ip-addresses"></a>Zulässige IP-Adressen
 Sie können die IP-Adressen definieren, die zum Veröffentlichen von Videos in diesem Kanal zugelassen sind. Eine zulässige IP-Adresse kann wie folgt angegeben werden:
@@ -144,7 +144,7 @@ Wenn Sie einen Kanal erstellen, können Sie die Vorschau-URL abrufen. Der Kanal 
 Zurzeit kann die Vorschau des Datenstroms unabhängig vom angegebenen Eingabetyp nur im Format „Fragmentiertes MP4“ (Smooth Streaming) bereitgestellt werden. Sie können den Player unter [Smooth Streaming Health Monitor](http://smf.cloudapp.net/healthmonitor) verwenden, um das Smooth Streaming zu testen. Außerdem können Sie einen Player verwenden, der im Azure-Portal gehostet wird, um Ihren Datenstrom anzuzeigen.
 
 #### <a name="allowed-ip-addresses"></a>Zulässige IP-Adressen
-Sie können die IP-Adressen definieren, die zum Herstellen einer Verbindung mit dem Vorschauendpunkt zugelassen sind. Wenn keine IP-Adressen angegeben werden, wird jede IP-Adresse zugelassen. Eine zulässige IP-Adresse kann wie folgt angegeben werden:
+Sie können die IP-Adressen definieren, die zum Herstellen einer Verbindung mit dem Vorschauendpunkt zugelassen sind. Wenn keine IP-Adressen angegeben werden, ist jede IP-Adresse zulässig. Eine zulässige IP-Adresse kann wie folgt angegeben werden:
 
 * Einzelne IP-Adresse (z.B. 10.0.0.1)
 * IP-Adressbereich, für den eine IP-Adresse und eine CIDR-Subnetzmaske (z.B. 10.0.0.1/22) verwendet werden
@@ -156,11 +156,11 @@ Informationen zur Kanalausgabe finden Sie im Abschnitt [Keyframe-Intervall](#key
 ### <a name="channel-managed-programs"></a>Vom Kanal verwaltete Programme
 Einem Kanal sind Programme zugeordnet, mit denen Sie das Veröffentlichen und Speichern von Segmenten in einem Livestream steuern können. Die Programme werden von den Kanälen verwaltet. Die Beziehung zwischen Kanal und Programm ähnelt herkömmlichen Medien, bei denen ein Kanal einen konstanten Stream von Inhalten aufweist und ein Programm auf ein zeitlich festgelegtes Ereignis in diesem Kanal ausgerichtet ist.
 
-Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden. Von der Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, wie lange Clientmanifeste wachsen können.
+Über die Länge des **Archivierungsfensters** können Sie die Anzahl der Stunden angeben, für die Sie den aufgezeichneten Inhalt des Programms beibehalten möchten. Dieser Wert kann von mindestens 5 Minuten bis zu einem Höchstwert von 25 Stunden eingestellt werden. Durch die Länge des Archivierungsfensters wird außerdem bestimmt, wie lange von Clients von der aktuellen Liveposition aus maximal rückwärts gesucht werden kann. Programme können über die angegebene Zeitspanne laufen. Inhalte, die über das Zeitfenster hinausgehen, werden jedoch fortlaufend verworfen. Der Wert dieser Eigenschaft legt außerdem fest, wie lange Clientmanifeste wachsen können.
 
 Jedem Programm ist ein Medienobjekt zugeordnet, mit dem die gestreamten Inhalte gespeichert werden. Ein Medienobjekt ist einem Blockblobcontainer im Azure-Speicherkonto zugeordnet, und die im Medienobjekt enthaltenen Dateien werden als Blobs in diesem Container gespeichert. Zum Veröffentlichen des Programms, damit Ihre Kunden den Datenstrom sehen können, müssen Sie einen OnDemand-Locator für das zugehörige Medienobjekt erstellen. Sie können diesen Locator verwenden, um eine Streaming-URL zu erstellen, die Sie für Ihre Clients bereitstellen können.
 
-Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Sie können verschiedene Teile eines Ereignisses je nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, sechs Stunden eines Programms zu archivieren, aber nur die letzten zehn Minuten zu senden. Dazu müssen Sie zwei Programme erstellen, die gleichzeitig ausgeführt werden. Ein Programm wird auf die Archivierung von sechs Stunden des Ereignisses festgelegt. Dieses Programm wird aber nicht veröffentlicht. Das andere Programm wird auf die Archivierung von zehn Minuten festgelegt. Dieses Programm wird veröffentlicht.
+Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Sie können verschiedene Teile eines Ereignisses je nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, sechs Stunden eines Programms zu archivieren, aber nur die letzten zehn Minuten zu senden. Dazu müssen Sie zwei Programme erstellen, die gleichzeitig ausgeführt werden. Ein Programm wird auf die Archivierung von sechs Stunden des Ereignisses festgelegt. Dieses Programm wird jedoch nicht veröffentlicht. Das andere Programm wird auf die Archivierung von zehn Minuten festgelegt. Dieses Programm wird veröffentlicht.
 
 Verwenden Sie vorhandene Programme nicht erneut für nachfolgende Ereignisse. Erstellen Sie stattdessen für jedes Ereignis ein neues Programm. Starten Sie das Programm, wenn Sie zum Starten des Streaming- und Archivierungsvorgangs bereit sind. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
 
@@ -220,7 +220,9 @@ Hier sind weitere Aspekte im Zusammenhang mit der Arbeit mit Kanälen und den zu
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Verwandte Themen
-[Spezifikation der Fragmentiertes MP4-Echtzeiterfassung für Azure Media Services](media-services-fmp4-live-ingest-overview.md)
+[Empfohlene lokale Encoder](media-services-recommended-encoders.md)
+
+[Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](media-services-fmp4-live-ingest-overview.md)
 
 [Azure Media Services – Übersicht und häufige Szenarios](media-services-overview.md)
 

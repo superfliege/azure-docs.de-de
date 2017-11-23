@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
-ms.reviewer: alexwe
-ms.openlocfilehash: 723bd7135a59bcc0bce648460f871a841a684d3c
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.reviewer: richagi
+ms.openlocfilehash: 4900707baa875ae4527d82e8189d5bc4d319ae0c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen – öffentliche Vorschau
 
@@ -29,7 +29,7 @@ Dieser Artikel bietet Unterstützung bei der Verwaltung der Azure Multi-Factor A
 
 | Feature | Beschreibung | 
 |:--- |:--- |
-| [Benutzer sperren/zulassen](#block/unblock-users) |Mit „Benutzer sperren/zulassen“ kann verhindert werden, dass Benutzer Authentifizierungsanforderungen erhalten. |
+| [Benutzer sperren/zulassen](#block-and-unblock) |Mit „Benutzer sperren/zulassen“ kann verhindert werden, dass Benutzer Authentifizierungsanforderungen erhalten. |
 | [Betrugswarnung](#fraud-alert) |Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benutzer betrügerische Versuche, auf ihre Ressourcen zuzugreifen, melden können. |
 | [Einmalumgehung](#one-time-bypass) |Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, indem er die mehrstufige Authentifizierung "umgeht". |
 | [Benutzerdefinierte Sprachnachrichten](#custom-voice-messages) |Mit benutzerdefinierten Sprachnachrichten können Sie Ihre eigenen Aufzeichnungen oder Begrüßungen mit mehrstufiger Authentifizierung verwenden. |
@@ -39,7 +39,7 @@ Dieser Artikel bietet Unterstützung bei der Verwaltung der Azure Multi-Factor A
 | [Speichern der Multi-Factor Authentication für gespeicherte Geräte und Browser](#remember-multi-factor-authentication-for-devices-that-users-trust) |Mit dieser Funktion können Sie Geräte für eine festgelegte Anzahl von Tagen speichern, nachdem ein Benutzer erfolgreich mit MFA angemeldet wurde. |
 | [Auswählbare Verifizierungsmethoden](#selectable-verification-methods) |Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten. |
 
-## <a name="blockunblock-users"></a>Benutzer sperren/zulassen
+## <a name="block-and-unblock"></a>Benutzer sperren/zulassen
 Mit „Benutzer sperren/zulassen“ kann verhindert werden, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch verweigert. Gesperrte Benutzer bleiben ab Zeitpunkt der Sperrung 90 Tage lang gesperrt.
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
@@ -70,7 +70,7 @@ Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benut
 
 ### <a name="configuration-options"></a>Konfigurationsoptionen
 
-- **Benutzer bei Betrugsmeldung sperren**: Wenn ein Benutzer einen Betrug meldet, wird sein Konto gesperrt.
+- **Benutzer bei Betrugsmeldung sperren:** Wenn ein Benutzer einen Betrug meldet, wird sein Konto 90 Tage lang oder so lange gesperrt, bis ein Administrator die Sperre für das Konto aufhebt. Ein Administrator kann anhand des Anmeldeberichts Anmeldungen überprüfen und entsprechende Maßnahmen ergreifen, um weiterem Betrug vorzubeugen. Ein Administrator kann dann die Sperre für das Konto des Benutzers [aufheben](#unblock-a-user).
 - **Code zum Melden von Betrugsversuchen während der Begrüßung**: Wenn Benutzer einen Telefonanruf zur Ausführung der Überprüfung in zwei Schritten empfangen, drücken sie normalerweise die #-Taste, um ihre Anmeldung zu bestätigen. Wenn sie einen Betrug melden möchten, geben sie vor dem Drücken der #-TASTE einen Code ein. Dieser Code ist standardmäßig **0**, Sie können ihn jedoch anpassen.
 
 > [!NOTE]

@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 10/31/2016
+ms.date: 11/10/2017
 ms.author: kevin;barbkess
-ms.openlocfilehash: 52026a58a5b6e26a660f9e1374e67036c67ac525
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d10d06edfc75594854d8f4da5cf29d6c2fd5ed24
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>Kapazitätsgrenzen von SQL Data Warehouse
 Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Komponenten von Azure SQL Data Warehouse zulässig sind.
@@ -27,12 +27,12 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 ## <a name="workload-management"></a>Workloadverwaltung
 | Kategorie | Beschreibung | Maximum |
 |:--- |:--- |:--- |
-| [Data Warehouse-Einheiten (Data Warehouse Unit, DWUs)][Data Warehouse Units (DWU)] |Max. DWUs für ein einzelnes SQL Data Warehouse |6000 |
-| [Data Warehouse-Einheiten (Data Warehouse Unit, DWUs)][Data Warehouse Units (DWU)] |Max. DWUs für eine einzelne SQL Server-Instanz |Standardmäßig 6.000<br/><br/> Standardmäßig verfügt jede SQL Server-Instanz (z.B. „myserver.database.windows.net“) über ein Kontingent von 45.000 DTUs, das bis zu 6.000 DWUs zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein [Supportticket erstellen][creating a support ticket] und als Anfragetyp *Kontingent* wählen.  Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5. Sie können den aktuellen DTU-Verbrauch im Portal auf dem Blatt „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
-| Datenbankverbindung |Gleichzeitig geöffnete Sitzungen |1.024<br/><br/>Wir unterstützen maximal 1.024 aktive Verbindungen, wobei jede Verbindung gleichzeitig Anforderungen an eine SQL Data Warehouse-Datenbank übermitteln kann. Beachten Sie, dass die Anzahl der Abfragen, die tatsächlich gleichzeitig ausgeführt werden können, begrenzt ist. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet. |
+| [Data Warehouse-Einheiten (Data Warehouse Unit, DWUs)][Data Warehouse Units (DWU)] |Max. DWUs für ein einzelnes SQL Data Warehouse | Optimiert für Elastizität-[Leistungsstufe](performance-tiers.md): DW6000<br></br>Optimiert für Compute-[Leistungsstufe](performance-tiers.md): DW30000c |
+| [Data Warehouse-Einheiten (Data Warehouse Unit, DWUs)][Data Warehouse Units (DWU)] |Standard-DTU pro Server |54.000<br></br>Standardmäßig verfügt jede SQL Server-Instanz (z.B. „myserver.database.windows.net“) über ein Kontingent von 54.000 DTUs, das bis zu DW6000c zulässt. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein [Supportticket erstellen][creating a support ticket] und als Anfragetyp *Kontingent* wählen.  Multiplizieren Sie zum Berechnen Ihrer DTU-Anforderungen die Anzahl der insgesamt benötigten DWUs mit 7,5, oder multiplizieren Sie die erforderlichen cDWUs mit 9,0. Beispiel:<br></br>DW6000 x 7,5 = 45.000 DTUs<br></br>DW600c x 9,0 = 54.000 DTUs<br></br>Sie können den aktuellen DTU-Verbrauch im Portal über die Option „SQL-Server“ anzeigen. Sowohl angehaltene als auch nicht angehaltene Datenbanken werden in das DTU-Kontingent eingerechnet. |
+| Datenbankverbindung |Gleichzeitig geöffnete Sitzungen |1024<br/><br/>Jeder der 1024 aktiven Sitzungen kann gleichzeitig Anforderungen an eine SQL Data Warehouse-Datenbank senden. Beachten Sie, dass die Anzahl der Abfragen begrenzt ist, die gleichzeitig ausgeführt werden können. Wenn der Grenzwert überschritten wird, gelangt die Anforderung in eine interne Warteschlange, in der sie auf die Verarbeitung wartet. |
 | Datenbankverbindung |Maximaler Arbeitsspeicher für vorbereitete Anweisungen |20 MB |
-| [Workloadverwaltung][Workload management] |Maximale Anzahl gleichzeitiger Abfragen |32<br/><br/> SQL Data Warehouse kann standardmäßig maximal 32 gleichzeitige Abfragen ausführen. Darüber hinausgehende Abfragen werden in eine Warteschlange eingereiht.<br/><br/>Der Grad an Parallelität kann sich verringern, wenn Benutzer einer höheren Ressourcenklasse zugewiesen werden oder SQL Data Warehouse mit einer niedrigen DWU konfiguriert ist. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden. |
-| [Tempdb][Tempdb] |Maximale Größe von „tempdb“ |399GB pro DW100. Daher ist „tempdb“ in DWU1000 3,99TB groß. |
+| [Workloadverwaltung][Workload management] |Maximale Anzahl gleichzeitiger Abfragen |32<br/><br/> SQL Data Warehouse kann standardmäßig maximal 32 gleichzeitige Abfragen ausführen. Darüber hinausgehende Abfragen werden in eine Warteschlange eingereiht.<br/><br/>Die Anzahl der gleichzeitigen Abfragen kann abnehmen, wenn Benutzer höheren Ressourcenklassen zugeordnet werden oder wenn SQL Data Warehouse einen niedrigeren [Servicelevel](performance-tiers.md#service-levels) aufweist. Einige Abfragen, wie DMV-Abfragen, dürfen immer ausgeführt werden. |
+| [tempdb][Tempdb] |Maximale GB |399GB pro DW100. Daher ist „tempdb“ in DWU1000 3,99 TB groß. |
 
 ## <a name="database-objects"></a>Datenbankobjekte
 | Kategorie | Beschreibung | Maximum |
@@ -42,8 +42,8 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 | Tabelle |Tabellen pro Datenbank |2 Milliarden |
 | Tabelle |Spalten pro Tabelle |1024 Spalten |
 | Tabelle |Bytes pro Spalte |Abhängig von der Spalte [Datentyp][data type].  Grenzwert ist 8.000 für Char-Datentypen, 4.000 für Nvarchar oder 2GB für MAX-Datentypen. |
-| Tabelle |Bytes pro Zeile, definierte Größe |8.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie SQL Server unterstützt SQL Data Warehouse die Speicherung von Zeilenüberlaufsdaten, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie im MSDN-Artikel [Zeilenüberlauf bei Daten über 8 KB][Row-Overflow Data Exceeding 8 KB]. |
-| Tabelle |Partitionen pro Tabelle |15.000<br/><br/>Um eine hohe Leistung zu erzielen, empfehlen wir, die Anzahl der Partitionen zu minimieren, die Sie zum Erfüllen Ihrer Geschäftsanforderungen benötigen. Mit einer steigenden Anzahl von Partitionen wächst der Verarbeitungsaufwand für Datendefinitionssprache (DDL)- und Datenbearbeitungssprache (DML)-Vorgänge, was zu Leistungseinbußen führt. |
+| Tabelle |Bytes pro Zeile, definierte Größe |8.060 Bytes<br/><br/>Die Anzahl von Bytes pro Zeile wird auf die gleiche Weise wie bei SQL Server mit aktivierter Seitenkomprimierung berechnet. Wie SQL Server unterstützt SQL Data Warehouse die Speicherung von Zeilenüberlaufsdaten, sodass **Spalten variabler Länge** aus der Zeile verschoben werden können. Wenn Zeilen variabler Länge aus der Zeile verschoben werden, wird nur der 24-Byte-Stamm im Hauptdatensatz gespeichert. Weitere Informationen finden Sie in [Zeilenüberlauf bei Daten über 8 KB][Row-Overflow Data Exceeding 8 KB]. |
+| Table |Partitionen pro Tabelle |15.000<br/><br/>Um eine hohe Leistung zu erzielen, empfehlen wir, die Anzahl der Partitionen zu minimieren, die Sie zum Erfüllen Ihrer Geschäftsanforderungen benötigen. Mit einer steigenden Anzahl von Partitionen wächst der Verarbeitungsaufwand für Datendefinitionssprache (DDL)- und Datenbearbeitungssprache (DML)-Vorgänge, was zu Leistungseinbußen führt. |
 | Tabelle |Zeichen pro Partitionsbegrenzungswert. |4000 |
 | Index |Nicht gruppierte Indizes pro Tabelle. |999<br/><br/>Gilt nur für Rowstore-Tabellen |
 | Index |Gruppierte Indizes pro Tabelle. |1<br><br/>Gilt sowohl für Rowstore- als auch für Columnstore-Tabellen |
@@ -58,7 +58,7 @@ Die folgenden Tabellen erhalten die maximalen Werte, die für verschiedene Kompo
 ## <a name="loads"></a>Lädt
 | Kategorie | Beschreibung | Maximum |
 |:--- |:--- |:--- |
-| PolyBase-Auslastung |MB pro Zeile |1<br/><br/>Der Ladevorgang in PolyBase ist auf das Laden von Zeilen beschränkt, die kleiner als 1 MB sind und nicht in Spalten des Typs VARCHR(MAX) NVARCHAR(MAX) oder VARBINARY(MAX) geladen werden können.<br/><br/> |
+| PolyBase-Auslastung |MB pro Zeile |1<br/><br/>PolyBase lädt nur Zeilen, die kleiner als 1 MB sind, und kann nicht in Spalten des Typs VARCHR(MAX), NVARCHAR(MAX) oder VARBINARY(MAX) laden.<br/><br/> |
 
 ## <a name="queries"></a>Abfragen
 | Kategorie | Beschreibung | Maximum |

@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über die Software- und Netzwerkanforderungen f�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/16/2017
+ms.date: 11/14/2017
 ms.author: alkohli
-ms.openlocfilehash: 8cae0577d950e3968bc25083e59d637963e6b442
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 5d01523f326bd7e2518bff06e62ae62db8f318d3
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -41,7 +41,10 @@ Die Softwareanforderungen umfassen Informationen zu den unterstützten Webbrowse
 | **Hypervisor** | **Version** |
 | --- | --- |
 | Hyper-V |Windows Server 2008 R2 SP1 und höher |
-| VMware ESXi |5.5 und 6.0 |
+| VMware ESXi |5.0, 5.5 und 6.0 <br> (6.5 wird nicht unterstützt.) |
+
+> [!IMPORTANT]
+> Installieren Sie VMware-Tools nicht im StorSimple Virtual Array. Dies führt zu einer nicht unterstützten Konfiguration.
 
 ### <a name="virtual-device-requirements"></a>Anforderungen für virtuelle Geräte
 | **Komponente** | **Anforderung** |
@@ -79,8 +82,8 @@ Die folgenden Softwareanforderungen gelten für die SMB-Clients, die auf StorSim
 | SMB 3.02 |
 
 > [!IMPORTANT]
-> Kopieren oder speichern Sie mit dem verschlüsselndes Dateisystem von Windows (Encrypting File System, EFS) geschützte Dateien nicht auf den StorSimple Virtual Array-Dateiserver, da dies zu einer nicht unterstützten Konfiguration führt. 
-> 
+> Kopieren oder speichern Sie mit dem verschlüsselndes Dateisystem von Windows (Encrypting File System, EFS) geschützte Dateien nicht auf den StorSimple Virtual Array-Dateiserver, da dies zu einer nicht unterstützten Konfiguration führt.
+
 
 ### <a name="supported-storage-format"></a>Unterstützte Speicherformate
 Es wird nur der Azure-Blockblobspeicher unterstützt. Seitenblobs werden nicht unterstützt. Weitere Informationen zu [Blockblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).

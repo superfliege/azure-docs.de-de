@@ -1,6 +1,6 @@
 ---
-title: "Herstellen einer Verbindung mit virtuellen Computern nach einem Failover an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation"
-description: "Leitfaden für Netzwerke für die Verbindung mit VMs nach einem Failover zu einem sekundären Standort mit Azure Site Recovery."
+title: "Einrichten von IP-Adressen für das Verbinden mit einem sekundären Standort nach einem Failover mit Azure Site Recovery | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie IP-Adressen für die Verbindung mit VMs an einem sekundären Standort nach einem Failover mit Azure Site Recovery einrichten."
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,15 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2017
+ms.date: 11/14/2017
 ms.author: pratshar
-ms.openlocfilehash: ce33a90a303a10de8ff198754e8e39c334035537
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 6baeda08b1c41cc024a02f51ca27be2829c46962
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="connecting-to-vms-after-failover-to-a-secondary-site"></a>Herstellen einer Verbindung mit virtuellen Computern nach einem Failover an einem sekundären Standort
+# <a name="set-up-ip-addressing-to-connect-after-failover-to-a-secondary-site"></a>Einrichten von IP-Adressen für das Verbinden nach einem Failover mit einem sekundären Standort
 
 Nachdem Sie die Voraussetzungen für die Bereitstellung überprüft haben, lesen Sie diesen Artikel, um das Netzwerk zu planen, das zum Replizieren von in System Center Virtual Machine Manager-Clouds (VMM) verwalteten Hyper-V-VMs an einem sekundären Standort mithilfe von [Azure Site Recovery](site-recovery-overview.md) im Azure-Portal erforderlich ist. 
 

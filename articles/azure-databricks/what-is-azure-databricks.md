@@ -1,6 +1,6 @@
 ---
-title: Was ist Azure Databricks? | Microsoft-Dokumentation
-description: Azure Databricks ist eine auf Apache Spark basierende Datenanalyseplattform.
+title: Was ist Azure Databricks? | Microsoft Docs
+description: "Erfahren Sie, was Azure Databricks ist und wie es Spark auf Databricks in Azure integriert. Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die für die Microsoft Azure-Clouddienstplattform optimiert ist."
 services: azure-databricks
 documentationcenter: 
 author: nitinme
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: nitinme
-ms.openlocfilehash: 4361c29f81aae3e22e00f4cd854306c27adc2dbc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7ced38cda2669cf03e51f50fbbbeea0344da9277
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="what-is-azure-databricks"></a>Was ist Azure Databricks?
 

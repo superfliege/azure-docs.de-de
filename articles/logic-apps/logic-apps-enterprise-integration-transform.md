@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: fb6027769377b3527b11f7831dab3bb8d7061c84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f09819a1bfd380cd826a478471e673b6d5ff9ee7
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>Unternehmensintegration mit XML-Transformationen
 ## <a name="overview"></a>Übersicht
@@ -50,6 +50,11 @@ Sobald die Voraussetzungen erfüllt sind, können Sie Ihre Logik-App erstellen:
    ![](./media/logic-apps-enterprise-integration-transforms/transform-3.png)  
 5. Wählen Sie die Aktion **XML transformieren** aus.   
 6. Fügen Sie den XML-**INHALT** hinzu, der transformiert werden soll. Sie können beliebige XML-Daten verwenden, die Sie in der HTTP-Anforderung als **INHALT** empfangen. Wählen Sie in diesem Beispiel den Text der HTTP-Anforderung aus, die die Logik-App ausgelöst hat.
+
+   > [!NOTE]
+   > Stellen Sie sicher, dass der Inhalt von **XML transformieren** XML ist. Wenn der Inhalt nicht XML ist oder wenn er Base64-codiert ist, müssen Sie einen Ausdruck angeben, der den Inhalt verarbeitet. Beispielsweise können Sie [Funktionen](logic-apps-workflow-definition-language.md#functions) verwenden, z.B. ```@base64ToBinary``` zum Decodieren des Inhalts oder ```@xml``` zum Verarbeiten des Inhalts als XML.
+ 
+
 7. Wählen Sie den Namen der **ZUORDNUNG** aus, mit deren Hilfe die Transformation erfolgen soll. Die Zuordnung muss bereits in Ihrem Integrationskonto enthalten sein. In einem früheren Schritt haben Sie Ihrer Logik-App bereits Zugriff auf Ihr Integrationskonto gewährt, das Ihre Zuordnung enthält.      
    ![](./media/logic-apps-enterprise-integration-transforms/transform-4.png) 
 8. Speichern Sie Ihre Arbeit.  

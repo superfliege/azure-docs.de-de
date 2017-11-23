@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/11/2017
+ms.date: 11/21/2017
 ms.author: pratshar
-ms.openlocfilehash: 9d6a806ec533259797080fbfee2c38f918ebd8a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d73acd17d69564134026672b81c5dc32e15d8cd7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>Netzwerkzuordnung zwischen zwei Azure-Regionen
 
@@ -83,15 +83,15 @@ Die IP-Adresse für jede Netzwerkschnittstelle des virtuellen Zielcomputers wird
 Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers DHCP verwendet, wird die Netzwerkschnittstelle des virtuellen Zielcomputers ebenfalls als DHCP festgelegt.
 
 ### <a name="static-ip"></a>Statische IP
-Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers eine statische IP verwendet, wird die Netzwerkschnittstelle des virtuellen Zielcomputers ebenfalls für die Verwendung einer statischen IP festgelegt. Die statische IP-Adresse wird wie folgt ausgewählt:
+Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers eine statische IP-Adresse verwendet, wird die Netzwerkschnittstelle des virtuellen Zielcomputers ebenfalls für die Verwendung einer statischen IP-Adresse festgelegt. Die statische IP-Adresse wird wie folgt ausgewählt:
 
 #### <a name="same-address-space"></a>Gleicher Adressraum
 
-Wenn das Quellsubnetz und das Zielsubnetz über denselben Adressraum verfügen, wird die Ziel-IP auf die IP-Adresse der Netzwerkschnittstelle des virtuellen Quellcomputers festgelegt. Wenn dieselbe IP nicht verfügbar ist, wird eine andere verfügbare IP als die Ziel-IP festgelegt.
+Wenn das Quellsubnetz und das Zielsubnetz über denselben Adressraum verfügen, wird die Ziel-IP-Adresse auf die IP-Adresse der Netzwerkschnittstelle des virtuellen Quellcomputers festgelegt. Wenn dieselbe IP nicht verfügbar ist, wird eine andere verfügbare IP als die Ziel-IP festgelegt.
 
 #### <a name="different-address-space"></a>Unterschiedlicher Adressraum
 
-Wenn das Quellsubnetz und das Zielsubnetz über unterschiedliche Adressräume verfügen, wird die Ziel-IP auf eine der verfügbaren IPs im Zielsubnetz festgelegt.
+Wenn das Quellsubnetz und das Zielsubnetz über unterschiedliche Adressräume verfügen, wird die Ziel-IP-Adresse auf eine der verfügbaren IP-Adressen im Zielsubnetz festgelegt.
 
 Sie können die Ziel-IP für jede Netzwerkschnittstelle ändern, indem Sie zu den Einstellungen für Compute und Netzwerk des virtuellen Computers navigieren.
 

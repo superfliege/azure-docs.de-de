@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: tamram
-ms.openlocfilehash: cbc8654bf1755826afa2cf83e5476e88903e0854
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4dfca37e3a369fdfb41b4064b72ccd027bd8cbd3
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt
 
@@ -55,7 +55,7 @@ Die Zuordnung Ihrer benutzerdefinierten Domäne zu einem Blobendpunkt kann zu ei
 Die Zwischenschaltungsmethode ist unter [Registrieren einer benutzerdefinierten Domäne mithilfe der Unterdomäne *asverify*](#register-a-custom-domain-using-the-asverify-subdomain) beschrieben.
 
 ## <a name="register-a-custom-domain"></a>Registrieren einer benutzerdefinierten Domäne
-Verwenden Sie dieses Verfahren, um Ihre benutzerdefinierte Domäne zu registrieren, wenn es unerheblich ist, ob die Domäne Benutzern kurzzeitig nicht zur Verfügung steht, oder wenn Ihre benutzerdefinierte Domäne derzeit keine Anwendung hostet.
+Verwenden Sie dieses Verfahren, um Ihre benutzerdefinierte Domäne zu registrieren, wenn es unerheblich ist, ob die Domäne Benutzern kurzzeitig nicht zur Verfügung steht, oder wenn Ihre benutzerdefinierte Domäne derzeit keine Anwendung hostet. Mithilfe von Azure-DNS können Sie einen benutzerdefinierten DNS-Namen für Ihren Azure-Blob-Speicher erstellen. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage).
 
 Wenn Ihre benutzerdefinierte Domäne derzeit eine Anwendung unterstützt, die keine Downtime zulässt, gehen Sie nach dem Verfahren vor, das unter [Registrieren einer benutzerdefinierten Domäne mithilfe der Unterdomäne *asverify*](#register-a-custom-domain-using-the-asverify-subdomain) skizziert ist.
 

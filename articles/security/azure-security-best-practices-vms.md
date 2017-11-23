@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: c8a920a0523cb4737e6bbca7e49d0b9e2c942565
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bfd7208af3252ab69808d09fa7434a2cea7f93a8
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Bewährte Methoden für die Sicherheit virtueller Azure-Computer
 
@@ -47,7 +47,7 @@ In dem Artikel werden folgende bewährten Sicherheitsmethoden für virtuelle Com
 
 ## <a name="vm-authentication-and-access-control"></a>Authentifizierung und Zugriffssteuerung für virtuelle Computer
 
-Der erste Schritt zum Schutz Ihres virtuellen Computers ist es, sicherzustellen, dass nur autorisierte Benutzer neue VMs bereitstellen können. Mithilfe von [Azure Resource Manager-Richtlinien](../azure-resource-manager/resource-manager-policy.md) können Sie Konventionen für Ressourcen in Ihrer Organisation einrichten, benutzerdefinierte Richtlinien erstellen und diese Richtlinien auf Ressourcen (beispielsweise [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md)) anwenden.
+Der erste Schritt zum Schutz Ihres virtuellen Computers ist es, sicherzustellen, dass nur autorisierte Benutzer neue VMs bereitstellen können. Mithilfe von [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md) können Sie Konventionen für Ressourcen in Ihrer Organisation einrichten, benutzerdefinierte Richtlinien erstellen und diese Richtlinien auf Ressourcen (beispielsweise [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md)) anwenden.
 
 Virtuelle Computer, die einer Ressourcengruppe angehören, erben natürlich deren Richtlinien. Diese Herangehensweise wird zwar für die Verwaltung virtueller Computer empfohlen, Sie können den Zugriff auf einzelne VM-Richtlinien jedoch auch mithilfe der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-configure.md) steuern.
 

@@ -13,13 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
-ms.openlocfilehash: 9caea4191a2ca99e6e98cc8ce7ca9ca0c7b8dc87
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: bba2781d43aff9e462246cfe21961695e48196d8
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – Sicherheitsüberlegungen für Datenverschiebung
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [Version 1: Allgemein verfügbare Version](v1/data-factory-data-movement-security-considerations.md)
+> * [Version 2 – Vorschauversion](data-movement-security-considerations.md)
+
 In diesem Artikel ist die grundlegenden Sicherheitsinfrastruktur beschrieben, die von Datenverschiebungsdiensten in Azure Data Factory verwendet wird, um Ihre Daten zu schützen. Azure Data Factory-Verwaltungsressourcen setzen auf der Azure Sicherheitsinfrastruktur auf und nutzen alle möglichen Sicherheitsmaßnahmen, die von Azure bereitgestellt werden.
 
 > [!NOTE]
@@ -27,7 +31,7 @@ In diesem Artikel ist die grundlegenden Sicherheitsinfrastruktur beschrieben, di
 
 In einer Data Factory-Lösung erstellen Sie mindestens eine [Pipeline](concepts-pipelines-activities.md). Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten, die zusammen eine Aufgabe bilden. Diese Pipelines befinden sich in der Region, in der die Data Factory erstellt wurde. 
 
-Obwohl Data Factory nur in den Regionen **USA, Osten** und **USA, Osten 2** (Version 2, Vorschau) verfügbar ist, ist der Datenverschiebungsdienst [global in verschiedenen Regionen](concepts-integration-runtime.md#azure-ir) verfügbar. Wenn der Datenverschiebungsdienst noch nicht in dieser Region bereitgestellt wurde, stellt der Data Factory-Dienst sicher, dass Daten einen geografischen Bereich/eine geografische Region nicht verlassen, es sei denn, Sie weisen den Dienst ausdrücklich an, eine alternative Region zu verwenden. 
+Obwohl Data Factory nur in den Regionen **USA, Osten**, **USA, Osten 2** und **Westeuropa** (Version 2, Vorschau) verfügbar ist, ist der Datenverschiebungsdienst [global in verschiedenen Regionen](concepts-integration-runtime.md#azure-ir) verfügbar. Wenn der Datenverschiebungsdienst noch nicht in dieser Region bereitgestellt wurde, stellt der Data Factory-Dienst sicher, dass Daten einen geografischen Bereich/eine geografische Region nicht verlassen, es sei denn, Sie weisen den Dienst ausdrücklich an, eine alternative Region zu verwenden. 
 
 Azure Data Factory selbst speichert keine Daten mit Ausnahme für verknüpfte Dienstanmeldeinformationen für Clouddatenspeicher, die mit Zertifikaten verschlüsselt sind. Der Dienst ermöglicht das Erstellen von datengesteuerten Workflows, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](copy-activity-overview.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Compute Services](compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem können Sie mithilfe von SDKs und Azure Monitor Workflows überwachen und verwalten.
 

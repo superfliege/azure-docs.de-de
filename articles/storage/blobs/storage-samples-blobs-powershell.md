@@ -13,13 +13,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: sample
-ms.date: 06/13/2017
+ms.date: 11/07/2017
 ms.author: robinsh
-ms.openlocfilehash: 74f6e8eb6dd29633fbf518831b446a149fbbddc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbf818a023219e1673a8864e8bf9a8ecd6110b85
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure PowerShell-Beispiele für Azure Blob Storage
 
@@ -28,7 +28,8 @@ Die folgende Tabelle enthält Links zu Beispielen von PowerShell-Skripts, die Az
 | | |
 |---|---|
 |**Speicherkonten**||
-| [Erstellen eines Speicherkontos und Abrufen/Rotieren der Zugriffsschlüssel](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fcli%2fazure%2ftoc.json)| Erstellt ein Azure Storage-Konto, ruft einen seiner Zugriffsschlüssel ab und rotiert diesen. |
+| [Erstellen eines Speicherkontos und Abrufen/Rotieren der Zugriffsschlüssel](../scripts/storage-common-rotate-account-keys-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt ein Azure Storage-Konto, ruft einen seiner Zugriffsschlüssel ab und rotiert diesen. |
 |**Blob Storage**||
-| [Berechnen der Gesamtgröße eines Blob Storage-Containers](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fcli%2fazure%2ftoc.json) | Berechnet die Gesamtgröße aller Blobs in einem Container. |
-| [Löschen von Containern mit einem bestimmten Präfix](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fcli%2fazure%2ftoc.json) | Löscht Container, deren Name mit einer angegebenen Zeichenfolge beginnt. |
+| [Berechnen der Gesamtgröße eines Blob Storage-Containers](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Berechnet die Gesamtgröße aller Blobs in einem Container. |
+| [Berechnen der Größe eines Blob Storage-Containers zu Abrechnungszwecken](../scripts/storage-blobs-container-calculate-billing-size-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Berechnet die Größe eines Containers in Blob Storage zur Schätzung der Abrechnungskosten. |
+| [Löschen von Containern mit einem bestimmten Präfix](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Löscht Container, deren Name mit einer angegebenen Zeichenfolge beginnt. |

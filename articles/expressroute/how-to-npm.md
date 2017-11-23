@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/01/2017
+ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: aff54b86da6a8a062a3f1c76aa69e32c60008274
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute (Vorschau)
 
@@ -39,13 +39,19 @@ Ihre Möglichkeiten:
 
 * Anzeigen des ExpressRoute-Systemstatus von einem früheren Zeitpunkt aus
 
-**Wie funktioniert das?**
+## <a name="regions"></a>Unterstützte Regionen
+
+Sie können ExpressRoute-Verbindungen in jedem Teil der Welt mit einem Arbeitsbereich, der in einer der folgenden Regionen gehostet wird, überwachen:
+
+* Europa, Westen 
+* USA (Ost) 
+* Südostasien 
+
+## <a name="workflow"></a>Workflow
 
 Überwachungs-Agents werden auf mehreren Servern (lokal und in Azure) installiert. Die Agents kommunizieren miteinander, senden jedoch keine Daten, sondern TCP-Handshakepakete. Die Kommunikation zwischen den Agents ermöglicht es Azure, die Netzwerktopologie und den Pfad zuzuordnen, die der Datenverkehr nutzen kann.
 
-**Workflow**
-
-1. Erstellen Sie einen NPM-Arbeitsbereich in der Region „USA, Westen-Mitte“. Derzeit ist dies die einzige Region, in der diese Vorschau unterstützt wird.
+1. Erstellen Sie einen NPM-Arbeitsbereich in einer der [unterstützten Regionen](#regions).
 2. Installieren und konfigurieren Sie Software-Agents: 
     * Installieren Sie Überwachungs-Agents auf den lokalen Servern und den virtuellen Azure-Computern.
     * Konfigurieren Sie die Einstellungen der Server der Überwachungs-Agents, um diesen die Kommunikation zu ermöglichen. (Öffnen Sie die Firewallports usw.)
@@ -53,7 +59,7 @@ Ihre Möglichkeiten:
 4. Fordern Sie die Aufnahme Ihres NPM-Arbeitsbereichs in eine Whitelist an.
 5. Richten Sie die Überwachung ein: automatisches Erkennen und Verwalten, welche Netzwerke im Netzwerkleistungsmonitor sichtbar sind.
 
-Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte oder Dienste zu überwachen und bereits einen Arbeitsbereich in der Region „USA, Westen Mitte“ besitzen, können Sie Schritt 1 und 2 überspringen und Ihre Konfiguration mit Schritt 3 beginnen.
+Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte oder Dienste zu überwachen, und bereits einen Arbeitsbereich in einer der unterstützten Regionen besitzen, können Sie die Schritte 1 und 2 überspringen und Ihre Konfiguration mit Schritt 3 beginnen.
 
 ## <a name="configure"></a>Schritt 1: Erstellen eines Arbeitsbereichs
 
@@ -66,8 +72,13 @@ Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte ode
   * OMS-Arbeitsbereich: Geben Sie einen Namen für Ihren Arbeitsbereich ein.
   * Abonnement: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, das Sie dem neuen Arbeitsbereich zuordnen möchten.
   * Ressourcengruppe: Erstellen Sie eine Ressourcengruppe, oder verwenden Sie eine vorhandene.
-  * Standort: Sie müssen „USA, Westen-Mitte“ für diese Vorschau auswählen.
+  * Standort: Sie müssen eine [unterstützte Region](#regions) auswählen.
   * Tarif: Wählen Sie „Free“ aus.
+  
+  >[!NOTE]
+  >Die ExpressRoute-Verbindung kann sich an einer beliebigen Stelle auf der ganzen Welt befinden. Sie muss nicht in der gleichen Region wie der Arbeitsbereich liegen.
+  >
+
 
   ![Arbeitsbereich](.\media\how-to-npm\4.png)<br><br>
 4. Klicken Sie auf **OK**, um die Einstellungsvorlage zu speichern und bereitzustellen. Sobald die Vorlage überprüft wurde, klicken Sie auf **Erstellen**, um den Arbeitsbereich bereitzustellen.
@@ -95,7 +106,7 @@ Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte ode
 
 ### <a name="installagent"></a>2.2: Installieren eines Überwachungs-Agents auf jeden Überwachungsserver
 
-1. Führen Sie das **Setup** aus, um den Agent auf jedem Server zu installieren, den Sie zum Überwachen von ExpressRoute verwenden möchten. Der Server, den Sie für die Überwachung verwenden, kann lokal oder ein virtueller Computer sein und benötigt Zugriff auf das Internet. Sie müssen mindestens einen Agent lokal und einen in jedem Netzwerksegment installieren, das in Azure überwacht werden soll.
+1. Führen Sie das **Setup** aus, um den Agent auf jedem Server zu installieren, den Sie zum Überwachen von ExpressRoute verwenden möchten. Der Server, den Sie für die Überwachung verwenden, kann lokal oder ein virtueller Computer sein und benötigt Zugriff auf das Internet. Sie müssen mindestens einen Agent lokal und einen in jedem Netzwerksegment, das in Azure überwacht werden soll, installieren.
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**.
 3. Lesen Sie die Seite **Lizenzbedingungen** durch, und klicken Sie anschließend auf **Ich stimme zu**.
 4. Auf der Seite **Zielordner** können Sie den Standardinstallationsordner entweder ändern oder beibehalten. Klicken Sie anschließend auf **Weiter**.
@@ -116,7 +127,7 @@ Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte ode
 
 ### <a name="proxy"></a>2.3: Konfigurieren von Proxyeinstellungen (optional)
 
-Wenn Sie einen Webproxy verwenden, um auf das Internet zuzugreifen, verwenden Sie folgende Schritte, um die Proxyeinstellungen für den Microsoft Monitoring Agent zu konfigurieren. Diese Schritte müssen für jeden Server ausgeführt werden. Wenn Sie viele Server konfigurieren müssen, ist es möglicherweise einfacher, diesen Prozess mithilfe eines Skripts zu automatisieren. Wenn dies der Fall ist, finden Sie weitere Informationen unter [So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent mithilfe eines Skripts](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
+Wenn Sie einen Webproxy verwenden, um auf das Internet zuzugreifen, verwenden Sie folgende Schritte, um die Proxyeinstellungen für den Microsoft Monitoring Agent zu konfigurieren. Führen Sie diese Schritte für jeden Server aus. Wenn Sie viele Server konfigurieren müssen, ist es möglicherweise einfacher, diesen Prozess mithilfe eines Skripts zu automatisieren. Wenn dies der Fall ist, finden Sie weitere Informationen unter [So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent mithilfe eines Skripts](../log-analytics/log-analytics-windows-agents.md#to-configure-proxy-settings-for-the-microsoft-monitoring-agent-using-a-script).
 
 So konfigurieren Sie Proxyeinstellungen für den Microsoft Monitoring Agent über die Systemsteuerung:
 
@@ -168,8 +179,7 @@ Weitere Informationen zu Netzwerksicherheitsgruppen finden Sie unter [Netzwerksi
 >
 >
 
-Bevor Sie das ExpressRoute-Überwachungsfeature des Netzwerkleistungsmonitors verwenden können, müssen Sie anfordern, dass Ihr Arbeitsbereich in eine Whitelist aufgenommen wird. [Klicken Sie hier, um zu der Seite zu gelangen und das Anforderungsformular auszufüllen.](https://go.microsoft.com/fwlink/?linkid=862263) (Hinweis: Sie sollten diesen Link in einem neuen Fenster oder einer neuen Registerkarte öffnen.) Der Whitelistprozess kann einen Geschäftstag oder mehr in Anspruch nehmen. Wir senden Ihnen eine E-Mail, sobald der Whitelistvorgang abgeschlossen ist.
-
+Bevor Sie das ExpressRoute-Überwachungsfeature des Netzwerkleistungsmonitors verwenden können, müssen Sie anfordern, dass Ihr Arbeitsbereich in eine Whitelist aufgenommen wird. [Klicken Sie hier, um zu der Seite zu gelangen und das Anforderungsformular auszufüllen.](https://aka.ms/npmcohort) (Hinweis: Sie sollten diesen Link in einem neuen Fenster oder einer neuen Registerkarte öffnen.) Der Whitelistprozess kann einen Geschäftstag oder mehr in Anspruch nehmen. Sobald der Eintrag in der Whitelist vorgenommen wurde, senden wir Ihnen eine E-Mail zu.
 
 ## <a name="setupmonitor"></a>Schritt 5: Konfigurieren des Netzwerkleistungsmonitors für die ExpressRoute-Überwachung
 
@@ -189,7 +199,7 @@ Nachdem Sie die vorherigen Abschnitte abgeschlossen und überprüft haben, dass 
 3. Navigieren Sie auf der Konfigurationsseite zur Registerkarte „ExpressRoute-Peerings“, die sich im linken Bereich befindet. Klicken Sie auf **Jetzt ermitteln**.
 
   ![Ermitteln](.\media\how-to-npm\13.png)
-4. Wenn die Ermittlung abgeschlossen ist, werden Ihnen Regeln für eindeutige Verbindungsnamen und VNET-Namen angezeigt. Diese Regeln sind zunächst deaktiviert. Sie müssen diese Regeln aktivieren und dann die Überwachungs-Agents und Platzhalterwerte auswählen.
+4. Wenn die Ermittlung abgeschlossen ist, werden Ihnen Regeln für eindeutige Verbindungsnamen und VNET-Namen angezeigt. Diese Regeln sind zunächst deaktiviert. Aktivieren Sie diese Regeln, und wählen Sie dann die Überwachungs-Agents und Schwellenwerte aus.
 
   ![Regeln](.\media\how-to-npm\14.png)
 5. Nach dem Aktivieren der Regeln und dem Auswählen der Werte und Agents, die Sie überwachen möchten, gibt es eine Wartezeit von etwa 30 bis 60 Minuten, bis die Werte aufgefüllt und die Kacheln **ExpressRoute-Überwachung** verfügbar sind. Sobald Ihnen die Überwachungskacheln angezeigt werden, werden Ihre ExpressRoute-Verbindungen und -Verbindungsressourcen vom Netzwerkleistungsmonitor überwacht.
@@ -229,6 +239,7 @@ Sie können den Sichtbarkeitsgrad erhöhen, um lokale Hops einzuschließen, inde
 
 ![Filter](.\media\how-to-npm\topology.png)
 
-#### <a name="detailed-topology-view-of-a-particular-expressroute-circuit---with-vnet-connections"></a>Detaillierte Ansicht der Topologie einer bestimmten ExpressRoute-Verbindung einschließlich VNET-Verbindungen
+#### <a name="detailed-topology-view-of-a-circuit"></a>Detaillierte Topologieansicht einer Verbindung
 
-![Detaillierte Topologie](.\media\how-to-npm\17.png)
+Diese Ansicht zeigt die VNET-Verbindungen.
+![detaillierte Topologie](.\media\how-to-npm\17.png)

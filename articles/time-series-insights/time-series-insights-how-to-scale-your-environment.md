@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: a6f10e14e3f9e5761734738caddc247d9e4a90cd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d3c8b2b1ba220bf07a2bcdbd7fb26b94f897981f
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Gewusst wie: Skalieren der Azure Time Series Insights-Umgebung
 
@@ -50,7 +50,7 @@ Kapazitäten werden linear skaliert, sodass eine S1-SKU mit der Kapazität „2�
 
    ![configure.png](media/scale-your-environment/configure.png)
 
-3. Passen Sie die Kapazität mithilfe des Schiebereglers **Kapazität** an Ihre Anforderungen in den Bereichen Erfassungsrate und Speicherkapazität an. Erfassungsrate, Speicherkapazität und voraussichtliche Kosten werden dynamisch aktualisiert, um die Auswirkungen der Änderung zu zeigen. 
+3. Passen Sie die Kapazität mithilfe des Schiebereglers **Kapazität** an Ihre Anforderungen in den Bereichen Erfassungsrate und Speicherkapazität an. **Erfassungsrate**, **Speicherkapazität** und **voraussichtliche Kosten** werden dynamisch aktualisiert, um die Auswirkungen der Änderung zu zeigen. 
 
    ![Schieberegler](media/scale-your-environment/slider.png)
 
@@ -59,4 +59,5 @@ Kapazitäten werden linear skaliert, sodass eine S1-SKU mit der Kapazität „2�
 4. Klicken Sie auf **Speichern**, um die Umgebung zu skalieren. Die Statusanzeige wird angezeigt, bis die Änderung committet wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Stellen Sie sicher, dass die neue Kapazität ausreichend ist, um eine Drosselung zu verhindern. Weitere Informationen finden Sie unter [Diagnostizieren und Beheben von Problemen in der Time Series Insights-Umgebung](time-series-insights-diagnose-and-solve-problems.md).
+> [!div class="nextstepaction"]
+> [Überprüfen, ob die neue Kapazität ausreichend ist, um eine Drosselung zu verhindern](time-series-insights-diagnose-and-solve-problems.md)
