@@ -16,15 +16,15 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: e4848eb366faea134a484c8a494fed6a83203116
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 329003c7c4abe89f4af04473ee3664605b2ea81f
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="design-your-first-azure-sql-database"></a>Entwurf Ihrer ersten Azure SQL-Datenbank
 
-Azure SQL-Datenbank ist eine relationale DBaaS-Lösung (Database as a Service) in Microsoft Cloud („Azure“). In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) für folgende Zwecke verwenden: 
+Azure SQL-Datenbank ist eine relationale DBaaS-Lösung (Database-as-a-Service) in der Microsoft-Cloud (Azure). In diesem Tutorial erfahren Sie, wie Sie das Azure-Portal und [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) für folgende Zwecke verwenden: 
 
 > [!div class="checklist"]
 > * Erstellen einer Datenbank im Azure-Portal
