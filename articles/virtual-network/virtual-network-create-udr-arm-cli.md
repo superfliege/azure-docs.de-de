@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: b41754e74708a095d95eee31da5e304771a6ae05
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: adfcf53f9fca0efafb538edfd65b95313dcf1559
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="create-a-user-defined-route---azure-cli"></a>Erstellen einer benutzerdefinierten Route – Azure CLI
 
@@ -32,7 +32,7 @@ In diesem Tutorial erstellen Sie wie in der folgenden Abbildung gezeigt ein virt
 
 ![Benutzerdefinierte Routen](./media/create-user-defined-route/user-defined-routes.png)
 
-In diesem Artikel wird das Erstellen einer benutzerdefinierten Route über das Azure Resource Manager-Bereitstellungsmodell beschrieben. Dieses Bereitstellungsmodell wird für das Erstellen benutzerdefinierter Routen empfohlen. Wenn Sie stattdessen eine benutzerdefinierte Route mithilfe des klassischen Azure-Bereitstellungsmodells erstellen müssen, finden Sie unter [Erstellen einer benutzerdefinierten Route (klassisch)](virtual-network-create-udr-classic-cli.md) weitere Informationen. Wenn Sie mit den Azure-Bereitstellungsmodellen nicht vertraut sind, lesen Sie unter [Grundlegendes zu Azure-Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nach. Für weitere Informationen zu benutzerdefinierten Routen können Sie sich die [Übersicht zu benutzerdefinierten Routen](virtual-networks-udr-overview.md#user-defined-routes) ansehen.
+In diesem Artikel wird das Erstellen einer benutzerdefinierten Route über das Azure Resource Manager-Bereitstellungsmodell beschrieben. Dieses Bereitstellungsmodell wird für das Erstellen benutzerdefinierter Routen empfohlen. Wenn Sie stattdessen eine benutzerdefinierte Route mithilfe des klassischen Azure-Bereitstellungsmodells erstellen müssen, finden Sie unter [Erstellen einer benutzerdefinierten Route (klassisch)](virtual-network-create-udr-classic-cli.md) weitere Informationen. Wenn Sie mit den Azure-Bereitstellungsmodellen nicht vertraut sind, lesen Sie unter [Grundlegendes zu Azure-Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nach. Für weitere Informationen zu benutzerdefinierten Routen können Sie sich die [Übersicht zu benutzerdefinierten Routen](virtual-networks-udr-overview.md#user-defined) ansehen.
 
 ## <a name="create-routes-and-network-virtual-appliance"></a>Erstellen der Routen und des virtuellen Netzwerkgeräts
 
@@ -293,6 +293,12 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
         - **Ubuntu**: Führen Sie den Befehl `tracepath myvm-private` aus.
       Der Netzwerkdatenverkehr wird zuerst an die IP-Adresse 10.0.2.4 (das virtuelle Netzwerkgerät) und anschließend an die IP-Adresse 10.0.1.4 (die VM im privaten Subnetz) weitergeleitet. 
     - Führen Sie die vorherigen Schritte aus, indem Sie eine Verbindung mit der *myVm-Private-VM* herstellen und die *myVm-Public-VM* anpingen. Die Traceroute veranschaulicht den Netzwerkdatenverkehr, der über die IP-Adresse 10.0.2.4 an die IP-Adresse 10.0.0.4 (die VM im öffentlichen Subnetz) weitergeleitet wird.
+      
+      > [!NOTE]
+      > Mithilfe der vorhergehenden Schritte können Sie die Weiterleitung zwischen privaten Azure-IP-Adressen bestätigen. Falls Sie Datenverkehr durch eine virtuelle Netzwerkanwendung an öffentliche IP-Adressen weiterleiten – also einen Proxy bereitstellen – möchten, gilt:
+      > - Die Appliance muss Netzwerkadressübersetzung oder Proxyfunktionen bereitstellen. Im Fall von Netzwerkadressübersetzung muss die Appliance die Quell-IP-Adresse in ihre eigene übersetzen und diese Anforderung anschließend an die öffentliche IP-Adresse weiterleiten. Unabhängig davon, ob die Appliance die Quelladresse in eine Netzwerkadresse übersetzt oder als Proxy fungiert, übersetzt Azure die private IP-Adresse der virtuellen Appliance in eine öffentliche IP-Adresse. Weitere Informationen über die verschiedenen Methoden, die Azure verwendet, um private IP-Adressen in öffentliche IP-Adressen zu übersetzen finden Sie unter [Understanding outbound connections](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Grundlegendes zu ausgehenden Verbindungen).
+      > - Eine zusätzliche Route in der Routingtabelle, wie etwa Präfix: 0.0.0.0/0, Typ des nächsten Hops VirtualAppliance und IP-Adresse des nächsten Hops 10.0.2.4 (ausgehend vom vorhergehenden Beispielskript).
+      >
     - **Optional**: Verwenden Sie die Funktion „Nächster Hop“ von Azure Network Watcher, um den nächsten Hop zwischen zwei VMs in Azure zu überprüfen. Vor der Verwendung von Network Watcher müssen Sie zuerst [eine Instanz von Azure Network Watcher](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für die Region erstellen, in der Sie diesen Dienst verwenden möchten. In diesem Tutorial wird die Region „USA, Osten“ verwendet. Nachdem Sie eine Network Watcher-Instanz für die Region erstellt haben, geben Sie den folgenden Befehl ein, um sich Informationen zum nächsten Hop zwischen den VMs im öffentlichen und privaten anzeigen Subnetz anzeigen zu lassen:
      
         ```azurecli-interactive

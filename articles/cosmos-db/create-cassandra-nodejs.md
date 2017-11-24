@@ -15,26 +15,27 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: 1ce764a3395b0ddb9e78f1247fd55fabbeecb04e
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: abf88cf96b32bc4168cb8c09a6e70ad0e395e88c
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="quickstart-build-a-cassandra-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Cassandra-App mit Node.js und Azure Cosmos DB
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von Node.js und der [Cassandra-API](cassandra-introduction.md) von Azure Cosmos DB eine Profil-App erstellen, indem Sie ein Beispiel von GitHub klonen. Außerdem wird in dieser Schnellstartanleitung die Erstellung eines Azure Cosmos DB-Kontos über das webbasierte Azure-Portal gezeigt.
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
+Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Tabellen-, Schlüssel-Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB bietet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Sie benötigen Zugriff auf das Vorschauprogramm für die Cassandra-API von Azure Cosmos DB. Falls Sie noch keinen Zugriff angefordert haben, können Sie sich [hier](https://aka.ms/cosmosdb-cassandra-signup) registrieren.
-* [Node.js](https://nodejs.org/en/) Version v0.10.29 oder höher
-* [Git](http://git-scm.com/)
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] Alternativ können Sie [Azure Cosmos DB ohne Azure-Abonnement testen](https://azure.microsoft.com/try/cosmosdb/) – kostenlos und ohne Verpflichtung.
 
+Sie benötigen Zugriff auf das Vorschauprogramm für die Cassandra-API von Azure Cosmos DB. Falls Sie noch keinen Zugriff angefordert haben, können Sie sich [hier](cassandra-introduction.md#sign-up-now) registrieren.
+
+Außerdem haben Sie folgende Möglichkeiten:
+* [Node.js](https://nodejs.org/en/) Version v0.10.29 oder höher
+* [Git](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
@@ -193,6 +194,8 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 2. Führen Sie `node uprofile.js` aus, um Ihre Node-Anwendung zu starten.
 
 3. Überprüfen Sie die Ergebnisse über die Befehlszeile.
+
+    ![Anzeigen und Überprüfen der Ausgabe](./media/create-cassandra-nodejs/output.png)
 
     Drücken Sie STRG+C, um die Programmausführung zu beenden und das Konsolenfenster zu schließen. 
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 10/27/2017
-ms.openlocfilehash: cfffe5145f8762558e6ee573f6f2bb69d32424ad
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 07e74c64e587cce99612cd5047516bf131943f2e
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="aerial-image-classification"></a>Klassifizierung von Luftbildern
 
@@ -133,6 +133,11 @@ Wir erstellen nun das Speicherkonto, das die Projektdateien hostet, auf die HDIn
     Notieren Sie sich den Wert von `key1` als Speicherschlüssel im folgenden Befehl, und führen Sie dann den Befehl zum Speichern des Werts aus.
     ```
     set STORAGE_ACCOUNT_KEY=[storage account key]
+    ```
+1. Erstellen Sie mit dem folgenden Befehl eine Dateifreigabe mit dem Namen `baitshare` in Ihrem Speicherkonto:
+
+    ```
+    az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
 1. Laden Sie die Datei `settings.cfg` aus dem Unterverzeichnis „Code“ des Azure Machine Learning Workbench-Projekts in Ihrem bevorzugten Text-Editor, und fügen Sie den Speicherkontonamen und Schlüssel wie angegeben ein. Speichern und schließen Sie die `settings.cfg`-Datei.
 1. Wenn nicht bereits geschehen, laden Sie das Hilfsprogramm [AzCopy](http://aka.ms/downloadazcopy) herunter und installieren es. Stellen Sie sicher, dass sich die ausführbare AzCopy-Datei in Ihrem Systempfad befindet, indem Sie „AzCopy“ eingeben und die EINGABETASTE drücken, um die zugehörige Dokumentation anzuzeigen.

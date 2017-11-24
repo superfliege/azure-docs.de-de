@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/23/2017
+ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 97edbe67c25036dc1156f0f0ca5431a617d7a004
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9db7e276fbbc064abe16cab2d2df668d2b1c8f7d
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="multi-tenant-support-in-azure-site-recovery-for-replicating-vmware-virtual-machines-to-azure-through-csp"></a>Unterstützung mehrerer Mandanten in Azure Site Recovery für die Replikation von VMware-VMs in Azure über das CSP-Programm
 
@@ -50,7 +50,7 @@ Wie Sie im vorigen Diagramm sehen können, hat jeder Kunde einen eigenen Verwalt
 Die Anforderung der Isolation von Daten erfordert, dass sämtliche sensiblen Infrastrukturinformationen (z.B. Anmeldeinformationen für den Zugriff) den Mandanten nicht angezeigt werden. Aus diesem Grund wird empfohlen, dass alle Komponenten des Verwaltungsservers unter der alleinigen Kontrolle des Partners verbleiben. Der Verwaltungsserver hat die folgenden Komponenten:
 * Konfigurationsserver
 * Prozessserver
-* Masterzielserver 
+* Masterzielserver
 
 Ein horizontal skalierter Prozessserver ist auch unter Kontrolle des Partners.
 
@@ -82,7 +82,7 @@ Das Zugriffsverfahren des vCenter-Kontos ist wie folgt:
 
     * **Aufgaben**: Aufgabe erstellen, Aufgabe aktualisieren
 
-    * **VM**: 
+    * **VM**:
         * Konfiguration > Alle
         * Interaktion > Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren
         * Bestandsliste > Aus vorhandenen erstellen, Neu erstellen, Registrieren, Registrierung aufheben
@@ -138,8 +138,8 @@ Die VM-Voraussetzungen sind identisch mit der Beschreibung in der [Dokumentation
 
 ### <a name="step-1-create-a-tenant-account"></a>Schritt 1: Erstellen eines Mandantenkontos
 
-1. Melden Sie im [Microsoft Partner Center](https://partnercenter.microsoft.com/) bei Ihrem CSP-Konto an. 
- 
+1. Melden Sie im [Microsoft Partner Center](https://partnercenter.microsoft.com/) bei Ihrem CSP-Konto an.
+
 2. Klicken Sie im Menü **Dashboard** auf **Kunden**.
 
     ![Der Microsoft Partner Center-Link „Kunden“](./media/site-recovery-multi-tenant-support-vmware-using-csp/csp-dashboard-display.png)
@@ -160,22 +160,22 @@ Die VM-Voraussetzungen sind identisch mit der Beschreibung in der [Dokumentation
 
     ![Die Seite „Überprüfen“](./media/site-recovery-multi-tenant-support-vmware-using-csp/customer-summary-page.png)  
 
-    Nachdem Sie das Mandantenkonto erstellt haben, wird eine Bestätigungsseite mit den Details des Standardkontos und dem Kennwort dieses Abonnements angezeigt. 
+    Nachdem Sie das Mandantenkonto erstellt haben, wird eine Bestätigungsseite mit den Details des Standardkontos und dem Kennwort dieses Abonnements angezeigt.
 
 7. Speichern Sie die Informationen, und ändern Sie das Kennwort später auf der Anmeldungsseite des Azure-Portals den Anforderungen entsprechend.  
- 
+
     Sie können diese Informationen dem Mandanten unverändert mitteilen oder bei Bedarf ein getrenntes Konto erstellen und freigeben.
 
 ### <a name="step-2-access-the-tenant-account"></a>Schritt 2: Zugreifen auf das Mandantenkonto
 
-Sie können über das Microsoft Partner Center-Dashboard auf das Abonnement des Mandanten zugreifen, wie unter „Schritt 1: Erstellen eines Mandantenkontos“ beschrieben. 
+Sie können über das Microsoft Partner Center-Dashboard auf das Abonnement des Mandanten zugreifen, wie unter „Schritt 1: Erstellen eines Mandantenkontos“ beschrieben.
 
 1. Wechseln Sie zur Seite **Kunden**, und klicken Sie dann auf den Namen des Mandantenkontos.
 
 2. Auf der Seite **Abonnements** des Mandantenkontos können Sie die vorhandenen Abonnements des Kontos überwachen und bei Bedarf weitere Abonnements hinzufügen. Wählen Sie zum Verwalten der Vorgänge zur Notfallwiederherstellung des Mandanten **Alle Ressourcen (Azure-Portal)** aus.
 
     ![Der Link „Alle Ressourcen“](./media/site-recovery-multi-tenant-support-vmware-using-csp/all-resources-select.png)  
-    
+
     Durch Klicken auf **Alle Ressourcen** wird Ihnen Zugriff auf die Azure-Abonnements des Mandanten gewährt. Sie können den Zugriff überprüfen, indem Sie rechts oben im Azure-Portal auf den Link „Azure Active Directory“ klicken.
 
     ![Der Link „Azure Active Directory“](./media/site-recovery-multi-tenant-support-vmware-using-csp/aad-admin-display.png)
@@ -183,8 +183,8 @@ Sie können über das Microsoft Partner Center-Dashboard auf das Abonnement des 
 Sie können nun alle Standortwiederherstellungsvorgänge für den Mandanten über das Azure-Portal ausführen und die Notfallwiederherstellungsvorgänge verwalten. Um für die verwaltete Notfallwiederherstellung über das CSP-Programm auf das Mandantenabonnement zugreifen zu können, befolgen Sie den zuvor beschriebenen Prozess.
 
 ### <a name="step-3-deploy-resources-to-the-tenant-subscription"></a>Schritt 3: Bereitstellen von Ressourcen für das Abonnement des Mandanten
-1. Erstellen Sie im Azure-Portal eine Ressourcengruppe, und stellen Sie dann einen Recovery Services-Tresor wie üblich bereit. 
- 
+1. Erstellen Sie im Azure-Portal eine Ressourcengruppe, und stellen Sie dann einen Recovery Services-Tresor wie üblich bereit.
+
 2. Laden Sie den Tresorregistrierungsschlüssel herunter.
 
 3. Registrieren Sie den Konfigurationsserver des Mandanten mithilfe des Tresorregistrierungsschlüssels.

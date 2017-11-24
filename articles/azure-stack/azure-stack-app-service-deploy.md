@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 2dd5fe36105f4013c36dd4dc952424d5672ba91f
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: dba3da6f1aaf47c1b518fe0dba7ea22ae555c8c0
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Hinzufügen eines App Service-Ressourcenanbieters zu Azure Stack
 
@@ -99,7 +99,7 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image07.png)    
 
-11. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die Kern- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
+11. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die vCPU- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
 
     > [!NOTE]
     > Befolgen Sie bei Produktionsbereitstellungen die Anweisungen unter [Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack](azure-stack-app-service-capacity-planning.md).
@@ -108,11 +108,11 @@ Führen Sie zum Bereitstellen eines App Service-Ressourcenanbieters die folgende
 
     | Rolle | Mindestanzahl der Instanzen | Mindest-SKU | Hinweise |
     | --- | --- | --- | --- |
-    | Controller | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
-    | Verwaltung | 1 | Standard_A2 – (2 Kerne, 3.584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |
-    | Herausgeber | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Veröffentlicht Inhalte per FTP oder Webbereitstellung |
-    | FrontEnd | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Leitet Anforderungen an App Service-Anwendungen weiter |
-    | Freigegebener Worker | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Hostet Web oder -API-Anwendungen und Azure Functions-Apps. Sie können ggf. weitere Instanzen hinzufügen. Als Operator können Sie Ihr Angebot definieren und eine SKU-Ebene auswählen. Die Ebenen müssen mindestens einen Kern aufweisen. |
+    | Controller | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
+    | Verwaltung | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |
+    | Herausgeber | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Veröffentlicht Inhalte per FTP oder Webbereitstellung |
+    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Leitet Anforderungen an App Service-Anwendungen weiter |
+    | Freigegebener Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hostet Web oder -API-Anwendungen und Azure Functions-Apps. Sie können ggf. weitere Instanzen hinzufügen. Als Operator können Sie Ihr Angebot definieren und eine SKU-Ebene auswählen. Die Ebenen müssen mindestens eine vCPU aufweisen. |
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image08.png)    
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
-ms.openlocfilehash: aaceb556d926dbb09aeb2843a7941eadaaeb588b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 13c11902e275d1023e474d717800b3a36a6b31f2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -51,14 +51,6 @@ Die App für die Patchorchestrierung besteht aus den folgenden Teilkomponenten:
 > Die App für die Patchorchestrierung verwendet den Reparatur-Manager-Systemdienst in Service Fabric, um die Knoten zu aktivieren und zu deaktivieren und um Integritätsprüfungen durchzuführen. Der von der App für die Patchorchestrierung erstellte Reparaturtask verfolgt den Windows Update-Fortschritt für jeden Knoten nach.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
-### <a name="minimum-supported-service-fabric-runtime-version"></a>Mindestens unterstützte Service Fabric-Laufzeitversion
-
-#### <a name="azure-clusters"></a>Azure-Cluster
-Die App für die Patchorchestrierung muss auf Azure-Clustern mit Service Fabric-Laufzeitversion 5.5 oder höher ausgeführt werden.
-
-#### <a name="standalone-on-premises-clusters"></a>Eigenständige lokale Cluster
-Die App für die Patchorchestrierung muss auf eigenständigen Clustern mit Service Fabric-Laufzeitversion 5.6 oder höher ausgeführt werden.
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>Aktivieren des Reparatur-Manager-Diensts (falls dieser nicht bereits ausgeführt wird)
 
@@ -135,59 +127,6 @@ So aktivieren Sie den Reparatur-Manager-Dienst
 ### <a name="disable-automatic-windows-update-on-all-nodes"></a>Deaktivieren der automatischen Windows Update-Funktion auf allen Knoten
 
 Automatische Windows-Updates können zu einer Verringerung der Verfügbarkeit führen, da mehrere Clusterknoten gleichzeitig neu gestartet werden können. Die App für die Patchorchestrierung versucht standardmäßig, die automatische Windows Update-Funktion auf jedem Clusterknoten zu deaktivieren. Wenn die Einstellungen jedoch von einem Administrator bzw. durch eine Gruppenrichtlinie verwaltet werden, empfiehlt es sich, die Windows Update-Richtlinie explizit auf „Bei Download benachrichtigen“ festzulegen.
-
-### <a name="optional-enable-azure-diagnostics"></a>Optional: Aktivieren der Azure-Diagnose
-
-Cluster mit Service Fabric ab der Laufzeitversion `5.6.220.9494` sammeln Protokolle für die Patchorchestrierungs-App im Rahmen von Service Fabric-Protokollen.
-Wenn Ihr Cluster mindestens über die Service Fabric-Laufzeitversion `5.6.220.9494` verfügt, können Sie diesen Schritt überspringen.
-
-Bei Clustern mit einer niedrigeren Service Fabric-Laufzeitversion als `5.6.220.9494` werden Protokolle für die Patchorchestrierungs-App lokal auf den einzelnen Clusterknoten gesammelt.
-Es empfiehlt sich, die Azure-Diagnose so zu konfigurieren, dass Protokolle von allen Knoten an einen zentralen Ort hochgeladen werden.
-
-Weitere Informationen zum Aktivieren der Azure-Diagnose finden Sie unter [Sammeln von Protokollen mit der Azure-Diagnose](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad).
-
-Die Protokolle der App für die Patchorchestrierung werden auf folgenden festen Anbieter-IDs generiert:
-
-- e39b723c-590c-4090-abb0-11e3e6616346
-- fc0028ff-bfdc-499f-80dc-ed922c52c5e9
-- 24afa313-0d3b-4c7c-b485-1047fd964b60
-- 05dc046c-60e9-4ef7-965e-91660adffa68
-
-Wechseln Sie in der Resource Manager-Vorlage zum Abschnitt `EtwEventSourceProviderConfiguration` unter `WadCfg`, und fügen Sie die folgenden Einträge hinzu:
-
-```json
-  {
-    "provider": "e39b723c-590c-4090-abb0-11e3e6616346",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-      "eventDestination": "PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "fc0028ff-bfdc-499f-80dc-ed922c52c5e9",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "24afa313-0d3b-4c7c-b485-1047fd964b60",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  },
-  {
-    "provider": "05dc046c-60e9-4ef7-965e-91660adffa68",
-    "scheduledTransferPeriod": "PT5M",
-    "DefaultEvents": {
-    "eventDestination": " PatchOrchestrationApplicationTable"
-    }
-  }
-```
-
-> [!NOTE]
-> Wenn Ihr Service Fabric-Cluster mehrere Knotentypen umfasst, muss der vorherige Abschnitt für alle `WadCfg`-Abschnitte hinzugefügt werden.
 
 ## <a name="download-the-app-package"></a>Herunterladen des App-Pakets
 
@@ -303,20 +242,16 @@ Führen Sie zum Aktivieren des Reverseproxys auf dem Cluster die Schritte unter 
 
 ## <a name="diagnosticshealth-events"></a>Diagnose/Integritätsereignisse
 
-### <a name="collect-patch-orchestration-app-logs"></a>Erfassen von Protokollen für die App für die Patchorchestrierung
+### <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
-Protokolle für die App für die Patchorchestrierung werden als Teil der Service Fabric-Protokolle aus Laufzeitversion `5.6.220.9494` und höher erfasst.
-Für Cluster, auf denen eine Service Fabric-Laufzeitversion vor `5.6.220.9494` ausgeführt wird, können Protokolle mithilfe eines der folgenden Verfahren erfasst werden.
+Protokolle für die App für die Patchorchestrierung werden als Teil der Service Fabric-Laufzeitprotokolle erfasst.
 
-#### <a name="locally-on-each-node"></a>Lokal auf jedem Knoten
+Hinweis für Benutzer, die Protokolle über das gewünschte Diagnosetool/die gewünschte Diagnosepipeline erfassen möchten: Die Anwendung für die Patchorchestrierung protokolliert Ereignisse über [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netframework-4.5.1) unter Verwendung der folgenden festen Anbieter-IDs:
 
-Wenn die Service Fabric-Laufzeitversion kleiner als `5.6.220.9494` ist, werden Protokolle lokal auf den einzelnen Service Fabric- Clusterknoten gesammelt. Der Speicherort für den Zugriff auf die Protokolle lautet: \[Installationslaufwerk\_für\_Service Fabric\]:\\PatchOrchestrationApplication\\logs.
-
-Wenn Service Fabric z.B. auf dem Laufwerk „D“ installiert ist, lautet der Pfad folgendermaßen: D:\\PatchOrchestrationApplication\\logs
-
-#### <a name="central-location"></a>Zentraler Speicherort
-
-Wenn die Azure-Diagnose im Rahmen der vorbereitenden Schritte konfiguriert wurde, sind die Protokolle der App für die Patchorchestrierung in Azure Storage verfügbar.
+- e39b723c-590c-4090-abb0-11e3e6616346
+- fc0028ff-bfdc-499f-80dc-ed922c52c5e9
+- 24afa313-0d3b-4c7c-b485-1047fd964b60
+- 05dc046c-60e9-4ef7-965e-91660adffa68
 
 ### <a name="health-reports"></a>Integritätsberichte
 

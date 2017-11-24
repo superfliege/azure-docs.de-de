@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: joflore
-ms.reviewer: jsnow
+ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 01c5284a609a2246e32052985ad3a8c0475eafa5
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: fb78d39b04868c9d8790bfd64147f47bdd4125c7
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/15/2017
 ---
 #  <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>Integrieren Sie Ihre Remotedesktopgateway-Infrastruktur mit der Netzwerkrichtlinienserver-Erweiterung (Network Policy Server, NPS) und Azure AD
 
@@ -76,7 +76,7 @@ Wenn Sie eine lokale RDS-Infrastruktur schnell manuell zu Testzwecken erstellen 
 **Erfahren Sie mehr**: [Seamlessly deploy RDS with ARM and Azure Marketplace](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-in-azure) (Nahtlose RDS-Bereitstellung mit ARM und Azure Marketplace) und [Deploy your Remote Desktop environment](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-deploy-infrastructure) (Bereitstellen Ihrer Remotedesktopumgebung). 
 
 ### <a name="azure-mfa-license"></a>Azure MFA-Lizenz
-Eine Lizenz für Azure MFA ist erforderlich, die über ein Azure AD Premium-, Enterprise Mobility plus Security-Abonnement (EMS) oder MFA-Abonnement verfügbar ist. Weitere Informationen finden Sie unter [Beziehen von Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md). Zu Testzwecken können Sie ein Testabonnement verwenden.
+Eine Lizenz für Azure MFA ist erforderlich, die über ein Azure AD Premium-, Enterprise Mobility plus Security-Abonnement (EMS) oder MFA-Abonnement verfügbar ist. Verbrauchsbasierte Lizenzen für Azure MFA, z.B. pro Benutzer oder pro Authentifizierungslizenz, sind mit der NPS-Erweiterung nicht kompatibel. Weitere Informationen finden Sie unter [Beziehen von Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md). Zu Testzwecken können Sie ein Testabonnement verwenden. 
 
 ### <a name="windows-server-software"></a>Windows Server-Software
 Die NPS-Erweiterung erfordert Windows Server 2008 R2 SP1 oder höher mit installiertem NPS-Rollendienst. Alle Schritte in diesem Abschnitt wurden mit Windows Server 2016 ausgeführt.

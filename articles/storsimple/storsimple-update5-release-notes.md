@@ -4,7 +4,7 @@ description: "Beschreibt die neuen Features sowie Probleme und Problemumgehungen
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2017
+ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: fa7360a44c48d4f15233b937f09285233533a0e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 672757e82bcf645b705f46a9975e09c9dc5eef92
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>Versionshinweise zu Update 5 der StorSimple 8000-Serie
 
@@ -31,6 +31,7 @@ Update 5 kann auf alle StorSimple-Geräte angewendet werden, auf denen Update 0.
 Lesen Sie vor der Bereitstellung des Updates in Ihrer StorSimple-Lösung die Informationen in den Versionsanmerkungen sorgfältig durch.
 
 > [!IMPORTANT]
+> * Update 5 ist ein obligatorisches Update und muss sofort installiert werden. Weitere Informationen finden Sie unter [Anwenden von Update 5](storsimple-8000-install-update-5.md).
 > * Update 5 umfasst Gerätesoftware, Datenträgerfirmware, Betriebssystemsicherheit und andere Betriebssystemupdates. Es dauert ungefähr 4 Stunden, dieses Update zu installieren. Ein Firmwareupdate auf dem Datenträger ist ein Update, das zu einer Unterbrechung und zu einer Ausfallzeit Ihres Geräts führt. Wir empfehlen Ihnen die Anwendung von Update 5, um Ihr Gerät auf dem neuesten Stand zu halten.
 > * Bei neuen Versionen werden Updates möglicherweise nicht sofort angezeigt, da diese in mehreren Phasen bereitgestellt werden. Warten Sie einige Tage, und suchen Sie dann erneut nach Updates, da diese bald verfügbar werden.
 

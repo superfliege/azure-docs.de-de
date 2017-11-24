@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 4c4916037ad762dbb9dee803dfd45ec2fd89272b
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 17d9e496aedfdf98423e821e7f379dc481ffa0a5
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="permissions-on-the-azureiotsuitecom-site"></a>Berechtigungen für die Website „azureiotsuite.com“
 
@@ -105,11 +105,7 @@ Sie müssen globaler AAD-Administrator sein, um Rollen für einen Benutzer zu ä
 
 ### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-aad-tenant-how-do-i-complete-this-task"></a>Ich bin Dienstadministrator und möchte die Verzeichniszuordnung zwischen meinem Abonnement und einen bestimmten AAD-Mandanten ändern. Wie führe ich diese Aufgabe aus?
 
-1. Wechseln Sie zum [klassischen Azure-Portal][lnk-classic-portal], und klicken Sie links in der Liste der Dienste auf **Einstellungen**.
-2. Wählen Sie das Abonnement aus, dessen Verzeichniszuordnung Sie ändern möchten.
-3. Klicken Sie auf **Verzeichnis bearbeiten**.
-4. Wählen Sie in der Dropdownliste das **Verzeichnis** aus, das Sie verwenden möchten. Klicken Sie auf den Vorwärtspfeil.
-5. Bestätigen Sie die Verzeichniszuordnung und die betroffenen Co-Administratoren. Wenn eine Verschiebung aus einem anderen Verzeichnis erfolgt, werden alle Co-Administratoren aus dem ursprünglichen Verzeichnis entfernt.
+Informationen dazu finden Sie unter [Hinzufügen eines vorhandenen Abonnements zu Ihrem Azure AD-Verzeichnis](../active-directory/active-directory-how-subscriptions-associated-directory.md#to-add-an-existing-subscription-to-your-azure-ad-directory).
 
 ### <a name="im-a-domain-usermember-on-the-aad-tenant-and-ive-created-a-preconfigured-solution-how-do-i-get-assigned-a-role-for-my-application"></a>Ich bin Domänenbenutzer/-mitglied des AAD-Mandanten und habe eine vorkonfigurierte Lösung erstellt. Wie wird mir eine Rolle für meine Anwendung zugewiesen?
 
@@ -151,7 +147,6 @@ Wenn Sie mehr über IoT Suite erfahren möchten, lesen Sie, wie Sie [eine vorkon
 [lnk-pm-github-repo]: https://github.com/Azure/azure-iot-predictive-maintenance
 [lnk-cf-github-repo]: https://github.com/Azure/azure-iot-connected-factory
 [lnk-aad-admin]: ../active-directory/active-directory-assign-admin-roles.md
-[lnk-classic-portal]: https://manage.windowsazure.com/
 [lnk-portal]: https://portal.azure.com/
 [lnk-create-edit-users]: ../active-directory/active-directory-create-users.md
 [lnk-assign-app-roles]: ../active-directory/active-directory-coreapps-assign-user-azure-portal.md

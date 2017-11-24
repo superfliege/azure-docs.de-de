@@ -13,18 +13,18 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2016
+ms.date: 11/12/2017
 ms.author: ddove
-ms.openlocfilehash: a8bfbf2e30f8568212ab49ba1772588cc9e45b38
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 6a73f8d0b85198f0d4e10fbc31cbd21f93bdb8a8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="building-scalable-cloud-databases"></a>Erstellen skalierbarer Clouddatenbanken
 Das horizontale Skalieren von Datenbanken kann problemlos mithilfe von skalierbaren Tools und Features für die Azure SQL-Datenbank ausgeführt werden. Insbesondere können Sie die **Clientbibliothek für elastische Datenbanken** verwenden, um horizontal skalierte Datenbanken zu erstellen und zu verwalten. Mit diesem Feature können Sie ganz einfach Shardanwendungen mithilfe von Hunderten – oder sogar Tausenden – von Azure SQL-Datenbanken entwickeln. [Elastische Aufträge](sql-database-elastic-jobs-powershell.md) können dann verwendet werden, um die Verwaltung dieser Datenbanken zu vereinfachen.
 
-Um die Bibliothek zu installieren, wechseln Sie zu [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). 
+Um die Bibliothek zu installieren, wechseln Sie zu NuGet unter [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). 
 
 ## <a name="documentation"></a>Dokumentation
 1. [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md)
@@ -54,22 +54,32 @@ Horizontales Hochskalieren von Anwendungen mit *Sharding* konfrontiert Entwickle
 
 Im Allgemeinen steht den Endkunden mit den Tools für elastische Datenbanken bei der Übermittlung lokaler Shard-Vorgänge die volle T-SQL-Funktionalität zur Verfügung, anders als bei Shard-übergreifenden Vorgängen, die eine eigene Semantik haben.
 
+
+
 ## <a name="next-steps"></a>Nächste Schritte
-Probieren Sie die [Beispiel-App](sql-database-elastic-scale-get-started.md) aus, die die Clientfunktionen veranschaulicht. 
 
-Rufen Sie zum Installieren der Bibliothek [Clientbibliothek für elastische Datenbanken](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)auf.
+- [Clientbibliothek für elastische Datenbanken](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/): Zum **Installieren** der Bibliothek mithilfe von NuGet.
 
-Informationen zur Verwendung des Split-Merge-Tools finden Sie in der [Übersicht über das Split-Merge-Tool](sql-database-elastic-scale-overview-split-and-merge.md).
+- [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md): Zum Testen der **Beispiel-App**, die Clientfunktionen veranschaulicht.
 
-[Die Clientbibliothek für elastische Datenbanken liegt nun als Open Source vor!](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/)
+- [Github, Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools): Bei der Bibliothek handelt es sich um Open Source-Software.
+    - Mit der Clientbibliothek für elastische Datenbank können ADO.NET-Entwickler Anwendungen erstellen, die als Datenbanksharding bezeichnete Muster in Azure SQL-Datenbank implementieren und verwenden.
 
-Verwenden Sie [elastische Abfragen](sql-database-elastic-query-overview.md).
+- [Die Clientbibliothek für elastische Datenbanken liegt nun als Open Source vor!](https://azure.microsoft.com/blog/elastic-database-client-library-is-now-open-sourced/) – ein **Blogbeitrag** über die Clientbibliothek für elastische Datenbanken vom 09.09.2015.
 
-Die Bibliothek ist als Open Source-Software auf [GitHub](https://github.com/Azure/elastic-db-tools)verfügbar. 
+- [Übersicht über elastische Abfragen in Azure SQL-Datenbank](sql-database-elastic-query-overview.md): Zum Ausführen von elastischen Abfragen.
+
+- [Verschieben von Daten zwischen horizontal skalierten Clouddatenbanken](sql-database-elastic-scale-overview-split-and-merge.md): Für Anweisungen zur Verwendung des **Tools zum Aufteilen bzw. Zusammenführen**.
+
+
+
+<!-- Additional resources H2 -->
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 
+
 <!--Anchors-->
 <!--Image references-->
-[1]:./media/sql-database-elastic-database-client-library/glossary.png
+
+[1]: ./media/sql-database-elastic-database-client-library/glossary.png
 

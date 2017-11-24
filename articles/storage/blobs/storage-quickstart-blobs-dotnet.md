@@ -3,34 +3,31 @@ title: "Azure-Schnellstart – Übertragen von Objekten nach/aus Azure Blob Stor
 description: "Hier lernen Sie schnell, wie Sie mit .NET Objekte nach/aus Azure Blob Storage übertragen."
 services: storage
 documentationcenter: storage
-author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/01/2017
-ms.author: robinsh
-ms.openlocfilehash: 9c5628307e76bd30d2dd59f284f2c4b30d434223
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/10/2017
+ms.author: tamram
+ms.openlocfilehash: ca4cb2dea9cdd2e46c3aef042e525acdfc09de8e
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-net"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit .NET
 
-In diesem Schnellstart erfahren Sie, wie Sie mit C#.NET Blockblobs in einem Container in Azure Blob Storage unter Windows hochladen, herunterladen und auflisten.
+In diesem Schnellstart erfahren Sie, wie Sie die .NET-Clientbibliothek für Azure Storage zum Hochladen, Herunterladen und Auflisten von Blockblobs in einem Container verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-So führen Sie diesen Schnellstart durch:
+Um diesen Schnellstart zu absolvieren, installieren Sie [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) mit der folgenden Workload:
 
-* Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) mit der folgenden Workload:
-    - **Azure-Entwicklung**
+- **Azure-Entwicklung**
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -86,7 +83,11 @@ Sie können zum Anzeigen der Dateien in Blob Storage auch ein Tool, z.B. den [Az
 
 Nachdem Sie die Dateien erfolgreich überprüft haben, drücken Sie eine beliebige Taste, um die Demo zu beenden und die Testdateien zu löschen. Da Sie jetzt wissen, welche Aktionen das Beispiel ausführt, öffnen Sie die Datei „Program.cs“, um den Code zu betrachten. 
 
-## <a name="get-references-to-the-storage-objects"></a>Abrufen von Verweisen auf die Speicherobjekte
+## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
+
+Als Nächstes gehen wir schrittweise durch den Beispielcode, damit Sie verstehen können, wie er funktioniert.
+
+### <a name="get-references-to-the-storage-objects"></a>Abrufen von Verweisen auf die Speicherobjekte
 
 Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreifen auf und Verwalten von Blob Storage verwendet werden. Diese Objekte bauen aufeinander auf – jedes wird vom jeweils nächsten in der Liste verwendet.
 
@@ -99,7 +100,7 @@ Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreife
 Sobald Sie über den **CloudBlobContainer** verfügen, können Sie eine Instanz des **CloudBlockBlob**-Objekts erstellen, das auf das gewünschte Blob verweist, und einen Upload-, Download- oder Kopiervorgang sowie weitere Vorgänge ausführen.
 
 > [!IMPORTANT]
-> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
+> Die Containernamen müssen klein geschrieben werden. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Benennen von Containern, Blobs und Metadaten und Verweisen auf diese](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
 In diesem Abschnitt erstellen Sie eine Instanz der Objekte und einen neuen Container und legen dann Berechtigungen für den Container fest, damit die Blobs öffentlich sind und einfach mit einer URL auf sie zugegriffen werden kann. Der Name des Containers lautet **quickstartblobs**. 
 
@@ -124,7 +125,7 @@ permissions.PublicAccess = BlobContainerPublicAccessType.Blob;
 await cloudBlobContainer.SetPermissionsAsync(permissions);
 ```
 
-## <a name="upload-blobs-to-the-container"></a>Hochladen von Blobs in den Container
+### <a name="upload-blobs-to-the-container"></a>Hochladen von Blobs in den Container
 
 Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten verwendet und auch in diesem Schnellstart verwendet. 
 
@@ -148,7 +149,7 @@ Sie können für Blob Storage mehrere Uploadmethoden verwenden. Wenn Sie z.B. ü
 
 Blockblobs können jede Art von Text oder Binärdateien darstellen. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
 
-## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
+### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
 Mit [CloudBlobContainer.ListBlobsSegmentedAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.listblobssegmentedasync) können Sie eine Liste von Dateien im Container abrufen. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die URIs der gefundenen Blobs anzuzeigen. Sie können den URI aus dem Befehlsfenster kopieren und in einen Browser einfügen, um die Datei anzuzeigen.
 
@@ -168,7 +169,7 @@ do
 } while (blobContinuationToken != null);
 ```
 
-## <a name="download-blobs"></a>Herunterladen von Blobs
+### <a name="download-blobs"></a>Herunterladen von Blobs
 
 Laden Sie mit [CloudBlob.DownloadToFileAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob.downloadtofileasync) Blobs auf den lokalen Datenträger herunter.
 
@@ -184,7 +185,7 @@ Console.WriteLine("Downloading blob to {0}", fileAndPath2);
 await cloudBlockBlob.DownloadToFileAsync(fileAndPath2, FileMode.Create);
 ```
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie die in diesem Schnellstart hochgeladenen Blobs nicht mehr benötigen, können Sie mit [CloudBlobContainer.DeleteAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.deleteasync) den gesamten Container löschen. Löschen Sie auch die erstellten Dateien, wenn sie nicht mehr benötigt werden.
 
@@ -200,5 +201,7 @@ In diesem Schnellstart haben Sie gelernt, wie Sie mit .NET Dateien zwischen eine
 
 > [!div class="nextstepaction"]
 > [Gewusst wie: Blob Storage-Vorgänge](storage-dotnet-how-to-use-blobs.md)
+
+In unserer Liste mit [Azure Storage-Beispielen, die .NET verwenden](../common/storage-samples-dotnet.md) finden Sie weitere Azure Storage-Codebeispiele, die Sie herunterladen und ausführen können.
 
 Weitere Informationen zum Storage-Explorer und Blobs finden Sie unter [Verwalten von Azure Blob Storage-Ressourcen mit dem Speicher-Explorer (Vorschau)](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).

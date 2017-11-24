@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 10/12/2017
 ms.author: v-ruogun
-ms.openlocfilehash: 76e23d85b392f8120914f6170040c6b3c450aba6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 4a197af41f5450d84e1c18e15198d1febb02bab1
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/13/2017
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-python"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit Python
 In diesem Schnellstart erfahren Sie, wie Sie mit Python Blockblobs in einem Container in Azure Blob Storage hochladen, herunterladen und auflisten. 
@@ -73,7 +73,11 @@ Sie können zum Anzeigen der Dateien in Blob Storage auch ein Tool, z.B. den [Az
 
 Nachdem Sie die Dateien erfolgreich überprüft haben, drücken Sie eine beliebige Taste, um die Demo zu beenden und die Testdateien zu löschen. Da Sie jetzt wissen, welche Aktionen das Beispiel ausführt, öffnen Sie die Datei „example.py“, um den Code zu betrachten. 
 
-## <a name="get-references-to-the-storage-objects"></a>Abrufen von Verweisen auf die Speicherobjekte
+## <a name="understand-the-sample-code"></a>Grundlagen des Beispielcodes
+
+Als Nächstes gehen wir schrittweise durch den Beispielcode, damit Sie verstehen können, wie er funktioniert.
+
+### <a name="get-references-to-the-storage-objects"></a>Abrufen von Verweisen auf die Speicherobjekte
 Zunächst müssen die Verweise auf die Objekte erstellt werden, die zum Zugreifen auf und Verwalten von Blob Storage verwendet werden. Diese Objekte bauen aufeinander auf und jedes wird vom jeweils nächsten in der Liste verwendet.
 
 * Instanziieren Sie das **BlockBlobService**-Objekt, das auf den Blob-Dienst im Speicherkonto verweist. 
@@ -98,7 +102,7 @@ block_blob_service.create_container(container_name)
 # Set the permission so the blobs are public.
 block_blob_service.set_container_acl(container_name, public_access=PublicAccess.Container)
 ```
-## <a name="upload-blobs-to-the-container"></a>Hochladen von Blobs in den Container
+### <a name="upload-blobs-to-the-container"></a>Hochladen von Blobs in den Container
 
 Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. Blockblobs werden am häufigsten und auch in diesem Schnellstart verwendet.  
 
@@ -128,7 +132,7 @@ Sie können für Blob Storage mehrere Uploadmethoden verwenden. Wenn Sie z.B. ü
 
 Blockblobs können eine Größe von bis zu 4,7 TB haben und alle Arten von Dateien sein, von Excel-Arbeitsblättern bis zu großen Videodateien. Seitenblobs werden in erster Linie für die VHD-Dateien verwendet, die IaaS-VMs zugrunde liegen. Anfügeblobs dienen der Protokollierung und können z.B. verwendet werden, um beim Schreiben in eine Datei zusätzliche Daten hinzuzufügen. Die meisten Objekte, die in Blob Storage gespeichert werden, sind allerdings Blockblobs.
 
-## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
+### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
 Rufen Sie eine Liste der Dateien im Container mithilfe der Methode „**list_blobs**“ ab. Diese Methode gibt einen Generator zurück. Der folgende Code ruft die Liste der Blobs ab und durchläuft sie, um die Namen der in einem Container gefundenen Blobs anzuzeigen.  
 
@@ -140,7 +144,7 @@ print("\nList blobs in the container")
         print("\t Blob name: " + blob.name)
 ```
 
-## <a name="download-the-blobs"></a>Herunterladen der Blobs
+### <a name="download-the-blobs"></a>Herunterladen der Blobs
 
 Laden Sie Blobs auf Ihren lokalen Datenträger mithilfe der Methode „**get\_blob\_to\_path**“ herunter. Durch den folgenden Code wird der in einem vorherigen Abschnitt hochgeladene Blob heruntergeladen. „_DOWNLOADED“ wird als Suffix an den Blobnamen hinzugefügt, damit Sie beide Dateien auf dem lokalen Datenträger sehen können. 
 
@@ -152,7 +156,7 @@ print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Wenn Sie die in diesem Schnellstart hochgeladenen Blobs nicht mehr benötigen, können Sie mit **delete\_container** den gesamten Container löschen. Wenn die erstellten Dateien nicht mehr benötigt werden, verwenden Sie die **delete\_blob**-Methode, um die Dateien zu löschen.
 
 ```python

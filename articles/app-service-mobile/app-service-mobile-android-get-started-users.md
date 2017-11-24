@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/01/2016
+ms.date: 11/16/2017
 ms.author: glenga
-ms.openlocfilehash: 81331142aa6110d4e29e6fb30a90ce6e3a853439
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d38482ebca736e4d7d0fe0b1b4b5dd0220de5b4
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="add-authentication-to-your-android-app"></a>Hinzufügen der Authentifizierung zu Ihrer Android-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -33,7 +33,7 @@ In diesem Tutorial verwenden Sie einen unterstützten Identitätsanbieter, um de
 
 Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihre App definieren. Dies ermöglicht dem Authentifizierungssystem die erneute Umleitung an Ihre App, sobald der Authentifizierungsprozess abgeschlossen ist. In diesem Tutorial verwenden wir ausschließlich das URL-Schema _appname_. Sie können jedoch ein beliebiges URL-Schema auswählen und verwenden. Es sollte für Ihre mobile Anwendung eindeutig sein. So aktivieren Sie die Umleitung auf der Serverseite
 
-1. Wählen Sie im [Azure-Portal] Ihre App Service-Instanz aus.
+1. Wählen Sie im [Azure-Portal] App Service aus.
 
 2. Klicken Sie auf die Menüoption **Authentifizierung/Autorisierung**.
 
@@ -50,7 +50,7 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 
      Diese Ausnahme wird ausgelöst, weil die App als nicht authentifizierter Benutzer versucht, auf das Back-End zuzugreifen, aber die *TodoItem*-Tabelle nun eine Authentifizierung erfordert.
 
-Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des Mobile Apps-Back-Ends zu authentifizieren. 
+Aktualisieren Sie nun die App, um Benutzer vor dem Anfordern von Ressourcen des Mobile Apps-Back-Ends zu authentifizieren.
 
 ## <a name="add-authentication-to-the-app"></a>Hinzufügen von Authentifizierung zur App
 [!INCLUDE [mobile-android-authenticate-app](../../includes/mobile-android-authenticate-app.md)]
@@ -79,3 +79,4 @@ Nachdem Sie dieses einfache Tutorial zur Authentifizierung abgeschlossen haben, 
 
 <!-- URLs. -->
 [Erste Schritte mit Mobile Apps]: app-service-mobile-android-get-started.md
+[Azure-Portal]: https://portal.azure.com/

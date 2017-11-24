@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.openlocfilehash: 7caf1dd3fa5ef295c2472cc11deb2895fc2a7111
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 67a5c1494f2944e91fed2b077cf04e8906788c1e
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="back-up-windows-server-to-azure"></a>Sichern von Windows Server in Azure
 
@@ -42,9 +42,9 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
 Bevor Sie Windows Server sichern können, müssen Sie einen Speicherort für die Sicherungen oder Wiederherstellungspunkte erstellen. Ein [Recovery Services-Tresor](backup-azure-recovery-services-vault-overview.md) ist ein Container in Azure, in dem die Sicherungen Ihrer Windows Server-Instanzen gespeichert werden. Gehen Sie folgendermaßen vor, um einen Recovery Services-Tresor im Azure-Portal zu erstellen. 
 
-1. Wählen Sie im linken Menü **Weitere Dienste** aus, und geben Sie in der Dienstliste **Recovery Services** ein. Klicken Sie auf **Recovery Services-Tresore**.
+1. Wählen Sie im linken Menü **Alle Dienste** aus, und geben Sie in der Dienstliste **Recovery Services** ein. Klicken Sie auf **Recovery Services-Tresore**.
 
-   ![Recovery Services-Tresor öffnen](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault.png)
+   ![Recovery Services-Tresor öffnen](./media/tutorial-backup-windows-server-to-azure/full-browser-open-rs-vault_2.png)
 
 2.  Klicken Sie im Menü **Recovery Services-Tresore** auf **Hinzufügen**.
 
@@ -135,7 +135,7 @@ Sie haben den Zeitplan für die Ausführung von Sicherungsaufträgen eingerichte
 
 1.  Klicken Sie in der Konsole des Microsoft Azure Recovery Services-Agents auf **Jetzt sichern**.
 
-    ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/mars-schedule-backup.png)
+    ![Agent für Windows Server oder Windows-Client herunterladen](./media/tutorial-backup-windows-server-to-azure/backup-now.png)
 
 2.  Wählen Sie im Assistenten **Jetzt sichern** entweder **Dateien und Ordner** oder **Systemstatus** aus (je nachdem, was Sie sichern möchten), und klicken Sie auf **Weiter**. 
 3. Überprüfen Sie auf der Seite **Bestätigung** die Einstellungen, die vom Assistenten für **Jetzt sichern** zum Sichern des Servers verwendet werden. Klicken Sie dann auf **Sichern**.

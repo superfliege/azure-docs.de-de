@@ -9,11 +9,11 @@ ms.reviewer: mawah, marhamil, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: eefede6196bedf208d9b14cee63632922223a6d6
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 2f8b2d9d2396c1f9c9e509257f3cd031a816729f
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Bildklassifizierung per Azure Machine Learning Workbench
 
@@ -52,9 +52,11 @@ Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 4. Eine dedizierte GPU ist nicht erforderlich, um das SVM-Training in Teil 1 durchzuführen, wird aber für die in Teil 2 beschriebene Optimierung der DNN benötigt. Wenn Sie keine leistungsstarke GPU haben, das Trainieren für mehrere GPUs durchführen möchten oder keinen Windows-Computer nutzen, können Sie erwägen, die Deep Learning Virtual Machine von Azure mit dem Windows-Betriebssystem zu verwenden. Eine Anleitung für die Bereitstellung mit nur einem Klick finden Sie [hier](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning). Stellen Sie nach der Bereitstellung per Remotedesktopverbindung eine Verbindung mit der VM her, installieren Sie Workbench darauf, und führen Sie den Code von der VM lokal aus.
 5. Es müssen verschiedene Python-Bibliotheken installiert werden, z.B. OpenCV. Klicken Sie in der Workbench im Menü *Datei* auf *Eingabeaufforderung öffnen*, und führen Sie die folgenden Befehle aus, um diese Abhängigkeiten zu installieren:  
     - `pip install https://cntk.ai/PythonWheel/GPU/cntk-2.0-cp35-cp35m-win_amd64.whl`  
-    - `pip install opencv_python-3.3.0-cp35-cp35m-win_amd64.whl` nach dem Herunterladen des OpenCV-Wheelelements von „http://www.lfd.uci.edu/~gohlke/pythonlibs/“ (Dateiname und Version können sich ändern)
-    - `conda install matplotlib numpy pillow`
-    - `conda install -c conda-forge bqplot`
+    - `pip install opencv_python-3.3.1-cp35-cp35m-win_amd64.whl` nach dem Herunterladen des OpenCV-Wheelelements von „http://www.lfd.uci.edu/~gohlke/pythonlibs/“ (Dateiname und Version können sich ändern)
+    - `conda install pillow`
+    - `pip install -U numpy`
+    - `pip install bqplot`
+    - `jupyter nbextension enable --py --sys-prefix bqplot`
 
 ### <a name="troubleshooting--known-bugs"></a>Problembehandlung/Bekannte Fehler
 - Für Teil 2 wird eine GPU benötigt. Andernfalls wird beim Versuch, das DNN zu optimieren, der Fehler „Batch normalization training on CPU is not yet implemented“ (Batchnormalisierungstraining für CPU ist noch nicht implementiert) ausgelöst.
@@ -91,12 +93,10 @@ In diesem Tutorial wird als auszuführendes Beispiel ein Dataset mit Daten zu Ob
 
 Mit dem Skript `0_downloadData.py` werden alle Bilder in das Verzeichnis *DATA_DIR/images/fashionTexture/* heruntergeladen. Einige der 428 URLs sind vermutlich fehlerhaft. Dies ist kein Problem und bedeutet nur, dass etwas weniger Bilder für das Trainieren und Testen zur Verfügung stehen.
 
-Die folgende Abbildung enthält Beispiele für die Attribute „Gepunktet“ (die beiden linken Spalten), „Gestreift“ (die beiden mittleren Spalten) und „Leopardenmuster“ (die beiden rechten Spalten). Die Anmerkungen wurden je nach Oberbekleidungsartikel hinzugefügt.
+Die folgende Abbildung enthält Beispiele für die Attribute „Gepunktet“ (links), „Gestreift“ (Mitte) und „Leopardenmuster“ (rechts). Die Anmerkungen wurden je nach Oberbekleidungsartikel hinzugefügt.
 
 <p align="center">
-<img src="media/scenario-image-classification-using-cntk/examples_dotted.jpg"  alt="alt text" height="200">
-<img src="media/scenario-image-classification-using-cntk/examples_striped.jpg" alt="alt text" height="200">
-<img src="media/scenario-image-classification-using-cntk/examples_leopard.jpg" alt="alt text" height="200">
+<img src="media/scenario-image-classification-using-cntk/examples_all.jpg"  alt="alt text" width="700">
 </p>
 
 

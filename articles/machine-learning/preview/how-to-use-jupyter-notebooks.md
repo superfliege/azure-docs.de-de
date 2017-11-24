@@ -2,19 +2,19 @@
 title: Verwenden von Jupyter-Notebooks in Azure Machine Learning Workbench | Microsoft-Dokumentation
 description: "Handbuch für die Verwendung des Jupyter-Notebooks-Features von Azure Machine Learning Workbench"
 services: machine-learning
-author: jopela
-ms.author: jopela
+author: rastala
+ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 93850a7c9e3d9d69b0da22ebd0656ae40cee2e63
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.date: 11/09/2017
+ms.openlocfilehash: 80cdd07bff865776a68897a7b8c1b3fe66b76b18
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Verwenden des Jupyter-Notebooks in Azure Machine Learning Workbench
 
@@ -36,7 +36,7 @@ Weitere Informationen finden Sie in der offiziellen [Jupyter-Dokumentation](http
 ![Notebook-Architektur](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-architecture.png)
 
 ## <a name="kernels-in-azure-ml-workbench-notebook"></a>Kernels im Azure ML Workbench-Notebook
-Sie können in Azure ML Workbench auf viele verschiedene Kernels zugreifen, indem Sie einfach im `aml_config`-Ordner des Projekts Ausführungskonfigurationen und Computeziele konfigurieren. Das Hinzufügen eines neuen Computeziels mithilfe des `az ml computetarget attach`-Befehls entspricht dem Hinzufügen eines neuen Kernels.
+Sie können in Azure ML Workbench auf viele verschiedene Kernels zugreifen, indem Sie im `aml_config`-Ordner des Projekts Ausführungskonfigurationen und Computeziele konfigurieren. Das Hinzufügen eines neuen Computeziels mithilfe des `az ml computetarget attach`-Befehls entspricht dem Hinzufügen eines neuen Kernels.
 
 >[!NOTE]
 >Unter [Overview of Azure Machine Learning experiment execution service](experimentation-service-configuration.md) (Übersicht über den Experimentausführungsdienst von Azure Machine Learning) finden Sie weitere Informationen zu Ausführungskonfigurationen und Computezielen.
@@ -49,6 +49,9 @@ Die Workbench unterstützt derzeit die folgenden Kerneltypen.
 ### <a name="local-python-kernel"></a>Lokaler Python-Kernel
 Dieser Python-Kernel unterstützt die Ausführung auf dem lokalen Computer. Er ist in die Unterstützung des Ausführungsverlaufs von Azure Machine Learning integriert. Der Name des Kernels ist in der Regel „my_project_name local“.
 
+>[!NOTE]
+>Verwenden Sie nicht den Kernel "Python 3". Dabei handelt es sich um einen eigenständigen Kernel, der von Jupyter standardmäßig bereitgestellt wird. Er ist nicht mit den Azure Machine Learning-Funktionen integriert.
+
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Python-Kernel in Docker (lokal oder remote)
 Dieser Python-Kernel wird entweder auf dem lokalen Computer oder einer Remote-Linux-VM in einem Docker-Container ausgeführt. Der Name des Kernels ist in der Regel „my_project docker“. In der zugeordneten `docker.runconfig`-Datei ist das `Framework`-Feld auf `Python` festgelegt.
 
@@ -59,7 +62,7 @@ Dieser entweder auf dem lokalen Computer oder einer Remote-Linux-VM im Docker-Co
 Dieser Kernel wird auf dem Remote-HDInsight-Cluster ausgeführt, den Sie als Computeziel für das Projekt angefügt haben. Der Name des Kernels ist in der Regel „my_project my_hdi“. 
 
 >[!IMPORTANT]
->In der `.compute`-Datei des HDI-Computeziels müssen Sie das `yarnDeployMode`-Feld in `client` ändern (der Standardwert ist `cluster`), um diesen Kernel zu verwenden. 
+>In der `.compute`-Datei für das HDI-Computeziel müssen Sie das `yarnDeployMode`-Feld in `client` ändern (der Standardwert ist `cluster`), um diesen Kernel zu verwenden. 
 
 ## <a name="start-jupyter-server-from-the-workbench"></a>Starten des Jupyter-Servers in der Workbench
 In Azure Machine Learning Workbench können Sie über die Registerkarte **Notebooks** der Workbench auf Notebooks zugreifen. Das Beispielprojekt _Classifying Iris_ enthält ein `iris.ipynb`-Beispiel-Notebook.
@@ -104,6 +107,33 @@ Ihr Standardbrowser wird automatisch gestartet, und der Jupyter-Server verweist 
 Sie können jetzt auf eine `.ipynb`-Notebook-Datei klicken, sie öffnen und den Kernel festlegen (falls er noch nicht festgelegt wurde) und die interaktive Sitzung starten.
 
 ![Projektdashboard](media/how-to-use-jupyter-notebooks/how-to-use-jupyter-notebooks-08.png)
+
+## <a name="use-magic-commands-to-manage-experiments"></a>Verwenden von Magic-Befehlen zum Verwalten von Experimenten
+
+Sie können [Magic-Befehle](http://ipython.readthedocs.io/en/stable/interactive/magics.html) innerhalb Ihrer Notebookzellen verwenden, um Ihren Ausführungsverlauf nachzuverfolgen und Ausgaben zu speichern, wie etwa Modelle oder Datasets.
+
+Um die Ausführung einzelner Notebookzellen nachzuverfolgen, verwenden Sie den Magic-Befehl „%azureml history on“. Nachdem Sie den Verlauf aktiviert haben, wird die Ausführung jeder Zelle im Verlauf als Eintrag angezeigt.
+
+```
+%azureml history on
+from azureml.logging import get_azureml_logger
+logger = get_azureml_logger()
+logger.log("Cell","Load Data")
+```
+
+Verwenden Sie den Magic-Befehl „%azureml history off“, um die Nachverfolgung der Zellausführung zu deaktivieren.
+
+Mithilfe des Magic-Befehls „%azureml upload“ können Sie Modell- und Datendateien aus der Ausführung speichern. Die gespeicherten Objekte werden in der Ausführungsverlaufsansicht für die betreffende Ausführung als Ausgaben angezeigt.
+
+```
+modelpath = os.path.join("outputs","model.pkl")
+with open(modelpath,"wb") as f:
+    pickle.dump(model,f)
+%azureml upload outputs/model.pkl
+```
+
+>[!NOTE]
+>Die Ausgaben müssen in einem Ordner mit dem Namen „outputs“ gespeichert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zum Verwenden des Jupyter-Notebooks finden Sie in der [offiziellen Jupyter-Dokumentation](http://jupyter-notebook.readthedocs.io/en/latest/).    

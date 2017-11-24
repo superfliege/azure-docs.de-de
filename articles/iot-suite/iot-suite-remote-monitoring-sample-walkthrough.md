@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: a4b28e8a1269374a24e169f9363401109bacc471
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: e19ba9c88e4fbe4f065c45ce7029247436f7155c
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="remote-monitoring-preconfigured-solution-architecture"></a>Architektur der vorkonfigurierten Remoteüberwachungslösung
 
@@ -87,7 +87,7 @@ Dieser Dienst führt auch IoT Hub-Abfragen durch, um Geräte abzurufen, die zu b
 
 Der Microservice stellt einen RESTful-Endpunkt zum Verwalten von Geräten und Gerätezwillingen, Aufrufen von Methoden und Ausführen von IoT Hub-Abfragen bereit.
 
-## <a name="data-processing-and-analytics"></a>Datenverarbeitung und Analytics
+## <a name="data-processing-and-analytics"></a>Datenverarbeitung und Analysen
 
 Die Lösung enthält die folgenden Komponenten im Teil zur Datenverarbeitung und zu Analysen der logischen Architektur:
 
@@ -141,5 +141,6 @@ Wenn Sie den Quellcode und die Entwicklerdokumentation erkunden möchten, könne
 
 * [Preconfigured solution for remote monitoring with Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/) (Vorkonfigurierte Lösung für Remoteüberwachung mit Azure IoT (.NET))
 * [Preconfigured solution for remote monitoring with Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) (Vorkonfigurierte Lösung für Remoteüberwachung mit Azure IoT (Java))
+* [Vorkonfigurierte Remoteüberwachungslösung – Architektur](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Architecture).
 
 Weitere konzeptuelle Informationen zur vorkonfigurierten Remoteüberwachungslösung finden Sie unter [Customize the remote monitoring preconfigured solution](iot-suite-remote-monitoring-customize.md) (Anpassen der vorkonfigurierten Lösung für Remoteüberwachung).

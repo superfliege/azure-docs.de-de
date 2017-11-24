@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/31/2017
+ms.date: 11/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bab7a0646d34de3b6d71370a0fa4216845ee6a2
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics
 
@@ -36,11 +36,9 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
 
     ![Aktivieren der Diagnose zum Sammeln von Überwachungs- und Anforderungsprotokollen](./media/data-lake-analytics-diagnostic-logs/turn-on-logging.png)
 
-3. Legen Sie in den __Diagnoseeinstellungen__ den Status auf __Ein__ fest, und wählen Sie Protokollierungsoptionen aus.
+3. Geben Sie unter __Diagnoseeinstellungen__ einen __Namen__ für diese Protokollierungskonfiguration ein, und wählen Sie dann Protokollierungsoptionen aus.
 
     ![Aktivieren der Diagnose zum Sammeln von Überwachungs- und Anforderungsprotokollen](./media/data-lake-analytics-diagnostic-logs/enable-diagnostic-logs.png "Aktivieren von Diagnoseprotokollen")
-
-   * Legen Sie **Status** auf **Ein** fest, um die Diagnoseprotokollierung zu aktivieren.
 
    * Sie können die Daten auf drei Arten speichern bzw. verarbeiten.
 
@@ -58,34 +56,14 @@ Die Diagnoseprotokollierung ermöglicht Ihnen das Erfassen von Zugriffsüberwach
         > [!NOTE]
         > Wählen Sie entweder __In einem Speicherkonto archivieren__, __An einen Event Hub streamen__ oder __An Log Analytics senden__ aus, bevor Sie auf die Schaltfläche __Speichern__ klicken.
 
-Nachdem Sie die Diagnoseeinstellungen aktiviert haben, können Sie zum Blatt __Diagnoseprotokolle__ zurückkehren, um die Protokolle anzuzeigen.
-
-## <a name="view-logs"></a>Anzeigen von Protokollen
-
-### <a name="use-the-data-lake-analytics-view"></a>Verwenden der Data Lake Analytics-Ansicht
-
-1. Wählen Sie im Blatt Ihres Data Lake Analytics-Kontos unter **Überwachung** die Option **Diagnoseprotokolle** und dann den Eintrag aus, für den Sie Protokolle anzeigen möchten.
-
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs.png "Anzeigen von Diagnoseprotokollen")
-
-2. Die Protokolle sind in **Überwachungsprotokolle** und **Anforderungsprotokolle** unterteilt.
-
-    ![Protokolleinträge](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
-
-   * Anforderungsprotokolle erfassen jede API-Anforderung im Data Lake Analytics-Konto.
-   * Überwachungsprotokolle ähneln Anforderungsprotokollen, bieten aber eine viel detailliertere Aufschlüsselung der Vorgänge. Ein einzelner API-Hochladeaufruf in einem Anforderungsprotokoll kann im zugehörigen Überwachungsprotokoll in mehreren Vorgängen des Typs „Anfügen“ resultieren.
-
-3. Klicken Sie für einen Protokolleintrag auf den Link **Herunterladen**, um das gewünschte Protokoll herunterzuladen.
-
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>Im Azure Storage-Konto, das die Protokolldaten enthält
 
-1. Öffnen Sie das Azure Storage-Kontoblatt, das Data Lake Analytics zur Protokollierung zugeordnet ist, und klicken Sie dann auf __Blobs__. Auf dem Blatt **Blob-Dienst** werden zwei Container aufgelistet.
-
-    ![Anzeigen der Diagnoseprotokollierung](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "Anzeigen von Diagnoseprotokollen")
+1. Wenn Sie die Blobcontainer mit Protokollierungsdaten anzeigen möchten, öffnen Sie das für Data Lake Analytics für die Protokollierung verwendete Azure Storage-Konto, und klicken Sie auf __Blobs__.
 
    * Der Container **insights-logs-audit** enthält die Überwachungsprotokolle.
    * Der Container **insights-logs-requests** enthält die Anforderungsprotokolle.
-2. Innerhalb dieser Container werden die Protokolle in der folgenden Struktur gespeichert:
+
+2. Innerhalb der Container werden die Protokolle in der folgenden Dateistruktur gespeichert:
 
         resourceId=/
           SUBSCRIPTIONS/

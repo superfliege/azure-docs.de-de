@@ -14,47 +14,41 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.openlocfilehash: af8b3d5bf891c93c30a05c5f02d86639a466dde5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bec5066a2e1ba0e4e5e81c4e1be28ed8eb93ceed
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
-# <a name="vehicle-telemetry-analytics-solution-playbook"></a>Lösungs-Playbook zur Fahrzeugtelemetrieanalyse
-Dieses **Menü** bietet Links zu den Kapiteln dieses Playbooks. 
+# <a name="vehicle-telemetry-analytics-solution-playbook"></a>Lösungsplaybook zur Fahrzeugtelemetrieanalyse
+Dieses Menü bietet Links zu den Kapiteln in diesem Playbook: 
 
 [!INCLUDE [cap-vehicle-telemetry-playbook-selector](../../../includes/cap-vehicle-telemetry-playbook-selector.md)]
 
 ## <a name="overview"></a>Übersicht
-Supercomputer stehen nicht mehr im Labor, sondern sind jetzt in Ihrer Garage geparkt! Diese modernen Fahrzeuge enthalten unzählige Sensoren, sodass sie Millionen von Ereignissen pro Sekunde verfolgen und überwachen können. Wir gehen davon aus, dass die meisten dieser Fahrzeuge bis 2020 mit dem Internet verbunden sein werden. Stellen Sie sich vor, wie Sie auf der Basis dieser riesigen Datensammlung erstklassige Funktionen für Sicherheit, Zuverlässigkeit und ein besseres Fahrgefühl bereitstellen können. Microsoft hat diesen Traum mit Cortana Intelligence Wirklichkeit werden lassen.
+Supercomputer stehen nicht mehr im Labor, sondern sind jetzt in der Garage geparkt. Diese hochmodernen Fahrzeuge enthalten unzählige Sensoren, sodass sie Millionen von Ereignissen pro Sekunde verfolgen und überwachen können. Bis 2020 werden die meisten dieser Fahrzeuge mit dem Internet verbunden sein. Auf der Basis dieser riesigen Datensammlung können Funktionen für mehr Sicherheit, Zuverlässigkeit und ein besseres Fahrgefühl bereitgestellt werden. Microsoft lässt diesen Traum mit Cortana Intelligence Wirklichkeit werden.
 
-Cortana Intelligence von Microsoft ist eine vollständig verwaltete Big Data- und erweiterte Analyse-Suite, die es Ihnen ermöglicht, dank Ihrer Daten intelligente Maßnahmen zu ergreifen. Wir möchten Ihnen die Cortana Intelligence Lösungsvorlage für Vehicle Telemetry Analytics (Fahrzeugtelemetrieanalyse) vorstellen. Diese Lösung veranschaulicht, wie Automobilhändler, Automobilhersteller und Versicherungsgesellschaften die Funktionen von Cortana Intelligence verwenden können, um in Echtzeit und prädiktiv Einblick in Fahrzeugzustand und Fahrgewohnheiten zu gewinnen. 
+Cortana Intelligence ist eine vollständig verwaltete Big Data-Lösung für erweiterte Analysen, mit der Sie Ihre Daten in intelligente Aktionen umwandeln können. Die Lösungsvorlage für die Cortana Intelligence-Fahrzeugtelemetrieanalyse veranschaulicht, wie Automobilhändler, Automobilhersteller und Versicherungsgesellschaften in Echtzeit und prädiktiv Einblicke in Fahrzeugzustand und Fahrgewohnheiten gewinnen können. 
 
-Die Lösung ist als ein [Lambda-Architekturmuster](https://en.wikipedia.org/wiki/Lambda_architecture) implementiert und verfügt dadurch über das vollständige Potential der Cortana Intelligence-Plattform für Echtzeit- und Batchverarbeitung. Die Lösung: 
-
-* stellt einen Fahrzeugtelematiksimulator bereit.
-* nutzt Event Hubs zum Erfassen von Millionen simulierter Fahrzeug-Telemetrieereignisse in Azure. 
-* nutzt Stream Analytics, um in Echtzeit Einblick in den Fahrzeugzustand zu gewinnen.
-* behält die Daten für eine umfangreichere Batchanalyse langfristig im Speicher. 
-* nutzt Machine Learning für die Erkennung von Anomalien in Echtzeit und Batchverarbeitung zum Gewinnen prädiktiver Einblicke.
-* nutzt HDInsight für skalierte Datentransformationen und Data Factory für Orchestrierung, Planung, Ressourcenverwaltung und Überwachung der Batchverarbeitungs-Pipeline. 
-* bietet ein umfassendes Dashboard für Visualisierungen von Echtzeitdaten und prädiktiver Analyse mit Power BI.
+Die Lösung ist als ein [Lambda-Architekturmuster](https://en.wikipedia.org/wiki/Lambda_architecture) implementiert und verfügt dadurch über das vollständige Potenzial der Cortana Intelligence-Plattform für Echtzeit- und Batchverarbeitung.
 
 ## <a name="architecture"></a>Architektur
-![Lösungsarchitekturdiagramm](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
-*Abbildung 1 – Lösungsarchitektur für die Fahrzeugtelemetrieanalyse*
+Die Lösungsarchitektur für die Fahrzeugtelemetrieanalyse ist in diesem Diagramm dargestellt:
 
-Diese Lösung umfasst die folgenden **Cortana Intelligence-Komponenten** und stellt ihre End-to-End-Integration vor:
+![Diagramm der Lösungsarchitektur](./media/cortana-analytics-playbook-vehicle-telemetry/fig1-vehicle-telemetry-annalytics-solution-architecture.png)
 
-* **Event Hubs** für das Erfassen von Millionen von Telemetrie-Ereignissen in Azure.
-* **Stream Analytics** für das Gewinnen von Einblicken in Echtzeit hinsichtlich des Fahrzeugzustands und Speichern dieser Daten in beständigem Speicher zur umfangreicheren Batchanalyse.
-* **Machine Learning** für die Erkennung von Anomalien in Echtzeit und Batchverarbeitung zum Gewinnen prädiktiver Einblicke.
-* **HDInsight** wird verwendet, um Daten nach Maß zu transformieren.
-* **Data Factory** übernimmt die Orchestrierung, Planung, Ressourcenverwaltung und Überwachung der Batchverarbeitungs-Pipeline.
+
+Diese Lösung umfasst die folgenden Cortana Intelligence-Komponenten und stellt ihre End-to-End-Integration vor:
+
+* **Azure Event Hubs** für das Erfassen von Millionen von Telemetrieereignissen zu Fahrzeugen in Azure
+* **Azure Stream Analytics** für das Gewinnen von Einblicken in Echtzeit zum Fahrzeugzustand und für das Speichern dieser Daten in beständigem Speicher zur umfangreicheren Batchanalyse
+* **Azure Machine Learning** erkennt Anomalien in Echtzeit und stellt mithilfe der Batchverarbeitung Prognoseinformationen bereit.
+* **Azure HDInsight** transformiert die Daten nach Bedarf.
+* **Azure Data Factory** übernimmt die Orchestrierung, Planung, Ressourcenverwaltung und Überwachung der Batchverarbeitungs-Pipeline.
 * **Power BI** bietet dieser Lösung ein umfassendes Dashboard für Visualisierungen von Echtzeitdaten und Predictive Analytics.
 
-Diese Lösung greift auf die folgenden zwei unterschiedlichen **Datenquellen**zu: 
+Diese Lösung greift auf die folgenden beiden unterschiedlichen Datenquellen zu: 
 
 * **Simulierte Fahrzeugsignale und -diagnose:**Ein Fahrzeugtelematiksimulator gibt Diagnoseinformationen und Signale aus, die dem Zustand des Fahrzeugs und dem Fahrverhalten zu einem bestimmten Zeitpunkt entsprechen. 
-* **Fahrzeugkatalog:**Der Fahrzeugkatalog ist ein Referenzdataset mit der Fahrgestellnummer zur Modellierung der Zuordnung.
+* **Fahrzeugkatalog:** Dieses Referenz-DataSet ordnet VINs Modellen zu.
 

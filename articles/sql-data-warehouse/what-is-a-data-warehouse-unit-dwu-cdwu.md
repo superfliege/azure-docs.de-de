@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 10/23/2017
+ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: 93f0d21c7214487ffa0c2c5e27bd6e468920418c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02998c48dcab5d3ed191b168665c9e47bbfbd232
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse-Einheiten (DWUs) und Compute Data Warehouse-Einheiten (cDWUs)
 Erläutert Data Warehouse-Einheiten (DWUs) und Compute Data Warehouse-Einheiten (cDWUS) für Azure SQL Data Warehouse. Enthält Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten sowie zum Ändern der Anzahl. 
@@ -52,16 +52,8 @@ Sowohl DWUs als auch cDWUs unterstützen das zentrale Herunterskalieren und Hoch
 Wenn Sie Data Warehouse-Einheiten erhöhen, erhöhen Sie die Computingressourcen linear. Die für die Computeleistung optimierte Stufe bietet die beste Abfrageleistung und die höchste Skalierung, weist jedoch einen höheren Einstiegspreis auf. Sie ist für Unternehmen gedacht, die eine konstante Leistungsanforderung haben. Diese Systeme nutzen den Cache am meisten. 
 
 ### <a name="capacity-limits"></a>Kapazitätsgrenzen
-Standardmäßig verfügt jeder Server (z. B. „myserver.database.windows.net“) über ein Kontingent, das die Größe und den Umfang der Datenbanken für diese Instanz begrenzt. Ein Server kann SQL DW- und SQL DB-Datenbanken hosten, die alle innerhalb des Kontingents liegen müssen. Dieses Kontingent wird in DTUs (Database Transaction Units, Datenübertragungseinheiten) gemessen und ist standardmäßig auf 54.000 festgelegt, um bis zu 6.000 cDWUs zu ermöglichen. Bei diesem Kontingentwert handelt es sich einfach um ein Sicherheitslimit. Sie können Ihr Kontingent erhöhen, indem Sie ein Supportticket erstellen und als Anfragetyp „Kontingent“ auswählen. 
+Jeder SQL-Server (z.B. myserver.database.windows.net) weist ein Kontingent für [DTUs (Database Transaction Unit, Datenübertragungseinheiten)](../sql-database/sql-database-what-is-a-dtu.md) auf, das eine bestimmte Anzahl von Data Warehouse-Einheiten zulässt. Weitere Informationen finden Sie in den [Kapazitätsgrenzen für die Workloadverwaltung](sql-data-warehouse-service-capacity-limits.md#workload-management).
 
-Um Ihre DTU-Anforderung zu berechnen, wenden Sie die folgenden Multiplikatoren auf Ihre DTU-Berechnung an:
-
-| Leistungsstufe | Berechnungseinheit | DTU-Multiplikator | Beispiel                   |
-|:----------------:|----------------:|---------------:|--------------------------:|
-| Elastizität       |  DWU            | 7,5            | DW6000 x 7,5 = 45.000 DTUs |
-| Compute          | cDWU            | 9              | DW6000 x 7,5 = 54.000 DTUs |
-
-Sie können den aktuellen DTU-Verbrauch im Portal in den SQL Server-Eigenschaften anzeigen.
 
 ## <a name="how-many-data-warehouse-units-do-i-need"></a>Wie viele Data Warehouse-Einheiten benötige ich?
 Die optimale Anzahl der Data Warehouse-Einheiten hängt in hohem Maß von Ihrer Arbeitsauslastung und der Datenmenge ab, die Sie in das System geladen haben.

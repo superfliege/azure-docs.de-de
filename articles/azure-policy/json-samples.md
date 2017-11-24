@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: 
-ms.date: 10/30/2017
+ms.date: 11/13/2017
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: bb0d996b950a31e3eaaaa9d90a6b96617b58192f
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4042c3606155d1d37947afccafd64652c9659894
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="templates-for-azure-policy"></a>Vorlagen für Azure Policy
 
-In der folgenden Tabelle sind Links zu JSON-Vorlagen für Azure Policy enthalten.
+In der folgenden Tabelle sind Links zu JSON-Vorlagen für Azure Policy enthalten. Diese Beispiele befinden sich im [Azure Policy-Beispielrepository](https://github.com/Azure/azure-policy).
 
 | | |
 |---|---|
@@ -39,6 +39,11 @@ In der folgenden Tabelle sind Links zu JSON-Vorlagen für Azure Policy enthalten
 | [Erstellen einer VM mithilfe eines verwalteten Datenträgers](scripts/use-managed-disk-vm.md) | Erfordert, dass virtuelle Computer verwaltete Datenträger verwenden.|
 |**Überwachung**||
 | [Überwachen der Diagnoseeinstellung](scripts/audit-diag-setting.md) | Überwacht, ob Diagnoseeinstellungen für angegebene Ressourcentypen nicht aktiviert sind. Sie geben ein Array von Ressourcentypen an, um zu überprüfen, ob die Diagnoseeinstellungen aktiviert sind. |
+|**Namens- und Textkonventionen**||
+| [Zulassen mehrerer Namensmuster](scripts/allow-multiple-name-patterns.md) | Lassen Sie die Verwendung von einem der vielen Namensmuster für Ressourcen zu. |
+| [Ähnliches Muster erfordern](scripts/enforce-like-pattern.md) | Stellen Sie sicher, dass Ressourcennamen eine ähnliche Bedingung für ein Muster erfüllen. |
+| [Übereinstimmungsmuster erfordern](scripts/enforce-match-pattern.md) | Stellen Sie sicher, dass Ressourcennamen dem Benennungsmuster entsprechen. |
+| [Tagübereinstimmungsmuster erfordern](scripts/enforce-tag-match-pattern.md) | Stellen Sie sicher, dass ein Tagwert einem Textmuster entspricht. |
 |**Netzwerk**||
 | [Zulässige Application Gateway-SKUs](scripts/allowed-app-gate-sku.md) | Verlangt, dass Application Gateways eine zulässige SKU verwenden. Sie geben ein Array von zulässigen SKUs an. |
 | [Überwachen, wenn Network Watcher nicht für die Region aktiviert ist](scripts/net-watch-not-enabled.md) | Überwacht, wenn Network Watcher nicht für eine bestimme Region aktiviert ist. Sie geben den Namen der Region an, um zu überprüfen, ob Network Watcher aktiviert ist. |
@@ -62,6 +67,7 @@ In der folgenden Tabelle sind Links zu JSON-Vorlagen für Azure Policy enthalten
 | [Überwachen der Einstellung für die Bedrohungserkennung auf Datenbankebene](scripts/audit-db-threat-det-setting.md) | Überwacht Richtlinien für Sicherheitswarnungen für SQL-Datenbank, wenn diese Richtlinien nicht auf den angegebenen Status festgelegt sind. Sie geben einen Wert an, der angibt, ob die Bedrohungserkennung aktiviert oder deaktiviert ist.  |
 | [Überwachen von Einstellungen der Überwachung auf SQL-Server-Ebene](scripts/audit-sql-ser-leve-audit-setting.md) | Überwacht SQL-Server-Überwachungseinstellungen, wenn diese Einstellungen nicht mit einer angegebenen Einstellung übereinstimmen. Sie geben einen Wert an, der angibt, ob Überwachungseinstellungen aktiviert oder deaktiviert sein sollen. |
 | [Überwachen von Einstellungen für die Bedrohungserkennung auf Serverebene](scripts/audit-sql-ser-threat-det-setting.md) | Überwacht Richtlinien für Sicherheitswarnungen für SQL-Datenbank, wenn diese Richtlinien nicht auf den angegebenen Status festgelegt sind. Sie geben einen Wert an, der angibt, ob die Bedrohungserkennung aktiviert oder deaktiviert ist.  |
+| [Überwachen bei nicht vorhandenem Azure Active Directory-Administrator](scripts/audit-no-aad-admin.md) | Lassen Sie eine Überwachung zu, wenn dem SQL-Server kein Azure Active Directory-Administrator zugewiesen ist. |
 | [Zulässige SQL-Datenbank-SKUs](scripts/allowed-sql-db-skus.md) | Verlangt, dass SQL-Datenbanken eine genehmigte SKU verwenden. Sie geben ein Array von zulässigen SKU-IDs oder von zulässigen SKU-Namen an. |
 |**Speicher**||
 | [Zulässige SKUs für Speicherkonten und virtuelle Computer](scripts/allowed-skus-storage.md) | Erfordert, dass Speicherkonten und virtuelle Computer genehmigte SKUs verwenden. Verwendet integrierte Richtlinien, um die Verwendung von genehmigten SKUs zu gewährleisten. Sie geben ein Array von genehmigten SKUs für virtuelle Computer und ein Array von genehmigten SKUs für Speicherkonten an. |

@@ -12,17 +12,17 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: a746ace47c4f1190b7a695014543670a1a9cf879
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 78ce74450ce933e2aced4b6e62504373de7954f8
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>Schützen eines Dateiservers per Azure Site Recovery 
 
 Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre Strategien für Geschäftskontinuität und Notfallwiederherstellung, indem die Verfügbarkeit Ihrer Geschäftsanwendungen bei geplanten und ungeplanten Ausfällen gewährleistet wird. Site Recovery verwaltet und koordiniert die Notfallwiederherstellung von lokalen Computern und virtuellen Azure-Computern (VMs), einschließlich Replikation, Failover und Wiederherstellung verschiedener Workloads.
 
-In diesem Artikel wird beschrieben, wie Sie einen Dateiserver per Azure Site Recovery schützen, und er enthält weitere Empfehlungen für verschiedene Umgebungen. 
+In diesem Artikel wird beschrieben, wie Sie einen Dateiserver per Azure Site Recovery schützen, und er enthält weitere Empfehlungen für verschiedene Umgebungen.     
 
 - [Protect Azure IaaS file server machines](#disaster-recovery-recommendation-for-azure-iaas-virtual-machines) (Schützen von Azure IaaS-Dateiservercomputern)
 - [Protect on-premises file servers](#replicate-an-onpremises-file-server-using-azure-site-recovery) (Schützen von lokalen Dateiservern)
@@ -51,12 +51,12 @@ Oben werden mehrere Dateiserver als Member bezeichnet, die an der Replikation vo
 
 Das Diagramm unten enthält eine grafische Darstellung, um Ihnen die Entscheidung zu erleichtern, welche Strategie für Ihre Dateiserverumgebung verwendet werden soll.
 
-![Entscheidungsstruktur](media/site-recovery-file-server/decisiontree.png)
+![decisiontree](media/site-recovery-file-server/decisiontree.png)
 
 
 ### <a name="factors-to-consider-while-making-disaster-recovery-decision"></a>Zu berücksichtigende Faktoren beim Treffen der Entscheidung zur Notfallwiederherstellung
 
-|Umgebung  |Empfehlung  |Zu berücksichtigende Punkte |
+|Environment  |Empfehlung  |Zu berücksichtigende Punkte |
 |---------|---------|---------|
 |Dateiserverumgebung mit/ohne DFSR|   [Verwenden von Azure Site Recovery für die Replikation](#replicate-an-onpremises-file-servers-using-azure-site-recovery)   |    Für Site Recovery werden Cluster mit freigegebenen Datenträgern (NAS) nicht unterstützt. Wenn Ihre Umgebung eine dieser Konfigurationen nutzt, können Sie einen der anderen Ansätze verwenden. <br> Azure Site Recovery weist keine Unterstützung für SMB 3.0 auf. Dies bedeutet Folgendes: Nur wenn die an den Dateien vorgenommenen Änderungen am ursprünglichen Speicherort einer Datei aktualisiert werden, werden die Änderungen auf der replizierten VM eingebunden.
 |Dateiserverumgebung mit DFSR     |  [Erweitern von DFSR auf einen virtuellen Azure IaaS-Computer:](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |     DFSR ist gut für Umgebungen mit stark begrenzter Bandbreite geeignet. Für diesen Ansatz ist es aber erforderlich, dass ständig eine Azure-VM ausgeführt wird. Die Kosten für die VM müssen in Ihrer Planung berücksichtigt werden.         |

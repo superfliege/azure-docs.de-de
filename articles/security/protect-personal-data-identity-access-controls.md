@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 11/13/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 7c66a95d5a056f59e0f28dba4e0880e72e74dc3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory und Multi-Factor Authentication: Schützen personenbezogener Daten mit der Identitäts- und Zugriffssteuerung
 
@@ -121,23 +121,23 @@ Zur Bereitstellung von MFA in der Azure-Cloud müssen Sie zunächst MFA und dann
 
 #### <a name="how-do-i-enable-azure-to-use-mfa"></a>Wie aktiviere ich in Azure die Verwendung von MFA?
 
-Wenn Ihre Benutzer über Lizenzen verfügen, die Azure Multi-Factor Authentication enthalten, müssen Sie nichts unternehmen, um Azure MFA zu aktivieren. Andernfalls müssen Sie einen Multi-Factor Authentication-Anbieter in Ihrem Verzeichnis erstellen. Gehen Sie dazu folgendermaßen vor:
+Wenn Ihre Benutzer über Lizenzen verfügen, die Azure Multi-Factor Authentication enthalten, müssen Sie lediglich Azure MFA pro Benutzer oder Gruppe konfigurieren. 
 
-1. Wählen Sie im klassischen Azure-Portal (Anmeldung als Administrator) die Option **Active Directory** aus.
+![Benutzer, für die MFA aktiviert ist](media/protect-personal-data-identity-access-controls/enable-mfa.png)
 
-2. Wählen Sie **Anbieter für mehrstufige Authentifizierung** aus.
+Wenn Sie derzeit über keine Lizenzen verfügen, müssen Sie den am besten geeigneten Bereitstellungstyp für das Szenario bestimmen. Sie können zunächst den Artikel [Auswählen einer geeigneten Azure Multi-Factor Authentication-Lösung](../multi-factor-authentication/multi-factor-authentication-get-started.md) lesen. Wenn Sie einen Multi-Factor Authentication-Server erstellen möchten, können Sie dazu die folgenden Schritte ausführen:
 
-3. Wählen Sie **Neu** und dann unter **App Services** die Option **Anbieter für mehrstufige Authentifizierung** aus.
+1. Wählen Sie im Azure-Portal (Anmeldung als Administrator) die Option **Active Directory** aus.
 
-4. Wählen Sie **Schnellerfassung** aus.
+2. Wählen Sie **MFA-Server** aus.
 
-5. Füllen Sie das Feld „Name“ aus, und wählen Sie ein Nutzungsmodell (pro Authentifizierung oder pro aktiviertem Benutzer) aus.
+3. Legen Sie einen Timeoutwert fest. 
 
-6. Legen Sie ein Verzeichnis fest, dem der MFA-Anbieter zugeordnet ist.
+    ![](media/protect-personal-data-identity-access-controls/mfa-server-settings.png)
 
-7. Klicken Sie auf die Schaltfläche **Erstellen** .
+4. Klicken Sie unten auf der Seite auf **Speichern**
 
-![](media/protect-personal-data-identity-access-controls/quick-create.png)
+In diesem Fenster haben Sie auch die Möglichkeit, den MFA-Server herunterzuladen. Im Artikel [Erste Schritte mit Azure Multi-Factor Authentication-Server](../multi-factor-authentication/multi-factor-authentication-get-started-server.md) finden Sie weitere ausführliche Informationen zum Festlegen der Größe und Planen einer Bereitstellung.
 
 Weitere Anweisungen zum Verwalten Ihres Multi-Factor Authentication-Anbieters finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication-Anbietern](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-auth-provider).
 
@@ -158,7 +158,7 @@ Führen Sie folgende Schritte aus, um MFA durch Ändern des Benutzerstatus zu ak
 5. Aktivieren Sie das Kontrollkästchen neben dem Namen des Benutzers.
 6. Wählen Sie auf der rechten Seite unter „QuickSteps“ die Option **Aktivieren** aus.
 
-   ![](media/protect-personal-data-identity-access-controls/quick-create.png)
+   ![](media/protect-personal-data-identity-access-controls/mfa-bulk.png)
 
 7. Bestätigen Sie Ihre Auswahl im Popupfenster, das geöffnet wird.  Benutzer, für die MFA aktiviert wurde, werden bei ihrer nächsten Anmeldung aufgefordert, sich zu registrieren.
 

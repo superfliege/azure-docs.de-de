@@ -1,5 +1,5 @@
 ---
-title: "Einbinden eines Azure Files-Datenträgers in Azure Container Instances"
+title: Einbinden eines Azure Files-Volumes in Azure Container Instances
 description: Erfahren Sie, wie Sie ein Azure Files-Volume einbinden, sodass der Zustand bei Azure Container Instances beibehalten wird.
 services: container-instances
 documentationcenter: 
@@ -14,16 +14,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 11/09/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 41c3a449b39d6ef77e1dd0cf10699f8debcad475
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 0f824dad7ba5b661941e952383025e5171f32e55
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="mounting-an-azure-file-share-with-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
+# <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Einbinden einer Azure-Dateifreigabe in Azure Container Instances
 
 Standardmäßig ist Azure Container Instances zustandslos. Wenn der Container abstürzt oder beendet wird, gehen alle Zustände verloren. Um den Zustand nach Ablauf der Lebensdauer des Containers beizubehalten, müssen Sie ein Volume aus einem externen Speicher einbinden. In diesem Artikel wird das Einbinden einer Azure-Dateifreigabe für die Verwendung mit Azure Container Instances veranschaulicht.
 
@@ -66,7 +66,7 @@ STORAGE_KEY=$(az storage account keys list --resource-group $ACI_PERS_RESOURCE_G
 echo $STORAGE_KEY
 ```
 
-## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Speichern der Informationen für den Speicherkontozugriff mit einem Azure-Schlüsseltresor
+## <a name="store-storage-account-access-details-with-azure-key-vault"></a>Speichern der Informationen für den Speicherkontozugriff mit Azure Key Vault
 
 Speicherkontoschlüssel schützen den Zugriff auf Ihre Daten, daher empfiehlt es sich, sie in einem Azure-Schlüsseltresor zu speichern.
 
@@ -185,16 +185,16 @@ Einfügen der Werte in die Parameterdatei:
 Mit der definierten Vorlage können Sie den Container erstellen und das zugehörige Volume mithilfe der Azure-Befehlszeilenschnittstelle einbinden. Wenn die Vorlagendatei den Namen *azuredeploy.json* und die Parameterdatei den Namen *azuredeploy.parameters.json* hat, lautet die Befehlszeile:
 
 ```azurecli-interactive
-az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group myResourceGroup
+az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group $ACI_PERS_RESOURCE_GROUP
 ```
 
-Nachdem der Container gestartet wurde, können Sie mithilfe der einfachen Web-App, die über das Image **seanmckenna/aci-hellofiles** bereitgestellt wird, die Dateien in der Azure-Dateifreigabe unter dem von Ihnen angegebenen Bereitstellungspfad verwalten. Rufen Sie die IP-Adresse für die Web-App wie folgt ab:
+Nachdem der Container gestartet wurde, können Sie mithilfe der einfachen Web-App, die über das Image **seanmckenna/aci-hellofiles** bereitgestellt wird, die Dateien in der Azure-Dateifreigabe unter dem von Ihnen angegebenen Bereitstellungspfad verwalten. Rufen Sie die IP-Adresse für die Web-App mit dem Befehl [az container show](/cli/azure/container#az_container_show) ab:
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name hellofiles -o table
+az container show --resource-group $ACI_PERS_RESOURCE_GROUP --name hellofiles -o table
 ```
 
-Mithilfe eines Tools wie [Microsoft Azure-Speicher-Explorer](http://storageexplorer.com) können Sie die in die Dateifreigabe geschriebene Datei abrufen und überprüfen.
+Mithilfe eines Tools wie [Microsoft Azure-Speicher-Explorer](https://storageexplorer.com) können Sie die in die Dateifreigabe geschriebene Datei abrufen und überprüfen.
 
 >[!NOTE]
 > Weitere Informationen zur Verwendung von Azure Resource Manager-Vorlagen und Parameterdateien und zur Bereitstellung mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/resource-group-template-deploy-cli.md).

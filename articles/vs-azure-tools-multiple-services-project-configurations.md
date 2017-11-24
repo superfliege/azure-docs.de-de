@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59492ccc64a70680d71ad1de0700ed30f9e45306
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>Konfigurieren Ihres Azure-Projekts mit mehreren Dienstkonfigurationen
 Ein Azure-Clouddienstprojekt enthält zwei Konfigurationsdateien: "Servicedefinition.csdef" und "ServiceConfiguration.cscfg". Diese Dateien sind im Paket mit Ihrer Azure-Cloudienstanwendung enthalten und werden in Azure bereitgestellt.
@@ -30,7 +30,7 @@ Die Azure Tools für Microsoft Visual Studio verfügen über Eigenschaftenseiten
 
 ![VS_Solution_Explorer_Roles_Properties](./media/vs-azure-tools-multiple-services-project-configurations/IC784076.png)
 
-Informationen zu den zugrunde liegenden Schemas für die Dienstdefinition und die Dienstkonfigurationsdateien finden Sie unter [Schemareferenz](https://msdn.microsoft.com/library/azure/dd179398.aspx). Weitere Informationen zur Dienstkonfiguration finden Sie unter [Gewusst wie: Konfigurieren von Clouddiensten](cloud-services/cloud-services-how-to-configure.md).
+Informationen zu den zugrunde liegenden Schemas für die Dienstdefinition und die Dienstkonfigurationsdateien finden Sie in den Artikeln zu [CSDEF (XML-Schema)](cloud-services/schema-csdef-file.md) und [CSCFG (XML-Schema)](cloud-services/schema-cscfg-file.md). Weitere Informationen zur Dienstkonfiguration finden Sie unter [Gewusst wie: Konfigurieren von Clouddiensten](cloud-services/cloud-services-how-to-configure-portal.md).
 
 ## <a name="configuring-role-properties"></a>Konfigurieren von Rolleneigenschaften
 Die Eigenschaftenseiten für eine Web- und Workerrolle sind ähnlich. Es bestehen jedoch einige Unterschiede, die in den folgenden Abschnitten erläutert werden.
@@ -88,7 +88,7 @@ Sie können die Eigenschaftenseite **Lokaler Speicher** verwenden, um mindestens
 ## <a name="certificates-page"></a>Seite "Zertifikate"
 Auf der Seite **Zertifikate** können Sie der Rolle Zertifikate zuordnen. Mit den hinzugefügten Zertifikaten können HTTPS-Endpunkte auf der Eigenschaftenseite **Endpunkte** konfiguriert werden.
 
-Auf der Eigenschaftenseite **Zertifikate** werden der Dienstkonfiguration Informationen zu den Zertifikaten hinzugefügt. Die Zertifikate sind im Dienstpaket nicht enthalten, sondern müssen über das [klassische Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=213885)gesondert in Azure hochgeladen werden.
+Auf der Eigenschaftenseite **Zertifikate** werden der Dienstkonfiguration Informationen zu den Zertifikaten hinzugefügt. Die Zertifikate sind im Dienstpaket nicht enthalten, sondern müssen über das [Azure-Portal](http://portal.azure.com) gesondert in Azure hochgeladen werden.
 
 Um der Rolle ein Zertifikat zuzuordnen, geben Sie einen Namen für das Zertifikat an. Mit diesem Namen wird beim Konfigurieren eines HTTPS-Endpunkts auf der Eigenschaftenseite **Endpunkte** auf das Zertifikat verwiesen. Geben Sie im nächsten Schritt an, ob der Zertifikatspeicher **Lokaler Computer** oder **Aktueller Benutzer** ist. Geben Sie außerdem den Namen des Speichers an. Geben Sie zuletzt den Fingerabdruck des Zertifikats ein. Wenn sich das Zertifikat im Speicher "Current User\Personal (My)" befindet, können Sie den Fingerabdruck des Zertifikats eingeben, indem Sie das Zertifikat aus einer aufgefüllten Liste auswählen. Wenn es sich an einem beliebigen anderen Ort befindet, geben Sie den Fingerabdruckwert manuell ein.
 

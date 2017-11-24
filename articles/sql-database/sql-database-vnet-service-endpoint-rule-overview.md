@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 10/30/2017
+ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: 69059b6169e1fac4d0abea2770b0de502f816113
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e1bb3e9f09ca7f5463228da4079b06ad2e771def
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -141,6 +141,9 @@ Bei Azure SQL-Datenbank gelten für Regeln für ein virtuelles Netzwerk folgende
 - Für jeden Azure SQL-Datenbankserver können für ein angegebenes virtuelles Netzwerk maximal 128 Einträge in der Zugriffssteuerungsliste vorhanden sein.
 
 - Regeln für ein virtuelles Netzwerk gelten nur für virtuelle Netzwerke gemäß dem Azure Resource Manager-Modell und nicht gemäß dem [klassischen Bereitstellungsmodell][arm-deployment-model-568f].
+
+- Durch das Aktivieren virtueller Netzwerkdienst-Endpunkte für Azure SQL-Datenbank werden auch die Endpunkte für die Azure-Dienste MySQL und Postgres aktiviert. Jedoch schlagen Verbindungen von den Endpunkten zu den MySQL- oder Postgres-Instanzen fehl, wenn Endpunkte aktiviert sind.
+    - Der Grund dafür ist, dass ACLing derzeit von MySQL und Postgres nicht unterstützt wird.
 
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, Regeln für virtuelle Netzwerke jedoch nicht:
     - [Virtuelles privates Netzwerk zwischen Standorten][vpn-gateway-indexmd-608y]

@@ -8,13 +8,13 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: e1099d2cd7eeccbe76d762028a0c5d5f95f53026
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="monitor-azure-sql-data-sync-preview-with-oms-log-analytics"></a>Überwachen der Azure SQL-Datensynchronisierung-Vorschauversion mit OMS Log Analytics 
+# <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>Überwachen der SQL-Datensynchronisierung (Vorschau) mit OMS Log Analytics 
 
 Zur Überprüfung des Aktivitätsprotokolls der SQL-Datensynchronisierung sowie zur Erkennung von Fehlern und Warnungen mussten Sie bislang die SQL-Datensynchronisierung manuell im Azure-Portal überprüfen oder hierfür PowerShell oder die REST-API verwenden. Mit den Schritten in diesem Artikel können Sie eine benutzerdefinierte Lösung konfigurieren, die die Überwachung der Datensynchronisierung verbessert. Diese Lösung kann an Ihr individuelles Szenario angepasst werden.
 
@@ -24,19 +24,19 @@ Eine Übersicht über die SQL-Datensynchronisierung finden Sie unter [Synchronis
 
 Bei der Suche nach Problemen müssen Sie nun nicht mehr die Protokolle der einzelnen Synchronisierungsgruppen durchgehen. Mit einer benutzerdefinierten OMS-Ansicht (Operations Management Suite) können Sie alle Ihre Synchronisierungsgruppen aus allen Ihren Abonnements zentral überwachen. Diese Ansicht enthält die Informationen, die für Kunden der SQL-Datensynchronisierung relevant sind.
 
-![Dashboard zur Überwachung der Datensynchronisierung](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.jpg)
+![Dashboard zur Überwachung der Datensynchronisierung](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Automatische E-Mail-Benachrichtigungen
 
-Die Protokolle müssen nicht mehr manuell im Azure-Portal, über PowerShell oder mithilfe der REST-API geprüft werden. Mit [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) können Sie Warnungen erstellen, die direkt an die E-Mail-Adressen der Benutzer gesendet werden, die im Falle eines Fehlers informiert werden müssen.
+Die Protokolle müssen nicht mehr manuell im Azure-Portal, über PowerShell oder mithilfe der REST-API geprüft werden. Mit [OMS Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) können Sie Warnungen erstellen, die direkt an die E-Mail-Adressen der Benutzer gesendet werden, die beim Auftreten eines Fehlers informiert werden müssen.
 
-![E-Mail-Benachrichtigungen für die Datensynchronisierung](media/sql-database-sync-monitor-oms/sync-email-notifications.jpg)
+![E-Mail-Benachrichtigungen für die Datensynchronisierung](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
-## <a name="how-do-you-set-this-up"></a>Einrichten dieser Konfiguration 
+## <a name="how-do-you-set-up-these-monitoring-features"></a>Wie richten Sie diese Überwachungsfunktionen ein? 
 
 Mit den folgenden Schritten implementieren Sie in weniger als einer Stunde eine benutzerdefinierte OMS-Überwachungslösung für die SQL-Datensynchronisierung.
 
-Drei Komponenten müssen konfiguriert werden:
+Sie müssen drei Komponenten konfigurieren:
 
 -   Ein PowerShell-Runbook zur Übertragung von Protokolldaten der SQL-Datensynchronisierung an die OMS
 
@@ -80,7 +80,7 @@ Weitere Informationen zum Erstellen eines Runbooks finden Sie unter [Mein erstes
 
 6.  Klicken Sie unter Ihrem Azure Automation-Konto unter „Freigegebene Ressourcen“ auf die Registerkarte **Variablen**.
 
-7.  Klicken Sie auf der Seite „Variablen“ auf **Variable hinzufügen**. Wir müssen eine Variable erstellen, um die letzte Ausführungszeit für das Runbook zu speichern. Wenn Sie über mehrere Runbooks verfügen, benötigen Sie für jedes Runbook eine eigene Variable.
+7.  Klicken Sie auf der Seite „Variablen“ auf **Variable hinzufügen**. Erstellen Sie eine Variable, um die letzte Ausführungszeit für das Runbook zu speichern. Wenn Sie über mehrere Runbooks verfügen, benötigen Sie für jedes Runbook eine eigene Variable.
 
 8.  Legen Sie den Namen der Variablen auf `DataSyncLogLastUpdatedTime` und den Typ auf „DateTime“ fest.
 
@@ -92,11 +92,11 @@ Weitere Informationen zum Erstellen eines Runbooks finden Sie unter [Mein erstes
 
     2.  Informationen zur Synchronisierungsgruppe
 
-    3.  OMS-Informationen. Diese Informationen finden Sie unter „OMS-Portal“ > „Einstellungen“ > „Verbundene Quellen“. Weitere Informationen zum Senden von Daten an Log Analytics finden Sie unter [Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api).
+    3.  OMS-Informationen. Diese Informationen finden Sie unter „OMS-Portal“ > „Einstellungen“ > „Verbundene Quellen“. Weitere Informationen zum Senden von Daten an Log Analytics finden Sie unter [Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)](../log-analytics/log-analytics-data-collector-api.md).
 
 11. Führen Sie das Runbook im Testbereich aus. Vergewissern Sie sich, dass es erfolgreich ausgeführt wurde.
 
-    Sollten Fehler aufgetreten sein, vergewissern Sie sich, dass das neueste PowerShell-Modul installiert ist. Verwenden Sie hierzu den **Modulkatalog** Ihres Automation-Kontos.
+    Sollten Fehler aufgetreten sein, vergewissern Sie sich, dass das neueste PowerShell-Modul installiert ist. Sie können das neueste PowerShell-Modul im **Modulkatalog** in Ihren Automation-Konto installieren.
 
 12. Klicken Sie auf **Veröffentlichen**.
 
@@ -136,7 +136,7 @@ Gehen Sie wie im Anschluss beschrieben vor, um eine auf OMS Log Analytics basier
 
     1.  Legen Sie den Aggregatwert auf **Größer als** fest.
 
-    2.  Geben Sie nach **Größer als** den Schwellenwert ein, nach dessen Überschreitung Warnungen ausgegeben werden sollen. Bei der Datensynchronisierung ist mit vorübergehenden Fehlern zu rechnen. Es empfiehlt sich daher, den Schwellenwert auf „5“ festzulegen, um Rauschen zu verringern.
+    2.  Geben Sie nach **Größer als** den Schwellenwert ein, nach dessen Überschreitung Warnungen ausgegeben werden sollen. Bei der Datensynchronisierung ist mit vorübergehenden Fehlern zu rechnen. Um Rauschen zu vermindern, legen Sie den Schwellenwert auf 5 fest.
 
 5.  Legen Sie unter **Aktionen** die Option **E-Mail-Benachrichtigung** auf „Ja“ fest. Geben Sie die gewünschten E-Mail-Empfänger ein.
 
@@ -189,10 +189,11 @@ Die in diesem Artikel beschriebenen Codebeispiele können Sie unter den folgende
 -   [OMS-Ansicht für das Protokoll der Datensynchronisierung](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur SQL-Datensynchronisierung finden Sie hier:
+Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
 -   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](sql-database-sync-data.md)
--   [Get Started with Azure SQL Data Sync](sql-database-get-started-sql-data-sync.md) (Erste Schritte mit der Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Einrichten von Azure SQL-Datensynchronisierung](sql-database-get-started-sql-data-sync.md)
+-   [Best practices for Azure SQL Data Sync (Preview)](sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
 -   [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:

@@ -12,53 +12,46 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/09/2017
 ms.author: mazha
-ms.openlocfilehash: 8d79626fa8516f226a82d3dac693c2033904c91d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28e724f34c32edb0d5641b24f9ffedb7dc5f9680
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
-# <a name="control-azure-cdn-caching-behavior-with-query-strings"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen
+# <a name="control-azure-content-delivery-network-caching-behavior-with-query-strings"></a>Steuern des Azure Content Delivery Network-Zwischenspeicherverhaltens mit Abfragezeichenfolgen
 > [!div class="op_single_selector"]
 > * [Standard](cdn-query-string.md)
 > * [Azure CDN Premium von Verizon](cdn-query-string-premium.md)
 > 
-> 
 
 ## <a name="overview"></a>Übersicht
-Das Zwischenspeichern von Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn sie Abfragezeichenfolgen enthalten.
+Mit Azure Content Delivery Network (CDN) können Sie steuern, wie Dateien für eine Webanforderung, die eine Abfragezeichenfolge enthält, zwischengespeichert werden. In einer Webanforderung mit einer Abfragezeichenfolge ist die Abfragezeichenfolge der Teil der Anforderung, die nach dem Zeichen `?` steht. Eine Abfragezeichenfolge kann einen oder mehrere Parameter enthalten, die durch das Zeichen `&` voneinander getrennt sind. Beispiel: `http://www.domain.com/content.mov?data1=true&data2=false`. Wenn eine Anforderung mehr als einen Abfragezeichenfolgenparameter aufweist, spielt die Reihenfolge der Parameter keine Rolle. 
 
 > [!IMPORTANT]
-> Die CDN-Produkte „Standard“ und „Premium“ bieten die gleiche Funktionalität zum Zwischenspeichern von Abfragezeichenfolgen, jedoch mit einer anderen Benutzeroberfläche.  Dieses Dokument beschreibt die Benutzeroberfläche für **Azure CDN Standard von Akamai** und **Azure CDN Standard von Verizon**.  Informationen zum Zwischenspeichern von Abfragezeichenfolgen mit **Azure CDN Premium von Verizon**finden Sie unter [Steuern des Zwischenspeicherverhaltens von CDN-Anforderungen mit Abfragezeichenfolgen – Premium](cdn-query-string-premium.md).
-> 
-> 
+> Die CDN-Produkte „Standard“ und „Premium“ bieten die gleiche Funktionalität zum Zwischenspeichern von Abfragezeichenfolgen, aber mit einer anderen Benutzeroberfläche.  Dieser Artikel beschreibt die Benutzeroberfläche für **Azure CDN Standard von Akamai** und **Azure CDN Standard von Verizon**. Informationen zum Zwischenspeichern von Abfragezeichenfolgen mit **Azure CDN Premium von Verizon**finden Sie unter [Steuern des Zwischenspeicherverhaltens von CDN-Anforderungen mit Abfragezeichenfolgen – Premium](cdn-query-string-premium.md).
 
-Die folgenden drei Modi sind verfügbar:
+Es sind drei Abfragezeichenfolgenmodi verfügbar:
 
-* **Abfragezeichenfolgen ignorieren**: Dies ist der Standardmodus.  Der CDN-Edgeknoten übergibt die Abfragezeichenfolge bei der ersten Anforderung vom Anforderer an den Ursprung und speichert das Objekt im Cache.  Alle nachfolgenden Anforderungen dieses Objekts, die vom Edgeknoten verarbeitet werden, ignorieren die Abfragezeichenfolge bis zum Ablauf des zwischengespeicherten Objekts.
-* **Cachingumgehung für URLs mit Abfragezeichenfolgen**: In diesem Modus werden Anforderungen mit Abfragezeichenfolgen nicht auf dem CDN-Edgeknoten zwischengespeichert.  Der Edgeknoten ruft das Objekt direkt vom Ursprung ab und übergibt es bei jeder Anforderung an den Anforderer.
-* **Cache für eindeutige URL**: In diesem Modus wird jede Anforderung mit einer Abfragezeichenfolge als eindeutiges Objekt mit eigenem Cache behandelt.  So wird z.B. die Antwort vom Ursprung für eine Anforderung für *foo.ashx?q=bar* auf dem Edgeknoten zwischengespeichert und für nachfolgende Caches mit der gleichen Abfragezeichenfolge zurückgegeben.  Eine Anforderung für *foo.ashx?q=etwasanderes* wird als separates Asset mit eigener Lebensdauer zwischengespeichert.
+- **Abfragezeichenfolgen ignorieren**: Standardmodus. In diesem Modus übergibt der CDN-Edgeknoten die Abfragezeichenfolgen bei der ersten Anforderung vom Anforderer an den Ursprung und speichert das Objekt im Cache zwischen. Alle nachfolgenden Anforderungen des Objekts, die vom Edgeknoten verarbeitet werden, ignorieren die Abfragezeichenfolgen bis zum Ablauf des zwischengespeicherten Objekts.
+- **Zwischenspeicherung für Abfragezeichenfolgen umgehen**: In diesem Modus werden Anforderungen mit Abfragezeichenfolgen nicht auf dem CDN-Edgeknoten zwischengespeichert. Der Edgeknoten ruft das Objekt direkt vom Ursprung ab und übergibt es bei jeder Anforderung an den Anforderer.
+- **Jede eindeutige URL zwischenspeichern**: In diesem Modus wird jede Anforderung mit einer eindeutigen URL, einschließlich der Abfragezeichenfolge, als eindeutiges Objekt mit eigenem Cache behandelt. So wird beispielsweise die Antwort vom Ursprung für eine Anforderung für `example.ashx?q=test1` auf dem Edgeknoten zwischengespeichert und für nachfolgende Caches mit der gleichen Abfragezeichenfolge zurückgegeben. Eine Anforderung für `example.ashx?q=test2` wird als separates Objekt mit eigener Einstellung für die Gültigkeitsdauer zwischengespeichert.
 
 ## <a name="changing-query-string-caching-settings-for-standard-cdn-profiles"></a>Ändern der Einstellungen für das Zwischenspeichern von Abfragezeichenfolgen für CDN-Standardprofile
-1. Klicken Sie auf dem Blatt „CDN-Profil“ auf den CDN-Endpunkt, den Sie verwalten möchten.
+1. Öffnen Sie ein CDN-Profil, und wählen Sie den zu verwaltenden CDN-Endpunkt aus.
    
-    ![Blade-Endpunkte für CDN-Profile](./media/cdn-query-string/cdn-endpoints.png)
+   ![CDN-Profilendpunkte](./media/cdn-query-string/cdn-endpoints.png)
    
-    Das Blatt „CDN-Endpunkt“ öffnet sich.
-2. Klicken Sie auf die Schaltfläche **Konfigurieren** .
+2. Klicken Sie unter „Einstellungen“ auf **Cache**.
    
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-query-string/cdn-config-btn.png)
+    ![Schaltfläche „Cache“ im CDN-Profil](./media/cdn-query-string/cdn-cache-btn.png)
    
-    Es wird das Blatt „CDN-Konfiguration“ geöffnet.
-3. Wählen Sie eine Einstellung aus der Dropdown-Liste **Verhalten beim Zwischenspeichern von Abfragezeichenfolgen** .
+3. Wählen Sie in der Liste **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** einen Abfragezeichenfolgenmodus, und klicken Sie auf **Speichern**.
    
-    ![Zwischenspeicherungsoptionen für CDN-Abfragezeichenfolgen](./media/cdn-query-string/cdn-query-string.png)
-4. Treffen Sie Ihre Auswahl, und klicken Sie auf **Speichern** .
+  <!--- Replace screen shot after general caching goes live ![CDN query string caching options](./media/cdn-query-string/cdn-query-string.png) --->
 
 > [!IMPORTANT]
-> Diese Einstellungsänderungen sind vielleicht nicht sofort sichtbar, da die Verteilung der Registrierung über das CDN eine Weile dauern kann.  Geben Sie unter <b>Azure CDN von Akamai</b> ist die Weitergabe in der Regel innerhalb einer Minute abgeschlossen.  Bei <b>Azure CDN von Verizon</b>-Profilen ist die Weitergabe in der Regel in 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
-> 
-> 
+> Da die Verteilung der Registrierung über das CDN eine Weile dauern kann, sind die Änderungen der Cachezeichenfolgen-Einstellungen unter Umständen nicht sofort sichtbar. Bei **Azure CDN von Akamai** -Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. Bei Profilen vom Typ **Azure CDN von Verizon** ist die Weitergabe in der Regel in 90 Minuten abgeschlossen, in manchen Fällen kann es aber länger dauern.
+
 

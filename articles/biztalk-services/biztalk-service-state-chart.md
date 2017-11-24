@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2016
 ms.author: mandia
-ms.openlocfilehash: 918154852cf4ee1b80792eaddb588f5b0237da7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05470e75fc7b46603c8fce3a98c66ac6a24758a8
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="what-you-can-and-cant-do-using-the-biztalk-service-state"></a>BizTalk Services: eine Dienststatusübersicht
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 Je nach aktuellem Status des BizTalk-Diensts stehen Vorgänge bereit, die Sie in eben diesem BizTalk-Dienst entweder ausführen können oder nicht ausführen können.
 
-Sie stellen beispielsweise einen neuen BizTalk-Dienst im klassischen Azure-Portal bereit. Wenn dieser Vorgang erfolgreich abgeschlossen ist, befindet sich der BizTalk-Dienst im Status `active`. Im aktiven Status können Sie den BizTalk-Dienst beenden, anhalten und löschen. Wenn Sie den BizTalk-Dienst beenden und dabei ein Fehler auftritt, wechselt der BizTalk-Dienst in den Status `StopFailed`. Im Status `StopFailed` können Sie den BizTalk-Dienst neu starten. Wenn Sie versuchen, einen nicht zulässigen Vorgang auszuführen, wie etwa die Wiederaufnahme des Diensts, tritt der folgende Fehler auf:
+Sie stellen beispielsweise einen neuen BizTalk-Dienst bereit. Wenn dieser Vorgang erfolgreich abgeschlossen ist, befindet sich der BizTalk-Dienst im Status `active`. Im aktiven Status können Sie den BizTalk-Dienst beenden, anhalten und löschen. Wenn Sie den BizTalk-Dienst beenden und dabei ein Fehler auftritt, wechselt der BizTalk-Dienst in den Status `StopFailed`. Im Status `StopFailed` können Sie den BizTalk-Dienst neu starten. Wenn Sie versuchen, einen nicht zulässigen Vorgang auszuführen, wie etwa die Wiederaufnahme des Diensts, tritt der folgende Fehler auf:
 
 `Operation not allowed`
 
@@ -52,7 +52,6 @@ Die folgenden Tabellen enthalten alle Vorgänge oder Aktionen, die ausgeführt w
 
 
 ## <a name="see-also"></a>Weitere Informationen
-* [BizTalk Services: Bereitstellung mithilfe des klassischen Azure-Portals](http://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
 * [BizTalk Services: Registerkarten „Dashboard“, „Überwachen“ und „Skalieren“](http://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
 * [BizTalk Services: Editionsübersicht](http://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
 * [BizTalk Services: Sichern und Wiederherstellen](http://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
-ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17bd8294c957c0666ffe75d1ff06b863f1176048
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>Tutorial: Azure Active Directory-Integration mit SAML SSO for Confluence by resolution GmbH
 
@@ -169,26 +169,54 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon3.png)
     
-16. Klicken Sie auf der Seite **Konfiguration des SAML-SSO-Plug-Ins** auf die Schaltfläche **Zusätzlichen Identitätsanbieter hinzufügen**, um die Einstellungen des Identitätsanbieters zu konfigurieren.
+16. Klicken Sie auf der Seite **Konfiguration des SAML-SSO-Plug-Ins** auf die Schaltfläche **Add new IdP** (Neuen IdP hinzufügen), um die Einstellungen des Identitätsanbieters zu konfigurieren.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon4.png)
 
-17. Führen Sie auf dieser Seite folgende Schritte durch:
+17. Führen Sie auf der Seite **Choose your SAML Identity Provider** (SAML-Identitätsanbieter auswählen) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon5.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon5a.png)
  
-    a. Fügen Sie den **Namen** des Identitätsanbieters (z.B. Azure AD) hinzu.
+    a. Legen Sie als IdP-Typ die Option **Azure AD** fest.
     
-    b. Fügen Sie eine **Beschreibung** des Identitätsanbieters (z.B. Azure AD) hinzu.
+    b. Fügen Sie den **Namen** des Identitätsanbieters (z.B. Azure AD) hinzu.
+    
+    c. Fügen Sie eine **Beschreibung** des Identitätsanbieters (z.B. Azure AD) hinzu.
+    
+    d. Klicken Sie auf **Weiter**.
 
-    c. Klicken Sie auf **XML**, und wählen Sie die **Metadatendatei** aus, die Sie aus dem Azure-Portal heruntergeladen haben.
+    
+18. Klicken Sie auf der Seite **Identitätsanbieterkonfiguration** auf die Schaltfläche **Weiter**.
 
-    d. Klicken Sie auf die Schaltfläche **Laden**.
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon5b.png)
 
-    e. Die IdP-Metadaten werden gelesen und die Felder werden, wie im Screenshot gezeigt, aufgefüllt. 
-18. Klicken Sie auf die Schaltfläche **Einstellungen speichern**, um die Einstellungen zu speichern.
+19. Führen Sie auf der Seite **Import SAML IdP Metadata** (SAML-IdP-Metadaten importieren) die folgenden Schritte aus:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon6.png)
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon5c.png)
+
+    a. Klicken Sie auf die Schaltfläche **Datei laden**, und wählen Sie die in Schritt 5 heruntergeladene Metadaten-XML-Datei aus.
+
+    b. Klicken Sie auf die Schaltfläche **Importieren**.
+    
+    c. Warten Sie kurz, bis der Import erfolgreich ausgeführt wurde.
+    
+    d. Klicken Sie auf die Schaltfläche **Weiter**.
+    
+20. Klicken Sie auf der Seite **User ID attribute and transformation** (Benutzer-ID-Attribut und Transformation) auf die Schaltfläche **Weiter**.
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon5d.png)
+    
+21. Klicken Sie auf der Seite **User creation and update** (Benutzererstellung und -aktualisierung) auf **Save & Next** (Speichern und weiter), um die Einstellungen zu speichern.   
+    
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon6a.png)
+    
+22. Klicken Sie auf der Seite **Testen Ihrer Einstellungen** auf **Skip test & configure manually** (Test überspringen und manuell konfigurieren), um den Benutzertest vorerst zu überspringen. Dieser wird im nächsten Abschnitt durchgeführt und erfordert einige Einstellungen im Azure-Portal. 
+    
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon6b.png)
+    
+23. Klicken Sie im angezeigten Dialogfeld **Skipping the test means...** (Das Überspringen des Tests bedeutet...) auf **OK**.
+    
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-samlssoconfluence-tutorial/addon6c.png)
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: raynew
-ms.openlocfilehash: 27491e34ad9e47aec2f424cfc439fad614f0e435
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a846cc3e2f06199bdef9e597198f309801d5c75
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare
 
@@ -48,7 +48,8 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 | Europa |Nordeuropa |Westeuropa |
 | Japan |Japan Ost |Japan (Westen) |
 | Brasilien |Brasilien, Süden (1) |USA (Mitte/Süden) |
-| US Government |US Government, Iowa |US Government, Virginia |
+| US Government |USA Gov Iowa (2) |US Government, Virginia |
+| US Government |USA Gov Virginia (3) |US Gov Texas |
 | US Government |US Gov Arizona |US Gov Texas |
 | US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
 | UK |UK, Westen |UK, Süden |
@@ -57,6 +58,10 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 Tabelle 1: Übersicht über Azure-Regionspaare
 
 > (1) Brasilien, Süden ist besonders, da dieses Gebiet ein Paar mit einer Region außerhalb des eigenen Gebiets bildet. „USA, Süden-Mitte“ fungiert als sekundäre Region von „Brasilien, Süden“, „Brasilien, Süden“ aber nicht als sekundäre Region von „USA, Süden-Mitte“.
+>
+> (2) Die sekundäre Region von „USA Gov Iowa“ ist „USA Gov Virginia“, die sekundäre Region von „USA Gov Virginia“ ist jedoch nicht „USA Gov Iowa“.
+> 
+> (3) Die sekundäre Region von „USA Gov Virginia“ ist „USA Gov Texas“, die sekundäre Region von „USA Gov Texas“ ist nicht „USA Gov Virginia“.
 
 
 Wir empfehlen das Replizieren von Workloads zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Beispielsweise werden geplante Azure-Systemupdates in Regionspaaren sequenziell (nicht gleichzeitig) bereitgestellt. Das heißt, dass selbst im seltenen Fall eines fehlerhaften Updates beide Regionen nicht gleichzeitig betroffen sind. Darüber hinaus wird im unwahrscheinlichen Fall eines umfassenden Ausfalls die Wiederherstellung mindestens einer Region aus jedem Paar priorisiert.

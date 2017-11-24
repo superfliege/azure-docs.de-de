@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: 736e48f9651d89a1f4e8e0ae72cdffebb8e9c6e0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0319029277091611673f15c94604604850cbfcbe
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="create-a-user-defined-route---azure-portal"></a>Erstellen einer benutzerdefinierten Route – Azure-Portal
 
@@ -268,6 +268,12 @@ In diesem Artikel wird das Erstellen einer benutzerdefinierten Route über das A
         - **Ubuntu**: Führen Sie den Befehl `tracepath myvm-private` aus.
       Der Netzwerkdatenverkehr wird zuerst an die IP-Adresse 10.0.2.4 (das virtuelle Netzwerkgerät) und anschließend an die IP-Adresse 10.0.1.4 (die VM im privaten Subnetz) weitergeleitet. 
     - Führen Sie die vorherigen Schritte aus, indem Sie eine Verbindung mit der *myVm-Private-VM* herstellen und die *myVm-Public-VM* anpingen. Die Traceroute veranschaulicht den Netzwerkdatenverkehr, der über die IP-Adresse 10.0.2.4 an die IP-Adresse 10.0.0.4 (die VM im öffentlichen Subnetz) weitergeleitet wird.
+
+      > [!NOTE]
+      > Mithilfe der vorhergehenden Schritte können Sie die Weiterleitung zwischen privaten Azure-IP-Adressen bestätigen. Falls Sie Datenverkehr durch eine virtuelle Netzwerkanwendung an öffentliche IP-Adressen weiterleiten – also einen Proxy bereitstellen – möchten, gilt:
+      > - Die Appliance muss Netzwerkadressübersetzung oder Proxyfunktionen bereitstellen. Im Fall von Netzwerkadressübersetzung muss die Appliance die Quell-IP-Adresse in ihre eigene übersetzen und diese Anforderung anschließend an die öffentliche IP-Adresse weiterleiten. Unabhängig davon, ob die Appliance die Quelladresse in eine Netzwerkadresse übersetzt oder als Proxy fungiert, übersetzt Azure die private IP-Adresse der virtuellen Appliance in eine öffentliche IP-Adresse. Weitere Informationen über die verschiedenen Methoden, die Azure verwendet, um private IP-Adressen in öffentliche IP-Adressen zu übersetzen finden Sie unter [Understanding outbound connections](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Grundlegendes zu ausgehenden Verbindungen).
+      > - Eine zusätzliche Route in der Routingtabelle, wie etwa Präfix: 0.0.0.0/0, Typ des nächsten Hops VirtualAppliance und IP-Adresse des nächsten Hops 10.0.2.4 (ausgehend vom vorhergehenden Beispielskript).
+      >
     - **Optional:** Verwenden Sie die Funktion „Nächster Hop“ von Azure Network Watcher, um den nächsten Hop zwischen zwei virtuellen Computern in Azure zu überprüfen. Vor der Verwendung von Network Watcher müssen Sie zuerst [eine Instanz von Azure Network Watcher](../network-watcher/network-watcher-create.md?toc=%2fazure%2fvirtual-network%2ftoc.json) für die Region erstellen, in der Sie diesen Dienst verwenden möchten. In diesem Tutorial wird die Region „USA, Osten“ verwendet. Nachdem Sie eine Network Watcher-Instanz für die Region erstellt haben, geben Sie den folgenden Befehl ein, um sich Informationen zum nächsten Hop zwischen den VMs im öffentlichen und privaten anzeigen Subnetz anzeigen zu lassen:
      
         ```azurecli-interactive

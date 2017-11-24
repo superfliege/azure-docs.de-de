@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 11/14/2017
 ms.author: sethm
-ms.openlocfilehash: 1403184d96388cb03b2c767c4da342ec1c6fe236
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e64e7d9f203debe19dfa222f501c7902cfe2ae98
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
-In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus beantwortet. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
+In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Service Bus behandelt. Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Informationen zu Azure-Preisen und zum Support suchen.
 
 ## <a name="general-questions-about-azure-service-bus"></a>Allgemeine Fragen zu Azure Service Bus
 ### <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
@@ -31,7 +31,7 @@ In diesem Artikel werden einige häufig gestellte Fragen zu Microsoft Azure Serv
 Ein [Namespace](service-bus-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Service Bus-Ressourcen innerhalb Ihrer Anwendung. Die Namespace-Erstellung ist für die Verwendung von Service Bus erforderlich und ist einer der ersten Schritte.
 
 ### <a name="what-is-an-azure-service-bus-queue"></a>Was ist eine Azure Service Bus-Warteschlange?
-Eine [Service Bus-Warteschlange](service-bus-queues-topics-subscriptions.md) ist eine Entität, in der Nachrichten gespeichert werden. Warteschlangen sind besonders nützlich, wenn Sie über mehrere Anwendungen oder mehrere Teile einer verteilten Anwendung verfügen, die miteinander kommunizieren müssen. Die Warteschlange ähnelt einem Verteilzentrum, in dem mehrere Produkte (Nachrichten) eingehen und von diesem Standort aus dann weiterverschickt werden.
+Eine [Service Bus-Warteschlange](service-bus-queues-topics-subscriptions.md) ist eine Entität, in der Nachrichten gespeichert werden. Warteschlangen sind nützlich, wenn Sie über mehrere Anwendungen oder mehrere Teile einer verteilten Anwendung verfügen, die miteinander kommunizieren müssen. Die Warteschlange ähnelt einem Verteilzentrum, in dem mehrere Produkte (Nachrichten) eingehen und von diesem Standort aus dann weiterverschickt werden.
 
 ### <a name="what-are-azure-service-bus-topics-and-subscriptions"></a>Was sind Azure Service Bus-Themen und -Abonnements?
 Eine Thema kann als Warteschlange visualisiert werden, und bei Verwendung mehrerer Abonnements ergibt sich ein umfassenderes Messagingmodell. Im Wesentlichen handelt es sich um ein Tool für die 1:n-Kommunikation. Bei diesem Modell vom Typ „Veröffentlichen/Abonnieren“ (*Pub/Sub*) kann für eine Anwendung, die eine Nachricht an ein Thema mit mehreren Abonnements sendet, erreicht werden, dass die Nachricht von mehreren Anwendungen empfangen wird.
@@ -43,10 +43,10 @@ Beachten Sie, dass die Sortierung bei der Verwendung von partitionierten Entitä
 
 ## <a name="best-practices"></a>Bewährte Methoden
 ### <a name="what-are-some-azure-service-bus-best-practices"></a>Gibt es Beispiele für bewährte Azure Service Bus-Methoden?
-* [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus][Best practices for performance improvements using Service Bus]: In diesem Artikel wird beschrieben, wie Sie die Leistung beim Austauschen von Nachrichten optimieren können.
+Siehe [Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus][Best practices for performance improvements using Service Bus] – In diesem Artikel wird beschrieben, wie Sie die Leistung beim Austauschen von Nachrichten optimieren können.
 
 ### <a name="what-should-i-know-before-creating-entities"></a>Was muss ich vor der Erstellung von Entitäten wissen?
-Die folgenden Eigenschaften einer Warteschlange und eines Themas sind unveränderlich. Berücksichtigen Sie dies beim Bereitstellen Ihrer Entitäten, da eine Änderung nicht möglich ist, ohne eine neue Ersatzentität zu erstellen.
+Die folgenden Eigenschaften einer Warteschlange und eines Themas sind unveränderlich. Berücksichtigen Sie diese Einschränkung beim Bereitstellen Ihrer Entitäten, da diese Eigenschaften nicht geändert werden können, ohne eine neue Ersatzentität zu erstellen.
 
 * Größe
 * Partitionierung
@@ -57,12 +57,12 @@ Die folgenden Eigenschaften einer Warteschlange und eines Themas sind unverände
 ## <a name="pricing"></a>Preise
 In diesem Abschnitt werden einige häufig gestellte Fragen zur Service Bus-Preisstruktur beantwortet.
 
-Der Artikel [Service Bus – Preise und Abrechnung](service-bus-pricing-billing.md) erläutert die Verbrauchseinheiten für die Abrechnung in Service Bus. Informationen zu den Optionen für Service Bus-Preise finden Sie unter [Service Bus – Preisdetails](https://azure.microsoft.com/pricing/details/service-bus/).
+Im Artikel [Service Bus – Preise und Abrechnung](service-bus-pricing-billing.md) werden die Abrechnungseinheiten in Service Bus erläutert. Detailliertere Informationen zu den Service Bus-Preisoptionen finden Sie unter [Service Bus – Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 Sie können auch [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083) aufrufen, wenn Sie nach allgemeinen Azure-Preisinformationen suchen. 
 
 ### <a name="how-do-you-charge-for-service-bus"></a>Wie werden die Kosten für Service Bus berechnet?
-Umfassende Informationen zu Service Bus-Preisen finden Sie unter [Service Bus – Preise][Pricing overview]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
+Vollständige Informationen zu Service Bus-Preisen finden Sie unter [Service Bus-Preise][Pricing overview]. Neben den aufgeführten Preisen werden Ihnen die damit verbundenen aus dem Rechenzentrum ausgehenden Datenübertragungen berechnet, mit denen Ihre Anwendung bereitgestellt wird.
 
 ### <a name="what-usage-of-service-bus-is-subject-to-data-transfer-what-is-not"></a>Bei welcher Nutzung von Service Bus werden Daten übertragen? Bei welcher nicht?
 Jede Datenübertragung innerhalb der jeweiligen Azure-Region ist ebenso wie jede eingehende Datenübertragung kostenfrei. Für die Datenübertragung außerhalb einer Region gelten Gebühren für ausgehenden Datenverkehr, die [hier](https://azure.microsoft.com/pricing/details/bandwidth/) aufgeführt sind.
@@ -75,7 +75,7 @@ Nein, für Service Bus fallen keine Speicherkosten an. Es gibt allerdings ein Ko
 Eine Liste mit Service Bus-Grenzwerten und -Kontingenten finden Sie unter [Übersicht über Service Bus-Kontingente][Quotas overview].
 
 ### <a name="does-service-bus-have-any-usage-quotas"></a>Gibt es für Service Bus Nutzungskontingente?
-Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Uns ist bewusst, dass Sie möglicherweise mehr benötigen als diese Grenzwerte. Sie können sich gerne jederzeit an unseren Kundendienst wenden und uns Ihre Anforderungen mitteilen, damit wir die Grenzwerte entsprechend anpassen können. Für Service Bus liegt das aggregierte Nutzungskontingent bei 5 Milliarden Nachrichten pro Monat.
+Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Uns ist bewusst, dass Sie möglicherweise mehr benötigen als diese Grenzwerte. Sie können sich jederzeit an unseren Kundendienst wenden und uns Ihre Anforderungen mitteilen, damit wir die Grenzwerte entsprechend anpassen können. Für Service Bus liegt das aggregierte Nutzungskontingent bei 5 Milliarden Nachrichten pro Monat.
 
 Wir behalten uns das Recht vor, ein Kundenkonto zu deaktivieren, das die Nutzungskontingente in einem Monat überschritten hat. Wir informieren allerdings per E-Mail darüber und unternehmen mehrere Versuche, den Kunden zu kontaktieren, ehe wir diese Maßnahme ergreifen. Kunden, die diese Kontingente überschreiten, haben die Kosten für die Überschreitung zu tragen.
 
@@ -113,7 +113,7 @@ Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscr
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu Service Bus finden Sie in den folgenden Themen:
+Weitere Informationen zu Service Bus finden Sie in den folgenden Artikeln:
 
 * [Einführung in Azure Service Bus Premium (Blogbeitrag)](http://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Einführung in Azure Service Bus Premium (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)

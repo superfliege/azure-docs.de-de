@@ -1,6 +1,6 @@
 ---
 title: "Serverkonzepte in Azure-Datenbank für PostgreSQL | Microsoft-Dokumentation"
-description: "Dieses Thema enthält Aspekte und Richtlinien für die Arbeit mit Azure-Datenbank für PostgreSQL-Servern."
+description: "Dieses Thema enthält Aspekte und Richtlinien für das Konfigurieren und Verwalten von Azure Database for PostgreSQL-Servern."
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 67cf6b133e8e869ee3a157d79d68602760d9137c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/08/2017
+ms.openlocfilehash: 46e109c25f8cbdba9b3769db7563259f7c6705d4
+ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/09/2017
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure-Datenbank für PostgreSQL-Server
 Dieser Artikel enthält Erwägungen und Richtlinien für die Arbeit mit Azure-Datenbank für PostgreSQL-Server.
@@ -47,9 +47,16 @@ Mithilfe der folgenden Elemente kann ein sicherer Zugriff auf Ihre Datenbank sic
 |||
 
 ## <a name="how-do-i-manage-a-server"></a>Wie verwalte ich einen Server?
-Sie können Azure-Datenbank für PostgreSQL-Server mithilfe des Azure-Portals oder der [Azure CLI](/cli/azure/postgres) verwalten.
+Sie können Azure Database for PostgreSQL-Server mithilfe des [Azure-Portals](https://portal.azure.com) oder der [Azure CLI](/cli/azure/postgres) verwalten.
+
+## <a name="server-parameters"></a>Serverparameter
+Die PostgreSQL-Serverparameter bestimmen die Konfiguration des Servers. In Azure Database for PostgreSQL kann die Liste der Parameter über das Azure-Portal oder die Azure CLI angezeigt und bearbeitet werden. 
+
+Da es sich um einen verwalteten Dienst für Postgres handelt, stellen die konfigurierbaren Parameter in Azure Database for PostgreSQL eine Teilmenge der Parameter in einer lokalen Postgres-Instanz dar. (Weitere Informationen zu Postgres-Parametern finden Sie in der [PostgreSQL-Dokumentation](https://www.postgresql.org/docs/9.6/static/runtime-config.html).) Bei der Erstellung wird der Azure Database for PostgreSQL-Server mit Standardwerten für die einzelnen Parameter konfiguriert. Parameter, die einen Serverneustart oder Superuser-Zugriff erfordern, damit sie übernommen werden, können nicht vom Benutzer konfiguriert werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Einen Überblick über den Dienst finden Sie unter [Azure-Datenbank für PostgreSQL – Überblick](overview.md).
 - Informationen zu bestimmten Ressourcenkontingenten und -beschränkungen basierend auf Ihrem **Diensttarif** finden Sie unter [Diensttarife](concepts-service-tiers.md).
 - Informationen zum Herstellen einer Verbindung mit dem Dienst finden Sie unter [Datenverbindungsbibliotheken für Azure-Datenbank für PostgreSQL](concepts-connection-libraries.md).
+- Sie können Serverparameter über das [Azure-Portal](howto-configure-server-parameters-using-portal.md) oder die [Azure CLI](howto-configure-server-parameters-using-cli.md) anzeigen und bearbeiten.

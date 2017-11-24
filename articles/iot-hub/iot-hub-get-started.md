@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: dobett
-ms.openlocfilehash: 45016e6383761ffe78f13ccef1112ab3d9753498
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 764c6bd3c2466ceb93e33d03bece1c9036c1b1d9
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-iot-hub-get-started-tutorials"></a>Tutorials für die ersten Schritte mit Azure IoT Hub
 
@@ -46,13 +46,6 @@ Verbinden Sie ein IoT-Gerät oder ein Gateway mit Azure IoT Hub. Sie können fü
 | Adafruit Feather M0              | [Arduino][M0_Ard]              |
 | Simuliertes Gerät auf PC           | [.NET][Sim_NET], [Java][Sim_Jav], [Node.js][Sim_Nd], [Python][Sim_Pyth] |
 | Onlinegerätesimulator         | [Raspberry Pi (Node.js)][Ol_Sim] |
-
-Darüber hinaus können Sie ein IoT Edge-Gateway nutzen, um Geräten eine Verbindung mit IoT Hub zu ermöglichen:
-
-| Gatewaygerät               | Programmiersprache | Plattform         |
-|------------------------------|----------------------|------------------|
-| Intel NUC (Modell DE3815TYKE) | C                    | [Wind River Linux][NUC_Lnx] |
-| Simuliertes Gateway            | C                    | [Linux][Sim_Lnx], [Windows][Sim_Win] |
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 

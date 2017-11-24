@@ -17,13 +17,13 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: jognanay
 ms.reviewer: douglasl
-ms.openlocfilehash: b96fc9525110729c618469665a697a4a2887f0bc
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 81bec820bd815f0a8826f3a5dc46b1924aa07772
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/10/2017
 ---
-# <a name="use-powershell-to-sync-between-multiple-azure-sql-databases"></a>Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren Azure SQL-­Datenbanken
+# <a name="use-powershell-to-sync-between-multiple-sql-databases"></a>Verwenden von PowerShell zum Synchronisieren von Daten zwischen mehreren SQL-­Datenbanken
  
 Dieses PowerShell-Beispiel konfiguriert die Datensynchronisierung zwischen mehreren Azure SQL-­Datenbanken.
 
@@ -367,8 +367,9 @@ Zusätzliche PowerShell-Skriptbeispiele für SQL-Datenbank finden Sie unter [Azu
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
 -   [Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung](../sql-database-sync-data.md)
--   [Get Started with Azure SQL Data Sync](../sql-database-get-started-sql-data-sync.md) (Erste Schritte mit der Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Erste Schritte mit der Azure SQL-Datensynchronisierung (Vorschauversion)](../sql-database-get-started-sql-data-sync.md)
 -   [Best practices for Azure SQL Data Sync (Preview)](../sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Überwachen der Azure SQL-Datensynchronisierung-Vorschauversion mit OMS Log Analytics](../sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with SQL Data Sync (Preview)](../sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:

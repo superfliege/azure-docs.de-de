@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: shlo
-ms.openlocfilehash: 2cc128e8f7792a6a363aacf50f8724d689892c83
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 197ecff6728a7a2ce78cc6ca2861a10222a6b56b
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 Dieser Artikel bezieht sich auf Version 2 des Azure Data Factory-Diensts. Er enthält Antworten auf häufig gestellte Fragen zu Data Factory.  
@@ -108,7 +108,7 @@ Wenn Sie mit Azure Data Factory nicht vertraut sind, starten Sie direkt mit Vers
 Ein Azure-Abonnement kann über mindestens eine Azure Data Factory-Instanz (oder Data Factory) verfügen. Azure Data Factory enthält vier Hauptkomponenten, die zusammen als Plattform fungieren, auf der Sie datengesteuerte Workflows mit Schritten zum Verschieben und Transformieren von Daten zusammenstellen können.
 
 ### <a name="pipelines"></a>Pipelines
-Eine Data Factory kann eine oder mehrere Pipelines haben. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten zur Durchführung einer Arbeitseinheit. Gemeinsam führen die Aktivitäten einer Pipeline eine Aufgabe durch. Eine Pipeline kann beispielsweise eine Gruppe von Aktivitäten enthalten, die Daten aus einem Azure-Blob erfasst, und anschließend eine Hive-Abfrage in einem HDInsight-Cluster ausführen, um die Daten zu partitionieren. Der Vorteil ist, dass Sie eine Pipeline zum Verwalten der Aktivitäten als Gruppe verwenden können, statt jede Aktivität einzeln zu verwalten. Sie können die Aktivitäten in einer Pipeline miteinander verketten, um sie sequenziell auszuführen. Sie können sie aber auch unabhängig voneinander parallel ausführen.
+Eine Data Factory kann eine oder mehrere Aktivitäten aufweisen. Bei einer Pipeline handelt es sich um eine logische Gruppierung von Aktivitäten zur Durchführung einer Arbeitseinheit. Gemeinsam führen die Aktivitäten einer Pipeline eine Aufgabe durch. Eine Pipeline kann beispielsweise eine Gruppe von Aktivitäten enthalten, die Daten aus einem Azure-Blob erfasst, und anschließend eine Hive-Abfrage in einem HDInsight-Cluster ausführen, um die Daten zu partitionieren. Der Vorteil ist, dass Sie eine Pipeline zum Verwalten der Aktivitäten als Gruppe verwenden können, statt jede Aktivität einzeln zu verwalten. Sie können die Aktivitäten in einer Pipeline miteinander verketten, um sie sequenziell auszuführen. Sie können sie aber auch unabhängig voneinander parallel ausführen.
 
 ### <a name="activity"></a>Aktivität
 Aktivitäten stellen einen Verarbeitungsschritt in einer Pipeline dar. Beispielsweise können Sie eine *Kopieraktivität* verwenden, um Daten zwischen zwei Datenspeichern zu kopieren. Analog dazu können Sie eine Hive-Aktivität verwenden, die eine Hive-Abfrage für einen Azure HDInsight-Cluster ausführt, um Ihre Daten zu transformieren oder zu analysieren. Data Factory unterstützt drei Arten von Aktivitäten: Datenverschiebungsaktivitäten, Datentransformationsaktivitäten und Steuerungsaktivitäten.
@@ -152,7 +152,7 @@ Weitere Informationen zu den Data Factory-Konzepten finden Sie in den folgenden 
 Preisinformationen zu Azure Data Factory finden Sie unter [Data Factory – Preisübersicht](https://azure.microsoft.com/pricing/details/data-factory/).
 
 ## <a name="what-regions-support-azure-data-factory-version-2"></a>Welche Regionen unterstützen Azure Data Factory, Version 2?
-Derzeit können Data Factorys der Version 2 in den Regionen „USA, Osten“ und „USA, Osten 2“ erstellt werden. Allerdings kann eine Data Factory Integration Runtime in einer anderen Region verwenden, um Daten zwischen Datenspeichern zu verschieben und Aktivitäten für Compute Services oder SSIS-Pakete zu verteilen. Weitere Informationen finden Sie unter [Data Factory-Speicherorte](concepts-integration-runtime.md#integration-runtime-location).
+Derzeit können Data Factorys der Version 2 in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ erstellt werden. Allerdings kann eine Data Factory Integration Runtime in einer anderen Region verwenden, um Daten zwischen Datenspeichern zu verschieben und Aktivitäten für Compute Services oder SSIS-Pakete zu verteilen. Weitere Informationen finden Sie unter [Data Factory-Speicherorte](concepts-integration-runtime.md#integration-runtime-location).
 
 ## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Wie kann ich hinsichtlich der Informationen zur Data Factory auf dem neuesten Stand bleiben?
 Aktuelle Informationen zu Azure Data Factory finden Sie auf den folgenden Websites:

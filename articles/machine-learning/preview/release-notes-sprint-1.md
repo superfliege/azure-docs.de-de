@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: a294a3f92163f78bace56654c284c4e83623b829
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="sprint-1---november-2017"></a>Sprint 1 – November 2017 
 
@@ -105,7 +105,7 @@ Unten ist eine Liste mit detaillierten Aktualisierungen für jeden Komponentenbe
 - MMLSpark enthält jetzt eine Transformation für die Antragstellercodierung („Mesh Encoding“) für medizinische Dokumente.
 - Version 2.1.0 von `matplotlib` ist jetzt im Lieferumfang von Workbench enthalten.
 
-### <a name="jupyter-notebook"></a>Jupyter-Notebook
+### <a name="jupyter-notebook"></a>Jupyter Notebook
 - Die Notebook-Namenssuche funktioniert in der Ansicht „Notebooks“ jetzt richtig.
 - Sie können ein Notebook jetzt in der Ansicht „Notebooks“ löschen.
 - Das neue Magic-Element `%upload_artifact` wurde hinzugefügt, um Dateien, die in der Notebook-Ausführungsumgebung erzeugt wurden, in den Ausführungsverlauf-Datenspeicher hochzuladen.
@@ -122,18 +122,18 @@ Unten ist eine Liste mit detaillierten Aktualisierungen für jeden Komponentenbe
 
 ### <a name="operationalization"></a>Operationalisierung
 - Der Webdienst mit „score“ im Namen führt nicht mehr zu einem Fehler.
-- Benutzer können jetzt eine Bereitstellungsumgebung erstellen, für die nur Besitzerzugriff auf eine Azure-Ressourcengruppe besteht. Der Besitzerzugriff auf das gesamte Abonnement wird nicht mehr benötigt.
+- Benutzer können jetzt eine Bereitstellungsumgebung erstellen, für die nur der Zugriff vom Typ „Mitwirkender“ auf eine Azure-Ressourcengruppe oder das Abonnement besteht. Der Besitzerzugriff auf das gesamte Abonnement wird nicht mehr benötigt.
 - Für die Operationalisierungs-CLI ist unter Linux jetzt die automatische Vervollständigung für Registerkarten möglich.
 - Der Imageerstellungsdienst unterstützt jetzt das Erstellen von Images für Azure IoT-Dienste und -Geräte.
 
 ### <a name="sample-projects"></a>Beispielprojekte
-- Beispielprojekt _Klassifizieren von Iris_:
+- Beispielprojekt [_Klassifizieren von Iris_](./tutorial-classifying-iris-part-1.md):
     - `iris_pyspark.py` wird umbenannt in `iris_spark.py`.
-    - `iris_score.py` wird umbenannt in `iris-score.py`.
+    - `iris_score.py` wird umbenannt in `score_iris.py`.
     - `iris.dprep` und `iris.dsource` wurden aktualisiert, um die neuesten Aktualisierungen für das Datenvorbereitungsmodul widerzuspiegeln.
     - Das Notebook `iris.ipynb` wurde geändert, damit es in einem HDInsight-Cluster funktioniert.
     - Der Ausführungsverlauf wurde in Zellen des Notebooks `iris.ipynb` aktiviert.
-- Für das Beispielprojekt _Advanced Data Prep using Bike Share Data_ (Erweiterte Datenvorbereitung mit Daten für Leihfahrräder) wurde der Schritt „Handle Error Value“ (Behandeln des Fehlerwerts) korrigiert.
-- Das `docker.runconfig`-Format des Beispielprojekts _MMLSpark on Adult Census Data_ (MMLSpark für Volkszählungsdaten) wurde von JSON in YAML aktualisiert.
-- Das `docker.runconfig`-Format des Beispielprojekts „Distributed Hyperparameter Tuning“ (Optimierung von verteilten Hyperparametern) wurde von JSON in YAML aktualisiert.
-- Es ist ein neues Beispielprojekt mit dem Namen _Bildklassifizierung mit CNTK_ verfügbar.
+- Für das Beispielprojekt [_Advanced Data Prep using Bike Share Data_](./tutorial-bikeshare-dataprep.md) (Erweiterte Datenaufbereitung mit Daten für Leihfahrräder) wurde der Schritt „Handle Error Value“ (Behandeln des Fehlerwerts) korrigiert.
+- Das `docker.runconfig`-Format des Beispielprojekts [_MMLSpark on Adult Census Data_](https://github.com/Azure/MachineLearningSamples-mmlspark) (MMLSpark für Volkszählungsdaten) wurde von JSON in YAML aktualisiert.
+- Das `docker.runconfig`-Format des Beispielprojekts [_Distributed Hyperparameter Tuning_](./scenario-distributed-tuning-of-hyperparameters.md) (Optimierung von verteilten Hyperparametern) wurde von JSON in YAML aktualisiert.
+- Es ist ein neues Beispielprojekt mit dem Namen [_Bildklassifizierung mit CNTK_](./scenario-image-classification-using-cntk.md) verfügbar.

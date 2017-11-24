@@ -11,11 +11,11 @@ ms.topic: article
 ms.workload: na
 ms.date: 09/28/2017
 ms.author: markscu
-ms.openlocfilehash: 541086d4b2f0c52f9e03c3993311705b7475e9a6
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: b9e5181baedba7cc4783553221521f5b08a7bc4d
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-low-priority-vms-with-batch"></a>Verwenden von VMs mit niedriger Priorität mit Batch
 
@@ -71,7 +71,7 @@ Azure Batch stellt verschiedene Funktionen bereit, die die vorteilhafte Nutzung 
 
 -   Wenn Aufgaben unterbrochen werden, erkennt Batch dies und reiht die Aufgaben zur erneuten Ausführung automatisch wieder in eine Warteschlange.
 
--   VMs mit niedriger Priorität verfügen über ein separates Kernkontingent, das von dem dedizierter VMs abweicht. 
+-   VMs mit niedriger Priorität verfügen über ein separates vCPU-Kontingent, das von dem dedizierter VMs abweicht. 
     Das Kontingent für VMs mit niedriger Priorität ist höher als bei dedizierten VMs, da VMs mit niedriger Priorität weniger kosten. Weitere Informationen finden Sie im Artikel [Batch-Dienst – Kontingente und Limits](batch-quota-limit.md#resource-quotas).    
 
 

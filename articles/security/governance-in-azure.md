@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: c63eb15e8d575da91fd8198ca9d486f7fdb2b38d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 10a92f301584d4e676da9a1eb229667925a6c72c
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="governance-in-azure"></a>Governance (Kontrolle) in Azure
 
@@ -225,14 +225,14 @@ Ressourcen müssen sich nicht in derselben Ressourcengruppe befinden, um ein gem
 Mithilfe von Ressourcenrichtlinien können Sie Standardregeln für Ihre Organisation erstellen. Sie können Richtlinien erstellen, mit denen sichergestellt wird, dass Ressourcen durch die entsprechenden Werte gekennzeichnet werden.
 
 > [!Note]
-> Weitere Informationen finden Sie unter [Anwenden von Ressourcenrichtlinien für Tags](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags).
+> Weitere Informationen finden Sie unter [Richtlinieninitiative zur Abrechnung von Tags](../azure-policy/scripts/billing-tags-policy-init.md).
 
 Sie haben auch die Möglichkeit, Ressourcen mit Tags über das Azure-Portal anzuzeigen.
 
 Der [Nutzungsbericht](https://docs.microsoft.com/azure/billing/billing-understand-your-bill) für Ihr Abonnement enthält Tagnamen und -werte, sodass Sie die Kosten nach Tags aufschlüsseln können.
 
 > [!Note]
-> Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags).
+> Weitere Informationen zu Tags finden Sie unter [Richtlinieninitiative zur Abrechnung von Tags](../azure-policy/scripts/billing-tags-policy-init.md).
 
 Für Tags gelten folgende Einschränkungen:
 

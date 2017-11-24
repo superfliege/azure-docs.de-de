@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: b55eed31ddb5be23dc28a23b2f0588b8c8ff8833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbc4b8cdb0ff9255d0be02b998e67686921921ea
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -87,7 +87,7 @@ Die Preise, Gutschriften und Bedingungen, die für ein Azure-Abonnement gelten.
 Siehe [Azure-Angebotsdetails](https://azure.microsoft.com/support/legal/offer-details/)
 
 ## <a name="portal"></a>Portal
-Das sichere Webportal zum Bereitstellen und Verwalten von Azure-Diensten.  Es gibt zwei Portale: Das [Azure-Portal](http://portal.azure.com/) und das [klassische Portal](http://manage.windowsazure.com/). Einige Dienste sind in beiden Portalen verfügbar, während andere nur in einem der Portale zur Verfügung stehen. Im [Verfügbarkeitsdiagramm der Azure-Portale](https://azure.microsoft.com/features/azure-portal/availability/) wird aufgeführt, welche Dienste in welchem Portal zur Verfügung stehen.
+Das sichere Webportal zum Bereitstellen und Verwalten von Azure-Diensten.
 
 ## <a name="region"></a>region
 Ein Bereich innerhalb eines geografischen Raums ohne Überschreitung nationaler Grenzen, der mindestens ein Rechenzentrum umfasst. Preise, regionale Dienste und Angebotstypen werden auf Regionsebene zur Verfügung gestellt. Eine Region bildet üblicherweise ein Paar mit einer anderen Region, die mehrere Hundert Kilometer entfernt sein kann. Regionspaare können als Mechanismus zur Notfallwiederherstellung und in Szenarien mit hoher Verfügbarkeit eingesetzt werden. Wird auch als *Standort* bezeichnet.  

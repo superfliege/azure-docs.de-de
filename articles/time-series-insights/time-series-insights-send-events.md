@@ -12,14 +12,14 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 543fafac63423ab874c6c8e40d91a1ce0f161987
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2c1b91fb87857eee8ca938be193b61e01bbdb886
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>Senden von Ereignissen an die Azure Time Series Insights-Umgebung mithilfe von Event Hub
-In diesem Artikel erfahren Sie, wie Sie Event Hubs erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, sehen Sie sich Ihre Umgebung in [Time Series Insights](https://insights.timeseries.azure.com) an.
+In diesem Artikel erfahren Sie, wie Sie Event Hubs erstellen und konfigurieren. Außerdem erfahren Sie, wie Sie eine Beispielanwendung ausführen, um Ereignisse mithilfe von Push zu übertragen. Wenn Sie bereits über einen Event Hub mit Ereignissen im JSON-Format verfügen, überspringen Sie dieses Tutorial, und sehen Sie sich Ihre Umgebung in [Time Series Insights](https://insights.timeseries.azure.com) an.
 
 ## <a name="configure-an-event-hub"></a>Konfigurieren eines Event Hubs
 1. Führen Sie zum Erstellen eines Event Hubs die in der [Event Hub-Dokumentation](../event-hubs/event-hubs-create.md) beschriebenen Schritte aus.
@@ -28,7 +28,7 @@ In diesem Artikel erfahren Sie, wie Sie Event Hubs erstellen und konfigurieren. 
 
 3. Klicken Sie auf den Namen Ihres Event Hubs, um ihn auszuwählen.
 
-4. Klicken Sie unter „Entitäten“ im mittleren Konfigurationsfenster erneut auf **Event Hubs**.
+4. Klicken Sie unter **Entitäten** im mittleren Konfigurationsfenster erneut auf **Event Hubs**.
 
 5. Wählen Sie den Namen des Event Hubs aus, um ihn zu konfigurieren.
 
@@ -244,4 +244,5 @@ Ein JSON-Objekt mit einem geschachtelten JSON-Array, das zwei JSON-Objekte enth�
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Anzeigen Ihrer Umgebung im [Time Series Insights-Explorer](https://insights.timeseries.azure.com)
+> [!div class="nextstepaction"]
+> [Anzeigen Ihrer Umgebung im Time Series Insights-Explorer](https://insights.timeseries.azure.com)

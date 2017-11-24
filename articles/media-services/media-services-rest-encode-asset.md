@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: juliako
-ms.openlocfilehash: 796f3b5a4dd56a0160986600cbbcf38faf8add56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1622149009a37b864e84caa158da960ccc03ca65
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Codieren eines Medienobjekts mit Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -265,6 +265,12 @@ Im Erfolgsfall wird die folgende Antwort zurückgegeben:
     . . .
 
 
+## <a name="advanced-encoding-features-to-explore"></a>Erweiterte Codierungsfeatures
+* [Generieren von Miniaturansichten](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [Generieren von Miniaturansichten während der Codierung](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [Zuschneiden von Videos während der Codierung](media-services-crop-video.md)
+* [Anpassen von Codierungsvoreinstellungen](media-services-custom-mes-presets-with-dotnet.md)
+* [Überlagern eines Videos mit einem Bild oder Versehen eines Videos mit einem Wasserzeichen](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

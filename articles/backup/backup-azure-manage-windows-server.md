@@ -12,20 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 11/10/2017
 ms.author: markgal
-ms.openlocfilehash: 5922e308f5c205a07bd329c28322ae82cea0e1fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 58080d0e045f1825e89287fc421b7e84db36331e
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Überwachen und Verwalten von Azure Recovery Services-Tresoren und -Servern für Windows-Computer
-> [!div class="op_single_selector"]
-> * [Ressourcen-Manager](backup-azure-manage-windows-server.md)
-> * [Klassisch](backup-azure-manage-windows-server-classic.md)
->
->
 
 Dieser Artikel enthält eine Übersicht über die Aufgaben im Rahmen der Sicherungsüberwachung und -verwaltung, die im Azure-Portal und über den Microsoft Azure Backup-Agent zur Verfügung stehen. Es wird vorausgesetzt, dass Sie bereits über ein Azure-Abonnement verfügen und mindestens einen Recovery Services-Tresor erstellt haben.
 
@@ -41,7 +36,7 @@ Das Dashboard des Recovery Services-Tresors enthält die Details oder Attribute 
 
     ![Öffnen der Liste mit den Recovery Services-Tresoren – Schritt 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
 
-3. Sie möchten einen Recovery Services-Tresor öffnen. Beginnen Sie im Dialogfeld mit der Eingabe der Zeichenfolge **Recovery Services**. Wenn Sie mit der Eingabe beginnen, wird die Liste anhand Ihrer Eingaben gefiltert. Klicken Sie auf **Recovery Services-Tresore**, um die Liste mit den Recovery Services-Tresoren in Ihrem Abonnement anzuzeigen.
+3. Sie möchten einen Recovery Services-Tresor öffnen. Beginnen Sie im Dialogfeld mit der Eingabe der Zeichenfolge **Recovery Services**. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresore**, um die Liste mit den Recovery Services-Tresoren in Ihrem Abonnement anzuzeigen.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-windows-server/browse-to-rs-vaults-2.png) <br/>
 
@@ -49,7 +44,7 @@ Das Dashboard des Recovery Services-Tresors enthält die Details oder Attribute 
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. Wählen Sie in der Tresorliste den Namen des Recovery Services-Tresors aus, den Sie öffnen möchten. Das Blatt mit dem Dashboard des Recovery Services-Tresors wird geöffnet.
+4. Wählen Sie in der Tresorliste den Namen des Recovery Services-Tresors aus, den Sie öffnen möchten. Das Menü mit dem Dashboard des Recovery Services-Tresors wird geöffnet.
 
     ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -66,13 +61,13 @@ Sie überwachen Aufträge und Warnungen über das Dashboard des Recovery Service
 
 ![Aufgaben im Sicherungsdashboard](./media/backup-azure-manage-windows-server/dashboard-tiles.png)
 
-Wenn Sie auf die Informationen auf diesen Kacheln klicken, wird das zugeordnete Blatt geöffnet, auf dem Sie zusammengehörende Aufgaben verwalten.
+Wenn Sie auf die Informationen auf diesen Kacheln klicken, wird das zugeordnete Menü geöffnet, mit dem Sie die dazugehörigen Aufgaben verwalten.
 
 Am oberen Rand des Dashboards:
 
-* Über die Einstellungen besteht Zugriff auf die verfügbaren Sicherungsaufgaben.
+* Einstellungen: Über die Einstellungen besteht Zugriff auf die verfügbaren Sicherungsaufgaben.
 * Sicherung: Ermöglicht das Sichern von neuen Dateien und Ordnern (oder Azure-VMs) im Recovery Services-Tresor.
-* Löschen: Wenn ein Recovery Services-Tresor nicht mehr verwendet wird, können Sie ihn löschen, um Speicherplatz freizugeben. „Löschen“ wird erst aktiviert, nachdem alle geschützten Server aus dem Tresor gelöscht wurden.
+* Löschen: Wenn ein Recovery Services-Tresor nicht mehr verwendet wird, sollten Sie ihn löschen, um Speicherplatz freizugeben. „Löschen“ wird erst aktiviert, nachdem alle geschützten Server aus dem Tresor gelöscht wurden.
 
 ![Aufgaben im Sicherungsdashboard](./media/backup-azure-manage-windows-server/dashboard-tasks.png)
 
@@ -80,11 +75,11 @@ Am oberen Rand des Dashboards:
 | Warnstufe | Gesendete Warnungen |
 | --- | --- |
 | Kritisch |Sicherungsfehler, Wiederherstellungsfehler |
-| Warnung |Sicherung wurde mit Warnungen abgeschlossen (wenn weniger als 100 Dateien aufgrund von Beschädigungen nicht gesichert wurden und mehr als eine Million Dateien erfolgreich gesichert wurden) |
+| Warnung |Sicherung mit Warnungen abgeschlossen (wenn weniger als 100 Dateien aufgrund von Beschädigung nicht gesichert und mehr als 1.000.000 Dateien erfolgreich gesichert werden) |
 | Information |Keine |
 
 ## <a name="manage-backup-alerts"></a>Verwalten von Sicherungswarnungen
-Klicken Sie auf die Kachel **Sicherungswarnungen**, um das Blatt **Sicherungswarnungen** zu öffnen und Warnungen zu verwalten.
+Klicken Sie auf die Kachel **Sicherungswarnungen**, um das Menü **Sicherungswarnungen** zu öffnen und Warnungen zu verwalten.
 
 ![Sicherungswarnungen](./media/backup-azure-manage-windows-server/manage-backup-alerts.png)
 
@@ -93,9 +88,9 @@ Auf der Kachel „Sicherungswarnungen“ wird die Anzahl für Folgendes angezeig
 * Kritische Warnungen, die innerhalb der letzten 24 Stunden nicht gelöst wurden
 * Warnungen, die innerhalb der letzten 24 Stunden nicht gelöst wurden
 
-Wenn Sie auf die entsprechenden Links klicken, gelangen Sie auf das Blatt **Sicherungswarnungen** mit einer gefilterten Ansicht dieser Warnungen (kritische Warnung oder Warnung).
+Klicken Sie auf den Link zum Anzeigen des Menüs **Sicherungswarnungen** mit einer gefilterten Ansicht dieser Warnungen („Kritisch“ oder „Warnung“).
 
-Gehen Sie auf dem Blatt „Sicherungswarnungen“ wie folgt vor:
+Gehen Sie im Menü „Sicherungswarnungen“ wie folgt vor:
 
 * Wählen Sie die entsprechenden Informationen zum Einbinden in Ihre Warnungen aus.
 
@@ -107,9 +102,9 @@ Gehen Sie auf dem Blatt „Sicherungswarnungen“ wie folgt vor:
 
     ![Warnungen filtern](./media/backup-azure-manage-windows-server/configure-notifications.png)
 
-Wenn **Pro Warnung** als Häufigkeit für **Benachrichtigen** ausgewählt ist, wird in E-Mails keine Gruppierung oder Reduzierung durchgeführt. Jede Warnung führt zu einer Benachrichtigung. Dies ist die Standardeinstellung, und die Lösungs-E-Mail wird sofort versendet.
+Wenn **Pro Warnung** als Häufigkeit für **Benachrichtigen** ausgewählt ist, wird in E-Mails keine Gruppierung oder Reduzierung durchgeführt. Jede Warnung führt zu einer Benachrichtigung (Standardeinstellung), und es wird sofort eine Lösungs-E-Mail gesendet.
 
-Wenn **Stündliche Übersicht** als Häufigkeit für **Benachrichtigen** ausgewählt ist, wird an den Benutzer eine E-Mail mit dem Hinweis gesendet, dass innerhalb der letzten Stunde ungelöste neue Warnungen generiert wurden. Nach einer Stunde wird jeweils eine Lösungs-E-Mail gesendet.
+Wenn **Stündliche Übersicht** als Häufigkeit für **Benachrichtigen** gewählt wird, erhält der Benutzer eine E-Mail mit dem Hinweis, dass innerhalb der letzten Stunde ungelöste Warnungen generiert wurden. Nach einer Stunde wird jeweils eine Lösungs-E-Mail gesendet.
 
 Warnungen können für die folgenden Schweregrade gesendet werden:
 
@@ -117,12 +112,12 @@ Warnungen können für die folgenden Schweregrade gesendet werden:
 * Warnung
 * Information
 
-Sie deaktivieren die Warnung auf dem Blatt mit den Auftragsdetails mit der Schaltfläche **Deaktivieren** . Wenn Sie auf „Deaktivieren“ klicken, können Sie Lösungshinweise angeben.
+Sie deaktivieren die Warnung im Menü mit den Auftragsdetails mit der Schaltfläche **Deaktivieren**. Wenn Sie auf „Deaktivieren“ klicken, können Sie Lösungshinweise angeben.
 
 Sie wählen die Spalten, die im Rahmen der Warnung angezeigt werden sollen, mit der Schaltfläche **Spalten auswählen** aus.
 
 > [!NOTE]
-> Auf dem Blatt **Einstellungen** verwalten Sie Sicherungswarnungen, indem Sie **Überwachung und Berichte > Warnungen und Ereignisse > Sicherungswarnungen** wählen und dann auf **Filter** oder **Benachrichtigungen konfigurieren** klicken.
+> Im Menü **Einstellungen** verwalten Sie Sicherungswarnungen, indem Sie **Überwachung und Berichte > Warnungen und Ereignisse > Sicherungswarnungen** wählen und dann auf **Filter** oder **Benachrichtigungen konfigurieren** klicken.
 >
 >
 
@@ -133,14 +128,14 @@ Klicken Sie auf der Kachel „Sicherungselemente“ auf **Dateien/Ordner** .
 
 ![Kachel „Sicherungselemente“](./media/backup-azure-manage-windows-server/backup-items-tile.png)
 
-Das Blatt „Sicherungselemente“ wird geöffnet, und der Filter ist auf „Dateien/Ordner“ festgelegt, sodass die einzelnen Sicherungselemente angezeigt werden.
+Das Menü „Sicherungselemente“ wird geöffnet, und der Filter ist auf „Dateien/Ordner“ festgelegt, sodass die einzelnen Sicherungselemente angezeigt werden.
 
 ![Sicherungselemente](./media/backup-azure-manage-windows-server/backup-item-list.png)
 
 Wenn Sie in der Liste ein bestimmtes Sicherungselement auswählen, werden die wichtigen Details des Elements angezeigt.
 
 > [!NOTE]
-> Auf dem Blatt **Einstellungen** verwalten Sie Dateien und Ordner, indem Sie **Geschützte Elemente > Sicherungselemente** wählen und dann im Dropdownmenü auf **Dateien/Ordner** klicken.
+> Im Menü **Einstellungen** verwalten Sie Dateien und Ordner, indem Sie **Geschützte Elemente > Sicherungselemente** wählen und dann im Dropdownmenü auf **Dateien/Ordner** klicken.
 >
 >
 
@@ -154,18 +149,18 @@ Im Abschnitt „Sicherung“ des Dashboards wird auf der Kachel „Sicherung“ 
 * In Arbeit
 * Fehler in den letzten 24 Stunden
 
-Klicken Sie zum Verwalten Ihrer Sicherungsaufträge auf die Kachel **Sicherungsaufträge** , um das Blatt „Sicherungsaufträge“ zu öffnen.
+Klicken Sie zum Verwalten Ihrer Sicherungsaufträge auf die Kachel **Sicherungsaufträge**, um das Menü „Sicherungsaufträge“ zu öffnen.
 
 ![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/backup-jobs.png)
 
-Sie ändern die Informationen, die auf dem Blatt „Sicherungsaufträge“ verfügbar sind, mit der Schaltfläche **Spalten auswählen** oben auf der Seite.
+Sie ändern die Informationen, die im Menü „Sicherungsaufträge“ verfügbar sind, mit der Schaltfläche **Spalten auswählen** oben auf der Seite.
 
 Verwenden Sie die Schaltfläche **Filter** , um zwischen „Dateien und Ordner“ und „Sicherung eines virtuellen Azure-Computers“ zu wählen.
 
-Gehen Sie wie folgt vor, wenn Ihre gesicherten Dateien und Ordner nicht angezeigt werden: Klicken Sie oben auf der Seite auf die Schaltfläche **Filter**, und wählen Sie im Menü „Elementtyp“ die Option **Dateien und Ordner**.
+Gehen Sie wie folgt vor, wenn Ihre Sicherungsdateien und -ordner nicht angezeigt werden: Klicken Sie oben auf der Seite auf die Schaltfläche **Filter**, und wählen Sie im Menü „Elementtyp“ die Option **Dateien und Ordner**.
 
 > [!NOTE]
-> Auf dem Blatt **Einstellungen** verwalten Sie Sicherungsaufträge, indem Sie **Überwachung und Berichte > Aufträge > Sicherungsaufträge** und dann im Dropdownmenü die Option **Dateien/Ordner** wählen.
+> Im Menü **Einstellungen** verwalten Sie Sicherungsaufträge, indem Sie **Überwachung und Berichte > Aufträge > Sicherungsaufträge** und dann im Dropdownmenü die Option **Dateien/Ordner** wählen.
 >
 >
 
@@ -180,7 +175,7 @@ Klicken Sie zum Verwalten Ihrer Produktionsserver auf **Einstellungen**.
 
 Klicken Sie unter „Verwalten“ auf **Sicherungsinfrastruktur > Produktionsserver**.
 
-Auf dem Blatt „Produktionsserver“ sind alle verfügbaren Produktionsserver aufgelistet. Klicken Sie in der Liste auf einen Server, um die Serverdetails zu öffnen.
+Im Menü „Produktionsserver“ sind alle verfügbaren Produktionsserver aufgelistet. Klicken Sie in der Liste auf einen Server, um die Serverdetails zu öffnen.
 
 ![Geschützte Elemente](./media/backup-azure-manage-windows-server/production-server-list.png)
 

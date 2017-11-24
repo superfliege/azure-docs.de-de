@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 8ee171708364c3e29476302bef04a715df650b9b
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: cd727b2902dafdb8086ac4ce74db96ca8acf8fe8
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Hinzufügen eines App Service-Ressourcenanbieters zu einer getrennten, durch AD FS gesicherten Azure Stack-Umgebung
 
@@ -82,7 +82,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image03.png)
 
-8. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. In der Adresse der Dateifreigabe muss der vollständig qualifizierte Domänennamen des Dateiservers verwendet werden, z.B. „\\\appservicefileserver.local.cloudapp.azurestack.external\websites“, oder die IP-Adresse, z.B. „\\\10.0.0.1\websites“.
+8. Geben Sie die Informationen für die Dateifreigabe ein, und klicken Sie dann auf **Weiter**. In der Adresse der Dateifreigabe muss der vollqualifizierte Domänenname des Dateiservers (z.B. „\\\appservicefileserver.local.cloudapp.azurestack.external\websites“) oder die IP-Adresse (z.B. „\\\10.0.0.1\websites“) verwendet werden.
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image04.png)
 
@@ -112,7 +112,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image07.png)    
 
-12. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die Kern- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
+12. Überprüfen Sie die Optionen für Rolleninstanz und SKU. Als Standardwerte werden die Mindestanzahl der Instanz und die Mindest-SKU für jede Rolle in einer ASDK-Bereitstellung verwendet. Eine Übersicht über die vCPU- und Arbeitsspeichervoraussetzungen wird angezeigt, um Sie bei der Bereitstellung zu unterstützen. Nachdem Sie Ihre Auswahl getroffen haben, klicken Sie auf **Weiter**.
 
      > [!NOTE]
      > Befolgen Sie bei Produktionsbereitstellungen die Anweisungen unter [Kapazitätsplanung für Azure App Service-Serverrollen in Azure Stack](azure-stack-app-service-capacity-planning.md).
@@ -121,16 +121,16 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
 
     | Rolle | Mindestanzahl der Instanzen | Mindest-SKU | Hinweise |
     | --- | --- | --- | --- |
-    | Controller | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
-    | Verwaltung | 1 | Standard_A2 – (2 Kerne, 3.584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |
-    | Herausgeber | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Veröffentlicht Inhalte per FTP oder Webbereitstellung |
-    | FrontEnd | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Leitet Anforderungen an App Service-Anwendungen weiter |
-    | Freigegebener Worker | 1 | Standard_A1 – (1 Kern, 1.792 MB) | Hostet Web oder -API-Anwendungen und Azure Functions-Apps. Sie können ggf. weitere Instanzen hinzufügen. Als Operator können Sie Ihr Angebot definieren und eine SKU-Ebene auswählen. Die Ebenen müssen mindestens einen Kern aufweisen. |
+    | Controller | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Verwaltet und wartet die Integrität der App Service-Cloud |
+    | Verwaltung | 1 | Standard_A2 - (2 vCPUs, 3584 MB) | Verwaltet die Azure Resource Manager- und API-Endpunkte, die Portalerweiterungen (Administrator-, Mandanten, Functions-Portal) und den Datendienst von App Service. Zur Unterstützung eines Failovers erhöhen Sie die empfohlenen Instanzen auf 2. |
+    | Herausgeber | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Veröffentlicht Inhalte per FTP oder Webbereitstellung |
+    | FrontEnd | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Leitet Anforderungen an App Service-Anwendungen weiter |
+    | Freigegebener Worker | 1 | Standard_A1 - (1 vCPU, 1792 MB) | Hostet Web oder -API-Anwendungen und Azure Functions-Apps. Sie können ggf. weitere Instanzen hinzufügen. Als Operator können Sie Ihr Angebot definieren und eine SKU-Ebene auswählen. Die Ebenen müssen mindestens eine vCPU aufweisen. |
 
     ![App Service-Installationsprogramm](media/azure-stack-app-service-deploy/image08.png)    
 
     > [!NOTE]
-    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service in Azure Stack**.
+    > **Windows Server 2016 Core ist kein unterstütztes Plattformimage für die Verwendung mit Azure App Service für Azure Stack**.
 
 13. Wählen Sie im Feld **Plattformimage auswählen** aus den VM-Images, die im Computeressourcenanbieter für die App Service-Cloud verfügbar sind, Ihr VM-Bereitstellungsimage für Windows Server 2016 aus. Klicken Sie auf **Weiter**.
 

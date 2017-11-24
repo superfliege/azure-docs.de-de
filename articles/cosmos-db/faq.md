@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: f7949fe4acbc4efa394bf8bfb34e912a6c861ba3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1d2a5e5d639e2aa0023e99b73f87a68e19afc239
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -70,7 +70,7 @@ Wenn Azure für Sie neu ist, können Sie sich für ein [kostenloses Azure-Konto]
 Sie können auch den [Azure Cosmos DB-Emulator](local-emulator.md) zum kostenlosen lokalen Entwickeln und Testen Ihrer Anwendung verwenden, ohne ein Azure-Abonnement zu erstellen. Wenn Sie mit der Funktion der Anwendung im Azure Cosmos DB-Emulator zufrieden sind, können Sie zur Verwendung eines Azure Cosmos DB-Kontos in der Cloud wechseln.
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Wie kann ich zusätzliche Hilfe zu Azure Cosmos DB erhalten?
-Wenn Sie Hilfe benötigen, können Sie sich über [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) oder das [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB) an uns wenden. Oder vereinbaren Sie einen Termin für einen 1:1-Chat mit dem Entwicklungsteam von Azure Cosmos DB, indem Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) senden. 
+Wenn Sie Hilfe benötigen, können Sie sich über [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) oder das [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB) an uns wenden. Oder vereinbaren Sie einen Termin für einen 1:1-Chat mit dem Entwicklungsteam von Azure Cosmos DB, indem Sie eine E-Mail an [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) senden. 
 
 <a id="try-cosmos-db"></a>
 ## <a name="try-azure-cosmos-db-subscriptions"></a>Testabonnements für Azure Cosmos DB
@@ -201,10 +201,10 @@ Benutzer, die mit Azure Table Storage vertraut sind und Tabellen mit der Table-A
 Bei der REST-API werden einige Endpunkte/Abfrageoptionen von der Table-API von Azure Cosmos DB nicht unterstützt:
 | REST-Methode | REST-Endpunkt/-Abfrageoption | Dokumentations-URLs | Erklärung |
 | ------------| ------------- | ---------- | ----------- |
-| GET, PUT | /?restype=service@comp=properties| [Set Table Service Properties](https://docs.microsoft.com/en-us/rest/api/storageservices/set-table-service-properties) (Festlegen von Tabellendiensteigenschaften) und [Get Table Service Properties](https://docs.microsoft.com/en-us/rest/api/storageservices/get-table-service-properties) (Abrufen von Tabellendiensteigenschaften) | Dieser Endpunkt dient zum Festlegen von CORS-Regeln, Storage Analytics-Konfiguration und Protokollierungseinstellungen. CORS wird derzeit nicht unterstützt. Analyse und Protokollierung werden in Azure Cosmos DB anders behandelt als in Azure Storage-Tabellen. |
-| OPTIONS | /<Tabellenressourcenname> | [Pre-flight CORS table request](https://docs.microsoft.com/en-us/rest/api/storageservices/preflight-table-request) (Preflight-CORS-Tabellenanforderung) | Dies ist Teil von CORS und wird daher derzeit von Azure Cosmos DB nicht unterstützt. |
-| GET | /?restype=service@comp=stats | [Get Table Service Stats](https://docs.microsoft.com/en-us/rest/api/storageservices/get-table-service-stats) (Abrufen der Tabellendienststatistik) | Gibt Aufschluss über die Replikationsgeschwindigkeit von Daten zwischen primärer Datenbank und sekundären Datenbanken. Wird in Cosmos DB nicht benötigt, da hier die Replikation Teil der Schreibvorgänge ist. |
-| GET, PUT | /mytable?comp=acl | [Get Table ACL](https://docs.microsoft.com/en-us/rest/api/storageservices/get-table-acl) (Tabellen-ACL abrufen) und [Set Table ACL](https://docs.microsoft.com/en-us/rest/api/storageservices/set-table-acl) (Tabellen-ACL festlegen) | Dient zum Abrufen und Festlegen der gespeicherten Zugriffsrichtlinien, die für die Verwaltung von Shared Access Signatures (SAS) verwendet werden. SAS werden zwar unterstützt, aber unterschiedlich festgelegt und verwaltet. |
+| GET, PUT | /?restype=service@comp=properties| [Set Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/set-table-service-properties) (Festlegen von Tabellendiensteigenschaften) und [Get Table Service Properties](https://docs.microsoft.com/rest/api/storageservices/get-table-service-properties) (Abrufen von Tabellendiensteigenschaften) | Dieser Endpunkt dient zum Festlegen von CORS-Regeln, Storage Analytics-Konfiguration und Protokollierungseinstellungen. CORS wird derzeit nicht unterstützt. Analyse und Protokollierung werden in Azure Cosmos DB anders behandelt als in Azure Storage-Tabellen. |
+| OPTIONS | /<Tabellenressourcenname> | [Pre-flight CORS table request](https://docs.microsoft.com/rest/api/storageservices/preflight-table-request) (Preflight-CORS-Tabellenanforderung) | Dies ist Teil von CORS und wird daher derzeit von Azure Cosmos DB nicht unterstützt. |
+| GET | /?restype=service@comp=stats | [Get Table Service Stats](https://docs.microsoft.com/rest/api/storageservices/get-table-service-stats) (Abrufen der Tabellendienststatistik) | Gibt Aufschluss über die Replikationsgeschwindigkeit von Daten zwischen primärer Datenbank und sekundären Datenbanken. Wird in Cosmos DB nicht benötigt, da hier die Replikation Teil der Schreibvorgänge ist. |
+| GET, PUT | /mytable?comp=acl | [Get Table ACL](https://docs.microsoft.com/rest/api/storageservices/get-table-acl) (Tabellen-ACL abrufen) und [Set Table ACL](https://docs.microsoft.com/rest/api/storageservices/set-table-acl) (Tabellen-ACL festlegen) | Dient zum Abrufen und Festlegen der gespeicherten Zugriffsrichtlinien, die für die Verwaltung von Shared Access Signatures (SAS) verwendet werden. SAS werden zwar unterstützt, aber unterschiedlich festgelegt und verwaltet. |
 
 Darüber hinaus unterstützt die Table-API von Azure Cosmos DB nur das JSON-Format und nicht das ATOM-Format.
 
@@ -229,7 +229,7 @@ Falls einer dieser Unterschiede ein Problem für Ihr Projekt darstellt, teilen S
 Sie können Ihr Feedback wie folgt mitteilen:
 
 * [UserVoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
-* [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
+* [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureDocumentDB)
 * [Stackoverflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api"></a>Welche Verbindungszeichenfolge muss ich zum Herstellen einer Verbindung mit der Table-API verwenden?
@@ -243,13 +243,13 @@ Die Verbindungszeichenfolge können Sie im Azure-Portal auf der Seite „Verbind
 Informationen zu Konfigurationseinstellungen finden Sie unter [Azure Cosmos DB-Funktionen](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities). Einige Einstellungen werden über die CreateCloudTableClient-Methode behandelt, andere über „app.config“ im appSettings-Abschnitt der Clientanwendung.
 
 ### <a name="are-there-any-changes-for-customers-who-are-using-the-existing-azure-table-storage-sdks"></a>Müssen Kunden, die die vorhandenen Azure Table Storage SDKs verwenden, Änderungen vornehmen?
-Nein. Für Bestands- oder Neukunden, die die vorhandenen Azure Table Storage-SDKs verwenden, ergeben sich keine Änderungen. 
+Keine Für Bestands- oder Neukunden, die die vorhandenen Azure Table Storage-SDKs verwenden, ergeben sich keine Änderungen. 
 
 ### <a name="how-do-i-view-table-data-that-is-stored-in-azure-cosmos-db-for-use-with-the-table-api"></a>Wie zeige ich in Azure Cosmos DB gespeicherte Tabellendaten für die Verwendung mit der Table-API an? 
 Sie können das Azure-Portal verwenden, um die Daten zu durchsuchen. Außerdem können Sie den Code der Table-API oder die in der nächsten Antwort erwähnten Tools verwenden. 
 
 ### <a name="which-tools-work-with-the-table-api"></a>Welche Tools kann ich mit der Table-API verwenden? 
-Sie können den [Azure Storage-Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer) verwenden.
+Sie können den [Azure Storage-Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer) verwenden.
 
 Tools, die eine Verbindungszeichenfolge im weiter oben angegebenen Format akzeptieren, können die neue Table-API unterstützen. Eine Liste mit Tabellentools steht auf der Seite [Azure Storage-Clienttools](../storage/common/storage-explorers.md) zur Verfügung. 
 
@@ -266,7 +266,7 @@ Ja. Die Table-API unterstützt OData-Abfragen und LINQ-Abfragen.
 Ja. Sie können Verbindungen herstellen, indem Sie zwei separate CloudTableClient-Instanzen erstellen, die über die Verbindungszeichenfolge jeweils auf ihren eigenen URI verweisen.
 
 ### <a name="how-do-i-migrate-an-existing-azure-table-storage-application-to-this-offering"></a>Wie migriere ich eine bereits vorhandene Azure Table Storage-Anwendung zu diesem Angebot?
-Hierzu können Sie [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy) oder das [Migrationstool für Azure Cosmos DB-Daten](import-data.md) verwenden.
+Hierzu können Sie [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) oder das [Migrationstool für Azure Cosmos DB-Daten](import-data.md) verwenden.
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>Wie erfolgt die Erweiterung der Speichergröße für diesen Dienst, wenn ich beispielsweise mit *n* GB Daten beginne und meine Daten im Laufe der Zeit auf 1 TB anwachsen? 
 Azure Cosmos DB wurde dafür ausgelegt, mithilfe von horizontaler Skalierung unbeschränkten Speicherplatz zu bieten. Der Dienst kann Ihren Speicher überwachen und effektiv vergrößern. 
@@ -377,13 +377,13 @@ Ja. Sie können den Skalierungsbereich des Azure Cosmos DB-Portals verwenden, um
 Ja. Wenn Sie TableThroughput nicht mithilfe von „app.config“ außer Kraft setzen und keinen fertig konfigurierten Container in Azure Cosmos DB verwenden, erstellt der Dienst eine Tabelle mit einem Durchsatz von 400.
  
 ### <a name="is-there-any-change-of-pricing-for-existing-customers-of-the-azure-table-storage-service"></a>Müssen Bestandskunden des Azure Table Storage-Diensts mit Preisänderungen rechnen?
-Nein. Es gibt keine Preisänderungen für Bestandskunden von Azure Table Storage. 
+Keine Es gibt keine Preisänderungen für Bestandskunden von Azure Table Storage. 
 
 ### <a name="how-is-the-price-calculated-for-the-table-api"></a>Wie errechnet sich der Preis für die Table-API? 
 Der Preis hängt vom zugewiesenen TableThroughput-Wert ab. 
 
 ### <a name="how-do-i-handle-any-throttling-on-the-tables-in-table-api-offering"></a>Wie kann ich beim Table-API-Angebot eine ggf. auftretende Drosselung für die Tabellen behandeln? 
-Wenn die Anforderungsrate die Kapazität des bereitgestellten Durchsatzes für den zugrundeliegenden Container überschreitet, empfangen Sie einen Fehler, und das SDK wiederholt den Aufruf, indem die Wiederholungsrichtlinie angewendet wird.
+Wenn die Anforderungsrate die Kapazität des bereitgestellten Durchsatzes für den zugrunde liegenden Container überschreitet, empfangen Sie einen Fehler, und das SDK wiederholt den Aufruf, indem die Wiederholungsrichtlinie angewendet wird.
 
 ### <a name="why-do-i-need-to-choose-a-throughput-apart-from-partitionkey-and-rowkey-to-take-advantage-of-the-table-api-offering-of-azure-cosmos-db"></a>Warum muss ich zusätzlich zu „PartitionKey“ und „RowKey“ einen Durchsatz festlegen, um das Table-API-Angebot von Azure Cosmos DB nutzen zu können?
 Azure Cosmos DB legt einen Standarddurchsatz für Ihren Container fest, wenn Sie in der Datei „app.config“ oder über das Portal keinen Durchsatz angeben. 
@@ -422,130 +422,117 @@ Arbeiten Sie den Schnellstartartikel [Azure Cosmos DB: Erstellen einer .NET-Anwe
 <a id="cassandra"></a> 
 ## <a name="develop-with-the-apache-cassandra-api-preview"></a>Entwickeln mit der Apache Cassandra-API (Vorschauversion)
 
-### <a name="what-is-the-protocol-version-supported-in-the-preview-do-you-plan-to-support-other-protocols"></a>Welche Protokollversion wird in der Vorschauversion unterstützt? Ist eine Unterstützung weiterer Protokolle geplant?
-Die Apache Cassandra-API für Azure Cosmos DB unterstützt derzeit die CQL-Version 4. Erstellen Sie [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db), oder senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), um Feedback zur Unterstützung zusätzlicher Modelle abzugeben. 
+### <a name="what-is-the-protocol-version-supported-in-the-private-preview-is-there-a-plan-to-support-other-protocols"></a>Welche Protokollversion wird in der privaten Vorschauversion unterstützt? Ist eine Unterstützung weiterer Protokolle geplant?
+Die Apache Cassandra-API für Azure Cosmos DB unterstützt derzeit die CQL-Version 4. Wenn Sie Feedback zur Unterstützung anderer Protokolle haben, informieren Sie uns per [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db), oder senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 
+
+### <a name="why-is-choosing-a-throughput-for-a-table-a-requirement"></a>Warum muss ein Durchsatz für eine Tabelle ausgewählt werden?
+Azure Cosmos DB legt den Standarddurchsatz für Ihren Container abhängig davon fest, ob Sie die Tabelle über das Portal oder über CQL erstellt haben. Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn das Modul die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Durch Festlegen des Durchsatzes wird sichergestellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Sie können den Durchsatz flexibel anpassen, um von Schwankungen bei der Nutzung Ihrer Anwendung zu profitieren und Kosten zu sparen.
+
+Das Durchsatzkonzept wird im Artikel [Anforderungseinheiten in Azure Cosmos DB](request-units.md) erläutert. Der Durchsatz für eine Tabelle wird gleichmäßig auf die zugrunde liegenden physischen Partitionen verteilt.  
+
+### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Wie viele Anforderungseinheiten pro Sekunde (RU/s) bietet eine über CQL erstellte Tabelle standardmäßig? Was ist, wenn ich ihn ändern muss?
+Azure Cosmos DB verwendet als Einheit für den Durchsatz Anforderungseinheiten pro Sekunde (RU/s). Tabellen, die über CQL erstellt wurden, bieten 400 RU. Sie können die Anforderungseinheiten über das Portal auf 10.000 RU ändern. Wenn Sie in der privaten Vorschauversion mehr als 10.000 Anforderungseinheiten benötigen, führen Sie die Erstellung über das Portal durch. Falls Sie diese Möglichkeit für CQL benötigen, setzen Sie sich unter [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) mit uns in Verbindung. 
+
+CQL
+```
+CREATE TABLE keyspaceName.tablename (user_id int PRIMARY KEY, lastname text) WITH cosmosdb_provisioned_throughput=1200
+```
+
+.NET
+```csharp
+int provisionedThroughput = 400;
+var simpleStatement = new SimpleStatement($"CREATE TABLE {keyspaceName}.{tableName} (user_id int PRIMARY KEY, lastname text)");
+var outgoingPayload = new Dictionary<string, byte[]>();
+outgoingPayload["cosmosdb_provisioned_throughput"] = Encoding.UTF8.GetBytes(provisionedThroughput.ToString());
+simpleStatement.SetOutgoingPayload(outgoingPayload); 
+``` 
+
+### <a name="what-happens-when-throughput-is-exceeded"></a>Was geschieht, wenn der Durchsatz überschritten wird? 
+Azure Cosmos DB bietet Garantien für Leistung und Latenz mit Obergrenzen im Betrieb. Diese Garantie ist möglich, wenn das Modul die Kontrolle für die Vorgänge des Mandanten erzwingen kann. Möglich ist dies basierend auf der Einstellung für den Durchsatz, die sicherstellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Wenn diese Kapazität überschritten wird, erhalten Sie eine Fehlermeldung über die Überlastung. 0x1001 Überladen: Die Anforderung kann nicht verarbeitet werden – „Anforderungsrate ist groß“. An diesem Punkt ist es wichtig, zu überprüfen, welche Vorgänge mit welchem Umfang zu diesem Problem beigetragen haben. Informationen über die verbrauchte Kapazität oberhalb der bereitgestellten Kapazität erhalten Sie mithilfe der Metriken im Portal. Sie müssen dann sicherstellen, dass die Kapazität nahezu gleichmäßig für alle zugrunde liegenden Partitionen verbraucht wird. Wenn der größte Teil des Durchsatzes von einer Partition verbraucht wird, tritt bei der Workload eine Scherung auf. 
+
+Es stehen Metriken zur Verfügung, die Ihnen zeigen, wie der Durchsatz von einzelnen Partitionen oder in aggregierter Form über Stunden, Tage und je sieben Tage verwendet wird. Weitere Informationen finden Sie unter [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md).
+
+Diagnoseprotokolle werden im Artikel [Diagnoseprotokollierung für Azure Cosmos DB](logging.md) erläutert.
+
+### <a name="does-the-primary-key-map-to-the-partition-key-concept-of-azure-cosmos-db"></a>Entspricht die Primärschlüsselzuordnung dem Konzept von Partitionsschlüsseln von Azure Cosmos DB?
+Ja. Der Partitionsschlüssel wird verwendet, um die Entität am richtigen Speicherort zu platzieren. In Azure Cosmos DB wird er zum Suchen der richtigen logischen Partition auf einer physischen Partition verwendet. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert. Die wesentliche Lektion ist hierbei, dass eine logische Partition derzeit die 10-GB-Grenze nicht überschreiten sollte. 
+
+### <a name="what-happens-when-i-get-a-quota-full-notification-indicating-that-a-partition-is-full"></a>Was passiert, wenn ich die Benachrichtigung „Kontingent erschöpft“ als Hinweis darauf erhalte, dass eine Partition voll ist?
+Azure Cosmos DB ist ein SLA-basiertes System, das unbeschränkte Skalierung mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Die zugehörige Cassandra-API ermöglicht ebenfalls die unbegrenzte Speicherung von Daten. Diese unbegrenzte Speicherung basiert auf einer horizontalen Skalierung der Daten mit der Partitionierung als grundlegendem Konzept. Das Konzept der Partitionierung wird im Artikel [Partitionieren und Skalieren in Azure Cosmos DB](partition-data.md) sehr gut erläutert.
+
+Das Limit von 10 GB für die Anzahl von Entitäten oder Elementen pro logischer Partition sollte eingehalten werden. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, sollten Sie *keine* Hot Partition erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen. Dieser Fehler kann nur bei einer Datenscherung auftreten – wenn Sie also über viele Daten für einen Partitionsschlüssel (mehr als 10 GB) verfügen. Sie ermitteln die Verteilung der Daten mithilfe des Storage-Portals. Zum Beheben dieses Fehlers erstellen Sie die Tabelle neu und wählen einen präzisen primären Partitionsschlüssel aus, der eine bessere Verteilung der Daten ermöglicht.
+
+### <a name="is-it-possible-to-use-cassandra-api-as-key-value-store-with-millions-or-billions-of-individual-partition-keys"></a>Ist es möglich, die Cassandra-API als Schlüsselwertspeicher mit Millionen oder Milliarden einzelnen Partitionsschlüsseln zu verwenden?
+Azure Cosmos DB kann eine beliebige Datenmenge speichern, indem der Speicher horizontal hochskaliert wird. Dies gilt unabhängig vom Durchsatz. Ja. Sie können die Cassandra-API immer nur zum Speichern und Abrufen von Schlüssel-Wert-Paaren durch Angabe des richtigen primären/Partitionsschlüssels verwenden. Diese einzelnen Schlüssel erhalten ihre eigenen logischen Partitionen und sind unabhängig von der physischen Partition. 
 
 ### <a name="is-it-possible-to-create-multiple-tables-with-apache-cassandra-api-of-azure-cosmos-db"></a>Können mit der Apache Cassandra-API von Azure Cosmos DB mehrere Tabellen erstellt werden?
-Azure Cosmos DB ist ein ressourcengesteuertes System für Aktivitäten auf Daten- und Steuerungsebene. Container (beispielsweise Sammlungen und Tabellen) sind Laufzeitentitäten, die für eine bestimmte Durchsatzkapazität bereitgestellt werden. Die Erstellung dieser Container in schneller Folge ist eine unerwartete Aktivität und wird unter Umständen gedrosselt. Tests, die Tabellen umgehend verwerfen/erstellen, sollten nach Möglichkeit aufgeteilt werden. Alternativ können Sie auch bereits vorhandene Tabellen nach dem Entfernen von Daten wiederverwenden.
+Ja. Sie können mit der Apache Cassandra-API mehrere Tabellen erstellen. Jede dieser Tabellen wird bei Durchsatz und Speicherung als Einheit behandelt. 
 
-### <a name="what-is-maximum-number-of-tables-that-can-be-created"></a>Wie viele Tabellen können maximal erstellt werden?
-Die Anzahl erstellbarer Tabellen ist physisch nicht begrenzt. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), falls Sie über eine große Anzahl von Tabellen (ständige Gesamtgröße von mehr als 10 TB) verfügen, die auf der Grundlage der üblichen 10er oder 100er erstellt werden müssen. 
+### <a name="is-it-possible-to-create-multiple-tables-in-succession"></a>Ist es möglich, mehrere Tabellen nacheinander zu erstellen?
+Azure Cosmos DB ist ein ressourcengesteuertes System für Aktivitäten auf Daten- und Steuerungsebene. Container (beispielsweise Sammlungen und Tabellen) sind Laufzeitentitäten, die für eine bestimmte Durchsatzkapazität bereitgestellt werden. Die Erstellung dieser Container in schneller Folge ist eine unerwartete Aktivität und wird gedrosselt. Wenn Sie Tests durchführen, bei denen Tabellen sofort abgelegt/erstellt werden, sollten Sie diese Vorgänge voneinander trennen.
 
-### <a name="what-is-the-maximum-number-of-keyspaces-that-can-be-created"></a>Wie viele Keyspaces können maximal erstellt werden? 
-Da es sich bei Keyspaces um Metadatencontainer handelt, ist die Anzahl erstellbarer Keyspaces physisch nicht begrenzt. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), falls Sie eine besonders große Anzahl von Keyspaces erstellen müssen. 
+### <a name="what-is-maximum-number-of-tables-which-can-be-created"></a>Wie viele Tabellen können maximal erstellt werden?
+Es gibt kein physisches Limit für die Anzahl von Tabellen. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), wenn Sie über sehr viele Tabellen verfügen (wenn die Größe dauerhaft über 10 TB liegt), die mit anderen Geschwindigkeiten als den üblichen 10 s oder 100 s erstellt werden müssen. 
 
-### <a name="is-it-possible-to-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>Ist es möglich, mit einer normalen Tabelle zu beginnen und später eine große Datenmenge hinzuzufügen? 
-Die Speicherkapazität wird automatisch verwaltet und erhöht sich, wenn weitere Daten hinzukommen. Dadurch wird sichergestellt, dass für Ihre Datenmenge genügend Durchsatz zur Verfügung steht und Sie bedenkenlos so viele Daten importieren können, wie Sie benötigen.
+### <a name="what-is-the-maximum--of-keyspace-which-we-can-create"></a>Wie viele Keyspaces können wir maximal erstellen? 
+Es gibt keine physische Obergrenze für die Anzahl von Keyspaces, da sie lediglich Metadatencontainer sind. Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), wenn Sie über eine sehr große Anzahl von Keyspaces verfügen. 
+
+### <a name="is-it-possible-to-bring-in-lot-of-data-after-starting-from-normal-table"></a>Ist es möglich, mit einer normalen Tabelle zu beginnen und später eine große Datenmenge hinzuzufügen? 
+Die Speicherkapazität wird automatisch verwaltet und erhöht sich, wenn weitere Daten hinzukommen. Daher können Sie problemlos so viele Daten wie nötig importieren, ohne Knoten verwalten und bereitstellen zu müssen. 
 
 ### <a name="is-it-possible-to-supply-yaml-file-settings-to-configure-apache-casssandra-api-of-azure-cosmos-db-behavior"></a>Kann das Verhalten der Apache Casssandra-API von Azure Cosmos DB mithilfe von YAML-Dateieinstellungen konfiguriert werden?
-Bei der Apache Cassandra-API von Azure Cosmos DB handelt es sich um einen Plattformdienst. Dieser bietet Kompatibilität auf Protokollebene zum Ausführen von Vorgängen. Er vereinfacht die Verwaltung, Überwachung und Konfiguration. Entwickler und Benutzer müssen sich nicht mit Aspekten wie Verfügbarkeit, Tombstones, Schlüsselcache, Zeilencache, Bloomfiltern und anderen ähnlichen Einstellungen beschäftigen. Bei der Apache Cassandra-API von Azure Cosmos DB steht die Bereitstellung der benötigten Lese- und Schreibleistung ohne Mehraufwand im Mittelpunkt.
+Bei der Apache Cassandra-API von Azure Cosmos DB handelt es sich um einen Plattformdienst. Dieser bietet Kompatibilität auf Protokollebene zum Ausführen von Vorgängen. Er vereinfacht die Verwaltung, Überwachung und Konfiguration. Entwickler und Benutzer müssen sich nicht mit Aspekten wie Verfügbarkeit, Tombstones, Schlüsselcache, Zeilencache, Bloomfiltern und den zahlreichen anderen Einstellungen beschäftigen. Bei der Apache Cassandra-API von Azure Cosmos DB steht die Bereitstellung der benötigten Lese- und Schreibleistung ohne Mehraufwand durch Konfiguration und Verwaltung im Mittelpunkt.
 
 ### <a name="will-apache-cassandra-api-for-azure-cosmos-db-support-node-additioncluster-statusnode-status-commands"></a>Werden von der Apache Cassandra-API von Azure Cosmos DB Befehle zum Hinzufügen von Knoten bzw. für den Cluster-/Knotenstatus unterstützt?
-Die Apache Cassandra-API ist ein Plattformdienst, der die Kapazitätsplanung und die Reaktion auf Elastizitätsanforderungen für Durchsatz und Speicher vereinfacht. Mit Azure Cosmos DB stellen Sie den benötigten Durchsatz bereit. Dieser kann dann beliebig oft zentral hoch- und herunterskaliert werden, ohne dass Sie sich Gedanken über das Hinzufügen/Löschen von Knoten machen oder sich um deren Verwaltung kümmern müssen. Das bedeutet auch, dass Sie kein Tool für die Knoten- oder Clusterverwaltung benötigen. 
+Die Apache Cassandra-API ist ein Plattformdienst, der die Kapazitätsplanung und die Reaktion auf Elastizitätsanforderungen für Durchsatz und Speicher vereinfacht. Mit Azure Cosmos DB stellen Sie den benötigten Durchsatz bereit. Dieser kann dann beliebig oft zentral hoch- und herunterskaliert werden, ohne dass Sie sich Gedanken über das Hinzufügen/Löschen von Knoten machen oder sich um deren Verwaltung kümmern müssen. Dies bedeutet auch, dass Sie keine Tools zur Knoten- oder Clusterverwaltung verwenden müssen. 
 
-### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation"></a>Wie verhält es sich hinsichtlich verschiedener Konfigurationseinstellungen für die Keyspaceerstellung?
-Aus Gründen von Verfügbarkeit und geringer Wartezeit ist in Azure Cosmos DB bereits eine globale Verteilung integriert. Sie müssen keine Replikate einrichten. Schreibvorgänge werden in jeder Region, in der Sie Daten schreiben oder an die Sie Daten verteilen, immer dauerhaft im Quorum committet. Gleichzeitig werden Leistungsgarantien geboten. Aus diesem Grund werden Konfigurationseinstellungen wie `Simple Strategy` und `Network Topology Strategy` ignoriert. 
+### <a name="what-happens-with-respect-to-various-config-settings-for-keyspace-creation-like-simplenetwork"></a>Wie verhält es sich hinsichtlich verschiedener Konfigurationseinstellungen (einfach/Netzwerk) für die Keyspaceerstellung?
+Aus Gründen von Verfügbarkeit und geringer Wartezeit ist in Azure Cosmos DB bereits eine globale Verteilung integriert. Sie müssen keine Replikate usw. einrichten. Schreibvorgänge werden in jeder Region, in der Sie Daten schreiben, immer dauerhaft im Quorum committet. Gleichzeitig werden Leistungsgarantien geboten.  
 
-### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filters-caching-read-repair-changes-gcgrace-and-compression-memtableflushperiod"></a>Wie verhält es sich hinsichtlich verschiedener Einstellungen für Tabellenmetadaten wie Bloomfilter, Zwischenspeicherung, Lesereparaturänderungen, „gc_grace“ und „compression memtable_flush_period“?
-Azure Cosmos DB bietet Leistung für Lese-/Schreibvorgänge und Durchsatz, ohne dass dafür Konfigurationseinstellungen bearbeitet werden müssen, was die versehentliche Veränderung dieser Einstellungen verhindert. Dadurch werden zahlreiche schwer zu verwaltende Konfigurationseinstellungen beseitigt.
-
-### <a name="what-is-the-default-consistency-of-an-apache-cassandra-api-account"></a>Über welche Standardkonsistenz verfügt ein Apache Cassandra-API-Konto?
-Azure Cosmos DB unterstützt standardmäßig fünf Konsistenzebenen, wie in [Einstellbare Datenkonsistenzebenen in Azure Cosmos DB](consistency-levels.md) beschrieben. Die Apache Cassandra-API unterstützt derzeit nur Sitzungskonsistenz. 
+### <a name="what-happens-with-respect-to-various-settings-for-table-metadata-like-bloom-filter-caching-read-repair-change-gcgrace-compression-memtableflushperiod-etc"></a>Wie verhält es sich hinsichtlich verschiedener Einstellungen für Tabellenmetadaten wie Bloomfilter, Zwischenspeicherung, Lesereparaturänderungen, „gc_grace“ und „compression memtable_flush_period“ usw.?
+Azure Cosmos DB bietet Leistung für Lese-/Schreibvorgänge und Durchsatz, ohne dass dafür Konfigurationseinstellungen bearbeitet werden müssen. Dadurch wird die versehentliche Änderung dieser Einstellungen verhindert.  
 
 ### <a name="is-time-to-live-ttl-supported-for-cassandra-tables"></a>Wird für Cassandra-Tabellen Gültigkeitsdauer (Time To Live, TTL) unterstützt? 
-Ja, TTL wird für die Tabelle unterstützt. 
+Ja. TTL wird unterstützt. 
 
-### <a name="what-is-the-default-throughput-of-a-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Welchen Durchsatz bietet eine über CQL erstellte Tabelle standardmäßig? Was ist, wenn ich ihn ändern muss?
-Azure Cosmos DB verwendet als Einheit für den Durchsatz Anforderungseinheiten pro Sekunde (RU/s). Für über CQL erstellte Tabellen werden standardmäßig 400 RU/s bereitgestellt. Der Durchsatz einer Tabelle kann über das Azure-Portal geändert und zentral auf bis zu 10.000 RU hochskaliert werden. Sollten Sie während der Vorschauphase mehr als 10.000 RU/s benötigen, erstellen Sie Ihre Tabelle über das Azure-Portal. Falls Sie diese Möglichkeit für CQL benötigen, setzen Sie sich unter [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) mit uns in Verbindung. 
-
-###  <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-what-should-i-monitor"></a>Kann ich Knotenstatus, Replikatstatus, GC und Betriebssystemparameter überwachen? Was sollte ich überwachen?
-Azure Cosmos DB ist ein Plattformdienst, mit dem Sie Ihre Produktivität steigern können, ohne sich Gedanken über die Verwaltung und Überwachung der Infrastruktur zu machen. Als Metrik sollten Sie den Durchsatz überwachen. Diesen finden Sie im Azure-Portal auf der Seite mit den Azure Cosmos DB-Metriken auf der Registerkarte „Durchsatz“. Diese Diagramme geben Aufschluss darüber, ob eine Drosselung stattfindet und ob Sie den Durchsatz erhöhen oder verringern müssen. Weitere Informationen finden Sie unter [Überwachen von Azure Cosmos DB](monitor-accounts.md) sowie unter [Überwachen und Debuggen mit Metriken in Azure Cosmos DB](use-metrics.md).
+### <a name="is-it-possible-to-monitor-node-status-replica-status-gc-and-os-parameters-earlier-with-various-tools-what-needs-to-be-monitored-now"></a>Kann ich Knotenstatus, Replikatstatus, GC und Betriebssystemparameter mit verschiedenen Tools überwachen? Was muss nun überwacht werden?
+Azure Cosmos DB ist ein Plattformdienst, mit dem Sie Ihre Produktivität steigern können, ohne sich Gedanken über die Verwaltung und Überwachung der Infrastruktur zu machen. Sie müssen nur auf den Durchsatz achten, der über die Metriken im Portal zu finden ist, wenn Ihr Durchsatz gedrosselt wird, und diesen dann erhöhen oder verringern. Überwachen Sie die [SLAs](monitor-accounts.md).
+Verwenden Sie [Metriken](use-metrics.md) und [Diagnoseprotokolle](logging.md).
 
 ### <a name="which-client-sdks-can-work-with-apache-cassandra-api-of-azure-cosmos-db"></a>Welche Client-SDKs können mit der Apache Cassandra-API von Azure Cosmos DB verwendet werden?
-Die Apache Cassandra-API wurde mit Apache Cassandra-Treibern für C#, Java, Python und Node getestet. Sollten Sie andere Treiber verwenden und Unterstützung benötigen, schreiben Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
-
-### <a name="how-do-i-get-ru-capacity-planning-for-the-apache-cassandra-api"></a>Wie erhalte ich RU-Kapazitätsplanung für die Apache Cassandra-API?
-Azure Cosmos DB bietet einen [Capacity Planner](https://www.documentdb.com/capacityplanner). Sie stellen eine JSON-Darstellung der Entität bereit, und der Capacity Planner sorgt für die RUs, die für einzelne Lese-/Schreibvorgänge erforderlich sind. Bei Abfragen und anderen Vorgängen geben vorhandene Treiber die Metadaten mit den RU-Verbrauchsinformationen zurück. Sie können diese Informationen für eine präzise Planung nutzen. 
+In der privaten Vorschauversion wurden für Clientprogramme die Clienttreiber des Apache Cassandra SDK verwendet, die CQLv3 verwenden. Wenn Sie andere Treiber verwenden oder bei Ihnen Probleme auftreten, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 
 
 ### <a name="is-composite-primary-key-supported"></a>Wird ein zusammengesetzter Primärschlüssel unterstützt?
 Ja. Sie können unter Verwendung der regulären Syntax einen zusammengesetzten Partitionsschlüssel erstellen. 
 
 ### <a name="can-i-use-sstable-loader-for-data-loading"></a>Kann ich Daten mithilfe von „sstable loader“ laden?
-Nein. „sstable loader“ wird derzeit nicht unterstützt. 
+Nein. In der Vorschauversion wird das sstable-Ladeprogramm nicht unterstützt. 
 
-### <a name="can-an-on-premise-cassandra-cluster-be-paired-with-the-azure-cosmos-db-apache-cassandra-api"></a>Kann ein lokaler Cassandra-Cluster mit der Apache Cassandra-API von Azure Cosmos DB gekoppelt werden?
-Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), und beschreiben Sie Ihre Szenarien. Der Dienst ist für Cloudumgebungen optimiert und kann ohne zusätzlichen Aufwand betrieben werden.
+### <a name="can-an-on-premises-cassandra-cluster-be-paired-with-azure-cosmos-dbs-apache-cassandra-api"></a>Kann ein lokaler Cassandra-Cluster mit der Apache Cassandra-API von Azure Cosmos DB gekoppelt werden?
+Derzeit ist Azure Cosmos DB für Cloudumgebungen optimiert und kann ohne zusätzlichen Aufwand betrieben werden. Wenn Sie Kopplung benötigen, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) mit einer Beschreibung Ihres Szenarios.
 
-### <a name="do-i-need-to-take-snapshots-and-incremental-backups"></a>Muss ich Momentaufnahmen und inkrementelle Sicherungen erstellen? 
-Azure Cosmos DB bietet zwei kostenlose vollständige Sicherungen, die alle vier Stunden über alle APIs hinweg erstellt werden. Dadurch müssen Sie keinen Sicherungszeitplan erstellen. Wenn Sie die Aufbewahrung und Häufigkeit der Sicherungen ändern möchten, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 
+### <a name="does-cassandra-api-provide-full-backups"></a>Bietet die Cassandra-API vollständige Sicherungen? 
+Azure Cosmos DB bietet zwei kostenlose vollständige Sicherungen, die zurzeit alle vier Stunden über alle APIs hinweg erstellt werden. Dadurch müssen Sie keinen Sicherungszeitplan o.Ä. einrichten. Wenn Sie Aufbewahrungsdauer und Häufigkeit ändern möchten, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com), oder lösen Sie eine Supportanfrage aus. Informationen zu Sicherungsfunktion finden Sie im Artikel [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md). 
 
-### <a name="where-can-i-provide-feedback-if-a-feature-in-the-regular-cassandra-api-does-not-work"></a>Wie kann ich Feedback senden, wenn ein Feature in der regulären Cassandra-API nicht funktioniert?
-Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Wie läuft mit dem Cassandra-API-Konto das Failover bei einem Ausfall einer Region ab? 
+Die Cassandra-API von Azure Cosmos DB nutzt Teile der global verteilten Plattform von Azure Cosmos DB. Um sicherzustellen, dass Ihre Anwendung Ausfallzeiten des Datencenters tolerieren kann, sollten Sie für das Konto mindestens eine weitere Region im Azure Cosmos DB-Portal aktivieren: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](regional-failover.md). Sie können die Priorität der Region mithilfe des Portals festlegen: [Entwickeln für Azure Cosmos DB-Konten für mehrere Regionen](regional-failover.md). 
 
-### <a name="where-can-i-suggest-new-features-for-the-apache-cassandra-api"></a>Wie kann ich neue Features für die Apache Cassandra-API vorschlagen?
-Senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). Alternativ können Sie auf der [UserVoice-Website](https://feedback.azure.com/forums/263030-azure-cosmos-db) Feedback hinterlassen. 
+Sie können für das Konto beliebig viele Regionen hinzufügen und steuern, wohin das Failover erfolgen kann, indem Sie eine Failoverpriorität festlegen. Für die Verwendung der Datenbank müssen Sie dafür eine Anwendung bereitstellen. Wenn Sie so vorgehen, treten für Ihre Kunden keine Ausfallzeiten auf. 
 
-### <a name="why-do-i-need-to-choose-a-throughput-level"></a>Warum muss ich eine Durchsatzstufe auswählen?
-Azure Cosmos DB legt den Standarddurchsatz für Ihren Container abhängig davon fest, ob Sie die Tabelle über das Portal oder über CQL erstellt haben. 
-
-Azure Cosmos DB bietet Garantien für Leistung und Wartezeit (mit Obergrenzen für Vorgänge). Diese Garantie ist möglich, da das Modul Governance für die Vorgänge des Mandanten erzwingen kann. Durch Festlegen des Durchsatzes wird sichergestellt, dass Sie den garantierten Durchsatz und die garantierte Wartezeit erhalten. Hierzu wird die entsprechende Kapazität von der Plattform reserviert, um den Erfolg des Vorgangs zu gewährleisten. Weitere Informationen finden Sie unter [Anforderungseinheiten in Azure Cosmos DB](request-units.md).
-
-Mithilfe der Durchsatzangabe können Sie den Durchsatz flexibel ändern, um von der Saisonalität Ihrer Anwendung zu profitieren, die Durchsatzanforderungen zu erfüllen und Kosten zu sparen.
-
-### <a name="i-never-get-a-quota-full-notification-indicating-that-a-partition-is-full-when-i-ingest-data-into-regular-cassandra-with-the-azure-cosmos-db-cassandra-api-i-do-get-this-message-is-this-offering-limiting-me-and-forcing-me-to-change-my-existing-application"></a>Ich habe beim Erfassen von Daten in der regulären Cassandra-Lösung bislang nie die Benachrichtigung „Kontingent erschöpft“ (als Information, dass eine Partition voll ist) erhalten. Bei Verwendung der Cassandra-API von Azure Cosmos DB wird diese Meldung aber angezeigt. Schränkt mich dieses Angebot ein, und zwingt es mich zum Ändern meiner vorhandenen Anwendung?
-
-Azure Cosmos DB ist ein SLA-basiertes System, das unbeschränkte Skalierung mit Garantien für Wartezeit, Durchsatz, Verfügbarkeit und Konsistenz bietet. Achten Sie darauf, dass Ihre Datengröße und der Index verwaltbar und skalierbar sind, um sicherzustellen, dass Sie die garantierte Premium-Leistung erhalten. Durch den Grenzwert von 10 GB für die Anzahl von Entitäten bzw. Elementen pro Partitionsschlüssel wird eine hervorragende Such- und Abfrageleistung von Azure Cosmos DB erzielt. Um sicherzustellen, dass Ihre Anwendung gut skaliert werden kann, raten wir Ihnen auch bei Azure Storage, *keine* Hot Partition zu erstellen, indem Sie alle Informationen in einer Partition speichern und abfragen. 
-
-### <a name="how-does-the-cassandra-api-handle-failover-if-a-region-goes-down"></a>Wie läuft mit der Cassandra-API das Failover bei einem Ausfall einer Region ab? 
-Die Cassandra-API von Azure Cosmos DB nutzt Teile der global verteilten Plattform von Azure Cosmos DB. Um sicherzustellen, dass Ihre Anwendung Ausfallzeiten des Datencenters tolerieren kann, sollten Sie für das Konto mindestens eine weitere Region im Azure Cosmos DB-Portal aktivieren. Sie können die Priorität der Region mithilfe des Portals festlegen. Eine entsprechende Anleitung finden Sie unter [Automatische regionale Failover für die Geschäftskontinuität in Azure Cosmos DB](regional-failover.md). 
-
-Sie können für das Konto beliebig viele Regionen hinzufügen und durch Angeben einer Failoverpriorität das Ziel für das Failover steuern. Zur Verwendung der Datenbank müssen Sie natürlich auch dort eine Anwendung bereitstellen. Wenn Sie so vorgehen, treten für Ihre Kunden keine Ausfallzeiten auf.  
-
-### <a name="is-the-apache-cassandra-api-enabled-for-backups"></a>Können mit der Apache Cassandra-API Sicherungen erstellt werden?
-Ja. Die Cassandra-API von Azure Cosmos DB verfügt über die gleichen Sicherungen wie Azure Cosmos DB. Sicherungen werden automatisch erstellt. Weitere Informationen finden Sie unter [Automatische Onlinesicherung und -wiederherstellung mit Azure Cosmos DB](online-backup-and-restore.md).
- 
 ### <a name="does-the-apache-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Indiziert die Apache Cassandra-API standardmäßig alle Attribute einer Entität?
 Ja, alle Attribute einer Entität werden standardmäßig von Azure Cosmos DB indiziert. Weitere Informationen finden Sie unter [Unterstützen von Indexdaten durch Azure Cosmos DB](indexing-policies.md). Sie profitieren von garantierter Leistung mit konsistenter Indizierung und Schreibvorgängen mit dauerhaftem Commit im Quorum. 
 
 ### <a name="does-this-mean-i-do-not-have-to-create-multiple-indexes-to-satisfy-the-queries"></a>Bedeutet dies, dass ich nicht mehrere Indizes erstellen muss, um Abfragen zu bedienen? 
 Ja. Azure Cosmos DB ermöglicht die automatische Indizierung aller Attribute ganz ohne Schemadefinition. Dank dieser Automatisierung können sich Entwickler auf die Anwendung konzentrieren und verlieren keine Zeit mehr mit der Indexerstellung und -verwaltung. Weitere Informationen finden Sie unter [Unterstützen von Indexdaten durch Azure Cosmos DB](indexing-policies.md).
 
-### <a name="can-i-change-the-indexing-policy"></a>Kann ich die Indizierungsrichtlinie ändern?
-Ja. Sie können die Indizierungsrichtlinie ändern, indem Sie die Indexdefinition bereitstellen. Weitere Informationen finden Sie unter [Azure Cosmos DB-Funktionen](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities). Sie müssen die Einstellungen richtig codieren und mit Escapezeichen versehen. Sollten Sie weitere Informationen benötigen, senden Sie eine E-Mail an [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com). 
-
-Hier sehen Sie ein Beispiel im JSON-Zeichenfolgenformat aus der Datei „app.config“:
-
-```csharp
-{
-  "indexingMode": "consistent",
-  "automatic": true,
-  "includedPaths": [
-    {
-      "path": "/somepath",
-      "indexes": [
-        {
-          "kind": "Range",
-          "dataType": "Number",
-          "precision": -1
-        },
-        {
-          "kind": "Range",
-          "dataType": "String",
-          "precision": -1
-        } 
-      ]
-    }
-  ],
-  "excludedPaths": 
-[
- {
-      "path": "/anotherpath"
- }
-]
-}
-```
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Kann ich das neue SDK der Cassandra-API lokal mit dem Emulator verwenden?
-Der [lokale Emulator](local-emulator.md) unterstützt die Cassandra-API derzeit nicht. 
+Wir planen die Unterstützung dieser Funktion in der Zukunft. 
+
+### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-changefeed-and-other-functionality-will-these-capabilities-be-added-to-the-cassandra-api"></a>Azure Cosmos DB als Plattform verfügt anscheinend über viele Funktionen wie z.B. Änderungsfeed und andere. Werden diese Funktionen auch noch in der Cassandra-API hinzugefügt? 
+Die Apache Cassandra-API bietet die gleiche CQL-Funktionalität wie Apache Cassandra. Wir werden die Durchführbarkeit einer Unterstützung der verschiedenen Funktionen untersuchen.
+
+### <a name="feature-x-of-regular-cassandra-api-is-not-working-as-today-where-can-the-feedback-be-provided"></a>Feature X der regulären Cassandra-API funktioniert im Moment nicht, wo kann ich Feedback geben?
+Übermitteln Sie Ihr Feedback über [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 <a id="moving-to-cosmos-db"></a>
 ## <a name="questions-from-documentdb-customers"></a>Fragen von DocumentDB-Kunden
@@ -565,7 +552,7 @@ Ein weiterer Beweis für unsere fortwährende Arbeit ist das erweiterte Fundamen
 
 ### <a name="what-do-i-need-to-do-to-ensure-that-my-documentdb-resources-continue-to-run-on-azure-cosmos-db"></a>Was muss ich tun, um sicherzustellen, dass meine DocumentDB-Ressourcen unter Azure Cosmos DB weiterhin ausgeführt werden können?
 
-Sie müssen gar keine Änderungen vornehmen. Ihre DocumentDB-Ressourcen sind jetzt Azure Cosmos DB-Ressourcen. Für diese Umstellung war keine Unterbrechung des Diensts erforderlich.
+Es sind keine Änderungen erforderlich. Ihre DocumentDB-Ressourcen sind jetzt Azure Cosmos DB-Ressourcen. Für diese Umstellung war keine Unterbrechung des Diensts erforderlich.
 
 ### <a name="what-changes-do-i-need-to-make-for-my-app-to-work-with-azure-cosmos-db"></a>Welche Änderungen muss ich vornehmen, damit meine App mit Azure Cosmos DB funktioniert?
 

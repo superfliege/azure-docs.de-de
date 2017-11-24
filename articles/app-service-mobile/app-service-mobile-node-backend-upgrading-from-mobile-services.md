@@ -14,16 +14,16 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 5fc61fed674f0d2fc64bc29c064e7e872b4f2e68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 888717afe14f29fd50da6478c2bba077616a5379
+ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>Aktualisieren eines vorhandenen Node.js-Azure Mobile Service auf App Service
 Mobile App Service-Apps sind eine neue Methode zum Erstellen mobiler Anwendungen mit Microsoft Azure. Weitere Informationen finden Sie unter [Was sind Mobile Apps?].
 
-In diesem Thema wird beschrieben, wie Sie eine vorhandene Node.js-Back-End-Anwendung von Azure Mobile Services auf das neue Mobile App Service-Apps-Feature upgraden. Während Sie dieses Upgrade ausführen, können Sie Ihre vorhandene Mobile Services-Anwendung weiter betreiben.  Wenn Sie eine Node.js-Back-End-Anwendung aktualisieren müssen, helfen Ihnen die Informationen unter [Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service](app-service-mobile-net-upgrading-from-mobile-services.md) weiter.
+In diesem Artikel wird beschrieben, wie Sie eine vorhandene Node.js-Back-End-Anwendung von Azure Mobile Services auf das neue Mobile App Service-Apps-Feature upgraden. Während Sie dieses Upgrade ausführen, können Sie Ihre vorhandene Mobile Services-Anwendung weiter betreiben.  Wenn Sie eine Node.js-Back-End-Anwendung aktualisieren müssen, helfen Ihnen die Informationen unter [Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service](app-service-mobile-net-upgrading-from-mobile-services.md) weiter.
 
 Wenn ein Mobil-Back-End auf Azure App Service aktualisiert wird, hat dieses Zugriff auf alle App Service-Features, und die Abrechnung erfolgt gemäß [App Service-Preisen], nicht gemäß den Mobile Services-Preisen.
 
@@ -36,7 +36,7 @@ Wenn ein Mobil-Back-End auf Azure App Service aktualisiert wird, hat dieses Zugr
 >
 
 ### <a name="improvements-in-mobile-apps-nodejs-server-sdk"></a>Verbesserungen im Mobile Apps-Server-SDK für Node.js
-Bei einem Upgrade auf das neue [Mobile Apps-SDK](https://www.npmjs.com/package/azure-mobile-apps) profitieren Sie von vielen Verbesserungen:
+Bei einem Upgrade auf das neue [Mobile Apps SDK](https://www.npmjs.com/package/azure-mobile-apps) profitieren Sie von vielen Verbesserungen:
 
 * Das auf dem [Express-Framework](http://expressjs.com/en/index.html)basierende neue Node-SDK ist besonders schlank und so konzipiert, dass es mit künftigen neuen Node-Versionen Schritt hält. Sie können das Anwendungsverhalten mit der Express-Middleware anpassen.
 * Beträchtliche Leistungssteigerungen im Vergleich zum Mobile Services SDK.
@@ -98,12 +98,12 @@ Während der Bereitstellung müssen Sie die folgenden Schritte ausführen:
 3. Wählen Sie für die **Ressourcengruppe**eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue (verwenden Sie dabei den gleichen Namen wie für die App).
 
     Sie können einen anderen vorhandenen App Service-Plan auswählen oder einen neuen Plan erstellen. Weitere Informationen zu App Services-Plänen sowie zum Erstellen eines neuen Plans in einem anderen Tarif und am gewünschten Standort finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md).
-4. Für den **App Service-Plan**ist der Standardplan (im [Standard-Tarif](https://azure.microsoft.com/pricing/details/app-service/)) ausgewählt. Sie können auch einen anderen Plan auswählen oder [einen neuen Plan erstellen](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md#create-an-app-service-plan). Die Einstellungen für den App Service-Plan bestimmen [den Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App.
+4. Für den **App Service-Plan**ist der Standardplan (im [Standard-Tarif](https://azure.microsoft.com/pricing/details/app-service/)) ausgewählt. Sie können auch einen anderen Plan auswählen oder [einen neuen Plan erstellen](../app-service/app-service-plan-manage.md#create-an-app-service-plan). Die Einstellungen für den App Service-Plan bestimmen [den Standort, die Funktionen, die Kosten und die Computeressourcen](https://azure.microsoft.com/pricing/details/app-service/) Ihrer App.
 
     Nachdem Sie den Plan festgelegt haben, klicken Sie auf **Erstellen**. Dadurch wird das Back-End für mobile Apps erstellt.
 
 ### <a name="run-createviewssql"></a>Ausführen von „CreateViews.SQL“
-Die mit dem Gerüst versehene App enthält eine Datei mit dem Namen `createViews.sql`.  Dieses Skript muss für die Zieldatenbank ausgeführt werden.  Die Verbindungszeichenfolge für die Zieldatenbank finden Sie im migrierten mobilen Service auf dem Blatt **Einstellungen** unter **Verbindungszeichenfolgen**.  Sie lautet `MS_TableConnectionString`.
+Die mit dem Gerüst versehene App enthält eine Datei mit dem Namen `createViews.sql`.  Dieses Skript muss für die Zieldatenbank ausgeführt werden.  Die Verbindungszeichenfolge für die Zieldatenbank finden Sie im migrierten mobilen Service auf der Seite **Einstellungen** unter **Verbindungszeichenfolgen**.  Sie lautet `MS_TableConnectionString`.
 
 Sie können dieses Skript in SQL Server Management Studio oder Visual Studio ausführen.
 
@@ -116,7 +116,7 @@ Verknüpfen Sie die vorhandene Datenbank mit der App Service-Instanz:
 * Wählen Sie in der Dropdownliste die Option **SQL-Datenbank**
 * Wählen Sie unter **SQL-Datenbank** die vorhandene Datenbank aus, und klicken Sie dann auf **Auswählen**.
 * Geben Sie unter **Verbindungszeichenfolge** den Benutzernamen und das Kennwort für die Datenbank ein, und klicken Sie dann auf **OK**.
-* Klicken Sie auf dem Blatt **Datenverbindungen hinzufügen** auf **OK**.
+* Klicken Sie auf der Seite **Datenverbindungen hinzufügen** auf **OK**.
 
 Sie erhalten den Benutzernamen und das Kennwort, indem Sie die Verbindungszeichenfolge für die Zieldatenbank im migrierten Mobile Service anzeigen.
 

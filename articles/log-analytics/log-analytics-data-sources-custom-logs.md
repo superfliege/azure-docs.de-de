@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2017
+ms.date: 11/17/2017
 ms.author: bwren
-ms.openlocfilehash: e3a4c631cd69921fec60b3ae33a23c4c7c369194
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -56,10 +56,6 @@ Das Standardtrennzeichen **Neue Zeile** wird für Protokolldateien verwendet, di
 
 Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einzelnen, in OMS gespeicherten Datensätze in der Protokolldatei mit der Datums-/Uhrzeitangabe des jeweiligen Eintrags aufgefüllt.  Bei Verwendung eines Trennzeichens vom Typ „Neue Zeile“ wird die TimeGenerated-Eigenschaft mit dem Zeitpunkt (Datum und Uhrzeit) aufgefüllt, an dem Log Analytics den Eintrag gesammelt hat.
 
-> [!NOTE]
-> Log Analytics behandelt Datums-/Uhrzeitangaben, die in einem Protokoll mithilfe des Zeitstempeltrennzeichens gesammelt werden, momentan als UTC-Werte.  Dies wird jedoch bald geändert, sodass die Zeitzone für den Agent verwendet wird.
->
->
 
 1. Klicken Sie auf **Durchsuchen**, und navigieren Sie zu einer Beispieldatei.  Hinweis: Bei manchen Browsern ist diese Schaltfläche unter Umständen mit **Datei auswählen** beschriftet.
 2. Klicken Sie auf **Weiter**.

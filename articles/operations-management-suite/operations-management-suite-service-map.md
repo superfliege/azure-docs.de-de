@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: f7109a3b21feac396d8c20c7e72a8987f72a909a
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c07290a5003189b0b773bd9b9c995400b424c7f4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Verwenden von Service Map in der Operations Management Suite (OMS)
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -231,16 +231,16 @@ Im **Computerleistungsbereich** werden Standardleistungsmetriken für den ausgew
 Um Leistungsdaten anzuzeigen, müssen Sie unter Umständen [die entsprechenden Log Analytics-Leistungsindikatoren aktivieren](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-performance-counters).  Leistungsindikatoren, die Sie aktivieren sollten:
 
 Windows:
-- Processor(*)\% Prozessorzeit
-- Memory\% Verwendete zugesicherte Bytes
-- Network Adapter(*)\Gesendete Byte/s
-- Network Adapter(*)\Empfangene Byte/s
+- Processor(*)\\Prozessorzeit (%)
+- Memory\\Zugesicherte verwendete Bytes (%)
+- Network Adapter(*)\\Gesendete Bytes/s
+- Network Adapter(*)\\Empfangene Bytes/s
 
 Linux:
-- Processor(*)\% Prozessorzeit
-- Memory(*)\% Verwendeter Arbeitsspeicher
-- Network Adapter(*)\Gesendete Byte/s
-- Network Adapter(*)\Empfangene Byte/s
+- Processor(*)\\Prozessorzeit (%)
+- Memory(*)\\Verwendeter Arbeitsspeicher (%)
+- Network Adapter(*)\\Gesendete Bytes/s
+- Network Adapter(*)\\Empfangene Bytes/s
 
 Um die Leistungsdaten für das Netzwerk abzurufen, muss auch die Wire Data 2.0-Lösung in der OMS aktiviert sein.
  

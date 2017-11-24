@@ -1,6 +1,6 @@
 ---
-title: "Hochverfügbarkeit von SAP (A)SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigabe in Azure | Microsoft-Dokumentation"
-description: "Hochverfügbarkeit von SAP (A)SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigabe in Azure"
+title: "Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure | Microsoft-Dokumentation"
+description: "Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure"
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9f0beae1c92c40bb89decc6ca567aed98c5e29b4
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3522e7ef0e3d49ce1bd8bed750b239fa384af8b8
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/14/2017
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -193,127 +193,127 @@ ms.lasthandoff: 10/16/2017
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-# <a name="sap-ascs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Hochverfügbarkeit von SAP (A)SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigabe in Azure
+# <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-file-share-on-azure"></a>Hochverfügbarkeit von SAP ASCS/SCS-Instanzen mit Multi-SID-Konfiguration mithilfe von Windows Server-Failoverclustering und Dateifreigaben in Azure
 
 > ![Windows][Logo_Windows] Windows
 >
 
 Im September 2016 veröffentlichte Microsoft ein Feature, mit dem Sie mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] mehrere virtuelle IP-Adressen verwalten können. Diese Funktionalität ist im externen Azure-Lastenausgleich bereits vorhanden.
 
-Falls Sie über eine SAP-Bereitstellung verfügen, können Sie einen internen Lastenausgleich vornehmen, um eine Windows-Clusterkonfiguration für SAP (A)SCS-Instanzen zu erstellen.
+Falls Sie über eine SAP-Bereitstellung verfügen, können Sie einen internen Lastenausgleich vornehmen, um eine Windows-Clusterkonfiguration für SAP Central Services-Instanzen (ASCS/SCS) zu erstellen.
 
-Dieser Artikel behandelt den Übergang von einer einzelnen (A)SCS-Installation zu einer SAP-Multi-SID-Konfiguration durch Installation zusätzlicher SAP (A)SCS-Clusterinstanzen auf einem vorhandenen WSFC-Cluster (Windows Server-Failoverclustering) mithilfe der **Dateifreigabe**. Wenn dieser Vorgang abgeschlossen ist, haben Sie einen SAP-Multi-SID-Cluster konfiguriert.
+Dieser Artikel behandelt den Übergang von einer einzelnen (A)SCS-Installation zu einer SAP-Multi-SID-Konfiguration durch Installation zusätzlicher SAP (A)SCS-Clusterinstanzen auf einem vorhandenen WSFC-Cluster (Windows Server-Failoverclustering) mithilfe der **Dateifreigabe**. Wenn dieser Vorgang abgeschlossen ist, haben Sie einen SAP Multi-SID-Cluster konfiguriert.
 
 > [!NOTE]
 >
-> Diese Funktion ist nur im **Azure Resource Manager**-Bereitstellungsmodell verfügbar.
+> Diese Funktion ist nur im Azure Resource Manager-Bereitstellungsmodell verfügbar.
 >
->Es besteht eine Höchstgrenze für die Anzahl privater Front-End-IPs für jedes interne Azure-Lastenausgleichsmodul.
+>Es besteht eine Höchstgrenze für die Anzahl privater Front-End-IPs für jeden internen Azure-Lastenausgleich.
 >
 >Dies bedeutet, dass die maximale Anzahl von SAP ASCS/SCS-Instanzen auf einem WSFC-Cluster gleich der maximalen Anzahl privater Front-End-IPs pro internem Azure-Lastenausgleichsmodul ist.
 >
 
-Weitere Informationen zu den Grenzwerten für Lastenausgleiche finden Sie unter „Private Front-End-IP pro Lastenausgleich“ unter [Netzwerkgrenzwerte – Azure Resource Manager][networking-limits-azure-resource-manager].
+Weitere Informationen zu den Grenzwerten für den Lastenausgleich finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleich“ unter [Netzwerklimits: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie haben bereits einen WSFC-Cluster konfiguriert, der für **eine** SAP (A)SCS-Instanz verwendet wird, für die wie in der Abbildung unten gezeigt die **Dateifreigabe** genutzt wird.
+Sie haben bereits einen WSFC-Cluster für die Verwendung einer SAP ASCS/SCS-Instanz unter Verwendung einer **Dateifreigabe** konfiguriert, wie in diesem Diagramm dargestellt.
 
-![Abbildung 1: SAP (A)SCS-Instanz und SOFS, die in zwei Clustern bereitgestellt werden][sap-ha-guide-figure-8007]
+![Abbildung 1: Bereitstellung einer SAP ASCS/SCS-Instanz und von SOFS in zwei Clustern][sap-ha-guide-figure-8007]
 
-_**Abbildung 1**: SAP (A)SCS-Instanz und SOFS, die in zwei Clustern bereitgestellt werden_
+_**Abbildung 1:** Bereitstellung einer SAP ASCS/SCS-Instanz und von SOFS in zwei Clustern_
 
 > [!IMPORTANT]
 > Das Setup muss die folgenden Bedingungen erfüllen:
 > * Die SAP ASCS/SCS-Instanzen müssen sich den gleichen WSFC-Cluster teilen.
-> * Jede DBMS-SID muss über ihren eigenen dedizierten WSFC-Cluster verfügen.
+> * Jede SID eines Datenbank-Verwaltungssystems (DBMS) muss über ihren eigenen dedizierten WSFC-Cluster verfügen.
 > * SAP-Anwendungsserver, die zur gleichen SAP-System-SID gehören, müssen eigene dedizierte VMs aufweisen.
 
-## <a name="sap-ascs-multi-sid-architecture-with-file-share"></a>SAP (A)SCS-Instanzen mit Multi-SID-Architektur und Verwendung der Dateifreigabe
+## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>SAP ASCS/SCS-Instanzen mit Multi-SID-Architektur und Dateifreigabe
 
-Das Ziel besteht darin, mehrere SAP ABAP ASCS- oder SAP Java SCS-Clusterinstanzen auf dem gleichen WSFC-Cluster zu installieren, wie hier gezeigt:
+Das Ziel besteht darin, mehrere SAP Advanced Business Application Programming- (ASCS) oder SAP Java-Clusterinstanzen (SCS) im selben WSFC-Cluster zu installieren, wie hier dargestellt: 
 
 ![Abbildung 2: SAP-Multi-SID-Konfiguration in zwei Clustern][sap-ha-guide-figure-8008]
 
-_**Abbildung 2**: SAP-Multi-SID-Konfiguration in zwei Clustern_
+_**Abbildung 2:** SAP-Multi-SID-Konfiguration in zwei Clustern_
 
-Die Vorgehensweise für die Installation eines zusätzlichen **&lt;SID2&gt;**-SAP-Systems ist identisch mit der für ein einzelnes<SID>-System. Für (A)SCS-Cluster und SOFS-Dateifreigabecluster sind zwei zusätzliche Vorbereitungsschritte erforderlich.
+Die Vorgehensweise für die Installation eines zusätzlichen **SAP-\<SID2>**-Systems entspricht der für ein einzelnes <SID>-System. Für ASCS/SCS-Cluster sowie im SOFS-Dateifreigabecluster sind zwei zusätzliche Vorbereitungsschritte erforderlich.
 
-## <a name="infrastructure-preparation-for-sap-multi-sid-scenario"></a>Vorbereiten der Infrastruktur für ein SAP-Multi-SID-Szenario
+## <a name="prepare-the-infrastructure-for-an-sap-multi-sid-scenario"></a>Vorbereiten der Infrastruktur für ein SAP-Multi-SID-Szenario
 
-### <a name="infrastructure-preparation-on-domain-controller"></a>Vorbereiten der Infrastruktur für Domänencontroller
+### <a name="prepare-the-infrastructure-on-the-domain-controller"></a>Vorbereiten der Infrastruktur auf dem Domänencontroller
 
-Erstellen Sie die Domänengruppe **&lt;Domain&gt;\SAP_&lt;SID2&gt;_GlobalAdmin**, und legen Sie für &lt;SID2&gt; beispielsweise „PR2“ fest. Der Name der Domänengruppe lautet „<Domain>\SAP_PR2_GlobalAdmin“.
+Erstellen Sie die Domänengruppe **\<Domäne>\SAP_\<SID2>_GlobalAdmin**, und legen Sie für \<SID2> beispielsweise „PR2“ fest. Der Name der Domänengruppe lautet „\<Domäne>\SAP_PR2_GlobalAdmin“.
 
-### <a name="infrastructure-preparation-on-ascs-cluster"></a>Vorbereiten der Infrastruktur für (A)SCS-Cluster
+### <a name="prepare-the-infrastructure-on-the-ascsscs-cluster"></a>Vorbereiten der Infrastruktur im ASCS/SCS-Cluster
 
-Sie müssen die Infrastruktur auf einem vorhandenen (A)SCS-Cluster für eine zweite SAP-&lt;SID&gt; vorbereiten. Hierfür sind folgende Schritte erforderlich:
+Sie müssen die Infrastruktur auf dem vorhandenen ASCS/SCS-Cluster für eine zweite SAP-\<SID> vorbereiten. Hierfür sind folgende Schritte erforderlich:
 
-* Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz auf dem DNS-Server
-* Hinzufügen einer IP-Adresse zu einem vorhandenen internen Azure-Lastenausgleichsmodul mit PowerShell
+* Erstellen eines virtuellen Hostnamens für die SAP ASCS/SCS-Clusterinstanz auf dem DNS-Server.
+* Hinzufügen einer IP-Adresse zu einem vorhandenen internen Azure-Lastenausgleich mit PowerShell.
 
-Diese Schritte werden im Abschnitt [Infrastructure Preparation for SAP Multi-SID Scenario (Vorbereiten der Infrastruktur für SAP-Multi-SID-Szenario)][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare] beschrieben.
+Diese Schritte werden unter [Vorbereiten der Infrastruktur auf ein SAP-Multi-SID-Szenario][sap-ascs-ha-multi-sid-wsfc-shared-disk-infrast-prepare] beschrieben.
 
 
-### <a name="infrastructure-preparation-on-sofs-cluster-using-existing-sap-global-host"></a>Vorbereiten der Infrastruktur auf einem SOFS-Cluster mithilfe des vorhandenen globalen SAP-Hosts
+### <a name="prepare-the-infrastructure-on-an-sofs-cluster-by-using-the-existing-sap-global-host"></a>Vorbereiten der Infrastruktur in einem SOFS-Cluster unter Verwendung des vorhandenen globalen SAP-Hosts
 
-Sie haben die Möglichkeit, den vorhandenen **&lt;SAPGLOBALHost&gt;** und das **Volume1** des ersten SAP-<SID1>-Systems wiederzuverwenden.
+Sie können den vorhandenen \<globalen SAP-Host> und Volume1 des ersten SAP-<SID1>-Systems wiederverwenden.
 
-![Abbildung 3: Multi-SID-SOFS; identischer Name des globalen SAP-Hosts][sap-ha-guide-figure-8014]
+![Abbildung 3: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts][sap-ha-guide-figure-8014]
 
-_**Abbildung 3**: Multi-SID-SOFS; identischer Name des globalen SAP-Hosts_
+_**Abbildung 3:** Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts_
 
 > [!IMPORTANT]
->Für das zweite **SAP-&lt;SID2&gt;**-System werden ebenfalls das „Volume1“ und der **&lt;SAPGLOBALHost&gt;**-Netzwerkname verwendet.
->Da Sie einen festen **SAPMNT**-Freigabenamen für unterschiedliche SAP-Systeme festgelegt und nun denselben **&lt;SAPGLOBALHost&gt;**-Netzwerknamen wiederverwenden möchten, müssen Sie auch dasselbe **Volume1** verwenden.
+>Für das zweite **SAP-\<SID2>**-System werden ebenfalls Volume1 und derselbe Netzwerkname des **\<globalen SAP-Hosts>** verwendet.
+>Da Sie **SAPMNT** bereits als der Freigabenamen für verschiedene SAP-Systeme festgelegt haben, müssen Sie zum Wiederverwenden des Netzwerknamens des **\<globalen SAP-Hosts>** dasselbe **Volume1** verwenden.
 >
->Der Dateipfad für den globalen <SID2>-Host lautet „C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\“.
+>Der Dateipfad für den globalen <SID2>-Host lautet „C:\ClusterStorage\\**Volume1**\usr\sap\<SID2>\SYS\\.“.
 >
 
-Sie müssen den Ordner **..\SYS\..** für den globalen SAP-Host auf dem SOFS-Cluster für das &lt;SID2&gt;-System vorbereiten.
+Für das \<SID2>-System müssen Sie den Ordner „..\SYS\.“ des globalen SAP-Hosts im SOFS-Cluster vorbereiten.
 
-Führen Sie das folgende PowerShell-Skript aus, um den globalen SAP-Host für die &lt;SID2&gt;-Instanz vorzubereiten:
+Um den globalen SAP-Host für die \<SID2>-Instanz vorzubereiten, führen Sie das folgende PowerShell-Skript aus:
 
 
 ```PowerShell
 ##################
-# SAP Multi-SID
+# SAP multi-SID
 ##################
 
 $SAPSID2 = "PR2"
 $DomainName2 = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName2 = "$DomainName2\SAP_" + $SAPSID2 + "_GlobalAdmin"
 
-# SAP (A)SCS cluster nodes
+# SAP ASCS/SCS cluster nodes
 $ASCSCluster2Node1 = "ja1-ascs-0"
 $ASCSCluster2Node2 = "ja1-ascs-1"
 
-# Define SAP (A)SCS cluster node computer objects
+# Define the SAP ASCS/SCS cluster node computer objects
 $ASCSCluster2ObjectNode1 = "$DomainName2\$ASCSCluster2Node1$"
 $ASCSCluster2ObjectNode2 = "$DomainName2\$ASCSCluster2Node2$"
 
 # Create usr\sap\.. folders on CSV
 $SAPGlobalFolder2 = "C:\ClusterStorage\Volume1\usr\sap\$SAPSID2\SYS"
-New-Item -Path $SAPGlobalFOlder2 -ItemType Directory
+New-Item -Path $SAPGlobalFolder2 -ItemType Directory
 
-# Add permissions for SAP SID2 system
+# Add permissions for the SAP SID2 system
 Grant-SmbShareAccess -Name sapmnt -AccountName $SAPSIDGlobalAdminGroupName2, $ASCSCluster2ObjectNode1, $ASCSCluster2ObjectNode2 -AccessRight Full -Force
 
 
 $UsrSAPFolder = "C:\ClusterStorage\Volume1\usr\sap\"
 
-# Set files & folder security
+# Set file and folder security
 $Acl = Get-Acl $UsrSAPFolder
 
-# Add security object of SAP_<sid>_GlobalAdmin group
+# Add the security object of the SAP_<sid>_GlobalAdmin group
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($SAPSIDGlobalAdminGroupName2,"FullControl", 'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode1$ computer object
+# Add the security object of the clusternode1$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSCluster2ObjectNode1,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode2$ computer object
+# Add the security object of the clusternode2$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSCluster2ObjectNode2,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
@@ -321,15 +321,15 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-### <a name="infrastructure-preparation-on-sofs-cluster-using-different-sap-global-host"></a>Vorbereiten der Infrastruktur auf einem SOFS-Cluster mithilfe eines anderen globalen SAP-Hosts
+### <a name="prepare-the-infrastructure-on-the-sofs-cluster-by-using-a-different-sap-global-host"></a>Vorbereiten der Infrastruktur im SOFS-Cluster unter Verwendung eines anderen globalen SAP-Hosts
 
-Sie können den zweiten SOFS-Cluster konfigurieren und dabei z.B. für die zweite SOFS-Clusterrolle **&lt;SAPGLOBALHost2&gt;** und für **&lt;SID2&gt;** ein anderes Volume wie **Volume2** festlegen.
+Sie können den zweiten SOFS-Cluster konfigurieren (z.B. für die zweite SOFS-Clusterrolle mit **\<SAPGlobalHost2>** und einem anderen **Volume2** für die zweite **\<SID2>**).
 
-![Abbildung 4: Multi-SID-SOFS; identischer Name des zweiten globalen SAP-Hosts][sap-ha-guide-figure-8015]
+![Abbildung 4: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts 2][sap-ha-guide-figure-8015]
 
-_**Abbildung 4**: Multi-SID-SOFS; identischer Name des zweiten globalen SAP-Hosts_
+_**Abbildung 4:** Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts 2_
 
-Führen Sie das folgende PowerShell-Skript zum Erstellen der zweiten SOFS-Rolle mit &lt;SAPGLOBALHost2&gt; aus:
+Um die zweite SOFS-Rolle mit \<SAPGlobalHost2> zu erstellen, führen Sie dieses PowerShell-Skript aus:
 
 ```PowerShell
 # Create SOFS with SAP Global Host Name 2
@@ -343,25 +343,25 @@ Erstellen Sie als zweites Volume **Volume2**. Führen Sie das folgende PowerShel
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
 
-![Abbildung 5: Multi-SID-SOFS; identischer Name des zweiten globalen SAP-Hosts][sap-ha-guide-figure-8016]
+![Abbildung 5: Multi-SID-SOFS ist identisch mit dem Namen des globalen SAP-Hosts 2][sap-ha-guide-figure-8016]
 
-_**Abbildung 5**: Zweites Volume **Volume2** im Failovercluster-Manager_
+_**Abbildung 5:** Zweites Volume2 im Failovercluster-Manager_
 
-Erstellen Sie einen Ordner für den globalen SAP-Host für **&lt;SID2&gt;**, und legen Sie die Dateisicherheit fest.
+Erstellen Sie einen Ordner für den globalen SAP-Host für die zweite \<SID2>, und legen Sie die Dateisicherheit fest.
 
 Führen Sie das folgende PowerShell-Skript aus:
 
 ```PowerShell
-# Create folder for <SID2> on second Volume2 and set file security
+# Create a folder for <SID2> on a second Volume2 and set file security
 $SAPSID = "PR2"
 $DomainName = "SAPCLUSTER"
 $SAPSIDGlobalAdminGroupName = "$DomainName\SAP_" + $SAPSID + "_GlobalAdmin"
 
-# SAP (A)SCS cluster nodes
+# SAP ASCS/SCS cluster nodes
 $ASCSClusterNode1 = "ascs-1"
 $ASCSClusterNode2 = "ascs-2"
 
-# Define SAP (A)SCS cluster node computer objects
+# Define SAP ASCS/SCS cluster node computer objects
 $ASCSClusterObjectNode1 = "$DomainName\$ASCSClusterNode1$"
 $ASCSClusterObjectNode2 = "$DomainName\$ASCSClusterNode2$"
 
@@ -371,18 +371,18 @@ New-Item -Path $SAPGlobalFOlder -ItemType Directory
 
 $UsrSAPFolder = "C:\ClusterStorage\Volume2\usr\sap\"
 
-# Set files & folder security
+# Set file and folder security
 $Acl = Get-Acl $UsrSAPFolder
 
-# Add file security object of SAP_<sid>_GlobalAdmin group
+# Add the file security object of the SAP_<sid>_GlobalAdmin group
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($SAPSIDGlobalAdminGroupName,"FullControl", 'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode1$ computer object
+# Add the security object of the clusternode1$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode1,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
-# Add security object of clusternode2$ computer object
+# Add the security object of the clusternode2$ computer object
 $Ar = New-Object  system.security.accesscontrol.filesystemaccessrule($ASCSClusterObjectNode2,"FullControl",'ContainerInherit,ObjectInherit', 'None', 'Allow')
 $Acl.SetAccessRule($Ar)
 
@@ -390,61 +390,66 @@ $Acl.SetAccessRule($Ar)
 Set-Acl $UsrSAPFolder $Acl -Verbose
 ```
 
-Um eine SAPMNT-Dateifreigabe auf dem **Volume2** mit dem Hostnamen **&lt;SAPGLOBALHost2&gt;** für die zweite SID SAP-**&lt;SID2&gt;** zu erstellen, starten Sie den im Folgenden beschriebenen Assistenten im Failovercluster-Manager.
+Um eine SAPMNT-Dateifreigabe auf „Volume2“ mit dem Hostnamen des *\<SAPGlobalHost2>* für die zweite SAP-\<SID2> zu erstellen, starten Sie den Assistenten **Dateifreigabe hinzufügen** im Failovercluster-Manager.
 
-Klicken Sie mit der rechten Maustaste auf die SOFS-Clustergruppe „sapglobal2“, und klicken Sie anschließend auf „Dateifreigabe hinzufügen“.
+Klicken Sie mit der rechten Maustaste auf die SOFS-Clustergruppe **sapglobal2**, und wählen Sie dann **Dateifreigabe hinzufügen** aus.
 
-![Abbildung 6: Starten Sie den Assistenten „Dateifreigabe hinzufügen“.][sap-ha-guide-figure-8017]
+![Abbildung 6: Starten des Assistenten „Dateifreigabe hinzufügen“][sap-ha-guide-figure-8017]
 
 _**Abbildung 6**: Starten Sie den Assistenten „Dateifreigabe hinzufügen“._
 
-![Abbildung 7: Wählen Sie „SMB-Freigabe - Schnell“ aus.][sap-ha-guide-figure-8018]
+<br>
+![Abbildung 7: Auswählen von „SMB-Freigabe – Schnell“][sap-ha-guide-figure-8018]
 
-_**Abbildung 7**: Wählen Sie „SMB-Freigabe - Schnell“ aus._
+_**Abbildung 7:** Auswählen von „SMB-Freigabe – Schnell“_
 
-![Abbildung 8: Wählen Sie„sapglobalhost2“ aus, und geben Sie den Pfad für das „Volume2“ an.][sap-ha-guide-figure-8019]
+<br>
+![Abbildung 8: Auswählen von „sapglobalhost2“ und Eingeben des Pfads auf Volume2][sap-ha-guide-figure-8019]
 
-_**Abbildung 8**: Wählen Sie **sapglobalhost2** aus, und geben Sie den Pfad für „Volume2“ an._
+_**Abbildung 8:** Auswählen von „sapglobalhost2“ und Eingeben des Pfads auf Volume2_
 
+<br>
+![Abbildung 9: Festlegen des Dateifreigabenamen auf „sapmnt“][sap-ha-guide-figure-8020]
 
-![Abbildung 9: Geben Sie den Dateifreigabenamen „sapmnt“ ein.][sap-ha-guide-figure-8020]
+_**Abbildung 9:** Festlegen des Dateifreigabenamen auf „sapmnt“_
 
-_**Abbildung 9**: Geben Sie den Dateifreigabenamen **sapmnt**_ ein.
-
-![Abbildung 10: Deaktivieren Sie alle Einstellungen.][sap-ha-guide-figure-8021]
+<br>
+![Abbildung 10: Deaktivieren aller Einstellungen][sap-ha-guide-figure-8021]
 
 _**Abbildung 10**: Deaktivieren Sie alle Einstellungen._
 
-Stellen Sie sicher, dass „Vollzugriff“ für Dateien und die „sapmnt“-Freigabe für Folgendes festgelegt ist:
-* **SAP_&lt;SID&gt;_GlobalAdmin**-Domänenbenutzergruppe
-* Computerobjekt der (A)SCS-Clusterknoten **ascs-1$** und **ascs-2$**
+<br>
+Weisen Sie folgenden Elementen *Vollzugriff* auf Dateien und die Freigabe „sapmnt“ zu:
+* Domänenbenutzergruppe **SAP_\<SID>_GlobalAdmin**
+* Computerobjekt der ASCS/SCS-Clusterknoten **ascs-1$** und **ascs-2$**
 
-![Abbildung 11: Stellen Sie sicher, dass für Benutzergruppen und Computerkonten der Vollzugriff festgelegt wurde.][sap-ha-guide-figure-8022]
+![Abbildung 11: Zuweisen von Vollzugriffsberechtigungen für Benutzergruppen und Computerkonten][sap-ha-guide-figure-8022]
 
-_**Abbildung 11**: Stellen Sie sicher, dass für Benutzergruppen und Computerkonten der Vollzugriff festgelegt wurde._
+_**Abbildung 11:** Zuweisen von Vollzugriffsberechtigungen für Benutzergruppen und Computerkonten_
 
-![Abbildung 12: Klicken Sie auf „Erstellen“.][sap-ha-guide-figure-8023]
+<br>
+![Abbildung 12: Auswählen von „Erstellen“][sap-ha-guide-figure-8023]
 
-_**Abbildung 12**: Klicken Sie auf „Erstellen“._
+_**Abbildung 12:** Auswählen von „Erstellen“_
 
-![Abbildung 13: Die zweite „sapmnt“-Freigabe, die an den „sapglobal2“-Host und das „Volume2“ gebunden ist, wird erstellt.][sap-ha-guide-figure-8024]
+<br>
+![Abbildung 13: Die zweite Dateifreigabe „sapmnt“, die an den Host sapglobal2 und Volume2 gebunden ist, wird erstellt.][sap-ha-guide-figure-8024]
 
-_**Abbildung 13**: Die **zweite sapmnt**-Dateifreigabe, die an den **sapglobal2**-Host und das **Volume2** gebunden ist, wird erstellt._
+_**Abbildung 13:** Die zweite Dateifreigabe „sapmnt“, die an den Host sapglobal2 und Volume2 gebunden ist, wird erstellt._
 
-## <a name="sap-netweaver-multi-sid-installation"></a>SAP NetWeaver-Multi-SID-Installation
+<br>
+## <a name="install-sap-netweaver-multi-sid"></a>Installieren von SAP NetWeaver-Multi-SID
 
-### <a name="sap-ltsid2gt-ascs-and-ers-instances-installation"></a>Installieren von SAP-&lt;SID2&gt;-(A)SCS- und ERS-Instanzen
+### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Installieren von SAP-\<SID2>-ASCS/SCS- und -ERS-Instanzen
 
-Führen Sie die gleichen Installations- und Konfigurationsschritte aus, die für die Installation einer einzelnen SAP-&lt;SID&gt; beschrieben wurden.
+Führen Sie die gleichen Installations- und Konfigurationsschritte aus, die weiter oben für die Installation einer einzelnen SAP-\<SID> beschrieben wurden.
 
 ### <a name="install-dbms-and-sap-application-servers"></a>Installieren von DBMS und SAP-Anwendungsservern
 Installieren Sie DBMS und SAP-Anwendungsserver nach der oben beschriebenen Vorgehensweise.
 
-
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Installation of an (A)SCS Instance on a Failover Cluster with no Shared Disks - Official SAP Guidelines for HA File Share (Installieren einer (A)SCS-Instanz auf einem Failovercluster ohne freigegebene Datenträger: Offizielle Richtlinien für die hoch verfügbare Dateifreigabe)][sap-official-ha-file-share-document]:
+* [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger][sap-official-ha-file-share-document]: offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit
 
 * [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
 

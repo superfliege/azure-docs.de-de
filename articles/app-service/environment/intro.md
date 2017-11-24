@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 322cf2ebbe83d00fcebcec618e07141d26f4f255
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a619943abaf8835e591872cba0ed046d4c6c4a9
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="introduction-to-app-service-environments"></a>Einführung in App Service-Umgebungen #
  
@@ -48,13 +48,13 @@ Eine ASE besteht aus Front-Ends und Worker. Front-Ends sind für die HTTP/HTTPS-
 
 Worker sind Rollen, die Kunden-Apps hosten. Worker sind in drei festen Größen verfügbar:
 
-* Ein Kern/3,5 GB RAM
-* Zwei Kerne/7 GB RAM
-* Vier Kerne/14 GB RAM
+* Eine vCPU/3,5 GB RAM
+* Zwei vCPUs/7 GB RAM
+* Vier vCPUs/14 GB RAM
 
 Kunden müssen keine Front-Ends und Worker verwalten. Die gesamte Infrastruktur wird automatisch hinzugefügt, wenn Kunden ihre App Service-Pläne horizontal hochskalieren. Wenn App Service-Pläne erstellt oder in einer ASE skaliert werden, wird die erforderliche Infrastruktur nach Bedarf hinzugefügt bzw. entfernt.
 
-Es gibt eine monatliche Pauschalgebühr für eine ASE, mit der die Infrastruktur abgedeckt ist. Dies ändert sich nicht mit der Größe der ASE. Darüber hinaus gibt es einen Kostenplan pro Kern-App Service-Plan. Alle in einer ASE gehosteten Apps befinden sich in der isolierten Preis-SKU. Um Informationen zu den Preisen für eine ASE zu erhalten, lesen Sie die Seite [App Service-Preise][Pricing], und überprüfen Sie die verfügbaren Optionen für ASEs.
+Es gibt eine monatliche Pauschalgebühr für eine ASE, mit der die Infrastruktur abgedeckt ist. Dies ändert sich nicht mit der Größe der ASE. Darüber hinaus fallen Kosten pro vCPU-App Service-Plan an. Alle in einer ASE gehosteten Apps befinden sich in der isolierten Preis-SKU. Um Informationen zu den Preisen für eine ASE zu erhalten, lesen Sie die Seite [App Service-Preise][Pricing], und überprüfen Sie die verfügbaren Optionen für ASEs.
 
 ## <a name="virtual-network-support"></a>Unterstützung für virtuelle Netzwerke ##
 
@@ -68,13 +68,15 @@ Apps müssen häufig auch auf Unternehmensressourcen wie interne Datenbanken und
 
 Weitere Informationen zur Funktionsweise von ASEs mit virtuellen Netzwerken und lokalen Netzwerken finden Sie unter [Überlegungen zu Netzwerken mit einer App Service-Umgebung][ASENetwork].
 
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Application-Service-Environments-v2-Private-PaaS-Environments-in-the-Cloud/player]
+
 ## <a name="app-service-environment-v1"></a>App Service-Umgebung v1 ##
 
 Es gibt zwei Versionen der App Service-Umgebung: ASEv1 und ASEv2. Die oben aufgeführten Informationen basieren auf ASEv2. In diesem Abschnitt werden die Unterschiede zwischen ASEv1 und ASEv2 aufgezeigt. 
 
 In ASEv1 müssen Sie alle Ressourcen manuell verwalten. Dies schließt Front-Ends, Worker und IP-Adressen ein, die für IP-basiertes SSL verwendet werden. Bevor Sie Ihren App Service-Plan horizontal hochskalieren können, müssen Sie zunächst den Workerpool horizontal hochskalieren, den Sie zum Hosten verwenden möchten.
 
-ASEv1 verwendet ein anderes Preismodell als ASEv2. In ASEv1 bezahlen Sie jeden zugewiesenen Prozessorkern. Dazu gehören Prozessorkerne für Front-Ends oder Worker, die keine Workloads hosten. In ASEv1 beträgt die maximale Standardskalierungsgröße einer ASE insgesamt 55 Hosts. Dazu gehören Worker und Front-Ends. ASEv1 hat den Vorteil, dass die Bereitstellung in einem klassischen virtuellen Netzwerk sowie in einem virtuellen Resource Manager-Netzwerk möglich ist. Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro].
+ASEv1 verwendet ein anderes Preismodell als ASEv2. In ASEv1 bezahlen Sie jede zugewiesene vCPU. Dazu gehören vCPUs für Front-Ends oder Worker, die keine Workloads hosten. In ASEv1 beträgt die maximale Standardskalierungsgröße einer ASE insgesamt 55 Hosts. Dazu gehören Worker und Front-Ends. ASEv1 hat den Vorteil, dass die Bereitstellung in einem klassischen virtuellen Netzwerk sowie in einem virtuellen Resource Manager-Netzwerk möglich ist. Weitere Informationen zu ASEv1 finden Sie unter [Einführung in die App Service-Umgebung v1][ASEv1Intro].
 
 <!--Links-->
 [Intro]: ./intro.md

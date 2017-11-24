@@ -13,16 +13,16 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5c4509bc1d05bc422f6bc5599d4635020ded63e9
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8bcecdff2bb9ac037e2cd71a431619883dfb5084
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/14/2017
 ---
-# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-azure-sql-data-sync-preview"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)
+# <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>Synchronisieren von Daten über mehrere Cloud- und lokale Datenbanken mit SQL-Datensynchronisierung (Vorschauversion)
 
 SQL-Datensynchronisierung ist ein Dienst, der auf Azure SQL-Datenbank basiert und mit dem Sie die ausgewählten Daten bidirektional über mehrere SQL-Datenbanken und SQL Server-Instanzen hinweg synchronisieren können.
 
@@ -44,7 +44,7 @@ Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche�
 -   Die **Synchronisierungsdatenbank** enthält die Metadaten und das Protokoll für die Datensynchronisierung. Bei der Synchronisierungsdatenbank muss es sich um eine Azure SQL-Datenbank handeln, die in derselben Region wie die Hub-Datenbank angeordnet ist. Die Synchronisierungsdatenbank wird vom Kunden erstellt und befindet sich in seinem Besitz.
 
 > [!NOTE]
-> Wenn Sie eine lokale Datenbank verwenden, ist es erforderlich, dass Sie einen [lokalen Agent konfigurieren](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-sql-data-sync).
+> Wenn Sie eine lokale Datenbank verwenden, ist es erforderlich, dass Sie einen [lokalen Agent konfigurieren](sql-database-get-started-sql-data-sync.md#add-on-prem).
 
 ![Synchronisieren von Daten zwischen Datenbanken](media/sql-database-sync-data/sync-data-overview.png)
 
@@ -78,38 +78,11 @@ Die Datensynchronisierung eignet sich nicht für die folgenden Szenarien:
     -   Wenn Sie *Hub gewinnt* wählen, werden die Änderungen auf dem Mitglied immer durch die Änderungen des Hub überschrieben.
     -   Bei Auswahl von *Mitglied gewinnt* werden die Änderungen auf dem Hub durch die Änderungen auf dem Mitglied überschrieben. Falls mehr als ein Mitglied vorhanden ist, hängt der endgültige Wert davon ab, welches Mitglied zuerst synchronisiert wird.
 
-## <a name="common-questions"></a>Häufig gestellte Fragen
-
-### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>Wie häufig kann die Datensynchronisierung für meine Daten erfolgen? 
-Die Mindesthäufigkeit ist alle fünf Minuten.
-
-### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Kann ich die Datensynchronisierung verwenden, um Daten ausschließlich für lokale SQL Server-Datenbanken synchronisieren zu lassen? 
-Nicht direkt. Sie können Daten zwischen lokalen SQL Server-Datenbanken jedoch indirekt synchronisieren, indem Sie in Azure eine Hub-Datenbank erstellen und anschließend die lokalen Datenbanken der Synchronisierungsgruppe hinzufügen.
-   
-### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Kann ich mithilfe der Datensynchronisierung ein Seeding für Daten aus meiner Produktionsdatenbank in eine leere Datenbank ausführen und diese dann synchron halten? 
-Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manuell, das sich am Original orientiert. Nachdem Sie das Schema erstellt haben, fügen Sie Tabellen einer Synchronisierungsgruppe hinzu, um die Daten zu kopieren und synchron zu halten.
-
-### <a name="why-do-i-see-tables-that-i-did-not-create"></a>Warum sehe ich Tabellen, die ich nicht erstellt habe?  
-Bei der Datensynchronisierung werden Nebentabellen für die Änderungsnachverfolgung erstellt. Löschen Sie diese nicht, da ansonsten die Datensynchronisierung nicht mehr funktioniert.
-   
-### <a name="i-got-an-error-message-that-said-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-the-error"></a>Ich habe eine Fehlermeldung erhalten, die besagt, dass ich den Wert NULL nicht in die Spalte \<Spalte\> einfügen kann, da die Spalte keine NULL-Werte zulässt. Was bedeutet dies, und wie kann ich das Problem beheben? 
-Diese Fehlermeldung besagt, dass eines der beiden folgenden Probleme vorliegt:
-1.  Es gibt möglicherweise eine Tabelle ohne Primärschlüssel. Um dieses Problem zu beheben, fügen Sie allen Tabellen, die Sie synchronisieren möchten, einen Primärschlüssel hinzu.
-2.  Es gibt möglicherweise in der CREATE INDEX-Anweisung eine WHERE-Klausel. Die Synchronisierung beseitigt diese Bedingung nicht. Um dieses Problem zu beheben, entfernen Sie die WHERE-Klausel, oder nehmen Sie die Änderungen an allen Datenbanken manuell vor. 
- 
-### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>Wie geht die Datensynchronisierung mit Zirkelbezügen um? Diese liegen vor, wenn dieselben Daten in mehreren Synchronisierungsgruppen synchronisiert werden und sich daher ständig ändern.
-Die Datensynchronisierung beseitigt Zirkelbezüge nicht. Vermeiden Sie sie deshalb unbedingt. 
-
-### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>Wie kann ich eine Datenbank durch Datensynchronisierung exportieren und importieren?
-Nachdem Sie eine Datenbank als `.bacpac`-Datei exportiert und die Datei zum Erstellen einer neuen Datenbank importiert haben, müssen Sie die folgenden zwei Schritte ausführen, um die Datensynchronisierung in der neuen Datenbank zu verwenden:
-1.  Bereinigen Sie in der **neuen Datenbank** mithilfe [dieses Skripts](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql) die Datensynchronisierungsobjekte und Seitentabellen. Dieses Skript löscht alle erforderlichen Datensynchronisierungsobjekte aus der Datenbank.
-2.  Erstellen Sie die Synchronisierungsgruppe mit der neuen Datenbank neu. Wenn Sie die alte Synchronisierungsgruppe nicht mehr benötigen, löschen Sie sie.
-
 ## <a name="sync-req-lim"></a> Anforderungen und Einschränkungen
 
 ### <a name="general-requirements"></a>Allgemeine Anforderungen
 
--   Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie dies tun müssen, löschen Sie die Zeile, und erstellen Sie sie mit dem neuen Wert des Primärschlüssels neu. 
+-   Jede Tabelle muss über einen Primärschlüssel verfügen. Ändern Sie nicht den Wert des Primärschlüssels in einer Zeile. Wenn Sie einen Primärschlüsselwert ändern müssen, können Sie die Zeile löschen und mit dem neuen Wert des Primärschlüssels neu erstellen. 
 
 -   Eine Tabelle kann keine Identitätsspalte enthalten, die kein Primärschlüssel ist.
 
@@ -151,12 +124,51 @@ Für die Datensynchronisierung werden Auslöser für Einfügen, Aktualisieren un
 | Minimales Synchronisierungsintervall                                           | 5 Minuten              |                             |
 |||
 
+## <a name="faq-about-sql-data-sync"></a>Häufig gestellte Fragen zur SQL-Datensynchronisierung
+
+### <a name="how-much-does-the-sql-data-sync-preview-service-cost"></a>Wie viel kostet der Dienst für die SQL-Datensynchronisierung (Vorschauversion)?
+
+Während der Vorschauphase fallen für den Dienst für die SQL-Datensynchronisierung (Vorschauversion) selbst keine Gebühren an.  Es fallen aber weiterhin Datenübertragungsgebühren für die ein- und ausgehende Datenverschiebung für Ihre SQL-Datenbankinstanz an. Weitere Informationen finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
+
+### <a name="what-regions-support-data-sync"></a>Welche Regionen werden für die Datensynchronisierung unterstützt?
+
+SQL-Datensynchronisierung (Vorschau) ist in allen öffentlichen Cloudregionen verfügbar.
+
+### <a name="is-a-sql-database-account-required"></a>Ist ein SQL-Datenbankkonto erforderlich? 
+
+Ja. Sie müssen über ein SQL-Datenbankkonto zum Hosten der Hub-Datenbank verfügen.
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>Kann ich die Datensynchronisierung verwenden, um Daten ausschließlich für lokale SQL Server-Datenbanken synchronisieren zu lassen? 
+Nicht direkt. Sie können Daten zwischen lokalen SQL Server-Datenbanken jedoch indirekt synchronisieren, indem Sie in Azure eine Hub-Datenbank erstellen und anschließend die lokalen Datenbanken der Synchronisierungsgruppe hinzufügen.
+   
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>Kann ich mithilfe der Datensynchronisierung ein Seeding für Daten aus meiner Produktionsdatenbank in eine leere Datenbank ausführen und diese dann synchron halten? 
+Ja. Erstellen Sie das Schema in der neuen Datenbank mithilfe eines Skripts manuell, das sich am Original orientiert. Nachdem Sie das Schema erstellt haben, fügen Sie Tabellen einer Synchronisierungsgruppe hinzu, um die Daten zu kopieren und synchron zu halten.
+
+### <a name="should-i-use-sql-data-sync-to-back-up-and-restore-my-databases"></a>Sollte ich die SQL-Datensynchronisierung nutzen, um meine Datenbanken zu sichern und wiederherzustellen?
+
+Es wird nicht empfohlen, die SQL-Datensynchronisierung (Vorschauversion) zum Erstellen einer Sicherung Ihrer Daten zu verwenden. Sie können keine Sicherung und Wiederherstellung für einen bestimmten Zeitpunkt durchführen, da Synchronisierungen mit der SQL-Datensynchronisierung (Vorschauversion) keine Versionsangaben aufweisen. Zudem werden mit der SQL-Datensynchronisierung (Vorschauversion) keine anderen SQL-Objekte gesichert, z.B. gespeicherte Prozeduren, und es kann kein schneller Wiederherstellungsvorgang durchgeführt werden.
+
+Informationen zu einem empfohlenen Sicherungsverfahren finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
+
+### <a name="is-collation-supported-in-sql-data-sync"></a>Wird die Sortierung für die SQL-Datensynchronisierung unterstützt?
+
+Ja. Für die SQL-Datensynchronisierung wird die Sortierung in den folgenden Szenarien unterstützt:
+
+-   Falls sich die gewählten Schematabellen für die Synchronisierung nicht bereits in Ihren Hub- oder Mitgliedsdatenbanken befinden, erstellt der Dienst während der Bereitstellung der Synchronisierungsgruppe durch Sie automatisch die entsprechenden Tabellen und Spalten, und die Sortierungseinstellungen sind in den leeren Zieldatenbanken ausgewählt.
+
+-   Wenn die zu synchronisierenden Tabellen bereits sowohl in Ihren Hub-Datenbanken als auch in Ihren Mitgliedsdatenbanken vorhanden sind, müssen für die SQL-Datensynchronisierung die Primärschlüsselspalten die gleiche Sortierung in der Hub- und Mitgliedsdatenbank aufweisen, damit die Synchronisierungsgruppe erfolgreich bereitgestellt werden kann. Für andere Spalten als die Primärschlüsselspalten gelten keine Sortierungseinschränkungen.
+
+### <a name="is-federation-supported-in-sql-data-sync"></a>Wird der Verbund für die SQL-Datensynchronisierung unterstützt?
+
+Eine Datenbank für den Verbundstamm kann im Dienst für die SQL-Datensynchronisierung (Vorschauversion) ohne Einschränkungen verwendet werden. Es ist nicht möglich, den Verbunddatenbank-Endpunkt der aktuellen Version der SQL-Datensynchronisierung (Vorschauversion) hinzuzufügen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur SQL-Datensynchronisierung finden Sie unter:
 
--   [Get Started with Azure SQL Data Sync](sql-database-get-started-sql-data-sync.md) (Erste Schritte mit der Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Erste Schritte mit der Azure SQL-Datensynchronisierung (Vorschauversion)](sql-database-get-started-sql-data-sync.md)
 -   [Best practices for Azure SQL Data Sync (Preview)](sql-database-best-practices-data-sync.md) (Bewährte Methoden für die Azure SQL-Datensynchronisierung-Vorschauversion)
+-   [Überwachen der Azure SQL-Datensynchronisierung-Vorschauversion mit OMS Log Analytics](sql-database-sync-monitor-oms.md)
 -   [Troubleshoot issues with SQL Data Sync (Preview)](sql-database-troubleshoot-data-sync.md) (Behandeln von Problemen mit der Azure SQL-Datensynchronisierung-Vorschauversion)
 
 -   Vollständige PowerShell-Beispiele, die die Konfiguration der SQL-Datensynchronisierung veranschaulichen:

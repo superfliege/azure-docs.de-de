@@ -4,7 +4,7 @@ description: "Planen Sie die erweiterte Analyse unter Berücksichtigung verschie
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 421520dd-7728-4d29-889c-ebe6a0a6fb07
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/13/2017
 ms.author: bradsev
-ms.openlocfilehash: 42d1de8a27f8979db5662094e8bd74a6f5ccac55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f4cf702b899b285b18c09d7a5951589d2ae71b7d
+ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Bestimmen von Szenarien und Planen der Datenverarbeitung für die erweiterte Analyse
 Welche Ressourcen sollten Sie einplanen, wenn Sie eine Umgebung für die Verarbeitung erweiterter Analysen für ein Dataset einrichten? In diesem Artikel werden verschiedene zu stellende Fragen vorgeschlagen, mit deren Hilfe Sie die für Ihr Szenario relevanten Aufgaben und Ressourcen bestimmen können. Die Reihenfolge der allgemeinen Schritte für Predictive Analytics werden unter [Was ist der Team Data Science-Prozess (TDSP)?](overview.md)vorgestellt. Jeder dieser Schritte erfordert bestimmte Ressourcen für die Aufgaben, die für Ihr spezielles Szenario relevant sind. Die wichtigsten Fragen zum Bestimmen Ihres Szenarios betreffen die Datenlogistik, Merkmale, Qualität der Datasets sowie die Tools und Sprachen, die für die Analyse verwendet werden sollen.
@@ -42,12 +42,12 @@ Die logistischen Fragen betreffen den Speicherort der **Datenquelle**, das **Zie
    * HDInsight (Hadoop in Azure) oder Hive-Tabellen
    * Azure Machine Learning
    * Bereitstellbare virtuelle Azure-Datenträger
-3. **Wie möchten Sie die Daten verschieben?** In den folgenden Themen werden die Verfahren und Ressourcen für das Erfassen und Laden von Daten in einer Vielzahl anderer Speicher und Verarbeitungsumgebungen beschrieben.
+3. **Wie möchten Sie die Daten verschieben?** In den folgenden Artikeln werden die Verfahren und Ressourcen für das Erfassen und Laden von Daten in einer Vielzahl anderer Speicher und Verarbeitungsumgebungen beschrieben:
    
    * [Laden von Daten in Speicherumgebungen für Analysen](ingest-data.md)
    * [Importieren von Trainingsdaten aus verschiedenen Datenquellen in Azure Machine Learning Studio](../studio/import-data.md)
 4. **Müssen die Daten nach einem regelmäßigen Zeitplan verschoben oder während der Migration geändert werden?** Sie sollten die Verwendung von Azure Data Factory (ADF) in Betracht ziehen, wenn Daten insbesondere in einem Hybridszenario kontinuierlich migriert werden müssen, das sowohl auf lokale als auch Cloudressourcen zugreift. Gleiches gilt, wenn die Daten Transaktionen unterworfen werden oder geändert werden müssen, oder wenn ihnen im Rahmen der Migration eine Geschäftslogik hinzugefügt wird. Weitere Informationen finden Sie unter [Verschieben von Daten von einem lokalen SQL Server zu SQL Azure mithilfe von Azure Data Factory](move-sql-azure-adf.md)
-5. **Wie viele Daten werden in Azure verschoben?** Sehr große Datasets können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Team Data Science-Prozess](sample-data.md).
+5. **Wie viele Daten werden in Azure verschoben?** Datasets extremer Größe können die Speicherkapazität bestimmter Umgebungen überschreiten. Ein Beispiel finden Sie in der Erörterung von Größenbeschränkungen für Machine Learning Studio im nächsten Abschnitt. In solchen Fällen kann eine Stichprobe der Daten während der Analyse verwendet werden. Details zum Erstellen von Stichproben in verschiedenen Azure-Umgebungen finden Sie unter [Stichprobendaten im Team Data Science-Prozess](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Fragen zu Datenmerkmalen: Typ, Format und Größe
 Diese Fragen sind wichtig für die Planung Ihrer Speicher- und Verarbeitungsumgebungen, die jeweils für verschiedene Datentypen geeignet sind und für die jeweils bestimmte Einschränkungen gelten.
@@ -67,9 +67,9 @@ Diese Fragen sind wichtig für die Planung Ihrer Speicher- und Verarbeitungsumge
    * SQL Server-Tabellen
 3. **Wie umfangreich sind Ihre Daten?**
    
-   * Klein: Weniger als 2 GB
-   * Mittel: Mehr als 2 GB, aber weniger als 10 GB
-   * Groß: Mehr als 10 GB
+   * Klein: Weniger als 2 GB
+   * Mittel: Mehr als 2 GB, aber weniger als 10 GB
+   * Groß: Mehr als 10 GB
 
 Nehmen wir beispielsweise die Azure Machine Learning Studio-Umgebung:
 
@@ -79,7 +79,7 @@ Nehmen wir beispielsweise die Azure Machine Learning Studio-Umgebung:
 Informationen zu den Einschränkungen anderer Azure-Dienste, die im Analyseprozess verwendet werden, finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md).
 
 ## <a name="data-quality-questions-exploration-and-pre-processing"></a>Fragen zur Datenqualität: Untersuchung und Vorverarbeitung
-1. **Was wissen Sie über Ihre Daten?** Untersuchen Sie Daten, wenn Sie ihre grundlegenden Merkmale verstehen müssen: Welche Muster oder Trends sind erkennbar, welche Ausreißer sind vorhanden und wie viele Werte fehlen? Dieser Schritt ist wichtig, um das Ausmaß der erforderlichen Vorverarbeitung zu bestimmen, um Hypothesen zu formulieren, die auf die geeignetsten Features bzw. den geeignetsten Analysetyp hindeuten, oder um Pläne für eine zusätzliche Datensammlung zu definieren. Die Berechnung beschreibender Statistiken und Zeichnung von Visualisierungen sind nützliche Techniken für die Datenuntersuchung. Details zum Untersuchen eines Datasets in verschiedenen Azure-Umgebungen finden Sie unter [Durchsuchen von Daten im Team Data Science-Prozess](explore-data.md).
+1. **Was wissen Sie über Ihre Daten?** Untersuchen Sie Daten, um ihre grundlegenden Merkmale zu verstehen: Welche Muster oder Trends sind erkennbar, welche Ausreißer sind vorhanden und wie viele Werte fehlen? Dieser Schritt ist wichtig, um das Ausmaß der erforderlichen Vorverarbeitung zu bestimmen, um Hypothesen zu formulieren, die auf die geeignetsten Features bzw. den geeignetsten Analysetyp hindeuten, oder um Pläne für eine zusätzliche Datensammlung zu definieren. Die Berechnung beschreibender Statistiken und Zeichnung von Visualisierungen sind nützliche Techniken für die Datenuntersuchung. Details zum Untersuchen eines Datasets in verschiedenen Azure-Umgebungen finden Sie unter [Durchsuchen von Daten im Team Data Science-Prozess](explore-data.md).
 2. **Erfordern die Daten eine Vorverarbeitung oder Bereinigung?**
    Die Vorverarbeitung und Bereinigung von Daten ist eine wichtige Aufgabe, die vor dem effektiven Verwenden eines Datasets für Machine Learning durchgeführt werden muss. Unformatierte Daten enthalten oft unnötige bzw. fehlende Werte und sind unzuverlässig. Die Verwendung dieser Daten für die Modellierung kann zu falschen Ergebnissen führen. Eine Beschreibung finden Sie unter [Aufgaben zur Vorbereitung von Daten für erweitertes Machine Learning](prepare-data.md).
 

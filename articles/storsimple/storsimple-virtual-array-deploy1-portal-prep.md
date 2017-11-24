@@ -4,7 +4,7 @@ description: Erstes Tutorial zum Bereitstellen von virtuellen StorSimple-Arrays 
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 68a4cfd3-94c9-46cb-805c-46217290ce02
 ms.service: storsimple
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d0801053721f98ce7a2b0fcbe3c65da8dbdd8d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6685c5ab7768176a0c8e7084c8512d5345732d9a
+ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
@@ -42,7 +42,7 @@ Sehen Sie sich die folgenden Artikel in der angegebenen Reihenfolge an, um Ihr S
 | **#** | **Schritt** | **Aktion** | **Verwendete Dokumente** |
 | --- | --- | --- | --- |
 | 1. |**Einrichten des Azure-Portals** |Erstellen und konfigurieren Sie Ihren StorSimple-Geräte-Manager-Dienst, bevor Sie ein StorSimple Virtual Array bereitstellen. |[Vorbereiten des Portals](storsimple-virtual-array-deploy1-portal-prep.md) |
-| 2. |**Bereitstellen des Virtual Array** |Stellen Sie für Hyper-V ein StorSimple Virtual Array auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereit, und stellen Sie die Verbindung her. <br></br> <br></br> Stellen Sie für VMware ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.5 und höher bereit, und stellen Sie die Verbindung her.<br></br> |[Bereitstellen eines virtuellen Arrays in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Bereitstellen eines virtuellen Arrays in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
+| 2. |**Bereitstellen des Virtual Array** |Stellen Sie für Hyper-V ein StorSimple Virtual Array auf einem Hostsystem mit Hyper-V unter Windows Server 2012 R2, Windows Server 2012 oder Windows Server 2008 R2 bereit, und stellen Sie die Verbindung her. <br></br> <br></br> Stellen Sie für VMware ein StorSimple Virtual Array auf einem Hostsystem mit VMware ESXi 5.0, 5.5 oder 6.0 bereit, und stellen Sie eine Verbindung her.<br></br> |[Bereitstellen eines virtuellen Arrays in Hyper-V](storsimple-virtual-array-deploy2-provision-hyperv.md) <br></br> <br></br> [Bereitstellen eines virtuellen Arrays in VMware](storsimple-virtual-array-deploy2-provision-vmware.md) |
 | 3. |**Einrichten des Virtual Array** |Führen Sie für Ihren Dateiserver das anfängliche Setup durch, registrieren Sie Ihren StorSimple-Dateiserver, und führen Sie die Geräteinstallation durch. Anschließend können Sie die SMB-Freigaben bereitstellen. <br></br> <br></br> Führen Sie für Ihren iSCSI-Server das anfängliche Setup durch, registrieren Sie Ihren StorSimple-iSCSI-Server, und führen Sie die Geräteinstallation durch. Anschließend können Sie die iSCSI-Volumes bereitstellen. |[Einrichten des virtuellen Arrays als Dateiserver](storsimple-virtual-array-deploy3-fs-setup.md)<br></br> <br></br>[Einrichten des virtuellen Arrays als iSCSI-Server](storsimple-virtual-array-deploy3-iscsi-setup.md) |
 
 Sie können jetzt mit der Einrichtung des Azure-Portals beginnen.
@@ -70,7 +70,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Array bereitstellen:
 
-* Sie haben Zugriff auf ein Hostsystem mit Hyper-V unter Windows Server 2008 R2 oder höher oder VMware (ESXi 5.5 oder höher), das zum Bereitstellen eines Geräts verwendet werden kann.
+* Sie haben Zugriff auf ein Hostsystem mit Hyper-V unter Windows Server 2008 R2 oder höher oder VMware (ESXi 5.0, 5.5 oder 6.0), das zum Bereitstellen eines Geräts verwendet werden kann.
 * Das Hostsystem verfügt für die Bereitstellung des virtuellen Arrays über die folgenden Ressourcen:
   
   * Mindestens 4 Kerne
@@ -136,7 +136,7 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://portal.azure.com/) 
    
    * VHDX für Hyper-V unter Windows Server 2012 und höher
    * VHD für Hyper-V unter Windows Server 2008 R2 und höher
-   * VMDK für VMWare ESXi 5.5 und höher
+   * VMDK für VMware ESXi 5.0, 5.5 oder 6.0
 5. Laden Sie die Datei auf einen lokalen Datenträger herunter, und entzippen Sie sie. Notieren Sie den Speicherort der entzippten Datei.
 
 ## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Optionaler Schritt: Konfigurieren eines neuen Speicherkontos für den Dienst

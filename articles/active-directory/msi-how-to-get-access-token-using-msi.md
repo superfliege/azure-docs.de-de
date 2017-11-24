@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/17/2017
 ms.author: bryanla
-ms.openlocfilehash: 905e7b0d8a0c45c98a86882a8c8f387be0950f9f
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 168b2ab3676d3f3e2830966f850e14adbe579f85
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in-and-token-acquisition"></a>Verwenden der verwalteten Dienstidentität eines virtuellen Azure-Computers für Anmeldung und Tokenabruf 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)] Nachdem Sie die verwaltete Dienstidentität (Managed Service Identity, MSI) auf einem virtuellen Azure-Computer aktiviert haben, können Sie sie für die Anmeldung und zum Anfordern eines Zugriffstokens verwenden. In diesem Artikel werden verschiedene Möglichkeiten beschrieben, wie Sie einen MSI-[Dienstprinzipal](develop/active-directory-dev-glossary.md#service-principal-object) für die Anmeldung nutzen und ein [App-exklusives Zugriffstoken](develop/active-directory-dev-glossary.md#access-token) abrufen, um auf andere Ressourcen zuzugreifen, z.B.:
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/17/2017
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-[!INCLUDE [msi-qs-configure-prereqs](../../includes/msi-qs-configure-prereqs.md)]
+[!INCLUDE [msi-qs-configure-prereqs](../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
 Wenn Sie die PowerShell-Beispiele in diesem Artikel verwenden möchten, sollten Sie [Azure PowerShell Version 4.3.1](https://www.powershellgallery.com/packages/AzureRM) oder höher installieren. Falls Sie die Azure CLI-Beispiele in diesem Artikel verwenden möchten, haben Sie drei Optionen:
 - Verwenden Sie [Azure Cloud Shell](../cloud-shell/overview.md) über das Azure-Portal.

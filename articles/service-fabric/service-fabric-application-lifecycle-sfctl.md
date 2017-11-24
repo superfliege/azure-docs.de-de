@@ -8,11 +8,11 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: edwardsa
-ms.openlocfilehash: 6eb58b31f20f239d310415d44f61e7455918dae9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c8501e8c863e1240a277bf8064118a2b113a81b
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Verwalten einer Azure Service Fabric-Anwendung mithilfe der Azure Service Fabric CLI
 
@@ -67,7 +67,7 @@ Der Wert für `application-type-build-path` ist der Name des Verzeichnisses, in 
 
 ### <a name="delete-the-application-package"></a>Löschen des Anwendungspakets
 
-Es wird empfohlen, das Anwendungspaket nach erfolgreicher Registrierung der Anwendung zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Nicht verwendete Anwendungspakete nehmen Speicherplatz in Anspruch und führen zu Leistungsproblemen der Anwendung. 
+Es wird empfohlen, nach erfolgreicher Registrierung der Anwendung das Anwendungspaket zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Die Speicherung nicht verwendeter Anwendungspakete nimmt Speicherplatz in Anspruch und führt zu Leistungsproblemen der Anwendung. 
 
 Um das Anwendungspaket aus dem Imagespeicher zu löschen, verwenden Sie den folgenden Befehl:
 
@@ -133,7 +133,7 @@ sfctl application delete --application-id TestEdApp
 Nachdem Sie die Anwendung gelöscht haben, können Sie die Bereitstellung des Anwendungstyps aufheben, wenn Sie diesen nicht mehr benötigen. Um die Bereitstellung des Anwendungstyps aufzuheben, verwenden Sie den folgenden Befehl:
 
 ```azurecli
-sfctl application unprovision --application-type-name TestAppTye --application-type-version 1.0
+sfctl application unprovision --application-type-name TestAppType --application-type-version 1.0
 ```
 
 Der Typname und die Typversion müssen mit dem Namen und der Version im zuvor bereitgestellten Anwendungsmanifest übereinstimmen.

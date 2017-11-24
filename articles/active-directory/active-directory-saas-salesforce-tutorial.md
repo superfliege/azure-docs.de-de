@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 639e40ca7e406a1726033e9f5c5363c289087589
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7471a6999ac4dcd15f5162e69cb0100cc1e3b14f
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>Tutorial: Azure Active Directory-Integration mit Salesforce
 
@@ -121,9 +121,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/tutorial_salesforce_certificate.png) 
 
-5. Klicken Sie auf die Schaltfläche **Save** .
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/tutorial_general_400.png)
+5. Auf die Schaltfläche **Speichern** klicken: ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-tutorial/tutorial_general_400.png)
 
 6. Klicken Sie im Abschnitt **Salesforce-Konfiguration** auf **Salesforce konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**. 
 
@@ -154,7 +152,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     a. Geben Sie in das Feld **Name** einen Anzeigenamen für diese Konfiguration ein. Bei Eingabe eines Werts für **Name** wird automatisch das Textfeld **API-Name** gefüllt.
 
-    b. Fügen Sie den Wert **SAML-Entitäts-ID** in das Feld **Aussteller** in Salesforce ein.
+    b. Fügen Sie den Wert der **SAML-Entitäts-ID** in das Feld **Zertifikataussteller** in Salesforce ein.
 
     c. Geben Sie in das **Entitäts-ID-Textfeld**Ihren Salesforce-Domänennamen nach folgendem Muster ein:
       

@@ -1,6 +1,6 @@
 ---
 title: Codieren eines Medienobjekts mit Media Encoder Standard mit .NET | Microsoft-Dokumentation
-description: In diesem Thema wird veranschaulicht, wie Sie .NET mithilfe von Media Encoder Standard verwenden, um ein Asset zu codieren.
+description: In diesem Thema wird veranschaulicht, wie Sie .NET verwenden, um ein Medienobjekt mithilfe von Media Encoder Standard zu codieren.
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 929592368501c54277748bf46b2160c9058db3fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cce668007030672aff7af60c70339c1e079c75b1
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Codieren eines Medienobjekts mit Media Encoder Standard mit .NET
-Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Media Encoder verwenden. Außerdem können Sie Codierer von Media Services-Partnern verwenden. Externe Codierer finden Sie im Azure Marketplace. 
+Die Codierung ist einer der häufigsten Verarbeitungsvorgänge in Media Services. Sie erstellen Codierungsaufträge, um Mediendateien von einer Codierung in eine andere zu konvertieren. Zum Codieren können Sie den in Media Services integrierten Media Encoder verwenden. Sie können auch einen Encoder von Media Services-Partnern verwenden. Encoder von Drittanbietern finden Sie im Azure Marketplace. 
 
-In diesem Thema wird veranschaulicht, wie Sie .NET verwenden, um Medienobjekte mithilfe von Media Encoder Standard (MES) zu codieren. Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschrieben sind.
+In diesem Artikel wird veranschaulicht, wie Sie .NET verwenden, um Medienobjekte mithilfe von Media Encoder Standard (MES) zu codieren. Media Encoder Standard wird mithilfe von Encoder-Voreinstellungen konfiguriert, die [hier](http://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409)beschrieben sind.
 
 Es wird empfohlen, Quelldateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md)in das gewünschte Format zu konvertieren. 
 
@@ -61,7 +61,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 * Angeben der Voreinstellung [Adaptives Streaming](media-services-autogen-bitrate-ladder-with-mes.md). 
 * Fügen Sie eine einzelne Codierungsaufgabe zum Auftrag hinzu. 
 * Geben Sie das zu codierende Asset an.
-* Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
+* Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.
 * Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
 * Übermitteln des Auftrags.
 
@@ -181,6 +181,14 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
                 }
             }
         }
+
+
+## <a name="advanced-encoding-features-to-explore"></a>Erweiterte Codierungsfeatures
+* [Generieren von Miniaturansichten](media-services-dotnet-generate-thumbnail-with-mes.md)
+* [Generieren von Miniaturansichten während der Codierung](media-services-dotnet-generate-thumbnail-with-mes.md#example-of-generating-a-thumbnail-while-encoding)
+* [Zuschneiden von Videos während der Codierung](media-services-crop-video.md)
+* [Anpassen von Codierungsvoreinstellungen](media-services-custom-mes-presets-with-dotnet.md)
+* [Überlagern eines Videos mit einem Bild oder Versehen eines Videos mit einem Wasserzeichen](media-services-advanced-encoding-with-mes.md#overlay)
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

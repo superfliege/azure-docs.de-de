@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: b8df9623bf3826807ba066d4e625c3138c80c5b7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 50190642f59aa8fa7d5cce8bfde5cec9fcfbe7e4
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: Datenmigrationstool
 
@@ -210,7 +210,7 @@ Hier finden Sie ein Beispiel für eine Befehlszeile zum Importieren von CSV-Date
 ## <a id="AzureTableSource"></a>Importieren aus dem Azure-Tabellenspeicher
 Mit der Importprogrammoption für Azure Table Storage-Quellen können Sie Daten aus einer einzelnen Azure Table Storage-Tabelle importieren. Optional können Sie die zu importierenden Tabellenentitäten filtern. 
 
-Aus Azure Table Storage importierte Daten können für die Verwendung mit der Table-API in Azure Cosmos DB-Tabellen und -Entitäten oder für die Verwendung mit der DocumentDB-API in Sammlungen und Dokumente ausgegeben werden.  
+Aus Azure Table Storage importierte Daten können für die Verwendung mit der Table-API in Azure Cosmos DB-Tabellen und -Entitäten oder für die Verwendung mit der DocumentDB-API in Sammlungen und Dokumente ausgegeben werden. Die Tabellen-API ist aber nur als Ziel im Befehlszeilen-Hilfsprogramm verfügbar, Sie können keinen Export in die Tabellen-API über die Benutzeroberfläche des Datenmigrationstools ausführen. Weitere Informationen finden Sie unter [Importieren von Daten für die Verwendung mit der Tabellen-API von Azure Cosmos DB](table-import.md). 
 
 ![Screenshot der Optionen für Azure-Tabellenspeicherquellen](./media/import-data/azuretablesource.png)
 
@@ -522,20 +522,6 @@ Sie können optional die generierte JSON-Datei  optimieren, wodurch die Größe 
       }
     ]
     }]
-
-## <a id="tableapibulkexport"></a>Exportieren in die Table-API (Massenimport)
-
-Mit dem Exportprogramm für die Table-API von Azure Cosmos DB können Sie Informationen aus einer Azure Table Storage-Quelle in eine Azure-Cosmos DB-Table-API-Datenbank exportieren. 
-
-Die Verbindungszeichenfolge für das Azure Cosmos DB-Table-API-Konto, in das Sie die Informationen exportieren möchten, kann über die Seite „Verbindungszeichenfolge“ des Azure-Portals abgerufen werden. Verwenden Sie die Schaltfläche „Kopieren“ ![Screenshot der Verbindungszeichenfolge im Azure-Portal](./media/import-data/copy-button.png) auf der rechten Seite des Bildschirms, um die gesamte Zeichenfolge zu kopieren.
-
-![Screenshot der Verbindungszeichenfolge im Azure-Portal](./media/import-data/connection-string.png)
-
-## <a id="tableapiseqtarget"></a>Exportieren in die Table-API (sequenzieller Datensatzimport)
-
-Mit dem Exportprogramm für die Table-API von Azure Cosmos DB können Sie Informationen aus einer Azure Table Storage-Quelle in eine Azure-Cosmos DB-Table-API-Datenbank exportieren.
-
-Die Verbindungszeichenfolge für das Azure Cosmos DB-Table-API-Konto, in das Sie die Informationen exportieren möchten, kann über die Seite „Verbindungszeichenfolge“ des Azure-Portals abgerufen werden, wie oben in der Abbildung unter [Exportieren in die Table-API (Massenimport)](#tableapibulkexport) zu sehen.
 
 ## <a name="advanced-configuration"></a>Erweiterte Konfiguration
 Geben Sie auf dem Bildschirm "Erweiterte Konfiguration" den Speicherort der Protokolldatei an, in die Fehler geschrieben werden sollen. Für diese Seite gelten folgende Regeln:

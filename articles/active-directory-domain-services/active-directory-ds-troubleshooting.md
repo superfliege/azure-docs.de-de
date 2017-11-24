@@ -4,7 +4,7 @@ description: "Leitfaden zur Problembehandlung für die Azure AD Domain Services"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory-ds
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 34335db77a5e414af4cfa77d6223ab5290bae614
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 3acecdf753162ad703ff51acf40c34335bf6cdcb
+ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Leitfaden zur Problembehandlung
 Dieser Artikel enthält Tipps zur Behandlung von Problemen, die beim Einrichten oder Verwalten der Azure Active Directory Domain Services auftreten können.
 
 ## <a name="you-cannot-enable-azure-ad-domain-services-for-your-azure-ad-directory"></a>Sie können Azure AD Domain Services für Ihr Azure AD-Verzeichnis nicht aktivieren
-Dieser Abschnitt bietet Hilfe bei der Problembehandlung, wenn beim Versuch einer Aktivierung der Azure AD Domain Services für Ihr Verzeichnis ein Fehler auftritt oder der Status anschließend wieder als „Deaktiviert“ angezeigt wird.
+Dieser Abschnitt bietet Hilfe bei der Problembehandlung, wenn beim Versuch einer Aktivierung von Azure AD Domain Services für Ihr Verzeichnis ein Fehler auftritt.
 
 Führen Sie die Schritte zur Problembehandlung aus, die der angezeigten Fehlermeldung entspricht.
 
@@ -81,7 +81,7 @@ Verwenden Sie das folgende PowerShell-Skript, um die Anwendung zu finden und zu 
 >
 >
 
-```
+```powershell
 $InformationPreference = "Continue"
 $WarningPreference = "Continue"
 

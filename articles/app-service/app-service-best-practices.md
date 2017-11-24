@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: a65b50a90a67b718f2a0cdd8657194d9740b3bd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 251ce238b745734bdfb508b30097304a9a650a8c
+ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/13/2017
 ---
 # <a name="best-practices-for-azure-app-service"></a>Empfohlene Methoden für Azure App Service
 In diesem Artikel werden die empfohlenen Methoden für die Verwendung von [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)zusammengefasst. 
@@ -40,7 +40,26 @@ Wenn Sie feststellen, dass eine App mehr CPU-Leistung als erwartet beansprucht, 
 Weitere Informationen zu „zustandsbehafteten“ und „zustandslosen“ Anwendungen beinhaltet dieses Video: [Planning a Scalable End-to-End Multi-Tier Application on Microsoft Azure Web App](https://channel9.msdn.com/Events/TechEd/NorthAmerica/2014/DEV-B414#fbid=?hashlink=fbid)(Planen einer skalierbaren End-to-End-Anwendung mit mehreren Ebenen in einer Microsoft Azure-Web-App). Weitere Informationen zur Skalierung von App Service und Optionen zur automatischen Skalierung finden Sie im Artikel [Skalieren einer Web-App in Azure App Service](web-sites-scale.md).  
 
 ## <a name="socketresources"></a>Wenn Socketressourcen erschöpft sind
-Eine häufige Ursache für das Erschöpfen ausgehender TCP-Verbindungen ist die Verwendung von Clientbibliotheken, die nicht zur Wiederverwendung von TCP-Verbindungen implementiert wurden, oder im Fall eines übergeordneten Protokolls wie HTTP die fehlende Nutzung von Keep-Alive. Prüfen Sie die Dokumentation zu den einzelnen Bibliotheken, auf die von den Apps in Ihrem App Service-Plan verwiesen wird, um sicherzustellen, dass sie konfiguriert sind oder dass in Ihrem Code darauf zugegriffen wird, um so eine effiziente Wiederverwendung ausgehender Verbindungen zu gewährleisten. Befolgen Sie auch den Leitfaden zur Bibliotheksdokumentation für eine ordnungsgemäße Erstellung und Freigabe oder Bereinigung, um Verbindungsverluste zu vermeiden. Während diese Clientbibliotheksuntersuchungen ausgeführt werden, können die Auswirkungen durch ein horizontales Hochskalieren auf mehrere Instanzen verringert werden.  
+Eine häufige Ursache für das Erschöpfen ausgehender TCP-Verbindungen ist die Verwendung von Clientbibliotheken, die nicht zur Wiederverwendung von TCP-Verbindungen implementiert wurden, oder im Fall eines übergeordneten Protokolls wie HTTP die fehlende Nutzung von Keep-Alive. Prüfen Sie die Dokumentation zu den einzelnen Bibliotheken, auf die von den Apps in Ihrem App Service-Plan verwiesen wird, um sicherzustellen, dass sie konfiguriert sind oder dass in Ihrem Code darauf zugegriffen wird, um so eine effiziente Wiederverwendung ausgehender Verbindungen zu gewährleisten. Befolgen Sie auch den Leitfaden zur Bibliotheksdokumentation für eine ordnungsgemäße Erstellung und Freigabe oder Bereinigung, um Verbindungsverluste zu vermeiden. Während diese Clientbibliotheksuntersuchungen ausgeführt werden, können die Auswirkungen durch ein horizontales Hochskalieren auf mehrere Instanzen verringert werden.
+
+### <a name="nodejs-and-outgoing-http-requests"></a>Node.js und ausgehende HTTP-Anforderungen
+Bei Verwendung von Node.js und zahlreichen ausgehenden HTTP-Anforderungen ist eine Behandlung von HTTP-Keep-Alive unverzichtbar. Sie können zur Vereinfachung in Ihrem Code das [agentkeepalive](https://www.npmjs.com/package/agentkeepalive)-`npm`-Paket verwenden.
+
+Die `http`-Antwort sollte immer behandelt werden, auch wenn im Handler ggf. nichts unternommen wird. Wird die Antwort nicht ordnungsgemäß verarbeitet, bleibt die Anwendung letztendlich hängen, da keine Sockets mehr verfügbar sind.
+
+Beispiel für die Verwendung des `http`- oder `https`-Pakets:
+
+```
+var request = https.request(options, function(response) {
+    response.on('data', function() { /* do nothing */ });
+});
+```
+
+Wenn Sie App Service unter Linux auf einem Computer mit mehreren Kernen ausführen, hat es sich bewährt, für die Ausführung Ihrer Anwendung mit PM2 mehrere Node.js-Prozesse zu starten. Dazu können Sie einen Startbefehl für Ihren Container angeben.
+
+So starten Sie beispielsweise vier Instanzen:
+
+`pm2 start /home/site/wwwroot/app.js --no-daemon -i 4`
 
 ## <a name="appbackup"></a>Wenn die Sicherung Ihrer App fehlerhaft zu werden beginnt
 Die zwei häufigsten Gründe, warum eine App-Sicherung misslingt, sind ungültige Speichereinstellungen und eine ungültige Datenbankkonfiguration. Diese Fehler treten in der Regel auf, wenn Änderungen an Speicher- oder Datenbankressourcen oder Änderungen am Zugriff auf diese Ressourcen erfolgt sind (z.B. eine Aktualisierung der Anmeldeinformationen für die in den Sicherungseinstellungen ausgewählte Datenbank). Sicherungen erfolgen meist gemäß einem Zeitplan und erfordern Zugriff auf Speicher (für die Ausgabe der gesicherten Dateien) und Datenbanken (zum Kopieren und Lesen von Inhalten, die in die Sicherung einbezogen werden sollen). Das Ergebnis des Fehlens eines Zugriff auf diese Ressourcen wäre ein durchgängiger Ausfall von Sicherungen. 

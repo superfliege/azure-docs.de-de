@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: c6289df50d17de1ef542abbf617eb1cdb2f32311
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 19caa05f0de7b4ff4ed7f4eafe50839d04f4ab50
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
 In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
@@ -340,8 +340,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-faultanalysisservice"></a>Name des Abschnitts: FaultAnalysisService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|NOT_PLATFORM_UNIX_START, TargetReplicaSetSize für FaultAnalysisService. |
-| MinReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|MinReplicaSetSize für FaultAnalysisService. |
+| TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |statischen|NOT_PLATFORM_UNIX_START, TargetReplicaSetSize für FaultAnalysisService. |
+| MinReplicaSetSize |Ganze Zahl, Standardwert 0 |statischen|MinReplicaSetSize für FaultAnalysisService. |
 | ReplicaRestartWaitDuration |Zeit in Sekunden, Standardwert 60 Minuten|statischen|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für FaultAnalysisService. |
 | QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen|Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für FaultAnalysisService. |
 | StandByReplicaKeepDuration| Zeit in Sekunden, Standardwert (60*24*7) Minuten |statischen|Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für FaultAnalysisService. |
@@ -390,8 +390,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
 | Aktiviert |Boolesch, Standardwert „false“ |statischen|Das Flag „Enabled“ für ImageStoreService. Standardwert: FALSE |
-| TargetReplicaSetSize | Ganze Zahl, Standardwert 7 |Nicht zulässig|TargetReplicaSetSize für ImageStoreService. |
-| MinReplicaSetSize | Ganze Zahl, Standardwert 3 |Nicht zulässig|MinReplicaSetSize für ImageStoreService. |
+| TargetReplicaSetSize | Ganze Zahl, Standardwert 7 |statischen|TargetReplicaSetSize für ImageStoreService. |
+| MinReplicaSetSize | Ganze Zahl, Standardwert 3 |statischen|MinReplicaSetSize für ImageStoreService. |
 | ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60,0 * 30 |statischen|Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für ImageStoreService. |
 | QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für ImageStoreService. |
 | StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 3600,0 * 2 |statischen| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für ImageStoreService. |
@@ -414,8 +414,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-upgradeorchestrationservice"></a>Name des Abschnitts: UpgradeOrchestrationService
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|TargetReplicaSetSize für UpgradeOrchestrationService. |
-| MinReplicaSetSize |Ganze Zahl, Standardwert 0 |Nicht zulässig|MinReplicaSetSize für UpgradeOrchestrationService.
+| TargetReplicaSetSize |Ganze Zahl, Standardwert 0 |statischen |TargetReplicaSetSize für UpgradeOrchestrationService. |
+| MinReplicaSetSize |Ganze Zahl, Standardwert 0 |statischen |MinReplicaSetSize für UpgradeOrchestrationService.
 | ReplicaRestartWaitDuration | Zeit in Sekunden, Standardwert 60 Minuten|statischen| Geben Sie die Zeitspanne in Sekunden an. ReplicaRestartWaitDuration für UpgradeOrchestrationService. |
 | QuorumLossWaitDuration | Zeit in Sekunden, Standardwert MaxValue |statischen| Geben Sie die Zeitspanne in Sekunden an. QuorumLossWaitDuration für UpgradeOrchestrationService. |
 | StandByReplicaKeepDuration | Zeit in Sekunden, Standardwert 60*24*7 Minuten |statischen| Geben Sie die Zeitspanne in Sekunden an. StandByReplicaKeepDuration für UpgradeOrchestrationService. |

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 329970d8717053ab7126fb8fb6a4a119ccbff6b7
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 6e65af68dcd2306aabda65efdf8fe056c0d9b4a4
+ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/11/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
 
@@ -74,7 +74,7 @@ Mit diesem Skript werden folgende Schritte ausgeführt:
 - Registrieren Sie Ihren Ressourcenanbieter bei der lokalen Azure Resource Manager-Instanz (Benutzer und Administrator).
 
 > [!NOTE]
-> Wenn die Installation länger als 90 Minuten dauert, schlägt sie möglicherweise fehl, und auf dem Bildschirm sowie in der Protokolldatei wird eine Fehlermeldung angezeigt. Die Bereitstellung wird jedoch ab dem fehlgeschlagenen Schritt wiederholt. Systeme, die den empfohlenen Arbeitsspeicher- und Core-Spezifikationen nicht entsprechen, können den SQL-Ressourcenanbieter möglicherweise nicht bereitstellen.
+> Wenn die Installation länger als 90 Minuten dauert, schlägt sie möglicherweise fehl, und auf dem Bildschirm sowie in der Protokolldatei wird eine Fehlermeldung angezeigt. Die Bereitstellung wird jedoch ab dem fehlgeschlagenen Schritt wiederholt. Systeme, die den empfohlenen Arbeitsspeicher- und vCPU-Spezifikationen nicht entsprechen, können den SQL-Ressourcenanbieter möglicherweise nicht bereitstellen.
 >
 
 Hier ist ein Beispiel, das Sie über die PowerShell-Eingabeaufforderung ausführen können (ändern Sie jedoch die Kontoinformationen und Kennwörter entsprechend):

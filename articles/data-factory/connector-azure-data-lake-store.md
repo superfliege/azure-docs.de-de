@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: jingwang
-ms.openlocfilehash: 6ef76763859482d24c088f58fe361882cc4a619b
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: daba616debcf445e092697575465311f39e9466f
+ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/10/2017
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Kopieren von Daten nach und aus Azure Data Lake Store mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,7 +34,7 @@ Sie können Daten aus einem beliebigen unterstützten Quelldatenspeicher nach Az
 
 Der Azure Data Lake Store-Connector unterstützt insbesondere Folgendes:
 
-- Kopieren von Dateien mithilfe der **Dienstprinzipalauthentifizierung**
+- Kopieren von Dateien mit **Dienstprinzipalauthentifizierung** oder **verwalteter Dienstidentitätsauthentifizierung**.
 - Kopieren von Dateien im jeweiligen Zustand oder Analysieren bzw. Generieren von Dateien mit den [unterstützten Dateiformaten und Codecs für die Komprimierung](supported-file-formats-and-compression-codecs.md)
 
 ## <a name="get-started"></a>Erste Schritte
@@ -44,7 +44,23 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Sie können mithilfe der Dienstprinzipalauthentifizierung einen mit Azure Data Lake Store verknüpften Dienst erstellen.
+Folgende Eigenschaften werden für den mit Azure Data Lake Store verknüpften Dienst unterstützt:
+
+| Eigenschaft | Beschreibung | Erforderlich |
+|:--- |:--- |:--- |
+| Typ | Die type-Eigenschaft muss auf **AzureDataLakeStore** festgelegt werden. | Ja |
+| dataLakeStoreUri | Informationen zum Azure Data Lake Store-Konto. Diese Informationen haben eines der folgenden Formate: `https://[accountname].azuredatalakestore.net/webhdfs/v1` oder `adl://[accountname].azuredatalakestore.net/`. | Ja |
+| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
+| subscriptionId | ID des Azure-Abonnements, zu dem das Data Lake Store-Konto gehört. | Erforderlich für Senke |
+| ResourceGroupName | Name der Azure-Ressourcengruppe, zu der das Data Lake Store-Konto gehört. | Erforderlich für Senke |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
+
+Weitere Eigenschaften und JSON-Beispiele für die verschiedenen Authentifizierungstypen finden Sie in den folgenden Abschnitten:
+
+- [Verwenden der Dienstprinzipalauthentifizierung](#using-service-principal-authentication)
+- [Verwenden der verwalteten Dienstidentitätsauthentifizierung](#using-managed-service-identitiy-authentication)
+
+### <a name="using-service-principal-authentication"></a>Verwenden der Dienstprinzipalauthentifizierung
 
 Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren Sie in Azure Active Directory (Azure AD) eine Anwendungsentität, und gewähren Sie ihr Zugriff auf Data Lake Store. Eine ausführliche Anleitung finden Sie unter [Dienst-zu-Dienst-Authentifizierung](../data-lake-store/data-lake-store-authenticate-using-active-directory.md). Notieren Sie sich die folgenden Werte, die Sie zum Definieren des verknüpften Diensts verwenden:
 
@@ -54,21 +70,15 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 
 >[!TIP]
 > Erteilen Sie dem Dienstprinzipal die korrekte Berechtigung in Azure Data Lake Store:
->- Erteilen Sie als Quelle mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung zum **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung auf Kontoebene.
->- Erteilen Sie als Senke mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, gewähren Sie in der Kontozugriffssteuerung (IAM) mindestens die **Leser**-Rolle. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
+>- Erteilen Sie als Quelle mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung zum **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
+>- Erteilen Sie als Senke mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
 
 Folgende Eigenschaften werden unterstützt:
 
 | Eigenschaft | Beschreibung | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft muss auf **AzureDataLakeStore** festgelegt werden. | Ja |
-| dataLakeStoreUri | Informationen zum Azure Data Lake Store-Konto. Diese Informationen haben eines der folgenden Formate: `https://[accountname].azuredatalakestore.net/webhdfs/v1` oder `adl://[accountname].azuredatalakestore.net/`. | Ja |
 | servicePrincipalId | Geben Sie die Client-ID der Anwendung an. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Anwendung an. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
-| tenant | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja |
-| subscriptionId | ID des Azure-Abonnements, zu dem das Data Lake Store-Konto gehört. | Erforderlich für Senke |
-| ResourceGroupName | Name der Azure-Ressourcengruppe, zu der das Data Lake Store-Konto gehört. | Erforderlich für Senke |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die Azure-Integrationslaufzeit oder selbstgehostete Integrationslaufzeit verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
 
 **Beispiel:**
 
@@ -84,6 +94,43 @@ Folgende Eigenschaften werden unterstützt:
                 "type": "SecureString",
                 "value": "<service principal key>"
             },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
+            "subscriptionId": "<subscription of ADLS>",
+            "resourceGroupName": "<resource group of ADLS>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-managed-service-identitiy-authentication"></a>Verwenden der verwalteten Dienstidentitätsauthentifizierung
+
+Eine Data Factory kann einer [verwalteten Dienstidentität](data-factory-service-identity.md) zugeordnet werden, die diese bestimmte Data Factory darstellt. Sie können diese Dienstidentität direkt für die Data Lake Store-Authentifizierung verwenden, ähnlich wie bei der Verwendung Ihres eigenen Dienstprinzipals. Sie erlaubt dieser bestimmten Factory den Zugriff auf und das Kopieren von Daten von/zu Ihrem Data Lake Store.
+
+So verwenden Sie die verwaltete Dienstidentitätsauthentifizierung
+
+1. [Rufen Sie die Data Factory-Dienstidentität](data-factory-service-identity.md#retrieve-service-identity) ab, indem Sie den Wert von „DIENSTIDENTITÄTSANWENDUNGS-ID“ kopieren, der zusammen mit der Factory generiert wurde.
+2. Gewähren Sie der Dienstidentität auf dieselbe Weise Zugriff auf Data Lake Store, wie Sie beim Dienstprinzipal vorgehen. Ausführliche Informationen finden Sie unter [Dienst-zu-Dienst-Authentifizierung – Weisen Sie die Azure AD-Anwendung der Datei oder dem Ordner des Azure Data Lake Store-Kontos zu](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder).
+
+>[!TIP]
+> Stellen Sie sicher, dass Sie dem Dienstprinzipal die richtige Berechtigung in Azure Data Lake Store gewähren:
+>- Erteilen Sie als Quelle mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung zum **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung (IAM) auf Kontoebene.
+>- Erteilen Sie als Senke mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen**, um untergeordnete Elemente im Ordner zu erstellen. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Wenn Sie diese IAM-Rolle vermeiden möchten, [erstellen Sie explizit eine Azure IR-Instanz](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort von Data Lake Store, und ordnen Sie sie wie im folgenden Beispiel im verknüpften Data Lake Store-Dienst zu.
+
+In Azure Data Factory müssen Sie außer den allgemeinen Data Lake Store-Informationen im verknüpften Dienst keine weiteren Eigenschaften angeben.
+
+**Beispiel:**
+
+```json
+{
+    "name": "AzureDataLakeStoreLinkedService",
+    "properties": {
+        "type": "AzureDataLakeStore",
+        "typeProperties": {
+            "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
             "subscriptionId": "<subscription of ADLS>",
             "resourceGroupName": "<resource group of ADLS>"

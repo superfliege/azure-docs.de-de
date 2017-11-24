@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 09/16/2017
+ms.date: 11/10/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 732ec45003481b0e2f2eca03b6ae13772d325ef1
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 8b84b90e72f8cac1fc1f8a90391b7a5a4f6be1f4
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>Testen der Lösung mit simulierten Geräten
 
@@ -39,6 +39,10 @@ In der folgenden Tabelle sind die Daten aufgeführt, die das Leuchtmittel als Da
 | Name   | Werte      |
 | ------ | ----------- |
 | Status | „on“, „off“ |
+| online | true, false |
+
+> [!NOTE]
+> Der Telemetriewert **online** ist für alle simulierten Typen erforderlich.
 
 *Methoden*
 
@@ -267,7 +271,11 @@ Zum Testen des **Lightbulb**-Gerätetyps können Sie zunächst prüfen, ob der G
 
 Informationen zum lokalen Testen und Debuggen Ihrer Änderungen finden Sie unter [Device Simulation Overview](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) (Übersicht über die Gerätesimulation).
 
-Konfigurieren Sie das Projekt so, dass die Dateien des neuen **Lightbulb**-Geräts in das Ausgabeverzeichnis kopiert werden.
+Konfigurieren Sie das Projekt so, dass die Dateien des neuen **Lightbulb**-Geräts in das Ausgabeverzeichnis kopiert werden:
+
+* Stellen Sie bei Verwendung von Visual Studio sicher, dass die im vorherigen Abschnitt erstellten drei neuen Lightbulb-Dateien dem Projekt **Dienste** in der Projektmappe hinzugefügt werden. Markieren Sie sie dann mit dem **Projektmappen-Explorer**, damit sie in das Ausgabeverzeichnis kopiert werden.
+
+* Öffnen Sie bei Verwendung von Visual Studio Code die Datei **Services.csproj**, und fügen Sie die im vorherigen Abschnitt erstellten drei neuen Lightbulb-Dateien hinzu. Sehen Sie sich als Beispiel die vorhandenen Einträge für die Gerätemodelldatei in der Datei **Services.csproj** an.
 
 Informationen zum Testen des neuen Geräts in einer bereitgestellten Lösung finden Sie in folgenden Quellen:
 

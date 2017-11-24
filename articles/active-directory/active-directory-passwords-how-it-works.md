@@ -1,5 +1,5 @@
 ---
-title: So funktioniert's Azure AD SSPR | Microsoft-Dokumentation
+title: Funktionsweise von Azure AD SSPR | Microsoft-Dokumentation
 description: "Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD"
 services: active-directory
 keywords: 
@@ -16,19 +16,19 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: fd9515120049dd3837a43c95de8a9b6822719e19
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 56ddd5742b63851b9477bae0705ebd24e30ff185
+ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
-Wie funktioniert die Self-Service-Kennwortzurücksetzung (SSPR)? Was bedeutet diese Option in der Benutzeroberfläche? Im weiteren Verlauf erfahren Sie mehr über die Self-Service-Kennwortzurücksetzung in Azure AD.
+Wie funktioniert die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)? Was bedeutet diese Option in der Benutzeroberfläche? Im weiteren Verlauf erfahren Sie mehr über SSRP in Azure Active Directory (Azure AD).
 
 ## <a name="how-does-the-password-reset-portal-work"></a>Wie funktioniert das Portal für die Kennwortzurücksetzung?
 
-Wenn ein Benutzer zum Portal für das Zurücksetzen von Benutzerkennwörtern navigiert, wird ein Workflow gestartet, um Folgendes zu bestimmen:
+Wenn ein Benutzer zum Kennwortzurücksetzungsportal navigiert, wird ein Workflow gestartet, um Folgendes zu bestimmen:
 
    * Wie soll die Seite lokalisiert werden?
    * Ist das Benutzerkonto gültig?
@@ -36,13 +36,12 @@ Wenn ein Benutzer zum Portal für das Zurücksetzen von Benutzerkennwörtern nav
    * Wo wird das Kennwort des Benutzers verwaltet?
    * Ist der Benutzer zur Verwendung des Features lizenziert?
 
+In den folgenden Schritten wird beschrieben, welche Logik hinter der Seite zur Kennwortzurücksetzung steckt:
 
-In den folgenden Schritten wird beschrieben, welche Logik hinter der Seite zur Kennwortzurücksetzung steckt.
-
-1. Der Benutzer klickt auf den Link „Können Sie nicht auf Ihr Konto zugreifen?“ oder wechselt direkt zu [https://aka.ms/sspr](https://passwordreset.microsoftonline.com).
-2. Die Benutzeroberfläche wird basierend auf dem Browsergebietsschema in der entsprechenden Sprache wiedergegeben. Die Benutzeroberfläche für das Zurücksetzen des Kennworts wird in alle Sprachen lokalisiert, die Office 365 unterstützt.
-3. Der Benutzer gibt eine Benutzer-ID ein und durchläuft erfolgreich die Captchaprüfung.
-4. Azure AD prüft folgendermaßen, ob der Benutzer diese Funktion verwenden darf:
+1. Der Benutzer klickt auf den Link **Sie können nicht auf Ihr Konto zugreifen?** oder wechselt direkt zu [https://aka.ms/sspr](https://passwordreset.microsoftonline.com).
+   * Die Benutzeroberfläche wird basierend auf dem Browsergebietsschema in der entsprechenden Sprache wiedergegeben. Die Benutzeroberfläche für das Zurücksetzen des Kennworts wird in alle Sprachen lokalisiert, die Office 365 unterstützt.
+2. Der Benutzer gibt eine Benutzer-ID ein und durchläuft erfolgreich die Captchaprüfung.
+3. Azure AD prüft folgendermaßen, ob der Benutzer diese Funktion verwenden darf:
    * Es wird geprüft, ob die Funktion für diesen Benutzer aktiviert ist und ob eine Azure AD-Lizenz zugewiesen ist.
      * Wenn diese Funktion für den Benutzer nicht aktiviert ist oder keine Lizenz vorliegt, wird der Benutzer aufgefordert, sich zum Zurücksetzen des Kennworts an den Administrator zu wenden.
    * Es wird überprüft, ob der Benutzer in seinem Konto Daten für die Überprüfung in mehreren Schritten definiert hat, die der Administratorrichtlinie entsprechen.
@@ -53,11 +52,11 @@ In den folgenden Schritten wird beschrieben, welche Logik hinter der Seite zur K
    * Es wird überprüft, ob das Benutzerkennwort lokal verwaltet wird oder nicht (im Verbund oder mit Kennworthashsynchronisierung).
      * Wenn das Rückschreiben von Kennwörtern konfiguriert ist und das Benutzerkennwort lokal verwaltet wird, kann der Benutzer mit der Authentifizierung fortfahren und sein Kennwort zurücksetzen.
      * Wenn das Rückschreiben von Kennwörtern nicht konfiguriert ist und das Benutzerkennwort lokal verwaltet wird, wird der Benutzer aufgefordert, sich zum Zurückzusetzen des Kennworts an den Administrator zu wenden.
-5. Wenn festgestellt wird, dass der Benutzer sein Kennwort zurücksetzen darf, wird er durch den Vorgang für die Kennwortzurücksetzung geleitet.
+4. Wenn festgestellt wird, dass der Benutzer sein Kennwort zurücksetzen darf, wird er durch den Vorgang für die Kennwortzurücksetzung geleitet.
 
 ## <a name="authentication-methods"></a>Authentifizierungsmethoden
 
-Wenn die Self-Service-Kennwortzurücksetzung (SSPR) aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als Authentifizierungsmethode auswählen. Manchmal werden diese Optionen als Gates bezeichnet. Für mehr Flexibilität für Ihre Benutzer wird dringend empfohlen, mindestens zwei Authentifizierungsmethoden auszuwählen.
+Wenn SSPR aktiviert ist, müssen Sie mindestens eine der folgenden Optionen als Authentifizierungsmethode auswählen. Manchmal werden diese Optionen als Gates bezeichnet. Für mehr Flexibilität für Ihre Benutzer wird dringend empfohlen, mindestens zwei Authentifizierungsmethoden auszuwählen.
 
 * E-Mail
 * Mobiltelefon
@@ -66,30 +65,30 @@ Wenn die Self-Service-Kennwortzurücksetzung (SSPR) aktiviert ist, müssen Sie m
 
 ![Authentifizierung][Authentication]
 
-### <a name="what-fields-are-used-in-the-directory-for-authentication-data"></a>Welche Felder werden im Verzeichnis für Authentifizierungsdaten verwendet?
+### <a name="what-fields-are-used-in-the-directory-for-the-authentication-data"></a>Welche Felder werden im Verzeichnis für die Authentifizierungsdaten verwendet?
 
-* „Bürotelefon“ entspricht „Bürotelefon“
+* **Bürotelefon** entspricht der geschäftlichen Telefonnummer.
     * Benutzer können dieses Feld nicht selbst festlegen. Es muss von einem Administrator definiert werden.
-* „Mobiltelefon“ entspricht entweder „Authentifizierungstelefon“ (nicht öffentlich sichtbar) oder „Mobiltelefon“ (öffentlich sichtbar)
-    * Der Dienst sucht zuerst nach „Authentifizierungstelefon“, und greift dann, wenn dieses nicht vorhanden ist, auf „Mobiltelefon“ zurück.
-* „Alternative E-Mail-Adresse“ entspricht entweder „E-Mail für Authentifizierung“ (nicht öffentlich sichtbar) oder „Alternative E-Mail-Adresse“
-    * Der Dienst sucht zuerst nach „E-Mail für Authentifizierung“, und greift dann auf „Alternative E-Mail-Adresse“ zurück.
+* **Mobiltelefon** entspricht entweder dem Authentifizierungstelefon (nicht öffentlich sichtbar) oder dem Mobiltelefon (öffentlich sichtbar).
+    * Der Dienst sucht zuerst nach dem Authentifizierungstelefon und verwendet dann das Mobiltelefon, wenn das Authentifizierungstelefon nicht vorhanden ist.
+* **Alternative E-Mail-Adresse** entspricht entweder der E-Mail für Authentifizierung (nicht öffentlich sichtbar) oder der alternativen E-Mail-Adresse.
+    * Der Dienst sucht zuerst nach der E-Mail für die Authentifizierung und greift dann auf die alternative E-Mail-Adresse zurück.
 
 Standardmäßig werden nur die Cloudattribute „Bürotelefon“ und „Mobiltelefon“ mit Ihrem Cloudverzeichnis aus dem lokalen Verzeichnis für Authentifizierungsdaten synchronisiert.
 
 Benutzer können ihr Kennwort nur dann zurücksetzen, wenn für sie Daten in den Authentifizierungsmethoden vorliegen, die der Administrator aktiviert und als erforderlich festgelegt hat.
 
-Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für das Zurücksetzen von Kennwörtern verwenden möchte, sollten Administratoren die Daten nicht in das Verzeichnis übernehmen, und der Benutzer sollte sein **Authentifizierungstelefon**-Attribut dann über das [Registrierungsportal für die Kennwortzurücksetzung](http://aka.ms/ssprsetup) auffüllen. Administratoren können diese Informationen im Profil des Benutzers anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht.
+Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für die Kennwortzurücksetzung verwenden möchte, sollten Administratoren die Daten nicht in das Verzeichnis übernehmen. Der Benutzer sollte sein **Authentifizierungstelefon**-Attribut dann über das [Registrierungsportal für die Kennwortzurücksetzung](http://aka.ms/ssprsetup) auffüllen. Administratoren können diese Informationen im Profil des Benutzers anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht.
 
-### <a name="number-of-authentication-methods-required"></a>Anzahl erforderlicher Authentifizierungsmethoden
+### <a name="the-number-of-authentication-methods-required"></a>Anzahl erforderlicher Authentifizierungsmethoden
 
-Diese Option bestimmt die Mindestanzahl der verfügbaren Authentifizierungsmethoden oder Gates, die ein Benutzer zum Zurücksetzen oder Entsperren des Kennworts durchlaufen muss. Sie kann auf 1 oder 2 festgelegt werden.
+Diese Option bestimmt die Mindestanzahl der verfügbaren Authentifizierungsmethoden oder Gates, die ein Benutzer zum Zurücksetzen oder Entsperren des Kennworts durchlaufen muss. Sie kann auf ein oder zwei festgelegt werden.
 
-Benutzer können wählen, weitere Authentifizierungsmethoden bereitzustellen, wenn sie vom Administrator aktiviert sind.
+Benutzer können wählen, weitere Authentifizierungsmethoden bereitzustellen, wenn diese Authentifizierungsmethode vom Administrator aktiviert wird.
 
-Sind für einen Benutzer nicht die mindestens erforderlichen Methoden registriert, wird eine Fehlerseite angezeigt, die ihn auffordert, einen Administrator zu bitten, sein Kennwort zurückzusetzen.
+Sind für einen Benutzer nicht die mindestens erforderlichen Methoden registriert, wird eine Fehlerseite angezeigt, die ihn auffordert, einen Administrator um die Kennwortzurücksetzung zu bitten.
 
-#### <a name="changing-authentication-methods"></a>Ändern der Authentifizierungsmethoden
+#### <a name="change-authentication-methods"></a>Ändern der Authentifizierungsmethoden
 
 Was passiert, wenn Sie mit einer Richtlinie beginnen, bei der zum Zurücksetzen oder Entsperren der Registrierung nur eine einzelne Authentifizierungsmethode erforderlich ist, und Sie dies in zwei Authentifizierungsmethoden ändern?
 
@@ -102,13 +101,13 @@ Was passiert, wenn Sie mit einer Richtlinie beginnen, bei der zum Zurücksetzen 
 Wenn Sie die den Benutzern zur Verfügung stehenden Arten von Authentifizierungsmethoden ändern, können Benutzer unter Umständen SSPR nicht mehr verwenden, wenn ihnen nicht genügend Daten zur Verfügung stehen.
 
 Beispiel: 
-1. Die mit zwei Authentifizierungsmethoden konfigurierte ursprüngliche Richtlinie erforderte die ausschließliche Verwendung von geschäftlichen Telefonnummern und Sicherheitsfragen. 
+1. Die ursprüngliche Richtlinie wird mit zwei erforderlichen Authentifizierungsmethoden konfiguriert. Sie verwendet nur die Bürotelefonnummer und die Sicherheitsfragen. 
 2. Der Administrator ändert die Richtlinie so, dass anstelle von Sicherheitsfragen ein Mobiltelefon und eine alternative E-Mail-Adresse verwendet werden.
 3. Benutzer, für die die Felder für Mobiltelefon und alternative E-Mail-Adresse nicht aufgefüllt werden, können ihre Kennwörter nicht zurücksetzen.
 
 ### <a name="how-secure-are-my-security-questions"></a>Wie sicher sind meine Sicherheitsfragen?
 
-Wenn Sie Sicherheitsfragen verwenden, sollten sie mit einer anderen Methode verwendet werden, weil sie weniger sicher als die anderen Methoden sein können, da möglicherweise einige Personen die Sicherheitsfragen anderer Benutzer beantworten können.
+Wenn Sie Sicherheitsfragen verwenden, wird empfohlen, diese in Verbindung mit einer anderen Methode zu verwenden. Sicherheitsfragen können weniger sicher als andere Methoden sein, da einige Personen unter Umständen die Antworten auf die Fragen eines anderen Benutzers kennen.
 
 > [!NOTE] 
 > Sicherheitsfragen werden privat und sicher in einem Benutzerobjekt im Verzeichnis gespeichert und können nur während der Registrierung von Benutzern beantwortet werden. Es gibt keine Möglichkeit für einen Administrator, die Fragen oder Antworten eines Benutzers zu lesen oder zu ändern.
@@ -116,7 +115,7 @@ Wenn Sie Sicherheitsfragen verwenden, sollten sie mit einer anderen Methode verw
 
 ### <a name="security-question-localization"></a>Lokalisierung der Sicherheitsfragen
 
-Sämtliche folgenden vordefinierten Fragen werden in alle Office 365-Sprachen lokalisiert, basierend auf dem Gebietsschema des Browsers des Benutzers.
+Sämtliche folgenden vordefinierten Fragen werden in alle Office 365-Sprachen lokalisiert und basieren auf dem Gebietsschema des Browsers des Benutzers:
 
 * In welcher Stadt haben Sie Ihren ersten Partner bzw. Ihre erste Partnerin kennengelernt?
 * In welcher Stadt haben sich Ihre Eltern kennengelernt?
@@ -162,86 +161,86 @@ Die Länge von benutzerdefinierten Sicherheitsfragen ist auf 200 Zeichen begrenz
 
 ### <a name="security-question-requirements"></a>Anforderungen an Sicherheitsfragen
 
-* Die Mindestanzahl von Zeichen für Antworten ist 3 Zeichen
-* Die maximale Zeichenanzahl für Antworten ist 40 Zeichen
-* Benutzer können dieselbe Frage nicht mehrmals beantworten
-* Benutzer können für nicht dieselbe Antwort für mehrere Fragen angeben
-* Bei der Definition von Fragen und Antworten kann ein beliebiger Zeichensatz verwendet werden (einschließlich Unicode)
-* Die Anzahl der definierten Fragen muss größer als oder gleich der Anzahl der für die Registrierung erforderlichen Fragen sein
+* Die Mindestanzahl von Zeichen für Antworten ist drei Zeichen.
+* Die maximale Zeichenanzahl für Antworten ist 40 Zeichen.
+* Benutzer können dieselbe Frage nicht mehrmals beantworten.
+* Benutzer können nicht dieselbe Antwort für mehrere Fragen angeben.
+* Bei der Definition von Fragen und Antworten kann ein beliebiger Zeichensatz verwendet werden (einschließlich Unicode).
+* Die Anzahl der definierten Fragen muss größer als oder gleich der Anzahl der für die Registrierung erforderlichen Fragen sein.
 
 ## <a name="registration"></a>Registrierung
 
-### <a name="require-users-to-register-when-signing-in"></a>Registrierung von Benutzern bei der Anmeldung verlangen
+### <a name="require-users-to-register-when-they-sign-in"></a>Erzwingen der Registrierung für Benutzer bei der Anmeldung
 
-Durch Aktivieren dieser Option müssen Benutzer, für die die Kennwortzurücksetzung aktiviert ist, die Registrierung für die Kennwortzurücksetzung abschließen, wenn sie sich bei Anwendungen anmelden, die Azure AD verwenden, z.B. folgende:
+Zum Aktivieren dieser Option müssen Benutzer, für die die Kennwortzurücksetzung aktiviert ist, die Registrierung für die Kennwortzurücksetzung abschließen, wenn sie sich mit Azure AD bei Anwendungen anmelden. Dies umfasst Folgendes:
 
 * Office 365
 * Azure-Portal
 * Anpassung des Zugriffsbereichs
 * Verbundanwendungen
-* Benutzerdefinierte Anwendungen, die Azure AD verwenden
+* Benutzerdefinierte Anwendungen unter Verwendung von Azure AD
 
-Wenn dies deaktiviert wird, können Benutzer ihre Kontaktinformationen weiterhin unter [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) oder durch Klicken auf den Link **Für das Zurücksetzen des Kennworts registrieren** auf der Registerkarte „Profil“ im Zugriffsbereich manuell registrieren.
+Wenn die Erzwingung der Registrierung deaktiviert ist, können Benutzer ihre Kontaktinformationen dennoch manuell registrieren. Sie können entweder [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) aufrufen oder im Zugriffsbereich auf der Registerkarte **Profil** auf den Link **Für das Zurücksetzen des Kennworts registrieren** klicken.
 
 > [!NOTE]
-> Benutzer können das Registrierungsportal für die Kennwortzurücksetzung durch Klicken auf „Abbrechen“ oder durch Schließen des Fensters schließen, werden aber bis zum Abschluss der Registrierung bei jeder Anmeldung erneut dazu aufgefordert.
+> Benutzer können das Registrierungsportal für die Kennwortzurücksetzung durch Klicken auf **Abbrechen** oder durch Schließen des Fensters schließen. Sie werden aber bis zum Abschluss der Registrierung bei jeder Anmeldung erneut zur Registrierung aufgefordert.
 >
 > Dadurch wird die Verbindung des Benutzers nicht unterbrochen, wenn er bereits angemeldet ist.
 
-### <a name="number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Anzahl der Tage, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
+### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Festlegen der Anzahl von Tagen, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
 
 Diese Option bestimmt den Zeitraum zwischen dem Festlegen und dem erneuten Bestätigen der Authentifizierungsinformationen und ist nur verfügbar, wenn die Option **Registrierung von Benutzern bei der Anmeldung verlangen** aktiviert ist.
 
-Gültige Werte sind 0 bis 730 Tage, wobei „0“ bedeutet, dass Benutzer nie zum Bestätigen ihrer Authentifizierungsinformationen aufgefordert werden.
+Gültige Werte sind 0 bis 730 Tage, wobei „0“ bedeutet, dass Benutzer nie zum erneuten Bestätigen ihrer Authentifizierungsinformationen aufgefordert werden.
 
 ## <a name="notifications"></a>Benachrichtigungen
 
 ### <a name="notify-users-on-password-resets"></a>Benutzer über Kennwortzurücksetzungen benachrichtigen?
 
-Ist diese Option auf „Ja“ festgelegt, erhält der Benutzer, der sein Kennwort zurücksetzt, eine E-Mail an seine in Azure AD erfasste primäre und alternative E-Mail-Adresse, in der er darüber informiert wird, dass sein Kennwort über das SSPR-Portal geändert wurde. Niemand sonst wird über das Zurücksetzen informiert.
+Ist diese Option auf **Ja** festgelegt, erhält der Benutzer, der sein Kennwort zurücksetzt, eine E-Mail, in der er darüber informiert wird, dass sein Kennwort geändert wurde. Die E-Mail wird über das SSPR-Portal an die in Azure AD hinterlegte primäre und alternative E-Mail-Adresse gesendet. Niemand sonst wird über das Zurücksetzen informiert.
 
 ### <a name="notify-all-admins-when-other-admins-reset-their-passwords"></a>Sollen alle Administratoren benachrichtigt werden, wenn andere Administratoren ihr Kennwort zurücksetzen?
 
-Ist diese Option auf „Ja“ festgelegt, erhalten **alle Administratoren** eine E-Mail an ihre in Azure AD erfasste primäre E-Mail-Adresse, in der sie darüber informiert werden, dass ein anderer Administrator ihr Kennwort mithilfe von SSPR geändert hat.
+Ist diese Option auf **Ja** festgelegt, erhalten *alle Administratoren* eine E-Mail an ihre in Azure AD erfasste primäre E-Mail-Adresse. In dieser E-Mail werden sie darüber informiert, dass ein anderer Administrator ihr Kennwort mithilfe von SSPR geändert hat.
 
-Beispiel: Es gibt vier Administratoren in einer Umgebung. Administrator A setzt das Kennwort mithilfe von SSPR zurück. Administratoren B, C und D erhalten eine E-Mail-Nachricht, in der sie über die Änderung informiert werden.
+Beispiel: Es gibt vier Administratoren in einer Umgebung. Administrator A setzt das Kennwort mithilfe von SSPR zurück. Administratoren B, C und D erhalten eine E-Mail-Nachricht, in der sie über die Kennwortzurücksetzung informiert werden.
 
 ## <a name="on-premises-integration"></a>Lokale Integration
 
-Wenn Sie Azure AD Connect installiert, konfiguriert und aktiviert haben, stehen folgende zusätzliche Optionen für lokale Integrationen zur Verfügung. Wenn diese Optionen abgeblendet sind, wurde das Rückschreiben nicht richtig konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren des Kennwortrückschreibens](active-directory-passwords-writeback.md#configuring-password-writeback).
+Wenn Sie Azure AD Connect installieren, konfigurieren und aktivieren, stehen folgende zusätzliche Optionen für lokale Integrationen zur Verfügung. Wenn diese Optionen abgeblendet sind, wurde das Rückschreiben nicht ordnungsgemäß konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren des Kennwortrückschreibens](active-directory-passwords-writeback.md#configuring-password-writeback).
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Kennwörter in Ihr lokales Verzeichnis zurückschreiben?
 
-Steuert, ob das Rückschreiben von Kennwörtern für dieses Verzeichnis aktiviert ist. In diesem Fall wird der Status des lokalen Rückschreibungsdiensts angezeigt. Dies ist nützlich, wenn Sie das Rückschreiben von Kennwörtern vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.
+Dieses Steuerelement bestimmt, ob das Rückschreiben von Kennwörtern für dieses Verzeichnis aktiviert ist. Wenn das Rückschreiben aktiviert ist, gibt es den Status des lokalen Diensts für das Rückschreiben an. Dies ist nützlich, wenn Sie das Rückschreiben von Kennwörtern vorübergehend deaktivieren möchten, ohne Azure AD Connect erneut zu konfigurieren.
 
-* Wenn die Option auf „Ja“ gesetzt ist, wird das Rückschreiben aktiviert, und Verbundbenutzer und Benutzer mit Kennworthashsynchronisierung können ihre Kennwörter zurücksetzen.
-* Wenn die Option auf „Nein“ gesetzt ist, wird das Rückschreiben deaktiviert, und Verbundbenutzer und Benutzer mit Kennworthashsynchronisierung können ihre Kennwörter nicht zurücksetzen.
+* Wenn die Option auf **Ja** gesetzt ist, wird das Rückschreiben aktiviert, und Verbundbenutzer und Benutzer mit Kennworthashsynchronisierung können ihre Kennwörter zurücksetzen.
+* Wenn die Option auf **Nein** gesetzt ist, wird das Rückschreiben deaktiviert, und Verbundbenutzer und Benutzer mit Kennworthashsynchronisierung können ihre Kennwörter nicht zurücksetzen.
 
 ### <a name="allow-users-to-unlock-accounts-without-resetting-their-password"></a>Benutzern das Entsperren von Konten ohne Zurücksetzen des Kennworts erlauben
 
-Legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden Azure AD-Konten beim Zurücksetzen von Kennwörtern entsperrt – mit dieser Einstellung können Sie diese beiden Vorgänge trennen. 
+Dieses Steuerelement legt fest, ob Benutzer, die das Kennwortzurücksetzungsportal aufrufen, die Option zum Entsperren ihrer lokalen Active Directory-Konten ohne Zurücksetzen ihres Kennworts erhalten sollen. Standardmäßig werden bei einer Kennwortzurücksetzung Konten von Azure AD entsperrt. Mit dieser Einstellung können Sie diese beiden Vorgänge trennen. 
 
-* Bei der Einstellung „Ja“ erhalten die Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos, und auch die Option des Entsperrens ohne ein Zurücksetzen des Kennworts.
-* Bei der Einstellung „Nein“ können die Benutzer das Entsperren des Kontos nur in Kombination mit dem Zurücksetzen des Kennworts vornehmen.
+* Bei der Einstellung **Ja** erhalten Benutzer die Option zum Zurücksetzen ihres Kennworts und Entsperren ihres Kontos oder die Option zum Entsperren des Kontos, ohne dass das Kennwort zurückgesetzt werden muss.
+* Bei der Einstellung **Nein** können Benutzer das Entsperren des Kontos nur in Kombination mit dem Zurücksetzen des Kennworts vornehmen.
 
 ## <a name="how-does-password-reset-work-for-b2b-users"></a>Funktionsweise der Kennwortzurücksetzung für B2B-Benutzer
-Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfigurationen uneingeschränkt unterstützt. Die folgenden drei Fälle werden für das Zurücksetzen von B2B-Benutzerkennwörtern unterstützt.
+Das Zurücksetzen und Ändern von Kennwörtern wird von allen B2B-Konfigurationen (Business-to-Business) uneingeschränkt unterstützt. Das Zurücksetzen von B2B-Benutzerkennwörtern wird in den folgenden drei Fällen unterstützt:
 
-1. **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen Azure AD-Mandanten verfügt, **respektieren wir die in diesem Mandanten aktivierten Kennwortzurücksetzungsrichtlinien**. Für die Kennwortzurücksetzung muss die Partnerorganisation lediglich sicherstellen, dass die Self-Service-Kennwortzurücksetzung von Azure AD aktiviert ist. Für Office 365-Kunden fallen dadurch keine zusätzlichen Gebühren an. Eine entsprechende Anleitung finden Sie unter [Erste Schritte mit der Kennwortverwaltung](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords).
-2. **Benutzer, die sich mit der [Self-Service-Registrierung](active-directory-self-service-signup.md) registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, das [Self-Service-Registrierungsfeature](active-directory-self-service-signup.md) verwendet, um auf einen Mandanten zuzugreifen, steht eine Zurücksetzung unter Verwendung der E-Mail-Adresse zur Verfügung, mit der die Registrierung erfolgt ist.
-3. **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](active-directory-b2b-what-is-azure-ad-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
+   * **Benutzer aus einer Partnerorganisation mit einem vorhandenen Azure AD-Mandanten:** Falls die Organisation, mit der Sie eine Partnerschaft eingegangen sind, über einen Azure AD-Mandanten verfügt, *respektieren wir die in diesem Mandanten aktivierten Kennwortzurücksetzungsrichtlinien*. Damit die Kennwortzurücksetzung funktioniert, muss die Partnerorganisation nur sicherstellen, dass Azure AD SSPR aktiviert ist. Für Office 365-Kunden fallen keine zusätzlichen Gebühren an, und Azure AD SSPR kann anhand der Schritte unter [Schnelle Bereitstellung der Self-Service-Kennwortzurücksetzung in Azure AD](https://azure.microsoft.com/documentation/articles/active-directory-passwords-getting-started/#enable-users-to-reset-or-change-their-aad-passwords) aktiviert werden.
+   * **Benutzer, die sich mit der Self-Service-Registrierung registriert haben:** Wenn die Organisation, mit der Sie eine Partnerschaft eingegangen sind, das [Self-Service-Registrierungsfeature](active-directory-self-service-signup.md) verwendet, um auf einen Mandanten zuzugreifen, steht eine Zurücksetzung des Kennworts unter Verwendung der E-Mail-Adresse zur Verfügung, mit der die Registrierung erfolgt ist.
+   * **B2B-Benutzer:** Alle neuen B2B-Benutzer, die mithilfe der neuen [Azure AD-B2B-Funktionen](active-directory-b2b-what-is-azure-ad-b2b.md) erstellt werden, können ihre Kennwörter unter Verwendung der E-Mail-Adresse zurücksetzen, mit der sie sich im Rahmen des Einladungsprozesses registriert haben.
 
-Navigieren Sie zum Testen dieses Szenarios mit einem dieser Partnerbenutzer zu „http://passwordreset.microsoftonline.com“. Sofern keine alternative E-Mail-Adresse und keine E-Mail-Adresse für die Authentifizierung definiert sind, funktioniert die Kennwortzurücksetzung wie erwartet.
+Navigieren Sie zum Testen dieses Szenarios mit einem dieser Partnerbenutzer zu „http://passwordreset.microsoftonline.com“. Sofern eine alternative E-Mail-Adresse oder eine E-Mail-Adresse für die Authentifizierung definiert ist, funktioniert die Kennwortzurücksetzung wie erwartet.
 
 > [!NOTE]
 > Microsoft-Konten (etwa Hotmail.com, Outlook.com oder eine andere persönliche E-Mail-Adresse), denen der Gastzugriff auf Ihren Azure AD-Mandanten gewährt wurde, können Azure AD SSPR nicht nutzen. Für diese Konten muss das Kennwort anhand der Informationen im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) zurückgesetzt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die folgenden Links führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
+Die folgenden Artikel führen zu weiteren Informationen zur Kennwortzurücksetzung mit Azure AD:
 
 * [Erfolgreiches Rollout der Self-Service-Kennwortzurücksetzung](active-directory-passwords-best-practices.md)
-* [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md)
+* [Zurücksetzen oder Ändern des Kennworts](active-directory-passwords-update-your-own-password.md)
 * [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md)
 * [Lizenzanforderungen für Azure AD-Self-Service-Kennwortzurücksetzung](active-directory-passwords-licensing.md)
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
