@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
-ms.openlocfilehash: 2b2f35b3241bd1700bb1fb3319d38fdfda2545f9
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="sprint-1---november-2017"></a>Sprint 1 – November 2017 
 
@@ -122,7 +122,7 @@ Unten ist eine Liste mit detaillierten Aktualisierungen für jeden Komponentenbe
 
 ### <a name="operationalization"></a>Operationalisierung
 - Der Webdienst mit „score“ im Namen führt nicht mehr zu einem Fehler.
-- Benutzer können jetzt eine Bereitstellungsumgebung erstellen, für die nur Besitzerzugriff auf eine Azure-Ressourcengruppe besteht. Der Besitzerzugriff auf das gesamte Abonnement wird nicht mehr benötigt.
+- Benutzer können jetzt eine Bereitstellungsumgebung erstellen, für die nur der Zugriff vom Typ „Mitwirkender“ auf eine Azure-Ressourcengruppe oder das Abonnement besteht. Der Besitzerzugriff auf das gesamte Abonnement wird nicht mehr benötigt.
 - Für die Operationalisierungs-CLI ist unter Linux jetzt die automatische Vervollständigung für Registerkarten möglich.
 - Der Imageerstellungsdienst unterstützt jetzt das Erstellen von Images für Azure IoT-Dienste und -Geräte.
 

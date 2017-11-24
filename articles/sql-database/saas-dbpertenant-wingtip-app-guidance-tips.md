@@ -13,31 +13,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: genemi
-ms.openlocfilehash: fbfaea938676991cf6280e5dd8c1e1190aa268a8
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 4c90d70bb3b043ef81a224f0f69107eaa6eb0547
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="guidance-and-tips-for-azure-sql-database-multi-tenant-saas-app-example"></a>Anweisungen und Tipps für eine mehrinstanzenfähige SaaS-Beispiel-App in Azure SQL-Datenbank
 
 
-## <a name="download-and-unblock-the-wingtip-saas-scripts"></a>Herunterladen und Aufheben der Blockierung der Wingtip-SaaS-Skripts
+## <a name="download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts"></a>Herunterladen und Entsperren der Skripts für die SaaS-App Wingtip Tickets mit einer Datenbank pro Mandant
 
-Wenn ZIP-Dateien von einer externen Quelle heruntergeladen und extrahiert werden, können ausführbare Inhalte (Skripts, DLLs) von Windows eventuell blockiert werden. Führen Sie bei der Extraktion der Skripts aus einer ZIP-Datei ***die nachfolgenden Schritte durch, um die Blockierung der ZIP-Datei vor der Extraktion aufzuheben***. Dadurch wird sichergestellt, dass die Ausführung der Skripts zugelassen ist.
+Ausführbare Inhalte (Skripts, DLLs) können durch Windows blockiert werden, wenn ZIP-Dateien aus einer externen Quelle heruntergeladen und extrahiert werden. Führen Sie bei der Extraktion der Skripts aus einer ZIP-Datei ***die nachfolgenden Schritte durch, um die Blockierung der ZIP-Datei vor der Extraktion aufzuheben***. Hierdurch wird sichergestellt, dass die Skripts ausgeführt werden dürfen.
 
-1. Navigieren Sie zum [GitHub-Repository der Wingtip-SaaS-Anwendung](https://github.com/Microsoft/WingtipSaaS).
+1. Navigieren Sie zum [GitHub-Repository für die SaaS-App Wingtip Tickets mit einer Datenbank pro Mandant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant).
 2. Klicken Sie auf **Klonen oder herunterladen**.
 3. Klicken Sie auf **ZIP herunterladen**, und speichern Sie die Datei.
-4. Klicken Sie mit der rechten Maustaste auf die Datei **WingtipSaaS-master.zip**, und wählen Sie **Eigenschaften** aus.
+4. Klicken Sie mit der rechten Maustaste auf die Datei **WingtipTicketsSaaS-DbPerTenant-master.zip**, und wählen Sie **Eigenschaften** aus.
 5. Wählen Sie auf der Registerkarte **Allgemein** die Option **Blockierung aufheben**.
 6. Klicken Sie auf **OK**.
 7. Extrahieren Sie die Dateien.
 
-Die Skripts befinden sich im Ordner *..\\WingtipSaaS-master\\Learning Modules*.
+Skripts befinden sich im Ordner *..\\Learning Modules* (Lernmodule).
 
 
-## <a name="working-with-the-wingtip-saas-powershell-scripts"></a>Arbeiten mit PowerShell-Skripts für die SaaS-Anwendung Wingtip
+## <a name="working-with-the-wingtip-tickets-saas-database-per-tenant-powershell-scripts"></a>Verwenden der PowerShell-Skripts für die SaaS-App Wingtip Tickets mit einer Datenbank pro Mandant
 
 Um das Beispiel optimal nutzen zu können, müssen Sie sich mit den bereitgestellten Skripts auseinandersetzen. Verwenden Sie Haltepunkte, und gehen Sie die Skripts durch, indem Sie sich die Einzelheiten bezüglich der Implementierung der unterschiedlichen SaaS-Muster ansehen. Um mühelos die bereitgestellten Skripts und Module durchzugehen und auf diese Weise bestmöglich zu verstehen, wird die Verwendung der [PowerShell ISE](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/introducing-the-windows-powershell-ise) empfohlen.
 
@@ -73,10 +73,10 @@ Tipps zum Prüfen und schrittweisen Ausführen der PowerShell-Skripts:
 
 Verwenden Sie [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms), um eine Verbindung mit den Anwendungsservern und -datenbanken herzustellen und diese zu durchsuchen.
 
-Die Bereitstellung enthält zunächst zwei SQL-Datenbankserver, mit denen eine Verbindung mit den Servern *tenants1-&lt;User&gt;* und *catalog-&lt;User&gt;* hergestellt werden kann. Um sicherzustellen, dass erfolgreich eine Verbindung mit der Demo hergestellt wird, wird beiden Servern eine [Firewallregel](sql-database-firewall-configure.md) zugewiesen, die alle IP-Adressen zulässt.
+Die Bereitstellung enthält zunächst zwei SQL-Datenbankserver, mit denen eine Verbindung mit den Servern *tenants1-dpt-&lt;User&gt;* und *catalog-dpt-&lt;User&gt;* hergestellt werden kann. Um sicherzustellen, dass erfolgreich eine Verbindung mit der Demo hergestellt wird, wird beiden Servern eine [Firewallregel](sql-database-firewall-configure.md) zugewiesen, die alle IP-Adressen zulässt.
 
 
-1. Öffnen Sie *SSMS*, und stellen Sie eine Verbindung mit dem Server *tenants1-&lt;User&gt;.database.windows.net* her.
+1. Öffnen Sie *SSMS*, und stellen Sie eine Verbindung mit dem Server *tenants1-dpt-&lt;User&gt;.database.windows.net* her.
 2. Klicken Sie auf **Verbinden** > **Datenbankmodul...**:
 
    ![Katalogserver](media/saas-dbpertenant-wingtip-app-guidance-tips/connect.png)
@@ -85,7 +85,7 @@ Die Bereitstellung enthält zunächst zwei SQL-Datenbankserver, mit denen eine V
 
    ![connection](media/saas-dbpertenant-wingtip-app-guidance-tips/tenants1-connect.png)
 
-4. Wiederholen Sie die Schritte 2 und 3, und stellen Sie eine Verbindung mit dem Server *catalog-&lt;User&gt;.database.windows.net* her.
+4. Wiederholen Sie die Schritte 2 und 3, und stellen Sie eine Verbindung mit dem Server *catalog-dpt-&lt;User&gt;.database.windows.net* her.
 
 
 Nachdem die Verbindung erfolgreich hergestellt wurde, werden beide Server angezeigt. Ihre Liste der Datenbanken kann variieren, je nachdem, welche Mandanten Sie bereitgestellt haben.
@@ -96,5 +96,5 @@ Nachdem die Verbindung erfolgreich hergestellt wurde, werden beide Server angeze
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen der SaaS-Anwendung Wingtip](saas-dbpertenant-get-started-deploy.md)
+[Bereitstellen der SaaS-Anwendung Wingtips Tickets mit einer Datenbank pro Mandant](saas-dbpertenant-get-started-deploy.md)
 
