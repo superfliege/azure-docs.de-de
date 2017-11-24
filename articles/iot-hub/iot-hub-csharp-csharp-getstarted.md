@@ -1,4 +1,4 @@
----
+﻿---
 title: Erste Schritte mit Azure IoT Hub (.NET) | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie Sie mithilfe der IoT-SDKs für .NET D2C-Nachrichten an Azure IoT Hub senden. Erstellen Sie simulierte Geräte- und Dienst-Apps zum Registrieren Ihres Geräts, zum Senden von Nachrichten und zum Lesen von Nachrichten von IoT Hub."
 services: iot-hub
