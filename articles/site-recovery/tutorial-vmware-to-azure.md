@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 1c9bfe567b1e0872abc7aba054127735d5f61754
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 461feb952f7e2eddba9c7218b3463868e8cb7965
+ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/15/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
@@ -85,20 +85,14 @@ Die Konfigurationsserver-VM muss eine VMware-VM mit hoher Verfügbarkeit sein, d
 Stellen Sie auf der Konfigurationsserver-VM sicher, dass die Systemuhr mit einem Zeitserver synchronisiert ist.
 Die Zeit muss mit einer Toleranz von höchstens 15 Minuten synchronisiert werden. Wenn der Zeitunterschied größer als 15 Minuten ist, schlägt das Setup fehl.
 
-Stellen Sie sicher, dass die Konfigurationsserver-VM auf die folgenden URLs zugreifen kann:
+Stellen Sie sicher, dass der Konfigurationsserver auf die folgenden URLs zugreifen kann:
 
-- *.accesscontrol.windows.net. Wird für Zugriffssteuerung und Identitätsverwaltung verwendet.
-- *.backup.windowsazure.com. Wird für die Übertragung und Koordinierung von Replikationsdaten verwendet.
-- *.blob.core.windows.net. Wird für den Zugriff auf das Speicherkonto zum Speichern von replizierten Daten verwendet.
-- *.hypervrecoverymanager.windowsazure.com. Wird für die Vorgänge und Koordinierung der Replikationsverwaltung verwendet.
-- time.nist.gov und time.windows.com. Wird zum Überprüfen der Zeitsynchronisierung zwischen Systemzeit und der globalen Zeit verwendet.
+   [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+    
+    - Bei Verwendung von auf IP-Adressen basierenden Firewallregeln muss die Kommunikation mit Azure möglich sein.
 
-URLs für die Azure Government-Cloud:
-
-- *.ugv.hypervrecoverymanager.windowsazure.us
-- *.ugv.backup.windowsazure.us
-- *.ugi.hypervrecoverymanager.windowsazure.us
-- *.ugi.backup.windowsazure.us
+- Lassen Sie die [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) (IP-Bereiche für Azure-Rechenzentren) und den HTTPS-Port (443) zu.
+    - Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
 
 Alle auf IP-Adressen basierenden Firewallregeln müssen die Kommunikation mit [IP-Bereichen für Azure-Rechenzentrum](https://www.microsoft.com/download/confirmation.aspx?id=41653) und den Ports 443 (HTTPS) und 9443 (Datenreplikation) zulassen. Sie müssen IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zulassen.
 
