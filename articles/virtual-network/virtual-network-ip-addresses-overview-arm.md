@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2017
+ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: 95f2b57b2012df816c76a1b6ec55ca9f92e134a3
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 3840ed000d5a9fe5d3c8fd01c061bf13674c0ce5
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/16/2017
@@ -36,7 +36,7 @@ Wenn Sie mit dem klassischen Bereitstellungsmodell vertraut sind, sollten Sie si
 
 ## <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
-Öffentliche IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit dem Internet und öffentlichen Azure-Diensten wie [Azure Redis Cache](https://azure.microsoft.com/services/cache), [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs), [SQL-Datenbanken](../sql-database/sql-database-technical-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Storage](../storage/common/storage-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Öffentliche IP-Adressen ermöglichen Internetressourcen die eingehende Kommunikation mit Azure-Ressourcen. Öffentliche IP-Adressen ermöglichen Azure-Ressourcen auch die ausgehende Kommunikation mit dem Internet und öffentlichen Azure-Diensten mit einer der Ressource zugewiesenen IP-Adresse. Die Adresse ist für die Ressource reserviert, bis Sie die Zuweisung aufheben. Wenn einer Ressource keine öffentliche IP-Adresse zugewiesen wird, kann sie trotzdem ausgehend mit dem Internet kommunizieren, Azure weist jedoch dynamisch eine verfügbare IP-Adresse zu, die nicht für die Ressource reserviert wird. Weitere Informationen zu ausgehenden Verbindungen in Azure finden Sie unter [Grundlegendes zu ausgehenden Verbindungen](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) eine Ressource, die über eigene Eigenschaften verfügt. Sie können eine öffentliche IP-Adressressource beispielsweise einer der folgenden Ressourcen zuordnen:
 
@@ -98,7 +98,7 @@ Statische öffentliche IP-Adressen werden häufig in den folgenden Szenarien ver
 >
 
 ### <a name="dns-hostname-resolution"></a>DNS-Hostnamenauflösung
-Sie können eine DNS-Domänennamensbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für „*Domänennamensbezeichnung*.*Standort*.cloudapp.azure.com“ eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als *Domänennamensbezeichnung* am Azure-*Standort* **USA, Westen** erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.westus.cloudapp.azure.com** in die öffentliche IP-Adresse der Ressource aufgelöst. Mit dem FQDN können Sie einen benutzerdefinierten CNAME-Domäneneintrag mit Verweis auf die öffentliche IP-Adresse in Azure erstellen.
+Sie können eine DNS-Domänennamensbezeichnung für eine öffentliche IP-Ressource angeben. Dadurch erstellen Sie für „*Domänennamensbezeichnung*.*Standort*.cloudapp.azure.com“ eine Zuordnung zur öffentlichen IP-Adresse auf den von Azure verwalteten DNS-Servern. Wenn Sie beispielsweise eine öffentliche IP-Ressource mit **contoso** als *Domänennamensbezeichnung* am Azure-*Standort* **USA, Westen** erstellen, wird der vollqualifizierte Domänenname (FQDN) **contoso.westus.cloudapp.azure.com** in die öffentliche IP-Adresse der Ressource aufgelöst. Mit dem FQDN können Sie einen benutzerdefinierten CNAME-Domäneneintrag mit Verweis auf die öffentliche IP-Adresse in Azure erstellen. Sie können anstelle der oder zusätzlich zur DNS-Namensbezeichnung mit dem Standardsuffix den Azure DNS-Dienst verwenden, um einen DNS-Namen mit einem benutzerdefinierten Suffix zu konfigurieren, das in die öffentliche IP-Adresse aufgelöst wird. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).
 
 > [!IMPORTANT]
 > Jede erstellte Domänennamensbezeichnung muss innerhalb des Azure-Standorts eindeutig sein.  
@@ -128,7 +128,7 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffent
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
 | VPN Gateway |Gateway-IP-Konfiguration |Ja |Nein |
-| Application Gateway |Front-End-Konfiguration |Ja |Nein |
+| Anwendungsgateway |Front-End-Konfiguration |Ja |Nein |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem [virtuellen Netzwerk](virtual-networks-overview.md) oder in einem lokalen Netzwerk über ein VPN-Gateway oder eine ExpressRoute-Verbindung, ohne dass dabei eine über das Internet erreichbare IP-Adresse verwendet wird.
@@ -145,10 +145,12 @@ Private IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. Privaten 
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
 
-Eine private IP-Adresse wird aus dem Adressbereich des VNET-Subnetzes zugeteilt, in dem eine Ressource bereitgestellt wurde. Es gibt zwei Methoden zum Zuordnen von privaten IP-Adressen:
+Eine private IP-Adresse wird aus dem Adressbereich des VNET-Subnetzes zugeteilt, in dem eine Ressource bereitgestellt wurde. Azure reserviert die ersten vier Adressen jedes Subnetzadressbereichs, sodass die Adressen keinen Ressourcen zugewiesen werden können. Wenn der Adressbereich des Subnetzes beispielsweise 10.0.0.0/16 ist, können die Adressen 10.0.0.0 bis 10.0.0.3 keinen Ressourcen zugewiesen werden. IP-Adressen innerhalb des Adressbereichs des Subnetzes können jeweils nur einer Ressource zugewiesen werden. 
 
-- **Dynamisch**: In Azure sind die ersten vier Adressen jedes Subnetz-Adressbereichs reserviert, und die Adressen werden nicht zugewiesen. Azure weist die nächste verfügbare Adresse einer Ressource aus dem Subnetz-Adressbereich zu. Wenn der Adressbereich des Subnetzes beispielsweise 10.0.0.0/16 lautet und die Adressen 10.0.0.0.4 bis 10.0.0.14 bereits zugewiesen sind (.0 bis .3 sind reserviert), weist Azure der Ressource die Adresse 10.0.0.15 zu. „Dynamisch“ ist das Standardverfahren für die Zuteilung. Nach der Zuweisung werden dynamische IP-Adressen nur veröffentlicht, wenn eine Netzwerkschnittstelle gelöscht wird oder einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird oder wenn die Zuordnungsmethode in „Statisch“ geändert und eine andere IP-Adresse angegeben wird. Standardmäßig wird in Azure die zuvor dynamisch zugewiesene Adresse als statische Adresse zugewiesen, wenn Sie die Zuteilungsmethode von „Dynamisch“ in „Statisch“ ändern.
-- **Statisch**: Sie wählen eine Adresse aus dem Adressbereich des Subnetzes aus und weisen sie zu. Die von Ihnen zugewiesene Adresse kann eine beliebige Adresse innerhalb des Subnetz-Adressbereichs sein, bei der es sich nicht um eine der ersten vier Adressen im Subnetz-Adressbereich handelt und die derzeit keiner anderen Ressource im Subnetz zugewiesen ist. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuteilungsmethode in „Statisch“ ändern, wird in Azure dynamisch die zuvor zugewiesene statische IP-Adresse als dynamische Adresse zugewiesen. Dies gilt auch dann, wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
+Es gibt zwei Methoden zum Zuordnen von privaten IP-Adressen:
+
+- **Dynamisch**: Azure weist die nächste verfügbare nicht zugewiesene oder nicht reservierte IP-Adresse im Adressbereich des Subnetzes zu. Beispielsweise weist Azure 10.0.0.10 einer neuen Ressource zu, wenn die Adressen 10.0.0.4 bis 10.0.0.9 bereits anderen Ressourcen zugewiesen sind. „Dynamisch“ ist das Standardverfahren für die Zuteilung. Nach der Zuweisung werden dynamische IP-Adressen nur veröffentlicht, wenn eine Netzwerkschnittstelle gelöscht wird oder einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird oder wenn die Zuordnungsmethode in „Statisch“ geändert und eine andere IP-Adresse angegeben wird. Standardmäßig wird in Azure die zuvor dynamisch zugewiesene Adresse als statische Adresse zugewiesen, wenn Sie die Zuteilungsmethode von „Dynamisch“ in „Statisch“ ändern.
+- **Statisch**: Sie wählen eine beliebige nicht zugewiesene oder nicht reservierte IP-Adresse im Adressbereich des Subnetzes aus und weisen sie zu. Wenn der Adressbereich eines Subnetzes beispielsweise 10.0.0.0/16 ist und die Adressen 10.0.0.4 bis 10.0.0.9 bereits anderen Ressourcen zugewiesen sind, weisen Sie eine beliebige Adresse zwischen 10.0.0.10 und 10.0.255.254 zu. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuteilungsmethode in „Statisch“ ändern, wird in Azure dynamisch die zuvor zugewiesene statische IP-Adresse als dynamische Adresse zugewiesen. Dies gilt auch dann, wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
 
@@ -164,7 +166,7 @@ Virtuelle Computer, die mit von Azure verwalteten DNS-Servern konfiguriert sind,
 
 ### <a name="internal-load-balancers-ilb--application-gateways"></a>Interner Lastenausgleich (Internal Load Balancer, ILB) und Anwendungsgateways
 
-Sie können der **Front-End**-Konfiguration eines [Azure-ILBs](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) oder eines [Azure Application Gateways](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eine private IP-Adresse zuweisen. Diese private IP-Adresse fungiert als interner Endpunkt und steht nur den Ressourcen innerhalb des entsprechenden virtuellen Netzwerks und der damit verbundenen Remotenetzwerke zur Verfügung. Der Front-End-Konfiguration kann eine dynamische oder eine statische private IP-Adresse zugewiesen werden.
+Sie können der **Front-End**-Konfiguration eines [internen Azure-Lastenausgleichs](../load-balancer/load-balancer-internal-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (ILB) oder eines [Azure Application Gateways](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) eine private IP-Adresse zuweisen. Diese private IP-Adresse fungiert als interner Endpunkt und steht nur den Ressourcen innerhalb des entsprechenden virtuellen Netzwerks und der damit verbundenen Remotenetzwerke zur Verfügung. Der Front-End-Konfiguration kann eine dynamische oder eine statische private IP-Adresse zugewiesen werden.
 
 ### <a name="at-a-glance"></a>Auf einen Blick
 In der Tabelle unten sind die spezifischen Eigenschaften, über die eine private IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann, und die möglichen Zuweisungsverfahren (dynamisch oder statisch) angegeben.
@@ -173,7 +175,7 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine private
 | --- | --- | --- | --- |
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Load Balancer |Front-End-Konfiguration |Ja |Ja |
-| Application Gateway |Front-End-Konfiguration |Ja |Ja |
+| Anwendungsgateway |Front-End-Konfiguration |Ja |Ja |
 
 ## <a name="limits"></a>Grenzen
 Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. Die Grenzwerte gelten pro Region und pro Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.

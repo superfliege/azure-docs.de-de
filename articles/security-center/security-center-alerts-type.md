@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/22/2017
 ms.author: yurid
-ms.openlocfilehash: 274c50dad9b8a1d79a71a29b04cb8e44ad91893c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 829657664cf1e37b22d57c62614300a205b5e91c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
 In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
@@ -53,6 +53,45 @@ Die folgenden Felder gelten für die Absturzabbildbeispiele weiter unten in dies
 * DUMPFILE: Name der Absturzabbilddatei
 * PROCESSNAME: Name des abstürzenden Prozesses
 * PROCESSVERSION: Version des abstürzenden Prozesses
+
+### <a name="code-injection-discovered"></a>Erkennung einer Codeeinschleusung
+Codeeinschleusung ist das Einfügen von ausführbaren Modulen in aktive Prozesse oder Threads.  Diese Technik wird von Schadsoftware genutzt, um auf Daten zuzugreifen, Daten auszublenden oder ihre Entfernung zu verhindern (z. B. Persistenz). Die Warnung weist darauf hin, dass ein eingefügtes Modul im Absturzabbild vorhanden ist. Seriöse Softwareentwickler führen gelegentlich eine Codeeinschleusung aus nicht böswilligen Gründen durch, beispielsweise zum Ändern oder Erweitern einer vorhandenen Anwendung oder Betriebssystemkomponente.  Zur Unterscheidung zwischen schädlichen und nicht schädlichen eingefügten Modulen überprüft Azure Security Center, ob das eingefügte Modul einem verdächtigen Verhaltensprofil entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt. 
+
+Die Warnung enthält die folgenden zusätzlichen Felder:
+
+- ADDRESS: Der Speicherort im Arbeitsspeicher des eingefügten Moduls.
+- IMAGENAME: Der Name des eingefügten Moduls. Beachten Sie, dass dieses Feld leer sein kann, wenn der Imagename nicht im Image angegeben ist.
+- SIGNATURE: Gibt an, ob das eingefügte Modul einem verdächtigen Verhaltensprofil entspricht. 
+
+Die folgende Tabelle enthält Beispiele für Ergebnisse und deren Beschreibung:
+
+| Signaturwert                      | Beschreibung                                                                                                       |
+|--------------------------------------|-------------------------------------------------------------------------------------------------------------------|
+| Verdächtiger reflektierender Ladeprogramm-Exploit | Dieses verdächtige Verhalten hängt oft mit unabhängig vom Ladeprogramm des Betriebssystems erfolgtem Laden von eingeschleustem Code zusammen. |
+| Verdächtiger eingefügter Exploit          | Weist auf böswillige Aktivitäten hin, die oft mit dem Einschleusen von Code in den Arbeitsspeicher zusammenhängen.                                       |
+| Verdächtiger einfügender Exploit         | Weist auf böswillige Aktivitäten hin, die oft mit der Verwendung von eingeschleustem Code im Arbeitsspeicher zusammenhängen.                                   |
+| Verdächtiger eingefügter Debugger-Exploit | Weist auf böswillige Aktivitäten hin, die oft mit der Erkennung oder Umgehung eines Debuggers zusammenhängen.                         |
+| Verdächtiger eingefügter Remote-Exploit   | Weist auf böswillige Aktivitäten hin, die oft mit Szenarien mit n-Befehlssteuerung (C2) zusammenhängen.                                 |
+
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
+
+![Warnung zur Codeeinschleusung](./media/security-center-alerts-type/security-center-alerts-type-fig21.png)
+
+### <a name="suspicious-code-segment"></a>Verdächtiges Codesegment
+Die Warnung zu einem verdächtigen Codesegment weist darauf hin, dass ein Codesegment mit nicht standardmäßigen Methoden zugeordnet wurde, beispielsweise durch reflektierende Einschleusung und Prozessaushöhlung.  Diese Warnung verarbeitet zudem weitere Merkmale des Codesegments, um Kontext im Hinblick auf die Funktionen und das Verhalten des gemeldeten Codesegments bereitzustellen.
+
+Die Warnung enthält die folgenden zusätzlichen Felder:
+
+- ADDRESS: Der Speicherort im Arbeitsspeicher des eingefügten Moduls.
+- SIZE: Die Größe des verdächtigen Codesegments.
+- STRINGSIGNATURES: In diesem Feld sind Funktionen von APIs aufgeführt, deren Funktionsnamen im Codesegment enthalten sind. Dazu können beispielsweise folgende Funktionen zählen:
+    - Beschreibungen von Imageabschnitten, dynamische Codeausführung für x64, Speicherbelegung und Ladeprogrammfunktion, Funktion für Remotecodeeinschleusung, Hijacking-Steuerungsfunktion, Lesen von Umgebungsvariablen, Lesen von beliebigen Prozessspeicherbereichen, Abfrage- oder Tokenänderungsrechte, HTTP-/HTTPS-Netzwerkkommunikation und Netzwerksocketkommunikation
+- IMAGEDETECTED: Dieses Feld gibt an, ob ein PE-Image in den Prozess, in dem das verdächtige Codesegment erkannt wurde, eingefügt wurde, und bei welcher Adresse das eingefügte Modul beginnt.
+- SHELLCODE: Dieses Feld zeigt das Vorhandensein von Verhalten an, das im Allgemeinen von böswilligen Nutzlasten verwendet wird, um Zugriff auf zusätzliche sicherheitsrelevante Betriebssystemfunktionen zu erhalten. 
+
+Hier sehen Sie ein Beispiel für diese Art von Warnung:
+
+![Warnung zu einem verdächtigen Codesegment](./media/security-center-alerts-type/security-center-alerts-type-fig22.png)
 
 ### <a name="shellcode-discovered"></a>Erkennung von Shellcode
 Shellcode ist die Nutzlast, die ausgeführt wird, nachdem eine Schadsoftware ein Sicherheitsrisiko einer Software ausgenutzt hat. Diese Warnung gibt an, dass bei einer Absturzabbild-Analyse ausführbarer Code mit einem Verhalten erkannt wurde, das üblicherweise von schädlichen Nutzlasten gezeigt wird. Zwar kann auch nicht schädliche Software dieses Verhalten aufweisen, aber es ist nicht typisch für normale Vorgehensweisen bei der Softwareentwicklung.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/03/2017
 ms.author: ryanwi
-ms.openlocfilehash: 1b2daf04e060615569e8416d3ded344483518400
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 23e8b1023aebd5381fc89535ce265883d6a8fceb
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Windows
 > [!div class="op_single_selector"]
@@ -294,8 +294,7 @@ Windows unterstützt zwei Isolationsmodi für Container: Prozesse und Hyper-V. M
 <ContainerHostPolicies CodePackageRef="Code" Isolation="hyperv">
 ```
    > [!NOTE]
-   > Der hyperv-Isolationsmodus ist unter Ev3- und Dv3-Azure-SKUs verfügbar, die die geschachtelte Virtualisierung unterstützen. 
-   >
+   > Der hyperv-Isolationsmodus ist unter Ev3- und Dv3-Azure-SKUs verfügbar, die die geschachtelte Virtualisierung unterstützen. Stellen Sie sicher, dass die HyperV-Rolle auf den Hosts installiert ist. Stellen Sie eine Verbindung mit den Hosts her, um dies zu überprüfen.
    >
 
 ## <a name="configure-resource-governance"></a>Konfigurieren der Ressourcenkontrolle
@@ -325,7 +324,7 @@ Die Anwendung ist bereit, wenn Sie sich im Zustand ```Ready``` befindet: ![Berei
 Öffnen Sie einen Browser, und navigieren Sie zu „ http://containercluster.westus2.cloudapp.azure.com:8081 “. Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ## <a name="clean-up"></a>Bereinigen
-Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](service-fabric-get-started-azure-cluster.md#remove-the-cluster) Sie Ihren Cluster daher ggf.  [Partycluster](https://try.servicefabric.azure.com/) werden nach einigen Stunden automatisch gelöscht.
+Während der Ausführung des Clusters fallen weiterhin Gebühren an. [Löschen](service-fabric-tutorial-create-vnet-and-windows-cluster.md#clean-up-resources) Sie Ihren Cluster daher ggf.  [Partycluster](https://try.servicefabric.azure.com/) werden nach einigen Stunden automatisch gelöscht.
 
 Wenn Sie das Image mithilfe von Push an die Containerregistrierung übertragen haben, können Sie das lokale Image von Ihrem Entwicklungscomputer löschen:
 
