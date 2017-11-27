@@ -13,33 +13,101 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
-ms.openlocfilehash: e27c1a8e130d20eb0ba0e5c001fc9a435e07c1cd
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 5345c0fa6212127e9821adccc8cb4c339ce7ae28
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Erstellen einer Data Factory und Pipeline mit dem .NET SDK
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1: Allgemein verfügbare Version](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Version 2 – Vorschauversion](quickstart-create-data-factory-dot-net.md)
 
-Azure Data Factory ist ein cloudbasierter Datenintegrationsdienst, mit dem Sie datengesteuerte Workflows in der Cloud erstellen können, um Datenverschiebungen und Datentransformationen zu orchestrieren und zu automatisieren. Mit Azure Data Factory können Sie datengesteuerte Workflows (sogenannte Pipelines) erstellen und planen, die Daten aus unterschiedlichen Datenspeichern erfassen, diese Daten mithilfe von Compute Services wie Azure HDInsight Hadoop, Spark, Azure Data Lake Analytics und Azure Machine Learning verarbeiten/transformieren und die Ausgabedaten für Datenspeicher wie Azure SQL Data Warehouse veröffentlichen, damit diese von Business Intelligence (BI)-Anwendungen genutzt werden können. 
-
-Diese Schnellstartanleitung beschreibt, wie Sie das .NET SDK verwenden, um eine Azure Data Factory zu erstellen. Die Pipeline in dieser Data Factory kopiert Daten aus einem Ordner in einen anderen Ordner in ein und demselben Azure Blob Storage.
+Diese Schnellstartanleitung beschreibt, wie Sie das .NET SDK verwenden, um eine Azure Data Factory zu erstellen. Die in dieser Data Factory erstellte Pipeline **kopiert** Daten aus einem Ordner in einen anderen Ordner in einem Azure-Blobspeicher. Ein Tutorial zum **Transformieren** von Daten mithilfe von Azure Data Factory finden Sie im Tutorial [Transformieren von Daten mit der Spark-Aktivität in Azure Data Factory](transform-data-using-spark.md). 
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, lesen Sie die Informationen unter [Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).
+>
+> Dieser Artikel enthält keine ausführliche Einführung in den Data Factory-Dienst. Eine Einführung in den Azure Data Factory-Dienst finden Sie unter [Einführung in Azure Data Factory](introduction.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure Storage-Konto**. Sie verwenden den Blob Storage sowohl als **Quelldatenspeicher** als auch als **Senkendatenspeicher**. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, finden Sie unter [Erstellen Sie ein Speicherkonto.](../storage/common/storage-create-storage-account.md#create-a-storage-account) Informationen zur Erstellung. 
-* Erstellen Sie einen **Blobcontainer** in Blob Storage, erstellen Sie einen **Eingabeordner** im Container, und laden Sie einige Dateien in den Ordner. Sie können Tools wie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um eine Verbindung mit Azure Blob Storage herzustellen, einen Blobcontainer zu erstellen, eine Eingabedatei hochzuladen und die Ausgabedatei zu überprüfen.
-* **Visual Studio** 2013, 2015 oder 2017 Die Vorgehensweise in diesem Artikel verwendet Visual Studio 2017.
-* **Laden und installieren Sie [Azure .NET SDK](http://azure.microsoft.com/downloads/)**.
-* **Erstellen Sie eine Anwendung in Azure Active Directory**, indem Sie [diese Anweisungen](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application) befolgen. Notieren Sie sich die folgenden Werte, die Sie später benötigen: **Anwendungs-ID**, **Authentifizierungsschlüssel** und **Mandanten-ID**. Weisen Sie die Anwendung der Rolle **Mitwirkender** zu, indem Sie die Anweisungen im gleichen Artikel befolgen. 
-*  
+
+### <a name="azure-subscription"></a>Azure-Abonnement
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+### <a name="azure-roles"></a>Azure-Rollen
+Damit Sie Data Factory-Instanzen erstellen können, muss das Benutzerkonto, mit dem Sie sich bei Azure anmelden, ein Mitglied der Rolle **Mitwirkender** oder **Besitzer** oder ein **Administrator** des Azure-Abonnements sein. Klicken Sie im Azure-Portal in der oberen rechten Ecke auf Ihren **Benutzernamen** und auf **Berechtigungen**, um Ihre Berechtigungen im Abonnement anzuzeigen. Wenn Sie Zugriff auf mehrere Abonnements besitzen, wählen Sie das entsprechende Abonnement aus. Beispielanweisungen zum Hinzufügen eines Benutzers zu einer Rolle finden Sie im Artikel [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](../billing/billing-add-change-azure-subscription-administrator.md).
+
+### <a name="azure-storage-account"></a>Azure Storage-Konto
+Sie verwenden in diesem Schnellstart ein Azure Storage-Allzweckkonto (Blob Storage) als Datenspeicher vom Typ **Quelle** und vom Typ **Ziel**. Falls Sie noch nicht über ein Azure Storage-Allzweckkonto verfügen, helfen Ihnen die Informationen unter [Erstellen Sie ein Speicherkonto](../storage/common/storage-create-storage-account.md#create-a-storage-account) weiter. 
+
+#### <a name="get-storage-account-name-and-account-key"></a>Abrufen des Speicherkontonamens und des Kontoschlüssels
+In diesem Schnellstart verwenden Sie Name und Schlüssel Ihres Azure-Speicherkontos. Das folgende Verfahren enthält die Schritte zum Abrufen des Namens und Schlüssels für Ihr Speicherkonto. 
+
+1. Starten Sie einen Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com). Melden Sie sich mit Ihrem Azure-Benutzernamen und -Kennwort an. 
+2. Klicken Sie im Menü auf der linken Seite auf **Weitere Dienste >**, filtern Sie nach dem Schlüsselwort **Speicher**, und wählen Sie **Speicherkonten**.
+
+    ![Suchen nach einem Speicherkonto](media/quickstart-create-data-factory-dot-net/search-storage-account.png)
+3. Filtern Sie in der Liste mit den Speicherkonten nach Ihrem Speicherkonto (falls erforderlich), und wählen Sie **Ihr Speicherkonto** aus. 
+4. Wählen Sie auf der Seite **Speicherkonto** im Menü die Option **Zugriffsschlüssel**.
+
+    ![Abrufen des Speicherkontonamens und -schlüssels](media/quickstart-create-data-factory-dot-net/storage-account-name-key.png)
+5. Kopieren Sie die Werte für die Felder **Speicherkontoname** und **key1** in die Zwischenablage. Fügen Sie sie in einen Editor ein, und speichern Sie sie.  
+
+#### <a name="create-input-folder-and-files"></a>Erstellen des Eingabeordners und der Dateien
+In diesem Abschnitt erstellen Sie einen Blobcontainer mit dem Namen **adftutorial** in Ihrem Azure-Blobspeicher. Anschließend erstellen Sie den Ordner **Eingabe** im Container und laden eine Beispieldatei in den Eingabeordner hoch. 
+
+1. Wechseln Sie auf der Seite **Speicherkonto** zu **Übersicht**, und klicken Sie dann auf **Blobs**. 
+
+    ![Option zum Auswählen von Blobs](media/quickstart-create-data-factory-dot-net/select-blobs.png)
+2. Klicken Sie auf der Seite **Blob-Dienst** auf der Symbolleiste auf **+ Container**. 
+
+    ![Schaltfläche „Container hinzufügen“](media/quickstart-create-data-factory-dot-net/add-container-button.png)    
+3. Geben Sie im Dialogfeld **Neuer Container** als Namen **adftutorial** ein, und klicken Sie auf **OK**. 
+
+    ![Eingeben des Containernamens](media/quickstart-create-data-factory-dot-net/new-container-dialog.png)
+4. Klicken Sie in der Liste der Container auf **adftutorial**. 
+
+    ![Auswählen des Containers](media/quickstart-create-data-factory-dot-net/select-adftutorial-container.png)
+1. Klicken Sie auf der Seite **Container** auf der Symbolleiste auf **Hochladen**.  
+
+    ![Schaltfläche zum Hochladen](media/quickstart-create-data-factory-dot-net/upload-toolbar-button.png)
+6. Klicken Sie auf der Seite **Blob hochladen** auf **Erweitert**.
+
+    ![Klicken auf den Link „Erweitert“](media/quickstart-create-data-factory-dot-net/upload-blob-advanced.png)
+7. Starten Sie **Editor**, und erstellen Sie eine Datei mit dem Namen **emp.txt** und folgendem Inhalt: Speichern Sie sie im Ordner **c:\ADFv2QuickStartPSH**: Erstellen Sie den Ordner **ADFv2QuickStartPSH**, sofern er noch nicht vorhanden ist.
+    
+    ```
+    John, Doe
+    Jane, Doe
+    ```    
+8. Wählen Sie im Azure-Portal auf der Seite **Blob hochladen** im Feld **Dateien** die Datei **emp.txt** aus. 
+9. Geben Sie für das Feld **In Ordner hochladen** den Wert **Eingabe** ein. 
+
+    ![Einstellungen für das Hochladen von Blobs](media/quickstart-create-data-factory-dot-net/upload-blob-settings.png)    
+10. Vergewissern Sie sich, dass als Ordner **Eingabe** und als Datei **emp.txt** ausgewählt ist, und klicken Sie auf **Hochladen**.
+11. Daraufhin sollten in der Liste die Datei **emp.txt** und der Status des Uploads angezeigt werden. 
+12. Schließen Sie die Seite **Blob hochladen**, indem Sie in der Ecke auf **X** klicken. 
+
+    ![Schließen der Seite „Blob hochladen“](media/quickstart-create-data-factory-dot-net/close-upload-blob.png)
+1. Lassen Sie die Seite **Container** geöffnet. Sie überprüfen darauf am Ende dieser Schnellstartanleitung die Ausgabe.
+
+### <a name="visual-studio"></a>Visual Studio
+In der exemplarischen Vorgehensweise in diesem Artikel wird Visual Studio 2017 verwendet. Sie können auch Visual Studio 2013 oder 2015 verwenden.
+
+### <a name="azure-net-sdk"></a>Azure .NET SDK
+Laden Sie das [Azure .NET SDK](http://azure.microsoft.com/downloads/) auf Ihren Computer herunter, und installieren Sie es.
+
+### <a name="create-an-application-in-azure-active-directory"></a>Erstellen einer Anwendung in Azure Active Directory
+Befolgen Sie zum Ausführen der folgenden Aufgaben die Anweisungen in [diesem Artikel](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application): 
+
+1. **Erstellen Sie eine Azure Active Directory-Anwendung.** Erstellen Sie eine Anwendung in Azure Active Directory, die die .NET-Anwendung darstellt, die Sie in diesem Tutorial erstellen. Als Anmelde-URL können Sie wie in diesem Artikel gezeigt eine Platzhalter-URL (`https://contoso.org/exampleapp`) angeben.
+2. Rufen Sie die **Anwendungs-ID** und den **Authentifizierungsschlüssel**** anhand der Anweisungen im Abschnitt **Abrufen der Anwendungs-ID und des Authentifizierungsschlüssels** im genannten Artikel ab. Notieren Sie sich diese Werte, da Sie sie später in diesem Tutorial benötigen. 
+3. Rufen Sie die **Mandanten-ID** anhand der Anweisungen im Abschnitt **Abrufen der Mandanten-ID** im genannten Artikel ab. Notieren Sie sich diesen Wert. 
+4. Weisen Sie die Anwendung der Rolle **Mitwirkender** auf Abonnementebene zu, damit die Anwendung Data Factorys im Abonnement erstellen kann. Befolgen Sie die Anweisungen im Abschnitt **Zuweisen einer Anwendung zur Rolle** im genannten Artikel. 
 
 ## <a name="create-a-visual-studio-project"></a>Erstellen eines Visual Studio-Projekts
 
@@ -253,7 +321,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>Überwachen einer Pipelineausführung
 
-1. Fügen Sie der **Main**-Methode den folgenden Code hinzu, um den Status der Pipelineausführung kontinuierlich zu überwachen, bis die Pipeline das Kopieren der Daten beendet hat.
+1. Fügen Sie der **Main**-Methode den folgenden Code hinzu, um den Status kontinuierlich zu überwachen, bis die Pipeline das Kopieren der Daten beendet hat.
 
     ```csharp
     // Monitor the pipeline run
@@ -397,8 +465,18 @@ Checking copy activity run details...
 }
 
 Press any key to exit...
-
 ```
+
+## <a name="verify-the-output"></a>Überprüfen der Ausgabe
+Die Pipeline erstellt den Ausgabeordner automatisch im Blobcontainer „adftutorial“. Anschließend wird die Datei „emp.txt“ aus dem Eingabe- in den Ausgabeordner kopiert. 
+
+1. Klicken Sie im Azure-Portal auf der Seite des Containers **adftutorial** auf **Aktualisieren**, um den Ausgabeordner anzuzeigen. 
+    
+    ![Aktualisieren](media/quickstart-create-data-factory-dot-net/output-refresh.png)
+2. Klicken Sie in der Ordnerliste auf **Ausgabe**. 
+2. Überprüfen Sie, ob die Datei **emp.txt** in den Ausgabeordner kopiert wurde. 
+
+    ![Aktualisieren](media/quickstart-create-data-factory-dot-net/output-file.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Um die Data Factory programmgesteuert zu löschen, fügen Sie die folgenden Codezeilen zum Programm hinzu: 

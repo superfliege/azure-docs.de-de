@@ -13,24 +13,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 9f7fdb97fd121eecf9e7b2f4edc1b568c8114869
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0a3fca0c7d36122a09c825a3ed8edf11cc362b8b
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-ad-password-reset-from-the-login-screen"></a>Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
 Sie haben die Azure AD-Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) bereits bereitgestellt, aber die Benutzer wenden sich weiterhin per Telefon an den Helpdesk, wenn sie ihr Kennwort vergessen haben. Sie rufen den Helpdesk an, weil sie keinen Webbrowser zum Zugreifen auf SSPR nutzen können.
 
-Mit dem neuen Windows 10 Fall Creators Update wird Benutzern mit in Azure AD eingebundenen Geräten auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn die Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung. 
+Mit dem neuen Windows 10 Fall Creators Update wird Benutzern mit in Azure AD eingebundenen Geräten auf dem Anmeldebildschirm der Link „Kennwort zurücksetzen“ angezeigt. Wenn die Benutzer auf diesen Link klicken, gelangen sie zur vertrauten Benutzeroberfläche für die Self-Service-Kennwortzurücksetzung.
 
 Die folgenden Voraussetzungen müssen erfüllt sein, damit Benutzer ihr Azure AD-Kennwort über den Windows 10-Anmeldebildschirm zurücksetzen können:
 
-* Windows 10, Version 1709, oder neuerer Client, der in die Azure AD-Domäne eingebunden ist.
+* Windows 10, Version 1709, oder neuerer Client, der [in Azure AD eingebunden](device-management-azure-portal.md) ist.
 * Die Azure AD-Self-Service-Kennwortzurücksetzung muss aktiviert sein.
 * Führen Sie das Konfigurieren und Bereitstellen der Einstellung zum Aktivieren des Links „Kennwort zurücksetzen“ durch, indem Sie eine der folgenden Methoden verwenden:
    * [Profil für Intune-Gerätekonfiguration](active-directory-passwords-login.md#configure-reset-password-link-using-intune)
@@ -90,7 +90,7 @@ Sie haben jetzt eine Richtlinie für die Gerätekonfiguration erstellt und zugew
 
 Es wird empfohlen, diese Methode nur zum Testen der Einstellungsänderung zu verwenden.
 
-1. Melden Sie sich mit Administratoranmeldeinformationen an dem Gerät an, das in die Azure AD-Domäne eingebunden ist.
+1. Melden Sie sich mit Administratoranmeldeinformationen an dem Gerät an, das in Azure AD eingebunden ist.
 2. Führen Sie den Befehl **regedit** als Administrator aus.
 3. Legen Sie den folgenden Registrierungsschlüssel fest:
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -104,7 +104,7 @@ Was ändert sich für die Benutzer, nachdem die Richtlinie nun konfiguriert und 
 
 Wenn Benutzer versuchen, sich anzumelden, wird jetzt der Link „Kennwort zurücksetzen“ angezeigt. Mit diesem Link wird die Oberfläche für die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm geöffnet. Mit dieser Funktion können Benutzer ihr Kennwort zurücksetzen, ohne ein anderes Gerät für den Zugriff auf einen Webbrowser verwenden zu müssen.
 
-Eine Anleitung für Benutzer zur Verwendung dieses Features befindet sich unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md#reset-password-at-login).
+Eine Anleitung für Benutzer zur Verwendung dieses Features befindet sich unter [Ich habe mein Azure AD-Kennwort vergessen. Was nun?](active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in).
 
 ## <a name="common-issues"></a>Häufige Probleme
 

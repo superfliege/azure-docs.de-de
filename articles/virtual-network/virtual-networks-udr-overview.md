@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 18169b86d10b589a5c8b707596d5f62813e9efe2
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 8a80220879db9f0030b9f1a8494b1cc24105ef17
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -118,7 +118,7 @@ Der Name, der für Typen des nächsten Hops angezeigt und referenziert wird, unt
 
 Ein Gateway des lokalen Netzwerks kann Routen mit einem Gateway des virtuellen Azure-Netzwerks austauschen, indem das Border Gateway Protocol (BGP) verwendet wird. Die Nutzung von BGP mit einem Gateway des virtuellen Azure-Netzwerks ist abhängig von dem Typ, den Sie beim Erstellen des Gateways ausgewählt haben. Für die Auswahl des Typs gilt Folgendes:
 
-- **ExpressRoute**: Sie müssen BGP verwenden, um Routen zum Microsoft-Edgerouter anzukündigen. Sie können keine benutzerdefinierten Routen erstellen, wenn Sie ein Gateway für virtuelle Netzwerke mit dem Typ „ExpressRoute“ bereitstellen.
+- **ExpressRoute**: Sie müssen BGP verwenden, um lokale Routen zum Microsoft-Edgerouter anzukündigen. Sie können keine benutzerdefinierten Routen zur Weiterleitung des Datenverkehrs zum ExpressRoute-Gateway für virtuelle Netzwerke erstellen, wenn Sie ein Gateway für virtuelle Netzwerke mit dem Typ „ExpressRoute“ bereitstellen. Sie können benutzerdefinierte Routen beispielsweise zur Weiterleitung des Datenverkehrs von ExpressRoute zum virtuellen Netzwerkgerät verwenden. 
 - **VPN**: Optional können Sie BGP verwenden. Ausführliche Informationen finden Sie unter [Übersicht über BGP mit Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Wenn Sie Routen mit Azure per BGP austauschen, wird der Routentabelle aller Subnetze in einem virtuellen Netzwerk für jedes angekündigte Präfix eine separate Route hinzugefügt. Die Route wird mit *Gateway für virtuelle Netzwerke* als Quelle und Typ des nächsten Hops hinzugefügt. 

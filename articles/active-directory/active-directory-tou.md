@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 11/17/2017
 ms.author: billmath
-ms.openlocfilehash: b6318b419a0ea87fd1fb56656b1161909876f338
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf7b64bd956c236f5c70bb7dcd209ecdcd7176dd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Nutzungsbedingungsfeature (Vorschauversion) für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen.  Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen.
@@ -43,7 +43,8 @@ Führen Sie zum Konfigurieren der Azure AD-Nutzungsbedingungen die folgenden Sch
 2. Vergewissern Sie sich, dass das Verzeichnis über einen der folgenden Azure AD-Abonnementtypen verfügt: Premium P1, P2, EMS E3 oder EMS E5.  Holen Sie sich andernfalls [Azure AD Premium](active-directory-get-started-premium.md), oder verwenden Sie eine [Testversion](https://azure.microsoft.com/trial/get-started-active-directory/).
 3. Zeigen Sie unter [https://aka.ms/catou](https://aka.ms/catou) das Dashboard für Azure AD-Nutzungsbedingungen an.
 
-
+>[!IMPORTANT]
+>Die Richtlinie für den bedingten Zugriff (einschließlich Nutzungsbedingungen) unterstützt die Erzwingung für Dienstkonten nicht.  Es wird empfohlen, alle Dienstkonten von der Richtlinie für den bedingten Zugriff auszuschließen.
 
 ## <a name="add-company-terms-of-use"></a>Hinzufügen von Unternehmensnutzungsbedingungen
 Gehen Sie nach Fertigstellung Ihrer Nutzungsbedingungen wie folgt vor, um sie hinzuzufügen.
@@ -92,7 +93,6 @@ Wenn Nutzungsbedingungen erstellt und erzwungen wurden, wird den betroffenen Ben
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 Folgende Informationen können bei der Verwendung von Nutzungsbedingungen hilfreich sein.
-
 
 Betroffene Benutzer müssen sich zur Erfüllung einer neuen Richtlinie ab- und wieder anmelden, wenn Folgendes zutrifft:
  - Für eine Nutzungsbedingung wird eine Richtlinie für den bedingten Zugriff aktiviert. Oder:

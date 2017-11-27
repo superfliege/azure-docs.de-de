@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/02/2017
+ms.date: 11/17/2017
 ms.author: cherylmc
-ms.openlocfilehash: 46037efe0e2c30337d76790c46c16e300bfffd5f
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9bcad8ed57980b08e0290e0272a5ff9de46f11a0
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
@@ -59,13 +59,17 @@ Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Art
 
 ## <a name="which-set-of-steps-should-i-use"></a>Welche Schritte soll ich ausführen?
 
-In diesem Artikel finden Sie zwei unterschiedliche Anleitungen: eine Reihe von Schritten für [VNets, die sich in demselben Abonnement befinden](#samesub), und eine weitere für [VNets, die sich in verschiedenen Abonnements befinden](#difsub). Der wichtigste Unterschied zwischen den beiden Anleitungen besteht darin, ob Sie alle virtuellen Netzwerk- und Gatewayressourcen innerhalb derselben PowerShell-Sitzung erstellen und konfigurieren können.
-
-In den Schritten in diesem Artikel werden Variablen verwendet, die am Anfang jedes Abschnitts deklariert werden. Wenn Sie bereits mit vorhandenen VNets arbeiten, ändern Sie die Variablen entsprechend den Einstellungen Ihrer eigenen Umgebung. Wenn Sie eine Namensauflösung für die virtuellen Netzwerke verwenden möchten, helfen Ihnen die Informationen unter [Namensauflösung](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) weiter.
-
-## <a name="samesub"></a>Verbinden von VNets in demselben Abonnement
+In diesem Artikel finden Sie zwei unterschiedliche Anleitungen: Eine Reihe von Schritten für [VNETs, die sich im selben Abonnement befinden](#samesub). Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet4.
 
 ![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
+
+Für [VNETs in verschiedenen Abonnements](#difsub) gibt es einen separaten Artikel. Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet5.
+
+![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
+
+Der wichtigste Unterschied zwischen den beiden Anleitungen besteht darin, ob Sie alle virtuellen Netzwerk- und Gatewayressourcen innerhalb derselben PowerShell-Sitzung erstellen und konfigurieren können. Verwenden Sie separate PowerShell-Sitzungen, wenn Sie die Verbindungen für VNETs konfigurieren, die sich in verschiedenen Abonnements befinden. Sie können Konfigurationen kombinieren, wenn Sie möchten, oder einfach nur die zu verwendende Konfiguration auswählen.
+
+## <a name="samesub"></a>Verbinden von VNets in demselben Abonnement
 
 ### <a name="before-you-begin"></a>Voraussetzungen
 
@@ -90,7 +94,7 @@ In den Beispielen werden die folgenden Werte verwendet:
 * Öffentliche IP-Adresse: VNet1GWIP
 * VPNType: RouteBased
 * Verbindung (1to4): VNet1toVNet4
-* Verbindung (1to5): VNet1toVNet5
+* Connection(1to5): VNet1toVNet5 (für VNETs in verschiedenen Abonnements)
 * ConnectionType: VNet2VNet
 
 **Werte für TestVNet4:**
@@ -279,8 +283,6 @@ Nachdem Sie TestVNet1 konfiguriert haben, erstellen Sie TestVNet4. Führen Sie d
 4. Überprüfen Sie die Verbindung. Informationen hierzu finden Sie im Abschnitt [Überprüfen der Verbindung](#verify).
 
 ## <a name="difsub"></a>Verbinden von VNets aus unterschiedlichen Abonnements
-
-![v2v-Diagramm](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 In diesem Szenario verbinden wir TestVNet1 und TestVNet5. TestVNet1 und TestVNet5 befinden sich in unterschiedlichen Abonnements. Die Abonnements müssen nicht demselben Active Directory-Mandanten zugeordnet werden. Der Unterschied zwischen diesen und den vorherigen Schritten besteht darin, dass ein Teil der Konfigurationsschritte in einer separaten PowerShell-Sitzung im Kontext des zweiten Abonnements ausgeführt werden muss. Dies gilt insbesondere dann, wenn die beiden Abonnements unterschiedlichen Organisationen gehören.
 

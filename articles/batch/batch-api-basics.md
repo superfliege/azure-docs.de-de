@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 10/12/2017
+ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e9f098bedf2c4dfb27a27d028b7bd87782516c7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 3028e913937db304ac0a1df8e6a095072630505d
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -75,7 +75,7 @@ Ein Azure Batch-Konto können Sie über das [Azure-Portal](batch-account-create-
 Sie können mehrere Batch-Workloads in einem Batch-Konto ausführen oder Ihre Workloads auf Batch-Konten in demselben Abonnement, aber verschiedenen Azure-Regionen aufteilen.
 
 > [!NOTE]
-> Wenn Sie ein Batch-Konto erstellen, sollten Sie im Allgemeinen den Standardmodus **Batch-Dienst** verwenden, in dem Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet werden. Die Alternative (der Modus **Benutzerabonnement**) wird nicht mehr empfohlen. In diesem Modus werden virtuelle Batch-Computer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, müssen Sie das Konto auch einer Azure Key Vault-Instanz zuordnen.
+> Wenn Sie ein Batch-Konto erstellen, sollten Sie im Allgemeinen den Standardmodus **Batch-Dienst** verwenden, in dem Pools im Hintergrund in von Azure verwalteten Abonnements zugeordnet werden. Die Alternative (der Modus **Benutzerabonnement**) wird für die meisten Szenarien nicht mehr empfohlen. In diesem Modus werden virtuelle Batch-Computer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Wenn Sie ein Batch-Konto im Benutzerabonnementmodus erstellen möchten, müssen Sie auch Ihr Abonnement in Azure Batch registrieren und das Konto einer Azure Key Vault-Instanz zuordnen.
 >
 
 
@@ -150,7 +150,9 @@ Ausführliche Informationen zu den Anforderungen und Schritten finden Sie unter 
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Containerunterstützung in VM-Pools
 
-Wenn Sie mithilfe der Batch-APIs einen VM-Konfigurationspool erstellen, können Sie den Pool zum Ausführen von Aufgaben in Docker-Containern einrichten. Aktuell müssen Sie den Pool unter Verwendung des Images „Windows Server 2016 Datacenter mit Containern“ aus dem Azure Marketplace erstellen oder ein benutzerdefiniertes VM-Image mit Docker Community Edition und allen erforderlichen Treibern bereitstellen. Die Pooleinstellungen müssen eine [Containerkonfiguration](/rest/api/batchservice/pool/add#definitions_containerconfiguration) enthalten, die bei der Poolerstellung Containerimages auf die virtuellen Computer kopiert. Für den Pool ausgeführte Aufgaben können dann auf die Containerimages und auf die Containerausführungsoptionen verweisen.
+Wenn Sie mithilfe der Batch-APIs einen VM-Konfigurationspool erstellen, können Sie den Pool zum Ausführen von Aufgaben in Docker-Containern einrichten. Derzeit müssen Sie den Pool unter Verwendung eines Images erstellen, das Docker-Container unterstützt. Verwenden Sie das Image „Windows Server 2016 Datacenter mit Containern“ aus dem Azure Marketplace, oder stellen Sie ein benutzerdefiniertes VM-Image mit Docker Community Edition oder Enterprise Edition und allen erforderlichen Treibern bereit. Die Pooleinstellungen müssen eine [Containerkonfiguration](/rest/api/batchservice/pool/add#definitions_containerconfiguration) enthalten, die bei der Poolerstellung Containerimages auf die virtuellen Computer kopiert. Für den Pool ausgeführte Aufgaben können dann auf die Containerimages und auf die Containerausführungsoptionen verweisen.
+
+Weitere Informationen finden Sie unter [Ausführen von Docker-Containeranwendungen in Azure Batch](batch-docker-container-workloads.md).
 
 ## <a name="compute-node-type-and-target-number-of-nodes"></a>Art des Serverknotens und vorgegebene Anzahl von Knoten
 

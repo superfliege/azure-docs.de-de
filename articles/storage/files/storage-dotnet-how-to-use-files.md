@@ -12,24 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/19/2017
+ms.date: 11/22/2017
 ms.author: renash
-ms.openlocfilehash: 51180530790fc0077cea4d8aea7088f1f871681b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 66a68a1ca048b50b8e2ba4ac1bb86d367b8a5bb9
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/23/2017
 ---
-# <a name="develop-for-azure-files-with-net"></a>Entwickeln für Azure Files mit .NET 
-> [!NOTE]
-> In diesem Artikel erfahren Sie, wie Sie Azure Files mit .NET-Code verwalten. Weitere Informationen zu Azure Files finden Sie in der [Einführung in Azure Files](storage-files-introduction.md).
->
+# <a name="develop-for-azure-files-with-net-and-windowsazurestorage"></a>Entwickeln für Azure Files mit .NET und WindowsAzure.Storage
 
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
-
-Dieses Tutorial veranschaulicht die grundlegende Verwendung von .NET bei der Entwicklung von Anwendungen oder Diensten, die Azure Files zum Speichern von Dateidaten verwenden. In diesem Tutorial erstellen wir eine einfache Konsolenanwendung und zeigen, wie Sie grundlegende Aktionen mit .NET und Azure Files ausführen:
+Dieses Tutorial veranschaulicht die grundlegende Verwendung von .NET und der `WindowsAzure.Storage`-API bei der Entwicklung von Anwendungen, die [Azure Files](storage-files-introduction.md) zum Speichern von Dateidaten verwenden. In diesem Tutorial wird eine einfache Konsolenanwendung erstellt, mit der grundlegende Aktionen mit .NET und Azure Files ausgeführt werden:
 
 * Abrufen der Inhalte einer Datei
 * Festlegen des Kontingents (maximale Größe) für die Dateifreigabe
@@ -38,9 +33,21 @@ Dieses Tutorial veranschaulicht die grundlegende Verwendung von .NET bei der Ent
 * Kopieren einer Datei in ein Blob im gleichen Speicherkonto
 * Verwenden von Azure-Speichermetriken für die Problembehandlung
 
-> [!Note]  
-> Da auf Azure Files über SMB zugegriffen werden kann, können Sie unter Verwendung der System.IO-Standardklassen für die Dateieingabe/-ausgabe einfache Anwendungen mit Zugriff auf die Azure-Dateifreigabe schreiben. In diesem Artikel erfahren Sie, wie Sie Anwendungen schreiben, für die das Azure Storage .NET SDK verwendet wird, das über die [Datei-REST-API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) mit Azure Files kommuniziert. 
+Weitere Informationen zu Azure Files finden Sie in der [Einführung in Azure Files](storage-files-introduction.md).
 
+[!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
+
+## <a name="understanding-the-net-apis"></a>Grundlegendes zu den .NET-APIs
+
+Azure Files bietet zwei allgemeine Ansätze für Clientansätze: Server Message Block (SMB) und REST. Innerhalb von .NET werden diese Ansätze von den APIs `System.IO` und `WindowsAzure.Storage` abstrahiert.
+
+API | Einsatzgebiete | Hinweise
+----|-------------|------
+[System.IO](https://docs.microsoft.com/dotnet/api/system.io) | Ihre Anwendung: <ul><li>Muss Dateien über SMB lesen/schreiben</li><li>Wird auf einem Gerät ausgeführt, das über Port 445 Zugriff auf Ihr Azure Files-Konto hat</li><li>Muss keine Verwaltungseinstellungen der Dateifreigabe verwalten</li></ul> | Die Codierung von Datei-E/A-Vorgängen mit Azure Files über SMB entspricht im Allgemeinen der Codierung von E/A-Vorgängen mit einer beliebigen Netzwerkdateifreigabe oder einem beliebigen lokalen Speichergerät. Eine Einführung in eine Reihe von Funktionen in .NET (einschließlich Datei-E/A) finden Sie in [diesem Tutorial](https://docs.microsoft.com/dotnet/csharp/tutorials/console-teleprompter).
+[WindowsAzure.Storage](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet#client-library) | Ihre Anwendung: <ul><li>Kann aufgrund von Firewall- oder ISP-Einschränkungen nicht über SMB an Port 445 auf Azure Files zugreifen</li><li>Benötigt Verwaltungsfunktionen, etwa die Möglichkeit, das Kontingent einer Dateifreigabe festzulegen oder eine SAS (Shared Access Signature) zu erstellen</li></ul> | Dieser Artikel veranschaulicht die Verwendung von `WindowsAzure.Storage` für Datei-E/A-Vorgänge über REST (anstelle von SMB) sowie die Verwaltung der Dateifreigabe.
+
+> [!TIP]
+> Abhängig von den Anforderungen der Anwendung eignet sich Azure Blobs unter Umständen besser als Speicher. Weitere Informationen zur Entscheidung zwischen Azure Files und Azure Blobs finden Sie unter [Entscheidung zwischen Azure-Blobs, Azure Files und Azure-Datenträger](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 ## <a name="create-the-console-application-and-obtain-the-assembly"></a>Erstellen der Konsolenanwendung und Erhalten der Assembly
 Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2017 erstellen. Die Schritte in anderen Versionen von Visual Studio sind aber ähnlich.
