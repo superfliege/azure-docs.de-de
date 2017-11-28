@@ -54,39 +54,39 @@ Die folgenden Felder gelten für die Absturzabbildbeispiele weiter unten in dies
 * PROCESSNAME: Name des abstürzenden Prozesses
 * PROCESSVERSION: Version des abstürzenden Prozesses
 
-### <a name="code-injection-discovered"></a>Erkennung einer Codeeinschleusung
-Codeeinschleusung ist das Einfügen von ausführbaren Modulen in aktive Prozesse oder Threads.  Diese Technik wird von Schadsoftware genutzt, um auf Daten zuzugreifen, Daten auszublenden oder ihre Entfernung zu verhindern (z. B. Persistenz). Die Warnung weist darauf hin, dass ein eingefügtes Modul im Absturzabbild vorhanden ist. Seriöse Softwareentwickler führen gelegentlich eine Codeeinschleusung aus nicht böswilligen Gründen durch, beispielsweise zum Ändern oder Erweitern einer vorhandenen Anwendung oder Betriebssystemkomponente.  Zur Unterscheidung zwischen schädlichen und nicht schädlichen eingefügten Modulen überprüft Azure Security Center, ob das eingefügte Modul einem verdächtigen Verhaltensprofil entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt. 
+### <a name="code-injection-discovered"></a>Erkennung einer Codeinjektion
+Codeinjektion ist das Einfügen von ausführbaren Modulen in aktive Prozesse oder Threads.  Diese Technik wird von Schadsoftware genutzt, um auf Daten zuzugreifen, Daten auszublenden oder ihre Entfernung zu verhindern (z. B. Persistenz). Die Warnung weist darauf hin, dass ein injiziertes Modul im Absturzabbild vorhanden ist. Seriöse Softwareentwickler führen gelegentlich eine Codeinjektion aus nicht böswilligen Gründen durch, beispielsweise zum Ändern oder Erweitern einer vorhandenen Anwendung oder Betriebssystemkomponente.  Zur Unterscheidung zwischen schädlichen und nicht schädlichen injizierten Modulen überprüft Azure Security Center, ob das injizierte Modul einem verdächtigen Verhaltensprofil entspricht. Das Ergebnis dieser Überprüfung wird im Feld „SIGNATURE“ der Warnung angegeben und im Schweregrad der Warnung, der Warnungsbeschreibung und der Schritte zur Behebung der Warnung widergespiegelt. 
 
 Die Warnung enthält die folgenden zusätzlichen Felder:
 
-- ADDRESS: Der Speicherort im Arbeitsspeicher des eingefügten Moduls.
-- IMAGENAME: Der Name des eingefügten Moduls. Beachten Sie, dass dieses Feld leer sein kann, wenn der Imagename nicht im Image angegeben ist.
-- SIGNATURE: Gibt an, ob das eingefügte Modul einem verdächtigen Verhaltensprofil entspricht. 
+- ADDRESS: Der Speicherort im Arbeitsspeicher des injizierten Moduls.
+- IMAGENAME: Der Name des injizierten Moduls. Beachten Sie, dass dieses Feld leer sein kann, wenn der Imagename nicht im Image angegeben ist.
+- SIGNATURE: Gibt an, ob das injizierte Modul einem verdächtigen Verhaltensprofil entspricht. 
 
 Die folgende Tabelle enthält Beispiele für Ergebnisse und deren Beschreibung:
 
 | Signaturwert                      | Beschreibung                                                                                                       |
 |--------------------------------------|-------------------------------------------------------------------------------------------------------------------|
-| Verdächtiger reflektierender Ladeprogramm-Exploit | Dieses verdächtige Verhalten hängt oft mit unabhängig vom Ladeprogramm des Betriebssystems erfolgtem Laden von eingeschleustem Code zusammen. |
-| Verdächtiger eingefügter Exploit          | Weist auf böswillige Aktivitäten hin, die oft mit dem Einschleusen von Code in den Arbeitsspeicher zusammenhängen.                                       |
-| Verdächtiger einfügender Exploit         | Weist auf böswillige Aktivitäten hin, die oft mit der Verwendung von eingeschleustem Code im Arbeitsspeicher zusammenhängen.                                   |
-| Verdächtiger eingefügter Debugger-Exploit | Weist auf böswillige Aktivitäten hin, die oft mit der Erkennung oder Umgehung eines Debuggers zusammenhängen.                         |
-| Verdächtiger eingefügter Remote-Exploit   | Weist auf böswillige Aktivitäten hin, die oft mit Szenarien mit n-Befehlssteuerung (C2) zusammenhängen.                                 |
+| Suspicious reflective loader exploit (Verdächtiger Reflective-Loader-Exploit) | Dieses verdächtige Verhalten hängt oft mit unabhängig vom Ladeprogramm des Betriebssystems erfolgtem Laden von injiziertem Code zusammen. |
+| Suspicious injected exploit (Verdächtiger injizierter Exploit)          | Weist auf böswillige Aktivitäten hin, die oft mit dem Injizieren von Code in den Arbeitsspeicher zusammenhängen.                                       |
+| Suspicious injecting exploit (Verdächtiger injizierender Exploit)         | Weist auf böswillige Aktivitäten hin, die oft mit der Verwendung von injiziertem Code im Arbeitsspeicher zusammenhängen.                                   |
+| Suspicious injected debugger exploit (Verdächtiger injizierter Debuggerexploit) | Weist auf böswillige Aktivitäten hin, die oft mit der Erkennung oder Umgehung eines Debuggers zusammenhängen.                         |
+| Suspicious injected remote exploit (Verdächtiger injizierter Remoteexploit)   | Weist auf böswillige Aktivitäten hin, die oft mit Szenarien mit n-Befehlssteuerung (C2) zusammenhängen.                                 |
 
 Hier sehen Sie ein Beispiel für diese Art von Warnung:
 
-![Warnung zur Codeeinschleusung](./media/security-center-alerts-type/security-center-alerts-type-fig21.png)
+![Warnung zur Codeinjektion](./media/security-center-alerts-type/security-center-alerts-type-fig21.png)
 
 ### <a name="suspicious-code-segment"></a>Verdächtiges Codesegment
-Die Warnung zu einem verdächtigen Codesegment weist darauf hin, dass ein Codesegment mit nicht standardmäßigen Methoden zugeordnet wurde, beispielsweise durch reflektierende Einschleusung und Prozessaushöhlung.  Diese Warnung verarbeitet zudem weitere Merkmale des Codesegments, um Kontext im Hinblick auf die Funktionen und das Verhalten des gemeldeten Codesegments bereitzustellen.
+Die Warnung zu einem verdächtigen Codesegment weist darauf hin, dass ein Codesegment mit nicht standardmäßigen Methoden zugeordnet wurde, beispielsweise durch reflektierende Injektion und Prozessaushöhlung.  Diese Warnung verarbeitet zudem weitere Merkmale des Codesegments, um Kontext im Hinblick auf die Funktionen und das Verhalten des gemeldeten Codesegments bereitzustellen.
 
 Die Warnung enthält die folgenden zusätzlichen Felder:
 
-- ADDRESS: Der Speicherort im Arbeitsspeicher des eingefügten Moduls.
+- ADDRESS: Der Speicherort im Arbeitsspeicher des injizierten Moduls.
 - SIZE: Die Größe des verdächtigen Codesegments.
 - STRINGSIGNATURES: In diesem Feld sind Funktionen von APIs aufgeführt, deren Funktionsnamen im Codesegment enthalten sind. Dazu können beispielsweise folgende Funktionen zählen:
-    - Beschreibungen von Imageabschnitten, dynamische Codeausführung für x64, Speicherbelegung und Ladeprogrammfunktion, Funktion für Remotecodeeinschleusung, Hijacking-Steuerungsfunktion, Lesen von Umgebungsvariablen, Lesen von beliebigen Prozessspeicherbereichen, Abfrage- oder Tokenänderungsrechte, HTTP-/HTTPS-Netzwerkkommunikation und Netzwerksocketkommunikation
-- IMAGEDETECTED: Dieses Feld gibt an, ob ein PE-Image in den Prozess, in dem das verdächtige Codesegment erkannt wurde, eingefügt wurde, und bei welcher Adresse das eingefügte Modul beginnt.
+    - Beschreibungen von Imageabschnitten, dynamische Codeausführung für x64, Speicherbelegung und Ladeprogrammfunktion, Funktion für Remotecodeinjektion, Hijacking-Steuerungsfunktion, Lesen von Umgebungsvariablen, Lesen von beliebigen Prozessspeicherbereichen, Abfrage- oder Tokenänderungsrechte, HTTP-/HTTPS-Netzwerkkommunikation und Netzwerksocketkommunikation
+- IMAGEDETECTED: Dieses Feld gibt an, ob ein PE-Image in den Prozess, in dem das verdächtige Codesegment erkannt wurde, injiziert wurde, und bei welcher Adresse das injizierte Modul beginnt.
 - SHELLCODE: Dieses Feld zeigt das Vorhandensein von Verhalten an, das im Allgemeinen von böswilligen Nutzlasten verwendet wird, um Zugriff auf zusätzliche sicherheitsrelevante Betriebssystemfunktionen zu erhalten. 
 
 Hier sehen Sie ein Beispiel für diese Art von Warnung:

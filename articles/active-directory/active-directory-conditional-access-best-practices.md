@@ -153,7 +153,7 @@ Szenario:
 
 - Überprüfen Sie Ihre Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung, die in Intune für Exchange Online oder SharePoint Online konfiguriert sind.
 
-- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch genehmigte Anwendungen erforderlich**** sind. 
+- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch **genehmigte Anwendungen erforderlich** sind. 
  
 
 ### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>Migrieren aus dem klassischen Azure-Portal und aus Intune
