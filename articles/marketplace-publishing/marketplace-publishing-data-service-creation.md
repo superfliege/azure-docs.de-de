@@ -33,7 +33,7 @@ Gehen Sie zu [https://publish.windowsazure.com](https://publish.windowsazure.com
 
 **Verwenden Sie bei der erstmaligen Anmeldung beim Veröffentlichungsportal das Konto, mit dem das Verkäuferprofil Ihres Unternehmens im Developer Center registriert wurde.**  (Sie können später im Veröffentlichungsportal einen beliebigen Mitarbeiter Ihres Unternehmens als Co-Administrator hinzufügen.)
 
-Klicken Sie auf die Kachel zur Veröffentlichung von Data Services, **** wenn dies Ihre erste Anmeldung beim Veröffentlichungsportal ist.
+Klicken Sie auf die Kachel **Publish a Data Services** (Data Services-Instanz veröffentlichen), wenn dies Ihre erste Anmeldung beim Veröffentlichungsportal ist.
 
 ## <a name="2----choose-data-services-in-the-navigation-menu-on-the-left-side"></a>2.    Wählen Sie im Navigationsmenü auf der linken Seite **Data Services** aus.
   ![Abbildung](media/marketplace-publishing-data-service-creation/pubportal-main-nav.png)

@@ -44,7 +44,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anomale Datenbankakt
 3. **Aktivieren Sie** auf dem Konfigurationsblatt für die **Überwachung und Bedrohungserkennung** die Überwachung. Daraufhin werden die Einstellungen für die Bedrohungserkennung angezeigt.
    
     ![Navigationsbereich][2]
-4. Aktivieren Sie **** die Bedrohungserkennung.
+4. **Aktivieren Sie** die Bedrohungserkennung.
 5. Konfigurieren Sie die Liste der E-Mail-Empfänger, die bei Erkennung anomaler Data Warehouse-Aktivitäten eine Sicherheitsbenachrichtigung erhalten sollen.
 6. Klicken Sie auf dem Blatt für die Konfiguration der **Überwachung und Bedrohungserkennung** auf **Speichern**, um die neue oder aktualisierte Richtlinie für die Überwachung und Bedrohungserkennung zu speichern.
    
@@ -55,7 +55,7 @@ So erkennt die Bedrohungserkennung beispielsweise bestimmte anomale Datenbankakt
    Die E-Mail enthält Informationen zum verdächtigen Sicherheitsereignis (wie etwa Art der anomalen Aktivitäten, Datenbankname, Servername und Zeit des Ereignisses). Darüber hinaus enthält sie Angaben zu möglichen Ursachen und empfohlenen Maßnahmen zur Untersuchung und Abwehr der potenziellen Bedrohung für die Datenbank.<br/>
    
     ![Navigationsbereich][4]
-2. Klicken Sie in der E-Mail auf den Link für das Azure SQL-Überwachungsprotokoll, **** um das klassische Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
+2. Klicken Sie in der E-Mail auf den Link für das **Azure SQL-Überwachungsprotokoll**, um das klassische Azure-Portal aufzurufen und die relevanten Überwachungsdatensätze für die Zeit des verdächtigen Ereignisses anzuzeigen.
    
     ![Navigationsbereich][5]
 3. Klicken Sie auf die Überwachungsdatensätze, um weitere Details zu den verdächtigen Datenbankaktivitäten (wie etwa SQL-Anweisung, Fehlerursache und Client-IP) anzuzeigen.
