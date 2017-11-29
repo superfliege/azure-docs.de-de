@@ -6,16 +6,16 @@
       href: how-iot-edge-works.md
 - name: Schnellstarts
   items:
-    - name: Deploy to the edge - Windows (Bereitstellen im Edge-Bereich – Windows)
-      href: quickstart.md
     - name: Deploy to the edge - Linux (Bereitstellen im Edge-Bereich – Linux)
       href: quickstart-linux.md
+    - name: Deploy to the edge - Windows (Bereitstellen im Edge-Bereich – Windows)
+      href: quickstart.md
 - name: Lernprogramme
   items:
-    - name: Simulate an Edge device - Windows (Simulieren eines Edge-Geräts – Windows)
-      href: tutorial-simulate-device-windows.md
     - name: Simulate an Edge device - Linux (Simulieren eines Edge-Geräts – Linux)
       href: tutorial-simulate-device-linux.md
+    - name: Simulate an Edge device - Windows (Simulieren eines Edge-Geräts – Windows)
+      href: tutorial-simulate-device-windows.md
     - name: 'Develop a C# module (Entwickeln eines C#-Moduls)'
       href: tutorial-csharp-module.md
     - name: Deploy Azure Stream Analytics (Bereitstellen von Azure Stream Analytics)
@@ -26,8 +26,8 @@
       href: tutorial-deploy-function.md
 - name: Anleitungen
   items:
-    - name: Create a gateway device (Erstellen eines Gatewaygeräts)
-      href: how-to-create-gateway-device.md
+    - name: Erstellen eines transparenten Gateways
+      href: how-to-create-transparent-gateway.md
     - name: Deploy and monitor at scale (Bedarfsabhängiges Bereitstellen und Überwachen)
       href: how-to-deploy-monitor.md
     - name: Provision an IoT Core device (Bereitstellen eines IoT Core-Geräts)
@@ -45,6 +45,8 @@
       href: iot-edge-runtime.md
     - name: Bereitstellungen
       href: module-deployment-monitoring.md
+    - name: IoT Edge-Gerät als Gateway
+      href: iot-edge-as-gateway.md
     - name: Sicherheit
       href: security.md
 - name: Ressourcen

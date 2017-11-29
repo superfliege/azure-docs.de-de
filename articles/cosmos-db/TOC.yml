@@ -133,6 +133,8 @@
       href: distribute-data-globally.md
     - name: Partitionierung
       href: partition-data.md
+    - name: Eindeutige Schlüssel
+      href: unique-keys.md
     - name: Konsistenz
       href: consistency-levels.md
     - name: Durchsatz

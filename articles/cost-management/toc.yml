@@ -23,6 +23,10 @@
       href: tutorial-forecast-spending.md
     - name: 4 – Verwalten von Kosten
       href: tutorial-manage-costs.md
+- name: Konzepte
+  items:
+    - name: Grundlagen zu Kostenberichten
+      href: understading-cost-reports.md
 - name: Ressourcen
   items:
     - name: Videos zur Kostenverwaltung

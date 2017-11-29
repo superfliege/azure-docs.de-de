@@ -4,6 +4,7 @@
 # Erste Schritte
 ## [Azure-Portal](data-lake-analytics-get-started-portal.md)
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+## [Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
 ## [Azure-Befehlszeilenschnittstelle](data-lake-analytics-get-started-cli2.md)
 
@@ -29,7 +30,7 @@
 ### [U-SQL-R-Erweiterungen](data-lake-analytics-u-sql-r-extensions.md)
 ### [U-SQL-Cognitive-Erweiterungen](data-lake-analytics-u-sql-cognitive.md)
 ### [Analysieren von Websiteprotokollen](data-lake-analytics-analyze-weblogs.md)
-### [U-SQL für Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
+### [Benutzerdefinierter U-SQL-Code für Visual Studio Code](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)
 
 ## Debuggen von U-SQL-Programmen
 ### [Überwachung und Problembehandlung von Aufträgen](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

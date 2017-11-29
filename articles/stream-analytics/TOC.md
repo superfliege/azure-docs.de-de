@@ -20,7 +20,7 @@
 
 ## Erstellen von Aufträgen
 ### [Erstellen von Eingaben](stream-analytics-define-inputs.md)
-### [Beispieleingabedaten](stream-analytics-sample-data-input.md)
+### [Testabfragen und Beispieleingabedaten](stream-analytics-sample-data-input.md)
 ### [Gängige Abfragemuster](stream-analytics-stream-analytics-query-patterns.md)
 ### [Fensterfunktionen](stream-analytics-window-functions.md)
 
