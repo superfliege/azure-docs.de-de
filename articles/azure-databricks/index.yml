@@ -14,7 +14,7 @@ metadata:
   ms.date: 11/15/2017
   ms.author: nitinme
 abstract:
-  description: 'Verwenden Sie den Schnellstart und die anderen hier angegebenen Links, um sich über die Nutzung von Azure Databricks zu informieren. Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die für die Microsoft Azure-Clouddienstplattform optimiert ist. Databricks wurde zusammen mit den Gründern von Apache Spark entworfen und ist in Azure integriert, um Folgendes zu ermöglichen: Einrichtung per Klick, optimierte Workflows und einen interaktiven Arbeitsbereich für die Kollaboration zwischen Data Scientists, Data Engineers und Business Analysts.'
+  description: 'Verwenden Sie den Schnellstart und die anderen hier angegebenen Links, um sich über die Nutzung von Azure Databricks zu informieren. Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die für die Microsoft Azure-Clouddienstplattform optimiert ist. Databricks wurde zusammen mit den Gründern von Apache Spark entworfen und ist in Azure integriert, um Folgendes zu ermöglichen: Einrichtung mit nur einem Klick, optimierte Workflows und einen interaktiven Arbeitsbereich für die Zusammenarbeit von Datenspezialisten, Data Engineers und Business Analysts.'
 sections:
   - title: Fünfminütige Schnellstarts
     items:
@@ -35,8 +35,8 @@ sections:
         style: ordered
         items:
           - html: '<a href="https://docs.azuredatabricks.net/user-guide/getting-started.html" target="_blank">Get started with Azure Databricks (Erste Schritte mit Azure Databricks)</a>'
-          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-blob-storage" target="_blank">Import data from Azure Storage (Importieren von Daten aus Azure Storage)</a>'
-          - hmtl: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store" target="_blank">Import data from Azure Data Lake Store</a>'
+          - html: '<a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">Import data from Azure Storage (Importieren von Daten aus Azure Storage)</a>'
+          - hmtl: '<a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>'
           - html: '<a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">Work with notebooks (Verwenden von Notebooks)</a>'
           - html: '<a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">Run Spark jobs (Ausführen von Spark-Aufträgen)</a>'
           - html: '<a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">Use Spark data sources (Verwenden von Spark-Datenquellen)</a>'
