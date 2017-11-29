@@ -1,0 +1,26 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zu Azure Migrate
+metadata:
+  title: 'Dokumentation zu Azure Migrate – Tutorials, API-Referenz | Microsoft-Dokumentation'
+  description: 'Erfahren Sie, wie Sie lokale Computer für die Migration zu Azure bewerten.'
+  services: migration-planner
+  author: rayne-wiselman
+  manager: carmonm
+  ms.service: migration
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/22/2017
+  ms.author: raynew
+abstract:
+  description: Mit Azure Migrate können Sie die Eignung lokaler Computer für die Migration zu Azure ermitteln und bewerten. Darüber hinaus werden mit diesem Dienst Größen und Kosten für die Ausführung virtueller Azure-Computer geschätzt.
+sections:
+  - title: Schritt-für-Schritt-Tutorials
+    items:
+      - type: paragraph
+        text: 'Erfahren Sie, wie Sie virtuelle VMware-Computer für die Migration zu Azure bewerten.'
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorial-assessment-vmware">Erkunden und Bewerten von lokalen virtuellen VMware-Computern</a>
