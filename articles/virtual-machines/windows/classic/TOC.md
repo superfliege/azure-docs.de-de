@@ -7,7 +7,7 @@
 ## [Container](../../virtual-machines-windows-containers.md)
 
 # Erste Schritte
-## [Create a VM using Azure portal](tutorial.md) (Erstellen eines virtuellen Computers über das Azure-Portal)
+## [Erstellen eines virtuellen Computers über das Azure-Portal](tutorial.md)
 ## [Anmelden an einer VM](connect-logon.md)
 ## [Installieren von Azure PowerShell](/powershell/azure/overview)
 ## [Installieren der Azure-Befehlszeilenschnittstelle](../../../cli-install-nodejs.md)

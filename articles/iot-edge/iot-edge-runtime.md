@@ -23,7 +23,7 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 * Installieren und Aktualisieren von Workloads auf dem Gerät
 * Aufrechterhalten von Azure IoT Edge-Sicherheitsstandards auf dem Gerät
-* Sicherstellen, dass die [IoT Edge-Module][Understand Azure IoT Edge modules - preview] immer ausgeführt werden
+* Sicherstellen, dass die [IoT Edge-Module][Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau] immer ausgeführt werden
 * Melden der Modulintegrität an die Cloud für die Remoteüberwachung
 * Ermöglichen der Kommunikation zwischen nachgeschalteten Blattknotengeräten und dem IoT Edge-Gerät
 * Ermöglichen der Kommunikation zwischen Modulen auf dem IoT Edge-Gerät
@@ -33,7 +33,7 @@ Die IoT Edge-Laufzeit führt auf IoT Edge-Geräten die folgenden Funktionen aus:
 
 Die Aufgaben der IoT Edge-Laufzeit fallen in zwei Kategorien: Modulverwaltung und -kommunikation. Diese beiden Rollen werden von zwei Komponenten ausgeführt, aus denen die IoT Edge-Laufzeit besteht. Der IoT Edge-Hub ist für die Kommunikation verantwortlich, während der IoT Edge-Agent für die Bereitstellung und Überwachung der Module zuständig ist. 
 
-Der Edge-Agent und der Edge-Hub sind Module wie jedes andere auf einem IoT Edge-Gerät ausgeführte Modul. Weitere Informationen zur Funktionsweise der Module finden Sie unter [Understand Azure IoT Edge modules - preview] (Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau, in englischer Sprache) 
+Der Edge-Agent und der Edge-Hub sind Module wie jedes andere auf einem IoT Edge-Gerät ausgeführte Modul. Weitere Informationen zur Funktionsweise der Module finden Sie unter [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau] 
 
 ## <a name="iot-edge-hub"></a>IoT Edge-Hub
 
@@ -108,7 +108,7 @@ Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Understand Azure IoT Edge modules - preview][Understand Azure IoT Edge modules - preview] (Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau, in englischer Sprache)
+- [Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau][Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/pipeline.png
@@ -117,4 +117,4 @@ Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[Understand Azure IoT Edge modules - preview]: iot-edge-modules.md
+[Grundlegendes zu den Azure IoT Edge-Modulen – Vorschau]: iot-edge-modules.md

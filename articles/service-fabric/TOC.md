@@ -21,8 +21,8 @@
 
 ## Erstellen einer Linux-Container-App
 ### [1 – Erstellen von Containerimages](service-fabric-tutorial-create-container-images.md)
-### [2 – Package and deploy containers](service-fabric-tutorial-package-containers.md) (2 – Packen und Bereitstellen von Containern)
-### [3- Fail over and scale](service-fabric-tutorial-containers-failover.md) (3 – Failover und Skalieren)
+### [2 – Packen und Bereitstellen von Containern](service-fabric-tutorial-package-containers.md)
+### [3 – Failover und Skalieren](service-fabric-tutorial-containers-failover.md)
 
 ## Erstellen und Verwalten eines Clusters
 ### 1 – Erstellen eines Clusters in Azure
@@ -82,8 +82,8 @@
 #### [Dienststatus](service-fabric-concepts-state.md)
 #### [Dienstpartitionierung](service-fabric-concepts-partitioning.md)
 #### [Verfügbarkeit von Diensten](service-fabric-availability-services.md)
-#### [Replicas and instances](service-fabric-concepts-replica-lifecycle.md) (Replikate und Instanzen)
-#### [Reconfiguration](service-fabric-concepts-reconfiguration.md) (Neukonfiguration)
+#### [Replikate und Instanzen](service-fabric-concepts-replica-lifecycle.md)
+#### [Neukonfiguration](service-fabric-concepts-reconfiguration.md)
 #### Dienstkommunikation
 ##### [Übersicht](service-fabric-connect-and-communicate-with-services.md)
 ##### [DNS-Dienst](service-fabric-dnsservice.md)

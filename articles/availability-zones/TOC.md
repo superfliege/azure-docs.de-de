@@ -11,27 +11,27 @@
 ### [Was sind Verfügbarkeitszonen?](az-overview.md)
 
 ### Virtuelle Computer
-#### [Create a Linux VM in an Availability Zone with CLI](../virtual-machines/linux/create-cli-availability-zone.md) (Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit CLI)
-#### [Create a Windows VM in an Availability Zone with PowerShell](../virtual-machines/windows/create-powershell-availability-zone.md) (Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell)
+#### [Erstellen eines virtuellen Linux-Computers in einer Verfügbarkeitszone mit CLI](../virtual-machines/linux/create-cli-availability-zone.md)
+#### [Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit PowerShell](../virtual-machines/windows/create-powershell-availability-zone.md)
 #### [Erstellen eines virtuellen Windows-Computers in einer Verfügbarkeitszone mit dem Azure-Portal](../virtual-machines/windows/create-portal-availability-zone.md)
 
 ### Verwaltete Datenträger
-#### [Add a managed disk in Availability Zones with CLI](../virtual-machines/linux/add-disk.md#use-managed-disks) (Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit CLI)
-#### [Add a managed disk in Availability Zones with PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine) (Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit PowerShell)
+#### [Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit CLI](../virtual-machines/linux/add-disk.md#use-managed-disks)
+#### [Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
 ### VM-Skalierungsgruppen
-#### [Create a virtual machine scale set with Azure portal](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md) (Erstellen einer VM-Skalierungsgruppe mit dem Azure-Portal)
+#### [Erstellen einer VM-Skalierungsgruppe mit dem Azure-Portal](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
 
 ### Load Balancer
 #### [Was ist der Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
-#### [Create a zone redundant Public Load Balancer Standard with Azure portal](../load-balancer/load-balancer-get-started-internet-az-portal.md) (Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit dem Azure-Portal)
-#### [Create a zone redundant Public Load Balancer Standard with PowerShell](../load-balancer/load-balancer-get-started-internet-az-powershell.md) (Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit PowerShell)
-#### [Create a zone redundant Public Load Balancer Standard with CLI](../load-balancer/load-balancer-get-started-internet-az-cli.md) (Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit CLI)
+#### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit dem Azure-Portal](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+#### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit PowerShell](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+#### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer mit CLI](../load-balancer/load-balancer-get-started-internet-az-cli.md)
 
 ### Öffentliche IP-Adresse
-#### [Create a public IP address in an availability zone with Azure portal](../virtual-network/create-public-ip-availability-zone-portal.md) (Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit dem Azure-Portal)
-#### [Create a public IP address in an availability zone with PowerShell](../virtual-network/create-public-ip-availability-zone-powershell.md) (Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit PowerShell)
-#### [Create a public IP address in an availability zone with CLI](../virtual-network/create-public-ip-availability-zone-cli.md) (Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit CLI)
+#### [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit dem Azure-Portal](../virtual-network/create-public-ip-availability-zone-portal.md)
+#### [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit PowerShell](../virtual-network/create-public-ip-availability-zone-powershell.md)
+#### [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone mit CLI](../virtual-network/create-public-ip-availability-zone-cli.md)
 
 # Notfallwiederherstellung
 ## [Verwenden von Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/)

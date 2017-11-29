@@ -96,13 +96,13 @@
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
 ## [CSDEF (XML-Schema)](schema-csdef-file.md)
-### [LoadBalancerProbe Schema](schema-csdef-loadbalancerprobe.md) (LoadBalancerProbe-Schema)
-### [WebRole Schema](schema-csdef-webrole.md) (WebRole-Schema)
-### [WorkerRole Schema](schema-csdef-workerrole.md) (WorkerRole-Schema)
-### [NetworkTrafficRules Schema](schema-csdef-networktrafficrules.md) (NetworkTrafficRules-Schema)
-## [.cscfg XML Schema](schema-cscfg-file.md) (.cscfg-XML-Schema)
-### [Role Schema](schema-cscfg-role.md) (Rollenschema)
-### [NetworkConfiguration Schema](schema-cscfg-networkconfiguration.md) (NetworkConfiguration-Schema)
+### [LoadBalancerProbe-Schema](schema-csdef-loadbalancerprobe.md)
+### [WebRole-Schema](schema-csdef-webrole.md)
+### [WorkerRole-Schema](schema-csdef-workerrole.md)
+### [NetworkTrafficRules-Schema](schema-csdef-networktrafficrules.md)
+## [.cscfg-XML-Schema](schema-cscfg-file.md)
+### [Rollenschema](schema-cscfg-role.md)
+### [NetworkConfiguration-Schema](schema-cscfg-networkconfiguration.md)
 ## [REST](/rest/api/compute/cloudservices/)
 
 # Ressourcen

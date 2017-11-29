@@ -2,8 +2,8 @@
 ## [Virtuelle Netzwerke](virtual-networks-overview.md)
 ## [Routing](virtual-networks-udr-overview.md)
 ## [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md)
-## [Virtual network service endpoints](virtual-network-service-endpoints-overview.md) (Virtuelles Netzwerk – Dienstendpunkte)
-## [Virtual network for Azure services](virtual-network-for-azure-services.md) (Dienste für virtuelle Netzwerke in Azure)
+## [Virtuelles Netzwerk – Dienstendpunkte](virtual-network-service-endpoints-overview.md)
+## [Dienste für virtuelle Netzwerke in Azure](virtual-network-for-azure-services.md)
 ## [Sicherheit](security-overview.md)
 ## [Geschäftskontinuität](virtual-network-disaster-recovery-guidance.md)
 ## [IP-Adressierung](virtual-network-ip-addresses-overview-arm.md)
@@ -32,7 +32,7 @@
 #### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
 #### [Azure-Befehlszeilenschnittstelle](virtual-networks-create-nsg-arm-cli.md)
 #### [Vorlage](virtual-networks-create-nsg-arm-template.md)
-#### [Application security groups](create-network-security-group-preview.md) (Anwendungssicherheitsgruppen)
+#### [Application security groups](create-network-security-group-preview.md)
 #### Klassisch
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
@@ -52,7 +52,7 @@
 #### [Andere Bereitstellungsmodelle – gleiches Abonnement](create-peering-different-deployment-models.md)
 #### [Andere Bereitstellungsmodelle – andere Abonnements](create-peering-different-deployment-models-subscriptions.md)
 
-### [Virtual network service endpoints](virtual-network-service-endpoints-configure.md) (Virtuelles Netzwerk – Dienstendpunkte)
+### [Virtuelles Netzwerk – Dienstendpunkte](virtual-network-service-endpoints-configure.md)
 
 ### Öffentliche IP-Adresse – Verfügbarkeitszone
 #### [Azure-Portal](create-public-ip-availability-zone-portal.md)
@@ -177,7 +177,7 @@
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
-## [Azure PowerShell (Classic)](/powershell/module/azure/) (Azure PowerShell [klassisch])
+## [Azure PowerShell [klassisch]](/powershell/module/azure/)
 ## [Azure-Befehlszeilenschnittstelle](/cli/azure/network)
 ## [Java](/java/api/)
 ## [REST (Resource Manager)](https://msdn.microsoft.com/library/mt163658.aspx)

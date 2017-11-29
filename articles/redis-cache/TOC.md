@@ -32,13 +32,13 @@
 ###[Sitzungszustandsanbieter](cache-aspnet-session-state-provider.md)
 ###[Ausgabecacheanbieter](cache-aspnet-output-cache-provider.md)
 ## Verwalten
-###[Configure in Azure portal](cache-configure.md) (Konfigurieren im Azure-Portal)
+###[Konfigurieren im Azure-Portal](cache-configure.md)
 ###[Konfigurieren der Georeplikation](cache-how-to-geo-replication.md)
 ###[Importieren/Exportieren von Daten](cache-how-to-import-export-data.md)
 ###[Neustart](cache-administration.md#reboot)
 ###[Planen von Updates](cache-administration.md#schedule-updates)
 ## Überwachen und Behandeln von Problemen
-###[Monitor in Azure portal](cache-how-to-monitor.md) (Überwachen im Azure-Portal)
+###[Überwachen im Azure-Portal](cache-how-to-monitor.md)
 ###[Behandeln von Cacheproblemen](cache-how-to-troubleshoot.md)
 ###[Festlegen von Warnungen für Ausnahmen](cache-how-to-monitor.md#operations-and-alerts)
 ## Skalieren
@@ -50,7 +50,7 @@
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/resources/samples/?service=redis-cache)
 ## [Azure PowerShell](/powershell/module/azurerm.rediscache)
-## [Azure CLI Preview](/cli/azure/redis) (Azure CLI-Vorschau)
+## [Azure CLI-Vorschau](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis-Clients](http://redis.io/clients)

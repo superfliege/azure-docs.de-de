@@ -19,8 +19,8 @@
 ## [Konfigurieren einer gewichteten Routingmethode](traffic-manager-configure-weighted-routing-method.md)
 ## [Konfigurieren der Routingmethode „Performance“](traffic-manager-configure-performance-routing-method.md)
 ## Senden der echten Benutzermessungen an den Traffic Manager 
-### [Using Visual Studio SDK](traffic-manager-create-rum-visual-studio.md) (Verwenden des Visual Studio-SDK)
-### [Using web pages](traffic-manager-create-rum-web-pages.md) (Verwenden von Webseiten)
+### [Verwenden des Visual Studio-SDK](traffic-manager-create-rum-visual-studio.md)
+### [Verwenden von Webseiten](traffic-manager-create-rum-web-pages.md)
 ## [Verwalten von Endpunkten](traffic-manager-manage-endpoints.md)
 ## [Verwalten von Profilen](traffic-manager-manage-profiles.md)
 ## [Überprüfen von Traffic Manager-Einstellungen](traffic-manager-testing-settings.md)

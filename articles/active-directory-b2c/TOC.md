@@ -84,7 +84,7 @@
 #### [Anpassen von Token](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 #### [Konfigurieren der Kennwortkomplexität in benutzerdefinierten Richtlinien](active-directory-b2c-reference-password-complexity-custom.md)
 #### [Kennwortänderung](active-directory-b2c-reference-password-change-custom.md)
-#### [Enable keep me signed in](active-directory-b2c-reference-kmsi-custom.md) (Aktivieren des Angemeldetbleibens)
+#### [Aktivieren des Angemeldetbleibens](active-directory-b2c-reference-kmsi-custom.md)
 ### Problembehandlung
 #### [Erfassen von Protokollen von Application Insights](active-directory-b2c-troubleshoot-custom.md)
 ## Referenz

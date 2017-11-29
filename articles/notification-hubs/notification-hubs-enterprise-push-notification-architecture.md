@@ -57,7 +57,7 @@ Sie sollten die folgenden Lernprogramme durcharbeiten, um sich mit den Konzepten
 2. [Erste Schritte mit Notification Hubs] : Hier wird erläutert, wie eine Windows Store-App eingerichtet wird und wie mithilfe von Notification Hubs Benachrichtigungen registriert und dann empfangen werden.
 
 ### <a name="sample-code"></a>Beispielcode
-Der vollständige Beispielcode ist unter [Notification Hubs Samples](in englischer Sprache) verfügbar. Der Code ist in drei Komponenten aufgeteilt:
+Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar. Der Code ist in drei Komponenten aufgeteilt:
 
 1. **EnterprisePushBackendSystem**
    

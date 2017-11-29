@@ -7,8 +7,8 @@
 ## [Häufig gestellte Fragen](api-management-faq.md)
 # Anleitung
 ## Einrichten eines APIM-Diensts
-### [Create an APIM instance](get-started-create-service-instance.md) (Erstellen einer APIM-Instanz)
-### [Upgrade and scale](upgrade-and-scale.md) (Upgraden und Skalieren)
+### [Erstellen einer APIM-Instanz](get-started-create-service-instance.md)
+### [Upgraden und Skalieren](upgrade-and-scale.md)
 ### [Konfigurieren einer benutzerdefinierten Domäne](configure-custom-domain.md)
 ## Entwickeln von APIs
 ### [Hinzufügen und Veröffentlichen eines API-Produkts](api-management-howto-add-products.md)

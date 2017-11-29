@@ -16,8 +16,8 @@
 #### [Automatisch – mit Vorlage](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 #### [Manuell – Voraussetzungen](virtual-machines-windows-portal-sql-availability-group-prereq.md)
 #### [Manuell – Tutorial](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Load balancer – Azure portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md) (Load Balancer – Azure-Portal)
-#### [Load balancer – Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md) (Load Balancer – Azure-PowerShell)
+#### [Load Balancer – Azure-Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+#### [Load Balancer – Azure-PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
 #### [Mehrere Regionen](virtual-machines-windows-portal-sql-availability-group-dr.md)
 ### Failoverclusterinstanz
 #### [Konfigurieren](virtual-machines-windows-portal-sql-create-failover-cluster.md)
