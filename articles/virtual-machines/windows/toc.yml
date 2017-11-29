@@ -77,7 +77,7 @@
         - name: High Performance Computing
           href: sizes-hpc.md
         - name: Azure-Computeeinheiten (ACU)
-          href: sizes-general.md
+          href: acu.md
     - name: Wartung und Updates
       href: maintenance-and-updates.md
     - name: Datenträgerspeicher
