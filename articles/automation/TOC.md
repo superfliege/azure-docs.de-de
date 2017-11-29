@@ -46,7 +46,7 @@
 ## Bereitstellen der Konfigurationsverwaltung (DSC)
 ### [Übersicht über das Konfigurieren des gewünschten Zustands (DSC)](automation-dsc-overview.md)
 ### [Erste Schritte](automation-dsc-getting-started.md)
-### [Configure servers to a desired state and manage drift with Azure Automation](tutorial-configure-servers-desired-state.md) (Konfigurieren von Servern auf einen gewünschten Status und Verwalten der Abweichung mit Azure Automation)
+### [Konfigurieren von Servern auf einen gewünschten Status und Verwalten der Abweichung mit Azure Automation](tutorial-configure-servers-desired-state.md)
 ### [Aufnehmen von Computern in die Verwaltung](automation-dsc-onboarding.md)
 ### [Kompilieren von DSC-Konfigurationen](automation-dsc-compile.md)
 ### [Continuous Deployment mit Chocolatey](automation-dsc-cd-chocolatey.md)
@@ -71,11 +71,11 @@
 ### [Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook](automation-deploy-template-runbook.md)
 ## Lösungen
 ### [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)
-#### [Manage updates for multiple VMs](manage-update-multi.md) (Verwalten von Aktualisierungen für mehrere virtuelle Computer)
+#### [Verwalten von Aktualisierungen für mehrere virtuelle Computer](manage-update-multi.md)
 #### [Integrate SCCM with OMS Update Management (Integrieren von SCCM mit OMS-Updateverwaltung)](oms-solution-updatemgmt-sccmintegration.md)
 ### [Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md)
-### [Track changes in your VMs](automation-vm-change-tracking.md) (Nachverfolgen von Änderungen auf Ihren virtuellen Computern)
-### [Manage a VM with inventory collection](automation-vm-inventory.md) (Verwalten eines virtuellen Computers mit Inventursammlung)
+### [Nachverfolgen von Änderungen auf Ihren virtuellen Computern](automation-vm-change-tracking.md)
+### [Verwalten eines virtuellen Computers mit Inventursammlung](automation-vm-inventory.md)
 ### [Starten und Beenden von VMs außerhalb der Kernzeit](automation-solution-vm-management.md)
 ## Überwachen
 ### [Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics](automation-manage-send-joblogs-log-analytics.md)
@@ -88,7 +88,7 @@
 ### [Problembehandlung für Hybrid Runbook Worker](automation-troubleshooting-hybrid-runbook-worker.md)
 # Referenz
 ## [Azure PowerShell](/powershell/module/azurerm.automation)
-## [Azure PowerShell (Classic)](/powershell/module/azure/?view=azuresmps-3.7.0) (Azure PowerShell [klassisch])
+## [Azure PowerShell [klassisch]](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.azure.management.automation)
 ## [REST](/rest/api/automation)
 ## [REST (klassisch)](https://msdn.microsoft.com/library/azure/mt163781)
