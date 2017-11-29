@@ -1,6 +1,6 @@
 ---
 title: "Tutorial für mehrinstanzenfähige SaaS-Anwendungen – Azure SQL-Datenbank | Microsoft-Dokumentation"
-description: "Stellen Sie eine SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet, bereit, und untersuchen Sie sie."
+description: "Stellen Sie eine eigenständige SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet, bereit, und untersuchen Sie sie."
 keywords: Tutorial zur SQL-Datenbank
 services: sql-database
 documentationcenter: 
@@ -22,7 +22,7 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/16/2017
 ---
-# <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
+# <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
 
 In diesem Tutorial stellen Sie die eigenständige SaaS-Anwendung Wingtip Tickets bereit und machen sich mit dieser vertraut. Die Anwendung ist dafür ausgelegt, Features von Azure SQL-Datenbank zu veranschaulichen, mit denen die Aktivierung von SaaS-Szenarien vereinfacht wird.
 
@@ -39,13 +39,13 @@ In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
 
-> * Bereitstellen der Anwendung Wingtip Tickets SaaS Standalone
+> * Bereitstellen der eigenständigen SaaS-Anwendung Wingtip Tickets
 > * Abrufen des Quellcodes der Anwendung und der Verwaltungsskripts
 > * Informationen zu Servern und Datenbanken, aus denen sich die App zusammensetzt
 
 Weitere Tutorials, mit denen Sie verschiedene Verwaltungsszenarien basierend auf diesem Anwendungsmuster untersuchen können, werden demnächst veröffentlicht.   
 
-## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>Bereitstellen der Anwendung Wingtip Tickets SaaS Standalone
+## <a name="deploy-the-wingtip-tickets-saas-standalone-application"></a>Bereitstellen der eigenständigen SaaS-Anwendung Wingtip Tickets
 
 Stellen Sie die App für die drei bereitgestellten Mandanten bereit:
 
@@ -115,7 +115,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 
-> * Bereitstellen der Anwendung Wingtip Tickets SaaS Standalone
+> * Bereitstellen der eigenständigen SaaS-Anwendung Wingtip Tickets
 > * Informationen zu Servern und Datenbanken, aus denen sich die App zusammensetzt
 > * Löschen von Beispielressourcen, um die zugehörige Abrechnung einzustellen
 
