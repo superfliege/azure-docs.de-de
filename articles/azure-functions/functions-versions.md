@@ -1,6 +1,6 @@
 ---
-title: Einstellen von Runtimeversionen von Azure Functions als Ziel | Microsoft-Dokumentation
-description: "Functions unterstützt mehrere Versionen der Runtime. Erfahren Sie, wie Sie die Runtimeversion einer in Azure gehosteten Funktions-App angeben."
+title: Verwenden von Azure Functions-Runtimeversionen als Ziel
+description: "Azure Functions unterstützt mehrere Versionen der Runtime. Erfahren Sie, wie Sie die Runtimeversion einer in Azure gehosteten Funktionen-App angeben."
 services: functions
 documentationcenter: 
 author: ggailey777
@@ -10,75 +10,114 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/07/2017
 ms.author: glenga
-ms.openlocfilehash: 26d4276a0a550d78a9c7657c464bd3320c956fb0
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 063232e40b30d03b0ee8b087a602fed0fee3be0a
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Einstellen von Runtimeversionen von Azure Functions als Ziel
 
-Die Azure Functions-Runtime implementiert die serverlose Ausführung Ihres Codes in Azure. Sie finden diese Runtime in verschiedenen Umgebungen, die nicht in Azure gehostet werden. In den [Azure Functions Core-Tools](functions-run-local.md) wird diese Runtime auf Ihrem Entwicklungscomputer implementiert. Die [Azure Functions-Runtime](functions-runtime-overview.md) ermöglicht Ihnen, Functions in lokalen Umgebungen zu verwenden. 
+Eine Funktionen-App wird für eine bestimmte Version der Azure Functions-Runtime ausgeführt. Es gibt zwei Hauptversionen: 1.x und 2.x. In diesem Artikel wird erläutert, wie Sie die Hauptversion auswählen und wie Sie eine Funktionen-App in Azure so konfigurieren, dass sie mit der von Ihnen ausgewählten Version ausgeführt wird. Informationen zum Konfigurieren einer lokalen Entwicklungsumgebung für eine bestimmte Version finden Sie unter [Codieren und lokales Testen von Azure Functions](functions-run-local.md).
 
-Functions unterstützt mehrere Hauptversionen der Runtime. Ein Update der Hauptversion kann Fehler verursachende Änderungen nach sich ziehen. In diesem Thema wird beschrieben, wie Funktions-Apps auf eine bestimmte Runtimeversion eingestellt werden können, wenn sie in Azure gehostet werden. 
+## <a name="differences-between-runtime-1x-and-2x"></a>Unterschiede zwischen Runtime 1.x und 2.x
 
-Mit Functions können Sie eine bestimmte Hauptversion der Runtime als Ziel festlegen, indem Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` in Ihrer Funktions-App verwenden. Dies gilt für öffentliche und Vorschauversionen. Ihre Funktions-App verwendet weiterhin die angegebene Hauptversion der Runtime, bis Sie ausdrücklich auswählen, zu einer neuen Version zu wechseln. Ihre Funktions-App wird auf neue Nebenversionen der Runtime aktualisiert, sobald diese verfügbar werden. Updates der Nebenversion enthalten keine Fehler verursachenden Änderungen.  
+> [!IMPORTANT] 
+> Runtime 1.x ist die einzige Version, die für die Verwendung in der Produktion genehmigt ist.
 
-Wenn eine neue Hauptversion öffentlich verfügbar ist, erhalten Sie die Möglichkeit, zu dieser Version zu wechseln, wenn Sie Ihre Funktions-App im Portal anzeigen. Nach dem Wechsel zu einer neuen Version können Sie jederzeit mit der Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` zu einer früheren Runtimeversion zurückwechseln.
+| Laufzeit | Status |
+|---------|---------|
+|1.x|Allgemein verfügbar (Generally Available, GA)|
+|2.x|Vorschau|
 
-Jede Änderung an der Runtimeversion bewirkt, dass Ihre Funktions-App neu gestartet wird. Versionshinweise für alle Common Language Runtime-Versionen (Haupt- und Nebenversionsnummern) werden im [GitHub-Repository](https://github.com/Azure/azure-webjobs-sdk-script/releases) veröffentlicht.   
+In den folgenden Abschnitten werden die Unterschiede in Bezug auf Sprachen, Bindungen und plattformübergreifende Entwicklungsunterstützung erläutert.
+
+### <a name="languages"></a>Sprachen
+
+Die folgende Tabelle zeigt, welche Programmiersprachen in den einzelnen Runtimeversionen unterstützt werden.
+
+[!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
+
+Weitere Informationen finden Sie unter [Unterstützte Sprachen](supported-languages.md).
+
+### <a name="bindings"></a>Bindungen 
+
+Die experimentellen Bindungen, die Runtime 1.x unterstützt, sind in 2.x nicht verfügbar. Informationen zur Bindungsunterstützung und zu anderen funktionalen Lücken in 2.x finden Sie unter [Bekannte Probleme von Runtime 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
+
+Mit Runtime 2.x können Sie benutzerdefinierte [Bindungserweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) erstellen. Integrierte Bindungen, die dieses Erweiterbarkeitsmodell verwenden, sind nur in 2.x verfügbar. Vorrangig sind hier die [Microsoft Graph-Bindungen](functions-bindings-microsoft-graph.md) zu nennen.
+
+### <a name="cross-platform-development"></a>Plattformübergreifende Entwicklung
+
+Runtime 1.x unterstützt die Funktionsentwicklung nur im Portal oder unter Windows. Mit 2.x können Sie Azure Functions unter Linux oder macOS entwickeln und ausführen.
+
+## <a name="automatic-and-manual-version-updates"></a>Automatische und manuelle Versionsupdates
+
+Mit Functions können Sie eine bestimmte Version der Runtime als Ziel festlegen, indem Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` in einer Funktionen-App verwenden. Die Funktionen-App verwendet weiterhin die angegebene Version der Runtime, bis Sie ausdrücklich die Verwendung einer neuen Version auswählen.
+
+Wenn Sie nur die Hauptversion („~1“ für 1.x oder „beta“ für 2.x) angeben, wird die Funktionen-App automatisch auf neue Nebenversionen der Runtime aktualisiert, sobald diese verfügbar werden. Neue Nebenversion enthalten keine grundlegenden Änderungen. Wenn Sie eine Nebenversion (z.B. „1.0.11360“) angeben, wird für die Funktionen-App diese Version beibehalten, bis Sie sie explizit ändern. 
+
+Wenn eine neue Version öffentlich verfügbar ist, bietet eine Eingabeaufforderung im Portal Ihnen die Möglichkeit, auf diese Version umzusteigen. Nach dem Wechsel zu einer neuen Version können Sie jederzeit mit der Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` zu einer früheren Version zurückkehren.
+
+Eine Änderung an der Runtimeversion bewirkt, dass eine Funktionen-App neu gestartet wird.
+
+Die Werte, die Sie in der App-Einstellung `FUNCTIONS_EXTENSION_VERSION` festlegen können, um automatische Updates zu aktivieren, lauten zurzeit „~1“ für die 1.x-Runtime und „beta“ für 2.x.
+
 ## <a name="view-the-current-runtime-version"></a>Anzeigen der aktuellen Runtimeversion
 
-Gehen Sie folgendermaßen vor, um die genaue derzeit von Ihrer Funktions-App verwendete Runtimeversion anzuzeigen. 
+Gehen Sie folgendermaßen vor, um die zurzeit von einer Funktionen-App verwendete Runtimeversion anzuzeigen. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktions-App, und wählen Sie unter **Konfigurierte Features** die Option **Funktionen-App-Einstellungen** aus. 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Funktionen-App, und wählen Sie dann unter **Konfigurierte Features** die Option **Funktionen-App-Einstellungen** aus. 
 
     ![„Funktionen-App-Einstellungen“ auswählen](./media/functions-versions/add-update-app-setting.png)
 
-2. Suchen Sie auf der Registerkarte **Funktionen-App-Einstellungen** nach der **Runtimeversion**. Sie sehen dort die spezifische Runtimeversion und die angeforderte Hauptversion. Im nachstehenden Beispiel ist die Hauptversion auf `~1.0` festgelegt.
+2. Suchen Sie auf der Registerkarte **Funktionen-App-Einstellungen** nach der **Runtimeversion**. Sie sehen dort die spezifische Runtimeversion und die angeforderte Hauptversion. Im folgenden Beispiel ist die App-Einstellung FUNCTIONS\_EXTENSION\_VERSION auf `~1` festgelegt.
  
    ![„Funktionen-App-Einstellungen“ auswählen](./media/functions-versions/function-app-view-version.png)
 
-## <a name="target-the-functions-version-20-runtime"></a>Einstellen der Functions-Runtime, Version 2.0
+## <a name="target-the-version-20-runtime"></a>Version 2.0 der Runtime als Ziel
 
 >[!IMPORTANT]   
-> Die Azure Functions-Runtime 2.0 ist eine Vorschauversion, und derzeit werden nicht alle Features von Azure Functions unterstützt. Weitere Informationen finden Sie unter [Bekannte Probleme der Azure Functions-Laufzeit 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).  
+> Die Azure Functions-Laufzeit 2.0 ist eine Vorschauversion und derzeit werden nicht alle Features von Azure Functions unterstützt. Weitere Informationen finden Sie unter [Unterschiede zwischen Runtime 1.x und 2.x](#differences-between-runtime-1x-and-2x) weiter oben in diesem Artikel.
 
-<!-- Add a table comparing the 1.x and 2.x runtime features-->
+Sie können eine Funktionen-App im Azure-Portal auf die Runtimeversion 2.0 (Preview) umstellen. Wählen Sie auf der Registerkarte **Funktionen-App-Einstellungen** unter **Runtimeversion** die Option **Beta** aus.  
 
-[!INCLUDE [functions-set-runtime-version](../../includes/functions-set-runtime-version.md)]
-
-Sie können im Azure-Portal Ihre Funktions-App auf die Runtimeversion 2.0 Preview umstellen. Wählen Sie auf der Registerkarte **Funktionen-App-Einstellungen** unter **Runtimeversion** die Option **Beta** aus.  
-
-   ![„Funktionen-App-Einstellungen“ auswählen](./media/functions-versions/function-app-view-version.png)
+![„Funktionen-App-Einstellungen“ auswählen](./media/functions-versions/function-app-view-version.png)
 
 Diese Einstellung entspricht dem Festlegen der Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` auf `beta`. Wählen Sie die Schaltfläche **~1** aus, um zurück zur aktuellen öffentlich unterstützten Hauptversion zu wechseln. Sie können diese Anwendungseinstellung auch mit der Azure-Befehlszeilenschnittstelle aktualisieren. 
 
-## <a name="target-a-specific-runtime-version-from-the-portal"></a>Einstellen einer bestimmten Runtimeversion als Ziel über das Portal
+## <a name="target-a-version-using-the-portal"></a>Verwenden einer Version als Ziel mithilfe des Portals
 
-Wenn Sie eine andere Hauptversion als die aktuelle Hauptversion oder Version 2.0 einstellen möchten, müssen Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` festlegen.
+Wenn Sie eine andere Version als die aktuelle Hauptversion oder Version 2.0 als Ziel verwenden möchten, müssen Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` festlegen.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktions-App, und wählen Sie unter **Konfigurierte Features** die Option **Anwendungseinstellungen** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktionen-App, und wählen Sie unter **Konfigurierte Features** die Option **Anwendungseinstellungen** aus.
 
     ![„Funktionen-App-Einstellungen“ auswählen](./media/functions-versions/add-update-app-setting1a.png)
 
-2. Suchen Sie auf der Registerkarte **Anwendungseinstellungen** die Einstellung `FUNCTIONS_EXTENSION_VERSION`, und ändern Sie den Wert in eine gültige Hauptversion der 1.x-Runtime oder in `beta` für Version 2.0. 
+2. Suchen Sie auf der Registerkarte **Anwendungseinstellungen** die Einstellung `FUNCTIONS_EXTENSION_VERSION`, und ändern Sie den Wert in eine gültige Version der 1.x-Runtime oder in `beta` für Version 2.0. 
 
-    ![Funktions-App-Einstellung festlegen](./media/functions-versions/add-update-app-setting2.png)
+    ![Funktionen-App-Einstellung festlegen](./media/functions-versions/add-update-app-setting2.png)
 
 3. Klicken Sie auf **Speichern**, um die Aktualisierung der Anwendungseinstellung zu speichern. 
 
-## <a name="target-a-specific-version-using-azure-cli"></a>Einstellen einer bestimmten Version mit der Azure-Befehlszeilenschnittstelle
+## <a name="target-a-version-using-azure-cli"></a>Verwenden einer Version als Ziel mit der Azure CLI
 
- Sie können `FUNCTIONS_EXTENSION_VERSION` auch über die Azure-Befehlszeilenschnittstelle festlegen. Aktualisieren Sie über die Azure-Befehlszeilenschnittstelle die Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set).
+ Sie können `FUNCTIONS_EXTENSION_VERSION` auch über die Azure-Befehlszeilenschnittstelle festlegen. Aktualisieren Sie über die Azure-Befehlszeilenschnittstelle die Anwendungseinstellungen in der Funktionen-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set).
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
 --resource-group <my_resource_group> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
-Ersetzen Sie in diesem Code `<function_app>` durch den Namen der Funktions-App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre Funktions-App. Ersetzen Sie `<version>` durch eine gültige Hauptversion der Runtime 1.x oder durch `beta` für Version 2.0. 
+Ersetzen Sie in diesem Code `<function_app>` durch den Namen der Funktionen-App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre Funktionen-App. Ersetzen Sie `<version>` durch eine gültige Version der Runtime 1.x oder durch `beta` für Version 2.0. 
 
 Sie können diesen Befehl an der [Azure Cloud Shell](../cloud-shell/overview.md) ausführen, indem Sie im vorangehenden Codebeispiel **Ausprobieren** auswählen. Sie können auch die [Azure-Befehlszeilenschnittstelle lokal](/cli/azure/install-azure-cli) zum Ausführen dieses Befehls verwenden, nachdem Sie sich mit [az login](/cli/azure#az_login) angemeldet haben.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Verwenden der 2.0-Runtime als Ziel in Ihrer lokalen Entwicklungsumgebung](functions-run-local.md)
+
+> [!div class="nextstepaction"]
+> [Siehe Anmerkungen zu dieser Version für Runtimeversionen](https://github.com/Azure/azure-webjobs-sdk-script/releases)

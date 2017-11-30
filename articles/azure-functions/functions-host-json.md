@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: b3e5976a84e0ec91a41d683a426b58635fd5abd6
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 522d0590595b0fc0fef503599f1677658f223bd8
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>host.json-Referenz für Azure Functions
 
@@ -137,23 +137,9 @@ Steuert das [Stichprobenfeature in Application Insights](functions-monitoring.md
 
 ## <a name="eventhub"></a>eventHub
 
-Konfigurationseinstellung für [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs.md).
+Konfigurationseinstellungen für [Event Hub-Trigger und -Bindungen](functions-bindings-event-hubs.md).
 
-```json
-{
-    "eventHub": {
-      "maxBatchSize": 64,
-      "prefetchCount": 256,
-      "batchCheckpointFrequency": 1
-    }
-}
-```
-
-|Eigenschaft  |Standard | Beschreibung |
-|---------|---------|---------| 
-|maxBatchSize|64|Die maximale Ereignisanzahl, die pro Empfangsschleife empfangen wird.|
-|prefetchCount|–|Das standardmäßige PrefetchCount, das von dem zugrunde liegenden EventProcessorHost verwendet wird.| 
-|batchCheckpointFrequency|1|Die Anzahl der zu verarbeitenden Ereignisbatches, bevor ein EventHub-Cursorprüfpunkt erstellt wird.| 
+[!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
 ## <a name="functions"></a>functions
 
@@ -179,23 +165,7 @@ Gibt die Timeoutdauer für alle Funktionen an. Im Verbrauchstarif liegt der gül
 
 Konfigurationseinstellungen für [HTTP-Trigger und -Bindungen](functions-bindings-http-webhook.md).
 
-```json
-{
-    "http": {
-        "routePrefix": "api",
-        "maxOutstandingRequests": 20,
-        "maxConcurrentRequests": 10,
-        "dynamicThrottlesEnabled": false
-    }
-}
-```
-
-|Eigenschaft  |Standard | Beschreibung |
-|---------|---------|---------| 
-|routePrefix|api|Das Routenpräfix, das für alle Routen gilt. Verwenden Sie eine leere Zeichenfolge, um das Standardpräfix zu entfernen. |
-|maxOutstandingRequests|-1|Die maximale Anzahl ausstehender Anforderungen, die zu einem beliebigen Zeitpunkt (-1 bedeutet „unbegrenzt“) gespeichert werden. Der Grenzwert umfasst Anforderungen in der Warteschlange, deren Ausführung aber noch nicht gestartet ist, sowie alle laufenden Ausführungen. Alle eingehenden Anforderungen über diesem Grenzwert werden mit der Antwort 429 „Ausgelastet“ zurückgewiesen. Aufrufer können diese Antwort verwenden, um zeitbasierte Wiederholungsstrategien einzusetzen. Diese Einstellung steuert nur das Queuing, das innerhalb des Ausführungspfads des Auftragshosts auftritt. Andere Warteschlangen, z. B. die ASP.NET-Anforderungswarteschlange, sind von dieser Einstellung nicht betroffen. |
-|maxConcurrentRequests|-1|Die maximale Anzahl von HTTP-Funktionen, die parallel (-1 bedeutet „unbegrenzt“) ausgeführt werden. Sie könnten z. B. einen Grenzwert festlegen, wenn Ihre HTTP-Funktionen bei hoher Parallelität zu viele Systemressourcen verwenden. Oder wenn Funktionen ausgehende Anforderungen an einen Dienst eines Drittanbieters stellen, muss die Rate dieser Aufrufe möglicherweise eingeschränkt werden.|
-|dynamicThrottlesEnabled|false|Führt dazu, dass die Pipeline zur Anforderungsverarbeitung regelmäßig die Systemleistungsindikatoren überprüft. Zu Leistungsindikatoren zählen Verbindungen, Threads, Prozesse, Arbeitsspeicher und CPU. Wenn einer dieser Leistungsindikatoren einen integrierten Schwellenwert übersteigt (80 %), werden Anforderungen mit der Antwort 429 „Ausgelastet“ zurückgewiesen, bis die Indikatoren zur normalen Werten zurückkehrt sind.|
+[!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
 ## <a name="id"></a>id
 
@@ -260,21 +230,7 @@ Konfigurationseinstellungen für [Trigger und Bindungen der Speicherwarteschlang
 
 Konfigurationseinstellung für [Service Bus-Trigger und -Bindungen](functions-bindings-service-bus.md).
 
-```json
-{
-    "serviceBus": {
-      "maxConcurrentCalls": 16,
-      "prefetchCount": 100,
-      "autoRenewTimeout": "00:05:00"
-    }
-}
-```
-
-|Eigenschaft  |Standard | Beschreibung |
-|---------|---------|---------| 
-|maxConcurrentCalls|16|Die maximale Anzahl gleichzeitiger Aufrufe für den Rückruf, der vom Nachrichtensystem initiiert werden soll. | 
-|prefetchCount|–|Das standardmäßige PrefetchCount, das von dem zugrunde liegenden MessageReceiver verwendet wird.| 
-|autoRenewTimeout|00:05:00|Die maximale Zeitspanne, in der die Nachrichtensperre automatisch erneuert wird.| 
+[!INCLUDE [functions-host-json-service-bus](../../includes/functions-host-json-service-bus.md)]
 
 ## <a name="singleton"></a>singleton
 

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/11/2017
+ms.date: 11/03/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: ab0aa377f9803d74d8a7a94bdb4c7b780e3ae41d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 03246846484878f7155449ad11b009aeffe8a576
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Auswahl zwischen Flow, Logic Apps, Functions und WebJobs
 In diesem Artikel werden die folgenden Dienste in der Microsoft Cloud verglichen und gegenübergestellt, die alle zur Behebung von Integrationsproblemen und zur Automatisierung von Geschäftsprozessen dienen:
@@ -81,12 +81,12 @@ In der folgenden Tabelle werden die Unterschiede zwischen Functions und WebJobs 
 | Skalieren |Skalierung ohne Konfiguration |Skalierung mit App Service-Plan |
 | Preise |Nutzungsbasierte Bezahlung oder als Teil eines App Service-Plans |Teil eines App Service-Plans |
 | Ausführungstyp |Ausgelöst, geplant (durch Trigger mit Timer) |Ausgelöst, fortlaufend, geplant |
-| Auslösende Ereignisse |[Timer](functions-bindings-timer.md), [Azure Cosmos DB](functions-bindings-documentdb.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [HTTP/Webhook (GitHub, Slack)](functions-bindings-http-webhook.md), [Mobile App Service-Apps von Azure](functions-bindings-mobile-apps.md), [Azure Notification Hubs](functions-bindings-notification-hubs.md), [Azure Service Bus](functions-bindings-service-bus.md), [Azure Storage](functions-bindings-storage-blob.md) |[Azure Storage](functions-bindings-storage-blob.md), [Azure Service Bus](functions-bindings-service-bus.md) |
+| Auslösende Ereignisse |[Timer](functions-bindings-timer.md), [Azure Cosmos DB](functions-bindings-documentdb.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [HTTP/WebHook (GitHub, Slack)](functions-bindings-http-webhook.md), [Mobile Azure App Service-Apps](functions-bindings-mobile-apps.md), [Azure Event Hubs](functions-bindings-event-hubs.md), [Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md), [Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md) |[Azure Storage-Warteschlangen und -Blobs](functions-bindings-storage-blob.md), [Azure Service Bus-Warteschlangen und -Themen](functions-bindings-service-bus.md) |
 | Entwicklung im Browser |Unterstützt |Nicht unterstützt |
 | C# |Unterstützt |Unterstützt |
 | F# |Unterstützt |Nicht unterstützt |
 | JavaScript |Unterstützt |Unterstützt |
-| Java |Unterstützt | Nicht unterstützt |
+| Java |Vorschau | Nicht unterstützt |
 | Bash |Experimentell |Unterstützt |
 | Windows-Skripts (.cmd, .bat) |Experimentell |Unterstützt |
 | PowerShell |Experimentell |Unterstützt |
