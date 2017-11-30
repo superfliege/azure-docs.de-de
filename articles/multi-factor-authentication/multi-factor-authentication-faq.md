@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 042035c89d466083659176ac49fc1b470244ef61
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d43274875ca7ed3b2fe8a7d71481db27451a6080
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Azure Multi-Factor Authentication und zur Nutzung des Multi-Factor Authentication-Diensts. Er ist unterteilt in allgemeine Fragen zum Dienst sowie in Fragen zu Abrechnungsmodellen, zur Benutzeroberfläche und zur Problembehandlung.
@@ -95,7 +95,7 @@ Falls Ihr Verzeichnis über einen *authentifizierungsbasierten* Azure Multi-Fact
 
 **F: Muss meine Organisation Identitäten verwenden und synchronisieren, um Azure Multi-Factor Authentication benutzen zu dürfen?**
 
-Wenn Ihre Organisation ein nutzungsbasiertes Abrechnungsmodell verwendet, ist Azure Active Directory optional, aber nicht erforderlich. Wenn Ihr MFA-Anbieter nicht mit einem Azure AD-Mandanten verknüpft ist, können Sie den Azure Multi-Factor Authentication-Server oder das Azure Multi-Factor Authentication-SDK nur lokal bereitstellen.
+Wenn Ihre Organisation ein nutzungsbasiertes Abrechnungsmodell verwendet, ist Azure Active Directory optional, aber nicht erforderlich. Wenn Ihr MFA-Anbieter nicht mit einem Azure AD-Mandanten verknüpft ist, können Sie den Azure Multi-Factor Authentication-Server nur lokal bereitstellen.
 
 Azure Active Directory ist für das Lizenzmodell erforderlich, da Lizenzen dem Azure AD-Mandanten hinzugefügt werden, wenn Sie sie nach dem Kauf Benutzern im Verzeichnis zuweisen.
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
-ms.openlocfilehash: bc96221abf62677b53df43daa44a925ac5792043
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: cb55bf1f1c7eeb0fc7608aca8d70818b5e3e06c0
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
 
@@ -120,7 +120,7 @@ In der App werden Einrichtungen wie Konzerthallen, Jazzclubs, Sportstadien usw. 
 In einem zentralen **Ereignis-Hub** wird eine Liste der Links zu den Mandanten in Ihrer spezifischen Bereitstellung aufgeführt.
 
 1. Öffnen Sie den *Ereignis-Hub* in Ihrem Webbrowser:
-    - http://events.wingtip.&lt;BENUTZER&gt;.trafficmanager.net &nbsp; *(durch den Benutzerwert Ihrer Bereitstellung ersetzen.)*
+    - http://events.wingtip-mt.&lt;BENUTZER&gt;.trafficmanager.net &nbsp; *(durch den Benutzerwert Ihrer Bereitstellung ersetzen)*
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -130,7 +130,7 @@ In einem zentralen **Ereignis-Hub** wird eine Liste der Links zu den Mandanten i
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die App [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Für die Ereignisseiten, die mandantenspezifisch sind, schließen Sie den Mandantennamen in die URLs ein. Die URLs enthalten zudem Ihren spezifischen Benutzerwert und weisen dieses Format auf:
 
-- http://events.wingtip.&lt;BENUTZER&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;BENUTZER&gt;.trafficmanager.net/*fabrikamjazzclub*
  
 Die Ereignis-App analysiert den Mandantennamen in der URL und hashcodiert ihn, um einen Schlüssel für den Zugriff auf einen Katalog mithilfe der [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) zu erstellen. Im Katalog wird der Schlüssel dem Datenbankspeicherort für den Mandanten zugeordnet. Der **Ereignis-Hub** listet alle Mandanten auf, die im Katalog registriert sind. Der **Ereignis-Hub** ruft mit erweiterten Metadaten im Katalog den Namen des Mandanten für die jeweilige Zuordnung ab, um die URL zu erstellen.
 
@@ -156,7 +156,7 @@ Möglicherweise möchten Sie die Lastengeneratorsitzung neu starten, um andere P
 
 Die erste Bereitstellung umfasst drei Beispielmandanten in der Datenbank *Tenants1*. Erstellen Sie einen anderen Mandanten, um zu sehen, wie sich dies auf die bereitgestellte Anwendung auswirkt. In diesem Schritt erstellen Sie schnell einen neuen Mandanten.
 
-1. Öffnen Sie ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionTenants.ps1* in der *PowerShell ISE*.
+1. Öffnen Sie „...\\Learning Modules\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“ in der *PowerShell ISE*.
 2. Drücken Sie **F5**, um das Skript auszuführen (lassen Sie die Standardwerte zunächst unverändert).
 
    > [!NOTE]
@@ -174,7 +174,7 @@ Das mehrinstanzenfähige Modell mit Shards erlaubt zwei Optionen: Sie können ei
 
 Nun stellen wir einen anderen Mandanten bereit, dieses Mal in seiner eigenen Datenbank.
 
-1. Nehmen Sie in ...\\Learning Modules\\Provision and Catalog\*Demo-ProvisionTenants.ps1* folgende Änderungen vor: Ändern Sie *$TenantName* zu **Salix Salsa**, *$VenueType* zu **Tanz** und *$Scenario* zu **2**.
+1. Ändern Sie in „...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“ den Wert *$TenantName* in **Salix Salsa**, *$VenueType* in **dance** und *$Scenario* in **2**.
 
 2. Drücken Sie **F5**, um das Skript erneut auszuführen.
     - Indem Sie F5 drücken, wird der neue Mandant in einer separaten Datenbank bereitgestellt. Die Datenbank und der Mandant werden im Katalog registriert. Dann wird im Browser die Seite „Ereignisse“ des Mandanten geöffnet.
@@ -239,7 +239,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > - Anzeigen der Poolnutzung zum Überwachen der Mandantenaktivität
 > - Löschen von Beispielressourcen, um die zugehörige Abrechnung einzustellen
 
-Arbeiten Sie nun das [Tutorial zum Bereitstellen und Katalogisieren von Mandanten](sql-database-saas-tutorial-provision-and-catalog.md) durch.
+Arbeiten Sie nun das Tutorial zum [Bereitstellen von Mandanten](sql-database-saas-tutorial-provision-and-catalog.md) durch.
 
 
 

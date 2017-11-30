@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: bf83952b29759ff601685513ace31828404c7b1a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c058f1e747849cde0f15a039779665c8718da947
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -108,7 +108,7 @@ Informationen zum Installieren des Rollendiensts „Netzwerkrichtlinien- und Zug
 
 ### <a name="azure-mfa-license"></a>Azure MFA-Lizenz
 
-Für Azure Multi-Factor Authentication ist eine Lizenz erforderlich. Diese ist über ein Azure AD Premium-, ein Enterprise Mobility + Security- oder ein Multi-Factor Authentication-Abonnement verfügbar. Verbrauchsbasierte Lizenzen für Azure MFA, z.B. pro Benutzer oder pro Authentifizierungslizenz, sind mit der NPS-Erweiterung nicht kompatibel. Weitere Informationen finden Sie unter [Beziehen von Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md). Zu Testzwecken können Sie ein Testabonnement verwenden.
+Für Azure Multi-Factor Authentication ist eine Lizenz erforderlich. Diese ist über eine Azure AD Premium-, eine Enterprise Mobility + Security- oder eine eigenständige Multi-Factor Authentication-Lizenz verfügbar. Verbrauchsbasierte Lizenzen für Azure MFA, z.B. pro Benutzer oder pro Authentifizierungslizenz, sind mit der NPS-Erweiterung nicht kompatibel. Weitere Informationen finden Sie unter [Beziehen von Azure Multi-Factor Authentication](multi-factor-authentication-versions-plans.md). Zu Testzwecken können Sie ein Testabonnement verwenden.
 
 ### <a name="windows-server-software"></a>Windows Server-Software
 

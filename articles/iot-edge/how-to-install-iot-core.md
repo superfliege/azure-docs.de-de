@@ -7,14 +7,14 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: veyalla
-ms.date: 11/15/2017
+ms.date: 11/17/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: be2a80645d23e709d6c5cfb3978498bbe85eca34
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b6c8e77b16d784373e392d0ac97094050677cb84
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>Installieren der IoT Edge-Runtime unter Windows IoT Core – Vorschau
 
@@ -25,8 +25,22 @@ Die Azure IoT Edge-Runtime kann sogar auf kleinsten Einplatinencomputern ausgef�
 1. Installieren Sie [Windows 10 IoT Core Dashboard][lnk-core] auf einem Hostsystem.
 1. Führen Sie die unter [Einrichten Ihres Geräts][lnk-board] beschriebenen Schritte durch, um das MinnowBoard Turbot/MAX Build 16299-Image auf Ihrer Platine zu konfigurieren. 
 1. Schalten Sie das Gerät ein, und [melden Sie sich remote bei PowerShell][lnk-powershell] an.
-1. [Installieren Sie die Docker-Binärdateien][lnk-docker-install] in der PowerShell-Konsole.
-1. Führen Sie den folgenden Befehl in der PowerShell-Konsole aus, um die IoT Edge-Runtime zu installieren, und überprüfen Sie Ihre Konfiguration:
+1. Installieren Sie die Containerruntime in der PowerShell-Konsole: 
+
+   ```powershell
+   Invoke-WebRequest https://master.dockerproject.org/windows/x86_64/docker-17.06.0-dev.zip -o temp.zip
+   Expand-Archive .\temp.zip $env:ProgramFiles -f
+   Remove-Item .\temp.zip
+   $env:Path += ";$env:programfiles\docker"
+   SETX /M PATH "$env:Path"
+   dockerd --register-service
+   start-service docker
+   ```
+
+   >[!NOTE]
+   >Diese Containerruntime stammt vom Buildserver des Moby-Projekts und dient lediglich zu Auswertungszwecken. Sie wird von Docker nicht getestet, empfohlen oder unterstützt.
+
+1. Installieren Sie die IoT Edge-Runtime, und überprüfen Sie die Konfiguration:
 
    ```powershell
    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)

@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84cefcdb85f1a3c753027e827abde010b461cda7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ee66bf554e8e623ebfaa82bc888fc541da322d2f
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Windows-VMs
 
 [!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
 
-In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich der Namenskonventionen, Verfügbarkeit, virtuellen Netzwerke und Lastenausgleichsmodule relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
+In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich Namenskonventionen, Verfügbarkeit, virtuelle Netzwerke und Lastenausgleiche relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
 
 ## <a name="example-workload"></a>Beispielworkload
 Adventure Works Cycles möchte eine Anwendung für einen Onlineshop in Azure erstellen, die aus Folgendem besteht:
@@ -85,7 +85,7 @@ Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folge
   * Adressraum: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
-Um hohe Verfügbarkeit für alle vier Ebenen des Onlineshops zu gewährleisten, entschied sich Adventure Works Cycles für vier Verfügbarkeitsgruppen:
+Um Hochverfügbarkeit für alle vier Ebenen des Onlineshops zu gewährleisten, entschied sich Adventure Works Cycles für vier Verfügbarkeitsgruppen:
 
 * **azos-use-as-web** für die Webserver
 * **azos-use-as-app** für die Anwendungsserver
