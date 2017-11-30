@@ -9,11 +9,11 @@ ms.date: 11/02/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: a1b2f72cf33c740a52cf817766e9950a04886141
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 85136ff2783b21472ef02aee15f8ec5844a00c12
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment"></a>Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wo Sie derzeit mit Ihren eigenen Ressourcen stehen. Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden.
@@ -30,7 +30,7 @@ Azure Policy ist jetzt als Public Preview verfügbar und kann erst nach vorherig
 
    ![Suchen nach „Policy“](media/assign-policy-definition/sign-up.png)
 
-2. Registrieren Sie sich für Azure Policy, indem Sie in der Abonnementliste die gewünschten **Abonnements** auswählen. Klicken Sie anschließend auf **Register** (Registrieren).
+2. Registrieren Sie sich für Azure Policy, indem Sie in der **Abonnementliste** die gewünschten Abonnements auswählen. Klicken Sie anschließend auf **Register** (Registrieren).
 
    ![Registrieren Sie sich für Azure Policy](media/assign-policy-definition/preview-opt-in.png)
 
@@ -62,7 +62,7 @@ In dieser Schnellstartanleitung erstellen wir eine Richtlinienzuweisung und weis
 5. Geben Sie einen **Anzeigenamen** für die Richtlinienzuweisung an. In diesem Fall verwenden wir *Audit VMs that do not use managed disks* (VMs überwachen, die keine verwalteten Datenträger verwenden). Geben Sie ggf. auch eine **Beschreibung** ein. Die Beschreibung enthält Details dazu, wie durch die Richtlinienzuweisung alle in dieser Umgebung erstellten virtuellen Computer identifiziert werden, die keine verwalteten Datenträger verwenden.
 6. Ändern Sie den Tarif in **Standard**, um sicherzustellen, dass die Richtlinie auf bereits vorhandene Ressourcen angewendet wird.
 
-   In Azure Policy stehen zwei Tarife zur Verfügung: *Free* und *Standard*. Mit dem Free-Tarif können Richtlinien nur für zukünftige Ressourcen erzwungen werden. Mit dem Standard-Tarif können Sie Richtlinien hingegen auch für bereits vorhandene Ressourcen erzwingen und Ihren Konformitätszustand besser nachvollziehen. Da es sich hierbei um eine eingeschränkte Vorschauversion handelt, haben wir noch kein Preismodell veröffentlicht, und Ihnen entstehen durch die Wahl von *Standard* keine Kosten. Weitere Informationen zu Preisen finden Sie auf der [Preisseite für Azure Policy](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/).
+   In Azure Policy stehen zwei Tarife zur Verfügung: *Free* und *Standard*. Mit dem Free-Tarif können Richtlinien nur für zukünftige Ressourcen erzwungen werden. Mit dem Standard-Tarif können Sie Richtlinien hingegen auch für bereits vorhandene Ressourcen erzwingen und Ihren Konformitätszustand besser nachvollziehen. Da es sich hierbei um eine eingeschränkte Vorschauversion handelt, haben wir noch kein Preismodell veröffentlicht, und Ihnen entstehen durch die Wahl von *Standard* keine Kosten. Weitere Informationen zu Preisen finden Sie auf der [Preisseite für Azure Policy](https://azure.microsoft.com/pricing/details/azure-policy/).
 
 7. Wählen Sie den **Bereich** aus, auf den die Richtlinie angewendet werden soll.  Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen.
 8. Wählen Sie das Abonnement (oder die Ressourcengruppe) aus, das bzw. die Sie zuvor im Rahmen der Registrierung für Azure Policy registriert haben. In diesem Beispiel verwenden wir das Abonnement **Azure Analytics Capacity Dev**. (Ihre Optionen werden sich davon unterscheiden.)

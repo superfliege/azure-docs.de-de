@@ -15,7 +15,7 @@ metadata:
   ms.date: 11/22/2017
   ms.author: philmea
 abstract:
-  description: 'Azure Location Based Services (Vorschauversion) stellt Entwicklern aus allen Branchen leistungsstarke Geofunktionen mit umfassenden aktuellen Zuordnungsdaten zur Verfügung, die zum Bereitstellen von geografischem Kontext für Web- und Mobilanwendungen erforderlich sind. Bei diesem Dienst handelt es sich um verschiedene, mit der Azure One-API konforme REST-APIs. Er enthält zusätzlich ein webbasiertes JavaScript-Steuerelement, um die Entwicklung auf verschiedenen Medien einfach, flexibel und portabel zu gestalten.'
+  description: 'Azure Location Based Services (Vorschauversion) stellt Entwicklern aus allen Branchen leistungsstarke Geofunktionen mit umfassenden aktuellen Zuordnungsdaten zur Verfügung, die zum Bereitstellen von geografischem Kontext für Web- und Mobilanwendungen erforderlich sind. Bei diesem Dienst handelt es sich um verschiedene, mit OneAPI konforme Azure-REST-APIs. Er enthält zusätzlich ein webbasiertes JavaScript-Steuerelement, um die Entwicklung auf verschiedenen Medien einfach, flexibel und portabel zu gestalten.'
 sections:
   - title: Fünfminütige Schnellstarts
     items:

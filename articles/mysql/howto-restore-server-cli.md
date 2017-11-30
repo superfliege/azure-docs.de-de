@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 10/30/2017
-ms.openlocfilehash: 6a63cccee5be89a1da8f9656c6e7d4c7422702ca
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 11/28/2017
+ms.openlocfilehash: 44b3c68b8df4006d3fe087e5ad4118d7616d3d9a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-cli"></a>Sichern und Wiederherstellen eines Servers in Azure Database for MySQL mit der Azure-Befehlszeilenschnittstelle
 
@@ -39,7 +39,7 @@ Mithilfe dieses automatischen Sicherungsfeatures können Sie einen Zustand des S
 ## <a name="restore-a-database-to-a-previous-point-in-time-by-using-the-azure-cli"></a>Wiederherstellen des Zustands einer Datenbank zu einem früheren Zeitpunkt über Azure CLI
 Stellen Sie mit Azure Database for MySQL den Zustand des Servers zu einem früheren Zeitpunkt wieder her. Die wiederhergestellten Daten werden auf einen neuen Server kopiert, und der vorhandene Server bleibt unverändert. Wenn zum Beispiel zur Mittagszeit am heutigen Tag eine Tabelle versehentlich gelöscht wird, können Sie den Zustand kurz vor Mittag wiederherstellen. Dann können Sie die fehlende Tabelle und die fehlenden Daten aus der wiederhergestellten Kopie des Servers abrufen. 
 
-Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az mysql server restore](/cli/azure/mysql/server#restore).
+Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az mysql server restore](/cli/azure/mysql/server#az_mysql_server_restore).
 
 ### <a name="run-the-restore-command"></a>Ausführen des Befehls „restore“
 
@@ -53,7 +53,7 @@ Für den Befehl `az mysql server restore` sind folgende Parameter erforderlich:
 | Einstellung | Empfohlener Wert | Beschreibung  |
 | --- | --- | --- |
 | resource-group | myResourceGroup |  Die Ressourcengruppe, in der sich der Quellserver befindet.  |
-| Name | myserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
+| name | myserver-restored | Der Name des neuen Servers, der durch den Befehl „restore“ erstellt wird. |
 | restore-point-in-time | 2017-04-13T13:59:00Z | Wählen Sie einen Zeitpunkt aus, dessen Zustand wiederhergestellt werden soll. Datum und Zeit müssen innerhalb des Aufbewahrungszeitraums für Sicherungen des Quellservers liegen. Verwenden Sie das Datums- und Zeitformat nach ISO 8601. Beispielsweise können Sie Ihre eigene lokale Zeitzone wie `2017-04-13T05:59:00-08:00` verwenden. Sie können z.B. auch das UTC-Zulu-Format verwenden, `2017-04-13T13:59:00Z`. |
 | source-server | myserver4demo | Der Name oder die ID des Quellservers, über den die Wiederherstellung durchgeführt wird. |
 

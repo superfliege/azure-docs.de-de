@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 469bd74c0f144ff641fafe8c8f830b1fdbfa7690
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: eda6e19d27afbf07df853dd4cef5ece1a745034d
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Verbindungsarchitektur der Azure SQL-Datenbank 
 
-In diesem Artikel wird die Verbindungsarchitektur der Azure SQL-Datenbank erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL-Datenbank leiten. Diese Verbindungskomponenten von Azure SQL-Datenbank leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an die Azure-Datenbank. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können. Wenn Sie noch weitere Fragen haben, nachdem Sie diesen Artikel gelesen haben, wenden Sie sich an Dhruv unter dmalik@microsoft.com. 
+In diesem Artikel wird die Verbindungsarchitektur der Azure SQL-Datenbank erläutert. Zudem wird dargelegt, wie die verschiedenen Komponenten Datenverkehr an Ihre Instanz von Azure SQL-Datenbank leiten. Diese Verbindungskomponenten von Azure SQL-Datenbank leiten Netzwerkdatenverkehr mithilfe von Clients, die von innerhalb und von außerhalb von Azure verbunden sind, an die Azure-Datenbank. Dieser Artikel bietet auch Skriptbeispiele zum Ändern der Verbindungsart und Überlegungen, die beim Ändern der Standardverbindungseinstellungen berücksichtigt werden können. 
 
 ## <a name="connectivity-architecture"></a>Verbindungsarchitektur
 
-Das folgende Diagramm bietet einen allgemeinen Überblick über die Verbindungsarchitektur von Azure SQL-Datenbank. 
+Das folgende Diagramm bietet einen allgemeinen Überblick über die Verbindungsarchitektur von Azure SQL-Datenbank.
 
 ![Architekturübersicht](./media/sql-database-connectivity-architecture/architecture-overview.png)
 
@@ -65,14 +65,14 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | --- | --- |--- |
 | Australien, Osten | 191.238.66.109 | 13.75.149.87 |
 | Australien, Südosten | 191.239.192.109 | 13.73.109.251 |
-| Brasilien Süd | 104.41.11.5 | |    
-| Kanada, Mitte | 40.85.224.249 | |    
+| Brasilien Süd | 104.41.11.5 | |
+| Kanada, Mitte | 40.85.224.249 | |
 | Kanada, Osten | 40.86.226.166 | |
 | USA (Mitte) | 23.99.160.139 | 13.67.215.62 |
 | Ostasien | 191.234.2.139 | 52.175.33.150 |
 | US, Osten 1 | 191.238.6.43 | 40.121.158.30 |
 | USA (Ost) 2 | 191.239.224.107 | 40.79.84.180 |
-| Indien, Mitte | 104.211.96.159  | |   
+| Indien, Mitte | 104.211.96.159  | |
 | Indien, Süden | 104.211.224.146  | |
 | Indien, Westen | 104.211.160.80 | |
 | Japan Ost | 191.237.240.43 | 13.78.61.196 |
@@ -84,7 +84,7 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 | USA (Mitte/Süden) | 23.98.162.75 | 13.66.62.124 |
 | Südostasien | 23.100.117.95 | 104.43.15.0 |
 | Großbritannien, Norden | 13.87.97.210 | |
-| Vereinigtes Königreich, Süden 1 | 51.140.184.11 | |    
+| Vereinigtes Königreich, Süden 1 | 51.140.184.11 | |
 | Großbritannien, Süden 2 | 13.87.34.7 | |
 | UK, Westen | 51.141.8.11  | |
 | USA, Westen-Mitte | 13.78.145.25 | |
@@ -95,12 +95,12 @@ Die folgende Tabelle enthält die primäre und sekundäre IP-Adressen des Gatewa
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Ändern der Verbindungsrichtlinie von Azure SQL-Datenbank
 
-Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbankserver zu ändern, verwenden die [REST-API](https://msdn.microsoft.com/library/azure/mt604439.aspx). 
+Um die Verbindungsrichtlinie von Azure SQL-Datenbank für einen Azure SQL-Datenbankserver zu ändern, verwenden die [REST-API](https://msdn.microsoft.com/library/azure/mt604439.aspx).
 
-- Wenn Ihre Verbindungsrichtlinie auf **Proxy** festgelegt ist, fließen alle Netzwerkpakete über das Gateway von Azure SQL-Datenbank. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr nur für Gateway-IPs von Azure SQL-Datenbank zu. Die Einstellung **Proxy** hat längere Wartezeiten als die Einstellung **Redirect**. 
-- Wenn die Einstellung der Verbindungsrichtlinie **Redirect** ist, fließen alle Netzwerkpakete direkt an den Middleware-Proxy. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr an mehrere IP-Adressen zu. 
+- Wenn Ihre Verbindungsrichtlinie auf **Proxy** festgelegt ist, fließen alle Netzwerkpakete über das Gateway von Azure SQL-Datenbank. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr nur für Gateway-IPs von Azure SQL-Datenbank zu. Die Einstellung **Proxy** hat längere Wartezeiten als die Einstellung **Redirect**.
+- Wenn die Einstellung der Verbindungsrichtlinie **Redirect** ist, fließen alle Netzwerkpakete direkt an den Middleware-Proxy. Um dies einzustellen, lassen Sie ausgehenden Datenverkehr an mehrere IP-Adressen zu.
 
-## <a name="script-to-change-connection-settings-via-powershell"></a>Skript zum Ändern der Verbindungseinstellungen über PowerShell 
+## <a name="script-to-change-connection-settings-via-powershell"></a>Skript zum Ändern der Verbindungseinstellungen über PowerShell
 
 > [!IMPORTANT]
 > Dieses Skript erfordert das [Azure PowerShell-Modul](/powershell/azure/install-azurerm-ps).
@@ -140,7 +140,7 @@ $AuthContext = [Microsoft.IdentityModel.Clients.ActiveDirectory.AuthenticationCo
 $result = $AuthContext.AcquireToken(
 "https://management.core.windows.net/",
 $clientId,
-[Uri]$uri, 
+[Uri]$uri,
 [Microsoft.IdentityModel.Clients.ActiveDirectory.PromptBehavior]::Auto
 )
 
@@ -160,7 +160,7 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>Skript zum Ändern der Verbindungseinstellungen über Azure CLI 2.0 
+## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>Skript zum Ändern der Verbindungseinstellungen über Azure CLI 2.0
 
 > [!IMPORTANT]
 > Dieses Skript erfordert die [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest).
@@ -169,20 +169,17 @@ Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscription
 Das folgende Skript für die Befehlszeilenschnittstelle veranschaulicht, wie Sie die Verbindungsrichtlinie ändern.
 
 <pre>
- # Get SQL Server ID
- sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+# Get SQL Server ID
+sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
 
 # Set URI
-uri="https://management.azure.com/$sqlserverid/connectionPolicies/Default?api-version=2014-04-01-preview"
-
-# Get Access Token 
-accessToken=$(az account get-access-token --query 'accessToken' -o tsv)
+id="$sqlserverid/connectionPolicies/Default"
 
 # Get current connection policy 
-curl -H "authorization: Bearer $accessToken" -X GET $uri
+az resource show --ids $id
 
-#Update connection policy 
-curl -H "authorization: Bearer $accessToken" -H "Content-Type: application/json" -d '{"properties":{"connectionType":"Proxy"}}' -X PUT $uri
+# Update connection policy 
+az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
 

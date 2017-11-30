@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: d26a97ee0e5416fb1fe38ef0fb18fa4eb0e2963d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 249fb4903c7b2de3ce290850a7759a4793f10aa7
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>Zentrales Hoch- oder Herunterskalieren eines Service Fabric-Clusters mithilfe von Regeln für die automatische Skalierung
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Sammlung von virtuellen Computern bereitstellen und verwalten können. Jeder Knotentyp, der in einem Service Fabric-Cluster definiert ist, wird als separate VM-Skalierungsgruppe eingerichtet. Jeden Knotentyp kann dann unabhängig zentral hoch- oder herunterskaliert werden, bei jedem Typ können unterschiedliche Portgruppen geöffnet sein, und die Typen können verschiedene Kapazitätsmetriken aufweisen. Weitere Informationen finden Sie im Dokument über die [Service Fabric-Knotentypen](service-fabric-cluster-nodetypes.md). Da die Service Fabric-Knotentypen in Ihrem Cluster am Back-End aus VM-Skalierungsgruppen bestehen, müssen Sie für jeden Knotentyp bzw. jede VM-Skalierungsgruppe Regeln für die automatische Skalierung einrichten.
@@ -72,8 +72,8 @@ Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schn
 
 Sie müssen für eine VM-Instanz die folgenden Schritte nacheinander ausführen. Dies ermöglicht, dass die Systemdienste (und Ihre statusbehafteten Dienste) ordnungsgemäß auf der VM-Instanz heruntergefahren werden, die Sie entfernen möchten, und neue Replikate auf anderen Knoten erstellt werden.
 
-1. Führen Sie [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) mit der Absicht „Knoten entfernen“ aus, um den Knoten zu deaktivieren, der entfernt werden soll (die höchste Instanz auf diesem Knotentyp).
-2. Führen Sie [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) aus, um sicherzustellen, dass sich der Status des Knotens tatsächlich in „Deaktiviert“ geändert hat. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Sie können diesen Schritt nicht beschleunigen.
+1. Führen Sie [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) mit der Absicht „Knoten entfernen“ aus, um den Knoten zu deaktivieren, der entfernt werden soll (die höchste Instanz auf diesem Knotentyp).
+2. Führen Sie [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aus, um sicherzustellen, dass sich der Status des Knotens tatsächlich in „Deaktiviert“ geändert hat. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Sie können diesen Schritt nicht beschleunigen.
 3. Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs in diesem Knotentyp um 1 zu ändern. Die entfernte Instanz ist die höchste VM-Instanz. 
 4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md). 
 
@@ -85,8 +85,8 @@ Sie müssen für eine VM-Instanz die folgenden Schritte nacheinander ausführen.
 
 Sie müssen für eine VM-Instanz die folgenden Schritte nacheinander ausführen. Dies ermöglicht, dass die Systemdienste (und Ihre statusbehafteten Dienste) ordnungsgemäß auf der VM-Instanz heruntergefahren werden, die Sie entfernen möchten, und neue Replikate an anderer Stelle erstellt werden.
 
-1. Führen Sie [Disable-ServiceFabricNode](https://msdn.microsoft.com/library/mt125852.aspx) mit der Absicht „Knoten entfernen“ aus, um den Knoten zu deaktivieren, der entfernt werden soll (die höchste Instanz auf diesem Knotentyp).
-2. Führen Sie [Get-ServiceFabricNode](https://msdn.microsoft.com/library/mt125856.aspx) aus, um sicherzustellen, dass sich der Status des Knotens tatsächlich in „Deaktiviert“ geändert hat. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Sie können diesen Schritt nicht beschleunigen.
+1. Führen Sie [Disable-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/disable-servicefabricnode?view=azureservicefabricps) mit der Absicht „Knoten entfernen“ aus, um den Knoten zu deaktivieren, der entfernt werden soll (die höchste Instanz auf diesem Knotentyp).
+2. Führen Sie [Get-ServiceFabricNode](https://docs.microsoft.com/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) aus, um sicherzustellen, dass sich der Status des Knotens tatsächlich in „Deaktiviert“ geändert hat. Falls nicht, warten Sie, bis der Knoten deaktiviert ist. Sie können diesen Schritt nicht beschleunigen.
 3. Befolgen Sie das Beispiel bzw. die Anweisungen im [Vorlagenkatalog für den Schnellstart](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing), um die Anzahl der VMs in diesem Knotentyp um 1 zu ändern. Die höchste VM-Instanz wird jetzt entfernt. 
 4. Wiederholen Sie den Anforderungen entsprechend die Schritte 1 bis 3. Skalieren Sie allerdings auf keinen Fall die Anzahl der Instanzen auf den primären Knotentypen auf einen Wert herunter, der unter dem liegt, den die Zuverlässigkeitsstufe verlangt. [Hier finden Sie die Details zu den Zuverlässigkeitsstufen](service-fabric-cluster-capacity.md).
 

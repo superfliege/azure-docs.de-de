@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: c609f3af1b97b16fca3aabc5d7ce568ff8c660f2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: ede1a974b32227edf44464ed56ae85a1ea7ee97b
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Erstellen von Spark-Anwendungen für HDInsight-Cluster mit dem Azure-Toolkit für Eclipse
 
@@ -86,10 +86,7 @@ Wenn Sie Eclipse öffnen, erkennen HDInsight Tools automatisch, ob das Scala-Plu
    * Im Bereich **Spark-Bibliothek** können Sie die Option **Spark-SDK mit Maven konfigurieren** auswählen.  Unser Tool integriert die richtige Version für das Spark-SDK und das Scala-SDK. Sie können auch die Option **Spark-SDK manuell hinzufügen** auswählen, um das Spark-SDK manuell herunterzuladen und hinzuzufügen.
 
    ![Dialogfeld für ein neues HDInsight Scala-Projekt](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
-5. Aufgrund eines bekannten Problems müssen Sie die Scala-Version erneut bestätigen, nachdem Sie auf **Weiter** geklickt haben. Stellen Sie sicher, dass die Scala-Version annähernd der in Schritt 4 ausgewählten Version entspricht.
-
-   ![comfirm-scala-library](./media/apache-spark-eclipse-tool-plugin/comfirm-scala-library-container.png)
-6. Wählen Sie im nächsten Dialogfeld **Fertig stellen** aus. 
+5. Wählen Sie im nächsten Dialogfeld **Fertig stellen** aus. 
    
   
 ## <a name="create-a-scala-application-for-an-hdinsight-spark-cluster"></a>Erstellen einer Scala-Anwendung für einen HDInsight Spark-Cluster

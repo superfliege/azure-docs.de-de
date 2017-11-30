@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: 5322b5f3231b067937b685c69b916ed74dfe9a6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da2dc87543fd8a0aa99e1de3018a310abe93fa3a
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte
 Dieses Thema bietet eine Übersicht über die wichtigsten Konzepte von Media Services.
@@ -83,7 +83,7 @@ Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator, die zum 
 Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Ein Media Service-Konto kann mit einem oder mehreren Speicherkonten verknüpft werden. Ein Konto kann eine unbegrenzte Anzahl von Containern enthalten, solange die Gesamtgröße unter 500 TB pro Speicherkonto bleibt.  Media Services enthält Tools auf SDK-Ebene, mit denen Sie mehrere Speicherkonten verwalten und bei der Verteilung Ihrer Medienobjekte einen Lastenausgleich durchführen können. Beim Hochladen der Objekte in diese Konten kann dieser Ausgleich basierend auf Kennzahlen oder anhand einer zufälligen Verteilung erfolgen. Weitere Informationen finden Sie unter [Arbeiten mit Azure Storage](https://msdn.microsoft.com/library/azure/dn767951.aspx). 
 
 ## <a name="jobs-and-tasks"></a>Aufträge und Aufgaben
-Ein [Auftrag](https://https://docs.microsoft.com/rest/api/media/operations/job) wird normalerweise zum Verarbeiten (beispielsweise zum Indizieren oder Codieren) einer einzelnen Audio-/Videopräsentation verwendet. Wenn Sie mehrere Videos verarbeiten, erstellen Sie einen Auftrag für jedes zu verschlüsselnde Video.
+Ein [Auftrag](https://docs.microsoft.com/en-us/rest/api/media/operations/job) wird normalerweise zum Verarbeiten (beispielsweise zum Indizieren oder Codieren) einer einzelnen Audio-/Videopräsentation verwendet. Wenn Sie mehrere Videos verarbeiten, erstellen Sie einen Auftrag für jedes zu verschlüsselnde Video.
 
 Ein Auftrag enthält Metadaten zur auszuführenden Verarbeitung. Jeder Auftrag enthält eine oder mehrere [Aufgaben](https://docs.microsoft.com/rest/api/media/operations/task). Diese geben eine unteilbare Verarbeitungsaufgabe, die zugehörigen Eingabe- und Ausgabemedienobjekte, einen Medienprozessor und die zugehörigen Einstellungen an. Aufgaben innerhalb eines Auftrags können verkettet werden, wobei das Ausgabemedienobjekt als Eingabemedienobjekt für die nächste Aufgabe dient. Auf diese Weise kann ein Auftrag die gesamten Verarbeitungsschritte für eine Medienpräsentation umfassen.
 
