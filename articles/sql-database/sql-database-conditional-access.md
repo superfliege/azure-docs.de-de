@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 06/07/2017
 ms.author: rickbyh
 ms.workload: Inactive
-ms.openlocfilehash: c45f0ae655c544f51c8983c234591eef3da9dc6b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 16bd403fecbd24d7cea774bba8535f102501861f
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Bedingter Zugriff (MFA) mit Azure SQL-Datenbank und Data Warehouse  
 
@@ -25,7 +25,7 @@ Sowohl die SQL-Datenbank als auch SQL Data Warehouse unterstützen den bedingten
 - Wenn die mehrstufige Authentifizierung aktiviert ist, müssen Sie eine Verbindung mit einem unterstützten Tool wie der neuesten Version von SSMS herstellen. Weitere Informationen finden Sie unter [Konfigurieren der mehrstufigen Authentifizierung in Azure SQL-Datenbank für SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
 
 ## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurieren der Zertifizierungsstelle für Azure SQL DB/DW  
-1.  Melden Sie sich beim Portal an, und wählen Sie **Azure Active Directory** und dann **Bedingter Zugriff**. Weitere Informationen finden Sie unter [Technische Referenz zum bedingten Azure Active Directory-Zugriff](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-conditional-access-technical-reference).  
+1.  Melden Sie sich beim Portal an, und wählen Sie **Azure Active Directory** und dann **Bedingter Zugriff**. Weitere Informationen finden Sie unter [Technische Referenz zum bedingten Azure Active Directory-Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
   ![Blatt „Bedingter Zugriff“](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
 2.  Klicken Sie auf dem Blatt **Richtlinien für bedingten Zugriff** auf **Neue Richtlinie**, geben Sie einen Namen ein, und klicken Sie dann auf **Regeln konfigurieren**.  

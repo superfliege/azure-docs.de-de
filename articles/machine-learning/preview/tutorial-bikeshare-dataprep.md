@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: acd61e9980b143ebbb81d2d144bdac9134e20a11
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 9e20c606973447e0b01eaf9716fabf47eefd228b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Bikesharing-Tutorial: Erweiterte Datenvorbereitung mit der Azure Machine Learning Workbench
 Azure Machine Learning-Dienste (Vorschau) ist eine integrierte, End-to-End Data Science- und erweiterte Analyselösung für professionelle Datenspezialisten zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau.
@@ -262,10 +262,7 @@ Zum Verwenden der Daten in einer Prognose für Zwei-Stunden-Zeitblöcke müssen 
 
    > [!NOTE]
    > Azure ML Workbench erzeugt ein Programm auf der Grundlage der von Ihnen angegebenen Beispiele und wendet dasselbe Programm auf die restlichen Zeilen an. Alle übrigen Zeilen werden gemäß dem angegebenen Beispiel automatisch aufgefüllt. Die Workbench analysiert zudem die Daten und versucht, Grenzfälle zu ermitteln. 
-
-   > [!IMPORTANT]
-   > Die Identifizierung von Grenzfällen funktioniert auf einem Mac in der aktuellen Workbench-Version möglicherweise nicht. Überspringen Sie auf einem Mac __Schritt 3__ und __Schritt 4__ unten. Klicken Sie stattdessen auf __OK__, sobald alle Zeilen mit den abgeleiteten Werten aufgefüllt wurden.
-   
+  
 3. Der Text **Analyzing Data** (Daten werden analysiert) über dem Raster zeigt an, dass die Workbench versucht, Grenzfälle zu ermitteln. Nach Abschluss des Vorgangs wechselt der Status zu **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) oder **No suggestions** (Keine Vorschläge). In diesem Beispiel wird **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) zurückgegeben.
 
 4. Wählen Sie zum Prüfen der vorgeschlagenen Änderungen die Option **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) aus. Die zu prüfende und ggf. zu korrigierende Zelle wird in der Anzeige hervorgehoben.
@@ -295,11 +292,6 @@ Zum Verwenden der Daten in einer Prognose für Zwei-Stunden-Zeitblöcke müssen 
 
    ![Abbildung des Beispiels „Jan 01, 2015 12AM-2AM“](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
 
-   > [!IMPORTANT]
-   > Führen Sie auf einem Mac statt __Schritt 8__ den folgenden Schritt aus.
-   >
-   > * Wechseln Sie zur ersten Zeile, die `Feb 01, 2015 12AM-2AM` enthält. Dies sollte __Zeile 15__ sein. Ändern Sie den Wert zu `Jan 02, 2015 12AM-2AM`, und drücken Sie die __EINGABETASTE__. 
-   
 
 8. Warten Sie, bis der Status von **Analyzing Data** (Daten werden analysiert) zu **Review next suggested row** (Nächste vorgeschlagene Zeile prüfen) wechselt. Dies kann einige Sekunden dauern. Klicken Sie auf den Statuslink, um zur vorgeschlagenen Zeile zu wechseln. 
 
@@ -514,12 +506,7 @@ Verwenden Sie abgeleitete Spalten, um die Nachfrage nach Fahrrädern für einen 
     > Sie können ein Beispiel für eine beliebige Zeile angeben. In diesem Beispiel ist der Wert `Jan 01, 2017 12AM-2AM` gültig für die erste Datenzeile.
 
     ![Abbildung der Beispieldaten](media/tutorial-bikeshare-dataprep/tripdataderivebyexamplefirstexample.png)
-
-   > [!IMPORTANT]
-   > Führen Sie auf einem Mac statt __Schritt 3__ den folgenden Schritt aus.
-   >
-   > * Wechseln Sie zur ersten Zeile, die `Jan 01, 2017 1AM-2AM` enthält. Dies sollte __Zeile 14__ sein. Ändern Sie den Wert zu `Jan 01, 2017 12AM-2AM`, und drücken Sie die __EINGABETASTE__. 
-
+   
 3. Warten Sie, bis die Anwendung die Werte für alle Zeilen berechnet hat. Dies kann einige Sekunden dauern. Klicken Sie nach Abschluss der Analyse auf den Link __Review next suggested row__ (Nächste vorgeschlagene Zeile prüfen), um die Daten zu überprüfen.
 
    ![Abbildung der abgeschlossenen Analyse mit Link für Überprüfung](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)

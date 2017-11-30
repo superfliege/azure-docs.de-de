@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 2637ab6405f2d4ea1da84981295a144874dfa4f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1fad082a576bc994897c6b396e5edcfa02313487
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 Mit der Delegierung können Sie Anmeldung, Registrierung und Produktabonnierung von Entwicklern mit Ihrer vorhandenen Website umsetzen, anstatt die integrierte Funktion im Entwicklerportal zu verwenden. Auf diese Weise besitzt die Website die Benutzerdaten und kann die Prüfung dieser Schritte auf selbst definierte Weise durchführen.
@@ -172,7 +172,7 @@ Weitere Informationen zum Delegieren finden Sie im folgenden Video.
 
 [Delegating developer sign-in and sign-up]: #delegate-signin-up
 [Delegating product subscription]: #delegate-product-subscription
-[Fordern Sie ein Token für die einmalige Anmeldung an (SSO)]: http://go.microsoft.com/fwlink/?LinkId=507409
+[Fordern Sie ein Token für die einmalige Anmeldung an (SSO)]: https://docs.microsoft.com/en-us/rest/api/apimanagement/User/GenerateSsoUrl
 [create a user]: http://go.microsoft.com/fwlink/?LinkId=507655#CreateUser
 [REST-API für die Produktabonnierung]: http://go.microsoft.com/fwlink/?LinkId=507655#SSO
 [Next steps]: #next-steps

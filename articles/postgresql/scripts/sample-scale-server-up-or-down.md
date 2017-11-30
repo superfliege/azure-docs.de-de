@@ -10,12 +10,12 @@ ms.service: postgresql
 ms.devlang: azure-cli
 ms.custom: mvc
 ms.topic: sample
-ms.date: 11/03/2017
-ms.openlocfilehash: 9fe5b56d64d325f855b6030ef3dcc0ed65ad7afc
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/27/2017
+ms.openlocfilehash: a5a24e9aeea193df28bd49d5c428a72b5ec75d1b
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="monitor-and-scale-a-single-postgresql-server-using-azure-cli"></a>Überwachen und Skalieren eines einzelnen PostgreSQL-Servers mit der Azure CLI
 Dieses CLI-Beispielskript skaliert einen einzelnen Azure-Datenbank für PostgreSQL-Server nach Abfragen der Metriken auf eine andere Leistungsstufe. 
@@ -37,10 +37,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | **Befehl** | **Hinweise** |
 |---|---|
-| [az group create](/cli/azure/group#create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az postgres server create](/cli/azure/postgres/server#create) | Erstellt einen PostgreSQL-Server, der die Datenbanken hostet. |
-| [az monitor metrics list](/cli/azure/monitor/metrics#list) | Listet den Metrikwert für die Ressourcen auf. |
-| [az group delete](/cli/azure/group#delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
+| [az group create](/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) | Erstellt einen PostgreSQL-Server, der die Datenbanken hostet. |
+| [az monitor metrics list](/cli/azure/monitor/metrics#az_monitor_metrics_list) | Listet den Metrikwert für die Ressourcen auf. |
+| [az group delete](/cli/azure/group#az_group_delete) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Lesen Sie weitere Informationen zur Azure CLI: [Azure CLI-Dokumentation](/cli/azure/overview)

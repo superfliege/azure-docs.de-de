@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 11/27/2017
 ms.author: mbullwin
-ms.openlocfilehash: 80a9e248ca50c11ef61a5c50c4986c4f8f4ead9d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: adda6335b702470cd491f07d750236c368325a9e
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="analytics-in-application-insights"></a>Analytics in Application Insights
 Analytics ist das leistungsfähige Such- und Abfragetool von [Application Insights](app-insights-overview.md). Analytics ist ein Webtool, sodass keine Installation erforderlich ist. Wenn Sie Application Insights bereits für eine Ihrer Apps konfiguriert haben, können Sie die Daten Ihrer App analysieren, indem Sie Analytics vom [Übersichtsblatt](app-insights-dashboards.md) Ihrer App aus öffnen.
@@ -49,7 +49,7 @@ Die Sprache verfügt über viele attraktive Features:
 
 * [Filtern](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html) der Rohdaten Ihrer App-Telemetrie nach beliebigen Feldern, einschließlich Ihrer benutzerdefinierten Eigenschaften und Metriken.
 * [Verbinden](https://docs.loganalytics.io/queryLanguage/query_language_joinoperator.html) mehrerer Tabellen – Korrelation von Anforderungen mit Seitenansichten, Aufrufen von Abhängigkeiten, Ausnahmen und Protokollablaufverfolgungen.
-* Leistungsstarke statistische [Aggregationen](https://docs.loganalytics.io/learn/tutorials/aggregations.html).
+* Leistungsstarke statistische [Aggregationen](https://docs.loganalytics.io/docs/Learn/Tutorials/Aggregation-functions).
 * Sofortige und leistungsfähige Visualisierungen.
 * Eine [REST-API](https://dev.applicationinsights.io/), die Sie verwenden können, um Abfragen programmgesteuert auszuführen, z.B. über PowerShell.
 

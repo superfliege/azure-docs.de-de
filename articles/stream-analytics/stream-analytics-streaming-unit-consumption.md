@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 14f73322701dffea283432bf2a25b5e6cd3e9de4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1fb9ee3147f94b173b0fd324943b8801b984d2b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -59,7 +59,6 @@ Weitere Informationen über die Auswahl der richtigen Anzahl von SUs finden Sie 
 
 > [!Note]
 > Die benötigte SU-Anzahl für einen bestimmten Auftrag hängt von der Partitionskonfiguration für die Eingaben und der für den Auftrag definierten Abfrage ab. Sie können die für Ihr Kontingent maximal festgelegte Anzahl von SUs für einen Auftrag auswählen. Jedes Azure-Abonnement verfügt standardmäßig über ein Kontingent von höchstens 200 SUs für alle Analyseaufträge in einer bestimmten Region. Wenn Sie die SUs für Ihre Abonnements über dieses Kontingent hinaus erhöhen möchten, wenden Sie sich an den [Microsoft-Support](http://support.microsoft.com). Die gültigen Werte für SUs pro Auftrag sind 1, 3, 6 und danach Werte in Schritten von 6.
-> Hinweis: Die Verwendung von 1 SU wird für Produktionsaufträge nicht empfohlen. In der Regel sollten 1-SU-Aufträge nur für das Erstellen von Prototypen und das Testen von Aufträgen verwendet werden.
 
 
 

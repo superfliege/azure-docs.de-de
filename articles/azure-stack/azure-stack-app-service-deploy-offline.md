@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 11/23/2017
 ms.author: anwestg
-ms.openlocfilehash: cd727b2902dafdb8086ac4ce74db96ca8acf8fe8
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d2a9b9fbe2a057a6d36e80c89af83a543e90d3be
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Hinzufügen eines App Service-Ressourcenanbieters zu einer getrennten, durch AD FS gesicherten Azure Stack-Umgebung
 
@@ -75,7 +75,7 @@ Um App Service in einer nicht verbundenen Umgebung bereitzustellen, müssen Sie 
         - Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden, geben Sie Ihr Administratorkonto an. Beispiel: cloudadmin@azurestack.local. Geben Sie Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
     2. Wählen Sie im Feld **Azure Stack-Abonnements** Ihr Abonnement aus.
     3. Wählen Sie im Feld **Azure Stack-Standorte** den Standort aus, der der Region entspricht, in der die Bereitstellung erfolgen soll. Wählen Sie z.B. **lokal** aus, wenn Ihre Bereitstellung im Azure Stack Development Kit erfolgt.
-    4. Geben Sie einen **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE\<MOBILE\>** festgelegt.
+    4. Geben Sie einen **Ressourcengruppennamen** für Ihre App Service-Bereitstellung ein. Dieser ist standardmäßig auf **APPSERVICE-LOCAL** festgelegt.
     5. Geben Sie den **Namen des Speicherkontos** ein, das App Service während der Installation erstellen soll. Dieser ist standardmäßig auf **appsvclocalstor** festgelegt.
     6. Klicken Sie auf **Weiter**.
 

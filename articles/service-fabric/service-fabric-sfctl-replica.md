@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 50d185294131e42aaf8b541ab17495fcb40c89dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd16dd889cbe0f05d7e60f444c6c5fa2e65f64a4
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 Ermöglicht es, Replikate zu verwalten, die zu Servicepartitionen gehören.
@@ -29,8 +29,7 @@ Ermöglicht es, Replikate zu verwalten, die zu Servicepartitionen gehören.
 | --- | --- |
 |    deployed  | Ruft die Details eines Replikats ab, das auf einem Service Fabric-Knoten bereitgestellt wird.|
 |    deployed-list| Ruft die Liste der Replikate ab, die auf einem Service Fabric-Knoten bereitgestellt werden.|
-|    health    | Ruft die Integrität eines zustandsbehafteten Service Fabric-Dienstreplikats oder einer zustandslosen
-                   Service Fabric-Dienstinstanz ab.|
+|    health    | Ruft die Integrität eines zustandsbehafteten Service Fabric-Dienstreplikats oder einer zustandslosen Service Fabric-Dienstinstanz ab.|
 |    info      | Ruft die Informationen zu einem Replikat einer Service Fabric-Partition ab.|
 |    list      | Ruft die Informationen zu Replikaten einer Service Fabric-Dienstpartition ab.|
 |    remove    | Entfernt ein Dienstreplikat, das auf einem Knoten ausgeführt wird.|

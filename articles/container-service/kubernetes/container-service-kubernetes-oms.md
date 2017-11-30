@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: e171d1ef09712362ff1aabd783449abaed9daaf7
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: c402d81841ed5a79df8a84d1f69f984d010dbe0d
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>Überwachen eines Azure Container Service-Clusters mit Microsoft Operations Management Suite (OMS)
 
@@ -39,7 +39,7 @@ $ az --version
 ```
 
 Wenn das Tool `az` nicht installiert ist, finden Sie [hier](https://github.com/azure/azure-cli#installation) Anweisungen.  
-Alternativ können Sie [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) verwenden. In diesen Dienst sind die Azure-Befehlszeilenschnittstelle `az` und die `kubectl`-Tools bereits installiert.  
+Alternativ können Sie [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwenden. In diesen Dienst sind die Azure-Befehlszeilenschnittstelle `az` und die `kubectl`-Tools bereits installiert.  
 
 Führen Sie Folgendes aus, um zu prüfen, ob das Tool `kubectl` installiert ist:
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 1aba03102dcd96753ef4db57edce889a43e4e3fc
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 066f151aa96b3a57c86515411ba05a982c10aa5f
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
 Azure Event Hubs ist ein hochgradig skalierbarer Dateneingangsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können.
@@ -68,7 +68,7 @@ Geben Sie den Anforderungstext gemäß der folgenden Vorlage ein.
 
 ```json
 {
-  "type" : "AzureEventHub",
+  "loggertype" : "AzureEventHub",
   "description" : "Sample logger description",
   "credentials" : {
     "name" : "Name of the Event Hub from the Azure Classic Portal",
@@ -77,7 +77,7 @@ Geben Sie den Anforderungstext gemäß der folgenden Vorlage ein.
 }
 ```
 
-* `type` muss auf `AzureEventHub` festgelegt werden.
+* `loggertype` muss auf `AzureEventHub` festgelegt werden.
 * `description` stellt eine optionale Beschreibung des Loggers bereit und kann auf Wunsch auch leer gelassen werden (als Zeichenfolge mit der Länge null).
 * `credentials` enthält den `name` und die `connectionString` Ihres Azure Event Hubs.
 

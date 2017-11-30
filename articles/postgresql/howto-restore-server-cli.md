@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 0cfce63b1523f939dc2d706dba771e56ce9ccd6c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 11/27/2017
+ms.openlocfilehash: 7027669597b8c1989f7baac5c5f9d997b218750a
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Erfahren Sie, wie Sie einen Server in Azure-Datenbank for PostgreSQL mit Azure CLI sichern und wiederherstellen.
 
@@ -41,7 +41,7 @@ Mithilfe dieses automatischen Sicherungsfeatures können Sie einen Zustand des S
 ## <a name="restore-a-database-to-a-previous-point-in-time-by-using-the-azure-cli"></a>Wiederherstellen des Zustands einer Datenbank zu einem früheren Zeitpunkt über Azure CLI
 Stellen Sie den Zustand des Servers zu einem früheren Zeitpunkt mit Azure-Datenbank für PostgreSQL wieder her. Die wiederhergestellten Daten werden auf einen neuen Server kopiert, und der vorhandene Server bleibt unverändert. Wenn zum Beispiel zur Mittagszeit am heutigen Tag eine Tabelle versehentlich gelöscht wird, können Sie den Zustand kurz vor Mittag wiederherstellen. Dann können Sie die fehlende Tabelle und die fehlenden Daten aus der wiederhergestellten Kopie des Servers abrufen. 
 
-Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az postgres server restore](/cli/azure/postgres/server#restore).
+Verwenden Sie zur Wiederherstellung des Servers den Azure CLI-Befehl [az postgres server restore](/cli/azure/postgres/server#az_postgres_server_restore).
 
 ### <a name="run-the-restore-command"></a>Ausführen des Befehls „restore“
 

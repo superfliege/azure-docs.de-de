@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 0a0ab748dcf722358633c7be350c6addcd61352d
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 308de5c90f1c06ed1dfe2981960a24beee066cf3
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Bereitstellen einer Azure Service Fabric-Containeranwendung unter Linux in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -33,11 +33,11 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 > * Skalieren und Durchführen des Failovers für Container in Service Fabric
 
 ## <a name="prerequisite"></a>Voraussetzung
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/en-us/free/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
   
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und nutzen möchten, sollten Sie sicherstellen, dass Sie Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie „az --version“ aus, um nach der Version zu suchen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) Informationen dazu.
+Wenn Sie die Befehlszeilenschnittstelle (CLI) lokal installieren und nutzen möchten, sollten Sie sicherstellen, dass Sie Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie „az --version“ aus, um nach der Version zu suchen. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="get-application-package"></a>Abrufen des Anwendungspakets
 Zum Bereitstellen von Containern in Service Fabric benötigen Sie eine Gruppe von Manifestdateien (die Anwendungsdefinition), in denen die einzelnen Container und die Anwendung beschrieben ist.
