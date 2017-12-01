@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: de0222d897ed2cf94be98501c39385ac88f866fc
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: c589dd8c9d597145fd87a00d9a2ba040988cd8ec
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Linux-Computer
 
@@ -35,28 +35,25 @@ Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, k
 ## <a name="detach-a-data-disk-using-cli-20"></a>Trennen eines Datenträgers mit CLI 2.0
 
 ```azurecli
-az vm disk detach -g myResourceGroup --vm-name myVm -n myDataDisk
+az vm disk detach \
+    -g myResourceGroup \
+    --vm-name myVm \
+    -n myDataDisk
 ```
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
 
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Trennen eines Datenträgers im Portal
-1. Wählen Sie im Portal **Virtuelle Computer**aus.
+1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 2. Wählen Sie den virtuellen Computer mit dem zu trennenden Datenträger aus, und klicken Sie auf **Beenden**, um die Zuordnung der VM aufzuheben.
-3. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Datenträger**.
-4. Wählen Sie oben auf dem Blatt **Datenträger** die Option **Bearbeiten** aus.
-5. Klicken Sie auf dem Blatt **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche „Trennen“ (![Schaltfläche „Trennen“](./media/detach-disk/detach.png)).
-5. Klicken Sie, nachdem der Datenträger entfernt wurde, oben auf dem Blatt auf „Speichern“.
-6. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Übersicht** und dann oben auf dem Blatt auf die Schaltfläche **Starten**, um den virtuellen Computer neu zu starten.
+3. Klicken Sie im Bereich für den virtuellen Computer auf **Datenträger**.
+4. Wählen Sie oben im Bereich **Datenträger** die Option **Bearbeiten** aus.
+5. Klicken Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche „Trennen“ (![Detach button image](./media/detach-disk/detach.png)).
+5. Nachdem der Datenträger entfernt wurde, klicken Sie oben auf dem Bereich auf „Speichern“.
+6. Klicken Sie im Bereich für den virtuellen Computer auf **Übersicht** und dann oben im Bereich auf die Schaltfläche **Starten**, um die VM neu zu starten.
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
-
-
-
-
-
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte

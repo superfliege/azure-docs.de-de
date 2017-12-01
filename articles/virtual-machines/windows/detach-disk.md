@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2017
+ms.date: 11/17/2017
 ms.author: cynthn
-ms.openlocfilehash: bbbd31313db44d32a829e9e4c6c9b5fd9c0e533e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 7013e7ff3cb14dcad8e3e9a926bcee771180259d
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Windows-Computer
 Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Dadurch wird der Datenträger von dem virtuellen Computer entfernt, aber nicht aus dem Speicher.
@@ -32,29 +32,30 @@ Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nic
 Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an denselben virtuellen Computer oder an einen anderen anfügen.
 
 ## <a name="detach-a-data-disk-using-the-portal"></a>Trennen eines Datenträgers im Portal
-1. Wählen Sie im Portal **Virtuelle Computer**aus.
+
+1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus.
 2. Wählen Sie den virtuellen Computer mit dem zu trennenden Datenträger aus, und klicken Sie auf **Beenden**, um die Zuordnung der VM aufzuheben.
-3. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Datenträger**.
-4. Wählen Sie oben auf dem Blatt **Datenträger** die Option **Bearbeiten** aus.
-5. Klicken Sie auf dem Blatt **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche „Trennen“ (![Schaltfläche „Trennen“](./media/detach-disk/detach.png)).
-5. Klicken Sie, nachdem der Datenträger entfernt wurde, oben auf dem Blatt auf „Speichern“.
-6. Klicken Sie auf dem Blatt für den virtuellen Computer auf **Übersicht** und dann oben auf dem Blatt auf die Schaltfläche **Starten**, um den virtuellen Computer neu zu starten.
+3. Klicken Sie im Bereich für den virtuellen Computer auf **Datenträger**.
+4. Wählen Sie oben im Bereich **Datenträger** die Option **Bearbeiten** aus.
+5. Klicken Sie im Bereich **Datenträger** ganz rechts neben dem Datenträger, den Sie trennen möchten, auf die Schaltfläche „Trennen“ (![Detach button image](./media/detach-disk/detach.png)).
+5. Nachdem der Datenträger entfernt wurde, klicken Sie oben auf dem Bereich auf **Speichern**.
+6. Klicken Sie im Bereich für den virtuellen Computer auf **Übersicht** und dann oben im Bereich auf die Schaltfläche **Starten**, um die VM neu zu starten.
 
 
 
 Der Datenträger verbleibt im Speicher, ist jedoch nicht mehr an einen virtuellen Computer angefügt.
 
 ## <a name="detach-a-data-disk-using-powershell"></a>Trennen eines Datenträgers mit PowerShell
-In diesem Beispiel ruft der erste Befehl mit dem Cmdlet „Get-AzureRmVM“ den virtuellen Computer mit dem Namen **MyVM07** aus der Ressourcengruppe **RG11** ab. Der Befehl speichert den virtuellen Computer in der Variablen **$VirtualMachine** .
+In diesem Beispiel ruft der erste Befehl mit dem Cmdlet [Get-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) den virtuellen Computer mit dem Namen **MyVM07** aus der Ressourcengruppe **RG11** ab und speichert ihn in der Variablen **$VirtualMachine**.
 
-Der zweite Befehl entfernt den Datenträger DataDisk3 vom virtuellen Computer.
+In der zweiten Zeile wird der Datenträger namens DataDisk3 über das Cmdlet [Remove-AzureRmVMDataDisk](/powershell/module/azurerm.compute/remove-azurermvmdatadisk) vom virtuellen Computer entfernt.
 
-Der letzte Befehl aktualisiert den Status des virtuellen Computers und schließt dadurch das Entfernen des Datenträgers ab.
+In der dritten Zeile wird der Status des virtuellen Computers über das Cmdlet [Update-AzureRmVM](/powershell/module/azurerm.compute/update-azurermvm) aktualisiert, und der Vorgang zum Entfernen des Datenträgers ist abgeschlossen.
 
 ```azurepowershell-interactive
 $VirtualMachine = Get-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07"
 Remove-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3"
-Update-AzureRmVM -ResourceGroupName "RG11" -Name "MyVM07" -VM $VirtualMachine
+Update-AzureRmVM -ResourceGroupName "RG11" -VM $VirtualMachine
 ```
 
 Weitere Informationen finden Sie unter [Remove-AzureRmVMDataDisk](/powershell/module/azurerm.compute/remove-azurermvmdatadisk).

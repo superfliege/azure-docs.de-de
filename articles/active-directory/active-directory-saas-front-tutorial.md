@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: d936bc50a66ac2a3c17038ff08351edf9902c99f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 944149746b05108040cd0cc340e882b39713f06e
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Tutorial: Azure Active Directory-Integration mit Front
 
@@ -104,66 +104,60 @@ In diesem Abschnitt ermöglichen Sie das einmalige Anmelden von Azure AD im Azur
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-front-tutorial/tutorial_front_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Front** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+3. Führen Sie im Abschnitt **Domäne und URLs für Front** die folgenden Schritte durch:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_url1.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<companyname>.frontapp.com`
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<companyname>.frontapp.com/sso/saml/callback`
-
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten:
-
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_url2.png)
-
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.frontapp.com`.
      
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL. Diese werden später in diesem Tutorial erläutert. Wenden Sie sich alternativ an das [Supportteam für den Front-Client](mailto:support@frontapp.com), um diese Werte zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Diese werden später in diesem Tutorial erläutert. Wenden Sie sich alternativ an das [Front-Client-Supportteam](mailto:support@frontapp.com), um diese Werte zu erhalten. 
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+5. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_general_400.png)
     
-7. Klicken Sie im Abschnitt **Front-Konfiguration** auf **Front konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+6. Klicken Sie im Abschnitt **Front-Konfiguration** auf **Front konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_configure.png) 
 
-8. Melden Sie sich bei Ihrem Front-Mandanten als Administrator an.
+7. Melden Sie sich bei Ihrem Front-Mandanten als Administrator an.
 
-9. Wechseln Sie zu **Settings (Zahnradsymbol unten auf der linken Randleiste) > Preferences** (Einstellungen > Voreinstellungen).
+8. Wechseln Sie zu **Settings (Zahnradsymbol unten auf der linken Randleiste) > Preferences** (Einstellungen > Voreinstellungen).
    
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_000.png)
 
-10. Klicken Sie auf den Link **Single Sign On** .
+9. Klicken Sie auf den Link **Single Sign On** .
    
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_001.png)
 
-11. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** den Eintrag **SAML** aus.
+10. Wählen Sie in der Dropdownliste für **Einmaliges Anmelden** den Eintrag **SAML** aus.
    
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_002.png)
 
-12. Geben Sie im Textfeld **Einstiegspunkt** den Wert für die **Dienst-URL für einmaliges Anmelden** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
+11. Geben Sie im Textfeld **Einstiegspunkt** den Wert für die **Dienst-URL für einmaliges Anmelden** aus dem Konfigurations-Assistenten der Azure AD-Anwendung ein.
     
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_003.png)
 
-13. Öffnen Sie die heruntergeladene Datei **Zertifikat (Base64)** in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Signaturzertifikat** ein.
+12. Öffnen Sie die heruntergeladene Datei **Zertifikat (Base64)** in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Signaturzertifikat** ein.
     
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_004.png)
 
-14. Führen Sie im Abschnitt **Service provider settings** die folgenden Schritte aus:
+13. Führen Sie im Abschnitt **Service provider settings** die folgenden Schritte aus:
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-front-tutorial/tutorial_front_005.png)
 
     a. Kopieren Sie den Wert von **Entity ID**, und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für Front** in das Textfeld **Bezeichner** ein.
 
-    b. Kopieren Sie den Wert von **ACS URL**, und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für Front** in das Textfeld **Anmelde-URL** ein.
+    b. Kopieren Sie den Wert von **ACS-URL**, und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für Front** in das Textfeld **Antwort-URL** ein.
     
-15. Klicken Sie auf die Schaltfläche **Save** .
+14. Klicken Sie auf die Schaltfläche **Save** .
 
 > [!TIP]
 > Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).

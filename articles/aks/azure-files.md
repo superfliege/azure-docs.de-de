@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/11/2017
+ms.date: 11/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 11457e6556e6400d8f58f71c71ab1e790bcef8f1
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: bae60e7f78934deacac173767ca3013ce93cf9ad
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="using-azure-files-with-kubernetes"></a>Verwenden von Azure Files mit Kubernetes
 
@@ -28,52 +28,49 @@ Containerbasierte Anwendungen müssen häufig auf Daten in einem externen Datenv
 
 Weitere Informationen zu Kubernetes-Volumes finden Sie unter [Kubernetes-Volumes][kubernetes-volumes].
 
-## <a name="creating-a-file-share"></a>Erstellen einer Dateifreigabe
+## <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
 
-Eine vorhandene Azure-Dateifreigabe kann mit Azure Container Service verwendet werden. Wenn Sie eine solche erstellen möchten, verwenden Sie die folgende Befehlsfolge.
-
-Erstellen Sie mit dem Befehl [az group create][az-group-create] eine Ressourcengruppe für die Azure-Dateifreigabe. Die Ressourcengruppe des Speicherkontos und der Kubernetes-Cluster müssen sich in derselben Region befinden.
+Bevor Sie eine Azure-Dateifreigabe als Kubernetes-Volume verwenden, müssen Sie ein Azure Storage-Konto und die Dateifreigabe erstellen. Das folgende Skript kann zum Ausführen dieser Aufgaben verwendet werden. Notieren oder aktualisieren Sie die Parameterwerte. Einige davon werden bei der Erstellung des Kubernetes-Volumes benötigt.
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
-```
+# Change these four parameters
+AKS_PERS_STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
+AKS_PERS_RESOURCE_GROUP=myAKSShare
+AKS_PERS_LOCATION=eastus
+AKS_PERS_SHARE_NAME=aksshare
 
-Verwenden Sie den Befehl [az storage account create][az-storage-create], um ein Azure Storage-Konto zu erstellen. Der Name des Speicherkontos muss eindeutig sein. Aktualisieren Sie den Wert des `--name`-Arguments mit einem eindeutigen Wert.
+# Create the Resource Group
+az group create --name $AKS_PERS_RESOURCE_GROUP --location $AKS_PERS_LOCATION
 
-```azurecli-interactive
-az storage account create --name mystorageaccount --resource-group myResourceGroup --sku Standard_LRS
-```
+# Create the storage account
+az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -l $AKS_PERS_LOCATION --sku Standard_LRS
 
-Verwenden Sie den Befehl [az storage account keys list][az-storage-key-list], um den Speicherschlüssel zurückzugeben. Aktualisieren Sie den Wert des `--account-name`-Arguments mit dem eindeutigen Namen des Speicherkontos.
+# Export the connection string as an environment variable, this is used when creating the Azure file share
+export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
 
-Notieren Sie sich einen der Schlüsselwerte, der in den nachfolgenden Schritten verwendet wird.
+# Create the file share
+az storage share create -n $AKS_PERS_SHARE_NAME
 
-```azurecli-interactive
-az storage account keys list --account-name mystorageaccount --resource-group myResourceGroup --output table
-```
-
-Verwenden Sie den Befehl [az storage share create][az-storage-share-create], um die Azure-Dateifreigabe zu erstellen. Aktualisieren Sie den `--account-key`-Wert mit dem Wert, der im letzten Schritt erfasst wurde.
-
-```azurecli-interactive
-az storage share create --name myfileshare --account-name mystorageaccount --account-key <key>
+# Get storage account key
+STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_GROUP --account-name $AKS_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
 ```
 
 ## <a name="create-kubernetes-secret"></a>Erstellen eines Kubernetes-Geheimnisses
 
-Kubernetes benötigt Anmeldeinformationen für den Zugriff auf die Dateifreigabe. Statt den Azure Storage-Kontonamen und den Schlüssel mit jedem Pod zu speichern, werden die Informationen nur einmal in einem [Kubernetes-Geheimnis][kubernetes-secret] abgelegt und von den einzelnen Azure Files-Volumes referenziert. 
+Kubernetes benötigt Anmeldeinformationen für den Zugriff auf die Dateifreigabe. Diese Anmeldeinformationen werden in einem [Kubernetes-Geheimnis][kubernetes-secret] gespeichert, auf das bei der Erstellung eines Kubernetes-Pod verwiesen wird.
 
-Die Werte in einem Kubernetes-Geheimnismanifest müssen Base64-codiert sein. Verwenden Sie die folgenden Befehle, um codierte Werte zurückzugeben.
+Wenn Sie ein Kubernetes-Geheimnis erstellen, müssen geheime Werte Base64-codiert sein.
 
-Codieren Sie zuerst den Namen des Speicherkontos. Ersetzen Sie `storage-account` durch den Namen Ihres Azure-Speicherkontos.
+Codieren Sie zuerst den Namen des Speicherkontos. Ersetzen Sie `$AKS_PERS_STORAGE_ACCOUNT_NAME` bei Bedarf durch den Namen Ihres Azure-Speicherkontos.
 
 ```azurecli-interactive
-echo -n <storage-account> | base64
+echo -n $AKS_PERS_STORAGE_ACCOUNT_NAME | base64
 ```
 
-Anschließend wird der Zugriffsschlüssel für das Speicherkonto benötigt. Führen Sie den folgenden Befehl aus, um den codierten Schlüssel zurückzugeben. Ersetzen Sie `storage-key` durch den Schlüssel, der in einem vorherigen Schritt erfasst wurde.
+Aktualisieren Sie dann den Schlüssel des Speicherkontos. Ersetzen Sie `$STORAGE_KEY` bei Bedarf durch den Namen des Azure-Speicherkontoschlüssels.
 
 ```azurecli-interactive
-echo -n <storage-key> | base64
+echo -n $STORAGE_KEY | base64
 ```
 
 Erstellen Sie eine Datei namens „`azure-secret.yml`“, und fügen Sie den folgenden YAML-Code ein. Aktualisieren Sie die Werte `azurestorageaccountname` und `azurestorageaccountkey` mit den Base64-codierten Werte, die Sie im letzten Schritt abgerufen haben.
@@ -89,15 +86,15 @@ data:
   azurestorageaccountkey: <base64_encoded_storage_account_key>
 ```
 
-Verwenden Sie den Befehl [kubectl apply][kubectl-apply] zum Erstellen des Geheimnisses.
+Verwenden Sie den Befehl [kubectl create][kubectl-create] zum Erstellen des Geheimnisses.
 
 ```azurecli-interactive
-kubectl apply -f azure-secret.yml
+kubectl create -f azure-secret.yml
 ```
 
 ## <a name="mount-file-share-as-volume"></a>Einbinden einer Dateifreigabe als Volume
 
-Sie können Ihre Azure Files-Freigabe in Ihren Pod einbinden, indem Sie das Volume in der entsprechenden Spezifikation konfigurieren. Erstellen Sie eine neue Datei namens „`azure-files-pod.yml`“ mit folgendem Inhalt. Aktualisieren Sie „`share-name`“ mit dem Namen der Azure Files-Freigabe.
+Sie können Ihre Azure Files-Freigabe in Ihren Pod einbinden, indem Sie das Volume in der entsprechenden Spezifikation konfigurieren. Erstellen Sie eine neue Datei namens „`azure-files-pod.yml`“ mit folgendem Inhalt. Aktualisieren Sie „`aksshare`“ mit dem Namen der Azure Files-Freigabe.
 
 ```yaml
 apiVersion: v1
@@ -115,7 +112,7 @@ spec:
   - name: azure
     azureFile:
       secretName: azure-secret
-      shareName: <share-name>
+      shareName: aksshare
       readOnly: false
 ```
 
@@ -139,6 +136,6 @@ Informieren Sie sich über Kubernetes-Volumes anhand von Azure Files.
 [az-storage-create]: /cli/azure/storage/account#az_storage_account_create
 [az-storage-key-list]: /cli/azure/storage/account/keys#az_storage_account_keys_list
 [az-storage-share-create]: /cli/azure/storage/share#az_storage_share_create
-[kubectl-apply]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#apply
+[kubectl-create]: https://kubernetes.io/docs/user-guide/kubectl/v1.8/#create
 [kubernetes-secret]: https://kubernetes.io/docs/concepts/configuration/secret/
 [az-group-create]: /cli/azure/group#az_group_create
