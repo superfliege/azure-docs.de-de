@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 6e65af68dcd2306aabda65efdf8fe056c0d9b4a4
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 31ffd31b5d540617c4a7a1224e6cf0ee656c9678
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
 
@@ -30,7 +30,7 @@ Verwenden Sie den SQL Server-Ressourcenanbieteradapter, um SQL-Datenbanken als D
 
 Der Ressourcenanbieter unterstützt nicht alle Datenbankverwaltungsfunktionen von [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/). Pool für elastische Datenbanken und das automatische Skalieren der Datenbankleistung nach oben oder unten sind beispielsweise nicht verfügbar. Der Ressourcenanbieter unterstützt jedoch ähnliche Vorgänge für das Erstellen, Lesen, Aktualisieren und Löschen. Die API ist nicht mit SQL DB kompatibel.
 
-## <a name="sql-server-resource-provider-adapter-architecture"></a>Architektur des SQL Server-Ressourcenanbieteradapters
+## <a name="sql-resource-provider-adapter-architecture"></a>Architektur des SQL-Ressourcenanbieteradapters
 Der Ressourcenanbieter besteht aus drei Komponenten:
 
 - **Dem virtuellen Computer des SQL-Ressourcenanbieteradapters**, ein virtueller Windows-Computer, der die Anbieterdienste ausführt
@@ -50,6 +50,9 @@ Sie müssen mindestens eine SQL Server-Instanz erstellen oder Zugriff auf extern
     b. Auf Systemen mit mehreren Knoten muss der Host ein System sein, das auf den privilegierten Endpunkt zugreifen kann.
 
 3. [Laden Sie die Binärdatei des SQL-Ressourcenanbieters herunter](https://aka.ms/azurestacksqlrp), und führen Sie Self-Extractor aus, um den Inhalt in einem temporären Verzeichnis zu extrahieren.
+
+    > [!NOTE]
+    > Wenn Sie Azure Stack Build 20170928.3 oder früher verwenden, [laden Sie diese Version herunter](https://aka.ms/azurestacksqlrp1709).
 
 4. Das Azure Stack-Stammzertifikat wird vom privilegierten Endpunkt abgerufen. Für ASDK wird im Rahmen dieses Prozesses ein selbstsigniertes Zertifikat erstellt. Bei mehreren Knoten müssen Sie ein entsprechendes Zertifikat bereitstellen.
 
@@ -85,8 +88,12 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
 $domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
 # Point to the directory where the RP installation files were extracted
 $tempDir = 'C:\TEMP\SQLRP'
 
@@ -108,7 +115,12 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 # Change directory to the folder where you extracted the installation files
 # and adjust the endpoints
-.$tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -CloudAdminCredential $cloudAdminCreds -PrivilegedEndpoint '10.10.10.10' -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert
+. $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert
  ```
 
 ### <a name="deploysqlproviderps1-parameters"></a>Parameter „DeploySqlProvider.ps1“
@@ -141,27 +153,25 @@ Sie können diese Parameter in der Befehlszeile angeben. Wenn sie nicht festgele
       ![Überprüfen der Bereitstellung des SQL-Ressourcenanbieters](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
 
-
-
-
-## <a name="removing-the-sql-adapter-resource-provider"></a>Entfernen des SQL-Adapter-Ressourcenanbieters
+## <a name="remove-the-sql-resource-provider-adapter"></a>Entfernen des SQL-Ressourcenanbieteradapters
 
 Zum Entfernen des Ressourcenanbieters müssen unbedingt zuerst alle Abhängigkeiten entfernt werden.
 
-1. Stellen Sie sicher, dass Sie das ursprüngliche Bereitstellungspaket verwenden, das Sie für diese Version des Ressourcenanbieters heruntergeladen haben.
+1. Stellen Sie sicher, dass Sie das ursprüngliche Bereitstellungspaket verwenden, das Sie für diese Version des SQL-Ressourcenanbieteradapters heruntergeladen haben.
 
 2. Alle Benutzerdatenbanken müssen aus dem Ressourcenanbieter gelöscht werden (die Daten werden dabei nicht gelöscht). Diese Aktion sollte von den Benutzern selbst durchgeführt werden.
 
-3. Der Administrator muss die Hostserver aus dem SQL-Adapter löschen.
+3. Der Administrator muss die Hostserver aus dem SQL-Ressourcenanbieteradapter löschen.
 
-4. Der Administrator muss alle Pläne löschen, die auf den SQL-Adapter verweisen.
+4. Der Administrator muss alle Pläne löschen, die auf den SQL-Ressourcenanbieteradapter verweisen.
 
-5. Der Administrator muss alle Kontingente löschen, die dem SQL-Adapter zugewiesen sind.
+5. Der Administrator muss alle Kontingente löschen, die dem SQL-Ressourcenanbieteradapter zugewiesen sind.
 
 6. Führen Sie das Bereitstellungsskript mit dem Parameter „-Uninstall“, Azure Resource Manager-Endpunkten, DirectoryTenantID und Anmeldeinformationen für das Dienstadministratorkonto erneut aus.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+[Hinzufügen von Hostservern](azure-stack-sql-resource-provider-hosting-servers.md) und [Erstellen von Datenbanken](azure-stack-sql-resource-provider-databases.md).
 
 Probieren Sie andere [PaaS-Dienste](azure-stack-tools-paas-services.md) wie den [MySQL Server-Ressourcenanbieter](azure-stack-mysql-resource-provider-deploy.md) und den [App Services-Ressourcenanbieter](azure-stack-app-service-overview.md) aus.

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 11/03/2017
+ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 2f62c0c6783c3cdaf1ffda3299673071b8e4a6f2
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: f6d008a92677d28d0184e64637dcb2e093299519
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="securing-azure-content-delivery-network-assets-with-token-authentication"></a>Schützen von Azure Content Delivery Network-Assets mit Tokenauthentifizierung
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="overview"></a>Übersicht
 
-Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, dass Assets im Azure Content Delivery Network (CDN) für nicht autorisierte Clients bereitgestellt werden. Die Tokenauthentifizierung wird normalerweise genutzt, um das „Hotlinking“ von Inhalten zu verhindern. Dabei verwendet eine andere Website (häufig ein Diskussionsforum) Ihre Assets ohne Erlaubnis. Hotlinking kann sich auf Ihre Kosten für die Inhaltsbereitstellung auswirken. Durch Aktivieren der Tokenauthentifizierung im CDN werden Anforderungen von CDN-Edge POPs authentifiziert, bevor das CDN den Inhalt übermittelt. 
+Die Tokenauthentifizierung ist ein Mechanismus, mit dem Sie verhindern können, dass Assets im Azure Content Delivery Network (CDN) für nicht autorisierte Clients bereitgestellt werden. Die Tokenauthentifizierung wird normalerweise genutzt, um das „Hotlinking“ von Inhalten zu verhindern. Dabei verwendet eine andere Website (z.B. ein Diskussionsforum) Ihre Assets ohne Erlaubnis. Hotlinking kann sich auf Ihre Kosten für die Inhaltsbereitstellung auswirken. Durch Aktivieren der Tokenauthentifizierung im CDN werden Anforderungen von CDN-Edgeserver authentifiziert, bevor das CDN den Inhalt übermittelt. 
 
 ## <a name="how-it-works"></a>So funktioniert's
 
@@ -50,7 +50,7 @@ Im folgenden Workflowdiagramm wird beschrieben, wie das CDN die Tokenauthentifiz
 
 ## <a name="token-validation-logic-on-cdn-endpoint"></a>Tokenüberprüfungslogik auf dem CDN-Endpunkt
     
-Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderung überprüft, wenn die Tokenauthentifizierung auf dem CDN-Endpunkt konfiguriert ist.
+Im folgenden Flussdiagramm wird veranschaulicht, wie Azure CDN eine Clientanforderung überprüft, wenn die Tokenauthentifizierung auf dem CDN-Endpunkt konfiguriert ist.
 
 ![Logik der CDN-Tokenüberprüfung](./media/cdn-token-auth/cdn-token-auth-validation-logic.png)
 
@@ -58,15 +58,25 @@ Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderun
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil, und klicken Sie dann auf **Verwalten**, um das zusätzliche Portal zu starten.
 
-    ![Schaltfläche „Verwalten“ für CDN-Profile](./media/cdn-rules-engine/cdn-manage-btn.png)
+    ![Schaltfläche „Verwalten“ für CDN-Profile](./media/cdn-token-auth/cdn-manage-btn.png)
 
 2. Zeigen Sie mit der Maus auf **HTTP Large**, und klicken Sie im Flyout dann auf **Token Auth**. Sie können dann den Verschlüsselungsschlüssel und Verschlüsselungsparameter wie folgt einrichten:
 
-    1. Erstellen Sie einen oder mehrere Verschlüsselungsschlüssel. Bei einem Verschlüsselungsschlüssel muss die Groß-/Kleinschreibung beachtet werden, und er kann eine beliebige Kombination aus alphanumerischen Zeichen enthalten. Alle anderen Arten von Zeichen, einschließlich Leerzeichen, sind nicht zulässig. Die maximale Länge beträgt 250 Zeichen. Um sicherzustellen, dass die Verschlüsselungsschlüssel auf Zufallsbasis generiert werden, sollten sie mit dem OpenSSL-Tool erstellt werden. Das OpenSSL-Tool hat die folgende Syntax: `rand -hex <key length>`. Beispiel: `OpenSSL> rand -hex 32`. Erstellen Sie sowohl einen Primär- als auch einen Sicherungsschlüssel, um Downtime zu vermeiden. Ein Sicherungsschlüssel ermöglicht während der Aktualisierung des Primärschlüssels unterbrechungsfreien Zugriff auf Ihre Inhalte.
+    1. Erstellen Sie einen oder mehrere Verschlüsselungsschlüssel. Bei einem Verschlüsselungsschlüssel muss die Groß-/Kleinschreibung beachtet werden, und er kann eine beliebige Kombination aus alphanumerischen Zeichen enthalten. Alle anderen Arten von Zeichen, einschließlich Leerzeichen, sind nicht zulässig. Die maximale Länge beträgt 250 Zeichen. Um sicherzustellen, dass die Verschlüsselungsschlüssel auf Zufallsbasis generiert werden, sollten sie mit dem [OpenSSL-Tool](https://www.openssl.org/) erstellt werden. 
+
+       Das OpenSSL-Tool hat die folgende Syntax:
+
+       ```rand -hex <key length>```
+
+       Beispiel:
+
+       ```OpenSSL> rand -hex 32``` 
+
+       Erstellen Sie sowohl einen Primär- als auch einen Sicherungsschlüssel, um Downtime zu vermeiden. Ein Sicherungsschlüssel ermöglicht während der Aktualisierung des Primärschlüssels unterbrechungsfreien Zugriff auf Ihre Inhalte.
     
     2. Geben Sie einen eindeutigen Verschlüsselungsschlüssel in das Feld **Primärschlüssel** ein, und geben Sie optional einen Sicherungsschlüssel in das Feld **Sicherungsschlüssel** ein.
 
-    3. Wählen Sie in der Dropdownliste **Minimum Encryption Version** (Verschlüsselungsmindestversion) die Verschlüsselungsmindestversion aus, und klicken Sie dann auf **Aktualisieren**:
+    3. Wählen Sie in der Liste **Minimum Encryption Version** (Verschlüsselungsmindestversion) die Verschlüsselungsmindestversion aus, und klicken Sie dann auf **Aktualisieren**:
        - **V2**: Gibt an, dass mit dem Schlüssel Token der Version 2.0 und 3.0 generiert werden können. Verwenden Sie diese Option nur bei der Umstellung von einem älteren Verschlüsselungsschlüssel der Version 2.0 auf einen Schlüssel der Version 3.0.
        - **V3**: (Empfohlen) Gibt an, dass mit dem Schlüssel nur Token der Version 3.0 generiert werden können.
 
@@ -76,70 +86,94 @@ Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderun
 
        ![CDN-Verschlüsselungstool](./media/cdn-token-auth/cdn-token-auth-encrypttool.png)
 
-       Geben Sie Werte für einen oder mehrere der folgenden Verschlüsselungsparameter im Abschnitt für das **Verschlüsselungstool** ein:  
+       Geben Sie Werte für einen oder mehrere der folgenden Verschlüsselungsparameter im Abschnitt für das **Verschlüsselungstool** ein: 
 
-       - **ec_expire**: Dient zum Zuweisen einer Ablaufzeit zu einem Token, nach der das Token abläuft. Anforderungen, die nach der Ablaufzeit übermittelt werden, werden abgelehnt. Dieser Parameter verwendet einen UNIX-Zeitstempel, der auf der Anzahl der Sekunden seit Beginn der Standardepoche `1/1/1970 00:00:00 GMT` basiert. (Sie können Onlinetools für die Konvertierung zwischen der Standardzeit und der UNIX-Zeit verwenden.) Wenn das Token beispielsweise am `12/31/2016 12:00:00 GMT` ablaufen soll, verwenden Sie den UNIX-Zeitstempelwert `1483185600` wie folgt. 
-    
-         ![CDN-Beispiel für „ec_expire“](./media/cdn-token-auth/cdn-token-auth-expire2.png)
-    
-       - **ec_url_allow**: Dient zum Anpassen von Token an ein bestimmtes Asset oder einen Pfad. Der Zugriff wird auf Anforderungen beschränkt, deren URL mit einem bestimmten relativen Pfad beginnt. Bei URLs wird die Groß-/Kleinschreibung berücksichtigt. Geben Sie mehrere Pfade ein, indem Sie als Trennzeichen jeweils ein Komma verwenden. Je nach Ihren Anforderungen können Sie andere Werte angeben, um unterschiedliche Zugriffsebenen bereitzustellen. 
-        
-         Für die URL `http://www.mydomain.com/pictures/city/strasbourg.png` sind diese Anforderungen z.B. für die folgenden Eingabewerte zulässig:
-
-         - Eingabewert `/`: Alle Anforderungen sind zulässig.
-         - Eingabewert `/pictures`: Die folgenden Anforderungen sind zulässig:
-            - `http://www.mydomain.com/pictures.png`
-            - `http://www.mydomain.com/pictures/city/strasbourg.png`
-            - `http://www.mydomain.com/picturesnew/city/strasbourgh.png`
-         - Eingabewert `/pictures/`: Nur Anforderungen mit dem Pfad `/pictures/` sind zulässig. Beispiel: `http://www.mydomain.com/pictures/city/strasbourg.png`.
-         - Eingabewert `/pictures/city/strasbourg.png`: Nur Anforderungen für diesen speziellen Pfad und dieses Asset sind zulässig.
-    
-       - **ec_country_allow**: Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden abgelehnt. Verwenden Sie Ländercodes, und trennen Sie sie durch Kommas voneinander. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie wie folgt „US, FR“ in das Feld ein.  
-        
-           ![CDN-Beispiel für „ec_country_allow“](./media/cdn-token-auth/cdn-token-auth-country-allow.png)
-
-       - **ec_country_deny**: Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden zugelassen. Verwenden Sie Ländercodes, und trennen Sie sie durch Kommas voneinander. Beispiel: Wenn Sie den Zugriff aus den USA und aus Frankreich ablehnen möchten, geben Sie „US, FR“ in das Feld ein.
-    
-       - **ec_ref_allow**: Es werden nur Anforderungen vom angegebenen Verweiser zugelassen. Mit einem Verweiser wird die URL der Webseite identifiziert, die als Link zur angeforderten Ressource dient. Nehmen Sie das Protokoll nicht in den Parameterwert des Verweisers auf. Die folgenden Typen von Eingaben sind für den Parameterwert zulässig:
-           - Ein Hostname oder ein Hostname und ein Pfad.
-           - Mehrere Verweiser. Um mehrere Verweiser hinzuzufügen, trennen Sie die Verweiser durch Kommas. Wenn Sie einen Verweiserwert angeben, die entsprechenden Informationen aufgrund der Browserkonfiguration aber nicht mit der Anforderung gesendet werden, wird die Anforderung standardmäßig abgelehnt. 
-           - Anforderungen mit fehlenden Verweiserinformationen. Um diese Typen von Anforderungen zuzulassen, geben Sie den Text „missing“ oder einen leeren Wert ein. 
-           - Unterdomänen. Um Unterdomänen zuzulassen, geben Sie ein Sternchen (\*) ein. Um beispielsweise alle Unterdomänen von `consoto.com` zuzulassen, geben Sie `*.consoto.com` ein. 
-           
-          Das folgende Beispiel zeigt die Eingabe, um Zugriff für Anforderungen von `www.consoto.com`, allen Unterdomänen unter `consoto2.com` und Anforderungen mit leeren oder fehlenden Verweisern zuzulassen.
-        
-          ![CDN-Beispiel für „ec_ref_allow“](./media/cdn-token-auth/cdn-token-auth-referrer-allow2.png)
-    
-       - **ec_ref_deny**: Dient zum Ablehnen von Anforderungen über den angegebenen Verweiser. Die Implementierung ist identisch mit dem ec_ref_allow-Parameter.
-         
-       - **ec_proto_allow**: Es werden nur Anforderungen vom angegebenen Protokoll zugelassen. Beispiel: HTTP oder HTTPS.
-            
-       - **ec_proto_deny**: Dient zum Ablehnen von Anforderungen vom angegebenen Protokoll. Beispiel: HTTP oder HTTPS.
-    
-       - **ec_clientip**: Beschränkt den Zugriff auf die IP-Adresse der angegebenen anfordernden Person. IPv4 und IPv6 werden unterstützt. Sie können eine einzelne IP-Adresse oder ein IP-Subnetz für eine Anforderung angeben.
-            
-         ![CDN-Beispiel für „ec_clientip“](./media/cdn-token-auth/cdn-token-auth-clientip.png)
+       > [!div class="mx-tdCol2BreakAll"] 
+       > <table>
+       > <tr>
+       >   <th>Parametername</th> 
+       >   <th>Beschreibung</th>
+       > </tr>
+       > <tr>
+       >    <td><b>ec_expire</b></td>
+       >    <td>Dient dem Zuweisen einer Ablaufzeit zu einem Token. Nach Verstreichen dieser Zeit wird das Token ungültig. Anforderungen, die nach der Ablaufzeit übermittelt werden, werden abgelehnt. Dieser Parameter verwendet einen UNIX-Zeitstempel, der auf der Anzahl der Sekunden seit Beginn der UNIX-Standardepoche `1/1/1970 00:00:00 GMT` basiert. (Sie können Onlinetools für die Konvertierung zwischen der Standardzeit und der UNIX-Zeit verwenden.)> 
+       >    Wenn das Token beispielsweise am `12/31/2016 12:00:00 GMT` ablaufen soll, geben Sie den UNIX-Zeitstempelwert `1483185600` ein. 
+       > </tr>
+       > <tr>
+       >    <td><b>ec_url_allow</b></td> 
+       >    <td>Dient zum Anpassen von Token an ein bestimmtes Asset oder einen Pfad. Der Zugriff wird auf Anforderungen beschränkt, deren URL mit einem bestimmten relativen Pfad beginnt. Bei URLs wird die Groß-/Kleinschreibung berücksichtigt. Geben Sie mehrere Pfade ein, indem Sie als Trennzeichen jeweils ein Komma verwenden. Fügen Sie außerdem keine Leerzeichen hinzu. Je nach Ihren Anforderungen können Sie andere Werte angeben, um unterschiedliche Zugriffsebenen bereitzustellen.> 
+       >    Für die URL `http://www.mydomain.com/pictures/city/strasbourg.png` sind diese Anforderungen z.B. für die folgenden Eingabewerte zulässig: 
+       >    <ul>
+       >       <li>Eingabewert `/`: Alle Anforderungen sind zulässig.</li>
+       >       <li>Eingabewert `/pictures`: Die folgenden Anforderungen sind zulässig: <ul>
+       >          <li>`http://www.mydomain.com/pictures.png`</li>
+       >          <li>`http://www.mydomain.com/pictures/city/strasbourg.png`</li>
+       >          <li>`http://www.mydomain.com/picturesnew/city/strasbourgh.png`</li>
+       >       </ul></li>
+       >       <li>Eingabewert `/pictures/`: Nur Anforderungen mit dem Pfad `/pictures/` sind zulässig. Beispiel: `http://www.mydomain.com/pictures/city/strasbourg.png`.</li>
+       >       <li>Eingabewert `/pictures/city/strasbourg.png`: Nur Anforderungen für diesen speziellen Pfad und dieses Asset sind zulässig.</li>
+       >    </ul>
+       > </tr>
+       > <tr>
+       >    <td><b>ec_country_allow</b></td> 
+       >    <td>Es sind nur Anforderungen zulässig, die aus einem oder mehreren der angegebenen Länder stammen. Anforderungen aus allen anderen Ländern werden abgelehnt. Verwenden Sie für jedes Land einen aus zwei Buchstaben bestehenden [Ländercode nach ISO 3166](https://msdn.microsoft.com/library/mt761717.aspx). Trennen Sie alle Länder jeweils mit einem Komma voneinander, und fügen Sie keine Leerzeichen ein. Beispiel: Wenn Sie den Zugriff nur aus den USA und aus Frankreich zulassen möchten, geben Sie `US,FR` ein.</td>
+       > </tr>
+       > <tr>
+       >    <td><b>ec_country_deny</b></td> 
+       >    <td>Dient zum Ablehnen von Anforderungen, die aus einem oder mehreren angegebenen Ländern stammen. Anforderungen aus allen anderen Ländern werden zugelassen. Die Implementierung ist identisch mit dem <b>ec_country_allow</b>-Parameter. Ist ein Ländercode sowohl im <b>ec_country_allow</b>- als auch im <b>ec_country_deny</b>-Parameter vorhanden, dann hat der Parameter <b>ec_country_allow</b> Vorrang.</td>
+       > </tr>
+       > <tr>
+       >    <td><b>ec_ref_allow</b></td>
+       >    <td>Es werden nur Anforderungen vom angegebenen Verweiser zugelassen. Mit einem Verweiser wird die URL der Webseite identifiziert, die als Link zur angeforderten Ressource dient. Nehmen Sie das Protokoll nicht in den Parameterwert auf.>    
+       >    Die folgenden Eingabetypen sind zulässig:
+       >    <ul>
+       >       <li>Ein Hostname oder ein Hostname und ein Pfad.</li>
+       >       <li>Mehrere Verweiser. Um mehrere Verweiser hinzuzufügen, trennen Sie sie durch Kommas und fügen Sie kein Leerzeichen hinzu. Wenn Sie einen Verweiserwert angeben, die entsprechenden Informationen aufgrund der Browserkonfiguration aber nicht mit der Anforderung gesendet werden, wird die Anforderung standardmäßig abgelehnt.</li> 
+       >       <li>Anforderungen mit fehlenden oder leeren Verweiserinformationen. Standardmäßig blockiert der Parameter <b>ec_ref_allow</b> diese Anforderungstypen. Um solche Anforderungen zuzulassen, geben Sie entweder den Text „missing“ oder einen leeren Wert (unter Verwendung eines nachgestellten Kommas) ein.</li> 
+       >       <li>Unterdomänen. Um Unterdomänen zuzulassen, geben Sie ein Sternchen (\*) ein. Um beispielsweise alle Unterdomänen von `contoso.com` zuzulassen, geben Sie `*.contoso.com` ein.</li>
+       >    </ul>     
+       >    Beispielsweise geben Sie `www.contoso.com,*.contoso.com,missing` ein, um Zugriff für Anforderungen von `www.contoso.com`, allen Unterdomänen unter `contoso2.com` und Anforderungen mit leeren oder fehlenden Verweisern zuzulassen.</td>
+       > </tr>
+       > <tr> 
+       >    <td><b>ec_ref_deny</b></td>
+       >    <td>Dient zum Ablehnen von Anforderungen über den angegebenen Verweiser. Die Implementierung ist identisch mit dem <b>ec_ref_allow</b>-Parameter. Ist ein Verweiser sowohl im <b>ec_ref_allow</b>- als auch im <b>ec_ref_deny</b>-Parameter vorhanden, dann hat der Parameter <b>ec_ref_allow</b> Vorrang.</td>
+       > </tr>
+       > <tr> 
+       >    <td><b>ec_proto_allow</b></td> 
+       >    <td>Es werden nur Anforderungen vom angegebenen Protokoll zugelassen. Gültige Werte sind `http`, `https` oder `http,https`.</td>
+       > </tr>
+       > <tr>
+       >    <td><b>ec_proto_deny</b></td>
+       >    <td>Dient zum Ablehnen von Anforderungen vom angegebenen Protokoll. Die Implementierung ist identisch mit dem <b>ec_proto_allow</b>-Parameter. Ist ein Protokoll sowohl im <b>ec_proto_allow</b>- als auch im <b>ec_proto_deny</b>-Parameter vorhanden, dann hat der Parameter <b>ec_proto_allow</b> Vorrang.</td>
+       > </tr>
+       > <tr>
+       >    <td><b>ec_clientip</b></td>
+       >    <td>Beschränkt den Zugriff auf die IP-Adresse der angegebenen anfordernden Person. IPv4 und IPv6 werden unterstützt. Sie können entweder eine einzelne Anforderungs-IP-Adresse oder einem bestimmten Subnetz zugeordnete IP-Adressen angeben. Beispielsweise gestattet `11.22.33.0/22` Anforderungen der IP-Adressen 11.22.32.1 bis 11.22.35.254.</td>
+       > </tr>
+       > </table>
 
     5. Nach der Eingabe von Werten für die Verschlüsselungsparameter wählen Sie den Schlüssel zum Verschlüsseln (wenn Sie einen Primär- und einen Sicherungsschlüssel erstellt haben) aus der Liste **Schlüssel zum Verschlüsseln** aus.
     
-    6. Wählen Sie eine Verschlüsselungsversion aus der Liste **Verschlüsselungsversion** aus: **V2** für Version 2 bzw. **V3** für Version 3 (empfohlen). Klicken Sie auf **Verschlüsseln**, um das Token zu generieren.
+    6. Wählen Sie eine Verschlüsselungsversion aus der Liste **Verschlüsselungsversion** aus: **V2** für Version 2 bzw. **V3** für Version 3 (empfohlen). 
+
+    7. Klicken Sie auf **Verschlüsseln**, um das Token zu generieren.
 
     Nachdem das Token generiert wurde, wird es im Feld **Generated Token** (Generiertes Token) angezeigt. Zur Verwendung des Tokens fügen Sie es als Abfragezeichenfolge am Ende der Datei im URL-Pfad ein. Beispiel: `http://www.domain.com/content.mov?a4fbc3710fd3449a7c99986b`.
         
-    7. Sie können Ihr Token optional mit dem Entschlüsselungstool testen. Fügen Sie den Tokenwert in das Feld **Token zum Entschlüsseln** ein. Wählen Sie die Nutzung des Verschlüsselungsschlüssels aus der Dropdownliste **Schlüssel zum Entschlüsseln** aus, und klicken Sie auf **Entschlüsseln**.
+    8. Testen Sie Ihr Token optional mit dem Entschlüsselungstool, um die Parameter Ihres Tokens anzuzeigen. Fügen Sie den Tokenwert in das Feld **Token zum Entschlüsseln** ein. Wählen Sie den zu verwendenden Verschlüsselungsschlüssel aus der Liste **Schlüssel zum Entschlüsseln** aus, und klicken Sie auf **Entschlüsseln**.
 
     Nach der Entschlüsselung des Tokens werden seine Parameter im Feld **Ursprüngliche Parameter** angezeigt.
 
-    8. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie den Code aus der Dropdownliste **Antwortcode** aus, und klicken Sie auf **Speichern**. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. Für bestimmte Antwortcodes können Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. 
+    9. Passen Sie optional den Typ des Antwortcodes an, der zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Wählen Sie **Aktiviert** aus, und wählen Sie dann den Antwortcode aus der Liste **Antwortcode** aus. **Headername** wird automatisch auf **Speicherort** festgelegt. Klicken Sie auf **Speichern**, um den neuen Antwortcode zu implementieren. Für bestimmte Antwortcodes müssen Sie auch die URL Ihrer Fehlerseite in das Feld **Headerwert** eingeben. Der Antwortcode **403** („Unzulässig“) ist standardmäßig aktiviert. 
 
 3. Klicken Sie unter **HTTP Large** auf **Regelmodul**. Sie verwenden das Regelmodul, um Pfade zum Anwenden der Funktion zu definieren und die Tokenauthentifizierung sowie weitere Funktionen zur Tokenauthentifizierung zu aktivieren. Weitere Informationen finden Sie unter [Azure CDN-Regelmodul](cdn-rules-engine-reference.md).
 
     1. Wählen Sie eine vorhandene Regel aus, oder erstellen Sie eine neue Regel, um das Asset oder den Pfad zu definieren, auf das bzw. den Sie die Tokenauthentifizierung anwenden möchten. 
-    2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](cdn-rules-engine-reference-features.md#token-auth)** aus der Dropdownliste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren**, wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen**, wenn Sie eine Regel erstellen.
+    2. Zum Aktivieren der Tokenauthentifizierung für eine Regel wählen Sie **[Token Auth](cdn-rules-engine-reference-features.md#token-auth)** aus der Liste **Features** und dann **Aktiviert** aus. Klicken Sie auf **Aktualisieren**, wenn Sie eine Regel aktualisieren, oder auf **Hinzufügen**, wenn Sie eine Regel erstellen.
         
     ![Beispiel für das CDN-Regelmodul: Tokenauthentifizierung aktiviert](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
-4. Im Regelmodul können Sie auch weitere Features im Zusammenhang mit der Tokenauthentifizierung aktivieren. Um die folgenden Features zu aktivieren, wählen Sie sie in der Dropdownliste **Features** aus, und wählen Sie dann **Aktiviert** aus.
+4. Im Regelmodul können Sie auch weitere Features im Zusammenhang mit der Tokenauthentifizierung aktivieren. Um die folgenden Features zu aktivieren, wählen Sie sie in der Liste **Features** aus, und wählen Sie dann **Aktiviert** aus.
     
     - **[Token Auth Denial Code](cdn-rules-engine-reference-features.md#token-auth-denial-code)**: Gibt den Typ der Antwort an, die an einen Benutzer zurückgegeben wird, wenn eine Anforderung abgelehnt wird. Hier festgelegte Regeln setzen den Antwortcode außer Kraft, der im Abschnitt **Custom Denial Handling** auf der Seite für die tokenbasierte Authentifizierung festgelegt wurde.
     - **[Token Auth Ignore URL Case](cdn-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Legt fest, ob für die URL, die zum Überprüfen des Tokens verwendet wird, die Groß-/Kleinschreibung berücksichtigt wird.
@@ -150,12 +184,12 @@ Im folgenden Flussdiagramm wird beschrieben, wie Azure CDN eine Clientanforderun
 5. Sie können Ihr Token anpassen, indem Sie auf Quellcode in [GitHub](https://github.com/VerizonDigital/ectoken) zugreifen.
 Verfügbare Sprachen:
     
-- C
-- C#
-- PHP
-- Perl
-- Java
-- Python    
+   - C
+   - C#
+   - PHP
+   - Perl
+   - Java
+   - Python 
 
 ## <a name="azure-cdn-features-and-provider-pricing"></a>Preise für Azure CDN-Funktionen und -Anbieter
 

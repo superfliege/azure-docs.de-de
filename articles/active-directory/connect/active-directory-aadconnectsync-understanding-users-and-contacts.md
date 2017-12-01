@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi;andkjell
-ms.openlocfilehash: c298a2f99750ead099b8761699c914a3a6e41ce1
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7bb7bdba21d83817cf5579e779a6a4d509753c01
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-users-groups-and-contacts"></a>Azure AD Connect-Synchronisierung: Grundlegendes zu Benutzern, Gruppen und Kontakten
 Es gibt verschiedene Gründe, weshalb Sie möglicherweise über mehrere Active Directory-Gesamtstrukturen verfügen, und es gibt eine Reihe unterschiedlicher Bereitstellungstopologien. Häufige Modelle umfassen eine Kontoressourcenbereitstellung und per GAL synchronisierte Gesamtstrukturen nach einer Unternehmensfusion oder -übernahme. Es gibt zwar reine Modelle, Hybridmodelle sind jedoch ebenfalls häufig vorhanden. Die Standardkonfiguration der Azure AD Connect-Synchronisierung geht von keinem bestimmten Modell aus. Es können jedoch auf Basis des im Installationshandbuch ausgewählten Benutzerabgleichs unterschiedliche Verhaltensweisen beobachtet werden.
@@ -42,15 +42,15 @@ Wichtige Punkte, die beim Synchronisieren von Gruppen in Active Directory mit Az
 
 * So synchronisieren Sie eine Active Directory-Gruppe mit Azure AD als E-Mail-aktivierte Gruppe:
 
-    * Wenn das *proxyAddress*-Attribut der Gruppe leer ist, muss das *mail*-Attribut einen Wert enthalten. ODER 
+    * Wenn das *proxyAddress*-Attribut der Gruppe leer ist, muss das *mail*-Attribut einen Wert enthalten.
 
-    * Wenn das *proxyAddress*-Attribut der Gruppe nicht leer ist, muss es zusätzlich einen Wert für eine primäre SMTP-Proxyadresse enthalten (wird durch das groß geschriebene Präfix **SMTP** angegeben). Hier einige Beispiele:
+    * Wenn das *proxyAddress*-Attribut der Gruppe nicht leer ist, muss es mindestens einen SMTP-Proxyadresswert enthalten. Hier einige Beispiele:
     
-      * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* hat, ist in Azure AD nicht E-Mail-aktiviert. Es enthält keine primäre SMTP-Adresse.
-      
-      * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* hat, ist in Azure AD nicht E-Mail-aktiviert. Es enthält eine smtp-Adresse, diese ist aber nicht primär.
+      * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup"}* hat, ist in Azure AD nicht E-Mail-aktiviert. Es enthält keine SMTP-Adresse.
       
       * Eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup", "SMTP:johndoe@contoso.com"}* hat, ist in Azure AD E-Mail-aktiviert.
+      
+      * Auch eine Active Directory-Gruppe, deren proxyAddress-Attribut den Wert *{"X500:/0=contoso.com/ou=users/cn=testgroup", "smtp:johndoe@contoso.com"}* hat, ist in Azure AD E-Mail-aktiviert.
 
 ## <a name="contacts"></a>Kontakte
 Nach einer Unternehmensfusion oder -übernahme kommt es häufig vor, dass Kontakte einen Benutzer in einer anderen Gesamtstruktur darstellen und eine GALSynch-Lösung zwei oder mehr Exchange-Gesamtstrukturen verbindet. Das Kontaktobjekt wird immer mithilfe des Attributs "mail" vom Connectorbereich mit dem Metaverse verknüpft. Wenn bereits ein Kontakt- oder Benutzerobjekt mit derselben E-Mail-Adresse vorhanden ist, werden die Objekte miteinander verknüpft. Dies wird in der Regel **In from AD – Contact Join** konfiguriert. Es gibt auch eine Regel namens **In from AD – Contact Common** mit einem Attributfluss zum Metaverseattribut **sourceObjectType** mit der Konstante **Contact**. Diese Regel hat eine sehr niedrige Rangfolge. Wenn daher ein Benutzerobjekt mit demselben Metaverseobjekt verknüpft ist, trägt die Regel **In from AD – User Common** den Wert „User“ zu diesem Attribut bei. Bei dieser Regel weist dieses Attribut den Wert "Contact" auf, wenn kein Benutzer verknüpft wurde, und den Wert "User", wenn mindestens ein Benutzer gefunden wurde.
