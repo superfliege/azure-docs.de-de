@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/13/2017
+ms.date: 11/28/2017
 ms.author: markgal;trinadhk
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db04f8c6ab61d33df80cd442abc5636867e5809a
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: ddd45dfb1f9e08add7a61a42e4f9b570dc25495d
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azurermrecoveryservicesbackup-cmdlets-to-back-up-virtual-machines"></a>Verwenden von AzureRM.RecoveryServices.Backup-Cmdlets zum Sichern virtueller Computer
 > [!div class="op_single_selector"]
@@ -106,7 +106,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
 2. Der Recovery Services-Tresor ist eine Resource Manager-Ressource. Deshalb müssen Sie ihn in eine Ressourcengruppe einfügen. Sie können eine vorhandene Ressourcengruppe verwenden oder eine Ressourcengruppe mit dem Cmdlet **[New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup)** erstellen. Wenn Sie eine Ressourcengruppe erstellen, geben Sie den Namen und den Speicherort für die Ressourcengruppe an.  
 
     ```
-    PS C:\> New-AzureRmResourceGroup –Name "test-rg" –Location "West US"
+    PS C:\> New-AzureRmResourceGroup -Name "test-rg" -Location "West US"
     ```
 3. Erstellen Sie mithilfe des Cmdlets **[New-AzureRmRecoveryServicesVault](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault)** den Recovery Services-Tresor. Stellen Sie sicher, dass Sie den gleichen Speicherort für den Tresor angeben, der für die Ressourcengruppe verwendet wurde.
 
@@ -116,7 +116,7 @@ Mit den folgenden Schritten können Sie einen Recovery Services-Tresor erstellen
 4. Geben Sie den Typ der zu verwendenden Speicherredundanz an – entweder [lokal redundanter Speicher (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) oder [geografisch redundanter Speicher (GRS)](../storage/common/storage-redundancy.md#geo-redundant-storage). Das folgende Beispiel zeigt, dass für die Option „BackupStorageRedundancy“ für „testVault“ der Wert auf „GeoRedundant“ festgelegt ist.
 
     ```
-    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault –Name "testvault"
+    PS C:\> $vault1 = Get-AzureRmRecoveryServicesVault -Name "testvault"
     PS C:\> Set-AzureRmRecoveryServicesBackupProperties  -Vault $vault1 -BackupStorageRedundancy GeoRedundant
     ```
 
@@ -266,7 +266,7 @@ PS C:\> Wait-AzureRmRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
 ```
 
 ## <a name="restore-an-azure-vm"></a>Wiederherstellen eines virtuellen Azure-Computers
-Es gibt einen wichtigen Unterschied zwischen dem Wiederherstellen eines virtuellen Computers mithilfe des Azure-Portals und dem Wiederherstellen eines virtuellen Computers mithilfe von PowerShell. Mit PowerShell ist der Wiederherstellungsvorgang mit der Erstellung der Datenträger und den Konfigurationsinformationen aus dem Wiederherstellungspunkt abgeschlossen.
+Es gibt einen wichtigen Unterschied zwischen dem Wiederherstellen eines virtuellen Computers mithilfe des Azure-Portals und dem Wiederherstellen eines virtuellen Computers mithilfe von PowerShell. Mit PowerShell ist der Wiederherstellungsvorgang mit der Erstellung der Datenträger und den Konfigurationsinformationen aus dem Wiederherstellungspunkt abgeschlossen. Wenn Sie wenige Dateien aus einer Sicherung von virtuellen Azure-Computern wiederherstellen möchten, lesen Sie den Abschnitt zur [Dateiwiederherstellung](backup-azure-vms-automation.md#restore-files-from-an-azure-vm-backup).
 
 > [!NOTE]
 > Der Wiederherstellungsvorgang erstellt keinen virtuellen Computer.
@@ -290,8 +290,8 @@ Identifizieren Sie das gesicherte Element und den Wiederherstellungspunkt, der d
 Zum Abrufen des PowerShell-Objekts, das das richtige Sicherungselement identifiziert, starten Sie vom Container im Tresor aus, und durchlaufen Sie die Objekthierarchie nach unten. Verwenden Sie das Cmdlet **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**, und reichen Sie dieses an das Cmdlet **[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** weiter, um den Container auszuwählen, der den virtuellen Computer darstellt.
 
 ```
-PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" –Status "Registered" -FriendlyName "V2VM"
-PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem –Container $namedContainer  –WorkloadType "AzureVM"
+PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
+PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
 ```
 
 ### <a name="choose-a-recovery-point"></a>Auswählen eines Wiederherstellungspunkts
@@ -507,6 +507,76 @@ Nachdem Sie die Datenträger wiederhergestellt haben, verwenden Sie diese Schrit
     ```    
     PS C:\> New-AzureRmVM -ResourceGroupName "test" -Location "WestUS" -VM $vm
     ```
+
+## <a name="restore-files-from-an-azure-vm-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
+
+Sie können nicht nur Datenträger, sondern auch einzelne Dateien aus einer Sicherung von virtuellen Azure-Computern wiederherstellen. Die Funktion zur Dateiwiederherstellung ermöglicht den Zugriff auf alle Dateien in einem Wiederherstellungspunkt. Sie können diese Dateien genau wie andere Dateien über den Datei-Explorer verwalten.
+
+Grundlegende Schritte zum Wiederherstellen einer Datei aus einer Sicherung von virtuellen Azure-Computern:
+
+* Auswählen des virtuellen Computers
+* Auswählen eines Wiederherstellungspunkts
+* Bereitstellen der Datenträger des Wiederherstellungspunkts
+* Kopieren der erforderlichen Dateien
+* Aufheben der Bereitstellung des Datenträgers
+
+
+### <a name="select-the-vm"></a>Auswählen des virtuellen Computers
+Zum Abrufen des PowerShell-Objekts, das das richtige Sicherungselement identifiziert, starten Sie vom Container im Tresor aus, und durchlaufen Sie die Objekthierarchie nach unten. Verwenden Sie das Cmdlet **[Get-AzureRmRecoveryServicesBackupContainer](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer)**, und reichen Sie dieses an das Cmdlet **[Get-AzureRmRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupitem)** weiter, um den Container auszuwählen, der den virtuellen Computer darstellt.
+
+```
+PS C:\> $namedContainer = Get-AzureRmRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
+PS C:\> $backupitem = Get-AzureRmRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"
+```
+
+### <a name="choose-a-recovery-point"></a>Auswählen eines Wiederherstellungspunkts
+Verwenden Sie das Cmdlet **[Get-AzureRmRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprecoverypoint)**, um alle Wiederherstellungspunkte für das Sicherungselement aufzulisten. Wählen Sie anschließend den zu wiederherstellenden Wiederherstellungspunkt. Wenn Sie nicht sicher sind, welchen Wiederherstellungspunkt Sie verwenden sollen, empfiehlt es sich, den letzten Punkt in der Liste auszuwählen, an dem sich RecoveryPointType = AppConsistent befand.
+
+Im folgenden Skript ist die Variable **$rp** ein Array von Wiederherstellungspunkten für das ausgewählte Sicherungselement der letzten sieben Tage. Das Array wird in umgekehrter Reihenfolge sortiert. Der letzte Wiederherstellungspunkt liegt bei Index 0. Verwenden Sie die standardmäßige PowerShell-Arrayindizierung zum Auswählen des Wiederherstellungspunkts. Im Beispiel wählt „$rp[0]“ den letzten Wiederherstellungspunkt aus.
+
+```
+PS C:\> $startDate = (Get-Date).AddDays(-7)
+PS C:\> $endDate = Get-Date
+PS C:\> $rp = Get-AzureRmRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
+PS C:\> $rp[0]
+RecoveryPointAdditionalInfo :
+SourceVMStorageType         : NormalStorage
+Name                        : 15260861925810
+ItemName                    : VM;iaasvmcontainer;RGName1;V2VM
+RecoveryPointId             : /subscriptions/XX/resourceGroups/ RGName1/providers/Microsoft.RecoveryServices/vaults/testvault/backupFabrics/Azure/protectionContainers/IaasVMContainer;iaasvmcontainer;RGName1;V2VM/protectedItems/VM;iaasvmcontainer; RGName1;V2VM/recoveryPoints/15260861925810
+RecoveryPointType           : AppConsistent
+RecoveryPointTime           : 4/23/2016 5:02:04 PM
+WorkloadType                : AzureVM
+ContainerName               : IaasVMContainer;iaasvmcontainer; RGName1;V2VM
+ContainerType               : AzureVM
+BackupManagementType        : AzureVM
+```
+
+### <a name="mount-the-disks-of-recovery-point"></a>Bereitstellen der Datenträger des Wiederherstellungspunkts
+
+Verwenden Sie das Cmdlet **[Get-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackuprpmountscript)**, um das Skript zum Bereitstellen aller Datenträger des Wiederherstellungspunkts abzurufen.
+
+> [!NOTE]
+> Die Datenträger werden als angefügte iSCSI-Datenträger auf dem Computer bereitgestellt, auf dem das Skript ausgeführt wird. Daher erfolgt die Bereitstellung nahezu unmittelbar und OHNE zusätzliche Kosten.
+>
+>
+
+```
+PS C:\> Get-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
+
+OsType  Password        Filename
+------  --------        --------
+Windows e3632984e51f496 V2VM_wus2_8287309959960546283_451516692429_cbd6061f7fc543c489f1974d33659fed07a6e0c2e08740.exe
+```
+Führen Sie das Skript auf dem Computer aus, auf dem die Dateien wiederhergestellt werden sollen. Sie müssen das oben angezeigte Kennwort eingeben, um das Skript ausführen zu können. Nachdem die Datenträger angefügt wurden, navigieren Sie im Windows-Datei-Explorer durch die neuen Volumes und Dateien. Weitere Informationen finden Sie in der Dokumentation [Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern](backup-azure-restore-files-from-vm.md).
+
+### <a name="unmount-the-disks"></a>Aufheben der Bereitstellung von Datenträgern
+Nachdem die erforderlichen Dateien kopiert wurden, heben Sie die Bereitstellung der Datenträger mithilfe des Cmdlets **[Disable-AzureRmRecoveryServicesBackupRPMountScript](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/disable-azurermrecoveryservicesbackuprpmountscript?view=azurermps-5.0.0)** auf. Dies wird dringend empfohlen, da dadurch sichergestellt wird, dass der Zugriff auf die Dateien des Wiederherstellungspunkts aufgehoben wird.
+
+```
+PS C:\> Disable-AzureRmRecoveryServicesBackupRPMountScript -RecoveryPoint $rp[0]
+```
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Falls Sie PowerShell für die Arbeit mit Azure-Ressourcen vorziehen, lesen Sie den PowerShell-Artikel [Sicherungen für Windows Server bereitstellen und verwalten](backup-client-automation.md). Wenn Sie DPM-Sicherungen verwalten, finden Sie im Artikel [Bereitstellen und Verwalten der Sicherung für DPM](backup-dpm-automation.md) weitere Informationen. Diese beiden Artikel weisen eine Version für Resource Manager-Bereitstellungen und eine für klassische Bereitstellungen auf.  

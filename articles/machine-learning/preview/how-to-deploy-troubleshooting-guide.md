@@ -10,21 +10,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2017
-ms.openlocfilehash: b43ed29bda4412fb57bcb772da00f6405c3f1c26
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 11/16/2017
+ms.openlocfilehash: 8eafb16abeb939a16b1ddb024853300c453bcd9a
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>Problembehandlung bei der Dienstbereitstellung und Umgebungseinrichtung
 Folgende Informationen können dabei helfen, beim Einrichten der Modellverwaltungsumgebung die Ursache von Fehlern zu finden.
 
 ## <a name="model-management-environment"></a>Modellverwaltungsumgebung
-### <a name="owner-permission-required"></a>Erforderliche Besitzerberechtigung
-Sie müssen über die Berechtigung „Besitzer“ im Azure-Abonnement verfügen, um den Machine Learning Compute-Dienst zu registrieren.
-
-Sie benötigen die Besitzerberechtigung auch, um einen Cluster für die Bereitstellung Ihrer Webdienste einzurichten.
+### <a name="contributor-permission-required"></a>Berechtigung „Mitwirkender“ erforderlich
+Sie benötigen den Zugriffstyp „Mitwirkender“ für das Abonnement oder die Ressourcengruppe, um einen Cluster für die Bereitstellung Ihrer Webdienste einzurichten.
 
 ### <a name="resource-availability"></a>Ressourcenverfügbarkeit
 In Ihrem Abonnement müssen genügend Ressourcen verfügbar sein, damit Sie die Umgebungsressourcen bereitstellen können.
@@ -89,6 +87,7 @@ Beispiel für Python:
 ```
 
 ## <a name="other-common-problems"></a>Andere allgemeine Probleme
+- Falls auf einem Windows-Computer bei der pip-Installation von „azure-cli-ml“ der Fehler `cannot find the path specified` auftritt, müssen Sie die Unterstützung langer Pfade aktivieren. Informationen finden Sie unter https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/. 
 - Wenn der Befehl `env setup` den Fehler `LocationNotAvailableForResourceType` ausgibt, verwenden Sie wahrscheinlich den falschen Standort (Region) für die Ressourcen für maschinelles Lernen. Stellen Sie sicher, dass der mit dem Parameter `-l` angegebene Standort `eastus2`, `westcentralus` oder `australiaeast` lautet.
 - Wenn der Befehl `env setup` den Fehler `Resource quota limit exceeded` ausgibt, stellen Sie sicher, dass Sie über ausreichende verfügbare Kerne in Ihrem Abonnement verfügen und dass Ihre Ressourcen nicht in anderen Vorgängen aufgebraucht werden.
 - Wenn der Befehl `env setup` den Fehler `Invalid environment name. Name must only contain lowercase alphanumeric characters` ausgibt, stellen Sie sicher, dass der Dienstname keine Großbuchstaben, Symbole oder Unterstriche (_) enthält (wie in *myenvironment*).

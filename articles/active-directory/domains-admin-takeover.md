@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2017
+ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 457857f44ad3081087b5843f156860c901562468
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ee100fa86d78840a3b6a6bbf9453954c054931c2
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 In diesem Artikel wird beschrieben, wie ein DNS-Domänenname in einem nicht verwalteten Verzeichnis in Azure Active Directory (Azure AD) übernommen wird. Wenn sich ein Self-Service-Benutzer für einen Clouddienst registriert, der Azure AD verwendet, wird er auf der Grundlage seiner E-Mail-Domäne einem nicht verwalteten Azure AD-Verzeichnis hinzugefügt. Weitere Informationen zur Self-Service- oder „viralen“ Registrierung für einen Dienst finden Sie im Artikel zu der Frage, [was die Self-Service-Registrierung für Azure Active Directory ist]().
@@ -67,7 +67,7 @@ Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale
   
 6. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit dem Konto an, das globale Administratorberechtigungen für den Azure AD-Mandanten hat.
   
-7. Klicken Sie auf **Domänennamen**, und fügen Sie den Domänennamen hinzu. Sie müssen die DNS-TXT-Einträge eingeben, um die Inhaberschaft des Domänennamens zu bestätigen. 
+7. Klicken Sie auf **Benutzerdefinierte Domänennamen**, und fügen Sie den Domänennamen hinzu. Sie müssen die DNS-TXT-Einträge eingeben, um die Inhaberschaft des Domänennamens zu bestätigen. 
   
   ![Zu Azure AD hinzugefügte Domäne](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   

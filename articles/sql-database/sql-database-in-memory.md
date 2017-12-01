@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: 8930595821cc7662c4ff792b73eb357f1ba29307
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f136faf3df761b048c88e72f564f81fd32e630ab
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -118,8 +118,6 @@ Ein Downgrade des Tarifs kann sich jedoch nachteilig auf Ihre Datenbank auswirke
 
 *Herunterstufen auf Basic/Standard*: In-Memory-OLTP wird nicht von Datenbanken im Tarif „Standard“ oder „Basic“ unterstützt. Darüber hinaus ist es nicht möglich, mit einer Datenbank mit In-Memory OLTP-Objekten zum Tarif „Standard“ oder „Basic“ zu wechseln.
 
-Entfernen Sie alle speicheroptimierten Tabellen und Tabellentypen sowie alle nativ kompilierten T-SQL Module, bevor Sie die Datenbank auf den Standard- oder Basic-Tarif herabstufen.
-
 Es gibt einen programmgesteuerten Weg, um zu verstehen, ob eine vorhandene Datenbank In-Memory-OLTP unterstützt. Sie können die folgende Transact-SQL-Abfrage ausführen:
 
 ```
@@ -128,6 +126,13 @@ SELECT DatabasePropertyEx(DB_NAME(), 'IsXTPSupported');
 
 Wenn die Abfrage **1** zurückgibt, wird In-Memory-OLTP in dieser Datenbank unterstützt.
 
+Entfernen Sie alle speicheroptimierten Tabellen und Tabellentypen sowie alle nativ kompilierten T-SQL Module, bevor Sie die Datenbank auf den Standard- oder Basic-Tarif herabstufen. Die folgenden Abfragen identifizieren alle Objekte, die entfernt werden müssen, damit eine Datenbank auf „Standard“ oder „Basic“ heruntergestuft werden kann:
+
+```
+SELECT * FROM sys.tables WHERE is_memory_optimized=1
+SELECT * FROM sys.table_types WHERE is_memory_optimized=1
+SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
+```
 
 *Herunterstufen auf einen niedrigeren Premium-Tarif*: Daten in speicheroptimierten Tabellen müssen in den In-Memory-OLTP-Speicher passen, der dem Tarif der Datenbank zugeordnet oder im elastischen Pool verfügbar ist. Wenn Sie versuchen, zu einem niedrigeren Tarif zu wechseln oder die Datenbank in einen Pool zu verschieben, dem nicht genügend In-Memory-OLTP-Speicher zur Verfügung steht, misslingt der Vorgang.
 

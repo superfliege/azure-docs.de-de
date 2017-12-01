@@ -7,6 +7,9 @@ Eine der wichtigen Funktionen von Azure IoT Edge ist die Möglichkeit, Module au
 1. Geben Sie im Feld **Name** die Zeichenfolge `tempSensor` ein. 
 1. Geben Sie im Feld **Image-URI** die Zeichenfolge `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` ein. 
 1. Behalten Sie die restlichen Einstellungen unverändert bei, und wählen Sie **Speichern** aus.
+
+   ![Speichern des IoT Edge-Moduls nach Eingabe des Namens und Image-URI](./media/iot-edge-deploy-module/name-image.png)
+
 1. Wenn Sie zum Schritt **Module hinzufügen** zurückgekehrt sind, wählen Sie **Weiter** aus.
 1. Wählen Sie im Schritt **Routen angeben** die Option **Weiter** aus.
 1. Wählen Sie im Schritt **Vorlage überprüfen** die Option **Senden** aus.

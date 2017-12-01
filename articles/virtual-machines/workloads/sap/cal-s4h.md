@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: 4788fa14a6c49d39b5a3096a69b6738f4a5d8cca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 342bd20466cdeb0b9df1cdacd4664fa4e3e0c604
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure
 In diesem Artikel wird beschrieben, wie Sie S/4HANA über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. Zum Bereitstellen anderer SAP HANA-basierter Lösungen, z.B. BW/4HANA, befolgen Sie dieselben Schritte.
@@ -95,7 +95,7 @@ Sie haben erfolgreich ein SAP CAL-Konto mit den folgenden Möglichkeiten erstell
 Nun können Sie beginnen, S/4HANA in Ihrem Benutzerabonnement in Azure bereitzustellen.
 
 > [!NOTE]
-Bevor Sie fortfahren, bestimmen Sie, ob Sie über Azure-Kernkontingente für Azure-H-Serie-VMs verfügen. Derzeit verwendet die SAP CAL VMs der H-Serie von Azure, um einige der SAP HANA-basierten Lösungen bereitzustellen. Ihr Azure-Abonnement verfügt möglicherweise nicht über Kernkontingente für die H-Serie. Falls dem so ist, müssen Sie den Azure-Support kontaktieren, um ein Kontingent von mindestens 16 Kernen der H-Serie anzufordern.
+Bevor Sie fortfahren, bestimmen Sie, ob Sie über Azure-vCPU-Kontingente für virtuelle Azure-Computer der H-Serie verfügen. Derzeit verwendet die SAP CAL VMs der H-Serie von Azure, um einige der SAP HANA-basierten Lösungen bereitzustellen. Ihr Azure-Abonnement verfügt möglicherweise nicht über vCPU-Kontingente für die H-Serie. Falls dem so ist, müssen Sie den Azure-Support kontaktieren, um ein Kontingent von mindestens 16 vCPUs der H-Serie anzufordern.
 
 > [!NOTE]
 Wenn Sie eine Lösung in Azure in der SAP CAL bereitstellen, stellen Sie möglicherweise fest, dass Sie nur eine Azure-Region auswählen können. Für eine Bereitstellung in Azure-Regionen, die nicht der von der SAP CAL vorgeschlagenen Region entsprechen, müssen Sie bei SAP ein CAL-Abonnement erwerben. Sie müssen ggf. auch in einer Nachricht SAP bitten, Ihre CAL so zu aktivieren, dass eine Bereitstellung in Azure-Regionen möglich wird, die sich von den anfänglich vorgeschlagenen unterscheidet.

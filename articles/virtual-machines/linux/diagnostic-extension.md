@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebb963236a069f272499fce59945d0cf0d3d647f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -319,7 +319,7 @@ displayName | Die Bezeichnung (in der Sprache, die durch die zugehörige Gebiets
 
 Der counterSpecifier ist ein frei wählbarer Bezeichner. Consumer von Metriken, wie das Azure-Portal-Feature für Diagramme und Warnungen, verwenden counterSpecifier als „Schlüssel“, der eine Metrik oder eine Instanz einer Metrik identifiziert. Für `builtin`-Metriken werden counterSpecifier-Werte empfohlen, die mit `/builtin/` beginnen. Wenn Sie eine bestimmte Instanz einer Metrik erfassen, sollten Sie den Bezeichner der Instanz an den counterSpecifier-Wert anfügen. Hier einige Beispiele:
 
-* `/builtin/Processor/PercentIdleTime` – Leerlaufzeit (Durchschnitt für alle Kerne)
+* `/builtin/Processor/PercentIdleTime` – Leerlaufzeit (Durchschnitt für alle vCPUs)
 * `/builtin/Disk/FreeSpace(/mnt)` – freier Speicherplatz für das Dateisystem „/mnt“
 * `/builtin/Disk/FreeSpace` – freier Speicherplatz (Durchschnitt für alle bereitgestellten Dateisysteme)
 
@@ -424,7 +424,7 @@ Der integrierte Metrikanbieter ist eine Quelle von Metriken, die für eine Vielz
 
 ### <a name="builtin-metrics-for-the-processor-class"></a>Integrierte Metriken der Prozessorklasse
 
-Die Prozessorklasse von Metriken bietet Informationen zur Prozessorauslastung auf dem virtuellen Computer. Beim Aggregieren von Prozentsätzen ist das Ergebnis der Durchschnitt für alle CPUs. Wenn bei einem virtuellen Computer mit zwei Kernen ein Kern zu 100 % ausgelastet und der andere zu 100 % im Leerlauf ist, wird als PercentIdleTime der Wert 50 zurückgegeben. Wenn jeder Kern im gleichen Zeitraum zu 50 % ausgelastet wäre, würde das gemeldete Ergebnis ebenfalls 50 lauten. Bei einem virtuellen Computer mit vier Kernen mit einem zu 100 % ausgelasteten Kern, bei dem die anderen im Leerlauf sind, wird als PercentIdleTime der Wert 75 zurückgegeben.
+Die Prozessorklasse von Metriken bietet Informationen zur Prozessorauslastung auf dem virtuellen Computer. Beim Aggregieren von Prozentsätzen ist das Ergebnis der Durchschnitt für alle CPUs. Wenn bei einem virtuellen Computer mit zwei vCPUs eine vCPU zu 100 % ausgelastet und die andere zu 100 % im Leerlauf ist, wird für „PercentIdleTime“ der Wert 50 zurückgegeben. Wenn jede vCPU im gleichen Zeitraum zu 50 % ausgelastet wäre, würde das gemeldete Ergebnis ebenfalls 50 lauten. Wenn bei einem virtuellen Computer mit vier vCPUs eine vCPU zu 100 % ausgelastet ist und die anderen im Leerlauf sind, wird für „PercentIdleTime“ der Wert 75 zurückgegeben.
 
 Zähler | Bedeutung
 ------- | -------
@@ -438,7 +438,7 @@ PercentPrivilegedTime | Prozentsatz der Zeit, die nicht im Leerlauf aufgewendet 
 
 Die ersten vier Leistungsindikatoren sollten in der Summe 100 % ergeben. Die letzten drei Leistungsindikatoren ergeben als Summe ebenfalls 100 %. Sie unterteilen die Summe aus PercentProcessorTime, PercentIOWaitTime und PercentInterruptTime.
 
-Um eine einzelne Metrik zu erhalten, die über alle Prozessoren hinweg aggregiert wird, legen Sie `"condition": "IsAggregate=TRUE"` fest. Um eine Metrik für einen bestimmten Prozessor zu erhalten, z.B. den zweiten logischen Prozessor eines virtuellen Computers mit vier Kernen, legen Sie `"condition": "Name=\\"1\\""` fest. Die Nummern der logischen Prozessoren liegen im Bereich `[0..n-1]`.
+Um eine einzelne Metrik zu erhalten, die über alle Prozessoren hinweg aggregiert wird, legen Sie `"condition": "IsAggregate=TRUE"` fest. Um eine Metrik für einen bestimmten Prozessor zu erhalten, z.B. den zweiten logischen Prozessor eines virtuellen Computers mit vier vCPUs, legen Sie `"condition": "Name=\\"1\\""` fest. Die Nummern der logischen Prozessoren liegen im Bereich `[0..n-1]`.
 
 ### <a name="builtin-metrics-for-the-memory-class"></a>Integrierte Metriken der Arbeitsspeicherklasse
 

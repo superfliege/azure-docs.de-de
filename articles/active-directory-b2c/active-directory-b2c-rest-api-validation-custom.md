@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/24/2017
 ms.author: joroja
-ms.openlocfilehash: eb44a0d2234c9ee3801d8b3a1655d877aa2f4fef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2572c618f6ad27f57603d8e8a2ff04de6846c6ca
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Validierung der Benutzereingabe
 
@@ -119,7 +119,7 @@ So fügen Sie dem selbstbestätigten technischen Profil den Anspruchsaustausch h
 
 1. Öffnen Sie die Datei „TrustFrameworkBase.xml“, und suchen Sie nach `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
 2. Überprüfen Sie die Konfiguration dieses technischen Profils. Ermitteln Sie, wie der Austausch mit dem Benutzer basierend auf Ansprüchen definiert ist: Ansprüche, die vom Benutzer gefordert werden (Eingabeansprüche), und Ansprüche, die vom selbstbestätigten Anbieter zurückerwartet werden (Ausgabeansprüche).
-3. Suchen Sie nach `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`. Beachten Sie, dass dieses Profil als Orchestrierungsschritt 6 von `<UserJourney Id="ProfileEdit">` aufgerufen wird.
+3. Suchen Sie nach `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`. Beachten Sie, dass dieses Profil als Orchestrierungsschritt 4 von `<UserJourney Id="ProfileEdit">` aufgerufen wird.
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Schritt 4: Hochladen und Testen der Richtliniendatei der vertrauenden Seite für die Profilbearbeitung
 

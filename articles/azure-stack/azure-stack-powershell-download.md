@@ -14,32 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.openlocfilehash: c0a4f337c055f4b62d986e2a3c3ce7b962aceae9
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 661f24e1271b3f16fddc6426c94464dd8b388f18
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="download-azure-stack-tools-from-github"></a>Herunterladen von Azure Stack-Tools von GitHub
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-**AzureStack-Tools** ist ein GitHub-Repository, das PowerShell-Module zum Verwalten und Bereitstellen von Ressourcen für Azure Stack hostet. Sie können diese PowerShell-Module in das Azure Stack Development Kit oder in einen Windows-basierten externen Client herunterladen und verwenden, wenn Sie planen, VPN-Konnektivität einzurichten. Um diese Tools zu erhalten, klonen Sie das GitHub-Repository, oder laden Sie den Ordner **AzureStack-Tools** herunter. 
-
-Um das Repository zu klonen, laden Sie [Git für Windows](https://git-scm.com/download/win) herunter, öffnen Sie eine Befehlszeile, und führen Sie das folgende Skript aus:
-
-```PowerShell
-# Change directory to the root directory. 
-cd \
-
-# Clone the repository.
-git clone https://github.com/Azure/AzureStack-Tools.git --recursive
-
-# Change to the tools directory.
-cd AzureStack-Tools
-```
-
-Um den Ordner „Tools“ herunterzuladen, führen Sie das folgende Skript aus:
+**AzureStack-Tools** ist ein GitHub-Repository, das PowerShell-Module zum Verwalten und Bereitstellen von Ressourcen für Azure Stack hostet. Sie können diese PowerShell-Module in das Azure Stack Development Kit oder in einen Windows-basierten externen Client herunterladen und verwenden, wenn Sie planen, VPN-Konnektivität einzurichten. Um diese Tools zu erhalten, klonen Sie das GitHub-Repository, oder laden Sie den Ordner **AzureStack-Tools** herunter. Führen Sie dazu das folgende Skript aus:
 
 ```PowerShell
 # Change directory to the root directory. 
