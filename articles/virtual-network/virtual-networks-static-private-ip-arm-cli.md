@@ -1,11 +1,11 @@
 ---
-title: "Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure-CLI 2.0 | Microsoft-Dokumentation"
-description: "Hier erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI 2.0) konfigurieren."
+title: "Konfigurieren von privaten IP-Adressen für virtuelle Computer – Azure-CLI | Microsoft-Dokumentation"
+description: "Hier erfahren Sie, wie Sie private IP-Adressen für virtuelle Computer mithilfe der Azure-Befehlszeilenschnittstelle (CLI) konfigurieren."
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: tysonn
+manager: jeconnoc
+editor: 
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
 ms.service: virtual-network
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 071156367c1f819a00d31f1d0335e301391fda81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9925b29a60fc46e9ecc775ca132bd2365f64b15
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli-20"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI 2.0
+# <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Konfigurieren von privaten IP-Adressen für einen virtuellen Computer mithilfe der Azure CLI
 
 [!INCLUDE [virtual-networks-static-private-ip-selectors-arm-include](../../includes/virtual-networks-static-private-ip-selectors-arm-include.md)]
-
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe 
-
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch: 
-
-- [Azure CLI 1.0:](virtual-networks-static-private-ip-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell 
-- [Azure CLI 2.0](#specify-a-static-private-ip-address-when-creating-a-vm): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
 
 [!INCLUDE [virtual-networks-static-private-ip-intro-include](../../includes/virtual-networks-static-private-ip-intro-include.md)]
 
@@ -43,11 +35,11 @@ Dieser Artikel gilt für das Ressourcen-Manager-Bereitstellungsmodell. Sie könn
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> Die folgenden Azure CLI 2.0-Beispielbefehle setzen voraus, dass bereits eine einfache Umgebung erstellt wurde. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-arm-cli.md)beschrieben.
+> Die folgenden Beispiele für Azure CLI-Befehle gehen von einer vorhandenen einfachen Umgebung aus. Wenn Sie die in diesem Dokument aufgeführten Befehle ohne Veränderungen ausführen möchten, erstellen Sie zunächst eine Testumgebung, wie unter [Erstellen eines VNets](virtual-networks-create-vnet-arm-cli.md)beschrieben.
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>Angeben einer statischen privaten IP-Adresse beim Erstellen eines virtuellen Computers
 
-Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen Computer mit dem Namen *DNS01* und der statischen privaten IP-Adresse *192.168.1.101*. Gehen Sie dabei wie folgt vor:
+Um in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen virtuellen Computer mit dem Namen *DNS01* und der statischen privaten IP-Adresse *192.168.1.101* zu erstellen, führen Sie die folgenden Schritte aus:
 
 1. Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. 
 
@@ -134,7 +126,7 @@ Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen
     * `--vnet-name`: Der Name des VNet, in dem die Netzwerkkarte erstellt werden soll.
     * `--subnet`: Der Name des Subnetzes, in dem die Netzwerkkarte erstellt werden soll.
 
-4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic#create) aus, um den virtuellen Computer unter Verwendung der oben erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
+4. Führen Sie den Befehl [azure vm create](/cli/azure/vm/nic#create) aus, um den virtuellen Computer unter Verwendung der zuvor erstellten öffentlichen IP-Adresse und Netzwerkkarte zu erstellen. In der nach der Ausgabe angezeigten Liste werden die verwendeten Parameter erläutert.
    
     ```azurecli
     az vm create \
@@ -169,7 +161,7 @@ Erstellen Sie in einem VNet mit dem Namen *TestVNet* im Subnetz *FrontEnd* einen
 
 ## <a name="retrieve-static-private-ip-address-information-for-a-vm"></a>Abrufen der Informationen zur statischen privaten IP-Adresse für einen virtuellen Computer
 
-Führen Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle aus, und sehen Sie sich die Werte für *Private IP alloc-method* und *Private IP address* an, um die statische private IP-Adresse zu erhalten, die Sie erstellt haben:
+Führen Sie den folgenden Befehl der Azure-Befehlszeilenschnittstelle aus, und sehen Sie sich die Werte für *Private IP alloc-method* und *Private IP address* an:
 
 ```azurecli
 az vm show -g TestRG -n DNS01 --show-details --query 'privateIps'
@@ -204,13 +196,13 @@ Die Ausgabe sieht etwa wie folgt aus:
 
 ## <a name="remove-a-static-private-ip-address-from-a-vm"></a>Entfernen einer statischen privaten IP-Adresse von einem virtuellen Computer
 
-Es ist nicht möglich, über die Azure-Befehlszeilenschnittstelle für Resource Manager-Bereitstellungen eine statische private IP-Adresse von einer NIC zu entfernen. Die Voraussetzungen lauten wie folgt:
+Es ist nicht möglich, über die Azure-Befehlszeilenschnittstelle für Azure Resource Manager-Bereitstellungen eine statische private IP-Adresse von einer NIC zu entfernen. Die Voraussetzungen lauten wie folgt:
 - Erstellen einer neuen NIC, die eine dynamische IP-Adresse verwendet
 - Festlegen der NIC auf dem virtuellen Computer auf die neu erstellte NIC 
 
-Zum Ändern der NIC für den in den obigen Befehlen verwendeten virtuellen Computer führen Sie die folgenden Schritte aus.
+Um die in den vorhergehenden Befehlen verwendete Netzwerkkarte für die VM zu ändern, führen Sie die folgenden Schritte aus:
 
-1. Führen Sie den Befehl **azure network nic create** aus, um eine neue NIC mit dynamischer IP-Zuordnung mit einer neuen IP-Adresse zu erstellen. Beachten Sie, dass die Zuordnungsmethode **Dynamisch** ist, da keine IP-Adresse angegeben wird.
+1. Führen Sie den Befehl **azure network nic create** aus, um eine neue NIC mit dynamischer IP-Zuordnung mit einer neuen IP-Adresse zu erstellen. Die Zuordnungsmethode ist **Dynamisch**, da keine IP-Adresse angegeben wird.
 
     ```azurecli
     az network nic create     \

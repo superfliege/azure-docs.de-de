@@ -1,10 +1,10 @@
 ---
-title: "Verwalten von Netzwerksicherheitsgruppen – Azure CLI 2.0 | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie Netzwerksicherheitsgruppen mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI 2.0) verwalten.
+title: "Verwalten von Netzwerksicherheitsgruppen – Azure CLI | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie Netzwerksicherheitsgruppen mithilfe der Azure-Befehlszeilenschnittstelle verwalten.
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: ed17d314-07e6-4c7f-bcf1-a8a2535d7c14
@@ -16,23 +16,15 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11ec0d3d9e33c06d4c0a164f7fba5dd5cca73872
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c8d9f932746811a5b21dbd667d7c7bdc8f721fb
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="manage-network-security-groups-using-the-azure-cli-20"></a>Verwalten von Netzwerksicherheitsgruppen mit der Azure CLI 2.0
+# <a name="manage-network-security-groups-using-the-azure-cli"></a>Verwalten von Netzwerksicherheitsgruppen mit der Azure CLI
 
 [!INCLUDE [virtual-network-manage-arm-selectors-include.md](../../includes/virtual-network-manage-nsg-arm-selectors-include.md)]
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe 
-
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch: 
-
-- [Azure CLI 1.0:](virtual-network-manage-nsg-cli-nodejs.md) Unsere CLI für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell 
-- [Azure CLI 2.0](#View-existing-NSGs): Unsere CLI der nächsten Generation für das Resource Manager-Bereitstellungsmodell (dieser Artikel)
-
 
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
@@ -44,7 +36,6 @@ Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
 
 ## <a name="prerequisite"></a>Voraussetzung
 Falls noch nicht geschehen, installieren und konfigurieren Sie die neueste [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an. 
-
 
 ## <a name="view-existing-nsgs"></a>Anzeigen lassen vorhandener NSGs
 Führen Sie zum Anzeigen der Liste von NSGs in einer bestimmten Ressourcengruppe den Befehl [az network nsg list](/cli/azure/network/nsg#list) mit dem Ausgabeformat `-o table` aus:
@@ -89,13 +80,13 @@ Erwartete Ausgabe:
 
 ## <a name="view-nsg-associations"></a>Anzeigen lassen von NSG-Zuordnungen
 
-Um sich anzeigen zu lassen, welchen Ressourcen die **NSG-FrontEnd**-NSG zugeordnet ist, führen Sie den Befehl `az network nsg show`, wie unten gezeigt, aus. 
+Führen Sie den Befehl `az network nsg show` aus, um anzuzeigen, welchen Ressourcen die NSG **NSG-FrontEnd** zugeordnet ist: 
 
 ```azurecli
 az network nsg show -g RG-NSG -n nsg-frontend --query '[subnets,networkInterfaces]'
 ```
 
-Suchen Sie, wie unten gezeigt, nach den Eigenschaften **NetworkInterfaces** und **Subnets**:
+Suchen Sie nach den Eigenschaften **NetworkInterfaces** und **Subnets**, wie in der Ausgabe des folgenden Beispiels zu sehen:
 
 ```json
 [
@@ -117,7 +108,7 @@ Suchen Sie, wie unten gezeigt, nach den Eigenschaften **NetworkInterfaces** und 
 ]
 ```
 
-Im Beispiel oben ist die NSG keinen Netzwerkschnittstellen (NICs) zugeordnet. Sie ist einem Subnetz namens **FrontEnd** zugeordnet.
+Im vorherigen Beispiel ist die NSG keinen Netzwerkschnittstellen (NICs) und einem Subnetz namens **FrontEnd** zugeordnet.
 
 ## <a name="add-a-rule"></a>Hinzufügen einer Regel
 Um eine Regel hinzuzufügen, die **eingehenden** Verkehr an Port **443** von jedem Computer aus an die **NSG-FrontEnd**-NSG zulässt, geben Sie den folgenden Befehl ein:
@@ -160,7 +151,7 @@ Erwartete Ausgabe:
 ```
 
 ## <a name="change-a-rule"></a>Ändern einer Regel
-Um die oben erstellte Regel so zu ändern, dass eingehender Verkehr nur aus dem **Internet** zugelassen wird, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#update) aus:
+Um die zuvor erstellte Regel so zu ändern, dass eingehender Verkehr nur aus dem **Internet** zugelassen wird, führen Sie den Befehl [az network nsg rule update](/cli/azure/network/nsg/rule#update) aus:
 
 ```azurecli
 az network nsg rule update \
@@ -339,7 +330,7 @@ In der Ausgabe hat der Schlüssel `networkSecurityGroup` etwa den folgenden Wert
   ```
 
 ## <a name="delete-an-nsg"></a>Löschen einer NSG
-Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Um eine NSG zu löschen, gehen Sie folgendermaßen vor.
+Sie können eine NSG nur löschen, wenn sie keiner Ressource zugeordnet ist. Führen Sie die folgenden Schritte durch, um eine NSG zu löschen:
 
 1. Um die Ressourcen, die einer NSG zugeordnet sind, zu überprüfen, führen Sie `azure network nsg show` aus, wie in [Anzeigen von NSG-Zuordnungen](#View-NSGs-associations)gezeigt.
 2. Falls die NSG einer NIC zugeordnet ist, führen Sie `azure network nic set` , wie in [Aufheben der Zuordnung einer NSG zu einer NIC](#Dissociate-an-NSG-from-a-NIC) gezeigt, für jede NIC aus. 

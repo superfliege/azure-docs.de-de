@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9a9baa457729bdc4d70a8f9f45701dbdb875d3ce
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 94771578d94b5b9bc23451049a78506e80c87d26
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>Wählen zwischen Azure-Diensten für die Nachrichtenübermittlung
 
@@ -32,20 +32,16 @@ Zwischen Diensten, die ein Ereignis übermitteln, und Diensten, die eine Nachric
 
 Ein Ereignis ist eine einfache Benachrichtigung über eine Aktion oder eine Zustandsänderung. Die Ereignisdaten geben Aufschluss darüber, was geschehen ist, enthalten aber nicht die Daten, die das Ereignis ausgelöst haben. Ein Ereignis kann beispielsweise Abonnenten darüber informieren, dass eine Datei erstellt wurde. Das Ereignis kann allgemeine Informationen zu der Datei enthalten, aber nicht die eigentliche Datei. Ereignisse lösen im Allgemeinen Ereignishandler für Aktionen in Echtzeit aus.
 
-Event Grid ist ein Ereignisdienst.
-
 ### <a name="message"></a>Nachricht
 
-Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wurden und für die Nutzung oder Speicherung an anderer Stelle vorgesehen sind. Die Nachricht enthält die Daten, die die Nachrichtenpipeline ausgelöst haben. Es gibt verschiedenste Arten von Meldungen – von einem E-Commerce-Auftrag bis hin zu Benutzertelemetrie. Anders als bei einer Ereignisbenachrichtigung erwartet der Herausgeber einer Nachricht unter Umständen eine Reaktion. Eine Nachricht kann beispielsweise Rohdaten enthalten und erwarten, dass der nächste Teil des Systems auf der Grundlage dieser Daten eine Datei erstellt. 
-
-Event Hubs und Service Bus sind Messagingdienste.
+Bei einer Nachricht handelt es sich um Rohdaten, die von einem Dienst erzeugt wurden und für die Nutzung oder Speicherung an anderer Stelle vorgesehen sind. Die Nachricht enthält die Daten, die die Nachrichtenpipeline ausgelöst haben. Es gibt verschiedenste Arten von Meldungen – von einem E-Commerce-Auftrag bis hin zu Benutzertelemetrie. Anders als bei einer Ereignisbenachrichtigung erwartet der Herausgeber einer Nachricht unter Umständen eine Reaktion. Eine Nachricht kann beispielsweise Rohdaten enthalten und erwarten, dass der nächste Teil des Systems auf der Grundlage dieser Daten eine Datei erstellt.
 
 ## <a name="comparison-of-services"></a>Vergleich von Diensten
 
 | Dienst | Zweck | Typ | Einsatzgebiete |
 | ------- | ------- | ---- | ----------- |
-| Event Grid | Reaktive Programmierung | Ereignis | Reagieren auf Statusänderungen |
-| Event Hubs | Big Data-Pipeline | Nachricht | Streamen von Telemetriedaten und verteilten Daten |
+| Event Grid | Reaktive Programmierung | Ereignisverteilung | Reagieren auf Statusänderungen |
+| Event Hubs | Big Data-Pipeline | Ereignisstreaming | Streamen von Telemetriedaten und verteilten Daten |
 | SERVICE BUS | Hochwertiges Unternehmensmessaging | Nachricht | Auftragsverarbeitung und Finanztransaktionen |
 
 ### <a name="event-grid"></a>Event Grid
@@ -62,7 +58,7 @@ Merkmale:
 
 ### <a name="event-hubs"></a>Event Hubs
 
-Azure Event Hubs ist eine Big Data-Pipeline. Es vereinfacht die Erfassung, Aufbewahrung und Wiedergabe von Telemetrie- und Ereignisdatenstromdaten. Die Daten können aus vielen parallelen Quellen stammen. Mit Event Hubs können Telemetrie- und Ereignisdaten für eine Vielzahl von datenstromverarbeitenden Infrastrukturen und Analysediensten verfügbar gemacht werden. Die Daten sind entweder als Datenströme oder als gebündelte Ereignisbatches verfügbar. Dieser Dienst bietet eine Einzellösung zum schnellen Abrufen von Daten für die Verarbeitung in Echtzeit sowie für die wiederholte Wiedergabe gespeicherter Rohdaten.
+Azure Event Hubs ist eine Big Data-Pipeline. Es vereinfacht die Erfassung, Aufbewahrung und Wiedergabe von Telemetrie- und Ereignisdatenstromdaten. Die Daten können aus vielen parallelen Quellen stammen. Mit Event Hubs können Telemetrie- und Ereignisdaten für eine Vielzahl von datenstromverarbeitenden Infrastrukturen und Analysediensten verfügbar gemacht werden. Die Daten sind entweder als Datenströme oder als gebündelte Ereignisbatches verfügbar. Dieser Dienst bietet eine Einzellösung zum schnellen Abrufen von Daten für die Verarbeitung in Echtzeit sowie für die wiederholte Wiedergabe gespeicherter Rohdaten. Er kann die Streamingdaten zur Verarbeitung und Analyse in einer Datei erfassen.
 
 Merkmale:
 
@@ -72,6 +68,8 @@ Merkmale:
 ### <a name="service-bus"></a>SERVICE BUS
 
 Service Bus ist für traditionelle Unternehmensanwendungen konzipiert. Für diese Unternehmensanwendungen werden Transaktionen, Sortierfunktionen, Duplikaterkennung und umgehende Konsistenz benötigt. Mit Service Bus können native Cloudanwendungen eine zuverlässige Zustandsübergangsverwaltung für Geschäftsprozesse bereitstellen. Nutzen Sie Azure Service Bus bei Verwendung wichtiger Nachrichten, die nicht verloren gehen oder dupliziert werden dürfen. Service Bus ermöglicht auch eine äußerst sichere Kommunikation über Hybrid Cloud-Lösungen hinweg und kann vorhandene lokale Systeme mit Cloudlösungen verbinden.
+
+Service Bus ist ein System für Brokermessaging. Es speichert Nachrichten in einem „Broker“ (z. B. in einer Warteschlange), bis die Empfängerseite für den Empfang der Nachrichten bereit ist.
 
 Merkmale:
 

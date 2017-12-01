@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 655bc3dd3735a35fbe7437e8dda92b2adf15f7bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Dienstremoting mit Reliable Services
 Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.
@@ -82,12 +82,12 @@ string message = await helloWorldClient.HelloWorldAsync();
 Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weiter. Somit kann die Ausnahmebehandlungslogik auf dem Client Ausnahmen, die vom Dienst ausgegeben werden, mithilfe von `ServiceProxy` direkt behandeln.
 
 ## <a name="service-proxy-lifetime"></a>Gültigkeitsdauer von Dienstproxys
-Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Benutzer so viele erstellen können, wie sie benötigen. Ein Dienstproxy kann erneut verwendet werden, solange Benutzer ihn benötigen. Löst eine Remote-API eine Ausnahme aus, können Benutzer weiterhin denselben Proxy wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufrufen der API erfolgt eine interne Prüfung, ob der verwendete Kommunikationsclient gültig ist. Basierend auf diesem Ergebnis erstellen wir den Kommunikationsclient neu. Daher müssen Benutzer, wenn eine Ausnahme auftritt, den Dienstproxy nicht neu erstellen.
+Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Benutzer so viele erstellen können, wie sie benötigen. Dienstproxyinstanzen können erneut verwendet werden, solange Benutzer sie benötigen. Wenn ein Remoteprozeduraufruf eine Ausnahme auslöst, können Benutzer immer noch dieselbe Proxyinstanz wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufruf von Remoteaufrufen wird intern geprüft, ob der Kommunikationsclient gültig ist. Basierend auf diesem Ergebnis erstellen wir bei Bedarf den Kommunikationsclient neu. Daher müssen Benutzer, wenn eine Ausnahme auftritt, den Dienstproxy nicht neu erstellen, aber dies erfolgt auf transparente Weise.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Gültigkeitsdauer von „ServiceProxyFactory“
-[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) ist eine Factory, die einen Proxy für verschiedene Remotingschnittstellen erstellt. Bei Verwenden der API „ServiceProxy.Create“ zum Erstellen des Proxys erzeugt das Framework die ServiceProxyFactory als Singleton.
+[ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) ist eine Factory, die Proxyinstanzen für verschiedene Remotingschnittstellen erstellt. Wenn Sie die API `ServiceProxy.Create` zum Erstellen von Proxys verwenden, dann erstellt das Framework einen Singleton-Dienstproxy.
 Es ist sinnvoll, eine manuell zu erstellen, wenn Sie [IServiceRemotingClientFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.iserviceremotingclientfactory)-Eigenschaften überschreiben müssen.
-„Factory“ ist ein aufwendiger Vorgang. „ServiceProxyFactory“ verwaltet den Cache des Kommunikationsclients.
+Die Factoryerstellung ist ein kostenintensiver Vorgang. „ServiceProxyFactory“ verwaltet einen internen Cache des Kommunikationsclients.
 Es empfiehlt sich, „ServiceProxyFactory“ so lange wie möglich im Cache zwischenzuspeichern.
 
 ## <a name="remoting-exception-handling"></a>Behandlung von Remotingausnahmen

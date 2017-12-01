@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 11/16/2017
 ms.author: juluk
-ms.openlocfilehash: ebf6f1256a280fdff18c0c9060614acf0d4a642b
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 08ab3b38e4c1fbeb1fac67c5d1b6f6749f7a0a3e
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 Azure Cloud Shell ist eine interaktive, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen.
@@ -82,12 +82,12 @@ Dropdownlisten werden für Ihre zugewiesene Cloud Shell-Region und die lokal/glo
 [Weitere Informationen zu Cloud Shell-Speicher, dem Aktualisieren von Dateifreigaben und dem Upload/Download von Dateien.](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>Konzepte
-* Cloud Shell wird auf einem temporären Computer ausgeführt, der pro Sitzung und pro Benutzer bereitgestellt wird.
+* Cloud Shell wird auf einem temporären Host ausgeführt, der pro Sitzung und pro Benutzer bereitgestellt wird.
 * Nach 20 Minuten ohne interaktive Aktivitäten tritt für Cloud Shell ein Timeout ein.
-* Der Zugriff auf Cloud Shell ist nur möglich, wenn eine Dateifreigabe angefügt ist.
+* Für Cloud Shell muss eine Dateifreigabe bereitgestellt werden.
 * Cloud Shell verwendet dieselbe Dateifreigabe für Bash und PowerShell.
 * Cloud Shell wird ein Computer pro Benutzerkonto zugewiesen.
-* Berechtigungen werden auf einen normalen Linux-Benutzer (Bash) festgelegt.
+* Berechtigungen werden auf einen normalen Linux-Benutzer in Bash festgelegt.
 
 Weitere Informationen finden Sie unter [Features und Tools für Bash in Azure Cloud Shell](features.md) sowie unter [Features und Tools für PowerShell in Azure Cloud Shell](features-powershell.md).
 
@@ -102,5 +102,5 @@ Testen Sie diese Beispiele in Schnellstartanleitungen für [Bash in Cloud Shell]
 Der Computer, auf dem Cloud Shell gehostet wird, ist kostenlos. Als Voraussetzung muss eine Azure Files-Freigabe eingebunden sein. Es gelten die üblichen Speicherkosten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Schnellstart für Bash in Azure Cloud Shell](quickstart.md)
-[Schnellstart für PowerShell in Azure Cloud Shell](quickstart-powershell.md)
+[Schnellstart für Bash in Azure Cloud Shell](quickstart.md) <br>
+[Schnellstart für PowerShell in Azure Cloud Shell (Vorschau)](quickstart-powershell.md)

@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 11/16/2017
 ms.author: glenga
-ms.openlocfilehash: c1b868c07522a8df8b574b3bf3d31de512a547fe
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: ac5cbb51a5ed340a6cbf2eeefa41feb337d28fb9
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
 
@@ -65,10 +65,10 @@ Wenn Sie das Schnellstarttutorial nicht absolvieren möchten, führen Sie folgen
 2. Fügen Sie diesen Code in die *Module app*-Ebene der **build.gradle**-Datei im *dependencies*-Tag ein:
 
     ```text
-    compile 'com.microsoft.azure:azure-mobile-android:3.3.0'
+    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
-    Derzeit ist 3.3.0 die neueste Version. Die unterstützten Versionen sind auf [bintray][14] aufgeführt.
+    Derzeit ist 3.4.0 die neueste Version. Die unterstützten Versionen sind auf [bintray][14] aufgeführt.
 
 ### <a name="enable-internet"></a>Aktivieren der Internetberechtigung
 
@@ -982,7 +982,7 @@ dependencies {
     compile 'com.google.guava:guava:18.0'
     compile 'com.android.support:customtabs:23.0.1'
     compile 'com.squareup.okhttp:okhttp:2.5.0'
-    compile 'com.microsoft.azure:azure-mobile-android:3.2.0@aar'
+    compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@jar'
 }
 ```

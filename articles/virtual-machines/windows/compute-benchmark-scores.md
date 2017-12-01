@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cynthn
-ms.openlocfilehash: dc715a9bf4e5366e1719de7c649feb06b0c4bee7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 37eaafdbcee87e6f6a6164dffcabaa7e9efa65ca
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Compute-Benchmarkergebnisse für virtuelle Windows-Computer
 Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für äußerst leistungsfähig Azure-VMs unter Windows Server. Compute-Benchmarkergebnisse stehen auch für [virtuelle Linux-Computer](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)zur Verfügung.
@@ -65,7 +65,7 @@ Die folgenden SPECInt-Benchmarkergebnisse zeigen die Computeleistung für äuße
 | Standard_H16mr |16 |2 |Intel Xeon E5-2667 v3 mit 3,2 GHz |7 |569,6 |2.8 |
 
 ## <a name="about-specint"></a>Informationen zu SPECint
-Die Windows-Zahlen wurden durch die Ausführung von [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) unter Windows Server berechnet. SPECint wurde mit der Option für die Basisrate (SPECint_rate2006) mit einer Kopie pro Kern ausgeführt. SPECint besteht aus 12 getrennten Tests, die jeweils dreimal ausgeführt wurden. Der Mittelwert jedes Tests wurde gewichtet, um eine zusammengesetzte Bewertung zu erhalten. Diese Tests wurden dann auf mehreren virtuellen Computern ausgeführt, um die gezeigten Durchschnittsergebnisse zu liefern.
+Die Windows-Zahlen wurden durch die Ausführung von [SPECint 2006](https://www.spec.org/cpu2006/results/rint2006.html) unter Windows Server berechnet. SPECint wurde mit der Option für die Basisrate (SPECint_rate2006) mit einer Kopie pro vCPU ausgeführt. SPECint besteht aus 12 getrennten Tests, die jeweils dreimal ausgeführt wurden. Der Mittelwert jedes Tests wurde gewichtet, um eine zusammengesetzte Bewertung zu erhalten. Diese Tests wurden dann auf mehreren virtuellen Computern ausgeführt, um die gezeigten Durchschnittsergebnisse zu liefern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).

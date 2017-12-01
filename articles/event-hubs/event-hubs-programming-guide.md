@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 08/17/2017
+ms.date: 11/16/2017
 ms.author: sethm
-ms.openlocfilehash: 405ec2b27b488b570c4a5c86e4950ff98233360e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69c07cb31b1dc3ec3685448d8187ef3a57bd3821
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="event-hubs-programming-guide"></a>Programmierleitfaden für Event Hubs
 
@@ -28,7 +28,7 @@ Dieser Artikel erörtert einige gängige Szenarien zum Schreiben von Code mit Az
 
 Sie senden Ereignisse entweder mit HTTP POST oder über eine AMQP 1.0-Verbindung an einen Event Hub. Welches Verfahren gewählt wird, hängt vom jeweils vorliegenden Szenario ab. AMQP 1.0-Verbindungen werden als vermittelte Verbindungen in Service Bus gemessen und sind besser für Fälle mit häufigeren höheren Nachrichtenvolumen und geringeren Latenzanforderungen geeignet, da sie über einen dauerhaften Messagingkanal verfügen.
 
-Event Hubs werden mit der [NamespaceManager][] -Klasse erstellt und verwaltet. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) und [EventData][]. [EventHubClient][] stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData][]-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData][]-Objekt werden weitere Eigenschaften hinzugefügt, wenn es einen Event Hub durchläuft.
+Event Hubs können mit der [NamespaceManager][]-Klasse erstellt und verwaltet werden. Beim Verwenden der per .NET verwalteten APIs sind die Hauptkonstrukte für die Veröffentlichung von Daten auf Event Hubs die Klassen [EventHubClient](/dotnet/api/microsoft.servicebus.messaging.eventhubclient) und [EventData][]. [EventHubClient][] stellt den AMQP-Kommunikationskanal bereit, über den Ereignisse an Event Hub gesendet werden. Die [EventData][]-Klasse stellt ein Ereignis dar und wird verwendet, um Nachrichten auf einem Event Hub zu veröffentlichen. Diese Klasse enthält den Text, einige Metadaten sowie Headerinformationen zum Ereignis. Dem [EventData][]-Objekt werden weitere Eigenschaften hinzugefügt, wenn es einen Event Hub durchläuft.
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -57,7 +57,7 @@ Alle Event Hubs-Erstellungsvorgänge, z.B. [CreateEventHubIfNotExists][], erford
 Die [EventHubDescription](/dotnet/api/microsoft.servicebus.messaging.eventhubdescription)-Klasse enthält Details zu einem Event Hub, z.B. Autorisierungsregeln, Intervall der Nachrichtenaufbewahrung, Partitions-IDs, Status und Pfad. Sie können diese Klasse verwenden, um die Metadaten für einen Event Hub zu aktualisieren.
 
 ## <a name="create-an-event-hubs-client"></a>Erstellen eines Event Hubs-Clients
-Die Hauptklasse für die Interaktion mit Event Hubs ist [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient]. Mit dieser Klasse werden Funktionen für Absender und Empfänger bereitgestellt. Sie können diese Klasse mit der [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create)-Methode instanziieren. Dies wird im folgenden Beispiel veranschaulicht.
+Die Hauptklasse für die Interaktion mit Event Hubs ist [Microsoft.ServiceBus.Messaging.EventHubClient][EventHubClient]. Mit dieser Klasse werden Funktionen für Absender und Empfänger bereitgestellt. Sie können diese Klasse mit der [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.create)-Methode instanziieren. Dies wird im folgenden Beispiel veranschaulicht:
 
 ```csharp
 var client = EventHubClient.Create(description.Path);
@@ -77,14 +77,14 @@ Die Verbindungszeichenfolge hat das gleiche Format wie in der Datei „App.confi
 Endpoint=sb://[namespace].servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=[key]
 ```
 
-Schließlich ist es auch möglich, ein [EventHubClient][]-Objekt aus einer [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory)-Instanz zu erstellen. Dies ist im folgenden Beispiel dargestellt.
+Schließlich ist es auch möglich, ein [EventHubClient][]-Objekt aus einer [MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory)-Instanz zu erstellen. Dies ist im folgenden Beispiel dargestellt:
 
 ```csharp
 var factory = MessagingFactory.CreateFromConnectionString("your_connection_string");
 var client = factory.CreateEventHubClient("MyEventHub");
 ```
 
-Es ist wichtig zu beachten, dass für zusätzliche [EventHubClient][] -Objekte, die aus einer Messagingfactory-Instanz erstellt werden, die gleiche zugrunde liegende TCP-Verbindung wiederverwendet wird. Daher verfügen diese Objekte über einen clientseitigen Grenzwert für den Durchsatz. Bei der [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) -Methode wird eine einzelne Messagingfactory wiederverwendet. Wenn Sie für einen einzelnen Absender einen sehr hohen Durchsatz benötigen, können Sie mehrere Messagingfactorys und ein [EventHubClient][] -Objekt aus jeder Messagingfactory erstellen.
+Es ist wichtig zu beachten, dass für zusätzliche [EventHubClient][]-Objekte, die aus einer Messagingfactory-Instanz erstellt werden, die gleiche zugrunde liegende TCP-Verbindung wiederverwendet wird. Daher verfügen diese Objekte über einen clientseitigen Grenzwert für den Durchsatz. Bei der [Create](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Create_System_String_) -Methode wird eine einzelne Messagingfactory wiederverwendet. Wenn Sie für einen einzelnen Absender einen sehr hohen Durchsatz benötigen, können Sie mehrere Messagingfactorys und ein [EventHubClient][] -Objekt aus jeder Messagingfactory erstellen.
 
 ## <a name="send-events-to-an-event-hub"></a>Senden von Ereignissen an einen Event Hub
 Sie senden Ereignisse an einen Event Hub, indem Sie eine [EventData][]-Instanz erstellen und diese mit der [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_)-Methode senden. Diese Methode verwendet einen einzelnen [EventData][]-Instanzparameter und sendet ihn synchron an einen Event Hub.
@@ -97,9 +97,9 @@ Die [EventData][]-Klasse enthält eine [PartitionKey][]-Eigenschaft, mit der der
 
 ### <a name="availability-considerations"></a>Überlegungen zur Verfügbarkeit
 
-Die Verwendung eines Partitionsschlüssels ist optional, und Sie sollten dies sorgfältig abwägen. In vielen Fällen ist die Verwendung eines Partitionsschlüssels empfehlenswert, wenn die Ereignisreihenfolge wichtig ist. Wenn Sie einen Partitionsschlüssel verwenden, ist für diese Partitionen die Verfügbarkeit auf einem einzelnen Knoten erforderlich, und mit der Zeit kann es zu Ausfällen kommen, beispielsweise beim Neustart und Patchen von Computeknoten. Wenn Sie daher eine Partitions-ID festlegen und diese Partition aus irgendeinem Grund nicht verfügbar ist, führt der Zugriff auf die Daten in dieser Partition zu einem Fehler. Wenn hohe Verfügbarkeit am erster Stelle steht, geben Sie keinen Partitionsschlüssel an. In diesem Fall werden Ereignisse über das oben beschriebene Roundrobin-Modell an Partitionen gesendet. In diesem Szenario treffen Sie explizit die Wahl zwischen Verfügbarkeit (keine Partitions-ID) und Konsistenz (Anheften von Ereignissen an eine Partitions-ID).
+Die Verwendung eines Partitionsschlüssels ist optional, und Sie sollten dies sorgfältig abwägen. In vielen Fällen ist die Verwendung eines Partitionsschlüssels empfehlenswert, wenn die Ereignisreihenfolge wichtig ist. Wenn Sie einen Partitionsschlüssel verwenden, ist für diese Partitionen die Verfügbarkeit auf einem einzelnen Knoten erforderlich, und mit der Zeit kann es zu Ausfällen kommen, beispielsweise beim Neustart und Patchen von Computeknoten. Wenn Sie daher eine Partitions-ID festlegen und diese Partition aus irgendeinem Grund nicht verfügbar ist, führt der Zugriff auf die Daten in dieser Partition zu einem Fehler. Wenn die Hochverfügbarkeit an erster Stelle steht, geben Sie keinen Partitionsschlüssel an. In diesem Fall werden Ereignisse über das zuvor beschriebene Roundrobin-Modell an Partitionen gesendet. In diesem Szenario treffen Sie explizit die Wahl zwischen Verfügbarkeit (keine Partitions-ID) und Konsistenz (Anheften von Ereignissen an eine Partitions-ID).
 
-Ein weiterer Aspekt ist der Umgang mit Verzögerungen bei der Ereignisverarbeitung. In einigen Fällen kann es besser sein, Daten zu löschen und den Vorgang zu wiederholen, als zu versuchen, mit der Verarbeitung Schritt zu halten, wodurch möglicherweise weitere Verzögerungen bei der Downstreamverarbeitung verursacht werden. Bei einem Börsenticker ist es z.B. besser, auf vollständige aktuelle Daten zu warten. In einem Livechat oder VOIP-Szenario, möchten Sie die Daten hingegen schnell erhalten, selbst wenn sie nicht vollständig sind.
+Ein weiterer Aspekt ist der Umgang mit Verzögerungen bei der Ereignisverarbeitung. In einigen Fällen kann es besser sein, Daten zu löschen und den Vorgang zu wiederholen, anstatt zu versuchen, mit der Verarbeitung Schritt zu halten, wodurch möglicherweise weitere Verzögerungen bei der Downstreamverarbeitung verursacht werden. Bei einem Börsenticker ist es z.B. besser, auf vollständige aktuelle Daten zu warten. In einem Livechat oder VOIP-Szenario, möchten Sie die Daten hingegen schnell erhalten, selbst wenn sie nicht vollständig sind.
 
 Vor dem Hintergrund dieser Überlegungen zur Verfügbarkeit können Sie eine der folgenden Strategien zur Fehlerbehandlung wählen:
 
@@ -111,7 +111,7 @@ Vor dem Hintergrund dieser Überlegungen zur Verfügbarkeit können Sie eine der
 Weitere Informationen und eine Erläuterung zu den Vor-und Nachteilen zwischen Verfügbarkeit und Konsistenz finden Sie unter [Verfügbarkeit und Konsistenz in Event Hubs](event-hubs-availability-and-consistency.md). 
 
 ## <a name="batch-event-send-operations"></a>Sendevorgänge für Batchereignisse
-Das Senden von Ereignissen in Batches kann den Durchsatz erheblich erhöhen. Die [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__)-Methode verwendet einen **IEnumerable**-Parameter vom Typ [EventData][] und sendet den gesamten Batch als atomischen Vorgang an den Event Hub.
+Das Senden von Ereignissen in Batches kann den Durchsatz erhöhen. Die [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__)-Methode verwendet einen **IEnumerable**-Parameter vom Typ [EventData][] und sendet den gesamten Batch als atomischen Vorgang an den Event Hub.
 
 ```csharp
 public void SendBatch(IEnumerable<EventData> eventDataList);
@@ -132,10 +132,10 @@ var partitionedSender = client.CreatePartitionedSender(description.PartitionIds[
 [CreatePartitionedSender](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_CreatePartitionedSender_System_String_) gibt ein [EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender)-Objekt zurück, das Sie verwenden können, um Ereignisse auf einer bestimmten Event Hub-Partition zu veröffentlichen.
 
 ## <a name="event-consumers"></a>Ereignisconsumer
-Der Event Hubs-Dienst verfügt über zwei primäre Modelle für die Ereignisnutzung: direkte Empfänger und allgemeinere Abstraktionen, z.B. [EventProcessorHost][]. Direkte Empfänger sind verantwortlich für ihre eigene Koordinierung des Zugriffs auf Partitionen innerhalb einer Consumergruppe.
+Der Event Hubs-Dienst verfügt über zwei primäre Modelle für die Ereignisnutzung: direkte Empfänger und allgemeinere Abstraktionen, z.B. [EventProcessorHost][]. Direkte Empfänger sind verantwortlich für ihre eigene Koordinierung des Zugriffs auf Partitionen innerhalb einer *Consumergruppe*. Eine Consumergruppe ist eine Ansicht (Zustand, Position oder Offset) eines partitionierten Event Hubs.
 
 ### <a name="direct-consumer"></a>Direkter Consumer
-Die direkteste Möglichkeit zum Lesen aus einer Partition innerhalb einer Consumergruppe ist die Verwendung der [EventHubReceiver](/dotnet/apie/microsoft.servicebus.messaging.eventhubreceiver) -Klasse. Um eine Instanz dieser Klasse zu erstellen, müssen Sie eine Instanz der [EventHubConsumerGroup](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup) -Klasse verwenden. Im folgenden Beispiel muss die Partitions-ID angegeben werden, wenn der Empfänger für die Consumergruppe erstellt wird.
+Die direkteste Möglichkeit zum Lesen aus einer Partition ist die Verwendung der [EventHubReceiver](/dotnet/apie/microsoft.servicebus.messaging.eventhubreceiver)-Klasse. Um eine Instanz dieser Klasse zu erstellen, müssen Sie eine Instanz der [EventHubConsumerGroup](/dotnet/api/microsoft.servicebus.messaging.eventhubconsumergroup) -Klasse verwenden. Im folgenden Beispiel muss die Partitions-ID angegeben werden, wenn der Empfänger für die Consumergruppe erstellt wird:
 
 ```csharp
 EventHubConsumerGroup group = client.GetDefaultConsumerGroup();
@@ -158,7 +158,7 @@ while(receive)
 
 Im Hinblick auf eine bestimmte Partition werden die Nachrichten in der Reihenfolge empfangen, in der sie an den Event Hub gesendet wurden. Der Offset ist ein Zeichenfolgentoken, das zum Identifizieren einer Nachricht in einer Partition verwendet wird.
 
-Beachten Sie, dass mit einer einzelnen Partition innerhalb einer Consumergruppe nicht mehr als fünf Leser gleichzeitig verbunden sein können. Wenn Leseeinheiten verbunden oder getrennt werden, können die dazugehörigen Sitzungen noch einige Minuten lang aktiv bleiben, bevor der Dienst die Trennung erkennt. Während dieses Zeitraums kann für die erneute Herstellung der Verbindung mit einer Partition ein Fehler auftreten. Ein vollständiges Beispiel für das Schreiben eines direkten Empfängers für Event Hubs finden Sie im Beispiel [Event Hubs – Direkte Empfänger](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6).
+Beachten Sie, dass mit einer einzelnen Partition nicht mehr als fünf Leser gleichzeitig verbunden sein können. Wenn Leseeinheiten verbunden oder getrennt werden, können die dazugehörigen Sitzungen noch einige Minuten lang aktiv bleiben, bevor der Dienst die Trennung erkennt. Während dieses Zeitraums kann für die erneute Herstellung der Verbindung mit einer Partition ein Fehler auftreten. Ein vollständiges Beispiel für das Schreiben eines direkten Empfängers für Event Hubs finden Sie im Beispiel [Event Hubs – Direkte Empfänger](https://code.msdn.microsoft.com/Event-Hub-Direct-Receivers-13fa95c6).
 
 ### <a name="event-processor-host"></a>Ereignisprozessorhost
 Die [EventProcessorHost][] -Klasse verarbeitet Daten aus Event Hubs. Sie sollten diese Implementierung verwenden, wenn Sie Ereignisleser auf der .NET-Plattform erstellen. [EventProcessorHost][] wird eine threadsichere Laufzeitumgebung mit mehreren Prozessen für Ereignisprozessorimplementierungen bereitgestellt, die auch die Erstellung von Prüfpunkten und die Leaseverwaltung für Partitionen ermöglicht.
@@ -178,7 +178,7 @@ Im Laufe der Zeit wird somit ein Gleichgewicht erreicht. Diese dynamische Funkti
 Außerdem implementiert die [EventProcessorHost][] -Klasse ein auf Azure Storage-basiertes Verfahren für die Prüfpunktausführung. Bei diesem Verfahren wird der Offset pro Partition gespeichert, damit jeder Consumer ermitteln kann, wie der letzte Prüfpunkt des vorherigen Consumers lautete. Da Partitionen per Lease zwischen Knoten wechseln, ist dies das Synchronisierungsverfahren, das die Auslastungsverteilung ermöglicht.
 
 ## <a name="publisher-revocation"></a>Herausgebersperrung
-Zusätzlich zu den erweiterten Laufzeitfunktionen von [EventProcessorHost][] ermöglichen Event Hubs die Herausgebersperrung, damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind besonders nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
+Zusätzlich zu den erweiterten Laufzeitfunktionen von [EventProcessorHost][] ermöglichen Event Hubs die Herausgebersperrung, damit bestimmte Herausgeber blockiert werden und keine Ereignisse an einen Event Hub senden können. Diese Funktionen sind nützlich, wenn das Token eines Herausgebers gefährdet ist oder ein Softwareupdate ein unangemessenes Verhalten bewirkt. In diesen Fällen kann die Identität des Herausgebers, die Teil des SAS-Tokens ist, blockiert werden, um das Veröffentlichen von Ereignissen zu verhindern.
 
 Weitere Informationen zum Sperren von Herausgebern und zum Senden an Event Hubs als Herausgeber finden Sie im Beispiel [Service Bus Event Hubs Large Scale Secure Publishing](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) (Service Bus Event Hubs – Sicheres Veröffentlichen in größerem Umfang).
 

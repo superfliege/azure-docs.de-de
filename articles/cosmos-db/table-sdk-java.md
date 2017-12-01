@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: yaronyg
 ms.custom: 
-ms.openlocfilehash: 23dce1b3f6f40f8e4d5606d237700f31281d66c7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 06ce541b42de2ad20014199a7e87fe3d8c2dfe01
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Azure Cosmos DB-Tabellen-API für Java: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -34,6 +34,10 @@ ms.lasthandoff: 11/15/2017
 |**SDK-Download**|[Downloadoptionen](https://github.com/azure/azure-storage-java#download)|
 |**API-Dokumentation**|[Java-API-Referenzdokumentation](http://azure.github.io/azure-storage-java/)|
 |**Am SDK mitwirken**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
+
+> [!IMPORTANT]
+> Wenn Sie während der Vorschauphase ein Tabellen-API-Konto erstellt haben, erstellen Sie ein [neues Tabellen-API-Konto](create-table-dotnet.md#create-a-database-account) für die Verwendung mit den allgemein verfügbaren Table API SDKs.
+>
 
 ## <a name="release-notes"></a>Versionshinweise
 

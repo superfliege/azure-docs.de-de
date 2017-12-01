@@ -4,7 +4,7 @@ description: "Erstellen Sie Features für in einem Azure-Blob-Container gespeich
 services: machine-learning,storage
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 676b5fb0-4c89-4516-b3a8-e78ae3ca078d
 ms.service: machine-learning
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/21/2017
 ms.author: bradsev;garye
-ms.openlocfilehash: ea6712fcedcc61c9f88e9daa8d576ac3d202da51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2e64927f4afca87642fb4829166c5ec60dbc09
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="create-features-for-azure-blob-storage-data-using-panda"></a>Erstellen von Features für Azure-Blob-Speicherdaten mithilfe von Panda
 In diesem Dokument wird erläutert, wie Sie Features für in einem Azure-BLOB-Container gespeicherte Daten mithilfe des [Pandas](http://pandas.pydata.org/) -Python-Pakets erstellen. Nach der Beschreibung des Ladens der Daten in einen Panda-Datenrahmen wird erläutert, wie mithilfe von Python-Skripts mit Indikatorwerten und Klassifizierungsfeatures kategorische Features generiert werden.
@@ -31,9 +31,9 @@ Dieses **Menü** stellt eine Verknüpfung mit Themen dar, in denen beschrieben w
 In diesem Artikel wird davon ausgegangen, dass Sie ein Azure-Blobspeicherkonto erstellt und darin Ihre Daten gespeichert haben. Anweisungen zum Einrichten eines Kontos finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Laden der Daten in ein Pandas-DataFrame
-Um ein DataSet zu untersuchen und zu bearbeiten, muss es aus der Blobquelle in eine lokale Datei heruntergeladen werden, die anschließend in ein Pandas-DataFrame geladen werden kann. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:
+Um einen Datensatz zu erforschen und zu ändern, laden Sie ihn aus der Blobquelle in eine lokale Datei herunter. Laden Sie ihn dann in ein Pandas-DataFrame. Nachfolgend sehen Sie für dieses Verfahren erforderlichen Schritte:
 
-1. Laden Sie die Daten mithilfe des Blobdiensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im Code durch die für Ihre Umgebung geltenden Werte:
+1. Laden Sie die Daten mithilfe des Blobdiensts und folgenden Python-Beispielcodes aus dem Azure-Blob herunter. Ersetzen Sie die Variablen im folgenden Code durch die für Ihre Umgebung geltenden Werte:
    
         from azure.storage.blob import BlobService
         import tables
@@ -93,8 +93,8 @@ Zum Generieren von klassifizierten Funktionen gehen Sie wie folgt vor:
    
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)
 
-## <a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob und Verwenden in Azure Machine Learning
-Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt haben, können Sie die Daten (als Stichproben oder über Funktionen) mithilfe der folgenden Schritte in ein Azure-Blob hochladen und in Azure Machine Learning verwenden. Beachten Sie, dass in Azure Machine Learning Studio ebenfalls weitere Funktionen erstellt werden können.
+## <a name="sql-featuregen"></a>Zurückschreiben von Daten in das Azure-Blob zur Verwendung in Azure Machine Learning
+Um die Daten in Azure Machine Learning zu verwenden, die Sie untersucht, mit Features versehen oder für die Sie das Sampling durchgeführt haben, laden Sie die Daten in ein Azure-Blob hoch. Zusätzliche Features können auch im Azure Machine Learning Studio erstellt werden. Die folgenden Schritte veranschaulichen das Hochladen der Daten:
 
 1. Schreiben Sie den DataFrame in eine lokale Datei:
    
@@ -120,7 +120,7 @@ Nachdem Sie die Daten untersucht und die erforderlichen Funktionen erstellt habe
    
         except:            
             print ("Something went wrong with uploading blob:"+BLOBNAME)
-3. Die Daten können nun wie im folgenden Screenshot gezeigt mit dem [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) -Modul von Azure Machine Learning aus dem Blob gelesen werden:
+3. Die Daten können nun wie im folgenden Screenshot gezeigt mit dem Modul [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) von Azure Machine Learning aus dem Blob gelesen werden:
 
 ![Reader-Blob](./media/data-blob/reader_blob.png)
 

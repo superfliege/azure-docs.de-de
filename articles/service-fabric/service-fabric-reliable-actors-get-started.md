@@ -12,139 +12,160 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 11/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 7e24cb902cb3f863931fc0be5e0f178707e806b6
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: eb076c30eda63c37a8b555d40d5903cbbf0d426a
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]
 > * [C# unter Windows](service-fabric-reliable-actors-get-started.md)
 > * [Java unter Linux](service-fabric-reliable-actors-get-started-java.md)
-> 
-> 
 
-Dieser Artikel erläutert die Grundlagen von Azure Service Fabric Reliable Actors und führt Sie durch das Erstellen, Debuggen und Bereitstellen einer einfachen Reliable Actors-Anwendung in Visual Studio.
+Dieser Artikel führt Sie durch das Erstellen und Debuggen einer einfachen Reliable Actor-Anwendung in Visual Studio. Weitere Informationen zu Reliable Actors finden Sie unter [Einführung in Service Fabric Reliable Actors](service-fabric-reliable-actors-introduction.md).
 
-## <a name="installation-and-setup"></a>Installation und Setup
-Bevor Sie beginnen, vergewissern Sie sich, dass sich das Setup der Entwicklungsumgebung von Service Fabric auf Ihrem Computer befindet.
-Wenn Sie die Umgebung einrichten müssen, finden Sie ausführliche Anweisungen unter [Einrichten der Entwicklungsumgebung](service-fabric-get-started.md).
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="basic-concepts"></a>Grundlegende Konzepte
-Für den Einstieg in Reliable Actors müssen Sie sich nur mit einigen grundlegenden Konzepten vertraut machen:
-
-* **Actor-Dienst**. Reliable Actors sind in Reliable Services gepackt, die in der Service Fabric-Infrastruktur bereitgestellt werden können. Actor-Instanzen werden in einer benannten Dienstinstanz aktiviert.
-* **Actor-Registrierung**. Wie bei Reliable Services muss ein Reliable Actor-Dienst bei der Service Fabric-Laufzeit registriert werden. Außerdem muss der Actor-Typ bei der Actor-Laufzeit registriert werden.
-* **Actor-Schnittstelle**. Die Actor-Schnittstelle wird zum Definieren einer stark typisierten öffentlichen Schnittstelle eines Actors verwendet. In der Terminologie von Reliable Actor-Modellen definiert die Actor-Schnittstelle die Nachrichtentypen, die der Actor verstehen und verarbeiten kann. Die Actor-Schnittstelle wird von anderen Actors oder von Clientanwendungen zum (asynchronen) „Senden“ von Nachrichten an den Actor verwendet. Reliable Actors können mehrere Schnittstellen implementieren.
-* **ActorProxy-Klasse**. Die ActorProxy-Klasse dient Clientanwendungen zum Aufrufen der Methoden, die über die Actor-Schnittstelle verfügbar gemacht werden. Die ActorProxy-Klasse bietet zwei wichtige Funktionen:
-  
-  * Namensauflösung: Kann zum Lokalisieren des Actors im Cluster verwendet werden (den Knoten des Clusters suchen, auf dem er gehostet wird).
-  * Fehlerbehandlung: Kann Methodenaufrufe erneut versuchen und den Actor-Speicherort erneut auflösen, z.B. nach einem Fehler, der erfordert, dass der Actor auf einen anderen Knoten im Cluster verschoben wird.
-
-Die folgenden Regeln zu Actor-Schnittstellen sind erwähnenswert:
-
-* Actor-Schnittstellenmethoden können nicht überladen werden.
-* Actor-Schnittstellenmethoden dürfen keine out-, ref- oder optionalen Parameter aufweisen.
-* Generische Schnittstellen werden nicht unterstützt.
+Bevor Sie beginnen, vergewissern Sie sich, dass sich das Setup der Entwicklungsumgebung, einschließlich Visual Studio, von Service Fabric auf Ihrem Computer befindet. Weitere Informationen finden Sie unter [Einrichten der Entwicklungsumgebung](service-fabric-get-started.md).
 
 ## <a name="create-a-new-project-in-visual-studio"></a>Erstellen eines neuen Projekts in Visual Studio
-Starten Sie Visual Studio 2015 oder Visual Studio 2017 als Administrator, und erstellen Sie ein neues Projekt mit einer Service Fabric-Anwendung:
+
+Starten Sie Visual Studio 2015 oder höher als Administrator, und erstellen Sie ein neues Projekt mit einer **Service Fabric-Anwendung**:
 
 ![Service Fabric-Tools für Visual Studio – Neues Projekt][1]
 
-Im nächsten Dialogfeld können Sie den Typ des Projekts auswählen, das Sie erstellen möchten.
+Wählen Sie im nächsten Dialogfeld **Actordienst** aus, und geben Sie einen Namen für den Dienst ein.
 
 ![Service Fabric-Projektvorlagen][5]
 
-Für das HelloWorld-Projekt wird der Service Fabric Reliable Actors-Dienst verwendet.
-
-Nachdem die Projektmappe erstellt wurde, sollte die folgende Struktur angezeigt werden:
+Das erstellte Projekt weist die folgende Struktur auf:
 
 ![Service Fabric-Projektstruktur][2]
 
-## <a name="reliable-actors-basic-building-blocks"></a>Grundlegende Bausteine von Reliable Actors
-Eine typische Reliable Actors-Projektmappe besteht aus drei Projekten:
+## <a name="examine-the-solution"></a>Untersuchen der Lösung
 
-* **Das Anwendungsprojekt (MyActorApplication)**. Dies ist das Projekt, das alle Dienste für die Bereitstellung zusammenfasst. Es enthält die Datei *ApplicationManifest.xml* und PowerShell-Skripts zum Verwalten der Anwendung.
-* **Das Schnittstellenprojekt (MyActor.Interfaces)**. Dies ist das Projekt, das die Schnittstellendefinition für den Actor enthält. Im Projekt „MyActor.Interfaces“ können Sie die Schnittstellen definieren, die von den Actors in der Lösung verwendet werden. Ihre Actor-Schnittstellen können in jedem beliebigen Projekt mit jedem beliebigen Namen definiert werden. Jedoch definiert die Schnittstelle den Actor-Vertrag, der von der Actor-Implementierung und den den Actor aufrufenden Clients gemeinsam verwendet wird. In der Regel ist es also sinnvoll, diesen in einer Assembly zu definieren, die getrennt ist von der Actor-Implementierung und die von mehreren anderen Projekten gemeinsam verwendet werden kann.
+Die Lösung enthält drei Projekte:
+
+* **Das Anwendungsprojekt (MyApplication)**. Dieses Projekt fasst alle Dienste für die Bereitstellung zusammen. Es enthält die Datei *ApplicationManifest.xml* und PowerShell-Skripts zum Verwalten der Anwendung.
+
+* **Das Schnittstellenprojekt (HelloWorld.Interfaces)**. Diese Projekt enthält die Schnittstellendefinition für den Actor. Actorschnittstellen können in jedem Projekt mit einem beliebigen Namen definiert werden.  Die Schnittstelle definiert den Actorvertrag. Dieser wird von der Actorimplementierung und den Clients, die den Actor aufrufen, gemeinsam genutzt.  Da Clientprojekte davon abhängig sein können, ist es in der Regel sinnvoll, ihn in einer Assembly zu definieren, die von der Actorimplementierung getrennt ist.
+
+* **Das Actordienst-Projekt (HelloWorld)**. Dieses Projekt definiert den Service Fabric-Dienst zum Hosten des Actors. Es enthält die Implementierung des Actors, *HellowWorld.cs*. Eine Actorimplementierung ist eine Klasse, die vom Basistyp `Actor` abstammt und die im Projekt *MyActor.Interfaces* definierten Schnittstellen implementiert. Eine Actor-Klasse muss auch einen Konstruktor implementieren, der eine `ActorService`-Instanz und eine `ActorId` akzeptiert und diese an die `Actor`-Basisklasse übergibt.
+    
+    Dieses Projekt enthält außerdem die Datei *Program.cs*, mit der Actor-Klassen mit der Service Fabric-Laufzeit mithilfe von `ActorRuntime.RegisterActorAsync<T>()` registriert werden. Die `HelloWorld`-Klasse ist bereits registriert. Alle zusätzlichen Actorimplementierungen, die dem Projekt hinzugefügt werden, müssen auch in der `Main()`-Methode registriert werden.
+
+## <a name="customize-the-helloworld-actor"></a>Anpassen des HelloWorld-Actors
+
+Die Projektvorlage definiert einige Methoden in der `IHelloWorld`-Schnittstelle und implementiert sie in der `HelloWorld`-Actorimplementierung.  Ersetzen Sie diese Methoden, damit der Actordienst eine einfache „Hello World“-Zeichenfolge zurückgibt.
+
+Ersetzen Sie im Projekt *HelloWorld.Interfaces* in der Datei *IHelloWorld.cs* die Schnittstellendefinition wie folgt:
 
 ```csharp
-public interface IMyActor : IActor
+public interface IHelloWorld : IActor
 {
-    Task<string> HelloWorld();
+    Task<string> GetHelloWorldAsync();
 }
 ```
 
-* **Das Actordienst-Projekt (MyActor)**. Dies ist das Projekt, mit dem der Service Fabric-Dienst zum Hosten des Actors definiert wird. Es enthält die Implementierung des Actors. Eine Actor-Implementierung ist eine Klasse, die vom Basistyp `Actor` abstammt und die im Projekt „MyActor.Interfaces“ definierte(n) Schnittstelle(n) implementiert. Eine Actor-Klasse muss auch einen Konstruktor implementieren, der eine `ActorService`-Instanz und eine `ActorId` akzeptiert und diese an die `Actor`-Basisklasse übergibt. Dies ermöglicht eine Injektion von Konstruktorabhängigkeit von Plattformabhängigkeiten.
+Ersetzen Sie im Projekt **HelloWorld** in der Datei **HelloWorld.cs** die gesamte Klassendefinition wie folgt:
 
 ```csharp
 [StatePersistence(StatePersistence.Persisted)]
-class MyActor : Actor, IMyActor
+internal class HelloWorld : Actor, IHelloWorld
 {
-    public MyActor(ActorService actorService, ActorId actorId)
+    public HelloWorld(ActorService actorService, ActorId actorId)
         : base(actorService, actorId)
     {
     }
 
-    public Task<string> HelloWorld()
+    public Task<string> GetHelloWorldAsync()
     {
-        return Task.FromResult("Hello world!");
+        return Task.FromResult("Hello from my reliable actor!");
     }
 }
 ```
 
-Der Actordienst muss mit einem Diensttyp in der Service Fabric-Laufzeit registriert sein. Damit der Actordienst Ihre Actor-Instanzen ausführen kann, muss auch Ihr Actortyp mit dem Actordienst registriert sein. Die `ActorRuntime` -Registrierungsmethode führt dies für Actors aus.
+Drücken Sie **STRG+UMSCHALT+B**, um das Projekt zu erstellen. Stellen Sie sicher, dass alles kompiliert wird.
 
-```csharp
-internal static class Program
-{
-    private static void Main()
+## <a name="add-a-client"></a>Hinzufügen eines Clients
+
+Erstellen Sie eine einfache Konsolenanwendung zum Aufrufen des Actordiensts.
+
+1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf die Projektmappe, und wählen Sie dann **Hinzufügen** > **Neues Projekt...** aus.
+
+2. Wählen Sie unter den **.NET Core**-Projekttypen die Option **Konsolenanwendung (.NET Core)** aus.  Geben Sie dem Projekt den Namen *ActorClient*.
+    
+    ![Hinzufügen des Dialogfelds „Neues Projekt“][6]    
+    
+    > [!NOTE]
+    > Eine Konsolenanwendung ist nicht die Art von Anwendung, die Sie normalerweise als Client in Service Fabric verwenden würden, aber sie ist ein praktisches Beispiel für das Debuggen und Testen mit dem lokalen Service Fabric-Emulator.
+
+3. Die Konsolenanwendung muss eine 64-Bit-Anwendung sein, um die Kompatibilität mit dem Schnittstellenprojekt und anderen Abhängigkeiten aufrechtzuerhalten.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ActorClient**, und klicken Sie anschließend auf **Eigenschaften**.  Legen Sie auf der Registerkarte **Erstellen** für die Option **Zielplattform** den Wert **x64** fest.
+    
+    ![Buildeigenschaften][8]
+
+4. Das Clientprojekt erfordert das zuverlässige NuGet-Paket „Actors“.  Klicken Sie auf **Tools** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.  Geben Sie in der Paket-Manager-Konsole den folgenden Befehl ein:
+    
+    ```powershell
+    Install-Package Microsoft.ServiceFabric.Actors -IncludePrerelease -ProjectName ActorClient
+    ```
+
+    Das NuGet-Paket und alle abhängigen Elemente werden im Projekt „ActorClient“ installiert.
+
+5. Das Clientprojekt erfordert auch einen Verweis auf das Schnittstellenprojekt.  Klicken Sie im Projekt „ActorClient“ mit der rechten Maustaste auf **Abhängigkeiten**, und klicken Sie dann auf **Verweis hinzufügen...**.  Wählen Sie **Projekte > Projektmappe** aus (sofern nicht bereits ausgewählt), und aktivieren Sie dann das Kontrollkästchen neben **HelloWorld.Interfaces**.  Klicken Sie auf **OK**.
+    
+    ![Dialogfeld „Verweis hinzufügen“][7]
+
+6. Ersetzen Sie im Projekt „ActorClient“ den gesamten Inhalt von *Program.cs* durch den folgenden Code:
+    
+    ```csharp
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.ServiceFabric.Actors;
+    using Microsoft.ServiceFabric.Actors.Client;
+    using HelloWorld.Interfaces;
+    
+    namespace ActorClient
     {
-        try
+        class Program
         {
-            ActorRuntime.RegisterActorAsync<MyActor>(
-                (context, actorType) => new ActorService(context, actorType, () => new MyActor())).GetAwaiter().GetResult();
-
-            Thread.Sleep(Timeout.Infinite);
-        }
-        catch (Exception e)
-        {
-            ActorEventSource.Current.ActorHostInitializationFailed(e.ToString());
-            throw;
+            static void Main(string[] args)
+            {
+                IHelloWorld actor = ActorProxy.Create<IHelloWorld>(ActorId.CreateRandom(), new Uri("fabric:/MyApplication/HelloWorldActorService"));
+                Task<string> retval = actor.GetHelloWorldAsync();
+                Console.Write(retval.Result);
+                Console.ReadLine();
+            }
         }
     }
-}
+    ```
 
-```
+## <a name="running-and-debugging"></a>Ausführen und Debuggen
 
-Wenn Sie ein neues Projekt in Visual Studio beginnen und nur eine Actor-Definition haben, wird die Registrierung standardmäßig in den von Visual Studio generierten Code eingefügt. Wenn Sie in dem Dienst weitere Actors definieren, müssen Sie die Actor-Registrierung folgendermaßen hinzufügen:
+Drücken Sie **F5**, um die Anwendung lokal im Service Fabric-Entwicklungscluster zu erstellen, bereitzustellen und auszuführen.  Während der Bereitstellung wird der Fortschritt im Fenster **Ausgabe** angezeigt.
 
-```csharp
- ActorRuntime.RegisterActorAsync<MyOtherActor>();
+![Service Fabric-Debugging – Ausgabefenster][3]
 
-```
+Wenn die Ausgabe den Text *Die Anwendung ist fertig* enthält, kann der Dienst mithilfe der Anwendung „ActorClient“ getestet werden.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ActorClient**, und klicken Sie anschließend auf **Debuggen** > **Neue Instanz starten**  Die Befehlszeilenanwendung sollte die Ausgabe des Actordiensts anzeigen.
+
+![Anwendungsausgabe][9]
 
 > [!TIP]
 > Die Service Fabric Actors-Laufzeit gibt einige [Ereignisse und Leistungsindikatoren im Zusammenhang mit Actor-Methoden](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)aus. Sie sind hilfreich bei der Diagnose und Leistungsüberwachung.
-> 
-> 
-
-## <a name="debugging"></a>Debuggen
-Die Service Fabric-Tools für Visual Studio unterstützen das Debuggen auf dem lokalen Computer. Sie können eine Debugsitzung starten, indem Sie F5 drücken. Visual Studio erstellt Pakete (falls erforderlich). Es stellt außerdem die Anwendung auf dem lokalen Service Fabric-Cluster bereit und fügt den Debugger an.
-
-Während der Bereitstellung wird der Fortschritt im Fenster **Ausgabe** angezeigt.
-
-![Service Fabric-Debugging – Ausgabefenster][3]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr darüber, [wie Reliable Actors die Service Fabric-Plattform verwenden](service-fabric-reliable-actors-platform.md).
 
-<!--Image references-->
+
 [1]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject.PNG
 [2]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-projectstructure.PNG
 [3]: ./media/service-fabric-reliable-actors-get-started/debugging-output.PNG
 [4]: ./media/service-fabric-reliable-actors-get-started/vs-context-menu.png
 [5]: ./media/service-fabric-reliable-actors-get-started/reliable-actors-newproject1.PNG
+[6]: ./media/service-fabric-reliable-actors-get-started/new-console-app.png
+[7]: ./media/service-fabric-reliable-actors-get-started/add-reference.png
+[8]: ./media/service-fabric-reliable-actors-get-started/build-props.png
+[9]: ./media/service-fabric-reliable-actors-get-started/app-output.png

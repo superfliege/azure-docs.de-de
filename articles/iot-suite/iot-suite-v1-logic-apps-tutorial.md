@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
-ms.openlocfilehash: f4457b44c97fadc58406430fc0f31b3e0bac6682
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4a1db86f4b715533dfea545365eaf66de0574c5e
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="tutorial-connect-logic-app-to-your-azure-iot-suite-remote-monitoring-preconfigured-solution"></a>Tutorial: Verbinden einer Logik-App mit der vorkonfigurierten Remoteüberwachungslösung von Azure IoT Suite
 Die vorkonfigurierte Remoteüberwachungslösung von [Microsoft Azure IoT Suite][lnk-internetofthings] eignet sich besonders gut für die ersten Schritte mit einem lückenlosen Featuresatz zum Veranschaulichen einer IoT-Lösung. In diesem Tutorial wird erläutert, wie Sie Ihrer vorkonfigurierten Remoteüberwachungslösung von Microsoft Azure IoT Suite eine Logik-App hinzufügen. Diese Schritte veranschaulichen, wie Sie mit Ihrer IoT-Lösung noch mehr erreichen können, indem Sie sie mit einem Geschäftsprozess verbinden.
@@ -33,7 +33,7 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie zunächst:
 
 Zum Abschließen dieses Tutorials benötigen Sie Visual Studio 2015 oder Visual Studio 2017, damit Sie Aktionen im Back-End der vorkonfigurierten Lösung ändern können.
 
-Wenn Sie Ihre vorkonfigurierte Remoteüberwachungslösung bereits bereitgestellt haben, navigieren Sie im [Azure-Portal][lnk-azureportal] zur Ressourcengruppe dieser Lösung. Die Ressourcengruppe hat den gleichen Namen wie die Lösung, den Sie gewählt haben, als Sie Ihre Remoteüberwachungslösung bereitgestellt haben. In der Ressourcengruppe finden Sie alle bereitgestellten Azure-Ressourcen für Ihre Lösung mit Ausnahme der Azure Active Directory-Anwendung, die Sie im klassischen Azure-Portal finden. Der folgende Screenshot zeigt ein Beispiel des Blatts **Ressourcengruppe** für eine vorkonfigurierte Remoteüberwachungslösung:
+Wenn Sie Ihre vorkonfigurierte Remoteüberwachungslösung bereits bereitgestellt haben, navigieren Sie im [Azure-Portal][lnk-azureportal] zur Ressourcengruppe dieser Lösung. Die Ressourcengruppe hat den gleichen Namen wie die Lösung, den Sie gewählt haben, als Sie Ihre Remoteüberwachungslösung bereitgestellt haben. In der Ressourcengruppe können Sie alle für Ihre Lösung bereitgestellten Azure-Ressourcen sehen. Der folgende Screenshot zeigt ein Beispiel des Blatts **Ressourcengruppe** für eine vorkonfigurierte Remoteüberwachungslösung:
 
 ![](media/iot-suite-v1-logic-apps-tutorial/resourcegroup.png)
 

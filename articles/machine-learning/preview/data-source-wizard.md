@@ -7,11 +7,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: bed026e8f75618403efa3eed475371d1d2746bc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a0b014fe57f3e9d2ceeac94f3570353a9a07b27
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="data-source-wizard"></a>Datenquellen-Assistent #
 
@@ -29,7 +29,7 @@ Geben Sie zunächst an, um welche Daten es sich handelt. Es kann sich um eine Fl
 ![Schritt 1](media/data-source-wizard/step1.png)
 
 ## <a name="step-3-select-data-file"></a>Schritt 3: Auswählen einer Datendatei ##
-Geben Sie den Dateipfad einer Datei bzw. eines Verzeichnisses an. Wählen Sie in der Dropdownliste den Speicherort der Daten aus – nämlich einen lokalen Pfad, Azure Blob Storage oder Azure Data Lake. 
+Geben Sie den Dateipfad einer Datei bzw. eines Verzeichnisses an. Wählen Sie in der Dropdownliste den Speicherort der Daten aus – einen lokalen Pfad oder Azure Blob Storage. 
 
 Geben Sie den Pfad an, indem Sie ihn eingeben oder auf die Schaltfläche **Durchsuchen...** klicken, um zum jeweiligen Speicherort zu navigieren. Sie können zu einem Verzeichnis oder einer bzw. mehreren Dateien navigieren.
 

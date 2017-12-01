@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 7068d6e83d196d95b4625d1b1a496be5a22c88a0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d0b4ff1959465ade5f57c045d2a005e828638eb2
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten
 In Service Fabric wird ein Dienst an irgendeinem Ort in einem Service Fabric-Cluster ausgeführt, der sich in der Regel auf mehreren virtuellen Computern befindet. Er kann entweder vom Dienstbesitzer oder automatisch von Service Fabric von einem Standort an einen anderen verschoben werden. Dienste sind nicht statisch an einen bestimmten Computer oder eine bestimmte Adresse gefunden.
@@ -63,7 +63,7 @@ Wie im folgenden Diagramm dargestellt, ordnet der im Service Fabric-Cluster ausg
 Weitere Informationen zur Verwendung des DNS-Diensts finden Sie im Artikel [DNS-Dienst in Azure Service Fabric](service-fabric-dnsservice.md).
 
 ### <a name="reverse-proxy-service"></a>Reverseproxydienst
-Der Reverseproxy adressiert Dienste im Cluster, die HTTP-Endpunkte (einschließlich HTTPS) verfügbar machen. Der Reverseproxy vereinfacht das Aufrufen anderer Dienste und deren Methoden durch Verwendung eines bestimmten URI-Formats erheblich und verarbeitet die Schritte Auflösen, Verbinden und Wiederholen, die erforderlich sind, damit ein Dienst mit einem anderen unter Verwendung des Naming Serivce kommunizieren kann. Mit anderen Worten: Der Naming Service wird beim Aufrufen anderer Dienste vor Ihnen verborgen, indem der Vorgang auf das Aufrufen einer URL vereinfacht wird.
+Der Reverseproxy adressiert Dienste im Cluster, die HTTP-Endpunkte (einschließlich HTTPS) verfügbar machen. Der Reverseproxy vereinfacht das Aufrufen anderer Dienste und deren Methoden durch Verwendung eines bestimmten URI-Formats erheblich und verarbeitet die Schritte Auflösen, Verbinden und Wiederholen, die erforderlich sind, damit ein Dienst mit einem anderen unter Verwendung des Naming Service kommunizieren kann. Mit anderen Worten: Der Naming Service wird beim Aufrufen anderer Dienste vor Ihnen verborgen, indem der Vorgang auf das Aufrufen einer URL vereinfacht wird.
 
 ![Dienstendpunkte][10]
 

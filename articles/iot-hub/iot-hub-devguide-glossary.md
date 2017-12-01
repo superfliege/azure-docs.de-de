@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: c2c95373912131445b584fa8518785b26caa9c02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a780461bb934b4766f8050fba825e1d7503f4fd
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -37,7 +37,7 @@ Die [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) ist ei
 Es sind _Geräte-SDKs_ für mehrere Sprachen verfügbar, mit denen Sie [Geräte-Apps](#device-app) erstellen können, die mit IoT Hub interagieren. In den IoT Hub-Tutorials wird veranschaulicht, wie Sie diese Geräte-SDKs verwenden. Den Quellcode und weitere Informationen zu den Geräte-SDKs finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-sdks).
 
 ## <a name="azure-iot-edge"></a>Azure IoT Edge
-Mit IoT Edge können Sie Anwendungen schreiben, anhand derer Geräte mit Gatewayverbindung mit [IoT Hub](#iot-hub) kommunizieren können. In den IoT Edge-Tutorials wird veranschaulicht, wie Sie diesen Dienst verwenden. Den Quellcode und weitere Informationen zu Azure IoT Edge finden Sie in [diesem GitHub-Repository](https://github.com/Azure/iot-edge).
+Azure IoT Edge verschiebt Cloudanalysen und benutzerdefinierte Geschäftslogik auf Geräte, damit sich Ihre Organisation auf geschäftliche Erkenntnisse konzentrieren kann und sich nicht mit der Datenverwaltung befassen muss. Ermöglichen Sie für Ihre Lösung das richtige Skalieren, indem Sie Ihre IoT-Software konfigurieren und auf Geräten über Standardcontainer bereitstellen und alles über die Cloud überwachen. Steigen Sie mit einem Tutorial ein, in dem Sie erfahren, wie Azure IoT Edge auf [Linux-](../iot-edge/tutorial-simulate-device-linux.md) oder [Windows-](../iot-edge/tutorial-simulate-device-windows.md)Geräten installiert wird.
 
 ## <a name="azure-iot-service-sdks"></a>Azure IoT-Dienst-SDKs
 Es sind _Dienst-SDKs_ für mehrere Sprachen verfügbar, mit denen Sie [Back-End-Apps](#back-end-app) erstellen können, die mit IoT Hub interagieren. In den IoT Hub-Tutorials wird veranschaulicht, wie Sie diese Dienst-SDKs verwenden. Den Quellcode und weitere Informationen zu den Dienst-SDKs finden Sie in [diesem GitHub-Repository](https://github.com/Azure/azure-iot-sdks).
@@ -189,7 +189,7 @@ Ihr Lösungs-Back-End kann mithilfe von [Aufträgen](iot-hub-devguide-jobs.md) A
 Die [Aufträge-REST-API](https://docs.microsoft.com/rest/api/iothub/jobapi) ermöglicht die Verwaltung von [Aufträgen](#job), die in Ihrer IoT Hub-Instanz ausgeführt werden.
 
 ## <a name="module"></a>Modul
-In [Azure IoT Edge](iot-hub-linux-iot-edge-get-started.md) ist ein [Modul](iot-hub-linux-iot-edge-get-started.md) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Azure IoT Edge enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.
+In [Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md) ist ein [Modul](../iot-edge/iot-edge-modules.md) eine Komponente, die eine bestimmte Aufgabe durchführt. Beispiele für eine Aufgabe sind das Erfassen einer Nachricht von einem Gerät, das Transformieren einer Nachricht oder das Senden einer Nachricht an IoT Hub. Ein Broker ist für das Weiterleiten von Nachrichten zwischen Modulen zuständig. Azure IoT Edge enthält einen Satz mit Beispielmodulen. Sie können auch Ihre eigenen benutzerdefinierten Module erstellen.
 
 ## <a name="mqtt"></a>MQTT
 [MQTT](http://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).

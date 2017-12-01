@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 2d4d009dfc4d43ccc3c69bb3da15ca2c478b9efe
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0323b0f7ee03dce209d5a71c6711988a34ba7633
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-and-register-soap-connectors-in-azure-logic-apps"></a>Erstellen und Registrieren von SOAP-Connectors in Azure Logic Apps
 
@@ -149,6 +149,12 @@ Registrierte, aber nicht zertifizierte benutzerdefinierte Connectors funktionier
 Um Ihren Connector für externe Benutzer außerhalb dieser Grenzen freizugeben, z.B. für alle Benutzer von Logic Apps, [reichen Sie Ihren Connector für die Microsoft-Zertifizierung ein](../logic-apps/custom-connector-submit-certification.md).
 
 ## <a name="faq"></a>Häufig gestellte Fragen
+
+**F:** Ist der SOAP-Connector allgemein verfügbar (GA)? </br>
+**A:** Der SOAP-Connector befindet sich in der **Vorschau** und ist noch kein allgemein verfügbarer Dienst.
+
+**F:** Bestehen beim SOAP-Connector Einschränkungen und bekannte Probleme? </br>
+**A:** Informationen finden Sie unter [SOAP-Connector – Einschränkungen und bekannte Probleme](../api-management/api-management-api-import-restrictions.md#wsdl).
 
 **F:** Gelten Grenzwerte für benutzerdefinierte Connectors? </br>
 **A:** Siehe [die hier angegebenen Grenzwerte für benutzerdefinierte Connectors](../logic-apps/logic-apps-limits-and-config.md#custom-connector-limits).

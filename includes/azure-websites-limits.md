@@ -18,7 +18,7 @@
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |
 | Integrierter Lastenausgleich | |X |X |X |X |
 | [Immer aktiviert](../articles/app-service/web-sites-configure.md) | | |X |X |X |
-| [Geplante Sicherungen](../articles/app-service/web-sites-backup.md) | | | |Einmal pro Tag |Alle 5 Minuten<sup>8</sup> |
+| [Geplante Sicherungen](../articles/app-service/web-sites-backup.md) | | | |12 pro Tag |Alle 5 Minuten<sup>8</sup> |
 | [Automatische Skalierung](../articles/app-service/web-sites-scale.md) | | | |X |X |
 | [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) -Unterstützung: | |X |X |X |X |

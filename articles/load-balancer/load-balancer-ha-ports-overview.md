@@ -15,76 +15,75 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: e72fc0d4323f7a2d203fee66311c3fea10ad7a09
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 7a77e6ecbf59944c62aa4ae014bf5b8a5a7f7f1f
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/17/2017
 ---
-# <a name="high-availability-ports-overview-preview"></a>Übersicht über Hochverfügbarkeitsports (Vorschauversion)
+# <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
-Mit Azure Load Balancer Standard wird eine neue Funktion für den gleichzeitigen Lastenausgleich von TCP- und UDP-Datenflüssen an allen Ports eingeführt, wenn ein interner Lastenausgleich verwendet wird. 
+Azure Load Balancer Standard unterstützt Sie beim gleichzeitigen Lastenausgleich von TCP- und UDP-Datenflüssen an allen Ports, wenn Sie einen internen Load Balancer verwenden. 
 
 >[!NOTE]
-> Das Feature für Hochverfügbarkeitsports ist derzeit als Vorschauversion mit Load Balancer Standard verfügbar. Während der Vorschauphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Damit Sie Hochverfügbarkeitsports mit Load Balancer Standard-Ressourcen verwenden können, müssen Sie sich für die Load Balancer Standard-Vorschauversion registrieren. Befolgen Sie zusätzlich zur Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) die Hinweise zur Registrierung.
+> Das Feature für Hochverfügbarkeitsports (HA) ist derzeit als Vorschauversion mit Load Balancer Standard verfügbar. Während der Previewphase weist das Feature unter Umständen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie Features in Releases mit allgemeiner Verfügbarkeit auf. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Registrieren Sie sich für die Load Balancer Standard-Vorschauversion, damit Sie Hochverfügbarkeitsports mit Load Balancer Standard-Ressourcen verwenden können. Befolgen Sie auch die Hinweise zur Registrierung für die Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up).
 
-Eine Regel für Hochverfügbarkeitsports ist eine Variante einer Lastenausgleichsregel, die für eine interne Load Balancer Standard-Instanz konfiguriert wurde.  Szenarien werden durch die Bereitstellung einer einzelnen Lastenausgleichsregel für den Lastenausgleich aller TCP- und UDP-Datenflüsse, die an allen Ports eines internen Load Balancer Standard-Front-Ends eingehen, vereinfacht. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss basierend auf dem fünfteiligen Tupel aus Quell-IP-Adresse, Quellport, Ziel-IP-Adresse, Ziel-Port und Protokoll.
+Eine Regel für Hochverfügbarkeitsports ist eine Variante einer Lastenausgleichsregel, die für eine interne Load Balancer Standard-Instanz konfiguriert wurde. Sie können Ihre Verwendung von Load Balancer vereinfachen, indem Sie eine einzelne Lastenausgleichsregel für den Lastenausgleich aller TCP- und UDP-Datenflüsse bereitstellen, die an allen Ports eines internen Load Balancer Standard eingehen. Die Entscheidung über den Lastenausgleich erfolgt pro Datenfluss. Dies basiert auf der folgenden Verbindung, die sich aus einem fünfteiligen Tupel zusammensetzt: Quell-IP-Adresse, Quellport, Ziel-IP-Adresse, Zielport und Protokoll.
 
-Hochverfügbarkeitsports ermöglichen kritische Szenarien wie Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) in virtuellen Netzwerken sowie andere Szenarien, in denen für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss. 
+Das Feature für Hochverfügbarkeitsports unterstützt Sie bei wichtigen Szenarien, z. B. Hochverfügbarkeit und Skalierung für virtuelle Netzwerkgeräte in virtuellen Netzwerken. Es kann auch hilfreich sein, wenn für eine große Anzahl von Ports ein Lastenausgleich vorgenommen werden muss. 
 
-Hochverfügbarkeitsports werden durch Festlegen der Front-End- und Back-End-Ports auf **0** und des Protokolls auf **Alle** konfiguriert.  Die interne Ressource für den Lastenausgleich nimmt nun für alle TCP- und UDP-Datenflüsse unabhängig von der Portnummer einen Lastenausgleich vor.
+Das Feature für Hochverfügbarkeitsports ist konfiguriert, wenn Sie für die Front-End- und Back-End-Ports **0** und für das Protokoll **Alle** festlegen. Die interne Load Balancer-Ressource nimmt dann für alle TCP- und UDP-Datenflüsse unabhängig von der Portnummer einen Lastenausgleich vor.
 
 ## <a name="why-use-ha-ports"></a>Gründe für die Verwendung von Hochverfügbarkeitsports
 
 ### <a name="nva"></a>Virtuelle Netzwerkgeräte
 
-Sie können virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) verwenden, um Ihre Azure-Workload vor verschiedenen Typen von Sicherheitsrisiken zu schützen. Wenn NVAs in diesen Szenarien verwendet werden, müssen sie zuverlässig, hochverfügbar und bedarfsgerecht horizontal hochskalierbar sein.
+Sie können virtuelle Netzwerkgeräte (Network Virtual Appliances, NVAs) verwenden, um Ihre Azure-Workload vor verschiedenen Typen von Sicherheitsrisiken zu schützen. Wenn virtuelle Netzwerkgeräte in diesen Szenarien verwendet werden, müssen sie zuverlässig, hochverfügbar und bedarfsgerecht horizontal hochskalierbar sein.
 
-Sie können diese Ziele in Ihrem Szenario erreichen, indem Sie einfach NVA-Instanzen zum Back-End-Pool des internen Azure-Lastenausgleichsmoduls hinzufügen und eine Lastenausgleichsregel für Hochverfügbarkeitsports konfigurieren.
+Sie können diese Ziele erreichen, indem Sie einfach NVA-Instanzen zum Back-End-Pool des internen Azure Load Balancers hinzufügen und eine Lastenausgleichsregel für Hochverfügbarkeitsports konfigurieren.
 
 Hochverfügbarkeitsports bieten mehrere Vorteile für NVA-Hochverfügbarkeitsszenarien:
 - Schnelles Failover auf fehlerfreie Instanzen mit Integritätstests pro Instanz
-- Höhere Leistung mit horizontalem Hochskalieren auf n aktive Instanzen
-- Szenarien mit n aktiven sowie aktiven und passiven Instanzen
-- Komplexe Lösungen wie Zookeeper-Knoten für die Überwachung von Geräten werden überflüssig
+- Höhere Leistung mit horizontalem Hochskalieren auf *n* aktive Instanzen
+- Szenarien mit *n* aktiven sowie aktiven und passiven Instanzen
+- Komplexe Lösungen wie Apache ZooKeeper-Knoten für die Überwachung von Geräten werden überflüssig
 
-Im folgenden Beispiel wird eine Hub-and-Spoke-Bereitstellung eines virtuellen Netzwerks dargestellt. Die Spokes erzwingen dabei das Tunneln ihres Datenverkehrs an das virtuelle Hubnetzwerk und über das virtuelle Netzwerkgerät, bevor der vertrauenswürdige Bereich verlassen wird. Die virtuellen Netzwerkgeräte befinden sich hinter einer internen Load Balancer Standard-Instanz mit Konfiguration von Hochverfügbarkeitsports.  Der gesamte Datenverkehr kann entsprechend verarbeitet und weitergeleitet werden. 
+Das folgende Diagramm zeigt eine Nabe-zu-Speiche-Bereitstellung eines virtuellen Netzwerks. Die Speichen erzwingen das Tunneling für ihren Datenverkehr zum virtuellen Nabennetzwerk und über das virtuelle Netzwerkgerät, bevor der vertrauenswürdige Bereich verlassen wird. Die virtuellen Netzwerkgeräte befinden sich hinter einem internen Load Balancer Standard mit einer Konfiguration für die Hochverfügbarkeitsports. Der gesamte Datenverkehr kann entsprechend verarbeitet und weitergeleitet werden.
 
-![Beispiel für Hochverfügbarkeitsports](./media/load-balancer-ha-ports-overview/nvaha.png)
+![Diagramm eines virtuellen Nabe-zu-Speiche-Netzwerks mit virtuellen Netzwerkgeräten, die im Hochverfügbarkeitsmodus bereitgestellt wurden](./media/load-balancer-ha-ports-overview/nvaha.png)
 
-Abbildung 1: Ein virtuelles Hub-and-Spoke-Netzwerk mit NVAs, die im Hochverfügbarkeitsmodus bereitgestellt wurden
-
-Bei Verwendung von virtuellen Netzwerkgeräten überprüfen Sie beim jeweiligen Anbieter, wie Hochverfügbarkeitsports optimal genutzt und welche Szenarien unterstützt werden.
+>[!NOTE]
+> Bei Verwendung von virtuellen Netzwerkgeräten überprüfen Sie beim jeweiligen Anbieter, wie Hochverfügbarkeitsports optimal genutzt und welche Szenarien unterstützt werden.
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>Lastenausgleich für eine große Anzahl von Ports
 
-Sie können Hochverfügbarkeitsports auch für Anwendungsszenarien verwenden, in denen ein Lastenausgleich für eine große Anzahl von Ports erforderlich ist. Diese Szenarien können mithilfe einer internen [Load Balancer Standard](https://aka.ms/lbpreview)-Instanz mit Hochverfügbarkeitsports vereinfacht werden. Dabei ersetzt eine einzige Lastenausgleichsregel mehrere einzelne Lastenausgleichsregeln, eine für jeden Port.
+Sie können Hochverfügbarkeitsports auch für Anwendungen verwenden, in denen ein Lastenausgleich für eine große Anzahl von Ports erforderlich ist. Sie können diese Szenarien vereinfachen, indem Sie einen internen [Load Balancer Standard](https://aka.ms/lbpreview) mit Hochverfügbarkeitsports verwenden. Eine einzelne Lastenausgleichsregel ersetzt mehrere einzelne Lastenausgleichsregeln, die jeweils für einen Port verwendet wurden.
 
 ## <a name="region-availability"></a>Regionale Verfügbarkeit
 
-Hochverfügbarkeitsports sind in den [gleichen Regionen wie Load Balancer Standard verfügbar](https://aka.ms/lbpreview#region-availability).  
+Das Feature für Hochverfügbarkeitsports ist in den [gleichen Regionen wie Load Balancer Standard verfügbar](https://aka.ms/lbpreview#region-availability).  
 
 ## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
 
-Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in Load Balancer Standard registrieren Sie Ihr Abonnement mithilfe von Azure CLI 2.0 oder PowerShell, um Zugriff zu erhalten.  Führen Sie die folgenden drei Schritte aus:
+Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in Load Balancer Standard registrieren Sie Ihr Abonnement, um Zugriff zu erhalten. Sie können dazu entweder Azure CLI 2.0 oder PowerShell verwenden.
 
 >[!NOTE]
->Um dieses Feature verwenden zu können, müssen Sie sich zusätzlich zu Hochverfügbarkeitsports auch für die Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) registrieren. Die Registrierung für die Vorschauversion von Hochverfügbarkeitsports oder Load Balancer Standard kann bis zu einer Stunde dauern.
+>Um dieses Feature verwenden zu können, müssen Sie sich zusätzlich zum Feature für Hochverfügbarkeitsports auch für die Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) registrieren. Die Registrierung kann bis zu einer Stunde dauern.
 
-### <a name="sign-up-using-azure-cli-20"></a>Registrierung mithilfe von Azure CLI 2.0
+### <a name="sign-up-by-using-azure-cli-20"></a>Registrierung mithilfe von Azure CLI 2.0
 
-1. Registrieren des Features beim Anbieter
+1. Registrieren des Features beim Anbieter:
     ```cli
     az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network
     ```
     
-2. Dieser Vorgang kann bis zu 10 Minuten dauern.  Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
+2. Dieser Vorgang kann bis zu 10 Minuten dauern. Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
 
     ```cli
     az feature show --name AllowILBAllPortsRule --namespace Microsoft.Network
     ```
     
-    Fahren Sie mit Schritt 3 fort, wenn für die Featureregistrierung der Status „Registriert“ zurückgegeben wird, wie unten dargestellt:
+    Der Vorgang wurde erfolgreich ausgeführt, wenn als Status der Featureregistrierung **Registriert** zurückgegeben wird, wie unten dargestellt:
    
     ```json
     {
@@ -97,25 +96,25 @@ Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in
     }
     ```
     
-3. Schließen Sie die Registrierung für die Vorschauversion ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
+3. Schließen Sie die Registrierung für die Preview ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
 
     ```cli
     az provider register --namespace Microsoft.Network
     ```
     
-### <a name="sign-up-using-powershell"></a>Registrierung mithilfe von PowerShell
+### <a name="sign-up-by-using-powershell"></a>Registrierung mithilfe von PowerShell
 
-1. Registrieren des Features beim Anbieter
+1. Registrieren des Features beim Anbieter:
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
     ```
     
-2. Dieser Vorgang kann bis zu 10 Minuten dauern.  Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
+2. Dieser Vorgang kann bis zu 10 Minuten dauern. Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
     ```
-    Fahren Sie mit Schritt 3 fort, wenn für die Featureregistrierung der Status „Registriert“ zurückgegeben wird, wie unten dargestellt:
+    Der Vorgang wurde erfolgreich ausgeführt, wenn als Status der Featureregistrierung **Registriert** zurückgegeben wird, wie unten dargestellt:
    
     ```
     FeatureName          ProviderName      RegistrationState
@@ -123,7 +122,7 @@ Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in
     AllowILBAllPortsRule Microsoft.Network Registered
     ```
     
-3. Schließen Sie die Registrierung für die Vorschauversion ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
+3. Schließen Sie die Registrierung für die Preview ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
 
     ```powershell
     Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
@@ -132,14 +131,14 @@ Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in
 
 ## <a name="limitations"></a>Einschränkungen
 
-Hier finden Sie die unterstützten Konfigurationen oder Ausnahmen für Hochverfügbarkeitsports:
+Nachfolgend sind die unterstützten Konfigurationen oder Ausnahmen für das Feature für Hochverfügbarkeitsports aufgeführt:
 
-- Eine einzelne Front-End-IP-Konfiguration kann nur entweder eine einzelne DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports oder eine einzelne Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports enthalten, niemals beides gleichzeitig.
-- Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann nur eine Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports aufweisen. Für diese IP-Konfiguration können keine anderen Regeln konfiguriert werden.
-- Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann mindestens eine DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports haben, vorausgesetzt, dass alle ihre jeweiligen Front-End-IP-Konfigurationen eindeutig sind.
-- Wenn alle Lastenausgleichsregeln Hochverfügbarkeitsports (nur DSR) oder alle Regeln nur Nicht-Hochverfügbarkeitsports (DSR und Nicht-DSR) aufweisen, können gleichzeitig zwei (oder mehr) Lastenausgleichsregeln, die auf denselben Back-End-Pool verweisen, vorhanden sein. Zwei solcher Lastenausgleichsregeln können nicht gleichzeitig vorhanden sein, wenn Hochverfügbarkeitsport- und Nicht-Hochverfügbarkeitsportregeln kombiniert wurden.
-- Hochverfügbarkeitsports sind für IPv6 nicht verfügbar.
-- Flowsymmetrie für NVA-Szenarios wird nur mit einer NIC unterstützt. Sehen Sie sich die Beschreibung und das Diagramm unter [Virtuelle Netzwerkgeräte](#nva) an. 
+- Eine einzelne Front-End-IP-Konfiguration kann nur eine einzelne DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports oder eine einzelne Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports enthalten, niemals beides gleichzeitig.
+- Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann nur eine Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports aufweisen. Sie können für diese IP-Konfiguration keine anderen Regeln konfigurieren.
+- Eine IP-Konfiguration einer einzelnen Netzwerkschnittstelle kann mindestens eine DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports aufweisen, vorausgesetzt, dass alle ihre jeweiligen Front-End-IP-Konfigurationen eindeutig sind.
+- Wenn alle Lastenausgleichsregeln Hochverfügbarkeitsports (nur DSR) aufweisen, können gleichzeitig zwei (oder mehr) Load Balancer-Regeln, die auf denselben Back-End-Pool verweisen, vorhanden sein. Dasselbe gilt, wenn alle Regeln Nicht-Hochverfügbarkeitsports (DSR und Nicht-DSR) aufweisen. Wenn Hochverfügbarkeitsport- und Nicht-Hochverfügbarkeitsportregeln kombiniert wurden, können zwei dieser Lastenausgleichsregeln jedoch nicht gleichzeitig vorhanden sein.
+- Das Feature für Hochverfügbarkeitsports ist für IPv6 nicht verfügbar.
+- Flowsymmetrie für NVA-Szenarien wird nur mit einer einzelnen NIC unterstützt. Sehen Sie sich die Beschreibung und das Diagramm unter [Virtuelle Netzwerkgeräte](#nva) an. 
 
 
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Windows
 ms.workload: infrastructure-services
 ms.date: 05/09/2016
 ms.author: markscu
-ms.openlocfilehash: b302c6b3c6acbb8552796e7fb1bfd153d23dceb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 177f8a61487130e718e3e6cfb779b17a3ed8ed69
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="create-matlab-distributed-computing-server-clusters-on-azure-vms"></a>Erstellen eines MATLAB Distributed Computing Server-Clusters auf virtuellen Azure-Computern
 Erstellen Sie unter Verwendung virtueller Microsoft Azure-Computer einen oder mehrere MATLAB Distributed Computing Server-Cluster für die Ausführung rechenintensiver paralleler MATLAB-Workloads. Installieren Sie die MATLAB Distributed Computing Server-Software auf einem virtuellen Computer, der als Basisimage fungiert, und verwenden Sie zum Bereitstellen und Verwalten des Clusters eine Azure-Schnellstartvorlage oder ein Azure PowerShell-Skript (erhältlich auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/matlab-cluster)). Stellen Sie nach dem Bereitstellen eine Verbindung mit dem Cluster her, um Ihre Workloads auszuführen.
@@ -32,7 +32,7 @@ Durch die Verwendung virtueller Azure-Computer können Sie MATLAB Distributed Co
 * **Clientcomputer** : Sie benötigen einen Windows-basierten Clientcomputer für die Kommunikation mit Azure und dem MATLAB Distributed Computing Server-Cluster nach der Bereitstellung.
 * **Azure PowerShell** : Lesen Sie den Artikel [Installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/overview) , um zu erfahren, wie Sie Azure PowerShell auf Ihrem Clientcomputer installieren.
 * **Azure-Abonnement** : Falls Sie über kein Abonnement verfügen, können Sie in wenigen Minuten ein [kostenloses Konto](https://azure.microsoft.com/free/) einrichten. Bei größeren Clustern empfiehlt sich die Verwendung eines Abonnements mit nutzungsbasierter Bezahlung oder einer anderen Kaufoption.
-* **Kernkontingent** : Falls Sie einen umfangreichen Cluster oder mehrere MATLAB Distributed Computing Server-Cluster bereitstellen möchten, müssen Sie unter Umständen das Kernkontingent erhöhen. Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) .
+* **vCPU-Kontingent** : Falls Sie einen umfangreichen Cluster oder mehrere MATLAB Distributed Computing Server-Cluster bereitstellen möchten, müssen Sie unter Umständen das vCPU-Kontingent erhöhen. Um ein Kontingent zu erhöhen, können Sie kostenlos [eine Anfrage an den Onlinekundensupport richten](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/) .
 * **MATLAB-, Parallel Computing Toolbox- und MATLAB Distributed Computing Server-Lizenzen** : In den Skripts wird vorausgesetzt, dass für alle Lizenzen der [MathWorks Hosted License Manager](http://www.mathworks.com/products/parallel-computing/mathworks-hosted-license-manager/) verwendet wird.  
 * **MATLAB Distributed Computing Server-Software** : Wird auf einem virtuellen Computer installiert, der als VM-Basisimage für die virtuellen Clustercomputer fungiert.
 
@@ -62,7 +62,7 @@ MATLAB-Clientknoten, MATLAB-Auftragsplaner-Knoten und MATLAB Distributed Computi
 * Stellen Sie zum Verwenden des Clusters eine Remotedesktopverbindung mit dem Clientknoten her. Der Clientknoten führt den MATLAB-Client aus.
 * Der Clientknoten verfügt über eine Dateifreigabe, auf die alle Worker zugreifen können.
 * MathWorks Hosted License Manager wird zur Lizenzüberprüfung für die gesamte MATLAB-Software verwendet.
-* Standardmäßig wird auf den Worker-VMs pro Kern jeweils ein MATLAB Distributed Computing Server-Worker erstellt. Sie können aber eine beliebige Anzahl angeben.
+* Standardmäßig wird auf den Worker-VMs pro vCPU jeweils ein MATLAB Distributed Computing Server-Worker erstellt. Sie können aber eine beliebige Anzahl angeben.
 
 ## <a name="use-an-azure-based-cluster"></a>Verwenden eines Azure-basierten Clusters
 Genau wie bei anderen Arten von MATLAB Distributed Computing Server-Clustern muss mithilfe des Clusterprofil-Managers des MATLAB-Clients (auf dem virtuellen Clientcomputer) ein MATLAB-Auftragsplaner-Clusterprofil erstellt werden.

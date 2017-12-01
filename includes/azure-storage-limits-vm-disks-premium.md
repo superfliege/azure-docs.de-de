@@ -21,8 +21,6 @@
 
 | Ressource | Standardlimit |
 | --- | --- |
-| Max. IOPS pro virtuellem Computer |80.000 IOPS mit GS5-VM<sup>1</sup> |
-| Max. Durchsatz pro virtuellem Computer |2.000 MB/s mit GS5-VM<sup>1</sup> |
-
-<sup>1</sup>Informationen zu Grenzwerten bei virtuellen Computern anderer Größen finden Sie unter [Größe des virtuellen Computers](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
+| Max. IOPS pro virtuellem Computer |80.000 IOPS mit GS5-VM |
+| Max. Durchsatz pro virtuellem Computer |2.000 MB/s mit GS5-VM |
 

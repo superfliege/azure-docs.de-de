@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 3bf9e4673ffb756a8d159ed5733d3ddca70010c7
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 92cbc36ac2a566cf5dfbb2f7b3347973bab5ee8c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 
@@ -147,7 +147,7 @@ Exception: System.Data.Entity.Core.EntityException: The underlying provider fail
 
 ### <a name="resolution"></a>Lösung
 
-Wir arbeiten zur Behebung dieses Problems an einem Update für Hybrid Connection Manager. Informationen zu Problemumgehungen finden Sie unter [Hybrid Connection error with SQL Server: System.OverflowException: Arithmetic operation resulted in an overflow](https://blogs.msdn.microsoft.com/waws/2016/05/17/hybrid-connection-error-with-sql-server-system-overflowexception-arithmetic-operation-resulted-in-an-overflow/) (Hybridverbindungsfehler mit SQL Server: System.OverflowException: Die arithmetische Operation hat einen Überlauf verursacht).
+Die Ausnahme wurde durch ein Problem beim Hybridverbindungs-Manager ausgelöst, das inzwischen behoben wurde. Achten Sie darauf, ein [Update Ihres Hybridverbindungs-Managers](https://go.microsoft.com/fwlink/?LinkID=841308) vorzunehmen, um dieses Problem zu beheben.
 
 ## <a name="how-do-i-add-or-edit-a-url-rewrite-rule"></a>Wie kann ich eine URL-Rewrite-Regel hinzufügen oder bearbeiten?
 
@@ -319,4 +319,4 @@ Sie können auch die spezifischen dynamischen und statischen MIME-Typen angeben,
 
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>Wie migriere ich von einer lokalen Umgebung zu App Service?
 
-Um Websites von Windows- und Linux-Webservern zu App Service zu migrieren, können Sie den Azure App Service-Migrations-Assistenten verwenden. Das Migrationstool erstellt Web-Apps und Datenbanken in Azure nach Bedarf und veröffentlicht dann den Inhalt. Weitere Informationen finden Sie unter [Azure App Service-Migrations-Assistent](https://www.movemetothecloud.net/).
+Um Websites von Windows- und Linux-Webservern zu App Service zu migrieren, können Sie den Azure App Service-Migrations-Assistenten verwenden. Das Migrationstool erstellt Web-Apps und Datenbanken in Azure nach Bedarf und veröffentlicht dann den Inhalt. Weitere Informationen finden Sie unter [Azure App Service-Migrations-Assistent](https://www.migratetoazure.net/).

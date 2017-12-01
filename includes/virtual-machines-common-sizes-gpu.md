@@ -1,5 +1,5 @@
 
-GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer für intensives Grafikrendering und intensive Videobearbeitung vorgesehen. Mit einem oder mehreren GPUs verfügbar. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkleistung der einzelnen Größen in dieser Gruppe. 
+GPU-optimierte VM-Größen sind für spezialisierte virtuelle Computer für intensives Grafikrendering und intensive Videobearbeitung vorgesehen. Mit einem oder mehreren GPUs verfügbar. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum Speicherdurchsatz und zur Netzwerkbandbreite der einzelnen Größen in dieser Gruppe. 
 
 
 Die NC- und NV-Größen werden auch als GPU-fähige Instanzen bezeichnet. Dabei handelt es sich um spezielle VM-Größen, die für verschiedene Szenarien und Anwendungsfälle optimierte GPU-Karten von NVIDIA enthalten. Die NV-Größen sind optimiert und konzipiert für Remotevisualisierung, Streaming, Spiele, Codierung und VDI-Szenarien mit Frameworks wie OpenGL und DirectX. Die NC-Größen sind eher für rechen- und netzwerkintensive Anwendungen und Algorithmen optimiert, beispielsweise CUDA- und OpenCL-basierte Anwendungen und Simulationen. 

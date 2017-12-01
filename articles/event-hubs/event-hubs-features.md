@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2017
+ms.date: 11/17/2017
 ms.author: sethm
-ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa9fc3b03e24d0b4d1a7ecd9a945b67d8d182492
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="event-hubs-features-overview"></a>Event Hubs-Features im Überblick
 
 Azure Event Hubs ist ein skalierbarer Ereignisverarbeitungsdienst, der große Mengen von Ereignissen und Daten mit kurzer Wartezeit und hoher Zuverlässigkeit erfasst und verarbeitet. Unter [Was ist Event Hubs?](event-hubs-what-is-event-hubs.md) finden Sie einen allgemeinen Überblick über den Dienst.
 
-Dieser Artikel setzt auf den Informationen in der [Übersicht](event-hubs-what-is-event-hubs.md) auf und bietet technische und Implementierungsdetails zu Event Hubs-Komponenten und -Features.
+Dieser Artikel setzt auf den Informationen in der [Übersichtsartikel](event-hubs-what-is-event-hubs.md) auf und bietet technische und Implementierungsdetails zu Event Hubs-Komponenten und -Features.
 
 ## <a name="event-publishers"></a>Ereignisherausgeber
 
