@@ -70,7 +70,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 
 ## <a name="run-python-code"></a>Ausführen des Python-Codes
 - Fügen Sie den Code in eine Textdatei ein, und speichern Sie dann die Datei in einem Projektordner mit der Dateierweiterung „.py“ (Beispiele: „C:\pythonmysql\createtable.py“ oder „/home/username/pythonmysql/createtable.py“).
-- Starten Sie zum Ausführen des Codes die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie zu Ihrem Projektordner `cd pythonmysql`. Geben Sie anschließend den Python-Befehl gefolgt vom Dateinamen `python createtable.py` ein, um die Anwendung auszuführen. Sollte „python.exe“ unter Windows nicht gefunden werden, müssen Sie ggf. den vollständigen Pfad zur ausführbaren Datei angeben oder den Python-Pfad in die Umgebungsvariable „path“ einschließen. `C:\python27\python.exe createtable.py`
+- Starten Sie zum Ausführen des Codes die Eingabeaufforderung oder die Bash-Shell. Wechseln Sie in das Verzeichnis Ihres Projektordners `cd pythonmysql`. Geben Sie anschließend den Python-Befehl gefolgt vom Dateinamen `python createtable.py` ein, um die Anwendung auszuführen. Sollte „python.exe“ unter Windows nicht gefunden werden, müssen Sie ggf. den vollständigen Pfad zur ausführbaren Datei angeben oder den Python-Pfad in die Umgebungsvariable „path“ einschließen. `C:\python27\python.exe createtable.py`
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
 Verwenden Sie den folgenden Code, um eine Verbindung mit dem Server herzustellen, eine Tabelle zu erstellen und die Daten unter Verwendung einer SQL-Anweisung des Typs **INSERT** zu laden. 

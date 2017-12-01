@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 11/01/2017
 ms.author: v-rogara
 ms.custom: mvc
-ms.openlocfilehash: 2a825e59093b64ab56110f9a045b0325728b39b2
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 5676cef446de7a68d3d8fd1a3b6833a5de184ea1
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-java"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit Java
 
@@ -70,11 +70,16 @@ Wenn Sie das Beispiel mithilfe von Maven über die Befehlszeile ausführen möch
 Im Folgenden finden Sie ein Beispiel der Ausgabe, wenn Sie die Anwendung unter Windows ausführen.
 
 ```
-Location of file: C:\Users\<user>\Documents\results.txt
-File has been written
-URI of blob is: http://myexamplesacct.blob.core.windows.net/quickstartblobs/results.txt
+Azure Blob storage quick start sample
+Creating container: quickstartcontainer
+Creating a sample file at: C:\Users\<user>\AppData\Local\Temp\sampleFile514658495642546986.txt
+Uploading the sample file 
+URI of blob is: https://myexamplesacct.blob.core.windows.net/quickstartcontainer/sampleFile514658495642546986.txt
 The program has completed successfully.
 Press the 'Enter' key while in the console to delete the sample files, example container, and exit the application.
+
+Deleting the container
+Deleting the source, and downloaded files
 ```
 
  Bevor Sie fortfahren, überprüfen Sie Ihr Standardverzeichnis („Dokumente“ für Windows-Benutzer) auf die beiden Dateien. Sie können diese öffnen und prüfen, ob sie identisch sind. Kopieren Sie die URL für das Blob aus dem Konsolenfenster, und fügen Sie sie in einem Browser ein, um den Inhalt der Datei in Blob Storage anzuzeigen. Wenn Sie die EINGABETASTE drücken, werden der Speichercontainer und die Dateien gelöscht.
