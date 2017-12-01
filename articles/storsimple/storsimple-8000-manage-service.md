@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 2d6c1737edbc4e69dd7de4c8ce3d7b0899bfae51
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 5f31e32bb7cbd747af2e03699cfb2c6418828f8d
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
 
@@ -113,6 +113,7 @@ Führen Sie die folgenden Schritte aus, um Ihren Dienst auf das Azure-Portal umz
 
 Sobald die Umstellung abgeschlossen ist, können Sie Ihre Geräte über den StorSimple-Geräte-Manager-Dienst im Azure-Portal verwalten. Wenn keine Option für die Migration zum Azure-Portal angezeigt wird, Sie die Verschiebung jedoch durchführen möchten, können Sie [eine Anfrage erstellen](https://aka.ms/ss8000-cx-signup).
 
+## <a name="supported-operations-on-devices-running-versions-prior-to-update-30"></a>Unterstützte Vorgänge auf Geräten mit einer Version vor Update 3.0
 Im Azure-Portal werden nur die StorSimple-Geräte mit ausgeführtem Update 3.0 und höher unterstützt. Die Geräte mit früheren Versionen werden eingeschränkt unterstützt. In der folgenden Tabelle sind die Vorgänge aufgeführt, die auf Geräten mit Softwareversionen vor Update 3.0 unterstützt werden, nachdem die Umstellung auf das Azure-Portal erfolgt ist.
 
 | Vorgang                                                                                                                       | Unterstützt      |

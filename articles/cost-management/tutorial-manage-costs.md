@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/06/2017
+ms.date: 11/21/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 83ddc0cb4227235069b0027a24a52f4d8e818126
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: bfbcded98814500a03b2b79b0248c84f8f043dc0
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="manage-costs-by-using-azure-cost-management"></a>Verwalten von Kosten mit Azure Cost Management
 
@@ -80,6 +80,23 @@ Die folgende Abbildung enthält ein Beispiel für Regeln, die für eine neue Kat
 
 ![Beispiel für Kategorie](./media/tutorial-manage-costs/category01.png)
 
+### <a name="tag-sources-and-reports"></a>Tag-Quellen und -Berichte
+
+Tag-Daten, die Sie in Cloudyn-Berichten sehen, stammen von drei Stellen:
+
+- Ressourcen-APIs des Cloudanbieters
+- Abrechnungs-APIs des Cloudanbieters
+- Manuell erstellte Tags aus den folgenden Quellen:
+    - Cloudyn Entitätstags – benutzerdefinierte Metadaten, die auf Cloudyn Entitäten angewendet werden
+    - Kategorie-Manager – ein Datenbereinigungstool, das neue Tags anhand von Regeln erstellt, die auf vorhandene Tags angewendet werden
+
+Wenn Sie Cloudanbieter-Tags in Cloudyn-Kostenberichten anzeigen möchten, müssen Sie mit „Cost Allocation 360“ ein benutzerdefiniertes Kostenzuteilungsmodell erstellen. Klicken Sie dazu auf **Cost** > **Cost Management** > **Cost Allocation 360**, wählen Sie die gewünschten Tags aus, und definieren Sie dann Regeln zum Verarbeiten von Kosten, die keine Tags haben. Erstellen Sie anschließend ein neues Kostenmodell. Anschließend können Sie Berichte in „Cost Allocation Analysis“ anzeigen, um Ihre Azure-Ressourcentags anzuzeigen, zu filtern und nach ihnen zu sortieren.
+
+Azure-Ressourcentags werden nur in **Cost Allocation Analysis**-Berichten angezeigt.
+
+Abrechnungstags von Cloudanbietern werden in allen Kostenberichten angezeigt.
+
+Cloudyn Entitätstags und Tags, die Sie manuell erstellen, werden in allen Kostenberichten angezeigt.
 
 
 ## <a name="create-showback-and-chargeback-reports"></a>Erstellen von Showback- und Chargeback-Berichten

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: af32c3f2d96ca51f59e29f8d9635caa290d580aa
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 89bfedd282d04569bcf873fd7a9082791a94376b
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: Operative Aufgaben und Überlegungen
 In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync beschrieben.
@@ -33,6 +33,11 @@ Der Stagingmodus kann für verschiedene Szenarien genutzt werden, darunter:
 Mit einem Server im Stagingmodus können Sie Änderungen an der Konfiguration vornehmen und eine Vorschau der Änderungen anzeigen, bevor Sie den Server aktiv schalten. Ein Server im Stagingmodus ermöglicht es Ihnen außerdem, einen vollständigen Import und eine vollständige Synchronisierung durchzuführen und so sicherzustellen, dass alle Änderungen wie erwartet durchgeführt werden, bevor Sie die Änderungen in Ihrer Produktionsumgebung implementieren.
 
 Bei der Installation können Sie auswählen, dass der Server in den **Stagingmodus**versetzt werden soll. Dadurch wird der Server für Import und Synchronisierung aktiviert, es werden jedoch keine Exportvorgänge ausgeführt. Ein Server im Stagingmodus führt keine Kennwortsynchronisierung und kein Kennwortrückschreiben durch – selbst dann nicht, wenn Sie diese Features bei der Installation ausgewählt haben. Wenn Sie den Stagingmodus deaktivieren, beginnt der Server mit dem Exportieren und aktiviert die Kennwortsynchronisierung und das Kennwortrückschreiben.
+
+> [!NOTE]
+> Angenommen Sie, Sie haben eine Azure AD Connect-Instanz, für die Kennworthashsynchronisierung aktiviert ist. Wenn Sie den Stagingmodus aktivieren, beendet der Server das Synchronisieren von Kennwortänderungen aus lokalem AD. Wenn Sie den Stagingmodus deaktivieren, setzt der Server das Synchronisieren von Kennwortänderungen an der Stelle fort, an der das Synchronisieren zuletzt beendet wurde. War der Stagingsmodus längere Zeit für den Server aktiviert, kann es etwas länger dauern, bis der Server alle Kennwortänderungen synchronisiert hat, die es in diesem Zeitraum gegeben hat.
+>
+>
 
 Sie können einen Export weiterhin mithilfe des Synchronisierungsdienst-Managers erzwingen.
 

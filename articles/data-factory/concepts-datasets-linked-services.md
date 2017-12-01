@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: 
 ms.date: 09/05/2017
 ms.author: shlo
+ms.openlocfilehash: a13e19c7e1a22581b14d1a96e20b8a649c303fc3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f03c91b7b27a4fb39b996599efd11242a785b2b2
-ms.contentlocale: de-de
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/17/2017
 ---
-
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Datasets und verknüpfte Dienste in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1 – Allgemein verfügbar](v1/data-factory-create-datasets.md)
@@ -185,7 +183,7 @@ Anhand der folgenden Anleitungen können Sie entscheiden, wann der Abschnitt **s
 Hier finden Sie weitere Informationen darüber, wie Data Factory Quelldaten aufgrund der [Schema- und Typzuordnung]( copy-activity-schema-and-type-mapping.md) Senken zuordnet, und wann Strukturinformationen angegeben werden müssen.
 
 ## <a name="create-datasets"></a>Erstellen von Datasets
-Sie können mit einem dieser Tools oder SDKs Datasets erstellen: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell]((quickstart-create-data-factory-powershell.md), [REST-API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-Vorlage und Azure-Portal
+Datasets können Sie mit einem dieser Tools oder SDKs erstellen: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST-API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager-Vorlage und Azure-Portal
 
 ## <a name="v1-vs-v2-datasets"></a>V1- im Vergleich zu V2-Datasets
 
@@ -202,4 +200,3 @@ Im folgenden Tutorial finden Sie schrittweise Anleitungen zum Erstellen von Pipe
 - [Schnellstart: Erstellen einer Data Factory mithilfe von PowerShell](quickstart-create-data-factory-powershell.md)
 - [Schnellstart: Erstellen einer Data Factory mithilfe der REST-API](quickstart-create-data-factory-rest-api.md)
 - Schnellstart: Erstellen einer Data Factory mithilfe des Azure-Portals
-

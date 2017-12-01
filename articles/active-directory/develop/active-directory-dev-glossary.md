@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/07/2017
+ms.date: 11/16/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 1002ce29ff0d9ee2a6eac44c6e4402fc7e9ade31
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 6a657177087ca01f4507b12048a88850aea1a03f
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-active-directory-developer-glossary"></a>Azure Active Directory-Glossar für Entwickler
 Dieser Artikel enthält hilfreiche Definitionen für einige der zentralen Entwicklerkonzepte von Azure Active Directory (AD) im Zusammenhang mit der Anwendungsentwicklung für Azure AD.
@@ -33,6 +33,9 @@ Zugriffstoken werden abhängig von den vorgelegten Anmeldeinformationen gelegent
 * [Autorisierungsgewährung mit Clientanmeldeinformationen](#authorization-grant): In diesem Fall stellt der Client die einzige Authentifizierung (ohne Authentifizierung/Autorisierung des Ressourcenbesitzers) bereit, weshalb das Token gelegentlich als App-exklusives Token bezeichnet wird.
 
 Ausführlichere Informationen finden Sie in der [Azure AD-Tokenreferenz][AAD-Tokens-Claims].
+
+## <a name="application-id-client-id"></a>Anwendungs-ID (Client-ID)
+Der eindeutige Bezeichner, den Azure AD für eine Anwendungsregistrierung ausgibt, die eine bestimmte Anwendung und die zugehörigen Konfigurationen kennzeichnet.  Diese Anwendungs-ID ([Client-ID](https://tools.ietf.org/html/rfc6749#page-15)) wird verwendet, wenn Authentifizierungsanforderungen ausgeführt werden, und wird den Authentifizierungsbibliotheken in der Entwicklungszeit bereitgestellt. Die Anwendungs-ID (Client-ID) ist kein geheimer Schlüssel. 
 
 ## <a name="application-manifest"></a>Anwendungsmanifest
 Ein Feature des [Azure-Portals][AZURE-portal], das eine JSON-Darstellung der Identitätskonfiguration der Anwendung generiert. Diese wird als Mechanismus für die Aktualisierung der zugehörigen Entitäten [Anwendung][AAD-Graph-App-Entity] und [Dienstprinzipal][AAD-Graph-Sp-Entity] verwendet. Ausführlichere Informationen finden Sie unter [Grundlegendes zum Azure Active Directory-Anwendungsmanifest][AAD-App-Manifest].
@@ -174,7 +177,7 @@ Ein Benutzerprinzipalobjekt ist (ähnlich wie ein Dienstprinzipalobjekt, das ein
 Eine Art von [Clientanwendung](#client-application) , die sämtlichen Code auf einem Webserver ausführt und als vertraulicher Client fungieren kann, da er Anmeldeinformationen sicher auf dem Server speichert. Ausführlichere Informationen finden Sie in den [OAuth2-Clienttypen und -profilen][OAuth2-Client-Types].
 
 ## <a name="next-steps"></a>Nächste Schritte
-Das [Entwicklerhandbuch zu Azure Active Directory][AAD-Dev-Guide] ist das Portal für alle relevanten Themen rund um die Azure AD-Entwicklung und enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Azure AD und Authentifizierungsszenarien für Azure AD][AAD-Auth-Scenarios].
+Das [Entwicklerhandbuch zu Azure Active Directory][AAD-Dev-Guide] ist die Einstiegsseite für alle relevanten Themen rund um die Azure AD-Entwicklung und enthält unter anderem eine Übersicht über die [Anwendungsintegration][AAD-How-To-Integrate] sowie grundlegende Informationen zur [Authentifizierung in Azure AD und Authentifizierungsszenarien für Azure AD][AAD-Auth-Scenarios].  Codebeispiele und Tutorials dazu, wie schnelles Einrichten und Ausführen ermöglicht wird, finden Sie auch auf [Github](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=).
 
 Senden Sie uns im folgenden Abschnitt für Kommentare Ihr Feedback, und unterstützen Sie uns bei der Verbesserung unserer Inhalte. Dabei sind Anregungen für neue Definitionen oder zur Aktualisierung bereits vorhandener Definitionen willkommen.
 
