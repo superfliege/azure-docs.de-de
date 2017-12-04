@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: sstein
-ms.openlocfilehash: 9961a39f8e422d72301958ef467e4267f2c6c498
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6c73cf2e96503f47dd4234387222169cb30b4cce
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App
 
@@ -35,7 +35,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Simulieren der Verwendung einer mehrinstanzenfähigen Datenbank mit Shards durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Datenbank bei der Reaktion auf eine Steigerung der Last
 > * Zentrales Hochskalieren der Datenbank als Reaktion auf die erhöhte Datenbanklast
-> * Bereitstellen eines neuen Mandanten in der eigenen Datenbank
+> * Bereitstellen eines Mandanten in einer Datenbank mit nur einem Mandanten
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
@@ -51,9 +51,9 @@ Die Verwaltung der Datenbankleistung umfasst das Kompilieren und Analysieren von
 * Um die Leistung nicht manuell überwachen zu müssen, ist es am effizientesten, **Benachrichtigungen einzurichten, die ausgelöst werden, wenn Datenbanken vom Normalbereich abweichen**.
 * Um auf kurzfristige Schwankungen in der Leistungsebene einer Datenbank zu reagieren, **kann die DTU-Stufe zentral hoch- oder herunterskaliert werden**. Wenn diese Fluktuation in regelmäßigen oder vorhersagbaren Abständen auftritt, **kann die Skalierung der Datenbank geplant werden und automatisch erfolgen**. Skalieren Sie z.B. zentral herunter, wenn Sie wissen, dass der Workload gering sein wird, beispielsweise nachts oder an den Wochenenden.
 * Um auf längerfristige Schwankungen oder Änderungen bei Mandanten zu reagieren, **können einzelne Mandanten in andere Datenbanken verschoben werden**.
-* Um auf kurzfristige Anstiege *einzelner* Mandantenlasten zu reagieren, **können einzelne Mandanten aus der Datenbank entfernt und einer individuellen Leistungsebene zugewiesen werden**. Nachdem die Last sich verringert, kann der Mandant wieder der mehrinstanzenfähigen Datenbank hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Mandanten vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Mandanten in der mehrinstanzenfähigen Datenbank zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
+* Um auf kurzfristige Anstiege *einzelner* Mandantenlasten zu reagieren, **können einzelne Mandanten aus der Datenbank entfernt und einer separaten Leistungsebene zugewiesen werden**. Nachdem die Last sich verringert, kann der Mandant wieder der mehrinstanzenfähigen Datenbank hinzugefügt werden. Wenn dies im Voraus bekannt ist, können Mandanten vorsorglich verschoben werden, um sicherzustellen, dass die Datenbank immer über die erforderlichen Ressourcen verfügt, und um Auswirkungen auf andere Mandanten in der mehrinstanzenfähigen Datenbank zu vermeiden. Wenn diese Anforderungen vorhersagbar sind, wenn beispielsweise für eine beliebte Veranstaltung an einem Veranstaltungsort ein Run auf die Tickets zu erwarten ist, kann dieses Verwaltungsverhalten in die Anwendung integriert werden.
 
-Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Warnung für Datenbanken verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen nicht sehr praktisch.
+Das [Azure-Portal](https://portal.azure.com) bietet integrierte Überwachung und Benachrichtigungen für die meisten Ressourcen. In SQL-Datenbank sind Überwachung und Warnung für Datenbanken verfügbar. Die integrierte Überwachungs- und Benachrichtigungsfunktionalität ist ressourcenspezifisch, daher lässt sie sich bequem für eine kleine Anzahl von Ressourcen verwenden, ist aber bei der Arbeit mit vielen Ressourcen unpraktisch.
 
 Bei Szenarien mit hohem Volumen, bei denen Sie mit vielen Ressourcen arbeiten, kann [Log Analytics (OMS)](https://azure.microsoft.com/services/log-analytics/) verwendet werden. Dies ist ein separater Azure-Dienst, der Analysen über ausgegebene Diagnoseprotokolle und Telemetriedaten bietet, die in einem Log Analytics-Arbeitsbereich gesammelt werden. Log Analytics kann Telemetriedaten über eine Vielzahl von Diensten sammeln und zum Abfragen und Festlegen von Benachrichtigungen verwendet werden.
 
@@ -71,7 +71,7 @@ Wenn Sie in einem vorherigen Tutorial bereits einen Batch von Mandanten bereitge
 1. Legen Sie **$DemoScenario** = **1**, _Bereitstellen eines Batches von Mandanten_ fest.
 1. Drücken Sie **F5** , um das Skript auszuführen.
 
-Das Skript stellt in wenigen Minuten 17 Mandanten in der mehrinstanzenfähigen Datenbank bereit. 
+Das Skript stellt innerhalb weniger Minuten 17 Mandanten in der mehrinstanzenfähigen Datenbank bereit. 
 
 Das Skript *New-TenantBatch* erstellt den neuen Mandanten mit eindeutigen Mandantenschlüsseln in der mehrinstanzenfähigen Datenbank mit Shards und initialisiert sie mit dem Mandantennamen und dem Typ des Veranstaltungsortes. Dies ist konsistent mit der Bereitstellung eines neuen Mandanten durch die App. 
 
@@ -120,9 +120,9 @@ Gehen Sie folgendermaßen vor, um eine Benachrichtigung für die Datenbank festz
 1. Geben Sie einen Namen an, z.B. **Hohe DTU**,
 1. Legen Sie die folgenden Werte fest:
    * **Metric = DTU-Prozentsatz**
-   * **Condition = größer als**.
+   * **Condition = größer als**
    * **Threshold = 75**.
-   * **Period = Innerhalb der letzten 30 Minuten**.
+   * **Period = Innerhalb der letzten 30 Minuten**
 1. Fügen Sie eine E-Mail-Adresse in das Feld *Zusätzliche Administrator-E-Mail-Adressen* ein, und klicken Sie auf **OK**.
 
    ![Warnung festlegen](media/saas-multitenantdb-performance-monitoring/set-alert.png)
@@ -153,7 +153,7 @@ Datenbanken bleiben online und sind während des gesamten Vorgangs vollständig 
 
 ## <a name="provision-a-new-tenant-in-its-own-database"></a>Bereitstellen eines neuen Mandanten in der eigenen Datenbank 
 
-Das mehrinstanzenfähige Modell mit Shards erlaubt zwei Optionen: Sie können einen neuen Mandanten in einer mehrinstanzenfähigen Datenbank zusammen mit anderen Mandanten oder in einer eigenen Datenbank bereitstellen. Durch die Bereitstellung eines Mandanten in seiner eigenen Datenbank profitiert dieser von der inhärenten Isolation der separaten Datenbank, sodass Sie die Leistung dieses Mandanten unabhängig von anderen verwalten, diesen Mandanten unabhängig von anderen wiederherstellen können usw. Sie können beispielsweise Benutzer kostenloser Testversionen und reguläre Kunden in eine mehrinstanzenfähige Datenbank und Premium-Kunden in eine einzelne Datenbank platzieren.  Wenn isolierte Datenbanken mit nur einem Mandanten erstellt werden, können diese weiterhin gemeinsam in einem Pool für elastische Datenbanken verwaltet werden, um die Ressourcenkosten zu optimieren.
+Das mehrinstanzenfähige Modell mit Shards erlaubt zwei Optionen: Sie können einen neuen Mandanten in einer mehrinstanzenfähigen Datenbank zusammen mit anderen Mandanten oder in einer eigenen Datenbank bereitstellen. Durch die Bereitstellung eines Mandanten in seiner eigenen Datenbank profitiert dieser von der inhärenten Isolation der separaten Datenbank, sodass Sie die Leistung dieses Mandanten unabhängig von anderen verwalten, diesen Mandanten unabhängig von anderen wiederherstellen können usw. Sie können beispielsweise Benutzer kostenloser Testversionen und reguläre Kunden in eine mehrinstanzenfähige Datenbank und Premium-Kunden in eine einzelne Datenbank platzieren.  Wenn isolierte Datenbanken mit nur einem Mandanten erstellt werden, können diese weiterhin kollektiv in einem Pool für elastische Datenbanken verwaltet werden, um die Ressourcenkosten zu optimieren.
 
 Wenn Sie bereits einen neuen Mandanten in einer eigenen Datenbank bereitgestellt haben, überspringen Sie die nächsten Schritte.
 
@@ -195,7 +195,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Simulieren der Verwendung einer mehrinstanzenfähigen Datenbank mit Shards durch Ausführen eines bereitgestellten Lastengenerators
 > * Überwachen der Datenbank bei der Reaktion auf eine Steigerung der Last
 > * Zentrales Hochskalieren der Datenbank als Reaktion auf die erhöhte Datenbanklast
-> * Bereitstellen eines neuen Mandanten in der eigenen Datenbank
+> * Bereitstellen eines Mandanten in einer Datenbank mit nur einem Mandanten
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

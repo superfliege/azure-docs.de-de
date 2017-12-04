@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ebda79442b8feb9f052c3ae455fa43aafb7b5a6a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 0d19d1142cf15221f84692f7e613edd6b46b4083
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Stream Analytics als IoT Edge-Modul – Vorschau
 
@@ -62,13 +62,16 @@ In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag, um Daten
     ![Neues Speicherkonto][1]
 
 3. Navigieren Sie im Azure-Portal zum gerade erstellten Speicherkonto. Klicken Sie unter **Blob-Dienst** auf **Blobs durchsuchen**. 
-1. Erstellen Sie einen neuen Container für das ASA-Modul, um Daten zu speichern. Legen Sie als Zugriffsebene _Container_ fest. Klicken Sie auf **OK**.
+4. Erstellen Sie einen neuen Container für das ASA-Modul, um Daten zu speichern. Legen Sie als Zugriffsebene _Container_ fest. Klicken Sie auf **OK**.
 
     ![Speichereinstellungen][10]
 
-1. Navigieren Sie im Azure-Portal zu **Ressourcen erstellen** > **Internet der Dinge**, und wählen Sie **Stream Analytics-Auftrag** aus.
+5. Navigieren Sie im Azure-Portal zu **Ressourcen erstellen** > **Internet der Dinge**, und wählen Sie **Stream Analytics-Auftrag** aus.
 
-1. Geben Sie einen Namen ein, **wählen Sie „Edge“ als Hostingumgebung**, und behalten Sie die übrigen Standardwerte bei.  Klicken Sie auf **Erstellen**.
+2. Geben Sie einen Namen ein, wählen Sie **Edge** als Hostingumgebung aus, und behalten Sie die übrigen Standardwerte bei.  Klicken Sie auf **Erstellen**.
+
+    >[!NOTE]
+    >Aktuell werden ASA-Auftrage für IoT Edge in der Region „USA, Westen 2“ nicht unterstützt. Wählen Sie einen anderen Standort aus.
 
     ![ASA erstellen][5]
 
@@ -108,7 +111,7 @@ Sie können den ASA-Auftrag jetzt auf Ihrem IoT Edge-Gerät bereitstellen.
 
 1. Wählen Sie **Set Modules** (Module festlegen) aus, und wählen Sie dann **Import Azure Service IoT Edge Module** (IoT Edge-Modul von Azure-Dienst importieren) aus.
 
-1. Wählen Sie das Abonnement und den gerade erstellten ASA-Edge-Auftrag aus. Wählen Sie dann Ihr Speicherkonto aus. Klicken Sie auf **Speichern**.
+1. Wählen Sie das Abonnement und den erstellten ASA-Edge-Auftrag aus. Wählen Sie dann Ihr Speicherkonto aus. Klicken Sie auf **Speichern**.
 
     ![Modul festlegen][6]
 

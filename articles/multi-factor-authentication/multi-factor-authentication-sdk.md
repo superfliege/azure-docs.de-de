@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
-ms.openlocfilehash: 653166235a2fec79945a8e54aafdb8e697e8b634
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c9be948a7328b0f535d8683e6cdc695a01654a94
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Erstellen von Multi-Factor Authentication in benutzerdefinierten Apps (SDK)
+
+> [!IMPORTANT]
+> Die Einstellung des Azure Multi-Factor Authentication Software Development Kit (SDK) wurde angekündigt. Dieses Feature wird für neue Kunden nicht mehr unterstützt. Aktuelle Kunden können das SDK bis zum 14. November 2018 weiterhin nutzen. Nach diesem Zeitpunkt führen Aufrufe an das SDK zu Fehlern. 
 
 Mit dem Software Development Kit (SDK) für Azure Multi-Factor Authentication können Sie die Überprüfung in zwei Schritten direkt in den Anmelde- oder Transaktionsprozessen von Anwendungen in Ihrem Azure AD-Mandanten erstellen.
 
@@ -35,30 +38,7 @@ Da die APIs keinen Zugriff auf in Azure Active Directory registrierte Benutzer h
 
 
 ## <a name="download-the-sdk"></a>Herunterladen des SDK
-Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter](multi-factor-authentication-get-started-auth-provider.md).  Dies erfordert ein vollständiges Azure-Abonnement, auch wenn Sie über Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen verfügen.  Um das SDK herunterzuladen, navigieren Sie zum Verwaltungsportal für die Multi-Factor Authentication. Zum Portal gelangen Sie entweder direkt über den MFA-Anbieter oder indem Sie auf der Seite mit den MFA-Diensteinstellungen auf den Link **Portal aufrufen** klicken.
-
-### <a name="download-from-the-azure-classic-portal"></a>Herunterladen vom klassischen Azure-Portal
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator an.
-2. Wählen Sie im linken Bereich **Active Directory**aus.
-3. Klicken Sie auf der Seite „Active Directory“ oben auf **Anbieter für mehrstufige Authentifizierung**.
-4. Wählen Sie unten **Verwalten** aus. Eine neue Seite wird geöffnet.
-5. Klicken Sie links unten auf **SDK**.
-   <center>![Herunterladen](./media/multi-factor-authentication-sdk/download.png)</center>
-6. Wählen Sie die gewünschte Sprache, und klicken Sie auf einen der zugehörigen Downloadlinks.
-7. Speichern Sie den Download.
-
-### <a name="download-from-the-service-settings"></a>Herunterladen von den Diensteinstellungen
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) als Administrator an.
-2. Wählen Sie im linken Bereich **Active Directory**aus.
-3. Doppelklicken Sie auf Ihre Instanz von Azure AD.
-4. Klicken Sie oben auf **Konfigurieren**
-5. Wählen Sie unter „Multi-Factor Authentication“ die Option **Diensteinstellungen verwalten**
-   ![Herunterladen](./media/multi-factor-authentication-sdk/download2.png).
-6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**. Eine neue Seite wird geöffnet.
-   ![Download](./media/multi-factor-authentication-sdk/download3a.png)
-7. Klicken Sie links unten auf **SDK**.
-8. Wählen Sie die gewünschte Sprache, und klicken Sie auf einen der zugehörigen Downloadlinks.
-9. Speichern Sie den Download.
+Das Herunterladen des Azure Multi-Factor SDK erfordert einen [Azure MFA-Anbieter](multi-factor-authentication-get-started-auth-provider.md).  Dies erfordert ein vollständiges Azure-Abonnement, auch wenn Sie über Azure MFA-, Azure AD Premium- oder Enterprise Mobility Suite-Lizenzen verfügen. Die öffentlichen Methoden zum SDK-Download wurden deaktiviert, weil das SDK eingestellt wurde. Sie müssen einen Supportfall bei Microsoft öffnen, wenn Sie das SDK herunterladen möchten.
 
 ## <a name="whats-in-the-sdk"></a>Was bietet das SDK?
 Das SDK enthält Folgendes:

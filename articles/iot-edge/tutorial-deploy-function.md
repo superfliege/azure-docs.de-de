@@ -9,11 +9,11 @@ ms.author: v-jamebr
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 34ed5083b952c42d4ed119b6986db965eb9eb67a
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: bfb37ae51400210ef80a0f267b294d1e2e465b76
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Bereitstellen einer Azure-Funktion als IoT Edge-Modul – Vorschau
 Mithilfe von Azure Functions können Sie Code bereitstellen, mit dem Ihre Geschäftslogik direkt auf Ihren IoT Edge-Geräten implementiert wird. Dieses Tutorial führt Sie durch die Erstellung und Bereitstellung einer Azure-Funktion, die Sensordaten des simulierten IoT Edge-Geräts filtert, das Sie im Tutorial zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter [Windows][lnk-tutorial1-win] oder [Linux][lnk-tutorial1-lin] erstellt haben. In diesem Tutorial lernen Sie Folgendes:     
@@ -129,7 +129,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
             filteredMessage.Properties.Add("MessageType", "Alert");
             // Send the message        
             await output.AddAsync(filteredMessage);
-            log.Info("Received and transfered a message with temperature above the threshold");
+            log.Info("Received and transferred a message with temperature above the threshold");
         }
     }
     ```
@@ -141,7 +141,7 @@ Die folgenden Schritte zeigen, wie Sie mithilfe von Visual Studio Code und der A
 1. Erstellen Sie das Docker-Image.
     1. Klicken Sie im Visual Studio Code-Explorer auf den Ordner **Docker**, um ihn zu öffnen. Wählen Sie nun den Ordner für Ihre Containerplattform aus (entweder **linux-x64** oder **windows-nano**). 
     2. Klicken Sie mit der rechten Maustaste auf die Datei **Dockerfile**, und klicken Sie auf **Build IoT Edge Module Docker Image** (Docker-Image für IoT Edge-Modul erstellen). 
-    3. Navigieren Sie im Feld **Ordner auswählen** zum Ordner **Docker/linux-x64**, und klicken Sie auf **Select Folder as EXE_DIR** (Ordner als EXE_DIR auswählen). 
+    3. Navigieren Sie im Feld **Ordner auswählen** zum Projektordner **FilterFunction**, und klicken Sie auf **Select Folder as EXE_DIR** (Ordner als EXE_DIR auswählen). 
     4. Geben Sie den Imagenamen in das Popupfeld oben im Visual Studio Code-Fenster ein. Beispiel:`<docker registry address>/filterfunction:latest`. Hierbei ist *docker registry address* Ihre Docker-ID, sofern Sie Docker Hub verwenden; setzen Sie hingegen Azure Container Registry ein, dann ist dies ein Wert ähnlich wie `<your registry name>.azurecr.io`.
  
 4. Melden Sie sich bei Docker an. Geben Sie den folgenden Befehl in das integrierte Terminal ein: 
@@ -212,7 +212,7 @@ Fügen Sie die Anmeldeinformationen für Ihre Registrierung zur Edge-Runtime auf
 
 ## <a name="view-generated-data"></a>Anzeigen generierter Daten
 
-So überwachen Sie Gerät-zu-Cloud-Nachrichten, die von Ihrem IoT Edge-Gerät an Ihren IoT Hub gesendet wurden:
+So überwachen Sie Gerät-zu-Cloud-Nachrichten, die von Ihrem IoT Edge-Gerät an IoT Hub gesendet wurden:
 1. Konfigurieren Sie die Verbindungszeichenfolge für Ihren IoT Hub in der Azure IoT-Toolkit-Erweiterung: 
     1. Öffnen Sie über den Menübefehl **Ansicht > Explorer** den Visual Studio Code-Explorer. 
     3. Klicken Sie im Explorer auf **IOT HUB DEVICES** (IOT HUB-GERÄTE), und klicken Sie dann auf **...**. Klicken Sie auf **Set IoT Hub Connection String** (IoT Hub-Verbindungszeichenfolge festlegen), und geben Sie die Verbindungszeichenfolge für den IoT Hub, mit dem Ihr IoT Edge-Gerät verbunden ist, in das Popupfenster ein. 

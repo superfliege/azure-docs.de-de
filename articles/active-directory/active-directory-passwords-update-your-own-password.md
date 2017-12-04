@@ -6,7 +6,7 @@ keywords:
 documentationcenter: 
 author: barlanmsft
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
 ms.service: active-directory
 ms.workload: identity
@@ -16,42 +16,42 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 9595b318b8bd974f778dc12b38cccd949a4e7a1a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b91902b13e7633a0724a57ff7fceb68e50abd13a
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reset-your-work-or-school-password"></a>Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos
 
-Falls Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens kein Kennwort erhalten haben, aus Ihrem Konto ausgesperrt wurden oder Ihr Kennwort ändern möchten, können wir Ihnen weiterhelfen. Falls Sie Ihr Kennwort kennen und es lediglich ändern möchten, lesen Sie im Abschnitt [Ändern des eigenen Kennworts](#change-my-password) weiter.
+Falls Sie Ihr Kennwort vergessen haben, vom Support Ihres Unternehmens kein Kennwort erhalten haben, aus Ihrem Konto ausgesperrt wurden oder Ihr Kennwort ändern möchten, können wir Ihnen weiterhelfen. Wenn Sie Ihr Kennwort kennen und es lediglich ändern möchten, lesen Sie im Abschnitt [Ändern des eigenen Kennworts](#change-my-password) weiter.
 
    > [!NOTE]
-   > Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-Konto, „hotmail.com“ oder „outlook.com“) zu erlangen, probieren Sie die [Vorschläge in diesem Artikel](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.
+   > Wenn Sie versuchen, wieder Zugriff auf ein persönliches Konto (beispielsweise ein Xbox-Konto, „hotmail.com“ oder „outlook.com“) zu erhalten, probieren Sie die Vorschläge im Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) aus.
    >
 
 ## <a name="reset-or-unlock-my-password-for-a-work-or-school-account"></a>Zurücksetzen oder Entsperren des eigenen Kennworts für ein Geschäfts-, Schul- oder Unikonto
 
-Hier finden Sie eine Anleitung für folgende Szenarien:
+Möglicherweise können Sie aus einem der folgenden Gründe nicht auf Ihr Azure Active Directory-Konto (Azure AD) zugreifen:
 
 * Ihr Kennwort funktioniert nicht, und Sie möchten es zurücksetzen.
-* Sie kennen Ihr Kennwort, Ihr Konto ist jedoch gesperrt, und Sie möchten Ihr Konto entsperren.
+* Sie kennen Ihr Kennwort, Ihr Konto ist jedoch gesperrt, und Sie möchten es entsperren.
 
-Rufen Sie mithilfe der folgenden Schritte die Self-Service-Kennwortzurücksetzung von Azure AD (kurz: SSPR für „Self-Service Password Reset“) auf, um wieder Zugriff auf Ihr Konto zu erlangen.
+Führen Sie die folgenden Schritte aus, um die Self-Service-Kennwortzurücksetzung von Azure AD zu nutzen und wieder Zugriff auf Ihr Konto zu erhalten.
 
-1. Klicken Sie auf einer beliebigen Anmeldeseite für ein Geschäfts-, Schul- oder Unikonto auf den Link **Sie können nicht auf Ihr Konto zugreifen?**, und klicken Sie anschließend auf  **Geschäfts-, Schul- oder Unikonto**, oder rufen Sie direkt die [Seite für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/) auf.
+1. Klicken Sie auf einer beliebigen **Anmeldeseite** für ein Geschäfts-, Schul- oder Unikonto auf den Link **Sie können nicht auf Ihr Konto zugreifen?**, und klicken Sie anschließend auf **Geschäfts-, Schul- oder Unikonto**, oder rufen Sie direkt die [Seite für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/) auf.
 
     ![Sie können nicht auf Ihr Konto zugreifen?][Login]
 
 2. Geben Sie die **Benutzer-ID** Ihres Geschäfts-, Schul- oder Unikontos ein, beweisen Sie, dass Sie kein Roboter sind, indem Sie die auf dem Bildschirm angezeigten Zeichen eingeben, und klicken Sie anschließend auf **Weiter**.
 
    > [!NOTE]
-   > Falls Ihr IT-Personal diese Funktion nicht aktiviert hat, wird ein Link angezeigt, über den Sie Ihren Administrator kontaktieren können, um Unterstützung vom IT-Personal zu erhalten –entweder per E-Mail oder über ein eigenes Webportal.
+   > Falls Ihr IT-Team diese Funktion nicht aktiviert hat, wird ein Link angezeigt, über den Sie Ihren Administrator kontaktieren können, um per E-Mail oder über ein eigenes Webportal Unterstützung von der IT-Abteilung zu erhalten.
    >
-   > Wenn Sie Ihr Konto entsperren möchten, wählen Sie an dieser Stelle „Ich kenne mein Kennwort, kann mich aber dennoch nicht anmelden.“ aus.
+   > Wenn Sie Ihr Konto entsperren möchten, wählen Sie an dieser Stelle **Ich kenne mein Kennwort, kann mich aber dennoch nicht anmelden.** aus.
    >
 
-3. Je nachdem, wie das IT-Personal SSPR konfiguriert hat, wird mindestens eine der folgenden Authentifizierungsmethoden angezeigt. Einige dieser Informationen wurden vom IT-Personal oder von Ihnen selbst bereits vor Anwendung der Informationen im Artikel [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) angegeben.
+3. Je nachdem, wie das IT-Team die Self-Service-Kennwortzurücksetzung konfiguriert hat, wird mindestens eine der folgenden Authentifizierungsmethoden angezeigt. Einige dieser Informationen sollten vom IT-Team oder von Ihnen selbst bereits mithilfe der Schritte im Artikel [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md) angegeben worden sein.
 
    * **E-Mail an meine alternative E-Mail-Adresse senden**
    * **Textnachricht an mein Mobiltelefon senden**
@@ -63,15 +63,15 @@ Rufen Sie mithilfe der folgenden Schritte die Self-Service-Kennwortzurücksetzun
 
    ![Überprüfen Ihrer Authentifizierungsdaten][Verification]
 
-4. Unter Umständen müssen Sie Schritt 3 erneut ausführen, falls das IT-Personal eine weitere Überprüfung erfordert.
-5. Geben Sie auf der Seite **Neues Kennwort auswählen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Fertig stellen**. Für das Kennwort Ihres Geschäfts-, Schul- oder Unikontos gelten unter Umständen bestimmte Anforderungen. Wir empfehlen ein Kennwort mit 8 bis 16 Zeichen, Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
-6. Wenn **Das Kennwort wurde zurückgesetzt.** erscheint, können Sie sich mit Ihrem neuen Kennwort anmelden.
+4. Unter Umständen müssen Sie Schritt 3 erneut mit einer anderen Option ausführen, falls das IT-Team eine weitere Überprüfung fordert.
+5. Geben Sie auf der Seite **Neues Kennwort auswählen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Fertig stellen**. Möglicherweise gelten für das Kennwort Ihres Geschäfts-, Schul- oder Unikontos bestimmte Vorgaben, die Sie erfüllen müssen. Es wird empfohlen, ein Kennwort zu verwenden, das zwischen 8 und 16 Zeichen lang ist und Groß- und Kleinbuchstaben, eine Ziffer und ein Sonderzeichen umfasst.
+6. Wenn die Meldung **Das Kennwort wurde zurückgesetzt.** angezeigt wird, können Sie sich mit Ihrem neuen Kennwort anmelden.
 
     ![Das Kennwort wurde zurückgesetzt.][Complete]
 
-Sie sollten nun auf Ihr Konto zugreifen können. Falls nicht, wenden Sie sich an das IT-Personal Ihrer Organisation, um weitere Hilfe zu erhalten.
+Sie sollten jetzt auf Ihr Konto zugreifen können. Sollte dies nicht der Fall sein, wenden Sie sich an das IT-Team Ihrer Organisation, um weitere Hilfe zu erhalten.
 
-Möglicherweise erhalten Sie eine Bestätigungs-E-Mail von einem Konto wie „Microsoft im Auftrag von \<Ihre Organisation>“. Sollten Sie eine solche E-Mail erhalten, obwohl Sie den Zugriff auf Ihr Konto nicht mithilfe der Self-Service-Kennwortzurücksetzung wiederhergestellt haben, wenden Sie sich an das IT-Personal Ihrer Organisation.
+Möglicherweise erhalten Sie eine Bestätigungs-E-Mail von einem Konto wie „Microsoft im Auftrag von \<Ihre Organisation>“. Sollten Sie eine solche E-Mail erhalten, obwohl Sie den Zugriff auf Ihr Konto nicht mithilfe der Self-Service-Kennwortzurücksetzung wiederhergestellt haben, wenden Sie sich an das IT-Team Ihrer Organisation.
 
 ## <a name="change-my-password"></a>Ändern des eigenen Kennworts
 
@@ -79,42 +79,42 @@ Falls Sie Ihr Kennwort bereits kennen und es ändern möchten, führen Sie die f
 
 ### <a name="change-your-password-from-the-office-365-portal"></a>Ändern des Kennworts über das Office 365-Portal
 
-Verwenden Sie die folgende Methode, falls Sie für gewöhnlich über das Office-Portal auf Ihre Anwendung zugreifen:
+Verwenden Sie die folgende Methode, wenn Sie für gewöhnlich über das Office-Portal auf Ihre Anwendung zugreifen:
 
-1. Melden Sie sich bei Ihrem [Office 365-Konto](https://www.office.com) mit Ihrem vorhandenen Kennwort an
-2. Klicken Sie rechts oben auf Ihr Profil und anschließend auf **Konto anzeigen**.
-3. Klicken Sie auf **Sicherheit und Datenschutz** > **Kennwort**.
-4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und klicken Sie anschließend auf **Absenden**.
+1. Melden Sie sich mit Ihrem vorhandenen Kennwort bei Ihrem [Office 365-Konto](https://www.office.com) an.
+2. Wählen Sie rechts oben Ihr Profil und dann **Konto anzeigen** aus.
+3. Wählen Sie **Sicherheit und Datenschutz** > **Kennwort** aus.
+4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und wählen Sie anschließend **Absenden** aus.
 
 ### <a name="change-your-password-from-the-azure-access-panel"></a>Ändern des Kennworts über den Azure-Zugriffsbereich
 
-Verwenden Sie die folgende Methode, falls Sie für gewöhnlich über das Azure Zugriffsportal auf Ihre Anwendung zugreifen:
+Verwenden Sie die folgende Methode, wenn Sie für gewöhnlich über den Azure Zugriffsbereich (MyApps) auf Ihre Anwendung zugreifen:
 
-1. Melden Sie sich mit Ihrem vorhandenen Kennwort beim [Azure-Zugriffsportal](https://myapps.microsoft.com/) an.
-2. Klicken Sie rechts oben auf Ihr Profil und anschließend auf **Profil**.
-3. Klicken Sie auf **Kennwort ändern**.
-4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und klicken Sie anschließend auf **Absenden**.
+1. Melden Sie sich mit Ihrem vorhandenen Kennwort beim [Azure-Zugriffsbereich](https://myapps.microsoft.com/) an.
+2. Wählen Sie rechts oben Ihr Profil und dann **Profil** aus.
+3. Wählen Sie **Kennwort ändern** aus.
+4. Geben Sie Ihr altes Kennwort ein, legen Sie Ihr neues Kennwort fest, bestätigen Sie es, und wählen Sie anschließend **Absenden** aus.
 
-## <a name="reset-password-at-login"></a>Zurücksetzen des Kennworts bei der Anmeldung
+## <a name="reset-password-at-sign-in"></a>Zurücksetzen des Kennworts bei der Anmeldung
 
-Fall der Administrator diese Funktion aktiviert hat, wird nun auf dem Anmeldebildschirm unter Windows 10 Fall Creators Update unter Umständen der Link **Kennwort zurücksetzen** angezeigt.
+Wenn der Administrator diese Funktion aktiviert hat, wird jetzt auf dem Anmeldebildschirm von Windows 10 Fall Creators Update der Link **Kennwort zurücksetzen** angezeigt.
 
-![LoginScreen][LoginScreen]
+![Anmeldebildschirm][LoginScreen]
 
-Wenn Sie auf den Link **Kennwort zurücksetzen** klicken, wird die SSPR-Oberfläche auf dem Anmeldebildschirm angezeigt, sodass Sie Ihr Kennwort zurücksetzen können, ohne sich anmelden und auf die normale webbasierte Oberfläche zugreifen zu müssen.
+Wählen Sie den Link **Kennwort zurücksetzen** aus, um die Oberfläche für die Self-Service-Kennwortzurücksetzung auf dem Anmeldebildschirm zu öffnen, sodass Sie Ihr Kennwort zurücksetzen können, ohne sich anmelden und auf die normale webbasierte Oberfläche zugreifen zu müssen.
 
-1. Bestätigen Sie Ihre Benutzer-ID, und klicken Sie auf **Weiter**.
-2. Wählen Sie eine Kontaktmethode für die Überprüfung aus, und bestätigen Sie sie. Unter Umständen müssen Sie diesen Schritt mit einer anderen Auswahl erneut ausführen, falls das IT-Personal eine weitere Überprüfung erfordert.
+1. Bestätigen Sie Ihre Benutzer-ID, und wählen Sie **Weiter** aus.
+2. Wählen Sie eine Kontaktmethode für die Überprüfung aus, und bestätigen Sie diese. Unter Umständen müssen Sie diesen Schritt erneut mit einer anderen Option ausführen, falls das IT-Team eine weitere Überprüfung fordert.
 
-   ![ContactMethod][ContactMethod]
+   ![Kontaktmethode][ContactMethod]
 
-3. Geben Sie auf der Seite **Neues Kennwort erstellen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und klicken Sie anschließend auf **Weiter**. Wir empfehlen ein Kennwort mit 8 bis 16 Zeichen, Groß- und Kleinbuchstaben, Zahlen und Sonderzeichen.
+3. Geben Sie auf der Seite **Neues Kennwort erstellen** ein neues Kennwort ein, bestätigen Sie Ihr neues Kennwort, und wählen Sie anschließend **Weiter** aus. Es wird empfohlen, ein Kennwort zu verwenden, das zwischen 8 und 16 Zeichen lang ist und Groß- und Kleinbuchstaben, Ziffern und Sonderzeichen umfasst.
 
-   ![ResetPassword][ResetPassword]
+   ![Zurücksetzen des Kennworts][ResetPassword]
 
-4. Wenn **Das Kennwort wurde zurückgesetzt.** angezeigt wird, klicken Sie auf **Fertig stellen**.
+4. Wenn die Meldung **Das Kennwort wurde zurückgesetzt.** angezeigt wird, wählen Sie **Fertig stellen** aus.
 
-Sie sollten nun auf Ihr Konto zugreifen können. Falls nicht, wenden Sie sich an das IT-Personal Ihrer Organisation, um weitere Hilfe zu erhalten.
+Sie sollten jetzt auf Ihr Konto zugreifen können. Andernfalls wenden Sie sich an das IT-Team Ihrer Organisation, um weitere Hilfe zu erhalten.
 
 ## <a name="common-problems-and-their-solutions"></a>häufige Probleme und Lösungen
 
@@ -122,9 +122,9 @@ Sie sollten nun auf Ihr Konto zugreifen können. Falls nicht, wenden Sie sich an
 
 | Fehlerbeschreibung| Welcher Fehler wird angezeigt?| Lösung |
 | --- | --- | --- |
-| Nach der Eingabe meiner Benutzer-ID wird mir die Seite „Wenden Sie sich an Ihren Administrator“ angezeigt. | Wenden Sie sich an Ihren Administrator <br> <br> Es wurde ermittelt, dass das Kennwort Ihres Benutzerkontos nicht von Microsoft verwaltet wird. Ihr Kennwort kann daher nicht automatisch zurückgesetzt werden. <br> <br> Sie müssen sich für weitere Unterstützung an IT-Mitarbeiter wenden. | Diese Meldung wird angezeigt, weil Ihr IT-Team Ihr Kennwort in Ihrer lokalen Umgebung verwaltet und es nicht gestattet, dass Sie das Kennwort über den Link „Kein Zugriff auf Ihr Konto?“ zurücksetzen. <br> <br> Wenden Sie sich zum Zurücksetzen des Kennworts direkt an Ihr IT-Team, und teilen Sie ihm mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit das Team dieses Feature für Sie aktivieren kann.|
-| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert“. | Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert. <br> <br> Ihr IT-Team hat Ihr Konto nicht zur Verwendung mit diesem Dienst eingerichtet. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil Ihr IT-Team die Kennwortzurücksetzung über den Link „Kein Zugriff auf Ihr Konto?“ für Ihre Organisation nicht aktiviert hat oder weil es Ihnen die Nutzung dieses Features nicht gestattet hat. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zum Kontaktieren eines Administrators, und teilen Sie dem IT-Team Ihres Unternehmens in einer E-Mail mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit es dieses Feature für Sie aktivieren kann. |
-| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Das Konto konnte nicht überprüft werden“. | Das Konto konnte nicht überprüft werden. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil die Kennwortzurücksetzung für Sie zwar aktiviert ist, Sie sich aber für die Nutzung dieses Diensts noch nicht registriert haben. Registrieren Sie sich für die Kennwortzurücksetzung unter http://aka.ms/ssprsetup, sobald der Zugriff auf Ihr Konto wieder möglich ist. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zum Kontaktieren eines Administrators, um eine E-Mail an das IT-Team Ihres Unternehmens zu senden. |
+| Nach der Eingabe meiner Benutzer-ID wird mir die Seite „Wenden Sie sich an Ihren Administrator“ angezeigt. | Wenden Sie sich an Ihren Administrator. <br> <br> Es wurde ermittelt, dass das Kennwort Ihres Benutzerkontos nicht von Microsoft verwaltet wird. Ihr Kennwort kann daher nicht automatisch zurückgesetzt werden. <br> <br> Sie müssen sich an Ihr IT-Team wenden, um weitere Unterstützung zu erhalten. | Diese Meldung wird angezeigt, weil Ihr IT-Team Ihr Kennwort in Ihrer lokalen Umgebung verwaltet. Sie können Ihr Kennwort nicht über den Link „Sie können nicht auf Ihr Konto zugreifen?“ zurücksetzen. <br> <br> Wenden Sie sich zum Zurücksetzen des Kennworts direkt an Ihr IT-Team, und teilen Sie diesem mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit das Team dieses Feature für Sie aktivieren kann.|
+| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert“. | Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert. <br> <br> Ihr IT-Team hat Ihr Konto nicht zur Verwendung dieses Diensts eingerichtet. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil Ihr IT-Team die Kennwortzurücksetzung über den Link „Sie können nicht auf Ihr Konto zugreifen?“ für Ihre Organisation nicht aktiviert hat oder weil das Team Ihnen keine Berechtigung für die Nutzung dieses Features gewährt hat. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur Kontaktaufnahme mit einem Administrator“, und teilen Sie dem IT-Team Ihres Unternehmens in einer E-Mail mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit das Team dieses Feature für Sie aktivieren kann. |
+| Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Das Konto konnte nicht überprüft werden“. | Das Konto konnte nicht überprüft werden. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil die Kennwortzurücksetzung für Sie zwar aktiviert ist, Sie sich aber nicht für die Nutzung dieses Diensts registriert haben. Registrieren Sie sich für die Kennwortzurücksetzung unter http://aka.ms/ssprsetup, sobald der Zugriff auf Ihr Konto wieder möglich ist. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur Kontaktaufnahme mit einem Administrator, um eine E-Mail an das IT-Team Ihres Unternehmens zu senden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -140,3 +140,4 @@ Sie sollten nun auf Ihr Konto zugreifen können. Falls nicht, wenden Sie sich an
 [LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Link „Kennwort zurücksetzen“ auf dem Windows 10 Fall Creators Update-Anmeldebildschirm"
 [ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "Überprüfen Ihrer Authentifizierungsdaten"
 [ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "Ändern des Kennworts"
+

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 1d2a5e5d639e2aa0023e99b73f87a68e19afc239
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 2f46fc37b9050b19b83685c97198c29a5ce46289
+ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
@@ -430,8 +430,8 @@ Azure Cosmos DB legt den Standarddurchsatz für Ihren Container abhängig davon 
 
 Das Durchsatzkonzept wird im Artikel [Anforderungseinheiten in Azure Cosmos DB](request-units.md) erläutert. Der Durchsatz für eine Tabelle wird gleichmäßig auf die zugrunde liegenden physischen Partitionen verteilt.  
 
-### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Wie viele Anforderungseinheiten pro Sekunde (RU/s) bietet eine über CQL erstellte Tabelle standardmäßig? Was ist, wenn ich ihn ändern muss?
-Azure Cosmos DB verwendet als Einheit für den Durchsatz Anforderungseinheiten pro Sekunde (RU/s). Tabellen, die über CQL erstellt wurden, bieten 400 RU. Sie können die Anforderungseinheiten über das Portal auf 10.000 RU ändern. Wenn Sie in der privaten Vorschauversion mehr als 10.000 Anforderungseinheiten benötigen, führen Sie die Erstellung über das Portal durch. Falls Sie diese Möglichkeit für CQL benötigen, setzen Sie sich unter [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) mit uns in Verbindung. 
+### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Wie viele Anforderungseinheiten pro Sekunde (RU/s) bietet eine über CQL erstellte Tabelle standardmäßig? Was ist, wenn ich den Wert ändern muss?
+Azure Cosmos DB verwendet als Einheit für den Durchsatz Anforderungseinheiten pro Sekunde (RU/s). Tabellen, die über CQL erstellt wurden, bieten 400 RU. Sie können die Anforderungseinheiten über das Portal ändern. 
 
 CQL
 ```

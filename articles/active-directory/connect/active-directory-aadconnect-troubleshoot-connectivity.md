@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: f9631e8a383b88421c55d9c42c8059df9e732800
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa98672551a2089f1a306c838295dd1980da0bca
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Problembehebung bei Konnektivitätsproblemen mit Azure AD Connect 
 Dieser Artikel erklärt, wie die Konnektivität zwischen Azure AD Connect und Azure AD funktioniert und wie Konnektivitätsprobleme behoben werden können. Diese Probleme können insbesondere in einer Umgebung mit einem Proxyserver auftreten.
@@ -94,6 +94,9 @@ Falls der Proxy nicht richtig konfiguriert ist, tritt folgender Fehler auf: ![pr
 | --- | --- | --- |
 | 403 |Verboten (403) |Der Proxy wurde für die angeforderte URL nicht geöffnet. Rufen Sie die Proxykonfiguration erneut auf, und stellen Sie sicher, dass die [URLs](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) geöffnet wurden. |
 | 407 |Proxyauthentifizierung erforderlich |Der Proxyserver erfordert eine Anmeldung, die nicht erfolgt ist. Stellen Sie sicher, dass Sie in den Konfigurationen von „machine.config“ eine entsprechende Einstellung vorgenommen haben, falls Ihr Proxyserver eine Authentifizierung erfordert. Stellen Sie außerdem sicher, dass Sie sowohl für den Benutzer, der den Assistenten ausführt, als auch für das Dienstkonto Domänenkonten verwenden. |
+
+### <a name="proxy-idle-timeout-setting"></a>Einstellung für Proxy-Leerlauftimeout
+Wenn Azure AD Connect eine Exportanforderung an Azure AD gesendet hat, kann Azure AD bis zu 5 Minuten benötigen, die Anforderung zu verarbeiten und dann eine Antwort zu generieren. Dies kann insbesondere passieren, wenn eine Exportanforderung einige Gruppenobjekte mit großen Gruppenmitgliedschaften enthält. Stellen Sie sicher, dass das Proxy-Leerlauftimeout so konfiguriert ist, dass es größer ist als 5 Minuten. Andernfalls kann es vorkommen, dass auf dem Azure AD Connect-Server zeitweilig Konnektivitätsprobleme mit Azure AD auftreten.
 
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Das Kommunikationsmuster zwischen Azure AD Connect und Azure AD 
 Falls Sie alle vorhergehenden Schritte ausgeführt haben und immer noch keine Verbindung herstellen können, sollten Sie sich Ihre Netzwerkprotokolle ansehen. Dieser Abschnitt dokumentiert ein normales und erfolgreiches Konnektivitätsmuster. Er zeigt auch häufig auftretende Meldungen, die Sie aber ignorieren können, wenn Sie die Netzwerkprotokolle lesen.

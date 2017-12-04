@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 1d92e673a948dd139ff2d4a24f2e602180be43c5
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: bdcf2f8a06c782270683e34e9a4cbc2ab2c7f443
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-google-apps"></a>Tutorial: Azure Active Directory-Integration mit Google Apps
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Um die Azure AD-Integration mit Google Apps konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Google Apps-Abonnement, das für das einmalige Anmelden aktiviert ist
+- Ein Google Apps-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -76,7 +76,7 @@ In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Test
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-google-apps-from-the-gallery"></a>Hinzufügen von Google Apps aus dem Katalog
-Zum Konfigurieren der Integration von Google Apps in Azure AD müssen Sie Google Apps aus dem Katalog zu Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Google Apps in Azure AD müssen Sie Google Apps aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Google Apps aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
@@ -100,7 +100,7 @@ Zum Konfigurieren der Integration von Google Apps in Azure AD müssen Sie Google
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Google Apps mithilfe einer Testbenutzerin mit dem Namen „Britta Simon“.
 
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Google Apps als Pendant zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Google Apps muss eine Linkbeziehung eingerichtet werden.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Google Apps als Entsprechung zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Google Apps muss eine Linkbeziehung eingerichtet werden.
 
 Weisen Sie in Google Apps den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um die Linkbeziehung herzustellen.
 
@@ -136,11 +136,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     | |
     |--|
-    | `http://google.com/a/<yourdomain.com>`|
-    | `http://google.com`|    
-    | `google.com/<yourdomain.com>`|
     | `google.com`|
-
+    | `http://google.com`|
+    | `google.com/<yourdomain.com>`|
+    | `http://google.com/a/<yourdomain.com>`|
+       
     > [!NOTE] 
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Google Apps-Clientsupportteam](https://www.google.com/contact/), um diese Werte zu erhalten. 
 

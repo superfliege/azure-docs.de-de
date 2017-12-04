@@ -6,21 +6,21 @@ keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service
 documentationcenter: 
 author: MicrosoftGuyJFlo
 manager: femila
-ms.reviewer: gahug
+ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 11/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ea2d910611f1935cadd8eaaf5760460f480f0c6c
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 8ca760c3f144cda15920dd401c6a8726d3d53da0
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="password-writeback-overview"></a>Übersicht über die Kennwortrückschreibung
 
@@ -108,8 +108,8 @@ Wenn Sie nicht sicher sind, auf welches Konto sich das beschriebene Konto bezieh
 
 Wenn Sie diese Berechtigungen festlegen, kann das MA-Dienstkonto für jede Gesamtstruktur Kennwörter im Namen der Benutzerkonten innerhalb dieser Gesamtstruktur verwalten. 
 
->[!IMPORTANT]
->Wenn Sie diese Berechtigungen nicht gewähren, erhalten die Benutzer – obwohl das Zurückschreiben scheinbar ordnungsgemäß konfiguriert ist – Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud zu verwalten.
+> [!IMPORTANT]
+> Wenn Sie diese Berechtigungen nicht gewähren, erhalten die Benutzer – obwohl das Zurückschreiben scheinbar ordnungsgemäß konfiguriert ist – Fehler bei dem Versuch, ihre lokalen Kennwörter über die Cloud zu verwalten.
 >
 
 > [!NOTE]
@@ -125,7 +125,6 @@ Um die entsprechenden Berechtigungen für das Kennwortrückschreiben einzurichte
 5. Wählen Sie das Konto aus, dem Berechtigungen zugewiesen werden sollen (vom Azure AD Connect-Setup).
 6. Wählen Sie in der Dropdownliste **Gilt für** den Eintrag **Nachfolgerbenutzerobjekte** aus.
 7. Aktivieren Sie unter **Berechtigungen** die Kontrollkästchen für folgende Optionen:
-    * **Abgelaufenes Kennwort wiederherstellen**
     * **Zurücksetzen des Kennworts**
     * **Kennwort ändern**
     * **lockoutTime schreiben**

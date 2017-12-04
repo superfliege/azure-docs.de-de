@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 4900707baa875ae4527d82e8189d5bc4d319ae0c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 585e0ab016dcf489ab99f30a9db43b879a8d3070
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings---public-preview"></a>Konfigurieren von Azure Multi-Factor Authentication-Einstellungen – öffentliche Vorschau
 
@@ -40,7 +40,7 @@ Dieser Artikel bietet Unterstützung bei der Verwaltung der Azure Multi-Factor A
 | [Auswählbare Verifizierungsmethoden](#selectable-verification-methods) |Ermöglicht Ihnen die Auswahl der Authentifizierungsmethoden, die Sie den Benutzern zur Verfügung stellen möchten. |
 
 ## <a name="block-and-unblock"></a>Benutzer sperren/zulassen
-Mit „Benutzer sperren/zulassen“ kann verhindert werden, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch verweigert. Gesperrte Benutzer bleiben ab Zeitpunkt der Sperrung 90 Tage lang gesperrt.
+Mit „Benutzer sperren/zulassen“ kann verhindert werden, dass Benutzer Authentifizierungsanforderungen erhalten. Authentifizierungsversuche für gesperrte Benutzer werden automatisch abgelehnt. Gesperrte Benutzer bleiben ab dem Zeitpunkt der Sperrung 90 Tage lang gesperrt.
 
 ### <a name="block-a-user"></a>Sperren eines Benutzers
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
@@ -85,7 +85,7 @@ Die Betrugswarnung kann so konfiguriert und eingerichtet werden, dass Ihre Benut
 6. Wählen Sie am unteren Rand der Seite „Diensteinstellungen“ **Portal aufrufen**.
 7. Klicken Sie im Azure Multi-Factor Authentication-Verwaltungsportal unter „Einen Bericht anzeigen“ auf **Betrugswarnung**.
 8. Geben Sie den Datumsbereich an, der im Bericht angezeigt werden soll. Sie können auch Benutzernamen, Telefonnummern und den Benutzerstatus angeben.
-9. Klicken Sie auf **Run**(Ausführen). Daraufhin wird ein Bericht mit Betrugswarnungen angezeigt. Klicken Sie auf **Exportieren nach CSV**, wenn Sie den Bericht exportieren möchten.
+9. Klicken Sie auf **Ausführen**, um einen Bericht zu Betrugswarnungen anzuzeigen. Klicken Sie auf **Exportieren nach CSV**, wenn Sie den Bericht exportieren möchten.
 
 ## <a name="one-time-bypass"></a>Einmalumgehung
 Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifizieren, ohne die Überprüfung in zwei Schritten auszuführen. Die Umgehung ist vorübergehend und läuft nach einer angegebenen Anzahl von Sekunden ab. Falls die mobile Anwendung oder das Telefon keine Benachrichtigung bzw. keinen Telefonanruf empfängt, können Sie eine Einmalumgehung aktivieren, damit der Benutzer auf die gewünschte Ressource zugreifen kann.
@@ -98,7 +98,7 @@ Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifiziere
    ![Einmalumgehung](./media/multi-factor-authentication-whats-next/onetimebypass.png)
 3. Wählen Sie **Hinzufügen**.
 4. Aktivieren Sie bei Bedarf die Replikationsgruppe für diese Umgehung.
-5. Geben Sie den Benutzernamen (in der Form username@domain.com), die Anzahl von Sekunden, für die die Umgehung gelten soll, und den Grund für die Umgehung ein. 
+5. Geben Sie den Benutzernamen (in der Form username@domain.com), die Dauer der Umgehung in Sekunden sowie den Grund für die Umgehung ein. 
 6. Wählen Sie **Hinzufügen**. Das Zeitlimit gilt sofort. Daher muss sich der Benutzer anmelden, bevor die Einmalumgehung abläuft. 
 
 ### <a name="view-the-one-time-bypass-report"></a>Anzeigen des Berichts für die Einmalumgehung
@@ -110,16 +110,16 @@ Mit einer Einmalumgehung kann sich ein Benutzer ein einziges Mal authentifiziere
 6. Wählen Sie am unteren Rand der Seite „Diensteinstellungen“ **Portal aufrufen**.
 7. Klicken Sie im Azure Multi-Factor Authentication-Verwaltungsportal unter „Einen Bericht anzeigen“ auf **Einmalumgehung**.
 8. Geben Sie den Datumsbereich an, der im Bericht angezeigt werden soll. Sie können auch Benutzernamen, Telefonnummern und den Benutzerstatus angeben.
-9. Klicken Sie auf **Run**(Ausführen). Daraufhin wird ein Bericht mit Umgehungen angezeigt. Klicken Sie auf **Exportieren nach CSV**, wenn Sie den Bericht exportieren möchten.
+9. Klicken Sie auf **Ausführen**, um einen Bericht zu Umgehungen anzuzeigen. Klicken Sie auf **Exportieren nach CSV**, wenn Sie den Bericht exportieren möchten.
 
 ## <a name="custom-voice-messages"></a>Benutzerdefinierte Sprachnachrichten
 Mit benutzerdefinierten Sprachnachrichten können Sie Ihre eigenen Aufzeichnungen oder Begrüßungen für die Überprüfung in zwei Schritten verwenden. Diese können zusätzlich zu den Microsoft-Aufzeichnungen verwendet werden oder diese ersetzen.
 
-Bevor Sie beginnen, sollten Sie Folgendes beachten:
+Bevor Sie beginnen, sollten Sie die folgenden Einschränkungen beachten:
 
 * Die unterstützten Dateiformate sind WAV und MP3.
 * Die maximale Dateigröße beträgt 5 MB.
-* Authentifizierungsnachrichten sollten kürzer als 20 Sekunden sein. Bei längeren Nachrichten ist die Überprüfung unter Umständen nicht erfolgreich, da der Benutzer erst reagieren kann, wenn die Nachricht zu Ende ist. Dadurch tritt bei der Überprüfung ein Timeout auf.
+* Authentifizierungsnachrichten sollten kürzer als 20 Sekunden sein. Bei Nachrichten mit einer Länge von mehr als 20 Sekunden ist die Überprüfung unter Umständen nicht erfolgreich, weil der Benutzer erst reagieren kann, wenn die Nachricht zu Ende ist. Dadurch tritt bei der Überprüfung ein Timeout auf.
 
 ### <a name="set-up-a-custom-message"></a>Einrichten einer benutzerdefinierten Nachricht
 
@@ -134,7 +134,7 @@ Bevor Sie beginnen, sollten Sie Folgendes beachten:
 6. Wählen Sie **Hinzufügen**.
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Zwischenspeichern in Azure Multi-Factor Authentication
-Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche in diesem Zeitraum automatisch erfolgreich sind. Dies wird hauptsächlich verwendet, wenn lokale Systeme, wie z. B. VPNs, mehrere Verifizierungsanfragen senden, während die erste Anfrage noch bearbeitet wird. Dadurch werden die nachfolgenden Anforderungen automatisch erfolgreich ausgeführt, nachdem die erste laufende Verifizierungsanfrage für den Benutzer erfolgreich ausgeführt wurde. 
+Durch Zwischenspeichern können Sie einen bestimmten Zeitraum festlegen, sodass nachfolgende Authentifizierungsversuche in diesem Zeitraum automatisch erfolgreich sind. Dies wird hauptsächlich verwendet, wenn lokale Systeme, wie z. B. VPNs, mehrere Verifizierungsanfragen senden, während die erste Anfrage noch bearbeitet wird. Durch eine Zwischenspeicherung werden die nachfolgenden Anforderungen automatisch erfolgreich ausgeführt, nachdem die erste laufende Verifizierungsanforderung für den Benutzer erfolgreich ausgeführt wurde. 
 
 Das Zwischenspeichern ist nicht für Anmeldungen bei Azure AD gedacht.
 
@@ -178,7 +178,7 @@ Unabhängig davon, ob vertrauenswürdige IPs aktiviert sind, ist die Überprüfu
 5. Wählen Sie unter „Multi-Factor Authentication“ die Option **Diensteinstellungen verwalten**.
 6. Auf der Seite „Diensteinstellungen“ haben Sie unter „Vertrauenswürdige IPs“ zwei Optionen:
    
-   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die Überprüfung in zwei Schritten mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Sie sollten in AD FS die folgende Regel erstellen, wenn sie noch nicht vorhanden ist: „c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);“
+   * **Für Anforderungen von Partnerbenutzern, die aus meinem Intranet stammen**: Aktivieren Sie das Kontrollkästchen. Alle Verbundbenutzer, die sich vom Unternehmensnetzwerk aus anmelden, umgehen die Überprüfung in zwei Schritten mithilfe eines von AD FS ausgestellten Anspruchs. Stellen Sie sicher, dass AD FS über eine Regel zum Hinzufügen des Intranetanspruchs zum entsprechenden Datenverkehr verfügt. Sofern nicht vorhanden, erstellen Sie die folgende Regel in AD FS: "c:[Type == "http://schemas.microsoft.com/ws/2012/01/insidecorporatenetwork"] => issue(claim = c);"
 
 
 
@@ -199,11 +199,11 @@ Einige Apps wie Office 2010 oder ältere Versionen und Apple Mail unterstützen 
 ### <a name="important-things-to-know-about-app-passwords"></a>Wichtige Informationen zu App-Kennwörtern
 Es folgt eine Liste mit wichtigen Informationen, die Sie über App-Kennwörter wissen sollten.
 
-* Die Eingabe von App-Kennwörtern sollte in jeder App nur einmal erforderlich sein. So müssen sich Benutzer ihre Kennwörter nicht merken und jedes Mal erneut eingeben.
+* App-Kennwörter müssen in jeder App nur einmal eingegeben werden. So müssen sich Benutzer ihre Kennwörter nicht merken und jedes Mal erneut eingeben.
 * Das eigentliche Kennwort wird automatisch erzeugt und nicht vom Benutzer festgelegt. Ein Grund hierfür ist, dass automatisch generierte Kennwörter sicherer und für einen Angreifer schwerer zu erraten sind.
 * Pro Benutzer können maximal 40 Kennwörter festgelegt werden. 
 * Anwendungen, die Kennwörter zwischenspeichern und in lokalen Szenarios nutzen, könnten fehlschlagen, weil das App-Kennwort außerhalb der Organisations-ID nicht bekannt ist. Ein Beispiel sind Exchange-E-Mails, die lokal vorhanden sind, bei denen sich die archivierten Nachrichten jedoch in der Cloud befinden. Das gleiche Kennwort funktioniert nicht.
-* Nach der Aktivierung der mehrstufigen Authentifizierung in einem Benutzerkonto können App-Kennwörter mit den meisten Nicht-Browserclients wie Outlook und Lync verwendet werden, wobei administrative Aufgaben auch dann nicht mithilfe von App-Kennwörtern über Nicht-Browseranwendungen wie Windows Power Shell durchgeführt werden können, wenn der Benutzer über ein Administratorkonto verfügt.  Stellen Sie sicher, dass Sie zum Ausführen von PowerShell-Skripts ein Dienstkonto mit einem sicheren Kennwort erstellen und für dieses Konto die Überprüfung in zwei Schritten nicht aktivieren.
+* Nachdem die mehrstufige Authentifizierung für ein Benutzerkonto aktiviert wurde, können für die meisten Nicht-Browserclients, z.B. Outlook und Lync, App-Kennwörter verwendet werden. Administrative Aufgaben können über Nicht-Browseranwendungen wie z.B. Windows PowerShell selbst dann nicht mit App-Kennwörtern durchgeführt werden, wenn der betreffende Benutzer über ein administratives Konto verfügt.  Erstellen Sie zum Ausführen von PowerShell-Skripts ein Dienstkonto mit einem sicheren Kennwort, und aktivieren Sie für dieses Konto nicht die Überprüfung in zwei Schritten.
 
 > [!WARNING]
 > App-Kennwörter funktionieren nicht in Hybridumgebungen, in denen Clients sowohl mit lokalen AutoErmittlung-Endpunkten als auch mit solchen in der Cloud kommunizieren. Das liegt daran, dass Domänenkennwörter für die lokale Authentifizierung, und App-Kennwörter für die Authentifizierung in der Cloud erforderlich sind.
@@ -217,7 +217,7 @@ Microsoft empfiehlt, jeweils ein App-Kennwort pro Gerät (und nicht pro Anwendun
 Azure AD unterstützt den Verbund (Einmaliges Anmelden) mit lokalen Windows Server Active Directory Domain Services (AD DS). Wenn Ihre Organisation im Verbund mit Azure AD besteht und Sie Azure Multi-Factor Authentication verwenden möchten, sind die folgenden Informationen zu App-Kennwörtern wichtig für Sie. Dieser Abschnitt gilt nur für Verbundkunden (SSO).
 
 * App-Kennwörter werden von Azure AD überprüft, sodass der Verbund umgangen wird. Der Verbund wird nur beim Einrichten von App-Kennwörtern aktiv verwendet.
-* Im Gegensatz zum passiven Ablauf gehen wir bei Verbundbenutzern (SSO) nie zum Identitätsanbieter (Identity Provider, IdP). Die Kennwörter werden in der Organisations-ID gespeichert. Wenn der Benutzer das Unternehmen verlässt, muss diese Information zur Organisations-ID übertragen werden, und zwar mithilfe von DirSync in Echtzeit. Nach dem Deaktivieren oder Löschen von Konten kann die Synchronisierung bis zu drei Stunden dauern, sodass das Deaktivieren bzw. Löschen des App-Kennworts in Azure AD verzögert wird.
+* Im Gegensatz zum passiven Ablauf erfolgt für Verbundbenutzer (SSO) keine Kontaktaufnahme mit dem Identitätsanbieter (Identity Provider, IdP). Die Kennwörter werden in der Organisations-ID gespeichert. Wenn der Benutzer das Unternehmen verlässt, muss diese Information zur Organisations-ID übertragen werden, und zwar mithilfe von DirSync in Echtzeit. Nach dem Deaktivieren oder Löschen von Konten kann die Synchronisierung bis zu drei Stunden dauern, sodass das Deaktivieren bzw. Löschen des App-Kennworts in Azure AD verzögert wird.
 * Lokale Einstellungen für die Clientzugriffssteuerung werden vom App-Kennwort nicht berücksichtigt.
 * Für das App-Kennwort ist keine lokale Funktion zur Protokollierung oder Überwachung der Authentifizierung verfügbar.
 * In bestimmten erweiterten Architekturentwürfen ist bei der Verwendung der Überprüfung in zwei Schritten mit Clients möglicherweise eine Kombination aus Organisationsbenutzername/-kennwörtern und App-Kennwörtern erforderlich, je nachdem, wo die Authentifizierung stattfindet. Bei Clients, die sich bei einer lokalen Infrastruktur authentifizieren, verwenden Sie einen Organisationsbenutzernamen und ein Organisationskennwort. Für Clients, die bei Azure AD authentifizieren, verwenden Sie das App-Kennwort.
@@ -254,7 +254,7 @@ Benutzer können App-Kennwörter während ihrer ersten Registrierung erstellen. 
 Benutzer können App-Kennwörter auch nach der Registrierung erstellen, indem sie ihre Einstellungen im Azure-Portal oder im Office 365-Portal erstellen. Weitere Informationen und detaillierte Schritte für Ihre Benutzer finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?](./end-user/multi-factor-authentication-end-user-app-passwords.md).
 
 ## <a name="remember-multi-factor-authentication-for-devices-that-users-trust"></a>Speichern der Multi-Factor Authentication für Geräte, denen Benutzer vertrauen
-Die Speicherung der Multi-Factor Authentication für Geräte und Browser, denen Benutzer vertrauen, ist eine kostenlose Funktion für alle MFA-Benutzer. Damit können Sie Benutzern die Möglichkeit geben, MFA für eine festgelegte Anzahl von Tagen zu umgehen, nachdem sie sich erfolgreich mithilfe von MFA angemeldet haben. Bei Verwendung dieser Option muss der Benutzer auf einem Gerät seltener eine Überprüfung in zwei Schritten durchführen, was zur Verbesserung der Verwendbarkeit beiträgt.
+Die Speicherung der Multi-Factor Authentication für Geräte und Browser, denen Benutzer vertrauen, ist eine kostenlose Funktion für alle MFA-Benutzer. Diese Einstellung ermöglicht es den Benutzern, MFA für eine festgelegte Anzahl von Tagen zu umgehen, nachdem sie sich erfolgreich mithilfe von MFA angemeldet haben. Bei Verwendung dieser Option muss der Benutzer auf einem Gerät seltener eine Überprüfung in zwei Schritten durchführen, was zur Verbesserung der Verwendbarkeit beiträgt.
 
 Ist ein Konto oder Gerät gefährdet, kann das Speichern von MFA für vertrauenswürdige Geräte jedoch die Sicherheit beeinträchtigen. Wenn ein Unternehmenskonto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht oder gestohlen wird, sollten Sie die [Multi-Factor Authentication auf allen Geräten wiederherstellen](multi-factor-authentication-manage-users-and-devices.md#restore-mfa-on-all-remembered-devices-for-a-user). Durch diese Aktion wird der vertrauenswürdige Status aller Geräte widerrufen, und der Benutzer muss wieder die Überprüfung in zwei Schritten ausführen. Sie können Ihre Benutzer auch anweisen, MFA auf ihren eigenen Geräten anhand der Anweisungen unter [Verwalten der Einstellungen für die Überprüfung in zwei Schritten](./end-user/multi-factor-authentication-end-user-manage-settings.md#require-two-step-verification-again-on-a-device-youve-marked-as-trusted) wiederherzustellen.
 
@@ -295,7 +295,7 @@ Wenn Ihre Benutzer Ihre Konten für MFA registrieren, wählen sie ihre bevorzugt
 | Methode | Beschreibung |
 |:--- |:--- |
 | Auf Telefon anrufen |Startet einen automatisierten Sprachanruf. Der Benutzer nimmt den Anruf an und drückt die #-Taste auf der Telefontastatur, um sich zu authentifizieren. Diese Telefonnummer wird nicht mit dem lokalen Active Directory synchronisiert. |
-| Textnachricht an Telefon |Sendet eine Textnachricht mit einem Überprüfungscode. Der Benutzer wird aufgefordert, mit dem Überprüfungscode auf die Textnachricht zu antworten oder den Überprüfungscode auf der Anmeldeseite einzugeben. |
+| Textnachricht an Telefon |Sendet eine Textnachricht mit einem Überprüfungscode. Der Benutzer wird über die Anmeldeoberfläche zur Eingabe des Prüfcodes aufgefordert. Dieser Vorgang wird als „unidirektionale SMS“ bezeichnet. Bei einer bidirektionalen SMS muss der Benutzer einen bestimmten Code per SMS zurücksenden. Die Funktion für bidirektionale SMS ist veraltet und wird ab dem 14. November 2018 nicht mehr unterstützt. Benutzer, die zur Verwendung bidirektionaler SMS konfiguriert sind, werden dann automatisch auf die Authentifizierungsoption „Auf Telefon anrufen“ umgestellt.|
 | Benachrichtigung über mobile App |Sendet eine Pushbenachrichtigung an Ihr Telefon oder registriertes Gerät. Der Benutzer zeigt die Benachrichtigung an und wählt **Überprüfen**, um die Überprüfung abzuschließen. <br>Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
 | Überprüfungscode von der mobilen App |Die Microsoft Authenticator-App generiert alle 30 Sekunden einen neuen OATH-Überprüfungscode. Der Benutzer gibt diesen Überprüfungscode auf der Anmeldeoberfläche ein.<br>Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar. |
 
