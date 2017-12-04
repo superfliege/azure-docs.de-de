@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/31/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: bb9c19bb489873d1a2175f4a85f7654a3bf099b8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c073cb28f5c37a402c04d5315d7f8e18de8a1b26
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Verwalten von Updates für mehrere Computer
 
@@ -87,6 +87,16 @@ Die Updateverwaltung ist für Ihren virtuellen Computer aktiviert.
 Eine Anleitung zur Aktivierung der Updateverwaltung für Windows-VMs und -Computer, die nicht Azure unterstehen, finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agents.md).
 
 Anweisungen zum Aktivieren der Updateverwaltung für Azure-fremde Linux-VMs und -Computer finden Sie unter [Verbinden Ihrer Linux-Computer mit Log Analytics](../log-analytics/log-analytics-agent-linux.md).
+
+## <a name="view-computers-attached-to-your-automation-account"></a>Anzeigen von Computern, die an Ihr Automation-Konto angefügt sind
+Nachdem Sie die Updateverwaltung für Ihre Computer aktiviert haben, können Sie die entsprechenden Informationen anzeigen, indem Sie auf **Computer** klicken. Folgende Computerinformationen sind verfügbar: *Name*, *Kompatibilität*, *Umgebung*, *Betriebssystemtyp*, *Wichtige Updates und Sicherheitsupdates* und *Weitere Updates*. 
+
+  ![Registerkarte „Computer“](./media/manage-update-multi/update-computers-tab.png)
+
+Computer, für die die Updateverwaltung erst vor Kurzem aktiviert wurde, ist ggf. noch keine Bewertung vorhanden. Der Konformitätszustand dieser Computer lautet *Nicht bewertet*.  Hier ist eine Liste mit den Werten zum Konformitätszustand angegeben:
+* Konform: Computer, für die keine kritischen Updates oder Sicherheitsupdates fehlen.
+* Nicht konform: Computer, für die mindestens ein kritisches Update oder Sicherheitsupdate fehlt.
+* Nicht bewertet: Die Daten für die Updatebewertung wurden vom Computer nicht innerhalb des erwarteten Zeitrahmens empfangen.  Für Linux-Computer gilt hierfür ein Zeitraum von drei Stunden, und für Windows-Computer ein Zeitraum von 12 Stunden.  
 
 ## <a name="view-an-update-assessment"></a>Anzeigen einer Updatebewertung
 

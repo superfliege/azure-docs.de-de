@@ -1,6 +1,6 @@
 ---
-title: "Herstellen einer Verbindung für ein virtuelles Netzwerk mit einem anderen VNET: Azure CLI | Microsoft-Dokumentation"
-description: "Dieser Artikel führt Sie durch das Verbinden virtueller Netzwerke mithilfe von Azure Resource Manager und Azure CLI."
+title: 'Verbinden eines virtuellen Netzwerks mit einem anderen VNet per VNet-zu-VNet-Verbindung: Azure CLI | Microsoft-Dokumentation'
+description: "In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie virtuelle Netzwerke mit einer VNet-zu-VNet-Verbindung und Azure CLI verbinden."
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 7c7653250f51429321b4da0384496aae37ad06da
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: be33522fbabc801f64b7d3f38be83443c0327128
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung mithilfe der Azure CLI
 
-Dieser Artikel zeigt, wie Sie eine VPN-Gatewayverbindung zwischen virtuellen Netzwerken erstellen. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein. 
+In diesem Artikel wird beschrieben, wie Sie mit dem Verbindungstyp „VNet-zu-VNet“ virtuelle Netzwerke verbinden. Die virtuellen Netzwerke können sich in derselben oder in unterschiedlichen Regionen befinden und aus demselben oder unterschiedlichen Abonnements stammen. Beim Verbinden von VNets aus unterschiedlichen Abonnements müssen die Abonnements nicht demselben Active Directory-Mandanten zugeordnet sein.
 
 Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsmodell und die Azure-Befehlszeilenschnittstelle. Sie können diese Konfiguration auch mit einem anderen Bereitstellungstool oder -modell erstellen. Wählen Sie hierzu in der folgenden Liste eine andere Option:
 
@@ -37,13 +37,15 @@ Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsm
 >
 >
 
-Das Verbinden eines virtuellen Netzwerks mit einem anderen virtuellen Netzwerk (VNet-zu-VNet) ähnelt dem Verbinden eines VNet mit einem lokalen Standort. Beide Verbindungstypen verwenden ein VPN-Gateway, um einen sicheren Tunnel mit IPsec/IKE bereitzustellen. Wenn sich Ihre VNETs in der gleichen Region befinden, kann es hilfreich sein, sie mittels VNET-Peering zu verbinden. Beim VNET-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
+## <a name="about"></a>Informationen zum Verbinden von VNets
 
-Die VNET-zu-VNET-Kommunikation kann mit Konfigurationen für mehrere Standorte kombiniert werden. Auf diese Weise können Sie Netzwerktopologien einrichten, die wie in der folgenden Abbildung dargestellt standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren:
+Das Verbinden von zwei virtuellen Netzwerken miteinander per Verbindungstyp „VNet-zu-VNet“ (VNet2VNet) ähnelt dem Erstellen einer IPsec-Verbindung mit einem lokalen Standort. Für beide Verbindungstypen wird ein VPN Gateway genutzt, um per IPsec/IKE einen sicheren Tunnel zu erstellen, und auch die Kommunikation läuft jeweils gleich ab. Der Unterschied zwischen den Verbindungstypen liegt in der Konfiguration des Gateways für das lokale Netzwerk. Beim Erstellen einer VNet-zu-VNet-Verbindung wird der Adressraum des Gateways für das lokale Netzwerk nicht angezeigt. Dieser wird automatisch erstellt und mit Adressen gefüllt. Wenn Sie den Adressraum für ein VNet aktualisieren, führt das andere VNet die Weiterleitung an den aktualisierten Adressraum aber automatisch durch.
 
-![Informationen zu Verbindungen](./media/vpn-gateway-howto-vnet-vnet-cli/aboutconnections.png)
+Falls Sie eine komplizierte Konfiguration verwenden, kann es ratsam sein, anstelle von „VNet-zu-VNet“ den Verbindungstyp „IPsec“ zu nutzen. Hierbei können Sie einen zusätzlichen Adressraum für das Gateway des lokalen Netzwerks angeben, um Datenverkehr weiterzuleiten. Wenn Sie Ihre VNets mit dem Verbindungstyp „IPsec“ verbinden, müssen Sie das Gateway für das lokale Netzwerk manuell erstellen und konfigurieren. Weitere Informationen finden Sie unter [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](vpn-gateway-howto-site-to-site-resource-manager-cli.md).
 
-### <a name="why"></a>Gründe für Verbindungen zwischen virtuellen Netzwerken
+Falls sich Ihre VNets in derselben Region befinden, kann es auch hilfreich sein, sie mittels VNet-Peering zu verbinden. Beim VNet-Peering wird kein VPN Gateway verwendet, und die Preise und Funktionen unterscheiden sich leicht. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
+
+### <a name="why"></a>Gründe für die Erstellung einer VNet-zu-VNet-Verbindung
 
 Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
 
@@ -55,19 +57,22 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
 
   * In derselben Region können Sie Anwendungen mit mehreren Ebenen und mehreren virtuellen Netzwerken einrichten, die aufgrund von Isolations- oder Verwaltungsanforderungen miteinander verbunden sind.
 
-Weitere Informationen zu VNet-zu-VNet-Verbindungen finden Sie am Ende dieses Artikels unter [Häufig gestellte Fragen zu VNet-zu-VNet-Verbindungen](#faq) .
+Die VNET-zu-VNET-Kommunikation kann mit Konfigurationen für mehrere Standorte kombiniert werden. Auf diese Weise können Sie Netzwerktopologien einrichten, die standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
 
 ### <a name="which-set-of-steps-should-i-use"></a>Welche Schritte soll ich ausführen?
 
-In diesem Artikel finden Sie zwei unterschiedliche Anleitungen: Eine Reihe von Schritten für [VNETs, die sich im selben Abonnement befinden](#samesub). Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet4.
+In diesem Artikel wird beschrieben, wie Sie VNets mit dem Verbindungstyp „VNet-zu-VNet“ verbinden. In diesem Artikel finden Sie zwei unterschiedliche Anleitungen: Schritte für [VNets, die sich unter demselben Abonnement befinden](#samesub), und Schritte für [VNets, die sich unter verschiedenen Abonnements befinden](#difsub). 
 
-![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
+Für diese Übung können Sie Konfigurationen kombinieren oder nur die gewünschte Konfiguration auswählen. Für alle Konfigurationen wird der Verbindungstyp „VNet-zu-VNet“ verwendet. Der Netzwerkdatenverkehr fließt zwischen den VNets, die direkt miteinander verbunden sind. In dieser Übung wird Datenverkehr von TestVNet4 nicht an TestVNet5 weitergeleitet.
 
-Für [VNETs in verschiedenen Abonnements](#difsub) gibt es einen separaten Artikel. Die Schritte für diese Konfiguration verwenden TestVNet1 und TestVNet5.
+* [VNets, die sich unter demselben Abonnement befinden](#samesub): In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet4 verwendet.
 
-![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
+  ![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-cli/v2vrmps.png)
 
-Sie können Konfigurationen kombinieren, wenn Sie möchten, oder einfach nur die zu verwendende Konfiguration auswählen.
+* [VNets, die sich unter verschiedenen Abonnements befinden](#difsub): In den Schritten für diese Konfiguration werden TestVNet1 und TestVNet5 verwendet.
+
+  ![v2v-Diagramm](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
+
 
 ## <a name="samesub"></a>Verbinden von VNETs im selben Abonnement
 
@@ -77,7 +82,7 @@ Installieren Sie als Vorbereitung die aktuelle Version der CLI-Befehle (2.0 oder
 
 ### <a name="Plan"></a>Planen der IP-Adressbereiche
 
-In den folgenden Schritten erstellen wir zwei virtuelle Netzwerke sowie die jeweiligen Gatewaysubnetze und Konfigurationen. Anschließend erstellen wir eine VPN-Verbindung zwischen den beiden VNets. Es ist wichtig, die IP-Adressbereiche für Ihre Netzwerkkonfiguration zu planen. Denken Sie daran, dass Sie sicherstellen müssen, dass keiner der VNet-Bereiche oder der Bereiche des lokalen Netzwerks Überschneidungen aufweist. In diesen Beispielen verwenden wir keinen Namenserver. Wenn Sie eine Namensauflösung für die virtuellen Netzwerke möchten, finden Sie unter [Namensauflösung](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) Informationen dazu.
+In den folgenden Schritten erstellen Sie zwei virtuelle Netzwerke sowie die jeweiligen Gatewaysubnetze und Konfigurationen. Anschließend erstellen Sie eine VPN-Verbindung zwischen den beiden VNets. Es ist wichtig, die IP-Adressbereiche für Ihre Netzwerkkonfiguration zu planen. Denken Sie daran, dass Sie sicherstellen müssen, dass keiner der VNet-Bereiche oder der Bereiche des lokalen Netzwerks Überschneidungen aufweist. In diesen Beispielen verwenden wir keinen Namenserver. Wenn Sie eine Namensauflösung für die virtuellen Netzwerke möchten, finden Sie unter [Namensauflösung](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) Informationen dazu.
 
 In den Beispielen werden die folgenden Werte verwendet:
 
@@ -261,7 +266,7 @@ Sie verfügen jetzt über zwei VNETs mit VPN Gateways. Im nächsten Schritt werd
 
 ## <a name="difsub"></a>Verbinden von VNETs aus unterschiedlichen Abonnements
 
-In diesem Szenario verbinden wir TestVNet1 und TestVNet5. Die VNETs befinden sich verschiedenen Abonnements. Die Abonnements müssen nicht demselben Active Directory-Mandanten zugeordnet werden. In den Schritten für diese Konfiguration wird eine zusätzliche VNet-zu-VNet-Verbindung hinzugefügt, um TestVNet1 mit TestVNet5 zu verbinden.
+In diesem Szenario verbinden Sie TestVNet1 und TestVNet5. Die VNETs befinden sich verschiedenen Abonnements. Die Abonnements müssen nicht demselben Active Directory-Mandanten zugeordnet werden. In den Schritten für diese Konfiguration wird eine zusätzliche VNet-zu-VNet-Verbindung hinzugefügt, um TestVNet1 mit TestVNet5 zu verbinden.
 
 ### <a name="TestVNet1diff"></a>Schritt 5: Erstellen und Konfigurieren von „TestVNet1“
 
@@ -327,7 +332,7 @@ Dieser Schritt muss im Kontext des neuen Abonnements, Abonnement 5, ausgeführt 
 
 ### <a name="connections5"></a>Schritt 8: Erstellen der Verbindungen
 
-Wir haben diesen Schritt in zwei CLI-Sitzungen mit den Bezeichnungen **[Abonnement 1]** und **[Abonnement 5]** aufgeteilt, da sich die Gateways in unterschiedlichen Abonnements befinden. Zum Wechseln zwischen Abonnements führen Sie „az account list --all“ aus, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und führen dann „az account set --subscription <subscriptionID>“ aus, um zum Abonnement zu wechseln, das Sie verwenden möchten.
+Dieser Schritt ist in zwei CLI-Sitzungen mit den Bezeichnungen **[Abonnement 1]** und **[Abonnement 5]** aufgeteilt, da sich die Gateways in unterschiedlichen Abonnements befinden. Zum Wechseln zwischen Abonnements führen Sie „az account list --all“ aus, um alle für Ihr Konto verfügbaren Abonnements aufzulisten, und führen dann „az account set --subscription <subscriptionID>“ aus, um zum Abonnement zu wechseln, das Sie verwenden möchten.
 
 1. **[Abonnement 1]** Melden Sie sich an, und stellen Sie eine Verbindung mit Abonnement 1 her. Führen Sie den folgenden Befehl aus, um den Namen und die ID des Gateways aus der Ausgabe abzurufen:
 

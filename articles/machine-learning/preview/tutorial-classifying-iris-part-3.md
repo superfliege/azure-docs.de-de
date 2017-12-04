@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
-ms.date: 11/14/2017
-ms.openlocfilehash: 7fa7eb53876746f1934af8ca3428cfdacb56382d
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.date: 11/29/2017
+ms.openlocfilehash: b48e5bc2552c92b45e0417e5a8a34705a473073e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Klassifizieren von Iris, Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning-Diensten (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -163,7 +163,7 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Das Docker
 
 3. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
 
-Beachten Sie, dass für den folgenden Befehl zum Einrichten der Zugriffstyp „Mitwirkender“ für das Abonnement erforderlich ist. Wenn Sie nicht über die erforderlichen Berechtigungen verfügen, benötigen Sie zumindest Zugriff als Mitwirkender auf die Ressourcengruppe, in der die Bereitstellung erfolgt. Hierzu müssen Sie den Ressourcengruppennamen mithilfe des Flags `-g` als Teil des Einrichtungsbefehls angeben. 
+   Beachten Sie, dass für den folgenden Befehl zum Einrichten der Zugriffstyp „Mitwirkender“ für das Abonnement erforderlich ist. Wenn Sie nicht über die erforderlichen Berechtigungen verfügen, benötigen Sie zumindest Zugriff als Mitwirkender auf die Ressourcengruppe, in der die Bereitstellung erfolgt. Hierzu müssen Sie den Ressourcengruppennamen mithilfe des Flags `-g` als Teil des Einrichtungsbefehls angeben. 
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>
@@ -276,10 +276,10 @@ Sie können den Webdienst jetzt ausführen.
 
 Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahlen enthält, um den ausgeführten Webdienst **irisapp** zu testen:
 
-1. Der Webdienst enthält Beispieldaten. Bei Ausführung im lokalen Modus können Sie den Befehl **az ml service show realtime** aufrufen. Mit diesem Aufruf wird ein Beispielbefehl für die Ausführung aufgerufen, der zum Testen des Diensts hilfreich ist. Außerdem wird mit diesem Aufruf die Bewertungs-URL abgerufen, mit der Sie den Dienst in Ihre eigene benutzerdefinierte App einbinden können:
+1. Der Webdienst enthält Beispieldaten. Bei Ausführung im lokalen Modus können Sie den Befehl **az ml service usage realtime** aufrufen. Mit diesem Aufruf wird ein Beispielbefehl für die Ausführung aufgerufen, der zum Testen des Diensts hilfreich ist. Außerdem wird mit diesem Aufruf die Bewertungs-URL abgerufen, mit der Sie den Dienst in Ihre eigene benutzerdefinierte App einbinden können:
 
    ```azurecli
-   az ml service show realtime -i <web service ID>
+   az ml service usage realtime -i <web service ID>
    ```
 
 2. Führen Sie den zurückgegebenen Befehl zum Ausführen des Diensts aus, um den Dienst zu testen:

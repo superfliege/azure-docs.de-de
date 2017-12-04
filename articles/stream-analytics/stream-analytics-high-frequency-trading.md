@@ -15,23 +15,28 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/05/2017
 ms.author: zhongc
-ms.openlocfilehash: 0a5a1129c5b7fc693ed7c187d928a128650f28b9
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f25a27a86b366b2302657c44108cd823b0384831
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Hochfrequenzhandel-Simulation mit Stream Analytics
-Die Kombination der SQL-Sprache von Azure Stream Analytics und JavaScript-UDF und -UDA ist eine sehr leistungsstarke Zusammenstellung, die Benutzern das Durchführen von Advanced Analytics-Vorgängen ermöglicht, z.B. das Online-Trainieren und -Bewerten für Machine Learning sowie die Simulation zustandsbehafteter Prozesse. In diesem Artikel wird beschrieben, wie Sie die lineare Regression in einem Azure Stream Analytics-Auftrag durchführen, mit dem ständig Trainings- und Bewertungsschritte für ein Hochfrequenzhandel-Szenario ausgeführt werden.
+Die Kombination aus SQL-Sprache und benutzerdefinierten JavaScript-Funktionen (User-Defined Functions, UDFs) bzw. benutzerdefinierten Aggregaten (User-Defined Aggregates, UDAs) in Azure Stream Analytics ermöglicht Benutzern die Nutzung von Advanced Analytics. Beispiele für Analysen mit Advanced Analytics sind das Online-Trainieren und -Bewerten für Machine Learning und die Simulation zustandsbehafteter Prozesse. In diesem Artikel wird beschrieben, wie Sie die lineare Regression in einem Azure Stream Analytics-Auftrag durchführen, mit dem ständig Trainings- und Bewertungsschritte für ein Hochfrequenzhandel-Szenario ausgeführt werden.
 
 ## <a name="high-frequency-trading"></a>Hochfrequenzhandel
-Beim logischen Ablauf des Hochfrequenzhandels geht es um das Beschaffen von Echtzeit-Kursnotierungen von einer Wertpapierbörse, das Erstellen eines Vorhersagemodells für die Kursnotierungen, um die Kursbewegung zu antizipieren, und das Platzieren von entsprechenden Kauf- oder Verkaufsaufträgen, um aufgrund der erfolgreichen Vorhersage der Preisbewegungen Geld zu verdienen. Wir benötigen daher Folgendes:
+Beim logischen Ablauf des Hochfrequenzhandels geht es um Folgendes:
+1. Beschaffen von Echtzeit-Kursnotierungen von einer Wertpapierbörse
+2. Erstellen eines Vorhersagemodells für die Kursnotierungen, um die Kursbewegung zu antizipieren
+3. Platzieren von entsprechenden Kauf- oder Verkaufsaufträgen, um aufgrund der erfolgreichen Vorhersage der Preisbewegungen Geld zu verdienen 
+
+Daher benötigen wir Folgendes:
 * Einen Feed mit Echtzeit-Kursnotierungen
 * Ein Vorhersagemodell für die Echtzeit-Kursnotierungen
 * Eine Handelssimulation, die für den Handelsalgorithmus den Gewinn und Verlust angibt
 
 ### <a name="real-time-quote-feed"></a>Feed mit Echtzeit-Kursnotierungen
-Über IEX sind kostenlose Geld- und Brief-Kursnotierungen per socket.io verfügbar: https://iextrading.com/developer/docs/#websockets. Es kann ein einfaches Konsolenprogramm geschrieben werden, um Echtzeit-Kursnotierungen zu erhalten und per Pushvorgang an den Event Hub als Datenquelle zu übertragen. Das Grundgerüst des Programms ist unten dargestellt. Die Fehlerbehandlung wurde weggelassen, um die Komplexität gering zu halten. Es ist erforderlich, dass Sie auch die NuGet-Pakete SocketIoClientDotNet und WindowsAzure.ServiceBus in Ihr Projekt einbinden.
+Über IEX sind kostenlose [Geld- und Brief-Kursnotierungen](https://iextrading.com/developer/docs/#websockets) per „socket.io“ verfügbar. Es kann ein einfaches Konsolenprogramm geschrieben werden, um Echtzeit-Kursnotierungen zu erhalten und per Pushvorgang an Azure Event Hubs als Datenquelle zu übertragen. Der folgende Code bildet das Grundgerüst des Programms. Die Fehlerbehandlung wurde im Code weggelassen, um die Komplexität gering zu halten. Es ist erforderlich, dass Sie auch die NuGet-Pakete SocketIoClientDotNet und WindowsAzure.ServiceBus in Ihr Projekt einbinden.
 
 
     using Quobject.SocketIoClientDotNet.Client;
@@ -51,7 +56,7 @@ Beim logischen Ablauf des Hochfrequenzhandels geht es um das Beschaffen von Echt
         socket.Emit("subscribe", symbols);
     });
 
-Hier sind einige generierte Beispielereignisse angegeben.
+Hier sind einige generierte Beispielereignisse angegeben:
 
     {"symbol":"MSFT","marketPercent":0.03246,"bidSize":100,"bidPrice":74.8,"askSize":300,"askPrice":74.83,"volume":70572,"lastSalePrice":74.825,"lastSaleSize":100,"lastSaleTime":1506953355123,"lastUpdated":1506953357170,"sector":"softwareservices","securityType":"commonstock"}
     {"symbol":"GOOG","marketPercent":0.04825,"bidSize":114,"bidPrice":870,"askSize":0,"askPrice":0,"volume":11240,"lastSalePrice":959.47,"lastSaleSize":60,"lastSaleTime":1506953317571,"lastUpdated":1506953357633,"sector":"softwareservices","securityType":"commonstock"}
@@ -65,9 +70,11 @@ Hier sind einige generierte Beispielereignisse angegeben.
 >Der Zeitstempel des Ereignisses lautet **lastUpdated** (in Epochenzeit).
 
 ### <a name="predictive-model-for-high-frequency-trading"></a>Vorhersagemodell für Hochfrequenzhandel
-Zu Demonstrationszwecken verwenden wir ein lineares Modell, das Darryl Shen in seinem Dokument beschreibt. http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf.
+Zu Demonstrationszwecken verwenden wir ein lineares Modell, das Darryl Shen in [seinem Dokument](http://eprints.maths.ox.ac.uk/1895/1/Darryl%20Shen%20%28for%20archive%29.pdf) beschreibt.
 
-„Volume Order Imbalance“ (VOI) ist eine Funktion des Geld-/Briefkurses (aktuell und letzter Tick-Vorgang). Im Dokument wird die Korrelation zwischen VOI und der zukünftigen Preisbewegung erläutert und ein lineares Modell zwischen dem letzten fünf VOI-Werten und der Preisänderung der nächsten zehn Tick-Vorgänge erstellt. Das Modell wird mit den Daten des vorherigen Tags per linearer Regression trainiert. Das trainierte Modell wird dann verwendet, um Vorhersagen zu Preisänderungen für Kursnotierungen des aktuellen Handelstags in Echtzeit zu erstellen. Wenn eine ausreichend hohe Preisänderung vorhergesagt wird, wird ein Handelsvorgang ausgeführt. Je nach Schwellenwerteinstellung sind für eine einzelne Aktie während eines Handelstags Tausende von Handelsvorgängen zu erwarten.
+„Volume Order Imbalance“ (VOI) ist eine Funktion des Geld-/Briefkurses (aktuell und letzter Tick-Vorgang). Im Dokument wird die Korrelation zwischen VOI und der zukünftigen Preisbewegung erläutert. Es wird ein lineares Modell zwischen den letzten fünf VOI-Werten und der Preisänderung der nächsten zehn Tick-Vorgänge erstellt. Das Modell wird mit den Daten des vorherigen Tags per linearer Regression trainiert. 
+
+Das trainierte Modell wird dann verwendet, um Vorhersagen zu Preisänderungen für Kursnotierungen des aktuellen Handelstags in Echtzeit zu erstellen. Wenn eine ausreichend hohe Preisänderung vorhergesagt wird, wird ein Handelsvorgang ausgeführt. Je nach Schwellenwerteinstellung sind für eine einzelne Aktie während eines Handelstags Tausende von Handelsvorgängen zu erwarten.
 
 ![VOI-Definition](./media/stream-analytics-high-frequency-trading/voi-formula.png)
 
@@ -93,12 +100,12 @@ Zunächst werden die Eingaben bereinigt. Die Epochenzeit wird per **DATEADD** in
     ),
     timefilteredquotes AS (
         /* filter between 7am and 1pm PST, 14:00 to 20:00 UTC */
-        /* cleanup invalid data points */
+        /* clean up invalid data points */
         SELECT * FROM typeconvertedquotes
         WHERE DATEPART(hour, lastUpdated) >= 14 AND DATEPART(hour, lastUpdated) < 20 AND bidSize > 0 AND askSize > 0 AND bidPrice > 0 AND askPrice > 0
     ),
 
-Als Nächstes verwenden wir die Funktion **LAG**, um Werte des letzten Tick-Vorgangs zu erhalten. Für den Wert **LIMIT DURATION** wird ein willkürlicher Wert von einer Stunde gewählt. Anhand der Häufigkeit von Kursnotierungen kann sicher angenommen werden, dass der vorherige Tick-Vorgang innerhalb der vergangenen Stunde gefunden werden kann.  
+Als Nächstes verwenden wir die Funktion **LAG**, um Werte des letzten Tick-Vorgangs zu erhalten. Für den Wert **LIMIT DURATION** wird ein willkürlicher Wert von einer Stunde gewählt. Anhand der Häufigkeit von Kursnotierungen kann sicher angenommen werden, dass der vorherige Tick-Vorgang innerhalb der vergangenen Stunde zu finden ist.  
 
     shiftedquotes AS (
         /* get previous bid/ask price and size in order to calculate VOI */
@@ -116,7 +123,7 @@ Als Nächstes verwenden wir die Funktion **LAG**, um Werte des letzten Tick-Vorg
         FROM timefilteredquotes
     ),
 
-Anschließend können wir den VOI-Wert berechnen. Beachten Sie Folgendes: Wir filtern die NULL-Werte für den Fall heraus, dass der vorherige Tick-Vorgang nicht vorhanden ist.
+Anschließend können wir den VOI-Wert berechnen. Wir filtern die NULL-Werte für den Fall heraus, dass der vorherige Tick-Vorgang nicht vorhanden ist.
 
     currentPriceAndVOI AS (
         /* calculate VOI */
@@ -230,7 +237,7 @@ Da Azure Stream Analytics nicht über eine integrierte Funktion für die lineare
         FROM modelparambs
     ),
 
-Wir möchten die Kursnotierungen in das Modell einbinden, um das Modell des vorherigen Tags für die Bewertung des aktuellen Ereignisses zu verwenden. Anstelle von **JOIN** verwenden wir **UNION** für die Modell- und Kursnotierungsereignisse und nutzen anschließend **LAG**, um die Ereignisse mit dem Modell des vorherigen Tags zu koppeln, damit wir genau eine Übereinstimmung erhalten. Aufgrund des Wochenendes müssen wir drei Tage zurückgehen. Wenn wir einfach **JOIN** verwenden, erhalten wir drei Modelle für jedes Kursnotierungsereignis.
+Wir möchten die Kursnotierungen in das Modell einbinden, um das Modell des vorherigen Tags für die Bewertung des aktuellen Ereignisses zu verwenden. Anstelle von **JOIN** verwenden wir **UNION** für die Modell- und Kursnotierungsereignisse. Anschließend verwenden wir **LAG**, um die Ereignisse mit dem Modell des vorherigen Tags zu koppeln, damit wir genau eine Übereinstimmung erhalten. Aufgrund des Wochenendes müssen wir drei Tage zurückgehen. Wenn wir einfach **JOIN** verwenden, erhalten wir drei Modelle für jedes Kursnotierungsereignis.
 
     shiftedVOI AS (
         /* get two consecutive VOIs */
@@ -266,7 +273,7 @@ Wir möchten die Kursnotierungen in das Modell einbinden, um das Modell des vorh
         FROM model
     ),
     VOIANDModelJoined AS (
-        /* match VOIs with the latest model within 3 days (72 hours, to take weekend into account) */
+        /* match VOIs with the latest model within 3 days (72 hours, to take the weekend into account) */
         SELECT
             symbol,
             midPrice,
@@ -279,7 +286,7 @@ Wir möchten die Kursnotierungen in das Modell einbinden, um das Modell des vorh
         WHERE type = 'voi'
     ),
 
-Jetzt können wir anhand des Modells Vorhersagen treffen und Kauf- bzw. Verkaufssignale generieren. Der Schwellenwert beträgt hierbei 0,02. Der Handelsvorgangswert 10 steht für einen Kauf, und der Wert -10 steht für einen Verkauf.
+Jetzt können wir anhand des Modells Vorhersagen treffen und Kauf- bzw. Verkaufssignale generieren. Der Schwellenwert beträgt hierbei 0,02. Der Handelsvorgangswert 10 steht für einen Kauf. Der Wert -10 steht für einen Verkauf.
 
     prediction AS (
         /* make prediction if there is a model */
@@ -308,11 +315,13 @@ Jetzt können wir anhand des Modells Vorhersagen treffen und Kauf- bzw. Verkaufs
     ),
 
 ### <a name="trading-simulation"></a>Handelssimulation
-Da wir jetzt über die Handelssignale verfügen, möchten wir als Nächstes testen, wie effektiv die Handelsstrategie ist, ohne tatsächlich Käufe und Verkäufe abzuwickeln. Dies erreichen wir mit einem benutzerdefinierten Aggregat (User Defined Aggregate, UDA) mit springenden Fenstern, die jede Minute wechseln. Dank der zusätzlichen Gruppierung nach Datum und der having-Klausel kann das Fenster auf Ereignisse desselben Tags beschränkt werden. Wenn ein springendes Fenster über zwei Tage verlaufen soll, kann die Gruppierung mit dem **GROUP BY**-Datum in den vorherigen Tag und den aktuellen Tag unterteilt werden. Mit der **HAVING**-Klausel werden die Fenster herausgefiltert, die an demselben Tag enden, aber für den vorherigen Tag gruppiert sind.
+Da wir jetzt über die Handelssignale verfügen, möchten wir als Nächstes testen, wie effektiv die Handelsstrategie ist, ohne tatsächlich Käufe und Verkäufe abzuwickeln. 
+
+Diesen Test können wir mit einem benutzerdefinierten Aggregat mit springenden Fenstern durchführen, die jede Minute wechseln. Dank der zusätzlichen Gruppierung nach Datum und der having-Klausel kann das Fenster auf Ereignisse desselben Tags beschränkt werden. Wenn ein springendes Fenster über zwei Tage verlaufen soll, kann die Gruppierung mit dem **GROUP BY**-Datum in den vorherigen Tag und den aktuellen Tag unterteilt werden. Mit der **HAVING**-Klausel werden die Fenster herausgefiltert, die an demselben Tag enden, aber für den vorherigen Tag gruppiert sind.
 
     simulation AS
     (
-        /* perform trade simulation for the past 7 hours to cover an entire trading day, generate output every minute */
+        /* perform trade simulation for the past 7 hours to cover an entire trading day, and generate output every minute */
         SELECT
             DateAdd(hour, -7, System.Timestamp) AS time,
             symbol,
@@ -323,7 +332,13 @@ Da wir jetzt über die Handelssignale verfügen, möchten wir als Nächstes test
         Having DateDiff(day, date, time) < 1 AND DATEPART(hour, time) < 13
     )
 
-Mit dem JavaScript-UDA werden Akkumulatoren in der init-Funktion initialisiert, der Statusübergang wird für jedes im Fenster hinzugefügte Ereignis berechnet, und unten im Fenster werden die Simulationsergebnisse zurückgegeben. Der allgemeine Handelsprozess ist ein Aktienkauf, wenn ein Kaufsignal empfangen wird und keine Aktien gehalten werden, ein Aktienverkauf, wenn ein Verkaufssignal empfangen wird und Aktien gehalten werden, oder ein Leerverkauf, falls keine Aktien gehalten werden. Wenn eine Short-Position vorhanden ist und ein Kaufsignal empfangen wird, wird die Aktie gekauft, um den Bestand zu decken. In dieser Simulation halten oder „leerverkaufen“ wir niemals zehn Anteilsscheine einer bestimmten Aktie, und die Transaktionskosten liegen genau bei 8 US-Dollar.
+Mit dem JavaScript-UDA werden Akkumulatoren in der `init`-Funktion initialisiert, der Statusübergang wird für jedes im Fenster hinzugefügte Ereignis berechnet, und unten im Fenster werden die Simulationsergebnisse zurückgegeben. Der allgemeine Handelsprozess läuft wie folgt ab:
+
+- Aktien kaufen, wenn ein Kaufsignal empfangen wird und keine Aktien gehalten werden.
+- Aktien verkaufen, wenn ein Verkaufssignal empfangen wird und Aktien gehalten werden.
+- Leerverkauf durchführen, falls keine Aktien gehalten werden. 
+
+Wenn eine Short-Position vorhanden ist und ein Kaufsignal empfangen wird, Aktien kaufen, um den Bestand zu decken. In dieser Simulation halten oder „leerverkaufen“ wir niemals zehn Anteilsscheine einer bestimmten Aktie. Die Transaktionskosten liegen genau bei 8 US-Dollar.
 
 
     function main() {
@@ -432,6 +447,10 @@ Abschließend geben wir die Daten zur Visualisierung im Power BI-Dashboard aus.
 
 
 ## <a name="summary"></a>Zusammenfassung
-Es wurde verdeutlicht, dass Sie mit einer nicht übermäßig aufwändigen Abfrage in Azure Stream Analytics ein realistisches Modell für den Hochfrequenzhandel implementieren können. Wir müssen das Modell von fünf auf zwei Eingabevariablen vereinfachen, da keine integrierte Funktion für die lineare Regression vorhanden ist. Es ist für interessierte Benutzer aber durchaus möglich, auch anspruchsvollere Algorithmen mit höheren Dimensionen als JavaScript-UDA zu implementieren. Beachten Sie hierbei Folgendes: Im Gegensatz zum JavaScript-UDA kann der Großteil der Abfrage in Visual Studio mit [Azure Stream Analytics-Tool für Visual Studio](stream-analytics-tools-for-visual-studio.md) getestet und debuggt werden. Nachdem die erste Abfrage geschrieben wurde, hat der Verfasser für das Testen und Debuggen der Abfrage in Visual Studio weniger als 30 Minuten benötigt. Derzeit ist das Debuggen des UDA in Visual Studio nicht möglich. Wir arbeiten daran, dies und den Schritt-für-Schritt-Durchlauf des JavaScript-Codes zu ermöglichen. Beachten Sie auch, dass die Namen der Felder für die Erreichung des UDA nur Kleinbuchstaben enthalten. Dies war beim Testen der Abfrage kein offensichtliches Verhalten. Für Azure Stream Analytics-Kompatibilitätsebene 1.1 kann die Groß-/Kleinschreibung von Feldnamen aber beibehalten werden, damit das Verhalten natürlicher ist.
+Wir können mit einer nicht übermäßig aufwändigen Abfrage in Azure Stream Analytics ein realistisches Modell für den Hochfrequenzhandel implementieren. Hierfür müssen wir das Modell von fünf auf zwei Eingabevariablen vereinfachen, da keine integrierte Funktion für die lineare Regression vorhanden ist. Es ist für interessierte Benutzer aber durchaus möglich, auch anspruchsvollere Algorithmen mit höheren Dimensionen als JavaScript-UDA zu implementieren. 
+
+Beachten Sie hierbei Folgendes: Im Gegensatz zum JavaScript-UDA kann der Großteil der Abfrage in Visual Studio mit dem [Azure Stream Analytics-Tool für Visual Studio](stream-analytics-tools-for-visual-studio.md) getestet und debuggt werden. Nachdem die erste Abfrage geschrieben wurde, hat der Verfasser für das Testen und Debuggen der Abfrage in Visual Studio weniger als 30 Minuten benötigt. 
+
+Derzeit ist das Debuggen des UDA in Visual Studio nicht möglich. Wir arbeiten daran, dies und den Schritt-für-Schritt-Durchlauf des JavaScript-Codes zu ermöglichen. Beachten Sie auch, dass die Namen der Felder für die Erreichung des UDA nur Kleinbuchstaben enthalten. Dies war beim Testen der Abfrage kein offensichtliches Verhalten. Für Azure Stream Analytics-Kompatibilitätsebene 1.1 wird die Groß-/Kleinschreibung von Feldnamen aber beibehalten, damit das Verhalten natürlicher ist.
 
 Ich hoffe, dieser Artikel ist eine Inspiration für alle Azure Stream Analytics-Benutzer unseres Diensts, wenn es um die dauerhafte Durchführung von erweiterten Analysevorgängen nahezu in Echtzeit geht. Teilen Sie uns Ihr Feedback mit, um das Implementieren von Abfragen für Szenarien mit erweiterten Analysevorgängen zu erleichtern.
