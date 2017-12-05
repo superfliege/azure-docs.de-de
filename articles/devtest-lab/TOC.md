@@ -31,6 +31,7 @@
 ### [Konfigurieren von Marketplace-Images](devtest-lab-configure-marketplace-images.md)
 ### [Aktivieren eines lizenzierten Image](devtest-lab-enable-licensed-images.md)
 ### [Hinzufügen von Tags zu einem Lab](devtest-lab-add-tag.md)
+### [Beitragsankündigung in einem Lab](devtest-lab-announcements.md)
 
 ## [Auswählen benutzerdefinierter Images oder Formeln](devtest-lab-comparing-vm-base-image-types.md)
 

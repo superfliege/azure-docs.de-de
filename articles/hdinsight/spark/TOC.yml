@@ -104,6 +104,8 @@
           href: apache-spark-streaming-overview.md
         - name: Verarbeiten von Streamingereignissen
           href: apache-spark-eventhub-streaming.md
+        - name: Strukturiertes Streaming mit Event Hubs
+          href: apache-spark-eventhub-structured-streaming.md
         - name: Strukturiertes Streaming mit Kafka
           href: ../hdinsight-apache-kafka-spark-structured-streaming.md
           maintainContext: true

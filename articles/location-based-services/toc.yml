@@ -29,6 +29,8 @@
       href: how-to-manage-account-keys.md
     - name: Verwenden des Kartensteuerelements
       href: how-to-use-map-control.md
+    - name: Suchen nach einer Adresse
+      href: how-to-search-for-address.md
 - name: Referenz
   items:
     - name: Azure IoT Developer Center

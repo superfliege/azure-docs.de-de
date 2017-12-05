@@ -7,8 +7,10 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines AKS-Clusters
+    - name: Erstellen eines AKS-Clusters – CLI
       href: kubernetes-walkthrough.md
+    - name: Erstellen eines AKS-Clusters – Portal
+      href: kubernetes-walkthrough-portal.md
 - name: Lernprogramme
   items:
     - name: '1: Vorbereiten der Anwendung für AKS'

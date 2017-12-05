@@ -59,6 +59,8 @@
       href: /powershell/module/azurerm.containerregistry
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.containerregistry/registries
+    - name: Webhookschema
+      href: container-registry-webhook-reference.md
 - name: Ressourcen
   items:
     - name: Regionale Verfügbarkeit

@@ -27,6 +27,10 @@
   items:
     - name: Grundlagen zu Kostenberichten
       href: understading-cost-reports.md
+- name: Anleitungen
+  items:
+    - name: Verwenden von Cost Management-Berichten
+      href: use-reports.md
 - name: Ressourcen
   items:
     - name: Videos zur Kostenverwaltung

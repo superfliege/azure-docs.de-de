@@ -70,8 +70,9 @@
 ### [Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnung](automation-invoke-runbook-from-omsla-alert.md)
 ### [Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook](automation-deploy-template-runbook.md)
 ## Lösungen
+### [Integrieren der Update- und Änderungsnachverfolgung](automation-onboard-solutions.md)
 ### [Updateverwaltung](../operations-management-suite/oms-solution-update-management.md)
-#### [Verwalten von Aktualisierungen für mehrere virtuelle Computer](manage-update-multi.md)
+#### [Manage updates for multiple VMs](manage-update-multi.md) (Verwalten von Aktualisierungen für mehrere virtuelle Computer)
 #### [Integrate SCCM with OMS Update Management (Integrieren von SCCM mit OMS-Updateverwaltung)](oms-solution-updatemgmt-sccmintegration.md)
 ### [Änderungsnachverfolgung](../log-analytics/log-analytics-change-tracking.md)
 ### [Nachverfolgen von Änderungen auf Ihren virtuellen Computern](automation-vm-change-tracking.md)

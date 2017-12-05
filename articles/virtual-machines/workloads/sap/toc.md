@@ -11,8 +11,9 @@
 ### [HA-Einrichtung mit STONITH](ha-setup-with-stonith.md)
 ### [Betriebssystemsicherung für Typ-II-SKUs](os-backup-type-ii-skus.md)
 # SAP HANA in Azure Virtual Machines
-## [SAP HANA-Einzelinstanz](hana-get-started.md)
+## [SAP HANA-Einzelinstanzinstallation](hana-get-started.md)
 ## [Bereitstellungshandbuch für S/4 HANA oder BW/4 HANA SAP CAL](cal-s4h.md)
+## [SAP HANA in Azure – Betriebshandbuch](hana-vm-operations.md)
 ## [SAP HANA: Hohe Verfügbarkeit in Azure Virtual Machines](sap-hana-high-availability.md)
 ## [Übersicht über SAP HANA-Sicherungen](sap-hana-backup-guide.md)
 ## [SAP HANA-Sicherungen auf Dateiebene](sap-hana-backup-file-level.md)

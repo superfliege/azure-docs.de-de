@@ -58,6 +58,7 @@
 
 ## Problembehandlung
 ### [Überprüfen der ExpressRoute-Konnektivität](expressroute-troubleshooting-expressroute-overview.md)
+### [Zurücksetzen einer fehlerhaften Verbindung](reset-circuit.md)
 ### [Abrufen von ARP-Tabellen](expressroute-troubleshooting-arp-resource-manager.md)
 ### [Abrufen von ARP-Tabellen (klassisch)](expressroute-troubleshooting-arp-classic.md)
 
