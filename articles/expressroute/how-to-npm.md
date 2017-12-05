@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 3ab8029d035c3ba88ddb8a112e27f9054f7c203c
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 9e459a42a9fd7caedfa255a7baf51273eef2265a
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>Konfigurieren des Netzwerkleistungsmonitors für ExpressRoute (Vorschau)
 
@@ -96,7 +96,7 @@ Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte ode
 1. Klicken Sie auf der Seite **Netzwerkleistungsmonitor – TCP-Setup** Ihrer Ressource im Abschnitt **OMS-Agents installieren** auf den Agent, der dem Prozessor Ihres Servers entspricht, und laden Sie die Setup-Datei herunter.
 
   >[!NOTE]
-  >Der Linux-Agent wird derzeit nicht für die ExpressRoute-Überwachung unterstützt.
+  >Der Agent muss auf einem Windows Server-Computer (2008 SP1 oder höher) installiert werden. Die Überwachung von ExpressRoute-Leitungen unter Verwendung des Windows Desktop- oder Linux-Betriebssystem wird nicht unterstützt. 
   >
   >
 2. Kopieren Sie dann die **Arbeitsbereich-ID** und den **Primärschlüssel**, und fügen Sie diese in Editor ein.
@@ -105,6 +105,8 @@ Wenn Sie bereits einen Netzwerkleistungsmonitor verwenden, um andere Objekte ode
   ![PowerShell-Skript](.\media\how-to-npm\7.png)
 
 ### <a name="installagent"></a>2.2: Installieren eines Überwachungs-Agents auf jeden Überwachungsserver
+
+Es wird empfohlen, dass Sie zur Bereitstellung von Redundanz mindestens zwei Agents auf jeder Seite der ExpressRoute-Verbindung (z.B. lokal, Azure-VNETs) installieren. Führen Sie die folgenden Schritte aus, um die Agents zu installieren:
 
 1. Führen Sie das **Setup** aus, um den Agent auf jedem Server zu installieren, den Sie zum Überwachen von ExpressRoute verwenden möchten. Der Server, den Sie für die Überwachung verwenden, kann lokal oder ein virtueller Computer sein und benötigt Zugriff auf das Internet. Sie müssen mindestens einen Agent lokal und einen in jedem Netzwerksegment, das in Azure überwacht werden soll, installieren.
 2. Klicken Sie auf der Seite **Willkommen**auf **Weiter**.

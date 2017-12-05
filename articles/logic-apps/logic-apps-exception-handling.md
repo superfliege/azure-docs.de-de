@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 9af2f71b3d288cc6f4e271d0915545d43a1249bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4eb6f743479886374692eadcf218b77b4bfcc933
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -26,38 +26,74 @@ Azure Logic Apps verfügen über umfassende Tools und Muster, damit Sie sicherst
 
 ## <a name="retry-policies"></a>Wiederholungsrichtlinien
 
-Eine Wiederholungsrichtlinie ist die einfachste Form der Ausnahme- und Fehlerbehandlung. Mit dieser Richtlinie wird definiert, ob für die Aktion ein Wiederholungsversuch durchgeführt werden soll, wenn bei der ersten Anforderung ein Timeout oder ein Fehler aufgetreten ist (Anforderung mit der Antwort 429 oder 5xx). Standardmäßig wird versucht, alle Aktionen in Intervallen von jeweils 20 Sekunden vier weitere Male zu wiederholen. Wenn für die erste Anforderung die Antwort `500 Internal Server Error` empfangen wird, wartet das Workflowmodul also 20 Sekunden und startet dann einen Wiederholungsversuch für die Anforderung. Wenn für die Anforderung nach allen Wiederholungsversuchen immer noch eine Ausnahme oder ein Fehler vorliegt, wird der Workflow fortgesetzt, und der Status der Aktion lautet `Failed`.
+Eine Wiederholungsrichtlinie ist die einfachste Form der Ausnahme- und Fehlerbehandlung. Mit dieser Richtlinie wird definiert, ob und wie für die Aktion ein Wiederholungsversuch durchgeführt werden soll, wenn bei der ersten Anforderung ein Timeout oder ein Fehler aufgetreten ist (Anforderung mit der Antwort 429 oder 5xx). Es gibt drei Arten von Wiederholungsrichtlinien, `exponential`, `fixed` und `none`. Wenn in der Workflowdefinition keine Wiederholungsrichtlinie angegeben ist, wird die Standardrichtlinie verwendet. Sie können Wiederholungsrichtlinien in den **Eingaben** für eine bestimmte Aktion oder für einen bestimmten Trigger konfigurieren, wenn sie wiederholbar ist. In ähnlicher Weise können Wiederholungsrichtlinien (gegebenenfalls) im Logik-App-Designer unter den **Einstellungen** für einen bestimmten Block konfiguriert werden.
 
-Sie können Wiederholungsrichtlinien in den **Eingaben** einer bestimmten Aktion konfigurieren. Beispielsweise können Sie eine Wiederholungsrichtlinie konfigurieren, bei der für einstündige Intervalle bis zu viermal ein Wiederholungsversuch gestartet wird. Ausführliche Informationen zu Eingabeeigenschaften finden Sie unter [Workflow-Aktionen und -Trigger][retryPolicyMSDN].
+Informationen zu den Einschränkungen für Wiederholungsrichtlinien finden Sie unter [Logik-Apps – Einschränkungen und Konfiguration](../logic-apps/logic-apps-limits-and-config.md), und weitere Informationen zur unterstützten Syntax finden Sie im [Abschnitt zu Wiederholungsrichtlinien in Workflow-Aktionen und Triggern][retryPolicyMSDN].
+
+### <a name="exponential-interval"></a>Exponentielles Intervall
+Die Richtlinienart `exponential` nimmt die Wiederholung einer Anforderung mit Fehler nach einem zufälligen Zeitintervall aus einem exponentiell anwachsenden Bereich vor. Für jeden Wiederholungsversuch ist dabei garantiert, dass er in einem Zufallsintervall gesendet wird, das größer als **MinimumIntervall** und kleiner als **MaximumIntervall** ist. Für jeden Wiederholungsversuch bis zum Erreichen von **Anzahl** einschließlich wird eine uniforme Zufallsvariable im unten angegebenen Bereich generiert:
+<table>
+<tr><th> Bereich der Zufallsvariablen </th></tr>
+<tr><td>
+
+| Wiederholungsanzahl | Minimales Intervall | Maximales Intervall |
+| ------------ |  ------------ |  ------------ |
+| 1 | Max(0, **MinimumIntervall**) | Min(Intervall, **MaximumIntervall**) |
+| 2 | Max(Intervall, **MinimumIntervall**) | Min(2 * Intervall, **MaximumIntervall**) |
+| 3 | Max(2*Intervall, **MinimumIntervall**) | Min(4 * Intervall, **MaximumIntervall**) |
+| 4 | Max(4 * Intervall, **MinimumIntervall**) | Min(8 * Intervall, **MaximumIntervall**) |
+| ... |
+
+</td></tr></table>
+
+Für Richtlinien vom Typ `exponential` sind **Anzahl** und **Intervall** erforderlich, während **MinimumIntervall** und **MaximumIntervalL** optional angegeben werden können, um die Standardwerte PT5S bzw. PT1D außer Kraft zu setzen.
+
+| Elementname | Erforderlich | Typ | Beschreibung |
+| ------------ | -------- | ---- | ----------- |
+| Typ | Ja | String | `exponential` |
+| count | Ja | Integer | Die Anzahl der Wiederholungsversuche muss zwischen 1 und 90 liegen  |
+| interval | Ja | String | Das Wiederholungsintervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) muss zwischen PT5S und PT1D liegen |
+| MinimumIntervall | Nein| String | Das Minimumintervall für die Wiederholung im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) muss zwischen PT5S und **Intervall** liegen |
+| Maximumintervall | Nein| String | Das Maximumintervall für die Wiederholung im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) muss zwischen **Intervall** und PT1D liegen |
+
+### <a name="fixed-interval"></a>Festes Intervall
+
+Beim Richtlinientyp `fixed` wird die Ausführung einer Anforderung mit Fehler nach dem Abwarten für die angegebene Zeitspanne durch erneutes Senden der Anforderung erneut versucht.
+
+| Elementname | Erforderlich | Typ | Beschreibung |
+| ------------ | -------- | ---- | ----------- |
+| Typ | Ja | String | `fixed`|
+| count | Ja | Integer | Die Anzahl der Wiederholungsversuche muss zwischen 1 und 90 liegen |
+| interval | Ja | String | Das Wiederholungsintervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) muss zwischen PT5S und PT1D liegen |
+
+### <a name="none"></a>Keine
+Der Richtlinientyp `none` bewirkt keinen erneuten Ausführungsversuch einer Anforderung mit Fehler.
+
+| Elementname | Erforderlich | Typ | Beschreibung |
+| ------------ | -------- | ---- | ----------- |
+| Typ | Ja | String | `none`|
+
+### <a name="default"></a>Standard
+Falls keine Wiederholungsrichtlinie angegeben ist, wird die Standardrichtlinie verwendet. Die Standardrichtlinie ist eine Richtlinie mit exponentiellem Intervall, die bis zu 4 Wiederholungsversuche mit exponentiell wachsenden Intervallen sendet, die um 7,5 Sekunden skaliert und auf den Bereich zwischen 5 und 45 Sekunden beschränkt sind. Diese Standardrichtlinie (die bei nicht definiertem Wert für **retryPolicy** verwendet wird) ist äquivalent zur Richtlinie in dieser Beispieldefinition eines HTTP-Workflows:
 
 ```json
-"retryPolicy" : {
-      "type": "<type-of-retry-policy>",
-      "interval": <retry-interval>,
-      "count": <number-of-retry-attempts>
-    }
-```
-
-Wenn für die HTTP-Aktion vier Wiederholungsversuche in einem Intervall von zehn Minuten durchgeführt werden sollen, lautet die Definition beispielsweise wie folgt:
-
-```json
-"HTTP": 
+"HTTP":
 {
     "inputs": {
         "method": "GET",
         "uri": "http://myAPIendpoint/api/action",
         "retryPolicy" : {
-            "type": "fixed",
-            "interval": "PT10M",
-            "count": 4
+            "type": "exponential",
+            "count": 4,
+            "interval": "PT7.5S",
+            "minimumInterval": "PT5S",
+            "maximumInterval": "PT45S"
         }
     },
     "runAfter": {},
     "type": "Http"
 }
 ```
-
-Weitere Informationen zur unterstützten Syntax finden Sie im [Abschnitt „Wiederholungsrichtlinie“ unter „Workflow-Aktionen und -Trigger“][retryPolicyMSDN].
 
 ## <a name="catch-failures-with-the-runafter-property"></a>Abfangen von Fehlern mit der RunAfter-Eigenschaft
 

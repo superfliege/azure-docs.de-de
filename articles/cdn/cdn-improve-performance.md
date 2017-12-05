@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 86f1f8f0aaa9a699d2f816781cef65cda868ee55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4e27ec57543daed35811fff347f457b0dd2cd5c
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
 Die Komprimierung ist eine einfache und effektive Methode zur Verbesserung der Dateiübertragungsrate und zum Steigern der Seitenladeleistung, indem die Dateigröße reduziert wird, bevor die Datei vom Server gesendet wird. Sie reduziert die Bandbreitekosten und steigert die Benutzerfreundlichkeit.
@@ -100,7 +100,7 @@ Diese Tabellen beschreiben das Verhalten der Azure CDN-Komprimierung für jedes 
 > * Größer als 128 Bytes
 > * Kleiner als 1 MB
 > 
-> Diese Profile unterstützen die Codierungen **gzip** (GNU-Zip), **deflate**, **bzip2** oder **br** (Brotli). Bei der Brotli-Codierung erfolgt die Komprimierung nur am Rand. Der Client/Browser muss die Anforderung für die Brotli-Codierung senden, und die komprimierte Ressource muss zuerst auf der Ursprungsseite komprimiert werden. 
+> Diese Profile unterstützen die Codierungen **gzip** (GNU-Zip), **deflate**, **bzip2** oder **br** (Brotli). Bei der Brotli-Codierung muss die Komprimierung am Ursprung erfolgen. Der Client/Browser muss die Anforderung für die Brotli-Codierung senden, und die komprimierte Ressource muss zuerst auf der Ursprungsseite komprimiert werden. 
 
 > [!IMPORTANT]
 > Bei **Azure CDN von Akamai**-Profilen sind alle Dateien zur Komprimierung zugelassen. Eine Datei muss allerdings ein MIME-Typ sein, der [für die Komprimierung konfiguriert](#enabling-compression) wurde.

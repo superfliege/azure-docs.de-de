@@ -1,5 +1,5 @@
 ---
-title: "Verwalten von Verweisdaten für eine Azure Time Series Insights-Umgebung mithilfe von C# | Microsoft-Dokumentation"
+title: Verwalten von Verweisdaten in einer Azure Time Series Insights-Umgebung mithilfe von C# | Microsoft-Dokumentation
 description: "Dieser Artikel beschreibt, wie Sie Verweisdaten für eine Azure Time Series Insights-Umgebung verwalten, indem Sie eine in der .NET-Sprache C# (C-Sharp) geschriebene benutzerdefinierte Anwendung erstellen."
 services: time-series-insights
 ms.service: time-series-insights
@@ -11,21 +11,23 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: cd4d37ae2a68be3c061706f80055efb7e5387d98
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: fa4a115cc1199a99c7acf64281082dca5dfb8579
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-environment-by-using-c"></a>Verwalten von Verweisdaten für eine Azure Time Series Insights-Umgebung mithilfe von C#
 
-Dieser Artikel beschreibt den C#-Beispielcode, den Sie kompilieren können, um Verweisdaten für eine Azure Time Series Insights-Umgebung zu verwalten.
+Dieses Thema beschreibt den C#-Beispielcode, den Sie kompilieren können, um Verweisdaten für eine Azure Time Series Insights-Umgebung zu verwalten.
 
-Stellen Sie sicher, dass die folgenden Schritte abgeschlossen sind, bevor Sie den Beispielcode kompilieren und ausführen:
-1. Ein Verweisdataset wurde mit [diesem Artikel](time-series-insights-add-reference-data-set.md) erstellt.
+Führen Sie vor dem Kompilieren und Ausführen des Beispielcodes die folgenden Schritte aus:
+1. [Erstellen Sie ein Verweisdataset](time-series-insights-add-reference-data-set.md).
 
-2. Konfigurieren Sie das Zugriffstoken, das von der Anwendung zur Autorisierung verwendet werden soll. Stellen Sie sicher, dass das Token mithilfe der Azure Active Directory-API abgerufen wird. Dieses Token muss im `Authorization`-Header jeder Abfrage-API-Anforderung übergeben werden. Sehen Sie sich für das Einrichten nicht interaktiver Anwendungen den Artikel [Authentication and authorization (Authentifizierung und Autorisierung)](time-series-insights-authentication-and-authorization.md) an.
+2. Konfigurieren Sie das Autorisierungszugriffstoken für die Anwendung. Stellen Sie sicher, dass das Token mithilfe der Azure Active Directory-API abgerufen wird. Sie sollten dieses Token im `Authorization`-Header jeder Abfrage-API-Anforderung übergeben. 
+ 
+   Informationen zum Einrichten nicht interaktiver Anwendungen finden Sie unter [Authentifizierung und Autorisierung](time-series-insights-authentication-and-authorization.md).
 
 3. Ersetzen Sie am Anfang des Beispielcodes die durch **#DUMMY#** markierten Beispielkonstanten. 
 
@@ -232,4 +234,4 @@ namespace TimeSeriesInsightsReferenceDataSampleApp
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Die vollständige REST-API-Referenz finden Sie unter [Reference Data API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) (Verweisdaten-API).
+[Verweisdaten-API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api)

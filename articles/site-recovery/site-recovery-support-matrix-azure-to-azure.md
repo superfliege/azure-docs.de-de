@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: b157e2f90fa2daf00cf71472eb799ee98797b4dc
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 7dae1d903b6cbb6a74f89443ec9601c6b4b9d078
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
 
@@ -164,9 +164,10 @@ GRS | Unterstützt |
 RA-GRS | Unterstützt |
 ZRS | Nicht unterstützt |  
 Kalter und heißer Speicher | Nicht unterstützt | Datenträger für virtuelle Computer werden auf kaltem und heißem Speicher nicht unterstützt.
+Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage)  | Nein | Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt. 
 
 >[!IMPORTANT]
-> Halten Sie sich an die [Speichervorgaben](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) für virtuellen Azure-Quellcomputer, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Einstellungen anpassen, achten Sie darauf, die Speicherempfehlungen für virtuelle-Quellcomputer einzuhalten (../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks).
+> Stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für VM-Datenträger für virtuelle [Linux](../virtual-machines/linux/disk-scalability-targets.md)- oder [Windows](../virtual-machines/windows/disk-scalability-targets.md)-Computer beachten, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, achten Sie darauf, die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer einzuhalten.
 
 ## <a name="support-for-network-configuration"></a>Unterstützung der Netzwerkkonfiguration
 **Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**

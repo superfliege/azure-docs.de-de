@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 33bcc51466fa0918bf4484c58fac813d07ae14da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96455dcdcf2eb90c836675c73c83c0320524fdac
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.  
@@ -174,7 +174,7 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |----------------------|-------------------------------------------------------|  
 |context|Api: IApi<br /><br /> Bereitstellung<br /><br /> LastError<br /><br /> Vorgang<br /><br /> Produkt<br /><br /> Anforderung<br /><br /> RequestId: GUID<br /><br /> Antwort<br /><br /> Abonnement<br /><br /> Tracing: bool<br /><br /> Benutzer<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
 |context.Api|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> ServiceUrl: IUrl|  
-|context.Deployment|Region: string<br /><br /> ServiceName: string|  
+|context.Deployment|Region: string<br /><br /> ServiceName: string<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
 |context.LastError|Source: string<br /><br /> Reason: string<br /><br /> Message: string<br /><br /> Scope: string<br /><br /> Section: string<br /><br /> Path: string<br /><br /> PolicyId: string<br /><br /> Weitere Informationen zu context.LastError finden Sie unter [Fehlerbehandlung](api-management-error-handling-policies.md).|  
 |context.Operation|Id: string<br /><br /> Method: string<br /><br /> Name: string<br /><br /> UrlTemplate: string|  
 |context.Product|Apis: IEnumerable<IApi\><br /><br /> ApprovalRequired: bool<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: string<br /><br /> Name: string<br /><br /> State: enum ProductState {NotPublished, Published}<br /><br /> SubscriptionLimit: int?<br /><br /> SubscriptionRequired: bool|  
@@ -199,6 +199,12 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |bool TryParseJwt(input: this string, result: out Jwt)|input: string<br /><br /> result: out Jwt<br /><br /> Wenn der Eingabeparameter einen gültigen JWT-Tokenwert enthält, gibt die Methode `true` zurück, und der Ergebnisparameter enthält einen Wert des Typs `Jwt`; andernfalls gibt die Methode `false` zurück.|  
 |Jwt|Algorithm: string<br /><br /> Audience: IEnumerable<string\><br /><br /> Claims: IReadOnlyDictionary<string, string[]><br /><br /> ExpirationTime: DateTime?<br /><br /> Id: string<br /><br /> Issuer: string<br /><br /> NotBefore: DateTime?<br /><br /> Subject: string<br /><br /> Type: string|  
 |string Jwt.Claims.GetValueOrDefault(claimName: string, defaultValue: string)|claimName: string<br /><br /> defaultValue: string<br /><br /> Gibt durch Trennzeichen getrennte Anspruchswerte oder `defaultValue` zurück, wenn der Header nicht gefunden wurde.|
+|byte[] Encrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - zu verschlüsselnder Klartext<br /><br />alg - Name eines symmetrischen Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt verschlüsselten Klartext zurück.|
+|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - zu verschlüsselnder Klartext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />Gibt verschlüsselten Klartext zurück.|
+|byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - zu verschlüsselnder Klartext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt verschlüsselten Klartext zurück.|
+|byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - zu verschlüsselnder Chiffretext<br /><br />alg - Name eines symmetrischen Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - zu verschlüsselnder Chiffretext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />Gibt Klartext zurück.|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - zu verschlüsselnder Chiffretext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  

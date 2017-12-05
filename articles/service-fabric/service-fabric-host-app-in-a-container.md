@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
-ms.openlocfilehash: 021c695a91ff46274b2a5174918711d04bcff239
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31c1cee5ddc4c8893da729af884ae7b7b8a58093
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 
@@ -39,11 +39,14 @@ In diesem Tutorial lernen Sie Folgendes:
 4. Installieren Sie [Azure PowerShell][link-azure-powershell-install].
 5. Installieren Sie die [Erweiterung für die Continuous Delivery-Tools für Visual Studio 2017][link-visualstudio-cd-extension].
 6. Erstellen Sie ein [Azure-Abonnement][link-azure-subscription] und ein [Visual Studio Team Services-Konto][link-vsts-account]. 
-7. [Erstellen Sie einen Cluster in Azure.](service-fabric-tutorial-create-cluster-azure-ps.md)
+7. [Erstellen Sie einen Cluster in Azure.](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+
+## <a name="create-a-cluster-on-azure"></a>Erstellen eines Clusters in Azure
+Service Fabric-Anwendungen werden auf einem Cluster ausgeführt, einem durch ein Netzwerk verbundenen Satz von virtuellen oder physischen Computern. [Richten Sie einen Service Fabric-Cluster ein, der in Azure ausgeführt wird](service-fabric-tutorial-create-vnet-and-windows-cluster.md), bevor Sie Ihre Anwendung erstellen und bereitstellen. Wählen Sie beim Erstellen des Clusters eine SKU, die das Ausführen von Containern unterstützt (z. B. Windows Server 2016 Datacenter mit Containern).
 
 ## <a name="containerize-the-application"></a>Packen der Anwendung in Container
 
-Sie besitzen einen [in Azure ausgeführten Service Fabric-Cluster](service-fabric-tutorial-create-cluster-azure-ps.md) und können nun eine Containeranwendung erstellen und bereitstellen. Um die Ausführung unserer Anwendung in einem Container zu starten, müssen wir **Docker-Unterstützung** zum Projekt in Visual Studio hinzufügen. Wenn Sie **Docker-Unterstützung** zur Anwendung hinzufügen, geschieht Folgendes: Zuerst wird dem Projekt eine _Dockerfile_-Datei hinzugefügt. Diese neue Datei beschreibt, wie das Containerimage erstellt werden soll. Zweitens wird ein neues _docker-compose_-Projekt zur Projektmappe hinzugefügt. Das neue Projekt enthält einige docker-compose-Dateien. Mit docker-compose-Dateien kann beschrieben werden, wie der Container ausgeführt wird.
+Sie besitzen einen in Azure ausgeführten Service Fabric-Cluster und können nun eine Containeranwendung erstellen und bereitstellen. Um die Ausführung unserer Anwendung in einem Container zu starten, müssen wir **Docker-Unterstützung** zum Projekt in Visual Studio hinzufügen. Wenn Sie **Docker-Unterstützung** zur Anwendung hinzufügen, geschieht Folgendes: Zuerst wird dem Projekt eine _Dockerfile_-Datei hinzugefügt. Diese neue Datei beschreibt, wie das Containerimage erstellt werden soll. Zweitens wird ein neues _docker-compose_-Projekt zur Projektmappe hinzugefügt. Das neue Projekt enthält einige docker-compose-Dateien. Mit docker-compose-Dateien kann beschrieben werden, wie der Container ausgeführt wird.
 
 Hier finden Sie weitere Informationen zum Arbeiten mit [Visual Studio-Containertools][link-visualstudio-container-tools].
 

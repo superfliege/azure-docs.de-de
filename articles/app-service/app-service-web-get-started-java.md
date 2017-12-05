@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Web-Apps in App Service ausführen, indem Si
 services: app-service\web
 documentationcenter: 
 author: rmcmurray
-manager: erikre
+manager: routlaw
 editor: 
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
@@ -12,18 +12,20 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 6/7/2017
+ms.date: 11/08/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ac8ef479be5a93b2c4baa76279c8d3e53389409a
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: d44fff1e59198d662356c4d7739c05e538ba57b9
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Erstellen Ihrer ersten Java-Web-App in Azure
 
 [Azure-Web-Apps](app-service-web-overview.md) bieten einen hochgradig skalierbaren Webhostingdienst mit Self-Patching. Dieser Schnellstart veranschaulicht die Bereitstellung einer Java-Web-App in App Service über die [Eclipse-IDE für Java EE-Entwickler](http://www.eclipse.org/).
+
+Wenn Sie diesen Schnellstart abgeschlossen haben, entspricht Ihre Anwendung bei der Anzeige in einem Webbrowser etwa der folgenden Abbildung:
 
 ![„Hello Azure!“ Beispiel-Web-App](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
@@ -31,8 +33,8 @@ ms.lasthandoff: 10/26/2017
 
 Für diesen Schnellstart müssen Sie Folgendes installieren:
 
-* Die kostenlose [Eclipse-IDE für Java EE-Entwickler](http://www.eclipse.org/downloads/). In diesem Schnellstart wird Eclipse Neon verwendet.
-* Das [Azure-Toolkit für Eclipse](/azure/azure-toolkit-for-eclipse-installation).
+* Die kostenlose <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse-IDE für Java EE-Entwickler</a>. In diesem Schnellstart wird Eclipse Neon verwendet.
+* Das <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Azure-Toolkit für Eclipse</a>.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -167,9 +169,9 @@ Klicken Sie im Project Explorer mit der rechten Maustaste auf das Projekt, und w
 
 Im dann geöffneten Dialogfeld **Deploy Web App** (Web-App bereitstellen) wird die zuvor erstellte App Service-Instanz angezeigt. 
 
-> [!NOTE]
-> Wählen Sie bei jeder Veröffentlichung die Option **Deploy to root** (Im Stamm bereitstellen) aus.
->
+> [!NOTE] 
+> Wählen Sie bei jeder Veröffentlichung die Option **Deploy to root** (Im Stamm bereitstellen) aus. 
+> 
 
 Markieren Sie die Web-App, und wählen Sie **Deploy** (Bereitstellen) aus, um die Änderungen zu veröffentlichen.
 

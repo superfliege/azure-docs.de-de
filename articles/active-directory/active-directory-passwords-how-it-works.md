@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 56ddd5742b63851b9477bae0705ebd24e30ff185
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bb2e1aebc60eee5f94ed486e0efb43265728df6f
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -183,7 +183,7 @@ Zum Aktivieren dieser Option müssen Benutzer, für die die Kennwortzurücksetzu
 Wenn die Erzwingung der Registrierung deaktiviert ist, können Benutzer ihre Kontaktinformationen dennoch manuell registrieren. Sie können entweder [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) aufrufen oder im Zugriffsbereich auf der Registerkarte **Profil** auf den Link **Für das Zurücksetzen des Kennworts registrieren** klicken.
 
 > [!NOTE]
-> Benutzer können das Registrierungsportal für die Kennwortzurücksetzung durch Klicken auf **Abbrechen** oder durch Schließen des Fensters schließen. Sie werden aber bis zum Abschluss der Registrierung bei jeder Anmeldung erneut zur Registrierung aufgefordert.
+> Benutzer können das Registrierungsportal für die Kennwortzurücksetzung durch Klicken auf **Abbrechen** oder durch Schließen des Fensters schließen. Sie werden jedoch bei jeder Anmeldung zur Registrierung aufgefordert, bis die Registrierung durchgeführt wurde.
 >
 > Dadurch wird die Verbindung des Benutzers nicht unterbrochen, wenn er bereits angemeldet ist.
 
@@ -207,7 +207,18 @@ Beispiel: Es gibt vier Administratoren in einer Umgebung. Administrator A setzt 
 
 ## <a name="on-premises-integration"></a>Lokale Integration
 
-Wenn Sie Azure AD Connect installieren, konfigurieren und aktivieren, stehen folgende zusätzliche Optionen für lokale Integrationen zur Verfügung. Wenn diese Optionen abgeblendet sind, wurde das Rückschreiben nicht ordnungsgemäß konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren des Kennwortrückschreibens](active-directory-passwords-writeback.md#configuring-password-writeback).
+Wenn Sie Azure AD Connect installieren, konfigurieren und aktivieren, stehen folgende zusätzliche Optionen für lokale Integrationen zur Verfügung. Wenn diese Optionen abgeblendet sind, wurde das Rückschreiben nicht ordnungsgemäß konfiguriert. Weitere Informationen finden Sie unter [Konfigurieren des Kennwortrückschreibens](active-directory-passwords-writeback.md#configure-password-writeback).
+
+![Rückschreiben][Writeback]
+
+Auf dieser Seite erhalten Sie einen schnellen Überblick über den Status des lokalen Clients für das Rückschreiben. Basierend auf der aktuellen Konfiguration wird eine der folgenden Meldungen angezeigt:
+
+* Ihr lokaler Client für das Rückschreiben ist einsatzbereit.
+* Azure AD Connect ist online und mit Ihrem lokalen Client für das Rückschreiben verbunden. Die installierte Version von Azure AD Connect ist jedoch offenbar veraltet. Ziehen Sie ein [Upgrade von Azure AD Connect](./connect/active-directory-aadconnect-upgrade-previous-version.md) in Betracht, um sicherzustellen, dass Sie über die neuesten Konnektivitätsfeatures und wichtige Fehlerbehebungen verfügen.
+* Leider können wir den Status Ihres lokalen Clients für das Rückschreiben nicht überprüfen, weil die installierte Version von Azure AD Connect nicht aktuell ist. [Aktualisieren Sie Azure AD Connect](./connect/active-directory-aadconnect-upgrade-previous-version.md), um den Verbindungsstatus überprüfen zu können.
+* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. [Führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.
+* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen, weil das Kennwortrückschreiben nicht ordnungsgemäß konfiguriert wurde. [Konfigurieren Sie das Kennwortrückschreiben](active-directory-passwords-writeback.md#configure-password-writeback), um die Verbindung wiederherzustellen.
+* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. Möglicherweise liegen auf unserer Seite vorübergehende Probleme vor. Wenn das Problem weiterhin besteht, [führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.
 
 ### <a name="write-back-passwords-to-your-on-premises-directory"></a>Kennwörter in Ihr lokales Verzeichnis zurückschreiben?
 
@@ -253,3 +264,4 @@ Die folgenden Artikel führen zu weiteren Informationen zur Kennwortzurücksetzu
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "Verfügbare Azure AD-Authentifizierungsmethoden und erforderliche Menge"
+[Writeback]: ./media/active-directory-passwords-how-it-works/troubleshoot-writeback-running.png "Informationen zur Konfiguration und Problembehandlung des Kennwortrückschreibens für die lokale Integration"

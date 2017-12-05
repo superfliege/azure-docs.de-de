@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 10/12/2016
+ms.date: 11/17/2017
 ms.author: glenga
-ms.openlocfilehash: b89e9af55342d5d7473d848956996f846250b4b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6882a7b1864d511e70495e1d1d782aa0f03beca3
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>Hinzufügen von Pushbenachrichtigungen zu Ihrer Android-App
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -56,12 +56,12 @@ In diesem Abschnitt aktualisieren Sie Ihre Android-Client-App, um Pushbenachrich
 ### <a name="verify-android-sdk-version"></a>Prüfen der Version des Android SDK
 [!INCLUDE [app-service-mobile-verify-android-sdk-version](../../includes/app-service-mobile-verify-android-sdk-version.md)]
 
-Als Nächstes installieren Sie Google Play Services. Google Cloud Messaging verfügt über einige Mindestanforderungen an die API-Ebene für Entwicklung und Tests, denen die Eigenschaft **minSdkVersion** im Manifest entsprechen muss.
+Als Nächstes installieren Sie Google Play Services. Firebase Cloud Messaging weist einige Mindestanforderungen an die API-Ebene für Entwicklung und Tests auf, denen die Eigenschaft **minSdkVersion** im Manifest entsprechen muss.
 
-Wenn Sie auf einem älteren Gerät testen, lesen Sie unter [Set Up Google Play Services SDK] (Einrichten des Google Play Services SDK) die Informationen zum Festlegen des Werts, und legen Sie ihn entsprechend fest.
+Wenn Sie auf einem älteren Gerät testen, lesen Sie unter [Add Firebase to Your Android Project] (Hinzufügen von Firebase zu Android-Projekten) die Informationen zum Festlegen des Werts, und legen Sie ihn entsprechend fest.
 
-### <a name="add-google-play-services-to-the-project"></a>Hinzufügen von Google Play Services zum Projekt
-[!INCLUDE [Add Play Services](../../includes/app-service-mobile-add-google-play-services.md)]
+### <a name="add-firebase-cloud-messaging-to-the-project"></a>Hinzufügen von Firebase Cloud Messaging zum Projekt
+[!INCLUDE [Add Firebase Cloud Messaging](../../includes/app-service-mobile-add-firebase-cloud-messaging.md)]
 
 ### <a name="add-code"></a>Code hinzufügen
 [!INCLUDE [app-service-mobile-android-getting-started-with-push](../../includes/app-service-mobile-android-getting-started-with-push.md)]
@@ -79,5 +79,4 @@ Nachdem Sie dieses Tutorial abgeschlossen haben, können Sie mit den folgenden T
 
 <!-- URLs -->
 [Android-Schnellstartprojekt]: app-service-mobile-android-get-started.md
-
-[Set Up Google Play Services SDK]:https://developers.google.com/android/guides/setup
+[Add Firebase to Your Android Project]:https://firebase.google.com/docs/android/setup

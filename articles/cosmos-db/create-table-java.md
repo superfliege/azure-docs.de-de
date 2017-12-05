@@ -45,7 +45,7 @@ Außerdem haben Sie folgende Möglichkeiten:
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
 > [!IMPORTANT] 
-> Zum Arbeiten mit den allgemein verfügbaren Table-API-SDKs müssen Sie ein neues Table-API-Konto erstellen. Table-API-Konten, die während der Vorschau erstellt wurden, werden von den allgemein verfügbaren SDKs nicht unterstützt.
+> Zum Arbeiten mit den allgemein verfügbaren Tabellen-API-SDKs müssen Sie ein neues Tabellen-API-Konto erstellen. Tabellen-API-Konten, die während der Vorschau erstellt wurden, werden von den allgemein verfügbaren SDKs nicht unterstützt.
 >
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
@@ -105,7 +105,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 6. Fügen Sie die primäre Verbindungszeichenfolge aus dem Portal in den Wert „StorageConnectionString“ in Zeile 2 ein. 
 
     > [!IMPORTANT]
-    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Table-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Table-API-SDK zu arbeiten.
+    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Tabellen-API-SDK zu arbeiten.
     >
 
 7. Speichern Sie die Datei „config.properties“.

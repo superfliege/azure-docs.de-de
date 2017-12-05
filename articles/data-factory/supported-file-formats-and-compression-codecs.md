@@ -7,13 +7,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 11/21/2017
 ms.author: jingwang
-ms.openlocfilehash: f2675a0af82640925b837ae80e751fcab5972321
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: e583c6952e02c4a93f56594f6392f1d9a260dce0
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Unterstützte Dateiformate und Komprimierungscodecs in Azure Data Factory
 
@@ -29,6 +29,9 @@ Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** mö
 
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts in der allgemein verfügbaren Version (GA) verwenden, lesen Sie den Artikel [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](v1//data-factory-supported-file-and-compression-formats.md).
+
+> [!TIP]
+> Informationen dazu, wie die Kopieraktivität die Quelldaten der Senke zuordnet, finden Sie unter [Schemazuordnung in Kopieraktivität](copy-activity-schema-and-type-mapping.md). Darin enthalten ist auch das Bestimmen der Metadaten basierend auf Ihren Dateiformateinstellungen sowie Tipps, wann der Abschnitt [Dataset`structure`](concepts-datasets-linked-services.md#dataset-structure) anzugeben ist.
 
 ## <a name="text-format"></a>Textformat
 

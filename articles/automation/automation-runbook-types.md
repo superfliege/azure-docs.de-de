@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 2acf45187894aa3bfcaa4df639becf18605d50a5
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 508f4bb0fc8a443dd7b95cbf19861ab1a1abeb6e
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 Azure Automation unterstützt verschiedene Runbooktypen, die in der folgenden Tabelle kurz beschrieben werden.  Die folgenden Abschnitte bieten weitere Informationen zu den einzelnen Typen und deren Einsatzbereichen.
@@ -30,7 +30,6 @@ Azure Automation unterstützt verschiedene Runbooktypen, die in der folgenden Ta
 | [PowerShell](#powershell-runbooks) |Textrunbook, das auf einem Windows PowerShell-Skript basiert. |
 | [PowerShell-Workflow](#powershell-workflow-runbooks) |Textrunbook, das auf einem Windows PowerShell-Workflow basiert. |
 | [Python](#python-runbooks) |Auf Python basierendes Textrunbook |
-| [Bash](#bash-runbooks) |Auf Bash basierendes Textrunbook |
 
 ## <a name="graphical-runbooks"></a>Grafische Runbooks
 [Grafische](automation-runbook-types.md#graphical-runbooks) und grafische PowerShell-Workflow-Runbooks werden im grafischen Editor im Azure-Portal erstellt und bearbeitet.  Sie können in eine Datei exportiert und anschließend in ein anderes Automation-Konto importiert, aber nicht mit einem anderen Tool erstellt oder bearbeitet werden.  Grafische Runbooks generieren PowerShell-Code, aber Sie können den Code nicht direkt anzeigen oder ändern. Grafische Runbooks können weder in eines der [Textformate](automation-runbook-types.md)konvertiert werden, noch kann ein Textrunbook in das Grafikformat konvertiert werden. Grafische Runbooks können während des Imports in grafische PowerShell-Workflow-Runbooks konvertiert werden und umgekehrt.
