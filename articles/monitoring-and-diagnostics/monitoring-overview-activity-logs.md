@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: d36cc43889c190544b9a2735ce00e718c11fd216
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 4a796920d5ff76d4ff4d41afe2ec14aa89ae2265
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 Das **Azure-Aktivitätsprotokoll** ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dies schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokolle“ oder „Vorgangsprotokolle“ bezeichnet, da die Verwaltungskategorie Ereignisse der Steuerungsebene für Ihre Abonnements enthält. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden.
@@ -49,7 +49,8 @@ Das Aktivitätsprotokoll enthält verschiedene Kategorien von Daten. Umfassende 
 * **Warnung**: Diese Kategorie enthält die Datensätze zu allen Aktivierungen von Azure-Warnungen. Ein Beispiel für ein Ereignis in dieser Kategorie ist „CPU-Auslastung auf ‚myVM‘ liegt in den letzten 5 Minuten über 80“. Eine Vielzahl von Azure-Systemen weist ein Konzept für Warnungen auf: Sie können eine Regel definieren und erhalten eine Benachrichtigung, wenn die Bedingungen mit der Regel übereinstimmen. Jedes Mal, wenn ein unterstützter Azure-Warnungstyp „aktiviert“ wird oder die Bedingungen erfüllt sind, sodass eine Benachrichtigung generiert wird, wird ein Datensatz der Aktivierung auch in dieser Kategorie des Aktivitätsprotokolls abgelegt.
 * **Autoskalierung**: Diese Kategorie enthält Datensätze von Ereignissen im Zusammenhang mit automatischen Skalierungsvorgängen basierend auf den Einstellungen für die automatische Skalierung, die Sie in Ihrem Abonnement definiert haben. Ein Beispiel für Ereignisse in dieser Kategorie ist „Fehler beim automatischen zentralen Hochskalieren“. Mit der automatischen Skalierung können Sie die Anzahl der Instanzen eines unterstützten Ressourcentyps basierend auf der Tageszeit und/oder Lastdaten (Metrik) mithilfe einer Einstellung für die automatische Skalierung automatisch horizontal hoch- oder herunterskalieren. Wenn die Bedingungen zum zentralen Hoch- oder Herunterskalieren erfüllt sind, werden Ereignisse zum Start und zum Erfolg bzw. Fehler in dieser Kategorie aufgezeichnet.
 * **Empfehlung**: Diese Kategorie enthält Empfehlungsereignisse von bestimmten Ressourcentypen, beispielsweise von Websites und SQL-Servern. Diese Ereignisse bieten Empfehlungen, wie Sie Ihre Ressourcen besser nutzen können. Sie erhalten Ereignisse dieses Typs nur dann, wenn Sie über Ressourcen verfügen, die Empfehlungen ausgeben.
-* **Richtlinie, Sicherheit und Ressourcenintegrität**: Diese Kategorien enthalten keine Ereignisse; sie sind für die künftige Verwendung reserviert.
+* **Sicherheit**: Diese Kategorie enthält Datensätze von Warnungen, die vom Azure Security Center generiert wurden. Ein Beispiel für den Typ der Ereignisse, die in dieser Kategorie angezeigt werden, ist „Verdächtige Datei mit doppelter Erweiterung ausgeführt“.
+* **Richtlinie und Ressourcenintegrität**: Diese Kategorien enthalten keine Ereignisse; sie sind für die künftige Verwendung reserviert.
 
 ## <a name="event-schema-per-category"></a>Ereignisschema nach Kategorie
 [Lesen Sie diesen Artikel, um sich über die Grundlagen des Aktivitätsprotokoll-Ereignisschemas nach Kategorie zu informieren.](monitoring-activity-log-schema.md)

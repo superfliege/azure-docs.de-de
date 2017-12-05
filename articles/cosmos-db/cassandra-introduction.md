@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 23909c65499697be66fc2d2f43c6d0bd8a02b614
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: fe911b69278021262f1d90f2157bb78ca48db0db
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Einführung in die Apache Cassandra-API für Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Mit Azure Cosmos DB wird die Cassandra-API (Vorschauversion) für Anwendungen be
 
 * [Skalierbare Speichergröße und Durchsatz](partition-data.md)
 * [Sofort einsatzbereite globale Verteilung](distribute-data-globally.md)
-* Einstellige Latenzzeiten im Millisekundenbereich im 99. Perzentil
+* Einstellige Latenzzeiten im Millisekundenbereich im 99. Perzentil.
 * [Fünf wohl definierte Konsistenzebenen](consistency-levels.md)
 * [Automatische Indizierung von Daten](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf), sodass Sie sich nicht mit der Schema- und Indexverwaltung befassen müssen 
 * Garantierte Hochverfügbarkeit, gesichert durch [branchenführende SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
@@ -36,7 +36,10 @@ Mithilfe der Apache Cassandra-API kann Azure Cosmos DB als Datenspeicher für Ap
 
 ![Cassandra-API für Azure Cosmos DB](./media/cassandra-introduction/cosmosdb-cassandra.png)
 
-Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosmos DB gespeichert sind, mithilfe von CQL-basierten Tools (z. B. CQLSH) und bereits vertrauten Cassandra-Clienttreibern.
+Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosmos DB gespeichert sind, mithilfe von CQL-basierten Tools (z. B. CQLSH) und bereits vertrauten Cassandra-Clienttreibern. Weitere Informationen enthält dieses Video zu Microsoft Mechanics mit Kirill Gavrylyuk (Principal Engineering Manager).
+
+> [!VIDEO https://www.youtube.com/embed/1Sf4McGN1AQ]
+>
 
 ## <a name="what-is-the-benefit-of-using-apache-cassandra-api-for-azure-cosmos-db"></a>Welche Vorteile bietet die Verwendung der Apache Cassandra-API für Azure Cosmos DB?
 
@@ -56,17 +59,34 @@ Die Cassandra-API ermöglicht Ihnen die Interaktion mit Daten, die in Azure Cosm
 
 **Unternehmensniveau**: Azure Cosmos DB bietet standardmäßig Sicherheit und Compliance und somit [Compliancezertifizierungen](https://www.microsoft.com/trustcenter), um sicherzustellen, dass Benutzer die Plattform verwenden können, ohne sich Gedanken über Complianceprobleme zu machen. Azure Cosmos DB bietet außerdem Verschlüsselung ruhender Daten sowie von Daten während der Übertragung, eine IP-Firewall und Überwachungsprotokolle für Aktivitäten auf Steuerungsebene.  
 
+<a id="sign-up-now"></a>
+## <a name="sign-up-now"></a>Jetzt anmelden 
+
+Wenn Sie bereits über ein Azure-Abonnement verfügen, können Sie sich für das Programm Cassandra-API (Vorschauversion) im [Azure-Portal](https://aka.ms/cosmosdb-cassandra-signup) registrieren.  Wenn Sie Azure bisher noch nicht verwenden, registrieren Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free), mit der Sie 12 Monate lang kostenlos auf Azure Cosmos DB zugreifen können. Führen Sie die folgenden Schritte aus, um Zugriff auf das Programm Cassandra-API (Vorschauversion) anzufordern.
+
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Neu** > **Datenbanken** > **Azure Cosmos DB**. 
+
+2. Wählen Sie auf der Seite „Neues Konto“ im Feld „API“ die Option **Cassandra** aus. 
+
+3. Wählen Sie im Feld **Abonnement** das Azure-Abonnement aus, das Sie für dieses Konto verwenden möchten.
+
+4. Klicken Sie auf **Registrieren Sie sich noch heute für die Vorschauversion**.
+
+    ![Cassandra-API für Azure Cosmos DB](./media/cassandra-introduction/cassandra-sign-up.png)
+
+3. Klicken Sie im Bereich „Registrieren Sie sich noch heute für die Vorschauversion“ auf **OK**. 
+
+    Nachdem Sie die Anforderung gesendet haben, ändert sich der Status im Bereich „Neues Konto“ in **Genehmigung ausstehend**. 
+
+Warten Sie nach dem Übermitteln der Anforderung auf eine E-Mail-Benachrichtigung, dass Ihre Anforderung genehmigt wurde. Aufgrund der hohen Anzahl von Anforderungen sollten Sie innerhalb einer Woche eine Benachrichtigung erhalten. Sie müssen kein Supportticket zum Ausführen der Anforderung erstellen. Anforderungen werden in der Reihenfolge ihres Eintreffens geprüft. 
+
 ## <a name="how-to-get-started"></a>Erste Schritte
-Folgen Sie den Schnellstartanleitungen für die Cassandra-API, um ein Cassandra-API-Konto für Azure Cosmos DB und eine Cassandra-App zu erstellen:
+Nachdem Sie sich für das Vorschauprogramm registriert haben, folgen Sie den Schnellstartanleitungen für die Cassandra-API, um eine App mithilfe dieser API zu erstellen:
 
 * [Schnellstartanleitung: Erstellen einer Cassandra-Web-App mit Node.js und Azure Cosmos DB](create-cassandra-nodejs.md)
 * [Schnellstartanleitung: Erstellen einer Cassandra-Web-App mit Java und Azure Cosmos DB](create-cassandra-java.md)
 * [Schnellstartanleitung: Erstellen einer Cassandra-Web-App mit .NET und Azure Cosmos DB](create-cassandra-dotnet.md)
 * [Schnellstartanleitung: Erstellen einer Cassandra-Web-App mit Python und Azure Cosmos DB](create-cassandra-python.md)
-
-## <a name="sign-up-now"></a>Jetzt anmelden 
-
-Wenn Sie bereits über ein Azure-Abonnement verfügen, können Sie sich für die Cassandra-API (Vorschauversion) im [Azure-Portal](https://aka.ms/cosmosdb-cassandra-signup) registrieren. Wenn Sie Azure bisher noch nicht verwenden, registrieren Sie sich für eine [kostenlose Testversion](https://azure.microsoft.com/free), mit der Sie 12 Monate lang kostenlos auf Azure Cosmos DB zugreifen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

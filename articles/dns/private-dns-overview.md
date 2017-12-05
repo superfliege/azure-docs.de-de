@@ -3,8 +3,8 @@ title: "Verwenden von Azure DNS für private Domänen | Microsoft-Dokumentation"
 description: "Übersicht über private DNS-Hostingdienste in Microsoft Azure."
 services: dns
 documentationcenter: na
-author: garbrad
-manager: 
+author: KumudD
+manager: jennoc
 editor: 
 ms.assetid: 
 ms.service: dns
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/04/2017
-ms.author: garbrad
-ms.openlocfilehash: ed47a9d850995aaf9e78bfde8b6a5fd80dc36918
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/20/2017
+ms.author: kumud
+ms.openlocfilehash: 95cf8ab2bd34e698e12452e062687219bad49eb6
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="using-azure-dns-for-private-domains"></a>Verwenden von Azure DNS für private Domänen
 Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines Dienstnamens in die IP-Adresse verantwortlich. Azure DNS ist ein Hostingdienst für DNS-Domänen, der die Namensauflösung mithilfe der Microsoft Azure-Infrastruktur durchführt.  Zusätzlich zu DNS-Domänen mit Internetverbindung unterstützt Azure DNS jetzt auch private DNS-Domänen als Vorschaufunktion.  
@@ -39,14 +39,14 @@ Azure DNS bietet einen zuverlässigen, sicheren DNS-Dienst zum Verwalten und Auf
 
 * **Hostnamenauflösung zwischen virtuellen Netzwerken.** Im Gegensatz zu von Azure bereitgestellten Hostnamen können private DNS-Zonen von virtuellen Netzwerken gemeinsam genutzt werden.  Diese Möglichkeit vereinfacht netzwerkübergreifende und Dienstermittlungsszenarien wie das Peering virtueller Netzwerke.
 
-* **Vertraute Tools und Benutzerfreundlichkeit.** Zur Reduzierung der Lernkurve verwendet dieses neue Angebot die bereits gut eingeführten Azure DNS-Tools (PowerShell Resource Manager-Vorlagen, REST-API), und die Unterstützung von CLI und Portal folgt so bald wie möglich.
+* **Vertraute Tools und Benutzerfreundlichkeit.** Zur Reduzierung der Lernkurve verwendet dieses neue Angebot die bereits gut eingeführten Azure DNS-Tools (PowerShell, Resource Manager-Vorlagen, REST-API).
 
 * **Split-Horizon-DNS-Unterstützung.** Azure DNS ermöglicht Ihnen, Zonen mit gleichem Namen zu erstellen, die innerhalb eines virtuellen Netzwerks und im öffentlichen Internet unterschiedlich aufgelöst werden.  Ein typisches Szenario für Split-Horizon-DNS ist die Bereitstellung einer bestimmte Version eines Diensts für die Verwendung in Ihrem virtuellen Netzwerk .
 
 
 ## <a name="pricing"></a>Preise
 
-Private DNS-Zonen sind während der verwalteten Vorschau kostenlos. Bei Ankündigung der allgemeinen Verfügbarkeit gilt für dieses Feature ein nutzungsbasiertes Preismodell, das dem vorhandenen Azure DNS-Angebot ähnelt. 
+Private DNS-Zonen sind während der verwalteten Vorschau kostenlos. Während der allgemeinen Verfügbarkeit gilt für dieses Feature ein nutzungsbasiertes Preismodell, das dem vorhandenen Azure DNS-Angebot ähnelt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

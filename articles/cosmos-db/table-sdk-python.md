@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB-Tabellen-API für Python | Microsoft-Dokumentation"
-description: "Hier finden Sie sämtliche Informationen zur Table-API von Azure Cosmos DB – einschließlich Veröffentlichungs- und Deaktivierungsterminen sowie Änderungen in den einzelnen Versionen."
+description: "Wichtige Informationen zur Azure Cosmos DB-Tabellen-API einschließlich Veröffentlichungsterminen, Deaktivierungsterminen und Änderungen in den einzelnen Versionen."
 services: cosmos-db
 documentationcenter: python
 author: mimig
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: mimig1
 ms.custom: 
-ms.openlocfilehash: a68b24fe91d3acb0f18d3d06d6252317bd671be4
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 70315d93b7211351c19a17553db88962f25d8acb
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK für Python: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -37,11 +37,14 @@ ms.lasthandoff: 11/15/2017
 |**Am SDK mitwirken**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
 |**Aktuell unterstützte Plattform**|[Python 2.7](https://www.python.org/downloads/) oder [Python 3.3, 3.4, 3.5 oder 3.6] (https://www.python.org/downloads/)|
 
+> [!IMPORTANT]
+> Wenn Sie während der Vorschauphase ein Tabellen-API-Konto erstellt haben, erstellen Sie ein [neues Tabellen-API-Konto](create-table-dotnet.md#create-a-database-account) für die Verwendung mit den allgemein verfügbaren Table API SDKs.
+>
 
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Allgemein verfügbare Version
+* Release zur allgemeinen Verfügbarkeit
 
 ### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
 * Vorabversion-SDK

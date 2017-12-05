@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 99f3ddb165fa548ca1d65676bb1f945632c72dd3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 8cf8820ceea19fe8c4926c65d107d4f770f40926
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-nodejs-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Table-API-App mit Node.js und Azure Cosmos DB
 
@@ -38,6 +38,10 @@ Außerdem haben Sie folgende Möglichkeiten:
 * [Git](http://git-scm.com/)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
+
+> [!IMPORTANT] 
+> Zum Arbeiten mit den allgemein verfügbaren Tabellen-API-SDKs müssen Sie ein neues Tabellen-API-Konto erstellen. Tabellen-API-Konten, die während der Vorschau erstellt wurden, werden von den allgemein verfügbaren SDKs nicht unterstützt.
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -74,8 +78,6 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
     git clone https://github.com/Azure-Samples/storage-table-node-getting-started.git
     ```
 
-3. Öffnen Sie anschließend die Projektmappendatei in Visual Studio. 
-
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
 Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungszeichenfolge abzurufen und in die App zu kopieren. Dadurch kann Ihre App mit Ihrer gehosteten Datenbank kommunizieren. 
@@ -84,7 +86,13 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     ![Anzeigen und Kopieren der erforderlichen Verbindungszeichenfolgeninformationen aus dem Bereich „Verbindungszeichenfolge“](./media/create-table-nodejs/connection-string.png)
 
-2. Öffnen Sie die Datei „app.config“, und kopieren Sie die erforderlichen Verbindungszeichenfolgeneigenschaften in die Konfigurationsdatei.
+2. Kopieren Sie die primäre Verbindungszeichenfolge mithilfe der Kopierschaltfläche auf der rechten Seite.
+
+3. Öffnen Sie die Datei „app.config“, und fügen Sie den Wert in „connectionString“ in Zeile 3 ein. 
+
+    > [!IMPORTANT]
+    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Tabellen-API-SDK zu arbeiten.
+    >
 
 3. Speichern Sie die Datei „app.config“.
 
@@ -94,14 +102,19 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 1. Wechseln Sie im Terminalfenster von Git mithilfe von `cd` zum Ordner „storage-table-java-getting-started“.
 
-    ```git
-    cd "C:\git-samples\
-storage-table-node-getting-started"
+    ```
+    cd "C:\git-samples\storage-table-node-getting-started"
     ```
 
-2. Führen Sie im Terminalfenster von Git die folgenden Befehle aus, um die Java-Anwendung zu starten.
+2. Führen Sie den folgenden Befehl aus, um die Module [azure], [node-uuid], [nconf] und [async] lokal zu installieren und um einen Eintrag für sie in der Datei „package.json“ zu speichern:
 
-    ```git
+   ```
+   npm install azure-storage node-uuid async nconf --save
+   ```
+
+2. Führen Sie im Terminalfenster von Git die folgenden Befehle aus, um die Node-Anwendung zu starten.
+
+    ```
     node ./tableSample.js 
     ```
 
@@ -122,4 +135,4 @@ storage-table-node-getting-started"
 In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Tabelle mit dem Daten-Explorer erstellen und eine App ausführen.  Jetzt können Sie Ihre Daten mit der Table-API abfragen.  
 
 > [!div class="nextstepaction"]
-> [Importieren von Daten für die Verwendung mit der Table-API von Azure Cosmos DB](table-import.md)
+> [Importieren von Daten in die Table-API](table-import.md)

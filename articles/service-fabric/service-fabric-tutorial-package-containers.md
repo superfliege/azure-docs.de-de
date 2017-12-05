@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 9b1498d76680185b45edf9ac7e1747bfa6794eec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0631b621c01eb880393d07323cdeb815e564a2e3
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Erstellen von Paketen aus Containern und Bereitstellen als Service Fabric-Anwendung
 
@@ -218,7 +218,7 @@ Für die Anwendungsbereitstellung in einem Cluster in Azure können Sie einen ei
 
 Bei Partyclustern handelt es sich um zeitlich begrenzte kostenlose Service Fabric-Cluster, die in Azure gehostet werden. Sie werden vom Service Fabric-Team verwaltet, und alle Interessenten können Anwendungen bereitstellen und sich mit der Plattform vertraut machen. [Befolgen Sie die Anweisungen](http://aka.ms/tryservicefabric), um Zugriff auf einen Partycluster zu erhalten. 
 
-Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Erstellen Ihres ersten Service Fabric-Clusters in Azure](service-fabric-get-started-azure-cluster.md).
+Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstellen eines Service Fabric-Linux-Clusters in einem virtuellen Azure-Netzwerk](service-fabric-tutorial-create-vnet-and-linux-cluster.md).
 
 ## <a name="build-and-deploy-the-application-to-the-cluster"></a>Erstellen der Anwendung und Bereitstellen im Cluster
 Sie können die Anwendung mithilfe der Service Fabric-Befehlszeilenschnittstelle im Azure-Cluster bereitstellen. Wenn die Service Fabric-CLI nicht auf dem Computer installiert ist, installieren Sie sie mittels [dieser](service-fabric-get-started-linux.md#set-up-the-service-fabric-cli) Anweisungen. 
@@ -239,7 +239,7 @@ Navigieren Sie in einem Browser zu Service Fabric Explorer (http://lin4hjim3l4.w
 
 ![Service Fabric Explorer][sfx]
 
-Um eine Verbindung zur ausgeführten Anwendung herzustellen, öffnen Sie einen Webbrowser, und wechseln Sie zu der Cluster-Url – z.B. „ http://lin0823ryf2he.cloudapp.azure.com:80 “. Die Abstimmungsanwendung sollte in der Webbenutzeroberfläche angezeigt werden.
+Um eine Verbindung zur ausgeführten Anwendung herzustellen, öffnen Sie einen Webbrowser, und wechseln Sie zu der Cluster-Url – z.B. http://lin0823ryf2he.cloudapp.azure.com:80 . Die Abstimmungsanwendung sollte in der Webbenutzeroberfläche angezeigt werden.
 
 ![votingapp][votingapp]
 

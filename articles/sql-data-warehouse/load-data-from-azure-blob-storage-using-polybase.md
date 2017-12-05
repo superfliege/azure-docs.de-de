@@ -1,0 +1,615 @@
+---
+title: Laden von Daten mit PolyBase aus Azure Storage Blob in Azure SQL Data Warehouse | Microsoft-Dokumentation
+description: Ein Tutorial, in dem das Azure-Portal und SQL Server Management Studio zum Laden von Daten zu New Yorker Taxis aus Azure Blob Storage in Azure SQL Data Warehouse verwendet wird.
+services: sql-data-warehouse
+documentationcenter: 
+author: ckarst
+manager: jhubbard
+editor: 
+tags: 
+ms.assetid: 
+ms.service: sql-data-warehouse
+ms.custom: mvc,develop data warehouses
+ms.devlang: na
+ms.topic: tutorial
+ms.tgt_pltfrm: na
+ms.workload: Active
+ms.date: 11/17/2017
+ms.author: cakarst
+ms.reviewer: barbkess
+ms.openlocfilehash: fe3ea6c22fafad0d0dcf611ceb365a2ebca80011
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/21/2017
+---
+# <a name="use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>Verwenden von PolyBase zum Laden von Daten aus Azure Blob Storage in Azure SQL Data Warehouse
+
+PolyBase ist die Standardtechnologie zum Laden von Daten in SQL Data Warehouse. In diesem Tutorial verwenden Sie PolyBase, um Taxidaten aus New York aus Azure Blob Storage in Azure SQL Data Warehouse zum laden. In diesem Tutorial werden das [Azure-Portal](https://portal.azure.com) und [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) für folgende Zwecke verwendet: 
+
+> [!div class="checklist"]
+> * Erstellen eines Data Warehouse im Azure-Portal
+> * Einrichten einer Firewallregel auf Serverebene im Azure-Portal
+> * Herstellen einer Verbindung mit dem Data Warehouse mit SSMS
+> * Erstellen eines festgelegten Benutzers zum Laden von Daten
+> * Erstellen externer Tabellen für Daten in Azure Blob Storage
+> * Verwenden der T-SQL-Anweisung CTAS zum Laden von Daten in das Data Warehouse
+> * Anzeigen des Fortschritts beim Laden von Daten
+> * Erstellen von Statistiken für die neu geladenen Daten
+
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+
+## <a name="before-you-begin"></a>Voraussetzungen
+
+Bevor Sie mit diesem Tutorial beginnen, laden Sie die neueste Version von [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) herunter, und installieren Sie sie.
+
+
+## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
+
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+
+## <a name="create-a-blank-sql-data-warehouse"></a>Erstellen eines leeren SQL Data Warehouse
+
+Ein Azure SQL Data Warehouse wird mit einer definierten Gruppe von [Computeressourcen](performance-tiers.md) erstellt. Die Datenbank wird in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) und auf einem [logischen Azure SQL-Server](../sql-database/sql-database-features.md) erstellt. 
+
+Führen Sie die folgenden Schritte aus, um ein leeres SQL ­Data Warehouse zu erstellen. 
+
+1. Klicken Sie oben links im Azure-Portal auf die Schaltfläche **Neu**.
+
+2. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann auf der Seite **Neu** unter **Ausgewählte** die Option **SQL Data Warehouse** aus.
+
+    ![Erstellen eines Data Warehouse](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
+
+3. Füllen Sie das SQL Data Warehouse-Formular mit den folgenden Informationen aus:   
+
+   | Einstellung | Empfohlener Wert | Beschreibung | 
+   | ------- | --------------- | ----------- | 
+   | **Datenbankname** | mySampleDataWarehouse | Gültige Datenbanknamen finden Sie unter [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner). | 
+   | **Abonnement** | Ihr Abonnement  | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
+   | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). |
+   | **Quelle auswählen** | Leere Datenbank | Gibt an, dass eine leere Datenbank erstellt werden soll. Hinweis: Ein Data Warehouse ist ein Datenbanktyp.|
+
+    ![Erstellen eines Data Warehouse](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
+
+4. Klicken Sie auf **Server**, um einen neuen Server für Ihre neue Datenbank zu erstellen und zu konfigurieren. Füllen Sie das Formular **Neuer Server** mit den folgenden Informationen aus: 
+
+    | Einstellung | Empfohlener Wert | Beschreibung | 
+    | ------- | --------------- | ----------- |
+    | **Servername** | Ein global eindeutiger Name | Gültige Servernamen finden Sie unter [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions) (Benennungsregeln und Einschränkungen). | 
+    | **Serveradministratoranmeldung** | Ein gültiger Name | Gültige Anmeldenamen finden Sie unter [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers) (Datenbankbezeichner).|
+    | **Kennwort** | Ein gültiges Kennwort | Ihr Kennwort muss mindestens acht Zeichen umfassen und Zeichen aus drei der folgenden Kategorien enthalten: Großbuchstaben, Kleinbuchstaben, Zahlen und nicht alphanumerische Zeichen. |
+    | **Standort** | Gültiger Standort | Informationen zu Regionen finden Sie unter [Azure-Regionen](https://azure.microsoft.com/regions/). |
+
+    ![Erstellen eines Datenbankservers](media/load-data-from-azure-blob-storage-using-polybase/create-database-server.png)
+
+5. Klicken Sie auf **Auswählen**.
+
+6. Klicken Sie auf **Leistungsstufe**, um anzugeben, ob das Data Warehouse für Elastizität oder Compute optimiert wird, und um die Anzahl von Data Warehouse-Einheiten festzulegen. 
+
+7. Wählen Sie für dieses Tutorial die Leistungsstufe **Optimiert für Elastizität** aus. Der Schieberegler ist standardmäßig auf **DW400** gesetzt.  Schieben Sie ihn nach oben und unten, um sich mit der Funktionsweise vertraut zu machen. 
+
+    ![Konfigurieren der Leistung](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
+
+8. Klicken Sie auf **Anwenden**.
+9. Wählen Sie auf der Seite „SQL Data Warehouse“ eine **Sortierung** für die leere Datenbank aus. Verwenden Sie für dieses Tutorial den Standardwert. Weitere Informationen über Sortierungen finden Sie unter [Sortierungen](/sql/t-sql/statements/collations.md).
+
+11. Nachdem Sie das SQL-Datenbank-Formular ausgefüllt haben, können Sie auf **Erstellen** klicken, um die Datenbank bereitzustellen. Die Bereitstellung dauert einige Minuten. 
+
+    ![Klicken auf „Erstellen“](media/load-data-from-azure-blob-storage-using-polybase/click-create.png)
+
+12. Klicken Sie in der Symbolleiste auf **Benachrichtigungen**, um den Bereitstellungsprozess zu überwachen.
+    
+     ![Benachrichtigung](media/load-data-from-azure-blob-storage-using-polybase/notification.png)
+
+## <a name="create-a-server-level-firewall-rule"></a>Erstellen einer Firewallregel auf Serverebene
+
+Der SQL Data Warehouse-Dienst erstellt eine Firewall auf Serverebene, um zu verhindern, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder Datenbanken auf dem Server herstellen. Für Konnektivität können Sie Firewallregeln hinzufügen, mit denen Konnektivität für bestimmte IP-Adressen ermöglicht wird.  Führen Sie die folgenden Schritte aus, um eine [Firewallregel auf Serverebene](../sql-database/sql-database-firewall-configure.md) für die IP-Adresse Ihres Clients zu erstellen. 
+
+> [!NOTE]
+> SQL Data Warehouse kommuniziert über Port 1433. Wenn Sie versuchen, eine Verbindung aus einem Unternehmensnetzwerk heraus herzustellen, wird der ausgehende Datenverkehr über Port 1433 von der Firewall Ihres Netzwerks unter Umständen nicht zugelassen. In diesem Fall können Sie nur dann eine Verbindung mit Ihrem Azure SQL-Datenbankserver herstellen, wenn Ihre IT-Abteilung Port 1433 öffnet.
+>
+
+1. Klicken Sie nach Abschluss der Bereitstellung im Menü auf der linken Seite auf **SQL-Datenbanken**, und klicken Sie dann auf der Seite **SQL-Datenbanken** auf **mySampleDatabase**. Die Übersichtsseite für Ihre Datenbank wird geöffnet, die den vollqualifizierten Servernamen (z.B. **mynewserver-20171113.database.windows.net**) und Optionen für die weitere Konfiguration enthält. 
+
+2. Kopieren Sie diesen vollqualifizierten Servernamen, um in den nachfolgenden Schnellstarts eine Verbindung mit Ihrem Server und den Datenbanken herzustellen. Klicken Sie anschließend auf den Servernamen, um die Servereinstellungen zu öffnen.
+
+    ![Suchen des Servernamens](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png) 
+
+3. Klicken Sie auf den Servernamen, um die Servereinstellungen zu öffnen.
+
+    ![Servereinstellungen](media/load-data-from-azure-blob-storage-using-polybase/server-settings.png) 
+
+5. Klicken Sie auf **Firewalleinstellungen anzeigen**. Die Seite **Firewalleinstellungen** für den SQL-Datenbankserver wird geöffnet. 
+
+    ![Serverfirewallregel](media/load-data-from-azure-blob-storage-using-polybase/server-firewall-rule.png) 
+
+4. Klicken Sie in der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um Ihre aktuelle IP-Adresse einer neuen Firewallregel hinzuzufügen. Eine Firewallregel kann Port 1433 für eine einzelne IP-Adresse oder einen Bereich von IP-Adressen öffnen.
+
+5. Klicken Sie auf **Speichern**. Für Ihre aktuelle IP-Adresse wird eine Firewallregel auf Serverebene erstellt, und auf dem logischen Server wird Port 1433 geöffnet.
+
+6. Klicken Sie auf **OK**, und schließen Sie anschließend die Seite **Firewalleinstellungen**.
+
+Sie können jetzt mithilfe dieser IP-Adresse eine Verbindung mit dem SQL-Server und den dazugehörigen Data Warehouses herstellen. Die Verbindung kann aus SQL Server Management Studio oder einem anderen Tool Ihrer Wahl hergestellt werden. Verwenden Sie zum Herstellen der Verbindung das Serveradministratorkonto, das Sie zuvor erstellt haben.  
+
+> [!IMPORTANT]
+> Standardmäßig ist der Zugriff über die SQL-Datenbank-Firewall für alle Azure-Dienste aktiviert. Klicken Sie auf dieser Seite auf **AUS**, und klicken Sie dann auf **Speichern**, um die Firewall für alle Azure-Dienste zu deaktivieren.
+
+## <a name="get-the-fully-qualified-server-name"></a>Abrufen des vollqualifizierten Servernamens
+
+Rufen Sie den vollqualifizierten Servernamen für Ihren SQL-Server im Azure-Portal ab. Später verwenden Sie den vollqualifizierten Namen zum Herstellen einer Verbindung mit dem Server.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
+3. Suchen Sie im Azure-Portal auf der Seite für Ihre Datenbank unter **Zusammenfassung** nach Ihrer Datenbank, und kopieren Sie den **Servernamen**. In diesem Beispiel lautet der vollqualifizierte Name „mynewserver-20171113.database.windows.net“. 
+
+    ![Verbindungsinformationen](media/load-data-from-azure-blob-storage-using-polybase/find-server-name.png)  
+
+## <a name="connect-to-the-server-as-server-admin"></a>Herstellen einer Verbindung mit dem Server als Serveradministrator
+
+In diesem Abschnitt wird [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) zum Herstellen einer Verbindung mit Ihrem Azure SQL-Server verwendet.
+
+1. Öffnen Sie SQL Server Management Studio.
+
+2. Geben Sie im Dialogfeld **Mit Server verbinden** die folgenden Informationen ein:
+
+    | Einstellung      | Empfohlener Wert | Beschreibung | 
+    | ------------ | --------------- | ----------- | 
+    | Servertyp | Datenbankmodul | Dieser Wert ist erforderlich. |
+    | Servername | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver-20171113.database.windows.net**. |
+    | Authentifizierung | SQL Server-Authentifizierung | In diesem Tutorial haben wir als einzigen Authentifizierungstyp die SQL-Authentifizierung konfiguriert. |
+    | Anmeldung | Das Serveradministratorkonto | Hierbei handelt es sich um das Konto, das Sie beim Erstellen des Servers angegeben haben. |
+    | Kennwort | Das Kennwort für das Serveradministratorkonto | Hierbei handelt es sich um das Kennwort, das Sie beim Erstellen des Servers angegeben haben. |
+
+    ![Verbindung mit dem Server herstellen](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
+
+4. Klicken Sie auf **Verbinden**. Die Objekt-Explorer-Fenster wird in SSMS geöffnet. 
+
+5. Erweitern Sie im Objekt-Explorer die Option **Datenbanken**. Erweitern Sie dann **Systemdatenbanken** und **Master**, um die Objekte in der Masterdatenbank anzuzeigen.  Erweitern Sie **mySampleDatabase**, um die Objekte in der neuen Datenbank anzuzeigen.
+
+    ![Datenbankobjekte](media/load-data-from-azure-blob-storage-using-polybase/connected.png) 
+
+## <a name="create-a-user-for-loading-data"></a>Erstellen eines Benutzers zum Laden von Daten
+
+Das Serveradministratorkonto dient zum Ausführen von Verwaltungsvorgänge und eignet sich nicht zum Ausführen von Abfragen für Benutzerdaten. Das Laden von Daten erfordert in der Regel viel Arbeitsspeicher. [Arbeitsspeicher-Höchstwerte](performance-tiers.md#memory-maximums) werden entsprechend der [Leistungsstufe](performance-tiers.md) und der [Ressourcenklasse](resource-classes-for-workload-management.md) definiert. 
+
+Es wird empfohlen, eine Anmeldung und einen Benutzer speziell zum Laden von Daten zu erstellen. Fügen Sie dann den Benutzer für das Laden einer [Ressourcenklasse](resource-classes-for-workload-management.md) hinzu, die eine geeignete maximale Speicherbelegung ermöglicht.
+
+Da Sie momentan als Serveradministrator verbunden sind, können Sie Anmeldungen und Benutzer erstellen. Führen Sie die folgenden Schritte aus, um eine Anmeldung und einen Benutzer mit dem Namen **LoaderRC20** zu erstellen. Weisen Sie den Benutzer dann der Ressourcenklasse **staticrc20** zu. 
+
+1.  Klicken Sie in SSMS mit der rechten Maustaste auf **Master**, um ein Dropdownmenü anzuzeigen, und wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.
+
+    ![Neue Abfrage für „Master“](media/load-data-from-azure-blob-storage-using-polybase/create-loader-login.png)
+
+2. Geben Sie im Abfragefenster die folgenden T-SQL-Befehle ein, um eine Anmeldung und einen Benutzer mit dem Namen „LoaderRC20“ zu erstellen, und ersetzen Sie dabei Ihr eigenes Kennwort durch „a123STRONGpassword!“. 
+
+    ```sql
+    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+    CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
+    ```
+
+3. Klicken Sie auf **Ausführen**.
+
+4. Klicken Sie mit der rechten Maustaste auf **mySampleDataWarehouse**, und wählen Sie **Neue Abfrage** aus. Ein neues Abfragefenster wird geöffnet.  
+
+    ![Neue Abfrage für Data Warehouse-Beispiel](media/load-data-from-azure-blob-storage-using-polybase/create-loading-user.png)
+ 
+5. Geben Sie die folgenden T-SQL-Befehle ein, um einen Datenbankbenutzer mit dem Namen „LoaderRC20“ für die Anmeldung „LoaderRC20“ zu erstellen. Die zweite Zeile gewährt dem neuen Benutzer CONTROL-Berechtigungen für das neue Data Warehouse.  Diese Berechtigungen ähneln der Festlegung des Benutzers als Besitzer der Datenbank. Die dritte Zeile fügt den neuen Benutzer als Mitglied der [Ressourcenklasse](resource-classes-for-workload-management.md) „staticrc20“ hinzu.
+
+    ```sql
+    CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
+    GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
+    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+    ```
+
+6. Klicken Sie auf **Ausführen**.
+
+## <a name="connect-to-the-server-as-the-loading-user"></a>Herstellen einer Verbindung mit dem Server als ladender Benutzer
+
+Im ersten Schritt zum Laden von Daten melden Sie sich als „LoaderRC20“ an.  
+
+1. Klicken Sie im Objekt-Explorer auf das Dropdownmenü **Verbinden**, und wählen Sie **Datenbankmodul** aus. Das Dialogfeld **Mit Server verbinden** wird angezeigt.
+
+    ![Herstellen einer Verbindung mit neuer Anmeldung](media/load-data-from-azure-blob-storage-using-polybase/connect-as-loading-user.png)
+
+2. Geben Sie den vollqualifizierten Servernamen ein, verwenden Sie aber diesmal **LoaderRC20** als Anmeldenamen.  Geben Sie Ihr Kennwort für „LoaderRC20“ ein.
+
+3. Klicken Sie auf **Verbinden**.
+
+4. Wenn die Verbindung bereitsteht, werden zwei Serververbindungen im Objekt-Explorer angezeigt: eine Verbindung als „ServerAdmin“ und eine Verbindung als „MedRCLogin“.
+
+    ![Verbindung ist erfolgreich](media/load-data-from-azure-blob-storage-using-polybase/connected-as-new-login.png)
+
+## <a name="create-external-tables-for-the-sample-data"></a>Erstellen externer Tabellen für die Beispieldaten
+
+Sie können nun mit dem Laden von Daten in das neue Data Warehouse beginnen. In diesem Tutorial wird gezeigt, wie Sie mit [Polybase](/sql/relational-databases/polybase/polybase-guide.md) Daten zu New Yorker Taxis aus einem Azure Storage Blob laden. Informationen zum Übertragen Ihrer Daten in Azure Blob Storage oder zum direkten Laden der Daten aus Ihrer Quelle in SQL Data Warehouse finden Sie in der [Ladeübersicht](sql-data-warehouse-overview-load.md).
+
+Führen Sie die folgenden SQL-Skripts aus, und geben Sie Informationen zu den Daten an, die Sie laden möchten. Diese Informationen umfassen den aktuellen Speicherort der Daten, das Format des Dateninhalts und die Tabellendefinition für die Daten. 
+
+1. Im vorherigen Abschnitt haben Sie sich als „LoaderRC20“ beim Data Warehouse angemeldet. Klicken Sie in SSMS mit der rechten Maustaste auf die Verbindung „LoaderRC20“, und wählen Sie **Neue Abfrage** aus.  Ein neues Abfragefenster wird angezeigt. 
+
+    ![Fenster für neue Ladeabfrage](media/load-data-from-azure-blob-storage-using-polybase/new-loading-query.png)
+
+2. Vergleichen Sie Ihr Abfragefenster mit der Abbildung oben.  Überprüfen Sie, ob das neue Abfragefenster als „LoaderRC20“ ausgeführt wird und Abfragen für die Datenbank „mySampleDataWarehouse“ durchgeführt werden. Verwenden Sie dieses Abfragefenster zum Ausführen aller Ladeschritte.
+
+3. Erstellen Sie einen Hauptschlüssel für die Datenbank „mySampleDataWarehouse“. Der Hauptschlüssel muss nur jeweils einmal pro Datenbank erstellt werden. 
+
+    ```sql
+    CREATE MASTER KEY;
+    ```
+
+4. Führen Sie die folgende Anweisung [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql.md) aus, um den Speicherort des Azure-Blobs zu definieren. Dies ist der Speicherort der externen Taxidaten.  Zum Ausführen eines Befehls, den Sie im Abfragefenster angefügt haben, markieren Sie die auszuführenden Befehle, und klicken Sie auf **Ausführen**.
+
+    ```sql
+    CREATE EXTERNAL DATA SOURCE NYTPublic
+    WITH
+    (
+        TYPE = Hadoop,
+        LOCATION = 'wasbs://2013@nytaxiblob.blob.core.windows.net/'
+    );
+    ```
+
+5. Führen Sie die folgende T-SQL-Anweisung [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql.md) aus, um Formatierungseigenschaften und Optionen für die externe Datendatei anzugeben. Diese Anweisung gibt an, dass die externen Daten als Text gespeichert und die Werte durch senkrechte Striche („|“) getrennt sind. Die externe Datei wird mit Gzip komprimiert. 
+
+    ```sql
+    CREATE EXTERNAL FILE FORMAT uncompressedcsv
+    WITH (
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS ( 
+            FIELD_TERMINATOR = ',',
+            STRING_DELIMITER = '',
+            DATE_FORMAT = '',
+            USE_TYPE_DEFAULT = False
+        )
+    );
+    CREATE EXTERNAL FILE FORMAT compressedcsv
+    WITH ( 
+        FORMAT_TYPE = DELIMITEDTEXT,
+        FORMAT_OPTIONS ( FIELD_TERMINATOR = '|',
+            STRING_DELIMITER = '',
+        DATE_FORMAT = '',
+            USE_TYPE_DEFAULT = False
+        ),
+        DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec'
+    );
+    ```
+
+6.  Führen Sie die folgende Anweisung [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md) aus, um ein Schema für das externe Dateiformat zu erstellen. Das Schema bietet eine Möglichkeit zum Organisieren der externen Tabellen, die Sie nun erstellen.
+
+    ```sql
+    CREATE SCHEMA ext;
+    ```
+
+7. Erstellen Sie die externen Tabellen. Die Tabellendefinitionen sind in SQL Data Warehouse gespeichert, aber die Tabellen verweisen auf Daten, die in Azure Blob Storage gespeichert sind. Führen Sie die folgenden T-SQL-Befehle aus, um mehrere externe Tabellen zu erstellen, die alle auf das Azure-Blob verweisen, das wir zuvor in der externen Datenquelle definiert haben.
+
+    ```sql
+    CREATE EXTERNAL TABLE [ext].[Date] 
+    (
+        [DateID] int NOT NULL,
+        [Date] datetime NULL,
+        [DateBKey] char(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfMonth] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DaySuffix] varchar(4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfWeek] char(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfWeekInMonth] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfWeekInYear] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfQuarter] varchar(3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DayOfYear] varchar(3) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [WeekOfMonth] varchar(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [WeekOfQuarter] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [WeekOfYear] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Month] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MonthName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MonthOfQuarter] varchar(2) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Quarter] char(1) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [QuarterName] varchar(9) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Year] char(4) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [YearName] char(7) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MonthYear] char(10) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [MMYYYY] char(6) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FirstDayOfMonth] date NULL,
+        [LastDayOfMonth] date NULL,
+        [FirstDayOfQuarter] date NULL,
+        [LastDayOfQuarter] date NULL,
+        [FirstDayOfYear] date NULL,
+        [LastDayOfYear] date NULL,
+        [IsHolidayUSA] bit NULL,
+        [IsWeekday] bit NULL,
+        [HolidayUSA] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+    )
+    WITH
+    (
+        LOCATION = 'Date',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
+    ); 
+    CREATE EXTERNAL TABLE [ext].[Geography]
+    (
+        [GeographyID] int NOT NULL,
+        [ZipCodeBKey] varchar(10) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [County] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [City] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [State] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [Country] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [ZipCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+    )
+    WITH
+    (
+        LOCATION = 'Geography',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0 
+    );      
+    CREATE EXTERNAL TABLE [ext].[HackneyLicense]
+    (
+        [HackneyLicenseID] int NOT NULL,
+        [HackneyLicenseBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [HackneyLicenseCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+    )
+    WITH
+    (
+        LOCATION = 'HackneyLicense',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
+    );
+    CREATE EXTERNAL TABLE [ext].[Medallion]
+    (
+        [MedallionID] int NOT NULL,
+        [MedallionBKey] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [MedallionCode] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL
+    )
+    WITH
+    (
+        LOCATION = 'Medallion',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
+    )
+    ;  
+    CREATE EXTERNAL TABLE [ext].[Time]
+    (
+        [TimeID] int NOT NULL,
+        [TimeBKey] varchar(8) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [HourNumber] tinyint NOT NULL,
+        [MinuteNumber] tinyint NOT NULL,
+        [SecondNumber] tinyint NOT NULL,
+        [TimeInSecond] int NOT NULL,
+        [HourlyBucket] varchar(15) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        [DayTimeBucketGroupKey] int NOT NULL,
+        [DayTimeBucket] varchar(100) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL
+    )
+    WITH
+    (
+        LOCATION = 'Time',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
+    );
+    CREATE EXTERNAL TABLE [ext].[Trip]
+    (
+        [DateID] int NOT NULL,
+        [MedallionID] int NOT NULL,
+        [HackneyLicenseID] int NOT NULL,
+        [PickupTimeID] int NOT NULL,
+        [DropoffTimeID] int NOT NULL,
+        [PickupGeographyID] int NULL,
+        [DropoffGeographyID] int NULL,
+        [PickupLatitude] float NULL,
+        [PickupLongitude] float NULL,
+        [PickupLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [DropoffLatitude] float NULL,
+        [DropoffLongitude] float NULL,
+        [DropoffLatLong] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [PassengerCount] int NULL,
+        [TripDurationSeconds] int NULL,
+        [TripDistanceMiles] float NULL,
+        [PaymentType] varchar(50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+        [FareAmount] money NULL,
+        [SurchargeAmount] money NULL,
+        [TaxAmount] money NULL,
+        [TipAmount] money NULL,
+        [TollsAmount] money NULL,
+        [TotalAmount] money NULL
+    )
+    WITH
+    (
+        LOCATION = 'Trip2013',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = compressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
+    );
+    CREATE EXTERNAL TABLE [ext].[Weather]
+    (
+        [DateID] int NOT NULL,
+        [GeographyID] int NOT NULL,
+        [PrecipitationInches] float NOT NULL,
+        [AvgTemperatureFahrenheit] float NOT NULL
+    )
+    WITH
+    (
+        LOCATION = 'Weather',
+        DATA_SOURCE = NYTPublic,
+        FILE_FORMAT = uncompressedcsv,
+        REJECT_TYPE = value,
+        REJECT_VALUE = 0
+    )
+    ;
+    ```
+
+8. Erweitern Sie im Objekt-Explorer die Option „mySampleDataWarehouse“, um die Liste der externen Tabellen anzuzeigen, die Sie gerade erstellt haben.
+
+    ![Anzeigen externer Tabelle](media/load-data-from-azure-blob-storage-using-polybase/view-external-tables.png)
+
+## <a name="load-the-data-into-your-data-warehouse"></a>Laden der Daten in das Data Warehouse
+
+In diesem Abschnitt werden die soeben definierten externen Tabellen verwendet, um die Beispieldaten aus Azure Storage Blob in SQL Data Warehouse zu laden.  
+
+Das Skript verwendet die T-SQL-Anweisung [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md), um die Daten aus Azure Storage Blob in neue Tabellen in Ihrem Data Warehouse zu laden. CTAS erstellt eine neue Tabelle basierend auf den Ergebnissen einer SELECT-Anweisung. Die neue Tabelle weist die gleichen Spalten und Datentypen wie die Ergebnisse der SELECT-Anweisung auf. Wenn mit der SELECT-Anweisung eine Auswahl aus einer externen Tabelle getroffen wird, importiert SQL Data Warehouse die Daten in eine relationale Tabelle im Data Warehouse. 
+
+1. Führen Sie das folgende Skript aus, um die Daten in neue Tabellen im Data Warehouse zu laden.
+
+    ```sql
+    CREATE TABLE [dbo].[Date]
+    WITH
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    AS SELECT * FROM [ext].[Date]
+    OPTION (LABEL = 'CTAS : Load [dbo].[Date]')
+    ;
+    CREATE TABLE [dbo].[Geography]
+    WITH
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    AS
+    SELECT * FROM [ext].[Geography]
+    OPTION (LABEL = 'CTAS : Load [dbo].[Geography]')
+    ;
+    CREATE TABLE [dbo].[HackneyLicense]
+    WITH
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    AS SELECT * FROM [ext].[HackneyLicense]
+    OPTION (LABEL = 'CTAS : Load [dbo].[HackneyLicense]')
+    ;
+    CREATE TABLE [dbo].[Medallion]
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    AS SELECT * FROM [ext].[Medallion]
+    OPTION (LABEL = 'CTAS : Load [dbo].[Medallion]')
+    ;
+    CREATE TABLE [dbo].[Time]
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    AS SELECT * FROM [ext].[Time]
+    OPTION (LABEL = 'CTAS : Load [dbo].[Time]')
+    ;
+    CREATE TABLE [dbo].[Weather]
+    WITH
+    ( 
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    AS SELECT * FROM [ext].[Weather]
+    OPTION (LABEL = 'CTAS : Load [dbo].[Weather]')
+    ;
+    CREATE TABLE [dbo].[Trip]
+    WITH
+    (
+        DISTRIBUTION = ROUND_ROBIN,
+        CLUSTERED COLUMNSTORE INDEX
+    )
+    AS SELECT * FROM [ext].[Trip]
+    OPTION (LABEL = 'CTAS : Load [dbo].[Trip]')
+    ;
+    ```
+
+2. Sehen Sie Ihren Daten beim Laden zu. Sie laden mehrere GB an Daten und komprimieren diese in hoch performante gruppierte Columnstore-Indizes. Führen Sie die folgende Abfrage mit dynamischen Verwaltungssichten (DMVs) aus, um den Status des Ladevorgangs anzuzeigen. Nach dem Starten der Abfrage können Sie sich einen Kaffee und einen Imbiss holen, während SQL Data Warehouse einige anstrengende Arbeit erledigt.
+
+    ```sql
+    SELECT
+        r.command,
+        s.request_id,
+        r.status,
+        count(distinct input_name) as nbr_files,
+        sum(s.bytes_processed)/1024/1024/1024 as gb_processed
+    FROM 
+        sys.dm_pdw_exec_requests r
+        INNER JOIN sys.dm_pdw_dms_external_work s
+        ON r.request_id = s.request_id
+    WHERE
+        r.[label] = 'CTAS : Load [dbo].[Date]' OR
+        r.[label] = 'CTAS : Load [dbo].[Geography]' OR
+        r.[label] = 'CTAS : Load [dbo].[HackneyLicense]' OR
+        r.[label] = 'CTAS : Load [dbo].[Medallion]' OR
+        r.[label] = 'CTAS : Load [dbo].[Time]' OR
+        r.[label] = 'CTAS : Load [dbo].[Weather]' OR
+        r.[label] = 'CTAS : Load [dbo].[Trip]'
+    GROUP BY
+        r.command,
+        s.request_id,
+        r.status
+    ORDER BY
+        nbr_files desc, 
+        gb_processed desc;
+    ```
+
+3. Zeigen Sie alle Systemabfragen an.
+
+    ```sql
+    SELECT * FROM sys.dm_pdw_exec_requests;
+    ```
+
+4. Freuen Sie sich darüber, dass Ihre Daten sauber in das Data Warehouse geladen werden.
+
+    ![Anzeigen geladener Tabellen](media/load-data-from-azure-blob-storage-using-polybase/view-loaded-tables.png)
+
+## <a name="create-statistics-on-newly-loaded-data"></a>Erstellen von Statistiken für die neu geladenen Daten
+
+SQL Data Warehouse ermöglicht keine automatische Erstellung oder automatische Aktualisierung von Statistiken. Um eine hohe Abfrageleistung zu erzielen, ist es daher wichtig, nach dem ersten Laden Statistiken für jede Spalte der einzelnen Tabelle zu erstellen. Es ist auch wichtig, Statistiken nach wesentlichen Änderungen an den Daten zu aktualisieren.
+
+1. Führen Sie die folgenden Befehle aus, um Statistiken für Spalten zu erstellen, die wahrscheinlich in Verknüpfungen verwendet werden.
+
+    ```sql
+    CREATE STATISTICS [dbo.Date DateID stats] ON dbo.Date (DateID);
+    CREATE STATISTICS [dbo.Trip DateID stats] ON dbo.Trip (DateID);
+    ```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Es werden Ihnen Computeressourcen und Daten, die Sie in das Data Warehouse geladen haben, in Rechnung gestellt. Diese werden separat berechnet. 
+
+- Falls Sie die Daten im Speicher belassen möchten, können Sie Computeressourcen anhalten, wenn Sie das Data Warehouse nicht verwenden. Durch das Anhalten von Computeressourcen wird Ihnen nur die Datenspeicherung berechnet, und Sie können die Computeressourcen fortsetzen, sobald Sie mit den Daten arbeiten möchten.
+- Wenn zukünftig keine Gebühren anfallen sollen, können Sie das Data Warehouse löschen. 
+
+Führen Sie die folgenden Schritte aus, um Ressourcen nach Wunsch zu bereinigen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf das Data Warehouse.
+
+    ![Bereinigen von Ressourcen](media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+
+2. Zum Anhalten von Computeressourcen klicken Sie auf die Schaltfläche **Anhalten**. Wenn das Data Warehouse angehalten ist, wird eine Schaltfläche **Starten** angezeigt.  Klicken Sie zum Fortsetzen der Computeressourcen auf **Starten**.
+
+3. Wenn Sie das Data Warehouse entfernen möchten, damit keine Gebühren für Compute- oder Speicherressourcen anfallen, klicken Sie auf **Löschen**.
+
+4. Zum Entfernen des erstellten SQL-Servers klicken Sie auf **mynewserver 20171113.database.windows.net** (siehe Abbildung oben), und klicken Sie dann auf **Löschen**.  Seien Sie dabei vorsichtig, denn durch das Löschen des Servers werden auch alle Datenbanken gelöscht, die dem Server zugewiesen sind.
+
+5. Zum Entfernen der Ressourcengruppe klicken Sie auf **myResourceGroup**, und klicken Sie dann auf **Ressourcengruppe löschen**.
+
+## <a name="next-steps"></a>Nächste Schritte 
+In diesem Tutorial haben Sie gelernt, wie ein Data Warehouse und ein Benutzer zum Laden von Daten erstellt werden. Sie haben externe Tabellen erstellt, um die Struktur für die in Azure Storage Blob gespeicherten Daten zu definieren, und dann die PolyBase-Anweisung „CREATE TABLE AS SELECT“ verwendet, um Daten in das Data Warehouse zu laden. 
+
+Sie haben folgende Schritte ausgeführt:
+> [!div class="checklist"]
+> * Erstellen eines Data Warehouse im Azure-Portal
+> * Einrichten einer Firewallregel auf Serverebene im Azure-Portal
+> * Herstellen einer Verbindung mit dem Data Warehouse mit SSMS
+> * Erstellen eines festgelegten Benutzers zum Laden von Daten
+> * Erstellen externer Tabellen für Daten in Azure Storage Blob
+> * Verwenden der T-SQL-Anweisung CTAS zum Laden von Daten in das Data Warehouse
+> * Anzeigen des Fortschritts beim Laden von Daten
+> * Erstellen von Statistiken für die neu geladenen Daten
+
+Fahren Sie mit der Übersicht über die Migration fort, um zu erfahren, wie Sie eine vorhandene Datenbank in SQL Data Warehouse migrieren.
+
+> [!div class="nextstepaction"]
+>[Informationen zum Migrieren einer vorhandenen Datenbank in SQL Data Warehouse](sql-data-warehouse-overview-migrate.md)

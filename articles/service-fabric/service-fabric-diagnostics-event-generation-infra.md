@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/24/2017
+ms.date: 11/20/2017
 ms.author: dekapur
-ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1277969d820c6348392d07e2dc5f35b52377fd7e
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="platform-level-event-and-log-generation"></a>Ereignis- und Protokollgenerierung auf Plattformebene
 
@@ -26,12 +26,13 @@ ms.lasthandoff: 10/11/2017
 
 Die Überwachung auf Plattformebene ist wichtig, um festzustellen, ob sich Ihre Hardware und Ihr Cluster erwartungsgemäß verhalten. Durch Service Fabric können Anwendungen bei Hardwareausfällen weiter ausgeführt werden. Sie müssen aber nach wie vor diagnostizieren, ob ein Fehler in einer Anwendung oder in der zugrunde liegenden Infrastruktur auftritt. Zudem sollten Sie zur besseren Kapazitätsplanung Ihre Cluster überwachen, um besser entscheiden zu können, ob Hardware hinzugefügt oder entfernt werden soll.
 
-Service Fabric stellt fünf verschiedene vorkonfigurierte Protokollkanäle bereit, die die folgenden Ereignisse generieren:
-
-* Betriebskanal: von Service Fabric und im Cluster ausgeführten Vorgänge auf höchster Ebene, einschließlich Ereignissen für einen gestarteten Knoten, eine neu bereitgestellte Anwendung oder ein Rollback für ein SF-Upgrade usw.
+Service Fabric stellt die folgenden Protokollkanäle vorkonfiguriert bereit:
+* Betriebskanal: von Service Fabric und im Cluster ausgeführten Vorgänge auf höchster Ebene, einschließlich Ereignissen für einen gestarteten Knoten, eine neu bereitgestellte Anwendung oder ein Rollback für ein Upgrade usw.
 * Betriebskanal – ausführlich: Integritätsberichte und Entscheidungen zum Lastenausgleich
-* Daten- und Messagingkanal: wichtige Protokolle und in unserem Messaging (derzeit nur ReverseProxy) und Datenpfad (Reliable Services-Modelle) generierte Ereignisse
+* Daten- und Messagingkanal: wichtige Protokolle und im Messaging- (derzeit nur ReverseProxy) und Datenpfad (Reliable Services-Modelle) generierte Ereignisse
 * Daten- und Messagingkanal – ausführlich: Kanal mit Details zu allen weniger wichtigen Protokollen von Daten und Messaging im Cluster (dieser Kanal enthält sehr viele Ereignisse)   
+
+Zusätzlich stehen zwei strukturierte EventSource-Kanäle als auch Protokolle bereit, die zu Supportzwecken gesammelt werden.
 * [Reliable Services-Ereignisse](service-fabric-reliable-services-diagnostics.md): spezifische Ereignisse für das Programmierungsmodell
 * [Reliable Actors-Ereignisse](service-fabric-reliable-actors-diagnostics.md): spezifische Ereignisse für das Programmierungsmodell und Leistungsindikatoren
 * Supportprotokolle: Systemprotokolle, die von Service Fabric nur für unseren Support generiert werden

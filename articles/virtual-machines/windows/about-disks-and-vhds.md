@@ -1,6 +1,6 @@
 ---
-title: "Informationen zu Datenträgern und VHDs für virtuelle Microsoft Azure-Windows-Computer | Microsoft-Dokumentation"
-description: "Machen Sie sich mit den Grundlagen zu Datenträgern und VHDs für virtuelle Windows-Computer in Azure vertraut."
+title: "Informationen zu nicht verwalteten (Seitenblobs) und verwalteten Datenträgern für virtuelle Microsoft Azure-Windows-Computer | Microsoft-Dokumentation"
+description: "Machen Sie sich mit den Grundlagen zu nicht verwalteten (Seitenblobs) und verwalteten Datenträgern für virtuelle Windows-Computer in Azure vertraut."
 services: storage
 documentationcenter: 
 author: robinsh
@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 11/15/2017
 ms.author: robinsh
-ms.openlocfilehash: b1beecf2e4268e358285c1101edcb13f6d592948
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a8dc028e2e872820a209bcdde5cca57853dd419
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
-# <a name="about-disks-and-vhds-for-azure-windows-vms"></a>Informationen zu Datenträgern und VHDs für Azure-Windows-VMs
+# <a name="about-disks-storage-for-azure-windows-vms"></a>Informationen zu Datenträgern für virtuelle Azure-Windows-Computer
 Virtuelle Computer in Azure verwenden wie alle anderen Computer auch einen Datenträger, auf dem das Betriebssystem, Anwendungen und Daten gespeichert sind. Alle virtuellen Azure-Computer verfügen über mindestens zwei Datenträger – einen Datenträger mit dem Windows-Betriebssystem und einen temporären Datenträger. Der Betriebssystem-Datenträger wird aus einem Image erstellt. Sowohl der Betriebssystem-Datenträger als auch das Image sind virtuelle Festplatten (VHDs), die in einem Azure-Speicherkonto gespeichert sind. Virtuelle Computer können auch über einen oder mehrere Datenträger verfügen, die ebenfalls als VHDs gespeichert werden. 
 
 In diesem Artikel werden die unterschiedlichen Verwendungsmöglichkeiten der Datenträger erörtert und die verschiedenen Typen von Datenträgern erläutert, die Sie erstellen und nutzen können. Dieser Artikel ist auch für [virtuelle Linux-Computer](../linux/about-disks-and-vhds.md)verfügbar.
@@ -79,6 +79,8 @@ fsutil behavior set DisableDeleteNotify 0
 
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>Nächste Schritte
-* [Anfügen eines Datenträgers](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) , um zusätzlichen Speicherplatz für den virtuellen Computer hinzuzufügen.
-* [Ändern des Laufwerkbuchstabens des temporären Windows-Datenträgers](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) , damit die Anwendung das Laufwerk „D:“ für Daten verwenden kann.
+* [Anfügen eines Datenträgers](attach-disk-portal.md) , um zusätzlichen Speicherplatz für den virtuellen Computer hinzuzufügen.
+* [Erstellen einer Momentaufnahme](snapshot-copy-managed-disk.md).
+* [Konvertieren in Managed Disks](convert-unmanaged-to-managed-disks.md).
+
 

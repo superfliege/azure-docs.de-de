@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 57af000e47188786a77cdb84ebb6ffb5c50eafaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 528b569ff9ffb3659e9210ea70e3aa06921cfe0d
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen an der Software in Ihrer Umgebung mit der Change Tracking-Lösung
 
@@ -44,7 +44,7 @@ Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Linux-Computern
 4. Klicken Sie auf **Speichern**.  
 
 > [!NOTE]
-> Beim Nachverfolgen von Linux-Dateien stehen zusätzliche Funktionen zur Verfügung, darunter das Nachverfolgen von Verzeichnissen, das rekursive durchlaufen von Verzeichnissen und das Nachverfolgen von Platzhaltern.
+> Beim Nachverfolgen von Linux-Dateien stehen zusätzliche Funktionen zur Verfügung, darunter das Nachverfolgen von Verzeichnissen, das rekursive Durchlaufen von Verzeichnissen und das Nachverfolgen von Platzhaltern.
 
 ### <a name="configure-windows-files-to-track"></a>Konfigurieren der nachzuverfolgenden Windows-Dateien
 Führen Sie zum Konfigurieren der nachzuverfolgenden Dateien auf Windows-Computern die folgenden Schritte aus.
@@ -69,7 +69,7 @@ Führen Sie zum Konfigurieren der nachzuverfolgenden Registrierungsschlüssel au
    * **Datei** (Metadaten der Berichtsdatei: Größe, Änderungsdatum, Hashwert usw.)
    * **Verzeichnis** (Metadaten des Berichtsverzeichnisses: Größe, Änderungsdatum usw.)
 2. **Links** (Behandlung von Symlink-Verweisen von Linux auf andere Dateien oder Verzeichnisse)
-   * **Ignorieren** (Ignorieren der Symlinks während Rekursionen, um die Verweisdateien/-verzeichnisse nicht einzuschließen)
+   * **Ignorieren** (Ignorieren der Symlinks während der Rekursion, um die Verweisdateien/-verzeichnisse nicht einzuschließen)
    * **Folgen** (Während der Rekursion den Symlinks folgen, um auch die Verweisdateien/-verzeichnisse einzuschließen)
    * **Verwalten** (Den Symlinks folgen und die Verarbeitung des zurückgegebenen Inhalts verändern)
 
@@ -96,6 +96,10 @@ Weitere Einschränkungen:
 * Wenn der Netzwerkverkehr hoch ist, kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
 * Wenn Sie die Konfiguration ändern, während ein Computer heruntergefahren ist, kann der Computer Dateiänderungen bereitstellen, die zur vorherigen Konfiguration gehören.
 
+### <a name="known-issues"></a>Bekannte Probleme
+Die Lösung für die Änderungsnachverfolgung weist derzeit die folgenden Probleme auf:
+* Hotfix-Updates werden für Computer mit Windows 10 Creators Update und Windows Server 2016 Core RS3 nicht erfasst.
+
 ## <a name="change-tracking-data-collection-details"></a>Details zur Datensammlung für die Änderungsnachverfolgung
 Die Änderungsnachverfolgung sammelt Softwareinventur- und Windows-Dienst-Metadaten mit den Agents, die Sie aktiviert haben.
 
@@ -103,7 +107,7 @@ Die folgende Tabelle zeigt die Datensammlungsmethoden und andere Details dazu, w
 
 | Plattform | Direkt-Agent | Operations Manager-Agent | Linux-Agent | Azure Storage | Operations Manager erforderlich? | Daten vom Operations Manager-Agent über Verwaltungsgruppe gesendet | Sammlungshäufigkeit |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Windows und Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | Zwischen 5 und 50 Minuten (je nach Art der Änderung) Ausführlichere Informationen finden Sie in der Tabelle weiter unten. |
+| Windows und Linux | &#8226; | &#8226; | &#8226; |  |  | &#8226; | Zwischen 5 und 50 Minuten (je nach Art der Änderung) Ausführlichere Informationen finden Sie in der unten stehenden Tabelle. |
 
 
 Die folgende Tabelle zeigt die Datensammlungshäufigkeit für die Änderungstypen.

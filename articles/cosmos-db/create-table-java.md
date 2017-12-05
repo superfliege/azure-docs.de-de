@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/20/2017
 ms.author: arramac
-ms.openlocfilehash: 8af7064ad9873128b7d744b815e888c50953f377
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 90ba10990049cd1fb788d63a143eb1169191cf24
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-java-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Table-API-App mit Java und Azure Cosmos DB
 
@@ -43,6 +43,10 @@ Außerdem haben Sie folgende Möglichkeiten:
     * Unter Ubuntu können Sie `sudo apt-get install git` ausführen, um Git zu installieren.
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
+
+> [!IMPORTANT] 
+> Zum Arbeiten mit den allgemein verfügbaren Table-API-SDKs müssen Sie ein neues Table-API-Konto erstellen. Table-API-Konten, die während der Vorschau erstellt wurden, werden von den allgemein verfügbaren SDKs nicht unterstützt.
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -87,9 +91,24 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
    ![Anzeigen und Kopieren der erforderlichen Verbindungszeichenfolgeninformationen aus dem Bereich „Verbindungszeichenfolge“](./media/create-table-java/connection-string.png)
 
-2. Öffnen Sie die Datei „config.properties“, und kopieren Sie die erforderlichen Verbindungszeichenfolgeneigenschaften in die Konfigurationsdatei.
+2. Kopieren Sie die primäre Verbindungszeichenfolge mithilfe der Kopierschaltfläche auf der rechten Seite.
 
-3. Speichern Sie die Datei „config.properties“.
+3. Öffnen Sie „config.properties“ aus dem Ordner „C:\git-samples\storage-table-java-getting-started\src\main\resources“. 
+
+5. Kommentieren Sie die erste Zeile aus, und heben Sie die Auskommentierung in der zweiten Zeile auf. Die beiden ersten Zeilen sollten nun wie folgt aussehen.
+
+    ```
+    #StorageConnectionString = UseDevelopmentStorage=true
+    StorageConnectionString = DefaultEndpointsProtocol=https;AccountName=[ACCOUNTNAME];AccountKey=[ACCOUNTKEY]
+    ```
+
+6. Fügen Sie die primäre Verbindungszeichenfolge aus dem Portal in den Wert „StorageConnectionString“ in Zeile 2 ein. 
+
+    > [!IMPORTANT]
+    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Table-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Table-API-SDK zu arbeiten.
+    >
+
+7. Speichern Sie die Datei „config.properties“.
 
 Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
 
@@ -98,8 +117,7 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 1. Wechseln Sie im Terminalfenster von Git mithilfe von `cd` zum Ordner „storage-table-java-getting-started“.
 
     ```git
-    cd "C:\git-samples\
-storage-table-java-getting-started"
+    cd "C:\git-samples\storage-table-java-getting-started"
     ```
 
 2. Führen Sie im Terminalfenster von Git die folgenden Befehle aus, um die Java-Anwendung zu starten.
@@ -125,4 +143,4 @@ storage-table-java-getting-started"
 In diesem Schnellstart haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, eine Tabelle mit dem Daten-Explorer erstellen und eine App ausführen.  Jetzt können Sie Ihre Daten mit der Table-API abfragen.  
 
 > [!div class="nextstepaction"]
-> [Importieren von Daten für die Verwendung mit der Table-API von Azure Cosmos DB](table-import.md)
+> [Importieren von Daten in die Table-API](table-import.md)

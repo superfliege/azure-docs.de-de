@@ -1,5 +1,5 @@
 ---
-title: "Gewusst wie: Hinzufügen einer Event Hub-Ereignisquelle zu Ihrer Azure Time Series Insights-Umgebung | Microsoft-Dokumentation"
+title: "Gewusst wie: Hinzufügen einer Event Hub-Ereignisquelle zu Azure Time Series Insights | Microsoft-Dokumentation"
 description: "In diesem Artikel wird beschrieben, wie eine Ereignisquelle hinzugefügt wird, die mit einem Event Hub in Ihrer Time Series Insights-Umgebung verbunden ist."
 services: time-series-insights
 ms.service: time-series-insights
@@ -10,12 +10,12 @@ editor: MicrosoftDocs/tsidocs
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: f3a9a1c7e57383925877f674a2e02f931e5c1e3c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/21/2017
+ms.openlocfilehash: c07c847784eb13c62e350e9c655e027e7df696a3
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="how-to-add-an-event-hub-event-source-to-time-series-insights-environment"></a>Gewusst wie: Hinzufügen einer Event Hub-Ereignisquelle zu einer Time Series Insights-Umgebung
 
@@ -103,6 +103,6 @@ Gehen Sie folgendermaßen vor, um Ihrem Event Hub eine Consumergruppe hinzuzufü
 5. Wählen Sie **Erstellen** aus, um die neue Consumergruppe zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Definieren Sie Datenzugriffsrichtlinien](time-series-insights-data-access.md), um die Daten zu schützen.
-- [Senden Sie Ereignisse](time-series-insights-send-events.md) an die Ereignisquelle.
-- Greifen Sie über den [Time Series Insights-Explorer](https://insights.timeseries.azure.com) auf Ihre Umgebung zu.
+- [Definieren von Datenzugriffsrichtlinien](time-series-insights-data-access.md) zum Schützen der Daten
+- [Senden von Ereignissen](time-series-insights-send-events.md) an die Ereignisquelle
+- Zugreifen auf Ihre Umgebung über den [Time Series Insights-Explorer](https://insights.timeseries.azure.com)

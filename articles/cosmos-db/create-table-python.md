@@ -12,13 +12,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 11/16/2017
 ms.author: mimig
-ms.openlocfilehash: 0900ec1931cc622339133393b72b558076a42710
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1c64401a7d0ccfa12232b04cfd57e6beaa1dbca8
+ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-python-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Tabellen-API-App mit Python und Azure Cosmos DB
 
@@ -38,6 +38,10 @@ Außerdem haben Sie folgende Möglichkeiten:
 * Python 2.7 von [python.org](https://www.python.org/downloads/release/python-2712/)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
+
+> [!IMPORTANT] 
+> Zum Arbeiten mit den allgemein verfügbaren Tabellen-API-SDKs müssen Sie ein neues Tabellen-API-Konto erstellen. Tabellen-API-Konten, die während der Vorschau erstellt wurden, werden von den allgemein verfügbaren SDKs nicht unterstützt.
+>
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
@@ -84,7 +88,13 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
     ![Anzeigen und Kopieren der Verbindungszeichenfolge im Bereich „Verbindungszeichenfolge“](./media/create-table-python/connection-string.png)
 
-2. Öffnen Sie die Datei „config.py“, und kopieren Sie die erforderlichen Verbindungszeichenfolgen-Eigenschaften in die Konfigurationsdatei.
+2. Kopieren Sie den Kontonamen mithilfe der Schaltfläche auf der rechten Seite.
+
+3. Öffnen Sie die Datei „config.py“, und fügen Sie den Kontonamen aus dem Portal in den STORAGE_ACCOUNT_NAME-Wert in Zeile 19 ein.
+
+4. Kehren Sie zum Portal zurück, und kopieren Sie den Primärschlüssel.
+
+5. Fügen Sie den Primärschlüssel aus dem Portal in den STORAGE_ACCOUNT_KEY-Wert in Zeile 20 ein.
 
 3. Speichern Sie die Datei „config.py“.
 
