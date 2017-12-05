@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 28ceb7345c0d74e2a7d7911d5b4bf24a0ceb214a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: fdb4180ce11b29577299e329869144e99ead0f05
+ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 11/21/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Verwenden von MySQL-Datenbanken in Microsoft Azure Stack
 
@@ -40,13 +40,14 @@ In diesem Release wird keine MySQL-Instanz mehr erstellt. Sie müssen diese erst
 - Erstellen eines MySQL-Servers
 - Herunterladen und Bereitstellen eines MySQL-Servers aus dem Marketplace
 
-![NOTE] Hostserver, die in Azure Stack mit mehreren Knoten installiert werden, müssen mit einem Mandantenabonnement erstellt werden. Sie können nicht mit dem Standardabonnement des Anbieters erstellt werden. Das heißt, sie müssen über das Mandantenportal oder eine PowerShell-Sitzung mit einer entsprechenden Anmeldung erstellt werden. Alle Hostserver sind abrechenbare VMs, die entsprechende Lizenzen benötigen. Der Dienstadministrator kann der Besitzer dieses Abonnements sein.
+> [!NOTE]
+> Hostserver, die in einer Azure Stack-Infrastruktur mit mehreren Knoten installiert werden, müssen mit einem Mandantenabonnement erstellt werden. Sie können nicht mit dem Standardabonnement des Anbieters erstellt werden. Das heißt, sie müssen über das Mandantenportal oder eine PowerShell-Sitzung mit einer entsprechenden Anmeldung erstellt werden. Alle Hostserver sind abrechenbare VMs, die entsprechende Lizenzen benötigen. Der Dienstadministrator kann der Besitzer dieses Abonnements sein.
 
 ### <a name="required-privileges"></a>Erforderliche Berechtigungen
 Das Systemkonto muss über die folgenden Berechtigungen verfügen:
 
-1.  Datenbank: erstellen, ablegen
-2.  Anmeldung: erstellen, festlegen, ablegen, gewähren, widerrufen
+1.  Datenbank: erstellen, löschen
+2.  Anmeldung: erstellen, festlegen, löschen, gewähren, widerrufen
 
 ## <a name="deploy-the-resource-provider"></a>Bereitstellen des Ressourcenanbieters
 
@@ -60,6 +61,9 @@ Das Systemkonto muss über die folgenden Berechtigungen verfügen:
     b. Auf Systemen mit mehreren Knoten muss der Host ein System sein, das auf den privilegierten Endpunkt zugreifen kann.
 
 3. [Laden Sie die Binärdatei des MySQL-Ressourcenanbieters herunter](https://aka.ms/azurestackmysqlrp), und führen Sie Self-Extractor aus, um den Inhalt in einem temporären Verzeichnis zu extrahieren.
+
+    > [!NOTE]
+    > Wenn Sie den Azure Stack-Build 20170928.3 oder früher verwenden, [laden Sie diese Version herunter](https://aka.ms/azurestackmysqlrp1709).
 
 4.  Das Azure Stack-Stammzertifikat wird vom privilegierten Endpunkt abgerufen. Für ASDK wird im Rahmen dieses Prozesses ein selbstsigniertes Zertifikat erstellt. Bei mehreren Knoten müssen Sie ein entsprechendes Zertifikat bereitstellen.
 
@@ -87,7 +91,7 @@ Mit diesem Skript werden folgende Schritte ausgeführt:
 
 Ihre Möglichkeiten:
 - Geben Sie mindestens die erforderlichen Parameter an der Befehlszeile an.
-- Wenn Sie die Ausführung ohne Parameter vornehmen, werden Sie zur Eingabe aufgefordert.
+- Wenn Sie die Ausführung ohne Parameter starten, geben Sie die Parameter ein, wenn Sie dazu aufgefordert werden.
 
 Hier ist ein Beispiel, das Sie über die PowerShell-Eingabeaufforderung ausführen können (ändern Sie jedoch die Kontoinformationen und Kennwörter entsprechend):
 
@@ -98,8 +102,12 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
-$domain = 'AzureStack'
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
+# For integrated systems, the domain and the prefix will be the same.
+$domain = "AzureStack"
+$prefix = "AzS"
+$privilegedEndpoint = "$prefix-ERCS01"
+
 # Point to the directory where the RP installation files were extracted
 $tempDir = 'C:\TEMP\MYSQLRP'
 
@@ -122,17 +130,18 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 # Run the installation script from the folder where you extracted the installation files
 # Find the ERCS01 IP address first and make sure the certificate
 # file is in the specified directory
-.$tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
+. $tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
-  -PrivilegedEndpoint '10.10.10.10' `
-  -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert `
+  -PrivilegedEndpoint $privilegedEndpoint `
+  -DefaultSSLCertificatePassword $PfxPass `
+  -DependencyFilesLocalPath $tempDir\cert `
   -AcceptLicense
 
  ```
 
-### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1-Parameter
 
+### <a name="deploysqlproviderps1-parameters"></a>Parameter „DeploySqlProvider.ps1“
 Sie können diese Parameter in der Befehlszeile angeben. Wenn sie nicht festgelegt werden oder eine Parameterüberprüfung fehlschlägt, werden Sie aufgefordert, die erforderlichen Parameter anzugeben.
 
 | Parametername | Beschreibung | Kommentar oder Standardwert |
@@ -153,7 +162,7 @@ Sie können diese Parameter in der Befehlszeile angeben. Wenn sie nicht festgele
 Je nach Systemleistung und Downloadgeschwindigkeiten kann die Installation zwischen 20 Minuten und mehreren Stunden dauern. Wenn das MySQLAdapter-Blatt nicht verfügbar ist, aktualisieren Sie das Administratorportal.
 
 > [!NOTE]
-> Wenn die Installation länger als 90 Minuten dauert, schlägt sie u.U. fehl, und auf dem Bildschirm sowie in der Protokolldatei wird eine Fehlermeldung angezeigt. Der Bereitstellungsvorgang wird ab dem fehlgeschlagenen Schritt wiederholt. Systeme, die den empfohlenen Arbeitsspeicher- und vCPU-Spezifikationen nicht entsprechen, können den MySQL-Ressourcenanbieter möglicherweise nicht bereitstellen.
+> Wenn die Installation länger als 90 Minuten dauert, schlägt sie u.U. fehl, und auf dem Bildschirm sowie in der Protokolldatei wird eine Fehlermeldung angezeigt. Der Bereitstellungsvorgang wird ab dem fehlgeschlagenen Schritt wiederholt. Systeme, die den empfohlenen Arbeitsspeicher- und Core-Spezifikationen nicht entsprechen, können den MySQL-Ressourcenanbieter möglicherweise nicht bereitstellen.
 
 
 
@@ -187,16 +196,17 @@ Je nach Systemleistung und Downloadgeschwindigkeiten kann die Installation zwisc
 4. Wenn Sie Server hinzufügen, müssen Sie diese einer neuen oder vorhandenen SKU hinzufügen, um die Differenzierung von Dienstangeboten zu ermöglichen.
   Beispielsweise können Sie über eine Enterprise-Instanz Folgendes bereitstellen:
     - Datenbankkapazität
-    - Automatische Sicherungen
+    - Automatische Sicherung
     - Reservieren von Hochleistungsservern für einzelne Abteilungen
-    - usw.
-    Der SKU-Name sollte die Eigenschaften widerspiegeln, damit Mandanten ihre Datenbanken entsprechend platzieren können. Alle Hostserver in einer SKU sollten die gleichen Funktionen aufweisen.
+ 
 
-    ![Erstellen einer MySQL-SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
+Der SKU-Name sollte die Eigenschaften widerspiegeln, damit Mandanten ihre Datenbanken entsprechend platzieren können. Alle Hostserver in einer SKU sollten die gleichen Funktionen aufweisen.
+
+![Erstellen einer MySQL-SKU](./media/azure-stack-mysql-rp-deploy/mysql-new-sku.png)
 
 
 >[!NOTE]
-Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie können erst eine Datenbank erstellen, wenn die SKU erstellt wurde.
+> Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie können erst eine Datenbank erstellen, wenn die SKU erstellt wurde.
 
 
 ## <a name="to-test-your-deployment-create-your-first-mysql-database"></a>Erstellen Ihrer ersten MySQL-Datenbank zum Testen der Bereitstellung
@@ -231,17 +241,17 @@ Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie kö
 Fügen Sie Kapazität hinzu, indem Sie im Azure Stack-Portal weitere MySQL-Server hinzufügen. Zusätzliche Server können einer neuen oder vorhandenen SKU hinzugefügt werden. Stellen Sie sicher, dass die Servereigenschaften identisch sind.
 
 
-## <a name="making-mysql-databases-available-to-tenants"></a>Verfügbarmachen von MySQL-Datenbanken für Mandanten
+## <a name="make-mysql-databases-available-to-tenants"></a>Verfügbarmachen von MySQL-Datenbanken für Mandanten
 Erstellen Sie Pläne und Angebote, um MySQL-Datenbanken für Mandanten zur Verfügung stellen. Fügen Sie den Dienst „Microsoft.MySqlAdapter“ hinzu, fügen Sie ein Kontingent hinzu usw.
 
 ![Erstellen von Plänen und Angeboten, die Datenbanken umfassen](./media/azure-stack-mysql-rp-deploy/mysql-new-plan.png)
 
-## <a name="updating-the-administrative-password"></a>Aktualisieren des Administratorkennworts
+## <a name="update-the-administrative-password"></a>Aktualisieren des Administratorkennworts
 Sie ändern das Kennwort, indem Sie es zunächst auf der MySQL Server-Instanz ändern. Navigieren Sie zu **VERWALTUNGSRESSOURCEN** &gt; **MySQL-Hostserver** &gt;, und klicken Sie auf den Hostserver. Klicken Sie im Bereich „Einstellungen“ auf „Kennwort“.
 
 ![Aktualisieren des Administratorkennworts](./media/azure-stack-mysql-rp-deploy/mysql-update-password.png)
 
-## <a name="removing-the-mysql-adapter-resource-provider"></a>Entfernen des MySQL-Adapter-Ressourcenanbieters
+## <a name="remove-the-mysql-resource-provider-adapter"></a>Entfernen des MySQL-Ressourcenanbieteradapters
 
 Zum Entfernen des Ressourcenanbieters müssen unbedingt zuerst alle Abhängigkeiten entfernt werden.
 
@@ -263,6 +273,5 @@ Zum Entfernen des Ressourcenanbieters müssen unbedingt zuerst alle Abhängigkei
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-
 
 Probieren Sie andere [PaaS-Dienste](azure-stack-tools-paas-services.md) wie den [SQL Server-Ressourcenanbieter](azure-stack-sql-resource-provider-deploy.md) und den [App Services-Ressourcenanbieter](azure-stack-app-service-overview.md) aus.

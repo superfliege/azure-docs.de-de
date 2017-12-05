@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: cd13ecf50cf03c362f8da2da83ab698c4e8ba0cc
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 83a1ba0b97c0617884b1645ad54e259f04052f49
+ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/20/2017
 ---
 # <a name="managing-devices-using-the-azure-portal"></a>Verwalten von Geräten mit dem Azure-Portal
 
@@ -32,7 +32,30 @@ Dieses Thema:
 
 - Enthält Informationen zum Verwalten Ihrer Geräte mithilfe des Azure-Portals.
 
+## <a name="manage-devices"></a>Verwalten von Geräten 
 
+Das Azure-Portal bietet Ihnen einen zentralen Ort zum Verwalten Ihrer Geräte. Sie können über einen [direkten Link](https://portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/Devices) oder mithilfe der folgenden manuellen Schritte zu diesem zentralen Ort gelangen:
+
+1. Melden Sie sich als Administrator beim [Azure-Portal](https://portal.azure.com) an.
+
+2. Klicken Sie auf der linken Navigationsleiste auf **Active Directory**.
+
+    ![Konfigurieren der Geräteeinstellungen](./media/device-management-azure-portal/01.png)
+
+3. Klicken Sie im Bereich **Verwalten** auf **Geräte**.
+
+    ![Konfigurieren der Geräteeinstellungen](./media/device-management-azure-portal/11.png)
+ 
+Auf der Seite **Geräte** können Sie folgende Aktivitäten ausführen:
+
+- Konfigurieren der Einstellungen für die Geräteverwaltung
+
+- Suchen nach Geräten
+
+- Ausführen von Geräteverwaltungsaufgaben
+
+- Überprüfen der Überwachungsprotokolle in Zusammenhang mit der Geräteverwaltung  
+  
 
 ## <a name="configure-device-settings"></a>Konfigurieren der Geräteeinstellungen
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: c38a69176f5f9e6a8f8dbcc411b85bef47362880
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 0302b4f8f4171d288a7e7c62de036c6f1cec8212
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren vom lokalen Standort in Azure
 
@@ -145,6 +145,7 @@ Multi-NIC | Ja | Ja
 Reservierte IP | Ja | Ja
 IPv4 | Ja | Ja
 Behalten der Quell-IP | Ja | Ja
+Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage) | Nein | Nein
 
 
 ## <a name="support-for-storage"></a>Speicherunterstützung
@@ -188,9 +189,11 @@ GRS | Ja | Ja
 RA-GRS | Ja | Ja
 Speicherebene „Kalt“ | Nein | Nein
 Speicherebene „Heiß“| Nein | Nein
+Blockblobs | Nein | Nein
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
 Storage Premium | Ja | Ja
 Import-/Exportdienst | Nein | Nein
+Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage), die in dem Ziel- oder Cachespeicherkonto konfiguriert wurden, das zum Speichern der Replikationsdaten verwendet wird | Nein | Nein
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Unterstützung für Azure-Computekonfiguration

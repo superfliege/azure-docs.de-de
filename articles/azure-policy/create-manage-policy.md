@@ -3,17 +3,17 @@ title: "Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung in O
 description: "Verwenden Sie Azure Policy, um die Einhaltung von Standards, gesetzlichen Vorschriften und Auditanforderungen durchzusetzen, Kosten zu steuern, für konsistente Sicherheit und Leistung zu sorgen und unternehmensweite Entwurfsprinzipien vorzugeben."
 services: azure-policy
 keywords: 
-author: Jim-Parker
-ms.author: jimpark
-ms.date: 11/01/2017
+author: bandersmsft
+ms.author: banders
+ms.date: 11/17/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 63e8e4d3dbbc2e50b55f7e293d324ceed0484bb7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 517f85307e97c1e98a84da95cb51660d6d4fe679
+ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/18/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -35,7 +35,7 @@ Azure Policy ist jetzt in einer eingeschränkten Vorschauversion verfügbar und 
 
    ![Suchen nach „Policy“](media/assign-policy-definition/sign-up.png)
 
-2. Registrieren Sie sich für Azure Policy, indem Sie in der Abonnementliste die gewünschten **Abonnements** auswählen. Klicken Sie anschließend auf **Register** (Registrieren).
+2. Registrieren Sie sich für Azure Policy, indem Sie in der **Abonnementliste** die gewünschten Abonnements auswählen. Klicken Sie anschließend auf **Register** (Registrieren).
 
    Die Abonnementliste enthält alle Ihre Azure-Abonnements.
 
@@ -386,7 +386,7 @@ Mit einer Initiativdefinition können Sie mehrere Richtliniendefinitionen zu ein
 
 ## <a name="resolve-a-non-compliant-or-denied-resource"></a>Beheben von Problemen mit einer nicht konformen oder abgelehnten Ressource
 
-Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur Forderung der SQL Server-Version 12.0 die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wird. In diesem Abschnitt erfahren Sie, wie Sie vorgehen können, wenn die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wurde.
+Das obige Beispiel bewirkt, dass nach dem Zuweisen der Richtliniendefinition zur Forderung der SQL Server-Version 12.0 die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wird. In diesem Abschnitt erfahren Sie, wie Sie durch Anfordern einer Ausnahme das Problem lösen können, dass die Erstellung einer SQL Server-Instanz mit einer anderen Version abgelehnt wurde.
 
 1. Klicken Sie im linken Bereich auf **Zuweisungen**.
 2. Durchsuchen Sie alle Richtlinienzuweisungen, und starten Sie die Zuweisung *Require SQL Server version 12.0* (SQL Server-Version 12.0 fordern).

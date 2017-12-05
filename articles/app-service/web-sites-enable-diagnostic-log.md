@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: a9c5743c92ac48202c19c2f6f024238c147d8444
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 1d8d0caa1aa9e21bf724d60127dc6f2ac9a49ecf
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service
 ## <a name="overview"></a>Übersicht
@@ -35,8 +35,8 @@ App Service-Web-Apps bieten Diagnosefunktionen zum Protokollieren von Informatio
 Sie können die folgenden Protokollarten aktivieren oder deaktivieren:
 
 * **Detaillierte Fehlerprotokollierung** - Detaillierte Fehlerinformationen für HTTP-Statuscodes, die auf einen Fehler hinweisen (Statuscode 400 oder höher). Diese können Informationen enthalten, mit deren Hilfe sich bestimmen lässt, warum der Server den Fehlercode zurückgegeben hat.
-* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies kann nützlich sein, wenn Sie versuchen, die Leistung von Websites zu verbessern oder herauszufinden, warum ein bestimmter HTTP-Fehler zurückgegeben wird.
-* **Webserverprotokollierung** - Informationen über HTTP-Transaktionen im erweiterten [W3C-Protokolldateiformat](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Dies ist hilfreich, wenn Sie allgemeine Website-Kennzahlen ermitteln möchten, wie die Anzahl der verarbeiteten Anfragen oder wie viele Anforderungen von einer bestimmten IP-Adresse stammen.
+* **Ablaufverfolgung von Anforderungsfehlern** - Detaillierte Informationen zu fehlgeschlagenen Anforderungen, einschließlich der Verfolgung von IIS-Komponenten, die zur Verarbeitung der Anforderung verwendet wurden, sowie die in jeder Komponente benötigte Zeit. Dies ist nützlich, wenn Sie versuchen, die Leistung von Websites zu verbessern oder herauszufinden, warum ein bestimmter HTTP-Fehler zurückgegeben wird.
+* **Webserverprotokollierung** - Informationen über HTTP-Transaktionen im erweiterten [W3C-Protokolldateiformat](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Dies ist hilfreich, wenn Sie allgemeine Websitemetriken ermitteln möchten, wie die Anzahl der verarbeiteten Anforderungen oder die Anzahl der Anforderungen von einer bestimmten IP-Adresse.
 
 ### <a name="application-diagnostics"></a>Anwendungsdiagnose
 Mit der Option "Application Diagnostics" können Sie die von einer Webanwendung erzeugten Informationen erfassen. ASP.NET-Anwendungen können die Klasse [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) verwenden, um Informationen im Anwendungs-Diagnoseprotokoll aufzuzeichnen. Beispiel:
@@ -53,21 +53,20 @@ Zum Aktivieren der Diagnose im [Azure-Portal](https://portal.azure.com) navigier
 <!-- todo:cleanup dogfood addresses in screenshot -->
 ![Protokolle Teil](./media/web-sites-enable-diagnostic-log/logspart.png)
 
-Wenn Sie die **Anwendungsdiagnose** aktivieren, können Sie auch die **Ebene** auswählen. Diese Einstellung ermöglicht das Filtern der aufgezeichneten Informationen nach **Informationen**, **Warnungen** oder **Fehlern**. Sie können auch **verbose** auswählen, um alle von der Anwendung erzeugten Informationen zu protokollieren.
+Wenn Sie die **Anwendungsdiagnose** aktivieren, können Sie auch die **Ebene** auswählen. Diese Einstellung ermöglicht das Filtern der aufgezeichneten Informationen nach **Informationen**, **Warnungen** oder **Fehlern**. Sie können auch **Ausführlich** auswählen, um alle von der Anwendung erzeugten Informationen zu protokollieren.
 
 > [!NOTE]
 > Im Gegensatz zum Ändern der Datei "web.config" wird durch das Aktivieren der Anwendungsdiagnose oder durch das Ändern des Diagnoseprotokollumfangs nicht die Anwendungsdomäne neu gestartet, in der die Anwendung ausgeführt wird.
 >
 >
 
-Im [klassischen Portal](https://manage.windowsazure.com) der Web-App auf der Registerkarte **Konfigurieren** können Sie **Storage** oder **Dateisystem** für die **Webserverprotokollierung** auswählen. Durch Auswahl von **storage** können Sie ein Speicherkonto festlegen und dann einen Blob-Container hinzufügen, in den die Protokolle geschrieben werden. Alle anderen Protokolle für **site diagnostics** werden nur in das Dateisystem geschrieben.
+Unter **Anwendungsprotokollierung** können Sie zum Debuggen vorübergehend die Dateisystemoption aktivieren. Diese Option wird in 12 Stunden automatisch deaktiviert. Sie können auch die Blob Storage-Option aktivieren, um einen Blobcontainer auszuwählen, in den Protokolle geschrieben werden sollen.
 
-Die Registerkarte [Konfigurieren](https://manage.windowsazure.com) im **klassischen Portal** der Web-App verfügt außerdem über zusätzliche Einstellungen für die Anwendungsdiagnose:
+Unter **Webserverprotokollierung** können Sie **Speicher** oder **Dateisystem** auswählen. Durch Auswahl von **storage** können Sie ein Speicherkonto festlegen und dann einen Blob-Container hinzufügen, in den die Protokolle geschrieben werden. 
 
-* **Dateisystem** - Speichert die Anwendungsdiagnoseinformationen im Dateisystem der Web-App. Diese Dateien können über FTP aufgerufen werden oder als ZIP-Archiv mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure-CLI) heruntergeladen werden.
-* **Table storage** - Speichert die Anwendungsdiagnoseinformationen im angegebenen Azure-Speicherkonto unter dem Tabellennamen.
-* **Blob storage** - Speichert die Anwendungsdiagnoseinformationen im angegebenen Azure-Speicherkonto im Blob-Container.
-* **Vermerkungszeitraum:** Standardmäßig werden Protokolle nicht automatisch aus **Blob Storage** gelöscht. Falls die Protokolle automatisch gelöscht werden sollen, wählen Sie **set retention** aus, und geben Sie die Anzahl der Tage ein, für die Protokolle aufbewahrt werden sollen.
+Wenn Sie Protokolle im Dateisystem speichern, können diese Dateien über FTP aufgerufen werden oder als ZIP-Archiv mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle (Azure CLI) heruntergeladen werden.
+
+Protokolle werden standardmäßig nicht automatisch gelöscht (ausgenommen bei der Option **Anwendungsprotokollierung (Dateisystem)**). Damit Protokolle automatisch gelöscht werden, legen Sie das Feld **Beibehaltungsdauer (Tage)** fest.
 
 > [!NOTE]
 > Wenn Sie [den Zugriffsschlüssel für Ihr Speicherkonto neu generieren](../storage/common/storage-create-storage-account.md), müssen Sie die jeweilige Protokollierungskonfiguration zur Verwendung der aktualisierten Schlüssel zurücksetzen. Gehen Sie dazu folgendermaßen vor:
@@ -101,12 +100,10 @@ Protokolle werden in der folgenden Verzeichnisstruktur gespeichert:
 * **Bereitstellungsprotokolle** - /LogFiles/Git. Dieser Ordner enthält Protokolle, die von den internen Bereitstellungsprozessen der Azure-Web-Apps erzeugt werden, sowie Protokolle für Git-Bereitstellungen.
 
 ### <a name="ftp"></a>FTP
-Um Diagnoseinformationen über FTP aufzurufen, wechseln Sie im **klassischen Portal** zur Seite [Dashboard](https://manage.windowsazure.com)Ihrer Web-App. Im Abschnitt **Auf einen Blick** können Sie den Link **FTP-Diagnoseprotokolle** verwenden, um über FTP auf die Protokolldateien zuzugreifen. Der Eintrag **Deployment/FTP User** listet den Benutzernamen auf, der zum Zugriff auf die FTP-Site verwendet werden sollte.
 
-> [!NOTE]
-> Falls der Eintrag **Bereitstellung/FTP-Benutzer** nicht festgelegt ist oder Sie das Kennwort für diesen Benutzer vergessen haben, können Sie einen neuen Benutzer mit zugehörigem Kennwort über den Link **Anmeldeinformationen für die Bereitstellung zurücksetzen** im Abschnitt **Auf einen Blick** im **Dashboard** erstellen.
->
->
+Informationen zum Öffnen einer FTP-Verbindung mit dem FTP-Server Ihrer App finden Sie unter [Bereitstellen der App in Azure App Service mithilfe von FTP/S](app-service-deploy-ftp.md).
+
+Wenn die Verbindung mit dem FTP/S-Server Ihrer Web-App hergestellt wurde, öffnen Sie den Ordner **LogFiles**, in dem die Protokolldateien gespeichert sind.
 
 ### <a name="download-with-azure-powershell"></a>Herunterladen mit Azure PowerShell
 Starten Sie zum Herunterladen der Protokolldateien eine neue Instanz von Azure PowerShell, und führen Sie den folgenden Befehl aus:
@@ -145,7 +142,7 @@ Visual Studio Application Insights bietet Tools zum Filtern und Suchen von Proto
 [Erfahren Sie mehr über die Leistungsüberwachung mit Application Insights](../application-insights/app-insights-azure-web-apps.md)
 
 ## <a name="streamlogs"></a> Vorgehensweise: Streaming von Protokollen
-Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Dies kann durch das Streaming von Protokollinformationen in die Entwicklungsumgebung entweder mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle erfolgen.
+Beim Entwickeln einer Anwendung ist es häufig nützlich, Protokollinformationen nahezu in Echtzeit zu sehen. Sie können Protokollierungsinformationen entweder mit Azure PowerShell oder mit der Azure-Befehlszeilenschnittstelle in die Entwicklungsumgebung streamen.
 
 > [!NOTE]
 > Einige Protokolltypen puffern die Schreibvorgänge in die Protokolldatei, was zu Störereignissen im Stream führen kann. Beispielsweise kann ein Anwendungsprotokolleintrag für den Besuch einer Seite im Stream vor dem zugehörigen HTTP-Protokolleintrag für die Seitenanforderung angezeigt werden.
@@ -207,7 +204,7 @@ Jede im Dateisystem protokollierte oder per Streaming empfangene Zeile hat das f
 
     {Date}  PID[{process ID}] {event type/level} {message}
 
-Beispielsweise würde ein Fehlerereignis in etwa wie folgt aussehen:
+Beispielsweise würde ein Fehlerereignis in etwa wie im folgenden Beispiel aussehen:
 
     2014-01-30T16:36:59  PID[3096] Error       Fatal error on the page!
 
@@ -224,7 +221,7 @@ Bei der Protokollierung im Tabellenspeicher werden zusätzliche Eigenschaften ve
 | Zeitstempel |Datum und Zeit des Auftretens des Ereignisses |
 | EventTickCount |Datum und Zeit des Auftretens des Ereignisses im Tick-Format (höhere Präzision) |
 | ApplicationName |Der Name der Web-App |
-| Ebene |Ereignistyp (z. B. Info, Warnung, Fehler) |
+| Ebene |Ereignisebene (z.B. Fehler, Warnung, Information) |
 | EventId |Die Ereignis-ID<p><p>Bei fehlender Angabe standardmäßig 0 |
 | InstanceId |Instanz der Web-App, in der das Ereignis auftrat |
 | Pid |Prozess-ID |
@@ -238,7 +235,7 @@ Bei der Protokollierung in einem Blob-Speicher werden die Daten im CSV-Format (d
 | Eigenschaftenname | Wert/Format |
 | --- | --- |
 | Datum |Datum und Zeit des Auftretens des Ereignisses |
-| Ebene |Ereignistyp (z. B. Info, Warnung, Fehler) |
+| Ebene |Ereignisebene (z.B. Fehler, Warnung, Information) |
 | ApplicationName |Der Name der Web-App |
 | InstanceId |Instanz der Web-App, in der das Ereignis auftrat |
 | EventTickCount |Datum und Zeit des Auftretens des Ereignisses im Tick-Format (höhere Präzision) |
@@ -247,7 +244,7 @@ Bei der Protokollierung in einem Blob-Speicher werden die Daten im CSV-Format (d
 | Tid |Thread-ID des Threads, der das Ereignis erzeugt hat |
 | Nachricht |Meldung zu den Ereignisdetails |
 
-In einem Blob gespeicherte Daten sehen in etwa wie folgt aus:
+In einem Blob gespeicherte Daten sehen in etwa wie im folgenden Beispiel aus:
 
     date,level,applicationName,instanceId,eventTickCount,eventId,pid,tid,message
     2014-01-30T16:36:52,Error,mywebapp,6ee38a,635266966128818593,0,3096,9,An error occurred
@@ -258,7 +255,7 @@ In einem Blob gespeicherte Daten sehen in etwa wie folgt aus:
 >
 
 ### <a name="failed-request-traces"></a>Protokolle für fehlgeschlagene Anforderungen
-Die Verfolgungsprotokolle für fehlerhafte Anforderungen werden in XML-Dateien mit dem Namen **fr######.xml** gespeichert. Um das Anzeigen der protokollierten Informationen zu erleichtern, wird ein XSL-Stylesheet namens **freb.xsl** im selben Verzeichnis wie die XML-Dateien bereitgestellt. Wenn Sie eine der XML-Dateien in Internet Explorer öffnen, wird das XSL-Stylesheet in Internet Explorer verwendet, um eine formatierte Ansicht mit den Verfolgungsinformationen anzuzeigen. Dies sieht in etwa wie folgt aus:
+Die Verfolgungsprotokolle für fehlerhafte Anforderungen werden in XML-Dateien mit dem Namen **fr######.xml** gespeichert. Um das Anzeigen der protokollierten Informationen zu erleichtern, wird ein XSL-Stylesheet namens **freb.xsl** im selben Verzeichnis wie die XML-Dateien bereitgestellt. Wenn Sie eine der XML-Dateien in Internet Explorer öffnen, wird das XSL-Stylesheet in Internet Explorer verwendet, um eine formatierte Ansicht mit den Ablaufverfolgungsinformationen ähnlich wie im folgenden Beispiel anzuzeigen:
 
 ![Anzeige fehlgeschlagener Anforderungen im Browser](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
 

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.openlocfilehash: 7e0266cdc477715a5d2f9067c6dcea73da9ba763
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f95c0c486401e0d709829ce8d560f030932eea7
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="triggers-and-actions-for-logic-app-workflows"></a>Trigger und Aktionen für Logik-App-Workflows
 
@@ -114,7 +114,7 @@ Definition für diesen Trigger:
 | Elementname | Erforderlich | Typ | Beschreibung | 
 | ------------ | -------- | ---- | ----------- | 
 | frequency | Ja | String | Die Zeiteinheit für die Häufigkeit der Triggerauslösung. Zulässige Werte: „second“, „minute“, „hour“, „day“, „week“ oder „month“ | 
-| interval | Ja | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Zulässige Mindest- und Maximalintervalle: <p>-Month: 1–16 Monate </br>- Day: 1–500 Tage </br>- Hour: 1–12.000 Stunden </br>-Minute: 1–72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
+| interval | Ja | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. <p>Zulässige Mindest- und Maximalintervalle: <p>- Month: 1 - 16 Monate </br>- Day: 1 - 500 Tage </br>- Hour: 1 - 12.000 Stunden </br>- Minute: 1 - 72.000 Minuten </br>- Second: 1–9.999.999 Sekunden<p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. | 
 | timeZone | Nein | String | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Geben Sie die anzuwendende Zeitzone an. | 
 | startTime | Nein | String | Geben Sie Startdatum und -uhrzeit im folgenden Format an: <p>JJJJ-MM-TTTHH:mm:ss (bei Angabe einer Zeitzone; beachten Sie dabei, dass „TT“ den Tag bezeichnet, während das dritte „T“ wie in den nachfolgenden Beispielen gezeigt nicht verändert werden darf) <p>Oder <p>JJJJ-MM-TTTHH:mm:ssZ (ohne Angabe einer Zeitzone) <p>Für „18. September 2017, 14:00 Uhr“ müssten Sie also beispielsweise „2017-09-18T14:00:00“ und eine Zeitzone (etwa „Pacific Standard Time“) angeben. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), aber ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) angegeben werden. Wenn Sie keine Zeitzone angeben, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. Weitere Informationen zu Startdatum und -uhrzeit finden Sie unter [Schedule tasks and workflows that run regularly with logic apps](../connectors/connectors-native-recurrence.md) (Planen von regelmäßig ausgeführten Aufgaben und Workflows mit Logik-Apps). | 
 | weekDays | Nein | Zeichenfolge oder Zeichenfolgenarray | Wenn Sie für `frequency` die Option „Week“ angeben, können Sie einen Tag oder eine kommagetrennte Liste mit Tagen für die Workflowausführung angeben: „Monday“, „Tuesday“, „Wednesday“, „Thursday“, „Friday“, „Saturday“ oder „Sunday“ | 
@@ -196,19 +196,9 @@ HTTP-Trigger fragen einen angegebenen Endpunkt ab und überprüfen anhand der An
 | Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
 | headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
-| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md). | 
 | authentication | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). <p>Neben Scheduler wird auch noch folgende Eigenschaft unterstützt: `authority`. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber einen anderen Wert verwenden (beispielsweise `https://login.windows\-ppe.net`). | 
 ||||| 
-
-Eine *Wiederholungsrichtlinie* gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
  
 Für den HTTP-Trigger muss die HTTP-API einem bestimmten Muster entsprechen, damit sie reibungslos mit Ihrer Logik-App zusammenarbeitet. Der Trigger erkennt folgende Eigenschaften:  
   
@@ -223,11 +213,11 @@ Im Anschluss finden Sie einige Beispiele für das Verhalten verschiedener Anford
   
 | Antwortcode | Wiederholungsintervall | Verhalten | 
 | ------------- | ----------- | -------- | 
-| 200 | -- | Führt den Workflow aus und sucht erst nach der definierten Wiederholung wieder nach weiteren Inhalten. | 
+| 200 | {keine} | Führt den Workflow aus und sucht erst nach der definierten Wiederholung wieder nach weiteren Inhalten. | 
 | 200 | 10 Sekunden | Führt den Workflow aus und sucht nach zehn Sekunden nach weiteren Inhalten. |  
 | 202 | 60 Sekunden | Der Workflow wird nicht ausgelöst. Der nächste Versuch erfolgt gemäß der definierten Wiederholung in einer Minute. Wenn die definierte Wiederholung weniger als eine Minute beträgt, hat der Retry-After-Header Vorrang. Andernfalls wird die definierte Wiederholung verwendet. | 
-| 400 | -- | Ungültige Anforderung. Der Workflow wird nicht ausgeführt. Wenn keine `retryPolicy` definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger nach der definierten Wiederholung erneut nach Inhalten. | 
-| 500 | --| Serverfehler. Der Workflow wird nicht ausgeführt. Wenn keine `retryPolicy` definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger nach der definierten Wiederholung erneut nach Inhalten. | 
+| 400 | {keine} | Ungültige Anforderung. Der Workflow wird nicht ausgeführt. Wenn keine `retryPolicy` definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger nach der definierten Wiederholung erneut nach Inhalten. | 
+| 500 | {keine}| Serverfehler. Der Workflow wird nicht ausgeführt. Wenn keine `retryPolicy` definiert ist, wird die Standardrichtlinie verwendet. Wenn die Anzahl von Wiederholungen erreicht ist, sucht der Trigger nach der definierten Wiederholung erneut nach Inhalten. | 
 |||| 
 
 HTTP-Triggerausgaben: 
@@ -269,7 +259,7 @@ Die Grundfunktion des APIConnection-Triggers ist mit der des HTTP-Triggers vergl
 | Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
 | headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
-| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md). | 
 | authentication | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). | 
 ||||| 
 
@@ -280,16 +270,6 @@ Eigenschaften für das `host`-Objekt:
 | api runtimeUrl | Ja | Der Endpunkt für die verwaltete API. | 
 | connection name |  | Der Name der verwalteten API-Verbindung, die der Workflow verwendet. Muss auf einen Parameter namens `$connection` verweisen. |
 |||| 
-
-Eine *Wiederholungsrichtlinie* gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 
 Ausgaben für einen APIConnection-Trigger:
   
@@ -485,23 +465,23 @@ Es gibt viele Arten von Aktionen, die jeweils über ein eigenes Verhalten verfü
 | **HTTP** | Fragt einen HTTP-Webendpunkt ab. | 
 | **ApiConnection**  | Vergleichbar mit der HTTP-Aktion, verwendet aber [von Microsoft verwaltete APIs](https://docs.microsoft.com/azure/connectors/apis-list). | 
 | **ApiConnectionWebhook** | Vergleichbar mit „HTTPWebhook“, verwendet aber von Microsoft verwaltete APIs. | 
-| **Response** | Definiert die Antwort für einen eingehenden Aufruf. | 
+| **Antwort** | Definiert die Antwort für einen eingehenden Aufruf. | 
 | **Function** | Stellt eine Azure-Funktion dar. | 
 | **Wait** | Wartet eine bestimmte Zeit oder bis zu einer bestimmten Zeit. | 
 | **Workflow** | Stellt einen geschachtelten Workflow dar. | 
-| **Compose** | Erstellt ein beliebiges Objekt auf der Grundlage der Aktionseingaben. | 
-| **Query** | Filtert ein Array auf der Grundlage einer Bedingung. | 
-| **Select** | Projiziert die einzelnen Elemente eines Arrays in einen neuen Wert. So können Sie beispielsweise ein Zahlenarray in ein Objektarray konvertieren. | 
+| **Verfassen** | Erstellt ein beliebiges Objekt auf der Grundlage der Aktionseingaben. | 
+| **Abfragen** | Filtert ein Array auf der Grundlage einer Bedingung. | 
+| **Auswahl** | Projiziert die einzelnen Elemente eines Arrays in einen neuen Wert. So können Sie beispielsweise ein Zahlenarray in ein Objektarray konvertieren. | 
 | **Tabelle** | Konvertiert ein Array von Elementen in eine CSV- oder HTML-Tabelle. | 
 | **Terminate** | Beendet eine Workflowausführung. | 
 ||| 
 
-### <a name="collection-actions"></a>Collection-Aktionen
+### <a name="collection-actions"></a>Auflistungsaktionen
 
 | Aktionstyp | Beschreibung | 
 | ----------- | ----------- | 
 | **Condition** | Wertet einen Ausdruck aus und führt abhängig vom Ergebnis die entsprechende Verzweigung aus. | 
-| **Scope** | Dient zum logischen Gruppieren anderer Aktionen. | 
+| **Umfang** | Dient zum logischen Gruppieren anderer Aktionen. | 
 | **ForEach** | Diese Schleifenaktion durchläuft ein Array und führt interne Aktionen für die einzelnen Arrayelemente aus. | 
 | **Until** | Diese Schleifenaktion führt interne Aktionen aus, bis eine Bedingung erfüllt ist. | 
 ||| 
@@ -529,20 +509,11 @@ Hier verwendet das `inputs`-Objekt die folgenden, zum Erstellen eines HTTP-Aufru
 | Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
 | headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
-| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nein | string | Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen. | 
 | Authentifizierung | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). <p>Neben Scheduler wird auch noch folgende Eigenschaft unterstützt: `authority`. Ohne Angabe wird standardmäßig der Wert `https://login.windows.net` verwendet. Sie können aber einen anderen Wert verwenden (beispielsweise `https://login.windows\-ppe.net`). | 
 ||||| 
 
-HTTP-Aktionen und APIConnection-Aktionen unterstützen *Wiederholungsrichtlinien*. Eine Wiederholungsrichtlinie gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 Die folgende HTTP-Beispielaktion wiederholt den Abruf der neuesten Nachrichten zweimal, falls ein vorübergehender Fehler vorliegt. Dabei werden insgesamt drei Ausführungen mit einer jeweils 30-sekündigen Verzögerung zwischen den einzelnen Versuchen verwendet:
   
 ```json
@@ -631,20 +602,10 @@ Beispiel für eine APIConnection-Aktion:
 | Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
 | headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
-| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nein | string | Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen. | 
 | Authentifizierung | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
-
-Eine Wiederholungsrichtlinie gilt für vorübergehende Fehler (HTTP-Statuscodes 408, 429 und 5xx) sowie für Verbindungsausnahmen. Sie können diese Richtlinie wie folgt mit dem `retryPolicy`-Objekt definieren:
-  
-```json
-"retryPolicy": {
-    "type": "retry-policy-type",
-    "interval": retry-interval,
-    "count": number-of-retry-attempts
-}
-```
 
 ## <a name="apiconnection-webhook-action"></a>APIConnectionWebhook-Aktion
 
@@ -684,12 +645,12 @@ Die APIConnectionWebhook-Aktion verweist auf einen von Microsoft verwalteten Con
 | Abfragen | Nein | Objekt | Stellt die Abfrageparameter dar, die Sie in die URL einbeziehen möchten. <p>`"queries": { "api-version": "2015-02-01" }` fügt der URL beispielsweise `?api-version=2015-02-01` hinzu. | 
 | headers | Nein | Objekt | Stellt die einzelnen Header dar, die in der Anforderung gesendet werden. <p>Verwenden Sie beispielsweise Folgendes, um Sprache und Typ für eine Anforderung festzulegen: <p>`"headers": { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 
 | body | Nein | Objekt | Stellt die an den Endpunkt gesendete Nutzlast dar. | 
-| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. | 
+| retryPolicy | Nein | Objekt | Verwenden Sie dieses Objekt, um das Wiederholungsverhalten bei Fehlern vom Typ „4xx“ oder „5xx“ anzupassen. Weitere Informationen finden Sie unter [Wiederholungsrichtlinien](../logic-apps/logic-apps-exception-handling.md). | 
 | operationsOptions | Nein | string | Definiert den Satz spezieller Verhaltensweisen, die überschrieben werden sollen. | 
 | Authentifizierung | Nein | Objekt | Stellt die gewünschte Authentifizierungsmethode für die Anforderung dar. Weitere Informationen finden Sie unter [Ausgehende Authentifizierung von Scheduler](../scheduler/scheduler-outbound-authentication.md). |
 ||||| 
 
-## <a name="response-action"></a>Response-Aktion  
+## <a name="response-action"></a>Antwortaktion  
 
 Diese Aktion enthält die gesamte Antwortnutzlast aus einer HTTP-Anforderung sowie `statusCode`, `body` und `headers`:
   
@@ -761,7 +722,7 @@ Beim Speichern Ihrer Logik-App überprüft Azure Logic Apps die referenzierte Fu
 * Für die Funktion darf keine Route definiert sein.
 * Als Autorisierungsebene sind nur „function“ und „anonymous“ zulässig.
 
-Die Trigger-URL wird abgerufen, zwischengespeichert und zur Laufzeit verwendet. Sollte die zwischengespeicherte URL also aufgrund eines Vorgangs ungültig werden, tritt zur Laufzeit ein Fehler bei der Aktion auf. Speichern Sie zur Umgehung dieses Problems die Logik-App erneut. Dadurch wird die Trigger-URL erneut abgerufen und zwischengespeichert.
+Die Auslöser-URL wird abgerufen, zwischengespeichert und zur Laufzeit verwendet. Sollte die zwischengespeicherte URL also aufgrund eines Vorgangs ungültig werden, tritt zur Laufzeit ein Fehler bei der Aktion auf. Speichern Sie zur Umgehung dieses Problems die Logik-App erneut. Dadurch wird die Trigger-URL erneut abgerufen und zwischengespeichert.
 
 ## <a name="wait-action"></a>Wait-Aktion  
 
@@ -863,7 +824,7 @@ Mithilfe der Compose-Aktion können Sie beispielsweise Ausgaben mehrerer Aktione
 }
 ```
 
-## <a name="select-action"></a>Select-Aktion
+## <a name="select-action"></a>Aktion select
 
 Mit dieser Aktion können Sie die einzelnen Elemente eines Arrays in einen neuen Wert projizieren.
 Zum Konvertieren eines Arrays von Zahlen in ein Array von Objekten können Sie beispielsweise Folgendes verwenden:
@@ -886,7 +847,7 @@ Zum Konvertieren eines Arrays von Zahlen in ein Array von Objekten können Sie b
 
 Die `select`-Aktion gibt ein Array aus, dessen Kardinalität mit der des Eingabearrays identisch ist. Jedes Element wird gemäß der Definition der `select`-Eigenschaft transformiert. Wenn die Eingabe ein leeres Array ist, wird auch ein leeres Array ausgegeben.
 
-## <a name="query-action"></a>Query-Aktion
+## <a name="query-action"></a>Abfrageaktion
 
 Mit dieser Aktion können Sie ein Array auf der Grundlage einer Bedingung filtern. Im folgenden Beispiel werden Zahlen größer zwei ausgewählt:
 
@@ -911,7 +872,7 @@ Die Ausgabe der Aktion `query` ist ein Array mit Elementen aus dem Eingabearray,
 | Hierbei gilt: | Ja | String | Die Bedingung, die auf die einzelnen Elemente aus dem Quellarray angewendet wird. |
 ||||| 
 
-## <a name="table-action"></a>Table-Aktion
+## <a name="table-action"></a>Aktion table
 
 Mit dieser Aktion können Sie ein Array von Elementen in eine **CSV**- oder **HTML**-Tabelle konvertieren. Nehmen wir beispielsweise an, Sie verfügen über das folgende `@triggerBody()`-Array:
 

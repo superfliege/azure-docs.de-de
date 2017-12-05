@@ -5,19 +5,18 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/23/2017
+ms.date: 11/21/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: a01d8d1ed0f5234f4950d448b54087767353c8ef
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 043aea81258d96fc6598903f9b523f29a5bf2c15
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Häufig gestellte Fragen zu Azure Cost Management
-
 
 In diesem Artikel werden einige häufig gestellte Fragen zu Azure Cost Management (auch als Cloudyn bezeichnet) beantwortet. Wenn Sie Fragen zu Azure Cost Management haben, können Sie diese unter [FAQs for Azure Cost Management by Cloudyn](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn) (Häufig gestellte Fragen zu Azure Cost Management per Cloudyn) stellen.
 
@@ -125,3 +124,15 @@ Wenn es beim Senden von Daten aus Azure an Cloudyn zu einer Verzögerung kommt, 
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Wie kann ein direkter Cloudlösungsanbieter (CSP) den Cloudyn-Zugriff für Kunden oder Partner eines indirekten CSP konfigurieren?
 
 Eine Anleitung hierzu finden Sie unter [Configure indirect CSP access in Cloudyn (Konfigurieren des Zugriffs für indirekte CSPs in Cloudyn)](quick-register-csp.md#configure-indirect-csp-access-in-cloudyn).
+
+## <a name="what-causes-the-optimizer-menu-item-to-appear"></a>Was bewirkt, dass das Menüelement „Optimierer“ angezeigt wird?
+
+Nachdem Sie den Azure Resource Manager-Zugriff hinzugefügt haben und die Daten gesammelt werden, sehen Sie die Option **Optimierer**. Wie Sie Azure Resource Manager-Zugriff aktivieren, erfahren Sie unter [Wie aktiviere ich deaktivierte Konten mit Azure-Anmeldeinformationen?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
+
+## <a name="is-cost-managementcloudyn-agent-based"></a>Basiert Cost Management/Cloudyn auf Agents?
+
+Nein. Agents werden nicht verwendet. Metrikdaten für Azure-VMs werden von der Microsoft Insights-API erfasst. Wenn Sie metrische Daten von virtuellen Azure-Computern sammeln möchten, müssen für sie Diagnoseeinstellungen aktiviert sein.
+
+## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Zeigt ein einzelner Cloudyn-Bericht mehrere AD-Mandanten?
+
+Ja. Sie können [eine entsprechende Cloudkontoentität](tutorial-user-access.md#create-entities) für jeden Ihrer AD-Mandanten erstellen. Anschließend können Sie alle Ihre Azure AD-Mandantendaten und andere Cloudplattformanbieter einschließlich Amazon Web Services und Google Cloud Platform anzeigen.

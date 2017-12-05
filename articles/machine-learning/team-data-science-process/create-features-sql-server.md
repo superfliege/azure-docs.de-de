@@ -1,10 +1,10 @@
 ---
-title: "Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python | Microsoft Docs"
+title: "Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python | Microsoft-Dokumentation"
 description: Verarbeiten von Daten aus SQL Azure
 services: machine-learning
 documentationcenter: 
 author: bradsev
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: bf1f4a6c-7711-4456-beb7-35fdccd46a44
 ms.service: machine-learning
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 11/21/2017
 ms.author: bradsev;fashah;garye
-ms.openlocfilehash: 06c165d25361694cf660f391b3d221ad1d63e95d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd919e7f87080b8c4ad1f8d3de26d6f71470a264
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Erstellen von Features für Daten in SQL Server mithilfe von SQL und Python
-Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Dies kann mithilfe von SQL oder durch die Verwendung einer Programmiersprache wie Python erreicht werden. Hier werden beide Methoden erläutert.
+Dieses Dokument veranschaulicht das Generieren von Features für Daten auf einem virtuellen SQL Server-Computer in Azure, die dazu beitragen, dass Algorithmen effizienter aus den Daten lernen können. Für diese Aufgabe können Sie SQL oder eine Programmiersprache wie Python verwenden. Beide Herangehensweisen werden hier vorgestellt.
 
 [!INCLUDE [cap-create-features-data-selector](../../../includes/cap-create-features-selector.md)]
 
@@ -38,7 +38,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie Folgendes abgeschlossen haben
 * Sie haben ein Azure-Speicherkonto erstellt. Anweisungen finden Sie unter [Erstellen eines Azure-Speicherkontos](../../storage/common/storage-create-storage-account.md#create-a-storage-account).
 * Ihre Daten sind in SQL Server gespeichert. Falls nicht, finden Sie unter [Verschieben von Daten in eine Azure SQL-Datenbank für Azure Machine Learning](move-sql-azure.md) Anweisungen zum Verschieben von Daten.
 
-## <a name="sql-featuregen"></a>Generieren von Features mit SQL
+## <a name="sql-featuregen"></a>Generieren von Funktionen mit SQL
 In diesem Abschnitt werden Methoden zum Generieren von Funktionen mithilfe von SQL beschrieben.  
 
 1. [Anzahlbasierte Funktionsgenerierung](#sql-countfeature)
@@ -67,20 +67,20 @@ Das folgende Beispiel zeigt, wie Sie klassifizierte Funktionen erstellen, indem 
 ### <a name="sql-featurerollout"></a>Einführen von Funktionen aus einer einzelnen Spalte
 In diesem Abschnitt wird gezeigt, wie Sie eine einzelne Spalte in eine Tabelle einführen, um zusätzliche Funktionen zu generieren. Im Beispiel wird davon ausgegangen, dass die Tabelle, aus der Sie Funktionen generieren, die Spalten "latitude" und "longitude" enthält.
 
-Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (aus Stackoverflow: `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`). Dies ist für das Verständnis hilfreich, bevor Sie die Positionsfelder verwenden:
+Es folgt eine kurze Einführung in Positionsdaten mit Längen- und Breitengrad (aus Stackoverflow: `http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`). Nachfolgend finden Sie einige wichtige Aspekte zu Positionsdaten, die Sie kennen sollten, bevor Sie Funktionen aus dem Feld erstellen:
 
 * Das Vorzeichen gibt an, ob sich die Position im Norden, Süden, Osten oder Westen auf dem Globus befindet.
-* Ein Hunderterwert ungleich null gibt an, dass der Längengrad und nicht der Breitengrad verwendet wird!
-* Die Zehnerstelle gibt eine Position auf ca. 1.000 km Genauigkeit an. Damit verfügen Sie über nützliche Informationen zum Kontinent oder Ozean.
-* Die Einheitenstelle (ein Dezimalzeichen) gibt die Position auf etwa 111 km (60 nautische Meilen, etwa 69 Meilen) genau an. Damit wissen Sie ungefähr, welches Land gemeint ist.
+* Eine vor dem Komma dreistellige Zahl ungleich Null gibt den Längengrad an. Breitengrade werden nicht verwendet.
+* Die Zehnerstelle gibt eine Position auf ca. 1.000 km Genauigkeit an. Damit wissen Sie, welcher Kontinent oder welcher Ozean gemeint ist.
+* Die Einheitenstelle (ein Dezimalzeichen) gibt die Position auf etwa 111 km (60 nautische Meilen, etwa 69 Meilen) genau an. Damit wissen Sie ungefähr das Land.
 * Die erste Dezimalstelle gibt einen Wert von etwa 11,1 km Genauigkeit an: Sie können damit die Position von einer großen Stadt von der einer benachbarten großen Stadt unterscheiden.
 * Die zweite Dezimalstelle bietet eine Genauigkeit von ca. 1,1 km: Damit können Sie Dörfer voneinander trennen.
 * Die dritte Dezimalstelle ist auf etwa 110 m genau: Sie können so große landwirtschaftliche Felder oder Industriegebiete identifizieren.
 * Die vierte Dezimalstelle ist auf etwa 11 m genau: Sie können so einzelne Grundstücke unterscheiden. Dies ist vergleichbar mit der typischen Genauigkeit eines nicht korrigierten GPS-Geräts ohne Störungen.
-* Die fünfte Dezimalstelle ist auf etwa 1,1 m genau: Damit können Sie einzelne Strukturen voneinander unterscheiden. Eine Genauigkeit auf dieser Stufe lässt sich mit kommerziellen GPS-Geräten nur mit einer differenziellen Korrektur erreichen.
+* Die fünfte Dezimalstelle ist auf etwa 1,1 m genau: Damit können Sie einzelne Strukturen voneinander unterscheiden. Eine Genauigkeit auf dieser Stufe lässt sich mit kommerziellen GPS-Geräten nur mit einer differenziellen Korrektur erreichen.
 * Die sechste Dezimalstelle bietet eine Genauigkeit von etwa 0,11 m: Damit können Sie Strukturen detailgetreu erkennen, um Landschaften zu planen oder Straßen zu bauen. Dies sollte mehr als ausreichend für die Nachverfolgung der Bewegungen von Gletschern und Flüssen sein. Erreicht wird diese Genauigkeit nur durch umfangreiche GPS-Maßnahmen, z. B. differenziell korrigiertes GPS.
 
-Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, wobei die Informationen zu Region, Standort und Stadt getrennt werden. Beachten Sie, dass Sie auch einen REST-Endpunkt wie die Bing Maps-API unter `https://msdn.microsoft.com/library/ff701710.aspx` aufrufen können, um Informationen über Region/Bezirk abzurufen.
+Die Positionsinformationen können in Funktionen umgewandelt werden, indem die Informationen zu Region, Standort und Stadt herausisoliert werden. Beachten Sie, dass Sie auch einen REST-Endpunkt wie die Bing Maps-API unter `https://msdn.microsoft.com/library/ff701710.aspx` aufrufen können, um Informationen über Region/Bezirk abzurufen.
 
     select
         <location_columnname>
@@ -93,10 +93,10 @@ Die Positionsinformationen können wie folgt in Funktionen umgewandelt werden, w
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Die oben beschriebenen positionsbasierten Funktionen können dann wie oben beschrieben zum Generieren weiterer Anzahlfunktionen verwendet werden.
+Diese positionsbasierten Funktionen können dann wie oben beschrieben zum Generieren weiterer Zählfunktionen verwendet werden.
 
 > [!TIP]
-> Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz des Schreibvorgangs zu verbessern. [Ein pyodbc-Beispiel dazu finden Sie hier](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
+> Sie können die Datensätze programmgesteuert mithilfe Ihrer bevorzugten Sprache einfügen. Möglicherweise müssen Sie die Daten in Blöcken einfügen, um die Effizienz der Schreibvorgänge zu erhöhen. [Hier finden Sie ein Beispiel für diesen Vorgang unter Verwendung von pyodbc](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
 > Eine weitere Möglichkeit zum Einfügen von Daten in die Datenbank bietet das [Hilfsprogramm BCP](https://msdn.microsoft.com/library/ms162802.aspx).
 > 
 > 
@@ -104,12 +104,12 @@ Die oben beschriebenen positionsbasierten Funktionen können dann wie oben besch
 ### <a name="sql-aml"></a>Herstellen einer Verbindung mit Azure Machine Learning
 Die neu generierte Funktion kann als Spalte einer vorhandenen Tabelle hinzugefügt oder in einer neuen Tabelle gespeichert und für Machine Learning mit der ursprünglichen Tabelle zusammengeführt werden. Sie können wie unten dargestellt mit dem [Import Data](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) -Modul in Azure ML Features generieren oder, falls sie bereits vorhanden sind, darauf zugreifen:
 
-![azureml-Reader](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
+![Azure ML-Reader](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
 ## <a name="python"></a>Mit einer Programmiersprache wie Python
-Die Verwendung von Python zum Generieren von Features mit Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python, die unter [Verarbeiten von Azure-Blob-Daten in Ihrer Data Science-Umgebung](data-blob.md)beschrieben ist. Die Daten müssen aus der Datenbank in ein Pandas-DataFrame geladen werden, um dann weiter verarbeitet werden zu können. In diesem Abschnitt werden das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den DataFrame beschrieben.
+Die Verwendung von Python zum Generieren von Funktionen aus Daten in SQL Server ähnelt der Datenverarbeitung in Azure-Blobs mit Python. Einen Vergleich finden Sie unter [Verarbeiten von Azure-Blobdaten in Ihrer Data Science-Umgebung](data-blob.md). Laden Sie die Daten aus der Datenbank zur weiteren Verarbeitung in einen Pandas-Datenrahmen. Dieser Abschnitt beschreibt das Herstellen einer Verbindung mit der Datenbank und das Laden der Daten in den Datenrahmen.
 
-Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um aus Python mit "pyodbc" eine Verbindung mit einer SQL Server-Datenbank herzustellen (ersetzen Sie "servername", "dbname", "username" und "password" durch Ihre Daten):
+Das folgende Format für die Verbindungszeichenfolge kann verwendet werden, um aus Python mit „pyodbc“ eine Verbindung mit einer SQL Server-Datenbank herzustellen (ersetzen Sie „servername“, „dbname“, „username“ und „password“ durch Ihre Daten):
 
     #Set up the SQL Azure connection
     import pyodbc

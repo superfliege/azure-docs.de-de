@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: af1f683f08ff6b70b23ff265f39b9a76f92f4be2
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Integration von Service Map in System Center Operations Manager
   > [!NOTE]
@@ -30,7 +30,7 @@ Service Map in der Operations Management Suite ermittelt automatisch Anwendungsk
 Mit dieser Integration zwischen Service Map und System Center Operations Manager können Sie basierend auf dynamischen Abhängigkeitszuordnungen in Service Map automatisch Diagramme der verteilten Anwendungen in Operations Manager erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Eine Operations Manager-Verwaltungsgruppe, die eine Gruppe von Servern verwaltet.
+* Eine Operations Manager-Verwaltungsgruppe (2012 R2 oder höher), die eine Gruppe von Servern verwaltet.
 * Ein Operations Management Suite-Arbeitsbereich mit aktivierter Service Map-Lösung
 * Eine Gruppe von Servern (mindestens eine), die über Operations Manager verwaltet werden und Daten an Service Map senden. Es werden Windows- und Linux-Server unterstützt.
 * Ein Dienstprinzipal mit Zugriff auf das Azure-Abonnement, das dem Operations Management Suite-Arbeitsbereich zugeordnet ist. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](#creating-a-service-principal).

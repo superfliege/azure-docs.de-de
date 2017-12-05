@@ -1,5 +1,5 @@
 ---
-title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft Docs"
+title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Azure-Funktionen auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen."
 services: functions
 documentationcenter: na
@@ -14,17 +14,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 35fd47025ca0dba1edbe1d7dd3ee0172fc45d6f5
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: b6bc12c407a32388b7155a815b099b3b285fef18
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Lokales Codieren und Testen von Azure Functions
 
 Während das [Azure-Portal] eine vollständige Reihe von Tools zum Entwickeln und Testen von Azure-Funktionen bereitstellt, bevorzugen viele Entwickler eine lokale Entwicklungsumgebung. Mit Azure Functions können Sie einfach Ihren bevorzugten Code-Editor und Ihre bevorzugten Entwicklungstools zum Entwickeln und Testen Ihrer Funktionen auf Ihrem lokalen Computer verwenden. Ihre Funktionen können für Ereignisse in Azure ausgelöst werden, und Sie können Ihre C#- und JavaScript-Funktionen auf Ihrem lokalen Computer debuggen. 
 
 Wenn Sie ein Visual Studio C#-Entwickler sind, ist Azure Functions auch [in Visual Studio 2017](functions-develop-vs.md) integrierbar.
+
+>[!IMPORTANT]  
+> Kombinieren Sie die lokale Entwicklung und die Portalentwicklung nicht in der gleichen Funktions-App. Wenn Sie Funktionen über ein lokales Projekt erstellen und veröffentlichen, sollten Sie nicht versuchen, den Projektcode im Portal zu verwalten oder zu ändern.
 
 ## <a name="install-the-azure-functions-core-tools"></a>Installieren von Azure Functions Core Tools
 
@@ -83,7 +86,7 @@ func init MyFunctionProj
 
 ## <a name="create-a-local-functions-project"></a>Erstellen eines lokalen Functions-Projekts
 
-Bei lokaler Ausführung ist ein Functions-Projekt ein Verzeichnis mit den Dateien [host.json](functions-host-json.md) und [local.settings.json](#local-settings). Dieses Verzeichnis ist das Äquivalent zu einer Funktions-App in Azure. Weitere Informationen zur Azure Functions-Ordnerstruktur finden Sie in [Azure Functions: Entwicklerhandbuch](functions-reference.md#folder-structure).
+Bei lokaler Ausführung ist ein Functions-Projekt ein Verzeichnis mit den Dateien [host.json](functions-host-json.md) und [local.settings.json](#local-settings-file). Dieses Verzeichnis ist das Äquivalent zu einer Funktions-App in Azure. Weitere Informationen zur Azure Functions-Ordnerstruktur finden Sie in [Azure Functions: Entwicklerhandbuch](functions-reference.md#folder-structure).
 
 Führen Sie im Terminalfenster oder über eine Eingabeaufforderung den folgenden Befehl aus, um das Projekt und ein lokales Git-Repository zu erstellen:
 
@@ -102,8 +105,6 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
 Verwenden Sie die Option `--no-source-control [-n]`, um das Projekt ohne lokales Git-Repository zu erstellen.
-
-<a name="local-settings"></a>
 
 ## <a name="local-settings-file"></a>Datei für lokale Einstellungen
 

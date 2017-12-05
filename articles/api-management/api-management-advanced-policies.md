@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08834531b78a857b54f0e9e792290774f9e477de
+ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/22/2017
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -268,26 +268,26 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   **Richtlinienbereiche:** alle Bereiche  
   
 ##  Einschränken der Parallelität durch <a name="LimitConcurrency"></a>  
- Die Richtlinie `limit-concurrency` verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig. Beim Überschreiten des Schwellenwerts werden einer Warteschlange neue Anforderungen hinzugefügt, bis die maximale Warteschlangenlänge erreicht ist. Wenn die Warteschlange voll ist, wird für neue Anforderungen sofort ein Fehler ausgelöst.
+ Die Richtlinie `limit-concurrency` verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig. Wenn diese Anzahl überschritten wird, tritt bei neuen Anforderungen sofort ein Fehler mit dem Statuscode „429 – Zu viele Anforderungen“ auf.
   
 ###  <a name="LimitConcurrencyStatement"></a> Richtlinienanweisung  
   
 ```xml  
-<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+<limit-concurrency key="expression" max-count="number">
         <!— nested policy statements -->  
 </limit-concurrency>
 ``` 
 
 ### <a name="examples"></a>Beispiele  
   
-####  <a name="ChooseExample"></a> Beispiel  
+#### <a name="example"></a>Beispiel  
  Das folgende Beispiel veranschaulicht das Beschränken der Anzahl der Anforderungen, die an ein Back-End weitergeleitet werden, basierend auf dem Wert einer Kontextvariable.
  
 ```xml  
 <policies>
   <inbound>…</inbound>
   <backend>
-    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3">
       <forward-request timeout="120"/>
     <limit-concurrency/>
   </backend>
@@ -307,10 +307,8 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |---------------|-----------------|--------------|--------------|  
 |key|Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden.|Ja|N/V|  
 |max-count|Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können|Ja|N/V|  
-|timeout|Eine ganze Zahl. Ausdruck zulässig. Gibt die Anzahl der Sekunden an, die eine Anforderung warten soll, bevor der Fehler „429 Zu viele Anforderungen“ ausgelöst wird|Nein|Infinity|  
-|max-queue-length|Eine ganze Zahl. Ausdruck zulässig. Gibt die maximale Warteschlangenlänge an. Eingehende Anforderungen für diese Richtlinie werden sofort mit dem Fehler „429 Zu viele Anforderungen“ beendet, wenn die Warteschlange voll ist.|Nein|Infinity|  
   
-###  <a name="ChooseUsage"></a> Verwendung  
+### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  

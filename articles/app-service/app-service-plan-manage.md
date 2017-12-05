@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: c1b832895476e2f64bbae638db76f89890e5c804
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5369946b1e8a4851ee940cf6fe91a1bdb94db5f3
+ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/17/2017
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -58,7 +58,7 @@ Wählen Sie **App Service-Plan ändern**, um den Vorgang zu starten.
 
 Mit **App Service-Plan ändern** wird die Auswahlfunktion für den **App Service-Plan** geöffnet. Wählen Sie einen vorhandenen Plan aus, in den diese App verschoben werden soll. 
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Die Seite **App Service-Plan auswählen** wird anhand der folgenden Kriterien gefiltert: 
 > - In derselben Ressourcengruppe vorhanden 
 > - In derselben geografischen Region vorhanden 

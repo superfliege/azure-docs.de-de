@@ -12,8 +12,8 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: d3c8b2b1ba220bf07a2bcdbd7fb26b94f897981f
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: edcd9561778998c4df09cc5014f8b8ba81c0e369
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/16/2017
@@ -46,7 +46,7 @@ Kapazitäten werden linear skaliert, sodass eine S1-SKU mit der Kapazität „2�
 ## <a name="change-the-capacity-of-your-environment"></a>Ändern der Kapazität Ihrer Umgebung
 1. Navigieren Sie im Azure-Portal zu Ihrer Time Series Insights-Umgebung, und wählen Sie sie aus. 
 
-2. Klicken Sie unter der Überschrift **Einstellungen** auf **Konfigurieren**.
+2. Wählen Sie im Menü für Ihre Time Series Insights-Umgebung die Option **Konfigurieren**.
 
    ![configure.png](media/scale-your-environment/configure.png)
 

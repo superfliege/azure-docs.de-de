@@ -1,6 +1,6 @@
 ---
 title: IT Service Management Connector in Azure Log Analytics | Microsoft-Dokumentation
-description: "Verwenden Sie den IT Service Management Connector zum zentralen Überwachen und Verwalten von ITSM-Arbeitselementen in Azure Log Analytics und zum schnellen Beheben von Problemen."
+description: "Dieser Artikel bietet eine Übersicht über den ITSM-Connector (IT Service Management-Connector) sowie Informationen zur Verwendung dieser Lösung, um die ITSM-Arbeitselemente in OMS Log Analytics zu überwachen und zu verwalten und um etwaige Probleme schnell zu lösen."
 services: log-analytics
 documentationcenter: 
 author: JYOTHIRMAISURI
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: ba8542640fcec6e4bc63d8f0a41bf85b221d4c5e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bd384255b3c46b3ae88b1269ab26e0ddaa6f6e77
+ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector (Vorschau)
 
 ![Symbol für den IT Service Management Connector](./media/log-analytics-itsmc/itsmc-symbol.png)
 
-Der IT Service Management-Connector (ITSMC) bietet eine bidirektionale Integration zwischen einem unterstützten IT Service Management-Produkt/-Dienst (ITSM) und Log Analytics.  Über diese Verbindung können Sie Incidents, Warnungen oder Ereignisse im ITSM-Produkt basierend auf Warnungen oder Protokolldatensätzen von Log Analytics erstellen. Der Connector importiert zudem Daten, z.B. Incidents und Änderungsanforderungen, aus dem ITSM-Produkt in OMS Log Analytics.
+Der IT Service Management-Connector (ITSMC) bietet eine bidirektionale Integration zwischen einem unterstützten IT Service Management-Produkt/-Dienst (ITSM) und Log Analytics.  Über diese Verbindung können Sie Incidents, Warnungen oder Ereignisse im ITSM-Produkt basierend auf Log Analytics-Warnungen oder -Protokolldatensätzen oder Azure-Warnungen erstellen. Der Connector importiert zudem Daten, z.B. Incidents und Änderungsanforderungen, aus dem ITSM-Produkt in OMS Log Analytics.
 
 Mit dem ITSMC können Sie folgende Aktionen ausführen:
 
@@ -56,7 +56,7 @@ Nach dem erfolgreichen Hinzufügen wird der IT Service Management Connector unte
  ![ITSMC-Aktualisierung](./media/log-analytics-itsmc/itsmc-connection-refresh.png)
 
 
-## <a name="configuring-the-connection-with-your-itsm-software"></a>Konfigurieren der Verbindung mit Ihrer ITSM-Software
+## <a name="configuring-the-itsmc-connection-with-your-itsm-productsservices"></a>Konfigurieren der ITSMC-Verbindung mit Ihren ITSM-Produkten bzw. -Diensten
 
 Der ITSMC unterstützt Verbindungen mit **System Center Service Manager**, **ServiceNow**, **Provance** und **Cherwell**.
 
@@ -258,6 +258,7 @@ Sie können auch Arbeitselemente direkt über einen Protokolldatensatz in den ve
 4. Geben Sie die entsprechenden Werte in die Textfelder **Kontakttyp**, **Auswirkung**, **Dringlichkeit**, **Kategorie** und **Unterkategorie** ein, und klicken Sie dann auf **Erstellen**.
 
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen
+
 Der ITSMC ist in Aktionsgruppen integriert.
 
 Mit den wiederverwendbaren [Aktionsgruppen](../monitoring-and-diagnostics/monitoring-action-groups.md) können Sie modular Aktionen für Ihre Azure-Warnungen auszulösen. Durch die Verwendung der ITSM-Aktion in Aktionsgruppen können Sie Arbeitselemente in Ihrem ITSM-Produkt mit einer vorhandenen Verbindung mit der ITSM Connector-Lösung erstellen.
@@ -286,7 +287,7 @@ Verwenden Sie beim Erstellen/Bearbeiten einer Azure-Warnungsregel eine Aktionsgr
 
 >[!NOTE]
 
-> Derzeit unterstützen nur Aktivitätsprotokollwarnungen die ITSM-Aktion. Bei anderen Azure-Warnungen wird die ITSM-Aktion nicht unterstützt.
+> Zurzeit unterstützen nur Aktionen des Aktivitätsprotokolls die ITSM-Action. Andere Azure-Warnungen bieten diese Unterstützung nicht.
 
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>Problembehandlung bei ITSM-Verbindungen in OMS

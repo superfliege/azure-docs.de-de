@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 659304937eebb1b2fe6faf019dfef63e1e29bcd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dee3411dadbca5e88951dec2ed1836d440423c4
+ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/23/2017
 ---
 # <a name="azure-network-security-best-practices"></a>Bewährte Methoden für die Azure-Netzwerksicherheit
-Mit Microsoft Azure können Sie virtuelle Computer und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in Azure Virtual Networks anordnen. Ein Azure Virtual Network ist ein virtuelles Netzwerkkonstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Azure Virtual Machines die mit einem Azure Virtual Network verbunden sind, können eine Verbindung mit Geräten in demselben Azure Virtual Network, anderen Azure Virtual Networks, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.
+Mit Microsoft Azure können Sie virtuelle Computer und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in Azure Virtual Networks anordnen. Ein Azure Virtual Network ist ein Konstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Azure Virtual Machines die mit einem Azure Virtual Network verbunden sind, können eine Verbindung mit Geräten in demselben Azure Virtual Network, anderen Azure Virtual Networks, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.
 
 In diesem Artikel werden die bewährten Methoden für die Azure-Netzwerksicherheit beschrieben. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit dem Azure-Netzwerk und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
@@ -52,7 +52,7 @@ Bewährte Methoden zur Azure-Netzwerksicherheit, die in diesem Artikel beschrieb
 ## <a name="logically-segment-subnets"></a>Logische Segmentsubnetze
 [Azure Virtual Networks](https://azure.microsoft.com/documentation/services/virtual-network/) ähneln einem LAN in Ihrem lokalen Netzwerk. Die Idee hinter einem virtuellen Azure-Netzwerk ist, dass Sie ein Netzwerk mit nur einem privaten IP-Adressraum erstellen, in dem Sie alle [virtuellen Azure-Computer](https://azure.microsoft.com/services/virtual-machines/) anordnen können. Die verfügbaren privaten IP-Adressräume liegen in den Bereichen der Klasse A (10.0.0.0/8), Klasse B (172.16.0.0/12) und Klasse C (192.168.0.0/16).
 
-Sie gehen ähnlich wie in Ihrem lokalen Netzwerk vor und segmentieren die größeren Adressräume in Subnetze. Sie können [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-basierte Subnetzprinzipien verwenden, um die Subnetze zu erstellen.
+Sie sollten ähnlich wie in Ihrem lokalen Netzwerk vorgehen und die größeren Adressräume in Subnetze segmentieren. Sie können [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-basierte Subnetzprinzipien verwenden, um die Subnetze zu erstellen.
 
 Das Routing zwischen den Subnetzen wird automatisch durchgeführt, und es ist nicht erforderlich, Routingtabellen manuell zu konfigurieren. Die Standardeinstellung ist aber, dass keine Netzwerkzugriffssteuerung zwischen den Subnetzen erfolgt, die Sie im Azure Virtual Network erstellen. Um zwischen Subnetzen Netzwerkzugriffssteuerungen zu erstellen, müssen Sie zwischen die Subnetze Elemente einfügen.
 
@@ -82,7 +82,7 @@ Weitere Informationen zu benutzerdefinierten Routen und deren Konfiguration find
 
 ## <a name="enable-forced-tunneling"></a>Aktivieren der Tunnelerzwingung
 Zum besseren Verständnis der Tunnelerzwingung ist es hilfreich, wenn Sie wissen, um was es bei „getrennten Tunneln“ geht.
-Das häufigste Beispiel für getrennte Tunnels tritt bei VPN-Verbindungen auf. Stellen Sie sich vor, dass Sie von Ihrem Hotelzimmer aus eine VPN-Verbindung mit dem Netzwerk Ihres Unternehmens herstellen. Über diese Verbindung können Sie auf Ressourcen in Ihrem Unternehmensnetzwerk zugreifen, und die gesamte Kommunikation mit den Ressourcen im Unternehmensnetzwerk verläuft durch den VPN-Tunnel.
+Das häufigste Beispiel für getrennte Tunnels tritt bei VPN-Verbindungen auf. Stellen Sie sich vor, dass Sie von Ihrem Hotelzimmer aus eine VPN-Verbindung mit dem Netzwerk Ihres Unternehmens herstellen. Über diese Verbindung können Sie auf Unternehmensressourcen zugreifen, und die gesamte Kommunikation mit Ihrem Unternehmensnetzwerk verläuft durch den VPN-Tunnel.
 
 Was passiert, wenn Sie eine Verbindung mit Ressourcen im Internet herstellen möchten? Wenn getrennte Tunnel aktiviert sind, verlaufen diese Verbindungen direkt ins Internet und nicht über den VPN-Tunnel. Einige Sicherheitsexperten sehen diese Vorgehensweise als potenzielles Risiko an und empfehlen deshalb, die Nutzung getrennter Tunnel zu deaktivieren. Stattdessen sollen alle Verbindungen – ins Internet und mit Unternehmensressourcen – über den VPN-Tunnel verlaufen. Der Vorteil besteht hierbei darin, dass Verbindungen ins Internet dann die Sicherheitsgeräte des Unternehmensnetzwerks durchlaufen müssen. Dies wäre nicht der Fall, wenn sich der mit dem Internet verbundene VPN-Client außerhalb des VPN-Tunnels befinden würde.
 
@@ -146,8 +146,7 @@ Eine beliebte und effektive Methode zum Verbessern der Verfügbarkeit und Leistu
 
 Die Verteilung von Datenverkehr erhöht die Verfügbarkeit, weil Folgendes passiert, wenn einer der Webserver nicht mehr verfügbar ist: Das Lastenausgleichsmodul beendet das Senden von Datenverkehr an den Server und leitet ihn an die Server um, die noch online sind. Außerdem trägt der Lastenausgleich zur Steigerung der Leistung bei, da der Mehraufwand für den Prozessor, das Netzwerk und den Arbeitsspeicher zum Verarbeiten von Anforderungen auf alle Server mit Lastenausgleich verteilt wird.
 
-Wir empfehlen Ihnen, den Lastenausgleich nach Möglichkeit immer zu nutzen, wenn diese Vorgehensweise für Ihre Dienste geeignet ist. Auf die Eignung wird in den folgenden Abschnitten näher eingegangen.
-Auf Azure Virtual Network-Ebene bietet Azure Ihnen drei Hauptoptionen für den Lastenausgleich:
+Wir empfehlen Ihnen, den Lastenausgleich nach Möglichkeit immer zu nutzen, wenn diese Vorgehensweise für Ihre Dienste geeignet ist. Wir behandeln die Eignung in folgenden Abschnitten: Auf Azure Virtual Network-Ebene bietet Azure Ihnen drei Hauptoptionen für den Lastenausgleich:
 
 * HTTP-basierter Lastenausgleich
 * Externer Lastenausgleich
