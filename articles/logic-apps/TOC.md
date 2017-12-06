@@ -20,7 +20,7 @@
 ### [Erstellen von Logik-App-Definitionen](logic-apps-author-definitions.md)
 ### [Aufrufen, Auslösen oder Schachteln von Logik-Apps](logic-apps-http-endpoint.md)
 ### Entwickeln benutzerdefinierter Connectors
-#### [Übersicht über benutzerdefinierte Connectors](custom-connector-overview.md)
+#### [Custom connectors overview](custom-connector-overview.md) (Übersicht über benutzerdefinierte Connectors)
 #### [Erstellen von Connectors aus Web-APIs](custom-connector-build-web-api-app-tutorial.md)
 #### [Sichere Connectors mit Azure AD](custom-connector-azure-active-directory-authentication.md)
 #### [Beschreiben von APIs mit Postman](custom-connector-api-postman-collection.md)
@@ -28,7 +28,7 @@
 #### [Erstellen und Registrieren eines OpenAPI-Connectors](logic-apps-custom-connector-register.md)
 #### [Erstellen und Registrieren eines SOAP-Connectors](logic-apps-soap-connector-create-register.md)
 #### [Zertifizieren Ihres Connectors](custom-connector-submit-certification.md)
-#### [FAQ für benutzerdefinierte Connectors](custom-connector-faq.md)
+#### [FAQ for custom connectors](custom-connector-faq.md) (FAQ für benutzerdefinierte Connectors)
 ### Entwickeln von benutzerdefinierten APIs
 #### [Erstellen einer benutzerdefinierten API zur Verwendung mit Logik-Apps](logic-apps-create-api-app.md)
 #### [Sichere Aufrufe benutzerdefinierter APIs](logic-apps-custom-api-authentication.md)
@@ -139,7 +139,7 @@
 ### [Zeitplan](../connectors/connectors-native-recurrence.md)
 ### [Service Bus](../connectors/connectors-create-api-servicebus.md)
 ### [SharePoint Online](../connectors/connectors-create-api-sharepointonline.md)
-### [SharePoint Server](../connectors/connectors-create-api-sharepointonline.md)
+### [SharePoint Server](../connectors/connectors-create-api-sharepointserver.md)
 ### [SQL Server](../connectors/connectors-create-api-sqlazure.md)
 ### [Transformieren von XML](logic-apps-enterprise-integration-transform.md)
 ### [Twitter](../connectors/connectors-create-api-twitter.md)
