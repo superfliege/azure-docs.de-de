@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8982cc0153bb4554c84e2cac504c23fb7e65ec15
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 17539b703993431649ddb235d7ee09b2e9e995e3
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Aktualisieren der Windows Azure Active Directory-Synchronisierung und Azure Active Directory-Synchronisierung
 Azure AD Connect bietet die beste Möglichkeit, um Ihr lokales Verzeichnis mit Azure AD und Office 365 zu verbinden. Da Windows Azure Active Directory Sync (DirSync) und Azure AD Sync veraltet sind und der Support für diese Tools am 13. April 2017 endete, ist dies ein guter Zeitpunkt, um ein Upgrade auf Azure AD Connect durchzuführen.
@@ -41,6 +41,9 @@ Azure AD Connect ist der Nachfolger von DirSync und Azure AD Sync. Diese Lösung
 ## <a name="how-to-transition-to-azure-ad-connect"></a>So führen Sie ein Upgrade auf Azure AD Connect durch
 Wenn Sie DirSync ausführen, haben Sie zwei Möglichkeiten: ein direktes Upgrade und eine parallele Bereitstellung. Ein direktes Upgrade wird für die meisten Kunden empfohlen sowie für Kunden mit einem aktuellen Betriebssystem und weniger als 50.000 Objekten. In anderen Fällen wird eine parallele Bereitstellung empfohlen, bei der Ihre DirSync-Konfiguration auf einen neuen Server mit Azure AD Connect verschoben wird.
 
+>[!NOTE]
+>Das direkte Upgrade von DirSync auf Azure AD Connect wird nach dem 31. Dezember 2017 nicht mehr unterstützt, und Sie müssen für das Upgrade unter Umständen eine parallele Bereitstellung durchführen.
+
 Wenn Sie Azure AD Sync verwenden, wird ein direktes Upgrade empfohlen. Sie können auch parallel eine neuen Azure AD Connect-Server installieren und eine Swing-Migration von Ihrem Azure AD Sync-Server zu Azure AD Connect durchführen.
 
 | Lösung | Szenario |
@@ -59,7 +62,7 @@ Informationen zu einem direkten Upgrade von DirSync auf Azure AD Connect finden 
 Die Benachrichtigung wurde auch an Kunden gesendet, die Azure AD Connect mit Buildnummer 1.0.\*.0 (also eine Version vor Version 1.1) verwenden. Microsoft empfiehlt Kunden, immer die neueste Azure AD Connect-Versionen zu verwenden. Mit der in 1.1 eingeführten [automatischen Upgradefunktion](active-directory-aadconnect-feature-automatic-upgrade.md) lässt sich einfach sicherstellen, dass immer eine aktuelle Version von Azure AD Connect installiert ist.
 
 **F: Funktioniert DirSync/Azure AD Sync ab dem 13. April 2017 nicht mehr?**  
-DirSync/Azure AD Sync funktionieren am 13. April 2017 weiterhin.  Azure AD akzeptiert jedoch möglicherweise ab dem 31. Dezember 2017 keine Kommunikation mehr von DirSync/Azure AD Sync.
+DirSync/Azure AD Sync funktionieren am 13. April 2017 weiterhin.  Azure AD akzeptiert jedoch ab dem 31. Dezember 2017 keine Kommunikation mehr von DirSync/Azure AD Sync.
 
 **F: Von welchen DirSync-Versionen kann ich ein Upgrade durchführen?**  
 Ein Upgrade kann von allen aktuell verwendeten DirSync-Versionen durchgeführt werden. Beachten Sie, dass ein direktes Upgrade von DirSync auf Azure AD Connect nach dem 31. Dezember 2017 nicht mehr unterstützt wird. Kunden, die DirSync nach diesem Datum weiterhin verwenden und auf Azure AD Connect umstellen möchten, müssen stattdessen möglicherweise eine Neuinstallation von Azure AD Connect durchführen.

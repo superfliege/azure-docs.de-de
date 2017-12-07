@@ -1,6 +1,6 @@
 ---
-title: "Verfügbarmachen von Web-, API- und mobilen Apps für Ihre Azure Stack-Benutzer | Microsoft-Dokumentation"
-description: "Tutorial zum Installieren des App Service-Ressourcenanbieters und zum Erstellen von Angeboten, die es Ihren Azure Stack-Benutzern ermöglichen, Web-, API- und mobile Apps zu erstellen."
+title: "Verfügbarmachen von Web- und API-Apps für Ihre Azure Stack-Benutzer | Microsoft-Dokumentation"
+description: "Tutorial zum Installieren des App Service-Ressourcenanbieters und zum Erstellen von Angeboten, die es Ihren Azure Stack-Benutzern ermöglichen, Web- und API-Apps zu erstellen"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42d94eea8b9e4db611b821cd84e7d02f1d226293
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/27/2017
 ---
-# <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Verfügbarmachen von Web-, API- und mobilen Apps für Ihre Azure Stack-Benutzer
+# <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Verfügbarmachen von Web- und API-Apps für Ihre Azure Stack-Benutzer
 
-Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die es Ihren Benutzern (Mandanten) ermöglichen, Azure Functions und Web-, API- und mobile Anwendungen zu erstellen. Die Bereitstellung des Zugriffs auf diese bedarfsgesteuerten, cloudbasierten Apps für Ihre Benutzer spart diesen Zeit und Ressourcen. Für die Einrichtung führen Sie folgende Aktionen durch:
+Als Azure Stack-Cloudadministrator können Sie Angebote erstellen, die es Ihren Benutzern (Mandanten) ermöglichen, Azure Functions und Web- und API-Anwendungen zu erstellen. Die Bereitstellung des Zugriffs auf diese bedarfsgesteuerten, cloudbasierten Apps für Ihre Benutzer spart diesen Zeit und Ressourcen. Für die Einrichtung führen Sie folgende Aktionen durch:
 
 > [!div class="checklist"]
 > * Bereitstellen des App Service-Ressourcenanbieters

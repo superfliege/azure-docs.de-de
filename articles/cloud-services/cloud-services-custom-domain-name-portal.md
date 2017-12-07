@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
-ms.openlocfilehash: afda0bc79a26c8cb9736c754a681ebb602e41af1
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Konfigurieren eines benutzerdefinierten Domänennamens für einen Azure-Clouddienst
 Wenn Sie einen Clouddienst erstellen, weist Azure diesen einer Unterdomäne von **cloudapp.net**zu. Wenn der Clouddienst beispielsweise den Namen „contoso“ hat, können Ihre Benutzer auf die Anwendung über eine URL wie „http://contoso.cloudapp.net“ zugreifen. Darüber hinaus weist Azure eine virtuelle IP-Adresse zu.
@@ -28,7 +28,7 @@ Sie können Ihre Anwendung jedoch auch unter Ihrem eigenen Domänennamen zur Ver
 Wissen Sie bereits, worum es sich bei CNAME-Einträgen und A-Datensätzen handelt? [Überspringen Sie die Erläuterung](#add-a-cname-record-for-your-custom-domain).
 
 > [!NOTE]
-> Die Verfahren in dieser Aufgabe gelten für Azure Cloud Services. Informationen zu App Services finden Sie [hier](../app-service/app-service-web-tutorial-custom-domain.md). Informationen zu Speicherkonten finden Sie [hier](../storage/blobs/storage-custom-domain-name.md).
+> Die Verfahren in dieser Aufgabe gelten für Azure Cloud Services. Bei App Services lesen Sie die Informationen unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](../app-service/app-service-web-tutorial-custom-domain.md). Informationen zu Speicherkonten finden Sie unter [Konfigurieren eines benutzerdefinierten Domänennamens für Ihren Blob Storage-Endpunkt](../storage/blobs/storage-custom-domain-name.md).
 > 
 > 
 

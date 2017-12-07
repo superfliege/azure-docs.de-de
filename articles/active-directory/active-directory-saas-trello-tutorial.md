@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: jeedes
-ms.openlocfilehash: d93667f16f2d72995e4a42e79e9125b8e3f6b07c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 598387b6066612c6c4a4c92cba5ba03e03a55203
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Tutorial: Azure Active Directory-Integration mit Trello
 
@@ -96,6 +96,10 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Trello mü
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Trello-Anwendung.
 
+>[!NOTE]
+    >Sie sollten über ein **\<Unternehmens\>**-Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich an das [Trello-Supportteam](mailto:support@trello.com), um das Schlüsselwort für Ihr Unternehmen zu erhalten.
+    > 
+
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens über Azure AD bei Trello die folgenden Schritte aus:**
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Trello** auf **Einmaliges Anmelden**.
@@ -112,17 +116,15 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://trello.com/auth/saml/consume/<enterprise>`
 
-4. Führen Sie im Abschnitt **Domäne und URLs für Trello** die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
-    
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
+4. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:
+
+  ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-trello-tutorial/tutorial_trello_url1.png)
 
     a. Klicken Sie auf die Option **Erweiterte URL-Einstellungen anzeigen**.
 
-    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://trello.com/auth/saml/consume/<enterprise>`
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://trello.com/auth/saml/login/<enterprise>`
 
-    >[!NOTE]
-    >Sie sollten über ein **\<Unternehmens\>**-Schlüsselwort aus Trello verfügen. Wenn Sie nicht über das Schlüsselwort verfügen, wenden Sie sich an das [Trello-Supportteam](mailto:support@trello.com), um das Schlüsselwort für Ihr Unternehmen zu erhalten.
-    > 
+  c. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://trello.com/auth/saml/metadata`.
 
 5. Die Trello-Anwendung erwartet, dass die SAML-Assertionen bestimmte Attribute enthalten. Konfigurieren Sie die folgenden Attribute für diese Anwendung. Sie können die Werte dieser Attribute auf der Registerkarte **Benutzerattribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
 

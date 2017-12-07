@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: damaerte
-ms.openlocfilehash: e45d66eff4be4918ffd6e7940bbfb5adb4c88c00
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9c2eeef9c20f25d2af97e6c754f005b698222385
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Features und Tools für PowerShell in Azure Cloud Shell (Vorschauversion)
 
@@ -37,7 +37,7 @@ PowerShell in Cloud Shell (Vorschauversion) authentifiziert den Kontozugriff fü
 
 ### <a name="files-persistence-across-sessions"></a>Sitzungsübergreifende Dateienpersistenz
 
-Damit Sie Dateien sitzungsübergreifend beibehalten können, wird Ihnen beim ersten Start von Cloud Shell das Anfügen einer Azure-Dateifreigabe gezeigt.
+Damit Sie Dateien sitzungsübergreifend beibehalten können, wird Ihnen beim ersten Start von Cloud Shell das Anfügen einer Microsoft Azure Files-Dateifreigabe gezeigt.
 Anschließend fügt Cloud Shell Ihren Speicher (als `$home\clouddrive` eingebunden) automatisch für alle zukünftigen Sitzungen an.
 Da durch jede Anforderung für Cloud Shell ein temporärer Computer zugewiesen wird, werden Dateien außerhalb von `$home\clouddrive` und der Computerstatus nicht sitzungsübergreifend beibehalten.
 

@@ -1,6 +1,6 @@
 ---
 title: "Projektplanung für einen Team Data Science-Prozess – Azure | Microsoft-Dokumentation"
-description: TBD
+description: "Microsoft Project- und Excel-Vorlagen, die Sie beim Planen und Verwalten von Data Science-Projekten unterstützen."
 documentationcenter: 
 author: bradsev
 manager: cgronlun
@@ -11,17 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 11/27/2017
 ms.author: bradsev;
-ms.openlocfilehash: 554e653a1f1b060743a2f461327c58e9a60a56b1
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 7f99b0bc36a08f52148f032567771f21c56ce42e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-project-planning"></a>Projektplanung für einen Team Data Science-Prozess
 
-Der Team Data Science-Prozess (TDSP) umfasst einen Lebenszyklus zum Strukturieren der Entwicklung Ihrer Data Science-Projekte. Der Lebenszyklus beschreibt die wichtigsten Phasen, die Projekte typischerweise, oft iterativ, durchlaufen:
+Der Team Data Science-Prozess (TDSP) umfasst einen Lebenszyklus zum Strukturieren der Entwicklung Ihrer Data Science-Projekte. Dieser Artikel enthält Links zu Microsoft Project- und Excel-Vorlagen, die Ihnen bei der Planung und Verwaltung dieser Projektphasen helfen.
+
+Der Lebenszyklus beschreibt die wichtigsten Phasen, die Projekte typischerweise, oft iterativ, durchlaufen:
 
 - Geschäftliche Aspekte
 - Datenerfassung und -auswertung
@@ -31,8 +33,7 @@ Der Team Data Science-Prozess (TDSP) umfasst einen Lebenszyklus zum Strukturiere
 
 Beschreibungen zu den einzelnen Phasen finden Sie unter [Lebenszyklus des Team Data Science-Prozesses](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/lifecycle).
 
-Dieser Artikel enthält Links zu Microsoft Project- und Excel-Vorlagen, die Ihnen bei der Planung und Verwaltung dieser Projektphasen helfen. 
-
+ 
 ## <a name="microsoft-project-template"></a>Microsoft Project-Vorlage
 
 Die Microsoft Project-Vorlage für den Team Data Science-Prozess ist hier verfügbar: [Microsoft Project-Vorlage](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Team-Data-Science-Process/Project-Planning-and-Governance/Advanced%20Analytics%20Microsoft%20Project%20Plan.mpp). 
@@ -54,7 +55,7 @@ Die Verwendung dieser Vorlagen erfolgt auf eigene Gefahr. Es gelten die [üblich
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Ausführung von Data Science-Projekten](project-execution.md): Dieses Dokument beschreibt, wie ein Data Science-Projekt auf systematische Weise mit Versionskontrolle und Zusammenarbeit innerhalb eines Projektteams über den Team Data Science-Prozess ausgeführt werden kann.
+[Agile development of data science projects](agile-development.md) (Agile Entwicklung von Data Science-Projekten): Dieses Dokument beschreibt, wie ein Data Science-Projekt auf systematische Weise mit Versionskontrolle und Zusammenarbeit innerhalb eines Projektteams über den Team Data Science-Prozess ausgeführt werden kann.
 
 Exemplarische Vorgehensweisen, in denen sämtliche Schritte im Prozess für **bestimmte Szenarien** gezeigt werden, sind ebenfalls verfügbar. Sie sind im Thema [Exemplarische Vorgehensweisen](walkthroughs.md) aufgeführt und mit Miniaturansichtsbeschreibungen verlinkt. Sie zeigen, wie Cloud- und lokale Tools und Dienste in einem Workflow oder einer Pipeline zum Erstellen einer intelligenten Anwendung kombiniert werden. 
 

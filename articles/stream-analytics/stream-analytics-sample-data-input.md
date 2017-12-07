@@ -1,10 +1,10 @@
 ---
-title: Erstellen von Stichproben von Eingaben in Azure Stream Analytics | Microsoft-Dokumentation
+title: Testen von Azure Stream Analytics-Abfragen | Microsoft-Dokumentation
 description: "Ermitteln von Problemen bei der Problembehandlung von Stream Analytics-Aufträgen."
 keywords: "Problembehandlung bei der Eingabe, Stichprobenerstellung für Eingaben"
 documentationcenter: 
 services: stream-analytics
-author: samacha
+author: jseb225
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,14 +14,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: db9686fad7153d63fc659869b93821200e08397c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: e2636b8b89b86bbb2a2991972386462535d5a10f
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="azure-stream-analytics-input-stream-sampling"></a>Azure Stream Analytics: Stichprobenerstellung für den Eingabedatenstrom
+# <a name="azure-stream-analytics-query-testing-and-input-stream-sampling"></a>Testen von Azure Stream Analytics-Abfragen und Stichprobenerstellung für den Eingabedatenstrom
 
 Mithilfe von Azure Stream Analytics können Sie Stichproben von Eingabeereignissen erstellen, die aus einer Datei stammen, und Abfragen im Portal testen, ohne einen Auftrag starten oder beenden zu müssen.
 

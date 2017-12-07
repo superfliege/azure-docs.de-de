@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 07/10/2017
+ms.date: 07/11/2017
 ms.author: andrela
-ms.openlocfilehash: cb1c387628a79ddfada0786c8c6422b6671a2c19
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 994705b0a9c7ca850c357a5810f1edb1618098d6
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Java
 
@@ -27,17 +27,13 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe von [Java](https:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Schnellstarttutorial benötigen Sie Folgendes:
+Für dieses Schnellstarttutorial müssen Sie folgende Voraussetzungen erfüllen:
 
-- Eine Azure SQL-Datenbank. In dieser Schnellstartanleitung werden die Ressourcen aus einer der folgenden Schnellstartanleitungen verwendet: 
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-   - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
-   - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
-   - [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md)
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden.
-
-- Java und die dazugehörige Software müssen für das Betriebssystem installiert sein.
+- Java und die zugehörige Software müssen für das Betriebssystem installiert sein:
 
     - **macOS:** Installieren Sie Homebrew und Java und anschließend Maven. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/java/mac/).
     - **Ubuntu:** Installieren Sie das Java Development Kit und Maven. Weitere Informationen finden Sie unter [Schritt 1.2, 1.3 und 1.4](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
@@ -45,15 +41,7 @@ Für dieses Schnellstarttutorial benötigen Sie Folgendes:
 
 ## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
-Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
-3. Überprüfen Sie für Ihre Datenbank auf der Seite **Übersicht** den vollqualifizierten Servernamen wie in der folgenden Abbildung zu sehen. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen.  
-
-   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
-
-4. Falls Sie Ihre Serveranmeldeinformationen vergessen, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministratornamen anzuzeigen.  Setzen Sie das Kennwort zurück, falls dies erforderlich ist.     
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 ## <a name="create-maven-project-and-dependencies"></a>**Erstellen von Maven-Projekt und Abhängigkeiten**
 1. Erstellen Sie über das Terminal ein neues Maven-Projekt namens **sqltest**. 

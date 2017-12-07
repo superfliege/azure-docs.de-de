@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: billgib
-ms.openlocfilehash: ec753027c8ce8040cbc574279a44eb24590fcb05
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: e7de7bb545e0ce04dc1b3dd398cc920213d09bae
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzfähigen SQL-Datenbank mit Sharding
 
@@ -78,19 +78,18 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 * Die App „Wingtip Tickets SaaS Multi-tenant Database“ wurde bereitgestellt. Unter [Bereitstellen und Kennenlernen der App „Wingtip Tickets SaaS Multi-tenant Database“](saas-multitenantdb-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="get-the-wingtip-tickets-management-scripts"></a>Abrufen der Verwaltungsskripts für Wingtip Tickets
+## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>Abrufen von Quellcode und Skripts zur Anwendung Wingtip Tickets SaaS Multi-tenant Database
 
-Die Verwaltungsskripts und der Quellcode der Anwendung sind im GitHub-Repository [WingtipTicketsSaaS-MultiTenantDB](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB) verfügbar. <!--See [Steps to download the Wingtip SaaS scripts](saas-tenancy-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-saas-scripts).-->
-
+Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-MultitenantDB](https://github.com/microsoft/WingtipTicketsSaaS-MultiTenantDB) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps). 
 
 ## <a name="provision-a-tenant-in-a-shared-database-with-other-tenants"></a>Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank
 
 Um nachzuvollziehen, wie die Wingtip Tickets-Anwendung die Bereitstellung neuer Mandanten in einer gemeinsam genutzten Datenbank implementiert, fügen Sie einen Haltepunkt hinzu und durchlaufen den Workflow:
 
-1. Öffnen Sie in _PowerShell ISE_ \\...Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_, und legen Sie die folgenden Parameter fest:
-   * **$TenantName** = **Bushwillow Blues**, der Name des neuen Veranstaltungsorts.
-   * **$VenueType** = **blues**, einer der vordefinierten Veranstaltungsorttypen: *blues*, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (Kleinschreibung, keine Leerzeichen).
-   * **$Scenario** = **1**, *Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank*.
+1. Öffnen Sie in _PowerShell ISE_ „...\\Learning Modules\\ProvisionTenants\\_Demo-ProvisionTenants.ps1_“, und legen Sie die folgenden Parameter fest:
+   * **$TenantName** = **Bushwillow Blues**, der Name eines neuen Veranstaltungsorts
+   * **$VenueType** = **blues**, einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (Kleinschreibung, keine Leerzeichen)
+   * **$DemoScenario** = **1**, *Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank*
 
 1. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 38 bewegen (der Zeile mit *New-Tenant `*) und **F9** drücken.
 
@@ -114,17 +113,17 @@ Im Folgenden finden Sie die wichtigsten Elemente des Bereitstellungsworkflows, d
 * **Fügen Sie den Namen des Mandanten einer Erweiterungstabelle des Katalogs hinzu**. Der Name des Veranstaltungsorts wird der Tabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.  Dies veranschaulicht, wie die Katalogdatenbank erweitert werden kann, um zusätzliche anwendungsspezifische Daten zu unterstützen.
 * **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**. Die zu *Bushwillow Blues* gehörige Veranstaltungsseite wird im Browser geöffnet:
 
-   ![Veranstaltungen](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
+   ![events](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
 
 ## <a name="provision-a-tenant-in-its-own-database"></a>Bereitstellen eines Mandanten in seiner eigenen Datenbank
 
 Durchlaufen Sie nun den Prozess zum Anlegen eines Mandanten in seiner eigenen Datenbank:
 
-1. Legen Sie weiterhin in „...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_“ die folgenden Parameter fest:
-   * **$TenantName** = **Sequoia Soccer**, der Name des neuen Veranstaltungsorts.
-   * **$VenueType** = **soccer**, einer der vordefinierten Veranstaltungsorttypen: *blues*, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (Kleinschreibung, keine Leerzeichen).
-   * **$Scenario** = **2**, *Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank*.
+1. Legen Sie noch in „\\Learning Modules\\ProvisionTenants\\_Demo-ProvisionTenants.ps1_“ die folgenden Parameter fest:
+   * **$TenantName** = **Sequoia Soccer**, der Name eines neuen Veranstaltungsorts
+   * **$VenueType** = **soccer**, einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (Kleinschreibung, keine Leerzeichen)
+   * **$DemoScenario** = **2**, *Bereitstellen eines Mandanten in seiner eigenen Datenbank*
 
 1. Fügen Sie einen neuen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 57 bewegen (der Zeile mit *&&nbsp;$PSScriptRoot\New-TenantAndDatabase `*) und **F9** drücken.
 
@@ -145,37 +144,38 @@ Im Folgenden finden Sie die wichtigsten Elemente des Workflows, den Sie beim Nac
 * **Der Mandantenname wird dem Katalog hinzugefügt**. Der Name des Veranstaltungsorts wird der Erweiterungstabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.
 * **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**. Die zu *Sequoia Soccer* gehörige Veranstaltungsseite wird im Browser geöffnet:
 
-   ![Veranstaltungen](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
+   ![events](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 
 
 ## <a name="provision-a-batch-of-tenants"></a>Bereitstellen eines Batches von Mandanten
 
 In dieser Übung wird ein Batch mit 17 Mandanten bereitgestellt. Es empfiehlt sich, diese Mandantengruppe bereitzustellen, bevor Sie mit anderen Wingtip-SaaS-Tutorials beginnen, damit Sie mit mehreren Datenbanken arbeiten können.
 
-1. Öffnen Sie in *PowerShell ISE* \\...Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1*, und ändern Sie den *$Scenario*-Parameter in „3“:
-   * **$DemoScenario** = **3**, *Bereitstellen einer Gruppe von Mandanten in einer gemeinsam genutzten Datenbank*.
+
+1. Öffnen Sie in *PowerShell ISE* „...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“, und ändern Sie den *$DemoScenario*-Parameter in „4“:
+   * **$DemoScenario** = **4**, *Bereitstellen einer Gruppe von Mandanten in einer gemeinsam genutzten Datenbank*
 1. Drücken Sie **F5**, um das Skript auszuführen.
 
 
 ### <a name="verify-the-deployed-set-of-tenants"></a>Überprüfen der bereitgestellten Gruppe von Mandanten 
-In dieser Phase haben Sie eine Kombination von Mandanten, die in einer gemeinsam genutzten Datenbank bereitgestellt wurden, und Mandanten, die in ihren eigenen Datenbanken bereitgestellt wurden. Im Azure-Portal können die erstellten Datenbanken überprüft werden:  
-
-* Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Server **tenants1-mt-\<USER\>**, indem Sie zur Liste der SQL-Server navigieren.  Die Liste **SQL-Datenbanken** sollte die gemeinsame genutzte Datenbank **tenants1** und die Datenbanken für die Mandanten mit eigener Datenbank enthalten:
+In dieser Phase haben Sie eine Kombination von Mandanten, die in einer gemeinsam genutzten Datenbank bereitgestellt wurden, und Mandanten, die in ihren eigenen Datenbanken bereitgestellt wurden. Im Azure-Portal können die erstellten Datenbanken überprüft werden. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Server **tenants1-mt-\<USER\>**, indem Sie zur Liste der SQL-Server navigieren.  Die Liste **SQL-Datenbanken** sollte die gemeinsame genutzte Datenbank **tenants1** und die Datenbanken für die Mandanten mit eigener Datenbank enthalten:
 
    ![Datenbankliste](media/saas-multitenantdb-provision-and-catalog/Databases.png)
 
 Sie können zwar im Azure-Portal die Mandantendatenbanken sehen, aber nicht die Mandanten *innerhalb* der gemeinsam genutzten Datenbank einsehen. Die vollständige Liste der Mandanten sehen auf der Wingtip Tickets-Hubseite „Events“ und bei Durchsuchen des Katalogs:   
 
-1. Öffnen Sie die Hubseite „Events“ im Browser (http:events.wingtip-mt.\<USER\>.trafficmanager.net).  
+**Verwenden der Event Hubs-Seite für Wingtip Tickets** <br>
+Öffnen Sie die Hubseite „Events“ im Browser (http:events.wingtip-mt.\<USER\>.trafficmanager.net).  
 
-   Die vollständige Liste der Mandanten und ihre entsprechende Datenbank sind im Katalog verfügbar. In der Datenbank „tenantcatalog“ steht eine SQL-Sicht zur Verfügung, die den in der Tabelle „Tenants“ gespeicherten Mandantennamen mit dem Datenbanknamen in den Tabellen zur Shardverwaltung verbindet. Diese Sicht veranschaulicht eindrucksvoll, wie nützlich das Erweitern der im Katalog gespeicherten Metadaten ist.
+**Verwenden der Katalogdatenbank** <br>
+Die vollständige Liste der Mandanten und ihre entsprechende Datenbank sind im Katalog verfügbar. In der Datenbank „tenantcatalog“ steht eine SQL-Sicht zur Verfügung, die den in der Tabelle „Tenants“ gespeicherten Mandantennamen mit dem Datenbanknamen in den Tabellen zur Shardverwaltung verbindet. Diese Sicht veranschaulicht eindrucksvoll, wie nützlich das Erweitern der im Katalog gespeicherten Metadaten ist.
 
-2. Verbinden Sie sich in *SQL Server Management Studio (SSMS)* mit dem Server „tenants“ unter **tenants1-mt.\<USER\>.database.windows.net** mit den Anmeldedaten: **developer**, Kennwort: **P@ssword1**
+1. Stellen Sie in *SQL Server Management Studio (SSMS)* mit dem Server „tenants“ unter **catalog-mt.\<USER\>.database.windows.net** mit den folgenden Anmeldedaten eine Verbindung her: Anmeldename: **developer**, Kennwort: **P@ssword1**
 
     ![SSMS-Verbindungsdialogfeld](media/saas-multitenantdb-provision-and-catalog/SSMSConnection.png)
 
-2. Navigieren Sie im *Objekt-Explorer* zu den Sichten in der Datenbank *tenantcatalog*.
-2. Klicken Sie mit der rechten Maustaste auf die Sicht *TenantsExtended*, und wählen Sie **Select Top 1000 Rows** aus. Beachten Sie die Zuordnung zwischen dem Namen des Mandanten und der Datenbank für die verschiedenen Mandanten.
+1. Navigieren Sie im *Objekt-Explorer* zu den Sichten in der Datenbank *tenantcatalog*.
+1. Klicken Sie mit der rechten Maustaste auf die Sicht *TenantsExtended*, und wählen Sie **Select Top 1000 Rows** aus. Beachten Sie die Zuordnung zwischen dem Namen des Mandanten und der Datenbank für die verschiedenen Mandanten.
 
     ![Sicht „ExtendedTenants“ in SSMS](media/saas-multitenantdb-provision-and-catalog/extendedtenantsview.png)
       
@@ -196,7 +196,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 
 > * Bereitstellen eines neuen Mandanten in einer gemeinsam genutzten mehrinstanzfähigen Datenbank und in seiner eigenen Datenbank
-> * Bereitstellen einer Gruppe zusätzlicher Mandanten
+> * Bereitstellen eines Batches von zusätzlichen Mandanten
 > * Kennenlernen der Details zur Bereitstellung von Mandanten und zu deren Registrierung im Katalog
 
 Sehen Sie sich das [Tutorial zur Leistungsüberwachung](saas-multitenantdb-performance-monitoring.md) an.

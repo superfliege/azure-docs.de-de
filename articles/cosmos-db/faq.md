@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2f46fc37b9050b19b83685c97198c29a5ce46289
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 0f45468616884a6866bd95ef53acab71b4fed06c
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB – Häufig gestellte Fragen
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure DB Cosmos-Grundlagen
 ### <a name="what-is-azure-cosmos-db"></a>Was ist Azure Cosmos DB?
 Azure Cosmos DB ist ein global replizierter Datenbankdienst mit mehreren Modellen, der das Durchführen umfassender Abfragen für schemafreie Daten, eine konfigurierbare und zuverlässige Leistung und eine schnelle Entwicklung ermöglicht. Dies wird mithilfe einer verwalteten Plattform erreicht, die auf der Leistungsstärke und hohen Reichweite von Microsoft Azure basiert. 
 
-Azure Cosmos DB ist die geeignete Lösung für Web-, Mobil-, Gaming- und IoT-Anwendungen, wenn vorhersagbarer Durchsatz, hohe Verfügbarkeit, niedrige Latenz und schemafreie Datenmodelle wichtige Anforderungen sind. Sie bietet Schemaflexibilität und umfassende Indizierung und verfügt über die Transaktionsunterstützung mehrerer Dokumente durch integriertes JavaScript. 
+Azure Cosmos DB ist die geeignete Lösung für Web-, Mobil-, Gaming- und IoT-Anwendungen, wenn vorhersagbarer Durchsatz, Hochverfügbarkeit, niedrige Latenz und schemafreie Datenmodelle wichtige Anforderungen sind. Sie bietet Schemaflexibilität und umfassende Indizierung und verfügt über die Transaktionsunterstützung mehrerer Dokumente durch integriertes JavaScript. 
 
 Weitere Datenbankfragen, -antworten und -anweisungen zur Bereitstellung und Verwendung des Diensts finden Sie in der Dokumentation für Azure Cosmos DB (https://docs.microsoft.com/azure/cosmos-db/).
 
@@ -194,9 +194,11 @@ Benutzer, die mit Azure Table Storage vertraut sind und Tabellen mit der Table-A
 * Die Table-API von Azure Cosmos DB verwendet zur Gewährleistung der garantierten Leistung ein Modell mit reservierter Kapazität. Das bedeutet allerdings, dass für die Kapazität Kosten anfallen, sobald die Tabelle erstellt wird, auch wenn die Kapazität gar nicht genutzt wird. Bei Azure Table Storage wird dagegen nur die tatsächlich genutzte Kapazität in Rechnung gestellt. Das erklärt, warum bei der Table-API eine SLA mit einer Lesegeschwindigkeit von 10 ms und einer Schreibgeschwindigkeit von 15 ms im 99. Perzentil möglich ist, während Azure Table Storage nur eine SLA mit 10 Sekunden bietet. Bei Table-API-Tabellen fallen dafür jedoch auch Kosten für leere Tabellen ohne jegliche Anforderungen an, um sicherzustellen, dass gemäß der SLA von Azure Cosmos DB die erforderliche Kapazität für mögliche Anforderungen an die Tabellen zur Verfügung steht.
 * Von der Table-API zurückgegebene Abfrageergebnisse werden nicht wie bei Azure Table Storage nach Partitionsschlüssel/Zeilenschlüssel sortiert.
 * Die Größe von Zeilenschlüsseln ist auf 255 Bytes begrenzt.
+* Batches können nur bis zu 2 MB enthalten.
 * CreateIfNotExists-Aufrufe werden von einer Verwaltungsdrosselung gedrosselt. Diese hat einen festen Wert und ist von anderen Tabellenvorgängen, die durch RUs abgedeckt sind, unabhängig. Das bedeutet, dass Benutzer mit einer hohen Anzahl von CreateIfNotExists-Vorgängen ausgebremst werden und nichts daran ändern können, da das Limit nicht auf ihre RUs zurückzuführen ist.
 * CORS wird derzeit nicht unterstützt.
 * Bei Tabellennamen in Azure Table Storage wird die Groß- und Kleinschreibung nicht beachtet, bei der Table-API von Azure Cosmos DB dagegen schon.
+* Einige der internen Azure Cosmos DB-Formate für Codierungsinformationen (etwa binäre Felder) sind derzeit nicht so wie effizient wie möglicherweise gewünscht. Daher können unerwartete Einschränkungen in Bezug auf die Datengröße auftreten. Beispiel: Derzeit kann zum Speichern der Binärdaten die Kapazität einer Tabellenentität von 1 MB nicht vollständig genutzt werden, da die Codierung den Datenumfang vergrößert.
 
 Bei der REST-API werden einige Endpunkte/Abfrageoptionen von der Table-API von Azure Cosmos DB nicht unterstützt:
 | REST-Methode | REST-Endpunkt/-Abfrageoption | Dokumentations-URLs | Erklärung |
@@ -430,7 +432,7 @@ Azure Cosmos DB legt den Standarddurchsatz für Ihren Container abhängig davon 
 
 Das Durchsatzkonzept wird im Artikel [Anforderungseinheiten in Azure Cosmos DB](request-units.md) erläutert. Der Durchsatz für eine Tabelle wird gleichmäßig auf die zugrunde liegenden physischen Partitionen verteilt.  
 
-### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Wie viele Anforderungseinheiten pro Sekunde (RU/s) bietet eine über CQL erstellte Tabelle standardmäßig? Was ist, wenn ich den Wert ändern muss?
+### <a name="what-is-the-default-rus-of-table-when-created-through-cql-what-if-i-need-to-change-it"></a>Wie viele Anforderungseinheiten pro Sekunde (RU/s) bietet eine über CQL erstellte Tabelle standardmäßig? Was ist, wenn ich ihn ändern muss?
 Azure Cosmos DB verwendet als Einheit für den Durchsatz Anforderungseinheiten pro Sekunde (RU/s). Tabellen, die über CQL erstellt wurden, bieten 400 RU. Sie können die Anforderungseinheiten über das Portal ändern. 
 
 CQL

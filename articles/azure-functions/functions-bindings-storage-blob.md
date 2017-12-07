@@ -1,5 +1,5 @@
 ---
-title: "Azure Functions – Blob Storage-Bindungen"
+title: "Azure Blob Storage-Bindungen für Azure Functions"
 description: Hier erfahren Sie, wie Sie Azure Blob Storage-Trigger und -Bindungen in Azure Functions verwenden.
 services: functions
 documentationcenter: na
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: 31a2fa3d3c87c16109514b130c95e731f401f8bd
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 576167502fdb77c98c449dc5a448323dc5b23f35
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
-# <a name="azure-functions-blob-storage-bindings"></a>Azure Functions – Blob Storage-Bindungen
+# <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Blob Storage-Bindungen für Azure Functions
 
 In diesem Artikel erfahren Sie, wie Sie Azure Blob Storage-Bindungen in Azure Functions verwenden. Azure Functions unterstützt Trigger-, Eingabe- und Ausgabebindungen für Blobs.
 
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Blob Storage-Bindungen in Azure Fu
 > [!NOTE]
 > [Reine Blob Storage-Konten](../storage/common/storage-create-storage-account.md#blob-storage-accounts) werden nicht unterstützt. Blob Storage-Trigger und -Bindungen erfordern ein allgemeines Speicherkonto. 
 
-## <a name="blob-storage-trigger"></a>Blob Storage-Trigger
+## <a name="trigger"></a>Trigger
 
 Verwenden Sie einen Blob Storage-Trigger, um eine Funktion zu starten, wenn ein neues oder aktualisiertes Blob erkannt wird. Der Blob-Inhalt wird als Eingabe für die Funktion bereitgestellt.
 
@@ -59,7 +59,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-Weitere Informationen zum Attribut `BlobTrigger` finden Sie unter [Trigger: Attribute für vorkompilierten C#-Code](#trigger---attributes-for-precompiled-c).
+Weitere Informationen zum Attribut `BlobTrigger` finden Sie unter [Trigger: Attribute](#trigger---attributes-for-precompiled-c).
 
 ### <a name="trigger---c-script-example"></a>Trigger: C#-Skriptbeispiel
 
@@ -138,7 +138,7 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="trigger---attributes-for-precompiled-c"></a>Trigger: Attribute für vorkompilierten C#-Code
+## <a name="trigger---attributes"></a>Trigger: Attribute
 
 Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-class-library.md) die folgenden Attribute, um einen Blobtrigger zu konfigurieren:
 
@@ -151,6 +151,9 @@ Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-cla
   public static void Run(
       [BlobTrigger("sample-images/{name}")] Stream image, 
       [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageSmall)
+  {
+      ....
+  }
   ```
 
   Durch Festlegen der Eigenschaft `Connection` können Sie das zu verwendende Speicherkonto angeben, wie im folgenden Beispiel zu sehen:
@@ -160,7 +163,12 @@ Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-cla
   public static void Run(
       [BlobTrigger("sample-images/{name}", Connection = "StorageConnectionAppSetting")] Stream image, 
       [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageSmall)
+  {
+      ....
+  }
   ```
+
+  Ein vollständiges Beispiel finden Sie unter [Trigger: vorkompiliertes C#-Beispiel](#trigger---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) (definiert im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs))
 
@@ -173,6 +181,9 @@ Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-cla
       [FunctionName("BlobTrigger")]
       [StorageAccount("FunctionLevelStorageAppSetting")]
       public static void Run( //...
+  {
+      ....
+  }
   ```
 
 Das zu verwendende Speicherkonto wird anhand von Folgendem bestimmt (in der angegebenen Reihenfolge):
@@ -193,7 +204,9 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. Ausnahmen sind im Abschnitt [Verwendung](#trigger---usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt. | 
 |**path** | **BlobPath** |Der zu überwachende Container.  Kann ein [Blobnamensmuster](#trigger-blob-name-patterns) sein. | 
-|**Verbindung** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-create-storage-account.md#blob-storage-accounts)) handeln.<br>Wenn Sie lokal entwickeln, werden App-Einstellungen in den Werten der [Datei „local.settings.json“](functions-run-local.md#local-settings-file) gespeichert.|
+|**Verbindung** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-create-storage-account.md#blob-storage-accounts)) handeln.|
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>Trigger: Verwendung
 
@@ -295,7 +308,7 @@ Wenn bei allen fünf Versuchen Fehler auftreten, fügt Azure Functions der Stora
 
 Wenn der überwachte Blobcontainer mehr als 10.000 Blobs enthält, überprüft die Functions-Runtime Protokolldateien auf neue oder geänderte Blobs. Dieser Vorgang kann zu Verzögerungen führen. Eine Funktion wird unter Umständen erst mehrere Minuten nach der Bloberstellung oder noch später ausgelöst. Außerdem erfolgt das [Erstellen von Storage-Protokollen auf bestmögliche Weise](/rest/api/storageservices/About-Storage-Analytics-Logging). Es gibt keine Garantie, dass alle Ereignisse erfasst werden. Unter bestimmten Umständen können Protokolle fehlen. Wenn eine schnellere oder zuverlässigere Blobverarbeitung erforderlich ist, sollten Sie beim Erstellen des Blobs eine [Warteschlangennachricht](../storage/queues/storage-dotnet-how-to-use-queues.md) erstellen. Verwenden Sie dann einen [Warteschlangentrigger](functions-bindings-storage-queue.md) anstelle eines Blobtriggers für die Verarbeitung des Blobs. Eine andere Möglichkeit ist die Verwendung von Event Grid. Weitere Informationen finden Sie im Tutorial [Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid](../event-grid/resize-images-on-storage-blob-upload-event.md).
 
-## <a name="blob-storage-input--output-bindings"></a>Eingabe- und Ausgabebindungen für Blob Storage
+## <a name="input--output"></a>Eingabe und Ausgabe
 
 Verwenden Sie Eingabe- und Ausgabebindungen für Blob Storage zum Lesen und Schreiben von Blobs.
 
@@ -434,7 +447,7 @@ module.exports = function(context) {
 };
 ```
 
-## <a name="input--output---attributes-for-precompiled-c"></a>Eingabe und Ausgabe: Attribute für vorkompilierten C#-Code
+## <a name="input--output---attributes"></a>Eingabe und Ausgabe: Attribute
 
 Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) definierte Attribut [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs).
 
@@ -445,6 +458,9 @@ Der Konstruktor des Attributs akzeptiert den Pfad des Blobs sowie einen Paramete
 public static void Run(
     [BlobTrigger("sample-images/{name}")] Stream image, 
     [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageSmall)
+{
+    ...
+}
 ```
 
 Durch Festlegen der Eigenschaft `Connection` können Sie das zu verwendende Speicherkonto angeben, wie im folgenden Beispiel zu sehen:
@@ -454,9 +470,14 @@ Durch Festlegen der Eigenschaft `Connection` können Sie das zu verwendende Spei
 public static void Run(
     [BlobTrigger("sample-images/{name}")] Stream image, 
     [Blob("sample-images-md/{name}", FileAccess.Write, Connection = "StorageConnectionAppSetting")] Stream imageSmall)
+{
+    ...
+}
 ```
 
-Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Methoden- oder Parameterebene angeben. Weitere Informationen finden Sie unter [Trigger: Attribute für vorkompilierten C#-Code](#trigger---attributes-for-precompiled-c).
+Ein vollständiges Beispiel finden Sie unter [Eingabe und Ausgabe: vorkompiliertes C#-Beispiel](#input--output---c-example).
+
+Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Methoden- oder Parameterebene angeben. Weitere Informationen finden Sie unter [Trigger: Attribute](#trigger---attributes-for-precompiled-c).
 
 ## <a name="input--output---configuration"></a>Eingabe und Ausgabe: Konfiguration
 
@@ -468,8 +489,10 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss für eine Eingabebindung auf `in` und für eine Ausgabebindung auf „out“ festgelegt werden. Ausnahmen sind im Abschnitt [Verwendung](#input--output---usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt.  Legen Sie diesen Wert auf `$return` fest, um auf den Rückgabewert der Funktion zu verweisen.|
 |**path** |**BlobPath** | Der Pfad des Blobs. | 
-|**Verbindung** |**Connection**| Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-create-storage-account.md#blob-storage-accounts)) handeln.<br>Wenn Sie lokal entwickeln, werden App-Einstellungen in den Werten der [Datei „local.settings.json“](functions-run-local.md#local-settings-file) gespeichert.|
+|**Verbindung** |**Connection**| Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [reines Blob Storage-Konto](../storage/common/storage-create-storage-account.md#blob-storage-accounts)) handeln.|
 |– | **Access** | Gibt an, ob Sie einen Lesevorgang oder einen Schreibvorgang ausführen möchten. |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="input--output---usage"></a>Eingabe und Ausgabe: Verwendung
 

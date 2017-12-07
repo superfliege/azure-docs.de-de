@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: sstein
-ms.openlocfilehash: 9b1ae219eb1278b818e3e1d4237d04fe54c980ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f91ddff81e51e7cc3d1561dc799013764530924b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Bereitstellen und Untersuchen einer mehrinstanzenfähigen SaaS-Anwendung, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet
 
@@ -173,7 +173,7 @@ Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Auslastu
 
 Wenn der Last-Generator mehrere Minuten ausgeführt wurde, sollte eine ausreichende Datenmenge verfügbar sein, um einige der in Pools und Datenbanken integrierten Überwachungsfunktionen zu betrachten.
 
-1. Navigieren Sie zum Server **tenants1-dpt-&lt;BENUTZER&gt;**, und klicken Sie auf **Pool1**, um die Ressourcenverwendung für den Pool anzuzeigen (Auslastungsgenerator wurde für die folgenden Diagramme eine Stunde lang ausgeführt):
+Navigieren Sie zum Server **tenants1-dpt-&lt;BENUTZER&gt;**, und klicken Sie auf **Pool1**, um die Ressourcenverwendung für den Pool anzuzeigen (Auslastungsgenerator wurde für die folgenden Diagramme eine Stunde lang ausgeführt):
 
    ![Überwachen des Pools](./media/saas-dbpertenant-get-started-deploy/monitor-pool.png)
 

@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 11/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a8024a12c4a79e92e37df0a56b6e6bd0cb6a8d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ed3da2d9730d8c30d8170ddf40fe4895dfa5dec
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="resolve-errors-for-resource-quotas"></a>Das Beheben von Fehlern bei Ressourcenkontingenten
 
@@ -93,9 +93,29 @@ Virtual Machines                             0 10000 Count
 
 ### <a name="solution-3"></a>Lösung 3
 
-Wenn Sie eine Kontingentgrenze erhöhen müssen, navigieren Sie zum Portal, und reichen Sie ein Supportproblem ein, um Ihr Kontingent für die Region, in der Sie bereitstellen möchten, zu erhöhen.
+Wenn Sie eine Erhöhung des Kontingents anfordern möchten, rufen Sie das Portal auf, und reichen Sie ein Supportproblem ein. Fordern Sie im Supportproblem eine Erhöhung des Kontingents für die Region an, in der die Bereitstellung erfolgen soll.
 
 > [!NOTE]
 > Denken Sie daran, dass für Ressourcengruppen das Kontingent für jede einzelne Region und nicht für das gesamte Abonnement gilt. Wenn Sie 30 Kerne in der Region "USA, Westen" bereitstellen möchten, müssen Sie 30 Ressourcen-Manager-Kerne für "USA, Westen" anfordern. Wenn Sie 30 Kerne in einer der Regionen bereitstellen möchten, auf die Sie Zugriff haben, sollten Sie 30 Resource Manager-Kerne in allen Regionen anfordern.
 >
 >
+
+1. Wählen Sie **Abonnements**.
+
+   ![Abonnements](./media/resource-manager-quota-errors/subscriptions.png)
+
+2. Wählen Sie das Abonnement aus, für das ein höheres Kontingent benötigt wird.
+
+   ![Wählen Sie das Abonnement aus.](./media/resource-manager-quota-errors/select-subscription.png)
+
+3. Wählen Sie **Nutzung + Kontingente** aus.
+
+   ![Auswählen von „Nutzung + Kontingente“](./media/resource-manager-quota-errors/select-usage-quotas.png)
+
+4. Klicken Sie in der Ecke oben rechts auf **Erhöhung anfordern**.
+
+   ![Anfordern einer Erhöhung](./media/resource-manager-quota-errors/request-increase.png)
+
+5. Füllen Sie die Formulare für den Kontingenttyp aus, den Sie erhöhen müssen.
+
+   ![Ausfüllen des Formulars](./media/resource-manager-quota-errors/forms.png)

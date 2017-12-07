@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 9970452b62b31f28f8277580dd1075c306767d8b
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 7fad1b662c587fed6cd7dd6a1792d8598f0e4f85
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke](../virtual-network/virtual-networks-overview.md).
@@ -45,7 +45,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Aktivieren der VNET-Konnektivität über das Azure-Portal
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer APIM-Instanz.
-2. Klicken Sie auf **Benutzerdefinierte Domänen und SSL**.
+2. Wählen Sie **Virtuelles Netzwerk** aus.
 3. Konfigurieren Sie die API Management-Instanz so, dass sie in einem virtuellen Netzwerk bereitgestellt wird.
 
     ![Menü Virtuelles Netzwerk in API Management][api-management-using-vnet-menu]
@@ -116,6 +116,7 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 | * / 14000 - 14999 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|**Zugriff auf Azure SQL V12** |Extern & Intern |
 | * / 5671 |Ausgehend |AMQP |VIRTUAL_NETWORK/INTERNET|Abhängigkeit für Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent |Extern & Intern |
 | */445 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|Abhängigkeit von Azure File Share für GIT |Extern & Intern |
+| * / 25028 |Ausgehend |TCP |VIRTUAL_NETWORK/INTERNET|Verbinden mit SMTP-Relay zum Senden von E-Mails |Extern & Intern |
 | * / 6381 - 6383 |Ein- und ausgehend |TCP |VIRTUAL_NETWORK/VIRTUAL_NETWORK|Zugriff auf Redis Cache-Instanzen zwischen RoleInstances |Extern & Intern |
 | * / * | Eingehend |TCP |AZURE_LOAD_BALANCER/VIRTUAL_NETWORK| Lastenausgleich von Azure-Infrastruktur |Extern & Intern |
 

@@ -12,13 +12,13 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/17/2016
+ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 3cb22b935624041ab51e64028a1b668fd694f9b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ba6e3a79e5eb4eca4a3c7d35ada8c58bfe2295e
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
 
@@ -31,6 +31,7 @@ Dieser Artikel bezieht sich auf Azure App Service (Web-Apps, API-Apps, mobile Ap
 Für dieses Tutorial benötigen Sie Folgendes:
 
 * [Erstellen Sie eine App Service-App](/azure/app-service/), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
+* [Entfernen Sie das Ausgabenlimit für Ihr Abonnement.](../billing/billing-spending-limit.md#remove) Sie können keine App Service-Domänen mit kostenlosem Abonnementguthaben erwerben.
 
 ## <a name="prepare-the-app"></a>Vorbereiten der App
 
@@ -82,15 +83,25 @@ Klicken Sie auf der Registerkarte **Web-Apps** auf den Namen der Web-App, wähle
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
 
-Klicken Sie auf dem Blatt **Custom domains** (Benutzerdefinierte Domänen) auf **Buy domains** (Domänen kaufen).
+Klicken Sie auf der Seite **Benutzerdefinierte Domänen** auf **Domäne erwerben**.
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-1.png)
 
+> [!NOTE]
+> Wenn der Abschnitt **App Service-Domänen** nicht angezeigt wird, müssen Sie das Ausgabenlimit für Ihr Azure-Konto entfernen (siehe [Voraussetzungen](#prerequisites)).
+>
+>
+
 ### <a name="configure-the-domain-purchase"></a>Konfigurieren des Domänenkaufs
 
-Tippen Sie den Domänennamen auf der Seite **App Service Domain** (App Service-Domäne) in das Suchfeld **Search for domain** (Domäne suchen) ein und drücken Sie `Enter`. Die vorgeschlagenen verfügbaren Domänen werden direkt unter dem Textfeld angezeigt. Klicken Sie mindestens eine Domäne an, die Sie kaufen möchten. 
+Tippen Sie den Domänennamen auf der Seite **App Service Domain** (App Service-Domäne) in das Suchfeld **Search for domain** (Domäne suchen) ein und drücken Sie `Enter`. Die vorgeschlagenen verfügbaren Domänen werden direkt unter dem Textfeld angezeigt. Klicken Sie mindestens eine Domäne an, die Sie kaufen möchten.
    
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
+
+> [!NOTE]
+> Die folgenden [Domänen der obersten Ebene](https://wikipedia.org/wiki/Top-level_domain) werden von App Service-Domänen unterstützt: _com_, _net_, _co.uk_, _org_, _nl_, _in_, _biz_, _org.uk_ und _co.in_.
+>
+>
 
 Klicken Sie auf **Kontaktinformationen**, und füllen Sie das Formular mit den Kontaktinformationen für die Domäne aus. Wenn Sie fertig sind, klicken Sie auf **OK**, um zur Seite „App Service-Domäne“ zurückzukehren.
    
@@ -100,8 +111,7 @@ Wählen Sie als nächstes die gewünschten Optionen für Ihre Domäne aus. Die f
 
 | Einstellung | Empfohlener Wert | Beschreibung |
 |-|-|-|
-|Automatisches Erneuern | **Aktivieren** | Erneuert Ihre App Service-Domäne jedes Jahr automatisch. Zum Zeitpunkt der Erneuerung wird Ihre Kreditkarte mit dem Kaufbetrag belastet. |
-|Datenschutz | Aktivieren | Wählen Sie „Datenschutz“. Dieser ist im Kaufpreis _for free_ (gratis) enthalten (außer für Domänen der obersten Ebenen, deren Registrierungen keinen Datenschutz unterstützen, zum Beispiel _.co.in_, _.co.uk_ usw.). |
+|Datenschutz | Aktivieren | Abonnieren Sie „Datenschutz“. Diese Option ist _kostenlos_ im Kaufpreis enthalten. Manche Domänen der obersten Ebene werden von Registrierungsstellen verwaltet, die den Datenschutz nicht unterstützen. Sie sind auf der Seite **Datenschutz** aufgeführt. |
 | Zuweisen von Standardhostnamen | **www** und **@** | Wählen Sie bei Bedarf die gewünschten Hostnamenbindungen. Wenn der Vorgang des Domänenkaufs abgeschlossen ist, kann auf Ihre Web-App über die ausgewählten Hostnamen zugegriffen werden. Wenn Ihre Web-App sich hinter dem [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) befindet, wird Ihnen die Option nicht angezeigt, durch die die Stammdomäne (@) zugewiesen werden kann, da der Traffic Manager keine A-Datensätze unterstützt. Sie können Änderungen an den Zuweisungen der Hostnamen vornehmen, nachdem der Domänenkauf abgeschlossen ist. |
 
 ### <a name="accept-terms-and-purchase"></a>Akzeptieren der Bedingungen und Erwerben
@@ -125,7 +135,7 @@ Wenn Sie Ihrer Web-App Standardhostnamen zugewiesen haben, wird Ihnen für jeden
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-bind-success.png)
 
-Auf der Seite **Custom domains** (Benutzerdefinierte Domänen) werden Ihnen die ausgewählten Hostnamen im Abschnitt **Hostnames** (Hostnamen) angezeigt. 
+Auf der Seite **Benutzerdefinierte Domänen** werden Ihnen die ausgewählten Hostnamen im Abschnitt **Benutzerdefinierte Hostnamen** angezeigt. 
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-hostnames-added.png)
 
@@ -182,7 +192,25 @@ Der oder die neu zugewiesenen Hostname(n) sollten nun auf der Seite **Custom Dom
 
 Navigieren Sie zu den aufgelisteten Hostnamen im Browser. Versuchen Sie wie im Beispiel im obigen Screenshot, zu der Seite _abc.kontoso.net_ zu navigieren.
 
-<a name="custom" />
+## <a name="renew-the-domain"></a>Verlängern der Domäne
+
+Die erworbene App Service-Domäne ist ab dem Kaufdatum ein Jahr lang gültig. Die Domäne ist standardmäßig so konfiguriert, dass sie automatisch verlängert wird, indem Ihre Zahlungsmethode für das nächste Jahr belastet wird. Wenn Sie die automatische Verlängerung deaktivieren oder die Domäne manuell verlängern möchten, führen Sie die nachfolgenden Schritte aus.
+
+Klicken Sie auf der Registerkarte **Web-Apps** auf den Namen der Web-App, wählen Sie **Einstellungen** aus, und klicken Sie anschließend auf **Benutzerdefinierte Domänen**.
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-6.png)
+
+Wählen Sie im Abschnitt **App Service-Domänen** die Domäne aus, die Sie konfigurieren möchten.
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-select-domain.png)
+
+Klicken Sie im linken Navigationsbereich der Domäne auf **Domänenverlängerung**. Wenn die Domäne nicht automatisch verlängert werden soll, klicken Sie auf **Aus** und dann auf **Speichern**. 
+
+![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-autorenew.png)
+
+Wenn Sie Ihre Domäne manuell verlängern möchten, klicken Sie auf **Domäne verlängern**. Diese Schaltfläche wird jedoch erst 90 Tage vor dem Ablauf der Domäne aktiviert.
+
+<a name="custom"></a>
 
 ## <a name="manage-custom-dns-records"></a>Verwalten von benutzerdefinierten DNS-Datensätzen
 
@@ -236,6 +264,14 @@ Wenn die Kündigungsfrist für die erworbene Domäne nicht abgelaufen ist, klick
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-cancel.png)
 
-Klicken Sie auf **OK**, um den Vorgang zu bestätigen. Wenn Sie nicht fortfahren möchten, klicken Sie auf eine beliebige Stelle außerhalb des Bestätigungsdialogfelds.
+Klicken Sie auf **Ja**, um den Vorgang zu bestätigen.
 
 Nachdem der Vorgang abgeschlossen ist, ist die Domäne aus Ihrem Abonnement freigegeben und steht wieder für jeden zum Kauf zur Verfügung. 
+
+## <a name="direct-default-url-to-a-custom-directory"></a>Weiterleiten der Standard-URL zu einem benutzerdefinierten Verzeichnis
+
+App Service leitet Webanforderungen standardmäßig an das Stammverzeichnis des App-Codes weiter. Informationen zum Weiterleiten an ein Unterverzeichnis wie `public` finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md#virtualdir).
+
+## <a name="more-resources"></a>Weitere Ressourcen
+
+[FAQ : App Service Domain (preview) and Custom Domains](https://blogs.msdn.microsoft.com/appserviceteam/2017/08/08/faq-app-service-domain-preview-and-custom-domains/) (Häufig gestellte Fragen: App Service-Domäne (Vorschauversion) und benutzerdefinierte Domänen)

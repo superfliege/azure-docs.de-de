@@ -13,13 +13,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: n
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 08/08/2017
+ms.date: 08/09/2017
 ms.author: carlrab
-ms.openlocfilehash: dc1697520080cbdc8e53686f800ad122e69c2478
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f7496c7b78449d5ceae861dc0daac607acdb1f84
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von Python
 
@@ -29,15 +29,11 @@ ms.lasthandoff: 10/31/2017
 
 Für dieses Schnellstarttutorial benötigen Sie Folgendes:
 
-- Eine Azure SQL-Datenbank. In dieser Schnellstartanleitung werden die Ressourcen aus einer der folgenden Schnellstartanleitungen verwendet: 
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-   - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
-   - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
-   - [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md)
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden.
-
-- Python und die dazugehörige Software müssen für das Betriebssystem installiert sein.
+- Python und die zugehörige Software müssen für das Betriebssystem installiert sein:
 
     - **MacOS:** Installieren Sie Homebrew und Python, installieren Sie den ODBC-Treiber und SQLCMD, und installieren Sie anschließend den Python-Treiber für SQL Server. Informationen finden Sie unter [Schritt 1.2, 1.3 und 2.1](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
     - **Ubuntu:** Installieren Sie Python und andere erforderliche Pakete, und installieren Sie anschließend den Python-Treiber für SQL Server. Informationen finden Sie unter [Schritt 1.2, 1.3 und 2.1](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu/).
@@ -45,15 +41,7 @@ Für dieses Schnellstarttutorial benötigen Sie Folgendes:
 
 ## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
-Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
-3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der folgenden Abbildung dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen.  
-
-   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
-
-4. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministrator-Benutzernamen anzuzeigen und ggf. das Kennwort zurückzusetzen.     
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
     
 ## <a name="insert-code-to-query-sql-database"></a>Einfügen von Code zum Abfragen der SQL-Datenbank 
 

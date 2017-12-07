@@ -13,13 +13,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: 6b48b98e87d5317c7e673977b87417210a595d6b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 9ad160377a8779ae917e6fd2d605ee01b12c3e2a
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>Verarbeitung von Ereignissen von Azure-Event-Hubs mit Storm auf HDInsight (C#)
 
@@ -36,6 +36,9 @@ In den Schritten in diesem Dokument wird SCP.NET verwendet, ein NuGet-Paket, das
 > Während Sie für die Schritte in diesem Dokument eine Windows-Entwicklungsumgebung mit Visual Studio benötigen, kann das kompilierte Projekt an einen Linux-basierten Cluster mit Storm auf HDInsight übermittelt werden. Nur Linux-basierte Cluster, die nach dem 28. Oktober 2016 erstellt wurden, unterstützen SCP.NET-Topologien.
 
 Die HDInsight-Versionen 3.4 und höher verwenden Mono, um C#-Topologien auszuführen. Das in diesem Dokument verwendete Beispiel funktioniert mit HDInsight 3.6. Wenn Sie eigene .NET-Lösungen für HDInsight erstellen möchten, finden Sie im Dokument [Mono-Kompatibilität](http://www.mono-project.com/docs/about-mono/compatibility/) Informationen zu möglichen Inkompatibilitäten.
+
+> [!WARNING]
+> Wenn beim Erstellen von Projekten mit Version 1.0.0.x von SCP.NET Probleme auftreten, wenden Sie sich an den Microsoft-Support.
 
 ### <a name="cluster-versioning"></a>Clusterversionsverwaltung
 

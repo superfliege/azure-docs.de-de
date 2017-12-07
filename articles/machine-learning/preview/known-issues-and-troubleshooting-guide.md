@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: a03fb4f202bddb6454f703c998e95abf13d14fff
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 5c7c15eacdf43d3623000ed228adfaeb55803c8f
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning-Workbench – bekannte Probleme und Anleitung zur Problembehandlung 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu suchen und zu beheben, die bei der Verwendung der Anwendung Azure Machine Learning Workbench auftreten können. 
@@ -39,6 +39,17 @@ Sollten Sie beim Installieren auf ein Problem stoßen, können Sie die Protokoll
 /tmp/amlinstaller/logs/*
 ```
 Sie können die Inhalte dieser Verzeichnisse zippen und uns zur Diagnose zukommen lassen.
+
+### <a name="app-update"></a>App-Update 
+#### <a name="no-update-notification-on-windows-desktop"></a>Keine Updatebenachrichtigung auf dem Windows-Desktop 
+Dieses Problem wird in einem zukünftigen Update behoben. In der Zwischenzeit können Sie das Problem umgehen, indem Sie es vermeiden, die App über die an die Taskleiste angeheftete Verknüpfung zu starten. Starten Sie die App stattdessen mithilfe des Startmenüs oder der Startsuchleiste oder über die Verknüpfung auf dem Desktop (sofern vorhanden). 
+
+#### <a name="no-update-notification-on-an-ubuntu-data-sciece-virtual-machine-dsvm"></a>Keine Updatebenachrichtigung auf einem virtuellen Ubuntu-Computer für Data Science
+Führen Sie die folgenden Schritte aus, um die aktuelle Anwendung herunterzuladen:   
+   - Entfernen Sie den Ordner „\Users\AppData\Local\amlworkbench“.
+   - Entfernen des Skripts `c:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
+   - Entfernen der Desktopverknüpfung, die das oben genannte Skript startet
+   - Führen Sie mithilfe von [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi) eine Neuinstallation aus.
 
 ### <a name="workbench-desktop-app"></a>Workbench-Desktopanwendung
 Wenn Sie sich nicht anmelden können oder die Workbench-Desktopanwendung abstürzt, können Sie die Protokolldateien in den folgenden Verzeichnissen überprüfen:

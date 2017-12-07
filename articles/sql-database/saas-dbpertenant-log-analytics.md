@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: c036901bde5fff0d63ee2494de87e49410662099
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 48e8eb91a5febcc1109bee3404bb534bd0391f88
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
-# <a name="setup-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics (OMS) mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
+# <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>Einrichten und Verwenden von Log Analytics (OMS) mit einer mehrinstanzenfähigen SaaS-App für Azure SQL-Datenbank
 
-In diesem Tutorial richten Sie *Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* ein und verwenden es zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken. Dieses Tutorial baut auf dem Tutorial [Überwachen der Leistung der SaaS-Anwendung Wingtip](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit *Log Analytics* die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics eignet sich für umfassende Überwachung und Warnungen, da Hunderte von Pools und Hunderttausende Datenbanken unterstützt werden. Zudem verfügen Sie damit über eine einzige Überwachungslösung, in der die Überwachung unterschiedlicher Anwendungen und Azure-Dienste für mehrere Azure-Abonnements integriert werden kann.
+In diesem Tutorial richten Sie *Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* zum Überwachen von Pools für elastische Datenbanken sowie Datenbanken ein. Dieses Tutorial baut auf dem Tutorial [Überwachen der Leistung der SaaS-Anwendung Wingtip](saas-dbpertenant-performance-monitoring.md) auf. Es zeigt, wie Sie mit *Log Analytics* die im Azure-Portal bereitgestellte Überwachungs- und Warnungsfunktionalität erweitern können. Log Analytics eignet sich für umfassende Überwachung und Warnungen, da Hunderte von Pools und Hunderttausende Datenbanken unterstützt werden. Zudem verfügen Sie damit über eine einzige Überwachungslösung, in der die Überwachung unterschiedlicher Anwendungen und Azure-Dienste für mehrere Azure-Abonnements integriert werden kann.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-* Die App Wingtip Tickets SaaS Database Per Tenant wird bereitgestellt. Unter [Bereitstellen und Kennenlernen der App Wingtip Tickets SaaS Database Per Tenant](saas-dbpertenant-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
+* Die SaaS-App Wingtip Tickets mit einer Datenbank pro Mandant ist bereitgestellt. Unter [Bereitstellen und Untersuchen der SaaS-App Wingtip Tickets mit einer Datenbank pro Mandant](saas-dbpertenant-get-started-deploy.md) finden Sie Informationen dazu, wie Sie die App in weniger als fünf Minuten bereitstellen.
 * Azure PowerShell wurde installiert. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 Im [Tutorial zum Überwachen und Verwalten der Leistung](saas-dbpertenant-performance-monitoring.md) finden Sie eine Beschreibung der SaaS-Szenarien und -Muster, und es wird erläutert, wie sie die Anforderungen an eine Überwachungslösung beeinflussen.
@@ -59,7 +59,7 @@ Sowohl Log Analytics-Arbeitsbereiche als auch Analyselösungen können im Azure-
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant
 
-Die Skripts und der Quellcode der Anwendung Wingtip Tickets SaaS Database Per Tenant stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Skriptdateien befinden sich im Ordner [Learning Modules](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/tree/master/Learning%20Modules) (Lernmodule). Laden Sie den Ordner **Learning Modules** auf den lokalen Computer herunter, wobei Sie dessen Ordnerstruktur beibehalten.
+Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 
 ## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>Installieren und Konfigurieren von Log Analytics und der Azure SQL-Analyselösung
 
@@ -85,7 +85,8 @@ An dieser Stelle sollten Sie in der Lage sein, Log Analytics im Azure-Portal (od
 1. Wählen Sie **Übersicht** aus, um die Log Analytics-Lösung im Azure-Portal zu öffnen.
    ![Link „Übersicht“](media/saas-dbpertenant-log-analytics/click-overview.png)
 
-    **WICHTIG**: Es kann einige Minuten dauern, bis die Lösung aktiv ist. Haben Sie etwas Geduld!
+    > [!IMPORTANT]
+    > Es kann einige Minuten dauern, bis die Lösung aktiv ist. Haben Sie etwas Geduld!
 
 1. Klicken Sie auf die Kachel „Azure SQL-Analyse“, um sie zu öffnen.
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: bf5f12e4a20d9692e311550fc7a02f14f0b4aaad
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 3ae7df7939431e3bd13c070d65876145706e06b5
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -309,7 +309,9 @@ Wenn Ihnen die Telemetriedaten angezeigt werden, passt der Application Insights-
 
 Die Genauigkeit der Annäherung hängt weitgehend vom konfigurierten Prozentsatz für die Stichprobenerstellung ab. Zudem steigt die Genauigkeit bei Anwendungen, die eine große Anzahl von im Allgemeinen ähnlichen Anforderungen von einer großen Anzahl von Benutzern verarbeiten. Andererseits ist bei Anwendungen mit geringer Last keine Stichprobenerstellung erforderlich, da diese Anwendungen üblicherweise sämtliche Telemetriedaten senden können, ohne dass dabei das jeweilige Kontingent überschritten wird oder es durch die Drosselung zu Datenverlust kommt. 
 
-Beachten Sie, dass Application Insights keine Stichproben für die Telemetrietypen „Metriken“ und „Sitzungen“ erstellt, da bei diesen Typen eine Reduzierung der Genauigkeit nicht wünschenswert ist. 
+> [!WARNING]
+> Application Insights erstellt keine Stichproben für die Telemetrietypen „Metriken“ und „Sitzungen“. Bei diesen Typen ist eine Reduzierung der Genauigkeit nicht wünschenswert.
+> 
 
 ### <a name="adaptive-sampling"></a>Adaptive Stichprobenerstellung
 Bei der adaptiven Stichprobenerstellung wird eine Komponente hinzugefügt, die die aktuelle Übertragungsrate vom SDK überwacht und den Stichproben-Prozentsatz anpasst, um den angestrebten maximalen Prozentsatz einzuhalten. Die Anpassung wird in regelmäßigen Intervallen neu berechnet und basiert auf dem gleitenden Durchschnitt der ausgehenden Übertragungsrate.

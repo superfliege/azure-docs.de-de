@@ -3,7 +3,7 @@ title: "Erneutes Schützen von virtuellen Azure-Computern zurück zur primären 
 description: "Nach einem Failover von virtuellen Computern aus einer Azure-Region in eine andere Region können Sie die Computer mit Azure Site Recovery in umgekehrter Richtung schützen. Hier erfahren Sie, wie Sie Computer vor einem Failover erneut schützen."
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/11/2017
-ms.author: ruturajd
-ms.openlocfilehash: 32f5d2d142940bc515849dcd0edb1bb1f152aa6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/22/2017
+ms.author: rajanaki
+ms.openlocfilehash: 3e614b6c3c8358585f3b502f301cc659d2088e2f
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reprotect-from-failed-over-azure-region-back-to-primary-region"></a>Erneutes Schützen aus einer Azure-Region in die primäre Region nach Failover
 
@@ -31,10 +31,10 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="overview"></a>Übersicht
 Wenn Sie ein [Failover](site-recovery-failover.md) für virtuelle Computer aus einer Azure-Region in eine andere Region ausführen, befinden sich die virtuellen Computer in einem ungeschützten Zustand. Wenn Sie sie wieder in die primäre Region verschieben möchten, müssen Sie die virtuellen Computer zunächst schützen und dann erneut ein Failover ausführen. Das Failover ist in beide Richtungen gleich. Entsprechend gibt es nach dem Aktivieren des Schutzes für die virtuellen Computer keinen Unterschied für das erneute Schützen nach dem Failover oder nach dem Failback.
-Zum Erläutern der Abläufe beim erneuten Schützen und um Verwechslungen zu vermeiden, wird als primärer Standort der geschützten Computer „Asien, Osten“ und als Wiederherstellungsstandort der Computer die Region „Asien, Südosten“ verwendet. Während des Failovers wird das Failover der virtuellen Computer in die Region „Asien, Südosten“ ausgeführt. Vor dem Failback müssen Sie die virtuellen Computer aus „Asien, Südosten“ in „Asien, Osten“ erneut schützen. Dieser Artikel beschreibt die Schritte zum erneuten Schützen.
+Zum Erläutern der Workflows beim erneuten Schützen und um Verwechslungen zu vermeiden, wird als primärer Standort der geschützten Computer „Asien, Osten“ und als Wiederherstellungsstandort der Computer die Region „Asien, Südosten“ verwendet. Während des Failovers werden die virtuellen Computer in der Region „Asien, Südosten“ gestartet. Vor dem Failback müssen Sie die virtuellen Computer aus „Asien, Südosten“ in „Asien, Osten“ erneut schützen. Dieser Artikel beschreibt die Schritte zum erneuten Schützen.
 
 > [!WARNING]
-> Wenn Sie die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich.
+> Wenn Sie die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, können Sie den virtuellen Computer nicht erneut schützen bzw. kein Failback für ihn ausführen.
 
 Wenn der Schutz wiederhergestellt wurde und die geschützten virtuellen Computer repliziert werden, können Sie ein Failover für die virtuellen Computer initiieren, um sie zurück in die Region „Asien, Osten“ zu übertragen.
 
@@ -58,7 +58,7 @@ Im Folgenden finden Sie die Schritte zum erneuten Schützen eines virtuellen Com
 
 3. Überprüfen Sie die Informationen für **Ressourcengruppe, Netzwerk, Speicher und Verfügbarkeitsgruppen**, und klicken Sie auf „OK“. Wenn markierte Ressourcen (neu) vorhanden sind, werden sie während des Vorgangs zum erneuten Schützen erstellt.
 
-Hierbei wird ein Auftrag zum erneuten Schützen ausgelöst, mit dem zunächst für den Zielstandort (in diesem Fall SEA) ein Seeding mit den aktuellen Daten ausgeführt wird. Nach Abschluss des Auftrags werden die Deltas repliziert, bevor Sie ein Failover zurück zu „Asien, Südosten“ ausführen.
+Der Auftrag zum erneuten Schützen führt zunächst für den Zielstandort (in diesem Fall SEA) ein Seeding mit den aktuellen Daten aus. Nach Abschluss des Auftrags werden die Deltas repliziert, bevor Sie ein Failover zurück zu „Asien, Südosten“ ausführen.
 
 ### <a name="reprotect-customization"></a>Anpassen des erneuten Schutzes
 Wenn Sie während des Vorgangs zum erneuten Schützen das Extraktionsspeicherkonto oder das Netzwerk auswählen möchten, ist dies über die Anpassungsoption auf dem Blatt zum erneuten Schützen möglich.

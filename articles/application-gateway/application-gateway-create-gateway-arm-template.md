@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: davidmu
-ms.openlocfilehash: 305a0529b6f6ad8bd96ac10da5f7ebc48317df45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0aa16e9d7472d2d8c3c251e60a506a7f4223ac1d
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Erstellen eines Anwendungsgateways mit der Azure-Ressourcen-Manager-Vorlage
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 10/11/2017
 
 Azure Application Gateway verwendet einen Load Balancer auf der Schicht 7 (Anwendungsschicht). Es ermöglicht Failover sowie schnelles Routing von HTTP-Anforderungen zwischen verschiedenen Servern in der Cloud und der lokalen Umgebung. Application Gateway bietet zahlreiche ADC-Features (Application Delivery Controller) wie HTTP-Lastenausgleich, cookiebasierte Sitzungsaffinität, SSL-Auslagerung (Secure Sockets Layer), benutzerdefinierte Integritätstests und Unterstützung mehrerer Standorte. Eine Liste mit allen unterstützten Features finden Sie unter [Übersicht über Application Gateway](application-gateway-introduction.md).
 
-In diesem Artikel erfahren Sie, wie Sie eine vorhandene Azure Resource Manager-Vorlage von GitHub herunterladen und ändern und wie Sie die Vorlage über GitHub, PowerShell und die Azure-Befehlszeilenschnittstelle bereitstellen.
+In diesem Artikel erfahren Sie, wie Sie eine vorhandene [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) von GitHub herunterladen und ändern und wie Sie die Vorlage über GitHub, PowerShell und die Azure-Befehlszeilenschnittstelle bereitstellen.
 
-Wenn Sie die Azure-Ressourcen-Manager-Vorlage ohne Änderungen einfach direkt aus GitHub bereitstellen möchten, sollten Sie den Abschnitt zum Bereitstellen einer Vorlage aus GitHub lesen.
+Wenn Sie die Vorlage ohne Änderungen direkt aus GitHub bereitstellen, fahren Sie mit „Bereitstellen einer Vorlage aus GitHub“ fort.
 
 ## <a name="scenario"></a>Szenario
 
@@ -75,9 +75,6 @@ Sie können die vorhandene Azure-Ressourcen-Manager-Vorlage herunterladen, um ei
    * **type**. Typ der Ressource, die von der Vorlage erstellt wird. In diesem Fall lautet der Typ `Microsoft.Network/applicationGateways` (ein Anwendungsgateway).
    * **name**. Name der Ressource. Beachten Sie die Verwendung von `[parameters('applicationGatewayName')]`. Das bedeutet, dass der Name während der Bereitstellung durch Sie oder eine Parameterdatei eingegeben wird.
    * **properties**. Liste der Eigenschaften für die Ressource. Diese Vorlage verwendet während der Erstellung des Anwendungsgateways das virtuelle Netzwerk und die öffentliche IP-Adresse.
-
-   > [!NOTE]
-   > Weitere Informationen zu Vorlagen finden Sie unter [Resource Manager-Vorlagen: Referenz](/templates/)
 
 1. Navigieren Sie zurück zu [https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf/](https://github.com/Azure/azure-quickstart-templates/blob/master/101-application-gateway-waf).
 1. Klicken Sie auf **azuredeploy-parameters.json** und anschließend auf **RAW**.

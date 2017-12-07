@@ -9,11 +9,11 @@ ms.technology: search
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: heidist
-ms.openlocfilehash: 02d5fac8cf9067ec544668f306fe49b805b3d164
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dcd66991375a9f063345cda20c69f6a41c512ed2
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search – Häufig gestellte Fragen (FAQ)
  
@@ -30,7 +30,7 @@ Azure Search unterstützt mehrere Datenquellen, die [linguistische Analyse für 
 Beim Vergleichen von Suchtechnologie fragen Kunden häufig danach, worin sich Azure Search genau von Elasticsearch unterscheidet. Kunden, die Azure Search anstelle von Elasticsearch für ihre Suchanwendungsprojekte nutzen, entscheiden sich meistens für diese Vorgehensweise, weil wir eine wichtige Aufgabe vereinfacht haben oder weil sie die integrierte Integration in andere Microsoft-Technologie benötigen:
 
 + Azure Search ist ein vollständig verwalteter Clouddienst mit Vereinbarungen zum Servicelevel (SLAs) von 99,9%, wenn die Bereitstellung mit ausreichender Redundanz erfolgt (zwei Replikate für Lesezugriff, drei Replikate für Lese-/Schreibzugriff).
-+ Die [NLPs (Natural Language Processors](https://docs.microsoft.com/rest/api/searchservice/language-support) von Microsoft ermöglichen eine professionelle linguistische Analyse.  
++ Die [NLPs (Natural Language Processors)](https://docs.microsoft.com/rest/api/searchservice/language-support) von Microsoft ermöglichen eine professionelle linguistische Analyse.  
 + [Azure Search Indexer](search-indexer-overview.md) können für die anfängliche und inkrementelle Indizierung für viele verschiedene Azure-Datenquellen einen Crawlvorgang durchführen.
 + Wenn Sie eine schnelle Reaktion auf Schwankungen des Abfrage- oder Indizierungsvolumens benötigen, können Sie [Schieberegler-Steuerelemente](search-manage.md#scale-up-or-down) im Azure-Portal verwenden oder ein [PowerShell-Skript](search-manage-powershell.md) ausführen und die Shardverwaltung direkt umgehen.  
 + [Features für die Bewertung und Optimierung](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index) ermöglichen eine Beeinflussung der Suchrangbewertungen über die Funktionen des Suchmoduls hinaus. 

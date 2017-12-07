@@ -1,69 +1,67 @@
 ---
-title: "Azure Cosmos DB-Bindungen für Functions | Microsoft-Dokumentation"
+title: "Azure Cosmos DB-Bindungen für Functions"
 description: Grundlegendes zur Verwendung von Azure Cosmos DB-Triggern und -Bindungen in Azure Functions.
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Funktionen, Ereignisverarbeitung, dynamisches Compute, serverlose Architektur
-ms.assetid: 3d8497f0-21f3-437d-ba24-5ece8c90ac85
 ms.service: functions; cosmos-db
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: d05c0342e771e229a7175570ad227c4359980990
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: a725d6e08721107ddd83999dac85dddb88896ebf
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/30/2017
 ---
-# <a name="azure-cosmos-db-bindings-for-functions"></a>Azure Cosmos DB-Bindungen für Functions
-[!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
+# <a name="azure-cosmos-db-bindings-for-azure-functions"></a>Azure Cosmos DB-Bindungen für Azure Functions
 
-Dieser Artikel erläutert das Konfigurieren und Codieren von Azure Cosmos DB-Bindungen in Azure Functions. Functions unterstützt Trigger sowie Ein- und Ausgabebindungen für Azure Cosmos DB.
+Dieser Artikel erläutert das Arbeiten mit [Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md)-Bindungen in Azure Functions. Azure Functions unterstützt Trigger sowie Ein- und Ausgabebindungen für Azure Cosmos DB.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
-Weitere Informationen zu serverlosem Computing mit Azure Cosmos DB finden Sie unter [Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions](..\cosmos-db\serverless-computing-database.md).
-
-<a id="trigger"></a>
-<a id="cosmosdbtrigger"></a>
-
-## <a name="azure-cosmos-db-trigger"></a>Azure Cosmos DB-Trigger
+## <a name="trigger"></a>Trigger
 
 Informationen über das partitionsübergreifende Lauschen auf Änderungen durch den Azure Cosmos DB-Trigger finden Sie unter [Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB](../cosmos-db/change-feed.md). Der Trigger erfordert eine zweite Sammlung, die er zum Speichern von _Leases_ auf den Partitionen verwendet.
 
 Sowohl die überwachte Sammlung als auch die, die die Leases enthält, muss verfügbar sein, damit der Trigger funktioniert.
 
-Der Azure Cosmos DB-Trigger unterstützt die folgenden Eigenschaften:
+## <a name="trigger---example"></a>Trigger: Beispiel
 
-|Eigenschaft  |Beschreibung  |
-|---------|---------|
-|**type** | Muss auf `cosmosDBTrigger` festgelegt sein. |
-|**name** | Der im Code der Funktion verwendete Variablenname, der die Liste der Dokumente mit Änderungen darstellt. | 
-|**direction** | Muss auf `in` festgelegt sein. Dieser Parameter wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
-|**connectionStringSetting** | Der Name einer App-Einstellung, die die Verbindungszeichenfolge enthält, die zum Herstellen der Verbindung mit dem überwachten Azure Cosmos DB-Konto verwendet wird. |
-|**databaseName** | Der Name der Azure Cosmos DB-Datenbank mit der überwachten Sammlung. |
-|**collectionName** | Der Name der überwachten Sammlung. |
-| **leaseConnectionStringSetting** | (Optional) Der Name einer App-Einstellung, die die Verbindungszeichenfolge für den Dienst enthält, in dem die Leasesammlung enthalten ist. Wenn nicht festgelegt, wird der Wert `connectionStringSetting` verwendet. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird. |
-| **leaseDatabaseName** | (Optional) Der Name der Datenbank, in der die Sammlung zum Speichern von Leases enthalten ist. Wenn nicht festgelegt, wird der Wert der `databaseName`-Einstellung verwendet. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird. |
-| **leaseCollectionName** | (Optional) Der Name der Sammlung, die zum Speichern von Leases verwendet wird. Wenn nicht festgelegt, wird der Wert `leases` verwendet. |
-| **createLeaseCollectionIfNotExists** | (Optional) Bei Festlegung auf `true` wird die Sammlung von Leases automatisch erstellt, wenn sie nicht bereits vorhanden ist. Standardwert: `false`. |
-| **leaseCollectionThroughput** | (Optional) Definiert die Anzahl von Anforderungseinheiten, die zugewiesen werden, wenn die Leasesammlung erstellt wird. Diese Einstellung wird nur verwendet, wenn `createLeaseCollectionIfNotExists` auf `true` festgelegt ist. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird.
+Sehen Sie sich das sprachspezifische Beispiel an:
 
->[!NOTE] 
->Die Verbindungszeichenfolge zur Verbindung mit der Leasesammlung muss über Schreibberechtigungen verfügen.
+* [Vorkompilierter C#-Code](#trigger---c-example)
+* [C#-Skript](#trigger---c-script-example)
+* [JavaScript](#trigger---javascript-example)
 
-Diese Eigenschaften können auf der Registerkarte „Integrieren“ für die Funktion im Azure-Portal oder durch Bearbeitung der `function.json`-Projektdatei festgelegt werden.
+### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
 
-## <a name="using-an-azure-cosmos-db-trigger"></a>Verwenden eines Azure Cosmos DB-Triggers
+Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die von einer bestimmten Datenbank und Sammlung auslöst wird.
 
-Dieser Abschnitt enthält Beispiele zum Verwenden des Azure Cosmos DB-Triggers. Die Beispiele setzen folgende Triggermetadaten voraus:
+```cs
+[FunctionName("DocumentUpdates")]
+public static void Run(
+    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+IReadOnlyList<Document> documents,
+    TraceWriter log)
+{
+        log.Info("Documents modified " + documents.Count);
+        log.Info("First document Id " + documents[0].Id);
+}
+```
+
+### <a name="trigger---c-script"></a>Trigger: C#-Skript
+
+Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
+
+Bindungsdaten in der Datei *function.json*:
 
 ```json
 {
@@ -77,10 +75,9 @@ Dieser Abschnitt enthält Beispiele zum Verwenden des Azure Cosmos DB-Triggers. 
   "createLeaseCollectionIfNotExists": true
 }
 ```
- 
-Ein Beispiel zum Erstellen eines Azure Cosmos DB-Triggers aus einer Funktions-App im Portal finden Sie unter [Erstellen einer durch Azure Cosmos DB ausgelösten Funktion](functions-create-cosmos-db-triggered-function.md). 
 
-### <a name="trigger-sample-in-c"></a>Triggerbeispiel in C# #
+Der C#-Skriptcode sieht wie folgt aus:
+ 
 ```cs 
     #r "Microsoft.Azure.Documents.Client"
     using Microsoft.Azure.Documents;
@@ -93,8 +90,27 @@ Ein Beispiel zum Erstellen eines Azure Cosmos DB-Triggers aus einer Funktions-Ap
     }
 ```
 
+### <a name="trigger---javascript"></a>Trigger: JavaScript
 
-### <a name="trigger-sample-in-javascript"></a>Triggerbeispiel in JavaScript
+Das folgende Beispiel zeigt eine Cosmos DB-Triggerbindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion schreibt Protokollmeldungen, wenn Cosmos DB-Datensätze geändert werden.
+
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+  "type": "cosmosDBTrigger",
+  "name": "documents",
+  "direction": "in",
+  "leaseCollectionName": "leases",
+  "connectionStringSetting": "<connection-app-setting>",
+  "databaseName": "Tasks",
+  "collectionName": "Items",
+  "createLeaseCollectionIfNotExists": true
+}
+```
+
+Der JavaScript-Code sieht wie folgt aus:
+
 ```javascript
     module.exports = function (context, documents) {
         context.log('First document Id modified : ', documents[0].id);
@@ -103,35 +119,97 @@ Ein Beispiel zum Erstellen eines Azure Cosmos DB-Triggers aus einer Funktions-Ap
     }
 ```
 
-<a id="docdbinput"></a>
+## <a name="trigger---attributes"></a>Trigger: Attribute
 
-## <a name="documentdb-api-input-binding"></a>DocumentDB-API-Eingabebindung
-Die DocumentDB-API-Eingabebindung ruft ein Azure Cosmos DB-Dokument ab und übergibt es an den benannten Eingabeparameter der Funktion. Die Dokument-ID kann basierend auf dem Trigger ermittelt werden, der die Funktion aufruft. 
+Verwenden Sie für [vorkompilierte C#](functions-dotnet-class-library.md)-Funktionen das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) definierte Attribut [CosmosDBTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs).
 
-Die DocumentDB-API-Eingabebindung hat in *function.json* die folgenden Eigenschaften:
+Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. Weitere Informationen zu diesen Einstellungen und anderen Eigenschaften, die Sie konfigurieren können, finden Sie unter [Trigger: Konfiguration](#trigger---configuration). Hier ist ein Beispiel für ein `CosmosDBTrigger`-Attribut in einer Methodensignatur:
 
-|Eigenschaft  |Beschreibung  |
-|---------|---------|
-|**name**     | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
-|**type**     | Muss auf `documentdb` festgelegt sein.        |
-|**databaseName** | Die Datenbank mit dem Dokument        |
-|**collectionName**  | Der Name der Sammlung mit dem Dokument |
-|**id**     | Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungsparameter. Weitere Informationen finden Sie unter [Binden an benutzerdefinierte Eingabeeigenschaften in einem Bindungsausdruck](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression). |
-|**sqlQuery**     | Eine SQL-Abfrage in Azure Cosmos DB zum Abrufen mehrerer Dokumente. Die Abfrage unterstützt Bindungen zur Laufzeit wie in folgendem Beispiel: `SELECT * FROM c where c.departmentId = {departmentId}`.        |
-|**Verbindung**     |Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
-|**direction**     | Muss auf `in` festgelegt sein.         |
+```csharp
+[FunctionName("DocumentUpdates")]
+public static void Run(
+    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+IReadOnlyList<Document> documents,
+    TraceWriter log)
+{
+    ...
+}
+```
 
-Sie können nicht die Eigenschaft **id** und die Eigenschaft **sqlQuery** festlegen. Wenn keine von ihnen festgelegt ist, wird die gesamte Sammlung abgerufen.
+Ein vollständiges Beispiel finden Sie unter [Trigger: vorkompiliertes C#-Beispiel](#trigger---c-example).
 
-## <a name="using-a-documentdb-api-input-binding"></a>Verwenden einer DocumentDB-API-Eingabebindung
+## <a name="trigger---configuration"></a>Trigger: Konfiguration
 
-* Wenn in C#- und F#-Funktionen die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten. 
-* In JavaScript-Funktionen erfolgen Aktualisierungen bei Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Siehe das [JavaScript-Beispiel](#injavascript).
+Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `CosmosDBTrigger` festlegen:
 
-<a name="inputsample"></a>
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|---------|---------|----------------------|
+|**type** || Muss auf `cosmosDBTrigger` festgelegt sein. |
+|**direction** || Muss auf `in` festgelegt sein. Dieser Parameter wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
+|**name** || Der im Code der Funktion verwendete Variablenname, der die Liste der Dokumente mit Änderungen darstellt. | 
+|**connectionStringSetting**|**ConnectionStringSetting** | Der Name einer App-Einstellung, die die Verbindungszeichenfolge enthält, die zum Herstellen der Verbindung mit dem überwachten Azure Cosmos DB-Konto verwendet wird. |
+|**databaseName**|**DatabaseName**  | Der Name der Azure Cosmos DB-Datenbank mit der überwachten Sammlung. |
+|**collectionName** |**CollectionName** | Der Name der überwachten Sammlung. |
+| **leaseConnectionStringSetting** | **LeaseConnectionStringSetting** | (Optional) Der Name einer App-Einstellung, die die Verbindungszeichenfolge für den Dienst enthält, in dem die Leasesammlung enthalten ist. Wenn nicht festgelegt, wird der Wert `connectionStringSetting` verwendet. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird. |
+| **leaseDatabaseName** |**LeaseDatabaseName** | (Optional) Der Name der Datenbank, in der die Sammlung zum Speichern von Leases enthalten ist. Wenn nicht festgelegt, wird der Wert der `databaseName`-Einstellung verwendet. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird. |
+| **leaseCollectionName** | **LeaseCollectionName** | (Optional) Der Name der Sammlung, die zum Speichern von Leases verwendet wird. Wenn nicht festgelegt, wird der Wert `leases` verwendet. |
+| **createLeaseCollectionIfNotExists** | **CreateLeaseCollectionIfNotExists** | (Optional) Bei Festlegung auf `true` wird die Sammlung von Leases automatisch erstellt, wenn sie nicht bereits vorhanden ist. Standardwert: `false`. |
+| **leaseCollectionThroughput**| | (Optional) Definiert die Anzahl von Anforderungseinheiten, die zugewiesen werden, wenn die Leasesammlung erstellt wird. Diese Einstellung wird nur verwendet, wenn `createLeaseCollectionIfNotExists` auf `true` festgelegt ist. Dieser Parameter wird automatisch festgelegt, wenn die Bindung im Portal erstellt wird.
+| |**LeaseOptions** | Konfigurieren Sie die Leaseoptionen durch Festlegen von Eigenschaften in einer Instanz der [ChangeFeedHostOptions](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.changefeedprocessor.changefeedhostoptions)-Klasse.
 
-## <a name="input-sample-for-single-document"></a>Eingabebeispiel für einzelnes Dokument
-Angenommen, die folgende DocumentDB-API-Eingabebindung befindet sich im `bindings`-Array von „function.json“:
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+>[!NOTE] 
+>Die Verbindungszeichenfolge für die Leasesammlung muss über Schreibberechtigungen verfügen.
+
+## <a name="input"></a>Eingabe
+
+Die DocumentDB-API-Eingabebindung ruft mindestens ein Azure Cosmos DB-Dokument ab und übergibt es an den Eingabeparameter der Funktion. Die Dokument-ID oder die Abfrageparameter können basierend auf dem Trigger, der die Funktion aufruft, ermittelt werden. 
+
+## <a name="input---example-1"></a>Eingabe: Beispiel 1
+
+Sehen Sie sich das sprachspezifische Beispiel für das Lesen eines einzelnen Dokuments an:
+
+* [C#-Skript](#input---c-script-example)
+* [F#](#input---f-example)
+* [JavaScript](#input---javascript-example)
+
+### <a name="input---c-script-example"></a>Eingabe: C#-Skriptbeispiel
+
+Das folgende Beispiel zeigt eine Cosmos DB-Eingabebindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion liest ein einzelnes Dokument und aktualisiert den Textwert des Dokuments.
+
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+  "name": "inputDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id" : "{queueTrigger}",
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "in"
+}
+```
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
+
+Der C#-Skriptcode sieht wie folgt aus:
+
+```cs
+// Change input document contents using DocumentDB API input binding 
+public static void Run(string myQueueItem, dynamic inputDocument)
+{   
+  inputDocument.text = "This has changed.";
+}
+```
+
+<a name="infsharp"></a>
+
+### <a name="input---f-example"></a>Eingabe: F#-Beispiel
+
+Das folgende Beispiel zeigt eine Cosmos DB-Eingabebindung in einer Datei *function.json* sowie eine [F#-Funktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion liest ein einzelnes Dokument und aktualisiert den Textwert des Dokuments.
+
+Bindungsdaten in der Datei *function.json*:
 
 ```json
 {
@@ -145,25 +223,9 @@ Angenommen, die folgende DocumentDB-API-Eingabebindung befindet sich im `binding
 }
 ```
 
-Sehen Sie sich das sprachspezifische Beispiel an, in dem diese Eingabebindung zum Aktualisieren des Textwerts des Dokuments verwendet wird.
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
 
-* [C#](#incsharp)
-* [F#](#infsharp)
-* [JavaScript](#injavascript)
-
-<a name="incsharp"></a>
-### <a name="input-sample-in-c"></a>Eingabebeispiel in C# #
-
-```cs
-// Change input document contents using DocumentDB API input binding 
-public static void Run(string myQueueItem, dynamic inputDocument)
-{   
-  inputDocument.text = "This has changed.";
-}
-```
-<a name="infsharp"></a>
-
-### <a name="input-sample-in-f"></a>Eingabebeispiel in F# #
+Der F#-Code lautet wie folgt:
 
 ```fsharp
 (* Change input document contents using DocumentDB API input binding *)
@@ -189,9 +251,26 @@ Dieses Beispiel erfordert die Datei `project.json`, die die NuGet-Abhängigkeite
 
 Informationen zum Hinzufügen einer `project.json`-Datei finden Sie unter [Paketverwaltung](functions-reference-fsharp.md#package).
 
-<a name="injavascript"></a>
+### <a name="input---javascript-example"></a>Eingabe: JavaScript-Beispiel
 
-### <a name="input-sample-in-javascript"></a>Eingabebeispiel in JavaScript
+Das folgende Beispiel zeigt eine Cosmos DB-Eingabebindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion liest ein einzelnes Dokument und aktualisiert den Textwert des Dokuments.
+
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+  "name": "inputDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "id" : "{queueTrigger}",
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "in"
+}
+```
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
+
+Der JavaScript-Code sieht wie folgt aus:
 
 ```javascript
 // Change input document contents using DocumentDB API input binding, using context.bindings.inputDocumentOut
@@ -202,11 +281,35 @@ module.exports = function (context) {
 };
 ```
 
-## <a name="input-sample-with-multiple-documents"></a>Eingabebeispiel mit mehreren Dokumenten
+## <a name="input---example-2"></a>Eingabe: Beispiel 2
 
-Angenommen, Sie möchten mehrere von einer SQL-Abfrage angegebene Dokumente mithilfe eines Warteschlangentriggers abrufen, um die Abfrageparameter anzupassen. 
+Sehen Sie sich das sprachspezifische Beispiel für das Lesen mehrerer Dokumente an:
 
-In diesem Beispiel stellt der Warteschlangentrigger den Parameter `departmentId` bereit. Die Warteschlangennachricht `{ "departmentId" : "Finance" }` gibt dann alle Datensätze für die Finanzabteilung zurück. Verwenden Sie in *function.json* Folgendes:
+* [Vorkompilierter C#-Code](#input---c-example-2)
+* [C#-Skript](#input---c-script-example-2)
+* [JavaScript](#input---javascript-example-2)
+
+### <a name="input---c-example-2"></a>Eingabe: C#-Beispiel 2
+
+Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die eine SQL-Abfrage ausführt.
+
+```csharp
+[FunctionName("CosmosDBSample")]
+public static HttpResponseMessage Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get")] HttpRequestMessage req,
+    [DocumentDB("test", "test", ConnectionStringSetting = "CosmosDB", sqlQuery = "SELECT top 2 * FROM c order by c._ts desc")] IEnumerable<object> documents)
+{
+    return req.CreateResponse(HttpStatusCode.OK, documents);
+}
+```
+
+### <a name="input---c-script-example-2"></a>Eingabe: C#-Skriptbeispiel 2
+
+Das folgende Beispiel zeigt eine DocumentDB-Eingabebindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion ruft mehrere von einer SQL-Abfrage angegebene Dokumente mithilfe eines Warteschlangentriggers ab, um die Abfrageparameter anzupassen.
+
+Der Warteschlangentrigger stellt den Parameter `departmentId` bereit. Die Warteschlangennachricht `{ "departmentId" : "Finance" }` gibt dann alle Datensätze für die Finanzabteilung zurück. 
+
+Bindungsdaten in der Datei *function.json*:
 
 ```
 {
@@ -215,12 +318,14 @@ In diesem Beispiel stellt der Warteschlangentrigger den Parameter `departmentId`
     "direction": "in",
     "databaseName": "MyDb",
     "collectionName": "MyCollection",
-    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
     "connection": "CosmosDBConnection"
 }
 ```
 
-### <a name="input-sample-with-multiple-documents-in-c"></a>Eingabebeispiel mit mehreren Dokumenten in C#
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
+
+Der C#-Skriptcode sieht wie folgt aus:
 
 ```csharp
 public static void Run(QueuePayload myQueueItem, IEnumerable<dynamic> documents)
@@ -237,7 +342,29 @@ public class QueuePayload
 }
 ```
 
-### <a name="input-sample-with-multiple-documents-in-javascript"></a>Eingabebeispiel mit mehreren Dokumenten in JavaScript
+### <a name="input---javascript-example-2"></a>Eingabe: JavaScript-Beispiel 2
+
+Das folgende Beispiel zeigt eine DocumentDB-Eingabebindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion ruft mehrere von einer SQL-Abfrage angegebene Dokumente mithilfe eines Warteschlangentriggers ab, um die Abfrageparameter anzupassen.
+
+Der Warteschlangentrigger stellt den Parameter `departmentId` bereit. Die Warteschlangennachricht `{ "departmentId" : "Finance" }` gibt dann alle Datensätze für die Finanzabteilung zurück. 
+
+Bindungsdaten in der Datei *function.json*:
+
+```
+{
+    "name": "documents",
+    "type": "documentdb",
+    "direction": "in",
+    "databaseName": "MyDb",
+    "collectionName": "MyCollection",
+    "sqlQuery": "SELECT * from c where c.departmentId = {departmentId}"
+    "connection": "CosmosDBConnection"
+}
+```
+
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#input---configuration).
+
+Der JavaScript-Code sieht wie folgt aus:
 
 ```javascript
 module.exports = function (context, input) {    
@@ -250,33 +377,87 @@ module.exports = function (context, input) {
 };
 ```
 
-## <a id="docdboutput"></a>DocumentDB-API-Ausgabebindung
-Die DocumentDB-API-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank. Sie hat in *function.json* die folgenden Eigenschaften:
+## <a name="input---attributes"></a>Eingabe: Attribute
 
-|Eigenschaft  |Beschreibung  |
-|---------|---------|
-|**name**     | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
-|**type**     | Muss auf `documentdb` festgelegt sein.        |
-|**databaseName** | Die Datenbank mit der Sammlung, in der das neue Dokument erstellt wird     |
-|**collectionName**  | Der Name der Sammlung, in der das neue Dokument erstellt wird |
-|**createIfNotExists**     | Ein boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Die Standardeinstellung ist *false*. Das liegt daran, dass neue Sammlungen mit reserviertem Durchsatz erstellt werden. Dies wirkt sich auf die Kosten aus. Weitere Informationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).  |
-|**Verbindung**     |Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
-|**direction**     | Muss auf `out` festgelegt sein.         |
+Verwenden Sie für [vorkompilierte C#-Funktionen](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) definierte Attribut [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs).
 
-## <a name="using-a-documentdb-api-output-binding"></a>Verwenden einer DocumentDB-API-Ausgabebindung
-Dieser Abschnitt veranschaulicht die Verwendung Ihrer DocumentDB-API-Ausgabebindung in Ihrem Funktionscode.
+Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. Weitere Informationen zu diesen Einstellungen und anderen Eigenschaften, die Sie konfigurieren können, finden Sie im [folgenden Konfigurationsabschnitt](#input---configuration). 
 
-Standardmäßig wird beim Schreiben in den Ausgabeparameter in Ihrer Funktion ein Dokument in der Datenbank erstellt. Dieses Dokument besitzt eine automatisch generierte GUID als Dokument-ID. Sie können die Dokument-ID des Ausgabedokuments angeben, indem Sie die `id`-Eigenschaft im JSON-Objekt angeben, das an den Ausgabeparameter übergeben wird. 
+## <a name="input---configuration"></a>Eingabe: Konfiguration
 
->[!Note]  
->Wenn Sie die ID eines vorhandenen Dokuments angeben, wird dieses vom neuen Ausgabedokument überschrieben. 
+Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `DocumentDB` festlegen:
 
-Für die Ausgabe mehrerer Dokumente können Sie auch eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|---------|---------|----------------------|
+|**type**     || Muss auf `documentdb` festgelegt sein.        |
+|**direction**     || Muss auf `in` festgelegt sein.         |
+|**name**     || Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**databaseName** |**DatabaseName** |Die Datenbank mit dem Dokument        |
+|**collectionName** |**CollectionName** | Der Name der Sammlung mit dem Dokument |
+|**id**    | **Id** | Die ID des abzurufenden Dokuments. Diese Eigenschaft unterstützt Bindungsparameter. Weitere Informationen finden Sie unter [Binden an benutzerdefinierte Eingabeeigenschaften in einem Bindungsausdruck](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression). Legen Sie nicht die beiden Eigenschaften **id** und **sqlQuery** fest. Wenn Sie keine der beiden festlegen, wird die gesamte Sammlung abgerufen. |
+|**sqlQuery**  |**SqlQuery**  | Eine SQL-Abfrage in Azure Cosmos DB zum Abrufen mehrerer Dokumente. Die Eigenschaft unterstützt Laufzeitbindungen, wie in diesem Beispiel: `SELECT * FROM c where c.departmentId = {departmentId}`. Legen Sie nicht die beiden Eigenschaften **id** und **sqlQuery** fest. Wenn Sie keine der beiden festlegen, wird die gesamte Sammlung abgerufen.|
+|**Verbindung**     |**ConnectionStringSetting**|Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
+||**PartitionKey**|Gibt den Wert des Partitionsschlüssels für die Suche an. Kann den Bindungsparameter enthalten.|
 
-<a name="outputsample"></a>
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-## <a name="documentdb-api-output-binding-sample"></a>Beispiel einer DocumentDB-API-Ausgabebindung
-Angenommen, die folgende DocumentDB-API-Ausgabebindung befindet sich im `bindings`-Array von „function.json“:
+## <a name="input---usage"></a>Eingabe: Verwendung
+
+Wenn in C#- und F#-Funktionen die Funktion erfolgreich beendet wird, werden alle Änderungen am Eingabedokument mithilfe benannter Eingabeparameter automatisch beibehalten. 
+
+In JavaScript-Funktionen erfolgen Aktualisierungen bei Beenden der Funktion nicht automatisch. Verwenden Sie stattdessen `context.bindings.<documentName>In` und `context.bindings.<documentName>Out`, um Aktualisierungen vorzunehmen. Siehe das [JavaScript-Beispiel](#input---javascript-example).
+
+## <a name="output"></a>Ausgabe
+
+Die DocumentDB-API-Ausgabebindung ermöglicht das Schreiben eines neuen Dokuments in eine Azure Cosmos DB-Datenbank. 
+
+## <a name="output---example"></a>Ausgabe: Beispiel
+
+Sehen Sie sich das sprachspezifische Beispiel an:
+
+* [Vorkompilierter C#-Code](#trigger---c-example)
+* [C#-Skript](#trigger---c-script-example)
+* [F#](#trigger---f-example)
+* [JavaScript](#trigger---javascript-example)
+
+### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
+
+Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die einer Datenbank ein Dokument hinzufügt und dazu die Daten aus der Meldung vom Warteschlangenspeicher verwendet.
+
+```cs
+[FunctionName("QueueToDocDB")]        
+public static void Run(
+    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
+    [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+{
+    document = new { Text = myQueueItem, id = Guid.NewGuid() };
+}
+```
+
+### <a name="output---c-script-example"></a>Ausgabe: C#-Skriptbeispiel
+
+Das folgende Beispiel zeigt eine DocumentDB-Ausgabebindung in einer Datei *function.json* sowie eine [C#-Skriptfunktion](functions-reference-csharp.md), die die Bindung verwendet. Die Funktion verwendet eine Warteschlangeneingabebindung für eine Warteschlange, die JSON-Code im folgenden Format empfängt:
+
+```json
+{
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+Die Funktion erstellt Azure Cosmos DB-Dokumente im folgenden Format für die einzelnen Datensätze:
+
+```json
+{
+  "id": "John Henry-123456",
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+Bindungsdaten in der Datei *function.json*:
 
 ```json
 {
@@ -290,36 +471,9 @@ Angenommen, die folgende DocumentDB-API-Ausgabebindung befindet sich im `binding
 }
 ```
 
-Darüber hinaus liegt eine Warteschlangeneingabebindung für eine Warteschlange vor, die JSON-Code im folgenden Format empfängt:
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#output---configuration).
 
-```json
-{
-  "name": "John Henry",
-  "employeeId": "123456",
-  "address": "A town nearby"
-}
-```
-
-Sie möchten nun Azure Cosmos DB-Dokumente im folgenden Format für die einzelnen Datensätze erstellen:
-
-```json
-{
-  "id": "John Henry-123456",
-  "name": "John Henry",
-  "employeeId": "123456",
-  "address": "A town nearby"
-}
-```
-
-Sehen Sie sich das sprachspezifische Beispiel an, in dem diese Ausgabebindung zum Hinzufügen von Dokumenten zur Datenbank verwendet wird.
-
-* [C#](#outcsharp)
-* [F#](#outfsharp)
-* [JavaScript](#outjavascript)
-
-<a name="outcsharp"></a>
-
-### <a name="output-sample-in-c"></a>Ausgabebeispiel in C# #
+Der C#-Skriptcode sieht wie folgt aus:
 
 ```cs
 #r "Newtonsoft.Json"
@@ -343,9 +497,47 @@ public static void Run(string myQueueItem, out object employeeDocument, TraceWri
 }
 ```
 
-<a name="outfsharp"></a>
+Für das Erstellen mehrerer Dokumente können Sie eine Bindung mit `ICollector<T>` oder `IAsyncCollector<T>` erstellen, wobei `T` einer der unterstützten Typen ist.
 
-### <a name="output-sample-in-f"></a>Ausgabebeispiel in F# #
+### <a name="output---f-example"></a>Ausgabe: F#-Beispiel
+
+Das folgende Beispiel zeigt eine DocumentDB-Ausgabebindung in einer Datei *function.json* sowie eine [F#-Funktion](functions-reference-fsharp.md), die die Bindung verwendet. Die Funktion verwendet eine Warteschlangeneingabebindung für eine Warteschlange, die JSON-Code im folgenden Format empfängt:
+
+```json
+{
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+Die Funktion erstellt Azure Cosmos DB-Dokumente im folgenden Format für die einzelnen Datensätze:
+
+```json
+{
+  "id": "John Henry-123456",
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+  "name": "employeeDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": true,
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "out"
+}
+```
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#output---configuration).
+
+Der F#-Code lautet wie folgt:
 
 ```fsharp
 open FSharp.Interop.Dynamic
@@ -385,9 +577,46 @@ Dieses Beispiel erfordert die Datei `project.json`, die die NuGet-Abhängigkeite
 
 Informationen zum Hinzufügen einer `project.json`-Datei finden Sie unter [Paketverwaltung](functions-reference-fsharp.md#package).
 
-<a name="outjavascript"></a>
+### <a name="output---javascript-example"></a>Ausgabe: JavaScript-Beispiel
 
-### <a name="output-sample-in-javascript"></a>Ausgabebeispiel in JavaScript
+Das folgende Beispiel zeigt eine DocumentDB-Ausgabebindung in einer Datei *function.json* sowie eine [JavaScript-Funktion](functions-reference-node.md), die die Bindung verwendet. Die Funktion verwendet eine Warteschlangeneingabebindung für eine Warteschlange, die JSON-Code im folgenden Format empfängt:
+
+```json
+{
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+Die Funktion erstellt Azure Cosmos DB-Dokumente im folgenden Format für die einzelnen Datensätze:
+
+```json
+{
+  "id": "John Henry-123456",
+  "name": "John Henry",
+  "employeeId": "123456",
+  "address": "A town nearby"
+}
+```
+
+Bindungsdaten in der Datei *function.json*:
+
+```json
+{
+  "name": "employeeDocument",
+  "type": "documentDB",
+  "databaseName": "MyDatabase",
+  "collectionName": "MyCollection",
+  "createIfNotExists": true,
+  "connection": "MyAccount_COSMOSDB",     
+  "direction": "out"
+}
+```
+
+Weitere Informationen zu diesen Eigenschaften finden Sie im Abschnitt [Konfiguration](#output---configuration).
+
+Der JavaScript-Code sieht wie folgt aus:
 
 ```javascript
 module.exports = function (context) {
@@ -402,3 +631,57 @@ module.exports = function (context) {
   context.done();
 };
 ```
+
+## <a name="output---attributes"></a>Ausgabe: Attribute
+
+Verwenden Sie für [vorkompilierte C#-Funktionen](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.DocumentDB](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB) definierte Attribut [DocumentDB](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs).
+
+Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. Weitere Informationen zu diesen Einstellungen und anderen Eigenschaften, die Sie konfigurieren können, finden Sie unter [Ausgabe: Konfiguration](#output---configuration). Hier ist ein Beispiel für ein `DocumentDB`-Attribut in einer Methodensignatur:
+
+```csharp
+[FunctionName("QueueToDocDB")]        
+public static void Run(
+    [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem,
+    [DocumentDB("ToDoList", "Items", Id = "id", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
+{
+    ...
+}
+```
+
+Ein vollständiges Beispiel finden Sie unter [Ausgabe: vorkompiliertes C#-Beispiel](#output---c-example).
+
+## <a name="output---configuration"></a>Ausgabe: Konfiguration
+
+Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `DocumentDB` festlegen:
+
+|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|---------|---------|----------------------|
+|**type**     || Muss auf `documentdb` festgelegt sein.        |
+|**direction**     || Muss auf `out` festgelegt sein.         |
+|**name**     || Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
+|**databaseName** | **DatabaseName**|Die Datenbank mit der Sammlung, in der das neue Dokument erstellt wird     |
+|**collectionName** |**CollectionName**  | Der Name der Sammlung, in der das neue Dokument erstellt wird |
+|**createIfNotExists**  |**CreateIfNotExists**    | Ein boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Der Standardwert ist *FALSE*, da neue Sammlungen mit reserviertem Durchsatz erstellt werden. Dies wirkt sich auf die Kosten aus. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/documentdb/).  |
+||**PartitionKey** |Wenn `CreateIfNotExists` den Wert „TRUE“ hat, wird der Partitionsschlüsselpfad für die erstellte Sammlung definiert.|
+||**CollectionThroughput**| Wenn `CreateIfNotExists` den Wert „TRUE“ hat, wird der [Durchsatz](../cosmos-db/set-throughput.md) für die erstellte Sammlung definiert.|
+|**Verbindung**    |**ConnectionStringSetting** |Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.        |
+
+[!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="output---usage"></a>Ausgabe: Verwendung
+
+Standardmäßig wird beim Schreiben in den Ausgabeparameter in Ihrer Funktion ein Dokument in der Datenbank erstellt. Dieses Dokument besitzt eine automatisch generierte GUID als Dokument-ID. Sie können die Dokument-ID des Ausgabedokuments angeben, indem Sie die `id`-Eigenschaft im JSON-Objekt angeben, das an den Ausgabeparameter übergeben wird. 
+
+> [!Note]  
+> Wenn Sie die ID eines vorhandenen Dokuments angeben, wird dieses vom neuen Ausgabedokument überschrieben. 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+> [!div class="nextstepaction"]
+> [Lesen Sie einen Schnellstart, der einen Cosmos DB-Trigger Timer verwendet.](functions-create-cosmos-db-triggered-function.md)
+
+> [!div class="nextstepaction"]
+> [Informieren Sie sich über serverlose Datenbankberechnungen mit Cosmos DB.](..\cosmos-db\serverless-computing-database.md)
+
+> [!div class="nextstepaction"]
+> [Konzepte für Azure Functions-Trigger und -Bindungen](functions-triggers-bindings.md)

@@ -1,5 +1,5 @@
 ---
-title: Arbeiten mit Triggern und Bindungen in Azure Functions | Microsoft-Dokumentation
+title: Verwenden von Triggern und Bindungen in Azure Functions
 description: "Erfahren Sie, wie Sie Trigger und Bindungen in Azure Functions verwenden, um die Verbindung Ihrer Codeausführung mit Onlineereignissen und cloudbasierten Diensten herzustellen."
 services: functions
 documentationcenter: na
@@ -8,26 +8,25 @@ manager: cfowler
 editor: 
 tags: 
 keywords: Azure Functions, Functions, Ereignisverarbeitung, Webhooks, dynamisches Compute, serverlose Architektur
-ms.assetid: cbc7460a-4d8a-423f-a63e-1cd33fef7252
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/30/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 7d22a6749216486de6132a6d39e2dcf683d0e678
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e3413c9e1055ca9198dae4a467bcf47372ad4ecb
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
 Azure Functions ermöglicht Ihnen das Schreiben von Code, in dem über *Trigger* und *Bindungen* auf Ereignisse in Azure und anderen Diensten reagiert wird. Dieser Artikel ist eine konzeptionelle Übersicht über Trigger und Bindungen für alle unterstützten Programmiersprachen. Hier sind die Funktionen beschrieben, die für alle Bindungen identisch sind.
 
 ## <a name="overview"></a>Übersicht
 
-Trigger und Bindungen sind eine deklarative Möglichkeit, zu definieren, wie eine Funktion aufgerufen wird und mit welchen Daten sie arbeitet. Ein *Trigger* definiert, wie eine Funktion aufgerufen wird. Eine Funktion darf nur einen Trigger haben. Trigger haben zugeordnete Daten, in üblicherweise mit der Nutzlast identisch sind, von der die Funktion ausgelöst wurde. 
+Trigger und Bindungen sind eine deklarative Möglichkeit, zu definieren, wie eine Funktion aufgerufen wird und mit welchen Daten sie arbeitet. Ein *Trigger* definiert, wie eine Funktion aufgerufen wird. Eine Funktion darf nur einen Trigger haben. Trigger haben zugeordnete Daten, in üblicherweise mit der Nutzlast identisch sind, von der die Funktion ausgelöst wurde.
 
 Eingabe- und Ausgabe-*Bindungen* bieten eine deklarative Möglichkeit, aus Code heraus Verbindungen mit Daten herzustellen. Ähnlich zu Triggern geben Sie Verbindungszeichenfolgen und andere Eigenschaften in der Konfiguration Ihrer jeweiligen Funktion an. Bindungen sind optional, und eine Funktion kann mehrere Eingabe- und Ausgabebindungen haben. 
 
@@ -35,11 +34,13 @@ Durch Verwenden von Triggern und Bindungen können Sie Code schreiben, der allge
 
 Sie können Trigger und Bindungen im Azure Functions-Portal auf der Registerkarte **Integrieren** konfigurieren. Im Hintergrund ändert die Benutzeroberfläche eine Datei namens *function.json* im Verzeichnis für Funktionen. Sie können diese Datei bearbeiten, indem Sie zu **Erweiterter Editor** wechseln.
 
-In der folgenden Tabelle sind die Trigger und die Bindungen aufgeführt, die mit Azure Functions unterstützt werden. 
+## <a name="supported-bindings"></a>Unterstützte Bindungen
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
 
-### <a name="example-queue-trigger-and-table-output-binding"></a>Beispiel: Triggerwarteschlange und Tabellenausgabebindung
+Informationen darüber, welche Bindungen sich in der Vorschauversion befinden oder für die Produktion zugelassen sind, finden Sie unter [Unterstützte Sprachen](supported-languages.md).
+
+## <a name="example-queue-trigger-and-table-output-binding"></a>Beispiel: Triggerwarteschlange und Tabellenausgabebindung
 
 Angenommen, Sie möchten immer dann eine neue Zeile in Azure Table Storage schreiben, wenn in Azure Queue Storage eine neue Nachricht eingetroffen ist. Dieses Szenario kann mit einem Azure-Warteschlangentrigger und einer Azure Table Storage-Ausgabebindung implementiert werden. 
 
@@ -126,9 +127,9 @@ Wenn Sie den Inhalt von *function.json* im Azure-Portal anzeigen und bearbeiten 
 
 Weitere Codebeispiele sowie Informationen zum Einbeziehen von Azure Storage finden Sie unter [Trigger und Bindungen für Azure Storage in Azure Functions](functions-bindings-storage.md).
 
-### <a name="binding-direction"></a>Bindungsrichtung
+## <a name="binding-direction"></a>Bindungsrichtung
 
-Alle Trigger und Bindungen haben eine Eigenschaft für die Richtung (`direction`-Eigenschaft):
+Alle Trigger und Bindungen enthalten eine `direction`-Eigenschaft in der Datei *function.json*:
 
 - Für Trigger ist die Richtung immer gleich `in`.
 - Für Eingabe- und Ausgabebindungen werden `in` und `out` verwendet.
@@ -243,7 +244,7 @@ Beispielsweise unterstützt ein Azure Queue Storage-Trigger die folgenden Eigens
 
 Details der Metadateneigenschaften für jeden Trigger sind im entsprechenden Referenzthema beschrieben. Dokumentation ist auch im Portal auf der Registerkarte **Integrieren** im Abschnitt **Dokumentation** verfügbar, der sich unter dem Bereich für Bindungskonfigurationen befindet.  
 
-Da Blobtrigger einige Verzögerungen haben, können Sie beispielsweise einen Warteschlangentrigger verwenden, um Ihre Funktion auszuführen (siehe [Blob Storage-Trigger](functions-bindings-storage-blob.md#blob-storage-trigger)). Die Warteschlangennachricht würde den Namen der Blobdatei enthalten, für die ausgelöst werden soll. Durch Verwenden der `queueTrigger`-Metadateneigenschaft können Sie dieses Verhalten vollständig in Ihrer Konfiguration statt in Ihrem Code angeben.
+Da Blobtrigger einige Verzögerungen haben, können Sie beispielsweise einen Warteschlangentrigger verwenden, um Ihre Funktion auszuführen (siehe [Blob Storage-Trigger](functions-bindings-storage-blob.md#trigger)). Die Warteschlangennachricht würde den Namen der Blobdatei enthalten, für die ausgelöst werden soll. Durch Verwenden der `queueTrigger`-Metadateneigenschaft können Sie dieses Verhalten vollständig in Ihrer Konfiguration statt in Ihrem Code angeben.
 
 ```json
   "bindings": [

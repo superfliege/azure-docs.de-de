@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: eac9c3c2b7fde4ac225e17cc3b98ca5ee926c3b3
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 5b0a7d423bc0d8d9f9f7cad56838bd006e944050
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -277,7 +277,7 @@ Für Azure Resource Manager ist es erforderlich, dass für alle Ressourcengruppe
 
 Der aktuelle Überwachungsstatus jedes Endpunkts sowie das Gesamtprofil werden im Azure-Portal angezeigt. Diese Informationen sind auch über die [REST-API](https://msdn.microsoft.com/library/azure/mt163667.aspx) von Traffic Manager, [PowerShell-Cmdlets](https://msdn.microsoft.com/library/mt125941.aspx) und die [plattformübergreifende Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) verfügbar.
 
-Azure stellt keine alten Informationen über vergangene Endpunktintegrität bzw. die Möglichkeit zum Auslösen von Alarmen bei Änderungen der Endpunktintegrität bereit.
+Sie können auch mit Azure Monitor die Integrität Ihrer Endpunkte nachverfolgen und eine visuelle Darstellung anzeigen. Weitere Informationen zum Verwenden von Azure Monitor finden Sie in der [Dokumentation zur Azure-Überwachung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
 ### <a name="can-i-monitor-https-endpoints"></a>Kann ich HTTPS-Endpunkte überwachen?
 
@@ -288,6 +288,10 @@ Traffic Manager kann keine Zertifikatüberprüfung bereitstellen. Dazu zählt Fo
 * Serverseitige Zertifikate werden nicht überprüft.
 * Serverseitige SNI-Zertifikate werden nicht unterstützt.
 * Clientzertifikate werden nicht unterstützt.
+
+### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Ich habe einen Clouddienst oder einen Webanwendungs-Endpunkt in meinem Traffic Manager-Profil angehalten, aber ich erhalte keinen Datenverkehr, auch nicht nach einem Neustart. Wie kann ich dieses Problem beheben?
+
+Wenn ein Azure-Clouddienst oder Webanwendungs-Endpunkt beendet wird, überprüft Traffic Manager nicht mehr die Integrität, und die Integritätsprüfungen werden erst wieder aufgenommen, wenn erkannt wird, dass der Endpunkt neu gestartet wurde. Um diese Verzögerung zu vermeiden, deaktivieren Sie diesen Endpunkt im Traffic Manager-Profil, und aktivieren Sie ihn erneut, nachdem Sie den Endpunkt neu gestartet haben.   
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Kann ich Traffic Manager auch dann verwenden, wenn meine Anwendung HTTP oder HTTPS nicht unterstützt?
 

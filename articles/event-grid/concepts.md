@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: babanisa
-ms.openlocfilehash: 5b69478bf00284594b984fde452f6bed4e73859b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ccbd861c985e54a3808c0d4e8ea6169b6a61f134
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="concepts-in-azure-event-grid"></a>Begriffe in Azure Event Grid
 
@@ -20,7 +20,7 @@ Zu den zentralen Begriffen in Azure Event Grid zählen Folgende:
 
 ## <a name="events"></a>Ereignisse
 
-Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt.  Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner.  Jedes Ereignis enthält auch spezielle Informationen, die nur für das jeweilige Ereignis relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von „lastTimeModified“. Alternativ enthält ein Ereignis zum Neustart eines virtuellen Computers den Namen des virtuellen Computers und den Grund für den Neustart. Jedes Ereignis ist auf 64 KB Daten begrenzt.
+Ein Ereignis ist die kleinste Informationsmenge, die einen Vorgang im System umfassend beschreibt.  Jedes Ereignis enthält allgemeine Informationen wie Quelle des Ereignisses, Zeitpunkt, an dem das Ereignis aufgetreten ist, und den eindeutigen Bezeichner.  Jedes Ereignis enthält auch spezielle Informationen, die nur für den jeweiligen Ereignistyp relevant sind. Beispielsweise enthält ein Ereignis zu einer neuen Datei, die in Azure Storage erstellt wird, Details über die Datei, z.B. den Wert von `lastTimeModified`. Alternativ enthält ein Ereignis zum Neustart eines virtuellen Computers den Namen des virtuellen Computers und den Grund für den Neustart. Jedes Ereignis ist auf 64 KB Daten begrenzt.
 
 ## <a name="event-sourcespublishers"></a>Ereignisquellen/-herausgeber
 

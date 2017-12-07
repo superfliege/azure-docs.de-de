@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: ce24e445177b7e2e499309f016478030efa6bfe8
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 8d618e00ed274f5d5705346a4ffd8281769de4e3
+ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-documentation"></a>Azure Cosmos DB: DocumentDB-API-Dokumentation
 
@@ -36,7 +36,7 @@ Machen Sie sich zunächst mit den hier angegebenen Themen und Ressourcen vertrau
 
 ## <a name="quickstarts"></a>Schnellstarts
 
-Anhand der Schnellstartthemen können Sie besonders schnell eine funktionierende Anwendung mit Azure Cosmos DB erstellen. In jeder Schnellstartanleitung erfahren Sie, wie Sie mithilfe des benutzeroberflächenbasierten Azure-Portals und Ihrer bevorzugten Programmiersprache Datenbanklösungen mit Azure Cosmos DB erstellen. Für jede Schnellstartanleitung sind klonbare Web-Apps im GitHub-Bereich verfügbar. 
+Anhand der Schnellstartthemen können Sie besonders schnell eine funktionierende Anwendung mit Azure Cosmos DB erstellen. In jeder Schnellstartanleitung erfahren Sie, wie Sie mithilfe des benutzeroberflächenbasierten Azure-Portals und Ihrer bevorzugten Programmiersprache Datenbanklösungen mit Azure Cosmos DB erstellen. Für jede Schnellstartanleitung sind klonbare Web-Apps in GitHub verfügbar. 
 
 - [Azure Cosmos DB: Erstellen einer Web-App mit einer DocumentDB-API mit .NET und dem Azure-Portal](create-documentdb-dotnet.md)
 - [Azure Cosmos DB: Erstellen einer Dokumentdatenbank mit Java und dem Azure-Portal](create-documentdb-java.md)
@@ -44,7 +44,7 @@ Anhand der Schnellstartthemen können Sie besonders schnell eine funktionierende
 - [Azure Cosmos DB: Erstellen einer Web-App von DocumentDB-API mit Python und dem Azure-Portal](create-documentdb-python.md)
 - [Azure Cosmos DB: Erstellen einer Web-App mit .NET, Xamarin und Authentifizierung mit Facebook](create-documentdb-xamarin-dotnet.md)
 
-## <a name="tutorials"></a>Tutorials
+## <a name="tutorials"></a>Lernprogramme
 
 Diese Tutorials gehen noch eine Ebene tiefer als die Schnellstartanleitungen. In den Tutorials erstellen Sie Apps von Grund auf neu, kopieren Code und fügen ihn in die App ein. Darüber hinaus erfahren Sie, wie Sie Daten importieren, Daten abfragen und Ihre Datenbanken global verteilen.
 

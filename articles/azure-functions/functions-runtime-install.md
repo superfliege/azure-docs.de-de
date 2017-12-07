@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
-ms.openlocfilehash: 1e4188313a87d07f396e5f8edc8969dd5da2c436
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b6078ba7b553773294ebbf11949f7d3b53f46f0c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="install-the-azure-functions-runtime-preview"></a>Installieren von Azure Functions Runtime Preview
 
 Wenn Sie Azure Functions Runtime Preview installieren möchten, müssen Sie diese Schritte ausführen:
 
 1. Stellen Sie sicher, dass Ihr Computer die Mindestanforderungen erfüllt.
-1. Laden Sie das [Installationsprogramm für Azure Functions Runtime Preview](https://aka.ms/azafr) herunter. 
-1. Installieren Sie Azure Functions Runtime Preview.
-1. Schließen Sie die Konfiguration von Azure Functions Runtime Preview ab.
+1. Laden Sie das [Installationsprogramm für Azure Functions Runtime Preview](https://aka.ms/azafr) herunter.
+1. Installieren Sie die Vorschauversion von Azure Functions Runtime.
+1. Schließen Sie die Konfiguration der Vorschauversion von Azure Functions Runtime ab.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Bevor Sie Azure Functions Runtime Preview installieren, benötigen Sie Folgendes
 
 ## <a name="install-the-azure-functions-runtime-preview"></a>Installieren von Azure Functions Runtime Preview
 
-Das Installationsprogramm für Azure Functions Runtime Preview führt Sie durch die Installation der Verwaltungs- und Workerrollen von Azure Functions Runtime Preview.  Es ist möglich, die Verwaltungs- und Workerrolle auf einem Computer zu installieren.  Wenn Sie allerdings weitere Funktionen hinzufügen, müssen Sie weitere Workerrollen auf zusätzlichen Computern bereitstellen, um die Funktionen auf mehrere Worker skalieren zu können.
+Das Installationsprogramm für die Vorschauversion von Azure Functions Runtime führt Sie durch die Installation der Verwaltungs- und Workerrollen der Vorschauversion von Azure Functions Runtime.  Es ist möglich, die Verwaltungs- und Workerrolle auf einem Computer zu installieren.  Wenn Sie allerdings weitere Funktionen hinzufügen, müssen Sie weitere Workerrollen auf zusätzlichen Computern bereitstellen, um die Funktionen auf mehrere Worker skalieren zu können.
 
 ## <a name="install-the-management-and-worker-role-on-the-same-machine"></a>Installieren der Verwaltungs- und Workerrolle auf einem Computer
 
@@ -46,36 +46,37 @@ Das Installationsprogramm für Azure Functions Runtime Preview führt Sie durch 
 
     ![Installationsprogramm für Azure Functions Runtime Preview][1]
 
-1. Klicken Sie auf **Weiter**, um auf die nächste Seite des Installationsprogramms zu gelangen.
+1. Klicken Sie auf **Weiter**.
+
 1. Nachdem Sie die **Lizenzbedingungen** gelesen haben, **aktivieren Sie das Kontrollkästchen** zum Akzeptieren der Lizenzbedingungen, und klicken Sie auf **Weiter**, um fortzufahren.
 1. Wählen Sie jetzt die Rollen aus, die Sie auf diesem Computer installieren möchten: **Functions-Verwaltungsrolle** und/oder **Functions-Workerrolle**. Klicken Sie dann auf **Weiter**.
 
     ![Installationsprogramm für Azure Functions Runtime Preview – Rollenauswahl][3]
 
     > [!NOTE]
-    > Sie können die **Functions-Workerrolle** auf vielen anderen Computern installieren. Befolgen Sie dazu diese Anweisungen, und wählen Sie nur **Functions-Workerrolle** im Installationsprogramm aus.
+    > Sie können die **Functions-Workerrolle** auf vielen anderen Computern installieren. Befolgen Sie dazu diese Anweisungen, und wählen Sie nur **Functions-Workerrolle**  im Installationsprogramm aus.
 
-1. Klicken Sie auf **Weiter**, damit das **Installationsprogramm für Azure Functions Runtime** die Installation auf Ihrem Computer durchführt.
-1. Nach Abschluss startet das Installationsprogramm das **Konfigurationstool für Azure Functions Runtime**.
+1. Klicken Sie auf **Weiter**, damit der **Setup-Assistent für Azure Functions Runtime** mit der Installation auf dem Computer beginnt.
+1. Nach Abschluss startet der Setup-Assistent das Konfigurationstool für **Azure Functions Runtime**.
 
     ![Abschluss des Installationsprogramms für Azure Functions Runtime Preview][5]
 
     > [!NOTE]
-    > Bei einer Installation unter **Windows 10** und ohne vorherige Aktivierung des Features **Container** fordert das Installationsprogramm für **Azure Functions Runtime** Sie auf, den Computer zum Abschließen der Installation neu starten.
+    > Bei einer Installation unter **Windows 10** und ohne vorherige Aktivierung des Features **Container** fordert das Setupprogramm für **Azure Functions Runtime** Sie auf, den Computer zum Abschließen der Installation neu starten.
 
 ## <a name="configure-the-azure-functions-runtime"></a>Konfigurieren von Azure Functions Runtime
 
 Zum Abschließen der Azure Functions Runtime-Installation müssen Sie die Konfiguration abschließen.
 
-1. Das **Konfigurationstool für Azure Functions Runtime** zeigt an, welche Rollen auf dem Computer installiert sind.
+1. Das Konfigurationstool für **Azure Functions Runtime** zeigt an, welche Rollen auf dem Computer installiert sind.
 
     ![Konfigurationstool für Azure Functions Runtime Preview][6]
 
-1. Klicken Sie auf die Registerkarte **Datenbank**, geben Sie die **Verbindungsdetails für die SQL Server-Instanz** ein, und klicken Sie auf **Übernehmen**.  Dies ist erforderlich, damit Azure Functions Runtime eine Datenbank zur Unterstützung der Runtime erstellt.
+1. Klicken Sie auf die Registerkarte **Datenbank**, geben Sie die Verbindungsdetails für die SQL Server-Instanz ein, und klicken Sie auf **Übernehmen**.  Dies ist erforderlich, damit Azure Functions Runtime eine Datenbank zur Unterstützung der Runtime erstellt.
     
     ![Datenbankkonfiguration für Azure Functions Runtime Preview][7]
 
-1. Klicken Sie auf die Registerkarte **Anmeldeinformationen**.  Auf diesem Bildschirm müssen Sie zwei neue Anmeldeinformationen für die Verwendung mit einer Dateifreigabe erstellen, die alle Ihre Azure Functions-Instanzen hostet.  Geben Sie Kombinationen aus **Benutzername und Kennwort** für den **Besitzer der Dateifreigabe** und für den **Benutzer der Dateifreigabe** an, und klicken Sie auf **Übernehmen**.
+1. Klicken Sie auf die Registerkarte **Anmeldeinformationen**.  Auf diesem Bildschirm müssen Sie zwei neue Anmeldeinformationen für die Verwendung mit einer Dateifreigabe erstellen, die alle Ihre Azure Functions-Instanzen hostet.  Geben Sie Kombinationen aus **Benutzername** und **Kennwort** für den **Besitzer der Dateifreigabe** und für den **Benutzer der Dateifreigabe** an, und klicken Sie auf **Übernehmen**.
 
     ![Anmeldeinformationen für Azure Functions Runtime Preview][8]
 
@@ -83,11 +84,11 @@ Zum Abschließen der Azure Functions Runtime-Installation müssen Sie die Konfig
     
     ![Dateifreigabe für Azure Functions Runtime Preview][9]
 
-1. Klicken Sie auf die Registerkarte **IIS**.  Diese Registerkarte zeigt die Details der Websites in IIS an, die durch die Azure Functions Runtime-Installation erstellt werden.  Klicken Sie zum Abschließen auf **Übernehmen**.
+1. Klicken Sie auf die Registerkarte **IIS**.  Diese Registerkarte zeigt die Details der Websites in IIS an, die durch das Azure Functions Runtime-Konfigurationstool erstellt werden.  Klicken Sie zum Abschließen auf **Übernehmen**.
 
     ![IIS für Azure Functions Runtime Preview][10]
 
-1. Klicken Sie auf die Registerkarte **Dienste**.  Diese Registerkarte zeigt den Status der Dienste in Ihrer Azure Functions Runtime-Installation an.  Wenn nach der Erstkonfiguration der **Hostaktivierungsdienst für Azure Functions** nicht ausgeführt wird, klicken Sie auf **Dienst starten**.
+1. Klicken Sie auf die Registerkarte **Dienste**.  Diese Registerkarte zeigt den Status der Dienste im Azure Functions Runtime-Konfigurationstool an.  Wenn nach der Erstkonfiguration der **Hostaktivierungsdienst für Azure Functions** nicht ausgeführt wird, klicken Sie auf **Dienst starten**.
 
     ![Abgeschlossene Konfiguration für Azure Functions Runtime Preview][11]
 

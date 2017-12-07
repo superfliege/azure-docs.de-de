@@ -13,46 +13,37 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/05/2017
+ms.date: 07/07/2017
 ms.author: carlrab
-ms.openlocfilehash: 6eb026b5f478769f680e3899a7c743546c2c9d88
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1d2a22500c322a63b134e29e5f7509df271eafb9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>Abfragen einer Azure SQL-Datenbank mithilfe von .NET Core (C#)
 
-In diesem Schnellstarttutorial erfahren Sie, wie Sie unter Verwendung von [.NET Core](https://www.microsoft.com/net/) unter Windows/Linux/macOS ein C#-Programm erstellen, um eine Verbindung mit einer Azure SQL-Datenbank herzustellen und mithilfe von Transact-SQL-Anweisungen Daten abzufragen.
+In diesem Schnellstarttutorial erfahren Sie, wie Sie unter Verwendung von [.NET Core](https://www.microsoft.com/net/) unter Windows/Linux/macOS ein C#-Programm erstellen, das eine Verbindung mit einer Azure SQL-Datenbank herstellt und mithilfe von Transact-SQL-Anweisungen Daten abfragt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Schnellstarttutorial benötigen Sie Folgendes:
 
-- Eine Azure SQL-Datenbank. In dieser Schnellstartanleitung werden die Ressourcen aus einer der folgenden Schnellstartanleitungen verwendet: 
+[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
-   - [Erstellen einer Datenbank – Portal](sql-database-get-started-portal.md)
-   - [Erstellen einer Datenbank – CLI](sql-database-get-started-cli.md)
-   - [Erstellen einer Datenbank – PowerShell](sql-database-get-started-powershell.md)
+- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden
 
-- Eine [Firewallregel auf Serverebene](sql-database-get-started-portal.md#create-a-server-level-firewall-rule) für die öffentliche IP-Adresse des Computers, den Sie für dieses Schnellstarttutorial verwenden.
 - [.NET Core für Ihr Betriebssystem](https://www.microsoft.com/net/core) muss installiert sein. 
 
 ## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
 
-Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank erforderlich sind. In den weiteren Verfahren benötigen Sie den vollqualifizierten Servernamen, den Datenbanknamen und die Anmeldeinformationen.
+[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
-2. Wählen Sie im Menü auf der linken Seite die Option **SQL-Datenbanken**, und klicken Sie auf der Seite **SQL-Datenbanken** auf Ihre Datenbank. 
-3. Überprüfen Sie auf der Seite **Übersicht** für Ihre Datenbank den vollqualifizierten Servernamen wie in der folgenden Abbildung dargestellt. Sie können auf den Servernamen zeigen, um die Option **Klicken Sie zum Kopieren** anzuzeigen. 
+#### <a name="for-adonet"></a>Für ADO.NET
 
-   ![Servername](./media/sql-database-connect-query-dotnet/server-name.png) 
+1. Fahren Sie fort, indem Sie auf **Datenbank-Verbindungszeichenfolgen anzeigen** klicken.
 
-4. Falls Sie die Anmeldeinformationen für Ihren Azure SQL-Datenbankserver vergessen, können Sie zur Seite des SQL-Datenbankservers navigieren, um den Serveradministratornamen anzuzeigen. Das Kennwort kann bei Bedarf zurückgesetzt werden.
-
-5. Klicken Sie auf **Datenbankverbindungszeichenfolgen anzeigen**.
-
-6. Überprüfen Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
+2. Überprüfen Sie die vollständige **ADO.NET**-Verbindungszeichenfolge.
 
     ![ADO.NET-Verbindungszeichenfolge](./media/sql-database-connect-query-dotnet/adonet-connection-string.png)
 

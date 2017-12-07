@@ -15,11 +15,11 @@ ms.date: 06/26/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 6a0f8cb76684a6efcc5e2d4be05493f18d5d4c76
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b73b5e47e3e14742e5094b8b0e979de7835cb9c7
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Vorgehensweise zum Erzwingen einer Überprüfung in zwei Schritten für einen Benutzer oder eine Gruppe
 
@@ -40,11 +40,11 @@ Bei beiden Optionen werden Benutzer aufgefordert, sich für Azure Multi-Factor A
 
 Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Zustände aufweisen:
 
-| Status | Beschreibung | Nicht-Browser-Apps betroffen |
-|:---:|:---:|:---:|
-| Deaktiviert |Der Standardstatus für einen neuen Benutzer, der nicht für Azure Multi-Factor Authentication (MFA) registriert ist. |Nein |
-| Aktiviert |Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. |Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. |
-| Erzwungen |Der Benutzer wurde registriert und hat den Registrierungsprozess für Azure MFA abgeschlossen. |Ja.  Für Apps sind App-Kennwörter erforderlich. |
+| Status | Beschreibung | Nicht-Browser-Apps betroffen | Browser-Apps und moderne Authentifizierung betroffen |
+|:---:|:---:|:---:|:--:|
+| Deaktiviert |Der Standardstatus für einen neuen Benutzer, der nicht für Azure Multi-Factor Authentication (MFA) registriert ist. |Nein |Nein |
+| Aktiviert |Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. |Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem das Aktualisierungstoken für die Sitzung abläuft, ist eine MFA-Registrierung erforderlich.|
+| Erzwungen |Der Benutzer wurde registriert und hat den Registrierungsprozess für Azure MFA abgeschlossen. |Ja.  Für Apps sind App-Kennwörter erforderlich. |Ja. MFA bei der Anmeldung erforderlich. |
 
 Der Status eines Benutzers gibt an, ob ein Administrator den Benutzer für Azure MFA registriert hat und ob der Registrierungsprozess abgeschlossen ist.
 

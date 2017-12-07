@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/21/2017
 ms.author: erikje
-ms.openlocfilehash: 977630741b8424c4c6bd5f5d492e33b9981b9cb5
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 6ce8f86592ece59e338578be86c2cb673c35dbc1
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 11/27/2017
 ---
-# <a name="register-azure-stack-with-your-azure-subscription"></a>Registrieren von Azure Stack in Ihrem Azure-Abonnement
+# <a name="register-azure-stack-with-your-azure-subscription"></a>Registrieren Sie Azure Stack in Ihrem Azure-Abonnement.
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
@@ -42,22 +42,6 @@ Vor der Registrierung von Azure Stack in Azure müssen Sie folgende Bedingungen 
 Wenn Ihr Azure-Abonnement diese Anforderungen nicht erfüllt, können Sie [hier kostenlos ein neues Azure-Konto erstellen](https://azure.microsoft.com/en-us/free/?b=17.06). Durch das Registrieren von Azure Stack fallen keine zusätzlichen Kosten in Ihrem Azure-Abonnement an.
 
 
-
-## <a name="register-azure-stack-resource-provider-in-azure"></a>Registrieren des Azure Stack-Ressourcenanbieters in Azure
-> [!NOTE] 
-> Dieser Schritt sollte nur einmal in einer Azure Stack-Umgebung ausgeführt werden.
->
-
-1. Starten Sie eine PowerShell-Sitzung als Administrator.
-2. Melden Sie sich bei dem Azure-Konto an, das Besitzer des Azure-Abonnements ist (Sie können zum Anmelden das Cmdlet „Login-AzureRmAccount“ verwenden und bei der Anmeldung sicherstellen, dass Sie den Parameter „-EnvironmentName“ auf „AzureCloud“ setzen).
-3. Registrieren Sie den Azure-Ressourcenanbieter „Microsoft.AzureStack“.
-
-**Beispiel:** 
-```Powershell
-Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
-```
-
 ## <a name="register-azure-stack-with-azure"></a>Registrieren von Azure Stack in Azure
 
 > [!NOTE]
@@ -66,7 +50,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 
 1. Öffnen Sie eine PowerShell-Konsole als Administrator, und [installieren Sie PowerShell für Azure Stack](azure-stack-powershell-install.md).  
 
-2. Fügen Sie das Azure-Konto hinzu, das zum Registrieren von Azure Stack verwendet werden soll. Dazu führen Sie das Cmdlet `Add-AzureRmAccount` ohne Parameter aus. Sie werden aufgefordert, Ihre Anmeldeinformationen für das Azure-Konto einzugeben. Je nach Konfiguration Ihres Kontos müssen Sie möglicherweise die zweistufige Authentifizierung verwenden.  
+2. Fügen Sie das Azure-Konto hinzu, das zum Registrieren von Azure Stack verwendet werden soll. Führen Sie dazu das Cmdlet `Add-AzureRmAccount` aus, und legen Sie den EnvironmentName-Parameter auf „AzureCloud“ fest. Sie werden aufgefordert, Ihre Anmeldeinformationen für das Azure-Konto einzugeben. Je nach Konfiguration Ihres Kontos müssen Sie möglicherweise die zweistufige Authentifizierung verwenden. 
+
+   ```Powershell
+   Add-AzureRmAccount -EnvironmentName "AzureCloud"
+   ```
 
 3. Wenn Sie über mehrere Abonnements verfügen, führen Sie den folgenden Befehl aus, um das zu verwendende Abonnement auszuwählen:  
 
@@ -74,22 +62,28 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
       Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
-4. Löschen Sie alle vorhandenen Versionen der Powershell-Module, die der Registrierung entsprechen, und [laden Sie die neueste Version von GitHub herunter](azure-stack-powershell-download.md).  
+4. Registrieren Sie den Azure Stack-Ressourcenanbieter im Azure-Abonnement. Führen Sie zu diesem Zweck den folgenden Befehl aus:
 
-5. Navigieren Sie vom Verzeichnis „AzureStack-Tools-master“, das im vorherigen Schritt erstellt wurde, zum Ordner „Registration“, und importieren Sie das Modul „.\RegisterWithAzure.psm1“:  
+   ```Powershell
+   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
+   ```
+
+5. Löschen Sie alle vorhandenen Versionen der Powershell-Module, die der Registrierung entsprechen, und [laden Sie die neueste Version von GitHub herunter](azure-stack-powershell-download.md).  
+
+6. Navigieren Sie vom Verzeichnis „AzureStack-Tools-master“, das im vorherigen Schritt erstellt wurde, zum Ordner „Registration“, und importieren Sie das Modul „.\RegisterWithAzure.psm1“:  
 
    ```powershell 
    Import-Module .\RegisterWithAzure.psm1 
    ```
 
-6. Führen Sie in der gleichen PowerShell-Sitzung das folgende Skript aus. Wenn Sie zum Eingeben von Anmeldeinformationen aufgefordert werden, geben Sie `azurestack\cloudadmin` als Benutzer an. Das Kennwort ist das gleiche, das Sie während der Bereitstellung für den lokalen Administrator verwendet haben.  
+7. Führen Sie in der gleichen PowerShell-Sitzung das folgende Skript aus. Wenn Sie zum Eingeben von Anmeldeinformationen aufgefordert werden, geben Sie `azurestack\cloudadmin` als Benutzer an. Das Kennwort ist das gleiche, das Sie während der Bereitstellung für den lokalen Administrator verwendet haben.  
 
    ```powershell
    $AzureContext = Get-AzureRmContext
    $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the cloud domain credentials to access the privileged endpoint"
    Add-AzsRegistration `
        -CloudAdminCredential $CloudAdminCred `
-       -AzureSubscriptionId $AzureContext.Subscription.Id `
+       -AzureSubscriptionId $AzureContext.Subscription.SubscriptionId `
        -AzureDirectoryTenantName $AzureContext.Tenant.TenantId `
        -PrivilegedEndpoint AzS-ERCS01 `
        -BillingModel Development 
@@ -103,7 +97,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    | PrivilegedEndpoint | Eine vorkonfigurierte Remote-PowerShell-Konsole, die Ihnen Funktionen wie die Protokollsammlung und andere Aufgaben nach der Bereitstellung zur Verfügung stellt. Beim Development Kit ist der privilegierte Endpunkt auf dem virtuellen Computer „AzS-ERCS01“ gehostet. Wenn Sie ein integriertes System verwenden, wenden Sie sich an Ihren Azure Stack-Bediener, um diesen Wert zu erhalten. Weitere Informationen finden Sie unter dem Thema [Verwenden des privilegierten Endpunkts](azure-stack-privileged-endpoint.md).|
    | BillingModel | Das Abrechnungsmodell, das von Ihrem Abonnement verwendet wird. Zulässige Werte für diesen Parameter sind „Capacity“, „PayAsYouUse“ und „Development“. Beim Development Kit wird dieser Wert auf „Development“ gesetzt. Wenn Sie ein integriertes System verwenden, wenden Sie sich an Ihren Azure Stack-Bediener, um diesen Wert zu erhalten. |
 
-7. Nach Abschluss des Skripts wird eine Meldung „Azure Stack aktivieren (dieser Schritt kann bis zu 10 Minuten dauern)“ angezeigt. 
+8. Nach Abschluss des Skripts wird eine Meldung „Azure Stack aktivieren (dieser Schritt kann bis zu 10 Minuten dauern)“ angezeigt. 
 
 ## <a name="verify-the-registration"></a>Überprüfen der Registrierung
 

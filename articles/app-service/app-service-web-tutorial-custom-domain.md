@@ -1,6 +1,7 @@
 ---
 title: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie Sie einen vorhandenen benutzerdefinierten DNS-Domänennamen einer Web-App, einem Back-End einer mobilen App oder einer API-App in Azure App Service hinzufügen."
+keywords: "App Service, Azure App Service, Domänenzuordnung, Domänenname, vorhandene Domäne, Hostname"
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -15,11 +16,11 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 6d7c99b1b02a0450cae406e2bc70a7e5563e2ac2
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps
 
@@ -269,6 +270,27 @@ Wählen Sie das **+**-Symbol, um einen anderen Hostnamen hinzuzufügen, der der 
 Navigieren Sie zu den DNS-Namen, die Sie zuvor konfiguriert haben, z.B. `contoso.com`, `www.contoso.com`, `sub1.contoso.com` und `sub2.contoso.com`.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
+
+## <a name="resolve-404-error-web-site-not-found"></a>Beheben eines 404-Fehlers (nicht gefundene Website)
+
+Falls Sie zu der URL Ihrer benutzerdefinierten Domäne navigieren und dabei einen HTTP-Fehler vom Typ 404 (nicht gefunden) erhalten, vergewissern Sie sich mithilfe von <a href="https://www.whatsmydns.net/" target="_blank">WhatsmyDNS.net</a>, dass Ihre Domäne zur IP-Adresse Ihrer App aufgelöst wird. Ist dies nicht der Fall, liegt möglicherweise eine der folgenden Ursachen vor:
+
+- Der konfigurierten benutzerdefinierten Domäne fehlt ein A-Eintrag und/oder ein CNAME-Eintrag.
+- Im Browserclient ist die alte IP-Adresse Ihrer Domäne zwischengespeichert. Leeren Sie den Cache, und testen Sie die DNS-Auflösung erneut. Auf einem Windows-Computer können Sie den Cache mithilfe von `ipconfig /flushdns` leeren.
+
+<a name="virtualdir"></a>
+
+## <a name="direct-default-url-to-a-custom-directory"></a>Weiterleiten der Standard-URL an ein benutzerdefiniertes Verzeichnis
+
+App Service leitet Webanforderungen standardmäßig an das Stammverzeichnis des App-Codes weiter. Manche Webframeworks starten jedoch nicht im Stammverzeichnis. [Laravel](https://laravel.com/) startet beispielsweise im Unterverzeichnis `public`. Um das DNS-Beispiel für `contoso.com` fortzusetzen: Auf eine solche App kann zwar unter `http://contoso.com/public` zugegriffen werden, es empfiehlt sich aber, `http://contoso.com` stattdessen an das Verzeichnis `public` weiterzuleiten. Dieser Schritt beinhaltet keine DNS-Auflösung, erfordert aber die Anpassung des virtuellen Verzeichnisses.
+
+Klicken Sie hierzu im linken Navigationsbereich Ihrer Web-App-Seite auf **Anwendungseinstellungen**. 
+
+Das virtuelle Stammverzeichnis `/` am unteren Seitenrand verweist standardmäßig auf `site\wwwroot` (also auf das Stammverzeichnis Ihres App-Codes). Ändern Sie die Angabe, um stattdessen beispielsweise auf `site\wwwroot\public` zu verweisen, und speichern Sie die Änderung. 
+
+![Anpassen des virtuellen Verzeichnisses](./media/app-service-web-tutorial-custom-domain/customize-virtual-directory.png)
+
+Nach Abschluss des Vorgangs sollte Ihre App die korrekte Seite am Stammpfad (beispielsweise http://contoso.com) zurückgeben.
 
 ## <a name="automate-with-scripts"></a>Automatisieren mit Skripts
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/16/2017
 ms.author: jeanb
-ms.openlocfilehash: f1df2f52d00444ba0a27644a6e65cee789788f58
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 916aefb7916ab374c882efb95417babfc5b06a50
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-stream-analytics-on-iot-edge-preview"></a>Azure Stream Analytics unter IoT Edge (Vorschau)
 
@@ -35,7 +35,7 @@ Diese Funktion befindet sich in der Vorschau. Wenn Sie Fragen oder Feedback habe
 * **Latenzarme Befehls- und Steuerungsstruktur:** Systeme für die Fertigungssicherheit müssen beispielsweise im Bedarfsfall praktisch verzögerungsfrei auf Betriebsdaten reagieren. Mit ASA unter IoT Edge können Sie Sensordaten nahezu in Echtzeit analysieren und bei Erkennung von Anomalien Befehle ausgeben, um eine Maschine abzuschalten oder Warnungen auszugeben.
 *   **Eingeschränkte Cloudkonnektivität**: Unternehmenswichtige Systeme wie beispielsweise ferngesteuerte Bergbaugeräte, vernetzte Schiffe oder Offshorebohrer müssen Daten auch dann analysieren und bei Bedarf reagieren können, wenn die Cloudverbindung nicht stabil ist. Mit ASA läuft Ihre Streaminglogik unabhängig von der Netzwerkkonnektivität, und Sie können auswählen, welche Daten Sie zur weiteren Verarbeitung oder Speicherung in die Cloud senden möchten.
 * **Eingeschränkte Bandbreite**: Das von Düsentriebwerken oder vernetzten Autos erzeugte Datenvolumen kann so groß werden, dass die Daten gefiltert oder vor dem Versand in die Cloud einer Vorverarbeitung unterzogen werden müssen. Mithilfe von ASA können Sie Daten, die in die Cloud gesendet werden sollen, filtern und aggregieren.
-* **Compliance**: Zur Einhaltung gesetzlicher Auflagen ist es möglicherweise erforderlich, einige Daten vor dem Senden in die Cloud lokal zu anonymisieren oder zu aggregieren. Mit ASA können Sie 
+* **Compliance**: Zur Einhaltung gesetzlicher Auflagen ist es möglicherweise erforderlich, einige Daten vor dem Senden in die Cloud lokal zu anonymisieren oder zu aggregieren.
 
 ## <a name="edge-jobs-in-azure-stream-analytics"></a>Edge-Aufträge in Azure Stream Analytics
 ### <a name="what-is-an-edge-job"></a>Was ist ein Edge-Auftrag?
@@ -61,6 +61,11 @@ Führen Sie [dieses Schritttutorial](https://docs.microsoft.com/azure/iot-edge/t
 
 #### <a name="create-an-asa-edge-job"></a>Erstellen eines ASA-Edge-Auftrags
 1. Erstellen Sie im Azure-Portal einen neuen „Stream Analytics-Auftrag“. [Hier Direktlink zum Erstellen eines neuen ASA-Auftrags einfügen](https://ms.portal.azure.com/#create/Microsoft.StreamAnalyticsJob)
+
+> [!Note]
+> Sie können Edge-Aufträge in allen von ASA unterstützten Regionen erstellen **mit Ausnahme der Region „USA, Westen 2“**.
+> Diese Einschränkung wird in Kürze aufgehoben.
+
 2. Wählen Sie auf dem Erstellungsbildschirm **Edge** als **Hostingumgebung** aus (siehe folgende Abbildung). ![Auftragserstellung](media/stream-analytics-edge/ASAEdge_create.png)
 3. Auftragsdefinition
     1. **Definieren von Eingabedatenströmen**. Definieren Sie mindestens einen Eingabedatenstrom für Ihren Auftrag.

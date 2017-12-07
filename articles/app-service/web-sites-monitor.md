@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2016
+ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 283428c603cc73d23f0afa94670a23dbb45068d5
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 58ccdba6f01cfb7de72f28f185102bf7f618eab4
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Gewusst wie: Überwachen von Apps in Azure App Service
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) stellt integrierte Überwachungsfunktionen im [Azure-Portal](https://portal.azure.com) bereit.
-Dies beinhaltet auch die Fähigkeit zum Überprüfen von **Kontingenten** und **Metriken** für eine App und des App Service-Plans, das Einrichten von **Warnungen** und sogar das automatische **Skalieren** basierend auf diesen Metriken.
+Das Azure-Portal bietet auch die Möglichkeit zum Überprüfen von **Kontingenten** und **Metriken** für eine App und den App Service-Plan, zum Einrichten von **Warnungen** und sogar zum automatischen **Skalieren** basierend auf diesen Metriken.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -48,12 +48,12 @@ Wenn die Anwendung unter einem Plan vom Typ **Basic**, **Standard** oder **Premi
 * **Filesystem**
   * Gesamtbetrag des zulässigen Speichers.
 
-Das einzige Kontingent, das für Apps gilt, die unter Plänen vom Typ **Basic**, **Standard** und **Premium** gehostet werden, ist **Filesystem**.
+Das einzige Kontingent, das für Apps gilt, die in den Plänen **Basic**, **Standard** und **Premium** gehostet werden, ist **Filesystem**.
 
 Weitere Informationen zu den spezifischen Kontingenten, Grenzwerten und Features, die für die unterschiedlichen App Service-SKUs verfügbar sind, finden Sie hier: [Diensteinschränkungen des Azure-Abonnements](../azure-subscription-service-limits.md#app-service-limits).
 
 #### <a name="quota-enforcement"></a>Kontingenterzwingung
-Wenn die Nutzung einer Anwendung das Kontingent für **CPU(Short)**, **CPU(Day)** oder **Bandwidth** überschreitet, wird die Anwendung beendet, bis das Kontingent zurückgesetzt wird. Während dieses Zeitraums führen alle eingehenden Anforderungen zu einem **HTTP 403**-Fehler.
+Wenn eine Anwendung das Kontingent für **CPU(Short)**, **CPU(Day)** oder **Bandwidth** überschreitet, wird die Anwendung beendet, bis das Kontingent zurückgesetzt wird. Während dieses Zeitraums führen alle eingehenden Anforderungen zu einem **HTTP 403**-Fehler.
 ![][http403]
 
 Wenn das Kontingent **Memory** der Anwendung überschritten wird, wird die Anwendung neu gestartet.
@@ -125,14 +125,14 @@ Es gibt zwei Metriken, die die CPU-Auslastung widerspiegeln: **CPU-Zeit** und **
 
 **CPU-Zeit** ist für Apps hilfreich, die unter einem Plan vom Typ **Free** oder **Shared** gehostet werden, da eines der Kontingente basierend auf den von der App verbrauchten CPU-Minuten definiert ist.
 
-Der **CPU-Prozentsatz** ist für Apps hilfreich, die unter Plänen vom Typ **Basic**, **Standard** und **Premium** gehostet werden, da sie horizontal hochskaliert werden können. Diese Metrik liefert nützliche Informationen zur gesamten Nutzung über alle Instanzen hinweg.
+**CPU-Prozentsatz** ist nützlich für Apps, die in den Plänen **Basic**, **Standard** und **Premium** gehostet werden, da sie horizontal hochskaliert werden können. Der CPU-Prozentsatz ist ein guter Indikator für die allgemeine Nutzung über alle Instanzen hinweg.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Granularität und Aufbewahrungsrichtlinien für Metriken
 Metriken für eine Anwendung und einen App Service-Plan werden vom Dienst mit den folgenden Granularitäten und Aufbewahrungsrichtlinien protokolliert und aggregiert:
 
-* Metriken mit der Granularität **Minute** werden für **48 Stunden** beibehalten.
+* Metriken mit der Granularität **Minute** werden für **30 Stunden** beibehalten.
 * Metriken mit der Granularität **Stunde** werden für **30 Tage** beibehalten.
-* Metriken mit der Granularität **Tag** werden für **90 Tage** beibehalten.
+* Metriken mit der Granularität **Tag** werden für **30 Tage** beibehalten.
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Überwachen von Kontingenten und Metriken im Azure-Portal
 Sie können den Status der unterschiedlichen **Kontingente** und **Metriken**, die sich auf eine Anwendung auswirken, im [Azure-Portal](https://portal.azure.com) überprüfen.
@@ -149,7 +149,7 @@ Weitere Informationen zu Metriken finden Sie unter [Überwachen von Dienstmetrik
 ## <a name="alerts-and-autoscale"></a>Warnungen und automatische Skalierung
 Metriken für eine App oder einen App Service-Plan können mit Warnungen verknüpft werden. Weitere Informationen hierzu finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](../monitoring-and-diagnostics/insights-alerts-portal.md).
 
-App Service-Apps, die unter App Service-Plänen vom Typ „Basic“, „Standard“ oder „Premium“ gehostet werden, unterstützen die **automatische Skalierung**. Dies ermöglicht Ihnen das Konfigurieren von Regeln zur Überwachung der App Service-Planmetriken und das Erhöhen und Verringern der Instanzanzahl mit der Bereitstellung zusätzlicher Ressourcen bei Bedarf (bzw. dem Sparen von Kosten, wenn die Bereitstellung für die Anwendung zu hoch ist). Weitere Informationen zur automatischen Skalierung finden Sie unter [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Manuelles oder automatisches Skalieren der Instanzanzahl) und [Best practices for Azure Monitor autoscaling](../monitoring-and-diagnostics/insights-autoscale-best-practices.md) (Empfohlene Methoden für die automatische Skalierung in Azure Monitor).
+App Service-Apps, die unter App Service-Plänen vom Typ „Basic“, „Standard“ oder „Premium“ gehostet werden, unterstützen die **automatische Skalierung**. Mithilfe der automatischen Skalierung können Sie Regeln zur Überwachung der Metriken des App Service-Plans konfigurieren. Über Regeln kann die Anzahl der Instanzen erhöht oder verringert werden, um bei Bedarf zusätzliche Ressourcen bereitzustellen. Außerdem helfen Regeln auch dabei, Geld zu sparen, wenn die Anwendung zu oft bereitgestellt wird. Weitere Informationen zur automatischen Skalierung finden Sie unter [Scale instance count manually or automatically](../monitoring-and-diagnostics/insights-how-to-scale.md) (Manuelles oder automatisches Skalieren der Instanzanzahl) und [Best practices for Azure Monitor autoscaling](../monitoring-and-diagnostics/insights-autoscale-best-practices.md) (Empfohlene Methoden für die automatische Skalierung in Azure Monitor).
 
 > [!NOTE]
 > Wenn Sie Azure App Service ausprobieren möchten, ehe Sie sich für ein Azure-Konto anmelden, können Sie unter [App Service testen](https://azure.microsoft.com/try/app-service/)sofort kostenlos eine kurzlebige Starter-Web-App in App Service erstellen. Keine Kreditkarte erforderlich, keine Verpflichtungen.

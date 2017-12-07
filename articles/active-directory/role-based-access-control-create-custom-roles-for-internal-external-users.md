@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/10/2017
 ms.author: a-crradu
-ms.openlocfilehash: bb9b89d087cfb62efe63cf0ff600d7faa58a7b8b
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 213b02205bbe7f767b6aff6a0693bb34b97cb9ec
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/30/2017
 ---
-## <a name="intro-on-role-based-access-control"></a>Einführung in die rollenbasierte Zugriffssteuerung
+# <a name="intro-on-role-based-access-control"></a>Einführung in die rollenbasierte Zugriffssteuerung
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist ein nur im Azure-Portal verfügbares Feature, mit dem Besitzer eines Abonnements Benutzern, die bestimmte Ressourcenbereiche in ihrer Umgebung verwalten können, differenzierte Rollen zuweisen.
 
@@ -32,11 +32,10 @@ Für die Nutzung der rollenbasierten Zugriffssteuerung in einer Azure-Umgebung i
 * Ein eigenständiges Azure-Abonnement, das einem Benutzer als Besitzer zugewiesen ist (Abonnementrolle)
 * Besitzerrolle des Azure-Abonnements
 * Zugriff auf das [Azure-Portal](https://portal.azure.com)
-* Stellen Sie sicher, dass der folgende Ressourcenanbieter für das Benutzerabonnement registriert ist: **Microsoft.Authorization**. Weitere Informationen zum Registrieren von Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für Resource Manager](/azure-resource-manager/resource-manager-supported-services.md).
-<!---Loc Comment: Link [Resource Manager providers, regions, API versions and schemas] is broken with an error message "404 - Content Not Found---->
+* Stellen Sie sicher, dass der folgende Ressourcenanbieter für das Benutzerabonnement registriert ist: **Microsoft.Authorization**. Weitere Informationen zum Registrieren von Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für Resource Manager](../azure-resource-manager/resource-manager-supported-services.md).
 
 > [!NOTE]
-> Office 365-Abonnements oder Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das O365-Portal bereitgestellt wurden, sind für die Nutzung bei der rollenbasierten Zugriffssteuerung nicht qualifiziert.
+> Office 365-Abonnements oder Azure Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das O365-Portal bereitgestellt wurden, sind für die Nutzung bei der rollenbasierten Zugriffssteuerung nicht qualifiziert.
 
 ## <a name="how-can-rbac-be-used"></a>Verwenden der rollenbasierten Zugriffssteuerung
 Die rollenbasierte Zugriffssteuerung kann in Azure in drei verschiedenen Bereichen angewendet werden. Hierbei handelt es sich um die folgenden drei Bereiche, nach Wichtigkeit sortiert:
@@ -76,8 +75,7 @@ Nach dem Auswählen des Abonnements muss der Administratorbenutzer auf **Zugriff
 
 ![Hinzufügen eines neuen Benutzers im Feature „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/role-based-access-control-create-custom-roles-for-internal-external-users/2.png)
 
-Der nächste Schritt besteht darin, die zuzuweisende RBAC-Rolle sowie den Benutzer auszuwählen, dem die Rolle zugewiesen werden soll. Im Dropdownmenü **Rolle** werden dem Administratorbenutzer nur die integrierten RBAC-Rollen angezeigt, die in Azure verfügbar sind. Ausführlichere Erläuterungen der einzelnen Rollen und der zuweisbaren Bereiche finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](/active-directory/role-based-access-built-in-roles.md).
-<!---Loc Comment: Link [Built-in roles for Azure Role-Based Access Control] is broken with an error message "404 - Content Not Found---->
+Der nächste Schritt besteht darin, die zuzuweisende RBAC-Rolle sowie den Benutzer auszuwählen, dem die Rolle zugewiesen werden soll. Im Dropdownmenü **Rolle** werden dem Administratorbenutzer nur die integrierten RBAC-Rollen angezeigt, die in Azure verfügbar sind. Ausführlichere Erläuterungen der einzelnen Rollen und der zuweisbaren Bereiche finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](role-based-access-built-in-roles.md).
 
 Der Administratorbenutzer muss dann die E-Mail-Adresse des externen Benutzers hinzufügen. Das erwartete Verhalten: Der Benutzer wird im vorhandenen Mandanten nicht angezeigt. Nachdem der externe Benutzer eingeladen wurde, wird er unter **Abonnements > Zugriffssteuerung (IAM)** mit allen aktuellen Benutzern angezeigt, denen derzeit für den Abonnementbereich eine RBAC-Rolle zugewiesen ist.
 
@@ -123,8 +121,7 @@ In beiden Portalen können die externen Benutzer in der Ansicht **Benutzer** anh
 * Unterschiedliche Art von Symbol im Azure-Portal
 * Unterschiedlicher Erstellungspunkt im klassischen Portal
 
-Wenn jedoch einem externen Benutzer im Bereich **Abonnement** Zugriff als **Besitzer** oder **Mitwirkender** erteilt wird, darf der Benutzer nicht auf das Verzeichnis des Administratorbenutzers zugreifen, sofern der **globale Administrator** dies nicht gestattet. In den Benutzereigenschaften kann der **Benutzertyp** ermittelt werden, der über zwei allgemeine Parameter verfügt: **Mitglied** und **Gast**. Ein Mitglied ist ein Benutzer, der im Verzeichnis registriert ist, ein Gast dagegen ist ein Benutzer, der von einer externen Quelle in das Verzeichnis eingeladen wurde. Weitere Informationen finden Sie unter [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](/active-directory/active-directory-b2b-admin-add-users).
-<!---Loc Comment: Link [How do Azure Active Directory admins add B2B collaboration users] is broken with an error message "404 - Content Not Found--->
+Wenn jedoch einem externen Benutzer im Bereich **Abonnement** Zugriff als **Besitzer** oder **Mitwirkender** erteilt wird, darf der Benutzer nicht auf das Verzeichnis des Administratorbenutzers zugreifen, sofern der **globale Administrator** dies nicht gestattet. In den Benutzereigenschaften kann der **Benutzertyp** ermittelt werden, der über zwei allgemeine Parameter verfügt: **Mitglied** und **Gast**. Ein Mitglied ist ein Benutzer, der im Verzeichnis registriert ist, ein Gast dagegen ist ein Benutzer, der von einer externen Quelle in das Verzeichnis eingeladen wurde. Weitere Informationen finden Sie unter [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md).
 
 > [!NOTE]
 > Stellen Sie nach der Eingabe der Anmeldeinformationen im Portal sicher, dass der externe Benutzer das richtige Verzeichnis für die Anmeldung auswählt. Ein Benutzer kann über Zugriff auf mehrere Verzeichnisse verfügen und eins der Verzeichnisse auswählen, indem er in der oberen rechten Ecke des Azure-Portals auf den Benutzernamen klickt und dann aus der Dropdownliste das geeignete Verzeichnis auswählt.

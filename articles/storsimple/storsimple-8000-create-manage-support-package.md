@@ -4,7 +4,7 @@ description: "Hier erfahren Sie, wie Sie ein Unterstützungspaket für Ihr Gerä
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 92abbb96b2117e10800de61b5c405a784453265b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 
@@ -58,14 +58,14 @@ Sie können das manuell generierte Unterstützungspaket per E-Mail für den Micr
    
    * Geben Sie für kennwortgeschützte Netzwerkfreigaben Folgendes ein:
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" –Credential "Username" -Force`
+       `Export-HcsSupportPackage -Path <\\IP address\location of the shared folder> -Include Default -Credential domainname\username`
      
-       Sie werden aufgefordert, ein Kennwort, einen Pfad zum freigegebenen Netzwerkordner und eine Verschlüsselungspassphrase (da das Unterstützungspaket verschlüsselt ist) einzugeben. Ein Unterstützungspaket wird dann im angegebenen Ordner erstellt.
+       Sie werden aufgefordert, ein Kennwort und eine Verschlüsselungspassphrase (da das Unterstützungspaket verschlüsselt ist) einzugeben. Daraufhin wird ein Unterstützungspaket im Standardordner erstellt (Gerätename, an den Datum und Uhrzeit angehängt werden).
    * Bei Freigaben ohne Kennwortschutz wird der `-Credential` -Parameter nicht benötigt. Geben Sie Folgendes ein:
      
-       `Export-HcsSupportPackage –PackageTag "MySupportPackage" -Force`
+       `Export-HcsSupportPackage`
      
-       Das Unterstützungspaket wird für beide Controller im freigegebenen Netzwerkordner erstellt. Hierbei handelt es sich um eine verschlüsselte, komprimierte Datei, die zur Problembehandlung an den Support von Microsoft gesendet werden kann. Weitere Informationen finden Sie unter [Kontaktaufnahme mit dem Microsoft-Support](storsimple-8000-contact-microsoft-support.md).
+       Das Unterstützungspaket wird für beide Controller im Standardordner erstellt. Bei dem Paket handelt es sich um eine verschlüsselte, komprimierte Datei, die zur Problembehandlung an den Microsoft-Support gesendet werden kann. Weitere Informationen finden Sie unter [Kontaktaufnahme mit dem Microsoft-Support](storsimple-8000-contact-microsoft-support.md).
 
 ### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Die Parameter des Export-HcsSupportPackage-Cmdlets
 

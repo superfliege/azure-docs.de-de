@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: damaerte
-ms.openlocfilehash: 59aec1cb6433e90caf683b4bce98c92e9f79fd18
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 233569303ea3651192aafe9681f58a9582625d29
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshooting-azure-cloud-shell"></a>Problembehandlung für Azure Cloud Shell
 
@@ -64,8 +64,9 @@ Zu den bekannten Lösungen für Probleme in Azure Cloud Shell gehören:
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-Anwendungen werden nicht unterstützt.
 
-- **Details**: Wenn ein Benutzer eine GUI-App startet, kehrt die Eingabeaufforderung nicht zurück. Wenn ein Benutzer z.B. ein privates GitHub-Repository klont, für das die zweistufige Authentifizierung aktiviert ist, wird ein Dialogfeld zur Ausführung der zweistufigen Authentifizierung angezeigt.
-- **Lösung**: Drücken Sie `Ctrl+C`, um den Befehl zu beenden.
+- **Details**: Wenn ein Benutzer eine GUI-App startet, kehrt die Eingabeaufforderung nicht zurück. Wenn ein Benutzer z.B. ein privates GitHub-Repository klont, für das die zweistufige Authentifizierung aktiviert ist, wird ein Dialogfeld zur Ausführung der zweistufigen Authentifizierung angezeigt.  
+- **Lösung**: Schließen Sie die Shell, und öffnen Sie sie wieder.
+
 
 ### <a name="get-help--online-does-not-open-the-help-page"></a>„Get-Help -online“ öffnet nicht die Hilfeseite.
 

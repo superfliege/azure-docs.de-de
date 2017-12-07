@@ -14,13 +14,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/03/2017
+ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: dda284b45e2e8a35a7228d77afef0ad058c8ea42
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1db0dee597ffe60c587e7bacd00640a308d04e99
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Durchführen der Problembehandlung, Diagnose und Verhinderung von SQL-Verbindungsfehlern und vorübergehenden Fehlern für SQL-Datenbank
 In diesem Artikel wird beschrieben, wie Sie Verbindungsausfälle und vorübergehende Fehler verhindern, behandeln, diagnostizieren und beheben, die bei Ihrer Clientanwendung während der Interaktion mit Azure SQL-Datenbank auftreten. Erfahren Sie, wie Sie die Wiederholungslogik konfigurieren, die Verbindungszeichenfolge erstellen und andere Verbindungseinstellungen anpassen.
@@ -40,16 +40,17 @@ Sie können je nach Situation versuchen, die SQL-Verbindung erneut zu verwenden 
 * **Beim Versuch, eine Verbindung herzustellen, tritt ein vorübergehender Fehler auf:**Wiederholen Sie den Verbindungsversuch nach einigen Sekunden.
 * **Bei einem SQL-Abfragebefehl tritt ein vorübergehender Fehler auf**: Versuchen Sie nicht sofort, den Befehl erneut auszuführen. Stattdessen sollte die Verbindung nach einer Verzögerungszeit neu hergestellt werden. Anschließend kann der Befehl erneut ausgeführt werden.
 
+
 <a id="j-retry-logic-transient-faults" name="j-retry-logic-transient-faults"></a>
 
-### <a name="retry-logic-for-transient-errors"></a>Wiederholungslogik für vorübergehende Fehler
+## <a name="retry-logic-for-transient-errors"></a>Wiederholungslogik für vorübergehende Fehler
 Clientprogramme, bei denen gelegentlich ein vorübergehender Fehler auftritt, sind stabiler, wenn sie Wiederholungslogik enthalten.
 
 Wenn Ihr Programm über Middleware eines Drittanbieters mit Azure SQL-Datenbank kommuniziert, wenden Sie sich an diesen Anbieter, um Informationen dazu zu erhalten, ob die Middleware Wiederholungslogik umfasst.
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
-#### <a name="principles-for-retry"></a>Prinzipien für Wiederholungsversuche
+### <a name="principles-for-retry"></a>Prinzipien für Wiederholungsversuche
 * Wenn beim Versuch, eine Verbindung herzustellen, ein vorübergehender Fehler auftritt, sollte der Versuch wiederholt werden.
 * Wenn bei einer SQL-SELECT-Anweisung ein vorübergehender Fehler auftritt, sollte nicht umgehend erneut versucht werden, die Anweisung auszuführen.
   
@@ -58,30 +59,31 @@ Wenn Ihr Programm über Middleware eines Drittanbieters mit Azure SQL-Datenbank 
   
   * Mithilfe der Wiederholungslogik muss sichergestellt werden, dass die Datenbanktransaktion entweder vollständig ausgeführt wurde oder die gesamte Transaktion zurückgesetzt wird.
 
-#### <a name="other-considerations-for-retry"></a>Weitere Überlegungen für Wiederholungsversuche
+### <a name="other-considerations-for-retry"></a>Weitere Überlegungen für Wiederholungsversuche
 * Bei einem Batchprogramm, das nach Ende der Geschäftszeiten automatisch gestartet und vor Beginn des nächsten Tags beendet wird, sind lange Intervalle zwischen den Wiederholungsversuchen unproblematisch.
 * Bei Benutzeroberflächenprogrammen sollte jedoch berücksichtigt werden, dass die Benutzer bei zu langen Wartezeiten dazu tendieren, das Programm zu beenden.
   
   * Dennoch sollten Wiederholungen nach nur wenigen Sekunden vermieden werden, um eine Überlastung des Systems durch eine große Anzahl von Anforderungen zu verhindern.
 
-#### <a name="interval-increase-between-retries"></a>Steigerung der Intervalle zwischen Wiederholungsversuchen
+### <a name="interval-increase-between-retries"></a>Steigerung der Intervalle zwischen Wiederholungsversuchen
 Es wird empfohlen, dass vor dem ersten Wiederholungsversuch eine Verzögerungszeit von fünf Sekunden verwendet wird. Wiederholungsversuche nach weniger als fünf Sekunden können den Clouddienst überfordern. Für jeden nachfolgenden Wiederholungsversuch sollte die Verzögerung exponentiell steigen, bis zu einem Maximum von 60 Sekunden.
 
 Eine Erörterung der *Sperrfrist* für Clients, die ADO.NET verwenden, finden Sie unter [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx).
 
 Darüber hinaus kann es sinnvoll sein, eine maximale Anzahl von Wiederholungsversuchen festzulegen, bevor das Programm beendet wird.
 
-#### <a name="code-samples-with-retry-logic"></a>Codebeispiele mit Wiederholungslogik
-Auf der folgenden Seite finden Sie Codebeispiele mit Wiederholungslogik in diversen Programmiersprachen:
+### <a name="code-samples-with-retry-logic"></a>Codebeispiele mit Wiederholungslogik
+Codebeispiele mit Wiederholungslogik finden Sie unter:
 
-* [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
+- [Herstellen robuster Verbindungen mit SQL mit ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Herstellen robuster Verbindungen mit SQL mit PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
-#### <a name="test-your-retry-logic"></a>Testen der Wiederholungslogik
+### <a name="test-your-retry-logic"></a>Testen der Wiederholungslogik
 Um Ihre Wiederholungslogik zu testen, müssen Sie einen Fehler simulieren oder verursachen, der behandelt werden kann, während Ihr Programm weiterhin ausgeführt wird.
 
-##### <a name="test-by-disconnecting-from-the-network"></a>Testen der Logik, indem der Computer vom Netzwerk getrennt wird
+#### <a name="test-by-disconnecting-from-the-network"></a>Testen der Logik, indem der Computer vom Netzwerk getrennt wird
 Eine Möglichkeit, um Ihre Wiederholungslogik zu testen, besteht darin, Ihren Clientcomputer vom Netzwerk zu trennen, während das Programm ausgeführt wird. Folgender Fehler tritt auf:
 
 * **SqlException.Number** = 11001
@@ -98,7 +100,7 @@ Um diesen Test in der Praxis umzusetzen, trennen Sie Ihren Computer vom Netzwerk
    * Die weitere Ausführung wird angehalten (über die **Console.ReadLine** -Methode oder über ein Dialogfeld mit der Schaltfläche „OK“). Nachdem der Computer mit dem Netzwerk verbunden wurde, drückt der Benutzer die EINGABETASTE.
 5. Es wird erneut versucht, eine Verbindung herzustellen (dieser Versuch sollte erfolgreich sein).
 
-##### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testen der Logik, indem beim Herstellen der Verbindung ein falscher Datenbankname eingegeben wird
+#### <a name="test-by-misspelling-the-database-name-when-connecting"></a>Testen der Logik, indem beim Herstellen der Verbindung ein falscher Datenbankname eingegeben wird
 Ihr Programm kann vor dem ersten Verbindungsversuch mit Absicht einen falschen Benutzernamen verwenden. Folgender Fehler tritt auf:
 
 * **SqlException.Number** = 18456
@@ -114,15 +116,15 @@ In der Praxis könnte Ihr Programm einen Laufzeitparameter ermitteln, der folgen
 4. „WRONG_“ wird vom Benutzernamen entfernt.
 5. Es wird erneut versucht, eine Verbindung herzustellen (dieser Versuch sollte erfolgreich sein).
 
+
 <a id="net-sqlconnection-parameters-for-connection-retry" name="net-sqlconnection-parameters-for-connection-retry"></a>
 
-### <a name="net-sqlconnection-parameters-for-connection-retry"></a>SqlConnection-Parameter von .NET für wiederholte Verbindungsversuche
+## <a name="net-sqlconnection-parameters-for-connection-retry"></a>SqlConnection-Parameter von .NET für wiederholte Verbindungsversuche
 Wenn Ihr Clientprogramm mithilfe der .NET Framework-Klasse **System.Data.SqlClient.SqlConnection** eine Verbindung mit Azure SQL-Datenbank herstellt, sollten Sie .NET 4.6.1 oder höher (oder .NET Core) verwenden, damit Sie das Feature für wiederholte Verbindungsversuche nutzen können. Details der Funktion finden Sie [hier](http://go.microsoft.com/fwlink/?linkid=393996).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
 -->
-
 
 Beim Erstellen der [Verbindungszeichenfolge](http://msdn.microsoft.com/library/System.Data.SqlClient.SqlConnection.connectionstring.aspx) für Ihr **SqlConnection** -Objekt sollten Sie die Werte der folgenden Parameter abstimmen:
 
@@ -138,7 +140,7 @@ Beispiel: Wenn die Anzahl 3 ist und das Intervall 10 Sekunden beträgt, wäre ei
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
-### <a name="connection-versus-command"></a>Vorübergehende Fehler bei Verbindungsherstellung und Befehlen
+## <a name="connection-versus-command"></a>Vorübergehende Fehler bei Verbindungsherstellung und Befehlen
 Mit den Parametern **ConnectRetryCount** und **ConnectRetryInterval** kann Ihr **SqlConnection**-Objekt den Verbindungsversuch wiederholen, ohne Ihr Programm zu unterbrechen, sodass das Programm die Steuerung behält. Die Wiederholungen können in folgenden Situationen auftreten:
 
 * mySqlConnection.Open-Methodenaufruf
@@ -146,8 +148,9 @@ Mit den Parametern **ConnectRetryCount** und **ConnectRetryInterval** kann Ihr *
 
 Es gibt eine Besonderheit. Wenn ein vorübergehender Fehler auftritt, während Ihre *Abfrage* ausgeführt wird, wiederholt das **SqlConnection** -Objekt den Verbindungsversuch nicht, und es versucht auch nicht, die Abfrage erneut auszuführen. Allerdings überprüft **SqlConnection** sehr schnell die Verbindung, bevor die Abfrage für die Ausführung gesendet wird. Wenn bei der schnellen Überprüfung ein Verbindungsproblem festgestellt wird, wiederholt **SqlConnection** den Verbindungsvorgang. Ist die Wiederholung erfolgreich, wird die Abfrage für die Ausführung gesendet.
 
-#### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Sollte „ConnectRetryCount“ mit der Wiederholungslogik der Anwendung kombiniert werden?
+### <a name="should-connectretrycount-be-combined-with-application-retry-logic"></a>Sollte „ConnectRetryCount“ mit der Wiederholungslogik der Anwendung kombiniert werden?
 Angenommen, Ihre Anwendung verfügt über eine zuverlässige benutzerdefinierte Wiederholungslogik. Sie könnte den Verbindungsvorgang 4 Mal wiederholen. Wenn Sie **ConnectRetryInterval** und **ConnectRetryCount** = 3 zur Verbindungszeichenfolge hinzufügen, erhöhen Sie die Anzahl der Wiederholungsversuche auf 4 x 3 = 12 Wiederholungen. Möglicherweise ist eine so hohe Anzahl von Wiederholungsversuchen nicht erwünscht.
+
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
@@ -373,9 +376,7 @@ Einzelheiten finden Sie hier: [5 – Protokollierung leicht gemacht: mit dem Pro
 ### <a name="entlib60-istransient-method-source-code"></a>Quellcode der IsTransient-Methode von EntLib60
 Nachfolgend wird der C#-Quellcode für die Methode **IsTransient** der Klasse **SqlDatabaseTransientErrorDetectionStrategy** gezeigt. Anhand dieses Quellcodes wird ermittelt, welche Fehler als vorübergehend eingestuft werden und einen Wiederholungsversuch rechtfertigen (April 2013).
 
-Zur Verbesserung der Lesbarkeit wurden eine Reihe von **//comment** -Zeilen aus diesem Code entfernt.
-
-```
+```csharp
 public bool IsTransient(Exception ex)
 {
   if (ex != null)
@@ -444,6 +445,14 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zur Problembehandlung bei anderen häufigen Problemen bei der Verbindung mit Azure SQL-Datenbank erhalten Sie unter [Beheben von Verbindungsproblemen mit der Azure SQL-Datenbank](sql-database-troubleshoot-common-connection-issues.md).
-* [SQL Server-Verbindungspooling (ADO.NET)](http://msdn.microsoft.com/library/8xx3tyca.aspx)
+* [Verbindungsbibliotheken für SQL-Datenbank und SQL Server](sql-database-libraries.md)
+* [SQL Server-Verbindungspooling (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 * [*Retrying* ist eine Apache 2.0-lizenzierte Allzweckbibliothek für Wiederholungen, die in **Python** geschrieben wurde und das Hinzufügen von Wiederholungsverhalten zu praktisch jeglichen Elementen vereinfacht.](https://pypi.python.org/pypi/retrying)
+
+
+<!-- Link references. -->
+
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+
+[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php
 

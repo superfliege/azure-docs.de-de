@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
-ms.openlocfilehash: cb55bf1f1c7eeb0fc7608aca8d70818b5e3e06c0
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 1ef4355f7234bc6a534d21a57fa52b480983b99b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding, die Azure SQL-Datenbank verwendet
 
@@ -69,7 +69,7 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
     > [!IMPORTANT]
     > Einige Einstellungen für die Authentifizierung und die Serverfirewall sind absichtlich unsicher, um die Demo zu erleichtern. Wählen Sie **Erstellen Sie eine neue Ressourcengruppe** aus, und verwenden Sie keine vorhandenen Ressourcengruppen, Server oder Pools. Verwenden Sie diese Anwendung und alle damit erstellten Ressourcen nicht für die Produktion. Wenn Sie sich umfassend mit der Anwendung vertraut gemacht haben, löschen Sie diese Ressourcengruppe, um die zugehörige Abrechnung einzustellen.
 
-    Es wird empfohlen, in den Ressourcennamen nur Kleinbuchstaben, Zahlen und Bindestriche zu verwenden.
+    Es wird empfohlen, bei Ressourcennamen nur Kleinbuchstaben, Zahlen und Bindestriche zu verwenden.
 
     - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie einen **Namen** für die Ressourcengruppe an (Groß-/Kleinschreibung wird berücksichtigt).
         - Alle Buchstaben in Ihrem Ressourcengruppennamen sollten Kleinbuchstaben sein.
@@ -93,7 +93,7 @@ Laden Sie den Quellcode der Anwendung und die Verwaltungsskripts herunter, währ
 > [!IMPORTANT]
 > Ausführbare Inhalte (Skripts, DLLs) können durch Windows blockiert werden, wenn ZIP-Dateien aus einer externen Quelle heruntergeladen und extrahiert werden. Führen Sie bei der Extraktion der Skripts aus einer ZIP-Datei die nachfolgenden Schritte aus, um die Blockierung der ZIP-Datei vor der Extraktion aufzuheben. Durch die Aufhebung der Blockierung der ZIP-Datei stellen Sie sicher, dass die Skripts ausgeführt werden dürfen.
 
-1. Navigieren Sie zum [GitHub-Repository „WingtipTicketsSaaS-MultiTenantDb“](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
+1. Browsen Sie zum [GitHub-Repository „WingtipTicketsSaaS-MultiTenantDb“](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDb).
 2. Klicken Sie auf **Klonen oder herunterladen**.
 3. Klicken Sie auf **ZIP herunterladen**, und speichern Sie die Datei.
 4. Klicken Sie mit der rechten Maustaste auf die Datei **WingtipTicketsSaaS-MultiTenantDb-master.zip**, und wählen Sie **Eigenschaften** aus.
@@ -120,7 +120,7 @@ In der App werden Einrichtungen wie Konzerthallen, Jazzclubs, Sportstadien usw. 
 In einem zentralen **Ereignis-Hub** wird eine Liste der Links zu den Mandanten in Ihrer spezifischen Bereitstellung aufgeführt.
 
 1. Öffnen Sie den *Ereignis-Hub* in Ihrem Webbrowser:
-    - http://events.wingtip-mt.&lt;BENUTZER&gt;.trafficmanager.net &nbsp; *(durch den Benutzerwert Ihrer Bereitstellung ersetzen)*
+    - http://events.wingtip.&lt;BENUTZER&gt;.trafficmanager.net &nbsp; *(durch den Benutzerwert Ihrer Bereitstellung ersetzen.)*
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -130,7 +130,7 @@ In einem zentralen **Ereignis-Hub** wird eine Liste der Links zu den Mandanten i
 
 Zum Steuern der Verteilung eingehender Anforderungen nutzt die App [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Für die Ereignisseiten, die mandantenspezifisch sind, schließen Sie den Mandantennamen in die URLs ein. Die URLs enthalten zudem Ihren spezifischen Benutzerwert und weisen dieses Format auf:
 
-- http://events.wingtip-mt.&lt;BENUTZER&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip.&lt;BENUTZER&gt;.trafficmanager.net/*fabrikamjazzclub*
  
 Die Ereignis-App analysiert den Mandantennamen in der URL und hashcodiert ihn, um einen Schlüssel für den Zugriff auf einen Katalog mithilfe der [Shard-Zuordnungsverwaltung](sql-database-elastic-scale-shard-map-management.md) zu erstellen. Im Katalog wird der Schlüssel dem Datenbankspeicherort für den Mandanten zugeordnet. Der **Ereignis-Hub** listet alle Mandanten auf, die im Katalog registriert sind. Der **Ereignis-Hub** ruft mit erweiterten Metadaten im Katalog den Namen des Mandanten für die jeweilige Zuordnung ab, um die URL zu erstellen.
 
@@ -156,7 +156,7 @@ Möglicherweise möchten Sie die Lastengeneratorsitzung neu starten, um andere P
 
 Die erste Bereitstellung umfasst drei Beispielmandanten in der Datenbank *Tenants1*. Erstellen Sie einen anderen Mandanten, um zu sehen, wie sich dies auf die bereitgestellte Anwendung auswirkt. In diesem Schritt erstellen Sie schnell einen neuen Mandanten.
 
-1. Öffnen Sie „...\\Learning Modules\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“ in der *PowerShell ISE*.
+1. Öffnen Sie ...\\Learning Modules\Provision and Catalog\\*Demo-ProvisionTenants.ps1* in der *PowerShell ISE*.
 2. Drücken Sie **F5**, um das Skript auszuführen (lassen Sie die Standardwerte zunächst unverändert).
 
    > [!NOTE]
@@ -174,7 +174,7 @@ Das mehrinstanzenfähige Modell mit Shards erlaubt zwei Optionen: Sie können ei
 
 Nun stellen wir einen anderen Mandanten bereit, dieses Mal in seiner eigenen Datenbank.
 
-1. Ändern Sie in „...\\Learning Modules\\ProvisionTenants\\*Demo-ProvisionTenants.ps1*“ den Wert *$TenantName* in **Salix Salsa**, *$VenueType* in **dance** und *$Scenario* in **2**.
+1. Nehmen Sie in ...\\Learning Modules\\Provision and Catalog\*Demo-ProvisionTenants.ps1* folgende Änderungen vor: Ändern Sie *$TenantName* zu **Salix Salsa**, *$VenueType* zu **Tanz** und *$Scenario* zu **2**.
 
 2. Drücken Sie **F5**, um das Skript erneut auszuführen.
     - Indem Sie F5 drücken, wird der neue Mandant in einer separaten Datenbank bereitgestellt. Die Datenbank und der Mandant werden im Katalog registriert. Dann wird im Browser die Seite „Ereignisse“ des Mandanten geöffnet.
@@ -239,7 +239,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > - Anzeigen der Poolnutzung zum Überwachen der Mandantenaktivität
 > - Löschen von Beispielressourcen, um die zugehörige Abrechnung einzustellen
 
-Arbeiten Sie nun das Tutorial zum [Bereitstellen von Mandanten](sql-database-saas-tutorial-provision-and-catalog.md) durch.
+Arbeiten Sie nun das [Tutorial zum Bereitstellen und zum Katalog](sql-database-saas-tutorial-provision-and-catalog.md) durch.
 
 
 

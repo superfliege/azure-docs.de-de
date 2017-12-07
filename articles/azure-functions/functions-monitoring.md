@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 355cb2cef52b5dfecddae228d0cc24a069d3b695
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33d4a193cc3152bfab1f03dde32ad4f1bcb0afe1
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -50,7 +50,7 @@ Aktivieren Sie Application Insights auf der Seite **Erstellen** der Funktionen-A
 
 ### <a name="existing-function-app"></a>Vorhandene Funktionen-App
 
-Rufen Sie einen Instrumentierungsschlüssel ab, und speichern Sie ihn in einer Funktionen-App:
+Rufen Sie den Instrumentierungsschlüssel ab, und speichern Sie ihn in einer Funktions-App:
 
 1. Erstellen Sie die Application Insights-Instanz. Legen Sie den Anwendungstyp auf **Allgemein** fest.
 
@@ -60,7 +60,7 @@ Rufen Sie einen Instrumentierungsschlüssel ab, und speichern Sie ihn in einer F
 
    ![Kopieren des Application Insights-Instrumentierungsschlüssels](media/functions-monitoring/copy-ai-key.png)
 
-1. Gehen Sie auf der Seite **Anwendungseinstellungen** der Funktionen-App wie folgt vor: [Fügen Sie eine App-Einstellung hinzu](functions-how-to-use-azure-function-app-settings.md#settings), die den Namen APPINSIGHTS_INSTRUMENTATIONKEY hat, und fügen Sie den Instrumentierungsschlüssel ein.
+1. Fügen Sie auf der Seite **Anwendungseinstellungen** der Funktions-App [eine App-Einstellung](functions-how-to-use-azure-function-app-settings.md#settings) hinzu, indem Sie auf **Neue Einstellung hinzuzufügen** klicken. Benennen Sie die neue Einstellung APPINSIGHTS_INSTRUMENTATIONKEY, und fügen Sie den kopierten Instrumentierungsschlüssel ein.
 
    ![Hinzufügen des Instrumentierungsschlüssels zu den App-Einstellungen](media/functions-monitoring/add-ai-key.png)
 
@@ -68,7 +68,7 @@ Rufen Sie einen Instrumentierungsschlüssel ab, und speichern Sie ihn in einer F
 
 ## <a name="view-telemetry-data"></a>Anzeigen von Telemetriedaten
 
-Wählen Sie auf der Seite **Übersicht** den Link **Application Insights** aus, um von einer Funktionen-App im Portal zu Application Insights zu navigieren.
+Wählen Sie auf der Seite **Übersicht** den Link **Application Insights** aus, um von einer Funktions-App im Portal zur verbundenen Application Insights-Instanz zu navigieren.
 
 Informationen zur Verwendung von Application Insights finden Sie in der [Application Insights-Dokumentation](https://docs.microsoft.com/azure/application-insights/). In diesem Abschnitt sind einige Beispiele für das Anzeigen von Daten in Application Insights enthalten. Falls Sie mit Application Insights bereits vertraut sind, können Sie direkt zu den [Abschnitten zur Konfiguration und Anpassung der Telemetriedaten](#configure-categories-and-log-levels) springen.
 
@@ -84,7 +84,7 @@ Auf der Registerkarte [Leistung](../application-insights/app-insights-performanc
 
 ![Leistung](media/functions-monitoring/performance.png)
 
-Auf der Registerkarte **Server** werden die Ressourcenverwendung und der Durchsatz pro Server angezeigt. Diese Daten können nützlich für Debugszenarien sein, in denen Ihre zugrunde liegenden Ressourcen durch Funktionen eingeschränkt werden. Server werden als *Cloudrolleninstanzen* bezeichnet. 
+Auf der Registerkarte **Server** werden die Ressourcenverwendung und der Durchsatz pro Server angezeigt. Diese Daten können nützlich für Debugszenarien sein, in denen Ihre zugrunde liegenden Ressourcen durch Funktionen eingeschränkt werden. Server werden als **Cloudrolleninstanzen** bezeichnet.
 
 ![Server](media/functions-monitoring/servers.png)
 
@@ -94,7 +94,7 @@ Auf der Registerkarte [Live Metrics Stream](../application-insights/app-insights
 
 ## <a name="query-telemetry-data"></a>Abfragen von Telemetriedaten
 
-Mit [Application Insights Analytics](../application-insights/app-insights-analytics.md) haben Sie Zugriff auf alle Telemetriedaten in Form von Tabellen in einer Datenbank. Analytics umfasst eine Abfragesprache zum Extrahieren und Bearbeiten der Daten.
+Mit [Application Insights Analytics](../application-insights/app-insights-analytics.md) haben Sie Zugriff auf alle Telemetriedaten in Form von Tabellen in einer Datenbank. Analytics stellt eine Abfragesprache zum Extrahieren, Bearbeiten und Visualisieren der Daten bereit.
 
 ![Auswählen von Analytics](media/functions-monitoring/select-analytics.png)
 
@@ -131,7 +131,7 @@ Die Laufzeit stellt `customDimensions.LogLevel` und `customDimensions.Category` 
 
 ## <a name="configure-categories-and-log-levels"></a>Konfigurieren von Kategorien und Protokollebenen
 
-Sie können Application Insights ohne benutzerdefinierte Konfiguration verwenden, aber die Standardkonfiguration kann zu hohen Datenvolumina führen. Wenn Sie ein Visual Studio Azure-Abonnement verwenden, erreichen Sie unter Umständen Ihr Datenlimit für App Insights. Im restlichen Teil dieses Artikels wird beschrieben, wie Sie die Daten konfigurieren und anpassen, die Ihre Funktionen an Application Insights senden.
+Sie können Application Insights ohne benutzerdefinierte Konfiguration verwenden, aber die Standardkonfiguration kann zu hohen Datenvolumina führen. Wenn Sie ein Visual Studio Azure-Abonnement verwenden, erreichen Sie unter Umständen Ihr Datenlimit für Application Insights. Im restlichen Teil dieses Artikels wird beschrieben, wie Sie die Daten konfigurieren und anpassen, die Ihre Funktionen an Application Insights senden.
 
 ### <a name="categories"></a>Categories
 
@@ -178,7 +178,7 @@ Mit der Datei *host.json* wird konfiguriert, welcher Protokollierungsgrad von ei
 
 In diesem Beispiel werden die folgenden Regeln eingerichtet:
 
-1. Für Protokolle mit der Kategorie „Host.Results“ oder „Function“ soll nur die Ebene `Error` und höher an Application Insights gesendet werden. Protokolle für die Ebene `Information` und niedriger werden ignoriert.
+1. Für Protokolle mit der Kategorie „Host.Results“ oder „Function“ soll nur die Ebene `Error` und höher an Application Insights gesendet werden. Protokolle für die Ebene `Warning` und niedriger werden ignoriert.
 2. Für Protokolle mit der Kategorie „Host. Aggregator“ soll nur die Ebene `Information` und höher an Application Insights gesendet werden. Protokolle für die Ebene `Debug` und niedriger werden ignoriert.
 3. Für alle anderen Protokolle soll nur die Ebene `Information` und höher an Application Insights gesendet werden.
 
@@ -217,7 +217,7 @@ Alle diese Protokolle werden auf der Ebene `Information` geschrieben. Wenn Sie a
 
 Diese Protokolle stellen die Anzahl und Durchschnittswerte von Funktionsaufrufen für einen [konfigurierbaren](#configure-the-aggregator) Zeitraum dar. Der Standardzeitraum beträgt 30 Sekunden oder 1.000 Ergebnisse, je nachdem, was früher eintritt. 
 
-Die Protokolle werden in Application Insights als „customMetrics“ angezeigt. Beispiele hierfür sind die Ausführungsanzahl, Erfolgsrate und Dauer.
+Die Protokolle sind in Application Insights in der Tabelle **customMetrics** verfügbar. Beispiele hierfür sind die Ausführungsanzahl, Erfolgsrate und Dauer.
 
 ![customMetrics-Abfrage](media/functions-monitoring/custom-metrics-query.png)
 
@@ -225,7 +225,7 @@ Alle diese Protokolle werden auf der Ebene `Information` geschrieben. Wenn Sie a
 
 ### <a name="other-categories"></a>Weitere Kategorien
 
-Alle Protokolle für andere Kategorien, die nicht bereits aufgeführt sind, werden in Application Insights als „traces“ (Ablaufverfolgungen) angezeigt.
+Alle Protokolle für andere Kategorien, die nicht bereits aufgeführt sind, werden in Application Insights in der Tabelle **traces** angezeigt.
 
 ![traces-Abfrage](media/functions-monitoring/analytics-traces.png)
 
@@ -291,7 +291,7 @@ Wenn Sie die gleiche Nachrichtenzeichenfolge beibehalten und die Reihenfolge der
 
 Platzhalter werden auf diese Weise verarbeitet, damit Sie die strukturierte Protokollierung durchführen können. Application Insights speichert die Name/Wert-Paare für Parameter zusätzlich zur Nachrichtenzeichenfolge. Das Ergebnis ist, dass die Nachrichtenargumente zu Feldern werden, anhand denen Sie Abfragen durchführen können.
 
-Wenn Ihr Methodenaufruf für die Protokollierung beispielsweise wie im vorherigen Beispiel aussieht, können Sie das Feld `customDimensions.prop__rowKey` abfragen. Durch das Hinzufügen des Präfix soll sichergestellt werden, dass es zwischen den Feldern, die von der Laufzeit hinzugefügt werden, und Feldern, die von Ihrem Funktionscode hinzugefügt werden, nicht zu Konflikten kommt.
+Wenn Ihr Methodenaufruf für die Protokollierung beispielsweise wie im vorherigen Beispiel aussieht, können Sie das Feld `customDimensions.prop__rowKey` abfragen. Durch das Hinzufügen des Präfix `prop__` soll sichergestellt werden, dass es zwischen den Feldern, die von der Runtime hinzugefügt werden, und Feldern, die von Ihrem Funktionscode hinzugefügt werden, nicht zu Konflikten kommt.
 
 Sie können auch die ursprüngliche Nachrichtenzeichenfolge abfragen, indem Sie auf das Feld `customDimensions.prop__{OriginalFormat}` verweisen.  
 
@@ -454,7 +454,7 @@ Mit dem Parameter `tagOverrides` wird `operation_Id` auf die Aufrufkennung der F
 
 ### <a name="dependencies"></a>Abhängigkeiten
 
-Abhängigkeiten werden nicht automatisch angezeigt, aber Sie können benutzerdefinierten Code schreiben, um Abhängigkeiten anzuzeigen. Dies wird im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie folgt aussieht:
+Abhängigkeiten der Funktion gegenüber anderen Diensten werden nicht automatisch angezeigt, aber Sie können benutzerdefinierten Code schreiben, um Abhängigkeiten anzuzeigen. Dies wird im Beispielcode im [Abschnitt zu den benutzerdefinierten C#-Telemetriedaten](#custom-telemetry-in-c-functions) veranschaulicht. Der Beispielcode ergibt in Application Insights eine *Anwendungszuordnung*, die wie folgt aussieht:
 
 ![Anwendungszuordnung](media/functions-monitoring/app-map.png)
 

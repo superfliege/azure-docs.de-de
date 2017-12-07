@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 08/03/2017
+ms.date: 11/27/2017
 ms.author: danlep
-ms.openlocfilehash: 87d60ae51aaa33b709d272605419fd85eeb5d93d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c77cd0148a7e3e7b99e90e29bc1499dae8f95028
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="install-a-lemp-web-server-on-an-azure-vm"></a>Installieren eines LEMP-Webservers auf einem virtuellen Azure-Computer
 In diesem Artikel werden Sie durch die Bereitstellung eines NGINX-Webservers sowie von MySQL und PHP (LEMP-Stack) auf einem virtuellen Ubuntu-Computer in Azure geführt. Der LEMP-Stack ist eine Alternative zum gängigen [LAMP-Stack](tutorial-lamp-stack.md), der auch in Azure installiert werden kann. Um den LEMP-Server in Aktion zu sehen, können Sie optional eine WordPress-Website installieren und konfigurieren. In diesem Tutorial lernen Sie Folgendes:
@@ -31,6 +31,8 @@ In diesem Artikel werden Sie durch die Bereitstellung eines NGINX-Webservers sow
 > * Überprüfen der Installation und Konfiguration
 > * Installieren von WordPress auf dem LEMP-Server
 
+
+Dieses Setup ist für schnelle Tests oder Proof of Concept gedacht.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -73,15 +75,16 @@ Nachdem NGINX installiert und Port 80 für den virtuellen Computer geöffnet wur
 mysql -V
 ```
 
-Es wird empfohlen, das folgende Skript zum Sichern der Installation von MySQL auszuführen:
+Führen Sie zum Sichern der Installation von MySQL das Skript `mysql_secure_installation` aus. Falls Sie nur einen temporären Server einrichten, können Sie diesen Schritt überspringen. 
 
 ```bash
 mysql_secure_installation
 ```
 
-Geben Sie Ihr MySQL-Stammkennwort ein, und konfigurieren Sie die Sicherheitseinstellungen für Ihre Umgebung.
+Geben Sie ein Stammkennwort für MySQL ein, und konfigurieren Sie die Sicherheitseinstellungen für Ihre Umgebung.
 
-Wenn Sie eine MySQL-Datenbank erstellen, Benutzer hinzufügen oder Konfigurationseinstellungen ändern möchten, melden Sie sich bei MySQL an:
+Wenn Sie MySQL-Features (MySQL-Datenbank erstellen, Benutzer hinzufügen oder Konfigurationseinstellungen ändern) ausprobieren möchten, melden Sie sich bei MySQL an. Dieser Schritt ist für den Abschluss des Tutorials nicht erforderlich. 
+
 
 ```bash
 mysql -u root -p

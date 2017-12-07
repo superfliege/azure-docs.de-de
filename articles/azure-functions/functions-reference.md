@@ -3,7 +3,7 @@ title: Leitfaden zur Entwicklung von Azure Functions | Microsoft-Dokumentation
 description: "Lernen Sie die Konzepte und Techniken der Azure Functions kennen, die Sie benötigen, um alle Programmiersprachen und Bindungen übergreifend Funktionen in Azure zu entwickeln."
 services: functions
 documentationcenter: na
-author: christopheranderson
+author: tdykstra
 manager: cfowler
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
-ms.author: chrande
-ms.openlocfilehash: cf965170e0c645e77a9b8829a10a18b29889a061
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.author: tdykstra
+ms.openlocfilehash: 80996c8bc6e40665201057ed185700ddaeea170a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -81,11 +81,8 @@ Der im Azure-Portal integrierte Funktionen-Editor ermöglicht das Aktualisieren 
 Funktionen-Apps basieren auf App Service. Daher stehen alle [für Standard-Web-Apps verfügbaren Bereitstellungsoptionen](../app-service/app-service-deploy-local-git.md) auch für Funktionen-Apps zur Verfügung. Es folgen einige Methoden, die Sie zum Hochladen oder Aktualisieren von Funktionen-App-Dateien befolgen können. 
 
 #### <a name="to-use-app-service-editor"></a>So verwenden Sie den App Service-Editor
-1. Klicken Sie im Azure Functions-Portal auf **Funktionen-App-Einstellungen**.
-2. Klicken Sie im Abschnitt **Erweiterte Einstellungen** auf **Zu App Service-Einstellungen** wechseln.
-3. Klicken Sie im App-Menü „Nav“ unter **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.
-4. Klicken Sie auf **Start**.
-   
+1. Klicken Sie im Azure Functions-Portal auf **Plattformfeatures**.
+2. Klicken Sie im Abschnitt **ENTWICKLUNGSTOOLS** auf **App Service-Editor**.   
    Nachdem der App Service-Editor geladen wurde, sehen Sie die Datei *host.json* und die Funktionenordner unter *wwwroot*. 
 5. Öffnen Sie die Dateien, um Sie zu bearbeiten, oder laden Sie Dateien per Drag & Drop von Ihrem Entwicklungscomputer hoch.
 

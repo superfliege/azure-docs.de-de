@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.openlocfilehash: d85281c02b792921f12cc62e6d60bef3e7c13b3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efdd42d244710b27fc33154b708cfbe40312e3b0
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="service-health-notifications"></a>Dienstintegritätsbenachrichtigungen
 ## <a name="overview"></a>Übersicht
 
 Dieser Artikel zeigt Ihnen, wie Sie Dienstintegritätsbenachrichtigungen im Azure-Portal anzeigen.
 
-Mit Dienstintegritätsbenachrichtigungen können Sie Dienstintegritätsmeldungen des Azure-Teams anzeigen, die sich auf die Ressourcen unter Ihrem Abonnement auswirken könnten. Diese Benachrichtigungen sind eine Unterklasse von Aktivitätsprotokollereignissen und auch auf dem Aktivitätsprotokollblatt zu finden. Dienstintegritätsbenachrichtigungen können je nach Klasse informativ oder handlungsrelevant sein.
+Mit Dienstintegritätsbenachrichtigungen können Sie Dienstintegritätsmeldungen des Azure-Teams anzeigen, die sich auf die Ressourcen unter Ihrem Abonnement auswirken könnten. Diese Benachrichtigungen sind eine Unterklasse von Aktivitätsprotokollereignissen und auch im Aktivitätsprotokoll zu finden. Dienstintegritätsbenachrichtigungen können je nach Klasse informativ oder handlungsrelevant sein.
 
 Es gibt fünf Klassen von Dienstintegritätsbenachrichtigungen:  
 
-- **Aktion erforderlich:** Von Zeit zu Zeit stellen wir möglicherweise fest, dass auf Ihrem Konto etwas Ungewöhnliches stattfindet. Dann müssen wir dies vielleicht mit Ihnen gemeinsam klären. Wir werden Ihnen dann eine Benachrichtigung senden, in der wir Ihnen ausführlich mitteilen, welche Maßnahmen Sie ergreifen müssen, oder wie Sie sich an Azure-Engineering oder -Support wenden.  
-- **Unterstützte Wiederherstellung:** Ein Ereignis ist aufgetreten, und Entwickler haben sich davon überzeugt, dass Sie weiterhin Beeinträchtigungen unterliegen. Das Engineeringteam muss direkt mit Ihnen zusammenarbeiten, um Ihre Dienste wiederherzustellen.  
+- **Aktion erforderlich:** Von Zeit zu Zeit stellt Azure möglicherweise fest, dass auf Ihrem Konto etwas Ungewöhnliches stattfindet. Dies muss Azure dann eventuell mit Ihnen gemeinsam klären. Azure sendet Ihnen in diesem Fall eine Benachrichtigung, in der Ihnen ausführlich mitgeteilt wird, welche Maßnahmen Sie ergreifen müssen oder wie Sie sich an Azure-Engineering oder den Support wenden.  
+- **Unterstützte Wiederherstellung:** Ein Ereignis ist aufgetreten, und Entwickler haben sich davon überzeugt, dass Sie weiterhin Beeinträchtigungen unterliegen. Das Azure-Engineeringteam muss direkt mit Ihnen zusammenarbeiten, um Ihre Dienste vollständig wiederherzustellen.  
 - **Incident:** Ein Ereignis, das Dienste beeinträchtigt, beeinflusst derzeit eine oder mehrere Ressourcen in Ihrem Abonnement.  
 - **Wartung:** Diese Benachrichtigung informiert Sie über eine geplante Wartungsaktivität, die eine oder mehrere Ressourcen in Ihrem Abonnement beeinträchtigen kann.  
-- **Informationen:** Von Zeit für die Zeit senden wir Ihnen möglicherweise Benachrichtigungen, um Sie über potenzielle Optimierungen zu informieren, die Ihre Ressourcenverwendung verbessern könnten.  
+- **Informationen:** Von Zeit zu Zeit sendet Azure Ihnen möglicherweise Benachrichtigungen, um Sie über potenzielle Optimierungen zu informieren, die Ihre Ressourcenverwendung verbessern könnten.  
 - **Sicherheit:** Dringende sicherheitsbezogene Informationen bezüglich Ihrer auf Azure ausgeführten Lösung(en).
 
-Jede Dienstintegritätsbenachrichtigung übermittelt Details zum Umfang und zu den Auswirkungen auf Ihre Ressourcen. Zu den Details gehören:
+Jede Dienstintegritätsbenachrichtigung schließt Details zum Umfang und zu den Auswirkungen auf Ihre Ressourcen ein. Zu den Details gehören:
 
 Eigenschaftenname | Beschreibung
 -------- | -----------
@@ -70,14 +70,12 @@ Properties.communicationId | Die Kommunikation dieses Ereignisses ist zugeordnet
 1.  Navigieren Sie im [Portal](https://portal.azure.com) zum Dienst **Überwachen**.
 
     ![Überwachen](./media/monitoring-service-notifications/home-monitor.png)
-2.  Klicken Sie auf die Option **Überwachen**, um das Blatt „Überwachen“ zu öffnen. Auf diesem Blatt sind alle Überwachungseinstellungen und -daten in einer konsolidierten Ansicht zusammengefasst. Zunächst wird der Abschnitt **Aktivitätsprotokoll** geöffnet.
+2.  Klicken Sie auf die Option **Überwachen**, um die Oberfläche „Überwachen“ zu öffnen. Azure Monitor fasst alle Überwachungseinstellungen und -daten in einer konsolidierten Ansicht zusammen. Zunächst wird der Abschnitt **Aktivitätsprotokoll** geöffnet.
 
-3.  Klicken Sie jetzt auf den Abschnitt **Dienstbenachrichtigungen**.
+3.  Klicken Sie nun auf den Abschnitt **Warnungen**.
 
     ![Überwachen](./media/monitoring-service-notifications/service-health-summary.png)
-4.  Klicken Sie auf eine beliebige Position, um weitere Details anzuzeigen.
-
-5. Klicken Sie auf den Vorgang **+Aktivitätsprotokollwarnung hinzufügen**, um Benachrichtigungen zu empfangen und so sicherzustellen, dass Sie zukünftige Dienstbenachrichtigungen dieses Typs erhalten werden. Um mehr zum Konfigurieren von Warnungen zu Dienstbenachrichtigungen zu erfahren, [klicken Sie hier](monitoring-activity-log-alerts-on-service-notifications.md).
+4. Klicken Sie auf **+ Aktivitätsprotokollwarnung hinzufügen**, und konfigurieren Sie eine Warnung, um sicherzustellen, dass Sie zukünftige Dienstbenachrichtigungen erhalten. Weitere Informationen zum Konfigurieren von Warnungen für Dienstbenachrichtigungen finden Sie auf der [Seite für Aktivitätsprotokollwarnungen und Dienstbenachrichtigungen](monitoring-activity-log-alerts-on-service-notifications.md).
 
 ## <a name="next-steps"></a>Nächste Schritte:
 Empfangen von [Warnungsbenachrichtigungen, wenn eine Dienstintegritätsbenachrichtigung](monitoring-activity-log-alerts-on-service-notifications.md) gesendet wird  

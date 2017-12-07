@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/16/2017
 ms.author: sethm
-ms.openlocfilehash: 69c07cb31b1dc3ec3685448d8187ef3a57bd3821
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 7d5f14d5a65253cf0aad1811ace419bf2f39f7db
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="event-hubs-programming-guide"></a>Programmierleitfaden für Event Hubs
 
@@ -117,10 +117,10 @@ Das Senden von Ereignissen in Batches kann den Durchsatz erhöhen. Die [SendBatc
 public void SendBatch(IEnumerable<EventData> eventDataList);
 ```
 
-Beachten Sie, dass ein einzelner Batch den Grenzwert von 256 KB für ein Ereignis nicht überschreiten darf. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert.
+Beachten Sie, dass ein einzelner Batch den Grenzwert von 256 KB für ein Ereignis nicht überschreiten darf. Darüber hinaus wird für jede Nachricht im Batch die gleiche Herausgeberidentität (Publisher Identity) verwendet. Der Absender ist dafür verantwortlich sicherzustellen, dass die maximale Ereignisgröße für den Batch nicht überschritten wird. Bei einer Überschreitung wird ein **Send** -Fehler für den Client generiert. Sie können mit der Hilfsprogrammmethode [EventHubClient.CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch) sicherstellen, dass der Batch 256 KB nicht überschreitet. Sie erhalten von der [CreateBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.createbatch)-API ein leeres [EventDataBatch](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch)-Element, und verwenden dann [TryAdd](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.tryadd#Microsoft_ServiceBus_Messaging_EventDataBatch_TryAdd_Microsoft_ServiceBus_Messaging_EventData_), um Ereignisse hinzuzufügen und den Batch zu erstellen. Rufen Sie schließlich mit [EventDataBatch.ToEnumerable](/dotnet/api/microsoft.servicebus.messaging.eventdatabatch.toenumerable) die zugrunde liegenden Ereignisse für die Übergabe an die [EventHubClient.Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send)-API ab.
 
 ## <a name="send-asynchronously-and-send-at-scale"></a>Asynchrones Senden und Senden mit Skalierung
-Sie können Ereignisse auch asynchron an einen Event Hub senden. Beim asynchronen Senden kann die Rate erhöht werden, mit der ein Client Ereignisse senden kann. Sowohl die [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_)-Methode als auch die [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_SendBatch_System_Collections_Generic_IEnumerable_Microsoft_ServiceBus_Messaging_EventData__)-Methode ist in asynchronen Versionen verfügbar, die ein [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx)-Objekt zurückgeben. Mit dieser Vorgehensweise kann zwar der Durchsatz erhöht werden, aber sie kann auch dazu führen, dass der Client auch dann weiter Ereignisse sendet, während er durch den Event Hubs-Dienst gedrosselt wird. Dies kann bei einer falschen Implementierung zur Folge haben, dass für den Client Fehler oder verloren gegangene Nachrichten auftreten. Darüber hinaus können Sie die [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity#Microsoft_ServiceBus_Messaging_ClientEntity_RetryPolicy)-Eigenschaft auf dem Client verwenden, um Wiederholungsversuche des Clients zu steuern.
+Sie können Ereignisse auch asynchron an einen Event Hub senden. Beim asynchronen Senden kann die Rate erhöht werden, mit der ein Client Ereignisse senden kann. Sowohl die [Send](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.send)-Methode als auch die [SendBatch](/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendbatch)-Methode ist in asynchronen Versionen verfügbar, die ein [Task](https://msdn.microsoft.com/library/system.threading.tasks.task.aspx)-Objekt zurückgeben. Mit dieser Vorgehensweise kann zwar der Durchsatz erhöht werden, aber sie kann auch dazu führen, dass der Client auch dann weiter Ereignisse sendet, während er durch den Event Hubs-Dienst gedrosselt wird. Dies kann bei einer falschen Implementierung zur Folge haben, dass für den Client Fehler oder verloren gegangene Nachrichten auftreten. Darüber hinaus können Sie die [RetryPolicy](/dotnet/api/microsoft.servicebus.messaging.cliententity.retrypolicy)-Eigenschaft auf dem Client verwenden, um Wiederholungsversuche des Clients zu steuern.
 
 ## <a name="create-a-partition-sender"></a>Erstellen eines Elements für das Senden an Partitionen
 Am häufigsten werden Ereignisse zwar ohne Partitionsschlüssel an einen Event Hub gesendet, aber es kann auch vorkommen, dass Sie Ereignisse direkt an eine bestimmte Partition senden möchten. Beispiel:

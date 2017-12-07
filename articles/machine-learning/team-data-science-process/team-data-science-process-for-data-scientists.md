@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: d572fe3ad01d75b76ac87b441a5397d1c1841547
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 52d6fe0757043a0a298c3fdee0478fb364074537
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>Team Data Science-Prozess für Datenanalysten
 
@@ -30,6 +30,8 @@ Dieser Artikel enthält Informationen zu einer Reihe von Zielen, die in der Rege
 - Grundlagen von Datenübertragung und -speicherung
 - Erstellen von Dokumentationen zur Datenquelle
 - Verwenden von Tools für die Analyseverarbeitung
+
+Diese Schulungsmaterialien beziehen sich auf den Team Data Science-Prozess (TDSP) und Open-Source-Software und -Toolkits von Microsoft, die nützlich für den Entwurf, die Ausführung und die Bereitstellung von Data Science-Lösungen sind.
 
 ## <a name="lesson-path"></a>Lektionspfad
 Anhand der Einträge in der folgenden Tabelle können Sie Ihre Vorgehensweise beim Selbststudium planen. Lesen Sie die Informationen in der Spalte *Beschreibung*, um dem Pfad zu folgen, klicken auf die Links zum *Thema*, um weitere Lerninformationen zu erhalten, und überprüfen Sie Ihre Kenntnisse in der Spalte *Wissenstest*.

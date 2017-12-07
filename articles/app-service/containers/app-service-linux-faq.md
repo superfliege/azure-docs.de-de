@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: 265538a7e31d58a7d58c9e30870510eb66954f44
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: d262d9c2bd23a09c2efdb5fd6695bb2ed29cae54
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Häufig gestellte Fragen (FAQ) zu Azure App Service unter Linux
 
@@ -29,7 +29,7 @@ Wenn Sie eine Frage haben, kommentieren Sie den Artikel, und wir werden so bald 
 
 ## <a name="built-in-images"></a>Integrierte Images
 
-**Ich möchte die integrierten Docker-Container nutzen, die von der Plattform bereitgestellt werden. Wo finde ich diese Dateien?**
+ **Ich möchte die integrierten Docker-Container nutzen, die von der Plattform bereitgestellt werden. Wo finde ich diese Dateien?**
 
 Sie finden alle Docker-Dateien auf [GitHub](https://github.com/azure-app-service). Sie finden alle Docker-Container auf [Docker Hub](https://hub.docker.com/u/appsvc/).
 
@@ -64,6 +64,20 @@ Ja.
 **Kann ich *Web Deploy* zur Bereitstellung meiner Web-App verwenden?**
 
 Ja, Sie müssen die App-Einstellung `WEBSITE_WEBDEPLOY_USE_SCM` auf *false* festlegen.
+
+**Bei der Git-Bereitstellung meiner Anwendung tritt ein Fehler auf, wenn ich eine Linux-Web-App verwende. Wie kann ich dieses Problem umgehen?**
+
+Wenn bei der Git-Bereitstellung in Ihrer Linux-Web-App ein Fehler auftritt, können Sie die folgenden alternativen Möglichkeiten zum Bereitstellen des Anwendungscodes nutzen:
+
+- Verwenden Sie das Feature für Continuous Delivery (Vorschauversion): Sie können den Quellcode Ihrer App in einem Team Services-Git-Repository oder einem GitHub-Repository speichern, um Azure Continuous Delivery zu verwenden. Weitere Informationen finden Sie unter [Use Azure portal to setup Continuous Delivery for Web App On Linux](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/) (Einrichten von Continuous Delivery für Web-Apps unter Linux mithilfe des Azure-Portals).
+
+- Verwenden Sie die [API für die ZIP-Bereitstellung](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file):Stellen Sie zur Verwendung dieser API [eine SSH-Verbindung mit Ihrer Web-App](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-ssh-support#making-a-client-connection) her, und navigieren Sie zu dem Ordner, in dem der Code bereitgestellt werden soll. Führen Sie Folgendes aus:
+
+   ```
+   curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
+   ```
+
+   Wenn eine Fehlermeldung angezeigt wird, dass der Befehl `curl` nicht gefunden wird, müssen Sie curl unbedingt mithilfe von `apt-get install curl` installieren, bevor Sie den Befehl `curl` ausführen.
 
 ## <a name="language-support"></a>Sprachunterstützung
 

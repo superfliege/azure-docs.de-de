@@ -6,22 +6,24 @@ keywords:
 author: msebolt
 manager: timlt
 ms.author: v-masebo
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 0d19d1142cf15221f84692f7e613edd6b46b4083
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 5a143bbf7abb5304ac51782d517c02ec184a05a2
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Stream Analytics als IoT Edge-Modul – Vorschau
 
 IoT-Geräte können sehr große Datenmengen erzeugen. Um die Größe der übertragenen Daten zu reduzieren oder die Roundtriplatenz aussagekräftiger Erkenntnisse zu beseitigen, müssen diese Daten in bestimmten Fällen analysiert oder verarbeitet werden, bevor sie die Cloud erreichen.
 
-[Azure Stream Analytics][azure-stream] (ASA) bietet eine aufwändig strukturierte Abfragesyntax für die Datenanalyse in der Cloud und auf IoT Edge-Geräten. Weitere Informationen zu ASA auf IoT Edge finden Sie in der [ASA-Dokumentation](../stream-analytics/stream-analytics-edge.md).
+IoT Edge profitiert von vorgefertigten Azure Service IoT Edge-Modulen für eine schnelle Bereitstellung, und [Azure Stream Analytics][azure-stream] (ASA) ist ein solches Modul. Sie können über das Portal einen ASA-Auftrag erstellen und anschließend zum IoT Hub-Portal wechseln, um es als IoT Edge-Modul bereitzustellen.  
 
-Dieses Tutorial leitet Sie durch die Erstellung eines Azure Stream Analytics-Auftrags und seine Bereitstellung auf einem IoT Edge-Gerät, damit ein lokaler Telemetriestream direkt auf dem Gerät verarbeitet werden kann und Warnungen erzeugt werden, mit denen Sofortmaßnahmen auf dem Gerät ausgelöst werden können.  In diesem Tutorial geht es um zwei Module: ein simuliertes Temperatursensormodul (tempSensor), das Temperaturdaten zwischen 20 und 120 Grad erzeugt, die alle 5 Sekunden um den Wert 1 erhöht werden, und ein ASA-Modul, das Temperaturen über 100 Grad herausfiltert. Das ASA-Modul setzt zudem tempSensor zurück, sobald über 30 Sekunden ein Durchschnittswert von 100 erreicht wird.
+Azure Stream Analytics bietet eine aufwändig strukturierte Abfragesyntax für die Datenanalyse in der Cloud und auf IoT Edge-Geräten. Weitere Informationen zu ASA auf IoT Edge finden Sie in der [ASA-Dokumentation](../stream-analytics/stream-analytics-edge.md).
+
+Dieses Tutorial leitet Sie durch die Erstellung eines Azure Stream Analytics-Auftrags und seine Bereitstellung auf einem IoT Edge-Gerät, damit ein lokaler Telemetriestream direkt auf dem Gerät verarbeitet werden kann und Warnungen erzeugt werden, mit denen Sofortmaßnahmen auf dem Gerät ausgelöst werden können.  In diesem Tutorial geht es um zwei Module: Ein simuliertes Temperatursensormodul (tempSensor), das Temperaturdaten zwischen 20 und 120 Grad erzeugt, die alle 5 Sekunden um den Wert 1 erhöht werden Ein Stream Analytics-Modul, das tempSensor zurücksetzt, sobald über 30 Sekunden ein Durchschnittswert von 70 erreicht wird. In einer Produktionsumgebung kann diese Funktion dazu verwendet werden, einen Computer herunterzufahren oder vorbeugende Maßnahmen zu ergreifen, wenn die Temperatur eine gefährliche Höhe erreicht. 
 
 Folgendes wird vermittelt:
 
@@ -33,64 +35,58 @@ Folgendes wird vermittelt:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * IoT Hub 
-* Das Gerät, das Sie im Schnellstart oder im Abschnitt „Bereitstellen von Azure IoT Edge“ erstellt und konfiguriert haben, oder ein simuliertes Gerät unter [Windows][lnk-tutorial1-win] oder [Linux][lnk-tutorial1-lin]
-* Docker auf Ihrem IoT Edge-Gerät
-    * [Installieren Sie Docker unter Windows][lnk-docker-windows], und stellen Sie sicher, dass dieses Programm ausgeführt wird.
-    * [Installieren Sie Docker unter Linux][lnk-docker-linux], und stellen Sie sicher, dass dieses Programm ausgeführt wird.
+* Das Gerät, das Sie im Schnellstart oder im Abschnitt „Bereitstellen von Azure IoT Edge“ erstellt und konfiguriert haben, oder ein simuliertes Gerät unter [Windows][lnk-tutorial1-win] oder [Linux][lnk-tutorial1-lin] Sie müssen den Geräteverbindungsschlüssel und die Geräte-ID kennen. 
+* Docker auf dem IoT Edge-Gerät
+    * [Installieren von Docker unter Windows][lnk-docker-windows]
+    * [Installieren von Docker unter Linux][lnk-docker-linux]
 * Python 2.7.x auf Ihrem IoT Edge-Gerät
     * [Installieren Sie Python 2.7 unter Windows][lnk-python].
     * In den meisten Linux-Distributionen, einschließlich Ubuntu, ist Python 2.7 bereits installiert.  Führen Sie den folgenden Befehl aus, um zu überprüfen, ob pip installiert ist: `sudo apt-get install python-pip`.
 
-> [!NOTE]
-> Beachten Sie, dass Ihre Geräte-Verbindungszeichenfolge und Ihre IoT Edge-Geräte-ID für dieses Tutorial benötigt werden.
-
-IoT Edge profitiert von vorgefertigten Azure Service IoT Edge-Modulen für eine schnelle Bereitstellung, und Azure Stream Analytics (ASA) ist ein solches Modul. Sie können über das Portal einen ASA-Auftrag erstellen und anschließend zum IoT Hub-Portal wechseln, um es als IoT Edge-Modul bereitzustellen.  
-
-Weitere Informationen zu Azure Stream Analytics finden Sie im Abschnitt **Übersicht** der [Azure Stream Analytics-Dokumentation][azure-stream].
 
 ## <a name="create-an-asa-job"></a>Erstellen eines ASA-Auftrags
 
 In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag, um Daten aus Ihrem IoT Hub abzurufen, die gesendeten Telemetriedaten bei Ihrem Gerät abzufragen und die Ergebnisse an einen Azure Storage-Container (Blob) weiterzuleiten. Weitere Informationen finden Sie im Abschnitt **Übersicht** der [Stream Analytics-Dokumentation][azure-stream]. 
 
-> [!NOTE]
-> Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als Ausgabe in Ihrem ASA-Auftrag verwendet wird. Im folgenden Beispiel wird der Speichertyp Blob verwendet.  Weitere Informationen finden Sie im Abschnitt **Blobs** in der [Azure Storage-Dokumentation][azure-storage].
+### <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
 
-1. Navigieren Sie im Azure-Portal zu **Ressource erstellen > Speicher**, klicken Sie auf **Alle anzeigen**, und klicken Sie dann auf **Storage Account – Blob, File, Table, Queue** (Speicherkonto – Blob, Datei, Tabelle, Warteschlange).
+Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als Ausgabe in Ihrem ASA-Auftrag verwendet wird. Im folgenden Beispiel wird der Speichertyp Blob verwendet.  Weitere Informationen finden Sie im Abschnitt **Blobs** in der [Azure Storage-Dokumentation][azure-storage].
 
-2. Geben Sie einen Namen für Ihr Speicherkonto ein, und wählen Sie den gleichen Speicherort aus, in dem Ihr IoT Hub gespeichert ist. Klicken Sie auf **Erstellen**. Notieren Sie sich den Namen für die spätere Verwendung.
+1. Navigieren Sie im Azure-Portal zu **Ressource erstellen**, und geben Sie `Storage account` in die Suchleiste ein. Wählen Sie **Speicherkonto – Blob, Datei, Tabelle, Warteschlange**.
+
+2. Geben Sie einen Namen für Ihr Speicherkonto ein, und wählen Sie den Speicherort aus, in dem sich auch Ihr IoT Hub befindet. Klicken Sie auf **Erstellen**. Notieren Sie sich den Namen für die spätere Verwendung.
 
     ![Neues Speicherkonto][1]
 
-3. Navigieren Sie im Azure-Portal zum gerade erstellten Speicherkonto. Klicken Sie unter **Blob-Dienst** auf **Blobs durchsuchen**. 
-4. Erstellen Sie einen neuen Container für das ASA-Modul, um Daten zu speichern. Legen Sie als Zugriffsebene _Container_ fest. Klicken Sie auf **OK**.
+3. Navigieren Sie zum gerade erstellten Speicherkonto. Klicken Sie auf **Blobs durchsuchen**. 
+4. Erstellen Sie einen neuen Container für das ASA-Modul, um Daten zu speichern. Legen Sie als Zugriffsebene **Container** fest. Klicken Sie auf **OK**.
 
     ![Speichereinstellungen][10]
 
-5. Navigieren Sie im Azure-Portal zu **Ressourcen erstellen** > **Internet der Dinge**, und wählen Sie **Stream Analytics-Auftrag** aus.
+### <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
+
+1. Navigieren Sie im Azure-Portal zu **Ressourcen erstellen** > **Internet der Dinge**, und wählen Sie **Stream Analytics-Auftrag** aus.
 
 2. Geben Sie einen Namen ein, wählen Sie **Edge** als Hostingumgebung aus, und behalten Sie die übrigen Standardwerte bei.  Klicken Sie auf **Erstellen**.
 
     >[!NOTE]
-    >Aktuell werden ASA-Auftrage für IoT Edge in der Region „USA, Westen 2“ nicht unterstützt. Wählen Sie einen anderen Standort aus.
+    >Aktuell werden ASA-Aufträge für IoT Edge in der Region „USA, Westen 2“ nicht unterstützt. 
 
-    ![ASA erstellen][5]
+3. Wechseln Sie zum erstellten Auftrag. Klicken Sie auf **Eingaben** und dann auf **Hinzufügen**.
 
-2. Wechseln Sie in den erstellten Auftrag, wählen Sie unter **Auftragstopologie** die Option **Eingaben** aus, und klicken Sie auf **Hinzufügen**.
+4. Geben Sie als Eingabealias `temperature` ein, legen Sie für den Quelltyp **Datenstrom** fest, und behalten Sie die Standardeinstellungen für die anderen Parameter bei. Klicken Sie auf **Erstellen**.
 
-3. Geben Sie den Namen `temperature` ein, wählen Sie **Datenstrom** als Typ der Datenquelle aus, und behalten Sie die Standardeinstellungen für die anderen Parameter bei. Klicken Sie auf **Erstellen**.
+   ![ASA-Eingabe](./media/tutorial-deploy-stream-analytics/asa_input.png)
 
-    ![ASA-Eingabe][2]
+5. Klicken Sie auf **Ausgaben** und dann auf **Hinzufügen**.
 
-    > [!NOTE]
-    > Zusätzliche Eingaben können IoT Edge-spezifische Endpunkte enthalten.
+6. Geben Sie als Ausgabealias `alert` ein, und behalten Sie die Standardeinstellungen für die anderen Parameter bei. Klicken Sie auf **Erstellen**.
 
-4. Wählen Sie unter **Auftragstopologie** den Eintrag **Ausgaben** aus, und klicken Sie auf **Hinzufügen**.
+   ![ASA-Ausgabe](./media/tutorial-deploy-stream-analytics/asa_output.png)
 
-5. Geben Sie den Namen `alert` ein und behalten Sie die Standardwerte bei. Klicken Sie auf **Erstellen**.
 
-    ![ASA-Ausgabe][3]
-
-6. Wählen Sie unter **Auftragstopologie** den Eintrag **Abfrage** aus, und geben Sie Folgendes ein:
+7. Wählen Sie **Abfrage**.
+8. Ersetzen Sie den Standardtext durch die folgende Abfrage:
 
     ```sql
     SELECT  
@@ -100,27 +96,31 @@ In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag, um Daten
     FROM 
        temperature TIMESTAMP BY timeCreated 
     GROUP BY TumblingWindow(second,30) 
-    HAVING Avg(machine.temperature) > 100
+    HAVING Avg(machine.temperature) > 70
     ```
+9. Klicken Sie auf **Speichern**.
 
 ## <a name="deploy-the-job"></a>Bereitstellen des Auftrags
 
 Sie können den ASA-Auftrag jetzt auf Ihrem IoT Edge-Gerät bereitstellen.
 
-1. Wechseln Sie im Azure-Portal in Ihrem IoT Hub zu **IoT Edge (Vorschau)**, und öffnen Sie Ihr Blatt *{deviceId}*.
-
-1. Wählen Sie **Set Modules** (Module festlegen) aus, und wählen Sie dann **Import Azure Service IoT Edge Module** (IoT Edge-Modul von Azure-Dienst importieren) aus.
-
-1. Wählen Sie das Abonnement und den erstellten ASA-Edge-Auftrag aus. Wählen Sie dann Ihr Speicherkonto aus. Klicken Sie auf **Speichern**.
+1. Wechseln Sie im Azure-Portal in Ihrem IoT-Hub zu **IoT Edge (Vorschau)**, und öffnen Sie die Detailseite für Ihr IoT Edge-Gerät.
+1. Wählen Sie **Module festlegen** aus.
+1. Wenn Sie zuvor das tempSensor-Modul auf diesem Gerät bereitgestellt haben, wird es unter Umständen automatisch aufgefüllt. Wenn dies nicht der Fall ist, fügen Sie dieses Modul mit den folgenden Schritten hinzu:
+   1. Klicken Sie auf **IoT Edge-Modul hinzufügen**.
+   1. Geben Sie als Name `tempSensor` und als Image-URI `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` ein. 
+   1. Behalten Sie die restlichen Einstellungen unverändert bei, und klicken Sie auf **Speichern**.
+1. Klicken Sie zum Hinzufügen des ASA-Edge-Auftrags auf **Import Azure Stream Analytics IoT Edge Module** (Azure Stream Analytics-IoT Edge-Modul importieren).
+1. Wählen Sie das Abonnement und den erstellten ASA-Edge-Auftrag aus. 
+1. Wählen Sie das Abonnement und das erstellte Speicherkonto aus. Klicken Sie auf **Speichern**.
 
     ![Modul festlegen][6]
 
-1. Klicken Sie auf **IoT Edge-Modul hinzufügen**, um das Temperatursensormodul hinzuzufügen. Geben Sie _tempSensor_ als Name und `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` als Image-URL ein. Behalten Sie die restlichen Einstellungen unverändert bei, und klicken Sie auf **Speichern**.
+1. Kopieren Sie den Namen, der automatisch für Ihr ASA-Modul generiert wurde. 
 
     ![Temperaturmodul][11]
 
-1. Kopieren Sie den Namen des ASA-Moduls. Klicken Sie auf **Weiter**, um Routen zu konfigurieren.
-
+1. Klicken Sie auf **Weiter**, um Routen zu konfigurieren.
 1. Kopieren Sie Folgendes nach **Routen**.  Ersetzen Sie _{moduleName}_ durch den zuvor kopierten Modulnamen:
 
     ```json
@@ -139,7 +139,7 @@ Sie können den ASA-Auftrag jetzt auf Ihrem IoT Edge-Gerät bereitstellen.
 
 1. Klicken Sie im Schritt **Vorlage überprüfen** auf **Senden**.
 
-1. Kehren Sie zur Seite mit den Gerätedetails zurück, und klicken Sie auf **Aktualisieren**.  Es sollte nun angezeigt werden, dass das neue _{moduleName}_-Modul zusammen mit dem **IoT Edge-Agent**-Modul und dem **IoT Edge-Hub** ausgeführt wird.
+1. Kehren Sie zur Seite mit den Gerätedetails zurück, und klicken Sie auf **Aktualisieren**.  Es sollte nun angezeigt werden, dass das neue Stream Analytics-Modul zusammen mit dem **IoT Edge-Agent**-Modul und dem **IoT Edge-Hub** ausgeführt wird.
 
     ![Modulausgabe][7]
 
@@ -147,37 +147,24 @@ Sie können den ASA-Auftrag jetzt auf Ihrem IoT Edge-Gerät bereitstellen.
 
 Wechseln Sie nun zu Ihrem IoT Edge-Gerät, um sich über die Interaktion zwischen dem ASA-Modul und dem tempSensor-Modul zu informieren.
 
-1. Konfigurieren Sie die Runtime an der Eingabeaufforderung mit der Verbindungszeichenfolge für Ihr IoT Edge-Gerät:
+Überprüfen Sie, ob alle Module in Docker ausgeführt werden:
 
-    ```cmd/sh
-    iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords  
-    ```
+   ```cmd/sh
+   docker ps  
+   ```
 
-1. Führen Sie diesen Befehl aus, um die Runtime zu starten:
+   ![Docker-Ausgabe][8]
 
-    ```cmd/sh
-    iotedgectl start  
-    ```
+Zeigen Sie alle Systemprotokolle und Metrikdaten an. Verwenden Sie den Namen des Stream Analytics-Moduls:
 
-1. Führen Sie diesen Befehl aus, um die Ausführung der Module zu beobachten:
+   ```cmd/sh
+   docker logs -f {moduleName}  
+   ```
 
-    ```cmd/sh
-    docker ps  
-    ```
+Sie sollten beobachten können, wie die Temperatur des Computers allmählich steigt, bis sie 30 Sekunden lang 70 Grad beträgt. Dann löst das Stream Analytics-Modul eine Zurücksetzung aus, und die Computertemperatur fällt zurück auf 21. 
 
-    ![Docker-Ausgabe][8]
+   ![Docker-Protokoll][9]
 
-1. Führen Sie diesen Befehl aus, um alle Systemprotokolle und Metrikdaten anzuzeigen. Verwenden Sie dabei den Modulnamen von oben:
-
-    ```cmd/sh
-    docker logs -f {moduleName}  
-    ```
-
-    ![Docker-Protokoll][9]
-
-1. Klicken Sie im Azure-Portal in Ihrem Speicherkonto unter **Blob-Dienst** auf **Blobs durchsuchen**, wählen Sie den Container aus, und wählen Sie die neu erstellte JSON-Datei.
-
-1. Klicken Sie auf **Herunterladen**, und zeigen Sie die Ergebnisse an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -188,8 +175,6 @@ In diesem Tutorial haben Sie einen Azure Storage-Container und einen Streaming A
 
 <!-- Images. -->
 [1]: ./media/tutorial-deploy-stream-analytics/storage.png
-[2]: ./media/tutorial-deploy-stream-analytics/asa_input.png
-[3]: ./media/tutorial-deploy-stream-analytics/asa_output.png
 [4]: ./media/tutorial-deploy-stream-analytics/add_device.png
 [5]: ./media/tutorial-deploy-stream-analytics/asa_job.png
 [6]: ./media/tutorial-deploy-stream-analytics/set_module.png

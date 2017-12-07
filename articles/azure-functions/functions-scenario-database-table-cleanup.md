@@ -15,14 +15,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: ac0399867e0cdab1825022c4ed73ce003cc8c7e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Verwenden von Azure Functions zum Herstellen einer Verbindung mit einer Azure SQL-Datenbank-Instanz
-In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. Damit Ihre Funktion einzelne CRUD-Vorgänge in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die [Mobile Apps-Bindung](functions-bindings-mobile-apps.md) verwenden.
+In diesem Thema wird gezeigt, wie Sie mit Azure Functions einen geplanten Auftrag erstellen, der Zeilen in einer Tabelle in einer Azure SQL-Datenbank-Instanz bereinigt. Die neue C#-Funktion wird basierend auf einer vordefinierten Vorlage für einen Timertrigger im Azure-Portal erstellt. Zur Unterstützung dieses Szenarios müssen Sie auch eine Datenbank-Verbindungszeichenfolge als App-Einstellung in der Funktions-App festlegen. In diesem Szenario wird ein Massenvorgang auf die Datenbank angewendet. 
+
+Damit Ihre Funktion einzelne Vorgänge wie das Erstellen, Lesen, Aktualisieren und Löschen in einer Mobile Apps-Tabelle verarbeiten kann, sollten Sie stattdessen die [Mobile Apps-Bindungen](functions-bindings-mobile-apps.md) verwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -59,7 +61,7 @@ Eine Funktions-App hostet die Ausführung Ihrer Funktionen in Azure. Es ist eine
     | Einstellung       | Empfohlener Wert | Beschreibung             | 
     | ------------ | ------------------ | --------------------- | 
     | **Name**  |  sqldb_connection  | Wird verwendet, um auf die gespeicherte Verbindungszeichenfolge im Funktionscode zuzugreifen    |
-    | **Wert** | Kopierte Zeichenfolge  | Fügen Sie die Verbindungszeichenfolge ein, die Sie im vorherigen Abschnitt kopiert haben. |
+    | **Wert** | Kopierte Zeichenfolge  | Fügen Sie die Verbindungszeichenfolge, die Sie im vorherigen Abschnitt kopiert haben, ein, und ersetzen Sie die Platzhalter `{your_username}` und `{your_password}` durch die tatsächlichen Werte. |
     | **Typ** | SQL-Datenbank | Verwenden Sie die Standardverbindung mit SQL-Datenbank. |   
 
 3. Klicken Sie auf **Speichern**.
@@ -84,7 +86,7 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
     using System.Threading.Tasks;
     ```
 
-4. Ersetzen Sie die vorhandene **Run** -Funktion durch den folgenden Code:
+4. Ersetzen Sie die vorhandene `Run`-Funktion durch den folgenden Code:
     ```cs
     public static async Task Run(TimerInfo myTimer, TraceWriter log)
     {
@@ -105,7 +107,7 @@ Nun können Sie den C#-Funktionscode hinzufügen, der eine Verbindung mit Ihrer 
     }
     ```
 
-    Dieser Beispielbefehl aktualisiert die **Status**-Spalte basierend auf dem Lieferdatum. Es sollten 32 Zeilen mit Daten aktualisiert werden.
+    Dieser Beispielbefehl aktualisiert die `Status`-Spalte basierend auf dem Versanddatum. Es sollten 32 Zeilen mit Daten aktualisiert werden.
 
 5. Klicken Sie auf **Speichern**, überwachen Sie das Fenster **Protokolle** auf die nächste Funktionsausführung, und beachten Sie die Anzahl der Zeilen, die in der Tabelle **SalesOrderHeader** aktualisiert wurden.
 

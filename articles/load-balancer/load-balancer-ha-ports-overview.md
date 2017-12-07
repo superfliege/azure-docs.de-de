@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: 7a77e6ecbf59944c62aa4ae014bf5b8a5a7f7f1f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
@@ -65,69 +65,10 @@ Das Feature für Hochverfügbarkeitsports ist in den [gleichen Regionen wie Load
 
 ## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
 
-Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in Load Balancer Standard registrieren Sie Ihr Abonnement, um Zugriff zu erhalten. Sie können dazu entweder Azure CLI 2.0 oder PowerShell verwenden.
+Für die Teilnahme an der Vorschauversion des Features für Hochverfügbarkeitsports in Load Balancer Standard registrieren Sie Ihr Abonnement für die [Vorschauversion von Load Balancer Standard](https://aka.ms/lbpreview#preview-sign-up). Sie können für die Registrierung entweder Azure CLI 2.0 oder PowerShell verwenden.
 
 >[!NOTE]
->Um dieses Feature verwenden zu können, müssen Sie sich zusätzlich zum Feature für Hochverfügbarkeitsports auch für die Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) registrieren. Die Registrierung kann bis zu einer Stunde dauern.
-
-### <a name="sign-up-by-using-azure-cli-20"></a>Registrierung mithilfe von Azure CLI 2.0
-
-1. Registrieren des Features beim Anbieter:
-    ```cli
-    az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-2. Dieser Vorgang kann bis zu 10 Minuten dauern. Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
-
-    ```cli
-    az feature show --name AllowILBAllPortsRule --namespace Microsoft.Network
-    ```
-    
-    Der Vorgang wurde erfolgreich ausgeführt, wenn als Status der Featureregistrierung **Registriert** zurückgegeben wird, wie unten dargestellt:
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowILBAllPortsRule",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-3. Schließen Sie die Registrierung für die Preview ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-### <a name="sign-up-by-using-powershell"></a>Registrierung mithilfe von PowerShell
-
-1. Registrieren des Features beim Anbieter:
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    
-2. Dieser Vorgang kann bis zu 10 Minuten dauern. Sie können den Status des Vorgangs mithilfe des folgenden Befehls überprüfen:
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
-    ```
-    Der Vorgang wurde erfolgreich ausgeführt, wenn als Status der Featureregistrierung **Registriert** zurückgegeben wird, wie unten dargestellt:
-   
-    ```
-    FeatureName          ProviderName      RegistrationState
-    -----------          ------------      -----------------
-    AllowILBAllPortsRule Microsoft.Network Registered
-    ```
-    
-3. Schließen Sie die Registrierung für die Preview ab, indem Sie Ihr Abonnement erneut beim Ressourcenanbieter registrieren:
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
-
+>Die Registrierung kann bis zu einer Stunde dauern.
 
 ## <a name="limitations"></a>Einschränkungen
 

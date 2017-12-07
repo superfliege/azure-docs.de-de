@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure Functions-Runtimeversionen als Ziel
-description: "Azure Functions unterstützt mehrere Versionen der Runtime. Erfahren Sie, wie Sie die Runtimeversion einer in Azure gehosteten Funktionen-App angeben."
+title: Einstellen von Runtimeversionen von Azure Functions als Ziel
+description: "Azure Functions unterstützt mehrere Versionen der Runtime. Erfahren Sie, wie Sie die Runtimeversion einer in Azure gehosteten Funktions-App angeben."
 services: functions
 documentationcenter: 
 author: ggailey777
@@ -10,13 +10,13 @@ ms.service: functions
 ms.workload: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 063232e40b30d03b0ee8b087a602fed0fee3be0a
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 588437af80ecf60b7c4b24dbf6bccc67fc33da7a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Einstellen von Runtimeversionen von Azure Functions als Ziel
 
@@ -44,9 +44,11 @@ Weitere Informationen finden Sie unter [Unterstützte Sprachen](supported-langua
 
 ### <a name="bindings"></a>Bindungen 
 
-Die experimentellen Bindungen, die Runtime 1.x unterstützt, sind in 2.x nicht verfügbar. Informationen zur Bindungsunterstützung und zu anderen funktionalen Lücken in 2.x finden Sie unter [Bekannte Probleme von Runtime 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
-
 Mit Runtime 2.x können Sie benutzerdefinierte [Bindungserweiterungen](https://github.com/Azure/azure-webjobs-sdk-extensions/wiki/Binding-Extensions-Overview) erstellen. Integrierte Bindungen, die dieses Erweiterbarkeitsmodell verwenden, sind nur in 2.x verfügbar. Vorrangig sind hier die [Microsoft Graph-Bindungen](functions-bindings-microsoft-graph.md) zu nennen.
+
+[!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+Informationen zur Bindungsunterstützung und zu anderen funktionalen Lücken in 2.x finden Sie unter [Bekannte Probleme von Runtime 2.0](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Azure-Functions-runtime-2.0-known-issues).
 
 ### <a name="cross-platform-development"></a>Plattformübergreifende Entwicklung
 
@@ -91,26 +93,26 @@ Diese Einstellung entspricht dem Festlegen der Anwendungseinstellung `FUNCTIONS_
 
 Wenn Sie eine andere Version als die aktuelle Hauptversion oder Version 2.0 als Ziel verwenden möchten, müssen Sie die Anwendungseinstellung `FUNCTIONS_EXTENSION_VERSION` festlegen.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktionen-App, und wählen Sie unter **Konfigurierte Features** die Option **Anwendungseinstellungen** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Funktions-App, und wählen Sie unter **Konfigurierte Features** die Option **Anwendungseinstellungen** aus.
 
     ![„Funktionen-App-Einstellungen“ auswählen](./media/functions-versions/add-update-app-setting1a.png)
 
 2. Suchen Sie auf der Registerkarte **Anwendungseinstellungen** die Einstellung `FUNCTIONS_EXTENSION_VERSION`, und ändern Sie den Wert in eine gültige Version der 1.x-Runtime oder in `beta` für Version 2.0. 
 
-    ![Funktionen-App-Einstellung festlegen](./media/functions-versions/add-update-app-setting2.png)
+    ![Funktions-App-Einstellung festlegen](./media/functions-versions/add-update-app-setting2.png)
 
 3. Klicken Sie auf **Speichern**, um die Aktualisierung der Anwendungseinstellung zu speichern. 
 
 ## <a name="target-a-version-using-azure-cli"></a>Verwenden einer Version als Ziel mit der Azure CLI
 
- Sie können `FUNCTIONS_EXTENSION_VERSION` auch über die Azure-Befehlszeilenschnittstelle festlegen. Aktualisieren Sie über die Azure-Befehlszeilenschnittstelle die Anwendungseinstellungen in der Funktionen-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set).
+ Sie können `FUNCTIONS_EXTENSION_VERSION` auch über die Azure-Befehlszeilenschnittstelle festlegen. Aktualisieren Sie über die Azure-Befehlszeilenschnittstelle die Anwendungseinstellungen in der Funktions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set).
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
 --resource-group <my_resource_group> \
 --settings FUNCTIONS_EXTENSION_VERSION=<version>
 ```
-Ersetzen Sie in diesem Code `<function_app>` durch den Namen der Funktionen-App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre Funktionen-App. Ersetzen Sie `<version>` durch eine gültige Version der Runtime 1.x oder durch `beta` für Version 2.0. 
+Ersetzen Sie in diesem Code `<function_app>` durch den Namen der Funktions-App. Ersetzen Sie außerdem `<my_resource_group>` durch den Namen der Ressourcengruppe für Ihre Funktions-App. Ersetzen Sie `<version>` durch eine gültige Version der Runtime 1.x oder durch `beta` für Version 2.0. 
 
 Sie können diesen Befehl an der [Azure Cloud Shell](../cloud-shell/overview.md) ausführen, indem Sie im vorangehenden Codebeispiel **Ausprobieren** auswählen. Sie können auch die [Azure-Befehlszeilenschnittstelle lokal](/cli/azure/install-azure-cli) zum Ausführen dieses Befehls verwenden, nachdem Sie sich mit [az login](/cli/azure#az_login) angemeldet haben.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: vturecek
-ms.openlocfilehash: eb076c30eda63c37a8b555d40d5903cbbf0d426a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="getting-started-with-reliable-actors"></a>Erste Schritte mit Reliable Actors
 > [!div class="op_single_selector"]
@@ -101,7 +101,7 @@ Erstellen Sie eine einfache Konsolenanwendung zum Aufrufen des Actordiensts.
     ![Hinzufügen des Dialogfelds „Neues Projekt“][6]    
     
     > [!NOTE]
-    > Eine Konsolenanwendung ist nicht die Art von Anwendung, die Sie normalerweise als Client in Service Fabric verwenden würden, aber sie ist ein praktisches Beispiel für das Debuggen und Testen mit dem lokalen Service Fabric-Emulator.
+    > Eine Konsolenanwendung ist nicht die Art von Anwendung, die Sie normalerweise als Client in Service Fabric verwenden würden, aber sie ist ein praktisches Beispiel für das Debuggen und Testen mit dem lokalen Service Fabric-Cluster.
 
 3. Die Konsolenanwendung muss eine 64-Bit-Anwendung sein, um die Kompatibilität mit dem Schnittstellenprojekt und anderen Abhängigkeiten aufrechtzuerhalten.  Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **ActorClient**, und klicken Sie anschließend auf **Eigenschaften**.  Legen Sie auf der Registerkarte **Erstellen** für die Option **Zielplattform** den Wert **x64** fest.
     

@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 11/27/2017
 ms.author: nitinme
-ms.openlocfilehash: 6677b0b3ed047ce011bfbb72c25e45195859830a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ca2cf642cfff2961dcb0dd18f0e712f61d6915c2
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Log Analytics zum Überwachen von HDInsight-Clustern
 
@@ -44,7 +44,7 @@ Erfahren Sie, wie Sie Azure Log Analytics zum Überwachen von Hadoop-Clustervorg
 
 * **Ein Log Analytics-Arbeitsbereich**. Sie können sich diesen Arbeitsbereich als einzigartige Log Analytics-Umgebung mit eigenem Datenrepository, eigenen Datenquellen und eigenen Lösungen vorstellen. Sie müssen bereits einen solchen Arbeitsbereich erstellt haben, den Sie Azure HDInsight-Clustern zuordnen können. Anweisungen hierzu finden Sie unter [Erste Schritte mit einem Log Analytics-Arbeitsbereich](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace).
 
-## <a name="configure-hdinsight-cluster-to-use-log-analytics"></a>Konfigurieren eines HDInsight-Clusters zur Verwendung von Log Analytics
+## <a name="enable-log-analytics-by-using-the-portal"></a>Aktivieren von Log Analytics mithilfe des Portals
 
 In diesem Abschnitt konfigurieren Sie einen vorhandenen HDInsight Hadoop-Cluster zur Verwendung eines Azure Log Analytics-Arbeitsbereichs zum Überwachen von Aufträgen, Debugprotokollen usw.
 
@@ -62,6 +62,25 @@ In diesem Abschnitt konfigurieren Sie einen vorhandenen HDInsight Hadoop-Cluster
 6. Geben Sie nach Aufforderung Ihre Azure-Anmeldeinformationen ein.
 
     ![Operations Management Suite-Portal](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring-oms-portal.png "Operations Management Suite-Portal")
+
+## <a name="enable-log-analytics-by-using-azure-powershell"></a>Aktivieren von Log Analytics mithilfe von Azure PowerShell
+
+Sie können Log Analytics mithilfe von Azure PowerShell aktivieren. Das zu verwendende Cmdlet ist:
+
+```powershell
+Enable-AzureRmHDInsightOperationsManagementSuite
+```
+
+Siehe [Enable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/Enable-AzureRmHDInsightOperationsManagementSuite?view=azurermps-5.0.0)
+
+Zum Deaktivieren wird folgendes Cmdlet verwendet: 
+
+```powershell
+Disable-AzureRmHDInsightOperationsManagementSuite
+```
+
+Siehe [Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Add HDInsight cluster management solutions to Log Analytics (Preview)](hdinsight-hadoop-oms-log-analytics-management-solutions.md) (Hinzufügen von HDInsight-Clusterverwaltungslösungen zu Azure Log Analytics [Vorschau])

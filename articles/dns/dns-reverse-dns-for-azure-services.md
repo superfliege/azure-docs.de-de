@@ -3,7 +3,7 @@ title: "Reverse-DNS für Azure-Dienste | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Reverse-DNS-Lookups für in Azure gehostete Dienste konfigurieren."
 services: dns
 documentationcenter: na
-author: jtuliani
+author: KumudD
 manager: timlt
 ms.service: dns
 ms.devlang: na
@@ -11,12 +11,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
-ms.author: jonatul
-ms.openlocfilehash: 63701e1ce0c1c6dcf2ce02ebce272b8280395e7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurieren von Reverse-DNS für in Azure gehostete Dienste
 
@@ -28,9 +28,8 @@ Dieses Szenario sollte nicht mit der Möglichkeit verwechselt werden, [Reverse-D
 
 Bevor Sie diesen Artikel lesen, sollten Sie sich mit dieser [Übersicht über Reverse-DNS und die Unterstützung in Azure](dns-reverse-dns-overview.md) vertraut machen.
 
-Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Resource Manager- und klassische Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
-* Im Resource Manager-Bereitstellungsmodell werden Computeressourcen (z.B. virtuelle Computer, VM-Skalierungsgruppen oder Service Fabric-Cluster) über eine öffentliche IP-Adressressource verfügbar gemacht. Reverse-DNS-Lookups werden mithilfe der ReverseFqdn-Eigenschaft der öffentlichen IP-Adresse konfiguriert.
-* Im klassischen Bereitstellungsmodell werden Computeressourcen mithilfe von Clouddiensten verfügbar gemacht. Reverse-DNS-Lookups werden mithilfe der ReverseDnsFqdn-Eigenschaft des Clouddiensts konfiguriert.
+In Azure DNS werden Computeressourcen (z.B. virtuelle Computer, VM-Skalierungsgruppen oder Service Fabric-Cluster) über eine öffentliche IP-Adressressource verfügbar gemacht. Reverse-DNS-Lookups werden mithilfe der ReverseFqdn-Eigenschaft der öffentlichen IP-Adresse konfiguriert.
+
 
 Reverse-DNS wird für Azure App Service derzeit nicht unterstützt.
 

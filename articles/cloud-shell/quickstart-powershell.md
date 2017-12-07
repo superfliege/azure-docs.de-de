@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: damaerte
-ms.openlocfilehash: 995a5bf0b28f6bfa0e501f5930b9efcad9041b8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 913bd917ae7c2b44df097ead9c3e35841338905c
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Schnellstartanleitung für PowerShell in Azure Cloud Shell (Vorschauversion)
 
@@ -135,7 +135,7 @@ MyFileShare3  \\MyStorageAccountName.file.core.windows.net\MyFileShare3;AccountN
 
 ```
 
-Mit der Verbindungszeichenfolge können Sie den folgenden Befehl verwenden, um die Azure-Dateifreigabe einzubinden.
+Mit der Verbindungszeichenfolge können Sie den folgenden Befehl verwenden, um die Azure Files-Freigabe einzubinden.
         
 ``` PowerShell
 net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<MyFileShareName> <AccountKey> /user:Azure\<MyStorageAccountName>
@@ -143,9 +143,9 @@ net use <DesiredDriveLetter>: \\<MyStorageAccountName>.file.core.windows.net\<My
 
 ```
 
-Weitere Informationen finden Sie unter [Einbinden einer Azure-Dateifreigabe und Zugreifen auf die Freigabe unter Windows][azmount].
+Weitere Informationen finden Sie unter [Einbinden einer Azure Files-Freigabe und Zugreifen auf die Freigabe unter Windows][azmount].
 
-Sie können auch wie folgt durch die Verzeichnisse unter der Azure-Dateifreigabe navigieren:
+Sie können auch wie folgt durch die Verzeichnisse unter der Azure Files-Freigabe navigieren:
 
             
 ``` PowerShell
@@ -288,7 +288,7 @@ Für einen bestimmten Befehl können Sie weiterhin „Get-Help“ gefolgt von ei
 PS Azure:\> Get-Help Get-AzureRmVM
 ```
 
-## <a name="use-azure-file-storage-to-store-your-data"></a>Verwenden von Azure File Storage zum Speichern Ihrer Daten
+## <a name="use-azure-files-to-store-your-data"></a>Verwenden von Azure Files zum Speichern Ihrer Daten
 
 Sie können ein Skript erstellen (beispielsweise `helloworld.ps1`) und es in Ihrem `CloudDrive` speichern, um es für verschiedene Shellsitzungen zu verwenden.
 
@@ -300,7 +300,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-Wenn Sie PowerShell das nächste Mal in Cloud Shell verwenden, ist die Datei `helloworld.ps1` im Ordner `CloudDrive` enthalten, der Ihre Azure-Dateifreigabe einbindet.
+Wenn Sie PowerShell das nächste Mal in Cloud Shell verwenden, ist die Datei `helloworld.ps1` im Ordner `CloudDrive` enthalten, der Ihre Azure Files-Freigabe einbindet.
 
 ## <a name="use-custom-profile"></a>Verwenden benutzerdefinierter Profile
 

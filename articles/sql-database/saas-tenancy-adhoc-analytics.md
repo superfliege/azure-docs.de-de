@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: articles
 ms.date: 11/13/2017
 ms.author: billgib; sstein; AyoOlubeko
-ms.openlocfilehash: db8a079c76f38bbf7b90f8d914ce1bbf192343d7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: ddad47ccac57ddbb9387709ababbc5be6bad3462
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Azure SQL-Datenbanken
 
-In diesem Tutorial können Sie auf eine Gruppe von Mandantendatenbanken aufgeteilte Abfragen ausführen, um eine interaktive Ad-hoc-Berichterstellung durchzuführen. Diese Abfragen können Einblicke geben, die sonst in den tagtäglichen operativen Daten der SaaS-App Wingtip Tickets verborgen bleiben. Dazu stellen Sie eine weitere Analysedatenbank im Katalogserver bereit und führen mit einer elastischen Abfrage verteilte Abfragen durch.
+In diesem Tutorial können Sie auf eine Gruppe von Mandantendatenbanken aufgeteilte Abfragen ausführen, um eine interaktive Ad-hoc-Berichterstellung durchzuführen. Diese Abfragen können Einblicke geben, die sonst in den tagtäglichen operativen Daten der SaaS-App Wingtip Tickets verborgen bleiben. Dazu stellen Sie eine weitere Analysedatenbank auf dem Katalogserver bereit und führen mit einer elastischen Abfrage verteilte Abfragen durch.
 
 
 In diesem Tutorial lernen Sie Folgendes kennen:
@@ -55,9 +55,9 @@ Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugr
 
 Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch dass es möglich ist, das Elastic Query Daten aus vielen Datenbanken abruft, kann die Abfragewartezeit manchmal länger sein als für äquivalente Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten ausgestellt werden. Achten Sie darauf, Ihre Abfragen so zu entwerfen, dass ein Minimum an Daten zurückgegeben wird. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, schauen Sie sich den [Ausführungsplan](https://docs.microsoft.com/sql/relational-databases/performance/display-an-actual-execution-plan) an, um zu sehen, welcher Teil der Abfrage per Push in die remote Datenbank übertragen wurde und wie viele Daten zurückgegeben werden. Abfragen, die eine komplexe analytische Verarbeitung erfordern, sind möglicherweise in einigen Fällen passender, da sie Mandantendaten in eine dedizierte Datenbank oder ein Data Warehouse extrahieren, die für Analyseabfragen optimal geeignet sind. Dieses Muster wird im [Tutorial zu Mandantenanalysen](saas-tenancy-tenant-analytics.md) erklärt. 
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant
 
-Die Skripts und der Quellcode der SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant/) zur Verfügung. Befolgen Sie unbedingt die Schritte zum Entsperren, die in der Infodatei beschrieben werden.
+Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 
 ## <a name="create-ticket-sales-data"></a>Erstellen von Ticketverkaufsdaten
 
@@ -73,7 +73,7 @@ In der SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant ist jedem 
 
 Dieses Muster können Sie simulieren, indem Sie einen Satz von „globalen“ Ansichten der Mandantendatenbank hinzufügen, die eine Mandanten-ID in jede der global abgefragten Tabellen projizieren. Beispielsweise fügt die Ansicht *VenueEvents* eine berechnete *VenueId* in den Spalten ein, die von der Tabelle *Events* projiziert wurden. Auf ähnliche Weise fügen die Ansichten *VenueTicketPurchases* und *VenueTickets* eine berechnete *VenueId*-Spalte hinzu, die aus ihren jeweiligen Tabellen projiziert wird. Diese Ansichten werden von der elastischen Abfrage verwendet, um Abfragen zu parallelisieren und bei Vorhandensein einer *VenueId*-Spalte in die entsprechende Remotemandantendatenbank zu verschieben. Dadurch wird die Menge an zurückgegebenen Daten deutlich verringert und die Leistung von vielen Abfragen wesentlich gesteigert. Diese globalen Ansichten wurden in allen Mandantendatenbanken vorab erstellt.
 
-1. Öffnen Sie SSMS, und [stellen Sie eine Verbindung mit dem Server „tenants1-&lt;BENUTZER&gt;“ her](saas-dbpertenant-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
+1. Öffnen Sie SSMS, und [stellen Sie eine Verbindung mit dem Server „tenants1-&lt;BENUTZER&gt;“ her](saas-tenancy-wingtip-app-guidance-tips.md#explore-database-schema-and-execute-sql-queries-using-ssms).
 2. Erweitern Sie die Option **Datenbanken**, klicken Sie mit der rechten Maustaste auf **contosoconcerthall**, und wählen Sie **Neue Abfrage**.
 3. Führen Sie die folgenden Abfragen aus, um den Unterschied zwischen den Tabellen mit einem einzelnen Mandanten und den globalen Sichten zu untersuchen:
 
@@ -95,7 +95,7 @@ In diesen Ansichten wurde *VenueId* als Hash des Veranstaltungsorts berechnet. F
 
 So können Sie die Definition der Ansicht *Venues* untersuchen:
 
-1. Erweitern Sie im **Objekt-Explorer** die Option **contosoconcethall** > **Sichten**:
+1. Erweitern Sie im **Objekt-Explorer** die Option **contosoconcerthall** > **Sichten**:
 
    ![Sichten](media/saas-tenancy-adhoc-analytics/views.png)
 
@@ -121,13 +121,13 @@ In dieser Übung wird ein Schema (die externe Datenquelle und die externen Tabel
 
 1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der Ad-hoc-Berichtsdatenbank her, die Sie im vorherigen Schritt erstellt haben. Der Name der Datenbank lautet *adhocreporting*.
 2. Öffnen Sie ...\Learning Modules\Operational Analytics\Adhoc Reporting\ *Initialize-AdhocReportingDB.sql* in SSMS.
-3. Prüfen Sie das SQL-Skript, und achten Sie auf Folgendes:
+3. Überprüfen Sie das SQL-Skript, und achten Sie auf Folgendes:
 
    Für die elastische Abfrage werden datenbankbezogene Anmeldeinformationen verwendet, um auf die einzelnen Mandantendatenbanken zuzugreifen. Diese Anmeldeinformationen müssen in allen Datenbanken verfügbar sein, und im Normalfall sollten die Rechte gewährt werden, die zum Aktivieren dieser Ad-hoc-Abfragen mindestens erforderlich sind.
 
     ![erstellen von anmeldeinformationen](media/saas-tenancy-adhoc-analytics/create-credential.png)
 
-   Die externe Datenquelle, die für die Verwendung der Mandanten-Shardzuordnung in der Katalogdatenbank definiert ist. Indem sie als externe Datenquelle verwendet wird, werden Abfragen auf alle Datenbanken verteilt, die bei Ausgabe der Abfrage im Katalog registriert sind. Da sich Servernamen bei jeder Bereitstellung unterscheiden, ruft dieses Initialisierungsskript den Speicherort der Katalogdatenbank ab, indem es den aktuellen Server (@@servername) abruft, auf dem das Skript ausgeführt wird.
+   Indem die Katalogdatenbank als externe Datenquelle verwendet wird, werden Abfragen auf alle Datenbanken verteilt, die bei Ausführung der Abfrage im Katalog registriert sind. Da sich Servernamen bei jeder Bereitstellung unterscheiden, ruft dieses Initialisierungsskript den Speicherort der Katalogdatenbank ab, indem es den aktuellen Server (@@servername) abruft, auf dem das Skript ausgeführt wird.
 
     ![erstellen einer externen datenquelle](media/saas-tenancy-adhoc-analytics/create-external-data-source.png)
 
@@ -151,7 +151,7 @@ Jetzt wo die Datenbank *adhocreporting* eingerichtet ist, können Sie testweise 
 
 Um ausführlichere Informationen zu erhalten, können Sie im Ausführungsplan auf die Plansymbole zeigen. 
 
-Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** beim Definieren der externen Datenquelle die Leistung für viele Szenarios verbessert wird. Da jede *VenueId* auf eine einzelne Datenbank verweist, können Sie leicht remote filtern, sodass nur die benötigten Daten zurückgegeben werden.
+Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** beim Definieren der externen Datenquelle die Leistung für viele Szenarios verbessert wird. Da jeder *VenueId*-Wert auf eine einzelne Datenbank verweist, können Sie leicht remote filtern, sodass nur die benötigten Daten zurückgegeben werden.
 
 1. Öffnen Sie ...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocReportingQueries.sql* in SSMS.
 2. Stellen Sie sicher, dass Sie mit der Datenbank **adhocreporting** verbunden sind.
@@ -160,7 +160,7 @@ Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** b
 
    Die Abfrage gibt die gesamte Liste an Veranstaltungsorten zurück. Dies zeigt, wie schnell und unkompliziert Sie alle Mandanten abfragen und Daten jedes Mandanten zurückgeben können.
 
-   Schauen Sie sich den Plan an, und beachten Sie, dass die Gesamtkosten die remote Abfrage ist, weil wir einfach zu jeder Mandantendatenbank gehen und die Informationen zum Veranstaltungsort auswählen.
+   Sehen Sie sich den Plan an, und beachten Sie, dass die Gesamtkosten der Remoteabfrage entsprechen, weil jede Mandantendatenbank ihre eigene Abfrage behandelt und die Informationen zum Veranstaltungsort zurückgibt.
 
    ![SELECT * FROM dbo.Venues](media/saas-tenancy-adhoc-analytics/query1-plan.png)
 
@@ -168,13 +168,13 @@ Beachten Sie, dass durch das Festlegen von **DISTRIBUTION = SHARDED(VenueId)** b
 
    Diese Abfrage verknüpft Daten der Mandantendatenbank mit Daten der lokalen *VenueTypes*-Tabelle (lokal, da es sich dabei um eine Tabelle in der Datenbank *adhocreporting* handelt).
 
-   Schauen Sie sich den Plan an, und beachten Sie, dass der Hauptteil der Kosten die remote Abfrage ist, weil wir die Informationen zum Veranstaltungsort jedes Mandanten abfragen und anschließend eine schnelle lokale Verknüpfung mit der lokalen *VenueTypes*-Tabelle durchführen, um den Anzeigenamen anzuzeigen.
+   Sehen Sie sich den Plan an, und beachten Sie dass der Großteil der Kosten für die Remoteabfrage anfällt. Jede Mandantendatenbank gibt ihre Informationen zum Veranstaltungsort zurück und führt eine lokale Verknüpfung mit der lokalen *VenueTypes*-Tabelle durch, um den Anzeigenamen anzuzeigen.
 
    ![Verknüpfung von remoten und lokalen Daten](media/saas-tenancy-adhoc-analytics/query2-plan.png)
 
 6. Wählen Sie nun die Abfrage *On which day were the most tickets sold?* (An welchem Tag wurden die meisten Tickets verkauft?) aus, und drücken Sie **F5**.
 
-   Diese Abfrage führt etwas komplexere Verknüpfungen und Aggregationen durch. Wesentlich ist zu beachten, dass der Hauptteil der Verarbeitung remote erfolgt. Erneut erhalten wir nur die Zeilen, die wir benötigen. Für die aggregierten Ticketverkaufszahlen jedes Veranstaltungsorts pro Tag wird jeweils nur eine Zeile zurückgegeben.
+   Diese Abfrage führt etwas komplexere Verknüpfungen und Aggregationen durch. Wichtig ist, dass der Hauptteil der Verarbeitung remote erfolgt. Erneut werden nur die benötigten Zeilen zurückgegeben: Für die aggregierten Ticketverkaufszahlen jedes Veranstaltungsorts pro Tag wird jeweils nur eine Zeile zurückgegeben.
 
    ![query](media/saas-tenancy-adhoc-analytics/query3-plan.png)
 
@@ -189,7 +189,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Stellen Sie eine Ad-hoc-Berichtsdatenbank bereit, und fügen Sie Schemas hinzu, um verteilte Abfragen auszuführen.
 
 
-Probieren Sie das [Tutorial zu Mandantenanalysen](saas-tenancy-tenant-analytics.md), um sich mit dem Extrahieren von Daten in eine separate Analysedatenbank für komplexere Analyseverarbeitungen vertraut zu machen.
+Probieren Sie das [Tutorial zu Mandantenanalysen](saas-tenancy-tenant-analytics.md) aus, um sich mit dem Extrahieren von Daten in eine separate Analysedatenbank für komplexere Analyseverarbeitungen vertraut zu machen.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: juluk
-ms.openlocfilehash: 08ab3b38e4c1fbeb1fac67c5d1b6f6749f7a0a3e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 05c4d419f6d7b42a14b9bb13570daaa666d52db3
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Übersicht über Azure Cloud Shell
 Azure Cloud Shell ist eine interaktive, über den Browser zugängliche Shell für die Verwaltung von Azure-Ressourcen.
@@ -55,9 +55,9 @@ Auf Cloud Shell kann neben dem Azure-Portal auch über Folgendes zugegriffen wer
 * [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Visual Studio Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
-### <a name="connect-your-azure-files-storage"></a>Herstellen einer Verbindung mit Ihrer Azure Files Storage-Instanz
+### <a name="connect-your-microsoft-azure-files-storage"></a>Herstellen einer Verbindung mit dem Microsoft Azure Files-Speicher
 Cloud Shell-Computer sind temporär und erfordern folglich das Einbinden einer Azure Files-Freigabe als `clouddrive`, um Ihr $Home-Verzeichnis dauerhaft bereitzustellen.
-Beim ersten Start werden Sie von Cloud Shell darauf hingewiesen, dass eine Ressourcengruppe, ein Speicherkonto und eine Dateifreigabe in Ihrem Namen erstellt werden. Dieser Schritt ist nur einmal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. Es kann eine einzelne Dateifreigabe zugeordnet werden, die sowohl von Bash als auch von PowerShell in Cloud Shell (Vorschauversion) verwendet wird.
+Beim ersten Start werden Sie von Cloud Shell darauf hingewiesen, dass eine Ressourcengruppe, ein Speicherkonto und eine Azure-Dateifreigabe in Ihrem Namen erstellt werden. Dieser Schritt ist nur einmal erforderlich. Diese Komponenten werden für alle Sitzungen automatisch angefügt. Es kann eine einzelne Azure-Dateifreigabe zugeordnet werden, die sowohl von Bash als auch von PowerShell in Cloud Shell (Vorschauversion) verwendet wird.
 
 #### <a name="create-new-storage"></a>Erstellen von neuem Speicher
 ![](media/overview/basic-storage.png)
@@ -70,7 +70,7 @@ Drei Ressourcen werden in Ihrem Namen erstellt:
 3. Eine Dateifreigabe namens `cs-<user>-<domain>-com-<uniqueGuid>`
 
 > [!Note]
-> Bash in Cloud Shell erstellt zudem ein 5 GB-Datenträgerimage, um `$Home` beizubehalten. Alle Dateien in Ihrem $Home-Verzeichnis, wie etwa SSH-Schlüssel, werden beständig in Ihrem Datenträgerimage gespeichert, das in der eingebundenen Dateitreigabe gespeichert ist. Wenden Sie beim Speichern von Dateien in Ihrem $Home-Verzeichnis und der eingebundenen Dateifreigabe bewährte Methoden an.
+> Bash in Cloud Shell erstellt zudem ein 5 GB-Datenträgerimage, um `$Home` beizubehalten. Alle Dateien in Ihrem $Home-Verzeichnis, wie etwa SSH-Schlüssel, werden beständig in Ihrem Datenträgerimage gespeichert, das in der eingebundenen Azure-Dateifreigabe gespeichert ist. Wenden Sie beim Speichern von Dateien in Ihrem $Home-Verzeichnis und der eingebundenen Azure-Dateifreigabe bewährte Methoden an.
 
 #### <a name="use-existing-resources"></a>Verwenden vorhandener Ressourcen
 ![](media/overview/advanced-storage.png)
@@ -79,13 +79,13 @@ Es wird eine erweiterte Option bereitgestellt, um vorhandene Ressourcen zu Cloud
 Klicken Sie bei der Aufforderung zur Speichereinrichtung auf „Erweiterte Einstellungen anzeigen“, um zusätzliche Optionen anzuzeigen.
 Dropdownlisten werden für Ihre zugewiesene Cloud Shell-Region und die lokal/global redundanten Speicherkonten gefiltert.
 
-[Weitere Informationen zu Cloud Shell-Speicher, dem Aktualisieren von Dateifreigaben und dem Upload/Download von Dateien.](persisting-shell-storage.md)
+[Informationen zu Cloud Shell-Speicher, dem Aktualisieren von Azure-Dateifreigaben und dem Upload/Download von Dateien](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>Konzepte
 * Cloud Shell wird auf einem temporären Host ausgeführt, der pro Sitzung und pro Benutzer bereitgestellt wird.
 * Nach 20 Minuten ohne interaktive Aktivitäten tritt für Cloud Shell ein Timeout ein.
-* Für Cloud Shell muss eine Dateifreigabe bereitgestellt werden.
-* Cloud Shell verwendet dieselbe Dateifreigabe für Bash und PowerShell.
+* Für Cloud Shell muss eine Azure-Dateifreigabe bereitgestellt werden.
+* Cloud Shell verwendet dieselbe Azure-Dateifreigabe für Bash und PowerShell.
 * Cloud Shell wird ein Computer pro Benutzerkonto zugewiesen.
 * Berechtigungen werden auf einen normalen Linux-Benutzer in Bash festgelegt.
 
@@ -103,4 +103,4 @@ Der Computer, auf dem Cloud Shell gehostet wird, ist kostenlos. Als Voraussetzun
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Schnellstart für Bash in Azure Cloud Shell](quickstart.md) <br>
-[Schnellstart für PowerShell in Azure Cloud Shell (Vorschau)](quickstart-powershell.md)
+[Schnellstart für PowerShell in Cloud Shell (Vorschauversion)](quickstart-powershell.md)

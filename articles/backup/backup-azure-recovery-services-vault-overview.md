@@ -12,18 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/15/2017
-ms.author: markgal;arunak
-ms.openlocfilehash: a3d50d0066f1d0fe38bd7c5474386f54df81bec5
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.author: markgal;arunak;sogup
+ms.openlocfilehash: ad685744595ab86def8d226d7c2fb5455af98da4
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="recovery-services-vaults-overview"></a>Übersicht über Recovery Services-Tresore
 
 In diesem Artikel werden die Funktionen eines Recovery Services-Tresors beschrieben. Ein Recovery Services-Tresor ist eine Speicherentität in Azure, die Daten enthält. Bei den Daten handelt es sich in der Regel um Kopien von Daten oder Konfigurationsinformationen für virtuelle Computer (VMs), Workloads, Server oder Arbeitsstationen. Mit Recovery Services-Tresoren können Sie Sicherungsdaten für verschiedene Azure-Dienste speichern, z.B. IaaS-VMs (Linux oder Windows) und Azure SQL-Datenbanken. Recovery Services-Tresore unterstützen System Center DPM, Windows Server, Azure Backup Server etc. Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand. 
 
-Innerhalb eines Azure-Abonnements können Sie bis zu 25 Recovery Services-Tresore erstellen.
+Innerhalb eines Azure-Abonnements können Sie bis zu 25 Recovery Services-Tresore pro Region erstellen.
 
 ## <a name="comparing-recovery-services-vaults-and-backup-vaults"></a>Vergleich zwischen Recovery Services- und Sicherungstresoren
 
@@ -71,6 +71,6 @@ Die folgenden Abschnitte enthalten Links zu Artikeln, in denen erläutert wird, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie die folgenden Artikel für:</br>
-[Sichern einer IaaS-VM](backup-azure-arm-vms-prepare.md)</br>
-[Sichern von Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Sichern von Windows Server](backup-configure-vault.md)
+[Sichern eines virtuellen IaaS-Computers](backup-azure-arm-vms-prepare.md)</br>
+[Sichern eines Azure Backup Server-Computers](backup-azure-microsoft-azure-backup.md)</br>
+[Sichern eines Windows Server-Computers](backup-configure-vault.md)

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 11/23/2017
 ms.author: jeedes
-ms.openlocfilehash: b23e73c47b9a00893e036b67826e4b7ead819a1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52212c44c925598b2c19df1b20eb4e8123f974ba
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Tutorial: Azure Active Directory-Integration mit Druva
 
@@ -104,21 +104,27 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-druva-tutorial/tutorial_druva_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Druva** die folgenden Schritte aus:
+3. Führen Sie im Abschnitt **Domäne und URLs für Druva** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-druva-tutorial/tutorial_druva_url.png)
 
+    Geben Sie im Textfeld **Bezeichner** den Zeichenfolgenwert ein: `druva-cloud`.
+    
+4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+
+    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-druva-tutorial/tutorial_druva_url1.png)
+    
     Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://cloud.druva.com/home`
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
 
     ![Downloadlink für das Zertifikat](./media/active-directory-saas-druva-tutorial/tutorial_druva_certificate.png) 
 
-5. Die Druva-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. 
+6. Die Druva-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. 
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-druva-tutorial/tutorial_druva_attribute.png)
 
-6. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
+7. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
 
     | Attributname      | Attributwert      |
     | ------------------- | -------------------- |
@@ -136,47 +142,47 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     d. Klicken Sie auf **OK**.    
 
-7. Klicken Sie auf die Schaltfläche **Save** .
+8. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-druva-tutorial/tutorial_general_400.png)
 
-8. Klicken Sie im Abschnitt **Druva-Konfiguration** auf **Druva konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+9. Klicken Sie im Abschnitt **Druva-Konfiguration** auf **Druva konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-druva-tutorial/tutorial_druva_configure.png) 
 
-9. Melden Sie sich in einem anderen Webbrowserfenster bei der Druva-Unternehmenswebsite als Administrator an.
+10. Melden Sie sich in einem anderen Webbrowserfenster bei der Druva-Unternehmenswebsite als Administrator an.
 
-10. Navigieren Sie zu **Verwalten \> Einstellungen**.
+11. Navigieren Sie zu **Verwalten \> Einstellungen**.
 
     ![Einstellungen](./media/active-directory-saas-druva-tutorial/ic795091.png "Einstellungen")
 
-11. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ die folgenden Schritte aus:
+12. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ die folgenden Schritte aus:
 
     ![Einstellungen für einmaliges Anmelden](./media/active-directory-saas-druva-tutorial/ic795092.png "Einstellungen für einmaliges Anmelden")
     
-    a. Fügen Sie den Wert der **SAML-Dienst-URL für einmaliges Anmelden**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **ID Provider Login URL** ein.
-    
-    b. Fügen Sie den Wert der **Abmelde-URL**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **ID Provider Logout URL** ein.
-    
-     c. Öffnen Sie das Base-64-codierte Zertifikat in Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat des ID-Anbieters** ein.
+    a. Fügen Sie in das Textfeld **Anmelde-URL des Identitätsanbieters** den Wert der **Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+        
+    b. Fügen Sie in das Textfeld für die **ID Provider Logout URL** (Abmelde-URL des Identitätsanbieters) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+        
+    c. Öffnen Sie das Base-64-codierte Zertifikat in Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat des ID-Anbieters** ein.
      
-     d. Klicken Sie zum Öffnen der Seite **Einstellungen** auf **Speichern**.
+    d. Klicken Sie zum Öffnen der Seite **Einstellungen** auf **Speichern**.
 
-12. Klicken Sie auf der Seite **Einstellungen** auf **SSO-Token generieren**.
+13. Klicken Sie auf der Seite **Einstellungen** auf **SSO-Token generieren**.
 
     ![Einstellungen](./media/active-directory-saas-druva-tutorial/ic795093.png "Einstellungen")
 
-13. Führen Sie im Dialogfeld **Token für einmaliges Anmelden** die folgenden Schritte aus:
+14. Führen Sie im Dialogfeld **Token für einmaliges Anmelden** die folgenden Schritte aus:
 
     ![SSO-Token](./media/active-directory-saas-druva-tutorial/ic795094.png "SSO-Token")
     
-    a. Klicken Sie auf **Kopieren**, und fügen Sie den kopierten Wert im Abschnitt **Attribut hinzufügen** in das Textfeld **Wert** ein.
+    a. Klicken Sie auf **Kopieren**, und fügen Sie den kopierten Wert im Azure-Portal im Abschnitt **Attribut hinzufügen** in das Textfeld **Wert** ein.
     
     b. Klicken Sie auf **Schließen**.
 
 > [!TIP]
 > Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+ 
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -280,8 +286,6 @@ Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Z
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

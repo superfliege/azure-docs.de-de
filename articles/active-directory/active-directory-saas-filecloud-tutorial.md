@@ -6,19 +6,19 @@ documentationCenter: na
 author: jeevansd
 manager: femila
 ms.reviewer: joflore
-ms.assetid: f39f0ddd-b504-4562-971f-77b88d1e75fb
+ms.assetid: 2263e583-3eb2-4a06-982d-33f5f54858f4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 11/27/2017
 ms.author: jeedes
-ms.openlocfilehash: ad03516f684acc59912ffc57f6e0712828bd03f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f1f16865a3adb55fc63c09c1dbdc9720b02f9c33
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Tutorial: Azure Active Directory-Integration mit FileCloud
 
@@ -108,12 +108,12 @@ In diesem Abschnitt aktivieren Sie im Azure-Portal das einmalige Anmelden von Az
 
     ![Informationen zu einmaligem Anmelden für FileCloud-Domäne und -URLs](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.filecloudhosted.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.filecloudonline.com`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.filecloudhosted.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<subdomain>.filecloudonline.com/simplesaml/module.php/saml/sp/metadata.php/default-sp`
 
     > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den FileCloud-Client](mailto:support@codelathe.com), um diese Werte zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den FileCloud-Client](mailto:support@codelathe.com), um diese Werte zu erhalten. 
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -131,23 +131,23 @@ In diesem Abschnitt aktivieren Sie im Azure-Portal das einmalige Anmelden von Az
 
 8. Klicken Sie im linken Navigationsbereich auf **Einstellungen**. 
    
-    ![Abschnitt „Einstellungen“ auf App-Seite](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
+    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_000.png)
 
 9. Klicken Sie im Abschnitt „Einstellungen“ auf die Registerkarte **SSO**. 
    
-    ![Registerkarte „SSO“ auf App-Seite](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
+    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_001.png)
 
 10. Wählen Sie **SAML** im Bereich **Einstellungen für einmaliges Anmelden (SSO)** als **Standard-SSO-Typ** aus.
    
-    ![Bereich „Einstellungen für einmaliges Anmelden (SSO)“ auf App-Seite](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
+    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_002.png)
 
-11. Fügen Sie den Wert der **SAML-Entitäts-ID**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **IdP-Endpunkt-URL** ein.
+11. Fügen Sie in das Textfeld **IdP-Endpunkt-URL** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    ![Textfeld „IdP-Endpunkt-URL“](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
+    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_003.png)
 
 12. Öffnen Sie die heruntergeladene Metadatendatei im Editor, kopieren Sie den Inhalt in Ihre Zwischenablage, und fügen Sie ihn in das Textfeld **IdP-Metadaten** im Bereich **SAML-Einstellungen** ein.
 
-    ![Abschnitt „IdP-Metadaten“ auf App-Seite](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
+    ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-filecloud-tutorial/tutorial_filecloud_004.png)
 
 13. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -192,7 +192,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in FileCloud. FileCloud unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf FileCloud ein neuer Benutzer erstellt.
 
 >[!NOTE]
->Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den FileCloud-Client](mailto:support@codelathe.com) in Verbindung. 
+>Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den FileCloud-Client](mailto:support@codelathe.com) in Verbindung.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
@@ -226,9 +226,10 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
     
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „FileCloud“ klicken, sollten Sie automatisch bei Ihrer FileCloud-Anwendung angemeldet werden.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

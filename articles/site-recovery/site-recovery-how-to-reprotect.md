@@ -3,7 +3,7 @@ title: "Erneutes Schützen von Azure zu einem lokalen Standort | Microsoft-Dokum
 description: "Nach einem Failover von virtuellen Computern auf Azure können Sie die virtuellen Computer mittels Failback wieder in die lokale Umgebung übertragen. Erfahren Sie, wie Sie vor einem Failback den Schutz erneut vornehmen."
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
-ms.author: ruturajd
-ms.openlocfilehash: 3644b41c3e3293a263bd9ff996d4e3d26417aeed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rajanaki
+ms.openlocfilehash: 17a43de3faaa3a146fa9d8f43d36545d6d82b274
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Erneutes Schützen von Azure zu einem lokalen Standort
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Computer aus Azure an einem lokalen Standort erneut schützen. Befolgen Sie die Anweisungen in diesem Artikel, wenn alles bereit ist, um Ihre virtuellen VMware-Computer oder Ihre physischen Windows-/Linux-Server nach einem Failover vom lokalen Standort zu Azure per Failback wieder an den lokalen Standort zurückzuführen (wie unter [Replizieren von virtuellen VMware-Computern und physischen Servern in Azure mithilfe von Azure Site Recovery](site-recovery-failover.md) beschrieben).
 
 > [!WARNING]
-> Wenn Sie entweder die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich. Wenn Sie den Schutz des virtuellen Computers deaktivieren, ist kein Failback möglich.
+> Wenn Sie entweder die [Migration abgeschlossen](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration), den virtuellen Computer in eine andere Ressourcengruppe verschoben oder den virtuellen Azure-Computer gelöscht haben, ist danach kein Failback möglich. Wenn Sie den Schutz des virtuellen Computers deaktivieren, ist kein Failback möglich. Wenn der virtuelle Computer erst in Azure (also in der Cloud) erstellt wurde, können Sie ihn nicht erneut lokal schützen. Der Computer muss zuerst lokal geschützt und dann muss ein Failover für ihn ausgeführt worden sein, damit er erneut geschützt werden kann.
 
 
 Wenn der Schutz wiederhergestellt wurde und die geschützten virtuellen Computer repliziert werden, können Sie ein Failback für die virtuellen Computer initiieren, um sie an den lokalen Standort zu übertragen.
@@ -62,13 +62,20 @@ Unternehmen oder erwägen Sie die folgenden erforderlichen Aktionen, wenn Sie de
   * **Masterzielserver**: Der Masterzielserver empfängt Failbackdaten. Auf dem von Ihnen erstellten lokalen Verwaltungsserver ist standardmäßig ein Masterzielserver installiert. Je nach Datenverkehrsvolumen beim Failback müssen Sie jedoch u.U. einen separaten Masterzielserver für das Failback erstellen.
     * [Für einen virtuellen Linux-Computer wird ein Linux-Masterzielserver benötigt](site-recovery-how-to-install-linux-master-target.md).
     * Für einen virtuellen Windows-Computer wird ein Windows-Masterzielserver benötigt. Sie können den lokalen Prozessserver und die Masterzielcomputer wiederverwenden.
+    * Für das Masterziel gelten andere Voraussetzungen, die unter [Allgemeine Überprüfungen nach der Installation des Masterziels](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) aufgeführt sind.
 
-    Für das Masterziel gelten andere Voraussetzungen, die unter [Allgemeine Überprüfungen nach der Installation des Masterziels](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server) aufgeführt sind.
+> [!NOTE]
+> Alle virtuellen Computer einer Replikationsgruppe müssen vom gleichen Betriebssystemtyp sein (Windows oder Linux) sein. Eine Replikationsgruppe mit gemischten Betriebssystemen wird derzeit für das erneute Schützen und lokale Failbacks nicht unterstützt. Der Grund dafür ist folgender: Das Masterziel muss über das gleiche Betriebssystem wie der virtuelle Computer verfügen, und alle virtuellen Computer einer Replikationsgruppe müssen dasselbe Masterziel besitzen. 
+
+    
 
 * Ein Konfigurationsserver ist lokal erforderlich, wenn Sie ein Failback durchführen. Während des Failbacks muss der virtuelle Computer in der Konfigurationsserverdatenbank vorhanden sein. Andernfalls ist das Failback nicht erfolgreich. 
 
 > [!IMPORTANT]
 > Stellen Sie sicher, dass Sie die regelmäßigen geplanten Sicherungen des Konfigurationsservers durchführen. Stellen Sie im Notfall den Server mit der gleichen IP-Adresse wieder her, damit das Failback funktioniert.
+
+> [!WARNING]
+> Eine Replikationsgruppe sollte entweder nur virtuelle Windows-Computer oder nur virtuelle Linux-Computer und nicht eine Mischung aus beiden enthalten, da alle virtuellen Computer in einer Replikationsgruppe den gleichen Masterzielserver verwenden. Für virtuelle Linux-Computer ist ein Linux-Masterzielserver und für virtuelle Windows-Computer ein Windows-Masterzielserver erforderlich.
 
 * Legen Sie die Einstellung `disk.EnableUUID=true` in den Konfigurationsparametern des virtuellen Masterzielcomputers in VMware fest. Wenn diese Zeile nicht vorhanden ist, fügen Sie sie hinzu. Diese Einstellung ist erforderlich, um für den Datenträger des virtuellen Computers (VMDK) eine einheitliche UUID festzulegen, damit er richtig bereitgestellt wird.
 
@@ -170,6 +177,8 @@ Zurzeit unterstützt Azure Site Recovery nur Failbacks auf einen VMFS-Datenspeic
 * Auf den Datenträgern des Masterzielservers können keine Momentaufnahmen enthalten sein. Wenn Momentaufnahmen vorhanden sind, schlagen das erneute Schützen und das Failback fehl.
 
 * Das Masterziel kann nicht über einen Paravirtual-SCSI-Controller verfügen. Als Controller kann nur ein LSI Logic-Controller verwendet werden. Ohne LSI Logic-Controller schlägt das erneute Schützen fehl.
+
+* In jeder beliebigen Instanz können dem Masterziel jeweils maximal 60 Datenträger angefügt werden. Wenn virtuelle Computer, die auf dem lokalen Masterziel erneut geschützt werden, zusammen mehr als 60 Datenträger aufweisen, tritt beim erneuten Schützen auf dem Masterziel ein Fehler auf. Stellen Sie sicher, dass auf dem Masterzielserver genügend Datenträgerslots verfügbar sind, oder stellen Sie zusätzliche Masterzielserver bereit.
 
 <!--
 ### Failback policy

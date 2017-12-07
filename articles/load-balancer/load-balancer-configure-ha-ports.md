@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/02/2017
 ms.author: kumud
-ms.openlocfilehash: 4cd65c01d75af8539f5fa13dbbd2aaec548aea0b
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 646ade828e96810bdc3b07d4dc5c0276a1621969
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>Konfigurieren von Hochverfügbarkeitsports für einen internen Lastenausgleich
 
@@ -41,13 +41,10 @@ Abbildung 1: Netzwerkgeräte, die hinter einem internen Lastenausgleich mit Hoch
 
 ## <a name="preview-sign-up"></a>Registrierung für die Vorschauversion
 
-Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in Load Balancer Standard registrieren Sie Ihr Abonnement mithilfe von Azure CLI 2.0 oder PowerShell, um Zugriff zu erhalten.  Registrieren Sie Ihr Abonnement für
-
-1. [Load Balancer Standard – Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) und 
-2. [Hochverfügbarkeitsports – Vorschauversion](https://aka.ms/haports#preview-sign-up).
+Für die Teilnahme an der Vorschau des Features für Hochverfügbarkeitsports in Load Balancer Standard registrieren Sie Ihr Abonnement mithilfe von Azure CLI 2.0 oder PowerShell, um Zugriff zu erhalten. Registrieren Sie Ihr Abonnement für [Load Balancer Standard (Vorschau)](https://aka.ms/lbpreview#preview-sign-up).
 
 >[!NOTE]
->Um dieses Feature verwenden zu können, müssen Sie sich zusätzlich zu Hochverfügbarkeitsports auch für die Load Balancer [Standard-Vorschauversion](https://aka.ms/lbpreview#preview-sign-up) registrieren. Die Registrierung für die Vorschauversion von Hochverfügbarkeitsports oder Load Balancer Standard kann bis zu einer Stunde dauern.
+>Die Registrierung der Vorschauversionen von Load Balancer Standard kann bis zu einer Stunde dauern.
 
 ## <a name="configuring-ha-ports"></a>Konfigurieren von Hochverfügbarkeitsports
 

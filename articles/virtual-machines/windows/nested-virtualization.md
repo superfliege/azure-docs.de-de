@@ -11,11 +11,11 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: a157e612ca4fca06a57df478eaa20793c8b35d60
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c2f511cd024accc099423f2ed5bbb15d2dd23414
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -159,7 +159,7 @@ Führen Sie die unten stehenden Schritte aus, um auf der Gast-VM DHCP für die d
 6. Klicken Sie auf **Weiter**, bis der Assistent abgeschlossen ist, und behalten Sie dabei jeweils alle Standardwerte bei. Klicken Sie zum Schluss auf **Fertig stellen**.
     
 ### <a name="option-2-manually-set-a-static-ip-address-on-the-guest-virtual-machine"></a>Option 2: Manuelles Festlegen einer statischen IP-Adresse auf der Gast-VM
-Wenn Sie DHCP nicht zum dynamischen Zuweisen einer IP-Adresse auf der Gast-VM konfiguriert haben, führen Sie diese Schritte aus, um eine statische IP-Adresse festzulegen.
+Wenn Sie DHCP nicht zum dynamischen Zuweisen einer IP-Adresse auf dem virtuellen Gast-Computer konfiguriert haben, führen Sie diese Schritte aus, um eine statische IP-Adresse festzulegen.
 
 1. Öffnen Sie PowerShell auf der Azure-VM als Administrator.
 

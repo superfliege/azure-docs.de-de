@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 11/21/2017
 ms.author: bradsev;BuckWoody
-ms.openlocfilehash: e043de0aa4ed861139f50291a98c3300574e6078
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2ab36da70e2c08b770973f4c4d33eddfdebed9e1
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>Team Data Science-Prozess für Entwicklervorgänge
 
-In diesem Artikel werden die Entwicklervorgänge (Developer Operations, DevOps) beschrieben, die speziell für Implementierungen von Advanced Analytics- und Cognitive Services-Lösungen gelten. Es wird auf Themen zum Verständnis des Data Science-Prozesses und der -Plattform, der DevOps-Prozesse und der DevOps-Toolkette für Data Science- und KI-Projekte und -Lösungen verwiesen.
+In diesem Artikel werden die Entwicklervorgänge (Developer Operations, DevOps) beschrieben, die speziell für Implementierungen von Advanced Analytics- und Cognitive Services-Lösungen gelten. Diese Schulungsmaterialien beziehen sich auf den Team Data Science-Prozess (TDSP) und Open-Source-Software und -Toolkits von Microsoft, die nützlich für den Entwurf, die Ausführung und die Bereitstellung von Data Science-Lösungen sind. Sie verweisen auf Themen, die die spezifische DevOps-Toolkette für Data Science- und KI-Projekte und -Lösungen abdecken.
 
 ## <a name="lesson-path"></a>Lektionspfad
 Die folgende Tabelle enthält Anleitungen für die verschiedenen Ebenen der DevOps-Ziele, die zum Implementieren von Data Science-Lösungen mithilfe von Azure-Technologie erreicht werden müssen.

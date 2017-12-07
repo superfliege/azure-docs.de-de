@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: debadde78d937bcd4ec1df665aacfd1887fbcd02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03326304e438f3b716c43d268f07d8e22cd15ea3
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="install-the-durable-functions-extension-and-samples-azure-functions"></a>Installieren der Erweiterung Durable Functions und Beispiele (Azure Functions)
 
@@ -33,7 +33,7 @@ Visual Studio bietet derzeit die beste Lösung für das Entwickeln von Apps, die
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-* Installieren Sie die [neueste Version von Visual Studio](https://www.visualstudio.com/downloads/) (mindestens Version 15.3). Schließen Sie die Azure Tools in Ihre Setupoptionen ein.
+* Installieren Sie die [neueste Version von Visual Studio](https://www.visualstudio.com/downloads/) (mindestens Version 15.3). Fügen Sie die Workload **Azure-Entwicklung** in Ihre Setupoptionen ein.
 
 ### <a name="start-with-sample-functions"></a>Starten mit Beispielfunktionen
 
@@ -61,7 +61,7 @@ Falls gewünscht, können Sie das Azure-Portal für die Entwicklung von Durable 
 
 1. Erstellen Sie eine neue Funktionen-App unter [functions.azure.com](https://functions.azure.com/signin).
 2. Konfigurieren Sie die Funktionen-App für die [Verwendung der 2.0-Laufzeitversion ](functions-versions.md).
-3. Erstellen Sie eine neue Funktion, und wählen Sie die Vorlage **Durable Functions Orchestrator – C#**.
+3. Erstellen Sie eine neue Funktion, indem Sie als Sprache „C#“ und als Szenario „Alle“ auswählen. Wählen Sie dann die Vorlage **Durable Functions Orchestrator – C#** aus.
 4. Klicken Sie unter **Erweiterungen nicht installiert** auf **Installieren**, um die Erweiterung von NuGet.org herunterzuladen.
 
 ### <a name="copy-sample-code-to-the-function-app"></a>Kopieren des Beispielcodes in die Funktionen-App

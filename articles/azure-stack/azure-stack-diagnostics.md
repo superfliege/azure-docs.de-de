@@ -2,18 +2,19 @@
 title: Diagnose in Azure Stack
 description: "Es wird beschrieben, wie Sie Protokolldateien für die Diagnose in Azure Stack sammeln."
 services: azure-stack
-author: adshar
-manager: byronr
+author: jeffgilb
+manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/2/2017
-ms.author: adshar
-ms.openlocfilehash: 9b1fbbf63ddd8bac2c1a76bbcd5daca69e2513f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/28/2017
+ms.author: jeffgilb
+ms.reviewer: adshar
+ms.openlocfilehash: 16b56c71e2c81bead7c578a973840391996e845b
+ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
@@ -23,53 +24,16 @@ Bei Azure Stack handelt es sich um eine große Sammlung von Komponenten, die zus
 
 Mit unseren Diagnosetools wird sichergestellt, dass der Mechanismus für die Protokollsammlung einfach und effizient ist. Im folgenden Diagramm ist dargestellt, wie Tools zum Sammeln von Protokollen in Azure Stack funktionieren:
 
-![Tools für die Protokollsammlung](media/azure-stack-diagnostics/image01.png)
+![Azure Stack-Diagnosetools](media/azure-stack-diagnostics/get-azslogs.png)
  
  
 ## <a name="trace-collector"></a>Collector der Ablaufverfolgung
  
-Der Collector der Ablaufverfolgung ist standardmäßig aktiviert. Er wird fortlaufend im Hintergrund ausgeführt und sammelt von den Komponentendiensten in Azure Stack Protokolle vom Typ „Ereignisablaufverfolgung für Windows“ (Event Tracing for Windows, ETW) und speichert sie auf einer gemeinsamen lokalen Freigabe. 
+Der Collector der Ablaufverfolgung ist standardmäßig aktiviert und wird dauerhaft im Hintergrund ausgeführt, um alle ETW-Protokolle (Ereignisablaufverfolgung für Windows) von Azure Stack-Komponentendiensten zu sammeln. ETW-Protokolle werden für fünf Tage in einer gemeinsamen lokalen Freigabe gespeichert. Nachdem dieser Grenzwert erreicht wurde, werden die ältesten Dateien gelöscht, wenn neue Dateien erstellt werden. Die zulässige maximale Standardgröße jeder Datei ist 200 MB. Die Größe wird regelmäßig überprüft (alle 2 Minuten), und wenn die aktuelle Datei größer als 200 MB ist, wird sie gespeichert, und es wird eine neue Datei generiert. Außerdem gilt ein Grenzwert von 8 GB für die Gesamtdateigröße, die pro Ereignissitzung generiert werden kann. 
 
-Hier sind einige wichtige Informationen zum Collector der Ablaufverfolgung aufgeführt:
- 
-* Der Collector der Ablaufverfolgung wird fortlaufend mit Standardgrößenbeschränkungen ausgeführt. Die zulässige maximale Standardgröße jeder Datei (200 MB) ist **keine** endgültige Größe. Die Größe wird regelmäßig überprüft (derzeit alle 2 Minuten), und wenn die aktuelle Datei größer als 200 MB ist, wird sie gespeichert, und es wird eine neue Datei generiert. Außerdem gilt ein (konfigurierbarer) Grenzwert von 8 GB für die Gesamtdateigröße, die pro Ereignissitzung generiert werden kann. Nachdem dieser Grenzwert erreicht wurde, werden die ältesten Dateien gelöscht, wenn neue Dateien erstellt werden.
-* Für die Protokolle gilt ein Altersgrenzwert von fünf Tagen. Dieser Grenzwert kann ebenfalls konfiguriert werden. 
-* Jede Komponente definiert die Eigenschaften für die Ablaufverfolgungskonfiguration mit einer JSON-Datei. Die JSON-Dateien werden unter `C:\TraceCollector\Configuration` gespeichert. Bei Bedarf können diese Dateien bearbeitet werden, um die Grenzwerte für Alter und Größe für die gesammelten Protokolle zu ändern. Für Änderungen an diesen Dateien ist ein Neustart des Diensts *Microsoft Azure Stack-Collector für die Ablaufverfolgung* erforderlich, damit die Änderungen wirksam werden.
-* Das folgende Beispiel ist eine JSON-Datei für die Konfiguration der Ablaufverfolgung für FabricRingServices Operations über die XRP-VM: 
-
-```
-{
-    "LogFile": 
-    {
-        "SessionName": "FabricRingServicesOperationsLogSession",
-        "FileName": "\\\\SU1FileServer\\SU1_ManagementLibrary_1\\Diagnostics\\FabricRingServices\\Operations\\AzureStack.Common.Infrastructure.Operations.etl",
-        "RollTimeStamp": "00:00:00",
-        "MaxDaysOfFiles": "5",
-        "MaxSizeInMB": "200",
-        "TotalSizeInMB": "5120"
-    },
-    "EventSources":
-    [
-        {"Name": "Microsoft-AzureStack-Common-Infrastructure-ResourceManager" },
-        {"Name": "Microsoft-OperationManager-EventSource" },
-        {"Name": "Microsoft-Operation-EventSource" }
-    ]
-}
-```
-
-* **MaxDaysOfFiles**
-
-    Mit diesem Parameter wird das Alter der beizubehaltenden Dateien gesteuert. Ältere Protokolldateien werden gelöscht.
-* **MaxSizeInMB**
-
-    Mit diesem Parameter wird der Größenschwellenwert für eine einzelne Datei gesteuert. Wenn die jeweilige Größe erreicht ist, wird eine neue ETL-Datei erstellt.
-* **TotalSizeInMB**
-
-    Mit diesem Parameter wird die Gesamtgröße der ETL-Dateien gesteuert, die für eine Ereignissitzung generiert werden. Wenn die Gesamtdateigröße größer als dieser Parameterwert ist, werden ältere Dateien gelöscht.
-  
 ## <a name="log-collection-tool"></a>Tool für die Protokollsammlung
  
-Der PowerShell-Befehl `Get-AzureStackLog` kann verwendet werden, um Protokolle für alle Komponenten einer Azure Stack-Umgebung zu sammeln. Sie werden an einem vom Benutzer angegebenen Ort in ZIP-Dateien gespeichert. Wenn unser Team für den technischen Support Ihre Protokolle für die Behandlung eines Problems benötigt, werden Sie unter Umständen gebeten, dieses Tool auszuführen.
+Das PowerShell-Cmdlet **Get-AzureStackLog** kann verwendet werden, um Protokolle für alle Komponenten einer Azure Stack-Umgebung zu sammeln. Sie werden an einem vom Benutzer angegebenen Ort in ZIP-Dateien gespeichert. Wenn unser Team für den technischen Support Ihre Protokolle für die Behandlung eines Problems benötigt, werden Sie unter Umständen gebeten, dieses Tool auszuführen.
 
 > [!CAUTION]
 > Es kann sein, dass diese Protokolldateien personenbezogene Informationen enthalten. Berücksichtigen Sie dies, bevor Sie Protokolldateien öffentlich bereitstellen.
@@ -78,43 +42,49 @@ Es folgen einige Beispiele für die gesammelten Protokolltypen:
 *   **Azure Stack-Bereitstellungsprotokolle**
 *   **Windows-Ereignisprotokolle**
 *   **Panther-Protokolle**
-
-   Für die Behandlung von Problemen bei der VM-Erstellung:
 *   **Clusterprotokolle**
 *   **Speicherdiagnoseprotokolle**
 *   **ETW-Protokolle**
 
-Diese Dateien werden vom Collector für die Ablaufverfolgung gesammelt und auf einer Freigabe gespeichert, auf der sie von `Get-AzureStackLog` abgerufen werden.
+Diese Dateien werden vom Collector der Ablaufverfolgung gesammelt und in einer Freigabe gespeichert. Das PowerShell-Cmdlet **Get-AzureStackLog** kann dann verwendet werden, um sie bei Bedarf zu sammeln.
  
-**So führen Sie Get-AzureStackLog in einem System mit Azure Stack Development Kit (ASDK) aus**
-1.  Melden Sie sich auf dem Host als „AzureStack\AzureStackAdmin“ an.
-2.  Öffnen Sie ein PowerShell-Fenster als Administrator.
-3.  Führen Sie `Get-AzureStackLog`aus.  
+### <a name="to-run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system"></a>So führen Sie Get-AzureStackLog in einem System mit dem Azure Stack Development Kit (ASDK) aus
+1. Melden Sie sich auf dem Host als **AzureStack\CloudAdmin** an.
+2. Öffnen Sie ein PowerShell-Fenster als Administrator.
+3. Führen Sie PowerShell-Cmdlet **Get-AzureStackLog**.
 
-    **Beispiele**
+**Beispiele:**
 
-    - Sammeln Sie alle Protokolle für alle Rollen:
+  Sammeln Sie alle Protokolle für alle Rollen:
 
-        `Get-AzureStackLog -OutputPath C:\AzureStackLogs`
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs
+  ```
 
-    - Sammeln Sie Protokolle für die Rollen VirtualMachines und BareMetal:
+  Sammeln Sie Protokolle für die Rollen VirtualMachines und BareMetal:
 
-        `Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal`
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal
+  ```
 
-    - Sammeln Sie Protokolle für die Rollen VirtualMachines und BareMetal, und verwenden Sie die Datumsfilterung für Protokolldateien für die letzten acht Stunden:
+  Sammeln Sie Protokolle für die Rollen VirtualMachines und BareMetal, und verwenden Sie die Datumsfilterung für Protokolldateien für die letzten acht Stunden:
+    
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
 
-        `Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)`
+  Sammeln Sie Protokolle für die Rollen VirtualMachines und BareMetal, und verwenden Sie für die Datumsfilterung der Protokolldateien den Zeitraum zwischen acht und zwei Stunden vor dem aktuellen Zeitpunkt:
 
-    - Sammeln Sie Protokolle für die Rollen VirtualMachines und BareMetal, und verwenden Sie für die Datumsfilterung der Protokolldateien den Zeitraum zwischen acht und zwei Stunden vor dem aktuellen Zeitpunkt:
+  ```powershell
+  Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  ```
 
-      `Get-AzureStackLog -OutputPath C:\AzureStackLogs -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)`
-
-**So führen Sie Get-AzureStackLog in einem integrierten Azure Stack-System aus**
+### <a name="to-run-get-azurestacklog-on-an-azure-stack-integrated-system"></a>So führen Sie Get-AzureStackLog in einem integrierten Azure Stack-System aus
 
 Um das Protokollerfassungstool in einem integrierten System auszuführen, benötigen Sie Zugriff auf den privilegierten Endpunkt (PEP). Das folgende Beispielskript können Sie mit dem PEP ausführen, um Protokolle in einem integrierten System zu sammeln:
 
-```
-$ip = "<IP OF THE PEP VM>" # You can also use the machine name instead of IP here.
+```powershell
+$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
  
 $pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
 $cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
@@ -126,7 +96,7 @@ $s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Cred
 $fromDate = (Get-Date).AddHours(-8)
 $toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
  
-Invoke-Command -Session $s {    Get-AzureStackLog -OutputPath "\\<HLH MACHINE ADDREESS>\c$\logs" -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+Invoke-Command -Session $s {    Get-AzureStackLog -OutputPath "\\<HLH MACHINE ADDRESS>\c$\logs" -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
 
 if($s)
 {
@@ -134,43 +104,50 @@ if($s)
 }
 ```
 
-- Geben Sie beim Sammeln von Protokollen vom PEP für den `OutputPath`-Parameter einen Speicherort auf dem HLH-Computer an. Stellen Sie außerdem sicher, dass der Speicherort verschlüsselt ist.
-- Die Parameter `OutputSharePath` und `OutputShareCredential` sind optional und werden verwendet, wenn Sie Protokolle in einen externen freigegebenen Ordner hochladen. Verwenden Sie diese Parameter *zusätzlich* zu `OutputPath`. Wenn `OutputPath` nicht angegeben ist, verwendet das Protokollerfassungstool das Systemlaufwerk der PEP-VM für die Speicherung. Dies kann zu einem Fehler beim Skript führen, da der Speicherplatz auf dem Laufwerk begrenzt ist.
-- Wie im vorherigen Beispiel gezeigt, können die Parameter `FromDate` und `ToDate` zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Dies kann für Szenarien wie das Sammeln von Protokollen nach dem Anwenden von Updatepaketen in einem integrierten System hilfreich sein.
+- Geben Sie beim Sammeln von Protokollen vom PEP für den **OutputPath**-Parameter einen Speicherort auf dem HLH-Computer (Hardware Lifecycle Host) an. Stellen Sie außerdem sicher, dass der Speicherort verschlüsselt ist.
+- Die Parameter **OutputSharePath** und **OutputShareCredential** sind optional und werden verwendet, wenn Sie Protokolle in einen externen freigegebenen Ordner hochladen. Verwenden Sie diese Parameter *zusätzlich* zu **OutputPath**. Wenn **OutputPath** nicht angegeben ist, verwendet das Protokollsammlungstool das Systemlaufwerk der PEP-VM für die Speicherung. Dies kann zu einem Fehler beim Skript führen, da der Speicherplatz auf dem Laufwerk begrenzt ist.
+- Wie im vorherigen Beispiel gezeigt, können die Parameter **FromDate** und **ToDate** zum Sammeln von Protokollen für einen bestimmten Zeitraum verwendet werden. Dies kann für Szenarien wie das Sammeln von Protokollen nach dem Anwenden von Updatepaketen in einem integrierten System hilfreich sein.
 
-**Überlegungen zu den Parametern für das ASDK und integrierte Systeme:**
+### <a name="parameter-considerations-for-both-asdk-and-integrated-systems"></a>Überlegungen zu den Parametern für das ASDK und integrierte Systeme
 
-- Wenn die Parameter `FromDate` und `ToDate` nicht angegeben sind, werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
-- Sie können den `TimeOutInMinutes`-Parameter verwenden, um das Timeout für die Sammlung von Protokollen festzulegen. Es ist standardmäßig auf 150 (2,5 Stunden) festgelegt.
+- Wenn die Parameter **FromDate** und **ToDate** nicht angegeben sind, werden standardmäßig Protokolle für die letzten vier Stunden gesammelt.
+- Sie können den **TimeOutInMinutes**-Parameter verwenden, um das Timeout für die Sammlung von Protokollen festzulegen. Es ist standardmäßig auf 150 (2,5 Stunden) festgelegt.
 
-- Derzeit können Sie den Parameter `FilterByRole` verwenden, um die Protokollsammlung nach den folgenden Rollen zu filtern:
+- Derzeit können Sie den **FilterByRole**-Parameter verwenden, um die Protokollsammlung nach den folgenden Rollen zu filtern:
 
    |   |   |   |
    | - | - | - |
-   | `ACSMigrationService`     | `ACSMonitoringService`   | `ACSSettingsService` |
-   | `ACS`                     | `ACSFabric`              | `ACSFrontEnd`        |
-   | `ACSTableMaster`          | `ACSTableServer`         | `ACSWac`             |
-   | `ADFS`                    | `ASAppGateway`           | `BareMetal`          |
-   | `BRP`                     | `CA`                     | `CPI`                |
-   | `CRP`                     | `DeploymentMachine`      | `DHCP`               |
-   |`Domain`                   | `ECE`                    | `ECESeedRing`        |        
-   | `FabricRing`              | `FabricRingServices`     | `FRP`                |
-   |` Gateway`                 | `HealthMonitoring`       | `HRP`                |               
-   | `IBC`                     | `InfraServiceController` | `KeyVaultAdminResourceProvider`|
-   | `KeyVaultControlPlane`    | `KeyVaultDataPlane`      | `NC`                 |            
-   | `NonPrivilegedAppGateway` | `NRP`                    | `SeedRing`           |
-   | `SeedRingServices`        | `SLB`                    | `SQL`                |     
-   | `SRP`                     | `Storage`                | `StorageController`  |
-   | `URP`                     | `UsageBridge`            | `VirtualMachines`    |  
-   | `WAS`                     | `WASPUBLIC`              | `WDS`                |
+   | ACSMigrationService     | ACSMonitoringService   | ACSSettingsService |
+   | ACS                     | ACSFabric              | ACSFrontEnd        |
+   | ACSTableMaster          | ACSTableServer         | ACSWac             |
+   | ADFS                    | ASAppGateway           | BareMetal          |
+   | BRP                     | CA                     | CPI                |
+   | CRP                     | DeploymentMachine      | DHCP               |
+   | Domäne                  | ECE                    | ECESeedRing        | 
+   | FabricRing              | FabricRingServices     | FRP                |
+   | Gateway                 | HealthMonitoring       | HRP                |   
+   | IBC                     | InfraServiceController | KeyVaultAdminResourceProvider|
+   | KeyVaultControlPlane    | KeyVaultDataPlane      | NC                 |   
+   | NonPrivilegedAppGateway | NRP                    | SeedRing           |
+   | SeedRingServices        | SLB                    | SQL                |   
+   | SRP                     | Speicher                | StorageController  |
+   | URP                     | UsageBridge            | VirtualMachines    |  
+   | WAS                     | WASPUBLIC              | WDS                |
 
 
-Weitere wichtige Informationen:
+### <a name="collect-logs-using-a-graphical-user-interface"></a>Erfassen von Protokollen mithilfe einer grafischen Benutzeroberfläche
+Anstatt die erforderlichen Parameter für das Cmdlet Get-AzureStackLog zum Abrufen von Azure Stack-Protokollen bereitzustellen, können Sie auch die verfügbaren Open-Source-Tools für Azure Stack verwenden, die Sie im GitHub-Repository unter http://aka.ms/AzureStackTools finden.
+
+Das PowerShell-Skript **ERCS_AzureStackLogs.ps1** ist im GitHub-Toolrepository enthalten und wird regelmäßig aktualisiert. Beim Start aus einer PowerShell-Administratorsitzung stellt das Skript eine Verbindung mit dem privilegierten Endpunkt her und führt Get-AzureStackLog mit den angegebenen Parametern aus. Wenn keine Parameter angegeben werden, fordert das Skript standardmäßig zur Eingabe der Parameter über eine grafische Benutzeroberfläche auf.
+
+Weitere Informationen zum PowerShell-Skript „ERCS_AzureStackLogs.ps1“ erhalten Sie in [einem kurzen Video](https://www.youtube.com/watch?v=Utt7pLsXEBc) und in der [Infodatei](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) des Skripts, das sich im GitHub-Toolrepository zu Azure Stack befindet. 
+
+### <a name="additional-considerations"></a>Zusätzliche Überlegungen
 
 * Je nachdem, welche Rollen in den Protokollen gesammelt werden, kann dieser Befehl mehr Zeit beanspruchen. Zu den entscheidenden Faktoren gehören auch der Zeitraum, der für die Protokollsammlung angegeben wurde, und die Anzahl von Knoten in der Azure Stack-Umgebung.
-* Überprüfen Sie nach Abschluss der Protokollsammlung den neuen Ordner, der mit dem Parameter `-OutputPath` des Befehls erstellt wird.
+* Überprüfen Sie nach Abschluss der Protokollsammlung den neuen Ordner, der mit dem **OutputPath**-Parameter des Befehls erstellt wird.
 * Für jede Rolle sind die Protokolle in separaten ZIP-Dateien enthalten. Abhängig von der Größe der gesammelten Protokolle kann das Protokoll einer Rolle möglicherweise in mehrere ZIP-Dateien aufgeteilt werden. Wenn Sie alle Protokolldateien in denselben Ordner entzippen möchten, verwenden Sie für eine solche Rolle ein Tool, das den Entzipvorgang in einer Sammeloperation durchführen kann (z.B. 7-Zip). Wählen Sie alle ZIP-Dateien für die Rolle und dann **Hier entpacken** aus. Damit werden die Protokolldateien für diese Rolle in einem zusammengeführten Ordner entzippt.
-* Eine Datei namens `Get-AzureStackLog_Output.log` wird ebenfalls in dem Ordner mit den gezippten Protokolldateien erstellt. Diese Datei ist ein Protokoll der Befehlsausgabe, die Sie zum Beheben von Problemen während der Protokollsammlung verwenden können.
+* Eine Datei namens **Get-AzureStackLog_Output.log** wird ebenfalls in dem Ordner mit den gezippten Protokolldateien erstellt. Diese Datei ist ein Protokoll der Befehlsausgabe, die Sie zum Beheben von Problemen während der Protokollsammlung verwenden können.
 * Zum Untersuchen eines bestimmten Fehlers werden unter Umständen die Protokolle von mehr als einer Komponente benötigt.
     -   System- und Ereignisprotokolle für alle Infrastruktur-VMs werden unter der Rolle *VirtualMachines* gesammelt.
     -   System- und Ereignisprotokolle für alle Hosts werden unter der Rolle *BareMetal* gesammelt.

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.author: mimig
-ms.openlocfilehash: fd0454252080679fa880eecb677d609ea0734f09
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 5163d20aece01addddeae93cb07355bde928a440
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="import-data-for-use-with-the-azure-cosmos-db-table-api"></a>Importieren von Daten für die Verwendung mit der Table-API von Azure Cosmos DB
 
@@ -32,11 +32,11 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 
 ## <a name="data-migration-tool"></a>Datenmigrationstool
 
-Das Datenmigrationstool von Azure Cosmos DB für die Befehlszeile („dt.exe“) kann verwendet werden, um Ihre vorhandenen Azure Table Storage-Daten in ein Konto der allgemein verfügbaren Tabellen-API zu importieren oder um Daten aus einem Konto der Tabellen-API (Vorschauversion) zu einem Konto der allgemein verfügbaren Version der Tabellen-API zu migrieren. Andere Quellen werden derzeit nicht unterstützt.
+Das Datenmigrationstool von Azure Cosmos DB für die Befehlszeile („dt.exe“) kann verwendet werden, um Ihre vorhandenen Azure Table Storage-Daten in ein Konto der allgemein verfügbaren Tabellen-API zu importieren oder um Daten aus einem Konto der Tabellen-API (Vorschauversion) zu einem Konto der allgemein verfügbaren Version der Tabellen-API zu migrieren. Andere Quellen werden derzeit nicht unterstützt. Das UI-basierte Datenmigrationstool (dtui.exe) wird derzeit für Tabellen-API-Konten nicht unterstützt. 
 
 Um eine Migration von Tabellendaten durchzuführen, führen Sie die folgenden Aufgaben aus:
 
-1. Laden Sie das Migrationstool aus dem [Microsoft Download Center](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) oder von [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) herunter.
+1. Laden Sie das Migrationstool von [GitHub](https://github.com/azure/azure-documentdb-datamigrationtool) herunter.
 2. Führen Sie `dt.exe` mit den Befehlszeilenargumenten für Ihr Szenario aus.
 
 „dt.exe“ akzeptiert einen Befehl im folgenden Format:

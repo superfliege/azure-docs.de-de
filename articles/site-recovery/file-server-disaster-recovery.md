@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 10/23/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 78ce74450ce933e2aced4b6e62504373de7954f8
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 8c9d8dadcd6181d9894ab6ee7110841afdec5708
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="protect-a-file-server-using-azure-site-recovery"></a>Schützen eines Dateiservers per Azure Site Recovery 
 
@@ -24,9 +24,8 @@ Der Dienst [Azure Site Recovery](site-recovery-overview.md) unterstützt Ihre St
 
 In diesem Artikel wird beschrieben, wie Sie einen Dateiserver per Azure Site Recovery schützen, und er enthält weitere Empfehlungen für verschiedene Umgebungen.     
 
-- [Protect Azure IaaS file server machines](#disaster-recovery-recommendation-for-azure-iaas-virtual-machines) (Schützen von Azure IaaS-Dateiservercomputern)
-- [Protect on-premises file servers](#replicate-an-onpremises-file-server-using-azure-site-recovery) (Schützen von lokalen Dateiservern)
-
+- [Empfehlung zur Notfallwiederherstellung für virtuelle Azure IaaS-Computer](#disaster-recovery-recommendation-for-azure-iaas-virtual-machines)
+- [Schützen eines Dateiservers per Azure Site Recovery](#replicate-an-onpremises-file-server-using-azure-site-recovery)
 
 ## <a name="file-server-architecture"></a>Dateiserverarchitektur
 Das Ziel eines offenen verteilten Dateifreigabesystems ist die Bereitstellung einer Umgebung, in der eine Gruppe von geografisch verteilten Benutzern zusammenarbeiten kann, um Dateien auf effiziente Weise zu bearbeiten, und für die sichergestellt ist, dass die Anforderungen in Bezug auf die Integrität durchgesetzt werden. In einem typischen lokalen Dateiserver-Ökosystem, das eine hohe Zahl von gleichzeitigen Benutzern und Inhaltselementen unterstützt, wird für die Planung der Replikation und die Bandbreitendrosselung die DFS-Replikation (Distributed File System Replication) verwendet. Für DFSR wird ein Komprimierungsalgorithmus genutzt, der als Remote Differential Compression (RDC) bezeichnet wird. Er kann eingesetzt werden, um Dateien über ein Netzwerk mit begrenzter Bandbreite auf effiziente Weise zu aktualisieren. Das Einfügen, Entfernen und Neuanordnen von Daten in Dateien wird erkannt, sodass es mit DFSR möglich ist, beim Aktualisieren von Dateien nur die geänderten Dateiblöcke zu replizieren. Es gibt auch Dateiserverumgebungen ohne Implementierungen von DFSR, in denen tägliche Sicherungen außerhalb der Spitzenzeiten erstellt werden, um auf Notfälle vorbereitet zu sein.
@@ -45,16 +44,16 @@ Oben werden mehrere Dateiserver als Member bezeichnet, die an der Replikation vo
 
     Nachdem die Abhängigkeiten der Site-to-Site-VPN-Konnektivität und von Active Directory geregelt wurden und DFSR vorhanden ist, können die Clients auch dann eine Verbindung mit der Azure-VM zur Bereitstellung der Anforderungen herstellen, wenn einer oder mehrere lokale Dateiserver nicht erreichbar sind.
 
-    Dieser Ansatz wird für den Fall empfohlen, dass Ihre VMs über Konfigurationen verfügen, die von Azure Site Recovery nicht unterstützt werden. Beispiel: Freigegebene Clusterdatenträger, die häufiger in Dateiserverumgebungen verwendet werden.  DFSR funktioniert auch in Umgebungen mit geringer Bandbreite und mittlerer Änderungsrate. Die zusätzlichen Kosten der Nutzung einer Azure-VM, die immer ausgeführt wird, sollten hierbei ebenfalls berücksichtigt werden.  
+    Dieser Ansatz wird für den Fall empfohlen, dass Ihre virtuellen Computer über Konfigurationen verfügen, die von Azure Site Recovery nicht unterstützt werden (etwa im Falle von freigegebenen Clusterdatenträgern, die gelegentlich in Dateiserverumgebungen verwendet werden).  DFSR funktioniert auch in Umgebungen mit geringer Bandbreite und mittlerer Änderungsrate. Die zusätzlichen Kosten der Nutzung einer Azure-VM, die immer ausgeführt wird, sollten hierbei ebenfalls berücksichtigt werden.  
 
 3.  Verwenden Sie den Azure File Sync-Dienst, um Ihre Dateien zu replizieren: Wenn Sie sich auf die Umstellung auf die Cloud vorbereiten oder bereits eine Azure-VM verwenden, raten wir Ihnen zur Verwendung des Azure File Sync-Diensts. Er ermöglicht die Synchronisierung von vollständig verwalteten Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) zugegriffen werden kann. Azure-Dateifreigaben können dann gleichzeitig über Cloudbereitstellungen oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. 
 
-Das Diagramm unten enthält eine grafische Darstellung, um Ihnen die Entscheidung zu erleichtern, welche Strategie für Ihre Dateiserverumgebung verwendet werden soll.
+Das folgende Diagramm enthält eine grafische Darstellung, um Ihnen die Entscheidung zu erleichtern, welche Strategie für Ihre Dateiserverumgebung verwendet werden soll.
 
 ![decisiontree](media/site-recovery-file-server/decisiontree.png)
 
 
-### <a name="factors-to-consider-while-making-disaster-recovery-decision"></a>Zu berücksichtigende Faktoren beim Treffen der Entscheidung zur Notfallwiederherstellung
+### <a name="factors-to-consider-while-making-decision-of-disaster-recovery-to-azure"></a>Entscheidungsfaktoren für die Azure-basierte Notfallwiederherstellung
 
 |Environment  |Empfehlung  |Zu berücksichtigende Punkte |
 |---------|---------|---------|
@@ -91,37 +90,35 @@ Wenn Sie die Notfallwiederherstellung von Dateiservern konfigurieren und verwalt
 
 ## <a name="use-azure-file-sync-service-to-replicate-files-hosted-on-iaas-virtual-machine"></a>Verwenden des Azure File Sync-Diensts zum Replizieren von Dateien, die auf virtuellen IaaS-Computern gehostet werden
 
-**Azure Files** kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig ersetzen bzw. erweitern. Azure-Dateifreigaben können auch per Azure-Dateisynchronisierung auf Windows Server-Instanzen repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine leistungsstarke und verteilte Zwischenspeicherung zu erzielen. Die unten angegebenen Schritte veranschaulichen die Empfehlung zur Notfallwiederherstellung für Azure-VMs, die die gleichen Funktionen wie herkömmliche Dateiserver ausführen:
-1.  Schützen von Computern mit Azure Site Recovery (mit den hier angegebenen Schritten)
+**Azure Files** kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig ersetzen bzw. erweitern. Azure-Dateifreigaben können auch per Azure-Dateisynchronisierung auf Windows Server-Instanzen repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine leistungsstarke und verteilte Zwischenspeicherung zu erzielen. Die folgenden Schritte veranschaulichen die Empfehlung zur Notfallwiederherstellung für virtuelle Azure-Computer, die die gleichen Funktionen wie herkömmliche Dateiserver ausführen:
+1.  Schützen Sie Computer mit Azure Site Recovery (mit den [hier](azure-to-azure-quickstart.md) angegebenen Schritten).
 2.  Verwenden Sie Azure File Sync zum Replizieren von Dateien von der VM, die als Dateiserver dient, in der Cloud.
-3.  Verwenden Sie das Wiederherstellungsplan-Feature von Azure Site Recovery, um Skripts zum [Einbinden der Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) und Zugreifen auf die Freigabe auf Ihrem virtuellen Computer hinzuzufügen.
+3.  Verwenden Sie das Feature [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) von Azure Site Recovery, um Skripts zum [Einbinden der Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) und zum Zugreifen auf die Freigabe auf Ihrem virtuellen Computer hinzuzufügen.
 
 Mit den unten angegebenen Schritten wird kurz beschrieben, wie Sie den Azure File Sync-Dienst verwenden:
 
-1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff (RA-GRS) für Ihre Speicherkonten ausgewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-
-2. [Erstellen einer Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
-
+1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff (RA-GRS) für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+2. [Erstellen Sie eine Dateifreigabe.](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
 3. [Stellen Sie Azure File Sync auf Ihrem Azure-Dateiserver bereit](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide).
-
 4. Erstellen einer Synchronisierungsgruppe: Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt, der eine Azure-Dateifreigabe darstellt, und einen Serverendpunkt, der einen Pfad auf einem Windows-Server darstellt, enthalten.
 5.  Ihre Dateien bleiben jetzt zwischen der Azure-Dateifreigabe und Ihrem lokalen Server synchron.
-6.  Führen Sie bei einem Notfall in Ihrer lokalen Umgebung ein Failover durch, indem Sie einen Wiederherstellungsplan verwenden, und fügen Sie das Skript zum [Einbinden der Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) und Zugreifen auf die Freigabe auf Ihrem virtuellen Computer hinzu.
+6.  Führen Sie bei einem Notfall in Ihrer lokalen Umgebung ein Failover mit einem [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) durch, und fügen Sie das Skript zum [Einbinden der Azure-Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) und zum Zugreifen auf die Freigabe auf Ihrem virtuellen Computer hinzu.
 
 ### <a name="replicate-an-iaas-file-server-virtual-machine-using-azure-site-recovery"></a>Replizieren eines virtuellen IaaS-Dateiservercomputers mit Azure Site Recovery
 
 Führen Sie die ersten beiden Schritte auch aus, wenn bei Ihnen lokale Clients auf den virtuellen IaaS-Dateiservercomputer zugreifen. Fahren Sie ansonsten mit Schritt 3 fort.
 
-1. Erstellen Sie eine Site-to-Site-VPN-Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk.  
-2. Erweitern Sie die lokale Active Directory-Instanz.
-3. Führen Sie das [Einrichten der Notfallwiederherstellung](azure-to-azure-tutorial-enable-replication.md) für den IaaS-Dateiservercomputer in eine sekundäre Region durch.
+1. Erstellen Sie eine Site-to-Site-VPN-Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk.
+1. Erweitern Sie die lokale Active Directory-Instanz.
+1. Führen Sie das [Einrichten der Notfallwiederherstellung](azure-to-azure-tutorial-enable-replication.md) für den IaaS-Dateiservercomputer in eine sekundäre Region durch.
 
 
 Weitere Informationen zur Notfallwiederherstellung in einer sekundären Region finden Sie [hier](concepts-azure-to-azure-architecture.md).
 
 
 ## <a name="replicate-an-on-premises-file-server-using-azure-site-recovery"></a>Replizieren eines lokalen Dateiservers per Azure Site Recovery
-Die Schritte unten veranschaulichen die Replikation für eine VMware-VM. Die Schritte zum Replizieren einer Hyper-V-VM finden Sie hier.
+
+Die folgenden Schritte veranschaulichen die Replikation für einen virtuellen VMware-Computer. Die Schritte zum Replizieren eines virtuellen Hyper-V-Computers finden Sie [hier](tutorial-hyper-v-to-azure.md).
 
 1.  Führen Sie das [Vorbereiten von Azure-Ressourcen](tutorial-prepare-azure.md) für die Replikation von lokalen Computern durch.
 2.  Erstellen Sie eine Site-to-Site-VPN-Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk.  
@@ -134,33 +131,26 @@ Die Schritte unten veranschaulichen die Replikation für eine VMware-VM. Die Sch
 1.  Erstellen Sie eine Site-to-Site-VPN-Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk. 
 2.  Erweitern Sie die lokale Active Directory-Instanz.
 3.  Führen Sie das [Erstellen und Bereitstellen einer Dateiserver-VM](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) im Microsoft Azure Virtual Network durch.
-
-    Stellen Sie sicher, dass der virtuelle Computer demselben Microsoft Azure Virtual Network hinzugefügt wird, das über gegenseitige Konnektivität mit der lokalen Umgebung verfügt. 
-
+Stellen Sie sicher, dass der virtuelle Computer demselben Microsoft Azure Virtual Network hinzugefügt wird, das über gegenseitige Konnektivität mit der lokalen Umgebung verfügt. 
 4.  Führen Sie das Installieren und [Konfigurieren der DFS-Replikation](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx) unter Windows Server durch.
-
 5.  [Implementieren Sie einen DFS-Namespace](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces).
 6.  Wenn der DFS-Namespace implementiert ist, kann das Failover von freigegebenen Ordnern von Produktions- zu Notfallwiederherstellungsstandorten durchgeführt werden, indem die Ordnerziele des DFS-Namespace aktualisiert werden.  Nachdem diese Änderungen des DFS-Namespace per Active Directory repliziert wurden, werden Benutzer auf transparente Weise mit den entsprechenden Ordnerzielen verbunden.
 
 ## <a name="use-azure-file-sync-service-to-replicate-your-on-premises-files"></a>Verwenden des Azure File Sync-Diensts zum Replizieren Ihrer lokalen Dateien:
 Mit dem Azure File Sync-Dienst können Sie die gewünschten Dateien in der Cloud replizieren. Bei einem Notfall und der Nichterreichbarkeit Ihrer lokalen Dateiserver können Sie die gewünschten Dateispeicherorte aus der Cloud einbinden und mit dem Verarbeiten von Anforderungen der Clientcomputer fortfahren.
 Empfohlener Ansatz zur Integration von Azure File Sync in Azure Site Recovery:
-1.  Schützen von Dateiservercomputern mit Azure Site Recovery (mit den [hier](tutorial-vmware-to-azure.md) angegebenen Schritten)
+1.  Schützen Sie die Dateiservercomputer mit Azure Site Recovery (mit den [hier](tutorial-vmware-to-azure.md) angegebenen Schritten).
 2.  Verwenden Sie Azure File Sync, um Dateien von dem Computer, der als Dateiserver dient, in der Cloud zu replizieren.
 3.  Nutzen Sie das Wiederherstellungsplan-Feature von Azure Site Recovery zum Hinzufügen von Skripts, um die Azure-Dateifreigabe auf der FileServer-VM in Azure einzubinden, für die das Failover durchgeführt wurde.
 
 Mit den unten angegebenen Schritten wird die Verwendung des Azure File Sync-Diensts beschrieben:
 
-1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff (RA-GRS) (empfohlen) für Ihre Speicherkonten ausgewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
-
-2. [Erstellen einer Dateifreigabe](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
-
+1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff (RA-GRS) (empfohlen) für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+2. [Erstellen Sie eine Dateifreigabe.](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
 3. Führen Sie das [Bereitstellen von Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) auf Ihrem lokalen Dateiserver durch.
-
 4. Erstellen einer Synchronisierungsgruppe: Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt, der eine Azure-Dateifreigabe darstellt, und einen Serverendpunkt, der einen Pfad auf der lokalen Windows Server-Instanz darstellt, enthalten.
-
 1. Ihre Dateien bleiben jetzt zwischen der Azure-Dateifreigabe und Ihrem lokalen Server synchron.
-6.  Führen Sie bei einem Notfall in Ihrer lokalen Umgebung ein Failover durch, indem Sie einen Wiederherstellungsplan verwenden, und fügen Sie das Skript zum Einbinden der Azure-Dateifreigabe und Zugreifen auf die Freigabe auf Ihrem virtuellen Computer hinzu.
+6.  Führen Sie bei einem Notfall in Ihrer lokalen Umgebung ein Failover mit einem [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) durch, und fügen Sie das Skript zum Einbinden der Azure-Dateifreigabe und zum Zugreifen auf die Freigabe auf Ihrem virtuellen Computer hinzu.
 
 > [!NOTE]
 > Sicherstellen, dass Port 445 geöffnet ist: Azure Files verwendet das SMB-Protokoll. SMB kommuniziert über den TCP-Port 445. Vergewissern Sie sich, dass der TCP-Port 445 des Clientcomputers nicht durch die Firewall blockiert wird.
@@ -186,4 +176,4 @@ Eine Anleitung zum Ausführen des Testfailovers für AD und DNS finden Sie unter
 3.  Klicken Sie auf „Failover“.
 4.  Wählen Sie einen Wiederherstellungspunkt aus, um den Failoverprozess zu starten.
 
-Weitere Informationen zum Durchführen des Testfailovers finden Sie [hier](site-recovery-failover.md).
+Weitere Informationen zum Durchführen eines Failovers finden Sie [hier](site-recovery-failover.md).

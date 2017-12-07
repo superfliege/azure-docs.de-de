@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: cbb752692fbd618d9e7e14c8a80b582aad657b38
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: d1b2645580c12777ea39816bdcc62cfabc172d16
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB: Abfragen von Tabellendaten mithilfe der Table-API
 
@@ -38,7 +38,7 @@ Die Abfragen in diesem Artikel verwenden die folgende Beispieltabelle `People`:
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
 | Smith | Jeff | Jeff@contoso.com| 425-555-0104 | 
 
-Ausführlichere Informationen zu Abfragen mit der Table-API finden Sie unter [Querying Tables and Entities] (https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities) (Abfragen von Tabellen und Entitäten). 
+Weitere Informationen zu Abfragen mit der Tabellen-API finden Sie unter [Abfragen von Tabellen und Entitäten](https://docs.microsoft.com/rest/api/storageservices/fileservices/querying-tables-and-entities). 
 
 Weitere Informationen zu den Premiumfunktionen von Azure Cosmos DB finden Sie unter [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md) sowie unter [Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET](tutorial-develop-table-dotnet.md). 
 

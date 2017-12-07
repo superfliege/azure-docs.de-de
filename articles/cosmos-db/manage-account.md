@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 86b43b312bf7ce52ab75855424cc5db473245159
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 16cdd2780ae090a5388b3d2e6e4ab52a24f8116a
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/29/2017
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Verwalten eines Azure Cosmos DB-Kontos
 Erfahren Sie, wie Sie globale Konsistenz festlegen, mit Schlüsseln arbeiten und ein Azure Cosmos DB-Konto im Azure-Portal löschen.
@@ -33,10 +33,10 @@ Die Auswahl der richtigen Konsistenzebene richtet sich nach der Semantik Ihrer A
 3. Wählen Sie auf der Seite **Standardkonsistenz** die neue Konsistenzebene aus, und klicken Sie auf **Speichern**.
     ![Standardkonsistenz - Sitzung][5]
 
-## <a id="keys"></a>Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln
-Wenn Sie ein Azure Cosmos DB-Konto erstellen, generiert der Dienst zwei Hauptzugriffsschlüssel, die für die Authentifizierung verwendet werden können, wenn der Zugriff auf das Azure Cosmos DB-Konto erfolgt. Durch Bereitstellen von zwei Zugriffsschlüsseln ermöglicht Azure Cosmos DB Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Zugriffs auf das Azure Cosmos DB-Konto. 
+## <a id="keys"></a>Anzeigen, Kopieren und erneutes Generieren von Zugriffsschlüsseln und Kennwörtern
+Wenn Sie ein Azure Cosmos DB-Konto erstellen, generiert der Dienst zwei Hauptzugriffsschlüssel (oder zwei Kennwörter für MongoDB-API-Konten), die für die Authentifizierung verwendet werden können, wenn auf das Azure Cosmos DB-Konto zugegriffen wird. Durch Bereitstellen von zwei Zugriffsschlüsseln ermöglicht Azure Cosmos DB Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Zugriffs auf das Azure Cosmos DB-Konto. 
 
-Rufen Sie im [Azure-Portal](https://portal.azure.com/) über das Ressourcenmenü auf der Seite **Azure Cosmos DB-Konto** die Seite **Schlüssel** auf, um die für den Zugriff auf Ihr Azure Cosmos DB-Konto verwendeten Schlüssel anzuzeigen, zu kopieren und neu zu generieren.
+Rufen Sie im [Azure-Portal](https://portal.azure.com/) über das Ressourcenmenü auf der Seite **Azure Cosmos DB-Konto** die Seite **Schlüssel** auf, um die für den Zugriff auf Ihr Azure Cosmos DB-Konto verwendeten Schlüssel anzuzeigen, zu kopieren und neu zu generieren. Rufen Sie für MongoDB-API-Konten die Seite **Verbindungszeichenfolge** über das Ressourcenmenü auf, um die Kennwörter für den Zugriff auf Ihr Konto anzuzeigen, zu kopieren und neu zu generieren.
 
 ![Screenshot des Azure-Portals (Seite „Schlüssel“)](./media/manage-account/keys.png)
 
@@ -47,25 +47,25 @@ Rufen Sie im [Azure-Portal](https://portal.azure.com/) über das Ressourcenmenü
 
 Außerdem stehen auf der Seite auch schreibgeschützte Schlüssel zur Verfügung. Lesevorgänge und Abfragen sind schreibgeschützte Vorgänge, während das Erstellen, Löschen und Ersetzen Schreib- und Lesevorgänge sind.
 
-### <a name="copy-an-access-key-in-the-azure-portal"></a>Kopieren eines Zugriffsschlüssels im Azure-Portal
-Klicken Sie auf der Seite **Schlüssel** rechts neben dem Schlüssel, den Sie kopieren möchten, auf die Schaltfläche **Kopieren**.
+### <a name="copy-an-access-key-or-password-in-the-azure-portal"></a>Kopieren eines Zugriffsschlüssels oder Kennworts im Azure-Portal
+Klicken Sie auf der Seite **Schlüssel** (oder der Seite **Verbindungszeichenfolge** für MongoDB-API-Konten) auf die Schaltfläche **Kopieren** rechts neben dem Schlüssel oder Kennwort, den bzw. das Sie kopieren möchten.
 
 ![Anzeigen und Kopieren eines Zugriffsschlüssels im Azure-Portal auf der Seite „Schlüssel“](./media/manage-account/copykeys.png)
 
-### <a name="regenerate-access-keys"></a>Erneutes Generieren von Zugriffsschlüsseln
-Sie sollten regelmäßig die Zugriffsschlüssel für Ihr Azure Cosmos DB-Konto ändern, um dafür zu sorgen, dass Ihre Verbindungen möglichst sicher sind. Zwei Zugriffsschlüssel werden zugewiesen, damit Sie Verbindungen zum Azure Cosmos DB-Konto mit einem Zugriffsschlüssel aufrechterhalten können, während Sie den anderen Zugriffsschlüssel neu generieren.
+### <a name="regenerate-access-keys-and-passwords"></a>Erneutes Generieren von Zugriffsschlüsseln und Kennwörtern
+Sie sollten regelmäßig die Zugriffsschlüssel (und Kennwörter für MongoDB-API-Konten) für Ihr Azure Cosmos DB-Konto ändern, damit Ihre Verbindungen möglichst sicher sind. Zwei Zugriffsschlüssel/Kennwörter werden zugewiesen, damit Sie Verbindungen mit dem Azure Cosmos DB-Konto mit einem Zugriffsschlüssel aufrechterhalten können, während Sie den anderen Zugriffsschlüssel neu generieren.
 
 > [!WARNING]
 > Das erneute Generieren der Zugriffsschlüssel wirkt sich auf alle Anwendungen aus, die vom aktuellen Schlüssel abhängen. Alle Clients, die den Zugriffsschlüssel verwenden, um auf das Azure Cosmos DB-Konto zuzugreifen, müssen aktualisiert werden, um den neuen Schlüssel zu verwenden.
 > 
 > 
 
-Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das Azure Cosmos DB-Konto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus. Die folgenden Schritte stellen den Prozess für das Rollup der Schlüssel dar.
+Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das Azure Cosmos DB-Konto verwenden, verlieren Sie die Verbindungen beim erneuten Generieren von Schlüsseln – es sei denn, Sie führen einen Rollup für die Schlüssel aus. Die folgenden Schritte stellen den Prozess für den Rollup der Schlüssel/Kennwörter dar.
 
 1. Aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den sekundären Zugriffsschlüssel des Azure Cosmos DB-Kontos verweist.
 2. Generieren Sie den primären Zugriffsschlüssel für Ihr Azure Cosmos DB-Konto neu. Greifen Sie im [Azure-Portal](https://portal.azure.com/) auf Ihr Azure Cosmos DB-Konto zu.
-3. Klicken Sie auf der Seite **Azure Cosmos DB-Konto** auf **Schlüssel**.
-4. Klicken Sie auf der Seite **Schlüssel** auf die Schaltfläche „Erneut generieren“, und bestätigen Sie anschließend durch Klicken auf **OK**, dass Sie einen neuen Schlüssel generieren möchten.
+3. Klicken Sie auf der Seite **Azure Cosmos DB-Konto** auf **Schlüssel** (bzw. auf **Verbindungszeichenfolge** für MongoDB-Konten**).
+4. Klicken Sie auf der Seite **Schlüssel**/**Verbindungszeichenfolge** auf die Schaltfläche zum erneuten Generieren, und bestätigen Sie anschließend durch Klicken auf **OK**, dass Sie einen neuen Schlüssel generieren möchten.
     ![Erneutes Generieren von Zugriffsschlüsseln](./media/manage-account/regenerate-keys.png)
 5. Sobald Sie sich vergewissert haben, dass der neue Schlüssel verwendet werden kann (etwa fünf Minuten nach dem erneuten Generieren), aktualisieren Sie den Zugriffsschlüssel im Anwendungscode, damit er auf den neuen primären Zugriffsschlüssel verweist.
 6. Generieren Sie den sekundären Zugriffsschlüssel neu.
@@ -77,11 +77,11 @@ Falls Sie über Webanwendungen oder Cloud-Dienste verfügen, die das Azure Cosmo
 > 
 > 
 
-## <a name="get-the--connection-string"></a>Verbindungszeichenfolge abrufen
+## <a name="get-the-connection-string"></a>Abrufen der Verbindungszeichenfolge
 Führen Sie zum Abrufen der Verbindungszeichenfolge folgende Schritte aus: 
 
 1. Greifen Sie im [Azure-Portal](https://portal.azure.com) auf Ihr Azure Cosmos DB-Konto zu.
-2. Klicken Sie im Ressourcenmenü auf **Schlüssel**.
+2. Klicken Sie im Ressourcenmenü auf **Schlüssel** (bzw. auf **Verbindungszeichenfolge** für MongoDB-API-Konten).
 3. Klicken Sie neben dem Feld für die **primäre Verbindungszeichenfolge** oder **sekundäre Verbindungszeichenfolge** auf die Schaltfläche **Kopieren**. 
 
 Bei Verwendung der Verbindungszeichenfolge im [Azure Cosmos DB-Datenbank-Migrationstool](import-data.md) fügen Sie den Datenbanknamen am Ende der Verbindungszeichenfolge an. `AccountEndpoint=< >;AccountKey=< >;Database=< >`.

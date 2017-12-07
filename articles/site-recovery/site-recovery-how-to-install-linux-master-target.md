@@ -3,7 +3,7 @@ title: "Installieren eines Linux-Masterzielservers für ein Failover von Azure a
 description: "Bevor Sie die Schritte zum erneuten Schützen eines virtuellen Linux-Computers ausführen können, benötigen Sie einen Linux-Masterzielserver. Hier wird beschrieben, wie Sie die Installation durchführen."
 services: site-recovery
 documentationcenter: 
-author: ruturaj
+author: rajani-janaki-ram
 manager: gauravd
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 08/11/2017
-ms.author: ruturajd
-ms.openlocfilehash: 5341e3e56e0c366079958dd9a885f6ee3e8436cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/22/2017
+ms.author: rajanaki
+ms.openlocfilehash: 7b2416617696e1df30b08f039ab39bfe7b57e093
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="install-a-linux-master-target-server"></a>Installieren eines Linux-Masterzielservers
 Nach dem Failover Ihrer virtuellen Computer können Sie für die virtuellen Computer ein Failback zum lokalen Standort ausführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -206,7 +206,7 @@ Um diesen Parameter zu aktivieren, führen Sie die folgenden Schritte aus:
 
 #### <a name="disable-kernel-upgrades"></a>Deaktivieren des Kernelupgrades
 
-Der Azure Site Recovery-Masterzielserver erfordert eine ganz bestimmte Version von Ubuntu. Stellen Sie daher sicher, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind.
+Der Azure Site Recovery-Masterzielserver erfordert eine bestimmte Version von Ubuntu. Stellen Sie daher sicher, dass die Kernelupgrades für den virtuellen Computer deaktiviert sind.
 
 Wenn Kernelupgrades aktiviert sind, verursacht jedes reguläre Upgrade Fehlfunktionen auf dem Masterzielserver.
 
@@ -374,7 +374,7 @@ Nachdem die Installation abgeschlossen ist, registrieren Sie den Konfigurationss
 
 ### <a name="upgrade-the-master-target"></a>Aktualisieren des Masterziels
 
-Führen Sie das Installationsprogramm aus. Es erkennt automatisch, dass der Agent auf dem Masterzielserver installiert ist. Wählen Sie zum Aktualisieren **Y** aus.  Nachdem das Setup abgeschlossen wurde, überprüfen Sie die Version des installierten Masterziels mithilfe des folgenden Befehls.
+Führen Sie das Installationsprogramm aus. Es erkennt automatisch, dass der Agent auf dem Masterzielserver installiert ist. Wählen Sie zum Aktualisieren **Y** aus.  Nachdem das Setup abgeschlossen wurde, überprüfen Sie die Version des installierten Masterziels mithilfe des folgenden Befehls:
 
     ```
     cat /usr/local/.vx_version

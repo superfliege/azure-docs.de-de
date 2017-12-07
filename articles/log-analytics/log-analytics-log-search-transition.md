@@ -11,22 +11,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2017
+ms.date: 11/28/2017
 ms.author: bwren
-ms.openlocfilehash: 38cb11befe844178572981abb29fe5439286dbc1
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 9c487ab33859ae453a0074ef0344f61de19c7b4d
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Übergang zur neuen Azure Log Analytics-Abfragesprache
 In Log Analytics wurde vor kurzem eine neue Abfragesprache implementiert.  Dieser Artikel unterstützt Sie beim Übergang zur neuen Abfragesprache für Log Analytics, wenn Sie bereits mit der bisherigen Sprache vertraut sind.
+
+## <a name="resources"></a>Ressourcen
+
 
 ## <a name="language-converter"></a>Sprachkonverter
 
 Wenn Sie mit der bisherigen Log Analytics-Abfragesprache vertraut sind, ist die einfachste Möglichkeit, eine vorhandene Abfrage in der neuen Sprache zu erstellen, die Verwendung des im Portal der Protokollsuche installierten Sprachkonverters, wenn Ihr Arbeitsbereich konvertiert ist.  Die Verwendung des Konverters ist ganz einfach: Geben Sie eine Legacyabfrage in das Textfeld ein, und klicken Sie auf **Konvertieren**.  Sie können auf die Suchschaltfläche klicken, um die Abfrage auszuführen, oder die Abfrage kopieren und an einer anderen Stelle verwenden.
 
 ![Sprachkonverter](media/log-analytics-log-search-upgrade/language-converter.png)
+
+
+## <a name="resources"></a>Ressourcen
+Die [Dokumentationswebsite für die Log Analytics-Abfragesprache](https://docs.loganalytics.io) bietet alle Ressourcen, die Sie für einen schnellen Einstieg in die neue Sprache benötigen.  Dies schließt Tutorials, Beispiele und eine vollständige Sprachreferenz ein.
 
 
 ## <a name="cheat-sheet"></a>Cheat Sheet

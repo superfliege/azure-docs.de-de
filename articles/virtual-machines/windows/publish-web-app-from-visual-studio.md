@@ -1,0 +1,137 @@
+---
+title: "Veröffentlichen einer Web-App auf einer Azure-VM aus Visual Studio | Microsoft-Dokumentation"
+description: "Veröffentlichen einer ASP.NET-Webanwendung auf einem virtuellen Azure-Computer aus Visual Studio"
+services: virtual-machines-windows
+documentationcenter: 
+author:
+- kraigb
+- justcla
+manager: ghogen
+editor: 
+tags: azure-service-management
+ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
+ms.service: virtual-machines-windows
+ms.workload: infrastructure-services
+ms.tgt_pltfrm: vm-windows
+ms.devlang: dotnet
+ms.topic: article
+ms.date: 11/03/2017
+ms.author:
+- kraigb
+- justcla
+ms.openlocfilehash: 5a0dd3d123cb0d580ea753cebc36ebcdb7084db9
+ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 11/29/2017
+---
+# <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Veröffentlichen einer ASP.NET-Web-App auf einer Azure-VM aus Visual Studio
+
+Dieses Dokument beschreibt das Veröffentlichen einer ASP.NET-Webanwendung auf einem virtuellen Azure-Computer (VM) mithilfe des Veröffentlichungsfeatures **Microsoft Azure Virtual Machines** in Visual Studio 2017.  
+
+## <a name="prerequisites"></a>Voraussetzungen
+Damit Sie mit Visual Studio ein ASP.NET-Projekt auf einer Azure-VM veröffentlichen können, muss der virtuelle Computer ordnungsgemäß eingerichtet werden.
+
+- Der Computer muss für das Ausführen einer ASP.NET-Webanwendung konfiguriert sein, und WebDeploy muss darauf installiert sein.
+
+- Für den virtuellen Computer muss ein DNS-Name konfiguriert sein. Weitere Informationen finden Sie unter [Erstellen eines vollqualifizierten Domänennamens im Azure-Portal für eine Windows-VM](portal-create-fqdn.md).
+
+## <a name="publish-your-aspnet-web-app-to-the-azure-vm-using-visual-studio"></a>Veröffentlichen der ASP.NET-Web-App auf der Azure-VM mit Visual Studio
+Der folgende Abschnitt beschreibt das Veröffentlichen einer vorhandenen ASP.NET-Webanwendung auf einem virtuellen Azure-Computer.
+
+1. Öffnen Sie Ihre Web-App-Projektmappe in Visual Studio 2017.
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus.
+3. Scrollen Sie mit dem Pfeil auf der rechten Seite durch die Veröffentlichungsoptionen bis **Microsoft Azure Virtual Machines**.  
+
+   ![Seite „Veröffentlichen“ – Pfeil rechts]
+
+4. Wählen Sie das Symbol **Microsoft Azure Virtual Machines** und dann **Veröffentlichen** aus.
+
+   ![Seite „Veröffentlichen“ – Symbol „Microsoft Azure Virtual Machine“]
+
+5. Wählen Sie das gewünschte Konto aus (dessen Azure-Abonnement mit dem virtuellen Computer verknüpft ist).  
+   - Wenn Sie in Visual Studio angemeldet sind, wird die Kontoliste mit all Ihren authentifizierten Konten gefüllt.  
+   - Wenn Sie nicht angemeldet sind oder wenn das benötigte Konto nicht aufgeführt ist, wählen Sie „Konto hinzufügen“ aus, und befolgen Sie die Anweisungen für die Anmeldung.  
+   ![Azure-Kontoauswahl]  
+
+6. Wählen Sie den entsprechenden virtuellen Computer in der Liste der vorhandenen virtuellen Computer aus.
+
+   > [!Note]
+   > Das Füllen dieser Liste kann einige Zeit in Anspruch nehmen.
+
+   ![Azure-VM-Auswahl]
+
+7. Klicken Sie auf „OK“, um mit der Veröffentlichung zu beginnen.
+
+8. Wenn Sie zum Eingeben von Anmeldeinformationen aufgefordert werden, geben Sie den Benutzernamen und das Kennwort eines Benutzerkontos auf der Ziel-VM an, das mit den erforderlichen Rechten für das Veröffentlichen konfiguriert ist (normalerweise der Administratorbenutzername und das zugehörige Kennwort, die beim Erstellen des virtuellen Computers verwendet wurden).  
+
+   ![WebDeploy-Anmeldung]
+
+9. Akzeptieren Sie das Sicherheitszertifikat.
+
+   ![Zertifikatfehler]
+
+10. Überprüfen Sie im Ausgabefenster den Fortschritt des Veröffentlichungsvorgangs.
+
+    ![Ausgabefenster]
+
+11. Wenn die Veröffentlichung erfolgreich war, wird ein Browser gestartet, in dem Sie die URL der neu veröffentlichten Website öffnen können.
+
+**Erfolg!**
+
+Sie haben Ihre Web-App damit erfolgreich auf einem virtuellen Azure-Computer veröffentlicht.
+
+## <a name="publish-page-options"></a>Optionen auf der Seite „Veröffentlichen“
+
+Nach Abschluss des Veröffentlichungs-Assistenten wird im Dokument die Seite „Veröffentlichen“ geöffnet, auf der das neue Veröffentlichungsprofil bereits ausgewählt ist.
+
+### <a name="re-publish"></a>Erneutes Veröffentlichen
+
+Wählen Sie zum Veröffentlichen von Updates für Ihre Webanwendung die Schaltfläche **Veröffentlichen** auf der Seite „Veröffentlichen“ aus.  
+- Geben Sie den Benutzernamen und das Kennwort ein, wenn Sie dazu aufgefordert werden.  
+- Die Veröffentlichung beginnt sofort.
+
+![Seite „Veröffentlichen“ – Schaltfläche „Veröffentlichen“]
+
+### <a name="modify-publish-profile-settings"></a>Ändern der Einstellungen für das Veröffentlichungsprofil
+
+Wählen Sie zum Anzeigen und Ändern der Einstellungen für das Veröffentlichungsprofil **Einstellungen** aus.  
+
+![Seite „Veröffentlichen“ – Schaltfläche „Einstellungen“]
+
+Die Einstellungen sollten in etwa wie folgt aussehen:  
+
+![Veröffentlichungseinstellungen – Seite „Verbindung“]
+
+#### <a name="save-user-name-and-password"></a>Speichern von Benutzername und Kennwort
+- Damit Sie die Authentifizierungsinformationen nicht bei jeder Veröffentlichung angeben müssen, können Sie die Felder **Benutzername** und **Kennwort** ausfüllen und das Feld **Kennwort speichern** auswählen.
+- Mit der Schaltfläche **Verbindung überprüfen** können Sie sich vergewissern, dass Sie die richtigen Informationen eingegeben haben.
+
+#### <a name="deploy-to-clean-web-server"></a>Bereitstellen auf einem bereinigten Webserver
+
+- Wenn Sie nach jedem Upload sicherstellen möchten, dass der Webserver über eine bereinigte Kopie der Webanwendung verfügt (und dass keine anderen Dateien aus früheren Bereitstellungen zurück geblieben sind), aktivieren Sie auf der Registerkarte **Einstellungen** das Kontrollkästchen **Zusätzliche Dateien am Ziel entfernen**.
+
+- Warnung: Durch das Veröffentlichen mit dieser Einstellung werden alle Dateien auf dem Webserver (Verzeichnis „wwwroot“) gelöscht. Sie sollten unbedingt den Zustand des Computers kennen, bevor Sie eine Veröffentlichung mit dieser Option durchführen. 
+
+![Veröffentlichungseinstellungen – Seite „Einstellungen“]
+
+## <a name="next-steps"></a>Nächste Schritte
+
+### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Einrichten von CI/CD für automatisierte Bereitstellungen auf Azure-VMs
+
+Informationen zum Einrichten einer Pipeline für die fortlaufende Übermittlung mit Visual Studio Team Services finden Sie unter [Deploy to a Windows Virtual Machine](https://docs.microsoft.com/en-us/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups) (Bereitstellen auf einem virtuellen Windows-Computer).
+
+[VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
+[IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
+[VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
+[Seite „Veröffentlichen“ – Pfeil rechts]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[Seite „Veröffentlichen“ – Symbol „Microsoft Azure Virtual Machine“]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[Azure-Kontoauswahl]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
+[Azure-VM-Auswahl]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
+[WebDeploy-Anmeldung]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
+[Zertifikatfehler]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
+[Ausgabefenster]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
+[Seite „Veröffentlichen“ – Schaltfläche „Veröffentlichen“]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
+[Seite „Veröffentlichen“ – Schaltfläche „Einstellungen“]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
+[Veröffentlichungseinstellungen – Seite „Verbindung“]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
+[Veröffentlichungseinstellungen – Seite „Einstellungen“]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png

@@ -1,5 +1,5 @@
 ---
-title: Empfangen von Ereignissen von Azure Event Hubs mithilfe von .NET Standard | Microsoft-Dokumentation
+title: Empfangen von Ereignissen von Azure Event Hubs mit der .NET Standard-Bibliothek | Microsoft-Dokumentation
 description: "Erste Schritte zum Empfangen von Nachrichten mit „EventProcessorHost“ in .NET Standard"
 services: event-hubs
 documentationcenter: na
@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: cc62792dad0284f9514664795fdfb32e94a85943
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a88b5da8fa504e0528caa7fa212d4cec26d1cf66
+ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>Erste Schritte zum Empfangen von Nachrichten mit dem Ereignisprozessorhost (EventProcessorHost) in .NET Standard
 
 > [!NOTE]
 > Dieses Beispiel ist auf [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) verfügbar.
 
-In diesem Tutorial lernen Sie, wie Sie eine .NET Core-Konsolenanwendung zum Empfangen von Nachrichten von einer Event Hubs-Instanz mithilfe von **EventProcessorHost** schreiben können. Sie können die [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)-Projektmappe ohne Änderung ausführen, indem Sie die Zeichenfolgen durch Ihre Event Hub- und Speicherkontowerte ersetzen. Sie können auch die Schritte in diesem Tutorial ausführen, um eine eigene zu erstellen.
+In diesem Tutorial lernen Sie, wie Sie eine .NET Core-Konsolenanwendung zum Empfangen von Nachrichten von einem Event Hub mithilfe der Bibliothek des **Ereignisprozessorhosts** zu schreiben. Sie können die [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver)-Projektmappe ohne Änderung ausführen, indem Sie die Zeichenfolgen durch Ihre Event Hub- und Speicherkontowerte ersetzen. Sie können auch die Schritte in diesem Tutorial ausführen, um eine eigene zu erstellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,22 +33,22 @@ In diesem Tutorial lernen Sie, wie Sie eine .NET Core-Konsolenanwendung zum Empf
 * [.NET Core Visual Studio 2015- oder 2017-Tools](http://www.microsoft.com/net/core).
 * Ein Azure-Abonnement.
 * Ein Azure Event Hubs-Namespace
-* Ein Azure-Speicherkonto.
+* Azure Storage-Konto
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Erstellen eines Event Hubs-Namespace und eines Event Hubs  
 
-Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und rufen Sie damit die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung benötigt, um mit der Event Hubs-Instanz zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und eine Event Hubs-Instanz zu erstellen, und fahren Sie dann mit folgenden Schritten fort.  
+Verwenden Sie zunächst das [Azure-Portal](https://portal.azure.com), um einen Namespace vom Typ „Event Hubs“ zu erstellen, und rufen Sie damit die Verwaltungsanmeldeinformationen ab, die Ihre Anwendung benötigt, um mit der Event Hubs-Instanz zu kommunizieren. Folgen Sie dem Ablauf in [diesem Artikel](event-hubs-create.md), um einen Namespace und eine Event Hubs-Instanz zu erstellen, und fahren Sie dann mit diesem Tutorial fort.  
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos  
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.  
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.  
 2. Klicken Sie im Portal im Navigationsbereich auf der linken Seite auf **Neu**, **Storage** und **Speicherkonto**.  
-3. Füllen Sie die Felder auf dem Blatt „Speicherkonto“ aus, und klicken Sie dann auf **Erstellen**.
+3. Füllen Sie die Felder im Fenster „Speicherkonto“ aus, und klicken Sie dann auf **Erstellen**.
 
     ![Speicherkonto erstellen][1]
 
-4. Klicken Sie nach dem Anzeigen der Meldung **Die Bereitstellungen waren erfolgreich** auf den Namen des neuen Speicherkontos. Klicken Sie auf dem Blatt **Zusammenfassung** auf **Blobs**. Klicken Sie oben auf **+ Container**, nachdem das Blatt **Blob-Dienst** geöffnet wurde. Benennen Sie den Container, und schließen Sie das Blatt **Blob-Dienst**.  
-5. Klicken Sie auf dem linken Blatt auf **Zugriffsschlüssel**, und kopieren Sie den Namen des Speichercontainers, des Speicherkontos und den Wert von **key1**. Speichern Sie diese Werte im Editor oder an einem anderen temporären Speicherort.  
+4. Klicken Sie nach dem Anzeigen der Meldung **Die Bereitstellungen waren erfolgreich** auf den Namen des neuen Speicherkontos. Klicken Sie im Fenster **Zusammenfassung** auf **Blobs**. Klicken Sie oben auf **+ Container**, nachdem das Dialogfeld **Blob-Dienst** geöffnet wurde. Benennen Sie den Container, und schließen Sie **Blob-Dienst**.  
+5. Klicken Sie im linken Fenster auf **Zugriffsschlüssel**, und kopieren Sie den Namen des Speichercontainers, des Speicherkontos und den Wert von **key1**. Speichern Sie diese Werte im Editor oder an einem anderen temporären Speicherort.  
 
 ## <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
@@ -58,10 +58,10 @@ Starten Sie Visual Studio. Klicken Sie im Menü **Datei** auf **Neu** und dann a
 
 ## <a name="add-the-event-hubs-nuget-package"></a>Hinzufügen des Event Hubs-NuGet-Pakets
 
-Führen Sie die folgenden Schritte aus, um Ihrem Projekt das NuGet-Paket der [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) und [`Microsoft.Azure.EventHubs.Processor`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) .NET Standard-Bibliothek hinzuzufügen: 
+Führen Sie die folgenden Schritte aus, um Ihrem Projekt das NuGet-Paket der .NET Standard-Bibliotheken [**Microsoft.Azure.EventHubs**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) und [**Microsoft.Azure.EventHubs.Processor**](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) hinzuzufügen: 
 
 1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-2. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach „Microsoft.Azure.EventHubs“. Wählen Sie anschließend das Paket **Microsoft.Azure.EventHubs** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
+2. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **Microsoft.Azure.EventHubs**. Wählen Sie anschließend das Paket **Microsoft.Azure.EventHubs** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
 3. Wiederholen Sie die Schritte 1 und 2, und installieren Sie das Paket **Microsoft.Azure.EventHubs.Processor**.
 
 ## <a name="implement-the-ieventprocessor-interface"></a>Implementieren der IEventProcessor-Schnittstelle

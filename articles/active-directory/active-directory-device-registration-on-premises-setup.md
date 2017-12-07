@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 11/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 6d53d08156d0e5d1d070361db5b74d201f18a224
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2342690d983b6e27fa008b5c72a736a9ecda8f47
+ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 11/27/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung
 Wenn Sie von Benutzern verlangen, ihre persönlichen Geräte mithilfe des Geräteregistrierungsdiensts mit Azure Active Directory (Azure AD) über den Arbeitsplatz einzubinden, können deren Geräte als Ihrer Organisation bekannt markiert werden. Im Folgenden wird eine Schritt-für-Schritt-Anleitung aufgeführt, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.
@@ -166,9 +166,9 @@ Diese URL kann auf unterschiedlichste Weise an die Benutzer kommuniziert werden.
 4. Melden Sie sich bei Aufforderung mit Ihren Anmeldeinformationen an. Das Gerät ist jetzt verknüpft.
 
 ### <a name="join-a-windows-7-device-by-using-azure-active-directory-device-registration"></a>Verknüpfen eines Windows 7-Geräts mithilfe der Azure Active Directory-Geräteregistrierung
-Zum Registrieren von in eine Domäne eingebundenen Windows 7-Geräten müssen Sie das Softwarepaket für die Geräteregistrierung bereitstellen. Das Softwarepaket heißt „Workplace Join for Windows 7“ und steht zum Download auf der [Microsoft Connect-Website](https://connect.microsoft.com/site1164) zur Verfügung. 
+Zum Registrieren von in eine Domäne eingebundenen Windows 7-Geräten müssen Sie das [Softwarepaket für die Geräteregistrierung](https://www.microsoft.com/download/details.aspx?id=53554) bereitstellen.
 
-Anweisungen zur Verwendung des Pakets finden Sie unter [Vorgehensweise zum Konfigurieren der automatischen Registrierung von in die Domäne eingebundenen Windows-Geräten mit Azure Active Directory](active-directory-conditional-access-automatic-device-registration-setup.md).
+Anweisungen zur Verwendung des Pakets finden Sie unter [Windows Installer-Pakete für Computer ohne Windows 10](device-management-hybrid-azuread-joined-devices-setup.md#windows-installer-packages-for-non-windows-10-computers).
 
 ## <a name="verify-that-registered-devices-are-written-back-to-active-directory"></a>Überprüfen, ob registrierte Geräte nach Active Directory zurückgeschrieben werden
 Sie können mithilfe von „LDP.exe“ oder des ADSI-Editors Geräteobjekte anzeigen und sicherstellen, dass diese zurück in Ihr Active Directory-Verzeichnis geschrieben wurden. Beide Tools sind in den Administratortools von Active Directory verfügbar.

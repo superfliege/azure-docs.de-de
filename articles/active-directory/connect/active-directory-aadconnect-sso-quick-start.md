@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart | Microsoft-Dokumentation"
-description: In diesem Artikel wird beschrieben, wie Sie Ihre ersten Schritte mit dem nahtlosen einmaligen Anmelden von Azure Active Directory gehen.
+description: "In diesem Artikel wird beschrieben, wie Sie Ihre ersten Schritte für das nahtlose einmalige Anmelden von Azure Active Directory ausführen."
 services: active-directory
 keywords: "Was ist Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
 documentationcenter: 
@@ -14,60 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8975a82c5573cc0c284e1fc76cd0ef2c19fbbd72
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: b85afe54832319fae2ea3a2501ec268bc63fc7c1
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
-## <a name="how-to-deploy-seamless-sso"></a>Bereitstellen der nahtlosen einmaligen Anmeldung (SSO)
+## <a name="deploy-seamless-single-sign-on"></a>Bereitstellen des nahtlosen einmaligen Anmeldens
 
-Mit dem nahtlosen einmaligen Anmelden von Azure Active Directory (Azure AD Seamless Single Sign-On) werden Benutzer automatisch im Unternehmensnetzwerk angemeldet, wenn Sie an ihren Unternehmens-Desktops arbeiten. Dieses Feature ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Dienste, ohne dass zusätzliche lokale Komponenten erforderlich sind.
+Mit dem nahtlosen einmaligen Anmelden von Azure Active Directory (Azure AD Seamless Single Sign-On) werden Benutzer automatisch angemeldet, wenn sie an ihren mit dem Unternehmensnetzwerk verbundenen Unternehmens-Desktops arbeiten. Nahtloses SSO ermöglicht Ihren Benutzern einen einfachen Zugriff auf Ihre cloudbasierten Anwendungen, ohne dass zusätzliche lokale Komponenten erforderlich sind.
 
 Um die nahtlose einmalige Anmeldung bereitzustellen, führen Sie die folgenden Schritte aus:
 
-## <a name="step-1-check-prerequisites"></a>Schritt 1: Überprüfen der Voraussetzungen
+## <a name="step-1-check-the-prerequisites"></a>Schritt 1: Überprüfen der Voraussetzungen
 
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 
-1. Richten Sie Ihren Azure AD Connect-Server ein: Wenn Sie die [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) als Anmeldemethode verwenden, ist keine zusätzliche Überprüfung der Voraussetzungen erforderlich. Wenn die [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) Ihre Anmeldemethode ist und eine Firewall zwischen Azure AD Connect und Azure AD vorhanden ist, sollten Sie Folgendes sicherstellen:
-- Sie verwenden die Version 1.1.644.0 oder höher von Azure AD Connect. 
-- Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie Verbindungen auf URLs von **\*.msappproxy.net** über den Port 443 mittels Whitelist. Ist dies nicht der Fall, aktivieren Sie den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren, nicht für tatsächliche Benutzeranmeldungen.
+* **Richten Sie Ihren Azure AD Connect-Server ein:** Wenn Sie die [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) als Anmeldemethode verwenden, ist keine zusätzliche Überprüfung der Voraussetzungen erforderlich. Wenn die [Kennworthashsynchronisierung](active-directory-aadconnectsync-implement-password-synchronization.md) Ihre Anmeldemethode ist und eine Firewall zwischen Azure AD Connect und Azure AD vorhanden ist, sollten Sie Folgendes sicherstellen:
+   - Sie verwenden Azure AD Connect 1.1.644.0 oder eine höhere Version. 
+   - Wenn Ihre Firewall oder ihr Proxy DNS-Whitelisting zulässt, beschränken Sie mittels Whitelist Verbindungen mit URLs von **\*.msappproxy.net** über den Port 443. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden. Diese Voraussetzung gilt nur, wenn Sie das Feature aktivieren. Sie ist für tatsächliche Benutzeranmeldungen nicht erforderlich.
 
     >[!NOTE]
     >Die Azure AD Connect-Versionen 1.1.557.0, 1.1.558.0, 1.1.561.0 und 1.1.614.0 weisen ein Problem in Bezug auf die Kennworthashsynchronisierung auf. Wenn Sie die Kennworthashsynchronisierung _nicht_ zusammen mit der Passthrough-Authentifizierung verwenden möchten, finden Sie weitere Informationen dazu in den [Versionshinweisen zu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history#116470).
 
-2. Für jede AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie die nahtlose einmalige Anmeldung aktivieren möchten, benötigen Sie die Anmeldeinformationen des Domänenadministrators.
+* **Richten Sie Anmeldeinformationen des Domänenadministrators ein:**: Sie benötigen Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur, die:
+    * Sie über Azure AD Connect mit Azure AD synchronisieren.
+    * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
 
 ## <a name="step-2-enable-the-feature"></a>Schritt 2: Aktivieren des Features
 
-Das nahtlose einmalige Anmelden kann mithilfe von [Azure AD Connect](active-directory-aadconnect.md) aktiviert werden.
+Aktivieren Sie nahtloses SSO über [Azure AD Connect](active-directory-aadconnect.md).
 
-Wenn Sie Azure AD Connect neu installieren, wählen Sie den [benutzerdefinierten Installationspfad](active-directory-aadconnect-get-started-custom.md) aus. Aktivieren Sie auf der Seite „Benutzeranmeldung“ die Option „Einmaliges Anmelden aktivieren“.
+Wenn Sie Azure AD Connect neu installieren, wählen Sie den [benutzerdefinierten Installationspfad](active-directory-aadconnect-get-started-custom.md) aus. Aktivieren Sie auf der Seite **Benutzeranmeldung** die Option **Einmaliges Anmelden aktivieren**.
 
-![Azure AD Connect – Benutzeranmeldung](./media/active-directory-aadconnect-sso/sso8.png)
+![Azure AD Connect: Benutzeranmeldung](./media/active-directory-aadconnect-sso/sso8.png)
 
-Wenn Sie bereits eine Installation von Azure AD Connect haben, wählen Sie in Azure AD Connect „Change user sign-in page“ (Anmeldeseite „Benutzer wechseln“), und klicken Sie auf „Weiter“. Aktivieren Sie dann die Option „Einmaliges Anmelden aktivieren“.
+Wenn Sie bereits eine Installation von Azure AD Connect haben, wählen Sie in Azure AD Connect die Seite **Benutzeranmeldung ändern**, und klicken Sie auf **Weiter**.
 
-![Azure AD Connect – Benutzeranmeldung ändern](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
+![Azure AD Connect: Benutzeranmeldung ändern](./media/active-directory-aadconnect-user-signin/changeusersignin.png)
 
-Fahren Sie mit dem Assistenten fort, bis Sie zur Seite „Enable single sign on“ (Einmaliges Anmelden aktivieren) gelangen. Stellen Sie für jede AD-Gesamtstruktur, die Sie mit Azure AD (über Azure AD Connect) synchronisieren und für deren Benutzer Sie die nahtlose einmalige Anmeldung aktivieren möchten, die Anmeldeinformationen des Domänenadministrators bereit. 
+Fahren Sie mit dem Assistenten fort, bis Sie zur Seite **Einmaliges Anmelden aktivieren** gelangen. Geben Sie Anmeldeinformationen des Domänenadministrators für jede Active Directory-Gesamtstruktur an, die:
+    * Sie über Azure AD Connect mit Azure AD synchronisieren.
+    * Benutzer enthält, für die Sie nahtloses SSO aktivieren möchten.
 
 Nach Abschluss des Assistenten ist das nahtlose einmalige Anmelden für Ihren Mandanten aktiviert.
 
 >[!NOTE]
-> Die Anmeldeinformationen des Domänenadministrators werden weder in Azure AD Connect noch in Azure AD gespeichert, werden aber für die Aktivierung des Features verwendet.
+> Die Anmeldeinformationen des Domänenadministrators werden weder in Azure AD Connect noch in Azure AD gespeichert. Sie werden nur für die Aktivierung des Features verwendet.
 
 Befolgen Sie diese Anweisungen, um zu überprüfen, ob die nahtlose SSO ordnungsgemäß aktiviert ist:
 
-1. Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Admin Center](https://aad.portal.azure.com) an.
-2. Klicken Sie im linken Navigationsmenü auf **Azure Active Directory**.
+1. Melden Sie sich mit den Anmeldeinformationen des globalen Administrators für Ihren Mandanten beim [Azure Active Directory-Verwaltungscenter](https://aad.portal.azure.com) an.
+2. Wählen Sie im linken Bereich die Option **Azure Active Directory** aus.
 3. Wählen Sie **Azure AD Connect** aus.
-4. Überprüfen Sie, dass die Funktion **Nahtloses einmaliges Anmelden** **aktiviert** ist.
+4. Überprüfen Sie, ob **Aktiviert** für **Nahtloses einmaliges Anmelden** angezeigt wird.
 
-![Azure-Portal – Blatt „Azure AD Connect“](./media/active-directory-aadconnect-sso/sso10.png)
+![Azure-Portal: Bereich „Azure AD Connect“](./media/active-directory-aadconnect-sso/sso10.png)
 
 ## <a name="step-3-roll-out-the-feature"></a>Schritt 3: Ausrollen des Features
 
@@ -76,90 +80,104 @@ Zum Durchführen des Rollouts für das Feature müssen Sie den Intranetzoneneins
 - https://autologon.microsoftazuread-sso.com
 - https://aadg.windows.net.nsatc.net
 
-Darüber hinaus müssen Sie eine Richtlinieneinstellung für eine Intranetzone (mithilfe der Gruppenrichtlinie) namens „Aktualisierungen der Statusleiste per Skript zulassen“ aktivieren.
+Darüber hinaus müssen Sie mithilfe der Gruppenrichtlinie eine Richtlinieneinstellung für eine Intranetzone namens **Aktualisierungen der Statusleiste per Skript zulassen** aktivieren. 
 
 >[!NOTE]
 > Die folgenden Anweisungen funktionieren nur für Internet Explorer und Google Chrome unter Windows (wenn ein Satz von URLs vertrauenswürdiger Websites wie für Internet Explorer freigegeben wird). Lesen Sie im nächsten Abschnitt die Anweisungen zum Einrichten von Mozilla Firefox und Google Chrome auf Mac.
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>Warum müssen Sie Einstellungen von Benutzern für Intranetzonen ändern?
 
-Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist http://contoso/ der Intranetzone und http://intranet.contoso.com/ der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die beiden Azure AD-URLs, sofern die jeweilige URL nicht als Teil der Intranetzone des Browsers definiert ist.
+Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zone (Internet oder Intranet). Beispielsweise ist http://contoso/ der Intranetzone und http://intranet.contoso.com/ der Internetzone zugeordnet (da die URL einen Punkt enthält). Browser senden keine Kerberos-Tickets an Cloudendpunkte wie die beiden Azure AD-URLs, sofern die jeweilige URL nicht explizit als Teil der Intranetzone des Browsers definiert ist.
 
 ### <a name="detailed-steps"></a>Ausführliche Schritte
 
-1. Öffnen Sie das Gruppenrichtlinienverwaltungstool.
-2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel verwenden wir die **Default Domain Policy** (Standarddomänenrichtlinie).
-3. Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite**, und wählen Sie die Option **Liste der Site zu Zonenzuweisungen**.
-![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso6.png)
-4. Aktivieren Sie die Richtlinie, und geben Sie in das Dialogfeld die folgenden Werte (Azure AD-URLs, in denen Kerberos-Tickets weitergeleitet werden) und Daten ein (*1* gibt die Intranetzone an).
+1. Öffnen Sie das Tool Gruppenrichtlinienverwaltungs-Editor.
+2. Bearbeiten Sie die Gruppenrichtlinie, die auf einige oder alle Benutzer angewendet wird. In diesem Beispiel wird **Standardrichtlinie der Domäne** verwendet.
+3. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“**. Wählen Sie dann **Liste der Site zu Zonenzuweisungen**.
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso6.png)
+4. Aktivieren Sie die Richtlinie, und geben Sie die folgenden Werte in das Dialogfeld ein:
+   - **Wertname**: Die Azure AD-URLs, an die die Kerberos-Tickets weitergeleitet werden.
+   - **Wert** (Daten): **1** gibt die Intranetzone an.
 
-        Value: https://autologon.microsoftazuread-sso.com
-        Data: 1
-        Value: https://aadg.windows.net.nsatc.net
-        Data: 1
->[!NOTE]
-> Wenn Sie das nahtlose einmalige Anmelden z.B. für einige Benutzer verbieten möchten, weil sich diese Benutzer beispielsweise auf freigegebenen Kiosken anmelden, legen Sie die vorherigen Werte auf *4* fest. Diese Aktion fügt der Zone eingeschränkter Sites die Azure AD-URLs hinzu, und löst für das nahtlose einmalige Anmelden ständig einen Fehler aus.
+   Das Ergebnis sieht wie folgt aus:
 
-5. Klicken **Sie** zweimal nacheinander auf **OK**.
-![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso7.png)
-6. Navigieren Sie zu **Benutzerkonfiguration\Administrative Vorlagen\Windows-Komponenten\Internet Explorer\Internetsystemsteuerung\Sicherheitsseite\Intranetzone**, und wählen Sie die Option **Aktualisierungen der Statusleiste per Skript zulassen** aus.
-![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso11.png)
-7. Aktivieren Sie die Richtlinieneinstellung, und klicken Sie auf **OK**.
-![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso12.png)
+    Wert: https://autologon.microsoftazuread-sso.com
+  
+    Data 1
+        
+   Wert: https://aadg.windows.net.nsatc.net
+
+    Data 1
+
+   >[!NOTE]
+   > Wenn Sie das nahtlose einmalige Anmelden für einige Benutzer verbieten möchten (beispielsweise weil sich diese Benutzer bei freigegebenen Kiosken anmelden), legen Sie die vorherigen Werte auf **4** fest. Diese Aktion fügt der Zone eingeschränkter Sites die Azure AD-URLs hinzu, und löst für das nahtlose einmalige Anmelden ständig einen Fehler aus.
+   >
+
+5. Klicken Sie auf **OK** und anschließend erneut auf **OK**.
+
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso7.png)
+
+6. Navigieren Sie zu **Benutzerkonfiguration** > **Verwaltungsvorlagen** > **Windows-Komponenten** > **Internet Explorer** > **Internetsystemsteuerung** > **Seite „Sicherheit“** > **Intranetzone**. Wählen Sie dann **Aktualisierungen der Statusleiste per Skript zulassen**.
+
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso11.png)
+
+7. Aktivieren Sie die Richtlinieneinstellung, und klicken Sie dann auf **OK**.
+
+    ![Einmaliges Anmelden](./media/active-directory-aadconnect-sso/sso12.png)
 
 ### <a name="browser-considerations"></a>Überlegungen zum Browser
 
 #### <a name="mozilla-firefox"></a>Mozilla Firefox
 
-Mozilla Firefox führt nicht automatisch die Kerberos-Authentifizierung aus. Jeder Benutzer muss den Firefox-Einstellungen manuell die Azure AD-URLs mithilfe der folgenden Schritte hinzufügen:
+Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jeder Benutzer muss den Firefox-Einstellungen manuell die Azure AD-URLs mithilfe der folgenden Schritte hinzufügen:
 1. Führen Sie Firefox aus, und geben Sie in die Adressleiste `about:config` ein. Schließen Sie alle Benachrichtigungen, die Sie sehen.
 2. Suchen Sie nach der Einstellung **network.negotiate-auth.trusted-uris**. In dieser Einstellung werden in Firefox die vertrauenswürdigen Sites für die Kerberos-Authentifizierung aufgeführt.
-3. Klicken Sie mit der rechten Maustaste, und wählen Sie dann „Ändern“ aus.
-4. Geben Sie „https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net“ in das Feld ein.
-5. Klicken Sie auf „OK“, und öffnen Sie den Browser erneut.
+3. Klicken Sie mit der rechten Maustaste, und wählen Sie dann **Ändern** aus.
+4. Geben Sie https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net in das Feld ein.
+5. Klicken Sie auf **OK**, und öffnen Sie den Browser erneut.
 
 #### <a name="safari-on-mac-os"></a>Safari unter Mac OS
 
-Stellen Sie sicher, dass der Computer mit Mac OS in AD eingebunden ist. Eine entsprechende Anleitung finden Sie [hier](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf).
+Stellen Sie sicher, dass der Computer mit Mac OS in Azure AD eingebunden ist. Anweisungen zum Verknüpfen mit Azure AD finden Sie unter [Best Practices for Integrating OS X with Active Directory](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf) (Bewährte Methoden für die Integration von OS X in Active Directory).
 
 #### <a name="google-chrome-on-mac-os"></a>Google Chrome unter Mac OS
 
-Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen nicht Windows-basierten Plattformen die Azure AD-URLs für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie in [diesem Artikel](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist).
+Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen nicht Windows-basierten Plattformen die Azure AD-URLs für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie unter [The Chromium Project Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) (Richtlinienliste von The Chromium Projects).
 
-Das Ausrollen der Azure AD-URLs für Firefox und Google Chrome unter macOS mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
+Das Ausrollen der Azure AD-URLs für Firefox und Google Chrome unter Mac mithilfe von Active Directory-Gruppenrichtlinienerweiterungen von Drittanbietern kann in diesem Artikel nicht behandelt werden.
 
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
-Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten Schutzmodus ausgeführt wird.
+Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird.
 
 >[!IMPORTANT]
 >Wir haben vor Kurzem ein Rollback für den Support für Edge ausgeführt, um von Kunden gemeldete Probleme zu untersuchen.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 
-Um das Feature für einen bestimmten Benutzer zu testen, stellen Sie sicher, dass _alle_ folgenden Bedingungen erfüllt werden:
-  - Ihr Benutzer meldet sich auf einem Gerät des Unternehmens an.
-  - Das Gerät ist zuvor Ihrer Active Directory(AD)-Domäne beigetreten.
+Um das Feature für einen bestimmten Benutzer zu testen, stellen Sie sicher, dass alle folgenden Bedingungen erfüllt werden:
+  - Der Benutzer meldet sich auf einem Gerät des Unternehmens an.
+  - Das Gerät ist mit Ihrer Active Directory-Domäne verknüpft.
   - Es muss eine direkte Verbindung zwischen dem Gerät und Ihrem Domänencontroller (DC) bestehen, entweder über das Unternehmensnetzwerk (Kabel- oder Funknetzwerk) oder per Remotezugriff, z.B. über eine VPN-Verbindung.
   - Sie haben [das Feature für diesen Benutzer mithilfe von Gruppenrichtlinien ausgerollt](##step-3-roll-out-the-feature).
 
 So testen Sie das Szenario, wenn der Benutzer nur den Benutzernamen eingibt, jedoch kein Kennwort:
-- Melden Sie sich unter *https://myapps.microsoft.com/* in einer neuen, privaten Browsersitzung an.
+   - Melden Sie sich unter https://myapps.microsoft.com/ in einer neuen, privaten Browsersitzung an.
 
-So testen Sie das Szenario, wenn der Benutzer weder den Benutzernamen noch das Kennwort eingeben muss: 
-- Melden Sie sich unter *https://myapps.microsoft.com/contoso.onmicrosoft.com* in einer neuen, privaten Browsersitzung an. Ersetzen Sie „*contoso*“ durch den Namen Ihres Mandanten.
-- Melden Sie sich alternativ unter *https://myapps.microsoft.com/contoso.com* in einer neuen, privaten Browsersitzung an. Ersetzen Sie „*contoso.com*“ durch eine überprüfte Domäne (keine Verbunddomäne) in Ihrem Mandanten.
+Führen Sie zum Testen des Szenarios, in dem der Benutzer weder den Benutzernamen noch das Kennwort eingeben muss, einen der folgenden Schritte aus: 
+   - Melden Sie sich unter https://myapps.microsoft.com/contoso.onmicrosoft.com in einer neuen, privaten Browsersitzung an. Ersetzen Sie *contoso* durch den Namen Ihres Mandanten.
+   - Melden Sie sich alternativ unter https://myapps.microsoft.com/contoso.com in einer neuen, privaten Browsersitzung an. Ersetzen Sie *contoso.com* durch eine überprüfte Domäne (keine Verbunddomäne) in Ihrem Mandanten.
 
 ## <a name="step-5-roll-over-keys"></a>Schritt 5: Durchführen des Rollovers für Schlüssel
 
-In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen AD-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Ausführliche Informationen hierzu finden Sie [hier](active-directory-aadconnect-sso-how-it-works.md). Zur Erhöhung der Sicherheit wird empfohlen, für die Kerberos-Entschlüsselungsschlüssel dieser Computerkonten regelmäßig ein Rollover durchzuführen. Die Anweisungen für das Rollover finden Sie [hier](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
+In Schritt 2 erstellt Azure AD Connect Computerkonten (die Azure AD repräsentieren) in allen Active Directory-Gesamtstrukturen, für die Sie das nahtlose einmalige Anmelden aktiviert haben. Weitere Informationen finden Sie unter [Azure Active Directory: Nahtloses einmaliges Anmelden: Technische Einblicke](active-directory-aadconnect-sso-how-it-works.md). Zur Erhöhung der Sicherheit wird empfohlen, für die Kerberos-Entschlüsselungsschlüssel dieser Computerkonten regelmäßig ein Rollover durchzuführen. Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nahtloses einmaliges Anmelden mit Azure Active Directory: Häufig gestellte Fragen (FAQs)](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account).
 
 >[!IMPORTANT]
 >Sie müssen diesen Schritt nicht _sofort_ nach der Aktivierung des Features ausführen. Führen Sie für die Kerberos-Entschlüsselungsschlüssel mindestens alle 30 Tage ein Rollover durch.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Technische Einzelheiten](active-directory-aadconnect-sso-how-it-works.md): Funktionsweise dieses Features verstehen
-- [Häufig gestellte Fragen](active-directory-aadconnect-sso-faq.md): Antworten auf häufig gestellte Fragen
-- [Problembehandlung](active-directory-aadconnect-troubleshoot-sso.md): Beheben häufig auftretender Probleme mit dieser Funktion
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Verfassen neuer Featureanforderungen
+- [Technische Einblicke:](active-directory-aadconnect-sso-how-it-works.md) Informationen zur Funktionsweise des nahtlosen einmaligen Anmeldens
+- [Häufig gestellte Fragen:](active-directory-aadconnect-sso-faq.md) Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden
+- [Problembehandlung:](active-directory-aadconnect-troubleshoot-sso.md) Informationen zum Beheben von allgemeinen Problemen, die mit der Funktion für nahtloses einmaliges Anmelden auftreten können
+- [UserVoice:](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Anfordern neuer Features über das Azure Active Directory-Forum

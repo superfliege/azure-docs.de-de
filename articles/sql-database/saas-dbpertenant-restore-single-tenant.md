@@ -16,15 +16,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.openlocfilehash: 866b5eec6e9c7e8bf98547143c0393bfb6f97b14
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee2bc6d8b75b92243c0550db0044895e41c9474b
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>Wiederherstellen einer Azure SQL-Datenbank-Instanz eines einzelnen Mandanten in einer mehrinstanzenfähigen SaaS-App
 
-Die Wingtip SaaS-App wird mittels eines Datenbank-pro-Mandant-Modells erstellt, wobei jeder Mandant seine eigene Datenbank besitzt. Einer der Vorteile dieses Modells ist, dass die Daten eines einzigen Mandanten mühelos isoliert – d.h. ohne Auswirkungen auf andere Mandanten – wiederhergestellt werden können.
+Die Wingtip Tickets SaaS-App wird mittels eines Datenbank-pro-Mandant-Modells erstellt, wobei jeder Mandant seine eigene Datenbank besitzt. Einer der Vorteile dieses Modells ist, dass die Daten eines einzigen Mandanten mühelos isoliert – d.h. ohne Auswirkungen auf andere Mandanten – wiederhergestellt werden können.
 
 In diesem Tutorial lernen Sie zwei Muster der Datenwiederherstellung kennen:
 
@@ -53,9 +53,9 @@ Im ersten Muster werden die Daten in eine neue Datenbank wiederhergestellt. Der 
 
 Im zweiten Muster, wo davon ausgegangen wird, dass der Mandant einen Verlust oder eine Beschädigung von Daten erlitten hat, wird seine Produktionsdatenbank in dem Status wiederhergestellt, in dem sie sich zu einem früheren Zeitpunkt befunden hat. Bei dem Muster mit direkter Wiederherstellung wird der Mandant für kurze Zeit offline geschaltet, während die Datenbank wiederhergestellt und wieder online geschaltet wird. Die ursprüngliche Datenbank wird gelöscht, kann aber immer noch wiederhergestellt werden, wenn Sie zum Status eines früheren Zeitpunkts zurückkehren müssen. Eine Variante dieses Muster könnte die Datenbank umbenennen, statt sie zu löschen, auch wenn die Umbenennung der Datenbank keinen zusätzlichen Vorteil im Hinblick auf Sicherheit bietet.
 
-## <a name="get-the-wingtip-application-scripts"></a>Abrufen des Wingtip-Anwendungsskripts
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur Anwendung Wingtip Tickets SaaS Database Per Tenant
 
-Die Wingtip-SaaS-Skripts und der Quellcode der Anwendung stehen im GitHub-Repository [WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) zur Verfügung. [Schritte zum Herunterladen der Wingtip-SaaS-Skripts](saas-dbpertenant-wingtip-app-guidance-tips.md#download-and-unblock-the-wingtip-tickets-saas-database-per-tenant-scripts)
+Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbank stehen im GitHub-Repository [WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) zur Verfügung. Schritte zum Herunterladen und Entsperren der Wingtip Tickets-SaaS-Skripts finden Sie unter [General guidance for working with Wingtip Tickets sample SaaS apps](saas-tenancy-wingtip-app-guidance-tips.md) (Allgemeine Hinweise zur Verwendung von Wingtip Tickets-Beispiel-SaaS-Apps).
 
 ## <a name="simulate-a-tenant-accidentally-deleting-data"></a>Simulieren des versehentlichen Löschens von Daten durch den Mandanten
 
@@ -146,6 +146,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-* Zusätzliche [Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [Zusätzliche Tutorials, die auf der Wingtip-SaaS-Anwendung aufbauen](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md)
 * [Weitere Informationen zu Sicherungen für SQL-Datenbank](sql-database-automated-backups.md)

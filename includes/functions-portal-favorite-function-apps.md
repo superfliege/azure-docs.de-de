@@ -12,6 +12,6 @@ Wenn Sie dies nicht bereits gemacht haben, fügen Sie Function Apps zu Ihren Fav
 
 3. Schließen Sie das Menü, und scrollen Sie dann nach unten. Dort sehen Sie das Symbol von Azure Functions. Klicken Sie auf das Symbol, um eine Liste Ihrer gesamten Funktionen-Apps anzuzeigen. Klicken Sie auf Ihre Funktionen-App, um mit Funktionen in dieser App zu arbeiten. 
  
-    ![](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
+    ![Funktions-Apps in den Favoriten](./media/functions-portal-favorite-function-apps/functions-function-apps-hub.png)
  
      
