@@ -1,6 +1,6 @@
 # <a name="azure-managed-disks-overview"></a>Azure Managed Disks – Übersicht
 
-Azure Managed Disks vereinfacht die Datenträgerverwaltung für Azure IaaS-VMs, indem die [Speicherkonten](../articles/storage/common/storage-introduction.md) verwaltet werden, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Art ([Premium](../articles/storage/common/storage-premium-storage.md) oder [Standard](../articles/storage/common/storage-standard-storage.md)) und die benötigte Größe des Datenträgers angeben. Azure erstellt und verwaltet ihn dann für Sie.
+Azure Managed Disks vereinfacht die Datenträgerverwaltung für Azure IaaS-VMs, indem die [Speicherkonten](../articles/storage/common/storage-introduction.md) verwaltet werden, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Art ([Premium](../articles/virtual-machines/windows/premium-storage.md) oder [Standard](../articles/virtual-machines/windows/standard-storage.md)) und die benötigte Größe des Datenträgers angeben. Azure erstellt und verwaltet ihn dann für Sie.
 
 ## <a name="benefits-of-managed-disks"></a>Vorteile von verwalteten Datenträgern
 
@@ -44,7 +44,7 @@ Bei der Verwendung von Managed Disks gelten die folgenden Abrechnungsaspekte:
 
 Wir sehen uns die einzelnen Aspekte nun genauer an.
 
-**Speichertyp:** Managed Disks verfügt über zwei Leistungsstufen: [Premium](../articles/storage/common/storage-premium-storage.md) (SSD-basiert) und [Standard](../articles/storage/common/storage-standard-storage.md) (HDD-basiert). Die Abrechnung für einen verwalteten Datenträger richtet sich danach, welchen Speichertyp Sie für den Datenträger ausgewählt haben.
+**Speichertyp:** Managed Disks verfügt über zwei Leistungsstufen: [Premium](../articles/virtual-machines/windows/premium-storage.md) (SSD-basiert) und [Standard](../articles/virtual-machines/windows/standard-storage.md) (HDD-basiert). Die Abrechnung für einen verwalteten Datenträger richtet sich danach, welchen Speichertyp Sie für den Datenträger ausgewählt haben.
 
 
 **Datenträgergröße**: Die Abrechnung für verwaltete Datenträger richtet sich nach der bereitgestellten Datenträgergröße. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächstgelegenen Managed Disks-Option zu. Dies ist in den Tabellen unten angegeben. Jeder verwaltete Datenträger wird einer der unterstützten bereitgestellten Größen zugeordnet und entsprechend abgerechnet. Wenn Sie beispielsweise einen verwalteten Standard-Datenträger erstellen und eine bereitgestellte Größe von 200 GB angeben, wird die Abrechnung gemäß den Preisen für den Datenträgertyp S20 durchgeführt.
@@ -131,9 +131,9 @@ Weitere Informationen zu Managed Disks finden Sie in den folgenden Artikeln.
 
 ### <a name="compare-managed-disks-storage-options"></a>Vergleichen der Managed Disks-Speicheroptionen
 
-* [Storage Premium und Datenträger](../articles/storage/common/storage-premium-storage.md)
+* [Storage Premium und Datenträger](../articles/virtual-machines/windows/premium-storage.md)
 
-* [Standard-Speicher und -Datenträger](../articles/storage/common/storage-standard-storage.md)
+* [Standard-Speicher und -Datenträger](../articles/virtual-machines/windows/standard-storage.md)
 
 ### <a name="operational-guidance"></a>Leitfaden
 

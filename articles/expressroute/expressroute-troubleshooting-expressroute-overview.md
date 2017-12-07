@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 960ea1540d644b6f41b95ab7df61cf91adcbb4ad
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 9aa21beb8963462b1cb6bdad6079b01e4d2e9c34
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="verifying-expressroute-connectivity"></a>Überprüfen der ExpressRoute-Konnektivität
 Mit ExpressRoute wird ein lokales Netzwerk über eine private Verbindung, die über einen Konnektivitätsanbieter bereitgestellt wird, in die Microsoft Cloud erweitert. ExpressRoute umfasst die drei folgenden separaten Netzwerkzonen:
@@ -55,7 +55,7 @@ Wenn die Konnektivitätsmodelle „Cloud Exchange Co-Location“ oder „Point-t
 Bei Verwendung des Any-to-Any-Konnektivitätsmodells (IPVPN) richten die PEs (mit MSEE-Verbindung) (4) ein BGP-Peering mit MSEEs (5) ein. Routen werden dann über das IPVPN-Netzwerk des Service Providers zurück an das Kundennetzwerk weitergegeben.
 
 >[!NOTE]
->Zur Erzielung einer hohen Verfügbarkeit von ExpressRoute benötigt Microsoft ein redundantes Paar von BGP-Sitzungen zwischen MSEEs (5) und PE-MSEEs (4). Es ist auch ratsam, zwischen dem Kundennetzwerk und PE-CEs ein redundantes Paar von Netzwerkpfaden einzurichten. Beim Any-to-Any-Verbindungsmodell (IPVPN) ist aber ggf. ein einzelnes CE-Gerät (2) mit mindestens einem PE (3) verbunden.
+>Zur Erzielung der Hochverfügbarkeit von ExpressRoute benötigt Microsoft ein redundantes Paar von BGP-Sitzungen zwischen MSEEs (5) und PE-MSEEs (4). Es ist auch ratsam, zwischen dem Kundennetzwerk und PE-CEs ein redundantes Paar von Netzwerkpfaden einzurichten. Beim Any-to-Any-Verbindungsmodell (IPVPN) ist aber ggf. ein einzelnes CE-Gerät (2) mit mindestens einem PE (3) verbunden.
 >
 >
 
@@ -192,7 +192,7 @@ Im vorherigen Beispiel ist der Routingkontext für das private Azure-Peering akt
 Verwenden Sie die folgenden Befehle, um die Konfigurationsdetails für das private Azure-Peering zu erhalten:
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
+    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
 Eine Beispielantwort für ein erfolgreich konfiguriertes privates Peering lautet:
 

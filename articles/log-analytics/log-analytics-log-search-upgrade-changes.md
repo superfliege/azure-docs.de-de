@@ -1,5 +1,5 @@
 ---
-title: "Was hat sich in Azure Log Analytics geändert? | Microsoft-Dokumentation"
+title: "Was hat sich in Azure Log Analytics geändert? | Microsoft Docs"
 description: "Dieser Artikel behandelt häufig gestellte Fragen im Hinblick auf das Upgrade von Log Analytics auf die neue Abfragesprache."
 services: log-analytics
 documentationcenter: 
@@ -11,16 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 11/29/2017
 ms.author: bwren
-ms.openlocfilehash: 783223a37c2a13c9affbf382209ca2aa4f1ba4c7
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 017a1da233827f19489a99b234ee9009fd9f6fe3
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="whats-changed-in-azure-log-analytics"></a>Was hat sich in Azure Log Analytics geändert?
 Zusätzlich zur Abfragesprache selbst wurden verschiedene Verbesserungen und Änderungen durchgeführt, über die Sie informiert sein sollten, wenn Ihr Log Analytics-Arbeitsbereich [auf die neue Abfragesprache aktualisiert wird](log-analytics-log-search-new.md).  In diesem Artikel werden kurz die Änderungen zwischen einem Legacyarbeitsbereich und einem aktualisierten Arbeitsbereich beschrieben und jeweils Links zu ausführlichen weiteren Informationen angegeben. 
+
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Whats-changed-in-Azure-Log-Analytics/player]
 
 Eine Beschreibung der bekannten Probleme beim Upgradevorgang und Antworten auf häufig gestellte Fragen finden Sie unter [Neue Protokollsuche in Log Analytics – häufig gestellte Fragen und bekannte Probleme](log-analytics-log-search-faq.md).  
 

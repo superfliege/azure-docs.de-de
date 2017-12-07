@@ -44,7 +44,7 @@ Sie können [Trigger einrichten](../articles/monitoring-and-diagnostics/insights
 
 Sie können VMs hinzufügen oder entfernen, indem Sie die Skalierungsgruppe ändern. Im Azure-Portal können Sie die Anzahl von VMs (als **Instanzanzahl** angezeigt) in der Skalierungsgruppe verringern oder erhöhen, indem Sie die Leiste zum Außerkraftsetzen der Bedingung auf der Skalierungsseite nach links oder rechts verschieben.
 
-Mit Azure PowerShell müssen Sie das Skalierungsgruppenobjekt abrufen, indem Sie [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) verwenden. Anschließend legen Sie die **sku.capacity**-Eigenschaft auf die gewünschte Anzahl von VMs fest und aktualisieren die Skalierungsgruppe mit [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Mit der Azure CLI ändern Sie die Kapazität für den Befehl [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#scale) mit dem Parameter **--new-capacity**.
+Mit Azure PowerShell müssen Sie das Skalierungsgruppenobjekt abrufen, indem Sie [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) verwenden. Anschließend legen Sie die **sku.capacity**-Eigenschaft auf die gewünschte Anzahl von VMs fest und aktualisieren die Skalierungsgruppe mit [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Mit der Azure CLI ändern Sie die Kapazität für den Befehl [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) mit dem Parameter **--new-capacity**.
 
 ### <a name="vertical"></a>Vertical
 

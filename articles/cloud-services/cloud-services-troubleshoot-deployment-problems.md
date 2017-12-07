@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: 944a29aebf7abfe32a7789ab239718b1cd2d7b15
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3adf4dd824b31d5e3d368a0199bc2e981cafe176
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>Behandeln von Problemen mit der Clouddienstbereitstellung
 Wenn Sie ein Anwendungspaket für einen Clouddienst in Azure bereitstellen, können Sie im Bereich **Eigenschaften** des Azure-Portals Informationen zu der Bereitstellung abrufen. Mit den Informationen in diesem Bereich können Sie Probleme mit dem Clouddienst behandeln, und Sie können dem Azure-Support diese Informationen bereitstellen, wenn Sie eine neue Supportanfrage eröffnen.
@@ -27,7 +27,6 @@ Wenn Sie ein Anwendungspaket für einen Clouddienst in Azure bereitstellen, kön
 Sie finden den Bereich **Eigenschaften** wie folgt:
 
 * Im Azure-Portal: Klicken Sie auf die Bereitstellung Ihres Clouddiensts, klicken Sie auf **Alle Einstellungen**, und klicken Sie dann auf **Eigenschaften**.
-* Im klassischen Azure-Portal: Klicken Sie auf die Bereitstellung Ihres Clouddiensts, klicken Sie auf **DASHBOARD**, und suchen Sie in der rechten unteren Ecke der Seite (unter **Auf einen Blick**). Beachten Sie, dass für diesen Bereich die Bezeichnung „Eigenschaften“ nicht vorhanden ist.
 
 > [!NOTE]
 > Sie können den Inhalt des Bereichs **Eigenschaften** in die Zwischenablage kopieren, indem Sie auf das Symbol in der oberen rechten Ecke des Bereichs klicken.

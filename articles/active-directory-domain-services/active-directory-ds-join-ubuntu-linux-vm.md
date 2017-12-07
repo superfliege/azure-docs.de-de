@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: maheshu
-ms.openlocfilehash: 8946166c04ce778d751ad79f7a010c9a5e71a05c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b41cebcc8592468fcabb157b1aee830dfe954229
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="join-an-ubuntu-virtual-machine-in-azure-to-a-managed-domain"></a>Einbinden eines virtuellen Ubuntu-Computers in Azure in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Ubuntu Linux-Computer einer durch Azure AD Domain Services verwalteten Domäne beitritt.
@@ -29,7 +29,7 @@ Um die in diesem Artikel beschriebenen Aufgaben auszuführen, benötigen Sie Fol
 1. Ein gültiges **Azure-Abonnement**.
 2. Ein **Azure AD-Verzeichnis** – entweder synchronisiert mit einem lokalen Verzeichnis oder als reines Cloud-Verzeichnis
 3. **Azure AD Domain Services** müssen für das Azure AD-Verzeichnis aktiviert sein. Wenn dies noch nicht der Fall ist, führen Sie alle Aufgaben im Leitfaden [Erste Schritte](active-directory-ds-getting-started.md)aus.
-4. Stellen Sie sicher, dass Sie die IP-Adressen der verwalteten Domäne nicht als DNS-Server für das virtuelle Netzwerk konfiguriert haben. Weitere Informationen finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md)
+4. Stellen Sie sicher, dass Sie die IP-Adressen der verwalteten Domäne nicht als DNS-Server für das virtuelle Netzwerk konfiguriert haben. Weitere Informationen finden Sie unter [Aktualisieren der DNS-Einstellungen für das virtuelle Azure-Netzwerk](active-directory-ds-getting-started-dns.md).
 5. Führen Sie die Schritte aus, die zum [Synchronisieren der Kennwörter für Ihre verwaltete Domäne der Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md) erforderlich sind.
 
 
@@ -40,7 +40,7 @@ Stellen Sie mithilfe einer der folgenden Methoden einen virtuellen Ubuntu Linux-
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
 > [!IMPORTANT]
-> * Stellen Sie den virtuellen Computer in **demselben virtuellen Netzwerk bereit, in dem Sie die Azure AD Domain Services aktiviert haben**.
+> * Stellen Sie den virtuellen Computer in **demselben virtuellen Netzwerk bereit, in dem Sie Azure AD Domain Services aktiviert haben**.
 > * Wählen Sie ein **anderes Subnetz** als das aus, in dem Sie Azure AD Domain Services aktiviert haben.
 >
 
@@ -48,7 +48,7 @@ Stellen Sie mithilfe einer der folgenden Methoden einen virtuellen Ubuntu Linux-
 ## <a name="connect-remotely-to-the-ubuntu-linux-virtual-machine"></a>Herstellen einer Remoteverbindung zum virtuellen Ubuntu Linux-Computer
 Der virtuelle Ubuntu-Computer wurde in Azure bereitgestellt. Die nächste Aufgabe besteht darin, über das lokale Administratorkonto, das während der Bereitstellung des virtuellen Computers erstellt wurde, eine Remoteverbindung zum virtuellen Computer herzustellen.
 
-Befolgen Sie die Anweisungen in dem Artikel [Anmelden bei einem virtuellen Computer mit Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Befolgen Sie die Anweisungen im Artikel [Anmelden bei einem virtuellen Computer mit Linux](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 
 ## <a name="configure-the-hosts-file-on-the-linux-virtual-machine"></a>Konfigurieren der Hostdatei auf dem virtuellen Linux-Computer
@@ -58,7 +58,7 @@ Bearbeiten Sie in Ihrem SSH-Terminal die Datei „/etc/hosts“, und aktualisier
 sudo vi /etc/hosts
 ```
 
-Geben Sie in der Hostdatei folgenden Wert ein:
+Geben Sie in der Hostdatei die folgenden Wert ein:
 
 ```
 127.0.0.1 contoso-ubuntu.contoso100.com contoso-ubuntu
@@ -120,18 +120,18 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     sudo realm discover CONTOSO100.COM
     ```
 
-      > [!NOTE] 
-      > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *Realm discover* (Bereich ermitteln) nicht gefunden werden kann:
-        * Ensure that the domain is reachable from the virtual machine (try ping).
-        * Check that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
-        * Check to see if you have updated the DNS server settings for the virtual network to point to the domain controllers of the managed domain.
-      >
+   > [!NOTE] 
+   > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *Realm discover* (Bereich ermitteln) nicht gefunden werden kann:
+     * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
+     * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
+     * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.
+   >
 
 2. Initialisieren Sie Kerberos. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein: 
 
     > [!TIP] 
     > * Stellen Sie sicher, dass Sie einen Benutzer angeben, der zur Administratorengruppe für Azure AD-Domänencontroller gehört. 
-    > * Geben Sie den Domänennamen in Großbuchstaben an. Andernfalls schlägt kinit fehl.
+    > * Geben Sie den Domänennamen in Großbuchstaben an. Andernfalls führt kinit zu einem Fehler.
     >
 
     ```

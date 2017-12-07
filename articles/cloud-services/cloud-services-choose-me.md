@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: d27a4be968dc12818f7031b59ed40fbc9f9d88d3
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 17ecf39128994dad93f017f87f105254f3017230
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Sollte ich mich für Clouddienste oder eine andere Lösung entscheiden?
 Ist Azure Cloud Services das Richtige für Sie? Azure bietet verschiedene Hostingmodelle für die Ausführung von Anwendungen. Jedes dieser Modelle bietet unterschiedliche Dienste. Dadurch können Sie genau das Modell auswählen, das sich am besten für Ihr Vorhaben eignet.
@@ -50,7 +50,7 @@ Wichtig: Anwendungen werden zwar auf virtuellen Computern ausgeführt, Cloud Ser
 ## <a name="scaling-and-management"></a>Skalierung und Verwaltung
 Mit Cloud Services erstellen Sie keine virtuellen Computer. Stattdessen teilen Sie Azure mithilfe einer Konfigurationsdatei mit, wie viele Instanzen Sie benötigen (beispielsweise **drei Webrolleninstanzen** und **zwei Workerrolleninstanzen**), und die Plattform erstellt diese Instanzen dann für Sie.  Sie wählen zwar die [Größe](cloud-services-sizes-specs.md) der zugrunde liegenden virtuellen Computer aus, müssen diese aber nicht selbst erstellen. Wenn Ihre Anwendung eine höhere Last zu bewältigen hat, können Sie bei Azure weitere virtuelle Computer anfordern. Nimmt die Last wieder ab, können Sie die Instanzen herunterfahren, sodass sie keine weiteren Kosten verursachen.
 
-Cloud Services-Anwendungen werden Benutzern üblicherweise in zwei Schritten bereitgestellt: Zunächst führt ein Entwickler den [Upload der Anwendung](cloud-services-how-to-create-deploy-portal.md) in den Stagingbereich der Plattform durch. Wenn der Entwickler die Anwendung live schalten möchte, kann er sie über das Azure-Portal vom Staging in die Produktion wechseln. Der [Wechsel zwischen Staging und Produktion](cloud-services-nodejs-stage-application.md) erfolgt ohne Ausfallzeit. Dadurch können laufende Anwendungen ohne Beeinträchtigung der Benutzer auf neue Versionen aktualisiert werden.
+Cloud Services-Anwendungen werden Benutzern üblicherweise in zwei Schritten bereitgestellt: Zunächst führt ein Entwickler den [Upload der Anwendung](cloud-services-how-to-create-deploy-portal.md) in den Stagingbereich der Plattform durch. Wenn der Entwickler die Anwendung live schalten möchte, kann er sie über das Azure-Portal vom Staging in die Produktion wechseln. Der [Wechsel zwischen Staging und Produktion](cloud-services-how-to-manage-portal.md#how-to-swap-deployments-to-promote-a-staged-deployment-to-production) erfolgt ohne Ausfallzeit. Dadurch können laufende Anwendungen ohne Beeinträchtigung der Benutzer auf neue Versionen aktualisiert werden.
 
 ## <a name="monitoring"></a>Überwachung
 Cloud Services bietet außerdem Überwachungsfunktionen. Genau wie bei Azure Virtual Machines werden Ausfälle von physischen Servern erkannt und die entsprechenden virtuellen Computer auf einem anderen Server neu gestartet. Neben Hardwarefehlern erkennt Cloud Services aber auch Ausfälle von virtuellen Computern und Anwendungen. Im Gegensatz zu Virtual Machines verfügt Cloud Services in jeder Web- und Workerrolle über einen Agent. Dadurch können bei einem Ausfall neue virtuelle Computer und Anwendungsinstanzen gestartet werden.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/10/2017
 ms.author: motanv
-ms.openlocfilehash: c78d9e77d807f3ccf8c1f56d856abad8135989c2
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 9a205d1b8e088b7007bb8c3a64139732d8858267
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Auslösen von kontrolliertem Chaos in Service Fabric-Clustern
 Große verteilte Systeme wie Cloudinfrastrukturen sind grundsätzlich unzuverlässig. Azure Service Fabric ermöglicht Entwicklern, aufbauend auf einer unzuverlässigen Infrastruktur zuverlässige verteilte Dienste zu erstellen. Um robuste, verteilte Dienste in einer unzuverlässigen Infrastruktur zu schreiben, müssen Entwickler in der Lage sein, die Stabilität ihrer Dienste zu testen, während die zugrunde liegende unzuverlässige Infrastruktur komplizierte Statusübergänge aufgrund von Fehlern durchläuft.
@@ -70,9 +70,6 @@ Wenn Sie herausfinden möchten, welche Fehler Chaos induziert hat, können Sie d
 * **WaitTimeBetweenFaults:** Wartezeit zwischen zwei aufeinanderfolgenden Fehlern in einer Iteration. Je höher der Wert, desto niedriger ist die Parallelität (oder Überlappung) der Fehler.
 * **ClusterHealthPolicy:** Die Clusterintegritätsrichtlinie wird verwendet, um die Integrität des Clusters zwischen Iterationen von Chaos zu überprüfen. Wenn die Clusterintegrität beeinträchtigt ist oder bei der Fehlerausführung eine unerwartete Ausnahme auftritt, wartet Chaos 30 Minuten bis zur nächsten Integritätsüberprüfung, damit der Cluster sich normalisieren kann.
 * **Context:** eine Sammlung von Schlüssel-Wert-Paaren vom Typ (string, string). Die Zuordnung kann verwendet werden, um Informationen zur Ausführung von Chaos aufzuzeichnen. Es kann nicht mehr als 100 solcher Paare geben, und jede Zeichenfolge (Schlüssel oder Wert) darf höchstens 4.095 Zeichen lang sein. Diese Zuordnung wird beim Start der Chaos-Ausführung festgelegt, um optional den Kontext der jeweiligen Ausführung zu speichern.
-* **ChaosTargetFilter**: Dieser Filter kann verwendet werden, um Chaos-Fehler nur auf bestimmte Knotentypen oder nur auf bestimmte Anwendungsinstanzen auszurichten. Wenn „ChaosTargetFilter“ nicht verwendet wird, stört Chaos alle Clusterentitäten. Wenn „ChaosTargetFilter“ verwendet wird, stört Chaos nur die Entitäten, die der ChaosTargetFilter-Spezifikation entsprechen. „NodeTypeInclusionList“ und „ApplicationInclusionList“ gestatten lediglich die Vereinigungssemantik. Mit anderen Worten, es ist nicht möglich, eine Schnittmenge von „NodeTypeInclusionList“ und „ApplicationInclusionList“ anzugeben. Es ist z. B. nicht möglich, Folgendes anzugeben: „Diese Anwendung nur bemängeln, wenn sie sich auf diesem Knotentyp befindet“. Sobald eine Entität entweder in „NodeTypeInclusionList“ oder „ApplicationInclusionList“ enthalten ist, kann diese Entität nicht mit „ChaosTargetFilter“ ausgeschlossen werden. Selbst wenn „applicationX“ nicht in „ApplicationInclusionList“ enthalten ist, kann „applicationX“ in manchen Chaos-Iterationen fehlerhaft sein, da es sich anscheinend auf einem Knoten von „nodeTypeY“ befindet, der in „NodeTypeInclusionList“ enthalten ist. Wenn sowohl „NodeTypeInclusionList“ als auch „ApplicationInclusionList“ NULL oder leer sind, wird „ArgumentException“ ausgelöst.
-    * **NodeTypeInclusionList**: Eine Liste von Knotentypen, die in Chaos-Fehler einbezogen werden sollen. Für die Knoten dieser Knotentypen sind alle Arten von Fehlern („Knoten neu starten“, „Codepaket neu starten“, „Replikat entfernen“, „Replikat neu starten“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“) aktiviert. Wenn ein Knotentyp (z. B. „NodeTypeX“) nicht in „NodeTypeInclusionList“ enthalten ist, dann werden Fehler auf Knotenebene (z. B. „NodeRestart“) niemals für die Knoten von „NodeTypeX“ aktiviert, aber Codepaket- und Replikatfehler können für „NodeTypeX“ weiterhin aktiviert werden, wenn sich eine Anwendung in „ApplicationInclusionList“ zufällig auf einem Knoten von „NodeTypeX“ befindet. Es können maximal 100 Knotentypnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade für die MaxNumberOfNodeTypesInChaosTargetFilter-Konfiguration erforderlich.
-    * **ApplicationInclusionList**: Eine Liste der Anwendungs-URIs, die in Chaos-Fehler einbezogen werden sollen. Alle Replikate, die zu den Diensten dieser Anwendungen gehören, sind durch Chaos für Replikatfehler anfällig („Replikat neu starten“, „Replikat entfernen“, „primäres Replikat verschieben“ und „sekundäres Replikat verschieben“). Chaos startet ein Codepaket möglicherweise nur neu, wenn das Codepaket nur Replikate dieser Anwendungen hostet. Wenn eine Anwendung nicht in dieser Liste enthalten ist, kann sie dennoch in einer Chaos-Iteration fehlerhaft werden, wenn die Anwendung auf einem Knoten eines Knotentyps landet, der in „NodeTypeInclusionList“ enthalten ist. Wenn „applicationX“ jedoch durch Platzierungseinschränkungen an „nodeTypeY“ gebunden ist und „applicationX“ in „ApplicationInclusionList“ fehlt und „nodeTypeY“ in „NodeTypeInclusionList“ fehlt, dann wird „applicationX“ niemals fehlerhaft sein. Es können maximal 1000 Anwendungsnamen in diese Liste aufgenommen werden. Um diese Zahl zu erhöhen, ist ein Upgrade für die MaxNumberOfApplicationsInChaosTargetFilter-Konfiguration erforderlich.
 
 ## <a name="how-to-run-chaos"></a>Ausführen des Chaostests
 
@@ -139,23 +136,7 @@ class Program
                 MaxPercentUnhealthyApplications = 100,
                 MaxPercentUnhealthyNodes = 100
             };
-
-            // All types of faults, restart node, restart code package, restart replica, move primary replica, and move secondary replica will happen
-            // for nodes of type 'FrontEndType'
-            var nodetypeInclusionList = new List<string> { "FrontEndType"};
-
-            // In addition to the faults included by nodetypeInclusionList, 
-            // restart code package, restart replica, move primary replica, move secondary replica faults will happen for 'fabric:/TestApp2'
-            // even if a replica or code package from 'fabric:/TestApp2' is residing on a node which is not of type included in nodeypeInclusionList.
-            var applicationInclusionList = new List<string> { "fabric:/TestApp2" };
-
-            // List of cluster entities to target for Chaos faults.
-            var chaosTargetFilter = new ChaosTargetFilter
-            {
-                NodeTypeInclusionList = nodetypeInclusionList,
-                ApplicationInclusionList = applicationInclusionList
-            };
-
+            
             var parameters = new ChaosParameters(
                 maxClusterStabilizationTimeout,
                 maxConcurrentFaults,
@@ -164,7 +145,7 @@ class Program
                 startContext,
                 waitTimeBetweenIterations,
                 waitTimeBetweenFaults,
-                clusterHealthPolicy) {ChaosTargetFilter = chaosTargetFilter};
+                clusterHealthPolicy);
 
             try
             {
@@ -269,26 +250,12 @@ $clusterHealthPolicy.ConsiderWarningAsError = $False
 # This map is set by the starter of the Chaos run to optionally store the context about the specific run.
 $context = @{"ReasonForStart" = "Testing"}
 
-#List of cluster entities to target for Chaos faults.
-$chaosTargetFilter = new-object -TypeName System.Fabric.Chaos.DataStructures.ChaosTargetFilter
-$chaosTargetFilter.NodeTypeInclusionList = new-object -TypeName "System.Collections.Generic.List[String]"
-
-# All types of faults, restart node, restart code package, restart replica, move primary replica, and move secondary replica will happen
-# for nodes of type 'FrontEndType'
-$chaosTargetFilter.NodeTypeInclusionList.AddRange( [string[]]@("FrontEndType") )
-$chaosTargetFilter.ApplicationInclusionList = new-object -TypeName "System.Collections.Generic.List[String]"
-
-# In addition to the faults included by nodetypeInclusionList, 
-# restart code package, restart replica, move primary replica, move secondary replica faults will happen for 'fabric:/TestApp2'
-# even if a replica or code package from 'fabric:/TestApp2' is residing on a node which is not of type included in nodeypeInclusionList.
-$chaosTargetFilter.ApplicationInclusionList.Add("fabric:/TestApp2")
-
 Connect-ServiceFabricCluster $clusterConnectionString
 
 $events = @{}
 $now = [System.DateTime]::UtcNow
 
-Start-ServiceFabricChaos -TimeToRunMinute $timeToRunMinute -MaxConcurrentFaults $maxConcurrentFaults -MaxClusterStabilizationTimeoutSec $maxClusterStabilizationTimeSecs -EnableMoveReplicaFaults -WaitTimeBetweenIterationsSec $waitTimeBetweenIterationsSec -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ClusterHealthPolicy $clusterHealthPolicy -ChaosTargetFilter $chaosTargetFilter
+Start-ServiceFabricChaos -TimeToRunMinute $timeToRunMinute -MaxConcurrentFaults $maxConcurrentFaults -MaxClusterStabilizationTimeoutSec $maxClusterStabilizationTimeSecs -EnableMoveReplicaFaults -WaitTimeBetweenIterationsSec $waitTimeBetweenIterationsSec -WaitTimeBetweenFaultsSec $waitTimeBetweenFaultsSec -ClusterHealthPolicy $clusterHealthPolicy
 
 while($true)
 {
@@ -319,5 +286,5 @@ while($true)
 
     Start-Sleep -Seconds 1
 }
+
 ```
-Git 

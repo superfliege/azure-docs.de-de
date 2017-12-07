@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 1939a18fbaf0aed0f62ac9e7641b9901ec4762ea
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 03e51ab298a08386f0094d6d0290aa1ec85d337f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>API zum Azure Machine Learning-Modellverwaltungskonto – Referenz
 
-Informationen zur Einrichtung der Bereitstellungsumgebung finden Sie unter [Model Management account setup](model-management-configuration.md) (Einrichtung des Modellverwaltungskontos).
+Informationen zur Einrichtung der Bereitstellungsumgebung finden Sie unter [Model Management account setup](deployment-setup-configuration.md) (Einrichtung des Modellverwaltungskontos).
 
 Mit der API zum Azure Machine Learning-Modellverwaltungskonto werden die folgenden Vorgänge implementiert:
 
@@ -90,7 +90,7 @@ Dient zum Registrieren eines Modells.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | OK. Die Modellregistrierung war erfolgreich. | [Modell](#model) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-models-in-an-account"></a>Abfragen der Liste mit den Modellen in einem Konto
 ### <a name="request"></a>Anforderung
@@ -109,7 +109,7 @@ Dient zum Abfragen der Liste mit den Modellen in einem Konto. Sie können die Er
 | accountName | path | Name des Modellverwaltungskontos | Ja | string |
 | api-version | query | Version der Microsoft.Machine.Learning-Ressourcenanbieter-API, die verwendet werden soll | Ja | string |
 | Autorisierung | Header | Autorisierungstoken. Es sollte „Bearer XXXXXX“ oder ähnlich lauten. | Ja | string |
-| Name | query | Objektname | Nein | string |
+| name | query | Objektname | Nein | string |
 | tag | query | Modelltag | Nein | string |
 | count | query | Anzahl von Elementen, die pro Seite abgerufen werden sollen | Nein | string |
 | $skipToken | query | Fortsetzungstoken zum Abrufen der nächsten Seite | Nein | string |
@@ -118,7 +118,7 @@ Dient zum Abfragen der Liste mit den Modellen in einem Konto. Sie können die Er
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [PaginatedModelList](#paginatedmodellist) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-model-details"></a>Abrufen der Modelldetails
 ### <a name="request"></a>Anforderung
@@ -144,7 +144,7 @@ Dient zum Abrufen eines Modells nach der ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [Modell](#model) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="register-a-manifest-with-the-registered-model-and-all-dependencies"></a>Registrieren eines Manifests beim registrierten Modell und allen Abhängigkeiten
 
@@ -170,7 +170,7 @@ Dient zum Registrieren eines Manifests beim registrierten Modell und allen Abhä
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Die Registrierung des Manifests war erfolgreich. | [Manifest](#manifest) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-manifests-in-an-account"></a>Abfragen der Liste mit den Manifesten in einem Konto
 
@@ -199,7 +199,7 @@ Dient zum Abfragen der Liste mit den Manifesten in einem Konto. Sie können die 
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [PaginatedManifestList](#paginatedmanifestlist) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-manifest-details"></a>Abrufen der Manifestdetails
 
@@ -225,7 +225,7 @@ Dient zum Abrufen des Manifests nach der ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [Manifest](#manifest) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="create-an-image"></a>Erstellen eines Images
 
@@ -251,7 +251,7 @@ Dient zum Erstellen eines Image als Docker-Image in Azure Container Registry.
 | Code | Beschreibung | Header | Schema |
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Standort-URL für den asynchronen Vorgang. Mit einem GET-Aufruf können Sie den Status der Aufgabe für die Imageerstellung anzeigen. | Operation-Location |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-images-in-an-account"></a>Abfragen der Liste mit den Images in einem Konto
 
@@ -280,7 +280,7 @@ Dient zum Abfragen der Liste mit den Images in einem Konto. Sie können die Erge
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [PaginatedImageList](#paginatedimagelist) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-image-details"></a>Abrufen von Imagedetails
 
@@ -306,7 +306,7 @@ Dient zum Abrufen eines Image nach der ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [Image](#image) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 
 ## <a name="create-a-service"></a>Erstellen von Diensten
@@ -334,7 +334,7 @@ Dient zum Erstellen eines Diensts aus einem Image.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Standort-URL für den asynchronen Vorgang. Mit einem GET-Aufruf können Sie den Status der Aufgabe für die Diensterstellung anzeigen. | Operation-Location |
 | 409 | Ein Dienst mit dem angegebenen Namen ist bereits vorhanden. |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="query-the-list-of-services-in-an-account"></a>Abfragen der Liste mit den Diensten in einem Konto
 
@@ -368,7 +368,7 @@ Dient zum Abfragen der Liste mit den Diensten in einem Konto. Sie können die Er
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [PaginatedServiceList](#paginatedservicelist) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse) |
 
 ## <a name="get-service-details"></a>Abrufen von Dienstdetails
 
@@ -394,7 +394,7 @@ Dient zum Abrufen eines Diensts nach der ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [ServiceResponse](#serviceresponse) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 ## <a name="update-a-service"></a>Aktualisieren eines Diensts
 
@@ -422,7 +422,7 @@ Dient zum Aktualisieren eines vorhandenen Diensts.
 |--------------------|--------------------|--------------------|--------------------|
 | 202 | Standort-URL für den asynchronen Vorgang. Mit einem GET-Aufruf können Sie den Status der Aufgabe für die Dienstaktualisierung anzeigen. | Operation-Location |
 | 404 | Der Dienst mit der angegebenen ID ist nicht vorhanden. |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 ## <a name="delete-a-service"></a>Löschen von Diensten
 
@@ -449,7 +449,7 @@ Dient zum Löschen eines Diensts.
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. |  |
 | 204 | Der Dienst mit der angegebenen ID ist nicht vorhanden. |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-service-keys"></a>Abrufen von Dienstschlüsseln
 
@@ -475,7 +475,7 @@ Dient zum Abrufen von Dienstschlüsseln.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [AuthKeys](#authkeys)
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 ## <a name="regenerate-service-keys"></a>Erneutes Generieren von Dienstschlüsseln
 
@@ -502,7 +502,7 @@ Dient zum erneuten Generieren und Zurückgeben von Dienstschlüsseln.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [AuthKeys](#authkeys)
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 ## <a name="query-the-list-of-deployments-in-an-account"></a>Abfragen der Liste mit den Bereitstellungen eines Kontos
 
@@ -528,7 +528,7 @@ Dient zum Abfragen der Liste mit den Bereitstellungen eines Kontos. Sie können 
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [DeploymentList](#deploymentlist) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-deployment-details"></a>Abrufen von Bereitstellungsdetails
 
@@ -554,7 +554,7 @@ Dient zum Abrufen der Bereitstellung nach der ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [Bereitstellung](#deployment) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 ## <a name="get-operation-details"></a>Abrufen von Vorgangsdetails
 
@@ -580,7 +580,7 @@ Dient zum Abrufen des Status von asynchronen Vorgängen nach Vorgangs-ID.
 | Code | Beschreibung | Schema |
 |--------------------|--------------------|--------------------|
 | 200 | Erfolgreich. | [OperationStatus](#asyncoperationstatus) |
-| default | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
+| die Standardeinstellung | Fehlerantwort, die beschreibt, warum der Vorgang nicht erfolgreich durchgeführt werden konnte. | [ErrorResponse](#errorresponse)
 
 
 
@@ -712,8 +712,8 @@ Ein Fehlerobjekt des Modellverwaltungsdiensts.
 |---|---|---|
 |**code**  <br>*erforderlich*|Fehlercode|string|
 |**details**  <br>*optional*|Array mit Fehlerdetailobjekten|<[ErrorDetail](#errordetail)>-Array|
-|**message**  <br>*erforderlich*|Fehlermeldung|string|
-|**statusCode**  <br>*optional*|HTTP-Statuscode|Ganze Zahl|
+|**message**  <br>*erforderlich*|Fehlermeldung.|string|
+|**statusCode**  <br>*optional*|HTTP-Statuscode.|Ganze Zahl|
 
 
 <a name="image"></a>

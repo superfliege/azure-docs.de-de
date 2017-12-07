@@ -19,7 +19,7 @@ Zusätzlich zu diesen grundlegenden Ressourcen sollten Sie auch die folgenden op
 
 Eine [Netzwerkschnittstelle (NIC)](../articles/virtual-network/virtual-network-network-interface.md) ist die Verbindung zwischen einer VM und einem virtuellen Netzwerk (VNet). Eine VM muss mindestens eine NIC haben. Es können je nach der Größe Ihrer erstellten VM aber auch mehr sein. Informieren Sie sich darüber, wie viele Netzwerkkarten jede VM-Größe für [Windows](../articles/virtual-machines/windows/sizes.md) oder [Linux](../articles/virtual-machines/linux/sizes.md) unterstützt.
 
-Sie können eine VM mit mehreren Netzwerkkarten erstellen und über den Lebenszyklus einer VM hinweg Netzwerkkarten hinzufügen oder entfernen. Bei mehreren Netzwerkkarten kann eine VM eine Verbindung mit verschiedenen Subnetzen herstellen und Datenverkehr über die am besten geeignete Schnittstelle senden oder empfangen. Informieren Sie sich, wie Sie mehrere Netzwerkkarten mit einer [Windows](../articles/virtual-machines/windows/multiple-nics.md)- oder [Linux](../articles/virtual-machines/linux/multiple-nics.md)-VM nutzen können.
+Sie können eine VM mit mehreren Netzwerkkarten erstellen und über den Lebenszyklus einer VM hinweg Netzwerkkarten hinzufügen oder entfernen. Bei mehreren Netzwerkkarten kann eine VM eine Verbindung mit verschiedenen Subnetzen herstellen und Datenverkehr über die am besten geeignete Schnittstelle senden oder empfangen.
 
 Wenn die VM einer Verfügbarkeitsgruppe hinzugefügt wird, müssen alle VMs in der Verfügbarkeitsgruppe über mindestens eine NIC verfügen. VMs mit mehr als einer NIC müssen nicht die gleiche Anzahl von NICs aufweisen, aber sie müssen alle mindestens über zwei NICs verfügen.
 
@@ -30,8 +30,8 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 | Methode | Beschreibung |
 | ------ | ----------- |
 | Azure-Portal | Beim Erstellen einer VM im Azure-Portal wird automatisch eine Netzwerkschnittstelle für Sie erstellt (die Verwendung einer separat erstellten NIC ist nicht möglich). Das Portal erstellt eine VM mit nur einer NIC. Falls Sie eine VM mit mehr als einer NIC erstellen möchten, müssen Sie eine andere Methode verwenden. |
-| [Azure PowerShell](../articles/virtual-network/virtual-network-deploy-multinic-arm-ps.md) | Verwenden Sie [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) mit dem Parameter **-PublicIpAddressId**, um den Bezeichner der zuvor erstellten öffentlichen IP-Adresse anzugeben. |
-| [Azure-Befehlszeilenschnittstelle](../articles/virtual-network/virtual-network-deploy-multinic-arm-cli.md) | Verwenden Sie zum Angeben des Bezeichners der zuvor erstellten öffentlichen IP-Adresse [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) mit dem Parameter **--public-ip-address**. |
+| [Azure PowerShell](../articles/virtual-machines/windows/multiple-nics.md) | Verwenden Sie [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) mit dem Parameter **-PublicIpAddressId**, um den Bezeichner der zuvor erstellten öffentlichen IP-Adresse anzugeben. |
+| [Azure-Befehlszeilenschnittstelle](../articles/virtual-machines/linux/multiple-nics.md) | Verwenden Sie zum Angeben des Bezeichners der zuvor erstellten öffentlichen IP-Adresse [az network nic create](https://docs.microsoft.com/cli/azure/network/nic#create) mit dem Parameter **--public-ip-address**. |
 | [Vorlage](../articles/virtual-network/virtual-network-deploy-multinic-arm-template.md) | Verwenden Sie [Network Interface in a Virtual Network with Public IP Address](https://github.com/Azure/azure-quickstart-templates/tree/master/101-nic-publicip-dns-vnet) (Netzwerkschnittstelle in einem virtuellen Netzwerk mit öffentlicher IP-Adresse) als Anleitung zum Bereitstellen einer Netzwerkschnittstelle mit einer Vorlage. |
 
 ## <a name="ip-addresses"></a>IP-Adressen 
@@ -100,7 +100,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 
 ## <a name="load-balancers"></a>Load Balancer
 
-Der [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) bietet hohe Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Ein Load Balancer (Lastenausgleich) kann konfiguriert werden, um [eingehenden Internet-Datenverkehr für VMs auszugleichen](../articles/load-balancer/load-balancer-internet-overview.md) oder [Datenverkehr zwischen VMs in einem VNet auszugleichen](../articles/load-balancer/load-balancer-internal-overview.md). Ein Lastenausgleich kann außerdem den Datenverkehr zwischen lokalen Computern und VMs in einem standortübergreifenden Netzwerk ausgleichen oder externen Datenverkehr an eine bestimmte VM weiterleiten.
+Der [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) bietet Hochverfügbarkeit und Netzwerkleistung für Ihre Anwendungen. Ein Load Balancer (Lastenausgleich) kann konfiguriert werden, um [eingehenden Internet-Datenverkehr für VMs auszugleichen](../articles/load-balancer/load-balancer-internet-overview.md) oder [Datenverkehr zwischen VMs in einem VNet auszugleichen](../articles/load-balancer/load-balancer-internal-overview.md). Ein Lastenausgleich kann außerdem den Datenverkehr zwischen lokalen Computern und VMs in einem standortübergreifenden Netzwerk ausgleichen oder externen Datenverkehr an eine bestimmte VM weiterleiten.
 
 Der Lastenausgleich ordnet eingehenden und ausgehenden Datenverkehr zwischen der öffentlichen IP-Adresse und dem Port auf dem Lastenausgleichsmodul und der privaten IP-Adresse und dem Port der VM zu.
 

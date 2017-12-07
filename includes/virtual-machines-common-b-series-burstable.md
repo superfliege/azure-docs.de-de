@@ -1,20 +1,11 @@
 
-> [!NOTE] 
-> Die Vorschauen werden Ihnen zur Verfügung gestellt, wenn Sie die folgenden Nutzungsbedingungen akzeptieren. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Diese Vorschauversion ist auf folgende Regionen beschränkt:
-> - USA, Westen 2
-> - USA, Osten
-> - Europa, Westen
-> - Asien-Pazifik, Südosten
-
-
 Bei virtuellen Computern der B-Serie können Sie wählen, welche VM-Größe Ihnen die nötige Grundleistung für Ihre Workload bietet, und Sie haben die Möglichkeit, die CPU-Leistung um bis zu 100 Prozent einer vCPU vom Typ Intel® Broadwell E5-2673 v4 2,3 GHz oder Intel® Haswell 2,4 GHz E5-2673 v3 zu steigern.
 
 Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, wobei die VM-Instanz Guthaben bildet, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 % der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
 
 Die B-Serie ist in sechs VM-Größen erhältlich:
 
-| Größe          | vCPUs | Arbeitsspeicher: GiB | Lokales SSD: GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben |
+| Größe          | vCPUs | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | CPU-Grundleistung des virtuellen Computers | Maximale CPU-Leistung des virtuellen Computers | Guthabenbildung/Stunde | Maximalguthaben |
 |---------------|--------|-------------|----------------|--------------------------------|---------------------------|-----------------------|--------------------|
 | Standard_B1s  | 1      | 1           | 4              | 10%                            | 100 %                      | 6                     | 144                |
 | Standard_B1ms | 1      | 2           | 4              | 20%                            | 100 %                      | 12                    | 288                |
@@ -26,16 +17,11 @@ Die B-Serie ist in sechs VM-Größen erhältlich:
 
 
 
-## <a name="q--a-about-this-preview"></a>Fragen und Antworten zu dieser Vorschauversion
-
-### <a name="q-how-can-i-participate-in-this-preview"></a>F: Wie kann ich an dieser Vorschauversion teilnehmen?
-**A:** Fordern Sie ein Kontingent für die B-Serie in einer der unterstützten Regionen an.  Nach der Freigabe Ihres Kontingents können Sie Ihre Bereitstellung wie gewohnt über das Portal oder über die APIs durchführen. Weitere Informationen finden Sie unter [Anforderungen zur Erhöhung von Azure Resource Manager-Kernkontingenten](../articles/azure-supportability/resource-manager-core-quotas-request.md).
+## <a name="q--a"></a>Fragen und Antworten 
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>F: Wie erhalte ich einen virtuellen Computer mit einer Grundleistung von 135 Prozent?
 **A:** Die 135 Prozent verteilen sich auf die acht vCPUs, die der VM-Größe zugrunde liegen. Wenn Ihre Anwendung also beispielsweise vier der acht Kerne für die Batchverarbeitung nutzt und jede dieser vier vCPUs zu 30 Prozent ausgelastet ist, beläuft sich die CPU-Leistung des virtuellen Computers auf insgesamt 120 Prozent.  Das bedeutet, dass der virtuelle Computer ein Zeitguthaben auf der Grundlage des 15-prozentigen Deltas (im Vergleich zu Ihrer Grundleistung) bildet.  Es bedeutet aber auch Folgendes: Wenn Sie über Guthaben verfügen, kann der gleiche virtuelle Computer 100 Prozent aller acht vCPUs nutzen, wodurch sich eine maximale CPU-Leistung von 800 Prozent ergibt.
 
-### <a name="q-is-there-a-discount-on-price-during-the-preview"></a>F: Ist der Preis während der Vorschauphase rabattiert?
-**A:** Ja. Die Preise für die Vorschauversion finden Sie auf unserer [Preisseite](http://aka.ms/vmsizes).
 
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>F: Wie kann ich mein Guthaben und den Verbrauch überwachen?
 **A:** In den kommenden Wochen werden zwei neue Metriken eingeführt. Die Metrik **Credit** gibt Aufschluss darüber, wie viel Guthaben Ihr virtueller Computer gebildet hat, und die Metrik **ConsumedCredit** zeigt, wie viel CPU-Guthaben Ihr virtueller Computer aus dem Vorrat verbraucht hat.    Diese Metriken können Sie im Metrikbereich des Portals oder programmgesteuert über die Azure Monitor-APIs anzeigen.
@@ -58,14 +44,7 @@ Wenn ich nun die 120 Guthaben, die ich während der Nebenzeit gebildet habe, mit
 **A:** Ja. Storage Premium-Datenträger werden von allen Größen der B-Serie unterstützt.   
     
 
-### <a name="q-which-regions-can-i-access-the-preview-from"></a>F: Über welche Regionen kann ich auf die Vorschauversion zugreifen?
-**A:** Die Vorschauversion der B-Serie ist in folgenden Regionen verfügbar:
-- USA, Westen 2
-- USA, Osten
-- Europa, Westen
-- Asien-Pazifik, Südosten
 
-Nach Abschluss der Vorschauphase wird die B-Serie für die restlichen Regionen freigegeben.
     
 
     

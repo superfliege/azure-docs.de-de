@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: v-deasim
-ms.openlocfilehash: 8df9fd46fe3ce8d87e7ad5377a21a0bc7a458d2b
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: f09195dc07a96ebcca7f7a9e4bcf521fae13630c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="custom-reports-from-verizon"></a>Benutzerdefinierte Berichte aus Verizon
 
@@ -30,7 +30,7 @@ Indem Sie benutzerdefinierte Verizon-Berichte über das Verwaltungsportal für V
 ## <a name="accessing-verizon-custom-reports"></a>Zugreifen auf benutzerdefinierte Verizon-Berichte
 1. Klicken Sie auf dem Blatt „CDN-Profil“ auf die Schaltfläche **Verwalten** .
    
-    ![Schaltfläche „Verwalten“ auf dem CDN-Profilblatt](./media/cdn-reports/cdn-manage-btn.png)
+    ![Schaltfläche „Verwalten“ für CDN-Profile](./media/cdn-reports/cdn-manage-btn.png)
    
     Das CDN-Verwaltungsportal wird geöffnet.
 2. Zeigen Sie auf die Registerkarte **Analysen** und dann auf das Flyout **Benutzerdefinierte Berichte**. Klicken Sie auf **Edge CNAMEs**.

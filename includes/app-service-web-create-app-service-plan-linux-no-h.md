@@ -1,4 +1,4 @@
-Erstellen Sie in der Cloud Shell mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#create) einen App Service-Plan in der Ressourcengruppe.
+Erstellen Sie in der Cloud Shell mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) einen App Service-Plan in der Ressourcengruppe.
 
 <!-- [!INCLUDE [app-service-plan](app-service-plan-linux.md)] -->
 

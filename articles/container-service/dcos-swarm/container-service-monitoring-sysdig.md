@@ -1,28 +1,22 @@
 ---
-title: "Überwachen eines Azure Container Service-Clusters mit Sysdig | Microsoft Docs"
+title: "Überwachen eines Azure Container Service-Clusters mit Sysdig"
 description: "Es wird beschrieben, wie Sie einen Azure Container Service-Cluster mit Sysdig überwachen."
 services: container-service
-documentationcenter: 
 author: sauryadas
 manager: timlt
-editor: 
-tags: acs, azure-container-service
-keywords: Container, DC/OS, Azure
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: e61001161e632a5d2e513107e30f1eaf06103989
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d694744665ef6399560fc12c6976c2d88d232148
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Überwachen eines Azure Container Service-Clusters mit Sysdig
+
 In diesem Artikel stellen wir Sysdig-Agents für alle Agent-Knoten im Azure Container Service-Cluster bereit. Für diese Konfiguration benötigen Sie ein Konto mit Sysdig. 
 
 ## <a name="prerequisites"></a>Voraussetzungen

@@ -1,7 +1,7 @@
 
 | Ressource | Standardlimit | Maximales Limit | 
 | --- | --- | --- |
-| CDN-Profile |8 |25 |
+| CDN-Profile |25 |25 |
 | CDN-Endpunkte pro Profil |10 |25 |
 | Benutzerdefinierte Domänen pro Endpunkt |10 |25 |
 

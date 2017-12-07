@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: b962ad3da6d5daff2c8b2524828a9450da702abb
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: c7ed8e695097d0cf2f5c99f8ccf3378c4e553c3b
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="server-workload-forecasting-on-terabytes-of-data"></a>Vorhersagen der Serverworkload für Daten im Terabyte-Bereich
+# <a name="server-workload-forecasting-on-terabytes-of-data"></a>Vorhersagen der Serverworkload in Terabyte
 
 In diesem Artikel wird beschrieben, wie Azure Machine Learning Workbench von Data Scientists zum Entwickeln von Lösungen verwendet werden kann, für die die Nutzung von Big Data erforderlich ist. Sie können mit einem Auszug eines großen Datasets beginnen, die Datenvorbereitung, die Featureentwicklung und das Machine Learning durchlaufen und den Prozess dann auf den gesamten Umfang des großen Datasets erweitern. 
 
@@ -203,7 +203,7 @@ Das zweite Argument ist DEBUG. Wenn Sie es auf „FILTER_IP“ festlegen, wird e
 
 Starten Sie die Befehlszeile über Machine Learning Workbench, indem Sie **Datei** > **Eingabeaufforderung öffnen** wählen. Führen Sie anschließend Folgendes aus: 
 
-```az ml computetarget attach --name dockerdsvm --address $DSVMIPaddress  --username $user --password $password --type remotedocker```
+```az ml computetarget attach remotedocker --name dockerdsvm --address $DSVMIPaddress  --username $user --password $password ```
 
 Die folgenden beiden Dateien werden im Ordner „aml_config“ Ihres Projekts erstellt:
 
@@ -266,7 +266,7 @@ Nachdem Sie die Experimente mit der geringen Datenmenge erfolgreich abgeschlosse
 
 ##### <a name="1-create-the-compute-target-in-machine-learning-workbench-for-the-hdinsight-cluster"></a>1. Erstellen des Computeziels in Machine Learning Workbench für den HDInsight-Cluster
 
-```az ml computetarget attach --name myhdi --address $clustername-ssh.azurehdinsight.net --username $username --password $password --type cluster```
+```az ml computetarget attach cluster --name myhdi --address $clustername-ssh.azurehdinsight.net --username $username --password $password```
 
 Die folgenden beiden Dateien werden im Ordner „aml_config“ erstellt:
     

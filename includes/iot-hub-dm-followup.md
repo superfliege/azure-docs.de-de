@@ -20,4 +20,4 @@ Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Ers
 
 [lnk-fwupdate]: ../articles/iot-hub/iot-hub-node-node-firmware-update.md
 [lnk-tutorial-jobs]: ../articles/iot-hub/iot-hub-node-node-schedule-jobs.md
-[lnk-iot-edge]: ../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md
+[lnk-iot-edge]: ../articles/iot-edge/tutorial-simulate-device-linux.md

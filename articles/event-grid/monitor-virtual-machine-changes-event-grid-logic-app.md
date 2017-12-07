@@ -9,13 +9,13 @@ ms.assetid:
 ms.workload: logic-apps
 ms.service: logic-apps
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 11/30/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 8b9c7c9502be1a9d8681a304a6663c23c02c0298
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: df1e19b772b41064aff1f345dee93813f0c21c73
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Überwachen von Änderungen an einem virtuellen Computer mit Azure Event Grid und Logic Apps
 
@@ -91,7 +91,7 @@ Erstellen Sie zuerst eine Logik-App, und fügen Sie einen Ereignisrastertrigger 
    ![Anmelden mit Ihren Azure-Anmeldeinformationen](./media/monitor-virtual-machine-changes-event-grid-logic-app/sign-in-event-grid.png)
 
    > [!NOTE]
-   > Wenn Sie mit einem persönlichen Microsoft-Konto wie @outlook.com oder @hotmail.com angemeldet sind, wird der Event Grid-Trigger möglicherweise nicht ordnungsgemäß angezeigt. Um dieses Problem zu umgehen, wählen Sie [Verbindung über Dienstprinzipal herstellen](/azure-resource-manager/resource-group-create-service-principal-portal.md), oder authentifizieren Sie sich als Mitglied des Azure Active Directory, dass Ihrem Azure-Abonnement zugeordnet ist, z.B. *Benutzername*@emailoutlook.onmicrosoft.com.
+   > Wenn Sie mit einem persönlichen Microsoft-Konto wie @outlook.com oder @hotmail.com angemeldet sind, wird der Event Grid-Trigger möglicherweise nicht ordnungsgemäß angezeigt. Um dieses Problem zu umgehen, wählen Sie [Verbindung über Dienstprinzipal herstellen](../azure-resource-manager/resource-group-create-service-principal-portal.md), oder authentifizieren Sie sich als Mitglied des Azure Active Directory, dass Ihrem Azure-Abonnement zugeordnet ist, z.B. *Benutzername*@emailoutlook.onmicrosoft.com.
 
 8. Abonnieren Sie jetzt für Ihre Logik-App Ereignisse eines Herausgebers. Legen Sie die Details für Ihr Ereignisabonnement wie in der folgenden Tabelle angegeben fest:
 

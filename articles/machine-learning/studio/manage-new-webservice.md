@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 2fc71d3a03ff978485104bcd1cd9391c1d5ee392
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed9b4e2fc2dd7c795861dc8f1c0f2c6d61d26439
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal
 Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
@@ -155,36 +155,4 @@ Sie können die folgenden Eigenschaften aktualisieren:
 * **Logging** ermöglicht Ihnen das Aktivieren bzw. Deaktivieren der Fehlerprotokollierung für den Endpunkt. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](web-services-logging.md).
 * **Enable Sample data** ermöglicht das Bereitstellen von Beispieldaten, die Sie mit dem Request-Response-Dienst testen können. Wenn Sie den Webdienst in Machine Learning Studio erstellt haben, stammen die Beispieldaten aus den Daten, mit denen Sie Ihr Modell trainiert haben. Wenn Sie den Dienst programmgesteuert erstellt haben, stammen die Daten aus den Beispieldaten, die Sie als Teil des JSON-Pakets bereitgestellt haben.
 
-## <a name="grant-or-suspend-access-to-web-services-for-users-in-the-portal"></a>Gewähren oder Verweigern des Zugriffs auf Webdienste für Benutzer im Portal
-Im klassischen Azure-Portal können Sie bestimmten Benutzern den Zugriff erlauben oder verweigern.
-
-### <a name="access-for-users-of-new-web-services"></a>Zugriff für Benutzer neuer Webdienste
-Um anderen Benutzern das Arbeiten mit Ihren Webdiensten im Azure Machine Learning Web Services-Portal zu ermöglichen, müssen Sie diese Ihrem Azure-Abonnement als Co-Administratoren hinzufügen.
-
-Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit Ihrem Microsoft Azure-Konto an. Verwenden Sie das Konto, das dem Azure-Abonnement zugeordnet ist.
-
-1. Klicken Sie im Navigationsbereich auf **Einstellungen** und dann auf **Administratoren**.
-2. Klicken Sie unten im Fenster auf **Hinzufügen**. 
-3. Geben Sie im Dialogfeld „CO-ADMINISTRATOR HINZUFÜGEN“ die E-Mail-Adresse der Person ein, die Sie als Co-Administrator hinzufügen möchten, und wählen Sie dann das Abonnement aus, auf das der Co-Administrator zugreifen soll.
-4. Klicken Sie auf **Speichern**.
-
-### <a name="access-for-users-of-classic-web-services"></a>Zugriff für Benutzer klassischer Webdienste
-So verwalten Sie einen Arbeitsbereich
-
-Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com/) mit Ihrem Microsoft Azure-Konto an. Verwenden Sie das Konto, das dem Azure-Abonnement zugeordnet ist.
-
-1. Klicken Sie im Microsoft Azure-Dienstbereich auf **MACHINE LEARNING**.
-2. Klicken Sie auf den Arbeitsbereich, den Sie verwalten möchten.
-3. Klicken Sie auf die Registerkarte **CONFIGURE** .
-
-Auf der Konfigurationsregisterkarte können Sie den Zugriff auf den Machine Learning-Arbeitsbereich sperren, indem Sie auf **DENY** klicken. Benutzer können den Arbeitsbereich dann nicht mehr in Machine Learning Studio öffnen. Klicken Sie auf **ALLOW**, um den Zugang wiederherzustellen.
-
-Für bestimmte Benutzer:
-
-Um zusätzliche Konten zu verwalten, die Zugriff auf den Arbeitsbereich in Machine Learning Studio haben, klicken Sie auf der Registerkarte **DASHBOARD** auf **Sign-in to ML Studio**. Dadurch wird der Arbeitsbereich in Machine Learning Studio geöffnet. Klicken Sie dort auf die Registerkarte **SETTINGS** und dann auf **USERS**. Sie können auf **INVITE MORE USERS** klicken, um Benutzern den Zugriff auf den Arbeitsbereich zu gewähren, oder einen Benutzer auswählen und durch Klicken auf **REMOVE** entfernen.
-
-> [!NOTE]
-> Über den Link **v** wird Machine Learning Studio mit dem Microsoft-Konto geöffnet, an dem Sie gerade angemeldet sind. Das Microsoft-Konto, mit dem Sie sich beim klassischen Azure-Portal angemeldet haben, um einen Arbeitsbereich zu erstellen, verfügt nicht automatisch über die Berechtigung zum Öffnen dieses Arbeitsbereichs. Um einen Arbeitsbereich zu öffnen, müssen Sie an dem Microsoft-Konto angemeldet sein, das als Besitzer des Arbeitsbereichs definiert wurde, oder Sie müssen eine Einladung des Besitzers zur Teilnahme am Arbeitsbereich erhalten haben.
-> 
-> 
 

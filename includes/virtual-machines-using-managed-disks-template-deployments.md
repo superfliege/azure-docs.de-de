@@ -214,6 +214,6 @@ Lesen Sie bitte die REST-API-Dokumentation zum Erstellen eines verwalteten Daten
     * [Linux VM with managed disk (Virtueller Linux-Computer mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
     * [Full list of managed disk templates (Vollständige Liste der Vorlagen mit verwalteten Datenträgern)](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * Im Dokument [Azure Managed Disks – Übersicht](../articles/virtual-machines/windows/managed-disks-overview.md) finden Sie weitere Informationen zu verwalteten Datenträgern.
-* Lesen Sie die Referenzdokumentation zu den Vorlagen für VM-Ressourcen. Diese finden Sie im Dokument [Microsoft.Compute/virtualMachines template reference](/templates/microsoft.compute/virtualmachines).
-* Lesen Sie die Referenzdokumentation zu den Vorlagen für Datenträgerressourcen. Diese finden Sie im Dokument [Microsoft.Compute/disks template reference](/templates/microsoft.compute/disks).
+* Lesen Sie die Referenzdokumentation zu den Vorlagen für VM-Ressourcen. Diese finden Sie im Dokument [Microsoft.Compute/virtualMachines template reference](/azure/templates/microsoft.compute/virtualmachines).
+* Lesen Sie die Referenzdokumentation zu den Vorlagen für Datenträgerressourcen. Diese finden Sie im Dokument [Microsoft.Compute/disks template reference](/azure/templates/microsoft.compute/disks).
  

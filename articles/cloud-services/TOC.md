@@ -41,7 +41,6 @@
 ### [Erstellen und Bereitstellen eines Clouddiensts im Portal](cloud-services-how-to-create-deploy-portal.md)
 ### [Erstellen eines leeren Clouddienstcontainers in PowerShell](cloud-services-powershell-create-cloud-container.md)
 ### [Konfigurieren eines benutzerdefinierten Domänennamens](cloud-services-custom-domain-name-portal.md)
-### [Bereitstellen eines Clouddiensts (Node.js)](cloud-services-nodejs-stage-application.md)
 ### [Herstellen einer Verbindung mit einem benutzerdefinierten Domänencontroller](cloud-services-connect-to-custom-domain.md)
 
 ## Verwalten eines Diensts

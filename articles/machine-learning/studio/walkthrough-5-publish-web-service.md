@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.openlocfilehash: 1bbc8ce31fc8e5ffb048a1fb9553a82975680a3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba8f1678d87159088c58cf0e05e0fe5a6579b358
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="walkthrough-step-5-deploy-the-azure-machine-learning-web-service"></a>Anleitung Schritt 5: Bereitstellen des Azure Machine Learning-Webdiensts
 Dies ist der fünfte Schritt der exemplarischen Vorgehensweise zum [Predictive Analytics-Lösung in Azure Machine Learning](walkthrough-develop-predictive-solution.md)
@@ -190,26 +190,6 @@ Die Ergebnisse des Tests werden rechts auf der Seite in der Ausgabespalte angeze
 
 
 ## <a name="manage-the-web-service"></a>Verwalten des Webdiensts
-
-### <a name="manage-a-classic-web-service-in-the-azure-classic-portal"></a>Verwalten eines klassischen Webdiensts im klassischen Azure-Portal
-
-Nachdem Sie Ihren klassischen Webdienst bereitgestellt haben, können Sie ihn im [klassischen Azure-Portal](https://manage.windowsazure.com) verwalten.
-
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
-2. Klicken Sie im Microsoft Azure-Dienstbereich auf **MACHINE LEARNING**.
-3. Klicken Sie auf Ihren Arbeitsbereich.
-4. Klicken Sie auf die Registerkarte **Web Services**.
-5. Klicken Sie auf den Webdienst, den wir erstellt haben.
-6. Klicken Sie auf den Endpunkt „Default“.
-
-Hier können Sie überwachen, wie der Webdienst funktioniert, und Leistungsanpassungen vornehmen, indem Sie ändern, wie viele gleichzeitige Aufrufe der Dienst unterstützen kann.
-
-Weitere Informationen finden Sie unter:
-
-* [Erstellen von Endpunkten](create-endpoint.md)
-* [Skalieren von Webdiensten](scaling-webservice.md)
-
-### <a name="manage-a-classic-or-new-web-service-in-the-azure-machine-learning-web-services-portal"></a>Verwalten eines klassischen oder neuen Webdiensts im Azure Machine Learning Web Services-Portal
 
 Nachdem Sie Ihren neuen oder klassischen Webdienst bereitgestellt haben, können Sie ihn im [Microsoft Azure Machine Learning Web Services](https://services.azureml.net/quickstart)-Portal verwalten.
 

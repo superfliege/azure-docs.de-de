@@ -1,4 +1,4 @@
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe.
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe.
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 

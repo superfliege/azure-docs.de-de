@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2017
+ms.date: 12/06/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 5c00d50817e40de0a43d05eb85662b494247d8fa
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 6a9b7cff1341bd898b76a226ca413b8135eec408
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-using-powershell"></a>Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen in Ihrer Azure-Umgebung mithilfe von PowerShell
 
@@ -30,19 +30,6 @@ Stellen Sie vor Beginn sicher, dass die aktuelle Version von PowerShell installi
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
-## <a name="opt-in-to-azure-policy"></a>Registrieren für Azure Policy
-
-Azure Policy ist jetzt als Public Preview verfügbar und kann erst nach vorheriger Registrierung verwendet werden.
-
-1. Navigieren Sie zu Azure Policy (https://aka.ms/getpolicy), und klicken Sie im linken Bereich auf **Registrieren**.
-
-   ![Suchen nach „Policy“](media/assign-policy-definition/sign-up.png)
-
-2. Registrieren Sie sich für Azure Policy, indem Sie in der Abonnementliste die gewünschten **Abonnements** auswählen. Klicken Sie anschließend auf **Register** (Registrieren).
-
-   ![Registrieren für die Verwendung von Azure Policy](media/assign-policy-definition/preview-opt-in.png)
-
-   Ihre Anforderung wird für die Vorschauversion automatisch genehmigt. Warten Sie bis zu 30 Minuten, damit das System Ihre Registrierung verarbeiten kann.
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 

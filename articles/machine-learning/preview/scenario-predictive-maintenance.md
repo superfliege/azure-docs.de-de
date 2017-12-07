@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: dc73c052ad9e0fe12af5042289f304a0e48ae413
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2687eb022bce0b71c217f0be611c8fabdfb66040
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>Vorbeugende Wartung in der Praxis.
 
@@ -63,7 +63,7 @@ Für die Ausführung auf Ihrem lokalen Computer wählen Sie im AML Workbench-Men
 
 Wir empfehlen die Ausführung auf einer Data Science Virtual Machine (DSVM) für Linux (Ubuntu). Führen Sie nach der Konfiguration der DSVM die beiden folgenden Befehle aus:
 
-`az ml computetarget attach --name [Desired_Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword] --type remotedocker`
+`az ml computetarget attach remotedocker --name [Desired_Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]`
 
 `az ml experiment prepare --target [Desired_Connection_Name] --run-configuration [Desired_Connection_Name]`
 
@@ -73,7 +73,7 @@ Notebooks werden in der Jupyter-Umgebung im Verzeichnis `Code` gespeichert. Wir 
 
 ## <a name="data-description"></a>Datenbeschreibung
 
-Die [simulierten Daten](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) bestehen aus fünf CSV-Dateien mit durch Trennzeichen getrennten Werten. Folgen Sie den Links, um eine detailliertere Beschreibung der Datasets zu erhalten.
+Die [simulierten Daten](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data) bestehen aus fünf (.csv-)Dateien mit durch Trennzeichen getrennten Werten. Folgen Sie den Links, um eine detailliertere Beschreibung der Datasets zu erhalten.
 
 * [Computer](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): Features, mit denen die Computer unterschieden werden können. Beispielsweise Alter und Modell.
 * [Fehler](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): Das Fehlerprotokoll enthält ausgelöste, nicht unterbrechende Fehler, während der Computer weiterhin funktionsfähig ist. Diese Fehler werden nicht als Fehler betrachtet, obwohl sie möglicherweise ein zukünftiges Fehlerereignis vorhersehen. Datum und Uhrzeit der Fehler werden auf die Stunde gerundet, da die Telemetriedaten stündlich gesammelt werden.

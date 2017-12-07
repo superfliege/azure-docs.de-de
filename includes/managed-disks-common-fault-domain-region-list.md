@@ -32,3 +32,9 @@
 | Australien (Südosten) | 2                       |
 |                     |                         |
 | Brasilien Süd        | 2                       |
+|                     |                         |
+| US Government, Virginia     | 2                       |
+| US Gov Texas        | 2                       |
+| US Gov Arizona      | 2                       |
+| US DoD, Mitte      | 2                       |
+| US DoD, Osten         | 2                       |

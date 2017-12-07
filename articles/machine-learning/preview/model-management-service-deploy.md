@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 0ebf8964bc565e5d4f95fb1ad3edbc16f841851c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d59dccec4532ff0903972f2b15ed9dd8429a2ed
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Bereitstellen eines Machine Learning-Modells als Webdienst
 
@@ -25,7 +25,7 @@ In diesem Dokument werden die Schritte zum Bereitstellen Ihrer Modelle als Webdi
 ## <a name="deploying-web-services"></a>Bereitstellen von Webdiensten
 Mithilfe der CLIs können Sie Webdienste zur Ausführung auf dem lokalen Computer oder in einem Cluster bereitstellen.
 
-Es wird empfohlen, mit einer lokalen Bereitstellung anzufangen. Sie überprüfen zunächst, ob Ihr Modell und Code funktionieren. Anschließend stellen Sie den Webdienst in einem Cluster zur Nutzung in der Produktionsumgebung bereit. Weitere Informationen zum Einrichten der Umgebung für die Bereitstellung im Cluster finden Sie unter [Konfiguration der Modellverwaltung](model-management-configuration.md). 
+Es wird empfohlen, mit einer lokalen Bereitstellung anzufangen. Sie überprüfen zunächst, ob Ihr Modell und Code funktionieren. Anschließend stellen Sie den Webdienst in einem Cluster zur Nutzung in der Produktionsumgebung bereit. Weitere Informationen zum Einrichten der Umgebung für die Bereitstellung im Cluster finden Sie unter [Konfiguration der Modellverwaltung](deployment-setup-configuration.md). 
 
 Es folgen die Schritte zur Bereitstellung:
 1. Verwenden eines gespeicherten, trainierten Machine Learning-Modells
@@ -186,4 +186,4 @@ az ml service run realtime -i <service id> -d "{\"input_df\": [{\"sepal length\"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie Ihren Webdienst nun lokal getestet haben, können Sie ihn in einem Cluster für den großflächigen Einsatz bereitstellen. Weitere Informationen zum Einrichten eines Clusters für die Bereitstellung von Webdiensten finden Sie unter [Konfiguration der Modellverwaltung](model-management-configuration.md). 
+Nachdem Sie Ihren Webdienst nun lokal getestet haben, können Sie ihn in einem Cluster für den großflächigen Einsatz bereitstellen. Weitere Informationen zum Einrichten eines Clusters für die Bereitstellung von Webdiensten finden Sie unter [Konfiguration der Modellverwaltung](deployment-setup-configuration.md). 

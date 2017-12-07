@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: kraigb
-ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 470fda7722e6a22e50ed66a7bc193fc7c9f71536
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>Kontinuierliche Zustellung für Cloud Services in Azure
 Der in diesem Artikel beschriebene Prozess zeigt, wie die kontinuierliche Zustellung für Azure-Cloud-Apps eingerichtet wird. Dieser Prozess ermöglicht es Ihnen, Pakete automatisch zu erstellen und nach jedem Einchecken von Code in Azure bereitzustellen. Der in diesem Artikel beschriebene Prozess der Paketerstellung entspricht dem Befehl **Paket** in Visual Studio, und die Veröffentlichungsschritte entsprechen dem Befehl **Veröffentlichen** in Visual Studio.
@@ -163,7 +163,7 @@ In diesem Abschnitt wird erläutert, wie ein Windows PowerShell-Skript erstellt 
    -->
    **Upgrade einer Bereitstellung im Vergleich zum Löschen einer Bereitstellung \> Neue Bereitstellung**
 
-   In der Standardeinstellung aktualisiert das Skript eine Bereitstellung ($enableDeploymentUpgrade = 1), wenn kein Parameter übergeben wird oder der Wert 1 explizit übergeben wird. Bei Einzelinstanzen bietet dies den Vorteil, dass die Bereitstellung weniger Zeit in Anspruch nimmt als eine vollständige Bereitstellung. Bei Instanzen, die hoch verfügbar sein müssen, bietet dies außerdem den Vorteil, dass einige Instanzen weiter aktiv sein können, während andere aktualisiert werden (wandernde Updatedomäne). Außerdem wird Ihr VIP nicht gelöscht.
+   In der Standardeinstellung aktualisiert das Skript eine Bereitstellung ($enableDeploymentUpgrade = 1), wenn kein Parameter übergeben wird oder der Wert 1 explizit übergeben wird. Bei Einzelinstanzen bietet dies den Vorteil, dass die Bereitstellung weniger Zeit in Anspruch nimmt als eine vollständige Bereitstellung. Bei Instanzen, die Hochverfügbarkeit erfordern, bietet dies außerdem den Vorteil, dass einige Instanzen weiter aktiv sein können, während andere aktualisiert werden (wandernde Updatedomäne). Außerdem wird Ihr VIP nicht gelöscht.
 
    Die Bereitstellung des Upgrades kann im Skript ($enableDeploymentUpgrade = 0) oder durch Übergabe von *-enableDeploymentUpgrade 0* als Parameter deaktiviert werden. Dadurch wird das Skriptverhalten so geändert, dass zuerst vorhandene Bereitstellungen gelöscht werden und anschließend eine neue Bereitstellung erstellt wird.
 
@@ -310,7 +310,7 @@ Mit diesem optionalen Schritt wird TFS Team Build in das in Schritt 4 erstellte
 12. Stellen Sie einen Build in die Warteschlange, um sowohl den Paketbuild als auch die Paketveröffentlichung auszuführen. Wenn Sie einen Auslöser auf "Fortlaufende Integration" eingestellt haben, wird dieses Verhalten bei jedem Einchecken ausgeführt.
 
 ### <a name="publishcloudserviceps1-script-template"></a>Skriptvorlage PublishCloudService.ps1
-```
+```powershell
 Param(  $serviceName = "",
         $storageAccountName = "",
         $packageLocation = "",
@@ -522,7 +522,6 @@ Informationen zum Aktivieren des Remotedebuggens bei Verwendung der kontinuierli
 [Scale out your build system]: https://msdn.microsoft.com/library/dd793166.aspx
 [Deploy and configure a build server]: https://msdn.microsoft.com/library/ms181712.aspx
 [Azure PowerShell cmdlets]: /powershell/azureps-cmdlets-docs
-[the .publishsettings file]: https://manage.windowsazure.com/download/publishprofile.aspx?wa=wsignin1.0
 [0]: ./media/cloud-services-dotnet-continuous-delivery/tfs-01bc.png
 [2]: ./media/cloud-services-dotnet-continuous-delivery/tfs-02.png
 [3]: ./media/cloud-services-dotnet-continuous-delivery/common-task-tfs-03.png

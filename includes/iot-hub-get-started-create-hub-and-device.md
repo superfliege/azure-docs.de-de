@@ -1,33 +1,14 @@
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Neu** > **Internet der Dinge** > **IoT Hub**.
+[!INCLUDE [iot-hub-create-hub](iot-hub-create-hub.md)]
 
-   ![Erstellen eines IoT Hubs im Azure-Portal](../articles/iot-hub/media/iot-hub-create-hub-and-device/1_create-azure-iot-hub-portal.png)
-2. Geben Sie im Bereich **IoT Hub** die folgenden Informationen für Ihren IoT Hub ein:
+Nachdem Sie nun einen IoT Hub erstellt haben, können Sie nach den wichtigen Informationen suchen, die Sie zum Herstellen einer Verbindung für Geräte und Anwendungen mit Ihrem IoT Hub nutzen. 
 
-     **Name**: Fügen Sie den Namen Ihres IoT Hubs hinzu. Wenn der eingegebene Name gültig ist, wird ein grünes Häkchen angezeigt.
-
-     **Tarif und Skalierung**: Wählen Sie den Tarif **F1 – Free** aus. Diese Option ist für diese Demo ausreichend. Weitere Informationen hierzu finden Sie unter [Tarif und Skalierung](https://azure.microsoft.com/pricing/details/iot-hub/).
-
-     **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe zum Hosten des IoT Hubs, oder verwenden Sie eine vorhandene. Weitere Informationen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../articles/azure-resource-manager/resource-group-portal.md).
-
-     **Standort**: Wählen Sie den nächstgelegenen Standort aus, an dem der IoT Hub erstellt wird.
-
-     **An Dashboard anheften**: Aktivieren Sie diese Option für den leichteren Zugriff auf Ihren IoT Hub über das Dashboard.
-
-   ![Informationen zum Erstellen des IoT Hubs eingeben](../articles/iot-hub/media/iot-hub-create-hub-and-device/2_fill-in-fields-for-azure-iot-hub-portal.png)
-
-   [!INCLUDE [iot-hub-pii-note-naming-hub](iot-hub-pii-note-naming-hub.md)]
-
-3. Klicken Sie auf **Erstellen**. Die Erstellung des IoT Hubs kann mehrere Minuten dauern. Sie sehen den Fortschritt im Bereich **Benachrichtigungen**.
-
-   ![Statusbenachrichtigungen für den IoT Hub anzeigen](../articles/iot-hub/media/iot-hub-create-hub-and-device/3_notification-azure-iot-hub-creation-progress-portal.png)
-
-4. Klicken Sie im Dashboard nach Abschluss des Erstellungsvorgangs auf den erstellten IoT Hub. Notieren Sie sich den **Hostnamen**, und klicken Sie anschließend auf **Richtlinien für gemeinsamen Zugriff**.
+1. Klicken Sie im Dashboard nach Abschluss des Erstellungsvorgangs auf den erstellten IoT Hub. Notieren Sie sich den **Hostnamen**, und klicken Sie anschließend auf **Richtlinien für gemeinsamen Zugriff**.
 
    ![Abrufen des Hostnamens Ihres IoT Hubs](../articles/iot-hub/media/iot-hub-create-hub-and-device/4_get-azure-iot-hub-hostname-portal.png)
 
-5. Klicken Sie im Bereich **Freigegebene Zugriffsrichtlinien** auf die Richtlinie **iothubowner**, und kopieren und notieren Sie dann die **Verbindungszeichenfolge** Ihres IoT Hubs. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
+1. Klicken Sie im Bereich **Freigegebene Zugriffsrichtlinien** auf die Richtlinie **iothubowner**, und kopieren und notieren Sie dann die **Verbindungszeichenfolge** Ihres IoT Hubs. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf IoT Hub](../articles/iot-hub/iot-hub-devguide-security.md).
 
 > [!NOTE] 
 Die iothubowner-Verbindungszeichenfolge wird für dieses Tutorial nicht benötigt. Sie benötigen sie allerdings unter Umständen für einige Tutorials zu anderen IoT-Szenarien, nachdem Sie diese Einrichtung abgeschlossen haben.

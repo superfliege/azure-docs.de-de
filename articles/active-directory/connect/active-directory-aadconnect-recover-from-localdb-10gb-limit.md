@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
-ms.openlocfilehash: 08e682c51b12d4506019d2f6b68e1eae0798b990
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab2aed2b9e86dc9b3111dc1fdf9deea2e2930c7c
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Azure AD Connect: Wiederherstellen nach einem Problem aufgrund der LocalDB-Obergrenze von 10 GB
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Identitätsdaten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. In SQL Server Express gilt eine Größenbeschränkung von 10 GB. Wenn Sie LocalDB verwenden und dieser Grenzwert erreicht ist, kann Azure AD Connect Synchronization Service nicht mehr ordnungsgemäß gestartet oder synchronisiert werden. In diesem Artikel werden die Schritte zur Wiederherstellung beschrieben.
@@ -63,11 +63,11 @@ Der Name der für Azure AD Connect erstellten Datenbank lautet **ADSync**. Um ei
 * Dem Sync Service-Konto, das als Betriebskontext von Azure AD Connect Synchronization Service verwendet wird
 * Der lokalen Gruppe „ADSyncAdmins“, die während der Installation erstellt wurde
 
-1. Sichern Sie die Datenbank, indem Sie die Dateien **ADSync.mdf** und **ADSync_log.ldf** unter `%ProgramFiles%\program files\Microsoft Azure AD Sync\Data` an einen sicheren Speicherort kopieren.
+1. Sichern Sie die Datenbank, indem Sie die Dateien **ADSync.mdf** und **ADSync_log.ldf** unter `%ProgramFiles%\Microsoft Azure AD Sync\Data` an einen sicheren Speicherort kopieren.
 
 2. Starten Sie eine neue PowerShell-Sitzung.
 
-3. Navigieren Sie zum Ordner `%ProgramFiles%\Program Files\Microsoft SQL Server\110\Tools\Binn`.
+3. Navigieren Sie zum Ordner `%ProgramFiles%\Microsoft SQL Server\110\Tools\Binn`.
 
 4. Starten Sie das Hilfsprogramm **sqlcmd** mithilfe des Befehls `./SQLCMD.EXE -S “(localdb)\.\ADSync” -U <Username> -P <Password>`. Verwenden Sie dabei die Anmeldeinformationen eines Systemadministrators oder des Datenbankbesitzers.
 
