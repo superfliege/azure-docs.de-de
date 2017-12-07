@@ -38,7 +38,7 @@
 #### [Bereitstellen von Ressourcen](resource-group-template-deploy-portal.md)
 #### [Exportieren der Vorlage](resource-manager-export-template.md)
 ### [REST-API](resource-group-template-deploy-rest.md)
-### [Ressourcengruppenübergreifende Bereitstellung](resource-manager-cross-resource-group-deployment.md)
+### [Mehrere Ressourcengruppen oder Abonnements](resource-manager-cross-resource-group-deployment.md)
 ### [Continuous Integration in Visual Studio Team Services](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 ### [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md)
 

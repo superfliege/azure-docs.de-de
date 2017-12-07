@@ -20,16 +20,19 @@
  
 ## Verwalten
 ### [Verwalten mit Azure PowerShell](cdn-manage-powershell.md)
+### [Einschränken des Zugriffs nach Land](cdn-restrict-access-by-country.md)
+### [Verbessern der Leistung durch Komprimieren von Dateien](cdn-improve-performance.md)
+### Steuern des Zwischenspeicherverhaltens
+#### [Funktionsweise der Zwischenspeicherung](cdn-how-caching-works.md)
+#### [Steuern des Zwischenspeicherverhaltens mit Cacheregeln](cdn-caching-rules.md)
+#### Zwischenspeichern von Inhalten nach Abfragezeichenfolgen
+##### [Standard-Tarif](cdn-query-string.md)
+##### [Premium-Tarif](cdn-query-string-premium.md)
+#### [Löschen von zwischengespeicherten Assets](cdn-purge-endpoint.md)
+#### [Vorabladen von zwischengespeicherten Assets](cdn-preload-endpoint.md)
 ### Konfigurieren der Gültigkeitsdauer
 #### [Azure-Webinhalt](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
-### [Einschränken des Zugriffs nach Land](cdn-restrict-access-by-country.md)
-### [Verbessern der Leistung durch Komprimieren von Dateien](cdn-improve-performance.md)
-### Zwischenspeichern von Inhalten nach Abfragezeichenfolge
-#### [Standard-Tarif](cdn-query-string.md)
-#### [Premium-Tarif](cdn-query-string-premium.md)
-### [Löschen von zwischengespeicherten Assets](cdn-purge-endpoint.md)
-### [Vorabladen von zwischengespeicherten Assets](cdn-preload-endpoint.md)
 ### [Tokenauthentifizierung](cdn-token-auth.md)
 ### [Überwachen von Ressourcen](cdn-resource-health.md)
 ### [Überschreiben des Verhaltens mit Regeln](cdn-rules-engine.md)

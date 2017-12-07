@@ -59,7 +59,7 @@
           href: concepts-supported-versions.md
         - name: Serverprotokolle
           href: concepts-server-logs.md
-        - name: Hohe Verfügbarkeit
+        - name: Hochverfügbarkeit
           href: concepts-high-availability.md
     - name: Ressourcen
       items:
@@ -161,3 +161,5 @@
       href: 'https://azure.microsoft.com/support/options/'
     - name: Kundenstimmen
       href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
+    - name: Leitfaden zur Datenbankmigration
+      href: 'https://datamigration.microsoft.com/'

@@ -13,8 +13,10 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen einer .NET-App
+    - name: Erstellen einer .NET Core-App
       href: app-service-web-get-started-dotnet.md
+    - name: Erstellen einer .NET Framework-App
+      href: app-service-web-get-started-dotnet-framework.md
     - name: Erstellen einer Node.js-App
       href: app-service-web-get-started-nodejs.md
     - name: Erstellen einer PHP-App

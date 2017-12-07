@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation für den Azure IoT Hub Device Provisioning-Dienst (Vorschauversion)
+title: Dokumentation für den Azure IoT Hub Device Provisioning-Dienst
 metadata:
-  title: 'Dokumentation für den Azure IoT Hub Device Provisioning-Dienst (Vorschauversion) – Tutorials, API-Referenz'
+  title: 'Dokumentation für den Azure IoT Hub Device Provisioning-Dienst – Tutorials, API-Referenz'
   meta.description: Overview of Azure IoT Hub Device Provisioning Service.
   services: iot-dps
   author: nberdy
@@ -14,7 +14,7 @@ metadata:
   ms.date: 01/23/2017
   ms.author: nberdy
 abstract:
-  description: 'Der IoT Hub Device Provisioning-Dienst (Vorschauversion) ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können. Erfahren Sie mit unseren Schnellstartanleitungen, Tutorials und Beispielen, wie sie Geräte in Ihren IoT-Hubs bereitstellen.'
+  description: 'Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können. Erfahren Sie mit unseren Schnellstartanleitungen, Tutorials und Beispielen, wie sie Geräte in Ihren IoT-Hubs bereitstellen.'
 sections:
   - title: Fünfminütige Schnellstarts
     items:
@@ -34,7 +34,7 @@ sections:
   - title: Schritt-für-Schritt-Tutorials
     items:
       - type: paragraph
-        text: 'Erfahren Sie, wie Sie mit dem IoT Hub Device Provisioning-Dienst (Vorschauversion) automatisch sicherheitsaktivierte Geräte in einem IoT-Hub oder mehreren IoT-Hubs bereitstellen.'
+        text: 'Erfahren Sie, wie Sie mit dem IoT Hub Device Provisioning-Dienst automatisch sicherheitsaktivierte Geräte in einem IoT-Hub oder mehreren IoT-Hubs bereitstellen.'
       - type: list
         style: ordered
         items:
