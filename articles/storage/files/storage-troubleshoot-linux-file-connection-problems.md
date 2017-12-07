@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
-ms.openlocfilehash: 660fe4fb9f962c835de9a2f900ceaabb4371b0db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8fd09c748786f0bfe070c3f41201eddc3d272116
+ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Behandeln von Azure Files-Problemen unter Linux
 
@@ -154,6 +154,21 @@ Häufige Ursachen für dieses Problem sind:
 ### <a name="solution"></a>Lösung
 
 Um das Problem zu beheben, verwenden Sie das [Problembehandlungstool für Azure Files-Bereitstellungsfehlern unter Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089). Mit diesem Tool können Sie die Clientausführungsumgebung überprüfen und die nicht kompatible Clientkonfiguration erkennen, die zu einem Zugriffsfehler für Azure Files führen würde. Zudem stellt das Tool Anleitungen zur Selbsthilfe bereit und erfasst die Diagnoseablaufverfolgungen.
+
+## <a name="ls-cannot-access-ltpathgt-inputoutput-error"></a>ls: cannot access '&lt;path&gt;': Input/output error
+
+Wenn Sie versuchen, mit dem Befehl „Is“ Dateien einer Azure-Dateifreigabe aufzulisten, hängt der Befehl beim Auflisten von Dateien, und Sie erhalten den folgenden Fehler:
+
+**ls: cannot access'&lt;path&gt;': Input/output error**
+
+
+### <a name="solution"></a>Lösung
+Aktualisieren Sie den Linux-Kernel auf die folgenden Versionen, in denen dieses Problem behoben wurde:
+
+- 4.4.87+
+- 4.9.48+
+- 4.12.11+
+- Alle Versionen ab 4.13
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 

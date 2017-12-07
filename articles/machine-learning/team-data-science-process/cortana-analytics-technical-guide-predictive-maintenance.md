@@ -14,66 +14,71 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: fboylu
-ms.openlocfilehash: 03ae6245e83c1f26546ec2a33c74dc9519847d7b
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 080618b844669cbea29a6a48c32e937705b06e3f
+ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 11/28/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>Technische Anleitung für die Cortana Intelligence-Lösungsvorlage zur Vorhersage des Wartungsbedarfs in der Luft- und Raumfahrt sowie weiteren Branchen
 
-## <a name="important"></a>**Wichtig**
-Dieser Artikel ist veraltet. Die Diskussion ist für das vorliegende Problem weiterhin relevant, d. h. „Predictive Maintenance in Aerospace“, aber aktuelle Informationen finden Sie unter [Solution Overview for Business Audiences](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace) (Lösungsübersicht für Geschäftskunden).
+>[!Important]
+Dieser Artikel ist veraltet. Die Diskussion über „Predictive Maintenance in Aerospace“ ist weiterhin relevant, aber aktuelle Informationen finden Sie unter [Solution Overview for Business Audiences](https://github.com/Azure/cortana-intelligence-predictive-maintenance-aerospace) (Lösungsübersicht für Geschäftskunden).
 
-## <a name="acknowledgements"></a>**Bestätigungen**
-Die Autoren dieses Artikels sind die Big Data-Experten Yan Zhang, Gauher Shaheen und Fidan Boylu Uz sowie der Softwareentwickler Dan Grecoe bei Microsoft.
 
-## <a name="overview"></a>**Übersicht**
-Lösungsvorlagen dienen zur schnelleren Erstellung von E2E-Demos auf Grundlage der Cortana Intelligence Suite. Durch das Bereitstellen einer Vorlage wird für Ihr Abonnement die erforderliche Cortana Intelligence-Komponente bereitgestellt, und es wird eine Beziehung zwischen Vorlage und Komponente eingerichtet. Außerdem wird die Datenpipeline mit Beispieldaten gestartet, die mithilfe einer Datengeneratoranwendung erzeugt werden. Diese laden Sie auf Ihren lokalen Computer herunter und installieren sie, nachdem Sie die Lösungsvorlage bereitgestellt haben. Sobald die Datenpipeline mit den vom Generator erzeugten Daten gefüllt ist, wird mit dem Erstellen von Machine Learning-Vorhersagen begonnen, die im Power BI-Dashboard visualisiert werden können. Im Zuge der Bereitstellung führen Sie mehrere Schritte aus, bei denen Sie die Anmeldeinformationen für die Lösung einrichten. Notieren Sie sich die während der Bereitstellung angegebenen Anmeldeinformationen, z. B. Lösungsname, Benutzername und Kennwort, oder zeichnen Sie sie anderweitig auf.  
+Lösungsvorlagen dienen zur schnelleren Erstellung von E2E-Demos auf Grundlage der Cortana Intelligence Suite. Durch das Bereitstellen einer Vorlage werden für Ihr Abonnement die erforderlichen Cortana Intelligence-Komponenten bereitgestellt und anschließend die Beziehungen dafür eingerichtet. Außerdem wird die Datenpipeline mit Beispieldaten einer Datengeneratoranwendung gestartet. Diese laden Sie auf Ihren lokalen Computer herunter und installieren sie, nachdem Sie die Lösungsvorlage bereitgestellt haben. Sobald die Datenpipeline mit den Daten der Generatoranwendung gefüllt ist, wird mit dem Erstellen von Machine Learning-Vorhersagen begonnen, die im Power BI-Dashboard visualisiert werden können.
 
-Das Ziel dieses Dokuments besteht darin, die Referenzarchitektur und die im Rahmen Ihres Abonnements bereitgestellten Komponenten zu beschreiben, die Teil dieser Lösungsvorlage sind. Des Weiteren wird veranschaulicht, wie die Beispieldaten durch eigene Daten ersetzt und die Lösungsvorlage geändert wird.  
+Im Zuge der Bereitstellung führen Sie mehrere Schritte aus, bei denen Sie die Anmeldeinformationen für die Lösung einrichten. Notieren Sie sich die während der Bereitstellung angegebenen Anmeldeinformationen, z.B. Lösungsname, Benutzername und Kennwort, oder zeichnen Sie sie anderweitig auf. 
+
+
+Für diesen Artikel gelten die folgenden Zielsetzungen:
+- Beschreiben der Referenzarchitektur und der Komponenten unter Ihrem Abonnement
+- Veranschaulichen, wie Sie die Beispieldaten durch Ihre eigenen Daten ersetzen 
+- Veranschaulichen, wie Sie die Lösungsvorlage ändern  
 
 > [!TIP]
-> Sie können eine [PDF-Version dieses Dokuments](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf)herunterladen und drucken.
+> Sie können eine [PDF-Version dieses Artikels](http://download.microsoft.com/download/F/4/D/F4D7D208-D080-42ED-8813-6030D23329E9/cortana-analytics-technical-guide-predictive-maintenance.pdf) herunterladen und drucken.
 > 
 > 
 
-## <a name="overview"></a>**Übersicht**
+## <a name="overview"></a>Übersicht
 ![Architektur für vorbeugende Wartung](./media/cortana-analytics-technical-guide-predictive-maintenance/predictive-maintenance-architecture.png)
 
-Wenn die Lösung bereitgestellt wird, werden die verschiedenen Azure-Dienste in Cortana Analytics Suite aktiviert (Event Hub, Stream Analytics, HDInsight, Data Factory, Machine Learning *usw.*). Das Architekturdiagramm veranschaulicht, wie die Lösungsvorlage für „Predictive Maintenance for Aerospace“ aufgebaut ist. Sie können diese Dienste im Azure-Portal untersuchen, indem Sie im Lösungsvorlagendiagramm darauf klicken, das bei der Bereitstellung der Lösung erstellt wurde (Eine Ausnahme ist HDInsight, da dieser Dienst bedarfsgesteuert bereitgestellt wird, wenn die zugehörigen Pipelineaktivitäten ausgeführt werden müssen. Im Anschluss an diese Aktivitäten wird er gelöscht.).
+Beim Bereitstellen der Lösung werden die verschiedenen Azure-Dienste in Cortana Analytics Suite aktiviert (z.B. Event Hub, Stream Analytics, HDInsight, Data Factory und Machine Learning). Das Architekturdiagramm veranschaulicht, wie die Lösungsvorlage für „Predictive Maintenance for Aerospace“ aufgebaut ist. Sie können diese Dienste im Azure-Portal untersuchen, indem Sie im Lösungsvorlagendiagramm, das bei der Bereitstellung der Lösung erstellt wurde, darauf klicken. (Eine Ausnahme ist HDInsight, da dieser Dienst bedarfsgesteuert bereitgestellt wird, wenn die zugehörigen Pipelineaktivitäten ausgeführt werden müssen und anschließend gelöscht werden.)
 Laden Sie eine [Version des Diagramms in voller Größe](http://download.microsoft.com/download/1/9/B/19B815F0-D1B0-4F67-AED3-A40544225FD1/ca-topologies-maintenance-prediction.png) herunter.
 
 In den folgenden Abschnitten werden die Komponenten der Lösung beschrieben.
 
-## <a name="data-source-and-ingestion"></a>**Datenquelle und die Erfassung**
+## <a name="data-source-and-ingestion"></a>Datenquelle und Erfassung
 ### <a name="synthetic-data-source"></a>Synthetische Datenquelle
-Die für diese Vorlage verwendete Datenquelle wird mit einer Desktopanwendung generiert. Sie laden diese Anwendung nach dem erfolgreichen Bereitstellen der Vorlage herunter und führen sie aus. Die Anweisungen zum Herunterladen und Installieren dieser Anwendung befinden sich auf der Eigenschaftenleiste, wenn Sie im Lösungsvorlagendiagramm auf den ersten Knoten für den Datengenerator für Predictive Maintenance klicken. Diese Anwendung fügt dem [Azure Event Hub](#azure-event-hub)-Dienst Datenpunkte bzw. Ereignisse hinzu, die für den gesamten weiteren Lösungsablauf verwendet werden. Die Datenquelle ist von öffentlich zugänglichen Daten aus dem [Datenrepository der NASA](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) (und dort konkret aus dem [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan)) abgeleitet.
+Die für diese Vorlage verwendete Datenquelle wird mit einer Desktopanwendung generiert. Sie laden diese Anwendung nach dem erfolgreichen Bereitstellen der Vorlage herunter und führen sie aus.
+
+Wählen Sie zum Zugreifen auf die Anweisungen zum Herunterladen und Installieren dieser Anwendung im Lösungsvorlagendiagramm den ersten Knoten für den Datengenerator für Predictive Maintenance. Die Anweisungen befinden sich in der Eigenschaftenleiste. Diese Anwendung fügt dem [Azure Event Hub](#azure-event-hub)-Dienst Datenpunkte bzw. Ereignisse hinzu, die für den gesamten weiteren Lösungsablauf verwendet werden. Die Datenquelle ist von öffentlich zugänglichen Daten aus dem [Datenrepository der NASA](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/) (und dort konkret aus dem [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan)) abgeleitet.
 
 Die Ereignisgenerierungsanwendung füllt Azure Event Hub nur, solange sie auf dem Computer ausgeführt wird.
 
 ### <a name="azure-event-hub"></a>Azure Event Hub
 Der [Azure Event Hub](https://azure.microsoft.com/services/event-hubs/)-Dienst nimmt die von der synthetischen Datenquelle bereitgestellten Dateneingaben als Empfänger entgegen.
 
-## <a name="data-preparation-and-analysis"></a>**Datenvorbereitung und Analyse**
+## <a name="data-preparation-and-analysis"></a>Datenvorbereitung und Analyse
 ### <a name="azure-stream-analytics"></a>Azure Stream Analytics
-Verwenden Sie den [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/)-Dienst, um den Eingabedatenstrom aus dem [Azure Event Hub](#azure-event-hub)-Dienst nahezu in Echtzeit zu analysieren. Die Analyseergebnisse werden in einem [Power BI](https://powerbi.microsoft.com)-Dashboard veröffentlicht, und alle eingehenden Rohereignisse werden in [Azure Storage](https://azure.microsoft.com/services/storage/) zur späteren Verarbeitung durch den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)-Dienst archiviert.
+Verwenden Sie [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/), um nahezu in Echtzeit verfügbare Analysen zum Eingabedatenstrom über den [Azure Event Hub](#azure-event-hub)-Dienst bereitzustellen. Anschließend veröffentlichen Sie die Ergebnisse in einem [Power BI](https://powerbi.microsoft.com)-Dashboard und archivieren alle unformatierten eingehenden Ereignisse des [Azure Storage](https://azure.microsoft.com/services/storage/)-Diensts zur späteren Verarbeitung durch den [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)-Dienst.
 
 ### <a name="hdinsight-custom-aggregation"></a>Benutzerdefinierte Aggregation mit HDInsight
 Führen Sie (von Azure Data Factory orchestrierte) [Hive](http://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx)-Skripts mit HDInsight aus, um die vom Azure Stream Analytics-Dienst archivierten Ereignisse zu aggregieren.
 
 ### <a name="azure-machine-learning"></a>Azure Machine Learning
-Treffen Sie mithilfe des (von Azure Data Factory orchestrierten) [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Diensts auf Basis der eingegangen Daten Vorhersagen über die Restlebensdauer eines bestimmten Flugzeugtriebwerks. 
+Treffen Sie mithilfe des (von Azure Data Factory orchestrierten) [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/)-Diensts basierend auf den erhaltenen Daten Vorhersagen über die Restlebensdauer eines bestimmten Flugzeugtriebwerks. 
 
-## <a name="data-publishing"></a>**Veröffentlichung der Daten**
-### <a name="azure-sql-database-service"></a>Azure SQL-Datenbankdienst
-Mit dem (von Azure Data Factory orchestrierten) [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)-Dienst speichern Sie die von Azure Machine Learning empfangenen Vorhersagen zur späteren Nutzung im [Power BI](https://powerbi.microsoft.com)-Dashboard.
+## <a name="data-publishing"></a>Veröffentlichung der Daten
+### <a name="azure-sql-database"></a>Azure SQL-Datenbank
+Mit dem [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/)-Dienst speichern Sie die von Azure Machine Learning empfangenen Vorhersagen, die dann im [Power BI](https://powerbi.microsoft.com)-Dashboard genutzt werden.
 
-## <a name="data-consumption"></a>**Nutzung der Daten**
+## <a name="data-consumption"></a>Nutzung der Daten
 ### <a name="power-bi"></a>Power BI
-Zeigen Sie mit dem [Power BI](https://powerbi.microsoft.com)-Dienst ein Dashboard an, das die von [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) bereitgestellten Aggregationen und Warnungen sowie die Vorhersagen zur Restlebensdauer enthält, die von [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) erstellt und in [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) gespeichert wurden.
+Zeigen Sie mit [Power BI](https://powerbi.microsoft.com) ein Dashboard an, das die von [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) bereitgestellten Aggregationen und Warnungen sowie die Vorhersagen zur Restlebensdauer enthält, die von [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) erstellt und in [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/) gespeichert wurden.
 
-## <a name="how-to-bring-in-your-own-data"></a>**Einbringen Ihrer eigenen Daten**
+## <a name="how-to-bring-in-your-own-data"></a>Einbringen Ihrer eigenen Daten
 Dieser Abschnitt beschreibt, wie Sie Ihre eigenen Daten zu Azure übertragen und in welchen Bereichen die in diese Architektur eingebrachten eigenen Daten Änderungen erfordern.
 
 Es ist unwahrscheinlich, dass Ihr Dataset mit dem für diese Vorlage verwendeten Dataset aus dem [Turbofan Engine Degradation Simulation Data Set](http://ti.arc.nasa.gov/tech/dash/pcoe/prognostic-data-repository/#turbofan) übereinstimmt. Daher ist es entscheidend, dass Sie Ihre Daten und die Anforderungen genau verstehen. Nur dann können Sie diese Vorlage so abändern, dass sie mit Ihren eigenen Daten ordnungsgemäß funktioniert. 
@@ -81,7 +86,7 @@ Es ist unwahrscheinlich, dass Ihr Dataset mit dem für diese Vorlage verwendeten
 In den folgenden Abschnitten werden die Teile der Vorlage erläutert, die beim Verwenden eines neuen Datasets geändert werden müssen.
 
 ### <a name="azure-event-hub"></a>Azure Event Hub
-Der Azure Event Hub-Dienst ist sehr allgemein angelegt. Daten können im CSV-Format oder im JSON-Format an den Hub gesendet werden. Im Azure Event Hub wird keine spezielle Verarbeitung ausgeführt, aber es ist wichtig, dass Sie die an ihn übermittelten Daten wirklich verstehen.
+Azure Event Hub ist sehr allgemein angelegt. Daten können im CSV-Format oder im JSON-Format an den Hub gesendet werden. Im Azure Event Hub wird keine spezielle Verarbeitung ausgeführt, aber es ist wichtig, dass Sie die an ihn übermittelten Daten wirklich verstehen.
 
 In diesem Dokument wird nicht beschrieben, wie Sie Daten erfassen. Es ist jedoch einfach, Ereignisse oder Daten über die Event Hub-APIs an Azure Event Hub zu senden.
 
@@ -142,7 +147,7 @@ Das für diese Lösungsvorlage verwendete [Azure Machine Learning](https://azure
 
 Informationen zum Erstellen des Azure Machine Learning-Experiments finden Sie unter [Vorbeugende Wartung: Schritt 1 von 3, Datenvorbereitung und Featureentwicklung](http://gallery.cortanaanalytics.com/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2).
 
-## <a name="monitor-progress"></a>**Überwachen des Fortschritts**
+## <a name="monitor-progress"></a>Überwachen des Fortschritts
 Nach dem Start des Daten-Generators füllt sich die Pipeline mit Daten, und die verschiedenen Komponenten der Lösung beginnen, im Anschluss an die von der Data Factory aufgerufenen Befehle in Aktion zu treten. Es gibt zwei Möglichkeiten zum Überwachen der Pipeline.
 
 1. Einer der Stream Analytics-Aufträge schreibt die unformatierten eingehenden Daten in Blobspeicher. Wenn Sie auf dem Bildschirm, auf dem Sie die Lösung erfolgreich bereitgestellt haben, auf die Komponente Blob Storage und anschließend im rechten Bereich auf „Öffnen“ klicken, gelangen Sie zum [Azure-Portal](https://portal.azure.com/). Klicken Sie dort auf „Blobs“. Im nächsten Bereich sehen Sie eine Liste mit Containern. Klicken Sie auf **maintenancesadata**. Im nächsten Bereich befindet sich der Ordner **rawdata**. Innerhalb des Ordners „rawdata“ befinden sich Ordner mit Namen wie „hour=17“ und „hour=18“. Das Vorhandensein dieser Ordner zeigt an, dass die unformatierten Daten auf Ihrem Computer erstellt und im Blobspeicher gespeichert wurden. In diesen Ordnern sollten CSV-Dateien mit Größen in MB angezeigt werden.
@@ -152,7 +157,7 @@ Nach dem Start des Daten-Generators füllt sich die Pipeline mit Daten, und die 
    
     Hier können Sie auf „Neue Abfrage“ klicken und dann die Anzahl der Zeilen (z. B. „select count(*)“ aus PMResult) abfragen. Wenn Ihre Datenbank wächst, nimmt auch die Anzahl der Zeilen in der Tabelle zu.
 
-## <a name="power-bi-dashboard"></a>**Power BI-Dashboard**
+## <a name="power-bi-dashboard"></a>Power BI-Dashboard
 
 Richten Sie ein Power BI-Dashboard ein, um Ihre Daten aus Azure Stream Analytics zu visualisieren („heiße Daten“) und die Batchvorhersageergebnisse aus Azure Machine Learning anzuzeigen („kalte Daten“).
 
@@ -227,10 +232,10 @@ In den folgenden Schritten wird erklärt, wie Sie die Datenausgabe aus den beim 
    * Klicken Sie in der oberen rechten Ecke dieses Liniendiagramms auf **Visualisierung anheften** . Möglicherweise wird ein Fenster „An das Dashboard anheften“ angezeigt, in dem Sie ein Dashboard auswählen können. Wählen Sie „Predictive Maintenance-Demo“ aus, und klicken Sie dann auf „Anheften“.
    * Zeigen Sie mit dem Mauszeiger auf diese Kachel auf dem Dashboard, klicken Sie in der oberen rechten Ecke auf das Symbol „Bearbeiten“, und ändern Sie den Titel in „Flottenansicht von Sensor 11 im Vergleich zu Schwellenwert 48,26“ und den Untertitel in „Flottendurchschnitt im Zeitverlauf“.
 
-## <a name="how-to-delete-your-solution"></a>**Löschen der Lösung**
-Stellen Sie sicher, dass Sie den Datengenerator beenden, wenn Sie die Lösung nicht aktiv nutzen, da das Ausführen des Datengenerators höhere Kosten verursacht. Löschen Sie die Lösung, wenn Sie sie nicht verwenden. Beim Löschen Ihrer Lösung werden alle dafür in Ihrem Abonnement bereitgestellten Komponenten gelöscht. Klicken Sie zum Löschen der Lösung im linken Bereich der Lösungsvorlage auf deren Namen und dann auf „Löschen“.
+## <a name="delete-your-solution"></a>Löschen der Lösung
+Stellen Sie sicher, dass Sie den Datengenerator beenden, wenn Sie die Lösung nicht aktiv nutzen, da das Ausführen des Datengenerators höhere Kosten verursacht. Löschen Sie die Lösung, wenn Sie sie nicht verwenden. Beim Löschen Ihrer Lösung werden alle dafür in Ihrem Abonnement bereitgestellten Komponenten gelöscht. Klicken Sie zum Löschen der Lösung im linken Bereich der Lösungsvorlage auf deren Namen und dann auf **Löschen**.
 
-## <a name="cost-estimation-tools"></a>**Kostenschätzungstools**
+## <a name="cost-estimation-tools"></a>Kostenschätzungstools
 Es stehen zwei Tools zur Verfügung, mit denen Sie die Gesamtkosten zum Ausführen der Lösungsvorlage für vorbeugende Wartung in der Luft- und Raumfahrt im Rahmen Ihres Abonnements ermitteln können:
 
 * [Microsoft Azure-Kostenschätzungstool (online)](https://azure.microsoft.com/pricing/calculator/)
