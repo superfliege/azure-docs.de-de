@@ -1,6 +1,6 @@
 ---
 title: "MFA SDK für benutzerdefinierte Apps | Microsoft Docs"
-description: "Dieser Artikel erläutert, wie Sie das Azure MFA SDK herunterladen und verwenden, um die Überprüfung in zwei Schritten für Ihre benutzerdefinierten Apps zu aktivieren."
+description: "Dieser Artikel erläutert, wie Sie das Azure MFA SDK herunterladen und verwenden, um die zweistufige Überprüfung für Ihre benutzerdefinierten Apps zu aktivieren."
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 11/29/2017
 ms.author: joflore
-ms.openlocfilehash: c9be948a7328b0f535d8683e6cdc695a01654a94
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: dc12037928d5cc62c35535d45cf674865e3bfe25
+ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 11/30/2017
 ---
 # <a name="building-multi-factor-authentication-into-custom-apps-sdk"></a>Erstellen von Multi-Factor Authentication in benutzerdefinierten Apps (SDK)
 
 > [!IMPORTANT]
 > Die Einstellung des Azure Multi-Factor Authentication Software Development Kit (SDK) wurde angekündigt. Dieses Feature wird für neue Kunden nicht mehr unterstützt. Aktuelle Kunden können das SDK bis zum 14. November 2018 weiterhin nutzen. Nach diesem Zeitpunkt führen Aufrufe an das SDK zu Fehlern. 
 
-Mit dem Software Development Kit (SDK) für Azure Multi-Factor Authentication können Sie die Überprüfung in zwei Schritten direkt in den Anmelde- oder Transaktionsprozessen von Anwendungen in Ihrem Azure AD-Mandanten erstellen.
+Mit dem Software Development Kit (SDK) für Azure Multi-Factor Authentication können Sie die zweistufige Überprüfung direkt in den Anmelde- oder Transaktionsprozessen von Anwendungen in Ihrem Azure AD-Mandanten erstellen.
 
-Das Multi-Factor Authentication SDK ist für C#, Visual Basic (.NET), Java, Perl, PHP und Ruby verfügbar. Das SDK bietet einen einfachen Wrapper für die Überprüfung in zwei Schritten. Es enthält alles, was Sie zum Schreiben des Codes benötigen, einschließlich kommentierter Quellcodedateien, Beispieldateien und einer detaillierten Infodatei. Jedes SDK enthält auch ein Zertifikat und einen privaten Schlüssel zum Verschlüsseln von Transaktionen, das/der für Ihren Multi-Factor Authentication-Anbieter eindeutig ist. Solange Sie einen Anbieter haben, können Sie das SDK in so vielen Sprachen und Formaten herunterladen, wie Sie benötigen.
+Das Multi-Factor Authentication SDK ist für C#, Visual Basic (.NET), Java, Perl, PHP und Ruby verfügbar. Das SDK bietet einen einfachen Wrapper für die zweistufige Überprüfung. Es enthält alles, was Sie zum Schreiben des Codes benötigen, einschließlich kommentierter Quellcodedateien, Beispieldateien und einer detaillierten Infodatei. Jedes SDK enthält auch ein Zertifikat und einen privaten Schlüssel zum Verschlüsseln von Transaktionen, das/der für Ihren Multi-Factor Authentication-Anbieter eindeutig ist. Solange Sie einen Anbieter haben, können Sie das SDK in so vielen Sprachen und Formaten herunterladen, wie Sie benötigen.
 
 Die Struktur der APIs im Multi-Factor Authentication SDK ist einfach. Sie führen einen einzelnen Funktionsaufruf an eine API aus und übergeben die Parameter für die Multi-Factor-Option (z.B. den Überprüfungsmodus) und die Benutzerdaten (z.B. die Telefonnummer, die angerufen werden soll, oder die PIN-Nummer, die überprüft werden soll). Die APIs übersetzen den Funktionsaufruf in Webdiensteanforderungen an den cloudbasierten Azure Multi-Factor Authentication-Dienst. Alle Aufrufe müssen einen Verweis auf das private Zertifikat enthalten, das in jedem SDK enthalten ist.
 

@@ -1,6 +1,6 @@
 ---
 title: Ermitteln einer Route mit Azure Location Based Services | Microsoft-Dokumentation
-description: "Route zu einem gewünschten Ort in der Nähe mit Azure Location Based Services"
+description: "Route zu einem Point of Interest in der Nähe mit Azure Location Based Services"
 services: location-based-services
 keywords: 
 author: dsk-2015
@@ -18,17 +18,17 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/28/2017
 ---
-# <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Route zu einem gewünschten Ort in der Nähe mit Azure Location Based Services
+# <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Route zu einem Point of Interest in der Nähe mit Azure Location Based Services
 
-In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Location Based Services-Konto und das Routendienst-SDK verwenden, um die Route zum gewünschten Ort zu ermitteln. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Location Based Services-Konto und das Routendienst-SDK verwenden, um die Route zum Point of Interest zu ermitteln. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Beschaffen von Adressenkoordinaten
-> * Abfragen des Routendiensts nach der Wegbeschreibung zum gewünschten Ort
+> * Abfragen des Routendiensts nach der Wegbeschreibung zum Point of Interest
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie vor dem Fortfahren sicher, dass Sie [Ihr Azure Location Based Services-Konto erstellen](./tutorial-search-location.md#createaccount) und [den Abonnementschlüssel für Ihr Konto beschaffen](./tutorial-search-location.md#getkey). Sie können sich auch darüber informieren, wie Sie die Kartensteuerelement- und Suchdienst-APIs einsetzen können, die im Tutorial [Suchen nach einem gewünschten Ort in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) beschrieben werden.
+Stellen Sie vor dem Fortfahren sicher, dass Sie [Ihr Azure Location Based Services-Konto erstellen](./tutorial-search-location.md#createaccount) und [den Abonnementschlüssel für Ihr Konto beschaffen](./tutorial-search-location.md#getkey). Sie können sich auch darüber informieren, wie Sie die Kartensteuerelement- und Suchdienst-APIs einsetzen können, die im Tutorial [Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) beschrieben werden.
 
 
 <a id="getcoordinates"></a>
@@ -120,7 +120,7 @@ Führen Sie die folgenden Schritte zur Erstellung einer statischen HTML-Seite au
                 icon: "pin-blue"
             });
     ```
-    Mit diesem Code werden zwei [GeoJSON-Objekte](https://en.wikipedia.org/wiki/GeoJSON) erstellt, die für den Start- bzw. Endpunkt der Route stehen. Der Endpunkt ist die Kombination aus Breiten- und Längengrad für eine der *Tankstellen*, nach denen im vorherigen Tutorial [Suchen nach einem gewünschten Ort in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) gesucht wurde.
+    Mit diesem Code werden zwei [GeoJSON-Objekte](https://en.wikipedia.org/wiki/GeoJSON) erstellt, die für den Start- bzw. Endpunkt der Route stehen. Der Endpunkt ist die Kombination aus Breiten- und Längengrad für eine der *Tankstellen*, nach denen im vorherigen Tutorial [Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) gesucht wurde.
 
 6. Fügen Sie den folgenden JavaScript-Code hinzu, um der Karte die Pins für den Start- und Endpunkt hinzuzufügen:
 
@@ -148,7 +148,7 @@ Führen Sie die folgenden Schritte zur Erstellung einer statischen HTML-Seite au
 
 <a id="getroute"></a>
 
-## <a name="query-route-service-for-directions-to-point-of-interest"></a>Abfragen des Routendiensts nach der Wegbeschreibung zum gewünschten Ort
+## <a name="query-route-service-for-directions-to-point-of-interest"></a>Abfragen des Routendiensts nach der Wegbeschreibung zum Point of Interest
 
 In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure Location Based Services verwenden, um die Routen von einem bestimmten Startpunkt zu einem Ziel zu ermitteln. Der Routendienst stellt APIs zum Planen der schnellsten, kürzesten oder umweltfreundlichsten Route zwischen zwei Orten in Abhängigkeit der Echtzeit-Verkehrslage bereit. Benutzer können zukünftige Routen planen, indem sie die umfassende Azure-Datenbank zum Verkehrsverlauf nutzen und die Routendauern für beliebige Tage und Uhrzeiten vorhersagen. 
 
@@ -199,6 +199,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Beschaffen von Adressenkoordinaten
-> * Abfragen des Routendiensts nach der Wegbeschreibung zum gewünschten Ort
+> * Abfragen des Routendiensts nach der Wegbeschreibung zum Point of Interest
 
-Informieren Sie sich als Nächstes im Tutorial [Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Location Based Services](./tutorial-prioritized-routes.md) darüber, wie Sie Azure Location Based Services verwenden, um Routen zum gewünschten Ort basierend auf der Fortbewegungsart zu priorisieren. 
+Informieren Sie sich als Nächstes im Tutorial [Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Location Based Services](./tutorial-prioritized-routes.md) darüber, wie Sie Azure Location Based Services verwenden, um Routen zum Point of Interest basierend auf der Fortbewegungsart zu priorisieren. 

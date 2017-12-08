@@ -20,7 +20,7 @@ ms.lasthandoff: 11/28/2017
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Location Based Services
 
-In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Location Based Services-Konto und das Routendienst-SDK verwenden, um die Route zum gewünschten Ort je nach Fortbewegungsart zu ermitteln. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Location Based Services-Konto und das Routendienst-SDK verwenden, um die Route zum Point of Interest je nach Fortbewegungsart zu ermitteln. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Konfigurieren der Routendienstabfrage
@@ -28,7 +28,7 @@ In diesem Tutorial wird veranschaulicht, wie Sie Ihr Azure Location Based Servic
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie vor dem Fortfahren sicher, dass Sie [Ihr Azure Location Based Services-Konto erstellen](./tutorial-search-location.md#createaccount) und [den Abonnementschlüssel für Ihr Konto beschaffen](./tutorial-search-location.md#getkey). Sie können sich auch darüber informieren, wie Sie die Kartensteuerelement- und Suchdienst-APIs einsetzen können, die im Tutorial [Suchen nach einem gewünschten Ort in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) beschrieben wurden. Im Tutorial [Route zu einem gewünschten Ort in der Nähe mit Azure Location Based Services](./tutorial-route-location.md) werden die Grundlagen der Nutzung von Routendienst-APIs beschrieben.
+Stellen Sie vor dem Fortfahren sicher, dass Sie [Ihr Azure Location Based Services-Konto erstellen](./tutorial-search-location.md#createaccount) und [den Abonnementschlüssel für Ihr Konto beschaffen](./tutorial-search-location.md#getkey). Sie können sich auch darüber informieren, wie Sie die Kartensteuerelement- und Suchdienst-APIs einsetzen können, die im Tutorial [Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) beschrieben wurden. Im Tutorial [Route zu einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-route-location.md) werden die Grundlagen der Nutzung von Routendienst-APIs beschrieben.
 
 
 <a id="queryroutes"></a>

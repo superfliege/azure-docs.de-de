@@ -1,6 +1,6 @@
 ---
 title: Suchen mit Azure Location Based Services | Microsoft-Dokumentation
-description: "Suchen nach einem gewünschten Ort in der Nähe mit Azure Location Based Services"
+description: "Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services"
 services: location-based-services
 keywords: 
 author: dsk-2015
@@ -18,15 +18,15 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/28/2017
 ---
-# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Suchen nach einem gewünschten Ort in der Nähe mit Azure Location Based Services
+# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services
 
-In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Location Based Services einrichten und anschließend mithilfe der bereitgestellten APIs nach einem gewünschten Ort suchen. In diesem Tutorial lernen Sie Folgendes:
+In diesem Tutorial wird gezeigt, wie Sie ein Konto für Azure Location Based Services einrichten und anschließend mithilfe der bereitgestellten APIs nach einem Point of Interest suchen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen eines Kontos für Azure Location Based Services
 > * Abrufen des Abonnementschlüssels für Ihr Konto
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
-> * Suchen eines gewünschten Orts in der Nähe mithilfe des Suchdiensts
+> * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -142,9 +142,9 @@ Bei der Kartensteuerelement-API von Azure handelt es sich um eine praktische Cli
 
 <a id="usesearch"></a>
 
-## <a name="use-search-service-to-find-nearby-point-of-interest"></a>Suchen eines gewünschten Orts in der Nähe mithilfe des Suchdiensts
+## <a name="use-search-service-to-find-nearby-point-of-interest"></a>Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 
-In diesem Abschnitt wird veranschaulicht, wie mit der Suchdienst-API von Azure Location Based Services ein gewünschter Ort auf Ihrer Karte gesucht wird. Es handelt sich um eine RESTful-API für Entwickler für die Suche nach Adressen, gewünschten Orten und geografischen Informationen. Der Suchdienst ordnet einer bestimmten Adresse Informationen zu Breiten- und Längengrad zu. 
+In diesem Abschnitt wird veranschaulicht, wie mit der Suchdienst-API von Azure Location Based Services ein Point of Interest auf Ihrer Karte gesucht wird. Es handelt sich um eine RESTful-API für Entwickler für die Suche nach Adressen, Points of Interest und geografischen Informationen. Der Suchdienst ordnet einer bestimmten Adresse Informationen zu Breiten- und Längengrad zu. 
 
 1. Öffnen Sie die im vorherigen Abschnitt erstellte Datei **MapSearch.html**, und fügen Sie den folgenden JavaScript-Code zum Block *script* hinzu, um die Funktionen des Suchdiensts nachzuvollziehen. 
     ```HTML/JavaScript
@@ -247,6 +247,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Erstellen eines Kontos für Azure Location Based Services
 > * Abrufen des Abonnementschlüssels für Ihr Konto
 > * Erstellen einer neuen Webseite mit der Kartensteuerelement-API
-> * Suchen eines gewünschten Orts in der Nähe mithilfe des Suchdiensts
+> * Suchen eines Point of Interest in der Nähe mithilfe des Suchdiensts
 
-Fahren Sie mit dem Tutorial [Route to a point of interest using Azure Location Based Services](./tutorial-route-location.md) fort, um zu erfahren, wie Sie mit Azure Location Based Services eine Route zum gewünschten Ort ermitteln. 
+Fahren Sie mit dem Tutorial [Route to a point of interest using Azure Location Based Services](./tutorial-route-location.md) fort, um zu erfahren, wie Sie mit Azure Location Based Services eine Route zum Point of Interest ermitteln. 

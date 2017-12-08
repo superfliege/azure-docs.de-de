@@ -73,4 +73,4 @@ Sie haben nun eine Übersicht über Azure Location Based Services (Vorschauversi
 
 > [!div class="nextstepaction"]
 > [Launch a demo interactive map search using Azure Location Based Services (preview)](quick-demo-map-app.md) (Starten einer interaktiven Demonstration einer Kartensuche mit Azure Location Based Services (Vorschauversion))
-> [Suchen nach einem gewünschten Ort in der Nähe mit Azure Location Based Services](tutorial-search-location.md)
+> [Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services](tutorial-search-location.md)
