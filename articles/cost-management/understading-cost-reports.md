@@ -95,7 +95,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
     - Gebühren für den Kauf von reservierten VM-Instanzen
     - Einige Azure Marketplace-Elemente
 
-  Wählen Sie unter Amortisierung die Option **Amortized cost** (Amortisierte Kosten) oder **Actual Cost** (Ist-Kosten) aus.
+  Wählen Sie unter Amortisierung die Option **Amortized cost** (Amortisierte Kosten) oder **Actual Cost** (Istkosten) aus.
 
 8. **Lösung**
 

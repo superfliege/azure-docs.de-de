@@ -3,21 +3,21 @@ title: Bereitstellen mit Terraform und Bash in Azure Cloud Shell | Microsoft-Dok
 description: Bereitstellen von Azure-Ressourcen mit Terraform in Bash
 services: Azure
 documentationcenter: 
-author: jluk
-manager: timlt
+author: tomarcher
+manager: routlaw
 tags: azure-cloud-shell
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
-ms.author: juluk
-ms.openlocfilehash: 5a9f836bfda554e291c6402877c07ab08e77d5ab
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 11/15/2017
+ms.author: tarcher
+ms.openlocfilehash: c75b5d521dc3eacaf5c5921c35442b1afeb4fa13
+ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 11/16/2017
 ---
 # <a name="terraform-and-bash-in-cloud-shell"></a>Terraform und Bash in Cloud Shell
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie eine Ressourcengruppe mit dem [AzureRM-Anbieter von Terraform](https://www.terraform.io/docs/providers/azurerm/index.html) erstellen. 
@@ -91,7 +91,7 @@ commands will detect it and remind you to do so if necessary.
 
 Der Befehl [terraform init](https://www.terraform.io/docs/commands/init.html) dient zum Initialisieren eines Arbeitsverzeichnisses mit den Terraform-Konfigurationsdateien. `terraform init` ist der erste Befehl, der nach dem Schreiben einer neuen Terraform-Konfiguration oder nach dem Klonen einer vorhandenen Konfiguration aus der Versionskontrolle ausgeführt werden sollte. Der Befehl kann problemlos mehrmals ausgeführt werden.
 
-### <a name="terraform-plan"></a>terraform plan
+### <a name="terraform-plan"></a>Terraform-Plan
 Verwenden Sie `terraform plan`, um eine Vorschau der Ressourcen anzuzeigen, die von der Terraform-Vorlage erstellt werden.
 
 ```

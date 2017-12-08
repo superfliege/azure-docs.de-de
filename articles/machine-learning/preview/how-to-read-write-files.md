@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 2f3ca2e694fd9952319a70477e9887c332b08044
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: f5c75b95d9019c15bb402313ce7407fa9abb81d4
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Beibehalten von Änderungen und Arbeiten mit großen Dateien
-Mit dem Azure Machine Learning-Experimentieren-Dienst können Sie viele verschiedene Ausführungsziele konfigurieren. Einige Ziele sind lokale Ziele, z.B. ein lokaler Computer oder ein Docker-Container auf einem lokalen Computer. Andere Ziele sind Remoteziele, z.B. ein Docker-Container auf einem Remotecomputer oder ein HDInsight-Cluster. Weitere Informationen finden Sie unter [Übersicht über den Azure Machine Learning-Experimentieren-Ausführungsdienst](experiment-execution-configuration.md). 
+Mit dem Azure Machine Learning-Experimentieren-Dienst können Sie viele verschiedene Ausführungsziele konfigurieren. Einige Ziele sind lokale Ziele, z.B. ein lokaler Computer oder ein Docker-Container auf einem lokalen Computer. Andere Ziele sind Remoteziele, z.B. ein Docker-Container auf einem Remotecomputer oder ein HDInsight-Cluster. Weitere Informationen finden Sie unter [Übersicht über den Azure Machine Learning-Experimentieren-Ausführungsdienst](experimentation-service-configuration.md). 
 
 Bevor die Ausführung auf einem Ziel möglich ist, müssen Sie den Projektordner auf das Computeziel kopieren. Dies ist auch bei einer lokalen Ausführung erforderlich, bei der für diesen Zweck ein lokaler temporärer Ordner verwendet wird. 
 
@@ -139,11 +139,11 @@ C:\users\<username>\.azureml\share\<exp_acct_name>\<workspace_name>\<proj_name>\
 ```
 
 >[!NOTE]
->Unabhängig davon, ob es sich um einen lokalen Computekontext oder einen lokalen Docker-Computekontext handelt, ist der Pfad des freigegebenen Ordners auf dem lokalen Datenträger identisch. Dies bedeutet, dass Sie sogar Dateien zwischen einer lokalen Ausführung und einer lokalen Docker-Ausführung freigeben können.
+>Unabhängig davon, ob es sich um einen lokalen Computekontext oder einen lokalen Docker-Computekontext handelt, ist der Pfad des freigegebenen Ordners auf dem lokalen Datenträger identisch. Das bedeutet, dass Sie sogar Dateien zwischen einer lokalen Ausführung und einer lokalen Docker-Ausführung freigeben können.
 
 Sie können Eingabedaten direkt in diesen Ordnern platzieren und erwarten, dass Ihre lokalen Ausführungen oder Docker-Ausführungen diese auf dem Computer abrufen können. Sie können von Ihren lokalen oder Docker-Ausführungen auch Dateien in diesen Ordner schreiben und erwarten, dass die Dateien in diesem Ordner beibehalten werden und somit den Ausführungslebenszyklus überstehen.
 
-Weitere Informationen finden Sie unter [Azure Machine Learning Workbench-Ausführungskonfigurationsdateien](experiment-execution-configuration-reference.md).
+Weitere Informationen finden Sie unter [Azure Machine Learning Workbench-Ausführungskonfigurationsdateien](experimentation-service-configuration-reference.md).
 
 >[!NOTE]
 >Die Umgebungsvariable `AZUREML_NATIVE_SHARE_DIRECTORY` wird in einem HDInsight-Computekontext nicht unterstützt. Es ist aber einfach, das gleiche Ergebnis zu erreichen. Verwenden Sie hierzu explizit einen absoluten Azure-Blobspeicherpfad, um aus dem angefügten Blobspeicher zu lesen bzw. um darin zu schreiben.
@@ -195,5 +195,5 @@ attach_storage_container(spark, "<storage account name>", "<storage key>”)
 Da Azure Machine Learning Skripts durch Kopieren des gesamten Projektordners in den Zielserverkontext ausführt, müssen große Eingabe-, Ausgabe- und zwischengeschaltete Dateien mit großer Sorgfalt behandelt werden. Für große Dateitransaktionen können Sie den speziellen Ordner „outputs“ verwenden. Dies ist der freigegebene Ordner, auf den über die Umgebungsvariable `AZUREML_NATIVE_SHARE_DIRECTORY` oder externen permanenten Speicher zugegriffen werden kann. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Lesen Sie den Artikel [Azure Machine Learning Workbench-Ausführungskonfigurationsdateien](experiment-execution-configuration-reference.md).
+- Lesen Sie den Artikel [Azure Machine Learning Workbench-Ausführungskonfigurationsdateien](experimentation-service-configuration-reference.md).
 - Sehen Sie sich an, wie im Projekt des Tutorials [Classifying Iris](tutorial-classifying-iris-part-1.md) (Klassifizieren von Schwertlilien) der Ordner „outputs“ zum Beibehalten eines trainierten Modells verwendet wird.
