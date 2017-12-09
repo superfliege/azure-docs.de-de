@@ -101,7 +101,6 @@
 
 ## Verwalten von Anwendungen
 ### [Übersicht](service-fabric-application-lifecycle.md)
-### [Die ImageStoreConnectionString-Einstellung](service-fabric-image-store-connection-string.md)
 ### Anwendungsupgrade
 #### [Übersicht](service-fabric-application-upgrade.md)
 #### [Konfiguration](service-fabric-visualstudio-configure-upgrade.md)
@@ -109,6 +108,7 @@
 #### [Datenserialisierung bei Anwendungsupgrades](service-fabric-application-upgrade-data-serialization.md)
 #### [Weiterführende Themen zu Anwendungsupgrades](service-fabric-application-upgrade-advanced.md)
 ### [Übersicht über die Fehleranalyse](service-fabric-testability-overview.md)
+### [Die ImageStoreConnectionString-Einstellung](service-fabric-image-store-connection-string.md)
 
 ## Erstellen und Verwalten von Clustern
 ### [Übersicht](service-fabric-deploy-anywhere.md)
@@ -136,8 +136,6 @@
 #### [Drosselung](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [Dienstverschiebung](service-fabric-cluster-resource-manager-movement-cost.md)
 
-## [Integration in API Management](service-fabric-api-management-overview.md)
-
 ## Überwachen und Diagnostizieren
 ### [Überwachen und Diagnostizieren von Anwendungen](service-fabric-diagnostics-overview.md)
 ### Generieren von Ereignissen
@@ -164,13 +162,14 @@
 #### [Analysieren von Ereignissen mit OMS](service-fabric-diagnostics-event-analysis-oms.md)
 ### [Behandeln von Problemen mit dem lokalen Cluster](service-fabric-troubleshoot-local-cluster-setup.md)
 
+## [Integration in API Management](service-fabric-api-management-overview.md)
+
 # Anleitungen
 ## Einrichten der Entwicklungsumgebung
 ### [Windows](service-fabric-get-started.md)
 ### [Linux](service-fabric-get-started-linux.md)
 ### [Mac OS](service-fabric-get-started-mac.md)
-
-## [Einrichten der Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
+### [Einrichten der Service Fabric-Befehlszeilenschnittstelle](service-fabric-cli.md)
 
 ## Erstellen einer Anwendung
 ### [Erstellen Ihrer ersten C#-App in Visual Studio](service-fabric-create-your-first-application-in-visual-studio.md)
