@@ -205,11 +205,6 @@
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
 #### [Problembehandlung](active-directory-application-proxy-troubleshoot.md)
-#### Verwenden des klassischen Portals
-##### [Herunterladen von Connectors](application-proxy-enable-classic-portal.md)
-##### [Veröffentlichen von Apps](active-directory-application-proxy-publish.md)
-##### [Verwenden von Connectors](active-directory-application-proxy-connectors-azure-portal.md)
-##### [Bedingter Zugriff](application-proxy-enable-remote-access-sharepoint.md)
 
 ### Verwalten von Unternehmens-Apps
 #### [Zuweisen von Benutzern](active-directory-coreapps-assign-user-azure-portal.md)
@@ -332,7 +327,7 @@
 
 
 ## [Bereitstellen von AD FS in Azure](active-directory-aadconnect-azure-adfs.md)
-### [Hohe Verfügbarkeit](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
+### [Hochverfügbarkeit](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [Ändern des Signaturhashalgorithmus](active-directory-federation-sha256-guidance.md)
 
 ## [Problembehandlung](active-directory-troubleshooting-support-howto.md)
