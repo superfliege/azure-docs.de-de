@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: a96f64e41b090cb60bbbb007a3913fd23ce8f609
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59acc48870adf15f59391de1cba9596744a747a6
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="set-up-the-iot-hub-device-provisioning-service-preview-with-the-azure-portal"></a>Einrichten des IoT Hub Device Provisioning-Diensts (Vorschauversion) mit dem Azure-Portal
+# <a name="set-up-the-iot-hub-device-provisioning-service-with-the-azure-portal"></a>Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal
 
 Diese Schritte veranschaulichen, wie Sie die Azure-Cloudressourcen im Portal für die Bereitstellung Ihrer Geräte einrichten. Dies umfasst die Erstellung Ihres IoT Hub, die Erstellung eines neuen IoT Hub Device Provisioning-Diensts und die Verknüpfung dieser beiden Dienste. 
 
@@ -46,7 +46,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 
-2. Verwenden Sie die Option *Marketplace durchsuchen*, um den Marketplace nach dem **Device Provisioning-Dienst** zu durchsuchen. Wählen Sie den **IoT Device Provisioning-Dienst (Vorschauversion)** aus, und klicken Sie auf die Schaltfläche **Erstellen**. 
+2. Verwenden Sie die Option *Marketplace durchsuchen*, um den Marketplace nach dem **Device Provisioning-Dienst** zu durchsuchen. Wählen Sie den **IoT Device Provisioning-Dienst** aus, und klicken Sie auf die Schaltfläche **Erstellen**. 
 
 3. Geben Sie Ihrer Instanz des Device Provisioning-Diensts einen **Namen**. Wählen Sie das Abonnement aus, das für diese Instanz verwendet werden soll, und geben Sie eine neue oder vorhandene Ressourcengruppe an. Wählen Sie den Standort aus. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 

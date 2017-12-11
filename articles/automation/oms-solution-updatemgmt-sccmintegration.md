@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04540524f83e367f92912171ddc55b6e6f82f80e
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
-# <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>Integrieren von System Center Configuration Manager und OMS-Updateverwaltung (Vorschau)
+# <a name="integrate-system-center-configuration-manager-with-oms-update-management"></a>Integrieren von System Center Configuration Manager und OMS-Updateverwaltung
 
 Kunden, die in System Center Configuration Manager investiert haben, um PCs, Server und Mobilgeräte zu verwalten, profitieren auch von der Leistungsstärke und dem Funktionsumfang dieser Lösung bei der Verwaltung von Softwareupdates im Rahmen des Softwareupdateverwaltungs-Zyklus.  
 
@@ -42,12 +42,13 @@ Wie Sie die in Azure IaaS gehosteten Clients mit Ihrer vorhandenen Configuration
 Führen Sie folgende Schritte aus, wenn Sie Updatebereitstellungen weiterhin über Configuration Manager verwalten möchten.  OMS stellt eine Verbindung mit Configuration Manager her, um Updates auf den Clientcomputern anzuwenden, die mit Ihrem Log Analytics-Arbeitsbereich verbunden sind. Die Updateinhalte sind im Cache der Clientcomputer verfügbar, so als würde die Bereitstellung von Configuration Manager verwaltet.  
 
 1. Erstellen Sie mithilfe des unter [Bereitstellen von Softwareupdates](https://docs.microsoft.com/en-us/sccm/sum/deploy-use/deploy-software-updates) beschriebenen Prozesses eine Softwareupdatebereitstellung von der Top-Level-Website in Ihrer Configuration Manager-Hierarchie.  Die einzige Einstellung, die anders konfiguriert werden muss als bei einer Standardbereitstellung, ist die Option **Softwareupdates nicht installieren**, um das Downloadverhalten des Bereitstellungspakets zu steuern. Dieses Verhalten wird von der OMS-Updateverwaltungslösung durch Erstellen einer geplanten Updatebereitstellung im nächsten Schritt gesteuert.  
-2. Wählen Sie im Azure-Portal im Bildschirm **Automation-Konto** Ihr Automation-Konto aus, und erstellen Sie eine Variable vom Typ „boolesch“ mit dem Namen **UseOMSForSCCMUpdates** und dem Wert **true**. Eine Anleitung finden Sie unter [So erstellen Sie eine neue Variable über das Azure-Portal](../automation/automation-variables.md#to-create-a-new-variable-with-the-azure-portal).
-3. Öffnen Sie im OMS-Portal das Dashboard der Updateverwaltung.  Erstellen Sie anhand der Schritte in [Erstellen einer Updatebereitstellung](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) eine neue Bereitstellung, und wählen Sie aus der Dropdownliste eine geeignete Configuration Manager-Sammlung aus, die als OMS-Computergruppe dargestellt wird.  Berücksichtigen Sie dabei die folgenden wichtigen Punkte:
+
+1. Öffnen Sie im OMS-Portal das Dashboard der Updateverwaltung.  Erstellen Sie anhand der Schritte in [Erstellen einer Updatebereitstellung](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment) eine neue Bereitstellung, und wählen Sie aus der Dropdownliste eine geeignete Configuration Manager-Sammlung aus, die als OMS-Computergruppe dargestellt wird.  Berücksichtigen Sie dabei die folgenden wichtigen Punkte:
     1. Wenn in der ausgewählten Configuration Manager-Gerätesammlung ein Wartungsfenster definiert ist, verwenden die Elemente der Sammlung dieses Fenster anstelle der Einstellung **Dauer**, die in der geplanten Bereitstellung in OMS definiert ist.
-    2. Elemente der Zielsammlung müssen über eine Verbindung mit dem Internet verfügen (entweder direkt, über einen Proxyserver oder über das OMS-Gateway).  
+    1. Elemente der Zielsammlung müssen über eine Verbindung mit dem Internet verfügen (entweder direkt, über einen Proxyserver oder über das OMS-Gateway).  
 
 Nach Abschluss der Updatebereitstellung mit der OMS-Lösung installieren die Zielcomputer, die Mitglieder der ausgewählten Computergruppe sind, die Updates zum geplanten Zeitpunkt aus ihrem lokalen Clientcache.  Sie können den [Status der Updatebereitstellung anzeigen](../operations-management-suite/oms-solution-update-management.md#viewing-update-deployments), um die Ergebnisse Ihrer Bereitstellung zu überwachen.  
+
 
 ### <a name="manage-software-updates-from-oms"></a>Verwalten von Softwareupdates über OMS
 

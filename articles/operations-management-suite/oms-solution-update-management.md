@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/27/2017
-ms.author: eslesar
-ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/01/2017
+ms.author: magoedte;eslesar
+ms.openlocfilehash: 668065933745168c88a1f4bf755f1adc0cc31d7f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="update-management-solution-in-oms"></a>Lösung für die Updateverwaltung in OMS
 
@@ -57,7 +57,7 @@ Sie können Softwareupdates auf Computern bereitstellen und installieren, für d
 Wenn die Datums- bzw. Uhrzeitangabe der Updatebereitstellung erreicht ist, führt der Zielcomputer die Bereitstellung parallel aus.  Zuerst wird ein Scanvorgang durchgeführt, um sicherzustellen, dass die Updates weiterhin erforderlich sind, und anschließend werden sie installiert.  Beachten Sie folgenden wichtigen Hinweis: Für WSUS-Clientcomputer schlägt die Updatebereitstellung fehl, wenn die Updates in WSUS nicht genehmigt sind.  Die Ergebnisse der angewendeten Updates werden an OMS weitergeleitet, damit sie in den Dashboards verarbeitet und zusammengefasst werden können (oder per Ereignissuche).     
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Die Lösung unterstützt die Durchführung von Updatebewertungen für Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2008 R2 SP1 und höher.  Server Core- und Nano Server-Installationsoptionen werden nicht unterstützt.
+* Die Lösung unterstützt die Durchführung von Updatebewertungen für Windows Server 2008 und höher und Updatebereitstellungen für Windows Server 2008 R2 SP1 und höher.  Nano Server wird nicht unterstützt.
 
     > [!NOTE]
     > Damit die Bereitstellung von Updates für Windows Server 2008 R2 SP1 unterstützt wird, sind .NET Framework 4.5 und WMF 5.0 oder höher erforderlich.

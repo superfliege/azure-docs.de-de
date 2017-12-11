@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/04/2017
 ms.author: ryanwi
-ms.openlocfilehash: a4bada3c099e348e2aa188fe08a67ef170ad50ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70d365910569a2acb1c230c803fdfca5cb6b35af
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>Erstellen Ihrer ersten Anwendung für einen zustandsbehafteten zuverlässigen Service Fabric-Dienst mit C#
 
@@ -84,7 +84,7 @@ Sobald die Anwendung gestartet wird, startet Visual Studio automatisch die **Dia
 
 In der verwendeten Vorlage für den zustandsbehafteten Dienst wird einfach ein Zählerwert angezeigt, der in der `RunAsync`-Methode von **MyStatefulService.cs** inkrementiert wird.
 
-Erweitern Sie eines der Ereignisse, um weitere Details anzuzeigen, einschließlich des Knotens, in dem der Code ausgeführt wird. In diesem Fall ist es „\_Node\_2“, aber dies kann auf Ihrem Computer ggf. anders sein.
+Erweitern Sie eines der Ereignisse, um weitere Details anzuzeigen, einschließlich des Knotens, in dem der Code ausgeführt wird. In diesem Fall ist es „\_Node\_0“. Auf Ihrem Computer kann sich der Wert allerdings unterscheiden.
    
 ![Detail der Diagnoseereignisanzeige][6]
 

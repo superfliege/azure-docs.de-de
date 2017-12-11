@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: 2b4d04af7fe7a40a1d907a06ab8772f20956bc19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Häufig gestellte Fragen zu Azure Machine Learning: Abrechnung, Funktionen, Einschränkungen und Support
 Hier sind einige häufig gestellte Fragen (FAQs) und die entsprechenden Antworten zu Azure Machine Learning aufgeführt. Bei Azure Machine Learning handelt es sich um einen Clouddienst zum Entwickeln von Vorhersagemodellen und Operationalisieren von Lösungen mithilfe von Webdiensten. Diese FAQs liefern Antworten zur Verwendung des Diensts, z.B. in Bezug auf das Abrechnungsmodell, Funktionen, Einschränkungen und den Support.
@@ -230,7 +230,7 @@ Weitere Informationen finden Sie unter [Programmgesteuertes erneutes Trainieren 
 
 **Wie überwache ich meinen Webdienst in der Produktionsumgebung?**
 
-Nachdem Sie ein Vorhersagemodell bereitgestellt haben, können Sie es über das klassische Azure-Portal (nur klassische Webdienste) oder das Azure Machine Learning-Webdienste-Portal überwachen. Jeder bereitgestellte Dienst hat ein eigenes Dashboard mit Überwachungsinformationen für den jeweiligen Dienst. Weitere Informationen dazu, wie Sie bereitgestellte Webdienste verwalten, finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning-Webdienste-Portal](manage-new-webservice.md) und [Verwalten eines Azure Machine Learning-Arbeitsbereichs](manage-workspace.md).
+Nachdem Sie ein Vorhersagemodell bereitgestellt haben, können Sie es über das Portal der Azure Machine Learning-Webdienste überwachen. Jeder bereitgestellte Dienst hat ein eigenes Dashboard mit Überwachungsinformationen für den jeweiligen Dienst. Weitere Informationen dazu, wie Sie bereitgestellte Webdienste verwalten, finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning-Webdienste-Portal](manage-new-webservice.md) und [Verwalten eines Azure Machine Learning-Arbeitsbereichs](manage-workspace.md).
 
 **Kann ich die Ausgabe meines RRS/BES an einer Stelle einsehen?**
 
@@ -285,7 +285,7 @@ Nein.
 ## <a name="security-and-availability"></a>Sicherheit und Verfügbarkeit
 **Wer hat standardmäßig Zugriff auf den HTTP-Endpunkt für den Webdienst? Wie kann ich den Zugriff auf den Endpunkt einschränken?**
 
-Nach der Bereitstellung eines Webdiensts wird ein Standardendpunkt für den Dienst erstellt. Der Standardendpunkt kann über seinen API-Schlüssel aufgerufen werden. Sie können zusätzliche Endpunkte mit eigenen Schlüsseln im klassischen Azure-Portal oder programmgesteuert mithilfe der APIs der Webdienstverwaltung hinzufügen. Zugriffsschlüssel sind erforderlich, um Aufrufe für den Webdienst durchzuführen. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).
+Nach der Bereitstellung eines Webdiensts wird ein Standardendpunkt für den Dienst erstellt. Der Standardendpunkt kann über seinen API-Schlüssel aufgerufen werden. Sie können zusätzliche Endpunkte mit eigenen Schlüsseln über das Webdiensteportal oder programmgesteuert mithilfe der APIs der Webdienstverwaltung hinzufügen. Zugriffsschlüssel sind erforderlich, um Aufrufe für den Webdienst durchzuführen. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).
 
 **Was passiert, wenn mein Azure-Speicherkonto nicht gefunden werden kann?**
 
@@ -297,7 +297,7 @@ Wenn Sie das Speicherkonto versehentlich löschen, können Sie es mit identische
 
 In Machine Learning Studio ist ein vom Benutzer bereitgestelltes Azure-Speicherkonto zum Speichern von temporären Daten beim Ausführen des Workflows erforderlich. Dieses Speicherkonto wird für Machine Learning Studio beim Erstellen des Arbeitsbereichs zur Verfügung gestellt, und die Zugriffsschlüssel werden diesem Arbeitsbereich zugewiesen. Wenn Zugriffsschlüssel nach dem Erstellen des Arbeitsbereichs geändert werden, kann dieser Arbeitsbereich nicht mehr auf das Speicherkonto zugreifen. Er funktioniert nicht mehr, und alle in diesem Arbeitsbereich enthaltenen Experimente schlagen fehl.
 
-Wenn Sie Zugriffsschlüssel für Speicherkonten geändert haben, müssen Sie die Zugriffsschlüssel im Arbeitsbereich über das klassische Azure-Portal neu synchronisieren.  
+Wenn Sie Zugriffsschlüssel für Speicherkonten geändert haben, müssen Sie die Zugriffsschlüssel im Arbeitsbereich über das Azure-Portal neu synchronisieren.  
 
 ## <a name="support-and-training"></a>Support und Lernmaterial
 **Wo erhalte ich Lernmaterial für Azure Machine Learning?**
@@ -370,7 +370,7 @@ Resource Manager-basierte Webdienste verfügen über mehrere Ebenen (Tarife), di
 
 Der Free-Tarif von Machine Learning erfordert keinen separaten Speicher und lässt diesen nicht zu. Für den Standard-Tarif von Machine Learning benötigen Benutzer ein Azure-Speicherkonto. Azure Storage [wird separat abgerechnet](https://azure.microsoft.com/pricing/details/storage/).
 
-**Wird für Machine Learning die hohe Verfügbarkeit unterstützt?**
+**Wird für Machine Learning Hochverfügbarkeit unterstützt?**
 
 Ja. Ausführliche Informationen und eine Beschreibung der Vereinbarung zum Servicelevel (SLA) finden Sie unter [Machine Learning Preise](https://azure.microsoft.com/en-us/pricing/details/machine-learning/).
 
@@ -509,7 +509,7 @@ Dazu benötigen Sie nur ein Microsoft-Konto. Wechseln Sie zur [Azure Machine Lea
 
 **Wie registriere ich mich für den Standard-Tarif von Azure Machine Learning?**
 
-Zunächst benötigen Sie Zugriff auf ein Azure-Abonnement, um einen Machine Learning-Arbeitsbereich vom Typ „Standard“ erstellen zu können. Sie können sich für ein 30-tägiges, kostenloses Azure-Testabonnement registrieren und später ein Upgrade auf ein kostenpflichtiges Azure-Abonnement durchführen oder direkt ein kostenpflichtiges Azure-Abonnement erwerben. Sobald Sie Zugriff auf das Abonnement haben, können Sie über das klassische Microsoft Azure-Portal einen Machine Learning-Arbeitsbereich erstellen. Lesen Sie die [Schritt-für-Schritt-Anleitungen](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
+Zunächst benötigen Sie Zugriff auf ein Azure-Abonnement, um einen Machine Learning-Arbeitsbereich vom Typ „Standard“ erstellen zu können. Sie können sich für ein 30-tägiges, kostenloses Azure-Testabonnement registrieren und später ein Upgrade auf ein kostenpflichtiges Azure-Abonnement durchführen oder direkt ein kostenpflichtiges Azure-Abonnement erwerben. Sobald Sie Zugriff auf das Abonnement haben, können Sie über das Microsoft Azure-Portal einen Machine Learning-Arbeitsbereich erstellen. Lesen Sie die [Schritt-für-Schritt-Anleitungen](https://azure.microsoft.com/trial/get-started-machine-learning-b/).
 
 Alternativ können Sie auch von einem Besitzer eines Machine Learning-Arbeitsbereichs vom Typ „Standard“ dazu eingeladen werden, auf den Arbeitsbereich des Besitzers zuzugreifen.
 

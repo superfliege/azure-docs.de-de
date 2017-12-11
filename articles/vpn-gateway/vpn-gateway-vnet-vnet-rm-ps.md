@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 8a772680355a62c13dbe0361b5b58029642cf84d
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 54cb7a9630a64be1a3012604929613fe0a843666
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Konfigurieren einer VNet-zu-VNet-VPN-Gatewayverbindung mithilfe von PowerShell
 
@@ -39,15 +39,23 @@ Die Schritte in diesem Artikel gelten für das Resource Manager-Bereitstellungsm
 
 ## <a name="about"></a>Informationen zum Verbinden von VNets
 
-Das Verbinden von zwei virtuellen Netzwerken miteinander per Verbindungstyp „VNet-zu-VNet“ (VNet2VNet) ähnelt dem Erstellen einer IPsec-Verbindung mit einem lokalen Standort. Für beide Verbindungstypen wird ein VPN Gateway genutzt, um per IPsec/IKE einen sicheren Tunnel zu erstellen, und auch die Kommunikation läuft jeweils gleich ab. Der Unterschied zwischen den Verbindungstypen liegt in der Konfiguration des Gateways für das lokale Netzwerk. Beim Erstellen einer VNet-zu-VNet-Verbindung wird der Adressraum des Gateways für das lokale Netzwerk nicht angezeigt. Dieser wird automatisch erstellt und mit Adressen gefüllt. Wenn Sie den Adressraum für ein VNet aktualisieren, führt das andere VNet die Weiterleitung an den aktualisierten Adressraum aber automatisch durch.
+VNets können auf unterschiedliche Weise verbunden werden. In den folgenden Abschnitten werden unterschiedliche Verbindungsmethoden für virtuelle Netzwerke beschrieben.
 
-Falls Sie eine komplizierte Konfiguration verwenden, kann es ratsam sein, anstelle von „VNet-zu-VNet“ den Verbindungstyp „IPsec“ zu nutzen. Hierbei können Sie einen zusätzlichen Adressraum für das Gateway des lokalen Netzwerks angeben, um Datenverkehr weiterzuleiten. Wenn Sie Ihre VNets mit dem Verbindungstyp „IPsec“ verbinden, müssen Sie das Gateway für das lokale Netzwerk manuell erstellen und konfigurieren. Weitere Informationen finden Sie unter [Erstellen einer Site-to-Site-Verbindung im Azure-Portal](vpn-gateway-create-site-to-site-rm-powershell.md).
+### <a name="vnet-to-vnet"></a>VNet-zu-VNet
 
-Falls sich Ihre VNets in derselben Region befinden, kann es auch hilfreich sein, sie mittels VNet-Peering zu verbinden. Beim VNet-Peering wird kein VPN Gateway verwendet, und die Preise und Funktionen unterscheiden sich leicht. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
+Durch Konfigurieren einer VNet-zu-VNet-Verbindung können Sie sehr einfach eine Verbindung zwischen VNets herstellen. Eine VNet-zu-VNet-Verbindung (VNet2VNet) zwischen zwei virtuellen Netzwerken ist vergleichbar mit einer S2S-IPsec-Verbindung mit einem lokalen Standort.  Bei beiden Verbindungstypen wird ein VPN-Gateway verwendet, um per IPsec/IKE einen sicheren Tunnel zu erstellen, und auch die Kommunikation läuft jeweils gleich ab. Der Unterschied zwischen den Verbindungstypen liegt in der Konfiguration des Gateways für das lokale Netzwerk. Beim Erstellen einer VNet-zu-VNet-Verbindung wird der Adressraum des Gateways für das lokale Netzwerk nicht angezeigt. Dieser wird automatisch erstellt und mit Adressen gefüllt. Wenn Sie den Adressraum für ein VNet aktualisieren, leitet das andere VNet den Datenverkehr automatisch an den aktualisierten Adressraum weiter. Das Erstellen einer VNet-zu-VNet-Verbindung ist in der Regel schneller und einfacher als das Erstellen einer Site-to-Site-Verbindung zwischen VNets.
 
-### <a name="why"></a>Gründe für die Erstellung einer VNet-zu-VNet-Verbindung
+### <a name="site-to-site-ipsec"></a>Site-to-Site (IPsec)
 
-Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwischen virtuellen Netzwerken:
+Wenn Sie mit einer komplizierten Netzwerkkonfiguration arbeiten, empfiehlt es sich unter Umständen, die Verbindung zwischen VNets nicht mit den VNet-zu-VNet-Schritten, sondern mit den [Site-to-Site](vpn-gateway-create-site-to-site-rm-powershell.md)-Schritten herzustellen. Bei Verwendung der Site-to-Site-Schritte erstellen und konfigurieren Sie die lokalen Netzwerkgateways manuell. Das lokale Netzwerkgateway für die einzelnen VNets behandelt das andere VNet als lokalen Standort. Hierbei können Sie einen zusätzlichen Adressraum für das Gateway des lokalen Netzwerks angeben, um Datenverkehr weiterzuleiten. Wenn sich der Adressraum für ein VNet ändert, müssen Sie das dazugehörige lokale Netzwerkgateway entsprechend aktualisieren. Es wird nicht automatisch aktualisiert.
+
+### <a name="vnet-peering"></a>VNet-Peering
+
+Es empfiehlt sich unter Umständen, VNets per VNet-Peering zu verbinden. Beim VNet-Peering wird kein VPN-Gateway verwendet, und es gelten andere Einschränkungen. Außerdem werden die [Preise für VNet-Peering](https://azure.microsoft.com/pricing/details/virtual-network) anders berechnet als die [Preise für VPN Gateway (VNet-zu-VNet)](https://azure.microsoft.com/pricing/details/vpn-gateway). Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
+
+## <a name="why"></a>Gründe für die Erstellung einer VNet-zu-VNet-Verbindung
+
+Folgende Gründe sprechen für das Herstellen einer VNet-zu-VNet-Verbindung zwischen virtuellen Netzwerken:
 
 * **Regionsübergreifende Georedundanz und Geopräsenz**
 
@@ -59,7 +67,7 @@ Aus den folgenden Gründen empfiehlt sich das Herstellen von Verbindungen zwisch
 
 Die VNET-zu-VNET-Kommunikation kann mit Konfigurationen für mehrere Standorte kombiniert werden. Auf diese Weise können Sie Netzwerktopologien einrichten, die standortübergreifende Konnektivität mit Konnektivität zwischen virtuellen Netzwerken kombinieren.
 
-## <a name="which-set-of-steps-should-i-use"></a>Welche Schritte soll ich ausführen?
+## <a name="steps"></a>Welche VNet-zu-VNet-Schritte soll ich verwenden?
 
 In diesem Artikel finden Sie zwei unterschiedliche Anleitungen: Schritte für [VNets, die sich unter demselben Abonnement befinden](#samesub), und Schritte für [VNets, die sich unter verschiedenen Abonnements befinden](#difsub).
 Der Hauptunterschied zwischen den beiden Vorgehensweisen besteht darin, dass Sie separate PowerShell-Sitzungen verwenden müssen, wenn Sie die Verbindungen für VNets konfigurieren, die sich unter verschiedenen Abonnements befinden. 

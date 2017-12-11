@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 12/04/2017
 ms.author: owend
-ms.openlocfilehash: 350f95b2f9ec8dc4a3e2dc8f7d390f841b248fa1
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 224ecbb80e8fc5b3f1a32e42eda7ec5452e9e553
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -66,7 +66,7 @@ Azure Analysis Services-Server können in folgenden [Azure-Regionen](https://azu
 |----------|--------|--------------|
 |  Brasilien Süd<br> Kanada, Mitte<br> USA (Ost) 2<br> USA (Mitte/Norden)<br> USA (Mitte/Süden)<br> USA, Westen-Mitte<br> USA (West) | Nordeuropa<br> UK, Süden<br> Europa, Westen |   Australien, Südosten<br> Japan Ost<br> Südostasien<br> Indien, Westen  |
 
-Diese Liste ist unter Umständen nicht vollständig, da immer wieder neue Regionen hinzukommen. Die Standortauswahl erfolgt, wenn Sie Ihren Server im Azure-Portal oder mithilfe von Azure Resource Manager-Vorlagen erstellen. Aus Leistungsgründen empfiehlt es sich, einen Standort in der Nähe Ihrer größten Benutzerbasis zu wählen. Stellen Sie Ihre Modelle auf redundanten Servern in mehreren Regionen bereit, um eine [hohe Verfügbarkeit](analysis-services-bcdr.md) zu gewährleisten.
+Diese Liste ist unter Umständen nicht vollständig, da immer wieder neue Regionen hinzukommen. Die Standortauswahl erfolgt, wenn Sie Ihren Server im Azure-Portal oder mithilfe von Azure Resource Manager-Vorlagen erstellen. Aus Leistungsgründen empfiehlt es sich, einen Standort in der Nähe Ihrer größten Benutzerbasis zu wählen. Stellen Sie Ihre Modelle auf redundanten Servern in mehreren Regionen bereit, um [Hochverfügbarkeit](analysis-services-bcdr.md) zu gewährleisten.
 
 ## <a name="migrate-your-existing-tabular-models"></a>Migrieren vorhandener tabellarischer Modelle
 Wenn Sie bereits über lokale SQL Server Analysis Services-Modelllösungen verfügen, können Sie ohne nennenswerte Änderungen zu Azure Analysis Services migrieren. Für die Migration können Sie Ihr Modell mithilfe von SSDT auf Ihrem Server bereitstellen. Alternativ können Sie in SSMS die Sicherungs- und Wiederherstellungsfunktion oder TMSL verwenden.
@@ -124,7 +124,7 @@ Clients nutzen [Clientbibliotheken](analysis-services-data-providers.md) vom Typ
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 
 #### <a name="documentation"></a>Dokumentation
-Azure Analysis Services ist einfach einzurichten und zu verwalten. Hier finden Sie alle Informationen, die Sie zum Erstellen und Verwalten Ihrer Serverdienste benötigen. Wenn Sie ein Datenmodell für die Bereitstellung auf dem Server erstellen, erfolgt dies auf ähnliche Weise wie das Erstellen eines Datenmodells, das Sie auf einem lokalen Server bereitstellen. Unter [Analysis Services](https://docs.microsoft.com/sql/analysis-services/analysis-services) finden Sie eine umfassende Bibliothek mit Artikeln zu Konzepten, Vorgehensweisen, Referenzartikel und Tutorials.
+Azure Analysis Services ist einfach einzurichten und zu verwalten. Hier finden Sie alle Informationen, die Sie zum Erstellen und Verwalten Ihrer Serverdienste benötigen. Wenn Sie ein Datenmodell für die Bereitstellung auf dem Server erstellen, erfolgt dies auf ähnliche Weise wie das Erstellen eines Datenmodells, das Sie auf einem lokalen Server bereitstellen. Unter [What is Analysis Services?](https://docs.microsoft.com/sql/analysis-services/analysis-services) (Was ist Analysis Services?) finden Sie eine umfassende Bibliothek mit Artikeln zu Konzepten, Vorgehensweisen, Tutorials und Referenzinformationen.
 
 #### <a name="videos"></a>Videos
 Unter [Azure Analysis Services auf Channel 9](https://channel9.msdn.com/series/Azure-Analysis-Services) finden Sie hilfreiche Videos.

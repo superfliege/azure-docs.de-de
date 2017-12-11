@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 12/04/2017
 ms.author: cherylmc
-ms.openlocfilehash: 8c4b2d578a8a586fc63c972ab5da694b2dd9d571
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 367288e313ae5517b126b17c905ae291b5b37975
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: PowerShell
 
@@ -36,7 +36,7 @@ Mit einem P2S-VPN-Gateway (Point-to-Site) können Sie von einem einzelnen Client
 
 Clients, die eine Verbindung herstellen, können die folgenden Authentifizierungsmethoden verwenden:
 
-* RADIUS-Server – Derzeit in der Vorschauphase
+* RADIUS-Server
 * VPN-Gateway mit nativer Azure-Zertifikatauthentifizierung
 
 Dieser Artikel unterstützt Sie beim Konfigurieren einer P2S-Konfiguration mit nativer Azure-Zertifikatauthentifizierung. Wenn Sie RADIUS zum Authentifizieren von Benutzern verwenden möchten, die eine Verbindung herstellen, lesen Sie die Informationen unter [Configure a Point-to-Site connection to a VNet using RADIUS authentication: PowerShell (Preview)](point-to-site-how-to-radius-ps.md) (Konfigurieren einer P2S-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell (Vorschauversion)).
@@ -47,11 +47,7 @@ Point-to-Site-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche
 
 * SSTP ist ein SSL-basierter VPN-Tunnel, der nur auf Windows-Clientplattformen unterstützt wird. Er kann Firewalls durchdringen und ist daher optimal für die ortsunabhängige Verbindungsherstellung mit Azure geeignet. Auf Serverseite werden die SSTP-Versionen 1.0, 1.1 und 1.2 unterstützt. Der Client entscheidet, welche Version verwendet wird. Unter Windows 8.1 und höher wird standardmäßig SSTP 1.2 verwendet.
 
-* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden. IKEv2 befindet sich derzeit in der Vorschauphase.
-
->[!NOTE]
->IKEv2 für P2S befindet sich derzeit in der Vorschauphase.
->
+* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
 
 Für Point-to-Site-Verbindungen mit nativer Azure-Zertifikatauthentifizierung wird Folgendes benötigt:
 
@@ -69,10 +65,10 @@ Weitere Informationen zu Point-to-Site-Verbindungen finden Sie unter [Informatio
 
 ### <a name="example"></a>Beispielwerte
 
-Sie können die Beispielwerte zum Erstellen einer Testumgebung oder zum besseren Verständnis der Beispiele in diesem Artikel nutzen. Wir legen die Variablen im Abschnitt [1](#declare) des Artikels fest. Sie können diese Schritte entweder als exemplarische Vorgehensweise durchlaufen und die Werte nicht ändern, oder Sie können die Werte Ihrer Umgebung entsprechend ändern.
+Sie können die Beispielwerte zum Erstellen einer Testumgebung oder zum besseren Verständnis der Beispiele in diesem Artikel nutzen. Die Variablen werden in Abschnitt [1](#declare) des Artikels festgelegt. Sie können diese Schritte entweder als exemplarische Vorgehensweise durchlaufen und die Werte nicht ändern, oder Sie können die Werte Ihrer Umgebung entsprechend ändern.
 
 * **Name: VNet1**
-* **Adressraum: 192.168.0.0/16** und **10.254.0.0/16**<br>In diesem Beispiel verwenden wir mehrere Adressräume, um zu veranschaulichen, dass diese Konfiguration mit mehreren Adressräumen funktioniert. Für diese Konfiguration sind aber nicht mehrere Adressräume erforderlich.
+* **Adressraum: 192.168.0.0/16** und **10.254.0.0/16**<br>In diesem Beispiel werden mehrere Adressräume verwendet, um zu veranschaulichen, dass diese Konfiguration für mehrere Adressräume geeignet ist. Für diese Konfiguration sind aber nicht mehrere Adressräume erforderlich.
 * **Subnetzname: FrontEnd**
   * **Subnetzadressbereich: 192.168.1.0/24**
 * **Subnetzname: BackEnd**
@@ -143,7 +139,7 @@ In diesem Abschnitt melden Sie sich an und deklarieren die für diese Konfigurat
   ```
 3. Erstellen des virtuellen Netzwerks
 
-  In diesem Beispiel ist der Serverparameter „-DnsServer“ optional. Wenn ein Wert angegeben wird, wird kein neuer DNS-Server erstellt. Die IP-Adresse des angegebenen DNS-Servers muss dazu in der Lage sein, die Namen für die Ressourcen aufzulösen, mit denen Sie eine Verbindung von Ihrem VNET aus herstellen möchten. In diesem Beispiel wurde eine private IP-Adresse verwendet. Bei dieser IP-Adresse handelt es sich aber wahrscheinlich nicht um die IP-Adresse Ihres DNS-Servers. Achten Sie darauf, dass Sie Ihre eigenen Werte verwenden. Der angegebene Wert wird nicht von der P2S-Verbindung oder dem VPN-Client, sondern von den Ressourcen verwendet, die Sie im VNET bereitstellen.
+  In diesem Beispiel ist der Serverparameter „-DnsServer“ optional. Wenn ein Wert angegeben wird, wird kein neuer DNS-Server erstellt. Die IP-Adresse des angegebenen DNS-Servers muss dazu in der Lage sein, die Namen für die Ressourcen aufzulösen, mit denen Sie eine Verbindung von Ihrem VNET aus herstellen möchten. In diesem Beispiel wird eine private IP-Adresse verwendet. Bei dieser IP-Adresse handelt es sich aber wahrscheinlich nicht um die IP-Adresse Ihres DNS-Servers. Achten Sie darauf, dass Sie Ihre eigenen Werte verwenden. Der angegebene Wert wird nicht von der P2S-Verbindung oder dem VPN-Client, sondern von den Ressourcen verwendet, die Sie im VNET bereitstellen.
 
   ```powershell
   New-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG -Location $Location -AddressPrefix $VNetPrefix1,$VNetPrefix2 -Subnet $fesub, $besub, $gwsub -DnsServer 10.2.1.3
@@ -167,14 +163,14 @@ In diesem Abschnitt melden Sie sich an und deklarieren die für diese Konfigurat
 
 Konfigurieren und erstellen Sie das virtuelle Netzwerkgateway für Ihr VNet.
 
-* *-GatewayType* muss **Vpn** sein, und *-VpnType* muss **RouteBased** lauten.
-* Mit „-VpnClientProtocols“ werden die Typen der Tunnel angegeben, die Sie aktivieren möchten. Die zwei Tunneloptionen lauten **SSTP** und **IKEv2**. Sie können entscheiden, ob Sie eine der beiden Optionen oder beide aktivieren. Wenn Sie beide aktivieren möchten, geben Sie beide Namen durch Komma getrennt ein. Der strongSwan-Client unter Android und Linux und der native IKEv2-VPN-Client unter iOS und OSX verwenden nur den IKEv2-Tunnel für die Verbindungsherstellung. Windows-Clients probieren zunächst IKEv2. Wird keine Verbindung hergestellt, verwenden sie SSTP.
-* Je nach ausgewählter [Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md) kann die Erstellung eines VPN-Gateways bis zu 45 Minuten dauern. In diesem Beispiel verwenden wir IKEv2 (derzeit als Vorschauversion verfügbar).
+* „-GatewayType“ muss **Vpn** und „-VpnType“ muss **RouteBased** lauten.
+* Mit „-VpnClientProtocol“ werden die Tunnelarten angegeben, die Sie aktivieren möchten. Die zwei Tunneloptionen lauten **SSTP** und **IKEv2**. Sie können entscheiden, ob Sie eine der beiden Optionen oder beide aktivieren. Wenn Sie beide aktivieren möchten, geben Sie beide Namen durch Komma getrennt ein. Der strongSwan-Client unter Android und Linux und der native IKEv2-VPN-Client unter iOS und OSX verwenden nur den IKEv2-Tunnel für die Verbindungsherstellung. Windows-Clients probieren zunächst IKEv2. Wird keine Verbindung hergestellt, verwenden sie SSTP.
+* Je nach ausgewählter [Gateway-SKU](vpn-gateway-about-vpn-gateway-settings.md) kann die Erstellung eines VPN-Gateways bis zu 45 Minuten dauern. In diesem Beispiel wird IKEv2 verwendet. (IKEv2 ist derzeit als Vorschauversion verfügbar.)
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 -Location $Location -IpConfigurations $ipconf -GatewayType Vpn `
--VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocols "IKEv2"
+-VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw1 -VpnClientProtocol "IKEv2"
 ```
 
 ## <a name="addresspool"></a>4. Hinzufügen des VPN-Clientadresspools
@@ -319,7 +315,7 @@ Dies ist die effizienteste Methode zum Hochladen eines Stammzertifikats.
 
 #### <a name="certmethod2"></a>Methode 2
 
-Bei dieser Methode müssen mehr Schritte als bei Methode 1 ausgeführt werden, das Ergebnis ist jedoch gleich. Sie wurde für den Fall aufgenommen, dass Sie die Zertifikatdaten anzeigen müssen.
+Diese Methode umfasst zwar mehr Schritte als Methode 1, das Ergebnis ist jedoch gleich. Sie wurde für den Fall aufgenommen, dass Sie die Zertifikatdaten anzeigen müssen.
 
 1. Erstellen Sie das neue Stammzertifikat, das Sie Azure hinzufügen möchten, und bereiten Sie es vor. Exportieren Sie den öffentlichen Schlüssel als Base64-codierte X.509-Datei (.CER), und öffnen Sie diese mit einem Text-Editor. Kopieren Sie die Werte wie im folgenden Beispiel gezeigt:
 

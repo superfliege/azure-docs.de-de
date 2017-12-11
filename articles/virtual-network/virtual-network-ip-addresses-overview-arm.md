@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/16/2017
 ms.author: jdial
-ms.openlocfilehash: 3840ed000d5a9fe5d3c8fd01c061bf13674c0ce5
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: e3baedba814cf6ac19df72c49e1c95ea2cd5cf73
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -149,8 +149,8 @@ Eine private IP-Adresse wird aus dem Adressbereich des VNET-Subnetzes zugeteilt,
 
 Es gibt zwei Methoden zum Zuordnen von privaten IP-Adressen:
 
-- **Dynamisch**: Azure weist die nächste verfügbare nicht zugewiesene oder nicht reservierte IP-Adresse im Adressbereich des Subnetzes zu. Beispielsweise weist Azure 10.0.0.10 einer neuen Ressource zu, wenn die Adressen 10.0.0.4 bis 10.0.0.9 bereits anderen Ressourcen zugewiesen sind. „Dynamisch“ ist das Standardverfahren für die Zuteilung. Nach der Zuweisung werden dynamische IP-Adressen nur veröffentlicht, wenn eine Netzwerkschnittstelle gelöscht wird oder einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird oder wenn die Zuordnungsmethode in „Statisch“ geändert und eine andere IP-Adresse angegeben wird. Standardmäßig wird in Azure die zuvor dynamisch zugewiesene Adresse als statische Adresse zugewiesen, wenn Sie die Zuteilungsmethode von „Dynamisch“ in „Statisch“ ändern.
-- **Statisch**: Sie wählen eine beliebige nicht zugewiesene oder nicht reservierte IP-Adresse im Adressbereich des Subnetzes aus und weisen sie zu. Wenn der Adressbereich eines Subnetzes beispielsweise 10.0.0.0/16 ist und die Adressen 10.0.0.4 bis 10.0.0.9 bereits anderen Ressourcen zugewiesen sind, weisen Sie eine beliebige Adresse zwischen 10.0.0.10 und 10.0.255.254 zu. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuteilungsmethode in „Statisch“ ändern, wird in Azure dynamisch die zuvor zugewiesene statische IP-Adresse als dynamische Adresse zugewiesen. Dies gilt auch dann, wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
+- **Dynamisch**: Azure weist die nächste verfügbare nicht zugewiesene oder nicht reservierte IP-Adresse im Adressbereich des Subnetzes zu. Beispielsweise weist Azure 10.0.0.10 einer neuen Ressource zu, wenn die Adressen 10.0.0.4 bis 10.0.0.9 bereits anderen Ressourcen zugewiesen sind. „Dynamisch“ ist das Standardverfahren für die Zuteilung. Nach der Zuweisung werden dynamische IP-Adressen nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird oder einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird oder wenn die Zuordnungsmethode in „Statisch“ geändert und eine andere IP-Adresse angegeben wird. Standardmäßig wird in Azure die zuvor dynamisch zugewiesene Adresse als statische Adresse zugewiesen, wenn Sie die Zuteilungsmethode von „Dynamisch“ in „Statisch“ ändern.
+- **Statisch**: Sie wählen eine beliebige nicht zugewiesene oder nicht reservierte IP-Adresse im Adressbereich des Subnetzes aus und weisen sie zu. Wenn der Adressbereich eines Subnetzes beispielsweise 10.0.0.0/16 ist und die Adressen 10.0.0.4 bis 10.0.0.9 bereits anderen Ressourcen zugewiesen sind, weisen Sie eine beliebige Adresse zwischen 10.0.0.10 und 10.0.255.254 zu. Statische Adressen werden nur freigegeben, wenn eine Netzwerkschnittstelle gelöscht wird. Wenn Sie die Zuordnungsmethode in „Dynamisch“ ändern, wird in Azure dynamisch die zuvor zugewiesene statische IP-Adresse als dynamische Adresse zugewiesen. Das gilt auch, wenn die Adresse nicht die nächste verfügbare Adresse im Adressbereich des Subnetzes ist. Die Adresse ändert sich auch, wenn die Netzwerkschnittstelle einem anderen Subnetz desselben virtuellen Netzwerks zugewiesen wird. Wenn Sie die Netzwerkschnittstelle einem anderen Subnetz zuweisen möchten, müssen Sie zuerst die Zuteilungsmethode von „Statisch“ in „Dynamisch“ ändern. Nachdem Sie die Netzwerkschnittstelle einem anderen Subnetz zugewiesen haben, können Sie die Zuteilungsmethode wieder in „Statisch“ ändern und eine IP-Adresse aus dem Adressbereich des neuen Subnetzes zuweisen.
 
 ### <a name="virtual-machines"></a>Virtuelle Computer
 

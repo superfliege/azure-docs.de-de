@@ -14,130 +14,69 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: e85979859cca40b852e1f39ccaedf6e2781f84a1
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 7458ad6e0a864d742f74ce743ce3179594113c00
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Hinzufügen der Zwischenspeicherung zum Verbessern der Leistung in Azure API Management
 Operationen in API Management können für das Zwischenspeichern von Antworten konfiguriert werden. Das Zwischenspeichern von Antworten kann API-Latenz, Bandbreitennutzung und Webdienstlast für Daten, die sich eher selten ändern, drastisch senken.
+ 
+Ausführlichere Informationen zum Zwischenspeichern finden Sie unter [Cacherichtlinien für API Management](api-management-caching-policies.md) sowie unter [Benutzerdefiniertes Caching in Azure API Management](api-management-sample-cache-by-key.md).
 
-In diesem Leitfaden wird gezeigt, wie Sie die Zwischenspeicherung von Antworten für Ihre API hinzufügen und Richtlinien für Operationen in der Echo-Beispiel-API konfigurieren. Um die Zwischenspeicherung in Aktion zu sehen, können Sie die Operation im Entwicklerportal aufrufen.
+![Zwischenspeicherungsrichtlinien](media/api-management-howto-cache/cache-policies.png)
 
-> [!NOTE]
-> Informationen zum Zwischenspeichern von Elementen nach Schlüssel mithilfe von Richtlinienausdrücken finden Sie unter [Benutzerdefiniertes Zwischenspeichern in Azure API Management](api-management-sample-cache-by-key.md).
-> 
-> 
+Sie lernen Folgendes:
+
+> [!div class="checklist"]
+> * Hinzufügen des Zwischenspeicherns von Antworten für Ihre API
+> * Überprüfen des Zwischenspeicherns in Aktion
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um die Schritte in diesem Leitfaden ausführen zu können, müssen Sie über eine API Management-Dienstinstanz mit einer konfigurierten API und einem konfigurierten Produkt verfügen. Falls Sie noch keine API Management-Dienstinstanz erstellt haben, finden Sie weitere Informationen im Abschnitt [Erstellen einer API Management-Dienstinstanz][Create an API Management service instance] im Tutorial [Erste Schritte mit Azure API Management][Get started with Azure API Management].
 
-## <a name="configure-caching"></a>Konfigurieren einer Operation für die Zwischenspeicherung
-In diesem Schritt prüfen Sie die Einstellungen der Zwischenspeicherung für die **GET Resource (cached)** -Operation der Echo-Beispiel-API.
+Für dieses Tutorial benötigen Sie Folgendes:
 
-> [!NOTE]
-> Jede API Management-Dienstinstanz enthält eine vorkonfigurierte Echo-API, die Sie für Tests und erste Schritte mit API Management nutzen können. Weitere Informationen finden Sie unter [Erste Schritte mit Azure API Management][Get started with Azure API Management].
-> 
-> 
++ [Erstellen Sie eine Azure API Management-Instanz.](get-started-create-service-instance.md)
++ [Importieren und Veröffentlichen Sie eine API.](import-and-publish.md)
 
-Klicken Sie zunächst im Azure-Portal für Ihren API Management-Dienst auf **Entwicklerportal**. Daraufhin gelangen Sie zum API Management-Herausgeberportal.
+## <a name="caching-policies"> </a>Hinzufügen der Zwischenspeicherungsrichtlinien
 
-![Herausgeberportal][api-management-management-console]
+Mit den Zwischenspeicherungsrichtlinien in diesem Beispiel gibt die erste Anforderung an den Vorgang **GetSpeakers** eine Antwort vom Back-End-Dienst zurück. Diese Antwort wird zwischengespeichert und erhält einen Schlüssel, der auf den angegebenen Headern und Abfrageparametern basiert. Bei nachfolgenden Aufrufen der Operation mit denselben Parametern wird die zwischengespeicherte Antwort zurückgegeben, bis das Ablaufintervall abgelaufen ist.
 
-Klicken Sie auf der linken Seite im Menü **API Management** auf **APIs** , und klicken Sie anschließend auf **Echo API**.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
+2. Navigieren Sie zu Ihrer APIM-Instanz.
+3. Klicken Sie auf die Registerkarte **API**.
+4. Klicken Sie in der API-Liste auf **Demo Conference API**.
+5. Wählen Sie **GetSpeakers** aus.
+6. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
+7. Klicken Sie im Fenster **Eingehende Verarbeitung** auf das Dreieck (neben dem Stift).
 
-![Echo API][api-management-echo-api]
+    ![Code-Editor](media/api-management-howto-cache/code-editor.png)
+8. Klicken Sie auf **Code-Editor**.
+9. Fügen Sie im Element für den **Eingang** die folgende Richtlinie hinzu:
 
-Klicken Sie auf die Registerkarte **Operationen**, und klicken Sie dann auf die Operation **GET Resource (cached)** in der Liste der **Operationen**.
-
-![Operationen der Echo API][api-management-echo-api-operations]
-
-Klicken Sie auf die Registerkarte **Zwischenspeichern** , um die Einstellungen der Zwischenspeicherung für diese Operation anzuzeigen.
-
-![Registerkarte "Zwischenspeichern"][api-management-caching-tab]
-
-Aktivieren Sie das Kontrollkästchen **Aktivieren** , um die Zwischenspeicherung für eine Operation zu aktivieren. In diesem Beispiel ist die Zwischenspeicherung aktiviert.
-
-Jedes Operationsergebnis erhält einen Schlüssel anhand der Felder, die in **Nach Abfrageparametern variieren** und **Nach Headern variieren** ausgewählt wurden. Falls Sie mehrere Antworten anhand von Abfrageparametern oder Headern zwischenspeichern möchten, können Sie dies in diesen beiden Feldern konfigurieren.
-
-**Dauer** gibt das Ablaufintervall der gespeicherten Antworten an. In diesem Beispiel ist das Intervall **3600** Sekunden, was einer Stunde entspricht.
-
-Mit der Konfiguration für das Zwischenspeichern in diesem Beispiel liefert die erste Anforderung an die **GET Resource (cached)** -Operation eine Antwort vom Back-End-Dienst zurück. Diese Antwort wird zwischengespeichert und erhält einen Schlüssel anhand der angegebenen Header und Abfrageparameter. Bei nachfolgenden Aufrufen der Operation mit denselben Parametern wird die zwischengespeicherte Antwort zurückgegeben, bis das Ablaufintervall abgelaufen ist.
-
-## <a name="caching-policies"></a>Prüfen der Richtlinien für die Zwischenspeicherung
-In diesem Schritt prüfen Sie die Einstellungen der Zwischenspeicherung für die **GET Resource (cached)** -Operation der Echo-Beispiel-API.
-
-Wenn Sie die Einstellungen der Zwischenspeicherung für eine Operation auf der Registerkarte **Zwischenspeichern** konfigurieren, werden Richtlinien für die Zwischenspeicherung für die Operation hinzugefügt. Sie können diese Richtlinien im Richtlinien-Editor anzeigen und bearbeiten.
-
-Klicken Sie auf **Richtlinien** im Menü **API Management** auf der linken Seite, und wählen Sie dann **Echo API / GET Resource (cached)** in der Dropdownliste **Operation** aus.
-
-![Richtlinien-Geltungsbereich Operation][api-management-operation-dropdown]
-
-Daraufhin werden die Richtlinien für diese Operation im Richtlinien-Editor angezeigt.
-
-![Richtlinien-Editor für API Management][api-management-policy-editor]
-
-Die Richtliniendefinition für diese Operation enthält auch die Richtlinien für die Zwischenspeicherung, die Sie im vorherigen Schritt auf der Registerkarte **Zwischenspeichern** geprüft haben.
-
-```xml
-<policies>
-    <inbound>
-        <base />
         <cache-lookup vary-by-developer="false" vary-by-developer-groups="false">
             <vary-by-header>Accept</vary-by-header>
             <vary-by-header>Accept-Charset</vary-by-header>
+            <vary-by-header>Authorization</vary-by-header>
         </cache-lookup>
-        <rewrite-uri template="/resource" />
-    </inbound>
-    <outbound>
-        <base />
-        <cache-store caching-mode="cache-on" duration="3600" />
-    </outbound>
-</policies>
-```
 
-> [!NOTE]
-> Änderungen, die Sie im Richtlinien-Editor vornehmen, werden auf der Registerkarte **Zwischenspeichern** der Operation übernommen, und umgekehrt.
-> 
-> 
+10. Fügen Sie im Element für den **Ausgang** die folgende Richtlinie hinzu:
+
+        <cache-store caching-mode="cache-on" duration="20" />
+
+    **Dauer** gibt das Ablaufintervall der gespeicherten Antworten an. In diesem Beispiel beträgt das Intervall **20** Sekunden.
 
 ## <a name="test-operation"></a>Aufrufen einer Operation und Testen der Zwischenspeicherung
-Um die Zwischenspeicherung in Aktion zu sehen, können Sie die Operation im Entwicklerportal aufrufen. Klicken Sie im Menü oben rechts auf **Entwicklerportal** .
+Um die Zwischenspeicherung in Aktion zu sehen, können Sie den Vorgang über das Entwicklerportal aufrufen.
 
-![Entwicklerportal][api-management-developer-portal-menu]
-
-Klicken Sie auf **APIs** im Hauptmenü, und wählen Sie dann **Echo API** aus.
-
-![Echo API][api-management-apis-echo-api]
-
-> Falls nur eine API konfiguriert oder für Ihr Konto sichtbar ist, können Sie auf APIs klicken, um direkt zu den Operationen für diese API zu gelangen.
-> 
-> 
-
-Wählen Sie die Operation **GET Resource (cached)** aus, und klicken Sie dann auf **Konsole öffnen**.
-
-![Konsole öffnen][api-management-open-console]
-
-Mit der Konsole können Sie Operationen direkt aus dem Entwicklerportal heraus aufrufen.
-
-![Konsole][api-management-console]
-
-Übernehmen Sie die Standardwerte für **param1** und **param2**.
-
-Wählen Sie den gewünschten Schlüssel in der Dropdownliste **Abonnement-Schlüssel** aus. Wenn das Konto nur über ein Abonnement verfügt, wird dieses automatisch ausgewählt.
-
-Geben Sie **sampleheader:value1** in das Textfeld **Request headers** ein.
-
-Klicken Sie auf **HTTP Get** , und notieren Sie sich die Antwortheader.
-
-Geben Sie **sampleheader:value2** in das Textfeld **Request headers** ein, und klicken Sie dann auf **HTTP Get**.
-
-**sampleheader** hat in der Antwort immer noch den Wert **value1**. Probieren Sie unterschiedliche Werte aus und beachten Sie, dass immer der zwischengespeicherte Wert aus dem ersten Aufruf zurückgegeben wird.
-
-Geben Sie **25** in das Feld **param2** ein, und klicken Sie dann auf **HTTP Get**.
-
-**sampleheader** hat in der Antwort nun den Wert **value2**. Die zuvor zwischengespeicherte Antwort wurde nicht zurückgegeben, da die Operationsergebnisse einen Schlüssel anhand der Abfragezeichenfolge erhalten.
+1. Navigieren Sie im Azure-Portal zu Ihrer APIM-Instanz.
+2. Klicken Sie auf die Registerkarte **APIs**.
+3. Wählen Sie die API aus, der Sie Zwischenspeicherungsrichtlinien hinzugefügt haben.
+4. Wählen Sie den Vorgang **GetSpeakers** aus.
+5. Klicken Sie im Menü rechts oben auf die Registerkarte **Test**.
+6. Klicken Sie auf **Senden**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zu Richtlinien für die Zwischenspeicherung finden Sie unter [Richtlinien für die Zwischenspeicherung][Caching policies] in der [Richtlinienreferenz für API Management][API Management policy reference].
@@ -160,12 +99,12 @@ Geben Sie **25** in das Feld **param2** ein, und klicken Sie dann auf **HTTP Get
 [Monitoring and analytics]: api-management-monitoring.md
 [Add APIs to a product]: api-management-howto-add-products.md#add-apis
 [Publish a product]: api-management-howto-add-products.md#publish-product
-[Get started with Azure API Management]: api-management-get-started.md
+[Get started with Azure API Management]: get-started-create-service-instance.md
 
 [API Management policy reference]: https://msdn.microsoft.com/library/azure/dn894081.aspx
 [Caching policies]: https://msdn.microsoft.com/library/azure/dn894086.aspx
 
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: get-started-create-service-instance.md
 
 [Configure an operation for caching]: #configure-caching
 [Review the caching policies]: #caching-policies

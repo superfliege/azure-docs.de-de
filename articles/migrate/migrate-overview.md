@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/23/2017
 ms.author: raynew
-ms.openlocfilehash: d3d5a3bcd3be55d1915ff7fdc6d82aebbb992fc7
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5c78f68c481b68cff31bdc5fd410549c2d44ba5a
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="about-azure-migrate"></a>Informationen zu Azure Migrate
 
@@ -32,15 +32,17 @@ Mit dem Azure Migrate-Dienst werden lokale Workloads für die Migration zu Azure
 Azure Migrate bietet Folgendes:
 
 - **Bewerten der Bereitschaft für Azure**: Bewerten Sie, ob Ihre lokalen Computer für die Ausführung in Azure geeignet sind. 
-- **Nutzen von Empfehlungen zur Größe**: Sie erhalten basierend auf dem Leistungsverlauf lokaler VMs Empfehlungen zur Größenauslegung für Azure-VMs nach der Migration. 
-- **Schätzen von monatlichen Kosten**: Sie erhalten Kostenschätzungen zur Ausführung von lokalen Computern in Azure.
-- **Zuverlässiges Migrieren**: Wenn Sie lokale Computer zu Bewertungszwecken gruppieren, können Sie die Zuverlässigkeit der Bewertung erhöhen, indem Sie Abhängigkeiten visualisieren. Sie können die genauen Abhängigkeiten für einen bestimmten Computer oder für alle Computer einer Gruppe anzeigen.
+- **Größenempfehlungen**: Nutzen Sie Größenempfehlungen für virtuelle Azure-Computer, die auf dem Leistungsverlauf lokaler virtueller Computer basieren. 
+- **Voraussichtliche monatliche Kosten**: Erhalten Sie Kostenschätzungen zur Ausführung lokaler Computer in Azure.  
+- **Migration mit hoher Zuverlässigkeit**: Visualisieren Sie Abhängigkeiten von lokalen Computern, um Gruppen von Computern zu erstellen, die Sie gemeinsam bewerten und migrieren möchten. Sie können die genauen Abhängigkeiten für einen bestimmten Computer oder für alle Computer einer Gruppe anzeigen.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
 - Derzeit können Sie lokale virtuelle VMware-Computer (VMs) für die Migration zu Azure-VMs bewerten.
+
 > [!NOTE]
 > Für die Unterstützung für Hyper-V, die in einigen Monaten verfügbar sein wird, wurde eine Roadmap erstellt. Wir empfehlen Ihnen, in der Zwischenzeit den Azure Site Recovery-Bereitstellungsplaner zu verwenden, um die Migration von Hyper-V-Workloads zu planen. 
+
 - Sie können bis zu 1.000 VMs in einer einzelnen Bewertung und bis zu 1.500 Computer in einem einzelnen Azure Migrate-Projekt bewerten. Wenn Sie die Bewertung ausweiten müssen, können Sie die Anzahl von Projekten oder Bewertungen erhöhen. [Weitere Informationen](how-to-scale-assessment.md).
 - VMs, die Sie bewerten möchten, müssen mit vCenter Server, Version 5.5, 6.0 oder 6.5, verwaltet werden.
 - Sie können ein Azure Migrate-Projekt nur in der Region „USA, Westen-Mitte“ erstellen. Dies hat aber keinerlei Auswirkung auf die Möglichkeit, Ihre Migration für einen anderen Azure-Zielstandort zu planen. Der Standort des Migrationsprojekts wird nur zum Speichern der Metadaten verwendet, die in der lokalen Umgebung ermittelt wurden.
@@ -54,14 +56,14 @@ Azure Migrate ist ohne Aufpreis erhältlich. Während der öffentlichen Vorschau
 
 ## <a name="whats-in-an-assessment"></a>Was umfasst eine Bewertung?
 
-Azure Migrate-Bewertungen basieren auf den Einstellungen, die in dieser Tabelle zusammengefasst sind.
+Mit einer Bewertung können Sie die Azure-Eignung lokaler virtueller Computer ermitteln sowie geeignete Größenempfehlungen und Kostenschätzungen für die Ausführung der virtuellen Computer in Azure erhalten. Die Eigenschaften, auf denen die Bewertungen basieren, sind in der folgenden Tabelle zusammengefasst. Diese Eigenschaften können über das Azure Migrate-Portal geändert werden. 
 
-**Einstellung** | **Details**
+**Eigenschaft** | **Details**
 --- | ---
-**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll. Standardmäßig ist dies der Ort, an dem Sie das Azure Migrate-Projekt erstellen. Sie können diese Einstellung ändern.   
+**Zielstandort** | Der Azure-Standort, zu dem die Migration durchgeführt werden soll. Der Zielstandort ist standardmäßig auf „USA, Westen 2“ festgelegt. 
 **Speicherredundanz** | Der Speichertyp, der von den Azure-VMs nach der Migration verwendet wird. LRS ist die Standardeinstellung.
 **Tarife** | Bei der Bewertung wird berücksichtigt, ob Sie für Software Assurance registriert sind und in den Genuss des [Azure-Vorteils bei Hybridnutzung](https://azure.microsoft.com/pricing/hybrid-use-benefit/) kommen. Außerdem werden Azure-Angebote berücksichtigt, die angewendet werden sollten, und Sie können abonnementspezifische Rabatte (%) angeben, die Sie zusätzlich zum Angebot erhalten. 
-**Tarif** | Sie können den [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die Azure-VMs angeben. Auf diese Weise können Sie in Abhängigkeit davon, ob Sie sich in einer Produktionsumgebung befinden, zu einer geeigneten Azure-VM-Familie migrieren. Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
+**Preisstufe** | Sie können den [Tarif (Basic/Standard)](../virtual-machines/windows/sizes-general.md) für die Azure-VMs angeben. Auf diese Weise können Sie in Abhängigkeit davon, ob Sie sich in einer Produktionsumgebung befinden, zu einer geeigneten Azure-VM-Familie migrieren. Standardmäßig wird der Tarif [Standard](../virtual-machines/windows/sizes-general.md) verwendet.
 **Leistungsverlauf** | Standardmäßig wertet Azure Migrate die Leistung von lokalen Computern aus, indem ein Monat des Verlaufs mit einem Perzentilwert von 95% verwendet wird. Sie können diese Einstellung ändern.
 **Komfortfaktor** | Bei Azure Migrate wird während der Bewertung ein Puffer (Komfortfaktor) berücksichtigt. Dieser Puffer wird zusätzlich zu den Daten zur Computernutzung für VMs (CPU, Arbeitsspeicher, Datenträger und Netzwerk) angewendet. Beim Komfortfaktor geht es um Bereiche wie saisonale Nutzung, kurzer Leistungsverlauf und voraussichtliche zukünftige Zunahme der Nutzung.<br/><br/> Beispiel: Für eine VM mit zehn Kernen und 20% Auslastung ergibt sich normalerweise eine VM mit zwei Kernen. Bei einem Komfortfaktor von 2.0x ist das Ergebnis dagegen eine VM mit vier Kernen. Die Standardeinstellung für den Komfortfaktor lautet 1.3x.
 
@@ -69,12 +71,12 @@ Azure Migrate-Bewertungen basieren auf den Einstellungen, die in dieser Tabelle 
 ## <a name="how-does-azure-migrate-work"></a>Wie funktioniert Azure Migrate?
 
 1.  Sie erstellen ein Azure Migrate-Projekt.
-2.  Für Azure Migrate wird eine lokale VM genutzt, die als „Collectorappliance“ bezeichnet wird, um Informationen zu Ihren lokalen Computern zu ermitteln. Für die Erstellung der Appliance laden Sie die Setupdatei im Format „Open Virtualization Appliance“ (.ova) herunter und importieren sie als VM auf Ihrem lokalen vCenter Server.
-3.  Sie stellen eine Verbindung mit der VM her, indem Sie Lesezugriff-Anmeldeinformationen für den vCenter Server verwenden und den Collector ausführen.
+2.  Für Azure Migrate wird eine lokale VM genutzt, die als „Collectorappliance“ bezeichnet wird, um Informationen zu Ihren lokalen Computern zu ermitteln. Für die Erstellung der Appliance laden Sie die Setupdatei im OVA-Format (Open Virtualization Appliance) herunter und importieren sie als virtuellen Computer auf Ihrem lokalen vCenter Server-Computer.
+3.  Sie stellen über die Konsolenverbindung in vCenter Server eine Verbindung mit dem virtuellen Computer her, geben im Zuge der Verbindungsherstellung ein neues Kennwort für den virtuellen Computer an und führen dann auf dem virtuellen Computer die Collectoranwendung aus, um die Ermittlung zu initiieren.
 4.  Der Collector erfasst VM-Metadaten mit VMware PowerCLI-Cmdlets. Die Ermittlung erfolgt ohne Agent, und auf VMware-Hosts oder VMs wird nichts installiert. Die gesammelten Metadaten enthalten VM-Informationen (Kerne, Arbeitsspeicher, Datenträger, Datenträgergrößen und Netzwerkadapter). Außerdem werden Leistungsdaten für VMs gesammelt, z.B. CPU- und Arbeitsspeicherauslastung, Datenträger-IOPS, Datenträgerdurchsatz (MBit/s) und Netzwerkausgabe (MBit/s).
 5.  Die Metadaten werden per Pushvorgang in das Azure Migrate-Projekt übertragen. Sie können sie im Azure-Portal anzeigen.
-6.  Zur Durchführung der Bewertung fassen Sie VMs in Gruppen zusammen. Beispielsweise können Sie VMs gruppieren, auf denen dieselbe App ausgeführt wird. Sie können VMs gruppieren, indem Sie in vCenter oder im vCenter-Portal das Tagging nutzen. Verwenden Sie die Visualisierung, um Abhängigkeiten für einen bestimmten Computer oder für alle Computer einer Gruppe zu überprüfen.
-7.  Sie erstellen eine Bewertung für eine Gruppe.
+6.  Zur Durchführung der Bewertung fassen Sie die ermittelten virtuellen Computer in Gruppen zusammen. Beispielsweise können Sie virtuelle Computer gruppieren, auf denen die gleiche Anwendung ausgeführt wird. Sie können virtuelle Computer im Azure Migrate-Portal gruppieren oder das Tagging in vCenter Server verwenden. Darüber hinaus können Sie mithilfe der Abhängigkeitsvisualisierung Abhängigkeiten eines bestimmten Computers anzeigen oder aber Abhängigkeiten für alle Computer in einer Gruppe anzeigen und die Gruppe weiter eingrenzen.
+7.  Anschließend können Sie eine Bewertung für die gebildete Gruppe erstellen. 
 8.  Nach Abschluss der Bewertung können Sie das Ergebnis im Portal anzeigen oder im Excel-Format herunterladen.
 
 
@@ -88,8 +90,8 @@ In der Tabelle sind die Ports zusammengefasst, die für die Azure Migrate-Kommun
 |Komponente          |Für die Kommunikation mit     |Erforderlicher Port  |Grund   |
 |-------------------|------------------------|---------------|---------|
 |Collector          |Azure Migrate-Dienst   |TCP 443        |Der Collector stellt über den SSL-Port 443 eine Verbindung mit dem Dienst her.|
-|Collector          |vCenter Server          |Standard 9443   | Standardmäßig stellt der Collector eine Verbindung mit dem vCenter Server über Port 9443 her. Wenn der Server über einen anderen Port lauscht, sollte er auf der Collector-VM als Port für die ausgehende Richtung konfiguriert werden. |
-|Lokale VM     | OMS-Arbeitsbereich          |[TCP 443](../log-analytics/log-analytics-windows-agents.md#system-requirements-and-required-configuration) |Der MMA-Agent nutzt TCP 443, um eine Verbindung mit Log Analytics herzustellen. Sie benötigen diesen Port nur, wenn Sie das Feature zur Visualisierung von Abhängigkeiten verwenden und den MMA-Agent installieren. |
+|Collector          |vCenter Server          |Standard 9443   | Standardmäßig stellt der Collector eine Verbindung mit dem vCenter Server über Port 9443 her. Wenn der Server an einem anderen Port lauscht, muss er auf dem virtuellen Collectorcomputer als ausgehender Port konfiguriert werden. |
+|Lokale VM     | OMS-Arbeitsbereich (Operations Management Suite)          |[TCP 443](../log-analytics/log-analytics-windows-agents.md#system-requirements-and-required-configuration) |Der MMA-Agent nutzt TCP 443, um eine Verbindung mit Log Analytics herzustellen. Sie benötigen diesen Port nur, wenn Sie das Feature zur Visualisierung von Abhängigkeiten verwenden und den Microsoft Monitoring Agent (MMA) installieren. |
 
 
   

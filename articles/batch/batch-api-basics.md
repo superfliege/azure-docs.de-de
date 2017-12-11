@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3028e913937db304ac0a1df8e6a095072630505d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 22c5597cf14f27671667176dce8782cf0c79918d
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch
 
@@ -56,10 +56,8 @@ Einige der folgenden Ressourcen – Konten, Computeknoten, Pools, Aufträge, Tas
 * [Computeknoten](#compute-node)
 * [Pool](#pool)
 * [Job](#job)
-
   * [Auftragszeitpläne](#scheduled-jobs)
 * [Aufgabe](#task)
-
   * [Startaufgabe](#start-task)
   * [Auftrags-Manager-Aufgabe](#job-manager-task)
   * [Tasks zur Auftragsvorbereitung und -freigabe](#job-preparation-and-release-tasks)
@@ -263,6 +261,9 @@ Beim Erstellen eines Tasks können Sie Folgendes angeben:
 * Die **Einschränkungen** , mit denen der Task ausgeführt werden soll. Beispielsweise enthalten Einschränkungen die maximale Ausführungsdauer des Tasks, die maximale Anzahl von Wiederholungen für einen nicht erfolgreichen Task und die maximal zulässige Beibehaltungsdauer für Dateien im Arbeitsverzeichnis des Tasks.
 * **Anwendungspakete** für die Bereitstellung auf dem Computeknoten, auf dem der Task ausgeführt werden soll. [Anwendungspakete](#application-packages) bieten eine vereinfachte Bereitstellung und Versionsverwaltung der Anwendungen, die von Ihren Tasks ausgeführt werden. Anwendungspakete auf Task-Ebene sind insbesondere in Umgebungen mit gemeinsam genutzten Pools praktisch, bei denen verschiedene Aufträge in einem Pool ausgeführt werden und der Pool nach Abschluss des Auftrags nicht gelöscht wird. Wenn Ihr Auftrag über weniger Tasks als Knoten im Pool verfügt, können Task-Anwendungspakete die Datenübertragung minimieren, da Ihre Anwendung nur auf den Knoten bereitgestellt wird, die Tasks ausführen.
 * Ein Verweis auf ein **Containerimage** in Docker Hub oder eine private Registrierung und zusätzliche Einstellungen zum Erstellen eines Docker-Containers, in dem die Aufgabe für den Knoten ausgeführt wird. Diese Informationen werden nur angegeben, wenn der Pool mit einer Containerkonfiguration eingerichtet ist.
+
+> [!NOTE]
+> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximale Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 
 Zusätzlich zu Tasks, die Sie zur Berechnung auf einem Knoten definieren, werden vom Batch-Dienst die folgenden speziellen Tasks bereitgestellt:
 

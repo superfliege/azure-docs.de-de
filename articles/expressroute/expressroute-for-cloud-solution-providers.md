@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.openlocfilehash: 72b724d5cf6787f8d6afc73fb37f4944cbae78a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dfae23638e31242dc795922fd62d1abb02579480
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)
 Mit den von Microsoft bereitgestellten Diensten mit Hyperskalierung können traditionelle Wiederverkäufer und Distributoren (CSPs) schnell neue Dienste und Lösungen für Ihre Kunden bereitstellen, ohne in die Entwicklung dieser neuen Dienste investieren zu müssen. Microsoft stellt zudem Programme und APIs zur direkten Verwaltung dieser neuen Dienste bereit, sodass der Cloudlösungsanbieter (Cloud Solution Provider, CSP) Microsoft Azure-Ressourcen im Auftrag Ihrer Kunden verwalten kann. Eine dieser Ressourcen ist ExpressRoute. Mit ExpressRoute kann der CSP vorhandene Kundenressourcen mit Azure-Diensten verknüpfen. ExpressRoute ist eine private Hochgeschwindigkeitsverbindung für die Kommunikation mit Diensten in Azure. 
 
-Sie besteht aus einem Verbindungspaar für hohe Verfügbarkeit, das einzelnen Kundenabonnements zugeordnet ist und nicht von mehreren Kunden gemeinsam genutzt werden kann. Jede Verbindung muss in einem anderen Router enden, um eine hohe Verfügbarkeit zu gewährleisten.
+Sie besteht aus einem Verbindungspaar für Hochverfügbarkeit, das den Abonnements einzelner Kunden zugeordnet ist und nicht von mehreren Kunden gemeinsam genutzt werden kann. Jede Verbindung muss in einem anderen Router enden, um Hochverfügbarkeit zu gewährleisten.
 
 > [!NOTE]
 > Bandbreite und Verbindung sind bei ExpressRoute gedeckelt. Bei umfangreichen/komplexen Implementierungen werden daher mehrere ExpressRoute-Verbindungen für einen einzelnen Kunden benötigt.
 > 
 > 
 
-Microsoft Azure stellt eine immer größere Anzahl von Diensten bereit, die Sie Ihren Kunden anbieten können.  Für eine optimale Nutzung dieser Dienste müssen Sie mithilfe von ExpressRoute-Verbindungen sicherstellen, dass der Zugriff auf die Microsoft Azure-Umgebung mit hoher Geschwindigkeit und niedriger Latenz erfolgt.
+Microsoft Azure stellt eine immer größere Anzahl von Diensten bereit, die Sie Ihren Kunden anbieten können. ExpressRoute bietet Zugriff auf die Microsoft Azure-Umgebung mit hoher Geschwindigkeit und geringer Wartezeit, sodass Sie und Ihre Kunden von diesen Diensten profitieren können.
 
 ## <a name="microsoft-azure-management"></a>Verwaltung von Microsoft Azure
 Microsoft stellt Cloudlösungsanbietern APIs zur Verfügung, die sich programmatisch in Ihre eigenen Dienstverwaltungssysteme integrieren lassen und so die Verwaltung der Azure-Kundenabonnements ermöglichen. Die unterstützten Verwaltungsfunktionen finden Sie [hier](https://msdn.microsoft.com/library/partnercenter/dn974944.aspx).
 
 ## <a name="microsoft-azure-resource-management"></a>Verwaltung von Microsoft Azure-Ressourcen
-Je nach dem Vertrag, den Sie mit Ihrem Kunden geschlossen haben, wird bestimmt, wie das Abonnement verwaltet wird. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er eines von zwei Modellen: das „Durchleitungsmodell“ oder das „Direktverbindungsmodell“. Diese Modelle werden im Anschluss ausführlich beschrieben.  
+Die Verwaltung des Abonnements wird durch den Vertrag geregelt, den Sie mit Ihrem Kunden geschlossen haben. Der Cloud-Lösungsanbieter kann die Erstellung und Verwaltung von Ressourcen direkt verwalten, oder der Kunde kann die Kontrolle über das Microsoft Azure-Abonnement erhalten und die Azure-Ressourcen nach Bedarf erstellen. Wenn der Kunde die Erstellung von Ressourcen unter seinem Microsoft Azure-Abonnement selbst verwaltet, verwendet er entweder das *Durchleitungsmodell* oder das *Direktverbindungsmodell*. Diese Modelle werden im Anschluss ausführlich beschrieben.  
 
 ### <a name="connect-through-model"></a>Durchleitungsmodell
 ![alt text](./media/expressroute-for-cloud-solution-providers/connect-through.png)  
@@ -67,7 +67,7 @@ Die Entscheidung für eine dieser beiden Optionen hängt von den Anforderungen I
 
 * **Rollenbasierte Zugriffssteuerung** (Role Based Access Control, RBAC): RBAC basiert auf Azure Active Directory.  Weitere Informationen zu Azure RBAC finden Sie [hier](../active-directory/role-based-access-control-configure.md).
 * **Netzwerk** : Behandelt die verschiedenen Netzwerkthemen in Microsoft Azure.
-* **Azure Active Directory (AAD)** : AAD stellt die Identitätsverwaltung für Microsoft Azure und SaaS-Drittanbieteranwendungen bereit. Weitere Informationen zu Azure AD finden Sie [hier](https://azure.microsoft.com/documentation/services/active-directory/).  
+* **Azure Active Directory (Azure AD)**: Azure AD stellt die Identitätsverwaltung für Microsoft Azure und SaaS-Drittanbieteranwendungen bereit. Weitere Informationen zu Azure AD finden Sie [hier](https://azure.microsoft.com/documentation/services/active-directory/).  
 
 ## <a name="network-speeds"></a>Netzwerkgeschwindigkeiten
 ExpressRoute unterstützt Netzwerkgeschwindigkeiten zwischen 50 Mbit/s und 10 Gbit/s. Dadurch können Kunden eine für ihre individuelle Umgebung benötigte Netzwerkbandbreite erwerben.
@@ -91,7 +91,7 @@ Bei einer Direktverbindungskonfiguration verfügt Ihr Kunde bereits über eine V
 Sie können den Kunden beim Einrichten der Verbindung und beim Konfigurieren der Routen unterstützen, um den Ressourcen in Ihren Datencentern die Kommunikation mit den Kundenressourcen in Ihrem Datencenter (oder mit den in Azure gehosteten Ressourcen) zu ermöglichen.
 
 ## <a name="expressroute-routing-domains"></a>ExpressRoute-Routingdomänen
-ExpressRoute bietet drei Routingdomänen: öffentliches Peering, privates Peering und Microsoft-Peering. Jede der Routingdomänen ist mit identischen Routern in einer Aktiv/Aktiv-Konfiguration für hohe Verfügbarkeit konfiguriert. Ausführlichere Informationen zu ExpressRoute-Routingdomänen finden Sie [hier](expressroute-circuit-peerings.md).
+ExpressRoute bietet drei Routingdomänen: öffentliches Peering, privates Peering und Microsoft-Peering. Jede der Routingdomänen ist mit identischen Routern in einer Aktiv/Aktiv-Konfiguration für Hochverfügbarkeit konfiguriert. Ausführlichere Informationen zu ExpressRoute-Routingdomänen finden Sie [hier](expressroute-circuit-peerings.md).
 
 Sie können benutzerdefinierte Routenfilter definieren, um nur die gewünschten oder benötigten Routen zuzulassen. Weitere Informationen sowie eine Anleitung zum Vornehmen dieser Änderungen finden Sie im Artikel [Erstellen und Ändern des Routings für eine ExpressRoute-Verbindung mithilfe von PowerShell](expressroute-howto-routing-classic.md). Hier finden Sie auch ausführlichere Informationen zu Routingfiltern.
 

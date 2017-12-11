@@ -1,29 +1,29 @@
 ---
-title: Indizes, Abfragen und Filter auf den Seiten des Azure Search-Portals | Microsoft-Dokumentation
-description: Generieren Sie im Azure-Portal einen Index auf der Grundlage vordefinierter Beispieldaten. Machen Sie sich unter anderem mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut.
+title: "Azure Search-Tutorial zur Indizierung, Abfrage und Filterung über das Portal | Microsoft-Dokumentation"
+description: "Generieren Sie über das Azure-Portal auf der Grundlage vordefinierter Beispieldaten einen Index in Azure Search. Machen Sie sich unter anderem mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut."
 services: search
 documentationcenter: 
 author: HeidiSteen
 manager: jhubbard
 editor: 
 tags: azure-portal
-ms.assetid: 21adc351-69bb-4a39-bc59-598c60c8f958
+ms.assetid: 
 ms.service: search
 ms.devlang: na
 ms.workload: search
 ms.topic: hero-article
 ms.tgt_pltfrm: na
-ms.date: 06/26/2017
+ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: a67de3d385ccb1f65d026acfa0d4413df889bafe
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 098faa777746ac23ce7e88aa01fc727f88d4259c
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>Erstellen, Abfragen und Filtern eines Azure Search-Index im Portal
 
-Generieren Sie im Azure-Portal mithilfe des **Datenimport-Assistenten** auf der Grundlage eines vordefinierten Beispieldatasets im Handumdrehen einen Index. Verwenden Sie den **Suchexplorer**, um sich mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut zu machen.  
+Generieren Sie über das Azure-Portal mithilfe des **Datenimport-Assistenten** auf der Grundlage eines vordefinierten Beispieldatasets im Handumdrehen einen Azure Search-Index. Verwenden Sie den **Suchexplorer**, um sich mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut zu machen.  
 
 Diese codefreie Einführung erleichtert Ihnen den Einstieg mit vordefinierten Daten, sodass Sie umgehend interessante Abfragen schreiben können. Die Portaltools sind kein Ersatz für Code, aber sie können für die folgenden Aufgaben nützlich sein:
 

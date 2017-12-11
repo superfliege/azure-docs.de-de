@@ -1,26 +1,19 @@
 ---
-title: "Dienstprinzipal für Azure Kubernetes-Cluster | Microsoft-Dokumentation"
+title: "Dienstprinzipal für Azure Kubernetes-Cluster"
 description: "Erstellen und Verwalten eines Azure Active Directory-Dienstprinzipals für einen Kubernetes-Cluster in Azure Container Service"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: acs, azure-container-service, kubernetes
-keywords: 
 ms.service: container-service
-ms.devlang: na
 ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 09/26/2017
+ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c07bebb98345981d36eb928bea14a09df9bc741
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 0c7e05525f1c6d11c17b4b36946dd797a7a95d08
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Einrichten eines Azure AD-Dienstprinzipals für einen Kubernetes-Cluster in Container Service
 
@@ -36,11 +29,11 @@ In diesem Artikel werden verschiedene Optionen zum Einrichten eines Dienstprinzi
 
 Sie können einen vorhandenen Azure AD-Dienstprinzipal verwenden, der die folgenden Anforderungen erfüllt, oder einen neuen Dienstprinzipal erstellen.
 
-* **Bereich**: Die Ressourcengruppe, die zum Bereitstellen des Clusters verwendet wird.
+* **Bereich:** Ressourcengruppe
 
-* **Rolle:****Mitwirkender**
+* **Rolle:** Mitwirkender
 
-* **Geheimer Clientschlüssel:** Muss ein Kennwort sein. Derzeit kann kein für die Zertifikatauthentifizierung eingerichteter Dienstprinzipal verwendet werden.
+* **Clientgeheimnis:** Muss ein Kennwort sein. Derzeit kann kein für die Zertifikatauthentifizierung eingerichteter Dienstprinzipal verwendet werden.
 
 > [!IMPORTANT]
 > Um einen Dienstprinzipal zu erstellen, müssen Sie über die Berechtigungen verfügen, um eine Anwendung bei Ihrem Azure AD-Mandanten zu registrieren und die Anwendung einer Rolle in Ihrem Abonnement zuzuweisen. [Überprüfen Sie im Portal](../../azure-resource-manager/resource-group-create-service-principal-portal.md#required-permissions), ob Sie über die erforderlichen Berechtigungen verfügen.
@@ -59,7 +52,7 @@ az account set --subscription "mySubscriptionID"
 
 az group create --name "myResourceGroup" --location "westus"
 
-az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/mySubscriptionID"
+az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/<subscriptionID>/resourceGroups/<resourceGroupName>"
 ```
 
 Die Ausgabe sieht in etwa wie folgt aus (redigierte Darstellung):
@@ -126,11 +119,50 @@ az acs create -n myClusterName -d myDNSPrefix -g myResourceGroup --generate-ssh-
 
 * Wenn Sie die **Client-ID** des Dienstprinzipals angeben, können Sie den Wert von `appId` (wie in diesem Artikel gezeigt) oder den entsprechenden `name`-Wert für den Dienstprinzipal (beispielsweise `https://www.contoso.org/example`) verwenden.
 
-* Auf dem virtuellen Mastercomputer und den virtuellen Agent-Computern des Kubernetes-Clusters werden die Dienstprinzipal-Anmeldeinformationen in der Datei „/etc/kubernetes/azure.json“ gespeichert.
+* Auf dem virtuellen Mastercomputer und den virtuellen Agent-Computern des Kubernetes-Clusters werden die Dienstprinzipal-Anmeldeinformationen in der Datei `/etc/kubernetes/azure.json` gespeichert.
 
-* Wenn Sie den Dienstprinzipal mithilfe des Befehls `az acs create` automatisch generieren, werden die Dienstprinzipal-Anmeldeinformationen auf dem Computer, auf dem der Befehl ausgeführt wird, in die Datei „~/.azure/acsServicePrincipal.json“ geschrieben.
+* Wenn Sie den Dienstprinzipal mithilfe des Befehls `az acs create` automatisch generieren, werden die Dienstprinzipal-Anmeldeinformationen auf dem Computer, auf dem der Befehl ausgeführt wird, in die Datei `~/.azure/acsServicePrincipal.json` geschrieben.
 
 * Wenn Sie den Dienstprinzipal mithilfe des Befehls `az acs create` automatisch generieren, kann sich der Dienstprinzipal auch bei einer [Azure-Containerregistrierung](../../container-registry/container-registry-intro.md) registrieren, die im gleichen Abonnement erstellt wurde.
+
+* Dienstprinzipal-Anmeldeinformationen können ablaufen, woraufhin die Clusterknoten in den Zustand **NotReady** wechseln. Informationen zur Behandlung dieses Problems finden Sie im Abschnitt [Ablauf von Anmeldeinformationen](#credential-expiration).
+
+## <a name="credential-expiration"></a>Ablauf von Anmeldeinformationen
+
+Sofern bei der Dienstprinzipalerstellung kein benutzerdefiniertes Gültigkeitszeitfenster (mithilfe des Parameters `--years`) angegeben wird, sind die Anmeldeinformationen des Dienstprinzipals ab dessen Erstellung ein Jahr lang gültig. Nach Ablauf der Anmeldeinformationen wechseln die Clusterknoten unter Umständen in den Zustand **NotReady**.
+
+Führen Sie zum Überprüfen des Ablaufdatums eines Dienstprinzipals den Befehl [az ad app show](/cli/azure/ad/app#az_ad_app_show) mit dem Parameter `--debug` aus, und suchen Sie im unteren Bereich der Ausgabe nach dem `endDate`-Wert von `passwordCredentials`:
+
+```azurecli
+az ad app show --id <appId> --debug
+```
+
+Ausgabe (Ausschnitt):
+
+```json
+...
+"passwordCredentials":[{"customKeyIdentifier":null,"endDate":"2018-11-20T23:29:49.316176Z"
+...
+```
+
+Sind die Dienstprinzipal-Anmeldeinformationen abgelaufen, aktualisieren Sie sie mithilfe des Befehls [az ad sp reset-credentials](/cli/azure/ad/sp#az_ad_sp_reset_credentials):
+
+```azurecli
+az ad sp reset-credentials --name <appId>
+```
+
+Ausgabe:
+
+```json
+{
+  "appId": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "name": "4fd193b0-e6c6-408c-a21a-803441ad2851",
+  "password": "404203c3-0000-0000-0000-d1d2956f3606",
+  "tenant": "72f988bf-0000-0000-0000b-2d7cd011db47"
+}
+```
+
+Aktualisieren Sie anschließend `/etc/kubernetes/azure.json` mit den neuen Anmeldeinformationen auf allen Clusterknoten, und starten Sie die Knoten neu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

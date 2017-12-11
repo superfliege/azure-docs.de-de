@@ -6,22 +6,22 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: 
-ms.assetid: e71da405-835a-48f3-956f-45c1a85698d7
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 01/23/2017
+ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: becffc6011ef1dd49e07d22880d3346036629393
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: fbde63a2fe986342026e2b9dca5db06ea667c8d6
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="what-is-api-management"></a>Was ist API Management?
-API Management unterstützt Organisationen beim Veröffentlichen von APIs für externe, Partner- und interne Entwickler, um das volle Potenzial von Daten und Diensten nutzen zu können. Unternehmen sind weltweit dabei, ihren Betrieb als digitale Plattform zu erweitern, neue Kanäle zu erschließen, neue Kunden zu finden und die Bindung zu existierenden Kunden zu vertiefen. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, Geschäftserkenntnissen, Analyse, Sicherheit und Schutz.
+
+API Management (APIM) unterstützt Organisationen beim Veröffentlichen von APIs für externe Entwickler, Partnerentwickler und interne Entwickler, um das volle Potenzial von Daten und Diensten ausschöpfen zu können. Unternehmen sind weltweit dabei, ihren Betrieb als digitale Plattform zu erweitern, neue Kanäle zu erschließen, neue Kunden zu finden und die Bindung zu existierenden Kunden zu vertiefen. API Management bietet die Kernkompetenzen zur Sicherstellung eines erfolgreichen API-Programms in Form von Entwicklerengagement, geschäftlichen Erkenntnissen, Analysen, Sicherheit und Schutz. Mithilfe von Azure API Management können Sie ein API-Programm mit vollem Funktionsumfang auf einem beliebigen Back-End starten.
 
 Im folgenden Video erhalten Sie eine Übersicht über Azure API Management und erfahren, wie Sie API Management ohne größeren Aufwand zum Hinzufügen vieler Features zu Ihrer API verwenden, z.B. Zugriffssteuerung, Ratenbegrenzung, Überwachung, Ereignisprotokollierung und Zwischenspeicherung von Antworten.
 
@@ -29,24 +29,51 @@ Im folgenden Video erhalten Sie eine Übersicht über Azure API Management und e
 > 
 > 
 
-Administratoren erstellen APIs, um API Management zu nutzen. Jede API besteht aus einer oder mehreren Operationen, und jede API kann zu einem oder mehreren Produkten hinzugefügt werden. Um eine API zu nutzen, abonnieren Entwickler ein Produkt, das diese API enthält. Anschließend können sie die Operationen der API aufrufen und unterliegen dabei allen geltenden Nutzungsrichtlinien.
+Dieses Thema enthält eine Übersicht über allgemeine Szenarien mit APIM.  Außerdem finden Sie hier eine Kurzübersicht über die Hauptkomponenten des APIM-Systems. Danach werden die einzelnen Komponenten ausführlicher behandelt.
 
-Dieses Thema behandelt einige Schlüsselkonzepte von API Management.
+## <a name="overview"></a>Übersicht
 
-> [!NOTE]
-> Weitere Informationen finden Sie im Whitepaper [Cloud-based API Management: Harnessing the Power of APIs](http://j.mp/ms-apim-whitepaper) (PDF, in englischer Sprache). In diesem Whitepaper zu API Management von CITO Research werden folgende Themen behandelt: 
-> 
-> * Allgemeine API-Anforderungen und -Herausforderungen
-> * Entkoppeln von APIs und Präsentieren von Fassaden
-> * Schnelle Einrichtung und Inbetriebnahme durch Entwickler
-> * Sichern des Zugriffs
-> * Analysen und Metriken
-> * Kontrolle und Einblick mit einer API Management-Plattform
-> * Verwenden von Cloudlösungen im Vergleich zu lokalen Lösungen
-> * Azure API Management
-> 
-> 
+Administratoren erstellen APIs, um API Management zu nutzen. Jede API besteht aus einer oder mehreren Operationen, und jede API kann zu einem oder mehreren Produkten hinzugefügt werden. Um eine API zu nutzen, abonnieren Entwickler ein Produkt, das diese API enthält. Anschließend können sie die Operationen der API aufrufen und unterliegen dabei allen geltenden Nutzungsrichtlinien. Zu den häufigen Szenarios gehören:
 
+* **Schutz einer mobilen Infrastruktur** durch Einschränkung des Zugriffs mit API-Schlüsseln, das Verhindern von DOS-Angriffen über eine Drosselung oder das Verwenden erweiterter Sicherheitsrichtlinien wie z. B. der JWT-Tokenüberprüfung.
+* **Bereitstellung eines ISV-Partnerökosystems** durch eine schnelle Partnerintegration über das Entwicklerportal und das Erstellen einer API-Fassade zum Entkoppeln interner Implementierungen, die noch nicht für die Partnernutzung geeignet sind.
+* **Ausführung eines internen API-Programms** durch Bereitstellung einer zentralen Stelle innerhalb der Organisation für den Austausch über Verfügbarkeit und neueste Änderungen an APIs, Einschränkung des Zugriffs basierend auf Organisationskonten – all dies basierend auf einem sicheren Kanal zwischen API-Gateway und Back-End.
+
+Das System setzt sich aus den folgenden Komponenten zusammen:
+
+* Das **API-Gateway** ist der Endpunkt, der folgende Aufgaben übernimmt:
+  
+  * Akzeptieren von API-Aufrufen und Weiterleiten dieser Aufrufe an Ihre Back-Ends
+  * Überprüfen von API-Schlüsseln, JWT-Token, Zertifikaten und anderen Anmeldeinformationen
+  * Erzwingen von Nutzungskontingenten und Übertragungsratenlimits
+  * Dynamisches Transformieren Ihrer API ohne Codeänderungen
+  * Zwischenspeichern von Back-End-Antworten, falls eingerichtet
+  * Protokollieren von Aufrufmetadaten zu Analysezwecken
+* Das **Herausgeberportal** ist die Verwaltungsoberfläche, in der Sie Ihr API-Programm einrichten. Verwenden Sie es zu folgenden Zwecken:
+  
+  * Definieren oder Importieren des API-Schemas
+  * Paketieren von APIs in Produkten
+  * Konfigurieren von Richtlinien wie z. B. Kontingenten oder Transformationen für die APIs
+  * Gewinnen von Erkenntnissen mithilfe von Analysen
+  * Verwalten von Benutzern
+* Das **Entwicklerportal** dient als wichtigste Webpräsenz für Entwickler, in der die folgenden Aufgaben ausgeführt werden können:
+  
+  * Lesen der API-Dokumentation
+  * Ausprobieren einer API mithilfe der interaktiven Konsole
+  * Erstellen eines Kontos und Anfordern von API-Schlüsseln
+  * Zugriff auf Nutzungsanalysen
+
+Weitere Informationen finden Sie im Whitepaper [Cloud-based API Management: Harnessing the Power of APIs](http://j.mp/ms-apim-whitepaper) (PDF, in englischer Sprache). In diesem Whitepaper zu API Management von CITO Research werden folgende Themen behandelt: 
+ 
+ * Allgemeine API-Anforderungen und -Herausforderungen
+ * Entkoppeln von APIs und Präsentieren von Fassaden
+ * Schnelle Einrichtung und Inbetriebnahme durch Entwickler
+ * Sichern des Zugriffs
+ * Analysen und Metriken
+ * Kontrolle und Einblick mit einer API Management-Plattform
+ * Verwenden von Cloudlösungen im Vergleich zu lokalen Lösungen
+ * Azure API Management
+ 
 ## <a name="apis"></a>APIs und Operationen
 APIs sind die Grundlage einer API Management-Dienstinstanz. Jede API stellt Entwicklern einen Satz von Operationen zur Verfügung. Jede API enthält einen Verweis auf den Back-End-Dienst, der die API implementiert, und die Operationen der API sind den Operationen des Back-End-Diensts zugeordnet. Für Operationen in API Management ist eine umfangreiche Konfiguration möglich. Sie können die URL-Zuordnung, Abfrage- und Pfadparameter, Anforderungs- und Antwortinhalte sowie das Zwischenspeichern von Operationsantworten steuern. Durchsatzgrenzen, Kontingente und IP-Einschränkungen können ebenfalls auf API-Ebene oder für einzelne Operationen konfiguriert werden.
 
@@ -57,14 +84,8 @@ APIs werden in Form von Produkten an Entwickler bereitgestellt. Produkte in API 
 
 Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. Produkte gewähren Sichtbarkeit für Gruppen, und Entwickler können alle Produkte anzeigen und abonnieren, die für die Gruppen sichtbar sind, in denen sie Mitglied sind. 
 
-Weitere Informationen finden Sie unter [Erstellen und Veröffentlichen eines Produkts][How to create and publish a product] und im folgenden Video.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Using-Products/player]
-> 
-> 
-
 ## <a name="groups"></a> Gruppen
-Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. API Management umfasst die folgenden unveränderlichen Systemgruppen.
+Gruppen dienen zur Verwaltung der Sichtbarkeit von Produkten für Entwickler. API Management umfasst folgende unveränderliche Systemgruppen:
 
 * **Administratoren** – Azure-Abonnementadministratoren sind Mitglieder dieser Gruppe. Administratoren verwalten API Management-Dienstinstanzen und erstellen die APIs, Operationen und Produkte, die von den Entwicklern verwendet werden.
 * **Entwickler** – Zu dieser Gruppe gehören authentifizierte Benutzer des Entwicklerportals. Entwickler sind die Kunden, die Anwendungen unter Verwendung Ihrer APIs erstellen. Entwickler erhalten Zugriff zum Entwicklerportal und erstellen Anwendungen, die die Operationen einer API aufrufen.
@@ -82,31 +103,33 @@ Wenn Entwickler ein Produkt abonnieren, erhalten Sie den primären und den sekun
 Weitere Informationen finden Sie unter [Erstellen und Einladen von Entwicklern][How to create or invite developers] und [Zuordnen von Entwicklern zu Gruppen][How to associate groups with developers].
 
 ## <a name="policies"></a> Richtlinien
-Richtlinien sind ein umfassendes Werkzeug in API Management, mit dem Anbieter das Verhalten der API in Form von Konfigurationen verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind z. B. Formatumwandlungen von XML nach JSON und Durchsatzgrenzen, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Viele weitere Richtlinien sind verfügbar.
+Richtlinien sind ein umfassendes Werkzeug in API Management, mit dem Anbieter das Verhalten der API in Form von Konfigurationen verändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Häufig verwendete Anweisungen sind etwa Formatumwandlungen von XML nach JSON und Aufrufratenlimits, um die Anzahl eingehender Aufrufe von einem Entwickler zu beschränken. Darüber hinaus stehen noch viele weitere Richtlinien zur Verfügung.
 
-Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) und [Variable festlegen](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies), [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx) und im folgenden Video.
+Richtlinienausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-Richtlinie verwendet werden, sofern in der Richtlinie nicht anders angegeben. Einige Richtlinien, beispielsweise [Ablaufsteuerung](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) und [Variable festlegen](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable), basieren auf Richtlinienausdrücken. Weitere Informationen finden Sie unter [Erweiterte Richtlinien](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies) und [Richtlinienausdrücke](https://msdn.microsoft.com/library/azure/dn910913.aspx).
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player]
-> 
-> 
 
-Eine vollständige Liste der Richtlinien für API Management finden Sie unter [Gruppenrichtlinienreferenz][Policy reference]. Weitere Informationen zur Verwendung und Konfiguration von Richtlinien finden Sie unter [Richtlinien für API Management][API Management policies]. Ein Tutorial zum Erstellen eines Produkts mit Richtlinien für Durchsatzgrenzen und Kontingente finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen][How create and configure advanced product settings]. Das folgende Video enthält eine Veranschaulichung.
+Eine vollständige Liste der Richtlinien für API Management finden Sie unter [Gruppenrichtlinienreferenz][Policy reference]. Weitere Informationen zur Verwendung und Konfiguration von Richtlinien finden Sie unter [Richtlinien für API Management][API Management policies]. Ein Tutorial zum Erstellen eines Produkts mit Richtlinien für Durchsatzgrenzen und Kontingente finden Sie unter [Erstellen und Konfigurieren erweiterter Produkteinstellungen][How create and configure advanced product settings].
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Rate-Limits-and-Quotas/player]
-> 
-> 
 
 ## <a name="developer-portal"></a> Entwicklerportal
-Im Entwicklerportal können Entwickler auf Ihre APIs zugreifen, Operationen anzeigen und aufrufen und Produkte abonnieren. Potenzielle Kunden können das Entwicklerportal besuchen, APIs und Operationen anzeigen und sich anmelden. Sie finden die URL Ihres Entwicklerportals im Dashboard des klassischen Azure-Portals für Ihre API Management-Dienstinstanz.
+Im Entwicklerportal können Entwickler auf Ihre APIs zugreifen, Operationen anzeigen und aufrufen und Produkte abonnieren. Potenzielle Kunden können das Entwicklerportal besuchen, APIs und Operationen anzeigen und sich anmelden. Sie finden die URL Ihres Entwicklerportals im Dashboard des Azure-Portals für Ihre API Management-Dienstinstanz.
 
 Sie können das Erscheinungsbild Ihres Entwicklerportals konfigurieren, indem Sie eigene Inhalte hinzufügen, Stilregeln anpassen und Ihr Markenbild einfügen.
 
 ## <a name="api-management-and-the-api-economy"></a>API Management und API-Ökonomie
-Weitere Informationen zu API Management erhalten Sie, indem Sie sich die folgende Präsentation von der Konferenz Microsoft Ignite 2015 ansehen.
 
-> [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3708/player]
+Weitere Informationen zu API Management finden Sie in der folgenden Präsentation von der Microsoft Ignite 2017-Konferenz.
+
+> [!VIDEO https://channel9.msdn.com/Events/Ignite/Microsoft-Ignite-Orlando-2017/BRK2186/player]
 > 
 > 
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Absolvieren Sie das folgende Schnellstarttutorial, und beginnen Sie mit der Verwendung von Azure API Management:
+
+> [!div class="nextstepaction"]
+> [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
 
 [APIs and operations]: #apis
 [Products]: #products
@@ -120,11 +143,11 @@ Weitere Informationen zu API Management erhalten Sie, indem Sie sich die folgend
 [How to create and publish a product]: api-management-howto-add-products.md
 [How to create and use groups]: api-management-howto-create-groups.md
 [How to associate groups with developers]: api-management-howto-create-groups.md#associate-group-developer
-[How create and configure advanced product settings]: api-management-howto-product-with-rules.md
+[How create and configure advanced product settings]: transform-api.md
 [How to create or invite developers]: api-management-howto-create-or-invite-developers.md
 [Policy reference]: api-management-policy-reference.md
 [API Management policies]: api-management-howto-policies.md
-[Create an API Management service instance]: api-management-get-started.md#create-service-instance
+[Create an API Management service instance]: get-started-create-service-instance.md
 
 
 
