@@ -34,6 +34,8 @@
       href: how-to-install-iot-core.md
 - name: Konzepte
   items:
+    - name: IoT Edge-Glossar
+      href: iot-edge-glossary.md
     - name: IoT Edge-Module
       href: iot-edge-modules.md
       items:

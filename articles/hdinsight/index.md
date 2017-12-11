@@ -10,17 +10,19 @@ ms.service: hdinsight
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 01/23/2017
+ms.date: 12/05/2017
 ms.author: carolz
-ms.openlocfilehash: 7d639ca03261f3a9cad537dd92103c5aa6cd0af9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8dce980e50b465b67d3d6f14dc79c48c5f2fcdb5
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 #<a name="azure-hdinsight-documentation"></a>Azure HDInsight-Dokumentation
 
-Hier erfahren Sie, wie Sie Hadoop in der Cloud unter HDInsight verwenden, um Streamingdaten oder historische Daten zu analysieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Cluster erstellen, Big Data verarbeiten und analysieren und Lösungen mit Hadoop, Spark, HBase, R-Server, Storm und anderen Technologien des Hadoop-Ökosystems entwerfen.
+Hier erfahren Sie, wie Sie Azure HDInsight verwenden, um Streamingdaten oder historische Daten zu analysieren. Anhand von Tutorials und anderem Dokumentationsmaterial wird gezeigt, wie Sie Cluster erstellen, Big Data verarbeiten und analysieren und Lösungen mit den beliebtesten Open Source-Frameworks wie Hadoop, Spark, Hive, LLAP, Kafka, Storm, R usw. entwerfen. 
+
+Azure HDInsight ist ein umfassender, vollständig verwalteter Open Source-Analysedienst für Unternehmen. HDInsight ist ein Clouddienst, mit dem sich riesige Datenmengen einfach, schnell und kostengünstig verarbeiten lassen. HDInsight unterstützt darüber hinaus eine breite Palette an Szenarien, u.a. Extrahieren, Transformieren und Laden (ETL); Data Warehousing; Machine Learning und IoT.  
 
 <ul class="panelContent cardsFTitle">
     <li>
@@ -41,7 +43,156 @@ Hier erfahren Sie, wie Sie Hadoop in der Cloud unter HDInsight verwenden, um Str
         </div>
         </a>
     </li>
-     <li>
+    <li>
+        <a href="/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erste Schritte mit Hadoop in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/spark/apache-spark-jupyter-spark-sql">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erste Schritte mit Spark in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/kafka/apache-kafka-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erste Schritte mit Kafka in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/storm/apache-storm-tutorial-get-started-linux">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erste Schritte mit Storm in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/hbase/apache-hbase-tutorial-get-started-linux">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erste Schritte mit HBase in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/r-server/r-server-get-started">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Erste Schritte mit R Server in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/hdinsight-apps-install-applications">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Installieren von Drittanbieteranwendungen in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+    <li>
+        <a href="/azure/hdinsight/domain-joined/apache-domain-joined-introduction">
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardImageOuter">
+                        <div class="cardImage">
+                            <img src="media/index/get-started.svg" alt="" />
+                        </div>
+                    </div>
+                    <div class="cardText">
+                        <h3>Unternehmenssicherheit in HDInsight</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </a>
+    </li>
+</ul>
+
+---
+<h2>Schulungsressourcen</h2>
+<ul class="panelContent cardsFTitle">
+    <li>
         <a href="https://azure.microsoft.com/documentation/videos/index/?services=hdinsight">
         <div class="cardSize">
             <div class="cardPadding">
@@ -60,78 +211,6 @@ Hier erfahren Sie, wie Sie Hadoop in der Cloud unter HDInsight verwenden, um Str
         </a>
     </li>
     <li>
-        <a href="/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Erste Schritte mit HDInsight mithilfe eines Linux-basierten Hadoop-Clusters</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/hdinsight/hdinsight-hadoop-r-server-get-started">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Erste Schritte mit HDInsight mithilfe eines Spark-Clusters mit R Server</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-     <li>
-        <a href="/azure/hdinsight/hdinsight-hbase-tutorial-get-started-linux">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Erste Schritte mit HDInsight mithilfe eines HBase-Clusters</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-    <li>
-        <a href="/azure/hdinsight/hdinsight-apache-storm-tutorial-get-started-linux">
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/tutorial.svg" alt="" />
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>Erste Schritte mit HDInsight mithilfe eines Apache Storm-Clusters</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </a>
-    </li>
-<li>
         <a href="https://github.com/hdinsight/hdinsight-dev-guide/blob/master/HDInsight%20Developer%20Guide.pdf">
         <div class="cardSize">
             <div class="cardPadding">

@@ -66,6 +66,9 @@
         - name: Computeoptimiert
           href: sizes-compute.md
         - name: Arbeitsspeicheroptimiert
+          items:
+            - name: Eingeschränkte vCPUs
+              href: constrained-vcpu.md
           href: sizes-memory.md
         - name: Speicheroptimiert
           href: sizes-storage.md

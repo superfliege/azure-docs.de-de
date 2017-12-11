@@ -16,6 +16,7 @@
 ## [Aufgabe 5: Aktivieren der Kennwortsynchronisierung](active-directory-ds-getting-started-password-sync.md)
 
 # Anleitung
+## [Verwenden von Azure AD Domain Services in Azure CSP-Abonnements](active-directory-ds-csp.md)
 ## [Enable Azure AD Domain Services using PowerShell (Aktivieren von Azure AD Domain Services mit PowerShell)](active-directory-ds-enable-using-powershell.md)
 ## Beitreten zu einer verwalteten Domäne
 ### [Virtueller Windows Server-Computer](active-directory-ds-admin-guide-join-windows-vm-portal.md)
