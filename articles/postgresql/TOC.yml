@@ -89,7 +89,7 @@
           href: howto-restore-server-portal.md
         - name: Azure-Befehlszeilenschnittstelle
           href: howto-restore-server-cli.md
-    - name: Migrieren Ihrer Datenbank
+    - name: Migrieren einer Datenbank
       items:
         - name: Sicherung und Wiederherstellung
           href: howto-migrate-using-dump-and-restore.md

@@ -83,12 +83,6 @@
           href: concepts-compatibility.md
         - name: Anwendungsentwicklung
           href: concepts-database-application-development.md
-    - name: Migrieren Ihrer Datenbank
-      items:
-        - name: Sicherung und Wiederherstellung
-          href: concepts-migrate-dump-restore.md
-        - name: Importieren und Exportieren
-          href: concepts-migrate-import-export.md
 - name: Anleitungen
   items:
     - name: Verwalten eines Servers
@@ -107,6 +101,12 @@
           href: howto-restore-server-portal.md
         - name: Azure-Befehlszeilenschnittstelle
           href: howto-restore-server-cli.md
+    - name: Migrieren einer Datenbank
+      items:
+        - name: Sicherung und Wiederherstellung
+          href: concepts-migrate-dump-restore.md
+        - name: Importieren und Exportieren
+          href: concepts-migrate-import-export.md
     - name: Herstellen einer Verbindung mit Anwendungen
       items:
         - name: Erstellen von Benutzern

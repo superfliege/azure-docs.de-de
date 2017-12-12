@@ -219,7 +219,6 @@
 ### [Configure Sign-In Auto-Acceleration using HRD Policy (Konfigurieren der automatischen Anmeldebeschleunigung per HRD Policy)](active-directory-auto-acceleration-using-hrd.md)
 
 ### [Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
-#### [Self-Service-Zugriff](active-directory-self-service-application-access.md)
 #### [SSO-Zugriff](active-directory-appssoaccess-whatis.md)
 #### [Zertifikate für SSO](active-directory-sso-certs.md)
 #### [Mandanteneinschränkungen](active-directory-tenant-restrictions.md)

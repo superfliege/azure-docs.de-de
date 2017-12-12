@@ -45,6 +45,8 @@
       items:
         - name: Voraussetzungen
           href: azure-stack-deploy.md
+        - name: Telemetrie
+          href: azure-stack-telemetry.md
         - name: Bereitstellen
           href: azure-stack-run-powershell-script.md
         - name: Installieren von PowerShell
