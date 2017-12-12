@@ -10,9 +10,9 @@
 ## [Migrieren einer SQL Server-Datenbank](../sql/virtual-machines-windows-migrate-sql.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)
 
 # Anleitung
-## Konfigurieren hoher Verfügbarkeit
-### [Optionen für hohe Verfügbarkeit](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
-### [Konfigurieren von Always On-Verfügbarkeitsgruppen im klassischen Portal](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
+## Konfigurieren von Hochverfügbarkeit
+### [Optionen für Hochverfügbarkeit](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json) 
+### [Konfigurieren von Always On-Verfügbarkeitsgruppen im Portal](virtual-machines-windows-classic-portal-sql-alwayson-availability-groups.md)
 ### [Konfigurieren von Always On-Verfügbarkeitsgruppen mit PowerShell](virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md)
 ### [Konfigurieren eines internen Listeners für eine Verfügbarkeitsgruppe](virtual-machines-windows-classic-ps-sql-int-listener.md)
 ### [Konfigurieren eines externen Listeners für eine Verfügbarkeitsgruppe](virtual-machines-windows-classic-ps-sql-ext-listener.md)

@@ -116,6 +116,8 @@
       items:
         - name: Richtlinien für Infrastrukturen
           href: infrastructure-example.md
+        - name: vCPU-Kontingente
+          href: quotas.md
 - name: Anleitungen
   items:
     - name: Virtuelle Computer erstellen

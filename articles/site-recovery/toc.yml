@@ -139,24 +139,24 @@
           items:
             - name: Übersicht und Voraussetzungen
               href: site-recovery-deployment-planner.md
-            - name: Ausführen des Bereitstellungsplaners
+            - name: Ausführen des Bereitstellungsplanertools
               href: site-recovery-vmware-deployment-planner-run.md
             - name: Analysieren des generierten Berichts
               href: site-recovery-vmware-deployment-planner-analyze-report.md
-            - name: Analysieren der Kostenvorkalkulation für die Notfallwiederherstellung
+            - name: Analysieren der Kostenvorkalkulation
               href: site-recovery-vmware-deployment-planner-cost-estimation.md
         - name: Horizontales Hochskalieren von Prozessservern für die VMware-Replikation
           href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
-        - name: Bereitstellungsplanung und -tool für die Hyper-V-Replikation in Azure
+        - name: Bereitstellungsplanertool für die Hyper-V-Replikation in Azure
           href: null
           items:
             - name: Übersicht und Voraussetzungen
               href: site-recovery-hyper-v-deployment-planner.md
-            - name: Ausführen des Bereitstellungsplaners
+            - name: Ausführen des Bereitstellungsplanertools
               href: site-recovery-hyper-v-deployment-planner-run.md
             - name: Analysieren des generierten Berichts
               href: site-recovery-hyper-v-deployment-planner-analyze-report.md
-            - name: Analysieren der Kostenvorkalkulation für die Notfallwiederherstellung
+            - name: Analysieren der Kostenvorkalkulation
               href: site-recovery-hyper-v-deployment-planner-cost-estimation.md
         - name: Leistungsskalierungstests für die Hyper-V-Replikation zwischen lokalen Standorten
           href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md

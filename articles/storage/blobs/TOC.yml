@@ -60,6 +60,8 @@
       items:
         - name: Replikation
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Speicherkontooptionen
+          href: storage-account-options.md
         - name: Heiße und kalte Ebene und Archivebene
           href: storage-blob-storage-tiers.md
         - name: Reagieren auf Ereignisse
