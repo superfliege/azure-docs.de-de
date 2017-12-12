@@ -135,6 +135,8 @@
       items:
         - name: Kontinuierliche Bereitstellung
           href: functions-continuous-deployment.md
+        - name: Zip-basierte Pushbereitstellung
+          href: deployment-zip-push.md
         - name: Automatische Ressourcenbereitstellung
           href: functions-infrastructure-as-code.md
         - name: Lokale Funktionen

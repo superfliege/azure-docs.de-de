@@ -12,8 +12,6 @@
   items:
     - name: Erstellen einer Dienstkataloganwendung
       href: publish-service-catalog-app.md
-    - name: Erstellen einer Marketplace-Anwendung
-      href: publish-marketplace-app.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle

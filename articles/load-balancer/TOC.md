@@ -1,7 +1,7 @@
 # Übersicht
 ## [Was ist der Load Balancer?](load-balancer-overview.md)
 ## [Was ist Load Balancer Standard?](load-balancer-standard-overview.md)
-## [Internet Load Balancer](load-balancer-internet-overview.md)
+## [Öffentlicher Lastenausgleich](load-balancer-internet-overview.md)
 ## [Interner Load Balancer](load-balancer-internal-overview.md)
 ## [Grundlegendes zu Load Balancer-Tests](load-balancer-custom-probe-overview.md)
 ## [Grundlegendes zu Hochverfügbarkeitsports](load-balancer-ha-ports-overview.md)
@@ -12,31 +12,23 @@
 
 # Erste Schritte
 
-## [Konfigurieren des internen Load Balancers](load-balancer-get-started-ilb-arm-portal.md)
-### [Konfigurieren des internen Load Balancers (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
-### [Konfigurieren des internen Load Balancers (CLI)](load-balancer-get-started-ilb-arm-cli.md)
-### [Konfigurieren des internen Load Balancers (Vorlage)](load-balancer-get-started-ilb-arm-template.md)
+## [Konfigurieren des internen Lastenausgleichs](load-balancer-get-started-ilb-arm-portal.md)
+### [Konfigurieren des internen Lastenausgleichs (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
+### [Konfigurieren des internen Lastenausgleichs (CLI)](load-balancer-get-started-ilb-arm-cli.md)
+### [Konfigurieren des internen Lastenausgleichs (Vorlage)](load-balancer-get-started-ilb-arm-template.md)
 
-## [Konfigurieren des Internal Load Balancers für Clouddienste](load-balancer-get-started-ilb-classic-cloud.md)
-### [Konfigurieren des Internal Load Balancers für Clouddienste (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
-### [Konfigurieren des Internal Load Balancers für Cloud Services (CLI)](load-balancer-get-started-ilb-classic-cli.md)
+## [Konfigurieren des öffentlichen Lastenausgleichs](load-balancer-get-started-internet-portal.md)
+### [Konfigurieren des öffentlichen Lastenausgleichs (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
+### [Konfigurieren des öffentlichen Lastenausgleichs (CLI)](load-balancer-get-started-internet-arm-cli.md)
+### [Konfigurieren des öffentlichen Lastenausgleichs (Vorlage)](load-balancer-get-started-internet-arm-template.md)
 
-## [Konfigurieren des Load Balancers mit Internetzugriff](load-balancer-get-started-internet-portal.md)
-### [Konfigurieren des Load Balancers mit Internetzugriff (PowerShell)](load-balancer-get-started-internet-arm-ps.md)
-### [Konfigurieren des Load Balancers mit Internetzugriff (CLI)](load-balancer-get-started-internet-arm-cli.md)
-### [Konfigurieren des Load Balancers mit Internetzugriff (Vorlage)](load-balancer-get-started-internet-arm-template.md)
+## [Erstellen des öffentlichen Lastenausgleichs mit IPv6](load-balancer-ipv6-internet-ps.md)
+### [Erstellen des öffentlichen Lastenausgleichs mit IPv6 (CLI)](load-balancer-ipv6-internet-cli.md)
+### [Erstellen des öffentlichen Lastenausgleichs mit IPv6 (Vorlage)](load-balancer-ipv6-internet-template.md)
 
-## [Konfigurieren des Load Balancers mit Internetzugriff (klassisches PowerShell)](load-balancer-get-started-internet-classic-ps.md)
-### [Konfigurieren des Load Balancers mit Internetzugriff (klassische Cloud)](load-balancer-get-started-internet-classic-cloud.md)
-### [Konfigurieren des Load Balancers mit Internetzugriff (klassische CLI)](load-balancer-get-started-internet-classic-cli.md)
-
-## [Erstellen eines Load Balancers mit Internetzugriff und IPv6](load-balancer-ipv6-internet-ps.md)
-### [Erstellen eines Load Balancers mit Internetzugriff und IPv6 (CLI)](load-balancer-ipv6-internet-cli.md)
-### [Erstellen eines Load Balancers mit Internetzugriff und IPv6 (Vorlage)](load-balancer-ipv6-internet-template.md)
-
-## [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer](load-balancer-get-started-internet-az-portal.md)
-### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [PowerShell])](load-balancer-get-started-internet-az-powershell.md)
-### [Erstellen eines Standards für einen zonenredundanten öffentlichen Load Balancer [CLI]](load-balancer-get-started-internet-az-cli.md)
+## [Erstellen eines Standards für einen zonenredundanten öffentlichen Lastenausgleich](load-balancer-get-started-internet-az-portal.md)
+### [Erstellen eines Standards für einen zonenredundanten öffentlichen Lastenausgleich (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [Erstellen eines Standards für einen zonenredundanten öffentlichen Lastenausgleich (CLI)](load-balancer-get-started-internet-az-cli.md)
 
 # Anleitung
 ## [Konfigurieren des TCP-Leerlauftimeouts für den Load Balancer](load-balancer-tcp-idle-timeout.md)
@@ -50,11 +42,17 @@
 ## [Log Analytics für den Azure Load Balancer](load-balancer-monitor-log.md)
 ## [Konfigurieren von DHCPv6 für virtuelle Linux-Computer](load-balancer-ipv6-for-linux.md)
 ## [Konfigurieren von Hochverfügbarkeitsports für internen Lastenausgleich](load-balancer-configure-ha-ports.md)
-## [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone](../virtual-network/create-public-ip-availability-zone-portal.md)
-## [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone [PowerShell]](../virtual-network/create-public-ip-availability-zone-powershell.md)
-## [Erstellen einer öffentlichen IP-Adresse in einer Verfügbarkeitszone [CLI]](../virtual-network/create-public-ip-availability-zone-cli.md)
+
 ## Problembehandlung
 ### [Beheben von Problemen mit Azure Load Balancer](load-balancer-troubleshoot.md)
+
+## Artikel zum klassischen Bereitstellungsmodell
+### [Konfigurieren des internen Lastenausgleichs für Clouddienste](load-balancer-get-started-ilb-classic-cloud.md)
+#### [Konfigurieren des internen Lastenausgleichs für Clouddienste (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
+#### [Konfigurieren des internen Lastenausgleichs für Clouddienste (CLI)](load-balancer-get-started-ilb-classic-cli.md)
+### [Konfigurieren des öffentlichen Lastenausgleichs (klassische PowerShell)](load-balancer-get-started-internet-classic-ps.md)
+#### [Konfigurieren des öffentlichen Lastenausgleichs (klassische Cloud)](load-balancer-get-started-internet-classic-cloud.md)
+#### [Konfigurieren des öffentlichen Lastenausgleichs (klassische CLI)](load-balancer-get-started-internet-classic-cli.md)
 
 # Referenz
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=load-balancer)

@@ -24,7 +24,7 @@
 
 # Referenz
 ## APIs
-### [REST-APIs für Azure-Ressourcenverwaltung](/rest/api/powerbiembedded/)
+### [REST-APIs für Azure-Ressourcenverwaltung](https://docs.microsoft.com/rest/api/power-bi-embedded/)
 ### [REST-APIs](https://msdn.microsoft.com/en-us/library/mt147898.aspx)
 ## SDKs
 ### [.NET SDK-Download](https://www.nuget.org/packages/Microsoft.PowerBI.Api/)
