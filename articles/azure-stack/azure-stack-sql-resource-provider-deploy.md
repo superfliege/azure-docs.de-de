@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 11/29/2017
 ms.author: JeffGo
-ms.openlocfilehash: 31ffd31b5d540617c4a7a1224e6cf0ee656c9678
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 6c74071cedb1da9a59f47b10eaf538d24cb9ab01
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
 
@@ -49,10 +49,17 @@ Sie müssen mindestens eine SQL Server-Instanz erstellen oder Zugriff auf extern
 
     b. Auf Systemen mit mehreren Knoten muss der Host ein System sein, das auf den privilegierten Endpunkt zugreifen kann.
 
-3. [Laden Sie die Binärdatei des SQL-Ressourcenanbieters herunter](https://aka.ms/azurestacksqlrp), und führen Sie Self-Extractor aus, um den Inhalt in einem temporären Verzeichnis zu extrahieren.
+3. Laden Sie die Binärdatei des SQL-Ressourcenanbieters herunter, und führen Sie Self-Extractor aus, um den Inhalt in einem temporären Verzeichnis zu extrahieren.
 
-    > [!NOTE]
-    > Wenn Sie Azure Stack Build 20170928.3 oder früher verwenden, [laden Sie diese Version herunter](https://aka.ms/azurestacksqlrp1709).
+    >[!NOTE] 
+    > Der Build des Ressourcenanbieters entspricht den Azure Stack-Builds. Sie müssen die richtige Binärdatei für die ausgeführte Azure Stack-Version herunterladen.
+
+    | Azure Stack-Build | SQL RP-Installationsprogramm |
+    | --- | --- |
+    | 1.0.171122.1 | [SQL RP Version 1.1.10.0](https://aka.ms/azurestacksqlrp) |
+    | 1.0.171028.1 | [SQL RP Version 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
+    | 1.0.170928.3 | [SQL RP Version 1.1.3.0](https://aka.ms/azurestacksqlrp1709) |
+   
 
 4. Das Azure Stack-Stammzertifikat wird vom privilegierten Endpunkt abgerufen. Für ASDK wird im Rahmen dieses Prozesses ein selbstsigniertes Zertifikat erstellt. Bei mehreren Knoten müssen Sie ein entsprechendes Zertifikat bereitstellen.
 
@@ -102,7 +109,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the Resource Provider VM
+# Set credentials for the new Resource Provider VM
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 

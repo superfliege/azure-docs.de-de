@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: denlee
-ms.openlocfilehash: 1efdda867703613e4f85e6994004df32e70ccb3d
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 122a2f8e506b3f567e73a816cbbeac569339c924
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="accelerate-real-time-big-data-analytics-with-the-spark-to-azure-cosmos-db-connector"></a>Beschleunigen der Big Data-Echtzeitanalyse mit dem Spark-Connector für Azure Cosmos DB
 
@@ -39,7 +39,7 @@ Der Connector verwendet die folgenden Komponenten:
    * Eine sofort einsatzfähige [globale Verteilung](distribute-data-globally.md) und horizontale Skalierung
    * Garantiert einstellige Latenzzeiten im 99. Perzentil
    * [Mehrere, klar definierte Konsistenzmodelle](consistency-levels.md)
-   * Garantierte hohe Verfügbarkeit mit Multi-Homing-Funktionen
+   * Garantierte Hochverfügbarkeit mit Multi-Homing-Funktionen
    * Alle Funktionen werden durch branchenführende, umfassende [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/cosmos-db) (Service Level Agreements, SLAs) unterstützt.
 
 * [Apache Spark](http://spark.apache.org/) ist ein leistungsstarkes Open-Source-Verarbeitungsmodul, das für hohe Geschwindigkeit, einfache Nutzung und anspruchsvolle Analysen konzipiert wurde.
@@ -172,7 +172,7 @@ Derzeit wird für das Connectorprojekt Maven verwendet. Sie können Folgendes au
 ```
 mvn clean package
 ```
-Sie können auch die aktuellen JAR-Versionen im Ordner *releases* herunterladen.
+Sie können auch die aktuellen JAR-Versionen im [Ordner *releases*](https://github.com/Azure/azure-cosmosdb-spark/releases) herunterladen.
 
 ### <a name="include-the-azure-cosmos-db-spark-jar"></a>Einbinden von Azure Cosmos DB Spark-JAR
 Bevor Sie Code ausführen, müssen Sie Azure Cosmos DB Spark-JAR einbinden.  Bei Verwendung der **Spark-Shell** können Sie den JAR-Code mit der Option **--jars** einbinden.  

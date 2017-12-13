@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 413a2ba9107ca259ed577825bf0a17ff5622f1ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17de187f67c075147ea8ff7f69434014eea3fdb
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Schleifen, Bereiche und Auflösen von Batches in Logik-Apps
   
@@ -26,7 +26,7 @@ Logic Apps bietet eine Reihe von Verfahren zum Arbeiten mit Arrays, Sammlungen, 
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach-Schleife und -Arrays
   
-Logic Apps erlaubt Schleifen über einen Satz von Daten und das Ausführen von Aktionen für jedes Element.  Dies wird über die `foreach`-Aktion ermöglicht.  Sie können im Designer eine foreach-Schleife hinzufügen.  Nachdem Sie das Array ausgewählt haben, das Sie durchlaufen möchten, können Sie mit dem Hinzufügen von Aktionen beginnen.  Zurzeit können Sie pro foreach-Schleife nur eine Aktion angeben, diese Beschränkung wird jedoch in den nächsten Wochen aufgehoben.  Innerhalb der Schleife können Sie dann angeben, was bei jedem Wert des Arrays passieren soll.
+Logic Apps erlaubt Schleifen über einen Satz von Daten und das Ausführen von Aktionen für jedes Element.  Dies wird über die `foreach`-Aktion ermöglicht.  Sie können im Designer eine foreach-Schleife hinzufügen.  Nachdem Sie das Array ausgewählt haben, das Sie durchlaufen möchten, können Sie mit dem Hinzufügen von Aktionen beginnen.  Sie können mehrere Aktionen für jede foreach-Schleife hinzufügen.  Innerhalb der Schleife können Sie dann angeben, was bei jedem Wert des Arrays passieren soll.
 
 Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten dargestellt angeben.  Dies ist ein Beispiel für eine foreach-Schleife, die eine E-Mail-Nachricht für jede E-Mail-Adresse sendet, die „microsoft.com“ enthält:
 

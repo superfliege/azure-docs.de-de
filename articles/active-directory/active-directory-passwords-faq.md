@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 112bfeea29eacd0615f1d134567ec52264318b5f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 6497421b1c51e361d6881332a19c19c7d47c8e29
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -81,6 +81,19 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
 ## <a name="password-reset"></a>Zurücksetzen des Kennworts
 
+* **F: Verhindern Sie, dass Benutzer in kurzer Zeit mehrfach versuchen, ein Kennwort zurückzusetzen?**
+
+  > **A:** Ja, es wurden Sicherheitsfeatures in die Kennwortzurücksetzung integriert, um Schutz vor Missbrauch zu bieten. 
+  >
+  > Benutzer dürfen innerhalb von 24 Stunden nur fünfmal versuchen, das Kennwort zurückzusetzen, bevor sie für 24 Stunden gesperrt werden. 
+  >
+  > Benutzer können innerhalb einer Stunde nur fünfmal versuchen, eine Telefonnummer zu überprüfen, eine SMS zu senden oder Sicherheitsfragen und -antworten zu überprüfen, bevor sie für 24 Stunden gesperrt werden. 
+  >
+  > Benutzer können eine E-Mail maximal 10 Mal innerhalb von 10 Minuten versenden, bevor sie für 24 Stunden gesperrt werden.
+  >
+  > Die Zähler werden zurückgesetzt, sobald ein Benutzer sein Passwort zurücksetzt.
+  >
+  >
 * **F: Wie lange muss ich warten, bis eine E-Mail, eine SMS oder ein Anruf von der Kennwortzurücksetzung eintrifft?**
 
   > **A:** E-Mails, SMS-Nachrichten und Anrufe sollten in weniger als einer Minute eingehen. Im Normalfall dauert es zwischen 5 und 20 Sekunden.
@@ -163,11 +176,6 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * **F: Wie werden die Sicherheitsfragen während der Zurücksetzung ausgewählt, wenn ein Benutzer mehr als die maximale Anzahl von Fragen registriert, die für die Zurücksetzung erforderlich sind?**
 
   > **A:** Aus der Gesamtzahl von Fragen, für die sich ein Benutzer registriert hat, werden *N* Sicherheitsfragen nach dem Zufallsprinzip ausgewählt, wobei *N* für die **Anzahl der für die Zurücksetzung erforderlichen Fragen** steht. Wenn ein Benutzer z. B. fünf Sicherheitsfragen registriert hat, aber nur drei für das Zurücksetzen eines Kennworts erforderlich sind, werden drei der fünf Fragen zufällig ausgewählt und beim Zurücksetzen angezeigt. Wenn der Benutzer die Fragen falsch beantwortet, wird der Auswahlvorgang erneut durchgeführt, um eine wiederholte Fragestellung zu verhindern.
-  >
-  >
-* **F: Verhindern Sie, dass Benutzer in kurzer Zeit mehrfach versuchen, ein Kennwort zurückzusetzen?**
-
-  > **A:** Ja, es wurden Sicherheitsfeatures in die Kennwortzurücksetzung integriert, um Schutz vor Missbrauch zu bieten. Benutzer dürfen innerhalb einer Stunde nur fünfmal versuchen, das Kennwort zurückzusetzen, bevor sie für 24 Stunden gesperrt werden. Benutzer können innerhalb einer Stunde nur fünfmal versuchen, eine Telefonnummer zu überprüfen, bevor sie für 24 Stunden gesperrt werden. Benutzer können innerhalb einer Stunde nur fünfmal eine einzelne Authentifizierungsmethode versuchen, bevor sie für 24 Stunden gesperrt werden.
   >
   >
 * **F: Wie lange ist die Einmalkennung per E-Mail und SMS gültig?**

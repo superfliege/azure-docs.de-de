@@ -1,6 +1,6 @@
 ---
-title: "Bereitstellen von Azure-Ressourcen für mehrere Ressourcengruppen | Microsoft-Dokumentation"
-description: "Hier wird gezeigt, wie während der Bereitstellung mehrere Azure-Ressourcengruppen als Ziel festgelegt werden."
+title: "Bereitstellen von Azure-Ressourcen für mehrere Abonnements und Ressourcengruppen | Microsoft-Dokumentation"
+description: "Hier wird gezeigt, wie während der Bereitstellung mehrere Azure-Abonnements und -Ressourcengruppen als Ziel festgelegt werden."
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,43 +11,58 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2017
+ms.date: 12/01/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8b041213b269775175a810e585103d3c538557f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 763f46b9b5be7edf06ee0604bfc51a2482405b60
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="deploy-azure-resources-to-more-than-one-resource-group"></a>Bereitstellen von Azure-Ressourcen für mehrere Ressourcengruppen
+# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen
 
-In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourcengruppe bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen bereitstellen möchten. Sie möchten beispielsweise den virtuellen Sicherungscomputer für Azure Site Recovery in einer separaten Ressourcengruppe und an einem separaten Standort bereitstellen. Resource Manager ermöglicht die Verwendung geschachtelter Vorlagen, um nicht die Ressourcengruppe, die für die übergeordnete Vorlage verwendet wird, sondern andere Ressourcengruppen als Ziel festzulegen.
+In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourcengruppe bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Sie möchten beispielsweise den virtuellen Sicherungscomputer für Azure Site Recovery in einer separaten Ressourcengruppe und an einem separaten Standort bereitstellen. Resource Manager ermöglicht die Verwendung geschachtelter Vorlagen, um nicht das Abonnement und die Ressourcengruppe, die für die übergeordnete Vorlage verwendet werden, sondern andere Abonnements und Ressourcengruppen als Ziel festzulegen.
 
 Die Ressourcengruppe ist der Lebenszykluscontainer für die Anwendung und ihre Ressourcensammlung. Sie erstellen die Ressourcengruppe außerhalb der Vorlage und geben die gewünschte Ressourcengruppe für die Bereitstellung an. Eine Einführung zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](resource-group-overview.md).
 
-## <a name="example-template"></a>Beispielvorlage
+## <a name="specify-a-subscription-and-resource-group"></a>Angeben eines Abonnements und einer Ressourcengruppe
 
-Um eine andere Ressource als Ziel festzulegen, müssen Sie während der Bereitstellung eine geschachtelte oder verknüpfte Vorlage verwenden. Der Ressourcentyp `Microsoft.Resources/deployments` bietet einen `resourceGroup`-Parameter, mit dem Sie eine andere Ressourcengruppe für die geschachtelte Bereitstellung angeben können. Alle Ressourcengruppen müssen vorhanden sein, bevor Sie die Bereitstellung ausführen. Im folgenden Beispiel werden zwei Speicherkonten bereitgestellt: eins in der während der Bereitstellung angegebenen Ressourcengruppe und eins in einer Ressourcengruppe namens `crossResourceGroupDeployment`:
+Um eine andere Ressource als Ziel festzulegen, müssen Sie während der Bereitstellung eine geschachtelte oder verknüpfte Vorlage verwenden. Der Ressourcentyp `Microsoft.Resources/deployments` stellt Parameter für `subscriptionId` und `resourceGroup` bereit. Diese Eigenschaften ermöglichen Ihnen die Angabe eines anderen Abonnements und einer anderen Ressourcengruppe für die geschachtelte Bereitstellung. Alle Ressourcengruppen müssen vorhanden sein, bevor Sie die Bereitstellung ausführen. Ohne Angabe von Abonnement-ID oder Ressourcengruppe werden das Abonnement und die Ressourcengruppe aus der übergeordneten Vorlage verwendet.
+
+Im folgenden Beispiel werden zwei Speicherkonten bereitgestellt: eins in der während der Bereitstellung angegebenen Ressourcengruppe und eins in einer im Parameter `secondResourceGroup` angegebenen Ressourcengruppe:
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "StorageAccountName1": {
+        "storagePrefix": {
+            "type": "string",
+            "maxLength": 11
+        },
+        "secondResourceGroup": {
             "type": "string"
         },
-        "StorageAccountName2": {
-            "type": "string"
+        "secondSubscriptionID": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "secondStorageLocation": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
         }
     },
-    "variables": {},
+    "variables": {
+        "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
+        "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
+    },
     "resources": [
         {
             "apiVersion": "2017-05-10",
             "name": "nestedTemplate",
             "type": "Microsoft.Resources/deployments",
-            "resourceGroup": "crossResourceGroupDeployment",
+            "resourceGroup": "[parameters('secondResourceGroup')]",
+            "subscriptionId": "[parameters('secondSubscriptionID')]",
             "properties": {
                 "mode": "Incremental",
                 "template": {
@@ -58,11 +73,14 @@ Um eine andere Ressource als Ziel festzulegen, müssen Sie während der Bereitst
                     "resources": [
                         {
                             "type": "Microsoft.Storage/storageAccounts",
-                            "name": "[parameters('StorageAccountName2')]",
-                            "apiVersion": "2015-06-15",
-                            "location": "West US",
+                            "name": "[variables('secondStorageName')]",
+                            "apiVersion": "2017-06-01",
+                            "location": "[parameters('secondStorageLocation')]",
+                            "sku":{
+                                "name": "Standard_LRS"
+                            },
+                            "kind": "Storage",
                             "properties": {
-                                "accountType": "Standard_LRS"
                             }
                         }
                     ]
@@ -72,54 +90,115 @@ Um eine andere Ressource als Ziel festzulegen, müssen Sie während der Bereitst
         },
         {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[parameters('StorageAccountName1')]",
-            "apiVersion": "2015-06-15",
-            "location": "West US",
+            "name": "[variables('firstStorageName')]",
+            "apiVersion": "2017-06-01",
+            "location": "[resourceGroup().location]",
+            "sku":{
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
             "properties": {
-                "accountType": "Standard_LRS"
             }
         }
     ]
 }
 ```
 
-Wenn Sie für `resourceGroup` den Namen einer nicht vorhandenen Ressourcengruppe angeben, tritt bei der Bereitstellung ein Fehler auf. Wenn Sie keinen Wert für `resourceGroup` angeben, verwendet Resource Manager die übergeordnete Ressourcengruppe.  
+Wenn Sie für `resourceGroup` den Namen einer nicht vorhandenen Ressourcengruppe angeben, tritt bei der Bereitstellung ein Fehler auf.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Zum Bereitstellen der Beispielvorlage können Sie das Portal, Azure PowerShell oder die Azure CLI verwenden. Für Azure PowerShell oder Azure CLI-müssen Sie eine Version von Mai 2017 oder später verwenden. In den Beispielen wird davon ausgegangen, dass Sie die Vorlage lokal als Datei mit dem Namen **crossrgdeployment.json** gespeichert haben.
+Verwenden Sie zum Bereitstellen der Beispielvorlage eine Azure PowerShell- oder Azure CLI-Version von Mai 2017 oder später. Verwenden Sie für diese Beispiele die [abonnementübergreifende Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) in GitHub.
 
-Für PowerShell:
+### <a name="two-resource-groups-in-the-same-subscription"></a>Zwei Ressourcengruppen im gleichen Abonnement
+
+PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Ressourcengruppen im gleichen Abonnement Folgendes:
 
 ```powershell
-Login-AzureRmAccount
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
 
-New-AzureRmResourceGroup -Name mainResourceGroup -Location "South Central US"
-New-AzureRmResourceGroup -Name crossResourceGroupDeployment -Location "Central US"
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName mainResourceGroup `
-  -TemplateFile c:\MyTemplates\crossrgdeployment.json
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus
 ```
 
-Für die Azure CLI:
+Azure CLI: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Ressourcengruppen im gleichen Abonnement Folgendes:
 
-```azurecli
-az login
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
 
-az group create --name mainResourceGroup --location "South Central US"
-az group create --name crossResourceGroupDeployment --location "Central US"
+az group create --name $firstRG --location southcentralus
+az group create --name $secondRG --location eastus
 az group deployment create \
-    --name ExampleDeployment \
-    --resource-group mainResourceGroup \
-    --template-file crossrgdeployment.json
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
 ```
 
 Nach Abschluss der Bereitstellung werden zwei Ressourcengruppen angezeigt. Jede Ressourcengruppe enthält ein Speicherkonto.
 
-## <a name="use-resourcegroup-function"></a>Verwenden der resourceGroup()-Funktion
+### <a name="two-resource-groups-in-different-subscriptions"></a>Zwei Ressourcengruppen in unterschiedlichen Abonnements
 
-Für ressourcengruppenübergreifende Bereitstellungen wird die [resouceGroup()-Funktion](resource-group-template-functions-resource.md#resourcegroup) je nachdem, wie Sie die geschachtelte Vorlage festlegen, anders aufgelöst. 
+PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Abonnements Folgendes:
 
-Wenn Sie eine Vorlage in eine andere Vorlage einbetten, wird resouceGroup() in der geschachtelten Vorlage in die übergeordnete Ressourcengruppe aufgelöst. Eine eingebettete Vorlage verwendet das folgende Format:
+```powershell
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+$firstSub = "<first-subscription-id>"
+$secondSub = "<second-subscription-id>"
+
+Select-AzureRmSubscription -Subscription $secondSub
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+Select-AzureRmSubscription -Subscription $firstSub
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus `
+  -secondSubscriptionID $secondSub
+```
+
+Azure CLI: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Abonnements Folgendes:
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+firstSub="<first-subscription-id>"
+secondSub="<second-subscription-id>"
+
+az account set --subscription $secondSub
+az group create --name $secondRG --location eastus
+
+az account set --subscription $firstSub
+az group create --name $firstRG --location southcentralus
+
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
+```
+
+## <a name="use-the-resourcegroup-function"></a>Verwenden der resourceGroup()-Funktion
+
+Für ressourcengruppenübergreifende Bereitstellungen wird die [resouceGroup()-Funktion](resource-group-template-functions-resource.md#resourcegroup) anders aufgelöst, je nachdem, wie Sie die geschachtelte Vorlage festlegen. 
+
+Wenn Sie eine Vorlage in eine andere Vorlage einbetten, wird „resouceGroup()“ in der geschachtelten Vorlage in die übergeordnete Ressourcengruppe aufgelöst. Eine eingebettete Vorlage verwendet das folgende Format:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -135,7 +214,7 @@ Wenn Sie eine Vorlage in eine andere Vorlage einbetten, wird resouceGroup() in d
 }
 ```
 
-Wenn Sie einen Link zu einer getrennten Vorlage einrichten, wird resouceGroup() in der verlinkten Vorlage in die geschachtelte Ressourcengruppe aufgelöst. Eine verlinkte Vorlage verwendet das folgende Format:
+Wenn Sie einen Link zu einer getrennten Vorlage einrichten, wird „resouceGroup()“ in der verlinkten Vorlage in die geschachtelte Ressourcengruppe aufgelöst. Eine verlinkte Vorlage verwendet das folgende Format:
 
 ```json
 "apiVersion": "2017-05-10",
@@ -149,6 +228,33 @@ Wenn Sie einen Link zu einer getrennten Vorlage einrichten, wird resouceGroup() 
         resourceGroup() in linked template refers to linked resource group
     }
 }
+```
+
+Um die verschiedenen Optionen zur Auflösung von `resourceGroup()` zu testen, stellen Sie eine [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) bereit, die das Ressourcengruppenobjekt für die übergeordnete Vorlage, die Inlinevorlage und die verknüpfte Vorlage zurückgibt. Die übergeordnete Vorlage und die Inlinevorlage werden beide in die gleiche Ressourcengruppe aufgelöst. Die verknüpfte Vorlage wird in die verknüpfte Ressourcengruppe aufgelöst.
+
+Verwenden Sie für PowerShell Folgendes:
+
+```powershell
+New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
+New-AzureRmResourceGroup -Name inlineGroup -Location southcentralus
+New-AzureRmResourceGroup -Name linkedGroup -Location southcentralus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName parentGroup `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
+```
+
+Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
+
+```azurecli-interactive
+az group create --name parentGroup --location southcentralus
+az group create --name inlineGroup --location southcentralus
+az group create --name linkedGroup --location southcentralus
+
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group parentGroup \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

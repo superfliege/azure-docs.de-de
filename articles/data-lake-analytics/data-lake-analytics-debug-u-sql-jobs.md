@@ -1,9 +1,9 @@
 ---
-title: "Debuggen von U-SQL-Aufträgen | Microsoft Docs"
-description: Hier erfahren Sie, wie Sie mithilfe von Visual Studio einen U-SQL-Vertexfehler debuggen.
+title: "Debuggen von benutzerdefiniertem C#-Code für fehlerhafte Azure Data Lake-U-SQL-Aufträge | Microsoft-Dokumentation"
+description: "Es wird beschrieben, wie Sie U-SQL-Vertexfehler mit Azure Data Lake Tools für Visual Studio debuggen."
 services: data-lake-analytics
 documentationcenter: 
-author: saveenr
+author: yanancai
 manager: jhubbard
 editor: cgronlun
 ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
@@ -12,27 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/02/2016
-ms.author: saveenr
-ms.openlocfilehash: 2a77c72d3062272305208934d6406d040266c753
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 11/31/2017
+ms.author: yanacai
+ms.openlocfilehash: 8b16fda041663160c62710cabbe0cd2bd4a83d1e
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge
 
-U-SQL bietet ein C#-basiertes Erweiterungsmodell, sodass Sie mit eigenem Code Funktionen wie etwa eine benutzerdefinierte Extraktions- oder Reduzierungskomponente hinzufügen können. Weitere Informationen finden Sie im [U-SQL-Programmierbarkeitshandbuch](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). In der Praxis können für jeden Code Debugmaßnahmen erforderlich sein, und Big Data-Systeme stellen unter Umständen nur eingeschränkte Laufzeit-Debuginformationen wie etwa Protokolldateien bereit.
+Für U-SQL wird ein Erweiterbarkeitsmodell mit C# bereitgestellt. In U-SQL-Skripts ist es einfach, C#-Funktionen aufzurufen und Analysefunktionen durchzuführen, die von einer SQL-ähnlichen deklarativen Sprache nicht unterstützt werden. Weitere Informationen zur U-SQL-Erweiterbarkeit finden Sie im [U-SQL-Programmierbarkeitshandbuch](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-u-sql-programmability-guide#use-user-defined-functions-udf). 
 
-Azure Data Lake Tools für Visual Studio bietet ein Feature namens **Debuggen von Vertexfehlern**, mit dem Sie einen fehlerhaften Auftrag aus der Cloud auf Ihrem lokalen Computer klonen können, um ihn zu debuggen. Der lokale Klon umfasst die gesamte Cloudumgebung einschließlich Eingabedaten und Benutzercode.
+In der Praxis muss das Debuggen ggf. für jeden Code durchgeführt werden. Aber es ist schwierig, einen verteilten Auftrag mit benutzerdefiniertem Code in der Cloud zu debuggen, wenn nur eingeschränkte Protokolldateien vorhanden sind. [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) enthalten ein Feature zum **Debuggen von Vertexfehlern**, mit dem das Debuggen von Fehlern in Ihrem benutzerdefinierten Code vereinfacht wird. Wenn für den U-SQL-Auftrag ein Fehler auftritt, behält der Dienst den Fehlerstatus bei, und das Tool unterstützt Sie beim Herunterladen der Cloudfehlerumgebung auf den lokalen Computer für das Debuggen. Der lokale Download umfasst die gesamte Cloudumgebung, einschließlich Eingabedaten und Benutzercode.
 
 Das folgende Video zeigt die Verwendung des Features „Debuggen von Vertexfehlern“ in Azure Data Lake Tools für Visual Studio.
 
-> [!VIDEO https://e0d1.wpc.azureedge.net/80E0D1/OfficeMixProdMediaBlobStorage/asset-d3aeab42-6149-4ecc-b044-aa624901ab32/b0fc0373c8f94f1bb8cd39da1310adb8.mp4?sv=2012-02-12&sr=c&si=a91fad76-cfdd-4513-9668-483de39e739c&sig=K%2FR%2FdnIi9S6P%2FBlB3iLAEV5pYu6OJFBDlQy%2FQtZ7E7M%3D&se=2116-07-19T09:27:30Z&rscd=attachment%3B%20filename%3DDebugyourcustomcodeinUSQLADLA.mp4]
+> [!VIDEO https://www.youtube.com/embed/3enkNvprfm4]
 >
 
-> [!NOTE]
-> Für Visual Studio müssen die beiden folgenden Updates installiert sein: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) und die [universelle Windows 10-C-Runtime](https://www.microsoft.com/download/details.aspx?id=50410).
+> [!IMPORTANT]
+> Für Visual Studio müssen zur Nutzung dieses Features die beiden folgenden Updates installiert sein: [Microsoft Visual C++ 2015 Redistributable Update 3](https://www.microsoft.com/en-us/download/details.aspx?id=53840) und die [universelle Windows 10-C-Runtime](https://www.microsoft.com/download/details.aspx?id=50410).
+>
 
 ## <a name="download-failed-vertex-to-local-machine"></a>Herunterladen eines fehlerhaften Vertex auf den lokalen Computer
 
@@ -44,80 +45,73 @@ Wenn Sie in Azure Data Lake Tools für Visual Studio einen fehlerhaften Auftrag 
 
 ![Azure Data Lake Analytics, Debuggen von U-SQL-Aufträgen mit Visual Studio, Herunterladen von Vertexdaten](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-download-vertex.png)
 
-Aufträge können CodeBehind-Quelldateien oder registrierte Assemblys enthalten. Beiden Typen haben jeweils unterschiedliche Debugszenarien.
-
-- [Debuggen eines fehlerhaften Auftrags mit CodeBehind](#debug-job-failed-with-code-behind)
-- [Debuggen eines fehlerhaften Auftrags mit Assemblys](#debug-job-failed-with-assemblies)
-
-
-## <a name="debug-job-failed-with-code-behind"></a>Debuggen eines fehlerhaften Auftrags mit CodeBehind
-
-Wenn bei einem U-SQL-Auftrag ein Fehler auftritt und der Auftrag Benutzercode enthält (üblicherweise mit der Bezeichnung `Script.usql.cs` in einem U-SQL-Projekt), wird der entsprechende Quellcode in die Debugprojektmappe importiert.  Dort können Sie das Problem mithilfe der Visual Studio-Debugtools (Überwachung, Variablen usw.) behandeln.
+## <a name="configure-the-debugging-environment"></a>Konfigurieren der Debugumgebung
 
 > [!NOTE]
 > Vergewissern Sie sich vor dem Debuggen, dass im Fenster mit den Ausnahmeeinstellungen(**STRG+ALT+E**) die Option **Common Language Runtime-Ausnahmen** aktiviert ist.
 
 ![Azure Data Lake Analytics, Debuggen von U-SQL-Aufträgen mit Visual Studio, Einstellung](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-clr-exception-setting.png)
 
-1. Drücken Sie**F5** um den CodeBehind-Code auszuführen. Der Code wird ausgeführt, bis er durch eine Ausnahme beendet wird.
+Es kann sein, dass Sie den benutzerdefinierten C#-Quellcode in der neu gestarteten Visual Studio-Instanz finden oder auch nicht:
 
-2. Öffnen Sie die Datei `ADLTool_Codebehind.usql.cs`, legen Sie Haltepunkte fest, und drücken Sie anschließend **F5** um den Code schrittweise zu debuggen.
+1. [Ich kann meinen Quellcode in der Lösung finden](#source-code-is-included-in-debugging-solution)
+
+2. [Ich kann meinen Quellcode nicht in der Lösung finden](#source-code-is-not-included-in-debugging-solution)
+
+### <a name="source-code-is-included-in-debugging-solution"></a>Quellcode ist in Debugprojektmappe enthalten
+
+Es gibt zwei Fälle, in denen der C#-Quellcode erfasst wird:
+
+1. Der Benutzercode wird in einer CodeBehind-Datei (in einem U-SQL-Projekt normalerweise `Script.usql.cs`) definiert.
+
+2. Der Benutzercode wird in einem C#-Klassenbibliotheksprojekt für die U-SQL-Anwendung definiert und als Assembly mit **Debuginformationen** registriert.
+
+Wenn der Quellcode in die Lösung importiert wird, können Sie die Visual Studio-Debugtools (Überwachung, Variablen usw.) nutzen, um die Problembehandlung durchzuführen:
+
+1. Drücken Sie **F5**, um das Debuggen zu starten. Der Code wird ausgeführt, bis er durch eine Ausnahme beendet wird.
+
+2. Öffnen Sie die Quellcodedatei, und legen Sie Breakpoints fest. Drücken Sie anschließend **F5**, um den Code schrittweise zu debuggen.
 
     ![Azure Data Lake Analytics-U-SQL-Debugausnahme](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-exception.png)
 
-## <a name="debug-job-failed-with-assemblies"></a>Debuggen von fehlerhaften Aufträgen mit Assemblys
+### <a name="source-code-is-not-included-in-debugging-solution"></a>Quellcode ist nicht in Debugprojektmappe enthalten
 
-Wenn Ihr U-SQL-Skript registrierte Assemblys enthält, kann der Quellcode nicht automatisch abgerufen werden. In diesem Fall müssen die Quellcodedateien der Assemblys manuell zur Projektmappe hinzugefügt werden.
+Wenn der Benutzercode nicht in der CodeBehind-Datei enthalten ist oder Sie die Assembly nicht mit **Debuginformationen** registriert haben, wird der Quellcode nicht automatisch in die Debugprojektmappe eingebunden. In diesem Fall müssen Sie zusätzliche Schritte ausführen, um den Quellcode hinzuzufügen:
 
-### <a name="configure-the-solution"></a>Konfigurieren der Projektmappe
-
-1. Klicken Sie mit der rechten Maustaste auf die Projektmappe **VertexDebug**, und klicken Sie anschließend auf „Hinzufügen“ > „Vorhandenes Projekt...“, um den Quellcode der Assemblys zu suchen und das Projekt zur Debugprojektmappe hinzuzufügen.
+1. Klicken Sie mit der rechten Maustaste auf die Projektmappe **VertexDebug**, und klicken Sie anschließend auf „Hinzufügen“ > „Vorhandenes Projekt...“, um nach dem Quellcode der Assembly zu suchen und das Projekt der Debugprojektmappe hinzuzufügen.
 
     ![Azure Data Lake Analytics-U-SQL-Debugprojekt hinzufügen](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-add-project-to-debug-solution.png)
 
-2. Klicken Sie in der Projektmappe mit der rechten Maustaste auf **LocalVertexHost**, klicken Sie auf **Eigenschaften**, und kopieren Sie den Pfad des Arbeitsverzeichnisses.
+2. Rufen Sie den Projektordnerpfad für das Projekt **FailedVertexDebugHost** ab. 
 
-3. Klicken Sie mit der rechten Maustaste auf das Projekt mit dem Assemblyquellcode, klicken Sie auf **Eigenschaften**, wählen Sie links die Registerkarte **Erstellen** aus, und fügen Sie den in Schritt 2 kopierten Pfad als **Ausgabe > Ausgabepfad** ein.
+3. Klicken Sie mit der rechten Maustaste auf das hinzugefügte Projekt mit dem Assemblyquellcode, klicken Sie auf **Eigenschaften**, wählen Sie links die Registerkarte **Erstellen** aus, und fügen Sie den in Schritt 2 kopierten Pfad, der auf „\bin\debug“ endet, als **Ausgabe > Ausgabepfad** ein. Der endgültige Ausgabepfad lautet „<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\"“.
 
     ![Azure Data Lake Analytics-U-SQL-Debugprojekt, PDB-Pfad einrichten](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 
-4. Drücken Sie **STRG + ALT + E**, und aktivieren Sie im Fenster mit den Ausnahmeeinstellungen die Option **Common Language Runtime-Ausnahmen**.
-
-### <a name="start-debug"></a>Starten des Debuggens
-
-1. Klicke Sie mit der rechten Maustaste auf das Projekt mit dem Assemblyquellcode, klicken Sie auf **Erneut erstellen**, um PDB-Dateien im Arbeitsverzeichnis `LocalVertexHost` auszugeben.
-
-2. Drücken Sie**F5** . Das Projekt wird ausgeführt, bis es durch eine Ausnahme beendet wird. Möglicherweise wird die folgende Warnmeldung angezeigt. Diese kann gefahrlos ignoriert werden. Es kann bis zu einer Minute dauern, bis der Debugbildschirm angezeigt wird.
-
-    ![Azure Data Lake Analytics, Debuggen von U-SQL-Aufträgen mit Visual Studio, Warnung](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-visual-studio-u-sql-debug-warning.png)
-
-3. Öffnen Sie Ihren Quellcode, legen Sie Haltepunkte fest, und drücken Sie anschließend **F5** um den Code schrittweise zu debuggen.
-
-Sie können das Problem auch mithilfe der Visual Studio-Debugtools (Überwachung, Variablen usw.) behandeln.
+Nachdem Sie diese Einstellungen vorgenommen haben, können Sie das Debuggen mit **F5** und Breakpoints starten. Sie können das Problem auch mithilfe der Visual Studio-Debugtools (Überwachung, Variablen usw.) behandeln.
 
 > [!NOTE]
 > Das Projekt mit dem Assemblyquellcode muss nach jeder Änderung des Codes neu erstellt werden, um aktualisierte PDB-Dateien zu generieren.
 
+## <a name="resubmit-the-job"></a>Erneutes Übermitteln des Auftrags
+
 Wenn das Projekt nach dem Debuggen erfolgreich abgeschlossen wird, erscheint im Ausgabefenster die folgende Meldung:
 
-```
-The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
-```
+    The Program 'LocalVertexHost.exe' has exited with code 0 (0x0).
 
 ![Azure Data Lake Analytics-U-SQL-Debugging erfolgreich](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-debug-succeed.png)
 
-## <a name="resubmit-the-job"></a>Erneutes Übermitteln des Auftrags
+Gehen Sie wie folgt vor, um den fehlgeschlagenen Auftrag erneut zu senden:
 
-Nach Abschluss des Debuggens muss der fehlerhafte Auftrag erneut übermittelt werden.
+1. Kopieren Sie bei Aufträgen mit CodeBehind-Projektmappen den C#-Code in die CodeBehind-Quelldatei (in der Regel `Script.usql.cs`).
 
-1. Kopieren Sie bei Aufträgen mit CodeBehind-Projektmappen Ihren C#-Code in die CodeBehind-Quelldatei (in der Regel `Script.usql.cs`).
-2. Bei Aufträgen mit Assemblys müssen die aktualisierten DLL-Assemblys in der ADLA-Datenbank registriert werden:
-    1. Erweitern Sie im Server- oder Cloud-Explorer den Knoten **ADLA-Konto > Datenbanken**.
-    2. Klicken Sie mit der rechten Maustaste auf **Assemblys**, und registrieren Sie die neuen DLL-Assemblys bei der ADLA-Datenbank: ![Azure Data Lake Analytics – U-SQL-Debugging – Registrieren von Assemblys](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-register-assembly.png)
-3. Übermitteln Sie den Auftrag erneut.
+2. Klicken Sie für Aufträge mit Assemblys in der Debugprojektmappe mit der rechten Maustaste auf das Assembly-Quellcodeprojekt, und registrieren Sie die aktualisierten DLL-Assemblys in Ihrem Azure Data Lake-Katalog.
+
+3. Übermitteln Sie den U-SQL-Auftrag erneut.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [U-SQL-Programmierbarkeitshandbuch](data-lake-analytics-u-sql-programmability-guide.md)
 - [Entwickeln von benutzerdefinierten U-SQL-Operatoren für Azure Data Lake Analytics-Aufträge](data-lake-analytics-u-sql-develop-user-defined-operators.md)
-- [Tutorial: Entwickeln von U-SQL-Skripts mit Data Lake-Tools für Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+- [Testen und Debuggen von U-SQL-Aufträgen mit lokalen Testläufen und dem Azure Data Lake-U-SQL-SDK](data-lake-analytics-data-lake-tools-local-run.md)
+- [Behandeln von Problemen mit nicht normalen periodischen Aufträgen](data-lake-analytics-data-lake-tools-debug-recurring-job.md)

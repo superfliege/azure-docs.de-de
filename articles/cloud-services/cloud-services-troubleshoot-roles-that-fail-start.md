@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: ec33ba08c6284e90edc1870eef4bf3059b917efb
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>Problembehandlung bei Clouddienstrollen, die nicht gestartet werden
 In diesem Artikel finden Sie Informationen zu allgemeinen Problemen in Zusammenhang mit nicht gestarteten Azure-Clouddienstrollen sowie zur Lösung dieser Probleme.
@@ -62,9 +62,8 @@ Nachdem der Dienst neu bereitgestellt wurde, sehen Sie eine Fehlermeldung mit de
 Sie können Remotedesktop verwenden, um remote auf die Rolle zuzugreifen und vollständige Fehlerinformationen anzuzeigen. Gehen Sie wie folgt vor, um Fehler mithilfe von Remotedesktop anzuzeigen:
 
 1. Stellen Sie sicher, dass Azure SDK 1.3 oder höher installiert ist.
-2. Wählen Sie während der Bereitstellung der Projektmappe per Visual Studio die Option „Remotedesktopverbindungen konfigurieren…“. Weitere Informationen zum Konfigurieren der Remotedesktopverbindung finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](../vs-azure-tools-remote-desktop-roles.md).
-3. Wenn die Instanz im klassischen Microsoft Azure-Portal den Status **Bereit**zeigt, klicken Sie auf eine der Rolleninstanzen.
-4. Klicken Sie im Menübandbereich **Remotezugriff** auf das Symbol **Verbinden**.
+2. Wählen Sie während der Bereitstellung der Projektmappe per Visual Studio die Option „Remotedesktopverbindungen konfigurieren“. Weitere Informationen zum Konfigurieren der Remotedesktopverbindung finden Sie unter [Verwenden von Remotedesktop mit Azure-Rollen](../vs-azure-tools-remote-desktop-roles.md).
+3. Wenn die Instanz im Microsoft Azure-Portal den Status **Bereit** zeigt, stellen Sie eine Remoteverbindung mit der Instanz her. Weitere Informationen zur Verwendung des Remotedesktops mit Cloud Services finden Sie unter [Remotezugriff auf Rolleninstanzen](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances).
 5. Melden Sie sich mit den Anmeldeinformationen, die während der Remotedesktopkonfiguration angegeben wurden, an der virtuellen Maschine an.
 6. Öffnen Sie ein Befehlsfenster.
 7. Geben Sie `IPconfig`ein.

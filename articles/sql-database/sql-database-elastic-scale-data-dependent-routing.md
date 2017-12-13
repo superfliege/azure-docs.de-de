@@ -13,48 +13,57 @@ ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2017
+ms.date: 11/28/2017
 ms.author: ddove
-ms.openlocfilehash: 2246dd12b922fcbc2e2b58890b3d56253810849c
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 2add03568f1d111010cdfb49d850d33cdab8e21b
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="data-dependent-routing"></a>Datenabhängiges Routing
-**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Dieses stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der **[ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**-Klasse in ADO.NET-Anwendungen.
+**Datenabhängiges Routing** bezeichnet die Möglichkeit, die Daten in einer Abfrage dazu zu verwenden, die Anforderung an eine entsprechende Datenbank weiterzuleiten. Dieses stellt ein grundlegendes Muster bei der Arbeit mit horizontal partitionierten Datenbanken (Sharding) dar. Der Anforderungskontext kann auch zur Weiterleitung der Anforderung verwendet werden, insbesondere dann, wenn der Shardingschlüssel nicht Teil der Abfrage ist. Jede spezifische Abfrage oder Transaktion in einer Anwendung, die datenabhängiges Routing verwendet, ist auf den Zugriff auf eine Einzeldatenbank pro Anforderung beschränkt. Für die Tools für elastische Azure SQL-Datenbanken erfolgt dieses Routing mithilfe der Klasse **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)).
 
-Es ist nicht erforderlich, dass die Anwendung die einzelnen Verbindungszeichenfolgen oder Datenbankspeicherorte verfolgt, die den Datenslices in der Shardingumgebung zugeordnet sind. Stattdessen öffnet bei Bedarf der [Shardzuordnungs-Manager](sql-database-elastic-scale-shard-map-management.md) basierend auf den Daten in der Shardzuordnung und dem Wert des Shardingschlüssels, der das Ziel der Anwendungsanforderung ist, Verbindungen zu den richtigen Datenbanken. (Bei diesem Schlüssel handelt es sich in der Regel um *customer_id*, *tenant_id*, *date_key* oder einen anderen spezifischen Bezeichner, der ein grundlegender Parameter der Datenbankanforderung ist.) 
+Es ist nicht erforderlich, dass die Anwendung die einzelnen Verbindungszeichenfolgen oder Datenbankspeicherorte verfolgt, die den Datenslices in der Shardingumgebung zugeordnet sind. Stattdessen öffnet bei Bedarf der [Shardzuordnungs-Manager](sql-database-elastic-scale-shard-map-management.md) basierend auf den Daten in der Shardzuordnung und dem Wert des Shardingschlüssels, der das Ziel der Anwendungsanforderung ist, Verbindungen zu den richtigen Datenbanken. Bei diesem Schlüssel handelt es sich in der Regel um *customer_id*, *tenant_id*, *date_key* oder einen anderen spezifischen Bezeichner, der ein grundlegender Parameter der Datenbankanforderung ist. 
 
 Weitere Informationen finden Sie unter [Scaling Out SQL Server with Data Dependent Routing](https://technet.microsoft.com/library/cc966448.aspx)(Horizontales Hochskalieren von SQL Server mit datenabhängigem Routing).
 
 ## <a name="download-the-client-library"></a>Herunterladen der Clientbibliothek
-Installieren Sie zum Erhalt der Klasse die [Clientbibliothek für elastische Datenbanken](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). 
+Downloads:
+* Die Java-Version der Bibliothek finden Sie im [Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Celastic-db-tools).
+* Die .NET-Version der Bibliothek finden Sie unter [NuGet](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
 ## <a name="using-a-shardmapmanager-in-a-data-dependent-routing-application"></a>Verwenden eines ShardMapManager in einer datenabhängigen Routing-Anwendung
-Anwendungen sollten **ShardMapManager** während der Initialisierung instanziieren und dazu den Factoryaufruf **[GetSQLShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)** verwenden. In diesem Beispiel werden sowohl ein **ShardMapManager** als auch eine spezifische darin enthaltene **ShardMap** initialisiert. Dieses Beispiel zeigt die Methoden GetSqlShardMapManager und [GetRangeShardMap](https://msdn.microsoft.com/library/azure/dn824173.aspx) .
+Anwendungen sollten **ShardMapManager** während der Initialisierung instanziieren und dazu den Factoryaufruf **GetSQLShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager_factory.getsqlshardmapmanager), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx)) verwenden. In diesem Beispiel werden sowohl ein **ShardMapManager** als auch eine spezifische darin enthaltene **ShardMap** initialisiert. Dieses Beispiel zeigt die Methoden „GetSqlShardMapManager“ und „GetRangeShardMap“ ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager.getrangeshardmap), [.NET](https://msdn.microsoft.com/library/azure/dn824173.aspx)).
 
-    ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString, 
-                      ShardMapManagerLoadPolicy.Lazy);
-    RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap"); 
+```Java
+ShardMapManager smm = ShardMapManagerFactory.getSqlShardMapManager(connectionString, ShardMapManagerLoadPolicy.Lazy);
+RangeShardMap<int> rangeShardMap = smm.getRangeShardMap(Configuration.getRangeShardMapName(), ShardKeyType.Int32);
+```
+
+```csharp
+ShardMapManager smm = ShardMapManagerFactory.GetSqlShardMapManager(smmConnnectionString, ShardMapManagerLoadPolicy.Lazy);
+RangeShardMap<int> customerShardMap = smm.GetRangeShardMap<int>("customerMap"); 
+```
 
 ### <a name="use-lowest-privilege-credentials-possible-for-getting-the-shard-map"></a>Verwenden der Anmeldeinformationen mit den niedrigsten möglichen Rechten zum Abrufen der Shardzuordnung
 Wenn eine Anwendung die Shardzuordnung selbst nicht ändert, sollten die in der Factorymethode verwendeten Anmeldeinformationen nur Leseberechtigungen für die Datenbank mit der **globalen Shardzuordnung** bereitstellen. Diese Anmeldeinformationen unterscheiden sich in der Regel von Anmeldeinformationen, die für offene Verbindungen zum Shard-Zuordnungs-Manager verwendet werden. Lesen Sie dazu auch [Anmeldeinformationen für den Zugriff auf die Clientbibliothek für elastische Datenbanken](sql-database-elastic-scale-manage-credentials.md). 
 
 ## <a name="call-the-openconnectionforkey-method"></a>Aufrufen der OpenConnectionForKey-Methode
-Die **[ShardMap.OpenConnectionForKey-Methode](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)** gibt eine ADO.NET-Verbindung zurück, die für die Befehlsausgabe an die entsprechende Datenbank basierend auf dem Wert des **key**-Parameters vorbereitet ist. Shardinginformationen werden in der Anwendung vom **ShardMapManager** zwischengespeichert. Daher erfordern diese Anforderungen i.d.R. keine Datenbanksuche in der Datenbank mit der **globalen Shardzuordnung**. 
+Die **ShardMap.OpenConnectionForKey-Methode** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._list_shard_mapper.openconnectionforkey), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx)) gibt eine Verbindung zurück, die für die Befehlsausgabe an die entsprechende Datenbank basierend auf dem Wert des **key**-Parameters vorbereitet ist. Shardinginformationen werden in der Anwendung vom **ShardMapManager** zwischengespeichert. Daher erfordern diese Anforderungen i.d.R. keine Datenbanksuche in der Datenbank mit der **globalen Shardzuordnung**. 
 
-    // Syntax: 
-    public SqlConnection OpenConnectionForKey<TKey>(
-        TKey key,
-        string connectionString,
-        ConnectionOptions options
-    )
+```Java
+// Syntax: 
+public Connection openConnectionForKey(Object key, String connectionString, ConnectionOptions options)
+```
 
-
+```csharp
+// Syntax: 
+public SqlConnection OpenConnectionForKey<TKey>(TKey key, string connectionString, ConnectionOptions options)
+```
 * Der **key** -Parameter wird als Suchschlüssel in der Shard-Zuordnung verwendet, um die passende Datenbank für die Anforderung zu bestimmen. 
-* **connectionString** wird verwendet, um nur die Benutzeranmeldeinformationen für die gewünschte Verbindung zu übergeben. In dieser *connectionString* ist kein Datenbankname oder Servername enthalten, da die Datenbank und der Server von der Methode anhand der **ShardMap**bestimmt werden. 
-* Die **[connectionOptions](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions.aspx)** sollten auf **ConnectionOptions.Validate** festgelegt werden, wenn in der Umgebung die Shardzuordnungen geändert und Zeilen aufgrund von Teilungen oder Zusammenführungen in andere Datenbanken verschoben werden können. Dies umfasst eine kurze Abfrage der lokalen Shardzuordnung in der Zieldatenbank (nicht der globalen Shardzuordnung), bevor die Verbindung an die Anwendung bereitgestellt wird. 
+* **connectionString** wird verwendet, um nur die Benutzeranmeldeinformationen für die gewünschte Verbindung zu übergeben. In diesem *connectionString*-Element ist kein Datenbankname oder Servername enthalten, da die Datenbank und der Server von der Methode anhand von **ShardMap** bestimmt werden. 
+* **connectionOptions** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._connection_options), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.connectionoptions.aspx)) sollte auf **ConnectionOptions.Validate** festgelegt werden, wenn in der Umgebung die Shardzuordnungen geändert und Zeilen aufgrund von Teilungen oder Zusammenführungen in andere Datenbanken verschoben werden können. Dies umfasst eine kurze Abfrage der lokalen Shardzuordnung in der Zieldatenbank (nicht der globalen Shardzuordnung), bevor die Verbindung an die Anwendung bereitgestellt wird. 
 
 Wenn die Validierung der lokalen Shard-Zuordnung fehlschlägt (was angibt, dass der Zwischenspeicher nicht korrekt ist), fragt der Shard-Zuordnungs-Manager die globale Shard-Zuordnung ab, um den neuen, richtigen Wert für die Suche zu erhalten, den Zwischenspeicher zu aktualisieren und die passende Datenbankverbindung zu erhalten und zurückzugeben. 
 
@@ -62,16 +71,84 @@ Verwenden Sie **ConnectionOptions.None** nur, wenn keine Shardzuordnungsänderun
 
 In diesem Beispiel wird der Wert des Ganzzahlschlüssels **CustomerID** zusammen mit dem **ShardMap**-Objekt **customerShardMap** verwendet.  
 
-    int customerId = 12345; 
-    int newPersonId = 4321; 
+```Java 
+int customerId = 12345; 
+int productId = 4321; 
+// Looks up the key in the shard map and opens a connection to the shard
+try (Connection conn = shardMap.openConnectionForKey(customerId, Configuration.getCredentialsConnectionString())) {
+    // Create a simple command that will insert or update the customer information
+    PreparedStatement ps = conn.prepareStatement("UPDATE Sales.Customer SET PersonID = ? WHERE CustomerID = ?");
 
-    // Connect to the shard for that customer ID. No need to call a SqlConnection 
-    // constructor followed by the Open method.
-    using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, 
-        Configuration.GetCredentialsConnectionString(), ConnectionOptions.Validate)) 
+    ps.setInt(1, productId);
+    ps.setInt(2, customerId);
+    ps.executeUpdate();
+} catch (SQLException e) {
+    e.printStackTrace();
+}
+```
+
+```csharp
+int customerId = 12345; 
+int newPersonId = 4321; 
+
+// Connect to the shard for that customer ID. No need to call a SqlConnection 
+// constructor followed by the Open method.
+using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Configuration.GetCredentialsConnectionString(), ConnectionOptions.Validate)) 
+{ 
+    // Execute a simple command. 
+    SqlCommand cmd = conn.CreateCommand(); 
+    cmd.CommandText = @"UPDATE Sales.Customer 
+                        SET PersonID = @newPersonID WHERE CustomerID = @customerID"; 
+
+    cmd.Parameters.AddWithValue("@customerID", customerId);cmd.Parameters.AddWithValue("@newPersonID", newPersonId); 
+    cmd.ExecuteNonQuery(); 
+}  
+```
+
+Die **OpenConnectionForKey** -Methode gibt eine neue, bereits offene Verbindung mit der richtigen Datenbank zurück. Verbindungen, die auf diese Weise verwendet werden, nutzen weiterhin alle Vorteile des Verbindungspooling. 
+
+Die **OpenConnectionForKeyAsync-Methode** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapper._list_shard_mapper.openconnectionforkeyasync), [.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)) ist auch verfügbar, wenn die Anwendung die asynchrone Programmierung mit verwendet.
+
+## <a name="integrating-with-transient-fault-handling"></a>Integration in die Behandlung vorübergehender Fehler
+Eine bewährte Methode bei der Entwicklung von Anwendungen für den Datenzugriff in der Cloud besteht darin, sicherzustellen, dass vorübergehende Fehler von der App abgefangen werden und dass die Vorgänge mehrmals wiederholt werden, bevor ein Fehler ausgelöst wird. Die Behandlung vorübergehender Fehler in Cloudanwendungen wird in „Transient Fault Handling“ (Behandeln vorübergehender Fehler) ([Java](/java/api/com.microsoft.azure.elasticdb.core.commons.transientfaulthandling), [.NET](https://msdn.microsoft.com/library/dn440719\(v=pandp.60\).aspx)) besprochen. 
+
+Die Behandlung vorübergehender Fehler kann natürlich zusammen mit dem datenabhängigen Routing verwendet werden. Die wichtigste Anforderung besteht in einer Wiederholung der gesamten Datenzugriffsanforderung, darunter des **using** -Blocks, der die datenabhängige Routingverbindung abgerufen hat. Das vorherige Beispiel könnte wie folgt umgeschrieben werden. 
+
+### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Beispiel – Datenabhängiges Routing mit Behandlung vorübergehender Fehler
+```Java 
+int customerId = 12345; 
+int productId = 4321; 
+try {
+    SqlDatabaseUtils.getSqlRetryPolicy().executeAction(() -> {
+        // Looks up the key in the shard map and opens a connection to the shard
+        try (Connection conn = shardMap.openConnectionForKey(customerId, Configuration.getCredentialsConnectionString())) {
+            // Create a simple command that will insert or update the customer information
+            PreparedStatement ps = conn.prepareStatement("UPDATE Sales.Customer SET PersonID = ? WHERE CustomerID = ?");
+
+            ps.setInt(1, productId);
+            ps.setInt(2, customerId);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    });
+} catch (Exception e) {
+    throw new StoreException(e.getMessage(), e);
+}
+```
+
+```csharp
+int customerId = 12345; 
+int newPersonId = 4321; 
+
+Configuration.SqlRetryPolicy.ExecuteAction(() =&gt; 
+{
+    // Connect to the shard for a customer ID. 
+    using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId, Configuration.GetCredentialsConnectionString(), ConnectionOptions.Validate)) 
     { 
-        // Execute a simple command. 
+        // Execute a simple command 
         SqlCommand cmd = conn.CreateCommand(); 
+
         cmd.CommandText = @"UPDATE Sales.Customer 
                             SET PersonID = @newPersonID 
                             WHERE CustomerID = @customerID"; 
@@ -79,45 +156,13 @@ In diesem Beispiel wird der Wert des Ganzzahlschlüssels **CustomerID** zusammen
         cmd.Parameters.AddWithValue("@customerID", customerId); 
         cmd.Parameters.AddWithValue("@newPersonID", newPersonId); 
         cmd.ExecuteNonQuery(); 
-    }  
 
-Die **OpenConnectionForKey** -Methode gibt eine neue, bereits offene Verbindung mit der richtigen Datenbank zurück. Verbindungen, die auf diese Weise verwendet werden, nutzen weiterhin alle Vorteile des Verbindungspooling in ADO.Net. Solange Transaktionen und Anforderungen jeweils durch ein einzelnes Shard erfüllt werden können, sollte dies die einzige Änderung sein, die für eine Anwendung, die bereits ADO.Net verwendet, erforderlich ist. 
+        Console.WriteLine("Update completed"); 
+    } 
+}); 
+```
 
-Die **[OpenConnectionForKeyAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkeyasync.aspx)**-Methode ist auch verfügbar, wenn die Anwendung die asynchrone Programmierung mit ADO.NET verwendet. Das Verhalten entspricht dem datenabhängigen Routing der **[Connection.OpenAsync](https://msdn.microsoft.com/library/hh223688\(v=vs.110\).aspx)**-Methode von ADO.NET.
-
-## <a name="integrating-with-transient-fault-handling"></a>Integration in die Behandlung vorübergehender Fehler
-Eine bewährte Methode bei der Entwicklung von Anwendungen für den Datenzugriff in der Cloud besteht darin, sicherzustellen, dass vorübergehende Fehler von der App abgefangen werden und dass die Vorgänge mehrmals wiederholt werden, bevor ein Fehler ausgelöst wird. Die Behandlung vorübergehender Fehler in Cloudanwendungen wird in [Transient Fault Handling](https://msdn.microsoft.com/library/dn440719\(v=pandp.60\).aspx) (Behandeln vorübergehender Fehler) besprochen. 
-
-Die Behandlung vorübergehender Fehler kann natürlich zusammen mit dem datenabhängigen Routing verwendet werden. Die wichtigste Anforderung besteht in einer Wiederholung der gesamten Datenzugriffsanforderung, darunter des **using** -Blocks, der die datenabhängige Routingverbindung abgerufen hat. Das obige Beispiel könnte wie folgt umgeschrieben werden (beachten Sie die hervorgehobenen Änderungen). 
-
-### <a name="example---data-dependent-routing-with-transient-fault-handling"></a>Beispiel – Datenabhängiges Routing mit Behandlung vorübergehender Fehler
-<pre><code>int customerId = 12345; 
-int newPersonId = 4321; 
-
-<span style="background-color:  #FFFF00">Configuration.SqlRetryPolicy.ExecuteAction(() =&gt; </span> 
-<span style="background-color:  #FFFF00">    { </span>
-        // Connect to the shard for a customer ID. 
-        using (SqlConnection conn = customerShardMap.OpenConnectionForKey(customerId,  
-        Configuration.GetCredentialsConnectionString(), ConnectionOptions.Validate)) 
-        { 
-            // Execute a simple command 
-            SqlCommand cmd = conn.CreateCommand(); 
-
-            cmd.CommandText = @&quot;UPDATE Sales.Customer 
-                            SET PersonID = @newPersonID 
-                            WHERE CustomerID = @customerID&quot;; 
-
-            cmd.Parameters.AddWithValue(&quot;@customerID&quot;, customerId); 
-            cmd.Parameters.AddWithValue(&quot;@newPersonID&quot;, newPersonId); 
-            cmd.ExecuteNonQuery(); 
-
-            Console.WriteLine(&quot;Update completed&quot;); 
-        } 
-<span style="background-color:  #FFFF00">    }); </span> 
-</code></pre>
-
-
-Pakete, die zum Implementieren der Behandlung vorübergehender Fehler erforderlich sind, werden automatisch heruntergeladen, wenn Sie die Beispielanwendung für elastische Datenbanken erstellen. Die Pakete sind auch getrennt unter [Enterprise Library – Transient Fault Handling Application Block](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/)(in englischer Sprache) erhältlich. Verwenden Sie Version 6.0 oder höher. 
+Pakete, die zum Implementieren der Behandlung vorübergehender Fehler erforderlich sind, werden automatisch heruntergeladen, wenn Sie die Beispielanwendung für elastische Datenbanken erstellen. 
 
 ## <a name="transactional-consistency"></a>Transaktionskonsistenz
 Transaktionseigenschaften werden für alle Vorgänge lokal auf einem Shard garantiert. So werden z. B. Transaktionen, die über datenabhängiges Routing gesandt wurden, innerhalb des Bereichs des Ziel-Shards für die Verbindung ausgeführt. Zu diesem Zeitpunkt sind keine Funktionen für mehrere Verbindungen in einer Transaktion vorgesehen. Daher besteht keine Transaktionsgarantie für Vorgänge, die über mehrere Shards hinweg ausgeführt werden.

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 9e20c606973447e0b01eaf9716fabf47eefd228b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: e85515c29d8f626c7eb2bfb636dc6c18da78b5c5
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>Bikesharing-Tutorial: Erweiterte Datenvorbereitung mit der Azure Machine Learning Workbench
 Azure Machine Learning-Dienste (Vorschau) ist eine integrierte, End-to-End Data Science- und erweiterte Analyselösung für professionelle Datenspezialisten zum Vorbereiten von Daten, Entwickeln von Experimenten und Bereitstellen von Modellen auf Cloudniveau.
@@ -202,7 +202,7 @@ Wenn Sie zur __Datenansicht__ zurückkehren möchten, wählen Sie oben links auf
    ![Abbildung des Filter-Dialogfelds](media/tutorial-bikeshare-dataprep/weatherfilterinfm15.png)
 
    > [!NOTE]
-   > FM-15 ist ein Typ von METAR (Meteorological Terminal Aviation Routine Weather Report). Die FM-15-Berichte sind empirisch betrachtet die vollständigsten Daten, bei denen die wenigsten Daten fehlen.
+   > FM-15 ist ein Typ von METAR (Meteorological Terminal Aviation Routine Weather Report). Die FM-15-Berichte sind empirisch betrachtet die vollständigsten Daten, bei denen am wenigsten Daten fehlen.
 
 ## <a name="remove-a-column"></a>Entfernen einer Spalte
 
@@ -288,7 +288,7 @@ Zum Verwenden der Daten in einer Prognose für Zwei-Stunden-Zeitblöcke müssen 
 
    Geben Sie `Jan 01, 2015 12AM-2AM` als Beispiel für die erste Zeile ein, und drücken Sie die **EINGABETASTE**.
 
-   Die Workbench bestimmt die Transformation anhand des angegebenen Beispiels. In diesem Beispiel erhalten wir folgendes Ergebnis: Das Datumsformat wird geändert, und das Datum wird mit dem Zwei-Stunden-Fenster verkettet.
+   Die Workbench bestimmt die Transformation anhand des angegebenen Beispiels. In diesem Beispiel erhalten wir folgendes Ergebnis: Das Datumsformat wird geändert und mit dem Zwei-Stunden-Fenster verkettet.
 
    ![Abbildung des Beispiels „Jan 01, 2015 12AM-2AM“](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
 

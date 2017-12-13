@@ -1,80 +1,110 @@
 ---
-title: Aktualisieren Ihrer API in Azure API Management mithilfe von Revisionen | Microsoft-Dokumentation
+title: "Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen in Azure API Management | Microsoft-Dokumentation"
 description: "In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe von Revisionen geringfügige Änderungen in API Management vornehmen."
 services: api-management
 documentationcenter: 
-author: mattfarm
-manager: anneta
+author: juliako
+manager: cfowler
 editor: 
 ms.service: api-management
-ms.workload: integration
-ms.topic: article
-ms.date: 08/18/2017
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.custom: mvc
+ms.topic: tutorial
+ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 0d67166a16ae4d640080ad83e7625e594b0dc246
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50d7ac17faebb34f1a1f9a3259aa0196950391d9
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="make-non-breaking-changes-safely-using-revisions"></a>Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen
-In diesem Tutorial erfahren Sie, wie Sie Ihre API gefahrlos ändern und Ihre Entwickler über die Änderung informieren.
+# <a name="use-revisions-to-make-non-breaking-changes-safely"></a>Gefahrloses Vornehmen geringfügiger Änderungen mithilfe von Revisionen
+Wenn Ihre API einsatzbereit ist und von Entwicklern verwendet wird, müssen Sie in der Regel bei Änderungen an der API vorsichtig sein und darauf achten, keine Aufrufe Ihrer API zu beeinträchtigen. Außerdem empfiehlt es sich, Entwickler über die vorgenommenen Änderungen zu informieren. Hierzu können Sie **Revisionen** in Azure API Management verwenden. Weitere Informationen finden Sie unter [Versions & revisions](https://blogs.msdn.microsoft.com/apimanagement/2017/09/14/versions-revisions/) (Versionen und Revisionen) und [API Versioning with Azure API Management](https://blogs.msdn.microsoft.com/apimanagement/2017/09/13/api-versioning-with-azure-api-management/) (API-Versionsverwaltung mit Azure API Management).
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Hinzufügen einer neuen Revision
+> * Vornehmen geringfügiger Änderungen an Ihrer Revision
+> * Festlegen der Revision als aktuelle Revision und Hinzufügen eines Eintrags zum Änderungsprotokoll
+> * Anzeigen von Änderungen und Änderungsprotokoll im Entwicklerportal
+
+![Änderungsprotokoll im Entwicklerportal](media/api-management-getstarted-revise-api/azure_portal.PNG)
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für dieses Tutorial müssen Sie einen API Management-Dienst erstellen und über eine API verfügen, die Sie verändern können (anstelle von „Conference API“).
 
-## <a name="about-revisions"></a>Informationen zu Revisionen
-Wenn Ihre API einsatzbereit ist und von Entwicklern verwendet wird, müssen Sie in der Regel bei Änderungen an der API vorsichtig sein, um Aufrufer Ihrer API nicht zu beeinträchtigen. Außerdem empfiehlt es sich, Entwickler über die vorgenommenen Änderungen zu informieren. Hierzu können Sie **Revisionen** in Azure API Management verwenden.
++ Absolvieren Sie das folgende Schnellstarttutorial: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
++ Schließen Sie darüber hinaus das folgende Tutorial ab: [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
 
-## <a name="walkthrough"></a>Exemplarische Vorgehensweise
-In dieser exemplarischen Vorgehensweise fügen wir eine neue Revision hinzu, fügen ihr einen Vorgang hinzu, machen die Revision aktuell und erstellen einen Eintrag im Änderungsprotokoll.
+[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="add-a-new-revision"></a>Hinzufügen einer neuen Revision
-1. Navigieren Sie im Azure-Portal innerhalb Ihres API Management-Diensts zur Seite **APIs**.
-2. Wählen Sie in der API-Liste die Option **Conference API** aus, und klicken Sie anschließend im Menü im oberen Bereich der Seite auf die Registerkarte **Revisionen**.
-3. Klicken Sie auf **+ Revision hinzufügen**.
+
+1. Klicken Sie auf die Seite **APIs**.
+2. Wählen Sie in der API-Liste den Eintrag **Conference API** aus (oder eine andere API, der Sie Revisionen hinzufügen möchten).
+3. Klicken Sie im Menü im oberen Bereich der Seite auf die Registerkarte **Revisionen**.
+4. Klicken Sie auf **+ Revision hinzufügen**.
 
     > [!TIP]
     > Alternativ können Sie im Kontextmenü (**...**) für die API auf **Revision hinzufügen** klicken.
-![Menü „Revisionen“ im oberen Bereich des Bildschirms](media/api-management-getstarted-revise-api/TopMenu.PNG)
+    
+    ![Menü „Revisionen“ im oberen Bereich des Bildschirms](media/api-management-getstarted-revise-api/TopMenu.PNG)
 
-4. Geben Sie eine Beschreibung für Ihre neue Revision an, damit Sie wissen, wofür sie verwendet wird.
-5. Wählen Sie **Erstellen**
-6. Die neue Revision wird erstellt.
+5. Geben Sie eine Beschreibung für Ihre neue Revision an, damit Sie wissen, wofür sie verwendet wird.
+6. Wählen Sie **Erstellen**
+7. Die neue Revision wird erstellt.
 
     > [!NOTE]
     > Ihre ursprüngliche API bleibt in **Revision 1**. Dies ist die Revision, die weiterhin von den Benutzern aufgerufen wird, bis Sie beschließen, eine andere Revision zur aktuellen Revision zu machen.
 
 ## <a name="make-non-breaking-changes-to-your-revision"></a>Vornehmen geringfügiger Änderungen an Ihrer Revision
-1. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-2. Beachten Sie, dass die **Revisionsauswahl** (direkt über der Registerkarte „Entwurf“) die aktuelle Revision als **Revision 2** anzeigt.
+
+1. Wählen Sie in der API-Liste **Conference API** aus.
+2. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
+3. Beachten Sie, dass die **Revisionsauswahl** (direkt über der Registerkarte „Entwurf“) die aktuelle Revision als **Revision 2** anzeigt.
 
     > [!TIP]
     > Mit der Revisionsauswahl können Sie zwischen Revisionen wechseln, die Sie bearbeiten möchten.
 
-3. Klicken Sie auf **+ Vorgang hinzufügen**.
-4. Legen Sie den neuen Vorgang auf **POST** und Name und Anzeigename des Vorgangs auf **Feedback** fest.
-5. **Speichern** Sie Ihren neuen Vorgang.
-6. Sie haben nun eine Änderung an **Revision 2** vorgenommen. Wechseln Sie mithilfe der **Revisionsauswahl** im oberen Seitenbereich zu **Revision 1** zurück.
-7. Wie Sie sehen, ist der neue Vorgang in **Revision 1** nicht vorhanden. 
+4. Klicken Sie auf **+ Vorgang hinzufügen**.
+5. Legen Sie den neuen Vorgang auf **POST** und Name und Anzeigename des Vorgangs auf **test** fest.
+6. **Speichern** Sie Ihren neuen Vorgang.
+7. Sie haben nun eine Änderung an **Revision 2** vorgenommen. Wechseln Sie mithilfe der **Revisionsauswahl** im oberen Seitenbereich zu **Revision 1** zurück.
+8. Wie Sie sehen, ist der neue Vorgang in **Revision 1** nicht vorhanden. 
 
 ## <a name="make-your-revision-current-and-add-a-change-log-entry"></a>Festlegen der Revision als aktuelle Revision und Hinzufügen eines Eintrags zum Änderungsprotokoll
 1. Klicken Sie im oberen Bereich der Seite auf die Registerkarte **Revisionen**.
-![Das Revisionsmenü auf dem Revisionsbildschirm.](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
-2. Öffnen Sie das Kontextmenü (**...**) für **Revision 2**.
-3. Klicken Sie auf **Make Current** (Als aktuell festlegen).
-![Festlegen der Revision als aktuelle Revision und Erstellen eines Eintrags im Änderungsprotokoll](media/api-management-getstarted-revise-api/MakeCurrent.PNG)
-4. Klicken Sie auf **Post to Public Change Log for this API** (In öffentlichem Änderungsprotokoll für diese API veröffentlichen).
-5. Geben Sie eine Änderungsbeschreibung für Entwickler an (beispielsweise **Neuen Feedbackvorgang hinzugefügt.**).
-6. **Revision 2** ist jetzt aktuell.
+
+    ![Das Revisionsmenü auf dem Revisionsbildschirm](media/api-management-getstarted-revise-api/RevisionsMenu.PNG)
+1. Öffnen Sie das Kontextmenü (**...**) für **Revision 2**.
+2. Klicken Sie auf **Make Current** (Als aktuell festlegen). Aktivieren Sie **Post to Public Change log for this API** (In öffentlichem Änderungsprotokoll für diese API veröffentlichen), wenn Sie Hinweise zu dieser Änderung veröffentlichen möchten.
+3. Klicken Sie auf **Post to Public Change Log for this API** (In öffentlichem Änderungsprotokoll für diese API veröffentlichen).
+4. Geben Sie eine Änderungsbeschreibung für Entwickler an (beispielsweise **Testrevisionen. Neuer Vorgang „Test“ hinzugefügt**).
+5. **Revision 2** ist jetzt aktuell.
 
 ## <a name="browse-the-developer-portal-to-see-changes-and-change-log"></a>Anzeigen von Änderungen und Änderungsprotokoll im Entwicklerportal
-1. Klicken Sie im oberen Menü auf **Entwicklerportal**.
-2. Klicken Sie auf **APIs** und anschließend auf **Conference API**.
-3. Wie Sie sehen, ist Ihr neuer **Feedback**-Vorgang nun verfügbar.
-4. Klicken Sie unter dem API-Namen auf **API Change History** (API-Änderungsverlauf).
-5. Der Änderungsprotokolleintrag ist in der Liste enthalten.
-![Änderungsprotokoll im Entwicklerportal](media/api-management-getstarted-revise-api/ChangeLogDevPortal.PNG)
+1. Klicken Sie im Azure-Portal auf **APIs**.
+2. Klicken Sie im oberen Menü auf **Entwicklerportal**.
+3. Klicken Sie auf **APIs** und anschließend auf **Conference API**.
+4. Wie Sie sehen, ist Ihr neuer **test**-Vorgang nun verfügbar.
+5. Klicken Sie unter dem API-Namen auf **API Change History** (API-Änderungsverlauf).
+6. Der Änderungsprotokolleintrag ist in der Liste enthalten.
+
+    ![Entwicklerportal](media/api-management-getstarted-revise-api/developer_portal.PNG)
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Veröffentlichen von API-Versionen mit Azure API Management](#api-management-getstarted-publish-versions.md)
+
+In diesem Tutorial haben Sie Folgendes gelernt:
+
+> [!div class="checklist"]
+> * Hinzufügen einer neuen Revision
+> * Vornehmen geringfügiger Änderungen an Ihrer Revision
+> * Festlegen der Revision als aktuelle Revision und Hinzufügen eines Eintrags zum Änderungsprotokoll
+> * Anzeigen von Änderungen und Änderungsprotokoll im Entwicklerportal
+
+Fahren Sie mit dem nächsten Tutorial fort:
+
+> [!div class="nextstepaction"]
+> [Planbares Veröffentlichen mehrerer Versionen Ihrer API](api-management-get-started-publish-versions.md)

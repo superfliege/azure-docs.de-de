@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 72936a4d38f809934ddea74e5ae4a6029450a97c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 92a52910ef8b9f078a8ea6ac409f89719f889b24
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-api-management-template-data-model-reference"></a>Datenmodellreferenz zu Azure API Management-Vorlagen
 In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Elemente beschrieben, die in den Datenmodellen für die Entwicklerportalvorlagen in Azure API Management verwendet werden.  
@@ -332,7 +332,7 @@ In diesem Thema werden die Entitäts- und Typendarstellungen für gängige Eleme
 |DelegationEnabled|Boolescher Wert|Gibt an, ob die delegierte Anmeldung aktiviert ist.|  
 |DelegationUrl|string|Die URL zur delegierten Anmeldung, falls diese aktiviert ist.|  
 |SsoSignUpUrl|string|Die URL zur einmaligen Anmeldung für den Benutzer, sofern vorhanden.|  
-|AuxServiceUrl|string|Wenn der aktuelle Benutzer ein Administrator ist, ist dies ein Link zur Dienstinstanz im klassischen Azure-Portal.|  
+|AuxServiceUrl|string|Wenn der aktuelle Benutzer ein Administrator ist, ist dies ein Link zur Dienstinstanz im Azure-Portal.|  
 |Anbieter|Sammlung von [Provider](#Provider)-Entitäten.|Die Authentifizierungsanbieter für diesen Benutzer.|  
 |UserRegistrationTerms|string|Bedingungen, denen ein Benutzer zustimmen muss, bevor er sich anmeldet.|  
 |UserRegistrationTermsEnabled|Boolescher Wert|Gibt an, ob Bedingungen aktiviert sind.|  

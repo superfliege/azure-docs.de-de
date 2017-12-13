@@ -1,28 +1,22 @@
 ---
-title: Aktivieren des Zugriffs auf die Azure-DC/OS-Container-App | Microsoft-Dokumentation
+title: Aktivieren des Zugriffs auf die Azure-DC/OS-Container-App
 description: "Es wird beschrieben, wie Sie den öffentlichen Zugriff auf DC/OS-Container in Azure Container Service ermöglichen."
 services: container-service
-documentationcenter: 
 author: sauryadas
 manager: madhana
-editor: 
-tags: acs, azure-container-service
-keywords: Docker, Container, Microservices, Mesos, Azure
 ms.service: container-service
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: c9ef5913859cf3a55a2de2107a9304f1d28a4829
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aedc97335a0b9ad00cf653477b62bf530b556900
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="enable-public-access-to-an-azure-container-service-application"></a>Ermöglichen des öffentlichen Zugriffs auf eine Azure Container Service-Anwendung
+
 Alle DC/OS-Container im [Pool mit den öffentlichen Agents](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) von ACS werden automatisch für das Internet verfügbar gemacht. Standardmäßig sind die Ports **80**, **443** und **8080** geöffnet, und alle (öffentlichen) Container, die an diesen Ports lauschen, sind zugänglich. In diesem Artikel wird beschrieben, wie Sie mehr Ports für Ihre Anwendungen im Azure Container Service öffnen.
 
 ## <a name="open-a-port-portal"></a>Öffnen eines Ports (Portal)

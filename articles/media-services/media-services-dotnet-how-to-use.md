@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: juliako
-ms.openlocfilehash: 024b4cbb13001d67e7c1f0b86a84dfb43478c49d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5dd263a2e925989069c3b0257cfafa4c43e6157
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="media-services-development-with-net"></a>Media Services-Entwicklung mit .NET
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -48,7 +48,7 @@ Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([g
 
     1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Namen des Projekts, und wählen Sie **NuGet-Pakete verwalten** aus.
 
-    2. Das Dialogfeld „NuGet-Pakete verwalten“ wird geöffnet.
+    2. Das Dialogfeld NuGet-Pakete verwalten wird geöffnet.
 
     3. Suchen Sie im Onlinekatalog nach den Azure Media Services-Erweiterungen, wählen Sie die **Azure Media Services .NET SDK-Erweiterungen** (**windowsazure.mediaservices.extensions**) aus, und klicken Sie dann auf die Schaltfläche **Installieren**.
    
@@ -66,8 +66,11 @@ Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([g
 
     Sollten Sie [Benutzerauthentifizierung](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication) verwenden, weist Ihre Config-Datei vermutlich Werte für Ihre Azure AD-Mandanten-Domäne und den AMS-REST-API-Endpunkt auf.
     
+    >[!Note]
+    >Die meisten Codebeispiele im Azure Media Services-Dokumentationssatz verwenden einen Benutzerauthentifizierungstyp (interaktiv) für die Verbindung mit der AMS-API. Diese Authentifizierungsmethode eignet sich gut für die Verwaltung und Überwachung von nativen Apps: Mobile Apps, Windows-Apps und Konsolenanwendungen.
+    
     >[!Important]
-    >Die meisten Codebeispiele im Azure Media Services-Dokumentationssatz verwenden einen Benutzerauthentifizierungstyp (interaktiv) für die Verbindung mit der AMS-API. Diese Authentifizierungsmethode eignet sich gut für die Verwaltung und Überwachung von nativen Apps: Mobile Apps, Windows-Apps und Konsolenanwendungen. Diese Authentifizierungsmethode eignet sich nicht für Server, Webdienste oder API-Anwendungen.  Weitere Informationen finden Sie unter [Access the AMS API with Azure AD authentication (Zugriff auf die AMS-API mit der Azure AD-Authentifizierung)](media-services-use-aad-auth-to-access-ams-api.md).
+    > Die **interaktive** Authentifizierungsmethode eignet sich NICHT für Server, Webdienste oder API-Anwendungen. Verwenden Sie für diese Anwendungstypen die **Dienstprinzipal**-Authentifizierungsmethode. Weitere Informationen finden Sie unter [Access the AMS API with Azure AD authentication (Zugriff auf die AMS-API mit der Azure AD-Authentifizierung)](media-services-use-aad-auth-to-access-ams-api.md).
 
         <configuration>
         ...

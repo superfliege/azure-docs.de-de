@@ -1,5 +1,5 @@
 ---
-title: Vorschau zum Ablaufen von Office 365-Gruppen in Azure Active Directory | Microsoft-Dokumentation
+title: "Ablauf für Office 365-Gruppen in Azure Active Directory | Microsoft-Dokumentation"
 description: "Einrichten des Ablaufs für Office 365-Gruppen in Azure Active Directory (Vorschau)"
 services: active-directory
 documentationcenter: 
@@ -12,29 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 12/01/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 8a43df84fd050d7b4bd8d937b8c55e744cb805d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2dd56bd34e5b7845298fab1f36e231113a2e28e
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
-# <a name="configure-office-365-groups-expiration-preview"></a>Konfigurieren des Ablaufs von Office 365-Gruppen (Vorschau)
+# <a name="configure-expiration-for-office-365-groups-preview"></a>Konfigurieren des Ablaufs für Office 365-Gruppen (Vorschauversion)
 
-Sie können jetzt den Lebenszyklus von Office 365-Gruppen durch Festlegen des Ablaufs für beliebige Office 365-Gruppen verwalten, die Sie auswählen. Sobald dieser Ablauf festgelegt ist, werden Besitzer dieser Gruppen aufgefordert, ihre Gruppen zu verlängern, wenn sie die Gruppen noch benötigen. Eine Office 365-Gruppe, die nicht verlängert wird, wird gelöscht. Eine Office 365-Gruppe, die gelöscht wurde, kann innerhalb von 30 Tagen von den Gruppenbesitzern oder vom Administrator wiederhergestellt werden.  
-
+Der Lebenszyklus von Office 365-Gruppen kann jetzt durch Festlegen von Ablauffeatures verwaltet werden. Sie können einen Ablauf rein für Office 365-Gruppen in Azure Active Directory (Azure AD) festlegen. Das Festlegen eines Ablaufs für eine Gruppe bewirkt Folgendes:
+-   Besitzer der Gruppe werden vor Erreichen des Ablaufs aufgefordert, die Gruppe zu erneuern.
+-   Nicht erneuerte Gruppen werden gelöscht.
+-   Gelöschte Office 365-Gruppen können innerhalb von 30 Tagen von den Gruppenbesitzern oder vom Administrator wiederhergestellt werden.
 
 > [!NOTE]
-> Sie können die Ablaufzeit nur für Office 365-Gruppen festlegen.
->
-> Die Einstellung des Ablaufs für O365-Gruppen erfordert, dass folgenden Benutzern eine Azure AD Premium-Lizenz zugewiesen wurde:
->   - Dem Administrator, der die Ablaufeinstellungen für den Mandanten konfiguriert
->   - Allen Mitglieder der für diese Einstellung ausgewählten Gruppen
+> Zum Festlegen des Ablaufs für Office 365-Gruppen ist eine Azure Active Directory Premium-Lizenz oder eine Azure Active Directory Basic-EDU-Lizenz für alle Mitglieder der Gruppen erforderlich, auf die Ablaufeinstellungen angewendet werden.
+> 
+> Hinweis für Kunden mit Azure Active Directory Basic-Lizenz, die diese Richtlinie zum ersten Mal konfigurieren: Verwenden Sie Azure Active Directory-PowerShell-Cmdlets. Danach können Sie die Ablaufeinstellungen entweder mithilfe von PowerShell oder über das Azure AD-Portal aktualisieren (mit einem Konto, das in Ihrem Azure AD-Mandanten als Benutzerkontoadministrator oder globaler Administrator fungiert).
 
-## <a name="set-office-365-groups-expiration"></a>Einrichten des Office 365-Gruppenablaufs
+Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets finden Sie unter [Azure Active Directory PowerShell for Graph - Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory: PowerShell für Graph – öffentliche Vorschauversion 2.0.0.137).
+
+## <a name="set-group-expiration"></a>Festlegen des Gruppenablaufs
 
 1. Öffnen Sie das [Azure AD Admin Center](https://aad.portal.azure.com) mit dem Konto eines globalen Administrators in Ihrem Azure AD-Mandanten.
 
@@ -51,7 +53,6 @@ Sie können jetzt den Lebenszyklus von Office 365-Gruppen durch Festlegen des Ab
   * Wählen Sie, welche Office 365-Gruppen ablaufen. Sie können den Ablauf für **Alle** Office 365-Gruppen aktivieren, Sie können eine Auswahl aus den Office 365-Gruppen treffen, oder Sie wählen **Keine**, um den Ablauf für alle Gruppen zu deaktivieren.
   * Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
 
-Anweisungen zum Herunterladen und Installieren des Microsoft PowerShell-Moduls zum Konfigurieren des Ablaufs für Office 365-Gruppen über PowerShell finden Sie unter [Azure Active Directory V2 PowerShell Module – Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory V2 PowerShell-Modul – öffentliche Preview-Version 2.0.0.137).
 
 E-Mail-Benachrichtigungen, wie diese werden an die Office 365-Gruppenbesitzer 30 Tage, 15 Tage und 1 Tag vor Ablauf der Gruppe gesendet.
 
@@ -68,7 +69,8 @@ Die Gruppe kann durch Auswahl von **Gruppe wiederherstellen** oder mithilfe von 
 Wenn die Gruppe, die Sie wiederherstellen, Dokumente, SharePoint-Websites oder andere beständige Objekte enthält, kann es bis zu 24 Stunden dauern, bis die Gruppe und deren Inhalte vollständig wiederhergestellt werden.
 
 > [!NOTE]
-> * Bei der Bereitstellung von Ablaufeinstellungen gibt es möglicherweise Gruppen, die älter sind als das Ablauffenster. Diese Gruppen werden nicht sofort gelöscht, jedoch auf 30 Tage bis zum Ablaufdatum festgelegt. Die erste Verlängerungsbenachrichtigung wird innerhalb eines Tages gesendet. Beispielsweise wurde Gruppe A vor 400 Tagen erstellt, und das Ablaufintervall ist auf 180 Tage festgelegt. Wenn Sie Ablaufeinstellungen anwenden, hat Gruppe A 30 Tage, bevor sie gelöscht wird, es sei denn, der Besitzer verlängert sie.
+> * Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 30 Tagen festgelegt. Die erste Verlängerungsbenachrichtigung wird innerhalb eines Tages gesendet. 
+>   Beispielsweise wurde Gruppe A vor 400 Tagen erstellt, und das Ablaufintervall ist auf 180 Tage festgelegt. Wenn Sie Ablaufeinstellungen anwenden, hat Gruppe A 30 Tage, bevor sie gelöscht wird, es sei denn, der Besitzer verlängert sie.
 > * Wenn eine dynamische Gruppe gelöscht und wiederhergestellt wird, gilt sie als neue Gruppe und wird der Regel entsprechend erneut aufgefüllt. Dieser Vorgang kann bis zu 24 Stunden dauern.
 
 ## <a name="next-steps"></a>Nächste Schritte

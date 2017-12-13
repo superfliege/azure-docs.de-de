@@ -24,7 +24,7 @@ Wenn Sie eine Verbindung mit VMs herstellen, sollten Sie die Verschlüsselung mi
 
 ## <a name="policies"></a>Richtlinien
 
-Mit [Azure Resource Manager-Richtlinien](../articles/azure-resource-manager/resource-manager-policy.md) kann das gewünschte Verhalten für die [Windows-VMs](../articles/virtual-machines/windows/policy.md) und [Linux-VMs](../articles/virtual-machines/linux/policy.md) Ihrer Organisation definiert werden. Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei.
+Mit [Azure-Richtlinien](../articles/azure-policy/azure-policy-introduction.md) kann das gewünschte Verhalten für die [Windows-VMs](../articles/virtual-machines/windows/policy.md) und [Linux-VMs](../articles/virtual-machines/linux/policy.md) Ihrer Organisation definiert werden. Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei.
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/24/2017
 ms.author: adegeo
-ms.openlocfilehash: d203580f676d55acbad4936160982a40592af1d0
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: baed3e290ed29d1459455441e7cac7c5b1b1ebd9
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="scale-a-service-fabric-cluster"></a>Skalieren eines Service Fabric-Clusters
 
@@ -30,6 +30,13 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Lesen der Anzahl von Clusterknoten
 > * Hinzufügen von Clusterknoten (horizontales Hochskalieren)
 > * Entfernen von Clusterknoten (horizontales Herunterskalieren)
+
+In dieser Tutorialserie lernen Sie Folgendes:
+> [!div class="checklist"]
+> * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) oder [Linux-Clusters](service-fabric-tutorial-create-vnet-and-linux-cluster.md) in Azure mithilfe einer Vorlage
+> * Horizontales Herunter- oder Hochskalieren eines Clusters
+> * [Aktualisieren der Runtime eines Service Fabric-Clusters](service-fabric-tutorial-upgrade-cluster.md)
+> * [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
@@ -250,8 +257,8 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Entfernen von Clusterknoten (horizontales Herunterskalieren)
 
 
-Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung bereitstellen und die API-Verwaltung verwenden.
+Fahren Sie mit dem folgenden Tutorial fort, um zu erfahren, wie Sie die Runtime eines Clusters aktualisieren:
 > [!div class="nextstepaction"]
-> [Bereitstellen von API Management mit Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> [Aktualisieren der Runtime eines Service Fabric-Clusters](service-fabric-tutorial-upgrade-cluster.md)
 
 [durability]: service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster

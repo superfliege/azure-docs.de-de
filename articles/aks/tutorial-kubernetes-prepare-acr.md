@@ -1,27 +1,19 @@
 ---
-title: "Tutorial zu Kubernetes in Azure – Vorbereiten eines ACR | Microsoft-Dokumentation"
+title: "Tutorial zu Kubernetes in Azure – Vorbereiten eines ACR"
 description: "AKS-Tutorial – Vorbereiten eines ACR"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: Docker, Container, Microservices, Kubernetes, DC/OS, Azure
-ms.assetid: 
 ms.service: container-service
-ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 11/11/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 15b54f6131c847551295061df6c6ad6a476a7da6
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 1283d3cff4edc0c99d22612c65fda48f9dddfbd3
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Bereitstellen und Verwenden von Azure Container Registry
 
@@ -56,7 +48,7 @@ Erstellen Sie mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure C
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
 ```
 
-Für den Rest dieses Tutorials verwenden wir `<acrname>` als Platzhalter für den Namen der Containerregistrierung.
+Für den Rest dieses Tutorials verwenden wir `<acrName>` als Platzhalter für den Namen der Containerregistrierung.
 
 ## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
 

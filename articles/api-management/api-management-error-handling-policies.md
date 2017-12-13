@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: e8837b8d62bb8caeee9460661438368c2d11697a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bc71c0745493d52128553a78a31c45a3bca30f8
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="error-handling-in-api-management-policies"></a>Fehlerbehandlung bei API Management-Richtlinien
 Mit Azure API Management können Herausgeber auf Fehlerbedingungen reagieren, die bei der Verarbeitung von Anforderungen im Proxy auftreten können, indem sie ein `ProxyError`-Objekt bereitstellen. Der Zugriff auf das Objekt `ProxyError` erfolgt über die Eigenschaft [context.LastError](api-management-policy-expressions.md#ContextVariables) und kann von Richtlinien im Richtlinienabschnitt `on-error` verwendet werden. Dieses Thema enthält eine Referenz für die Fehlerbehandlungsfunktionen in Azure API Management.  
@@ -56,27 +56,16 @@ Mit Azure API Management können Herausgeber auf Fehlerbedingungen reagieren, di
  Die folgenden Richtlinien können im Richtlinienabschnitt `on-error` verwendet werden.  
   
 -   [choose](api-management-advanced-policies.md#choose)  
-  
 -   [set-variable](api-management-advanced-policies.md#set-variable)  
-  
 -   [find-and-replace](api-management-transformation-policies.md#Findandreplacestringinbody)  
-  
 -   [return-response](api-management-advanced-policies.md#ReturnResponse)  
-  
 -   [set-header](api-management-transformation-policies.md#SetHTTPheader)  
-  
 -   [set-method](api-management-advanced-policies.md#SetRequestMethod)  
-  
 -   [set-status](api-management-advanced-policies.md#SetStatus)  
-  
 -   [send-request](api-management-advanced-policies.md#SendRequest)  
-  
 -   [send-one-way-request](api-management-advanced-policies.md#SendOneWayRequest)  
-  
 -   [log-to-eventhub](api-management-advanced-policies.md#log-to-eventhub)  
-  
 -   [json-to-xml](api-management-transformation-policies.md#ConvertJSONtoXML)  
-  
 -   [xml-to-json](api-management-transformation-policies.md#ConvertXMLtoJSON)  
   
 ## <a name="lasterror"></a>LastError  
@@ -128,4 +117,10 @@ Mit Azure API Management können Herausgeber auf Fehlerbedingungen reagieren, di
 |validate-jwt|Andere Überprüfungsfehler|JwtInvalid|<Meldung von JWT-Bibliothek\>.|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
+
+Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
+
++ [Richtlinien in Azure API Management](api-management-howto-policies.md)
++ [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
++ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)   

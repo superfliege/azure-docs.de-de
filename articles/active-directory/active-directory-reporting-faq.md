@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: faee3bc9b0b1a10a48a514d830af5045cb047e02
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: e1c1b8bdf94104c0047e367f67a29d557fcc8df9
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Häufig gestellte Fragen zu Azure Active Directory-Berichten
 
@@ -119,5 +119,11 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active D
 **F: Wie werden IP-Adressen im Bericht zu Anmeldungen und riskanten Anmeldungen berechnet?**
 
 **A:** IP-Adressen werden so ausgestellt, dass es keine definitive Verbindung zwischen einer IP-Adresse und dem physischen Standort des Computers mit dieser Adresse gibt. Dies wird durch Faktoren wie Mobilfunkanbieter und VPNs verkompliziert, die IP-Adressen aus zentralen Pools zuweisen, die häufig sehr weit von den Orten entfernt sind, an denen das Clientgerät tatsächlich verwendet wird. Bei Berücksichtigung dieser Vorgaben erfolgt das Konvertieren einer IP-Adresse in einen physischen Standort basierend auf Ablaufverfolgungen, Registrierungsdaten, Reverse-Lookups und anderen Informationen. 
+
+---
+
+**F: Was bedeutet das Risikoereignis „Anmeldung mit erhöhtem Risiko erkannt“?**
+
+**A:** Das Risikoereignis „Anmeldung mit erhöhtem Risiko erkannt“ wird für Anmeldungen angezeigt, die aufgrund exklusiver Erkennungen für Azure AD Identity Protection-Abonnenten als riskant eingestuft werden, um Ihnen einen Einblick in sämtliche riskante Anmeldungen in Ihrer Umgebung zu geben.
 
 ---

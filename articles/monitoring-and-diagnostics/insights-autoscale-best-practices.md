@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: df5059b5509ca4989369cf3bcba8cb89f1c25db4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70ec03d2ed32cb0362bf2f7b24c66979093603be
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
@@ -30,8 +30,8 @@ In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in
   Eine Einstellung für die automatische Skalierung hat einen Höchst-, Mindest- und Standardwert von Instanzen.
 * Eine automatische Skalierungsaufgabe liest die zugeordnete Skalierungsmetrik und überprüft dabei, ob die konfigurierten Schwellenwerte zum horizontalen Hoch- oder Herunterskalieren überschritten wurden. Eine Liste der Metriken, nach der die automatische Skalierung vorgenommen werden kann, finden Sie unter [Übliche Metriken für die automatische Skalierung in Azure Monitor](insights-autoscale-common-metrics.md).
 * Alle Schwellenwerte werden auf Instanzebene berechnet. Beispielsweise besagt „Skaliere um eine Instanz horizontal hoch, wenn die durchschnittliche CPU-Auslastung > 80 % und die Instanzenanzahl 2 ist“, dass horizontal hochskaliert werden soll, wenn die durchschnittliche CPU-Auslastung über alle Instanzen hinweg größer als 80 % ist.
-* Fehlerbenachrichtigungen erhalten Sie immer per E-Mail. Insbesondere erhalten der Besitzer, Mitwirkende und Leser der Zielressource eine E-Mail. Sie erhalten auch immer eine *Wiederherstellungs*-E-Mail, wenn die automatische Skalierung nach einem Ausfall wiederhergestellt wurde und wieder normal funktioniert.
-* Sie können es optional so einrichten, dass Sie eine Benachrichtigung über erfolgreiche Skalierungsaktionen über E-Mail und Webhooks erhalten.
+* Alle Fehler bei der automatischen Skalierung werden im Aktivitätsprotokoll protokolliert. Anschließend können Sie eine [Warnung für das Aktivitätsprotokoll](./monitoring-activity-log-alerts.md) konfigurieren, damit Sie per E-Mail, SMS, Webhook usw. benachrichtigt werden, wenn bei der automatischen Skalierung ein Fehler auftritt.
+* Auf ähnliche Weise werden alle erfolgreichen Skalierungsaktionen im Aktivitätsprotokoll erfasst. Anschließend können Sie eine Warnung für das Aktivitätsprotokoll konfigurieren, damit Sie per E-Mail, SMS, Webhook usw. benachrichtigt werden, wenn die automatischen Skalierung erfolgreich abgeschlossen wurde. Sie können auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="autoscale-best-practices"></a>Empfohlene Methoden für die automatische Skalierung
 Verwenden Sie die folgenden Best Practices für die automatische Skalierung.
@@ -40,7 +40,7 @@ Verwenden Sie die folgenden Best Practices für die automatische Skalierung.
 Falls Ihre Einstellung ein Minimum von „2“ und ein Maximum von „2“ hat und dabei die Anzahl der aktuellen Instanzen „2“ ist, kann keine automatische Skalierung durchgeführt werden. Behalten Sie eine passende Spanne zwischen der maximalen und der minimalen Instanzenanzahl bei. Beide Werte gelten dabei als inklusive. Die automatische Skalierung skaliert immer zwischen diesen Grenzwerten.
 
 ### <a name="manual-scaling-is-reset-by-autoscale-min-and-max"></a>Die manuelle Skalierung wird durch die Mindest- und Höchstwerte der automatischen Skalierung außer Kraft gesetzt.
-Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert das Modul für die automatische Skalierung automatisch auf das Minimum (sofern der Wert niedriger ist) oder das Maximum (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert das Modul für die automatische Skalierung bei seiner nächsten Ausführung auf 3 Instanzen. Ebenso würde es bei seiner nächsten Ausführung 8 Instanzen zurück auf 6 skalieren.  Die manuelle Skalierung ist äußerst temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
+Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb dieser Grenzen aktualisieren, skaliert das Modul für die automatische Skalierung automatisch auf das Minimum (sofern der Wert niedriger ist) oder das Maximum (sofern er höher ist). Angenommen, Sie legen den Bereich zwischen 3 und 6 fest. Wenn Sie eine ausgeführte Instanz haben, skaliert das Modul für die automatische Skalierung bei seiner nächsten Ausführung auf 3 Instanzen. Wenn Sie manuell die Skalierung auf 8 Instanzen festlegen, wird ebenso bei der nächsten Ausführung der automatischen Skalierung wieder auf 6 Instanzen herunterskaliert.  Die manuelle Skalierung ist äußerst temporär, sofern Sie nicht auch die Regeln für die automatische Skalierung zurücksetzen.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Verwenden Sie immer eine Regelkombination für das horizontale Hoch- und Herunterskalieren, die eine Erhöhung und Verringerung durchführt.
 Falls Sie nur einen Teil dieser Kombination verwenden („nur horizontal Hochskalieren“ oder „nur horizontal Herunterskalieren“), wird die automatische Skalierung die Hoch- oder Herunterskalierung vornehmen, bis das Maximum oder das Minimum erreicht ist.
@@ -113,7 +113,7 @@ Sehen wir uns dies mithilfe eines Beispiels an:
 
 Die Abbildung unten zeigt eine Einstellung für die automatische Skalierung mit einem Standardprofil mit einem Instanzenminimum von 2 und einem Instanzenmaximum von 10. In diesem Beispiel wurden die Regeln so konfiguriert, dass horizontal hochskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange größer als 10 ist, und horizontal herunterskaliert wird, wenn die Anzahl der Meldungen in der Warteschlange kleiner als 3 ist. Die Ressource kann jetzt also zwischen 2 und 10 Instanzen hoch- bzw. -herunterskalieren.
 
-Zusätzlich wurde ein periodisches Profil für Montag eingerichtet. Es wurde für ein Instanzenminimum von 2 und ein Instanzenmaximum von 12 festgelegt. Das heißt, dass am Montag bei der erstmaligen Überprüfung dieser Bedingung durch die automatische Skalierung, diese auf das neue Minimum von 3 horizontal hochskaliert, falls die Instanzenanzahl bereits 2 ist. Solange die automatische Skalierung bei der Überprüfung feststellt, dass diese Profilbedingung erfüllt ist (Montag), wird sie nur die CPU-basierten Regeln für das horizontale Skalieren (hoch/herunter) ausführen, die für dieses Profil konfiguriert wurden. Zu diesem Zeitpunkt wird die Länge der Warteschlange nicht überprüft. Falls Sie jedoch wollen, dass die Bedingung der Länge der Warteschlange ebenfalls überprüft wird, sollten Sie diese Regeln aus dem Standardprofil auch in Ihr Montagsprofil übernehmen.
+Zusätzlich wurde ein periodisches Profil für Montag eingerichtet. Für dieses wurde ein Instanzenminimum von 3 und ein Instanzenmaximum von 10 festgelegt. Das heißt, dass am Montag bei der erstmaligen Überprüfung dieser Bedingung durch die automatische Skalierung, diese auf das neue Minimum von 3 horizontal hochskaliert, falls die Instanzenanzahl bereits 2 ist. Solange die automatische Skalierung bei der Überprüfung feststellt, dass diese Profilbedingung erfüllt ist (Montag), wird sie nur die CPU-basierten Regeln für das horizontale Skalieren (hoch/herunter) ausführen, die für dieses Profil konfiguriert wurden. Zu diesem Zeitpunkt wird die Länge der Warteschlange nicht überprüft. Falls Sie jedoch wollen, dass die Bedingung der Länge der Warteschlange ebenfalls überprüft wird, sollten Sie diese Regeln aus dem Standardprofil auch in Ihr Montagsprofil übernehmen.
 
 Wenn die automatische Skalierung zurück zum Standardprofil wechselt, wird ebenfalls zuerst überprüft, ob die Höchst- und Mindestbedingungen erfüllt werden. Falls die Anzahl der Instanzen zu diesem Zeitpunkt 12 ist, wird auf 10, den für das Standardprofil zulässigen Höchstwert, herunterskaliert.
 
@@ -143,14 +143,17 @@ Andererseits wird, wenn die CPU-Auslastung 25 % und die Arbeitsspeicherauslastun
 Die Standardinstanzenanzahl ist wichtig, da die automatische Skalierung Ihren Dienst auf diese Instanzenanzahl skaliert, wenn keine Metriken zur Verfügung stehen. Wählen Sie daher eine Standardanzahl an Instanzen, die für Ihre Workloads sicher ist.
 
 ### <a name="configure-autoscale-notifications"></a>Konfigurieren der Benachrichtigungen für das automatische Skalieren
-Die automatische Skalierung benachrichtigt die Administratoren und die Mitwirkenden der Ressource per E-Mail, wenn eine der folgenden Situationen auftritt:
+Die automatische Skalierung schreibt in das Aktivitätsprotokoll, wenn eine der folgenden Bedingungen eintritt:
 
-* Der Autoskalierungsdienst führt keine Aktion aus.
+* Die automatische Skalierung gibt einen Skalierungsvorgang aus.
+* Die automatische Skalierung schließt eine Skalierungsaktion erfolgreich ab.
+* Bei einer Skalierungsaktion der automatischen Skalierung tritt ein Fehler auf.
 * Für den Autoskalierungsdienst stehen keine Metriken zur Verfügung, auf deren Grundlage eine Skalierungsentscheidung getroffen werden kann.
 * Metriken stehen wieder zur Verfügung (Wiederherstellung), um eine Skalierungsentscheidung zu treffen.
-  Zusätzlich zu den oben aufgeführten Bedingungen, können Sie E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
-  
+
 Sie können auch eine Aktivitätsprotokollwarnung zur Überwachung der Integrität des Autoskalierungs-Moduls verwenden. Es folgen Beispiele zum [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Autoskalierungs-Modul-Vorgänge in Ihrem Abonnement](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert) oder [Erstellen einer Aktivitätsprotokollwarnung zum Überwachen aller Autoskalierungs-Vorgänge zum horizontalen Herunterskalieren und horizontalen Hochskalieren in Ihrem Abonnement, bei denen Fehler aufgetreten sind](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert).
+
+Neben der Verwendung von Warnungen zu Aktivitätsprotokollen können Sie auf der Registerkarte „Benachrichtigungen“ in den Einstellungen für die automatische Skalierung auch E-Mail- oder Webhook-Benachrichtigungen konfigurieren, um bei erfolgreichen Skalierungsaktionen informiert zu werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen Sie eine Aktivitätsprotokollwarnung, um alle automatischen Modulskalierungsvorgänge für Ihr Abonnement zu überwachen.](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

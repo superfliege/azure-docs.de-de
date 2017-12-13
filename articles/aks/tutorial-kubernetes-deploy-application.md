@@ -1,27 +1,19 @@
 ---
-title: "Tutorial zu Kubernetes in Azure – Bereitstellen einer Anwendung | Microsoft-Dokumentation"
+title: "Tutorial zu Kubernetes in Azure – Bereitstellen von Anwendungen"
 description: "AKS-Tutorial – Bereitstellen eine Anwendung"
 services: container-service
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: aks, azure-container-service
-keywords: Docker, Container, Microservices, Kubernetes, DC/OS, Azure
-ms.assetid: 
 ms.service: container-service
-ms.devlang: aurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 73b943709fb3846058d4b1c09bc76b09460855ed
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 3a6a75a324987b82a08219217407ad7ad14db9f8
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>Ausführen von Anwendungen in Azure Container Service (AKS)
 

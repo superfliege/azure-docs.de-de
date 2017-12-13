@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: cfb3a309208c78dc7896d61891da9825cf36dbd9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 5fad793bcf9ac86c2a1bc67e74dfb62af9876100
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Technische Referenz zum bedingten Azure Active Directory-Zugriff
 
@@ -117,7 +117,7 @@ In der Richtlinie für bedingten Zugriff können Sie als Client-App **Browser** 
 
 ![Steuern des Zugriffs für unterstützte Browser](./media/active-directory-conditional-access-technical-reference/05.png)
 
-Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden Browsern: 
+Diese Einstellung funktioniert mit allen Browsern. Die folgenden Betriebssysteme und Browser werden jedoch unterstützt, um eine Geräterichtlinie, z. B. eine konforme Geräteanforderung, zu erfüllen:
 
 
 | Betriebssystem                     | Browser                            | Support     |
@@ -138,6 +138,9 @@ Diese Einstellung hat Auswirkungen auf Zugriffsversuche von den folgenden Browse
 > [!NOTE]
 > Um Chrome-Unterstützung zu erhalten, müssen Sie Windows 10 Creators Update (Version 1703) oder höher verwenden.<br>
 > Sie können [diese Erweiterung](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji) installieren.
+
+Diese Browser unterstützen die Geräteauthentifizierung, sodass das Gerät identifiziert und anhand einer Richtlinie überprüft werden kann. Bei der Geräteüberprüfung tritt ein Fehler auf, wenn der Browser im privaten Modus ausgeführt wird. 
+
 
 ### <a name="supported-mobile-applications-and-desktop-clients"></a>Unterstützte mobile Anwendungen und Desktopclients
 

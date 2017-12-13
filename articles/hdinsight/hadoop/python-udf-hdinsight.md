@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 12/05/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 822293da48f14dc3fe29e7e95e7a30faaadbfea4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 002072c8eac37ffb1548b44627ec08e941c96a1d
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>Verwenden benutzerdefinierter Python-Funktionen mit Hive und Pig in HDInsight
 
@@ -166,7 +166,7 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-Im Pig Latin-Beispiel definierten wir die `LINE`-Eingabe einfach als Chararray, denn es gibt kein gleichbleibendes Schema für die Eingabe. Das Python-Skript transformiert die Daten für die Ausgabe in ein gleichbleibendes Schema.
+Im Pig Latin-Beispiel wird die `LINE`-Eingabe als Chararray definiert, da es kein gleichbleibendes Schema für die Eingabe gibt. Das Python-Skript transformiert die Daten für die Ausgabe in ein gleichbleibendes Schema.
 
 1. Die `@outputSchema`-Anweisung definiert das Format der Daten, die an Pig zurückgegeben werden. In diesem Fall ist das ein **Datenbehälter**, also ein Pig-Datentyp. Der Behälter enthält folgende Felder, die alle Chararray (Zeichenfolgen) sind:
 
@@ -178,7 +178,7 @@ Im Pig Latin-Beispiel definierten wir die `LINE`-Eingabe einfach als Chararray, 
 
 2. Dann definiert `def create_structure(input)` die Funktion, an die Pig Positionen übergibt.
 
-3. Die Beispieldatei `sample.log` entspricht weitgehend dem Schema für Datum, Uhrzeit, Klassenname, Ebene und Detail, das wir zurückgeben möchten. Sie enthält jedoch ein paar Zeilen, die mit `*java.lang.Exception*` beginnen. Diese Zeilen müssen geändert werden, um dem Schema zu entsprechen. Die Anweisung `if` überprüft deren Vorhandensein, weist dann die Eingabedaten an, die Zeichenfolge `*java.lang.Exception*` ans Ende zu stellen, sodass die Daten dem erwarteten Ausgabeschema entsprechen.
+3. Die Beispieldatei `sample.log` entspricht weitgehend dem Schema für Datum, Uhrzeit, Klassenname, Ebene und Detail. Sie enthält jedoch ein paar Zeilen, die mit `*java.lang.Exception*` beginnen. Diese Zeilen müssen geändert werden, um dem Schema zu entsprechen. Die Anweisung `if` überprüft deren Vorhandensein, weist dann die Eingabedaten an, die Zeichenfolge `*java.lang.Exception*` ans Ende zu stellen, sodass die Daten dem erwarteten Ausgabeschema entsprechen.
 
 4. Als Nächstes wird der Befehl `split` zum Aufteilen der Daten bei den ersten vier Leerzeichen verwendet. Die Ausgabe wird in `date`, `time`, `classname`, `level` und `detail` zugewiesen.
 
@@ -291,7 +291,7 @@ Nach dem Hochladen der Dateien, gehen Sie folgendermaßen vor, um die Hive- und 
     #from pig_util import outputSchema
     ```
 
-    Dadurch wird das Python-Skript so angepasst, dass es mit C Python (anstelle von Jython) verwendet werden kann. Nachdem die Änderung vorgenommen wurde, beenden Sie den Editor mit **STRG+X**. Wählen Sie **Y** und dann **EINGABE**, um die Änderungen zu speichern.
+    Mit dieser Zeile wird das Python-Skript so angepasst, dass es mit C Python (anstelle von Jython) verwendet werden kann. Nachdem die Änderung vorgenommen wurde, beenden Sie den Editor mit **STRG+X**. Wählen Sie **Y** und dann **EINGABE**, um die Änderungen zu speichern.
 
 6. Verwenden Sie den `pig` -Befehl, um die Shell neu zu starten. Geben Sie Folgendes an der `grunt>` -Eingabeaufforderung ein, um das Python-Skript mit dem C-Python-Interpreter auszuführen.
 

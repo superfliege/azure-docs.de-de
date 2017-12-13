@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: f2e7b5b96b70333ae4ee92d24c354960008c7f00
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 17967131853d4334ae2c0ba3c0aa01089b7f3b61
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Vor den ersten Schritten mit App Service in Azure Stack
 
 Azure App Service in Azure Stack setzt eine Reihe von erforderlichen Schritten voraus, die vor der Bereitstellung ausgeführt werden müssen:
 
 - Herunterladen der Hilfsskripts für Azure App Service in Azure Stack
-- Hohe Verfügbarkeit
+- Hochverfügbarkeit
 - Erforderliche Zertifikate für Azure App Service in Azure Stack
 - Vorbereiten des Dateiservers
 - Vorbereiten von SQL Server
@@ -46,9 +46,9 @@ Azure App Service in Azure Stack setzt eine Reihe von erforderlichen Schritten v
   - Module
     - GraphAPI.psm1
     
-## <a name="high-availability"></a>Hohe Verfügbarkeit
+## <a name="high-availability"></a>Hochverfügbarkeit
 
-Für Azure App Service in Azure Stack kann derzeit keine hohe Verfügbarkeit angeboten werden, da Azure Stack Workloads nur in einer einzelnen Fehlerdomäne bereitstellt.
+Für Azure App Service in Azure Stack kann derzeit keine Hochverfügbarkeit angeboten werden, da Azure Stack Workloads nur in einer einzelnen Fehlerdomäne bereitstellt.
 
 Wenn Sie Azure App Service in Azure Stack für Hochverfügbarkeit vorbereiten möchten, müssen der erforderliche Dateiserver und SQL Server in einer Hochverfügbarkeitskonfiguration bereitgestellt werden. Wenn Azure Stack mehrere Fehlerdomänen unterstützt, erhalten Sie von uns Anweisungen zum Aktivieren von Azure App Service in Azure Stack in einer Hochverfügbarkeitskonfiguration.
 
@@ -68,7 +68,7 @@ Dieses erste Skript erstellt zusammen mit der Azure Stack-Zertifizierungsstelle 
 
 Führen Sie das Skript auf dem Azure Stack Development Kit-Host aus, und stellen Sie sicher, dass Sie PowerShell als azurestack\CloudAdmin ausführen.
 
-1. Führen Sie in einer als azurestack\CloudAdmin ausgeführten PowerShell-Sitzung das Skript „Create-AppServiceCerts.ps1“ in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, vier Zertifikate.
+1. Führen Sie in einer als azurestack\AzureStackAdmin ausgeführten PowerShell-Sitzung das Skript „Create-AppServiceCerts.ps1“ in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, vier Zertifikate.
 2. Geben Sie ein Kennwort ein, um die PFX-Dateien zu schützen, und notieren Sie das Kennwort. Sie müssen es im Installationsprogramm für App Service in Azure Stack eingeben.
 
 #### <a name="create-appservicecertsps1-parameters"></a>Create-AppServiceCerts.ps1 – Parameter
@@ -120,13 +120,13 @@ Das Zertifikat für die Identität muss einen Antragsteller enthalten und dem fo
 | --- | --- |
 | sso.appservice.\<Region\>.\<Domänenname\>.\<Erweiterung\> | sso.appservice.redmond.azurestack.external |
 
-#### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>Extrahieren des Azure Resource Manager-Stammzertifikats für Azure Stack
+### <a name="extract-the-azure-stack-azure-resource-manager-root-certificate"></a>Extrahieren des Azure Resource Manager-Stammzertifikats für Azure Stack
 
 Führen Sie in einer als azurestack\CloudAdmin ausgeführten PowerShell-Sitzung das Skript „Get-AzureStackRootCert.ps1“ in dem Ordner aus, in den Sie die Hilfsskripts extrahiert haben. Das Skript erstellt in dem Ordner, der vom Skript zum Erstellen der von App Service benötigten Zertifikate verwendet wird, vier Zertifikate.
 
 | Parameter für „Get-AzureStackRootCert.ps1“ | Erforderlich/optional | Standardwert | Beschreibung |
 | --- | --- | --- | --- |
-| PrivelegedEndpoint | Erforderlich | AzS-ERCS01 | Privilegierter Endpunkt |
+| PrivelegedEndpoint | Erforderlich | AzS-ERCS01 | Privilegierter Endpunkt, |
 | CloudAdminCredential | Erforderlich | AzureStack\CloudAdmin | Anmeldeinformationen für das Domänenkonto des Azure Stack-Cloudadministrators |
 
 
@@ -134,12 +134,10 @@ Führen Sie in einer als azurestack\CloudAdmin ausgeführten PowerShell-Sitzung 
 
 Azure App Service erfordert die Verwendung eines Dateiservers. Für Produktionsbereitstellungen muss der Dateiserver für Hochverfügbarkeit konfiguriert und in der Lage sein, Fehler zu beheben.
 
-Für die ausschließliche Verwendung mit Azure Stack Development Kit-Bereitstellungen können Sie diese Azure Resource Manager-Beispielbereitstellungsvorlage verwenden, um einen Einzelknoten-Dateiserver bereitzustellen: https://aka.ms/appsvconmasdkfstemplate.
+Für die ausschließliche Verwendung mit Azure Stack Development Kit-Bereitstellungen können Sie diese Azure Resource Manager-Beispielbereitstellungsvorlage verwenden, um einen Einzelknoten-Dateiserver bereitzustellen: https://aka.ms/appsvconmasdkfstemplate. Der Einzelknoten-Dateiserver wird sich in einer Arbeitsgruppe befinden.
 
 ### <a name="provision-groups-and-accounts-in-active-directory"></a>Bereitstellen von Gruppen und Konten in Active Directory
 
->[!NOTE]
-> Führen Sie bei der Konfiguration des Dateiservers in einer Administratoreingabeaufforderungs-Sitzung alle der folgenden Befehle aus.  **Verwenden Sie NICHT PowerShell.**
 
 1. Erstellen Sie die folgenden globalen Active Directory-Sicherheitsgruppen:
     - FileShareOwners
@@ -159,7 +157,10 @@ Für die ausschließliche Verwendung mit Azure Stack Development Kit-Bereitstell
 
 ### <a name="provision-groups-and-accounts-in-a-workgroup"></a>Bereitstellen von Gruppen und Konten in einer Arbeitsgruppe
 
-Führen Sie in einer Arbeitsgruppe net- und WMIC-Befehle aus, um Gruppen und Konten bereitzustellen.
+>[!NOTE]
+> Führen Sie bei der Konfiguration des Dateiservers in einer Administratoreingabeaufforderungs-Sitzung alle der folgenden Befehle aus.  **Verwenden Sie NICHT PowerShell.**
+
+Wenn Sie die oben genannten Azure Resource Manager-Vorlage verwenden, wurden die Benutzer bereits erstellt.
 
 1. Führen Sie die folgenden Befehle aus, um die Konten FileShareOwner und FileShareUser zu erstellen. Ersetzen Sie <password> durch Ihre eigenen Werte.
 ``` DOS
@@ -185,11 +186,11 @@ Die Inhaltsfreigabe enthält die Websiteinhalte des Mandanten. Das Verfahren zum
 
 #### <a name="provision-the-content-share-on-a-single-file-server-ad-or-workgroup"></a>Bereitstellen der Inhaltsfreigabe auf einem einzelnen Dateiserver (AD oder Arbeitsgruppe)
 
-Führen Sie auf einem einzelnen Dateiserver die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus. Ersetzen Sie den Wert für <C:\WebSites> durch die entsprechenden Pfade in Ihrer Umgebung.
+Führen Sie auf einem einzelnen Dateiserver die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rechten aus. Ersetzen Sie den Wert für „C:\WebSites“ durch die entsprechenden Pfade in Ihrer Umgebung.
 
 ```DOS
 set WEBSITES_SHARE=WebSites
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 md %WEBSITES_FOLDER%
 net share %WEBSITES_SHARE% /delete
 net share %WEBSITES_SHARE%=%WEBSITES_FOLDER% /grant:Everyone,full
@@ -223,7 +224,7 @@ Führen Sie die folgenden Befehle an einer Eingabeaufforderung mit erhöhten Rec
 #### <a name="active-directory"></a>Active Directory
 ```DOS
 set DOMAIN=<DOMAIN>
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant %DOMAIN%\FileShareOwners:(OI)(CI)(M)
@@ -234,7 +235,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 #### <a name="workgroup"></a>Arbeitsgruppe
 ```DOS
-set WEBSITES_FOLDER=<C:\WebSites>
+set WEBSITES_FOLDER=C:\WebSites
 icacls %WEBSITES_FOLDER% /reset
 icacls %WEBSITES_FOLDER% /grant Administrators:(OI)(CI)(F)
 icacls %WEBSITES_FOLDER% /grant FileShareOwners:(OI)(CI)(M)
@@ -251,7 +252,7 @@ Für die Verwendung mit dem Azure Stack Development Kit können Sie SQL Express 
 
 Für die Produktion und Lösungen mit hoher Verfügbarkeit sollten Sie eine Vollversion von SQL 2014 SP2 oder höher verwenden, Authentifizierung im gemischten Modus aktivieren und die Bereitstellung in einer [Hochverfügbarkeitskonfiguration](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server) durchführen.
 
-Auf die SQL Server-Instanz für Azure App Service in Azure Stack muss von allen App Service-Rollen zugegriffen werden können. SQL Server kann im Standardabonnement des Anbieters in Azure Stack bereitgestellt werden. Alternativ können Sie die vorhandene Infrastruktur in Ihrer Organisation nutzen (solange eine Verbindung mit Azure Stack besteht).
+Auf die SQL Server-Instanz für Azure App Service in Azure Stack muss von allen App Service-Rollen zugegriffen werden können. SQL Server kann im Standardabonnement des Anbieters in Azure Stack bereitgestellt werden. Alternativ können Sie die vorhandene Infrastruktur in Ihrer Organisation nutzen (solange eine Verbindung mit Azure Stack besteht). Denken Sie bei Verwendung eines Azure Marketplace-Images daran, die Firewall entsprechend zu konfigurieren. 
 
 Sie können für alle SQL Server-Rollen eine Standardinstanz oder eine benannte Instanz verwenden. Wenn Sie eine benannte Instanz verwenden, sollten Sie jedoch den SQL-Browserdienst manuell starten und Port 1434 öffnen.
 
@@ -269,12 +270,12 @@ Administratoren müssen SSO zu folgenden Zwecken konfigurieren:
 
 Folgen Sie diesen Schritten:
 
-1. Öffnen Sie eine PowerShell-Instanz als azurestack\cloudadmin.
+1. Öffnen Sie eine PowerShell-Instanz als „azurestack\AzureStackAdmin“.
 2. Wechseln Sie zum Speicherort der Skripts, die im [Vorbereitungsschritt](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started#download-the-azure-app-service-on-azure-stack-installer-and-helper-scripts) heruntergeladen und extrahiert wurden.
 3. [Installieren Sie Azure Stack PowerShell](azure-stack-powershell-install.md).
 4. Führen Sie das Skript **Create-AADIdentityApp.ps1** aus. Wenn Sie zur Eingabe Ihrer Azure AD-Mandanten-ID aufgefordert werden, geben Sie die Azure AD-Mandanten-ID ein, die Sie für Ihre Azure Stack-Bereitstellung verwenden, z.B.: myazurestack.onmicrosoft.com.
 5. Geben Sie im Fenster **Anmeldeinformationen** das Administratorkonto und -kennwort Ihres Azure AD-Diensts ein. Klicken Sie auf **OK**.
-6. Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet sso.appservice.local.azurestack.external.pfx.
+6. Geben Sie den Zertifikatdateipfad und das Zertifikatkennwort für das [zuvor erstellte Zertifikat](https://docs.microsoft.com/en-gb/azure/azure-stack/azure-stack-app-service-before-you-get-started#certificates-required-for-azure-app-service-on-azure-stack) ein. Das für diesen Schritt standardmäßig erstellte Zertifikat lautet **sso.appservice.local.azurestack.external.pfx**.
 7. Das Skript erstellt eine neue Anwendung in Azure AD des Mandanten. Notieren Sie sich die Anwendungs-ID, die in der PowerShell-Ausgabe zurückgegeben wird. Sie benötigen diese Informationen bei der Installation.
 8. Öffnen Sie ein neues Browserfenster, und melden Sie sich als **Azure Active Directory-Dienstadministrator** beim Azure-Portal (portal.azure.com) an.
 9. Öffnen Sie den Azure AD-Ressourcenanbieter.

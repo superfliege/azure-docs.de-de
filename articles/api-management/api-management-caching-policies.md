@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: c7604fdb948a2f4d2adca5d6821d9ea36e96dae6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 488a4c4b7daf5c07ca5f6b6bb72464279658d372
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -28,15 +28,12 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 -   Cacherichtlinien für Antworten  
   
     -   [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache): Führt eine Cachesuche aus und gibt ggf. gültige Antworten aus dem Cache zurück.  
-  
     -   [In Cache ablegen](api-management-caching-policies.md#StoreToCache): Speichert Antworten gemäß der angegebenen Konfiguration für die Cachesteuerung zwischen.  
   
 -   Cacherichtlinien für Werte  
-  
-    -   [Get value from cache (Wert aus dem Cache abrufen)](#GetFromCacheByKey) – ruft ein zwischengespeichertes Element nach Schlüssel ab.  
-  
-    -   [Store value in cache (Wert im Cache speichern)](#StoreToCacheByKey) – speichert ein Element im Cache auf Basis des Schlüssels.  
-  
+
+    -   [Get value from cache (Wert aus dem Cache abrufen)](#GetFromCacheByKey) – ruft ein zwischengespeichertes Element nach Schlüssel ab. 
+    -   [Store value in cache (Wert im Cache speichern)](#StoreToCacheByKey) – speichert ein Element im Cache auf Basis des Schlüssels. 
     -   [Wert aus dem Cache entfernen](#RemoveCacheByKey) – Entfernt ein Element im Cache nach Schlüssel.  
   
 ##  <a name="GetFromCache"></a> Aus Cache abrufen  
@@ -54,7 +51,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   <vary-by-header>Accept-Charset</vary-by-header>  
   <!-- should be present in most cases -->  
   <vary-by-header>Authorization</vary-by-header>  
-  <!-- should be present when allow-authorized-response-caching is "true"-->  
+  <!-- should be present when allow-private-response-caching is "true"-->  
   <vary-by-header>header name</vary-by-header>  
   <!-- optional, can repeated several times -->  
   <vary-by-query-parameter>parameter name</vary-by-query-parameter>  
@@ -119,14 +116,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 |allow-private-response-caching|Bei Festlegung auf `true` wird das Zwischenspeichern von Anforderungen erlaubt, die einen Autorisierungsheader enthalten.|Nein|false|  
 |downstream-caching-type|Dieses Attribut muss auf einen der folgenden Werte festgelegt werden.<br /><br /> –   none: Downstreamzwischenspeicherung ist unzulässig.<br />–   private: Private Downstreamzwischenspeicherung ist zulässig.<br />–   public: Private und gemeinsam genutzte Downstreamzwischenspeicherung ist zulässig.|Nein|(Keine)|  
 |must-revalidate|Wenn die Downstreamzwischenspeicherung aktiviert ist, aktiviert oder deaktiviert dieses Attribut die `must-revalidate`-Cachesteuerungsanweisung in Gatewayantworten.|Nein|true|  
-|vary-by-developer|Legen Sie diese Option auf `true` fest, um Antworten pro Entwicklerschlüssel zwischenzuspeichern.|Nein|false|  
-|vary-by-developer-groups|Legen Sie diese Option auf `true` fest, um Antworten pro Benutzerrolle zwischenzuspeichern.|Nein|false|  
+|vary-by-developer|Legen Sie diese Option auf `true` fest, um Antworten pro Entwicklerschlüssel zwischenzuspeichern.|Ja||  
+|vary-by-developer-groups|Legen Sie diese Option auf `true` fest, um Antworten pro Benutzerrolle zwischenzuspeichern.|Ja||  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte**: inbound  
-  
 -   **Richtlinienbereiche:** API, operation, product  
   
 ##  <a name="StoreToCache"></a> In Cache ablegen  
@@ -198,8 +194,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte**: outbound  
-  
+-   **Richtlinienabschnitte**: outbound    
 -   **Richtlinienbereiche:** API, operation, product  
   
 ##  <a name="GetFromCacheByKey"></a> Wert aus Cache abrufen  
@@ -244,7 +239,6 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
-  
 -   **Richtlinienbereiche:** global, API, operation, product  
   
 ##  <a name="StoreToCacheByKey"></a> Wert in Cache ablegen  
@@ -287,11 +281,10 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
-  
 -   **Richtlinienbereiche:** global, API, operation, product  
   
 ###  <a name="RemoveCacheByKey"></a> Wert aus Cache entfernen  
- `cache-remove-value` löscht ein zwischengespeichertes Element, das über seinen Schlüssel identifiziert wird. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.  
+`cache-remove-value` löscht ein zwischengespeichertes Element, das über seinen Schlüssel identifiziert wird. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.  
   
 #### <a name="policy-statement"></a>Richtlinienanweisung  
   
@@ -325,9 +318,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
 -   **Richtlinienabschnitte:** inbound, outbound, backend, on-error  
-  
 -   **Richtlinienbereiche:** global, API, operation, product  
-  
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Arbeiten mit Richtlinien finden Sie unter [Richtlinien in Azure API Management](api-management-howto-policies.md).  
+
+Weitere Informationen zur Verwendung von Richtlinien finden Sie unter:
+
++ [Richtlinien in Azure API Management](api-management-howto-policies.md)
++ [Transform and protect your API](transform-api.md) (Transformieren und Schützen von APIs)
++ Unter [Richtlinien für die API-Verwaltung](api-management-policy-reference.md) finden Sie eine komplette Liste der Richtlinienanweisungen und der zugehörigen Einstellungen.
++ [API Management policy samples](policy-samples.md) (API Management-Richtlinienbeispiele)   

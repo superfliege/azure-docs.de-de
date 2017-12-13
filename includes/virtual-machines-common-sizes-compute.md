@@ -12,11 +12,11 @@ Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Workloads, die 
 
 Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F-Serie.
 
-## <a name="fsv2-series"></a>Fsv2-Serie
+## <a name="fsv2-series"></a>Fsv2-Serie*
 
 ACU: 195 – 210
 
-| Größe             | vCPUs | Arbeitsspeicher: GiB | Lokales SSD: GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
+| Größe             | vCPUs | Arbeitsspeicher: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) |
 |------------------|--------|-------------|----------------|----------------|-----------------------------------------------------------------------|------------------------------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4.000 (32)                                                             | Moderat                                       |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8.000 (64)                                                             | Moderat                                       |
@@ -25,7 +25,7 @@ ACU: 195 – 210
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64.000 (512)                                                           | Äußerst hoch                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128.000 (1024)                                                         | Äußerst hoch                                 |
 | Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144.000 (1520)                                                         | Äußerst hoch                                 |
-
+* Virtuelle Computer der Fsv2-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
 ## <a name="fs-series"></a>Fs-Serie*
 

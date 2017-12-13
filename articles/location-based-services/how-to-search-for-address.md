@@ -8,11 +8,11 @@ ms.author: philmea
 ms.date: 11/29/2017
 ms.topic: how-to
 ms.service: location-based-services
-ms.openlocfilehash: f7337c1c5821016987096da47dda4ac1124d7910
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: d928e4ff7c6e35291bcc1e6a1359d54542968278
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Suchen nach einer Adresse mit dem Suchdienst von Azure Location Based Services (Vorschau)
 Bei dem Suchdienst handelt es sich um eine für Entwickler konzipierte Gruppe von RESTful-APIs für die Suche nach Adressen, Orten, interessanten Orten, Brancheneinträgen und anderen geografischen Informationen. Der Suchdienst weist einer bestimmten Adresse, einer Querstraße, einem geografischen Objekt oder einem interessanten Ort (POI) einen Breiten- und Längengrad zu. Die von den APIs des Suchdiensts zurückgegebenen Werte für den Breiten- und Längengrad können als Parameter in anderen Azure Location Based Services verwendet werden, z.B. in den APIs für Routen oder den Datenverkehrsfluss.
@@ -62,12 +62,11 @@ Die meisten Suchabfragen sind zur Leistungssteigerung und Verringerung ungewöhn
     
     Die Ergebnisse für diese Abfrage variieren und sind mit keinem bestimmten Referenzstandort verbunden. Mit dem **countrySet**-Parameter können Sie nur die Länder angeben, die in der Anwendung abgedeckt werden sollen. Beim Standardverhalten wird auf der ganzen Welt gesucht, sodass potenziell unnötige Ergebnisse zurückgegeben werden.
 
-5. Fügen Sie der Abfragezeichenfolge den folgenden Wert hinzu, und klicken Sie auf **Send** (Senden):
-    ```
-        ,countrySet=US
-    ```
-    >[!NOTE] 
-    >Stellen Sie sicher, dass Sie die zusätzlichen URI-Parameter in der Abfragezeichenfolge durch Kommas trennen.
+5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+
+    | Schlüssel | Wert |
+    |------------------|-------------------------|
+    | countrySet | US |
     
     Die Ergebnisse werden nun durch den Ländercode begrenzt, und die Abfrage gibt Pizzerien in den USA zurück.
     
@@ -116,10 +115,11 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
         400 Broad, Seattle
     ```
 
-5. Fügen Sie der Abfragezeichenfolge den folgenden Wert hinzu, und klicken Sie auf **Send** (Senden):
-    ```
-        ,typeahead
-    ```
+5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+
+    | Schlüssel | Wert |
+    |-----|------------|
+    | typeahead | true |
 
     Das Flag **typeahead** weist die API für die Adresssuche an, die Abfrage als unvollständige Eingabe zu verarbeiten und ein Array von Vorhersagewerten zurückzugeben.
 
@@ -150,37 +150,43 @@ Sie können eine vollständige oder unvollständige Adresse an die API für die 
     
     Die Antwort enthält den POI-Eintrag für Safeco Field mit der POI-Kategorie „Stadion“. 
     
-4. Fügen Sie der Abfragezeichenfolge den folgenden Wert hinzu, und klicken Sie auf **Send** (Senden):
-    ```
-        ,number
-    ```
+4. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+
+    | Schlüssel | Wert |
+    |-----|------------|
+    | number | true |
+
     Wenn der Abfrageparameter [number](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) mit der Anforderung gesendet wird, enthält die Antwort möglicherweise die Straßenseite (links/rechts) und auch eine versetzte Position für diese Hausnummer.
     
-5. Fügen Sie der Abfragezeichenfolge den folgenden Wert hinzu, und klicken Sie auf **Send** (Senden):
-    ```
-        ,spatialKeys
-    ```
+5. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+
+    | Schlüssel | Wert |
+    |-----|------------|
+    | spatialKeys | true |
 
     Wenn der Abfrageparameter [spatialKeys](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, enthält die Antwort proprietäre geografische Schlüsselinformationen für einen angegebenen Standort.
 
-6. Fügen Sie der Abfragezeichenfolge den folgenden Wert hinzu, und klicken Sie auf **Send** (Senden):
-    ```
-        ,returnSpeedLimit
-    ```
+6. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+
+    | Schlüssel | Wert |
+    |-----|------------|
+    | returnSpeedLimit | true |
     
     Wenn der Abfrageparameter [returnSpeedLimit](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, wird in der Antwort die angegebene Geschwindigkeitsbegrenzung zurückgegeben.
 
-7. Fügen Sie der Abfragezeichenfolge den folgenden Wert hinzu, und klicken Sie auf **Send** (Senden):
-    ```
-        ,returnRoadUse
-    ```
+7. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+
+    | Schlüssel | Wert |
+    |-----|------------|
+    | returnRoadUse | true |
 
     Wenn der Abfrageparameter [returnRoadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) festgelegt wird, wird in der Antwort die Straßennutzung für die inverse Geocodierung von Straßen zurückgegeben.
 
-8. Fügen Sie der Abfragezeichenfolge den folgenden Wert hinzu, und klicken Sie auf **Send** (Senden):
-    ```
-        ,roadUse
-    ```
+8. Fügen Sie das folgende Schlüssel-Wert-Paar zum Abschnitt **Params** (Parameter) hinzu, und klicken Sie auf **Senden**:
+
+    | Schlüssel | Wert |
+    |-----|------------|
+    | roadUse | true |
 
     Mithilfe des Abfrageparameters [roadUse](https://docs.microsoft.com/en-us/rest/api/location-based-services/search/getsearchaddressreverse#search_getsearchaddressreverse_uri_parameters) können Sie die Abfrage der inversen Geocodierung auf eine bestimmte Art der Straßennutzung beschränken.
     

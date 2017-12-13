@@ -5,42 +5,27 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/02/2017
+ms.date: 12/06/2017
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 6ea39618a24249d92b77afdf5cb0ea284b180223
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 88ceb47d46b66e716c6c263098d5b9458e4aff22
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Erstellen einer Richtlinienzuweisung zum Identifizieren nicht kompatibler Ressourcen in Ihrer Azure-Umgebung mit der Azure-Befehlszeilenschnittstelle
 
 Zum Verständnis der Konformität in Azure müssen Sie zunächst wissen, wo Sie derzeit mit Ihren eigenen Ressourcen stehen. Diese Schnellstartanleitung führt Sie schrittweise durch die Erstellung einer Richtlinienzuweisung zur Identifizierung von virtuellen Computern, die keine verwalteten Datenträger verwenden.
 
 Am Ende dieses Prozesses haben Sie erfolgreich identifiziert, welche virtuellen Computer keine verwalteten Datenträger verwenden und somit *nicht konform* sind.
-.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für diesen Schnellstart die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
-
-## <a name="opt-in-to-azure-policy"></a>Registrieren für Azure Policy
-
-Azure Policy ist jetzt als Public Preview verfügbar und kann erst nach vorheriger Registrierung verwendet werden.
-
-1. Navigieren Sie zu Azure Policy (https://aka.ms/getpolicy), und klicken Sie im linken Bereich auf **Registrieren**.
-
-   ![Suchen nach „Policy“](media/assign-policy-definition/sign-up.png)
-
-2. Registrieren Sie sich für Azure Policy, indem Sie in der Abonnementliste die gewünschten **Abonnements** auswählen. Klicken Sie anschließend auf **Registrieren**.
-
-   ![Registrieren Sie sich für Azure Policy](media/assign-policy-definition/preview-opt-in.png)
-
-   Ihre Anforderung wird für die Vorschauversion automatisch genehmigt. Warten Sie bis zu 30 Minuten, damit das System Ihre Registrierung verarbeiten kann.
 
 ## <a name="create-a-policy-assignment"></a>Erstellen einer Richtlinienzuweisung
 
@@ -66,7 +51,7 @@ Geben Sie als Nächstes folgende Informationen an, und führen Sie folgenden Bef
 - **Richtlinie**: Die Richtliniendefinition, auf deren Grundlage Sie die Zuweisung erstellen. In diesem Fall ist es die Richtliniendefinition: *Audit Virtual Machines without Managed Disks* (Virtuelle Computer ohne verwaltete Datenträger überwachen).
 - **Bereich**: Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen.
 
-  Verwenden Sie das Abonnement oder die Ressourcengruppe, das bzw. die Sie zuvor bei der Anmeldung bei Azure Policy registriert haben. In diesem Beispiel verwenden wir die Abonnement-ID **bc75htn-a0fhsi-349b-56gh-4fghti-f84852** und den Ressourcengruppennamen **FabrikamOMS**. Stellen Sie sicher, dass Sie diese in die Abonnement-ID und den Namen der Ressourcengruppe ändern, mit denen Sie arbeiten.
+  Verwenden Sie das zuvor registrierte Abonnement (oder die Ressourcengruppe). In diesem Beispiel verwenden wir die Abonnement-ID **bc75htn-a0fhsi-349b-56gh-4fghti-f84852** und **FabrikamOMS** für den Namen der Ressourcengruppe. Stellen Sie sicher, dass Sie diese in die Abonnement-ID und den Namen der Ressourcengruppe ändern, mit denen Sie arbeiten.
 
 Der Befehl sollte wie folgt aussehen:
 

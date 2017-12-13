@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
 ms.author: himad
-ms.openlocfilehash: 821ad87fc10b2380e5ed89c037c335bc7747009e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6de83042779a1a4edae57499f108dcddc9d68309
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="creating-endpoints"></a>Erstellen von Endpunkten
 > [!NOTE]
@@ -33,11 +33,10 @@ Hierzu ermöglicht Ihnen Azure Machine Learning, mehrere Endpunkte für einen be
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="adding-endpoints-to-a-web-service"></a>Hinzufügen von Endpunkten zu einem Webdienst
-Es gibt drei Möglichkeiten zum Hinzufügen eines Endpunkts zu einem Webdienst.
+Es gibt zwei Möglichkeiten zum Hinzufügen eines Endpunkts zu einem Webdienst.
 
 * Programmgesteuert
 * Über das Azure Machine Learning Web Services-Portal
-* Über das klassische Azure-Portal
 
 Nach dem Erstellen kann der Endpunkt über synchrone APIs, Batch-APIs und Excel-Arbeitsblätter genutzt werden. Zusätzlich zum Hinzufügen von Endpunkten über diese Benutzeroberfläche können Sie auch die Endpunktverwaltungs-APIs verwenden, um Endpunkte programmgesteuert hinzuzufügen.
 
@@ -54,20 +53,6 @@ Sie können Ihrem Webdienst einen Endpunkt mithilfe des Beispielcodes [AddEndpoi
 2. Klicken Sie unten im Dashboard des Webdiensts auf **Manage endpoints**. Das Azure Machine Learning Web Services-Portal wird mit der Seite mit den Endpunkten für den Webdienst geöffnet.
 3. Klicken Sie auf **New**.
 4. Geben Sie einen Namen und eine Beschreibung für den neuen Endpunkt ein. Endpunktnamen dürfen maximal 24 Zeichen lang sein und müssen aus Kleinbuchstaben oder Zahlen bestehen. Wählen Sie die Protokollierungsstufe aus, und legen Sie fest, ob Beispieldaten aktiviert sind. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](web-services-logging.md).
-
-## <a name="adding-an-endpoint-using-the-azure-classic-portal"></a>Hinzufügen eines Endpunkts über das klassische Azure-Portal
-1. Melden Sie sich beim [klassischen Azure-Portal](http://manage.windowsazure.com) an, und klicken Sie in der linken Spalte auf **Machine Learning**. Klicken Sie auf den Arbeitsbereich, der den Webdienst enthält, an dem Sie interessiert sind.
-   
-    ![Navigieren Sie zum Arbeitsbereich](./media/create-endpoint/figure-1.png)
-2. Klicken Sie auf **Webdienste**.
-   
-    ![Navigieren zu Webdiensten](./media/create-endpoint/figure-2.png)
-3. Klicken Sie auf den Webdienst, für den Sie sich interessieren, um die Liste der verfügbaren Endpunkte anzuzeigen.
-   
-    ![Navigieren Sie zum Endpunkt](./media/create-endpoint/figure-3.png)
-4. Klicken Sie unten auf der Seite auf **Endpunkt hinzufügen**. Geben Sie einen Namen und eine Beschreibung ein, und stellen Sie sicher, dass keine anderen Endpunkte mit demselben Namen in diesem Webdienst vorhanden sind. Behalten Sie die Standardeinstellung des Drosselungsgrads bei, sofern keine besonderen Anforderungen bestehen. Wenn Sie mehr über Drosselung erfahren möchten, besuchen Sie die Seite [Skalieren von API-Endpunkten](scaling-webservice.md).
-   
-    ![Endpunkt erstellen](./media/create-endpoint/figure-4.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md)

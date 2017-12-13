@@ -8,15 +8,7 @@ Universelle VM-Größen zeichnen sich durch ein ausgewogenes Verhältnis zwische
 
 - Die Größen des Basic-Tarifs sind hauptsächlich für Entwicklungsworkloads und andere Anwendungen bestimmt, für die kein Lastenausgleich, keine automatische Skalierung und keine speicherintensiven virtuellen Computer erforderlich sind. Informationen zu VM-Größen, die für Produktionsanwendungen besser geeignet sind, finden Sie unter (Größen für virtuelle Computer)[virtual-machines-size-specs.md], und Informationen zu VM-Preisen finden Sie unter [Virtuelle Linux-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
-## <a name="b-series-preview"></a>B-Serie (Vorschauversion)
-
-> [!NOTE] 
-> Die Vorschauen werden Ihnen zur Verfügung gestellt, wenn Sie die folgenden Nutzungsbedingungen akzeptieren. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> Diese Vorschauversion ist auf folgende Regionen beschränkt:
-> - USA, Westen 2
-> - USA, Osten
-> - Europa, Westen
-> - Asien-Pazifik, Südosten
+## <a name="b-series"></a>B-Serie
 
 Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, kleine Datenbanken sowie Entwicklungs- und Testumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können diese Kunden eine VM-Größe mit einer preisgünstigen Grundleistung erwerben. Für die VM-Instanz können dann Gutschriften erzielt werden, wenn für die VM weniger als die Grundleistung genutzt wird. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung der VM hinausgeht. Dabei können bis zu 100 Prozent der CPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
 
@@ -31,7 +23,7 @@ Virtuelle Burst-fähige Computer der B-Serie sind ideal für Workloads geeignet,
 | Standard_B8ms | 8           | 32             | 64                         | 135%                  | 81                 | 1944           | 16                                     | 4320/50                                 | 4320/50                                 | 4  |
 
 
-## <a name="dsv3-series"></a>Dsv3-Serie
+## <a name="dsv3-series"></a>Dsv3-Serie*
 
 ACU: 160 - 190
 
@@ -46,9 +38,9 @@ Die Größen der Dsv3-Serie basieren auf dem Prozessor vom Typ 2,3 GHz Intel XEO
 | Standard_D16s_v3 | 16     | 64          | 128            | 32             | 32.000/256 (400)                                                    | 25.600/384                              | 8/hoch                                       |
 | Standard_D32s_v3 | 32     | 128          | 256            | 32             | 64.000/512 (800)                                                    | 51.200/768                              | 8/äußerst hoch                                       |
 | Standard_D64s_v3 | 64     | 256          | 512            | 32             | 128.000/1024 (1600)                                                    | 80.000/1.200                              | 8/äußerst hoch                                       |
+* Virtuelle Computer der Dsv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
-
-## <a name="dv3-series"></a>Dv3-Serie
+## <a name="dv3-series"></a>Dv3-Serie* 
 
 ACU: 160 - 190
 
@@ -65,7 +57,7 @@ Datenträgerspeicher wird separat zu virtuellen Computern abgerechnet. Verwenden
 | Standard_D16_v3 | 16        | 64          | 400            | 32             | 24000/375/187                                            | 8/hoch                     |
 | Standard_D32_v3 | 32        | 128          | 800            | 32             | 48000/750/375                                            | 8/äußerst hoch                     |
 | Standard_D64_v3 | 64        | 256          | 1600            | 32             | 96000/1000/500                                            | 8/äußerst hoch                     |
-
+* Virtuelle Computer der Dv3-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
 ## <a name="dsv2-series"></a>DSv2-Serie
 

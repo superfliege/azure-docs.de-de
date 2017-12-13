@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: c2de89ba3adaaa7d745731cff74269deecef03e2
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 62b1bf66647c762b17410c37fe6ebd996f577d25
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>Kopieren von Daten aus/zu Dynamics 365 bzw. Dynamics CRM mithilfe von Azure Data Factory
 
@@ -30,14 +30,20 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 
 Sie können Daten aus Dynamics 365 bzw. Dynamics CRM in einen beliebigen unterstützten Senkendatenspeicher oder Daten aus einem beliebigen unterstützten Quelldatenspeicher zu Dynamics 365 bzw. Dynamics CRM kopieren. Eine Liste der Datenspeicher, die als Quellen oder Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
 
-Der Dynamics-Connector unterstützt insbesondere folgende Dynamics-Versionen und Authentifizierungstypen:
+Dieser Dynamics-Connector unterstützt insbesondere folgende Dynamics-Versionen und Authentifizierungstypen (*IFD (Internet Facing Deployment) ist die Abkürzung für Bereitstellungen mit Internetzugriff*):
 
 | Dynamics-Versionen | Authentifizierungstypen | Beispiele für verknüpfte Dienste |
 |:--- |:--- |:--- |
 | Dynamics 365 (online) <br> Dynamics CRM Online | Office 365 | [Dynamics Online- und Office 365-Authentifizierung](#dynamics-365-and-dynamics-crm-online) |
 | Dynamics 365 lokal mit IFD <br> Dynamics CRM 2016 lokal mit IFD <br> Dynamics CRM 2015 lokal mit IFD | IFD | [Dynamics lokal mit IFD und IFD-Authentifizierung](#dynamics-365-and-dynamics-crm-on-premises-with-ifd) |
 
-*IFD ist das Akronym für „Internet Facing Deployment“ (Bereitstellung mit Internetzugriff).*
+Für Dynamics 365 werden insbesondere die folgenden Anwendungstypen unterstützt:
+
+- Dynamics 365 for Sales
+- Dynamics 365 for Customer Service
+- Dynamics 365 for Field Service
+- Dynamics 365 for Project Service Automation
+- Dynamics 365 for Marketing
 
 > [!NOTE]
 > Um den Dynamics-Connector zu verwenden, speichern Sie Ihr Kennwort in Azure Key Vault, und sorgen Sie dafür, dass die ADF-Kopieraktivität beim Kopieren der Daten dort abgerufen wird. Informationen zur Konfiguration finden Sie im Abschnitt [Eigenschaften verknüpfter Dienste](#linked-service-properties).

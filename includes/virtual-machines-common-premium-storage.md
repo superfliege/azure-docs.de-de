@@ -26,7 +26,7 @@ Wir empfehlen Ihnen, verwaltete Datenträger zu wählen, um in den Genuss der vi
 Informationen zur Migration Ihrer vorhandenen VMs zu Storage Premium finden Sie unter [Konvertieren eines virtuellen Computers von nicht verwalteten Datenträgern in verwaltete Datenträger](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md) und [Konvertieren einer Linux-VM von nicht verwalteten Datenträgern zu Azure Managed Disks](../articles/virtual-machines/linux/convert-unmanaged-to-managed-disks.md).
 
 > [!NOTE]
-> Storage Premium ist in den meisten Regionen verfügbar. Eine Liste mit den verfügbaren Regionen finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services). Suchen Sie nach den Regionen, in denen VM-Größen für Storage Premium (DS-Serie, DSV2-Serie, GS-Serie und Fs-Serie) unterstützt werden.
+> Storage Premium ist in den meisten Regionen verfügbar. Die Liste der verfügbaren Regionen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/#services) in der Zeile für **Disk Storage**.
 > 
 
 ## <a name="features"></a>Features

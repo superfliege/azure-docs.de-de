@@ -68,8 +68,9 @@ Führen Sie benutzerdefinierte oder kommerzielle HPC-Anwendungen in Azure aus. F
 
 ### <a name="ai-and-deep-learning"></a>KI und Deep Learning
 
+* [Batch AI](../articles/batch-ai/overview.md)-Training für Deep Learning-Modelle
 * [Microsoft Cognitive Toolkit](https://docs.microsoft.com/cognitive-toolkit/cntk-on-azure)
-* [Deep Learning-Toolkit für virtuelle Data Science-Computer](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
+* [Virtueller Deep Learning-Computer](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning)
 * [Batch Shipyard-Rezepte für Deep Learning](https://github.com/Azure/batch-shipyard/tree/master/recipes#deeplearning)
 
 
@@ -104,7 +105,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 * [Erste Schritte beim Entwickeln mit Batch](../articles/batch/batch-dotnet-get-started.md)
 * [Verwenden von Codebeispielen für Azure Batch](https://github.com/Azure/azure-batch-samples)
-* [Verwenden von virtuellen Computern mit niedriger Priorität mit Batch (Vorschauversion)](../articles/batch/batch-low-pri-vms.md)
+* [Verwenden von VMs mit niedriger Priorität mit Batch](../articles/batch/batch-low-pri-vms.md)
 * [Ausführen von HPC-Workloads in Containern mit Batch Shipyard](https://github.com/Azure/batch-shipyard)
 * [Verwenden der Sprache R mit Batch](https://github.com/Azure/doAzureParallel)
 
@@ -138,7 +139,7 @@ Die meisten Azure-HPC-Lösungen basieren auf Azure Virtual Machines, VM-Skalieru
 * [File Storage](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>Daten und Analysen
-* [HDInsight](../articles/hdinsight/hdinsight-hadoop-introduction.md) für Hadoop-Cluster in Azure
+* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md) für Hadoop-Cluster in Azure
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)

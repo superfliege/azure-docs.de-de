@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 6d5fc10b5186f2830f724325846a485e4064d12b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9f201454d58dbc646923d0155ff41761d593ab7e
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -48,7 +48,7 @@ Wenn Sie die Protokollierung von Metriken und Diagnosen aktivieren, müssen Sie 
 
 Sie können eine neue Azure-Ressource bereitstellen oder eine vorhandene Ressource auswählen. Nachdem Sie die Speicherressource ausgewählt haben, müssen Sie angeben, welche Daten erfasst werden sollen. Verfügbare Optionen:
 
-- [1-minute metrics (Minutenmetriken)](sql-database-metrics-diag-logging.md#1-minute-metrics): Enthält DTU-Prozentsatz, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesenen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent.
+- [Alle Metriken](sql-database-metrics-diag-logging.md#all-metrics): Enthält DTU-Prozentsatz, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesenen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status „Erfolgreich“/“Fehlgeschlagen“/“Durch Firewall blockiert“, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent.
 - [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Enthält Informationen zu den Laufzeitstatistiken der Abfrage, z.B. CPU-Nutzung und Abfragedauer.
 - [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Enthält Informationen zu den Wartestatistiken der Abfrage, die angibt, worauf Ihre Abfragen warten, z.B. CPU, Protokolle und Sperrungen.
 - [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu den SQL-Fehlern, die für diese Datenbank aufgetreten sind.
@@ -243,7 +243,7 @@ Einfacher ausgedrückt:
 insights-{metrics|logs}-{category name}/resourceId=/{resource Id}/y={four-digit numeric year}/m={two-digit numeric month}/d={two-digit numeric day}/h={two-digit 24-hour clock hour}/m=00/PT1H.json
 ```
 
-Ein Blob-Name für Minutenmetriken kann beispielsweise wie folgt lauten:
+Ein Blobname für alle Metriken kann beispielsweise wie folgt lauten:
 
 ```powershell
 insights-metrics-minute/resourceId=/SUBSCRIPTIONS/s1id1234-5679-0123-4567-890123456789/RESOURCEGROUPS/TESTRESOURCEGROUP/PROVIDERS/MICROSOFT.SQL/ servers/Server1/databases/database1/y=2016/m=08/d=22/h=18/m=00/PT1H.json
@@ -261,7 +261,7 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 
 ## <a name="metrics-and-logs-available"></a>Verfügbare Metriken und Protokolle
 
-### <a name="1-minute-metrics"></a>Minutenmetriken
+### <a name="all-metrics"></a>Alle Metriken
 
 |**Ressource**|**Metriken**|
 |---|---|
@@ -379,7 +379,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |ResourceId|Der Ressourcen-URI.|
 |Nachricht|Die Fehlermeldung im Nur-Text-Format.|
 |user_defined_b|Das benutzerdefiniertes Fehlerbit.|
-|error_number_d|Der Fehlercode.|
+|error_number_d|Fehlercode|
 |Severity|Der Schweregrad des Fehlers.|
 |state_d|Der Status des Fehlers.|
 |query_hash_s|Der Abfragehash der fehlerhaften Abfrage (falls vorhanden).|

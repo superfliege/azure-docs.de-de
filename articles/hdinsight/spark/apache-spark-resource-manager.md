@@ -16,22 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: jgao
-ms.openlocfilehash: 3c98150239134c686ac8edebd3c477bec8be7dd8
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: b2208f0553ce62be054409a415723445733708d4
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Verwalten von Ressourcen für den Apache Spark-Cluster unter Azure HDInsight 
 
-In diesem Artikel erfahren Sie, wie Sie auf die mit Ihrem Spark-Cluster verknüpften Benutzeroberflächen wie die Ambari-Benutzeroberfläche, die YARN-Benutzeroberfläche und den Spark-Verlaufsserver zugreifen können. Sie erfahren auch, wie Sie die Clusterkonfiguration für eine optimale Leistung optimieren können.
+Erfahren Sie, wie Sie auf die mit Ihrem Spark-Cluster verknüpften Benutzeroberflächen wie die Ambari-Benutzeroberfläche, die YARN-Benutzeroberfläche und den Spark-Verlaufsserver zugreifen und wie Sie die Clusterkonfiguration für optimale Leistung abstimmen.
 
 **Voraussetzungen:**
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
-## <a name="how-do-i-launch-the-ambari-web-ui"></a>Wie wird die Ambari-Webbenutzeroberfläche gestartet?
+## <a name="open-the-ambari-web-ui"></a>Öffnen der Ambari-Webbenutzeroberfläche
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.
 2. Klicken Sie für Ihren Spark-Cluster auf **Dashboard**. Geben Sie bei Aufforderung die Anmeldeinformationen für den Spark-Cluster ein.
 
@@ -40,7 +39,7 @@ In diesem Artikel erfahren Sie, wie Sie auf die mit Ihrem Spark-Cluster verknüp
 
     ![Ambari-Webbenutzeroberfläche](./media/apache-spark-resource-manager/ambari-web-ui.png "Ambari-Webbenutzeroberfläche")   
 
-## <a name="how-do-i-launch-the-spark-history-server"></a>Wie starte ich den Spark-Verlaufsserver?
+## <a name="open-the-spark-history-server"></a>Öffnen des Spark-Verlaufsservers
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Spark-Cluster (sofern Sie die Kachel ans Startmenü angeheftet haben).
 2. Klicken Sie auf dem Clusterblatt unter **Quicklinks** auf **Cluster-Dashboard**. Klicken Sie auf dem Blatt **Cluster-Dashboard** auf **Spark-Verlaufsserver**.
 
@@ -48,7 +47,7 @@ In diesem Artikel erfahren Sie, wie Sie auf die mit Ihrem Spark-Cluster verknüp
 
     Geben Sie bei Aufforderung die Anmeldeinformationen für den Spark-Cluster ein.
 
-## <a name="how-do-i-launch-the-yarn-ui"></a>Wie wird die Yarn-Benutzeroberfläche gestartet?
+## <a name="open-the-yarn-ui"></a>Öffnen der YARN-Benutzeroberfläche
 Auf der YARN-Benutzeroberfläche können Anwendungen überwachen, die derzeit auf dem Spark-Cluster ausgeführt werden.
 
 1. Klicken Sie auf dem Clusterblatt auf **Cluster-Dashboard** und dann auf **YARN**.
@@ -60,7 +59,7 @@ Auf der YARN-Benutzeroberfläche können Anwendungen überwachen, die derzeit au
    >
    >
 
-## <a name="what-is-the-optimum-cluster-configuration-to-run-spark-applications"></a>Was ist die optimale Clusterkonfiguration für die Ausführung von Spark-Anwendungen?
+## <a name="the-optimum-cluster-configuration-to-run-spark-applications"></a>Die optimale Clusterkonfiguration zum Ausführen von Spark-Anwendungen
 Die drei wichtigsten Parameter, die je nach Anwendungsanforderungen für die Spark-Konfiguration verwendet werden können, sind `spark.executor.instances`, `spark.executor.cores` und `spark.executor.memory`. Ein Executor ist ein Prozess, der für eine Spark-Anwendung gestartet wird. Er wird auf dem Workerknoten ausgeführt und ist für die Ausführung der Aufgaben für die Anwendung zuständig. Die Standardanzahl von Executors und die Executorgrößen für jeden Cluster werden basierend auf der Anzahl von Workerknoten und der Größe der Workerknoten berechnet. Diese Informationen werden in `spark-defaults.conf` in den Clusterhauptknoten gespeichert.
 
 Die drei Konfigurationsparameter können auf Clusterebene (für alle Anwendungen, die im Cluster ausgeführt werden) konfiguriert werden oder für jede einzelne Anwendung angegeben werden.

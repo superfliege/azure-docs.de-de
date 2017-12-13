@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: andredm
-ms.openlocfilehash: 4d98556f17fa834c497c2d1cd1854c9e6b02e021
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b9f45462fb108ff9cc9039cdb0d0a9ef318fc218
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-stack-1711-update"></a>Azure Stack-Update 1711
 
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, welche Verbesserungen und Fehlerbehebungen i
 
 ## <a name="build-reference"></a>Buildreferenz
 
-Die Buildnummer des Azure Stack-Updates 1711 ist **20171122.1**.
+Die Buildnummer des Azure Stack-Updates 1711 ist **171201.3**.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -85,7 +85,7 @@ Dieser Abschnitt enthält bekannte Probleme, die bei der Installation von Update
 
 ### <a name="known-issues-post-installation"></a>Bekannte Probleme (nach der Installation)
 
-Dieser Abschnitt enthält bekannte Probleme, die für Build **20171122.1** nach der Installation auftreten können.
+Dieser Abschnitt enthält bekannte Probleme, die für Build **20171201.3** nach der Installation auftreten können.
 
 #### <a name="portal"></a>Portal
 

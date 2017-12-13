@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: ec2555df27f4b709d06b660bf161f741e5b86ea6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 107601fcc53e5f5b6f809bb3c7fceaf5e5c03d36
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Features des Azure CDN-Regelmoduls
 Dieses Thema bietet ausführliche Beschreibungen der verfügbaren Features für das Azure CDN-[Regelmodul](cdn-rules-engine.md) (Content Delivery Network).
@@ -644,7 +644,7 @@ Deaktiviert|Der „X-EC-Debug Response Header“ wird aus der Antwort ausgeschlo
 
 **Standardverhalten:** Deaktiviert.
 
-###<a name="modify-client-response-header"></a>Modify Client Response Header
+###<a name="modify-client-request-header"></a>Modify Client Request Header
 **Zweck:** Jede Anforderung enthält einen Satz von [Anforderungsheadern](), die sie beschreiben. Diese Feature kann folgende Aktionen ausführen:
 
 - Anfügen oder Überschreiben des Werts, der einem Anforderungsheader zugewiesen ist. Wenn der angegebene Anforderungsheader nicht vorhanden ist, wird er der Anforderung durch dieses Feature hinzugefügt.
@@ -680,7 +680,7 @@ Wichtige Informationen:
 ###<a name="modify-client-response-header"></a>Modify Client Response Header
 Jede Antwort enthält einen Satz von [Antwortheadern](), die sie beschreiben. Diese Feature kann folgende Aktionen ausführen:
 
-- Anfügen oder Überschreiben des Werts, der einem Antwortheader zugewiesen ist. Wenn der angegebene Anforderungsheader nicht vorhanden ist, wird er der Antwort durch dieses Feature hinzugefügt.
+- Anfügen oder Überschreiben des Werts, der einem Antwortheader zugewiesen ist. Wenn der angegebene Antwortheader nicht vorhanden ist, wird er der Antwort durch dieses Feature hinzugefügt.
 - Löschen eines Antwortheaders aus der Antwort.
 
 Standardmäßig werden Werte für Antwortheader durch einen Ursprungsserver und durch unsere Edgeserver definiert.
@@ -689,9 +689,9 @@ Für einen Antwortheader kann eine der folgenden Aktionen ausgeführt werden:
 
 Option|Beschreibung|Beispiel
 -|-|-
-Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Anforderungsheaders hinzugefügt.|**Wert des Antwortheaders (Client):**Wert1 <br/> **Wert des Antwortheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
-Überschreiben|Der Wert des Anforderungsheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**Wert1 <br/>**Wert des Antwortheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
-Löschen|Löscht den angegebenen Anforderungsheader.|**Wert des Anforderungsheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Request Header“:** Der betreffende Antwortheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
+Anfügen|Der angegebene Wert wird am Ende des vorhandenen Werts des Antwortheaders hinzugefügt.|**Wert des Antwortheaders (Client):**Wert1 <br/> **Wert des Antwortheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert1Wert2
+Überschreiben|Der Wert des Antwortheaders wird auf den angegebenen Wert festgelegt.|**Wert des Antwortheaders (Client):**Wert1 <br/>**Wert des Antwortheaders (HTTP-Regelmodul):** Wert2 <br/>**Neuer Wert des Antwortheaders:** Wert2 <br/>
+Löschen|Löscht den angegebenen Antwortheader.|**Wert des Antwortheaders (Client):** Wert1 <br/> **Konfiguration von „Modify Client Response Header“:** Der betreffende Antwortheader wird gelöscht. <br/>**Ergebnis:** Der angegebene Antwortheader wird nicht an die anfordernde Person weitergeleitet.
 
 Wichtige Informationen:
 

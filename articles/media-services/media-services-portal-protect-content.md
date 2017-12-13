@@ -14,36 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: 67b3fa9936daebeafb7e87fe3a7b0c7e0105b3b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecc766abb5df38813b3eb6dde98cdc9afd24ac6b
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="configuring-content-protection-policies-using-the-azure-portal"></a>Konfigurieren von Content Protection-Richtlinien über das Azure-Portal
-> [!NOTE]
-> Sie benötigen ein Azure-Konto, um dieses Lernprogramm auszuführen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
-> 
-> 
-
-## <a name="overview"></a>Übersicht
 Microsoft Azure Media Services (AMS) ermöglicht es Ihnen, Ihre Medien zu schützen, sobald sie Ihren Computer verlassen – sei es durch Speicherung, Verarbeitung oder Übermittlung. Mit Media Services können Sie zu übermittelnde Inhalte dynamisch mit AES (Advanced Encryption Standard) (mit 128-Bit-Verschlüsselungsschlüsseln), CENC (Common Encryption) mit PlayReady- und/oder Widevine-DRM sowie mit Apple FairPlay verschlüsseln. 
 
 AMS bietet einen Dienst zum Übermitteln von DRM-Lizenzen und unverschlüsselten AES-Schlüsseln an autorisierte Clients. Über das Azure-Portal können Sie eine einzelne **Schlüssel-/Lizenzautorisierungsrichtlinie** für alle Arten von Verschlüsselungen erstellen.
 
-In diesem Artikel erfahren Sie, wie Sie Content Protection-Richtlinien über das Azure-Portal konfigurieren. Außerdem erfahren Sie, wie Sie die dynamische Verschlüsselung auf Ihre Assets anwenden.
-
-
-> [!NOTE]
-> Wenn Sie Schutzrichtlinien über das klassische Azure-Portal erstellt haben, werden diese unter Umständen nicht im [Azure-Portal](https://portal.azure.com/) angezeigt. Die alten Richtlinien sind jedoch weiterhin vorhanden. Sie können mithilfe des Azure Media Services .NET SDKs oder mithilfe des Tools [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer/releases) untersucht werden (klicken Sie zum Anzeigen der Richtlinien mit der rechten Maustaste auf das Medienobjekt, wählen Sie „Informationen anzeigen [F4]“ aus, klicken Sie auf die Registerkarte „Inhaltsschlüssel“, und klicken Sie anschließend auf den Schlüssel). 
-> 
-> Wenn Sie Ihr Asset unter Verwendung neuer Richtlinien verschlüsseln möchten, konfigurieren Sie sie über das Azure-Portal, klicken Sie auf „Speichern“, und wenden Sie die dynamische Verschlüsselung erneut an. 
-> 
-> 
+In diesem Artikel erfahren Sie, wie Sie eine Content Protection-Richtlinie über das Azure-Portal konfigurieren. Außerdem erfahren Sie, wie Sie die dynamische Verschlüsselung auf Ihre Assets anwenden.
 
 ## <a name="start-configuring-content-protection"></a>Erste Schritte beim Konfigurieren von Content Protection
 Gehen Sie wie folgt vor, um Content Protection über das Portal global für Ihr AMS-Konto zu konfigurieren:
-
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) Ihr Azure Media Services-Konto aus.
 2. Wählen Sie **Einstellungen** > **Inhaltsschutz** aus.
 
@@ -54,18 +39,18 @@ AMS unterstützt mehrere Methoden zur Authentifizierung von Benutzern, die Schl�
 
 Über das Azure-Portal können Sie eine einzelne **Schlüssel-/Lizenzautorisierungsrichtlinie** für alle Arten von Verschlüsselungen erstellen.
 
-### <a name="open"></a>Offen
+### <a name="open-authorization"></a>Offene Autorisierung
 Bei Verwendung einer offenen Einschränkung übermittelt das System den Schlüssel an jeden Benutzer, der einen Schlüssel anfordert. Diese Einschränkung kann beim Testen hilfreich sein. 
 
-### <a name="token"></a>Tokeneinschränkung
+### <a name="token-authorization"></a>Tokenautorisierung
 Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im Simple Web Tokens (SWT)-Format und JSON Web Token (JWT)-Format. Secure Token Services werden von Media Services nicht bereitgestellt. Sie können einen benutzerdefinierten STS erstellen oder Microsoft Azure ACS zum Ausstellen von Token nutzen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausstellungsansprüche konfiguriert sein, die Sie in der Konfiguration der Tokeneinschränkung angegeben haben. Der Schlüsselübermittlungsdienst von Media Services gibt den angeforderten Schlüssel (oder die Lizenz) an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Schlüssel (oder die Lizenz) konfigurierten Ansprüchen übereinstimmen.
 
 Beim Konfigurieren der Richtlinie mit Tokeneinschränkung müssen der primäre Verifizierungsschlüssel, der Aussteller und die Zielgruppe angegeben werden. PrimaryVerificationKey enthält den Schlüssel, mit dem das Token signiert wurde, und Issuer ist der STS (Secure Token Service), von dem das Token ausgestellt wurde. Audience (manchmal auch Scope) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
 
 ![Inhalt schützen](./media/media-services-portal-content-protection/media-services-content-protection002.png)
 
-## <a name="playready-rights-template"></a>PlayReady-Rechtevorlage
-Ausführliche Informationen zur PlayReady-Rechtevorlage finden Sie unter [Media Services PlayReady-Lizenzvorlage – Übersicht](media-services-playready-license-template-overview.md).
+## <a name="playready-license-template"></a>PlayReady-Lizenzvorlage
+Die PlayReady-Lizenzvorlage legt die Funktionen fest, die in Ihrer PlayReady-Lizenz aktiviert sind. Ausführliche Informationen zur PlayReady-Lizenzvorlage finden Sie unter [Media Services PlayReady-Lizenzvorlage – Übersicht](media-services-playready-license-template-overview.md).
 
 ### <a name="non-persistent"></a>Nicht beständig
 Wenn Sie die Lizenz als nicht beständig konfigurieren, bleibt sie nur für die Dauer der Verwendung durch den Player im Arbeitsspeicher.  
@@ -77,19 +62,19 @@ Wenn Sie die Lizenz als beständig konfigurieren, wird sie auf dem Client im bes
 
 ![Inhalt schützen](./media/media-services-portal-content-protection/media-services-content-protection004.png)
 
-## <a name="widevine-rights-template"></a>Widevine-Rechtevorlage
-Ausführliche Informationen zur Widevine-Rechtevorlage finden Sie in der [Übersicht über die Widevine-Lizenzvorlage](media-services-widevine-license-template-overview.md).
+## <a name="widevine-license-template"></a>Widevine-Lizenzvorlage
+Die Widevine-Lizenzvorlage legt die Funktionen fest, die für Ihre Widevine-Lizenzen aktiviert sind.
 
 ### <a name="basic"></a>Basic
 Bei Verwendung der Option **Basic**wird die Vorlage mit allen Standardwerten erstellt.
 
 ### <a name="advanced"></a>Erweitert
-Eine ausführliche Erläuterung der erweiterten Option für Widevine-Konfigurationen finden Sie [hier](media-services-widevine-license-template-overview.md) .
+Ausführliche Informationen zur Widevine-Rechtevorlage finden Sie in der [Übersicht über die Widevine-Lizenzvorlage](media-services-widevine-license-template-overview.md).
 
 ![Inhalt schützen](./media/media-services-portal-content-protection/media-services-content-protection005.png)
 
 ## <a name="fairplay-configuration"></a>FairPlay-Konfiguration
-Um die FairPlay-Verschlüsselung zu aktivieren, müssen Sie das App-Zertifikat und den geheimen Anwendungsschlüssel (Application Secret Key, ASK) über die FairPlay-Konfigurationsoption angeben. Ausführliche Informationen zur FairPlay-Konfiguration und zu den Voraussetzungen finden Sie in [diesem Artikel](media-services-protect-hls-with-fairplay.md) .
+Um die FairPlay-Verschlüsselung zu aktivieren, müssen Sie das App-Zertifikat und den geheimen Anwendungsschlüssel (Application Secret Key, ASK) über die FairPlay-Konfigurationsoption angeben. Ausführliche Informationen zur FairPlay-Konfiguration und zu den Voraussetzungen finden Sie in [diesem Artikel](media-services-protect-hls-with-FairPlay.md) .
 
 ![Inhalt schützen](./media/media-services-portal-content-protection/media-services-content-protection006.png)
 
@@ -125,7 +110,7 @@ Um die FairPlay-Verschlüsselung zu aktivieren, müssen Sie das App-Zertifikat u
 Wählen Sie eine Verschlüsselung aus, und klicken Sie anschließend auf **Übernehmen**.
 
 >[!NOTE] 
->Wenn Sie beabsichtigen, HLS mit AES-Verschlüsselung in Safari abzuspielen, lesen Sie [diesen Blogbeitrag](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+>Wenn Sie beabsichtigen, HLS mit AES-Verschlüsselung in Safari abzuspielen, lesen Sie den Blogbeitrag zu [Verschlüsseltes HLS in Safari](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die Media Services-Lernpfade.

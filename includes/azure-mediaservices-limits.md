@@ -20,13 +20,13 @@
 | Richtlinien | 1,000,000<sup>(6)</sup> |
 | Dateigröße| In einigen Szenarien werden für die Verarbeitung in Media Services nur Dateien bis zu einer bestimmten Größe unterstützt. <sup>7</sup> |
   
-<sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar. Die maximalen RU-Grenzwerte werden zurückgesetzt, wenn der Kunde den Typ ändert (z.B. von S2 zu S1). 
+<sup>1</sup> S3 RUs sind nicht in der Region „Indien, Westen“ verfügbar. Wenn Sie den Typ ändern (etwa von S2 in S1) werden die maximalen RU-Grenzwerte zurückgesetzt.
 
 <sup>2</sup> Diese Zahl umfasst fertig gestellte, aktive und abgebrochene Aufträge sowie Aufträge in der Warteschlange. Gelöschte Aufträge sind nicht enthalten. Sie können die alten Aufträge mithilfe von **IJob.Delete** oder der HTTP **DELETE**-Anforderung löschen.
 
 Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den [hier](../articles/media-services/media-services-dotnet-manage-entities.md) beschriebenen Code verwenden.
 
-<sup>3</sup> Wenn Sie eine Anforderung zum Auflisten von Auftragsentitäten senden, werden maximal 1.000 Entitäten pro Anforderung zurückgegeben. Falls Sie alle gesendeten Aufträge nachverfolgen müssen, können Sie "Nach oben"/"Überspringen" wie in [OData-Systemabfrageoptionen](http://msdn.microsoft.com/library/gg309461.aspx)beschrieben verwenden.
+<sup>3</sup> Wenn Sie eine Anforderung zum Auflisten von Auftragsentitäten senden, werden maximal 1.000 Aufträge pro Anforderung zurückgegeben. Falls Sie alle gesendeten Aufträge nachverfolgen müssen, können Sie "Nach oben"/"Überspringen" wie in [OData-Systemabfrageoptionen](http://msdn.microsoft.com/library/gg309461.aspx)beschrieben verwenden.
 
 <sup>4</sup> Locators sind nicht für die Verwaltung der Zugriffssteuerung pro Benutzer konzipiert. Um einzelnen Benutzern verschiedene Zugriffsrechte zu erteilen, verwenden Sie Lösungen zur Verwaltung digitaler Rechte (Digital Rights Management, DRM). Weitere Informationen finden Sie in [diesem](../articles/media-services/media-services-content-protection-overview.md) Abschnitt.
 
@@ -37,9 +37,9 @@ Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter 
 >[!NOTE]
 > Wenn Sie immer die gleichen Tage und Zugriffsberechtigungen usw. verwenden, sollten Sie die gleiche Richtlinien-ID verwenden. Weitere Informationen und ein Beispiel finden Sie in [diesem](../articles/media-services/media-services-dotnet-manage-entities.md#limit-access-policies) Abschnitt.
 
-<sup>7</sup>Berücksichtigen Sie die Einschränkungen hinsichtlich der maximalen Größe, wenn Sie Inhalte an ein Medienobjekt in Azure Media Services hochladen und mit einem der Medienprozessoren in unserem Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analysemodulen wie Face Detector) verarbeiten möchten. 
+<sup>7</sup>Berücksichtigen Sie die Einschränkungen hinsichtlich der unterstützten maximalen Dateigrößen, wenn Sie Inhalte an ein Medienobjekt in Azure Media Services hochladen und mit einem der Medienprozessoren im Dienst (also mit Encodern wie Media Encoder Standard und Media Encoder Premium Workflow oder mit Analysemodulen wie Gesichtserkennung) verarbeiten möchten. 
 
-Ab 15. Mai 2017 beträgt die für ein einzelnes Blob unterstützte maximale Größe 195 TB – bei größeren Dateien tritt bei dem Task ein Fehler auf. Wir arbeiten daran, diesen Grenzwert zu ändern. Darüber hinaus gelten folgende Einschränkungen hinsichtlich der maximalen Größe des Medienobjekts.
+In Azure Blob Storage werden derzeit als Größe für ein einzelnes Blob bis zu 5 TB unterstützt. Allerdings gelten basierend auf den vom Dienst verwendeten VM-Größen zusätzliche Grenzwerte in Azure Media Services. Die folgende Tabelle enthält die Grenzwerte für die einzelnen reservierten Einheiten für Medien (S1, S2, S3.) Wenn die Quelldatei größer als die in der Tabelle definierten Grenzwerte ist, tritt beim Codierungsauftrag ein Fehler auf. Beim Codieren von Quellen mit 4K-Auflösung und langer Dauer müssen Sie reservierte Einheiten für Medien vom Typ „S3“ verwenden, um die erforderliche Leistung zu erzielen. Bei 4K-Inhalten, die den Grenzwert von 260 GB für reservierte Einheiten für Medien vom Typ „S3“ überschreiten, kontaktieren Sie uns unter amshelp@microsoft.com, um Informationen zu möglichen Lösungen zur Unterstützung Ihres Szenarios zu erhalten.
 
 | Reservierte Einheiten für Medien (Typ) | Maximale Eingabegröße (GB)| 
 | --- | --- | 

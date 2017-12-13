@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 35d7c04f245e93d8cc795dca7c01c2bab5a14eb8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 51a1b65446a1a0db93c21378f156b608a38ef817
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Unterstützte Inspektoren für die Azure Machine Learning-Datenvorbereitung
 Dieses Dokument beschreibt den in dieser Vorschau verfügbaren Satz von Inspektoren.
@@ -113,3 +113,18 @@ Eine Karte mit gezeichneten Punkten, wobei vorausgesetzt wird, dass Breiten- und
 Dieser Inspektor unterstützt das Filtern über Punktauswahl auf der Karte. Drücken Sie **STRG**, und bilden Sie dann durch Klicken und Ziehen mit der Maus ein Quadrat um die Punkte. Wenden Sie dann wie zuvor beschrieben Filter an.
 
 Durch Auswahl von **E** auf der linken Seite der Karte können Sie die Größe der Karte schnell anpassen, um alle möglichen Punkte anzuzeigen.
+
+
+## <a name="pattern-frequency"></a>Musterhäufigkeit 
+
+Dieser Inspektor zeigt eine Liste von Mustern in der ausgewählten Zeichenfolgenspalte an. Die Muster werden mit einer Syntax ähnlich regulären Ausdrücken dargestellt. Wenn Sie mit der Maus auf das Muster zeigen, werden die Beispiele für Werte in diesem Muster dargestellt. Zusammen mit den Mustern wird auch die ungefähre Abdeckung als Prozentsatz angezeigt.
+
+![Bild des Musterinspektors](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
+
+### <a name="options"></a>Optionen
+- Anzahl der obersten Werte
+- Absteigend
+- Halo anzeigen
+
+### <a name="actions"></a>Actions
+Dieser Inspektor unterstützt das Filtern anhand angezeigter Muster. Drücken Sie die **STRG**-Taste, und wählen Sie dann die gefüllten Balken im Musterinspektor aus. Wenden Sie dann wie zuvor beschrieben Filter an. Als Ergebnis der Benutzeraktion wird ein erweiterter Filterschritt hinzugefügt. Sie können den generierten Python-Code mit der Bearbeitungsoption im erweiterten Filterschritt anzeigen und ändern.

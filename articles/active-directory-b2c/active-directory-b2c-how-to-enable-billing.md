@@ -3,75 +3,96 @@ title: "Verknüpfen eines Azure-Abonnements mit Azure AD B2C | Microsoft-Dokumen
 description: "Enthält eine Schritt-für-Schritt-Anleitung zur Vorgehensweise, mit der die Abrechnung für einen Azure AD B2C-Mandanten in einem Azure-Abonnement ermöglicht wird."
 services: active-directory-b2c
 documentationcenter: dev-center-name
-author: rojasja
-manager: mbaldwin
+author: parakhj
+manager: krassk
 ms.service: active-directory-b2c
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2016
-ms.author: joroja
-ms.openlocfilehash: 5b9955b2af7f20a79981315fa33a0eb5380a5465
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/05/2017
+ms.author: parja
+ms.openlocfilehash: 35fab74abf2c2ba27a8bf99eb93eb53f39b26227
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="linking-an-azure-subscription-to-an-azure-b2c-tenant-to-pay-for-usage-charges"></a>Verknüpfen eines Azure-Abonnements mit einem Azure B2C-Mandanten zum Begleichen von Nutzungsgebühren
-
-Laufende Nutzungsgebühren für Azure Active Directory B2C (oder Azure AD B2C) werden unter einem Azure-Abonnement abgerechnet. Für den Mandantenadministrator ist es erforderlich, den Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement zu verknüpfen, nachdem der eigentliche B2C-Mandant erstellt wurde.  Diese Verknüpfung wird erreicht, indem im Azure-Zielabonnement eine Azure AD-Ressource vom Typ „B2C-Mandant“ erstellt wird. Viele B2C-Mandanten können zusammen mit anderen Azure-Ressourcen (z.B. VMs, Datenspeicher, LogicApps) mit einem einzelnen Azure-Abonnement verknüpft werden.
-
+# <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure AD B2C-Mandanten
 
 > [!IMPORTANT]
-> Die neuesten Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für B2C finden Sie auf der folgenden Seite: [Azure Active Directory B2C Preise](
-https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+> Die neuesten Informationen zur Abrechnung von Nutzungsgebühren und zu den Preisen für Azure AD B2C finden Sie auf der folgenden Seite: [Azure Active Directory B2C Preise](https://azure.microsoft.com/pricing/details/active-directory-b2c/).
 
-## <a name="step-1---create-an-azure-ad-b2c-tenant"></a>Schritt 1: Erstellen eines Azure AD B2C-Mandanten
-Die Erstellung des B2C-Mandanten muss zuerst abgeschlossen werden. Überspringen Sie diesen Schritt, falls Sie den B2C-Zielmandanten bereits erstellt haben. [Erste Schritte mit Azure AD B2C](active-directory-b2c-get-started.md)
+Nutzungsgebühren für Azure AD B2C werden über ein Azure-Abonnement abgerechnet. Beim Erstellen eines Azure AD B2C-Mandanten muss der Mandantenadministrator den Azure AD B2C-Mandanten explizit mit einem Azure-Abonnement verknüpfen. In diesem Artikel erfahren Sie, welche Schritte erforderlich sind.
 
-## <a name="step-2---open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>Schritt 2: Öffnen des Azure-Portals im Azure AD-Mandanten, für den Ihr Azure-Abonnement angezeigt wird
-Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wechseln Sie zu dem Azure AD-Mandanten, für den das Azure-Abonnement angezeigt wird, das Sie verwenden möchten. Dieser Azure AD-Mandant unterscheidet sich vom B2C-Mandanten. Klicken Sie im Azure-Portal oben rechts im Dashboard auf den Kontonamen, um den Azure AD-Mandanten auszuwählen. Ein Azure-Abonnement ist erforderlich, um den Vorgang fortsetzen zu können. [Erhalten eines Azure-Abonnements](https://account.windowsazure.com/signup?showCatalog=True)
+> [!NOTE]
+> Ein mit einem Azure AD B2C-Mandanten verknüpftes Abonnement kann nur für die Abrechnung der Azure AD B2C-Nutzung verwendet werden. Das Abonnement kann nicht verwendet werden, um weitere Azure-Dienste oder Office 365-Lizenzen *innerhalb des Azure AD B2C-Mandanten* hinzuzufügen.
 
-![Wechseln zum Azure AD-Mandanten](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
+ Für die Abonnementverknüpfung wird innerhalb des Azure-Zielabonnements eine Azure AD B2C-Ressource erstellt. Viele Azure AD B2C-Ressourcen können innerhalb eines einzelnen Azure-Abonnements zusammen mit anderen Azure-Ressourcen (beispielsweise virtuelle Computer, Datenspeicher, Logik-Apps) erstellt werden. Alle Ressourcen innerhalb des Abonnements können Sie unter dem Azure AD-Mandanten anzeigen, dem das Abonnement zugeordnet ist.
 
-## <a name="step-3---create-a-b2c-tenant-resource-in-azure-marketplace"></a>Schritt 3: Erstellen einer Ressource vom Typ „B2C-Mandant“ in Azure Marketplace
-Öffnen Sie den Marketplace per Klick auf das Marketplace-Symbol, oder wählen Sie oben links im Dashboard das grüne Pluszeichen.  Suchen Sie nach Azure Active Directory B2C, und wählen Sie die Anwendung aus. Klicken Sie auf Erstellen.
+Für die weitere Vorgehensweise wird ein gültiges Azure-Abonnement benötigt.
 
-![Wählen Sie den Marketplace aus.](./media/active-directory-b2c-how-to-enable-billing/marketplace.png)
+## <a name="create-an-azure-ad-b2c-tenant"></a>Erstellen eines Azure AD B2C-Mandanten
 
-![Suchen nach AD B2C](./media/active-directory-b2c-how-to-enable-billing/searchb2c.png)
+Sie müssen zunächst [einen Azure AD B2C-Mandanten erstellen](active-directory-b2c-get-started.md), mit dem Sie ein Abonnement verknüpfen möchten. Überspringen Sie diesen Schritt, falls Sie bereits einen Azure AD B2C-Mandanten erstellt haben.
 
-Das Dialogfeld für die Erstellung der Azure AD B2C-Ressource enthält die folgenden Parameter:
+## <a name="open-azure-portal-in-the-azure-ad-tenant-that-shows-your-azure-subscription"></a>Öffnen des Azure-Portals in dem Azure AD-Mandanten mit Ihrem Azure-Abonnement
 
-1. Azure AD B2C Tenant (Azure AD B2C-Mandant): Wählen Sie in der Dropdownliste einen Azure AD B2C-Mandanten aus.  Es werden nur zulässige Azure AD B2C-Mandanten angezeigt.  Zulässige B2C-Mandanten erfüllen die folgenden Bedingungen: Sie sind der globale Administrator des B2C-Mandanten, und der B2C-Mandant ist derzeit keinem Azure-Abonnement zugeordnet.
+Navigieren Sie zu dem Azure AD-Mandanten mit Ihrem Azure-Abonnement. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zu dem Azure AD-Mandanten mit dem gewünschten Azure-Abonnement.
 
-2. Azure AD B2C Resource name (Name der Azure AD B2C-Ressource): Ist bereits ausgewählt und entspricht dem Domänennamen des B2C-Mandanten.
+![Wechseln zu Ihrem Azure AD-Mandanten](./media/active-directory-b2c-how-to-enable-billing/SelectAzureADTenant.png)
 
-3. Subscription (Abonnement): Ein aktives Azure-Abonnement, für das Sie als Administrator oder Co-Administrator fungieren.  Einem Azure-Abonnement können mehrere Azure AD B2C-Mandanten hinzugefügt werden
+## <a name="find-azure-ad-b2c-in-the-azure-marketplace"></a>Suchen von Azure AD B2C im Azure Marketplace
 
-4. Resource Group and Resource Group location (Ressourcengruppe und Ressourcengruppenstandort): Dieses Artefakt dient Ihnen als Unterstützung beim Organisieren mehrerer Azure-Ressourcen.  Diese Auswahl hat keine Auswirkung auf den Standort, die Leistung oder den Abrechnungsstatus Ihres B2C-Mandanten.
+Klicken Sie auf die Schaltfläche **Neu**. Geben Sie im Feld **Marketplace durchsuchen** die Zeichenfolge `B2C` ein.
 
-5. Nutzen Sie die Option „An Dashboard anheften“, um leicht auf die Abrechnungsinformationen und Einstellungen für den B2C-Mandanten zugreifen zu können. ![Erstellen der B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+![Hervorgehobene Schaltfläche „Hinzufügen“ und Text „Azure AD B2C“ im Feld „Marketplace durchsuchen“](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
-## <a name="step-4---manage-your-b2c-tenant-resources-optional"></a>Schritt 4: Verwalten von Ressourcen des B2C-Mandanten (optional)
-Nach Abschluss der Bereitstellung wird in der Zielressourcengruppe und im dazugehörigen Azure-Abonnement eine neue Ressource vom Typ „B2C-Mandant“ erstellt.  Zusätzlich zu den anderen Azure-Ressourcen wird dann eine neue Ressource vom Typ „B2C-Mandant“ angezeigt.
+Klicken Sie in der Ergebnisliste auf **Azure Active Directory B2C**.
 
-![Erstellen einer B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcedashboard.png)
+![Ergebnisliste mit ausgewählter Option „Azure Active Directory B2C“](../../includes/media/active-directory-b2c-create-tenant/find-azure-ad-b2c-result.png)
 
-Wenn Sie auf die B2C-Mandantenressource klicken, haben Sie folgende Möglichkeiten:
-- Klicken Sie auf den Abonnementnamen, um die Abrechnungsinformationen zu überprüfen. Siehe „Abrechnung und Nutzung“.
-- Klicken Sie auf „Azure AD B2C Settings“ (Azure AD B2C-Einstellungen), um direkt auf dem Blatt mit den Einstellungen für den B2C-Mandanten eine neue Browserregisterkarte zu öffnen.
-- Senden Sie eine Supportanfrage.
-- Verschieben Sie die B2C-Mandantenressource in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe.  Mit dieser Auswahl geben Sie an, welches Azure-Abonnement die Nutzungsgebühren erhält.
+Details zu „Azure Active Directory B2C“ werden angezeigt. Klicken Sie auf die Schaltfläche **Erstellen**, um mit der Konfiguration Ihres neuen Azure Active Directory B2C-Mandanten zu beginnen.
+
+Klicken Sie im Bildschirm für die Ressourcenerstellung auf **Vorhandenen Azure AD B2C-Mandanten mit meinem Azure-Abonnement verknüpfen**.
+
+## <a name="create-an-azure-ad-b2c-resource-within-the-azure-subscription"></a>Erstellen einer Azure AD B2C-Ressource innerhalb des Azure-Abonnements
+
+Wählen Sie im Dialogfeld für die Ressourcenerstellung einen Azure AD B2C-Mandanten aus der Dropdownliste aus. Es werden alle Mandanten angezeigt, für die Sie als globaler Administrator fungieren, sowie Mandanten, die noch nicht mit einem Abonnement verknüpft sind.
+
+Der Name der Azure AD B2C-Ressource ist vorgegeben und entspricht dem Domänennamen des Azure AD B2C-Mandanten.
+
+Wählen Sie als Abonnement ein aktives Azure-Abonnement aus, für das Sie als Administrator fungieren.
+
+Wählen Sie eine Ressourcengruppe und einen Ressourcengruppenstandort aus. Die hier getroffene Auswahl hat keine Auswirkung auf den Standort, die Leistung oder den Abrechnungsstatus Ihres Azure AD B2C-Mandanten.
+
+![Erstellen einer B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
+
+## <a name="manage-your-azure-ad-b2c-tenent-resources"></a>Verwalten Ihrer Azure AD B2C-Mandantenressourcen
+
+Nach erfolgreicher Erstellung einer Azure AD B2C-Ressource innerhalb des Azure-Abonnements wird zusammen mit Ihren anderen Azure-Ressourcen eine neue Ressource vom Typ „B2C-Mandant“ angezeigt.
+
+Diese Ressource ermöglicht Folgendes:
+
+- Navigieren zum Abonnement, um die Abrechnungsinformationen zu überprüfen
+- Navigieren zu Ihrem Azure AD B2C-Mandanten
+- Übermitteln einer Supportanfrage
+- Verschieben Ihrer Azure AD B2C-Mandantenressource in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe
 
 ![Einstellungen für die B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)
 
 ## <a name="known-issues"></a>Bekannte Probleme
-- Löschen eines B2C-Mandanten. Wenn ein B2C-Mandanten erstellt, gelöscht und mit demselben Domänennamen neu erstellt wird, löschen Sie auch die Verknüpfungsressource mit demselben Domänennamen, und erstellen Sie sie neu.  Diese Verknüpfungsressource finden Sie über das Azure-Portal im Abonnementmandanten unter „Alle Ressourcen“.
-- Selbstauferlegte Einschränkungen für den Standort regionaler Ressourcen.  In seltenen Fällen hat ein Benutzer möglicherweise eine regionale Einschränkung für die Erstellung von Azure-Ressourcen eingerichtet.  Diese Einschränkung kann die Erstellung der Verknüpfung zwischen einem Azure-Abonnement und einem B2C-Mandanten verhindern. Um das Problem zu lösen, lockern Sie diese Einschränkung.
+
+### <a name="csp-subscriptions"></a>CSP-Abonnements
+
+Derzeit kann ein Azure AD B2C-Mandant **keine** Verknüpfung mit CSP-Abonnements erstellen.
+
+### <a name="self-imposed-restrictions"></a>Selbstauferlegte Einschränkungen
+
+Ein Benutzer hat möglicherweise eine regionale Einschränkung für die Erstellung von Azure-Ressourcen eingerichtet. Diese Einschränkung verhindert unter Umständen die Erstellung der Azure AD B2C-Ressource. Um das Problem zu lösen, lockern Sie diese Einschränkung.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie diese Schritte für die einzelnen B2C-Mandanten ausgeführt haben, wird die Abrechnung für Ihr Azure-Abonnement in Übereinstimmung mit Ihren Azure Direct- bzw. Enterprise Agreement-Details durchgeführt.
-- Überprüfen der Nutzung und Abrechnung im ausgewählten Azure-Abonnement
-- Überprüfen von ausführlichen täglichen Nutzungsberichten mit der [Verwendungsberichts-API](active-directory-b2c-reference-usage-reporting-api.md)
+
+Nachdem Sie diese Schritte für die einzelnen Azure AD B2C-Mandanten ausgeführt haben, wird die Abrechnung für Ihr Azure-Abonnement gemäß Ihren Azure Direct- bzw. Enterprise Agreement-Details abgewickelt.
+
+Sie können die Nutzungs und Abrechnungsdetails innerhalb Ihres ausgewählten Azure-Abonnement prüfen. Darüber hinaus stehen Ihnen über die [Berichterstattungs-API](active-directory-b2c-reference-usage-reporting-api.md) ausführliche Berichte zur tagtäglichen Nutzung zur Verfügung.

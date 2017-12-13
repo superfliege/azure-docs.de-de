@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/06/2017
 ms.author: joflore
-ms.openlocfilehash: 0a45a563d8aed45dd30cc76a13b0e197c248be84
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18151f647b857dec78e659a3394359ff21a818c7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Installieren einer neuen Active Directory-Gesamtstruktur auf einem virtuellen Azure-Netzwerk
-In diesem Thema wird das Erstellen einer neuen Windows Server Active Directory-Umgebung in einem virtuellen Azure-Netzwerk erläutert, das auf einem virtuellen Computer (Virtual Machine, VM) mit [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)läuft. In diesem Fall ist das virtuelle Azure-Netzwerk nicht mit einem lokalen Netzwerk verbunden.
+In diesem Artikel wird das Erstellen einer neuen Windows Server-basierten Active Directory-Umgebung auf einem virtuellen Computer (Virtual Machine, VM) in einem [virtuellen Azure-Netzwerk](../virtual-network/virtual-networks-overview.md) beschrieben. In diesem Fall ist das virtuelle Azure-Netzwerk nicht mit einem lokalen Netzwerk verbunden.
 
-Folgende Themen könnten für Sie ebenfalls von Interesse sein:
+Folgende Artikel könnten für Sie ebenfalls von Interesse sein:
 
 * Ein Video, das diese Schritte veranschaulicht, finden Sie unter [Installieren einer neuen Active Directory-Gesamtstruktur in einem virtuellen Azure-Netzwerk](http://channel9.msdn.com/Series/Microsoft-Azure-Tutorials/How-to-install-a-new-Active-Directory-forest-on-an-Azure-virtual-network)
 * Optional können Sie ein [Standort-zu-Standort-VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md) konfigurieren und dann entweder eine neue Gesamtstruktur installieren oder eine lokale Gesamtstruktur in einem virtuellen Azure-Netzwerk erweitern. Erläuterungen hierzu finden Sie unter [Installieren eines Active Directory-Replikatdomänencontrollers unter virtuellen Netzwerken in Microsoft Azure](active-directory-install-replica-active-directory-domain-controller.md).
@@ -87,7 +87,7 @@ Wenn die DC-Installation beendet ist, schließen Sie den virtuellen Computer wie
    3. Klicken Sie auf der Registerkarte **Weiterleitungen** auf die IP-Adresse der Weiterleitung, und klicken Sie dann auf **Bearbeiten**.  Wählen Sie die IP-Adresse aus, und klicken Sie auf **Löschen**.
    4. Klicken Sie auf **OK**, um den Editor zu schließen, und dann erneut auf **OK**, um die Eigenschaften des DNS-Servers zu schließen.
 2. Aktualisieren Sie die DNS-Servereinstellung für das virtuelle Netzwerk.
-   1. Klicken Sie auf **Virtuelle Netzwerke**, doppelklicken Sie auf das erstellte virtuelle Netzwerk > **Konfigurieren** > **DNS-Server**. Geben Sie dann den Namen und die DIP eines der virtuellen Computer ein, der die Domänencontroller/DNS-Serverrolle ausführt, und klicken Sie abschließend auf **Speichern**.
+   1. Klicken Sie auf **Virtuelle Netzwerke**, doppelklicken Sie auf das erstellte virtuelle Netzwerk, und klicken Sie anschließend auf **Konfigurieren** > **DNS-Server**. Geben Sie dann den Namen und die IP-Adresse eines der virtuellen Computer ein, der die Domänencontroller/DNS-Serverrolle ausführt, und klicken Sie abschließend auf **Speichern**.
    2. Wählen Sie den virtuellen Computer aus, und klicken Sie auf **Neu starten** , damit der virtuelle Computer die DNS-Resolver-Einstellungen mit der IP-Adresse des neuen DNS-Servers konfiguriert.
 
 ## <a name="create-vms-for-domain-members"></a>Erstellen von virtuellen Computern für Domänenmitglieder

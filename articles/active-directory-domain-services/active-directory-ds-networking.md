@@ -4,7 +4,7 @@ description: "Netzwerkaspekte für die Azure Active Directory Domain Services"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mahesh-unnikrishnan
 editor: curtand
 ms.assetid: 23a857a5-2720-400a-ab9b-1ba61e7b145a
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2017
+ms.date: 12/01/2017
 ms.author: maheshu
-ms.openlocfilehash: 5f9236c5cf660be00db6e09d61df617b64d978e9
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 537643f582f6cc3328bd1c098de03c4f6e07c113
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Netzwerkaspekte für die Azure AD Domain Services
 ## <a name="how-to-select-an-azure-virtual-network"></a>Auswählen eines virtuellen Azure-Netzwerks
@@ -28,10 +28,6 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 * **Virtuelle Netzwerke mit Resource Manager:** Azure AD Domain Services können in virtuellen Netzwerken aktiviert werden, die mit Azure Resource Manager erstellt wurden.
 * Sie können die Azure AD Domain Services nicht in einem klassischen virtuellen Azure-Netzwerk aktivieren.
 * Sie können keine Verbindungen anderer virtueller Netzwerke mit dem virtuellen Netzwerk herstellen, in dem die Azure AD Domain Services aktiviert sind. Weitere Informationen finden Sie im Abschnitt [Netzwerkkonnektivität](active-directory-ds-networking.md#network-connectivity).
-* **Regionale virtuelle Netzwerke**: Wenn Sie ein vorhandenes virtuelles Netzwerk verwenden möchten, sollten Sie sicherstellen, dass es sich um ein regionales virtuelles Netzwerk handelt.
-
-  * Virtuelle Netzwerke, die den Vorgängermechanismus der Affinitätsgruppen verwenden, können nicht mit den Azure Active Directory Domain Services eingesetzt werden.
-  * [Migrieren Sie ältere virtuelle Netzwerke zu regionalen virtuellen Netzwerken](../virtual-network/virtual-networks-migrate-to-regional-vnet.md), um die Azure AD Domain Services zu verwenden.
 
 ### <a name="azure-region-for-the-virtual-network"></a>Azure-Region für das virtuelle Netzwerk
 * Ihre mit den Azure AD Domain Services verwaltete Domäne wird in derselben Azure-Region wie das virtuelle Netzwerk bereitgestellt, das Sie zum Aktivieren des Diensts auswählen.
@@ -39,7 +35,7 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 * Informationen zu den Azure-Regionen, in denen die Azure AD Domain Services verfügbar sind, finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services/).
 
 ### <a name="requirements-for-the-virtual-network"></a>Anforderungen an das virtuelle Netzwerk
-* **Nähe zu Ihren Azure-Workloads**: Wählen Sie das virtuelle Netzwerk aus, in dem virtuelle Computer gehostet werden bzw. gehostet werden sollen, die Zugriff auf die Azure Active Directory Domain Services benötigen. Sie können auch Verbindungen mit virtuellen Netzwerken herstellen, wenn Ihre Workloads in einem anderen virtuellen Netzwerk als der verwalteten Domäne bereitgestellt werden.
+* **Nähe zu Ihren Azure-Workloads**: Wählen Sie das virtuelle Netzwerk aus, in dem virtuelle Computer gehostet werden bzw. gehostet werden sollen, die Zugriff auf die Azure Active Directory Domain Services benötigen. Wenn Ihre Workloads in einem anderen virtuellen Netzwerk bereitgestellt werden als die verwaltete Domäne, können Sie auch Verbindungen mit virtuellen Netzwerken herstellen.
 * **Benutzerdefinierte/eigene DNS-Server**: Stellen Sie sicher, dass für das virtuelle Netzwerk keine benutzerdefinierten DNS-Server konfiguriert sind. Ein Beispiel für einen benutzerdefinierten DNS-Server ist eine Instanz von Windows Server-DNS unter Windows Server-VM, die Sie im virtuellen Netzwerk bereitgestellt haben. Azure AD Domain Services können nicht in benutzerdefinierte DNS-Server integriert werden, die innerhalb des virtuellen Netzwerks bereitgestellt werden.
 * **Vorhandene Domänennamen mit dem gleichen Domänennamen**: Stellen Sie sicher, dass in diesem virtuellen Netzwerk keine Domäne mit dem gleichen Domänennamen vorhanden ist. Angenommen, im ausgewählten virtuellen Netzwerk befindet sich eine Domäne namens „contoso.com“. Später versuchen Sie, in diesem virtuellen Netzwerk eine verwaltete Domäne der Azure AD Domain Services mit dem gleichen Domänennamen (also „contoso.com“) zu aktivieren. Beim Aktivieren der Azure AD Domain Services tritt daraufhin ein Fehler auf. Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennamen in diesem virtuellen Netzwerk. In dem Fall müssen Sie einen anderen Namen verwenden, um die verwaltete Domäne der Azure AD Domain Services einzurichten. Alternativ können Sie auch die Bereitstellung der bestehenden Domäne aufheben und mit der Aktivierung der Azure AD Domain Services fortfahren.
 
@@ -48,12 +44,11 @@ Die folgenden Richtlinien dienen Ihnen als Hilfe bei der Auswahl eines virtuelle
 >
 >
 
-## <a name="network-security-groups-and-subnet-design"></a>Netzwerksicherheitsgruppen und Subnetzentwurf
-Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.md) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
+
+## <a name="guidelines-for-choosing-a-subnet"></a>Richtlinien für das Auswählen eines Subnetzes
 
 ![Empfohlener Subnetzentwurf](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-### <a name="guidelines-for-choosing-a-subnet"></a>Richtlinien für das Auswählen eines Subnetzes
 * Stellen Sie Azure AD Domain Services in einem **separaten dedizierten Subnetz** in Ihrem virtuellen Azure-Netzwerk bereit.
 * Wenden Sie auf das dedizierte Subnetz für Ihre verwaltete Domäne keine Netzwerksicherheitsgruppen an. Wenn Sie Netzwerksicherheitsgruppen auf das dedizierte Netzwerk anwenden müssen, stellen Sie sicher, dass Sie **keine Ports blockieren, die für den Dienst und zum Verwalten Ihrer Domäne benötigt werden**.
 * Schränken Sie die Anzahl verfügbarer IP-Adressen im dedizierten Subnetz für Ihre verwaltete Domäne nicht zu stark ein. Diese Einschränkung verhindert, dass der Dienst zwei Domänencontroller für Ihre verwaltete Domäne zur Verfügung stellt.
@@ -64,20 +59,40 @@ Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.m
 >
 >
 
-### <a name="ports-required-for-azure-ad-domain-services"></a>Erforderliche Ports für die Azure AD Domain Services
+## <a name="ports-required-for-azure-ad-domain-services"></a>Erforderliche Ports für die Azure AD Domain Services
 Die folgenden Ports werden für Azure AD Domain Services benötigt, um Ihre verwaltete Domäne zu verwalten und zu warten. Stellen Sie sicher, dass diese Ports nicht für das Subnetz blockiert sind, in dem Sie Ihre verwaltete Domäne aktiviert haben.
 
-| Portnummer | Zweck |
-| --- | --- |
-| 443 |Synchronisierung mit Ihrem Azure AD-Mandanten |
-| 3389 |Verwaltung Ihrer Domäne |
-| 5986 |Verwaltung Ihrer Domäne |
-| 636 |LDAPS-Zugriff (sicheres LDAP) auf Ihre verwaltete Domäne |
+| Portnummer | Erforderlich | Zweck |
+| --- | --- | --- |
+| 443 | Erforderlich |Synchronisierung mit Ihrem Azure AD-Mandanten |
+| 5986 | Erforderlich | Verwaltung Ihrer Domäne |
+| 3389 | Optional | Verwaltung Ihrer Domäne |
+| 636 | Optional | LDAPS-Zugriff (sicheres LDAP) auf Ihre verwaltete Domäne |
 
-Port 5986 dient zum Ausführen von Verwaltungsaufgaben mithilfe von PowerShell-Remoting in Ihrer verwalteten Domäne. Die Domänencontroller für die verwaltete Domäne lauschen in der Regel nicht an diesem Port. Der Dienst öffnet diesen Port auf Controllern der verwalteten Domäne nur, wenn ein Verwaltungs- oder Wartungsvorgang für die verwaltete Domäne ausgeführt werden muss. Nach Abschluss des Vorgangs schließt der Dienst diesen Port auf den Controllern der verwalteten Domäne.
+**Port 443 (Synchronisierung mit Azure AD)**
+* Wird zum Synchronisieren Ihres Azure AD-Verzeichnisses mit Ihrer verwalteten Domäne verwendet.
+* Der Zugriff auf diesen Port muss in Ihrer NSG zugelassen werden. Ohne Zugriff auf diesen Port ist Ihre verwaltete Domäne nicht mit Ihrem Azure AD-Verzeichnis synchron. Benutzer können sich unter Umständen nicht anmelden, da Kennwortänderungen nicht mit Ihrer verwalteten Domäne synchronisiert werden.
+* Der eingehende Zugriff auf diesen Port kann auf IP-Adressen aus dem Azure-IP-Adressbereich beschränkt werden.
 
-Port 3389 wird für Remotedesktopverbindungen mit der verwalteten Domäne verwendet. Dieser Port bleibt in der verwalteten Domäne auch weitgehend deaktiviert. Der Dienst aktiviert diesen Port nur, wenn zur Problembehandlung eine Verbindung mit der verwalteten Domäne hergestellt werden muss. Dies erfolgt als Reaktion auf eine von Ihnen initiierte Serviceanforderung. Dieser Mechanismus wird nicht fortlaufend verwendet, da Verwaltungs- und Überwachungsaufgaben mithilfe von PowerShell-Remoting ausgeführt werden. Dieser Port wird nur in dem seltenen Fall verwendet, dass für die erweiterte Problembehandlung eine Remoteverbindung mit der verwalteten Domäne hergestellt werden muss. Der Port wird geschlossen, sobald die Problembehandlung abgeschlossen ist.
+**Port 5986 (PowerShell-Remoting)** 
+* Dient zum Ausführen von Verwaltungsaufgaben mithilfe von PowerShell-Remoting in Ihrer verwalteten Domäne.
+* Der Zugriff über diesen Port muss in Ihrer NSG zugelassen werden. Ohne Zugriff auf diesen Port kann Ihre verwaltete Domäne nicht aktualisiert, konfiguriert, gesichert oder überwacht werden.
+* Der eingehende Zugriff auf diesen Port kann auf folgende Quell-IP-Adressen beschränkt werden: 52.180.183.8, 23.101.0.70, 52.225.184.198, 52.179.126.223, 13.74.249.156, 52.187.117.83, 52.161.13.95, 104.40.156.18, 104.40.87.209, 52.180.179.108, 52.175.18.134, 52.138.68.41, 104.41.159.212, 52.169.218.0, 52.187.120.237, 52.161.110.169, 52.174.189.149, 13.64.151.161 
+* Die Domänencontroller für die verwaltete Domäne lauschen in der Regel nicht an diesem Port. Der Dienst öffnet diesen Port auf Controllern der verwalteten Domäne nur, wenn ein Verwaltungs- oder Wartungsvorgang für die verwaltete Domäne ausgeführt werden muss. Nach Abschluss des Vorgangs schließt der Dienst diesen Port auf den Controllern der verwalteten Domäne.
 
+**Port 3389 (Remotedesktop)** 
+* Wird für Remotedesktopverbindungen mit Domänencontrollern für Ihre verwaltete Domäne verwendet. 
+* Das Öffnen dieses Ports über Ihre NSG ist optional. 
+* Dieser Port bleibt in der verwalteten Domäne auch weitgehend deaktiviert. Dieser Mechanismus wird nicht fortlaufend verwendet, da Verwaltungs- und Überwachungsaufgaben mithilfe von PowerShell-Remoting ausgeführt werden. Dieser Port wird nur in dem seltenen Fall verwendet, dass Microsoft zur erweiterten Problembehandlung eine Remoteverbindung mit Ihrer verwalteten Domäne herstellen muss. Der Port wird geschlossen, sobald die Problembehandlung abgeschlossen ist.
+
+**Port 636 (Secure LDAP)**
+* Dient zum Aktivieren des sicheren LDAP-Zugriffs auf Ihre verwaltete Domäne über das Internet.
+* Das Öffnen dieses Ports über Ihre NSG ist optional. Öffnen Sie den Port nur, wenn Sie den sicheren LDAP-Zugriff über das Internet aktiviert haben.
+* Der eingehende Zugriff auf diesen Port kann auf die Quell-IP-Adressen beschränkt werden, über die Sie voraussichtlich eine sichere LDAP-Verbindung herstellen.
+
+
+## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
+Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.md) enthält eine Zugriffssteuerungsliste (Access Control List, ACL) zum Zulassen oder Verweigern von Netzwerkdatenverkehr an Ihre VM-Instanzen in einem virtuellen Netzwerk. NSGs können Subnetzen oder einzelnen VM-Instanzen innerhalb dieses Subnetzes zugeordnet werden. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die ACL-Regeln für alle VM-Instanzen in diesem Subnetz. Darüber hinaus kann Datenverkehr zu einem einzelnen virtuellen Computer weiter beschränkt werden, indem eine NSG direkt diesem virtuellen Computer zugewiesen wird.
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Beispiel-NSG für virtuelle Netzwerke in Azure AD Domain Services
 Die folgende Tabelle zeigt ein NSG-Beispiel, das Sie für ein virtuelles Netzwerk mit einer von Azure AD Domain Services verwalteten Domäne konfigurieren können. Diese Regel ermöglicht eingehenden Datenverkehr von den erforderlichen Ports, um sicherzustellen, dass Ihre verwaltete Domäne gepatcht und aktualisiert bleibt und von Microsoft überwacht werden kann. Die standardmäßige Regel „DenyAll“ gilt für sämtlichen eingehenden Datenverkehr aus dem Internet.

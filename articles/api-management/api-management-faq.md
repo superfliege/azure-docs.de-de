@@ -1,6 +1,6 @@
 ---
 title: FAQ zu Azure API Management | Microsoft Docs
-description: "In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden in Azure API Management."
+description: "In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen (FAQ) sowie Informationen zu bewährten Methoden in Azure API Management."
 services: api-management
 documentationcenter: 
 author: vladvino
@@ -12,20 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: a9740cf527e4a9811b510ad5c96e5ab769efc2d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d0072a56c2688c297d499533a125926ba9915ff9
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
 
 ## <a name="contact-us"></a>Kontakt
 * [Wie kann ich dem Team von Microsoft Azure API Management eine Frage stellen?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
-
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 * [Was bedeutet es, wenn sich ein Feature in der Vorschauphase befindet?](#what-does-it-mean-when-a-feature-is-in-preview)
@@ -62,7 +61,7 @@ Wenn sich ein Feature in der Vorschauphase befindet, bedeutet das, dass wir sehr
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>Wie kann ich die Verbindung zwischen dem API Management-Gateway und meinen Back-End-Diensten sichern?
 Sie haben verschiedene Optionen, die Verbindung zwischen dem API Management-Gateway und Ihren Back-End-Diensten zu sichern. Ihre Möglichkeiten:
 
-* Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Konfigurieren der API-Einstellungen](api-management-howto-create-apis.md#configure-api-settings).
+* Verwenden Sie die HTTP-Standardauthentifizierung. Weitere Informationen finden Sie unter [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
 * Verwenden Sie die gegenseitige SSL-Authentifizierung wie unter [Sichern von Back-End-Diensten über eine Clientzertifikatauthentifizierung in Azure API Management](api-management-howto-mutual-certificates.md) beschrieben.
 * Verwenden Sie IP-Whitelists für Ihren Back-End-Dienst. Wenn Sie über eine API Management-Instanz des Standard- oder Premium-Tarifs verfügen, bleibt die IP-Adresse des Gateways unverändert. Sie können Ihre Positivliste so konfigurieren, dass diese IP-Adresse zugelassen wird. Sie können die IP-Adresse Ihrer API Management-Instanz im Azure-Portal auf dem Dashboard abrufen.
 * Verbinden Sie Ihre API Management-Instanz mit einer Azure Virtual Network-Instanz.
@@ -102,7 +101,7 @@ Ist die Richtlinie, die Sie hinzufügen möchten, im Richtlinien-Editor abgeblen
 Für die API-Versionsverwaltung in API Management stehen verschiedene Optionen zur Verfügung:
 
 * Sie können in API Management APIs für verschiedene Versionen konfigurieren. Sie verfügen beispielsweise über zwei verschiedene APIs: MyAPIv1 und MyAPIv2. Ein Entwickler kann die Version auswählen, die er verwenden möchte.
-* Sie können Ihre API auch mit einer Dienst-URL konfigurieren, die kein Versionssegment enthält. Beispiel: https://my.api. Konfigurieren Sie dann für jede Vorlage vom Typ [URL umschreiben](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) der einzelnen Vorgänge ein Versionssegment. Sie haben beispielsweise einen Vorgang mit einer [URL-Vorlage](api-management-howto-add-operations.md#url-template) namens „/resource“ und eine Vorlage vom Typ [URL umschreiben](api-management-howto-add-operations.md#rewrite-url-template) mit dem Namen „/v1/Resource“. Sie können den Versionssegmentwert für jeden Vorgang separat ändern.
+* Sie können Ihre API auch mit einer Dienst-URL konfigurieren, die kein Versionssegment enthält. Beispiel: https://my.api. Konfigurieren Sie dann für jede Vorlage vom Typ [URL umschreiben](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) der einzelnen Vorgänge ein Versionssegment. 
 * Wenn Sie ein Standardversionssegment in der Dienst-URL der API beibehalten möchten, können Sie für ausgewählte Vorgänge eine Richtlinie festlegen, die unter Verwendung der Richtlinie [Set backend service](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) (Back-End-Dienst festlegen) den Anforderungspfad für das Back-End ändert.
 
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>Wie richte ich mehrere Umgebungen in einer einzelnen API ein?

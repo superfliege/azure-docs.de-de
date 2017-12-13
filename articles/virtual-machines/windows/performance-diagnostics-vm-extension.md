@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 85d4764534c77ea0e4d999e249abe456d0234d75
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: d9384af2cf1d8b3f55f9ec2316046536634c124e
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
@@ -46,7 +46,6 @@ Der folgende JSON-Code zeigt das Schema für die Azure-Erweiterung zur Leistungs
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -72,13 +71,11 @@ Der folgende JSON-Code zeigt das Schema für die Azure-Erweiterung zur Leistungs
 |typeHandlerVersion|1,0|Version des Erweiterungshandlers
 |performanceScenario|basic|Leistungsszenario, für das Daten erfasst werden sollen. Gültige Werte sind: **basic**, **vmslow**, **azurefiles** und **custom**.
 |traceDurationInSeconds|300|Dauer der Ablaufverfolgungen, wenn Optionen für die Ablaufverfolgung ausgewählt wurden.
-|DiagnosticsTrace|d|Option zum Aktivieren der Diagnoseablaufverfolgung. Gültige Werte sind **d** oder ein leerer Wert. Wenn Sie diese Ablaufverfolgung nicht erfassen möchten, lassen Sie den Wert leer.
 |perfCounterTrace|p|Option zum Aktivieren der Ablaufverfolgung für Leistungsindikatoren. Gültige Werte sind **p** oder ein leerer Wert. Wenn Sie diese Ablaufverfolgung nicht erfassen möchten, lassen Sie den Wert leer.
 |networkTrace|n|Option zum Aktivieren von Netmon-Ablaufverfolgung. Gültige Werte sind **n** oder ein leerer Wert. Wenn Sie diese Ablaufverfolgung nicht erfassen möchten, lassen Sie den Wert leer.
 |xperfTrace|x|Option zum Aktivieren der XPerf-Ablaufverfolgung. Gültige Werte sind **x** oder ein leerer Wert. Wenn Sie diese Ablaufverfolgung nicht erfassen möchten, lassen Sie den Wert leer.
 |storPortTrace|s|Option zum Aktivieren der StorPort-Ablaufverfolgung. Gültige Werte sind „s“ oder ein leerer Wert. Wenn Sie diese Ablaufverfolgung nicht erfassen möchten, lassen Sie den Wert leer.
 |srNumber|123452016365929|Supportticketnummer, sofern verfügbar. Lassen Sie den Wert andernfalls leer.
-|requestTimeUtc|9/2/2017 11:06:00 PM|Aktueller Wert für Datum und Uhrzeit in UTC. Sie müssen diesen Wert nicht angeben, wenn Sie das Portal verwenden, um diese Erweiterung zu installieren.
 |storageAccountName|mystorageaccount|Der Name des Speicherkontos zum Speichern der Diagnoseprotokolle und Ergebnisse.
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|Schlüssel für das Speicherkonto
 
@@ -99,12 +96,12 @@ Führen Sie die folgenden Schritte aus, um die VM-Erweiterung auf virtuellen Win
 5. Geben Sie die Parameterwerte für die Installation an, und klicken Sie auf **OK**, um die Erweiterung zu installieren. Weitere Informationen zu den unterstützten Szenarien für die Problembehandlung finden Sie [hier](how-to-use-perfInsights.md#supported-troubleshooting-scenarios). 
 
     ![Installieren der Erweiterung](media/performance-diagnostics-vm-extension/install-the-extension.png)
-6. Sobald die Installation erfolgreich abgeschlossen wurde, werden Sie in einer Meldung über den Erfolg der Bereitstellung informiert.
+6. Sobald die Installation abgeschlossen wurde, werden Sie in einer Meldung über den Erfolg der Bereitstellung informiert.
 
     ![Meldung über die erfolgreiche Bereitstellung](media/performance-diagnostics-vm-extension/provisioning-succeeded-message.png)
 
     > [!NOTE]
-    > Die Ausführung der Erweiterung wird gestartet, sobald die Bereitstellung erfolgreich war. Es dauert einige Minuten oder weniger, um die Ausführung für das Szenario „basic“ abzuschließen. Für andere Szenarien wird die Dauer bei der Installation angegeben.
+    > Die Ausführung der Erweiterung wird gestartet, sobald die Bereitstellung erfolgreich war. Es dauert höchstens einige Minuten, die Ausführung für das einfache Szenario abzuschließen. Für andere Szenarien wird die Dauer bei der Installation angegeben.
 
 ## <a name="remove-the-extension"></a>Entfernen der Erweiterung
 Um die Erweiterung von einem virtuellen Computer zu entfernen, führen Sie die folgenden Schritte aus:
@@ -153,10 +150,6 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
       "type": "int",
     "defaultValue": 300
     },
-    "diagnosticsTrace": {
-      "type": "string",
-      "defaultValue": "d"
-    },
     "perfCounterTrace": {
       "type": "string",
       "defaultValue": "p"
@@ -192,7 +185,6 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
         "settings": {
             "performanceScenario": "[parameters('performanceScenario')]",
                   "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "diagnosticsTrace": "[parameters('diagnosticsTrace')]",
                   "perfCounterTrace": "[parameters('perfCounterTrace')]",
                   "networkTrace": "[parameters('networkTrace')]",
                   "xperfTrace": "[parameters('xperfTrace')]",
@@ -216,8 +208,8 @@ Mit dem Befehl `Set-AzureRmVMExtension` können Sie die Azure-VM-Erweiterung zur
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario" = "basic"; "traceDurationInSeconds" = 300; "diagnosticsTrace" = "d"; "perfCounterTrace" = "p"; "networkTrace" = ""; "xperfTrace" = ""; "storPortTrace" = ""; "srNumber" = ""; "requestTimeUtc" = "2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName" = "mystorageaccount" ; "storageAccountKey" = "mystoragekey"}
+$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -231,7 +223,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
 ````
 
 ## <a name="information-on-the-data-captured"></a>Informationen zu den erfassten Daten
-Das Tool PerfInsights erfasst abhängig vom ausgewählten Szenario verschiedene Protokolle, die Konfiguration, Diagnosedaten usw. Weitere Informationen zu den gesammelten Daten in den einzelnen Szenarien finden Sie in der [Dokumentation zu PerfInsights](http://aka.ms/perfinsights).
+Das Tool PerfInsights erfasst abhängig vom ausgewählten Szenario verschiedene Protokolle, die Konfiguration, Diagnosedaten usw. Weitere Informationen zu den in den einzelnen Szenarien gesammelten Daten finden Sie in der [Dokumentation zu PerfInsights](http://aka.ms/perfinsights).
 
 ## <a name="view-and-share-the-results"></a>Anzeigen und Freigeben der Ergebnisse
 

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2017
+ms.date: 11/03/2017
 ms.author: roalexan
-ms.openlocfilehash: 53a6b18fb74db46ccb66c7c70851a9bf364e927c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2c9f53de1abd2aea5fabbefecc5bbb144148a7b
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="learn-how-to-manage-azureml-web-services-using-api-management"></a>Erfahren Sie, wie Sie Azure ML-Webdienste mithilfe von API Management verwalten
 ## <a name="overview"></a>Übersicht
@@ -39,94 +39,133 @@ Zum Durcharbeiten dieses Leitfadens benötigen Sie Folgendes:
 * Den Arbeitsbereich, den Dienst und den API-Schlüssel für ein als Webdienst bereitgestelltes Azure ML-Experiment. Klicken Sie [hier](create-experiment.md) , um Informationen zum Erstellen eines Azure ML-Experiments zu erhalten. Klicken Sie [hier](publish-a-machine-learning-web-service.md) , um Informationen zum Bereitstellen eines Azure ML-Experiments als Webdienst zu erhalten. Alternativ dazu enthält Anhang A Anweisungen zum Erstellen und Testen eines einfachen Azure ML-Experiments und zum Bereitstellen dieses Experiments als Webdienst.
 
 ## <a name="create-an-api-management-instance"></a>Erstellen einer API Management-Instanz
-Im Folgenden finden Sie die Schritte zur Verwendung von API Management zur Verwaltung Ihres Azure ML-Webdiensts. Erstellen Sie zuerst eine Instanz des Diensts. Melden Sie sich beim [klassischen Portal](https://manage.windowsazure.com/) an, und klicken Sie auf **Neu** > **App Services** > **API Management** > **Erstellen**.
 
-![create-instance](./media/manage-web-service-endpoints-using-api-management/create-instance.png)
+Sie können Ihren Azure Machine Learning-Webdienst mit einer API Management-Instanz verwalten.
 
-Geben Sie eine eindeutige **URL**ein. In diesem Leitfaden wird **demoazureml** verwendet – Sie müssen etwas anderes eingeben. Wählen Sie die gewünschten Werte für **Abonnement** und **Region** für Ihre Dienstinstanz aus. Treffen Sie Ihre Auswahl und klicken Sie auf Weiter.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+2. Wählen Sie **+ Ressource erstellen**.
+3. Geben Sie im Suchfeld „API Management“ ein, und wählen Sie dann die Ressource „API Management“ aus.
+4. Klicken Sie auf **Erstellen**.
+5. Der Wert **Name** wird verwendet, um eine eindeutige URL zu erstellen (in diesem Beispiel „demoazureml“).
+6. Wählen Sie **Abonnement**, **Ressourcengruppe** und **Region** für Ihre Dienstinstanz aus.
+7. Geben Sie einen Wert für **Name der Organisation** ein (in diesem Beispiel „demoazureml“).
+8. Geben Sie unter **Administrator-E-Mail** Ihre Adresse ein. Diese E-Mail-Adresse wird für Benachrichtigungen des API Management-Systems verwendet.
+9. Klicken Sie auf **Erstellen**.
 
-![create-service-1](./media/manage-web-service-endpoints-using-api-management/create-service-1.png)
+Es kann bis zu 30 Minuten dauern, bis ein neuer Dienst erstellt wird.
 
-Geben Sie einen Wert für den **Organisationsnamen**ein. In diesem Leitfaden wird **demoazureml** verwendet – Sie müssen etwas anderes eingeben. Geben Sie Ihre E-Mail-Adresse in das Feld **Administrator-E-Mail** ein. Diese E-Mail-Adresse wird für Benachrichtigungen vom API Management-System verwendet.
+![create-service](./media/manage-web-service-endpoints-using-api-management/create-service.png)
 
-![create-service-2](./media/manage-web-service-endpoints-using-api-management/create-service-2.png)
-
-Aktivieren Sie das Kontrollkästchen, um Ihre Dienstinstanz zu erstellen. *Die Erstellung des neuen Diensts dauert bis zu 30 Minuten.*
 
 ## <a name="create-the-api"></a>Erstellen der API
 Nach der Erstellung der Dienstinstanz können Sie die API erstellen. Eine API besteht aus einem Satz von Vorgängen, die aus Clientanwendungen aufgerufen werden können. API-Operationen funktionieren als Proxys für vorhandene Webdienste. In diesem Leitfaden werden APIs erstellt, die per Proxy an die vorhandenen Azure ML-Webdienste "RRS" und "BES" weiterleiten.
 
-APIs werden im API-Herausgeberportal erstellt und konfiguriert, das über das klassische Azure-Portal erreichbar ist. Um auf das Herausgeberportal zuzugreifen, wählen Sie Ihre Dienstinstanz aus.
+Gehen Sie wie folgt vor, um die API zu erstellen:
 
-![select-service-instance](./media/manage-web-service-endpoints-using-api-management/select-service-instance.png)
+1. Öffnen Sie im Azure-Portal die Dienstinstanz, die Sie gerade erstellt haben.
+2. Wählen Sie im linken Navigationsbereich die Option **APIs**.
 
-Klicken Sie im klassischen Azure-Portal für Ihren API Management-Dienst auf **Verwalten** .
+   ![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management.png)
 
-![manage-service](./media/manage-web-service-endpoints-using-api-management/manage-service.png)
+1. Klicken Sie auf **API hinzufügen**.
+2. Geben Sie unter **Web-API-Name** einen Namen ein (in diesem Beispiel „AzureML Demo API“).
+3. Geben Sie unter **Webdienst-URL** den Wert „`https://ussouthcentral.services.azureml.net`“ ein.
+4. Geben Sie ein „URL-Suffix der Web-API“ ein. Diese Angabe wird zum letzten Teil der URL, die von Kunden zum Senden von Anforderungen an die Dienstinstanz (in diesem Beispiel „azureml-demo“) verwendet wird.
+5. Wählen Sie für **URL-Schema für Web-API** die Option **HTTPS**.
+6. Wählen Sie für **Produkte** die Option **Starter**.
+7. Klicken Sie auf **Speichern**.
 
-Klicken Sie im Menü **API Management** auf der linken Seite auf **APIs**, und klicken Sie anschließend auf **API hinzufügen**.
-
-![api-management-menu](./media/manage-web-service-endpoints-using-api-management/api-management-menu.png)
-
-Geben Sie **Azure ML-Demo-API** als **Web-API-Namen** ein. Geben Sie **https://ussouthcentral.services.azureml.net** als **Webdienst-URL** ein. Geben Sie **azureml-demo** als **Web-API-URL-Suffix** ein. Aktivieren Sie **HTTPS** als **Web-API-URL-Schema**. Wählen Sie **Starter** als **Produkte** aus. Wenn Sie fertig sind, klicken Sie auf **Speichern**, um die API zu erstellen.
-
-![add-new-api](./media/manage-web-service-endpoints-using-api-management/add-new-api.png)
 
 ## <a name="add-the-operations"></a>Hinzufügen der Vorgänge
-Klicken Sie auf **Vorgang hinzufügen** , um Vorgänge zu dieser API hinzuzufügen.
 
-![add-operation](./media/manage-web-service-endpoints-using-api-management/add-operation.png)
+Operationen werden einer API im Herausgeberportal hinzugefügt und in diesem konfiguriert. Klicken Sie zum Zugreifen auf das Herausgeberportal im Azure-Portal für Ihren API Management-Dienst auf **Herausgeberportal**, wählen Sie **APIs** und **Vorgänge**, und klicken Sie dann auf **Vorgang hinzufügen**.
+
+![add-operation](./media/manage-web-service-endpoints-using-api-management/add-an-operation.png)
 
 Das Fenster **Neue Operation** wird angezeigt, und die Registerkarte **Signatur** ist standardmäßig ausgewählt.
 
 ## <a name="add-rrs-operation"></a>Hinzufügen eines RRS-Vorgangs
-Erstellen Sie zunächst einen Vorgang für den Azure ML-RRS-Dienst. Wählen Sie **POST** als **HTTP-Verb** aus. Geben Sie **/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}** als **URL-Vorlage** ein. Geben Sie **RRS Execute** als **Anzeigenamen** ein.
+Erstellen Sie zunächst einen Vorgang für den Azure ML-RRS-Dienst:
 
-![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
+1. Wählen Sie unter **HTTP-Verb** die Option **POST**.
+2. Geben Sie unter **URL-Vorlage** den Text „`/workspaces/{workspace}/services/{service}/execute?api-version={apiversion}&details={details}`“ ein.
+3. Geben Sie einen **Anzeigenamen** ein (in diesem Beispiel „RRS Execute“).
 
-Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus. Klicken Sie auf **Speichern** , um diesen Vorgang zu speichern.
+   ![add-rrs-operation-signature](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-signature.png)
 
-![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
+4. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus.
+5. Klicken Sie auf **Speichern** , um diesen Vorgang zu speichern.
+
+   ![add-rrs-operation-response](./media/manage-web-service-endpoints-using-api-management/add-rrs-operation-response.png)
 
 ## <a name="add-bes-operations"></a>Hinzufügen von BES-Vorgängen
-Für die BES-Vorgänge werden keine Screenshots bereitgestellt, da die Vorgehensweise dem Hinzufügen des RRS-Vorgangs sehr ähnlich ist.
+
+> [!NOTE]
+> Für die BES-Vorgänge werden hier keine Screenshots bereitgestellt, da die Vorgehensweise dem Hinzufügen des RRS-Vorgangs sehr ähnlich ist.
 
 ### <a name="submit-but-not-start-a-batch-execution-job"></a>Senden eines Batchausführungsauftrags (ohne ihn jedoch zu starten)
-Klicken Sie auf **Vorgang hinzufügen** , um der API den Azure ML-BES-Vorgang hinzuzufügen. Wählen Sie **POST** als **HTTP-Verb** aus. Geben Sie **/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}** als **URL-Vorlage** ein. Geben Sie **BES Submit** als **Anzeigenamen** ein. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus. Klicken Sie auf **Speichern** , um diesen Vorgang zu speichern.
+
+1. Klicken Sie auf **Vorgang hinzufügen**, um der API einen BES-Vorgang hinzuzufügen.
+2. Wählen Sie unter **HTTP-Verb** die Option **POST**.
+3. Geben Sie unter **URL-Vorlage** den Text „`/workspaces/{workspace}/services/{service}/jobs?api-version={apiversion}`“ ein.
+4. Geben Sie einen **Anzeigenamen** ein (in diesem Beispiel „BES Submit“).
+5. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus.
+6. Klicken Sie auf **Speichern**.
 
 ### <a name="start-a-batch-execution-job"></a>Starten eines Batchausführungsauftrags
-Klicken Sie auf **Vorgang hinzufügen** , um der API den Azure ML-BES-Vorgang hinzuzufügen. Wählen Sie **POST** als **HTTP-Verb** aus. Geben Sie **/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}** als **URL-Vorlage** ein. Geben Sie **BES Start** als **Anzeigenamen** ein. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus. Klicken Sie auf **Speichern** , um diesen Vorgang zu speichern.
+
+1. Klicken Sie auf **Vorgang hinzufügen**, um der API einen BES-Vorgang hinzuzufügen.
+2. Wählen Sie unter **HTTP-Verb** die Option **POST**.
+3. Geben Sie unter **HTTP-Verb** den Text „`/workspaces/{workspace}/services/{service}/jobs/{jobid}/start?api-version={apiversion}`“ ein.
+4. Geben Sie einen **Anzeigenamen** ein (in diesem Beispiel „BES Start“).
+6. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus.
+7. Klicken Sie auf **Speichern**.
 
 ### <a name="get-the-status-or-result-of-a-batch-execution-job"></a>Abrufen des Status oder des Ergebnisses eines Batchausführungsauftrags
-Klicken Sie auf **Vorgang hinzufügen** , um der API den Azure ML-BES-Vorgang hinzuzufügen. Wählen Sie **GET** als **HTTP-Verb** aus. Geben Sie **/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}** als **URL-Vorlage** ein. Geben Sie **BES Status** als **Anzeigenamen** ein. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus. Klicken Sie auf **Speichern** , um diesen Vorgang zu speichern.
+
+1. Klicken Sie auf **Vorgang hinzufügen**, um der API einen BES-Vorgang hinzuzufügen.
+2. Wählen Sie unter **HTTP-Verb** die Option **GET**.
+3. Geben Sie unter **URL-Vorlage** den Text „`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`“ ein.
+4. Geben Sie einen **Anzeigenamen** ein (in diesem Beispiel „BES Status“).
+6. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus.
+7. Klicken Sie auf **Speichern**.
 
 ### <a name="delete-a-batch-execution-job"></a>Löschen eines Batchausführungsauftrags
-Klicken Sie auf **Vorgang hinzufügen** , um der API den Azure ML-BES-Vorgang hinzuzufügen. Wählen Sie **DELETE** als **HTTP-Verb** aus. Geben Sie **/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}** als **URL-Vorlage** ein. Geben Sie **BES Delete** als **Anzeigenamen** ein. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus. Klicken Sie auf **Speichern** , um diesen Vorgang zu speichern.
 
-## <a name="call-an-operation-from-the-developer-portal"></a>Aufrufen einer Operation aus dem Entwicklerportal
-Operationen können direkt aus dem Entwicklerportal aufgerufen werden. Dies ist ein einfacher Weg, um die Operationen einer API anzuzeigen und zu testen. In diesem Schritt rufen Sie die **RRS Execute**-Methode auf, die der **Azure ML-Demo-API** hinzugefügt wurde. Klicken Sie im klassischen Portal im Menü oben rechts auf **Entwicklerportal**.
+1. Klicken Sie auf **Vorgang hinzufügen**, um der API einen BES-Vorgang hinzuzufügen.
+2. Wählen Sie **DELETE** als **HTTP-Verb** aus.
+3. Geben Sie unter **URL-Vorlage** den Text „`/workspaces/{workspace}/services/{service}/jobs/{jobid}?api-version={apiversion}`“ ein.
+4. Geben Sie einen **Anzeigenamen** ein (in diesem Beispiel „BES Delete“).
+5. Klicken Sie links auf **Antworten** > **HINZUFÜGEN**, und wählen Sie **200 OK** aus.
+6. Klicken Sie auf **Speichern**.
 
-![developer-portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
+## <a name="call-an-operation-from-the-developer-portal"></a>Aufrufen eines Vorgangs über das Entwicklerportal
 
-Klicken Sie im Hauptmenü auf **APIs** und anschließend auf **Azure ML-Demo-API**, um die verfügbaren Vorgänge anzuzeigen.
+Operationen können direkt aus dem Entwicklerportal aufgerufen werden. Dies ist ein einfacher Weg, um die Operationen einer API anzuzeigen und zu testen. In diesem Schritt rufen Sie die **RRS Execute**-Methode auf, die der **Azure ML-Demo-API** hinzugefügt wurde. 
 
-![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
+1. Klicken Sie auf **Entwicklerportal**.
 
-Wählen Sie als Vorgang **RRS Execute** aus. Klicken Sie auf **Testen**.
+   ![developer-portal](./media/manage-web-service-endpoints-using-api-management/developer-portal.png)
 
-![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
+2. Klicken Sie im Hauptmenü auf **APIs** und anschließend auf **Azure ML-Demo-API**, um die verfügbaren Vorgänge anzuzeigen.
 
-Geben Sie als Anforderungsparameter Ihren **Arbeitsbereich** und **Dienst** sowie **2.0** als **API-Version** und **true** für die **Details** ein. Sie finden Ihren **Arbeitsbereich** und **Dienst** im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
+   ![demoazureml-api](./media/manage-web-service-endpoints-using-api-management/demoazureml-api.png)
 
-Um den Anforderungsheader festzulegen, klicken Sie auf **Header hinzufügen**, und geben Sie **Content-Type** und **application/json** ein. Klicken Sie anschließend auf **Header hinzufügen**, und geben Sie **Authorization** und **Bearer<YOUR AZUREML SERVICE API-KEY>** ein. Sie finden Ihren **API-Schlüssel** im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
+3. Wählen Sie als Vorgang **RRS Execute** aus. Klicken Sie auf **Testen**.
 
-Geben Sie **{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": "This is a good day"}}, "GlobalParameters": {}}** als Anforderungstext ein.
+   ![try-it](./media/manage-web-service-endpoints-using-api-management/try-it.png)
 
-![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+4. Geben Sie als **Anforderungsparameter** Ihren **Arbeitsbereich** und **Dienst** sowie „2.0“ als **apiversion** und „true“ für **details** ein. Sie finden Ihren **Arbeitsbereich** und **Dienst** im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
 
-Klicken Sie auf **Send**.
+   Klicken Sie für **Anforderungsheader** auf **Header hinzufügen**, und geben Sie „Content-Type“ und „application/json“ ein. Klicken Sie erneut auf **Header hinzufügen**, und geben Sie „Authorization“ und „Bearer *\<Ihr API-Schlüssel des Diensts\>*“ ein. Sie finden Ihren API-Schlüssel im Azure ML-Webdienstdashboard (siehe **Testen des Webdiensts** in Anhang A).
 
-![Send](./media/manage-web-service-endpoints-using-api-management/send.png)
+   Geben Sie unter **Anforderungstext** den Text `{"Inputs": {"input1": {"ColumnNames": ["Col2"], "Values": [["This is a good day"]]}}, "GlobalParameters": {}}` ein.
+
+   ![azureml-demo-api](./media/manage-web-service-endpoints-using-api-management/azureml-demo-api.png)
+
+5. Klicken Sie auf **Send**.
+
+   ![Send](./media/manage-web-service-endpoints-using-api-management/send.png)
 
 Nach dem Aufruf der Operation zeigt das Entwicklerportal die **Angeforderte URL** vom Back-End-Dienst, den **Antwortstatus**, die **Antwortheader** sowie den **Antwortinhalt** an.
 

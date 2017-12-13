@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/15/2017
+ms.date: 12/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: e7007bd6cca24dc4c2573fb274cecbf88ecfa374
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab – Vorschau
 
@@ -41,20 +41,22 @@ Weitere Informationen zu Gerätezwillingen und Tags finden Sie unter [Verstehen 
 ## <a name="create-a-deployment"></a>Erstellen einer Bereitstellung
 
 1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
-1. Klicken Sie auf **IoT Edge (Vorschauversion)**.
-1. Klicken Sie auf **Edge-Bereitstellung erstellen**.
+1. Wählen Sie **IoT Edge (Vorschau)** aus.
+1. Wählen Sie **IoT Edge-Bereitstellung hinzufügen** aus.
 
 Zum Erstellen einer Bereitstellung müssen fünf Schritte ausgeführt werden. Diese werden in den folgenden Abschnitten exemplarisch beschrieben. 
 
-### <a name="step-1-label-deployment"></a>Schritt 1: Bezeichnen der Bereitstellung
+### <a name="step-1-name-and-label"></a>Schritt 1: Name und Bezeichnung
 
-1. Geben Sie Ihrer Bereitstellung eine eindeutige ID. Verwenden Sie dabei weder Leerzeichen noch die folgenden ungültigen Zeichen: `& ^ [ ] { } \ | " < > /`.
+1. Weisen Sie Ihrer Bereitstellung einen eindeutigen Namen zu. Verwenden Sie dabei weder Leerzeichen noch die folgenden ungültigen Zeichen: `& ^ [ ] { } \ | " < > /`.
 1. Fügen Sie Bezeichnungen hinzu, um Ihre Bereitstellungen im Blick zu behalten. Bezeichnungen sind **Name-****Wert**-Paare, die Ihre Bereitstellung beschreiben. Beispiel: `HostPlatform, Linux` oder `Version, 3.0.1`.
 1. Klicken Sie auf **Weiter**, um mit Schritt 2 fortzufahren. 
 
-### <a name="step-2-add-modules"></a>Schritt 2: Hinzufügen von Modulen
+### <a name="step-2-add-modules-optional"></a>Schritt 2: Hinzufügen von Modulen (optional)
 
 Es gibt zwei Arten von Modulen, die Sie einer Bereitstellung hinzufügen können. Das erste Modul basiert dabei auf einem Azure-Dienst wie Storage Account oder Stream Analytics. Das zweite dagegen entstammt Ihrem eigenen Code. Sie können einer Bereitstellung mehrere Module beider Typen hinzufügen. 
+
+Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle vorhandenen Module von den Geräten entfernt. 
 
 >[!NOTE]
 >Azure Machine Learning und Azure Functions unterstützen die automatisierte Azure-Dienstbereitstellung noch nicht. Verwenden Sie die benutzerdefinierte Modulbereitstellung, um diese Dienste manuell zu Ihrer Bereitstellung hinzuzufügen. 
@@ -106,7 +108,7 @@ Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten 
 So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwachen die Geräte, die diese ausführen:
 
 1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
-1. Klicken Sie auf **IoT Edge (Vorschauversion)**.
+1. Wählen Sie **IoT Edge (Vorschau)** aus.
 1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
 
    ![Anzeigen von IoT Edge-Bereitstellungen][1]
@@ -138,7 +140,7 @@ Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpas
 Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen: 
 
 1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
-1. Klicken Sie auf **IoT Edge (Vorschauversion)**.
+1. Wählen Sie **IoT Edge (Vorschau)** aus.
 1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
 
    ![Anzeigen von IoT Edge-Bereitstellungen][1]
@@ -156,7 +158,7 @@ Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen:
 Wenn Sie eine Bereitstellung löschen, übernehmen alle Geräte die Bereitstellung mit der jeweils nächsthöheren Priorität. Wenn Ihre Geräte die Zielbedingung keiner anderen Bereitstellung erfüllen, werden die Module beim Löschen der Bereitstellung nicht entfernt. 
 
 1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
-1. Klicken Sie auf **IoT Edge (Vorschauversion)**.
+1. Wählen Sie **IoT Edge (Vorschau)** aus.
 1. Wählen Sie **IoT Edge-Bereitstellungen** aus. 
 
    ![Anzeigen von IoT Edge-Bereitstellungen][1]

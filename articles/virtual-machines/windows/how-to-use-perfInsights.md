@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 36e204c73e62e950c3f40eab7e1ce6bccd7abd83
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: bb4c21456643532df040df4fcd5f4fa1a4f48d2c
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="how-to-use-perfinsights"></a>Verwenden von PerfInsights 
 
@@ -30,7 +30,7 @@ Sie sollten dieses Skript ausführen, bevor Sie ein Support-Ticket für VM-Leist
 
 PerfInsights kann verschiedene Arten von Informationen erfassen und analysieren, die in besonderen Szenarien gruppiert sind.
 
-### <a name="collect-disk-configuration"></a>Erfassen der Datenträgerkonfiguration 
+### <a name="collect-basic-configuration"></a>Erfassen der grundlegenden Konfiguration 
 
 Dieses Szenario erfasst die Datenträgerkonfiguration und andere wichtige Informationen einschließlich folgender Elemente:
 
@@ -57,7 +57,7 @@ Dies ist eine passive Sammlung von Informationen, die das System nicht beeinträ
 >[!Note]
 >Dieses Szenario ist automatisch in jedem der folgenden Szenarien enthalten.
 
-### <a name="benchmarkstorage-performance-test"></a>Vergleichs-/Speicherleistungstest
+### <a name="benchmarking"></a>Benchmarktests
 
 Dieses Szenario führt den [DiskSpd](https://github.com/Microsoft/diskspd)-Vergleichstest (IOPS und MBit/s) für alle Laufwerke aus, die dem virtuellen Computer angefügt sind. 
 
@@ -65,11 +65,11 @@ Dieses Szenario führt den [DiskSpd](https://github.com/Microsoft/diskspd)-Vergl
 > Dieses Szenario kann sich auf das System auswirken und sollte nicht auf einem Live-Produktionssystem ausgeführt werden. Falls erforderlich, führen Sie dieses Szenario in einem dedizierten Wartungsfenster aus, um Probleme zu vermeiden. Eine erhöhte Workload, die durch eine Ablaufverfolgung oder einen Vergleichstest verursacht wird, könnte die Leistung Ihres virtuellen Computers beeinträchtigen.
 >
 
-### <a name="general-vm-slow-analysis"></a>Allgemeine VM Slow-Analyse 
+### <a name="slow-vm-analysis"></a>Analyse bei langsamer VM 
 
 Dieses Szenario führt eine [Leistungsindikator](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)-Ablaufverfolgung mithilfe der Indikatoren aus, die in der Datei „Generalcounters.txt“ angegeben werden. Wenn der virtuelle Computer als Server identifiziert wird, auf dem SQL Server ausgeführt wird, wird eine Leistungsindikator-Ablaufverfolgung mithilfe der in der Datei „Sqlcounters.txt“ gefundenen Indikatoren ausgeführt. Sie beinhaltet auch Leistungsdiagnosedaten.
 
-### <a name="vm-slow-analysis-and-benchmark"></a>VM Slow-Analyse und Benchmark
+### <a name="slow-vm-analysis-and-benchmarking"></a>Analyse bei langsamer VM und Benchmarktests
 
 Dieses Szenario führt eine [Leistungsindikator](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx)-Ablaufverfolgung aus, der ein [DiskSpd](https://github.com/Microsoft/diskspd)-Vergleichstest folgt. 
 
@@ -99,9 +99,9 @@ Dieses Szenario führt eine besondere Leistungsindikatorerfassung zusammen mit e
 |              | Durchschn. Schreibwarteschlangen-Länge       |
 |              | Durchschn. Datenwarteschlangen-Länge        |
 
-### <a name="custom-configuration"></a>Benutzerdefinierte Konfiguration 
+### <a name="custom-slow-vm-analysis"></a>Benutzerdefinierte Analyse bei langsamer VM 
 
-Wenn Sie eine benutzerdefinierte Konfiguration ausführen, führen Sie alle Ablaufverfolgungen (Leistungsdiagnose, Leistungsindikator, Xperf, Netzwerk, StorPort) parallel aus, je nachdem, wie viele verschiedene Ablaufverfolgungen ausgewählt sind. Nach Abschluss der Ablaufverfolgung führt das Tool den DiskSpd-Vergleichstest aus, wenn diese Option ausgewählt ist. 
+Wenn Sie eine benutzerdefinierte Analyse bei einer langsamen VM durchführen, führen Sie alle Ablaufverfolgungen (Leistungsindikator, Xperf, Netzwerk, StorPort) parallel aus. Die Anzahl richtet sich jeweils danach, wie viele verschiedene Ablaufverfolgungen ausgewählt sind. Nach Abschluss der Ablaufverfolgung führt das Tool den DiskSpd-Vergleichstest aus, wenn diese Option ausgewählt ist. 
 
 > [!Note]
 > Dieses Szenario kann sich auf das System auswirken und sollte nicht auf einem Live-Produktionssystem ausgeführt werden. Falls erforderlich, führen Sie dieses Szenario in einem dedizierten Wartungsfenster aus, um Probleme zu vermeiden. Eine erhöhte Workload, die durch eine Ablaufverfolgung oder einen Vergleichstest verursacht wird, könnte die Leistung Ihres virtuellen Computers beeinträchtigen.
@@ -113,7 +113,7 @@ Informationen zu Windows-VM, Datenträger- oder Speicherpoolkonfiguration, Leist
 
 |Gesammelte Daten                              |  |  | Leistungsszenarien |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                              | Erfassen der Datenträgerkonfiguration | Vergleichs-/Speicherleistungstest | Allgemeine VM Slow-Analyse | VM Slow-Analyse und Benchmark | Azure Files-Analyse | Benutzerdefinierte Konfiguration |
+|                              | Erfassen der grundlegenden Konfiguration | Benchmarktests | Analyse bei langsamer VM | Analyse bei langsamer VM und Benchmarktests | Azure Files-Analyse | Benutzerdefinierte Analyse bei langsamer VM |
 | Informationen aus Ereignisprotokollen      | Ja                        | Ja                                | Ja                      | Ja                            | Ja                  | Ja                  |
 | Systeminformationen               | Ja                        | Ja                                | Ja                      | Ja                            | Ja                  | Ja                  |
 | Volumezuordnung                       | Ja                        | Ja                                | Ja                      | Ja                            | Ja                  | Ja                  |
@@ -127,7 +127,7 @@ Informationen zu Windows-VM, Datenträger- oder Speicherpoolkonfiguration, Leist
 | Network Configuration            | Ja                        | Ja                                | Ja                      | Ja                            | Ja                  | Ja                  |
 | Firewall-Konfiguration           | Ja                        | Ja                                | Ja                      | Ja                            | Ja                  | Ja                  |
 | SQL Server-Konfiguration         | Ja                        | Ja                                | Ja                      | Ja                            | Ja                  | Ja                  |
-| Leistungsdiagnose-Ablaufverfolgungen * |                            |                                    | Ja                      |                                |                      | Ja                  |
+| Leistungsdiagnose-Ablaufverfolgungen * | Ja                        | Ja                                | Ja                      |                                | Ja                  | Ja                  |
 | Leistungsindikator-Ablaufverfolgung **     |                            |                                    |                          |                                |                      | Ja                  |
 | SMB-Indikatorablaufverfolgung **             |                            |                                    |                          |                                | Ja                  |                      |
 | SQL Server-Indikatorablaufverfolgung **      |                            |                                    |                          |                                |                      | Ja                  |
@@ -180,9 +180,9 @@ DiskSpd-E/A-Workloadtests [Betriebssystemdatenträger (Schreibzugriff) und Pooll
 
 **Mögliche Probleme, wenn Sie das Skript für Produktions-VMs ausführen:**
 
-1.  Das Skript könnte sich negativ auf die Leistung des virtuellen Computers auswirken, wenn es zusammen mit dem Szenario „Vergleichstest“ oder „Benutzerdefiniert“ verwendet wird, das mit XPerf oder DiskSpd konfiguriert wird. Bei Ausführung des Skripts in einer Produktionsumgebung ist Vorsicht geboten.
+1.  Bei Verwendung von Benchmarktestszenarien oder des Szenarios „Benutzerdefinierte Analyse bei langsamer VM“, das für die Verwendung von XPerf oder DiskSpd konfiguriert ist, kann das Skript die Leistung der VM negativ beeinträchtigen. Es ist nicht zu empfehlen, diese Szenarien in einer Produktionsumgebung ohne Überwachung durch einen CSS-Techniker durchzuführen.
 
-2.  Wenn Sie das Skript zusammen mit dem Szenario „Vergleichstest“ oder „Benutzerdefiniert“ verwenden, das mit DiskSpd konfiguriert wird, stellen Sie sicher, dass keine andere Hintergrundaktivität die E/A-Workload auf den getesteten Datenträgern beeinträchtigt.
+2.  Stellen Sie bei Verwendung von Benchmarktestszenarien oder des Szenarios „Benutzerdefinierte Analyse bei langsamer VM“, das für die Verwendung von DiskSpd konfiguriert ist, sicher, dass die E/A-Workload auf den getesteten Datenträgern nicht durch eine andere Hintergrundaktivität beeinträchtigt wird.
 
 3.  Standardmäßig verwendet das Skript das temporäre Speicherlaufwerk zum Speichern von Daten. Wenn die Ablaufverfolgung für einen längeren Zeitraum aktiviert bleibt, könnte die Menge der gesammelten Daten relevant sein. Dies kann den verfügbaren Speicher auf dem temporären Datenträger reduzieren und sich damit auf jede Anwendung auswirken, die von diesem Laufwerk abhängig ist.
 
@@ -236,7 +236,7 @@ Gehen Sie folgendermaßen vor, um das PerfInsights Skript auszuführen:
 
 8.  Sie können PerfInsights auch ohne Benutzeroberfläche ausführen.
 
-    Der folgende Befehl führt das Problembehandlungsszenario „Allgemeine VM Slow-Analyse“ ohne Benutzeroberflächen-Eingabeaufforderung oder Erfassung von Daten für 30 Sekunden aus. Sie werden aufgefordert, dem gleichen Haftungsausschluss und Lizenzvertrag zuzustimmen wie in Schritt 4.
+    Der folgende Befehl führt das Problembehandlungsszenario „Analyse bei langsamer VM“ ohne Benutzeroberflächen-Eingabeaufforderung oder Erfassung von Daten über einen Zeitraum von 30 Sekunden aus. Sie werden aufgefordert, dem gleichen Haftungsausschluss und Lizenzvertrag wie in Schritt 4 zuzustimmen.
 
         powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -NoGui -Scenario vmslow -TracingDuration 30"
 
@@ -264,13 +264,13 @@ Wenn auch nach mehreren Versuchen weiterhin Skriptfehler auftreten, sollten Sie 
 
 Wenn der Fehler aufgetreten ist, kopieren Sie die vollständige Ausgabe der PowerShell-Konsole, und senden Sie sie an den Microsoft-Support-Agent, der Sie bei der Behebung des Problems unterstützt.
 
-### <a name="how-do-i-run-the-script-in-custom-configuration-mode"></a>Wie führe ich das Skript im benutzerdefinierten Konfigurationsmodus aus?
+### <a name="how-do-i-run-the-script-in-custom-slow-vm-analysis-mode"></a>Wie führe ich das Skript im Modus „Benutzerdefinierte Analyse bei langsamer VM“ aus?
 
-Durch Auswahl der **Benutzerdefinierten** Konfiguration können Sie mehrere parallele Ablaufverfolgungen aktivieren (verwenden Sie die UMSCHALT-Taste zur Mehrfachauswahl):
+Durch Auswahl von **Custom slow VM analysis** (Benutzerdefinierte Analyse bei langsamer VM) können Sie mehrere parallele Ablaufverfolgungen aktivieren (verwenden Sie die UMSCHALTTASTE für die Mehrfachauswahl):
 
 ![Szenarien wählen](media/how-to-use-perfInsights/select-scenario.png)
 
-Befolgen Sie bei der Auswahl der Szenarien Leistungsdiagnose, Leistungsindikator-Ablaufverfolgung, XPerf-Ablaufverfolgung, Ablaufverfolgung im Netzwerk oder StorPort-Ablaufverfolgung nach dem Starten von Ablaufverfolgungen die Anweisungen in den Dialogfeldern, und versuchen Sie, das Leistungsdefizitproblem zu reproduzieren.
+Befolgen Sie bei der Auswahl der Szenarien Leistungsindikator-Ablaufverfolgung, XPerf-Ablaufverfolgung, Ablaufverfolgung im Netzwerk oder StorPort-Ablaufverfolgung nach dem Starten von Ablaufverfolgungen die Anweisungen in den Dialogfeldern, und versuchen Sie, das Leistungsdefizitproblem zu reproduzieren.
 
 Im folgenden Dialogfeld können Sie eine Ablaufverfolgung starten:
 
@@ -289,21 +289,22 @@ Innerhalb der von PerfInsights generierten Datei **CollectedData\_jjjj-MM-tt\_hh
 
 Wählen Sie die Registerkarte **Ergebnisse**.
 
-![Registerkarte „Ergebnisse“](media/how-to-use-perfInsights/findingtab.png)
+![Registerkarte „Suchen“](media/how-to-use-perfInsights/findingtab.png)
+![Ergebnisse](media/how-to-use-perfInsights/findings.PNG)
 
 **Hinweise**
 
--   Meldungen in rot sind bekannte Konfigurationsprobleme, die Leistungsprobleme verursachen können.
+-   Bei Ergebnissen, die als „Kritisch“ eingestuft werden, handelt es sich um bekannte Probleme, die zu Leistungsproblemen führen können.
 
--   Meldungen in gelb sind Warnungen, die nicht optimale Konfigurationen darstellen, die nicht unbedingt Leistungsprobleme verursachen.
+-   Ergebnisse vom Typ „Wichtig“ sind suboptimale Konfigurationen, die nicht unbedingt Leistungsprobleme verursachen.
 
--   Meldungen in blau sind nur informative Anweisungen.
+-   Ergebnisse, die als „Information“ eingestuft werden, sind nur für Informationszwecke bestimmt.
 
-Überprüfen Sie die HTTP-Links für alle Fehlermeldungen in rot, um ausführlichere Informationen zu den Ergebnissen und ihren möglichen Auswirkungen auf Leistung oder bewährte Vorgehensweisen für leistungsoptimierte Konfigurationen zu erhalten.
+Sehen Sie sich die Empfehlungen und Links zu allen kritischen und wichtigen Ergebnissen an, um ausführlichere Informationen zu den Ergebnissen und ihren möglichen Auswirkungen auf die Leistung oder bewährte Vorgehensweisen für leistungsoptimierte Konfigurationen zu erhalten.
 
-### <a name="disk-configuration-tab"></a>Registerkarte „Datenträgerkonfiguration“
+### <a name="storage-tab"></a>Registerkarte „Speicher“
 
-Der Abschnitt **Übersicht** zeigt unterschiedliche Ansichten der Speicherkonfiguration, einschließlich Informationen über DiskPart und Speicherplätze.
+Im Abschnitt **Ergebnisse** werden verschiedene Ergebnisse und Empfehlungen zum Speicher angezeigt.
 
 Die Abschnitte **DiskMap** und **VolumeMap** beschreiben aus jeweiliger Perspektive, wie logische Volumes und physische Datenträger miteinander verknüpft werden.
 
@@ -315,21 +316,24 @@ In der Volume-Perspektive (*VolumeMap*) zeigen die Tabellen alle physischen Date
 
 ![Registerkarte „Volume“](media/how-to-use-perfInsights/volumetab.png)
 
-### <a name="sql-server-tab"></a>Registerkarte „SQL Server“
+### <a name="sql-tab"></a>Registerkarte „SQL“
 
-Wenn der virtuelle Zielcomputer SQL Server-Instanzen hostet, sehen Sie im Bericht eine zusätzliche Registerkarte mit dem Namen **SQL Server**:
+Wenn der virtuelle Zielcomputer SQL Server-Instanzen hostet, sehen Sie im Bericht eine zusätzliche Registerkarte mit dem Namen **SQL**:
 
 ![Registerkarte „SQL“](media/how-to-use-perfInsights/sqltab.png)
 
-Dieser Abschnitt enthält eine „Übersicht“ und zusätzliche untergeordnete Registerkarten für jede SQL Server-Instanz, die auf dem virtuellen Computer gehostet wird.
+Dieser Abschnitt enthält die Registerkarte „Ergebnisse“ und zusätzliche untergeordnete Registerkarten für jede SQL Server-Instanz, die auf dem virtuellen Computer gehostet wird.
 
-Der Abschnitt „Übersicht“ enthält eine hilfreiche Tabelle, die alle physischen Datenträger (System- und Datendatenträger) zusammenfasst, die ausgeführt werden und eine Mischung von Daten- und Transaktionsprotokolldateien enthalten.
+Die Registerkarte „Ergebnisse“ enthält eine Liste mit allen SQL-bezogenen Leistungsproblemen, die gefunden wurden, und die dazugehörigen Empfehlungen.
 
 Im folgenden Beispiel wird *PhysicalDrive0* (auf dem Laufwerk „C“ ausgeführt wird) angezeigt, weil sowohl die Datei *modeldev* als auch *modellog* sich auf Laufwerk „C“ befindet, und sie unterschiedlichen Typs sind (z.B. Datendatei und Transaktionsprotokoll):
 
 ![loginfo](media/how-to-use-perfInsights/loginfo.png)
 
 Die für SQL Server-Instanzen spezifischen Registerkarten enthalten einen allgemeinen Abschnitt, der grundlegende Informationen über die ausgewählte Instanz und zusätzliche Abschnitte für die erweiterten Informationen einschließlich Einstellungen, Konfigurationen und Benutzeroptionen anzeigt.
+
+### <a name="diagnostic-tab"></a>Registerkarte „Diagnose“
+Die Registerkarte „Diagnose“ enthält Informationen zu den entsprechenden Consumern von CPU, Datenträger und Arbeitsspeicher mit den höchsten Werten für die Dauer der PerfInsights-Ausführung. Hier finden Sie auch weitere nützliche Informationen, z.B. kritische Patches, die im System ggf. fehlen, Aufgabenlisten und wichtige Systemereignisse. 
 
 ## <a name="references-to-the-external-tools-used"></a>Verweise auf die verwendeten externen Tools
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: v-donglo
-ms.openlocfilehash: 40079da0e04520477771a11a1e4111768cf18280
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 4f117e7099ffd0a8f85aa96f0fd075d4bcbeb6b4
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>Einen vorhandenen prädiktiven Webdienst erneut trainieren
 Dieses Dokument beschreibt das erneute Trainieren für das folgende Szenario:
@@ -86,20 +86,19 @@ Kopieren Sie auf der Seite **Consume** im Abschnitt **Basic consumption info** d
 ### <a name="update-the-azure-storage-information"></a>Aktualisieren der Azure Storage-Informationen
 Der BES-Beispielcode lädt eine Datei von einem lokalen Laufwerk (z.B. „C:\temp\CensusIpnput.csv“) in Azure Storage hoch, verarbeitet sie und schreibt die Ergebnisse zurück in Azure Storage.  
 
-Um die Azure Storage-Informationen zu aktualisieren, müssen Sie über das klassische Azure-Portal den Namen, Schlüssel und Container Ihres Speicherkontos ermitteln und anschließend die entsprechenden Werte im Code aktualisieren.
 Nachdem Sie Ihr Experiment ausgeführt haben, sollte der resultierende Workflow dem folgenden ähneln:
 
 ![Resultierender Workflow nach der Ausführung][4]
 
-1. Melden Sie sich am klassischen Azure-Portal an.
-2. Klicken Sie im linken Navigationsbereich auf **Storage**.
+1. Melden Sie sich beim Azure-Portal an.
+2. Klicken Sie in der linken Navigationsspalte auf **Weitere Dienste**, suchen Sie nach **Speicherkonten**, und wählen Sie die Option aus.
 3. Wählen Sie in der Speicherkontenliste ein Speicherkonto zum Speichern des neu trainierten Modells aus.
-4. Klicken Sie im unteren Bereich der Seite auf **Zugriffsschlüssel verwalten**.
-5. Kopieren und speichern Sie den **primären Zugriffsschlüssel**, und schließen Sie anschließend das Dialogfeld.
-6. Klicken Sie im oberen Bereich der Seite auf **Container**.
+4. Klicken Sie in der linken Navigationsspalte auf **Zugriffsschlüssel**.
+5. Kopieren und speichern Sie den Wert für **Primärer Zugriffsschlüssel**.
+6. Klicken Sie in der linken Navigationsspalte auf **Container**.
 7. Wählen Sie einen vorhandenen Container aus, oder erstellen Sie einen neuen, und speichern Sie den Namen.
 
-Suchen Sie die Deklarationen *StorageAccountName*, *StorageAccountKey* und *StorageContainerName*, und aktualisieren Sie die Werte mit den gespeicherten Werten aus dem klassischen Azure-Portal.
+Suchen Sie die Deklarationen *StorageAccountName*, *StorageAccountKey* und *StorageContainerName*, und aktualisieren Sie die Werte mit den gespeicherten Werten aus dem Portal.
 
     const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
     const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key

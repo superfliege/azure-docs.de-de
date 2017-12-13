@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: mazha
-ms.openlocfilehash: 98d4900e28f1850050dc4fbe1f97435e52afaf08
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: fd36b94c64ad31064dbb2e0badceaee5e5bc400f
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="add-a-custom-domain-to-your-cdn-endpoint"></a>Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt
 Nachdem Sie ein Profil erstellt haben, erstellen Sie in der Regel auch mindestens einen [CDN-Endpunkt](cdn-create-new-endpoint.md#create-a-new-cdn-endpoint) (eine Unterdomäne von `azureedge.net`) zum Übermitteln Ihrer Inhalte über HTTP und HTTPS. Dieser Endpunkt ist standardmäßig in allen Ihren URLs enthalten (z.B. `https://contoso.azureedge.net/photo.png`). Der Einfachheit halber können Sie Ihrem Endpunkt mit Azure CDN eine benutzerdefinierte Domäne (z.B. `www.contoso.com`) zuordnen. Mit dieser Option verwenden Sie eine benutzerdefinierte Domäne statt des Endpunkts, um Ihre Inhalte zu übermitteln. Diese Option ist beispielsweise hilfreich, wenn Ihr eigener Domänennamen Ihren Kunden zu Brandingzwecken angezeigt werden soll.
@@ -54,7 +54,7 @@ Verwenden Sie eine der folgenden Optionen, um Ihre benutzerdefinierte Domäne ei
  
   | NAME             | TYPE  | VALUE                  |
   |------------------|-------|------------------------|
-  | www\.consoto.com | CNAME | consoto\.azureedge.net |
+  | www\.contoso.com | CNAME | contoso\.azureedge.net |
 
 
 - Option 2: Zuordnung mit der **cdnverify**-Unterdomäne. Wenn Produktionsdatenverkehr, der nicht unterbrochen werden kann, auf der benutzerdefinierten Domäne ausgeführt wird, können Sie eine temporäre CNAME-Zuordnung zu Ihrem CDN-Endpunkt erstellen. Mit dieser Option nutzen Sie die **cdnverify**-Unterdomäne von Azure, um einen vorübergehenden Registrierungsschritt bereitzustellen, damit Benutzer während der DNS-Zuordnung ohne Unterbrechung auf Ihre Domäne zugreifen können.
@@ -64,7 +64,7 @@ Verwenden Sie eine der folgenden Optionen, um Ihre benutzerdefinierte Domäne ei
 
    | NAME                       | TYPE  | VALUE                            |
    |----------------------------|-------|----------------------------------|
-   | cdnverify.www\.consoto.com | CNAME | cdnverify.consoto\.azureedge.net | 
+   | cdnverify.www\.contoso.com | CNAME | cdnverify.contoso\.azureedge.net | 
 
 
 ## <a name="step-3-enable-the-cname-record-mapping-in-azure"></a>Schritt 3: Aktivieren der Zuordnung von CNAME-Einträgen in Azure
@@ -103,7 +103,7 @@ Dieser Schritt ist abhängig von Schritt 2, Option 2 (Zuordnung mit der **cdnver
  
    | NAME             | TYPE  | VALUE                  |
    |------------------|-------|------------------------|
-   | www\.consoto.com | CNAME | consoto\.azureedge.net |
+   | www\.contoso.com | CNAME | contoso\.azureedge.net |
 2. Löschen Sie den CNAME-Eintrag mit der **cdnverify**-Unterdomäne, die Sie zuvor erstellt haben.
 
 ## <a name="see-also"></a>Weitere Informationen

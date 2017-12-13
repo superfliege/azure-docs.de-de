@@ -8,11 +8,13 @@
 | HTTP-Listener |20 | |
 | HTTP-Lastenausgleichsregeln |200 |Anzahl der HTTP-Listener * n, Standard: n = 10 |
 | Back-End-HTTP-Einstellungen |20 |1 pro Back-End-Adresspool |
-| Instanzen pro Gateway |10 | |
+| Instanzen pro Gateway |10 | Wenn Sie weitere Instanzen benötigen, erstellen Sie ein Supportticket. |
 | SSL-Zertifikate |20 |1 pro HTTP-Listener |
 | Authentifizierungszertifikate |5 | Maximal 10 |
 | Anforderungstimeout min. |1 Sekunde | |
 | Anforderungstimeout max. |24 Stunden | |
 | Anzahl der Websites |20 |1 pro HTTP-Listener |
 | URL-Zuordnungen pro Listener |1 | |
+| Maximale Dateiuploadgröße (Standard) |2 GB | |
+| Maximale Dateiuploadgröße (WAF) |100 MB| |
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 12/06/2017
 ms.author: curtand
 ms.reviewer: rodejo
-ms.openlocfilehash: 5cad44dc7bf415002b3c9872fffdcf0d54bb6ad6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2e59528df6a66979c3fc2f596e3e94c1f51f0111
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 > [!div class="op_single_selector"]
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/11/2017
 
 Dieser Artikel enthält Beispiele für die Verwendung von PowerShell zur Verwaltung von Gruppen in Azure Active Directory (Azure AD).  Darüber hinaus erfahren Sie, wie das Azure AD PowerShell-Modul eingerichtet wird. Zunächst müssen Sie [das Azure AD PowerShell-Modul herunterladen](https://www.powershellgallery.com/packages/AzureAD/).
 
-## <a name="installing-the-azure-ad-powershell-module"></a>Installieren des Azure AD PowerShell-Moduls
+## <a name="install-the-azure-ad-powershell-module"></a>Installieren des Azure AD PowerShell-Moduls
 Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu installieren:
 
     PS C:\Windows\system32> install-module azuread
@@ -46,7 +46,7 @@ Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu install
 
 Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der Onlinereferenzdokumentation für [Azure Active Directory PowerShell Version 2](/powershell/azure/install-adv2?view=azureadps-2.0).
 
-## <a name="connecting-to-the-directory"></a>Herstellen der Verbindung mit dem Verzeichnis
+## <a name="connect-to-the-directory"></a>Herstellen einer Verbindung mit dem Verzeichnis
 Bevor Sie Gruppen mithilfe der Azure AD PowerShell-Cmdlets verwalten können, müssen Sie Ihre PowerShell-Sitzung mit dem Verzeichnis verbinden, das verwaltet werden soll. Verwenden Sie den folgenden Befehl:
 
     PS C:\Windows\system32> Connect-AzureAD
@@ -59,8 +59,10 @@ Das Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen auf, die Sie für de
 
 Sie können die Azure AD-Cmdlets nun zum Verwalten von Gruppen in Ihrem Verzeichnis verwenden.
 
-## <a name="retrieving-groups"></a>Abrufen von Gruppen
-Zum Abrufen von vorhandenen Gruppen aus Ihrem Verzeichnis können Sie das Cmdlet „Get-AzureADGroups“ verwenden. Um alle Gruppen innerhalb des Verzeichnisses abzurufen, verwenden Sie das Cmdlet ohne Parameter:
+## <a name="retrieve-groups"></a>Abrufen von Gruppen
+Mit dem Cmdlet „Get-AzureADGroups“ können Sie vorhandene Gruppen aus Ihrem Verzeichnis abrufen. 
+
+Um alle Gruppen innerhalb des Verzeichnisses abzurufen, verwenden Sie das Cmdlet ohne Parameter:
 
     PS C:\Windows\system32> get-azureadgroup
 
@@ -108,14 +110,14 @@ Mithilfe des Parameters „-filter“ können Sie nach einer bestimmten Gruppe s
     SecurityEnabled              : True
 
 > [!NOTE] 
-> In den Azure AD PowerShell-Cmdlets ist der OData-Abfragestandard implementiert. Weitere Informationen finden Sie unter **$filter** im Artikel [OData-Systemabfrageoptionen mit dem OData-Endpunkt](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
+> In den Azure AD PowerShell-Cmdlets wird der OData-Abfragestandard verwendet. Weitere Informationen finden Sie unter **$filter** im Artikel [OData-Systemabfrageoptionen mit dem OData-Endpunkt](https://msdn.microsoft.com/library/gg309461.aspx#BKMK_filter).
 
-## <a name="creating-groups"></a>Erstellen von Gruppen
+## <a name="create-groups"></a>Erstellen von Gruppen
 Zum Erstellen einer neuen Gruppe in Ihrem Verzeichnis verwenden Sie das Cmdlet „New-AzureADGroup“. Dieses Cmdlet erstellt eine neue Sicherheitsgruppe „Marketing“:
 
     PS C:\Windows\system32> New-AzureADGroup -Description "Marketing" -DisplayName "Marketing" -MailEnabled $false -SecurityEnabled $true -MailNickName "Marketing"
 
-## <a name="updating-groups"></a>Aktualisieren von Gruppen
+## <a name="update-groups"></a>Aktualisieren von Gruppen
 Zum Aktualisieren einer vorhandenen Gruppe verwenden Sie das Cmdlet „Set-AzureADGroup“. In diesem Beispiel ändern wir die Eigenschaft „DisplayName“ der Gruppe „Intune Administrators“. Zunächst suchen wir mit dem Cmdlet „Get-AzureADGroup“ nach der Gruppe. Dabei filtern wir das Ergebnis mithilfe des Attributs „DisplayName“:
 
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -160,18 +162,20 @@ Wenn wir nun erneut nach der Gruppe suchen, sehen wir, dass die Eigenschaft „D
     ProxyAddresses               : {}
     SecurityEnabled              : True
 
-## <a name="deleting-groups"></a>Löschen von Gruppen
+## <a name="delete-groups"></a>Löschen von Gruppen
 Zum Löschen von Gruppen aus Ihrem Verzeichnis verwenden Sie das Cmdlet „Remove-AzureADGroup“ wie folgt:
 
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
 
-## <a name="managing-members-of-groups"></a>Verwalten von Gruppenmitgliedern
-Zum Hinzufügen neuer Mitglieder zu einer Gruppe verwenden Sie das Cmdlet „Add-AzureADGroupMember“. Mit diesem Befehl wird der Gruppe „Intune Administrators“ aus dem vorherigen Beispiel ein Mitglied hinzugefügt:
+## <a name="manage-group-membership"></a>Verwalten der Gruppenmitgliedschaft 
+### <a name="add-members"></a>Hinzufügen von Mitgliedern
+Wenn Sie einer Gruppe neue Mitglieder hinzufügen möchten, verwenden Sie das Cmdlet „Add-AzureADGroupMember“. Mit diesem Befehl wird der Gruppe „Intune Administrators“ aus dem vorherigen Beispiel ein Mitglied hinzugefügt:
 
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
 Der Parameter „-ObjectId“ ist die Objekt-ID der Gruppe, der ein Mitglied hinzugefügt werden soll, „-RefObjectId“ ist die Objekt-ID des Benutzers, der als Gruppenmitglied hinzugefügt werden soll.
 
+### <a name="get-members"></a>Abrufen von Mitgliedern
 Zum Abrufen der vorhandenen Mitglieder einer Gruppe verwenden Sie das Cmdlet „Get-AzureADGroupMember“, wie in diesem Beispiel gezeigt:
 
     PS C:\Windows\system32> Get-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df
@@ -181,11 +185,13 @@ Zum Abrufen der vorhandenen Mitglieder einer Gruppe verwenden Sie das Cmdlet „
                           72cd4bbd-2594-40a2-935c-016f3cfeeeea User
                           8120cc36-64b4-4080-a9e8-23aa98e8b34f User
 
+### <a name="remove-members"></a>Entfernen von Mitgliedern
 Um das Mitglied zu entfernen, das der Gruppe zuvor hinzugefügt wurde, verwenden Sie das Cmdlet „Remove-AzureADGroupMember“, wie hier gezeigt:
 
     PS C:\Windows\system32> Remove-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -MemberId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
 
-Zum Überprüfen der Gruppenmitgliedschaft(en) eines Benutzers verwenden Sie das Cmdlet „Select-AzureADGroupIdsUserIsMemberOf“. Dieses Cmdlet verwendet als Parameter die Objekt-ID des Benutzers, für den die Gruppenmitgliedschaften überprüft werden sollen, sowie eine Liste mit Gruppen, für die die Mitgliedschaften überprüft werden sollen. Die Liste der Gruppen muss in Form einer komplexen Variable vom Typ „Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck“ angegeben werden. Daher müssen wir zunächst eine Variable dieses Typs erstellen:
+### <a name="verify-members"></a>Überprüfen von Mitgliedern
+Die Gruppenmitgliedschaften eines Benutzers können mithilfe des Cmdlets „Select-AzureADGroupIdsUserIsMemberOf“ überprüft werden. Dieses Cmdlet verwendet als Parameter die Objekt-ID des Benutzers, für den die Gruppenmitgliedschaften überprüft werden sollen, sowie eine Liste mit Gruppen, für die die Mitgliedschaften überprüft werden sollen. Die Liste der Gruppen muss in Form einer komplexen Variable vom Typ „Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck“ angegeben werden. Daher müssen wir zunächst eine Variable dieses Typs erstellen:
 
     PS C:\Windows\system32> $g = new-object Microsoft.Open.AzureAD.Model.GroupIdsForMembershipCheck
 
@@ -204,7 +210,24 @@ Wenn z.B. die Gruppenmitgliedschaften eines Benutzers mit der Objekt-ID „72cd4
 
 Der zurückgegebene Wert ist eine Liste mit Gruppen, in denen dieser Benutzer Mitglied ist. Diese Methode kann auch verwendet werden, um die Mitgliedschaft in Kontaktlisten, Gruppen oder Dienstprinzipalen für eine Liste von Gruppen zu überprüfen. Verwenden Sie dazu „Select-AzureADGroupIdsContactIsMemberOf“, „Select-AzureADGroupIdsGroupIsMemberOf“ oder „Select-AzureADGroupIdsServicePrincipalIsMemberOf“.
 
-## <a name="managing-owners-of-groups"></a>Verwalten von Gruppenbesitzern
+## <a name="disable-group-creation-by-your-users"></a>Deaktivieren der Gruppenerstellung durch Benutzer
+Sie können dafür sorgen, dass Benutzer ohne Administratorrechte keine Sicherheitsgruppen erstellen können. In Microsoft Online Directory Services (MSODS) sind Benutzer ohne Administratorrechte standardmäßig zum Erstellen von Gruppen berechtigt. Dabei spielt es keine Rolle, ob auch die Self-Service-Gruppenverwaltung (self-Service Group Management, SSGM) aktiviert ist. Die SSGM-Einstellung steuert nur das Verhalten im Zugriffsbereich „Meine Apps“. 
+
+So deaktivieren Sie die Gruppenerstellung für Benutzer ohne Administratorrechte:
+
+1. Prüfen Sie, ob Benutzer ohne Administratorrechte zum Erstellen von Gruppen berechtigt sind:
+   
+  ````
+  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+  ````
+  
+2. Wird `UsersPermissionToCreateGroupsEnabled : True` zurückgegeben, sind Benutzer ohne Administratorrechte zum Erstellen von Gruppen berechtigt. So deaktivieren Sie das Feature:
+  
+  ```` 
+  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+  ````
+  
+## <a name="manage-owners-of-groups"></a>Verwalten von Gruppenbesitzern
 Zum Hinzufügen von Besitzern zu einer Gruppe verwenden Sie das Cmdlet „Add-AzureADGroupOwner“:
 
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea

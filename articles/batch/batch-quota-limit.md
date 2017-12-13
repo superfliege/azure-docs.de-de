@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2017
+ms.date: 11/29/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8bb5470918aa3ad15cb9081f5c02b40984d83f51
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 210ba4a90f24ce9b0b55c4565028232c2b7fd7cc
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -51,10 +51,11 @@ Wenn Sie eine frühere Version der Batch-API verwendet haben, um ein Batch-Konto
 | Anwendungspakete pro Anwendung. |40 |
 | Anwendungspaketgröße (jeweils) |Ca. 195 GB<sup>1</sup> |
 | Maximale Größe des Starttasks | 32.768 Zeichen<sup>2</sup> |
+| Maximale Lebensdauer von Tasks | 7 Tage<sup>3</sup> |
 
 <sup>1</sup> Azure Storage-Limit für die maximale Blockblobgröße<br />
-<sup>2</sup> Einschließlich Ressourcendateien und Umgebungsvariablen
-
+<sup>2</sup> Einschließlich Ressourcendateien und Umgebungsvariablen<br />
+<sup>3</sup> Die maximale Lebensdauer eines Tasks (vom Hinzufügen zum Auftrag bis zum Abschluss) beträgt sieben Tage. Abgeschlossene Tasks bleiben unbegrenzt lange erhalten. Daten für Tasks, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, stehen hingegen nicht zur Verfügung.
 
 
 ## <a name="view-batch-quotas"></a>Anzeigen von Batch-Kontingenten

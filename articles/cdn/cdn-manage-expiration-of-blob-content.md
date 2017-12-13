@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: 50015fabb323e618d3c093d4083cc648ff13b8f1
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 694d0c27b26c1ed9f6a1a54f766d024d882b5b64
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-content-delivery-network"></a>Verwalten des Ablaufs von Azure Blob Storage im Azure Content Delivery Network
 > [!div class="op_single_selector"]
@@ -29,8 +29,10 @@ ms.lasthandoff: 11/30/2017
 
 Der [Blob Storage-Dienst](../storage/common/storage-introduction.md#blob-storage) in Azure Storage ist einer von verschiedenen Azure-basierten Ursprüngen, die in Azure Content Delivery Network (CDN) integriert wurden. Jeder öffentlich zugängliche Blobinhalt kann in Azure CDN zwischengespeichert werden, bis seine Gültigkeitsdauer abläuft. Die Gültigkeitsdauer wird durch den `Cache-Control`-Header in der HTTP-Antwort des Ursprungsservers bestimmt. In diesem Artikel werden verschiedene Methoden beschrieben, mit denen Sie den `Cache-Control`-Header für ein Blob in Azure Storage festlegen können.
 
+Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CDN-Cacheregeln](cdn-caching-rules.md) steuern. Wenn Sie Cacheregeln einrichten und ihr Zwischenspeicherverhalten auf **Außer Kraft setzen** oder **Cache umgehen** festlegen, werden die in diesem Artikel erörterten vom Ursprung angegebenen Cacheeinstellungen ignoriert. Weitere Informationen zu allgemeinen Cachekonzepten finden Sie unter [How caching works](cdn-how-caching-works.md) (Funktionsweise von Caching).
+
 > [!TIP]
-> Sie haben auch die Möglichkeit, keine Gültigkeitsdauer für ein Blob festzulegen. In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an. Diese Standardgültigkeitsdauer gilt nur für die Optimierung allgemeiner Webbereitstellungen. Bei der Optimierung großer Dateien beträgt die Standardgültigkeitsdauer 1 Tag, bei der Optimierung für das Medienstreaming beträgt die Standardgültigkeitsdauer von 1 Jahr.
+> Sie haben auch die Möglichkeit, keine Gültigkeitsdauer für ein Blob festzulegen. In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an, es sei denn, Sie haben Cacheregeln im Azure-Portal eingerichtet. Diese Standardgültigkeitsdauer gilt nur für die Optimierung allgemeiner Webbereitstellungen. Bei der Optimierung großer Dateien beträgt die Standardgültigkeitsdauer einen Tag, bei der Optimierung für das Medienstreaming beträgt die Standardgültigkeitsdauer ein Jahr.
 > 
 > Weitere Informationen dazu, wie Azure CDN den Zugriff auf Blobs und andere Dateien beschleunigen kann, finden Sie in der [Übersicht über Azure Content Delivery Network](cdn-overview.md).
 > 
@@ -111,9 +113,9 @@ So aktualisieren Sie die *CacheControl*-Eigenschaft eines Blobs mit dem Azure St
 ![Eigenschaften des Azure Storage-Explorers](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure-Befehlszeilenschnittstelle
-Wenn Sie ein Blob hochladen, können Sie die Eigenschaft *cacheControl* mit der Option `-p` in der [Azure-Befehlszeilenschnittstelle](../cli-install-nodejs.md) festlegen. Im folgenden Beispiel wird gezeigt, wie die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgelegt wird:
+Mithilfe der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) (CLI) können Sie Azure-Blobressourcen über die Befehlszeile verwalten. Legen Sie zum Festlegen des Cache-Control-Headers beim Hochladen eines Blobs mit der Azure-Befehlszeilenschnittstelle die Eigenschaft *cacheControl* mit dem `-p`-Switch fest. Im folgenden Beispiel wird gezeigt, wie die Gültigkeitsdauer auf eine Stunde (3.600 Sekunden) festgelegt wird:
   
-```command
+```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\test.txt myContainer test.txt
 ```
 
@@ -129,4 +131,5 @@ Sie können die Einstellungen der Gültigkeitsdauer Ihrer Blobs einfach überpr�
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie, wie Sie den Ablauf von Clouddienstinhalten in Azure CDN verwalten können.](cdn-manage-expiration-of-cloud-service-content.md)
+* [Informationen zu Cachekonzepten](cdn-how-caching-works.md)
 

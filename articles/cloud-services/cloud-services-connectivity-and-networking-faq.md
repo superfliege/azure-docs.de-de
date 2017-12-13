@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: genli
-ms.openlocfilehash: 7b435b6904b05228a63e3ed3a9fed78747b843c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d86f3ec043c504c9d79b18f1f0b4c9cf0adb115b
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit Konnektivität und Netzwerken in Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -48,8 +48,8 @@ Sie können auch Starttasks erstellen, um einige bestimmte IP-Adressen selektiv 
 
 ## <a name="when-i-try-to-rdp-to-my-cloud-service-instance-i-get-the-message-the-user-account-has-expired"></a>Wenn ich versuche, eine RDP-Verbindung mit meiner Cloud Service-Instanz herzustellen, erhalte ich die Meldung „Dieses Benutzerkonto ist abgelaufen.“
 Sie erhalten die Fehlermeldung „Dieses Benutzerkonto ist abgelaufen“ möglicherweise, wenn Sie das Ablaufdatum umgehen, das in Ihren RDP-Einstellungen festgelegt ist. Sie können das Ablaufdatum mithilfe der folgenden Schritte im Portal ändern:
-1. Melden Sie sich in der Azure-Verwaltungskonsole an (https://manage.windowsazure.com), navigieren Sie zu Ihrem Clouddienst, und wählen Sie die Registerkarte **Konfigurieren** aus.
-2. Wählen Sie **Remote** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, navigieren Sie zu Ihrem Clouddienst, und wählen Sie die Registerkarte **Remotedesktop** aus.
+2. Wählen Sie den Bereitstellungsslot **Produktion** oder **Staging** aus.
 3. Ändern Sie das Datum bei „Gültig bis“, und speichern Sie die Konfiguration anschließend.
 
 Jetzt sollten Sie eine RDP-Verbindung zu Ihrem Computer herstellen können.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
-ms.openlocfilehash: bdf0bd54130521a7178af3a28731f4c0e21e3e0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75577ad318f2ff23a7b7d10cf551f3bced56fb62
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Bereitstellen eines Azure Machine Learning-Webdiensts
 Azure Machine Learning ermöglicht es Ihnen, Vorhersageanalyselösungen zu erstellen, zu testen und bereitzustellen.
@@ -108,7 +108,7 @@ Auf der Seite **CONFIGURATION** können Sie die Beschreibung und den Titel ände
 Nachdem Sie den Webdienst bereitgestellt haben, können Sie Folgendes tun:
 
 * **zugreifen**
-* **verwalten**
+* **Verwalten** über das Azure Machine Learning-Webdienstportal
 * **aktualisieren** , wenn sich Ihr Modell ändert
 
 #### <a name="access-your-new-web-service"></a>Zugreifen auf den neuen Webdienst
@@ -141,7 +141,7 @@ Klicken Sie zum Testen des Stapelausführungsdiensts auf den Vorschaulink **Test
 
 ![Testen des Webdiensts](./media/publish-a-machine-learning-web-service/figure-3.png)
 
-Auf der Registerkarte **CONFIGURATION** können Sie den Anzeigenamen des Diensts ändern und eine Beschreibung eingeben. Der Name und die Beschreibung werden im [klassischen Azure-Portal](http://manage.windowsazure.com/) angezeigt, in dem Sie Ihre Webdienste verwalten.
+Auf der Registerkarte **CONFIGURATION** können Sie den Anzeigenamen des Diensts ändern und eine Beschreibung eingeben. Der Name und die Beschreibung werden im [Azure-Portal](https://portal.azure.com/) angezeigt, in dem Sie Ihre Webdienste verwalten.
 
 Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstparameter bereitstellen, indem Sie Zeichenfolgen für jede Spalte unter **INPUT SCHEMA**, **OUTPUT SCHEMA** und **WEB SERVICE PARAMETER** eingeben. Diese Beschreibungen werden in der Beispielcodedokumentation für den Webdienst verwendet.
 

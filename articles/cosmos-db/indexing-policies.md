@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
-ms.openlocfilehash: 30a21645831f0cfcb3b52c797dbddfa6b5283960
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53bf756963c305b8b31ac1a90d219f143522d051
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Unterstützen von Indexdaten durch Azure Cosmos DB
 
@@ -68,7 +68,7 @@ Azure Cosmos DB unterstützt drei Indizierungsmodi, welche über die Indizierung
 
 **Konsistent**: Wenn die Richtlinie einer Azure Cosmos DB-Sammlung als „konsistent“ festgelegt ist, folgen die Abfragen für eine bestimmte Azure Cosmos DB-Sammlung derselben Konsistenzebene wie für die Punktlesevorgänge angegeben (d. h. „strong“, „bounded-staleness“, „session“ oder „eventual“). Der Index wird synchron im Rahmen der Aktualisierung des Dokuments (d. h. Einfügen, Ersetzen, Aktualisieren und Löschen eines Dokuments in einer Azure Cosmos DB-Sammlung) aktualisiert.  Die konsistente Indizierung unterstützt konsistente Abfragen auf Kosten einer möglichen Verringerung des Schreibdurchsatzes. Diese Verringerung ist eine Funktion der eindeutigen Pfade, die indiziert werden müssen, und der „Konsistenzebene“. Der konsistente Indizierungsmodus ist für Workloads mit schnellem Schreiben und sofortigem Abfragen vorgesehen.
 
-**Verzögert**: Um den maximalen Dokumenterfassungsdurchsatz zu ermöglichen, kann eine Azure Cosmos DB-Sammlung mit verzögerter Konsistenz konfiguriert werden; d. h. Abfragen sind letztendlich konsistent. Der Index wird asynchron aktualisiert, wenn eine Azure Cosmos DB-Sammlung untätig ist, z. B. wenn die Durchsatzkapazität der Sammlung nicht vollständig mit dem Verarbeiten von Benutzeranforderungen ausgelastet ist. Für Workloads, die „jetzt erfassen, später abfragen“ und eine ungehinderte Dokumenterfassung erfordern, kann der „verzögerte“ Indizierungsmodus geeignet sein.
+**Verzögert:** Der Index wird asynchron aktualisiert, wenn eine Azure Cosmos DB-Sammlung untätig ist, z.B. wenn die Durchsatzkapazität der Sammlung nicht vollständig mit dem Verarbeiten von Benutzeranforderungen ausgelastet ist. Für Workloads mit „jetzt erfassen, später abfragen“, die eine Dokumenterfassung erfordern, kann der „verzögerte“ Indizierungsmodus geeignet sein. Beachten Sie, dass Sie möglicherweise inkonsistente Ergebnisse erhalten, da die Daten langsam erfasst und indiziert werden. Das bedeutet, dass Ihre Abfragen zur Anzahl oder bestimmte Abfrageergebnisse nicht zwangsläufig richtig oder wiederholbar sind, bevor die Daten indiziert wurden. Der Index befindet sich im Allgemeinen im Abgleichmodus. Verzögerte WRT-Indizierung: Bei Änderungen der Gültigkeitsdauer (TTL) wird der Index gelöscht und neu erstellt. Deshalb kann diese Aktivität zu unerwarteten Ergebnissen führen. Die meisten Kunden sollten die konsistente Indizierung verwenden.
 
 **Keine**: Einer Sammlung mit dem Indexmodus „Keine“ ist kein Index zugeordnet. Diese Option wird häufig verwendet, wenn Azure Cosmos DB als Schlüssel-Wert-Speicher genutzt wird und auf Dokumente nur nach ihrer ID-Eigenschaft zugegriffen wird. 
 

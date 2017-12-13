@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: c2bd67afc0c289de94019497e57b57f97a759f3a
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 1a30b42e6e84edf9a7cef861aaf6a60e87c473d0
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="enable-remote-debugging-when-using-continuous-delivery-to-publish-to-azure"></a>Aktivieren von Remotedebuggen, wenn kontinuierliche Zustellung für die Veröffentlichung in Azure verwendet wird
 Sie können mithilfe folgender Schritte das Remotedebuggen in Azure, für Clouddienste oder virtuelle Computer aktivieren, wenn Sie [kontinuierliche Zustellung](cloud-services-dotnet-continuous-delivery.md) für die Veröffentlichung in Azure verwenden.
@@ -27,25 +27,28 @@ Sie können mithilfe folgender Schritte das Remotedebuggen in Azure, für Cloudd
 1. Richten Sie im Build-Agent die initiale Umgebung für Azure ein, wie in [Befehlszeilentool für Azure](http://msdn.microsoft.com/library/hh535755.aspx)dargestellt.
 2. Da die Remotedebugging-Laufzeit (msvsmon.exe) für das Paket erforderlich ist, müssen Sie die **Remote Tools für Visual Studio** installieren.
 
-    * [Remote Tools für Visual Studio 2017](https://go.microsoft.com/fwlink/?LinkId=746570)
-    * [Remote Tools für Visual Studio 2015](https://go.microsoft.com/fwlink/?LinkId=615470)
-    * [Remote Tools für Visual Studio 2013 Update 5](https://www.microsoft.com/download/details.aspx?id=48156)
+   * [Remote Tools für Visual Studio 2017](https://go.microsoft.com/fwlink/?LinkId=746570)
+   * [Remote Tools für Visual Studio 2015](https://go.microsoft.com/fwlink/?LinkId=615470)
+   * [Remote Tools für Visual Studio 2013 Update 5](https://www.microsoft.com/download/details.aspx?id=48156)
     
-    Alternativ können Sie auch die Remotedebugging-Binärdateien aus einem System kopieren, auf dem Visual Studio installiert ist.
+   Alternativ können Sie auch die Remotedebugging-Binärdateien aus einem System kopieren, auf dem Visual Studio installiert ist.
 
 3. Erstellen Sie ein Zertifikat, wie in [Übersicht über Zertifikate für Azure Cloud Services](cloud-services-certs-create.md)gezeigt. Bewahren Sie die .pfx-Datei und den RDP-Zertifikatfingerabdruck auf, und laden Sie das Zertifikat in den Zielclouddienst hoch.
 4. Verwenden Sie folgende Optionen in der MSBuild-Befehlszeile, um ein Build und ein Paket mit aktiviertem Remotedebugging zu erstellen. (Ersetzen Sie die Elemente in spitzen Klammern durch tatsächliche Pfade zu Ihren System- und Projektdateien).
    
-        msbuild /TARGET:PUBLISH /PROPERTY:Configuration=Debug;EnableRemoteDebugger=true;VSX64RemoteDebuggerPath="<remote tools path>";RemoteDebuggerConnectorCertificateThumbprint="<thumbprint of the certificate added to the cloud service>";RemoteDebuggerConnectorVersion="2.7" "<path to your VS solution file>"
+   ```cmd
+   msbuild /TARGET:PUBLISH /PROPERTY:Configuration=Debug;EnableRemoteDebugger=true;VSX64RemoteDebuggerPath="<remote tools path>";RemoteDebuggerConnectorCertificateThumbprint="<thumbprint of the certificate added to the cloud service>";RemoteDebuggerConnectorVersion="2.7" "<path to your VS solution file>"
+   ```
    
-    `VSX64RemoteDebuggerPath` ist der Pfad zu dem Ordner, der „msvsmon.exe“ in den Remote Tools für Visual Studio enthält.
-    `RemoteDebuggerConnectorVersion` ist die Azure SDK-Version in Ihrem Clouddienst. Diese Version sollte auch der Version entsprechen, die zusammen mit Visual Studio installiert wurde.
+   `VSX64RemoteDebuggerPath` ist der Pfad zu dem Ordner, der „msvsmon.exe“ in den Remote Tools für Visual Studio enthält.
+   `RemoteDebuggerConnectorVersion` ist die Azure SDK-Version in Ihrem Clouddienst. Diese Version sollte auch der Version entsprechen, die zusammen mit Visual Studio installiert wurde.
+
 5. Veröffentlichen Sie zum Zielclouddienst, indem Sie das Paket und die .cscfg-Datei verwenden, die im vorherigen Schritt generiert wurden.
 6. Importieren Sie das Zertifikat (PFX-Datei) auf den Computer, auf dem Visual Studio mit Azure SDK für .NET installiert ist. Vergewissern Sie sich, dass als Importziel der `CurrentUser\My`-Zertifikatspeicher verwendet wird. Andernfalls tritt beim Anfügen an den Debugger in Visual Studio ein Fehler auf.
 
 ## <a name="enabling-remote-debugging-for-virtual-machines"></a>Aktivieren von Remotedebuggen für virtuelle Computer
 1. Erstellen Sie einen virtuellen Azure-Computer. Informationen finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) oder [Erstellen und Verwalten virtueller Windows-Computer in Visual Studio](../virtual-machines/windows/classic/manage-visual-studio.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
-2. Sehen Sie sich auf der [klassischen Azure-Portalseite](http://go.microsoft.com/fwlink/p/?LinkID=269851)das Dashboard des virtuellen Computers an, um den **RDP-ZERTIFIKATFINGERABDRUCK**des virtuellen Computers anzuzeigen. Dieser Wert wird für den `ServerThumbprint` -Wert in der Erweiterungskonfiguration verwendet.
+2. Navigieren Sie im Azure-Portal (http://go.microsoft.com/fwlink/p/?LinkID=269851) zum **RDP-ZERTIFIKATFINGERABDRUCK** des virtuellen Computers. Dieser Wert wird für den `ServerThumbprint` -Wert in der Erweiterungskonfiguration verwendet.
 3. Erstellen Sie ein Clientzertifikat, wie in [Übersicht über Zertifikate für Azure Cloud Services](cloud-services-certs-create.md) gezeigt (behalten Sie die .pfx-Datei und den RDP-Zertifikatfingerabdruck bei).
 4. Installieren Sie Azure PowerShell (ab Version 0.7.4) wie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview)beschrieben.
 5. Führen Sie folgendes Skript aus, um die RemoteDebug-Erweiterung zu aktivieren. Ersetzen Sie die Pfade und persönlichen Daten mit Ihren eigenen Daten, zum Beispiel Abonnementname, Dienstname und Fingerabdruck.

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 12/05/2017
 ms.author: billmath
-ms.openlocfilehash: b85afe54832319fae2ea3a2501ec268bc63fc7c1
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1bc76062b05938992b71eedaa71b3c7dfedd7ef4
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure AD Connect: Nahtloses einmaliges Anmelden – Schnellstart
 
@@ -127,7 +127,7 @@ Der Browser berechnet standardmäßig anhand der URL automatisch die richtige Zo
 
 ### <a name="browser-considerations"></a>Überlegungen zum Browser
 
-#### <a name="mozilla-firefox"></a>Mozilla Firefox
+#### <a name="mozilla-firefox-all-platforms"></a>Mozilla Firefox (alle Plattformen)
 
 Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jeder Benutzer muss den Firefox-Einstellungen manuell die Azure AD-URLs mithilfe der folgenden Schritte hinzufügen:
 1. Führen Sie Firefox aus, und geben Sie in die Adressleiste `about:config` ein. Schließen Sie alle Benachrichtigungen, die Sie sehen.
@@ -136,11 +136,15 @@ Mozilla Firefox verwendet nicht automatisch die Kerberos-Authentifizierung. Jede
 4. Geben Sie https://autologon.microsoftazuread-sso.com, https://aadg.windows.net.nsatc.net in das Feld ein.
 5. Klicken Sie auf **OK**, und öffnen Sie den Browser erneut.
 
-#### <a name="safari-on-mac-os"></a>Safari unter Mac OS
+#### <a name="safari-mac-os"></a>Safari (Mac OS)
 
 Stellen Sie sicher, dass der Computer mit Mac OS in Azure AD eingebunden ist. Anweisungen zum Verknüpfen mit Azure AD finden Sie unter [Best Practices for Integrating OS X with Active Directory](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf) (Bewährte Methoden für die Integration von OS X in Active Directory).
 
-#### <a name="google-chrome-on-mac-os"></a>Google Chrome unter Mac OS
+#### <a name="google-chrome-all-platforms"></a>Google Chrome (alle Plattformen)
+
+Wenn Sie die Richtlinieneinstellungen [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) oder [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) in Ihrer Umgebung außer Kraft gesetzt haben, stellen Sie sicher, dass Sie auch die URLs von Azure AD („https://autologon.microsoftazuread-sso.com“ und „https://aadg.windows.net.nsatc.net“) zu ihnen hinzufügen.
+
+#### <a name="google-chrome-mac-os-only"></a>Google Chrome (nur Mac OS)
 
 Informationen dazu, wie Sie in Google Chrome unter Mac OS und anderen nicht Windows-basierten Plattformen die Azure AD-URLs für die integrierte Authentifizierung auf eine Whitelist setzen, finden Sie unter [The Chromium Project Policy List](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist) (Richtlinienliste von The Chromium Projects).
 
@@ -149,9 +153,6 @@ Das Ausrollen der Azure AD-URLs für Firefox und Google Chrome unter Mac mithilf
 #### <a name="known-browser-limitations"></a>Bekannte Browsereinschränkungen
 
 Das nahtlose einmalige Anmelden funktioniert in Firefox- und Edge-Browsern nicht im privaten Modus. Dies gilt auch für Internet Explorer, wenn der Browser im erweiterten geschützten Modus ausgeführt wird.
-
->[!IMPORTANT]
->Wir haben vor Kurzem ein Rollback für den Support für Edge ausgeführt, um von Kunden gemeldete Probleme zu untersuchen.
 
 ## <a name="step-4-test-the-feature"></a>Schritt 4: Testen des Features
 

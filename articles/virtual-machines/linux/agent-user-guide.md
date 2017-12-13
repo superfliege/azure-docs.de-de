@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: szark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 486ad6bb148583a957fb82b7954ff94f853b12cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59266c6d6452eeff56b05e60389ac14f0b2c3f1f
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Grundlegendes zum Azure Linux-Agent und seiner Verwendung
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -143,6 +143,7 @@ Eine Konfigurationsdatei (/etc/waagent.conf) steuert die Aktionen von waagent. N
     Provisioning.MonitorHostName=y
     Provisioning.DecodeCustomData=n
     Provisioning.ExecuteCustomData=n
+    Provisioning.AllowResetSysUser=n
     Provisioning.PasswordCryptId=6
     Provisioning.PasswordCryptSaltLength=10
     ResourceDisk.Format=y
@@ -157,6 +158,7 @@ Eine Konfigurationsdatei (/etc/waagent.conf) steuert die Aktionen von waagent. N
     OS.OpensslPath=None
     HttpProxy.Host=None
     HttpProxy.Port=None
+    AutoUpdate.Enabled=y
 
 Die verschiedenen Konfigurationsoptionen werden nachfolgend ausführlich erläutert. Konfigurationsoptionen weisen einen von drei Datentypen auf: Boolean, String oder Integer. Die Konfigurationsoptionen vom Typ "Boolesch" können als "j" oder "n" angegeben werden. Für einige Konfigurationseinträge des Typs "Zeichenfolge" kann das spezielle Schlüsselwort "Keine" verwendet werden, wie nachfolgend beschrieben.
 
@@ -209,6 +211,10 @@ Voreinstellung: n
 
 Ist diese Option festgelegt, führt waagent benutzerdefinierte Daten nach der Bereitstellung aus.
 
+**Provisioning.AllowResetSysUser** Typ: Boolescher Wert Standardwert: n
+
+Mit dieser Option kann das Kennwort für den Benutzer SYS zurückgesetzt werden. Die Option ist standardmäßig deaktiviert.
+
 **Provisioning.PasswordCryptId**  
 Typ: Zeichenfolge  
 Standardwert: 6
@@ -221,7 +227,7 @@ Algorithmus, der von Crypt zum Generieren des Kennworthashs verwendet wird.
 
 **Provisioning.PasswordCryptSaltLength**  
 Typ: Zeichenfolge  
-Standardeinstellung: 10
+Standard: 10
 
 Länge des Zufallssalts, das beim Generieren des Kennworthashs verwendet wird.
 
@@ -290,6 +296,12 @@ Typ: Zeichenfolge
 Standardwert: keiner
 
 Ist diese Option festgelegt, greift der Agent über den angegebenen Proxyserver auf das Internet zu. 
+
+**AutoUpdate.Enabled** Typ: Boolescher Wert Standardwert: y
+
+Aktivieren oder deaktivieren Sie die automatische Aktualisierung für die Verarbeitung des Zielzustands. Sie ist standardmäßig aktiviert.
+
+
 
 ## <a name="ubuntu-cloud-images"></a>Ubuntu-Cloud-Images
 Beachten Sie, dass Cloud Ubuntu-Images für zahlreiche Konfigurationsaufgaben, die andernfalls vom Azure Linux-Agent verwaltet würden, [cloud-init](https://launchpad.net/ubuntu/+source/cloud-init) verwenden.  Beachten Sie die folgenden Unterschiede:

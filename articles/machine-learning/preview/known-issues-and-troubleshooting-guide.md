@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5c7c15eacdf43d3623000ed228adfaeb55803c8f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning-Workbench – bekannte Probleme und Anleitung zur Problembehandlung 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu suchen und zu beheben, die bei der Verwendung der Anwendung Azure Machine Learning Workbench auftreten können. 
@@ -112,6 +112,19 @@ Leider gibt es hierfür keine einfache Lösung. Sie müssen die folgenden Schrit
    - Entfernen des Skripts `C:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
    - Entfernen der Desktopverknüpfung, die das oben genannte Skript startet
    - Herunterladen des Installationsprogramms von https://aka.ms/azureml-wb-msi und erneutes Installieren
+
+## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>Festhängen nach der Anmeldung am Bildschirm zur Überprüfung des Experimentieren-Kontos
+Nach der Anmeldung kann es vorkommen, dass die Workbench-App auf einem leeren Bildschirm mit der Meldung „Experimentieren-Konto wird überprüft“ mit einem drehenden Rad stecken bleibt. Führen Sie zum Beheben dieses Problems die folgenden Schritte aus:
+1. Fahren Sie die App herunter.
+2. Löschen Sie die folgende Datei:
+  ```
+  # on Windows
+  %appdata%\AmlWorkbench\AmlWb.settings
+
+  # on macOS
+  ~/Library/Application Support/AmlWorkbench/AmlWb.settings
+  ```
+3. Starten Sie die App neu.
 
 ## <a name="cant-delete-experimentation-account"></a>Das Experimentieren-Konto kann nicht gelöscht werden.
 Sie können mit der Befehlszeilenschnittstelle ein Experimentierkonto löschen, müssen jedoch untergeordnete Arbeitsbereiche und die untergeordneten Projekte in diesen untergeordneten Arbeitsbereichen zuerst löschen. Andernfalls wird eine Fehlermeldung angezeigt.

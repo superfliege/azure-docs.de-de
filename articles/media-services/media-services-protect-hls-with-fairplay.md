@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 895d6307b1cef74e195cc2ffd8dbef4196e97b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2027aed8a604c33c96c66c23e9ddaa51f632edb5
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady
 Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unter Verwendung der folgenden Formate dynamisch verschlüsseln:  
@@ -33,12 +33,12 @@ Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unte
 
 Die folgende Abbildung veranschaulicht den Workflow für dynamische **HLS- und FairPlay-Verschlüsselung oder PlayReady-Verschlüsselung**.
 
-![Diagramm des dynamischen Verschlüsselungsworkflows](./media/media-services-content-protection-overview/media-services-content-protection-with-fairplay.png)
+![Diagramm des dynamischen Verschlüsselungsworkflows](./media/media-services-content-protection-overview/media-services-content-protection-with-FairPlay.png)
 
-Dieses Thema veranschaulicht, wie Sie Media Services verwenden, um Ihre HLS-Inhalte dynamisch mit Apple FairPlay verschlüsseln. Es zeigt auch, wie Sie den Lizenzbereitstellungsdienst von Media Services verwenden, um FairPlay-Lizenzen an Clients zu übermitteln.
+Dieser Artikel veranschaulicht, wie Sie Media Services verwenden, um Ihre HLS-Inhalte dynamisch mit Apple FairPlay verschlüsseln. Es zeigt auch, wie Sie den Lizenzbereitstellungsdienst von Media Services verwenden, um FairPlay-Lizenzen an Clients zu übermitteln.
 
 > [!NOTE]
-> Wenn Sie auch Ihre HLS-Inhalte mit PlayReady verschlüsseln möchten, müssen Sie einen gemeinsamen Schlüssel erstellen und ihn mit dem Medienobjekt verknüpfen. Darüber hinaus müssen Sie die Autorisierungsrichtlinie des Inhaltsschlüssels konfigurieren, wie unter [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md) beschrieben.
+> Wenn Sie auch Ihre HLS-Inhalte mit PlayReady verschlüsseln möchten, müssen Sie einen gemeinsamen Schlüssel erstellen und ihn mit dem Medienobjekt verknüpfen. Darüber hinaus müssen Sie die Autorisierungsrichtlinie des Inhaltsschlüssels konfigurieren, wie unter [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md) beschrieben.
 >
 >
 
@@ -65,10 +65,10 @@ Folgendes muss seitens der Media Services-Schlüsselbereitstellung festgelegt we
         Wechseln Sie zum Ordner, in dem das FairPlay-Zertifikat und andere von Apple übermittelte Dateien enthalten sind.
     2. Führen Sie den folgenden Befehl an der Befehlszeile aus: Dadurch wird die CER-Datei in eine PEM-Datei konvertiert.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" x509 -inform der -in fairplay.cer -out fairplay-out.pem
+        „C:\OpenSSL-Win32\bin\openssl.exe“ x509 -inform der -in FairPlay.cer -out FairPlay-out.pem
     3. Führen Sie den folgenden Befehl an der Befehlszeile aus: Dadurch wird die PEM-Datei in eine PFX-Datei mit dem privaten Schlüssel konvertiert. Das Kennwort für die PFX-Datei wird dann von OpenSSL angefordert.
 
-        "C:\OpenSSL-Win32\bin\openssl.exe" pkcs12 -export -out fairplay-out.pfx -inkey privatekey.pem -in fairplay-out.pem -passin file:privatekey-pem-pass.txt
+        „C:\OpenSSL-Win32\bin\openssl.exe“ pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
   * **App Cert-Kennwort**: Das Kennwort des Kunden zum Erstellen der PFX-Datei.
   * **Cert-App-Kennwort-ID**: Sie müssen das Kennwort auf die gleiche Weise wie andere Media Services-Schlüssel hochladen. Verwenden Sie den Enumerationswert **ContentKeyType.FairPlayPfxPassword**, um die Media Services-ID abzurufen. Diese werden in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
   * **iv**: Dies ist ein zufälliger Wert von 16 Bytes. Er muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Sie generieren den iv-Wert und geben ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an.
@@ -125,7 +125,7 @@ Sie können Player-Apps mit dem iOS-SDK entwickeln. Damit FairPlay-Inhalte wiede
     spc=<Base64 encoded SPC>
 
 > [!NOTE]
-> Azure Media Player unterstützt standardmäßig keine FairPlay-Wiedergabe. Sie benötigen den Beispiel-Player des Apple-Entwicklerkontos, um FairPlay-Wiedergabe unter MAC OSX zu erhalten.
+> Azure Media Player unterstützt die FairPlay-Wiedergabe. Weitere Informationen finden Sie in der [Azure Media Player-Dokumentation](https://amp.azure.net/libs/amp/latest/docs/index.html).
 >
 >
 
@@ -157,7 +157,7 @@ Das folgende Beispiel veranschaulicht die Möglichkeit, Media Services zum Über
 Überschreiben Sie den Code in Ihrer Datei "Program.cs" mit dem in diesem Abschnitt gezeigten Code.
 
 >[!NOTE]
->Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
+>Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-dotnet-manage-entities.md#limit-access-policies).
 
 Stellen Sie sicher, dass die Variablen so aktualisiert werden, dass sie auf die Ordner zeigen, in denen sich Ihre Eingabedateien befinden.
 

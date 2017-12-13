@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/03/2017
 ms.author: andredm
-ms.openlocfilehash: 56d8ad4fecf14dfa69ade43438672c31a4954209
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 6abbad8a086571702fd2e9d4d5d172189bb3c339
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Versionshinweise für Azure Stack Development Kit
 
@@ -56,7 +56,7 @@ Die Anmerkungen zu dieser Version enthalten Informationen zu Verbesserungen, Feh
    Zum Umgehen der beiden letztgenannten Probleme können Sie den Namen des Abonnements oder der Ressourcengruppe eingeben (falls bekannt), oder Sie können stattdessen PowerShell verwenden.
 
 - Ihnen wird die Warnung **Aktivierung erforderlich** angezeigt, die Ihnen dazu rät, Ihr Azure Stack Development Kit zu registrieren. Dies ist das erwartete Verhalten.
-- Klicken Sie in den Details der Warnung **Aktivierung erforderlich** nicht auf den Link zu der Komponente **AzureBridge**. Wenn Sie dies tun, wird versucht, das Blatt **Übersicht** zu laden. Dies ist jedoch nicht erfolgreich, und es erfolgt kein Timeout.
+- Wenn der Link **Komponente** von einer beliebigen **Infrastrukturrollen**-Warnung aus angeklickt wird, wird versucht, das resultierende Blatt **Übersicht** zu laden, aber dabei tritt ein Fehler auf. Darüber hinaus wird kein Timeout für das Blatt **Übersicht** überschritten.
 - Das Löschen von Benutzerabonnements führt zu verwaisten Ressourcen. Eine Problemumgehung besteht darin, zuerst Benutzerressourcen oder die gesamte Ressourcengruppe zu löschen und anschließend Benutzerabonnements zu löschen.
 - Sie können mit den Azure Stack-Portalen keine Berechtigungen für Ihr Abonnement anzeigen. Eine Problemumgehung besteht darin, die Berechtigungen mit PowerShell zu überprüfen.
  

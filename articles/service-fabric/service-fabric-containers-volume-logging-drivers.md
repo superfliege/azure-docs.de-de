@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric Docker Compose (Vorschau) | Microsoft-Dokumentation
-description: "Azure Service Fabric akzeptiert das Docker Compose Format für eine einfachere Orchestrierung vorhandener Container mithilfe von Service Fabric. Diese Unterstützung befindet sich derzeit in der Vorschauphase."
+description: "Azure Service Fabric akzeptiert das Docker Compose-Format für eine einfachere Orchestrierung vorhandener Container mithilfe von Service Fabric. Die Unterstützung für Docker Compose befindet sich derzeit in der Vorschauphase."
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -14,22 +14,23 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 955f84e5656bbf568234cbaf69faa4dd0a741206
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 433424a6700d3e8940e3d1142ce2ff579a92067c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/06/2017
 ---
-# <a name="using-volume-plugins-and-logging-drivers-in-your-container"></a>Verwenden von Volume-Plug-Ins und Protokollierungstreibern im Container
-Service Fabric unterstützt die Angabe von [Docker-Volume-Plug-Ins](https://docs.docker.com/engine/extend/plugins_volume/) und [Docker-Protokollierungstreibern](https://docs.docker.com/engine/admin/logging/overview/) für Ihren Containerdienst.  Dies ermöglicht es Ihnen, Ihre Daten in [Azure Files](https://azure.microsoft.com/en-us/services/storage/files/) beizubehalten, auch wenn Ihr Container auf einen anderen Host verschoben oder neu gestartet wird.
+# <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>Verwenden von Docker-Volume-Plug-Ins und Docker-Protokollierungstreibern im Container
+Azure Service Fabric unterstützt die Angabe von [Docker-Volume-Plug-Ins](https://docs.docker.com/engine/extend/plugins_volume/) und [Docker-Protokollierungstreibern](https://docs.docker.com/engine/admin/logging/overview/) für Ihren Containerdienst. Sie können Ihre Daten in [Azure Files](https://azure.microsoft.com/services/storage/files/) beibehalten, wenn Ihr Container auf einen anderen Host verschoben oder neu gestartet wird.
 
-Derzeit gibt es nur Volumetreiber für Linux-Container, wie unten gezeigt.  Wenn Sie Windows-Container verwenden, ist es möglich, ein Volume einer [SMB3-Freigabe](https://blogs.msdn.microsoft.com/clustering/2017/08/10/container-storage-support-with-cluster-shared-volumes-csv-storage-spaces-direct-s2d-smb-global-mapping/) von Azure Files ohne Volumetreiber mit der neuesten Version (1709) von Windows Server zuzuordnen. Dazu müssen Sie Ihre Virtual Machines in Ihrem Cluster auf Windows Server, Version 1709, aktualisieren.
+Derzeit werden nur Volumetreiber für Linux-Container unterstützt. Wenn Sie Windows-Container verwenden, können Sie ein Volume ohne einen Volumetreiber zu einer [SMB3-Freigabe](https://blogs.msdn.microsoft.com/clustering/2017/08/10/container-storage-support-with-cluster-shared-volumes-csv-storage-spaces-direct-s2d-smb-global-mapping/) von Azure Files zuordnen. Aktualisieren Sie für diese Zuordnung Ihre virtuellen Computer in Ihrem Cluster auf die neueste Version 1709 von Windows Server.
 
 
-## <a name="install-volumelogging-driver"></a>Installieren des Volume-/Protokollierungstreibers
+## <a name="install-the-docker-volumelogging-driver"></a>Installieren des Docker-Volume-/Protokollierungstreibers
 
-Wenn der Docker-Volume-/Protokollierungstreiber auf dem Computer nicht installiert ist, installieren Sie ihn manuell, indem Sie über RDP/SSH eine Verbindung mit dem Computer herstellen oder ein [VMSS-Startskript](https://azure.microsoft.com/en-us/resources/templates/201-vmss-custom-script-windows/) oder ein [SetupEntryPoint](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-model#describe-a-service)-Skript verwenden. Wenn Sie eine der aufgeführten Methoden auswählen, können Sie ein Skript zum Installieren des [Docker-Volumetreibers für Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) schreiben:
+Wenn der Docker-Volume-/Protokollierungstreiber nicht auf dem Computer installiert ist, können Sie ihn mithilfe der RDP/SSH-Protokolle manuell installieren. Sie können die Installation mit diesen Protokollen über ein [VMSS-Startskript](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) oder ein [SetupEntryPoint-Skript](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-application-model#describe-a-service) durchführen.
 
+Beispiel für das Skript zum Installieren des [Docker-Volumetreibers für Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/):
 
 ```bash
 docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:17.09.0-ce-azure1  \
@@ -39,8 +40,8 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
     DEBUG=1
 ```
 
-## <a name="specify-the-plugin-or-driver-in-the-manifest"></a>Angeben des Plug-Ins oder Treibers im Manifest
-Die Plug-Ins werden im Anwendungsmanifest angegeben. Siehe dazu das folgende Manifest:
+## <a name="specify-the-plug-in-or-driver-in-the-manifest"></a>Angeben des Plug-Ins oder Treibers im Manifest
+Die Plug-Ins sind im Anwendungsmanifest wie folgt angegeben:
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -75,19 +76,16 @@ Die Plug-Ins werden im Anwendungsmanifest angegeben. Siehe dazu das folgende Man
 </ApplicationManifest>
 ```
 
-Im Beispiel oben bezieht sich das `Source`-Tag für das `Volume` auf den Quellordner. Der Quellordner kann ein Ordner auf dem virtuellen Computer, der die Container hostet, oder ein persistenter Remotespeicher sein. Das `Destination`-Tag ist der Speicherort, dem `Source` im ausgeführten Container zugeordnet ist.  Ihr Ziel kann also nicht ein bereits vorhandener Speicherort innerhalb Ihres Containers sein.
+Das **Source**-Tag für das **Volume**-Element verweist auf den Quellordner. Der Quellordner kann ein Ordner auf dem virtuellen Computer, der die Container hostet, oder ein persistenter Remotespeicher sein. Das **Destination**-Tag ist der Speicherort, dem **Source** im ausgeführten Container zugeordnet ist. Das Ziel kann also nicht ein bereits vorhandener Speicherort innerhalb des Containers sein.
 
-Wenn Sie ein Volume-Plug-In angeben, erstellt Service Fabric das Volume automatisch mit den angegebenen Parametern. Das `Source`-Tag ist der Name des Volumes, und das `Driver`-Tag gibt das Volumetreiber-Plug-In an. Optionen können wie im folgenden Codeausschnitt mithilfe des `DriverOption`-Tags angegeben werden:
+Wenn Sie ein Volume-Plug-In angeben, erstellt Service Fabric das Volume automatisch mit den angegebenen Parametern. Das **Source**-Tag ist der Name des Volumes, und das **Driver**-Tag gibt das Volumetreiber-Plug-In an. Optionen können mithilfe des **DriverOption**-Tags wie folgt angegeben werden:
 
 ```xml
 <Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azure" IsReadOnly="true">
            <DriverOption Name="share" Value="models"/>
 </Volume>
 ```
-Wenn ein Docker-Protokolltreiber angegeben wird, müssen Agents (oder Container) für die Verarbeitung der Protokolle im Cluster bereitgestellt werden.  Mit dem `DriverOption`-Tag können außerdem Protokolltreiberoptionen angegeben werden.
+Wenn ein Docker-Protokolltreiber angegeben wird, müssen Sie Agents (oder Container) für die Verarbeitung der Protokolle im Cluster bereitstellen. Mit dem **DriverOption**-Tag können Optionen für den Protokolltreiber angegeben werden.
 
-Informationen zum Bereitstellen von Containern in einem Service Fabric-Cluster finden Sie in den folgenden Artikeln:
-
-
-[Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md)
-
+## <a name="next-steps"></a>Nächste Schritte
+Informationen zum Bereitstellen von Containern in einem Service Fabric-Cluster finden Sie unter [Bereitstellen eines Containers in Service Fabric](service-fabric-deploy-container.md).

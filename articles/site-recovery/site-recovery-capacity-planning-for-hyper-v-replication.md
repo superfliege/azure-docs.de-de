@@ -12,14 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 11/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: db790f9dc56605b5b752e7ab797903e32b2fc675
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: e2a69f240068d3155c2fdd52c118dc037ccbcdcb
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/05/2017
 ---
+Eine neue, erweiterte Version des [Azure Site Recovery-Bereitstellungsplaners für Hyper-V zu Azure](site-recovery-hyper-v-deployment-planner.md) ist jetzt verfügbar und ersetzt das alte Tool. Verwenden Sie das neue Tool für Ihre Bereitstellungsplanung. Das Tool bietet folgende Hilfsmittel: 
+* Bewertung der Eignung von virtuellen Computern basierend auf Datenträgeranzahl, Datenträgergröße, IOPS, Änderungsrate und einigen VM-Merkmalen.
+* Vergleich von erforderlicher Netzwerkbandbreite und RPO-Bewertung
+* Anforderungen an die Azure-Infrastruktur
+* Anforderungen an die lokale Infrastruktur
+* Anleitung zur Batchverarbeitung für die erste Replikation
+* Geschätzte Kosten für Notfallwiederherstellung in Azure
+
+
 # <a name="hyper-v-capacity-planner-tool-for-site-recovery"></a>Hyper-V-Kapazitätsplanungstool für Site Recovery
 
 Als Teil Ihrer Azure Site Recovery-Bereitstellung müssen Sie Ihre Replikations- und Bandbreitenanforderungen ermitteln. Das Hyper-V Capacity Planner-Tool für Site Recovery hilft Ihnen, dies für die Replikation virtueller Hyper-V-Computer durchzuführen.
@@ -59,7 +68,7 @@ Wir empfehlen Ihnen, einen einzelnen Hyper-V-Host als Wiederherstellungsserver e
 1. Wenn Sie einen Clusterknoten als Replikat verwenden möchten, müssen Sie den Hyper-V-Replikatbroker konfigurieren:
 
    * Öffnen Sie im **Server-Manager** den **Failovercluster-Manager**.
-   * Stellen Sie eine Verbindung mit dem Cluster her, markieren Sie den Clusternamen und klicken Sie auf **Actions** (Aktionen) > **Configure Role** (Rolle konfigurieren), um den Assistenten für hohe Verfügbarkeit zu öffnen.
+   * Stellen Sie eine Verbindung mit dem Cluster her, markieren Sie den Clusternamen und klicken Sie auf **Actions** (Aktionen) > **Configure Role** (Rolle konfigurieren), um den Hochverfügbarkeits-Assistenten zu öffnen.
    * Klicken Sie unter **Select Role** (Rolle auswählen) auf **Hyper-V Replica Broker** (Hyper-V-Replikatbroker). Geben Sie im Assistenten einen **NetBIOS-Namen** und eine **IP-Adresse** als Verbindungspunkt mit dem Cluster (einen sogenannten Clientzugriffspunkt) an. Der **Hyper-V-Replikatbroker** wird konfiguriert. Notieren Sie sich den Namen des Clientzugriffspunkts, der erstellt wird.
    * Vergewissern Sie sich, dass die Rolle „Hyper-V Replica Broker“ erfolgreich online geschaltet und ein Failover zwischen allen Knoten des Clusters ausgeführt wird. Klicken Sie hierzu mit der rechten Maustaste auf die Rolle, zeigen Sie auf **Move** (Verschieben), und klicken Sie dann auf **Select Node** (Knoten auswählen). Wählen Sie einen Knoten aus > **OK**.
    * Stellen Sie bei Verwendung der zertifikatbasierten Authentifizierung sicher, dass für jeden Clusterknoten und den Clientzugriffspunkt das Zertifikat installiert ist.

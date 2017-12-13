@@ -2,7 +2,7 @@ Es gibt einige Beschränkungen hinsichtlich der Anzahl von Metriken und Ereignis
 
 | **Ressource** | **Standardlimit** | **Hinweis**
 | --- | --- | --- |
-| Gesamtdaten pro Tag | 500 GB | Die Datenmenge kann durch Festlegen einer Obergrenze reduziert werden. Sollten Sie mehr benötigen, wenden Sie sich per E-Mail an AIDataCap@microsoft.com.
+| Gesamtdaten pro Tag | 100 GB | Die Datenmenge kann durch Festlegen einer Obergrenze reduziert werden. Wird eine höhere Datenmenge benötigt, können Sie den Grenzwert im Portal auf bis zu 1.000 GB erhöhen. Bei Kapazitäten über 1.000 GB senden Sie eine E-Mail an AIDataCap@microsoft.com.
 | Kostenlose Daten pro Monat<br/> (Plan der Grundpreise) | 1 GB | Zusätzliche Daten werden pro GB abgerechnet.
 | Drosselung | 32.000 Ereignisse/Sekunde | Das Limit wird eine Minute lang gemessen.
 | Beibehaltung von Daten | 90 Tage | Hierbei handelt es sich um eine Ressource für [Suche](../articles/application-insights/app-insights-diagnostic-search.md), [Analyse](../articles/application-insights/app-insights-analytics.md) und [Metrik-Explorer](../articles/application-insights/app-insights-metrics-explorer.md).

@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 4ba53dd1239290c64907ed431d404b2d1be66c36
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 08503a7f6f32125c324173636dbda0548f3ccb8c
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container
 
@@ -84,7 +84,7 @@ docker build --tag <docker-id>/mydockerimage:v1.0.0 .
 
 Der Befehl erzeugt eine Ausgabe ähnlich der Folgenden:
 
-```bash
+```
 # The output from the commands in this article has been shortened for brevity.
 
 Sending build context to Docker daemon  5.558MB
@@ -130,7 +130,7 @@ Eine Registrierung ist eine Anwendung, die Images hostet und Image- sowie Contai
 
 Docker Hub ist eine Registrierung für Docker-Images, die Ihnen ermöglicht, Ihre eigenen Repositorys – entweder öffentlich oder privat – zu hosten. Verwenden Sie für die Pushübertragung eines benutzerdefinierten Docker-Images an den öffentlichen Docker-Hub den [docker push](https://docs.docker.com/engine/reference/commandline/push/)-Befehl, und geben Sie Image-Name und -Tag vollständig an. Ein vollständiger Name und ein vollständiges Tag des Images sehen wie folgt aus:
 
-```bash
+```
 <docker-id>/image-name:tag
 ```
 
@@ -143,12 +143,12 @@ docker login --username <docker-id> --password <docker-hub-password>
 Eine „login succeeded“-Meldung bestätigt Ihre erfolgreiche Anmeldung. Wenn Sie angemeldet sind, können Sie das Image mit dem [docker Push](https://docs.docker.com/engine/reference/commandline/push/)-Befehl per Pushübertragung an Docker-Hub senden.
 
 ```bash
-docker push <docker-id>/mydockerimage:v1.0.0 .
+docker push <docker-id>/mydockerimage:v1.0.0
 ```
 
 Überprüfen Sie anhand der Befehlsausgabe, ob der Pushvorgang erfolgreich war.
 
-```bash
+```
 The push refers to a repository [docker.io/<docker-id>/mydockerimage:v1.0.0]
 c33197c3f6d4: Pushed
 ccd2c850ee43: Pushed
@@ -314,7 +314,7 @@ top
 
 Der `top`-Befehl macht alle aktiven Prozesse in einem Container verfügbar.
 
-```bash
+```
 PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
  1 root      20   0  945616  35372  15348 S  0.0  2.1   0:04.63 node
 20 root      20   0   55180   2776   2516 S  0.0  0.2   0:00.00 sshd
@@ -343,7 +343,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 Die Ausgabe des Befehls ähnelt der folgenden JSON-Zeichenfolge und zeigt an, dass die Konfigurationsänderung erfolgreich war:
 
-```bash
+```json
 [
   {
     "name": "WEBSITES_ENABLE_APP_SERVICE_STORAGE",
@@ -383,7 +383,7 @@ az acr create --name <azure-container-registry-name> --resource-group myResource
 
 Das Erstellen eines Containers erzeugt die folgende Ausgabe:
 
-```bash
+```
  - Finished ..
 Create a new service principal and assign access:
   az ad sp create-for-rbac --scopes /subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<azure-container-registry-name> --role Owner --password <password>
@@ -447,6 +447,12 @@ Vergewissern Sie sich, dass die Anmeldung erfolgreich war.
 
 ### <a name="push-an-image-to-azure-container-registry"></a>Übertragen eines Images zu Azure Container Registry mithilfe von Push
 
+> [!NOTE]
+> Wenn Sie Ihr eigenes Image verwenden, kennzeichnen Sie es wie folgt:
+> ```bash
+> docker tag <azure-container-registry-name>.azurecr.io/mydockerimage
+> ```
+
 Übertragen Sie das Image mithilfe des Befehls `docker push`. Kennzeichnen Sie das Image mit dem Namen der Registrierung, gefolgt von Name und Tag des Image.
 
 ```bash
@@ -505,7 +511,7 @@ az webapp config container set --name <app_name> --resource-group myResourceGrou
 
 Die Ausgabe des Befehls ähnelt der folgenden JSON-Zeichenfolge und zeigt an, dass die Konfigurationsänderung erfolgreich war:
 
-```bash
+```json
 [
   {
     "name": "DOCKER_CUSTOM_IMAGE_NAME",

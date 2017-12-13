@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 470bba665dcf8b3517b86ee633a9570ec0f3cd33
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 26ab8f9ab561cc218f3dcb249741a96d8f14c579
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Konfigurieren des Azure Machine Learning-Experimentieren-Diensts
 
@@ -198,7 +198,7 @@ Der virtuelle Remotecomputer sollte die folgenden Anforderungen erfüllen:
 Sie können den folgenden Befehl verwenden, um für eine Docker-basierte Remoteausführung sowohl die Definition des Computeziels als auch die Laufzeitkonfiguration zu erstellen.
 
 ```
-az ml computetarget attach --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" --type remotedocker
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
 ```
 
 Nachdem Sie das Computeziel konfiguriert haben, können Sie zum Ausführen Ihres Skripts den folgenden Befehl verwenden.
@@ -211,7 +211,7 @@ $ az ml experiment submit -c remotevm myscript.py
 Da der Docker-Erstellungsprozess für virtuelle Remotecomputer genau dem Prozess für lokale Docker-Ausführungen entspricht, sollten Sie mit einer ähnlichen Ausführungsoberfläche rechnen.
 
 >[!TIP]
->Wenn Sie es vorziehen, die Wartezeit durch die Erstellung des Docker-Image für Ihre erste Ausführung zu vermeiden, können Sie den folgenden Befehl verwenden, um das Computeziel vor dem Ausführen des Skripts vorzubereiten. az ml experiment prepare -c <remotedocker>
+>Wenn Sie es vorziehen, die Wartezeit durch die Erstellung des Docker-Image für Ihre erste Ausführung zu vermeiden, können Sie den folgenden Befehl verwenden, um das Computeziel vor dem Ausführen des Skripts vorzubereiten. az ml experiment prepare -c remotedocker
 
 
 _**Übersicht über die Ausführung eines virtuellen Remotecomputers für ein Python-Skript:**_
@@ -226,7 +226,7 @@ HDInsight ist eine beliebte Plattform für die Big Data-Analyse mit Unterstützu
 Sie können ein Computeziel und eine Laufzeitkonfiguration für einen HDInsight Spark-Cluster erstellen, indem Sie den folgenden Befehl verwenden:
 
 ```
-$ az ml computetarget attach --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword" --type cluster 
+$ az ml computetarget attach cluster --name "myhdi" --address "<FQDN or IP address>" --username "sshuser" --password "sshpassword"  
 ```
 
 >[!NOTE]
@@ -253,6 +253,29 @@ _**Übersicht über die HDInsight-basierte Ausführung für ein PySpark-Skript**
 ## <a name="running-a-script-on-gpu"></a>Ausführen eines Skripts per GPU
 Eine Anleitung zum Ausführen Ihrer Skripts per GPU finden Sie im Artikel [Verwenden von GPUs in Azure Machine Learning](how-to-use-gpu.md).
 
+## <a name="using-ssh-key-based-authentication-for-creating-and-using-compute-targets"></a>Erstellen und Verwenden von Computezielen mit Authentifizierung über SSH-Schlüssel
+Azure Machine Learning-Workbench ermöglicht Ihnen das Erstellen und Verwenden von Computezielen mithilfe der Authentifizierung über SSH-Schlüssel zusätzlich zu dem Schema mit Benutzername und Kennwort. Diese Möglichkeit steht bei Verwendung von Remotedocker oder Clustern als Computeziel bereit. Wenn Sie dieses Schema verwenden, erstellt Workbench ein Paar aus öffentlichem und privatem Schlüssel und meldet den öffentlichen Schlüssel dann. Sie fügen den öffentlichen Schlüssel an die Datei „~/.ssh/authorized_keys“ für Ihren Benutzernamen an. Azure Machine Learning Workbench verwendet dann die Authentifizierung mit SSH-Schlüsseln für den Zugriff und die Ausführung auf diesem Computeziel. Da der private Schlüssel für das Computeziel im Schlüsselspeicher für den Arbeitsbereich gespeichert wird, können andere Benutzer des Arbeitsbereichs das Computeziel auf gleiche Weise verwenden, indem sie den Benutzernamen zum Erstellen des Computeziels angeben.  
+
+Um diese Funktion zu verwenden, führen Sie die folgenden Schritte aus. 
+
+- Erstellen Sie ein Computeziel mit einem der folgenden Befehle.
+
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --use-azureml-ssh-key
+```
+oder
+```
+az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP_address" --username "sshuser" -k
+```
+- Fügen Sie den von Workbench generierten öffentlichen Schlüssel der Datei „~/.ssh/authorized_keys“ auf dem angefügten Computeziel hinzu. 
+
+[!IMPORTANT] Sie müssen sich auf dem Computeziel mit demselben Benutzernamen anmelden, den Sie zum Erstellen des Computeziels verwendet haben. 
+
+- Jetzt können Sie das Computeziel mit Authentifizierung über SSH-Schlüssel vorbereiten und verwenden.
+
+```
+az ml experiment prepare -c remotevm
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Create and Install Azure Machine Learning (Erstellen und Installieren von Azure Machine Learning)](quickstart-installation.md)

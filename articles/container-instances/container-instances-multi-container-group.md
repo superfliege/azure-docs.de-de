@@ -1,41 +1,33 @@
 ---
-title: Azure Container Instances-Gruppe mit mehreren Containern | Azure-Dokumentation
-description: Azure Container Instances-Gruppe mit mehreren Containern
+title: Bereitstellen von Gruppen mit mehreren Containern in Azure Container Instances
+description: Hier erfahren Sie, wie Sie eine Containergruppe mit mehreren Containern in Azure Container Instances bereitstellen.
 services: container-instances
-documentationcenter: 
 author: neilpeterson
 manager: timlt
-editor: 
-tags: 
-keywords: 
-ms.assetid: 
 ms.service: container-instances
-ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 07/26/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 140f58582645ea32f77e901eb13364ed145bbecf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e1f23e20b001404d3f781e7e6deac87ede12684
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="deploy-a-container-group"></a>Bereitstellen einer Containergruppe
 
-Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer *Containergruppe*. Dies ist nützlich, wenn eine Sidecar-Anwendung für die Protokollierung, die Überwachung oder irgendeine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird. 
+Azure Container Instances unterstützt die Bereitstellung von mehreren Containern auf einem einzelnen Host mit einer *Containergruppe*. Dies ist nützlich, wenn eine Sidecar-Anwendung für die Protokollierung, die Überwachung oder irgendeine andere Konfiguration, bei der ein Dienst einen zweiten angefügten Prozess benötigt, erstellt wird.
 
 In diesem Artikel wird das Ausführen einer einfachen Sidecar-Konfiguration mit mehreren Containern mithilfe einer Azure Resource Manager-Vorlage beschrieben.
 
 ## <a name="configure-the-template"></a>Konfigurieren der Vorlage
 
-Erstellen Sie eine Datei mit dem Namen `azuredeploy.json`, und fügen Sie das folgende JSON-Dokument ein. 
+Erstellen Sie eine Datei mit dem Namen `azuredeploy.json`, und fügen Sie das folgende JSON-Dokument ein.
 
-In diesem Beispiel wird eine Containergruppe mit zwei Containern und einer öffentlichen IP-Adresse definiert. Der erste Container der Gruppe führt eine Anwendung mit Internetverbindung aus. Der zweite Container, der Sidecar, stellt eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe. 
+In diesem Beispiel wird eine Containergruppe mit zwei Containern und einer öffentlichen IP-Adresse definiert. Der erste Container der Gruppe führt eine Anwendung mit Internetverbindung aus. Der zweite Container, der Sidecar, stellt eine HTTP-Anforderung an die Hauptwebanwendung über das lokale Netzwerk der Gruppe.
 
-Dieses Sidecar-Beispiel kann erweitert werden, um eine Warnung auszulösen, wenn ein anderer HTTP-Antwortcode als 200 OK empfangen wird. 
+Dieses Sidecar-Beispiel kann erweitert werden, um eine Warnung auszulösen, wenn ein anderer HTTP-Antwortcode als 200 OK empfangen wird.
 
 ```json
 {
@@ -46,7 +38,7 @@ Dieses Sidecar-Beispiel kann erweitert werden, um eine Warnung auszulösen, wenn
   "variables": {
     "container1name": "aci-tutorial-app",
     "container1image": "microsoft/aci-helloworld:latest",
-    "container2name": "aci-tutorial-sidecar",    
+    "container2name": "aci-tutorial-sidecar",
     "container2image": "microsoft/aci-tutorial-sidecar"
   },
     "resources": [
@@ -135,7 +127,7 @@ Stellen Sie mit dem Befehl [az group deployment create](/cli/azure/group/deploym
 az group deployment create --name myContainerGroup --resource-group myResourceGroup --template-file azuredeploy.json
 ```
 
-Innerhalb weniger Sekunden erhalten Sie eine erste Antwort von Azure. 
+Innerhalb weniger Sekunden erhalten Sie eine erste Antwort von Azure.
 
 ## <a name="view-deployment-state"></a>Zusammenfassung der Bereitstellungen anzeigen
 
@@ -153,9 +145,9 @@ Name              ResourceGroup    ProvisioningState    Image                   
 myContainerGroup  myResourceGrou2  Succeeded            microsoft/aci-tutorial-sidecar,microsoft/aci-tutorial-app:v1      40.118.253.154:80  1.0 core/1.5 gb   Linux     westus
 ```
 
-## <a name="view-logs"></a>Anzeigen von Protokollen   
+## <a name="view-logs"></a>Anzeigen von Protokollen
 
-Zeigen Sie die Protokollausgabe eines Containers mit dem `az container logs`-Befehl an. Das `--container-name`-Argument gibt den Container an, aus dem Protokolle erhalten werden können. In diesem Beispiel wird der erste Container angegeben. 
+Zeigen Sie die Protokollausgabe eines Containers mit dem `az container logs`-Befehl an. Das `--container-name`-Argument gibt den Container an, aus dem Protokolle erhalten werden können. In diesem Beispiel wird der erste Container angegeben.
 
 ```azurecli-interactive
 az container logs --name myContainerGroup --container-name aci-tutorial-app --resource-group myResourceGroup

@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: db4774de28a17e022de111986f72a1f15ec32beb
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 458338cd23c704c40c512dd96b22a4790f27d017
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="supported-data-sources-for-azure-machine-learning-data-preparation"></a>Unterstützte Datenquellen für die Azure Machine Learning-Datenvorbereitung 
 Dieser Artikel enthält eine Übersicht der zurzeit in der Azure Machine Learning-Datenvorbereitung unterstützten Datenquellen.
@@ -24,6 +24,25 @@ Dieser Artikel enthält eine Übersicht der zurzeit in der Azure Machine Learnin
 Folgende Datenquellen werden für dieses Release unterstützt.
 
 ## <a name="types"></a>Typen 
+
+### <a name="sql-server"></a>SQL Server
+Lesen Sie aus einem lokalen SQL-Server oder einer Azure SQL-Datenbank.
+
+#### <a name="options"></a>Optionen
+- Serveradresse
+- Server vertrauen (selbst wenn das Zertifikat auf dem Server ungültig ist; mit Vorsicht verwenden)
+- Authentifizierungstyp (Windows, Server)
+- Benutzername
+- Kennwort
+- Datenbank für die Verbindung
+- SQL-Abfrage
+
+#### <a name="notes"></a>Hinweise
+- Sql-variant-Spalten werden nicht unterstützt.
+- Zeitspalten werden in datetime konvertiert, indem die Zeit aus der Datenbank an das Datum „1970/1/1“ angehängt wird.
+- Bei Ausführung in einem Spark-Cluster ergeben alle Spalten im Zusammenhang mit dem Datum (date, datetime, datetime2, datetimeoffset) falsche Auswertungen für Datumsangaben vor 1583.
+- Werte in Dezimalspalten verlieren bei der Konvertierung in Dezimalwerte möglicherweise an Genauigkeit.
+
 ### <a name="directory-vs-file"></a>Verzeichnis im Vergleich zu Datei
 Wählen Sie eine einzelne Datei aus, und lesen Sie sie in die Datenvorbereitung ein. Der Dateityp wird analysiert, um die Standardparameter für die Dateiverbindung auf dem nächsten Bildschirm zu bestimmen.
 
@@ -88,6 +107,9 @@ Die Ausführung mit horizontaler Hochskalierung basiert auf den Parquet-Lesefunk
 ## <a name="locations"></a>Standorte
 ### <a name="local"></a>Lokal
 Eine lokale Festplatte oder ein zugeordneter Netzwerkspeicherort
+
+### <a name="sql-server"></a>SQL Server
+Lokaler SQL-Server oder Azure SQL-Datenbank.
 
 ### <a name="azure-blob-storage"></a>Azure-Blobspeicher
 Azure Blob Storage (mit Anforderung eines Azure-Abonnements)

@@ -1,5 +1,5 @@
 ---
-title: Registrieren/Aufheben der Registrierung eines Servers bei der Azure-Dateisynchronisierung (Vorschau) | Microsoft-Dokumentation
+title: Verwalten registrierter Server mit Azure File Sync (Vorschau) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie einen Windows Server bei einem Azure-Datei-/Speichersynchronisierungsdienst registrieren bzw. die Registrierung aufheben.
 services: storage
 documentationcenter: 
@@ -12,22 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2017
+ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 13a75d5cafd94435346660614721399f2d77919b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 8e707c193c5a8e294710973e128e1cf96d4f6461
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="registerunregister-a-server-with-azure-file-sync-preview"></a>Registrieren/Aufheben der Registrierung eines Servers bei der Azure-Dateisynchronisierung (Vorschau)
+# <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Verwalten registrierter Server mit Azure File Sync (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
 
-Im folgenden Artikel wird beschrieben, wie Sie einen Windows Server bei einem Speichersynchronisierungsdienst registrieren bzw. die Registrierung aufheben. Dies kann erforderlich sein, wenn ein Server außer Betrieb genommen oder ein neuer Serverendpunkt in einer Synchronisierungsgruppe hinzugefügt werden soll. Informationen über die End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
+Im folgenden Artikel wird beschrieben, wie Sie einen Server bei einem Speichersynchronisierungsdienst registrieren und verwalten. Informationen über die End-to-End-Bereitstellung der Azure-Dateisynchronisierung finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
-Bevor Sie einen Windows Server bei einem Speichersynchronisationsdienst registrieren können, müssen Sie die erforderlichen Voraussetzungen auf einem Windows Server sicherstellen:
+## <a name="registerunregister-a-server-with-storage-sync-service"></a>Registrieren eines Servers beim Speichersynchronisierungsdienst und Aufheben der Registrierung
+Beim Registrieren eines Servers bei Azure File Sync wird eine Vertrauensstellung zwischen Windows Server und Azure eingerichtet. Mithilfe dieser Beziehung können dann *Serverendpunkte* auf dem Server erstellt werden, die bestimmte Ordner darstellen, die mit einer Azure-Dateifreigabe (auch als *Cloudendpunkt* bezeichnet) synchronisiert werden sollen. 
 
+### <a name="prerequisites"></a>Voraussetzungen
+Bevor Sie einen Server bei einem Speichersynchronisationsdienst registrieren können, müssen die erforderlichen Voraussetzungen auf dem Server erfüllt sein:
+
+* Ihr Server muss unter einer unterstützten Version von Windows Server ausgeführt werden. Weitere Informationen finden Sie unter [Unterstützte Windows Server-Versionen](storage-sync-files-planning.md#supported-versions-of-windows-server).
 * Stellen Sie sicher, dass der Speichersynchronisierungsdienst bereitgestellt wurde. Weitere Informationen zum Bereitstellen eines Speichersynchronisierungsdiensts finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md).
 * Stellen Sie sicher, dass der Server mit dem Internet verbunden ist und dass der Zugriff auf Azure möglich ist.
 * Deaktivieren Sie die verstärkte Sicherheitskonfiguration für IE über die Server-Manager-Benutzeroberfläche.
@@ -39,10 +43,10 @@ Bevor Sie einen Windows Server bei einem Speichersynchronisationsdienst registri
     > [!Note]  
     > Es wird empfohlen, die neueste Version des AzureRM-PowerShell-Moduls zu verwenden, um einen Server zu registrieren bzw. die Registrierung aufzuheben. Wenn das AzureRM-Paket zuvor auf diesem Server installiert wurde (und die PowerShell-Version auf diesem Server 5.* oder höher ist), können Sie das Paket mit dem Cmdlet `Update-Module` aktualisieren. 
 
-## <a name="register-a-server-with-storage-sync-service"></a>Registrieren eines Servers beim Speichersynchronisierungsdienst
-Damit ein Windows Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* für die Azure-Dateisynchronisierung verwendet werden kann, muss er bei einem *Speicher-Synchronisierungsdienst* registriert werden. Ein Server kann immer nur bei einem *Speichersynchronisierungsdienst* registriert sein.
+### <a name="register-a-server-with-storage-sync-service"></a>Registrieren eines Servers beim Speichersynchronisierungsdienst
+Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von Azure File Sync verwendet werden kann, muss er bei einem *Speichersynchronisierungsdienst* registriert werden. Ein Server kann immer nur bei einem Speichersynchronisierungsdienst registriert sein.
 
-### <a name="install-the-azure-file-sync-agent"></a>Installieren des Azure-Dateisynchronisierungs-Agents
+#### <a name="install-the-azure-file-sync-agent"></a>Installieren des Azure-Dateisynchronisierungs-Agents
 1. [Laden Sie den Azure-Dateisynchronisierungs-Agent herunter](https://go.microsoft.com/fwlink/?linkid=858257).
 2. Starten Sie den Installer für den Azure-Dateisynchronisierungs-Agent.
     
@@ -57,8 +61,7 @@ Damit ein Windows Server als *Serverendpunkt* in einer *Synchronisierungsgruppe*
 > [!Important]  
 > Wenn der Server Mitglied eines Failoverclusters ist, muss der Azure-Dateisynchronisierungs-Agent auf jedem Knoten im Cluster installiert werden.
 
-### <a name="register-the-server-using-the-server-registration-ui"></a>Registrieren des Servers mit der Benutzeroberfläche für die Serverregistrierung
-
+#### <a name="register-the-server-using-the-server-registration-ui"></a>Registrieren des Servers mit der Benutzeroberfläche für die Serverregistrierung
 > [!Important]  
 > Abonnements von Cloudlösungsanbietern können die Benutzeroberfläche für die Serverregistrierung nicht verwenden. Verwenden Sie stattdessen PowerShell (unten diesem Abschnitt).
 
@@ -76,21 +79,21 @@ Damit ein Windows Server als *Serverendpunkt* in einer *Synchronisierungsgruppe*
     ![Anmeldedialogfeld](media/storage-sync-files-server-registration/server-registration-ui-3.png)
 
 > [!Important]  
-> Wenn der Server Mitglied eines Failoverclusters ist, muss die Serverregistrierung für jeden einzelnen Server ausgeführt werden. Wenn Sie die registrierten Server im Azure-Portal anzeigen, werden alle Knoten von der Azure-Dateisynchronisierung automatisch als Mitglied des gleichen Failoverclusters erkannt und entsprechend gruppiert.
+> Wenn der Server Mitglied eines Failoverclusters ist, muss die Serverregistrierung für jeden einzelnen Server ausgeführt werden. Wenn Sie die registrierten Server im Azure-Portal anzeigen, werden alle Knoten von Azure File Sync automatisch als Mitglied des gleichen Failoverclusters erkannt und entsprechend gruppiert.
 
-### <a name="register-the-server-with-powershell"></a>Registrieren des Servers mit PowerShell
+#### <a name="register-the-server-with-powershell"></a>Registrieren des Servers mit PowerShell
 Sie können auch Serverregistrierung auch über PowerShell ausführen. Dies ist die einzige unterstützte Methode zur Serverregistrierung für Abonnements von Cloudlösungsanbietern:
 
 ```PowerShell
-Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
 Login-AzureRmStorageSync -SubscriptionID "<your-subscription-id>" -TenantID "<your-tenant-id>"
 Register-AzureRmStorageSyncServer -SubscriptionId "<your-subscription-id>" - ResourceGroupName "<your-resource-group-name>" - StorageSyncService "<your-storage-sync-service-name>"
 ```
 
-## <a name="unregister-the-server-with-storage-sync-service"></a>Aufheben der Registrierung des Servers beim Speichersynchronisierungsdienst
+### <a name="unregister-the-server-with-storage-sync-service"></a>Aufheben der Registrierung des Servers beim Speichersynchronisierungsdienst
 Zum Aufheben der Registrierung eines Servers bei einem Speichersynchronisierungsdienst sind mehrere Schritte erforderlich. Im Folgenden wird das ordnungsgemäße Aufheben der Serverregistrierung behandelt.
 
-### <a name="optional-recall-all-tiered-data"></a>(Optional) Abrufen aller ausgelagerten Daten
+#### <a name="optional-recall-all-tiered-data"></a>(Optional) Abrufen aller ausgelagerten Daten
 Wenn für einen Serverendpunkt das Cloudtiering aktiviert ist, werden Dateien auf Ihre Azure-Dateifreigaben *ausgelagert*. Dadurch können lokale Dateifreigaben als Cache statt als vollständige Kopie des Datasets fungieren, um den Speicherplatz auf dem Dateiserver effizient zu nutzen. Wenn jedoch ein Serverendpunkt entfernt wird und ausgelagerte Dateien noch lokal auf dem Server vorhanden sind, kann auf diese Dateien nicht mehr zugegriffen werden. Aus diesem Grund müssen Sie vor dem Aufheben der Registrierung alle ausgelagerten Dateien aus Azure Files abrufen, wenn ein Zugriff auf die Dateien weiterhin möglich sein soll. 
 
 Dies kann mithilfe des folgenden PowerShell-Cmdlets durchgeführt werden:
@@ -101,13 +104,13 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint>
 ```
 
 > [!Warning]  
-> Wenn das lokale Volume, auf dem der Server gehostet wird, nicht genügend freien Speicherplatz aufweist, um alle ausgelagerten Daten abzurufen, schlägt das Cmdlet `Invoke-StorageSyncFileRecall` fehl.  
+> Wenn das lokale Volume, auf dem der Serverendpunkt gehostet wird, nicht genügend freien Speicherplatz aufweist, um alle ausgelagerten Daten abzurufen, führt das Cmdlet `Invoke-StorageSyncFileRecall` zu einem Fehler.  
 
-### <a name="remove-the-server-from-all-sync-groups"></a>Entfernen des Servers aus allen Synchronisierungsgruppen
-Vor dem Aufheben der Registrierung des Servers beim Speichersynchronisierungsdienst müssen alle Serverendpunkte für diesen Server entfernt werden. Hierzu können Sie das Portal verwenden:
+#### <a name="remove-the-server-from-all-sync-groups"></a>Entfernen des Servers aus allen Synchronisierungsgruppen
+Vor dem Aufheben der Registrierung des Servers beim Speichersynchronisierungsdienst müssen alle Serverendpunkte für diesen Server entfernt werden. Hierzu können Sie das Azure-Portal verwenden:
 
 1. Navigieren Sie zu dem Speichersynchronisierungsdienst, bei dem der Server registriert ist.
-2. Entfernen Sie alle Serverendpunkte für diesen Server in allen Synchronisierungsgruppen im Speichersynchronisierungsdienst. Klicken Sie hierfür im Bereich „Synchronisierungsgruppe“ mit der rechten Maustaste auf den entsprechenden Serverendpunkt.
+2. Entfernen Sie alle Serverendpunkte für diesen Server aus allen Synchronisierungsgruppen im Speichersynchronisierungsdienst. Klicken Sie hierfür im Bereich „Synchronisierungsgruppe“ mit der rechten Maustaste auf den entsprechenden Serverendpunkt.
 
     ![Entfernen eines Serverendpunkts aus einer Synchronisierungsgruppe](media/storage-sync-files-server-registration/sync-group-server-endpoint-remove-1.png)
 
@@ -129,10 +132,46 @@ Get-AzureRmStorageSyncGroup -StorageSyncServiceName $StorageSyncService | ForEac
 }
 ```
 
-### <a name="unregister-the-server"></a>Aufheben der Serverregistrierung
+#### <a name="unregister-the-server"></a>Aufheben der Serverregistrierung
 Nachdem alle Daten abgerufen wurden und der Server aus allen Synchronisierungsgruppen entfernt wurde, kann die Registrierung des Servers aufgehoben werden. 
 
-1. Navigieren Sie im Azure-Portal zum Abschnitt „Registrierte Server“ des Speichersynchronisierungsdiensts.
+1. Navigieren Sie im Azure-Portal zum Abschnitt *Registrierte Server* des Speichersynchronisierungsdiensts.
 2. Klicken Sie mit der rechten Maustaste auf den Server, dessen Registrierung Sie aufheben möchten, und klicken Sie auf „Serverregistrierung aufheben“.
 
     ![Serverregistrierung aufheben](media/storage-sync-files-server-registration/unregister-server-1.png)
+
+## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Sicherstellen, dass Azure File Sync in Ihrem Rechenzentrum ein guter Nachbar ist 
+Da Azure File Sync selten der einzige Dienst ist, der in Ihrem Rechenzentrum ausgeführt wird, empfiehlt es sich, die Netzwerk- und Speichernutzung von Azure File Sync zu beschränken.
+
+> [!Important]  
+> Das Festlegen von zu niedrigen Grenzwerten wirkt sich auf die Leistung der Synchronisierung durch Azure File Sync und auf Rückrufe aus.
+
+### <a name="set-azure-file-sync-network-limits"></a>Festlegen von Netzwerklimits für Azure File Sync
+Sie können die Netzwerknutzung von Azure File Sync mithilfe des Cmdlets „StorageSyncNetworkLimit“ beschränken. 
+
+Sie können beispielsweise ein neues Netzwerklimit erstellen, um sicherzustellen, dass Azure File Sync an Werktagen zwischen 9:00 und 17:00 Uhr nicht mehr als 10 MBit/s verbraucht: 
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+New-StorageSyncNetworkLimit -Day Monday, Tuesday, Wednesday, Thursday, Friday -StartHour 9 -EndHour 17 -LimitKbps 10000
+```
+
+Mit dem folgenden Cmdlet können Sie Ihr Limit anzeigen:
+
+```PowerShell
+Get-StorageSyncNetworkLimit # assumes StorageSync.Management.ServerCmdlets.dll is imported
+```
+
+Verwenden Sie zum Entfernen von Netzwerklimits `Remove-StorageSyncNetworkLimit`. Mit dem folgenden Befehl werden z.B. alle Netzwerklimits entfernt:
+
+```PowerShell
+Get-StorageSyncNetworkLimit | ForEach-Object { Remove-StorageSyncNetworkLimit -Id $_.Id } # assumes StorageSync.Management.ServerCmdlets.dll is imported
+```
+
+### <a name="use-windows-server-storage-qos"></a>Verwenden von QoS für Speicher für Windows Server 
+Wenn Azure File Sync auf einem virtuellen Computer auf einem Windows Server-Virtualisierungshost ausgeführt wird, können Sie Quality of Service für Speicher verwenden, um die Speicher-E/A-Nutzung zu steuern. Die Richtlinie für QoS für Speicher kann entweder als Maximum (oder Grenzwert, wie das StorageSyncNetwork-Limit oben erzwungen wird) oder als Minimum (bzw. Reservierung) festgelegt werden. Das Festlegen eines Minimums anstelle eines Maximums ermöglicht Azure File Sync die Nutzung der verfügbaren Speicherbandbreite, wenn diese nicht von anderen Workloads genutzt wird. Weitere Informationen finden Sie unter [Quality of Service für Speicher](https://docs.microsoft.com/windows-server/storage/storage-qos/storage-qos-overview).
+
+## <a name="see-also"></a>Weitere Informationen
+- [Planen einer Bereitstellung von Azure File Sync (Vorschau)](storage-sync-files-planning.md)
+- [Bereitstellen von Azure File Sync (Vorschau)](storage-sync-files-deployment-guide.md) 
+- [Problembehandlung bei Azure File Sync (Vorschau)](storage-sync-files-troubleshoot.md)

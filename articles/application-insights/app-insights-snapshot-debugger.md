@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 5a0344dcef779a9818be3e320bd5c269a2859f71
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 68686e128d7e9528396f338b95f483adf07c3292
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
@@ -27,6 +27,16 @@ Sie können Debugmomentaufnahmen im Portal anzeigen, um die Aufrufliste anzuzeig
 Die Momentaufnahmesammlung ist für folgende Anwendungen verfügbar:
 * .NET Framework- und ASP.NET-Anwendungen, die mit .NET Framework 4.5 oder höher ausgeführt werden
 * .NET Core 2.0- und ASP.NET Core 2.0-Anwendungen, die unter Windows ausgeführt werden
+
+Die folgenden Umgebungen werden unterstützt:
+* Azure App Service
+* Azure Cloud Service mit Betriebssystemfamilie 4 oder höher
+* Azure Service Fabric-Dienste unter Windows Server 2012 R2 oder höher
+* Azure Virtual Machines mit Windows Server 2012 R2 oder höher
+* Lokale virtuelle oder physische Computer, auf denen Windows Server 2012 R2 oder höher ausgeführt wird
+
+> [!NOTE]
+> Clientanwendungen (z.B. WPF, Windows Forms oder UWP) werden nicht unterstützt.
 
 ### <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurieren der Momentaufnahmesammlung für ASP.NET-Anwendungen
 

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/26/2017
+ms.date: 12/05/2017
 ms.author: alkohli
-ms.openlocfilehash: 70c85bcb2c26d2ad3d0515d24e028f84495634c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3965c74d51996b3e4144130fad01fae9e265897
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Verwenden des StorSimple-Geräte-Manager-Diensts im Azure-Portal zum Klonen eines Volumes
 
@@ -69,12 +69,7 @@ Führen Sie die folgenden Schritte aus, um einen Klon des Volumes aus dem Sicher
    
     ![Liste der Sicherungssätze](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
-3. Erweitern Sie einen Sicherungssatz, um die zugehörigen Volumes anzuzeigen. Diese Volumes müssen auf dem Host und dem Gerät offline geschaltet werden, bevor sie wiederhergestellt werden können. Greifen Sie auf dem Blatt **Volumes** auf Ihr Gerät zu, und führen Sie dann die Schritte in [Offlineschalten eines Volumes](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) durch, um diese offline zu schalten.
-   
-   > [!IMPORTANT]
-   > Vergewissern Sie sich, dass die Volumes auf dem Host offline sind, bevor Sie diese auf dem Gerät offline schalten. Wenn Sie die Volumes auf dem Host nicht offline schalten, kann es zur Beschädigung von Daten kommen.
-   
-4. Navigieren Sie zurück zum **Sicherungskatalog**, und wählen Sie ein Volume in einem Sicherungssatz aus. Klicken Sie mit der rechten Maustaste, und wählen Sie im Kontextmenü **Klonen** aus.
+3. Erweitern Sie den Sicherungssatz, um das zugehörige Volume anzuzeigen, und wählen Sie ein Volume in einem Sicherungssatz aus. Klicken Sie mit der rechten Maustaste, und wählen Sie im Kontextmenü **Klonen** aus.
 
    ![Liste der Sicherungssätze](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 

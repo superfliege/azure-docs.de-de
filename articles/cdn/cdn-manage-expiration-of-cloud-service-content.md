@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: mazha
-ms.openlocfilehash: fe519c3ad5f99899277bf005929142c52a4c4724
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: dca6ca5f21f4a4f1701af57eb40d92094b6a4754
+ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="manage-expiration-of-web-content-in-azure-content-delivery-network"></a>Verwalten des Ablaufs von Webinhalt im Azure Content Delivery Network
 > [!div class="op_single_selector"]
@@ -26,10 +26,12 @@ ms.lasthandoff: 11/23/2017
 > * [Azure Blob Storage](cdn-manage-expiration-of-blob-content.md)
 > 
 
-Dateien von öffentlich zugänglichen Ursprungswebservern können bis zum Ende ihrer Gültigkeitsdauer im Azure Content Delivery Network (CDN) zwischengespeichert werden. Die Gültigkeitsdauer wird durch den `Cache-Control`-Header in der HTTP-Antwort des Ursprungsservers bestimmt. In diesem Artikel erfahren Sie, wie Sie `Cache-Control`-Header für das Web-Apps-Feature von Microsoft Azure App Service, Azure Cloud Services, ASP.NET-Anwendungen und Internetinformationsdienste-Websites (Internet Information Services, IIS) festlegen. Die Konfiguration ist dabei jeweils ähnlich. Sie können den `Cache-Control`-Header entweder mithilfe von Konfigurationsdateien oder programmgesteuert festlegen.
+Dateien von öffentlich zugänglichen Ursprungswebservern können bis zum Ende ihrer Gültigkeitsdauer im Azure Content Delivery Network (CDN) zwischengespeichert werden. Die Gültigkeitsdauer wird durch den `Cache-Control`-Header in der HTTP-Antwort des Ursprungsservers bestimmt. In diesem Artikel erfahren Sie, wie Sie `Cache-Control`-Header für das Web-Apps-Feature von Microsoft Azure App Service, Azure Cloud Services, ASP.NET-Anwendungen und Internetinformationsdienste-Websites (Internet Information Services, IIS) festlegen. Die Konfiguration ist dabei jeweils ähnlich. Sie können den `Cache-Control`-Header entweder mithilfe von Konfigurationsdateien oder programmgesteuert festlegen. 
+
+Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CDN-Cacheregeln](cdn-caching-rules.md) steuern. Wenn Sie Cacheregeln einrichten und ihr Zwischenspeicherverhalten auf **Außer Kraft setzen** oder **Cache umgehen** festlegen, werden die in diesem Artikel erörterten vom Ursprung angegebenen Cacheeinstellungen ignoriert. Weitere Informationen zu allgemeinen Cachekonzepten finden Sie unter [How caching works](cdn-how-caching-works.md) (Funktionsweise von Caching).
 
 > [!TIP]
-> Sie haben auch die Möglichkeit, für eine Datei keine Gültigkeitsdauer festzulegen. In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an. Diese Standardgültigkeitsdauer gilt nur für die Optimierung allgemeiner Webbereitstellungen. Bei der Optimierung großer Dateien beträgt die Standardgültigkeitsdauer einen Tag, bei der Optimierung für das Medienstreaming beträgt die Standardgültigkeitsdauer ein Jahr.
+> Sie haben auch die Möglichkeit, für eine Datei keine Gültigkeitsdauer festzulegen. In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an, es sei denn, Sie haben Cacheregeln im Azure-Portal eingerichtet. Diese Standardgültigkeitsdauer gilt nur für die Optimierung allgemeiner Webbereitstellungen. Bei der Optimierung großer Dateien beträgt die Standardgültigkeitsdauer einen Tag, bei der Optimierung für das Medienstreaming beträgt die Standardgültigkeitsdauer ein Jahr.
 > 
 > Weitere Informationen dazu, wie Azure CDN den Zugriff auf Dateien und andere Ressourcen beschleunigen kann, finden Sie in der [Übersicht über Azure Content Delivery Network](cdn-overview.md).
 > 
@@ -82,5 +84,5 @@ Sie können die Einstellungen für die Gültigkeitsdauer Ihres Webinhalts ganz e
 ## <a name="next-steps"></a>Nächste Schritte
 * [Lesen Sie ausführliche Informationen zum **clientCache**-Element.](http://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [Lesen Sie die Dokumentation für die **HttpResponse.Cache**-Eigenschaft.](http://msdn.microsoft.com/library/system.web.httpresponse.cache.aspx) 
-* [Lesen Sie die Dokumentation für die **HttpCachePolicy**-Klasse](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
-
+* [Lesen Sie die Dokumentation für die **HttpCachePolicy-Klasse**](http://msdn.microsoft.com/library/system.web.httpcachepolicy.aspx).  
+* [Informationen zu Cachekonzepten](cdn-how-caching-works.md)

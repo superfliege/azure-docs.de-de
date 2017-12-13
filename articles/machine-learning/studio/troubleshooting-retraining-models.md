@@ -3,7 +3,7 @@ title: "Problembehandlung für das erneute Trainieren eines klassischen Azure Ma
 description: "Es wird beschrieben, wie Sie häufige Probleme erkennen und beheben, die beim erneuten Trainieren des Modells für einen Azure Machine Learning-Webdienst auftreten können."
 services: machine-learning
 documentationcenter: 
-author: VDonGlover
+author: garyericson
 manager: raymondl
 editor: 
 ms.assetid: 75cac53c-185c-437d-863a-5d66d871921e
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: 85cf9175bb4a5f253c7b47b2edc3ac8b00616ba2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 011/01/2017
+ms.author: garye
+ms.openlocfilehash: 1e5327ad135d9bc8881354679dc3f1b8a472cad3
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="troubleshooting-the-retraining-of-an-azure-machine-learning-classic-web-service"></a>Problembehandlung für das erneute Trainieren eines klassischen Azure Machine Learning-Webdiensts
 ## <a name="retraining-overview"></a>Erneutes Trainieren – Übersicht
@@ -32,7 +32,7 @@ Wenn Sie den Webdienst erneut trainieren möchten, müssen Sie einige zusätzlic
 * Einen Webdienst, der über das Trainingsexperiment bereitgestellt wird. Für das Experiment muss an das **Web Service Output**-Modul das **Train Model**-Modul angefügt werden.  
   
     ![Webdienstausgabe an Trainingsmodell anfügen][image1]
-* Einen neuen Endpunkt, der dem Bewertungswebdienst hinzugefügt wird.  Sie können den Endpunkt programmgesteuert mit dem Beispielcode hinzufügen, der im Thema „Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen“ angegeben ist, oder Sie können das klassische Azure-Portal verwenden.
+* Einen neuen Endpunkt, der dem Bewertungswebdienst hinzugefügt wird.  Sie können den Endpunkt programmgesteuert mit dem Beispielcode hinzufügen, der im Thema „Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen“ angegeben ist, oder Sie können das Azure Machine Learning-Webdienstportal verwenden.
 
 Sie können anschließend den C#-Beispielcode von der API-Hilfeseite des Trainingswebdiensts verwenden, um das Modell erneut zu trainieren. Nachdem Sie die Ergebnisse ausgewertet haben und damit zufrieden sind, aktualisieren Sie den Bewertungswebdienst des trainierten Modells, indem Sie den neu hinzugefügten Endpunkt verwenden.
 
@@ -58,21 +58,19 @@ Gehen Sie wie folgt vor, um die richtige PATCH-URL abzurufen:
 3. Fügen Sie die URL in einen Browser ein, um auf eine Seite zu navigieren, auf der Hilfelinks für den Webdienst angegeben sind.
 4. Klicken Sie auf den Link **Ressource aktualisieren** , um die Hilfeseite für das Patching zu öffnen.
 
-**Option 2: Verwenden des klassischen Azure-Portals**
+**Option 2: Verwenden des Azure Machine Learning-Webdienstportals**
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
-2. Öffnen Sie die Registerkarte „Machine Learning“. ![Registerkarte „Machine Learning“][image4]
-3. Klicken Sie auf den Namen Ihres Arbeitsbereichs und dann auf **Webdienste**.
-4. Klicken Sie auf den Bewertungswebdienst, den Sie verwenden. (Wenn Sie den Standardnamen des Webdiensts nicht geändert haben, endet er mit „[Scoring Exp.]“.)
-5. Klicken Sie auf **Endpunkt hinzufügen**.
-6. Klicken Sie nach dem Hinzufügen des Endpunkts auf dessen Namen. Klicken Sie anschließend auf **Ressource aktualisieren** , um die Hilfeseite für das Patching zu öffnen.
+1. Melden Sie sich beim [Azure Machine Learning-Webdienstportal](https://services.azureml.net/) an.
+2. Klicken Sie oben auf **Webdienste** oder **Classic Web Services** (Klassische Webdienste).
+4. Klicken Sie auf den von Ihnen verwendeten Bewertungswebdienst. (Wenn Sie den Standardnamen des Webdiensts nicht geändert haben, endet er auf „[Scoring Exp.]“).
+5. Klicken Sie auf **+NEU**.
+6. Klicken Sie nach dem Hinzufügen des Endpunkts auf dessen Namen.
+7. Klicken Sie unter der **Patch**-URL auf **API-Hilfe**, um die Hilfeseite für das Patching zu öffnen.
 
 > [!NOTE]
 > Wenn Sie den Endpunkt nicht dem Vorhersagewebdienst, sondern dem Trainingswebdienst hinzugefügt haben, tritt beim Klicken auf den Link **Ressource aktualisieren** der folgende Fehler auf: „Sorry, but this feature is not supported or available in this context. This Web Service has no updatable resources. We apologize for the inconvenience and are working on improving this workflow.“ (Dieses Feature wird in diesem Kontext leider nicht unterstützt oder ist nicht verfügbar. Der Webdienst besitzt keine aktualisierbaren Ressourcen. Wir arbeiten bereits an einer Optimierung dieses Workflows.)
 > 
 > 
-
-![Dashboard für neuen Endpunkt][image3]
 
 Die PATCH-Hilfeseite enthält die PATCH-URL, die Sie verwenden müssen, und außerdem Beispielcode, den Sie zum Aufrufen verwenden können.
 
@@ -82,32 +80,32 @@ Die PATCH-Hilfeseite enthält die PATCH-URL, die Sie verwenden müssen, und auß
 * Führen Sie das Patching nicht für den Trainingswebdienst durch: Der Patchvorgang muss für den Bewertungswebdienst erfolgen.
 * Führen Sie das Patching nicht für den Standardendpunkt des Webdiensts durch: Der Patchvorgang muss für den neuen Bewertungswebdienst-Endpunkt erfolgen, den Sie hinzugefügt haben.
 
-Sie können überprüfen, unter welchem Webdienst sich der Endpunkt befindet, indem Sie das klassische Azure-Portal verwenden. 
+Sie können im Webdienstportal überprüfen, unter welchem Webdienst sich der Endpunkt befindet. 
 
 > [!NOTE]
 > Achten Sie darauf, dass Sie den Endpunkt dem Vorhersagewebdienst hinzufügen und nicht dem Trainingswebdienst. Wenn Sie sowohl einen Trainings- als auch einen Vorhersagewebdienst korrekt bereitgestellt haben, werden zwei separate Webdienste aufgeführt. Der Vorhersagewebdienst sollte mit „[predictive exp.]“ enden.
 > 
 > 
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
-2. Öffnen Sie die Registerkarte „Machine Learning“. ![ Benutzeroberfläche des Machine Learning-Arbeitsbereichs][image4]
-3. Wählen Sie Ihren Arbeitsbereich aus.
-4. Klicken Sie auf **Webdienste**.
-5. Wählen Sie Ihren Vorhersagewebdienst aus.
-6. Stellen Sie sicher, dass der neue Endpunkt dem Webdienst hinzugefügt wurde.
+1. Melden Sie sich beim [Azure Machine Learning-Webdienstportal](https://services.azureml.net/) an.
+2. Klicken Sie auf **Web Services** oder **Classic Web Services**.
+3. Wählen Sie Ihren Vorhersagewebdienst aus.
+4. Stellen Sie sicher, dass der neue Endpunkt dem Webdienst hinzugefügt wurde.
 
-### <a name="check-the-workspace-that-your-web-service-is-in-to-ensure-it-is-in-the-correct-region"></a>Sicherstellen, dass sich der Webdienst-Arbeitsbereich in der richtigen Region befindet
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
-2. Wählen Sie im Menü die Option „Machine Learning“.
-   ![Benutzeroberfläche der Machine Learning-Region][image4]
-3. Überprüfen Sie den Speicherort Ihres Arbeitsbereichs.
+### <a name="check-that-your-workspace-is-in-the-same-region-as-the-web-service"></a>Überprüfen, ob sich der Arbeitsbereich in der gleichen Region wie der Webdienst befindet
+1. Melden Sie sich bei [Azure Machine Learning Studio](https://studio.azureml.net/) an.
+2. Klicken Sie im oberen Bereich auf die Dropdownliste Ihrer Arbeitsbereiche.
+
+   ![UI für Machine Learning-Region][image4]
+
+3. Überprüfen Sie die Region, in der sich Ihr Arbeitsbereich befindet.
 
 <!-- Image Links -->
 
 [image1]: ./media/troubleshooting-retraining-a-model/ml-studio-tm-connnected-to-web-service-out.png
 [image2]: ./media/troubleshooting-retraining-a-model/addEndpoint-output.png
 [image3]: ./media/troubleshooting-retraining-a-model/azure-portal-update-resource.png
-[image4]: ./media/troubleshooting-retraining-a-model/azure-portal-machine-learning-tab.png
+[image4]: ./media/troubleshooting-retraining-a-model/check-workspace-region.png
 [image5]: ./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png
 [image6]: ./media/troubleshooting-retraining-a-model/retraining-output.png
 [image7]: ./media/troubleshooting-retraining-a-model/web-services-tab.png

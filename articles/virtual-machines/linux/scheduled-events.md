@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
-ms.openlocfilehash: 2df39c64470e28bdf664d388041ae1b17d80db69
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 763e690cac06fc321f7d1f873da7405c44c02b80
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-linux-vms"></a>Azure-Metadatendienst: Geplante Ereignisse (Vorschau) für Linux-VMs
 
@@ -87,7 +87,7 @@ Beim Abfragen des Metadatendiensts müssen Sie den Header `Metadata:true` angebe
 Wenn Sie Geplante Ereignisse erstmals aufrufen, aktiviert Azure dieses Feature auf Ihrem virtuellen Computer implizit. Daher ist beim ersten Aufruf eine um bis zu zwei Minuten verzögerte Antwort zu erwarten.
 
 > [!NOTE]
-> Geplante Ereignisse wird für Ihren Dienst automatisch deaktiviert, wenn dieser den Endpunkt einen Tag lang nicht aufruft. Wenn Geplante Ereignisse für Ihren Dienst deaktiviert wird, werden keine Ereignisse für die vom Benutzer initiierten Wartungen erstellt.
+> Geplante Ereignisse wird für Ihren Dienst automatisch deaktiviert, wenn dieser den Endpunkt einen Tag lang nicht aufruft. Wenn „Geplante Ereignisse“ für Ihren Dienst deaktiviert wird, werden keine Ereignisse für die vom Benutzer initiierten Wartungen erstellt.
 
 ### <a name="user-initiated-maintenance"></a>Vom Benutzer initiierte Wartung
 Eine vom Benutzer über das Azure-Portal, die API, die Befehlszeilenschnittstelle oder PowerShell initiierte Wartung eines virtuellen Computers führt zu einem geplanten Ereignis. So können Sie die Logik zur Vorbereitung auf Wartungsmaßnahmen in Ihrer Anwendung testen und Ihre Anwendung auf die vom Benutzer initiierte Wartung vorbereiten.

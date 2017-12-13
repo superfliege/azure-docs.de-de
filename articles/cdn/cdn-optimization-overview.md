@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3544112b025f5df10e6f67c8e2e02f4bb587b4e0
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>Optimieren der Inhaltsübermittlung von Azure für Ihr Szenario
 
@@ -103,7 +103,7 @@ Bei Verwendung des Azure Content Delivery Networks von Akamai müssen Sie die Op
 
 Bei Verwendung des Azure Content Delivery Networks von Akamai ist der Download großer Dateien für Inhalte mit einer Größe von mehr als 10 GB optimiert. Wenn Ihre Dateien im Schnitt kleiner als 10 MB sind, empfiehlt sich die Verwendung der Optimierung „Allgemeine Webbereitstellung“. Wenn Ihre Dateien durchweg größer als 10 MB sind, ist es unter Umständen effizienter, einen separaten Endpunkt für große Dateien zu erstellen. Firmware- oder Softwareupdates sind beispielsweise in der Regel große Dateien.
 
-Das Azure Content Delivery Network von Verizon verwendet zur Übermittlung von Streamingmedieninhalten den Optimierungstyp „Allgemeine Webbereitstellung“.
+Das Azure Content Delivery Network von Verizon verwendet zur Übermittlung des Inhalts umfangreicher Dateidownloads den Optimierungstyp „Allgemeine Webbereitstellung“.
 
 Weitere Informationen zur Optimierung für große Dateien finden Sie unter [Optimieren großer Dateidownloads mit Azure CDN](cdn-large-file-optimization.md).
 

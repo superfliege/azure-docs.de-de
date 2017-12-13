@@ -3,27 +3,26 @@ title: Seitensteuerelemente in Azure API Management | Microsoft-Dokumentation
 description: "Enthält Informationen zu den Seitensteuerelementen, die für die Verwendung in Entwicklerportalvorlagen in Azure API Management verfügbar sind."
 services: api-management
 documentationcenter: 
-author: vladvino
-manager: erikre
+author: juliako
+manager: cfowler
 editor: 
-ms.assetid: 03e0ac8d-64ff-4e9a-b029-d7be14fb31e3
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 11/20/2017
 ms.author: apimpm
-ms.openlocfilehash: 6aa7a25a9addceee78abe027fb3a19351940464e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fd91ae079ff054932f4572874001dd69dd848e7
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="azure-api-management-page-controls"></a>Seitensteuerelemente in Azure API Management
 Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung in Entwicklerportalvorlagen.  
   
- Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle in der Entwicklerportalvorlage. Einige Steuerelemente, z.B. das Steuerelement [app-actions](#app-actions), verfügen über Parameter, wie im folgenden Beispiel gezeigt.  
+Um ein Steuerelement zu verwenden, platzieren Sie es an der gewünschten Stelle in der Entwicklerportalvorlage. Einige Steuerelemente, z.B. das Steuerelement [app-actions](#app-actions), verfügen über Parameter, wie im folgenden Beispiel gezeigt:  
   
 ```xml  
 <app-actions params="{ appId: '{{app.id}}' }"></app-actions>  
@@ -36,19 +35,12 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 ## <a name="developer-portal-template-page-controls"></a>Seitensteuerelemente in Entwicklerportalvorlagen  
   
 -   [app-actions](#app-actions)  
-  
 -   [basic-signin](#basic-signin)  
-  
 -   [paging-control](#paging-control)  
-  
 -   [providers](#providers)  
-  
 -   [search-control](#search-control)  
-  
 -   [sign-up](#sign-up)  
-  
 -   [subscribe-button](#subscribe-button)  
-  
 -   [subscription-cancel](#subscription-cancel)  
   
 ##  <a name="app-actions"></a> app-actions  
@@ -69,7 +61,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 |appId|Die ID der Anwendung.|  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `app-actions` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `app-actions` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Anwendungen](api-management-user-profile-templates.md#Applications)  
   
@@ -88,7 +80,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
  Keine  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `basic-signin` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `basic-signin` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Anmelden](api-management-page-templates.md#SignIn)  
   
@@ -107,7 +99,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
  Keine  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `paging-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `paging-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [API-Liste](api-management-api-templates.md#APIList)  
   
@@ -130,7 +122,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
  Keine  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `providers` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `providers` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Anmelden](api-management-page-templates.md#SignIn)  
   
@@ -149,7 +141,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
  Keine  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `search-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `search-control` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [API-Liste](api-management-api-templates.md#APIList)  
   
@@ -170,7 +162,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
  Keine  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `sign-up` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `sign-up` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Registrieren](api-management-page-templates.md#SignUp)  
   
@@ -189,7 +181,7 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
  Keine  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `subscribe-button` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `subscribe-button` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Produkt](api-management-product-templates.md#Product)  
   
@@ -211,10 +203,10 @@ Azure API Management enthält die folgenden Seitensteuerelemente zur Verwendung 
 |Parameter|Beschreibung|  
 |---------------|-----------------|  
 |subscriptionId|Die ID des Abonnements, das gekündigt werden soll.|  
-|cancelUrl|Die URL zum Kündigen des Abonnements.|  
+|cancelUrl|Die URL zum Kündigen des Abonnements|  
   
 ### <a name="developer-portal-templates"></a>Entwicklerportal: Vorlagen  
- Das Steuerelement `subscription-cancel` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden.  
+ Das Steuerelement `subscription-cancel` kann in den folgenden Vorlagen des Entwicklerportals verwendet werden:  
   
 -   [Produkt](api-management-product-templates.md#Product)
 

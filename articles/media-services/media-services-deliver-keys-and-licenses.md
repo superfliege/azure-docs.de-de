@@ -1,5 +1,5 @@
 ---
-title: "Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services"
+title: "Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services | Microsoft-Dokumentation"
 description: "In diesem Artikel wird beschrieben, wie Sie Azure Media Services (AMS) verwenden können, um PlayReady- und/oder Widevine-Lizenzen und AES-Schlüssel zu übermitteln, aber die restlichen Aufgaben (Codierung, Verschlüsselung, Streaming) mithilfe Ihrer lokalen Server ausführen."
 services: media-services
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.openlocfilehash: 263a381dc72105eea60ad9b39434599ff04a4531
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb39b6a737aab3fe5ba477cc4aee601954d16247
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Übermitteln von DRM-Lizenzen oder AES-Schlüsseln mithilfe von Azure Media Services
-Azure Media Services (AMS) ermöglicht Ihnen das Erfassen, Codieren, Hinzufügen von Inhaltsschutz und Streamen Ihrer Inhalte (Details finden Sie in [diesem](media-services-protect-with-drm.md) Artikel). Es gibt jedoch Kunden, die AMS nur zum Übermitteln von Lizenzen und/oder Schlüsseln nutzen und die Codierung, Verschlüsselung und das Streaming mithilfe ihrer lokalen Server durchführen möchten. Dieser Artikel beschreibt, wie Sie mit AMS PlayReady- und/oder Widevine-Lizenzen bereitstellen und die restlichen Aufgaben auf Ihren lokalen Servern ausführen können. 
+Azure Media Services (AMS) ermöglicht Ihnen das Erfassen, Codieren, Hinzufügen von Inhaltsschutz und Streamen Ihrer Inhalte (Details finden Sie in [diesem](media-services-protect-with-playready-widevine.md) Artikel). Es gibt jedoch Kunden, die AMS nur zum Übermitteln von Lizenzen und/oder Schlüsseln nutzen und die Codierung, Verschlüsselung und das Streaming mithilfe ihrer lokalen Server durchführen möchten. Dieser Artikel beschreibt, wie Sie mit AMS PlayReady- und/oder Widevine-Lizenzen bereitstellen und die restlichen Aufgaben auf Ihren lokalen Servern ausführen können. 
 
 ## <a name="overview"></a>Übersicht
 Media Services bietet einen Dienst zum Übermitteln von PlayReady- und Widevine-DMR-Lizenzen und AES-128-Schlüsseln. Mithilfe der von Media Services bereitgestellten APIs können Sie die Rechte und Einschränkungen konfigurieren, die für die DRM-Laufzeit erzwungen werden sollen, wenn ein Benutzer mit DRM geschützte Inhalte wiedergibt. Wenn ein Benutzer die geschützten Inhalte anfordert, fordert die Playeranwendung eine Lizenz vom AMS-Lizenzdienst an. Der AMS-Lizenzdienst stellt dem Player die Lizenz aus, sofern dieser autorisiert ist. PlayReady- und Widevine-Lizenzen enthalten den Entschlüsselungsschlüssel, der vom Clientplayer zum Entschlüsseln und Streamen des Inhalts verwendet werden kann.
@@ -43,7 +43,6 @@ Sie können das in diesem Artikel beschriebene Beispiel [hier](https://github.co
     <add key="Issuer" value="http://testacs.com"/><add key="Audience" value="urn:test"/>
 
 ## <a name="net-code-example"></a>Codebeispiel für .NET
-
 Das folgende Codebeispiel zeigt, wie ein allgemeiner symmetrischer Schlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Sie müssen die folgenden Angaben von AMS abrufen und Ihren lokalen Server konfigurieren: **Inhaltsschlüssel**, **Schlüssel-ID**, **Lizenzerwerbs-URL**. Nach dem Konfigurieren Ihres lokalen Servers können Sie auf Ihrem eigenen Streamingserver das Streamen aktivieren. Da der verschlüsselte Stream auf den AMS-Lizenzserver zeigt, fordert Ihr Player eine Lizenz von AMS an. Wenn Sie die Tokenauthentifizierung wählen, überprüft der AMS-Lizenzserver das von Ihnen über HTTPS gesendete Token und übermittelt (sofern gültig) die Lizenz zurück an Ihren Player. (Das Codebeispiel in diesem Thema zeigt nur, wie ein allgemeiner Inhaltsschlüssel erstellt und Lizenzerwerbs-URLs für PlayReady und Widevine abgerufen werden. Wenn Sie AES-128 Schlüssel übermitteln möchten, müssen Sie einen Umschlagsinhaltsschlüssel erstellen und eine Schlüsselerwerbs-URL abrufen, was in [diesem](media-services-protect-with-aes128.md) Artikel gezeigt wird).
 
     using System;
@@ -332,9 +331,6 @@ Das folgende Codebeispiel zeigt, wie ein allgemeiner symmetrischer Schlüssel er
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="see-also"></a>Weitere Informationen
-[Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md)
+[Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md)
 
 [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](media-services-protect-with-aes128.md)
-
-[Übermitteln von Widevine-Lizenzen an Azure Media Services mithilfe von Partnern](media-services-licenses-partner-integration.md)
-

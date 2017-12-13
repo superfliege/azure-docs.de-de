@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 9ce1d32a2785bec1164d2a89dea9946fe113cb33
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 2560ca144f8ce4041aa592554f9945ed546cc49b
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>Erstellen von DSVM- und HDI Spark-Clustern als Computeziele
 
@@ -63,18 +63,22 @@ Kopieren Sie den folgenden JSON-Codeausschnitt, und fügen Sie ihn in die `mydsv
 
 Für das Feld _vmSize_ können Sie eine beliebige unterstützte VM-Größe verwenden, die in der [Vorlage der Azure-Ressourcenverwaltung für den Ubuntu-DSVM](https://github.com/Azure/DataScienceVM/blob/master/Scripts/CreateDSVM/Ubuntu/multiazuredeploywithext.json) aufgeführt ist. Es wird empfohlen, eine der nachfolgenden Größen als Computeziele für Azure ML zu verwenden. 
 
-- Standard_DS2_v2 
-- Standard_DS3_v2 
-- Standard_DS4_v2 
-- Standard_DS12_v2 
-- Standard_DS13_v2 
-- Standard_DS14_v2 
-- Standard_NC6 
-- Standard_NC12 
-- Standard_NC24 
- 
+
 >[!TIP]
-> Die mit „NC“ gekennzeichneten VM-Größen verfügen über eine GPU.
+> Für [Deep Learning-Workloads](how-to-use-gpu.md) ist die Bereitstellung auf virtuellen Computern mit GPU möglich.
+
+- [Universelle VMs](/virtual-machines/linux/sizes-general.md)
+  - Standard_DS2_v2 
+  - Standard_DS3_v2 
+  - Standard_DS4_v2 
+  - Standard_DS12_v2 
+  - Standard_DS13_v2 
+  - Standard_DS14_v2 
+- [VMs mit GPU](/virtual-machines/linux/sizes-gpu.md)
+  - Standard_NC6 
+  - Standard_NC12 
+  - Standard_NC24 
+ 
 
 Hier erhalten Sie weitere Informationen zu diesen [Größen für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/sizes.md) und ihre [Informationen zu den Preisen](https://azure.microsoft.com/pricing/details/virtual-machines/linux/).
 
@@ -121,7 +125,7 @@ Nachdem der DSVM erstellt wurde, können Sie ihn jetzt an Ihr Azure ML-Projekt a
 ```azurecli
 # attach the DSVM compute target
 # it is a good idea to use FQDN in case the IP address changes after you deallocate the VM and restart it
-$ az ml computetarget attach --name <compute target name> --address <ip address or FQDN> --username <admin username> --password <admin password> --type remotedocker
+$ az ml computetarget attach remotedocker --name <compute target name> --address <ip address or FQDN> --username <admin username> --password <admin password> 
 
 # prepare the Docker image on the DSVM 
 $ az ml experiment prepare -c <compute target name>
@@ -171,7 +175,7 @@ Nachdem der Spark HDI-Cluster erstellt wurde, können Sie ihn jetzt an Ihr Azure
 
 ```azurecli
 # attach the HDI compute target
-$ az ml computetarget attach --name <compute target name> --address <cluster name, such as myhdicluster123.azurehdinsight.net> --username <ssh username> --password <ssh password> --type cluster
+$ az ml computetarget attach cluster --name <compute target name> --address <cluster name, such as myhdicluster123.azurehdinsight.net> --username <ssh username> --password <ssh password> 
 
 # prepare the conda environment on HDI
 $ az ml experiment prepare -c <compute target name>
