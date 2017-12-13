@@ -4,14 +4,15 @@
 # Empfehlungen
 ## [Kostenempfehlungen](advisor-cost-recommendations.md)
 ## [Empfehlungen zur Leistung](advisor-performance-recommendations.md)
-## [Empfehlungen für hohe Verfügbarkeit](advisor-high-availability-recommendations.md)
+## [Empfehlungen für Hochverfügbarkeit](advisor-high-availability-recommendations.md)
 ## [Sicherheitsempfehlungen](advisor-security-recommendations.md)
 
 # Erste Schritte
 ## [Erste Schritte mit Advisor](advisor-get-started.md)
 
 # Referenz
-## [REST](https://docs.microsoft.com/rest/api/advisor)
+## [REST-API](https://docs.microsoft.com/rest/api/advisor)
+## [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://docs.microsoft.com/cli/azure/advisor)
 
 # Verwandte Themen
 ## [Security Center](https://azure.microsoft.com/services/security-center/)

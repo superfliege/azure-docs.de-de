@@ -11,7 +11,6 @@
 ## Erstellen einer DNS-Zone und eines Eintrags
 ### [Azure-Portal](dns-getstarted-portal.md)
 ### [Azure PowerShell](dns-getstarted-powershell.md)
-### [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 ### [Azure-Befehlszeilenschnittstelle](dns-getstarted-cli.md)
 
 ## Erstellen einer privaten DNS-Zone und eines Eintrags
@@ -24,13 +23,11 @@
 ## Verwalten von DNS-Zonen
 ### [Azure-Portal](dns-operations-dnszones-portal.md)
 ### [Azure PowerShell](dns-operations-dnszones.md)
-### [Azure CLI 1.0](dns-operations-dnszones-cli-nodejs.md)
 ### [Azure-Befehlszeilenschnittstelle](dns-operations-dnszones-cli.md)
 
 ## Verwalten von DNS-Einträgen
 ### [Azure-Portal](dns-operations-recordsets-portal.md)
 ### [Azure PowerShell](dns-operations-recordsets.md)
-### [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
 ### [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
 
 ## Verwalten von Reverse-DNS
