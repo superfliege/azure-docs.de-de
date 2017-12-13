@@ -54,7 +54,7 @@ Nein. Die virtuellen Computer in einer Verfügbarkeitsgruppe müssen entweder al
 
 **Ist Managed Disks die Standardoption im Azure-Portal?**
 
-Noch nicht, dies ist aber für die Zukunft geplant.
+Ja. 
 
 **Kann ich einen leeren verwalteten Datenträger erstellen?**
 
@@ -108,6 +108,40 @@ Nein. Sie können die Eigenschaft „Computername“ nicht aktualisieren. Die ne
 **Wo finde ich Beispielvorlagen von Azure Resource Manager, um virtuelle Computer mit verwalteten Datenträgern zu erstellen?**
 * [Liste der Vorlagen die Managed Disks verwenden](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
 * https://github.com/chagarw/MDPP
+
+## <a name="migrate-to-managed-disks"></a>Migrieren zu Managed Disks 
+
+**Welche Änderungen sind in einer bereits vorhandenen Azure Backup-Dienstkonfiguration vor/nach der Migration zu Managed Disks erforderlich?**
+
+Es sind keine Änderungen erforderlich. 
+
+**Werden meine VM-Sicherungen über den Azure Backup-Dienst erstellt, bevor die Migration weiterhin funktioniert?**
+
+Ja, Sicherungen funktionieren reibungslos.
+
+**Welche Änderungen sind in einer bereits vorhandenen Azure Disk Encryption-Konfiguration vor/nach der Migration zu Managed Disks erforderlich?**
+
+Es sind keine Änderungen erforderlich. 
+
+**Wird die automatisierte Migration vorhandener VM-Skalierungsgruppen (VMSS) von nicht verwalteten Datenträgern zu Managed Disks unterstützt?**
+
+Nein. Sie können eine neue VMSS mit Managed Disks mithilfe des Images von Ihrer alten VMSS mit nicht verwalteten Datenträgern erstellen. 
+
+**Kann ich verwaltete Datenträger über eine Seitenblob-Momentaufnahme erstellen, die vor der Migration zu Managed Disks erstellt wurde?**
+
+Nein. Sie können eine Seitenblob-Momentaufnahme als Seitenblob exportieren und anschließend den verwalteten Datenträger aus dem exportierten Seitenblob erstellen. 
+
+**Kann ich für meine lokalen Computer, die mit Azure Site Recovery geschützt sind, ein Failover auf eine VM mit Managed Disks ausführen?**
+
+Ja, Sie können ein Failover auf einem virtuellen Computer mit Managed Disks auswählen.
+
+**Hat die Migration auf Azure-VMs, die mit Azure Site Recovery (ASR) geschützt sind, über die Azure-zu-Azure-Replikation irgendwelche Auswirkungen?**
+
+Ja. Der ASR-Azure-zu-Azure-Schutz wird für VMs mit Managed Disks nicht unterstützt. Er wird erst ab Ende 2018 unterstützt. 
+
+**Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, zu verwalteten Datenträgern migrieren?**
+
+Ja
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks und Storage Service Encryption 
 

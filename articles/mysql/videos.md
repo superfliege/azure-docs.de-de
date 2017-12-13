@@ -8,14 +8,26 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 88a3114271088ad49a3d4231facc88ee6f89b54b
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 12/01/2017
+ms.openlocfilehash: 9320a08217a5748ee8e41ab6f282490757b4acd1
+ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/02/2017
 ---
 # <a name="azure-database-for-mysql-videos"></a>Videos zu Azure-Datenbank für MySQL
+
+[Übersicht: Azure Database for PostgreSQL und MySQL](https://channel9.msdn.com/Events/Connect/2017/T147)
+
+<iframe src="https://channel9.msdn.com/Events/Connect/2017/T147/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
+
+Azure Database for PostgreSQL und Azure Database for MySQL vereinen Datenbankmodule in Community-Editionen und Funktionen vollständig verwalteter Dienste – damit Sie sich auf Ihre Apps konzentrieren können, anstatt eine Datenbank verwalten zu müssen. Hier erhalten Sie eine schnelle Übersicht über die Vorteile, die sich durch die Verwendung des Diensts ergeben, und sehen einige der Funktionen in Aktion.
+
+[Ausführliche Informationen über die verwalteten Dienstfunktionen für MySQL und PostgreSQL](https://channel9.msdn.com/Events/Connect/2017/T148)
+
+<iframe src="https://channel9.msdn.com/Events/Connect/2017/T148/player" width="800" height="450" allowFullScreen frameBorder="0"></iframe>
+
+Azure Database for PostgreSQL und Azure Database for MySQL vereinen Datenbankmodule in Community-Editionen und Funktionen vollständig verwalteter Dienste. Sehen Sie sich die ausführlichen Informationen zur Funktionsweise dieser Dienste an, und erfahren Sie, wie wir Hochverfügbarkeit und schnelle Skalierung (innerhalb von Sekunden) sicherstellen, damit Sie die Anforderungen Ihrer Kunden erfüllen können. Außerdem erhalten Sie Informationen über einige der zugrunde liegenden Investitionen in die Sicherheit und weltweite Verfügbarkeit.
 
 [Erste Schritte mit dem neuen Azure-Datenbank für MySQL-Dienst](https://channel9.msdn.com/events/Build/2017/B8045)
 

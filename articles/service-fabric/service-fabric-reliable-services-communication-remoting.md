@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 438eeee7353cbd1d534f27471c9c9054aecc12e8
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 53c9072f98dfe9c03b85eb7409b8ed91c3c0ce33
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Dienstremoting mit Reliable Services
 Für WebAPI, WCF (Windows Communication Foundation) und andere Dienste, die nicht an ein bestimmtes Kommunikationsprotokoll oder einen bestimmten Kommunikationsstapel gebunden sind, stellt das Reliable Services-Framework einen Remotingmechanismus für das schnelle, einfache Einrichten von Remoteprozeduraufrufen für Dienste bereit.
@@ -79,10 +79,10 @@ string message = await helloWorldClient.HelloWorldAsync();
 
 ```
 
-Das Remotingframework gibt beim Dienst aufgetretene Ausnahmen an den Client weiter. Somit kann die Ausnahmebehandlungslogik auf dem Client Ausnahmen, die vom Dienst ausgegeben werden, mithilfe von `ServiceProxy` direkt behandeln.
+Das Remotingframework gibt vom Dienst ausgelöste Ausnahmen an den Client weiter. Folglich ist der Client bei der Verwendung von `ServiceProxy` für die Behandlung der vom Dienst ausgelösten Ausnahmen verantwortlich.
 
 ## <a name="service-proxy-lifetime"></a>Gültigkeitsdauer von Dienstproxys
-Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Benutzer so viele erstellen können, wie sie benötigen. Dienstproxyinstanzen können erneut verwendet werden, solange Benutzer sie benötigen. Wenn ein Remoteprozeduraufruf eine Ausnahme auslöst, können Benutzer immer noch dieselbe Proxyinstanz wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufruf von Remoteaufrufen wird intern geprüft, ob der Kommunikationsclient gültig ist. Basierend auf diesem Ergebnis erstellen wir bei Bedarf den Kommunikationsclient neu. Daher müssen Benutzer, wenn eine Ausnahme auftritt, den Dienstproxy nicht neu erstellen, aber dies erfolgt auf transparente Weise.
+Die Erstellung von Dienstproxys ist ein einfacher Vorgang, sodass Benutzer so viele erstellen können, wie sie benötigen. Dienstproxyinstanzen können erneut verwendet werden, solange Benutzer sie benötigen. Wenn ein Remoteprozeduraufruf eine Ausnahme auslöst, können Benutzer immer noch dieselbe Proxyinstanz wiederverwenden. Jeder Dienstproxy enthält einen Kommunikationsclient zum Senden von Nachrichten im Netzwerk. Beim Aufruf von Remoteaufrufen wird intern geprüft, ob der Kommunikationsclient gültig ist. Basierend auf diesem Ergebnis erstellen wir bei Bedarf den Kommunikationsclient neu. Daher müssen Benutzer, wenn eine Ausnahme auftritt, den `ServiceProxy` nicht neu erstellen, da dies auf transparente Weise erfolgt.
 
 ### <a name="serviceproxyfactory-lifetime"></a>Gültigkeitsdauer von „ServiceProxyFactory“
 [ServiceProxyFactory](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.remoting.client.serviceproxyfactory) ist eine Factory, die Proxyinstanzen für verschiedene Remotingschnittstellen erstellt. Wenn Sie die API `ServiceProxy.Create` zum Erstellen von Proxys verwenden, dann erstellt das Framework einen Singleton-Dienstproxy.
@@ -91,12 +91,13 @@ Die Factoryerstellung ist ein kostenintensiver Vorgang. „ServiceProxyFactory�
 Es empfiehlt sich, „ServiceProxyFactory“ so lange wie möglich im Cache zwischenzuspeichern.
 
 ## <a name="remoting-exception-handling"></a>Behandlung von Remotingausnahmen
-Alle von der Dienst-API ausgelösten Ausnahmen werden als „AggregateException“ an den Client zurückgesendet. „RemoteExceptions“ muss „DataContract Serializable“ sein, da andernfalls [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) für die Proxy-API mit enthaltenem Serialisierungsfehler ausgelöst wird.
+Alle von der Dienst-API ausgelösten Remoteausnahmen werden als „AggregateException“ an den Client zurückgesendet. „RemoteExceptions“ muss „DataContract Serializable“ sein. Andernfalls löst die Proxy-API [ServiceException](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.serviceexception) mit enthaltenem Serialisierungsfehler aus.
 
 „ServiceProxy“ verarbeitet sämtliche Failoverausnahmen für die Dienstpartition, für die seine Erstellung erfolgt ist. Dieser Proxy löst die Endpunkte erneut auf, falls Failoverausnahmen (nicht vorübergehende Ausnahmen) vorliegen, und wiederholt den Aufruf mit dem richtigen Endpunkt. Die Anzahl der Wiederholungen bei Failoverausnahmen ist unbegrenzt.
 Wenn vorübergehende Ausnahmen auftreten, versucht der Proxy erneut, den Aufruf auszuführen.
 
-Standardparameter für die Wiederholung werden von [OperationRetrySettings] angegeben. (https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) Der Benutzer kann diese Werte konfigurieren, indem er das Objekt „OperationRetrySettings“ an den Konstruktor „ServiceProxyFactory“ übergibt.
+Standardparameter für die Wiederholung werden von [OperationRetrySettings](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.services.communication.client.operationretrysettings) angegeben.
+Der Benutzer kann diese Werte konfigurieren, indem das „OperationRetrySettings“-Objekt an den „ServiceProxyFactory“-Konstruktor übergeben wird.
 ## <a name="how-to-use-remoting-v2-stack"></a>So verwenden Sie den Remoting V2-Stapel
 Mit dem 2.8 NuGet Remoting-Paket haben Sie die Möglichkeit, den Remoting V2-Stapel zu verwenden. Der Remoting-V2-Stapel ist leistungsfähiger und stellt Funktionalität wie benutzerdefinierte serialisierbare und besser austauschbare APIs zur Verfügung.
 Standardmäßig wird, wenn Sie die folgenden Änderungen nicht vornehmen, weiterhin der Remoting V1-Stapel verwendet.

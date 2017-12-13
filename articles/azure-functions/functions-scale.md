@@ -1,5 +1,5 @@
 ---
-title: "Vergleich von Hostingplänen für Azure Functions | Microsoft-Dokumentation"
+title: Skalierung und Hosting von Azure Functions | Microsoft-Dokumentation
 description: "Erfahren Sie, wie Sie zwischen einem Azure Functions-Verbrauchstarif und App Service-Plan wählen."
 services: functions
 documentationcenter: na
@@ -17,15 +17,15 @@ ms.workload: na
 ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09bb662e30a97e2741303e2e4630582625954909
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ff3f7072792c76c5d05310451771bde61b61e009
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/01/2017
 ---
-# <a name="azure-functions-hosting-plans-comparison"></a>Vergleich von Hostingplänen für Azure Functions
+# <a name="azure-functions-scale-and-hosting"></a>Skalierung und Hosting von Azure Functions
 
-Sie können Azure Functions in zwei verschiedenen Modi ausführen: als Verbrauchsplan und als App Service-Plan. Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wird der Code nicht mehr ausgeführt, wird die Leistung wieder herunterskaliert. Deshalb müssen Sie für VMs im Leerlauf nicht bezahlen und auch keine Kapazitäten im Voraus reservieren. Dieser Artikel konzentriert sich auf den Verbrauchsplan, ein [serverloses](https://azure.microsoft.com/overview/serverless-computing/) App-Modell. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
+Sie können Azure Functions in zwei verschiedenen Modi ausführen: als Verbrauchsplan und als App Service-Plan. Der Verbrauchsplan weist automatisch Computeleistung zu, wenn Ihr Code ausgeführt wird, und skaliert diese bei Bedarf horizontal hoch, um die Last zu verarbeiten. Wird der Code nicht mehr ausgeführt, wird die Leistung wieder herunterskaliert. Für VMs im Leerlauf müssen Sie nichts bezahlen und auch keine Kapazitäten im Voraus reservieren. Dieser Artikel konzentriert sich auf den Verbrauchsplan, ein [serverloses](https://azure.microsoft.com/overview/serverless-computing/) App-Modell. Weitere Informationen zur Funktionsweise von App Service-Plänen finden Sie unter [Azure App Service-Pläne – Detaillierte Übersicht](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md). 
 
 >[!NOTE]  
 > Linux-Hosting ist derzeit nur im Rahmen eines App Service-Plans verfügbar.
@@ -76,7 +76,7 @@ Wenn Sie beabsichtigen, JavaScript-Funktionen im Rahmen eines App Service-Plans 
 <a name="always-on"></a>
 ### Always On
 
-Wenn Sie einen App Service-Plan verwenden, sollten Sie die Einstellung **Always On** aktivieren, damit Ihre Funktions-App ordnungsgemäß ausgeführt wird. Bei einem App Service-Plan geht die Functions-Runtime nach wenigen Minuten der Inaktivität in den Leerlauf über, sodass nur HTTP-Trigger Ihre Funktionen tatsächlich „reaktivieren“ können. Dies ist ähnlich wie bei WebJobs, bei denen Always On aktiviert sein muss. 
+Wenn Sie einen App Service-Plan verwenden, müssen Sie die Einstellung **Always On** aktivieren, damit Ihre Funktions-App ordnungsgemäß ausgeführt wird. Bei einem App Service-Plan geht die Functions-Runtime nach wenigen Minuten der Inaktivität in den Leerlauf über, sodass nur HTTP-Trigger Ihre Funktionen tatsächlich „reaktivieren“ können. Dies ist ähnlich wie bei WebJobs, bei denen Always On aktiviert sein muss. 
 
 Always On ist nur bei einem App Service-Plan verfügbar. Bei einem Verbrauchsplan aktiviert die Plattform Funktions-Apps automatisch.
 
@@ -84,18 +84,20 @@ Always On ist nur bei einem App Service-Plan verfügbar. Bei einem Verbrauchspla
 
 Sowohl bei einem Verbrauchs- als auch bei einem App Service-Plan erfordert eine Funktions-App ein allgemeines Azure Storage-Konto, das Azure Blob, Queue, Files und Table Storage unterstützt. Intern verwendet Azure Functions Azure Storage für Vorgänge wie das Verwalten von Triggern und Ausführungen von Protokollierfunktionen. Manche Speicherkonten unterstützen keine Warteschlangen und Tabellen, wie z.B. reine Blobspeicherkonten (darunter Storage Premium) und allgemeine Speicherkonten mit zonenredundanter Speicherreplikation. Diese Konten werden aus dem Blatt **Speicherkonto** herausgefiltert, wenn Sie eine Funktions-App erstellen.
 
+<!-- JH: Does using a PRemium Storage account improve perf? -->
+
 Weitere Informationen zu Speicherkontentypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#introducing-the-azure-storage-services).
 
 ## <a name="how-the-consumption-plan-works"></a>Funktionsweise des Verbrauchsplans
 
-Im Verbrauchsplan skaliert der Skalierungscontroller CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts ist auf 1,5 GB Arbeitsspeicher beschränkt.
+Im Verbrauchsplan skaliert der Skalierungscontroller CPU- und Arbeitsspeicherressourcen automatisch, indem dem Functions-Host basierend auf der Anzahl der Ereignisse, nach denen die Funktionen ausgelöst werden, weitere Instanzen hinzugefügt werden. Jede Instanz des Functions-Hosts ist auf 1,5 GB Arbeitsspeicher beschränkt.  Eine Instanz des Hosts ist die Funktions-App, d.h. alle Funktionen innerhalb einer Funktions-Apps verwenden innerhalb einer Instanz die gleichen Ressourcen und skalieren gleichzeitig.
 
 Wenn Sie den verbrauchsbasierten Hostingplan verwenden, werden die Funktionscodedateien in Azure Files-Freigaben im Hauptspeicherkonto der Funktion gespeichert. Wenn Sie das Hauptspeicherkonto der Funktions-App löschen, werden die Funktionscodedateien gelöscht und können nicht wiederhergestellt werden.
 
 > [!NOTE]
 > Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es möglicherweise bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Um diese anfängliche Verzögerung zu vermeiden, sollten Sie eine der folgenden Möglichkeiten erwägen:
 > - Hosten Sie die Funktions-App in einem App Service-Plan mit aktivierter Option „Always On“.
-> - Verwenden Sie einen anderen Mechanismus zum Auslösen der Blobverarbeitung, z.B. eine Warteschlangennachricht, die den Blobnamen enthält. Ein Beispiel finden Sie in den [C#-Skript- und JavaScript-Beispielen für Blobeingabe- und Blobausgabebindungen](functions-bindings-storage-blob.md#input--output---example).
+> - Verwenden Sie einen anderen Mechanismus zum Auslösen der Blobverarbeitung, z.B. ein Event Grid-Abonnement oder eine Warteschlangennachricht, die den Blobnamen enthält. Ein Beispiel finden Sie in den [C#-Skript- und JavaScript-Beispielen für Blobeingabe- und Blobausgabebindungen](functions-bindings-storage-blob.md#input--output---example).
 
 ### <a name="runtime-scaling"></a>Laufzeitskalierung
 
@@ -104,6 +106,20 @@ Azure Functions verwendet die Komponente *Skalierungscontroller*, um die Rate de
 Die Skalierungseinheit ist die Funktionen-App. Bei einer horizontalen Hochskalierung der Funktions-App werden zusätzliche Ressourcen zugeordnet, um mehrere Instanzen des Azure Functions-Hosts auszuführen. Umgekehrt entfernt der Skalierungscontroller bei abnehmenden Computeanforderungen Instanzen des Functions-Hosts. Die Anzahl der Instanzen wird schließlich zentral auf null herunterskaliert, wenn in einer Funktionen-App keine Funktionen ausgeführt werden.
 
 ![Skalierungscontroller: Überwachen von Ereignissen und Erstellen von Instanzen](./media/functions-scale/central-listener.png)
+
+### <a name="understanding-scaling-behaviors"></a>Grundlegendes zum Verhalten von Skalierungen
+
+Die Skalierung variiert ausgehend von verschiedenen Faktoren, und die Skalierung ist je nach dem ausgewählten Auslöser und der Sprache unterschiedlich. Das System umfasst heute einige Aspekte der Skalierung:
+* Eine einzelne Funktions-App kann nur für maximal 200 Instanzen skaliert werden. Eine einzelne Instanz kann mehrere Meldungen oder Anforderungen gleichzeitig verarbeiten, weshalb es keine Grenze für die Anzahl gleichzeitiger Ausführungen gibt.
+* Neue Instanzen werden nur höchstens einmal alle 10 Sekunden zugeordnet.
+
+Für verschiedene Auslöser gelten unter Umständen unterschiedliche Grenzwerte für die Skalierung sowie die folgenden Angaben:
+
+* [Event Hub](functions-bindings-event-hubs.md#trigger---scaling)
+
+### <a name="best-practices-and-patterns-for-scalable-apps"></a>Bewährte Methoden und Muster für skalierbare Apps
+
+Es gibt viele Aspekte einer Funktions-App, die sich auf die Skalierung auswirken. Dazu zählen beispielsweise die Hostkonfiguration, der Runtime-Speicherbedarf und die Ressourceneffizienz.  Weitere Informationen finden Sie im [Abschnitt zur Skalierbarkeit im Artikel zum Thema Leistung](functions-best-practices.md#scalability-best-practices).
 
 ### <a name="billing-model"></a>Abrechnungsmodell
 

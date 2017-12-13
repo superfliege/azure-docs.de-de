@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: cb98d5f2aaa526555820c15ba5a32fb7e78ffc5a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 557f071e2cd8d4f639c881274e6e74a8fb745859
+ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/05/2017
 ---
 # <a name="azure-functions-runtime-overview"></a>Übersicht über Azure Functions Runtime
 
@@ -29,6 +29,7 @@ Azure Functions Runtime bietet Ihnen eine neue Möglichkeit, die Einfachheit und
 Azure Functions Runtime bietet Ihnen eine Möglichkeit, mit Azure Functions zu arbeiten, bevor Sie die Cloud einsetzen. Auf diese Weise können die Codeobjekte, die Sie erstellen, bei der Migration in die Cloud übernommen werden.  Die Runtime eröffnet außerdem neue Optionen, z.B. die Nutzung überschüssiger Rechenleistung Ihrer lokalen Computer, um Batchprozesse über Nacht auszuführen. Sie können auch Geräte in Ihrer Organisation verwenden, um bedingt Daten an andere Systeme zu senden, lokal und in der Cloud.
 
 Azure Functions Runtime besteht aus zwei Teilen:
+
 * Azure Functions Runtime-Verwaltungsrolle
 * Azure Functions Runtime-Workerrolle
 
@@ -36,21 +37,21 @@ Azure Functions Runtime besteht aus zwei Teilen:
 
 Die Azure Functions-Verwaltungsrolle stellt einen Host für die lokale Verwaltung von Funktionen bereit. Diese Rolle führt die folgenden Aufgaben aus:
 
-* Hosten des Azure Functions-Verwaltungsportals, dies entspricht dem Portal, das im [Azure-Portal](https://portal.azure.com) angezeigt wird. Dadurch können Sie die Funktionen auf die gleiche Weise wie im Azure-Portal entwickeln.
+* Hosten des Azure Functions-Verwaltungsportals, dieses entspricht dem Portal, das im [Azure-Portal](https://portal.azure.com) angezeigt wird. Das Portal bietet eine konsistente Umgebung, mit der Sie Ihre Funktionen auf die gleiche Weise wie im Azure-Portal entwickeln können.
 * Verteilen von Funktionen auf mehrere Functions-Worker.
-* Bereitstellen eines Endpunkts für die Veröffentlichung, damit Sie Ihre Funktionen direkt über Microsoft Visual Studio veröffentlichen können.
+* Bereitstellen eines Endpunkts für die Veröffentlichung, damit Sie Ihre Funktionen direkt über Microsoft Visual Studio veröffentlichen können, indem Sie das Veröffentlichungsprofil herunterladen und importieren.
 
 ## <a name="azure-functions-worker-role"></a>Azure Functions-Workerrolle
 
-Die Azure Functions-Workerrollen werden in Windows-Containern bereitgestellt, und hier wird der Funktionscode ausgeführt.  Sie können in Ihrer Organisation mehrere Workerrollen bereitstellen. Dies ist eine wichtige Möglichkeit für Kunden, überschüssige Rechenleistung zu nutzen.
+Die Azure Functions-Workerrollen werden in Windows-Containern bereitgestellt, wo der Funktionscode ausgeführt wird.  Sie können in Ihrer Organisation mehrere Workerrollen bereitstellen. Dies ist eine wichtige Möglichkeit für Kunden, überschüssige Rechenleistung zu nutzen.  Überschüssige Rechenleistung tritt beispielsweise auf, wenn Computer in Unternehmen durchgehend eingeschaltet sind, aber für einen längeren Zeitraum nicht genutzt werden.
 
 ## <a name="minimum-requirements"></a>Mindestanforderungen
 
-Um mit der Nutzung von Azure Functions Runtime zu beginnen, benötigen Sie einen Computer mit **Windows Server 2016 oder Windows 10 Creators Update** mit Zugriff auf eine **SQL Server**-Instanz.
+Um mit der Nutzung von Azure Functions Runtime zu beginnen, benötigen Sie einen Computer mit Windows Server 2016 oder Windows 10 Creators Update mit Zugriff auf eine SQL Server-Instanz.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Installieren von [Azure Functions Runtime Preview](https://aka.ms/azafr)
+Installieren von [Azure Functions Runtime Preview](https://aka.ms/azafrdoc)
 
 <!--Image references-->
 [1]: ./media/functions-runtime-overview/AzureFunctionsRuntime_Portal.png

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: be19f616e36916655390cd05e738e93c08dcdf68
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8d691d9a25847c4ab0b99d1fe5b889f314c404f
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="media-services-playready-license-template-overview"></a>Media Services PlayReady-Lizenzvorlage – Übersicht
 Azure Media Services bietet jetzt einen Dienst für die Bereitstellung von Microsoft PlayReady-Lizenzen. Wenn der Endbenutzer-Player (z. B. Silverlight) versucht, Ihre durch PlayReady geschützten Inhalte wiederzugeben, wird eine Anforderung zum Erwerben einer Lizenz an den Lizenzübermittlungsdienst gesendet. Wenn der Lizenzdienst die Anforderung genehmigt, wird die Lizenz ausgegeben. Diese wird an den Client gesendet und kann zum Entschlüsseln und Wiedergeben des angegebenen Inhalts verwendet werden.
@@ -55,9 +55,9 @@ Das folgende Beispiel zeigt die einfachste (und am häufigsten verwendete) Vorla
 
 Der XML-Code entspricht dem XML-Schema der PlayReady-Lizenzvorlage, das im XML-Schemaabschnitt in der PlayReady-Lizenzvorlage definiert wurde.
 
-Media Services definiert auch eine Reihe von .NET-Klassen, die für die Serialisierung und Deserialisierung in und aus XML verwendet werden können. Eine Beschreibung der Hauptklassen finden Sie unter [Media Services-.NET-Klassen](media-services-playready-license-template-overview.md#classes). Diese werden zum Konfigurieren von Lizenzvorlagen verwendet.
+Media Services definiert auch eine Reihe von .NET-Klassen, die für die Serialisierung und Deserialisierung in und aus XML verwendet werden können. Eine Beschreibung der Hauptklassen finden Sie unter den [Media Services-.NET-Klassen](media-services-playready-license-template-overview.md#classes), die zum Konfigurieren von Lizenzvorlagen verwendet werden.
 
-Ein End-to-End-Beispiel, in dem mit .NET-Klassen die PlayReady-Lizenzvorlage konfiguriert wird, finden Sie unter [Verwenden der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts](media-services-protect-with-drm.md).
+Ein End-to-End-Beispiel, in dem mit .NET-Klassen die PlayReady-Lizenzvorlage konfiguriert wird, finden Sie unter [Verwenden der dynamischen PlayReady-Verschlüsselung und des Lizenzübermittlungsdiensts](media-services-protect-with-playready-widevine.md).
 
 ## <a id="classes"></a>Media Services-.NET-Klassen zum Konfigurieren von Lizenzvorlagen
 Im Folgenden werden die wichtigsten .NET-Klassen zum Konfigurieren von PlayReady-Lizenzvorlagen für Media Services aufgeführt. Diese Klassen sind den im [XML-Schema für PlayReady-Lizenzvorlagen](media-services-playready-license-template-overview.md#schema)definierten Typen zugeordnet.
@@ -76,7 +76,7 @@ Dies ist in der Vorlagenhierarchie die Klasse der obersten Ebene. Dies bedeutet,
 [PlayReadyPlayRight](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mediaservices.client.contentkeyauthorization.playreadyplayright.aspx): Diese Klasse repräsentiert PlayRight für eine PlayReady-Lizenz. Sie gewährt dem Benutzer die Möglichkeit, Inhalte gemäß den null oder mehr Einschränkungen wiederzugeben, die in der Lizenz oder in PlayRight selbst (für wiedergabespezifische Richtlinien) konfiguriert wurden. Die Richtlinie für PlayRight bezieht sich in erster Linie auf Ausgabeneinschränkungen, mit denen gesteuert wird, über welche Ausgabetypen der Inhalt wiedergegeben werden kann, sowie Einschränkungen, die bei der Verwendung einer bestimmten Ausgabe gelten müssen. Wenn z. B. DigitalVideoOnlyContentRestriction aktiviert wird, lässt die DRM-Runtime nur zu, dass das Video über digitale Ausgaben angezeigt wird (für analoge Videoausgaben ist das Übergeben des Inhalts nicht zulässig).
 
 > [!IMPORTANT]
-> Dieser Einschränkungstypen können sehr effektiv sein, können jedoch auch die Benutzerfreundlichkeit beeinträchtigen. Wenn der Ausgabeschutz mit zu vielen Einschränkungen konfiguriert wird, kann der Inhalt möglicherweise in einigen Clients nicht wiedergegeben werden. Weitere Informationen finden Sie im Dokument [Compliance &amp; Robustness Rules](https://www.microsoft.com/playready/licensing/compliance/) (in englischer Sprache).
+> Dieser Einschränkungstypen können effektiv sein, können jedoch auch die Benutzerfreundlichkeit beeinträchtigen. Wenn der Ausgabeschutz mit zu vielen Einschränkungen konfiguriert wird, kann der Inhalt möglicherweise in einigen Clients nicht wiedergegeben werden. Weitere Informationen finden Sie im Dokument [Compliance &amp; Robustness Rules](https://www.microsoft.com/playready/licensing/compliance/) (in englischer Sprache).
 > 
 > 
 

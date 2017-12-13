@@ -1,11 +1,10 @@
 ---
-title: "Hinzufügen eines SSL-Zertifikats zu Ihrer Azure App Service-App | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie ein SSL-Zertifikat zu Ihrer App Service-App hinzufügen."
+title: "Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service | Microsoft-Dokumentation"
+description: Erfahren Sie, wie Sie ein App Service-Zertifikat erwerben und es an Ihre App Service-App binden.
 services: app-service
 documentationcenter: .net
-author: ahmedelnably
-manager: stefsch
-editor: cephalin
+author: cephalin
+manager: cfowler
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -13,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2016
-ms.author: apurvajo
-ms.openlocfilehash: 214f05f45f59b0403e6902988f9184d6b62618bd
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.date: 12/01/2017
+ms.author: apurvajo;cephalin
+ms.openlocfilehash: 256cb9a33d49bc3c24b2d94c417632edb0c8df31
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Kaufen und Konfigurieren eines SSL-Zertifikats für Ihren Azure App Service
 
@@ -74,12 +73,16 @@ Nach der Wahl des Key Vault-Repositorys für die Speicherung des Zertifikats sol
 
 ## <a name="step-4---verify-the-domain-ownership"></a>Schritt 4: Überprüfen des Domänenbesitzes
 
-> [!NOTE]
-> Von App Service-Zertifikaten werden drei Arten von Domänenüberprüfungen unterstützt: Domänenüberprüfung, Überprüfung per E-Mail und manuelle Überprüfung. Diese Überprüfungstypen werden im Abschnitt [Erweitert](#advanced) ausführlicher erläutert.
-
 Klicken Sie auf der Seite **Zertifikatkonfiguration**, die Sie in Schritt 3 verwendet haben, auf **Schritt 2: Überprüfen**.
 
-Die **Domänenüberprüfung** ist **NUR DANN** der zweckmäßigste Prozess, wenn Sie **[Ihre benutzerdefinierte Domäne von Azure App Service erworben](custom-dns-web-site-buydomains-web-app.md)** haben.
+Wählen Sie die bevorzugte Überprüfungsmethode für die Domäne aus. 
+
+App Service-Zertifikate unterstützen vier Arten der Domänenüberprüfung: App Service-, Domänen-, Mail- und manuelle Überpüfung. Diese Überprüfungstypen werden im Abschnitt [Erweitert](#advanced) ausführlicher erläutert.
+
+> [!NOTE]
+> Die **App Service-Überprüfung** ist die einfachste Option, wenn die Domäne, die Sie überprüfen möchten, bereits einer App Service-App im gleichen Abonnement zugeordnet ist. Sie nutzt die Tatsache aus, dass die App Service-App den Domänenbesitz bereits überprüft hat.
+>
+
 Klicken Sie auf die Schaltfläche **Überprüfen**, um diesen Schritt abzuschließen.
 
 ![Bild von der Domänenüberprüfung einfügen](./media/app-service-web-purchase-ssl-web-site/DomainVerificationRequired.png)
@@ -142,6 +145,10 @@ Die Überprüfungs-E-Mail wurde bereits an die E-Mail-Adresse(n) gesendet, die d
 
 Wenn Sie die Überprüfungs-E-Mail erneut senden müssen, klicken Sie auf die Schaltfläche **E-Mail erneut senden**.
 
+#### <a name="domain-verification"></a>Domänenüberprüfung
+
+Verwenden Sie diese Option nur für [App Service-Domänen, die Sie von Azure erworben haben](custom-dns-web-site-buydomains-web-app.md). Azure fügt die TXT-Überprüfungseinträge automatisch für Sie hinzu und schließt den Vorgang ab.
+
 #### <a name="manual-verification"></a>Manuelle Überprüfung
 
 > [!IMPORTANT]
@@ -197,6 +204,7 @@ Wenn Ihr SSL-Zertifikat für die automatische Verlängerung konfiguriert ist, ab
 - Für GoDaddy (wird zum Generieren von App Service-Zertifikaten verwendet) ist alle drei Jahre eine Überprüfung der Domäne erforderlich. Der Domänenadministrator erhält alle drei Jahre eine E-Mail mit dem Hinweis, die Domäne zu überprüfen. Wenn E-Mail oder Domäne nicht überprüft werden, kann das App Service-Zertifikat nicht automatisch verlängert werden. 
 - Alle App Service-Zertifikate, die vor dem 31. März 2017 ausgestellt wurden, erfordern bei der nächsten Verlängerung eine erneute Überprüfung der Domäne (selbst wenn die automatische Verlängerung des Zertifikats aktiviert ist). Dies ist das Ergebnis einer GoDaddy-Richtlinienänderung. Überprüfen Sie Ihre E-Mail, und führen Sie diese einmalige Domänenüberprüfung durch, um die automatische Verlängerung des App Service-Zertifikats fortzusetzen. 
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="more-resources"></a>Weitere Ressourcen
 
-* [Hinzufügen eines Content Delivery Network zu einer Azure App Service-Instanz](app-service-web-tutorial-content-delivery-network.md)
+* [Verwenden eines SSL-Zertifikats in Ihrem Anwendungscode in Azure App Service](app-service-web-ssl-cert-load.md)
+* [Häufig gestellte Fragen: App Service-Zertifikate](https://blogs.msdn.microsoft.com/appserviceteam/2017/07/24/faq-app-service-certificates/)

@@ -1,6 +1,6 @@
 ---
-title: "Exportieren von U-SQL-Datenbanken mithilfe von Azure Data Lake Tools für Visual Studio | Microsoft-Dokumentation"
-description: "Erfahren Sie, wie Sie mithilfe von Azure Data Lake Tools für Visual Studio eine U-SQL-Datenbank exportieren und gleichzeitig in ein lokales Konto importieren."
+title: "Exportieren einer U-SQL-Datenbank mithilfe von Azure Data Lake Tools für Visual Studio | Microsoft-Dokumentation"
+description: "Erfahren Sie, wie Sie mithilfe von Azure Data Lake Tools für Visual Studio eine U-SQL-Datenbank exportieren und automatisch in ein lokales Konto importieren."
 services: data-lake-analytics
 documentationcenter: 
 author: yanancai
@@ -14,72 +14,81 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/27/2017
 ms.author: yanacai
-ms.openlocfilehash: 9f11e07f7fbaf2b708d6fbc8a746238745132bda
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 441606258f9541c9552925e7c0cbc9b3a9effb4d
+ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/05/2017
 ---
-# <a name="how-to-export-u-sql-database"></a>Exportieren einer U-SQL-Datenbank
+# <a name="export-a-u-sql-database"></a>Exportieren einer U-SQL-Datenbank
 
-In diesem Dokument erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) eine U-SQL-Datenbank als einzelnes U-SQL-Skript und heruntergeladene Ressourcen exportieren. Im gleichen Vorgang kann die exportierte Datenbank auch in ein lokales Konto importiert werden.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) eine U-SQL-Datenbank als einzelnes U-SQL-Skript und heruntergeladene Ressourcen exportieren. Sie können die exportierte Datenbank im gleichen Vorgang in ein lokales Konto importieren.
 
-Kunden verwalten in der Regel mehrere Umgebungen für die Entwicklung, zum Testen und für die Produktion. Diese Umgebungen werden sowohl in einem lokalen Konto auf dem lokalen Computer des Entwicklers als auch im Azure Data Lake Analytics-Konto in Azure gehostet. Beim Entwickeln und Optimieren von U-SQL-Abfragen in Entwicklungs- und Testumgebungen ist es üblich, dass Entwickler in der Produktionsdatenbank alles neu erstellen müssen. Mit dem **Datenbankexport-Assistenten** kann dieser Vorgang beschleunigt werden. Entwickler können mithilfe des Assistenten die vorhandene Datenbankumgebung und die Beispieldaten in anderen Azure Data Lake Analytics-Konten klonen.
+Kunden verwalten in der Regel mehrere Umgebungen für die Entwicklung, zum Testen und für die Produktion. Diese Umgebungen werden sowohl in einem lokalen Konto auf dem lokalen Computer des Entwicklers als auch im Azure Data Lake Analytics-Konto in Azure gehostet. 
+
+Wenn Sie U-SQL-Abfragen in Entwicklungs- und Testumgebungen entwickeln und optimieren, müssen Entwickler häufig ihre Arbeit in einer Produktionsdatenbank neu erstellen. Mit dem Datenbankexport-Assistenten kann dieser Vorgang beschleunigt werden. Entwickler können mithilfe des Assistenten die vorhandene Datenbankumgebung und die Beispieldaten in anderen Data Lake Analytics-Konten klonen.
 
 ## <a name="export-steps"></a>Exportschritte
 
-### <a name="step-1-right-click-the-database-in-server-explorer-and-click-export"></a>Schritt 1: Klicken mit der rechten Maustaste auf die Datenbank im Server-Explorer und Klicken auf „Exportieren“
+### <a name="step-1-export-the-database-in-server-explorer"></a>Schritt 1: Exportieren der Datenbank im Server-Explorer
 
-Im Server-Explorer sind alle Azure Data Lake Analytics-Konten aufgeführt, für die Sie über eine Berechtigung verfügen. Erweitern Sie das Konto, das die zu exportierende Datenbank enthält, und klicken Sie mit der rechten Maustaste auf die Datenbank, um **Exportieren** auszuwählen. Wenn das Kontextmenü nicht angezeigt wird, müssen Sie [das Tool auf die aktuelle Version aktualisieren](http://aka.ms/adltoolsvs).
+Im Server-Explorer sind alle Data Lake Analytics-Konten aufgeführt, für die Sie über Berechtigungen verfügen. So exportieren Sie die Datenbank
 
-![Data Lake Analytics-Tools – Exportieren der Datenbank](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
+1. Erweitern Sie im Server-Explorer das Konto, das die zu exportierende Datenbank enthält.
+2. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie dann **Exportieren** aus. 
+   
+    ![Server-Explorer – Exportieren einer Datenbank](./media/data-lake-analytics-data-lake-tools-export-database/export-database.png)
 
-### <a name="step-2-configure-the-objects-you-want-to-export"></a>Schritt 2: Konfigurieren der zu exportierenden Objekte
+     Wenn die Menüoption **Exportieren** nicht verfügbar ist, müssen Sie das [Tool auf die neueste Version aktualisieren](http://aka.ms/adltoolsvs).
 
-In einigen Fällen ist eine Datenbank umfangreich, Sie benötigen jedoch nur einen kleinen Teil davon. Dann können Sie im Export-Assistenten eine Teilmenge der Objekte konfigurieren, die exportiert werden sollen. Beachten Sie, dass die Exportaktion durch Ausführen eines U-SQL-Auftrags abgeschlossen wird und dass daher durch den Export vom Azure-Konto Kosten anfallen.
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>Schritt 2: Konfigurieren der zu exportierenden Objekte
 
-![Data Lake Analytics-Tools – Datenbankexport-Assistent](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
+Wenn Sie nur einen kleinen Teil einer großen Datenbank benötigen, können Sie im Export-Assistenten eine Teilmenge von Objekten konfigurieren, die Sie exportieren möchten. 
 
-### <a name="step-3-check-the-objects-list-and-more-configurations"></a>Schritt 3: Überprüfen der Objektliste und weiterer Konfigurationen
+Die Exportaktion wird durch die Ausführung eines U-SQL-Auftrags abgeschlossen. Daher verursacht der Export aus einem Azure-Konto einige Kosten.
 
-In diesem Schritt können Sie die ausgewählten Objekte oben im Dialogfeld erneut überprüfen. Wenn Fehler vorliegen, können Sie auf „Zurück“ klicken, um zum vorherigen Schritt zurückzukehren und die zu exportierenden Objekte neu konfigurieren.
+![Datenbankexport-Assistent – Auswählen von Exportobjekten](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard.png)
 
-Sie können zudem weitere Konfigurationen zum Exportziel durchführen. Diese Konfigurationen sind in der folgenden Tabelle beschrieben:
+### <a name="step-3-check-the-objects-list-and-other-configurations"></a>Schritt 3: Überprüfen der Objektliste und weiterer Konfigurationen
+
+In diesem Schritt können Sie die ausgewählten Objekte im Feld **Objektliste exportieren** überprüfen. Wenn Fehler aufgetreten sind, wählen Sie **Zurück** aus, um zum vorherigen Schritt zurückzukehren und die zu exportierenden Objekte ordnungsgemäß zu konfigurieren.
+
+Sie können auch andere Einstellungen für das Exportziel konfigurieren. Konfigurationsbeschreibungen sind in der folgenden Tabelle aufgeführt:
 
 |Konfiguration|Beschreibung|
 |-------------|-----------|
-|Zielname|Dieser Name gibt an, wo die exportierten Datenbankressourcen, z.B. Assemblys, zusätzliche Dateien und Beispieldaten, gespeichert werden sollen. Unter dem Stammordner für Ihre lokalen Daten wird ein Ordner mit diesem Namen erstellt.|
-|Projektverzeichnis|Dieser Pfad definiert, wo das exportierte U-SQL-Skript, das alle Datenbankobjektdefinitionen enthält, gespeichert werden soll.|
-|Nur Schema|Bei Auswahl dieser Option werden nur Datenbankdefinitionen und Ressourcen (z.B. Assemblys und zusätzliche Dateien) exportiert.|
-|Schema und Daten|Bei Auswahl dieser Option werden Datenbankdefinitionen, Ressourcen und Daten exportiert. Die oberen N Tabellenzeilen werden exportiert.|
-|Automatisch in lokale Datenbank importieren|Die Auswahl dieser Konfiguration bedeutet, dass die exportierte Datenbank nach Abschluss des Exports automatisch in Ihre lokale Datenbank importiert wird.|
+|Zielname|Dieser Name gibt an, wo die exportierten Datenbankressourcen gespeichert werden sollen. Beispiele sind Assemblys, zusätzliche Dateien und Beispieldaten. Unter dem Stammordner für Ihre lokalen Daten wird ein Ordner mit diesem Namen erstellt.|
+|Projektverzeichnis|Dieser Pfad legt fest, wo das exportierte U-SQL-Skript gespeichert werden soll. Alle Datenbankobjektdefinitionen werden an dieser Stelle gespeichert.|
+|Nur Schema|Wenn Sie diese Option auswählen, werden nur Datenbankdefinitionen und Ressourcen (z. B. Assemblys und zusätzliche Dateien) exportiert.|
+|Schema und Daten|Wenn Sie diese Option auswählen, werden Datenbankdefinitionen, Ressourcen und Daten exportiert. Die oberen N Tabellenzeilen werden exportiert.|
+|Automatisch in lokale Datenbank importieren|Wenn Sie diese Option auswählen, wird die exportierte Datenbank automatisch in Ihre lokale Datenbank importiert, wenn der Exportvorgang abgeschlossen ist.|
 
-![Data Lake Analytics-Tools – Konfiguration des Datenbankexport-Assistenten](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
+![Datenbankexport-Assistent – Liste der Exportobjekte und andere Konfigurationen](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-configuration.png)
 
 ### <a name="step-4-check-the-export-results"></a>Schritt 4: Überprüfen der Exportergebnisse
 
-Nach dem Festlegen aller Einstellungen und dem Abschluss des Exports werden die exportierten Ergebnisse im Protokollfenster im Assistenten angezeigt. Über das im folgenden Screenshot mit einem roten Rechteck gekennzeichnete Protokoll können Sie den Speicherort des exportierten U-SQL-Skripts und der Datenbankressourcen, einschließlich Assemblys, zusätzlicher Dateien und Beispieldaten, finden.
+Wenn der Export beendet ist, können Sie die exportierten Ergebnisse im Protokollfenster des Assistenten anzeigen. Das folgende Beispiel zeigt, wie exportierte U-SQL-Skript- und Datenbankressourcen, einschließlich Assemblys, zusätzliche Dateien und Beispieldaten, gefunden werden können:
 
-![Data Lake Analytics-Tools – Datenbankexport-Assistent abgeschlossen](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
+![Datenbankexport-Assistent – Exportergebnisse](./media/data-lake-analytics-data-lake-tools-export-database/export-database-wizard-completed.png)
 
-## <a name="how-to-import-the-exported-database-to-local-account"></a>Importieren der exportierten Datenbank in ein lokales Konto
+## <a name="import-the-exported-database-to-a-local-account"></a>Importieren der exportierten Datenbank in ein lokales Konto
 
-Für diesen Import aktivieren Sie am besten während des Exports in Schritt 3 die Option **Automatisch in lokale Datenbank importieren**. Wenn Sie vergessen haben, diese Option zu aktivieren, können Sie das exportierte U-SQL-Skript über das Exportprotokoll suchen und das Skript lokal ausführen, um die Datenbank in das lokale Konto zu importieren.
+Am einfachsten importieren Sie die exportierte Datenbank, indem Sie während des Exportvorgangs in Schritt 3 das Kontrollkästchen **Automatisch in lokale Datenbank importieren** aktivieren. Wenn Sie dieses Kontrollkästchen nicht aktiviert haben, suchen Sie zuerst das exportierte U-SQL-Skript im Exportprotokoll. Führen Sie dann das U-SQL-Skript lokal aus, um die Datenbank in Ihr lokales Konto zu importieren.
 
-## <a name="how-to-import-the-exported-database-to-azure-data-lake-analytics-account"></a>Importieren der exportierten Datenbank in ein Azure Data Lake Analytics-Konto
+## <a name="import-the-exported-database-to-a-data-lake-analytics-account"></a>Importieren der exportierten Datenbank in ein Data Lake Analytics-Konto
 
-Für den Import der Datenbank in ein anderes Azure Data Lake Analytics-Konto sind zwei Schritte erforderlich:
+So importieren Sie die Datenbank in ein anderes Data Lake Analytics-Konto
 
-1. Laden Sie die exportierten Ressourcen (einschließlich Assemblys, zusätzlicher Dateien und Beispieldaten) in das Azure Data Lake Store-Standardkonto des Azure Data Lake Analytics-Kontos hoch, in das die Ressourcen importiert werden sollen. Sie finden den Ordner der exportierten Ressourcen unter dem Stammordner für lokale Daten. Importieren Sie den gesamten Ordner in den Stammordner des Standardspeicherkontos.
-2. Senden Sie nach Abschluss des Uploads das exportierte U-SQL-Skript an das Azure Data Lake Analytics-Konto, in das die Datenbank importiert werden soll.
+1. Laden Sie die exportierten Ressourcen (einschließlich Assemblys, zusätzlicher Dateien und Beispieldaten) in das Azure Data Lake Store-Standardkonto des Data Lake Analytics-Kontos hoch, in das die Ressourcen importiert werden sollen. Sie finden den exportierten Ressourcenordner unter dem lokalen Datenstammordner. Laden Sie den gesamten Ordner in das Stammverzeichnis des standardmäßigen Data Lake Store-Kontos hoch.
+2. Wenn der Upload abgeschlossen ist, senden Sie das exportierte U-SQL-Skript an das Data Lake Analytics-Konto, in das Sie die Datenbank importieren möchten.
 
-## <a name="known-limitation"></a>Bekannte Einschränkung
+## <a name="known-limitations"></a>Bekannte Einschränkungen
 
-Wenn Sie im Assistenten die Option **Schema und Data** ausgewählt haben, führt das Tool derzeit einen U-SQL-Auftrag aus, um die in Tabellen gespeicherten Daten zu exportieren. Daher kann der Vorgang zum Exportieren der Daten langsam sein. Zudem fallen Kosten an. 
+Wenn die Option **Schema und Data** in Schritt 3 ausgewählt haben, führt das Tool derzeit einen U-SQL-Auftrag aus, um die in Tabellen gespeicherten Daten zu exportieren. Aus diesem Grund kann der Prozess des Datenexports sehr langsam sein und es können Kosten für Sie anfallen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Grundlegendes zur U-SQL-Datenbank](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
-* [Testen und Debuggen von U-SQL-Aufträgen mit lokalen Testläufen und dem Azure Data Lake U-SQL SDK](data-lake-analytics-data-lake-tools-local-run.md)
+* [Informationen zu U-SQL-Datenbanken](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
+* [Testen und Debuggen von U-SQL-Aufträgen mit lokalen Testläufen und dem Azure Data Lake-U-SQL-SDK](data-lake-analytics-data-lake-tools-local-run.md)
 
 

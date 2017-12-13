@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; eslesar
-ms.openlocfilehash: 1aadd604e676659475f00760af3b0bdfb13a4792
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilieren von Konfigurationen in Azure Automation DSC
 
@@ -128,6 +128,50 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName "MyResourceGroup" -A
 ```
 
 Informationen zum Übergeben von PSCredentials als Parameter finden Sie im Abschnitt <a href="#credential-assets">**Anmeldeinformationen**</a> weiter unten.
+
+## <a name="composite-resources"></a>Zusammengesetzte Ressourcen
+
+**Zusammengesetzte Ressourcen** ermöglichen es Ihnen, die DSC-Konfigurationen als geschachtelte Ressourcen innerhalb einer Konfiguration zu verwenden.  Dadurch können Sie mehrere Konfigurationen auf eine einzelne Ressource anwenden.  Unter [Zusammengesetzte Ressourcen: Verwenden einer DSC-Konfiguration als Ressource](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite) erhalten Sie weitere Informationen zu **zusammengesetzten Ressourcen**
+
+> [!NOTE]
+> Damit **zusammengesetzte Ressourcen** korrekt kompiliert werden, müssen Sie zunächst sicherstellen, dass alle DSC-Ressourcen, auf denen die zusammengesetzten Elemente basieren, zuerst im Azure Automation-Kontomodulrepository installiert werden, da sie andernfalls nicht korrekt importiert werden.
+
+Zum Hinzufügen einer **zusammengesetzten DSC-Ressource** müssen Sie das Ressourcenmodul zu einem Archiv (*.zip) hinzufügen. Wechseln Sie in Ihrem Azure Automation-Konto zum Modulrepository.  Klicken Sie dann auf die Schaltfläche "Modul hinzufügen".
+
+![Modul hinzufügen](./media/automation-dsc-compile/add_module.png)
+
+Navigieren Sie zu dem Verzeichnis, in dem sich Ihr Archiv befindet.  Wählen Sie die Archivdatei aus, und klicken Sie auf "OK".
+
+![Modul auswählen](./media/automation-dsc-compile/select_dscresource.png)
+
+Sie gelangen anschließend wieder zum Modulverzeichnis, wo Sie den Status Ihrer **zusammengesetzten Ressource** überwachen können, während diese entpackt und bei Azure Automation registriert wird.
+
+![Zusammengesetzte Ressource importieren](./media/automation-dsc-compile/register_composite_resource.png)
+
+Sobald das Modul registriert wurde, können Sie darauf klicken, um zu überprüfen, ob **zusammengesetzte Ressourcen** jetzt für die Verwendung in einer Konfiguration verfügbar sind.
+
+![Zusammengesetzte Ressource überprüfen](./media/automation-dsc-compile/validate_composite_resource.png)
+
+Rufen Sie anschließend die **zusammengesetzte Ressource** wie folgt in Ihrer Konfiguration auf:
+
+```powershell
+
+    Node ($AllNodes.Where{$_.Role -eq "WebServer"}).NodeName
+    {
+            
+            JoinDomain DomainJoin
+            {
+                DomainName = $DomainName
+                Admincreds = $Admincreds
+            }
+
+            PSWAWebServer InstallPSWAWebServer
+            {
+                DependsOn = "[JoinDomain]DomainJoin"
+            }        
+    }
+
+```
 
 ## <a name="configurationdata"></a>ConfigurationData
 **ConfigurationData** können Sie bei Verwendung von PowerShell DSC die Konfiguration der Struktur von jeglicher umgebungsspezifischer Konfiguration trennen. Informationen zu [ConfigurationData](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) finden Sie unter **Separating "What" from "Where" in PowerShell DSC**.

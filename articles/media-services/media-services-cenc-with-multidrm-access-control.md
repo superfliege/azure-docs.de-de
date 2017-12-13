@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: e4a53d053a4c792f54e215c19a8f0c4064815839
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 50bcb71cd4f52386e9ea428fc124ac30ae9a862b
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="cenc-with-multi-drm-and-access-control-a-reference-design-and-implementation-on-azure-and-azure-media-services"></a>CENC mit mehreren DRM-Systemen und Access Control: Referenzentwurf und -implementierung in Azure und Azure Media Services
  
@@ -186,8 +186,8 @@ Die Implementierung umfasst die folgenden Schritte:
 
 1. Vorbereiten von Testassets: Codieren/Packen eines Testvideos in einer fragmentierten MP4-Datei mit mehreren Bitraten in Azure Media Services. Dieses Asset ist NICHT durch DRM geschützt. Der DRM-Schutz erfolgt später mithilfe einer dynamischen Schutzebene.
 2. Erstellen von Schlüssel-ID und Inhaltsschlüssel (optional ausgehend vom Schlüsselwert). Für unsere Zwecke ist ein Schlüsselverwaltungssystem nicht erforderlich, da wir es nur mit einer einzelnen Gruppe von Schlüssel-IDs und Inhaltsschlüsseln für verschiedene Testassets zu tun haben.
-3. Verwenden der AMS-API, um für die Testassets Lizenzbereitstellungsdienste für mehrere DRM-Systeme zu konfigurieren. Wenn Sie benutzerdefinierte Lizenzserver in Ihrem Unternehmen oder von beauftragten Unternehmen anstelle der Lizenzdienste in Azure Media Services nutzen, können Sie diesen Schritt überspringen und im Schritt zur Konfiguration der Lizenzbereitstelllung Lizenzerwerbs-URLs angeben. Die AMS-API ist erforderlich, um verschiedene detaillierte Konfigurationen anzugeben, z. B. die Einschränkung von Autorisierungsrichtlinien, Lizenzbereitstellungsvorlagen für verschiedene DRM-Lizenzdienste usw. Das Azure-Portal bietet derzeit nicht die für diese Konfiguration erforderliche Benutzeroberfläche. Informationen zur API und Beispielcode finden Sie im Artikel von Julia Kornich: [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md).
-4. Konfigurieren Sie mithilfe der AMS-API die Assetbereitstellungsrichtlinie für das Testasset. Informationen zur API und Beispielcode finden Sie im Artikel von Julia Kornich: [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-drm.md).
+3. Verwenden der AMS-API, um für die Testassets Lizenzbereitstellungsdienste für mehrere DRM-Systeme zu konfigurieren. Wenn Sie benutzerdefinierte Lizenzserver in Ihrem Unternehmen oder von beauftragten Unternehmen anstelle der Lizenzdienste in Azure Media Services nutzen, können Sie diesen Schritt überspringen und im Schritt zur Konfiguration der Lizenzbereitstelllung Lizenzerwerbs-URLs angeben. Die AMS-API ist erforderlich, um verschiedene detaillierte Konfigurationen anzugeben, z. B. die Einschränkung von Autorisierungsrichtlinien, Lizenzbereitstellungsvorlagen für verschiedene DRM-Lizenzdienste usw. Das Azure-Portal bietet derzeit nicht die für diese Konfiguration erforderliche Benutzeroberfläche. Informationen zur API und Beispielcode finden Sie im folgenden Artikel: [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md).
+4. Konfigurieren Sie mithilfe der AMS-API die Assetbereitstellungsrichtlinie für das Testasset. Informationen zur API und Beispielcode finden Sie im folgenden Artikel: [Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine](media-services-protect-with-playready-widevine.md).
 5. Erstellen und Konfigurieren eines Azure Active Directory-Mandanten in Azure
 6. Erstellen einiger Benutzerkonten und Gruppen in Ihrem Azure Active Directory-Mandanten: Sie müssen mindestens die Gruppe „EntitledUser“ erstellen und dieser Gruppe einen Benutzer hinzufügen. Benutzer in dieser Gruppe durchlaufen während des Lizenzerwerbs eine Berechtigungsüberprüfung. Benutzer, die nicht zu dieser Gruppe gehören, bestehen die Authentifizierungsprüfung nicht und können deshalb keine Lizenzen erwerben. Die Mitgliedschaft in der Gruppe „EntitledUser“ ist ein erforderlicher Anspruch des Typs „groups“ im von Azure AD ausgestellten JWT-Token. Diese Anspruchsanforderung muss im Schritt zur Konfiguration von Lizenzbereitstellungsdiensten für mehrere DRM-Systeme angegeben werden.
 7. Erstellen einer ASP.NET MVC-App, die Ihren Videoplayer hostet. Diese ASP.NET-App wird für den Azure Active Directory-Mandanten durch eine Benutzerauthentifizierung geschützt. Nach der Benutzerauthentifizierung bezogenen Zugriffstoken werden ordnungsgemäße Ansprüche hinzugefügt. Die OpenID Connect-API wird für diesen Schritt empfohlen. Sie müssen die folgenden NuGet-Pakete installieren:
@@ -226,10 +226,10 @@ Bei der Implementierung sind bestimmte Aspekte zu beachten. Die folgende Liste s
 
     Im [JWT-Decoder](http://jwt.calebb.net/) sollten **aud** und **iss** im JWT-Token angezeigt werden:
 
-    ![1. Aspekt](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
+    ![Erster Aspekt](./media/media-services-cenc-with-multidrm-access-control/media-services-1st-gotcha.png)
 2. Fügen Sie Berechtigungen für die Anwendung in AAD (auf der Registerkarte „Konfigurieren“ der Anwendung) hinzu. Dies ist für jede Anwendung (lokale und bereitgestellte Versionen) erforderlich.
 
-    ![2. Aspekt](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
+    ![Zweiter Aspekt](./media/media-services-cenc-with-multidrm-access-control/media-services-perms-to-other-apps.png)
 3. Verwenden Sie den richtigen Aussteller zum Einrichten eines dynamischen CENC-Schutzes:
 
         <add key="ida:issuer" value="https://sts.windows.net/[AAD Tenant ID]/"/>
@@ -330,9 +330,9 @@ Daher ist das von Azure AD ausgestellte JWT-Token tatsächlich das Zugriffstoken
 ### <a name="what-about-live-streaming"></a>Was gilt für Livestreaming?
 Bislang lag unser Schwerpunkt auf bedarfsabhängigen Assets. Was gilt für Livestreaming?
 
-Die gute Nachricht ist, dass Sie genau den gleichen Entwurf und die gleiche Implementierung zum Schutz von Livestreaming in Azure Media Services verwenden können, indem Sie das Asset, das einem Programm zugeordnet ist, als „VOD-Asset“ (Video on Demand) behandeln.
+Die gute Nachricht ist, dass Sie genau den gleichen Entwurf und die gleiche Implementierung zum Schutz von Livestreaming in Azure Media Services verwenden können, indem Sie das Medienobjekt, das einem Programm zugeordnet ist, als „VOD-Medienobjekt“ (Video on Demand) behandeln.
 
-Es ist bekannt, dass Sie für Livestreaming in Azure Media Services erst einen Kanal und dann ein Programm in diesem Kanal erstellen müssen. Um das Programm zu erstellen, müssen Sie ein Asset erstellen, das das Livearchiv für das Programm enthält. Um Live-Inhalte mit CENC und mehreren DRM-Systemen zu schützen, müssen Sie vor dem Start des Programms dieselben Einrichtungs- und Verarbeitungsschritte wie bei einem „VOD-Asset“ anwenden.
+Es ist bekannt, dass Sie für Livestreaming in Azure Media Services erst einen Kanal und dann ein Programm in diesem Kanal erstellen müssen. Um das Programm zu erstellen, müssen Sie ein Medienobjekt erstellen, das das Livearchiv für das Programm enthält. Um Live-Inhalte mit CENC und mehreren DRM-Systemen zu schützen, müssen Sie vor dem Start des Programms dieselben Einrichtungs- und Verarbeitungsschritte wie bei einem „VOD-Asset“ anwenden.
 
 ### <a name="what-about-license-servers-outside-of-azure-media-services"></a>Was gilt für Lizenzserver außerhalb von Azure Media Services?
 Kunden haben möglicherweise in eine Lizenzserverfarm investiert, die sich entweder in ihrem eigenen Rechenzentrum befindet oder von DRM-Dienstanbietern gehostet wird. Glücklicherweise lässt Azure Media Services Content Protection einen Betrieb im Hybridmodus zu. Dabei werden Inhalte in Azure Media Services gehostet und dynamisch geschützt, während die DRM-Lizenzen von Servern außerhalb von Azure Media Services bereitgestellt werden. In diesem Fall müssen die folgenden Änderungen berücksichtigt werden:
@@ -366,9 +366,9 @@ Wir durchlaufen verschiedene Szenarien im fertigen System, damit sich die Leser 
 
 Die Webanwendung des Players und die Anmeldung finden Sie [hier](https://openidconnectweb.azurewebsites.net/).
 
-Wenn Sie ein „nicht integriertes“ Szenario benötigen, bei dem Videoassets in Azure Media Services entweder nicht oder durch DRM geschützt ohne Tokenauthentifizierung gehostet werden (und eine Lizenz für alle Anforderer ausgestellt wird), können Sie einen Test ohne Anmeldung ausführen (indem Sie auf HTTP umschalten, wenn Ihr Videostreaming über HTTP erfolgt).
+Wenn Sie ein „nicht integriertes“ Szenario benötigen: Videomedienobjekte, die in Azure Media Services gehostet werden und entweder ungeschützt oder DRM-geschützt sind, aber ohne Tokenauthentifizierung (Ausstellung einer Lizenz an die Person, die sie angefordert hat), können Sie sie ohne Anmeldung testen (indem Sie zu HTTP wechseln, wenn Ihr Videostreaming über HTTP erfolgt).
 
-Wenn Sie ein durchgängig integriertes Szenario brauchen, bei dem sich Videoassets unter dynamischem DRM-Schutz in Azure Media Services mit Tokenauthentifizierung befinden und JWT-Token von Azure AD generiert werden, müssen Sie sich anmelden.
+Wenn Sie ein durchgängig integriertes Szenario brauchen, bei dem sich Videomedienobjekte unter dynamischem DRM-Schutz in Azure Media Services mit Tokenauthentifizierung befinden und JWT-Token von Azure AD generiert werden, müssen Sie sich anmelden.
 
 ### <a name="user-login"></a>Benutzeranmeldung
 Um das durchgängig integrierte DRM-System testen zu können, müssen Sie ein Konto erstellen oder hinzufügen.
@@ -428,7 +428,7 @@ Beachten Sie, dass Widevine das Erstellen einer Bildschirmaufnahme von geschütz
 ### <a name="not-entitled-users"></a>Nicht berechtigte Benutzer
 Wenn ein Benutzer nicht Mitglied der Gruppe „Berechtigte Benutzer“ ist, kann der Benutzer nicht die Berechtigungsüberprüfung bestehen, weshalb der Lizenzdienst für mehrere DRM-Systeme das Ausstellen der angeforderten Lizenz (wie nachstehend gezeigt) verweigert. Die ausführliche Beschreibung ist „Lizenzerwerb nicht erfolgreich“, die wie vorgesehen angezeigt wird.
 
-![Nicht berechtigte Benutzer](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
+![Unberechtigte Benutzer](./media/media-services-cenc-with-multidrm-access-control/media-services-unentitledusers.png)
 
 ### <a name="running-custom-secure-token-service"></a>Ausführen eines benutzerdefinierten Sicherheitstokendiensts
 Bei einem Szenario mit einem benutzerdefinierten STS (Secure Token Service, Sicherheitstokendienst) wird das JWT-Token vom benutzerdefinierten STS entweder mithilfe eines symmetrischen oder asymmetrischen Schlüssels ausgestellt.
@@ -441,7 +441,7 @@ Asymmetrischer Schlüssel über ein X.509-Zertifikat (mit modernem Microsoft-Bro
 
 ![Ausführen eines benutzerdefinierten STS](./media/media-services-cenc-with-multidrm-access-control/media-services-running-sts2.png)
 
-In beiden genannten Fällen erfolgt die Benutzerauthentifizierung über Azure AD. Der einzige Unterschied ist, dass JWT-Token vom benutzerdefinierten STS anstatt von Azure AD ausgegeben werden. Beim Konfigurieren des dynamischen CENC-Schutzes bestimmt freilich die Beschränkung des Lizenzbereitstellungsdiensts den Typ des JWT-Tokens als entweder symmetrischen oder asymmetrischen Schlüssel.
+In beiden genannten Fällen erfolgt die Benutzerauthentifizierung über Azure AD. Der einzige Unterschied ist, dass JWT-Token vom benutzerdefinierten STS anstatt von Azure AD ausgegeben werden. Beim Konfigurieren des dynamischen CENC-Schutzes bestimmt die Beschränkung des Lizenzbereitstellungsdiensts den Typ des JWT-Tokens als entweder symmetrischen oder asymmetrischen Schlüssel.
 
 ## <a name="summary"></a>Zusammenfassung
 In diesem Dokument haben wir uns mit CENC mit mehreren systemeigenen DRM-Systemen und einer Zugriffssteuerung über eine Tokenauthentifizierung sowie dem entsprechenden Entwurf und seiner Implementierung mithilfe von Azure, Azure Media Services und Azure Media Player beschäftigt.

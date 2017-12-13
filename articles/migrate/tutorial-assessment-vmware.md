@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/22/2017
 ms.author: raynew
-ms.openlocfilehash: 1c21364c3ff5cfb61866c912a699b722f2668607
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: b0818fbc1d227093fcc1b9b925d0859b8580f9c1
+ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/04/2017
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -37,10 +37,14 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **VMware:** Sie benötigen mindestens einen virtuellen VMware-Computer auf einem ESXi-Host oder Cluster mit der Version 5.0 oder höher. Der Host oder Cluster muss über einen vCenter-Server verwaltet werden, auf dem Version 5.5, 6.0 oder 6.5 ausgeführt wird.
-- **vCenter-Konto:** Sie benötigen ein schreibgeschütztes Konto mit Administratoranmeldeinformationen für den vCenter-Server. Dieses Konto wird in Azure Migrate zum Ermitteln virtueller Computer verwendet.
-- **Berechtigungen:** Auf dem vCenter-Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format. 
-- **Statistikeinstellungen:** Die Statistikeinstellungen für den vCenter-Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene als Ebene 3 wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst.
+- **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen von einem vCenter Server mit der Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit der Version 5.0 oder höher, um die Collector-VM bereitzustellen. 
+ 
+> [!NOTE]
+> Für die Unterstützung für Hyper-V, die bald verfügbar sein wird, wurde eine Roadmap erstellt. 
+
+- **vCenter Server-Konto**: Sie benötigen ein schreibgeschütztes Konto, um auf den vCenter Server zugreifen zu können. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
+- **Berechtigungen:** Auf dem vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format. 
+- **Statistikeinstellungen:** Die Statistikeinstellungen für den vCenter Server müssen vor der Bereitstellung auf Ebene 3 festgelegt werden. Bei einer niedrigeren Ebene als Ebene 3 wird die Bewertung zwar ausgeführt, die Leistungsdaten für den Speicher und das Netzwerk werden jedoch nicht erfasst. Die Größenempfehlungen in diesem Fall werden auf der Grundlage von Leistungsdaten für CPU und Arbeitsspeicher und Konfigurationsdaten für Datenträger- und Netzwerkadapter erstellt. 
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
@@ -51,7 +55,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Suchen Sie nach **Azure Migrate**, und wählen Sie den Dienst (**Azure Migrate (Vorschau)**) in den Suchergebnissen aus. Klicken Sie dann auf **Erstellen**.
 3. Geben Sie einen Projektnamen und das Azure-Abonnement für das Projekt an.
 4. Erstellen Sie eine neue Ressourcengruppe.
-5. Geben Sie die Region an, in der das Projekt erstellt wird, und klicken Sie dann auf **Erstellen**. Die von lokalen virtuellen Computern erfassten Metadaten werden in dieser Region gespeichert. In dieser Vorschauversion können Sie ein Azure Migrate-Projekt nur in der Region „USA, Westen-Mitte“ erstellen. Allerdings können Sie virtuelle Computer für einen anderen Standort bewerten.
+5. Geben Sie die Region an, in der das Projekt erstellt wird, und klicken Sie dann auf **Erstellen**. Die von lokalen virtuellen Computern erfassten Metadaten werden in dieser Region gespeichert. In dieser Vorschauversion können Sie ein Azure Migrate-Projekt nur in der Region „USA, Westen-Mitte“ erstellen. Sie können Ihre Migration jedoch trotzdem für jeden beliebigen Zielort von Azure planen. 
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
     
@@ -93,7 +97,7 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
 
 ## <a name="create-the-collector-vm"></a>Erstellen der Collector-VM
 
-Importieren Sie die heruntergeladene Datei auf den vCenter-Server.
+Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 
 1. Klicken Sie in der vSphere-Clientkonsole auf **Datei** > **Deploy OVF Template** (OVF-Vorlage bereitstellen).
 
@@ -143,7 +147,7 @@ Die Ermittlungszeit hängt von der Anzahl der ermittelten virtuellen Computer ab
 Nach der Ermittlung der virtuellen Computer gruppieren Sie sie und erstellen eine Bewertung. 
 
 1. Klicken Sie auf der Seite **Übersicht** des Projekts auf **+ Bewertung erstellen**.
-2. Klicken Sie auf **Alle anzeigen**, um die Einstellungen für die Bewertung zu überprüfen.
+2. Klicken Sie auf **Alle anzeigen**, um die Eigenschaften für die Bewertung zu überprüfen.
 3. Erstellen Sie die Gruppe, und geben Sie einen Gruppennamen an.
 4. Wählen Sie die Computer aus, die der Gruppe hinzugefügt werden sollen.
 5. Klicken Sie auf **Bewertung erstellen**, um die Gruppe und die Bewertung zu erstellen.
@@ -168,13 +172,16 @@ In dieser Ansicht wird der Bereitschaftsstatus für jeden Computer angezeigt.
 
 #### <a name="monthly-cost-estimate"></a>Geschätzte monatliche Kosten
 
-In dieser Ansicht werden die Kosten für Compute und Speicher für die einzelnen Computer angezeigt. Kostenschätzungen werden anhand der Empfehlungen für die leistungsbasierte Größe eines Computers und der zugehörigen Datenträger und anhand der Bewertungseigenschaften berechnet.
+Diese Ansicht zeigt die gesamten Compute- und Speicherkosten für den Betrieb der virtuellen Computer in Azure zusammen mit den Details für die einzelnen Computer. Kostenschätzungen werden anhand der Empfehlungen für die leistungsbasierte Größe eines Computers und der zugehörigen Datenträger und anhand der Bewertungseigenschaften berechnet. 
 
-Die geschätzten monatlichen Kosten für Compute und Speicher werden für alle virtuellen Computer in der Gruppe aggregiert. Sie können auf die einzelnen Computer klicken, um weitere Details anzuzeigen. 
+> [!NOTE]
+> Die Kostenschätzung von Azure Migrate bezieht sich auf die Ausführung der lokalen virtuellen Computer als virtuelle Azure IaaS-Computer (Infrastructure-as-a-Service). Sie berücksichtigt keine Kosten für PaaS (Platform-as-a-Service) oder SaaS (Software-as-a-Service). 
+
+Die geschätzten monatlichen Kosten für Compute und Speicher werden für alle virtuellen Computer in der Gruppe aggregiert. 
 
 ![Bewertung der Kosten für die virtuellen Computer](./media/tutorial-assessment-vmware/assessment-vm-cost.png) 
 
-Sie können einen Drilldown ausführen, um die Kosten für einen bestimmten Computer anzuzeigen.
+Sie können einen Drilldown ausführen, um die Details für einen bestimmten Computer anzuzeigen.
 
 ![Bewertung der Kosten für die virtuellen Computer](./media/tutorial-assessment-vmware/assessment-vm-drill.png) 
 

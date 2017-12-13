@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 70219ada2f4886f40d088486063afda2bc489611
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5e0ff1b98be73eb5990601ae7c5528e4a7af670b
+ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-Bindungen für Azure Functions
 
@@ -33,6 +33,27 @@ Dieser Artikel erläutert das Arbeiten mit [Azure Event Hubs](../event-hubs/even
 Der Event Hubs-Trigger kann verwendet werden, um auf ein Ereignis zu reagieren, das an einen Event Hub-Datenstrom gesendet wird. Sie benötigen Lesezugriff auf den Event Hub, um den Trigger einzurichten.
 
 Wenn eine Event Hubs-Triggerfunktion ausgelöst wird, wird die Meldung, die sie auslöst, als Zeichenfolge an die Funktion übergeben.
+
+## <a name="trigger---scaling"></a>Trigger – Skalierung
+
+Jede Instanz einer von Event Hub ausgelösten Funktion wird von nur einer EventProcessorHost-Instanz (EPH) unterstützt. Event Hubs stellt sicher, dass nur ein EPH einen Lease für eine bestimmte Partition erhalten kann.
+
+Nehmen Sie beispielsweise an, wir beginnen mit dem folgenden Setup und den folgenden Annahmen für einen Event Hub:
+
+1. 10 Partitionen.
+1. 1.000 gleichmäßig auf alle Partitionen verteilte Ereignisse = > 100 Nachrichten in jeder Partition.
+
+Wenn Ihre Funktion zuerst aktiviert wird, gibt es nur eine Instanz der Funktion. Wir nennen diese Funktionsinstanz „Function_0“. „Function_0“ wird einen EPH aufweisen, der es erreicht, einen Lease für alle 10 Partitionen zu erhalten. Es beginnt mit dem Lesen von Ereignissen von den Partitionen 0-9. Von diesem Punkt an wird eines der folgenden Ereignisse eintreten:
+
+* **Es ist nur eine Instanz der Funktion erforderlich** – „Function_0“ ist in der Lage, alle 1.000 zu verarbeiten, bevor die Skalierungslogik von Azure Functions einsetzt. Daher werden alle 1.000 Nachrichten von „Function_0“ verarbeitet.
+
+* **Es wird eine weitere Funktionsinstanz hinzugefügt** – Die Skalierungslogik von Azure Functions bestimmt, dass „Function_0“ über mehr Nachrichten verfügt, als sie verarbeiten kann. Daher wird eine neue Instanz, „Function_1“, erstellt. Event Hubs erkennt, dass eine neue EPH-Instanz versucht, Nachrichten zu lesen. Event Hubs starten den Lastenausgleich für die Partitionen über die EPH-Instanzen hinweg, z. B. werden die Partitionen 0-4 der „Function_0“ und die Partitionen 5-9 der „Function_1“ zugewiesen. 
+
+* **N weitere Funktionsinstanzen hinzufügen** – Die Skalierungslogik von Azure Functions bestimmt, dass sowohl „Function_0“ als auch „Function_1“ mehr Nachrichten aufweisen, als sie verarbeiten können. Es wird erneut für „Function_2...N“ skaliert, wobei N größer ist als die Event Hub-Paritionen. Event Hubs wird für die Partitionen über Instanzen von „Function_0...9“ hinweg einen Lastenausgleich vornehmen.
+
+Das Besondere an der aktuellen Skalierungslogik von Azure Functions ist die Tatsache, dass N größer ist als die Anzahl der Partitionen. Auf diese Weise wird sichergestellt, dass es immer Instanzen von EPH gibt, die leicht verfügbar sind, um schnell eine Sperre für die Partition(en) zu erhalten, sobald sie über andere Instanzen verfügbar werden. Den Benutzern werden nur die Ressourcen berechnet, die bei der Ausführung der Funktionsinstanz in Anspruch genommen werden, und nicht die Kosten für diese übermäßige Bereitstellung.
+
+Wenn alle Funktionsausführungen fehlerfrei verlaufen, werden Prüfpunkte dem zugehörigen Speicherkonto hinzugefügt. Wenn die Prüfpunkte erfolgreich erstellt wurden, sollten alle 1.000 Nachrichten nie wieder abgerufen werden.
 
 ## <a name="trigger---example"></a>Trigger: Beispiel
 

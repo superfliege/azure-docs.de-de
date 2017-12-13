@@ -11,19 +11,19 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: apimpm
-ms.openlocfilehash: 22cc917eb6f296724bf535e48b0dd6ba8927e5d3
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: e92c1a44b49c64308438184ab8185a90766c5bcf
+ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/01/2017
 ---
 # <a name="upgrade-and-scale-an-api-management-instance"></a>Aktualisieren und Skalieren einer API Management-Instanz 
 
-Kunden können eine APIM-Instanz (API Management) skalieren, indem sie Einheiten hinzufügen und entfernen. Eine **Einheit** umfasst dedizierte Azure-Ressourcen und verfügt über eine bestimmte Lastkapazität, die als Anzahl von API-Aufrufen pro Monat ausgedrückt wird. Der tatsächliche Durchsatz und die Latenz variieren aufgrund der folgenden Faktoren erheblich: Anzahl und Übertragungsrate von gleichzeitigen Verbindungen, Anzahl und Art von konfigurierten Richtlinien, Umfang von Anforderungen und Antworten sowie Back-End-Latenzzeiten. 
+Kunden können eine APIM-Instanz (API Management) skalieren, indem sie Einheiten hinzufügen und entfernen. Eine **Einheit** umfasst dedizierte Azure-Ressourcen und verfügt über eine bestimmte Lastkapazität, die als Anzahl von API-Aufrufen pro Monat ausgedrückt wird. Diese stellt nicht die maximale Anzahl von Aufrufen, sondern eher einen maximalen Durchsatzwert für die grobe Kapazitätsplanung dar. Der tatsächliche Durchsatz und die Latenz variieren aufgrund der folgenden Faktoren erheblich: Anzahl und Übertragungsrate von parallelen Verbindungen, Anzahl und Art von konfigurierten Richtlinien, Umfang von Anforderungen und Antworten sowie Back-End-Latenzzeiten.
 
 Die Kapazität und der Preis der einzelnen Einheiten richtet sich nach dem **Tarif** der Einheit. Sie können zwischen drei Tarifen wählen: **Developer**, **Standard** und **Premium**. Wenn Sie die Kapazität für einen Dienst eines Tarifs erhöhen müssen, sollten Sie eine Einheit hinzufügen. Falls der Tarif, der in Ihrer APIM-Instanz derzeit ausgewählt ist, das Hinzufügen von weiteren Einheiten nicht zulässt, müssen Sie ein Upgrade auf einen höheren Tarif durchführen. 
 
-Der Preis jeder Einheit, die Möglichkeit zum Hinzufügen bzw. Entfernen von Einheiten und das Vorhandensein bestimmter Features (z.B. Bereitstellung in mehreren Regionen) richtet sich nach dem Tarif, den Sie für Ihre APIM-Instanz gewählt haben. Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) wird beschrieben, welchen Preis pro Einheit und welche Features Sie pro Tarif erhalten. 
+Der Preis jeder Einheit und die verfügbaren Features (z.B. Bereitstellung in mehreren Regionen) richten sich nach dem Tarif, den Sie für Ihre APIM-Instanz gewählt haben. Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erfahren Sie, welchen Preis pro Einheit und welche Features Sie im jeweiligen Tarif erhalten. 
 
 >[!NOTE]
 >Im Artikel zu den [Preisdetails](https://azure.microsoft.com/pricing/details/api-management/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) sind ungefähre Werte für die Einheitenkapazität der einzelnen Tarife angegeben. Um noch genauere Werte zu erhalten, sollten Sie sich ein realistisches Szenario für Ihre APIs ansehen. Informationen hierzu finden Sie unten im Abschnitt „Planen der Kapazität“.
@@ -42,7 +42,7 @@ Zum Ausführen der in diesem Artikel beschriebenen Schritte benötigen Sie Folge
 
 Testen Sie die zu erwartenden Workloads, um zu ermitteln, ob ausreichend Einheiten zur Bewältigung Ihres Datenverkehrs vorhanden sind. 
 
-Wie oben bereits erwähnt: Die Anzahl von Anforderungen, die per APIM pro Sekunde verarbeitet werden können, hängt von vielen Variablen ab. Beispiele hierfür sind: das Verbindungsmuster, die Größe der Anforderung und Antwort, für die einzelnen APIs konfigurierte Richtlinien und die Anzahl von Clients, die Anforderungen senden.
+Wie bereits erwähnt, hängt die Anzahl von Anforderungen, die eine APIM-Einheit pro Sekunde verarbeiten kann, von vielen Variablen ab. Beispiele hierfür sind: das Verbindungsmuster, die Größe der Anforderung und Antwort, für die einzelnen APIs konfigurierte Richtlinien und die Anzahl von Clients, die Anforderungen senden.
 
 Nutzen Sie **Metriken** (mit Verwendung von Azure Monitor-Funktionen), um zu verstehen, wie viel Kapazität jeweils verwendet wird.
 
@@ -52,7 +52,7 @@ Nutzen Sie **Metriken** (mit Verwendung von Azure Monitor-Funktionen), um zu ver
 2. Klicken Sie auf **Metriken**.
 3. Wählen Sie unter **Verfügbare Metriken** die Metrik **Kapazität**. 
 
-    Anhand der Metrik „Kapazität“ können Sie ermitteln, wie viel Kapazität in Ihrem Mandanten genutzt wird. Sie können beim Testen die Last immer weiter erhöhen, um herauszufinden, wie hoch Ihre Spitzenlast ist. Sie können eine Metrikwarnung festlegen, damit Sie benachrichtigt werden, wenn etwas Unerwartetes passiert. Beispiel: Ihre APIM-Instanz überschreitet die Kapazitätsgrenze mehr als fünf Minuten lang. 
+    Anhand der Metrik „Kapazität“ können Sie ermitteln, wie viel Computekapazität in Ihrem Mandanten genutzt wird. Der Wert wird von den Computeressourcen abgeleitet, die Ihr Mandant verwendet, z.B. Arbeitsspeicher, CPU und Länge von Warteschlangen. Er entspricht nicht direkt der Anzahl der verarbeiteten Anforderungen. Testen Sie dies, indem Sie die Anforderungslast auf Ihren Mandanten erhöhen und prüfen, welcher Wert der Kapazitätsmetrik Ihrer Spitzenlast entspricht. Sie können eine Metrikwarnung festlegen, damit Sie benachrichtigt werden, wenn etwas Unerwartetes passiert. Beispiel: Ihre APIM-Instanz hat ihre erwartete Höchstkapazität seit mehr als 10 Minuten überschritten.
 
     >[!TIP]
     > Sie können die Warnung so konfigurieren, dass Sie benachrichtigt werden, wenn die Kapazität für Ihren Dienst knapp wird, oder dass eine Logik-App aufgerufen wird, die durch das Hinzufügen einer Einheit automatisch eine Skalierung durchführt.
@@ -63,12 +63,12 @@ Wie bereits erwähnt, können Sie zwischen drei Tarifen wählen: **Developer**, 
 
 Bei **Standard** und **Premium** handelt es sich um Tarife für die Produktion, die über eine Vereinbarung zum Servicelevel (SLA) verfügen und skaliert werden können. Im Tarif **Standard** kann eine Skalierung auf bis zu vier Einheiten durchgeführt werden. Im Tarif **Premium** können Sie eine beliebige Anzahl von Einheiten hinzufügen. 
 
-Bei Verwendung des Tarifs **Premium** können Sie eine einzelne API Management-Instanz auf eine beliebige Anzahl von Azure-Regionen verteilen. Wenn Sie einen API Management-Dienst erstellen, enthält die Instanz nur eine Einheit und ist nur in einer Azure-Region angeordnet. Diese erste Region wird als **primäre** Region bezeichnet. Zusätzliche Regionen können leicht hinzugefügt werden. Beim Hinzufügen einer Region geben Sie die Anzahl von Einheiten an, die Sie zuordnen möchten. Beispielsweise können Sie eine Einheit in der **primären** Region und fünf Einheiten in einer anderen Region verwenden. Sie können diese Einrichtung je nach Datenverkehr in den einzelnen Regionen genau anpassen. Weitere Informationen finden Sie unter [Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen](api-management-howto-deploy-multi-region.md).
+Bei Verwendung des Tarifs **Premium** können Sie eine einzelne API Management-Instanz auf eine beliebige Anzahl von Azure-Regionen verteilen. Wenn Sie einen API Management-Dienst erstellen, enthält die Instanz nur eine Einheit und ist nur in einer Azure-Region angeordnet. Diese erste Region wird als **primäre** Region bezeichnet. Zusätzliche Regionen können leicht hinzugefügt werden. Beim Hinzufügen einer Region geben Sie die Anzahl von Einheiten an, die Sie zuordnen möchten. Beispielsweise können Sie eine Einheit in der **primären** Region und fünf Einheiten in einer anderen Region verwenden. Sie können die Anzahl der Einheiten an den Datenverkehr anpassen, die Sie in jeder Region verzeichnen. Weitere Informationen finden Sie unter [Bereitstellen einer Azure API Management-Dienstinstanz für mehrere Azure-Regionen](api-management-howto-deploy-multi-region.md).
 
-Sie können für alle Tarife ein Upgrade oder ein Downgrade durchführen. Beachten Sie Folgendes: Bei einem Downgrade können ggf. einige Features wegfallen, z.B. VNETs oder die Bereitstellung in mehreren Regionen bei Downgrades vom Premium-Tarif auf den Standard-Tarif.
+Sie können für alle Tarife ein Upgrade oder ein Downgrade durchführen. Beim Upgrade oder Downgrade können ggf. einige Features wegfallen, z.B. VNETs oder die Bereitstellung in mehreren Regionen bei Downgrades vom Premium-Tarif auf den Standard-Tarif.
 
 >[!NOTE]
->Es kann zwischen 15 und 30 Minuten dauern, bis der Upgrade- bzw. Skalierungsprozess abgeschlossen ist. Sie erhalten nach Abschluss des Prozesses eine Benachrichtigung.
+>Es kann zwischen 15 und 45 Minuten dauern, bis der Upgrade- bzw. Skalierungsprozess abgeschlossen ist. Sie erhalten nach Abschluss des Prozesses eine Benachrichtigung.
 
 ### <a name="use-the-azure-portal-to-upgrade-and-scale"></a>Verwenden des Azure-Portals zum Durchführen von Upgrades und Skalierungen
 

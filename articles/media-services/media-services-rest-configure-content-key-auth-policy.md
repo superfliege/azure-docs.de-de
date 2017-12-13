@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: juliako
-ms.openlocfilehash: 5b8f2d750c3330fb05f5529c3e3549d8e06e5e4e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 0ae5d37507bb6e36589e9755faf8bd3471910257
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamische Verschlüsselung: Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -30,17 +30,13 @@ Wenn ein Medienobjekt durch Media Services verschlüsselt werden soll, müssen S
 
 Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen Schlüssel, um Ihren Inhalt mit AES- oder PlayReady-Verschlüsselung dynamisch zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu entscheiden, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
-Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Token**. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im **Simple Web Tokens**-Format ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und im **JSON Web Token**-Format (JWT).
+Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Token**. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im **Simple Web Tokens**-Format ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und **JSON Web Token**-Format (JWT).
 
 Secure Token Services werden von Media Services nicht bereitgestellt. Sie können einen benutzerdefinierten STS erstellen oder Microsoft Azure ACS zum Ausstellen von Token nutzen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausgabe von Ansprüchen konfiguriert sein, die Sie in der Konfiguration der Token-Einschränkung angegeben haben (wie in diesem Artikel beschrieben). Der Schlüsselübermittlungsdienst von Media Services gibt den Verschlüsselungsschlüssel an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Inhaltsschlüssel konfigurierten Ansprüchen übereinstimmen.
 
-Weitere Informationen finden Sie unter
-
-[JWT-Tokenauthentifizierung](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
-
-[Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
-
-[Ausstellen von Token mithilfe von Azure ACS](http://mingfeiy.com/acs-with-key-services)
+Weitere Informationen finden Sie in den folgenden Artikeln:
+- [JWT-Tokenauthentifizierung](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
+- [Integrieren einer Azure Media Services-OWIN MVC-basierten App in Azure Active Directory und Einschränken der Übermittlung von Inhaltsschlüsseln auf Grundlage von JWT-Ansprüchen](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
 
 ### <a name="some-considerations-apply"></a>Folgende Überlegungen sollten berücksichtigt werden:
 * Um dynamische Paketerstellung und dynamische Verschlüsselung nutzen zu können, stellen Sie sicher, dass der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, den Status **Wird ausgeführt** aufweist.
@@ -50,6 +46,7 @@ Weitere Informationen finden Sie unter
 * ContentKeyAuthorizationPolicy und die zugehörigen Objekte (Richtlinienoptionen und Einschränkungen) werden vom Schlüsselübermittlungsdienst für 15 Minuten zwischengespeichert.  Wenn Sie ContentKeyAuthorizationPolicy erstellen und angeben, dass eine „Token“-Einschränkung verwendet werden soll, diese anschließend testen und dann die Richtlinie auf eine „Open“-Einschränkung aktualisieren, dauert es ungefähr 15 Minuten, bis die Richtlinie zur „Open“-Version der Richtlinie wechselt.
 * Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie einen vorhandenen Locator (sofern vorhanden) löschen und einen neuen Locator erstellen.
 * Progressive Downloads können derzeit nicht verschlüsselt werden.
+* Der AMS-Streamingendpunkt legt den Wert des CORS-Headers „Access-Control-Allow-Origin“ in der Preflightantwort als Platzhalter „\*“ fest. Dies funktioniert mit den meisten Playern gut, einschließlich Azure Media Player, Roku und JW sowie weitere. Einige Player, die dashjs nutzen, funktionieren jedoch nicht, da „XMLHttpRequest“ in ihrem dashjs mit dem Anmeldeinformationsmodus auf „include“ gesetzt ist und der Platzhalter „\*“ als Wert von „Access-Control-Allow-Origin“ nicht zugelassen wird. Als Problemumgehung für diese Einschränkung in dashjs kann Azure Media Services, wenn Sie Ihren Client von einer einzigen Domäne aus hosten, diese Domäne im Preflightantwortheader angeben. Sie erreichen uns, indem Sie ein Supportticket über das Azure-Portal öffnen.
 
 ## <a name="aes-128-dynamic-encryption"></a>Dynamische AES-128-Verschlüsselung
 > [!NOTE]
@@ -234,7 +231,7 @@ Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanfo
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
 
-Bei der Konfiguration der Richtlinie mit **Token**-Einschränkung müssen die Parameter des **primären Verifizierungsschlüssels**, **issuer** und **audience** angegeben werden. Der **primäre Verifizierungsschlüssel** enthält den Schlüssel, mit dem das Token signiert wurde, und **issuer** ist der STS (Secure Token Service), von dem das Token ausgestellt wurde. **audience** (manchmal auch **scope**) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen. 
+Bei der Konfiguration der Richtlinie mit **Token**-Einschränkung müssen die Parameter des primären **Verifizierungsschlüssels**, **issuer** und **audience** angegeben werden. Der primäre **Verifizierungsschlüssel** enthält den Schlüssel, mit dem das Token signiert wurde, und **issuer** ist der Sicherheitstokendienst (Secure Token Service, STS), von dem das Token ausgestellt wurde. **audience** (manchmal auch **scope**) beschreibt den Verwendungszweck des Tokens oder die Ressource, auf die durch das Token Zugriff gewährt wird. Der Schlüsselübermittlungsdienst von Media Services überprüft, ob die Werte im Token mit den Werten in der Vorlage übereinstimmen.
 
 Im folgenden Beispiel wird eine Autorisierungsrichtlinie mit einer Token-Einschränkung erstellt. In diesem Beispiel müsste der Client ein Token vorlegen, das einen Signaturschlüssel (VerificationKey), einen Tokenherausgeber und erforderliche Ansprüche enthält.
 

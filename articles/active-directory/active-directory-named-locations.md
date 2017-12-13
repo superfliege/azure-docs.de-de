@@ -1,6 +1,6 @@
 ---
 title: Benannte Orte in Azure Active Directory | Microsoft-Dokumentation
-description: "Durch Konfigurieren benannter Orte können Sie vermeiden, dass IP-Adressen, die Ihrer Organisation gehören, falsch positive Ergebnisse für den Risikoereignistyp „Unmöglicher Ortswechsel zu atypischen Orten“ liefern."
+description: "Erfahren Sie, was benannte Orte sind und wie Sie sie konfigurieren können."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -11,22 +11,50 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 12/05/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: da437908509e40386ed23863648bd6956b308186
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 126646d7460831f0235221595b8a93c88be6146d
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Benannte Orte in Azure Active Directory
 
-Mit dem Feature „Benannte Orte“ von Azure Active Directory können Sie in Ihren Organisationen vertrauenswürdige IP-Adressbereiche bezeichnen. Sie können in Ihrer Umgebung benannte Orte im Kontext der Erkennung von [Risikoereignissen](active-directory-reporting-risk-events.md) verwenden. Das Feature verringert die Anzahl der gemeldeten falschen Positive für den Risikoereignistyp *Unmöglicher Ortswechsel zu atypischen Orten*. 
+Mit benannten Orten können Sie in Ihrer Organisation vertrauenswürdige IP-Adressbereiche bezeichnen. Azure Active Directory verwendet benannte Orte im folgenden Kontext:
 
-## <a name="configuration"></a>Konfiguration
+- Die Erkennung von [Risikoereignissen](active-directory-reporting-risk-events.md), um die Anzahl der gemeldeten falsch positiven Ergebnisse zu reduzieren.  
 
-So konfigurieren Sie einen benannten Ort
+- [Standortbasierter bedingter Zugriff](active-directory-conditional-access-azure-portal.md#locations).
+
+
+In diesem Artikel wird erklärt, wie Sie benannte Orte in Ihrer Umgebung konfigurieren können.
+
+
+## <a name="entry-points"></a>Einstiegspunkte
+
+Sie können auf die Seite mit der Konfiguration des benannten Orts im Abschnitt **Sicherheit** der Azure Active Directory-Seite zugreifen, indem Sie auf Folgendes klicken:
+
+![Einstiegspunkte](./media/active-directory-named-locations/34.png)
+
+- **Bedingter Zugriff:**
+
+    - Klicken Sie im Bereich **Verwalten** auf **Benannte Orte**.
+    
+        ![Der Befehl „Benannte Orte“](./media/active-directory-named-locations/06.png)
+
+- **Riskante Anmeldungen:**
+
+    - Klicken Sie auf der Symbolleiste am oberen Rand auf **Bekannte IP-Adressbereiche hinzufügen**.
+
+       ![Der Befehl „Benannte Orte“](./media/active-directory-named-locations/35.png)
+
+
+
+## <a name="configuration-example"></a>Konfigurationsbeispiel
+
+**So konfigurieren Sie einen benannten Ort**
 
 1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
 
@@ -34,22 +62,22 @@ So konfigurieren Sie einen benannten Ort
 
     ![Klicken Sie im linken Bereich auf den Link „Azure Active Directory“.](./media/active-directory-named-locations/01.png)
 
-3. Klicken Sie auf dem Blatt **Azure Active Directory** im Abschnitt **Sicherheit** auf **Bedingter Zugriff**.
+3. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Sicherheit** auf **Bedingter Zugriff**.
 
     ![Der Befehl „Bedingter Zugriff“](./media/active-directory-named-locations/05.png)
 
 
-4. Klicken Sie auf dem Blatt **Azure Active Directory** im Abschnitt **Verwalten** auf **Benannte Orte**.
+4. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Verwalten** auf **Benannte Orte**.
 
     ![Der Befehl „Benannte Orte“](./media/active-directory-named-locations/06.png)
 
 
-5. Klicken Sie auf dem Blatt **Benannte Orte** auf **Neuer Standort**.
+5. Klicken Sie auf der Seite **Benannte Orte** auf **Neuer Standort**.
 
     ![Der Befehl „Neuer Standort“](./media/active-directory-named-locations/07.png)
 
 
-6. Gehen Sie auf dem Blatt **Neu** wie folgt vor:
+6. Gehen Sie auf der Seite **Neu** wie folgt vor:
 
     ![Das Blatt „Neu“](./media/active-directory-named-locations/56.png)
 
@@ -73,5 +101,10 @@ So konfigurieren Sie einen benannten Ort
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Risikoereignissen finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-reporting-risk-events.md).
+Weitere Informationen:
 
+- Informationen zu **Risikoereignissen** finden Sie unter [Azure Active Directory-Risikoereignisse](active-directory-reporting-risk-events.md).
+
+- Informationen zum **bedingten Zugriff** finden Sie unter [Bedingter Zugriff mit Azure Active Directory](active-directory-conditional-access-azure-portal.md).
+
+- Informationen zu **Berichten zu riskanten Anmeldungen** finden Sie unter [Bericht „Riskante Anmeldungen“ im Azure Active Directory-Portal](active-directory-reporting-security-risky-sign-ins.md).  

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: 6213019131eec60263172f468ced516037a33c61
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b236ab8dd80b0c34501e0d60ba74dee3043d262
+ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/06/2017
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>Festlegen einer Gültigkeitsdauer für den automatischen Ablauf von Daten in Azure Cosmos DB-Sammlungen
 Anwendungen können Unmengen an Daten generieren und speichern. Einige dieser Daten (etwa vom Computer generierte Ereignisdaten, Protokolle und Benutzersitzungsinformationen) sind allerdings nur für einen begrenzten Zeitraum relevant. Sobald die Daten von der Anwendung nicht mehr benötigt werden, können sie gefahrlos gelöscht werden, um den Speicherbedarf einer Anwendung zu verringern.
@@ -149,6 +149,8 @@ Wenn Sie TTL für eine Sammlung vollständig deaktivieren und den Hintergrundpro
     
     await client.ReplaceDocumentCollectionAsync(collection);
 
+## <a name="ttl-and-index-interaction"></a>Interaktion von TTL und Index
+Wenn Sie die Gültigkeitsdauer (Time to Live, TTL) hinzufügen oder ändern, ändert dies auch den zugrunde liegenden Index. Wenn TTL nicht angegeben ist und Sie einen gültigen TTL-Wert angeben, führt dies zu einer erneuten Indizierung. Bei einem konsistenten Index sehen die Benutzer keine Änderung des Indexzustands. Bei einem verzögerten Index wird der erste Index zuerst abgeglichen, und anhand dieser TTL-Änderung wird der Index von Grund auf neu erstellt. Dies wirkt sich in diesem Fall darauf aus, dass die Abfragen während der Neuerstellung des Index unvollständige oder falsche Ergebnisse zurückgeben. Ändern Sie TTL für einen verzögerten Index nicht, wenn Sie eine exakte Datenanzahl usw. benötigen, da der Indizierungsmodus ebenfalls verzögert ist.  Idealerweise sollte immer ein konsistenter Index ausgewählt werden. 
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 **Was kostet TTL?**
