@@ -5,15 +5,15 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/17/2017
+ms.date: 12/06/2017
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 517f85307e97c1e98a84da95cb51660d6d4fe679
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: ba425e938f81ffb37a2c8bc2a764a4db074e9106
+ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -26,22 +26,6 @@ Zur Einhaltung Ihrer Unternehmensstandards und Vereinbarungen zum Servicelevel m
 > * Implementieren einer neuen Richtlinie in der gesamten Organisation
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-## <a name="opt-in-to-azure-policy"></a>Registrieren für Azure Policy
-
-Azure Policy ist jetzt in einer eingeschränkten Vorschauversion verfügbar und kann erst nach vorheriger Registrierung verwendet werden.
-
-1. Navigieren Sie zu Azure Policy (https://aka.ms/getpolicy), und klicken Sie im linken Bereich auf **Registrieren**.
-
-   ![Suchen nach „Policy“](media/assign-policy-definition/sign-up.png)
-
-2. Registrieren Sie sich für Azure Policy, indem Sie in der **Abonnementliste** die gewünschten Abonnements auswählen. Klicken Sie anschließend auf **Register** (Registrieren).
-
-   Die Abonnementliste enthält alle Ihre Azure-Abonnements.
-
-   ![Registrieren für die Verwendung von Azure Policy](media/assign-policy-definition/preview-opt-in.png)
-
-   Bei hoher Nachfrage kann es mehrere Tage dauern, bis wir Ihre Registrierungsanforderung akzeptieren. Wenn Ihre Anforderung akzeptiert wurde, werden Sie per E-Mail darüber informiert, dass Sie den Dienst nun verwenden können.
 
 ## <a name="assign-a-policy"></a>Zuweisen einer Richtlinie
 
@@ -69,7 +53,7 @@ Für die Konformitätserzwingung mit Azure Policy muss zunächst eine Richtlinie
 
    In Azure Policy stehen zwei Tarife zur Verfügung: *Free* und *Standard*. Mit dem Free-Tarif können Richtlinien nur für zukünftige Ressourcen erzwungen werden. Mit dem Standard-Tarif können Sie Richtlinien hingegen auch für bereits vorhandene Ressourcen erzwingen und Ihren Konformitätszustand besser nachvollziehen. Da es sich hierbei um eine eingeschränkte Vorschauversion handelt, haben wir noch kein Preismodell veröffentlicht, und Ihnen entstehen durch die Wahl von *Standard* keine Kosten. Weitere Informationen zu Preisen finden Sie auf der [Preisseite für Azure Policy](https://acom-milestone-ignite.azurewebsites.net/pricing/details/azure-policy/).
 
-8. Wählen Sie den **Bereich** aus. Hierbei handelt es sich um das Abonnement (oder die Ressourcengruppe), das bzw. die Sie zuvor im Rahmen der Registrierung für Azure Policy registriert haben. Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen.
+8. Wählen Sie den **Bereich** aus – das zuvor registrierte Abonnement (oder die Ressourcengruppe). Ein Bereich bestimmt, für welche Ressourcen oder Ressourcengruppe die Richtlinienzuweisung erzwungen wird. Er kann von einem Abonnement bis zu Ressourcengruppen reichen.
 
    In diesem Beispiel verwenden wir das Abonnement **Azure Analytics Capacity Dev**. Ihr Abonnement wird sich davon unterscheiden.
 
@@ -94,9 +78,9 @@ Nach dem Zuweisen der Richtliniendefinition erstellen wir eine neue Richtlinie z
       - Richtlinienregeln/-bedingungen (in unserem Fall: VM-SKU-Größe gleich G-Serie)
       - Wirkung der Richtlinie (in unserem Fall: **deny**, also „Ablehnen“)
 
-   Der JSON-Code sollte wie folgt aussehen:
+    Der JSON-Code sollte wie folgt aussehen:
 
-```json
+    ```json
 {
     "policyRule": {
       "if": {
@@ -116,11 +100,9 @@ Nach dem Zuweisen der Richtliniendefinition erstellen wir eine neue Richtlinie z
       }
     }
 }
-```
+    ```
 
-<!-- Update the following link to the top level samples page
--->
-   JSON-Codebeispiele finden Sie im Artikel [Vorlagen für Azure Policy](json-samples.md).
+    Lesen Sie den Artikel [Vorlagen für Azure Policy](json-samples.md), um JSON-Codebeispiele anzuzeigen.
 
 4. Wählen Sie **Speichern** aus.
 
