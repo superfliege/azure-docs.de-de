@@ -179,6 +179,8 @@
           href: data-factory-troubleshoot.md
         - name: Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
           href: data-factory-troubleshoot-gateway-issues.md
+    - name: Aufrufen von SSIS-Paketen mithilfe der Aktivität „Gespeicherte Prozedur“
+      href: how-to-invoke-ssis-package-stored-procedure-activity.md
 - name: Referenz
   items:
     - name: Codebeispiele

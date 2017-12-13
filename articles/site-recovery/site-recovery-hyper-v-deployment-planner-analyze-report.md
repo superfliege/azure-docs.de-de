@@ -54,7 +54,7 @@ Die Tabelle „Recommendations“ (Empfehlungen) des Berichts für „Hyper-V zu
 
 **Profiled data period** (Zeitraum der Profilerstellung): Der Zeitraum, in dem die Profilerstellung durchgeführt wurde. Standardmäßig bindet das Tool alle Daten der Profilerstellung in die Berechnung ein. Wenn Sie die Optionen StartDate und EndDate bei der Berichterstellung verwendet haben, wird der Bericht für den jeweiligen Zeitraum erstellt. 
 
-**Number of Hyper-V servers profiled** (Anzahl von Hyper-V-Servern mit Profilerstellung): Die Anzahl von Hyper-V-Servern, für deren VMs der Bericht erstellt wird. Klicken Sie auf den Wert, um den Namen des Hyper-V-Servers anzuzeigen. Die Tabelle „On-premises Storage Requirement“ (Anforderungen für lokalen Speicher) wird geöffnet, in der alle Server mit der dazugehörigen Speicheranforderung aufgeführt sind.    
+**Number of Hyper-V servers profiled** (Anzahl von Hyper-V-Servern mit Profilerstellung): Die Anzahl von Hyper-V-Servern, für deren VMs der Bericht erstellt wird. Klicken Sie auf den Wert, um den Namen des Hyper-V-Servers anzuzeigen. Die Tabelle „On-premises Storage Requirement“ (Bedarf an lokalem Speicher) wird geöffnet, in der alle Server mit dem dazugehörigen Speicherbedarf aufgeführt sind.    
 
 **Desired RPO** (Gewünschter RPO-Wert): Der RPO-Wert (Recovery Point Objective) für Ihre Bereitstellung. Standardmäßig wird die erforderliche Netzwerkbandbreite für RPO-Werte von 15, 30 und 60 Minuten berechnet. Basierend auf der Auswahl werden die betroffenen Werte auf dem Blatt aktualisiert. Wenn Sie beim Erstellen des Berichts den Parameter DesiredRPOinMin verwendet haben, wird dieser Wert als Ergebnis unter „Desired RPO“ (Gewünschter RPO-Wert) angezeigt.
 
@@ -90,13 +90,13 @@ Dieses Ergebnis gibt die Gesamtzahl von Kernen an, die eingerichtet werden sollt
 ![Erforderliche Anzahl von Azure-Kernen](media/site-recovery-hyper-v-deployment-planner-analyze-report/required-number-of-azure-cores-h2a.png)
 
 
-### <a name="additional-on-premises-storage-requirement"></a>Additional on-premises storage requirement (Zusätzliche Anforderungen für lokalen Speicher)
+### <a name="additional-on-premises-storage-requirement"></a>Additional on-premises storage requirement (Zusätzlicher Bedarf an lokalem Speicher)
 
-Gesamter freier Speicherplatz, der auf Hyper-V-Servern für die erfolgreiche anfängliche Replikation und Deltareplikation erforderlich ist, um sicherzustellen, dass es durch die VM-Replikation für Ihre Produktionsanwendungen nicht zu unerwünschten Ausfallzeiten kommt. Details zu den Anforderungen einzelner Volumes finden Sie unter [On-premises Storage Requirement (Anforderungen für lokalen Speicher)](#on-premises-storage-requirement). 
+Gesamter freier Speicherplatz, der auf Hyper-V-Servern für die erfolgreiche anfängliche Replikation und Deltareplikation erforderlich ist, um sicherzustellen, dass es durch die VM-Replikation für Ihre Produktionsanwendungen nicht zu unerwünschten Ausfallzeiten kommt. Details zum Bedarf einzelner Volumes finden Sie unter [On-premises Storage Requirement (Bedarf an lokalem Speicher)](#on-premises-storage-requirement). 
 
 Eine Antwort auf die Frage, warum freier Speicherplatz für die Replikation erforderlich ist, finden Sie in demselben Abschnitt unter [Warum benötige ich auf dem Hyper-V-Server für die Replikation freien Speicherplatz?](#why-do-i-need-free-space-on-the-hyper-v-server-for-the-replication).
 
-![Anforderungen für lokalen Speicher und Kopierhäufigkeit](media/site-recovery-hyper-v-deployment-planner-analyze-report/on-premises-storage-and-copy-frequency-h2a.png)
+![Bedarf an lokalem Speicher und Kopierhäufigkeit](media/site-recovery-hyper-v-deployment-planner-analyze-report/on-premises-storage-and-copy-frequency-h2a.png)
 
 ### <a name="maximum-copy-frequency"></a>Maximum copy frequency (Maximale Kopierhäufigkeit)
 Die empfohlene maximale Kopierhäufigkeit muss für die Replikation festgelegt werden, um den gewünschten RPO-Wert zu erzielen. Die Standardeinstellung ist 5 Minuten. Sie können die Kopierhäufigkeit auf 30 Sekunden festlegen, um einen besseren RPO-Wert zu erzielen.
@@ -271,13 +271,13 @@ Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MBit/s |
 
 Diese Grenzwerte sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Azure Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
 
-## <a name="on-premises-storage-requirement"></a>On-premises Storage Requirement (Anforderungen für lokalen Speicher)
+## <a name="on-premises-storage-requirement"></a>On-premises Storage Requirement (Bedarf an lokalem Speicher)
 
 Im Arbeitsblatt wird der gesamte freie Speicherplatz für jedes Volume der Hyper-V-Server (auf denen sich VHDs befinden) angegeben, der für eine erfolgreiche erste Replikation und Deltareplikation benötigt wird. Fügen Sie vor dem Aktivieren der Replikation den erforderlichen Speicherplatz auf den Volumes hinzu, um sicherzustellen, dass die Replikation keine unerwünschte Ausfallzeiten Ihrer Produktionsanwendungen verursacht. 
 
-Der Azure Site Recovery-Bereitstellungsplaner identifiziert die optimale Speicherplatzanforderung basierend auf der Größe der VHDs und der Netzwerkbandbreite für die Replikation.
+Der Azure Site Recovery-Bereitstellungsplaner identifiziert den optimalen Speicherplatzbedarf basierend auf der Größe der VHDs und der Netzwerkbandbreite für die Replikation.
 
-![On-premises Storage Requirement (Anforderungen für lokalen Speicher)](media/site-recovery-hyper-v-deployment-planner-analyze-report/on-premises-storage-requirement-h2a.png)
+![On-premises Storage Requirement (Bedarf an lokalem Speicher)](media/site-recovery-hyper-v-deployment-planner-analyze-report/on-premises-storage-requirement-h2a.png)
 
 ### <a name="why-do-i-need-free-space-on-the-hyper-v-server-for-the-replication"></a>Warum benötige ich auf dem Hyper-V-Server für die Replikation freien Speicherplatz?
 * Wenn Sie die Replikation einer VM aktivieren, erstellt Azure Site Recovery eine Momentaufnahme für jede VHD der VM für die erste Replikation (Initial Replication, IR). Während die erste Replikation durchgeführt wird, werden von der Anwendung neue Änderungen auf die Datenträger geschrieben. Azure Site Recovery verfolgt diese Deltaänderungen in den Protokolldateien nach, und hierfür ist zusätzlicher Speicherplatz erforderlich.  Bis zum Abschluss der ersten Replikation werden die Protokolldateien lokal gespeichert. Falls nicht genügend Speicherplatz für die Protokolldateien und die Momentaufnahme (AVHDX) verfügbar ist, wird für die Replikation der Modus für die erneute Synchronisierung aktiviert und die Replikation niemals abgeschlossen. Im schlimmsten Fall benötigen Sie 100% zusätzlichen freien Speicherplatz der VHD-Größe für die erste Replikation.
@@ -292,12 +292,12 @@ Der Azure Site Recovery-Bereitstellungsplaner identifiziert die optimale Speiche
 
 **Total storage space required on the volume (GB)** (Gesamter benötigter Speicher auf dem Volume (GB)): Der gesamte freie Speicherplatz, der auf dem Volume benötigt wird, um die erste Replikation und die Deltareplikation erfolgreich durchführen zu können. 
 
-**Total additional storage to be provisioned on the volume for successful replication** (Gesamter zusätzlicher Speicher für die Bereitstellung auf dem Volume für die erfolgreiche Replikation): Gibt die Empfehlung für den gesamten zusätzlichen Speicher an, der auf dem Volume bereitgestellt werden muss, damit die erste Replikation und die Deltareplikation erfolgreich durchgeführt werden können.
+**Total additional storage to be provisioned on the volume for successful replication** (Gesamter auf dem Volume bereitzustellender zusätzlicher Speicher, der für eine erfolgreiche Replikation erforderlich ist): Gibt die Empfehlung für den gesamten zusätzlichen Speicher an, der auf dem Volume bereitgestellt werden muss, damit die erste Replikation und die Deltareplikation erfolgreich durchgeführt werden können.
 
 ## <a name="initial-replication-batching"></a>Batchverarbeitung für die erste Replikation 
 
 ### <a name="why-do-i-need-initial-replication-ir-batching"></a>Warum ist die Batchverarbeitung für die erste Replikation erforderlich?
-Wenn alle VMs zur gleichen Zeit geschützt werden, wird deutlich mehr freier Speicher benötigt, und falls nicht genügend Speicher verfügbar ist, wird für die Replikation der VMs der Modus „Neusynchronisierung“ aktiviert. Außerdem ist die Anforderung an die Netzwerkbandbreite deutlich höher, um die erste Replikation für alle VMs zusammen erfolgreich abzuschließen. 
+Wenn alle VMs zur gleichen Zeit geschützt werden, wird deutlich mehr freier Speicher benötigt, und falls nicht genügend Speicher verfügbar ist, wird für die Replikation der VMs der Modus „Neusynchronisierung“ aktiviert. Außerdem ist der Bedarf an Netzwerkbandbreite deutlich höher, um die erste Replikation für alle VMs zusammen erfolgreich abzuschließen. 
 
 ### <a name="initial-replication-batching-for-a-selected-rpo"></a>Batchverarbeitung für die erste Replikation für einen gewählten RPO-Wert
 Dieses Arbeitsblatt enthält die ausführliche Ansicht der einzelnen Batches für die erste Replikation (Initial Replication, IR). Für jeden RPO-Wert wird ein separates Arbeitsblatt für die IR-Batchverarbeitung erstellt. 
@@ -321,7 +321,7 @@ Beispielsweise können sich VM1, VM2 und VM3 auf einem Volume befinden, z.B. „
 
 **Storage required on the volume for delta replication (GB)** (Erforderlicher Speicher auf dem Volume für die Deltareplikation (GB)): Der freie Speicherplatz, der auf dem Volume für die VM für die Deltareplikation benötigt wird.
 
-**Additional storage required based on deficit to avoid replication failure (GB)** (Zusätzlicher erforderlicher Speicher gemäß Defizit zur Vermeidung eines Replikationsfehlers (GB)): Der zusätzliche Speicherplatz, der auf dem Volume für die VM benötigt wird.  Dieser Wert ist der Höchstwert der Speicherplatzanforderung für die erste Replikation und Deltareplikation abzüglich des verfügbaren freien Speichers auf dem Volume.
+**Additional storage required based on deficit to avoid replication failure (GB)** (Zusätzlicher erforderlicher Speicher gemäß Defizit zur Vermeidung eines Replikationsfehlers (GB)): Der zusätzliche Speicherplatz, der auf dem Volume für die VM benötigt wird.  Dieser Wert ist der Höchstwert des Speicherplatzbedarfs für die erste Replikation und Deltareplikation abzüglich des verfügbaren freien Speichers auf dem Volume.
 
 **Minimum bandwidth required for initial replication (Mbps)** (Erforderliche Mindestbandbreite für die erste Replikation (MBit/s)): Die erforderliche Mindestbandbreite für die erste Replikation der VM.
 

@@ -41,6 +41,8 @@
       href: log-analytics-usage.md
     - name: Verwalten des Zugriffs
       href: log-analytics-manage-access.md
+    - name: Überwachen von Hybridumgebungen
+      href: log-analytics-concept-hybrid.md
     - name: Features für Dienstanbieter
       href: log-analytics-service-providers.md
     - name: Protokollsuche
@@ -58,11 +60,7 @@
         - name: Verbundene Quellen
           items:
             - name: Windows-Agents
-              href: log-analytics-windows-agents.md
-            - name: Linux-Agents
-              href: log-analytics-agent-linux.md
-            - name: Azure Virtual Machines
-              href: log-analytics-azure-vm-extension.md
+              href: log-analytics-agent-windows.md
             - name: Azure-Ressourcen
               href: log-analytics-azure-storage.md
             - name: Azure PaaS-Ressourcen
@@ -75,6 +73,8 @@
               href: log-analytics-sccm.md
             - name: OMS-Gateway
               href: log-analytics-oms-gateway.md
+            - name: Problembehandlung für Linux-Agents
+              href: log-analytics-agent-linux-support.md
         - name: Datenquellen
           items:
             - name: Übersicht über Datenquellen
@@ -158,6 +158,8 @@
           href: log-analytics-solution-alert-management.md
     - name: Verwalten
       items:
+        - name: Agentverwaltung
+          href: log-analytics-agent-manage.md
         - name: Verwalten der Arbeitsbereichskosten
           href: log-analytics-manage-cost-storage.md
         - name: Löschen eines Arbeitsbereichs

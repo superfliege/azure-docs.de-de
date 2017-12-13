@@ -26,6 +26,9 @@
     - name: Skalierung mit Azure-VM-Agents
       href: /azure/jenkins/jenkins-azure-vm-agents
       maintainContext: true
+    - name: Erstellen mit Azure Container Instances
+      href: /azure/jenkins/azure-container-agents-plugin-run-container-as-an-agent
+      maintainContext: true
 - name: Vorgehensweise
   items:
     - name: Schützen von Jenkins in Azure

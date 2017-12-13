@@ -210,7 +210,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ## <a name="percentile-value-used-for-the-calculation"></a>Für die Berechnung verwendeter Perzentilwert
 **Welcher Perzentilstandardwert der Leistungsmetriken, die während der Profilerstellung gesammelt wurden, wird vom Tool für die Berichterstellung verwendet?**
 
-Für das Tool werden standardmäßig die Werte des 95. Perzentils für Lese/Schreib-IOPS, Schreib-IOPS und die Datenänderung verwendet, die während der Profilerstellung aller VMs gesammelt wurden. Mit dieser Metrik wird sichergestellt, dass Spitzen (100. Perzentil), die für Ihre VMs aufgrund von temporären Ereignissen auftreten können, nicht zur Ermittlung der Bandbreitenanforderungen für Ihr Zielspeicherkonto und Ihre Quelle herangezogen werden. Ein temporäres Ereignis kann beispielsweise ein Sicherungsauftrag sein, der einmal pro Tag ausgeführt wird, oder eine regelmäßige Datenbankindizierung, eine Aktivität zur Erstellung eines Analyseberichts oder ähnliche Point-in-Time-Ereignisse mit kurzer Lebensdauer.
+Für das Tool werden standardmäßig die Werte des 95. Perzentils für Lese/Schreib-IOPS, Schreib-IOPS und die Datenänderung verwendet, die während der Profilerstellung aller VMs gesammelt wurden. Mit dieser Metrik wird sichergestellt, dass Spitzen (100. Perzentil), die für Ihre VMs aufgrund von temporären Ereignissen auftreten können, nicht zur Ermittlung des Bandbreitenbedarfs für Ihr Zielspeicherkonto und Ihre Quelle herangezogen werden. Ein temporäres Ereignis kann beispielsweise ein Sicherungsauftrag sein, der einmal pro Tag ausgeführt wird, oder eine regelmäßige Datenbankindizierung, eine Aktivität zur Erstellung eines Analyseberichts oder ähnliche Point-in-Time-Ereignisse mit kurzer Lebensdauer.
 
 Bei Verwendung der Werte des 95. Perzentils erhalten Sie ein genaues Bild der echten Workloadmerkmale und erzielen die beste Leistung, wenn die Workloads in Azure ausgeführt werden. Dieser Wert muss normalerweise nicht geändert werden. Falls Sie den Wert doch ändern möchten (z.B. in das 90. Perzentil), können Sie die Konfigurationsdatei „ASRDeploymentPlanner.exe.config“ im Standardordner aktualisieren und speichern, um einen neuen Bericht für die vorhandenen Profilerstellungsdaten zu erstellen.
 ```
@@ -238,7 +238,7 @@ Der erstellte Microsoft Excel-Bericht enthält die folgenden Informationen:
 * [VM&lt;-&gt;Storage Placement](site-recovery-hyper-v-deployment-planner-analyze-report.md#vm-storage-placement-recommendation) (VM/Speicher-Anordnung)
 * [Compatible VMs](site-recovery-hyper-v-deployment-planner-analyze-report.md#compatible-vms) (Kompatible VMs)
 * [Incompatible VMs](site-recovery-hyper-v-deployment-planner-analyze-report.md#incompatible-vms) (Inkompatible VMs)
-* [On-premises Storage Requirement](site-recovery-hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement) (Anforderungen für lokalen Speicher)
+* [On-premises Storage Requirement](site-recovery-hyper-v-deployment-planner-analyze-report.md#on-premises-storage-requirement) (Bedarf an lokalem Speicher)
 * [IR Batching](site-recovery-hyper-v-deployment-planner-analyze-report.md#initial-replication-batching) (IR-Batchverarbeitung)
 * [Cost Estimation](site-recovery-hyper-v-deployment-planner-cost-estimation.md) (Kostenvorkalkulation)
 
