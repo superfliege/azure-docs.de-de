@@ -8,11 +8,11 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 9372e45e8666dc572b805dfd4a505c9446145079
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Verteilte Optimierung von Hyperparametern mit Azure Machine Learning Workbench
 
@@ -36,8 +36,8 @@ Die Rastersuche unter Verwendung der Kreuzvalidierung kann sehr zeitaufwendig se
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
 * Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstarthandbuch zum Installieren und Erstellen](./quickstart-installation.md), um die Workbench zu installieren und Konten zu erstellen.
 * In diesem Szenario wird davon ausgegangen, dass Sie die Azure ML Workbench mit einem lokal installierten Docker-Modul unter Windows 10 oder macOS ausführen. 
-* Um das Szenario mit einem Docker-Remotecontainer auszuführen, stellen Sie die Ubuntu Data Science Virtual Machine (DSVM) bereit. Befolgen Sie dazu die entsprechenden [Anweisungen](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-provision-vm). Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 28 GB Arbeitsspeicher zu verwenden. D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. 
-* Zum Ausführen dieses Szenarios mit einem Spark-Cluster stellen Sie anhand dieser [Anweisungen](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) einen Azure HDInsight-Cluster bereit. Es wird empfohlen, einen Cluster mit mindestens den folgenden Eigenschaften zu verwenden: 
+* Um das Szenario mit einem Docker-Remotecontainer auszuführen, stellen Sie die Ubuntu Data Science Virtual Machine (DSVM) bereit. Befolgen Sie dazu die entsprechenden [Anweisungen](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 28 GB Arbeitsspeicher zu verwenden. D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. 
+* Zum Ausführen dieses Szenarios mit einem Spark-Cluster stellen Sie anhand dieser [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) einen Azure HDInsight-Cluster bereit. Es wird empfohlen, einen Cluster mit mindestens den folgenden Eigenschaften zu verwenden: 
 - 6 Workerknoten
 - 8 Kerne
 - 28 GB Arbeitsspeicher in Header- und Workerknoten D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. Es wird empfohlen, die folgenden Parameter zur Maximierung der Clusterleistung zu ändern.
@@ -45,11 +45,11 @@ Die Rastersuche unter Verwendung der Kreuzvalidierung kann sehr zeitaufwendig se
 - spark.executor.cores
 - spark.executor.memory 
 
-Sie können diese [Anweisungen](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-resource-manager) befolgen und die Definitionen im Abschnitt „custom spark defaults“ (benutzerdefinierte Spark-Standardwerte) bearbeiten.
+Sie können diese [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager) befolgen und die Definitionen im Abschnitt „custom spark defaults“ (benutzerdefinierte Spark-Standardwerte) bearbeiten.
 
      **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
 
-* Erstellen Sie ein Azure-Speicherkonto, mit dem das Dataset gespeichert wird. Befolgen Sie die [Anweisungen](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account) zum Erstellen eines Speicherkontos.
+* Erstellen Sie ein Azure-Speicherkonto, mit dem das Dataset gespeichert wird. Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) zum Erstellen eines Speicherkontos.
 
 ## <a name="data-description"></a>Datenbeschreibung
 

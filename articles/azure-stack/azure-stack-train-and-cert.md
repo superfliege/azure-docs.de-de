@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 9/25/2017
 ms.author: victorh
 keywords: 
-ms.openlocfilehash: 9112e43cbe3b075dd5665dff37a02c1eb0b05db8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50e1a4f5aa1ba5ad901506407d30e04df7449719
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-stack-training-and-certification"></a>Azure Stack-Training und -Zertifizierung
 
@@ -31,4 +31,4 @@ Azure Stack-Zertifizierungen werden derzeit entwickelt. Schauen Sie von Zeit zu 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Dokumentation zu Azure Stack](https://docs.microsoft.com/en-us/azure/azure-stack/)
+[Dokumentation zu Azure Stack](https://docs.microsoft.com/azure/azure-stack/)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: f0cb50c5ad991073b83dc5e87fbfb0300f40fc03
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy
 In diesem Artikel wird das Konfigurieren von Azure Security Center-Sicherheitsrichtlinien beschrieben, die auf Azure Policy basieren. 
@@ -30,7 +30,7 @@ Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Sta
 * Überwachen der Richtlinienkonformität
 
 > [!NOTE]
-> Azure Policy ist als eingeschränkte Vorschauversion verfügbar. [Hier können Sie sich für Azure Policy registrieren](https://aka.ms/getpolicy). Weitere Informationen zu Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](http://docs.microsoft.com/en-us/azure/azure-policy/create-manage-policy).
+> Azure Policy ist als eingeschränkte Vorschauversion verfügbar. [Hier können Sie sich für Azure Policy registrieren](https://aka.ms/getpolicy). Weitere Informationen zu Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](http://docs.microsoft.com/azure/azure-policy/create-manage-policy).
 
 ## <a name="edit-security-policies"></a>Bearbeiten von Sicherheitsrichtlinien
 Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements in Security Center bearbeiten. Eine Sicherheitsrichtlinie kann nur von einem Besitzer, Mitwirkenden oder Systemadministrator des Abonnements oder der enthaltenden Verwaltungsgruppe geändert werden. Gehen Sie wie folgt vor, um Ihre Sicherheitsrichtlinien in Security Center anzuzeigen:

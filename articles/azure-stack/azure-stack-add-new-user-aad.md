@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b7fd3c36825746a009c01c97fb8664e04278159f
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 *Gilt für: Azure Stack Development Kit*
 
@@ -28,7 +28,7 @@ Nach dem [Bereitstellen des Azure Stack Development Kits](azure-stack-run-powers
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Erstellen eines Azure Stack-Mandantenkontos mithilfe des Azure-Portals
 Sie benötigen ein Azure-Abonnement, um das Azure-Portal verwenden zu können.
 
-1. Melden Sie sich bei [Azure](http://manage.windowsazure.com) an.
+1. Melden Sie sich bei [Azure](https://portal.azure.com)an.
 2. Klicken Sie in Microsoft Azure auf der Navigationsleiste links auf **Active Directory**.
 3. Klicken Sie in der Verzeichnisliste auf das Verzeichnis, das Sie für Azure Stack verwenden möchten, oder erstellen Sie ein neues.
 4. Klicken Sie auf dieser Verzeichnisseite auf **Benutzer**.

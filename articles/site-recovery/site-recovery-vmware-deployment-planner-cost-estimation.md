@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“ | Microsoft-Dokumentation"
-description: Dies ist ein Leitfaden zum Azure Site Recovery-Bereitstellungsplaner.
+title: "Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation"
+description: Dies ist ein Leitfaden zum Azure Site Recovery Deployment Planner.
 services: site-recovery
 documentationcenter: 
 author: nsoneji
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
-ms.openlocfilehash: 62308b4ab6c9aedf2f7f7e5a40ff476cce171988
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 36309eb85244435a853013448c83d125420c001c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation  
 
@@ -109,8 +109,8 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 * Number of DR drills in a year (Anzahl von DR-Drills in einem Jahr) 
 * Each DR drill duration (Days) (Dauer einzelner DR-Drills (Tage)) 
 * OS Type (Betriebssystemtyp)
-* Data redundancy (Datenredundanz) 
-* Azure Hybrid Use Benefit (Azure-Hybridvorteil)
+* Datenredundanz 
+* Azure-Vorteil bei Hybridnutzung
 
 3.  Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für „Number of DR drills in a year“, „Each DR drill duration (Days)“, „Data redundancy“ und „Azure Hybrid Use Benefit“ auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken.
 
@@ -154,7 +154,7 @@ eastus, eastus2, westus, centralus, northcentralus, southcentralus, northeurope,
 ## <a name="supported-currencies"></a>Unterstützte Währungen
 Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die folgenden Währungen erstellen:
 
-|Währung|Name||Währung|Name||Währung|Name|
+|Currency|Name||Currency|Name||Currency|Name|
 |---|---|---|---|---|---|---|---|
 |ARS|Argentinische Pesos ($)||AUD|Australischer Dollar ($)||BRL|Brasilianischer Real (R$)|
 |CAD|Kanadischer Dollar ($)||CHF|Schweizer Franken (chf)||DKK|Dänische Krone (kr)|
@@ -166,4 +166,4 @@ Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die fo
 |TRY|Türkische Lira (TL)||USD| US-Dollar ($)||ZAR|Südafrikanischer Rand (R)|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](https://docs.microsoft.com/en-us/azure/site-recovery/tutorial-vmware-to-azure).
+Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs](https://docs.microsoft.com/azure/site-recovery/tutorial-vmware-to-azure).

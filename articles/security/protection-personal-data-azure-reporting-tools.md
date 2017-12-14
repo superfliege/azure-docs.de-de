@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.openlocfilehash: 0ec9ceb63c3e1872e9815a7895b624276fc46123
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ce6297d7d6b61ac95df58db3fa1a2a0a123a64e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Dokumentschutz personenbezogener Daten mit Azure-Berichtstools
 
@@ -90,7 +90,7 @@ Auf der Website [Referenz zur Azure Active Directory-Überwachungs-API](https://
 
 ### <a name="log-analytics"></a>Log Analytics
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) kann [Daten von Azure Monitor erfassen](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage), mit anderen Daten abgleichen und zusätzliche Analysen bereitstellen. Azure Monitor sammelt und analysiert Überwachungsdaten für Ihre Azure-Umgebung. 
+[Log Analytics](https://azure.microsoft.com/services/log-analytics/) kann [Daten von Azure Monitor erfassen](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage), mit anderen Daten abgleichen und zusätzliche Analysen bereitstellen. Azure Monitor sammelt und analysiert Überwachungsdaten für Ihre Azure-Umgebung. 
 
 Analysetools in Log Analytics (wie Protokollsuche, Ansichten und Lösungen) berücksichtigen alle gesammelten Daten und bieten somit eine zentrale Analyse Ihrer gesamten Umgebung. Log Analytics kann Windows-Ereignisprotokolle, IIS-Protokolle und Syslog-Protokolle aggregieren und analysieren. Dies kann bei der Erkennung potenzieller Sicherheitsverletzungen helfen, durch die personenbezogene Daten für nicht autorisierte Benutzer offengelegt werden könnten.
 

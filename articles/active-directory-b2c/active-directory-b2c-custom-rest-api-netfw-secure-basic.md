@@ -4,7 +4,7 @@ description: "Schützen Ihres benutzerdefinierten REST-API-Anspruchsaustauschs i
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,18 +14,18 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: 641e0cc691eae77ef0480e5743d85e020cd8d354
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: d65d94bb5c807abfd6cbb1fae786a02f179e93d6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>Schützen Ihrer RESTful-Dienste unter Verwendung der HTTP-Standardauthentifizierung
 In einem [thematisch ähnlichen Azure AD B2C-Artikel](active-directory-b2c-custom-rest-api-netfw.md) haben wir einen RESTful-Dienst (Web-API) erstellt, der sich ohne Authentifizierung in Azure Active Directory B2C-User Journeys (Azure AD B2C) integriert. 
 
 In diesem Artikel fügen Sie Ihrem RESTful-Dienst die HTTP-Standardauthentifizierung hinzu, sodass nur verifizierte Benutzer, einschließlich B2C, auf Ihre API zugreifen können. Mit der HTTP-Standardauthentifizierung legen Sie die Anmeldeinformationen des Benutzers (App-ID und App-Geheimnis) in Ihrer benutzerdefinierten Richtlinie fest. 
 
-Weitere Informationen finden Sie unter [Standardauthentifizierung in der ASP.NET-Web-API](https://docs.microsoft.com/en-us/aspnet/web-api/overview/security/basic-authentication).
+Weitere Informationen finden Sie unter [Standardauthentifizierung in der ASP.NET-Web-API](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Führen Sie die Schritte im Artikel [Integrieren von Anspruchsaustauschvorgängen der REST-API in Ihre Azure AD B2C-User Journey](active-directory-b2c-custom-rest-api-netfw.md) durch.

@@ -11,11 +11,11 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: f49004b68f95ae796196009e3cf879e3503ecf91
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="security-trimming-with-azure-search"></a>Sicherheitskürzung mit Azure Search
 
@@ -108,13 +108,13 @@ Wenn Sie ein vorhandenes Dokument mit der Liste der Gruppen aktualisieren müsse
 }
 ```
 
-Vollständige Details zum Hinzufügen oder Aktualisieren von Dokumenten finden Sie unter [Dokumente bearbeiten](https://docs.microsoft.com/en-us/rest/api/searchservice/addupdate-or-delete-documents).
+Vollständige Details zum Hinzufügen oder Aktualisieren von Dokumenten finden Sie unter [Dokumente bearbeiten](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
    
 ## <a name="apply-the-security-filter"></a>Anwenden der Sicherheitsfilter
 
 Für das Kürzen von Dokumenten basierend auf dem `group_ids`-Zugriff sollten Sie eine Suchabfrage mit einem `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))`-Filter eingeben, bei der „group_id1, group_id2,...“ die Gruppen sind, zu denen der Aussteller der Suchanforderung gehört.
 Dieser Filter vergleicht alle Dokumente, für die das `group_ids`-Feld einen der angegebenen Bezeichner enthält.
-Vollständige Details zum Durchsuchen von Dokumenten mithilfe von Azure Search finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents).
+Vollständige Details zum Durchsuchen von Dokumenten mithilfe von Azure Search finden Sie unter [Durchsuchen von Dokumenten](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 Beachten Sie, dass dieses Beispiel veranschaulicht, wie Sie Dokumente mithilfe einer POST-Anforderung durchsuchen.
 
 Geben Sie die HTTP POST-Anforderung aus:

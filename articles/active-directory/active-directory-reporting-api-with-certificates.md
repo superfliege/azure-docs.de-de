@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/08/2017
 ms.author: ramical
-ms.openlocfilehash: 38c240ed1608b2e99bde78f3633e722f8e2fa30b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4900e47084256ad6c85886f7ba363399678da9aa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-data-using-the-azure-ad-reporting-api-with-certificates"></a>Abrufen von Daten per Azure AD Reporting-API mit Zertifikaten
 In diesem Artikel wird beschrieben, wie Sie die Azure AD Reporting-API mit Zertifikatanmeldeinformationen verwenden, um Daten ohne Benutzereingriff aus Verzeichnissen abzurufen. 
@@ -89,7 +89,7 @@ Nun können Sie das Skript erstellen. Unten ist ein Beispiel für die Verwendung
 Nun können Sie den Export in eine CSV-Datei durchführen und die Daten in einem SIEM-System speichern. Außerdem können Sie Ihr Skript mit einer geplanten Aufgabe umschließen, mit der Azure AD-Daten regelmäßig aus Ihrem Mandanten abgerufen werden, ohne dass Anwendungsschlüssel im Quellcode gespeichert werden müssen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Grundlagen der Identitätsverwaltung in Azure](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals-identity)<br>
+[Grundlagen der Identitätsverwaltung in Azure](https://docs.microsoft.com/azure/active-directory/fundamentals-identity)<br>
 
 
 

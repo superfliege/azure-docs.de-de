@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: eb519aab87c13e8836bf1d41992812762f0cd737
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32ca0ce5148ae2641500c98cb04b0d7db1987960
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Überblick über Metriken in Microsoft Azure
 In diesem Artikel wird beschrieben, was Metriken in Microsoft Azure sind, welche Vorteile sie haben und wie Sie mit deren Nutzung beginnen.  
@@ -89,11 +89,11 @@ Azure Monitor verfügt über eine neue Darstellung der Metriken in Diagrammen, d
 ## <a name="access-metrics-via-the-rest-api"></a>Zugreifen auf Metriken über die REST-API
 Auf Azure-Metriken kann über Azure Monitor-APIs zugegriffen werden. Es gibt zwei APIs, mit denen Sie Metriken ermitteln und darauf zugreifen können:
 
-* Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](https://docs.microsoft.com/en-us/rest/api/monitor/metricdefinitions) für den Zugriff auf die Liste von Metriken und Dimensionen, die für einen Dienst verfügbar sind.
-* Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/en-us/rest/api/monitor/metrics), um die tatsächlichen Metrikdaten zu segmentieren, zu filtern und auf diese zuzugreifen.
+* Verwenden Sie die [Azure Monitor-REST-API für Metrikdefinitionen](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) für den Zugriff auf die Liste von Metriken und Dimensionen, die für einen Dienst verfügbar sind.
+* Verwenden Sie die [Azure Monitor-REST-API für Metriken](https://docs.microsoft.com/rest/api/monitor/metrics), um die tatsächlichen Metrikdaten zu segmentieren, zu filtern und auf diese zuzugreifen.
 
 > [!NOTE]
-> In diesem Artikel geht es um die Metriken, die über die [neue API für Metriken](https://docs.microsoft.com/en-us/rest/api/monitor/) für Azure-Ressourcen abgerufen werden können. Die API-Version für die neuen Metrikdefinitionen und Metrik-APIs lautet 2017-05-01-preview. Auf die Legacy-Metrikdefinitionen und -Metriken kann über die API-Version 2014-04-01 zugegriffen werden.
+> In diesem Artikel geht es um die Metriken, die über die [neue API für Metriken](https://docs.microsoft.com/rest/api/monitor/) für Azure-Ressourcen abgerufen werden können. Die API-Version für die neuen Metrikdefinitionen und Metrik-APIs lautet 2017-05-01-preview. Auf die Legacy-Metrikdefinitionen und -Metriken kann über die API-Version 2014-04-01 zugegriffen werden.
 >
 >
 

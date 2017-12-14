@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: jonbeck
-ms.openlocfilehash: 0d972e8b9ffb8bfe158ec394baf237ef65333026
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 1a2107f0f813c39ec3e9676ec952803f6be2ebf9
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>Speicheroptimierte VM-Größen
 
@@ -30,11 +30,11 @@ ms.lasthandoff: 12/01/2017
 
 
 ## <a name="other-sizes"></a>Andere Größen
-- [Allgemeiner Zweck](../windows/sizes-general.md)
-- [Computeoptimiert](../windows/sizes-compute.md)
-- [Arbeitsspeicheroptimiert](../windows/sizes-memory.md)
-- [GPU](../windows/sizes-gpu.md)
-- [High Performance Computing](../windows/sizes-hpc.md)
+- [Allgemeiner Zweck](sizes-general.md)
+- [Computeoptimiert](sizes-compute.md)
+- [Arbeitsspeicheroptimiert](sizes-memory.md)
+- [GPU](sizes-gpu.md)
+- [High Performance Computing](sizes-hpc.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](../windows/acu.md) die Computeleistung von Azure-SKUs vergleichen können.
+Weitere Informationen dazu, wie Sie mit [Azure-Computeeinheiten (ACU)](acu.md) die Computeleistung von Azure-SKUs vergleichen können.

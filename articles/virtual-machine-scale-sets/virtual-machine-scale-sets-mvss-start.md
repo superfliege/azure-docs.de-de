@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 65f02c4675eb752dcc82e9a1d1c7f6c2c193fc32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1672474e22411e7f7fca4082ce83146e40ebfbc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Informationen zu Vorlagen für VM-Skalierungsgruppen
 [Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) sind eine hervorragende Möglichkeit, Gruppen aufeinander bezogener Ressourcen bereitzustellen. In dieser Reihe von Tutorials wird gezeigt, wie Sie eine Vorlage für eine kleinstmögliche Skalierungsgruppe erstellen und für verschiedene Szenarios anpassen. Alle Beispiele stammen aus diesem [GitHub-Repository](https://github.com/gatneil/mvss). 
@@ -123,7 +123,7 @@ In diesem Fall gibt es nur ein Element in der Liste: das virtuelle Netzwerk aus 
        ],
 ```
 ## <a name="specify-scale-set-properties"></a>Angeben von Eigenschaften der Skalierungsgruppe
-Skalierungsgruppen verfügen über viele Eigenschaften zum Anpassen der virtuellen Computer in der Skalierungsgruppe. Eine vollständige Liste dieser Eigenschaften finden Sie in der [REST-API-Dokumentation für Skalierungsgruppen](https://docs.microsoft.com/en-us/rest/api/virtualmachinescalesets/create-or-update-a-set). In diesem Tutorial werden nur einige häufig verwendete Eigenschaften festgelegt.
+Skalierungsgruppen verfügen über viele Eigenschaften zum Anpassen der virtuellen Computer in der Skalierungsgruppe. Eine vollständige Liste dieser Eigenschaften finden Sie in der [REST-API-Dokumentation für Skalierungsgruppen](https://docs.microsoft.com/rest/api/virtualmachinescalesets/create-or-update-a-set). In diesem Tutorial werden nur einige häufig verwendete Eigenschaften festgelegt.
 ### <a name="supply-vm-size-and-capacity"></a>Angeben der Größe und der Kapazität der virtuellen Computer
 Für die Skalierungsgruppe muss festgelegt werden, welche Größe der virtuelle Computer haben soll („SKU-Name“) und wie viele solcher virtueller Computer erstellt werden sollen („SKU-Kapazität“). Welche Größen für virtuelle Computer verfügbar sind, erfahren Sie unter [Größen für virtuelle Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-sizes).
 

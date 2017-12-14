@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: guybo
-ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aef243e34f1d5fc8240576a9803bb8b08693a7b7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>Upgraden einer VM-Skalierungsgruppe
 In diesem Artikel erfahren Sie, wie Sie ohne Ausfallzeiten ein Rollout eines Betriebssystemupdates für eine Skalierungsgruppe mit virtuellen Azure-Computern durchführen. In diesem Kontext wird bei einem Betriebssystemupdate entweder die Version oder die SKU des Betriebssystems oder der URI eines benutzerdefinierten Images geändert. Ein Update ohne Ausfallzeiten heißt, dass virtuelle Computer nicht alle gleichzeitig, sondern einzeln oder gruppenweise aktualisiert werden (beispielsweise eine Fehlerdomäne nach der anderen). Dadurch können virtuelle Computer, die gerade nicht aktualisiert werden, weiter ausgeführt werden.
@@ -31,7 +31,7 @@ Sie können vier Arten von Betriebssystemupdates ausführen:
 * Ändern des Imageverweises auf eine Skalierungsgruppe, die mit Azure Managed Disks erstellt wurde.
 * Patchen des Betriebssystems über einen virtuellen Computer. (Beispiele hierfür wären etwa das Installieren eines Sicherheitspatches und das Ausführen von Windows Update.) Dieses Szenario wird unterstützt, in diesem Artikel jedoch nicht behandelt.
 
-VM-Skalierungsgruppen, die im Rahmen eines [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) -Clusters bereitgestellt werden, werden hier nicht behandelt. Weitere Informationen zum Anwenden von Patches für Service Fabric finden Sie unter [Aufspielen von Windows-Betriebssystempatches in Ihrem Service Fabric-Cluster](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-patch-orchestration-application).
+VM-Skalierungsgruppen, die im Rahmen eines [Azure Service Fabric](https://azure.microsoft.com/services/service-fabric/) -Clusters bereitgestellt werden, werden hier nicht behandelt. Weitere Informationen zum Anwenden von Patches für Service Fabric finden Sie unter [Aufspielen von Windows-Betriebssystempatches in Ihrem Service Fabric-Cluster](https://docs.microsoft.com/azure/service-fabric/service-fabric-patch-orchestration-application).
 
 Die grundlegende Vorgehensweise zum Ändern der Betriebssystemversion/SKU eines Plattformimages oder des URIs eines benutzerdefinierten Images umfasst folgende Schritte:
 

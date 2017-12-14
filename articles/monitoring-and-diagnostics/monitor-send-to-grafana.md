@@ -8,11 +8,11 @@ ms.author: robb
 ms.date: 11/06/2017
 ms.topic: article
 ms.service: monitoring-and-diagnostics
-ms.openlocfilehash: 709a98f8bcdb75962f8e41de348ca7a41c677610
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c189e67c481239a8a68f2e2b30d05bb615cfa24e
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen jetzt auch mit [Grafana](https://grafana.com/) überwachen, indem Sie das [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/plugins/grafana-azure-monitor-datasource) verwenden. Mit dem Plug-In werden Daten zur Anwendungsleistung, die mit dem Application Insights SDK gesammelt werden, sowie von Azure Monitor bereitgestellte Infrastrukturdaten erfasst. Sie können diese Daten dann in Ihrem Grafana-Dashboard anzeigen.
@@ -62,7 +62,7 @@ Grafana nutzt einen Azure Active Directory-Dienstprinzipal zum Herstellen einer 
 
 1. Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../azure-resource-manager/resource-group-create-service-principal-portal.md). Kopieren Sie Ihre Mandanten-ID, Client-ID und einen geheimen Clientschlüssel.
 
-2. Informationen zum Zuweisen der Leserrolle zur Azure Active Directory-Anwendung finden Sie unter [Zuweisen einer Anwendung zur Rolle](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role).   
+2. Informationen zum Zuweisen der Leserrolle zur Azure Active Directory-Anwendung finden Sie unter [Zuweisen einer Anwendung zur Rolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role).     
 
 3. Bei Verwendung von Application Insights können Sie auch Ihre Application Insights-API und die Anwendungs-ID einbinden, um Application Insights-basierte Metriken zu sammeln. Weitere Informationen finden Sie unter [Getting your API key and Application ID](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID) (Abrufen Ihres API-Schlüssels und der Anwendungs-ID).
 

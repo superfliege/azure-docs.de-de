@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: lakasa
-ms.openlocfilehash: 6d1e6752fb631114f5be06cb27a63e40547bf6ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a05a0d28899cc3db11f8fda8aec5bd6ed9bd5f8
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Speicherdienstverschlüsselung mit vom Kunden verwalteten Schlüsseln in Azure Key Vault
 
@@ -50,7 +50,7 @@ Sie können die SSE über das [Azure-Portal](https://portal.azure.com) für das 
 ![Portal-Screenshot mit der Verschlüsselungsoption](./media/storage-service-encryption-customer-managed-keys/ssecmk1.png)
 <br/>*Aktivieren von SSE für den Blob-Dienst*
 
-Wenn Sie SSE programmgesteuert für ein Speicherkonto aktivieren oder deaktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://docs.microsoft.com/en-us/rest/api/storagerp/?redirectedfrom=MSDN), die [Clientbibliothek des Speicherressourcenanbieters für .NET](https://docs.microsoft.com/en-us/dotnet/api/?redirectedfrom=MSDN), [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azurermps-4.0.0) oder die [Azure-CLI](https://docs.microsoft.com/en-us/azure/storage/storage-azure-cli) verwenden.
+Wenn Sie SSE programmgesteuert für ein Speicherkonto aktivieren oder deaktivieren möchten, können Sie die [REST-API des Azure Storage-Ressourcenanbieters](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN), die [Clientbibliothek des Speicherressourcenanbieters für .NET](https://docs.microsoft.com/dotnet/api/?redirectedfrom=MSDN), [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.0.0) oder die [Azure-CLI](https://docs.microsoft.com/azure/storage/storage-azure-cli) verwenden.
 
 Wenn Sie auf diesem Bildschirm das Kontrollkästchen „Eigenen Schlüssel verwenden“ nicht angezeigt wird, wurden Sie nicht für die Vorschau zugelassen. Senden Sie eine E-Mail an [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com), und fordern Sie eine Genehmigung an.
 
@@ -71,10 +71,10 @@ Wenn das Speicherkonto keinen Zugriff auf den Schlüsseltresor hat, können Sie 
 Sie können den Zugriff auf das Speicherkonto auch über das Azure-Portal gewähren, indem Sie dort zu Azure Key Vault gehen.
 
 ## <a name="step-4-copy-data-to-storage-account"></a>Schritt 4: Kopieren von Daten in das Speicherkonto
-Wenn Sie Daten in das neue Speicherkonto übertragen möchten, damit sie verschlüsselt werden, lesen Sie [Step 3: Copy data to storage account](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account) (Schritt 3: Kopieren von Daten in das Speicherkonto) im Artikel „Azure Storage Service Encryption for Data at Rest“ (Azure-Speicherdienstverschlüsselung für ruhende Daten).
+Wenn Sie Daten in das neue Speicherkonto übertragen möchten, damit sie verschlüsselt werden, lesen Sie [Step 3: Copy data to storage account](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-3-copy-data-to-storage-account) (Schritt 3: Kopieren von Daten in das Speicherkonto) im Artikel „Azure Storage Service Encryption for Data at Rest“ (Azure-Speicherdienstverschlüsselung für ruhende Daten).
 
 ## <a name="step-5-query-the-status-of-the-encrypted-data"></a>Schritt 5: Abfragen des Status der verschlüsselten Daten
-Weitere Informationen zum Abfragen des Status der verschlüsselten Daten finden Sie im Abschnitt [Step 4: Query the status of the encrypted data](https://docs.microsoft.com/en-us/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data) (Schritt 4: Abfragen des Status der verschlüsselten Daten) im Artikel „Azure Storage Service Encryption for Data at Rest“ (Azure-Speicherdienstverschlüsselung für ruhende Daten).
+Weitere Informationen zum Abfragen des Status der verschlüsselten Daten finden Sie im Abschnitt [Step 4: Query the status of the encrypted data](https://docs.microsoft.com/azure/storage/storage-service-encryption#step-4-query-the-status-of-the-encrypted-data) (Schritt 4: Abfragen des Status der verschlüsselten Daten) im Artikel „Azure Storage Service Encryption for Data at Rest“ (Azure-Speicherdienstverschlüsselung für ruhende Daten).
 
 ## <a name="frequently-asked-questions-about-storage-service-encryption-for-data-at-rest"></a>Häufig gestellte Fragen zu Storage Service Encryption für ruhende Daten
 **F: Ich verwende die Storage Premium. Kann ich SSE mit vom Kunden verwalteten Schlüsseln verwenden?**
@@ -91,7 +91,7 @@ A: Die Verwendung von Azure Key Vault ist nicht kostenlos. Weitere Informationen
 
 **F: Kann ich den Zugriff auf die Verschlüsselungsschlüssel widerrufen?**
 
-A: Ja, Sie können den Zugriff jederzeit widerrufen. Dazu stehen Ihnen mehrere Möglichkeiten zur Verfügung. Weitere Informationen finden Sie unter [Azure Key Vault – PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) und [Azure Key Vault – CLI](https://docs.microsoft.com/en-us/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Blobs im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Kontoverschlüsselungsschlüssel hat.
+A: Ja, Sie können den Zugriff jederzeit widerrufen. Dazu stehen Ihnen mehrere Möglichkeiten zur Verfügung. Weitere Informationen finden Sie unter [Azure Key Vault – PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.0.0) und [Azure Key Vault – CLI](https://docs.microsoft.com/cli/azure/keyvault). Durch das Widerrufen des Zugriffs wird der Zugriff auf alle Blobs im Speicherkonto blockiert, da Azure Storage keinen Zugriff mehr auf den Kontoverschlüsselungsschlüssel hat.
 
 **F: Kann ich ein Speicherkonto und einen Schlüssel in unterschiedlichen Regionen erstellen?**
 
@@ -123,6 +123,6 @@ A: Wenden Sie sich in allen Angelegenheiten, die Storage Service Encryption betr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-*   Weitere Informationen zu allen Sicherheitsfunktionen, die Entwickler beim Erstellen sicherer Anwendungen unterstützen, finden Sie im [Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/en-us/azure/storage/storage-security-guide).
-*   Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis).
+*   Weitere Informationen zu allen Sicherheitsfunktionen, die Entwickler beim Erstellen sicherer Anwendungen unterstützen, finden Sie im [Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/azure/storage/storage-security-guide).
+*   Eine Übersicht über Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-whatis).
 *   Informationen zu den ersten Schritten mit Azure Key Vault finden Sie unter [Erste Schritte mit Azure Key Vault](../../key-vault/key-vault-get-started.md).

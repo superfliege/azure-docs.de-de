@@ -8,11 +8,11 @@ ms.author: victorh
 ms.date: 9/25/2017
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 7b7bac508a759a1367ac7328840848efe17ea3c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c72c58e63335f1cb440811e283bd742b8124161
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Überlegungen zu Azure Stack-Netzwerken
 
@@ -34,7 +34,7 @@ Dieser Artikel enthält eine Übersicht über die eindeutigen Aspekte für Netzw
 | |DNS-Datensätze pro Zone|5000 (Standard)<br>Kann auf Anforderung erhöht werden|5.000|
 ||Namenserver für die Zonendelegierung|Azure bietet vier Namenserver für jede erstellte Benutzerzone (Mandantenzone).|Azure Stack bietet zwei Namenserver für jede erstellte Benutzerzone (Mandantenzone).|
 | Virtuelles Netzwerk|Peering in virtuellen Netzwerken|Verbinden von zwei virtuellen Netzwerken in derselben Region über das Azure-Backbonenetzwerk|Noch nicht unterstützt|
-| |IPv6-Adressen|Sie können eine IPv6-Adresse als Teil der [Netzwerkschnittstellenkonfiguration](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions) zuweisen.|Es wird nur IPv4 unterstützt.|
+| |IPv6-Adressen|Sie können eine IPv6-Adresse als Teil der [Netzwerkschnittstellenkonfiguration](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions) zuweisen.|Es wird nur IPv4 unterstützt.|
 |VPN-Gateways|Point-to-Site-VPN Gateway|Unterstützt|Noch nicht unterstützt|
 | |VNet-zu-VNet-Gateway|Unterstützt|Noch nicht unterstützt|
 | |VPN Gateway-SKUs|Unterstützung für Basic, GW1, GW2, GW3, Standard High Performance, Ultra-High Performance |Unterstützung für Basic-, Standard- und High Performance-SKUs|

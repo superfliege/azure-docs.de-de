@@ -10,16 +10,16 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/14/2017
-ms.openlocfilehash: 2efffd14c748a070fff59bcf9dd21c02eb9f6dcd
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: c7f4bf0fed35ffb2c03e8b983260c6093032fe79
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-the-azure-machine-learning-experimentation-service"></a>Konfigurieren des Azure Machine Learning-Experimentieren-Diensts
 
 ## <a name="overview"></a>Übersicht
-Konten für Azure Machine Learning-Experimentieren, Arbeitsbereiche und Projekte sind Azure-Ressourcen. Daher können sie mithilfe von Resource Manager-Vorlagen bereitgestellt werden. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview).
+Konten für Azure Machine Learning-Experimentieren, Arbeitsbereiche und Projekte sind Azure-Ressourcen. Daher können sie mithilfe von Resource Manager-Vorlagen bereitgestellt werden. Resource Manager-Vorlagen sind JSON-Dateien, mit denen die Ressourcen definiert werden, die Sie für Ihre Lösung bereitstellen müssen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
 ## <a name="deploy-a-template"></a>Bereitstellen einer Vorlage
 Zum Bereitstellen einer Vorlage sind nur wenige Schritte in der Azure-Befehlszeilenschnittstelle oder im Azure-Portal erforderlich.
@@ -137,7 +137,7 @@ Erstellen Sie eine Datei mit folgendem Inhalt, und speichern Sie sie als „<par
 Es gibt drei Werte, die Sie ändern können. 
 * AccountName: Der Name des Experimentieren-Kontos
 * Location: Eine der unterstützten Azure-Regionen
-* StorageAccountSku: Azure ML unterstützt nur Standard-Speicher, Storage Premium wird nicht unterstützt. Weitere Informationen zum Speicher finden Sie unter [Einführung in Microsoft Azure Storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-introduction). 
+* StorageAccountSku: Azure ML unterstützt nur Standard-Speicher, Storage Premium wird nicht unterstützt. Weitere Informationen zum Speicher finden Sie unter [Einführung in Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction). 
 
 ```json
 {

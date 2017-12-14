@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/19/2017
 ms.author: ahomer
 ms.custom: mvc
-ms.openlocfilehash: c96aafeb05293ccdc4c30c2b828cead1dfdb157c
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: bfda0475b58556db1236c8b051c59393384720f7
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-your-app-to-linux-vms-by-using-jenkins-and-team-services"></a>Bereitstellen Ihrer App auf virtuellen Linux-Computern mithilfe von Jenkins und Team Services
 
@@ -40,7 +40,7 @@ In diesem Tutorial führen Sie folgende Schritte aus:
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-* Sie benötigen Zugriff auf einen Jenkins-Server. Falls Sie noch keinen Jenkins-Server erstellt haben, lesen Sie unter [Erstellen eines Jenkins-Masters auf einem virtuellen Azure-Computer](https://docs.microsoft.com/en-us/azure/jenkins/install-jenkins-solution-template) weiter. 
+* Sie benötigen Zugriff auf einen Jenkins-Server. Falls Sie noch keinen Jenkins-Server erstellt haben, lesen Sie unter [Erstellen eines Jenkins-Masters auf einem virtuellen Azure-Computer](https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template) weiter. 
 
 * Melden Sie sich bei Ihrem Team Services-Konto (**https://{Ihr Konto}.visualstudio.com**) an. 
   Sie können ein [kostenloses Team Services-Konto](https://go.microsoft.com/fwlink/?LinkId=307137&clcid=0x409&wt.mc_id=o~msft~vscom~home-vsts-hero~27308&campaign=o~msft~vscom~home-vsts-hero~27308) erstellen.
@@ -48,9 +48,9 @@ In diesem Tutorial führen Sie folgende Schritte aus:
   > [!NOTE]
   > Weitere Informationen finden Sie unter [Connect to Team Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services) (Herstellen einer Verbindung mit Team Services).
 
-*  Sie benötigen einen virtuellen Linux-Computer für ein Bereitstellungsziel.  Weitere Informationen finden Sie unter [Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/tutorial-manage-vm).
+*  Sie benötigen einen virtuellen Linux-Computer für ein Bereitstellungsziel.  Weitere Informationen finden Sie unter [Erstellen und Verwalten virtueller Linux-Computer mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm).
 
-*  Öffnen Sie den eingehenden Port 80 für den virtuellen Computer. Weitere Informationen finden Sie unter [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
+*  Öffnen Sie den eingehenden Port 80 für den virtuellen Computer. Weitere Informationen finden Sie unter [Erstellen von Netzwerksicherheitsgruppen über das Azure-Portal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal).
 
 ## <a name="get-the-sample-app"></a>Abrufen der Beispiel-App
 

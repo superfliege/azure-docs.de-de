@@ -10,11 +10,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 10/20/2017
 ms.author: tomfitz
-ms.openlocfilehash: e104778db445d078ffca7a9ddb9d28fc84a93c81
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 062e6b4d9edd9ca9220b8d11336f1a3ff544a1dd
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="create-and-deploy-an-azure-managed-application-with-azure-cli"></a>Erstellen und Bereitstellen einer verwalteten Azure-Anwendung per Azure CLI
 
@@ -112,7 +112,7 @@ Im vorigen Beispiel werden u.a. folgende Parameter verwendet:
 
 * **managedapp-definition-id**: Die ID der Definition, die Sie weiter oben in diesem Artikel erstellt haben.
 * **managed-rg-id**: Die ID der Ressourcengruppe für die Ressourcen, die der verwalteten Anwendung zugeordnet sind. Mit dem Befehl wird diese Ressourcengruppe erstellt. **Bevor der Befehl ausgeführt wird, darf sie noch nicht vorhanden sein**. Diese Ressourcengruppe wird vom Herausgeber verwaltet. 
-* **resource-group**: Die Ressourcengruppe, in der die Ressource für die verwaltete Anwendung erstellt wird.
+* **resource-group:** Die Ressourcengruppe, in der die Ressource für die verwaltete Anwendung erstellt wird.
 * **parameters**: Die erforderlichen Parameter für die Ressourcen, die der verwalteten Anwendung zugeordnet sind.
 
 Nach dem erfolgreichen Abschluss der Bereitstellung sehen Sie, dass die verwaltete Anwendung in applicationGroup erstellt wurde. Die Ressource storageAccount wird in infrastructureGroup erstellt.
@@ -121,5 +121,4 @@ Nach dem erfolgreichen Abschluss der Bereitstellung sehen Sie, dass die verwalte
 
 * Eine Einführung in verwaltete Anwendungen finden Sie in der [Übersicht über verwaltete Anwendungen](overview.md).
 * Beispiele für die Dateien finden Sie unter [Beispiele für verwaltete Anwendungen](https://github.com/Azure/azure-managedapp-samples/tree/master/samples).
-* Informationen zum Veröffentlichen von verwalteten Anwendungen im Azure Marketplace finden Sie unter [Erstellen einer Marketplace-Anwendung](publish-marketplace-app.md).
 * Informationen zum Erstellen einer UI-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).

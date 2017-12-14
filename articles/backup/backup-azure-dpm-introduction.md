@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 41eed9c44a226817da9ee5f324e62902bc23754c
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 04a03436d554d9f06eed0fbdf5cf34a786061e21
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>Vorbereiten der Sicherung von Workloads in Azure mit DPM
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ Dieser Artikel enthält eine Einführung zur Verwendung von Microsoft Azure Back
 >
 >
 
-[System Center DPM](https://docs.microsoft.com/en-us/system-center/dpm/dpm-overview) sichert Datei- und Anwendungsdaten. Weitere Informationen zu unterstützten Workloads finden Sie [hier](https://docs.microsoft.com/en-us/system-center/dpm/dpm-protection-matrix). Daten, die in DPM gesichert werden, können auf Band, auf Festplatte gespeichert oder in Azure mit Microsoft Azure Backup gesichert werden. DPM interagiert mit Azure Backup wie folgt:
+[System Center DPM](https://docs.microsoft.com/system-center/dpm/dpm-overview) sichert Datei- und Anwendungsdaten. Weitere Informationen zu unterstützten Workloads finden Sie [hier](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix). Daten, die in DPM gesichert werden, können auf Band, auf Festplatte gespeichert oder in Azure mit Microsoft Azure Backup gesichert werden. DPM interagiert mit Azure Backup wie folgt:
 
 * **DPM als physischer Server oder auf einem lokalen virtuellen Computer bereitgestellt** – Wenn DPM als physischer Server oder als lokaler Hyper-V-Computer bereitgestellt wird, können Sie Daten zusätzlich zur Festplatten- und Bandsicherung im Recovery Services-Tresor sichern.
 * **DPM als virtueller Azure-Computer bereitgestellt** – Ab System Center 2012 R2 mit Update 3 kann DPM als virtueller Azure-Computer bereitgestellt werden. Wenn DPM als virtueller Azure-Computer bereitgestellt wird, können Sie Daten auf Azure-Datenträgern sichern, die an den virtuellen Azure DPM-Computer angeschlossen sind, oder Sie können die Datenspeicherung durch Sichern in einem Recovery Services-Tresor auslagern.
@@ -66,7 +66,7 @@ Hier folgen einige wichtige Definitionen für die Sicherung in Azure für DPM:
 
 1. **Tresoranmeldeinformationen**: Mithilfe der Tresoranmeldeinformationen wird der Computer zum Senden von Sicherungsdaten an einen identifizierten Tresor im Azure Backup-Dienst authentifiziert. Sie können aus dem Tresor heruntergeladen werden und sind 48 Stunden gültig.
 2. **Passphrase**: Mithilfe der Passphrase werden die Sicherungen in der Cloud verschlüsselt. Speichern Sie die Datei an einem sicheren Speicherort, da sie bei einem Wiederherstellungsvorgang benötigt wird.
-3. **Sicherheits-PIN**: Wenn Sie die [Sicherheitseinstellungen](https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature) des Tresors aktiviert haben, ist die Sicherheits-PIN zum Ausführen von Sicherungsvorgängen erforderlich. Diese Multi-Factor Authentication sorgt für eine zusätzliche Sicherheitsebene. 
+3. **Sicherheits-PIN**: Wenn Sie die [Sicherheitseinstellungen](https://docs.microsoft.com/azure/backup/backup-azure-security-feature) des Tresors aktiviert haben, ist die Sicherheits-PIN zum Ausführen von Sicherungsvorgängen erforderlich. Diese Multi-Factor Authentication sorgt für eine zusätzliche Sicherheitsebene. 
 4. **Wiederherstellungsordner**: Dies ist die Bezeichnung für den Ordner, in den die Sicherungen aus der Cloud während der Cloudwiederherstellungen vorübergehend heruntergeladen werden. Seine Größe sollte ungefähr der Größe der Sicherungselemente entsprechen, die Sie gleichzeitig wiederherstellen möchten.
 
 

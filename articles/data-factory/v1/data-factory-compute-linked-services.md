@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/01/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 1547b5c3a5c629b85ff5fa9de6b39b25531d9ec9
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b7686dc5c52737106a8bc819c160b67baaffd147
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -50,7 +50,7 @@ Nach dem 15. Dezember 2017:
 
 - Sie können keine Linux-basierten HDInsight-Cluster mit Version 3.3 (oder früheren Versionen) mit bedarfsgesteuerten verknüpften HDInsight-Diensten in Azure Data Factory v1 mehr erstellen. 
 
-- Wenn die [Eigenschaft „osType“ und/oder „Version“](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) in vorhandenen JSON-Definitionen von bedarfsgesteuerten verknüpften HDInsight-Diensten in Azure Data Factory v1 nicht explizit angegeben wird, wird der Standardwert **Version=3.1, osType=Windows** in **Version=3.6, osType=Linux** geändert.
+- Wenn die [Eigenschaft „osType“ und/oder „Version“](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) in vorhandenen JSON-Definitionen von bedarfsgesteuerten verknüpften HDInsight-Diensten in Azure Data Factory v1 nicht explizit angegeben wird, wird der Standardwert **Version=3.1, osType=Windows** in **Version=3.6, osType=Linux** geändert.
 
 Nach dem 31. Juli 2018:
 
@@ -58,10 +58,10 @@ Nach dem 31. Juli 2018:
 
  **Empfohlene Aktionen** 
 
-- Aktualisieren Sie die [Eigenschaft „osType“ und/oder „Version“](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) der betroffenen Definitionen von bedarfsgesteuerten verknüpften HDInsight-Diensten in Azure Data Factory v1 in neuere Linux-basierte HDInsight-Versionen (HDInsight 3.6), um sicherzustellen, dass Sie die neuesten Komponenten und Fehlerbehebungen des Hadoop-Ökosystems nutzen können. 
-- Testen Sie vor dem 15. Dezember 2017 in Azure Data Factory V1 Hive-, Pig-, MapReduce- und Hadoop-Streamingaktivitäten, die auf den betroffenen verknüpften Dienst verweisen, um sicherzustellen, dass sie mit dem neuen Standardwert für *osType* und/oder *Version* (Version=3.6, osType=Linux) oder der expliziten HDInsight-Version und dem Betriebssystem, auf die/das Sie ein Upgrade durchführen, kompatibel sind. Weitere Informationen zur Kompatibilität finden Sie auf den Webseiten der Dokumentation [Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) und [Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions). 
+- Aktualisieren Sie die [Eigenschaft „osType“ und/oder „Version“](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) der betroffenen Definitionen von bedarfsgesteuerten verknüpften HDInsight-Diensten in Azure Data Factory v1 in neuere Linux-basierte HDInsight-Versionen (HDInsight 3.6), um sicherzustellen, dass Sie die neuesten Komponenten und Fehlerbehebungen des Hadoop-Ökosystems nutzen können. 
+- Testen Sie vor dem 15. Dezember 2017 in Azure Data Factory V1 Hive-, Pig-, MapReduce- und Hadoop-Streamingaktivitäten, die auf den betroffenen verknüpften Dienst verweisen, um sicherzustellen, dass sie mit dem neuen Standardwert für *osType* und/oder *Version* (Version=3.6, osType=Linux) oder der expliziten HDInsight-Version und dem Betriebssystem, auf die/das Sie ein Upgrade durchführen, kompatibel sind. Weitere Informationen zur Kompatibilität finden Sie auf den Webseiten der Dokumentation [Migrieren von einem Windows-basierten HDInsight-Cluster zu einem Linux-basierten Cluster](https://docs.microsoft.com/azure/hdinsight/hdinsight-migrate-from-windows-to-linux) und [Hortonworks-Versionshinweise im Zusammenhang mit HDInsight-Versionen](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hortonworks-release-notes-associated-with-hdinsight-versions). 
 - Legen Sie vor dem 15. Dezember 2017 explizit „osType“ auf Windows fest, wenn Sie weiterhin bedarfsgesteuerte verknüpfte HDInsight-Dienste in Azure Data Factory v1 verwenden möchten, um Windows-basierte HDInsight-Cluster zu erstellen. Es wird jedoch trotzdem empfohlen, vor dem 31. Juli 2018 zu Linux-basierten HDInsight-Clustern zu migrieren. 
-- Aktualisieren Sie die JSON-Definition der benutzerdefinierten .NET-Aktivität, sodass sie stattdessen einen verknüpften Azure Batch-Dienst verwendet, wenn Sie zum Ausführen der benutzerdefinierten .NET-Aktivität von Azure Data Factory v1 einen verknüpften bedarfsgesteuerten HDInsight-Dienst verwenden. Weitere Informationen finden Sie auf der Webseite der Dokumentation [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities). 
+- Aktualisieren Sie die JSON-Definition der benutzerdefinierten .NET-Aktivität, sodass sie stattdessen einen verknüpften Azure Batch-Dienst verwendet, wenn Sie zum Ausführen der benutzerdefinierten .NET-Aktivität von Azure Data Factory v1 einen verknüpften bedarfsgesteuerten HDInsight-Dienst verwenden. Weitere Informationen finden Sie auf der Webseite der Dokumentation [Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities). 
 
 >[!Note]
 >Für Kunden, die einen vorhandenen verknüpften HDInsight-Dienst mit Bring Your Own Cluster (BYOC) in Azure Data Factory v1 oder BYOC und einen verknüpften bedarfsgesteuerten HDInsight-Dienst in Azure Data Factory v2 verwenden, wird die neueste Richtlinie zur Versionsunterstützung von Azure HDInsight-Clustern bereits erzwungen, daher ist keine Aktion erforderlich. 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: ced8ecde1f36c49b479c7b253a90614567783663
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: db9840817d92b4f2f63009d30dbd554666d53dbe
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Azure Operational Security bezieht sich auf die Dienste, Steuerelemente und Features, die für Benutzer zum Schützen ihrer Daten, Anwendungen und anderen Ressourcen in Microsoft Azure zur Verfügung stehen. Azure Operational Security basiert auf einem Framework, das die über verschiedene für Microsoft einzigartige Funktionen erworbenen Kenntnisse einbezieht, einschließlich Microsoft Security Development Lifecycle (SDL), dem Microsoft Security Response Center-Programm und den umfassenden Informationen zur Bedrohungslage hinsichtlich der Sicherheit im Internet.
@@ -156,7 +156,7 @@ Kunden erstellen ein End-to-End-Netzwerk in Azure und orchestrieren und kombinie
 Überwachen und diagnostizieren Sie mithilfe von Network Watcher Netzwerkprobleme, ohne sich an Ihren virtuellen Computern (VMs) anmelden zu müssen. Lösen Sie mithilfe von Warnungen die [Paketerfassung](https://docs.microsoft.com/azure/network-watcher/network-watcher-alert-triggered-packet-capture) aus, und erhalten Sie Zugriff auf Leistungsinformationen in Echtzeit auf Paketebene. Wenn Sie ein Problem feststellen, können Sie dieses detailliert untersuchen, um es besser diagnostizieren zu können.
 
 ### <a name="gain-insight-into-your-network-traffic-using-flow-logs"></a>Gewinnen von Einblicken in den Netzwerkdatenverkehr mithilfe von Datenflussprotokollen
-Lernen Sie mithilfe von [Datenflussprotokollen von Netzwerksicherheitsgruppen](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-nsg-flow-logging-overview) die Datenverkehrsmuster in Ihrem Netzwerk kennen. Mit den Daten aus den Datenflussprotokollen können Sie Informationen gewinnen, die Sie zum Erfüllen von Complianceanforderungen und zum Überwachen Ihres Netzwerksicherheitsprofils benötigen.
+Lernen Sie mithilfe von [Datenflussprotokollen von Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview) die Datenverkehrsmuster in Ihrem Netzwerk kennen. Mit den Daten aus den Datenflussprotokollen können Sie Informationen gewinnen, die Sie zum Erfüllen von Complianceanforderungen und zum Überwachen Ihres Netzwerksicherheitsprofils benötigen.
 
 ### <a name="diagnose-vpn-connectivity-issues"></a>Diagnostizieren von VPN-Konnektivitätsproblemen
 Network Watcher ermöglicht es Ihnen, die [am häufigsten auftretenden VPN-Gateway- und Verbindungsprobleme zu diagnostizieren](https://docs.microsoft.com/azure/network-watcher/network-watcher-diagnose-on-premises-connectivity). So können Sie die Probleme nicht nur identifizieren, sondern anhand detaillierter Protokolle genauer untersuchen.

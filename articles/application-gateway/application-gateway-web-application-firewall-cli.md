@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: davidmu
-ms.openlocfilehash: c9c740a3a1a28a1a9a4f2abf579fe2adb54e4f47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e60bfc89378569b154f4f973d1dceb683fa58482
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Konfigurieren einer Web Application Firewall auf einem neuen oder vorhandenen Anwendungsgateway mit der Azure CLI
 
@@ -47,7 +47,7 @@ Dieser Artikel veranschaulicht das [Hinzufügen einer Web Application Firewall z
 
 ## <a name="prerequisite-install-the-azure-cli-20"></a>Voraussetzung: Installieren der Azure CLI 2.0
 
-Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle (Azure CLI) für Mac, Linux und Windows installieren](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2).
+Um die Schritte in diesem Artikel ausführen zu können, müssen Sie [die Azure-Befehlszeilenschnittstelle (Azure CLI) für Mac, Linux und Windows installieren](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
 ## <a name="waf-configuration-differences"></a>Unterschiede bei der WAF-Konfiguration
 

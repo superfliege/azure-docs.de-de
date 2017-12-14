@@ -4,7 +4,7 @@ description: "Verwenden eines Azure AD-Anwendungsproxys in durch Azure Active Di
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory-ds
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: maheshu
-ms.openlocfilehash: 157a10277f89643245746223f2cd1d73680ac700
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: bd79644c6a13ccaab8eb7e14131465cc7c3165d3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.
@@ -86,7 +86,7 @@ Zuvor haben Sie einen virtuellen Windows Server-Computer bereitgestellt und in d
     ![](./media/app-proxy/app-proxy-connector-page.png)
 
 > [!NOTE]
-> Sie können sich entschließen, Connectors auf mehreren Servern zu installieren, um für die Authentifizierung von Anwendungen über den Azure AD-Anwendungsproxy eine hohe Verfügbarkeit zu gewährleisten. Führen Sie die oben aufgeführten Schritte zur Installation des Connectors auf weiteren Servern durch, die in Ihre verwaltete Domäne eingebunden sind.
+> Sie können sich entschließen, Connectors auf mehreren Servern zu installieren, um für die Authentifizierung von Anwendungen über den Azure AD-Anwendungsproxy Hochverfügbarkeit zu gewährleisten. Führen Sie die oben aufgeführten Schritte zur Installation des Connectors auf weiteren Servern durch, die in Ihre verwaltete Domäne eingebunden sind.
 >
 >
 

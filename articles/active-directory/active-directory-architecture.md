@@ -5,7 +5,7 @@ services: active-directory
 documentationcenter: 
 author: MarkusVi
 writer: v-lorisc
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: infrastructure-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: fa25f0435df79a78d39e8f89d702d3b64db79d65
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 3917984e4d7567fb70a34497cc1dd68a8e8c32b0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Grundlegendes zur Azure Active Directory-Architektur
 Mit Azure Active Directory (Azure AD) können Sie den Zugriff auf Azure-Dienste und Ressourcen für Ihre Benutzer sicher verwalten. In Azure AD ist eine vollständige Suite mit Funktionen zur Identitätsverwaltung enthalten. Weitere Informationen zu Azure AD-Features finden Sie unter [Was ist Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-whatis).
@@ -107,7 +107,7 @@ Azure AD implementiert tägliche Sicherungen aller Daten und kann die Daten so a
 
 **Metriken und Überwachungen**
 
-Zum Ausführen eines hoch verfügbaren Diensts sind professionelle Metriken und Überwachungsfunktionen erforderlich. Azure AD führt eine fortlaufende Analyse durch und meldet wichtige Metriken zur Dienstintegrität und Erfolgskriterien für die einzelnen Dienste. Wir entwickeln und optimieren ständig Metriken, Überwachungsfunktionen und Warnungen für jedes Szenario in jedem Azure AD-Dienst und über alle Dienste hinweg.
+Zum Ausführen eines Hochverfügbarkeitsdiensts sind professionelle Metriken und Überwachungsfunktionen erforderlich. Azure AD führt eine fortlaufende Analyse durch und meldet wichtige Metriken zur Dienstintegrität und Erfolgskriterien für die einzelnen Dienste. Wir entwickeln und optimieren ständig Metriken, Überwachungsfunktionen und Warnungen für jedes Szenario in jedem Azure AD-Dienst und über alle Dienste hinweg.
 
 Falls ein Azure AD-Dienst nicht wie erwartet funktioniert, ergreifen wir sofort Maßnahmen, um die Funktionalität so schnell wie möglich wiederherzustellen. Als wichtigste Metrik wird von Azure AD nachverfolgt, wie schnell wir ein Problem mit einem Kunden oder einer Livewebsite erkennen und beheben können. Wir investieren in hohem Maße in die Überwachung und Warnungen, um die Erkennungsdauer zu verringern (Ziel: weniger als 5 Minuten), und in die Betriebsbereitschaft, um die Lösungsdauer zu verringern (Ziel: weniger als 30 Minuten).
 

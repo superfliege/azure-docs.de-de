@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 47cdbf31e6b01055405cefedda11d5eeef82f32e
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: b36e8064da2661e6424d68f11b1e08d5af96131f
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht zur Kostenvorkalkulation  
 
@@ -81,7 +81,7 @@ Wählen Sie die Einstellungen gemäß Ihren Anforderungen aus.
 ### <a name="vm-running-on-azure"></a>VM running on Azure (VM unter Azure)
 Wenn Sie einen Domänencontroller oder eine DNS-VM/SQL Server-VM mit Always On-Verfügbarkeitsgruppen in Azure für die Notfallwiederherstellung ausführen, können Sie die Anzahl von VMs und die Größe angeben, um die entsprechenden Computingkosten in den DR-Gesamtkosten zu berücksichtigen. 
 
-### <a name="apply-overall-discount-if-applicable"></a>Apply overall discount if applicable (Allgemeinen Rabatt anwenden (falls zutreffend))
+### <a name="apply-overall-discount-if-applicable"></a>Apply overall discount if applicable (Gesamtrabatt anwenden (falls zutreffend))
 Wenn Sie ein Azure-Partner oder Kunde sind und Ihnen ein allgemeiner Rabatt auf Azure-Preise zusteht, können Sie dieses Feld verwenden. Das Tool wendet den Rabatt (in %) auf alle Komponenten an.
 
 ### <a name="number-of-virtual-machines-type-and-compute-cost-per-year"></a>Number of virtual machines type and compute cost (per year) (Anzahl von VM-Typ und Computekosten (pro Jahr))
@@ -105,8 +105,8 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 * Number of DR drills in a year (Anzahl von DR-Drills in einem Jahr) 
 * Each DR drill duration (Days) (Dauer einzelner DR-Drills (Tage)) 
 * OS Type (Betriebssystemtyp)
-* Data redundancy (Datenredundanz) 
-* Azure Hybrid Use Benefit (Azure-Vorteil bei Hybridnutzung)
+* Datenredundanz 
+* Azure-Vorteil bei Hybridnutzung
 
 3.  Sie können auf alle VMs der Tabelle den gleichen Wert anwenden, indem Sie für „Number of DR drills in a year“, „Each DR drill duration (Days)“, „Data redundancy“ und „Azure Hybrid Use Benefit“ auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken.
 
@@ -132,7 +132,7 @@ Gehen Sie wie folgt vor, um VMs manuell hinzuzufügen:
 
 **Data redundancy** (Datenredundanz): Dies kann einer der folgenden Werte sein: „Locally redundant storage (LRS)“ (Lokal redundanter Speicher), „Geo-redundant storage (GRS)“ (Georedundanter Speicher) oder „Read-access geo-redundant storage (RA-GRS)“ (Georedundanter Speicher mit Lesezugriff). LRS ist die Standardeinstellung. Sie können den Typ basierend auf Ihrem Speicherkonto für bestimmte VMs ändern, oder Sie können den neuen Typ auf alle VMs anwenden, indem Sie den Typ in obersten Zeile ändern und auf die Schaltfläche „Apply to all“ (Auf alle anwenden) klicken.  Die Speicherkosten für die Replikation werden basierend auf dem Preis für die Datenredundanz berechnet, die Sie ausgewählt haben. 
 
-**Azure Hybrid Use Benefit** (Azure-Vorteil bei Hybridnutzung): Sie können den Azure-Vorteil bei Hybridnutzung auf Windows-VMs anwenden, falls zutreffend.  Die Standardeinstellung ist „Ja“. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren, indem Sie auf die Schaltfläche „Auf alle anwenden“ klicken.
+**Azure Hybrid Use Benefit** (Azure-Hybridvorteil): Sie können den Azure-Vorteil bei Hybridnutzung auf Windows-VMs anwenden, falls zutreffend.  Die Standardeinstellung ist „Ja“. Sie können die Einstellung für bestimmte VMs ändern oder alle VMs aktualisieren, indem Sie auf die Schaltfläche „Auf alle anwenden“ klicken.
 
 **Total Azure consumption** (Azure-Gesamtverbrauch): Umfasst Compute-, Speicher- und Azure Site Recovery-Lizenzkosten für Ihre Notfallwiederherstellung. Basierend auf Ihrer Auswahl werden die Kosten entweder monatlich oder jährlich angezeigt.
 
@@ -162,4 +162,4 @@ Der Azure Site Recovery-Bereitstellungsplaner kann den Kostenbericht für die fo
 |TRY|Türkische Lira (TL)||USD| US-Dollar ($)||ZAR|Südafrikanischer Rand (R)|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure](https://docs.microsoft.com/en-us/azure/site-recovery/tutorial-hyper-v-to-azure).
+Weitere Informationen zum Schutz finden Sie unter [Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in Azure](https://docs.microsoft.com/azure/site-recovery/tutorial-hyper-v-to-azure).

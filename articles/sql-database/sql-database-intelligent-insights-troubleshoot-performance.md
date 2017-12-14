@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 85da2a521af0ca92c07d8b2041e92b98f98e9661
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
@@ -52,7 +52,7 @@ Intelligent Insights erkennt automatisch Leistungsprobleme mit SQL-Datenbank auf
 | [Tarifdowngrade](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Durch ein Tarifdowngrade haben sich verfügbare Ressourcen verringert, was die Leistung von SQL-Datenbank beeinträchtigt. |
 
 > [!TIP]
-> Aktivieren Sie für die fortlaufende Optimierung von SQL-Datenbank die [automatische Optimierung von Azure SQL-Datenbank](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-automatic-tuning). Diese einzigartige Funktion der integrierten Logik von SQL-Datenbank überwacht Ihre SQL-Datenbank, optimiert automatisch Indizes und wendet Abfrageplankorrekturen an.
+> Aktivieren Sie für die fortlaufende Optimierung von SQL-Datenbank die [automatische Optimierung von Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Diese einzigartige Funktion der integrierten Logik von SQL-Datenbank überwacht Ihre SQL-Datenbank, optimiert automatisch Indizes und wendet Abfrageplankorrekturen an.
 >
 
 Im folgenden Abschnitt werden die zuvor genannten erkennbaren Leistungsmuster genauer beschrieben.
@@ -63,7 +63,7 @@ Im folgenden Abschnitt werden die zuvor genannten erkennbaren Leistungsmuster ge
 
 Dieses erkennbare Leistungsmuster kombiniert Leistungsprobleme im Zusammenhang mit dem Erreichen geltender Ressourcen-, Worker- und Sitzungsgrenzwerte. Sobald dieses Leistungsproblem erkannt wird, gibt ein Beschreibungsfeld im Diagnoseprotokoll an, ob es mit Ressourcen-, Worker- oder Sitzungsgrenzwerten zusammenhängt.
 
-Ressourcen auf SQL-Datenbank werden in der Regel als [DTU-Ressourcen](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-what-is-a-dtu) bezeichnet. Sie bestehen aus einer kombinierten Messung von CPU- und E/A-Ressourcen (E/A von Daten und Transaktionsprotokollen). Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
+Ressourcen auf SQL-Datenbank werden in der Regel als [DTU-Ressourcen](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) bezeichnet. Sie bestehen aus einer kombinierten Messung von CPU- und E/A-Ressourcen (E/A von Daten und Transaktionsprotokollen). Das Muster des Erreichens von „Ressourcengrenzwerten“ wird erkannt, wenn eine aufgetretene Verschlechterung der Abfrageleistung durch Erreichen eines der gemessenen Ressourcengrenzwerte verursacht wird.
 
 Die Ressourcengrenzwerte für Sitzungen beziehen sich auf die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der SQL-Datenbank-Instanz. Dieses Leistungsmuster wird dann erkannt, wenn Anwendungen, die mit den SQL-Datenbank-Instanzen verbunden sind, die Anzahl der verfügbaren gleichzeitigen Anmeldungen bei der Datenbank erreicht haben. Falls Anwendungen versuchen, mehr Sitzungen zu nutzen, als für eine Datenbank verfügbar sind, wird die Abfrageleistung beeinträchtigt.
 
@@ -75,7 +75,7 @@ Das Diagnoseprotokoll gibt Abfragehashes von Abfragen aus, die sich auf die Leis
 
 Wenn Sie die geltenden Sitzungsgrenzwerte erreicht haben, können Sie Ihre Anwendungen optimieren, indem Sie die Anzahl der Anmeldungen bei der Datenbank reduzieren. Wenn Sie die Anzahl der Anmeldungen von Ihrer Anwendung zur Datenbank nicht reduzieren können, erhöhen Sie ggf. den Tarif Ihrer Datenbank. Sie können Ihre Datenbank auch teilen und sie für eine ausgeglichenere Verteilung Ihrer Workload in mehrere Datenbanken verschieben.
 
-Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Unter [Ressourceneinschränkungen für SQL-Datenbank](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-resource-limits) finden Sie die geltenden Ressourcengrenzwerte für Ihren Abonnementtarif.
+Weitere Vorschläge zum Beheben von Problemen mit Sitzungsgrenzwerten finden Sie unter [How to deal with the limits of SQL Database maximum logins (Umgang mit den maximalen Grenzwerten für Anmeldungen bei SQL-Datenbank)](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Unter [Ressourceneinschränkungen für SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits) finden Sie die geltenden Ressourcengrenzwerte für Ihren Abonnementtarif.
 
 ## <a name="workload-increase"></a>Gestiegene Workload
 
@@ -145,7 +145,7 @@ Die Serverkonfigurationsoption „MAXDOP“ für SQL-Datenbank dient zum Steuern
 
 Das Diagnoseprotokolls gibt Abfragehashes im Zusammenhang mit den Abfragen aus, deren Dauer sich aufgrund einer übermäßigen Parallelisierung erhöht hat. Das Protokoll gibt außerdem CXP-Wartezeiten aus. Dies ist die Zeit, die ein einzelner Organisator-/Koordinatorthread (Thread 0) auf das Beenden aller anderen Threads wartet, ehe die Ergebnisse zusammengeführt werden und der Vorgang fortgesetzt wird. Darüber hinaus gibt das Diagnoseprotokoll die Zeiten aus, die Abfragen mit schlechter Leistung insgesamt auf die Ausführung gewartet haben. Sie können diese Informationen als Grundlage für die Problembehandlung verwenden.
 
-Optimieren oder vereinfachen Sie zunächst komplexe Abfragen. Eine bewährte Methode ist das Aufteilen langer Batchaufträge in kleinere Aufträge. Stellen Sie darüber hinaus sicher, dass Sie Indizes zur Unterstützung Ihrer Abfragen erstellt haben. Sie können auch manuell den maximalen Grad an Parallelität (MAXDOP) eine Abfrage erzwingen, die als eine Abfrage mit schlechter Leistung gekennzeichnet wurde. Um diesen Vorgang mithilfe von T-SQL zu konfigurieren, sehen Sie sich die Seite [Konfigurieren der Serverkonfigurationsoption Max. Grad an Parallelität](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option) an.
+Optimieren oder vereinfachen Sie zunächst komplexe Abfragen. Eine bewährte Methode ist das Aufteilen langer Batchaufträge in kleinere Aufträge. Stellen Sie darüber hinaus sicher, dass Sie Indizes zur Unterstützung Ihrer Abfragen erstellt haben. Sie können auch manuell den maximalen Grad an Parallelität (MAXDOP) eine Abfrage erzwingen, die als eine Abfrage mit schlechter Leistung gekennzeichnet wurde. Um diesen Vorgang mithilfe von T-SQL zu konfigurieren, sehen Sie sich die Seite [Konfigurieren der Serverkonfigurationsoption Max. Grad an Parallelität](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-the-max-degree-of-parallelism-server-configuration-option) an.
 
 Das Festlegen der Serverkonfigurationsoption „MAXDOP“ auf 0 (null) als Standardwert bedeutet, dass SQL-Datenbank alle verfügbaren logischen CPU-Kerne nutzt, um Threads zum Ausführen einer einzelnen Abfrage zu parallelisieren. Das Festlegen von MAXDOP auf 1 (eins) gibt an, dass nur ein Kern für eine einzelne Abfrageausführung verwendet werden kann. Das bedeutet, dass die Parallelität deaktiviert ist. Je nach vorliegendem Fall, den für die Datenbank verfügbaren Kernen und den Informationen im Diagnoseprotokoll können Sie die Option „MAXDOP“ auf die Anzahl von Kernen für die parallele Abfrageausführung festlegen, die das Problem in Ihrem Fall womöglich beheben.
 
@@ -231,13 +231,13 @@ Dieses erkennbare Leistungsmuster ist ein Hinweis auf eine Datenbankleistungsbed
 
 Das Diagnoseprotokoll gibt Details zum tempDB-Konflikt aus. Sie können diese Informationen als Startpunkt für die Problembehandlung verwenden. Es gibt zwei Dinge, mit denen Sie diese Art von Konflikt entschärfen und den Durchsatz der gesamten Workload erhöhen können: Sie können aufhören, die temporären Tabellen zu verwenden. Sie können auch speicheroptimierte Tabellen verwenden. 
 
-Weitere Informationen finden Sie unter [Einführung in speicheroptimierte Tabellen](https://docs.microsoft.com/en-us/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
+Weitere Informationen finden Sie unter [Einführung in speicheroptimierte Tabellen](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
 ## <a name="elastic-pool-dtu-shortage"></a>Mangel an DTUs im Pool für elastische Datenbanken
 
 ### <a name="what-is-happening"></a>Was passiert?
 
-Dieses erkennbare Leistungsmuster zeigt eine aktuelle Leistungsminderung der Datenbankworkload im Vergleich zur Workloadbaseline der letzten sieben Tage. Der Grund dafür ist der Mangel an verfügbaren DTUs im elastischen Pool Ihres Abonnements. 
+Dieses erkennbare Leistungsmuster zeigt eine aktuelle Leistungsminderung der Datenbankworkload im Vergleich zur Workloadbaseline der letzten sieben Tage. Der Grund dafür ist der Mangel an verfügbaren DTUs im Pool für elastische Datenbanken Ihres Abonnements. 
 
 Ressourcen für SQL-Datenbank werden üblicherweise als [DTU-Ressourcen](sql-database-what-is-a-dtu.md) bezeichnet, die aus einer Kombination von CPU- und E/A-Ressourcen (Daten- und Transaktionsprotokoll-E/A) bestehen. [Azure-Ressourcen für den Pool für elastische Datenbanken](sql-database-elastic-pool.md) dienen als Pool verfügbarer eDTU-Ressourcen, die zu Skalierungszwecken von mehreren Datenbanken gemeinsam genutzt werden. Wenn die verfügbaren eDTU-Ressourcen in Ihrem Pool elastischer Datenbanken nicht ausreichen, um alle Datenbanken im Pool zu unterstützen, wird das Problem „Mangel an DTUs im Pool für elastische Datenbanken“ vom System erkannt.
 
@@ -328,10 +328,10 @@ Sie greifen auf Intelligent Insights über das Azure-Portal zu, indem Sie zu Azu
 > [!TIP]
 > Wählen Sie das Flussdiagramm aus, um eine PDF-Version herunterzuladen.
 
-Intelligent Insights benötigt in der Regel eine Stunde für die Fehlerursachenanalyse eines Leistungsproblems. Wenn Sie Ihr Problem nicht in Intelligent Insights finden können, dies aber wichtig für Sie ist, verwenden Sie den Abfragespeicher, um manuell die Grundursache des Leistungsproblem zu identifizieren. (In der Regel sind diese Probleme weniger als eine Stunde alt.) Weitere Informationen finden Sie unter [Leistungsüberwachung mit dem Abfragespeicher](https://docs.microsoft.com/en-us/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
+Intelligent Insights benötigt in der Regel eine Stunde für die Fehlerursachenanalyse eines Leistungsproblems. Wenn Sie Ihr Problem nicht in Intelligent Insights finden können, dies aber wichtig für Sie ist, verwenden Sie den Abfragespeicher, um manuell die Grundursache des Leistungsproblem zu identifizieren. (In der Regel sind diese Probleme weniger als eine Stunde alt.) Weitere Informationen finden Sie unter [Leistungsüberwachung mit dem Abfragespeicher](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Kennenlernen der [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte
 - [Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank](sql-database-intelligent-insights-use-diagnostics-log.md)
-- [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)
+- [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql)
 - Informationen zum [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)

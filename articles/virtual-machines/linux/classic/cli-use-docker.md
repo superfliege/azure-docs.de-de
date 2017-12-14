@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/29/2016
 ms.author: rasquill
-ms.openlocfilehash: a542332c921862241f1f000e6a8f0a0ae0e8a934
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b276911ecbbf161cb6068c1af7a035850035b98d
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="using-the-docker-vm-extension-from-the-azure-command-line-interface-azure-cli"></a>Verwenden der Docker-VM-Erweiterung aus der Azure-Befehlszeilenschnittstelle (Azure-CLI)
 > [!IMPORTANT] 
@@ -45,7 +45,7 @@ Informationen zum Installieren und Konfigurieren der Azure-CLI finden Sie unter 
 > 
 
 ### <a name="connect-the-azure-cli-to-to-your-azure-account"></a>Verknüpfen der Azure-CLI mit Ihrem Azure-Konto
-Bevor Sie die Azure-CLI nutzen können, müssen Sie Ihre Azure-Anmeldeinformationen mit der Azure-CLI auf Ihrer Plattform verknüpfen. Der Abschnitt [Verbinden mit Ihrem Azure-Abonnement](../../../xplat-cli-connect.md) erläutert, wie die Datei **.publishsettings** heruntergeladen und importiert wird oder wie Ihre Azure-CLI mit einer Organisations-ID verknüpft wird.
+Bevor Sie die Azure-CLI nutzen können, müssen Sie Ihre Azure-Anmeldeinformationen mit der Azure-CLI auf Ihrer Plattform verknüpfen. Der Abschnitt [Verbinden mit Ihrem Azure-Abonnement](/cli/azure/authenticate-azure-cli) erläutert, wie die Datei **.publishsettings** heruntergeladen und importiert wird oder wie Ihre Azure-CLI mit einer Organisations-ID verknüpft wird.
 
 > [!NOTE]
 > Beide Methoden der Authentifizierung verhalten sich unterschiedlich. Lesen Sie daher unbedingt das genannte Dokument, um die Unterschiede zu verstehen.

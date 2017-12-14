@@ -4,7 +4,7 @@ description: "Enthält eine Schritt-für-Schritt-Anleitung zur Vorgehensweise, m
 services: active-directory-b2c
 documentationcenter: dev-center-name
 author: parakhj
-manager: krassk
+manager: mtillman
 ms.service: active-directory-b2c
 ms.devlang: na
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: parja
-ms.openlocfilehash: 35fab74abf2c2ba27a8bf99eb93eb53f39b26227
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: d6b25d6b9a0d5b3bcf613046a82a9c6c99475d6c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure AD B2C-Mandanten
 
@@ -76,7 +76,7 @@ Diese Ressource ermöglicht Folgendes:
 
 - Navigieren zum Abonnement, um die Abrechnungsinformationen zu überprüfen
 - Navigieren zu Ihrem Azure AD B2C-Mandanten
-- Übermitteln einer Supportanfrage
+- Senden Sie eine Supportanfrage.
 - Verschieben Ihrer Azure AD B2C-Mandantenressource in ein anderes Azure-Abonnement oder in eine andere Ressourcengruppe
 
 ![Einstellungen für die B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/b2cresourcesettings.png)

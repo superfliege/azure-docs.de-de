@@ -4,7 +4,7 @@ description: "Bietet eine Übersicht über Windows Hello for Business und weiter
 services: active-directory
 documentationcenter: 
 author: femila
-manager: femila
+manager: mtillman
 editor: 
 tags: azure-classic-portal
 ms.assetid: f907bb90-8776-46ca-9e12-279949af66ff
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: markvi
-ms.openlocfilehash: 62adf8a9fd4400a056e2c0f59c79431acbad5865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22534cc5f7f2de235bc1f1212c63ea227083c5a4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="authenticating-identities-without-passwords-through-windows-hello-for-business"></a>Authentifizieren von Identitäten ohne Kennwörter über Windows Hello for Business
 Die aktuellen Methoden der Authentifizierung mit Kennwörtern allein sind nicht ausreichend, um Benutzer zu schützen. Benutzer verwenden gleiche Kennwörter wiederholt und vergessen sie. Kennwörter können missbraucht werden, sind anfällig für Phishing, für Sicherheitslücken und sie sind leicht zu erraten. Sie sind außerdem schwer zu merken und anfällig für Angriffe wie "[Pass-the-Hash](https://technet.microsoft.com/dn785092.aspx)".
@@ -27,7 +27,7 @@ Die aktuellen Methoden der Authentifizierung mit Kennwörtern allein sind nicht 
 ## <a name="about-windows-hello-for-business"></a>Informationen zu Windows Hello for Business
 Windows Hello for Business ist ein Authentifizierungsansatz für Unternehmen und Endkunden, der auf privaten/öffentlichen Schlüsseln oder Zertifikaten basiert und weit über den Gebrauch von Kennwörtern hinausgeht. Bei dieser Form der Authentifizierung werden Schlüsselpaar-Anmeldeinformationen verwendet, die Kennwörter ersetzen können und Verstößen, Diebstahl und Phishing gegenüber resistent sind.
 
- Mit Windows Hello for Business können Benutzer sich bei einem Microsoft-Konto, einem Windows Server Active Directory-Konto, einem Microsoft Azure Active Directory-Konto (Azure AD) oder einem Nicht-Microsoft-Dienst authentifizieren, der die FIDO-Authentifizierung (Fast IDentity Online) unterstützt. Nach einer anfänglichen Überprüfung in zwei Schritten während der Windows Hello for Business-Registrierung wird Windows Hello for Business auf dem Gerät des Benutzers eingerichtet, und der Benutzer legt eine Geste fest, entweder Windows Hello oder eine PIN. Der Benutzer gibt die Geste zum Überprüfen der Identität an. Windows verwendet dann Windows Hello for Business zum Authentifizieren des Benutzers und hilft ihm dabei, auf geschützte Ressourcen und Dienste zuzugreifen.
+ Mit Windows Hello for Business können Benutzer sich bei einem Microsoft-Konto, einem Windows Server Active Directory-Konto, einem Microsoft Azure Active Directory-Konto (Azure AD) oder einem Nicht-Microsoft-Dienst authentifizieren, der die FIDO-Authentifizierung (Fast IDentity Online) unterstützt. Nach einer anfänglichen zweistufigen Überprüfung während der Windows Hello for Business-Registrierung wird Windows Hello for Business auf dem Gerät des Benutzers eingerichtet, und der Benutzer legt eine Geste fest, entweder Windows Hello oder eine PIN. Der Benutzer gibt die Geste zum Überprüfen der Identität an. Windows verwendet dann Windows Hello for Business zum Authentifizieren des Benutzers und hilft ihm dabei, auf geschützte Ressourcen und Dienste zuzugreifen.
 
 Der private Schlüssel wird ausschließlich über eine „Benutzergeste“ verfügbar gemacht, z. B. eine PIN, Biometrik oder ein Remotegerät wie eine Smartcard, die der Benutzer zum Anmelden am Gerät verwendet. Diese Informationen werden mit einem Zertifikat oder einem asymmetrischen Schlüsselpaar verknüpft. Der private Schlüssel ist für die Hardware bestätigt, falls das Gerät über einen TPM-Chip (Trusted Platform Module) verfügt. Der private Schlüssel bleibt immer im Gerät.
 

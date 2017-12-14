@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 358986f58c431aebfe7b41daa8c40ba641dc408a
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: e147ca57658c232580fd9867790e55c3454e7e05
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Verwenden des Intelligent Insights-Diagnoseprotokolls für die Leistung von Azure SQL-Datenbank
 
@@ -47,7 +47,7 @@ Nachdem ein Leistungsproblem erkannt wurde und solange es vorliegt, wird das Pro
 
 Neben der „Issue ID“ (Problem-ID) meldet das Diagnoseprotokoll den Zeitstempel des Starts (intervalStartTime_t) und Endes (intervalEndTime_t) des jeweiligen Ereignisses, das in Zusammenhang mit einem im Diagnoseprotokoll gemeldeten Problem steht.
 
-Die Eigenschaft „elastischer Pool“ (elasticPoolName_s) gibt an, zu welchem elastischen Pool die problematische Datenbank gehört. Wenn die Datenbank nicht zu einem elastischen Pool gehört, hat diese Eigenschaft keinen Wert. Die Datenbank, in der ein Problem erkannt wurde, wird in der Eigenschaft „Datenbankname“ (databaseName_s) angegeben.
+Die Eigenschaft „Pool für elastische Datenbanken“ (elasticPoolName_s) gibt an, zu welchem Pool für elastische Datenbanken die problematische Datenbank gehört. Wenn die Datenbank nicht zu einem Pool für elastische Datenbanken gehört, hat diese Eigenschaft keinen Wert. Die Datenbank, in der ein Problem erkannt wurde, wird in der Eigenschaft „Datenbankname“ (databaseName_s) angegeben.
 
 ```json
 "intervalStartTime_t": "2017-9-25 11:00", // start of the issue reported time stamp
@@ -92,7 +92,7 @@ Je nach erkanntem Leistungsproblem unterscheiden sich die in der Diagnoseprotoko
 | Neue Abfrage | <li>Abfragehash der neuen Abfragen</li> |
 | Ungewöhnliche Statistik bei Wartezeiten | <li>Ungewöhnliche Wartetypen</li><li>Abfragehashes</li><li>Abfragewartezeiten</li> |
 | TempDB-Konflikt | <li>Abfragehashes von Abfragen, die einen Konflikt verursachen</li><li>Anteil der Abfrage an der gesamten Wartezeit aufgrund des Seitenlatchkonflikts in der Datenbank [%]</li> |
-| Mangel an DTUs im Pool für elastische Datenbanken | <li>Elastischer Pool</li><li>Datenbank mit dem höchsten DTU-Verbrauch</li><li>Prozentsatz der vom größten Consumer genutzten Pool-DTUs</li> |
+| Mangel an DTUs im Pool für elastische Datenbanken | <li>Pool für elastische Datenbanken</li><li>Datenbank mit dem höchsten DTU-Verbrauch</li><li>Prozentsatz der vom größten Consumer genutzten Pool-DTUs</li> |
 | Planregression | <li>Abfragehashes</li><li>IDs von guten Plänen</li><li>IDs von schlechten Plänen</li> |
 | Änderung eines Werts der datenbankweit gültigen Konfiguration | <li>Die datenbankweit gültige Konfiguration ändert sich im Vergleich mit den Standardwerten</li> |
 | Langsamer Client | <li>Abfragehashes</li><li>Wartezeiten</li> |
@@ -139,13 +139,13 @@ Der letzte Teil des Intelligent Insights-Leistungsprotokolls bezieht sich auf di
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Sie können das Intelligent Insights-Leistungsprotokoll mit [Azure Log Analytics]( https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen verwenden.
+Sie können das Intelligent Insights-Leistungsprotokoll mit [Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) oder eine Drittanbieterlösung für benutzerdefinierte DevOps-Warnungs- und Berichterstellungsfunktionen verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über die [Intelligent Insights](sql-database-intelligent-insights.md)-Konzepte.
 - Erfahren Sie mehr über das [Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights](sql-database-intelligent-insights-troubleshoot-performance.md).
-- Erfahren Sie mehr über das [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql).
-- Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
+- Erfahren Sie mehr über das [Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql).
+- Erfahren Sie mehr über das [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs).
 
 
 

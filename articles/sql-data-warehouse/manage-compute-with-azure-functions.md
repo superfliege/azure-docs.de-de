@@ -15,17 +15,17 @@ ms.workload: data-services
 ms.custom: quickstart
 ms.date: 11/06/2017
 ms.author: elbutter
-ms.openlocfilehash: e2138f26a78338406b466bdd2aa6e756e602726d
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 8947da9d34261be46ad9aea961b6020141484172
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-functions-to-automate-sql-dw-compute-levels"></a>Verwenden von Azure Functions zum Automatisieren von SQL DW-Computeebenen
 
 In diesem Tutorial wird veranschaulicht, wie Sie Azure Functions zum Verwalten der Computeebenen Ihres Azure SQL Data Warehouse verwenden können. Diese Architekturen werden für die Nutzung mit dem SQL Data Warehouse [Optimiert für Elastizität][Performance Tiers] empfohlen.
 
-Zum Nutzen einer Azure-Funktionen-App mit SQL Data Warehouse müssen Sie ein [Dienstprinzipalkonto](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal) mit Zugriff vom Typ „Mitwirkender“ unter demselben Abonnement wie Ihre Data Warehouse-Instanz erstellen. 
+Zum Nutzen einer Azure-Funktionen-App mit SQL Data Warehouse müssen Sie ein [Dienstprinzipalkonto](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) mit Zugriff vom Typ „Mitwirkender“ unter demselben Abonnement wie Ihre Data Warehouse-Instanz erstellen. 
 
 ## <a name="deploy-timer-based-scaler-with-an-azure-resource-manager-template"></a>Bereitstellen einer zeitgeberbasierten Skalierungsfunktion mit einer Azure Resource Manager-Vorlage
 

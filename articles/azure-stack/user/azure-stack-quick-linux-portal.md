@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: f986c060b26489e412f6230665ec76a4730293f1
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Erstellen eines virtuellen Linux-Computers mit dem Azure Stack-Portal
 
@@ -30,7 +30,7 @@ Virtuelle Azure Stack-Computer können über das Azure Stack-Portal erstellt wer
 
 * **Zugriff auf einen SSH-Client**
 
-   Wenn Sie das Azure Stack Development Kit (ASDK) verwenden, haben Sie vielleicht keinen Zugriff auf einen SSH-Client in Ihrer Umgebung. Wenn dies der Fall ist, können Sie zwischen mehreren Paketen wählen, die einen SSH-Client enthalten. Beispielsweise können Sie PuTTY installieren, das einen SSH-Client- und SSH-Schlüsselgenerator („puttygen.exe“) enthält. Weitere Informationen zu möglichen Optionen finden Sie im folgenden verwandten Azure-Artikel: [Gewusst wie: Verwenden von SSH-Schlüsseln mit Windows in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
+   Wenn Sie das Azure Stack Development Kit (ASDK) verwenden, haben Sie vielleicht keinen Zugriff auf einen SSH-Client in Ihrer Umgebung. Wenn dies der Fall ist, können Sie zwischen mehreren Paketen wählen, die einen SSH-Client enthalten. Beispielsweise können Sie PuTTY installieren, das einen SSH-Client- und SSH-Schlüsselgenerator („puttygen.exe“) enthält. Weitere Informationen zu möglichen Optionen finden Sie im folgenden verwandten Azure-Artikel: [Gewusst wie: Verwenden von SSH-Schlüsseln mit Windows in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
    Dieser Schnellstart verwendet PuTTY, um die SSH-Schlüssel zu generieren und eine Verbindung mit dem virtuellen Linux-Computer herzustellen. Zum Herunterladen und Installieren von PuTTY wechseln Sie zu [http://www.putty.org/](http://www.putty.org).
 

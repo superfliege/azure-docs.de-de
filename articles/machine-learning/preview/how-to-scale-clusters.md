@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 44aa167375355433851453010cebe5b49ef56ebd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d709936bfba5c89091d7f26449d165bddb930de
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Skalieren des Clusters zum Verwalten des Durchsatzes von Webdiensten
 
@@ -55,7 +55,7 @@ Mit dem folgenden Befehl können Sie die Anzahl der Agentknoten im Cluster festl
 az acs scale -g <resource group> -n <cluster name> --new-agent-count <new scale>
 ```
 
-Dies nimmt einige Minuten in Anspruch. Weitere Informationen zum Skalieren der Anzahl der Knoten im Cluster finden Sie unter: [Skalieren von Agentknoten in einem Container Service-Cluster](https://docs.microsoft.com/en-us/azure/container-service/container-service-scale).
+Dies nimmt einige Minuten in Anspruch. Weitere Informationen zum Skalieren der Anzahl der Knoten im Cluster finden Sie unter: [Skalieren von Agentknoten in einem Container Service-Cluster](https://docs.microsoft.com/azure/container-service/container-service-scale).
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>Skalieren der Anzahl von Kubernetes-Pod-Replikaten in einem Cluster
  
@@ -86,10 +86,10 @@ Wenn Sie beispielsweise für die Einstellung `autoscale-min-replicas` fünf fest
 | Parametername | Typ | Beschreibung |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | Boolescher Wert | Gibt an, ob das automatische Skalieren aktiviert ist. Standardwert: TRUE |
-| `autoscale-min-replicas` | integer | Gibt die Mindestanzahl von Pods an. Muss 0 sein oder höher liegen. Standardwert: 1 |
-| `autoscale-max-replicas` | integer | Gibt die Höchstanzahl von Pods an. Muss 1 oder größer sein. Wenn die Anzahl von autoscale-max-replicas kleiner ist als die Anzahl von autoscale-min-replicas, werden die autoscale-max-replicas ignoriert. Standard: 10 |
-| `autoscale-refresh-period-seconds` | integer | Gibt die Dauer in Sekunden an, bis sich das automatische Skalieren aktualisiert. Standardwert: 1 |
-| `autoscale-target-utilization` | integer | Gibt die Zielauslastung des automatischen Skalierens in Prozent an (Wert zwischen 1 und 100). Standardwert: 70 |
+| `autoscale-min-replicas` | Ganze Zahl | Gibt die Mindestanzahl von Pods an. Muss 0 sein oder höher liegen. Standardwert: 1 |
+| `autoscale-max-replicas` | Ganze Zahl | Gibt die Höchstanzahl von Pods an. Muss 1 oder größer sein. Wenn die Anzahl von autoscale-max-replicas kleiner ist als die Anzahl von autoscale-min-replicas, werden die autoscale-max-replicas ignoriert. Standard: 10 |
+| `autoscale-refresh-period-seconds` | Ganze Zahl | Gibt die Dauer in Sekunden an, bis sich das automatische Skalieren aktualisiert. Standardwert: 1 |
+| `autoscale-target-utilization` | Ganze Zahl | Gibt die Zielauslastung des automatischen Skalierens in Prozent an (Wert zwischen 1 und 100). Standardwert: 70 |
 
 Mithilfe des automatischen Skalierens können die folgenden beiden Bedingungen gewährleistet werden:
 

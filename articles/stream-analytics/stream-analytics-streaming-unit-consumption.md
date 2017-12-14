@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e1fb9ee3147f94b173b0fd324943b8801b984d2b
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -27,7 +27,7 @@ Azure Stream Analytics aggregiert die Leistungsgewichtung für die Ausführung e
 
 Um eine Streamingverarbeitung mit geringer Latenz zu erreichen, führen Azure Stream Analytics-Aufträge (ASA) die gesamte Verarbeitung im Arbeitsspeicher durch. Wenn nicht genügend Arbeitsspeicher vorhanden ist, tritt beim Streamingauftrag ein Fehler auf. Daher ist es bei einem Produktionsauftrag wichtig, die Ressourcennutzung eines Streamingauftrags zu überwachen und sicherzustellen, dass genügend Ressourcen zugewiesen werden, damit die Aufträge rund um die Uhr ausgeführt werden.
 
-Die Metrik ist eine Prozentzahl zwischen 0 % und 100 %. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik „Speichereinheitnutzung in %“ in der Regel zwischen 10 % und 20 %. Die Metrik sollte im Idealfall bei unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können.  Sie können eine Warnung für die Metrik festlegen. (Weitere Informationen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/insights-alerts-portal).)
+Die Metrik ist eine Prozentzahl zwischen 0 % und 100 %. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik „Speichereinheitnutzung in %“ in der Regel zwischen 10 % und 20 %. Die Metrik sollte im Idealfall bei unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können.  Sie können eine Warnung für die Metrik festlegen. (Weitere Informationen finden Sie unter [Erstellen von Metrikwarnungen in Azure Monitor für Azure-Dienste – Azure-Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-alerts-portal).)
 
 
 
@@ -82,7 +82,7 @@ Um Probleme zu beheben, die durch eine hohe Kardinalität in der vorherigen Abfr
 
 Nach dem Partitionieren der Abfrage wird sie auf mehrere Knoten verteilt. Infolgedessen verringert sich die Anzahl eingehender clusterid-Ereignisse auf den einzelnen Knoten, wodurch wiederum die Kardinalität des GROUP BY-Operators reduziert wird. 
 
-Event Hub-Partitionen sollten durch den Gruppierungsschlüssel partitioniert werden, um die Notwendigkeit eines Reduzierungsschritts zu vermeiden. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-overview). 
+Event Hub-Partitionen sollten durch den Gruppierungsschlüssel partitioniert werden, um die Notwendigkeit eines Reduzierungsschritts zu vermeiden. Weitere Informationen finden Sie [hier](https://docs.microsoft.com/azure/event-hubs/event-hubs-overview). 
 #### <a name="temporal-join"></a>Temporale Verknüpfung
 Die Zustandsgröße einer temporalen Verknüpfung verhält sich proportional zur Anzahl der Ereignisse im zeitlichen Spielraum der Verknüpfung, die die Ereigniseingangsrate multipliziert mit der Größe des Spielraums darstellt. 
 

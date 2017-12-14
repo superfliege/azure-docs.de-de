@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 9f201454d58dbc646923d0155ff41761d593ab7e
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 2e377ef96f6c2b5866ad258a88d6403fd0bb1e41
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank 
 Azure SQL-Datenbank kann Metrik- und Diagnoseprotokolle ausgeben, um die Überwachung zu erleichtern. Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
@@ -266,7 +266,7 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 |**Ressource**|**Metriken**|
 |---|---|
 |Datenbank|DTU-Prozentsatz, DTU-Verwendung, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, XTP-Speicher in Prozent und Deadlocks |
-|Elastischer Pool|eDTU-Prozentsatz, eDTU-Verwendung, eDTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, Speicherbegrenzung, XTP-Speicher in Prozent |
+|Pool für elastische Datenbanken|eDTU-Prozentsatz, eDTU-Verwendung, eDTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, Speicherbegrenzung, XTP-Speicher in Prozent |
 |||
 
 ### <a name="query-store-runtime-statistics"></a>Laufzeitstatistiken für den Abfragespeicher
@@ -285,7 +285,7 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
 |LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
 |query_hash_s|Der Abfragehash.|
@@ -318,7 +318,7 @@ Weitere Informationen zum [Herunterladen von Metrik- und Diagnoseprotokollen aus
 |query_id_d|Die ID der Abfrage im Abfragespeicher.|
 |plan_id_d|Die ID des Plans im Abfragespeicher.|
 
-Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
+Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-runtime-stats-transact-sql).
 
 ### <a name="query-store-wait-statistics"></a>Wartestatistiken des Abfragespeichers
 
@@ -336,7 +336,7 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
 |LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
 |wait_category_s|Kategorie des Wartevorgangs|
@@ -356,7 +356,7 @@ Weitere Informationen zu [Laufzeitstatistikdaten des Abfragespeichers](https://d
 |query_id_d|Die ID der Abfrage im Abfragespeicher.|
 |plan_id_d|Die ID des Plans im Abfragespeicher.|
 
-Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
+Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql).
 
 ### <a name="errors-dataset"></a>Fehlerdataset
 
@@ -374,7 +374,7 @@ Weitere Informationen zu [Wartestatistikdaten des Abfragespeichers](https://docs
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
 |LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
 |Nachricht|Die Fehlermeldung im Nur-Text-Format.|
@@ -403,7 +403,7 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
 |LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
 |wait_type_s|Der Name des Wartetyps.|
@@ -414,7 +414,7 @@ Weitere Informationen zu [SQL Server-Fehlermeldungen](https://msdn.microsoft.com
 |delta_wait_time_ms_d|Die Gesamtwartezeit im Zeitraum.|
 |delta_waiting_tasks_count_d|Die Anzahl der wartenden Aufgaben.|
 
-Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
+Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql).
 
 ### <a name="time-outs-dataset"></a>Dataset zu Timeouts
 
@@ -432,7 +432,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
 |LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
 |error_state_d|Der Fehlerstatuscode.|
@@ -455,7 +455,7 @@ Weitere Informationen zu [Datenbankwartestatistiken](https://docs.microsoft.com/
 |SubscriptionId|Die Abonnement-GUID, zu der die Datenbank gehört.|
 |ResourceGroup|Der Name der Ressourcengruppe, zu der die Datenbank gehört.|
 |LogicalServerName_s|Der Name des Servers, zu dem die Datenbank gehört.|
-|ElasticPoolName_s|Der Name des elastischen Pools, zu dem die Datenbank gehört (falls vorhanden).|
+|ElasticPoolName_s|Der Name des Pools für elastische Datenbanken, zu dem die Datenbank gehört (falls vorhanden).|
 |DatabaseName_s|Der Name der Datenbank.|
 |ResourceId|Der Ressourcen-URI.|
 |lock_mode_s|Der Von der Abfrage verwendeter Sperrmodus.|

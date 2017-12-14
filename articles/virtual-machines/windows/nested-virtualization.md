@@ -11,11 +11,11 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: c2f511cd024accc099423f2ed5bbb15d2dd23414
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8372817b00d8a5f9e4203b072dbc143185639120
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Aktivieren der geschachtelten Virtualisierung auf einer Azure-VM
 
@@ -31,7 +31,7 @@ Informationen zur regionalen Verfügbarkeit von VMs der Serien Dv3 oder Ev3 find
 
 >[!NOTE]
 >
->Detaillierte Informationen zum Erstellen einer neuen VM finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/tutorial-manage-vm).
+>Detaillierte Informationen zum Erstellen einer neuen VM finden Sie unter [Erstellen und Verwalten von virtuellen Windows-Computern mit dem Azure PowerShell-Modul](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm).
     
 ## <a name="connect-to-your-azure-vm"></a>Herstellen einer Verbindung mit der Azure-VM
 

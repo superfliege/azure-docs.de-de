@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: cynthn
-ms.openlocfilehash: 74765877e7836d6878284b350a25d8355dc83d7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cad36fdaf0e7b151809cf07ede10abd1abec99d0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-reset-a-linux-vm-password-or-ssh-key-fix-the-ssh-configuration-and-check-disk-consistency-using-the-vmaccess-extension"></a>Zurücksetzen eines Kennworts oder eines SSH-Schlüssels für einen virtuellen Linux-Computer, Beheben von SSH-Konfigurationsproblemen und Überprüfen der Datenträgerkonsistenz mithilfe der VMAccess-Erweiterung
 Wenn Sie aufgrund eines vergessenen Kennworts, eines falschen SSH-Schlüssels (Secure Shell) oder eines Problems bei der SSH-Konfiguration keine Verbindung mit einem virtuellen Linux-Computer herstellen können, haben Sie die Möglichkeit, das Kennwort oder den SSH-Schlüssel zurückzusetzen, SSH-Konfigurationsprobleme zu beheben und die Datenträgerkonsistenz zu überprüfen. Verwenden Sie dazu die VMAccessForLinux-Erweiterung mit der Azure-Befehlszeilenschnittstelle. 
@@ -44,7 +44,7 @@ Mit der Azure-CLI können Sie die folgenden Aufgaben ausführen:
 ## <a name="prerequisites"></a>Voraussetzungen
 Sie müssen die folgenden Schritte ausführen:
 
-* Außerdem müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../../../cli-install-nodejs.md) und für die Verwendung der mit Ihrem Konto verknüpften Azure-Ressourcen eine [Verbindung mit Ihrem Abonnement herstellen](../../../xplat-cli-connect.md).
+* Außerdem müssen Sie die [Azure-Befehlszeilenschnittstelle installieren](../../../cli-install-nodejs.md) und für die Verwendung der mit Ihrem Konto verknüpften Azure-Ressourcen eine [Verbindung mit Ihrem Abonnement herstellen](/cli/azure/authenticate-azure-cli).
 * Legen Sie den richtigen Modus für das klassische Bereitstellungsmodell fest, indem Sie an der Eingabeaufforderung Folgendes eingeben:
     ``` 
         azure config mode asm

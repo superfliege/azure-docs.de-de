@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.openlocfilehash: df4d85d0556a62311c112f24431b54d042333c7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f1b9c1ec2af8240ff71f6907516d8894c36ac9c3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="find-an-azure-subscription-or-management-group"></a>Suchen nach einem Azure-Abonnement oder einer Verwaltungsgruppe
 
-Wenn Sie ein Abonnement oder eine Verwaltungsgruppe nicht in Azure finden, suchen Sie möglicherweise im falschen Verzeichnis. Diese Situation kann auftreten, wenn Ihr Konto in mehreren Azure Active Directorys vorhanden ist. Jedes [Active Directory ist unabhängig](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-licensing-directory-independence), und Zugriffsberechtigungen werden nicht Verzeichnisse übergreifend vererbt.      
+Wenn Sie ein Abonnement oder eine Verwaltungsgruppe nicht in Azure finden, suchen Sie möglicherweise im falschen Verzeichnis. Diese Situation kann auftreten, wenn Ihr Konto in mehreren Azure Active Directorys vorhanden ist. Jedes [Active Directory ist unabhängig](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-directory-independence), und Zugriffsberechtigungen werden nicht Verzeichnisse übergreifend vererbt.      
 
 ![Menü „Verzeichnis wechseln“](media/billing-enterprise-mgmt-groups/mgempty.png)
 
@@ -41,7 +41,7 @@ Wenn Sie beim Versuch, auf ein Abonnement oder eine Verwaltungsgruppe zuzugreife
 ![Asset nicht gefunden](media/billing-enterprise-mgmt-groups/asset-not-found.png)
 
 Wenden Sie sich an den Administrator des Abonnements oder der Verwaltungsgruppe, um Zugriff zu erhalten.  
-* Nutzen Sie für Abonnements das Dokument [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) als Referenz, um zu ermitteln, welche Rolle erforderlich ist.
+* Nutzen Sie für Abonnements das Dokument [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure) als Referenz, um zu ermitteln, welche Rolle erforderlich ist.
 * Für Verwaltungsgruppen ist RBAC-Zugriff noch nicht verfügbar, wird jedoch bald verfügbar sein. Bitten Sie Ihren Enterprise Portal-Administrator, Ihnen den Zugriff zuzuweisen.   
 
 ## <a name="improve-your-experience-with-management-groups-and-subscriptions-in-the-same-directory"></a>Verbessern Ihrer Erfahrung mit Verwaltungsgruppen und Abonnements im gleichen Verzeichnis 

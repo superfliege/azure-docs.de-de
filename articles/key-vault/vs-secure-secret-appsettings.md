@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cawa
-ms.openlocfilehash: 3284f9f9c3cef27cba599238f06b0dcf0f35de78
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 612b8d2c36e9b46e99452e78d1b30fda03474151
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="securely-save-secret-application-settings-for-a-web-application"></a>Sicheres Speichern von Geheimnis-Anwendungseinstellungen für eine Webanwendung
 
@@ -32,7 +32,7 @@ Um zu gewährleisten, dass der Entwicklungsprozess sicher ist, werden Tool- und 
 ## <a name="aspnet-and-net-core-applications"></a>ASP.NET- und .NET Core-Anwendungen
 
 ### <a name="save-secret-settings-in-user-secret-store-that-is-outside-of-source-control-folder"></a>Speichern Sie Geheimniseinstellungen im User Secret-Speicher, der sich außerhalb des Ordners für die Quellcodeverwaltung befindet.
-Wenn Sie schnell einen Prototyp erstellen oder keinen Internetzugriff haben, verschieben Sie zunächst Ihre Geheimniseinstellungen aus dem Ordner für die Quellcodeverwaltung in den User Secret-Speicher. Der User Secret-Speicher ist eine Datei, die unter dem Benutzerprofilordner gespeichert wird, sodass Geheimnisse nicht in die Quellcodeverwaltung eingecheckt werden. Im folgenden Diagramm ist dargestellt, wie [User Secret](https://docs.microsoft.com/en-us/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) funktioniert.
+Wenn Sie schnell einen Prototyp erstellen oder keinen Internetzugriff haben, verschieben Sie zunächst Ihre Geheimniseinstellungen aus dem Ordner für die Quellcodeverwaltung in den User Secret-Speicher. Der User Secret-Speicher ist eine Datei, die unter dem Benutzerprofilordner gespeichert wird, sodass Geheimnisse nicht in die Quellcodeverwaltung eingecheckt werden. Im folgenden Diagramm ist dargestellt, wie [User Secret](https://docs.microsoft.com/aspnet/core/security/app-secrets?tabs=visual-studio#SecretManager) funktioniert.
 
 ![User Secret bewahrt Geheimniseinstellungen außerhalb der Quellcodeverwaltung auf](./media/vs-secure-secret-appsettings/aspnetcore-usersecret.PNG)
 
@@ -45,7 +45,7 @@ Wenn Sie ein Teamprojekt entwickeln und Quellcode in sicherer Weise teilen müss
 
     ![Azure Key Vault erstellen](./media/vs-secure-secret-appsettings/create-keyvault.PNG)
 
-2. Erteilen Sie sich und Ihren Teammitgliedern Zugriff auf den Key Vault. Bei einem großen Team können Sie eine [Azure Active Directory-Gruppe](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-groups-create-azure-portal) erstellen und dem Key Vault den Zugriff auf diese Sicherheitsgruppe hinzufügen. Markieren Sie in der Dropdownliste *Berechtigungen für Geheimnis* die Optionen *Abrufen* und *Auflisten* unter *Verwaltungsvorgänge für Geheimnisse*.
+2. Erteilen Sie sich und Ihren Teammitgliedern Zugriff auf den Key Vault. Bei einem großen Team können Sie eine [Azure Active Directory-Gruppe](https://docs.microsoft.com/azure/active-directory/active-directory-groups-create-azure-portal) erstellen und dem Key Vault den Zugriff auf diese Sicherheitsgruppe hinzufügen. Markieren Sie in der Dropdownliste *Berechtigungen für Geheimnis* die Optionen *Abrufen* und *Auflisten* unter *Verwaltungsvorgänge für Geheimnisse*.
 
     ![Hinzufügen der Key Vault-Zugriffsrichtlinie](./media/vs-secure-secret-appsettings/add-keyvault-access-policy.png)
 

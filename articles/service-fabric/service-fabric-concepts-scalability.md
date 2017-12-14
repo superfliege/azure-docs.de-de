@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 680b996e370f66a5e22644ae1d1bf41d314bb4de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6dc89bda31af35e4c7eb0f2255db301b39ac05eb
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="scaling-in-service-fabric"></a>Skalierung in Service Fabric
 Azure Service Fabric erleichtert das Erstellen skalierbarer Anwendungen durch Verwalten der Dienste, Partitionen und Replikate auf den Knoten eines Clusters. Das Ausführen vieler Workloads auf derselben Hardware ermöglicht eine maximale Ressourcennutzung, bietet jedoch auch Flexibilität bei der Auswahl der Skalierung für die Workloads. 
@@ -69,7 +69,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 ## <a name="scaling-by-creating-or-removing-new-named-services"></a>Skalieren durch das Erstellen oder Entfernen von neuen benannten Diensten
 Eine benannte Dienstinstanz ist eine bestimmte Instanz eines Diensttyps (siehe [Lebenszyklus der Service Fabric-Anwendung](service-fabric-application-lifecycle.md)) in einer benannten Anwendungsinstanz im Cluster. 
 
-Je nach der sich ändernden Auslastung von Diensten können neue benannte Dienstinstanzen erstellt (oder entfernt) werden. Dies ermöglicht das Verteilen von Anforderungen über weitere Dienstinstanzen, wodurch normalerweise die Auslastung vorhandener Dienste verringert werden kann. Beim Erstellen von Diensten platziert der Clusterressourcen-Manager von Service Fabric die Dienste im Cluster verteilt. Die genauen Entscheidungen unterliegen den [Metriken](service-fabric-cluster-resource-manager-metrics.md) im Cluster und weiteren Platzierungsregeln. Dienste können auf verschiedene Weise erstellt werden. Am häufigsten werden sie jedoch durch administrative Aktionen wie den Aufruf von [`New-ServiceFabricService`](https://docs.microsoft.com/en-us/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) oder durch Code, in dem [`CreateServiceAsync`](https://docs.microsoft.com/en-us/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) aufgerufen wird, erstellt. `CreateServiceAsync` kann auch aus anderen im Cluster ausgeführten Diensten aufgerufen werden.
+Je nach der sich ändernden Auslastung von Diensten können neue benannte Dienstinstanzen erstellt (oder entfernt) werden. Dies ermöglicht das Verteilen von Anforderungen über weitere Dienstinstanzen, wodurch normalerweise die Auslastung vorhandener Dienste verringert werden kann. Beim Erstellen von Diensten platziert der Clusterressourcen-Manager von Service Fabric die Dienste im Cluster verteilt. Die genauen Entscheidungen unterliegen den [Metriken](service-fabric-cluster-resource-manager-metrics.md) im Cluster und weiteren Platzierungsregeln. Dienste können auf verschiedene Weise erstellt werden. Am häufigsten werden sie jedoch durch administrative Aktionen wie den Aufruf von [`New-ServiceFabricService`](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps) oder durch Code, in dem [`CreateServiceAsync`](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync?view=azure-dotnet) aufgerufen wird, erstellt. `CreateServiceAsync` kann auch aus anderen im Cluster ausgeführten Diensten aufgerufen werden.
 
 Das dynamische Erstellen von Diensten kann in Szenarien jeder Art verwendet werden und ist ein allgemeines Muster. Betrachten Sie beispielsweise einen zustandsbehafteten Dienst, der einen bestimmten Workflow darstellt. In diesem Dienst treffen Aufrufe ein, die auszuführende Aufgaben darstellen, und der Dienst führt die Schritte für diesen Workflow aus und zeichnet den Fortschritt auf. 
 

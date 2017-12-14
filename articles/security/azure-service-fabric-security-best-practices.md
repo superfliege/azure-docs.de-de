@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: tomsh
-ms.openlocfilehash: 682ad79cc5fe4f08051477b7b90ae80981e5d595
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a8b76e2895edcdbbddafbee7116e163d1789c06d
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -64,7 +64,7 @@ Ihre Cluster müssen geschützt werden, um zu verhindern, dass nicht autorisiert
 Es gibt drei [Szenarien](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) für das Implementieren von Clustersicherheit mithilfe verschiedener Technologien:
 
 -   Knoten-zu-Knoten-Sicherheit: Mit diesem Szenario wird die Kommunikation zwischen den VMs und den Computern im Cluster geschützt. So wird sichergestellt, dass nur Computer, die zum Beitreten zum Cluster berechtigt sind, Anwendungen und Dienste im Cluster hosten können.
-In diesem Szenario können in Azure ausgeführte Cluster oder eigenständige unter Windows ausgeführte Cluster für Windows Server-Computer entweder die [Zertifikatsicherheit](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security) oder die [Windows-Sicherheit](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-windows-cluster-windows-security) verwenden.
+In diesem Szenario können in Azure ausgeführte Cluster oder eigenständige unter Windows ausgeführte Cluster für Windows Server-Computer entweder die [Zertifikatsicherheit](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security) oder die [Windows-Sicherheit](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-windows-security) verwenden.
 -   Client-zu-Knoten-Sicherheit: Mit diesem Szenario wird die Kommunikation zwischen einem Service Fabric-Client und den einzelnen Knoten im Cluster geschützt.
 -   Rollenbasierte Zugriffssteuerung (RBAC): In diesem Szenario werden separate Identitäten (Zertifikate, Azure AD usw.) für alle Administrator- und Clientrollen verwendet, die auf den Cluster zugreifen. Sie geben die Rollenidentitäten bei der Erstellung des Clusters an.
 
@@ -125,7 +125,7 @@ Jeder Akteur wird als Instanz eines Akteurtyps definiert (genau wie ein .NET-Obj
 Replicator-Konfigurationen konfigurieren den Replicator, der dafür verantwortlich ist, den Status des Actor-Status-Anbieters hochverfügbar zu machen.
 
 ## <a name="configure-ssl-for-azure-service-fabric"></a>Konfigurieren von SSL für Azure Service Fabric
-Der Serverauthentifizierungsprozess [authentifiziert](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient. Der Verwaltungsclient erkennt damit, dass er mit dem tatsächlichen Cluster kommuniziert. Dieses Zertifikat stellt auch [SSL](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-creation-via-arm) für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
+Der Serverauthentifizierungsprozess [authentifiziert](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient. Der Verwaltungsclient erkennt damit, dass er mit dem tatsächlichen Cluster kommuniziert. Dieses Zertifikat stellt auch [SSL](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm) für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
 Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
 
 Wenn Sie für eine Anwendung SSL konfigurieren möchten, müssen Sie zunächst ein SSL-Zertifikat abrufen, das von einer Zertifizierungsstelle signiert wurde. Die Zertifizierungsstelle ist eine vertrauenswürdige dritte Partei, die Zertifikate für die SSL-Sicherheit ausstellt. Wenn Sie noch kein SSL-Zertifikat haben, müssen Sie eines von einem Unternehmen erwerben, das SSL-Zertifikate verkauft.

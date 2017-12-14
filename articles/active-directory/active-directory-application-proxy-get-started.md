@@ -4,7 +4,7 @@ description: "Erläutert, wie Sie mit dem Azure AD-Anwendungsproxy sicheren Remo
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: femila
+manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 08/04/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 426056d394af0a9ded28202615cb80c7b50e59fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ca7c7919f6cfcece38073520162dc44bbfd748e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-provide-secure-remote-access-to-on-premises-applications"></a>Bereitstellen von sicherem Remotezugriff auf lokale Anwendungen
 
@@ -43,7 +43,7 @@ Azure AD-Anwendungsproxy ist:
    * Sie brauchen Ihre Anwendungen nicht ändern oder aktualisieren, damit Sie mit dem Anwendungsproxy funktionieren. 
    * Ihre Benutzern erhalten einen einheitlichen Authentifizierungsvorgang. Sie können das MyApps-Portal verwenden, um einmaliges Anmelden oder SaaS-Apps in der Cloud sowie Ihre Apps lokal zu erhalten. 
 * **Schützen**
-   * Wenn Sie Ihre Apps mit dem Azure AD-Anwendungsproxy veröffentlichen, können Sie die umfassenden Autorisierungssteuerungen und Sicherheitsanalysen in Azure nutzen. Sie erhalten Sicherheit auf Cloudebene und Azure-Sicherheitsfeatures wie den bedingten Zugriff sowie die Überprüfung in zwei Schritten.
+   * Wenn Sie Ihre Apps mit dem Azure AD-Anwendungsproxy veröffentlichen, können Sie die umfassenden Autorisierungssteuerungen und Sicherheitsanalysen in Azure nutzen. Sie erhalten Sicherheit auf Cloudebene und Azure-Sicherheitsfeatures wie den bedingten Zugriff sowie die zweistufige Überprüfung.
    * Sie müssen keine eingehenden Verbindungen über Ihre Firewall öffnen, um Benutzern Remotezugriff zu gewähren. 
 * **Kosteneffizient**
    * Der Anwendungsproxy funktioniert in der Cloud, und Sie können Zeit und Kosten sparen. Für lokale Lösungen müssen Sie in der Regel DMZs, Edgeserver oder andere komplexe Infrastrukturen einrichten und verwalten.  
@@ -79,7 +79,7 @@ Der Azure AD-Anwendungsproxy ermöglicht einmaliges Anmelden (SSO) für Anwendun
 Weitere Informationen zu Kerberos finden Sie unter [All you want to know about Kerberos Constrained Delegation (KCD)](https://blogs.technet.microsoft.com/applicationproxyblog/2015/09/21/all-you-want-to-know-about-kerberos-constrained-delegation-kcd) (Alles über die eingeschränkte Kerberos-Delegierung, KCD).
 
 ### <a name="managing-apps"></a>Verwalten von Apps
-Sobald Ihre App mit dem Anwendungsproxy veröffentlicht wurde, können Sie sie wie jede andere Unternehmens-App im Azure-Portal verwalten. Sie können Sicherheitsfunktionen von Azure Active Directory wie den bedingten Zugriff und die Überprüfung in zwei Schritten verwenden, Benutzerberechtigungen steuern und das Branding für Ihre App anpassen. 
+Sobald Ihre App mit dem Anwendungsproxy veröffentlicht wurde, können Sie sie wie jede andere Unternehmens-App im Azure-Portal verwalten. Sie können Sicherheitsfunktionen von Azure Active Directory wie den bedingten Zugriff und die zweistufige Überprüfung verwenden, Benutzerberechtigungen steuern und das Branding für Ihre App anpassen. 
 
 ## <a name="get-started"></a>Erste Schritte
 

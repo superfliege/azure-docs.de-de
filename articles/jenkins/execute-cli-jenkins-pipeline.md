@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: b93e787050613b241ea116e7263f63835bd211fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 490112417870fb3bfdb75abdb82f9adfff550f0a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Bereitstellen an Azure App Service mit Jenkins und der Azure CLI
 Für das Bereitstellen einer Java-Web-App in Azure können Sie die Azure CLI in der [Jenkins-Pipeline](https://jenkins.io/doc/book/pipeline/) nutzen. In diesem Tutorial erstellen Sie eine CI/CD-Pipeline auf einer Azure-VM und erfahren, wie Sie:
@@ -56,7 +56,7 @@ sudo apt-get install -y maven
 Eine Azure-Anmeldeinformation ist erforderlich, um die Azure CLI auszuführen.
 
 * Klicken Sie im Jenkins-Dashboard auf **Credentials -> System ->** (Anmeldeinformationen -> System ->). Klicken Sie auf **Global credentials (unrestricted)** (Globale Anmeldeinformationen (uneingeschränkt)).
-* Klicken Sie auf **Add Credentials** (Anmeldeinformationen hinzufügen), um einen [Microsoft Azure-Dienstprinzipal](https://docs.microsoft.com/en-us/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) hinzuzufügen, indem Sie die Abonnement-ID, die Client-ID, den geheimen Clientschlüssel und den OAuth 2.0-Token-Endpunkt hinzufügen. Stellen Sie eine ID zur Verwendung im nächsten Schritt bereit.
+* Klicken Sie auf **Add Credentials** (Anmeldeinformationen hinzufügen), um einen [Microsoft Azure-Dienstprinzipal](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json) hinzuzufügen, indem Sie die Abonnement-ID, die Client-ID, den geheimen Clientschlüssel und den OAuth 2.0-Token-Endpunkt hinzufügen. Stellen Sie eine ID zur Verwendung im nächsten Schritt bereit.
 
 ![Hinzufügen von Anmeldeinformationen](./media/execute-cli-jenkins-pipeline/add-credentials.png)
 

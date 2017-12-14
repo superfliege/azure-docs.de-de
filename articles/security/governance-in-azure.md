@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 03e86448a1b0a13addab789bf2aea62e5d84149b
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 875b78f6af330aea3333b045ee72e9632e9aa8a6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
-# <a name="governance-in-azure"></a>Governance in Azure
+# <a name="governance-in-azure"></a>Governance (Kontrolle) in Azure
 
 Wir wissen, dass Sicherheit in der Cloud an erster Stelle steht und wie wichtig es ist, dass Sie präzise und zeitnahe Informationen zur Azure-Sicherheit finden. Eines der schlagkräftigsten Argumente dafür, Azure für Anwendungen und Dienste zu verwenden, ist die Vielzahl an Sicherheitstools und -funktionen. Diese Tools und Funktionen ermöglichen die Erstellung sicherer Lösungen auf der Grundlage der sicheren Azure-Plattform.
 
@@ -424,7 +424,7 @@ Bei Operations Management Suite (OMS) handelt es sich um eine Sammlung von Verwa
 
 Die Tatsache, dass OMS-Dienste in der Cloud ausgeführt werden, bedeutet nicht, dass sie nicht auch zur effektiven Verwaltung Ihrer lokalen Umgebung genutzt werden können.
 
-Platzieren Sie einfach einen Agent auf einem beliebigen Windows- oder Linux-Computer in Ihrem Rechenzentrum. Dieser sendet dann Daten an Log Analytics, wo sie zusammen mit all den anderen Daten aus cloudbasierten oder lokalen Diensten analysiert werden. Verwenden Sie Azure Backup und Azure Site Recovery, um die Cloud für die Sicherung und hohe Verfügbarkeit lokaler Ressourcen zu nutzen.
+Platzieren Sie einfach einen Agent auf einem beliebigen Windows- oder Linux-Computer in Ihrem Rechenzentrum. Dieser sendet dann Daten an Log Analytics, wo sie zusammen mit all den anderen Daten aus cloudbasierten oder lokalen Diensten analysiert werden. Verwenden Sie Azure Backup und Azure Site Recovery, um die Cloud für die Sicherung und Hochverfügbarkeit lokaler Ressourcen zu nutzen.
 
 Runbooks in der Cloud können üblicherweise nicht auf lokale Ressourcen zugreifen. Sie können jedoch ebenfalls einen Agent auf Computern installieren, um Runbooks in Ihrem Rechenzentrum zu hosten. Geben Sie beim Starten eines Runbooks einfach an, ob es in der Cloud oder für einen lokalen Worker ausgeführt werden soll.
 
@@ -488,6 +488,6 @@ Hier sind die wichtigsten Tools aufgeführt:
 
 - [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices).
 
-- [Beispiele für das Implementieren eines Azure-Unternehmensgerüsts](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-subscription-examples).
+- [Beispiele für das Implementieren eines Azure-Unternehmensgerüsts](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-subscription-examples).
 
 - [Microsoft Azure Government](https://docs.microsoft.com/azure/azure-government/).

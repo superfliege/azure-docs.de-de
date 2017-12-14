@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 499ba030e9768b82dfdc01df416fc9c8fe3de37d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: de225fde09665f25b326f4012ff0452ab6cef83b
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-operational-security-checklist"></a>Checkliste für Azure Operational Security
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Vor der Bereitstellung der Cloudanwendung in der Produktion ist es sinnvoll, eine Checkliste für die Bewertung Ihrer Anwendung zu verwenden. Hierbei wird eine Liste wichtiger und empfohlener Betriebssicherheitsaktionen überprüft, die Sie berücksichtigen müssen.
@@ -52,6 +52,6 @@ Viele Unternehmen haben ihre Cloudanwendungen erfolgreich in Azure bereitgestell
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument wurde die Sicherheits- und Überwachungslösung von OMS vorgestellt. Weitere Informationen zur Sicherheitslösung von OMS finden Sie in den folgenden Artikeln:
 
-- [Operations Management Suite (OMS) – Übersicht](https://docs.microsoft.com/en-us/azure/operations-management-suite/operations-management-suite-overview).
+- [Operations Management Suite (OMS) – Übersicht](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview).
 - [Gestaltung und betriebsbedingte Sicherheit](https://www.microsoft.com/trustcenter/security/designopsecurity).
 - [Planungs- und Betriebshandbuch für Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-planning-and-operations-guide).

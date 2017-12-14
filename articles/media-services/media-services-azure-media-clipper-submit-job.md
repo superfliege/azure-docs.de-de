@@ -9,11 +9,11 @@ ms.author: dwgeo
 ms.date: 11/10/2017
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d29889a4c972638f5d127e9c518aa85fbc19d861
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 8372c405087c0dc7a000a65265bb99c395c3a8d6
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper
 Azure Media Clipper erfordert die Implementierung einer **SubmitSubclipCallback**-Methode zur Übermittlung von Beschneidungsaufträgen. Diese Funktion dient zum Implementieren einer HTTP POST-Methode für die Clipper-Ausgabe an einen Webdienst. Dies ist der Webdienst, an den Sie den Codierungsauftrag übermitteln können. Die Ausgabe von Clipper ist entweder eine Media Encoder Standard-Codierungsvoreinstellung für gerenderte Aufträge oder die REST-API-Nutzlast für Aufrufe der Filter für dynamische Manifeste. Dieses Pass-Through-Modell ist notwendig, da Anmeldeinformationen für Media Services-Konten im Browser des Clients nicht sicher sind.
@@ -151,7 +151,7 @@ Die Auftragsausgabe für gerenderte Beschneidung ist ein JSON-Objekt mit den fol
 }
 ```
 
-Senden Sie den Media Encoder Standard-Codierungsauftrag mit der zugehörigen Voreinstellung, um den Codierungsauftrag auszuführen. In diesem Artikel finden Sie Details zum Übermitteln von Codierungsaufträgen mithilfe des [.NET SDK](https://docs.microsoft.com/en-us/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) oder der [REST-API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-encode-asset).
+Senden Sie den Media Encoder Standard-Codierungsauftrag mit der zugehörigen Voreinstellung, um den Codierungsauftrag auszuführen. In diesem Artikel finden Sie Details zum Übermitteln von Codierungsaufträgen mithilfe des [.NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-encode-with-media-encoder-standard) oder der [REST-API](https://docs.microsoft.com/azure/media-services/media-services-rest-encode-asset).
 
 ## <a name="quickly-creating-video-clips-without-encoding"></a>Schnelles Erstellen von Videoclips ohne Codierung
 Alternativ zum Erstellen eines Codierungsauftrags können Sie mit Azure Media Clipper dynamische Manifestfilter erstellen. Filter erfordern keine Codierung und können schnell erstellt werden, da kein neues Objekt erstellt wird. Die Ausgabe für eine Filterbeschneidung ist ein JSON-Objekt mit den folgenden Eigenschaften:
@@ -227,4 +227,4 @@ Alternativ zum Erstellen eines Codierungsauftrags können Sie mit Azure Media Cl
 }
 ```
 
-Übermitteln Sie zum Senden des REST-Aufrufs zur Erstellung dynamischer Manifestfilter die zugehörige Filternutzlast mit der [REST-API](https://docs.microsoft.com/en-us/azure/media-services/media-services-rest-dynamic-manifest).
+Übermitteln Sie zum Senden des REST-Aufrufs zur Erstellung dynamischer Manifestfilter die zugehörige Filternutzlast mit der [REST-API](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest).

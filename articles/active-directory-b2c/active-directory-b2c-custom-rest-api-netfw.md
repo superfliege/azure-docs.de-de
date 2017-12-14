@@ -4,7 +4,7 @@ description: "Integrieren Sie REST-API-Anspruchsaustauschvorgänge in Ihre Azure
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: e9a5b6ffdf2a2c30ae1bcb2bd8f91adb12f35266
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>Integrieren von REST-API-Anspruchsaustauschvorgängen in Ihre Azure AD B2C-User Journey als Validierung der Benutzereingabe
 Das Framework für die Identitätsfunktion, das Azure Active Directory B2C (Azure AD B2C) zugrunde liegt, ermöglicht Ihnen die Integration in eine User Journey per RESTful-API. In dieser exemplarischen Vorgehensweise erfahren Sie, wie Azure AD B2C mit .NET Framework-RESTful-Diensten (Web-API) interagiert.
@@ -215,7 +215,7 @@ In der Web-API ist ein _Controller_ ein Objekt zum Verarbeiten von HTTP-Anforder
     Das Fenster **App Service erstellen** wird geöffnet. Darin können Sie damit beginnen, alle Azure-Ressourcen zu erstellen, die zum Ausführen der ASP.NET-Web-App in Azure benötigt werden.
 
     > [!NOTE]
-    >Weitere Informationen zum Veröffentlichen finden Sie unter [Erstellen von ASP.NET-Web-Apps in Azure](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    >Weitere Informationen zum Veröffentlichen finden Sie unter [Erstellen von ASP.NET-Web-Apps in Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
 
 3. Geben Sie im Feld **Web-App-Name** einen eindeutigen App-Namen ein (gültige Zeichen sind a–z, A–Z, 0–9 und der Bindestrich [-]). Die URL der Web-App lautet: http://<App-Name>.azurewebsites.NET, wobei *App-Name* der Name Ihrer Web-App ist. Sie können den automatisch generierten Namen übernehmen. Dieser ist eindeutig.
 

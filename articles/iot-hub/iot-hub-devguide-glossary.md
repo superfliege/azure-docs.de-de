@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 87ab620444df4588cc43a3691cb215006561090d
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7e6590b97470bb00c5967f232e3ae134ce20a347
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -162,16 +162,16 @@ Die [Identitätsregistrierung](iot-hub-devguide-identity-registry.md) ist die in
 Eine interaktive Nachricht ist eine [C2D](#cloud-to-device)-Nachricht, die eine sofortige Aktion im Lösungs-Back-End auslöst. Beispielsweise kann ein Gerät einen Alarm zu einem Fehler senden, der automatisch in einem CRM-System protokolliert werden soll.
 
 ## <a name="iot-edge"></a>IoT Edge
-Azure IoT Edge ermöglicht die cloudgesteuerte Bereitstellung von Azure-Diensten und lösungsspezifischem Code auf lokalen Geräten. IoT Edge-Geräte können Daten anderer Geräte aggregieren und Berechnungen und Analysen durchführen, bevor die Daten an die Cloud gesendet werden. Weitere Informationen finden Sie unter [Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/).
+Azure IoT Edge ermöglicht die cloudgesteuerte Bereitstellung von Azure-Diensten und lösungsspezifischem Code auf lokalen Geräten. IoT Edge-Geräte können Daten anderer Geräte aggregieren und Berechnungen und Analysen durchführen, bevor die Daten an die Cloud gesendet werden. Weitere Informationen finden Sie unter [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/).
 
 ## <a name="iot-edge-agent"></a>IoT Edge-Agent
 Die für die Bereitstellung und Überwachung von Modulen zuständige Komponente der IoT Edge-Laufzeit.
 
 ## <a name="iot-edge-device"></a>IoT Edge-Gerät
-IoT Edge-Geräte verfügen über eine Installation der IoT Edge-Laufzeit und sind in den Gerätedetails als „IoT Edge device“ (IoT Edge-Gerät) gekennzeichnet. Informationen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux finden Sie [hier](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-simulate-device-linux).
+IoT Edge-Geräte verfügen über eine Installation der IoT Edge-Laufzeit und sind in den Gerätedetails als „IoT Edge device“ (IoT Edge-Gerät) gekennzeichnet. Informationen zum Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/tutorial-simulate-device-linux).
 
 ## <a name="iot-edge-deployment"></a>IoT Edge-Bereitstellung
-Eine IoT Edge-Bereitstellung konfiguriert eine Zielgruppe von IoT Edge-Geräten für die Ausführung einer Gruppe von IoT Edge-Modulen. Jede Bereitstellung stellt kontinuierlich sicher, dass alle Geräte, die der Zielbedingung entsprechen, die angegebene Gruppe von Modulen ausführen. Das gilt auch, wenn neue Geräte erstellt oder geändert werden, um der Zielbedingung zu entsprechen. Jedes IoT Edge-Gerät erhält nur die Bereitstellung mit der höchsten Priorität, deren Zielbedingung es erfüllt. Weitere Informationen zu IoT Edge-Bereitstellungen finden Sie [hier](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring).
+Eine IoT Edge-Bereitstellung konfiguriert eine Zielgruppe von IoT Edge-Geräten für die Ausführung einer Gruppe von IoT Edge-Modulen. Jede Bereitstellung stellt kontinuierlich sicher, dass alle Geräte, die der Zielbedingung entsprechen, die angegebene Gruppe von Modulen ausführen. Das gilt auch, wenn neue Geräte erstellt oder geändert werden, um der Zielbedingung zu entsprechen. Jedes IoT Edge-Gerät erhält nur die Bereitstellung mit der höchsten Priorität, deren Zielbedingung es erfüllt. Weitere Informationen zu IoT Edge-Bereitstellungen finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring).
 
 ## <a name="iot-edge-deployment-manifest"></a>IoT Edge-Bereitstellungsmanifest
 Ein JSON-Dokument mit Informationen, die in mindestens einen Modulzwilling von IoT Edge-Geräten kopiert werden, um eine Gruppe von Modulen, Routen und zugeordneten gewünschten Moduleigenschaften bereitzustellen.
@@ -186,7 +186,7 @@ Die Komponente der IoT Edge-Laufzeit, die für die Kommunikation zwischen Module
 Ein IoT Edge-Gerät ohne nachgeschaltetes Gerät. 
 
 ## <a name="iot-edge-module"></a>IoT Edge-Modul
-Bei einem IoT Edge-Modul handelt es sich um einen Docker-Container, den Sie auf IoT Edge-Geräten bereitstellen können. Es führt eine spezifische Aufgabe aus und erfasst so beispielsweise eine Nachricht von einem Gerät, transformiert eine Nachricht oder sendet eine Nachricht an eine IoT Hub-Instanz. Es kommuniziert mit anderen Modulen und sendet Daten an die IoT Edge-Laufzeit. [Grundlegendes zu den Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen – Vorschau](https://docs.microsoft.com/en-us/azure/iot-edge/module-development)
+Bei einem IoT Edge-Modul handelt es sich um einen Docker-Container, den Sie auf IoT Edge-Geräten bereitstellen können. Es führt eine spezifische Aufgabe aus und erfasst so beispielsweise eine Nachricht von einem Gerät, transformiert eine Nachricht oder sendet eine Nachricht an eine IoT Hub-Instanz. Es kommuniziert mit anderen Modulen und sendet Daten an die IoT Edge-Laufzeit. [Grundlegendes zu den Anforderungen und Tools für die Entwicklung von IoT Edge-Modulen – Vorschau](https://docs.microsoft.com/azure/iot-edge/module-development)
 
 ## <a name="iot-edge-module-identity"></a>IoT Edge-Modulidentität
 Ein Datensatz in der IoT Hub-Modulidentitätsregistrierung mit Details zur Existenz sowie mit Sicherheitsanmeldeinformationen, die von einem Modul zur Authentifizierung bei einer Edge Hub- oder IoT Hub-Instanz verwendet werden.
@@ -241,7 +241,7 @@ Ein physisches Gerät ist ein echtes Gerät, z.B. ein Raspberry Pi mit einer Ver
 Wenn Sie einen geräteseitigen oder dienstseitigen Endpunkt mit einem IoT Hub verbinden, enthält die [Verbindungszeichenfolge](#connection-string) einen Schlüssel zum Gewähren des Zugriffs. Wenn Sie der [Identitätsregistrierung](#identity-registry) ein Gerät hinzufügen oder dem Hub eine [SAS-Richtlinie](#shared-access-policy) hinzufügen, generiert der Dienst einen Primär- und einen Sekundärschlüssel. Dank der zwei Schlüssel können Sie ein Rollover von einem Schlüssel zum anderen Schlüssel durchführen, wenn Sie einen Schlüssel aktualisieren, ohne den Zugriff auf den IoT Hub zu verlieren.
 
 ## <a name="priority"></a>Priority
-Wenn zwei IoT Edge-Bereitstellungen das gleiche Gerät als Ziel haben, wird die Bereitstellung mit der höheren Priorität angewendet. Wenn zwei Bereitstellungen die gleiche Priorität haben, wird die Bereitstellung mit dem späteren Erstellungsdatum angewendet. Weitere Informationen zur Priorität finden Sie [hier](#https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#priority).
+Wenn zwei IoT Edge-Bereitstellungen das gleiche Gerät als Ziel haben, wird die Bereitstellung mit der höheren Priorität angewendet. Wenn zwei Bereitstellungen die gleiche Priorität haben, wird die Bereitstellung mit dem späteren Erstellungsdatum angewendet. Weitere Informationen zur Priorität finden Sie [hier](#https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#priority).
 
 ## <a name="protocol-gateway"></a>Protokollgateway
 Ein Protokollgateway wird der Regel in der Cloud bereitgestellt und bietet Protokollübersetzungsdienste für Geräte, die sich mit [IoT Hub](#iot-hub) verbinden. Weitere Informationen finden Sie unter [Was ist Azure IoT Hub?](iot-hub-what-is-iot-hub.md).
@@ -289,7 +289,7 @@ Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) sind Syste
 Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) sind Tags Gerätemetadaten, die vom Lösungs-Back-End in Form eines JSON-Dokuments gespeichert und abgerufen werden. Tags sind für Apps auf einem Gerät nicht sichtbar.
 
 ## <a name="target-condition"></a>Zielbedingung
-In einer IoT Edge-Bereitstellung ist die Zielbedingung eine beliebige boolesche Bedingung für Gerätezwillingstags zur Wahl der Zielgeräte für die Bereitstellung (beispielsweise „tag.environment = prod“). Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Weitere Informationen zur Zielbedingung finden Sie [hier](https://docs.microsoft.com/en-us/azure/iot-edge/module-deployment-monitoring#target-condition).
+In einer IoT Edge-Bereitstellung ist die Zielbedingung eine beliebige boolesche Bedingung für Gerätezwillingstags zur Wahl der Zielgeräte für die Bereitstellung (beispielsweise „tag.environment = prod“). Die Zielbedingung wird kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Weitere Informationen zur Zielbedingung finden Sie [hier](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring#target-condition).
 
 ## <a name="telemetry"></a>Telemetrie
 Mit Geräten werden Telemetriedaten erfasst, z.B. Windgeschwindigkeit oder Temperatur, und es werden [Datenpunktnachrichten](#data-point-messages) verwendet, um Telemetriedaten an IoT Hub zu senden.

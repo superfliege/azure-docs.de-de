@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 66ea24cfe9dd03ed62c06daa76ee043886ad7bcc
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 57a4cb560825e0c05ac49df26ac12ee52da52c3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>Aktivieren von Application Insights Profiler für Azure-VMs, Service Fabric und Cloud Services
 
 Dieser Artikel veranschaulicht, wie Sie Azure Application Insights Profiler für eine ASP.NET-Anwendung aktivieren, die von einer Azure Compute-Ressource gehostet wird. 
 
-Die Beispiele in diesem Artikel umfassen die Unterstützung für Azure Virtual Machines, VM-Skalierungsgruppen, Azure Service Fabric und Azure Cloud Services. Die Beispiele basieren auf Vorlagen, die das [Azure Resource Manager](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview)-Bereitstellungsmodell unterstützen.  
+Die Beispiele in diesem Artikel umfassen die Unterstützung für Azure Virtual Machines, VM-Skalierungsgruppen, Azure Service Fabric und Azure Cloud Services. Die Beispiele basieren auf Vorlagen, die das [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-Bereitstellungsmodell unterstützen.  
 
 
 ## <a name="overview"></a>Übersicht
@@ -47,14 +47,14 @@ Erstellen Sie im Azure-Portal die Application Insights-Instanz oder navigieren S
 Diese Instanz sollte mit Ihrer Anwendung identisch sein. Sie ist zum Senden von Telemetriedaten bei jeder Anforderung konfiguriert.
 Profiler-Ergebnisse werden in dieser Instanz auch zur Verfügung gestellt.  
 
-Führen Sie im Azure-Portal die in [Aktivieren des Profilers](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler) beschriebenen Schritte zum Einrichten der Application Insights-Instanz für den Profiler aus. Sie müssen keine Web-Apps für das Beispiel in diesem Artikel verknüpfen. Stellen Sie nur sicher, dass der Profiler im Portal aktiviert ist.
+Führen Sie im Azure-Portal die in [Aktivieren des Profilers](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler) beschriebenen Schritte zum Einrichten der Application Insights-Instanz für den Profiler aus. Sie müssen keine Web-Apps für das Beispiel in diesem Artikel verknüpfen. Stellen Sie nur sicher, dass der Profiler im Portal aktiviert ist.
 
 
 ## <a name="set-up-the-application-source-code"></a>Einrichten des Quellcodes der Anwendung
 
 Richten Sie Ihre Anwendung so ein, dass sie bei jedem `Request`-Vorgang Telemetriedaten an eine Application Insights-Instanz sendet:  
 
-1. Fügen Sie das [Application Insights SDK](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-overview#get-started) zu Ihrem Anwendungsprojekt hinzu. Stellen Sie sicher, dass die folgenden Versionen des NuGet-Pakets verwendet werden:  
+1. Fügen Sie das [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) zu Ihrem Anwendungsprojekt hinzu. Stellen Sie sicher, dass die folgenden Versionen des NuGet-Pakets verwendet werden:  
   - Für ASP.NET-Anwendungen: [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) Version 2.3.0 oder höher.
   - Für ASP.NET Core-Anwendungen: [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 oder höher.
   - Für andere .NET- und .NET Core-Anwendungen (z.B. zustandsloser Service Fabric-Dienst oder eine Cloud Services-Workerrolle): [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) oder [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 oder höher.  
@@ -138,9 +138,9 @@ Vollständige Beispiele:
   * [VM-Skalierungsgruppe](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
   * [Service Fabric-Cluster](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json)
 
-1. Es ist ausreichend zu bestätigen, dass das bereitgestellte Betriebssystem `Windows Server 2012 R2` oder höher ist, um sicherzustellen, dass [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwendet wird.
+1. Es ist ausreichend zu bestätigen, dass das bereitgestellte Betriebssystem `Windows Server 2012 R2` oder höher ist, um sicherzustellen, dass [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwendet wird.
 
-2. Suchen Sie die Erweiterung für die [Azure-Diagnose](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics) in der Bereitstellungsvorlagendatei, und fügen Sie den folgenden `SinksConfig`-Abschnitt als untergeordnetes Element von `WadCfg` hinzu. Ersetzen Sie den `ApplicationInsightsProfiler`-Eigenschaftswert durch Ihren eigenen Application Insights-Instrumentierungsschlüssel:  
+2. Suchen Sie die Erweiterung für die [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) in der Bereitstellungsvorlagendatei, und fügen Sie den folgenden `SinksConfig`-Abschnitt als untergeordnetes Element von `WadCfg` hinzu. Ersetzen Sie den `ApplicationInsightsProfiler`-Eigenschaftswert durch Ihren eigenen Application Insights-Instrumentierungsschlüssel:  
   ```json
   "SinksConfig": {
     "Sink": [
@@ -152,16 +152,16 @@ Vollständige Beispiele:
   }
   ```
 
-  Informationen zum Hinzufügen der Diagnoseerweiterung zu Ihrer Bereitstellungsvorlage finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+  Informationen zum Hinzufügen der Diagnoseerweiterung zu Ihrer Bereitstellungsvorlage finden Sie unter [Verwenden von Überwachung und Diagnose bei einer Windows-VM und Azure Resource Manager-Vorlagen](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 ### <a name="cloud-services"></a>Cloud Services
 
-1. Um sicherzustellen, dass [.NET Framework 4.6.1](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwendet wird, ist es ausreichend, zu bestätigen, dass ServiceConfiguration.\*.cscfg-Dateien einen `osFamily`-Wert von **„5“** oder höher haben.
+1. Um sicherzustellen, dass [.NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) oder höher verwendet wird, ist es ausreichend, zu bestätigen, dass ServiceConfiguration.\*.cscfg-Dateien einen `osFamily`-Wert von **„5“** oder höher haben.
 
-2. Suchen Sie die [Azure-Diagnose](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/azure-diagnostics)-Datei „diagnostics.wadcfgx“ für Ihre Anwendungsrolle:  
+2. Suchen Sie die [Azure-Diagnose](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics)-Datei „diagnostics.wadcfgx“ für Ihre Anwendungsrolle:  
   ![Speicherort der Konfigurationsdatei für die Diagnose](./media/enable-profiler-compute/cloudservice-solutionexplorer.png)  
-  Wenn Sie die Datei nicht finden können, finden Sie Informationen zum Aktivieren der Diagnoseerweiterung in Ihrem Cloud Services-Projekt unter [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](https://docs.microsoft.com/en-us/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
+  Wenn Sie die Datei nicht finden können, finden Sie Informationen zum Aktivieren der Diagnoseerweiterung in Ihrem Cloud Services-Projekt unter [Konfigurieren der Diagnose für Azure Cloud Services und Virtual Machines](https://docs.microsoft.com/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#enable-diagnostics-in-cloud-service-projects-before-deploying-them).
 
 3. Fügen Sie den folgenden `SinksConfig`-Abschnitt als untergeordnetes Element von `WadCfg` hinzu:  
   ```xml
@@ -205,11 +205,11 @@ Vollständige Beispiele:
 
 2. Wenn die betroffene Anwendung über [IIS](https://www.microsoft.com/web/platform/server.aspx) ausgeführt wird, aktivieren Sie das Windows-Feature `IIS Http Tracing`:  
   
-  1. Richten Sie den Remotezugriff auf die Umgebung ein, und verwenden Sie dann das Fenster [Hinzufügen von Windows-Features]( https://docs.microsoft.com/en-us/iis/configuration/system.webserver/tracing/), oder führen Sie den folgenden Befehl in PowerShell (als Administrator) aus:  
+  1. Richten Sie den Remotezugriff auf die Umgebung ein, und verwenden Sie dann das Fenster [Hinzufügen von Windows-Features]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/), oder führen Sie den folgenden Befehl in PowerShell (als Administrator) aus:  
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
     ```  
-  2. Wenn das Einrichten des Remotezugriffs ein Problem darstellt, können Sie folgenden Befehl über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli) ausführen:  
+  2. Wenn das Einrichten des Remotezugriffs ein Problem darstellt, können Sie folgenden Befehl über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) ausführen:  
     ```powershell
     az vm run-command invoke -g MyResourceGroupName -n MyVirtualMachineName --command-id RunPowerShellScript --scripts "Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All"
     ```
@@ -223,7 +223,7 @@ Es ist nicht geplant, den Profiler offiziell für lokale Server zu unterstützen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Generieren Sie Datenverkehr zu Ihrer Anwendung (starten Sie z.B. einen [Verfügbarkeitstest](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-monitor-web-app-availability)). Warten Sie dann 10 bis 15 Minuten, bis das Senden der Ablaufverfolgungen an die Application Insights-Instanz beginnt.
-- Weitere Informationen finden Sie unter [Profiler-Ablaufverfolgungen](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler) im Azure-Portal.
+- Generieren Sie Datenverkehr zu Ihrer Anwendung (starten Sie z.B. einen [Verfügbarkeitstest](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)). Warten Sie dann 10 bis 15 Minuten, bis das Senden der Ablaufverfolgungen an die Application Insights-Instanz beginnt.
+- Weitere Informationen finden Sie unter [Profiler-Ablaufverfolgungen](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler) im Azure-Portal.
 - Hilfe bei der Problembehandlung von Profiler-Problemen finden Sie unter [Profiler-Problembehandlung](app-insights-profiler.md#troubleshooting).
 - Weitere Informationen zum Profiler finden Sie unter [Application Insights Profiler](app-insights-profiler.md).

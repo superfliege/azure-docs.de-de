@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/6/2017
 ms.author: damaerte
-ms.openlocfilehash: 6ec1d8dac4e07b28b92c2aee5d1e9d47fa62b7a1
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 31ba4b68850e14fc038df0bbe91146b90f8ca4b3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Features und Tools für PowerShell in Azure Cloud Shell (Vorschauversion)
 
@@ -47,7 +47,7 @@ Da durch jede Anforderung für Cloud Shell ein temporärer Computer zugewiesen w
 
 PowerShell in Cloud Shell (Vorschauversion) startet auf dem Azure-Laufwerk (`Azure:`).
 Das Azure-Laufwerk ermöglicht die einfache Ermittlung und Navigation von Azure-Ressourcen wie Computing, Netzwerk, Speicher usw., ähnlich der Navigation im Dateisystem.
-Sie können weiterhin die vertrauten [Azure PowerShell-Cmdlets](https://docs.microsoft.com/en-us/powershell/azure) zur Verwaltung dieser Ressourcen verwenden.
+Sie können weiterhin die vertrauten [Azure PowerShell-Cmdlets](https://docs.microsoft.com/powershell/azure) zur Verwaltung dieser Ressourcen verwenden.
 Alle an den Azure-Ressourcen vorgenommenen Änderungen, die entweder direkt im Azure-Portal oder über Azure PowerShell-Cmdlets durchgeführt wurden, werden sofort auf dem Azure-Laufwerk reflektiert.
 
 ![](media/features-powershell/azure-drive.png)
@@ -91,7 +91,7 @@ Diese Befehle basieren auf dem PowerShell-Remoting und erfordern die PowerShell-
 
 |**Kategorie**    |**Name**                                 |
 |----------------|-----------------------------------------|
-|Azure-Tools     |[Azure PowerShell (5.0.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Azure-Befehlszeilenschnittstelle (2.0.22)](https://docs.microsoft.com/en-us/cli/azure/overview)|
+|Azure-Tools     |[Azure PowerShell (5.0.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.0.0)<br> [Azure-Befehlszeilenschnittstelle (2.0.22)](https://docs.microsoft.com/cli/azure/overview)|
 |Text-Editoren    |Vim<br> Nano                             |
 |Paket-Manager |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |Quellcodeverwaltung  |Git                                      |

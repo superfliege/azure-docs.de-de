@@ -4,7 +4,7 @@ description: "Ein Thema, in dem veranschaulicht wird, wie „Angemeldet bleiben�
 services: active-directory-b2c
 documentationcenter: 
 author: vigunase
-manager: ajalexander
+manager: mtillman
 ms.assetid: 926e9711-71c0-49e8-b658-146ffb7386c0
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2016
 ms.author: vigunase
-ms.openlocfilehash: d09e15c6f6765eac436f573f89c6703039cd8397
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a3d78945f862d1ae12cec05da0cf0ea7df511f43
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-enable-keep-me-signed-in-kmsi"></a>Azure Active Directory B2C: Aktivieren von „Angemeldet bleiben“  
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -94,7 +94,7 @@ Sie können „Anmeldung mit lokalem Konto“ als Anspruchsanbieter für den Kno
 
 Fügen Sie die Anwendungs-IDs zur Datei mit den Erweiterungen hinzu (`TrustFrameworkExtensions.xml`):
 
-1. Suchen Sie in der Erweiterungsdatei („TrustFrameworkExtensions.xml“) nach dem Element `<TechnicalProfile Id="login-NonInteractive">` und `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`
+1. Suchen Sie in der Erweiterungsdatei („TrustFrameworkExtensions.xml“) nach den Elementen `<TechnicalProfile Id="login-NonInteractive">` und `<TechnicalProfile Id="login-NonInteractive-PasswordChange">`.
 
 2. Ersetzen Sie alle Instanzen von `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der Identity Experience Framework-Anwendung, wie unter [Erste Schritte](active-directory-b2c-get-started-custom.md) beschrieben. Beispiel:
 
@@ -154,7 +154,7 @@ Sie müssen jetzt den Anspruchsanbieter „Anmeldung mit lokalem Konto“ zu Ihr
   </UserJourneys>
 ```
 
-## <a name="create-a-relying-party-rp-file"></a>Erstellen einer Datei der vertrauenden Seite (Reyling Party, RP)
+## <a name="create-a-relying-party-rp-file"></a>Erstellen einer Datei der vertrauenden Seite (Relying Party, RP)
 
 Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite (Relying Party, RP), die die User Journey initiiert, die Sie erstellt haben:
 
