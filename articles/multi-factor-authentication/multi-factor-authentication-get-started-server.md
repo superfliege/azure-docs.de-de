@@ -5,7 +5,7 @@ services: multi-factor-authentication
 keywords: Authentifizierungsserver, Aktivierungsseite der Azure Multi-Factor Authentication-App, Download Authentifizierungsserver
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: e94120e4-ed77-44b8-84e4-1c5f7e186a6b
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: a164dfa23a0bd8a598eb8871a160ced4158b172a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -42,9 +42,9 @@ Ein guter Anhaltspunkt für den benötigten Speicherplatz ist die Anzahl der Ben
 | 100,000-200,001 | 16 GB |
 | 200,001+ | 32 GB |
 
-Müssen Sie mehrere Server für hohe Verfügbarkeit oder Lastenausgleich einrichten? Es gibt zahlreiche Möglichkeiten, um diese Konfiguration mit Azure MFA-Server einzurichten. Wenn Sie Ihren ersten Azure MFA-Server installieren, wird dieser der Master. Alle weiteren Server werden untergeordnet und synchronisieren Benutzer und die Konfiguration automatisch mit dem Master. Anschließend können Sie einen primären Server konfigurieren und die übrigen als Sicherung verwenden, oder Lastenausgleich zwischen allen Servern einrichten.
+Müssen Sie mehrere Server für Hochverfügbarkeit oder Lastenausgleich einrichten? Es gibt zahlreiche Möglichkeiten, um diese Konfiguration mit Azure MFA-Server einzurichten. Wenn Sie Ihren ersten Azure MFA-Server installieren, wird dieser der Master. Alle weiteren Server werden untergeordnet und synchronisieren Benutzer und die Konfiguration automatisch mit dem Master. Anschließend können Sie einen primären Server konfigurieren und die übrigen als Sicherung verwenden, oder Lastenausgleich zwischen allen Servern einrichten.
 
-Wenn ein Azure MFA-Masterserver offline geschaltet wird, können die untergeordnete Server weiterhin Anforderungen für die Überprüfung in zwei Schritten verarbeiten. Sie können jedoch keine neuen Benutzer hinzufügen, und vorhandene Benutzer können ihre Einstellungen nicht aktualisieren, bis der Master wieder online geschaltet oder ein untergeordneter Server höher gestuft wird.
+Wenn ein Azure MFA-Masterserver offline geschaltet wird, können die untergeordneten Server weiterhin Anforderungen für die zweistufige Überprüfung verarbeiten. Sie können jedoch keine neuen Benutzer hinzufügen, und vorhandene Benutzer können ihre Einstellungen nicht aktualisieren, bis der Master wieder online geschaltet oder ein untergeordneter Server höher gestuft wird.
 
 ### <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
 
@@ -61,7 +61,7 @@ Der Azure MFA-Server setzt sich aus drei Webkomponenten zusammen:
 
 * Webdienst-SDK: Ermöglicht die Kommunikation mit den anderen Komponenten und wird auf dem Azure MFA-Anwendungsserver installiert.
 * Benutzerportal: Eine IIS-Website, die es Benutzern ermöglicht, sich für Azure Multi-Factor Authentication (MFA) zu registrieren und ihre Konten zu verwalten.
-* Webdienst der mobilen App: Ermöglicht die Verwendung einer mobilen App wie Microsoft Authenticator für die Überprüfung in zwei Schritten.
+* Webdienst der mobilen App: Ermöglicht die Verwendung einer mobilen App wie Microsoft Authenticator für die zweistufige Überprüfung.
 
 Alle drei Komponenten können auf dem gleichen Server installiert werden, sofern dieser über Internetzugriff verfügt. Wenn die Komponenten aufgeteilt werden, wird das Webdienst-SDK auf dem Azure MFA-Anwendungsserver installiert, während das Benutzerportal und der Webdienst der mobilen App auf einem Server mit Internetzugriff installiert werden.
 
@@ -89,7 +89,7 @@ Wenn Sie das Ereignisbestätigungsfeature nicht verwenden und Ihre Benutzer kein
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72–134.170.165.79 |
 | 70.37.154.200/29 |255.255.255.248 |70.37.154.201–70.37.154.206 |
 
-## <a name="download-the-mfa-server---public-preview"></a>Herunterladen der öffentlichen Vorschauversion des MFA-Servers
+## <a name="download-the-mfa-server"></a>Herunterladen des MFA-Servers
 
 Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication-Server im Azure-Portal herunterzuladen:
 
@@ -101,28 +101,6 @@ Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication
    ![Herunterladen des MFA-Servers](./media/multi-factor-authentication-get-started-server/downloadportal.png)
 
 5. Lassen Sie diese Seite geöffnet. Sie wird nach dem Ausführen des Installationsprogramms erneut benötigt.
-
-
-## <a name="download-the-mfa-server"></a>Herunterladen des MFA-Servers
-
-Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication-Server im PFweb-Portal herunterzuladen:
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Wählen Sie im linken Bereich **Active Directory** aus.
-3. Wählen Sie **Benutzer und Gruppen** aus.
-4. Wählen Sie **Alle Benutzer** aus.
-5. Wählen Sie **Multi-Factor Authentication** aus.
-6. Wählen Sie unter **Multi-Factor Authentication** die Option **Diensteinstellungen verwalten** aus.
-
-   ![Seite „Diensteinstellungen“](./media/multi-factor-authentication-get-started-server/servicesettings.png)
-
-6. Klicken Sie auf der Seite "Diensteinstellungen" am unteren Rand des Bildschirms auf **Portal aufrufen**. Eine neue Seite wird geöffnet.
-7. Wählen Sie **Downloads** aus.
-8. Klicken Sie auf den Link **Herunterladen**, und speichern Sie das Installationsprogramm.
-
-   ![Herunterladen des MFA-Servers](./media/multi-factor-authentication-get-started-server/download4.png)
-
-9. Lassen Sie diese Seite geöffnet. Sie wird nach dem Ausführen des Installationsprogramms erneut benötigt.
 
 ## <a name="install-and-configure-the-mfa-server"></a>Installieren und Konfigurieren des MFA-Servers
 
@@ -139,9 +117,9 @@ Nachdem Sie den Server heruntergeladen haben, können Sie ihn installieren und k
 
 ## <a name="send-users-an-email"></a>Senden einer E-Mail an Benutzer
 
-Erlauben Sie dem MFA-Server die Kommunikation mit Ihren Benutzern, um das Rollout zu vereinfachen. Der MFA-Server kann die Benutzer per E-Mail darüber informieren, dass sie für die Überprüfung in zwei Schritten registriert wurden.
+Erlauben Sie dem MFA-Server die Kommunikation mit Ihren Benutzern, um das Rollout zu vereinfachen. Der MFA-Server kann die Benutzer per E-Mail darüber informieren, dass sie für die zweistufige Überprüfung registriert wurden.
 
-Die gesendete E-Mail sollte sich danach richten, wie Sie die Benutzer für die Überprüfung in zwei Schritten konfigurieren. Falls Sie also beispielsweise die Telefonnummern aus dem Telefonverzeichnis Ihres Unternehmens importieren können, sollte die E-Mail die Standardnummern enthalten, damit die Benutzer wissen, was sie erwartet. Falls Sie keine Telefonnummern importieren oder Ihre Benutzer die mobile App verwenden, senden Sie ihnen eine E-Mail, in der sie aufgefordert werden, ihre Kontoregistrierung abzuschließen. Schließen Sie in die E-Mail einen Link zum Benutzerportal für Azure Multi-Factor Authentication ein.
+Die gesendete E-Mail sollte sich danach richten, wie Sie die Benutzer für die zweistufige Überprüfung konfigurieren. Falls Sie also beispielsweise die Telefonnummern aus dem Telefonverzeichnis Ihres Unternehmens importieren können, sollte die E-Mail die Standardnummern enthalten, damit die Benutzer wissen, was sie erwartet. Falls Sie keine Telefonnummern importieren oder Ihre Benutzer die mobile App verwenden, senden Sie ihnen eine E-Mail, in der sie aufgefordert werden, ihre Kontoregistrierung abzuschließen. Schließen Sie in die E-Mail einen Link zum Benutzerportal für Azure Multi-Factor Authentication ein.
 
 Der Inhalt der E-Mail variiert auch abhängig von der Überprüfungsmethode, die für den Benutzer festgelegt wurde (Telefonanruf, SMS oder mobile App).  Wenn der Benutzer beispielsweise bei der Authentifizierung eine PIN verwenden muss, wird er per E-Mail informiert, wie seine anfängliche PIN festgelegt wurde.  Benutzer müssen ihre PIN während der ersten Überprüfung ändern.
 
@@ -151,7 +129,7 @@ Klicken Sie auf das E-Mail-Symbol auf der linken Seite, um die Einstellungen zum
 
 ![MFA-Server – E-Mail-Konfiguration](./media/multi-factor-authentication-get-started-server/email1.png)
 
-Auf der Registerkarte „E-Mail-Inhalt“ werden alle E-Mail-Vorlagen angezeigt, die Sie auswählen können. Je nachdem, wie Sie Ihre Benutzer für die Überprüfung in zwei Schritten konfiguriert haben, können Sie also die am besten geeignete Vorlage auswählen.
+Auf der Registerkarte „E-Mail-Inhalt“ werden alle E-Mail-Vorlagen angezeigt, die Sie auswählen können. Je nachdem, wie Sie Ihre Benutzer für die zweistufige Überprüfung konfiguriert haben, können Sie also die am besten geeignete Vorlage auswählen.
 
 ![MFA-Server – E-Mail-Vorlagen](./media/multi-factor-authentication-get-started-server/email2.png)
 
@@ -178,7 +156,7 @@ Nach Abschluss der Serverinstallation können Sie Benutzer hinzufügen. Sie kön
 
 ## <a name="how-the-azure-multi-factor-authentication-server-handles-user-data"></a>Verarbeitung von Benutzerdaten durch den Azure Multi-Factor Authentication-Server
 
-Bei lokaler Verwendung des Multi-Factor Authentication (MFA)-Servers werden die Daten eines Benutzers auf den lokalen Servern gespeichert. Daten werden nicht dauerhaft in der Cloud gespeichert. Wenn der Benutzer eine Überprüfung in zwei Schritten durchführt, sendet der MFA-Server Daten an den Azure MFA-Clouddienst, um die Überprüfung durchzuführen. Wenn diese Authentifizierungsanforderungen an den Clouddienst gesendet werden, werden in der Anforderung und den Protokollen die folgenden Felder gesendet, damit sie in den Authentifizierungs-/Verwendungsberichten des Kunden verfügbar sind. Einige Felder sind optional und können für den Multi-Factor Authentication-Server aktiviert oder deaktiviert werden. Für die Kommunikation zwischen MFA-Server und MFA-Clouddienst wird SSL/TLS über den ausgehenden Port 443 verwendet. Die Felder lauten:
+Bei lokaler Verwendung des Multi-Factor Authentication (MFA)-Servers werden die Daten eines Benutzers auf den lokalen Servern gespeichert. Daten werden nicht dauerhaft in der Cloud gespeichert. Wenn der Benutzer eine zweistufige Überprüfung durchführt, sendet der MFA-Server Daten an den Azure MFA-Clouddienst, um die Überprüfung durchzuführen. Wenn diese Authentifizierungsanforderungen an den Clouddienst gesendet werden, werden in der Anforderung und den Protokollen die folgenden Felder gesendet, damit sie in den Authentifizierungs-/Verwendungsberichten des Kunden verfügbar sind. Einige Felder sind optional und können für den Multi-Factor Authentication-Server aktiviert oder deaktiviert werden. Für die Kommunikation zwischen MFA-Server und MFA-Clouddienst wird SSL/TLS über den ausgehenden Port 443 verwendet. Die Felder lauten:
 
 * Eindeutige ID: Benutzername oder interne ID des MFA-Servers
 * Vor- und Nachname (optional)

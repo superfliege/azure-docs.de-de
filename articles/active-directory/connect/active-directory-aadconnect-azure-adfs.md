@@ -5,7 +5,7 @@ keywords: "AD FS in Azure bereitstellen, Azure ADFS bereitstellen, Azure ADFS, A
 services: active-directory
 documentationcenter: 
 author: anandyadavmsft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 692a188c-badc-44aa-ba86-71c0e8074510
 ms.service: active-directory
@@ -16,17 +16,17 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ddd29a1230286de8999175498ee793f3b3ea24e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 954d161b3fbc66f594429f33d1bb5c88c2bc83b4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Bereitstellen von Active Directory-Verbunddiensten in Azure
-AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche hohe Verfügbarkeit mit wenig Aufwand erzielt werden.
+AD FS verfügt über Funktionen für den vereinfachten, geschützten Identitätsverbund und die einmalige Webanmeldung (SSO). Der Verbund mit Azure AD oder O365 ermöglicht Benutzern die Authentifizierung mit lokalen Anmeldeinformationen und den Zugriff auf Ressourcen in der Cloud. Daher ist es wichtig, dass eine hoch verfügbare AD FS-Infrastruktur vorhanden ist, um den Zugriff auf lokale Ressourcen und Ressourcen in der Cloud sicherzustellen. Durch die Bereitstellung von AD FS in Azure kann die erforderliche Hochverfügbarkeit mit wenig Aufwand erzielt werden.
 Die Bereitstellung von AD FS in Azure hat mehrere Vorteile, von denen hier einige aufgeführt sind:
 
-* **Hohe Verfügbarkeit** : Mit der Leistungsfähigkeit von Azure-Verfügbarkeitsgruppen sorgen Sie für eine hoch verfügbare Infrastruktur.
+* **Hochverfügbarkeit**: Mit der Leistungsfähigkeit von Azure-Verfügbarkeitsgruppen sorgen Sie für eine Hochverfügbarkeitsinfrastruktur.
 * **Einfache Skalierung** : Benötigen Sie eine höhere Leistung? Sie können die Migration zu leistungsfähigeren Computern in Azure leicht mit nur wenigen Klicks durchführen.
 * **Standortübergreifende Redundanz** : Mit der geografischen Redundanz von Azure können Sie sicher sein, dass Ihre Infrastruktur weltweit eine hohe Verfügbarkeit aufweist.
 * **Einfache Verwaltung** : Dank der stark vereinfachten Verwaltungsfunktionen im Azure-Portal ist die Verwaltung der Infrastruktur sehr einfach und problemlos. 
@@ -39,7 +39,7 @@ Im obigen Diagramm ist die empfohlene grundlegende Topologie dargestellt, mit de
 * **DC/AD FS-Server**: Wenn Sie weniger als 1.000 Benutzer haben, können Sie die AD FS-Rolle einfach auf Ihren Domänencontrollern installieren. Wenn Sie Leistungsbeeinträchtigungen für die Domänencontroller ausschließen möchten oder mehr als 1.000 Benutzer haben, können Sie AD FS auf separaten Servern bereitstellen.
 * **WAP-Server** : Webanwendungsproxy-Server müssen so bereitgestellt werden, dass die Benutzer AD FS auch erreichen können, wenn sie sich nicht im Unternehmensnetzwerk befinden.
 * **DMZ**: Die Webanwendungsproxy-Server werden in der DMZ angeordnet, und NUR der TCP/443-Zugriff ist zwischen der DMZ und dem internen Subnetz zulässig.
-* **Load Balancers**: Zur Sicherstellung einer hohen Verfügbarkeit von AD FS- und Webanwendungsproxy-Servern empfehlen wir die Verwendung eines internen Load Balancers für AD FS-Server und von Azure Load Balancer für Webanwendungsproxy-Server.
+* **Load Balancers**: Zur Sicherstellung der Hochverfügbarkeit von AD FS- und Webanwendungsproxy-Servern empfehlen wir die Verwendung eines internen Load Balancers für AD FS-Server und von Azure Load Balancer für Webanwendungsproxy-Server.
 * **Verfügbarkeitsgruppen**: Zur Sicherstellung der Redundanz für die AD FS-Bereitstellung wird empfohlen, zwei oder mehr virtuelle Computer für ähnliche Workloads in einer Verfügbarkeitsgruppe zu gruppieren. Durch diese Konfiguration wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist.
 * **Speicherkonten**: Es wird empfohlen, zwei Speicherkonten zu verwenden. Die Verwendung von nur einem Speicherkonto kann zur Schaffung einer einzelnen Fehlerquelle führen und bewirken, dass die Bereitstellung in dem unwahrscheinlichen Fall, dass das Speicherkonto ausfällt, nicht mehr verfügbar ist. Bei zwei Speicherkonten kann jedem Fehlerpunkt ein Speicherkonto zugeordnet werden.
 * **Netzwerktrennung**: Webanwendungsproxy-Server müssen in einem separaten DMZ-Netzwerk bereitgestellt werden. Sie können ein virtuelles Netzwerk in zwei Subnetze unterteilen und Webanwendungsproxy-Server dann in einem isolierten Subnetz bereitstellen. Sie können die Netzwerksicherheitsgruppen-Einstellungen für jedes Subnetz leicht konfigurieren und zwischen den beiden Subnetzen nur die erforderliche Kommunikation zulassen. Weitere Details sind unten jeweils für die einzelnen Bereitstellungsszenarien angegeben.
@@ -100,7 +100,7 @@ Es wird empfohlen, ExpressRoute zu verwenden. ExpressRoute ermöglicht Ihnen das
 Die Verwendung von ExpressRoute wird zwar empfohlen, aber Sie können eine beliebige Verbindungsmethode wählen, die für Ihr Unternehmen am besten geeignet ist. Weitere Informationen zu ExpressRoute und den verschiedenen Verbindungsoptionen mit ExpressRoute finden Sie unter [ExpressRoute – Technische Übersicht](https://aka.ms/Azure/ExpressRoute).
 
 ### <a name="2-create-storage-accounts"></a>2. Erstellen von Speicherkonten
-Sie können zwei Speicherkonten erstellen, um für eine hohe Verfügbarkeit zu sorgen und die Abhängigkeit von einem einzelnen Speicherkonto zu vermeiden. Teilen Sie die Computer in jeder Verfügbarkeitsgruppe in zwei Gruppen, und weisen Sie jeder Gruppe dann ein separates Speicherkonto zu.
+Sie können zwei Speicherkonten erstellen, um für Hochverfügbarkeit zu sorgen und die Abhängigkeit von einem einzelnen Speicherkonto zu vermeiden. Teilen Sie die Computer in jeder Verfügbarkeitsgruppe in zwei Gruppen, und weisen Sie jeder Gruppe dann ein separates Speicherkonto zu.
 
 ![Speicherkonten erstellen](./media/active-directory-aadconnect-azure-adfs/storageaccount1.png)
 
@@ -136,7 +136,7 @@ Nach Abschluss der Bereitstellung sollte der Bereich für virtuelle Computer wie
 ![Bereitgestellte virtuelle Computer](./media/active-directory-aadconnect-azure-adfs/virtualmachinesdeployed_noadfs.png)
 
 ### <a name="5-configuring-the-domain-controller--ad-fs-servers"></a>5. Konfigurieren des Domänencontrollers/AD FS-Servers
- Um jede eingehende Anforderung authentifizieren zu können, muss AD FS mit dem Domänencontroller Kontakt aufnehmen. Es wird empfohlen, ein Replikat des Domänencontrollers in Azure bereitzustellen, um für die Authentifizierung den aufwändigen Weg von Azure zum lokalen DC zu vermeiden. Um eine hohe Verfügbarkeit zu erzielen, ist es ratsam, eine Verfügbarkeitsgruppe mit mindestens zwei Domänencontrollern zu erstellen.
+ Um jede eingehende Anforderung authentifizieren zu können, muss AD FS mit dem Domänencontroller Kontakt aufnehmen. Es wird empfohlen, ein Replikat des Domänencontrollers in Azure bereitzustellen, um für die Authentifizierung den aufwändigen Weg von Azure zum lokalen DC zu vermeiden. Um Hochverfügbarkeit zu erzielen, ist es ratsam, eine Verfügbarkeitsgruppe mit mindestens zwei Domänencontrollern zu erstellen.
 
 | Domänencontroller | Rolle | Speicherkonto |
 |:---:|:---:|:---:|

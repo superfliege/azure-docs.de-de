@@ -89,6 +89,8 @@
       items:
         - name: Bereitstellen der App
           items:
+            - name: Bereitstellen der ZIP-Datei
+              href: app-service-deploy-zip.md
             - name: Bereitstellen über FTP
               href: app-service-deploy-ftp.md
             - name: Bereitstellen über Cloudsynchronisierung
