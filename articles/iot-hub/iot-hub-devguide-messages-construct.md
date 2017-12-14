@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: 1a20b9c6981125895ecd6952135ec4f365bb8d45
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: b88567616e0a8c46494ae0af367f4deb4506be43
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Erstellen und Lesen von IoT Hub-Nachrichten
 
@@ -28,7 +28,7 @@ Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, defi
 * Einen Satz an *Anwendungseigenschaften*. Ein Wörterbuch mit Zeichenfolgeneigenschaften. Die Anwendung kann diese definieren und darauf zugreifen, ohne den Nachrichtentext deserialisieren zu müssen. IoT Hub ändert diese Eigenschaften nie.
 * Ein nicht lesbarer binärer Textkörper.
 
-Eigenschaftennamen und Eigenschaftswerte dürfen nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten. Dies gilt für folgende Situationen:
+Eigenschaftennamen und Eigenschaftswerte dürfen nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten. Dies gilt für folgende Situationen:  
 
 * Senden von Gerät-zu-Cloud-Nachrichten über das Protokoll HTTPS
 * Senden von Cloud-an-Gerät-Nachrichten.

@@ -11,7 +11,7 @@ Es gibt einige Beschränkungen hinsichtlich der Anzahl von Metriken und Ereignis
 | Eingenschaft und Länge der Namen von Metriken | 150 | Siehe [Typschemas](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | Zeichenfolgenlänge des Eigenschaftswerts | 8.192 | Siehe [Typschemas](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
 | Länge von Ablaufverfolgungs- und Ausnahmebenachrichtigungen | 10.000 | Siehe [Typschemas](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/Schemas/Docs/)
-| [Verfügbarkeitstests](../articles/application-insights/app-insights-monitor-web-app-availability.md) Anzahl pro App  | 10 |
+| [Verfügbarkeitstests](../articles/application-insights/app-insights-monitor-web-app-availability.md) Anzahl pro App  | 100 |
 | Vermerkdauer von [Profiler](../articles/application-insights/app-insights-profiler.md)-Daten | 5 Tage |
 | Pro Tag gesendete [Profiler](../articles/application-insights/app-insights-profiler.md)-Daten | 10GB |
 

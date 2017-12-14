@@ -5,7 +5,7 @@ services: active-directory
 keywords: Azure MFA, Integrieren von VPN, Azure Active Directory, Netzwerkrichtlinienserver-Erweiterung
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: c058f1e747849cde0f15a039779665c8718da947
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 1879fc3d45e1a79fe5edd1ae1cf0d7060fd327ae
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -313,7 +313,7 @@ Um diese Probleme zu beheben, ist die Untersuchung der Sicherheitsereignisprotok
 ![Ereignisanzeige](./media/nps-extension-vpn/image22.png)
  
 ## <a name="configure-multi-factor-authentication"></a>Konfigurieren der mehrstufigen Authentifizierung
-Dieser Abschnitt enthält Anweisungen zum Aktivieren von Benutzern für MFA und zur Einrichtung von Konten für die Überprüfung in zwei Schritten. 
+Dieser Abschnitt enthält Anweisungen zum Aktivieren von Benutzern für MFA und zur Einrichtung von Konten für die zweistufige Überprüfung. 
 
 ### <a name="enable-multi-factor-authentication"></a>Aktivieren der mehrstufigen Authentifizierung
 In diesem Abschnitt aktivieren Sie Azure AD-Konten für MFA. Verwenden Sie das klassische Azure-Portal, um Benutzer für MFA zu aktivieren. 
@@ -355,10 +355,10 @@ In diesem Abschnitt aktivieren Sie Azure AD-Konten für MFA. Verwenden Sie das k
 
 Informationen zum Aktivieren von Benutzern für MFA finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](multi-factor-authentication-get-started-cloud.md). 
 
-### <a name="configure-accounts-for-two-step-verification"></a>Konfigurieren von Konten für die Überprüfung in zwei Schritten
+### <a name="configure-accounts-for-two-step-verification"></a>Konfigurieren von Konten für die zweistufige Überprüfung
 Nachdem ein Konto für MFA aktiviert wurde, können sich Benutzer erst dann bei Ressourcen anmelden, die der MFA-Richtlinie unterliegen, wenn sie erfolgreich ein vertrauenswürdiges Gerät für den zweiten Authentifizierungsfaktor konfiguriert haben.
 
-In diesem Abschnitt konfigurieren Sie ein vertrauenswürdiges Gerät für die Verwendung mit der Überprüfung in zwei Schritten. Es stehen mehrere Geräteoptionen einschließlich der folgenden zur Verfügung:
+In diesem Abschnitt konfigurieren Sie ein vertrauenswürdiges Gerät für die Verwendung mit der zweistufigen Überprüfung. Es stehen mehrere Geräteoptionen einschließlich der folgenden zur Verfügung:
 
 * **Mobile App:** Sie installieren die Microsoft Authenticator-App auf einem Gerät mit Windows Phone, Android oder iOS. Je nach den Richtlinien Ihrer Organisation müssen Sie die App in einem von zwei Modi verwenden: 
     * Benachrichtigungen zur Überprüfung empfangen (Eine Benachrichtigung wird mit Push auf Ihr Gerät übertragen.)

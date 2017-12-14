@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 15afdead60d4c1ee3c7e3c079d43e0651b262ec8
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: e033b1005902a9639fc352ffb9af91cb20875bee
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services
 
@@ -101,12 +101,12 @@ Bei der Kartensteuerelement-API von Azure handelt es sich um eine praktische Cli
             }
         </style>
     </head>
+
     <body>
         <div id="map"></div>
         <script>
-        // Embed Map Control JavaScript code here
+            // Embed Map Control JavaScript code here
         </script>
-
     </body>
 
     </html>
@@ -115,26 +115,25 @@ Bei der Kartensteuerelement-API von Azure handelt es sich um eine praktische Cli
  
 3.  Fügen Sie den folgenden JavaScript-Code zum Block *script* der HTML-Datei hinzu. Ersetzen Sie den Platzhalter *<insert-key>* durch den Primärschlüssel des Location Based Services-Kontos. 
 
-    ```HTML/JavaScript
-            // Instantiate map to the div with id "map"
-            var subscriptionKey = "<insert-key>";
-            var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey
-            });
-
+    ```JavaScript
+    // Instantiate map to the div with id "map"
+    var subscriptionKey = "<insert-key>";
+    var map = new atlas.Map("map", {
+        "subscription-key": subscriptionKey
+    });
     ```
     Dieses Segment initiiert die Kartensteuerelement-API für Ihren Abonnementschlüssel. **Atlas** ist der Namespace, der die Azure-Kartensteuerelement-API und die zugehörigen visuellen Komponenten enthält. **atlas.Map** stellt das Steuerelement für ein visuelles Element und eine interaktive Webkarte bereit. Sie können sich ansehen, wie die Karte aussieht, indem Sie die HTML-Seite im Browser öffnen. 
 
 4. Fügen Sie den folgenden JavaScript-Code zum Block *script* hinzu, um eine Ebene mit Suchpins zum Kartensteuerelement hinzuzufügen:
 
-    ```HTML/JavaScript
-            // Initialize the pin layer for search results to the map
-            var searchLayerName = "search-results";
-            map.addPins([], {
-                name: searchLayerName,
-                cluster: false,
-                icon: "pin-round-darkblue"
-            });
+    ```JavaScript
+    // Initialize the pin layer for search results to the map
+    var searchLayerName = "search-results";
+    map.addPins([], {
+        name: searchLayerName,
+        cluster: false,
+        icon: "pin-round-darkblue"
+    });
     ```
 
 5. Speichern Sie die Datei auf Ihrem Computer. 
@@ -147,91 +146,91 @@ Bei der Kartensteuerelement-API von Azure handelt es sich um eine praktische Cli
 In diesem Abschnitt wird veranschaulicht, wie mit der Suchdienst-API von Azure Location Based Services ein Point of Interest auf Ihrer Karte gesucht wird. Es handelt sich um eine RESTful-API für Entwickler für die Suche nach Adressen, Points of Interest und geografischen Informationen. Der Suchdienst ordnet einer bestimmten Adresse Informationen zu Breiten- und Längengrad zu. 
 
 1. Öffnen Sie die im vorherigen Abschnitt erstellte Datei **MapSearch.html**, und fügen Sie den folgenden JavaScript-Code zum Block *script* hinzu, um die Funktionen des Suchdiensts nachzuvollziehen. 
-    ```HTML/JavaScript
-            // Perform a request to the search service and create a pin on the map for each result
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                var searchPins = [];
+    ```JavaScript
+    // Perform a request to the search service and create a pin on the map for each result
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        var searchPins = [];
 
-                if (this.readyState === 4 && this.status === 200) {
-                    var response = JSON.parse(this.responseText);
+        if (this.readyState === 4 && this.status === 200) {
+            var response = JSON.parse(this.responseText);
 
-                    var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
+            var poiResults = response.results.filter((result) => { return result.type === "POI" }) || [];
 
-                    searchPins = poiResults.map((poiResult) => {
-                        var poiPosition = [poiResult.position.lon, poiResult.position.lat];
-                        return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
-                            name: poiResult.poi.name,
-                            address: poiResult.address.freeformAddress,
-                            position: poiResult.position.lat + ", " + poiResult.position.lon
-                        });
-                    });
+            searchPins = poiResults.map((poiResult) => {
+                var poiPosition = [poiResult.position.lon, poiResult.position.lat];
+                return new atlas.data.Feature(new atlas.data.Point(poiPosition), {
+                    name: poiResult.poi.name,
+                    address: poiResult.address.freeformAddress,
+                    position: poiResult.position.lat + ", " + poiResult.position.lon
+                });
+            });
 
-                    map.addPins(searchPins, {
-                        name: searchLayerName
-                    });
+            map.addPins(searchPins, {
+                name: searchLayerName
+            });
 
-                    var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
-                    var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
+            var lons = searchPins.map((pin) => { return pin.geometry.coordinates[0] });
+            var lats = searchPins.map((pin) => { return pin.geometry.coordinates[1] });
 
-                    var swLon = Math.min.apply(null, lons);
-                    var swLat = Math.min.apply(null, lats);
-                    var neLon = Math.max.apply(null, lons);
-                    var neLat = Math.max.apply(null, lats);
+            var swLon = Math.min.apply(null, lons);
+            var swLat = Math.min.apply(null, lats);
+            var neLon = Math.max.apply(null, lons);
+            var neLat = Math.max.apply(null, lats);
 
-                    map.setCameraBounds({
-                        bounds: [swLon, swLat, neLon, neLat],
-                        padding: 50
-                    });
-                }
-            };
+            map.setCameraBounds({
+                bounds: [swLon, swLat, neLon, neLat],
+                padding: 50
+            });
+        }
+    };
     ```
     Dieser Codeausschnitt erstellt [XMLHttpRequest](https://xhr.spec.whatwg.org/) und fügt einen Ereignishandler zum Analysieren der eingehenden Antwort hinzu. Für eine erfolgreiche Antwort werden die Adressen, Namen und Breiten- und Längengradinformationen für jeden zurückgegebenen Ort in der Variable `searchPins` gesammelt. Schließlich wird diese Sammlung von Ortspunkten als Pins zum `map`-Steuerelement hinzugefügt. 
 
 2. Fügen Sie den folgenden Code zum Block *script* hinzu, um „XMLHttpRequest“ an den Azure Location Based Services-Suchdienst zu senden:
 
-    ```HTML/JavaScript
-            var url = "https://atlas.microsoft.com/search/fuzzy/json?";
-            url += "&api-version=1.0";
-            url += "&query=gasoline%20station";
-            url += "&subscription-key=" + subscriptionKey;
-            url += "&lat=47.6292";
-            url += "&lon=-122.2337";
-            url += "&radius=100000"
+    ```JavaScript
+    var url = "https://atlas.microsoft.com/search/fuzzy/json?";
+    url += "&api-version=1.0";
+    url += "&query=gasoline%20station";
+    url += "&subscription-key=" + subscriptionKey;
+    url += "&lat=47.6292";
+    url += "&lon=-122.2337";
+    url += "&radius=100000";
 
-            xhttp.open("GET", url, true);
-            xhttp.send();
+    xhttp.open("GET", url, true);
+    xhttp.send();
     ``` 
     Dieser Codeausschnitt verwendet die Standardsuche-API (**Fuzzysuche**) des Suchdiensts. Diese Suche ist für ungenaue Angaben vorgesehen und verarbeitet beliebige Kombinationen aus Adress- oder *POI*-Token. Sie sucht für die angegebene Adresse am Breiten- und Längengrad und innerhalb des angegebenen Radius nach einer nahe gelegenen **Tankstelle**. Der Aufruf an Location Based Services erfolgt unter Verwendung des Abonnementschlüssels für Ihr Konto, der zuvor in der Beispieldatei bereitgestellt wurde. Die Ergebnisse werden für die gefundenen Orte als Breiten-/Längengradpaare zurückgegeben. Sie können sich die Suchpins ansehen, indem Sie die HTML-Seite im Browser öffnen. 
 
 3. Fügen Sie die folgenden Zeilen zum Block *script* hinzu, um Popups für die vom Suchdienst zurückgegebenen gewünschten Orte zu erstellen:
 
-    ```HTML/JavaScript
-            // Add a popup to the map which will display some basic information about a search result on hover over a pin
-            var popup = new atlas.Popup();
-            map.addEventListener("mouseover", searchLayerName, (e) => {
-                var popupContentElement = document.createElement("div");
-                popupContentElement.style.padding = "5px";
+    ```JavaScript
+    // Add a popup to the map which will display some basic information about a search result on hover over a pin
+    var popup = new atlas.Popup();
+    map.addEventListener("mouseover", searchLayerName, (e) => {
+        var popupContentElement = document.createElement("div");
+        popupContentElement.style.padding = "5px";
 
-                var popupNameElement = document.createElement("div");
-                popupNameElement.innerText = e.features[0].properties.name;
-                popupContentElement.appendChild(popupNameElement);
+        var popupNameElement = document.createElement("div");
+        popupNameElement.innerText = e.features[0].properties.name;
+        popupContentElement.appendChild(popupNameElement);
 
-                var popupAddressElement = document.createElement("div");
-                popupAddressElement.innerText = e.features[0].properties.address;
-                popupContentElement.appendChild(popupAddressElement);
+        var popupAddressElement = document.createElement("div");
+        popupAddressElement.innerText = e.features[0].properties.address;
+        popupContentElement.appendChild(popupAddressElement);
 
-                var popupPositionElement = document.createElement("div");
-                popupPositionElement.innerText = e.features[0].properties.position;
-                popupContentElement.appendChild(popupPositionElement);
+        var popupPositionElement = document.createElement("div");
+        popupPositionElement.innerText = e.features[0].properties.position;
+        popupContentElement.appendChild(popupPositionElement);
 
-                popup.setPopupOptions({
-                    position: e.features[0].geometry.coordinates,
-                    content: popupContentElement
-                });
+        popup.setPopupOptions({
+            position: e.features[0].geometry.coordinates,
+            content: popupContentElement
+        });
 
-                popup.open(map);
-            });
+        popup.open(map);
+    });
     ```
     Die API **atlas.Popup** stellt ein Informationsfenster bereit, das an der erforderlichen Position auf der Karte verankert ist. Der Codeausschnitt legt den Inhalt und die Position für das Popup fest, fügt einen Ereignislistener zum `map`-Steuerelement hinzu und wartet, dass die _Maus_ über das Popup bewegt wird. 
 

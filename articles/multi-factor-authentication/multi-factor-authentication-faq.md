@@ -4,7 +4,7 @@ description: "Häufig gestellte Fragen und Antworten im Zusammenhang mit Azure M
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 50bb8ac3-5559-4d8b-a96a-799a74978b14
 ms.service: multi-factor-authentication
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: joflore
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8881fc9193aa905b5d7083644a3ce8ac4411d693
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 4532cbab7f727e71908d5a2da43a11351f7aeeb3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Häufig gestellte Fragen zu Azure Multi-Factor Authentication
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Azure Multi-Factor Authentication und zur Nutzung des Multi-Factor Authentication-Diensts. Er ist unterteilt in allgemeine Fragen zum Dienst sowie in Fragen zu Abrechnungsmodellen, zur Benutzeroberfläche und zur Problembehandlung.
@@ -27,9 +27,9 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Azure Multi-F
 ## <a name="general"></a>Allgemein
 **F: Wie werden Benutzerdaten vom Azure Multi-Factor Authentication-Server behandelt?**
 
-Bei Multi-Factor Authentication-Server werden die Daten eines Benutzers nur auf den lokalen Servern gespeichert. Daten werden nicht dauerhaft in der Cloud gespeichert. Wenn der Benutzer die Authentifizierung in zwei Schritten ausführt, sendet der Multi-Factor Authentication-Server für die Authentifizierung Daten an den Multi-Factor Authentication-Clouddienst. Zur Kommunikation zwischen Multi-Factor Authentication-Server und dem Multi-Factor Authentication-Clouddienst wird Secure Sockets Layer (SSL) oder Transport Layer Security (TLS) über den ausgehenden Port 443 verwendet.
+Bei Multi-Factor Authentication-Server werden die Daten eines Benutzers nur auf den lokalen Servern gespeichert. Daten werden nicht dauerhaft in der Cloud gespeichert. Wenn der Benutzer die zweistufige Überprüfung ausführt, sendet der Multi-Factor Authentication-Server für die Authentifizierung Daten an den Multi-Factor Authentication-Clouddienst. Zur Kommunikation zwischen Multi-Factor Authentication-Server und dem Multi-Factor Authentication-Clouddienst wird Secure Sockets Layer (SSL) oder Transport Layer Security (TLS) über den ausgehenden Port 443 verwendet.
 
-Wenn Authentifizierungsanforderungen an den Clouddienst gesendet werden, werden Daten für Authentifizierungs- und Verwendungsberichte gesammelt. Folgende Datenfelder werden in den Protokollen der Authentifizierung in zwei Schritten berücksichtigt:
+Wenn Authentifizierungsanforderungen an den Clouddienst gesendet werden, werden Daten für Authentifizierungs- und Verwendungsberichte gesammelt. Folgende Datenfelder werden in den Protokollen der zweistufigen Überprüfung berücksichtigt:
 
 * **Eindeutige ID** (entweder Benutzername oder lokale Server-ID der Multi-Factor Authentication)
 * **Vor- und Nachname** (optional)
@@ -71,9 +71,9 @@ Nein. Durch individuelle Telefonanrufe oder SMS, die über Azure Multi-Factor Au
 
 Bei Ihren Benutzern können Kosten für die eingehenden Telefonanrufe oder SMS anfallen. Das hängt allerdings vom jeweiligen Netzbetreiber ab.
 
-**F: Werden bei Verwendung des benutzerbasierten Abrechnungsmodells alle aktivierten Benutzer abgerechnet oder nur die Benutzer, die eine Überprüfung in zwei Schritten durchgeführt haben?**
+**F: Werden bei Verwendung des benutzerbasierten Abrechnungsmodells alle aktivierten Benutzer abgerechnet oder nur die Benutzer, die eine zweistufige Überprüfung durchgeführt haben?**
 
-Die Abrechnung basiert auf der Anzahl von Benutzern, die zur Nutzung von Multi-Factor Authentication konfiguriert sind – unabhängig davon, ob sie im Abrechnungsmonat eine Überprüfung in zwei Schritten initiiert haben.
+Die Abrechnung basiert auf der Anzahl von Benutzern, die zur Nutzung von Multi-Factor Authentication konfiguriert sind – unabhängig davon, ob sie im Abrechnungsmonat eine zweistufige Überprüfung initiiert haben.
 
 **F: Wie funktioniert die Abrechnung für die Multi-Factor Authentication?**
 
@@ -107,7 +107,7 @@ In einigen Fällen schon.
 
 Wenn Ihr Verzeichnis über einen *benutzerbasierten* Azure Multi-Factor Authentication-Anbieter verfügt, können Sie MFA-Lizenzen hinzufügen. Benutzer mit Lizenzen fließen nicht in die benutzer-/nutzungsbasierte Abrechnung mit ein. Für Benutzer ohne Lizenz kann MFA weiterhin über den MFA-Anbieter aktiviert werden. Wenn Sie für alle Ihre Benutzer, die für die Verwendung von Multi-Factor Authentication konfiguriert sind, Lizenzen erwerben und zuweisen, können Sie den Azure Multi-Factor Authentication-Anbieter löschen. Sollten später einmal mehr Benutzer als Lizenzen vorhanden sein, können Sie jederzeit einen weiteren benutzerbasierten MFA-Anbieter erstellen.
 
-Falls Ihr Verzeichnis über einen *authentifizierungsbasierten* Azure Multi-Factor Authentication-Anbieter verfügt, werden Ihnen immer die einzelnen Authentifizierungen in Rechnung gestellt, solange der MFA-Anbieter mit Ihrem Abonnement verknüpft ist. Sie können Benutzern zwar MFA-Lizenzen zuweisen, Ihnen wird jedoch weiterhin jede Anforderung einer Überprüfung in zwei Schritten in Rechnung gestellt. Dabei spielt es keine Rolle, ob dem anfordernden Benutzer eine MFA-Lizenz zugewiesen ist.
+Falls Ihr Verzeichnis über einen *authentifizierungsbasierten* Azure Multi-Factor Authentication-Anbieter verfügt, werden Ihnen immer die einzelnen Authentifizierungen in Rechnung gestellt, solange der MFA-Anbieter mit Ihrem Abonnement verknüpft ist. Sie können Benutzern zwar MFA-Lizenzen zuweisen, Ihnen wird jedoch weiterhin jede Anforderung einer zweistufigen Überprüfung in Rechnung gestellt. Dabei spielt es keine Rolle, ob dem anfordernden Benutzer eine MFA-Lizenz zugewiesen ist.
 
 **F: Muss meine Organisation Identitäten verwenden und synchronisieren, um Azure Multi-Factor Authentication benutzen zu dürfen?**
 
@@ -169,7 +169,7 @@ Bei unidirektionalen SMS mit Azure MFA in der Cloud (auch AD FS-Adapter und Netw
 
 **F: Kann ich Hardwaretoken in Verbindung mit dem Azure Multi-Factor Authentication-Server verwenden?**
 
-Wenn Sie den Azure Multi-Factor Authentication-Server verwenden, können Sie zeitbasierte Token für die offene Authentifizierung (Open Authentication, OATH) mit einmaligen Kennwörtern (Time-based One-time Password Algorithm, TOTP) von Drittanbietern importieren und sie dann für die Authentifizierung in zwei Schritten verwenden.
+Wenn Sie den Azure Multi-Factor Authentication-Server verwenden, können Sie zeitbasierte Token für die offene Authentifizierung (Open Authentication, OATH) mit einmaligen Kennwörtern (Time-based One-time Password Algorithm, TOTP) von Drittanbietern importieren und sie dann für die zweistufige Überprüfung verwenden.
 
 Sie können ActiveIdentity-Token vom Typ „OATH TOTP“ verwenden, wenn Sie den geheimen Schlüssel in eine CSV-Datei einfügen und in den Azure Multi-Factor Authentication-Server importieren. Sie können OATH-Token mit Active Directory Federation Services (AD FS), mit formularbasierter IIS-Authentifizierung (Internet Information Services) sowie mit Remote Authentication Dial-In User Service (RADIUS) verwenden, sofern das Clientsystem diese Benutzereingabe annehmen kann.
 
@@ -212,7 +212,7 @@ Informieren Sie die Benutzer, dass sie wie Folgt vorgehen sollen, um ihr Konto a
 
 **F: Was können Benutzer tun, wenn sie beim Anmelden bei einer nicht auf Browsern basierenden Anwendung die Fehlermeldung „0x800434D4L“ erhalten?**
 
-Der Fehler „0x800434D4L“ tritt auf, wenn Sie versuchen, sich bei einer nicht browserbasierten, auf einem lokalen Computer installierten Anwendung anzumelden, die nicht mit Konten verwendet werden kann, das eine Überprüfung in zwei Schritten erfordert.
+Der Fehler „0x800434D4L“ tritt auf, wenn Sie versuchen, sich bei einer nicht browserbasierten, auf einem lokalen Computer installierten Anwendung anzumelden, die nicht mit Konten verwendet werden kann, die eine zweistufige Überprüfung erfordern.
 
 Um diesen Fehler zu umgehen, können Sie separate Benutzerkonten für Administratoraufgaben und Nicht-Administratoraufgaben erstellen. Später können Sie die Postfächer beider Konten miteinander verknüpfen, sodass Sie sich bei Outlook lediglich über ihr Nicht-Administratorkonto anmelden. Weitere Informationen über diese Lösung und wie ein Administrator die Möglichkeit erhält, den Inhalt des Postfachs eines Benutzers zu öffnen und anzuzeigen, finden Sie in [Verwalten von Berechtigungen für Empfänger](http://help.outlook.com/141/gg709759.aspx?sl=1).
 

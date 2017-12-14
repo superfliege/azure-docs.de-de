@@ -4,7 +4,7 @@ description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungspr
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 10/12/2017
 ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 9dce8c3132b60b0b0c44f9f9d1e9cf01f68fa280
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Grundlegendes zu Azure AD-Anwendungsproxyconnectors
 
@@ -36,7 +36,7 @@ Für die erfolgreiche Bereitstellung des Anwendungsproxys benötigen Sie mindest
 Weitere Informationen zu den Netzwerkanforderungen für den Connectorserver finden Sie unter [Erste Schritte mit dem Anwendungsproxy und Installieren des Connectors](active-directory-application-proxy-enable.md).
 
 ## <a name="maintenance"></a>Wartung 
-Die Connectors und der Dienst führen alle Aufgaben in Bezug auf die hohe Verfügbarkeit aus. Diese können dynamisch hinzugefügt oder entfernt werden. Jedes Mal, wenn eine neue Anforderung eintrifft, wird diese an einen der gerade verfügbaren Connectors geleitet. Falls ein Connector vorübergehend nicht verfügbar ist, reagiert er nicht auf diesen Datenverkehr.
+Die Connectors und der Dienst führen alle Aufgaben in Bezug auf Hochverfügbarkeit aus. Diese können dynamisch hinzugefügt oder entfernt werden. Jedes Mal, wenn eine neue Anforderung eintrifft, wird diese an einen der gerade verfügbaren Connectors geleitet. Falls ein Connector vorübergehend nicht verfügbar ist, reagiert er nicht auf diesen Datenverkehr.
 
 Die Connectors sind zustandslos und verfügen über keine Konfigurationsdaten auf dem Computer. Die einzigen Daten, die sie speichern, sind die Einstellungen für das Verbinden des Diensts mit dessen Authentifizierungszertifikat. Wenn die Verbindung mit dem Dienst hergestellt wird, werden alle erforderlichen Konfigurationsdaten abgerufen und jeweils nach einigen Minuten aktualisiert.
 
@@ -57,7 +57,7 @@ Wenn Sie nicht warten möchten, bis ein Connector automatisch aktualisiert wird,
 Bei Mandanten mit mehreren Connectors werden die automatischen Updates nacheinander auf die einzelnen Connectors in jeder Gruppe angewendet, um Ausfallzeiten in Ihrer Umgebung zu vermeiden. 
 
 In folgenden Fällen kann es während der Aktualisierung eines Connectors zu Ausfallzeiten kommen:  
-- Sie verfügen nur über einen Connector. Wir empfehlen Ihnen, einen zweiten Connector zu installieren und eine [Connectorgruppe zu erstellen](active-directory-application-proxy-connectors-azure-portal.md), um diese Ausfallzeiten zu vermeiden und die hohe Verfügbarkeit zu verbessern.  
+- Sie verfügen nur über einen Connector. Wir empfehlen Ihnen, einen zweiten Connector zu installieren und eine [Connectorgruppe zu erstellen](active-directory-application-proxy-connectors-azure-portal.md), um diese Ausfallzeiten zu vermeiden und die Hochverfügbarkeit zu verbessern.  
 - Zu Beginn der Aktualisierung befand sich ein Connector mitten in einer Transaktion. Obwohl die ursprüngliche Transaktion verloren gegangen ist, sollte Ihr Browser automatisch versuchen, den Vorgang zu wiederholen. Andernfalls können Sie die Seite aktualisieren. Wenn die Anforderung erneut gesendet wird, wird der Datenverkehr an einen Backupconnector weitergeleitet.
 
 ## <a name="creating-connector-groups"></a>Erstellen von Connectorgruppen

@@ -12,21 +12,22 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.date: 12/13/2017
+ms.author: sashan
+ms.reviewer: carlrab
 ms.workload: Inactive
-ms.date: 04/07/2017
-ms.author: sashan;carlrab
-ms.openlocfilehash: 03bc991d5c1f644b439e9ebfa0d750cbf0c56764
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9d12fb8a7dbd3bb763e42fd0981d7ef18b57248b
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
-# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit elastischem SQL-Datenbankpool
-Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über verschiedene Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Elastische Pools](sql-database-elastic-pool.md) und einzelne Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für elastische Pools beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
+# <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>Strategien für die Notfallwiederherstellung für Anwendungen mit Pools für elastische SQL-Datenbank-Instanzen
+Im Laufe der Jahre haben wir gelernt, dass Clouddienste nicht narrensicher sind und dass es zu schwerwiegenden Vorfällen kommen kann. SQL-Datenbank verfügt über verschiedene Funktionen, mit denen für die geschäftliche Kontinuität Ihrer Anwendung gesorgt werden kann, wenn Vorfälle dieser Art auftreten. [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und einzelne Datenbanken unterstützen die gleichen Funktionen für die Notfallwiederherstellung. In diesem Artikel werden mehrere Notfallwiederherstellungsstrategien für Pools für elastische Datenbanken beschrieben, bei denen diese SQL-Datenbankfunktionen zur Sicherstellung der geschäftlichen Kontinuität verwendet werden.
 
 In diesem Artikel wird das folgende kanonische SaaS-ISV-Anwendungsmuster verwendet:
 
-<i>Bei einer modernen cloudbasierten Webanwendung wird eine SQL-Datenbank für jeden Endbenutzer bereitgestellt. Der ISV verfügt über zahlreiche Kunden und setzt aus diesem Grund viele Datenbanken ein, die als Mandantendatenbanken bezeichnet werden. Da die Mandantendatenbanken in der Regel unvorhersagbare Aktivitätsmuster aufweisen, nutzt der ISV einen elastischen Pool, um die Datenbankkosten für längere Zeiträume eindeutig vorhersagbar zu machen. Mit dem elastischen Pool wird außerdem die Leistungsverwaltung bei Spitzen der Benutzeraktivität vereinfacht. Zusätzlich zu den Mandantendatenbanken werden für die Anwendung auch mehrere Datenbanken genutzt, um Benutzerprofile und die Sicherheit zu verwalten, Verwendungsmuster zu erfassen usw. Die Verfügbarkeit der einzelnen Mandanten wirkt sich nicht auf die Gesamtverfügbarkeit der Anwendung aus. Die Verfügbarkeit und Leistung von Verwaltungsdatenbanken ist für die Funktion der Anwendung von entscheidender Bedeutung, und wenn die Verwaltungsdatenbanken offline sind, ist auch die gesamte Anwendung offline.</i>  
+<i>Bei einer modernen cloudbasierten Webanwendung wird eine SQL-Datenbank für jeden Endbenutzer bereitgestellt. Der ISV verfügt über zahlreiche Kunden und setzt aus diesem Grund viele Datenbanken ein, die als Mandantendatenbanken bezeichnet werden. Da die Mandantendatenbanken in der Regel unvorhersagbare Aktivitätsmuster aufweisen, nutzt der ISV einen Pool für elastische Datenbanken, um die Datenbankkosten für längere Zeiträume eindeutig vorhersagbar zu machen. Mit dem Pool für elastische Datenbanken wird außerdem die Leistungsverwaltung bei Spitzen der Benutzeraktivität vereinfacht. Zusätzlich zu den Mandantendatenbanken werden für die Anwendung auch mehrere Datenbanken genutzt, um Benutzerprofile und die Sicherheit zu verwalten, Verwendungsmuster zu erfassen usw. Die Verfügbarkeit der einzelnen Mandanten wirkt sich nicht auf die Gesamtverfügbarkeit der Anwendung aus. Die Verfügbarkeit und Leistung von Verwaltungsdatenbanken ist für die Funktion der Anwendung von entscheidender Bedeutung, und wenn die Verwaltungsdatenbanken offline sind, ist auch die gesamte Anwendung offline.</i>  
 
 In diesem Artikel werden Strategien für die Notfallwiederherstellung anhand mehrerer Szenarios besprochen, angefangen bei kostenbewussten Anwendungen bis hin zu Anwendungen mit strengen Verfügbarkeitsanforderungen.
 
@@ -40,7 +41,7 @@ Um die Anforderung zur Vereinfachung zu erfüllen, stellen Sie alle Mandantendat
 Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschritte ausführen, die im nächsten Diagramm angegeben sind, um die Anwendung wieder in den Onlinezustand zu versetzen.
 
 * Die Failovergruppe initiiert das automatische Failover der Verwaltungsdatenbank in die DR-Region. Die Anwendung stellt die Verbindung mit der neuen primären Datenbank und allen neuen Konten automatisch wieder her, und in der DR-Region werden Mandantendatenbanken erstellt. Für die vorhandenen Kunden sind die Daten vorübergehend nicht verfügbar.
-* Erstellen Sie den elastischen Pool mit der gleichen Konfiguration wie für den ursprünglichen Pool (2).
+* Erstellen Sie den Pool für elastische Datenbanken mit der gleichen Konfiguration wie für den ursprünglichen Pool (2).
 * Verwenden Sie die Geowiederherstellung, um Kopien der Mandantendatenbanken zu erstellen (3). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
 
 
@@ -62,7 +63,7 @@ An diesem Punkt ist die Anwendung in der primären Region online, und alle Manda
 
 ![Abbildung 3](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-3.png)
 
-Der **Hauptvorteil** dieser Strategie sind die geringen laufenden Kosten für die Datenebenenredundanz. Sicherungen werden automatisch über den SQL-Datenbankdienst ohne Umschreiben der Anwendung und zusätzliche Kosten durchgeführt.  Kosten fallen nur an, wenn die elastischen Datenbanken wiederhergestellt werden. Der **Nachteil** besteht darin, dass die vollständige Wiederherstellung aller Mandantendatenbanken sehr lange dauert. Die Dauer hängt von der Gesamtanzahl von Wiederherstellungen ab, die Sie in der Region für die Notfallwiederherstellung initiieren, sowie von der Gesamtgröße der Mandantendatenbanken. Auch wenn Sie den Wiederherstellungen einiger Mandanten Vorrang einräumen, entsteht ein Wettbewerb mit allen anderen Wiederherstellungen, die in derselben Region initiiert werden. Der Dienst führt Vermittlungen und Drosselungen durch, um die allgemeinen Auswirkungen auf die Datenbanken der vorhandenen Kunden gering zu halten. Außerdem kann die Wiederherstellung der Mandantendatenbanken erst beginnen, nachdem der neue elastische Pool in der Region für die Notfallwiederherstellung erstellt wurde.
+Der **Hauptvorteil** dieser Strategie sind die geringen laufenden Kosten für die Datenebenenredundanz. Sicherungen werden automatisch über den SQL-Datenbankdienst ohne Umschreiben der Anwendung und zusätzliche Kosten durchgeführt.  Kosten fallen nur an, wenn die elastischen Datenbanken wiederhergestellt werden. Der **Nachteil** besteht darin, dass die vollständige Wiederherstellung aller Mandantendatenbanken sehr lange dauert. Die Dauer hängt von der Gesamtanzahl von Wiederherstellungen ab, die Sie in der Region für die Notfallwiederherstellung initiieren, sowie von der Gesamtgröße der Mandantendatenbanken. Auch wenn Sie den Wiederherstellungen einiger Mandanten Vorrang einräumen, entsteht ein Wettbewerb mit allen anderen Wiederherstellungen, die in derselben Region initiiert werden. Der Dienst führt Vermittlungen und Drosselungen durch, um die allgemeinen Auswirkungen auf die Datenbanken der vorhandenen Kunden gering zu halten. Außerdem kann die Wiederherstellung der Mandantendatenbanken erst beginnen, nachdem der neue Pool für elastische Datenbanken in der Region für die Notfallwiederherstellung erstellt wurde.
 
 ## <a name="scenario-2-mature-application-with-tiered-service"></a>Szenario 2: Ausgereifte Anwendung mit Diensten auf mehreren Ebenen
 <i>Wir verwenden eine ausgereifte SaaS-Anwendung mit Dienstangeboten auf mehreren Ebenen und unterschiedlichen SLAs für Testkunden und zahlende Kunden. Für die Testkunden sollen die Kosten so weit wie möglich reduziert werden. Für Testkunden kann es zu Ausfallzeiten kommen, aber die Wahrscheinlichkeit dafür soll verringert werden. In Bezug auf die zahlenden Kunden ist jede Ausfallzeit mit einem Abwanderungsrisiko verbunden. Daher soll sichergestellt sein, dass zahlende Kunden immer auf ihre Daten zugreifen können.</i> 
@@ -83,7 +84,7 @@ Bei einem Ausfall in der primären Region können Sie die Wiederherstellungsschr
 * Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Region für die Notfallwiederherstellung verweist. Alle neuen Konten und Mandantendatenbanken werden jetzt in der Region für die Notfallwiederherstellung erstellt. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
 * Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in den Pool in der Region für die Notfallwiederherstellung durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, erwägen Sie eine Optimierung, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden. 
 * Falls die eDTU-Größe des sekundären Pools niedriger als die Größe des primären Pools war, weil für die sekundären Datenbanken die Kapazität zum Verarbeiten der Änderungsprotokolle nur erforderlich war, als es sich um sekundäre Replikate gehandelt hat, erhöhen Sie die Poolkapazität jetzt sofort. Dies ist nötig, um die gesamte Workload aller Mandanten abdecken zu können (5). 
-* Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in der Notfallwiederherstellungsregion für die Datenbanken der Testkunden (6). 
+* Erstellen Sie den neuen Pool für elastische Datenbanken mit dem gleichen Namen und der gleichen Konfiguration in der Notfallwiederherstellungsregion für die Datenbanken der Testkunden (6). 
 * Nachdem der Pool für die Testkunden erstellt wurde, verwenden Sie die Geowiederherstellung, um die einzelnen Testmandanten-Datenbanken im neuen Pool wiederherzustellen (7). Erwägen Sie die Auslösung der einzelnen Wiederherstellungen über die Endbenutzerverbindungen, oder verwenden Sie ein anderes anwendungsspezifisches Prioritätsschema.
 
 An diesem Punkt ist Ihre Anwendung in der Region für die Notfallwiederherstellung wieder online. Alle zahlenden Kunden haben Zugriff auf ihre Daten, während es für Testkunden beim Zugreifen auf die Daten zu Verzögerungen kommt.
@@ -128,7 +129,7 @@ Im nächsten Diagramm sind die Wiederherstellungsschritte dargestellt, die ausge
 * Ändern Sie die Verbindungszeichenfolge der Anwendung so, dass sie auf die Verwaltungsdatenbanken in Region B verweist. Ändern Sie die Verwaltungsdatenbanken, um sicherzustellen, dass die neuen Konten und Mandantendatenbanken in Region B erstellt werden und die vorhandenen Mandantendatenbanken ebenfalls dort angeordnet sind. Für die vorhandenen Testkunden sind die Daten vorübergehend nicht verfügbar.
 * Führen Sie für die Datenbanken der bezahlten Mandanten ein Failover in Pool 2 von Region B durch, um die Verfügbarkeit sofort wiederherzustellen (4). Da es sich beim Failover um eine schnelle Änderung der Metadatenebene handelt, können Sie eine Optimierung erwägen, bei der die einzelnen Failover bei Bedarf von den Endbenutzerverbindungen ausgelöst werden. 
 * Da Pool 2 jetzt nur primäre Datenbanken enthält, erhöht sich die gesamte Workload im Pool und kann die eDTU-Größe sofort erhöhen (5). 
-* Erstellen Sie den neuen elastischen Pool mit dem gleichen Namen und der gleichen Konfiguration in Region B für die Datenbanken der Testkunden (6). 
+* Erstellen Sie den neuen Pool für elastische Datenbanken mit dem gleichen Namen und der gleichen Konfiguration in Region B für die Datenbanken der Testkunden (6). 
 * Verwenden Sie nach der Erstellung des Pools die Geowiederherstellung, um die individuelle Testmandanten-Datenbank im Pool wiederherzustellen (7). Sie können erwägen, die einzelnen Wiederherstellungen über die Endbenutzerverbindungen auszulösen, oder Sie können ein anderes anwendungsspezifisches Prioritätsschema verwenden.
 
 > [!NOTE]

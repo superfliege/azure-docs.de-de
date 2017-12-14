@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 12/13/2017
 ms.author: pratshar
-ms.openlocfilehash: e53f60979e01a0eabe118d3ae6457a61bd4b0ded
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04fb9ebc8a235dd15817fbb5efd08922ae287aa1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery
 
@@ -31,8 +31,8 @@ Informieren Sie sich zunächst unbedingt über die SQL Server-Funktionen zur Not
 
 Viele Workloads nutzen SQL Server als Grundlage, und die Plattform kann zum Implementieren von Datendiensten in Apps wie SharePoint, Dynamics und SAP integriert werden.  SQL Server kann auf verschiedene Arten bereitgestellt werden:
 
-* **Eigenständiger SQL-Server:**SQL Server und alle Datenbanken werden auf einem einzelnen Computer gehostet (physisch oder virtuell). Bei einer Virtualisierung wird Hostclustering verwendet, um die lokale hohe Verfügbarkeit sicherzustellen. Es wird keine hohe Verfügbarkeit für die Gastebene implementiert.
-* **SQL Server-Failoverclustering-Instanzen (Always ON FCI):** Zwei oder mehr Knoten mit SQL Server-Instanzen und freigegebenen Datenträgern werden in einem Windows-Failovercluster konfiguriert. Wenn ein Knoten heruntergefahren ist, kann der Cluster ein Failover von SQL Server auf eine andere Instanz ausführen. Dieses Setup wird in der Regel zum Implementieren von hoher Verfügbarkeit an einem primären Standort verwendet. Diese Bereitstellung stellt keinen Schutz vor Fehlern oder einem Ausfall auf der Ebene des freigegebenen Speichers dar. Ein freigegebener Datenträger kann per iSCSI, Fibre Channel oder freigegebener VHDX implementiert werden.
+* **Eigenständiger SQL-Server:**SQL Server und alle Datenbanken werden auf einem einzelnen Computer gehostet (physisch oder virtuell). Bei einer Virtualisierung wird Hostclustering verwendet, um die lokale Hochverfügbarkeit sicherzustellen. Es wird keine Hochverfügbarkeit für die Gastebene implementiert.
+* **SQL Server-Failoverclustering-Instanzen (Always ON FCI):** Zwei oder mehr Knoten mit SQL Server-Instanzen und freigegebenen Datenträgern werden in einem Windows-Failovercluster konfiguriert. Wenn ein Knoten heruntergefahren ist, kann der Cluster ein Failover von SQL Server auf eine andere Instanz ausführen. Dieses Setup wird in der Regel zum Implementieren von Hochverfügbarkeit an einem primären Standort verwendet. Diese Bereitstellung stellt keinen Schutz vor Fehlern oder einem Ausfall auf der Ebene des freigegebenen Speichers dar. Ein freigegebener Datenträger kann per iSCSI, Fibre Channel oder freigegebener VHDX implementiert werden.
 * **SQL AlwaysOn-Verfügbarkeitsgruppen:** Zwei oder mehr Knoten werden in einem Cluster ohne Freigabe mit SQL Server-Datenbanken eingerichtet, die in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover konfiguriert sind.
 
  In diesem Artikel werden die folgenden nativen SQL-Notfallwiederherstellungstechnologien zum Wiederherstellen von Datenbanken an einem Remotestandort verwendet:
@@ -50,6 +50,7 @@ Site Recovery kann zum Schützen von SQL Server verwendet werden. Dies ist in de
 **Hyper-V** | Ja | Ja
 **VMware** | Ja | Ja
 **Physischer Server** | Ja | Ja
+**Azure**|NA| Ja
 
 ### <a name="supported-sql-server-versions"></a>Unterstützte SQL Server-Versionen
 Diese SQL Server-Versionen werden für die unterstützten Szenarien unterstützt:
@@ -66,9 +67,9 @@ Site Recovery kann zur Bereitstellung einer Notfallwiederherstellungslösung mit
 **Feature** | **Details** | **SQL Server** |
 --- | --- | ---
 **AlwaysOn-Verfügbarkeitsgruppe** | Mehrere eigenständige Instanzen von SQL Server werden jeweils in einem Failovercluster mit mehreren Knoten ausgeführt.<br/><br/>Datenbanken können in Failovergruppen zusammengefasst werden, die in SQL Server-Instanzen kopiert (gespiegelt) werden können, sodass kein freigegebener Speicher erforderlich ist.<br/><br/>Ermöglicht die Notfallwiederherstellung zwischen einem primären und einem oder mehreren sekundären Standorten. Zwei Knoten können in einem Shared-Nothing-Cluster mit SQL Server-Datenbanken in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover eingerichtet werden. | SQL Server 2014 und 2012 Enterprise Edition
-**Failoverclustering (Always On-FCI)** | SQL Server nutzt das Windows-Failoverclustering für hohe Verfügbarkeit der lokalen SQL Server-Workloads.<br/><br/>Knoten, auf denen Instanzen von SQL Server mit freigegebenen Datenträgern ausgeführt werden, werden in einem Failovercluster konfiguriert. Fällt eine Instanz aus, wird für den Cluster ein Failover zu einer anderen Instanz durchgeführt.<br/><br/>Der Cluster schützt nicht vor Fehlern oder Ausfällen im freigegebenen Speicher. Der freigegebene Datenträger kann mit iSCSI, Fibre Channel oder freigegebenen VHDX-Dateien implementiert werden. | SQL Server Enterprise Editions<br/><br/>SQL Server Standard Edition (auf zwei Knoten beschränkt)
+**Failoverclustering (Always On-FCI)** | SQL Server nutzt das Windows-Failoverclustering für Hochverfügbarkeit der lokalen SQL Server-Workloads.<br/><br/>Knoten, auf denen Instanzen von SQL Server mit freigegebenen Datenträgern ausgeführt werden, werden in einem Failovercluster konfiguriert. Fällt eine Instanz aus, wird für den Cluster ein Failover zu einer anderen Instanz durchgeführt.<br/><br/>Der Cluster schützt nicht vor Fehlern oder Ausfällen im freigegebenen Speicher. Der freigegebene Datenträger kann mit iSCSI, Fibre Channel oder freigegebenen VHDX-Dateien implementiert werden. | SQL Server Enterprise Editions<br/><br/>SQL Server Standard Edition (auf zwei Knoten beschränkt)
 **Datenbankspiegelung (Modus für hohe Sicherheit)** | Schützt eine einzelne Datenbank mittels einer sekundären Kopie. Replikationsmodi mit hoher Sicherheit (synchron) oder mit hoher Leistung (asynchron) verfügbar. Kein Failovercluster erforderlich. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise (alle Editionen)
-**Eigenständige SQL Server-Instanz** | SQL Server und die Datenbank werden auf einem einzelnen Server (physisch oder virtuell) gehostet. Bei einem virtuellen Server wird Hostclustering verwendet, um eine hohe Verfügbarkeit zu gewährleisten. Keine hohe Verfügbarkeit auf Gastebene. | Enterprise oder Standard
+**Eigenständige SQL Server-Instanz** | SQL Server und die Datenbank werden auf einem einzelnen Server (physisch oder virtuell) gehostet. Bei einem virtuellen Server wird Hostclustering verwendet, um Hochverfügbarkeit zu gewährleisten. Keine Hochverfügbarkeit auf Gastebene. | Enterprise oder Standard
 
 ## <a name="deployment-recommendations"></a>Bereitstellungsempfehlungen
 
@@ -77,7 +78,7 @@ Diese Tabelle enthält unsere Empfehlungen für die Integration von SQL Server-
 | **Version** | **Edition** | **Bereitstellung** | **Lokal zu lokal** | **Lokal zu Azure** |
 | --- | --- | --- | --- | --- |
 | SQL Server 2014 oder 2012 |Enterprise |Failoverclusterinstanz |Always On-Verfügbarkeitsgruppen |Always On-Verfügbarkeitsgruppen |
-|| Enterprise |Always On-Verfügbarkeitsgruppen für hohe Verfügbarkeit |Always On-Verfügbarkeitsgruppen |Always On-Verfügbarkeitsgruppen | |
+|| Enterprise |Always On-Verfügbarkeitsgruppen für Hochverfügbarkeit |Always On-Verfügbarkeitsgruppen |Always On-Verfügbarkeitsgruppen | |
 || Standard |Failoverclusterinstanz (FCI) |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung | |
 || Enterprise oder Standard |Eigenständig |Site Recovery-Replikation |Site Recovery-Replikation | |
 | SQL Server 2008 R2 oder 2008 |Enterprise oder Standard |Failoverclusterinstanz (FCI) |Site Recovery-Replikation mit lokaler Spiegelung |Site Recovery-Replikation mit lokaler Spiegelung |
@@ -148,7 +149,7 @@ Sobald Sie das Skript im Wiederherstellungsplan hinzugefügt haben und den Wiede
 
 ## <a name="integrate-with-sql-server-always-on-for-replication-to-a-secondary-on-premises-site"></a>Integration in SQL Server Always On für die Replikation an einem sekundären lokalen Standort
 
-Wenn die SQL Server-Instanz Verfügbarkeitsgruppen für hohe Verfügbarkeit (oder eine FCI) verwendet, empfiehlt es sich, auch am Wiederherstellungsstandort Verfügbarkeitsgruppen zu verwenden. Diese Empfehlung gilt für Apps, die keine verteilten Transaktionen verwenden.
+Wenn die SQL Server-Instanz Verfügbarkeitsgruppen für Hochverfügbarkeit (oder eine FCI) verwendet, empfiehlt es sich, auch am Wiederherstellungsstandort Verfügbarkeitsgruppen zu verwenden. Diese Empfehlung gilt für Apps, die keine verteilten Transaktionen verwenden.
 
 1. [Konfigurieren Sie Datenbanken](https://msdn.microsoft.com/library/hh213078.aspx) in Verfügbarkeitsgruppen.
 1. Erstellen Sie ein virtuelles Netzwerk am sekundären Standort.

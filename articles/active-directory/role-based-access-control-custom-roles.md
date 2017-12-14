@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie benutzerdefinierte Rollen mit der rollenbasi
 services: active-directory
 documentationcenter: 
 author: andredm7
-manager: femila
+manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.date: 07/11/2017
 ms.author: andredm
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2bb671e1870ae22eb515adc36ce0235e1d8ecddd
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 53c8060413f5625273360d9bf23cf27b3f56fb32
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Erstellen Sie eine benutzerdefinierte Rolle in der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC), falls keine der integrierten Rollen Ihre speziellen Zugriffsanforderungen erfüllt. Benutzerdefinierte Rollen können mit [Azure PowerShell](role-based-access-control-manage-access-powershell.md), der [Azure-Befehlszeilenschnittstelle](role-based-access-control-manage-access-azure-cli.md) (Command-Line Interface, CLI) und der [REST-API](role-based-access-control-manage-access-rest.md) erstellt werden. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Anwendungen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Mandanten gespeichert und können für mehrere Abonnements genutzt werden.

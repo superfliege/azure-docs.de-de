@@ -6,21 +6,22 @@ services: sql-database
 documentationcenter: 
 author: CarlRabeler
 manager: jhubbard
-editor: cgronlun
+editor: 
 ms.assetid: c561f600-a292-4e3b-b1d4-8ab89b81db48
 ms.service: sql-database
 ms.custom: overview, mvc
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
+ms.date: 12/13/2017
 ms.workload: Active
-ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 884935074dd19304f72fc761c89fc7ae8fd5b3a3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.reviewer: carlrab
+ms.openlocfilehash: fef35e8c100bb6a9e96f16b81fe44e9ae9e504d0
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbankdienst? 
 
@@ -47,21 +48,21 @@ SQL-Datenbank bietet vier Dienstebenen zur Unterstützung von geringeren und auf
 
    ![Skalieren](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
-### <a name="elastic-pools-to-maximize-resource-utilization"></a>Elastische Pools zum Maximieren der Ressourcenverwendung
+### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pools für elastische Datenbanken zum Maximieren der Ressourcenverwendung
 
-Für viele Unternehmen und Anwendungen genügt es, wenn Einzeldatenbanken erstellt werden können und sich die Leistung nach oben oder unten anpassen lässt – insbesondere, wenn die Nutzungsmuster relativ gut vorhersagbar sind. Bei unvorhersagbaren Nutzungsmustern kann es jedoch schwer sein, die Kosten und Ihr Geschäftsmodell zu verwalten. [Elastische Pools](sql-database-elastic-pool.md) sind dafür ausgelegt, dieses Problem zu beheben. Das Konzept ist denkbar einfach. Sie ordnen Leistungsressourcen nicht einer Einzeldatenbank, sondern einem Pool zu, sodass Sie für die gesamten Leistungsressourcen des Pools und nicht für die Leistung einer Einzeldatenbank zahlen. 
+Für viele Unternehmen und Anwendungen genügt es, wenn Einzeldatenbanken erstellt werden können und sich die Leistung nach oben oder unten anpassen lässt – insbesondere, wenn die Nutzungsmuster relativ gut vorhersagbar sind. Bei unvorhersagbaren Nutzungsmustern kann es jedoch schwer sein, die Kosten und Ihr Geschäftsmodell zu verwalten. [Pools für elastische Datenbanken](sql-database-elastic-pool.md) sind darauf ausgelegt, dieses Problem zu beheben. Das Konzept ist denkbar einfach. Sie ordnen Leistungsressourcen nicht einer Einzeldatenbank, sondern einem Pool zu, sodass Sie für die gesamten Leistungsressourcen des Pools und nicht für die Leistung einer Einzeldatenbank zahlen. 
 
-   ![Elastische Pools](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
+   ![Pools für elastische Datenbanken](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 
-Bei elastischen Pools müssen Sie sich nicht darauf konzentrieren, die Datenbankleistung nach oben oder unten anzupassen, wenn der Ressourcenbedarf schwankt. Die im Pool zusammengefassten Datenbanken nutzen die Leistungsressourcen des elastischen Pools je nach Bedarf. In einem Pool zusammengefasste Datenbanken nutzen die Grenzwerte des Pools, überschreiten sie aber nicht. Ihre Kosten bleiben also vorhersagbar, auch wenn sich die Nutzung der einzelnen Datenbanken nicht prognostizieren lässt. Darüber hinaus können Sie [Datenbanken im Pool hinzufügen und entfernen](sql-database-elastic-pool-manage-portal.md)und so Ihre App von einigen wenigen auf Tausende Datenbanken skalieren, und das in einem kontrollierten Kostenrahmen. Sie können außerdem die minimalen und maximalen Ressourcen steuern, die für die Datenbanken im Pool verfügbar sind. So können Sie sicherstellen, dass keine Datenbank im Pool alle Poolressourcen verbraucht und dass jede Datenbank des Pools über ein garantiertes Minimum an Ressourcen verfügt. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
+Bei Pools für elastische Datenbanken müssen Sie sich nicht darauf konzentrieren, die Datenbankleistung nach oben oder unten anzupassen, wenn der Ressourcenbedarf schwankt. Die im Pool zusammengefassten Datenbanken nutzen die Leistungsressourcen des Pools für elastische Datenbanken je nach Bedarf. In einem Pool zusammengefasste Datenbanken nutzen die Grenzwerte des Pools, überschreiten sie aber nicht. Ihre Kosten bleiben also vorhersagbar, auch wenn sich die Nutzung der einzelnen Datenbanken nicht prognostizieren lässt. Darüber hinaus können Sie [Datenbanken im Pool hinzufügen und entfernen](sql-database-elastic-pool-manage-portal.md)und so Ihre App von einigen wenigen auf Tausende Datenbanken skalieren, und das in einem kontrollierten Kostenrahmen. Sie können außerdem die minimalen und maximalen Ressourcen steuern, die für die Datenbanken im Pool verfügbar sind. So können Sie sicherstellen, dass keine Datenbank im Pool alle Poolressourcen verbraucht und dass jede Datenbank des Pools über ein garantiertes Minimum an Ressourcen verfügt. Weitere Informationen zu Entwurfsmustern für SaaS-Anwendungen, für die Pools für elastische Datenbanken verwendet werden, finden Sie unter [Entwurfsmuster für SaaS-Anwendungen mit mehreren Mandanten und SQL-Datenbank](sql-database-design-patterns-multi-tenancy-saas-applications.md).
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>Mischen von Einzeldatenbanken mit Datenbanken in Pools
 
-Sie können weiterhin flexibel vorgehen – unabhängig davon, ob Sie sich für Einzeldatenbanken oder elastische Pools entscheiden. Sie haben die Möglichkeit, Einzeldatenbanken mit elastischen Pools zu kombinieren und die Dienstebenen von Einzeldatenbanken und elastischen Pools schnell und einfach an Ihre Bedürfnisse anzupassen. Mit der Leistungsstärke und Reichweite von Azure können Sie andere Azure-Dienste mit SQL-Datenbank kombinieren, um Ihre individuellen Anforderungen bei der App-Entwicklung zu erfüllen, Kosten- und Ressourceneffizienz zu fördern und neue Geschäftsmöglichkeiten zu erschließen.
+Sie können weiterhin flexibel vorgehen – unabhängig davon, ob Sie sich für Einzeldatenbanken oder Pools für elastische Datenbanken entscheiden. Sie haben die Möglichkeit, Einzeldatenbanken mit Pools für elastische Datenbanken zu kombinieren und die Dienstebenen von Einzeldatenbanken und Pools für elastische Datenbanken schnell und einfach an Ihre Bedürfnisse anzupassen. Mit der Leistungsstärke und Reichweite von Azure können Sie andere Azure-Dienste mit SQL-Datenbank kombinieren, um Ihre individuellen Anforderungen bei der App-Entwicklung zu erfüllen, Kosten- und Ressourceneffizienz zu fördern und neue Geschäftsmöglichkeiten zu erschließen.
 
 ### <a name="extensive-monitoring-and-alerting-capabilities"></a>Umfassende Funktionen für Überwachung und Warnung
 
-Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und elastischen Pools vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Sie verwenden die [integrierten Leistungsüberwachungs-](sql-database-performance.md) und [Warntools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen, die auf [Datenbanktransaktionseinheiten (DTUs) für Einzeldatenbanken und elastischen DTUs (eDTUs) für elastische Pools](sql-database-what-is-a-dtu.md) basieren. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Ausführliche Informationen finden Sie unter [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md) .
+Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und Pools für elastische Datenbanken vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Sie verwenden die [integrierten Leistungsüberwachungs-](sql-database-performance.md) und [Warntools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen, die auf [Datenbanktransaktionseinheiten (DTUs) für Einzeldatenbanken und elastischen DTUs (eDTUs) für Pools für elastische Datenbanken](sql-database-what-is-a-dtu.md) basieren. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Ausführliche Informationen finden Sie unter [SQL-Datenbankoptionen und -leistung: Grundlegendes zum Angebot in den einzelnen Tarifen](sql-database-service-tiers.md) .
 
 Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
 
@@ -160,7 +161,7 @@ SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Unter [Preise](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie Preisvergleiche und Rechner für Einzeldatenbanken und elastische Pools.
+- Unter [Preise](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie Preisvergleiche und Rechner für Einzeldatenbanken und Pools für elastische Datenbanken.
 
 - Diese Schnellstarts erleichtern Ihnen den Einstieg:
 

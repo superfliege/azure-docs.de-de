@@ -3,7 +3,7 @@ title: Azure Automation-Runbooktypen | Microsoft Docs
 description: "Beschreibt die verschiedenen Runbooktypen, die Sie in Azure Automation verwenden können, sowie Aspekte, die Sie bei der Wahl des geeigneten Typs berücksichtigen sollten. "
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: tysonn
 ms.assetid: 9265c975-4281-4819-a84f-d86641277f36
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/01/2017
 ms.author: bwren
-ms.openlocfilehash: 508f4bb0fc8a443dd7b95cbf19861ab1a1abeb6e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: e4a8ab0e68d6614fea1b44f0115a1c633f145277
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation-Runbooktypen
 Azure Automation unterstützt verschiedene Runbooktypen, die in der folgenden Tabelle kurz beschrieben werden.  Die folgenden Abschnitte bieten weitere Informationen zu den einzelnen Typen und deren Einsatzbereichen.
@@ -96,7 +96,7 @@ Python-Runbooks werden unter Python-2 kompiliert.  Sie können den Code des Runb
 ### <a name="known-issues"></a>Bekannte Probleme
 Im Folgenden sind aktuell bekannte Probleme mit Python-Runbooks aufgeführt.
 
-* Um Bibliotheken von Drittanbietern nutzen zu können, muss das Runbook auf einem [Windows-Hybrid Runbook Worker](https://docs.microsoft.com/en-us/azure/automation/automation-windows-hrw-install) oder [Linux-Hybrid Runbook Worker](https://docs.microsoft.com/en-us/azure/automation/automation-linux-hrw-install) mit den bereits auf dem Computer installierten Bibliotheken ausgeführt werden, bevor das Runbook gestartet wird.
+* Um Bibliotheken von Drittanbietern nutzen zu können, muss das Runbook auf einem [Windows-Hybrid Runbook Worker](https://docs.microsoft.com/azure/automation/automation-windows-hrw-install) oder [Linux-Hybrid Runbook Worker](https://docs.microsoft.com/azure/automation/automation-linux-hrw-install) mit den bereits auf dem Computer installierten Bibliotheken ausgeführt werden, bevor das Runbook gestartet wird.
 
 ## <a name="considerations"></a>Überlegungen
 Wenn Sie festlegen, welchen Typ Sie für ein bestimmtes Runbook verwenden möchten, sollten Sie außerdem Folgendes berücksichtigen.

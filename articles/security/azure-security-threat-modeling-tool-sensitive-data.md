@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 21d1ba02052862e16ef27ec313d53cd0bffcc21a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 60fcb24ffe813d7fb633c5398252dc8ea7d7a19f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 | **Web Application** | <ul><li>[Sicherstellen, dass sensible Inhalte nicht im Browser zwischengespeichert werden](#cache-browser)</li><li>[Verschlüsseln von Abschnitten der Web-App-Konfigurationsdateien, die sensible Daten enthalten](#encrypt-data)</li><li>[Explizites Deaktivieren des autocomplete-HTML-Attributs in sensiblen Formularen und Eingabeumgebungen](#autocomplete-input)</li><li>[Sicherstellen, dass auf dem Benutzerbildschirm angezeigte sensible Daten maskiert sind](#data-mask)</li></ul> | 
 | **Datenbank** | <ul><li>[Implementieren der dynamischen Datenmaskierung zum Beschränken der Offenlegung von sensiblen Daten für Benutzer ohne Berechtigungen](#dynamic-users)</li><li>[Sicherstellen, dass Kennwörter im Salt-Hashformat gespeichert werden](#salted-hash)</li><li>[Sicherstellen, dass sensible Daten in Datenbankspalten verschlüsselt sind](#db-encrypted)</li><li>[Sicherstellen, dass die Verschlüsselung auf Datenbankebene (TDE) aktiviert ist](#tde-enabled)</li><li>[Sicherstellen, dass Datenbanksicherungen verschlüsselt sind](#backup)</li></ul> | 
 | **Web-API** | <ul><li>[Sicherstellen, dass für die Web-API relevante sensible Daten nicht im Speicher des Browsers gespeichert werden](#api-browser)</li></ul> | 
-| Azure DocumentDB | <ul><li>[Verschlüsseln von sensiblen Daten, die in DocumentDB gespeichert werden](#encrypt-docdb)</li></ul> | 
+| Azure DocumentDB | <ul><li>[Verschlüsseln sensibler Daten, die in Azure Cosmos DB gespeichert werden](#encrypt-docdb)</li></ul> | 
 | **Azure IaaS-VM-Vertrauensstellungsgrenze** | <ul><li>[Verwenden von Azure Disk Encryption zum Verschlüsseln von Datenträgern, die von virtuellen Computern verwendet werden](#disk-vm)</li></ul> | 
 | **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Verschlüsseln von Geheimnissen in Service Fabric-Anwendungen](#fabric-apps)</li></ul> | 
 | **Dynamics CRM** | <ul><li>[Durchführen der Sicherheitsmodellierung und Verwenden von Geschäftseinheiten/Teams nach Bedarf](#modeling-teams)</li><li>[Einschränken des Zugriffs auf die Funktion „Freigeben“ für kritische Entitäten](#entities)</li><li>[Schulen von Benutzern in Bezug auf die Risiken der Funktion „Freigeben“ von Dynamics CRM und bewährte Sicherheitsmethoden](#good-practices)</li><li>[Einbinden einer Entwicklungsstandardregel, die das Anzeigen von Konfigurationsdetails bei der Ausnahmeverwaltung vorschreibt](#exception-mgmt)</li></ul> | 

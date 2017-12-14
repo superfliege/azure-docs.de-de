@@ -6,7 +6,7 @@ Wenn Sie einen Datenträger, der einem virtuellen Computer (VM) angefügt ist, n
 ## <a name="find-the-disk"></a>Suchen des Datenträgers
 Bevor Sie einen Datenträger von einer VM trennen können, müssen Sie die LUN-Nummer herausfinden, die als Bezeichner des zu trennenden Datenträgers fungiert. Gehen Sie dazu folgendermaßen vor:
 
-1. Öffnen Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](../articles/xplat-cli-connect.md). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
+1. Öffnen Sie die Azure-Befehlszeilenschnittstelle, und [stellen Sie eine Verbindung mit Ihrem Azure-Abonnement her](/cli/azure/authenticate-azure-cli). Stellen Sie sicher, dass Sie sich im Azure Service Management-Modus (`azure config mode asm`) befinden.
 2. Bestimmen Sie die an Ihren virtuellen Computer angefügten Datenträger. Im folgenden Beispiel werden Datenträger für die VM mit dem Namen `myVM` aufgeführt:
 
     ```azurecli

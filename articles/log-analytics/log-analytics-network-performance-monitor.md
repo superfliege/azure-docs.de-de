@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: banders
-ms.openlocfilehash: 10e8eeaade5d51b1a15c30802b28600bcf6c72d9
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: d5d5ec1b524fa455c8d2231c7c16fd7942f713c4
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Netzwerkleistungsmonitor-Lösung in Azure Log Analytics
 
@@ -46,7 +46,7 @@ Wenn Sie eine Branchenanwendung überwachen möchten, können Sie die Netzwerkle
 Selbst wenn Sie bereits in andere Netzwerküberwachungstools investiert haben, kann die Lösung diese Tools ergänzen, da die meisten herkömmlichen Netzwerküberwachungslösungen keinen Einblick in End-to-End-Netzwerkleistungsmetriken wie Verlust und Latenz geben.  Die Netzwerkleistungsmonitor-Lösung kann helfen, diese Lücke zu schließen.
 
 ## <a name="installing-and-configuring-agents-for-the-solution"></a>Installieren und Konfigurieren von Agents für die Lösung
-Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agents.md) und [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md) beschrieben werden.
+Verwenden Sie zum Installieren von Agents die grundlegenden Prozesse, die unter [Verbinden von Windows-Computern mit Log Analytics](log-analytics-windows-agent.md) und [Herstellen einer Verbindung zwischen Operations Manager und Log Analytics](log-analytics-om-agents.md) beschrieben werden.
 
 > [!NOTE]
 > Sie müssen mindestens zwei Agents installieren, damit genügend Daten zum Ermitteln und Überwachen Ihrer Netzwerkressourcen vorhanden sind. Andernfalls verharrt die Lösung im Konfigurierungsstatus, bis Sie weitere Agents installieren und konfigurieren.

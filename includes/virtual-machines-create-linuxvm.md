@@ -1,5 +1,5 @@
 
-1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI 1.0)](../articles/xplat-cli-connect.md)ausführen.
+1. Melden Sie sich bei Ihrem Azure-Abonnement an, indem Sie die Schritte unter [Herstellen einer Verbindung mit Azure von der Azure Befehlszeilenschnittstelle (Azure-CLI 1.0)](/cli/azure/authenticate-azure-cli)ausführen.
 
 2. Stellen Sie wie folgt sicher, dass der klassische Bereitstellungsmodus aktiviert ist:
 

@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Azure AD Connect-Passthrough-Authentifizierung, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 8adca38cc5a783abfe29725dbb0a201de4183dad
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1da7c064030501b5c6547b65c091b1a50da93899
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -114,7 +114,7 @@ Befolgen Sie diese Anweisungen, um zu überprüfen, ob die Passthrough-Authentif
 
 Jetzt können sich Benutzer aus allen verwalteten Domänen Ihres Mandanten mit der Passthrough-Authentifizierung anmelden. Benutzer von Verbunddomänen melden sich aber weiterhin mithilfe der AD FS oder einem anderen Verbundanbieter an, den Sie zuvor konfiguriert haben. Wenn Sie eine Verbunddomäne in eine verwaltete Domäne konvertieren, melden sich alle Benutzer dieser Domäne automatisch mit der Passthrough-Authentifizierung an. Benutzer, die auf die Cloud beschränkt sind, sind von der Passthrough-Authentifizierungsfunktion nicht betroffen.
 
-## <a name="step-5-ensure-high-availability"></a>Schritt 5: Sicherstellen der hohen Verfügbarkeit
+## <a name="step-5-ensure-high-availability"></a>Schritt 5: Sicherstellen der Hochverfügbarkeit
 
 Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktionsumgebung planen, sollten Sie einen eigenständigen Authentifizierungs-Agent installieren. Installieren Sie diesen zweiten Authentifizierungs-Agent auf einem _anderen_ Server – also nicht auf dem Server, auf dem Azure AD Connect und der erste Authentifizierungs-Agent ausgeführt werden. Mit diesem Setup erzielen Sie Hochverfügbarkeit für Anmeldeanforderungen. Befolgen Sie diese Anweisungen zum Bereitstellen eines eigenständigen Authentifizierungs-Agents:
 

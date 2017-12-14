@@ -4,7 +4,7 @@ description: "Die Erweiterung „Netzwerkrichtlinienserver“ für Azure Multi-F
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 08/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: ebd6109fdae00da9e6dc1fc456573327d521e7e9
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 8c3ceb8a455ea32ebbd1393aa2484b8b8c898ef8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -119,12 +119,12 @@ Sie können [nicht unterstützte Authentifizierungsmethoden](multi-factor-authen
 
 ### <a name="enable-users-for-mfa"></a>Aktivieren von Benutzern für MFA
 
-Bevor Sie die vollständige NPS-Erweiterung bereitstellen, müssen Sie MFA für die Benutzer aktivieren, die eine Überprüfung in zwei Schritten durchführen sollen. Vorher benötigen Sie zum Testen der Erweiterung bei der Bereitstellung zumindest ein Testkonto, das vollständig für Multi-Factor Authentication registriert ist.
+Bevor Sie die vollständige NPS-Erweiterung bereitstellen, müssen Sie MFA für die Benutzer aktivieren, die eine zweistufige Überprüfung durchführen sollen. Vorher benötigen Sie zum Testen der Erweiterung bei der Bereitstellung zumindest ein Testkonto, das vollständig für Multi-Factor Authentication registriert ist.
 
 Führen Sie die folgende Schritte aus, um ein Testkonto einzurichten:
 1. Melden Sie sich unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) mit einem Testkonto an. 
 2. Befolgen Sie die Anweisungen zum Einrichten einer Überprüfungsmethode.
-3. Erstellen Sie eine Richtlinie für den bedingten Zugriff, oder [ändern Sie den Benutzerstatus](multi-factor-authentication-get-started-user-states.md), sodass eine Überprüfung in zwei Schritten für das Testkonto erforderlich ist. 
+3. Erstellen Sie eine Richtlinie für den bedingten Zugriff, oder [ändern Sie den Benutzerstatus](multi-factor-authentication-get-started-user-states.md), sodass eine zweistufige Überprüfung für das Testkonto erforderlich ist. 
 
 Ihre Benutzer müssen auch diese Schritte zum Registrieren befolgen, bevor sie sich mit der NPS-Erweiterung authentifizieren können.
 
@@ -245,7 +245,7 @@ Dieser Fehler kann verschiedene Gründe haben. Gehen Sie zur Problembehandlung f
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Konfigurieren Sie alternative IDs für die Anmeldung, oder richten Sie unter [Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication](nps-extension-advanced-configuration.md) eine Ausnahmeliste für IP-Adressen ein, welche die Überprüfung in zwei Schritten nicht ausführen müssen.
+- Konfigurieren Sie alternative IDs für die Anmeldung, oder richten Sie unter [Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication](nps-extension-advanced-configuration.md) eine Ausnahmeliste für IP-Adressen ein, welche die zweistufige Überprüfung nicht ausführen müssen.
 
 - Erfahren Sie, wie Sie [Remotedesktopgateway](nps-extension-remote-desktop-gateway.md) und [VPN-Server](nps-extension-vpn.md) mithilfe der NPS-Erweiterung integrieren.
 

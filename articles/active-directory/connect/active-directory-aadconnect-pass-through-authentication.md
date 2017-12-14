@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Was ist die Pass-Through-Authentifizierung mit Azure AD Connect?, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, Single Sign-On, einmaliges Anmelden"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: billmath
-ms.openlocfilehash: 6987ad8f36de55ac49785b41bb193721aa78321b
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 02b1b3f2a567f6073b891a0376eddbc87cd268aa
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -49,7 +49,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
   - Der Agent stellt innerhalb des Netzwerks nur ausgehende Verbindungen her. Daher muss der Agent nicht in einem Umkreisnetzwerk (auch als DMZ bezeichnet) installiert werden.
   - Ihre Benutzerkonten werden durch die nahtlose Zusammenarbeit mit [Azure AD-Richtlinien für den bedingten Zugriff](../active-directory-conditional-access-azure-portal.md), einschließlich der Multi-Factor Authentication (MFA), und durch das [Filtern von Brute-Force-Kennwortangriffen](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) geschützt.
 - *Hoch verfügbar*
-  - Zusätzliche Agents können auf mehrere lokalen Servern installiert werden, um eine hohe Verfügbarkeit von Anmeldeanforderungen bereitzustellen.
+  - Zusätzliche Agents können auf mehrere lokalen Servern installiert werden, um Hochverfügbarkeit von Anmeldeanforderungen bereitzustellen.
 
 ## <a name="feature-highlights"></a>Wichtige Features
 
@@ -61,7 +61,7 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 - Es handelt sich um ein kostenloses Feature, sodass Sie für dessen Verwendung keine kostenpflichtigen Editionen von Azure AD benötigen.
 - Dies kann über [Azure AD Connect](active-directory-aadconnect.md) aktiviert werden.
 - Dazu wird ein einfacher lokaler Agent verwendet, der auf Kennwortüberprüfungsanforderungen lauscht und darauf reagiert.
-- Die Installation von mehreren Agents stellt hohe Verfügbarkeit von Anmeldeanforderungen bereit.
+- Die Installation von mehreren Agents stellt Hochverfügbarkeit von Anmeldeanforderungen bereit.
 - So werden Ihre lokalen Konten gegen Brute-Force-Kennwortangriffe in der Cloud [geschützt](active-directory-aadconnect-pass-through-authentication-smart-lockout.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

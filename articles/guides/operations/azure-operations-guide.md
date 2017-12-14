@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 4a913e188dd40b0306be375b016b9e8a3739ed72
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>Einführung in Cloud Computing und Microsoft Azure
 
@@ -100,7 +100,7 @@ Dienste zum Speichern und Verwalten von Daten:
 
 -   Azure SQL-Datenbank
 
--   Azure DocumentDB
+-   Azure Cosmos DB
 
 -   Microsoft Azure StorSimple
 
@@ -374,9 +374,9 @@ Azure Storage ist ein von Microsoft verwalteter Dienst zur Bereitstellung von da
 
 Azure-Speicherkonten können mit unterschiedlichen Redundanzebenen konfiguriert werden:
 
--   **Lokal redundanter Speicher** bietet eine hohe Verfügbarkeit, indem sichergestellt wird, dass synchron drei Kopien aller Daten erstellt werden, bevor ein Schreibvorgang als erfolgreich angesehen wird. Diese Kopien werden in einer einzelnen Einrichtung in einer einzelnen Region gespeichert. Die Replikate befinden sich in separaten Fehler- und Upgradedomänen. Dies bedeutet Folgendes: Die Daten sind auch dann verfügbar, wenn ein Speicherknoten, der Ihre Daten enthält, ausfällt oder zur Durchführung eines Updates in den Offlinezustand versetzt wird.
+-   **Lokal redundanter Speicher** bietet Hochverfügbarkeit, indem sichergestellt wird, dass synchron drei Kopien aller Daten erstellt werden, bevor ein Schreibvorgang als erfolgreich angesehen wird. Diese Kopien werden in einer einzelnen Einrichtung in einer einzelnen Region gespeichert. Die Replikate befinden sich in separaten Fehler- und Upgradedomänen. Dies bedeutet Folgendes: Die Daten sind auch dann verfügbar, wenn ein Speicherknoten, der Ihre Daten enthält, ausfällt oder zur Durchführung eines Updates in den Offlinezustand versetzt wird.
 
--   **Georedundanter Speicher** erstellt drei synchrone Kopien der Daten in der primären Region, um für eine hohe Verfügbarkeit zu sorgen, und anschließend asynchron drei Replikate in einer verknüpften Region für die Notfallwiederherstellung.
+-   **Georedundanter Speicher** erstellt drei synchrone Kopien der Daten in der primären Region, um für Hochverfügbarkeit zu sorgen, und anschließend asynchron drei Replikate in einer verknüpften Region für die Notfallwiederherstellung.
 
 -   Bei **georedundantem Speicher mit Lesezugriff** handelt es sich um georedundanten Speicher, der zusätzlich über die Möglichkeit verfügt, dass Daten in der sekundären Region gelesen werden. Hierdurch ist der Speicher für Teilnotfallwiederherstellungen geeignet. Wenn ein Problem mit der primären Region besteht, können Sie Ihre Anwendung so ändern, dass sie über schreibgeschützten Zugriff auf die verknüpfte Region verfügt.
 

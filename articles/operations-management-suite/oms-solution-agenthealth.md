@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: b810e37e393ddab55500f636b72450789285a4f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 601e059af6040834f1ceb520ffe23aeadb6cdb18
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 #  <a name="agent-health-solution-in-oms"></a>Lösung für die Agent-Integritätsdiagnose in OMS
 Mit der Lösung für die Agent-Integritätsdiagnose in OMS können Sie für alle Agents, die ihre Daten direkt an den OMS-Arbeitsbereich oder eine mit OMS verbundene System Center Operations Manager-Verwaltungsgruppe melden, die Agents ermitteln, die nicht mehr reagieren und Betriebsdaten übermitteln.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Vergewissern Sie sich vor dem Bereitstellen dieser Lösung, dass Sie über derzeit unterstützte [Windows-Agents](../log-analytics/log-analytics-windows-agents.md) verfügen, die Daten an den OMS-Arbeitsbereich oder an eine [Operations Manager-Verwaltungsgruppe](../log-analytics/log-analytics-om-agents.md), die in Ihren OMS-Arbeitsbereich integriert ist, melden.    
+Vergewissern Sie sich vor dem Bereitstellen dieser Lösung, dass Sie über derzeit unterstützte [Windows-Agents](../log-analytics/log-analytics-windows-agent.md) verfügen, die Daten an den OMS-Arbeitsbereich oder an eine [Operations Manager-Verwaltungsgruppe](../log-analytics/log-analytics-om-agents.md), die in Ihren OMS-Arbeitsbereich integriert ist, melden.    
 
 ## <a name="solution-components"></a>Lösungskomponenten
 Diese Lösung besteht aus den folgenden Ressourcen, die Ihrem Arbeitsbereich hinzugefügt werden, und direkt verbundenen Agents oder mit Operations Manager verbundenen Verwaltungsgruppen.

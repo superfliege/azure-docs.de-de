@@ -4,7 +4,7 @@ description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungspr
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 11/03/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 5eb681e5f5c3b5944ff2d101056ae7c7cd60fac2
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: f2d7387f03757afb0b51105f02068d4aada8f9f8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -27,7 +27,7 @@ Der Remotedesktopdienst und der Azure AD-Anwendungsproxy verbessern zusammen die
 
 Dieser Artikel richtet sich an folgende Zielgruppe:
 - Bestehende Kunden des Anwendungsproxys, die durch Veröffentlichung von lokalen Anwendungen über Remotedesktopdienste mehrere Anwendungen für ihre Endbenutzer anbieten möchten
-- Bestehende Kunden der Remotedesktopdienste, die die Angriffsfläche ihrer Bereitstellung mit dem Azure AD-Anwendungsproxy reduzieren möchten. Dieses Szenario bietet eine begrenzte Anzahl von Steuerelementen zur Überprüfung in zwei Schritten und für den bedingten Zugriff auf RDS.
+- Bestehende Kunden der Remotedesktopdienste, die die Angriffsfläche ihrer Bereitstellung mit dem Azure AD-Anwendungsproxy reduzieren möchten. Dieses Szenario bietet eine begrenzte Anzahl von Steuerelementen zur zweistufigen Überprüfung und für den bedingten Zugriff auf RDS.
 
 ## <a name="how-application-proxy-fits-in-the-standard-rds-deployment"></a>Informationen zur Rolle des Anwendungsproxys bei standardmäßigen RDS-Bereitstellungen
 
@@ -118,7 +118,7 @@ Die in diesem Artikel beschriebene Konfiguration ist für Benutzer unter Windows
 | Vorauthentifizierung    | Windows 7/10 mit dem Internet Explorer + RDS-ActiveX-Add-On |
 | Passthrough | Alle anderen Betriebssysteme, die die Microsoft-Remotedesktopanwendung unterstützen |
 
-Der Vorauthentifizierungsflow bietet weitere Vorteile im Hinblick auf Sicherheit als die der Passthroughflow. Mit der Vorauthentifizierung können Sie Authentifizierungsfeatures von Azure AD nutzen, z.B. das einmalige Anmelden, den bedingten Zugriff und die Überprüfung in zwei Schritten für Ihre lokalen Ressourcen. Sie stellen Sie sicher, dass nur authentifizierter Datenverkehr Ihr Netzwerk erreicht.
+Der Vorauthentifizierungsflow bietet weitere Vorteile im Hinblick auf Sicherheit als die der Passthroughflow. Mit der Vorauthentifizierung können Sie Authentifizierungsfeatures von Azure AD nutzen, z.B. das einmalige Anmelden, den bedingten Zugriff und die zweistufige Überprüfung für Ihre lokalen Ressourcen. Sie stellen Sie sicher, dass nur authentifizierter Datenverkehr Ihr Netzwerk erreicht.
 
 Um die Passthrough-Authentifizierung zu verwenden, müssen nur zwei Änderungen an den Schritten in diesem Artikel ausgeführt werden:
 1. Legen Sie in Schritt 1: [Veröffentlichen des RD-Hostendpunkts](#publish-the-rd-host-endpoint) die Vorauthentifizierungsmethode auf **Passthrough** fest.

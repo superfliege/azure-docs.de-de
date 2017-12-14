@@ -4,7 +4,7 @@ description: "Eine Übersicht für die Vorteile und Ressourcen für die Integrat
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: d13bba54-96bd-4b81-bee9-c8025ffa1648
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: e2a83e8dcd054576b4a99533cdfbb9f5605cd6f9
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: bd9f984a625ae951a16eb729c0a4565eea05e46b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrating-with-azure-active-directory"></a>Integration in Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -74,7 +74,7 @@ Die Integration in Azure AD bietet den Vorteil, dass Sie keinen zusätzlichen Co
 
 **Open-Source-Bibliotheken.**  Microsoft bietet zur Beschleunigung der Entwicklung für gängige Sprachen und Plattformen vollständig unterstützte Open-Source-Bibliotheken.  Der Quellcode wird unter Apache 2.0 lizenziert, und Sie sind eingeladen, sich an den Projekten zu beteiligen.  Erfahren Sie mehr über [Azure AD-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md).
 
-### <a name="worldwide-presence-and-high-availability"></a>Weltweite Präsenz und hohe Verfügbarkeit
+### <a name="worldwide-presence-and-high-availability"></a>Weltweite Präsenz und Hochverfügbarkeit
 **Azure AD ist in Datencentern auf der ganzen Welt in Betrieb bereitgestellt und wird rund um die Uhr verwaltet und überwacht.**  Azure AD ist das Identitätsverwaltungssystem für Microsoft Azure und Office 365 und in 28 Datencentern auf der ganzen Welt im Einsatz.  Verzeichnisdaten werden garantiert in mindestens drei Datencenter repliziert.  Globale Lastenausgleichsfunktionen stellen sicher, dass Benutzer auf die nächstgelegene Kopie von Azure AD mit ihren Daten zugreifen, und leiten Anforderungen automatisch an andere Datencenter weiter, sobald ein Problem erkannt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte

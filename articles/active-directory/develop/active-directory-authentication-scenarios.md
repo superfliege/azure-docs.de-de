@@ -4,7 +4,7 @@ description: "Eine Übersicht über die fünf am häufigsten verwendeten Authent
 services: active-directory
 documentationcenter: dev-center-name
 author: skwan
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 0c84e7d0-16aa-4897-82f2-f53c6c990fd9
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
-ms.openlocfilehash: 2f9410bdaa037f1839cf7c12c3532b51be669ed5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32077c1e9415dd8be7064a2377ee806ae21d1390
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Authentifizierungsszenarien für Azure AD
 Azure Active Directory (Azure AD) vereinfacht die Authentifizierung für Entwickler mittels Identity as a Service, durch Unterstützung branchenüblicher Protokolle wie OAuth 2.0 und OpenID Connect sowie durch offene Quellbibliotheken für verschiedene Plattformen, sodass Sie schnell mit der Programmierung beginnen können. Dieses Dokument enthält Informationen zu den verschiedenen, von Azure AD unterstützten Szenarien und vereinfacht den Einstieg. Es ist in folgende Abschnitte unterteilt:

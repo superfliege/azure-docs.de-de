@@ -6,25 +6,25 @@ documentationcenter:
 author: adamab
 manager: timlt
 editor: tysonn
-ms.service: multiple
+ms.service: azure-portal
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 694b5bd1ddfbaa4c973e9f55bce1c94ffd89c3dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f71ff9383f20a1a75fd2c1cf4dc3aaf049d970cf
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktur von Azure-Dashboards
 In diesem Dokument wird die Struktur eines Azure-Dashboards beschrieben. Dabei wird das folgende Dashboard als Beispiel verwendet:
 
 ![Beispieldashboard](./media/azure-portal-dashboards-structure/sample-dashboard.png)
 
-Da freigegebene [Azure-Dashboards Ressourcen sind](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview), kann dieses Dashboard als JSON-Code dargestellt werden.  Der folgende JSON-Code stellt das oben visualisierte Dashboard dar.
+Da freigegebene [Azure-Dashboards Ressourcen sind](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), kann dieses Dashboard als JSON-Code dargestellt werden.  Der folgende JSON-Code stellt das oben visualisierte Dashboard dar.
 
 ```json
 
@@ -294,7 +294,7 @@ Wir unterteilen die relevanten Abschnitte der JSON-Darstellung.  Die Eigenschaft
 
 ### <a name="the-id-property"></a>Die „id“-Eigenschaft
 
-Die Azure-Ressourcen-ID; unterliegt den [Namenskonventionen von Azure-Ressourcen](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions). Wenn im Portal ein Dashboard erstellt wird, wird in der Regel eine ID in Form einer GUID erstellt. Sie können aber jeden gültigen Namen verwenden, wenn Sie Dashboards programmgesteuert erstellen. 
+Die Azure-Ressourcen-ID; unterliegt den [Namenskonventionen von Azure-Ressourcen](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions). Wenn im Portal ein Dashboard erstellt wird, wird in der Regel eine ID in Form einer GUID erstellt. Sie können aber jeden gültigen Namen verwenden, wenn Sie Dashboards programmgesteuert erstellen. 
 
 ### <a name="the-name-property"></a>Die „name“-Eigenschaft
 Die „name“-Eigenschaft ist das Segment der Ressourcen-ID, das keine Informationen zum Abonnement, Ressourcentyp oder der Ressourcengruppe enthält. Im Wesentlichen ist es das letzte Segment der Ressourcen-ID.
@@ -303,7 +303,7 @@ Die „name“-Eigenschaft ist das Segment der Ressourcen-ID, das keine Informat
 Alle Dashboards weisen den Typ __Microsoft.Portal/dashboards__ auf.
 
 ### <a name="the-location-property"></a>Die „location“-Eigenschaft
-Im Gegensatz zu anderen Ressourcen verfügen Dashboards über keine Laufzeitkomponente.  Für Dashboards gibt die „location“-Eigenschaft den primären geografischen Standort an, an dem die JSON-Darstellung des Dashboards gespeichert wird. Der Wert muss einer der Standortcodes sein, die mit der [Standort-API für die Abonnementressource](https://docs.microsoft.com/en-us/rest/api/resources/subscriptions) abgerufen werden können.
+Im Gegensatz zu anderen Ressourcen verfügen Dashboards über keine Laufzeitkomponente.  Für Dashboards gibt die „location“-Eigenschaft den primären geografischen Standort an, an dem die JSON-Darstellung des Dashboards gespeichert wird. Der Wert muss einer der Standortcodes sein, die mit der [Standort-API für die Abonnementressource](https://docs.microsoft.com/rest/api/resources/subscriptions) abgerufen werden können.
 
 ### <a name="the-tags-property"></a>Die „tags“-Eigenschaft
 Tags sind eine gebräuchliche Funktion von Azure-Ressourcen, mit denen Sie die Ressource nach beliebigen Name-Wert-Paaren organisieren können. Für Dashboards ist ein spezielles Tag mit dem Namen __hidden-title__ vorhanden. Wenn diese Eigenschaft in Ihrem Dashboard ausgefüllt ist, wird sie als Anzeigename des Dashboards im Portal verwendet. Azure-Ressourcen-IDs können nicht umbenannt werden, Tags dagegen schon. Dieses Tag ermöglicht einen Anzeigenamen für das Dashboard, der umbenannt werden kann.

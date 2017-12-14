@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0f784e8ecd8fc94c12df1a819055718e06547b6b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: f2be9ca98330866ac8b6fb12efd56efdc711eedf
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Route zu einem Point of Interest in der Nähe mit Azure Location Based Services
 
@@ -65,12 +65,12 @@ Führen Sie die folgenden Schritte zur Erstellung einer statischen HTML-Seite au
             }
         </style>
     </head>
+
     <body>
         <div id="map"></div>
         <script>
-        // Embed Map Control JavaScript code here
+            // Embed Map Control JavaScript code here
         </script>
-
     </body>
 
     </html>
@@ -79,68 +79,67 @@ Führen Sie die folgenden Schritte zur Erstellung einer statischen HTML-Seite au
 
 3. Fügen Sie dem *script*-Block der HTML-Datei den folgenden JavaScript-Code hinzu. Ersetzen Sie den Platzhalter *<insert-key>* durch den Primärschlüssel des Location Based Services-Kontos.
 
-    ```HTML
-            // Instantiate map to the div with id "map"
-            var subscriptionKey = "<insert-key>";
-            var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey
-            });
-
+    ```JavaScript
+    // Instantiate map to the div with id "map"
+    var subscriptionKey = "<insert-key>";
+    var map = new atlas.Map("map", {
+        "subscription-key": subscriptionKey
+    });
     ```
     Mit **atlas.Map** – einer Komponente der Azure-Kartensteuerelement-API – wird das Steuerelement für eine visuelle und interaktive Webkarte bereitgestellt.
 
 4. Fügen Sie dem *script*-Block den folgenden JavaScript-Code hinzu. Hierdurch wird dem Kartensteuerelement zum Anzeigen der Route eine Ebene mit *linestrings* hinzugefügt:
 
-    ```HTML
-            // Initialize the linestring layer for routes on the map
-            var routeLinesLayerName = "routes";
-            map.addLinestrings([], {
-                name: routeLinesLayerName,
-                color: "#2272B9",
-                width: 5,
-                cap: "round",
-                join: "round",
-                before: "labels"
-            });
+    ```JavaScript
+    // Initialize the linestring layer for routes on the map
+    var routeLinesLayerName = "routes";
+    map.addLinestrings([], {
+        name: routeLinesLayerName,
+        color: "#2272B9",
+        width: 5,
+        cap: "round",
+        join: "round",
+        before: "labels"
+    });
     ```
 
 5. Fügen Sie den folgenden JavaScript-Code hinzu, um den Start- und Endpunkt für die Route zu erstellen:
 
-    ```HTML
-            // Create the GeoJSON objects which represent the start and end point of the route
-            var startPoint = new atlas.data.Point([-122.130137, 47.644702]);
-            var startPin = new atlas.data.Feature(startPoint, {
-                title: "Microsoft",
-                icon: "pin-round-blue"
-            });
+    ```JavaScript
+    // Create the GeoJSON objects which represent the start and end point of the route
+    var startPoint = new atlas.data.Point([-122.130137, 47.644702]);
+    var startPin = new atlas.data.Feature(startPoint, {
+        title: "Microsoft",
+        icon: "pin-round-blue"
+    });
 
-            var destinationPoint = new atlas.data.Point([-122.3352, 47.61397]);
-            var destinationPin = new atlas.data.Feature(destinationPoint, {
-                title: "Contoso Oil & Gas",
-                icon: "pin-blue"
-            });
+    var destinationPoint = new atlas.data.Point([-122.3352, 47.61397]);
+    var destinationPin = new atlas.data.Feature(destinationPoint, {
+        title: "Contoso Oil & Gas",
+        icon: "pin-blue"
+    });
     ```
     Mit diesem Code werden zwei [GeoJSON-Objekte](https://en.wikipedia.org/wiki/GeoJSON) erstellt, die für den Start- bzw. Endpunkt der Route stehen. Der Endpunkt ist die Kombination aus Breiten- und Längengrad für eine der *Tankstellen*, nach denen im vorherigen Tutorial [Suchen nach einem Point of Interest in der Nähe mit Azure Location Based Services](./tutorial-search-location.md) gesucht wurde.
 
 6. Fügen Sie den folgenden JavaScript-Code hinzu, um der Karte die Pins für den Start- und Endpunkt hinzuzufügen:
 
-    ```HTML
-            // Fit the map window to the bounding box defined by the start and destination points
-            var swLon = Math.min(startPoint.coordinates[0], destinationPoint.coordinates[0]);
-            var swLat = Math.min(startPoint.coordinates[1], destinationPoint.coordinates[1]);
-            var neLon = Math.max(startPoint.coordinates[0], destinationPoint.coordinates[0]);
-            var neLat = Math.max(startPoint.coordinates[1], destinationPoint.coordinates[1]);
-            map.setCameraBounds({
-                bounds: [swLon, swLat, neLon, neLat],
-                padding: 50
-            });
+    ```JavaScript
+    // Fit the map window to the bounding box defined by the start and destination points
+    var swLon = Math.min(startPoint.coordinates[0], destinationPoint.coordinates[0]);
+    var swLat = Math.min(startPoint.coordinates[1], destinationPoint.coordinates[1]);
+    var neLon = Math.max(startPoint.coordinates[0], destinationPoint.coordinates[0]);
+    var neLat = Math.max(startPoint.coordinates[1], destinationPoint.coordinates[1]);
+    map.setCameraBounds({
+        bounds: [swLon, swLat, neLon, neLat],
+        padding: 50
+    });
 
-            // Add pins to the map for the start and end point of the route
-            map.addPins([startPin, destinationPin], {
-                name: "route-pins",
-                textFont: "SegoeUi-Regular",
-                textOffset: [0, -20]
-            });
+    // Add pins to the map for the start and end point of the route
+    map.addPins([startPin, destinationPin], {
+        name: "route-pins",
+        textFont: "SegoeUi-Regular",
+        textOffset: [0, -20]
+    });
     ``` 
     Mit der API **map.setCameraBounds** wird das Kartenfenster gemäß den Koordinaten des Start- und Endpunkts angepasst. Mit der API **map.addPins** werden die Punkte dem Kartensteuerelement als visuelle Komponenten hinzugefügt.
 
@@ -154,38 +153,38 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Routendienst-API von Azure
 
 1. Öffnen Sie die im vorherigen Abschnitt erstellte Datei **MapRoute.html**, und fügen Sie dem *script*-Block den folgenden JavaScript-Code hinzu, um den Routendienst darzustellen.
 
-    ```HTML
-            // Perform a request to the route service and draw the resulting route on the map
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    var response = JSON.parse(xhttp.responseText);
+    ```JavaScript
+    // Perform a request to the route service and draw the resulting route on the map
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(xhttp.responseText);
 
-                    var route = response.routes[0];
-                    var routeCoordinates = [];
-                    for (var leg of route.legs) {
-                        var legCoordinates = leg.points.map((point) => [point.longitude, point.latitude]);
-                        routeCoordinates = routeCoordinates.concat(legCoordinates);
-                    }
+            var route = response.routes[0];
+            var routeCoordinates = [];
+            for (var leg of route.legs) {
+                var legCoordinates = leg.points.map((point) => [point.longitude, point.latitude]);
+                routeCoordinates = routeCoordinates.concat(legCoordinates);
+            }
 
-                    var routeLinestring = new atlas.data.LineString(routeCoordinates);
-                    map.addLinestrings([new atlas.data.Feature(routeLinestring)], { name: routeLinesLayerName });
-                }
-            };
+            var routeLinestring = new atlas.data.LineString(routeCoordinates);
+            map.addLinestrings([new atlas.data.Feature(routeLinestring)], { name: routeLinesLayerName });
+        }
+    };
     ```
     Mit diesem Codeausschnitt wird ein [XMLHttpRequest](https://xhr.spec.whatwg.org/)-Element erstellt und ein Ereignishandler zum Analysieren der eingehenden Antwort hinzugefügt. Bei einer erfolgreichen Antwort wird ein Array mit Koordinaten für Zeilensegmente der ersten zurückgegebenen Route erstellt. Anschließend werden diese Koordinaten für die Route der Ebene *linestrings* der Karte hinzugefügt.
 
 2. Fügen Sie dem *script*-Block den folgenden Code hinzu, um „XMLHttpRequest“ an den Azure Location Based Services-Routendienst zu senden:
 
-    ```HTML
-            var url = "https://atlas.microsoft.com/route/directions/json?";
-            url += "&api-version=1.0";
-            url += "&subscription-key=" + subscriptionKey;
-            url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
-                destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
-    
-            xhttp.open("GET", url, true);
-            xhttp.send();
+    ```JavaScript
+    var url = "https://atlas.microsoft.com/route/directions/json?";
+    url += "&api-version=1.0";
+    url += "&subscription-key=" + subscriptionKey;
+    url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
+        destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
+
+    xhttp.open("GET", url, true);
+    xhttp.send();
     ```
     In der Anforderung oben werden die erforderlichen Parameter angezeigt, also der Abonnementschlüssel Ihres Kontos und die Koordinaten für Start- und Endpunkt in der angegebenen Reihenfolge. 
 

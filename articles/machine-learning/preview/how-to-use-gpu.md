@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 4ef5c9ad58f86a669fc5c0bceb085ef2a266a008
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: ce1557aed09384b0d7a0b65aabd473fe72ab740c
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="how-to-use-gpu-in-azure-machine-learning"></a>Verwenden von GPUs in Azure Machine Learning
 Ein Grafikprozessor (GPU) verarbeitet meistens rechenintensive Vorgänge, die in der Regel beim Trainieren bestimmter Modelle für tiefe neuronale Netzwerke vorkommen können. Mithilfe von GPUs können Sie die Trainingszeit der Modelle deutlich reduzieren. In diesem Dokument erfahren Sie, wie Sie Azure ML Workbench für die Verwendung der mit GPUs ausgestatteten [DSVM (Data Science Virtual Machine)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) als Ausführungsziel konfigurieren. 
@@ -64,10 +64,10 @@ Azure ML Workbench unterstützt auch die Ausführung in Docker auf einer Azure L
 4. Klicken Sie auf **Erstellen**, um eine Ubuntu-DSVM zu erstellen.
 
 5. Geben Sie im Formular **Grundlagen** die erforderlichen Informationen ein.
-Wenn Sie den Speicherort für Ihren virtuellen Computer auswählen, beachten Sie, dass GPU-VMs nur in bestimmten Azure-Regionen verfügbar sind, z.B. **USA, Süden-Mitte**. Siehe [Products available by region](https://azure.microsoft.com/en-us/regions/services/) (Verfügbare Produkte nach Region).
+Wenn Sie den Speicherort für Ihren virtuellen Computer auswählen, beachten Sie, dass GPU-VMs nur in bestimmten Azure-Regionen verfügbar sind, z.B. **USA, Süden-Mitte**. Siehe [Products available by region](https://azure.microsoft.com/regions/services/) (Verfügbare Produkte nach Region).
 Klicken Sie auf „OK“, um die **Grundlagen**-Informationen zu Speichern.
 
-6. Wählen Sie die Größe des virtuellen Computers. Wählen Sie eine der Größen mit virtuellen Computern mit dem NC-Präfix, die mit NVidia-GPU-Chips ausgestattet sind.  Klicken Sie auf **Alle anzeigen**, um die vollständige Liste nach Bedarf anzuzeigen. Unter [GPU](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes-gpu) erfahren Sie mehr.
+6. Wählen Sie die Größe des virtuellen Computers. Wählen Sie eine der Größen mit virtuellen Computern mit dem NC-Präfix, die mit NVidia-GPU-Chips ausgestattet sind.  Klicken Sie auf **Alle anzeigen**, um die vollständige Liste nach Bedarf anzuzeigen. Unter [GPU](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-gpu) erfahren Sie mehr.
 
 7. Schließen Sie die verbleibenden Einstellungen ab, und überprüfen Sie die Erwerbsinformationen. Klicken Sie auf „Kaufen“, um den virtuellen Computer zu erstellen. Notieren Sie die IP-Adresse, die Sie dem virtuellen Computer zugewiesen haben. 
 
@@ -119,7 +119,7 @@ dependencies:
     - https://cntk.ai/PythonWheel/GPU/cntk-2.1-cp35-cp35m-linux_x86_64.whl
 ```
 
-Sie können auch die 1-Bit-SGD-Version von Microsoft Cognitive Toolkit verwenden, die Leistungsverbesserungen auf VMs mit mehreren GPUs bietet. Beachten Sie [die Lizenzanforderungen für 1-Bit-SGD](https://docs.microsoft.com/en-us/cognitive-toolkit/cntk-1bit-sgd-license).
+Sie können auch die 1-Bit-SGD-Version von Microsoft Cognitive Toolkit verwenden, die Leistungsverbesserungen auf VMs mit mehreren GPUs bietet. Beachten Sie [die Lizenzanforderungen für 1-Bit-SGD](https://docs.microsoft.com/cognitive-toolkit/cntk-1bit-sgd-license).
 
 ```yaml
 name: project_environment

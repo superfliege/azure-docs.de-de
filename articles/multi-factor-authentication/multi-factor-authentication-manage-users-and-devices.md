@@ -4,7 +4,7 @@ description: "Hier wird das Ändern von Benutzereinstellungen beschrieben, z. B.
 documentationcenter: 
 services: multi-factor-authentication
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: aac3b922-7cc1-428c-9044-273579aa7b5a
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 06/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: cec582462d6f9b3ae7fbee0dd2a3ab66d7b0d1da
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 718ac36c8f4ca2367f90ad51edb175715194a17c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>Verwalten von Benutzereinstellungen mit Azure Multi-Factor Authentication (MFA) in der Cloud
 Als Administrator können Sie die folgenden Einstellungen für Benutzer und Geräte verwalten:
@@ -59,9 +59,9 @@ Diese Einstellung löscht alle App-Kennwörter, die ein Benutzer erstellt hat. N
 ## <a name="restore-mfa-on-all-remembered-devices-for-a-user"></a>Wiederherstellen der MFA auf allen gespeicherten Geräten für einen Benutzer
 Eines der konfigurierbaren Features von Azure Multi-Factor Authentication besteht darin, Ihren Benutzern die Option zum Markieren von Geräten als vertrauenswürdig bereitzustellen. Weitere Informationen finden Sie unter [Konfigurieren der Einstellungen von Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md#remember-multi-factor-authentication-for-devices-that-users-trust).
 
-Benutzer können die Überprüfung in zwei Schritten für eine konfigurierbare Anzahl von Tagen auf ihren regulären Geräten deaktivieren. Wenn ein Konto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht, müssen Sie in der Lage sein, den Status „Vertrauenswürdig“ aufzuheben und die Überprüfung in zwei Schritten wieder anzufordern.
+Benutzer können die zweistufige Überprüfung für eine konfigurierbare Anzahl von Tagen auf ihren regulären Geräten deaktivieren. Wenn ein Konto kompromittiert wird oder ein vertrauenswürdiges Gerät verloren geht, müssen Sie in der Lage sein, den Status „Vertrauenswürdig“ aufzuheben und die zweistufige Überprüfung wieder anzufordern.
 
-Die Einstellung **Mehrstufige Authentifizierung für alle gespeicherten Geräte wiederherstellen** bewirkt, dass der Benutzer bei der nächsten Anmeldung die Überprüfung in zwei Schritten durchführen muss, unabhängig davon, ob das Gerät als vertrauenswürdig markiert wurde. 
+Die Einstellung **Mehrstufige Authentifizierung für alle gespeicherten Geräte wiederherstellen** bewirkt, dass der Benutzer bei der nächsten Anmeldung die zweistufige Überprüfung durchführen muss, unabhängig davon, ob das Gerät als vertrauenswürdig markiert wurde. 
 
 ### <a name="how-to-restore-mfa-on-all-suspended-devices-for-a-user"></a>MFA auf allen ausgesetzten Geräten für einen Benutzer wiederherstellen
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
@@ -78,4 +78,4 @@ Die Einstellung **Mehrstufige Authentifizierung für alle gespeicherten Geräte 
 
 - Erfahren Sie mehr über das [Konfigurieren der Einstellungen von Azure Multi-Factor Authentication](multi-factor-authentication-whats-next.md).
 
-- Wenn Ihre Benutzer Hilfe benötigen, verweisen Sie sie auf das [Benutzerhandbuch für die Überprüfung in zwei Schritten](./end-user/multi-factor-authentication-end-user.md).
+- Wenn Ihre Benutzer Hilfe benötigen, verweisen Sie sie auf das [Benutzerhandbuch für die zweistufige Überprüfung](./end-user/multi-factor-authentication-end-user.md).

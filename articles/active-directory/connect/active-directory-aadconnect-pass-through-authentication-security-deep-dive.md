@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 4428f3da5dd9423aa60daa697e4ea15c99f92188
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 84a5ef23739635ba4d2f0adc688c1b506f643a36
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit
 
@@ -204,7 +204,7 @@ So wird ein Authentifizierungs-Agent automatisch aktualisiert:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Aktuelle Einschränkungen](active-directory-aadconnect-pass-through-authentication-current-limitations.md): Informationen zu den unterstützten und nicht unterstützten Szenarien
+- [Aktuelle Einschränkungen:](active-directory-aadconnect-pass-through-authentication-current-limitations.md) Informationen zu den unterstützten und nicht unterstützten Szenarien
 - [Schnellstart](active-directory-aadconnect-pass-through-authentication-quick-start.md): Aktivieren und Ausführen der Passthrough-Authentifizierung von Azure AD
 - [Smart Lockout](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): Konfigurieren der Smart Lockout-Funktion für Ihren Mandanten, um Benutzerkonten zu schützen
 - [Funktionsweise](active-directory-aadconnect-pass-through-authentication-how-it-works.md): Grundlegende Funktionsweise der Passthrough-Authentifizierung von Azure AD

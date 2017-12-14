@@ -35,7 +35,7 @@ Lokale Hardwareausfälle auf dem Computehost oder auf der Speicherplattform kön
 
 Um Anwendungsworkloads vor Ausfallzeiten aufgrund der vorübergehenden Nichtverfügbarkeit eines Datenträgers oder einer VM zu schützen, können Kunden [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md) nutzen. Zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe sorgen für die Redundanz der Anwendung. Azure erstellt diese VMs und Datenträger dann in separaten Fehlerdomänen mit unterschiedlichen Stromversorgungs-, Netzwerk- und Serverkomponenten. 
 
-Wegen dieser separaten Fehlerdomänen wirken sich lokale Hardwareausfälle in der Regel nicht gleichzeitig auf mehrere VMs in der Gruppe aus. Separate Fehlerdomänen gewährleisten eine hohe Verfügbarkeit Ihrer Anwendung. Eine bewährte Methode besteht darin, Verfügbarkeitsgruppen zu verwenden, wenn eine hohe Verfügbarkeit erforderlich ist. Im nächsten Abschnitt wird die Notfallwiederherstellung behandelt.
+Wegen dieser separaten Fehlerdomänen wirken sich lokale Hardwareausfälle in der Regel nicht gleichzeitig auf mehrere VMs in der Gruppe aus. Separate Fehlerdomänen gewährleisten Hochverfügbarkeit Ihrer Anwendung. Eine bewährte Methode besteht darin, Verfügbarkeitsgruppen zu verwenden, wenn Hochverfügbarkeit erforderlich ist. Im nächsten Abschnitt wird die Notfallwiederherstellung behandelt.
 
 ### <a name="backup-and-disaster-recovery"></a>Backup und Notfallwiederherstellung
 
@@ -47,7 +47,7 @@ Um Ihre IaaS-Workloads vor Ausfällen zu schützen, sollten Sie Redundanz- und S
 
 Für Ihre Planung der Notfallwiederherstellung können die folgenden Aspekte wichtig sein:
 
-- Hohe Verfügbarkeit: die Möglichkeit, dass die Anwendung ohne signifikante Ausfallzeit in einem fehlerfreien Zustand weiterbetrieben werden kann. Mit *fehlerfreier Zustand* ist gemeint, dass die Anwendung reagiert und Benutzer eine Verbindung mit der Anwendung herstellen und damit interagieren können. Bestimmte unternehmenskritische Anwendungen und Datenbanken müssen ggf. auch dann immer verfügbar sein, wenn es bei der Plattform zu Ausfällen kommt. Für diese Workloads müssen Sie ggf. die Redundanz für die Anwendung und für die Daten planen.
+- Hochverfügbarkeit: die Möglichkeit, dass die Anwendung ohne signifikante Ausfallzeit in einem fehlerfreien Zustand weiterbetrieben werden kann. Mit *fehlerfreier Zustand* ist gemeint, dass die Anwendung reagiert und Benutzer eine Verbindung mit der Anwendung herstellen und damit interagieren können. Bestimmte unternehmenskritische Anwendungen und Datenbanken müssen ggf. auch dann immer verfügbar sein, wenn es bei der Plattform zu Ausfällen kommt. Für diese Workloads müssen Sie ggf. die Redundanz für die Anwendung und für die Daten planen.
 
 - Dauerhaftigkeit von Daten: In einigen Fällen muss vor allem sichergestellt werden, dass die Daten im Katastrophenfall nicht verloren gehen. Daher kann es erforderlich sein, dass Sie über eine Sicherung Ihrer Daten an einem anderen Standort verfügen. Für Workloads dieser Art ist unter Umständen keine vollständige Redundanz für die Anwendung erforderlich, sondern nur eine regelmäßige Sicherung der Datenträger.
 
@@ -57,14 +57,14 @@ Wir sehen uns nun einige typische Beispiele für Anwendungsworkload-Szenarien un
 
 ### <a name="scenario-1-major-database-solutions"></a>Szenario 1: Größere Datenbanklösungen
 
-Angenommen, Sie verwenden einen Produktionsdatenbankserver wie SQL Server oder Oracle, der die hohe Verfügbarkeit unterstützen kann. Von dieser Datenbank sind wichtige Produktionsanwendungen und Benutzer abhängig. Der Notfallwiederherstellungs-Plan für dieses System muss ggf. die folgenden Anforderungen unterstützen:
+Angenommen, Sie verwenden einen Produktionsdatenbankserver wie SQL Server oder Oracle, der Hochverfügbarkeit unterstützen kann. Von dieser Datenbank sind wichtige Produktionsanwendungen und Benutzer abhängig. Der Notfallwiederherstellungs-Plan für dieses System muss ggf. die folgenden Anforderungen unterstützen:
 
 - Die Daten müssen geschützt und wiederherstellbar sein.
 - Der Server muss für die Nutzung verfügbar sein.
 
-Der Notfallwiederherstellungs-Plan erfordert ggf. das Vorhalten eines Replikats der Datenbank in einer anderen Region als Sicherung. Je nach den Anforderungen für die Serververfügbarkeit und Datenwiederherstellung kann die Lösung von einem Aktiv-Aktiv- oder Aktiv-Passiv-Replikatstandort bis zu regelmäßigen Offlinesicherungen der Daten reichen. Relationale Datenbanken, z.B. SQL Server und Oracle, bieten unterschiedliche Optionen für die Replikation. Nutzen Sie für SQL Server [SQL Server AlwaysOn-Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/hh510230.aspx), um eine hohe Verfügbarkeit zu erzielen.
+Der Notfallwiederherstellungs-Plan erfordert ggf. das Vorhalten eines Replikats der Datenbank in einer anderen Region als Sicherung. Je nach den Anforderungen für die Serververfügbarkeit und Datenwiederherstellung kann die Lösung von einem Aktiv-Aktiv- oder Aktiv-Passiv-Replikatstandort bis zu regelmäßigen Offlinesicherungen der Daten reichen. Relationale Datenbanken, z.B. SQL Server und Oracle, bieten unterschiedliche Optionen für die Replikation. Nutzen Sie für SQL Server [SQL Server AlwaysOn-Verfügbarkeitsgruppen](https://msdn.microsoft.com/library/hh510230.aspx), um Hochverfügbarkeit zu erzielen.
 
-NoSQL-Datenbanken, z.B. MongoDB, unterstützen ebenfalls [Replikate](https://docs.mongodb.com/manual/replication/), um Redundanz zu erzielen. Die Replikate für hohe Verfügbarkeit werden genutzt.
+NoSQL-Datenbanken, z.B. MongoDB, unterstützen ebenfalls [Replikate](https://docs.mongodb.com/manual/replication/), um Redundanz zu erzielen. Die Replikate für Hochverfügbarkeit werden genutzt.
 
 ### <a name="scenario-2-a-cluster-of-redundant-vms"></a>Szenario 2: Cluster mit redundanten VMs
 
@@ -101,11 +101,11 @@ Bei [nicht verwalteten Datenträgern](../articles/virtual-machines/windows/about
 | Nicht verwaltete Datenträger mit georedundantem Speicher | Regionsübergreifend ([georedundanter Speicher](../articles/storage/common/storage-redundancy.md#geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots) |
 | Nicht verwaltete Datenträger mit georedundantem Speicher mit Lesezugriff | Regionsübergreifend ([georedundanter Speicher mit Lesezugriff](../articles/storage/common/storage-redundancy.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots) |
 
-Eine hohe Verfügbarkeit kann am besten durch die Verwendung von Managed Disks in einer Verfügbarkeitsgruppe mit Azure Backup erzielt werden. Wenn Sie nicht verwaltete Datenträger nutzen, können Sie Azure Backup trotzdem für die Notfallwiederherstellung verwenden. Falls die Verwendung von Azure Backup nicht möglich ist, ist das Erstellen von [konsistenten Momentaufnahmen](#alternative-solution-consistent-snapshots) (in einem späteren Abschnitt beschrieben) eine Alternativlösung für die Sicherung und Notfallwiederherstellung.
+Hochverfügbarkeit kann am besten durch die Verwendung von Managed Disks in einer Verfügbarkeitsgruppe mit Azure Backup erzielt werden. Wenn Sie nicht verwaltete Datenträger nutzen, können Sie Azure Backup trotzdem für die Notfallwiederherstellung verwenden. Falls die Verwendung von Azure Backup nicht möglich ist, ist das Erstellen von [konsistenten Momentaufnahmen](#alternative-solution-consistent-snapshots) (in einem späteren Abschnitt beschrieben) eine Alternativlösung für die Sicherung und Notfallwiederherstellung.
 
-Ihre Auswahl in Bezug auf hohe Verfügbarkeit, Sicherung und Notfallwiederherstellung auf Anwendungs- oder Infrastrukturebene kann wie unten gezeigt dargestellt werden:
+Ihre Auswahl in Bezug auf Hochverfügbarkeit, Sicherung und Notfallwiederherstellung auf Anwendungs- oder Infrastrukturebene kann wie unten gezeigt dargestellt werden:
 
-| Ebene |   Hohe Verfügbarkeit   | Sicherung oder Notfallwiederherstellung |
+| Ebene |   Hochverfügbarkeit   | Sicherung oder Notfallwiederherstellung |
 | --- | --- | --- |
 | Anwendung | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktur    | Verfügbarkeitsgruppe  | Georedundanter Speicher mit konsistenten Momentaufnahmen |
@@ -211,7 +211,7 @@ Informationen zum effizienten Kopieren Ihrer inkrementellen Momentaufnahmen für
 
 ### <a name="recovery-from-snapshots"></a>Wiederherstellung von Daten aus Momentaufnahmen
 
-Kopieren Sie eine Momentaufnahme, um sie abzurufen und ein neues Blob zu erstellen. Wenn Sie die Momentaufnahme aus dem primären Konto kopieren, können Sie sie in das Basisblob der Momentaufnahme kopieren. Dieser Vorgang stellt den Datenträger in der Momentaufnahme wieder her. Dieser Prozess wird als Heraufstufen der Momentaufnahme bezeichnet. Wenn Sie die Momentaufnahmensicherung aus einem sekundären Konto kopieren, müssen Sie sie im Fall eines georedundanten Speicherkontos mit Lesezugriff in ein primäres Konto kopieren. Sie können eine Momentaufnahme [mit PowerShell](../articles/storage/common/storage-powershell-guide-full.md) kopieren oder das Hilfsprogramm AzCopy verwenden. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy).
+Kopieren Sie eine Momentaufnahme, um sie abzurufen und ein neues Blob zu erstellen. Wenn Sie die Momentaufnahme aus dem primären Konto kopieren, können Sie sie in das Basisblob der Momentaufnahme kopieren. Dieser Vorgang stellt den Datenträger in der Momentaufnahme wieder her. Dieser Prozess wird als Heraufstufen der Momentaufnahme bezeichnet. Wenn Sie die Momentaufnahmensicherung aus einem sekundären Konto kopieren, müssen Sie sie im Fall eines georedundanten Speicherkontos mit Lesezugriff in ein primäres Konto kopieren. Sie können eine Momentaufnahme [mit PowerShell](../articles/storage/common/storage-powershell-guide-full.md) kopieren oder das Hilfsprogramm AzCopy verwenden. Weitere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy).
 
 Bei VMs mit mehreren Datenträgern müssen Sie alle Momentaufnahmen kopieren, die Teil desselben koordinierten Wiederherstellungspunkts sind. Nachdem Sie die Momentaufnahmen in schreibbare VHD-Blobs kopiert haben, können Sie die Blobs zum erneuten Erstellen Ihrer VM mithilfe der Vorlage für die VM verwenden.
 

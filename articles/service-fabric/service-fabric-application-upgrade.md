@@ -14,21 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 43e1a66c3aca882f8f572d2bf71976d6b65a9c68
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 5fed3b5b127a2b398b99ab2b46c762920e9dc249
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric-Anwendungsupgrade
-Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
+Eine Azure Service Fabric Anwendung ist eine Sammlung von Diensten. Während eines Upgrades vergleicht Service Fabric das neue [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) mit der vorherigen Version und ermittelt, welche Dienste in der Anwendung aktualisiert werden müssen. Service Fabric vergleicht die Versionsnummern in den Dienstmanifesten mit den Versionsnummern in der vorherigen Version. Wenn sich ein Dienst nicht geändert hat, wird er nicht aktualisiert.
 
 ## <a name="rolling-upgrades-overview"></a>Übersicht über parallele Upgrades
 Bei einem parallelen Anwendungsupgrade wird das Upgrade in verschiedenen Phasen durchgeführt. In jeder Phase wird das Upgrade auf eine Teilmenge von Knoten im Cluster angewendet, die als Updatedomäne bezeichnet wird. So bleibt die Anwendung während des gesamten Upgrades immer verfügbar. Während des Upgrades kann der Cluster eine Mischung aus der alten und neuen Version enthalten.
 
 Aus diesem Grund müssen die beiden Versionen aufwärts- und abwärtskompatibel sein. Wenn sie nicht kompatibel sind, muss der Anwendungsadministrator ein mehrstufiges Upgrade bereitstellen, um die Verfügbarkeit aufrechtzuerhalten. Bei einem Upgrade in mehreren Phasen ist der erste Schritt das Aktualisieren einer Zwischenversion der Anwendung, die mit der vorherigen Version kompatibel ist. Der zweite Schritt ist das Upgrade auf die endgültige Version, die mit der Version vor dem Update nicht mehr, jedoch mit der Zwischenversion kompatibel ist.
 
-Updatedomänen werden im Clustermanifest angegeben, wenn Sie den Cluster konfigurieren. Updatedomänen erhalten Updates nicht in einer bestimmten Reihenfolge. Bei einer Updatedomäne handelt es sich um eine logische Bereitstellungseinheit für eine Anwendung. Updatedomänen ermöglichen eine gleichbleibend hohe Verfügbarkeit der Dienste während eines Upgrades.
+Updatedomänen werden im Clustermanifest angegeben, wenn Sie den Cluster konfigurieren. Updatedomänen erhalten Updates nicht in einer bestimmten Reihenfolge. Bei einer Updatedomäne handelt es sich um eine logische Bereitstellungseinheit für eine Anwendung. Updatedomänen ermöglichen eine gleichbleibende Hochverfügbarkeit der Dienste während eines Upgrades.
 
 Nicht parallele Upgrades sind möglich, wenn das Upgrade auf alle Knoten im Cluster angewendet wird. Dies ist der Fall, wenn die Anwendung nur über eine Updatedomäne verfügt. Von diesem Ansatz wird jedoch abgeraten, da der Dienst zum Zeitpunkt des Upgrades nicht aktiv und nicht verfügbar ist. Darüber hinaus übernimmt Azure keine Garantie, wenn ein Cluster mit nur einer Updatedomäne eingerichtet wird.
 
@@ -47,14 +47,14 @@ Der Modus, den wir für Upgrades von Anwendungen empfehlen, ist der überwachte 
 Der nicht überwachte manuelle Modus benötigt nach jedem Upgrade in einer Updatedomäne einen manuellen Eingriff, um das Upgrade für die nächste Updatedomäne zu starten. Es werden keine Service Fabric-Integritätsprüfungen ausgeführt. Der Administrator überprüft den Zustand oder Status vor dem Upgrade in der nächsten Updatedomäne.
 
 ## <a name="upgrade-default-services"></a>Durchführen eines Upgrades von Standarddiensten
-Standarddienste in der Service Fabric-Anwendung können während des Upgradevorgangs einer Anwendung aktualisiert werden. Standarddienste werden im [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application) definiert. Für das Aktualisieren von Standarddiensten gelten folgende Standardregeln:
+Standarddienste in der Service Fabric-Anwendung können während des Upgradevorgangs einer Anwendung aktualisiert werden. Standarddienste werden im [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) definiert. Für das Aktualisieren von Standarddiensten gelten folgende Standardregeln:
 
-1. Standarddienste im neuen [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application), die im Cluster nicht vorhanden sind, werden erstellt.
+1. Standarddienste im neuen [Anwendungsmanifest](service-fabric-application-and-service-manifests.md), die im Cluster nicht vorhanden sind, werden erstellt.
 > [!TIP]
 > [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) muss auf TRUE festgelegt werden, um die folgenden Regeln zu aktivieren. Dieses Feature wird ab Version 5.5 unterstützt.
 
-2. Standarddienste, die sowohl im vorherigen [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application) als auch in der neuen Version vorhanden sind, werden aktualisiert. Die im Cluster bereits vorhandenen Dienstbeschreibungen werden durch die der neuen Version überschrieben. Das Anwendungsupgrade führt bei einem Fehler beim Aktualisieren des Standarddiensts automatisch einen Rollback durch.
-3. Standarddienste, die im vorherigen [Anwendungsmanifest](service-fabric-application-model.md#describe-an-application), aber nicht in der neuen Version enthalten sind, werden gelöscht. **Beachten Sie, dass dieses Löschen von Standarddiensten nicht rückgängig gemacht werden kann.**
+2. Standarddienste, die sowohl im vorherigen [Anwendungsmanifest](service-fabric-application-and-service-manifests.md) als auch in der neuen Version vorhanden sind, werden aktualisiert. Die im Cluster bereits vorhandenen Dienstbeschreibungen werden durch die der neuen Version überschrieben. Das Anwendungsupgrade führt bei einem Fehler beim Aktualisieren des Standarddiensts automatisch einen Rollback durch.
+3. Standarddienste, die im vorherigen [Anwendungsmanifest](service-fabric-application-and-service-manifests.md), aber nicht in der neuen Version enthalten sind, werden gelöscht. **Beachten Sie, dass dieses Löschen von Standarddiensten nicht rückgängig gemacht werden kann.**
 
 Falls für ein Anwendungsupgrade ein Rollback ausgeführt wird, werden Standarddienste auf den Status vor Beginn des Upgrades zurückgesetzt. Gelöschte Dienste können jedoch nicht erstellt werden.
 

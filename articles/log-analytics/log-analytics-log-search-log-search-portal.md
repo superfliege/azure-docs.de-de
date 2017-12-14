@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: bwren
-ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08d8ebfd18491eb78190651b76f444ffe0eca899
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>Erstellen von Protokollsuchvorgängen in Azure Log Analytics mit dem Portal für die Protokollsuche
 
@@ -34,7 +34,7 @@ Wenn Sie Suchabfragen statt im Portal für die Protokollsuche im Advanced Analyt
 In diesem Tutorial wird vorausgesetzt, dass Sie bereits über einen Log Analytics-Arbeitsbereich mit mindestens einer verbundenen Quelle verfügen, mit der Daten für zu analysierende Abfragen generiert werden können.  
 
 - Wenn Sie noch keinen Arbeitsbereich eingerichtet haben, können Sie diesen kostenlos erstellen, indem Sie der Anleitung in [Erste Schritte mit einem Log Analytics-Arbeitsbereich](log-analytics-get-started.md) folgen.
-- Verbinden Sie mindestens einen [Windows-Agent](log-analytics-windows-agents.md) oder einen [Linux-Agent](log-analytics-linux-agents.md) mit dem Arbeitsbereich.  
+- Verbinden Sie mindestens einen [Windows-Agent](log-analytics-windows-agent.md) oder einen [Linux-Agent](log-analytics-linux-agents.md) mit dem Arbeitsbereich.  
 
 ## <a name="open-the-log-search-portal"></a>Öffnen des Portals für die Protokollsuche
 Öffnen Sie zunächst das Portal für die Protokollsuche.  Der Zugriff darauf ist über das Azure-Portal und das OMS-Portal möglich.

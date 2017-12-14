@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.openlocfilehash: d171538ea57839eccddcc74ca099a39aee34ea10
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e16926b5a1c28c0c8c80ee8c17e8c2fdb9e55a7
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>Manuelles oder automatisches Skalieren der Instanzenzahl
 Im [Azure-Portal](https://portal.azure.com/)können Sie die Anzahl der Instanzen für Ihren Dienst manuell festlegen oder Parameter für die automatische Skalierung festlegen. Dieser Vorgang wird als *horizontales Hochskalieren* oder *horizontales Herunterskalieren* bezeichnet.
@@ -26,11 +26,6 @@ Im [Azure-Portal](https://portal.azure.com/)können Sie die Anzahl der Instanzen
 Berücksichtigen Sie vor einer Skalierung basierend auf der Instanzenzahl, dass die Skalierung nicht nur von der Instanzenzahl, sondern auch vom **Tarif** beeinflusst wird. Die verschiedenen Tarife beinhalten eine unterschiedliche Anzahl von Kernen und Arbeitsspeichermenge, sodass sie für dieselbe Anzahl von Instanzen eine bessere Leistung bieten (*zentrales Hochskalieren* oder *zentrales Herunterskalieren*). Im vorliegenden Artikel wird insbesondere auf das *horizontale Hochskalieren* und das *horizontale Herunterskalieren* eingegangen.
 
 Sie können im Portal skalieren und mit [REST-API](https://msdn.microsoft.com/library/azure/dn931953.aspx) oder [.NET SDK](http://www.nuget.org/packages/Microsoft.Azure.Management.Monitor) die manuelle oder automatische Skalierung anpassen.
-
-> [!NOTE]
-> Dieser Artikel beschreibt das Festlegen der Einstellungen für das automatische Skalieren im Portal unter [http://portal.azure.com](http://portal.azure.com). Die in diesem Portal erstellten Einstellungen für das automatische Skalieren können nicht im klassischen Portal ([http://manage.windowsazure.com](http://manage.windowsazure.com)) bearbeitet werden.
-> 
-> 
 
 ## <a name="scaling-manually"></a>Manuelles Skalieren
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/) auf **Durchsuchen**, und navigieren Sie zu der Ressource, die Sie skalieren möchten, z.B. zu einem **App Service-Plan**.

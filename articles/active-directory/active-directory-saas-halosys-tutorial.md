@@ -4,7 +4,7 @@ description: "Hier erfahren Sie, wie Sie Halosys mit Azure Active Directory verw
 services: active-directory
 author: jeevansd
 documentationcenter: na
-manager: femila
+manager: mtillman
 ms.assetid: 42a0eb7c-5cb7-44a9-b00b-b0e7df4b63e8
 ms.service: active-directory
 ms.devlang: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
-ms.openlocfilehash: 18c5cd8eb4ca211f8ae2b8dd994c0e8c48625a2f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cfd932fa87ffd40ffc6ac96ad72ae7eac31e0b98
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-halosys"></a>Tutorial: Azure Active Directory-Integration mit Halosys
 
@@ -93,7 +93,7 @@ In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azur
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Halosys als Gegenpart zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Halosys muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den**** Benutzernamen in Azure AD dem**** Benutzernamen in Halosys zuweisen.
+Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD dem **Benutzernamen** in Halosys zuweisen.
 
 Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Halosys zu konfigurieren und zu testen:
 

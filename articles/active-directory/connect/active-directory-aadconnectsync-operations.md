@@ -4,7 +4,7 @@ description: "In diesem Thema werden die operativen Aufgaben für Azure AD Conne
 services: active-directory
 documentationcenter: 
 author: AndKjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: b29c1790-37a3-470f-ab69-3cee824d220d
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 89bfedd282d04569bcf873fd7a9082791a94376b
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d4d832476c0e5bb4ac3694d3e97b15835e3a4441
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-operational-tasks-and-consideration"></a>Azure AD Connect Sync: Operative Aufgaben und Überlegungen
 In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync beschrieben.
@@ -26,7 +26,7 @@ In diesem Thema werden die operativen Aufgaben für Azure AD Connect Sync beschr
 ## <a name="staging-mode"></a>Stagingmodus
 Der Stagingmodus kann für verschiedene Szenarien genutzt werden, darunter:
 
-* Hohe Verfügbarkeit.
+* Hochverfügbarkeit.
 * Testen und Bereitstellen neuer Konfigurationsänderungen.
 * Einführen eines neuen Servers und Außerbetriebnahme des alten Servers.
 
@@ -104,7 +104,7 @@ Abhängig von Ihren Antworten auf diese Fragen und Ihrer Organisationsrichtlinie
 * Richten Sie einen Reserveserver im Standbymodus ein, auch bezeichnet als **Stagingmodus**.
 * Verwenden Sie virtuelle Computer.
 
-Wenn Sie nicht die integrierte SQL Express-Datenbank verwenden, lesen Sie sich auch den Abschnitt [Hohe Verfügbarkeit von SQL](#sql-high-availability) durch.
+Wenn Sie nicht die integrierte SQL Express-Datenbank verwenden, lesen Sie sich auch den Abschnitt [Hochverfügbarkeit von SQL](#sql-high-availability) durch.
 
 ### <a name="rebuild-when-needed"></a>Neuerstellung, falls erforderlich
 Eine sinnvolle Strategie besteht darin, eine ggf. erforderliche Neuerstellung des Servers zu planen. In der Regel sind die Installation des Synchronisierungsmoduls und der anfängliche Import sowie die Synchronisierung innerhalb weniger Stunden abgeschlossen. Wenn kein Ersatzserver verfügbar ist, kann vorübergehend ein Domänencontroller zum Hosten des Synchronisierungsmoduls eingesetzt werden.
@@ -119,8 +119,8 @@ Weitere Informationen finden Sie unter [Stagingmodus](#staging-mode).
 ### <a name="use-virtual-machines"></a>Einsatz virtueller Computer
 Eine gängige und unterstützte Methode ist die Ausführung des Synchronisierungsmoduls auf einem virtuellen Computer. Wenn ein Problem mit dem Host vorliegt, kann das Image mit dem Synchronisierungsmodulserver zu einem anderen Server migriert werden.
 
-### <a name="sql-high-availability"></a>Hohe Verfügbarkeit von SQL
-Falls Sie nicht SQL Server Express (in Azure AD Connect enthalten) verwenden, sollten Sie auch eine hohe Verfügbarkeit für SQL Server in Erwägung ziehen. Zu den unterstützten Hochverfügbarkeitslösungen gehören SQL-Clustering und SQL AOA (Always On Availability Groups, Always On-Verfügbarkeitsgruppen). Nicht unterstützt wird z.B. die Spiegelung.
+### <a name="sql-high-availability"></a>Hochverfügbarkeit von SQL
+Falls Sie nicht SQL Server Express (in Azure AD Connect enthalten) verwenden, sollten Sie auch Hochverfügbarkeit für SQL Server in Erwägung ziehen. Zu den unterstützten Hochverfügbarkeitslösungen gehören SQL-Clustering und SQL AOA (Always On Availability Groups, Always On-Verfügbarkeitsgruppen). Nicht unterstützt wird z.B. die Spiegelung.
 
 Unterstützung für SQL AOA wurde in Version 1.1.524.0 zu Azure AD Connect hinzugefügt. Vor der Installation von Azure AD Connect müssen Sie SQL AOA aktivieren. Während der Installation erkennt Azure AD Connect, ob die bereitgestellte SQL-Instanz für SQL AOA aktiviert ist. Wenn SQL AOA aktiviert ist, prüft Azure AD Connect darüber hinaus, ob SQL AOA für die Verwendung synchroner oder asynchroner Replikationen konfiguriert ist. Bei der Einrichtung des Verfügbarkeitsgruppenlisteners wird empfohlen, die Eigenschaft „RegisterAllProvidersIP“ auf 0 festzulegen. Dies liegt daran, weil Azure AD Connect Verbindungen zu SQL derzeit über den SQL Native Client herstellt und der SQL Native Client die Verwendung der Eigenschaft „MultiSubNetFailover“ nicht unterstützt.
 

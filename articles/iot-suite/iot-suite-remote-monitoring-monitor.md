@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 3dfc5809344af920540a88e097ce399cce653363
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 2e6d965d9177a61f974b319a1bd2155c9132533f
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="perform-advanced-monitoring-using-the-remote-monitoring-solution"></a>Ausführen der erweiterten Überwachung mithilfe der Remoteüberwachungslösung
 
@@ -90,9 +90,6 @@ Auf der Karte werden die Geräte im aktuellen Filter mit **Alarmen** und **Warnu
 Mit dem Filter **System alarms** (Systemalarme) können Sie die Zeitspanne für aktuelle Alarme anpassen. Standardmäßig werden Alarme der letzten Stunde im Bereich angezeigt:
 
 ![Filtern der Alarme nach Zeitspanne](media/iot-suite-remote-monitoring-monitor/dashboardalarmsfilter.png)
-
-> [!NOTE]
-> Scrollen Sie nach rechts, um den Zeitspannenfilter anzuzeigen.
 
 ## <a name="view-the-system-kpis"></a>Anzeigen der System-KPIs
 

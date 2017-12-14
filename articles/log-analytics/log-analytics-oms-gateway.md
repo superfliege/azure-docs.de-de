@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: c09a01af8053feb4d5450b350503484507014765
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 16d79f02bffeb3db22a0190822d4304d3a1de73b
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="connect-computers-without-internet-access-to-oms-using-the-oms-gateway"></a>Verbinden von Computern ohne Internetzugriff mit der OMS über das OMS-Gateway
 
@@ -35,7 +35,7 @@ Falls Computer in Ihrem Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Ve
 
 Wenn eine Operations Manager-Verwaltungsgruppe in OMS integriert wird, können die Verwaltungsserver so konfiguriert werden, dass sie eine Verbindung mit dem OMS-Gateway herstellen, um Konfigurationsinformationen zu empfangen und gesammelte Daten abhängig von der aktivierten Lösung zu senden.  Operations Manager-Agents senden einige Daten wie etwa Operations Manager-Warnungen, Konfigurationsbewertung, Speicherplatz der Instanz und Kapazitätsdaten an den Verwaltungsserver. Andere umfangreiche Daten wie etwa IIS-Protokolle, Leistungsinformationen und Sicherheitsereignisse werden direkt an das OMS-Gateway gesendet.  Falls Sie zur Überwachung nicht vertrauenswürdiger Systeme einen oder mehrere Operations Manager-Gatewayserver in einer DMZ oder in einem anderen isolierten Netzwerk bereitgestellt haben, können diese nicht mit einem OMS-Gateway kommunizieren.  Operations Manager-Gatewayservers können nur mit einem Verwaltungsserver kommunizieren.  Wenn eine Operations Manager-Verwaltungsgruppe für die Kommunikation mit dem OMS-Gateway konfiguriert ist, werden die Proxykonfigurationsinformationen automatisch an alle per Agent verwalteten Computer verteilt, die zum Sammeln von Daten für Log Analytics konfiguriert sind. Das gilt auch, wenn die Einstellung leer ist.    
 
-Zur Gewährleistung der hohen Verfügbarkeit für direkt verbundene Gruppen oder Operations Management-Gruppen, die über das Gateway mit OMS kommunizieren, können Sie den Datenverkehr mithilfe des Netzwerklastenausgleichs umleiten und auf mehrere Gatewayserver verteilen.  Wenn ein Gatewayserver ausfällt, wird der Datenverkehr an einen anderen verfügbaren Knoten umgeleitet.  
+Zur Gewährleistung der Hochverfügbarkeit für direkt verbundene Gruppen oder Operations Management-Gruppen, die über das Gateway mit OMS kommunizieren, können Sie den Datenverkehr mithilfe des Netzwerklastenausgleichs umleiten und auf mehrere Gatewayserver verteilen.  Wenn ein Gatewayserver ausfällt, wird der Datenverkehr an einen anderen verfügbaren Knoten umgeleitet.  
 
 Es wird empfohlen, den OMS-Agent auf dem Computer zu installieren, auf dem die OMS-Gatewaysoftware ausgeführt wird, um das OMS-Gateway zu überwachen und die Leistungs- oder Ereignisdaten zu analysieren. Außerdem unterstützt der Agent das OMS-Gateway beim Ermitteln der Dienstendpunkte, mit denen es kommunizieren muss.
 
@@ -118,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um ein Gateway zu installieren.  Falls e
 8. Nachdem Setup abgeschlossen ist, klicken Sie auf **Fertig stellen**. Sie können überprüfen, ob der Dienst ausgeführt wird. Öffnen Sie dazu das Snap-In „services.msc“, und überprüfen Sie, ob **OMS-Gateway** in der Liste mit den Diensten angezeigt wird und den Status **Wird ausgeführt** besitzt.<br><br> ![Dienste – OMS-Gateway](./media/log-analytics-oms-gateway/gateway-service.png)  
 
 ## <a name="configure-network-load-balancing"></a>Konfigurieren des Netzwerklastenausgleichs 
-Für hohe Verfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den Microsoft-Netzwerklastenausgleich (NLB) oder einen hardwarebasierten Lastenausgleich verwenden.  Der Lastenausgleich leitet die angeforderten Verbindungen von OMS-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten um. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.
+Für Hochverfügbarkeit können Sie das Gateway mit Netzwerklastenausgleich (Network Load Balancing, NLB) konfigurieren. Hierzu können Sie entweder den Microsoft-Netzwerklastenausgleich (NLB) oder einen hardwarebasierten Lastenausgleich verwenden.  Der Lastenausgleich leitet die angeforderten Verbindungen von OMS-Agents oder Operations Manager-Verwaltungsservern zur Verwaltung des Datenverkehrs für alle Knoten um. Wenn ein Gatewayserver ausfällt, wird der Datenverkehr zu anderen Knoten umgeleitet.
 
 Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clusters unter Windows Server 2016 finden Sie unter [Netzwerklastenausgleich](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing).  Die folgenden Schritte beschreiben, wie Sie einen Cluster mit Microsoft-Netzwerklastenausgleich konfigurieren.  
 
@@ -130,7 +130,7 @@ Informationen zum Entwerfen und Bereitstellen eines Netzwerklastenausgleichs-Clu
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>Konfigurieren von OMS-Agent und Operations Manager-Verwaltungsgruppe
 Im folgenden Abschnitt erfahren Sie, wie Sie direkt verbundene OMS-Agents, eine Operations Manager-Verwaltungsgruppe oder Azure Automation Hybrid Runbook Worker mit dem OMS-Gateway konfigurieren, um die Kommunikation mit OMS zu ermöglichen.  
 
-Informationen zu den Anforderungen und Schritten zum Installieren des OMS-Agents auf Windows-Computern mit OMS-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](log-analytics-windows-agents.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden Ihrer Linux-Computer mit Log Analytics](log-analytics-linux-agents.md). 
+Informationen zu den Anforderungen und Schritten zum Installieren des OMS-Agents auf Windows-Computern mit OMS-Direktverbindung finden Sie unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](log-analytics-windows-agent.md). Entsprechende Informationen für Linux-Computer finden Sie unter [Verbinden Ihrer Linux-Computer mit Log Analytics](log-analytics-linux-agents.md). 
 
 ### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>Konfigurieren von OMS-Agent und Operations Manager für die Verwendung des OMS-Gateways als Proxyserver
 

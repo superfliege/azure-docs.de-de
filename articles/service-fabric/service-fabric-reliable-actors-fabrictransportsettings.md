@@ -14,24 +14,24 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 75bdd4644f4ccc583271b9169c50a375e2cd6629
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a21dfde5544045e4961549fe5728e14647eb886
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurieren von FabricTransport-Einstellungen für Reliable Actors
 
 Hier folgen Einstellungen, die Sie konfigurieren können:
 - C#: [FabricTransportRemotingSettings](
-https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
+https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 - Java: [FabricTransportRemotingSettings](https://docs.microsoft.com/java/api/microsoft.servicefabric.services.remoting.fabrictransport._fabric_transport_remoting_settings)
 
 Sie können die Standardkonfiguration von FabricTransport auf folgende Weise ändern.
 
 ## <a name="assembly-attribute"></a>Assembly-Attribut
 
-Das [FabricTransportActorRemotingProvider](https://docs.microsoft.com/en-us/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute)-Attribut muss auf die Akteurclient- und Akteurdienstassemblys angewendet werden.
+Das [FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute)-Attribut muss auf die Akteurclient- und Akteurdienstassemblys angewendet werden.
 
 Das folgende Beispiel zeigt, wie der Standardwert der Einstellungen „FabricTransport“ und „OperationTimeout“ geändert werden kann:
 
@@ -49,7 +49,7 @@ Das folgende Beispiel zeigt, wie der Standardwert der Einstellungen „FabricTra
 
 ## <a name="config-package"></a>Konfigurationspaket
 
-Sie können ein [Konfigurationspaket](service-fabric-application-model.md) verwenden, um die Standardkonfiguration zu ändern.
+Sie können ein [Konfigurationspaket](service-fabric-application-and-service-manifests.md) verwenden, um die Standardkonfiguration zu ändern.
 
 ### <a name="configure-fabrictransport-settings-for-the-actor-service"></a>Konfigurieren der FabricTransport-Einstellungen für den Akteurdienst
 

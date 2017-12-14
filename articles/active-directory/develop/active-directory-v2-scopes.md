@@ -4,7 +4,7 @@ description: "Beschreibung der Autorisierung im Azure AD v2.0-Endpunkt, einschl
 services: active-directory
 documentationcenter: 
 author: dstrockis
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 8f98cbf0-a71d-4e34-babf-e644ad9ff423
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 04869a7627ecb3e6a0d11733fae7da2ecb04ed51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a93cfd710f89efbd4dab01b84ecdb12b4acb0033
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Bereiche, Berechtigungen und Zustimmung im Azure Active Directory v2. 0-Endpunkt
 Apps, die sich in Azure Active Directory (Azure AD) integrieren lassen, folgen einem bestimmten Autorisierungsmodell, mit dem Benutzer festlegen können, wie eine App auf ihre Daten zugreift. Die v2.0-Implementierung dieses Autorisierungsmodells wurde aktualisiert, sodass die Art und Weise, wie eine App mit Azure AD interagieren muss, nun anders ist. Dieser Artikel behandelt die grundlegenden Konzepte dieses Autorisierungsmodells einschließlich der Bereiche, Berechtigungen und Zustimmung.
@@ -46,8 +46,8 @@ Durch das Definieren dieser Berechtigungstypen hat die Ressource eine präzisere
 
 In Azure AD und OAuth werden diese Berechtigungen *Bereiche* genannt. Manchmal werden sie auch als *OAuth2-Berechtigungen* bezeichnet. Ein Bereich wird in Azure AD als Zeichenfolgenwert dargestellt. Um beim Beispiel von Microsoft Graph zu bleiben, lautet der Bereichswert für jede Berechtigung wie folgt:
 
-* Lesen des Kalenders eines Benutzers mit `Calendar.Read`
-* Schreiben in den Kalender eines Benutzers mit `Mail.ReadWrite`
+* Lesen des Kalenders eines Benutzers mit `Calendars.Read`
+* Schreiben in den Kalender eines Benutzers mit `Calendars.ReadWrite`
 * Senden von E-Mails als Benutzer mit `Mail.Send`
 
 Eine Anwendung kann diese Berechtigungen durch Angabe der Bereiche in den Anforderungen an den v2.0-Endpunkt anfordern.
@@ -81,7 +81,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 &response_mode=query
 &scope=
-https%3A%2F%2Fgraph.microsoft.com%2Fcalendar.read%20
+https%3A%2F%2Fgraph.microsoft.com%2Fcalendars.read%20
 https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 &state=12345
 ```

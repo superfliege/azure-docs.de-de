@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte;banders
-ms.openlocfilehash: 957b8b9aca0ae27362923c87c7a0161cf2c052b7
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 209968a598d3a579cc40edaf52bd7344fa3f60ed
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Überwachen von Azure SQL-Datenbank mithilfe von Azure SQL Analytics (Vorschau) in Log Analytics
 
@@ -43,7 +43,7 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der L
 
 | Verbundene Quelle | Support | Beschreibung |
 | --- | --- | --- |
-| [Windows-Agents](log-analytics-windows-agents.md) | Nein | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
+| [Windows-Agents](log-analytics-windows-agent.md) | Nein | Direkte Windows-Agents werden von der Lösung nicht verwendet. |
 | [Linux-Agents](log-analytics-linux-agents.md) | Nein | Direkte Linux-Agents werden von der Lösung nicht verwendet. |
 | [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein | Von der Lösung wird keine direkte Verbindung zwischen SCOM-Agent und Log Analytics verwendet. |
 | [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein | Log Analytics liest keine Daten aus einem Speicherkonto. |
@@ -91,7 +91,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 > Aktualisieren Sie Ihre Log Analytics-Version, um die neueste Version der Azure SQL-Analyse zu erhalten.
 >
 
-Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL Analytics“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Die Kachel zeigt die Anzahl der Azure SQL-Datenbanken und der Pools für elastische SQL Azure-Datenbanken, mit denen die Lösung verbunden ist.
+Wenn Sie die Lösung zu Ihrem Arbeitsbereich hinzufügen, wird die Kachel „Azure SQL Analytics“ zu Ihrem Arbeitsbereich hinzugefügt und erscheint in der Übersicht. Die Kachel zeigt die Anzahl der Azure SQL-Datenbanken und der Pools für elastische Azure SQL-Datenbanken, mit denen die Lösung verbunden ist.
 
 ![Kachel „Azure SQL Analytics“](./media/log-analytics-azure-sql/azure-sql-sol-tile.png)
 
@@ -105,7 +105,7 @@ Die Auswahl einer Kachel öffnet einen Drilldown-Bericht zur entsprechenden Pers
 
 ![Azure SQL-Analyse – Zeitlimits](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
 
-Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, elastischen Pool und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite einen speziellen Bericht an. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown nach fortgesetzt.
+Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, Pool für elastische Datenbanken und zur Datenbankebene. Darüber hinaus zeigt jede Perspektive auf der rechten Seite einen speziellen Bericht an. Durch die Auswahl eines Abonnements, Servers, Anwendungspools oder einer Datenbank aus der Liste wird der Drilldown nach fortgesetzt.
 
 | Perspektive | Beschreibung |
 | --- | --- |
@@ -124,13 +124,13 @@ Jede Perspektive bietet Zusammenfassungen zum Abonnement, Server, elastischen Po
 
 ![Azure SQL-Analyse – Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
-### <a name="elastic-pool-and-database-reports"></a>Berichte zu elastischen Pools und Datenbanken
+### <a name="elastic-pool-and-database-reports"></a>Berichte zu Pools für elastische Datenbanken und Datenbanken
 
-Sowohl elastische Pools als auch Datenbanken verfügen über eigene bestimmte Berichte, die alle Daten anzeigen, die für die Ressource im angegebenen Zeitraum gesammelt werden.
+Sowohl Pools für elastische Datenbanken als auch Datenbanken verfügen über eigene bestimmte Berichte, die alle Daten anzeigen, die für die Ressource im angegebenen Zeitraum gesammelt werden.
 
 ![Azure SQL-Analyse –Datenbank](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
-![Azure SQL-Analyse – elastischer Pool](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
+![Azure SQL-Analyse – Pool für elastische Datenbanken](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
 
 ### <a name="query-reports"></a>Abfrageberichte
 

@@ -4,7 +4,7 @@ description: "Erfahren Sie etwas über die verschiedenen Methoden für das Upgra
 services: active-directory
 documentationcenter: 
 author: AndKjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 31f084d8-2b89-478c-9079-76cf92e6618f
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: c4f0ec95c02116a19f2d69c6fa1e8aa639c56c69
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: acce2e8f0c875d0211f132efab5f55d77a0def67
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Aktualisieren von einer früheren Version auf die aktuelle Version
 In diesem Thema werden die verschiedenen Methoden beschrieben, die Sie verwenden können, um Ihre Azure Active Directory (Azure AD) Connect-Installation auf die aktuelle Version zu aktualisieren. Es wird empfohlen, immer die aktuelle Version von Azure AD Connect zu nutzen. Sie können auch die unter [Swing-Migration](#swing-migration) beschriebenen Schritte ausführen, wenn Sie wesentliche Änderungen an der Konfiguration vornehmen.
@@ -48,7 +48,7 @@ Wenn Sie vordefinierte Synchronisierungsregeln geändert haben, werden diese Reg
 
 Bei einem direkten Upgrade werden unter Umständen Änderungen eingeführt, für die nach Abschluss des Upgrades bestimmte Synchronisierungsaktivitäten durchgeführt werden müssen (einschließlich vollständigem Import und vollständiger Synchronisierung). Wie Sie solche Aktivitäten zurückstellen, erfahren Sie im Abschnitt [Zurückstellen der vollständigen Synchronisierung nach dem Upgrade](#how-to-defer-full-synchronization-after-upgrade).
 
-Bei Verwendung von Azure AD Connect mit nicht standardmäßigem Connector (z.B. Generic LDAP Connector und Generic SQL Connector) müssen Sie die entsprechende Connectorkonfiguration im [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) nach dem direkten Upgrade aktualisieren. Weitere Informationen zum Aktualisieren der Konfiguration des Connectors finden Sie im Artikelabschnitt [Troubleshooting](https://docs.microsoft.com/en-us/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting) (Problembehandlung). Wenn Sie die Konfiguration nicht aktualisieren, funktionieren die Import- und Exportausführungsschritte für den Connector nicht ordnungsgemäß. Sie erhalten die folgende Fehlermeldung im Ereignisprotokoll der Anwendung: *Assemblyversion in der AAD-Connector-Konfiguration („X.X.XXX.X“) ist älter als die aktuelle Version („X.X.XXX.X“) von „C:\Programme\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll.*
+Bei Verwendung von Azure AD Connect mit nicht standardmäßigem Connector (z.B. Generic LDAP Connector und Generic SQL Connector) müssen Sie die entsprechende Connectorkonfiguration im [Synchronization Service Manager](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-service-manager-ui-connectors) nach dem direkten Upgrade aktualisieren. Weitere Informationen zum Aktualisieren der Konfiguration des Connectors finden Sie im Artikelabschnitt [Troubleshooting](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-connector-version-history#troubleshooting) (Problembehandlung). Wenn Sie die Konfiguration nicht aktualisieren, funktionieren die Import- und Exportausführungsschritte für den Connector nicht ordnungsgemäß. Sie erhalten die folgende Fehlermeldung im Ereignisprotokoll der Anwendung: *Assemblyversion in der AAD-Connector-Konfiguration („X.X.XXX.X“) ist älter als die aktuelle Version („X.X.XXX.X“) von „C:\Programme\Microsoft Azure AD Sync\Extensions\Microsoft.IAM.Connector.GenericLdap.dll.*
 
 ## <a name="swing-migration"></a>Swing-Migration
 Wenn Sie über eine komplexe Bereitstellung oder viele Objekte verfügen, kann möglicherweise ein direktes Upgrade auf einem Livesystem nicht ausgeführt werden. Dieser Prozess könnte für einige Kunden mehrere Tage dauern, und während dieser Zeit werden keine Deltaänderungen verarbeitet. Sie können diese Methode auch anwenden, wenn Sie wesentliche Änderungen an Ihrer Konfiguration planen und diese vor der Übertragung in die Cloud testen möchten.

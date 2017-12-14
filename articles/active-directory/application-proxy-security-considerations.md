@@ -4,7 +4,7 @@ description: Die Sicherheitsaspekte bei Verwendung des Azure AD-Anwendungsproxys
 services: active-directory
 documentationcenter: 
 author: kgremban
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 239f3830a5e50f80ace15ff3f080653a5f402136
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 5a2ab5c68345deee3a34173d38d529a911c7ff3e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
 
@@ -142,7 +142,7 @@ Wenn Sie für die App die Verwendung von Passthrough als Präauthentifizierungsm
 
 Falls Sie für die App die Präauthentifizierung mit Azure AD konfiguriert haben, werden Benutzer für die Authentifizierung an den Azure AD STS umgeleitet, und die folgenden Schritte werden ausgeführt:
 
-1. Der Anwendungsproxy überprüft etwaige Richtlinienanforderungen in Bezug auf den bedingten Zugriff für die jeweilige Anwendung. Mit diesem Schritt wird sichergestellt, dass der Benutzer der Anwendung zugewiesen wurde. Wenn die Überprüfung in zwei Schritten erforderlich ist, fordert die Authentifizierungssequenz den Benutzer zu einer zweistufigen Authentifizierung auf.
+1. Der Anwendungsproxy überprüft etwaige Richtlinienanforderungen in Bezug auf den bedingten Zugriff für die jeweilige Anwendung. Mit diesem Schritt wird sichergestellt, dass der Benutzer der Anwendung zugewiesen wurde. Wenn die zweistufige Überprüfung erforderlich ist, fordert die Authentifizierungssequenz den Benutzer zu einer zweistufigen Authentifizierung auf.
 
 2. Nachdem alle Überprüfungen bestanden wurden, stellt Azure AD STS ein signiertes Token für die Anwendung aus und leitet den Benutzer zurück zum Anwendungsproxydienst.
 

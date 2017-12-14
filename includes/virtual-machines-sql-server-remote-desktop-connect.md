@@ -1,3 +1,4 @@
+
 1. Wenn der virtuelle Azure-Computer erstellt wurde und ausgeführt wird, klicken Sie im Azure-Portal auf das Symbol für virtuelle Computer, um Ihre virtuellen Computer anzuzeigen.
 
 1. Klicken Sie auf die Auslassungspunkte **...** für den neuen virtuellen Computer.

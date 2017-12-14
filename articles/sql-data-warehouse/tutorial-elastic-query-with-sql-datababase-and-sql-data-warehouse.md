@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 11/03/2017
 ms.author: elbutter
-ms.openlocfilehash: a13b81213b7a47cb7209bc914f514fa10aede5c4
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 20bbdbbde7edc4351563685761785874870a3c82
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-elastic-query-with-sql-data-warehouse"></a>Konfigurieren von elastischen Abfragen mit SQL Data Warehouse
 
@@ -39,9 +39,9 @@ Bevor Sie mit dem Tutorial beginnen, müssen folgende Voraussetzungen erfüllt s
 
 2. Erstellen Sie eine Anmeldung und einen Benutzer, der eine Verbindung zwischen der SQL-Datenbank und dem Data Warehouse darstellt.
 
-  ```sql
-  CREATE LOGIN SalesDBLogin WITH PASSWORD = 'aReallyStrongPassword!@#';
-  ```
+   ```sql
+   CREATE LOGIN SalesDBLogin WITH PASSWORD = 'aReallyStrongPassword!@#';
+   ```
 
 3. Öffnen Sie mit SSMS oder einem anderen Abfrageclient eine neue Abfrage für die **SQL Data Warehouse-Instanz** auf Ihrem logischen Server.
 
@@ -75,14 +75,14 @@ Bevor Sie mit dem Tutorial beginnen, müssen folgende Voraussetzungen erfüllt s
 
 9. Erstellen Sie eine externe Datenquelle, die auf die Data Warehouse-Instanz verweist.
 
-  ```sql
-  CREATE EXTERNAL DATA SOURCE EnterpriseDwSrc WITH 
-      (TYPE = RDBMS, 
-      LOCATION = '<SERVER NAME>.database.windows.net', 
-      DATABASE_NAME = '<SQL DATA WAREHOUSE NAME>', 
-      CREDENTIAL = SalesDBElasticCredential, 
-  ) ;
-  ```
+   ```sql
+   CREATE EXTERNAL DATA SOURCE EnterpriseDwSrc WITH 
+       (TYPE = RDBMS, 
+       LOCATION = '<SERVER NAME>.database.windows.net', 
+       DATABASE_NAME = '<SQL DATA WAREHOUSE NAME>', 
+       CREDENTIAL = SalesDBElasticCredential, 
+   ) ;
+   ```
 
 10. Nun können Sie externe Tabellen erstellen, die auf diese externe Datenquelle verweisen. Abfragen mit diesen Tabellen werden an die zu verarbeitende Data Warehouse-Instanz gesendet und an die Datenbankinstanz zurückgesendet.
 

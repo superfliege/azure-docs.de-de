@@ -3,8 +3,8 @@ title: Verwenden des privilegierten Endpunkts in Azure Stack | Microsoft-Dokumen
 description: "Zeigt die Verwendung des privilegierten Endpunkts in Azure Stack (für einen Azure Stack-Operator)."
 services: azure-stack
 documentationcenter: 
-author: twooley
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: twooley
-ms.openlocfilehash: 9769b12064216680bb1b2db8c1fd7449927c7771
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 949715317de69064bb66fb470a805e367512bd6f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Verwenden des privilegierten Endpunkts in Azure Stack
 
@@ -77,7 +77,7 @@ Es wird empfohlen, nur über den Hardwarelebenszyklushost oder über einen dediz
       - **Benutzername**: Geben Sie das CloudAdmin-Konto im Format **&lt;*Azure Stack-Domäne*&gt;\cloudadmin** an. (Für ASDK lautet der Benutzername **Azurestack\cloudadmin**.)
       - **Kennwort**: Geben Sie das gleiche Kennwort ein, das während der Installation für das Domänenadministratorkonto AzureStackAdmin bereitgestellt wurde.
     
-3.  Nachdem Sie eine Verbindung hergestellt haben, ändert sich die Aufforderung zu **[*IP-Adresse oder ERCS VM-Name*]: PS>** oder **[Azs ercs01]: PS>**, abhängig von der Umgebung. Führen Sie `Get-Command` aus, um die Liste der verfügbaren Cmdlets anzuzeigen.
+3.  Nachdem Sie eine Verbindung hergestellt haben, ändert sich die Aufforderung zu **[*IP-Adresse oder ERCS VM-Name*]: PS > ** oder **[Azs ercs01]: PS>**, abhängig von der Umgebung. Führen Sie `Get-Command` aus, um die Liste der verfügbaren Cmdlets anzuzeigen.
 
     ![Die Ausgabe des Cmdlet „Get-Command“ zeigt die Liste der verfügbaren Befehle](media/azure-stack-privileged-endpoint/getcommandoutput.png)
 

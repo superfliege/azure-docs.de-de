@@ -3,7 +3,7 @@ title: "Auswählen einer Azure-Hybrididentitätslösung | Microsoft-Dokumentatio
 description: "Erhalten Sie grundlegende Informationen zu den verfügbaren Hybrididentitätslösungen und Empfehlungen, nach denen Sie für Ihre Organisation eine fundierte Entscheidung zur Identitätsgovernance treffen können."
 keywords: 
 author: jeffgilb
-manager: femila
+manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.date: 7/5/2017
@@ -13,11 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 5838e3276765f4f074bca2e3cae81b17edfa7c69
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4bed74307f6f95cff9c779abc72da6514d869ea3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Hybrididentitätslösungen
 Hybrid-Identitätslösungen mit [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ermöglichen es Ihnen, lokale Verzeichnisobjekte mit Azure AD zu synchronisieren, während Sie Ihre Benutzer weiterhin lokal verwalten. Die erste Entscheidung bei der Planung der Synchronisierung Ihres lokalen Windows Server Active Directory mit Azure AD ist, ob Sie synchronisierte Identitäten oder einen Identitätsverbund verwenden möchten. Mit synchronisierten Identitäten (und optional Kennworthashes) können Ihre Benutzer dasselbe Kennwort zum Zugreifen auf lokale und cloudbasierte Organisationsressourcen verwenden. Für die Anforderungen erweiterter Szenarien wie einmaliges Anmelden (Single-Sign-On, SSO) oder lokales MFA müssen Sie Active Directory-Verbunddienste (AD FS) für den Identitätsverbund bereitstellen. 
@@ -46,7 +46,7 @@ Die [Azure AD-Pass-Through-Authentifizierung](https://docs.microsoft.com/azure/a
 
 Mit der Pass-Through-Authentifizierung wird keine komplexe Netzwerkinfrastruktur benötigt, und Sie müssen keine lokalen Kennwörter in der Cloud speichern. In Kombination mit einmaligem Anmelden bietet die Pass-Through-Authentifizierung eine wahrhaft integrierte Lösung für die Anmeldung bei Azure AD oder anderen Clouddiensten.
 
-Die Pass-Through-Authentifizierung kann mit Azure AD Connect konfiguriert werden. Dabei wird über einen einfachen lokalen Agent auf Anforderungen nach Kennwortüberprüfung gelauscht. Der Agent lässt sich problemlos auf mehreren Computern bereitstellen, um für hohe Verfügbarkeit und Lastenausgleich zu sorgen. Da die gesamte Kommunikation ausgehend ist, muss der Connector nicht in einer DMZ installiert werden. Folgende Servercomputeranforderungen gelten für den Connector:
+Die Pass-Through-Authentifizierung kann mit Azure AD Connect konfiguriert werden. Dabei wird über einen einfachen lokalen Agent auf Anforderungen nach Kennwortüberprüfung gelauscht. Der Agent lässt sich problemlos auf mehreren Computern bereitstellen, um für Hochverfügbarkeit und Lastenausgleich zu sorgen. Da die gesamte Kommunikation ausgehend ist, muss der Connector nicht in einer DMZ installiert werden. Folgende Servercomputeranforderungen gelten für den Connector:
 
 - Windows Server 2012 R2 oder höher
 - Mitglied einer Domäne in der Gesamtstruktur, über die Benutzer überprüft werden

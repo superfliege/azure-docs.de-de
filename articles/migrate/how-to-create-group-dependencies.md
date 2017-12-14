@@ -1,24 +1,16 @@
 ---
 title: "Verfeinern einer Bewertungsgruppe per Mapping von Gruppenabhängigkeiten in Azure Migrate | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie eine Bewertung verfeinern, indem Sie für den Azure Migrate-Dienst das Mapping von Gruppenabhängigkeiten verwenden."
-services: migrate
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 0527e34e-a078-405e-aeb9-c91a5808112a
-ms.service: migrate
-ms.devlang: na
+ms.service: azure-migrate
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: b4d6861f147fbb6e65a9d529f17f78b54075eb90
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: c30d6546e7c2d471d4b262a8af1ce593b2c1c3fb
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Verfeinern einer Gruppe per Mapping von Gruppenabhängigkeiten
 
@@ -45,4 +37,4 @@ Wenn Sie die Abhängigkeiten eines bestimmten Computers überprüfen möchten, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie die [weiteren Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen.
+[Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen

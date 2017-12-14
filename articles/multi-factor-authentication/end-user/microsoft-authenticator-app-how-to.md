@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Azure Authenticator auf die neueste Version 
 services: multi-factor-authentication
 documentationcenter: 
 author: barlanmsft
-manager: femila
+manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 10/17/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: H1Hack27Feb2017, end-user
-ms.openlocfilehash: cae11f53df768daf5846ac719a45715709326d76
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 0d293833b97b2a65d5377eef668696cb73ee3bd5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-the-microsoft-authenticator-app"></a>Erste Schritte mit der Microsoft Authenticator-App
 Die Microsoft Authenticator-App bietet eine zusätzliche Sicherheitsstufe in Ihrem Geschäfts-, Schul- oder Unikonto (z.B. bsimon@contoso.com) oder Ihrem Microsoft-Konto (z.B. bsimon@outlook.com).
@@ -31,15 +31,15 @@ Die App funktioniert auf zwei Arten:
 
 Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App. Die Azure Authenticator-App kann weiterhin verwendet werden. Sollten Sie sich jedoch entscheiden, zur neuen Microsoft Authenticator-App zu wechseln, finden Sie in diesem Artikel hilfreiche Informationen.  
 
-## <a name="opt-in-for-two-step-verification"></a>Abonnieren für die Überprüfung in zwei Schritten
+## <a name="opt-in-for-two-step-verification"></a>Abonnieren der zweistufigen Überprüfung
 
 Die Microsoft-Authenticator-App kann nicht ohne zusätzliche Konfiguration verwendet werden. Konfigurieren Sie Ihre Konten so, dass Sie nach der Anmeldung mit Ihrem Benutzernamen und Kennwort zu einer zweiten Überprüfungsmethode aufgefordert werden.
 
 Für ein Geschäfts-, Schul- oder Unikonto können Sie diese Funktion in der Regel nicht selbst auswählen. Stattdessen meldet sich ein Sicherheitsadministrator in Ihrem Auftrag an und setzt Sie darüber in Kenntnis, dass Sie Überprüfungsmethoden für Ihr Konto registrieren müssen. Wenn dieses Szenario auf Sie zutrifft, erhalten Sie weitere Informationen unter [Was ist Azure Multi-Factor Authentication?](multi-factor-authentication-end-user.md).
 
-Bei einem persönlichen Konto müssen Sie die Überprüfung in zwei Schritten selbst einrichten. Wenn Sie ein Microsoft-Konto besitzen, finden Sie weitere Informationen unter [Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+Bei einem persönlichen Konto müssen Sie die zweistufige Überprüfung selbst einrichten. Wenn Sie ein Microsoft-Konto besitzen, finden Sie weitere Informationen unter [Zweistufige Überprüfung](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
-Sie können den Microsoft-Authenticator auch mit Nicht-Microsoft-Konten verwenden. Die Funktion heißt dann möglicherweise nicht „ Überprüfung in zwei Schritten“, aber Sie sollten sie unter „Sicherheit“ oder „Anmeldeeinstellungen“ finden.
+Sie können den Microsoft-Authenticator auch mit Nicht-Microsoft-Konten verwenden. Die Funktion heißt dann möglicherweise nicht „zweistufige Überprüfung“, aber Sie sollten sie unter „Sicherheit“ oder „Anmeldeeinstellungen“ finden.
 
 ## <a name="install-the-app"></a>Installieren der App
 Die Microsoft Authenticator-App ist für [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) verfügbar.

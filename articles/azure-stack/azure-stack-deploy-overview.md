@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
-ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04742a587284cf72632360a9575a63a576da36e8
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Schnellstart für die Azure Stack Development Kit-Bereitstellung
 
@@ -31,9 +31,9 @@ Das [Azure Stack Development Kit](azure-stack-poc.md) ist eine Test- und Entwick
 
 2. [**Laden Sie das Bereitstellungspaket herunter und extrahieren Sie es**](azure-stack-run-powershell-script.md#download-and-extract-the-development-kit). Sie können das Bereitstellungspaket auf den Development Kit-Host oder einen anderen Computer herunterladen. Die extrahierten Bereitstellungsdateien belegen bis zu 60 GB freien Speicherplatz auf dem Datenträger, durch die Verwendung eines anderen Computers lassen sich also die Hardwareanforderungen an den Development Kit-Host reduzieren.
 
-3. [**Bereiten Sie den Development Kit Host**](azure-stack-run-powershell-script.md#prepare-the-development-kit-host) mithilfe des Installationsprogramms vor. Nach diesem Schritt startet der Development Kit-Host „Cloudbuilder.vhdx“ (eine virtuelle Festplatte mit startbarem Betriebssystem und den Azure Stack-Installationsdateien).
+3. [**Bereiten Sie den Development Kit Host**](azure-stack-run-powershell-script.md) mithilfe des Installationsprogramms vor. Nach diesem Schritt startet der Development Kit-Host „Cloudbuilder.vhdx“ (eine virtuelle Festplatte mit startbarem Betriebssystem und den Azure Stack-Installationsdateien).
 
-4. [**Stellen Sie das Development Kit**](azure-stack-run-powershell-script.md#deploy-the-development-kit) auf dem Development Kit-Host bereit.
+4. [**Stellen Sie das Development Kit**](azure-stack-run-powershell-script.md) auf dem Development Kit-Host bereit.
 
 5. Wenn Azure Active Directory für Ihre Azure Stack-Bereitstellung verwendet wird, müssen Sie [Azure Stack bei Azure registrieren](azure-stack-register.md), damit Sie [Azure Marketplace-Elemente](azure-stack-download-azure-marketplace-item.md) in Azure Stack herunterladen können.
 

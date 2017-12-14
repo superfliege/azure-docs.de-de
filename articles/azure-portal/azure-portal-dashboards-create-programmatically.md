@@ -6,18 +6,18 @@ documentationcenter:
 author: adamab
 manager: timlt
 editor: tysonn
-ms.service: multiple
+ms.service: azure-portal
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: 6c0d76207233a04bdec604d95f1779c62f6e2d8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9acb58791cb1412d5e67479ca6490e1548be2c8
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Programmgesteuertes Erstellen von Azure-Dashboards
 
@@ -27,7 +27,7 @@ In diesem Dokument wird der Vorgang der programmgesteuerten Erstellung und Verö
 
 ## <a name="overview"></a>Übersicht
 
-Freigegebene Dashboards in Azure sind [Ressourcen](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) genau wie virtuelle Computer und Speicherkonten.  Daher können sie zur einfacheren Ressourcenverwaltung programmgesteuert über die [Azure Resource Manager-REST-APIs](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-rest-api), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/overview), [Azure PowerShell-Befehle](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps?view=azurermps-4.2.0) und zusätzlich zu den APIs auch über viele Funktionen im [Azure-Portal](https://portal.azure.com) verwaltet werden.  
+Freigegebene Dashboards in Azure sind [Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) genau wie virtuelle Computer und Speicherkonten.  Daher können sie zur einfacheren Ressourcenverwaltung programmgesteuert über die [Azure Resource Manager-REST-APIs](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-rest-api), die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/overview), [Azure PowerShell-Befehle](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0) und zusätzlich zu den APIs auch über viele Funktionen im [Azure-Portal](https://portal.azure.com) verwaltet werden.  
 
 Alle diese APIs und Tools bieten Möglichkeiten zum Erstellen, Auflisten, Abrufen, Ändern und Löschen von Ressourcen.  Da Dashboards Ressourcen sind, können Sie Ihre bevorzugte API bzw. Ihr bevorzugtes Tool verwenden.
 
@@ -55,7 +55,7 @@ Nachdem Sie das Dashboard nach Ihren Vorstellungen konfiguriert haben, wird es i
 
 ![Befehl „Freigeben“](./media/azure-portal-dashboards-create-programmatically/share-command.png)
 
-Durch Klicken auf den Befehl „Freigeben“ wird ein Dialogfeld angezeigt, in dem Sie zum Auswählen des Abonnements und der Ressourcengruppe aufgefordert werden, in denen die Veröffentlichung erfolgen soll. Beachten Sie, dass Sie für das Abonnement und die Ressourcengruppe, die Sie auswählen, [über Schreibzugriff verfügen müssen](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure).
+Durch Klicken auf den Befehl „Freigeben“ wird ein Dialogfeld angezeigt, in dem Sie zum Auswählen des Abonnements und der Ressourcengruppe aufgefordert werden, in denen die Veröffentlichung erfolgen soll. Beachten Sie, dass Sie für das Abonnement und die Ressourcengruppe, die Sie auswählen, [über Schreibzugriff verfügen müssen](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
 ![Freigabe und Zugriffssteuerung](./media/azure-portal-dashboards-create-programmatically/sharing-and-access.png)
 
@@ -79,11 +79,11 @@ Zum Erstellen einer Vorlage ist es nicht erforderlich, dass Sie bis ins kleinste
 
 Um dieses Dashboard für alle künftig verwendeten virtuellen Computer zu veröffentlichen, müssen Sie jedes Vorkommen dieser Zeichenfolge im JSON-Code parametrisieren. 
 
-Es gibt zwei Arten von APIs, die Ressourcen in Azure erstellen. [Imperative APIs](https://docs.microsoft.com/en-us/rest/api/resources/resources), die jeweils eine Ressource erstellen, und ein System zur [vorlagenbasierten Bereitstellung](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy), mit dem die Erstellung mehrerer abhängiger Ressourcen mit einem einzigen API-Aufruf orchestriert werden kann. Das Letztere unterstützt die Parametrisierung und Verwendung von Vorlagen auf native Weise, daher wird dieses System für das Beispiel verwendet.
+Es gibt zwei Arten von APIs, die Ressourcen in Azure erstellen. [Imperative APIs](https://docs.microsoft.com/rest/api/resources/resources), die jeweils eine Ressource erstellen, und ein System zur [vorlagenbasierten Bereitstellung](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), mit dem die Erstellung mehrerer abhängiger Ressourcen mit einem einzigen API-Aufruf orchestriert werden kann. Das Letztere unterstützt die Parametrisierung und Verwendung von Vorlagen auf native Weise, daher wird dieses System für das Beispiel verwendet.
 
 ## <a name="programmatically-create-a-dashboard-from-your-template-using-a-template-deployment"></a>Programmgesteuertes Erstellen eines Dashboards über die Vorlage mithilfe einer Vorlagenbereitstellung
 
-Azure bietet die Möglichkeit, die Bereitstellung von mehreren Ressourcen zu orchestrieren. Sie erstellen eine Bereitstellungsvorlage, die die Gruppe der bereitzustellenden Ressourcen sowie die Beziehungen zwischen ihnen darstellt.  Das JSON-Format der einzelnen Ressourcen entspricht jeweils dem Format beim Erstellen der Ressourcen nacheinander. Der Unterschied besteht darin, dass mit der [Vorlagensprache](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates) einige Konzepte wie Variablen, Parameter, allgemeine Funktionen usw. hinzugefügt werden. Diese erweiterte Syntax wird nur im Kontext einer Vorlagenbereitstellung unterstützt und funktioniert bei Verwendung mit den oben erwähnten imperativen APIs nicht.
+Azure bietet die Möglichkeit, die Bereitstellung von mehreren Ressourcen zu orchestrieren. Sie erstellen eine Bereitstellungsvorlage, die die Gruppe der bereitzustellenden Ressourcen sowie die Beziehungen zwischen ihnen darstellt.  Das JSON-Format der einzelnen Ressourcen entspricht jeweils dem Format beim Erstellen der Ressourcen nacheinander. Der Unterschied besteht darin, dass mit der [Vorlagensprache](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) einige Konzepte wie Variablen, Parameter, allgemeine Funktionen usw. hinzugefügt werden. Diese erweiterte Syntax wird nur im Kontext einer Vorlagenbereitstellung unterstützt und funktioniert bei Verwendung mit den oben erwähnten imperativen APIs nicht.
 
 Bei diesem Ansatz muss die Parametrisierung über die Parametersyntax der Vorlage erfolgen.  Sie ersetzen alle zuvor gefundenen Instanzen der Ressourcen-ID wie im Folgenden gezeigt.
 
@@ -119,7 +119,7 @@ Sie müssen zudem einige erforderliche Vorlagenmetadaten und die Parameter oben 
 
 __Die vollständige funktionierende Vorlage ist am Ende des Dokuments eingefügt.__
 
-Nachdem Sie die Vorlage erstellt haben, können Sie sie mit den [REST-APIs](https://docs.microsoft.com/en-us/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy), der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/group/deployment#az_group_deployment_create) oder auf der [Vorlagenbereitstellungsseite des Portals](https://portal.azure.com/#create/Microsoft.Template) bereitstellen.
+Nachdem Sie die Vorlage erstellt haben, können Sie sie mit den [REST-APIs](https://docs.microsoft.com/rest/api/resources/deployments), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy), der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/group/deployment#az_group_deployment_create) oder auf der [Vorlagenbereitstellungsseite des Portals](https://portal.azure.com/#create/Microsoft.Template) bereitstellen.
 
 Es folgen zwei Versionen der JSON-Vorlage für das Beispieldashboard. Die erste ist die Version, die wir im Portal erstellt haben und die bereits an eine Ressource gebunden war. Die zweite ist die Vorlagenversion, die programmgesteuert an jeden virtuellen Computer gebunden und mithilfe von Azure Resource Manager bereitgestellt werden kann.
 

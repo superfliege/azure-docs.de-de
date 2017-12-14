@@ -3,6 +3,7 @@
 | Anzahl von Speicherkonten pro Abonnement | 200<sup>1</sup> |
 | Maximale Speicherkontokapazität | 500 TiB<sup>2</sup> |
 | Maximale Anzahl an Blob-Containern, Blobs, Dateifreigaben, Tabellen, Warteschlangen, Entitäten oder Meldungen pro Speicherkonto | Keine Begrenzung |
+| Maximale Anforderungsrate pro Speicherkonto | 20.000 Anforderungen pro Sekunde<sup>2</sup> |
 | Max. Eingang<sup>3</sup> pro Speicherkonto (US-Regionen) | 10 GBit/s bei aktiviertem GRS/ZRS<sup>4</sup>, 20 GBit/s für LRS<sup>2</sup> |
 | Max. Ausgang<sup>3</sup> pro Speicherkonto (US-Regionen) | 20 GBit/s bei aktiviertem RA-GRS/GRS/ZRS<sup>4</sup>, 30 GBit/s für LRS<sup>2</sup> |
 | Max. Eingang<sup>3</sup> pro Speicherkonto (US-fremde Regionen) | 5 GBit/s bei aktiviertem GRS/ZRS<sup>4</sup>, 10 GBit/s für LRS<sup>2</sup> |

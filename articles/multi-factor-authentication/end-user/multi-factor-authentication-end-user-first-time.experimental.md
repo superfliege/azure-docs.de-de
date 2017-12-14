@@ -1,11 +1,11 @@
 ---
-title: "Einrichten der Überprüfung in zwei Schritten für mein Geschäfts-, Schul- oder Unikonto | Microsoft Docs"
-description: "Wenn Ihr Unternehmen Azure Multi-Factor Authentication konfiguriert, werden Sie aufgefordert, sich für die Überprüfung in zwei Schritten anzumelden. Hier erfahren Sie, wie Sie das Verfahren einrichten. "
+title: "Einrichten der zweistufigen Überprüfung für mein Geschäfts-, Schul- oder Unikonto | Microsoft-Dokumentation"
+description: "Wenn Ihr Unternehmen Azure Multi-Factor Authentication konfiguriert, werden Sie aufgefordert, sich für die zweistufige Überprüfung anzumelden. Hier erfahren Sie, wie Sie das Verfahren einrichten. "
 services: multi-factor-authentication
 keywords: Verwenden von Azure Active Directory, Active Directory in der Cloud, Tutorial zu Active Directory
 documentationcenter: 
 author: barlanmsft
-manager: angrobe
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: 46f83a6a-dbdd-4375-8dc4-e7ea77c16357
 ms.service: multi-factor-authentication
@@ -16,26 +16,26 @@ ms.topic: article
 ms.date: 09/12/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: e0f7b08f7ad00679434992874ff5215f2b2c9dd3
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 7754aac27381e25fca126f7cdd2e07bfa1dcf380
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die Überprüfung in zwei Schritten
-Die Überprüfung in zwei Schritten ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.
+# <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die zweistufige Überprüfung
+Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.
 
-Dieser Artikel unterstützt Sie beim Einrichten Ihres **Geschäfts-, Schul- oder Unikontos**. Wenn Sie die Überprüfung in zwei Schritten für Ihr eigenes persönliches Microsoft-Konto aktivieren möchten, finden Sie entsprechende Informationen unter [Überprüfung in zwei Schritten](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
+Dieser Artikel unterstützt Sie beim Einrichten Ihres **Geschäfts-, Schul- oder Unikontos**. Wenn Sie die zweistufige Überprüfung für Ihr eigenes persönliches Microsoft-Konto aktivieren möchten, finden Sie entsprechende Informationen unter [Zweistufige Überprüfung](https://support.microsoft.com/help/12408/microsoft-account-about-two-step-verification).
 
 ## <a name="set-up-your-account"></a>Einrichten Ihres Kontos
 
-Wenn der Support in Ihrem Unternehmen das Starten mithilfe der Überprüfung in zwei Schritten erzwingt, wird ein Bildschirm mit dem Text **Ihr Administrator verlangt, dass Sie dieses Konto für eine zusätzliche Sicherheitsüberprüfung einrichten.** angezeigt:
+Wenn der Support in Ihrem Unternehmen das Starten mithilfe der zweistufigen Überprüfung erzwingt, wird ein Bildschirm mit dem Text **Ihr Administrator verlangt, dass Sie dieses Konto für eine zusätzliche Sicherheitsüberprüfung einrichten.** angezeigt:
 
 ![Einrichtung](./media/multi-factor-authentication-end-user-first-time/first.png)
 
 Wählen Sie zum Einstieg **Jetzt einrichten** aus.
 
-Wenn bei der Anmeldung kein solcher Bildschirm angezeigt wird, befolgen Sie die Anweisungen in [Verwalten Ihrer Einstellungen für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page), um die Einstellungsseite zu suchen, auf der Sie Ihre Überprüfungsoptionen verwalten können. 
+Wenn bei der Anmeldung kein solcher Bildschirm angezeigt wird, befolgen Sie die Anweisungen in [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md#where-to-find-the-settings-page), um die Einstellungsseite zu suchen, auf der Sie Ihre Überprüfungsoptionen verwalten können. 
 
 ## <a name="decide-how-you-want-to-verify-your-sign-ins"></a>Auswählen der Überprüfung von Anmeldungen
 
@@ -68,7 +68,7 @@ Für diese Methode müssen Sie auf Ihrem Smartphone oder Tablet eine Authenticat
 
 8. Tippen Sie nach der PIN-Eingabe auf **Schließen**. Die Überprüfung sollte jetzt erfolgreich abgeschlossen sein.
 9. Sie sollten Ihre Mobiltelefonnummer eingeben, falls Sie einmal keinen Zugang zu Ihrer mobilen App mehr haben. Wählen Sie in der Dropdownliste Ihr Land aus, und geben Sie im Feld neben dem Land Ihre Mobiltelefonnummer ein. Wählen Sie **Weiter**.
-10. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die Überprüfung in zwei Schritten nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.
+10. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die zweistufige Überprüfung nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.
 11. Wenn Sie solche Apps verwenden, kopieren Sie das angegebene App-Kennwort, und fügen Sie es anstelle des regulären Kennworts in die App ein. Sie können das gleiche App-Kennwort für mehrere Apps verwenden. Weitere Informationen finden Sie unter [Hilfe bei App-Kennwörtern].
 12. Klicken Sie auf **Done**.
 
@@ -88,7 +88,7 @@ Gehen Sie folgendermaßen vor, wenn Sie der mobilen Anwendung manuell ein Konto 
 2. Wählen Sie Ihr Land aus der Dropdownliste aus, und geben Sie Ihre Mobiltelefonnummer ein.
 3. Wählen Sie die gewünschte Methode für das Mobiltelefon aus: SMS oder Anruf.
 4. Wählen Sie **Kontaktformular** aus, um Ihre Telefonnummer überprüfen zu lassen. Abhängig vom ausgewählten Modus senden wir Ihnen eine SMS oder rufen Sie an. Befolgen Sie die Anweisungen auf dem Bildschirm, und wählen Sie dann **Überprüfen** aus.
-5. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die Überprüfung in zwei Schritten nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.
+5. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die zweistufige Überprüfung nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.
 6. Wenn Sie solche Apps verwenden, kopieren Sie das angegebene App-Kennwort, und fügen Sie es anstelle des regulären Kennworts in die App ein. Sie können das gleiche App-Kennwort für mehrere Apps verwenden. Weitere Informationen finden Sie unter [Hilfe bei App-Kennwörtern].
 7. Klicken Sie auf **Done**.
 
@@ -98,12 +98,12 @@ Gehen Sie folgendermaßen vor, wenn Sie der mobilen Anwendung manuell ein Konto 
     ![Einrichtung](./media/multi-factor-authentication-end-user-first-time/office.png)  
 2. Das Feld für die Telefonnummer wird automatisch mit den Kontaktinformationen Ihres Unternehmens ausgefüllt. Wenn die Nummer falsch oder nicht vorhanden ist, bitten Sie den Administrator, Änderungen vorzunehmen.
 3. Wählen Sie **Kontaktformular** aus, um Ihre Telefonnummer überprüfen zu lassen, und wir senden einen Anruf an diese Nummer. Befolgen Sie die Anweisungen auf dem Bildschirm, und wählen Sie dann **Überprüfen** aus.
-4. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die Überprüfung in zwei Schritten nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.
+4. Jetzt werden Sie aufgefordert, App-Kennwörter für Nicht-Browser-Apps, z. B. Outlook 2010 oder früher, oder die native E-Mail-App auf Apple-Geräten einzurichten. Der Grund dafür ist, dass einige Apps die zweistufige Überprüfung nicht unterstützen. Wenn Sie solche Apps nicht verwenden, klicken Sie auf **Fertig**, und überspringen Sie die restlichen Schritte.
 5. Wenn Sie solche Apps verwenden, kopieren Sie das angegebene App-Kennwort, und fügen Sie es anstelle des regulären Kennworts in die App ein. Sie können das gleiche App-Kennwort für mehrere Apps verwenden. Weitere Informationen finden Sie unter [Welchen Zweck erfüllen App-Kennwörter bei Azure Multi-Factor Authentication?](multi-factor-authentication-end-user-app-passwords.md).
 6. Klicken Sie auf **Done**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Ändern Sie Ihre bevorzugten Optionen und [verwalten Sie Ihre Einstellungen für die Überprüfung in zwei Schritten](multi-factor-authentication-end-user-manage-settings.md).
-* Richten Sie [App-Kennwörter](multi-factor-authentication-end-user-app-passwords.md) für native Geräte-Apps ein, die die Überprüfung in zwei Schritten nicht unterstützen.
+* Ändern Sie Ihre bevorzugten Optionen und [verwalten Sie Ihre Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
+* Richten Sie [App-Kennwörter](multi-factor-authentication-end-user-app-passwords.md) für native Geräte-Apps ein, die die zweistufige Überprüfung nicht unterstützen.
 * Testen Sie die [Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) für die schnelle, sichere Authentifizierung, auch wenn kein Mobilfunkempfang möglich ist.
 

@@ -3,7 +3,7 @@ title: Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automat
 description: Bereitstellen einer in Azure Storage gespeicherten Azure Resource Manager-Vorlage aus einem Runbook
 services: automation
 documentationcenter: dev-center-name
-author: eslesar
+author: georgewallace
 manager: carmonm
 keywords: PowerShell, Runbook, JSON, Azure Automation
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 07/09/2017
-ms.author: eslesar
-ms.openlocfilehash: e511eee2f9eac3969b15ad3d45558dc7034f330a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: dc283973efd936d50418d303bbc359dd4312a121
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook
 

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: c4634e3d8efb1745fffcfe3e647e43d867038716
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e2f36b3de1dd04c1a3f36ae308af164d10654ea
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Unterstützung der Kommunikationssicherung für Dienste in Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ Wir verwenden ein vorhandenes [Beispiel](service-fabric-reliable-services-commun
 
     Stellen Sie sicher, dass das Zertifikat, das Sie zum Schützen Ihrer Dienstkommunikation verwenden möchten, auf allen Knoten im Cluster installiert wird. Es gibt zwei Möglichkeiten, wie Sie Listenereinstellungen und Sicherheitsanmeldeinformationen bereitstellen können:
 
-   1. Bereitstellung mithilfe eines [Konfigurationspakets](service-fabric-application-model.md):
+   1. Bereitstellung mithilfe eines [Konfigurationspakets](service-fabric-application-and-service-manifests.md):
 
        Fügen Sie in der Datei „settings.xml“ den Abschnitt `TransportSettings` hinzu.
 

@@ -3,7 +3,7 @@ title: Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics 
 description: "In diesem Artikel wird erläutert, wie Berichtsdaten zum gewünschten Zustand (Desired State Configuration, DSC) an Microsoft Operations Management Suite Log Analytics gesendet werden, um zusätzliche Einblicke und Verwaltungsoptionen zu erhalten."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
-ms.author: eslesar
-ms.openlocfilehash: 316031c5297a0201c8db4a9e177298c78962c673
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: gwallace
+ms.openlocfilehash: 5de22072a436e7a2dbaa7d413595c048f730189b
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics
 
@@ -43,7 +43,7 @@ Zum Senden Ihrer Automation DSC-Berichte an Log Analytics benötigen Sie Folgend
 
 Zum Importieren von Daten aus Azure Automation DSC in Log Analytics müssen Sie die folgenden Schritte ausführen:
 
-1. Melden Sie sich in PowerShell bei Ihrem Azure-Konto an. Weitere Informationen finden Sie unter [Anmelden mit Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/authenticate-azureps?view=azurermps-4.0.0).
+1. Melden Sie sich in PowerShell bei Ihrem Azure-Konto an. Weitere Informationen finden Sie unter [Anmelden mit Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0).
 1. Rufen Sie die _ResourceId_ Ihres Automation-Kontos ab, indem Sie den folgenden PowerShell-Befehl ausführen: (Wenn Sie über mehrere Automation-Konten verfügen, wählen Sie die _ResourceID_ für das Konto aus, das Sie konfigurieren möchten.)
 
   ```powershell

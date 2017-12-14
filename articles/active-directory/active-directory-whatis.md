@@ -4,7 +4,7 @@ description: "Verwenden Sie Azure Active Directory, um Ihre vorhandenen lokalen 
 services: active-directory
 documentationcenter: 
 author: jeffgilb
-manager: femila
+manager: mtillman
 ms.reviewer: jsnow
 ms.author: jeffgilb
 ms.assetid: 498820c4-9ebe-42be-bda2-ecf38cc514ca
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.custom: it-pro
-ms.openlocfilehash: b6746afd508832afbd54153851b6f2ae404af147
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5eafd4d25d2638ab5d9f904a7e0c00b36501d68
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory?
 Azure Active Directory (Azure AD) ist der mehrinstanzenfähige cloudbasierte Verzeichnis- und Identitätsverwaltungsdienst von Microsoft. Azure AD kombiniert grundlegende Verwaltungsdienste mit Identitätsgovernance und Zugriffsverwaltung für Anwendungen. Azure AD bietet außerdem eine umfassende, auf Standards basierende Plattform, mit der Entwickler ihre Anwendungen mit einer Zugriffssteuerung ausstatten können, die auf zentralisierten Richtlinien und Regeln basiert. 
@@ -37,7 +37,7 @@ Wenn Sie Office 365-, Azure- oder Dynamics CRM Online-Kunde sind, haben Sie vie
 ![Azure AD Connect-Stapel](./media/active-directory-whatis/Azure_Active_Directory.png)
 
 ## <a name="how-reliable-is-azure-ad"></a>Wie zuverlässig ist Azure AD?
-Dank der mehrinstanzenfähigen, geografisch verteilten Azure AD-Struktur mit hoher Verfügbarkeit können Sie sich bei Ihren wichtigsten Geschäftsanforderungen auf Azure AD verlassen. Azure AD wird in 28 Datencentern auf der ganzen Welt mit automatischen Failover ausgeführt – so können Sie sicher sein, dass Azure AD hochgradig zuverlässig funktioniert. Selbst wenn einmal ein Datencenter ausfällt, befinden sich Kopien Ihrer Verzeichnisdaten in mindestens zwei weiteren regional verteilten Datencentern und stehen für den sofortigen Zugriff zur Verfügung.
+Dank der mehrinstanzenfähigen, geografisch verteilten Azure AD-Struktur mit Hochverfügbarkeit können Sie sich bei Ihren wichtigsten Geschäftsanforderungen auf Azure AD verlassen. Azure AD wird in 28 Datencentern auf der ganzen Welt mit automatischen Failover ausgeführt – so können Sie sicher sein, dass Azure AD hochgradig zuverlässig funktioniert. Selbst wenn einmal ein Datencenter ausfällt, befinden sich Kopien Ihrer Verzeichnisdaten in mindestens zwei weiteren regional verteilten Datencentern und stehen für den sofortigen Zugriff zur Verfügung.
 
 Weitere Einzelheiten finden Sie unter [Vereinbarungen zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 

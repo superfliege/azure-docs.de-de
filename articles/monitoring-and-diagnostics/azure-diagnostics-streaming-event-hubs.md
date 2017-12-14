@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: robb
-ms.openlocfilehash: 1c05bd6dc4c4d394aa043b9995de9c184e4f14c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca0dd96389a605ed8bf34af81eb4d75bef581338
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Streamen von Azure-Diagnosedaten im heißen Pfad mithilfe von Event Hubs
 Die Azure-Diagnose bietet flexible Methoden zum Erfassen von Metriken und Protokollen virtueller Computer in Clouddiensten sowie zur Übertragung der Ergebnisse an Azure Storage. Seit März 2016 (SDK 2.9) haben Sie die Möglichkeit, benutzerdefinierte Datenquellen als Sendeziel für Diagnose zu verwenden und heiße Daten mithilfe von [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) innerhalb von Sekunden zu übertragen.
@@ -104,7 +104,7 @@ Die Event Hubs-Senke muss ebenfalls im Abschnitt **PrivateConfig** der *.wadcfgx
 }
 ```
 
-Der `SharedAccessKeyName`-Wert muss einem SAS-Schlüssel (Shared Access Signature) und einer Richtlinie entsprechen, die im **Event Hubs**-Namespace definiert wurde. Navigieren Sie zum Event Hubs-Dashboard im [Azure-Portal](https://manage.windowsazure.com), klicken Sie auf die Registerkarte **Konfigurieren**, und richten Sie eine benannte Richtlinie (z.B. „SendRule“) mit Berechtigungen zum *Senden* ein. Das **StorageAccount** wird ebenfalls in **PrivateConfig** konfiguriert. Wenn die Werte hier funktionieren, muss nichts geändert werden. In diesem Beispiel lassen wir die Werte leer. Dies bedeutet, dass ein Downstream-Asset später die Werte festlegt. Beispielsweise legt die Umgebungskonfigurationsdatei *ServiceConfiguration.Cloud.cscfg* die geeigneten Namen und Schlüssel für die Umgebung fest.  
+Der `SharedAccessKeyName`-Wert muss einem SAS-Schlüssel (Shared Access Signature) und einer Richtlinie entsprechen, die im **Event Hubs**-Namespace definiert wurde. Navigieren Sie zum Event Hubs-Dashboard im [Azure-Portal](https://portal.azure.com), klicken Sie auf die Registerkarte **Konfigurieren**, und richten Sie eine benannte Richtlinie (z.B. „SendRule“) mit Berechtigungen zum *Senden* ein. Das **StorageAccount** wird ebenfalls in **PrivateConfig** konfiguriert. Wenn die Werte hier funktionieren, muss nichts geändert werden. In diesem Beispiel lassen wir die Werte leer. Dies bedeutet, dass ein Downstream-Asset später die Werte festlegt. Beispielsweise legt die Umgebungskonfigurationsdatei *ServiceConfiguration.Cloud.cscfg* die geeigneten Namen und Schlüssel für die Umgebung fest.  
 
 > [!WARNING]
 > Der Event Hubs-SAS-Schlüssel wird im Nur-Text-Format in der *.wadcfgx* -Datei gespeichert. Häufig wird dieser Schlüssel in der Quellcodeverwaltung eingecheckt oder ist als Asset in Ihrem Buildserver verfügbar, deshalb sollten die Daten in geeigneter Weise geschützt werden. Es wird empfohlen, hier einen SAS-Schlüssel mit der Berechtigung *Nur senden* zu verwenden, sodass böswillige Benutzer Schreibvorgänge im Event Hub durchführen können, aber nicht am Event Hub lauschen und den Event Hub nicht verwalten können.

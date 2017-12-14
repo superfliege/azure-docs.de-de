@@ -14,6 +14,7 @@
 ### [Vorlagenabschnitte](resource-group-authoring-templates.md)
 #### [Parameter](resource-manager-templates-parameters.md)
 #### [Variablen](resource-manager-templates-variables.md)
+#### [Ressourcen](resource-manager-templates-resources.md)
 ### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
 ### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)

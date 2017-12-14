@@ -4,7 +4,7 @@ description: "Über Azure Active Directory können Benutzer und Gruppen automati
 services: active-directory
 documentationcenter: 
 author: asmalser-msft
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
@@ -12,25 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.custom: aaddev;it-pro;oldportal
-ms.openlocfilehash: 91978cee88d55c99bcb63c63cdaf01581ae84668
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: aaddev;it-pro
+ms.openlocfilehash: 82649b0da67882a0088876798b6f0d79e46051a7
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Verwenden von SCIM (System for Cross-domain Identity Management) für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen
 
 ## <a name="overview"></a>Übersicht
 Über Azure Active Directory (Azure AD) können Benutzer und Gruppen automatisch für alle Anwendungen oder Identitätsspeicher bereitgestellt werden, denen ein Webdienst mit der in der [SCIM 2.0-Protokollspezifikation](https://tools.ietf.org/html/draft-ietf-scim-api-19) definierten Schnittstelle vorgelagert ist. Azure Active Directory kann Anforderungen zum Erstellen, Ändern oder Löschen zugewiesener Benutzer und Gruppen an den Webdienst senden. Der Webdienst kann dann diese Anforderungen in Vorgänge für den Zielidentitätsspeicher übersetzen. 
-
-> [!IMPORTANT]
-> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden. 
-
-
 
 ![][0]
 *Abbildung 1: Bereitstellung aus Azure Active Directory in einem Identitätsspeicher per Webdienst*
@@ -87,7 +82,7 @@ Anwendungen, die das SCIM-Profil wie in diesem Artikel beschrieben erfüllen, k�
 13. Klicken Sie auf **Speichern**, um den Azure AD-Bereitstellungsdienst zu starten. 
 14. Wenn nur zugewiesene Benutzer und Gruppen synchronisiert werden (empfohlen), klicken Sie auf die Registerkarte **Benutzer und Gruppen**, und weisen Sie die Benutzer und/oder Gruppen zu, die synchronisiert werden sollen.
 
-Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 >[!NOTE]
 >Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 20 Minuten erfolgen, solange der Dienst ausgeführt wird. 
@@ -159,7 +154,7 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 13. Klicken Sie auf **Speichern**, um den Azure AD-Bereitstellungsdienst zu starten. 
 14. Wenn nur zugewiesene Benutzer und Gruppen synchronisiert werden (empfohlen), klicken Sie auf die Registerkarte **Benutzer und Gruppen**, und weisen Sie die Benutzer und/oder Gruppen zu, die synchronisiert werden sollen.
 
-Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-saas-provisioning-reporting).
+Nachdem die Erstsynchronisierung gestartet wurde, können Sie auf der Registerkarte **Überwachungsprotokolle** den Status überwachen. Hier werden alle vom Bereitstellungsdienst für Ihre App ausgeführten Aktionen angezeigt. Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden Sie unter [Tutorial: Meldung zur automatischen Benutzerkontobereitstellung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting).
 
 Der letzte Schritt bei der Überprüfung des Beispiels besteht darin, die Datei „TargetFile.csv“ im Ordner „\AzureAD-BYOA-Provisioning-Samples\ProvisioningAgent\bin\Debug“ auf Ihrem Windows-Computer zu öffnen. Wenn der Bereitstellungsprozess ausgeführt wird, werden in dieser Datei die Details aller zugewiesenen und bereitgestellten Benutzer und Gruppen angezeigt.
 

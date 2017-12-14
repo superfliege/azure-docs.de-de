@@ -4,7 +4,7 @@ description: "Hier werden grundlegende und erweiterte Konzepte der Benutzermigra
 services: active-directory-b2c
 documentationcenter: 
 author: yoelhor
-manager: joroja
+manager: mtillman
 editor: 
 ms.assetid: 
 ms.service: active-directory-b2c
@@ -14,17 +14,17 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/04/2017
 ms.author: yoelh
-ms.openlocfilehash: f98f1826b492b8596f352b403b3b12775814c399
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 25023359e3f1eeb241f6f0e70bcb179aa32974af
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Benutzermigration
 Beim Migrieren Ihres Identitätsanbieters zu Azure Active Directory B2C (Azure AD B2C) müssen Sie unter Umständen auch das Benutzerkonto migrieren. In diesem Artikel wird erläutert, wie vorhandene Benutzerkonten von einem beliebigen Identitätsanbieter zu Azure AD B2C migriert werden. Der Artikel enthält keine verbindliche Anleitung, sondern beschreibt lediglich zwei der zahlreichen Möglichkeiten, die Ihnen zur Verfügung stehen. Der Entwickler ist jeweils dafür verantwortlich, dass ein Ansatz geeignet ist.
 
 ## <a name="user-migration-flows"></a>Benutzermigrationsmethoden
-Mit Azure AD B2C können Sie Benutzer über die [Graph-API](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) migrieren. Für den Benutzermigrationsprozess stehen zwei Methoden zur Verfügung:
+Mit Azure AD B2C können Sie Benutzer über die [Graph-API](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-devquickstarts-graph-dotnet) migrieren. Für den Benutzermigrationsprozess stehen zwei Methoden zur Verfügung:
 
 * **Prämigration**: Diese Methode trifft zu, wenn Sie entweder eindeutigen Zugriff auf die Anmeldeinformationen eines Benutzers haben (Benutzername und Kennwort) oder wenn die Anmeldeinformationen verschlüsselt sind und von Ihnen entschlüsselt werden können. Der Prozess der Prämigration umfasst das Lesen der Benutzer im alten Identitätsanbieter und das Erstellen neuer Konten im Azure AD B2C-Verzeichnis.
 
@@ -100,10 +100,10 @@ Die Berechtigung „Lese- und Schreibzugriff auf Verzeichnisdaten“ schließt *
 > Sie müssen ein B2C-Mandantenadministratorkonto verwenden, das für den B2C-Mandanten *lokal* angeordnet ist. Die Syntax für den Kontonamen lautet *admin@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
-> Für das folgende PowerShell-Skript ist [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) erforderlich.
+> Für das folgende PowerShell-Skript ist [Azure Active Directory PowerShell Version 2](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) erforderlich.
 
 Gehen Sie in diesem PowerShell-Skript wie folgt vor:
-1. Stellen Sie eine Verbindung mit dem Onlinedienst her. Führen Sie hierzu an der Windows PowerShell-Eingabeaufforderung das `Connect-AzureAD`-Cmdlet aus, und geben Sie Ihre Anmeldeinformationen an. 
+1. Sie stellen eine Verbindung mit dem Onlinedienst her. Führen Sie hierzu an der Windows PowerShell-Eingabeaufforderung das `Connect-AzureAD`-Cmdlet aus, und geben Sie Ihre Anmeldeinformationen an. 
 
 2. Weisen Sie mithilfe der **Anwendungs-ID** der Anwendung die Rolle „Benutzerkontoadministrator“ zu. Da diese Rollen allgemein bekannte Bezeichner haben, müssen Sie lediglich Ihre **Anwendungs-ID** in das Skript eingeben.
 
@@ -236,7 +236,7 @@ Gehen Sie wie folgt vor, um den Link zu Ihrer Richtlinie für die Kennwortzurüc
 2. Wählen Sie Ihre Anwendung aus.
 
     >[!NOTE]
-    >Für „Jetzt ausführen“ ist es erforderlich, dass mindestens eine Anwendung vorab im Mandanten registriert wird. Informationen zum Registrieren von Anwendungen finden Sie in den Artikeln [Erste Schritte](active-directory-b2c-get-started.md) bzw. [Anwendungsregistrierung](active-directory-b2c-app-registration.md) zu Azure AD B2C. 
+    >Für „Jetzt ausführen“ muss mindestens eine Anwendung vorab im Mandanten registriert werden. Informationen zum Registrieren von Anwendungen finden Sie in den Artikeln [Erste Schritte](active-directory-b2c-get-started.md) bzw. [Anwendungsregistrierung](active-directory-b2c-app-registration.md) zu Azure AD B2C. 
 
 3. Wählen Sie **Jetzt ausführen**, und überprüfen Sie die Richtlinie.
 
@@ -278,7 +278,7 @@ Verwenden Sie eine Azure-Tabelle, um die Kennwortänderung nachzuverfolgen. Wenn
     ```
 
 ### <a name="step-42-deploy-your-web-application-to-azure-app-service"></a>Schritt 4.2: Bereitstellen der Webanwendung in Azure App Service
-Veröffentlichen Sie Ihren API-Dienst in Azure App Service. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy).
+Veröffentlichen Sie Ihren API-Dienst in Azure App Service. Weitere Informationen finden Sie unter [Lokale Git-Bereitstellung in Azure App Service](https://docs.microsoft.com/azure/app-service-web/web-sites-deploy).
 
 ### <a name="step-43-add-a-technical-profile-and-technical-profile-validation-to-your-policy"></a>Schritt 4.3: Hinzufügen eines technischen Profils und der Überprüfung technischer Profile zur Richtlinie 
 1. Öffnen Sie die Erweiterungsrichtliniendatei *TrustFrameworkExtensions.xml* in Ihrem Arbeitsverzeichnis. 
@@ -346,11 +346,11 @@ Mit dem obigen technischen Profil wird ein Eingabeanspruch definiert: `signInNam
 Definieren Sie das technische Profil für die RESTful-API, und konfigurieren Sie anschließend die Azure AD B2C-Richtlinie für das Aufrufen des technischen Profils. Der XML-Codeausschnitt setzt das in der Basisrichtlinie definierte Element `SelfAsserted-LocalAccountSignin-Email` außer Kraft. Darüber hinaus fügt der XML-Codeausschnitt `ValidationTechnicalProfile` mit einer Referenz-ID hinzu, die auf das technische Profil `LocalAccountUserMigration` verweist. 
 
 ### <a name="step-44-upload-the-policy-to-your-tenant"></a>Schritt 4.4: Hochladen der Richtlinie in Ihren Mandanten
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und wählen Sie anschließend **Azure AD B2C**.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zum [Kontext Ihres Azure AD B2C-Mandanten](active-directory-b2c-navigate-to-b2c-context.md), und wählen Sie anschließend **Azure AD B2C** aus.
 
 2. Wählen Sie **Framework für die Identitätsfunktion** aus.
 
-3. Wählen Sie die Option **Alle Richtlinien**.
+3. Wählen Sie die Option **Alle Richtlinien** aus.
 
 4. Wählen Sie **Richtlinie hochladen** aus.
 
@@ -384,11 +384,11 @@ Sie können Protokollierungsinformationen nahezu in Echtzeit anzeigen und überw
 
 6. Überprüfen Sie die Ausgabe der RESTful-API.
 
-Weitere Informationen finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-streaming-logs-and-console).
+Weitere Informationen finden Sie unter [Aktivieren der Diagnoseprotokollierung für Web-Apps in Azure App Service](https://docs.microsoft.com/azure/app-service-web/web-sites-streaming-logs-and-console).
 
 > [!IMPORTANT]
 > Verwenden Sie die Diagnoseprotokolle nur während der Entwicklung und bei Tests. Die RESTful-API-Ausgabe enthält unter Umständen vertrauliche Informationen, die während der Produktion nicht verfügbar gemacht werden dürfen.
 >
 
 ## <a name="optional-download-the-complete-policy-files"></a>(Optional) Herunterladen der vollständigen Richtliniendateien
-Nachdem Sie die exemplarische Vorgehensweise unter [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) abgeschlossen haben, raten wir Ihnen, mit Ihren eigenen benutzerdefinierten Richtliniendateien ein Szenario zu erstellen. Zu Referenzzwecken haben wir [Beispiele für Richtliniendateien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration) bereitgestellt. 
+Nachdem Sie die exemplarische Vorgehensweise unter [Erste Schritte mit benutzerdefinierten Richtlinien](active-directory-b2c-get-started-custom.md) abgeschlossen haben, empfiehlt es sich, ein Szenario mit Ihren eigenen benutzerdefinierten Richtliniendateien zu erstellen. Zu Referenzzwecken haben wir [Beispiele für Richtliniendateien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-user-migration) bereitgestellt. 

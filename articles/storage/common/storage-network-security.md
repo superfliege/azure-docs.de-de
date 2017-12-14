@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 2e155231e430a8333095fdcd92a727a17c6d1e8c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2ea1c217031761e93d393aefa07eedd03f88d9b0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Konfigurieren von Firewalls und virtuellen Netzwerken in Azure Storage (Vorschau)
 Azure Storage bietet ein mehrstufiges Sicherheitsmodell, mit dem Sie Ihre Speicherkonten für eine bestimmte Gruppe zulässiger Netzwerke sichern können.  Wenn Netzwerkregeln konfiguriert sind, können nur Anwendungen aus zulässigen Netzwerken auf ein Speicherkonto zugreifen.  Anwendungen, die aus einem zulässigen Netzwerk aufgerufen werden, erfordern für den Zugriff auf das Speicherkonto weiterhin eine ordnungsgemäße Autorisierung (einen gültigen Zugriffsschlüssel oder ein gültiges SAS-Token).
@@ -293,13 +293,12 @@ Wenn die Ausnahme „Vertrauenswürdige Microsoft-Dienste“ aktiviert ist, wird
 
 |Dienst|Name des Ressourcenanbieters|Zweck|
 |:------|:---------------------|:------|
-|Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-overview).|
-|Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/event-grid/overview).|
-|Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview).|
-|Azure HDInsight|Microsoft.HDInsight|Clusterbereitstellung und -installation.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-blob-storage).|
-|Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-packet-capture-overview).|
-|Azure SQL Data Warehouse|Microsoft.Sql|Import und Export von Daten.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-load#load-from-azure-blob-storage).|
-|Azure Backup|Microsoft.RecoveryServices|Sicherung und Wiederherstellung von nicht verwalteten Datenträgern.  [Weitere Informationen](https://docs.microsoft.com/en-us/azure/backup/backup-introduction-to-azure-backup).|
+|Azure DevTest Labs|Microsoft.DevTestLab|Erstellung benutzerdefinierter Images und Installation von Artefakten.  [Weitere Informationen](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview).|
+|Azure Event Grid|Microsoft.EventGrid|Aktivieren der Veröffentlichung von Blob Storage-Ereignissen.  [Weitere Informationen](https://docs.microsoft.com/azure/event-grid/overview).|
+|Azure Event Hubs|Microsoft.EventHub|Archivieren von Daten mit Event Hubs Capture.  [Weitere Informationen](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
+|Azure HDInsight|Microsoft.HDInsight|Clusterbereitstellung und -installation.  [Weitere Informationen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage).|
+|Azure-Netzwerke|Microsoft.Networking|Speichern und Analysieren von Protokollen des Netzwerkdatenverkehrs.  [Weitere Informationen](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
+|Azure Backup|Microsoft.RecoveryServices|Sicherung und Wiederherstellung von nicht verwalteten Datenträgern.  [Weitere Informationen](https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup).|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten

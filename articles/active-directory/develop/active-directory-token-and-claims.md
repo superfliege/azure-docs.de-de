@@ -4,7 +4,7 @@ description: "Anleitung zum Verstehen und Auswerten der Ansprüche in den SAML 2
 documentationcenter: na
 author: dstrockis
 services: active-directory
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: be28230b9c56dcbca4ba8f70e44741f65a447f73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3104b47d7ff8585142674b0ee545012f1e291ddd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD-Tokenreferenz
 Azure Active Directory (Azure AD) stellt bei der Verarbeitung der einzelnen Authentifizierungsflüsse verschiedene Arten von Sicherheitstoken aus. In diesem Dokument sind das Format, die Sicherheitsmerkmale und der Inhalt aller Tokentypen beschrieben.
@@ -96,7 +96,7 @@ Wenn Sie ein Aktualisierungstoken für ein neues Zugriffstoken einlösen, erhalt
 
 ## <a name="validating-tokens"></a>Überprüfen von Token
 
-Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur als auch die Ansprüche des Tokens überprüfen. Um Zugriffstoken zu überprüfen, sollte Ihre App auch den Aussteller, die Zielgruppe und die signierenden Token validieren. Diese müssen anhand der Werte im OpenID Discovery-Dokument überprüft werden. Die mandantenunabhängige Version des Dokuments finden Sie z.B. unter [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration). Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-code-samples) nach einer gewünschten Sprache durchsuchen. Weitere Informationen zur expliziten Überprüfung von JWT-Token finden Sie im [Beispiel zur manuellen JWT-Überprüfung](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).  
+Bei der Überprüfung eines „id_token“ oder eines „access_token“ muss Ihre App sowohl die Signatur als auch die Ansprüche des Tokens überprüfen. Um Zugriffstoken zu überprüfen, sollte Ihre App auch den Aussteller, die Zielgruppe und die signierenden Token validieren. Diese müssen anhand der Werte im OpenID Discovery-Dokument überprüft werden. Die mandantenunabhängige Version des Dokuments finden Sie z.B. unter [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration). Azure AD-Middleware verfügt über integrierte Funktionen zum Überprüfen von Zugriffstoken. Sie können auch unsere [Beispiele](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples) nach einer gewünschten Sprache durchsuchen. Weitere Informationen zur expliziten Überprüfung von JWT-Token finden Sie im [Beispiel zur manuellen JWT-Überprüfung](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation).  
 
 Wir stellen Bibliotheken und Codebeispiele bereit, die die Tokenüberprüfung veranschaulichen. Die folgenden Informationen werden lediglich für Benutzer bereitgestellt, die den zugrunde liegenden Prozess nachvollziehen möchten.  Für die JWT-Überprüfung stehen zudem verschiedene Open Source-Bibliotheken von Drittanbietern zur Verfügung. Für nahezu jede Plattform und Sprache ist mindestens eine Option verfügbar. Weitere Informationen zu Azure AD-Authentifizierungsbibliotheken sowie Codebeispiele finden Sie unter [Azure Active Directory-Authentifizierungsbibliotheken](active-directory-authentication-libraries.md).
 

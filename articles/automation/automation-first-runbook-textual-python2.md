@@ -3,7 +3,7 @@ title: Mein erstes Python-Runbook in Azure Automation | Microsoft-Dokumentation
 description: "Tutorial, in dem Sie sich mit dem Erstellen, Testen und Veröffentlichen eines einfachen Python-Runbooks vertraut machen können."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
-ms.author: eslesar
-ms.openlocfilehash: 4e7b3049fff76c86956e08d71b22a0f8dbf55b0e
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.author: gwallace
+ms.openlocfilehash: 8a7c03f10d4310bcdb13ef76b598c22912707c08
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="my-first-python-runbook"></a>Mein erstes Python-Runbook
 
@@ -213,5 +213,5 @@ Klicken Sie auf **OK**, um das Runbook zu starten. Das Runbook wird ausgeführt 
 * Informationen über die ersten Schritte mit grafischen Runbooks finden Sie unter [Mein erstes grafisches Runbook](automation-first-runbook-graphical.md)
 * Die ersten Schritte mit PowerShell-Workflow-Runbooks sind unter [Mein erstes PowerShell-Workflow-Runbook](automation-first-runbook-textual.md)
 * Weitere Informationen zu den verschiedenen Runbooktypen sowie zu ihren Vorteilen und Einschränkungen finden Sie unter [Azure Automation-Runbooktypen](automation-runbook-types.md)
-* Weitere Informationen zum Entwickeln für Azure mit Python finden Sie unter [Azure für Python-Entwickler](https://docs.microsoft.com/en-us/python/azure/?view=azure-python).
-* Beispiel „Python 2 Runbooks“ finden Sie unter [Azure Automation GitHub](https://docs.microsoft.com/en-us/python/azure/?view=azure-python).
+* Weitere Informationen zum Entwickeln für Azure mit Python finden Sie unter [Azure für Python-Entwickler](https://docs.microsoft.com/python/azure/?view=azure-python).
+* Beispiel „Python 2 Runbooks“ finden Sie unter [Azure Automation GitHub](https://docs.microsoft.com/python/azure/?view=azure-python).

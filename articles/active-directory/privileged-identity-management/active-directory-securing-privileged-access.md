@@ -4,7 +4,7 @@ description: "In diesem Thema werden Methoden zum Sichern des privilegierten Zug
 services: active-directory
 documentationcenter: 
 author: barclayn
-manager: mbaldwin
+manager: mtillman
 editor: mwahl
 ms.assetid: 235a0ce9-1daf-4433-8f65-9c6afcd64d08
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 00fc998666574f0b85b968cba174d328a300e861
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: e1bc0f27b14beef91b4deb68dc625d75195445fb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Sichern des privilegierten Zugriffs in Azure AD
 Das Sichern des privilegierten Zugriffs ist ein entscheidender erster Schritt, um die geschäftlichen Ressourcen in einem modernen Unternehmen zu schützen. Mit privilegierten Konten werden IT-Systeme verwaltet. Cyberkriminelle versuchen diese Konten anzugreifen, um Zugriff auf die Daten und Systeme eines Unternehmens zu erhalten. Zum Schutz des privilegierten Zugriffs empfiehlt es sich, Konten und Systeme zu isolieren, um sie vor dem Zugriff durch böswillige Benutzer zu schützen.
@@ -31,9 +31,9 @@ Microsoft empfiehlt, der Roadmap unter [Securing Privileged Access](https://tech
 Für Kunden, die Azure Active Directory, Office 365 oder andere Microsoft-Dienste und -Anwendungen verwenden, gelten diese Prinzipien unabhängig davon, ob die Benutzerkonten über Active Directory oder Azure Active Directory verwaltet und authentifiziert werden. In den folgenden Abschnitten finden Sie weitere Informationen zu den Azure AD-Features, die das Sichern des privilegierten Zugriffs unterstützen.
 
 ## <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
-Um die Sicherheit der Administratorauthentifizierung zu erhöhen, sollten Sie eine Überprüfung in zwei Schritten anfordern, bevor Berechtigungen gewährt werden. Die Überprüfung in zwei Schritten ist eine Methode zum Überprüfen der Identität, für die mehr als nur ein Benutzername und ein Kennwort erforderlich ist. Sie bietet eine zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen.
+Um die Sicherheit der Administratorauthentifizierung zu erhöhen, sollten Sie eine zweistufige Überprüfung anfordern, bevor Berechtigungen gewährt werden. Die zweistufige Überprüfung ist eine Methode zum Überprüfen der Identität, für die mehr als nur ein Benutzername und ein Kennwort erforderlich ist. Sie bietet eine zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen.
 
-Azure Multi-Factor Authentication (MFA) ist eine Lösung von Microsoft zur Überprüfung in zwei Schritten, die zum Schutz des Zugriffs auf Daten und Anwendungen beiträgt und gleichzeitig ein einfaches Anmeldeverfahren für Benutzer bietet. Sie bietet eine leistungsstarke Authentifizierung durch eine Auswahl von einfachen Überprüfungsoptionen. Hierzu zählen Folgende:
+Azure Multi-Factor Authentication (MFA) ist eine Lösung von Microsoft zur zweistufigen Überprüfung, die zum Schutz des Zugriffs auf Daten und Anwendungen beiträgt und gleichzeitig ein einfaches Anmeldeverfahren für Benutzer bietet. Sie bietet eine leistungsstarke Authentifizierung durch eine Auswahl von einfachen Überprüfungsoptionen. Hierzu zählen Folgende:
 
 - Telefonanrufe
 - Textnachrichten

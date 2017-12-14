@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 09542c0e7f628ca4fea00a6562c0b9525432c213
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 977c5d64a32157b39aa6b618196dde20c4c3cc8e
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="event-analysis-and-visualization-with-oms"></a>Ereignisanalyse und Visualisierung mit OMS
 
@@ -41,7 +41,7 @@ Um diese Funktionalität für Ihren Cluster zu verwenden, lesen Sie die Informat
 
 ## <a name="using-the-oms-agent"></a>Verwenden des OMS-Agents
 
-Es wird empfohlen, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Wenn Sie beispielsweise die Ausgaben von EventFlow ändern möchten, ist keine Änderung an der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung an der Konfigurationsdatei erforderlich. Wenn Sie sich jedoch für die Verwendung von OMS Log Analytics entscheiden, sollten Sie den [OMS-Agent](../log-analytics/log-analytics-windows-agents.md) einrichten. Den OMS-Agent sollten Sie auch verwenden, wenn Sie Container für Ihren Cluster bereitstellen, wie weiter unten erläutert. 
+Es wird empfohlen, EventFlow und WAD als Aggregationslösungen zu verwenden, da diese einen modularen Ansatz für die Diagnose und Überwachung bieten. Wenn Sie beispielsweise die Ausgaben von EventFlow ändern möchten, ist keine Änderung an der eigentlichen Instrumentierung, sondern lediglich eine einfache Änderung an der Konfigurationsdatei erforderlich. Wenn Sie sich jedoch für die Verwendung von OMS Log Analytics entscheiden, sollten Sie den [OMS-Agent](../log-analytics/log-analytics-windows-agent.md) einrichten. Den OMS-Agent sollten Sie auch verwenden, wenn Sie Container für Ihren Cluster bereitstellen, wie weiter unten erläutert. 
 
 Die erforderlichen Schritte hierzu finden Sie unter [Add the OMS Agent to a cluster](service-fabric-diagnostics-oms-agent.md) (Hinzufügen des OMS-Agents zu einem Cluster).
 

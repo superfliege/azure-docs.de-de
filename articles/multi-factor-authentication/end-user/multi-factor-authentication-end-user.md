@@ -1,10 +1,10 @@
 ---
-title: "Erste Schritte mit der Überprüfung in zwei Schritten | Microsoft Docs"
+title: "Erste Schritte mit der zweistufigen Überprüfung | Microsoft-Dokumentation"
 description: Auf dieser Seite zur Azure Multi-Factor Authentication finden Ihre Endbenutzer Informationen zu den ersten Schritten mit Azure Multi-Factor Authentication.
 services: multi-factor-authentication
 documentationcenter: 
 author: barlanmsft
-manager: femila
+manager: mtillman
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 06/15/2017
 ms.author: barlan
 ms.reviewer: richagi
 ms.custom: end-user
-ms.openlocfilehash: 498dcea10b35fb8c11f848496ca403ac3e026e93
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: fd8c92e575071b5b3647d51ba79603a2174dcd3f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Was ist Azure Multi-Factor Authentication?
 Sie haben eine E-Mail von einem IT-Mitarbeiter erhalten oder Ihr Vorgesetzter hat Ihnen gesagt, dass für Ihr Konto eine zusätzliche Sicherheitsüberprüfung hinzugefügt wurde.  Was bedeutet dies?
@@ -37,7 +37,7 @@ Als Erstes müssen Sie den Registrierungsprozess durchführen.  Bevor Sie mit di
 
 Nachdem Sie sich für eine Bestätigungsmethode entschieden haben, können Sie sich registrieren. Rufen Sie den Link [Setupfunktionalität](multi-factor-authentication-end-user-first-time.md) auf, um eine ausführliche Anleitung des Registrierungsprozesses zu lesen.
 
-## <a name="how-to-get-going-with-two-step-verification"></a>Erste Schritte mit der Überprüfung in zwei Schritten
+## <a name="how-to-get-going-with-two-step-verification"></a>Erste Schritte mit der zweistufigen Überprüfung
 Wählen Sie eines dieser Themen aus, um zu beginnen.
 
 | Thema | Beschreibung |

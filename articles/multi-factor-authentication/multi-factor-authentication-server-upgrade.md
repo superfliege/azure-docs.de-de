@@ -4,7 +4,7 @@ description: In diesem Artikel finden Sie Anleitungen zum Upgraden des Azure Mul
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 50bb8ac3-5559-4d8b-a96a-799a74978b14
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 06/16/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: a56078fcd61114d0ca78e2dd00445c988a8a3c6c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 456f2c64c91249f3ec2de4f2d79a2f77cc7598da
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>Aktualisieren des Azure Multi-Factor Authentication-Servers
 
@@ -31,7 +31,7 @@ Wenn Sie ein Upgrade von v6.x oder niedriger auf v7.x oder höher durchführen, 
 
 1. Befolgen Sie die Anweisungen in [Herunterladen des Azure Multi-Factor Authentication-Servers](multi-factor-authentication-get-started-server.md#download-the-mfa-server), um die neueste Version von Azure MFA-Server zu erhalten.
 2. Erstellen Sie eine Sicherung der Datendatei von MFA-Server, die sich unter „C:\Programme\Multi-Factor Authentication-Server\Daten\PhoneFactor.pfdata“ befindet (der Standard-Installationsspeicherort), auf Ihrem MFA-Masterserver.
-3. Wenn Sie für eine hohe Verfügbarkeit mehrere Server ausführen, ändern Sie die Clientsysteme, die eine Authentifizierung bei MFA-Server durchführen so, dass sie keinen Datenverkehr an die Server senden, die gerade aktualisiert werden. Wenn Sie einen Lastenausgleich verwenden, entfernen Sie einen MFA-Server aus dem Lastenausgleich, führen Sie das Upgrade durch, und fügen Sie den Server anschließend wieder zur Farm hinzu.
+3. Wenn Sie für Hochverfügbarkeit mehrere Server ausführen, ändern Sie die Clientsysteme, die eine Authentifizierung bei MFA-Server durchführen so, dass sie keinen Datenverkehr an die Server senden, die gerade aktualisiert werden. Wenn Sie einen Lastenausgleich verwenden, entfernen Sie einen MFA-Server aus dem Lastenausgleich, führen Sie das Upgrade durch, und fügen Sie den Server anschließend wieder zur Farm hinzu.
 4. Führen Sie das neue Installationsprogramm für jeden MFA-Server aus. Aktualisieren Sie untergeordnete Server zuerst, da diese die alten Datendateien lesen können, die vom Master repliziert werden. 
 
   Sie müssen Ihren aktuellen MFA-Server nicht deinstallieren, bevor Sie das Installationsprogramm ausführen. Das Installationsprogramm wird als direktes Upgrade ausgeführt. Der Installationspfad wird aus der Registrierung der vorherigen Installation übernommen. Die Installation erfolgt also unter dem gleichen Pfad (beispielsweise „C:\Programme\Multi-Factor Authentication-Server“). 
@@ -87,7 +87,7 @@ Diese Informationen gelten nur, wenn Sie Multi-Factor Authentication-Server getr
 ### <a name="install-new-ad-fs-adapters"></a>Installieren von neuen AD FS-Adaptern
 
 > [!IMPORTANT] 
-> Ihre Benutzer müssen während den Schritten 3-8 in diesem Abschnitt keine Überprüfung in zwei Schritten durchführen. Wenn AD FS bei Ihnen in mehreren Clustern konfiguriert ist, können Sie jeden Cluster in der Farm unabhängig von den anderen Clustern entfernen, upgraden und wiederherstellen, um Ausfallzeiten zu vermeiden.
+> Ihre Benutzer müssen während der Schritte 3-8 in diesem Abschnitt keine zweistufige Überprüfung durchführen. Wenn AD FS bei Ihnen in mehreren Clustern konfiguriert ist, können Sie jeden Cluster in der Farm unabhängig von den anderen Clustern entfernen, upgraden und wiederherstellen, um Ausfallzeiten zu vermeiden.
 
 1. Entfernen Sie einige AD FS-Server aus der Farm. Aktualisieren Sie diese Server, während die anderen noch ausgeführt werden.
 2. Installieren Sie den neuen AD FS-Adapter auf jedem Server, der aus der AD FS-Farm entfernt wurde. Wenn der MFA-Server auf jedem AD FS-Server installiert ist, können Sie das Update auch über die Administratoren-UX des MFA-Servers durchführen. Führen Sie das Update andernfalls durch Ausführen von „MultiFactorAuthenticationAdfsAdapterSetup64.msi“ durch. 
@@ -96,7 +96,7 @@ Diese Informationen gelten nur, wenn Sie Multi-Factor Authentication-Server getr
 
 3. Wechseln Sie zu **AD FS** > **Authentifizierungsrichtlinien** > **Globale mehrstufige Authentifizierungsrichtlinie bearbeiten**. Deaktivieren Sie **WindowsAzureMultiFactorAuthentication** oder **AzureMfaServerAuthentication** (abhängig von der aktuell installierten Version). 
 
-  Nachdem dieser Schritt abgeschlossen ist, ist die Überprüfung in zwei Schritten durch den MFA-Server in diesem AD FS-Cluster nicht verfügbar, bis Sie Schritt 8 abschließen.
+  Nachdem dieser Schritt abgeschlossen ist, ist die zweistufige Überprüfung durch den MFA-Server in diesem AD FS-Cluster nicht verfügbar, bis Sie Schritt 8 abschließen.
 
 4. Heben Sie die Registrierung der älteren Version des AD FS-Adapters durch Ausführen des Skripts „Unregister-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell“ auf. Stellen Sie sicher, dass der Parameter *-Name* (entweder „WindowsAzureMultiFactorAuthentication“ oder „AzureMFAServerAuthentication“), dem Namen entspricht, der in Schritt 3 angezeigt wurde. Dies gilt für alle Server im gleichen AD FS-Cluster, da es sich um eine zentrale Konfiguration handelt.
 5. Registrieren Sie den neuen AD FS-Adapter durch Ausführen des Skripts „Register-MultiFactorAuthenticationAdfsAdapter.ps1 PowerShell“. Dies gilt für alle Server im gleichen AD FS-Cluster, da es sich um eine zentrale Konfiguration handelt.

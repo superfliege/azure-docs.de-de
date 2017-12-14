@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e78ca1da8cafe93e76d640c0e6d5ad5309655c1b
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 6919b40ac6edff289f3eb171e88ca6d76288f2a3
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optimieren Ihrer Active Directory-Umgebung mit der Active Directory-Integritätsüberprüfung-Lösung in Log Analytics
 
@@ -52,7 +52,7 @@ Nachdem Sie die Lösung hinzugefügt haben und eine Überprüfung durchgeführt 
 
 Um die Integritätsüberprüfung für Ihre Domänencontroller auszuführen, die Mitglieder der zu bewertenden Domäne sind, sind ein Agent und Konnektivität mit Log Analytics mithilfe einer der folgenden unterstützten Methoden erforderlich:
 
-1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agents.md), wenn der Domänencontroller nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
+1. Installieren Sie den [Microsoft Monitoring Agent (MMA)](log-analytics-windows-agent.md), wenn der Domänencontroller nicht bereits durch System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird.
 2. Wenn er mit System Center 2016 – Operations Manager oder Operations Manager 2012 R2 überwacht wird, und die Verwaltungsgruppe nicht in den Log Analytics-Dienst integriert ist, kann der Domänencontroller mit Log Analytics mehrfach vernetzt werden, um Daten zu sammeln und an den Dienst weiterzuleiten, wobei er weiterhin von Operations Manager überwacht wird.  
 3. Wenn Ihre Operations Manager-Verwaltungsgruppe andernfalls in den Dienst integriert ist, müssen Sie die Domänencontroller für die Datensammlung durch den Dienst hinzufügen, indem Sie die Schritte unter [Herstellen einer Verbindung zwischen Operations Manager und OMS](log-analytics-om-agents.md#connecting-operations-manager-to-oms) nach der Aktivierung der Lösung in Ihrem Arbeitsbereich ausführen.  
 

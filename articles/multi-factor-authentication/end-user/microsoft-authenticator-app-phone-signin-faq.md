@@ -4,7 +4,7 @@ description: "Melden Sie sich bei Ihrem Microsoft-Konto über Ihr Smartphone an,
 services: multi-factor-authentication
 documentationcenter: 
 author: barlanmsft
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,21 +15,21 @@ ms.date: 08/12/2017
 ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: b62900b780884c241d96f0bed8e93a1a0927cfe3
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 86cf6ba2f2ec86a609b4ec60cc143b07d9e542b3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>Anmelden per Smartphone anstelle Ihres Kennworts
 
-Mit der Microsoft Authenticator-App können Sie Ihre Konten noch besser schützen, indem Sie nach der Kennworteingabe eine Überprüfung in zwei Schritten durchführen. Aber wussten Sie, dass die App das Kennwort für Ihr persönliches Microsoft-Konto vollständig ersetzen kann?
+Mit der Microsoft Authenticator-App können Sie Ihre Konten noch besser schützen, indem Sie nach der Kennworteingabe eine zweistufige Überprüfung durchführen. Aber wussten Sie, dass die App das Kennwort für Ihr persönliches Microsoft-Konto vollständig ersetzen kann?
 
 Dieses Feature steht auf IOS- und Android-Geräten zur Verfügung und kann für persönliche Microsoft-Konten verwendet werden.
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Viele Benutzer verwenden die Microsoft Authenticator-App für die Überprüfung in zwei Schritten, wenn sie sich bei ihrem Microsoft-Konto anmelden. Hierzu geben sie ihr Kennwort ein und wechseln anschließend in die App, um entweder eine Benachrichtigung zu bestätigen oder einen Überprüfungscode abzurufen. Bei der Anmeldung per Telefon wird die Kennworteingabe übersprungen, und die gesamte Identitätsüberprüfung findet auf Ihrem Smartphone statt. Da die Anmeldung per Telefon eine Art der Überprüfung in zwei Schritten darstellt, müssen Sie zur Überprüfung Ihrer Identität nach wie vor etwas angeben, das Sie wissen, und etwas, das Sie haben. Das Smartphone ist auch hier das, was Sie haben, und die Smartphone-PIN oder der biometrische Schlüssel das, was Sie wissen.
+Viele Benutzer verwenden die Microsoft Authenticator-App für die zweistufige Überprüfung, wenn sie sich bei ihrem Microsoft-Konto anmelden. Hierzu geben sie ihr Kennwort ein und wechseln anschließend in die App, um entweder eine Benachrichtigung zu bestätigen oder einen Überprüfungscode abzurufen. Bei der Anmeldung per Telefon wird die Kennworteingabe übersprungen, und die gesamte Identitätsüberprüfung findet auf Ihrem Smartphone statt. Da die Anmeldung per Telefon eine Art der zweistufigen Überprüfung darstellt, müssen Sie zur Überprüfung Ihrer Identität nach wie vor etwas angeben, das Sie wissen, und etwas, das Sie haben. Das Smartphone ist auch hier das, was Sie haben, und die Smartphone-PIN oder der biometrische Schlüssel das, was Sie wissen.
 
 ## <a name="how-to-get-started"></a>Erste Schritte
 
@@ -39,7 +39,7 @@ Gehen Sie wie folgt vor, um sich mit Ihrem Smartphone bei Ihrem persönlichen Mi
 
   - Falls Sie noch nicht über die Microsoft Authenticator-App verfügen, installieren Sie sie, und fügen Sie Ihr persönliches Microsoft-Konto hinzu, wie auf der [Microsoft Authenticator-Seite](microsoft-authenticator-app-how-to.md) beschrieben. Neu hinzugefügte Konten werden automatisch aktiviert, sodass es gleich losgehen kann.
 
-  - Wenn Sie Microsoft Authenticator bereits für die Überprüfung in zwei Schritten verwenden, wählen Sie auf der Startseite der App Ihr Konto und anschließend im Dropdownmenü die Option **Anmeldung per Telefon aktivieren** aus.
+  - Wenn Sie Microsoft Authenticator bereits für die zweistufige Überprüfung verwenden, wählen Sie auf der Startseite der App Ihr Konto und anschließend im Dropdownmenü die Option **Anmeldung per Telefon aktivieren** aus.
 
   >[!NOTE]
   >Zum Schutz Ihres Kontos muss Ihr Gerät mit einer PIN oder mit einem biometrischen Schlüssel gesperrt sein. Falls Sie Ihr Smartphone ohne Sperre verwenden, werden Sie vor der Aktivierung der Anmeldung per Telefon in einer Popupmeldung zur Einrichtung einer Sperre aufgefordert.
@@ -62,17 +62,17 @@ Nach aktuellem Stand steht die Anmeldung per Telefon nur zur Verfügung für Web
 
 Die Anmeldung per Telefon kann derzeit nicht verwendet werden, um einen Windows-PC, eine Xbox oder eine Desktopversion von Microsoft-Apps (beispielsweise Office-Apps) zu entsperren.
  
-### <a name="does-this-replace-two-step-verification-should-i-turn-it-off"></a>Ersetzt dieses Feature die Überprüfung in zwei Schritten? Sollte ich sie deaktivieren?   
+### <a name="does-this-replace-two-step-verification-should-i-turn-it-off"></a>Ersetzt dieses Feature die zweistufige Überprüfung? Sollte ich sie deaktivieren?   
 
-Manchmal. Wir arbeiten zwar an einer Ausweitung der Anmeldung per Telefon, noch gibt es aber Bereiche im Ökosystem von Microsoft, in denen sie noch nicht unterstützt wird. Dort wird für die sichere Anmeldung weiterhin die Überprüfung in zwei Schritten verwendet. Aus diesem Grund sollten Sie die Überprüfung in zwei Schritten für Ihr Konto nicht deaktivieren.
+Manchmal. Wir arbeiten zwar an einer Ausweitung der Anmeldung per Telefon, noch gibt es aber Bereiche im Ökosystem von Microsoft, in denen sie noch nicht unterstützt wird. Dort wird für die sichere Anmeldung weiterhin die zweistufige Überprüfung verwendet. Aus diesem Grund sollten Sie die zweistufige Überprüfung für Ihr Konto nicht deaktivieren.
  
-### <a name="okay-if-i-keep-two-step-verification-turned-on-for-my-account-do-i-have-to-approve-two-notifications"></a>Muss ich zwei Benachrichtigungen bestätigen, wenn ich die Überprüfung in zwei Schritten für mein Konto aktiviert lasse?
+### <a name="okay-if-i-keep-two-step-verification-turned-on-for-my-account-do-i-have-to-approve-two-notifications"></a>Muss ich zwei Benachrichtigungen bestätigen, wenn ich die zweistufige Überprüfung für mein Konto aktiviert lasse?
 
-Nein, müssen Sie nicht. Wenn Sie sich bei Ihrem Microsoft-Konto mit Ihrem Smartphone anmelden, zählt dies als Überprüfung in zwei Schritten. Anstatt Ihr Kennwort einzugeben und eine Benachrichtigung zu bestätigen, bestätigen Sie Ihre Identität, indem Sie Ihr Smartphone entsperren und eine Benachrichtigung bestätigen. Sie erhalten keine zweite Benachrichtigung, die Sie bestätigen müssen.
+Nein, müssen Sie nicht. Wenn Sie sich bei Ihrem Microsoft-Konto mit Ihrem Smartphone anmelden, zählt dies als zweistufige Überprüfung. Anstatt Ihr Kennwort einzugeben und eine Benachrichtigung zu bestätigen, bestätigen Sie Ihre Identität, indem Sie Ihr Smartphone entsperren und eine Benachrichtigung bestätigen. Sie erhalten keine zweite Benachrichtigung, die Sie bestätigen müssen.
 
 ### <a name="what-if-i-lose-my-phone-or-dont-have-it-with-me-how-can-i-access-my-account"></a>Wie kann ich auf mein Konto zugreifen, wenn ich mein Smartphone verliere oder nicht zur Hand habe?  
 
-Sie können auf der Anmeldeseite jederzeit auf **Stattdessen ein Kennwort verwenden** klicken und wieder Ihr Kennwort verwenden. Bei Verwendung der Überprüfung in zwei Schritten benötigen Sie weiterhin eine zweite Methode, um Ihre Anmeldung zu bestätigen. Daher sollten Sie immer über zusätzliche, aktuelle Sicherheitsinformationen für Ihr Konto verfügen. Ihre Sicherheitsinformationen können Sie unter „https://account.live.com/proofs/manage“ verwalten.
+Sie können auf der Anmeldeseite jederzeit auf **Stattdessen ein Kennwort verwenden** klicken und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie weiterhin eine zweite Methode, um Ihre Anmeldung zu bestätigen. Daher sollten Sie immer über zusätzliche, aktuelle Sicherheitsinformationen für Ihr Konto verfügen. Ihre Sicherheitsinformationen können Sie unter „https://account.live.com/proofs/manage“ verwalten.
  
 ### <a name="how-do-i-stop-using-this-feature-and-go-back-to-entering-my-password"></a>Wie kann ich die Verwendung des Features beenden und wieder zur Eingabe meines Kennworts zurückkehren?
 

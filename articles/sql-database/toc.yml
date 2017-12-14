@@ -60,16 +60,15 @@
 - name: Konzepte
   items:
     - name: Features des Diensts
+      href: sql-database-servers-databases.md
       items:
-        - name: Übersicht
-          href: sql-database-servers-databases.md
         - name: Dienstebenen
           href: sql-database-service-tiers.md
         - name: Ressourceneinschränkungen
           href: sql-database-resource-limits.md
         - name: Einzeldatenbanken
           href: sql-database-single-database-resources.md
-        - name: Elastische Pools
+        - name: Pools für elastische Datenbanken
           href: sql-database-elastic-pool.md
         - name: Verbindungsarchitektur
           href: sql-database-connectivity-architecture.md
@@ -106,9 +105,8 @@
         - name: Allgemeine SQL Server-Features
           href: sql-database-features.md
     - name: Sicherheit
+      href: sql-database-security-overview.md
       items:
-        - name: Übersicht
-          href: sql-database-security-overview.md
         - name: Zugriffssteuerung
           href: sql-database-control-access.md
         - name: Azure AD
@@ -121,10 +119,11 @@
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: Datenmaskierung
           href: sql-database-dynamic-data-masking-get-started.md
+    - name: Hochverfügbarkeit
+      href: sql-database-high-availability.md
     - name: Geschäftskontinuität
+      href: sql-database-business-continuity.md
       items:
-        - name: Übersicht
-          href: sql-database-business-continuity.md
         - name: Datenbankwiederherstellung
           href: sql-database-recovery-using-backups.md
         - name: Konfigurieren der Sicherheit
@@ -140,9 +139,8 @@
         - name: Durchführen des Notfallwiederherstellungsverfahrens
           href: sql-database-disaster-recovery-drills.md
     - name: Migrieren zu SQL-Datenbank
+      href: sql-database-cloud-migrate.md
       items:
-        - name: Migrieren einer SQL Server-Datenbank
-          href: sql-database-cloud-migrate.md
         - name: T-SQL-Änderungen
           href: sql-database-transact-sql-information.md
         - name: Verwalten von Datenbanken nach der Migration
@@ -158,9 +156,8 @@
         - name: Synchronisieren von Daten
           href: sql-database-sync-data.md
     - name: Überwachen & optimieren
+      href: sql-database-troubleshoot-performance.md
       items:
-        - name: Übersicht
-          href: sql-database-troubleshoot-performance.md
         - name: Leistungsüberwachung
           href: sql-database-single-database-monitor.md
         - name: Empfehlungen zur Leistung
@@ -180,9 +177,8 @@
         - name: Überwachen von In-Memory
           href: sql-database-in-memory-oltp-monitoring.md
     - name: Horizontales Skalieren
+      href: sql-database-elastic-scale-introduction.md
       items:
-        - name: Übersicht
-          href: sql-database-elastic-scale-introduction.md
         - name: Shardzuordnungen
           href: sql-database-elastic-scale-shard-map-management.md
         - name: Abfragerouting
@@ -220,9 +216,8 @@
         - name: Konfigurieren von In-Memory
           href: sql-database-in-memory-oltp-migration.md
     - name: Entwickeln von Apps
+      href: sql-database-develop-overview.md
       items:
-        - name: Übersicht
-          href: sql-database-develop-overview.md
         - name: Konnektivität
           href: sql-database-libraries.md
         - name: Authentifizieren der App

@@ -3,11 +3,11 @@ layout: HubPage
 hide_bc: True
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
-ms.openlocfilehash: aba00d7c90d173ecf58fedc1b8af5d1be418358c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 85745cf147296e053824a879108c1ea607343f57
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -292,7 +292,7 @@ ms.lasthandoff: 10/11/2017
                                         <li>
                                             <a href="/azure/sql-server-stretch-database/">
                                                 <img src="media/index/SQLDatabase.svg" alt="" />
-                                                <p>SQL Server Stretch-Datenbank</p>
+                                                <p>SQL Server Stretch Database</p>
                                             </a>
                                         </li>
                                         <li>
@@ -388,7 +388,7 @@ ms.lasthandoff: 10/11/2017
                                         <li>
                                             <a href="/azure/sql-server-stretch-database/">
                                                 <img src="media/index/SQLDatabase.svg" alt="" />
-                                                <p>SQL Server Stretch-Datenbank</p>
+                                                <p>SQL Server Stretch Database</p>
                                             </a>
                                         </li>
                                         <li>
@@ -591,7 +591,7 @@ ms.lasthandoff: 10/11/2017
                                         <li>
                                             <a href="/azure/cognitive-services/Custom-Vision-Service/home">
                                                 <img src="media/index/cs-custom-vision.svg" alt="" />
-                                                <p>Custom Vision Search</p>
+                                                <p>Custom Vision Service</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1256,7 +1256,7 @@ ms.lasthandoff: 10/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Lastenausgleichsmodul</h3>
-                                                    <p>Sicherstellen von hoher Verfügbarkeit und Netzwerkleistung für Ihre Anwendungen</p>
+                                                    <p>Sicherstellen von Hochverfügbarkeit und Netzwerkleistung für Ihre Anwendungen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1826,7 +1826,7 @@ ms.lasthandoff: 10/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>SQL Server Stretch-Datenbank</h3>
+                                                    <h3>SQL Server Stretch Database</h3>
                                                     <p>Lokale SQL Server-Datenbanken dynamisch auf Azure ausdehnen</p>
                                                 </div>
                                             </div>
@@ -2530,7 +2530,7 @@ ms.lasthandoff: 10/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>SQL Server Stretch-Datenbank</h3>
+                                                    <h3>SQL Server Stretch Database</h3>
                                                     <p>Lokale SQL Server-Datenbanken dynamisch auf Azure ausdehnen</p>
                                                 </div>
                                             </div>

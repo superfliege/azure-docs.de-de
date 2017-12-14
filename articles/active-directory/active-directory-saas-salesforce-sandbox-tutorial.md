@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: ee54c39e-ce20-42a4-8531-da7b5f40f57c
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: 128d04fdf191b60441b695efef2bf602920d80e6
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 16b60342106c69cb9959aad539b794cb8003acda
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>Tutorial: Azure Active Directory-Integration mit Salesforce Sandbox
 
@@ -129,11 +129,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Öffnen Sie eine neue Registerkarte in Ihrem Browser, und melden Sie sich mit Ihrem Salesforce Sandbox-Administratorkonto an.
 
-8. Klicken Sie in der oberen rechten Ecke der Seite auf **Setup** unter dem Symbol **Einstellungen**.
+8. Klicken Sie in der oberen rechten Ecke der Seite unter dem **Einstellungssymbol** auf **Setup**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-sandbox-tutorial/configure1.png)
 
-9. Scrollen Sie im Navigationsbereich nach unten bis **EINSTELLUNGEN**, und klicken Sie auf **Identität**, um den zugehörigen Bereich zu erweitern. Klicken Sie dann auf **Einstellungen für einmaliges Anmelden**.
+9. Scrollen Sie im Navigationsbereich nach unten bis zu den **SETTINGS** (EINSTELLUNGEN), und klicken Sie auf **Identity** (Identität), um den zugehörigen Bereich zu erweitern. Klicken Sie dann auf **Einstellungen für einmaliges Anmelden**.
 
     ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-admin-sso.png)
 
@@ -155,11 +155,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Geben Sie in das Textfeld **Entitäts-ID** die Zeichenfolge `https://<instancename>--Sandbox.<entityid>.my.salesforce.com` ein, wenn dies die erste Salesforce Sandbox-Instanz ist, die Sie Ihrem Verzeichnis hinzufügen. Wenn Sie bereits eine Instanz der Salesforce Sandbox hinzugefügt haben, geben Sie als **Entitäts-ID** die **Anmelde-URL** im folgenden Format ein: `https://<instancename>--Sandbox.<entityid>.my.salesforce.com`  
  
-    d. Um das **Zertifikat des Identitätsanbieters** hochzuladen, klicken Sie auf **Datei auswählen**. Navigieren Sie dann zu der Zertifikatdatei, die Sie aus dem Azure-Portal heruntergeladen haben, und wählen Sie diese aus.  
+    d. Um das **Zertifikat des Identitätsanbieters** hochzuladen, klicken Sie auf **Choose File** (Datei auswählen). Navigieren Sie dann zu der Zertifikatdatei, die Sie aus dem Azure-Portal heruntergeladen haben, und wählen Sie diese aus.  
 
-    e. Wählen Sie als **SAML-Identitätstyp** eine der folgenden Optionen aus:
+    e. Wählen Sie als **SAML Identity Type** (SAML-Identitätstyp) eine der folgenden Optionen aus:
     
-      * Wählen Sie **Assertion contains the User's Salesforce username** (Assertion enthält den Salesforce-Benutzernamen des Benutzers) aus, wenn in der SAML-Assertion der Salesforce-Benutzernamen des Benutzers übergeben wird.
+      * Wählen Sie **Assertion contains the User's Salesforce username** (Assertion enthält den Salesforce-Benutzernamen des Benutzers) aus, wenn in der SAML-Assertion der Salesforce-Benutzername des Benutzers übergeben wird.
 
       * Wählen Sie **Assertion contains the Federation ID from the User object** (Assertion enthält die Verbund-ID aus dem Benutzerobjekt) aus, wenn die Verbund-ID aus dem Benutzerobjekt in der SAML-Assertion übergeben wird.
 
@@ -180,7 +180,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits eine Domäne erstel
 
 **Führen Sie zum Aktivieren Ihrer Domäne die folgenden Schritte aus:**
 
-1. Klicken Sie in Salesforce im linken Navigationsbereich auf **Unternehmenseinstellungen**, um den zugehörigen Abschnitt zu erweitern, und klicken Sie dann auf **Meine Domäne**.
+1. Klicken Sie in Salesforce im linken Navigationsbereich auf **Company Settings** (Unternehmenseinstellungen), um den zugehörigen Abschnitt zu erweitern, und klicken Sie dann auf **My Domain** (Meine Domäne).
    
      ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-salesforce-sandbox-tutorial/sf-my-domain.png)
    

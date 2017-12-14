@@ -4,7 +4,7 @@ description: "Dies ist die Azure Multi-Factor Authentication-Seite, die bei der 
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: richagi
 ms.assetid: e1a68568-53d1-4365-9e41-50925ad00869
 ms.service: multi-factor-authentication
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: joflore
-ms.openlocfilehash: 60b96fcfcbbc33a101d06fc59425a4ea8907bce0
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 37f96afab67680b3140a6f4da6bff0c23a1f328f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="ldap-authentication-and-azure-multi-factor-authentication-server"></a>LDAP-Authentifizierung und Azure Multi-Factor Authentication-Server
 Standardmäßig ist der Azure Multi-Factor Authentication-Server zum Importieren oder Synchronisieren von Benutzern aus Active Directory konfiguriert. Er kann jedoch auch zum Binden an andere LDAP-Verzeichnisse konfiguriert sein, z. B. an ein ADAM-Verzeichnis oder einen bestimmten Active Directory-Domänencontroller. Wenn die Verbindung mit einem Verzeichnis über LDAP besteht, kann der Azure Multi-Factor Authentication-Server als LDAP-Proxy zur Ausführung von Authentifizierungen fungieren. Dies ermöglicht auch die Verwendung einer LDAP-Bindung als RADIUS-Ziel für die Vorauthentifizierung von Benutzern bei der IIS-Authentifizierung oder für die primäre Authentifizierung im Azure MFA-Benutzerportal.
@@ -39,7 +39,7 @@ Zum Konfigurieren der LDAP-Authentifizierung installieren Sie den Azure Multi-Fa
 4. Wenn Sie LDAPS vom Client an den Azure Multi-Factor Authentication-Server verwenden möchten, muss ein SSL-Zertifikat auf demselben Server wie der MFA-Server installiert sein. Klicken Sie auf **Durchsuchen** neben dem Feld „SSL-Zertifikat“, und wählen Sie ein Zertifikat aus, das für die sichere Verbindung verwendet werden soll.
 5. Klicken Sie auf **Hinzufügen**.
 6. Geben Sie im Dialogfeld „LDAP-Client hinzufügen“ die IP-Adresse der Appliance, des Servers oder der Anwendung, die auf dem Server authentifiziert wird, und einen Anwendungsnamen (optional) ein. Der Anwendungsname wird in Azure Multi-Factor Authentication-Berichten und möglicherweise auch in Authentifizierungsnachrichten in SMS oder der mobilen App angezeigt.
-7. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die Prüfung in zwei Schritten verwendet werden soll. Wenn eine hohe Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der Prüfung in zwei Schritten ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert. Weitere Informationen zu dieser Funktion finden Sie in der Hilfedatei zum MFA-Server.
+7. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden oder werden und die zweistufige Überprüfung verwendet werden soll. Wenn eine hohe Anzahl von Benutzern noch nicht in den Server importiert wurde und/oder von der zweistufigen Überprüfung ausgenommen werden soll, lassen Sie das Kontrollkästchen deaktiviert. Weitere Informationen zu dieser Funktion finden Sie in der Hilfedatei zum MFA-Server.
 
 Wiederholen Sie diese Schritte, um weitere LDAP-Clients hinzuzufügen.
 

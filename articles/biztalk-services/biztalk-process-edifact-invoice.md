@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ebd6a8cb70f218c3b56bc78c9b853dbf51ab468
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>Tutorial: Verarbeiten von EDIFACT-Rechnungen mit Azure BizTalk Services
 
@@ -55,7 +55,7 @@ Zum Vervollständigen dieses Szenarios verwenden wir Service Bus-Warteschlangen 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Sie benötigen einen Service Bus-Namespace. Anweisungen zum Erstellen eines Namespace finden Sie unter [Vorgehensweise: Erstellen oder Ändern eines Service Bus-Dienstnamespace](https://msdn.microsoft.com/library/azure/hh674478.aspx). Angenommen, Sie haben bereits einen Service Bus-Namespace mit dem Namen **edifactbts**bereitgestellt.
-* Sie benötigen ein BizTalk Services-Abonnement. Anweisungen finden Sie unter [Erstellen eines BizTalk Service im klassischen Azure-Portal](http://go.microsoft.com/fwlink/?LinkID=302280). Lassen Sie uns für dieses Tutorial annehmen, dass Sie ein BizTalk Services-Abonnement mit dem Namen **contosowabs**haben.
+* Sie benötigen ein BizTalk Services-Abonnement. Lassen Sie uns für dieses Tutorial annehmen, dass Sie ein BizTalk Services-Abonnement mit dem Namen **contosowabs**haben.
 * Registrieren Sie Ihr BizTalk Services-Abonnement im BizTalk Services-Portal. Anweisungen finden Sie unter [Registrieren einer BizTalk-Service-Bereitstellung im BizTalk Services-Portal](https://msdn.microsoft.com/library/hh689837.aspx)
 * Visual Studio muss installiert sein.
 * Das BizTalk Services SDK muss installiert sein. Sie können das SDK von [http://go.microsoft.com/fwlink/?LinkId=235057](http://go.microsoft.com/fwlink/?LinkId=235057)  

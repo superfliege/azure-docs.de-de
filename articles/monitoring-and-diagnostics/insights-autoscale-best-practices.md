@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: ancav
-ms.openlocfilehash: 70ec03d2ed32cb0362bf2f7b24c66979093603be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: d5b33b15c315c7538bba7bf9ae067946f3b6d3c4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="best-practices-for-autoscale"></a>Bewährte Methoden für die automatische Skalierung
 In diesem Artikel werden empfohlene Methoden für die automatische Skalierung in Azure erläutert. Die automatische Skalierung von Azure Monitor gilt nur für [Skalierungsgruppen für virtuelle Computer](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/) und [App Service – Web-Apps](https://azure.microsoft.com/services/app-service/web/). Andere Azure-Dienste verwenden andere Skalierungsmethoden.
@@ -44,9 +44,6 @@ Wenn Sie die Anzahl der Instanzen manuell auf einen Wert oberhalb oder unterhalb
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Verwenden Sie immer eine Regelkombination für das horizontale Hoch- und Herunterskalieren, die eine Erhöhung und Verringerung durchführt.
 Falls Sie nur einen Teil dieser Kombination verwenden („nur horizontal Hochskalieren“ oder „nur horizontal Herunterskalieren“), wird die automatische Skalierung die Hoch- oder Herunterskalierung vornehmen, bis das Maximum oder das Minimum erreicht ist.
-
-### <a name="do-not-switch-between-the-azure-portal-and-the-azure-classic-portal-when-managing-autoscale"></a>Wechseln Sie nicht zwischen dem Azure-Portal und dem klassischen Azure-Portal, wenn Sie die automatische Skalierung verwalten
-Verwenden Sie für Cloud Services und App Services (Web-Apps) das Azure-Portal (portal.azure.com), um Einstellungen für die automatische Skalierung zu erstellen und zu verwalten. Verwenden Sie PowerShell, die Befehlszeilenschnittstelle (CLI) oder die REST-API, um die Einstellung der automatischen Skalierung für VM-Skalierungsgruppen zu erstellen und zu verwalten. Wechseln Sie nicht zwischen dem klassischen Azure-Portal (manage.windowsazure.com) und dem Azure-Portal (portal.azure.com), wenn Sie die Konfigurationen für die automatische Skalierung verwalten. Für das klassische Azure-Portal und das zugrunde liegende Back-End gibt es Beschränkungen. Wechseln Sie zum Azure-Portal, um die automatische Skalierung mittels grafischer Benutzeroberfläche zu verwalten. Ihre Optionen sind die Verwendung der PowerShell, der CLI oder der REST-API (über den Azure-Ressourcen-Explorer) in der automatischen Skalierung.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Wählen Sie die passende Statistik für Ihre Diagnosemetrik aus
 Für die Diagnosemetriken können Sie zwischen *Durchschnitt*, *Minimum*, *Maximum* und *Gesamt* als Metrik, nach der skaliert werden soll, auswählen. Die am häufigsten verwendete Statistik ist *Durchschnitt*.

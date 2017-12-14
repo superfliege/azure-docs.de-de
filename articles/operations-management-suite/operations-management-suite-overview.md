@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
-ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 94dedebe48060441cd3167fea87f6b721eb14517
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Was ist die Operations Management Suite (OMS)?
 Dieser Artikel bietet eine Einführung in Operations Management Suite (OMS) und enthält eine kurze Übersicht über den geschäftlichen Nutzen, die enthaltenen Dienste und Lösungen sowie über die Angebote, in denen verschiedene Dienste und Lösungen zusammengefasst sind.  Außerdem stehen Links zur ausführlichen Dokumentation für die Bereitstellung und Verwendung der einzelnen Dienste und Lösungen zur Verfügung.
@@ -39,7 +39,7 @@ Bei Operations Management Suite (OMS) handelt es sich um eine Sammlung von Verwa
 - **Ortsunabhängiger Zugriff:**  Über einen Browser können Sie von überall aus auf Ihre Verwaltungsumgebung zugreifen.  Installieren Sie die OMS-App auf Ihrem Smartphone, um komfortabel auf Ihre Überwachungsdaten zugreifen zu können.
 
 ### <a name="is-it-just-for-the-cloud"></a>Ist die Lösung auf die Cloud beschränkt?
-Die Tatsache, dass OMS-Dienste in der Cloud ausgeführt werden, bedeutet nicht, dass sie nicht auch zur effektiven Verwaltung Ihrer lokalen Umgebung genutzt werden können.  Platzieren Sie einfach einen Agent auf einem beliebigen Windows- oder Linux-Computer in Ihrem Rechenzentrum. Dieser sendet dann Daten an Log Analytics, wo sie zusammen mit all den anderen Daten aus cloudbasierten oder lokalen Diensten analysiert werden.  Verwenden Sie Azure Backup und Azure Site Recovery, um die Cloud für die Sicherung und hohe Verfügbarkeit lokaler Ressourcen zu nutzen.  
+Die Tatsache, dass OMS-Dienste in der Cloud ausgeführt werden, bedeutet nicht, dass sie nicht auch zur effektiven Verwaltung Ihrer lokalen Umgebung genutzt werden können.  Platzieren Sie einfach einen Agent auf einem beliebigen Windows- oder Linux-Computer in Ihrem Rechenzentrum. Dieser sendet dann Daten an Log Analytics, wo sie zusammen mit all den anderen Daten aus cloudbasierten oder lokalen Diensten analysiert werden.  Verwenden Sie Azure Backup und Azure Site Recovery, um die Cloud für die Sicherung und Hochverfügbarkeit lokaler Ressourcen zu nutzen.  
 Runbooks in der Cloud können üblicherweise nicht auf lokale Ressourcen zugreifen. Sie können jedoch ebenfalls einen Agent auf Computern installieren, um Runbooks in Ihrem Rechenzentrum zu hosten.  Geben Sie beim Starten eines Runbooks einfach an, ob es in der Cloud oder für einen lokalen Worker ausgeführt werden soll.
 
 ## <a name="hybrid-management-with-system-center"></a>Hybridverwaltung mit System Center
@@ -54,7 +54,7 @@ Die Kernfunktionen von OMS werden durch eine Reihe von Diensten bereitgestellt, 
 | ![Log Analytics](media/operations-management-suite-overview/icon-log-analytics.png) | Log Analytics | Dient zur Überwachung und Analyse der Verfügbarkeit und Leistung verschiedener Ressourcen (einschließlich physischer und virtueller Computer). |
 | ![Azure-Automatisierung](media/operations-management-suite-overview/icon-automation.png) | Automation | Dient zur Automatisierung manueller Prozesse sowie zur Erzwingung von Konfigurationen für physische und virtuelle Computer. |
 | ![Azure Backup](media/operations-management-suite-overview/icon-backup.png) | Sicherung | Dient zur Sicherung und Wiederherstellung wichtiger Daten. |
-| ![Azure Site Recovery](media/operations-management-suite-overview/icon-site-recovery.png) | Site Recovery | Dient zur Bereitstellung von hoher Verfügbarkeit für kritische Anwendungen. |
+| ![Azure Site Recovery](media/operations-management-suite-overview/icon-site-recovery.png) | Site Recovery | Dient zur Bereitstellung von Hochverfügbarkeit für kritische Anwendungen. |
 
 ### <a name="log-analytics"></a>Log Analytics
 [Log Analytics](http://azure.microsoft.com/documentation/services/log-analytics) sammelt Daten von verwalteten Ressourcen in einem zentralen Repository und stellt dadurch Überwachungsdienste für OMS bereit.  Bei diesen Daten kann es sich um Ereignisse, Leistungsdaten oder benutzerdefinierte Daten handeln, die über die API bereitgestellt wurden. Die gesammelten Daten können für Warnungen und Analysen genutzt und exportiert werden.  Mithilfe dieser Methode können Sie Daten aus einer Vielzahl von Quellen zusammenfassen, um Daten aus Ihren Azure-Diensten mit Ihrer vorhandenen lokalen Umgebung zu kombinieren.  Die Datensammlung wird außerdem klar von der Aktion getrennt, die für diese Daten ausgeführt wird, sodass alle Aktionen für alle Arten von Daten verfügbar sind.  
@@ -64,7 +64,7 @@ Die Kernfunktionen von OMS werden durch eine Reihe von Diensten bereitgestellt, 
 #### <a name="collecting-data"></a>Sammeln von Daten
 Daten können auf unterschiedliche Weise dem Repository für die Analyse durch Log Analytics hinzugefügt werden.
 
-- **Physische und virtuelle Computer (Windows oder Linux):**  Installieren Sie Microsoft Monitoring Agent auf den physischen oder virtuellen Computern unter [Windows](../log-analytics/log-analytics-windows-agents.md) und [Linux](../log-analytics/log-analytics-linux-agents.md), deren Daten Sie sammeln möchten.  Der Agent lädt von Log Analytics automatisch Konfigurationsinformationen herunter, die die zu sammelnden Ereignisse und Leistungsdaten definieren.  Der Agent kann über das Azure-Portal problemlos auf virtuellen Azure-Computern installiert werden.  Wenn Sie bereits über eine vorhandene Operations Manager-Umgebung verfügen, können Sie die Verwaltungsgruppe mit Log Analytics verknüpfen und automatisch mit dem Sammeln von Daten aller vorhandenen Agents beginnen.
+- **Physische und virtuelle Computer (Windows oder Linux):**  Installieren Sie Microsoft Monitoring Agent auf den physischen oder virtuellen Computern unter [Windows](../log-analytics/log-analytics-windows-agent.md) und [Linux](../log-analytics/log-analytics-linux-agents.md), deren Daten Sie sammeln möchten.  Der Agent lädt von Log Analytics automatisch Konfigurationsinformationen herunter, die die zu sammelnden Ereignisse und Leistungsdaten definieren.  Der Agent kann über das Azure-Portal problemlos auf virtuellen Azure-Computern installiert werden.  Wenn Sie bereits über eine vorhandene Operations Manager-Umgebung verfügen, können Sie die Verwaltungsgruppe mit Log Analytics verknüpfen und automatisch mit dem Sammeln von Daten aller vorhandenen Agents beginnen.
 - **Azure-Dienste:**  Log Analytics erfasst Telemetriedaten aus [Azure-Diagnose und Azure-Überwachung](../log-analytics/log-analytics-azure-storage.md) im Repository, um die Überwachung von Azure-Ressourcen zu ermöglichen.
 - **Datensammler-API:**  Log Analytics verfügt über eine [REST-API zum Auffüllen von Daten von beliebigen Clients](../log-analytics/log-analytics-data-collector-api.md).  Dadurch können Sie Daten aus Drittanbieteranwendungen sammeln oder benutzerdefinierte Verwaltungsszenarien implementieren.  Daten werden häufig mithilfe eines Runbooks in Azure Automation gesammelt und anschließend unter Verwendung der Datensammler-API in das Repository geschrieben.
 
@@ -137,7 +137,7 @@ Azure Backup verfügt über drei grundlegende Szenarios.
 #### <a name="azure-site-recovery"></a>Azure Site Recovery
 [Azure Site Recovery](http://azure.microsoft.com/documentation/services/site-recovery) bietet Geschäftskontinuität durch Orchestrierung der Replikation von lokalen virtuellen und physischen Computern in Azure oder an einem sekundären Standort. Falls Ihr primärer Standort nicht verfügbar ist, wird ein Failover auf den sekundären Standort durchgeführt, damit die Benutzer weiterarbeiten können. Sind die Systeme wieder verfügbar, erfolgt ein Failback. 
 
-Azure Site Recovery bietet hohe Verfügbarkeit für Server und Anwendungen.  Es orchestriert Replikation, Failover und Wiederherstellung von lokalen virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows- oder Linux-Servern und trägt so zu Ihrer Strategie für Geschäftskontinuität und Notfallwiederherstellung bei. Sie können Computer in einem sekundären Rechenzentrum replizieren oder das Rechenzentrum erweitern, indem Sie sie in Azure replizieren. Site Recovery bietet zudem einen einfachen Failover sowie die einfache Wiederherstellung für Workloads. Der Dienst kann in Mechanismen zur Notfallwiederherstellung (z.B. SQL Server AlwaysOn) integriert werden und bietet Wiederherstellungspläne für den einfachen Failover von Workloads, die auf mehreren Computern mehrstufig verteilt sind.
+Azure Site Recovery bietet Hochverfügbarkeit für Server und Anwendungen.  Es orchestriert Replikation, Failover und Wiederherstellung von lokalen virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows- oder Linux-Servern und trägt so zu Ihrer Strategie für Geschäftskontinuität und Notfallwiederherstellung bei. Sie können Computer in einem sekundären Rechenzentrum replizieren oder das Rechenzentrum erweitern, indem Sie sie in Azure replizieren. Site Recovery bietet zudem einen einfachen Failover sowie die einfache Wiederherstellung für Workloads. Der Dienst kann in Mechanismen zur Notfallwiederherstellung (z.B. SQL Server AlwaysOn) integriert werden und bietet Wiederherstellungspläne für den einfachen Failover von Workloads, die auf mehreren Computern mehrstufig verteilt sind.
 
 Azure Site Recovery verfügt über drei grundlegende Replikationsszenarios.
 

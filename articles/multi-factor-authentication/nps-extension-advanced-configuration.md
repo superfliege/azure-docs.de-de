@@ -4,7 +4,7 @@ description: "Befolgen Sie nach dem Installieren der NPS-Erweiterung diese Schri
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 98c29b4124b31868ef118c39941cf9c3829e2b26
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 23e72fdb2ed063f416e65d34727ca9babc143a26
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication
 
@@ -29,7 +29,7 @@ Die Erweiterung für den Netzwerkrichtlinienserver (Network Policy Server, NPS) 
 
 Da die NPS-Erweiterung eine Verbindung zu Ihren lokalen Verzeichnissen und zu Ihren Cloudverzeichnissen herstellt, tritt möglicherweise ein Problem auf, wenn Ihre lokalen Benutzerprinzipalnamen (User Principal Names, UPNs) nicht mit den Namen in der Cloud übereinstimmen. Verwenden Sie alternative Anmelde-IDs, um dieses Problem zu beheben. 
 
-In der NPS-Erweiterung können Sie ein Active Directory-Attribut festlegen, das anstatt des UPN für Multi-Factor Authentication verwendet wird. Dadurch können Sie Ihre lokalen Ressourcen mit einer Überprüfung in zwei Schritten schützen, ohne Ihre lokalen UPNs zu ändern. 
+In der NPS-Erweiterung können Sie ein Active Directory-Attribut festlegen, das anstatt des UPN für Multi-Factor Authentication verwendet wird. Dadurch können Sie Ihre lokalen Ressourcen mit einer zweistufigen Überprüfung schützen, ohne Ihre lokalen UPNs zu ändern. 
 
 Wechseln Sie zum Konfigurieren alternativer Anmelde-IDs zu `HKLM\SOFTWARE\Microsoft\AzureMfa`, und bearbeiten Sie die folgenden Registrierungswerte:
 
@@ -51,7 +51,7 @@ Navigieren Sie zum Konfigurieren einer IP-Whitelist zu `HKLM\SOFTWARE\Microsoft\
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | string | Leer | Stellen Sie eine durch Semikolons getrennte Liste mit IP-Adressen bereit. Darunter sollten die IP-Adressen der Computer sein, von denen Serviceanforderungen stammen, wie der NAS/VPN-Server. IP-Adressbereiche sind Subnetze und werden nicht unterstützt. <br><br> Beispiel: *10.0.0.1;10.0.0.2;10.0.0.3*.
 
-Wenn eine Anforderung von einer IP-Adresse eingeht, die auf der Whitelist steht, wird die Überprüfung in zwei Schritten übersprungen. Die IP-Whitelist wird mit der IP-Adresse verglichen, die im *ratNASIPAddress*-Attribut der RADIUS-Anforderung bereitgestellt wird. Wenn eine RADIUS-Anforderung ohne das ratNASIPAddress-Attribut eingeht, wird die folgende Warnung protokolliert: „P_WHITE_LIST_WARNING::IP Whitelist is being ignored as source IP is missing in RADIUS request in NasIpAddress attribute.“ (P_WHITE_LIST_WARNING::IP-Whitelist wird ignoriert, da die Quell-IP in der RADIUS-Anforderung im NasIpAddress-Attribut fehlt.)
+Wenn eine Anforderung von einer IP-Adresse eingeht, die auf der Whitelist steht, wird die zweistufige Überprüfung übersprungen. Die IP-Whitelist wird mit der IP-Adresse verglichen, die im *ratNASIPAddress*-Attribut der RADIUS-Anforderung bereitgestellt wird. Wenn eine RADIUS-Anforderung ohne das ratNASIPAddress-Attribut eingeht, wird die folgende Warnung protokolliert: „P_WHITE_LIST_WARNING::IP Whitelist is being ignored as source IP is missing in RADIUS request in NasIpAddress attribute.“ (P_WHITE_LIST_WARNING::IP-Whitelist wird ignoriert, da die Quell-IP in der RADIUS-Anforderung im NasIpAddress-Attribut fehlt.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 358b3701773e6cd61b4a3dfddf4bb092741ff713
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 0da456e13042168f3c8e871f180e6477b73392d5
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-media-services-release-notes"></a>Versionsanmerkungen zu Azure Media Services
 In diesen Versionshinweisen werden Änderungen im Vergleich zu früheren Versionen und bekannte Probleme zusammengefasst.
@@ -58,7 +58,7 @@ Informationen zum Versionsverlauf der Media Services-REST-API finden Sie unter [
 2.  Bei Quellvideos, die mit H.265-Videocodec (HEVC) codiert sind, z.B. mit iOS11 oder GoPro Hero 6 aufgezeichnete Videoaufnahmen, können Sie jetzt entweder den Premium-Encoder oder Standard-Encoder zum Codieren von Videos verwenden. Unter [Rechtliche Informationen zu Microsoft Azure](https://azure.microsoft.com/support/legal/) finden Sie einen wichtigen Hinweis zu den Patentlizenzen.
 3.  Wenn Sie Inhalte mit mehreren Sprachaudiospuren besitzen, dann können Sie den Standard-Encoder zum Codieren von Inhalt für Streaming verwenden, solange die Sprachwerte gemäß der jeweiligen Dateiformatangabe (z.B. ISO MP4) gekennzeichnet sind. Der resultierende Streaminglocator listet die verfügbaren Audiosprachen auf.
 4.  Der Standard-Encoder unterstützt jetzt zwei neue reine Audiosystemvoreinstellungen, „AAC-Audio“ und "AAC gute Audioqualität". Beide produzieren Stereo-AAC-Ausgabe mit Bitraten von 128 KBit/s bzw. 192 KBit/s.
-5.  Der Premium-Encoder unterstützt jetzt QuickTime-/MOV-Dateiformate als Eingabe, solange der Videocodec eine der [hier aufgeführten Apple ProRes-Varianten ](https://docs.microsoft.com/en-us/azure/media-services/media-services-media-encoder-standard-formats) und Audio entweder AAC oder PCM ist.
+5.  Der Premium-Encoder unterstützt jetzt QuickTime-/MOV-Dateiformate als Eingabe, solange der Videocodec eine der [hier aufgeführten Apple ProRes-Varianten ](https://docs.microsoft.com/azure/media-services/media-services-media-encoder-standard-formats) und Audio entweder AAC oder PCM ist.
 
 > [!NOTE]
 > Der Premium-Encoder unterstützt z.B. DVC-/DVCPro-Videos in QuickTime-/MOV-Dateien nicht als Eingabe.  Der Standard-Encoder unterstützt jedoch diese Videocodecs.
@@ -324,13 +324,6 @@ Für Media Services SDK für .NET ist jetzt Version 3.0.0.7 verfügbar.
 * **Origin** wurde in [StreamingEndpoint]umbenannt.
 * Eine Änderung des Standardverhaltens bei Verwendung des **Azure-Portals** zum Codieren und Veröffentlichen von MP4-Dateien.
 
-Zuvor wurde bei Verwendung des klassischen Azure-Portals zum Veröffentlichen eines MP4-Videoobjekts mit einer einzelnen Datei eine SAS-URL erstellt (SAS-URLs ermöglichen das Herunterladen des Videos aus einem Blobspeicher). Derzeit verweist die generierte URL bei Verwendung des klassischen Azure-Portals zum Codieren und Veröffentlichen eines MP4-Videoobjekts mit einer einzelnen Datei auf einen Azure Media Services-Streaming-Endpunkt.  Diese Änderung hat keinerlei Einfluss auf MP4-Videos, die direkt in Media Services hochgeladen und ohne Codierung durch Azure Media Services veröffentlicht werden.
-
-Derzeit stehen Ihnen die folgenden beiden Optionen zur Verfügung, um das Problem zu beheben.
-
-* Aktivieren von Streaming-Einheiten und Verwenden der dynamischen Paketerstellung, um das .mp4-Objekt als Smooth-Streaming-Präsentation zu streamen
-* Erstellen einer SAS-URL zum Herunterladen (oder schrittweisen Abspielen) der .mp4 Weitere Informationen zum Erstellen eines SAS-Locators finden Sie unter [Bereitstellen von Inhalten].
-
 ### <a id="sept_14_GA_changes"></a>Neue Funktionen/Szenarien, die Teil der Version für die allgemeine Verfügbarkeit sind
 * **Indexer-Medienprozessor**. Weitere Informationen finden Sie unter [Indizieren von Mediendateien mit Azure Media Indexer].
 * Mit der [StreamingEndpoint] -Entität können Sie nun benutzerdefinierte Domänennamen (Hostnamen) hinzufügen.
@@ -561,7 +554,7 @@ Die folgende Funktion war neu in der November-Version des SDK.
 [Mediendienste – Preisübersicht]: http://azure.microsoft.com/pricing/details/media-services/
 [Eingeben von Metadaten]: http://msdn.microsoft.com/library/azure/dn783120.aspx
 [Ausgeben von Metadaten]: http://msdn.microsoft.com/library/azure/dn783217.aspx
-[Bereitstellen von Inhalten]: http://msdn.microsoft.com/library/azure/hh973618.aspx
+[Delivering Content]: http://msdn.microsoft.com/library/azure/hh973618.aspx
 [Indizieren von Mediendateien mit Azure Media Indexer]: http://msdn.microsoft.com/library/azure/dn783455.aspx
 [StreamingEndpoint]: http://msdn.microsoft.com/library/azure/dn783468.aspx
 [Arbeiten mit Azure Media Services-Livestreaming]: http://msdn.microsoft.com/library/azure/dn783466.aspx

@@ -3,7 +3,7 @@ title: "Verwalten von DNS-Einträgen in Azure DNS mit der Azure CLI 2.0 | Micros
 description: "Verwalten von DNS-Datensatzgruppen und Einträgen in Azure DNS, wenn Sie Ihre Domäne in Azure DNS hosten. Alle Befehle der CLI 2.0 für Vorgänge für Ressourceneintragssätze und Einträge."
 services: dns
 documentationcenter: na
-author: subsarma
+author: KumudD
 manager: carmonm
 ms.assetid: 5356a3a5-8dec-44ac-9709-0c2b707f6cb5
 ms.service: dns
@@ -13,29 +13,21 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
-ms.author: subsarma
-ms.openlocfilehash: 47be36aee053b81913286f0119edb6c8caa7c456
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.author: kumud
+ms.openlocfilehash: 6f8a462a8de93d75f0555397bea548d2b5122c09
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Verwalten von DNS-Einträgen und Ressourceneintragssätzen in Azure DNS mit der Azure CLI 2.0
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-operations-recordsets-portal.md)
-> * [Azure CLI 1.0](dns-operations-recordsets-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 Dieser Artikel zeigt, wie Sie DNS-Einträge für Ihre DNS-Zone mit der plattformübergreifenden Azure CLI 2.0 (Command-Line Interface, Befehlszeilenschnittstelle) verwalten, die für Windows, Mac und Linux verfügbar ist. Sie können Ihre DNS-Einträge auch mithilfe von [Azure PowerShell](dns-operations-recordsets.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwalten.
-
-## <a name="cli-versions-to-complete-the-task"></a>CLI-Versionen zum Durchführen dieser Aufgabe
-
-Führen Sie die Aufgabe mit einer der folgenden CLI-Versionen durch:
-
-* [Azure CLI 1.0:](dns-operations-recordsets-cli-nodejs.md) Unsere Befehlszeilenschnittstelle für das klassische Bereitstellungsmodell und das Resource Manager-Bereitstellungsmodell
-* [Azure CLI 2.0:](dns-operations-recordsets-cli.md) Unsere Befehlszeilenschnittstelle der nächsten Generation für das Resource Manager-Bereitstellungsmodell
 
 Bei den Beispielen in diesem Artikel wird vorausgesetzt, dass Sie bereits [die Azure CLI 2.0 installiert haben, angemeldet sind und eine DNS-Zone erstellt haben](dns-operations-dnszones-cli.md).
 

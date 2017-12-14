@@ -4,7 +4,7 @@ description: "Dies ist die Seite für Azure Multi-Factor Authentication, auf der
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 06b419fa-3507-4980-96a4-d2e3960e1772
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,17 +15,17 @@ ms.date: 08/23/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 2a4f64524f94a782434306f89f6ad1034297c4cc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 15f4ef7b70027a820dc50a9399891bbab77d7e12
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="user-portal-for-the-azure-multi-factor-authentication-server"></a>Benutzerportal für den Azure Multi-Factor Authentication-Server
 
-Das Benutzerportal ist eine IIS-Website, die es Benutzern ermöglicht, sich für Azure Multi-Factor Authentication (MFA) zu registrieren und ihre Konten zu verwalten. Die Benutzer können ihre Telefonnummer oder PIN ändern oder die Überprüfung in zwei Schritten bei der nächsten Anmeldung umgehen.
+Das Benutzerportal ist eine IIS-Website, die es Benutzern ermöglicht, sich für Azure Multi-Factor Authentication (MFA) zu registrieren und ihre Konten zu verwalten. Die Benutzer können ihre Telefonnummer oder PIN ändern oder die zweistufige Überprüfung bei der nächsten Anmeldung umgehen.
 
-Die Benutzer melden sich mit ihrem normalen Benutzernamen und Kennwort am Benutzerportal an und rufen dann entweder die Überprüfung in zwei Schritten auf oder beantworten Sicherheitsfragen, um die Authentifizierung abzuschließen. Wenn die Benutzerregistrierung zulässig ist, konfigurieren Benutzer ihre Telefonnummer und PIN, wenn sie sich zum ersten Mal beim Benutzerportal anmelden.
+Die Benutzer melden sich mit ihrem normalen Benutzernamen und Kennwort am Benutzerportal an und rufen dann entweder die zweistufige Überprüfung auf oder beantworten Sicherheitsfragen, um die Authentifizierung abzuschließen. Wenn die Benutzerregistrierung zulässig ist, konfigurieren Benutzer ihre Telefonnummer und PIN, wenn sie sich zum ersten Mal beim Benutzerportal anmelden.
 
 Es können Benutzerportaladministratoren eingerichtet werden, und ihnen kann die Berechtigung zum Hinzufügen neuer Benutzer und zum Aktualisieren vorhandener Benutzer erteilt werden.
 
@@ -34,7 +34,7 @@ Abhängig von Ihrer Umgebung können Sie das Benutzerportal auf dem gleichen Ser
 ![MFA-Benutzerportal](./media/multi-factor-authentication-get-started-portal/portal.png)
 
 > [!NOTE]
-> Das Benutzerportal ist nur mit Multi-Factor Authentication-Server verfügbar. Wenn Sie Multi-Factor Authentication in der Cloud verwenden, können Sie Ihre Benutzer auf [Einrichten meines Kontos für die Überprüfung in zwei Schritten](./end-user/multi-factor-authentication-end-user-first-time.md) oder auf [Verwalten der Einstellungen für die Überprüfung in zwei Schritten](./end-user/multi-factor-authentication-end-user-manage-settings.md) verweisen.
+> Das Benutzerportal ist nur mit Multi-Factor Authentication-Server verfügbar. Wenn Sie Multi-Factor Authentication in der Cloud verwenden, können Sie Ihre Benutzer auf [Einrichten meines Kontos für die zweistufige Überprüfung](./end-user/multi-factor-authentication-end-user-first-time.md) oder auf [Verwalten der Einstellungen für die zweistufige Überprüfung](./end-user/multi-factor-authentication-end-user-manage-settings.md) verweisen.
 
 ## <a name="install-the-web-service-sdk"></a>Installieren des Webdienst-SDK
 
@@ -45,7 +45,7 @@ Unabhängig vom Szenario gilt: Falls das Azure Multi-Factor Authentication-Webdi
 3. Führen Sie die Installation unter Verwendung der Standardeinstellungen durch, es sei denn, Sie müssen sie aus irgendeinem Grund ändern.
 4. Binden Sie ein SSL-Zertifikat an die Website in IIS.
 
-Antworten auf Fragen zum Konfigurieren eines SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
+Antworten auf Fragen zum Konfigurieren eines SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
 
 Das Webdienst-SDK muss durch ein SSL-Zertifikat geschützt sein. Für diesen Zweck ist ein selbst signiertes Zertifikat ausreichend. Importieren Sie das Zertifikat in den Speicher „Vertrauenswürdige Stammzertifizierungsstellen“ des lokalen Computerkontos auf dem Benutzerportal-Webserver, damit dieser das Zertifikat beim Initiieren einer SSL-Verbindung als vertrauenswürdig einstuft.
 
@@ -73,7 +73,7 @@ Führen Sie die folgenden Schritte aus, um das Benutzerportal bereitzustellen:
 
 ![Installation des MFA-Server-Benutzerportals](./media/multi-factor-authentication-get-started-portal/install.png)
 
-Antworten auf Fragen zum Konfigurieren eines SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
+Antworten auf Fragen zum Konfigurieren eines SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
 
 ## <a name="deploy-the-user-portal-on-a-separate-server"></a>Bereitstellen des Benutzerportals auf einem separaten Server
 
@@ -110,7 +110,7 @@ Wenn Sie das Benutzerportal auf einem anderen Server als dem Azure Multi-Factor 
 
 6. Öffnen Sie auf einem beliebigen Computer einen Webbrowser, und navigieren Sie zu der URL, unter der das Benutzerportal installiert wurde (Beispiel: https://mfa.contoso.com/MultiFactorAuth). Stellen Sie sicher, dass keine Zertifikatswarnungen oder -fehler angezeigt werden.
 
-Antworten auf Fragen zum Konfigurieren eines SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/en-us/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
+Antworten auf Fragen zum Konfigurieren eines SSL-Zertifikats für einen IIS-Server finden Sie im Artikel [How to Set Up SSL on IIS 7](https://docs.microsoft.com/iis/manage/configuring-security/how-to-set-up-ssl-on-iis) (Einrichten von SSL in IIS 7).
 
 ## <a name="configure-user-portal-settings-in-the-azure-multi-factor-authentication-server"></a>Konfigurieren der Benutzerportaleinstellungen auf dem Azure Multi-Factor Authentication-Server
 
@@ -139,9 +139,9 @@ Der Azure Multi-Factor Authentication-Server stellt mehrere Optionen für das Be
 | Benutzern die Auswahl der Methode ermöglichen | Ermöglicht Benutzern das Festlegen ihrer primären Kontaktmethode. Bei dieser Methode kann es sich um einen Telefonanruf, eine SMS, die mobile App oder ein OATH-Token handeln. |
 | Benutzern die Auswahl der Sprache ermöglichen | Ermöglicht Benutzern das Ändern der Sprache, die für den Telefonanruf, die Textnachricht (SMS), die mobile App oder das OATH-Token verwendet wird. |
 | Benutzern das Aktivieren der mobilen App ermöglichen | Ermöglicht Benutzern das Generieren eines Aktivierungscodes, um den Aktivierungsprozess der mit dem Server verwendeten mobilen App durchzuführen.  Sie können auch die Anzahl der Geräte festlegen (1 bis 10), auf denen Benutzer die App aktivieren können. |
-| Sicherheitsfragen als Alternative verwenden | Ermöglicht die Verwendung von Sicherheitsfragen, falls die Überprüfung in zwei Schritten fehlschlägt. Sie können die Anzahl der Sicherheitsfragen festlegen, die richtig beantwortet werden müssen. |
+| Sicherheitsfragen als Alternative verwenden | Ermöglicht die Verwendung von Sicherheitsfragen, falls die zweistufige Überprüfung fehlschlägt. Sie können die Anzahl der Sicherheitsfragen festlegen, die richtig beantwortet werden müssen. |
 | Benutzern das Zuordnen von Drittanbieter-OATH-Token ermöglichen | Ermöglicht Benutzern das Angeben eines Drittanbieter-OATH-Tokens. |
-| OATH-Token als Alternative verwenden | Ermöglicht die Verwendung eines OATH-Tokens, falls die Überprüfung in zwei Schritten nicht erfolgreich ist. Sie können auch den Sitzungstimeout in Minuten angeben. |
+| OATH-Token als Alternative verwenden | Ermöglicht die Verwendung eines OATH-Tokens, falls die zweistufige Überprüfung nicht erfolgreich ist. Sie können auch den Sitzungstimeout in Minuten angeben. |
 | Aktivieren der Protokollierung | Ermöglicht die Protokollierung im Benutzerportal. Die Protokolldateien befinden sich unter: C:\Programme\Multi-Factor Authentication Server\Logs. |
 
 Diese Einstellungen werden dem Benutzer im Portal angezeigt, nachdem sie aktiviert wurden und der Benutzer sich beim Benutzerportal angemeldet hat.

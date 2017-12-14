@@ -4,7 +4,7 @@ description: "Vorgehensweise beim Erstellen einer einseitigen AngularJS-App, bei
 services: active-directory
 documentationcenter: 
 author: jmprieur
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 6a341781-278f-461b-92ca-7572a06e6852
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c68180c0ecabf5c0732f0db77ef1f3cc93be965b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d2a2108fb2205f646b2ac807922a90939bdee9f6
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>Hinzufügen der Anmeldung zu einer einseitigen AngularJS-App – .NET
 In diesem Artikel verwenden wir den v2.0-Endpunkt von Azure Active Directory, um einer AngularJS-App eine Anmeldung mit Microsoft-basierten Konten hinzuzufügen.  Mit dem v2.0-Endpunkt können Sie eine einzelne Integration in Ihrer App ausführen und Benutzer mit persönlichen Konten sowie mit Geschäfts-, Schul- oder Unikonten authentifizieren.
