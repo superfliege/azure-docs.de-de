@@ -1,6 +1,6 @@
 ---
 title: "CLI-Beispiel: Verschieben von Azure SQL-Datenbank – Pool für elastische SQL-Datenbanken | Microsoft-Dokumentation"
-description: Azure CLI-Beispielskript zum Verschieben einer SQL-Datenbank in einem elastischen SQL-Pool
+description: "Azure CLI-Beispielskript zum Verschieben einer SQL-Datenbank in einem Pool für elastische SQL-Datenbanken"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -9,22 +9,22 @@ editor: carlrab
 tags: azure-service-management
 ms.assetid: 
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.custom: monitor & tune, mvc
 ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/05/2017
 ms.author: janeng
-ms.openlocfilehash: 946492e1d4b784a2a70b553826b4ec837799ff6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6da859530cd692d80f82270cb599483041612db7
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Verwenden Sie zum Verschieben einer Azure SQL-Datenbank in einem elastischen SQL-Pool eine Befehlszeilenschnittstelle.
+# <a name="use-cli-to-move-an-azure-sql-database-in-a-sql-elastic-pool"></a>Verwenden Sie zum Verschieben einer Azure SQL-Datenbank in einem Pool für elastische SQL-Datenbanken eine Befehlszeilenschnittstelle.
 
-In diesem Azure CLI-Beispielskript werden zwei Pools erstellt, eine Azure SQL-Datenbank aus einem elastischen SQL-Pool in einen anderen und dann eine Datenbank aus einem elastischen Pool auf eine Einzeldatenbank-Leistungsstufe von Azure verschoben. 
+In diesem Azure CLI-Beispielskript werden zwei Pools erstellt, eine Azure SQL-Datenbank aus einem Pool für elastische SQL-Datenbanken in einen anderen und dann eine Datenbank aus einem Pool für elastische Datenbanken auf eine Einzeldatenbank-Leistungsstufe von Azure verschoben. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

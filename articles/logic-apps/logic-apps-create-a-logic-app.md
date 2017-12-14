@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 10/20/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 5906605192f9b03f612e6ca3a445434a23713d7f
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="automate-your-first-workflow-to-process-data-with-a-logic-app"></a>Automatisieren Ihres ersten Workflows zum Verarbeiten von Daten mit einer Logik-App
 
@@ -229,7 +229,7 @@ Wählen Sie in Ihrem Logik-App-Menü **Übersicht**. Wählen Sie auf der Symboll
   ![Deaktivieren der Logik-App](./media/logic-apps-create-a-logic-app/turn-off-disable-logic-app.png)
 
   > [!TIP]
-  > Wenn das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückwechseln und versuchen, Ihre Logik-App wieder zu öffnen.
+  > Falls das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückkehren und Ihre Logik-App erneut öffnen.
 
 ### <a name="delete-logic-app"></a>Löschen der Logik-App
 
@@ -242,12 +242,12 @@ Sie können auch nur Ihre Logik-App löschen und alle dazugehörigen Ressourcen 
    > [!TIP]
    > Wenn das Logik-App-Menü nicht angezeigt wird, können Sie zum Azure-Dashboard zurückwechseln und versuchen, Ihre Logik-App wieder zu öffnen.
 
-2. Bestätigen Sie, dass Sie die Logik-App löschen möchten, und wählen Sie dann die Option **Löschen**.
+2. Bestätigen Sie, dass Sie die Logik-App löschen möchten, und wählen Sie dann die Option **Löschen** aus.
 
 ## <a name="get-support"></a>Support
 
 * Sollten Sie Fragen haben, besuchen Sie das [Azure Logic Apps-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps).
-* Wenn Sie Features vorschlagen oder Ihre Stimme abgeben möchten, können Sie dies auf der [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish) durchführen.
+* Wenn Sie Features vorschlagen oder für Vorschläge abstimmen möchten, besuchen Sie die [Website für Logic Apps-Benutzerfeedback](http://aka.ms/logicapps-wish).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

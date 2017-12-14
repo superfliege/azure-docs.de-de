@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.openlocfilehash: 0ac4aa10db43fb84119ab97cf78b2d5592cfd277
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 11d30931bd549f7e877264b4a33f8e06c6b1c802
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="using-the-azure-cli-on-windows"></a>Verwenden der Azure CLI unter Windows
 
 Die Azure-Befehlszeilenschnittstelle (CLI) stellt eine Befehlszeile und eine Skriptumgebung für das Erstellen und Verwalten von Azure-Ressourcen bereit. Die Azure CLI steht für macOS-, Linux- und Windows-Betriebssysteme zur Verfügung. Die CLI-Befehle sind für all diese Betriebssysteme identisch, die Skriptsyntax kann jedoch je nach Betriebssystem abweichen.
 
-In dieser Dokumentation wird erläutert, wie die Azure CLI unter Windows installiert und ausgeführt werden kann, und es werden Überlegungen zur Syntax beleuchtet. Eine ausführliche Erörterung der Azure CLI finden Sie in der [Azure CLI-Dokumentation]( https://docs.microsoft.com/en-us/cli/azure/overview).
+In dieser Dokumentation wird erläutert, wie die Azure CLI unter Windows installiert und ausgeführt werden kann, und es werden Überlegungen zur Syntax beleuchtet. Eine ausführliche Erörterung der Azure CLI finden Sie in der [Azure CLI-Dokumentation]( https://docs.microsoft.com/cli/azure/overview).
 
 ## <a name="windows-subsystem-for-linux"></a>Windows-Subsystem für Linux
 
@@ -36,13 +36,13 @@ Führen Sie die folgenden Schritte aus, um die Azure CLI in WSL zu verwenden.
 |Aufgabe | Anleitung |
 |---|---|
 | Aktivieren von WSL | [Dokumentation zum Installieren von WSL](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) |
-| Installieren der Azure CLI |[Installieren der CLI für WSL/Ubuntu 14.04](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2#ubuntu)|
+| Installieren der Azure CLI |[Installieren der CLI für WSL/Ubuntu 14.04](https://docs.microsoft.com/cli/azure/install-az-cli2#ubuntu)|
 
 ## <a name="powershell"></a>PowerShell
 
 Die Azure CLI kann in Windows nativ ausgeführt werden. In dieser Konfiguration wird das Azure CLI-Paket auf dem Windows-Betriebssystem ausgeführt, und Befehle können über PowerShell ausgeführt werden. Azure CLI-Befehle und Skripts können in dieser Konfiguration auf jeder unterstützten Windows-Version ausgeführt werden, es ist jedoch eine plattformspezifische Skriptsyntax erforderlich. Aufgrund dieser Tatsache können Skripts möglicherweise nicht ohne Änderungen unter macOS, Linux und Windows eingesetzt werden.
 
-Installieren Sie das Paket mithilfe der Anweisungen unter [Installieren der CLI unter Windows](https://docs.microsoft.com/en-us/cli/azure/install-az-cli2#windows), um die Azure CLI unter Windows einzusetzen.
+Installieren Sie das Paket mithilfe der Anweisungen unter [Installieren der CLI unter Windows](https://docs.microsoft.com/cli/azure/install-az-cli2#windows), um die Azure CLI unter Windows einzusetzen.
 
 ## <a name="docker-image"></a>Docker-Image
 

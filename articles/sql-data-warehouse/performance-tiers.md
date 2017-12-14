@@ -14,18 +14,19 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 11/10/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: c403a73d03fd5152e2c0617b3e3784926c28f5c3
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: de1220e9b5a01429f4eea5c3605f1cf7221f3e1e
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="azure-sql-data-warehouse-performance-tiers-preview"></a>Azure SQL Data Warehouse – Leistungsstufen (Vorschau)
 SQL Data Warehouse bietet zwei Leistungsstufen, die für analytische Workloads optimiert sind. In diesem Artikel werden die Konzepte von Leistungsstufen beschrieben, die Ihnen bei der Auswahl der am besten geeigneten Leistungsstufe für Ihre Workload helfen sollen. 
 
-
 ## <a name="what-is-a-performance-tier"></a>Was ist eine Leistungsstufe?
 Eine Leistungsstufe ist eine Option, die die Konfiguration Ihres Data Warehouse bestimmt. Diese Option ist die erste Auswahl, die Sie beim Erstellen eines Data Warehouse treffen.  
+
+> [!VIDEO https://channel9.msdn.com/Events/Connect/2017/T140/player]
 
 - Die **Leistungsstufe „Optimiert für Elastizität“** trennt die Compute- und die Speicherebene in der Architektur. Diese Option eignet sich besonders für Workloads, die durch häufige Skalierung optimal von der Trennung zwischen Compute und Speicher profitieren können, um vorübergehende Aktivitätsspitzen zu unterstützen. Diese Computestufe hat den niedrigsten Einstiegspreis und deckt dank Skalierung den größten Teil der Kundenworkloads ab.
 

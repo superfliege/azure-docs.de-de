@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: eustacea
-ms.openlocfilehash: 080c83fd0c34bdcb8978edf0ba4f783402a88b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7497753cc27867b1fdb9635ba6613ac75b449090
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="device-authentication-using-x509-ca-certificates"></a>Geräteauthentifizierung mit X.509-Zertifikaten
 
@@ -85,4 +85,4 @@ Hier erfahren Sie, wie Sie [diesen Schritt der Geräteverbindung](iot-hub-securi
 
 Erfahren Sie mehr über [den Wert der X.509-CA-Authentifizierung](iot-hub-x509ca-concept.md) in IoT.
 
-Nutzen Sie zum Einstieg den [IoT Hub Device Provisioning-Dienst](https://docs.microsoft.com/en-us/azure/iot-dps/).
+Nutzen Sie zum Einstieg den [IoT Hub Device Provisioning-Dienst](https://docs.microsoft.com/azure/iot-dps/).

@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a786e9baa275e029343571bdb9a6480334f5cf3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 3a0d181ad0732458e67d0f3f1d6676be099b52fc
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Was sind VM-Skalierungsgruppen in Azure?
 VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
@@ -124,7 +124,7 @@ Dieser Abschnitt enthält einige typische Szenarien für Skalierungsgruppen. Ein
 * Eine Skalierungsgruppe unterstützt bis zu 1.000 virtuelle Computer. Wenn Sie eigene benutzerdefinierte VM-Images erstellen und hochladen, beträgt der Grenzwert 300. Informationen zu Aspekten, die bei der Nutzung großer Skalierungsgruppen zu berücksichtigen sind, finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md).
 * Für die Verwendung von Skalierungsgruppen müssen Sie vorab keine Azure-Speicherkonten erstellen. Da Skalierungsgruppen Azure Managed Disks unterstützen, sind Leistungsbedenken in Bezug auf die Anzahl von Datenträgern pro Speicherkonto kein Thema. Weitere Informationen finden Sie unter [Azure-VM-Skalierungsgruppen und verwaltete Datenträger](virtual-machine-scale-sets-managed-disks.md).
 * Erwägen Sie die Verwendung von Azure Storage Premium anstelle von Azure Storage, um eine schnellere und besser vorhersagbare VM-Bereitstellung und eine höhere E/A-Leistung zu erreichen.
-* Wie viele virtuelle Computer Sie erstellen können, hängt vom vCPU-Kontingent der Region ab, in der Sie sie bereitstellen. Unter Umständen müssen Sie das Limit für das Computekontingent durch den Kundensupport erhöhen lassen. Das gilt auch, wenn Sie bereits über ein hohes Limit an vCPUs verfügen, die für Azure Cloud Services genutzt werden können. Ihr Kontingent können Sie über die Azure-Befehlszeile mithilfe des folgenden Befehls abfragen: `azure vm list-usage`. Sie können aber auch den folgenden PowerShell-Befehl ausführen: `Get-AzureRmVMUsage`.
+* Wie viele virtuelle Computer Sie erstellen können, hängt vom vCPU-Kontingent der Region ab, in der Sie sie bereitstellen. Unter Umständen müssen Sie das Limit für das Computekontingent durch den Kundensupport erhöhen lassen. Das gilt auch, wenn Sie bereits über ein hohes Limit an vCPUs verfügen, die für Azure Cloud Services genutzt werden können. Ihr Kontingent können Sie über die Azure-Befehlszeile mithilfe des folgenden Befehls abfragen: `az vm list-usage`. Sie können aber auch den folgenden PowerShell-Befehl ausführen: `Get-AzureRmVMUsage`.
 
 ## <a name="frequently-asked-questions-for-scale-sets"></a>Häufig gestellte Fragen zu Skalierungsgruppen
 **F.** Wie viele virtuelle Computer können in einer Skalierungsgruppe enthalten sein?

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 3c56719d99a5a3cc3e650b72ecd2e92438533448
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9246def86fa647213aa3ec12427d829c24fa8034
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Starten der Überwachung Ihrer Java-Webanwendung
 
@@ -30,7 +30,7 @@ So führen Sie diesen Schnellstart durch:
 - Installieren Sie die [kostenlose Eclipse-IDE für Java EE-Entwickler](http://www.eclipse.org/downloads/). In diesem Schnellstart wird Eclipse Oxygen (4.7) verwendet.
 - Sie benötigen ein Azure-Abonnement und ein vorhandenes Java Dynamic Web Project.
  
-Wenn Sie noch nicht über ein Java Dynamic Web Project verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer Java-Web-App](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-java) eines erstellen.
+Wenn Sie noch nicht über ein Java Dynamic Web Project verfügen, können Sie mithilfe der Schnellstartanleitung unter [Erstellen einer Java-Web-App](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-java) eines erstellen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -138,4 +138,4 @@ Wenn Sie planen, die nachfolgenden Schnellstartanleitungen oder Tutorials durchz
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Suchen nach und Diagnostizieren von Leistungsproblemen](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-analytics)
+> [Suchen nach und Diagnostizieren von Leistungsproblemen](https://docs.microsoft.com/azure/application-insights/app-insights-analytics)

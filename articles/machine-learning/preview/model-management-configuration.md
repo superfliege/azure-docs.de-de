@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: c89596a6d721c4cba899b8a6e2859ee36cba7b80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 151e7c2dc808a8fa117a0d7a1950185abe9e3152
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="model-management-setup"></a>Einrichtung der Modellverwaltung
 
@@ -27,7 +27,7 @@ Am Ende dieses Dokuments sollte Ihre Modellverwaltungsumgebung eingerichtet und 
 
 ## <a name="what-you-need-to-get-started"></a>Voraussetzungen
 Um diesen Leitfaden bestmöglich zu nutzen, sollten Sie als Besitzer Zugriff auf ein Azure-Abonnement haben, in dem Sie Ihre Modelle bereitstellen können.
-Die CLI ist in Azure Machine Learning Workbench und [Azure DSVMs](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) (Data Science Virtual Machines) vorinstalliert.
+Die CLI ist in Azure Machine Learning Workbench und [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) (Data Science Virtual Machines) vorinstalliert.
 
 ## <a name="using-the-cli"></a>Verwenden der CLI
 Um die CLIs (Befehlszeilenschnittstellen) in der Workbench zu nutzen, klicken Sie auf **Datei** > **Befehlszeilenschnittstelle öffnen**. 

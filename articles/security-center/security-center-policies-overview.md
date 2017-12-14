@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 60cc65bb94e05da1c0b7ee20930c0530f46e71ec
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7a4d056fa71f211dea5e7be649c39034eabc9395
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="security-policies-overview"></a>Übersicht über Sicherheitsrichtlinien
 In diesem Artikel erfahren Sie, wie Sie Sicherheitsrichtlinien in Security Center konfigurieren.
@@ -29,7 +29,7 @@ Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloa
 Security Center-Richtlinien enthalten folgende Komponenten:
 
 - **Datensammlung:** Bestimmt die Einstellungen für die Agent-Bereitstellung und die [Datensammlung](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection).
-- **Sicherheitsrichtlinie:** Bestimmt, welche Maßnahmen Security Center überwacht und empfiehlt. Die [Sicherheitsrichtlinie](https://docs.microsoft.com/en-us/azure/security-center/security-center-policies) kann in Security Center bearbeitet werden. Sie können auch [Azure Policy](security-center-azure-policy.md) (eingeschränkte Vorschauversion) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
+- **Sicherheitsrichtlinie:** Bestimmt, welche Maßnahmen Security Center überwacht und empfiehlt. Die [Sicherheitsrichtlinie](https://docs.microsoft.com/azure/security-center/security-center-policies) kann in Security Center bearbeitet werden. Sie können auch [Azure Policy](security-center-azure-policy.md) (eingeschränkte Vorschauversion) verwenden, um neue Definitionen zu erstellen, zusätzliche Richtlinien zu definieren und verwaltungsgruppenübergreifende Richtlinien zuzuweisen.
 - **E-Mail-Benachrichtigungen:** Bestimmt Sicherheitskontakte und Einstellungen für [E-Mail-Benachrichtigungen](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details).
 - **Tarif:** Definiert die [Tarifauswahl](https://docs.microsoft.com/azure/security-center/security-center-pricing) (Free oder Standard). Der gewählte Tarif beeinflusst, welche Security Center-Features für betroffene Ressourcen verfügbar sind. Sie können einen Tarif für Abonnements, Ressourcengruppen und Arbeitsbereiche angeben. 
 
