@@ -19,11 +19,7 @@
 ### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
 ### [Erstellen mehrerer Instanzen](resource-group-create-multiple.md)
-### [Standort festlegen](resource-manager-template-location.md)
-### [Tags zuweisen](resource-manager-template-tags.md)
-### [Festlegen von Name und Typ der untergeordneten Ressource](resource-manager-template-child-resource.md)
 ### [Aktualisieren von Ressourcen](resource-manager-update.md)
-### [Verwenden von Objekten für Parameter](resource-manager-objects-as-parameters.md)
 ### [Freigeben des Status für verknüpfte Vorlagen](best-practices-resource-manager-state.md)
 ### [Muster für das Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md)
 

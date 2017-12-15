@@ -64,8 +64,8 @@
 ## Speichern von Daten
 ### [Blobs](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-how-to-use-blobs)
 ### [Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-dotnet-how-to-use-files)
-### [Schlüssel-Wert-Paare](https://docs.microsoft.com/azure/cosmos-db/table-storage-how-to-use-dotnet)
-### [JSON-Dokumente](https://docs.microsoft.com/azure/cosmos-db/documentdb-get-started)
+### [Schlüssel-Wert-Paare](https://docs.microsoft.com/azure/cosmos-db/create-table-dotnet)
+### [JSON-Dokumente](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-dotnet)
 ### [Relationale Tabellen](https://docs.microsoft.com/azure/sql-database/sql-database-get-started)
 ### [Meldungswarteschlangen](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues)
 
