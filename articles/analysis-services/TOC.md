@@ -4,7 +4,7 @@
 ## [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md)
 ## [Herstellen einer Verbindung mit lokalen Datenquellen](analysis-services-gateway.md)
 ## [Kompatibilitätsgrad](analysis-services-compat-level.md)
-## [Hohe Verfügbarkeit](analysis-services-bcdr.md)
+## [Hochverfügbarkeit](analysis-services-bcdr.md)
 
 # Erste Schritte
 ## [Erstellen eines Servers im Azure-Portal](analysis-services-create-server.md)
@@ -21,6 +21,7 @@
 ## [Abrufen von Clientbibliotheken](analysis-services-data-providers.md)
 ## [Sichern und Wiederherstellen](analysis-services-backup.md)
 ## [Konfigurieren des horizontalen Hochskalierens](analysis-services-scale-out.md)
+## [Konfigurieren eines Alias für den Servernamen](analysis-services-server-alias.md)
 ## [Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)
 ## [Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)
 ## [Erstellen einer ODC-Datei](analysis-services-odc.md)

@@ -85,6 +85,7 @@
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=expressroute)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [Abonnements und Diensteinschränkungen](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)
+## [ExpressRoute für Cloudlösungsanbieter (Cloud Solution Providers, CSPs)](expressroute-for-cloud-solution-providers.md)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=expressroute)
 ### [Herstellen einer Verbindung mit einem Gateway für ein virtuelles Netzwerk](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit/)
 ### [Erstellen eines virtuellen Netzwerks für ExpressRoute](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-virtual-network/)

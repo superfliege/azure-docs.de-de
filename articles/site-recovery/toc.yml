@@ -241,6 +241,8 @@
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
         - name: Verwalten von vCenter-Servern
           href: site-recovery-vmware-to-azure-manage-vCenter.md
+        - name: Verwalten der Mehrinstanzenfähigkeit mit CSP
+          href: site-recovery-manage-multi-tenancy-with-csp.md
         - name: Entfernen von Servern und Deaktivieren des Schutzes
           href: site-recovery-manage-registration-and-protection.md
         - name: Löschen eines Tresors
