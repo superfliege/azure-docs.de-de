@@ -15,12 +15,11 @@
 #### [Parameter](resource-manager-templates-parameters.md)
 #### [Variablen](resource-manager-templates-variables.md)
 #### [Ressourcen](resource-manager-templates-resources.md)
-### [Bewährte Methoden für Vorlagen](resource-manager-template-best-practices.md)
+#### [Ausgaben](resource-manager-templates-outputs.md)
 ### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
 ### [Erstellen mehrerer Instanzen](resource-group-create-multiple.md)
-### [Aktualisieren von Ressourcen](resource-manager-update.md)
-### [Freigeben des Status für verknüpfte Vorlagen](best-practices-resource-manager-state.md)
+### [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource)
 ### [Muster für das Entwerfen von Vorlagen](best-practices-resource-manager-design-templates.md)
 
 
