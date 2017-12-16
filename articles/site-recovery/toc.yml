@@ -211,7 +211,7 @@
       items:
         - name: Active Directory und DNS
           href: site-recovery-active-directory.md
-        - name: Replizieren von SQL Server
+        - name: SQL Server
           href: site-recovery-sql.md
         - name: SharePoint
           href: site-recovery-sharepoint.md

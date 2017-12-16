@@ -4,6 +4,16 @@
   items:
     - name: Was ist Azure Stack?
       href: azure-stack-poc.md
+    - name: Versionshinweise
+      items:
+        - name: Versionshinweise für Development Kit
+          href: azure-stack-asdk-release-notes.md
+        - name: Versionshinweise zu integrierten Systemen
+          items:
+            - name: Update 1711
+              href: azure-stack-update-1711.md
+            - name: Update 1710
+              href: azure-stack-update-1710.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -23,16 +33,6 @@
       href: azure-stack-planning-considerations.md
     - name: Wartungsrichtlinie
       href: azure-stack-servicing-policy.md
-    - name: Versionshinweise
-      items:
-        - name: Versionshinweise für Development Kit
-          href: azure-stack-asdk-release-notes.md
-        - name: Versionshinweise zu integrierten Systemen
-          items:
-            - name: Update 1711
-              href: azure-stack-update-1711.md
-            - name: Update 1710
-              href: azure-stack-update-1710.md
     - name: Wichtige Features und Konzepte
       href: azure-stack-key-features.md
     - name: Architektur des Development Kits

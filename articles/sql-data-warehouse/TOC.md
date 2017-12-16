@@ -26,7 +26,6 @@
 
 ## Migrieren zu SQL Data Warehouse
 ### [Übersicht](sql-data-warehouse-overview-migrate.md)
-### [Hilfsprogramm für die Migration](sql-data-warehouse-migrate-migration-utility.md)
 ### [Migrieren des Schemas](sql-data-warehouse-migrate-schema.md)
 ### [Migrieren von Code](sql-data-warehouse-migrate-code.md)
 ### [Migrieren von Daten](sql-data-warehouse-migrate-data.md)

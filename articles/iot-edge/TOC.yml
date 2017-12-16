@@ -32,6 +32,8 @@
       href: how-to-deploy-monitor.md
     - name: Provision an IoT Core device (Bereitstellen eines IoT Core-Geräts)
       href: how-to-install-iot-core.md
+    - name: Problembehandlung
+      href: troubleshoot.md
 - name: Konzepte
   items:
     - name: IoT Edge-Module
