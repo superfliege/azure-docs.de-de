@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: tamram
-ms.openlocfilehash: cdd457dbe6802f58f0167efb97d60628c17a97af
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: ff0f6446b51c4549e5a367b5b767d4777a1d946d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Einführung in Microsoft Azure Storage
 
-Microsoft Azure Storage ist ein von Microsoft verwalteter Clouddienst, über den hoch verfügbarer, sicherer, stabiler, skalierbarer und redundanter Speicher bereitgestellt wird. Microsoft übernimmt die Wartung und behandelt kritische Probleme für Sie. 
+Microsoft Azure Storage ist ein von Microsoft verwalteter Clouddienst, über den hoch verfügbarer, sicherer, stabiler, skalierbarer und redundanter Speicher bereitgestellt wird. Microsoft übernimmt die Wartung und behandelt kritische Probleme für Sie.
 
 Azure Storage besteht aus drei Datendiensten: Blob Storage, File Storage und Queue Storage. Blob Storage unterstützt sowohl Standardspeicher als auch Storage Premium. Dabei werden von Storage Premium nur SSDs verwendet, um eine optimale Leistung zu erzielen. Ein weiteres Feature ist der kalte Speicher, in dem große Datenmengen, auf die selten zugegriffen wird, kostengünstiger gespeichert werden.
 
@@ -31,9 +31,9 @@ In diesem Artikel ist Folgendes näher erläutert:
 * Speicherkontentypen
 * Zugreifen auf Blobs, Warteschlangen und Dateien
 * Verschlüsselung
-* Replikation 
+* Replikation
 * Übertragen von Daten in oder aus Speicher
-* Zahlreiche verfügbare Speicherclientbibliotheken 
+* Zahlreiche verfügbare Speicherclientbibliotheken
 
 Nutzen Sie eine der folgenden Schnellstartanleitungen für den schnellen Einstieg in Azure Storage:
 * [Erstellen eines Speicherkontos mithilfe von PowerShell](storage-quickstart-create-storage-account-powershell.md)
@@ -41,28 +41,28 @@ Nutzen Sie eine der folgenden Schnellstartanleitungen für den schnellen Einstie
 
 ## <a name="introducing-the-azure-storage-services"></a>Einführung in die Azure Storage-Dienste
 
-Damit Sie einen der von Azure Storage bereitgestellten Dienste (Blob Storage, File Storage und Queue Storage) verwenden können, erstellen Sie zunächst ein Speicherkonto. Anschließend können Sie Dateien in einen bzw. aus einem bestimmten Dienst in dieses Speicherkonto übertragen. 
+Damit Sie einen der von Azure Storage bereitgestellten Dienste (Blob Storage, File Storage und Queue Storage) verwenden können, erstellen Sie zunächst ein Speicherkonto. Anschließend können Sie Dateien in einen bzw. aus einem bestimmten Dienst in dieses Speicherkonto übertragen.
 
 ## <a name="blob-storage"></a>Blob Storage
 
-Blobs ähneln im Grunde den Dateien, die Sie auf Ihrem Computer (oder Tablet, Mobilgerät usw.) speichern. Dabei kann es sich u.a. um Bilder, Microsoft Excel-Dateien, HTML-Dateien, virtuelle Festplatten (Virtual Hard Disks, VHDs) und Big Data wie Protokolle und Datenbanksicherungen handeln. Blobs werden in Containern gespeichert, die Ordnern ähneln. 
+Blobs ähneln im Grunde den Dateien, die Sie auf Ihrem Computer (oder Tablet, Mobilgerät usw.) speichern. Dabei kann es sich u.a. um Bilder, Microsoft Excel-Dateien, HTML-Dateien, virtuelle Festplatten (Virtual Hard Disks, VHDs) und Big Data wie Protokolle und Datenbanksicherungen handeln. Blobs werden in Containern gespeichert, die Ordnern ähneln.
 
-Nach dem Speichern von Dateien in Blob Storage können Sie weltweit über URLs, die REST-Schnittstelle oder eine der Azure SDK-Speicherclientbibliotheken darauf zugreifen. Speicherclientbibliotheken stehen für mehrere Sprachen, u.a. Node.js, Java, PHP, Ruby, Python und .NET zur Verfügung. 
+Nach dem Speichern von Dateien in Blob Storage können Sie weltweit über URLs, die REST-Schnittstelle oder eine der Azure SDK-Speicherclientbibliotheken darauf zugreifen. Speicherclientbibliotheken stehen für mehrere Sprachen, u.a. Node.js, Java, PHP, Ruby, Python und .NET zur Verfügung.
 
 Es gibt drei Arten von Blobs: Blockblobs, Seitenblobs (für VHD-Dateien) und Anfügeblobs.
 
-* Blockblobs werden für gewöhnliche Dateien mit einer Größe von bis zu 4.7 TB verwendet. 
+* Blockblobs werden für gewöhnliche Dateien mit einer Größe von bis zu 4.7 TB verwendet.
 * Seitenblobs werden für Random-Access-Dateien mit einer Größe von bis zu 8 TB verwendet. Diese werden für die VHD-Dateien genutzt, auf denen virtuelle Computer basieren.
 * Anfügeblobs bestehen wie Blockblobs auch aus Blöcken, sind jedoch für Anfügevorgänge optimiert. Sie werden für Aufgaben wie die Protokollierung von Informationen von mehreren virtuellen Computern im gleichen Blob verwendet.
 
 Wenn sich die Daten besonders umfangreicher Datasets aufgrund von Netzwerkbeschränkungen nicht sinnvoll über eine Kabelverbindung in Blob Storage hochladen bzw. daraus herunterladen lassen, können Sie Festplatten an Microsoft schicken und Ihre Daten direkt in das Rechenzentrum importieren bzw. aus dem Rechenzentrum exportieren lassen. Weitere Informationen finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage-import-export-service.md).
 
 ## <a name="azure-files"></a>Azure Files
-[Azure Files](../files/storage-files-introduction.md) ermöglicht die Einrichtung hochverfügbarer Netzwerkdateifreigaben, auf die über das standardmäßige SMB-Protokoll (Server Message Block) zugegriffen werden kann. Dadurch können mehrere virtuelle Computer gemeinsam die gleichen Dateien mit Lese- und Schreibzugriff nutzen. Die Dateien können auch mithilfe der REST-Schnittstelle oder mithilfe der Speicherclientbibliotheken gelesen werden. 
+[Azure Files](../files/storage-files-introduction.md) ermöglicht die Einrichtung hochverfügbarer Netzwerkdateifreigaben, auf die über das standardmäßige SMB-Protokoll (Server Message Block) zugegriffen werden kann. Dadurch können mehrere virtuelle Computer gemeinsam die gleichen Dateien mit Lese- und Schreibzugriff nutzen. Die Dateien können auch mithilfe der REST-Schnittstelle oder mithilfe der Speicherclientbibliotheken gelesen werden.
 
-Azure Files unterscheidet sich in einem Punkt von Dateien auf einer Dateifreigabe eines Unternehmens: Über eine URL, die auf die gewünschte Datei verweist und ein SAS-Token (Shared Access Signature) enthält, kann von jedem Ort der Welt auf die Datei zugegriffen werden. Sie können SAS-Token generieren, um für einen bestimmten Zeitraum spezifischen Zugriff auf eine private Ressource zu ermöglichen. 
+Azure Files unterscheidet sich in einem Punkt von Dateien auf einer Dateifreigabe eines Unternehmens: Über eine URL, die auf die gewünschte Datei verweist und ein SAS-Token (Shared Access Signature) enthält, kann von jedem Ort der Welt auf die Datei zugegriffen werden. Sie können SAS-Token generieren, um für einen bestimmten Zeitraum spezifischen Zugriff auf eine private Ressource zu ermöglichen.
 
-Dateifreigaben können in zahlreichen Szenarien verwendet werden: 
+Dateifreigaben können in zahlreichen Szenarien verwendet werden:
 
 * Viele lokale Anwendungen verwenden Dateifreigaben. Dieses Feature erleichtert die Migration dieser Anwendungen mit gemeinsamen Daten zu Azure. Wenn Sie die Dateifreigabe unter dem gleichen Laufwerksbuchstaben einbinden, den auch die lokale Anwendung verwendet, müsste der Teil Ihrer Anwendung, der auf die Dateifreigabe zugreift, mit minimalen (oder sogar ganz ohne) Änderungen funktionieren.
 
@@ -74,7 +74,7 @@ Active Directory-basierte Authentifizierung und Zugriffssteuerungslisten (Access
 
 ## <a name="queue-storage"></a>Queue Storage
 
-Der Azure Queue-Dienst wird zum Speichern und Abrufen von Nachrichten verwendet. Warteschlangennachrichten können eine Größe von bis zu 64 KB haben, und eine Warteschlange kann Millionen von Nachrichten enthalten. Warteschlangen dienen im Allgemeinen zum Speichern von Listen mit Nachrichten, die asynchron verarbeitet werden sollen. 
+Der Azure Queue-Dienst wird zum Speichern und Abrufen von Nachrichten verwendet. Warteschlangennachrichten können eine Größe von bis zu 64 KB haben, und eine Warteschlange kann Millionen von Nachrichten enthalten. Warteschlangen dienen im Allgemeinen zum Speichern von Listen mit Nachrichten, die asynchron verarbeitet werden sollen.
 
 Beispiel: Ihre Kunden sollen Bilder hochladen können, und Sie möchten Miniaturbilder für jedes Bild erstellen. Sie können Kunden warten lassen, bis die Miniaturbilder beim Hochladen der Bilder erstellt werden. Alternativ können Sie eine Warteschlange verwenden. Wenn der Kunde den Upload abgeschlossen hat, schreiben Sie eine Nachricht an die Warteschlange. Legen Sie dann eine Azure-Funktion fest, die die Nachricht aus der Warteschlange abruft und die Miniaturbilder erstellt. Alle Schritte dieses Verarbeitungsvorgangs können separat skaliert werden, sodass Sie ihn für Ihre Zwecke optimieren können.
 
@@ -86,7 +86,7 @@ Azure Table Storage ist jetzt Teil von Azure Cosmos DB. Diese Azure Table Storag
 
 Azure Storage umfasst auch die Funktionen für verwaltete und nicht verwaltete Datenträger, die von virtuellen Computern verwendet werden. Weitere Informationen zu diesen Features finden Sie in der [Microsoft Azure-Dokumentation](https://docs.microsoft.com/azure/#pivot=services&panel=Compute).
 
-## <a name="types-of-storage-accounts"></a>Speicherkontentypen 
+## <a name="types-of-storage-accounts"></a>Speicherkontentypen
 
 Die folgende Tabelle enthält die verschiedenen Arten von Speicherkonten sowie die Objekte, die jeweils mit den Konten verwendet werden können.
 
@@ -97,9 +97,9 @@ Die folgende Tabelle enthält die verschiedenen Arten von Speicherkonten sowie d
 
 ### <a name="general-purpose-storage-accounts"></a>Allgemeine Speicherkonten
 
-Es gibt zwei Arten von allgemeine Speicherkonten. 
+Es gibt zwei Arten von allgemeine Speicherkonten.
 
-#### <a name="standard-storage"></a>Standardspeicher 
+#### <a name="standard-storage"></a>Standardspeicher
 
 Die am häufigsten genutzten Speicherkonten sind Standardspeicherkonten, die für alle Datentypen verwendet werden können. Standardspeicherkonten verwenden Datenträger zum Speichern von Daten.
 
@@ -109,39 +109,39 @@ Storage Premium bietet Hochleistungsspeicher für Seitenblobs, die in erster Lin
 
 ### <a name="blob-storage-accounts"></a>Blob Storage-Konten
 
-Beim Blob Storage-Konto handelt es sich um ein spezielles Speicherkonto für die Speicherung von Blockblobs und Anfügeblobs. Seitenblobs können in diesen Konten nicht gespeichert werden, daher ist das Speichern von VHD-Dateien nicht möglich. Mit diesen Konten können Sie die Zugriffsebene „Heiß“ oder „Kalt“ festlegen. Die Ebene kann jederzeit geändert werden. 
+Beim Blob Storage-Konto handelt es sich um ein spezielles Speicherkonto für die Speicherung von Blockblobs und Anfügeblobs. Seitenblobs können in diesen Konten nicht gespeichert werden, daher ist das Speichern von VHD-Dateien nicht möglich. Mit diesen Konten können Sie die Zugriffsebene „Heiß“ oder „Kalt“ festlegen. Die Ebene kann jederzeit geändert werden.
 
 Die Zugriffsebene „Heiß“ wird für Dateien verwendet, auf die häufig zugegriffen wird: Die Speicherkosten sind höher, die Kosten für den Zugriff auf die Blobs jedoch viel niedriger. Für Blobs, die in der Zugriffsebene „Kalt“ gespeichert sind, fallen höhere Kosten für den Zugriff auf die Blobs an. Die Kosten für die Speicherung sind jedoch viel niedriger.
 
 ## <a name="accessing-your-blobs-files-and-queues"></a>Zugreifen auf Blobs, Dateien und Warteschlangen
 
-Jedes Speicherkonto verfügt über zwei Authentifizierungsschlüssel, die beide für alle Vorgänge verwendet werden können. Da es zwei Schlüssel gibt, können Sie gelegentlich ein Rollover für die Schlüssel durchführen, um die Sicherheit zu erhöhen. Es ist sehr wichtig, diese Schlüssel sicher aufzubewahren, da sie zusammen mit dem Kontonamen den unbegrenzten Zugriff auf alle Daten im Speicherkonto ermöglichen. 
+Jedes Speicherkonto verfügt über zwei Authentifizierungsschlüssel, die beide für alle Vorgänge verwendet werden können. Da es zwei Schlüssel gibt, können Sie gelegentlich ein Rollover für die Schlüssel durchführen, um die Sicherheit zu erhöhen. Es ist sehr wichtig, diese Schlüssel sicher aufzubewahren, da sie zusammen mit dem Kontonamen den unbegrenzten Zugriff auf alle Daten im Speicherkonto ermöglichen.
 
 In diesem Abschnitt werden zwei Optionen zum Schützen der Speicherkonten und der dazugehörigen Daten erläutert. Ausführliche Informationen zum Schützen der Speicherkonten und Daten finden Sie im [Azure Storage-Sicherheitsleitfaden](storage-security-guide.md).
 
 ### <a name="securing-access-to-storage-accounts-using-azure-ad"></a>Schützen des Zugriffs auf Speicherkonten mithilfe von Azure AD
 
-Eine Möglichkeit zum Schützen der Speicherdaten besteht darin, den Zugriff auf die Speicherkontoschlüssel zu steuern. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Resource Manager können Sie Benutzern, Gruppen oder Anwendungen Rollen zuweisen. Diese Rollen sind an einen bestimmten Satz von Aktionen gebunden, die zulässig bzw. unzulässig sind. Wenn Sie den Zugriff auf ein Speicherkonto mithilfe von RBAC gewähren, betrifft dies nur die Verwaltungsvorgänge für dieses Speicherkonto (beispielsweise die Änderung der Zugriffsebene). Mit RBAC können Sie keinen Zugriff auf Datenobjekte wie einen bestimmten Container oder eine Dateifreigabe gewähren. Sie können jedoch RBAC verwenden, um Zugriff auf die Speicherkontoschlüssel zu erteilen, mit deren Hilfe anschließend die Datenobjekte gelesen werden können. 
+Eine Möglichkeit zum Schützen der Speicherdaten besteht darin, den Zugriff auf die Speicherkontoschlüssel zu steuern. Mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Resource Manager können Sie Benutzern, Gruppen oder Anwendungen Rollen zuweisen. Diese Rollen sind an einen bestimmten Satz von Aktionen gebunden, die zulässig bzw. unzulässig sind. Wenn Sie den Zugriff auf ein Speicherkonto mithilfe von RBAC gewähren, betrifft dies nur die Verwaltungsvorgänge für dieses Speicherkonto (beispielsweise die Änderung der Zugriffsebene). Mit RBAC können Sie keinen Zugriff auf Datenobjekte wie einen bestimmten Container oder eine Dateifreigabe gewähren. Sie können jedoch RBAC verwenden, um Zugriff auf die Speicherkontoschlüssel zu erteilen, mit deren Hilfe anschließend die Datenobjekte gelesen werden können.
 
-### <a name="securing-access-using-shared-access-signatures"></a>Schützen des Zugriffs mit Shared Access Signatures 
+### <a name="securing-access-using-shared-access-signatures"></a>Schützen des Zugriffs mit Shared Access Signatures
 
 Sie können Datenobjekte mithilfe von Shared Access Signatures und gespeicherten Zugriffsrichtlinien schützen. Eine Shared Access Signature (SAS) ist eine Zeichenfolge mit einem Sicherheitstoken, die an den URI für ein Objekt angefügt werden kann. Mit diesem URI können Sie den Zugriff auf bestimmte Speicherobjekte delegieren und Einschränkungen festlegen, beispielsweise Berechtigungen und den Datums- und Uhrzeitbereich für den Zugriff. Dieses Feature bietet umfangreiche Funktionen. Ausführliche Informationen finden Sie unter [Using Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) (Verwenden von Shared Access Signatures (SAS)).
 
 ### <a name="public-access-to-blobs"></a>Öffentlicher Zugriff auf Blobs
 
-Mit dem Blob-Dienst können Sie öffentlichen Zugriff auf einen Container und seine Blobs oder auf ein bestimmtes Blob erteilen. Wenn Sie einen Container oder ein Blob als öffentliche Ressource konfigurieren, kann jeder Benutzer anonym und ohne Authentifizierung drauf zugreifen. Diese Vorgehensweise käme beispielsweise bei einer Website mit Bildern, Videos oder Dokumenten aus Blob Storage zum Einsatz. Weitere Informationen finden Sie unter [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Verwalten des anonymen Lesezugriffs auf Container und Blobs). 
+Mit dem Blob-Dienst können Sie öffentlichen Zugriff auf einen Container und seine Blobs oder auf ein bestimmtes Blob erteilen. Wenn Sie einen Container oder ein Blob als öffentliche Ressource konfigurieren, kann jeder Benutzer anonym und ohne Authentifizierung drauf zugreifen. Diese Vorgehensweise käme beispielsweise bei einer Website mit Bildern, Videos oder Dokumenten aus Blob Storage zum Einsatz. Weitere Informationen finden Sie unter [Manage anonymous read access to containers and blobs](../blobs/storage-manage-access-to-resources.md) (Verwalten des anonymen Lesezugriffs auf Container und Blobs).
 
 ## <a name="encryption"></a>Verschlüsselung
 
-Für die Storage-Dienste stehen verschiedene grundlegende Verschlüsselungsarten zur Verfügung. 
+Für die Storage-Dienste stehen verschiedene grundlegende Verschlüsselungsarten zur Verfügung.
 
-### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten 
+### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
 
-Bei einem Azure Storage-Konto können Sie die Speicherdienstverschlüsselung (Storage Service Encryption, SSE) entweder für den Files-Dienst (Vorschauversion) oder den Blob-Dienst aktivieren. Wenn SSE aktiviert ist, werden alle Daten, die in den entsprechenden Dienst geschrieben werden, vor dem Schreibvorgang verschlüsselt. Beim Lesen der Daten werden sie vor der Rückgabe entschlüsselt. 
+Bei einem Azure Storage-Konto können Sie die Speicherdienstverschlüsselung (Storage Service Encryption, SSE) entweder für den Files-Dienst (Vorschauversion) oder den Blob-Dienst aktivieren. Wenn SSE aktiviert ist, werden alle Daten, die in den entsprechenden Dienst geschrieben werden, vor dem Schreibvorgang verschlüsselt. Beim Lesen der Daten werden sie vor der Rückgabe entschlüsselt.
 
 ### <a name="client-side-encryption"></a>Clientseitige Verschlüsselung
 
-Die Speicherclientbibliotheken enthalten Methoden, die Sie zum programmgesteuerten Verschlüsseln von Daten aufrufen können, bevor Sie sie vom Client an Azure senden. Sie werden verschlüsselt gespeichert, d.h. sie sind auch im Ruhezustand verschlüsselt. Beim Einlesen der Daten entschlüsseln Sie die Informationen nach ihrem Erhalt. 
+Die Speicherclientbibliotheken enthalten Methoden, die Sie zum programmgesteuerten Verschlüsseln von Daten aufrufen können, bevor Sie sie vom Client an Azure senden. Sie werden verschlüsselt gespeichert, d.h. sie sind auch im Ruhezustand verschlüsselt. Beim Einlesen der Daten entschlüsseln Sie die Informationen nach ihrem Erhalt.
 
 ### <a name="encryption-in-transit-with-azure-file-shares"></a>Verschlüsselung während der Übertragung mit Azure-Dateifreigaben
 
@@ -151,27 +151,27 @@ Ausführlichere Informationen zum Schützen der Speicherkonten und zur Verschlü
 
 ## <a name="replication"></a>Replikation
 
-Um die Stabilität Ihrer Daten sicherzustellen, können mit Azure Storage mehrere Kopien Ihrer Daten gespeichert (und verwaltet) werden. Dieses Konzept wird Replikation oder manchmal auch Redundanz genannt. Beim Einrichten Ihres Speicherkontos wählen Sie einen Replikationstyp aus. In den meisten Fällen kann diese Einstellung nach der Einrichtung des Speicherkontos angepasst werden. 
+Um die Stabilität Ihrer Daten sicherzustellen, können mit Azure Storage mehrere Kopien Ihrer Daten gespeichert (und verwaltet) werden. Dieses Konzept wird Replikation oder manchmal auch Redundanz genannt. Beim Einrichten Ihres Speicherkontos wählen Sie einen Replikationstyp aus. In den meisten Fällen kann diese Einstellung nach der Einrichtung des Speicherkontos angepasst werden.
 
-Alle Speicherkonten enthalten **lokal redundanten Speicher** (Locally Redundant Storage, LRS). Das bedeutet, dass drei Kopien Ihrer Daten von Azure Storage in dem Rechenzentrum verwaltet werden, das bei der Einrichtung des Speicherkontos angegeben wurde. Wenn Änderungen an einer Kopie committet werden, werden die anderen beiden Kopien aktualisiert, bevor eine Erfolgsmeldung zurückgegeben wird. Das bedeutet, dass die drei Replikate stets synchron sind. Darüber hinaus befinden sich die drei Kopien in separaten Fehler- und Upgradedomänen. Ihre Daten sind daher verfügbar, auch wenn bei einem Speicherknoten, in dem Ihre Daten gespeichert sind, ein Fehler auftritt oder der Knoten für die Aktualisierung offline geschaltet wird. 
+Alle Speicherkonten umfassen **lokal redundanten Speicher (LRS)**, der darauf ausgelegt ist, für Objekte eine Dauerhaftigkeit von mindestens 99,999999999 Prozent (elf Neunen) in einem bestimmten Jahr bereitzustellen. Das bedeutet, dass mehrere Kopien Ihrer Daten von Azure Storage in dem Rechenzentrum verwaltet werden, das bei der Einrichtung des Speicherkontos angegeben wurde. Wenn Änderungen an einer Kopie committet werden, werden alle anderen Kopien aktualisiert, bevor eine Erfolgsmeldung zurückgegeben wird. Das bedeutet, dass die Replikate stets synchron sind. Darüber hinaus befinden sich die Kopien in separaten Fehler- und Upgradedomänen. Ihre Daten sind daher verfügbar, auch wenn bei einem Speicherknoten, in dem Ihre Daten gespeichert sind, ein Fehler auftritt oder der Knoten für die Aktualisierung offline geschaltet wird.
 
 **Lokal redundanter Speicher (LRS)**
 
-Wie oben erläutert, sind bei LRS drei Kopien Ihrer Daten in einem einzelnen Rechenzentrum gespeichert. Dadurch wird das Problem umgangen, dass Daten nicht mehr verfügbar sind, wenn bei einem Speicherknoten ein Fehler auftritt oder der Speicherknoten für die Aktualisierung offline geschaltet wird. Das Problem, dass ein gesamtes Rechenzentrum ausfällt, wird jedoch nicht behoben.
+Wie oben erläutert, sind bei LRS mehrere Kopien Ihrer Daten in einem einzelnen Rechenzentrum gespeichert. Dadurch wird das Problem umgangen, dass Daten nicht mehr verfügbar sind, wenn bei einem Speicherknoten ein Fehler auftritt oder der Speicherknoten für die Aktualisierung offline geschaltet wird. Das Problem, dass ein gesamtes Rechenzentrum ausfällt, wird jedoch nicht behoben.
 
 **Zonenredundant Speicher (Zone Redundant Storage, ZRS)**
 
-Der zonenredundante Speicher (ZRS) speichert drei lokale Kopien Ihrer Daten sowie einen weiteren Satz mit drei Kopien Ihrer Daten. Der zweite Satz mit drei Kopien wird asynchron in Rechenzentren in ein oder zwei Regionen repliziert. Beachten Sie, dass ZRS nur für Blockblobs in allgemeinen Speicherkonten verfügbar ist. Sobald Sie Ihr Speicherkonto erstellt und ZRS ausgewählt haben, ist außerdem die Wahl eines anderen Replikationstyps nicht mehr möglich.
+Zonenredundanter Speicher (ZRS) ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von mindestens 99,9999999999 Prozent (zwölf Neunen) in einem bestimmten Jahr bereitzustellen, indem lokale Kopien Ihrer Daten sowie ein weiterer Satz von Kopieren Ihrer Daten gespeichert wird. Der zweite Satz der Kopien wird asynchron in Rechenzentren in ein oder zwei Regionen repliziert. Beachten Sie, dass ZRS nur für Blockblobs in allgemeinen Speicherkonten verfügbar ist. Sobald Sie Ihr Speicherkonto erstellt und ZRS ausgewählt haben, ist außerdem die Wahl eines anderen Replikationstyps nicht mehr möglich.
 
-ZRS-Konten bieten eine höhere Stabilität als LRS, für ZRS-Konten stehen jedoch keine Metrik- oder Protokollierungsfunktionen zur Verfügung. 
+ZRS-Konten bieten eine höhere Stabilität als LRS, für ZRS-Konten stehen jedoch keine Metrik- oder Protokollierungsfunktionen zur Verfügung.
 
 **Georedundanter Speicher (GRS)**
 
-Georedundanter Speicher (Geo-Redundant Storage, GRS) speichert die drei lokalen Kopien ihrer Daten in einer primären Region sowie einen weiteren Satz mit drei Kopien Ihrer Daten in einer sekundären Region, die Hunderte Kilometer von der primären Region entfernt liegt. Im Falle eines Ausfalls in der primären Region wird für Azure Storage ein Failover auf die sekundäre Region ausgeführt. 
+Georedundanter Speicher (Geo-Redundant Storage, GRS) ist darauf ausgelegt, für Objekte eine Dauerhaftigkeit von 99,99999999999999 Prozent (16 Neunen) in einem bestimmten Jahr bereitzustellen, indem die lokalen Kopien ihrer Daten in einer primären Region sowie ein weiterer Satz mit Kopien Ihrer Daten in einer sekundären Region gespeichert werden, die Hunderte Kilometer von der primären Region entfernt liegt. Im Falle eines Ausfalls in der primären Region wird für Azure Storage ein Failover auf die sekundäre Region ausgeführt.
 
-**Georedundanter Speicher mit Lesezugriff (RA-GRS)** 
+**Georedundanter Speicher mit Lesezugriff (RA-GRS)**
 
-Georedundanter Speicher mit Lesezugriff verhält sich genau wie GRS, mit der Ausnahme, dass Sie Lesezugriff auf die Daten am sekundären Standort erhalten. Wenn das primäre Rechenzentrum vorübergehend nicht verfügbar ist, können die Daten weiterhin am sekundären Standort gelesen werden. Dies kann sehr nützlich sein. Beispiel: Sie besitzen eine Webanwendung, die in den schreibgeschützten Modus wechselt und auf die sekundäre Kopie verweist. Dadurch ist ein gewisser Zugriff möglich, auch wenn keine Updates verfügbar sind. 
+Georedundanter Speicher mit Lesezugriff verhält sich genau wie GRS, mit der Ausnahme, dass Sie Lesezugriff auf die Daten am sekundären Standort erhalten. Wenn das primäre Rechenzentrum vorübergehend nicht verfügbar ist, können die Daten weiterhin am sekundären Standort gelesen werden. Dies kann sehr nützlich sein. Beispiel: Sie besitzen eine Webanwendung, die in den schreibgeschützten Modus wechselt und auf die sekundäre Kopie verweist. Dadurch ist ein gewisser Zugriff möglich, auch wenn keine Updates verfügbar sind.
 
 > [!IMPORTANT]
 > Die Art der Datenreplikation kann nach der Speicherkontoerstellung geändert werden, sofern bei der Kontoerstellung nicht die ZRS-Option angegeben wurde. Beachten Sie jedoch, dass unter Umständen zusätzlich einmalige Datenübertragungskosten anfallen, wenn Sie von LRS zu GRS oder RA-GRS wechseln.

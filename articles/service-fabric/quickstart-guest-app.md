@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/13/2017
+ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: f63cf0baf7636d0294ced7c2dc6b3112fa9900ee
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 304d22c14f6877138213db14333773f1e293c57a
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Hosten einer Node.js.-Anwendung in Azure Service Fabric
 
@@ -43,7 +43,7 @@ Wählen Sie im Dialogfeld **Neues Projekt** die Option **Cloud > Service Fabric-
 Geben Sie der Anwendung den Namen **MyGuestApp**, und klicken Sie auf **OK**.
 
 >[!IMPORTANT]
->Bei Node.js kann es leicht passieren, dass für Pfade die maximale Zeichenzahl von 260 überschritten wird, die für Windows gilt. Verwenden Sie für das eigentliche Projekt einen kurzen Pfad, z.B. **c:\code\svc1**. Optional können Sie [diese Anweisungen](https://stackoverflow.com/a/41687101/1664231) befolgen, um lange Dateipfade unter Windows 10 zuzulassen.
+>Bei Node.js kann es leicht passieren, dass für Pfade die maximale Zeichenzahl von 260 überschritten wird, die für Windows gilt. Verwenden Sie für das eigentliche Projekt einen kurzen Pfad, z.B. **c:\code\svc1**. Optional können Sie **[diese Anweisungen](https://stackoverflow.com/a/41687101/1664231)** befolgen, um lange Dateipfade unter Windows 10 zuzulassen.
    
 ![Dialogfeld „Neues Projekt“ in Visual Studio][new-project]
 

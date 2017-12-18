@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 6f4c0b11039bbdaf29c90ec2358934dc1c24af90
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c472cf080f8138ec6d0210f3ca4a8b3f3c33e7ae
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -131,7 +131,7 @@ Ein vollständiges Beispiel finden Sie unter [Quickstart: create a data factory 
 ## <a name="triggers"></a>Trigger
 Trigger bieten die zweite Möglichkeit zur Ausführung einer Pipeline. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Data Factory unterstützt derzeit einen Trigger, der eine Pipeline nach einem Realzeitplan aufruft. Es heißt **Planer-Trigger**. Derzeit unterstützt Data Factory keine ereignisbasierten Trigger wie einen Trigger einer Pipelineausführung im Fall eines Dateieingangs.
 
-Pipelines und Trigger haben eine n:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, und ein einzelner Trigger kann mehrere Pipelines starten. In der folgenden JSON-Definition eines Triggers bezieht sich die **Pipelines**-Eigenschaft auf eine Liste der Pipelines, die vom jeweiligen Trigger ausgelöst werden, sowie auf Werte für Pipeline-Parameter.
+Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, oder ein einzelner Trigger kann mehrere Pipelines starten. In der folgenden JSON-Definition eines Triggers bezieht sich die **Pipelines**-Eigenschaft auf eine Liste der Pipelines, die vom jeweiligen Trigger ausgelöst werden, sowie auf Werte für Pipeline-Parameter.
 
 ### <a name="basic-trigger-definition"></a>Grundlegende Triggerdefinition: 
 ```json
@@ -165,7 +165,7 @@ Der Planer-Trigger führt Pipelines nach einem Realzeitplan aus. Dieser Trigger 
 ### <a name="scheduler-trigger-json-definition"></a>JSON-Definition für Planer-Trigger
 Wenn Sie einen Planer-Trigger erstellen, können Sie die Zeitplanung und Wiederholung mithilfe von JSON wie im Beispiel in diesem Abschnitt gezeigt festlegen. 
 
-Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in der Triggerdefinition einen Pipelineverweis auf die jeweilige Pipeline. Pipelines und Trigger haben eine n:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten. Derselbe Trigger kann mehrere Pipelines starten.
+Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in der Triggerdefinition einen Pipelineverweis auf die jeweilige Pipeline. Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten.
 
 ```json
 {

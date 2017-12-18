@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure Automation | Microsoft-Dokumentation
 description: "Dieser Artikel enthält eine Übersicht über den Azure Automation-Dienst, und es werden das Design und die Implementierungsdetails beschrieben, die als Vorbereitung für die Nutzung des Angebots über Azure Marketplace erforderlich sind."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 486e2b2da7a78cdc39743e60f4140fc58275a8fc
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 2a57b60a2222d6e2ea864410edc6a32a0bf0c76c
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Erste Schritte mit Azure Automation
 
@@ -35,7 +35,7 @@ Runbooks, die Sie in Azure ausführen, werden in Automation-Sandboxes ausgeführ
 
 Um die Bereitstellung und Verwaltung von Ressourcen in Ihrem lokalen Datencenter oder anderen Clouddiensten zu automatisieren, können Sie nach dem Erstellen eines Automation-Kontos Computer für die Ausführung der [HRW-Rolle (Hybrid Runbook Worker)](automation-hybrid-runbook-worker.md) festlegen.  Für jeden HRW ist der Microsoft-Verwaltungs-Agent mit einer Verbindung mit einem Log Analytics-Arbeitsbereich und einem Automation-Konto erforderlich.  Log Analytics wird verwendet, um den Bootstrap-Vorgang für die Installation durchzuführen, den Microsoft-Verwaltungs-Agent zu verwalten und die Funktion des HRW zu überwachen.  Die Übermittlung von Runbooks und die Anweisung zu ihrer Ausführung erfolgt durch Azure Automation.
 
-Sie können mehrere HRW-Instanzen bereitstellen, um eine hohe Verfügbarkeit für Ihre Runbooks zu erzielen, einen Lastenausgleich für Runbookaufträge durchzuführen und diese in einigen Fällen fest bestimmten Workloads oder Umgebungen zuzuordnen.  Microsoft Monitoring Agent auf dem HRW initiiert die Kommunikation mit dem Automation-Dienst über den TCP-Port 443, und es gelten keine Firewallanforderungen für eingehenden Datenverkehr.  Wenn ein Runbook auf einem HRW in der Umgebung ausgeführt wird und damit Verwaltungsaufgaben für andere Computer oder Dienste in der Umgebung durchgeführt werden sollen, benötigt das Runbook unter Umständen Zugriff auf weitere Ports.  Falls es gemäß Ihren IT-Sicherheitsrichtlinien unzulässig ist, dass Computer in Ihrem Netzwerk eine Internetverbindung herstellen, hilft Ihnen der Artikel zum [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) weiter. Das OMS-Gateway fungiert als Proxy für den HRW, um den Auftragsstatus zu erfassen und Konfigurationsinformationen für Ihr Automation-Konto zu empfangen.
+Sie können mehrere HRW-Instanzen bereitstellen, um Hochverfügbarkeit für Ihre Runbooks zu erzielen, einen Lastenausgleich für Runbookaufträge durchzuführen und diese in einigen Fällen fest bestimmten Workloads oder Umgebungen zuzuordnen.  Microsoft Monitoring Agent auf dem HRW initiiert die Kommunikation mit dem Automation-Dienst über den TCP-Port 443, und es gelten keine Firewallanforderungen für eingehenden Datenverkehr.  Wenn ein Runbook auf einem HRW in der Umgebung ausgeführt wird und damit Verwaltungsaufgaben für andere Computer oder Dienste in der Umgebung durchgeführt werden sollen, benötigt das Runbook unter Umständen Zugriff auf weitere Ports.  Falls es gemäß Ihren IT-Sicherheitsrichtlinien unzulässig ist, dass Computer in Ihrem Netzwerk eine Internetverbindung herstellen, hilft Ihnen der Artikel zum [OMS-Gateway](../log-analytics/log-analytics-oms-gateway.md) weiter. Das OMS-Gateway fungiert als Proxy für den HRW, um den Auftragsstatus zu erfassen und Konfigurationsinformationen für Ihr Automation-Konto zu empfangen.
 
 Runbooks, die auf einem HRW ausgeführt werden, werden im Kontext des lokalen Systemkontos auf dem Computer ausgeführt. Dies ist der empfohlene Sicherheitskontext für die Durchführung von administrativen Aktionen auf dem lokalen Windows-Computer. Falls mit dem Runbook Aufgaben für Ressourcen außerhalb des lokalen Computers ausgeführt werden sollen, müssen Sie unter Umständen sichere Anmeldeinformationen für das Automation-Konto definieren, auf das Sie vom Runbook aus zugreifen können und das Sie zum Authentifizieren gegenüber der externen Ressource verwenden. Sie können in Ihrem Runbook Assets vom Typ [Anmeldeinformationen](automation-credentials.md), [Zertifikat](automation-certificates.md) und [Verbindung](automation-connections.md) mit Cmdlets verwenden, die Ihnen das Angeben von Anmeldeinformationen zur Authentifizierung ermöglichen.
 
@@ -112,7 +112,7 @@ In der folgenden Tabelle sind die unterschiedlichen Authentifizierungsmethoden f
 Der Abschnitt **Vorgehensweise/Authentifizierung und Sicherheit** enthält hilfreiche Artikel mit einer Übersicht und Implementierungsschritten zum Konfigurieren der Authentifizierung für diese Umgebungen – mit einem vorhandenen oder neuen Konto, das Sie speziell für diese Umgebung festlegen.  Für das ausführende Azure-Konto und das klassische ausführende Konto wird im Thema [Update Automation Run As account using PowerShell](automation-create-runas-account.md) (Aktualisieren des ausführenden Automation-Kontos) beschrieben, wie Sie Ihr vorhandenes Automation-Konto mit den ausführenden Konten über das Portal oder per PowerShell aktualisieren, falls die ursprüngliche Konfiguration nicht mit einem ausführenden bzw. klassischen ausführenden Konto durchgeführt wurde. Wenn Sie ein ausführendes und ein klassisches ausführendes Konto mit einem von Ihrer Unternehmenszertifizierungsstelle (CA) ausgestellten Zertifikat erstellen möchten, lesen Sie diesen Artikel, um zu erfahren, wie Sie die Konten mit dieser Konfiguration erstellen.     
  
 ## <a name="network-planning"></a>Netzwerkplanung
-Damit der Hybrid Runbook Worker eine Verbindung mit Microsoft Operations Management Suite (OMS) herstellen und sich bei dem Dienst registrieren kann, benötigt er Zugriff auf die unten angegebene Portnummer und die angegebenen URLs.  Dies ist zusätzlich zu den [für Microsoft Monitoring Agent benötigten Ports und URLs](../log-analytics/log-analytics-windows-agents.md#network) für die Herstellung einer Verbindung mit OMS erforderlich. Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem OMS-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist.
+Damit der Hybrid Runbook Worker eine Verbindung mit Microsoft Operations Management Suite (OMS) herstellen und sich bei dem Dienst registrieren kann, benötigt er Zugriff auf die unten angegebene Portnummer und die angegebenen URLs.  Dies ist zusätzlich zu den [für Microsoft Monitoring Agent benötigten Ports und URLs](../log-analytics/log-analytics-windows-agent.md) für die Herstellung einer Verbindung mit OMS erforderlich. Wenn Sie einen Proxyserver für die Kommunikation zwischen dem Agent und dem OMS-Dienst verwenden, müssen Sie sicherstellen, dass auf die entsprechenden Ressourcen zugegriffen werden kann. Wenn Sie eine Firewall verwenden, um den Zugriff auf das Internet einzuschränken, müssen Sie die Firewall so konfigurieren, dass der Zugriff möglich ist.
 
 Nachfolgend sind der Port und die URLs aufgeführt, die für die Kommunikation zwischen Hybrid Runbook Worker und Automation erforderlich sind.
 
@@ -161,7 +161,7 @@ Die empfohlene Methode zum Integrieren von Automation ist die Auswahl des Angebo
 
 2. Klicken Sie auf **Neu**.<br><br> ![Auswählen der Option „Neu“ im Azure-Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 
-3. Suchen Sie nach **Automation**, und wählen Sie dann in den Suchergebnissen die Option **Automation + Control**.<br><br> ![Suchen nach und Auswählen von „Automation + Control“ über den Marketplace](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)<br>   
+3. Suchen Sie nach **Automation**, und wählen Sie dann in den Suchergebnissen die Option **Automation + Control**.<br><br> ![Suchen nach und Auswählen von „Automation & Control“ über den Marketplace](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)<br>   
 
 4. Klicken Sie nach dem Durchlesen der Beschreibung für das Angebot auf **Erstellen**.  
 

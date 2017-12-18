@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: de0c83e4c99894f98de18eb089ce11cdf5c70f2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 26d8399ce4ea23b51677def85b3732468dcbc02f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: Verbundener Visual Studio-Dienst (Vorschauversion)
 
@@ -119,7 +119,7 @@ In diesem Dokument haben Sie Folgendes gelernt:
 
 Nachdem Sie die verbundenen Dienste nun für Ihr Azure Cosmos DB-Konto eingerichtet haben, können Sie mit einem Tutorial fortfahren, um mit der Entwicklung für Ihre Lösung zu beginnen:
 
-* [Entwickeln mit der DocumentDB-API in .NET](tutorial-develop-documentdb-dotnet.md)
+* [Azure Cosmos DB: Entwickeln mit der DocumentDB-API in .NET](tutorial-develop-documentdb-dotnet.md)
 * [Azure Cosmos DB: DocumentDB-API – Tutorial zu den ersten Schritten](documentdb-get-started.md)
 * Möchten Sie Azure Cosmos DB nutzen, um Skalierungs- und Leistungstests durchzuführen? Weitere Informationen finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
 * Informieren Sie sich über das [Überwachen eines Azure Cosmos DB-Kontos](monitor-accounts.md).

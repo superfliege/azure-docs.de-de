@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/18/2017
+ms.date: 12/13/2017
 ms.author: yurid
-ms.openlocfilehash: e68ec1b7d82a0e1d98953521b05f423044e6d2f2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 71dcafab92a9045388c2e602c0dc297aed32e527
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptive Anwendungssteuerungen in Azure Security Center (Vorschauversion)
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
@@ -33,16 +33,13 @@ Mit adaptiven Anwendungssteuerungen lässt sich steuern, welche Anwendungen auf 
 - Verhinderung der Verwendung bestimmter Softwaretools, die in Ihrer Organisation nicht zulässig sind
 - Steuerung des Zugriffs auf sensible Daten im Rahmen der App-Nutzung durch die IT-Abteilung
 
-> [!NOTE]
-> Adaptive Anwendungssteuerungen stehen für Azure Security Center Standard-Kunden als eingeschränkte öffentliche Vorschauversion zur Verfügung. Wenn Sie die Vorschauversion ausprobieren möchten, senden Sie uns eine [E-Mail](mailto:ASC_appcontrol@microsoft.com) mit Ihren Abonnement-IDs.
-
 ## <a name="how-to-enable-adaptive-application-controls"></a>Aktivieren adaptiver Anwendungssteuerungen
 Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung in konfigurierten Ressourcengruppen zulässig ist. Dieses Feature steht nur für Windows-Computer (alle Versionen, klassisch oder Azure Resource Manager) zur Verfügung. Gehen Sie wie folgt vor, um das Anwendungswhitelisting in Security Center zu konfigurieren:
 
 1.  Öffnen Sie das Dashboard **Security Center**, und klicken Sie auf **Übersicht**.
 2.  Unter **Erweiterter Cloudschutz** zeigt die Kachel **Adaptive application controls** (Adaptive Anwendungssteuerungen) die Anzahl virtueller Computer, für die die Steuerung derzeit aktiviert ist (relativ zur Gesamtanzahl virtueller Computer). Auf dieser Kachel sehen Sie auch, wie viele Probleme in der letzten Woche gefunden wurden: 
 
-    ![Adaptive Anwendungssteuerung](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
+    ![Adaptive Anwendungssteuerungen](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
 
 3. Klicken Sie auf die Kachel **Adaptive Anwendungssteuerung**, um weitere Optionen anzuzeigen.
 
@@ -72,7 +69,7 @@ Sehen Sie sich unter **VMs auswählen** die Liste mit den empfohlenen virtuellen
 
 - **NAME**: Der vollständige Anwendungspfad.
 - **PROZESSE**: Die Anzahl von Anwendungen innerhalb des jeweiligen Pfads.
-- **ALLGEMEIN**: „TRUE“ gibt an, dass diese Prozesse auf den meisten virtuellen Computern in dieser Ressourcengruppe ausgeführt wurden.
+- **ALLGEMEIN**: „Ja“ gibt an, dass diese Prozesse auf den meisten virtuellen Computern in dieser Ressourcengruppe ausgeführt wurden.
 - **SICHERHEITSLÜCKE**: Ein Warnsymbol gibt an, ob die Anwendungen von einem Angreifer zur Umgehung des Anwendungswhitelistings verwendet werden können. Es empfiehlt sich, diese Anwendungen vor der Genehmigung zu überprüfen. 
 
 Klicken Sie nach Abschluss Ihrer Auswahl auf die Schaltfläche **Erstellen**. Die Anwendungssteuerung wird standardmäßig immer im *Überwachungsmodus* aktiviert. Nachdem Sie sich vergewissern haben, dass Ihre Whitelist keine nachteiligen Auswirkungen auf Ihre Workload hat, können Sie in den *Erzwingungsmodus* wechseln.

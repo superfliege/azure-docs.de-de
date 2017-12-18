@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
-ms.openlocfilehash: 76f69946724b5297b1f9a1f715819c69c4a4a51d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb4e9150c1069d48399fb217f865b294ccd317dc
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="oms-architecture"></a>OMS-Architektur
 [Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) ist eine Sammlung von cloudbasierten Diensten für die Verwaltung von lokalen Umgebungen und Cloudumgebungen.  In diesem Artikel werden die verschiedenen lokalen und cloudbasierten Komponenten von OMS und ihre allgemeine Cloud Computing-Architektur beschrieben.  Weitere Informationen finden Sie in der Dokumentation der jeweiligen Dienste.
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="log-analytics"></a>Log Analytics
 Alle von [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) gesammelten Daten werden im OMS-Repository gespeichert, das in Azure gehostet wird.  Verbundene Quellen generieren Daten, die im OMS-Repository gesammelt werden.  Derzeit werden drei Arten von verbundenen Quellen unterstützt.
 
-* Ein installierter Agent auf einem [Windows](../log-analytics/log-analytics-windows-agents.md)- oder [Linux](../log-analytics/log-analytics-linux-agents.md)-Computer, der direkt mit OMS verbunden ist.
+* Ein installierter Agent auf einem [Windows](../log-analytics/log-analytics-windows-agent.md)- oder [Linux](../log-analytics/log-analytics-linux-agents.md)-Computer, der direkt mit OMS verbunden ist.
 * Eine Verwaltungsgruppe von System Center Operations Manager (SCOM), die [mit Log Analytics verbunden ist](../log-analytics/log-analytics-om-agents.md) .  SCOM-Agents kommunizieren weiterhin mit Verwaltungsservern, die Ereignisse und Leistungsdaten an Log Analytics weiterleiten.
 * Ein [Azure-Speicherkonto](../log-analytics/log-analytics-azure-storage.md), das [Azure-Diagnosedaten](../cloud-services/cloud-services-dotnet-diagnostics.md) von einer Workerrolle, einer Webrolle oder einem virtuellen Computer in Azure sammelt.
 
@@ -50,9 +50,9 @@ Geschützte Daten in [Azure Backup](http://azure.microsoft.com/documentation/ser
 
 Azure Backup verfügt über drei grundlegende Szenarios.
 
-* Windows-Computer mit Azure Backup-Agent.  Auf diese Weise können Sie Dateien und Ordner von einem Windows-Server oder -Client direkt in Ihrem Azure Backup-Tresor sichern.  
-* System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Auf diese Weise können Sie DPM oder Microsoft Azure Backup Server zusätzlich zu Anwendungsworkloads wie SQL und SharePoint zum Sichern von Dateien und Ordnern im lokalen Speicher nutzen und diese dann in den Azure Backup-Tresor replizieren.
-* Erweiterungen für virtuelle Azure-Computer.  Auf diese Weise können Sie virtuelle Azure-Computer in Ihrem Azure Backup-Tresor sichern.
+* Windows-Computer mit Azure Backup-Agent.  Auf diese Weise können Sie Dateien und Ordner von einem Windows-Server oder -Client direkt in Ihrem Azure-Sicherungstresor sichern.  
+* System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Auf diese Weise können Sie DPM oder Microsoft Azure Backup Server zusätzlich zu Anwendungsworkloads wie SQL und SharePoint zum Sichern von Dateien und Ordnern im lokalen Speicher nutzen und diese dann in den Azure-Sicherungstresor replizieren.
+* Erweiterungen für virtuelle Azure-Computer.  Auf diese Weise können Sie virtuelle Azure-Computer in Ihrem Azure-Sicherungstresor sichern.
 
 Azure Backup bietet eine OMS-Lösung, die Statistiken und Links zum Starten des Azure-Portals für beliebige Vorgänge anzeigt.
 

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/04/2017
+ms.date: 12/08/2017
 ms.author: owend
-ms.openlocfilehash: 224ecbb80e8fc5b3f1a32e42eda7ec5452e9e553
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
@@ -116,7 +116,7 @@ Weitere Informationen zur Sicherheit in Azure finden Sie im [Microsoft Trust Cen
 ## <a name="supports-the-latest-client-tools"></a>Unterstützung der neuesten Clienttools
 ![Datenvisualisierungen](./media/analysis-services-overview/aas-overview-clients.png)
 
-Moderne Tools zur Untersuchung und Visualisierung von Daten wie Power BI, Excel und Drittanbietertools liefern Benutzern hochgradig interaktive und visuell aufbereitete Einblicke in Ihre Modelldaten.
+Moderne Tools zur Untersuchung und Visualisierung von Daten wie Power BI, Excel, SQL Server 2017 Reporting Services sowie Drittanbietertools werden unterstützt und liefern Benutzern hochgradig interaktive und visuell aufbereitete Einblicke in Ihre Modelldaten. 
 
 Clients nutzen [Clientbibliotheken](analysis-services-data-providers.md) vom Typ MSOLAP, AMO oder ADOMD, um eine Verbindung mit Analysis Services-Servern herzustellen. Microsoft-Clientanwendungen wie Power BI Desktop und Excel installieren alle drei Clientbibliotheken. Abhängig von der Version und der Updatehäufigkeit handelt es sich dabei jedoch unter Umständen nicht um die neuesten, von Azure Analysis Services benötigten Versionen. Dies gilt auch für benutzerdefinierte Anwendungen oder andere Schnittstellen wie AsCmd, TOM, ADOMD.NET. Für diese Anwendungen müssen die Bibliotheken in der Regel manuell als Teil eines Pakets installiert werden.
 

@@ -3,7 +3,7 @@ title: "Aufrufen eines Azure Automation-Runbooks über eine Log Analytics-Warnun
 description: "In diesem Artikel erfahren Sie, wie Sie ein Automation-Runbook über eine Microsoft OMS Log Analytics-Warnung aufrufen."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: jwhit
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 10b445f8fcaa80182119e47f37ffb11240a46869
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 0c0b15f33a177afc70a3662c5bd008eb236ed0d6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="calling-an-azure-automation-runbook-from-an-oms-log-analytics-alert"></a>Aufrufen eines Azure Automation-Runbooks über eine OMS Log Analytics-Warnung
 
@@ -43,7 +43,7 @@ Falls Sie das Angebot „Automation & Control“ installiert und in Ihrem OMS-Ar
 
 ## <a name="characteristics-of-a-runbook-for-both-options"></a>Merkmale eines Runbooks (für beide Optionen)
 
-Beide Methoden, mit denen das Runbook über die Log Analytics-Warnung aufgerufen werden kann, haben Merkmale, mit denen Sie vertraut sein müssen, bevor Sie Ihre Warnungsregeln konfigurieren.
+Beide Methoden, mit denen das Runbook über die Log Analytics-Warnung aufgerufen werden kann, haben Merkmale, mit denen Sie vertraut sein müssen, bevor Sie Ihre Warnungsregeln konfigurieren. Die Warnungsdaten werden im JSON-Format in einer einzelnen Eigenschaft mit dem Namen **SearchResult** angegeben. Dieses Format gilt für Runbook- und Webhookaktionen mit einer Standardnutzlast. Für Webhookaktionen mit benutzerdefinierten Nutzlasten (einschließlich **IncludeSearchResults:True** in **RequestBody**) lautet die Eigenschaft **SearchResults**.
 
 * Sie benötigen einen Runbook-Eingabeparameter namens **WebhookData** vom Typ **Objekt**. Dieser kann obligatorisch oder optional sein. Mithilfe dieses Eingabeparameters übergibt die Warnung die Suchergebnisse an das Runbook.
 
@@ -61,6 +61,7 @@ Beide Methoden, mit denen das Runbook über die Log Analytics-Warnung aufgerufen
     ```
 
     *$SearchResult* ist ein Array mit Objekten, wobei jedes Objekt die Felder mit Werten eines einzelnen Suchergebnisses enthält.
+
 
 ## <a name="example-walkthrough"></a>Exemplarische Vorgehensweise
 
@@ -80,6 +81,9 @@ $SearchResult.SvcDisplayName_CF
 Wenn der Dienst beendet wird, erkennt die Warnungsregel in Log Analytics eine Übereinstimmung, löst das Runbook aus und sendet den Warnungskontext an das Runbook. Das Runbook überprüft, ob der Dienst beendet wurde. Wenn ja, wird versucht, den Dienst zu starten, und es wird überprüft, ob er richtig gestartet wurde. Danach gibt das Runbook die Ergebnisse aus.     
 
 Falls Ihr Automation-Konto nicht mit Ihrem OMS-Arbeitsbereich verknüpft ist, können Sie die Warnungsregel alternativ mit einer Webhookaktion konfigurieren, um das Runbook auszulösen, und das Runbook so konfigurieren, dass es die JSON-Zeichenfolge konvertiert und nach \*.SearchResult\* filtert (siehe Anleitung weiter oben).    
+
+>[!NOTE]
+> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Webhooknutzlast geändert.  Details des Formats werden in [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

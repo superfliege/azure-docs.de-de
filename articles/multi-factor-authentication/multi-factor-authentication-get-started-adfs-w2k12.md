@@ -4,7 +4,7 @@ description: In diesem Artikel werden die ersten Schritte mit Azure Multi-Factor
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 57208068-1e55-45b6-840f-fdcd13723074
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,14 +15,14 @@ ms.date: 08/25/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0533d1ee953a8284e76d6edd15333ad844fea9c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 60e6737533e946512ae9b8e1e251e7bd6c9d0fe5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-in-windows-server"></a>Konfigurieren von Azure Multi-Factor Authentication-Server zur Verwendung mit AD FS unter Windows Server
-Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden und Cloudressourcen oder lokale Ressourcen schützen möchten, können Sie Azure Multi-Factor Authentication-Server für AD FS konfigurieren. Mit dieser Konfiguration wird die Überprüfung in zwei Schritten für Endpunkte von hohem Wert ausgelöst.
+Wenn Sie Active Directory-Verbunddienste (AD FS) verwenden und Cloudressourcen oder lokale Ressourcen schützen möchten, können Sie Azure Multi-Factor Authentication-Server für AD FS konfigurieren. Mit dieser Konfiguration wird die zweistufige Überprüfung für Endpunkte von hohem Wert ausgelöst.
 
 In diesem Artikel wird die Verwendung von Azure Multi-Factor Authentication-Server mit AD FS unter Windows Server 2012 R2 oder Windows Server 2016 beschrieben. Weitere Informationen finden Sie unter [Sichern von Cloud- und lokalen Ressourcen mithilfe von Azure Multi-Factor Authentication-Server mit AD FS 2.0](multi-factor-authentication-get-started-adfs-adfs2.md).
 
@@ -122,7 +122,7 @@ Falls Sie keine Kombination aus Benutzername und Kennwort verwenden möchten, ge
 Führen Sie schließlich das Skript „\Programme\Multi-Factor Authentication Server\Register-MultiFactorAuthenticationAdfsAdapter.ps1“ in PowerShell aus, um den Adapter zu registrieren. Der Adapter wird als "WindowsAzureMultiFactorAuthentication" registriert. Starten Sie den AD FS-Dienst neu, damit die Registrierung wirksam wird.
 
 ## <a name="secure-azure-ad-resources-using-ad-fs"></a>Schützen von Azure AD-Ressourcen mit AD FS
-Zum Schützen Ihrer Cloudressource richten Sie eine Anspruchsregel ein, damit Active Directory-Verbunddienste den multipleauthn-Anspruch ausgibt, wenn ein Benutzer die Überprüfung in zwei Schritten erfolgreich durchführt. Dieser Anspruch wird an Azure AD übergeben. Die Schritte werden im folgenden Verfahren veranschaulicht:
+Zum Schützen Ihrer Cloudressource richten Sie eine Anspruchsregel ein, damit Active Directory-Verbunddienste (AD FS)den multipleauthn-Anspruch ausgibt, wenn ein Benutzer die zweistufige Überprüfung erfolgreich durchführt. Dieser Anspruch wird an Azure AD übergeben. Die Schritte werden im folgenden Verfahren veranschaulicht:
 
 1. Öffnen Sie die AD FS-Verwaltung.
 2. Wählen Sie auf der linken Seite die Option **Vertrauensstellungen der vertrauenden Seite**.

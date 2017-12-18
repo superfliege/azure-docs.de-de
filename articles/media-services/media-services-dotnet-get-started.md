@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/31/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: f0be787ba1ccee067fb1d7e6a6554be32f886089
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c66488ce4381a3c5f796aa9826810195b2738769
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-net-sdk"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mit dem .NET SDK
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -86,22 +86,26 @@ Führen Sie folgende Schritte aus, um den Streamingendpunkt zu starten:
 
 Wenn Sie Media Services mit .NET verwenden, müssen Sie die **CloudMediaContext**-Klasse für die meisten Media Services-Programmieraufgaben verwenden, z.B. für das Herstellen einer Verbindung mit dem Media Services-Konto, das Erstellen, Aktualisieren, Zugreifen auf und Löschen der folgenden Objekte: Medienobjekte, Objektdateien, Aufträge, Zugriffsrichtlinien, Locators usw.
 
-Überschreiben Sie die Standardklasse des Programms durch den folgenden Code. Im Code wird veranschaulicht, wie die Werte aus der Datei "App.config" gelesen werden und das **CloudMediaContext** -Objekt erstellt wird, um eine Verbindung zu Media Services herzustellen. Weitere Informationen finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
+Überschreiben Sie die Standardklasse des Programms durch den folgenden Code: Im Code wird veranschaulicht, wie die Werte aus der Datei „App.config“ gelesen werden und das **CloudMediaContext**-Objekt erstellt wird, um eine Verbindung mit Media Services herzustellen. Weitere Informationen finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 
 Achten Sie darauf, den Dateinamen und den Pfad zu aktualisieren, unter dem sich Ihre Mediendatei befindet.
 
 Die **Main** -Funktion ruft Methoden auf, die weiter unten in diesem Abschnitt definiert werden.
 
 > [!NOTE]
-> Sie erhalten so lange Kompilierungsfehler, bis Sie Definitionen für alle Funktionen hinzufügen.
+> Sie erhalten so lange Kompilierungsfehler, bis Sie Definitionen für alle Funktionen hinzufügen, die weiter unten in diesem Artikel definiert sind.
 
     class Program
     {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context = null;
 
@@ -109,7 +113,11 @@ Die **Main** -Funktion ruft Methoden auf, die weiter unten in diesem Abschnitt d
         {
         try
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -137,7 +145,7 @@ Die **Main** -Funktion ruft Methoden auf, die weiter unten in diesem Abschnitt d
             Console.ReadLine();
         }
         }
-    }
+    
 
 ## <a name="create-a-new-asset-and-upload-a-video-file"></a>Erstellen eines neuen Medienobjekts und Hochladen einer Videodatei
 
@@ -228,7 +236,7 @@ Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst d
 
 ### <a name="some-details-about-url-formats"></a>Einige Details zu URL-Formaten
 
-Nachdem Sie die Locator erstellt haben, können Sie die URLs erstellen, mit denen Sie die Dateien streamen oder herunterladen möchten. Das Beispiel in diesem Tutorial gibt URLs aus, die Sie den entsprechenden Browsern einfügen können. Dieser Abschnitt enthält kurze Beispiele für verschiedene Formate.
+Nachdem Sie die Locator erstellt haben, können Sie die URLs erstellen, mit denen Sie die Dateien streamen oder herunterladen möchten. Das Beispiel in diesem Tutorial gibt URLs aus, die Sie in den entsprechenden Browsern einfügen können. Dieser Abschnitt enthält kurze Beispiele für verschiedene Formate.
 
 #### <a name="a-streaming-url-for-mpeg-dash-has-the-following-format"></a>Eine Streaming-URL für MPEG DASH hat das folgende Format:
 

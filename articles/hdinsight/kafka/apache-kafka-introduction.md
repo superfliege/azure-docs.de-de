@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: c4e0d792ae8f4c17d53430f49d81d179e56b9722
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 09a661b2a100245dd424e24d8a8ddef56c573b02
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>Einführung in Apache Kafka in HDInsight
 
@@ -63,8 +63,10 @@ Kafka in HDInsight umfasst die folgenden Features:
 
 In diesem Diagramm ist eine typische Kafka-Konfiguration dargestellt, für die Consumergruppen, Partitionierung und Replikation verwendet werden, um eine parallele Ablesung von Ereignissen mit Fehlertoleranz zu ermöglichen. Apache ZooKeeper ist für gleichzeitige, robuste Transaktionen mit geringer Wartezeit ausgelegt, da darüber der Zustand des Kafka-Clusters verwaltet wird. Bei Kafka werden Datensätze in *Themen* gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer rufen Datensätze von Kafka-*Brokern* ab. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Broker. Für jeden Consumer wird eine Partition erstellt, um die parallele Verarbeitung der Streamingdaten zu ermöglichen. Die Replikation wird genutzt, um die Partitionen auf Knoten zu verteilen und für den Schutz vor Ausfällen von Knoten (Brokern) zu sorgen. Eine Partition, die mit einem *(L)* gekennzeichnet ist, ist jeweils die führende Partition. Producer-Datenverkehr wird an die führende Komponente jedes Knotens weitergeleitet, indem der von ZooKeeper verwaltete Zustand verwendet wird.
 
+Jeder Kafka-Broker verwendet Azure Managed Disks. Die Anzahl von Datenträgern wird vom Benutzer festgelegt, und pro Broker können bis zu 16 TB Speicher bereitgestellt werden.
+
 > [!IMPORTANT]
-> Kafka ist sich der zugrunde liegenden Hardware (Rack) im Azure-Rechenzentrum nicht bewusst. Informationen zur Sicherstellung, dass Partitionen für die zugrunde liegende Hardware richtig verteilt sind, finden Sie unter [Konfigurieren von hoher Datenverfügbarkeit (Kafka)](apache-kafka-high-availability.md).
+> Kafka ist sich der zugrunde liegenden Hardware (Rack) im Azure-Rechenzentrum nicht bewusst. Informationen zur Sicherstellung, dass Partitionen für die zugrunde liegende Hardware richtig verteilt sind, finden Sie unter [Konfigurieren von Hochverfügbarkeit (Kafka)](apache-kafka-high-availability.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

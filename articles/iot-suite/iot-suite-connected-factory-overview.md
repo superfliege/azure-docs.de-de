@@ -1,6 +1,6 @@
 ---
 title: "Übersicht über die Lösung für verbundene Factorys – Azure | Microsoft-Dokumentation"
-description: "Enthält eine Beschreibung der vorkonfigurierten Connected Factory-Lösung der Azure IoT Suite."
+description: "Eine Beschreibung der vorkonfigurierten Connected Factory-Lösung von Azure IoT Suite."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 3b56c91accfb6fe6358032e1dd329a931abfc3c1
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: bd68859e3837f7e5adbe911518631cb7abc2c2ce
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>Erste Schritte mit der vorkonfigurierten Connected Factory-Lösung
 
-[Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] von Azure IoT Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Mit der vorkonfigurierten *Connected Factory*-Lösung wird eine Verbindung mit Ihren Industrieanlagen hergestellt und die Überwachung dieser Geräte durchgeführt. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und zum Steigern der Produktivität und Rentabilität während des Betriebs verwenden.
+[Vorkonfigurierte Lösungen][lnk-preconfigured-solutions] von Azure IoT Suite kombinieren mehrere Azure IoT-Dienste, um durchgängige Lösungen bereitzustellen, die allgemeine IoT-Unternehmensszenarien implementieren. Die vorkonfigurierte *Connected Factory*-Lösung stellt eine Verbindung mit Ihren Industrieanlagen her und überwacht sie. Sie können die Lösung zum Analysieren des Datenstroms von Ihren Geräten und zum Steigern der Produktivität und Rentabilität während des Betriebs verwenden.
 
-Dieses Tutorial zeigt, wie Sie die vorkonfigurierte Connected Factory-Lösung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der vorkonfigurierten Lösung kennen. Sie können auf einen Großteil dieser Features über das *Lösungsdashboard* zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
+In diesem Tutorial erfahren Sie, wie Sie die vorkonfigurierte Connected Factory-Lösung bereitstellen. Außerdem lernen Sie die grundlegenden Funktionen der vorkonfigurierten Lösung kennen. Sie können auf einen Großteil dieser Features über das *Lösungsdashboard* zugreifen, das zusammen mit der vorkonfigurierten Lösung bereitgestellt wird:
 
 ![Vorkonfigurierte Connected Factory-Lösung: Dashboard][img-cf-home]
 
@@ -33,8 +33,6 @@ Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Abonnement.
 
 > [!NOTE]
 > Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion][lnk_free_trial].
-> 
-> 
 
 ## <a name="provision-the-solution"></a>Bereitstellen der Lösung
 
@@ -58,19 +56,19 @@ Erwarten Sie Informationen zu Ihrer Lösung, die nicht aufgeführt werden? Sende
 
 ## <a name="scenario-overview"></a>Übersicht über das Szenario
 
-Wenn Sie die vorkonfigurierte Connected Factory-Lösung bereitstellen, verfügt diese bereits über Ressourcen, mit denen Sie ein allgemeines Industrieszenario durchlaufen können. Bei diesem Szenario melden mehrere Werke (Factories), die mit der Lösung verbunden sind, die Datenwerte, die zum Berechnen der Gesamtanlageneffektivität (Overall Equipment Effectiveness, OEE) und der Key Performance Indicators (KPIs) erforderlich sind. Im weiteren Verlauf wird Folgendes vermittelt:
+Wenn Sie die vorkonfigurierte Connected Factory-Lösung bereitstellen, verfügt sie bereits über Ressourcen, mit denen Sie ein allgemeines Industrieszenario durchlaufen können. Bei diesem Szenario melden mehrere Werke (Factories), die mit der Lösung verbunden sind, die Datenwerte, die zum Berechnen der Gesamtanlageneffektivität (Overall Equipment Effectiveness, OEE) und der Key Performance Indicators (KPIs) erforderlich sind. Im weiteren Verlauf wird Folgendes vermittelt:
 
 * Überwachen von Werk, Fertigungsstrecken, OEE von Stationen und KPI-Werten
 * Analysieren der Telemetriedaten, die über diese Geräte mit Azure Time Series Insights generiert werden
-* Reagieren auf Warnungen zum Beheben von Problemen
+* Reagieren auf Alarme zum Beheben von Problemen
 
 Ein wichtiges Merkmal dieses Szenarios: Die Aktionen können alle per Remotezugriff über das Lösungsdashboard ausgeführt werden. Sie benötigen also keinen physischen Zugriff auf die Geräte.
 
 ## <a name="view-the-solution-dashboard"></a>Anzeigen des Lösungsdashboards
 
-Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Dies ist eine hierarchische Darstellung einer globalen Werkskonfiguration. Beispielsweise können Sie OEE und KPIs anzeigen und neue Knoten für Telemetriedaten und Aktionswarnungen veröffentlichen.
+Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Dies ist eine hierarchische Darstellung einer globalen Werkskonfiguration. Beispielsweise können Sie OEE und KPIs anzeigen und neue Knoten für Telemetriedaten und Aktionsalarme veröffentlichen.
 
-1. Wenn die Bereitstellung abgeschlossen ist und auf der Kachel für die vorkonfigurierte Lösung **Bereit** angezeigt wird, wählen Sie **Starten** aus, um eine neue Registerkarte mit dem Portal für die Connected Factory-Lösung zu öffnen.
+1. Wenn die Bereitstellung abgeschlossen ist und auf der Kachel für die vorkonfigurierte Lösung **Bereit** angezeigt wird, klicken Sie auf **Starten**, um eine neue Registerkarte mit dem Portal für die Connected Factory-Lösung zu öffnen.
 
     ![Vorkonfigurierte Lösung starten][img-launch-solution]
 
@@ -80,17 +78,17 @@ Im Lösungsdashboard können Sie die bereitgestellte Lösung verwalten. Dies ist
 
 Im Dashboard werden die folgenden Informationen angezeigt:
 
-* Ein Bereich mit der **Werksliste**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
+* Ein Bereich namens **Factorystandorte**, in dem der Status, der Speicherort und die aktuelle Produktionskonfiguration für die Lösung angezeigt werden. Beim ersten Ausführen der Lösung sind mehrere simulierte Geräte vorhanden. Die Simulation der Fertigungsstrecke besteht aus drei echten OPC UA-Servern (OPC Unified Architecture) pro Fertigungsstrecke zum Durchführen von simulierten Aufgaben und Freigeben von Daten. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
 * Eine **Karte** mit den Standorten der einzelnen Geräte, die mit der Lösung verbunden sind. Für die Lösung kann die Bing Maps-API zum Ausgeben von Informationen auf der Karte verwendet werden. Wenn Ihr Abonnement für die Bing Maps Enterprise-API aktiviert ist, wird dieses Feature automatisch verwendet. Wenn nicht, helfen Ihnen die Informationen zur Verwendung einer dynamischen Karte in den [häufig gestellten Fragen][lnk-faq] weiter.
-* Ein Bereich **Warnungen** zum Anzeigen von Warnungen, die generiert werden, wenn ein Telemetrie- oder OEE/KPI-Wert einen bestimmten Schwellenwert überschreitet.
+* Ein Bereich namens **Alarme** mit Alarmen, die generiert werden, wenn ein Telemetrie- oder OEE-/KPI-Wert einen bestimmten Schwellenwert überschreitet.
 * Ein Bereich **Overall Equipment Effectiveness**, in dem die OEE-Werte für das gesamte Unternehmen oder das jeweils angezeigte Werk, die Fertigungsstrecke oder die Station angegeben werden. Dieser Wert wird über die Stationsansicht auf Unternehmensebene aggregiert. Der OEE-Wert und die Elemente, aus denen dieser Wert besteht, können weiter analysiert werden.
 * Ein Bereich **Key Performance Indicators**, in dem die Anzahl von produzierten Einheiten und der Energieverbrauch des gesamten Unternehmens bzw. des jeweiligen Werks, der Fertigungsstrecke oder der Station angezeigt werden. Diese Werte werden über eine Stationsansicht auf Unternehmensebene aggregiert.
 
 ## <a name="view-factories"></a>Anzeigen von Werken
 
-Im Bereich *Factories* (Werke) werden der geografische Standort aller Werke der Lösung, ihr Status und die aktuelle Produktionskonfiguration angezeigt. Über die Liste mit den Standorten können Sie zu den anderen Ebenen der Lösungshierarchie navigieren. Die Zeilen in der Liste sind Hyperlinks, mit denen Details der Fertigungsstrecken am jeweiligen Standort verlinkt werden. Sie können dann einen Drilldown in die Details der Fertigungsstrecke und auf die Ebene der Stationsanzeige durchführen. Außerdem können Sie einen Filter auf die Liste anwenden.
+Im Bereich *Factorystandorte* werden der geografische Standort aller Werke in der Lösung sowie jeweils ihr Status und die aktuelle Produktionskonfiguration angezeigt. Über die Liste mit den Standorten können Sie zu den anderen Ebenen der Lösungshierarchie navigieren. Die Zeilen in der Liste sind Hyperlinks, mit denen Details der Fertigungsstrecken am jeweiligen Standort verlinkt werden. Sie können dann einen Drilldown in die Details der Fertigungsstrecke und auf die Ebene der Stationsanzeige durchführen. Außerdem können Sie einen Filter auf die Liste anwenden.
 
-![Vorkonfigurierte Connected Factory-Lösung: Werke][cf-img-factories] 
+![Vorkonfigurierte Connected Factory-Lösung: Werke][cf-img-factories]
 
 1. Im Bereich **Factory** (Werk) wird die Liste mit den Werken für diese Lösung angezeigt.
 
@@ -110,31 +108,31 @@ Wenn für Ihr Abonnement Zugriff auf die Bing Maps-API besteht, werden Ihnen auf
 
 ![Vorkonfigurierte Connected Factory-Lösung: Karte][cf-img-map]
 
-## <a name="view-alerts"></a>Anzeigen von Warnungen
+## <a name="view-alarms"></a>Anzeigen von Alarmen
 
-Der Bereich **Warnung** enthält Warnungen, die generiert werden, wenn ein gemeldeter Wert oder ein berechneter OEE/KPI-Wert den konfigurierten Schwellenwert übersteigt. In diesem Bereich werden Warnungen auf jeder Ebene der Hierarchie angezeigt – von der Stationsebenenansicht bis zur globalen Ansicht. Die Warnungen enthalten eine Beschreibung der Warnung, des Datums, der Uhrzeit, des Standorts und der Häufigkeit. Sie erhalten einen Einblick in die Daten, die zu der Warnung geführt haben, indem die Time Series Insights-Daten verwendet werden. Die Time Series Insights-Daten werden in den Warnungen visualisiert, soweit dies möglich ist. Als Administrator können Sie Standardaktionen für die Warnungen durchführen, z.B.:
+Der Bereich **Alarme** enthält Alarme, die generiert werden, wenn ein gemeldeter Wert oder ein berechneter OEE-/KPI-Wert den konfigurierten Schwellenwert übersteigt. In diesem Bereich werden Alarme auf jeder Ebene der Hierarchie angezeigt – von der Stationsebenenansicht bis zur globalen Ansicht. Die Alarme enthalten jeweils eine Beschreibung des Alarms, das Datum, die Uhrzeit, den Standort und die Anzahl von Vorkommen. Die Time Series Insights-Daten geben einen Einblick in die Daten, die zu dem Alarm geführt haben. Die Time Series Insights-Daten werden in den Alarmen visualisiert, soweit dies möglich ist. Als Administrator können Sie für die Alarme beispielsweise folgende Standardaktionen durchführen:
 
-* Schließen der Warnung
-* Bestätigen der Warnung
+* Schließen des Alarms
+* Bestätigen des Alarms
 
 Optional können Sie auch komplexere Aktionen durchführen. Für den Knoten „Pressure OPC UA“ (OPC UA für Druck) der Baugruppe können Sie beispielsweise auch Folgendes durchführen:
 
 * Anzeigen hilfreicher Informationen auf einer Webseite in einem neuen Browserfenster
-* Beseitigen der Warnungsursache durch Aufrufen einer OPC UA-Methode auf dem Gerät
+* Beseitigen der Alarmursache durch Aufrufen einer OPC UA-Methode auf dem Gerät
 * Unterdrücken der Verfügbarkeit der Standardaktionen
 
-    ![Vorkonfigurierte Connected Factory-Lösung: Warnungen][cf-img-alerts]
+    ![Vorkonfigurierte Connected Factory-Lösung: Alarme][cf-img-alerts]
 
 > [!NOTE]
-> Diese Warnungen werden mit Regeln generiert, die in der vorkonfigurierten Lösung in einer Konfigurationsdatei angegeben werden. Mit diesen Regeln können Warnungen generiert werden, wenn die OEE- bzw. KPI-Werte oder die Werte des OPC UA-Knotens den konfigurierten Schwellenwert überschreiten.
+> Diese Alarme werden durch Regeln generiert, die in der vorkonfigurierten Lösung in einer Konfigurationsdatei angegeben werden. Mit diesen Regeln können Alarme generiert werden, wenn die OEE- bzw. KPI-Werte oder die Werte des OPC UA-Knotens den konfigurierten Schwellenwert überschreiten.
 
-1. Im Bereich mit den **Warnungen** werden die Warnungen angezeigt, die für diese Lösung generiert werden.
+1. Im Bereich **Alarme** werden die Alarme angezeigt, die für diese Lösung generiert wurden.
 
-2. Klicken Sie im Bereich mit den Warnungen auf eine Warnung, um die dazugehörigen Details anzuzeigen.
+2. Klicken Sie im Bereich mit den Alarmen auf einen Alarm, um die dazugehörigen Details anzuzeigen.
 
-3. Klicken Sie im Bereich mit den Warnungen zum weiteren Analysieren der Warnungsdaten auf den Graphen, um die Umgebung für den Time Series Insights-Explorer zu öffnen.
+3. Klicken Sie zur weiteren Analyse der Alarmdaten auf den Graphen, um die Time Series Insights-Explorerumgebung zu öffnen.
 
-4. Im Bereich mit den Warnungen sind mehrere Aktionen zum Behandeln der Warnung verfügbar. Wählen Sie die jeweils passende Option aus, und klicken Sie auf die Schaltfläche zum Ausführen von Aktionen.
+4. Im Bereich mit den Alarmen sind mehrere Aktionen zum Behandeln des Alarms verfügbar. Wählen Sie die jeweils passende Option aus, und klicken Sie auf die Schaltfläche zum Ausführen von Aktionen.
 
 ## <a name="view-overall-equipment-efficiency"></a>Anzeigen der Gesamtanlageneffektivität (Overall Equipment Effectiveness, OEE)
 
@@ -148,7 +146,7 @@ Mit dem OEE-Wert wird die Effizienz des Fertigungsprozesses bewertet, indem prod
 
     ![Vorkonfigurierte Connected Factory-Lösung: TSI-Visualisierung][cf-img-tsi-visualization]
 
-3. Klicken Sie im Bereich mit den Warnungen auf den Graphen, um die Warnungsdaten eingehender zu analysieren. Mit dieser Aktion wird die Umgebung für den Time Series Insights-Explorer geöffnet.
+3. Klicken Sie im Bereich mit den Alarmen auf den Graphen, um die Alarmdaten eingehender zu analysieren. Mit dieser Aktion wird die Umgebung für den Time Series Insights-Explorer geöffnet.
 
     ![Vorkonfigurierte Connected Factory-Lösung: TSI-Explorer][cf-img-tsi-explorer]
 
@@ -160,11 +158,11 @@ Die Lösung enthält zwei Key Performance Indicators: *Einheiten pro Stunde* und
 
 1. Navigieren Sie zur jeweiligen Ansicht, um für eine beliebige Ebene der Hierarchie die Einheiten pro Stunde oder die verbrauchte Energie anzuzeigen. Die Einheiten pro Stunde und die verbrauchte Energie werden im Bereich angezeigt.
 
-2. Zur eingehenderen Analyse der Einheiten pro Stunde oder des Energieverbrauchs für eine beliebige Ebene der Hierarchiedaten können Sie im Bereich **Key Performance Indicators** auf die entsprechende Anzeige klicken. Es wird ein Kontextbereich mit auf Time Series Insights basierenden Visualisierungen angezeigt, in dem Sie die Daten der letzten Stunde, letzten 24 Stunden und letzten sieben Tage aufrufen können.
+2. Zur Analyse der Einheiten pro Stunde oder des Energieverbrauchs für eine beliebige Ebene der Hierarchiedaten können Sie im Bereich **Key Performance Indicators** auf die entsprechende Anzeige klicken. Es wird ein Kontextbereich mit auf Time Series Insights basierenden Visualisierungen angezeigt, in dem Sie die Daten der letzten Stunde, letzten 24 Stunden und letzten sieben Tage aufrufen können.
 
 ## <a name="scenario-review"></a>Szenariorückblick
 
-In diesem Szenario haben Sie die OEE- und KPI-Werte im Dashboard für Ihr Werk überwacht. Anschließend haben Sie Time Series Insights verwendet, um weitere Informationen bereitzustellen und einen Drilldown in die Telemetriedaten für die OEE- und KPI-Werte durchzuführen, um Anomalien erkennen zu können. Außerdem haben Sie den Bereich für Warnungen verwendet, um für Ihre Werke bestehende Probleme anzuzeigen, und Sie haben die verfügbaren Aktionen genutzt, um die Warnung zu behandeln.
+In diesem Szenario haben Sie die OEE- und KPI-Werte im Dashboard für Ihr Werk überwacht. Anschließend haben Sie Time Series Insights verwendet, um weitere Informationen bereitzustellen und einen Drilldown in die Telemetriedaten für die OEE- und KPI-Werte durchzuführen, um Anomalien erkennen zu können. Außerdem haben Sie den Bereich für Alarme verwendet, um für Ihre Werke bestehende Probleme anzuzeigen, und Sie haben die verfügbaren Aktionen genutzt, um den Alarm zu behandeln.
 
 ## <a name="other-features"></a>Andere Funktionen
 
@@ -172,28 +170,28 @@ In den folgenden Abschnitten werden einige Zusatzfeatures der Connected Factory-
 
 ## <a name="apply-filters"></a>Anwenden von Filtern
 
-1. Klicken Sie auf das **Chevron**, um eine Liste mit verfügbaren Filtern im Bereich mit den Standorten der Werke oder im Bereich mit den Warnungen anzuzeigen.
+1. Klicken Sie auf den **Trichter**, um eine Liste mit verfügbaren Filtern im Bereich mit den Factorystandorten oder im Bereich mit den Alarmen anzuzeigen.
 
-2. Der Filterbereich wird angezeigt. 
+2. Der Filterbereich wird angezeigt.
 
     ![Vorkonfigurierte Connected Factory-Lösung: Filter][cf-img-alert-filter]
 
 3. Wählen Sie den benötigten Filter aus. Bei Bedarf können Sie in die Filterfelder auch einen anderen Text eingeben.
 
-4. Anschließend wird der Filter für Sie angewendet. Im Dashboard wird mithilfe eines Trichters auch der Filterstatus angegeben, der in den Tabellen mit den Werken und Warnungen angezeigt wird.
+4. Anschließend wird der Filter für Sie angewendet. Im Dashboard wird außerdem der Filterzustand über einen Trichter angegeben, der in den Tabellen mit den Werken und Alarmen angezeigt wird.
 
     ![Vorkonfigurierte Connected Factory-Lösung: Filter][cf-img-alert-filter-funnel]
 
     > [!NOTE]
     > Ein aktiver Filter hat keine Auswirkung auf die angezeigten OEE- und KPI-Werte, sondern dient nur zum Filtern des Listeninhalts.
 
-5. Zum Löschen eines Filters klicken Sie auf den Trichter und dann im Bereich mit dem Filterkontext auf die Option zum Filtern. In den Tabellen mit den Werken und Warnungen wird dann der Text **Alle** angezeigt.
+5. Zum Löschen eines Filters klicken Sie auf den Trichter und dann im Bereich mit dem Filterkontext auf die Option zum Filtern. In den Tabellen mit den Werken und Alarmen wird dann der Text **Alle** angezeigt.
 
 ## <a name="browse-an-opc-ua-server"></a>Durchsuchen eines OPC UA-Servers
 
-Beim Bereitstellen der vorkonfigurierten Lösung stellen Sie automatisch simulierte OPC UA-Server bereit, die Sie mit dem Browser der Lösung durchsuchen können. Bei diesen Servern handelt es sich um *simulierte OPC UA-Server*. Simulierte Server erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Server bereitstellen müssen. Wenn Sie keinen echten OPC UA-Server mit der Lösung verbinden möchten, helfen Ihnen die Informationen im Tutorial [Connect your OPC UA device to the connected factory preconfigured solution][lnk-connect-cf] (Verbinden Ihres OPC UA-Geräts mit der vorkonfigurierten Connected Factory-Lösung) weiter.
+Beim Bereitstellen der vorkonfigurierten Lösung stellen Sie automatisch simulierte OPC UA-Server bereit, die Sie mit dem Browser der Lösung durchsuchen können. Bei diesen Servern handelt es sich um *simulierte OPC UA-Server*. Simulierte Server erleichtern Ihnen das Experimentieren mit der vorkonfigurierten Lösung, ohne dass Sie echte physische Server bereitstellen müssen. Wenn Sie einen echten OPC UA-Server mit der Lösung verbinden möchten, sehen Sie sich das Tutorial [Bereitstellen eines Gateways unter Windows oder Linux für die vorkonfigurierte Connected Factory-Lösung][lnk-connect-cf] an.
 
-1. Klicken Sie in der Navigationsleiste des Dashboards auf das **Symbol für „Werk“**.
+1. Klicken Sie auf der Navigationsleiste des Dashboards auf das **Browsersymbol**.
 
     ![Vorkonfigurierte Connected Factory-Lösung: Serverbrowser][cf-img-server-browser]
 
@@ -227,7 +225,7 @@ Beim Durchsuchen eines *simulierten OPC UA-Servers* können Sie auch die Veröff
 
 ## <a name="command-and-control"></a>Befehl und Steuerung
 
-Mit dem Konzept des „verbundenen Werks“ (Connected Factory) können Sie Ihre Industrieanlagen direkt über die Cloud steuern. Sie können dieses Feature nutzen, um auf Warnungen zu reagieren, die vom Gerät generiert werden. Beispielsweise können Sie aus der Cloud einen Befehl an ein Gerät oder eine Anlage senden. Sie finden die verfügbaren Befehle in der Browserstruktur des OPC UA-Servers unter dem Knoten **StationCommands**. In diesem Szenario wird an einer Montagestation einer Fertigungsstraße in München ein Druckreduzierventil geöffnet. Zum Verwenden der Funktionen unter „Befehl und Steuerung“ müssen Sie für die Bereitstellung der vorkonfigurierten Lösung über die Rolle **Administrator** verfügen.
+Mit Connected Factory können Sie Ihre Industrieanlagen direkt über die Cloud steuern. Sie können dieses Feature nutzen, um auf Alarme zu reagieren, die von der Anlage generiert werden. Beispielsweise können Sie aus der Cloud einen Befehl an ein Gerät oder eine Anlage senden. Sie finden die verfügbaren Befehle in der Browserstruktur des OPC UA-Servers unter dem Knoten **StationCommands**. In diesem Szenario wird an einer Montagestation einer Fertigungsstraße in München ein Druckreduzierventil geöffnet. Zum Verwenden der Funktionen unter „Befehl und Steuerung“ müssen Sie für die Bereitstellung der vorkonfigurierten Lösung über die Rolle **Administrator** verfügen.
 
 1. Navigieren Sie in der Browserstruktur des OPC UA-Servers zum Knoten **StationCommands**.
 
@@ -249,7 +247,6 @@ Mit dem Konzept des „verbundenen Werks“ (Connected Factory) können Sie Ihre
 
     ![Vorkonfigurierte Connected Factory-Lösung: Aufruf erfolgreich][cf-img-call-success]
 
-
 ## <a name="behind-the-scenes"></a>Abläufe im Hintergrund
 
 Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden vom Bereitstellungsprozess mehrere Ressourcen im gewählten Azure-Abonnement erstellt. Sie können diese Ressourcen im Azure-[Portal][lnk-portal] anzeigen. Der Bereitstellungsprozess erstellt eine **Ressourcengruppe** mit einem Namen basierend auf dem Namen, den Sie für Ihre vorkonfigurierte Lösung wählen:
@@ -258,7 +255,7 @@ Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden vom Bereitstellungs
 
 Sie können die Einstellungen der einzelnen Ressourcen anzeigen, indem Sie sie in der Ressourcengruppe in der Liste mit den Ressourcen auswählen.
 
-Sie können auch den Quellcode für die vorkonfigurierte Lösung anzeigen. Der Quellcode der vorkonfigurierten Connected Factory-Lösung ist im GitHub-Repository [azure-iot-connected-factory][lnk-cfgithub] enthalten:
+Sie können auch den Quellcode für die vorkonfigurierte Lösung anzeigen. Den Quellcode der vorkonfigurierten Connected Factory-Lösung finden Sie im GitHub-Repository [azure-iot-connected-factory][lnk-cfgithub]:
 
 Wenn Sie fertig sind, können Sie die vorkonfigurierte Lösung auf der Website [azureiotsuite.com][lnk-azureiotsuite] aus Ihrem Azure-Abonnement löschen. Über diese Website können Sie problemlos alle Ressourcen löschen, die bei der Erstellung der vorkonfigurierten Lösung bereitgestellt wurden.
 

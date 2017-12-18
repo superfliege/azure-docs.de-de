@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: jingwang
-ms.openlocfilehash: 5472c41af9b0c524b931ed3e6b149270e17a633a
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2d9213a74fd881a7be52f51ff8ebb49171c77283
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database"></a>Inkrementelles Laden von mehreren SQL Server-Tabellen in Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -26,11 +26,11 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
 > * Vorbereiten von Quell- und Zieldatenspeichern
-> * Erstellen einer Data Factory
+> * Erstellen einer Data Factory.
 > * Erstellen einer selbstgehosteten Integration Runtime (IR)
 > * Installieren der Integration Runtime 
-> * Erstellen von verknüpften Diensten 
-> * Erstellen des Quell-, Senken-, Grenzwert-Datasets
+> * Erstellen Sie verknüpfte Dienste. 
+> * Erstellen des Quell-, Senken-, Grenzwert-Datasets.
 > * Erstellen, Ausführen und Überwachen einer Pipeline
 > * Überprüfen der Ergebnisse
 > * Hinzufügen oder Aktualisieren von Daten in Quelltabellen
@@ -215,7 +215,8 @@ END
 
 ```
 
-[!INCLUDE [data-factory-quickstart-prerequisites-2](../../includes/data-factory-quickstart-prerequisites-2.md)]
+### <a name="azure-powershell"></a>Azure PowerShell
+Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-azurerm-ps) befolgen.
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`. 
@@ -866,6 +867,6 @@ In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie mithilfe eines Spark-Clusters in Azure Daten transformieren:
 
 > [!div class="nextstepaction"]
->[Incrementally load data from Azure SQL Database to Azure Blob Storage using Change Tracking technology](tutorial-incremental-copy-multiple-tables-powershell.md) (Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage per Änderungsnachverfolgung)
+>[Incrementally load data from Azure SQL Database to Azure Blob Storage using Change Tracking technology](tutorial-incremental-copy-change-tracking-feature-powershell.md) (Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage per Änderungsnachverfolgung)
 
 

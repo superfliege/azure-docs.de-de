@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 54edb2d02701d36af52088cb8df7e252504a8760
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 815148d2a39ce8b18092619c9687a56b457c8339
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „Hyper-V zu Azure“ in der Produktion.
@@ -34,12 +34,15 @@ Das Tool umfasst die folgenden Details:
 
 **Kompatibilitätsbewertung**
 
-* Bewertung der Eignung von virtuellen Computern basierend auf Datenträgeranzahl, Datenträgergröße, IOPS, Änderungsrate und einigen VM-Merkmalen.
+* Bewertung der Eignung von virtuellen Computern basierend auf Datenträgeranzahl, Datenträgergröße, IOPS, Änderungsrate und einigen VM-Merkmalen
 
 **Vergleich von erforderlicher Netzwerkbandbreite und RPO-Bewertung**
 
 * Geschätzte erforderliche Netzwerkbandbreite für die Deltareplikation
 * Durchsatz für Azure Site Recovery vom lokalen Standort zu Azure
+* RPO, die für eine bestimmte Bandbreite erzielt werden kann
+* Auswirkung auf die gewünschte RPO, wenn eine niedrigere Bandbreite bereitgestellt wird
+
     
 **Azure-Infrastrukturanforderungen**
 
@@ -52,6 +55,7 @@ Das Tool umfasst die folgenden Details:
 
 **Anforderungen an die lokale Infrastruktur**
 * Erforderlicher freier Speicherplatz auf jedem Volume des Hyper-V-Speichers für die erfolgreiche anfängliche Replikation und Deltareplikation, um sicherzustellen, dass es durch die VM-Replikation für Ihre Produktionsanwendungen nicht zu unerwünschten Ausfallzeiten kommt
+* Für Hyper-V-Replikation muss die maximale Kopierhäufigkeit festgelegt werden.
 
 **Anleitung zur Batchverarbeitung für die erste Replikation** 
 * Anzahl von VM-Batches für die Produktion
@@ -108,7 +112,7 @@ Das Tool verfügt für Hyper-V über drei Hauptphasen: Abrufen der VM-Liste, Pro
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>Herunterladen und Extrahieren des Bereitstellungsplaner-Tools
 
-1.  [Laden Sie die aktuelle Version des Azure Site Recovery-Bereitstellungsplaners herunter.](https://aka.ms/asr-deployment-planner)
+1.  [Laden Sie die aktuelle Version des Azure Site Recovery Deployment Planner herunter.](https://aka.ms/asr-deployment-planner)
 Das Tool ist in einem ZIP-Ordner enthalten. Das Tool unterstützt sowohl „VMware zu Azure“ als auch „Hyper-V zu Azure“ als Notfallwiederherstellungsszenario. Sie können dieses Tool auch für das Notfallwiederherstellungsszenario „Hyper-V zum sekundären Standort“ verwenden und die Empfehlung zur Azure-Infrastruktur im Bericht ignorieren.
 
 2.  Kopieren Sie den ZIP-Ordner auf die Windows Server-Instanz, unter der Sie das Tool ausführen möchten. Sie können das Tool unter Windows Server 2012 R2 oder Windows Server 2016 ausführen. Der Server muss über Netzwerkzugriff verfügen, um eine Verbindung mit dem Hyper-V-Cluster oder Hyper-V-Host herstellen zu können, in bzw. auf dem die VMs für die Profilerstellung enthalten sind. Wir empfehlen Ihnen, für die VM, auf der das Tool ausgeführt werden soll, die gleiche Hardwarekonfiguration wie für den zu schützenden Hyper-V-Server zu verwenden. Mit dieser Konfiguration wird sichergestellt, das der vom Tool gemeldete erzielte Durchsatz mit dem tatsächlichen Durchsatz übereinstimmt, den Azure Site Recovery während der Replikation erreichen kann. Die Berechnung des Durchsatzes richtet sich nach der verfügbaren Netzwerkbandbreite auf dem Server und der Hardwarekonfiguration (CPU, Speicher usw.) des Servers. Der Durchsatz wird vom Server, auf dem das Tool ausgeführt wird, zu Azure berechnet. Wenn sich die Hardwarekonfiguration des Servers vom Hyper-V-Server unterscheidet, ist der erzielte Durchsatz, der vom Tool gemeldet wird, fehlerhaft.
@@ -123,7 +127,7 @@ E:\ASR Deployment Planner_v2.0\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualisieren auf die neueste Version des Bereitstellungsplaners
 Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Version des Bereitstellungsplaners verfügen:
- * Falls die aktuelle Version keine Fehlerbehebung für die Profilerstellung enthält und die Profilerstellung bereits mit der aktuellen Planer-Version ausgeführt wird, ist es ratsam, die Profilerstellung fortzusetzen.
+ * Falls die aktuelle Version keine Fehlerbehebung für die Profilerstellung enthält und die Profilerstellung bereits mit der aktuellen Planner-Version ausgeführt wird, ist es ratsam, die Profilerstellung fortzusetzen.
  * Wenn die aktuelle Version eine Fehlerbehebung für die Profilerstellung enthält, empfehlen wir Ihnen, die Profilerstellung für die aktuelle Version zu beenden und mit der neuen Version neu zu starten.
 
 
@@ -131,7 +135,7 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
   >
   >Übergeben Sie beim Starten der Profilerstellung mit der neuen Version den gleichen Pfad des Ausgabeverzeichnisses, damit die Profildaten vom Tool an die vorhandenen Dateien angefügt werden. Zum Erstellen des Berichts wird ein vollständiger Satz von Profilerstellungsdaten verwendet. Wenn Sie ein anderes Ausgabeverzeichnis übergeben, werden neue Dateien erstellt und alte Profilerstellungsdaten nicht zum Erstellen des Berichts verwendet.
   >
-  >Jeder neue Bereitstellungsplaner ist ein kumulatives Update der ZIP-Datei. Es ist nicht erforderlich, die neuesten Dateien in den vorherigen Ordner zu kopieren. Sie können einen neuen Ordner erstellen und verwenden.
+  >Jeder neue Deployment Planner ist ein kumulatives Update der ZIP-Datei. Es ist nicht erforderlich, die neuesten Dateien in den vorherigen Ordner zu kopieren. Sie können einen neuen Ordner erstellen und verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Bereitstellungsplaners](site-recovery-hyper-v-deployment-planner-run.md).

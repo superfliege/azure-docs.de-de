@@ -3,8 +3,8 @@ title: Herstellen einer Verbindung mit Azure Stack | Microsoft-Dokumentation
 description: "Enthält Informationen dazu, wie Sie eine Verbindung mit Azure Stack herstellen."
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 3cebbfa6-819a-41e3-9f1b-14ca0a2aaba3
 ms.service: azure-stack
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2017
-ms.author: sngun
-ms.openlocfilehash: 914f2e5d10aa341cea5eba8c24c7c37610e6b626
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mabrigg
+ms.openlocfilehash: 7479202a8afabf5a84560691a2bccf849206c077
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="connect-to-azure-stack"></a>Herstellen einer Verbindung mit Azure Stack
 
-Zum Verwalten von Ressourcen müssen Sie eine Verbindung mit dem Azure Stack Development Kit herstellen. Dieses Thema enthält Informationen zu den Schritten, die zum Herstellen einer Verbindung mit dem Development Kit erforderlich sind. Sie können eine der folgenden Verbindungsoptionen verwenden:
+Zum Verwalten von Ressourcen müssen Sie eine Verbindung mit dem Azure Stack Development Kit herstellen. Dieser Artikel enthält Informationen zu den Schritten, die zum Herstellen einer Verbindung mit dem Development Kit erforderlich sind. Sie können eine der folgenden Verbindungsoptionen verwenden:
 
 * [Remotedesktop](#connect-with-remote-desktop): Ermöglicht einem einzelnen gleichzeitigen Benutzer die schnelle Verbindungsherstellung über das Development Kit.
 * [Virtuelles privates Netzwerk (VPN)](#connect-with-vpn): Ermöglicht mehreren gleichzeitigen Benutzern die Verbindungsherstellung von Clients, die außerhalb der Azure Stack-Infrastruktur angeordnet sind (Konfiguration erforderlich).

@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte mit Node.js | Microsoft Docs
+title: "Node.js – Erste Schritte"
 description: "Erfahren Sie, wie Sie eine einfache Node.js-Webanwendung erstellen und in einem Azure-Clouddienst bereitstellen können."
 services: cloud-services
 documentationcenter: nodejs
@@ -14,17 +14,17 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: 02aa75824bab4e33f1cd73ab1053d64a20956a0a
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: d498fc09112c0df7b6ecb81a492b180765fdf883
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="build-and-deploy-a-nodejs-application-to-an-azure-cloud-service"></a>Erstellen und Bereitstellen einer Node.js-Anwendung in einem Azure-Clouddienst
 
 Dieses Lernprogramm veranschaulicht, wie Sie eine einfache Node.js-Anwendung erstellen können, die in einem Azure-Clouddienst ausgeführt wird. Clouddienste sind die Bausteine skalierbarer Cloudanwendungen in Azure. Sie ermöglichen die Trennung und unabhängige Verwaltung und Skalierung von Front-End- und Back-End-Komponenten von Anwendungen.  Clouddienste bieten stabile und dedizierte virtuelle Computer, um jede Rolle zuverlässig zu hosten.
 
-Weitere Informationen zu Cloud Services und einen Vergleich mit Azure-Websites und Virtual Machines finden Sie unter [Vergleich von Azure-Websites, Cloud Services und Virtual Machines].
+Weitere Informationen zu Cloud Services und einen Vergleich mit Azure-Websites und Virtual Machines finden Sie unter [Azure Websites, Cloud Services and Virtual Machines comparison](Vergleich von Azure-Websites, Cloud Services und Virtual Machines, in englischer Sprache).
 
 > [!TIP]
 > Möchten Sie eine einfache Website erstellen? Wenn Ihr Szenario nur ein einfaches Website-Front-End umfasst, sollten Sie die [Verwendung einer einfachen Web-App] in Betracht ziehen. Sie können einen Clouddienst mühelos aktualisieren, wenn die Web-App größer wird und sich Ihre Anforderungen ändern.
@@ -163,7 +163,7 @@ Weitere Informationen finden Sie im [Node.js Developer Center].
 
 <!-- URL List -->
 
-[Vergleich von Azure-Websites, Cloud Services und Virtual Machines]: ../app-service/choose-web-site-cloud-service-vm.md
+[Azure Websites, Cloud Services and Virtual Machines comparison]: ../app-service/choose-web-site-cloud-service-vm.md
 [Verwendung einer einfachen Web-App]: ../app-service/app-service-web-get-started-nodejs.md
 [Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [Azure SDK für .NET 2.7]: http://www.microsoft.com/en-us/download/details.aspx?id=48178

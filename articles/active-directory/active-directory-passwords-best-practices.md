@@ -5,7 +5,7 @@ services: active-directory
 keywords: 
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: f8cd7e68-2c8e-4f30-b326-b22b16de9787
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 11/16/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4e2f788f4e4dfd013754925d8f6dbc3bf35b1a91
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 79089f09342f520f7d43115cc606d794db6c1602
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>Erfolgreicher Rollout der Self-Service-Kennwortzurücksetzung
 
@@ -37,6 +37,10 @@ Um einen reibungslosen Rollout der Funktion für die Self-Service-Kennwortzurüc
 9. Legen Sie fest, wann die Registrierung erzwungen werden soll. Sie können die Registrierung zu einem beliebigen Zeitpunkt erzwingen. Zudem können Sie festlegen, dass Benutzer ihre Authentifizierungsinformationen nach einem bestimmten Zeitraum erneut bestätigen müssen.
 10. Verwenden Sie die Berichterstellungsfunktion. Im Laufe der Zeit können Sie die Registrierungen von Benutzern und die Verwendung mithilfe der [Berichterstellungsfunktion von Azure AD](active-directory-passwords-reporting.md) überprüfen.
 11. Aktivieren Sie die Kennwortzurücksetzung. Wenn Sie bereit sind, aktivieren Sie die Kennwortzurücksetzung für alle Benutzer, indem Sie den Schalter **Self-Service-Kennwortzurücksetzung aktiviert** auf **Alle** festlegen. 
+
+   > [!NOTE]
+   > Wenn Sie diese Option von einer ausgewählten Gruppe in „Jeder“ ändern, werden die vorhandenen Authentifizierungsdaten nicht ungültig, die ein Benutzer im Rahmen einer Testgruppe registriert hat. Konfigurierte Benutzer, für die gültige Authentifizierungsdaten registriert wurden, können weiterhin verwendet werden.
+
 12. [Ermöglichen Sie Windows 10-Benutzern das Zurücksetzen ihres Kennworts auf dem Anmeldebildschirm](active-directory-passwords-login.md).
 
    > [!IMPORTANT]
@@ -56,9 +60,9 @@ Viele Kunden sind der Meinung, dass eine E-Mail-Kampagne mit einfachen Anweisung
 
 Viele Kunden entscheiden sich für das Hosten einer Webseite und das Erstellen eines DNS-Stammeintrags, beispielsweise „https://passwords.contoso.com“. Sie füllen diese Seite mit Links zu den folgenden Informationen auf:
 
-* [Portal für die Azure AD-Kennwortzurücksetzung](https://aka.ms/sspr)
-* [Registrierungsportal für die Azure AD-Kennwortzurücksetzung](http://aka.ms/ssprsetup)
-* [Portal für die Azure AD-Kennwortänderung](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
+* [Portal zur Azure AD-Kennwortzurücksetzung: https://aka.ms/sspr](https://aka.ms/sspr)
+* [Portal zur Registrierung für die Azure AD-Kennwortzurücksetzung: http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
+* [Portal zur Änderung des Azure AD-Kennworts: https://account.activedirectory.windowsazure.com/ChangePassword.aspx](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
 * Weitere organisationsspezifische Informationen
 
 Sie können in allen E-Mails oder auf Flyern eine einprägsame Marken-URL angeben, unter der Benutzer sämtliche Informationen zur Nutzung der Dienste finden. Wir haben eine [Beispielseite für die Kennwortzurücksetzung](https://github.com/ajamess/password-reset-page) erstellt, die Sie verwenden und entsprechend den Anforderungen Ihrer Organisation anpassen können.

@@ -1,6 +1,6 @@
 ---
 title: "Exemplarische Vorgehensweise zur Lösung für verbundene Factorys – Azure | Microsoft-Dokumentation"
-description: "Eine Beschreibung der vorkonfigurierten Connected Factory-Lösung von Azure IoT und ihrer Architektur."
+description: "Eine Beschreibung der vorkonfigurierten Lösung für verbundene Factorys von Azure IoT und ihrer Architektur."
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/14/2017
+ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 237ca28c699984e89127a95b2141fe9131ad868c
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 88fe50460baf8b7180da113b33a03120f39cf44f
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>Vorkonfigurierte Connected Factory-Lösung – Exemplarische Vorgehensweise
 
-Die [vorkonfigurierte Connected Factory-Lösung][lnk-preconfigured-solutions] der IoT Suite ist eine Komplettlösung für die Industrie, die:
+Die [vorkonfigurierte Lösung][lnk-preconfigured-solutions] für verbundene Factorys von IoT Suite ist eine Komplettlösung für die Industrie, die:
 
 * eine Verbindung mit simulierten Industriegeräten mit OPC UA-Servern in simulierten Fertigungsstrecken im Werk und mit echten OPC UA-Servergeräten herstellt. Weitere Informationen zu OPC UA finden Sie in den [häufig gestellten Fragen zur verbundenen Factory](iot-suite-faq-cf.md).
 * betriebliche KPIs und OEE dieser Geräte und Fertigungsstrecken anzeigt.
@@ -34,7 +34,7 @@ Die [vorkonfigurierte Connected Factory-Lösung][lnk-preconfigured-solutions] de
 
 Sie können sie als Ausgangspunkt für Ihre Implementierung verwenden und [anpassen][lnk-customize], um Ihre eigenen speziellen Geschäftsanforderungen zu erfüllen.
 
-In diesem Artikel werden einige wichtige Elemente der Connected Factory-Lösung beschrieben, um die Funktionsweise zu verdeutlichen. Außerdem erfahren Sie in diesem Artikel, wie Daten die Lösung durchlaufen. Dieses Wissen ist für folgende Zwecke hilfreich:
+In diesem Artikel werden einige wichtige Elemente der Lösung für verbundene Factorys beschrieben, um die Funktionsweise zu verdeutlichen. Außerdem erfahren Sie in diesem Artikel, wie Daten die Lösung durchlaufen. Dieses Wissen ist für folgende Zwecke hilfreich:
 
 * Behandeln von Problemen in der Lösung
 * Planen der Lösungsanpassung zur Erfüllung besonderer Anforderungen
@@ -166,11 +166,11 @@ Die als Teil der vorkonfigurierten Lösung bereitgestellte Web-App setzt sich au
     - Verwendet durch TCP/TLS geschützte Kommunikation.
     - Hierbei handelt es sich um einen internen Schritt innerhalb des Datencenters.
 
-11. Webbrowser stellt eine Verbindung mit der verbundenen Factory-Web-App her.
+11. Webbrowser stellt eine Verbindung mit der Web-App für verbundene Factorys her.
     - Rendert das Dashboard der verbundenen Factory.
     - Stellt eine HTTPS-Verbindung her.
-    - Der Zugriff auf die verbundene Factory-App erfordert die Authentifizierung des Benutzers über Azure Active Directory.
-    - An die verbundene Factory-App gerichtete WebApi-Aufrufe werden durch Fälschungssicherheitstoken geschützt.
+    - Der Zugriff auf die App der verbundenen Factory erfordert die Authentifizierung des Benutzers über Azure Active Directory.
+    - An die App der verbundenen Factory gerichtete WebApi-Aufrufe werden durch Fälschungssicherheitstoken geschützt.
 
 12. Bei Datenaktualisierungen sendet die verbundene Factory-Web-App aktualisierte Daten an den Webbrowser.
     - Verwendet das SignalR-Protokoll.
@@ -190,7 +190,7 @@ Die als Teil der vorkonfigurierten Lösung bereitgestellte Web-App setzt sich au
     - Liest alle bekannten Geräte von IoT Hub.
     - Verwendet MQTT über TLS über Socket oder sicheren WebSocket.
 
-3. Webbrowser stellt eine Verbindung mit der verbundenen Factory-Web-App her und rendert das Dashboard der verbundenen Factory.
+3. Webbrowser stellt eine Verbindung mit der Web-App der verbundenen Factory her und rendert das Dashboard der verbundenen Factory.
     - Verwendet HTTPS.
     - Ein Benutzer wählt einen OPC UA-Server für die Verbindungsherstellung aus.
 
@@ -199,7 +199,7 @@ Die als Teil der vorkonfigurierten Lösung bereitgestellte Web-App setzt sich au
 
 5. Der OPC Proxy-Transport empfängt eine Anforderung aus dem OPC UA-Stapel zur Herstellung einer TPC-Socketverbindung mit dem OPC UA-Server.
     - Er ruft nur die TCP-Nutzlast ab und verwendet sie unverändert.
-    - Hierbei handelt es sich um einen internen Schritt innerhalb der verbundenen Factory-Web-App.
+    - Hierbei handelt es sich um einen internen Schritt innerhalb der Web-App der verbundenen Factory.
 
 6. OPC Proxy (Clientkomponente) sucht das OPC Proxy-Gerät (Serverkomponente) in der IoT Hub-Geräteregistrierung. Danach wird eine Gerätemethode des OPC Proxy-Geräts (Serverkomponente) in IoT Hub aufgerufen.
     - Verwendet HTTPS über TCP/TLS, um OPC Proxy zu suchen.
@@ -215,7 +215,7 @@ Die als Teil der vorkonfigurierten Lösung bereitgestellte Web-App setzt sich au
 
 10. Die Antwort wird vom Socket der OPC Proxy-Instanz (Serverkomponente) empfangen.
     - OPC Proxy sendet die Daten als Rückgabewert der Gerätemethode an IoT Hub und OPC Proxy (Clientkomponente).
-    - Diese Daten werden an den OPC UA-Stapel in der verbundenen Factory-App geliefert.
+    - Diese Daten werden an den OPC UA-Stapel in der App der verbundenen Factory gesendet.
 
 11. Die verbundene Factory-Web-App gibt OPC-Browser-UX (angereichert mit den OPC UA-spezifischen Informationen des OPC UA-Servers) zum Rendern an den Webbrowser zurück.
     - Beim Browsen durch den OPC-Adressraum und Anwenden von Funktionen auf Knoten im OPC-Adressraum verwendet der OPC-Browser-UX-Clientteil mit Fälschungssicherheitstoken geschützte AJAX-Aufrufe über HTTPS, um Daten aus der verbundenen Factory-Web-App abzurufen.
@@ -225,7 +225,7 @@ Die als Teil der vorkonfigurierten Lösung bereitgestellte Web-App setzt sich au
 > OPC Proxy (Serverkomponente) und OPC Proxy (Clientkomponente) führen die Schritte 4 bis 10 für den gesamten TCP-Datenverkehr im Zusammenhang mit der OPC UA-Kommunikation durch.
 
 > [!NOTE]
-> Für den OPC UA-Server und den OPC UA-Stapel innerhalb der verbundenen Factory-Web-App ist die OPC Proxy-Kommunikation transparent, und alle OPC UA-Sicherheitsfeatures für Authentifizierung und Verschlüsselung werden angewendet.
+> Für den OPC UA-Server und den OPC UA-Stapel innerhalb der Web-App der verbundenen Factory ist die OPC Proxy-Kommunikation transparent, und alle OPC UA-Sicherheitsfeatures für Authentifizierung und Verschlüsselung werden angewendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

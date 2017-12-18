@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 992c438ab2dac8dc20ba284bd095afbcd801a62f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 819af52bb10c9ffcb7e1133437f6d0afbe6105ae
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="hybrid-connections-overview"></a>Überblick über Hybridverbindungen
 
@@ -90,12 +90,12 @@ Die folgenden TCP-Ports werden von Hybridverbindungen verwendet:
 | 80, 443 |Diese Ports werden für einige Datenanfragen in Azure verwendet. Wenn die Ports 9352 und 5671 nicht verwendbar sind, werden für die Datenübertragung und den Steuerungskanal *alternativ* die Ports 80 und 443 verwendet.<br/><br/>Ausgehende Verbindungen auf diese Ports zulassen. <br/><br/>**Hinweis** Es wird nicht empfohlen, diese als alternative Ports anstelle der anderen TCP-Ports verwenden. HTTP/WebSocket wird als Protokoll anstelle des systemeigenen TCP für Datenkanäle verwendet. Dies könnte zu einer niedrigeren Leistung führen. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-[Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
+[Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>Weitere Informationen
-[REST-API für die Verwaltung von BizTalk Services unter Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)
-[BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)<br/>
-[Erstellen eines BizTalk Service im Azure-Portal](biztalk-provision-services.md)<br/>
-[BizTalk Services: Registerkarten „Dashboard“, „Überwachen“ und „Skalieren“](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+[REST API für die Verwaltung von BizTalk Services unter Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)  
+[Erstellen eines BizTalk Service](biztalk-provision-services.md)  
+[BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](biztalk-dashboard-monitor-scale-tabs.md)  
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
