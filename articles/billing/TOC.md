@@ -27,17 +27,17 @@
 ### [Grundlegendes zur Nutzung reservierter Instanzen für Enterprise](billing-understand-reserved-instance-usage-ea.md)
 
 ## Verwalten von Abonnements
+### [Suchen nach einer Abonnement- oder Verwaltungsgruppe](billing-enterprise-mgmt-grp-find.md)
 ### [Verwalten von Administratorrollen](billing-add-change-azure-subscription-administrator.md)
 ### [Übertragen des Abonnements](billing-subscription-transfer.md)
 ### [Reaktivieren des deaktivierten Abonnements](billing-subscription-become-disable.md)
 ### [Upgrade eines kostenlosen Abonnements](billing-upgrade-azure-subscription.md)
 ### [Umstellen des Abonnementangebots](billing-how-to-switch-azure-offer.md)
+### [Verknüpfen des Azure AD-Mandanten](../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json)
 ### [Kündigen eines Abonnements](billing-how-to-cancel-azure-subscription.md)
-### [Suchen nach einer Abonnement- oder Verwaltungsgruppe](billing-enterprise-mgmt-grp-find.md)
 ## Verwalten eines Kontos
 ### [Bearbeiten eines Profils](billing-how-to-change-azure-account-profile.md)
 ### [Aktualisieren von Zahlungsinformationen](billing-how-to-change-credit-card.md)
-### [Verknüpfen des Office 365-Mandanten](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [Zahlen für Abonnements per Rechnung](billing-how-to-pay-by-invoice.md)
 ## [Verwalten reservierter VM-Instanzen](billing-manage-reserved-vm-instance.md)
 ## Problembehandlung
