@@ -1,55 +1,49 @@
 ---
 title: "Azure-Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Blobs | Microsoft-Dokumentation"
-description: "Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Azure Blob Storage-Konten."
+description: "Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ für Azure-Speicherkonten."
 services: storage
 documentationcenter: 
-author: michaelhauss
-manager: vamshik
-editor: tysonn
+author: kuhussai
+manager: jwillis
+editor: 
 ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/05/2017
-ms.author: mihauss
-ms.openlocfilehash: 501fc59efb8bacf58fea2825752d3a33c6ea5963
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.date: 12/11/2017
+ms.author: kuhussai
+ms.openlocfilehash: fd3ca18fd7a9d1226d41229d37e637a62478f92a
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“ (Vorschau)
+# <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“
 
 ## <a name="overview"></a>Übersicht
 
-Azure Storage bietet drei Speicherebenen für Blobobjektspeicher, damit Sie Ihre Daten je nach Nutzung möglichst kostengünstig speichern können. Die **Speicherebene „Heiß“ (Hot)** von Azure ist für die Speicherung von Daten optimiert, auf die häufig zugegriffen wird. Die **Speicherebene „Kalt“ (Cool)** von Azure ist für die Speicherung von Daten optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Die Azure-**Archivspeicherebene** (Vorschau) ist für die Speicherung von Daten optimiert, auf die äußerst selten zugegriffen wird und die mindestens 180 Tage lang mit flexiblen Latenzanforderungen (in der Größenordnung von Stunden) gespeichert werden. Die Archivspeicherebene ist nur auf Blobebene und nicht auf der Speicherkontoebene verfügbar. Bei den Daten der Speicherebene „Cool“ können geringfügige Abstriche bei der Verfügbarkeit gemacht werden, aber Haltbarkeit, Zugriffszeit und Durchsatz müssen sich auf einem ähnlich hohen Niveau wie bei häufig genutzten Daten befinden. Daher kann bei selten genutzten Daten eine Kombination aus einer Vereinbarung zum Servicelevel mit etwas niedrigerer Verfügbarkeit und höheren Zugriffskosten im Vergleich zu häufig genutzten Daten in Kauf genommen werden, um im Gegenzug die Speicherkosten zu verringern. Der Archivspeicher ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden.
+Azure-Speicher bietet drei Speicherebenen für Blobobjektspeicher, damit Sie Ihre Daten je nach Nutzung möglichst kostengünstig speichern können. Die **Speicherebene „Heiß“ (Hot)** von Azure ist für die Speicherung von Daten optimiert, auf die häufig zugegriffen wird. Die **Speicherebene „Kalt“ (Cool)** von Azure ist für die Speicherung von Daten optimiert, auf die selten zugegriffen wird und die mindestens 30 Tage lang gespeichert werden. Die **Speicherebene „Archiv“** von Azure ist für die Speicherung von Daten optimiert, auf die äußerst selten zugegriffen wird und die mindestens 180 Tage lang mit flexiblen Latenzanforderungen (in der Größenordnung von Stunden) gespeichert werden. Die Archivspeicherebene ist nur auf Blobebene und nicht auf der Speicherkontoebene verfügbar. Bei den Daten der Speicherebene „Cool“ können geringfügige Abstriche bei der Verfügbarkeit gemacht werden, aber Haltbarkeit, Zugriffszeit und Durchsatz müssen sich auf einem ähnlich hohen Niveau wie bei häufig genutzten Daten befinden. Daher kann bei selten genutzten Daten eine Kombination aus einer Vereinbarung zum Servicelevel mit etwas niedrigerer Verfügbarkeit und höheren Zugriffskosten im Vergleich zu häufig genutzten Daten in Kauf genommen werden, um im Gegenzug die Speicherkosten zu verringern. Der Archivspeicher ist offline und ermöglicht die niedrigsten Speicherkosten, ist gleichzeitig aber mit den höchsten Zugriffskosten verbunden.
 
 Die Speicherung von Daten in der Cloud nimmt immer mehr zu. Um die Kosten für die zunehmenden Speicheranforderungen im Blick zu behalten, ist es hilfreich, die Daten anhand von Attributen wie der Zugriffshäufigkeit und geplanten Aufbewahrungsdauer zu organisieren. So können die Kosten optimiert werden. In der Cloud gespeicherte Daten können sich darin unterscheiden, wie sie über ihre Lebensdauer hinweg generiert, verarbeitet und genutzt werden. Auf einen Teil der Daten wird aktiv zugegriffen, und sie werden während ihrer Lebensdauer geändert. Auf andere Daten wird zu Beginn ihrer Lebensdauer häufig zugegriffen, und die Zugriffe fallen dann deutlich ab, je älter die Daten werden. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur sehr selten oder gar nicht zugegriffen wird.
 
 Jedes dieser Datenzugriffsszenarien profitiert von einer differenzierten Speicherebene, die für ein bestimmtes Zugriffsmuster optimiert ist. Mit den Speicherebenen „Hot“, „Cool“ und „Archiv“ bietet Azure Blob Storage unterschiedliche Speicherebenen mit separaten Preismodellen.
 
-## <a name="blob-storage-accounts"></a>Blob-Speicherkonten
+## <a name="storage-accounts-that-support-tiering"></a>Speicherkonten mit Tiering-Unterstützung
 
-**Blob-Speicherkonten** sind spezielle Speicherkonten und dienen dazu, unstrukturierte Daten als Blobs (Objekte) in Azure Storage zu speichern. Mit Blob-Speicherkonten können Sie jetzt auf der Grundlage von Zugriffsmustern zwischen den Speicherebenen „Hot“ und „Cool“ (auf der Kontoebene) bzw. zwischen den Ebenen „Hot“, „Cool“ und „Archiv“ (auf der Blobebene) wählen. Speichern Sie Daten, auf die selten, weniger häufig und häufig zugegriffen wird, auf den Speicherebenen „Hot“, „Cool“ bzw. „Archiv“, um die Kosten zu optimieren. Blob-Speicherkonten sind mit Ihren bereits vorhandenen allgemeinen Speicherkonten vergleichbar und besitzen die gleichen Eigenschaften für Dauerhaftigkeit, Verfügbarkeit, Skalierbarkeit und Leistung, die Sie schon heute verwenden – einschließlich vollständiger API-Konsistenz für Blockblobs und Anfügeblobs.
+Sie können das Tiering für „Hot“, „Cool“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (General Purpose v2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blob Storage-Konten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](storage-account-options.md).
 
-> [!NOTE]
-> BLOB-Speicherkonten unterstützen nur Block- und Anfügeblobs, keine Seitenblobs.
+Bei Blob Storage- und GPv2-Konten wird das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar gemacht. Hiermit können Sie die Standardspeicherebene für alle Blobs des Speicherkontos, für die auf Objektebene keine Ebene festgelegt ist, als „Hot“ oder „Cool“ angeben. Für Objekte, für die die Ebene auf Objektebene festgelegt ist, gilt die Kontoebene nicht. Die Archivebene kann nur auf Objektebene angewendet werden. Sie können jederzeit zwischen diesen Speicherebenen wechseln.
 
-Blob-Speicherkonten machen das Attribut **Zugriffsebene** auf Kontoebene verfügbar, und die Standard-Speicherkontoebene wird als **Hot** oder **Cool** angegeben. Die Standard-Speicherkontoebene wird auf alle Blobs angewendet, für die auf Blobebene keine explizite Ebene festgelegt ist. Bei einer Änderung des Nutzungsmusters der Daten können Sie jederzeit zwischen den beiden Speicherebenen wechseln. Die **Ebene „Archiv“** (Vorschau) steht ausschließlich auf der Blobebene zur Verfügung.
-
-> [!NOTE]
-> Die Änderung der Speicherebene kann mit zusätzlichen Kosten verbunden sein. Ausführlichere Informationen finden Sie im Abschnitt [Preise und Abrechnung](#pricing-and-billing).
-
-### <a name="hot-access-tier"></a>Zugriffsebene „Hot“
+## <a name="hot-access-tier"></a>Zugriffsebene „Hot“
 
 Für Speicher vom Typ „Hot“ fallen höhere Speicherkosten als für Speicher vom Typ „Cool“ und „Archiv“ an, aber gleichzeitig auch die niedrigsten Zugriffskosten. Beispielszenarien für die Verwendung der Speicherebene „Hot“:
 
 * Daten, die aktiv verwendet werden oder bei denen eine hohe Zugriffshäufigkeit (Lese- und Schreibvorgänge) zu erwarten ist
 * Daten, die zur Verarbeitung und späteren Migration zur Speicherebene „Cool“ bereitgestellt werden
 
-### <a name="cool-access-tier"></a>Zugriffsebene „Cool“
+## <a name="cool-access-tier"></a>Zugriffsebene „Cool“
 
 Für die Speicherebene „Cool“ fallen im Vergleich mit der Speicherebene „Hot“ niedrigere Speicherkosten und höhere Zugriffskosten an. Diese Ebene ist für Daten bestimmt, die mindestens 30 Tage lang auf der Ebene „Cool“ verbleiben. Beispielszenarien für die Verwendung der Speicherebene „Cool“:
 
@@ -57,16 +51,11 @@ Für die Speicherebene „Cool“ fallen im Vergleich mit der Speicherebene „H
 * Ältere Medieninhalte, die nur noch selten angezeigt werden, dann aber umgehend verfügbar sein müssen
 * Große Datasets, die kostengünstig gespeichert werden müssen, während weitere Daten für die zukünftige Verarbeitung gesammelt werden (*Beispiel:* langfristige Speicherung von wissenschaftlichen Daten oder Telemetrie-Rohdaten einer Produktionsstätte)
 
-### <a name="archive-access-tier-preview"></a>Zugriffsebene „Archiv“ (Vorschau)
+## <a name="archive-access-tier"></a>Zugriffsebene „Archiv“
 
 Archivspeicher zeichnet sich im Vergleich zu den Speicherebenen „Hot“ und „Cool“ durch die niedrigsten Speicherkosten und höhere Datenabrufkosten aus. Diese Ebene ist für Daten bestimmt, die mehrere Stunden Abrufwartezeit tolerieren und mindestens 180 Tage lang auf der Archivebene verbleiben.
 
 Während sich ein Blob im Archivspeicher befindet, ist er offline und kann nicht gelesen (mit Ausnahme der Metadaten, die online und verfügbar sind), kopiert, überschrieben oder geändert werden. Auch können Sie keine Momentaufnahmen von einem Blob im Archivspeicher erstellen. Sie können jedoch vorhandene Vorgänge verwenden, um das Blob zu löschen, aufzulisten, Eigenschaften/Metadaten des Blobs abzurufen oder die Ebene des Blobs zu ändern.
-
-#### <a name="blob-rehydration"></a>Blobaktivierung
-Wenn Sie Daten aus dem Archivspeicher lesen möchten, müssen Sie zuerst die Ebene des Blobs in „Hot“ oder „Cool“ ändern. Dieser Prozess wird als Aktivierung bezeichnet und kann für Blobs mit einer Größe von bis zu 50 GB bis zu 15 Stunden dauern. Bei größeren Blobs dauert der Vorgang länger. Die zusätzlich benötigte Zeit ist abhängig vom Durchsatzlimit des Blobs.
-
-Während der Aktivierung können Sie anhand der Archivstatuseigenschaft des Blobs ermitteln, ob die Ebene geändert wurde. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die Archivstatuseigenschaft des Blobs entfernt, und die Zugriffsebeneneigenschaft des Blobs spiegelt die Ebene „Hot“ oder „Cool“ wider.  
 
 Beispielszenarien für die Verwendung der Speicherebene „Archiv“:
 
@@ -74,29 +63,16 @@ Beispielszenarien für die Verwendung der Speicherebene „Archiv“:
 * Originaldaten (Rohdaten), die auch nach der Umwandlung in ein endgültiges verwendbares Format erhalten bleiben müssen (*Beispiel:* Medien-Rohdateien nach der Transcodierung in andere Formate)
 * Compliance- und Archivdaten, die über einen langen Zeitraum gespeichert werden müssen und selten verwendet werden (*Beispiele:* Überwachungsvideos, alte Röntgenbilder/MRT-Scans für Unternehmen aus dem Gesundheitswesen, Audioaufnahmen und Protokolle von Kundenanrufen bei Finanzdienstleistern)
 
-### <a name="recommendations"></a>Recommendations
+### <a name="blob-rehydration"></a>Blobaktivierung
+Wenn Sie Daten aus dem Archivspeicher lesen möchten, müssen Sie zuerst die Ebene des Blobs in „Hot“ oder „Cool“ ändern. Dieser Prozess wird als Aktivierung bezeichnet und kann bis zu 15 Stunden dauern. Es wird dringend empfohlen, höhere Blobgrößen zu verwenden, um eine optimale Leistung zu erzielen. Die Dauer kann sich ggf. erhöhen, wenn mehrere kleine Blobs gleichzeitig aktiviert werden.
 
-Weitere Informationen zu Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
+Während der Aktivierung können Sie anhand der Eigenschaft **Archive Status** (Archivstatus) des Blobs ermitteln, ob die Ebene geändert wurde. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die „Archive Status“-Eigenschaft entfernt, und die Eigenschaft **Access Tier** (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.  
 
-Bei Anwendungen, die nur Block- oder Anfügeblobspeicher benötigen, empfiehlt sich die Verwendung von Blob-Speicherkonten, um vom differenzierten Preismodell des gestaffelten Speichers profitieren zu können. Allerdings gibt es bestimmte Situationen, in denen dies nicht möglich ist und stattdessen allgemeine Speicherkonten verwendet werden müssen. Hierzu zählen etwa folgende Szenarien:
+## <a name="blob-level-tiering"></a>Blobebenentiering
 
-* Sie müssen Tabellen, Warteschlangen oder Dateien verwenden, und die Blobs sollen im gleichen Speicherkonto gespeichert werden. Neben der Verwendung der gleichen Schlüssel hat diese Vorgehensweise allerdings keine weiteren technischen Vorteile.
+Mit dem Blobebenentiering können Sie mithilfe eines einzelnen Vorgangs namens [Set Blob Tier](/rest/api/storageservices/set-blob-tier) (Blobebene festlegen) die Ebene Ihrer Daten auf der Objektebene ändern. So können Sie flexibel auf Nutzungsänderungen reagieren und problemlos zwischen den Blobzugriffsebenen „Hot“, „Cool“ und „Archiv“ wechseln, ohne Daten zwischen Konten zu verschieben. Alle Ebenenänderungen werden umgehend umgesetzt (mit Ausnahme der Aktivierung eines Blobs aus dem Archiv), und dieser Vorgang kann mehrere Stunden dauern. Der Zeitpunkt der letzten Änderung der Blobebene wird über die Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) verfügbar gemacht. Wenn sich ein Blob auf der Archivebene befindet, darf er nicht überschrieben werden. Daher ist das Hochladen desselben Blobs in diesem Szenario nicht zulässig. Sie können ein Blob in „Hot“ und „Cool“ überschreiben. In diesem Fall erbt das neue Blob die Ebene des alten Blobs, das überschrieben wurde.
 
-* Sie müssen weiterhin das klassische Bereitstellungsmodell verwenden. Blob-Speicherkonten sind nur im Rahmen des Azure Resource Manager-Bereitstellungsmodells verfügbar.
-
-* Sie müssen Seitenblobs verwenden. Blob-Speicherkonten unterstützen keine Seitenblobs. Wir empfehlen grundsätzlich die Verwendung von Blockblobs, es sei denn, Sie benötigen explizit Seitenblobs.
-
-* Sie verwenden eine ältere Version der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) (vor 2014-02-14) oder eine Clientbibliothek mit einer niedrigeren Version als 4.x und können kein Upgrade für Ihre Anwendung durchführen.
-
-> [!NOTE]
-> Blob-Speicherkonten werden derzeit in allen Azure-Regionen unterstützt.
-
-
-## <a name="blob-level-tiering-feature-preview"></a>Tiering auf Blobebene (Vorschau)
-
-Mit dem Blobebenentiering können Sie mithilfe eines einzelnen Vorgangs namens [Set Blob Tier](/rest/api/storageservices/set-blob-tier) (Blobebene festlegen) die Ebene Ihrer Daten auf der Objektebene ändern. So können Sie flexibel auf Nutzungsänderungen reagieren und problemlos zwischen den Blobzugriffsebenen „Hot“, „Cool“ und „Archiv“ wechseln, ohne Daten zwischen Konten zu verschieben. Alle Ebenenänderungen werden umgehend umgesetzt (mit Ausnahme der Aktivierung aus dem Archiv). Der Zeitpunkt der letzten Änderung der Blobebene wird über das Attribut **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) in den Blobeigenschaften verfügbar gemacht. Wenn sich ein Blob auf der Archivebene befindet, darf er nicht überschrieben werden. Daher ist das Hochladen desselben Blobs in diesem Szenario nicht zulässig. Sie können ein Blob in „Hot“ und „Cool“ überschreiben. In diesem Fall erbt das neue Blob die Ebene des alten Blobs, das überschrieben wurde.
-
-Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine explizite Ebene zugewiesen ist, leiten die Ebene von der Zugriffsebeneneinstellung des Kontos ab. Wenn die Zugriffsebene vom Konto abgeleitet wird, sehen Sie, dass das Attribut **Access Tier Inferred** (Abgeleitete Zugriffsebene) auf „true“ festgelegt ist und das Attribut **Access Tier** (Zugriffsebene) des Blobs mit der Kontoebene übereinstimmt. Im Azure-Portal wird die „Access Tier Inferred“-Eigenschaft (Abgeleitete Zugriffsebene) mit der Blobzugriffsebene angezeigt (z.B. „Hot (inferred)“ oder „Cool (inferred)“).
+Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine explizite Ebene zugewiesen ist, leiten die Ebene von der Zugriffsebeneneinstellung des Kontos ab. Wenn die Zugriffsebene vom Konto abgeleitet wird, sehen Sie, dass die Blobeigenschaft **Access Tier Inferred** (Abgeleitete Zugriffsebene) auf „true“ festgelegt ist und die Blobeigenschaft **Access Tier** (Zugriffsebene) des Blobs mit der Kontoebene übereinstimmt. Im Azure-Portal wird die „Access Tier Inferred“-Eigenschaft (Abgeleitete Zugriffsebene) mit der Blobzugriffsebene angezeigt (z.B. „Hot (inferred)“ oder „Cool (inferred)“).
 
 > [!NOTE]
 > Für die Archivspeicherebene und das Blobebenentiering werden nur Blockblobs unterstützt. Außerdem ist es nicht möglich, die Ebene eines Blockblobs zu ändern, das über Momentaufnahmen verfügt.
@@ -105,23 +81,15 @@ Ein Konto kann Blobs aus allen drei Speicherebenen enthalten. Blobs, denen keine
 
 Wenn ein Blob in „Cool“-Richtung verschoben wird (Hot->Cool, Hot->Archiv oder Cool->Archiv), wird der Vorgang als Schreibvorgang auf die Zielebene berechnet, und es gelten die Gebühren der Zielebene für Schreibvorgänge (pro 10.000) und das Schreiben von Daten (pro GB). Wenn ein Blob in „Hot“-Richtung verschoben wird (Archiv->Cool, Archiv->Hot oder Cool->Hot), wird der Vorgang als Lesevorgang aus der Quellebene berechnet, und es gelten die Gebühren der Quellebene für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB).
 
-Gehen Sie zur Verwendung dieser Vorschaufeatures wie in der [Ankündigung der Archivebene und des Tierings auf Blobebene](https://azure.microsoft.com/blog/announcing-the-public-preview-of-azure-archive-blob-storage-and-blob-level-tiering) beschrieben vor.
+Wenn Sie für die Kontoebene von „Hot“ zu „Cool“ wechseln, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten berechnet. Für Blob Storage-Konten fallen hierfür keine Gebühren an. Ihnen werden sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) berechnet, wenn Sie für Ihr Blob Storage- oder GPv2-Konto von „Cool“ zu „Hot“ wechseln. Für alle Blobs, die aus der Ebene „Cool“ oder „Archiv“ verschoben werden, können auch Gebühren für das frühe Löschen anfallen.
 
-Im Anschluss folgen einige Einschränkungen für die Vorschauversion des Tierings auf Blobebene:
+### <a name="cool-and-archive-early-deletion-effective-february-1-2018"></a>Frühes Löschen für „Cool“ und „Archiv“ (ab 1. Februar 2018)
 
-* Der Archivspeicher wird nur von neuen Blob-Speicherkonten unterstützt, die nach erfolgreicher Registrierung für die Vorschauversion in der Region „USA, Osten 2“, „USA, Osten“ oder „USA, Westen“ erstellt werden.
-
-* Das Tiering auf Blobebene wird nur von neuen Blob-Speicherkonten unterstützt, die nach erfolgreicher Registrierung für die Vorschauversion in öffentlichen Regionen erstellt werden.
-
-* Tiering auf Blobebene und Archivspeicher werden nur in [LRS] (../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#locally-redundant-storage) unterstützt. Die Unterstützung von [GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#geo-redundant-storage) und [RA-GRS](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#read-access-geo-redundant-storage) folgt später.
-
-* Die Ebene eines Blobs mit Momentaufnahmen kann nicht geändert werden.
-
-* Von einem Blob im Archivspeicher kann keine Kopie oder Momentaufnahme erstellt werden.
+Zusätzlich zur Gebühr, die pro GB und pro Monat berechnet wird, gilt Folgendes: Alle Blobs, die in die Ebene „Cool“ (nur GPv2-Konten) verschoben werden, unterliegen einem Zeitraum von 30 Tagen für das frühe Löschen für „Cool“, und alle Blobs, die in die Ebene „Archiv“ verschoben werden, unterliegen einem Zeitraum von 180 Tagen für das frühe Löschen für „Archiv“. Diese Gebühr fällt anteilig an. Wenn ein Blob beispielsweise in das Archiv verschoben und dann nach 45 Tagen gelöscht oder in die Ebene „Hot“ verschoben wird, wird Ihnen eine Gebühr für das frühe Löschen berechnet, die 135 Speichertagen (180 minus 45) dieses Blobs im Archiv entspricht.
 
 ## <a name="comparison-of-the-storage-tiers"></a>Vergleich der Speicherebenen
 
-Die folgende Tabelle enthält eine Gegenüberstellung der Speicherebenen „Hot“ und „Cool“. Da sich der Archivspeicher auf Blobebene noch in der Vorschauphase befindet, stehen dafür keine SLAs zur Verfügung.
+Die folgende Tabelle enthält eine Gegenüberstellung der Speicherebenen „Hot“, „Cool“ und „Archiv“.
 
 | | **Speicherebene „Hot“** | **Speicherebene „Cool“** | **Speicherebene „Archiv“**
 | ---- | ----- | ----- | ----- |
@@ -129,80 +97,23 @@ Die folgende Tabelle enthält eine Gegenüberstellung der Speicherebenen „Hot�
 | **Availability** <br> **(RA-GRS-Lesevorgänge)**| 99,99 % | 99,9 % | N/V |
 | **Nutzungsgebühren** | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
 | **Mindestobjektgröße** | N/V | N/V | N/V |
-| **Mindestspeicherdauer** | N/V | N/V | 180 Tage
+| **Mindestspeicherdauer** | N/V | 30 Tage (nur GPv2) | 180 Tage
 | **Latenz** <br> **(Zeit bis zum ersten Byte)** | Millisekunden | Millisekunden | < 15 Stunden
 | **Skalierbarkeits- und Leistungsziele** | Identisch mit allgemeinen Speicherkonten | Identisch mit allgemeinen Speicherkonten | Identisch mit allgemeinen Speicherkonten |
 
 > [!NOTE]
-> Blob-Speicherkonten unterstützen die gleichen Leistungs- und Skalierbarkeitsziele wie allgemeine Speicherkonten. Weitere Informationen finden Sie unter [Microsoft Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Speicherskalierbarkeit und Leistungsziele von Azure, in englischer Sprache).
+> Blob Storage-Konten unterstützen die gleichen Leistungs- und Skalierbarkeitsziele wie allgemeine Speicherkonten. Weitere Informationen finden Sie unter [Microsoft Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Speicherskalierbarkeit und Leistungsziele von Azure, in englischer Sprache).
 
-
-## <a name="pricing-and-billing"></a>Preise und Abrechnung
-Für Blob-Speicherkonten wird ein Blobspeicher-Preismodell verwendet, das auf der Ebene der einzelnen Blobs basiert. Bei Verwendung eines Blob-Speicherkontos sind folgende Abrechnungsaspekte zu berücksichtigen:
-
-* **Speicherkosten**: Die Kosten für die Datenspeicherung hängen nicht nur von der gespeicherten Datenmenge ab, sondern auch von der Speicherebene. Je „cooler“ die Ebene, desto geringer die Kosten pro GB.
-
-* **Kosten für den Datenzugriff**: Je „cooler“ die Ebene, desto höher die Gebühren für den Datenzugriff. Bei den Speicherebenen „Cool“ und „Archiv“ fallen Zugriffsgebühren für Lesevorgänge pro Gigabyte an.
-
-* **Transaktionskosten**: Für alle Ebenen fällt eine Gebühr pro Transaktion an, die sich erhöht, je „cooler“ die Ebene ist.
-
-* **Datenübertragungskosten bei Georeplikation**: Gilt nur für Konten mit konfigurierter Georeplikation (einschließlich GRS und RA-GRS). Die Datenübertragung für die Georeplikation wird pro Gigabyte abgerechnet.
-
-* **Kosten für ausgehende Datenübertragungen**: Ausgehende Datenübertragungen (Daten, die aus einer Azure-Region übertragen werden) werden genau wie bei allgemeinen Speicherkonten nach Bandbreitennutzung pro Gigabyte abgerechnet.
-
-* **Änderung der Speicherebene**: Bei einem Wechsel der Kontospeicherebene von „Cool“ zu „Hot“ fällt eine Gebühr an, die den Kosten entspricht, die durch das Lesen aller im Speicherkonto vorhandenen Daten entstehen. Beim Ändern der Kontospeicherebene von „Hot“ zu „Cool“ fällt aber eine Gebühr an, die dem Schreiben aller Daten auf die Ebene „Cool“ entspricht.
-
-> [!NOTE]
-> Ausführlichere Informationen zum Preismodell für Blob-Speicherkonten finden Sie auf der Seite [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/). Ausführlichere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie auf der Seite [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).
-
-## <a name="quick-start"></a>Schnellstart
+## <a name="quickstart-scenarios"></a>Schnellstartszenarien
 
 In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szenarien veranschaulicht:
 
-* Erstellen eines Blob-Speicherkontos
-* Verwalten eines Blob-Speicherkontos
+* Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blob Storage-Konto
+* Ändern der Ebene eines Blobs in einem GPv2- oder Blob Storage-Konto
 
-In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festgelegt werden, da diese Einstellung für das gesamte Speicherkonto gilt. „Archiv“ kann nur für ein bestimmtes Blob festgelegt werden.
-
-### <a name="create-a-blob-storage-account-using-the-azure-portal"></a>Erstellen eines Blob-Speicherkontos mithilfe des Azure-Portals
+### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Ändern der Standard-Kontozugriffsebene für ein GPv2- oder Blob Storage-Konto
 
 1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
-
-2. Wählen Sie im Menü „Hub“ die Option **Neu** > **Daten und Speicher** > **Speicherkonto** aus.
-
-3. Geben Sie einen Namen für Ihr Speicherkonto ein.
-
-    Dieser Name muss global eindeutig sein. Er wird als Teil der URL verwendet, über die auf die Objekte im Speicherkonto zugegriffen wird.  
-
-4. Wählen Sie als Bereitstellungsmodell die Option **Resource Manager** aus.
-
-    Mehrstufiger Speicher kann nur mit Resource Manager-Speicherkonten verwendet werden. Dies ist das empfohlene Bereitstellungsmodell für die neuen Ressourcen. Weitere Informationen finden Sie unter [Übersicht über Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).  
-
-5. Wählen Sie in der Dropdownliste „Account Kind“ (Kontoart) die Option **Blob Storage**.
-
-    Hier wählen Sie den Speicherkontotyp aus. Mehrstufiger Speicher ist nicht im allgemeinen Speicher verfügbar, sondern nur im Speicher vom Typ „Blobspeicher“.     
-
-    Die Leistungsebene ist bei dieser Auswahl auf „Standard“ festgelegt. Mehrstufiger Speicher ist für die Leistungsebene „Premium“ nicht verfügbar.
-
-6. Wählen Sie die Replikationsoption für das Speicherkonto aus: **LRS**, **GRS** oder **RA-GRS**. Die Standardeinstellung ist **RA-GRS**.
-
-    LRS = lokal redundanter Speicher, GRS = georedundanter Speicher (zwei Regionen), RA-GRS = georedundanter Speicher mit Lesezugriff (zwei Regionen mit Lesezugriff für die zweite Region).
-
-    Weitere Details zu den Replikationsoptionen für Azure Storage finden Sie unter [Azure Storage-Replikation](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-7. Wählen Sie die richtige Speicherebene für Ihre Zwecke aus: Legen Sie **Zugriffstarif** entweder auf **Kalte Daten** oder **Heiße Daten** fest. Der Standardwert ist **Heiße Daten**.
-
-8. Wählen Sie das Abonnement aus, in dem Sie das neue Speicherkonto erstellen möchten.
-
-9. Geben Sie eine neue Ressourcengruppe an, oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
-
-10. Wählen Sie die Region für Ihr Speicherkonto aus.
-
-11. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.
-
-### <a name="change-the-storage-tier-of-a-blob-storage-account-using-the-azure-portal"></a>Ändern der Speicherebene für ein Blob-Speicherkonto mithilfe des Azure-Portals
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
 2. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
 
@@ -212,7 +123,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 5. Klicken Sie oben im Blatt auf „Speichern“.
 
-### <a name="change-the-storage-tier-of-a-blob-using-the-azure-portal"></a>Ändern der Speicherebene für ein Blob mithilfe des Azure-Portals
+### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Ändern der Ebene eines Blobs in einem GPv2- oder Blob Storage-Konto
 
 1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 
@@ -222,174 +133,68 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 5. Klicken Sie oben im Blatt auf „Speichern“.
 
-> [!NOTE]
-> Die Änderung der Speicherebene kann mit zusätzlichen Kosten verbunden sein. Ausführlichere Informationen finden Sie im Abschnitt [Preise und Abrechnung](#pricing-and-billing).
-
-
-## <a name="evaluating-and-migrating-to-blob-storage-accounts"></a>Evaluieren von und Migrieren zu Blob-Speicherkonten
-Dieser Abschnitt dient dazu, Benutzern einen reibungslosen Übergang zur Nutzung von Blob-Speicherkonten zu ermöglichen. Es gibt zwei Benutzerszenarien:
-
-* Sie verfügen über ein vorhandenes allgemeines Speicherkonto und möchten eine Umstellung auf ein Blob-Speicherkonto mit der richtigen Speicherebene evaluieren.
-* Sie haben sich für die Nutzung eines Blob-Speicherkontos entschieden oder besitzen bereits ein Konto dieser Art und möchten evaluieren, ob Sie die Speicherebene für „heiße Daten“ (Hot) oder „kalte Daten“ (Cool) verwenden sollen.
-
-In beiden Fällen sollten Sie zuerst die Kosten für die Speicherung und den Zugriff auf Ihre Daten in einem Blob-Speicherkonto schätzen und diesen Betrag mit Ihren derzeitigen Kosten vergleichen.
-
-## <a name="evaluating-blob-storage-account-tiers"></a>Evaluieren von Blob-Speicherkontoebenen
-
-Zur Ermittlung der ungefähren Kosten für die Speicherung und den Zugriff auf die Daten, die in einem Blob-Speicherkonto gespeichert sind, müssen Sie Ihr vorhandenes Nutzungsmuster evaluieren oder Ihr voraussichtliches Nutzungsmuster einschätzen. Dazu benötigen Sie im Allgemeinen folgende Informationen:
-
-* Ihr Speicherverbrauch: Welche Datenmengen werden gespeichert, und wie verändert sich dies von Monat zu Monat?
-
-* Ihre Speicherzugriffsmuster: Welche Datenmengen werden im Rahmen des Kontos gelesen und geschrieben (einschließlich neuer Daten)? Wie viele Transaktionen werden für den Datenzugriff verwendet, und welche Arten von Transaktionen fallen an?
-
-## <a name="monitoring-existing-storage-accounts"></a>Überwachen von vorhandenen Speicherkonten
-
-Um Ihre vorhandenen Speicherkonten zu überwachen und diese Daten zu sammeln, können Sie Azure Storage Analytics nutzen. Damit wird eine Protokollierung durchgeführt, und es werden Metrikdaten für ein Speicherkonto bereitgestellt. Mit Speicheranalysen können Metriken gespeichert werden, die aggregierte Transaktionsstatistiken und Kapazitätsdaten zu Anforderungen an den Blob-Speicherdienst enthalten – sowohl für allgemeine Speicherkonten als auch für Blob-Speicherkonten. Diese Daten werden in bekannten Tabellen in demselben Speicherkonto gespeichert.
-
-Weitere Informationen finden Sie unter [Informationen zu Metriken der Speicheranalyse](https://msdn.microsoft.com/library/azure/hh343258.aspx) sowie unter [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/azure/hh343264.aspx).
-
-> [!NOTE]
-> Blob-Speicherkonten machen den Tabellenspeicherdienst-Endpunkt nur zum Speichern und Zugreifen auf die Metrikdaten für das Konto verfügbar.
-
-Zur Überwachung des Speicherbedarfs für den Blob-Speicherdienst müssen Sie die Kapazitätsmetriken aktivieren.
-Wenn dies aktiviert ist, werden täglich Kapazitätsdaten für den Blob-Dienst eines Speicherkontos aufgezeichnet. Sie werden als Tabelleneintrag aufgezeichnet, der in die Tabelle *$MetricsCapacityBlob* desselben Speicherkontos geschrieben wird.
-
-Zur Überwachung des Datenzugriffsmusters für den Blob-Speicherdienst müssen Sie die stündlichen Transaktionsmetriken auf der API-Ebene aktivieren. Wenn dies aktiviert ist, werden jede Stunde die Transaktionen pro API aggregiert und als Tabelleneintrag aufgezeichnet, der in die Tabelle *$MetricsHourPrimaryTransactionsBlob* desselben Speicherkontos geschrieben wird. In der Tabelle *$MetricsHourSecondaryTransactionsBlob* werden bei Verwendung von RA-GRS-Speicherkonten die Transaktionen für den sekundären Endpunkt aufgezeichnet.
-
-> [!NOTE]
-> Falls Sie über ein allgemeines Speicherkonto verfügen, in dem Sie neben Block- und Anfügeblob-Daten Seitenblobs und Datenträger virtueller Computer gespeichert haben, ist dieser Schätzungsprozess nicht geeignet. Es gibt nämlich keine Möglichkeit, die Kapazitäts- und Transaktionsmetriken basierend auf dem Blobtyp nur für Block- und Anfügeblobs zu ermitteln, die zu einem Blob-Speicherkonto migriert werden können.
-
-Um eine gute Annäherung des Datenverbrauchs und der Zugriffsmuster zu erhalten, empfehlen wir Ihnen die Auswahl eines Aufbewahrungszeitraums für die Metriken, der für die reguläre Nutzung repräsentativ ist und den Sie dann extrapolieren können. Eine Option besteht darin, die Metrikdaten für sieben Tage aufzubewahren und die Daten jede Woche für die Analyse am Monatsende zu erfassen. Eine andere Möglichkeit ist die Aufbewahrung der Metrikdaten der letzten 30 Tage, um sie dann am Ende der 30 Tage zu erfassen und zu analysieren.
-
-Weitere Informationen zum Aktivieren, Erfassen und Anzeigen von Metrikdaten finden Sie unter [Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-> [!NOTE]
-> Speicherung, Verwendung und Download von Analysedaten werden genau wie bei regulären Benutzerdaten in Rechnung gestellt.
-
-### <a name="utilizing-usage-metrics-to-estimate-costs"></a>Verwenden von Nutzungsmetriken zum Schätzen von Kosten
-
-### <a name="storage-costs"></a>Speicherkosten
-
-Der letzte Eintrag in der Kapazitätsmetrikentabelle *$MetricsCapacityBlob* mit dem Zeilenschlüssel *'data'* enthält die von den Benutzerdaten verbrauchte Speicherkapazität. Der letzte Eintrag in der Kapazitätsmetrikentabelle *$MetricsCapacityBlob* mit dem Zeilenschlüssel *'analytics'* enthält die von den Analyseprotokollen verbrauchte Speicherkapazität.
-
-Diese gesamte Kapazität, die von Benutzerdaten und Analyseprotokollen (falls aktiviert) verbraucht wird, kann dann verwendet werden, um die Kosten für das Speichern der Daten im Speicherkonto zu schätzen. Die gleiche Methode kann auch zum Schätzen der Speicherkosten für Block- und Anfügeblobs in allgemeinen Speicherkonten verwendet werden.
-
-### <a name="transaction-costs"></a>Transaktionskosten
-
-Die Summe von *'TotalBillableRequests'*über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtzahl der Transaktionen für die jeweilige API an. *Beispiel:* Die Gesamtanzahl von Transaktionen vom Typ *GetBlob* eines bestimmten Zeitraums kann anhand der Gesamtsumme von abrechenbaren Anforderungen für alle Einträge mit dem Zeilenschlüssel *user;GetBlob* berechnet werden.
-
-Zur Ermittlung der ungefähren Transaktionskosten für Blob-Speicherkonten müssen die Transaktionen in drei Gruppen unterteilt werden, da jeweils unterschiedliche Preise gelten.
-
-* Schreibtransaktionen wie *'PutBlob'*, *'PutBlock'*, *'PutBlockList'*, *'AppendBlock'*, *'ListBlobs'*, *'ListContainers'*, *'CreateContainer'*, *'SnapshotBlob'* und *'CopyBlob'*.
-* Löschtransaktionen wie *'DeleteBlob'* und *'DeleteContainer'*.
-* Alle anderen Transaktionen.
-
-Um die Transaktionskosten für allgemeine Speicherkonten zu schätzen, müssen Sie alle Transaktionen unabhängig vom Vorgang bzw. von der API aggregieren.
-
-### <a name="data-access-and-geo-replication-data-transfer-costs"></a>Datenübertragungskosten für Datenzugriff und Georeplikation
-
-Die Speicheranalyse liefert zwar nicht die Menge der Daten, die aus einem Speicherkonto gelesen und in das Speicherkonto geschrieben wird, aber dieser Wert kann grob geschätzt werden, indem die Tabelle mit den Transaktionsmetriken verwendet wird. Die Summe von *'TotalIngress'* über alle Einträge für eine API in der Transaktionsmetrikentabelle hinweg gibt die Gesamtmenge der Eingangsdaten in Byte für die jeweilige API an. Analog dazu gibt die Summe von *'TotalEgress'* die Gesamtmenge der Ausgangsdaten in Byte an.
-
-Zur Ermittlung der ungefähren Datenzugriffskosten für Blob-Speicherkonten müssen die Transaktionen in zwei Gruppen unterteilt werden.
-
-* Die Menge der Daten, die aus dem Speicherkonto abgerufen werden, kann geschätzt werden, indem vor allem für die Vorgänge *'GetBlob'* und *'CopyBlob'* die Summe von *'TotalEgress'* geprüft wird.
-
-* Die Menge der Daten, die in das Speicherkonto geschrieben werden, kann anhand der Summe von *'TotalIngress'* für die Vorgänge *'PutBlob'*, *'PutBlock'*, *'CopyBlob'* und *'AppendBlock'* geschätzt werden.
-
-Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragungskosten mit Georeplikation für Blob-Speicherkonten auch auf der Grundlage der Schätzung für die Menge an geschriebenen Daten berechnet werden.
-
-> [!NOTE]
-> Ein ausführlicheres Beispiel zur Berechnung der Kosten für die Verwendung der Speicherebene „Hot“ oder „Cool“ finden Sie unter *Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?* im FAQ-Bereich mit dem Titel [Was sind die Zugriffsebenen „Heiß“ und „Kalt“, und wie bestimme ich, welche Zugriffsebene ich wählen sollte?](https://azure.microsoft.com/pricing/details/storage/)an.
-
-## <a name="migrating-existing-data"></a>Migrieren vorhandener Daten
-
-Ein Blob-Speicherkonto ist ein spezielles Konto, in dem nur Blockblobs und Anfügeblobs gespeichert werden. Bereits vorhandene allgemeine Speicherkonten, die Ihnen das Speichern von Tabellen, Warteschlangen, Dateien und Datenträgern sowie Blobs ermöglichen, können nicht in Blob-Speicherkonten konvertiert werden. Zum Verwenden der Speicherebenen müssen Sie neue Blob-Speicherkonten erstellen und Ihre vorhandenen Daten zu den neu erstellten Konten migrieren.
-
-Mithilfe der folgenden Methoden können Sie vorhandene Daten von lokalen Speichergeräten, aus dem Cloudspeicher von Drittanbietern oder aus Ihren vorhandenen allgemeinen Azure-Speicherkonten zu Blob-Speicherkonten migrieren:
-
-### <a name="azcopy"></a>AzCopy
-
-AzCopy ist ein Windows-Befehlszeilenprogramm, mit dem sehr effizient Daten in und aus Azure Storage kopiert werden können. Mit AzCopy können Sie Daten aus Ihren vorhandenen allgemeinen Speicherkonten in das Blob-Speicherkonto kopieren oder Daten von Ihren lokalen Speichergeräten in das Blob-Speicherkonto hochladen.
-
-Ausführlichere Informationen finden Sie unter [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
-### <a name="data-movement-library"></a>Data Movement-Bibliothek
-
-Die Azure Storage Data Movement-Bibliothek für .NET basiert auf dem Kernframework für die Datenverschiebung, das AzCopy zugrunde liegt. Die Bibliothek ist ähnlich wie AzCopy auf leistungsfähige, zuverlässige und einfache Datenübertragungsvorgänge ausgelegt. Dies ermöglicht die native Verwendung aller Vorteile der AzCopy-Features in Ihrer Anwendung, ohne externe Instanzen von AzCopy ausführen und überwachen zu müssen.
-
-Ausführlichere Informationen finden Sie unter [Azure Storage Data Movement-Bibliothek für .NET](https://github.com/Azure/azure-storage-net-data-movement)
-
-### <a name="rest-api-or-client-library"></a>REST-API oder Clientbibliothek
-
-Sie können eine benutzerdefinierte Anwendung erstellen, um Ihre Daten mithilfe einer der Azure-Clientbibliotheken oder mithilfe der REST-API der Azure Storage-Dienste in ein Blob-Speicherkonto zu migrieren. Azure Storage bietet umfassende Clientbibliotheken für mehrere Programmiersprachen und Plattformen wie .NET, Java, C++, Node.JS, PHP, Ruby und Python. Die Clientbibliotheken bieten erweiterte Funktionen, beispielsweise Wiederholungslogik, Protokollierung und parallele Uploads. Die Entwicklung kann direkt mit der REST-API erfolgen. Diese API lässt sich mithilfe jeder Sprache aufrufen, die HTTP/HTTPS-Anforderungen verarbeitet.
-
-Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md).
-
-> [!NOTE]
-> Für Blobs, für die die clientseitige Verschlüsselung verwendet wird, werden auf die Verschlüsselung bezogene Metadaten des Blobs gespeichert. Es ist äußerst wichtig, dass für alle Kopiermechanismen sichergestellt wird, dass die Blob-Metadaten – und vor allem die auf die Verschlüsselung bezogenen Metadaten – beibehalten werden. Wenn Sie die Blobs ohne diese Metadaten kopieren, ist der Blobinhalt nicht mehr abrufbar. Weitere Informationen zu den auf die Verschlüsselung bezogenen Metadaten finden Sie unter [Clientseitige Azure Storage-Verschlüsselung](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
-
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-1. **Bleiben bereits vorhandene Speicherkonten weiterhin verfügbar?**
+**Sollte ich Blob Storage- oder GPv2-Konten verwenden, wenn ich für meine Daten das Tiering durchführen möchte?**
 
-    Ja. Bereits vorhandene Speicherkonten sind weiterhin verfügbar (zu gleichen Preisen und mit unveränderten Funktionen).  Für sie kann keine Speicherebene ausgewählt werden, und diese Möglichkeit ist auch in Zukunft nicht geplant.
+Wir empfehlen Ihnen, für das Tiering anstelle von Blob Storage-Konten GPv2-Konten zu nutzen. Für GPv2 werden alle Features von Blob Storage-Konten sowie noch viele weitere Features unterstützt. Die Preise für Blob Storage und GPv2 sind nahezu identisch, aber einige neue Features und Preisreduzierungen gelten nur für GPv2-Konten. Für GPv1-Konten wird das Tiering nicht unterstützt.
 
-2. **Warum und wann sollte ich Blob-Speicherkonten verwenden?**
+Die Preisstruktur von GPv1 und GPv2 unterscheidet sich, und Kunden sollten dies jeweils sorgfältig evaluieren, bevor sie sich für die Nutzung von GPv2-Konten entscheiden. Sie können ein vorhandenes Blob Storage- oder GPv1-Konto leicht in ein GPv2-Konto konvertieren, indem Sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](storage-account-options.md).
 
-    Blob-Speicherkonten sind speziell für die Speicherung von Blobs konzipiert und verfügen über neue, bloborientierte Features. In Zukunft wird für die Speicherung von Blobs die Verwendung von Blob-Speicherkonten empfohlen, und es werden Funktionen wie hierarchische Speicherung und Tarife für diesen Kontotyp eingeführt. Es liegt jedoch bei Ihnen, wann Sie die Migration (abhängig von Ihren geschäftlichen Anforderungen) vornehmen möchten.
+**Kann ich Objekte unter demselben Konto auf allen drei Speicherebenen („Hot“, „Cool“ und „Archiv“) speichern?**
 
-3. **Kann ich mein vorhandenes Speicherkonto in ein Blob-Speicherkonto umwandeln?**
+Ja. Das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene ist die Standardebene, die für alle Objekte des Kontos gilt, für die keine explizite Ebene festgelegt ist. Mit dem Blobebenentiering können Sie die Zugriffsebene auf dieser Objektebene unabhängig davon festlegen, welche Zugriffsebene für das Konto eingestellt ist. In einem Konto können Blobs in allen drei Speicherebenen („Hot“, „Cool“ oder „Archiv“) vorhanden sein.
 
-    Nein. Blob-Speicherkonten sind eine andere Art von Speicherkonto und müssen neu erstellt und die Daten anschließend migriert werden, wie weiter oben erläutert.
+**Kann ich die Standardspeicherebene meines Blob Storage- oder GPv2-Kontos ändern?**
 
-4. **Kann ich Objekte innerhalb des gleichen Kontos auf beiden Speicherebenen speichern?**
+Ja. Sie können die Standardspeicherebene ändern, indem Sie für das Speicherkonto das Attribut **Access tier** (Zugriffsebene) festlegen. Die Änderung der Speicherebene gilt für alle gespeicherten Objekte des Kontos, für die keine explizite Ebene festgelegt ist. Wenn Sie für die Speicherebene von „Hot“ zu „Cool“ wechseln, fallen Gebühren für Schreibvorgänge (pro 10.000) für alle Blobs ohne festgelegte Ebene nur für GPv2-Konten an, und wenn Sie von „Cool“ zu „Hot“ wechseln, fallen Gebühren für Lesevorgänge (pro 10.000) und den Datenabruf (pro GB) für alle Blobs in Blob Storage- und GPv2-Konten an.
 
-    Ja. Das Attribut *Access Tier* (Zugriffsebene) auf Kontoebene ist die Standardebene, die für alle Objekte des Kontos gilt, für die keine explizite Ebene festgelegt ist. Mit dem Blobebenentiering (Vorschauversion) können Sie die Zugriffsebene auf dieser Objektebene unabhängig davon festlegen, welche Zugriffsebene für das Konto eingestellt ist. In einem Konto können Blobs in allen drei Speicherebenen („Hot“, „Cool“ oder „Archiv“) vorhanden sein.
+**Kann ich meine Standard-Kontozugriffsebene auf „Archiv“ festlegen?**
 
-5. **Kann ich die Speicherebene meines Blob-Speicherkontos ändern?**
+Nein. Nur die Speicherebenen „Hot“ und „Cool“ können als Standard-Kontozugriffsebene festgelegt werden. „Archiv“ kann nur auf Objektebene festgelegt werden.
 
-    Ja. Sie können die Speicherebene ändern, indem Sie für das Speicherkonto das Attribut *Zugriffsebene* festlegen. Die Änderung der Speicherebene gilt für alle gespeicherten Objekte des Kontos, für die keine explizite Ebene festgelegt ist. Für das Ändern der Speicherebene von „Hot“ in „Cool“ fallen sowohl Gebühren für Schreibvorgänge (pro 10.000) als auch für das Schreiben von Daten (pro GB) an (nur Blobspeicherkonten). Für das Ändern von „Cool“ in „Hot“ fallen sowohl Gebühren für Lesevorgänge (pro 10.000) als auch für den Datenabruf (pro GB) zum Lesen aller Daten des Kontos an.
+**In welchen Regionen sind die Speicherebenen „Hot“, „Cool“ und „Archiv“ verfügbar?**
 
-6. **Wie oft kann ich die Speicherebene für mein Blob-Speicherkonto ändern?**
+Die Speicherebenen „Hot“ und „Cool“ sind zusammen mit dem Blobebenentiering in allen Regionen verfügbar. Die Speicherebene „Archiv“ ist anfänglich nur in ausgewählten Regionen verfügbar. Eine vollständige Liste finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/).
 
-    Die Anzahl von Speicherebenenänderungen wird von uns zwar nicht begrenzt, aber Sie sollten bedenken, dass ein Wechsel von „Cool“ zu „Hot“ mit erheblichen Kosten verbunden ist. Daher ist von häufigen Speicherebenenwechseln abzuraten.
+**Verhalten sich die Blobs der Speicherebene „Cool“ anders als die Blobs der Speicherebene „Hot“?**
 
-7. **Verhalten sich die Blobs der Speicherebene „Cool“ anders als die Blobs der Speicherebene „Hot“?**
+Blobs der Speicherebene „Hot“ weisen die gleiche Latenz wie Blobs in GPv1-, GPv2- und Blob Storage-Konten auf. Blobs der Speicherebene „Cool“ verfügen über eine ähnliche Latenz (in Millisekunden) wie Blobs in GPv1-, GPv2- und Blob Storage-Konten. In GPv1-, GPv2- und Blob Storage-Konten gilt für Blobs auf der Speicherebene „Archiv“ eine Latenzzeit von mehreren Stunden.
 
-    Blobs der Speicherebene „Hot“ weisen die gleiche Latenz wie Blobs von allgemeinen Speicherkonten auf. Blobs der Speicherebene „Cool“ verfügen über eine ähnliche Latenz (in Millisekunden) wie Blobs von allgemeinen Speicherkonten. Für Blobs auf Archivspeicherebene gilt eine Latenz von mehreren Stunden.
+Für Blobs der Speicherebene „Cool“ gilt in Bezug auf die Verfügbarkeit ein etwas geringerer Servicelevel (SLA) als für Blobs, die auf der Speicherebene „Hot“ gespeichert sind. Weitere Details finden Sie unter [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage/v1_2/).
 
-    Für Blobs der Speicherebene „Cool“ gilt in Bezug auf die Verfügbarkeit ein etwas geringerer Servicelevel (SLA) als für Blobs, die auf der Speicherebene „Hot“ gespeichert sind. Weitere Details finden Sie unter [SLA für Speicher](https://azure.microsoft.com/support/legal/sla/storage).
+**Sind die Vorgänge für die Ebenen „Hot“, „Cool“ und „Archiv“ identisch?**
 
-8. **Kann ich Seitenblobs und Datenträger virtueller Computer unter Blob-Speicherkonten speichern?**
+Ja. Alle Vorgänge zwischen „Hot“ und „Cool“ sind zu 100% konsistent. Alle gültigen Archivvorgänge, z.B. Delete, List, Get Blob Properties/Metadata und Set Blob Tier, sind zu 100% mit „Hot“ und „Cool“ konsistent. Ein Blob kann nicht gelesen oder geändert werden, während es sich auf der Ebene „Archiv“ befindet.
 
-    Blob-Speicherkonten unterstützen nur Block- und Anfügeblobs, keine Seitenblobs. Datenträger virtueller Azure-Computer werden durch Seitenblobs unterstützt. Daher können Blob-Speicherkonten nicht zum Speichern der Datenträger von virtuellen Computern verwendet werden. Es ist aber möglich, Sicherungen der Datenträger virtueller Computer als Blockblobs unter einem Blob-Speicherkonto zu speichern.
+**Wie kann ich beim Aktivieren eines Blobs von der Ebene „Archiv“ auf die Ebene „Hot“ oder „Cool“ erkennen, wann die Aktivierung abgeschlossen ist?**
 
-9. **Muss ich zur Verwendung von Blob-Speicherkonten meine vorhandenen Anwendungen ändern?**
+Während der Aktivierung können Sie den Vorgang „Get Blob Properties“ verwenden, um das Attribut **Archive Status** (Archivstatus) abzufragen und so zu ermitteln, wann die Ebenenänderung abgeschlossen ist. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die Eigenschaft „Archive Status“ (Archivstatus) entfernt, und die Eigenschaft **Access Tier** (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.  
 
-    Blob-Speicherkonten sind zu 100% API-konsistent mit allgemeinen Speicherkonten für Block- und Anfügeblobs. Solange Sie für Ihre Anwendung Blockblobs oder Anfügeblobs verwenden und Version 2014-02-14 (oder höher) der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) nutzen, sollte Ihre Anwendung funktionieren. Bei Verwendung einer älteren Protokollversion müssen Sie Ihre Anwendung aktualisieren, sodass sie die neue Version verwendet und beide Arten von Speicherkonten problemlos genutzt werden können. Unabhängig von der Art des verwendeten Speicherkontos empfehlen wir grundsätzlich die Verwendung der neuesten Version.
+**Ab wann werden mir nach dem Festlegen der Ebene eines Blobs die entsprechenden Gebühren berechnet?**
 
-10. **Ändert sich etwas für die Benutzer?**
+Die Berechnung für ein Blob basiert immer auf der Ebene, die in der Blobeigenschaft **Access Tier** (Zugriffsebene) angegeben ist. Beim Festlegen einer neuen Ebene für ein Blob spiegelt die Eigenschaft **Access Tier** (Zugriffsebene) für alle Übergänge sofort die neue Ebene wider. Eine Ausnahme ist das Aktivieren eines Blobs aus dem Archiv für die Ebene „Hot“ oder „Cool“, da der Vorgang mehrere Stunden dauern kann. In diesem Fall werden Ihnen weiterhin die Kosten für „Archiv“ berechnet, bis die Aktivierung abgeschlossen ist und unter **Access Tier** (Zugriffsebene) die neue Ebene angezeigt wird. Erst ab diesem Zeitpunkt wird Ihnen der neue Preis für „Hot“ bzw. „Cool“ berechnet.
 
-    Blob-Speicherkonten weisen eine hohe Ähnlichkeit mit allgemeinen Speicherkonten zum Speichern von Block- und Anfügeblobs auf und unterstützen alle wesentlichen Funktionen von Azure Storage, z.B. hohe Stabilität und Verfügbarkeit, Skalierbarkeit, Leistung und Sicherheit. Mit Ausnahme der spezifischen Features und Einschränkungen für Blob-Speicherkonten und der weiter oben erläuterten Speicherebenen ändert sich nichts.
+**Wie kann ich ermitteln, ob eine Gebühr für das frühe Löschen anfällt, wenn ich ein Blob lösche oder aus der Ebene „Cool“ oder „Archiv“ verschiebe?**
+
+Für alle Blobs, die vor Ablauf von 30 bzw. 180 Tagen gelöscht oder aus der Ebene „Cool“ (nur GPv2-Konten) oder „Archiv“ verschoben werden, fällt eine anteilige Gebühr für frühes Löschen an (ab 1. Februar 2018). Sie können ermitteln, wie lange sich ein Blob auf der Ebene „Cool“ oder „Archiv“ befunden hat, indem Sie in der Blobeigenschaft **Access Tier Change Time** (Änderungszeitpunkt der Zugriffsebene) den Zeitstempel der letzten Ebenenänderung überprüfen. Weitere Informationen finden Sie im Abschnitt [Frühes Löschen für „Cool“ und „Archiv“](#cool-and-archive-early-deletion).
+
+**Welche Azure-Tools und SDKs unterstützen das Blobebenentiering und die Speicherebene „Archiv“?**
+
+Für das Azure-Portal, PowerShell und CLI-Tools sowie .NET-, Java-, Python- und Node.js-Clientbibliotheken werden das Blobebenentiering und die Speicherebene „Archiv“ unterstützt.  
+
+**Wie viele Daten kann ich auf den Ebenen „Hot“, „Cool“ und „Archiv“ speichern?**
+
+Die Datenspeicherung wird zusammen mit anderen Beschränkungen auf Kontoebene und nicht einzeln pro Speicherebene festgelegt. Daher können Sie wählen, ob Sie Ihr gesamtes Kontingent auf einer Ebene nutzen oder auf alle drei Ebenen verteilen möchten. Weitere Informationen finden Sie unter [Microsoft Azure Storage Scalability and Performance Targets](../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Speicherskalierbarkeit und Leistungsziele von Azure, in englischer Sprache).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-### <a name="evaluate-blob-storage-accounts"></a>Auswerten von Blob-Speicherkonten
+### <a name="evaluate-hot-cool-and-archvie-in-gpv2-blob-storage-accounts"></a>Evaluieren von „Hot“, „Cool“ und „Archiv“ in GPv2- und Blob Storage-Konten
 
-[Überprüfen der Verfügbarkeit von Blob-Speicherkonten nach Region unter Azure-Regionen](https://azure.microsoft.com/regions/#services)
+Prüfen der Verfügbarkeit von „Hot“, „Cool“ und „Archiv“ nach Region unter [Azure-Regionen](https://azure.microsoft.com/regions/#services)
 
 [Auswerten der Nutzung vorhandener Speicherkonten durch Aktivierung von Azure Storage-Metriken](../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
-[Überprüfen der Preise für Blobspeicher nach Region unter Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
+Prüfen der Preise für „Hot“, „Cool“ und „Archiv“ in Blob Storage- und GPv2-Konten nach Region unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/)
 
 [Überprüfen der Preise für Datenübertragungen unter Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/)
-
-### <a name="start-using-blob-storage-accounts"></a>Beginnen mit der Nutzung von Blob-Speicherkonten
-
-[Erste Schritte mit Azure Blob Storage mit .NET](storage-dotnet-how-to-use-blobs.md)
-
-[Verschieben von Daten in und aus Azure Storage](../common/storage-moving-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-[Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-[Durchsuchen und Erkunden von Speicherkonten](http://storageexplorer.com/)
