@@ -43,7 +43,7 @@ Update 1.0 entspricht der Softwareversion **10.0.10296.0**.
  
     Wenn die Authentifizierungs-URL nicht in den Firewallregeln enthalten ist, wird Benutzern eine kritische Warnung darüber angezeigt, dass ihr StorSimple-Gerät sich nicht beim Dienst authentifizieren konnte. Wenn die Benutzer diese Warnung erhalten, müssen sie die neue Authentifizierungs-URL aufnehmen. Weitere Informationen finden Sie unter [StorSimple-Netzwerkwarnungen](storsimple-virtual-array-manage-alerts.md).
 
- - **Verbesserte Leistung:** Zur Verbesserung der Geschwindigkeit von Cloudlesevorgängen sowie von Tier-In- und Tier-Out-Vorgängen wurden mehrere Fehler behoben. Dadurch hat sich die Leistung beim Sichern und Wiederherstellen für iSCSI- und Dateiservergeräte verbessert.
+ - **Verbesserte Leistung:** Zur Verbesserung der Geschwindigkeit von Cloudlesevorgängen sowie von ein- und ausgehenden Tieringvorgängen wurden mehrere Fehler behoben. Dadurch hat sich die Leistung beim Sichern und Wiederherstellen für iSCSI- und Dateiservergeräte verbessert.
 
  - **Verbesserte Garbage Collection:** Diese Version enthält Fehlerbehebungen, die die Leistung des Garbage Collection-Zyklus verbessern, wenn sich das Geräte- und das Speicherkonto in zwei entfernten Regionen befinden.
 
