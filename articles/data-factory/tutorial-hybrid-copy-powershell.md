@@ -268,7 +268,7 @@ In diesem Abschnitt erstellen Sie eine selbstgehostete Integration Runtime und o
 
 7. Wenn das Fenster **Energieoptionen** angezeigt wird, sollten Sie es schließen und zum Fenster für das Setup wechseln. 
 
-8. Wählen Sie unter **Completed the Microsoft Integration Runtime Setup Wizard** (Einrichtungsassistent für Microsoft Integration Runtime abgeschlossen) die Option **Fertig stellen**.
+8. Wählen Sie unter **Completed the Microsoft Integration Runtime Setup Wizard** (Setup-Assistent für Microsoft Integration Runtime abgeschlossen) die Option **Fertig stellen**.
 
 9. Fügen Sie im Fenster **Integrationslaufzeit (selbstgehostet) registrieren** den Schlüssel ein, den Sie im vorherigen Abschnitt gespeichert haben, und wählen Sie dann die Option **Registrieren**. 
 

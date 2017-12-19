@@ -80,7 +80,7 @@ Bevor Sie das ASDK auf dem Hostcomputer installieren können, muss die ASDK-Umge
   ```
 
 4. Führen Sie in einer PowerShell-Konsole mit erhöhten Rechten das Skript **C:\AzureStack_Installer\asdk-installer.ps1** aus, und klicken Sie anschließend auf **Umgebung vorbereiten**.
-5. Navigieren Sie auf der Seite **Select Cloudbuilder vhdx** (Cloudbuilder.vhdx auswählen) des Installationsprogramms zur zuvor heruntergeladenen und extrahierten Datei **cloudbuilder.vhdx**, und wählen Sie sie aus. Auf dieser Seite können Sie optional auch das Kontrollkästchen **Treiber hinzufügen** aktivieren, wenn Sie dem Development Kit-Hostcomputer zusätzliche Treiber hinzufügen müssen.  
+5. Navigieren Sie auf der Seite **Select Cloudbuilder vhdx** ("Cloudbuilder.vhdx" auswählen) des Installationsprogramms zur zuvor heruntergeladenen und extrahierten Datei **cloudbuilder.vhdx**, und wählen Sie sie aus. Auf dieser Seite können Sie optional auch das Kontrollkästchen **Treiber hinzufügen** aktivieren, wenn Sie dem Development Kit-Hostcomputer zusätzliche Treiber hinzufügen müssen.  
 6. Geben Sie auf der Seite **Optionale Einstellungen** das lokale Administratorkonto für den Development Kit-Hostcomputer an. 
 
   > [!IMPORTANT]
