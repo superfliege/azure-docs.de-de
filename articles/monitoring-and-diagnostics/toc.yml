@@ -33,6 +33,10 @@
           href: monitoring-overview-metrics.md
         - name: Warnungen
           href: monitoring-overview-alerts.md
+        - name: Warnungen (Vorschauversion)
+          href: monitoring-overview-unified-alerts.md
+        - name: Protokollwarnungen
+          href: monitor-alerts-unified-log.md
         - name: Autoscale
           href: monitoring-overview-autoscale.md
         - name: Aktivitätsprotokoll
@@ -74,6 +78,8 @@
           href: monitoring-near-real-time-metric-alerts.md
         - name: Konfigurieren von Warnungen im Azure-Portal
           href: insights-alerts-portal.md
+        - name: Konfigurieren von Metrik- oder Protokollwarnungen unter „Warnungen (Vorschauversion)“ im Azure-Portal
+          href: monitor-alerts-unified-usage.md
         - name: Konfigurieren von Warnungen mit CLI
           href: insights-alerts-command-line-interface.md
         - name: Konfigurieren von Warnungen mit Azure PowerShell

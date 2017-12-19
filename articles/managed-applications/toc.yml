@@ -6,11 +6,11 @@
       href: overview.md
 - name: Schnellstarts
   items:
-    - name: Erstellen Sie eine verwaltete Anwendung mit Azure-CLI
+    - name: Verwaltete Anwendung erstellen
       href: managed-apps-quickstart-cli.md
 - name: Lernprogramme
   items:
-    - name: Erstellen einer Dienstkataloganwendung
+    - name: Erstellen von Dateien für verwaltete Anwendungen
       href: publish-service-catalog-app.md
 - name: Beispiele
   items:
@@ -26,7 +26,7 @@
       href: create-uidefinition-overview.md
     - name: Aktualisieren von verwalteten Ressourcen
       href: update-managed-resources.md
-    - name: Veröffentlichen einer Dienstkatalog-App – Portal
+    - name: Veröffentlichen mithilfe des Portals
       href: publish-portal.md
 - name: Referenz
   items:

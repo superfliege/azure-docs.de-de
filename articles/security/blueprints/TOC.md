@@ -54,6 +54,8 @@
 #### [Konformität – UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
 ##### [Übersicht](uk-official-three-tier-applications-overview.md)
 ##### [Übersicht über Prinzipien](uk-official-three-tier-applications-principles-overview.md)
+#### [Konformität – Finanzdienstleistungen](financial-services-regulated-workloads.md)
+##### [Finanzdienstleistungen für regulierte Workloads](financial-services-regulated-workloads.md)
 
 # Erste Schritte
 ## [Erste Schritte mit Azure-Sicherheit](../azure-security-getting-started.md)
@@ -114,7 +116,7 @@
 
 ## Sicherheitsarchitektur
 ### [Datenklassifizierung](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03)
-### [Notfallwiederherstellung und hohe Verfügbarkeit für in Azure erstellte Anwendungen](../../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Notfallwiederherstellung und Hochverfügbarkeit für in Azure erstellte Anwendungen](../../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # Verwandte Themen
 ## [Trust Center](../security-microsoft-trust-center.md)
