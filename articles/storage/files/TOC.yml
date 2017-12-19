@@ -24,6 +24,8 @@
   items:
     - name: Planen und Entwerfen
       items:
+        - name: Speicherkontooptionen
+          href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Planung für eine Azure Files-Bereitstellung
           href: storage-files-planning.md
         - name: Bereitstellen von Azure Files

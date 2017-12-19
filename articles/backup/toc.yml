@@ -59,8 +59,6 @@
           items:
             - name: Vorbereiten der Sicherung von Azure Backup Server-Workloads im Azure-Portal
               href: backup-azure-microsoft-azure-backup.md
-            - name: Vorbereiten der Sicherung von Azure Backup Server-Workloads im klassischen Portal
-              href: backup-azure-microsoft-azure-backup-classic.md
             - name: Hinzufügen von Speicher zu Azure Backup Server
               href: backup-mabs-add-storage.md
             - name: Upgraden von Azure Backup Server auf v.2
@@ -89,8 +87,6 @@
               href: backup-azure-arm-vms-prepare.md
             - name: Anwendungskonsistente Sicherungen von virtuellen Linux-Computern
               href: backup-azure-linux-app-consistent.md
-            - name: Vorbereiten virtueller Azure-Computer
-              href: backup-azure-vms-prepare.md
         - name: Planen der Umgebung
           items:
             - name: Planen der Sicherungsinfrastruktur für virtuelle Computer
@@ -101,16 +97,12 @@
               href: backup-azure-arm-vms.md
             - name: Sichern verschlüsselter virtueller Computer
               href: backup-azure-vms-encryption.md
-            - name: Sichern von virtuellen Azure-Computern
-              href: backup-azure-vms.md
         - name: Verwalten und Überwachen virtueller Computer
           items:
             - name: Verwalten von Azure-VM-Sicherungen im Azure-Portal
               href: backup-azure-manage-vms.md
             - name: Überwachen von Warnungen für Azure-VM-Sicherungen im Azure-Portal
               href: backup-azure-monitor-vms.md
-            - name: Verwalten und Überwachen von Azure-VM-Sicherungen im klassischen Portal
-              href: backup-azure-manage-vms-classic.md
         - name: Wiederherstellen von Daten von virtuellen Computern
           items:
             - name: Wiederherstellen von Dateien aus Azure-VM-Sicherungen
@@ -119,8 +111,6 @@
               href: backup-azure-arm-restore-vms.md
             - name: Wiederherstellen verschlüsselter virtueller Computer
               href: backup-azure-vms-encryption.md
-            - name: Wiederherstellen virtueller Computer in Azure
-              href: backup-azure-restore-vms.md
             - name: Wiederherstellen von Key Vault-Schlüssel und -Geheimnis für verschlüsselte virtuelle Computer
               href: backup-azure-restore-key-secret.md
     - name: Konfigurieren von Azure Backup-Berichten
@@ -135,8 +125,6 @@
       items:
         - name: Vorbereiten von DPM-Workloads im Azure-Portal
           href: backup-azure-dpm-introduction.md
-        - name: Vorbereiten von DPM-Workloads im klassischen Portal
-          href: backup-azure-dpm-introduction-classic.md
         - name: Verwenden von System Center DPM zum Sichern eines Exchange-Servers
           href: backup-azure-backup-exchange-server.md
         - name: Wiederherstellen von Daten auf einem anderen DPM-Server
@@ -149,16 +137,10 @@
       items:
         - name: Azure-VMs im Azure-Portal
           href: backup-azure-vms-automation.md
-        - name: Azure-VMs im klassischen Portal
-          href: backup-azure-vms-classic-automation.md
         - name: DPM im Azure-Portal
           href: backup-dpm-automation.md
-        - name: DPM im klassischen Portal
-          href: backup-dpm-automation-classic.md
         - name: Windows Server im Azure-Portal
           href: backup-client-automation.md
-        - name: Windows Server im klassischen Portal
-          href: backup-client-automation-classic.md
     - name: Azure SQL-Datenbank
       items:
         - name: Konfigurieren der langfristigen Sicherungsaufbewahrung
@@ -181,14 +163,6 @@
           href: backup-azure-restore-system-state.md
         - name: Überwachen und Verwalten von Recovery Services-Tresoren
           href: backup-azure-manage-windows-server.md
-        - name: Sichern und Wiederherstellen über das klassische Portal
-          items:
-            - name: Windows Server mit dem klassischen Bereitstellungsmodell
-              href: backup-configure-vault-classic.md
-            - name: Verwalten von Backup-Tresoren mit dem klassischen Bereitstellungsmodell
-              href: backup-azure-manage-windows-server-classic.md
-            - name: Wiederherstellen von Dateien auf einem Windows-Server mit dem klassischen Bereitstellungsmodell
-              href: backup-azure-restore-windows-server-classic.md
     - name: Recovery Services-Tresor
       items:
         - name: Übersicht über Recovery Services-Tresore
@@ -201,8 +175,6 @@
       items:
         - name: Probleme bei der Azure-VM-Sicherung im Azure-Portal
           href: backup-azure-vms-troubleshoot.md
-        - name: Probleme bei der Azure-VM-Sicherung im klassischen Portal
-          href: backup-azure-vms-troubleshoot-classic.md
         - name: 'Fehler bei der Azure-VM-Sicherung: Keine Kommunikation mit dem VM-Agent zum Abrufen des Momentaufnahmestatus möglich. Zeitüberschreitung bei Momentaufnahme-Teilvorgang für VM.'
           href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
         - name: Langsame Sicherung von Dateien und Ordnern in Azure Backup
