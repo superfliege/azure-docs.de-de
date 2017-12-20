@@ -74,7 +74,12 @@
 ### [Verwenden von Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md)
 
 # Referenz
-## [Azure PowerShell](/powershell/azure/overview)
+## [Azure-Befehlszeilenschnittstelle](/cli/azure/network/watcher)
+## [Azure PowerShell](/powershell/module/azurerm.network/#network_watcher)
+## [Java](/java/api/com.microsoft.azure.management.network)
+## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/Azure/Network/Mgmt/V2016_09_01/Models/NetworkWatcher) 
+## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.html#azure.mgmt.network.NetworkManagementClient.network_watchers)
+
 ## [.NET](/dotnet/api)
 ## [REST](/rest/api/networkwatcher/)
 # Verwandte Themen

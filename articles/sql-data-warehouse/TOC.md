@@ -32,7 +32,7 @@
 
 ## Laden und Verschieben von Daten
 ### [Übersicht](design-elt-data-loading.md)
-### [Leitfaden](guidance-for-loading-data.md)
+### [bewährten Methoden](guidance-for-loading-data.md)
 
 
 ## Integrieren

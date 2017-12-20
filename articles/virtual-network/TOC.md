@@ -91,8 +91,7 @@
 #### Erstellen eines virtuellen Computers mit mehreren IP-Adressen
 ##### [Azure-Portal](virtual-network-multiple-ip-addresses-portal.md)
 ##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-##### [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md)
-##### [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md)
+##### [Azure-Befehlszeilenschnittstelle](virtual-network-multiple-ip-addresses-cli.md)
 ##### [Vorlage](virtual-network-multiple-ip-addresses-template.md)
 
 #### [Erstellen eines virtuellen Computers mit beschleunigten Netzwerken](virtual-network-create-vm-accelerated-networking.md)
