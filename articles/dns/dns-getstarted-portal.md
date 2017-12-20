@@ -3,8 +3,8 @@ title: Erste Schritte mit Azure DNS im Azure-Portal | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine DNS-Zone und einen DNS-Eintrag in Azure DNS erstellen. Dies ist eine Schrittanleitung zum Erstellen und Verwalten Ihrer ersten DNS-Zone und Ihres ersten DNS-Eintrags im Azure-Portal.
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/10/2017
-ms.author: jonatul
-ms.openlocfilehash: 93b24e3d9fbb3fbb3ea995271fd63d1e82eb9c9e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/18/2017
+ms.author: kumud
+ms.openlocfilehash: b2a9a7dbd1fa7da7ebe479ac166602245cdaefde
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Erste Schritte mit Azure DNS im Azure-Portal
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-getstarted-portal.md)
 > * [PowerShell](dns-getstarted-powershell.md)
-> * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
 In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie Ihre erste DNS-Zone und Ihren ersten DNS-Eintrag im Azure-Portal erstellen. Sie können diese Schritte auch mithilfe von Azure PowerShell oder der plattformübergreifenden Azure CLI ausführen.
@@ -36,11 +35,11 @@ Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verw
 ## <a name="create-a-dns-zone"></a>Erstellen einer DNS-Zone
 
 1. Melden Sie sich auf dem Azure-Portal an.
-2. Klicken Sie im Hubmenü auf **Neu > Netzwerk** und anschließend auf **DNS-Zone**, um das Blatt „DNS-Zone erstellen“ zu öffnen.
+2. Klicken Sie im Hubmenü auf **Neu > Netzwerk** und anschließend auf **DNS-Zone**, um die Seite **DNS-Zone erstellen** zu öffnen.
 
     ![DNS-Zone](./media/dns-getstarted-portal/openzone650.png)
 
-4. Geben Sie auf dem Blatt **DNS-Zone erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **Erstellen**:
+4. Geben Sie auf der Seite **DNS-Zone erstellen** die folgenden Werte ein, und klicken Sie anschließend auf **Erstellen**:
 
 
    | **Einstellung** | **Wert** | **Details** |
@@ -57,11 +56,11 @@ Eine DNS-Zone wird zum Hosten der DNS-Einträge für eine bestimmte Domäne verw
 
 Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen A-Eintrags erläutert. Informationen zu anderen Eintragstypen und zum Ändern vorhandener Einträge finden Sie unter [Verwalten von DNS-Einträgen und - Ressourceneintragssätzen im Azure-Portal](dns-operations-recordsets-portal.md). 
 
-1. Klicken Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals auf **Alle Ressourcen**. Klicken Sie auf dem Blatt „Alle Ressourcen“ auf die DNS-Zone **contoso.com**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **contoso.com** in das Feld **Nach Name filtern...** eingeben und komfortabel auf die DNS-Zone zugreifen.
+1. Klicken Sie nach der Erstellung der DNS-Zone im Bereich **Favoriten** des Azure-Portals auf **Alle Ressourcen**. Klicken Sie auf der Seite „Alle Ressourcen“ auf die DNS-Zone **contoso.com**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **contoso.com** in das Feld **Nach Name filtern...** eingeben und komfortabel auf die DNS-Zone zugreifen.
 
-1. Wählen Sie oben auf dem Blatt **DNS-Zone** die Option **+ Ressourceneintragssatz** aus, um das Blatt **Ressourceneintragssatz hinzufügen** zu öffnen.
+1. Wählen Sie oben auf der Seite **DNS-Zone** die Option **+ Datensatzgruppe** aus, um die Seite **Datensatzgruppe hinzufügen** zu öffnen.
 
-1. Geben Sie auf dem Blatt **Datensatzgruppe hinzufügen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. In diesem Beispiel erstellen Sie einen A-Eintrag.
+1. Geben Sie auf der Seite **Datensatzgruppe hinzufügen** die folgenden Werte ein, und klicken Sie anschließend auf **OK**. In diesem Beispiel erstellen Sie einen A-Eintrag.
 
    |**Einstellung** | **Wert** | **Details** |
    |---|---|---|
@@ -73,7 +72,7 @@ Im folgenden Beispiel werden die einzelnen Schritte zur Erstellung eines neuen A
 
 ## <a name="view-records"></a>Anzeigen von Datensätzen
 
-Im unteren Teil des Blatts der DNS-Zone finden Sie die Einträge für die DNS-Zone. Hier müssten sowohl die in jeder Zone erstellten DNS- und SOA-Standardeinträge als auch alle neuen, von Ihnen erstellen Einträge angezeigt werden.
+Im unteren Teil der Seite „DNS-Zone“ finden Sie die Einträge für die DNS-Zone. Hier müssten sowohl die in jeder Zone erstellten DNS- und SOA-Standardeinträge als auch alle neuen, von Ihnen erstellen Einträge angezeigt werden.
 
 ![Zone](./media/dns-getstarted-portal/viewzone500.png)
 
@@ -92,8 +91,8 @@ Diese Namenserver müssen in der Domänennamen-Registrierungsstelle konfiguriert
 
 Führen Sie die folgenden Schritte aus, um alle Ressourcen zu löschen, die in diesem Artikel erstellt wurden:
 
-1. Klicken Sie im Azure-Portal im Bereich **Favoriten** auf **Alle Ressourcen**. Klicken Sie auf dem Blatt „Alle Ressourcen“ auf die Ressourcengruppe **MyResourceGroup**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **MyResourceGroup** in das Feld **Nach Name filtern...** eingeben und komfortabel auf die Ressourcengruppe zugreifen.
-1. Klicken Sie auf dem Blatt **MyResourceGroup** auf die Schaltfläche **Löschen**.
+1. Klicken Sie im Azure-Portal im Bereich **Favoriten** auf **Alle Ressourcen**. Klicken Sie auf der Seite „Alle Ressourcen“ auf die Ressourcengruppe **MyResourceGroup**. Falls das ausgewählte Abonnement bereits mehrere Ressourcen enthält, können Sie **MyResourceGroup** in das Feld **Nach Name filtern...** eingeben und komfortabel auf die Ressourcengruppe zugreifen.
+1. Klicken Sie auf der Seite **MyResourceGroup** auf die Schaltfläche **Löschen**.
 1. Zur Bestätigung des Löschvorgangs werden Sie vom Portal zur Eingabe des Ressourcengruppennamens aufgefordert. Klicken Sie auf **Löschen**, geben Sie den Ressourcengruppennamen *MyResourceGroup* ein, und klicken Sie anschließend auf **Löschen**. Da beim Löschen einer Ressourcengruppe alle Ressourcen innerhalb der Ressourcengruppe gelöscht werden, überprüfen Sie vor dem Löschen immer den Inhalt der Ressourcengruppe. Das Portal löscht zuerst alle in der Ressourcengruppe enthaltenen Ressourcen und anschließend die Ressourcengruppe selbst. Dieser Vorgang dauert einige Minuten.
 
 

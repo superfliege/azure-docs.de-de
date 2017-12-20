@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.openlocfilehash: 6e486b8fb5924c8a021a781742478e9082ca668c
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-and-provision-a-simulated-device-using-iot-hub-device-provisioning-services"></a>Erstellen und Bereitstellen eines simulierten Geräts mithilfe von IoT Hub Device Provisioning-Diensten
 > [!div class="op_single_selector"]
@@ -94,7 +94,7 @@ Führen Sie zunächst die Schritte unter [Set up the IoT Hub Device Provisioning
 
 2. Wählen Sie auf Ihrem Computer in Visual Studio das Beispielprojekt **dps_client_sample** aus, und öffnen Sie die Datei **dps_client_sample.c**.
 
-3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der _globale Geräteendpunkt_. 
+3. Weisen Sie den Wert für _ID Scope_ (ID-Bereich) der Variablen `dps_scope_id` zu. Beachten Sie, dass die Variable `dps_uri` den gleichen Wert besitzt wie der globale__ Geräteendpunkt. 
 
     ```c
     static const char* dps_uri = "global.azure-devices-provisioning.net";

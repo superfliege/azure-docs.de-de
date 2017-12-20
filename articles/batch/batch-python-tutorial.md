@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Erste Schritte mit dem Batch SDK für Python
 
@@ -493,7 +493,7 @@ blob_client = azureblob.BlockBlobService(account_name=args.storageaccount,
 
 ## <a name="step-6-monitor-tasks"></a>Schritt 6: Überwachen von Aufgaben
 ![Aufgaben überwachen][6]<br/>
-*Das Skript (1) überwacht die Aufgaben, um den Abschlussstatus zu ermitteln, und (2) die Aufgaben laden Ergebnisdaten in Azure Storage hoch.*
+*Das Skript (1) überwacht für die Aufgaben den Abschlussstatus, und (2) die Aufgaben laden Ergebnisdaten in Azure Storage hoch.*
 
 Wenn einem Auftrag Aufgaben hinzugefügt werden, werden sie automatisch in die Warteschlange eingereiht und für die Ausführung auf Computeknoten in dem Pool eingeplant, der dem Auftrag zugeordnet ist. Basierend auf den Einstellungen, die Sie angeben, führt Batch das Einreihen, Planen und erneute Ausführen sowie andere Schritte der Aufgabenverwaltung für Sie durch.
 

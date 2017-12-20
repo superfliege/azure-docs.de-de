@@ -12,11 +12,11 @@ ms.topic: get-started-article
 ms.workload: iaas-sql-server
 ms.date: 10/02/2017
 ms.author: jroth
-ms.openlocfilehash: 787e696edd2a446bec280b763fe5ac591782c8ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Übersicht über SQL Server auf virtuellen Azure-Computern (Linux)
 
@@ -37,7 +37,7 @@ Es gibt viele Gründe, die für das Hosten von Daten in Azure sprechen. Wenn Sie
 
 Die Ausführung von SQL Server auf Azure-VMs ist eine Möglichkeit zum Speichern Ihrer relationalen Daten in Azure. Sie können auch den Azure SQL-Datenbank-Dienst verwenden. Eine Gegenüberstellung von SQL Server auf virtuellen Computern und Azure SQL-Datenbank finden Sie unter [Wählen Sie eine SQL Server-Cloudoption: Azure SQL-Datenbank (PaaS) oder SQL Server auf Azure-VMs (IaaS)](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md).
 
-## <a name="create-a-new-sql-vm"></a>Erstellen einer neuen SQL-VM
+## <a id="create"></a> Erstellen eines neuen virtuellen SQL-Computers
 
 Eine ausführliche Anleitung zum Erstellen eines neuen virtuellen SQL Server-Computers finden Sie im Tutorial [Provision a Linux SQL Server virtual machine in the Azure portal](provision-sql-server-linux-virtual-machine.md) (Bereitstellen eines virtuellen Linux-Computers mit SQL Server über das Azure-Portal).
 

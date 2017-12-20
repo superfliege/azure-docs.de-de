@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 09/04/2017
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 639f008eea61b973b9d32dc734d42d5c4e93e924
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 954afd6d47f9bccdd2512ab92ba0d416231fb623
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresoren
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ In diesem Tutorial werden die Schritte zum Erstellen eines Recovery Services-Tre
 
 Weitere Informationen zum Schutz virtueller Storage Premium-Computer finden Sie im Artikel [Sichern und Wiederherstellen virtueller Storage Premium-Computer](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup). Weitere Informationen zur Unterstützung für virtuelle Computer auf verwalteten Datenträgern finden Sie unter [Sichern und Wiederherstellen von virtuellen Computern auf verwalteten Datenträgern](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). Weitere Informationen zum Pre- und Post-Skript-Framework für die Linux-VM-Sicherung finden Sie unter [Anwendungskonsistente Sicherung von Azure Linux-VMs (Vorschau)](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent).
 
-Weitere Informationen darüber, welche Elemente Sie sichern können, finden Sie [hier](backup-azure-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
+Weitere Informationen darüber, welche Elemente Sie sichern können, finden Sie [hier](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm).
 
 > [!NOTE]
 > Dieses Tutorial setzt voraus, dass Sie in Ihrem Azure-Abonnement bereits einen virtuellen Computer verwenden und die entsprechenden Schritte durchgeführt haben, um dem Backup-Dienst den Zugriff auf den virtuellen Computer zu erlauben.
