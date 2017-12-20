@@ -32,6 +32,7 @@
 ### [Aktivieren eines lizenzierten Image](devtest-lab-enable-licensed-images.md)
 ### [Hinzufügen von Tags zu einem Lab](devtest-lab-add-tag.md)
 ### [Beitragsankündigung in einem Lab](devtest-lab-announcements.md)
+### [Hinzufügen von Supportinformationen zu einem Lab](devtest-lab-internal-support-message.md)
 
 ## [Auswählen benutzerdefinierter Images oder Formeln](devtest-lab-comparing-vm-base-image-types.md)
 
