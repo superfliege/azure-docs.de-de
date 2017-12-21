@@ -26,11 +26,13 @@
 
 # Anleitung
 ## Planen und Entwerfen
+### [Verwaltete Dienstidentität (Vorschauversion)](service-bus-managed-service-identity.md)
+### [Rollenbasierte Zugriffssteuerung (Vorschauversion)](service-bus-role-based-access-control.md)
 ### [Premium-Messaging](service-bus-premium-messaging.md)
 ### [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [Optimieren der Leistung](service-bus-performance-improvements.md)
 ### [Georedundante Notfallwiederherstellung und Georeplikation](service-bus-geo-dr.md)
-### [Asynchrones Messaging und hohe Verfügbarkeit](service-bus-async-messaging.md)
+### [Asynchrones Messaging und Hochverfügbarkeit](service-bus-async-messaging.md)
 ### [Handhabung von Ausfällen und Notfällen](service-bus-outages-disasters.md)
 
 ## Entwickeln

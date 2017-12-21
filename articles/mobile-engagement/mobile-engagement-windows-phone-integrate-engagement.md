@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 29b18aecff783cebf617995e2a19f16f0b68b51b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72a581643ccde55f8b849c511c3365e029d7cbcb
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="windows-phone-silverlight-engagement-sdk-integration"></a>Integration von Windows Phone Silverlight Engagement-SDK
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Wenn Sie sie stattdessen zur Laufzeit angeben möchten, können Sie die folgende
     /* Initialize Engagement agent with above configuration. */
     EngagementAgent.Instance.Init(engagementConfiguration);
 
-Die Verbindungszeichenfolge für die Anwendung wird im klassischen Azure-Portal angezeigt.
+Die Verbindungszeichenfolge für Ihre Anwendung wird im Azure-Portal angezeigt.
 
 ### <a name="engagement-initialization"></a>Engagement-Initialisierung
 Wenn Sie ein neues Projekt erstellen, wird eine Datei `App.xaml.cs` generiert. Diese Klasse erbt von `Application` und enthält viele wichtige Methoden. Sie wird auch zum Initialisieren des Engagement-SDK verwendet.

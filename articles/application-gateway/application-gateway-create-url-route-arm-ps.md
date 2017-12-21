@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: davidmu
-ms.openlocfilehash: f2797864d7f0bda35d4d84ee78b157879451f889
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0b085ebf922cd5b14acd91bf86b9262a6921e9e
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-an-application-gateway-by-using-path-based-routing"></a>Erstellen eines Anwendungsgateways mit pfadbasiertem Routing
 
@@ -55,7 +55,7 @@ Anforderungen für „http://contoso.com/image*“ werden an den Imageserverpool
 
 ## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
 
-Der Unterschied zwischen dem klassischen Azure-Portal und Azure Resource Manager besteht in der Reihenfolge, in der Sie das Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen.
+Der Unterschied zwischen dem klassischen Bereitstellungsmodell und Azure Resource Manager besteht in der Reihenfolge, in der Sie das Anwendungsgateway und die Elemente erstellen, die konfiguriert werden müssen.
 
 Beim Resource Manager werden alle Elemente, die ein Anwendungsgateway bilden, einzeln konfiguriert und anschließend zusammengesetzt, um die Anwendungsgatewayressource zu erstellen.
 

@@ -1,0 +1,69 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Dokumentation zu Azure Policy
+metadata:
+  title: "Dokumentation zu Azure Policy – Tutorials, API-Referenz | Microsoft-Dokumentation"
+  description: "Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten."
+  services: azure-policy
+  author: czeumault
+  manager: carolz
+  ms.service: azure-policy
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 12/18/2017
+  ms.author: carolz
+  ms.openlocfilehash: b5945fe76973aba267b529078466c7a97e5e6421
+  ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 12/20/2017
+abstract:
+  description: "Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten."
+sections:
+- title: "Fünfminütige Schnellstarts"
+  items:
+  - type: paragraph
+    text: Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg
+      text: Azure-Portal
+      href: /azure/azure-policy/assign-policy-definition
+    - image:
+        src: https://docs.microsoft.com/en-us/azure/sql-database/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/azure-policy/assign-policy-definition-ps
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/cli.svg
+      text: Azure-Befehlszeilenschnittstelle
+      href: /azure/azure-policy/assign-policy-definition-cli
+- title: "Schritt-für-Schritt-Tutorials"
+  items:
+  - type: paragraph
+    text: Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/azure-policy/create-manage-policy">Erstellen und Verwalten von Azure Policy</a>
+- title: Beispiele
+  items:
+  - type: paragraph
+    text: "Nutzen Sie die folgenden JSON-Beispiele als Unterstützung bei der Erstellung von Richtliniendefinitionen in Azure."
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="/azure/azure-policy/json-samples">Azure PowerShell</a>
+- title: Referenz
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Befehlszeile
+      html: <p><a href="https://docs.microsoft.com/en-us/cli/azure/policy">Azure-Befehlszeilenschnittstelle</a></p>
+    - title: PowerShell
+      html: <p><a href="https://docs.microsoft.com/en-us/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></p>

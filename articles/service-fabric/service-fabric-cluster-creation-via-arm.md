@@ -12,15 +12,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/22/2017
+ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 47152d05eb7e31e7fe1f35e33a10fe8e903e21e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0065874c2f992ad9c18f68303878fb580ee8b391
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager
+# <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
 > * [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 > * [Azure-Portal](service-fabric-cluster-creation-via-portal.md)
@@ -31,126 +31,36 @@ In dieser Schritt-für-Schritt-Anleitung wird die Einrichtung eines sicheren Azu
 
 In diesem Leitfaden werden folgende Verfahren behandelt:
 
-* Einrichten einer Azure Key Vault-Instanz zum Hochladen von Zertifikaten für die Cluster- und Anwendungssicherheit
-* Erstellen eines geschützten Clusters in Azure mit Azure Resource Manager
-* Authentifizieren von Benutzern mithilfe von Azure Active Directory (Azure AD) für die Clusterverwaltung
+* Grundlegende Konzepte, die Sie vor dem Bereitstellen eines Service Fabric-Clusters kennen sollten
+* Erstellen eines Clusters in Azure mithilfe der Service Fabric-Resource Manager-Module
+* Einrichten von Azure Active Directory (Azure AD) zum Authentifizieren von Benutzern, die auf dem Cluster Verwaltungsvorgänge ausführen
+* Erstellen und Bereitstellen einer benutzerdefinierten Azure Resource Manager-Vorlage für Ihren Cluster
 
-Ein sicherer Cluster verhindert unautorisierte Zugriffe auf Verwaltungsvorgänge. Dazu gehören das Bereitstellen, Aktualisieren und Löschen von Anwendungen, Diensten und der darin enthaltenen Daten. Ein unsicherer Cluster ist ein Cluster, mit dem jeder Benutzer jederzeit eine Verbindung herstellen kann, um Verwaltungsvorgänge auszuführen. Die Erstellung eines unsicheren Clusters ist zwar möglich, es wird jedoch dringend empfohlen, von Anfang an einen sicheren Cluster zu erstellen. Da ein unsicherer Cluster nicht nachträglich in einen sicheren Cluster umgewandelt werden kann, muss ein neuer Cluster erstellt werden.
+## <a name="key-concepts-to-be-aware-of"></a>Wichtige Konzepte, die Sie kennen sollten
+In Azure erfordert Service Fabric die Verwendung eines X.509-Zertifikats zum Schützen Ihres Clusters und seiner Endpunkte. Zertifikate werden in Service Fabric zur Authentifizierung und Verschlüsselung verwendet, um verschiedene Aspekte eines Clusters und der zugehörigen Anwendungen zu sichern. Für den Clientzugriff/zum Ausführen von Verwaltungsvorgängen auf dem Cluster, einschließlich Bereitstellen, Upgraden und Löschen von Anwendungen, Diensten und der darin enthaltenen Daten, können Sie Zertifikate oder Azure Active Directory-Anmeldeinformationen verwenden. Die Verwendung von Azure Active Directory wird dringend empfohlen, da dies die einzige Möglichkeit ist, um die Weitergabe von Zertifikaten auf Ihren Clients zu verhindern.  Weitere Informationen zur Verwendung von Zertifikaten in Service Fabric finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric][service-fabric-cluster-security].
 
-Das Konzept der Erstellung sicherer Cluster ist für Linux und Windows identisch. Weitere Informationen und Hilfsskripts zur Erstellung sicherer Linux-Cluster finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](#secure-linux-clusters).
+Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. [Key Vault][key-vault-get-started] dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure. 
 
-## <a name="sign-in-to-your-azure-account"></a>Anmelden bei Ihrem Azure-Konto
-In diesem Leitfaden wird [Azure PowerShell][azure-powershell] verwendet. Wenn Sie eine neue PowerShell-Sitzung starten, melden Sie sich bei Ihrem Azure-Konto an, und wählen Sie Ihr Abonnement aus, bevor Sie Azure-Befehle ausführen.
-
-Melden Sie sich bei Ihrem Azure-Konto an:
-
-```powershell
-Login-AzureRmAccount
-```
-
-Wählen Sie Ihr Abonnement aus:
-
-```powershell
-Get-AzureRmSubscription
-Set-AzureRmContext -SubscriptionId <guid>
-```
-
-## <a name="set-up-a-key-vault"></a>Einrichten eines Schlüsseltresors
-In diesem Abschnitt erfahren Sie, wie Sie einen Schlüsseltresor für einen Service Fabric-Cluster in Azure und für Service Fabric-Anwendungen erstellen. Eine umfassende Anleitung zu Azure Key Vault finden Sie unter [Erste Schritte mit Key Vault][key-vault-get-started].
-
-Service Fabric verwendet X.509-Zertifikate, um einen Cluster zu sichern und Sicherheitsfunktionen für Anwendungen bereitzustellen. Azure Key Vault dient zum Verwalten von Zertifikaten für Service Fabric-Cluster in Azure. Wenn ein Cluster in Azure bereitgestellt wird, ruft der für die Erstellung von Service Fabric-Clustern zuständige Azure-Ressourcenanbieter Zertifikate aus Key Vault ab und installiert sie auf den virtuellen Clustercomputern.
-
-Das folgende Diagramm veranschaulicht die Beziehung zwischen Azure Key Vault, einem Service Fabric-Cluster und dem Azure-Ressourcenanbieter, der beim Erstellen eines Clusters die in einem Schlüsseltresor gespeicherten Zertifikate verwendet:
-
-![Diagramm für die Zertifikatinstallation][cluster-security-cert-installation]
-
-### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
-Im ersten Schritt wird speziell für Ihren Schlüsseltresor eine neue Ressourcengruppe erstellt. Es empfiehlt sich, den Schlüsseltresor in einer eigenen Ressourcengruppe zu platzieren. Dadurch können Sie die Compute- und Speicherressourcengruppen (einschließlich der Ressourcengruppe mit Ihrem Service Fabric-Cluster) entfernen, ohne Ihre Schlüssel und geheimen Schlüssel zu verlieren. Die Ressourcengruppe mit Ihrem Schlüsseltresor _muss sich in der gleichen Region befinden_ wie der Cluster, der den Tresor verwendet.
-
-Wenn Sie Cluster in mehreren Regionen bereitstellen möchten, empfiehlt es sich, die Ressourcengruppe und den Schlüsseltresor mit einem Namen zu versehen, der Aufschluss über die jeweilige Regionszugehörigkeit gibt.  
-
-```powershell
-
-    New-AzureRmResourceGroup -Name westus-mykeyvault -Location 'West US'
-```
-Die Ausgabe sollte wie folgt aussehen:
-
-```powershell
-
-    WARNING: The output object type of this cmdlet is going to be modified in a future release.
-
-    ResourceGroupName : westus-mykeyvault
-    Location          : westus
-    ProvisioningState : Succeeded
-    Tags              :
-    ResourceId        : /subscriptions/<guid>/resourceGroups/westus-mykeyvault
-
-```
-<a id="new-key-vault"></a>
-
-### <a name="create-a-key-vault-in-the-new-resource-group"></a>Erstellen eines Schlüsseltresors in der neuen Ressourcengruppe
-Der Schlüsseltresor _muss für die Bereitstellung aktiviert sein_, damit der Compute-Ressourcenanbieter Zertifikate daraus abrufen und ihn in VM-Instanzen installieren kann:
-
-```powershell
-
-    New-AzureRmKeyVault -VaultName 'mywestusvault' -ResourceGroupName 'westus-mykeyvault' -Location 'West US' -EnabledForDeployment
-
-```
-
-Die Ausgabe sollte wie folgt aussehen:
-
-```powershell
-
-    Vault Name                       : mywestusvault
-    Resource Group Name              : westus-mykeyvault
-    Location                         : West US
-    Resource ID                      : /subscriptions/<guid>/resourceGroups/westus-mykeyvault/providers/Microsoft.KeyVault/vaults/mywestusvault
-    Vault URI                        : https://mywestusvault.vault.azure.net
-    Tenant ID                        : <guid>
-    SKU                              : Standard
-    Enabled For Deployment?          : False
-    Enabled For Template Deployment? : False
-    Enabled For Disk Encryption?     : False
-    Access Policies                  :
-                                       Tenant ID                :    <guid>
-                                       Object ID                :    <guid>
-                                       Application ID           :
-                                       Display Name             :    
-                                       Permissions to Keys      :    get, create, delete, list, update, import, backup, restore
-                                       Permissions to Secrets   :    all
-
-
-    Tags                             :
-```
-<a id="existing-key-vault"></a>
-
-## <a name="use-an-existing-key-vault"></a>Verwenden eines vorhandenen Schlüsseltresors
-
-Wenn Sie einen bereits vorhandenen Schlüsseltresor verwenden möchten, _muss er für die Bereitstellung aktiviert werden_, damit der Compute-Ressourcenanbieter Zertifikate daraus abrufen und ihn auf Clusterknoten installieren kann:
-
-```powershell
-
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
-
-```
-
-<a id="add-certificate-to-key-vault"></a>
-
-## <a name="add-certificates-to-your-key-vault"></a>Hinzufügen von Zertifikaten zu Ihrem Schlüsseltresor
-
-Zertifikate werden in Service Fabric zur Authentifizierung und Verschlüsselung verwendet, um verschiedene Aspekte eines Clusters und der zugehörigen Anwendungen zu sichern. Weitere Informationen zur Verwendung von Zertifikaten in Service Fabric finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric][service-fabric-cluster-security].
 
 ### <a name="cluster-and-server-certificate-required"></a>Cluster- und Serverzertifikat (erforderlich)
-Dieses Zertifikat wird benötigt, um einen Cluster zu sichern und nicht autorisierte Zugriffe auf den Cluster zu verhindern. Es sorgt auf zwei Arten für Clustersicherheit:
+Diese Zertifikate (ein primäres und optional ein sekundäres Zertifikat) sind erforderlich, um einen Cluster zu schützen und nicht autorisierten Zugriff zu verhindern. Es sorgt auf zwei Arten für Clustersicherheit:
 
-* Clusterauthentifizierung: Authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten.
-* Serverauthentifizierung: Authentifiziert die Verwaltungsendpunkte des Clusters für einen Verwaltungsclient, damit der Verwaltungsclient weiß, dass er tatsächlich mit dem Cluster kommuniziert. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
+* **Clusterauthentifizierung** : Authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten.
+* **Serverauthentifizierung** : Authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation wirklich mit dem Cluster und nicht mit einem „Man in the Middle“ erfolgt. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
 
 Für diese Zwecke muss das Zertifikat die folgenden Anforderungen erfüllen:
 
-* Das Zertifikat muss einen privaten Schlüssel enthalten.
+* Das Zertifikat muss einen privaten Schlüssel enthalten. Diese Zertifikate weisen in der Regel die Erweiterung „.pfx“ oder „.pem“ auf.  
 * Das Zertifikat muss für den Schlüsselaustausch erstellt werden, um in eine PFX-Datei (Personal Information Exchange; privater Informationsaustausch) exportiert werden zu können.
-* Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Dies ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne „.cloudapp.azure.com“ können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
+* Der **Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen**. Dies ist erforderlich, damit SSL für den HTTPS-Verwaltungsendpunkt des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne *.cloudapp.azure.com können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle (ZS) beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
+
+### <a name="set-up-azure-active-directory-for-client-authentication-optional-but-recommended"></a>Einrichten von Azure Active Directory für die Clientauthentifizierung (optional, aber empfohlen)
+
+Mit Azure AD können Organisationen (so genannte Mandanten) den Benutzerzugriff auf Anwendungen verwalten. Bei den Anwendungen wird zwischen Anwendungen mit webbasierter Anmeldebenutzeroberfläche und Anwendungen mit nativer Clientumgebung unterschieden. In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Mandanten erstellt haben. Falls nicht, sollten Sie sich zunächst mit dem Artikel [Einrichten eines Azure Active Directory-Mandanten][active-directory-howto-tenant] befassen.
+
+Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwaltungsfunktionen. Hierzu zählen etwa der webbasierte [Service Fabric Explorer][service-fabric-visualizing-your-cluster] und [Visual Studio][service-fabric-manage-application-in-visual-studio]. Daher erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steuern: eine Webanwendung und eine native Anwendung.
+
+Weitere Informationen zum Einrichten finden Sie weiter unten in diesem Dokument.
 
 ### <a name="application-certificates-optional"></a>Anwendungszertifikate (optional)
 Zum Zweck der Anwendungssicherheit kann eine beliebige Anzahl zusätzlicher Zertifikate in einem Cluster installiert werden. Bevor Sie den Cluster erstellen, betrachten Sie die verschiedenen Szenarien zur Anwendungssicherheit, in denen ein Zertifikat auf den Knoten installiert werden muss, beispielsweise:
@@ -158,135 +68,283 @@ Zum Zweck der Anwendungssicherheit kann eine beliebige Anzahl zusätzlicher Zert
 * Verschlüsselung und Entschlüsselung von Anwendungskonfigurationswerten
 * Knotenübergreifende Verschlüsselung von Daten während der Replikation
 
-### <a name="formatting-certificates-for-azure-resource-provider-use"></a>Formatieren von Zertifikaten für die Verwendung durch einen Azure-Ressourcenanbieter
-Sie können private Schlüsseldateien (PFX-Dateien) direkt über Ihren Schlüsseltresor hinzufügen und verwenden. Für den Compute-Ressourcenanbieter müssen Schlüssel jedoch in einem bestimmten JSON-Format (JavaScript Object Notation) gespeichert werden. Dieses Format enthält die PFX-Datei als Base64-codierte Zeichenfolge und das Kennwort für den privaten Schlüssel. Hierzu müssen die Schlüssel in einer JSON-Zeichenfolge platziert und dann als Geheimnisse im Schlüsseltresor gespeichert werden.
+Das Konzept der Erstellung sicherer Cluster ist für Linux und Windows identisch. 
 
-Zur Vereinfachung dieses Prozesses ist ein [PowerShell-Modul auf GitHub][service-fabric-rp-helpers] verfügbar. Gehen Sie zum Verwenden dieses Moduls wie folgt vor:
+### <a name="client-authentication-certificates-optional"></a>Clientauthentifizierungszertifikate (optional)
+Eine beliebige Anzahl weiterer Zertifikate kann für Administrator- oder Benutzerclientvorgänge angegeben werden. Standardmäßig hat das Clusterzertifikat Administratorrechte für den Client. Diese zusätzlichen Clientzertifikate dürfen nicht im Cluster installiert werden, sie müssen lediglich in der Clusterkonfiguration als zulässig festgelegt werden. Es ist jedoch erforderlich, sie auf den Clientcomputern zu installieren, um eine Verbindung mit dem Cluster herzustellen und Verwaltungsvorgänge auszuführen.
 
-1. Laden Sie den gesamten Inhalt des Repositorys in ein lokales Verzeichnis herunter.
-2. Navigieren Sie zu dem lokalen Verzeichnis.
-2. Importieren Sie das Modul „ServiceFabricRPHelpers“ über Ihr PowerShell-Fenster:
+
+## <a name="prerequisites"></a>Voraussetzungen 
+Das Konzept der Erstellung sicherer Cluster ist für Linux und Windows identisch. Dieser Leitfaden behandelt die Verwendung von Azure Powershell oder der Azure CLI zum Erstellen neuer Cluster. Die Voraussetzungen sind 
+
+-  [Azure PowerShell 4.1 und höher][azure-powershell] oder [Azure CLI 2.0 und höher][azure-CLI].
+-  Details zu den Service Fabric-Modulen finden Sie unter [AzureRM.ServiceFabric](https://docs.microsoft.com/powershell/module/azurerm.servicefabric) und [az SF](https://docs.microsoft.com/cli/azure/sf?view=azure-cli-latest).
+
+
+## <a name="use-service-fabric-rm-module-to-deploy-a-cluster"></a>Verwenden des Service Fabric RM-Moduls zum Bereitstellen eines Clusters
+
+In diesem Dokument verwenden wir das Service Fabric-RM-Powershell- und das CLI-Modul zum Bereitstellen eines Clusters. Der Powershell oder CLI-Modulbefehl lässt mehrere Szenarien zu. Diese möchten wir uns hier einzeln ansehen. Wählen Sie das Szenario aus, das Ihre Anforderungen am besten erfüllt. 
+
+- Erstellen eines neuen Clusters – mithilfe eines vom System generierten selbstsignierten Zertifikats
+    - Verwenden einer Standardclustervorlage
+    - Verwenden einer bereits vorhandenen Vorlage
+- Erstellen eines neuen Clusters – mithilfe eines bereits vorhandenen Zertifikats
+    - Verwenden einer Standardclustervorlage
+    - Verwenden einer bereits vorhandenen Vorlage
+
+### <a name="create-new-cluster----using-a-system-generated-self-signed-certificate"></a>Erstellen eines neuen Clusters – mithilfe eines vom System generierten selbstsignierten Zertifikats
+
+Verwenden Sie den folgenden Befehl zum Erstellen des Clusters, wenn das System ein selbstsigniertes Zertifikat generieren und zum Schützen des Clusters verwenden soll. Dieser Befehl richtet ein primäres Clusterzertifikat ein, das für die Clustersicherheit und zum Einrichten von Administratorzugriff verwendet wird, um mithilfe dieses Zertifikats Verwaltungsvorgänge auszuführen.
+
+### <a name="login-in-to-azure"></a>Anmelden bei Azure
+
+```Powershell
+
+Login-AzureRmAccount
+Set-AzureRmContext -SubscriptionId <guid>
+
+```
+
+```CLI
+
+azure login
+az account set --subscription $subscriptionId
+
+```
+#### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module-to-set-up-the-cluster"></a>Verwenden der im Modul inbegriffenen Standardvorlage „5 Node 1 nodetype“ zum Einrichten des Clusters
+
+Verwenden Sie den folgenden Befehl, um einen Cluster schnell und unter Angabe der minimal erforderlichen Parameter zu erstellen.
+
+Die Vorlage, die verwendet wird, ist unter den [Azure Service Fabric-Vorlagenbeispielen: Windows-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) und [Ubuntu-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure) verfügbar.
+
+Die folgenden Befehle funktionieren zum Erstellen von Windows- und Linux-Clustern. Sie müssen nur das Betriebssystem entsprechend angeben. Die Powershell-/CLI-Befehle geben außerdem das Zertifikat im angegebenen CertificateOutputFolder-Ordner zurück. Der Befehl akzeptiert auch andere Parameter wie VM-SKU.
+
+```Powershell
+
+$resourceGroupLocation="westus"
+$resourceGroupName="mycluster"
+$vaultName="myvault"
+$vaultResourceGroupName="myvaultrg"
+$CertSubjectName="mycluster.westus.cloudapp.azure.com"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$vmpassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$vmuser="myadmin"
+$os="WindowsServer2016DatacenterwithContainers"
+$certOutputFolder="c:\certificates"
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+
+```
+
+```CLI
+
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare vaultResourceGroupName="myvaultrg"
+declare vaultName="myvault"
+declare CertSubjectName="mylinux.westus.cloudapp.azure.com"
+declare vmpassword="Password!1"
+declare certpassword="Password!1"
+declare vmuser="myadmin"
+declare vmOs="UbuntuServer1604"
+declare certOutputFolder="c:\certificates"
+
+
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-output-folder $certOutputFolder --certificate-password $certpassword  \
+    --vault-name $vaultName --vault-resource-group $resourceGroupName  \
+    --template-file $templateFilePath --parameter-file $parametersFilePath --vm-os $vmOs  \
+    --vm-password $vmpassword --vm-user-name $vmuser
+
+```
+
+#### <a name="use-the-custom-template-that-you-already-have"></a>Verwenden einer bereits vorhandenen benutzerdefinierten Vorlage 
+
+Wenn Sie eine benutzerdefinierte Vorlage für Ihre speziellen Anforderungen erstellen müssen, wird dringend empfohlen, dass Sie mit einer der Vorlagen beginnen, die unter den [Azure Service Fabric-Vorlagenbeispielen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) verfügbar sind. Beachten Sie die Anleitung und Erklärungen zum [Anpassen Ihrer Clustervorlage][customize-your-cluster-template] im folgenden Abschnitt.
+
+Wenn Sie bereits über eine benutzerdefinierte Vorlage verfügen, überprüfen Sie, ob alle drei zertifikatbezogenen Parameter in der Vorlage und der Parameterdatei wie folgt benannt wurden und die Werte wie folgt NULL sind.
+
+```Json
+   "certificateThumbprint": {
+      "value": ""
+    },
+    "sourceVaultValue": {
+      "value": ""
+    },
+    "certificateUrlValue": {
+      "value": ""
+    },
+```
+
+
+```Powershell
+
+
+$resourceGroupLocation="westus"
+$resourceGroupName="mycluster"
+$CertSubjectName="mycluster.westus.cloudapp.azure.com"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$certOutputFolder="c:\certificates"
+
+$parameterFilePath="c:\mytemplates\mytemplateparm.json"
+$templateFilePath="c:\mytemplates\mytemplate.json"
+
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -CertificateOutputFolder $certOutputFolder -CertificatePassword $certpassword -CertificateSubjectName $CertSubjectName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath 
+
+```
+
+Im Folgenden sehen Sie den entsprechenden CLI-Befehl hierfür. Ändern Sie die Werte in den declare-Anweisungen in die entsprechenden Werte. Die CLI unterstützt alle anderen Parameter, die vom oben genannten Powershell-Befehl unterstützt werden.
+
+```CLI
+
+declare certPassword=""
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare certSubjectName="mylinuxsecure.westus.cloudapp.azure.com"
+declare parameterFilePath="c:\mytemplates\linuxtemplateparm.json"
+declare templateFilePath="c:\mytemplates\linuxtemplate.json"
+declare certOutputFolder="c:\certificates"
+
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-output-folder $certOutputFolder --certificate-password $certPassword  \
+    --certificate-subject-name $certSubjectName \
+    --template-file $templateFilePath --parameter-file $parametersFilePath
+
+```
+
+
+### <a name="create-new-cluster---using-the-certificate-you-bought-from-a-ca-or-you-already-have"></a>Erstellen eines neuen Clusters – mithilfe eines von einer ZS gekauften oder bereits vorhandenen Zertifikats
+
+Verwenden Sie den folgenden Befehl zum Erstellen eines Clusters, wenn Sie über ein Zertifikat verfügen, das Sie zum Schützen des Clusters verwenden möchten.
+
+Wenn dies ein von einer ZS signiertes Zertifikat ist, das Sie letztendlich auch für andere Zwecke einsetzen möchten, dann empfiehlt es sich, eine unterschiedliche Ressourcengruppe speziell für Ihren Schlüsseltresor bereitzustellen. Es empfiehlt sich, den Schlüsseltresor in einer eigenen Ressourcengruppe zu platzieren. Dadurch können Sie die Compute- und Speicherressourcengruppen (einschließlich der Ressourcengruppe mit Ihrem Service Fabric-Cluster) entfernen, ohne Ihre Schlüssel und geheimen Schlüssel zu verlieren. **Die Ressourcengruppe mit Ihrem Schlüsseltresor _muss sich in der gleichen Region_ befinden wie der Cluster, der den Tresor verwendet.**
+
+
+#### <a name="use-the-default-5-node-1-nodetype-template-that-ships-in-the-module"></a>Verwenden der im Modul inbegriffenen Standardvorlage „5 Node 1 nodetype“
+Die Vorlage, die verwendet wird, ist unter den [Azure-Beispielen: Windows-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure-NSG) und [Ubuntu-Vorlage](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeTypes-Secure) verfügbar.
+
+```Powershell
+$resourceGroupLocation="westus"
+$resourceGroupName="mylinux"
+$vaultName="myvault"
+$vaultResourceGroupName="myvaultrg"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$vmpassword=("Password!1" | ConvertTo-SecureString -AsPlainText -Force) 
+$vmuser="myadmin"
+$os="WindowsServer2016DatacenterwithContainers"
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile C:\MyCertificates\chackocertificate3.pfx -CertificatePassword $certPassword -OS $os -VmPassword $vmpassword -VmUserName $vmuser 
+
+```
+
+```CLI
+
+declare vmPassword="Password!1"
+declare certPassword="Password!1"
+declare vmUser="myadmin"
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare vaultResourceGroupName="myvaultrg"
+declare vaultName="myvault"
+declare certificate-file="c:\certificates\mycert.pem"
+declare vmOs="UbuntuServer1604"
+
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-file $certificate-file --certificate-password $certPassword  \
+    --vault-name $vaultName --vault-resource-group $vaultResourceGroupName  \
+    --vm-os vmOs \
+    --vm-password $vmPassword --vm-user-name $vmUser
+
+```
+
+#### <a name="use-the-custom-template-that-you-have"></a>Verwenden einer vorhandenen benutzerdefinierten Vorlage 
+Wenn Sie eine benutzerdefinierte Vorlage für Ihre speziellen Anforderungen erstellen müssen, wird dringend empfohlen, dass Sie mit einer der Vorlagen beginnen, die unter den [Azure Service Fabric-Vorlagenbeispielen](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master) verfügbar sind. Beachten Sie die Anleitung und Erklärungen zum [Anpassen Ihrer Clustervorlage][customize-your-cluster-template] im folgenden Abschnitt.
+
+Wenn Sie bereits über eine benutzerdefinierte Vorlage verfügen, überprüfen Sie, ob alle drei zertifikatbezogenen Parameter in der Vorlage und der Parameterdatei wie folgt benannt wurden und die Werte wie folgt NULL sind.
+
+```Json
+   "certificateThumbprint": {
+      "value": ""
+    },
+    "sourceVaultValue": {
+      "value": ""
+    },
+    "certificateUrlValue": {
+      "value": ""
+    },
+```
+
+
+```Powershell
+
+$resourceGroupLocation="westus"
+$resourceGroupName="mylinux"
+$vaultName="myvault"
+$vaultResourceGroupName="myvaultrg"
+$certPassword="Password!1" | ConvertTo-SecureString -AsPlainText -Force 
+$os="WindowsServer2016DatacenterwithContainers"
+$parameterFilePath="c:\mytemplates\mytemplateparm.json"
+$templateFilePath="c:\mytemplates\mytemplate.json"
+$certificateFile="C:\MyCertificates\chackonewcertificate3.pem"
+
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroupName -TemplateFile $templateFilePath -ParameterFile $parameterFilePath -KeyVaultResouceGroupName $vaultResourceGroupName -KeyVaultName $vaultName -CertificateFile $certificateFile -CertificatePassword #certPassword
+
+```
+
+Im Folgenden sehen Sie den entsprechenden CLI-Befehl hierfür. Ändern Sie die Werte in den declare-Anweisungen in die entsprechenden Werte.
+
+```CLI
+
+declare certPassword="Password!1"
+declare resourceGroupLocation="westus"
+declare resourceGroupName="mylinux"
+declare vaultResourceGroupName="myvaultrg"
+declare vaultName="myvault"
+declare parameterFilePath="c:\mytemplates\linuxtemplateparm.json"
+declare templateFilePath="c:\mytemplates\linuxtemplate.json"
+
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --certificate-file $certificate-file --certificate-password $password  \
+    --vault-name $vaultName --vault-resource-group $vaultResourceGroupName  \
+    --template-file $templateFilePath --parameter-file $parametersFilePath 
+```
+
+#### <a name="use-a-pointer-to-the-secret-you-already-have-uploaded-into-the-keyvault"></a>Verwenden eines Zeigers auf den bereits in den Schlüsseltresor hochgeladenen geheimen Schlüssel
+
+Wenn Sie einen bereits vorhandenen Schlüsseltresor verwenden möchten, _muss er für die Bereitstellung aktiviert werden_, damit der Compute-Ressourcenanbieter Zertifikate daraus abrufen und ihn auf Clusterknoten installieren kann:
 
 ```powershell
 
- Import-Module "C:\..\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1"
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+
+
+$parameterFilePath="c:\mytemplates\mytemplate.json"
+$templateFilePath="c:\mytemplates\mytemplateparm.json"
+$secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
+
+
+New-AzureRmServiceFabricCluster -ResourceGroupName $resourceGroup -SecretIdentifier $secretID -TemplateFile $templateFile -ParameterFile $templateParmfile 
 
 ```
+Im Folgenden sehen Sie den entsprechenden CLI-Befehl hierfür. Ändern Sie die Werte in den declare-Anweisungen in die entsprechenden Werte.
 
-Der Befehl `Invoke-AddCertToKeyVault` in diesem PowerShell-Modul formatiert einen privaten Zertifikatschlüssel automatisch in eine JSON-Zeichenfolge und lädt sie in den Schlüsseltresor hoch. Verwenden Sie den Befehl, um dem Schlüsseltresor das Clusterzertifikat und ggf. weitere Anwendungszertifikate hinzuzufügen. Wiederholen Sie diesen Schritt für alle weiteren Zertifikate, die Sie in Ihrem Cluster installieren möchten.
+```cli
 
-#### <a name="uploading-an-existing-certificate"></a>Hochladen eines vorhandenen Zertifikats
+declare $parameterFilePath="c:\mytemplates\mytemplate.json"
+declare $templateFilePath="c:\mytemplates\mytemplateparm.json"
+declare $secertId="https://test1.vault.azure.net:443/secrets/testcertificate4/55ec7c4dc61a462bbc645ffc9b4b225f"
 
-```powershell
 
- Invoke-AddCertToKeyVault -SubscriptionId <guid> -ResourceGroupName westus-mykeyvault -Location "West US" -VaultName mywestusvault -CertificateName mycert -Password "<password>" -UseExistingCertificate -ExistingPfxFilePath "C:\path\to\mycertkey.pfx"
-
-```
-
-Fehler wie der hier gezeigte sind in der Regel auf einen URL-Ressourcenkonflikt zurückzuführen. Ändern Sie zum Beheben des Konflikts den Namen des Schlüsseltresors.
-
-```
-Set-AzureKeyVaultSecret : The remote name could not be resolved: 'westuskv.vault.azure.net'
-At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1:440 char:11
-+ $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $Certif ...
-+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureKeyVaultSecret], WebException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.KeyVault.SetAzureKeyVaultSecret
+az sf cluster create --resource-group $resourceGroupName --location $resourceGroupLocation  \
+    --secret-identifieraz $secretID  \
+    --template-file $templateFilePath --parameter-file $parametersFilePath 
 
 ```
-
-Nach Behebung des Konflikts sollte die Ausgabe wie folgt aussehen:
-
-```
-
-    Switching context to SubscriptionId <guid>
-    Ensuring ResourceGroup westus-mykeyvault in West US
-    WARNING: The output object type of this cmdlet is going to be modified in a future release.
-    Using existing value mywestusvault in West US
-    Reading pfx file from C:\path\to\key.pfx
-    Writing secret to mywestusvault in vault mywestusvault
-
-
-Name  : CertificateThumbprint
-Value : E21DBC64B183B5BF355C34C46E03409FEEAEF58D
-
-Name  : SourceVault
-Value : /subscriptions/<guid>/resourceGroups/westus-mykeyvault/providers/Microsoft.KeyVault/vaults/mywestusvault
-
-Name  : CertificateURL
-Value : https://mywestusvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0978cb100e47
-
-```
-
->[!NOTE]
->Sie benötigen die drei vorherigen Zeichenfolgen „CertificateThumbprint“, „SourceVault“ und „CertificateURL“, um einen sicheren Service Fabric-Cluster einzurichten und die Anwendungszertifikate abzurufen, die Sie ggf. für die Anwendungssicherheit verwenden. Wenn die Zeichenfolgen nicht gespeichert werden, können sie später unter Umständen nur sehr umständlich durch Abfragen des Schlüsseltresors abgerufen werden.
-
-<a id="add-self-signed-certificate-to-key-vault"></a>
-
-#### <a name="creating-a-self-signed-certificate-and-uploading-it-to-the-key-vault"></a>Erstellen eines selbstsignierten Zertifikats und Hochladen des Zertifikats in den Schlüsseltresor
-
-Falls Sie Ihre Zertifikate bereits in den Schlüsseltresor hochgeladen haben, überspringen Sie diesen Schritt. In diesem Schritt wird ein neues selbstsigniertes Zertifikat generiert und in Ihren Schlüsseltresor hochgeladen. Nachdem Sie die Parameter im folgenden Skript geändert und das Skript ausgeführt haben, sollten Sie zur Eingabe eines Zertifikatkennworts aufgefordert werden.  
-
-```powershell
-
-$ResourceGroup = "chackowestuskv"
-$VName = "chackokv2"
-$SubID = "6c653126-e4ba-42cd-a1dd-f7bf96ae7a47"
-$locationRegion = "westus"
-$newCertName = "chackotestcertificate1"
-$dnsName = "www.mycluster.westus.mydomain.com" #The certificate's subject name must match the domain used to access the Service Fabric cluster.
-$localCertPath = "C:\MyCertificates" # location where you want the .PFX to be stored
-
- Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResourceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
-
-```
-
-Fehler wie der hier gezeigte sind in der Regel auf einen URL-Ressourcenkonflikt zurückzuführen. Ändern Sie zum Beheben des Konflikts den Namen des Schlüsseltresors, den Namen der Ressourcengruppe usw.
-
-```
-Set-AzureKeyVaultSecret : The remote name could not be resolved: 'westuskv.vault.azure.net'
-At C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers\ServiceFabricRPHelpers.psm1:440 char:11
-+ $secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $Certif ...
-+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : CloseError: (:) [Set-AzureKeyVaultSecret], WebException
-    + FullyQualifiedErrorId : Microsoft.Azure.Commands.KeyVault.SetAzureKeyVaultSecret
-
-```
-
-Nach Behebung des Konflikts sollte die Ausgabe wie folgt aussehen:
-
-```
-PS C:\Users\chackdan\Documents\GitHub\Service-Fabric\Scripts\ServiceFabricRPHelpers> Invoke-AddCertToKeyVault -SubscriptionId $SubID -ResourceGroupName $ResouceGroup -Location $locationRegion -VaultName $VName -CertificateName $newCertName -Password $certPassword -CreateSelfSignedCertificate -DnsName $dnsName -OutputPath $localCertPath
-Switching context to SubscriptionId 6c343126-e4ba-52cd-a1dd-f8bf96ae7a47
-Ensuring ResourceGroup chackowestuskv in westus
-WARNING: The output object type of this cmdlet will be modified in a future release.
-Creating new vault westuskv1 in westus
-Creating new self signed certificate at C:\MyCertificates\chackonewcertificate1.pfx
-Reading pfx file from C:\MyCertificates\chackonewcertificate1.pfx
-Writing secret to chackonewcertificate1 in vault westuskv1
-
-
-Name  : CertificateThumbprint
-Value : 96BB3CC234F9D43C25D4B547sd8DE7B569F413EE
-
-Name  : SourceVault
-Value : /subscriptions/6c653126-e4ba-52cd-a1dd-f8bf96ae7a47/resourceGroups/chackowestuskv/providers/Microsoft.KeyVault/vaults/westuskv1
-
-Name  : CertificateURL
-Value : https://westuskv1.vault.azure.net:443/secrets/chackonewcertificate1/ee247291e45d405b8c8bbf81782d12bd
-
-```
-
->[!NOTE]
->Sie benötigen die drei vorherigen Zeichenfolgen „CertificateThumbprint“, „SourceVault“ und „CertificateURL“, um einen sicheren Service Fabric-Cluster einzurichten und die Anwendungszertifikate abzurufen, die Sie ggf. für die Anwendungssicherheit verwenden. Wenn die Zeichenfolgen nicht gespeichert werden, können sie später unter Umständen nur sehr umständlich durch Abfragen des Schlüsseltresors abgerufen werden.
-
- Sie müssten nun über folgende Elemente verfügen:
-
-* Schlüsseltresor-Ressourcengruppe
-* Schlüsseltresor und die dazugehörige URL („SourceVault“ in der vorherigen PowerShell-Ausgabe)
-* Authentifizierungszertifikat für den Clusterserver und die dazugehörige URL im Schlüsseltresor
-* Anwendungszertifikate und die dazugehörigen URLs im Schlüsseltresor
-
 
 <a id="add-AAD-for-client"></a>
 
@@ -306,24 +364,25 @@ Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um einige Schritte
 3. Extrahieren Sie die ZIP-Datei.
 4. Führen Sie `SetupApplications.ps1` aus, und geben Sie „TenantId“, „ClusterName“ und „WebApplicationReplyUrl“ als Parameter an. Beispiel:
 
-    ```powershell
+```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
-    ```
 
-    Die Mandanten-ID (TenantId) können Sie mithilfe des PowerShell-Befehls `Get-AzureSubscription` ermitteln. Wenn Sie diesen Befehl ausführen, wird die Mandanten-ID für jedes Abonnement angezeigt.
+```
 
-    „ClusterName“ wird als Präfix für durch das Skript erstellte Azure AD-Anwendungen verwendet. Der Wert muss nicht exakt dem tatsächlichen Clusternamen entsprechen. Er dient lediglich zur Vereinfachung der Zuordnung von Azure AD-Artefakten zu dem Service Fabric-Cluster, mit dem sie verwendet werden.
+Die Mandanten-ID (TenantId) können Sie mithilfe des PowerShell-Befehls `Get-AzureSubscription` ermitteln. Wenn Sie diesen Befehl ausführen, wird die Mandanten-ID für jedes Abonnement angezeigt.
 
-    „WebApplicationReplyUrl“ ist der Standardendpunkt, den Azure AD nach Abschluss des Anmeldeprozesses an Ihre Benutzer zurückgibt. Legen Sie diesen Endpunkt auf den Service Fabric Explorer-Endpunkt für Ihren Cluster fest. Dies ist standardmäßig folgender Wert:
+„ClusterName“ wird als Präfix für durch das Skript erstellte Azure AD-Anwendungen verwendet. Der Wert muss nicht exakt dem tatsächlichen Clusternamen entsprechen. Er dient lediglich zur Vereinfachung der Zuordnung von Azure AD-Artefakten zu dem Service Fabric-Cluster, mit dem sie verwendet werden.
 
-    https://&lt;Cluster-Domäne&gt;:19080/Explorer
+„WebApplicationReplyUrl“ ist der Standardendpunkt, den Azure AD nach Abschluss des Anmeldeprozesses an Ihre Benutzer zurückgibt. Legen Sie diesen Endpunkt auf den Service Fabric Explorer-Endpunkt für Ihren Cluster fest. Dies ist standardmäßig folgender Wert:
 
-    Sie werden aufgefordert, sich bei einem Konto anzumelden, das über Administratorrechte für den Azure AD-Mandanten verfügt. Nach der Anmeldung erstellt das Skript die Webanwendung und die native Anwendung, die Ihren Service Fabric-Cluster darstellen. Wenn Sie sich die Anwendungen des Mandanten im [klassischen Azure-Portal][azure-classic-portal] ansehen, sollten zwei neue Einträge angezeigt werden:
+https://&lt;Cluster-Domäne&gt;:19080/Explorer
+
+Sie werden aufgefordert, sich bei einem Konto anzumelden, das über Administratorrechte für den Azure AD-Mandanten verfügt. Nach der Anmeldung erstellt das Skript die Webanwendung und die native Anwendung, die Ihren Service Fabric-Cluster darstellen. Wenn Sie sich die Anwendungen des Mandanten im [klassischen Azure-Portal][azure-classic-portal] ansehen, sollten zwei neue Einträge angezeigt werden:
 
    * *Clustername*\_Cluster
    * *Clustername*\_Client
 
-   Das Skript gibt den für die Azure Resource Manager-Vorlage erforderlichen JSON-Code aus, wenn Sie im nächsten Abschnitt den Cluster erstellen. Es empfiehlt sich daher, das PowerShell-Fenster geöffnet zu lassen.
+Das Skript gibt den für die Azure Resource Manager-Vorlage erforderlichen JSON-Code aus, wenn Sie im nächsten Abschnitt den Cluster erstellen. Es empfiehlt sich daher, das PowerShell-Fenster geöffnet zu lassen.
 
 ```json
 "azureActiveDirectory": {
@@ -333,23 +392,25 @@ Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um einige Schritte
 },
 ```
 
-## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage für Service Fabric-Cluster
-In diesem Abschnitt werden die Ausgaben der vorherigen PowerShell-Befehle in einer Resource Manager-Vorlage für Service Fabric-Cluster verwendet.
+<a id="customize-arm-template" ></a>
 
-Resource Manager-Beispielvorlagen stehen im [Azure-Schnellstart-Vorlagenkatalog auf GitHub][azure-quickstart-templates] zur Verfügung. Diese Vorlagen können als Ausgangspunkt für Ihre Clustervorlage verwendet werden.
+## <a name="create-a-service-fabric-cluster-resource-manager-template"></a>Erstellen einer Resource Manager-Vorlage für Service Fabric-Cluster
+Dieser Abschnitt ist für Benutzer bestimmt, die eine Resource Manager-Vorlage für Service Fabric-Cluster benutzerdefiniert erstellen möchten. Wenn Sie eine Vorlage erstellt haben, können Sie wieder zurück navigieren und zum Bereitstellen die Powershell- oder CLI-Module verwenden. 
+
+Resource Manager-Beispielvorlagen stehen in den [Azure-Beispielen auf GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates) zur Verfügung. Diese Vorlagen können als Ausgangspunkt für Ihre Clustervorlage verwendet werden.
 
 ### <a name="create-the-resource-manager-template"></a>Erstellen der Resource Manager-Vorlage
 In diesem Leitfaden werden die Beispielvorlage für einen [Sicherheitscluster mit 5 Knoten][service-fabric-secure-cluster-5-node-1-nodetype] und die zugehörigen Vorlagenparameter verwendet. Laden Sie `azuredeploy.json` und `azuredeploy.parameters.json` auf Ihren Computer herunter, und öffnen Sie beide Dateien in einem Texteditor.
 
 ### <a name="add-certificates"></a>Hinzufügen von Zertifikaten
-Um Zertifikate einer Resource Manager-Vorlage für einen Cluster hinzuzufügen, verweisen Sie auf den Schlüsseltresor mit den Zertifikatschlüsseln. Es empfiehlt sich, die Schlüsseltresorwerte in einer Parameterdatei für die Resource Manager-Vorlage zu speichern. Dadurch ist die Resource Manager-Vorlagendatei wiederverwendbar und enthält keine spezifischen Werte für eine bestimmte Bereitstellung.
+Um Zertifikate einer Resource Manager-Vorlage für einen Cluster hinzuzufügen, verweisen Sie auf den Schlüsseltresor mit den Zertifikatschlüsseln. Fügen Sie die Schlüsseltresorparameter und -werte zu einer Resource Manager-Vorlagenparameterdatei (azuredeploy.parameters.json) hinzu. 
 
 #### <a name="add-all-certificates-to-the-virtual-machine-scale-set-osprofile"></a>Hinzufügen aller Zertifikate zur VM-Skalierungsgruppe „osProfile“
 Jedes im Cluster installierte Zertifikat muss im osProfile-Abschnitt der Skalierungsgruppenressource (Microsoft.Compute/virtualMachineScaleSets) konfiguriert werden. Dadurch wird der Ressourcenanbieter angewiesen, das Zertifikat auf den virtuellen Computern zu installieren. Die Installation umfasst sowohl das Clusterzertifikat als auch sämtliche Anwendungssicherheitszertifikate, die Sie für Ihre Anwendungen verwenden möchten:
 
 ```json
 {
-  "apiVersion": "2016-03-30",
+  "apiVersion": "[variables('vmssApiVersion')]",
   "type": "Microsoft.Compute/virtualMachineScaleSets",
   ...
   "properties": {
@@ -382,10 +443,10 @@ Jedes im Cluster installierte Zertifikat muss im osProfile-Abschnitt der Skalier
 #### <a name="configure-the-service-fabric-cluster-certificate"></a>Konfigurieren des Service Fabric-Clusterzertifikats
 Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabric-Clusterressource (Microsoft.ServiceFabric/clusters) als auch in der Service Fabric-Erweiterung für VM-Skalierungsgruppen in der VM-Skalierungsgruppenressource konfiguriert werden. Dadurch kann der Service Fabric-Ressourcenanbieter das Zertifikat für die Clusterauthentifizierung und die Serverauthentifizierung für Verwaltungsendpunkte konfigurieren.
 
-##### <a name="virtual-machine-scale-set-resource"></a>VM-Skalierungsgruppenressource:
+##### <a name="add-the-certificate-information-the-virtual-machine-scale-set-resource"></a>Fügen Sie die Zertifikatinformationen in der VM-Skalierungsgruppenressource hinzu:
 ```json
 {
-  "apiVersion": "2016-03-30",
+  "apiVersion": "[variables('vmssApiVersion')]",
   "type": "Microsoft.Compute/virtualMachineScaleSets",
   ...
   "properties": {
@@ -414,10 +475,10 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
 }
 ```
 
-##### <a name="service-fabric-resource"></a>Service Fabric-Ressource:
+##### <a name="add-the-certificate-information-to-the-service-fabric-cluster-resource"></a>Fügen Sie die Zertifikatinformationen zur Service Fabric-Clusterressource hinzu:
 ```json
 {
-  "apiVersion": "2016-03-01",
+  "apiVersion": "[variables('sfrpApiVersion')]",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   "location": "[parameters('clusterLocation')]",
@@ -434,12 +495,13 @@ Das Zertifikat für die Clusterauthentifizierung muss sowohl in der Service Fabr
 }
 ```
 
-### <a name="insert-azure-ad-configuration"></a>Einfügen der Azure AD-Konfiguration
-Die zuvor erstellte Azure AD-Konfiguration kann direkt in die Resource Manager-Vorlage eingefügt werden. Es empfiehlt sich allerdings, zuerst die Werte in eine Parameterdatei zu extrahieren, damit die Resource Manager-Vorlagendatei wiederverwendet werden kann und keine spezifischen Werte für eine bestimmte Bereitstellung enthält.
+### <a name="add-azure-ad-configuration-to-use-azure-ad-for-client-access"></a>Hinzufügen der Azure AD-Konfiguration zum Verwenden von Azure AD für den Clientzugriff
+
+Fügen Sie die Azure AD-Konfiguration zu einer Resource Manager-Vorlage für einen Cluster hinzu, indem Sie auf den Schlüsseltresor mit den Zertifikatschlüsseln verweisen. Fügen Sie die Azure AD-Parameter und -werte zu einer Resource Manager-Vorlagenparameterdatei (azuredeploy.parameters.json) hinzu.
 
 ```json
 {
-  "apiVersion": "2016-03-01",
+  "apiVersion": "[variables('sfrpApiVersion')]",
   "type": "Microsoft.ServiceFabric/clusters",
   "name": "[parameters('clusterName')]",
   ...
@@ -459,9 +521,30 @@ Die zuvor erstellte Azure AD-Konfiguration kann direkt in die Resource Manager-V
 }
 ```
 
-### <a "configure-arm" ></a>Konfigurieren von Resource Manager-Vorlagenparametern
-<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since the link seems not to be redirecting correctly --->
+### <a name="populate-the-parameter-file-with-the-values"></a>Füllen Sie die Parameterdatei mit den Werten auf.
 Füllen Sie die Parameterdatei abschließend mit den Ausgabewerten aus den Schlüsseltresor- und Azure AD-PowerShell-Befehlen auf:
+
+Wenn Sie die Azure Service Fabric-RM-Powershell-Module verwenden möchten, dann ist es nicht erforderlich, die Clusterzertifikatinformationen aufzufüllen. Wenn das System das selbstsignierte Zertifikat für die Clustersicherheit erstellen soll, belassen Sie sie bei NULL. 
+
+> [!NOTE]
+> Für die RM-Module, die diese leeren Parameterwerte übernehmen und auffüllen sollen, müssen die Parameternamen mit den folgenden Namen übereinstimmen.
+>
+
+```json
+        "clusterCertificateThumbprint": {
+            "value": ""
+        },
+        "clusterCertificateUrlValue": {
+            "value": ""
+        },
+        "sourceVaultvalue": {
+            "value": ""
+        },
+```
+
+Wenn Sie Anwendungszertifikate oder einen vorhandenen Cluster verwenden, den Sie in den Schlüsseltresor hochgeladen haben, rufen Sie diese Informationen ab und füllen Sie sie auf. 
+
+Die RM-Module können die Azure AD-Konfiguration nicht für Sie erstellen. Wenn Sie Azure AD für den Clientzugriff verwenden möchten, müssen Sie es auffüllen.
 
 ```json
 {
@@ -500,40 +583,34 @@ Füllen Sie die Parameterdatei abschließend mit den Ausgabewerten aus den Schl�
     }
 }
 ```
-Sie müssten nun über folgende Elemente verfügen:
 
-* Schlüsseltresor-Ressourcengruppe
-  * Schlüsseltresor
-  * Authentifizierungszertifikat für den Clusterserver
-  * Datenverschlüsselungszertifikat
-* Azure Active Directory-Mandant
-  * Azure AD-Anwendung für webbasierte Verwaltung und Service Fabric Explorer
-  * Azure AD-Anwendung für native Clientverwaltung
-  * Benutzer und ihre zugewiesenen Rollen
-* Resource Manager-Vorlage für Service Fabric-Cluster
-  * Über den Schlüsseltresor konfigurierte Zertifikate
-  * Konfiguriertes Azure Active Directory
-
-Das folgende Diagramm veranschaulicht die Platzierung der Schlüsseltresor- und Azure AD-Konfiguration in der Resource Manager-Vorlage.
-
-![Abhängigkeiten in Resource Manager][cluster-security-arm-dependency-map]
-
-## <a name="create-the-cluster"></a>Cluster erstellen
-Nun können Sie den Cluster mithilfe der [Azure-Ressourcenvorlagenbereitstellung][resource-group-template-deploy] erstellen.
-
-#### <a name="test-it"></a>Testen
+### <a name="test-your-template"></a>Testen der Vorlage  
 Verwenden Sie den folgenden PowerShell-Befehl, um Ihre Resource Manager-Vorlage mit einer Parameterdatei zu testen:
 
 ```powershell
 Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
-#### <a name="deploy-it"></a>Bereitstellen
-Wenn der Test der Resource Manager-Vorlage erfolgreich verläuft, verwenden Sie den folgenden PowerShell-Befehl, um Ihre Resource Manager-Vorlage mit einer Parameterdatei bereitzustellen:
+Falls Probleme auftreten und Sie kryptische Nachrichten erhalten, verwenden Sie „-Debug“ als Option.
+
+```powershell
+Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
+```
+
+Das folgende Diagramm veranschaulicht die Platzierung der Schlüsseltresor- und Azure AD-Konfiguration in der Resource Manager-Vorlage.
+
+![Abhängigkeiten in Resource Manager][cluster-security-arm-dependency-map]
+
+## <a name="create-the-cluster-using-azure-resource-template"></a>Erstellen des Clusters mithilfe einer Azure-Ressourcenvorlage 
+
+Sie können Ihren Cluster jetzt mithilfe der zuvor beschriebenen Schritte bereitstellen. Wenn Sie die Parameterdatei mit den Werten aufgefüllt haben, können Sie den Cluster direkt mithilfe der [Azure-Ressourcenvorlagenbereitstellung][resource-group-template-deploy] erstellen.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
+
+Falls Probleme auftreten und Sie kryptische Nachrichten erhalten, verwenden Sie „-Debug“ als Option.
+
 
 <a name="assign-roles"></a>
 
@@ -555,65 +632,15 @@ Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benu
 >
 >
 
- <a name="secure-linux-clusters"></a>
- <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
 
-## <a name="create-secure-clusters-on-linux"></a>Erstellen sicherer Cluster unter Linux
-Zur Vereinfachung des Prozesses haben wir ein [Hilfsskript](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux) erstellt. Vergewissern Sie sich vor der Verwendung dieses Hilfsskripts, dass die Azure-Befehlszeilenschnittstelle bereits installiert ist und sich unter Ihrem Pfad befindet. Vergewissern Sie sich, dass das Skript über Ausführungsberechtigungen verfügt, indem Sie nach dem Herunterladen `chmod +x cert_helper.py` ausführen. Melden Sie sich zunächst über die Befehlszeilenschnittstelle mithilfe des Befehls `azure login` bei Ihrem Azure-Konto an. Verwenden Sie nach der Anmeldung bei Ihrem Azure-Konto das Hilfsskript mit Ihrem von der Zertifizierungsstelle signierten Zertifikat, wie im folgenden Befehl zu sehen:
-
-```sh
-./cert_helper.py [-h] CERT_TYPE [-ifile INPUT_CERT_FILE] [-sub SUBSCRIPTION_ID] [-rgname RESOURCE_GROUP_NAME] [-kv KEY_VAULT_NAME] [-sname CERTIFICATE_NAME] [-l LOCATION] [-p PASSWORD]
-```
-
-Der Parameter „-ifile“ akzeptiert als Eingabe eine PFX- oder eine PEM-Datei mit dem Zertifikattyp („pfx“ oder „pem“ – oder „ss“, falls es sich um ein selbstsigniertes Zertifikat handelt).
-Der Parameter „-h“ gibt den Hilfetext aus.
-
-
-Dieser Befehl gibt als Ausgabe die drei folgenden Zeichenfolgen zurück:
-
-* SourceVaultID: Die ID für die neue Key Vault-Ressourcengruppe, die für Sie erstellt wurde.
-* CertificateUrl: Die Zertifikat-URL für den Zugriff auf das Zertifikat.
-* CertificateThumbprint: Der Zertifikatfingerabdruck für die Authentifizierung.
-
-Das folgende Beispiel zeigt die Verwendung des Befehls:
-
-```sh
-./cert_helper.py pfx -sub "fffffff-ffff-ffff-ffff-ffffffffffff"  -rgname "mykvrg" -kv "mykevname" -ifile "/home/test/cert.pfx" -sname "mycert" -l "East US" -p "pfxtest"
-```
-Wenn Sie diesen Befehl ausführen, erhalten Sie die drei folgenden Zeichenfolgen:
-
-```sh
-SourceVault: /subscriptions/fffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/mykvrg/providers/Microsoft.KeyVault/vaults/mykvname
-CertificateUrl: https://myvault.vault.azure.net/secrets/mycert/00000000000000000000000000000000
-CertificateThumbprint: 0xfffffffffffffffffffffffffffffffffffffffff
-```
-
-Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Dies ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
-
-Diese Antragstellernamen sind die Einträge, die Sie zum Erstellen eines sicheren Service Fabric-Clusters (ohne Azure AD) benötigen, wie unter [Konfigurieren von Resource Manager-Vorlagenparametern](#configure-arm)beschrieben. Eine Anleitung zum Herstellen einer Verbindung mit dem sicheren Cluster finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md). Linux-Cluster unterstützen keine Azure AD-Authentifizierung. Administrator- und Clientrollen können wie im Abschnitt [Zuweisen von Benutzern zu Rollen](#assign-roles) beschrieben zugewiesen werden. Bei der Angabe von Administrator- und Clientrollen für einen Linux-Cluster müssen Zertifikatfingerabdrücke für die Authentifizierung angegeben werden. Der Name des Antragstellers wird nicht angegeben, da keine Überprüfung oder Sperrung der Zertifikatkette stattfindet.
-
-Falls Sie zu Testzwecken ein selbstsigniertes Zertifikat verwenden möchten, können Sie mithilfe des gleichen Skripts eines generieren. Dieses können Sie dann in Ihren Schlüsseltresor hochladen, indem Sie anstelle von Zertifikatpfad und -name das Flag `ss` angeben. Mit dem folgenden Beispielbefehl wird ein selbstsigniertes Zertifikat erstellt und hochgeladen:
-
-```sh
-./cert_helper.py ss -rgname "mykvrg" -sub "fffffff-ffff-ffff-ffff-ffffffffffff" -kv "mykevname"   -sname "mycert" -l "East US" -p "selftest" -subj "mytest.eastus.cloudapp.net"
-```
-Dieser Befehl gibt die gleichen drei Zeichenfolgen („SourceVault“, „CertificateUrl“ und „CertificateThumbprint“) zurück. Mithilfe dieser Zeichenfolgen können Sie dann sowohl einen sicheren Linux-Cluster als auch einen Speicherort für das selbstsignierte Zertifikat erstellen. Sie benötigen das selbstsignierte Zertifikat, um eine Verbindung mit dem Cluster herstellen zu können. Eine Anleitung zum Herstellen einer Verbindung mit dem sicheren Cluster finden Sie unter [Herstellen einer Verbindung mit einem sicheren Cluster](service-fabric-connect-to-secure-cluster.md).
-
-Der Name des Antragstellers für das Zertifikat muss der Domäne entsprechen, über die Sie auf den Service Fabric-Cluster zugreifen. Dies ist erforderlich, damit SSL für die HTTPS-Verwaltungsendpunkte des Clusters und für Service Fabric Explorer bereitgestellt werden kann. Für die Domäne `.cloudapp.azure.com` können Sie kein SSL-Zertifikat von einer Zertifizierungsstelle beziehen. Sie benötigen einen benutzerdefinierten Domänennamen für Ihren Cluster. Wenn Sie ein Zertifikat von einer Zertifizierungsstelle anfordern, muss der Name des Antragstellers für das Zertifikat dem benutzerdefinierten Domänennamen entsprechen, den Sie für Ihren Cluster verwenden.
-
-Die Parameter des Hilfsskripts können im Azure-Portal angegeben werden, wie im Abschnitt [Erstellen eines Clusters im Azure-Portal](service-fabric-cluster-creation-via-portal.md#create-cluster-in-the-azure-portal) beschrieben.
-
-## <a name="next-steps"></a>Nächste Schritte
-Sie verfügen jetzt über einen sicheren Cluster, für den Azure Active Directory die Authentifizierung für die Verwaltung bereitstellt. Als Nächstes [stellen Sie eine Verbindung mit dem Cluster her](service-fabric-connect-to-secure-cluster.md) und erfahren, wie Sie [Anwendungsgeheimnisse verwalten](service-fabric-application-secret-management.md).
-
-## <a name="troubleshoot-setting-up-azure-active-directory-for-client-authentication"></a>Problembehandlung bei der Einrichtung von Azure Active Directory für die Clientauthentifizierung
-Sollte beim Einrichten von Azure AD für die Clientauthentifizierung ein Problem auftreten, helfen Ihnen unter Umständen die Lösungsvorschläge in diesem Abschnitt weiter.
+## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Problembehandlung beim Einrichten von Azure Active Directory
+Das Einrichten und Verwenden von Azure AD ist unter Umständen recht schwierig. Im Folgenden finden Sie daher einige Hinweise, wie Sie Probleme beheben können.
 
 ### <a name="service-fabric-explorer-prompts-you-to-select-a-certificate"></a>Service Fabric Explorer fordert Sie auf, ein Zertifikat auszuwählen.
 #### <a name="problem"></a>Problem
 Nach erfolgreicher Anmeldung bei Azure AD über Service Fabric Explorer zeigt der Browser wieder die Startseite an und fordert Sie auf, ein Zertifikat auszuwählen.
 
-![SFX-Dialogfeld zum Auswählen eines Zertifikats][sfx-select-certificate-dialog]
+![SFX-Zertifikatdialogfeld][sfx-select-certificate-dialog]
 
 #### <a name="reason"></a>Grund
 Dem Benutzer ist in der Azure AD-Clusteranwendung keine Rolle zugewiesen. Daher tritt bei der Azure AD-Authentifizierung im Service Fabric-Cluster ein Fehler auf. Service Fabric Explorer greift auf die Zertifikatauthentifizierung zurück.
@@ -657,21 +684,26 @@ Ja. Denken Sie jedoch daran, die URL von Service Fabric Explorer Ihrer Cluster(w
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>Warum benötige ich ein Serverzertifikat, auch wenn Azure AD aktiviert ist?
 „FabricClient“ und „FabricGateway“ führen eine wechselseitige Authentifizierung durch. Bei der Azure AD-Authentifizierung stellt die Azure AD-Integration die Identität des Clients für den Server bereit, und das Serverzertifikat dient zum Überprüfen der Serveridentität. Weitere Informationen zu Service Fabric-Zertifikaten finden Sie unter [X.509-Zertifikate und Service Fabric][x509-certificates-and-service-fabric].
 
+## <a name="next-steps"></a>Nächste Schritte
+Sie verfügen jetzt über einen sicheren Cluster, für den Azure Active Directory die Authentifizierung für die Verwaltung bereitstellt. Als Nächstes [stellen Sie eine Verbindung mit dem Cluster her](service-fabric-connect-to-secure-cluster.md) und erfahren, wie Sie [Anwendungsgeheimnisse verwalten](service-fabric-application-secret-management.md).
+
+
 <!-- Links -->
-[azure-powershell]:https://azure.microsoft.com/documentation/articles/powershell-install-configure/
+[azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
+[azure-CLI]:https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [key-vault-get-started]:../key-vault/key-vault-get-started.md
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
-[azure-classic-portal]: https://manage.windowsazure.com
-[service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
+[azure-classic-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
 [service-fabric-manage-application-in-visual-studio]: service-fabric-manage-application-in-visual-studio.md
 [sf-aad-ps-script-download]:http://servicefabricsdkstorage.blob.core.windows.net/publicrelease/MicrosoftAzureServiceFabric-AADHelpers.zip
 [azure-quickstart-templates]: https://github.com/Azure/azure-quickstart-templates
-[service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure/azure-quickstart-templates/blob/master/service-fabric-secure-cluster-5-node-1-nodetype/
+[service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
+[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#Create-a-Service-Fabric-cluster- Resource-Manager-template
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-arm-dependency-map.png

@@ -22,6 +22,8 @@
 
 # Anleitung
 ## Planen und Entwerfen
+### [Verwaltete Dienstidentität (Vorschauversion)](event-hubs-managed-service-identity.md)
+### [Rollenbasierte Zugriffssteuerung (Vorschauversion)](event-hubs-role-based-access-control.md)
 ### [Georedundante Notfallwiederherstellung und Georeplikation](event-hubs-geo-dr.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [Übersicht über das Authentifizierungs- und Sicherheitsmodell](event-hubs-authentication-and-security-model-overview.md)
