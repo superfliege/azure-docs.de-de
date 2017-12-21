@@ -90,6 +90,8 @@
           href: monitoring-enable-alerts-using-template.md
     - name: Verwenden der automatischen Skalierung
       items:
+        - name: Grundlegendes zu Einstellungen für die automatische Skalierung
+          href: monitoring-understanding-autoscale-settings.md
         - name: Bewährte Methoden
           href: insights-autoscale-best-practices.md
         - name: Allgemeine Metriken

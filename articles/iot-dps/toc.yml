@@ -36,7 +36,11 @@
 - name: Anleitungen
   items:
     - name: Verwalten der Geräteregistrierungen
-      href: how-to-manage-enrollments.md
+      items:
+        - name: Verwalten von Geräteregistrierungen mit dem Azure-Portal
+          href: how-to-manage-enrollments.md
+        - name: Verwalten von Geräteregistrierungen mit Dienst-SDKs
+          href: how-to-manage-enrollments-sdks.md
     - name: Verwenden von HSM mit SDK
       href: use-hsm-with-sdk.md
     - name: Steuern des Zugriffs auf den Bereitstellungsdienst

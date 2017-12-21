@@ -18,7 +18,8 @@
 ### [Governance in Azure](../governance-in-azure.md)
 ### [Datenverschlüsselung ruhender Daten](../azure-security-encryption-atrest.md)
 ### Architekturblaupausen
-#### [Konformität – PCI-DSS](payment-processing-blueprint.md)
+#### Konformität – PCI-DSS
+##### [Zahlungsabwicklung für PCI-DSS-konforme Umgebungen](payment-processing-blueprint.md)
 ##### [Anforderungsübersicht](pci-dss-requirements-overview.md)
 ##### [Anforderung 1 – Firewalls](pci-dss-requirement-1-firewall.md)
 ##### [Anforderung 2 – Kennwörter](pci-dss-requirement-2-password.md)
@@ -32,7 +33,8 @@
 ##### [Anforderung 10 – Überwachung](pci-dss-requirement-10-monitoring.md)
 ##### [Anforderung 11 – Testen](pci-dss-requirement-11-testing.md)
 ##### [Anforderung 12 – Richtlinie](pci-dss-requirement-12-policy.md)
-#### [Konformität – FedRAMP ](fedramp.md)
+#### Konformität – FedRAMP
+##### [Webanwendungen für FedRAMP](fedramp.md)
 ##### [Übersicht über Sicherheitskontrollen](fedramp-controls-overview.md)
 ##### [Zugriffssteuerung](fedramp-access-controls.md)
 ##### [Überwachung und Verantwortlichkeit](fedramp-audit-accountability-controls.md)
@@ -51,10 +53,11 @@
 ##### [System- und Kommunikationsschutz](fedramp-system-communications-protection-controls.md)
 ##### [System- und Informationsintegrität](fedramp-system-information-integrity-controls.md)
 ##### [System- und Diensterwerb](fedramp-system-services-acquisition-controls.md)
-#### [Konformität – UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
+#### Konformität – UK-OFFICIAL
+##### [Dreischichtige Webanwendungen für UK-OFFICIAL](uk-official-three-tier-applications-overview.md)
 ##### [Übersicht](uk-official-three-tier-applications-overview.md)
 ##### [Übersicht über Prinzipien](uk-official-three-tier-applications-principles-overview.md)
-#### [Konformität – Finanzdienstleistungen](financial-services-regulated-workloads.md)
+#### Konformität – Finanzdienstleistungen
 ##### [Finanzdienstleistungen für regulierte Workloads](financial-services-regulated-workloads.md)
 
 # Erste Schritte

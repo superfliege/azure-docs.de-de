@@ -38,6 +38,10 @@
           href: how-to-vscode-develop-csharp-module.md
         - name: 'Debuggen eines C#-Moduls'
           href: how-to-vscode-debug-csharp-module.md
+        - name: Entwickeln und Bereitstellen von Azure Functions
+          href: how-to-vscode-develop-azure-function.md
+        - name: Debuggen von Azure Functions
+          href: how-to-vscode-debug-azure-function.md
     - name: Problembehandlung
       href: troubleshoot.md
 - name: Konzepte
