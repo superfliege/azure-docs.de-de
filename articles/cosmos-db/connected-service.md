@@ -16,11 +16,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: 26d8399ce4ea23b51677def85b3732468dcbc02f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f63c20831a2700f1024507bef614a5a7cc87d00e
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: Verbundener Visual Studio-Dienst (Vorschauversion)
 
@@ -33,7 +33,7 @@ Sie können auch den Daten-Explorer im verbundenen Dienst zum Erstellen von gesp
 Stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 * Ein aktives Azure-Konto. Wenn Sie keines besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/)registrieren. 
-* Ein Azure Cosmos DB-Konto. Gehen Sie wie folgt vor, wenn Sie noch kein Konto besitzen: Führen Sie die Schritte zum [Erstellen eines Azure Cosmos DB-Kontos](create-documentdb-dotnet.md) aus, um ein Konto über das Portal zu erstellen, oder verwenden Sie die Informationen unter [Erstellen eines Azure Cosmos DB-Kontos im Tool für verbundene Dienste](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool). 
+* Ein Azure Cosmos DB-Konto. Gehen Sie wie folgt vor, wenn Sie noch kein Konto besitzen: Führen Sie die Schritte zum [Erstellen eines Azure Cosmos DB-Kontos](create-sql-api-dotnet.md) aus, um ein Konto über das Portal zu erstellen, oder verwenden Sie die Informationen unter [Erstellen eines Azure Cosmos DB-Kontos im Tool für verbundene Dienste](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool). 
 * Wenn Sie eine lokale Umgebung für Entwicklungszwecke nutzen möchten, können Sie den [Azure Cosmos DB-Emulator](local-emulator.md) verwenden. Diese Umgebung emuliert den Azure Cosmos DB-Dienst.
 * [Visual Studio](http://www.visualstudio.com/)
 * Die aktuellen Komponenten des verbundenen Diensts für Azure Cosmos DB. Sie können den verbundenen Dienst für Azure Cosmos DB vom Visual Studio Marketplace herunterladen. Dies ist im folgenden Screenshot dargestellt. Öffnen Sie **Visual Studio** auf Ihrem Computer. Wählen Sie im Menü **Extras** die Option **Extensions and update...** (Erweiterungen und Update...) und dann **Online** / **Visual Studio Marketplace**. Geben Sie **cosmosdb** ein, um nach den Komponenten zu suchen.
@@ -119,8 +119,8 @@ In diesem Dokument haben Sie Folgendes gelernt:
 
 Nachdem Sie die verbundenen Dienste nun für Ihr Azure Cosmos DB-Konto eingerichtet haben, können Sie mit einem Tutorial fortfahren, um mit der Entwicklung für Ihre Lösung zu beginnen:
 
-* [Azure Cosmos DB: Entwickeln mit der DocumentDB-API in .NET](tutorial-develop-documentdb-dotnet.md)
-* [Azure Cosmos DB: DocumentDB-API – Tutorial zu den ersten Schritten](documentdb-get-started.md)
+* [Azure Cosmos DB: Entwickeln mit der DocumentDB-API in .NET](tutorial-develop-sql-api-dotnet.md)
+* [Azure Cosmos DB: DocumentDB-API – Tutorial zu den ersten Schritten](sql-api-get-started.md)
 * Möchten Sie Azure Cosmos DB nutzen, um Skalierungs- und Leistungstests durchzuführen? Weitere Informationen finden Sie unter [Leistungs- und Skalierungstests mit Azure Cosmos DB](performance-testing.md).
 * Informieren Sie sich über das [Überwachen eines Azure Cosmos DB-Kontos](monitor-accounts.md).
 

@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: hero-article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: 1b87a2ebb35b31ee3d3139ecead6267e62eb1033
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 913a60df4ce7c431b1c260135785972aac00c69d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-ios-apps-in-objective-c"></a>Erste Schritte mit Azure Mobile Engagement für iOS-Apps in Objective C
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -55,26 +55,34 @@ Wir erstellen eine einfache App mit Xcode, um die Integration zu veranschauliche
 3. Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie dann **Add files to**aus.
 
     ![][1]
+
 4. Navigieren Sie zu dem Ordner, in den Sie das SDK extrahiert haben, wählen Sie den Ordner `EngagementSDK` aus, und klicken Sie unten links auf **Optionen**. Stellen Sie sicher, dass das Kontrollkästchen **Copy items if needed** (Elemente bei Bedarf kopieren) und das Kontrollkästchen für Ihr Ziel aktiviert sind, und klicken Sie auf **OK**.
 
     ![][2]
+
 5. Öffnen Sie die Registerkarte **Build Phases** (Entwicklungsphasen), und fügen Sie im Menü **Link Binary With Libraries** (Binärdatei mit Bibliotheken verknüpfen) wie unten gezeigt die Frameworks hinzu:
 
     ![][3]
+
 6. Wechseln Sie zurück zum Azure-Portal auf der Seite **Verbindungsinformationen** Ihrer App und kopieren Sie die Verbindungszeichenfolge.
 
-    ![][4]
+    ![](../../includes/media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 7. Fügen Sie in der Datei **AppDelegate.m** die folgende Codezeile hinzu.
 
-        #import "EngagementAgent.h"
+    ```obj-c
+    #import "EngagementAgent.h"
+    ```
 8. Fügen Sie jetzt die Verbindungszeichenfolge in den `didFinishLaunchingWithOptions` -Delegaten ein.
 
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-        {
-              [...]   
-              [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
-              [...]
-        }
+    ```obj-c
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+    {
+            [...]   
+            [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}"];
+            [...]
+    }
+    ```
+
 9. `setTestLogEnabled` ist eine optionale Anweisung, die in SDK-Protokollen das Identifizieren von Problemen ermöglicht.
 
 ## <a id="monitor"></a>Aktivieren der Überwachung in Echtzeit
@@ -82,10 +90,15 @@ Um mit dem Senden von Daten zu beginnen und sicherzustellen, dass die Benutzer a
 
 1. Öffnen Sie die Datei **ViewController.h**, und importieren Sie **EngagementViewController.h**:
 
-    `#import "EngagementViewController.h"`
-2. Ersetzen Sie jetzt die übergeordnete Klasse der **ViewController**-Schnittstelle durch `EngagementViewController`:
+    ```obj-c
+    #import "EngagementViewController.h"
+    ```
 
-    `@interface ViewController : EngagementViewController`
+2. Ersetzen Sie jetzt die übergeordnete Klasse der **ViewController**-Schnittstelle durch `EngagementViewController`:
+ 
+    ```obj-c
+   @interface ViewController : EngagementViewController
+   ```
 
 ## <a id="monitor"></a>Verbinden der App mit Überwachung in Echtzeit
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
@@ -107,55 +120,70 @@ In den folgenden Abschnitten richten Sie Ihre App für den Empfang ein.
 ### <a name="modify-your-application-delegate"></a>Ändern des Anwendungsdelegaten
 1. Importieren Sie in der Datei **AppDeletegate.m** das Engagement Reach-Modul.
 
-        #import "AEReachModule.h"
-        #import <UserNotifications/UserNotifications.h>
+    ```obj-c
+    #import "AEReachModule.h"
+    #import <UserNotifications/UserNotifications.h>
+    ```
+
 2. Erstellen Sie in der `application:didFinishLaunchingWithOptions` -Methode ein Reach-Modul, und übergeben Sie es an die vorhandene Engagement-Initialisierungszeile:
 
-        - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-            AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
-            [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
-            [...]
-            return YES;
-        }
+    ```obj-c
+    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+        AEReachModule * reach = [AEReachModule moduleWithNotificationIcon:[UIImage imageNamed:@"icon.png"]];
+        [EngagementAgent init:@"Endpoint={YOUR_APP_COLLECTION.DOMAIN};SdkKey={YOUR_SDK_KEY};AppId={YOUR_APPID}" modules:reach, nil];
+        [...]
+        return YES;
+    }
+    ```
 
 ### <a name="enable-your-app-to-receive-apns-push-notifications"></a>Aktivieren Ihrer App für den Empfang von APNS-Pushbenachrichtigungen.
 1. Fügen Sie die folgende Zeile in die `application:didFinishLaunchingWithOptions` Methode ein:
 
-        if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+    ```obj-c
+    if (NSFoundationVersionNumber >= NSFoundationVersionNumber_iOS_8_0)
+    {
+        if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
         {
-            if (NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_9_x_Max)
-            {
-                [UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
-            }else
-            {
-                [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
-            }
-            [application registerForRemoteNotifications];
-        }
-        else
+            [UNUserNotificationCenter.currentNotificationCenter requestAuthorizationWithOptions:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) completionHandler:^(BOOL granted, NSError * _Nullable error) {}];
+        }else
         {
-            [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+            [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)   categories:nil]];
         }
+        [application registerForRemoteNotifications];
+    }
+    else
+    {
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    }
+    ```
 2. Fügen Sie die `application:didRegisterForRemoteNotificationsWithDeviceToken`-Methode wie folgt hinzu:
 
-        - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
-        {
-             [[EngagementAgent shared] registerDeviceToken:deviceToken];
-            NSLog(@"Registered Token: %@", deviceToken);
-        }
+    ```obj-c
+    - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+    {
+            [[EngagementAgent shared] registerDeviceToken:deviceToken];
+        NSLog(@"Registered Token: %@", deviceToken);
+    }
+    ```
+
 3. Fügen Sie die `didFailToRegisterForRemoteNotificationsWithError`-Methode wie folgt hinzu:
 
-        - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
-        {
-           NSLog(@"Failed to get token, error: %@", error);
-        }
+    ```obj-c
+    - (void)application:(UIApplication*)application didFailToRegisterForRemoteNotificationsWithError:(NSError*)error
+    {
+        NSLog(@"Failed to get token, error: %@", error);
+    }
+    ```
+
 4. Fügen Sie die `didReceiveRemoteNotification:fetchCompletionHandler` -Methode wie folgt hinzu:
 
-        - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
-        {
-            [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
-        }
-
+    ```obj-c
+    - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))handler
+    {
+        [[EngagementAgent shared] applicationDidReceiveRemoteNotification:userInfo fetchCompletionHandler:handler];
+    }
+    ```
+    
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
 
 <!-- URLs. -->

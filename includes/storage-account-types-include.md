@@ -19,7 +19,7 @@ BLOB-Speicherkonten verfügen über das Attribut **Zugriffsstufe** , das bei der
 * Die Zugriffsstufe **Hot** , wenn auf die Objekte im Speicherkonto häufig zugegriffen wird. Dabei fallen bei der Datenspeicherung geringere Zugriffskosten an.
 * Die Zugriffsstufe **Cool** , wenn auf die Objekte im Speicherkonto weniger häufig zugegriffen wird. Dabei fallen bei der Datenspeicherung geringere Speicherkosten an.
 
-Bei einer Änderung des Nutzungsmusters der Daten können Sie jederzeit zwischen den beiden Zugriffstarifen wechseln. Die Änderung des Zugriffstarifs kann mit zusätzlichen Kosten verbunden sein. Weitere Informationen dazu finden Sie unter [Preise und Abrechnung für BLOB-Speicherkonten](../articles/storage/blobs/storage-account-options.md#pricing-and-billing) .
+Bei einer Änderung des Nutzungsmusters der Daten können Sie jederzeit zwischen den beiden Zugriffstarifen wechseln. Die Änderung des Zugriffstarifs kann mit zusätzlichen Kosten verbunden sein. Weitere Informationen dazu finden Sie unter [Preise und Abrechnung für BLOB-Speicherkonten](../articles/storage/common/storage-account-options.md#pricing-and-billing) .
 
 Weitere Informationen zu BLOB-Speicherkonten finden Sie unter [Azure-Blobspeicher: Tarife für selten genutzte Daten (Cool Data) und häufig genutzte Daten (Hot Data)](../articles/storage/blobs/storage-blob-storage-tiers.md).
 

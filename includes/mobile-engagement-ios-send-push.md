@@ -3,7 +3,7 @@ Damit Mobile Engagement Pushbenachrichtigungen in Ihrem Namen senden darf, müss
 
 1. Navigieren Sie zum Mobile Engagement-Portal. Vergewissern Sie sich, dass Sie sich in der richtigen App befinden, und klicken Sie dann unten auf die Schaltfläche **Einbinden** :
    
-    ![](./media/mobile-engagement-ios-send-push/engage-button.png)
+    ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 2. Klicken Sie auf die Seite **Einstellungen** im Mobile Engagement-Portal. Klicken Sie hier auf den Abschnitt **Systemeigener Push** , um Ihr P12-Zertifikat hochzuladen:
    
     ![](./media/mobile-engagement-ios-send-push/engagement-portal.png)

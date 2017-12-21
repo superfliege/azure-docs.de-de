@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: fd3ca18fd7a9d1226d41229d37e637a62478f92a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: b8f0f899dff0f9e238017cb77126b3ca1275f3cd
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: Speicherebenen „Heiß“ (Hot), „Kalt“ (Cool) und „Archiv“
 
@@ -32,7 +32,7 @@ Jedes dieser Datenzugriffsszenarien profitiert von einer differenzierten Speiche
 
 ## <a name="storage-accounts-that-support-tiering"></a>Speicherkonten mit Tiering-Unterstützung
 
-Sie können das Tiering für „Hot“, „Cool“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (General Purpose v2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blob Storage-Konten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](storage-account-options.md).
+Sie können das Tiering für „Hot“, „Cool“ und „Archiv“ für Ihre Objektspeicherdaten nur in Blob Storage-Konten oder GPv2-Konten (General Purpose v2) durchführen. Für GPv1-Konten (General Purpose v1) wird das Tiering nicht unterstützt. Kunden können ihre vorhandenen GPv1- oder Blob Storage-Konten aber leicht in GPv2-Konten konvertieren, indem sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Für GPv2 gilt eine neue Preisstruktur für Blobs, Dateien und Warteschlangen, und außerdem besteht Zugriff auf viele andere neue Speicherfeatures. Zudem werden in Zukunft einige neue Features und Preisreduzierungen nur für GPv2-Konten angeboten. Aus diesem Grund ist es für Kunden ratsam, die Nutzung von GPv2-Konten zu evaluieren. Sie sollten die Konten aber erst verwenden, nachdem sie die Preise für alle Dienste überprüft haben, da einige Workloads unter GPv2 teurer als unter GPv1 sein können. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Bei Blob Storage- und GPv2-Konten wird das Attribut **Access Tier** (Zugriffsebene) auf Kontoebene verfügbar gemacht. Hiermit können Sie die Standardspeicherebene für alle Blobs des Speicherkontos, für die auf Objektebene keine Ebene festgelegt ist, als „Hot“ oder „Cool“ angeben. Für Objekte, für die die Ebene auf Objektebene festgelegt ist, gilt die Kontoebene nicht. Die Archivebene kann nur auf Objektebene angewendet werden. Sie können jederzeit zwischen diesen Speicherebenen wechseln.
 
@@ -66,7 +66,7 @@ Beispielszenarien für die Verwendung der Speicherebene „Archiv“:
 ### <a name="blob-rehydration"></a>Blobaktivierung
 Wenn Sie Daten aus dem Archivspeicher lesen möchten, müssen Sie zuerst die Ebene des Blobs in „Hot“ oder „Cool“ ändern. Dieser Prozess wird als Aktivierung bezeichnet und kann bis zu 15 Stunden dauern. Es wird dringend empfohlen, höhere Blobgrößen zu verwenden, um eine optimale Leistung zu erzielen. Die Dauer kann sich ggf. erhöhen, wenn mehrere kleine Blobs gleichzeitig aktiviert werden.
 
-Während der Aktivierung können Sie anhand der Eigenschaft **Archive Status** (Archivstatus) des Blobs ermitteln, ob die Ebene geändert wurde. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die „Archive Status“-Eigenschaft entfernt, und die Eigenschaft **Access Tier** (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.  
+Während der Aktivierung können Sie anhand der Eigenschaft **Archive Status** (Archivstatus) des Blobs ermitteln, ob die Ebene geändert wurde. Je nach Zielebene lautet der Status entweder „rehydrate-pending-to-hot“ (Aktivierung für Ebene „Hot“ ausstehend) oder „rehydrate-pending-to-cool“ (Aktivierung für Ebene „Cool“ ausstehend). Nach Abschluss des Vorgangs wird die Eigenschaft „Archive Status“ (Archivstatus) entfernt, und die Eigenschaft **Access Tier** (Zugriffsebene) des Blobs spiegelt die neue Ebene vom Typ „Hot“ oder „Cool“ wider.  
 
 ## <a name="blob-level-tiering"></a>Blobebenentiering
 
@@ -139,7 +139,7 @@ In diesem Abschnitt werden unter Verwendung des Azure-Portals die folgenden Szen
 
 Wir empfehlen Ihnen, für das Tiering anstelle von Blob Storage-Konten GPv2-Konten zu nutzen. Für GPv2 werden alle Features von Blob Storage-Konten sowie noch viele weitere Features unterstützt. Die Preise für Blob Storage und GPv2 sind nahezu identisch, aber einige neue Features und Preisreduzierungen gelten nur für GPv2-Konten. Für GPv1-Konten wird das Tiering nicht unterstützt.
 
-Die Preisstruktur von GPv1 und GPv2 unterscheidet sich, und Kunden sollten dies jeweils sorgfältig evaluieren, bevor sie sich für die Nutzung von GPv2-Konten entscheiden. Sie können ein vorhandenes Blob Storage- oder GPv1-Konto leicht in ein GPv2-Konto konvertieren, indem Sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](storage-account-options.md).
+Die Preisstruktur von GPv1 und GPv2 unterscheidet sich, und Kunden sollten dies jeweils sorgfältig evaluieren, bevor sie sich für die Nutzung von GPv2-Konten entscheiden. Sie können ein vorhandenes Blob Storage- oder GPv1-Konto leicht in ein GPv2-Konto konvertieren, indem Sie im Azure-Portal einen Schritt ausführen, für den nur ein Klick erforderlich ist. Weitere Informationen finden Sie unter [Optionen für Azure Storage-Konten](../common/storage-account-options.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 **Kann ich Objekte unter demselben Konto auf allen drei Speicherebenen („Hot“, „Cool“ und „Archiv“) speichern?**
 

@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 07/14/2016
 ms.author: yuaxu
-ms.openlocfilehash: 3425a4aa40f4f10d12c58099d4f4874534971f92
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 4202521b429d5d845f72496fc8be0819f307e557
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -52,10 +52,10 @@ Den vollständigen Code für dieses Tutorial können Sie [hier](https://github.c
 ## <a name="create-a-new-android-studio-project"></a>Erstellen eines neuen Android Studio-Projekts
 1. Starten Sie in Android Studio ein neues Android Studio-Projekt.
    
-       ![Android Studio - new project](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-new-project.png)
+![Android Studio – Neues Projekt](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-new-project.png)
 2. Wählen Sie den Formfaktor **Phone and Tablet** und das **Minimum SDK** aus, das unterstützt werden soll. Klicken Sie auf **Weiter**.
    
-       ![Android Studio - project creation workflow](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-choose-form-factor.png)
+![Android Studio – Projekterstellungsworkflow](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-choose-form-factor.png)
 3. Wählen Sie **Empty Activity** als Hauptaktivität aus, und klicken Sie auf **Weiter** und anschließend auf **Fertig stellen**.
 
 ## <a name="create-a-project-that-supports-firebase-cloud-messaging"></a>Erstellen eines Projekts, das Firebase Cloud Messaging unterstützt

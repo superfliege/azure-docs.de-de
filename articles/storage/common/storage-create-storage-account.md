@@ -15,11 +15,11 @@ ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: 6e20cf37f039f6bec32aee712a4d3c564d54cfc6
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: dde2ec3b68f5951e268c32b1c6551641f22a0511
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Informationen zu Azure-Speicherkonten
 
@@ -99,7 +99,7 @@ Nach dem Erstellen eines Speicherkontos können Sie seine Konfiguration ändern.
 
 Durch Änderung der Replikationsoption ändert sich auch der Preis. Weitere Informationen finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/) .
 
-Wenn Sie für BLOB-Speicherkonten die Zugriffsstufen ändern, fallen unter Umständen zusätzlich zur Preisänderung weitere Gebühren für die Änderung an. Weitere Informationen hierzu finden Sie unter [Blob-Speicherkonten – Preise und Abrechnung](../blobs/storage-account-options.md#pricing-and-billing) .
+Wenn Sie für BLOB-Speicherkonten die Zugriffsstufen ändern, fallen unter Umständen zusätzlich zur Preisänderung weitere Gebühren für die Änderung an. Weitere Informationen hierzu finden Sie unter [Blob-Speicherkonten – Preise und Abrechnung](storage-account-options.md#pricing-and-billing) .
 
 ### <a name="manage-your-storage-access-keys"></a>Verwalten von Speicherzugriffsschlüsseln
 Wenn Sie ein Speicherkonto erstellen, generiert Azure zwei 512-Bit-Speicherzugriffsschlüssel, die für die Authentifizierung verwendet werden, wenn der Zugriff auf das Speicherkonto erfolgt. Durch Bereitstellen von zwei Speicherzugriffsschlüsseln ermöglicht Azure Ihnen das erneute Generieren der Schlüssel ohne Unterbrechung des Speicherdiensts oder Zugriff auf diesen Dienst.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: c359b77efbfdbcf7d2c0193dc015ce418a3d997d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 045cf83caa15cb2487b4781f3c1f42752880580c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy
 In diesem Artikel wird das Konfigurieren von Azure Security Center-Sicherheitsrichtlinien beschrieben, die auf Azure Policy basieren. 
@@ -39,14 +39,14 @@ Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements
 
 2. Wählen Sie im Dashboard **Security Center** unter **Allgemein** die Option **Sicherheitsrichtlinie**.
 
-    ![Bereich „Richtlinienverwaltung“](./media/security-center-policies/security-center-policies-fig10.png)
+    ![Bereich „Richtlinienverwaltung“](./media/security-center-azure-policy/security-center-policies-fig10.png)
 
 3. Wählen Sie das Abonnement aus, für das Sie eine Sicherheitsrichtlinie aktivieren möchten.  
 
 4. Wählen Sie im Abschnitt **Richtlinienkomponenten** die Option **Sicherheitsrichtlinie**.  
     Das Fenster **Grundlagen** wird geöffnet.
 
-    ![Richtlinienkomponenten](./media/security-center-policies/security-center-policies-fig12.png)
+    ![Richtlinienkomponenten](./media/security-center-azure-policy/security-center-policies-fig12.png)
 
 5. Gehen Sie wie folgt vor, um eine Richtliniendefinition zu löschen: Wählen Sie unter **Policies and Parameters** (Richtlinien und Parameter) neben der zu löschenden Definition die Option **Löschen**.
 
@@ -57,12 +57,12 @@ Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements
 
     * Wählen Sie das Pluszeichen (+) neben der Definition aus, um eine Richtliniendefinition hinzuzufügen.
 
-    ![Verfügbare Richtliniendefinitionen](./media/security-center-policies/security-center-policies-fig11.png)
+    ![Verfügbare Richtliniendefinitionen](./media/security-center-azure-policy/security-center-policies-fig11.png)
 
     * Eine ausführliche Erläuterung einer Richtlinie erhalten Sie, wenn Sie sie auswählen.  
     Für die Definition wird das Fenster **Vorschau** geöffnet. Es enthält eine Beschreibung der Definition und einen Link zum JSON-Code, über den die Struktur der [Richtliniendefinition](../azure-policy/policy-definition.md) bereitgestellt wird.
 
-    ![Fenster „Vorschau“ für die Definition](./media/security-center-policies/security-center-policies-fig14.png)
+    ![Fenster „Vorschau“ für die Definition](./media/security-center-azure-policy/security-center-policies-fig14.png)
 
 7. Wählen Sie **Speichern**, wenn Sie die Bearbeitung abgeschlossen haben.
 
