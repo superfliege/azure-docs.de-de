@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/07/2017
 ms.author: larryfr
-ms.openlocfilehash: 91ef8aece812c0495fcb3bc31401606f40b7ba97
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 20b95f16e16c4b42289e1e25def4910fbca70db5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>Einstieg in Apache Kafka in HDInsight
 
@@ -48,7 +48,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Kafka in HDInsig
     * **Standort**: Die Azure-Region, in der der Cluster erstellt werden soll.
 
         > [!IMPORTANT]
-        > Für eine hohe Datenverfügbarkeit empfiehlt sich die Wahl eines Standorts (Region) mit __drei Fehlerdomänen__. Weitere Informationen finden Sie im Abschnitt [Hohe Datenverfügbarkeit](#data-high-availability).
+        > Für Hochverfügbarkeit von Daten empfiehlt sich die Wahl eines Standorts (Region) mit __drei Fehlerdomänen__. Weitere Informationen finden Sie im Abschnitt [Hochverfügbarkeit von Daten](#data-high-availability).
    
  ![Wählen Sie das Abonnement aus.](./media/apache-kafka-get-started/hdinsight-basic-configuration.png)
 
@@ -75,7 +75,7 @@ Verwenden Sie die folgenden Schritte, um ein Cluster vom Typ „Kafka in HDInsig
 7. Wählen Sie unter __Clustergröße__ zum Fortfahren die Option __Weiter__ aus.
 
     > [!WARNING]
-    > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten. Weitere Informationen finden Sie im Abschnitt [Hohe Datenverfügbarkeit](#data-high-availability).
+    > Um die Verfügbarkeit von Kafka in HDInsight zu gewährleisten, muss der Cluster mindestens drei Workerknoten enthalten. Weitere Informationen finden Sie im Abschnitt [Hochverfügbarkeit von Daten](#data-high-availability).
 
     ![Festlegen der Kafka-Clustergröße](./media/apache-kafka-get-started/kafka-cluster-size.png)
 
@@ -168,7 +168,7 @@ In der Ausgabe dieses Befehls werden die Kafka-Themen aufgelistet, und das Thema
 
 ## <a name="produce-and-consume-records"></a>Erstellen und Nutzen von Datensätzen
 
-Bei Kafka werden *Datensätze* in Themen gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer rufen Datensätze von Kafka-*Brokern* ab. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Broker.
+Bei Kafka werden *Datensätze* in Themen gespeichert. Datensätze werden von *Producern* erstellt und von *Consumern* genutzt. Producer erzeugen Datensätze in Kafka-*Brokern*. Jeder Workerknoten in Ihrem HDInsight-Cluster ist ein Kafka-Broker.
 
 Mit den folgenden Schritten können Sie Datensätze im zuvor erstellten Testthema speichern und dann mit einem Consumer lesen:
 
@@ -342,7 +342,7 @@ Die Streaming-API wurde Kafka in Version 0.10.0 hinzugefügt. In früheren Versi
 
 7. Verwenden Sie die Tastenkombination __STRG+C__, um den Consumer zu beenden, und anschließend den Befehl `fg`, um die Streaming-Hintergrundaufgabe wieder in der Vordergrund zu verlagern. Verwenden Sie zum Beenden auch hier wieder __STRG+C__.
 
-## <a name="data-high-availability"></a>Hohe Datenverfügbarkeit
+## <a name="data-high-availability"></a>Hochverfügbarkeit von Daten
 
 Jede Azure-Region (Standort) verfügt über _Fehlerdomänen_. Eine Fehlerdomäne ist eine logische Gruppierung von zugrundeliegender Hardware in einem Azure-Rechenzentrum. Jede Fehlerdomäne verwendet eine Stromquelle und einen Netzwerkswitch gemeinsam. Die virtuellen Computer und verwalteten Datenträger, die die Knoten innerhalb eines HDInsight-Clusters implementieren, werden auf diese Fehlerdomänen verteilt. Diese Architektur schränkt die potenziellen Auswirkungen physischer Hardwarefehler ein.
 
@@ -355,7 +355,7 @@ Wenn Sie eine Region verwenden müssen, die nur zwei Fehlerdomänen enthält, ve
 
 ### <a name="kafka-and-fault-domains"></a>Kafka und Fehlerdomänen
 
-Fehlerdomänen sind Kafka nicht bekannt. Beim Erstellen von Partitionsreplikaten für Themen kann es daher vorkommen, dass die Replikate nicht ordnungsgemäß für hohe Verfügbarkeit verteilt werden. Verwenden Sie das [Tool zum Ausgleichen von Kafka-Partitionen](https://github.com/hdinsight/hdinsight-kafka-tools), um eine hohe Verfügbarkeit zu gewährleisten. Dieses Tool muss über eine SSH-Sitzung für den Hauptknoten des Kafka-Clusters ausgeführt werden.
+Fehlerdomänen sind Kafka nicht bekannt. Beim Erstellen von Partitionsreplikaten für Themen kann es daher vorkommen, dass die Replikate nicht ordnungsgemäß für Hochverfügbarkeit verteilt werden. Verwenden Sie das [Tool zum Ausgleichen von Kafka-Partitionen](https://github.com/hdinsight/hdinsight-kafka-tools), um Hochverfügbarkeit zu gewährleisten. Dieses Tool muss über eine SSH-Sitzung für den Hauptknoten des Kafka-Clusters ausgeführt werden.
 
 Um die höchste Verfügbarkeit Ihrer Kafka-Daten sicherzustellen, sollten Sie die Partitionsreplikate für Ihr Thema zu folgenden Zeitpunkten ausgleichen:
 

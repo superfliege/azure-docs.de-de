@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 23d59d37e25775f67d01813bbf53d150f1973622
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9814dca53f1a410f4d1e95cc18b98373f27f9802
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-principals-with-azure-container-service-aks"></a>Dienstprinzipale mit Azure Container Service (AKS)
 
@@ -83,7 +83,7 @@ Beachten Sie bei Verwendung von AKS und Azure AD-Dienstprinzipalen Folgendes:
 * Wenn Sie die **Client-ID** des Dienstprinzipals angeben, können Sie den Wert von `appId` (wie in diesem Artikel gezeigt) oder den entsprechenden `name`-Wert für den Dienstprinzipal (beispielsweise `https://www.contoso.org/example`) verwenden.
 * Auf dem virtuellen Mastercomputer und den virtuellen Knotencomputern des Kubernetes-Clusters werden die Dienstprinzipal-Anmeldeinformationen in der Datei `/etc/kubernetes/azure.json` gespeichert.
 * Wenn Sie den Dienstprinzipal mithilfe des Befehls `az aks create` automatisch generieren, werden die Dienstprinzipal-Anmeldeinformationen auf dem Computer, auf dem der Befehl ausgeführt wird, in die Datei `~/.azure/acsServicePrincipal.json` geschrieben.
-* Wenn Sie den Dienstprinzipal mithilfe des Befehls `az aks create` automatisch generieren, kann sich der Dienstprinzipal auch bei einer [Azure-Containerregistrierung][acr-into] registrieren, die im gleichen Abonnement erstellt wurde.
+* Wenn Sie den Dienstprinzipal mithilfe des Befehls `az aks create` automatisch generieren, kann sich der Dienstprinzipal auch bei einer [Azure-Containerregistrierung][acr-intro] registrieren, die im gleichen Abonnement erstellt wurde.
 * Beim Löschen eines AKS-Clusters, der mit `az aks create` erstellt wurde, wird der automatisch erstellte Dienstprinzipal nicht gelöscht. Sie können `az ad sp delete --id $clientID` verwenden, um ihn zu löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte

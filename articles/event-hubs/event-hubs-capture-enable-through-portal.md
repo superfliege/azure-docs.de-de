@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 4a4ab1ee022b6b33d35217df916d01f32e04d3a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39fbdba404bda9383c9164dd1ecd9cb23bfb5cd7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="enable-event-hubs-capture-using-the-azure-portal"></a>Aktivieren von Event Hubs Capture über das Azure-Portal
 
@@ -55,7 +55,7 @@ Wenn Sie Daten in Azure Data Lake Store erfassen möchten, müssen Sie ein Data 
 
 ## <a name="add-or-configure-capture-on-an-existing-event-hub"></a>Hinzufügen oder Konfigurieren von Capture für einen bereits vorhandenen Event Hub
 
-Capture kann für vorhandene Event Hubs in Event Hubs-Namespaces konfiguriert werden. Wenn Sie Capture für einen vorhandenen Event Hub aktivieren oder Ihre Capture-Einstellungen ändern möchten, klicken Sie auf den Namespace, um den Bildschirm **Zusammenfassung** zu laden. Klicken Sie dann auf den Event Hub, den Sie aktivieren bzw. dessen Capture-Einstellung Sie ändern möchten. Klicken Sie abschließend auf den Abschnitt **Eigenschaften** der geöffneten Seite, und bearbeiten Sie die Capture-Einstellungen, wie in der folgenden Abbildung dargestellt:
+Capture kann für vorhandene Event Hubs in Event Hubs-Namespaces konfiguriert werden. Wenn Sie Capture für einen vorhandenen Event Hub aktivieren oder Ihre Capture-Einstellungen ändern möchten, klicken Sie auf den Namespace, um den Bildschirm mit der Übersicht zu laden. Klicken Sie dann auf den Event Hub, den Sie aktivieren bzw. dessen Capture-Einstellung Sie ändern möchten. Klicken Sie abschließend auf der linken Seite der geöffneten Seite auf die Option **Capture**, und bearbeiten Sie die Einstellungen, wie in den folgenden Abbildungen dargestellt:
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 

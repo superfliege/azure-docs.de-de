@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/11/2017
+ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 7c320c6ba51ae0800407aab7aee92c42b2b441a7
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Bereitstellen des Azure Stack Development Kit
 
@@ -105,7 +105,7 @@ Nachdem Sie den ASDK-Hostcomputer vorbereitet haben, kann das ASDK mit dem folge
 1. Nachdem der Hostcomputer im Image „CloudBuilder.vhdx“ erfolgreich gestartet wurde, können Sie sich mit den Administratoranmeldeinformationen anmelden, die in den vorherigen Schritten angegeben wurden. 
 2. Öffnen Sie eine PowerShell-Konsole mit erhöhten Rechten, und führen Sie das Skript **\AzureStack_Installer\asdk-installer.ps1** aus (dieses befindet sich jetzt im Image „Cloudbuilder.vhdx“ ggf. auf einem anderen Laufwerk). Klicken Sie auf **Installieren**.
 3. Wählen Sie im Dropdownfeld **Typ** die Option **Azure Cloud** oder **AD FS**.
-    - **Azure Cloud**: Konfiguriert Azure Active Directory (Azure AD) als Identitätsanbieter. Für die Verwendung dieser Option benötigen Sie eine Internetverbindung, den vollständigen Namen eines Azure AD-Verzeichnismandanten der Form „*Domänenname*.onmicrosoft.com“ und globale Administratoranmeldeinformationen für das angegebene Verzeichnis. 
+    - **Azure Cloud**: Konfiguriert Azure Active Directory (Azure AD) als Identitätsanbieter. Für die Verwendung dieser Option benötigen Sie eine Internetverbindung, den vollständigen Namen eines Azure AD-Verzeichnismandanten der Form „*Domänenname*.onmicrosoft.com“ oder einen von Azure AD überprüften benutzerdefinierten Domänennamen und globale Administratoranmeldeinformationen für das angegebene Verzeichnis. 
     - **AD FS**: Der standardmäßige Stampverzeichnisdienst wird als Identitätsanbieter verwendet. Das Standardkonto für die Anmeldung lautet azurestackadmin@azurestack.local, und das dazugehörige Kennwort haben Sie im Rahmen des Setupvorgangs angegeben.
 4. Geben Sie unter **Lokales Administratorkennwort** im Feld **Kennwort** das lokale Administratorkennwort ein (das mit dem derzeit konfigurierten lokalen Administratorkennwort übereinstimmen muss), und klicken Sie dann auf **Weiter**.
 5. Wählen Sie einen für das Development Kit zu verwendenden Netzwerkadapter aus, und klicken Sie dann auf **Weiter**.
@@ -208,7 +208,7 @@ Wenn Ihre Azure AD-Identität **mehr als einem** Azure AD-Verzeichnis zugeordnet
 cd C:\CloudDeployment\Setup 
 $adminpass = Get-Credential Administrator 
 $aadcred = Get-Credential "<Azure AD global administrator account name>" #Example: user@AADDirName.onmicrosoft.com 
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<specific Azure AD directory in the form of domainname.onmicrosoft.com>" -TimeServer 52.168.138.145 #Example time server IP address.
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<Azure AD directory in the form of domainname.onmicrosoft.com or an Azure AD verified custom domain name>" -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
 Wenn für Ihre Umgebung DHCP **nicht** aktiviert ist, müssen Sie die folgenden zusätzlichen Parameter in eine der obigen Optionen einfügen (Verwendungsbeispiel vorhanden): 
@@ -221,7 +221,7 @@ Wenn für Ihre Umgebung DHCP **nicht** aktiviert ist, müssen Sie die folgenden 
 |Parameter|Erforderlich/Optional|Beschreibung|
 |-----|-----|-----|
 |AdminPassword|Erforderlich|Legt das lokale Administratorkonto und alle anderen Benutzerkonten auf allen virtuellen Computern fest, die im Rahmen der Development Kit-Bereitstellung erstellt werden. Dieses Kennwort muss mit dem Kennwort des lokalen Administrators auf dem Host übereinstimmen.|
-|InfraAzureDirectoryTenantName|Erforderlich|Legt das Mandantenverzeichnis fest. Verwenden Sie diesen Parameter, um ein bestimmtes Verzeichnis anzugeben, für das das AAD-Konto über Berechtigungen zum Verwalten mehrerer Verzeichnisse verfügt. Vollständiger Name eines AAD-Verzeichnismandanten im Format „onmicrosoft.com“.|
+|InfraAzureDirectoryTenantName|Erforderlich|Legt das Mandantenverzeichnis fest. Verwenden Sie diesen Parameter, um ein bestimmtes Verzeichnis anzugeben, für das das AAD-Konto über Berechtigungen zum Verwalten mehrerer Verzeichnisse verfügt. Vollständiger Name eines AAD-Verzeichnismandanten im Format „.onmicrosoft.com“ oder einen von Azure AD überprüften benutzerdefinierten Domänennamen.|
 |TimeServer|Erforderlich|Verwenden Sie diesen Parameter, um einen bestimmten Zeitserver anzugeben. Dieser Parameter muss als gültige Zeitserver-IP-Adresse angegeben werden. Servernamen werden nicht unterstützt.|
 |InfraAzureDirectoryTenantAdminCredential|Optional|Legt den Benutzernamen und das Kennwort für Azure Active Directory fest. Bei diesen Azure-Anmeldeinformationen muss es sich um eine Organisations-ID handeln.|
 |InfraAzureEnvironment|Optional|Wählen Sie die Azure-Umgebung aus, für die Sie diese Azure Stack-Bereitstellung registrieren möchten. Die verfügbaren Optionen sind „Public Azure“, „Azure – China“ und „Azure – US Government“.|
@@ -244,7 +244,7 @@ Nach Bereitstellungen, für die Azure AD verwendet wird, müssen Sie sowohl das 
 ## <a name="reset-the-password-expiration-policy"></a>Zurücksetzen der Kennwortablaufrichtlinie 
 Führen Sie nach dem Bereitstellen des ASDK die unten angegebenen Schritte aus, um sicherzustellen, dass das Kennwort für den Development Kit-Host nicht vor dem Ende des Evaluierungszeitraums abläuft.
 
-### <a name="to-change-the-password-expiration-policy-from-powershell"></a>So ändern Sie die Kennwortablaufrichtlinie in PowerShell:
+### <a name="to-change-the-password-expiration-policy-from-powershell"></a>So ändern Sie die Kennwortablaufrichtlinie in Powershell:
 Führen Sie diesen Befehl über eine PowerShell-Konsole mit erhöhten Rechten aus:
 
 ```powershell

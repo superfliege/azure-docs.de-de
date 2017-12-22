@@ -1,12 +1,11 @@
 ---
-title: 'Azure Active Directory B2C: Registrierung einer Anwendung | Microsoft Docs'
+title: "Anwendungsregistrierung – Azure Active Directory B2C"
 description: Registrieren Ihrer Anwendung bei Azure Active Directory B2C
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
+editor: parakhj
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 36a421056b123f397c3d5f7d7bfb4c5314c82b78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b1d145466382c8fc2ea6c5e4e295940b0f000b97
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: Registrieren der Anwendung
 
@@ -28,7 +27,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie in wenigen Minuten eine An
 
 Zum Erstellen einer Anwendung, die Registrierungen und Anmeldungen von Kunden akzeptiert, müssen Sie die Anwendung zunächst bei einem Azure Active Directory B2C-Mandanten registrieren. Erstellen Sie einen eigenen Mandanten mithilfe der unter [Erstellen eines Azure AD B2C-Mandanten](active-directory-b2c-get-started.md)beschriebenen Schritte.
 
-Anwendungen, die im Azure-Portal auf dem Blatt „Azure AD B2C“ erstellt wurden, müssen am selben Speicherort verwaltet werden. Mit PowerShell oder über ein anderes Portal bearbeitete B2C-Anwendungen werden nicht mehr unterstützt und können nicht mehr mit Azure AD B2C verwendet werden. Ausführliche Informationen finden Sie im Abschnitt [Fehlerhafte Apps](#faulted-apps). 
+Anwendungen, die im Azure-Portal erstellt wurden, müssen am selben Speicherort verwaltet werden. Mit PowerShell oder über ein anderes Portal bearbeitete Azure AD B2C-Anwendungen werden nicht mehr unterstützt und können nicht mehr mit Azure AD B2C verwendet werden. Ausführliche Informationen finden Sie im Abschnitt [Fehlerhafte Apps](#faulted-apps). 
 
 In diesem Artikel werden Beispiele verwendet, die Ihnen als Hilfe bei den ersten Schritten mit unseren Beispieldaten dienen. Die nachfolgenden Artikel enthalten weitere Informationen zu diesen Beispielen.
 
@@ -117,7 +116,7 @@ Die beiden letztgenannten URLs können hinzugefügt werden, da es sich hierbei u
 
 Bei der Auswahl eines Umleitungs-URIs für mobile/systemeigene Anwendungen sind zwei Aspekte zu berücksichtigen:
 
-* **Eindeutigkeit**: Das Schema des Umleitungs-URIS muss für jede Anwendung eindeutig sein. In unserem Beispiel (com.onmicrosoft.contoso.appname://redirect/path) verwenden wir „com.onmicrosoft.contoso.appname“ als Schema. Es wird empfohlen, diesem Muster zu folgen. Wenn zwei Anwendungen dasselbe Schema verwenden, wird den Benutzer das Dialogfeld „App auswählen“ angezeigt. Wenn der Benutzer die falsche Auswahl trifft, schlägt die Anmeldung fehl.
+* **Eindeutigkeit**: Das Schema des Umleitungs-URIS muss für jede Anwendung eindeutig sein. Im Beispiel (com.onmicrosoft.contoso.appname://redirect/path) ist „com.onmicrosoft.contoso.appname“ das Schema. Es wird empfohlen, diesem Muster zu folgen. Wenn zwei Anwendungen dasselbe Schema verwenden, wird den Benutzer das Dialogfeld „App auswählen“ angezeigt. Wenn der Benutzer die falsche Auswahl trifft, schlägt die Anmeldung fehl.
 * **Vollständigkeit**: Der Umleitungs-URI muss ein Schema und einen Pfad aufweisen. Der Pfad muss nach der Domäne mindestens einen Schrägstrich enthalten. (Beispiel: „//contoso/“ funktioniert, aber „//contoso“ schlägt fehl.)
 
 Stellen Sie sicher, dass der Umleitungs-URI keine Sonderzeichen wie Unterstriche enthält.
@@ -126,10 +125,10 @@ Stellen Sie sicher, dass der Umleitungs-URI keine Sonderzeichen wie Unterstriche
 
 B2C-Anwendungen sollten NICHT wie folgt bearbeitet werden:
 
-* In anderen Portalen für die Anwendungsverwaltung, z.B. im [klassischen Azure-Portal](https://manage.windowsazure.com/) und dem [App-Registrierungsportal](https://apps.dev.microsoft.com/).
+* In anderen Portalen für die Anwendungsverwaltung, z.B. im [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/)
 * Mithilfe der Graph-API oder PowerShell
 
-Wenn Sie die B2C-Anwendung wie oben beschrieben bearbeiten und sie dann noch einmal auf dem Azure AD B2C-Featureblatt im Azure-Portal bearbeiten möchten, wird sie eine fehlerhafte App, und Ihre Anwendung kann nicht mehr mit Azure AD B2C verwendet werden. Sie müssen die Anwendung löschen und neu erstellen.
+Wenn Sie die Azure AD B2C-Anwendung wie oben beschrieben bearbeiten und sie dann noch einmal in den Azure AD B2C-Features im Azure-Portal bearbeiten möchten, wird sie eine fehlerhafte App, und Ihre Anwendung kann nicht mehr mit Azure AD B2C verwendet werden. Sie müssen die Anwendung löschen und neu erstellen.
 
 Um die App zu löschen, rufen Sie das [App-Registrierungsportal](https://apps.dev.microsoft.com/) auf und löschen dort die Anwendung. Damit die Anwendung angezeigt wird, müssen Sie der Besitzer der Anwendung sein (und nicht nur Administrator des Mandanten).
 

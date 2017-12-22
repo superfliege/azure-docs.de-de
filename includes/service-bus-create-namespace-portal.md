@@ -16,7 +16,7 @@ So erstellen Sie einen Namespace
 ### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
 Beim Erstellen eines neuen Namespace wird automatisch eine SAS-Regel (Shared Access Signature) mit einem zugeordneten Paar aus primären und sekundären Schlüsseln generiert, mit denen Sie jeweils die volle Kontrolle über sämtliche Aspekte des Namespace haben. Unter [Service Bus-Authentifizierung und -Autorisierung](../articles/service-bus-messaging/service-bus-authentication-and-authorization.md) erfahren Sie, wie Sie weitere Regeln mit stärker eingeschränkten Rechten für reguläre Absender und Empfänger erstellen. Führen Sie diese Schritte aus, um die erste Regel zu kopieren: 
 
-1. Klicken Sie in der Liste mit den Namespaces auf den neu erstellten Namespacenamen.
+1.  Klicken Sie auf **Alle Ressourcen** und dann auf den neu erstellten Namespacenamen.
 2. Klicken Sie im Namespacefenster auf **Richtlinien für gemeinsamen Zugriff**.
 3. Klicken Sie im Bildschirm **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
    

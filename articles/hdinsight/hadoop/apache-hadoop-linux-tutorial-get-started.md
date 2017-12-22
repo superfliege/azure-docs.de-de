@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
-ms.openlocfilehash: 983c7d1f7e3b562a8b89f6afaf52a3289ab33f17
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 833ac053b3ad23a60b84adce1dfa9015bee99046
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight
 
@@ -58,7 +58,7 @@ Die in diesem Tutorial verwendete Resource Manager-Vorlage befindet sich auf [Gi
     Einige Eigenschaften wurden in der Vorlage hartcodiert.  Diese Werte können über die Vorlage konfiguriert werden.
 
     * **Standort**: Für den Standort des Clusters und des abhängigen Speicherkontos wird jeweils der gleiche Standort verwendet wie für die Ressourcengruppe.
-    * **Clusterversion**: 3.5
+    * **Clusterversion**: 3.6
     * **Betriebssystemtyp**: Linux
     * **Anzahl von Workerknoten**: 2
 
@@ -66,11 +66,11 @@ Die in diesem Tutorial verwendete Resource Manager-Vorlage befindet sich auf [Gi
      
      Eine ausführlichere Erläuterung dieser Eigenschaften finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
-3. Aktivieren Sie die Optionen **Ich stimme den oben genannten Geschäftsbedingungen zu** und **An Dashboard anheften**, und klicken Sie anschließend auf **Kaufen**. Im Portal-Dashboard erscheint eine neue Kachel namens **Deploying Template deployment** (Vorlagenbereitstellung bereitstellen). Das Erstellen eines Clusters dauert ca. 20 Minuten. Nachdem der Cluster erstellt wurde, wird die Beschriftung der Kachel in den von Ihnen angegebenen Ressourcengruppennamen geändert. Die Ressourcengruppe wird automatisch auf einem neuen Blatt geöffnet. Cluster und Standardspeicher werden aufgelistet.
+3. Aktivieren Sie die Optionen **Ich stimme den oben genannten Geschäftsbedingungen zu** und **An Dashboard anheften**, und klicken Sie anschließend auf **Kaufen**. Im Portal-Dashboard erscheint eine neue Kachel namens **Deploying Template deployment** (Vorlagenbereitstellung bereitstellen). Das Erstellen eines Clusters dauert ca. 20 Minuten. Nachdem der Cluster erstellt wurde, wird die Beschriftung der Kachel in den von Ihnen angegebenen Ressourcengruppennamen geändert. Die Ressourcengruppe wird automatisch vom Portal geöffnet. Cluster und Standardspeicher werden aufgelistet.
    
     ![HDInsight unter Linux, Erste Schritte mit der Ressourcengruppe](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-resource-group.png "Azure HDInsight-Clusterressourcengruppe").
 
-4. Klicken Sie auf den Clusternamen, um den Cluster auf einem neuen Blatt zu öffnen.
+4. Klicken Sie auf den Clusternamen, um den Cluster zu öffnen.
 
    ![HDInsight unter Linux, Erste Schritte mit Clustereinstellungen](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-cluster-settings.png "HDInsight-Clustereigenschaften")
 
@@ -120,7 +120,7 @@ Nach Abschluss des Tutorials kann es ratsam sein, den Cluster zu löschen. Mit H
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im Dashboard des Portals auf die Kachel mit dem Ressourcengruppennamen, den Sie beim Erstellen des Clusters verwendet haben.
-3. Klicken Sie auf dem Blatt mit den Ressourcen auf **Löschen**, um die Ressourcengruppe zu löschen, die den Cluster und das Standardspeicherkonto enthält. Oder klicken Sie auf der Kachel **Ressourcen** auf den Clusternamen und dann auf dem Clusterblatt auf **Löschen**. Beachten Sie, dass das Speicherkonto beim Löschen der Ressourcengruppe ebenfalls gelöscht wird. Wenn Sie das Speicherkonto beibehalten möchten, müssen Sie auswählen, dass nur der Cluster gelöscht werden soll.
+3. Klicken Sie auf **Löschen**, um die Ressourcengruppe zu löschen, die den Cluster und das Standardspeicherkonto enthält. Oder klicken Sie auf der Kachel **Ressourcen** auf den Clusternamen und dann auf **Löschen**. Beachten Sie, dass das Speicherkonto beim Löschen der Ressourcengruppe ebenfalls gelöscht wird. Wenn Sie das Speicherkonto beibehalten möchten, müssen Sie auswählen, dass nur der Cluster gelöscht werden soll.
 
 ## <a name="troubleshoot"></a>Problembehandlung
 
@@ -136,7 +136,7 @@ Weitere Informationen zur Datenanalyse mit HDInsight finden Sie in den folgenden
 * Informationen zu MapReduce (einer Möglichkeit zum Schreiben von Programmen, die Daten in Hadoop verarbeiten) finden Sie im Artikel zum [Verwenden von MapReduce mit HDInsight](hdinsight-use-mapreduce.md).
 * Informationen zur Verwendung der HDInsight-Tools für Visual Studio zum Analysieren von Daten in HDInsight finden Sie unter [Erste Schritte bei der Verwendung von Hadoop-Tools für Visual Studio für HDInsight](apache-hadoop-visual-studio-tools-get-started.md).
 
-Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten in HDInsight gespeichert werden oder wie HDInsight auf Daten zugreift, finden Sie weitere Informationen in folgenden Artikeln:
+Wenn Sie mit eigenen Daten arbeiten und mehr darüber wissen möchten, wie Daten in HDInsight gespeichert oder verwendet werden, finden Sie weitere Informationen in folgenden Artikeln:
 
 * Informationen zur Verwendung von Azure Storage durch HDInsight finden Sie unter [Verwenden von Azure Storage mit HDInsight](../hdinsight-hadoop-use-blob-storage.md).
 * Informationen zum Hochladen von Daten in HDInsight finden Sie im Artikel zum [Hochladen von Daten für Hadoop-Aufträge in HDInsight](../hdinsight-upload-data.md).

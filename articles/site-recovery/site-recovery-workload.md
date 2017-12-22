@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 12/15/2017
 ms.author: raynew
-ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 3105eaa9e97f02f2337832bef538959a94263ea4
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 
@@ -49,21 +49,20 @@ Site Recovery trägt wie folgt zum Schutz und zur Wiederherstellung auf Anwendun
 ## <a name="workload-summary"></a>Übersicht über Workloads
 Mit Site Recovery können alle Apps repliziert werden, die auf einem unterstützten Computer ausgeführt werden. Außerdem haben wir mit Produktteams zusammengearbeitet, um zusätzliche App-spezifische Tests durchzuführen.
 
-| **Workload** | **Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** |
-| --- | --- | --- | --- | --- |
-| Active Directory, DNS |J |J |J |J |
-| Web-Apps (IIS, SQL) |J |J |J |J |
-| System Center Operations Manager |J |J |J |J |
-| SharePoint |J |J |J |J |
-| SAP<br/><br/>Replizieren eines SAP-Standorts zu Azure (kein Cluster) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |
-| Exchange (kein DAG) |J |J |J |J |
-| Remotedesktop/VDI |J |J |J |N/V |
-| Linux (Betriebssystem und Apps) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |
-| Dynamics AX |J |J |J |J |
-| Dynamics CRM |J |In Kürze verfügbar |J |In Kürze verfügbar |
-| Oracle |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |
-| Windows-Dateiserver |J |J |J |J |
-| Citrix XenApp und XenDesktop |N/V |J |N/V |J |
+| **Workload** |**Replizieren von Azure-VMs in Azure** |**Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** |
+| --- | --- | --- | --- | --- |---|
+| Active Directory, DNS |J |J |J |J |J|
+| Web-Apps (IIS, SQL) |J |J |J |J |J|
+| System Center Operations Manager |J |J |J |J |J|
+| SharePoint |J |J |J |J |J|
+| SAP<br/><br/>Replizieren eines SAP-Standorts zu Azure (kein Cluster) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft)|
+| Exchange (kein DAG) |J |J |J |J |J|
+| Remotedesktop/VDI |J |J |J |J |J|
+| Linux (Betriebssystem und Apps) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft)|
+| Dynamics AX |J |J |J |J |J|
+| Oracle |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft) |J (getestet von Microsoft)|
+| Windows-Dateiserver |J |J |J |J |J|
+| Citrix XenApp und XenDesktop |J|N/V |J |N/V |J |
 
 ## <a name="replicate-active-directory-and-dns"></a>Replizieren von Active Directory und DNS
 Eine Infrastruktur mit Active Directory und DNS ist für die meisten Unternehmens-Apps wichtig. Während der Notfallwiederherstellung müssen Sie diese Infrastrukturkomponenten schützen und wiederherstellen, bevor Sie Ihre Workloads und Apps wiederherstellen.
@@ -106,20 +105,23 @@ Azure Site Recovery trägt wie folgt zum Schutz Ihrer Dynamics AX ERP-Lösung be
 Mit Remotedesktopdiensten (RDS) werden eine Virtual Desktop Infrastructure (VDI) sowie sitzungsbasierte Desktops und Anwendungen ermöglicht, damit Benutzer an jedem Ort arbeiten können. Mit Azure Site Recovery haben Sie folgende Möglichkeiten:
 
 * Replizieren von verwalteten oder nicht verwalteten virtuellen Desktops eines Pools an einem sekundären Standort und von Remoteanwendungen und -sitzungen an einem sekundären Standort oder in Azure.
+
 * Sie können Folgendes replizieren:
 
-| **RDS** | **Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** | **Replizieren von physischen Servern an einem sekundären Standort** | **Replizieren physischer Server in Azure** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Ja |Nein |Ja |Nein |Ja |Nein |
-| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Ja |Nein |Ja |Nein |Ja |Nein |
-| **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |Ja |Ja |Ja |Ja |Ja |Ja |
+| **RDS** |**Replizieren von Azure-VMs in Azure** | **Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** | **Replizieren von physischen Servern an einem sekundären Standort** | **Replizieren physischer Server in Azure** |
+|---| --- | --- | --- | --- | --- | --- | --- |
+| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
+| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
+| **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |Ja|Ja |Ja |Ja |Ja |Ja |Ja |
+
+[Set up disaster recovery for RDS using Azure Site Recovery](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) (Einrichten der Notfallwiederherstellung für RDS mit Azure Site Recovery)
 
 [Erfahren Sie mehr](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) über das Schützen von RDS.
 
 ## <a name="protect-exchange"></a>Schützen von Exchange
 Mit Site Recovery können Sie Exchange wie schützen:
 
-* Für kleine Exchange-Bereitstellungen, z. B. einen einzelnen oder eigenständigen Server, können mit Site Recovery die Replikation und das Failover in Azure oder an einem sekundären Standort durchgeführt werden.
+* Für kleine Exchange-Bereitstellungen, z.B. einen einzelnen oder eigenständigen Server, können mit Site Recovery die Replikation und das Failover in Azure oder an einem sekundären Standort durchgeführt werden.
 * Für größere Bereitstellungen kann Site Recovery in Exchange-Datenbankverfügbarkeitsgruppen (DAGs) integriert werden.
 * Exchange-Datenbankverfügbarkeitsgruppen sind die empfohlene Lösung für die Exchange-Notfallwiederherstellung in einem Unternehmen.  Site Recovery-Wiederherstellungspläne können Datenbankverfügbarkeitsgruppen zum Orchestrieren von DAG-Failovern zwischen Standorten enthalten.
 
@@ -138,7 +140,7 @@ Verwenden Sie Site Recovery wie folgt zum Schützen Ihrer SAP-Bereitstellung:
 ## <a name="protect-iis"></a>Schützen von IIS
 Verwenden Sie Site Recovery wie folgt zum Schützen Ihrer IIS-Bereitstellung:
 
-Azure Site Recovery stellt die Notfallwiederherstellung bereit, indem die kritischen Komponenten in Ihrer Umgebung an einem „kalten“ Remotestandort oder in einer öffentlichen Cloud wie Microsoft Azure repliziert werden. Da der virtuelle Computer mit dem Webserver und der Datenbank am Wiederherstellungsstandort repliziert werden, ist es nicht erforderlich, Konfigurationsdateien oder Zertifikate separat zu sichern. Die Anwendungszuordnungen und Bindungen sind von Umgebungsvariablen abhängig, die nach dem Failover geändert werden. Sie können mithilfe von Skripts aktualisiert werden, die in die Pläne für die Notfallwiederherstellung integriert sind. Virtuelle Computer werden am Wiederherstellungsstandort nur bei einem Failover genutzt. Außerdem werden Sie von Azure Site Recovery beim Orchestrieren des End-to-End-Failovers unterstützt, indem die folgenden Funktionen bereitgestellt werden:
+Azure Site Recovery stellt die Notfallwiederherstellung bereit, indem die kritischen Komponenten in Ihrer Umgebung an einem „kalten“ Remotestandort oder in einer öffentlichen Cloud wie Microsoft Azure repliziert werden. Da die virtuellen Computer mit dem Webserver und der Datenbank am Wiederherstellungsstandort repliziert werden, ist es nicht erforderlich, Konfigurationsdateien oder Zertifikate separat zu sichern. Die Anwendungszuordnungen und Bindungen sind von Umgebungsvariablen abhängig, die nach dem Failover geändert werden. Sie können mithilfe von Skripts aktualisiert werden, die in die Pläne für die Notfallwiederherstellung integriert sind. Virtuelle Computer werden am Wiederherstellungsstandort nur bei einem Failover genutzt. Außerdem werden Sie von Azure Site Recovery beim Orchestrieren des End-to-End-Failovers unterstützt, indem die folgenden Funktionen bereitgestellt werden:
 
 -   Sequenzieren des Herunterfahrens und Startens von virtuellen Computern auf verschiedenen Ebenen
 -   Hinzufügen von Skripts zum Zulassen des Updates von Anwendungsabhängigkeiten und Bindungen auf den virtuellen Computern nach dem Starten (Die Skripts können auch verwendet werden, um den DNS-Server so zu aktualisieren, dass er auf den Wiederherstellungsstandort zeigt.)

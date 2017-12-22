@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 11/29/2017
-ms.openlocfilehash: b48e5bc2552c92b45e0417e5a8a34705a473073e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Klassifizieren von Iris, Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning-Diensten (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -206,7 +206,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
 1. Verwenden Sie den folgenden Befehl, um einen Echtzeit-Webdienst zu erstellen:
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c amlconfig\conda_dependencies.yml
    ```
    Bei diesem Befehl wird eine Webdienst-ID zur späteren Verwendung generiert.
 
@@ -216,6 +216,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
    * `--model-file`: Die Modelldatei. In diesem Fall ist dies die pickle-Datei „model.pkl“.
    * `-r`: Der Typ des Modells. In diesem Fall ist es ein Python-Modell.
    * `--collect-model-data true`: Dient zum Aktivieren der Datensammlung.
+   * `-c`: Pfad zur Datei mit den Conda-Abhängigkeiten, in der zusätzliche Pakete angegeben werden
 
    >[!IMPORTANT]
    >Der Dienstname, bei dem es sich auch um den neuen Docker-Imagenamen handelt, darf nur Kleinbuchstaben enthalten. Andernfalls erhalten Sie eine Fehlermeldung. 
@@ -254,10 +255,10 @@ Registrieren Sie zuerst das Modell. Generieren Sie anschließend das Manifest, e
 
 3. Erstellen Sie ein Docker-Image.
 
-   Verwenden Sie zum Erstellen eines Docker-Image den folgenden Befehl, und geben Sie den Manifest-ID-Wert aus dem vorherigen Schritt an:
+   Verwenden Sie zum Erstellen eines Docker-Images den folgenden Befehl, und geben Sie den Manifest-ID-Wert aus dem vorherigen Schritt an. Sie können die Conda-Abhängigkeiten auch optional mit dem Switch `-c` aufnehmen.
 
    ```azurecli
-   az ml image create -n irisimage --manifest-id <manifest ID>
+   az ml image create -n irisimage --manifest-id <manifest ID> -c amlconfig\conda_dependencies.yml
    ```
    Mit diesem Befehl wird eine Docker-Image-ID generiert.
    

@@ -10,7 +10,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
 
-Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#create) ein allgemeines Standardspeicherkonto. Das allgemeine Standardspeicherkonto kann für alle vier Dienste verwendet werden: Blobs, Files, Tables und Queues. 
+Erstellen Sie mit dem Befehl [az storage account create](/cli/azure/storage/account#create) ein allgemeines Speicherkonto. Das allgemeine Speicherkonto kann für alle vier Dienste verwendet werden: Blobs, Files, Tables und Queues. 
 
 ```azurecli-interactive
 az storage account create \

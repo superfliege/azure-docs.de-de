@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/25/2017
-ms.author: mbullwin
-ms.openlocfilehash: afe37dd1fcf2b663f3bf97d04b187b356381f3f3
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 12/14/2017
+ms.author: sdash
+ms.openlocfilehash: 6932802e7852efa90551c27f9145f7ca6e685d7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Überwachen der Verfügbarkeit und Reaktionsfähigkeit von Websites
 Nachdem Sie die Web-App oder Website an einen beliebigen Server bereitgestellt haben, können Sie Tests einrichten, um die Verfügbarkeit und Reaktionsfähigkeit zu überwachen. [Azure Application Insights](app-insights-overview.md) sendet regelmäßig Webanforderungen von verschiedenen Punkten auf der ganzen Welt an Ihre Anwendung. Sie werden benachrichtigt, wenn Ihre Anwendung langsam oder gar nicht reagiert.
@@ -31,7 +31,7 @@ Es gibt zwei Arten von Verfügbarkeitstests:
 
 Sie können bis zu 100 Verfügbarkeitstests pro Anwendungsressource erstellen.
 
-## <a name="create"></a>1. Öffnen einer Ressource für Ihre Verfügbarkeitstestberichte
+## <a name="create"></a>Öffnen einer Ressource für Ihre Verfügbarkeitstestberichte
 
 **Falls Sie Application Insights bereits für Ihre Web-App konfiguriert haben**, können Sie die dazugehörige Application Insights-Ressource im [Azure-Portal](https://portal.azure.com) öffnen.
 
@@ -41,7 +41,7 @@ Sie können bis zu 100 Verfügbarkeitstests pro Anwendungsressource erstellen.
 
 Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht“ für die neue Ressource zu öffnen.
 
-## <a name="setup"></a>2. Erstellen eines URL-Pingtests
+## <a name="setup"></a>Erstellen eines URL-Pingtests
 Öffnen Sie das Blatt „Verfügbarkeit“, und fügen Sie einen Test hinzu.
 
 ![Mindestens die URL der Website eintragen](./media/app-insights-monitor-web-app-availability/13-availability.png)
@@ -68,7 +68,7 @@ Klicken Sie auf **All resources** (Alle Ressourcen), um das Blatt „Übersicht�
 Fügen Sie weitere Tests hinzu. Neben dem Testen der Startseite können Sie zum Beispiel auch sicherstellen, dass die Datenbank ausgeführt wird, indem Sie eine Such-URL testen.
 
 
-## <a name="monitor"></a>3. Anzeigen der Verfügbarkeitstestergebnisse
+## <a name="monitor"></a>Anzeigen der Verfügbarkeitstestergebnisse
 
 Klicken Sie nach einigen Minuten auf **Aktualisieren**, um die Testergebnisse anzuzeigen. 
 
@@ -102,14 +102,11 @@ Klicken Sie auf einen roten Punkt.
 Mit einem Verfügbarkeitstestergebnis können Sie folgende Aktionen ausführen:
 
 * Untersuchen Sie die vom Server erhaltene Antwort.
-* Öffnen Sie die von der Server-App gesendeten Telemetriedaten, während die Instanz der fehlgeschlagenen Anforderung verarbeitet wird.
+* Diagnostizieren Sie Fehler mit serverseitigen Telemetriedaten, die beim Verarbeiten der Instanz der fehlerhaften Anforderung erfasst wurden.
 * Erstellen Sie in Git oder VSTS ein Problem oder eine Arbeitsaufgabe, um das Problem nachzuverfolgen. Der Fehler enthält einen Link zu diesem Ereignis.
 * Öffnen Sie das Webtestergebnis in Visual Studio.
 
-
-*Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird.
-
-*Keine verwandten Elemente vorhanden?* Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](app-insights-sampling.md) in Betrieb ist. 
+*Sieht gut aus, wird jedoch als fehlerhaft gemeldet?* Unter [Häufig gestellte Fragen](#qna) finden Sie Möglichkeiten zum Verringern von Störungen.
 
 ## <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 Sie können ein Szenario überwachen, das eine Sequenz mit mehreren URLs umfasst. Wenn Sie zum Beispiel eine Verkaufswebsite überwachen, können Sie testen, ob das Hinzufügen von Artikeln zum Einkaufswagen ordnungsgemäß funktioniert.
@@ -256,6 +253,20 @@ Nach Abschluss des Tests werden die Antwortzeiten und Erfolgsraten angezeigt.
 * Richten Sie einen [Webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) ein, der bei einer Warnung aufgerufen wird.
 
 ## <a name="qna"></a>Fragen? Probleme?
+* *Zeitweiliger Testfehler aufgrund einer Protokollverletzung?*
+
+    Der Fehler („protocol violation..CR must be followed by LF“) weist auf ein Problem mit dem Server (oder mit Abhängigkeiten) hin. Er wird angezeigt, wenn falsch formatierte Header in der Antwort festgelegt werden. Der Fehler kann durch Lastenausgleichsmodule oder CDNs verursacht werden. Genauer gesagt geben einige Header unter Umständen das Zeilenende nicht mit CRLF an, was gegen die HTTP-Spezifikation verstößt. Daher schlägt die Validierung auf .NET-WebRequest-Ebene fehl. Überprüfen Sie die Antwort, um Header zu ermitteln, die gegen diese Spezifikation verstoßen.
+    
+    Hinweis: Bei der URL tritt in Browsern mit einer nicht so strengen Validierung von HTTP-Headern unter Umständen kein Fehler auf. Eine ausführliche Erläuterung dieses Problems finden Sie in folgendem Blogbeitrag: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/.  
+* *Die Website sieht korrekt aus, aber ich sehe Testfehler.*
+
+    * Überprüfen Sie alle Bilder, Skripts, Stylesheets und anderen Dateien, die von der Seite geladen werden. Wenn eines dieser Elemente einen Fehler verursacht, wird der Test auch dann als fehlerhaft gemeldet, wenn die HTML-Hauptseite problemlos geladen wird. Deaktivieren Sie einfach in der Testkonfiguration die Option „Abhängige Anforderungen analysieren“, um solche Ressourcenfehler vom Test auszuschließen. 
+
+    * Stellen Sie sicher, dass die Konfigurationsoption „Enable retries for test failures" (Wiederholungen bei Testfehlern zulassen) aktiviert ist, um Störungen infolge vorübergehender Netzwerkprobleme zu verringern. Sie können den Test auch an mehreren Standorten durchführen und den Schwellenwert der Warnungsregel entsprechen verwalten, um zu verhindern, dass standortspezifische Probleme übermäßige Warnungen auslösen.
+    
+* *Ich sehe keine zugehörigen serverseitigen Telemetriedaten zum Diagnostizieren von Testfehlern.*
+    
+    Wenn Sie Application Insights für Ihre serverseitige Anwendung eingerichtet haben, liegt dies möglicherweise daran, dass [Sampling](app-insights-sampling.md) in Betrieb ist.
 * *Kann ich Code aus meinem Webtest aufrufen?*
 
     Nein. Die Schritte des Tests müssen in der Webtest-Datei enthalten sein. Und Sie können keine anderen Webtests aufrufen oder Schleifen verwenden. Aber es gibt mehrere hilfreiche Plug-Ins.

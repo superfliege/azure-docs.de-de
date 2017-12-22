@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/06/2017
 ms.author: shlo
-ms.openlocfilehash: e1386d055e41d25b84630141b86ef2143f2fc8af
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: bcf3095e8e66ea9b3c49919dadb8f7c342a49006
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, wollen Sie die Details zum erfolgreichen Kopiervorgang (z.B. die geschriebene Datenmenge) in einer Erfolgsmail senden. Schlägt die Kopieraktivität fehl, wollen Sie die Details zum Fehler beim Kopieren (z.B. die Fehlermeldung) in einer Fehler-E-Mail senden. In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -452,7 +452,7 @@ Der erste Abschnitt unserer Pipeline definiert Parameter.
 
 - SourceBlobContainer: Parameter in der Pipeline, die vom Quell-Blobdataset verbraucht werden.
 - SinkBlobContainer: Parameter in der Pipeline, die vom Senken-Blobdataset verbraucht werden.
-- Empfänger: Parameter in der Pipeline, der von den zwei Webaktivitäten verarbeitet wird, auf welchen die E-Mail-Adresse die E-Mail erhält.
+- receiver: Dieser Parameter wird von den beiden Webaktivitäten in der Pipeline verwendet, die Erfolgs- oder Fehlermeldungen an den Empfänger senden, dessen E-Mail-Adresse durch diesen Parameter angegeben ist.
 
 
 ```csharp

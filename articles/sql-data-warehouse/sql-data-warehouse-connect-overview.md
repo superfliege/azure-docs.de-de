@@ -13,23 +13,23 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: connect
-ms.date: 10/31/2016
-ms.author: anvang;barbkess
-ms.openlocfilehash: 72c2b404e66611da421eca0dc30aa71e18c6d120
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: anvang;barbkess;kevin
+ms.openlocfilehash: bd2e89f39d54a2186fa9ca343d04135b2da5d352
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>Verbinden mit Azure SQL Data Warehouse
 Dieser Artikel unterstützt Sie beim erstmaligen Herstellen einer Verbindung mit SQL Data Warehouse.
 
 ## <a name="find-your-server-name"></a>Suchen des Servernamens
-Um eine Verbindung mit SQL Data Warehouse herstellen zu können, müssen Sie zunächst wissen, wie Sie den Servernamen finden.  Der Servername im folgenden Beispiel lautet etwa „sample.database.windows.net“. So ermitteln Sie den vollqualifizierten Servernamen
+Um eine Verbindung mit SQL Data Warehouse herstellen zu können, müssen Sie zunächst wissen, wie Sie den Servernamen finden.  Der Servername im folgenden Beispiel lautet etwa „samplesvr.database.windows.net“. So ermitteln Sie den vollqualifizierten Servernamen
 
 1. Öffnen Sie das [Azure-Portal][Azure portal].
-2. Klicken Sie auf **SQL-Datenbanken** 
-3. Klicken Sie auf die Datenbank, mit der Sie eine Verbindung herstellen möchten.
+2. Klicken Sie auf **SQL Data Warehouses**.
+3. Klicken Sie auf das Data Warehouse, mit dem Sie eine Verbindung herstellen möchten.
 4. Suchen Sie den vollständigen Servernamen.
    
     ![Vollständiger Servername][1]
@@ -93,6 +93,6 @@ Informationen zum Herstellen einer Verbindung und zum Ausführen von Abfragen mi
 [Azure portal]: https://portal.azure.com
 
 <!--Image references-->
-[1]: media/sql-data-warehouse-connect-overview/get-server-name.png
+[1]: media/sql-data-warehouse-connect-overview/server-connect.PNG
 
 

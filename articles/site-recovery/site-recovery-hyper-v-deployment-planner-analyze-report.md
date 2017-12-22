@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 714c2074f643d2b168c054c5af467b550f57daba
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 9340fe48c1da874d6c0cf02c026e5dec6ddabbe7
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analysieren des Azure Site Recovery-Bereitstellungsplaner-Berichts
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Tabellen:
@@ -44,7 +44,7 @@ Die Tabelle „On-premises Summary“ (Lokale Zusammenfassung) enthält eine Üb
 
 **Observed typical data churn per day (GB)** (Beobachtete typische Datenänderungsrate pro Tag (GB)): Durchschnittliche Datenänderungsrate über alle Tage der Profilerstellung hinweg.
 
-## <a name="recommendations"></a>Recommendations (Empfehlungen)  
+## <a name="recommendations"></a>Recommendations  
 Die Tabelle „Recommendations“ (Empfehlungen) des Berichts für „Hyper-V zu Azure“ enthält je nach ausgewähltem gewünschtem RPO-Wert die folgenden Details:
 
 ![Empfehlungen für Bericht „Hyper-V zu Azure“](media/site-recovery-hyper-v-deployment-planner-analyze-report/Recommendations-h2a.png)
@@ -188,7 +188,7 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **Peak R/W IOPS (with Growth Factor)** (Lese/Schreib-IOPS-Spitzenwert (mit Zuwachsfaktor)): Der Lese/Schreib-IOPS-Wert für die Spitzenworkload auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie, dass der Lese/Schreib-IOPS-Gesamtwert einer VM nicht immer die Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger einer VM ist. Der Grund ist, dass der Lese/Schreib-IOPS-Spitzenwert der VM der Spitzenwert der Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
 
-**Peak Data Churn in MBps (with Growth Factor)** (Spitzendatenänderung (MBit/s) (mit Zuwachsfaktor)): Die Spitzenänderungsrate auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie Folgendes: Die gesamte VM-Datenänderung ist nicht immer die Summe der Datenänderung der einzelnen VM-Datenträger, da der Spitzenwert der VM-Datenänderung der Spitzenwert der Summe der Datenänderung seiner einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
+**Peak Data Churn in MB/s (with Growth Factor)** (Spitzendatenänderung (MB/s) (mit Zuwachsfaktor)): Die Spitzenänderungsrate auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie Folgendes: Die gesamte VM-Datenänderung ist nicht immer die Summe der Datenänderung der einzelnen VM-Datenträger, da der Spitzenwert der VM-Datenänderung der Spitzenwert der Summe der Datenänderung seiner einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
 
 **Azure VM Size** (Größe des virtuellen Azure-Computers): Die Idealgröße für die Zuordnung von Azure Cloud Services-VMs für diese lokale VM. Die Zuordnung basiert auf dem lokalen Arbeitsspeicher der VM, der Anzahl von Datenträgern/Kernen/NICs und dem Lese/Schreib-IOPS-Wert. Die Empfehlung ist immer die niedrigste Azure-VM-Größe, bei der alle Merkmale der lokalen VM erfüllt werden.
 
@@ -235,15 +235,15 @@ Der Microsoft Excel-Bericht, der mit dem Azure Site Recovery-Bereitstellungsplan
 
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 80.000 pro VM.
 
-* Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Azure Site Recovery-Datenänderungsrate von 10 MBit/s für die durchschnittliche E/A-Größe für den Datenträger.
+* Die durchschnittliche Datenänderungsrate des virtuellen Quellcomputers übersteigt den unterstützten Grenzwert für die Azure Site Recovery-Datenänderungsrate von 10 MB/s für die durchschnittliche E/A-Größe.
 
-* Durchschnittlicher effektiver Schreib-IOPS-Wert übersteigt den unterstützten Azure Site Recovery-IOPS-Grenzwert von 840 für den Datenträger.
+* Durchschnittlicher effektiver Schreib-IOPS-Wert des virtuellen Quellcomputers übersteigt den unterstützten Azure Site Recovery-IOPS-Grenzwert von 840.
 
 * Der berechnete Momentaufnahmespeicher übersteigt den unterstützten Grenzwert für Momentaufnahmespeicher von 10 TB.
 
 **Peak R/W IOPS (with Growth Factor)** (Lese/Schreib-IOPS-Spitzenwert (mit Zuwachsfaktor)): Der IOPS-Wert für die Spitzenworkload auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie, dass der Lese/Schreib-IOPS-Gesamtwert der VM nicht immer die Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger einer VM ist. Der Grund ist, dass der Lese/Schreib-IOPS-Spitzenwert der VM der Spitzenwert der Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
 
-**Peak Data Churn in MBps (with Growth Factor)** (Spitzendatenänderung (MBit/s) (mit Zuwachsfaktor)): Die Spitzenänderungsrate auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie Folgendes: Die gesamte VM-Datenänderung ist nicht immer die Summe der Datenänderung der einzelnen VM-Datenträger, da der Spitzenwert der VM-Datenänderung der Spitzenwert der Summe der Datenänderung seiner einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
+**Peak Data Churn in MB/s (with Growth Factor)** (Spitzendatenänderung (MB/s) (mit Zuwachsfaktor)): Die Spitzenänderungsrate auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie Folgendes: Die gesamte VM-Datenänderung ist nicht immer die Summe der Datenänderung der einzelnen VM-Datenträger, da der Spitzenwert der VM-Datenänderung der Spitzenwert der Summe der Datenänderung seiner einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
 
 **Number of Disks** (Anzahl von Datenträgern): Die Gesamtzahl von VHDs auf der VM.
 
@@ -260,14 +260,11 @@ Der Microsoft Excel-Bericht, der mit dem Azure Site Recovery-Bereitstellungsplan
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery-Grenzwerte
 Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. Diese Grenzwerte basieren auf unseren Tests, können aber nicht alle möglichen E/A-Kombinationen für Anwendungen abdecken. Die tatsächlichen Ergebnisse können je nach Ihrer E/A-Mischung für die Anwendungen variieren. Auch nach der Planung der Bereitstellung ist es zum Erzielen der bestmöglichen Ergebnisse stets zu empfehlen, umfangreiche Anwendungstests per Testfailover durchzuführen, um sich ein eindeutiges Bild der Anwendungsleistung zu verschaffen.
  
-**Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
+**Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des virtuellen Quellcomputers** |**Durchschnittliche Datenänderungsrate des virtuellen Quellcomputers** | **Gesamte Datenänderungsrate des virtuellen Quellcomputers pro Tag**
 ---|---|---|---
-Standardspeicher | 8 KB | 2 MBit/s | 168 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MBit/s | 168 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 16 KB | 4 MBit/s |  336 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MBit/s | 672 GB pro Datenträger
-Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MBit/s | 421 GB pro Datenträger
-Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MBit/s | 842 GB pro Datenträger
+Standardspeicher | 8 KB | 2 MB/s pro virtuellem Computer | 168 GB pro virtuellem Computer
+Storage Premium | 8 KB  | 5 MB/s pro virtuellem Computer | 421 GB pro virtuellem Computer
+Storage Premium | 16 KB oder höher| 10 MB/s pro virtuellem Computer | 842 GB pro virtuellem Computer
 
 Diese Grenzwerte sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Azure Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
 

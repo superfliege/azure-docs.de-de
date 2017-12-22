@@ -3,8 +3,8 @@ title: "Übersicht über Azure-VM-Skalierungsgruppen | Microsoft-Dokumentation"
 description: "Hier erfahren Sie mehr über Azure-VM-Skalierungsgruppen."
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2017
-ms.author: guybo
+ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a0d181ad0732458e67d0f3f1d6676be099b52fc
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 7f2048a39f28a74ca8a31c2e6d7466c69ba4d58f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Was sind VM-Skalierungsgruppen in Azure?
-VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Rechenleistung, Big Data und Workloads in Containern ausgelegt sind.
+VM-Skalierungsgruppen sind eine Azure-Computeressource, mit der Sie eine Gruppe von identischen virtuellen Computern bereitstellen und verwalten können. Da alle virtuellen Computer in einer Skalierungsgruppe gleich konfiguriert sind, ermöglichen Skalierungsgruppen eine echte automatische Skalierung ohne Vorabbereitstellung virtueller Computer. Das erleichtert die Erstellung umfangreicher Dienste, die auf hohe Computeleistung, umfangreiche Daten und Workloads in Containern ausgelegt sind.
 
 Bei Anwendungen, für die Computeressourcen horizontal herunter- und hochskaliert werden müssen, werden Skalierungsoperationen implizit über Fehler- und Updatedomänen ausgeglichen. Eine weitergehende Einführung in das Thema „Skalierungsgruppen“ finden Sie in [dieser Ankündigung im Azure-Blog](https://azure.microsoft.com/blog/azure-virtual-machine-scale-sets-ga/).
 
@@ -50,7 +50,7 @@ Bei den Schnellstartvorlagenbeispielen steht in der Infodatei für jede Vorlage 
 ## <a name="autoscale"></a>Autoscale
 Die Anzahl von VM-Instanzen in Ihrer Skalierungsgruppe kann automatisch angepasst werden, um eine konsistente Anwendungsleistung zu gewährleisten. Diese automatische Skalierung verringert den Verwaltungsaufwand im Zusammenhang mit der Überwachung und Anpassung Ihrer Skalierungsgruppe, wenn sich der Kundenbedarf im Laufe der Zeit verändert. Sie definieren Regeln, die auf Leistungsmetriken, der Anwendungsantwort oder einem festen Zeitplan basieren, und Ihre Skalierungsgruppe wird automatisch nach Bedarf skaliert.
 
-Für einfache Regeln zur automatischen Skalierung können Sie hostbasierte Leistungsmetriken wie CPU-Auslastung oder Datenträger-E/A verwenden. Diese hostbasierten Metriken stehen direkt zur Verfügung – ganz ohne zusätzliche Agents oder die Installation und Konfiguration von Erweiterungen. Regeln zur automatischen Skalierung mit hostbasierten Metriken können mit einem der folgenden Tools erstellt werden:
+Für einfache Regeln zur automatischen Skalierung können Sie hostbasierte Leistungsmetriken wie CPU-Auslastung oder Datenträger-E/A verwenden. Diese hostbasierten Metriken stehen automatisch zur Verfügung – ganz ohne die Installation und Konfiguration zusätzlicher Agents oder Erweiterungen. Regeln zur automatischen Skalierung mit hostbasierten Metriken können mit einem der folgenden Tools erstellt werden:
 
 - [Azure-Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)

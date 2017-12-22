@@ -1,6 +1,6 @@
 ---
 title: "Häufig gestellte Fragen zu Azure Active Directory | Microsoft Docs"
-description: "In den häufig gestellten Fragen zu Azure Active Directory werden Fragen zum Zugriff auf Azure und Azure Active Directory sowie zur Kennwortverwaltung und zum Anwendungszugriff beantwortet."
+description: "In den häufig gestellten Fragen zu Azure Active Directory werden allgemeine Fragen zu Azure und Azure Active Directory sowie zur Kennwortverwaltung und zum Anwendungszugriff beantwortet."
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/08/2017
+ms.date: 12/14/2017
 ms.author: markvi
-ms.openlocfilehash: 5ec11f1a125cc4c6e7f5165091411dea7daca193
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7640d2ba495d465f06bd918df0c08f0d85b42e76
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-active-directory-faq"></a>Häufig gestellte Fragen zu Azure Active Directory
 Azure Active Directory (Azure AD) ist eine umfassende IDaaS-Lösung (Identity as a Service) für sämtliche Aspekte von Identität, Zugriffsverwaltung und Sicherheit.
@@ -27,9 +27,9 @@ Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](active-
 
 
 ## <a name="access-azure-and-azure-active-directory"></a>Zugreifen auf Azure und Azure Active Directory
-**F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, über das klassische Azure-Portal auf Azure AD zuzugreifen?**
+**F: Warum wird „Keine Abonnements gefunden“ angezeigt, wenn ich versuche, im Azure-Portal auf Azure AD zuzugreifen?**
 
-**A:** Für den Zugriff auf das klassische Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
+**A:** Für den Zugriff auf das Azure-Portal benötigt jeder Benutzer Berechtigungen mit einem Azure-Abonnement. Wenn Sie über ein kostenpflichtiges Office 365- oder Azure AD-Abonnement verfügen, können Sie unter [http://aka.ms/accessAAD](http://aka.ms/accessAAD) einen einmaligen Aktivierungsschritt ausführen. Andernfalls müssen Sie ein kostenloses [Azure-Konto](https://azure.microsoft.com/pricing/free-trial/) oder ein kostenpflichtiges Abonnement aktivieren.
 
 Weitere Informationen finden Sie unter:
 
@@ -44,11 +44,9 @@ Weitere Informationen finden Sie unter:
 Alle Benutzer, die für die Verwendung von Webdiensten eingerichtet sind, sind als Benutzerkonten in mindestens einer Azure AD-Instanz definiert. Für diese Konten können Sie kostenlose Azure AD-Funktionen wie etwa den Zugriff auf Cloudanwendungen einrichten.
 
 Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen andere Webdienste wie Office 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
-- - -
-**F: Warum kann ich mich beim Azure-Portal, aber nicht beim klassischen Azure-Portal anmelden?**
 
-**A:** Im Gegensatz zum klassischen Portal wird für das Azure-Portal kein gültiges Abonnement benötigt.  Ohne Abonnement können Sie sich nicht beim klassischen Portal anmelden.
 - - -
+
 **F: Was sind die Unterschiede zwischen Abonnementadministrator und Verzeichnisadministrator?**
 
 **A:** Standardmäßig werden Sie der Abonnementadministratorrolle zugewiesen, wenn Sie sich für Azure registrieren. Ein Abonnementadministrator kann entweder ein Microsoft-Konto oder ein Geschäfts-, Schul- oder Unikonto aus dem Verzeichnis verwenden, dem das Azure-Abonnement zugeordnet ist.  Diese Rolle ist zum Verwalten von Diensten im Azure-Portal berechtigt.
@@ -56,7 +54,7 @@ Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen a
 Andere Benutzer, die sich mithilfe des gleichen Abonnements anmelden und auf die Dienste zugreifen müssen, können als Co-Administratoren hinzugefügt werden. Diese Rolle verfügt über die gleichen Zugriffsrechte wie der Dienstadministrator, kann jedoch die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern.  Weitere Informationen zu Abonnementadministratoren finden Sie unter [How to add or change Azure administrator roles](../billing-add-change-azure-subscription-administrator.md) (Hinzufügen oder Ändern von Azure-Administratorrollen) sowie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
 
 
-In Azure AD werden für die Verwaltung von Verzeichnis- und Identitätsfeatures andere Administratorrollen verwendet.  Diese Administratoren haben Zugriff auf verschiedene Features des Azure-Portals oder des klassischen Azure-Portals. Die Administratorrolle bestimmt, welche Aktionen der Administrator ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md).
+In Azure AD werden für die Verwaltung von Verzeichnis- und Identitätsfeatures andere Administratorrollen verwendet.  Diese Administratoren haben Zugriff auf verschiedene Features des Azure-Portals. Die Administratorrolle bestimmt, welche Aktionen der Administrator ausführen kann. Mögliche Aktionen sind beispielsweise das Erstellen oder Bearbeiten von Benutzern, das Zuweisen von Administratorrollen zu anderen Personen, das Zurücksetzen von Benutzerkennwörtern sowie das Verwalten von Benutzerlizenzen oder Domänen.  Weitere Informationen zu Azure AD-Verzeichnisadministratoren und deren Rollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](active-directory-assign-admin-roles-azure-portal.md).
 
 Kostenpflichtige Azure AD-Dienste wie Enterprise Mobility + Security ergänzen zudem andere Webdienste wie Office 365 und Microsoft Azure durch umfassende Verwaltungs- und Sicherheitslösungen für Unternehmen.
 
@@ -137,16 +135,20 @@ Für Azure AD-Konten können Administratoren Kennwörter mit einer der folgenden
 
 - - -
 ## <a name="security"></a>Sicherheit
-**F: Werden Konten nach einer bestimmten Anzahl von Versuchen, bei denen Fehler aufgetreten sind, gesperrt, oder wird eine ausgereiftere Strategie angewandt?**</br>
+**F: Werden Konten nach einer bestimmten Anzahl von Versuchen, bei denen Fehler aufgetreten sind, gesperrt, oder wird eine ausgereiftere Strategie angewandt?**
+
 Wir verwenden eine ausgereiftere Strategie zum Sperren von Konten.  Sie basiert auf der IP-Adresse der Anforderung und den eingegebenen Kennwörtern. Die Dauer der Sperre wird ebenfalls gemäß der Wahrscheinlichkeit erhöht, dass es sich um einen Angriff handelt.  
 
-**F: Bestimmte (häufige) Kennwörter werden mit „Dieses Kennwort wurde zu oft verwendet“-Meldungen zurückgewiesen – bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**</br>
+**F: Bestimmte (häufige) Kennwörter werden mit „Dieses Kennwort wurde zu oft verwendet“-Meldungen zurückgewiesen – bezieht sich dies auf Kennwörter, die im aktuellen Active Directory verwendet wurden?**
+
 Dies bezieht sich auf Kennwörter, die global häufig sind, z.B. alle Varianten von „Password“ und „123456“.
 
-**F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**</br>
+**F: Wird eine Anmeldeanforderung aus fragwürdigen Quellen (Botnets, Tor-Endpunkt) in einem B2C-Mandanten blockiert, oder setzt dies einen Basic- oder Premium Edition-Mandanten voraus?**
+
 Wir haben ein Gateway, das Anforderungen filtert, gewissen Schutz gegen Botnets bietet und für alle B2C-Mandanten gilt.
 
 ## <a name="application-access"></a>Anwendungszugriff
+
 **F: Wo finde ich eine Liste mit bereits in Azure AD integrierten Anwendungen und deren Funktionen?**
 
 **A:** Für Azure AD stehen bereits über 2.600 integrierte Anwendungen von Microsoft, Anwendungsdienstanbietern und Partnern zur Verfügung. Alle vorab integrierten Anwendungen unterstützen einmaliges Anmelden (Single Sign-On, SSO). Mit SSO können Sie unter Verwendung der Anmeldeinformationen Ihres Unternehmens auf Ihre Apps zugreifen. Einige Anwendungen unterstützen auch die automatisierte Bereitstellung und Aufhebung der Bereitstellung.

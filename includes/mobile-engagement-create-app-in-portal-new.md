@@ -3,7 +3,7 @@
 2. Klicken Sie auf **Neu** und dann auf **Web und mobil** und **Mobile Engagement**.
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
-3. Im angezeigten Blatt **New Mobile Engagement App Collection** (Neue Mobile Engagement-App-Sammlung) erstellen Sie eine App-Sammlung, anstatt wie im klassischen Azure-Portal eine App. Geben Sie Folgendes ein:
+3. Auf dem angezeigten Blatt **New Mobile Engagement App Collection** (Neue Mobile Engagement-App-Sammlung) erstellen Sie eine App-Sammlung. Geben Sie Folgendes ein:
    
     ![](./media/mobile-engagement-create-app-in-portal-new/new-azme-app.png)
    

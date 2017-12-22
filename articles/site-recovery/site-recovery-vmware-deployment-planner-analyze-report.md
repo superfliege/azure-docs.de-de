@@ -1,5 +1,5 @@
 ---
-title: "Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“ | Microsoft-Dokumentation"
+title: "Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation"
 description: "In diesem Artikel wird die Analyse des generierten Azure Site Recovery-Bereitstellungsplaner-Berichts für „VMware zu Azure“ beschrieben."
 services: site-recovery
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: 1eddd18e9b5ac0b4cb174e635f0f3cfd2f41059d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fe50f159baedf5455c2ea3cfe825d6d826e70851
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Tabellen:
@@ -52,7 +52,7 @@ Das Arbeitsblatt „Recommendations“ (Empfehlungen) des Berichts für „VMwar
 ![Empfehlungen für Bericht „VMware zu Azure“](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
 ### <a name="profiled-data"></a>Profilerstellungsdaten
-![Ansicht der Profilerstellungsdaten im Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/profiled-data-v2a.png)
+![Ansicht der Profilerstellungsdaten im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/profiled-data-v2a.png)
 
 **Profiled data period** (Zeitraum der Profilerstellung): Der Zeitraum, in dem die Profilerstellung durchgeführt wurde. Standardmäßig bezieht das Tool alle Profilerstellungsdaten in die Berechnung ein, sofern der Bericht nicht nur für einen bestimmten Zeitraum erstellt wird, indem bei der Berichterstellung die Optionen „StartDate“ und „EndDate“ genutzt werden.
 
@@ -62,7 +62,7 @@ Das Arbeitsblatt „Recommendations“ (Empfehlungen) des Berichts für „VMwar
 
 ### <a name="profiling-overview"></a>Übersicht über die Profilerstellung
 
-![Ergebnisse der Profilerstellung im Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/profiling-overview-v2a.png)
+![Ergebnisse der Profilerstellung im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/profiling-overview-v2a.png)
 
 **Total Profiled Virtual Machines** (VMs mit Profilerstellung gesamt): Die Gesamtzahl der VMs, für die Profilerstellungsdaten verfügbar sind. Wenn „VMListFile“ Namen von VMs enthält, für die keine Profile erstellt wurden, werden diese VMs in der Berichterstellung nicht berücksichtigt und aus der Gesamtzahl von VMs für die Profilerstellung ausgeschlossen.
 
@@ -74,7 +74,7 @@ Das Arbeitsblatt „Recommendations“ (Empfehlungen) des Berichts für „VMwar
 
 ### <a name="required-network-bandwidth-mbps"></a>Erforderliche Netzwerkbandbreite (MBit/s)
 
-![Erforderliche Netzwerkbandbreite im Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/required-network-bandwidth-v2a.png)
+![Erforderliche Netzwerkbandbreite im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/required-network-bandwidth-v2a.png)
 
 **To meet RPO 100 percent of the time** (Erreichung des RPO-Werts in 100 % der Fälle): Die empfohlene Bandbreite in MBit/s, die zugeordnet werden sollte, um den gewünschten RPO-Wert in 100% der Fälle zu erzielen. Diese Menge an Bandbreite muss dediziert für die Deltareplikation im stabilen Zustand für alle kompatiblen VMs bereitgestellt werden, um RPO-Verletzungen zu vermeiden.
 
@@ -99,23 +99,23 @@ Für alle Site Recovery-Bereitstellungen für Unternehmen empfehlen wir die Verw
 ### <a name="required-storage-accounts"></a>Erforderliche Speicherkonten
 Im folgenden Diagramm wird die Gesamtzahl von Speicherkonten (Standard und Premium) angegeben, die zum Schützen aller kompatiblen VMs erforderlich sind. Informationen dazu, welches Speicherkonto für eine VM jeweils verwendet werden sollte, finden Sie im Abschnitt „VM/Speicher-Anordnung“.
 
-![Erforderliche Speicherkonten im Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
+![Erforderliche Speicherkonten im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/required-storage-accounts-v2a.png)
 
 ### <a name="required-number-of-azure-cores"></a>Erforderliche Anzahl von Azure-Kernen
 Dieses Ergebnis gibt die Gesamtzahl von Kernen an, die eingerichtet werden sollten, bevor ein Failover oder Testfailover für alle kompatiblen VMs durchgeführt wird. Falls im Abonnement zu wenig Kerne verfügbar sind, können von Site Recovery bei einem Testfailover oder Failover keine VMs erstellt werden.
 
-![Erforderliche Anzahl von Azure-Kernen im Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
+![Erforderliche Anzahl von Azure-Kernen im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/required-cores-v2a.png)
 
 ### <a name="required-on-premises-infrastructure"></a>Erforderliche lokale Infrastruktur
 Hiermit wird die Gesamtzahl von Konfigurationsservern und zusätzlichen Prozessservern angegeben, die konfiguriert werden müssen, um alle kompatiblen VMs zu schützen. Je nach den unterstützten [empfohlene Größen für den Konfigurationsserver](https://aka.ms/asr-v2a-on-prem-components) werden vom Tool ggf. weitere Server empfohlen. Die Empfehlung basiert auf der täglichen Änderungsrate oder der maximalen Anzahl von geschützten VMs (bei durchschnittlich drei Datenträgern pro VM) – je nachdem, welcher Wert größer ist bzw. auf dem Konfigurationsserver oder zusätzlichen Prozessserver zuerst erreicht wird. Die Details der Gesamtänderungsrate pro Tag und die Gesamtzahl von geschützten Datenträgern finden Sie im Abschnitt „On-premises Summary“ (Lokale Zusammenfassung).
 
-![Erforderliche lokale Infrastruktur im Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
+![Erforderliche lokale Infrastruktur im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/required-on-premises-components-v2a.png)
 
 ### <a name="what-if-analysis"></a>Was-wäre-wenn-Analyse
 Bei dieser Analyse wird angegeben, wie viele Regelverletzungen während des Zeitraums der Profilerstellung auftreten können, wenn Sie eine geringere Bandbreite festlegen, um den gewünschten RPO-Wert nur in 90% der Fälle zu erreichen. Jeden Tag können eine oder mehrere RPO-Verletzungen auftreten. Im Graphen wird der RPO-Spitzenwert des Tages angezeigt.
 Anhand dieser Analyse können Sie entscheiden, ob die Anzahl von RPO-Verletzungen über alle Tage hinweg und die RPO-Spitzenwerte pro Tag für die angegebene geringere Bandbreite akzeptabel sind. Wenn ja, können Sie die geringere Bandbreite für die Replikation zuordnen. Ordnen Sie ansonsten die höhere Bandbreite gemäß dem Vorschlag zu, um den gewünschten RPO-Wert in 100% der Fälle zu erreichen.
 
-![Was-wäre-wenn-Analyse im Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/what-if-analysis-v2a.png)
+![Was-wäre-wenn-Analyse im Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/what-if-analysis-v2a.png)
 
 ### <a name="recommended-vm-batch-size-for-initial-replication"></a>Empfohlene VM-Batchgröße für die erste Replikation
 In diesem Abschnitt wird die Anzahl von VMs empfohlen, die parallel geschützt werden können, um die erste Replikation innerhalb von 72 Stunden mit der vorgeschlagenen Bandbreite durchzuführen und den gewünschten RPO-Wert in 100% der Fälle zu erreichen. Dieser Wert ist konfigurierbar. Verwenden Sie den Parameter *GoalToCompleteIR*, um ihn bei der Berichterstellung zu ändern.
@@ -234,8 +234,8 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 * Die VM-Gesamtgröße (Replikation + TFO) übersteigt den Grenzwert für die Unterstützung von Speicherkonten (35 TB). Diese Inkompatibilität tritt normalerweise auf, wenn ein einzelner Datenträger der VM über ein Leistungsmerkmal verfügt, das den unterstützten Azure- oder Site Recovery-Grenzwert für Standardspeicher überschreitet. Hierdurch fällt die VM in die Storage Premium-Zone. Die maximal unterstützte Größe für ein Storage Premium-Konto beträgt aber 35 TB, und eine einzelne geschützte VM kann nicht über mehrere Speicherkonten hinweg geschützt werden. Beachten Sie außerdem Folgendes: Wenn ein Testfailover auf einer geschützten VM durchgeführt wird, erfolgt dies unter demselben Speicherkonto, unter dem die Replikation durchgeführt wird. Richten Sie in diesem Fall die doppelte Größe des Datenträgers ein, damit die Replikation weiter durchgeführt werden kann und gleichzeitig das Testfailover erfolgreich ist.
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 5.000 pro Datenträger.
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 80.000 pro VM.
-* Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 10 MBit/s für die durchschnittliche E/A-Größe für den Datenträger.
-* Die gesamte Datenänderungsrate für alle Datenträger auf der VM übersteigt den maximal unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 54 MBit/s pro VM.
+* Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 10 MB/s für die durchschnittliche E/A-Größe für den Datenträger.
+* Die gesamte Datenänderungsrate für alle Datenträger auf der VM übersteigt den maximal unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 54 MB/s pro VM.
 * Der durchschnittliche effektive Schreib-IOPS-Wert übersteigt den unterstützten Site Recovery-IOPS-Grenzwert von 840 für den Datenträger.
 * Der berechnete Momentaufnahmespeicher übersteigt den unterstützten Grenzwert für Momentaufnahmespeicher von 10 TB.
 
@@ -263,12 +263,12 @@ Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. Diese Grenzwer
  
 **Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
 ---|---|---|---
-Standardspeicher | 8 KB | 2 MBit/s | 168 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MBit/s | 168 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 16 KB | 4 MBit/s |  336 GB pro Datenträger
-Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MBit/s | 672 GB pro Datenträger
-Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MBit/s | 421 GB pro Datenträger
-Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MBit/s | 842 GB pro Datenträger
+Standardspeicher | 8 KB | 2 MB/s | 168 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 8 KB  | 2 MB/s | 168 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 16 KB | 4 MB/s |  336 GB pro Datenträger
+Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MB/s | 672 GB pro Datenträger
+Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MB/s | 421 GB pro Datenträger
+Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MB/s | 842 GB pro Datenträger
 
 Dies sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
 

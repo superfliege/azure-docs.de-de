@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: billmath
-ms.openlocfilehash: a935c3a7a5eeead8eaac5d8d0980c289b17f3289
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Nutzungsbedingungsfeature (Vorschauversion) für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen.  Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen.
@@ -52,14 +52,16 @@ Gehen Sie nach Fertigstellung Ihrer Nutzungsbedingungen wie folgt vor, um sie hi
 ### <a name="to-add-terms-of-use"></a>So fügen Sie Nutzungsbedingungen hinzu
 1. Navigieren Sie zum Dashboard ([https://aka.ms/catou](https://aka.ms/catou)).
 2. Klicken Sie auf "Hinzufügen".</br>
-![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/tou2.png)
+![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/tou12.png)
 3. Geben Sie unter **Name** einen Namen für die Nutzungsbedingungen ein.
 4. Geben Sie unter **Anzeigename** einen Anzeigenamen ein.  Diese Überschrift wird Benutzern bei der Anmeldung angezeigt.
 5. **Navigieren** Sie zur PDF-Datei mit den fertig gestellten Nutzungsbedingungen, und wählen Sie sie aus.  Wir empfehlen den Schriftgrad 24.
-6. Sie können die hochgeladenen Nutzungsbedingungen mithilfe einer Vorlage oder einer benutzerdefinierten Richtlinie für den bedingten Zugriff **erzwingen**.  Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis hin zu einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md).
-7. Klicken Sie auf **Erstellen**.
-8. Nach dem Auswählen einer benutzerdefinierten Vorlage für bedingten Zugriff wird ein neuer Bildschirm angezeigt, auf dem Sie die Richtlinie für den bedingten Zugriff anpassen können.
-7. Ihre neuen Nutzungsbedingungen werden angezeigt.</br>
+6. **Wählen** Sie eine Sprache für die Nutzungsbedingungen.  Die Sprachoption ermöglicht das Hochladen mehrerer Nutzungsbedingungen in verschiedenen Sprachen.  Die Version der Nutzungsbedingungen, die einem Endbenutzer angezeigt wird, basiert auf den Browsereinstellungen.
+7. Aktivieren oder deaktivieren Sie **Benutzer müssen die Nutzungsbedingungen erweitern**.  Wenn diese Option aktiviert ist, müssen Endbenutzer die Nutzungsbedingungen anzeigen, bevor sie sie akzeptieren.
+8. Im Abschnitt **Bedingter Zugriff** können Sie die hochgeladenen Nutzungsbedingungen mithilfe einer Vorlage oder einer benutzerdefinierten Richtlinie für den bedingten Zugriff **erzwingen**.  Benutzerdefinierte Richtlinien für den bedingten Zugriff ermöglichen präzise Nutzungsbedingungen bis hin zu einer spezifischen Cloudanwendung oder Benutzergruppe.  Weitere Informationen finden Sie unter [Best Practices für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md).
+9. Klicken Sie auf **Erstellen**.
+10. Nach dem Auswählen einer benutzerdefinierten Vorlage für bedingten Zugriff wird ein neuer Bildschirm angezeigt, auf dem Sie die Richtlinie für den bedingten Zugriff anpassen können.
+11. Ihre neuen Nutzungsbedingungen werden angezeigt.</br>
 
 ![Hinzufügen von Nutzungsbedingungen](media/active-directory-tou/tou3.png)
 
@@ -90,6 +92,19 @@ Wenn Nutzungsbedingungen erstellt und erzwungen wurden, wird den betroffenen Ben
 ![Überwachungsereignis](media/active-directory-tou/tou10.png)
 -   Hier sehen Sie die Darstellung des Bildschirms auf Mobilgeräten.</br></br>
 ![Überwachungsereignis](media/active-directory-tou/tou11.png)
+
+### <a name="review-terms-of-use"></a>Überprüfen der Nutzungsbedingungen
+Benutzer können die akzeptierten Nutzungsbedingungen überprüfen und anzeigen.  Hierfür können sie folgendes Verfahren verwenden:
+
+1. Navigieren Sie zu [https://myapps.microsoft.com](https://myapps.microsoft.com), und melden Sie sich an.
+2. Klicken Sie in der rechten oberen Ecke auf Ihren Namen, und wählen Sie in der Dropdownliste die Option **Profil** aus.
+![Profil](media/active-directory-tou/tou14.png)
+
+3. Klicken Sie in Ihrem Profil auf **Nutzungsbedingungen lesen**.
+![Überwachungsereignis](media/active-directory-tou/tou13a.png)
+
+4.  Hier können Sie sich die akzeptierten Nutzungsbedingungen ansehen. 
+
 
 ## <a name="additional-information"></a>Zusätzliche Informationen
 Folgende Informationen können bei der Verwendung von Nutzungsbedingungen hilfreich sein.
