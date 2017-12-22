@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 11/09/2017
 ms.author: heidist
 ms.openlocfilehash: 916a08aacca428530bc4f728d5de422e04bed8bc
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Dienstverwaltung für Azure Search im Azure-Portal
 > [!div class="op_single_selector"]
@@ -142,7 +142,7 @@ Wenn Sie zusätzliche Kapazität über eine dieser Ressourcen hinzufügen, wird 
  ![][10]
 
 ### <a name="add-replicas"></a>Hinzufügen von Replikaten
-Fügen Sie Replikate hinzu, um die Anzahl der Abfragen pro Sekunde (Queries per Second QPS) zu steigern oder hohe Verfügbarkeit einzurichten. Jedes Replikat enthält eine Kopie eines Index. Jedes zusätzliche Replikat führt also zu einem zusätzlichen Index, der zur Behandlung von Abfragen verwendet werden kann. Für eine hohe Verfügbarkeit sind mindestens drei Replikate erforderlich (Details unter [Kapazitätsplanung](search-capacity-planning.md)).
+Fügen Sie Replikate hinzu, um die Anzahl der Abfragen pro Sekunde (Queries per Second QPS) zu steigern oder Hochverfügbarkeit einzurichten. Jedes Replikat enthält eine Kopie eines Index. Jedes zusätzliche Replikat führt also zu einem zusätzlichen Index, der zur Behandlung von Abfragen verwendet werden kann. Für die Hochverfügbarkeit sind mindestens drei Replikate erforderlich (Details unter [Kapazitätsplanung](search-capacity-planning.md)).
 
 Suchdienste mit mehr Replikaten können Abfragen per Lastenausgleich auf eine größere Anzahl von Indizes verteilen. Für ein gegebenes Abfragevolumen ist ein höherer Durchsatz an Abfragen möglich, wenn mehr Kopien des Index zur Beantwortung bereitstehen. Wenn Sie eine hohe Latenz in Ihren Abfragen bemerken, können Sie eine positive Auswirkung auf die Leistung erwarten, sobald die zusätzlichen Replikate online sind.
 
