@@ -1,6 +1,7 @@
 # Übersicht
 
 ## [Informationen zu SQL Data Warehouse](sql-data-warehouse-overview-what-is.md)
+## [Cheat Sheet](cheat-sheet.md)
 
 # Schnellstarts
 

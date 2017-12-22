@@ -2,9 +2,12 @@
 ## [Was sind Skalierungsgruppen für virtuelle Computer?](virtual-machine-scale-sets-overview.md)
 
 # Erste Schritte
-## [Bereitstellen einer Skalierungsgruppe im Azure-Portal](virtual-machine-scale-sets-portal-create.md)
-## [Bereitstellen einer Skalierungsgruppe mit PowerShell oder der Azure CLI](virtual-machine-scale-sets-create.md)
-## [Bereitstellen einer App für die automatische Skalierung mithilfe einer Vorlage](virtual-machine-scale-sets-deploy-scaling-app-template.md)
+## [Erstellen im Azure-Portal](virtual-machine-scale-sets-create-portal.md)
+## [Erstellen mit der Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)
+## [Erstellen mit Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)
+## Erstellen mit einer Vorlage
+### [Linux-Skalierungsgruppe](virtual-machine-scale-sets-create-template-linux.md)
+### [Windows-Skalierungsgruppe](virtual-machine-scale-sets-create-template-windows.md)
 
 # Anleitung
 ## Planen und Entwerfen
@@ -17,9 +20,7 @@
 ### [Verwenden von gastbasierter automatischer Skalierung mit einer Linux-Skalierungsgruppenvorlage](virtual-machine-scale-sets-mvss-guest-based-autoscale-linux.md)
 
 ## Bereitstellen
-### [Erstellen mit dem Azure-Portal](virtual-machine-scale-sets-portal-create.md)
 ### [Erstellen mit Visual Studio](virtual-machine-scale-sets-vs-create.md)
-### [Erstellen mit Azure PowerShell oder der Azure CLI](virtual-machine-scale-sets-create.md)
 ### [Skalierungsgruppe mit verwalteten Datenträgern](virtual-machine-scale-sets-managed-disks.md)
 ### [Automatisches Skalieren einer Skalierungsgruppe](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Verwenden des Azure-Portals](virtual-machine-scale-sets-autoscale-portal.md)

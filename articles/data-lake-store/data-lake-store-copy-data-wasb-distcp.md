@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 10/03/2017
 ms.author: nitinme
 ms.openlocfilehash: 1c9e100b4a0e7781f0782a49835d50492895ded1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-store"></a>Kopieren von Daten zwischen Azure Storage-Blobs und Data Lake-Speicher mithilfe von Distcp
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
-Bei einem HDInsight-Cluster, der Zugriff auf Data Lake Store besitzt, können Sie Hadoop-Ökosystemtools wie Distcp zum Kopieren von Daten ****aus einem HDInsight-Clusterspeicher (WASB) in ein Data Lake Store-Konto (und umgekehrt) verwenden. Dieser Artikel enthält Anweisungen zur Verwendung des Distcp-Tools.
+Bei einem HDInsight-Cluster, der Zugriff auf Data Lake Store besitzt, können Sie Hadoop-Ökosystemtools wie Distcp zum Kopieren von Daten **aus** einem HDInsight-Clusterspeicher (WASB) in ein Data Lake Store-Konto (und umgekehrt) verwenden. Dieser Artikel enthält Anweisungen zur Verwendung des Distcp-Tools.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

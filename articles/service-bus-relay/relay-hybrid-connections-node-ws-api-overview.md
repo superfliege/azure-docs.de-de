@@ -1,6 +1,6 @@
 ---
-title: "Übersicht über die Azure Relay-Knoten-APIs | Microsoft Docs"
-description: "Relay-Knoten-API – Übersicht"
+title: "Übersicht über die Azure Relay-Node-APIs | Microsoft-Dokumentation"
+description: "Relay-Node-API – Übersicht"
 services: service-bus-relay
 documentationcenter: na
 author: sethmanheim
@@ -20,11 +20,11 @@ ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>Knoten-API für Relay Hybrid Connections – Übersicht
+# <a name="relay-hybrid-connections-node-api-overview"></a>Node-API für Relay Hybrid Connections – Übersicht
 
 ## <a name="overview"></a>Übersicht
 
-Das Knotenpaket [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) für Azure Relay-Hybrid Connections basiert auf und erweitert das NPM-Paket [ws](https://www.npmjs.com/package/ws). Dieses Paket exportiert alle Exporte des Basispakets erneut und fügt neue Exporte hinzu, die die Integration mit dem Azure Relay-Feature „Hybrid Connections“ ermöglichen. 
+Das Node-Paket [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) für Azure Relay-Hybrid Connections basiert auf dem und erweitert das NPM-Paket [ws](https://www.npmjs.com/package/ws). Dieses Paket exportiert alle Exporte des Basispakets erneut und fügt neue Exporte hinzu, die die Integration mit dem Azure Relay-Feature „Hybrid Connections“ ermöglichen. 
 
 Vorhandene Anwendungen, die `require('ws')` erfordern, können dieses Paket mit `require('hyco-ws')` verwenden, um Hybrid-Szenarien zu ermöglichen, in denen eine Anwendung lokal „innerhalb der Firewall“ sowie über Hybrid Connections auf WebSocket-Verbindungen lauschen kann.
   
@@ -47,7 +47,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-Die Hilfsmethoden sind für dieses Paket bestimmt, können jedoch auch von einem Knotenservice verwendet werden, um Web- oder Geräteclients das Erstellen von Listenern oder Sendern zu ermöglichen. Der Server verwendet diese Methoden, indem er ihnen URIs übergibt, die kurzlebige Token einbetten. Diese URIs können auch mit gängigen WebSocket-Stapeln verwendet werden, die das Festlegen von HTTP-Headern für den WebSocket-Handshake nicht unterstützen. Das Einbetten von Autorisierungstoken in die URI wird primär in Szenarien außerhalb der Bibliothek unterstützt. 
+Die Hilfsmethoden sind für dieses Paket bestimmt, können jedoch auch von einem Node-Server verwendet werden, um Web- oder Geräteclients das Erstellen von Listenern oder Sendern zu ermöglichen. Der Server verwendet diese Methoden, indem er ihnen URIs übergibt, die kurzlebige Token einbetten. Diese URIs können auch mit gängigen WebSocket-Stapeln verwendet werden, die das Festlegen von HTTP-Headern für den WebSocket-Handshake nicht unterstützen. Das Einbetten von Autorisierungstoken in die URI wird primär in Szenarien außerhalb der Bibliothek unterstützt. 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 
