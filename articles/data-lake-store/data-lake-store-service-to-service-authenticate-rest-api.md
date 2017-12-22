@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 09/28/2017
 ms.author: nitinme
 ms.openlocfilehash: 754e65c4bcf8574a16b9620e2f21938ecc62b735
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>Authentifizierung zwischen Diensten mit Data Lake Store mithilfe der REST-API
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der REST-API die Authentifizier
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Erstellen einer Azure Active Directory-„Webanwendung“**. Sie müssen die Schritte unter [Service-to-service authentication with Data Lake Store using Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md) (Authentifizierung zwischen Diensten bei Data Lake Store mithilfe von Azure Active Directory) ausgeführt haben.
+* **Erstellen einer Azure Active Directory-Webanwendung.** Sie müssen die Schritte unter [Dienst-zu-Dienst-Authentifizierung bei Data Lake Store mithilfe von Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md) ausgeführt haben.
 
 ## <a name="service-to-service-authentication"></a>Dienst-zu-Dienst-Authentifizierung
 In diesem Szenario stellt die Anwendung eigene Anmeldeinformationen zum Durchführen der Vorgänge bereit. Hierzu müssen Sie eine POST-Anforderung wie im folgenden Codeausschnitt gezeigt ausgeben: 
@@ -53,7 +53,7 @@ In diesem Artikel wird der **nicht interaktive** Ansatz verwendet. Weitere Infor
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel haben Sie erfahren, wie Sie die Authentifizierung zwischen Diensten verwenden, um sich mit der REST-API bei Azure Data Lake Store zu authentifizieren. In den folgenden Artikeln wird erörtert, wie Sie die REST-API mit Azure Data Lake Store verwenden.
 
-* [Erste Schritte mit Azure Data Lake Store mithilfe von REST-APIs](data-lake-store-get-started-rest-api.md)
-* [Filesystem operations on Data Lake Store using REST API](data-lake-store-data-operations-rest-api.md) (Dateisystemvorgänge in Data Lake Store mit der REST-API)
+* [Kontoverwaltungsvorgänge in Azure Data Lake Store mit der REST-API](data-lake-store-get-started-rest-api.md)
+* [Dateisystemvorgänge in Azure Data Lake Store per REST-API](data-lake-store-data-operations-rest-api.md)
 
 

@@ -18,7 +18,7 @@
 
 8. Starten Sie SQL Server Management Studio, und stellen Sie dann eine Verbindung mit dem primären Replikat her.
 
-9. Navigieren Sie zu **Hohe Verfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **\<Verfügbarkeitsgruppenname\>** > **Verfügbarkeitsgruppenlistener**.  
+9. Navigieren Sie zu **Hochverfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **\<Verfügbarkeitsgruppenname\>** > **Verfügbarkeitsgruppenlistener**.  
     Der Listenername, den Sie im Failovercluster-Manager erstellt haben, sollte angezeigt werden.
 
 10. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und klicken Sie dann auf **Eigenschaften**.

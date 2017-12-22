@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: davidmu
 ms.openlocfilehash: bfc06c1b44974fd17a3794654503d21d6407a917
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-by-using-the-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Portal
 
@@ -97,7 +97,7 @@ Dieses Szenario umfasst Folgendes:
    |**Name**|AdatumAppGateway|Der Name des Anwendungsgateways.|
    |**Tier**|WAF|Verfügbare Werte sind „Standard“ und „WAF“. Weitere Informationen über WAF finden Sie unter [Web Application Firewall](application-gateway-web-application-firewall-overview.md).|
    |**SKU-Größe**|Mittel|Standardoptionen für die Ebene sind **Klein**, **Mittel** und **Groß**. Optionen für die WAF-Ebene sind nur **Mittel** und **Groß**.|
-   |**Anzahl der Instanzen**|2|Die Anzahl der Instanzen des Anwendungsgateways für hohe Verfügbarkeit. Verwenden Sie nur zu Testzwecken als Instanzenanzahl „1“.|
+   |**Anzahl der Instanzen**|2|Die Anzahl der Instanzen des Anwendungsgateways für Hochverfügbarkeit. Verwenden Sie nur zu Testzwecken als Instanzenanzahl „1“.|
    |**Abonnement**|[Ihr Abonnement]|Wählen Sie ein Abonnement aus, das für die Erstellung des Anwendungsgateways verwendet werden soll.|
    |**Ressourcengruppe**|**Neu erstellen**: AdatumAppGatewayRG|Erstellen Sie eine Ressourcengruppe. Der Name der Ressourcengruppe muss innerhalb des ausgewählten Abonnements eindeutig sein. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#resource-groups).|
    |**Location**|USA (Westen)||

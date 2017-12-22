@@ -1,6 +1,6 @@
 ---
-title: "Aktivieren von Transparent Data Encryption für Stretch-Datenbank-T-SQL – Azure | Microsoft-Dokumentation"
-description: "Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch-Datenbank über Azure T-SQL"
+title: "Aktivieren von Transparent Data Encryption für Stretch Database-T-SQL – Azure | Microsoft-Dokumentation"
+description: "Aktivieren von Transparent Data Encryption (TDE) für SQL Server Stretch Database über Azure T-SQL"
 services: sql-server-stretch-database
 documentationcenter: 
 author: douglaslMS
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: anvang
 ms.openlocfilehash: ed26c2b386e08b76f78b4a05e12c46d2b97c20f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Aktivieren von Transparent Data Encryption (TDE) für eine Stretch-Datenbank in Azure (Transact-SQL)
+# <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Aktivieren von Transparent Data Encryption (TDE) für Stretch Database in Azure (Transact-SQL)
 > [!div class="op_single_selector"]
 > * [Azure-Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
@@ -42,7 +42,7 @@ ALTER DATABASE [database_name] SET ENCRYPTION ON;
 ```
 
 ## <a name="disabling-encryption"></a>Deaktivieren der Verschlüsselung
-Befolgen Sie folgende Schritte zum Deaktivieren von TDE für eine Azure-Datenbank, die die Daten speichert, die aus einer SQL Server Datenbank migriert wurden, für die Stretch aktiviert ist:
+Befolgen Sie folgende Schritte zum Deaktivieren von TDE für eine Azure-Datenbank, die die Daten speichert, die aus einer SQL Server-Datenbank migriert wurden, für die Stretch aktiviert ist:
 
 1. Stellen Sie eine Verbindung mit der Datenbank *master* her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
@@ -52,7 +52,7 @@ ALTER DATABASE [database_name] SET ENCRYPTION OFF;
 ```
 
 ## <a name="verifying-encryption"></a>Überprüfen der Verschlüsselung
-Befolgen Sie folgende Schritte zur Überprüfung des Verschlüsselungsstatus für eine Azure-Datenbank, die die Daten speichert, die aus einer SQL Server Datenbank migriert wurden, für die Stretch aktiviert ist:
+Befolgen Sie folgende Schritte zur Überprüfung des Verschlüsselungsstatus für eine Azure-Datenbank, die die Daten speichert, die aus einer Strech-fähigen SQL Server-Datenbank migriert wurden:
 
 1. Stellen Sie eine Verbindung mit der Datenbank *master* oder einer Instanzdatenbank her. Verwenden Sie eine Anmeldung, bei der es sich um einen Administrator oder ein Mitglied der Rolle **dbmanager** in der Datenbank „master“ handelt.
 2. Führen Sie die folgende Anweisung aus, um die Datenbank zu verschlüsseln.
