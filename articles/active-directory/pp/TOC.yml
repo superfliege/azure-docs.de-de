@@ -1,0 +1,31 @@
+- name: Verwaltete Dienstidentität (durch Benutzer zugewiesen)
+  href: msi-overview.md
+  items:
+    - name: Konfigurieren des MSI für eine Azure-VM
+      items:
+        - name: Verwenden der Azure-Befehlszeilenschnittstelle
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: Verwenden des Azure SDK
+          href: msi-qs-configure-sdk-windows-vm.md
+    - name: Gewähren des MSI-Zugriffs auf Resource Manager
+      items:
+        - name: Verwenden der Azure-Befehlszeilenschnittstelle
+          href: msi-howto-assign-access-cli.md
+    - name: Verwenden einer VM-MSI
+      items:
+        - name: Abrufen eines Zugriffstokens
+          href: msi-how-to-use-vm-msi-token.md
+        - name: Anmelden bei der Azure-Befehlszeilenschnittstelle
+          href: msi-how-to-use-vm-msi-sign-in.md
+        - name: Verwendung mit Azure-SDKs
+          href: msi-how-to-use-vm-msi-sdk.md
+    - name: Zugreifen auf Azure Resource Manager per VM-MSI
+      items:
+        - name: Von einem virtuellen Linux-Computer
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: Zugreifen auf Azure-Speicher per VM-MSI
+      items:
+        - name: Von einem virtuellen Linux-Computer mithilfe eines Zugriffsschlüssels
+          href: msi-tutorial-linux-vm-access-storage.md
+    - name: Häufig gestellte Fragen und bekannte Probleme
+      href: msi-known-issues.md
