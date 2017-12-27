@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: troubleshooting
 ms.workload: iaas-sql-server
-ms.date: 10/05/2017
+ms.date: 12/13/2017
 ms.author: jroth
-ms.openlocfilehash: a001ae116e33e0b7be4431b0bc4c8bb319f4e801
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b556b01aa47aeb3588138dfa61e517c00dc44dc
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Häufig gestellte Fragen zu SQL Server auf virtuellen Linux-Computern in Azure
 
@@ -24,22 +24,42 @@ ms.lasthandoff: 10/11/2017
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md)
 > * [Linux](sql-server-linux-faq.md)
 
-Dieses Thema bietet Antworten auf einige der häufigsten Fragen zur Ausführung von [SQL Server auf virtuellen Linux-Computern in Azure](sql-server-linux-virtual-machines-overview.md).
+Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur Ausführung von [SQL Server auf virtuellen Linux-Computern in Azure](sql-server-linux-virtual-machines-overview.md).
 
 > [!NOTE]
-> In diesem Thema werden spezifische Probleme mit SQL Server auf virtuellen Linux-Computern behandelt. Wenn Sie SQL Server auf virtuellen Windows-Computern ausführen, finden Sie weitere Informationen unter [Windows – häufig gestellte Fragen](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md).
+> In diesem Artikel werden spezifische Probleme mit SQL Server auf virtuellen Linux-Computern behandelt. Wenn Sie SQL Server auf virtuellen Windows-Computern ausführen, finden Sie weitere Informationen unter [Windows – häufig gestellte Fragen](../../windows/sql/virtual-machines-windows-sql-server-iaas-faq.md).
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
-## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+## <a id="images"></a> Images
+
+1. **Welche Images im SQL Server Virtual Machine-Katalog sind verfügbar?**
+
+   Azure verwaltet Images virtueller Computer für alle unterstützten Hauptversionen von SQL Server in allen Editionen für Linux und Windows. Weitere Informationen finden Sie in der vollständigen Liste der [Linux-VM-Images](sql-server-linux-virtual-machines-overview.md#create) und [Windows-VM-Images](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
+
+1. **Werden vorhandene Images im SQL Server Virtual Machine-Katalog aktualisiert?**
+
+   SQL Server-Images im Katalog der virtuellen Computer werden alle zwei Monate mit den aktuellen Linux- und Windows-Updates aktualisiert. Für Linux-Images umfasst dies die neuesten Systemupdates. Für Windows-Images umfasst dies alle Updates, die in Windows Update als „wichtig“ gekennzeichnet sind, einschließlich wichtiger SQL Server-Sicherheitsupdates und Service Packs. Kumulative Updates für SQL Server werden für Linux und Windows unterschiedlich gehandhabt. Für Linux sind kumulative Updates für SQL Server ebenfalls in der Aktualisierung enthalten. Virtuelle Windows-Computer werden derzeit jedoch nicht mit kumulativen Updates für SQL Server oder Windows Server aktualisiert.
+
+1. **Welche zugehörigen SQL Server-Pakete werden ebenfalls installiert?**
+
+   Eine Liste der SQL Server-Pakete, die auf SQL Server-Linux-VMs standardmäßig installiert sind, finden Sie unter [installierte Pakete](sql-server-linux-virtual-machines-overview.md#packages).
+
+1. **Können Images von virtuellen SQL Server-Computern aus dem Katalog entfernt werden?**
+
+   Ja. Azure behält nur ein Image pro Hauptversion und Edition bei. Wenn beispielsweise ein neues Service Pack für SQL Server veröffentlicht wird, fügt Azure dem Katalog ein neues Image für dieses Service Pack hinzu. Das SQL Server-Image für das vorherige Service Pack wird umgehend aus dem Azure-Portal entfernt. Es bleibt jedoch für drei weitere Monate zur Bereitstellung über PowerShell verfügbar. Nach drei Monaten ist das jeweils vorhergehende Service Pack-Image nicht mehr verfügbar. Diese Entfernungsrichtlinie gilt auch, wenn eine SQL Server-Version nach Ende ihres Lebenszyklus nicht mehr unterstützt wird.
+
+## <a name="creation"></a>Erstellung
 
 1. **Wie erstelle ich einen virtuellen Linux-Computer in Azure mit SQL Server?**
 
    Die einfachste Lösung ist die Erstellung eines virtuellen Linux-Computers, der SQL Server enthält. Ein Tutorial für die Anmeldung bei Azure und das Erstellen einer SQL-VM im Portal finden Sie unter [Bereitstellen eines virtuellen Linux-SQL Server-Computers im Azure-Portal](provision-sql-server-linux-virtual-machine.md). Sie können SQL Server auch manuell auf einem virtuellen Computer mit einer frei lizenzierten Edition (Developer oder Express) oder einer wiederverwendeten lokalen Lizenz installieren. Wenn Sie Ihre eigene Lizenz verwenden, benötigen Sie die [Lizenzmobilität durch Software Assurance für Azure](https://azure.microsoft.com/pricing/license-mobility).
 
-1. **Wie aktualisiere ich auf eine neue Version/Edition von SQL Server auf einer Azure-VM?**
+1. **Warum kann ich RHEL- und SLES-SQL Server-VMs nicht mit einem Azure-Abonnement bereitstellen, das ein Ausgabenlimit aufweist?**
 
-   Derzeit ist kein direktes Upgrade für SQL Server auf einer Azure-VM verfügbar. Erstellen Sie einen neuen virtuellen Azure-Computer mit der gewünschten Version/Edition von SQL Server, und migrieren Sie dann Ihre Datenbanken mit dem standardmäßigen [Datenmigrationsverfahren](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview) zu dem neuen Server.
+   Virtuelle RHEL- und SLES-Computer erfordern ein Abonnement ohne Ausgabenlimit und mit einer dem Abonnement zugeordneten überprüften Zahlungsmethode (in der Regel eine Kreditkarte). Wenn Sie eine RHEL- oder SLES-VM bereitstellen, ohne das Ausgabenlimit zu entfernen, wird Ihr Abonnement deaktiviert, und alle virtuellen Computer/Dienste werden beendet. Wenn Sie in diese Situation kommen, [entfernen Sie das Ausgabenlimit](https://account.windowsazure.com/subscriptions), um das Abonnement wieder zu aktivieren. Das verbleibende Guthaben wird für den aktuellen Abrechnungszyklus wiederhergestellt, aber Ihre Kreditkarte wird mit einem Zuschlag für das RHEL- oder SLES-VM-Image belastet, wenn Sie es neu starten und weiterhin ausführen.
+
+## <a name="licensing"></a>Lizenzierung
 
 1. **Wie kann ich meine lizenzierte Kopie von SQL Server auf einer Azure-VM installieren?**
 
@@ -53,17 +73,23 @@ Dieses Thema bietet Antworten auf einige der häufigsten Fragen zur Ausführung 
 
    Nein. Der Wechsel von der Lizenzierung mit minutenbasierter Bezahlung zur Nutzung der eigenen Lizenz ist nicht möglich. Sie müssen eine neue Linux-VM erstellen, SQL Server installieren und Ihre Daten migrieren. Weitere Details zu BYOL finden Sie in der vorherigen Frage.
 
-1. **Welche zugehörigen SQL Server-Pakete werden ebenfalls installiert?**
+## <a name="administration"></a>Verwaltung
 
-   Eine Liste der SQL Server-Pakete, die auf SQL Server-Linux-VMs standardmäßig installiert sind, finden Sie unter [installierte Pakete](sql-server-linux-virtual-machines-overview.md#packages).
+1. **Kann ich einen virtuellen Linux-Computer mit SQL Server mithilfe von SQL Server Management Studio (SSMS) verwalten?**
 
-1. **Werden SQL Server-Lösungen mit hoher Verfügbarkeit auf Azure-VMs unterstützt?**
+   Ja, SSMS ist derzeit jedoch ein Tool nur für Windows. Sie müssen eine Remoteverbindung über einen Windows-Computer herstellen, um SSMS für virtuelle Linux-Computer mit SQL Server zu verwenden. Mit dem neuen Tool [mssql-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) können lokal unter Linux zahlreiche administrative Aufgaben durchgeführt werden. Die Vorschauversion eines plattformübergreifenden Datenbankverwaltungstools finden Sie unter [SQL Server Operations Studio (Vorschauversion)](https://docs.microsoft.com/sql/sql-operations-studio/what-is).
 
-   Derzeit leider nicht. Für AlwaysOn-Verfügbarkeitsgruppen und Failoverclustering wird eine Clusteringlösung unter Linux benötigt, z.B. Pacemaker. Die unterstützten Linux-Distributionen für SQL Server unterstützen keine Add-Ons für hohe Verfügbarkeit in der Cloud.
+## <a name="updating-and-patching"></a>Aktualisieren und Patchen
 
-1. **Warum kann ich RHEL- und SLES-SQL Server-VMs nicht mit einem Azure-Abonnement bereitstellen, das ein Ausgabenlimit aufweist?**
+1. **Wie aktualisiere ich auf eine neue Version/Edition von SQL Server auf einer Azure-VM?**
 
-   Virtuelle RHEL- und SLES-Computer erfordern ein Abonnement ohne Ausgabenlimit und mit einer dem Abonnement zugeordneten überprüften Zahlungsmethode (in der Regel eine Kreditkarte). Wenn Sie eine RHEL- oder SLES-VM bereitstellen, ohne das Ausgabenlimit zu entfernen, wird Ihr Abonnement deaktiviert, und alle virtuellen Computer/Dienste werden beendet. Wenn Sie in diese Situation kommen, [entfernen Sie das Ausgabenlimit](https://account.windowsazure.com/subscriptions), um das Abonnement wieder zu aktivieren. Das verbleibende Guthaben wird für den aktuellen Abrechnungszyklus wiederhergestellt, aber Ihre Kreditkarte wird mit einem Zuschlag für das RHEL- oder SLES-VM-Image belastet, wenn Sie es neu starten und weiterhin ausführen.
+   Derzeit ist kein direktes Upgrade für SQL Server auf einer Azure-VM verfügbar. Erstellen Sie einen neuen virtuellen Azure-Computer mit der gewünschten Version/Edition von SQL Server, und migrieren Sie dann Ihre Datenbanken mit dem standardmäßigen [Datenmigrationsverfahren](https://docs.microsoft.com/sql/linux/sql-server-linux-migrate-overview) zu dem neuen Server.
+
+## <a name="general"></a>Allgemein
+
+1. **Werden SQL Server-Lösungen mit Hochverfügbarkeit auf Azure-VMs unterstützt?**
+
+   Derzeit leider nicht. Für AlwaysOn-Verfügbarkeitsgruppen und Failoverclustering wird eine Clusteringlösung unter Linux benötigt, z.B. Pacemaker. Die unterstützten Linux-Distributionen für SQL Server unterstützen keine Add-Ons für Hochverfügbarkeit in der Cloud.
 
 ## <a name="resources"></a>Ressourcen
 

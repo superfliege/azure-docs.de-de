@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
 ms.openlocfilehash: da5bddba3a1fad74b2ee08fd2f34d1b01c7345c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Verbinden von virtuellen Netzwerken aus verschiedenen Bereitstellungsmodellen mit PowerShell
 
@@ -183,8 +183,8 @@ Gehen Sie wie im Folgenden beschrieben vor, um ein VPN-Gateway für das RM-VNet 
 2. Erstellen Sie ein Gateway für das lokale Netzwerk. In einem virtuellen Netzwerk ist mit dem Gateway für das lokale Netzwerk in der Regel Ihr lokaler Standort gemeint. In diesem Fall ist mit dem lokalen Netzwerkgateway Ihr klassisches VNet gemeint. Geben Sie für das Gateway einen Namen ein, anhand dessen Azure darauf verweisen kann, und geben Sie auch das Präfix für den Adressraum an. Azure verwendet das IP-Adresspräfix, um zu ermitteln, welcher Datenverkehr an Ihren lokalen Standort gesendet werden soll. Falls Sie diese Informationen später (vor dem Erstellen des Gateways) anpassen müssen, können Sie die Werte ändern und das Beispiel erneut ausführen.
    
    **-Name** ist der Name, den Sie dem lokalen Netzwerkgateway zuweisen möchten.<br>
-   **-AddressPrefix** ist der Adressraum für Ihr klassisches VNet.<br>
-   **-GatewayIpAddress** ist die öffentliche IP-Adresse des Gateways für das klassische VNet. Denken Sie daran, das folgende Beispiel mit der richtigen IP-Adresse zu ändern.<br>
+   **-AddressPrefix** ist der Adressraum für Ihr klassisches VNET.<br>
+   **-GatewayIpAddress** ist die öffentliche IP-Adresse des Gateways für das klassische VNET. Denken Sie daran, das folgende Beispiel mit der richtigen IP-Adresse zu ändern.<br>
 
   ```powershell
   New-AzureRmLocalNetworkGateway -Name ClassicVNetLocal `
@@ -205,7 +205,7 @@ Gehen Sie wie im Folgenden beschrieben vor, um ein VPN-Gateway für das RM-VNet 
 5. Rufen Sie das Subnetz ab, das für das Gateway verwendet wird, indem Sie den folgenden Befehl ausführen. In diesem Schritt legen wir auch eine Variable fest, die im nächsten Schritt verwendet wird.
    
    **-Name** ist der Name Ihres Resource Manager-VNet.<br>
-   **-ResourceGroupName** ist die Ressourcengruppe, der das VNet zugeordnet ist. Das Gatewaysubnetz für dieses VNet muss bereits vorhanden sein und den Namen *GatewaySubnet* haben, damit es einwandfrei funktioniert.<br>
+   **-ResourceGroupName** ist die Ressourcengruppe, der das VNET zugeordnet ist. Das Gatewaysubnetz für dieses VNet muss bereits vorhanden sein und den Namen *GatewaySubnet* haben, damit es einwandfrei funktioniert.<br>
 
   ```powershell
   $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name GatewaySubnet `

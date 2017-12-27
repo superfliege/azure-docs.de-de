@@ -14,19 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: saurse;markgal;jimpark;nkolli;trinadhk
-ms.openlocfilehash: d3f165c749af0553c4918b33b0d24cc1e21af2a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a7189d9ccc8ab7aee61cd32e465b2c9b63680d2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Bereitstellen und Verwalten der Sicherung in Azure für Windows Server-/Windows-Clientcomputer mit PowerShell
-> [!div class="op_single_selector"]
-> * [ARM](backup-client-automation.md)
-> * [Klassisch](backup-client-automation-classic.md)
->
->
-
 In diesem Artikel erfahren Sie, wie Sie PowerShell zum Einrichten von Azure Backup auf einem Windows-Server oder Windows-Client sowie zum Verwalten von Sicherungen und Wiederherstellungen verwenden.
 
 ## <a name="install-azure-powershell"></a>Installieren von Azure Powershell
@@ -204,7 +198,7 @@ Server properties updated successfully
 ```
 
 > [!IMPORTANT]
-> Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Es ist nicht möglich, Daten aus Azure ohne diese Passphrase wiederherzustellen.
+> Sichern Sie die Passphraseninformationen, nachdem Sie sie festgelegt haben. Das Wiederherstellen von Daten aus Azure ohne diese Passphrase ist nicht möglich.
 >
 >
 
@@ -466,7 +460,7 @@ IsRecursive : True
 ```
 
 ### <a name="performing-an-ad-hoc-backup"></a>Durchführen einer Ad-hoc-Sicherung
-Nachdem eine Sicherungsrichtlinie festgelegt wurde, werden die Sicherungen entsprechend dem Zeitplan ausgeführt. Mit dem [Start-OBBackup](https://technet.microsoft.com/library/hh770426) -Cmdlet kann auch eine Ad-hoc-Sicherung ausgelöst werden:
+Nachdem eine Sicherungsrichtlinie festgelegt wurde, werden die Sicherungen entsprechend dem Zeitplan ausgeführt. Mit dem [Start-OBBackup](https://technet.microsoft.com/library/hh770426)-Cmdlet kann auch eine Ad-hoc-Sicherung ausgelöst werden:
 
 ```
 PS C:> Get-OBPolicy | Start-OBBackup

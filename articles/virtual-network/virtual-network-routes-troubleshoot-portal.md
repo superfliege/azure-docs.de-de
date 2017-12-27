@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: f76693dfcaf5076372e4c4d5f28678c05eff85ed
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: d9b951ad4c54a3714ba7e857d5198c351215cbac
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Problembehandlung bei Routen über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Obwohl in diesem Beispiel nur Systemrouten verwendet werden, können mit den gle
 ### <a name="view-effective-routes-for-a-virtual-machine"></a>Anzeigen der effektiven Routen für einen virtuellen Computer
 Führen Sie die folgenden Schritte aus, um die auf einen virtuellen Computer angewendeten Aggregatrouten anzuzeigen:
 
-1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an.
+1. Melden Sie sich unter „https://portal.azure.com“ beim Azure-Portal an. Ihrem Konto muss der Vorgang *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* für die Netzwerkschnittstelle zugewiesen sein. Eine Anleitung zum Zuweisen von Vorgängen an Konten finden Sie unter [Erstellen von benutzerdefinierten Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions).
 2. Klicken Sie auf **Weitere Dienste** und dann in der angezeigten Liste auf **Virtuelle Computer**.
 3. Wählen Sie in der angezeigten Liste einen virtuellen Computer für die Problembehandlung aus. Für den entsprechenden virtuellen Computer wird dann ein Blatt mit Optionen angezeigt.
 4. Klicken Sie auf **Diagnose und Problembehandlung**, und wählen Sie dann ein gängiges Problem aus. In diesem Beispiel wird **Ich kann keine Verbindung mit meinem virtuellen Windows-Computer herstellen** ausgewählt.

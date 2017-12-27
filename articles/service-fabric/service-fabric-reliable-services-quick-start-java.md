@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 59b58e9d9bdb044c81261fd19338c3f95bd409b3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ab675207094bc8ee317573192c33c20039780fe2
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="get-started-with-reliable-services"></a>Erste Schritte mit Reliable Services
 > [!div class="op_single_selector"]
@@ -76,8 +76,25 @@ HelloWorldApplication/
 ├── settings.gradle
 └── uninstall.sh
 ```
+### <a name="service-registration"></a>Dienstregistrierung
+Diensttypen müssen bei der Service Fabric-Laufzeit registriert sein. Der Diensttyp wird in der Datei `ServiceManifest.xml` und in der Dienstklasse definiert, die `StatelessService` implementiert. Die Dienstregistrierung erfolgt im Haupteinstiegspunkt des Prozesses. In diesem Beispiel lautet der Haupteinstiegspunkt des Prozesses `HelloWorldServiceHost.java`:
+
+```java
+public static void main(String[] args) throws Exception {
+    try {
+        ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
+        logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
+        Thread.sleep(Long.MAX_VALUE);
+    }
+    catch (Exception ex) {
+        logger.log(Level.SEVERE, "Exception in registration:", ex);
+        throw ex;
+    }
+}
+```
 
 ## <a name="implement-the-service"></a>Implementieren des Diensts
+
 Öffnen Sie **HelloWorldApplication/HelloWorld/src/statelessservice/HelloWorldService.java**. Diese Klasse definiert den Diensttyp und kann jeden Code ausführen. Die Dienst-API bietet zwei Einstiegspunkte für den Code:
 
 * Eine Einstiegspunktmethode mit offenem Ende namens `runAsync()`, mit der Sie die Ausführung beliebiger Workloads starten können, inklusive Computeworkloads mit langer Ausführungsdauer.
@@ -116,45 +133,107 @@ Mit `runAsync()` sollte nicht synchron blockiert werden. Ihre Implementierung vo
 Zum Abbrechen der Arbeitsauslastung ist das Zusammenspiel verschiedener Aktionen erforderlich, die vom bereitgestellten Abbruchtoken orchestriert werden. Das System wartet, bis Ihre Aufgabe beendet wurde (erfolgreicher Abschluss, Abbruch oder Fehler), bevor der Vorgang fortgesetzt wird. Es ist wichtig, das Abbruchtoken zu berücksichtigen, etwaige Arbeiten abzuschließen und `runAsync()` so schnell wie möglich zu beenden, wenn vom System ein Abbruch angefordert wird. Das folgende Beispiel zeigt, wie ein Abbruchereignis verarbeitet wird:
 
 ```java
-    @Override
-    protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
+@Override
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 
-        // TODO: Replace the following sample code with your own logic
-        // or remove this runAsync override if it's not needed in your service.
+    // TODO: Replace the following sample code with your own logic
+    // or remove this runAsync override if it's not needed in your service.
 
-        CompletableFuture.runAsync(() -> {
-          long iterations = 0;
-          while(true)
-          {
-            cancellationToken.throwIfCancellationRequested();
-            logger.log(Level.INFO, "Working-{0}", ++iterations);
+    return CompletableFuture.runAsync(() -> {
+        long iterations = 0;
+        while(true)
+        {
+        cancellationToken.throwIfCancellationRequested();
+        logger.log(Level.INFO, "Working-{0}", ++iterations);
 
-            try
-            {
-              Thread.sleep(1000);
-            }
-            catch (IOException ex) {}
-          }
-        });
-    }
-```
-
-### <a name="service-registration"></a>Dienstregistrierung
-Diensttypen müssen bei der Service Fabric-Laufzeit registriert sein. Der Diensttyp wird in der Datei `ServiceManifest.xml` und in der Dienstklasse definiert, die `StatelessService` implementiert. Die Dienstregistrierung erfolgt im Haupteinstiegspunkt des Prozesses. In diesem Beispiel lautet der Haupteinstiegspunkt des Prozesses `HelloWorldServiceHost.java`:
-
-```java
-public static void main(String[] args) throws Exception {
-    try {
-        ServiceRuntime.registerStatelessServiceAsync("HelloWorldType", (context) -> new HelloWorldService(), Duration.ofSeconds(10));
-        logger.log(Level.INFO, "Registered stateless service type HelloWorldType.");
-        Thread.sleep(Long.MAX_VALUE);
-    }
-    catch (Exception ex) {
-        logger.log(Level.SEVERE, "Exception in registration:", ex);
-        throw ex;
-    }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex){}
+        }
+    });
 }
 ```
+
+In diesem Beispiel eines zustandslosen Diensts wird die Anzahl in einer lokalen Variablen gespeichert. Da es sich aber um einen zustandslosen Dienst handelt, existiert der gespeicherte Wert nur für den aktuellen Lebenszyklus der Dienstinstanz. Wenn der Dienst verschoben oder neu gestartet wird, geht der Wert verloren.
+
+## <a name="create-a-stateful-service"></a>Erstellen eines zustandsbehafteten Diensts
+Mit Service Fabric wird eine neue Art von zustandsbehaftetem Dienst eingeführt. Bei einem zustandsbehafteten Dienst kann der Zustand zuverlässig innerhalb des Diensts selbst verwaltet und dem Code zugeordnet werden, in dem er verwendet wird. Service Fabric stellt die hohe Verfügbarkeit des Zustands sicher, ohne dass dieser extern gespeichert werden muss.
+
+Um einen Zählerwert selbst bei einer Verschiebung oder einem Neustart des Diensts von zustandslos zu hoch verfügbar und persistent zu konvertieren, benötigen Sie einen zustandsbehafteten Dienst.
+
+Sie können im gleichen Verzeichnis wie die Anwendung „HelloWorld“ einen neuen Dienst durch Ausführen des Befehls `yo azuresfjava:AddService` hinzufügen. Wählen Sie den „zuverlässigen zustandsbehafteten Dienst“ für Ihr Framework, und nennen Sie den Dienst „HelloWorldStateful“. 
+
+Ihre Anwendung sollte nun über zwei Dienste verfügen: den zustandslosen Dienst „HelloWorld“ und den zustandsbehafteten Dienst „HelloWorldStateful“.
+
+Ein zustandsbehafteter Dienst hat die gleichen Einstiegspunkte wie ein zustandsloser Dienst. Der Hauptunterschied liegt in der Verfügbarkeit eines Zustandsanbieters, der den Zustand zuverlässig speichern kann. Service Fabric beinhaltet eine Zustandsanbieterimplementierung namens „Reliable Collections“, die es Ihnen ermöglicht, replizierte Datenstrukturen mittels Reliable State Manager zu erstellen. Ein zustandsbehafteter Reliable Service verwendet standardmäßig diesen Zustandsanbieter.
+
+Öffnen Sie „HelloWorldStateful.java“ in **HelloWorldStateful -> src**. Darin ist die folgende RunAsync-Methode enthalten:
+
+```java
+@Override
+protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
+    Transaction tx = stateManager.createTransaction();
+    return this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap").thenCompose((map) -> {
+        return map.computeAsync(tx, "counter", (k, v) -> {
+            if (v == null)
+                return 1L;
+            else
+                return ++v;
+            }, Duration.ofSeconds(4), cancellationToken)
+                .thenCompose((r) -> tx.commitAsync())
+                .whenComplete((r, e) -> {
+            try {
+                tx.close();
+            } catch (Exception e) {
+                logger.log(Level.SEVERE, e.getMessage());
+            }
+        });
+    });
+}
+```
+
+### <a name="runasync"></a>RunAsync
+`RunAsync()` funktioniert in zustandsbehafteten und zustandslosen Diensten ähnlich. Bei einem zustandsbehafteten Dienst werden von der Plattform aber noch weitere Schritte in Ihrem Namen ausgeführt, bevor `RunAsync()`ausgeführt wird. Hierzu kann auch die Sicherstellung dessen gehören, dass der Reliable State Manager und Reliable Collections für die Verwendung bereit sind.
+
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Reliable Collections und der Reliable State Manager
+```java
+ReliableHashMap<String,Long> map = this.stateManager.<String, Long>getOrAddReliableHashMapAsync("myHashMap")
+```
+
+[ReliableHashMap](https://docs.microsoft.com/en-us/java/api/microsoft.servicefabric.data.collections._reliable_hash_map) ist eine Wörterbuchimplementierung, die Sie nutzen können, um den Zustand im Dienst zuverlässig zu speichern. Mit Service Fabric und Reliable Hashmaps können Sie Daten direkt in Ihrem Dienst speichern. Ein externer persistenter Speicher ist nicht erforderlich. Reliable Hashmaps stellen die hohe Verfügbarkeit Ihrer Daten her. Service Fabric erreicht dies, indem mehrere *Replikate* Ihres Diensts für Sie erstellt und verwaltet werden. Außerdem wird eine API bereitgestellt, mit der die komplexen Verwaltungsanforderungen dieser Replikate und der damit verbundenen Zustandsübergänge beseitigt werden.
+
+Reliable Collections können mit gewissen Einschränkungen beliebige Java-Typen – einschließlich benutzerdefinierten Typen – speichern:
+
+* Service Fabric macht Ihren Zustand hoch verfügbar, indem der Zustand über verschiedene Knoten *repliziert* wird und Reliable Hashmap Ihre Daten an jedem Replikat auf einem lokalen Datenträger speichert. Dies bedeutet, dass alle Elemente, die in Reliable Hashmaps gespeichert werden, *serialisierbar* sein müssen. 
+* Objekte werden zum Zweck der Hochverfügbarkeit repliziert, wenn Sie Transaktionen auf Reliable Hashmaps anwenden. In Reliable Hashmaps gespeicherte Objekte werden in Ihrem Dienst im lokalen Speicher vorgehalten. Dies bedeutet, dass Sie über einen lokalen Verweis auf das Objekt verfügen.
+  
+   Es ist wichtig, dass Sie lokale Instanzen dieser Objekte nicht ändern, ohne ein Update für die Reliable Collection in einer Transaktion durchzuführen. Das liegt daran, dass Änderungen an lokalen Instanzen von Objekten nicht automatisch repliziert werden. Sie müssen das Objekt wieder zurück in das Wörterbuch einfügen oder eine der Methoden zur *Aktualisierung* auf das Wörterbuch anwenden.
+
+Reliable State Manager verwaltet Reliable Hashmaps für Sie. Sie können über Reliable State Manager jederzeit und von jedem Ort in Ihrem Dienst aus anhand des Namens eine zuverlässige Auflistung anfordern. Der Reliable State Manager stellt sicher, dass Sie einen Verweis zurückerhalten. Es ist nicht ratsam, Verweise auf Reliable Collection-Instanzen in Klassenmembervariablen oder -eigenschaften zu speichern. Achten Sie besonders darauf sicherzustellen, dass der Verweis während des Dienstlebenszyklus jederzeit auf eine Instanz festgelegt ist. Der Reliable State Manager übernimmt diesen Schritt für Sie. Er ist für wiederholte Besuche optimiert.
+
+
+### <a name="transactional-and-asynchronous-operations"></a>Transaktionale und asynchrone Vorgänge
+```java
+return map.computeAsync(tx, "counter", (k, v) -> {
+    if (v == null)
+        return 1L;
+    else
+        return ++v;
+    }, Duration.ofSeconds(4), cancellationToken)
+        .thenCompose((r) -> tx.commitAsync())
+        .whenComplete((r, e) -> {
+    try {
+        tx.close();
+    } catch (Exception e) {
+        logger.log(Level.SEVERE, e.getMessage());
+    }
+});
+```
+
+Vorgänge für Reliable Hashmaps sind asynchron. Das liegt daran, dass Schreibvorgänge mit Reliable Collections E/A-Vorgänge ausführen, um Replikationen der Daten und ihre persistente Speicherung auf dem Datenträger vorzunehmen.
+
+Reliable Hashmap-Vorgänge sind *transaktional*, damit Sie den Zustand über mehrere Reliable Hashmaps und Vorgänge hinweg beibehalten können. Sie können beispielsweise eine Arbeitsaufgabe aus einem Reliable Dictionary abrufen, einen Vorgang daran ausführen und das Ergebnis in einer anderen Reliable Hashmap-Instanz speichern – alles in einer Transaktion. Dies wird als atomischer Vorgang behandelt und es wird sichergestellt, dass entweder der gesamte Vorgang erfolgreich ist oder ein Rollback für den gesamten Vorgang ausgeführt wird. Wenn nach dem Entfernen des Elements aus der Warteschlange und vor dem Speichern des Ergebnisses ein Fehler auftritt, wird für die gesamte Transaktion ein Rollback ausgeführt, und das Element bleibt zur Verarbeitung in der Warteschlange enthalten.
+
 
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 

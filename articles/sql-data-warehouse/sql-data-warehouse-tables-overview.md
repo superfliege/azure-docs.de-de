@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 12/14/2017
 ms.author: barbkess
-ms.openlocfilehash: d736ad0dbfb109500a150d2bc3f7c40b16206fdb
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 46f7d2ea19a88e65b2d039fdf36d1619c4d74020
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="overview-of-tables-in-sql-data-warehouse"></a>Übersicht über Tabellen in SQL Data Warehouse
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ Statistiken sind sehr wichtig, um für SQL Data Warehouse die bestmögliche Leis
 Temporäre Tabellen sind Tabellen, die nur für die Dauer Ihrer Anmeldung vorhanden sind und anderen Benutzern nicht angezeigt werden.  Temporäre Tabellen können eine gute Möglichkeit sein, um zu verhindern, dass andere Benutzer temporäre Ergebnisse sehen, und um die Notwendigkeit von Bereinigungen zu reduzieren.  Da temporäre Tabellen auch lokalen Speicher nutzen, bieten Sie für einige Vorgänge eine schnellere Leistung.  Ausführlichere Informationen zu temporären Tabellen finden Sie unter [Temporäre Tabelle][Temporary] .
 
 ## <a name="external-tables"></a>Externe Tabellen
-Externe Tabellen, die auch als PolyBase-Tabellen bezeichnet werden, sind Tabellen, die von SQL Data Warehouse abgefragt werden können, aber auf Daten außerhalb von SQL Data Warehouse verweisen.  Beispielsweise können Sie eine externe Tabelle erstellen, die auf Dateien in Azure Blob Storage verweist.  Weitere Informationen zum Erstellen und Abfragen einer externen Tabelle finden Sie unter [Laden von Daten mit PolyBase][Load data with Polybase].  
+Externe Tabellen, die auch als PolyBase-Tabellen bezeichnet werden, sind Tabellen, die von SQL Data Warehouse abgefragt werden können, aber auf Daten außerhalb von SQL Data Warehouse verweisen.  Beispielsweise können Sie eine externe Tabelle erstellen, die auf Dateien in Azure Blob Storage oder Azure Data Lake Store verweist.  Weitere Informationen zum Erstellen und Abfragen einer externen Tabelle finden Sie unter [Laden von Daten mit PolyBase][Load data with Polybase].  
 
 ## <a name="unsupported-table-features"></a>Nicht unterstützte Tabellenfunktionen
 SQL Data Warehouse enthält zwar viele Tabellenfunktionen, die auch für andere Datenbanken vorhanden sind, aber es gibt einige Funktionen, die noch nicht unterstützt werden.  Unten ist eine Liste mit den Tabellenfunktionen angegeben, die noch nicht unterstützt werden.
