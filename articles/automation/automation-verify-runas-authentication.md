@@ -3,7 +3,7 @@ title: "Überprüfen der Konfiguration des Azure Automation-Kontos | Microsoft-D
 description: "In diesem Artikel wird beschrieben, wie Sie überprüfen, ob die Konfiguration Ihres Automation-Kontos richtig eingerichtet ist."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 55f5d5524019ac63565e5ddd1f47dbdd65f05065
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72be69b8d48abdcb15f4a89949edc3083ce85eee
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Testen der Authentifizierung für das ausführende Azure Automation-Konto
 Nachdem die erfolgreiche Erstellung eines Automation-Kontos abgeschlossen ist, können Sie einen einfachen Test durchführen. Auf diese Weise können Sie bestätigen, dass die Authentifizierung für die Azure Resource Manager- oder klassische Azure-Bereitstellung möglich ist, indem Sie Ihr neu erstelltes oder aktualisiertes ausführendes Automation-Konto verwenden.    
@@ -66,9 +66,9 @@ Verwenden Sie den unten angegebenen Beispielcode zum [Erstellen eines PowerShell
 
 Beachten Sie das zur Authentifizierung im Runbook verwendete Cmdlet – **Add-AzureRmAccount**verwendet den Parametersatz *ServicePrincipalCertificate* .  Die Authentifizierung wird nicht mit Anmeldeinformationen vorgenommen, sondern mit einem Dienstprinzipalzertifikat.  
 
-Wenn Sie das [Runbook ausführen](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal), um Ihr ausführendes Konto zu überprüfen, wird ein [Runbookauftrag](automation-runbook-execution.md) erstellt, das Blatt „Auftrag“ wird geöffnet, und auf der Kachel **Auftragszusammenfassung** wird der Auftragsstatus angezeigt. Der Auftrag besitzt zunächst den Status *In Warteschlange* , um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.  Wenn der Runbook-Auftrag abgeschlossen ist, sollte der Status **Abgeschlossen** lauten.
+Wenn Sie das [Runbook ausführen](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal), um Ihr ausführendes Konto zu überprüfen, wird ein [Runbookauftrag](automation-runbook-execution.md) erstellt, das Auftrags-W wird geöffnet, und auf der Kachel **Auftragszusammenfassung** wird der Auftragsstatus angezeigt. Der Auftrag besitzt zunächst den Status *In Warteschlange* , um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.  Wenn der Runbook-Auftrag abgeschlossen ist, sollte der Status **Abgeschlossen** lauten.
 
-Um die detaillierten Ergebnisse des Runbooks anzuzeigen, klicken Sie auf die Kachel **Ausgabe** .  Auf dem Blatt **Ausgabe** wird angezeigt, dass die Authentifizierung erfolgreich war, und es wird eine Liste mit allen Ressourcen in allen Ressourcengruppen Ihres Abonnements zurückgegeben.  
+Um die detaillierten Ergebnisse des Runbooks anzuzeigen, klicken Sie auf die Kachel **Ausgabe** .  Auf der Seite **Ausgabe** wird angezeigt, dass die Authentifizierung erfolgreich war, und es wird eine Liste mit allen Ressourcen in allen Ressourcengruppen Ihres Abonnements zurückgegeben.  
 
 Vergessen Sie beim Zurücksetzen des Codes für Ihre Runbooks nicht, den Codeblock zu entfernen, der mit dem Kommentar `#Get all ARM resources from all resource groups` beginnt.
 
@@ -102,9 +102,9 @@ Verwenden Sie den unten angegebenen Beispielcode zum [Erstellen eines PowerShell
     #Get all VMs in the subscription and return list with name of each
     Get-AzureVM | ft Name
 
-Wenn Sie das [Runbook ausführen](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal), um Ihr ausführendes Konto zu überprüfen, wird ein [Runbookauftrag](automation-runbook-execution.md) erstellt, das Blatt „Auftrag“ wird geöffnet, und auf der Kachel **Auftragszusammenfassung** wird der Auftragsstatus angezeigt. Der Auftrag besitzt zunächst den Status *In Warteschlange* , um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.  Wenn der Runbook-Auftrag abgeschlossen ist, sollte der Status **Abgeschlossen** lauten.
+Wenn Sie das [Runbook ausführen](automation-starting-a-runbook.md#starting-a-runbook-with-the-azure-portal), um Ihr ausführendes Konto zu überprüfen, wird ein [Runbookauftrag](automation-runbook-execution.md) erstellt, die Seite „Auftrag“ wird geöffnet, und auf der Kachel **Auftragszusammenfassung** wird der Auftragsstatus angezeigt. Der Auftrag besitzt zunächst den Status *In Warteschlange* , um anzugeben, dass der Auftrag darauf wartet, dass in der Cloud ein Runbook Worker verfügbar wird. Wird der Auftrag von einem Worker übernommen, wechselt der Status zu *Wird gestartet* und anschließend zu *Wird ausgeführt*, wenn die Ausführung des Runbooks tatsächlich gestartet wurde.  Wenn der Runbook-Auftrag abgeschlossen ist, sollte der Status **Abgeschlossen** lauten.
 
-Um die detaillierten Ergebnisse des Runbooks anzuzeigen, klicken Sie auf die Kachel **Ausgabe** .  Auf dem Blatt **Ausgabe** wird angezeigt, dass die Authentifizierung erfolgreich war, und es wird eine nach „VMName“ sortierte Liste mit allen virtuellen Azure-Computern zurückgegeben, die in Ihrem Abonnement bereitgestellt sind.  
+Um die detaillierten Ergebnisse des Runbooks anzuzeigen, klicken Sie auf die Kachel **Ausgabe** .  Auf der Seite **Ausgabe** wird angezeigt, dass die Authentifizierung erfolgreich war, und es wird eine nach „VMName“ sortierte Liste mit allen virtuellen Azure-Computern zurückgegeben, die in Ihrem Abonnement bereitgestellt sind.  
 
 Vergessen Sie nicht, das Cmdlet **Get-AzureVM** zu entfernen, wenn Sie den Code für Ihre Runbooks wiederverwenden.
 

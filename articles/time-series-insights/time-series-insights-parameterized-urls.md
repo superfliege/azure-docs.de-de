@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: get-started-article
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: ac48969a9166080384dccf606f0401a82016a60a
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: b7c58697323ec12ac08575916cb3ac5b38cc39c1
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>Teilen einer benutzerdefinierten Ansicht mit einer parametrisierten URL
 
@@ -72,6 +72,22 @@ Mit dem Parameter `timeSeriesDefinitions=<collection of term objects>` werden di
 - `predicate=<string>`
   - Die *where*-Klausel für die serverseitige Filterung.
 
+Der Parameter „multiChartStack=<true/false>“ aktiviert das Stapeln. Der Parameter „multiChartSameScale=<true/false>“ aktiviert die gleiche Y-Achsenskala ausdrucksübergreifend innerhalb eines optionalen Parameters.  
+
+- multiChartStack=false
+  - Standardmäßig ist „true“ aktiviert. Übergeben Sie daher „false“ an den Stapel.
+- multiChartStack=false&multiChartSameScale=true 
+  - Das Stapeln muss aktiviert sein, um ausdrucksübergreifend die gleiche Y-Achsenskala verwenden zu können.  Die Funktion ist standardmäßig auf „false“ festgelegt. Durch Übergeben von „true“ wird sie aktiviert.  
+  
+Mit „timeBucketUnit=<Unit>&timeBucketSize=<integer>“ können Sie den Intervallschieberegler anpassen, um eine präzisere oder eine glattere, stärker aggregierte Darstellung des Diagramms zu erhalten.  
+- timeBucketUnit=<Unit>&timeBucketSize=<integer>
+  - Einheiten: Tage, Stunden, Minuten, Sekunden und Millisekunden.  Die Einheit muss immer groß geschrieben werden.
+  - Übergeben Sie zum Definieren der Anzahl von Einheiten die gewünschte ganze Zahl für „TimeBucketSize“.  Hinweis: Die Glättung kann für bis zu sieben Tage erfolgen.  
+  
+Mit dem Parameter „TimezoneOffset=<integer>“ können Sie die gewünschte Zeitzone für das Diagrammdarstellung als UTC-Versatz festlegen.  
+  - timezoneOffset=-<integer>
+    - Bei der ganzen Zahl handelt es sich immer um Millisekunden.  
+    - Diese Funktion unterscheidet sich geringfügig von der aktivierten Funktion im TSI-Explorer, die es ermöglicht, die Ortszeit (gemäß Browser) oder UTC auszuwählen.  
  
 ### <a name="examples"></a>Beispiele
 

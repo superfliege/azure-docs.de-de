@@ -3,8 +3,8 @@ title: Verwenden umfangreicher Azure-VM-Skalierungsgruppen | Microsoft-Dokumenta
 description: "Alles, was Sie zur Verwendung umfangreicher Azure-VM-Skalierungsgruppe wissen müssen"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
-manager: timlt
+author: gatneil
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/9/2017
-ms.author: guybo
-ms.openlocfilehash: b2d6aba2c8efa7f20753de7bfb79c2f22b07318b
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: negat
+ms.openlocfilehash: 192f2c01be0992e22ce67e3df6d641ba707e22fd
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>Verwenden umfangreicher VM-Skalierungsgruppen
 Sie können nun [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/) mit einer Kapazität von bis zu 1.000 virtuellen Computern erstellen. Eine _umfangreiche VM-Skalierungsgruppe_ ist in diesem Dokument als Skalierungsgruppe mit mehr als 100 virtuellen Computern definiert. Diese Funktion wird über eine Skalierungsgruppeneigenschaft (_singlePlacementGroup=False_) festgelegt. 
@@ -55,7 +55,7 @@ Wenn Sie eine umfangreiche Skalierungsgruppe über das Azure-Portal erstellen, k
 az group create -l southcentralus -n biginfra
 az vmss create -g biginfra -n bigvmss --image ubuntults --instance-count 1000
 ```
-Bitte beachten Sie, dass der Befehl _vmss create_ bestimmte Konfigurationswerte standardmäßig verwendet, wenn Sie diese nicht angeben. Mit dem folgenden Befehl können Sie die überschreibbaren Optionen anzeigen:
+Der Befehl _vmss create_ verwendet standardmäßig bestimmte Konfigurationswerte, wenn Sie diese nicht angeben. Mit dem folgenden Befehl können Sie die überschreibbaren Optionen anzeigen:
 ```bash
 az vmss create --help
 ```

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/12/2017
+ms.date: 12/14/2017
 ms.author: jroth
-ms.openlocfilehash: 140e59b971da379d7475097bf3e26d5b070fa610
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 95a18e4b2437ca628e84f6d6f580e12f2f26e111
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf virtuellen Azure-Computern? (Windows)
 
@@ -42,12 +42,19 @@ Für virtuelle Azure-Computer mit SQL Server kann die [automatisierte Sicherung]
 
 Wenn Sie Hochverfügbarkeit benötigen, sollten Sie SQL Server-Verfügbarkeitsgruppen konfigurieren. Dies beinhaltet mehrere virtuelle Azure-Computer mit SQL Server in einem virtuellen Netzwerk. Sie können Ihre Hochverfügbarkeitslösung entweder manuell konfigurieren oder die vorlagenbasierte automatische Konfiguration im Azure-Portal verwenden. Eine Übersicht über alle Hochverfügbarkeitsoptionen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md).
 
+## <a name="performance"></a>Leistung
+
+Virtuelle Azure-Computer sind in unterschiedlichen Größen verfügbar, um verschiedene Workload-Anforderungen zu erfüllen. Virtuelle SQL-Computer stellen auch eine automatisierte Speicherkonfiguration bereit, die für Ihre Leistungsanforderungen optimiert ist. Weitere Informationen zum Konfigurieren von Speicher für virtuelle SQL-Computer finden Sie unter [Speicherkonfiguration für SQL Server-VMs](virtual-machines-windows-sql-server-storage-configuration.md). Informationen zum Optimieren der Leistung finden Sie unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](virtual-machines-windows-sql-performance.md).
+
 ## <a name="get-started-with-sql-vms"></a>Erste Schritte mit virtuellen SQL-Computern
 
 Wählen Sie als Erstes ein SQL Server-VM-Image mit der benötigten Version, der benötigten Edition und dem benötigten Betriebssystem aus. Die folgenden Abschnitte enthalten direkte Links zum Azure-Portal für die Katalogimages für virtuelle SQL Server-Computer.
 
 > [!TIP]
 > Informationen zu den VM- und SQL-Preisen für diese Images finden Sie unter [Pricing guidance for SQL Server Azure VMs](virtual-machines-windows-sql-server-pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
+
+> [!TIP]
+> Informationen zur Update- und Lebenszyklusrichtlinie für Images im SQL Server Virtual Machine-Katalog finden Sie in den [häufig gestellten Fragen zu virtuellen SQL Server-Computern](virtual-machines-windows-sql-server-iaas-faq.md#images).
 
 ### <a id="payasyougo"></a> Nutzungsbasierte Bezahlung
 Die folgende Tabelle enthält eine Matrix für SQL Server-Images mit nutzungsbasierter Bezahlung:

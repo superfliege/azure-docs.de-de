@@ -12,15 +12,15 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 089a60ebccabac99771cd06ca8fbf0ea1fb2f1a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb4df0495420776ba2ff7b471c44c4ca3aa1dcff
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="create-an-event-hubs-namespace-with-an-event-hub-and-enable-capture-using-an-azure-resource-manager-template"></a>Erstellen eines Event Hubs-Namespace mit einem Event Hub und Aktivieren von Capture über eine Azure Resource Manager-Vorlage
+# <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>Erstellen eines Namespace mit Event Hub und Aktivieren von Capture mithilfe einer Vorlage
 
 In diesem Artikel erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, die einen Event Hubs-Namespace mit einer einzelnen Event Hub-Instanz erstellt und das [Capture-Feature](event-hubs-capture-overview.md) für den Event Hub aktiviert. Der Artikel erklärt Ihnen, wie Sie definieren, welche Ressourcen bereitgestellt werden und wie Sie Parameter definieren, die angegeben werden, wenn die Bereitstellung ausgeführt wird. Sie können diese Vorlage für Ihre eigenen Bereitstellungen verwenden oder an Ihre Anforderungen anpassen.
 
@@ -161,7 +161,7 @@ Das Zeitintervall, in dem Event Hubs Capture mit der Datenerfassung beginnt.
     "minValue":60,
     "maxValue":900,
     "metadata":{
-         "description":"the time window in seconds for the capture"
+         "description":"The time window in seconds for the capture"
     }
 }
 ```
@@ -248,7 +248,7 @@ Abonnement-ID für den Event Hubs-Namespace und für Azure Data Lake Store. Beid
 "subscriptionId": {
     "type": "string",
     "metadata": {
-        "description": "Subscription Id of both Azure Data Lake Store and Event Hub namespace"
+        "description": "Subscription ID of both Azure Data Lake Store and Event Hubs namespace"
      }
  }
 ```
@@ -268,20 +268,20 @@ Der Azure Data Lake Store-Name für die erfassten Ereignisse.
 
 ###<a name="datalakefolderpath"></a>dataLakeFolderPath
 
-Der Zielordnerpfad für die erfassten Ereignisse. Dies ist der Ordner Ihrer Data Lake Store-Instanz, in den die Ereignisse aus Capture per Pushvorgang übertragen werden. Informationen zum Festlegen von Berechtigungen für diesen Ordner finden Sie im Artikel [Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-archive-eventhub-capture).
+Der Zielordnerpfad für die erfassten Ereignisse. In diesem Ordner in Ihrer Data Lake Store-Instanz werden die Ereignisse während des Erfassungsvorgangs abgelegt. Informationen zum Festlegen von Berechtigungen für diesen Ordner finden Sie unter [Verwenden von Azure Data Lake Store zum Erfassen von Daten von Event Hubs](../data-lake-store/data-lake-store-archive-eventhub-capture.md).
 
 ```json
 "dataLakeFolderPath": {
     "type": "string",
     "metadata": {
-        "description": "Destination archive folder path"
+        "description": "Destination capture folder path"
     }
 }
 ```
 
 ## <a name="resources-to-deploy-for-azure-storage-as-destination-to-captured-events"></a>Bereitzustellende Ressourcen, wenn Azure Storage als Ziel für erfasste Ereignisse verwendet wird
 
-Erstellt einen Namespace vom Typ **EventHubs** mit einem einzelnen Event Hub und aktiviert die Erfassung in Azure Blob Storage.
+Erstellt einen Namespace vom Typ **EventHub** mit einem einzelnen Event Hub und aktiviert Capture in Azure Blob Storage.
 
 ```json
 "resources":[  
@@ -342,7 +342,7 @@ Erstellt einen Namespace vom Typ **EventHubs** mit einem einzelnen Event Hub und
 
 ## <a name="resources-to-deploy-for-azure-data-lake-store-as-destination"></a>Bereitzustellende Ressourcen, wenn Azure Data Lake Store als Ziel verwendet wird
 
-Erstellt einen Namespace vom Typ **EventHubs** mit einem einzelnen Event Hub und aktiviert die Erfassung in Azure Data Lake Store.
+Erstellt einen Namespace vom Typ **EventHubs** mit einem einzelnen Event Hub und aktiviert Capture in Azure Data Lake Store.
 
 ```json
  "resources": [
@@ -407,7 +407,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName \<resource-group-name\> -T
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Auswählen von Azure Blob Storage als Ziel:
+Azure Blob Storage als Ziel:
 
 ```azurecli
 azure config mode arm
@@ -415,7 +415,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture/azuredeploy.json][]
 ```
 
-Auswählen von Azure Data Lake Store als Ziel:
+Azure Data Lake Store als Ziel:
 
 ```azurecli
 azure config mode arm
