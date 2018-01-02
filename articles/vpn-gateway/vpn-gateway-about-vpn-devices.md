@@ -54,9 +54,9 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X-Serie |Barracuda Firewall 6.5 |[Konfigurationshandbuch](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Nicht kompatibel |
 | Brocade            |5400 Vyatta vRouter   |Virtual Router 6.6R3 GA|[Konfigurationshandbuch](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Nicht kompatibel |
 | Check Point |Sicherheitsgateway |R77.30 |[Konfigurationshandbuch](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurationshandbuch](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3<br>8.4+ (IKEv2*) |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[Konfigurationshandbuch*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2* ) |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[Konfigurationshandbuch * ](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurationsbeispiele**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased* : IOS 15.1 |[Konfigurationsbeispiele](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[Konfigurationsbeispiele ** ](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Citrix |NetScaler MPX, SDX, VPX |ab 10.1 |[Konfigurationshandbuch](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Nicht kompatibel |
 | F5 |BIG-IP-Serie |12.0 |[Konfigurationshandbuch](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Konfigurationshandbuch](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[Konfigurationshandbuch](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
@@ -75,9 +75,9 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 
 > [!NOTE]
 >
-> (*) Die Cisco ASA-Version 8.4 und höhere Versionen fügen IKEv2-Unterstützung hinzu und können mithilfe der benutzerdefinierten IPsec-/IKE-Richtlinie mit der Option „UsePolicyBasedTrafficSelectors“ eine Verbindung mit Azure VPN Gateway herstellen. Informationen finden Sie in [diesem](vpn-gateway-connect-multiple-policybased-rm-ps.md) Artikel mit Anleitungen.
+> ( * ) Die Cisco ASA-Version 8.4 und höhere Versionen fügen IKEv2-Unterstützung hinzu und können mithilfe der benutzerdefinierten IPsec-/IKE-Richtlinie mit der Option „UsePolicyBasedTrafficSelectors“ eine Verbindung mit Azure VPN Gateway herstellen. Informationen finden Sie in [diesem](vpn-gateway-connect-multiple-policybased-rm-ps.md) Artikel mit Anleitungen.
 >
-> (**) Router der Serie ISR 7200 unterstützen nur richtlinienbasierte VPNs.
+> ( ** ) Router der Serie ISR 7200 unterstützen nur richtlinienbasierte VPNs.
 
 ## <a name="additionaldevices"></a>Nicht überprüfte VPN-Geräte
 

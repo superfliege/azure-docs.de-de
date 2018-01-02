@@ -68,7 +68,7 @@ Das URL-Rewrite-Modul von IIS könnte zum Umleiten von Datenverkehr, der bei der
 
 ## <a name="how-can-i-blockdisable-the-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>Wie kann ich den bei der Standard-URL des Clouddiensts eingehenden Datenverkehr blockieren/deaktivieren? 
 
-Sie können verhindern, dass Datenverkehr bei der Standard-URL/dem Standardnamen des Clouddiensts (z.B. \*.cloudapp.net) eingeht, indem Sie unter der Website-Bindungskonfiguration in der Clouddienst-Definitionsdatei (*.csdef) wie nachfolgend beschrieben für den Hostheader einen benutzerdefinierten DNS-Namen (z.B. „www.MyCloudService.com“) festlegen: 
+Sie können verhindern, dass Datenverkehr bei der Standard-URL/dem Standardnamen des Clouddiensts (z.B. \*.cloudapp.net) eingeht, indem Sie unter der Website-Bindungskonfiguration in der Clouddienst-Definitionsdatei ( * .csdef) wie nachfolgend beschrieben für den Hostheader einen benutzerdefinierten DNS-Namen (z.B. „www.MyCloudService.com“) festlegen: 
  
 
     <?xml version="1.0" encoding="utf-8"?> 
@@ -90,7 +90,7 @@ Sie können verhindern, dass Datenverkehr bei der Standard-URL/dem Standardnamen
       </WebRole> 
     </ServiceDefinition> 
  
-Wenn diese Hostheaderbindung über die CSDEF-Datei erzwungen wird, ist der Zugriff auf den Dienst nur über den benutzerdefinierten Namen „www.MyCloudService.com“ möglich, während alle eingehenden Anforderungen für die „*.cloudapp.net“-Domäne fehlschlagen. Wenn Sie jedoch einen benutzerdefinierten SLB-Test oder einen internen Lastenausgleich im Dienst verwenden, kann ein Konflikt zwischen dem Blockieren der Standard-URL/des Standardnamens des Diensts und dem Testverhalten auftreten. 
+Wenn diese Hostheaderbindung über die CSDEF-Datei erzwungen wird, ist der Zugriff auf den Dienst nur über den benutzerdefinierten Namen „www.MyCloudService.com“ möglich, während alle eingehenden Anforderungen für die „ * .cloudapp.net“-Domäne fehlschlagen. Wenn Sie jedoch einen benutzerdefinierten SLB-Test oder einen internen Lastenausgleich im Dienst verwenden, kann ein Konflikt zwischen dem Blockieren der Standard-URL/des Standardnamens des Diensts und dem Testverhalten auftreten. 
 
 ## <a name="how-to-make-sure-the-public-facing-ip-address-of-a-cloud-service-aka-vip-never-changes-so-that-it-could-be-customarily-whitelisted-by-few-specific-clients"></a>Wie lässt sich sicherstellen, dass die öffentlich zugängliche IP-Adresse eines Clouddiensts (auch VIP genannt) sich nie ändert, sodass sie üblicherweise in der Zulassungsliste einiger bestimmter Clients enthalten sein kann?
 
