@@ -1,6 +1,6 @@
 ---
 title: "Veröffentlichen von Remotedesktops mit dem Azure AD-App-Proxy | Microsoft-Dokumentation"
-description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxyconnectors.
+description: Hier finden Sie grundlegende Informationen zu Azure AD-Anwendungsproxy-Connectors.
 services: active-directory
 documentationcenter: 
 author: kgremban
@@ -15,11 +15,11 @@ ms.date: 11/03/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: f2d7387f03757afb0b51105f02068d4aada8f9f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 06d217b38ff8e33bd6c5a42a93aa532c0d1efa4d
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -42,7 +42,7 @@ Bei einer RDS-Bereitstellung werden die Rollen „RD-Web“ und „RD-Gateway“
 >[!TIP]
 >Wenn Sie RDS zum ersten Mal bereitstellen oder weitere Informationen wünschen, bevor Sie beginnen, lesen Sie den Abschnitt [Nahtlose Bereitstellung von RDS mit Azure Resource Manager und dem Azure Marketplace](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/rds-in-azure).
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 - Die RD-Web- und RD-Gateway-Endpunkte müssen sich auf demselben Computer befinden und ein gemeinsames Stamm verwenden. RD-Web und RD-Gateway werden auf dem Anwendungsproxy als einzelne Anwendung veröffentlicht, damit Sie über die Möglichkeit für einmaliges Anmelden zwischen den beiden Anwendungen verfügen.
 
@@ -90,7 +90,7 @@ Stellen Sie eine Verbindung mit der RDS-Bereitstellung als Administrator her und
 
    **Beispiel:**
    ```
-   Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://gateway.contoso.msappproxy.net/`nrequire pre-authentication:i:1"
+   Set-RDSessionCollectionConfiguration -CollectionName "QuickSessionCollection" -CustomRdpProperty "pre-authentication server address:s:https://remotedesktoptest-aadapdemo.msappproxy.net/`nrequire pre-authentication:i:1"
    ```
 
 9. Führen den folgenden Befehl aus, um die Änderung der benutzerdefinierten RDP-Eigenschaften zu überprüfen und um den Inhalt der RDP-Datei anzuzeigen, der für diese Sammlung aus RDWeb heruntergeladen wird:

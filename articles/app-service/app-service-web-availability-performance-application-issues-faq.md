@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: d997c291e487e27b7e12c015e34ad839ac020151
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 36869eb523706787257160e5859f50b24f7bf08b
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -174,7 +174,7 @@ Dieses Problem wurde in der Kestrel-Version 1.0.2 behoben. Diese Version ist im 
 
 Wenn Sie die Funktion „Lokaler Cache“ von App Service nutzen, ist die Ordnerstruktur der Ordner „LogFiles“ und „Data“ Ihrer App Service-Instanz betroffen. Bei Verwenden des lokalen Caches werden in den Speicherordnern „LogFiles“ und „Data“ Unterordner erstellt. Die Unterordner folgen dem Benennungsmuster „Eindeutiger Bezeichner + Zeitstempel“. Jeder Unterordner entspricht einer VM-Instanz, in der die Web-App ausgeführt wird oder wurde.
 
-Um zu bestimmen, ob Sie den lokalen Cache verwenden, überprüfen Sie die App Service-Registerkarte **Anwendungseinstellungen**. Wenn die lokalen Cache verwendet wird, ist die App-Einstellung `WEBSITE_LOCAL_CACHE_OPTION` auf `Always` festgelegt. 
+Um zu bestimmen, ob Sie den lokalen Cache verwenden, überprüfen Sie die App Service-Registerkarte **Anwendungseinstellungen**. Wenn die lokalen Cache verwendet wird, ist die App-Einstellung `WEBSITE_LOCAL_CACHE_OPTION` auf `Always` festgelegt.
 
 Wenn Sie den lokalen Cache nicht verwenden und dieses Problem auftritt, senden Sie eine Supportanfrage.
 

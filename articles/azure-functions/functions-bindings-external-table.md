@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: alkarche
-ms.openlocfilehash: 7b226aa4ec71535aa0222389aacd74764a80021a
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 1d983a6924a939a8eb89355fab0c90596dbf2ed3
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="azure-functions-external-table-binding-preview"></a>Azure Functions – Bindungen zu externen Tabellen (Vorschau)
 In diesem Artikel wird gezeigt, wie Sie in einer Funktion integrierte Bindungen verwenden können, um tabellarisch gespeicherte Daten in SaaS-Anbietern (z. B. Sharepoint, Dynamics) zu verarbeiten. Azure Functions unterstützt Eingabe- und Ausgabebindungen für externe Tabellen.
@@ -33,7 +33,7 @@ Wenn Sie eine Bindung zuweisen, können Sie entweder eine neue API-Verbindung er
 
 ### <a name="supported-api-connections-tables"></a>Unterstützte API-Verbindungen (Tabellen)
 
-|Connector|Trigger|Eingabe|Ausgabe|
+|Connector|Trigger|Eingabe|Output|
 |:-----|:---:|:---:|:---:|
 |[DB2](https://docs.microsoft.com/azure/connectors/connectors-create-api-db2)||x|x
 |[Dynamics 365 for Operations](https://ax.help.dynamics.com/wiki/install-and-configure-dynamics-365-for-operations-warehousing/)||x|x
@@ -139,7 +139,7 @@ public static async Task Run(string input, ITable<Contact> table, TraceWriter lo
     ContinuationToken continuationToken = null;
     do
     {   
-        //retreive table values
+        //retrieve table values
         var contactsSegment = await table.ListEntitiesAsync(
             continuationToken: continuationToken);
 

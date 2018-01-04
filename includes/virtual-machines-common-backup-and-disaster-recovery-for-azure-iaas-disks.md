@@ -138,7 +138,7 @@ Verwenden Sie die folgenden Schritte, um das Erstellen von Sicherungen Ihrer VMs
 
 4.  Stellen Sie sicher, dass der Backup-Agent auf der VM installiert ist. Wenn Ihre VM mit einem Azure-Katalogimage erstellt wurde, ist der Backup-Agent bereits installiert. Verwenden Sie andernfalls (also bei Verwendung eines benutzerdefinierten Image) die Anleitung unter [Installieren des VM-Agents auf dem virtuellen Computer](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent-on-the-virtual-machine).
 
-5.  Stellen Sie sicher, dass die VM die Netzwerkkonnektivität zulässt, damit der Sicherungsdienst funktioniert. Befolgen Sie die Anweisungen für die [Netzwerkkonnektivität](../articles/backup/backup-azure-arm-vms-prepare.md#network-connectivity).
+5.  Stellen Sie sicher, dass die VM die Netzwerkkonnektivität zulässt, damit der Sicherungsdienst funktioniert. Befolgen Sie die Anweisungen für die [Netzwerkkonnektivität](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 6.  Nachdem die obigen Schritte ausgeführt wurden, wird die Sicherung gemäß Angabe in der Sicherungsrichtlinie in regelmäßigen Abständen durchgeführt. Bei Bedarf können Sie die erste Sicherung manuell über das Tresordashboard im Azure-Portal auslösen.
 

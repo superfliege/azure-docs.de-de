@@ -5,16 +5,16 @@ services: machine-learning
 author: totekp
 ms.author: kefzhou
 manager: akannava
-ms.reviewer: akannava, haining, mldocs
+ms.reviewer: akannava, haining, mldocs, garyericson, jasonwhowell
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: aaadf526577b9b6c254204aae90200661d40f325
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 40e066fe602e8c4680043158f1d401a884e07c19
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Ermitteln der genauesten und kürzesten Ausführungen
 Bei mehreren Ausführungen ist ein Anwendungsfall, die Ausführungen mit der besten Genauigkeit zu ermitteln. Ein Ansatz besteht darin, die Befehlszeilenschnittstelle (Command Line Interface, CLI) mit einer [JMESPath](http://jmespath.org/)-Abfrage zu verwenden. Weitere Informationen zum Verwenden von JMESPath in der Azure CLI finden Sie unter [Verwenden von JMESPath-Abfragen mit Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). Im folgenden Beispiel werden vier Ausführungen mit den Genauigkeitswerten von 0, 0,98, 1 und 1 erstellt. Die Ausführungen werden gefiltert, wenn diese sich im Bereich `[MaxAccuracy-Threshold, MaxAccuracy]` befinden, in dem `Threshold = .03`.

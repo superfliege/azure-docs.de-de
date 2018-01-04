@@ -1,5 +1,5 @@
 ---
-title: "Azure Cosmos DB: Wie werden Abfragen mit der MongoDB-API durchgeführt? | Microsoft Docs"
+title: "Azure Cosmos DB: Wie werden Abfragen mit der MongoDB-API durchgeführt? | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie mit der MongoDB-API für Azure Cosmos DB Abfragen durchführen."
 services: cosmos-db
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: bdb68c4e68f6868c596d8e8410b94223cc5e535a
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 1818476a95ddf373701ad93860b02ea4c2ad761d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: Wie werden Abfragen mit der API für MongoDB durchgeführt?
 
@@ -67,7 +67,7 @@ Die Abfragen in diesem Artikel verwenden das folgende Beispieldokument.
 
 Im Beispiel des obigen Familienbeispieldokuments gibt die folgende Abfrage die Dokumente zurück, in denen das Feld „id“ mit `WakefieldFamily` übereinstimmt.
 
-**Abfragen**
+**Abfrage**
     
     db.families.find({ id: “WakefieldFamily”})
 
@@ -117,7 +117,7 @@ Im Beispiel des obigen Familienbeispieldokuments gibt die folgende Abfrage die D
 
 Die nächste Abfrage gibt alle Kinder in der Familie zurück. 
 
-**Abfragen**
+**Abfrage**
     
     db.familes.find( { id: “WakefieldFamily” }, { children: true } )
 
@@ -150,7 +150,7 @@ Die nächste Abfrage gibt alle Kinder in der Familie zurück.
 
 Die nächste Abfrage gibt alle Familien zurück, die registriert sind. 
 
-**Abfragen**
+**Abfrage**
     
     db.families.find( { "isRegistered" : true })
 **Ergebnisse** Kein Dokument wird zurückgegeben. 
@@ -159,7 +159,7 @@ Die nächste Abfrage gibt alle Familien zurück, die registriert sind.
 
 Die nächste Abfrage gibt alle Familien zurück, die nicht registriert sind. 
 
-**Abfragen**
+**Abfrage**
     
     db.families.find( { "isRegistered" : false })
 **Ergebnisse**
@@ -203,7 +203,7 @@ Die nächste Abfrage gibt alle Familien zurück, die nicht registriert sind.
 
 Die nächste Abfrage gibt alle Familien zurück, die nicht registriert sind und im Staat NY leben. 
 
-**Abfragen**
+**Abfrage**
     
      db.families.find( { "isRegistered" : false, "address.state" : "NY" })
 
@@ -249,7 +249,7 @@ Die nächste Abfrage gibt alle Familien zurück, die nicht registriert sind und 
 
 Die nächste Abfrage gibt alle Familien zurück, deren Kinder in Klasse 8 gehen.
 
-**Abfragen**
+**Abfrage**
   
      db.families.find( { children : { $elemMatch: { grade : 8 }} } )
 
@@ -294,7 +294,7 @@ Die nächste Abfrage gibt alle Familien zurück, deren Kinder in Klasse 8 gehen.
 
 Die nächste Abfrage gibt alle Familien zurück, wo das Kinderarray die Größe 3 hat.
 
-**Abfragen**
+**Abfrage**
   
       db.Family.find( {children: { $size:3} } )
 
@@ -312,5 +312,5 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie Ihre Daten global verteilen.
 
 > [!div class="nextstepaction"]
-> [Globales Verteilen Ihrer Daten](tutorial-global-distribution-documentdb.md)
+> [Globales Verteilen Ihrer Daten](tutorial-global-distribution-sql-api.md)
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 6e8fadd54a78d432ed802f4c4880c2f77bb28c37
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 8552f6b2723fef2c61d49a34d2d60c2a6c209a32
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure CLI 2.0
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren.
@@ -28,7 +28,7 @@ In diesem Artikel wird veranschaulicht, wie Sie mit Azure CLI 2.0 Regeln für di
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe mit dem [Azure-Portal](virtual-machine-scale-sets-portal-create.md) oder per [Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-azure-cli) oder [Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-powershell) erstellen.
+Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe mit dem [Azure-Portal](virtual-machine-scale-sets-create-portal.md) oder per [Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) oder [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) erstellen.
 
 Definieren Sie einige Variablen für Ihre Skalierungsgruppe, um die Erstellung der Regeln für die automatische Skalierung zu vereinfachen. Im folgenden Beispiel werden Variablen für die Skalierungsgruppe mit dem Namen *myScaleSet* in der Ressourcengruppe *myResourceGroup* in der Region *eastus* definiert. Sie können Ihre Abonnement-ID mit [az account show](/cli/azure/account#az_account_show) abrufen. Wenn Ihrem Konto mehrere Abonnements zugeordnet sind, wird nur das erste Abonnement zurückgegeben. Passen Sie die Namen und die Abonnement-ID wie folgt an:
 
@@ -68,9 +68,9 @@ Für diese Regel werden die folgenden Parameter verwendet:
 | *metricName*      | Die Leistungsmetrik zum Überwachen und Anwenden von Skalierungsgruppenaktionen.                                                   | CPU in Prozent  |
 | *timeGrain*       | Gibt an, wie häufig Metriken zu Analysezwecken gesammelt werden.                                                                   | 1 Minute        |
 | *timeAggregation* | Definiert, wie die gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                                                | Durchschnitt         |
-| *timeWindow*      | Der überwachte Zeitraum, bevor die Metrik und die Schwellenwerte verglichen werden.                                   | 10 Minuten      |
+| *timeWindow*      | Der überwachte Zeitraum, bevor die Metrik und Schwellenwerte verglichen werden.                                   | 10 Minuten      |
 | *operator*        | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                     | Größer als    |
-| *threshold*       | Der Wert, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                      | 70%             |
+| *threshold*       | Der Wert, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                      | 70 %             |
 | *direction*       | Definiert, ob die Skalierungsgruppe zentral hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                                             | Erhöhung        |
 | *type*            | Gibt an, dass die Anzahl von VM-Instanzen um einen Prozentbetrag geändert werden soll.                                 | Prozentuale Änderung  |
 | *value*           | Gibt an, wie viele VM-Instanzen zentral hoch- oder herunterskaliert werden sollen, wenn die Regel zutrifft.                                            | 20              |
@@ -103,7 +103,7 @@ Im folgenden Beispiel wird die Regel zum horizontalen Hochskalieren der Anzahl v
 
 
 ## <a name="create-a-rule-to-automatically-scale-in"></a>Erstellen einer Regel für das automatische horizontale Herunterskalieren
-Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende abnimmt. Wenn diese Verringerung der Last für einen bestimmten Zeitraum anhält, können Sie die Regeln der automatischen Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu reduzieren. Mit dieser Aktion zum horizontalen Herunterskalieren werden die Kosten für die Ausführung Ihrer Skalierungsgruppe gesenkt, da Sie nur so viele Instanzen ausführen, wie für die Erfüllung der derzeitigen Nachfrage erforderlich sind.
+Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende abnimmt. Wenn diese Verringerung der Last für einen bestimmten Zeitraum anhält, können Sie Regeln zur automatischen Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu reduzieren. Mit dieser Aktion zum horizontalen Herunterskalieren werden die Kosten für die Ausführung Ihrer Skalierungsgruppe gesenkt, da Sie nur so viele Instanzen ausführen, wie für die Erfüllung der derzeitigen Nachfrage erforderlich sind.
 
 Erstellen Sie eine weitere Regel, mit der die Anzahl von VM-Instanzen in einer Skalierungsgruppe verringert wird, wenn die durchschnittliche CPU-Last über einen Zeitraum von 10 Minuten unter 30% fällt. Im folgenden Beispiel wird die Regel zum horizontalen Hochskalieren der Anzahl von VM-Instanzen definiert. Für das *metricResourceUri*-Element werden die Variablen verwendet, die zuvor für die Abonnement-ID, den Namen der Ressourcengruppe und den Namen der Skalierungsgruppe definiert wurden:
 

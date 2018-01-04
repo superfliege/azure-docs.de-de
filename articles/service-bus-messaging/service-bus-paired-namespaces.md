@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: bdd4c7948608c03447d1e040a746ed0eb7b0771b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f16c65286b0aa079889c9d53e98bf54e3d57c95f
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="paired-namespace-implementation-details-and-cost-implications"></a>Details zur Implementierung von gekoppelten Namespaces und Kostenaspekte
+
 Mit der [PairNamespaceAsync][PairNamespaceAsync]-Methode unter Verwendung einer [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions]-Instanz werden sichtbare Aufgaben in Ihrem Namen ausgeführt. Da beim Verwenden des Features Kostenaspekte zu beachten sind, ist es ratsam, sich mit diesen Aufgaben vertraut zu machen. So sind Sie auf das Auftreten dieses Verhaltens vorbereitet. Die API veranlasst in Ihrem Namen das folgende automatische Verhalten:
 
 * Erstellung von Backlog-Warteschlangen
@@ -53,7 +54,7 @@ Im weiteren Verlauf dieses Themas wird näher beschrieben, wie die einzelnen Ele
 ## <a name="creation-of-backlog-queues"></a>Erstellen von Backlog-Warteschlangen
 Das [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions]-Objekt, das an die [PairNamespaceAsync][PairNamespaceAsync]-Methode übergeben wird, gibt die Anzahl von Backlog-Warteschlangen an, die Sie verwenden möchten. Jede Backlog-Warteschlange wird dann erstellt, und die folgenden Eigenschaften werden explizit festgelegt (alle anderen Werte werden auf die [QueueDescription][QueueDescription]-Standardeinstellungen festgelegt):
 
-| Pfad | [primärer Namespace]/x-servicebus-transfer/[Index], wobei [Index] ein Wert in [0, BacklogQueueCount) ist |
+| path | [primärer Namespace]/x-servicebus-transfer/[Index], wobei [Index] ein Wert in [0, BacklogQueueCount) ist |
 | --- | --- |
 | MaxSizeInMegabytes |5120 |
 | MaxDeliveryCount |int.MaxValue |
@@ -98,7 +99,7 @@ Mindestens ein ausführbares Programm in der Anwendung sollte den Siphon aktiv a
 Innerhalb einer Anwendung, die den Siphon hostet, wird in folgenden Fällen der Siphon aktiviert: Sobald für das primäre oder sekundäre [MessagingFactory][MessagingFactory]-Element ein Fehler auftritt oder sobald es geschlossen wird, ohne dass für das Partnerelement auch einer dieser Vorgänge eintritt, und dieser Zustand vom Siphon erkannt wird. Wenn das andere [MessagingFactory][MessagingFactory]-Element nicht innerhalb von fünf Sekunden geschlossen wird, generiert der Siphon für das noch geöffnete [MessagingFactory][MessagingFactory]-Element einen Fehler.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Ausführliche Informationen zum asynchronen Service Bus-Messaging finden Sie unter [Asynchrone Messagingmuster und hohe Verfügbarkeit][Asynchronous messaging patterns and high availability]. 
+Ausführliche Informationen zum asynchronen Service Bus-Messaging finden Sie unter [Asynchrone Messagingmuster und Hochverfügbarkeit][Asynchronous messaging patterns and high availability]. 
 
 [PairNamespaceAsync]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory#Microsoft_ServiceBus_Messaging_MessagingFactory_PairNamespaceAsync_Microsoft_ServiceBus_Messaging_PairedNamespaceOptions_
 [SendAvailabilityPairedNamespaceOptions]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions

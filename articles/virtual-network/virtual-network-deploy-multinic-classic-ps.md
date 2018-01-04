@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 37f1f5bbd5f39290121414a4c5532abdb2b6f9ae
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 824af3f0f5f6d42341f6f1dc94104f6009b568b8
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>Erstellen eines virtuellen Computers (VM) (klassisch) mit mehreren Netzwerkkarten über PowerShell
 
@@ -73,7 +73,7 @@ Sie können das verwendete PowerShell-Skript ungekürzt [hier](https://raw.githu
     $numberOfVMs           = 2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre virtuellen Computer
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für die virtuellen Computer
 Sie müssen einen neuen Clouddienst und ein Speicherkonto für die Datenträger für alle virtuellen Computer erstellen. Sie müssen zudem ein Abbild und ein lokales Administratorkonto für die virtuellen Computer angeben. Führen Sie die folgenden Schritte aus, um diese Ressourcen zu erstellen:
 
 1. Erstellen Sie einen neuen Clouddienst.
@@ -198,4 +198,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Schritt 5: Konfigurieren des Routings im Betriebssystem des virtuellen Computers
 
-Azure DHCP weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Informationen zum Konfigurieren des Routings für sekundäre Netzwerkschnittstellen finden Sie unter [Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen](virtual-network-network-interface-vm.md#routing-within-a-virtual-machine-operating-system-with-multiple-network-interfaces).
+Azure DHCP weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Informationen zum Konfigurieren des Routings für sekundäre Netzwerkschnittstellen finden Sie unter [Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen](virtual-network-network-interface-vm.md).

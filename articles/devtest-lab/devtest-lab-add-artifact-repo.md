@@ -3,7 +3,7 @@ title: "Hinzufügen eines Git-Repositorys zu einem Lab in Azure DevTest Labs | M
 description: "Erfahren Sie, wie Sie ein GitHub- oder Visual Studio Team Services-Git-Repository für Ihre benutzerdefinierte Artefaktquelle in Azure DevTest Labs hinzufügen."
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 01b459f7-eaf2-45a8-b4b5-2c0a821b33c8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
-ms.author: tarcher
-ms.openlocfilehash: e0fb8b3c991d3f95acef77b37929fb5f6dc06242
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 345d095762b75b7a177bf4c6e7a07360a9c14068
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Resource Manager-Vorlagen
 
@@ -77,7 +77,7 @@ Bevor Sie Ihrem Lab ein Repository hinzufügen können, rufen Sie zunächst wich
 
     ![Schaltfläche zum Hinzufügen eines Repositorys](./media/devtest-lab-add-repo/devtestlab-add-repo.png)
 5. Geben Sie auf der zweiten Seite **Repositorys** Folgendes an:
-  1. **Name**. Geben Sie einen Namen für das Repository ein.
+  1. **Name**: Geben Sie einen Namen für das Repository ein.
   2. **Git-Klon-URL**. Geben Sie die Git-HTTPS-Klon-URL ein, die Sie zuvor aus GitHub oder Visual Studio Team Services kopiert haben.
   3. **Branch**. Um zu Ihren Definitionen zu gelangen, geben Sie den Branch an.
   4. **Persönliches Zugriffstoken**. Geben Sie das persönliche Zugriffstoken ein, das sie zuvor aus GitHub oder Visual Studio Team Services abgerufen haben.

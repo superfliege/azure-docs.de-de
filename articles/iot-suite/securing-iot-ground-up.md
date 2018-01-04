@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
-ms.openlocfilehash: b876881af6ead69906c14cf7aeeab70130ba66ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5979e5e4baa385cc0aaff5f1277f2a0f7492c426
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="internet-of-things-security-from-the-ground-up"></a>Sicherheit im Internet der Dinge von Anfang an
 Das Internet der Dinge (Internet of Things, IoT) ist für Unternehmen weltweit mit neuen Anforderungen in Bezug auf Sicherheit, Datenschutz und Compliance verbunden. Im Gegensatz zur herkömmlichen Cyber-Technologie, bei der es um Software und ihre Implementierung geht, liegt der Schwerpunkt bei IoT darauf, was passiert, wenn die Cyber-Welt und die physische Welt aufeinandertreffen. Zum Schützen von IoT-Lösungen müssen die sichere Bereitstellung von Geräten, die sichere Verbindung zwischen diesen Geräten und der Cloud sowie der sichere Schutz von Daten in der Cloud während der Verarbeitung und Speicherung sichergestellt werden. Dieser Funktionalität stehen aber Geräte mit Ressourcenbeschränkung, die geografische Verteilung von Bereitstellungen und eine große Zahl von Geräten innerhalb einer Lösung entgegen.
@@ -84,7 +84,7 @@ Von der verschlüsselten Kommunikation bis zur Verarbeitung von Daten in der Clo
 
 Sobald sich Daten in der Cloud befinden, können sie in jedem benutzerdefinierten Workflow verarbeitet und gespeichert werden. Der Zugriff auf die einzelnen Teile der Daten wird mit Azure Active Directory je nach verwendetem Speicherdienst gesteuert.
 
-Alle Schlüssel, die von der IoT-Infrastruktur verwendet werden, werden in der Cloud im sicheren Speicher abgelegt, und es kann ein Rollover durchgeführt werden, falls Schlüssel neu bereitgestellt werden müssen. Daten können in [Azure Cosmos DB](../documentdb/documentdb-introduction.md) oder in [SQL-Datenbanken](../sql-database/sql-database-faq.md) gespeichert werden, sodass die gewünschte Sicherheitsebene definiert werden kann. Darüber hinaus verfügt Azure über einen Weg zum Überwachen und Überprüfen des gesamten Zugriffs auf Ihre Daten, damit Sie vor allen Angriffen und unberechtigten Zugriffen gewarnt werden können.
+Alle Schlüssel, die von der IoT-Infrastruktur verwendet werden, werden in der Cloud im sicheren Speicher abgelegt, und es kann ein Rollover durchgeführt werden, falls Schlüssel neu bereitgestellt werden müssen. Daten können in [Azure Cosmos DB](../cosmos-db/introduction.md) oder in [SQL-Datenbanken](../sql-database/sql-database-faq.md) gespeichert werden, sodass die gewünschte Sicherheitsebene definiert werden kann. Darüber hinaus verfügt Azure über einen Weg zum Überwachen und Überprüfen des gesamten Zugriffs auf Ihre Daten, damit Sie vor allen Angriffen und unberechtigten Zugriffen gewarnt werden können.
 
 ## <a name="conclusion"></a>Zusammenfassung
 Das Internet der Dinge beginnt mit Ihren „Dingen“, also den Dingen, die Unternehmen am meisten am Herzen liegen. Das IoT kann für ein Unternehmen von hohem Nutzen sein, indem Kosten reduziert werden, der Umsatz gesteigert wird und das Geschäft transformiert wird. Der Erfolg der Transformation hängt größtenteils von der Wahl der richtigen IoT-Software und des richtigen Dienstanbieters ab. Hiermit ist die Wahl eines Anbieters gemeint, der diese Transformation nicht nur fördert und beschleunigt, weil er die geschäftlichen Anforderungen kennt. Der Anbieter sollte auch Dienste und Software mit einem Design bereitstellen, bei dem Sicherheit, Datenschutz, Transparenz und Compliance im Vordergrund stehen. Microsoft verfügt über umfassende Erfahrung in Bezug auf die Entwicklung und Bereitstellung sicherer Software und Dienste und nimmt auch im neuen Zeitalter des Internets der Dinge eine führende Stellung ein. 

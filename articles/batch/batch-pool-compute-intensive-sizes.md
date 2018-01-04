@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2017
 ms.author: danlep
-ms.openlocfilehash: 7624a905f81024fa87f15164efc56a300843972d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 26cab5ba892d892e035bd94c52cacabd23eebd0c
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -50,7 +50,7 @@ Die RDMA- und GPU-Funktionen rechenintensiver Größen werden nur unter bestimmt
 | Größe | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS,<br/>SUSE Linux Enterprise Server 12 HPC oder<br/>CentOS-basierter HPC<br/>(Azure Marketplace) | Intel MPI 5 | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-Serie*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>7.3 (CentOS-basiert)<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.0-Treiber | N/V | 
+| [NC-Serie*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>7.3 (CentOS-basiert)<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.0-Treiber | N/V | 
 | [NV-Serie](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS,<br/>Red Hat Enterprise Linux 7.3 oder<br/>7.3 (CentOS-basiert)<br/>(Azure Marketplace) | NVIDIA GRID 4.3-Treiber | N/V |
 
 * RDMA-Konnektivität auf NC24r-VMs wird auf Ubuntu 16.04 LTS oder CentOS-basierten 7.3 HPC (aus dem Azure Marketplace) mit Intel MPI unterstützt.
@@ -112,17 +112,17 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure A8-Knoten auszuführen, müss
 | **Imagetyp** | Cloud Services |
 | **Betriebssystemfamilie** | Windows Server 2012 R2 (Betriebssystemfamilie 4) |
 | **Knotengröße** | A8 Standard |
-| **Kommunikation zwischen Knoten aktiviert** | true |
+| **Kommunikation zwischen Knoten aktiviert** | True |
 | **Max. Aufgaben pro Knoten** | 1 |
 | **Anwendungspaketverweise** | MSMPI |
-| **Startaufgabe aktiviert** | true<br>**Befehlszeile** - `"cmd /c %AZ_BATCH_APP_PACKAGE_MSMPI#8.1%\\MSMpiSetup.exe -unattend -force"`<br/>**Benutzeridentität:** autouser, admin für den Pool<br/>**Erfolg abwarten:** TRUE
+| **Startaufgabe aktiviert** | True<br>**Befehlszeile** - `"cmd /c %AZ_BATCH_APP_PACKAGE_MSMPI#8.1%\\MSMpiSetup.exe -unattend -force"`<br/>**Benutzeridentität:** autouser, admin für den Pool<br/>**Erfolg abwarten:** TRUE
 
 ## <a name="example-nvidia-tesla-drivers-on-nc-vm-pool"></a>Beispiel: NVIDIA Tesla-Treiber in NC-VM-Pool
 
 Um CUDA-Anwendungen in einem Pool von Linux-NC-Knoten auszuführen, müssen Sie das CUDA Toolkit 9.0 auf den Knoten installieren. Das Toolkit installiert die erforderlichen NVIDIA Tesla-GPU-Treiber. Im Folgenden finden Sie Beispielschritte zum Bereitstellen eines benutzerdefinierten Images mit Ubuntu 16.04 LTS mit GPU-Treibern:
 
 1. Stellen Sie eine Azure-NC6-VM mit Ubuntu 16.04 LTS bereit. Sie können den virtuellen Computer beispielsweise in der Region „USA, Süden-Mitte“ erstellen. Erstellen Sie die VM unbedingt mit einem verwalteten Datenträger.
-2. Befolgen Sie die Schritte zum Herstellen der Verbindung mit dem virtuellen Computer und zum [Installieren der CUDA-Treiber](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms).
+2. Befolgen Sie die Schritte zum Herstellen der Verbindung mit dem virtuellen Computer und zum [Installieren der CUDA-Treiber](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms).
 3. Heben Sie die Bereitstellung des Linux-Agents auf, und [erstellen Sie dann das Linux-VM-Image](../virtual-machines/linux/capture-image.md).
 4. Erstellen Sie ein Batch-Konto in einer Region, die NC-VMs unterstützt.
 5. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit dem benutzerdefinierten Image](batch-custom-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:

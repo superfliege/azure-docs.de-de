@@ -7,6 +7,7 @@ author: miprasad
 manager: kristin.tolle
 editor: miprasad
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: ea95f9e4a6e11ddac96e956bdf0f1e4255954b24
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 7db93786b71fb7876ae02fd8fd006a1e8e0c2271
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Vorhersehen der Kundenabwanderung mithilfe von Azure Machine Learning
 
@@ -69,7 +70,7 @@ In dieser Lösung verwenden wir ein konkretes Beispiel für den Aufbau eines Mod
 Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
 1.  Öffnen Sie Azure Machine Learning Workbench.
 2.  Klicken Sie auf der Seite **Projekte** auf **+**, wählen Sie **Neues Projekt** aus, und signieren Sie es.
-3.  Geben Sie im Bereich **Neues Projekt erstellen** die Informationen für das neue Projekt ein.
+3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein
 4.  Geben Sie im Suchfeld **Projektvorlagen suchen** den Suchbegriff „Customer Churn Prediction“ ein, und wählen Sie die Vorlage aus.
 5.  Klicken Sie auf **Erstellen**
 
@@ -79,7 +80,7 @@ Das Dataset, das in der Lösung verwendet wird, stammt aus dem SIDKDD-Wettbewerb
 
 Die Variablen erfassen demografische Kundeninformationen, Anrufstatistiken (wie z.B. durchschnittliche Anrufdauer, Anruffehlerquote usw.), Vertragsinformationen und Reklamationsstatistiken. Die Abwanderungsvariable ist binär (0 = nicht abgewandert, 1 = abgewandert).
 
-## <a name="scenario-structure"></a>Struktur des Szenarios
+## <a name="scenario-structure"></a>Szenariostruktur
 
 Die Ordnerstruktur ist wie folgt angeordnet:
 

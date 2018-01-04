@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: 18ff5c81d0aa5e8a28ed8a11dad19811d2fa1d2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5f022eca8f901388c9cf003f3320db1b9c49e6a
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Betriebssystemfunktionen für Azure App Service
 In diesem Artikel werden allgemeine grundlegende Betriebssystemfunktionen beschrieben, die für alle Apps zur Verfügung stehen, die in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)ausgeführt werden. Diese Funktionen umfassen Zugriff auf Dateien, Netzwerke und Registrierung sowie Diagnoseprotokolle und Ereignisse. 
@@ -27,6 +27,8 @@ In diesem Artikel werden allgemeine grundlegende Betriebssystemfunktionen beschr
 
 ## <a name="app-service-plan-tiers"></a>App Service-Planstufen
 App Service führt Kunden-Apps in einer mandantenfähigen Hostingumgebung aus. Apps mit Bereitstellung in den Tarifen **Free** und **Shared** werden mit Workerprozessen auf gemeinsamen virtuellen Computern ausgeführt. Apps mit Bereitstellung in den Tarifen **Standard** und **Premium** werden hingegen auf virtuellen Computern ausgeführt, die nur für die Apps eines einzelnen Kunden bestimmt sind.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Da App Service eine nahtlose Skalierung zwischen unterschiedlichen Tarifen unterstützt, bleibt die durchgeführte Sicherheitskonfiguration für App Service Apps gleich. So wird gewährleistet, dass sich Apps nicht plötzlich anders verhalten und unerwartet ausfallen, wenn der App Service-Plan gewechselt wird.
 

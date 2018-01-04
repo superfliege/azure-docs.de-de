@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: a2760072acb7c62204759f3ec0d3cb9899460f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdbac0fd18ad440ece35881cbe165c3c7eff8914
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="service-bus-authentication-with-shared-access-signatures"></a>Service Bus-Authentifizierung mit Shared Access Signatures
 
@@ -47,8 +47,8 @@ Wichtig: Bei SAS beginnt alles mit einer Richtlinie. Jede Richtlinie erfordert d
 
 Die verfügbaren Berechtigungen für eine Richtlinie sind größtenteils selbsterklärend:
 
-* Senden
-* Empfangen
+* Send
+* Lauschen
 * Verwalten
 
 Nach Erstellung der Richtlinie werden ihr ein *Primärschlüssel* und ein *Sekundärschlüssel* zugewiesen. Hierbei handelt es sich um kryptografisch starke Schlüssel. Achten Sie darauf, dass sie Ihnen nicht abhanden kommen: Sie sind immer im [Azure-Portal][Azure portal] verfügbar. Sie können einen beliebigen der generierten Schlüssel verwenden und die Schlüssel jederzeit erneut generieren. Wenn Sie allerdings den Primärschlüssel neu generieren oder in der Richtlinie ändern, werden alle auf deren Grundlage erstellten SAS ungültig.
@@ -66,7 +66,7 @@ In dieser Abbildung gelten die Autorisierungsregeln *manageRuleNS*, *sendRuleNS*
 
 Die folgenden Schlüsselparameter gelten für ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | *KeyName* |Eine Zeichenfolge, die die Autorisierungsregel beschreibt. |
 | *PrimaryKey* |Ein primärer Base64-codierter 256-Bit-Schlüssel zum Signieren und Überprüfen des SAS-Tokens. |
@@ -128,7 +128,7 @@ Der Endpunkt für den Zugriff auf SAS-Autorisierungsregeln für einen Service Bu
 https://management.core.windows.net/{subscriptionId}/services/ServiceBus/namespaces/{namespace}/AuthorizationRules/
 ```
 
-Um ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt für einen Service Bus-Namespace zu erstellen, führen Sie einen POST-Vorgang für diesen Endpunkt mit den Regelinformationen aus, die als JSON oder XML serialisiert wurden. Beispiel:
+Um ein [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt für einen Service Bus-Namespace zu erstellen, führen Sie einen POST-Vorgang für diesen Endpunkt mit den Regelinformationen aus, die als JSON oder XML serialisiert wurden. Beispiel: 
 
 ```csharp
 // Base address for accessing authorization rules on a namespace
@@ -320,7 +320,7 @@ Die folgende Tabelle zeigt die Zugriffsrechte, die für verschiedene Vorgänge f
 | Konfigurieren einer Autorisierungsregel für einen Namespace |Verwalten |Jede Namespaceadresse |
 | **Dienstregistrierung** | | |
 | Aufzählen privater Richtlinien |Verwalten |Jede Namespaceadresse |
-| Starten des Lauschvorgangs an einem Namespace |Empfangen |Jede Namespaceadresse |
+| Starten des Lauschvorgangs an einem Namespace |Lauschen |Jede Namespaceadresse |
 | Senden von Nachrichten an einen Listener in einem Namespace |Send |Jede Namespaceadresse |
 | **Warteschlange** | | |
 | Erstellen einer Warteschlange |Verwalten |Jede Namespaceadresse |
@@ -329,12 +329,12 @@ Die folgende Tabelle zeigt die Zugriffsrechte, die für verschiedene Vorgänge f
 | Abrufen der Warteschlangenbeschreibung |Verwalten |Beliebige gültige Warteschlangenadresse |
 | Konfigurieren einer Autorisierungsregel für eine Warteschlange |Verwalten |Beliebige gültige Warteschlangenadresse |
 | Senden in die Warteschlange |Send |Beliebige gültige Warteschlangenadresse |
-| Empfangen von Nachrichten aus einer Warteschlange |Empfangen |Beliebige gültige Warteschlangenadresse |
-| Verwerfen oder Abschließen von Nachrichten nach dem Empfang der Nachricht im Peek/Lock-Modus |Empfangen |Beliebige gültige Warteschlangenadresse |
-| Zurückstellen einer Nachricht für den späteren Abruf |Empfangen |Beliebige gültige Warteschlangenadresse |
-| Platzieren einer Nachricht in die Warteschlange für unzustellbare Nachrichten |Empfangen |Beliebige gültige Warteschlangenadresse |
-| Abrufen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Empfangen |Beliebige gültige Warteschlangenadresse |
-| Festlegen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Empfangen |Beliebige gültige Warteschlangenadresse |
+| Empfangen von Nachrichten aus einer Warteschlange |Lauschen |Beliebige gültige Warteschlangenadresse |
+| Verwerfen oder Abschließen von Nachrichten nach dem Empfang der Nachricht im Peek/Lock-Modus |Lauschen |Beliebige gültige Warteschlangenadresse |
+| Zurückstellen einer Nachricht für den späteren Abruf |Lauschen |Beliebige gültige Warteschlangenadresse |
+| Platzieren einer Nachricht in die Warteschlange für unzustellbare Nachrichten |Lauschen |Beliebige gültige Warteschlangenadresse |
+| Abrufen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Lauschen |Beliebige gültige Warteschlangenadresse |
+| Festlegen des einer Nachrichtenwarteschlangensitzung zugeordneten Status |Lauschen |Beliebige gültige Warteschlangenadresse |
 | **Thema** | | |
 | Erstellen eines Themas |Verwalten |Jede Namespaceadresse |
 | Löschen eines Themas |Verwalten |Beliebige gültige Themenadresse |
@@ -347,11 +347,11 @@ Die folgende Tabelle zeigt die Zugriffsrechte, die für verschiedene Vorgänge f
 | Löschen eines Abonnements |Verwalten |../myTopic/Subscriptions/mySubscription |
 | Aufzählen von Abonnements |Verwalten |../myTopic/Subscriptions |
 | Abrufen der Abonnementbeschreibung |Verwalten |../myTopic/Subscriptions/mySubscription |
-| Verwerfen oder Abschließen von Nachrichten nach dem Empfang der Nachricht im Peek/Lock-Modus |Empfangen |../myTopic/Subscriptions/mySubscription |
-| Zurückstellen einer Nachricht für den späteren Abruf |Empfangen |../myTopic/Subscriptions/mySubscription |
-| Platzieren einer Nachricht in die Warteschlange für unzustellbare Nachrichten |Empfangen |../myTopic/Subscriptions/mySubscription |
-| Abrufen des einer Themensitzung zugeordneten Status |Empfangen |../myTopic/Subscriptions/mySubscription |
-| Festlegen des einer Themensitzung zugeordneten Status |Empfangen |../myTopic/Subscriptions/mySubscription |
+| Verwerfen oder Abschließen von Nachrichten nach dem Empfang der Nachricht im Peek/Lock-Modus |Lauschen |../myTopic/Subscriptions/mySubscription |
+| Zurückstellen einer Nachricht für den späteren Abruf |Lauschen |../myTopic/Subscriptions/mySubscription |
+| Platzieren einer Nachricht in die Warteschlange für unzustellbare Nachrichten |Lauschen |../myTopic/Subscriptions/mySubscription |
+| Abrufen des einer Themensitzung zugeordneten Status |Lauschen |../myTopic/Subscriptions/mySubscription |
+| Festlegen des einer Themensitzung zugeordneten Status |Lauschen |../myTopic/Subscriptions/mySubscription |
 | **Regeln** | | |
 | Erstellen einer Regel |Verwalten |../myTopic/Subscriptions/mySubscription |
 | Löschen einer Regel |Verwalten |../myTopic/Subscriptions/mySubscription |

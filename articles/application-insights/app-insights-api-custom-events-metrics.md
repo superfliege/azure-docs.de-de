@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1e7b5d4409b3e53db9313cf353894d5818837588
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 4cbc423555abfe6beee2c89d9df0760ce7c2fd6e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights-API für benutzerdefinierte Ereignisse und Metriken
 
@@ -522,7 +522,7 @@ Wenn die [Stichprobenentnahme](app-insights-sampling.md) aktiv ist, wird für di
 exceptions | summarize sum(itemCount) by type
 ```
 
-Die meisten wichtigen Stapelinformationen wurden bereits in separate Variablen extrahiert, Sie können jedoch die Struktur `details` analysieren, um weitere Informationen zu erhalten. Da es sich hierbei um eine dynamische Struktur handelt, muss das Ergebnis in den erwarteten Typ umgewandelt werden. Beispiel:
+Die meisten wichtigen Stapelinformationen wurden bereits in separate Variablen extrahiert, Sie können jedoch die Struktur `details` analysieren, um weitere Informationen zu erhalten. Da es sich hierbei um eine dynamische Struktur handelt, muss das Ergebnis in den erwarteten Typ umgewandelt werden. Beispiel: 
 
 ```AIQL
 exceptions
@@ -555,7 +555,7 @@ Sie können nach Nachrichteninhalt suchen, aber (anders als bei Eigenschaftswert
 Die Größenbeschränkung für `message` liegt wesentlich höher als der Grenzwert für Eigenschaften.
 Ein Vorteil von TrackTrace ist, dass relativ lange Daten in die Nachricht eingefügt werden können. Sie können dort beispielsweise POST-Daten codieren.  
 
-Darüber hinaus können Sie Ihrer Nachricht einen Schweregrad hinzufügen. Wie bei anderen Telemetriedaten auch können Sie Eigenschaftswerte hinzufügen, um zu filtern oder nach verschiedenen Ablaufverfolgungen zu suchen. Beispiel:
+Darüber hinaus können Sie Ihrer Nachricht einen Schweregrad hinzufügen. Wie bei anderen Telemetriedaten auch können Sie Eigenschaftswerte hinzufügen, um zu filtern oder nach verschiedenen Ablaufverfolgungen zu suchen. Beispiel: 
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -900,11 +900,11 @@ Sie können Code zum Verarbeiten Ihrer Telemetriedaten schreiben, bevor diese vo
 
 [Fügen Sie der Telemetrie Eigenschaften hinzu](app-insights-api-filtering-sampling.md#add-properties), indem Sie `ITelemetryInitializer` implementieren. Beispielsweise können Sie Versionsnummern oder Werte hinzufügen, die anhand von anderen Eigenschaften berechnet werden.
 
-Mittels [Filterung](app-insights-api-filtering-sampling.md#filtering) können Sie Telemetriedaten ändern oder verwerfen, bevor sie vom SDK gesendet werden. Implementieren Sie hierzu `ITelemetryProcesor`. Sie steuern, was gesendet oder verworfen wird, aber Sie müssen die Auswirkung auf Ihre Metriken im Auge behalten. Je nach Vorgehensweise beim Verwerfen der Elemente kann es sein, dass Sie nicht mehr zwischen verwandten Elementen navigieren können.
+Mittels [Filterung](app-insights-api-filtering-sampling.md#filtering) können Sie Telemetriedaten ändern oder verwerfen, bevor sie vom SDK gesendet werden. Implementieren Sie hierzu `ITelemetryProcessor`. Sie steuern, was gesendet oder verworfen wird, aber Sie müssen die Auswirkung auf Ihre Metriken im Auge behalten. Je nach Vorgehensweise beim Verwerfen der Elemente kann es sein, dass Sie nicht mehr zwischen verwandten Elementen navigieren können.
 
 [Erstellung von Stichproben](app-insights-api-filtering-sampling.md) ist eine sofort einsetzbare Methode, um das von Ihrer App an das Portal gesendete Datenvolumen zu reduzieren. Dies erfolgt ohne Auswirkung auf die angezeigten Metriken. Außerdem hat dies keinerlei Auswirkungen auf die Fähigkeit, Probleme durch Navigieren zwischen verwandten Elementen wie Ausnahmen, Anforderungen und Seitenansichten zu diagnostizieren.
 
-[detaillierte Kapazitätsplanung](app-insights-api-filtering-sampling.md)
+[Weitere Informationen](app-insights-api-filtering-sampling.md)
 
 ## <a name="disabling-telemetry"></a>Deaktivieren der Telemetrie
 So können Sie die Sammlung und Übermittlung von Telemetriedaten *dynamisch beenden und starten* :
@@ -962,7 +962,7 @@ Während des Debuggens ist es sinnvoll, die Telemetriedaten beschleunigt über d
     // ...
 
 
-## <a name="dynamic-ikey"></a> Dynamischer Instrumentierungsschlüssel
+## <a name="dynamic-ikey"></a> Dynamischer Instrumentationsschlüssel
 Um das Vermischen von Telemetriedaten aus Entwicklungs-, Test- und Produktionsumgebungen zu vermeiden, können Sie [separate Application Insights-Ressourcen erstellen](app-insights-create-new-resource.md) und ihre Schlüssel abhängig von der Umgebung ändern.
 
 Statt den Instrumentationsschlüssel aus der Konfigurationsdatei abzurufen, können Sie ihn im Code festlegen. Legen Sie den Schlüssel in einer Initialisierungsmethode fest, wie z. B. "global.aspx.cs" in einem ASP.NET-Dienst:
@@ -999,7 +999,7 @@ Auf Webseiten empfiehlt es sich, ihn über den Zustand des Webservers festzulege
 
 
 ## <a name="telemetrycontext"></a>TelemetryContext
-TelemetryClient besitzt eine Context-Eigenschaft mit Werten, die zusammen mit allen Telemetriedaten gesendet werden. Sie werden normalerweise von den Standardtelemetriemodulen festgelegt, aber Sie können sie auch selbst einstellen. Beispiel:
+TelemetryClient besitzt eine Context-Eigenschaft mit Werten, die zusammen mit allen Telemetriedaten gesendet werden. Sie werden normalerweise von den Standardtelemetriemodulen festgelegt, aber Sie können sie auch selbst einstellen. Beispiel: 
 
     telemetry.Context.Operation.Name = "MyOperationName";
 
@@ -1017,7 +1017,7 @@ Wenn Sie diese Werte selbst festlegen, empfiehlt es sich, die entsprechende Zeil
 * **Session**: Die Sitzung des Benutzers. Die ID wird auf einen generierten Wert festgelegt, der geändert wird, wenn der Benutzer für eine Weile nicht aktiv ist.
 * **User**: Benutzerinformationen.
 
-## <a name="limits"></a>Grenzen
+## <a name="limits"></a>Einschränkungen
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
 Nutzen Sie die [Stichprobenerstellung (Sampling)](app-insights-sampling.md), um zu vermeiden, dass Sie die Datenratengrenze erreichen.
@@ -1043,7 +1043,7 @@ Informationen dazu, wie lange Daten aufbewahrt werden, finden Sie unter [Datensp
 ## <a name="questions"></a>Fragen
 * *Welche Ausnahmen werden möglicherweise von Aufrufen vom Typ „Track_()“ ausgelöst?*
 
-    Keine Sie müssen sie nicht mit try/catch-Klauseln umschließen. Wenn beim SDK Probleme auftreten, werden Meldungen in der Debugkonsolenausgabe und – sofern die Meldungen ankommen – in der Diagnosesuche protokolliert.
+    None (Keine): Sie müssen sie nicht mit try/catch-Klauseln umschließen. Wenn beim SDK Probleme auftreten, werden Meldungen in der Debugkonsolenausgabe und – sofern die Meldungen ankommen – in der Diagnosesuche protokolliert.
 * *Gibt es eine REST-API zum Abrufen von Daten aus dem Portal?*
 
     Ja, die [Datenzugriffs-API](https://dev.applicationinsights.io/). Weitere Methoden zum Extrahieren von Daten stellen das [Exportieren aus Analytics in Power BI](app-insights-export-power-bi.md) und der [fortlaufende Export](app-insights-export-telemetry.md) dar.

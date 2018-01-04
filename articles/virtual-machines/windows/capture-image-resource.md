@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: a7e94fe2cd2db398ab2afa9a6492cea144071114
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 172ad5198f7c813ed114f9fe3caea3d6a5dc6a97
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
@@ -40,7 +40,7 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 1. Melden Sie sich bei dem virtuellen Windows-Computer an.
 2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\system32\sysprep**, und führen Sie anschließend `sysprep.exe` aus.
 3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren**.
+4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
 5. Klicken Sie auf **OK**.
    
     ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
@@ -127,7 +127,7 @@ Wenn Sie nur ein Image des Betriebssystemdatenträgers erstellen möchten, könn
 2. Rufen Sie die VM ab.
 
    ```azurepowershell-interactive
-   $vm = Get-AzureRmVm -Name myVM -ResourceGroupName $rgName
+   $vm = Get-AzureRmVm -Name $vmName -ResourceGroupName $rgName
    ```
 
 3. Rufen Sie die ID des verwalteten Datenträgers ab.

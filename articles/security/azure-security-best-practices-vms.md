@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: 1af02c90c6a97bed612903de438b4d8c26be19b6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db8b0cc58738308116da84f2a45d6507c87f3cde
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Bewährte Methoden für die Sicherheit virtueller Azure-Computer
 
@@ -51,7 +51,7 @@ Der erste Schritt zum Schutz Ihres virtuellen Computers ist es, sicherzustellen,
 
 Virtuelle Computer, die einer Ressourcengruppe angehören, erben natürlich deren Richtlinien. Diese Herangehensweise wird zwar für die Verwaltung virtueller Computer empfohlen, Sie können den Zugriff auf einzelne VM-Richtlinien jedoch auch mithilfe der [rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-configure.md) steuern.
 
-Wenn Sie Resource Manager-Richtlinien und RBAC zum Steuern des Zugriffs auf virtuelle Computer aktivieren, verbessern Sie dadurch insgesamt die Sicherheit von virtuellen Computern. Es empfiehlt sich, virtuelle Computer mit gleichem Lebenszyklus in der gleichen Ressourcengruppe zusammenzufassen. Ressourcengruppen ermöglichen die Bereitstellung und Überwachung Ihrer Ressourcen sowie die Zusammenfassung der Abrechnungskosten für Ihre Ressourcen. Verwenden Sie den [Ansatz der geringsten Rechte](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models), wenn Sie Benutzern Zugriff auf virtuelle Computer gewähren und ihnen die Einrichtung virtueller Computer ermöglichen. Planen Sie außerdem die Verwendung der folgenden integrierten Azure-Rollen, wenn Sie den Benutzern Berechtigungen zuweisen:
+Wenn Sie Resource Manager-Richtlinien und RBAC zum Steuern des Zugriffs auf virtuelle Computer aktivieren, verbessern Sie dadurch insgesamt die Sicherheit von virtuellen Computern. Es empfiehlt sich, virtuelle Computer mit gleichem Lebenszyklus in der gleichen Ressourcengruppe zusammenzufassen. Ressourcengruppen ermöglichen die Bereitstellung und Überwachung Ihrer Ressourcen sowie die Zusammenfassung der Abrechnungskosten für Ihre Ressourcen. Verwenden Sie den [Ansatz der geringsten Rechte](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models), wenn Sie Benutzern Zugriff auf virtuelle Computer gewähren und ihnen die Einrichtung virtueller Computer ermöglichen. Planen Sie außerdem die Verwendung der folgenden integrierten Azure-Rollen, wenn Sie den Benutzern Berechtigungen zuweisen:
 
 - [Mitwirkender für virtuelle Computer:](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor) Kann virtuelle Computer verwalten, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
 - [Mitwirkender für klassische virtuelle Computer:](../active-directory/role-based-access-built-in-roles.md#classic-virtual-machine-contributor) Kann virtuelle Computer verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
@@ -80,7 +80,7 @@ Die [Verschlüsselung ruhender Daten](https://blogs.microsoft.com/cybertrust/201
 
 Mit Disk Encryption können Sie den Schutz Ihrer Daten verbessern, um die Sicherheits- und Complianceanforderungen Ihrer Organisation zu erfüllen. Die Verwendung der Verschlüsselung empfiehlt sich für Organisationen zudem, um das Risiko unberechtigter Datenzugriffe zu reduzieren. Des Weiteren empfehlen wir eine Verschlüsselung Ihrer Laufwerke, bevor diese mit sensiblen Daten beschrieben werden.
 
-Verschlüsseln Sie die Datenvolumen Ihrer virtuellen Computer, um die ruhenden Daten in Ihrem Azure-Speicherkonto zu schützen. Schützen Sie die Verschlüsselungsschlüssel und das Geheimnis mithilfe von [Azure Key Vault](https://azure.microsoft.com/en-us/documentation/articles/key-vault-whatis/).
+Verschlüsseln Sie die Datenvolumen Ihrer virtuellen Computer, um die ruhenden Daten in Ihrem Azure-Speicherkonto zu schützen. Schützen Sie die Verschlüsselungsschlüssel und das Geheimnis mithilfe von [Azure Key Vault](https://azure.microsoft.com/documentation/articles/key-vault-whatis/).
 
 Organisationen, die keine Datenverschlüsselung erzwingen, sind anfälliger für Datenintegritätsprobleme. So können beispielsweise nicht autorisierte Benutzer Daten aus kompromittierten Konten entwenden oder sich unberechtigt Zugang zu unverschlüsselten Daten verschaffen. Unternehmen setzen sich jedoch nicht nur diesen Risiken aus, sondern müssen zur Erfüllung von Branchenbestimmungen auch nachweisen, dass sie gewissenhaft mit Daten umgehen und geeignete Sicherheitsmaßnahmen ergreifen, um die Datensicherheit zu verbessern.
 
@@ -122,7 +122,7 @@ Organisationen, die für ihre virtuellen Computer kein hohes Maß an Sicherheit 
 
 Ressourcenmissbrauch kann problematisch sein, wenn Prozesse von virtuellen Computern mehr Ressourcen beanspruchen als sie sollten. Leistungsprobleme bei einem virtuellen Computer können zu einer Dienstunterbrechung führen und gegen das Sicherheitsprinzip der Verfügbarkeit verstoßen. Aus diesem Grund muss der Zugriff auf virtuelle Computer nicht nur reaktiv (also wenn bereits ein Problem auftritt), sondern auch proaktiv anhand einer im Normalbetrieb ermittelten Baseline überwacht werden.
 
-Durch die Analyse der [Azure-Diagnoseprotokolldateien](https://azure.microsoft.com/en-us/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) können Sie die Ressourcen Ihrer virtuellen Computer überwachen und potenzielle Probleme erkennen, die unter Umständen die Leistung und Verfügbarkeit beeinträchtigen. Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md) einbeziehen.
+Durch die Analyse der [Azure-Diagnoseprotokolldateien](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) können Sie die Ressourcen Ihrer virtuellen Computer überwachen und potenzielle Probleme erkennen, die unter Umständen die Leistung und Verfügbarkeit beeinträchtigen. Die Azure-Diagnoseerweiterung stellt Überwachungs- und Diagnosefunktionen auf virtuellen Windows-Computern bereit. Diese Funktionen können Sie aktivieren, indem Sie die Erweiterung in die [Azure Resource Manager-Vorlage](../virtual-machines/windows/extensions-diagnostics-template.md) einbeziehen.
 
 Sie können auch [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-metrics.md) verwenden, um sich über den Zustand Ihrer Ressourcen zu informieren.
 

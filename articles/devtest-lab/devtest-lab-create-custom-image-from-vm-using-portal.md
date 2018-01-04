@@ -3,7 +3,7 @@ title: Erstellen eines benutzerdefinierten Azure DevTest Labs-Images aus einem v
 description: Erfahren Sie, wie Sie mit dem Azure-Portal aus einem bereitgestellten virtuellen Computer ein benutzerdefiniertes Image in Azure DevTest Labs erstellen.
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: tarcher
-ms.openlocfilehash: 9d2dcf7164985508d691e8a0c123efaf3b8aa19a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: ce854024df5c6974873cf3574bf2de282946f6d0
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Erstellen eines benutzerdefinierten Images von einem virtuellen Computer
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 
 Sie können ein benutzerdefiniertes Image aus einem bereitgestellten virtuellen Computer erstellen und es anschließend zum Erstellen identischer virtuelle Computer verwenden. Die folgenden Schritte beschreiben, wie Sie ein benutzerdefiniertes Image von einem virtuellen Computer erstellen:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 
 1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 
@@ -59,4 +59,4 @@ Sie können ein benutzerdefiniertes Image aus einem bereitgestellten virtuellen 
 
 ##<a name="next-steps"></a>Nächste Schritte
 
-- [Hinzufügen eines virtuellen Computers zum Lab](./devtest-lab-add-vm-with-artifacts.md)
+- [Hinzufügen eines virtuellen Computers zum Lab](devtest-lab-add-vm.md)

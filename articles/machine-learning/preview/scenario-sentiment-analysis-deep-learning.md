@@ -7,6 +7,7 @@ author: miprasad
 manager: kristin.tolle
 editor: miprasad
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: miprasad
-ms.openlocfilehash: 4a0985cd993c53dcf75d3b29e57598e72908163b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 255c39ea21378aae23fc61da6dc882138fb66ab1
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Standpunktanalyse mithilfe von Deep Learning und Azure Machine Learning
 
@@ -42,7 +43,7 @@ Um aus der Standpunktanalyse einen Nutzen zu ziehen, müssen Unternehmen in der 
 
 * Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
 
-* Eine gemäß dem [Schnellstart-Installationshandbuch](./quickstart-installation.md) installierte Instanz von [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
+* Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](./quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 
 * Für die Operationalisierung wird empfohlen, dass Sie das Docker-Modul installieren und lokal ausführen. Falls nicht gewünscht, können Sie die Clusteroption nutzen. Das Ausführen eines Azure Container Service (ACS) kann allerdings kostspielig sein.
 

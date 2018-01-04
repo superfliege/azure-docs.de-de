@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 5686d8bd3f9817be2308583afe778e0615154580
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 6ae05dc8faf950f584806d9b4a3e7e1466ded652
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Verwalten einer VM-Skalierungsgruppe mit der Azure CLI 2.0
 Während des Lebenszyklus einer Skalierungsgruppe müssen unter Umständen verschiedene Verwaltungsaufgaben durchgeführt werden. Darüber hinaus empfiehlt es sich, Skripts zum Automatisieren von verschiedenen Aufgaben im Lebenszyklus zu erstellen. In diesem Artikel werden einige der gängigen Azure CLI 2.0-Befehle behandelt, mit denen Sie diese Aufgaben durchführen können.
 
-Für diese Verwaltungsaufgaben benötigen Sie den neuesten Build der Azure CLI 2.0. Informationen zum Installieren und Verwenden der neuesten Version finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli). Bei Bedarf können Sie [eine VM-Skalierungsgruppe über das Azure-Portal erstellen](virtual-machine-scale-sets-portal-create.md).
+Für diese Verwaltungsaufgaben benötigen Sie den neuesten Build der Azure CLI 2.0. Informationen zum Installieren und Verwenden der neuesten Version finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli). Bei Bedarf können Sie [eine VM-Skalierungsgruppe über das Azure-Portal erstellen](virtual-machine-scale-sets-create-portal.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>Anzeigen von Informationen zu einer Skalierungsgruppe
@@ -127,7 +127,7 @@ az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-id
 
 
 ## <a name="remove-vms-from-a-scale-set"></a>Entfernen von virtuellen Computern aus einer Skalierungsgruppe
-Verwenden Sie [az vmss delete-instances](/cli/azure/vmss#delete-instances), um virtuelle Computer in einer Skalierungsgruppe zu entfernen. Mit dem Parameter „--instance-ids“ können Sie die zu entfernenden virtuellen Computer angeben. Wenn Sie für die Instanz-ID ein Sternchen (*) angeben, werden alle virtuellen Computer in der Skalierungsgruppe entfernt. Wenn Sie mehrere virtuelle Computer entfernen möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
+Verwenden Sie [az vmss delete-instances](/cli/azure/vmss#delete-instances), um virtuelle Computer in einer Skalierungsgruppe zu entfernen. Mit dem Parameter `--instance-ids` können Sie die zu entfernenden virtuellen Computer angeben. Wenn Sie für die Instanz-ID ein Sternchen (*) angeben, werden alle virtuellen Computer in der Skalierungsgruppe entfernt. Wenn Sie mehrere virtuelle Computer entfernen möchten, trennen Sie die einzelnen Instanz-IDs jeweils durch ein Leerzeichen.
 
 Im folgenden Beispiel wird die VM-Instanz *0* in der Skalierungsgruppe namens *myScaleSet* und der Ressourcengruppe *myResourceGroup* entfernt. Geben Sie Ihre Werte wie folgt an:
 

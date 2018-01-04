@@ -6,14 +6,14 @@ keywords: "Vermeiden Sie es, Schlüsselwörter hinzuzufügen oder zu bearbeiten,
 author: philmea
 ms.author: philmea
 ms.date: 11/22/2017
-ms.topic: how-to
+ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 9ddd11806accddb41c02c0c6681aac07bba25356
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 06743640aae5e06d0160105458d9a3cfa35d5040
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-use-the-azure-location-based-services-map-control"></a>Anleitung: Verwenden des Azure Location Based Services-Kartensteuerelements
 Mit der clientseitigen JavaScript-Bibliothek des Kartensteuerelements können Sie Karten und eingebettete Azure Location Based Services-Funktionen in Ihrer Web- oder mobilen Anwendung rendern. 

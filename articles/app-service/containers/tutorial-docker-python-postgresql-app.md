@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/29/2017
 ms.author: beverst
 ms.custom: mvc
-ms.openlocfilehash: 161d9fda75caa7836e012e6e1ff79df576281137
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0bd4f390e4507fccd1ca564c48c0f321412e229d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Erstellen einer Docker Python- und PostgreSQL-Web-App in Azure
 
@@ -30,7 +30,7 @@ Sie können unter macOS folgende Schritte ausführen. Die Anweisungen für Linux
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-1. [Installieren Sie Git.](https://git-scm.com/)
+1. [Installation von Git](https://git-scm.com/)
 1. [Installieren Sie Python.](https://www.python.org/downloads/)
 1. [Laden Sie PostgreSQL herunter, und führen Sie es aus.](https://www.postgresql.org/download/)
 1. [Installieren Sie Docker Community Edition.](https://www.docker.com/community-edition)
@@ -121,7 +121,7 @@ In diesem Schritt erstellen Sie eine PostgreSQL-Datenbank in Azure. Wenn Ihre Ap
 
 ### <a name="log-in-to-azure"></a>Anmelden an Azure
 
-Im nächsten Schritt werden mit Azure CLI 2.0 die Ressourcen erstellt, die zum Hosten Ihrer Python-Anwendung in Web-App für Container benötigt werden.  Melden Sie sich mit dem Befehl [az login](/cli/azure/#az_login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+Im nächsten Schritt werden mit Azure CLI 2.0 die Ressourcen erstellt, die zum Hosten Ihrer Python-Anwendung in Web-App für Container benötigt werden.  Melden Sie sich mit dem Befehl [az login](/cli/azure/?view=azure-cli-latest#az_login) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
 ```azurecli
 az login
@@ -129,7 +129,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az_group_create) eine [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md).
+Erstellen Sie mit dem Befehl [az group create](/cli/azure/group?view=azure-cli-latest#az_group_create) eine [Ressourcengruppe](../../azure-resource-manager/resource-group-overview.md).
 
 [!INCLUDE [Resource group intro](../../../includes/resource-group.md)]
 
@@ -139,11 +139,11 @@ Im folgenden Beispiel wird eine Ressourcengruppe in der Region „USA, Westen“
 az group create --name myResourceGroup --location "West US"
 ```
 
-Verwenden Sie den Azure CLI-Befehl [az appservice list-locations](/cli/azure/appservice#az_appservice_list_locations) zum Auflisten der verfügbaren Speicherorte.
+Verwenden Sie den Azure CLI-Befehl [az appservice list-locations](/cli/azure/appservice?view=azure-cli-latest#az_appservice_list_locations) zum Auflisten der verfügbaren Speicherorte.
 
 ### <a name="create-an-azure-database-for-postgresql-server"></a>Erstellen einer Azure-Datenbank für PostgreSQL-Server
 
-Erstellen Sie mit dem Befehl [az postgresql server create](/cli/azure/postgres/server#az_postgres_server_create) einen PostgreSQL-Server.
+Erstellen Sie mit dem Befehl [az postgresql server create](/cli/azure/postgres/server?view=azure-cli-latest#az_postgres_server_create) einen PostgreSQL-Server.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter  *\<postgresql_name>* durch einen eindeutigen Servernamen und den Platzhalter  *\<admin_username>*durch einen Benutzernamen. Der Servername dient als Teil Ihrer PostgreSQL-Endpunkts (`https://<postgresql_name>.postgres.database.azure.com`). Daher muss der Name auf allen Servern in Azure eindeutig sein. Der Benutzername ist erforderlich, um das anfängliche Konto des Administratorbenutzers für die Datenbank zu erstellen. Sie werden aufgefordert, ein Kennwort für diesen Benutzer auszuwählen.
 
@@ -300,7 +300,7 @@ Ersetzen Sie im folgenden Befehl *\<registry_name>* durch einen eindeutigen Azur
 az acr create --name <registry_name> --resource-group myResourceGroup --location "West US" --sku Basic
 ```
 
-Ausgabe
+Output
 
 ```json
 {
@@ -364,7 +364,7 @@ In diesem Schritt stellen Sie die auf einem Docker Container basierende Python F
 
 ### <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
-Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) einen App Service-Plan.
+Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) einen App Service-Plan.
 
 [!INCLUDE [app-service-plan](../../../includes/app-service-plan-linux.md)]
 
@@ -414,7 +414,7 @@ Nach dem Erstellen des App Service-Plans zeigt die Azure-CLI Informationen wie i
 
 ### <a name="create-a-web-app"></a>Erstellen einer Web-App
 
-Erstellen Sie eine Web-App im App Service-Plan *myAppServicePlan* mit dem Befehl [az webapp create](/cli/azure/webapp#az_webapp_create).
+Erstellen Sie eine Web-App im App Service-Plan *myAppServicePlan* mit dem Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create).
 
 Die Web-App bietet Ihnen eine Hostingumgebung zum Bereitstellen Ihres Codes sowie eine URL, unter der Sie sich die bereitgestellte Anwendung ansehen können. Erstellen Sie damit die Web-App.
 
@@ -445,7 +445,7 @@ Nach dem Erstellen der Web-App zeigt die Azure-Befehlszeilenschnittstelle Inform
 
 Weiter oben in diesem Tutorial haben Sie die Umgebungsvariablen für die Verbindung mit der PostgreSQL-Datenbank definiert.
 
-In App Service legen Sie Umgebungsvariablen als _App-Einstellungen_ fest, indem Sie den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) verwenden.
+In App Service legen Sie Umgebungsvariablen als _App-Einstellungen_ fest, indem Sie den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) verwenden.
 
 Im folgenden Beispiel werden die Details der Datenbankverbindung als App-Einstellungen angeben. Darüber hinaus wird die Variable *PORT* zum Zuordnen von PORT 5000 aus dem Docker-Container zum Empfangen von HTTP-Datenverkehr über PORT 80 verwendet.
 

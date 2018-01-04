@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 4121f94e15d9ba938d90d72e70d7bcb49a6c1ed5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6f1085a8b434aca18499e17ba1c1d086edfc302e
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in Azure Active Directory
 In diesem Artikel wird erläutert, wie Sie in Azure Active Directory Benutzerprofilinformationen hinzufügen können, beispielsweise ein Profilbild oder Informationen für die Authentifizierung per Telefon und E-Mail. Informationen dazu, wie Sie neue Benutzer in Ihrer Organisation hinzufügen, finden Sie unter [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md).
@@ -42,5 +42,4 @@ In diesem Artikel wird erläutert, wie Sie in Azure Active Directory Benutzerpro
 * [Hinzufügen neuer Benutzer zu Azure Active Directory](active-directory-users-create-azure-portal.md)
 * [Zurücksetzen des Kennworts für einen Benutzer in Azure Active Directory](active-directory-users-reset-password-azure-portal.md)
 * [Zuweisen eines Benutzers zu Administratorrollen in Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
-* [Hinzufügen oder Ändern von Profilinformationen für einen Benutzer in Azure Active Directory](active-directory-users-work-info-azure-portal.md)
 * [Löschen eines Benutzers aus einem Verzeichnis in Azure Active Directory](active-directory-users-delete-user-azure-portal.md)

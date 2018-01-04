@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/30/2017
+ms.date: 12/20/2017
 ms.author: sethm;clemensv
-ms.openlocfilehash: ffab5b058420d61be17d386a46a29391d5728859
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bfe7b95236c1a5336c1bb3a93d0eb5ca880adabf
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="event-hubs-authentication-and-security-model-overview"></a>Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)
 
@@ -110,11 +110,11 @@ In Ermangelung einer SAS-Authentifizierung für einzelne Consumergruppen können
 
 Weitere Informationen zu Event Hubs finden Sie unter den folgenden Themen:
 
-* [Übersicht über Event Hubs]
+* [Übersicht über Event Hubs]
 * [Overview of Shared Access Signatures (Übersicht von Shared Access Signatures)]
-* [Sample applications that use Event Hubs (Beispielanwendung mit Verwendung von Event Hubs)]
+* [Beispielanwendungen mit Event Hubs]
 
-[Übersicht über Event Hubs]: event-hubs-what-is-event-hubs.md
-[Sample applications that use Event Hubs (Beispielanwendung mit Verwendung von Event Hubs)]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Übersicht über Event Hubs]: event-hubs-what-is-event-hubs.md
+[Beispielanwendungen mit Event Hubs]: https://github.com/Azure/azure-event-hubs/tree/master/samples
 [Overview of Shared Access Signatures (Übersicht von Shared Access Signatures)]: ../service-bus-messaging/service-bus-sas.md
 

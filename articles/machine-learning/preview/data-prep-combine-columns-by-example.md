@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 3ca1710c969b9bc5a1f56dc53f52c706e1ed07cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc3870e81edd47a9932db86d347290451c4f1eb8
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="combine-columns-by-example-transformation"></a>Transformation „Spalten nach Beispiel kombinieren“
 Diese Transformation ermöglicht Benutzern das Hinzufügen einer neuen Spalte, indem Werte aus mehreren Spalten kombiniert werden. Der Benutzer kann zum Ausführen dieser Transformation ein Trennzeichen oder Beispiele für kombinierte Werte angeben. Wenn der Benutzer Beispiele für Kombinationen angibt, wird die Transformation von demselben **By-Example**-Modul verarbeitet, das bei der Transformation **Spalten nach Beispiel ableiten** verwendet wurde.
@@ -36,7 +36,7 @@ Durch die Auswahl von **Trennzeichen** unter **Spalten kombinieren nach** könne
 
 Durch Auswahl von **Beispiele** unter **Spalten kombinieren nach** können Benutzer Beispiele für kombinierte Werte angeben. Um ein Beispiel für eine Zeile anzuzeigen, doppelklicken Sie auf die Zeilen im Raster. Geben Sie die erwartete Ausgabe in das Textfeld für die höher gestufte Zeile ein. Schließen Sie das Textfeld **Trennzeichen**, um eine Vorschau der Ergebnisse im Datenraster anzuzeigen. Klicken Sie auf **OK**, um einen Commit für die Transformation auszuführen. 
 
-Benutzer können zwischen dem **Standardmodus**  und dem **erweiterten Modus** wechseln, indem Sie im Editor für Transformationen auf die entsprechenden Links klicken.
+Benutzer können zwischen dem einfachen Modus (**Basic Mode**) und dem erweiterten Modus (**Advanced Mode**) umschalten, indem sie im Editor für Transformationen auf die entsprechenden Links klicken.
 
 ### <a name="editing-existing-transformation"></a>Bearbeiten von vorhandenen Transformationen
 
@@ -46,7 +46,7 @@ Benutzer können eine vorhandene Transformation vom Typ **Spalten nach Beispiel 
 
 Ein Komma gefolgt von einem Leerzeichen dient als Trennzeichen in diesem Beispiel, um die Spalten *Straße*, *Stadt*, *Bundesstaat* und *PLZ* zu kombinieren.
 
-|Straße|City|Zustand|ZIP|Column|
+|Straße|City|State (Zustand)|ZIP|Column|
 |:----|:----|:----|:----|:----|
 |16011 N.E. 36th Way|REDMOND|WA|98052|16011 N.E. 36th Way, REDMOND, WA, 98052|
 |16021 N.E. 36th Way|REDMOND|WA|98052|16021 N.E. 36th Way, REDMOND, WA, 98052|
@@ -62,7 +62,7 @@ Ein Komma gefolgt von einem Leerzeichen dient als Trennzeichen in diesem Beispie
 
 Der **fett** hervorgehobene Wert wurde als Beispiel angegeben.
 
-|Date|Month (Monat)|Jahr|Hour|Minute|Sekunde|Kombinierte Spalte|
+|Datum|Month (Monat)|Jahr|Hour|Minute|Sekunde|Kombinierte Spalte|
 |:----|:----|:----|:----|:----|:----|:----|
 |13|Okt|2016|15|01|23|**13-Okt-2016 15:01:23 PDT**|
 |16|Okt|2016|16|22|33|16-Okt-2016 15:01:33 PDT|

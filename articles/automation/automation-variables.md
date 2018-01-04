@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: e642a63486317387d66a9403b8276d2e0bd38fb6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: e38d2b751090cfdc078de4e8c683c6bb9b48fac3
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Variable Objekte in Azure Automation
 
@@ -45,17 +45,17 @@ Sie können mehrere Werte in einer einzigen Variable speichern, indem Sie ein Ar
 
 Im Folgenden finden Sie eine Liste von in Automation verfügbaren Variablentypen:
 
-* String
-* Integer
-* DateTime
-* Boolean
+* Zeichenfolge
+* Ganze Zahl 
+* Datetime
+* Boolescher Wert
 * Null
 
 ## <a name="scripting-the-creation-and-management-of-variables"></a>Skripts für die Erstellung und Verwaltung von Variablen
 
 Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Variablen mit Windows PowerShell verwendet. Sie gehören zum Funktionsumfang des [Azure PowerShell-Moduls](../powershell-install-configure.md) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-|Cmdlets|Beschreibung|
+|Cmdlets|BESCHREIBUNG|
 |:---|:---|
 |[Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)|Ruft den Wert einer vorhandenen Variable ab.|
 |[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|Erstellt eine neue Variable und legt ihren Wert fest.|
@@ -64,7 +64,7 @@ Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Auto
 
 Die Workflowaktivitäten in der folgenden Tabelle werden für den Zugriff auf Automation-Variablen in einem Runbook verwendet. Sie sind nur zur Verwendung in einem Runbook oder einer DSC-Konfiguration verfügbar und gehören nicht zum Funktionsumfang des Azure PowerShell-Moduls.
 
-|Workflowaktivitäten|Beschreibung|
+|Workflowaktivitäten|BESCHREIBUNG|
 |:---|:---|
 |Get-AutomationVariable|Ruft den Wert einer vorhandenen Variable ab.|
 |Set-AutomationVariable|Legt den Wert für eine vorhandene Variable fest.|
@@ -74,7 +74,7 @@ Die Workflowaktivitäten in der folgenden Tabelle werden für den Zugriff auf Au
 
 Die Funktionen in der folgenden Tabelle werden zum Zugreifen auf und Abrufen von Variablen in einem Python2-Runbook verwendet. 
 
-|Python2-Funktionen|Beschreibung|
+|Python2-Funktionen|BESCHREIBUNG|
 |:---|:---|
 |automationassets.get_automation_variable|Ruft den Wert einer vorhandenen Variable ab. |
 |automationassets.set_automation_variable|Legt den Wert für eine vorhandene Variable fest. |
@@ -96,10 +96,10 @@ Das Cmdlet [New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt
 
 Die folgenden Beispielbefehle zeigen, wie eine Variable vom Typ "string" erstellt und anschließend der Wert dieser Variablen zurückgegeben wird.
 
-    New-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" 
+    New-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" 
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable' `
     –Encrypted $false –Value 'My String'
-    $string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" `
+    $string = (Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 
 Die folgenden Beispielbefehle zeigen, wie eine Variable eines komplexen Typs erstellt wird und anschließend die Eigenschaften dieser Variablen zurückgegeben werden. In diesem Fall wird ein Objekt für einen virtuellen Computer von **Get-AzureRmVm** verwendet.
@@ -125,8 +125,8 @@ Verwenden Sie die Aktivität **Set-AutomationVariable**, um den Wert einer Autom
 
 Die folgenden Beispielbefehle zeigen, wie Sie eine Variable in einem Textrunbook festlegen und abrufen. In diesem Beispiel wird angenommen, dass die Variablen des Typs „integer“ *NumberOfIterations* und *NumberOfRunnings* sowie die Variable des Typs „string“ *SampleMessage* bereits erstellt wurden.
 
-    $NumberOfIterations = Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
-    $NumberOfRunnings = Get-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
+    $NumberOfIterations = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfIterations'
+    $NumberOfRunnings = Get-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" -Name 'NumberOfRunnings'
     $SampleMessage = Get-AutomationVariable -Name 'SampleMessage'
     
     Write-Output "Runbook has been run $NumberOfRunnings times."
@@ -134,7 +134,7 @@ Die folgenden Beispielbefehle zeigen, wie Sie eine Variable in einem Textrunbook
     for ($i = 1; $i -le $NumberOfIterations; $i++) {
        Write-Output "$i`: $SampleMessage"
     }
-    Set-AzureRmAutomationVariable -ResourceGroupName "ResouceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
+    Set-AzureRmAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name NumberOfRunnings –Value ($NumberOfRunnings += 1)
 
 #### <a name="setting-and-retrieving-a-complex-object-in-a-variable"></a>Festlegen und Abrufen eines komplexen Objekts in einer Variablen
 

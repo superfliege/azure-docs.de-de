@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: sdanie
-ms.openlocfilehash: 761c0d808eb787517473036e53992ff5e49b17fe
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 22cdf9f596d8a6057a2c847ea5bb4fc485db8637
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Importieren und Exportieren von Daten in Azure Redis Cache
 Import/Export ist ein Vorgang der Azure Redis Cache-Datenverwaltung, bei dem Sie Daten in Azure Redis Cache importieren oder aus Azure Redis Cache exportieren können. Hierzu importieren bzw. exportieren Sie eine Momentaufnahme der Redis Cache-Datenbank (RDB) aus einem Premium-Cache in ein Blob in einem Azure Storage-Konto. 
@@ -35,7 +35,7 @@ Dieser Artikel enthält eine Anleitung zum Importieren und Exportieren von Daten
 >
 >
 
-## <a name="import"></a>Import
+## <a name="import"></a>Importieren
 Die Importfunktion kann verwendet werden, um Redis-kompatible RDB-Dateien von beliebigen Redis-Servern zu importieren, die in einer Cloud oder Umgebung ausgeführt werden, z.B. Redis unter Linux oder Windows oder bei einem Cloudanbieter wie Amazon Web Services und anderen. Das Importieren von Daten ist eine einfache Möglichkeit zum Erstellen eines Cache mit vorab aufgefüllten Daten. Während des Importvorgangs lädt Azure Redis Cache die RDB-Dateien aus dem Azure-Speicher in den Arbeitsspeicher und fügt die Schlüssel anschließend in den Cache ein.
 
 > [!NOTE]
@@ -77,7 +77,7 @@ Mit der Exportfunktion können Sie die in Azure Redis Cache gespeicherten Daten 
 2. Klicken Sie auf **Speichercontainer auswählen** , und wählen Sie das gewünschte Speicherkonto aus. Das Speicherkonto muss sich in demselben Abonnement und derselben Region wie der Cache befinden.
 
    > [!IMPORTANT]
-   > Das Exportieren funktioniert in Verbindung mit Seitenblobs. Diese werden in klassischen Speicherkonten sowie in Resource Manager-Speicherkonten, aber derzeit noch nicht in [Blob Storage-Konten](../storage/blobs/storage-account-options.md#blob-storage-accounts) unterstützt.
+   > Das Exportieren funktioniert in Verbindung mit Seitenblobs. Diese werden in klassischen Speicherkonten sowie in Resource Manager-Speicherkonten, aber derzeit noch nicht in [Blob Storage-Konten](../storage/common/storage-account-options.md#blob-storage-accounts) unterstützt.
    >
    >
 
@@ -155,7 +155,7 @@ Wenn Sie sich vor dem Initiieren des Vorgangs länger als 15 Minuten auf dem Bla
 Initiieren Sie den Import- oder Exportvorgang, bevor die 15 Minuten abgelaufen sind.
 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Ich habe beim Exportieren der Daten in Azure Blob Storage einen Fehler erhalten. Was ist passiert?
-Das Exportieren funktioniert nur mit RDB-Dateien, die als Seitenblobs gespeichert sind. Andere Blobtypen werden derzeit nicht unterstützt. Dies gilt auch für Blob Storage-Konten mit Ebenen vom Typ „Hot“ und „Cool“. Weitere Informationen finden Sie unter [Blob Storage-Konten](../storage/blobs/storage-account-options.md#blob-storage-accounts).
+Das Exportieren funktioniert nur mit RDB-Dateien, die als Seitenblobs gespeichert sind. Andere Blobtypen werden derzeit nicht unterstützt. Dies gilt auch für Blob Storage-Konten mit Ebenen vom Typ „Hot“ und „Cool“. Weitere Informationen finden Sie unter [Blob Storage-Konten](../storage/common/storage-account-options.md#blob-storage-accounts).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zur Verwendung weiterer Funktionen des Premium-Caches finden Sie in den folgenden Artikeln.

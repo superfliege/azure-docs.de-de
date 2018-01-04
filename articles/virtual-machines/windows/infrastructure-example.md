@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementier
 documentationcenter: 
 services: virtual-machines-windows
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 7032b586-e4e5-4954-952f-fdfc03fc1980
@@ -13,19 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee66bf554e8e623ebfaa82bc888fc541da322d2f
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9c3f47739f28e0b0b2a24fcea61b055071cba7d5
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-windows-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Windows-VMs
-
-[!INCLUDE [virtual-machines-windows-infrastructure-guidelines-intro](../../../includes/virtual-machines-windows-infrastructure-guidelines-intro.md)]
-
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich Namenskonventionen, Verfügbarkeit, virtuelle Netzwerke und Lastenausgleiche relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
 
 ## <a name="example-workload"></a>Beispielworkload
@@ -41,7 +38,7 @@ Adventure Works Cycles möchte eine Anwendung für einen Onlineshop in Azure ers
 
 ![Diagramm der verschiedenen Ebenen für die Anwendungsinfrastruktur](./media/infrastructure-example/example-tiers.png)
 
-Eingehender sicherer Webdatenverkehr erfordert einen Lastenausgleich zwischen den Webservern, wenn die Kunden den Onlineshop durchsuchen. Datenverkehr für die Auftragsverarbeitung in Form von HTTP-Anforderungen der Webserver muss zwischen den Anwendungsservern ausgeglichen werden. Darüber hinaus muss die Infrastruktur für hohe Verfügbarkeit entworfen werden.
+Eingehender sicherer Webdatenverkehr erfordert einen Lastenausgleich zwischen den Webservern, wenn die Kunden den Onlineshop durchsuchen. Datenverkehr für die Auftragsverarbeitung in Form von HTTP-Anforderungen der Webserver muss zwischen den Anwendungsservern ausgeglichen werden. Darüber hinaus muss die Infrastruktur für Hochverfügbarkeit entworfen werden.
 
 Der Entwurf muss Folgendes umfassen:
 

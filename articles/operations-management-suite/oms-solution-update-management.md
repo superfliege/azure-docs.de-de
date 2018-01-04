@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 12/01/2017
 ms.author: magoedte;eslesar
-ms.openlocfilehash: e3d605b12a1db2fca1048be15e7b365e5336f663
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 71322c650b2ee464bab91bf8d4b176f3b2d93949
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="update-management-solution-in-oms"></a>Lösung für die Updateverwaltung in OMS
 
@@ -142,12 +142,12 @@ Wenn Sie bestätigen möchten, dass eine Operations Manager-Verwaltungsgruppe mi
 ### <a name="supported-agents"></a>Unterstützte Agents
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
 | Windows-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates aus Windows-Agents und initiiert die Installation von erforderlichen Updates. |
 | Linux-Agents |Ja |Die Lösung sammelt Informationen zu Systemupdates von Linux-Agents und initiiert die Installation von erforderlichen Updates für unterstützte Distributionen. |
 | Operations Manager-Verwaltungsgruppe |Ja |Die Lösung sammelt Informationen zu Systemupdates von Agents in einer verbundenen Verwaltungsgruppe.<br>Es ist keine direkte Verbindung von Operations Manager mit Log Analytics erforderlich. Daten werden von der Verwaltungsgruppe an das OMS-Repository weitergeleitet. |
-| Azure-Speicherkonto |Nein |Azure-Speicher enthält keine Informationen zu Systemupdates. |
+| Azure-Speicherkonto |Nein  |Azure-Speicher enthält keine Informationen zu Systemupdates. |
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
 Für jeden verwalteten Windows-Computer wird zweimal pro Tag ein Scanvorgang durchgeführt. Alle 15 Minuten wird die Windows-API aufgerufen, um den letzten Updatezeitpunkt abzufragen und zu ermitteln, ob sich der Status geändert hat. Wenn ja, wird ein Konformitätsscan initiiert.  Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang durchgeführt.
@@ -179,18 +179,18 @@ Klicken Sie auf die Kachel **Bereitstellung aktualisieren**, um die Liste mit de
 
 Die Eigenschaften, die für die Updatebereitstellung angezeigt werden, sind in der folgenden Tabelle beschrieben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| Name |Name der Updatebereitstellung |
-| Zeitplan |Typ des Zeitplans  Die verfügbaren Optionen sind *Einmal*, *Jede Woche* und *Jeden Monat*. |
+| NAME |Name der Updatebereitstellung |
+| Schedule |Typ des Zeitplans  Die verfügbaren Optionen sind *Einmal*, *Jede Woche* und *Jeden Monat*. |
 | Startzeit |Datum und Uhrzeit des Starts der Updatebereitstellung |
-| Dauer |Zulässige Ausführungsdauer der Updatebereitstellung in Minuten.  Wenn innerhalb dieses Zeitraums nicht alle Updates installiert werden, muss für die verbleibenden Updates bis zur nächsten Updatebereitstellung gewartet werden. |
+| Duration |Zulässige Ausführungsdauer der Updatebereitstellung in Minuten.  Wenn innerhalb dieses Zeitraums nicht alle Updates installiert werden, muss für die verbleibenden Updates bis zur nächsten Updatebereitstellung gewartet werden. |
 | Server |Anzahl von Computern, die von der Updatebereitstellung betroffen sind  |
 | Status |Aktueller Status der Updatebereitstellung<br><br>Mögliche Werte:<br>- Nicht gestartet<br>- Wird ausgeführt<br>- Abgeschlossen |
 
 Wählen Sie eine abgeschlossene Updatebereitstellung aus, um den Detailbildschirm anzuzeigen, der die Spalten in der folgenden Tabelle enthält.  Diese Spalten werden nicht aufgefüllt, wenn die Updatebereitstellung noch nicht gestartet wurde.<br><br> ![Übersicht über Ergebnisse der Updatebereitstellung](./media/oms-solution-update-management/update-management-deploymentresults-dashboard.png)
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 | --- | --- |
 | **Ansicht „Computer“** | |
 | Windows-Computer |Listet die Anzahl von Windows-Computern der Updatebereitstellung nach Status auf.  Klicken Sie auf einen Status, um eine Protokollsuche auszuführen, bei der alle Updatedatensätze mit diesem Status für die Updatebereitstellung zurückgegeben werden. |
@@ -203,9 +203,9 @@ Wählen Sie eine abgeschlossene Updatebereitstellung aus, um den Detailbildschir
 ### <a name="creating-an-update-deployment"></a>Erstellen einer Updatebereitstellung
 Erstellen Sie eine neue Updatebereitstellung, indem Sie oben auf dem Bildschirm auf die Schaltfläche **Hinzufügen** klicken, um die Seite **New Update Deployment** (Neue Updatebereitstellung) zu öffnen.  Sie müssen Werte für die Eigenschaften in der folgenden Tabelle angeben.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
-| Name |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
+| NAME |Eindeutiger Name zum Identifizieren der Updatebereitstellung |
 | Zeitzone |Zeitzone für die Startzeit |
 | Zeitplantyp | Typ des Zeitplans  Die verfügbaren Optionen sind *Einmal*, *Jede Woche* und *Jeden Monat*.  
 | Startzeit |Datum und Uhrzeit für den Start der Updatebereitstellung **Hinweis:** Der frühestmögliche Zeitpunkt für die Durchführung einer Bereitstellung ist 30 Minuten nach dem jetzigen Zeitpunkt, wenn die Bereitstellung sofort erfolgen soll. |
@@ -225,7 +225,7 @@ Mit der Lösung für die Updateverwaltung werden zwei Arten von Datensätzen im 
 ### <a name="update-records"></a>Updatedatensätze
 Ein Datensatz vom Typ **Update** wird für jedes Update erstellt, dass auf jedem Computer entweder installiert ist oder benötigt wird. Die Eigenschaften der Updatedatensätze sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Typ |*Update* |
 | SourceSystem |Die Quelle, von der die Installation des Updates genehmigt wurde.<br>Mögliche Werte:<br>- Microsoft Update<br>- Windows Update<br>- SCCM<br>- Linux-Server (von Paket-Managern) |
@@ -236,7 +236,7 @@ Ein Datensatz vom Typ **Update** wird für jedes Update erstellt, dass auf jedem
 | InstallTimeAvailable |Gibt an, ob die Installationsdauer über andere Agents verfügbar ist, für die das gleiche Update installiert wurde. |
 | InstallTimePredictionSeconds |Geschätzte Installationsdauer in Sekunden, basierend auf anderen Agents, für die das gleiche Update installiert wurde. |
 | KBID |ID des KB-Artikels, in dem das Update beschrieben wird. |
-| ManagementGroupName |Bei SCOM-Agents: Der Name der Verwaltungsgruppe.  Bei anderen Agents lautet diese „AOI-<workspace ID>“. |
+| ManagementGroupName |Name der Verwaltungsgruppe für SCOM-Agents.  Bei anderen Agents lautet diese „AOI-<workspace ID>“. |
 | MSRCBulletinID |ID des Microsoft-Sicherheitsbulletins, in dem das Update beschrieben wird. |
 | MSRCSeverity |Schweregrad des Microsoft-Sicherheitsbulletins<br>Mögliche Werte:<br>- Kritisch<br>- Wichtig<br>- Mittel |
 | Optional |Gibt an, ob das Update optional ist. |
@@ -266,13 +266,13 @@ Klicken Sie in der Ansicht **Liste** auf den Link **Ansicht** neben der KBID, um
 ### <a name="updatesummary-records"></a>UpdateSummary-Datensätze
 Ein Datensatz vom Typ **UpdateSummary** wird für jeden Windows-Agent-Computer erstellt. Dieser Datensatz wird jedes Mal aktualisiert, wenn der Computer auf erforderliche Updates untersucht wird. Die Eigenschaften der **UpdateSummary**-Datensätze sind in der folgenden Tabelle aufgeführt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Typ |UpdateSummary |
 | SourceSystem |OpsManager |
 | Computer |Name des Computers |
 | CriticalUpdatesMissing |Anzahl von wichtigen Updates, die auf dem Computer nicht vorhanden sind |
-| ManagementGroupName |Bei SCOM-Agents: Der Name der Verwaltungsgruppe. Bei anderen Agents lautet diese „AOI-<workspace ID>“. |
+| ManagementGroupName |Name der Verwaltungsgruppe für SCOM-Agents. Bei anderen Agents lautet diese „AOI-<workspace ID>“. |
 | NETRuntimeVersion |Version der .NET-Laufzeit, die auf dem Computer installiert ist |
 | OldestMissingSecurityUpdateBucket |Bucket zum Kategorisieren des Zeitraums seit der Veröffentlichung des ältesten fehlenden Sicherheitsupdates auf diesem Computer<br>Mögliche Werte:<br>- Älter<br>-    Vor 180 Tagen<br>- Vor 150 Tagen<br>-    Vor 120 Tagen<br>- Vor 90 Tagen<br>- Vor 60 Tagen<br>-    Vor 30 Tagen<br>-    Aktuell |
 | OldestMissingSecurityUpdateInDays |Anzahl von Tagen seit der Veröffentlichung des ältesten fehlenden Sicherheitsupdates auf diesem Computer |
@@ -289,7 +289,7 @@ Ein Datensatz vom Typ **UpdateSummary** wird für jeden Windows-Agent-Computer e
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 | --- | --- |
 | Type:Update OSType!=Linux UpdateState=Needed Optional=false Approved!=false &#124; measure count() by Computer |Windows-basierte Servercomputer, für die Updates erforderlich sind |
 | Type:Update OSType=Linux UpdateState!="Not needed" &#124; measure count() by Computer |Linux-Server, für die Updates erforderlich sind | 
@@ -326,7 +326,7 @@ Dieser Abschnitt enthält Informationen zum Durchführen der Problembehandlung m
 ### <a name="how-do-i-troubleshoot-onboarding-issues"></a>Wie behandle ich Onboardingprobleme?
 Sollten Sie Probleme beim Onboarding der Lösung oder eines virtuellen Computers haben, suchen Sie im Ereignisprotokoll **Anwendungs- und Dienstprotokolle\Operations Manager** nach Ereignissen mit der Ereignis-ID 4502 und einer Ereignisnachricht, die **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** enthält.  Die folgende Tabelle enthält spezifische Fehlermeldungen und passende Lösungsvorschläge.  
 
-| Nachricht | Grund | Lösung |   
+| Message | Grund | Lösung |   
 |----------|----------|----------|  
 | Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>System.InvalidOperationException: {"Message":"Machine is already<br>registered to a different account. "} (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "System.InvalidOperationException" bei der Registrierung: {"Meldung":"Der Computer ist bereits für ein anderes Konto registriert."} | Der Computer ist bereits in einen Arbeitsbereich für die Updateverwaltung integriert. | Bereinigen Sie alte Artefakte durch [Löschen der Hybrid-Runbook-Gruppe](../automation/automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups).|  
 | Unable to Register Machine for Patch Management,<br>Registration Failed with Exception<br>System.Net.Http.HttpRequestException: An error occurred while sending the request. ---><br>System.Net.WebException: The underlying connection<br>was closed: An unexpected error<br>occurred on a receive. ---> System.ComponentModel.Win32Exception:<br>The client and server cannot communicate,<br>because they do not possess a common algorithm (Der Computer konnte nicht für die Patchverwaltung registriert werden. Ausnahme "System.Net.Http.HttpRequestException" bei der Registrierung: Fehler beim Senden der Anforderung. System.Net.WebException: Die zugrunde liegende Verbindung wurde getrennt. Unerwarteter Fehler bei einem Empfangsvorgang. ---> System.ComponentModel.Win32Exception: Client und Server können nicht kommunizieren, da sie keinen gemeinsamen Algorithmus besitzen.) | Proxy/Gateway/Kommunikation durch Firewall blockiert | [Prüfen Sie die Netzwerkanforderungen.](../automation/automation-offering-get-started.md#network-planning)|  

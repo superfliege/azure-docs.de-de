@@ -6,6 +6,7 @@ documentationcenter:
 author: mezmicrosoft
 editor: mezmicrosoft
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
-ms.manager: tihazen
-ms.openlocfilehash: 8edc21fb8f42ee5897c4e938045cc1f42aedb3ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+manager: tihazen
+ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Zuordnung von Fragen und Antworten mit Azure Machine Learning Workbench
 Die Beantwortung von offenen Fragen ist schwierig und erfordert oft manuellen Aufwand von Experten (SMEs). Um die Arbeitsbelastung der internen SMEs zu reduzieren, erstellen Unternehmen oft Listen mit häufig gestellten Fragen (FAQs), um die Benutzer zu unterstützen. Dieses Beispiel zeigt, wie verschiedene effektive Machine Learning-Methoden verwendet werden können, um offene Abfragen bereits vorhandenen, häufig gestellten Frage/Antwort-Paaren zuzuordnen. Dieses Beispiel zeigt einen einfachen Entwicklungsprozess für die Erstellung einer Lösung, die Azure Machine Learning Workbench verwendet. 
@@ -42,7 +43,7 @@ Die wichtigsten erforderlichen Schritte für diese Lösung sind die folgenden:
 
 Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 
-1. Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar).
+1. Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
 2. Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](./quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 3. Dieses Beispiel kann in beliebigen Computekontexten ausgeführt werden. Es wird jedoch empfohlen, für die Ausführung einen Computer mit mehreren Kernen und mindestens 16 GB Arbeitsspeicher und 5 GB Speicherplatz auf dem Datenträger zu verwenden.
 
@@ -79,18 +80,18 @@ Die Kombination aus diesen drei Datasets erstellt Q&A-Paare, in denen eine Antwo
 
 Das Datenschema und direkte Downloadlinks der drei Datasets können in der folgenden Tabelle gefunden werden:
 
-| Datensatz | Feld | Typ | Beschreibung
+| Datensatz | Feld | Typ | BESCHREIBUNG
 | ----------|------------|------------|--------
-| [questions](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | ID | String | Die eindeutige Frage-ID (Primärschlüssel)
-|  | AnswerId | String | Die eindeutige Antwort-ID je Frage
-|  | Text0 | String | Die unformatierten Textdaten, einschließlich Titel und Text der Frage
+| [questions](https://bostondata.blob.core.windows.net/stackoverflow/orig-q.tsv.gz) | id | Zeichenfolge | Die eindeutige Frage-ID (Primärschlüssel)
+|  | AnswerId | Zeichenfolge | Die eindeutige Antwort-ID je Frage
+|  | Text0 | Zeichenfolge | Die unformatierten Textdaten, einschließlich Titel und Text der Frage
 |  | CreationDate | Zeitstempel | Der Zeitstempel, zu dem die Frage gestellt wurde
-| [dupes](https://bostondata.blob.core.windows.net/stackoverflow/dup-q.tsv.gz) | ID | String | Die eindeutige Duplikations-ID (Primärschlüssel)
-|  | AnswerId | String | Die Antwort-ID, die der Duplizierung zugeordnet ist
-|  | Text0 | String | Die unformatierten Textdaten, einschließlich Titel und Text der Duplikation
+| [dupes](https://bostondata.blob.core.windows.net/stackoverflow/dup-q.tsv.gz) | id | Zeichenfolge | Die eindeutige Duplikations-ID (Primärschlüssel)
+|  | AnswerId | Zeichenfolge | Die Antwort-ID, die der Duplizierung zugeordnet ist
+|  | Text0 | Zeichenfolge | Die unformatierten Textdaten, einschließlich Titel und Text der Duplikation
 |  | CreationDate | Zeitstempel | Der Zeitstempel , zu dem das Duplikat gepostet wurde
-| [answers](https://bostondata.blob.core.windows.net/stackoverflow/ans.tsv.gz)  | ID | String | Die eindeutige Antwort-ID (Primärschlüssel)
-|  | Text0 | String | Die unformatierten Textdaten der Antwort
+| [answers](https://bostondata.blob.core.windows.net/stackoverflow/ans.tsv.gz)  | id | Zeichenfolge | Die eindeutige Antwort-ID (Primärschlüssel)
+|  | Text0 | Zeichenfolge | Die unformatierten Textdaten der Antwort
 
 
 ## <a name="scenario-structure"></a>Szenariostruktur
@@ -99,7 +100,7 @@ Das übereinstimmende Q&A-Beispiel wird durch drei Typen von Dateien angezeigt. 
 
 Die Dateien in diesem Beispiel sind wie folgt organisiert.
 
-| Dateiname | Typ | Beschreibung
+| Dateiname | Typ | BESCHREIBUNG
 | ----------|------------|--------
 | `Image` | Ordner | Der Ordner zum Speichern von Bildern für die Infodatei
 | `notebooks` | Ordner | Der Ordner für Jupyter Notebooks

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
-ms.openlocfilehash: 971f7979ca27bce5d147a9d479248c808dc658e3
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 57277b36c0a77247b7c91d7a0035f7b4ec60c7e0
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -89,9 +89,6 @@ In diesen Schritten wird folgende Terminologie verwendet:
 1. Öffnen Sie das Snap-In **Microsoft Azure Backup** auf dem *Zielcomputer*.
 2. Stellen Sie sicher, dass der *Zielcomputer* und der *Quellcomputer* bei dem gleichen Recovery Services-Tresor registriert sind.
 3. Klicken Sie auf **Daten wiederherstellen** , um den Workflow zu initiieren.
-
-    ![Daten wiederherstellen](./media/backup-azure-restore-windows-server-classic/recover.png)
-
 4. Wählen Sie **Anderer Server**
 
     ![Anderer Server](./media/backup-azure-restore-system-state/anotherserver.png)
@@ -99,12 +96,9 @@ In diesen Schritten wird folgende Terminologie verwendet:
 5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor*entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor zugeordnet ist.
 
 6. Wählen Sie im Bereich „Sicherungsserver auswählen“ in der Liste mit den angezeigten Computern den *Quellcomputer* aus.
-
-    ![Liste der Computer](./media/backup-azure-restore-windows-server-classic/machinelist.png)
-
 7. Wählen Sie im Bereich „Wiederherstellungsmodus auswählen“ die Option **Systemstatus** aus, und klicken Sie auf **Weiter**. 
 
-    ![Suche](./media/backup-azure-restore-system-state/recover-type-selection.png)
+    ![Suchen,](./media/backup-azure-restore-system-state/recover-type-selection.png)
 
 8. Wählen Sie im Kalender im Bereich **Volume und Datum auswählen** einen Wiederherstellungspunkt aus. Sie können den Zustand eines beliebigen Wiederherstellungszeitpunkts wiederherstellen. Wenn Datumsangaben in **Fettdruck** angezeigt werden, ist dies ein Hinweis darauf, dass mindestens ein Wiederherstellungszeitpunkt verfügbar ist. Falls mehrere Wiederherstellungspunkte verfügbar sind, müssen Sie nach dem Auswählen eines Datums im Dropdownmenü **Uhrzeit** den jeweiligen Wiederherstellungspunkt auswählen. 
 

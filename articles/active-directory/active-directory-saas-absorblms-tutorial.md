@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: jeedes
-ms.openlocfilehash: df39b957e70be38331b3711a36ce847348049591
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4231b5e72ea0852de344e7484bdf20997243cee6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>Tutorial: Azure Active Directory-Integration mit Absorb LMS
 
@@ -48,7 +48,7 @@ Beachten Sie beim Testen der Schritte in diesem Tutorial die folgenden Empfehlun
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 * Hinzufügen von Absorb LMS über den Katalog
 * Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -115,7 +115,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Absorb L
 
 5. Wählen Sie **Speichern** aus.
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
     
 6. Wählen Sie im Abschnitt **Absorb LMS-Konfiguration** die Option **Absorb LMS konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen, und kopieren Sie dann die **Abmelde-URL** im Abschnitt **Kurzübersicht**.
 

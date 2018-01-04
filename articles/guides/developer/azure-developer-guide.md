@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 37942b7aa2fa675e316f368e8c74cb2081ba4648
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: b54b806aad1e15702d2167dcf2870ba19c4708df
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Anleitung mit den ersten Schritten für Azure-Entwickler
 
@@ -108,7 +108,7 @@ Die meisten Anwendungen müssen Daten speichern, es ist also egal, wie Sie Ihre 
 -   **Azure Cosmos DB**: Ein global verteilter Multimodell-Datenbankdienst zur elastischen Skalierung von Durchsatz und Speicher in verschiedenen geografischen Regionen mit einer umfassenden SLA. 
     >**Verwendung:** Wenn Ihre Anwendung Dokument-, Tabellen- oder Diagrammdatenbanken einschließlich MongoDB-Datenbanken benötigt, mit mehreren klar definierten Konsistenzmodellen. 
 
-    >**Erste Schritte**: [Azure Cosmos DB: Erstellen einer Web-App mit einer DocumentDB-API mit .NET und dem Azure-Portal](../../cosmos-db/create-documentdb-dotnet.md). Wenn Sie ein MongoDB-Entwickler sind, lesen Sie [Azure Cosmos DB: Erstellen einer Web-App mit einer MongoDB-API mit .NET und dem Azure-Portal](../../cosmos-db/create-mongodb-dotnet.md).
+    >**Erste Schritte**: [Azure Cosmos DB: Erstellen einer Web-App mit einer DocumentDB-API mit .NET und dem Azure-Portal](../../cosmos-db/create-sql-api-dotnet.md). Wenn Sie ein MongoDB-Entwickler sind, lesen Sie [Azure Cosmos DB: Erstellen einer Web-App mit einer MongoDB-API mit .NET und dem Azure-Portal](../../cosmos-db/create-mongodb-dotnet.md).
 
 -   **Azure Storage**: Bietet dauerhaften, hoch verfügbaren Speicher für Blobs, Warteschlangen, Dateien und andere Arten von nicht relationalen Daten. Storage stellt die Speichergrundlage für VMs bereit.
 
@@ -204,7 +204,7 @@ Einer der Vorteile der Verwendung von Azure ist, dass Sie Ihre Anwendungen in ve
 
 Es ist zwar unwahrscheinlich aber nicht unmöglich, dass ein gesamtes Rechenzentrum aufgrund eines Ereignisses, z.B. eine Naturkatastrophe oder ein Ausfall des Internets, offline geschaltet wird. Es wird empfohlen, wichtige Geschäftsanwendungen in mehreren Rechenzentren zu hosten, um maximale Verfügbarkeit zu gewährleisten. Die Verwendung von mehreren Regionen kann zudem die Wartezeit für globale Benutzer verringern und bietet zusätzliche Flexibilität beim Aktualisieren von Anwendungen.
 
-Einige Dienste, wie VM und App Services, verwenden [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md), um die Unterstützung in mehreren Regionen mit Failover zwischen Regionen zu ermöglichen, um Unternehmensanwendungen mit hoher Verfügbarkeit zu unterstützen. Ein Beispiel finden Sie unter [Azure-Referenzarchitektur: Webanwendung mit hoher Verfügbarkeit](../../guidance/guidance-web-apps-multi-region.md).
+Einige Dienste, wie VM und App Services, verwenden [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md), um die Unterstützung in mehreren Regionen mit Failover zwischen Regionen zu ermöglichen, um Unternehmensanwendungen mit hoher Verfügbarkeit zu unterstützen. Ein Beispiel finden Sie unter [Azure-Referenzarchitektur: Webanwendung mit Hochverfügbarkeit](../../guidance/guidance-web-apps-multi-region.md).
 
 >**Verwendung**: Wenn Sie über Unternehmensanwendungen und Anwendungen mit hoher Verfügbarkeit verfügen, die vom Failover und der Replikation profitieren.
 
@@ -241,7 +241,7 @@ Zusätzlich zu REST-APIs können Sie mithilfe von vielen Azure-Diensten auch pro
 
 Dienste wie [Mobile Apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) und [Azure Media Services](../../media-services/media-services-dotnet-how-to-use.md) stellen clientseitige SDKs bereit, um Ihnen den Zugriff auf Dienste von Web- und Mobile Client-Apps aus zu ermöglichen.
 
-### <a name="azure-resource-manager"></a>Azure-Ressourcen-Manager 
+### <a name="azure-resource-manager"></a>Azure Resource Manager 
     
 Das Ausführen Ihrer App in Azure umfasst wahrscheinlich das Arbeiten mit mehreren Azure-Diensten, die alle dem gleichen Lebenszyklus folgen und als eine logische Einheit betrachtet werden können. Eine Web-App könnte beispielsweise die Dienste Web-Apps, SQL-Datenbank, Storage, Azure Redis Cache und Azure Content Delivery Network verwenden. [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) ermöglicht es Ihnen, mit den Ressourcen in Ihrer Anwendung als Gruppe zu arbeiten. Sie können alle Ressourcen in einem einzigen koordinierten Vorgang bereitstellen, aktualisieren oder löschen.
 

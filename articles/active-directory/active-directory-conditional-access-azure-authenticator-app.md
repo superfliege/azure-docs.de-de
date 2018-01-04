@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
-ms.openlocfilehash: 60a5cc2ecc550c76ca3cb1f1d4d20070b3e3b035
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 349649e015aae7198d2c40efc3c1865cad087e8a
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-authenticator-for-android"></a>Azure Authenticator für Android
 Ihr IT-Administrator hat Ihnen eventuell empfohlen, sich über den Microsoft Azure Authenticator für den Zugriff auf Ihre Arbeitsressourcen anzumelden. Diese Anwendung stellt die beiden folgenden Anmeldeoptionen zur Verfügung:
 
-* "Multi-Factor Authentication" ermöglicht Ihnen, Ihre Geschäfts- oder Schulkonten mit zweistufiger Überprüfung zu sichern. Sie melden sich mit Ihnen bekannten Daten an (z. B. Ihrem Kennwort) und schützen das Konto dann noch zusätzlich mit einem Ihnen vorliegenden Sicherheitsschlüssel aus dieser App. Die Azure Authenticator-App teilt Ihnen über eine Warnung auf Ihrem mobilen Gerät mit, dass eine zweistufige Überprüfungsanforderung ansteht. Zeigen Sie die Anforderung einfach in der App an und tippen Sie auf "Überprüfen" oder "Abbrechen". Alternativ werden Sie unter Umständen aufgefordert, die in der App angezeigte Kennung einzugeben.
+* „Multi-Factor Authentication“ ermöglicht Ihnen, Ihre Geschäfts- oder Schulkonten mit zweistufiger Überprüfung zu sichern. Sie melden sich mit Ihnen bekannten Daten an (z. B. Ihrem Kennwort) und schützen das Konto dann noch zusätzlich mit einem Ihnen vorliegenden Sicherheitsschlüssel aus dieser App. Die Azure Authenticator-App teilt Ihnen über eine Warnung auf Ihrem mobilen Gerät mit, dass eine zweistufige Überprüfungsanforderung ansteht. Zeigen Sie die Anforderung einfach in der App an und tippen Sie auf "Überprüfen" oder "Abbrechen". Alternativ werden Sie unter Umständen aufgefordert, die in der App angezeigte Kennung einzugeben.
 * "Geschäftskonto" ermöglicht Ihnen, Ihr Android-Telefon oder -Tablet zu einem vertrauenswürdigen Gerät zu machen und einmaliges Anmelden (SSO) für Firmenanwendungen bereitzustellen. Ihr IT-Administrator verlangt von Ihnen unter Umständen, ein Geschäftskonto hinzuzufügen, um auf Unternehmensressourcen zuzugreifen. Mit SSO können Sie sich einmal anmelden und die Anmeldung für alle Anwendungen, die Ihr Unternehmen Ihnen zur Verfügung gestellt hat, automatisch nutzen.
 
 ## <a name="installing-the-azure-authenticator-app"></a>Installieren der Azure Authenticator-App
@@ -41,7 +41,7 @@ Die folgenden Anweisungen gelten für Telefone mit Samsung GS3 oder höher bzw. 
 4. Klicken Sie auf dem Bildschirm "Geräteadministrator aktivieren" auf **Aktivieren**.
 5. Aktivieren Sie auf dem Bildschirm "Datenschutzrichtlinien" das Kontrollkästchen, und klicken Sie auf **Bestätigen**.
 6. Geben Sie auf dem Bildschirm "Arbeitsbereichverknüpfung" die Benutzer-ID ein, die Ihre Organisation bereitgestellt hat, und klicken Sie auf **Verknüpfen**.
-7. Geben Sie zum Anmelden bei der Azure Authenticator-App Ihr Organisationskonto und Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
+7. Geben Sie zum Anmelden bei der Azure Authenticator-App Ihr Organisations-Konto und Ihr Kennwort ein, und klicken Sie auf **Anmelden**.
 8. Der nächste Bildschirm, auf dem Informationen zur mehrstufigen Authentifizierung (MFA) anzeigt werden, soll zusätzliche Sicherheit bieten und ist optional. Dieser Bildschirm wird angezeigt, wenn Ihre Firma oder Schule zum Erstellen eines Geschäftskontos eine zweistufige Authentifizierung verlangt. Er enthält Anweisungen zur weiteren Verifizierung Ihres Kontos.
 9. Auf dem Bildschirm „Arbeitsbereichverknüpfung“ wird die Meldung**Verknüpfen Ihres Arbeitsbereichs**angezeigt. Die Azure Authenticator-App versucht, das Gerät mit dem Arbeitsplatz zu verbinden.
 10. Auf dem nächsten Bildschirm müsste die Meldung angezeigt werden, dass der Arbeitsbereich verknüpft wurde.

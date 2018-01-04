@@ -4,7 +4,7 @@ description: "Übersicht über DNS-Hostingdienste in Microsoft Azure. Hosten Ihr
 services: dns
 documentationcenter: na
 author: KumudD
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 68747a0d-b358-4b8e-b5e2-e2570745ec3f
 ms.service: dns
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/19/2017
+ms.date: 12/18/2017
 ms.author: kumud
-ms.openlocfilehash: 890c00f3349abd52294e92d27f1b42ab38fe287a
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: f255fd9621ff90bfbb3ad193faa64495acf7ecd7
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-dns-overview"></a>Übersicht über Azure DNS
 
@@ -28,7 +28,7 @@ Das Domain Name System (DNS) ist für die Übersetzung (oder Auflösung) eines W
 
 ## <a name="features"></a>Features
 
-* **Zuverlässigkeit und Leistung**: DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Namenservern gehostet. Azure DNS verwendet Anycast-Netzwerke, sodass jede DNS-Abfrage vom nächsten verfügbaren DNS-Server beantwortet wird. Damit wird eine schnelle Leistung und hohe Verfügbarkeit für Ihre Domäne sichergestellt.
+* **Zuverlässigkeit und Leistung**: DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Namenservern gehostet. Azure DNS verwendet Anycast-Netzwerke, sodass jede DNS-Abfrage vom nächsten verfügbaren DNS-Server beantwortet wird. Damit wird eine schnelle Leistung und Hochverfügbarkeit für Ihre Domäne sichergestellt.
 
 * **Nahtlose Integration**: Der Azure-DNS-Dienst kann verwendet werden, um DNS-Einträge für Ihre Azure-Dienste zu verwalten und auch um DNS für externe Ressourcen bereitzustellen. Azure DNS ist in das Azure-Portal integriert und verwendet die gleichen Anmeldeinformationen, die gleiche Abrechnung und den gleichen Supportvertrag wie Ihre anderen Azure-Dienste.
 

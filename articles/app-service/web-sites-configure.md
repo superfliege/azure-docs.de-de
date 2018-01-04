@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: fd1a8cf442ea0688e027f8f8028ee8b4e149d8d2
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 9ec501d0a4e1c6165b83b5b590b87b0baa284423
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Konfigurieren von Web-Apps in Azure App Service
+
 In diesem Thema wird erläutert, wie Sie eine Web-App mit dem [Azure-Portal]konfigurieren.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
@@ -45,6 +46,8 @@ Aus technischen Gründen werden durch Aktivierung von Java für Ihre App die Opt
 
 <a name="platform"></a>
 **Plattform**. Bestimmt, ob Ihre Web-App in einer 32-Bit- oder 64-Bit-Umgebung ausgeführt wird. Für die 64-Bit-Umgebung ist der Modus "Basic" oder "Standard" erforderlich. Die Modi "Kostenlos" und "Freigegeben" werden immer in einer 32-Bit-Umgebung ausgeführt.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 **Websockets**. Legen Sie **EIN** fest, um das WebSocket-Protokoll zu aktivieren, beispielsweise wenn Ihre Web-App [ASP.NET SignalR] oder [socket.io](https://socket.io/) verwendet.
 
@@ -120,7 +123,7 @@ Zum Anzeigen der Protokolldateien müssen Sie die FTP-Anmeldeinformationen wie f
 
 ![Anmeldeinformationen für die Bereitstellung zurücksetzen][configure03]
 
-Der vollständige FTP-Benutzername lautet „App\Benutzername“. Dabei ist *App* der Name Ihrer Web-App. Den Benutzernamen finden Sie auf dem Blatt der Web-App unter **Zusammenfassung**.  
+Der vollständige FTP-Benutzername lautet „App\Benutzername“. Dabei ist *App* der Name Ihrer Web-App. Den Benutzernamen finden Sie auf dem Blatt der Web-App unter **Zusammenfassung**.
 
 ![FTP-Anmeldeinformationen für die Bereitstellung][configure02]
 

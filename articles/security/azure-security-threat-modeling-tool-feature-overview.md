@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e49fc0e680acbc2b7b7c62b69fbf72d6690acf
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="threat-modeling-tool-feature-overview"></a>Übersicht über die Funktionen des Threat Modeling Tools
 
@@ -29,11 +29,11 @@ Das Threat Modeling Tool kann Sie bei der Bedrohungsmodellierung unterstützen. 
 
 Um eine leere Seite zu öffnen, wählen Sie **Modell erstellen** aus.
 
-![Leere Seite](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![Leere Seite](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 In dem von unserem Team im Artikel [Erste Schritte](./azure-security-threat-modeling-tool-getting-started.md) erstellten Bedrohungsmodell finden Sie die Features, die das Tool derzeit zu bieten hat.
 
-![Grundlegendes Bedrohungsmodell](./media/azure-security-threat-modeling-tool/basictmt.png)
+![Grundlegendes Bedrohungsmodell](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 ## <a name="navigation"></a>Navigation
 
@@ -43,7 +43,7 @@ Bevor wir die integrierten Features erläutern, wollen wir die wichtigsten Kompo
 
 Die Benutzeroberfläche ist ähnlich wie bei anderen Microsoft-Produkten. Betrachten wir die Menüelemente der obersten Ebene.
 
-![Menüelemente](./media/azure-security-threat-modeling-tool/menuitems.png)
+![Menüelemente](./media/azure-security-threat-modeling-tool-feature-overview/menuitems.png)
 
 | Bezeichnung                               | Details      |
 | --------------------------------------- | ------------ |
@@ -75,11 +75,11 @@ Dies ist der Bereich, in dem Sie gezogene Elemente ablegen. Ziehen und Ablegen i
 
 #### <a name="drop-the-stencil-on-the-canvas"></a>Ablegen der Schablone im Zeichenbereich
 
-![Ablegen im Zeichenbereich](./media/azure-security-threat-modeling-tool/canvasdrop1.png)
+![Ablegen im Zeichenbereich](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop1.png)
 
 #### <a name="select-the-stencil"></a>Auswählen der Schablone
 
-![Elementeigenschaften](./media/azure-security-threat-modeling-tool/canvasdrop2.png)
+![Elementeigenschaften](./media/azure-security-threat-modeling-tool-feature-overview/canvasdrop2.png)
 
 ### <a name="stencils"></a>Schablonen
 
@@ -120,15 +120,15 @@ Wenn Sie die App zu öffnen, wird der Bildschirm **Willkommen** angezeigt.
 
 Bewegen Sie den Mauszeiger über der Schaltfläche **Modell öffnen**, um zwei Optionen anzuzeigen: **Auf diesem Computer öffnen** und **Auf OneDrive öffnen**. Mit der ersten Option wird der Bildschirm **Datei öffnen** angezeigt. Die zweite Option führt Sie durch den Anmeldevorgang für OneDrive. Nach erfolgreicher Authentifizierung können Sie Ordner und Dateien auswählen.
 
-![Modell öffnen](./media/azure-security-threat-modeling-tool/openmodel.png)
+![Modell öffnen](./media/azure-security-threat-modeling-tool-feature-overview/openmodel.png)
 
-![Auf Computer oder OneDrive öffnen](./media/azure-security-threat-modeling-tool/openmodel2.png)
+![Auf Computer oder OneDrive öffnen](./media/azure-security-threat-modeling-tool-feature-overview/openmodel2.png)
 
 ### <a name="feedback-suggestions-and-issues"></a>Feedback, Vorschläge und Probleme
 
 Wenn Sie **Feedback, Vorschläge und Probleme** auswählen, gelangen Sie zum MSDN-Forum für SDL-Tools. Sie können lesen, was andere Benutzer zum Tool zu sagen haben, sowie Problemumgehungen und neue Ideen finden.
 
-![Feedback](./media/azure-security-threat-modeling-tool/feedback.png)
+![Feedback](./media/azure-security-threat-modeling-tool-feature-overview/feedback.png)
 
 ## <a name="design-view"></a>Entwurfsansicht
 
@@ -154,19 +154,19 @@ Sie können Elemente auf zwei Arten verbinden:
 
 #### <a name="before"></a>Vorher
 
-![Vorher](./media/azure-security-threat-modeling-tool/properties1.png)
+![Vorher](./media/azure-security-threat-modeling-tool-feature-overview/properties1.png)
 
 #### <a name="after"></a>Nachher
 
-![Nachher](./media/azure-security-threat-modeling-tool/properties2.png)
+![Nachher](./media/azure-security-threat-modeling-tool-feature-overview/properties2.png)
 
 ### <a name="messages"></a>Meldungen
 
 Wenn Sie ein Bedrohungsmodell erstellen und vergessen, Datenflüsse mit Elementen zu verbinden, werden Sie benachrichtigt. Sie können die Meldung ignorieren oder die Anweisungen zum Beheben des Problems befolgen. 
 
-![Meldungen](./media/azure-security-threat-modeling-tool/messages.png)
+![Meldungen](./media/azure-security-threat-modeling-tool-feature-overview/messages.png)
 
-### <a name="notes"></a>Hinweise
+### <a name="notes"></a>Notizen
 
 Um dem Diagramm Notizen hinzuzufügen, wechseln Sie von der Registerkarte **Meldungen** zur Registerkarte **Notizen**.
 
@@ -174,7 +174,7 @@ Um dem Diagramm Notizen hinzuzufügen, wechseln Sie von der Registerkarte **Meld
 
 Nachdem Sie das Diagramm erstellt haben, wählen Sie auf der Symbolleiste das Symbol **Analyse** (die Lupe) aus, um zur **Analyseansicht** zu wechseln.
 
-![Analyseansicht](./media/azure-security-threat-modeling-tool/analysisview.png)
+![Analyseansicht](./media/azure-security-threat-modeling-tool-feature-overview/analysisview.png)
 
 ### <a name="generated-threat-selection"></a>Generierte Bedrohungsauswahl
 
@@ -182,27 +182,27 @@ Wenn Sie eine Bedrohung auswählen, können Sie drei verschiedene Funktionen ver
 
 | Feature                               | Information      |
 | --------------------------------------- | ------------ |
-| **Markierung „Gelesen“** | <p>Die Bedrohung ist als „Gelesen“ markiert, sodass Sie leichter den Überblick über die bereits überprüften Elemente behalten.</p><p>![Markierung „Gelesen/Nicht gelesen“](./media/azure-security-threat-modeling-tool/readmode.png)</p> |
-| **Interaktionsfokus** | <p>Die zu einer Bedrohung gehörende Interaktion wird hervorgehoben.</p><p>![Interaktionsfokus](./media/azure-security-threat-modeling-tool/interactionfocus.png)</p> |
-| **Bedrohungseigenschaften** | <p>Im Fenster **Bedrohungseigenschaften** werden zusätzliche Informationen über die Bedrohung angezeigt.</p><p>![Bedrohungseigenschaften](./media/azure-security-threat-modeling-tool/threatproperties.png)</p> |
+| **Markierung „Gelesen“** | <p>Die Bedrohung ist als „Gelesen“ markiert, sodass Sie leichter den Überblick über die bereits überprüften Elemente behalten.</p><p>![Markierung „Gelesen/Nicht gelesen“](./media/azure-security-threat-modeling-tool-feature-overview/readmode.png)</p> |
+| **Interaktionsfokus** | <p>Die zu einer Bedrohung gehörende Interaktion wird hervorgehoben.</p><p>![Interaktionsfokus](./media/azure-security-threat-modeling-tool-feature-overview/interactionfocus.png)</p> |
+| **Bedrohungseigenschaften** | <p>Im Fenster **Bedrohungseigenschaften** werden zusätzliche Informationen über die Bedrohung angezeigt.</p><p>![Bedrohungseigenschaften](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)</p> |
 
 ### <a name="priority-change"></a>Ändern der Priorität
 
 Sie können die Prioritätsstufe jeder generierten Bedrohung ändern. Unterschiedliche Farben erleichtern die Unterscheidung zwischen Bedrohungen hoher, mittlerer und niedriger Priorität.
 
-![Ändern der Priorität](./media/azure-security-threat-modeling-tool/prioritychange.png)
+![Ändern der Priorität](./media/azure-security-threat-modeling-tool-feature-overview/prioritychange.png)
 
 ### <a name="threat-properties-editable-fields"></a>Editierbare Felder von Bedrohungseigenschaften
 
 Wie in der vorherigen Abbildung dargestellt, können Sie die vom Tool generierten Informationen ändern. Sie können auch bestimmten Feldern, z.B. dem Feld für die Begründung, Informationen hinzufügen. Diese Felder werden durch die Vorlage generiert. Wenn Sie weitere Informationen für die einzelnen Bedrohungen benötigen, können Sie Änderungen vornehmen.
 
-![Bedrohungseigenschaften](./media/azure-security-threat-modeling-tool/threatproperties.png)
+![Bedrohungseigenschaften](./media/azure-security-threat-modeling-tool-feature-overview/threatproperties.png)
 
 ## <a name="reports"></a>Berichte
 
 Nachdem Sie das Ändern von Prioritäten und Aktualisieren des Status der einzelnen generierten Bedrohungen abgeschlossen haben, können Sie die Datei speichern und/oder einen Bericht ausgeben. Wechseln Sie zu **Bericht** > **Vollständigen Bericht erstellen**. Benennen Sie den Bericht. Anschließend wird ein Bericht wie etwa in der folgenden Abbildung angezeigt:
 
-![Bericht](./media/azure-security-threat-modeling-tool/report.png)
+![Bericht](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

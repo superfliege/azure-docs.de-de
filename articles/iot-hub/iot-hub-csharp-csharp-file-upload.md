@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: acc599c1fbe13b2739fc5480d6204f90e59b0242
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 4362512121ca426fcae6716c74e1f8effa0986f1
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub unter Verwendung von .NET
 
@@ -29,7 +29,7 @@ Dieses Tutorial baut auf dem Code im Tutorial [Senden von Nachrichten von Cloud-
 - Sicheres Bereitstellen eines Geräts mit einem Azure-Blob-URI für das Hochladen einer Datei.
 - Verwenden der IoT Hub-Dateihochlade-Benachrichtigungen zum Auslösen der Dateiverarbeitung in Ihrem App-Back-End.
 
-Die Tutorials [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) und [Senden von C2D-Nachrichten mit IoT Hub](iot-hub-csharp-csharp-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Im Tutorial [Verarbeiten von D2C-Nachrichten](iot-hub-csharp-csharp-process-d2c.md) wird eine Möglichkeit für das zuverlässige Speichern von D2C-Nachrichten in Azure-Blobspeicher beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel:
+Die Tutorials [Erste Schritte mit IoT Hub](iot-hub-csharp-csharp-getstarted.md) und [Senden von C2D-Nachrichten mit IoT Hub](iot-hub-csharp-csharp-c2d.md) veranschaulichen die grundlegenden Gerät-zu-Cloud- und Cloud-zu-Gerät-Messagingfunktionen von IoT Hub. Im Tutorial [Verarbeiten von D2C-Nachrichten](iot-hub-csharp-csharp-process-d2c.md) wird eine Möglichkeit für das zuverlässige Speichern von D2C-Nachrichten in Azure-Blobspeicher beschrieben. In einigen Szenarien können Sie allerdings nicht einfach die Daten, die Ihre Geräte senden, den relativ kleinen D2C-Nachrichten zuordnen, die IoT Hub akzeptiert. Beispiel: 
 
 * Große Dateien, die Bilder enthalten
 * Videos
@@ -126,7 +126,7 @@ In diesem Abschnitt schreiben Sie eine .NET-Konsolen-App, die Uploadbenachrichti
     static string connectionString = "{iot hub connection string}";
     ```
 
-1. Fügen Sie der **Program**-Klasse die folgende Methode hinzu:
+1. Fügen Sie der **Program** -Klasse die folgende Methode hinzu:
 
     ```csharp
     private async static void ReceiveFileUploadNotificationAsync()
@@ -192,7 +192,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 
 [Azure-Portal]: https://portal.azure.com/
 
-[Azure IoT Developer Center]: http://www.azure.com/develop/iot
+[Azure IoT Developer Center]: http://azure.microsoft.com/develop/iot
 
 [Behandeln vorübergehender Fehler]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [NuGet-Paket mit dem SDK des Azure IoT-Diensts]: https://www.nuget.org/packages/Microsoft.Azure.Devices/

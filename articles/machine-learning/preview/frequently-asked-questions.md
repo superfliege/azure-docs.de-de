@@ -4,16 +4,17 @@ description: "Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu 
 services: machine-learning
 author: serinakaye
 ms.author: serinak
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 33583fb3d9bca94592c05c4c39c802e673a2ea8a
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 94c6576f92b5a004e0fd509c1dc6e091c294658a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Machine Learning
 
@@ -130,7 +131,7 @@ Nein. Die Machine Learning Workbench wurde als Begleitprodukt für beliebte IDEs
 
 **Werden für die Verwendung der Azure Machine Learning Workbench Gebühren berechnet?**
 
-Nein. Die Azure Machine Learning Workbench ist eine kostenlose Anwendung. Sie können Sie entsprechend den jeweiligen Anforderungen auf beliebig viele Computer und für beliebig viele Benutzer herunterladen. Zum Verwenden der Azure Machine Learning Workbench müssen Sie über ein ML-Experimentieren-Konto verfügen. .  
+Nein. Die Azure Machine Learning Workbench ist eine kostenlose Anwendung. Sie können Sie entsprechend den jeweiligen Anforderungen auf beliebig viele Computer und für beliebig viele Benutzer herunterladen. Zum Verwenden der Azure Machine Learning Workbench müssen Sie über ein ML-Experimentieren-Konto verfügen. zu erstellen und zu verwalten.  
 
 **Werden Befehlszeilenfunktionen unterstützt?**
 

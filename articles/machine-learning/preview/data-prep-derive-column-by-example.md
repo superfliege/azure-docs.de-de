@@ -5,17 +5,17 @@ services: machine-learning
 author: ranvijaykumar
 ms.author: ranku
 manager: mwinkle
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: a02f5e827345a1d28f01d691e1b6fbccfc03ae8a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6febd3f12248a96f54415a91fcf0513ef7412e78
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="derive-column-by-example-transformation"></a>Transformation „Derive Column by Example“
 
@@ -83,7 +83,7 @@ Benutzer können eine vorhandene Transformation vom Typ **Derive Column By Examp
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |:-----|:-----|
 |C:\Python35\Tools\pynche\TypeinViewer.py|**TypeinViewer.py**|
 |C:\Python35\Tools\pynche\webcolors.txt|webcolors.txt|
@@ -100,7 +100,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 3
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |:-----|:-----|
 |REINDEER CT & DEAD END;  NEW HANOVER; Station 332; 2015-12-10 @ 17:10:52;|**New Hanover**|
 |BRIAR PATH & WHITEMARSH LN;  HATFIELD TOWNSHIP; Station 345; 2015-12-10 @ 17:29:21;|Hatfield Township|
@@ -119,7 +119,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 3
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |:-----|:-----|
 |MONTGOMERY AVE & WOODSIDE RD;  LOWER MERION; Station 313; 2015-12-11 @ 04:11:35;|**12 Nov 2015 4AM**|
 |DREYCOTT LN & W LANCASTER AVE;  LOWER MERION; Station 313; 2015-12-11 @ 01:29:52;|12 Nov 2015 1AM|
@@ -137,10 +137,10 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 >[!NOTE] 
 >In diesem Beispiel steht das Sonderzeichen „·“ in der Spalte „Ausgabe“ für Leerstellen.
 
-|First Name (Vorname)|Middle Initial (Zweiter Vorname)|Last Name (Nachname)|Ausgabe|
+|First Name (Vorname)|Middle Initial (Zweiter Vorname)|Last Name (Nachname)|Output|
 |:-----|:-----|:-----|:-----|
 |Laquanda||Lohmann|Laquanda··Lohmann|
-|Claudio|A|Chew|**Claudio·A·Chew**|
+|Claudio|Eine Datei|Chew|**Claudio·A·Chew**|
 |Sarah-Jane|S|Smith|Sarah-Jane·S·Smith|
 |Brandi||Blumenthal|Brandi··Blumenthal|
 |Jesusita|R|Journey|Jesusita·R·Journey|
@@ -159,7 +159,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
-|Vollständiger Name|Ausgabe|
+|Vollständiger Name|Output|
 |:-----|:-----|
 |Laquanda Lohmann|**L.L.**|
 |Claudio Chew|C.C.|
@@ -182,7 +182,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 3
 
-|Geschlecht (Administration)|Ausgabe|
+|Geschlecht (Administration)|Output|
 |:-----|:-----:|
 |Male|**0**|
 |Female|**1**|
@@ -204,7 +204,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 3
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |-----:|-----:|
 |112|**110**|
 |117|120|
@@ -216,7 +216,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |-----:|-----:|
 |112|**110**|
 |117|**110**|
@@ -228,7 +228,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |-----:|-----:|
 |-75.5812935|**-75.60**|
 |-75.2646799|-75.25|
@@ -241,7 +241,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 2
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |-----:|:-----:|
 |20.16|**20-25**|
 |14,32|10-15|
@@ -254,7 +254,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
-|Eingabe|Ausgabe|
+|Eingabe|Output|
 |-----:|-----:|
 |-243|**-243000**|
 |-12.5|-12500|
@@ -266,7 +266,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
 Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
-|Code|Ausgabe|
+|Code|Output|
 |-----:|-----:|
 |5828|**05828**|
 |44130|44130|
@@ -286,7 +286,7 @@ Anzahl von Beispielen, die für diesen Fall erforderlich waren: 1
 
 Diese Teile von Datumsangaben wurden mithilfe von verschiedenen By-Example-Transformationen für dasselbe Dataset extrahiert. Fettgedruckte Zeichenfolgen stehen für die Beispiele, die während der jeweiligen Transformation angegeben wurden.
 
-|DateTime|Wochentag|Date|Month (Monat)|Jahr|Hour|Minute|Sekunde|
+|Datetime|Wochentag|Datum|Month (Monat)|Jahr|Hour|Minute|Sekunde|
 |-----:|-----:|-----:|-----:|-----:|-----:|-----:|-----:|
 |31-Jan-2031 05:54:18|**Fri**|**31**|**Jan**|**2031**|**5**|**54**|**18**|
 |17-Jan-1990 13:32:01|Wed|17|Jan|1990|13|32|01|
@@ -313,7 +313,7 @@ Diese Teile von Datumsangaben wurden mithilfe von verschiedenen By-Example-Trans
 
 Diese Datumsformatierungen wurden mithilfe von verschiedenen By-Example-Transformationen für dasselbe Dataset durchgeführt. Fettgedruckte Zeichenfolgen stehen für die Beispiele, die während der jeweiligen Transformation angegeben wurden.
 
-|DateTime|Format1|Format2|Format3|Format4|Format5|
+|Datetime|Format1|Format2|Format3|Format4|Format5|
 |-----:|-----:|-----:|-----:|-----:|-----:|
 |31-Jan-2031 05:54:18|**1/31/2031**|**Friday, January 31, 2031**|**01312031 5:54**|**31/1/2031 5:54 AM**|**Q1 2031**|
 |17-Jan-1990 13:32:01|1/17/1990|Wednesday, January 17, 1990|01171990 13:32|17/1/1990 1:32 PM|Q1 1990|
@@ -341,7 +341,7 @@ Diese Datumsformatierungen wurden mithilfe von verschiedenen By-Example-Transfor
 
 Diese Zuordnungen von DateTime-Werten zu Zeiträumen wurden mithilfe von verschiedenen By-Example-Transformationen für dasselbe Dataset durchgeführt. Fettgedruckte Zeichenfolgen stehen für die Beispiele, die während der jeweiligen Transformation angegeben wurden.
 
-|DateTime|Period(Seconds)|Period(Minutes)|Period(Two Hours)|Period(30 Minutes)|
+|Datetime|Period(Seconds)|Period(Minutes)|Period(Two Hours)|Period(30 Minutes)|
 |-----:|-----:|-----:|-----:|-----:|
 |31-Jan-2031 05:54:18|**0 - 20**|**45 - 60**|**5AM - 7AM**|**5:30 - 6:00**|
 |17-Jan-1990 13:32:01|**0 - 20**|30 - 45|1PM - 3PM|13:30 - 14:00|
@@ -385,5 +385,5 @@ Diese Zuordnungen von DateTime-Werten zu Zeiträumen wurden mithilfe von verschi
 ### <a name="conditional-transformations"></a>Bedingte Transformationen
 In einigen Fällen kann es vorkommen, dass keine einzelne Transformation gefunden wird, die für die angegebenen Beispiele geeignet ist. In diesen Situationen wird über die Transformation „Derive Column by Example“ (Spalte nach Beispiel ableiten) versucht, die Eingaben anhand eines Musters zu gruppieren und eine separate Transformation für jede Gruppe zu erlernen. Dies wird als **bedingte Transformation** bezeichnet. Es wird nur versucht, die **bedingte Transformation** für Transformationen mit einer einzelnen Eingabespalte durchzuführen. 
 
-### <a name="reference"></a>Referenz
+### <a name="reference"></a>Verweis
 Weitere Informationen zur Technologie „Transformationen von Zeichenfolgen nach Beispiel“ finden Sie in [dieser Veröffentlichung](https://www.microsoft.com/en-us/research/publication/automating-string-processing-spreadsheets-using-input-output-examples/).

@@ -1,17 +1,20 @@
 ---
 title: "Erste Schritte mit der Datenvorbereitung für Azure Machine Learning | Microsoft-Dokumentation"
 description: "Dies ist der Leitfaden zu den ersten Schritten für den Datenvorbereitungsabschnitt von AML Workbench."
+services: machine-learning
 author: cforbe
 ms.author: cforbe
+manager: mwinkle
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: faf6e557914a33454229b5830419b9ef6f200a8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f90bcb83233b1a2f1a5d342ee444e4b02d4927d
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="getting-started-with-data-preparation"></a>Erste Schritte bei der Datenvorbereitung
 
@@ -121,6 +124,6 @@ Nachdem Sie die Datenvorbereitung abgeschlossen haben, können Sie den Datenflus
 [Appendix 9 - Sample Destination Connections in Python (Anhang 9: Beispiele für Zielverbindungen in Python)](data-prep-appendix9-sample-destination-connections-python.md)  
 [Appendix 10 - Sample Column Transforms in Python (Anhang 10: Beispiele für Spaltentransformationen in Python)](data-prep-appendix10-sample-custom-column-transforms-python.md)  
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 [Tutorial zur erweiterten Datenvorbereitung](tutorial-bikeshare-dataprep.md)

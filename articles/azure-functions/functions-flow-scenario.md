@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 12/14/2017
 ms.author: mblythe
 ms.custom: 
-ms.openlocfilehash: 120f5d69441c5e01ffafbdb8dccb179bf00bdb0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 38d2e3f2f2aa057b50ba12138cafc512ac110f9b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>Aufrufen einer Funktion von Microsoft Flow
 
@@ -48,10 +48,10 @@ In diesem Thema lernen Sie Folgendes:
 ## <a name="create-a-sharepoint-list"></a>Erstellen einer SharePoint-Liste
 Erstellen Sie zunächst eine Liste, die Sie als Datenquelle für den Workflow verwenden. Die Liste verfügt über die folgende Spalten.
 
-| Listenspalte     | Datentyp           | Hinweise                                    |
+| Listenspalte     | Datentyp           | Notizen                                    |
 |-----------------|---------------------|------------------------------------------|
 | **Titel**           | Einzelne Textzeile | Name der Turbine                      |
-| **LastServiceDate** | Date                |                                          |
+| **LastServiceDate** | Datum                |                                          |
 | **MaxOutput**       | Number              | Ausgabe der Turbine in KwH            |
 | **ServiceRequired** | Ja/Nein              |                                          |
 | **EstimatedEffort** | Number              | Geschätzte Zeit für die Reparatur in Stunden |
@@ -133,7 +133,7 @@ Erstellen Sie zunächst einen Datenfluss ohne Vorlage, und fügen Sie einen *Tri
 
 4. Klicken Sie auf **Neuer Schritt** und dann auf **Eine Bedingung hinzufügen**.
 
-    ![Eine Bedingung hinzufügen](media/functions-flow-scenario/add-condition.png)
+    ![Bedingung hinzufügen](media/functions-flow-scenario/add-condition.png)
 
     Microsoft Flow fügt zwei Verzweigungen zum Datenfluss hinzu: **Falls Ja** und **Falls Nein**. Nachdem Sie die Bedingung definiert haben, die übereinstimmen sollen, fügen Sie Schritte zu einer oder beiden Verzweigungen hinzu.
 
@@ -179,7 +179,7 @@ Sie fügen nun den benutzerdefinierten Connector hinzu, der die Funktionsaufrufe
 
 4. Klicken Sie am unteren Rand der Verzweigung **Falls Ja** auf **Mehr**, und klicken Sie dann **Eine Bedingung hinzufügen**.
 
-    ![Eine Bedingung hinzufügen](media/functions-flow-scenario/condition2-add.png)
+    ![Bedingung hinzufügen](media/functions-flow-scenario/condition2-add.png)
 
 5. Klicken Sie auf der Karte **Bedingung 2** auf das erste Feld, und wählen Sie dann **Nachricht** aus dem Dialogfeld **Dynamische Inhalte** aus.
 

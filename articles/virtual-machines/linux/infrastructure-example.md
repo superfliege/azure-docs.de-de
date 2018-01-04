@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über die wichtigsten Entwurfs- und Implementier
 documentationcenter: 
 services: virtual-machines-linux
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 281fc2c0-b533-45fa-81a3-728c0049c73d
@@ -13,19 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2017
+ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b18be0d81d6fad7328edb47c9b69af4eecd3b971
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae7df08e7502fbfd500944f89a3fa6ee4806522a
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="example-azure-infrastructure-walkthrough-for-linux-vms"></a>Exemplarische Vorgehensweise für eine Azure-Beispielinfrastruktur für Linux-VMs
-
-[!INCLUDE [virtual-machines-linux-infrastructure-guidelines-intro](../../../includes/virtual-machines-linux-infrastructure-guidelines-intro.md)]
-
 In diesem Artikel wird das Erstellen einer Beispielanwendungsinfrastruktur erläutert. Wir beschreiben das Entwerfen einer Infrastruktur für einen einfachen Onlineshop, wobei alle Richtlinien und Entscheidungen hinsichtlich der Namenskonventionen, Verfügbarkeit, virtuellen Netzwerke und Lastenausgleichsmodule relevant sind, und das eigentliche Bereitstellen Ihrer virtuellen Computer (VMs).
 
 ## <a name="example-workload"></a>Beispielworkload
@@ -41,7 +38,7 @@ Adventure Works Cycles möchte eine Anwendung für einen Onlineshop in Azure ers
 
 ![Diagramm der verschiedenen Ebenen für die Anwendungsinfrastruktur](./media/infrastructure-example/example-tiers.png)
 
-Eingehender sicherer Webdatenverkehr erfordert einen Lastenausgleich zwischen den Webservern, wenn die Kunden den Onlineshop durchsuchen. Datenverkehr für die Auftragsverarbeitung in Form von HTTP-Anforderungen der Webserver muss zwischen den Anwendungsservern ausgeglichen werden. Darüber hinaus muss die Infrastruktur für hohe Verfügbarkeit entworfen werden.
+Eingehender sicherer Webdatenverkehr erfordert einen Lastenausgleich zwischen den Webservern, wenn die Kunden den Onlineshop durchsuchen. Datenverkehr für die Auftragsverarbeitung in Form von HTTP-Anforderungen der Webserver muss zwischen den Anwendungsservern ausgeglichen werden. Darüber hinaus muss die Infrastruktur für Hochverfügbarkeit entworfen werden.
 
 Der Entwurf muss Folgendes umfassen:
 
@@ -85,7 +82,7 @@ Sie haben ein virtuelles Netzwerk auf ausschließlicher Cloudbasis mit den folge
   * Adressraum: 10.0.2.0/24
 
 ## <a name="availability-sets"></a>Verfügbarkeitsgruppen
-Um hohe Verfügbarkeit für alle vier Ebenen des Onlineshops zu gewährleisten, entschied sich Adventure Works Cycles für vier Verfügbarkeitsgruppen:
+Um Hochverfügbarkeit für alle vier Ebenen des Onlineshops zu gewährleisten, entschied sich Adventure Works Cycles für vier Verfügbarkeitsgruppen:
 
 * **azos-use-as-web** für die Webserver
 * **azos-use-as-app** für die Anwendungsserver

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 91b2f16611b88aa4b9395ca301d88042065ad9dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a283d8772e48aa6671d88288c2083d891a220d5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Austauschen von AS2-Nachrichten für die Unternehmensintegration mit Logik-Apps
 
@@ -45,7 +45,7 @@ Nachdem Sie [ein Integrationskonto erstellt](../logic-apps/logic-apps-enterprise
     > [!TIP]
     > Sollte **Weitere Dienste** nicht angezeigt werden, müssen Sie das Menü möglicherweise erst erweitern. Wählen Sie im oberen Bereich des reduzierten Menüs die Option **Menü anzeigen** aus.
 
-    ![Weitere Dienste, nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-agreements/overview-1.png)
+    ![Weitere Dienste, nach „Integration“ filtern, „Integrationskonten“ auswählen](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
 3. Wählen Sie auf dem geöffneten Blatt **Integrationskonten** das Integrationskonto aus, in dem Sie die Vereinbarung erstellen möchten.
 Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein Konto](../logic-apps/logic-apps-enterprise-integration-accounts.md "Alles über Integrationskonten").  
@@ -54,19 +54,19 @@ Sollten keine Integrationskonten angezeigt werden, [erstellen Sie zunächst ein 
 
 4. Wählen Sie die Kachel **Vereinbarungen** aus. Sollte die Kachel „Vereinbarungen“ nicht angezeigt werden, fügen Sie sie hinzu.
 
-    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
+    ![Kachel „Vereinbarungen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
 5. Wählen Sie auf dem geöffneten Blatt „Vereinbarungen“ die Option **Hinzufügen** aus.
 
-    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
+    ![„Hinzufügen“ auswählen](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
 6. Geben Sie unter **Hinzufügen** im Feld **Name** einen Namen für Ihre Vereinbarung ein. Wählen Sie unter **Vertragstyp** die Option **AS2** aus. Wählen Sie den **Hostpartner**, die **Hostidentität**, den **Gastpartner** und die **Gastidentität** für Ihre Vereinbarung aus.
 
-    ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-agreements/agreement-3.png)  
+    ![Details zur Vereinbarung angeben](./media/logic-apps-enterprise-integration-as2/agreement-3.png)  
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     | --- | --- |
-    | Name |Name der Vereinbarung |
+    | NAME |Name der Vereinbarung |
     | Vereinbarungstyp | Muss „AS2“ sein |
     | Hostpartner |Eine Vereinbarung benötigt einen Host- und einen Gastpartner. Der Hostpartner stellt die Organisation dar, die die Vereinbarung konfiguriert. |
     | Hostidentität |Ein Bezeichner für den Hostpartner. |
@@ -82,7 +82,7 @@ Nachdem Sie die Vereinbarungseigenschaften festgelegt haben, können Sie konfigu
 1.  Wählen Sie unter **Hinzufügen** die Option **Empfangseinstellungen** aus.
 Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in der Tabelle in diesem Abschnitt beschrieben.
 
-    ![Empfangseinstellungen konfigurieren](./media/logic-apps-enterprise-integration-agreements/agreement-4.png)
+    ![Empfangseinstellungen konfigurieren](./media/logic-apps-enterprise-integration-as2/agreement-4.png)
 
 2. Optional können Sie die Eigenschaften eingehender Nachrichten überschreiben, indem Sie das Kontrollkästchen **Nachrichteneigenschaften überschreiben** aktivieren.
 
@@ -102,7 +102,7 @@ Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem
 
 Ihre Vereinbarung kann nun eingehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichteneigenschaften überschreiben |Gibt an, dass Eigenschaften in empfangenen Nachrichten überschrieben werden können. |
 | Nachricht muss signiert sein |Erfordert, dass Nachrichten digital signiert werden. Konfigurieren Sie das öffentliche Zertifikat des Gastpartners für die Signaturüberprüfung.  |
@@ -122,7 +122,7 @@ Sie können konfigurieren, wie Ihre Vereinbarung ausgehende Nachrichten identifi
 1.  Wählen Sie unter **Hinzufügen** die Option **Sendeeinstellungen** aus.
 Konfigurieren Sie die Eigenschaften auf der Grundlage Ihrer Vereinbarung mit dem Partner, der Nachrichten mit Ihnen austauscht. Die Eigenschaften werden in der Tabelle in diesem Abschnitt beschrieben.
 
-    ![Festlegen der Eigenschaften für „Sendeeinstellungen“](./media/logic-apps-enterprise-integration-agreements/agreement-51.png)
+    ![Festlegen der Eigenschaften für „Sendeeinstellungen“](./media/logic-apps-enterprise-integration-as2/agreement-51.png)
 
 2. Wenn Sie signierte Nachrichten an den Partner senden möchten, aktivieren Sie das Kontrollkästchen **Nachrichtensignatur aktivieren**. Wählen Sie zum Signieren der Nachrichten in der Liste **MIC-Algorithmus** den *MIC-Algorithmus für das private Hostpartnerzertifikat* aus. Wählen Sie außerdem in der Liste **Zertifikat** ein vorhandenes [privates Hostpartnerzertifikat](../logic-apps/logic-apps-enterprise-integration-certificates.md) aus.
 
@@ -147,7 +147,7 @@ Wählen Sie außerdem in der Liste **Zertifikat** ein vorhandenes [öffentliches
 
 Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewählten Einstellungen entsprechen.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Nachrichtensignatur aktivieren |Erfordert, dass alle von der Vereinbarung gesendeten Nachrichten signiert sind. |
 | MIC-Algorithmus |Der Algorithmus zum Signieren der Nachrichten. Konfiguriert den MIC-Algorithmus für das private Zertifikat des Hostpartners für das Signieren der Nachrichten. |
@@ -172,7 +172,7 @@ Ihre Vereinbarung kann nun ausgehende Nachrichten verarbeiten, die den ausgewäh
 
 2.  Sie können Ihre Vereinbarungen auch in der Integrationskontoübersicht anzeigen. Wählen Sie auf dem Blatt Ihres Integrationskontos die Option **Übersicht** und anschließend die Kachel **Vereinbarungen** aus. 
 
-    ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-agreements/agreement-6.png)
+    ![Kachel „Vereinbarungen“ auswählen, um alle Vereinbarungen anzuzeigen](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>Anzeigen von Swagger
 Weitere Informationen finden Sie unter [Details zu Swagger](/connectors/as2/). 

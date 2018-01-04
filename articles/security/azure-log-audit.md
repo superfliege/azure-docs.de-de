@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: d8d52b7e151d116678169dd4839f0380f63132d7
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure-Protokollierung und -Überwachung
 ## <a name="introduction"></a>Einführung
@@ -27,7 +27,7 @@ Microsoft hat eine Reihe von Whitepapers, Sicherheitsübersichten, bewährten Me
 ### <a name="azure-platform"></a>Azure Platform
 Azure ist eine offene und flexible Clouddienstplattform, die eine sehr breite Palette an Betriebssystemen, Programmiersprachen, Frameworks, Tools, Datenbanken und Geräten unterstützt.
 
-Dazu zählen z. B.:
+Sie haben beispielsweise folgende Möglichkeiten:
 -   Linux-Container mit Docker-Integration ausführen.
 
 -   Apps mit JavaScript, Python, .NET, PHP, Java und Node.js erstellen.
@@ -71,9 +71,9 @@ Die folgende Tabelle enthält die wichtigsten Protokolltypen, die in Azure verf�
 |[Azure-Diagnoseprotokolle](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|Häufige Daten zum Betrieb der Azure Resource Manager-Ressourcen im Abonnement| Sie bieten einen Einblick in Vorgänge, die Ihre Ressource selbst ausgeführt hat.| Azure Monitor, [Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[AAD-Berichterstellung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Protokolle und Berichte|Aktivitäten zur Benutzeranmeldung und Systemaktivitätsinformationen zur Benutzer- und Gruppenverwaltung|[Graph-API](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
 |[Virtual Machine und Cloud Services](https://docs.microsoft.com/azure/cloud-services/cloud-services-dotnet-diagnostics-storage)|Windows-Ereignisprotokoll und Linux-Syslog|    Erfasst Systemdaten und Protokollierungsdaten auf den virtuellen Computern und überträgt die Daten in ein Speicherkonto Ihrer Wahl.|   Windows mit [WAD](https://docs.microsoft.com/azure/azure-diagnostics) (Microsoft Azure-Diagnosespeicher) und Linux in Azure Monitor|
-|[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Speicherprotokollierung und Bereitstellung von Metrikdaten für ein Speicherkonto|Bietet einen Einblick in Nachverfolgungsanforderungen und ermöglicht die Analyse von Verwendungstrends sowie die Diagnose von Problemen mit dem Speicherkonto.|    REST-API oder [Clientbibliothek](https://msdn.microsoft.com/en-us/library/azure/mt347887.aspx)|
+|[Speicheranalyse](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Speicherprotokollierung und Bereitstellung von Metrikdaten für ein Speicherkonto|Bietet einen Einblick in Nachverfolgungsanforderungen und ermöglicht die Analyse von Verwendungstrends sowie die Diagnose von Problemen mit dem Speicherkonto.|    REST-API oder [Clientbibliothek](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Datenflussprotokolle für Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|Verwendet das JSON-Format und zeigt eingehende und ausgehende Datenflüsse auf Regelbasis|Anzeigen von Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe|[Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
-|[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Protokolle, Ausnahmen und benutzerdefinierte Diagnosen|    Erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen.| REST-API, [Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/)|
+|[Application Insight](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Protokolle, Ausnahmen und benutzerdefinierte Diagnosen|    Erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen.| REST-API, [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|
 |Prozessdaten/Sicherheitswarnung| Azure Security Center-Warnung, OMS-Warnung| Sicherheitsinformationen und Warnungen|   REST-APIs, JSON|
 
 ### <a name="activity-log"></a>Aktivitätsprotokoll
@@ -119,7 +119,7 @@ Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen: Azure-Portal, di
 **Unterstützten Dienste, Schema für Diagnoseprotokolle und unterstützte Protokollkategorien pro Ressourcentyp**
 
 
-| Dienst | Schema und Dokumente | Ressourcentyp | Kategorie |
+| Dienst | Schema und Dokumente | Ressourcentyp | Category (Kategorie) |
 | ------- | ------------- | ------------- | -------- |
 |Lastenausgleichsmodul| [Protokollanalysen für den Azure-Lastenausgleich (Vorschau)](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)|Microsoft.Network/loadBalancers|    LoadBalancerAlertEvent|
 |||Microsoft.Network/loadBalancers| LoadBalancerProbeHealthStatus
@@ -128,13 +128,13 @@ Azure-Diagnoseprotokolle bieten mehrere Konfigurationsoptionen: Azure-Portal, di
 |Anwendungsgateways|[Diagnoseprotokollierung für Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)|Microsoft.Network/applicationGateways|ApplicationGatewayAccessLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayPerformanceLog|
 |||Microsoft.Network/applicationGateways|ApplicationGatewayFirewallLog|
-|Key Vault|[Azure-Schlüsseltresor-Protokollierung](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
+|Schlüsseltresor|[Azure Key Vault-Protokollierung](https://docs.microsoft.com/azure/key-vault/key-vault-logging)|Microsoft.KeyVault/vaults|AuditEvent|
 |Azure Search|[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](https://docs.microsoft.com/azure/search/search-traffic-analytics)|Microsoft.Search/searchServices|OperationLogs|
-|Data Lake Store|[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
+|Data Lake-Speicher|[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-diagnostic-logs)|Microsoft.DataLakeStore/accounts|Audit|
 |Data Lake Analytics|[Zugreifen auf Diagnoseprotokolle für Azure Data Lake Analytics](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-diagnostic-logs)|Microsoft.DataLakeAnalytics/accounts|Audit|
-|||Microsoft.DataLakeAnalytics/accounts|Anforderungen|
-|||Microsoft.DataLakeStore/accounts|Anforderungen|
-|Logik-Apps|[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
+|||Microsoft.DataLakeAnalytics/accounts|Requests|
+|||Microsoft.DataLakeStore/accounts|Requests|
+|Logic Apps|[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](https://docs.microsoft.com/azure/logic-apps/logic-apps-track-integration-account-custom-tracking-schema)|Microsoft.Logic/workflows|WorkflowRuntime|
 |||Microsoft.Logic/integrationAccounts|IntegrationAccountTrackingEvents|
 |Azure Batch|[Diagnoseprotokolle für Azure Batch](https://docs.microsoft.com/azure/batch/batch-diagnostics)|Microsoft.Batch/batchAccounts|ServiceLog|
 |Azure-Automatisierung|[Protokollanalysen für Azure Automation](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|Microsoft.Automation/automationAccounts|JobLogs|
@@ -298,7 +298,7 @@ Application Insights ist für Entwicklerteams konzipiert und hilft Ihnen dabei, 
 
 **Liste der Integrationsszenarien und Beschreibungen**:
 
-| Integrationsszenarien | Beschreibung |
+| Integrationsszenarien | BESCHREIBUNG |
 | --------------------- | :---------- |
 |[Anwendungszuordnung](https://docs.microsoft.com/azure/application-insights/app-insights-app-map)|Die Komponenten der App mit wichtigen Metriken und Warnungen.||
 |[Diagnosesuche für Instanzdaten](https://docs.microsoft.com/azure/application-insights/app-insights-diagnostic-search)| Suchen und filtern Sie Ereignisse wie Anforderungen, Ausnahmen, Abhängigkeitsaufrufe, Protokollablaufverfolgungen und Seitenaufrufe.||
@@ -354,34 +354,34 @@ Bei den verbundenen Quellen handelt es sich um die Computer und anderen Ressourc
 
 | Dienst | Ressourcentyp | Protokolle | Metriken | Lösung |
 | :------ | :------------ | :--- | :------ | :------- |
-|Anwendungsgateways|  Microsoft.Network/<br>applicationGateways|  Diagnose|Diagnose|    [Azure Application](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)[Gateway-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
+|Anwendungsgateways|  Microsoft.Network/<br>applicationGateways|  Diagnostics|Diagnostics|    [Azure Application](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)[Gateway-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-application-gateway-analytics-solution-in-log-analytics)|
 |Application Insights||     Connector|  Connector|  [Application Insights](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)-[Connector (Vorschau)](https://blogs.technet.microsoft.com/msoms/2016/09/26/application-insights-connector-in-oms/)|
-|Automation-Konten|   Microsoft.Automation/<br>AutomationAccounts|    Diagnose||       [Weitere Informationen](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
-|Batch-Konten|    Microsoft.Batch/<br>batchAccounts|  Diagnose|    Diagnose||
+|Automation-Konten|   Microsoft.Automation/<br>AutomationAccounts|    Diagnostics||       [Weitere Informationen](https://docs.microsoft.com/azure/automation/automation-manage-send-joblogs-log-analytics)|
+|Batch-Konten|    Microsoft.Batch/<br>batchAccounts|  Diagnostics|    Diagnostics||
 |Klassische Clouddienste||       Speicher||       [Weitere Informationen](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage-iis-table)|
-|Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       Diagnose|||
-|Data Lake Analytics|   Microsoft.DataLakeAnalytics/<br>accounts|   Diagnose|||
-|Data Lake Store|   Microsoft.DataLakeStore/<br>accounts|   Diagnose|||
-|Event Hub-Namespace|   Microsoft.EventHub/<br>Namespaces|  Diagnose|    Diagnose||
-|IoT Hubs|  Microsoft.Devices/<br>IotHubs||     Diagnose||
-|Key Vault| Microsoft.KeyVault/<br>Tresore|  Diagnose  || [KeyVault-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
-|Load Balancer|    Microsoft.Network/<br>loadBalancers|    Diagnose|||
-|Logik-Apps|    Microsoft.Logic/<br>Workflows|  Diagnose|    Diagnose||
+|Cognitive Services|    Microsoft.CognitiveServices/<br>accounts|       Diagnostics|||
+|Data Lake Analytics|   Microsoft.DataLakeAnalytics/<br>accounts|   Diagnostics|||
+|Data Lake Store|   Microsoft.DataLakeStore/<br>accounts|   Diagnostics|||
+|Event Hub-Namespace|   Microsoft.EventHub/<br>Namespaces|  Diagnose|    Diagnostics||
+|IoT Hubs|  Microsoft.Devices/<br>IotHubs||     Diagnostics||
+|Schlüsseltresor| Microsoft.KeyVault/<br>Tresore|  Diagnostics  || [KeyVault-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-key-vault)|
+|Load Balancer|    Microsoft.Network/<br>loadBalancers|    Diagnostics|||
+|Logic Apps|    Microsoft.Logic/<br>Workflows|  Diagnostics|    Diagnostics||
 ||Microsoft.Logic/<br>integrationAccounts||||
-|Netzwerksicherheitsgruppen|   Microsoft.Network/<br>networksecuritygroups|Diagnose||   [Azure-Netzwerksicherheitsgruppen-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
+|Netzwerksicherheitsgruppen|   Microsoft.Network/<br>networksecuritygroups|Diagnostics||   [Azure-Netzwerksicherheitsgruppen-Analyse](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics#azure-network-security-group-analytics-solution-in-log-analytics)|
 |Recovery-Tresore|   Microsoft.RecoveryServices/<br>vaults|||[Azure Recovery Services Analytics (Vorschau)](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
-|Suchdienste|   Microsoft.Search/<br>searchServices|    Diagnose|    Diagnose||
-|Service Bus-Namespace| Microsoft.ServiceBus/<br>namespaces|    Diagnose|Diagnose|    [Service Bus Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+|Suchdienste|   Microsoft.Search/<br>searchServices|    Diagnostics|    Diagnostics||
+|Service Bus-Namespace| Microsoft.ServiceBus/<br>namespaces|    Diagnose|Diagnostics|    [Service Bus Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
 |Service Fabric||       Speicher||    [Service Fabric-Analysen (Vorschau)](https://docs.microsoft.com/azure/log-analytics/log-analytics-service-fabric)|
-|SQL (v12)| Microsoft.Sql/<br>servers/<br>Datenbanken||       Diagnose||
+|SQL (v12)| Microsoft.Sql/<br>servers/<br>Datenbanken||       Diagnostics||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Speicher|||         Skript| [Azure Storage Analytics (Vorschau)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|Virtual Machines|  Microsoft.Compute/<br>virtualMachines|  Erweiterung|  Durchwahl||
-||||Diagnose||
-|VM-Skalierungsgruppen|   Microsoft.Compute/<br>virtualMachines    ||Diagnose||
+|Virtual Machines|  Microsoft.Compute/<br>virtualMachines|  Durchwahl|  Durchwahl||
+||||Diagnostics||
+|VM-Skalierungsgruppen|   Microsoft.Compute/<br>virtualMachines    ||Diagnostics||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||
-|Webserverfarmen|Microsoft.Web/<br>serverfarms||   Diagnose
-|Websites| Microsoft.Web/<br>sites ||      Diagnose|    [Weitere Informationen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
+|Webserverfarmen|Microsoft.Web/<br>serverfarms||   Diagnostics
+|Websites| Microsoft.Web/<br>sites ||      Diagnostics|    [Weitere Informationen](https://github.com/Azure/azure-quickstart-templates/tree/master/101-webappazure-oms-monitoring)|
 ||Microsoft.Web/<br>sites/<br>slots|||||
 
 

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.openlocfilehash: 9f2a3e104df579029da56ba515b2159c18f4eae6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c89b2db6d5a80f184ca98ef757605272d385a81c
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Soziale Medien mit Azure Cosmos DB
 Da wir in einer hochgradig vernetzten Welt leben, werden wir irgendwann Teil **sozialer Netzwerke**. Wir verwenden diese Netzwerke, um mit Freunden, Kollegen und der Familie in Kontakt zu bleiben oder auch, um das, was uns bewegt, mit Menschen mit den gleichen Interessen zu teilen.
@@ -103,7 +103,7 @@ Die Erstellung von Feeds ist nunmehr bloß eine Frage der Erstellung von Dokumen
         {"relevance":7, "post":"w34r-qeg6-ref6-8565"}
     ]
 
-Wir könnten einen Stream mit den „neuesten Meldungen“ erstellen, in dem Beiträge nach Erstellungsdatum sortiert sind, oder einen Stream der „beliebtesten Beiträge“ mit den meisten Likes in den letzten 24 Stunden. Wir könnten sogar einen benutzerdefinierten Stream für jeden Benutzer einbauen, der auf einer Logik wie „Follower“ und „Interessen“ basiert und trotzdem immer noch eine Liste von Beiträgen wäre. Relevant ist an dieser Stelle, wie diese Listen erstellt werden. Die Leseleistung bleibt davon unberührt. Sobald wir eine dieser Listen erhalten, schicken wir mit dem [IN-Operator](documentdb-sql-query.md#WhereClause) eine einzelne Abfrage an Cosmos DB, um Seiten von Beiträgen gleichzeitig abzurufen.
+Wir könnten einen Stream mit den „neuesten Meldungen“ erstellen, in dem Beiträge nach Erstellungsdatum sortiert sind, oder einen Stream der „beliebtesten Beiträge“ mit den meisten Likes in den letzten 24 Stunden. Wir könnten sogar einen benutzerdefinierten Stream für jeden Benutzer einbauen, der auf einer Logik wie „Follower“ und „Interessen“ basiert und trotzdem immer noch eine Liste von Beiträgen wäre. Relevant ist an dieser Stelle, wie diese Listen erstellt werden. Die Leseleistung bleibt davon unberührt. Sobald wir eine dieser Listen erhalten, schicken wir mit dem [IN-Operator](sql-api-sql-query.md#WhereClause) eine einzelne Abfrage an Cosmos DB, um Seiten von Beiträgen gleichzeitig abzurufen.
 
 Die Feeddatenströme könnten mithilfe von [Azure App Services](https://azure.microsoft.com/services/app-service/)-Hintergrundprozessen erstellt werden: [WebJobs](../app-service/web-sites-create-web-jobs.md). Nach der Erstellung eines Beitrags kann die Hintergrundverarbeitung mit [Azure Storage](https://azure.microsoft.com/services/storage/)-[Warteschlangen](../storage/queues/storage-dotnet-how-to-use-queues.md) und WebJobs mithilfe des [Azure WebJobs-SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) ausgelöst werden. Diese Funktionen implementieren die Verteilung der Beiträge innerhalb der Streams, basierend auf unserer eigenen benutzerdefinierten Logik. 
 
@@ -237,7 +237,7 @@ Was geschieht, wenn sich die Situation positiv entwickelt, und Benutzer aus eine
 
 Aber Moment mal... Sie stellen bald fest, dass die Benutzerfreundlichkeit Ihrer Plattform für sie nicht optimal ist; sie sind zu weit von Ihrer Betriebsregion entfernt, sodass unmögliche Wartezeiten auftreten, und Sie möchten diese Benutzer nicht verlieren. Wenn es doch nur eine einfache Möglichkeit zum **Erweitern Ihrer globalen Reichweite** gäbe... aber es gibt sie!
 
-Mithilfe von Cosmos DB können Sie [Ihre Daten global replizieren](../cosmos-db/tutorial-global-distribution-documentdb.md), das auch noch transparent und mit nur ein paar Mausklicks; und die Auswahl der verfügbaren Regionen erfolgt automatisch anhand des [Clientcodes](../cosmos-db/tutorial-global-distribution-documentdb.md). Dies bedeutet zugleich, dass Sie mit [mehreren Failoverregionen](regional-failover.md) arbeiten können. 
+Mithilfe von Cosmos DB können Sie [Ihre Daten global replizieren](../cosmos-db/tutorial-global-distribution-sql-api.md), das auch noch transparent und mit nur ein paar Mausklicks; und die Auswahl der verfügbaren Regionen erfolgt automatisch anhand des [Clientcodes](../cosmos-db/tutorial-global-distribution-sql-api.md). Dies bedeutet zugleich, dass Sie mit [mehreren Failoverregionen](regional-failover.md) arbeiten können. 
 
 Wenn Sie Ihre Daten global replizieren, müssen Sie zugleich sicherstellen, dass dies allen Ihren Kunden zugute kommt. Wenn Sie ein Web-Front-End verwenden oder von mobilen Clients aus auf APIs zugreifen, können Sie [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) bereitstellen und Ihre Azure App Service-Instanz in allen gewünschten Regionen klonen. Verwenden Sie eine Leistungskonfiguration zur Unterstützung Ihrer erweiterten globalen Abdeckung. Wenn Ihre Clients auf Ihr Front-End oder Ihre APIs zugreifen, werden sie zum nächstgelegenen App Service weitergeleitet, der seinerseits eine Verbindung mit dem lokalen Cosmos DB-Replikat herstellt.
 

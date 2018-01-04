@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 2ba6e3a79e5eb4eca4a3c7d35ada8c58bfe2295e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 13a61caf9b4dff8ffc08970d5a4c09efa9c5f117
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Kaufen eines benutzerdefinierten Domänennamens für Azure-Web-Apps
 
@@ -34,6 +34,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * [Entfernen Sie das Ausgabenlimit für Ihr Abonnement.](../billing/billing-spending-limit.md#remove) Sie können keine App Service-Domänen mit kostenlosem Abonnementguthaben erwerben.
 
 ## <a name="prepare-the-app"></a>Vorbereiten der App
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Um benutzerdefinierte Domänen in Azure-Web-Apps zu verwenden, muss der [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) Ihrer Web-App einen kostenpflichtigen Tarif (**Shared**, **Basic**, **Standard** oder **Premium**) aufweisen. Stellen Sie in diesem Schritt sicher, dass sich die Web-App im richtigen Tarif befindet.
 
@@ -109,7 +111,7 @@ Es ist wichtig, dass Sie alle erforderlichen Felder so genau wie möglich ausfü
 
 Wählen Sie als nächstes die gewünschten Optionen für Ihre Domäne aus. Die folgende Tabelle enthält einige Erläuterungen:
 
-| Einstellung | Empfohlener Wert | Beschreibung |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |-|-|-|
 |Datenschutz | Aktivieren | Abonnieren Sie „Datenschutz“. Diese Option ist _kostenlos_ im Kaufpreis enthalten. Manche Domänen der obersten Ebene werden von Registrierungsstellen verwaltet, die den Datenschutz nicht unterstützen. Sie sind auf der Seite **Datenschutz** aufgeführt. |
 | Zuweisen von Standardhostnamen | **www** und **@** | Wählen Sie bei Bedarf die gewünschten Hostnamenbindungen. Wenn der Vorgang des Domänenkaufs abgeschlossen ist, kann auf Ihre Web-App über die ausgewählten Hostnamen zugegriffen werden. Wenn Ihre Web-App sich hinter dem [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) befindet, wird Ihnen die Option nicht angezeigt, durch die die Stammdomäne (@) zugewiesen werden kann, da der Traffic Manager keine A-Datensätze unterstützt. Sie können Änderungen an den Zuweisungen der Hostnamen vornehmen, nachdem der Domänenkauf abgeschlossen ist. |
@@ -167,7 +169,7 @@ Stellen Sie sicher, dass Ihre erworbene Domäne im Abschnitt**App Service Domain
 Wählen Sie **Hostnamen hinzufügen**.
 
 ### <a name="configure-hostname"></a>Konfigurieren des Hostnamens
-Tippen Sie im Dialogfeld**Add hostname** (Hostname hinzufügen) den vollqualifizierten Domänennamen Ihrer App Service-Domäne oder einer Unterdomäne ein. Beispiel:
+Tippen Sie im Dialogfeld**Add hostname** (Hostname hinzufügen) den vollqualifizierten Domänennamen Ihrer App Service-Domäne oder einer Unterdomäne ein. Beispiel: 
 
 - kontoso.net
 - www.kontoso.net
@@ -268,7 +270,7 @@ Klicken Sie auf **Ja**, um den Vorgang zu bestätigen.
 
 Nachdem der Vorgang abgeschlossen ist, ist die Domäne aus Ihrem Abonnement freigegeben und steht wieder für jeden zum Kauf zur Verfügung. 
 
-## <a name="direct-default-url-to-a-custom-directory"></a>Weiterleiten der Standard-URL zu einem benutzerdefinierten Verzeichnis
+## <a name="direct-default-url-to-a-custom-directory"></a>Weiterleiten der Standard-URL an ein benutzerdefiniertes Verzeichnis
 
 App Service leitet Webanforderungen standardmäßig an das Stammverzeichnis des App-Codes weiter. Informationen zum Weiterleiten an ein Unterverzeichnis wie `public` finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps](app-service-web-tutorial-custom-domain.md#virtualdir).
 

@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 8ffa1c6dd4794cbea6b2c1904e08557ba2a68ba2
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 21fb0bca08bca0fe6384bbc9ba2511f7d8b746cf
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>Tutorial: Klassifizieren von Iris über die Befehlszeilenschnittstelle
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
@@ -84,7 +84,7 @@ $ az account list -o table
 $ az account set -s <subscription id or name>
 ```
 
-## <a name="step-2-create-a-new-azure-machine-learning-experimentation-account-and-workspace"></a>Schritt 2: Erstellen eines neuen Experimentieren-Kontos und eines Arbeitsbereichs für Azure Machine Learning
+## <a name="step-2-create-a-new-azure-machine-learning-experimentation-account-and-workspace"></a>Schritt 2: Erstellen eines neuen Experimentieren-Kontos und eines Arbeitsbereichs für Azure Machine Learning
 Erstellen Sie zunächst ein neues Experimentieren-Konto und einen neuen Arbeitsbereich. Weitere Informationen zu Experimentieren-Konten und Arbeitsbereichen finden Sie unter [Azure Machine Learning-Konzepte](overview-general-concepts.md).
 
 > [!NOTE]
@@ -118,7 +118,7 @@ $az role assignment create --assignee bob@contoso.com --role owner --scope <work
 > [!TIP]
 > `bob@contoso.com` im obigen Befehl muss eine gültige Azure AD-Identität in dem Verzeichnis sein, zu dem das aktuelle Abonnement gehört.
 
-## <a name="step-3-create-a-new-project"></a>Schritt 3. Erstellen eines neuen Projekts
+## <a name="step-3-create-a-new-project"></a>Schritt 3: Erstellen eines neuen Projekts
 Im nächsten Schritt erstellen Sie ein neues Projekt. Dafür haben Sie verschiedene Möglichkeiten zur Auswahl:
 
 ### <a name="create-a-new-blank-project"></a>Erstellen eines neuen leeren Projekts

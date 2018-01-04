@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 1a1e12dbb5e32f62266ee6a3cdca9e781569e58c
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 9bcdd539c199086e0f48c1172853ff00cc1617f8
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="data-preparations-user-guide"></a>Benutzerleitfaden zur Datenvorbereitung 
 Die Benutzeroberfläche der Azure Machine Learning-Datenvorbereitung bietet zahlreiche umfangreiche Funktionen. Dieser Artikel beschreibt die komplexesten Bereiche der Benutzeroberfläche.
@@ -39,7 +39,7 @@ Fehlerwerte sind leicht zu identifizieren. Sie werden rot hervorgehoben und als 
 
 Fehlerwerte verbreiten sich. Wenn ein Fehlerwert auftritt, so tritt der Fehler in den meisten Fällen bei einem Großteil der Vorgänge immer wieder auf. Es gibt drei Möglichkeiten, diese Fehlerwerte zu ersetzen oder zu entfernen:
 
-* Replace (Ersetzen)
+* Replace
     -  Klicken Sie mit der rechten Maustaste auf eine Spalte, und wählen Sie **Replace Error Values** (Fehlerwerte ersetzen) aus. Anschließend können Sie einen Ersatzwert für jeden in der Spalte gefundenen Fehlerwert auswählen.
 
 * Remove (Entfernen)

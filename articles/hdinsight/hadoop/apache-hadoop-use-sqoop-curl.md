@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/22/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: add96267f8afe6dcaf43e163f9d18bd7fb57682e
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 08e7288d4d9d06f3a74464817892c2b03ae8a86c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="run-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Ausführen von Sqoop-Aufträgen mit Hadoop in HDInsight mit Curl
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -30,7 +30,7 @@ Erfahren Sie, wie Sie mit Sqoop-Aufträge in einem Hadoop-Cluster in HDInsight a
 Curl wird verwendet, um zu veranschaulichen, wie Sie über unformatierte HTTP-Anforderungen zum Ausführen, Überwachen und Abrufen der Ergebnisse der Sqoop-Aufträge mit HDInsight interagieren können. Dies funktioniert mithilfe der WebHCat REST-API (ehemals Templeton), die von Ihrem HDInsight-Cluster bereitgestellt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um die in diesem Artikel aufgeführten Schritte auszuführen, benötigen Sie Folgendes:
+Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benötigen Sie Folgendes:
 
 * Schließen Sie [Verwenden von Sqoop mit Hadoop in HDInsight](hdinsight-use-sqoop.md#create-cluster-and-sql-database) ab, um eine Umgebung mit einem HDInsight-Cluster und einer Azure SQL-Datenbank zu konfigurieren.
 * [Curl](http://curl.haxx.se/). Curl ist ein Tool zum Übertragen von Daten aus einem oder in einen HDInsight-Cluster.

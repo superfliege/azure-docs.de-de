@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: e9b979861f5ad815fd3794a98f3b9ca2115b415c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 720a5bd7fc3335e96570268c983578aad0774d7e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-app-service-plan-overview"></a>Azure App Service-Plan – Übersicht
 
-In App Service wird eine App in einem _App Service-Plan_ ausgeführt. Mit einem App Service-Plan wird ein Satz mit Computeressourcen für eine auszuführende Web-App definiert. Diese Computeressourcen entsprechen der [_Serverfarm_](https://wikipedia.org/wiki/Server_farm) beim herkömmlichen Webhosting. Es können eine oder mehrere Apps für die Ausführung auf denselben Computeressourcen (oder in demselben App Service-Plan) konfiguriert werden. 
+In App Service wird eine App in einem _App Service-Plan_ ausgeführt. Mit einem App Service-Plan wird ein Satz mit Computeressourcen für eine auszuführende Web-App definiert. Diese Computeressourcen entsprechen der [_Serverfarm_](https://wikipedia.org/wiki/Server_farm) beim herkömmlichen Webhosting. Es können eine oder mehrere Apps für die Ausführung auf denselben Computeressourcen (oder in demselben App Service-Plan) konfiguriert werden.
 
 Wenn Sie einen App Service-Plan in einer bestimmten Region (z.B. „Europa, Westen“) erstellen, wird für den Plan in dieser Region ein Satz mit Computeressourcen erstellt. Alle Apps, die Sie in diesen App Service-Plan einfügen, werden auf diesen Computeressourcen ausgeführt, wie in Ihrem App Service-Plan definiert. Für jeden App Service-Plan wird Folgendes definiert:
 
@@ -38,6 +38,8 @@ Mit dem _Tarif_ eines App Service-Plans wird ermittelt, welche App Service-Featu
 - **Dedizierter Computemodus**: In den Tarifen **Basic**, **Standard**, **Premium** und **PremiumV2** werden Apps auf dedizierten Azure-VMs ausgeführt. Nur für Apps desselben App Service-Plans werden dieselben Computeressourcen gemeinsam genutzt. Je höher der Tarif, desto mehr VM-Instanzen stehen Ihnen für das horizontale Hochskalieren zur Verfügung.
 - **Isolated**: Bei diesem Tarif werden dedizierte Azure-VMs in dedizierten Azure Virtual Networks ausgeführt, die eine Netzwerkisolation und eine Computeisolation für Apps ermöglichen. Sie verfügen hiermit über die maximalen Funktionen für die horizontale Skalierung.
 - **Consumption** (Verbrauchsplan): Dieser Tarif ist nur für [Funktionen-Apps](../azure-functions/functions-overview.md) verfügbar. Die Funktionen werden je nach Workload dynamisch skaliert. Weitere Informationen finden Sie unter [Vergleich von Hostingplänen für Azure Functions](../azure-functions/functions-scale.md).
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Für jeden Tarif wird auch eine bestimmte Teilmenge mit App Service-Features bereitgestellt. Zu diesen Features gehören benutzerdefinierte Domänen und SSL-Zertifikate, automatische Skalierung, Bereitstellungsslots, Sicherungen, Traffic Manager-Integration und mehr. Je höher der Tarif, desto mehr Features sind verfügbar. Informationen dazu, welche Features für einen Tarif unterstützt werden, finden Sie unter [App Service-Pläne](https://azure.microsoft.com/pricing/details/app-service/plans/).
 

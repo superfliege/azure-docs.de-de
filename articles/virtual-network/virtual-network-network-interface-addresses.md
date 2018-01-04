@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: c309c7c25a3ed75e96dec8046934530e24890f38
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: d06dd0a8ec63202825be347c4b69e21a6dd4b7db
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -50,22 +50,22 @@ Einer Netzwerkschnittstelle können beliebig viele [private](#private) und [öff
 
     |Einstellung|Erforderlich|Details|
     |---|---|---|
-    |Name|Ja|Muss für die Netzwerkschnittstelle eindeutig sein|
+    |NAME|Ja|Muss für die Netzwerkschnittstelle eindeutig sein|
     |Typ|Ja|Da Sie die IP-Konfiguration einer vorhandenen Netzwerkschnittstelle hinzufügen und jede Netzwerkschnittstelle über eine [primäre](#primary) IP-Konfiguration verfügen muss, steht nur die Option **Sekundär** zur Verfügung.|
     |Zuweisungsmethode für private IP-Adressen|Ja|[**Dynamisch**](#dynamic): Azure weist die nächste verfügbare Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird. [**Statisch**](#static): Sie weisen eine nicht verwendete Adresse für den Subnetzadressbereich zu, in dem die Netzwerkschnittstelle bereitgestellt wird.|
-    |Öffentliche IP-Adresse|Nein|**Deaktiviert:** Der IP-Konfiguration ist derzeit keine öffentliche IP-Adressressource zugeordnet. **Aktiviert:** Wählen Sie eine vorhandene öffentliche IPv4-Adresse aus, oder erstellen Sie eine neue. Eine Anleitung zur Erstellung einer öffentlichen IP-Adresse finden Sie im Artikel [Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address) (Öffentliche IP-Adressen).|
+    |Öffentliche IP-Adresse|Nein |**Deaktiviert:** Der IP-Konfiguration ist derzeit keine öffentliche IP-Adressressource zugeordnet. **Aktiviert:** Wählen Sie eine vorhandene öffentliche IPv4-Adresse aus, oder erstellen Sie eine neue. Eine Anleitung zur Erstellung einer öffentlichen IP-Adresse finden Sie im Artikel [Public IP addresses](virtual-network-public-ip-address.md#create-a-public-ip-address) (Öffentliche IP-Adressen).|
 7. Fügen Sie dem Betriebssystem des virtuellen Computers manuell sekundäre private IP-Adressen hinzu. Gehen Sie dabei wie im Artikel [Zuweisen von mehreren IP-Adressen zu Betriebssystemen virtueller Computer](virtual-network-multiple-ip-addresses-portal.md#os-config) beschrieben vor. Spezielle Überlegungen vor dem manuellen Hinzufügen von IP-Adressen zum Betriebssystem virtueller Computer finden Sie unter [private](#private) IP-Adressen. Fügen Sie dem Betriebssystem des virtuellen Computers keine öffentlichen IP-Adressen hinzu.
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 |PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-ip-address-settings"></a>Ändern von IP-Adresseinstellungen
 
-Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Adresse oder die einer Netzwerkschnittstelle zugewiesene öffentliche IP-Adresse ändern. Wenn Sie die private IPv4-Adresse einer sekundären IP-Konfiguration ändern, die einer sekundären Netzwerkschnittstelle eines virtuellen Computers zugeordnet ist (siehe [Primäre und sekundäre Netzwerkschnittstellen](virtual-network-network-interface-vm.md#about)), ändern Sie den Status des virtuellen Computers in „Beendet (Zuordnung aufgehoben)“, bevor Sie die folgenden Schritte ausführen: 
+Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Adresse oder die einer Netzwerkschnittstelle zugewiesene öffentliche IP-Adresse ändern. Wenn Sie die private IPv4-Adresse einer sekundären IP-Konfiguration ändern, die einer sekundären Netzwerkschnittstelle eines virtuellen Computers zugeordnet ist (siehe [Primäre und sekundäre Netzwerkschnittstellen](virtual-network-network-interface-vm.md)), ändern Sie den Status des virtuellen Computers in „Beendet (Zuordnung aufgehoben)“, bevor Sie die folgenden Schritte ausführen: 
 
 1. Melden Sie sich mit einem Konto, dem für Ihr Abonnement mindestens Berechtigungen für die Rolle „Netzwerkmitwirkender“ zugewiesen sind, beim [Azure-Portal](https://portal.azure.com) an. Weitere Informationen zum Zuweisen von Rollen und Berechtigungen zu Konten finden Sie im Artikel [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor).
 2. Geben Sie im oberen Bereich des Azure-Portals im Feld mit dem Text *Ressourcen suchen* die Zeichenfolge *Netzwerkschnittstellen* ein. Wenn **Netzwerkschnittstellen** in den Suchergebnissen angezeigt wird, klicken Sie darauf.
@@ -79,7 +79,7 @@ Sie müssen ggf. die Zuweisungsmethode einer IPv4-Adresse, die statische IPv4-Ad
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
 |PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -97,7 +97,7 @@ Sie können [private](#private) und [öffentliche](#public) IP-Adressen von eine
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
 |PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|

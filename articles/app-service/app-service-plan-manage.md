@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: cephalin
-ms.openlocfilehash: 5369946b1e8a4851ee940cf6fe91a1bdb94db5f3
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 61179c5bf29ed2c338b45ba909ec01237806cf26
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
-Ein [App Service-Plan](azure-web-sites-web-hosting-plans-in-depth-overview.md) stellt Ressourcen bereit, die zum Ausführen einer App Service-App erforderlich sind. Diese Anleitung veranschaulicht das Verwalten eines App Service-Plans. 
+Ein [App Service-Plan](azure-web-sites-web-hosting-plans-in-depth-overview.md) stellt Ressourcen bereit, die zum Ausführen einer App Service-App erforderlich sind. Diese Anleitung veranschaulicht das Verwalten eines App Service-Plans.
 
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
@@ -68,6 +68,8 @@ Mit **App Service-Plan ändern** wird die Auswahlfunktion für den **App Service
 > 
 
 ![Auswahlelement für App Service-Pläne][change]
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Jeder Plan hat einen eigenen Tarif. Wenn Sie beispielsweise eine Website aus dem **Free**-Tarif in den **Standard**-Tarif verschieben, können alle zugewiesenen Apps die Features und Ressourcen des **Standard**-Tarifs nutzen. Allerdings bedeutet das Verschieben einer App von einem Plan mit einem höheren Tarif zu einem Plan mit einem niedrigeren Tarif, dass Sie keinen Zugriff mehr auf bestimmte Features haben. Wenn Ihre Anwendung ein Feature verwendet, das im Zielplan nicht verfügbar ist, erhalten Sie eine Fehlermeldung, die anzeigt, welches Feature verwendet wird, das nicht verfügbar ist. Wenn z. B. eine Ihrer Anwendungen SSL-Zertifikate verwendet, wird möglicherweise die folgende Fehlermeldung angezeigt: `Cannot update the site with hostname '<app_name>' because its current SSL configuration 'SNI based SSL enabled' is not allowed in the target compute mode. Allowed SSL configuration is 'Disabled'.`In diesem Fall müssen Sie den Tarif des Zielplans zentral auf **Basic** oder höher hochskalieren, oder Sie müssen alle SSL-Verbindungen mit Ihrer App entfernen, bevor Sie die App in den Zielplan verschieben können.
 

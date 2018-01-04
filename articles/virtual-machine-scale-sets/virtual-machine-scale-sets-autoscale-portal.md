@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 141ae5f004ec1c85c506955873c69c03a89cd08c
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: e43be53817e7fa65c3d7a95cab9821126ed88831
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatisches Skalieren einer VM-Skalierungsgruppe im Azure-Portal
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren.
@@ -28,7 +28,7 @@ In diesem Artikel wird veranschaulicht, wie Sie im Azure-Portal Regeln für die 
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](virtual-machine-scale-sets-portal-create.md), mit [Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-azure-cli) oder der [Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-powershell) erstellen.
+Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](virtual-machine-scale-sets-create-portal.md), mit [Azure PowerShell](virtual-machine-scale-sets-create-cli.md) oder der [Azure CLI 2.0](virtual-machine-scale-sets-create-powershell.md) erstellen.
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Erstellen einer Regel für automatisches horizontales Hochskalieren
@@ -53,7 +53,7 @@ Wenn sich die Nachfrage für Ihre Anwendung erhöht, erhöht sich auch die Last 
     | *Statistik zum Aggregationsintervall* | Definiert, wie die in jedem Aggregationsintervall gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                             | Durchschnitt        |
     | *Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                     | Größer als   |
     | *Schwellenwert*            | Der Prozentsatz, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                 | 70             |
-    | *Duration*             | Der überwachte Zeitraum, bevor die Metrik und die Schwellenwerte verglichen werden.                                   | 10 Minuten     |
+    | *Duration*             | Der überwachte Zeitraum, bevor die Metrik und Schwellenwerte verglichen werden.                                   | 10 Minuten     |
     | *Vorgang*            | Definiert, ob und in welchen Schritten die Skalierungsgruppe zentral hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                        | Prozentsatz erhöhen um |
     | *Anzahl der Instanzen*       | Der Prozentsatz der VM-Instanzen sollte geändert werden, wenn diese Regel ausgelöst wird.                                            | 20             |
     | *Abkühlen (Minuten)*  | Gibt an, wie lange gewartet wird, bevor die Regel erneut angewendet wird, damit die Aktionen für die automatische Skalierung wirksam werden können. | 5 Minuten      |

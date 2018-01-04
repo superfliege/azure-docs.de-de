@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 94f1f64a57784254912cb6cf568fafc15c8e74ec
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 990b84cf0df74b7b08a5fa105c2c2213aa251f9d
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="microsoftnetworkpublicipaddresscombo-ui-element"></a>Benutzeroberflächenelement „Microsoft.Network.PublicIpAddressCombo“
 Eine Gruppe von Steuerelementen zum Auswählen einer neuen oder vorhandenen öffentlichen IP-Adresse. Dieses Element verwenden Sie beim [Erstellen einer verwalteten Azure-Anwendung](publish-service-catalog-app.md).
@@ -80,6 +80,7 @@ Wenn der Benutzer eine neue oder vorhandene öffentliche IP-Adresse auswählt, w
   "name": "ip01",
   "resourceGroup": "rg01",
   "domainNameLabel": "foobar",
+  "publicIPAllocationMethod": "Dynamic",
   "newOrExistingOrNone": "new"
 }
 ```

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 1fbfbbc79a415af5e874c304412854849e134eb7
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Automatisches Skalieren einer VM-Skalierungsgruppe mit Azure PowerShell
 Beim Erstellen einer Skalierungsgruppe definieren Sie die Anzahl von VM-Instanzen, die Sie ausführen möchten. Wenn sich die Nachfrage nach Ihrer Anwendung ändert, können Sie die Anzahl von VM-Instanzen automatisch erhöhen oder verringern lassen. Dank der Möglichkeit zum automatischen Skalieren können Sie über den gesamten Lebenszyklus Ihrer App die Kundennachfrage decken oder auf Änderungen der Anwendungsleistung reagieren.
@@ -28,7 +28,7 @@ In diesem Artikel wird veranschaulicht, wie Sie mit Azure PowerShell Regeln für
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](virtual-machine-scale-sets-portal-create.md), mit [Azure PowerShell](virtual-machine-scale-sets-create.md#create-from-azure-cli) oder der [Azure CLI 2.0](virtual-machine-scale-sets-create.md#create-from-powershell) erstellen.
+Zum Erstellen von Regeln für die automatische Skalierung benötigen Sie eine vorhandene VM-Skalierungsgruppe. Sie können eine Skalierungsgruppe im [Azure-Portal](virtual-machine-scale-sets-create-portal.md), mit [Azure PowerShell](virtual-machine-scale-sets-create-cli.md) oder der [Azure CLI 2.0](virtual-machine-scale-sets-create-powershell.md) erstellen.
 
 Definieren Sie einige Variablen für Ihre Skalierungsgruppe, um die Erstellung der Regeln für die automatische Skalierung zu vereinfachen. Im folgenden Beispiel werden Variablen für die Skalierungsgruppe *myScaleSet* in der Ressourcengruppe *myResourceGroup* in der Region *USA, Osten* definiert. Sie können Ihre Abonnement-ID mit [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription) abrufen. Wenn Ihrem Konto mehrere Abonnements zugeordnet sind, wird nur das erste Abonnement zurückgegeben. Passen Sie die Namen und die Abonnement-ID wie folgt an:
 
@@ -52,7 +52,7 @@ Für diese Regel werden die folgenden Parameter verwendet:
 | *-MetricName*           | Die Leistungsmetrik zum Überwachen und Anwenden von Skalierungsgruppenaktionen.                                                   | CPU in Prozent |
 | *-TimeGrain*            | Gibt an, wie häufig Metriken zu Analysezwecken gesammelt werden.                                                                   | 1 Minute       |
 | *-MetricStatistic*      | Definiert, wie die gesammelten Metriken zu Analysezwecken aggregiert werden sollen.                                                | Durchschnitt        |
-| *-TimeWindow*           | Der überwachte Zeitraum, bevor die Metrik und die Schwellenwerte verglichen werden.                                   | 10 Minuten      |
+| *-TimeWindow*           | Der überwachte Zeitraum, bevor die Metrik und Schwellenwerte verglichen werden.                                   | 10 Minuten      |
 | *-Operator*             | Operator zum Vergleichen der Metrikdaten mit dem Schwellenwert.                                                     | Größer als   |
 | *-Threshold*            | Der Wert, der für die Regel für die automatische Skalierung das Auslösen einer Aktion bewirkt.                                                      | 70 %            |
 | *-ScaleActionDirection* | Definiert, ob die Skalierungsgruppe zentral hoch- oder herunterskaliert werden soll, wenn die Regel zutrifft.                                             | Erhöhung       |
@@ -78,8 +78,8 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
 ```
 
 
-## <a name="create-a-rule-to-automatically-scale-in"></a>Erstellen einer Regel für das automatische horizontale Herunterskalieren
-Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende abnimmt. Wenn diese Verringerung der Last für einen bestimmten Zeitraum anhält, können Sie die Regeln der automatischen Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu reduzieren. Mit dieser Aktion zum horizontalen Herunterskalieren werden die Kosten für die Ausführung Ihrer Skalierungsgruppe gesenkt, da Sie nur so viele Instanzen ausführen, wie für die Erfüllung der derzeitigen Nachfrage erforderlich sind.
+## <a name="create-a-rule-to-automatically-scale-in"></a>Erstellen einer Regel für automatisches horizontales Herunterskalieren
+Es kann sein, dass die Nachfrage nach Ihrer Anwendung abends oder am Wochenende abnimmt. Wenn diese Verringerung der Last für einen bestimmten Zeitraum anhält, können Sie Regeln zur automatischen Skalierung konfigurieren, um die Anzahl von VM-Instanzen in der Skalierungsgruppe zu reduzieren. Mit dieser Aktion zum horizontalen Herunterskalieren werden die Kosten für die Ausführung Ihrer Skalierungsgruppe gesenkt, da Sie nur so viele Instanzen ausführen, wie für die Erfüllung der derzeitigen Nachfrage erforderlich sind.
 
 Erstellen Sie mit [New-AzureRmAutoscaleRule](/powershell/module/AzureRM.Insights/New-AzureRmAutoscaleRule) eine Regel, mit der die Anzahl von VM-Instanzen in einer Skalierungsgruppe verringert wird, wenn die durchschnittliche CPU-Last über einen Zeitraum von 10 Minuten unter 30 % fällt. Bei Auslösung dieser Regel wird die Anzahl der VM-Instanzen um 20 % verringert. Das folgende Beispiel erstellt das Objekt *myRuleScaleDown*, das diese Regel für das zentrale Hochskalieren enthält. Die *-MetricResourceId* verwendet die Variablen, die zuvor für die Abonnement-ID, den Namen der Ressourcengruppe und den Namen der Skalierungsgruppe definiert wurden:
 
@@ -142,6 +142,6 @@ Verwenden Sie zum Erstellen von Regeln zur automatischen Skalierung basierend au
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Artikel wurde beschrieben, wie Sie mit Regeln für die automatische Skalierung horizontal skalieren und die *Anzahl* von VM-Instanzen in Ihrer Skalierungsgruppe erhöhen oder verringern. Sie können auch vertikal skalieren, um die *Größe* der VM-Instanz zu erhöhen oder zu verringern. Weitere Informationen finden Sie unter [Vertikale automatische Skalierung mit VM-Skalierungsgruppen](virtual-machine-scale-sets-vertical-scale-reprovision.md).
 
-Informationen zur Verwaltung Ihrer VM-Instanzen finden Sie unter [Manage a virtual machine scale set with Azure PowerShell](virtual-machine-scale-sets-windows-manage.md) (Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell).
+Informationen zur Verwaltung Ihrer VM-Instanzen finden Sie unter [Verwalten einer VM-Skalierungsgruppe mit Azure PowerShell](virtual-machine-scale-sets-windows-manage.md).
 
 Informationen zum Generieren von Warnungen bei der Auslösung von Regeln für die automatische Skalierung finden Sie unter [Verwenden von automatischen Skalierungsvorgängen zum Senden von E-Mail- und Webhook-Warnbenachrichtigungen in Azure Monitor](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md). Informieren Sie sich auch über das [Aufrufen eines Webhooks für Azure-Aktivitätsprotokollwarnungen](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md).

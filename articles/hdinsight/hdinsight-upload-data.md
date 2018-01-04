@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 12/15/2017
 ms.author: jgao
-ms.openlocfilehash: 9cdf41bd5c15abca3570a08584dc0958497848a7
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: cfe1b6bee9bc1f093b239f8f4acc523e47ad5d1a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Hochladen von Daten für Hadoop-Aufträge in HDInsight
 
@@ -166,7 +166,7 @@ Nachdem die Verbindung hergestellt wurde, verwenden Sie die folgende Syntax, um 
 hadoop -copyFromLocal <localFilePath> <storageFilePath>
 ```
 
-Beispiel: `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
+Zum Beispiel, `hadoop fs -copyFromLocal data.txt /example/data/data.txt`
 
 Da sich das Standarddateisystem für HDInsight in Azure Storage befindet, befindet sich die Datei „/example/data.txt“ auch tatsächlich in Azure Storage. Sie können auch folgendermaßen auf die Datei verweisen:
 
@@ -186,7 +186,7 @@ Eine Liste weiterer Hadoop-Befehle für die Arbeit mit Dateien finden Sie unter 
 ### <a name="graphical-clients"></a>Clients mit grafischer Benutzeroberfläche
 Es gibt auch einige Anwendungen, die eine grafische Benutzeroberfläche für die Arbeit mit Azure Storage bereitstellen. In der folgenden Tabelle sind einige dieser Anwendungen aufgelistet:
 
-| Client- | Linux | OS X | Windows |
+| Client | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
 | [Microsoft Visual Studio-Tools für HDInsight](hadoop/apache-hadoop-visual-studio-tools-get-started.md#navigate-the-linked-resources) |✔ |✔ |✔ |
 | [Azure-Speicher-Explorer](http://storageexplorer.com/) |✔ |✔ |✔ |

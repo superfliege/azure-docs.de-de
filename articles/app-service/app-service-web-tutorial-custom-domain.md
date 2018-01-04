@@ -16,15 +16,15 @@ ms.topic: tutorial
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 1a0b54e75bd6356ba7ba351d51d5f4a59bd64c75
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 9b35572b3275b5a2c5e89adf4890a2659d09626e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure-Web-Apps
 
-[Azure-Web-Apps](app-service-web-overview.md) bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching. In diesem Tutorial wird gezeigt, wie Azure-Web-Apps ein vorhandener benutzerdefinierter DNS-Name zugeordnet wird.
+[Azure-Web-Apps](app-service-web-overview.md) bietet einen hoch skalierbaren Webhostingdienst mit Self-Patching. In diesem Tutorial wird gezeigt, wie Azure-Web-Apps ein vorhandener benutzerdefinierter DNS-Name zugeordnet wird.
 
 ![Portalnavigation zur Azure-App](./media/app-service-web-tutorial-custom-domain/app-with-custom-dns.png)
 
@@ -58,6 +58,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 ## <a name="prepare-the-app"></a>Vorbereiten der App
 
 Um einer Web-App einen benutzerdefinierten DNS-Namen zuzuordnen, muss der [App Service-Plan](https://azure.microsoft.com/pricing/details/app-service/) der Web-App einen kostenpflichtigen Tarif (**Shared**, **Basic**, **Standard** oder **Premium**) aufweisen. In diesem Schritt stellen Sie sicher, dass sich die App Service-App innerhalb des unterstützten Tarifs befindet.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 ### <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -182,7 +184,7 @@ Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden T
 
 | Eintragstyp | Host | Wert |
 | - | - | - |
-| A | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
+| Eine Datei | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
 
 Wenn die Einträge hinzugefügt werden, sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:

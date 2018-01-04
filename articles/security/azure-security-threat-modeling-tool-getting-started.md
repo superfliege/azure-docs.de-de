@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 2d940b42108948f4cd36a585f1e79def05fe8fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 73d6b42e7a97d6041f6213a1f7d060806734d763
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
@@ -29,13 +29,13 @@ Dieser Artikel setzt auf vorhandenen Kenntnissen zum SDL-Bedrohungsmodellierungs
 
 Kurz zusammengefasst, umfasst diese Methode das Erstellen eines Diagramms, das Bestimmen von Bedrohungen und deren Entschärfung sowie das Überprüfen jeder Entschärfung. Es folgt ein Diagramm dieses Prozesses:
 
-![SDL-Prozess](./media/azure-security-threat-modeling-tool/sdlapproach.png)
+![SDL-Prozess](./media/azure-security-threat-modeling-tool-feature-overview/sdlapproach.png)
 
 ## <a name="starting-the-threat-modeling-process"></a>Starten des Bedrohungsmodellierungsprozesses
 
 Wenn Sie das Threat Modeling Tool starten, fallen Ihnen einige Dinge auf (siehe die Abbildung):
 
-![Leere Startseite](./media/azure-security-threat-modeling-tool/tmtstart.png)
+![Leere Startseite](./media/azure-security-threat-modeling-tool-feature-overview/tmtstart.png)
 
 ### <a name="threat-model-section"></a>Abschnitt „Bedrohungsmodell“
 
@@ -70,7 +70,7 @@ Sie durchlaufen den Prozess der Entwicklung ihres ersten Bedrohungsmodells.
 > Cristina: Klar. Sehen wir uns das genauer an.
 > Ricardo öffnet das Tool und gibt seinen Bildschirm für Cristina frei.
 
-![Grundlegendes Bedrohungsmodell](./media/azure-security-threat-modeling-tool/basictmt.png)
+![Grundlegendes Bedrohungsmodell](./media/azure-security-threat-modeling-tool-feature-overview/basictmt.png)
 
 > Cristina: Ok, das sieht einleuchtend aus, doch kannst du es mit mir durchgehen?
 > Ricardo: Sicher! Dies ist die Gliederung:
@@ -89,17 +89,17 @@ Nachdem er auf der Menüleiste mit den Symbolen auf die Analyseansicht (Datei mi
 
 Diese Methode ist vergleichbar mit dem Absichern Ihres Hauses, indem sichergestellt wird, dass alle Türen und Fenster über einen Sperrmechanismus verfügen, ehe Sie eine Alarmanlage hinzufügen oder dem Dieb nachjagen.
 
-![Grundlegende Bedrohungen](./media/azure-security-threat-modeling-tool/basicthreats.png)
+![Grundlegende Bedrohungen](./media/azure-security-threat-modeling-tool-feature-overview/basicthreats.png)
 
 Ricardo beginnt mit der Auswahl des ersten Elements in der Liste. Hier geschieht Folgendes:
 
 Erstens wird die Interaktion zwischen den beiden Schablonen verbessert.
 
-![Interaktion](./media/azure-security-threat-modeling-tool/interaction.png)
+![Interaktion](./media/azure-security-threat-modeling-tool-feature-overview/interaction.png)
 
 Zweitens werden weitere Informationen zur Bedrohung im Fenster „Bedrohungseigenschaften“ hinzugefügt.
 
-![Interaktionsinformationen](./media/azure-security-threat-modeling-tool/interactioninfo.png)
+![Interaktionsinformationen](./media/azure-security-threat-modeling-tool-feature-overview/interactioninfo.png)
 
 Die generierte Bedrohung hilft ihm, potenzielle Schwächen im Entwurf zu verstehen. Die STRIDE-Kategorisierung bietet ihm eine Vorstellung potenzieller Angriffsvektoren, während ihn die zusätzliche Beschreibung informiert, was genau falsch ist und welche potenziellen Entschärfungsmöglichkeiten es gibt. Er kann in den editierbaren Felder Notizen in die Begründungsdetails eingeben oder die Prioritätsstufen abhängig von der Fehlerleiste seiner Organisation ändern.
 
@@ -116,7 +116,7 @@ Bedrohungen, die für den Entwurf aufgrund vorhandener Entschärfungen oder Sich
 
 Nachdem Ricardo die Liste mit Cristina durchlaufen und wichtige Notizen, Entschärfungen/Begründungen, eine Priorität und Statusänderungen hinzugefügt hat, wählt er „Berichte -> Vollständigen Bericht erstellen -> Bericht speichern“. Den ausgegebenen Bericht geht er mit Kollegen durch, um sicherzustellen, dass die Sicherheitsmaßnahmen ordnungsgemäß umgesetzt wurden.
 
-![Interaktionsinformationen](./media/azure-security-threat-modeling-tool/report.png)
+![Interaktionsinformationen](./media/azure-security-threat-modeling-tool-feature-overview/report.png)
 
 Wenn Ricardo stattdessen die Datei freigeben möchte, kann er sie dazu mühelos im OneDrive-Konto der Organisation speichern. Im Anschluss kann er den Dokumentlink kopieren und für seine Kollegen freigeben. 
 

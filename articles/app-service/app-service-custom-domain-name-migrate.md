@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
-ms.openlocfilehash: a1fe545e4a341709232cba36c6e3cf3b4ce82e80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd04be2046a23901471cb7bd0da9e0ed2d514d0d
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Migrieren eines aktiven DNS-Namens zu Azure App Service
 
@@ -50,7 +50,7 @@ Wenn Sie dann Ihren benutzerdefinierten DNS-Namen von der alten Website zur App 
 
 Fügen Sie zum Überprüfen des Domänenbesitzes einen TXT-Eintrag hinzu. Der TXT-Eintrag dient zur Zuordnung von _awverify.&lt;Unterdomäne>_ zu _&lt;App-Name>.azurewebsites.net_. 
 
-Welchen TXT-Eintrag Sie benötigen, hängt vom zu migrierenden DNS-Eintrag ab. Beispiele finden Sie in der folgenden Tabelle. (`@` stellt in der Regel die Stammdomäne dar.)  
+Welchen TXT-Eintrag Sie benötigen, hängt vom zu migrierenden DNS-Eintrag ab. Beispiele finden Sie in der folgenden Tabelle. (`@` stellt in der Regel die Stammdomäne dar.)
 
 | DNS-Beispieleintrag | TXT-Host | TXT-Wert |
 | - | - | - |
@@ -114,7 +114,7 @@ Ordnen Sie für das Stammdomänenbeispiel `contoso.com` den A- oder CNAME-Eintra
 
 | FQDN-Beispiel | Eintragstyp | Host | Wert |
 | - | - | - | - |
-| contoso.com (Stammdomäne) | A | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
+| contoso.com (Stammdomäne) | Eine Datei | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
 | www.contoso.com (Unterdomäne) | CNAME | `www` | _&lt;App-Name&gt;.azurewebsites.net_ |
 | \*.contoso.com (Platzhalter) | CNAME | _\*_ | _&lt;App-Name&gt;.azurewebsites.net_ |
 

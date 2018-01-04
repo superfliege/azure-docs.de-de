@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/05/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 794117b6f383bdd1851681864e99b3c1ef077f86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – FAQ
 Erfahren Sie die Antworten auf häufig gestellte Fragen zu Azure Resource Health.
@@ -80,8 +80,6 @@ Resource Health ist in allen Azure-Regionen mit Ausnahme der folgenden verfügba
 - US DoD, Mitte
 - Deutschland, Mitte
 - Deutschland, Nordosten
-- China, Osten
-- China, Norden
 
 ## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>Wie unterscheidet sich Resource Health vom Dashboard zur Dienstintegrität oder den Dienstbenachrichtigungen des Azure-Portals?
 Die von Resource Health bereitgestellten Informationen sind präziser als die vom Dashboard zur Azure-Dienstintegrität bereitgestellten Informationen.
@@ -94,7 +92,7 @@ Bitte beachten Sie: Um Ihnen einen vollständigen Überblick über Ereignisse zu
 Nein, Integritätsinformationen sind über Resource Health für alle Ressourcentypen verfügbar. 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>Müssen wir Resource Health für meine Organisation aktivieren?
-Nr.  Der Zugriff auf Azure Resource Health im Azure-Portal setzt keine Einrichtung voraus.
+Nein.  Der Zugriff auf Azure Resource Health im Azure-Portal setzt keine Einrichtung voraus.
 
 ## <a name="is-resource-health-available-free-of-charge"></a>Ist Resource Health kostenlos verfügbar?
 Ja.  Azure Resource Health ist kostenlos.

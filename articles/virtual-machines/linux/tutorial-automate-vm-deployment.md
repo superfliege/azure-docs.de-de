@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie cloud-init und Key Vault zum Anpassen von Li
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/11/2017
+ms.date: 12/13/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e2d07a03902a8c837150da8d50ab9abec8d1c95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 83773e513ee2c92da733df05cd17dda2940a28cd
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-customize-a-linux-virtual-machine-on-first-boot"></a>Gewusst wie: Anpassen eines virtuellen Linux-Computers beim ersten Start
 In einem früheren Tutorial haben Sie erfahren, wie eine SSH-Verbindung mit einem virtuellen Computer hergestellt und NGINX manuell installiert wird. Um VMs auf schnelle und einheitliche Weise zu erstellen, ist meist eine Form der Automatisierung erwünscht. Eine gängige Methode zum Anpassen virtueller Computer beim ersten Start ist die Verwendung von [cloud-Init](https://cloudinit.readthedocs.io). In diesem Tutorial lernen Sie Folgendes:
@@ -51,6 +51,8 @@ Wir arbeiten mit unseren Partnern zusammen, damit cloud-init einbezogen wird und
 | UbuntuLTS |Canonical |UbuntuServer |16.04-LTS |neueste |
 | UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |neueste |
 | CoreOS |CoreOS |CoreOS |Stable |neueste |
+| | OpenLogic | CentOS | 7-CI | neueste |
+| | RedHat | RHEL | 7-RAW-CI | neueste
 
 
 ## <a name="create-cloud-init-config-file"></a>Erstellen der Konfigurationsdatei „cloud-init.txt“

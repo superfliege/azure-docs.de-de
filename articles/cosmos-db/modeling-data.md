@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2016
 ms.author: arramac
-ms.openlocfilehash: 041982f251ddee7570619c0e7e61d07906aaed2f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 73e546dea2c1c102736a2043e0b67f0f2c622b18
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="modeling-document-data-for-nosql-databases"></a>Modellieren von Dokumentdaten für NoSQL-Datenbanken
 Schemafreie Datenbanken wie Azure Cosmos DB erleichtern die Übernahme von Änderungen an Ihrem Datenmodell, dennoch sollten Sie die Verwendung und Verarbeitung Ihrer Daten sorgfältig bedenken. 
@@ -39,7 +39,7 @@ Versuchen Sie beim ersten Modellieren von Daten in einer Dokumentenablage wie et
 
 Bevor wir uns stärker damit befassen, sehen Sie sich zunächst einmal genau an, wie Sie eine Entität in einer relationalen Datenbank modellieren, ein Konzept, mit dem viele von uns bereits vertraut sind. Das folgende Beispiel zeigt, wie eine Person in einer relationalen Datenbank gespeichert werden kann. 
 
-![Relationalen Datenbankmodell](./media/documentdb-modeling-data/relational-data-model.png)
+![Relationalen Datenbankmodell](./media/sql-api-modeling-data/relational-data-model.png)
 
 Bei der Arbeit mit relationalen Datenbanken galt viele Jahre lang das Motto: normalisieren, normalisieren, normalisieren.
 
@@ -290,7 +290,7 @@ Im Beispiel oben haben wir die unbegrenzte Auflistung im Verlegerdokument gelös
 ### <a name="how-do-i-model-manymany-relationships"></a>Wie modelliere ich Viele-zu-viele-Beziehungen?
 In einer relationalen Datenbank *m:n* -Beziehungen häufig mit Verknüpfungstabellen modelliert, bei denen einfach Datensätze aus anderen Tabellen miteinander verknüpft werden. 
 
-![Verknüpfen von Tabellen](./media/documentdb-modeling-data/join-table.png)
+![Verknüpfen von Tabellen](./media/sql-api-modeling-data/join-table.png)
 
 Möglicherweise sind Sie versucht, dasselbe mit Dokumenten zu replizieren, wobei jedoch ein Datenmodell entsteht, das etwa folgendermaßen aussieht.
 
@@ -395,4 +395,4 @@ Es gibt genauso wenig einen einzigen Weg, um Daten auf einem Bildschirm darzuste
 
 Weitere Informationen zu Azure Cosmos DB finden Sie auf der [Dokumentationsseite](https://azure.microsoft.com/documentation/services/cosmos-db/) des Diensts. 
 
-Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf mehreren Partitionen finden Sie unter [Partitionieren von Daten in Azure Cosmos DB](documentdb-partition-data.md). 
+Informationen zur horizontalen Partitionierung („Sharding“) Ihrer Daten auf mehreren Partitionen finden Sie unter [Partitionieren von Daten in Azure Cosmos DB](sql-api-partition-data.md). 

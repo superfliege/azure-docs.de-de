@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8555bd830583f51164d39ca0e7b95813b7d35965
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: e5569209d3628003b3f3e169b227e069b920c03f
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-the-azure-cli-10"></a>Erstellen einer VM (klassisch) mit mehreren Netzwerkkarten mithilfe der Azure CLI 1.0
 
@@ -48,7 +48,7 @@ Die Back-End-VMs sind auf die Erstellung der folgenden Ressourcen angewiesen:
 * **Verfügbarkeitsgruppe**. Alle Datenbankserver werden einer einzigen Verfügbarkeitsgruppe hinzugefügt, damit sichergestellt ist, dass mindestens ein virtueller Computer während der Wartung ausgeführt wird.
 
 ### <a name="step-1---start-your-script"></a>Schritt 1: Starten des Skripts
-Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh) herunterladen. Schließen Sie die nachstehenden Schritte ab, um das Skript an Ihre Arbeitsumgebung anzupassen.
+Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/classic/virtual-network-deploy-multinic-classic-cli.sh)herunterladen. Schließen Sie die nachstehenden Schritte ab, um das Skript an Ihre Arbeitsumgebung anzupassen.
 
 1. Ändern Sie die Werte der nachstehenden Variablen basierend auf der im obigen Abschnitt [Voraussetzungen](#Prerequisites) bereitgestellten Ressourcengruppe.
 
@@ -76,7 +76,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
     numberOfVMs=2
     ```
 
-### <a name="step-2---create-necessary-resources-for-your-vms"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für Ihre virtuellen Computer
+### <a name="step-2---create-necessary-resources-for-your-vms"></a>Schritt 2: Erstellen der erforderlichen Ressourcen für die virtuellen Computer
 1. Erstellen Sie einen neuen Clouddienst für alle Back-End-VMs. Beachten Sie, dass die `$backendCSName`-Variable für den Ressourcengruppennamen und `$location` für die Azure-Region verwendet wird
 
     ```azurecli
@@ -93,7 +93,7 @@ Sie können das verwendete Bash-Skript ungekürzt [hier](https://raw.githubuserc
     ```
 
 ### <a name="step-3---create-vms-with-multiple-nics"></a>Schritt 3: Erstellen von virtuellen Computern mit mehreren Netzwerkschnittstellenkarten
-1. Erstellen Sie mithilfe einer Schleife mehrere virtuelle Computer auf Grundlage der `numberOfVMs`-Variablen.
+1. Erstellen Sie mithilfe einer Schleife mehrere virtuelle Computer auf Grundlage der `numberOfVMs` -Variablen.
 
     ```azurecli
     for ((suffixNumber=1;suffixNumber<=numberOfVMs;suffixNumber++));
@@ -191,4 +191,4 @@ Führen Sie das Skript aus, nachdem sie es heruntergeladen und angepasst haben, 
 
 ### <a name="step-5---configure-routing-within-the-vms-operating-system"></a>Schritt 5: Konfigurieren des Routings im Betriebssystem des virtuellen Computers
 
-Azure DHCP weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Informationen zum Konfigurieren des Routings für sekundäre Netzwerkschnittstellen finden Sie unter [Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen](virtual-network-network-interface-vm.md#routing-within-a-virtual-machine-operating-system-with-multiple-network-interfaces).
+Azure DHCP weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Informationen zum Konfigurieren des Routings für sekundäre Netzwerkschnittstellen finden Sie unter [Routing innerhalb des Betriebssystems eines virtuellen Computers mit mehreren Netzwerkschnittstellen](virtual-network-network-interface-vm.md).

@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 10/24/2017
 ms.author: stevelas
-ms.openlocfilehash: dfab0a371ffb2d8ea52bea2cdcf3d92d6c669a9d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 92df5a37d62dc9731842a4312339aa571072a487
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -94,7 +94,7 @@ ACR beginnt, Images in den konfigurierten Replikaten zu synchronisieren. Sobald 
 
 ## <a name="geo-replication-pricing"></a>Georeplikation – Preise
 
-Die Georeplikation ist ein Funktionsmerkmal des [Premium-Tarifs](container-registry-skus.md#premium) von Azure Container Registry. Wenn Sie eine Registrierung in die gewünschten Regionen replizieren, fallen für jede Region Premium-Registrierungsgebühren an.
+Die Georeplikation ist ein Funktionsmerkmal des [Premium-Tarifs](container-registry-skus.md) von Azure Container Registry. Wenn Sie eine Registrierung in die gewünschten Regionen replizieren, fallen für jede Region Premium-Registrierungsgebühren an.
 
 Im vorhergehenden Beispiel hat Contoso zwei Registrierungen zu einer konsolidiert und Replikate den Regionen „USA, Osten“, „Kanada, Mitte“ und „Europa, Westen“ hinzugefügt. Contoso zahlt nun viermal den Premium-Tarif pro Monat, ohne zusätzliche Konfiguration oder Verwaltung. Jede Region ruft nun ihre Images lokal per Pull ab und verbessert so die Leistung und Zuverlässigkeit ohne Netzwerkausgangsgebühren von USA, Westen nach Kanada und USA, Osten.
 

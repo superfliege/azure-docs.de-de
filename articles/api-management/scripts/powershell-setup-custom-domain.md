@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.devlang: na
 ms.topic: sample
-ms.date: 11/16/2017
+ms.date: 12/14/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 484805d1e31cd115d9b8a7c8ae9fdbc5899d932b
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: cc30dfc93fde25b4d52c29377988260009f53360
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="set-up-custom-domain"></a>Einrichten einer benutzerdefinierten Domäne
 
@@ -39,8 +39,10 @@ Wenn Sie die Ressourcengruppe und alle zugehörigen Ressourcen nicht mehr benöt
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
+[!INCLUDE [api-management-custom-domain](../../../includes/api-management-custom-domain.md)]
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Azure PowerShell-Modul finden Sie in der [Azure PowerShell-Dokumentation](https://docs.microsoft.com/powershell/azure/overview).
 
-Weitere Azure PowerShell-Beispiele für Azure API Management finden Sie unter [PowerShell-Beispiele](../powershell-samples.md).
+Weitere Azure PowerShell-Beispiele für Azure API Management finden Sie in den [PowerShell-Beispielen](../powershell-samples.md).

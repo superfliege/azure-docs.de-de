@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: b9dc3f52e5fc275bc56b9964f2115833f2dde42e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ebd7a886f5853ec3fa9b6e816083e9edd868ef76
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Überwachen von Warnungen für Sicherungen von virtuellen Azure-Computern
 Warnungen sind Antworten des Diensts mit dem Hinweis, dass ein Ereignisschwellenwert erreicht oder überschritten wurde. Informationen zur zeitlichen Entstehung von Problemen können sehr wichtig sein, um die Geschäftskosten gering zu halten. Auftretende Warnungen halten sich normalerweise nicht an einen Zeitplan, und daher ist es wichtig informiert zu werden, sobald die Warnungen auftreten. Beispiel: Wenn bei einem Sicherungs- oder Wiederherstellungsauftrag ein Fehler auftritt, wird innerhalb von fünf Minuten nach Auftreten des Fehlers eine Warnung gesendet. Im Dashboard des Tresors werden auf der Kachel „Sicherungswarnungen“ Ereignisse der Ebenen „Kritisch“ und „Warnung“ angezeigt. In den Einstellungen der Sicherungswarnungen können Sie alle Ereignisse anzeigen. Aber was ist zu tun, wenn eine Warnung bei der Arbeit an einem anderen Problem auftritt? Wenn Sie nicht wissen, wann die Warnung auftritt, kann dies nur ein unbedeutender Vorfall sein, oder es kann zu einer Kompromittierung von Daten kommen. Stellen Sie wie folgt sicher, dass die richtigen Personen über eine Warnung benachrichtigt werden: Konfigurieren Sie den Dienst so, dass beim Auftreten Warnungsbenachrichtigungen per E-Mail gesendet werden. Weitere Informationen zum Einrichten von E-Mail-Benachrichtigungen finden Sie unter [Konfigurieren von Benachrichtigungen](backup-azure-monitor-vms.md#configure-notifications).
@@ -139,7 +139,7 @@ Mit der Schaltfläche **Spalten** können Sie weitere Ereignisattribute aktivier
 3. Klicken Sie auf **Zurücksetzen**, um die Liste mit den Attributen auf dem Blatt **Ereignisse** zurückzusetzen. Verwenden Sie nach dem Hinzufügen oder Entfernen von Attributen aus der Liste die Option **Zurücksetzen** , um die neue Liste mit den Ereignisattributen anzuzeigen.
 4. Klicken Sie auf **Aktualisieren** , um die Daten in den Ereignisattributen zu aktualisieren. Die folgende Tabelle enthält Informationen zu den einzelnen Attributen.
 
-| Spaltenname | Beschreibung |
+| Spaltenname | BESCHREIBUNG |
 | --- | --- |
 | Vorgang |Name des Vorgangs |
 | Ebene |Die Ebene des Vorgangs kann wie folgt lauten: „Information“, „Warnung“, „Fehler“ oder „Kritisch“. |
@@ -151,7 +151,7 @@ Mit der Schaltfläche **Spalten** können Sie weitere Ereignisattribute aktivier
 | Ressourcengruppe |Zugeordnete Ressourcengruppe |
 | Ressourcentyp |Interner Ressourcentyp, der vom Resource Manager verwendet wird |
 | Abonnement-ID |Zugeordnete Abonnement-ID |
-| Kategorie |Kategorie des Ereignisses |
+| Category (Kategorie) |Kategorie des Ereignisses |
 | Korrelations-ID |Allgemeine ID für verwandte Ereignisse |
 
 ## <a name="use-powershell-to-customize-alerts"></a>Verwenden von PowerShell zum Anpassen von Warnungen
@@ -168,7 +168,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 
 **OperationName**: OperationName hat das Format „Microsoft.RecoveryServices/recoveryServicesVault/*EventName*“, wobei *EventName* wie folgt lauten kann:<br/>
 
-* Registrieren <br/>
+* Register  <br/>
 * Unregister  <br/>
 * ConfigureProtection  <br/>
 * Backup  <br/>
@@ -213,4 +213,4 @@ Ereignisprotokolle bieten eine hervorragende Grundlage für Nachbesprechungen un
 
 Eine umfassende Beschreibung der Ereignis-, Vorgangs- und Überwachungsprotokolle von Azure-Diensten finden Sie im Artikel [Anzeigen von Ereignis- und Überwachungsprotokollen](../monitoring-and-diagnostics/insights-debugging-with-events.md).
 
-Informationen zum erneuten Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)(Einführung: Sichern von VMs in einem Recovery Services-Tresor). Informationen zu den Verwaltungsaufgaben für VM-Sicherungen finden Sie im Artikel [Verwalten der Sicherungen von virtuellen Azure-Computern](backup-azure-manage-vms.md).
+Informationen zum erneuten Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt finden Sie unter [Wiederherstellen virtueller Azure-Computer](backup-azure-arm-restore-vms.md). Informationen zum Schutz Ihrer virtuellen Computer finden Sie unter [First look: Back up VMs to a Recovery Services vault](backup-azure-vms-first-look-arm.md)(Einführung: Sichern von VMs in einem Recovery Services-Tresor). Informationen zu den Verwaltungsaufgaben für VM-Sicherungen finden Sie im Artikel [Verwalten der Sicherungen von virtuellen Azure-Computern](backup-azure-manage-vms.md).

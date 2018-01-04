@@ -3,8 +3,8 @@ title: "Übersicht über DNS-Zonen und -Einträge – Azure DNS | Microsoft-Doku
 description: "Übersicht über die Unterstützung für das Hosten von DNS-Zonen und -Einträgen in Microsoft Azure DNS."
 services: dns
 documentationcenter: na
-author: jtuliani
-manager: carmonm
+author: KumudD
+manager: jeconnoc
 editor: 
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 12/05/2016
-ms.author: jonatul
-ms.openlocfilehash: 00f6309114039db23a1d22f1eb70076b842dadca
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.date: 12/18/2017
+ms.author: kumud
+ms.openlocfilehash: 0a0808d3963cc037aaf113c67fd01679ee8c1d40
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="overview-of-dns-zones-and-records"></a>Übersicht über DNS-Zonen und -Einträge
 

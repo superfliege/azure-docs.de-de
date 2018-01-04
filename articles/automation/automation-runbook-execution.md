@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: c883421c6fc79b233b2d47afde9cbe6edb909a51
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: a443071aee3e0f845de4387322d2866157a9fe87
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Ausführen von Runbooks in Azure Automation
 Wenn Sie ein Runbook in Azure Automation starten, wird ein Auftrag erstellt. Ein Auftrag ist eine einzelne Ausführungsinstanz eines Runbooks. Für die Ausführung jedes Auftrags wird ein Azure Automation-Worker zugewiesen. Wenngleich Worker von mehreren Azure-Konten gemeinsam genutzt werden, sind die Aufträge von verschiedenen Automation-Konten voneinander isoliert. Sie können nicht steuern, welcher Worker die Anforderung für Ihren Auftrag verarbeitet. Für ein einzelnes Runbook können mehrere Aufträge gleichzeitig ausgeführt werden.  Die Ausführungsumgebung für Aufträge aus dem gleichen Automation-Konto kann wiederverwendet werden. Wenn Sie die Liste der Runbooks im Azure-Portal anzeigen, wird der Status aller Aufträge aufgelistet, die für jedes Runbook gestartet wurden. Sie können die Liste der Aufträge für jedes Runbook anzeigen, um den Status der einzelnen Aufträge nachzuverfolgen. Eine Beschreibung der verschiedenen Auftragsstatusangaben finden Sie unter [Auftragsstatuswerte](#job-statuses).
@@ -36,16 +36,16 @@ Ihre Aufträge können auf Ihre Azure-Ressourcen zugreifen, indem sie eine Verbi
 ## <a name="job-statuses"></a>Auftragsstatuswerte
 Die folgende Tabelle beschreibt die verschiedenen Status, die für einen Auftrag möglich sind.
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 |:--- |:--- |
 | Abgeschlossen |Der Auftrag wurde erfolgreich abgeschlossen. |
 | Fehler |Bei [grafischen und PowerShell-Workflow-Runbooks](automation-runbook-types.md)ist die Kompilierung des Runbooks fehlgeschlagen.  Bei [PowerShell-Skript-Runbooks](automation-runbook-types.md)konnte das Runbook nicht gestartet werden, oder bei dem Auftrag ist eine Ausnahme aufgetreten. |
-| Fehler, auf Ressourcen wird gewartet |Beim Auftrag ist ein Fehler aufgetreten, da der Auftrag dreimal den Grenzwert für die [gleichmäßige Verteilung](#fairshare) erreicht hat und jedes Mal vom gleichen Prüfpunkt oder vom Anfang des Runbooks gestartet wurde. |
+| Fehler, auf Ressourcen wird gewartet |Beim Auftrag ist ein Fehler aufgetreten, da der Auftrag dreimal den Grenzwert für die [gleichmäßige Verteilung](#fair-share) erreicht hat und jedes Mal vom gleichen Prüfpunkt oder vom Anfang des Runbooks gestartet wurde. |
 | In Warteschlange |Der Auftrag wartet darauf, dass Ressourcen für einen Automation-Worker verfügbar werden, damit er gestartet werden kann. |
 | Wird gestartet |Der Auftrag wurde einem Worker zugewiesen, und das System ist in Begriff, ihn zu starten. |
 | Wird fortgesetzt |Das System ist in Begriff, den Auftrag fortzusetzen, nachdem er angehalten wurde. |
 | Wird ausgeführt |Der Auftrag wird ausgeführt. |
-| Wird ausgeführt, auf Ressourcen wird gewartet |Der Auftrag wurde entladen, da er den Grenzwert für die [gleichmäßige Verteilung](#fairshare) erreicht hat. Er wird in Kürze vom letzten Prüfpunkt wiederaufgenommen. |
+| Wird ausgeführt, auf Ressourcen wird gewartet |Der Auftrag wurde entladen, da er den Grenzwert für die [gleichmäßige Verteilung](#fair-share) erreicht hat. Er wird in Kürze vom letzten Prüfpunkt wiederaufgenommen. |
 | Beendet |Der Auftrag wurde vom Benutzer beendet, bevor er abgeschlossen wurde. |
 | Wird beendet |Das System ist in Begriff, den Auftrag zu beenden. |
 | Ausgesetzt |Der Auftrag wurde vom Benutzer, vom System oder von einem Befehl im Runbook angehalten. Ein Auftrag, der angehalten wurde, kann erneut gestartet werden und wird vom letzten Prüfpunkt oder vom Anfang des Runbooks fortgesetzt, wenn er keine Prüfpunkte besitzt. Das Runbook wird nur vom System angehalten, wenn eine Ausnahme auftritt. Standardmäßig ist ErrorActionPreference auf **Continue** festgelegt. Dies bedeutet, dass der Auftrag bei einem Fehler weiterhin ausgeführt wird. Wenn diese Einstellungsvariable auf **Stop** festgelegt wird, wird der Auftrag bei einem Fehler angehalten.  Gilt nur für [grafische und PowerShell-Workflow-Runbooks](automation-runbook-types.md) . |

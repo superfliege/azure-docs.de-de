@@ -3,7 +3,7 @@ title: Hochladen einer VHD-Datei in Azure DevTest Labs mithilfe des Microsoft Az
 description: Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure-Speicher-Explorers
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
-ms.author: tarcher
-ms.openlocfilehash: 502e2536fb0fd2e9dfc4c7b85a6fb4e18202f38f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 25675aae77fbe2610fe416210de9a306c1c09f3d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Hochladen einer VHD-Datei in das Speicherkonto eines Labs mithilfe des Microsoft Azure-Speicher-Explorers
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen, mit denen virtuelle Computer bereitgestellt werden. Dieser Artikel veranschaulicht, wie Sie den [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um eine VHD-Datei in das Speicherkonto eines Labs hochzuladen. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../virtual-machines/linux/about-disks-and-vhds.md).
+In Azure DevTest Labs können VHD-Dateien verwendet werden, um benutzerdefinierte Images zu erstellen. Diese können wiederum verwendet werden, um virtuelle Computer bereitzustellen. Dieser Artikel veranschaulicht, wie Sie den [Microsoft Azure-Speicher-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um eine VHD-Datei in das Speicherkonto eines Labs hochzuladen. Nachdem Sie die VHD-Datei hochgeladen haben, finden Sie im Abschnitt [Nächste Schritte](#next-steps) einige Artikel, die veranschaulichen, wie aus der hochgeladenen VHD-Datei ein benutzerdefiniertes Image erstellt wird. Weitere Informationen zu Datenträgern und VHDs in Azure finden Sie unter [Informationen zu Datenträgern und VHDs für virtuelle Computer](../virtual-machines/linux/about-disks-and-vhds.md).
 
 ## <a name="step-by-step-instructions"></a>Schrittweise Anweisungen
 
@@ -34,7 +34,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
 
 1. Rufen Sie den Namen des Labspeicherkontos im Azure-Portal ab:
 
-    1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+    1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
     
     1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
     
@@ -116,7 +116,7 @@ Die folgenden Schritte führen Sie durch das Hochladen einer VHD-Datei in DevTes
 
         ![Datei auswählen][9]  
     
-    1. Der Speicher-Explorer-Fensterbereich **Aktivitätsprotokoll** zeigt den Uploadstatus an (zusammen mit Links zum Abbrechen des Uploads). Das Hochladen einer VHD-Datei kann abhängig von der Größe der VHD-Datei und der Geschwindigkeit Ihrer Verbindung lange dauern. 
+    1. Der Speicher-Explorer-Fensterbereich **Aktivitätsprotokoll** zeigt den Uploadstatus an (zusammen mit Links zum Abbrechen des Uploads). Der Vorgang zum Hochladen kann abhängig von der Größe der VHD-Datei und der Geschwindigkeit Ihrer Verbindung lange dauern. 
 
         ![Uploadstatus der Datei][10]  
 

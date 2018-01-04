@@ -11,14 +11,14 @@ ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 07/17/2017
 ms.author: magoedte
-ms.openlocfilehash: 601e059af6040834f1ceb520ffe23aeadb6cdb18
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/03/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>Lösung für die Agent-Integritätsdiagnose in OMS
 Mit der Lösung für die Agent-Integritätsdiagnose in OMS können Sie für alle Agents, die ihre Daten direkt an den OMS-Arbeitsbereich oder eine mit OMS verbundene System Center Operations Manager-Verwaltungsgruppe melden, die Agents ermitteln, die nicht mehr reagieren und Betriebsdaten übermitteln.  Außerdem können Sie nachverfolgen, wie viele Agents bereitgestellt werden und wie sie geografisch verteilt sind, und andere Abfragen durchführen, um zu ermitteln, wie Agents, die in Azure, anderen Cloudumgebungen oder lokal bereitgestellt wurden, verteilt sind.    
@@ -45,7 +45,7 @@ Fügen Sie die Lösung für die Agent-Integritätsdiagnose dem OMS-Arbeitsbereic
 ### <a name="supported-agents"></a>Unterstützte Agents
 In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von der Lösung unterstützt werden.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
 | Windows-Agents | Ja | Heartbeat-Ereignisse werden von direkten Windows-Agents erfasst.|
 | System Center Operations Manager-Verwaltungsgruppe | Ja | Heartbeat-Ereignisse werden von Agents, die ihre Daten an die Verwaltungsgruppe melden, alle 60 Sekunden erfasst und dann an Log Analytics weitergeleitet. Es ist keine direkte Verbindung von Operations Manager-Agents mit Log Analytics erforderlich. Daten von Heartbeat-Ereignissen werden von der Verwaltungsgruppe an das Log Analytics-Repository weitergeleitet.|
@@ -55,7 +55,7 @@ Wenn Sie die Lösung dem OMS-Arbeitsbereich hinzufügen, wird Ihrem OMS-Dashboar
 
 Klicken Sie auf die Kachel **Agent-Integrität**, um das Dashboard **Agent-Integrität** zu öffnen.  Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind. In jeder Spalte sind die zehn häufigsten Ereignisse entsprechend den Kriterien der Spalte für den angegebenen Zeitbereich aufgeführt. Sie können eine Protokollsuche durchführen, mit der die gesamte Liste ausgegeben wird, indem Sie rechts unten in jeder Spalte die Option **Alle anzeigen** wählen oder auf die Spaltenüberschrift klicken.
 
-| Column | Beschreibung |
+| Column | BESCHREIBUNG |
 |--------|-------------|
 | Agent-Anzahl über die Zeit | Ein Trend der Agent-Anzahl für einen Zeitraum von sieben Tagen für Linux- und Windows-Agents.|
 | Anzahl der nicht reagierenden Agents | Eine Liste mit Agents, die in den letzten 24 Stunden keinen Heartbeat gesendet haben.|
@@ -74,10 +74,10 @@ Die Lösung erstellt im OMS-Repository eine Art von Datensatz.
 ### <a name="heartbeat-records"></a>Heartbeat-Datensätze
 Ein Datensatz vom Typ **Heartbeat** wird erstellt.  Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt.  
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | Typ | *Heartbeat*|
-| Kategorie | Der Wert lautet *Direct Agent*, *SCOM Agent* oder *SCOM Management Server*.|
+| Category (Kategorie) | Der Wert lautet *Direct Agent*, *SCOM Agent* oder *SCOM Management Server*.|
 | Computer | Name des Computers|
 | OSType | Windows- oder Linux-Betriebssystem|
 | OSMajorVersion | Hauptversion des Betriebssystems|
@@ -97,7 +97,7 @@ Jeder Agent, der Daten an einen Operations Manager-Verwaltungsserver meldet, sen
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, die mit dieser Lösung erfasst wurden.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 | --- | --- |
 | Type=Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
 | Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |
@@ -114,9 +114,9 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Datensätze, d
 
 
 >[!NOTE]
-> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden:
+> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../log-analytics/log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden.
 >
->| Abfrage | Beschreibung |
+>| Abfragen | BESCHREIBUNG |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |Gesamtanzahl von Agents |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |Anzahl der nicht reagierenden Agents innerhalb der letzten 24 Stunden |

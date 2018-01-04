@@ -38,7 +38,6 @@
 #### [Verwalten von ACRs](storsimple-virtual-array-manage-acrs.md)
 #### [Verwalten von Aufträgen](storsimple-virtual-array-manage-jobs.md)
 #### [Ändern des Gerätekennworts](storsimple-virtual-array-change-device-admin-password.md)
-#### [Konfigurieren von MPIO auf einem Windows Server-Host](storsimple-virtual-array-configure-mpio-windows-server.md)
 #### [Überwachen mithilfe von Warnungen](storsimple-virtual-array-manage-alerts.md)
 #### [Diagnostizieren und Behandeln von Problemen](storsimple-virtual-array-diagnose-problems.md)
 #### [Erstellen einer Supportanfrage](storsimple-virtual-array-log-support-ticket.md)
@@ -151,7 +150,7 @@
 #### [StorSimple mit Hyper-V](https://gallery.technet.microsoft.com/Deploy-Hyper-V-with-Azure-0d1c6df6)
 #### [Verteilter globaler Namespace](https://www.microsoft.com/download/details.aspx?id=45507)
 
-### Monitor
+### Überwachen
 #### [Verwenden der Dienstzusammenfassung](storsimple-8000-service-dashboard.md)
 #### [Verwenden der Gerätezusammenfassung](storsimple-8000-device-dashboard.md)
 #### [Verwenden von Überwachungsdiagrammen](storsimple-8000-monitor-device.md)
@@ -198,7 +197,7 @@
 #### [Update 0.1](storsimple-october-2014-release-notes.md)
 #### [Allgemein verfügbare Version](storsimple-july-2014-release-notes.md)
 
-## Referenz
+## Verweis
 ### [REST-API](https://docs.microsoft.com/rest/api/storsimple)
 ### [Windows PowerShell für StorSimple-Cmdlets](https://technet.microsoft.com/library/dn688168.aspx)
 
@@ -232,7 +231,7 @@
 # Verwandte Themen
 ## [StorSimple 5000–7000-Serie](http://onlinehelp.storsimple.com)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Marketingblog](http://blogs.technet.com/b/cis/)
 ## [Marketing](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)

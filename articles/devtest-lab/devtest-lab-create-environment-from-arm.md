@@ -3,7 +3,7 @@ title: Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Resso
 description: Hier erfahren Sie, wie Sie in Azure DevTest Labs auf der Grundlage einer Azure Resource Manager-Vorlage Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen erstellen.
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
-ms.author: tarcher
-ms.openlocfilehash: 381b3e5cc82e71dde4fe3a4266678dbd5919290d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: v-craic
+ms.openlocfilehash: 3fd0f15c695bcd22a51233846ace8711a4fcd635
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -64,7 +64,7 @@ Zum Organisieren von Azure Resource Manager-Vorlagen in einem Repository sind fo
 
 Mit den folgenden Schritten können Sie Ihrem Lab über das Azure-Portal ein Repository hinzufügen: 
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.   
 1. Wählen Sie auf dem Blatt des Labs die Option **Configuration and Policies** (Konfiguration und Richtlinien) aus.
@@ -93,7 +93,7 @@ Im nächsten Abschnitt erfahren Sie, wie Sie Umgebungen auf der Grundlage einer 
 
 Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde, können Ihre Labbenutzer mit folgenden Schritten eine Umgebung über das Azure-Portal erstellen:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.   
 1. Wählen Sie auf dem Blatt des Labs die Option **Hinzufügen+** aus.

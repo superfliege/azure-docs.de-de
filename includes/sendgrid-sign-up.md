@@ -1,7 +1,7 @@
 Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit diesen 25.000 kostenlosen E-Mails pro Monat erhalten Sie Zugriff auf erweiterte Berichterstellung und Analysen sowie auf [sämtliche APIs][all APIs] (Web, SMTP, Ereignis, Analyse usw.). Informationen zu den zusätzlichen Diensten von SendGrid finden Sie auf der [Seite mit den SendGrid-Lösungen][SendGrid Solutions].
 
 ### <a name="to-sign-up-for-a-sendgrid-account"></a>So registrieren Sie ein SendGrid-Konto
-1. Melden Sie sich im [Azure-Verwaltungsportal][Azure Management Portal] an.
+1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 2. Klicken Sie im Menü auf der linken Seite auf **Neu**.
 
     ![command-bar-new][command-bar-new]
@@ -33,7 +33,7 @@ Kunden von Azure können monatlich 25.000 kostenlose E-Mails freischalten. Mit d
 
     Wenn Sie Ihren Abonnementplan ändern oder die SendGrid-Kontakteinstellungen anzeigen möchten, klicken Sie auf den Namen des SendGrid-Diensts, um das SendGrid-Marketplace-Dashboard zu öffnen.
 
-    ![Einstellungen][settings]
+    ![settings][settings]
 
     Wenn Sie eine E-Mail mit SendGrid senden möchten, müssen Sie Ihren API-Schlüssel angeben.
 
@@ -82,7 +82,7 @@ Die Einstellungen für die Zustellung von E-Mails können durch Klicken auf die 
 <!--Links-->
 
 [SendGrid Solutions]: https://sendgrid.com/solutions
-[Azure Management Portal]: https://manage.windowsazure.com
+[Azure portal]: https://portal.azure.com
 [SendGrid Getting Started]: http://sendgrid.com/docs
 [SendGrid Provisioning Process]: https://support.sendgrid.com/hc/articles/200181628-Why-is-my-account-being-provisioned-
 [all APIs]: https://sendgrid.com/docs/API_Reference/index.html

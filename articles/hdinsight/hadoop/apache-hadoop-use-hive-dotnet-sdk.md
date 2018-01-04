@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: e9ac97aa31e9909584bfc5debdfba927d4884114
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 642b02b06caaa7f2c5df71227d75281c0778a483
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>Ausführen von Hive-Abfragen per HDInsight .NET-SDK
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -45,7 +45,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
 
 **So übermitteln Sie Aufträge**
 
-1. Erstellen Sie eine C#-Konsolenanwendung in Visual Studio.
+1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung.
 2. Führen Sie in der NuGet-Paket-Manager-Konsole den folgenden Befehl aus:
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
@@ -134,7 +134,7 @@ Das HDInsight .NET SDK enthält .NET-Clientbibliotheken, die das Arbeiten mit HD
             }
         }
     ```
-4. Drücken Sie **F5** , um die Anwendung auszuführen.
+4. Drücken Sie **F5**, um die Anwendung auszuführen.
 
 Die Ausgabe der Anwendung sollte Folgendem ähneln:
 

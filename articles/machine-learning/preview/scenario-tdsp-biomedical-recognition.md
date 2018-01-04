@@ -7,6 +7,7 @@ author: bradsev
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 21f8f66d8b78c2b536792bc96e9233d5739fde81
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Erkennung von biomedizinischen Entitäten unter Verwendung der Team Data Science-Prozessvorlage (TDSP)
 
@@ -39,7 +40,7 @@ Die Entitätsextraktion ist eine Unteraufgabe der Informationsextraktion (auch b
     * Ausführung von Aufträgen auf virtuellen GPU-Remotecomputern in Azure
     * Einfache Operationalisierung von Deep Learning-Modellen als Webdienste in Azure Container Service (ACS)
 
-## <a name="use-case-overview"></a>Übersicht über Anwendungsfälle
+## <a name="use-case-overview"></a>Übersicht über den Anwendungsfall
 Die Erkennung biomedizinischer benannter Entitäten ist ein wichtiger Schritt für komplexe biomedizinische NLP-Aufgaben wie beispielsweise: 
 * Extrahieren der Nennungen benannter Entitäten wie Krankheiten, Medikamente, Chemikalien und Symptome aus elektronischen medizinischen oder Patientenakten.
 * Erkennung von Medikamenten
@@ -51,7 +52,7 @@ Unsere Ergebnisse zeigen, dass das Modell zur Extraktion von biomedizinischen En
 
 In der folgenden Abbildung ist die Architektur dargestellt, die zum Verarbeiten der Daten und Trainieren der Modelle verwendet wurde.
 
-![Architektur](./media/scenario-tdsp-biomedical-recognition/architecture.png)
+![Architecture](./media/scenario-tdsp-biomedical-recognition/architecture.png)
 
 ## <a name="data-description"></a>Datenbeschreibung
 

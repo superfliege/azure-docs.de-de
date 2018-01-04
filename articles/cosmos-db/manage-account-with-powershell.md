@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: dimakwan
-ms.openlocfilehash: 3bdf30dad5e729ae1e028be2d917b6c38e1bebaf
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: d2436ad639c53360f4d1afde99d668285b606aa9
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-an-azure-cosmos-db-account-using-powershell"></a>Erstellen eines Azure Cosmos DB-Kontos mithilfe von PowerShell
 
-Der folgende Leitfaden erläutert die Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Datenbankkonten mithilfe von Azure PowerShell. Er enthält auch Befehle zum Verwalten von Kontoschlüsseln und Failoverprioritäten in [Datenbankkonten in mehreren Regionen][scaling-globally]. Wenn Sie Ihr Datenbankkonto aktualisieren, können Sie Konsistenzrichtlinien ändern und Regionen hinzufügen bzw. entfernen. Zur plattformübergreifenden Verwaltung Ihres Azure Cosmos DB-Kontos können Sie die [Azure-Befehlszeilenschnittstelle](cli-samples.md), die [Ressourcenanbieter-REST-API][rp-rest-api] oder das [Azure-Portal](create-documentdb-dotnet.md#create-account) verwenden.
+Der folgende Leitfaden erläutert die Befehle zum Automatisieren der Verwaltung Ihrer Azure Cosmos DB-Datenbankkonten mithilfe von Azure PowerShell. Er enthält auch Befehle zum Verwalten von Kontoschlüsseln und Failoverprioritäten in [Datenbankkonten in mehreren Regionen][scaling-globally]. Wenn Sie Ihr Datenbankkonto aktualisieren, können Sie Konsistenzrichtlinien ändern und Regionen hinzufügen bzw. entfernen. Zur plattformübergreifenden Verwaltung Ihres Azure Cosmos DB-Kontos können Sie die [Azure-Befehlszeilenschnittstelle](cli-samples.md), die [Ressourcenanbieter-REST-API][rp-rest-api] oder das [Azure-Portal](create-sql-api-dotnet.md#create-account) verwenden.
 
 ## <a name="getting-started"></a>Erste Schritte
 
 Befolgen Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell][powershell-install-configure], um Ihr Azure Resource Manager-Konto in Azure PowerShell zu installieren und sich bei diesem Konto anzumelden.
 
-### <a name="notes"></a>Hinweise
+### <a name="notes"></a>Notizen
 
 * Wenn die folgenden Befehle ohne Benutzerbestätigung ausgeführt werden sollen, fügen Sie das Flag `-Force` an den Befehl an.
 * Alle folgenden Befehle sind synchron.
@@ -62,7 +62,7 @@ Beispiel:
     $CosmosDBProperties = @{"databaseAccountOfferType"="Standard"; "locations"=$locations; "consistencyPolicy"=$consistencyPolicy; "ipRangeFilter"=$iprangefilter}
     New-AzureRmResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "rg-test" -Location "West US" -Name "docdb-test" -Properties $CosmosDBProperties
 
-### <a name="notes"></a>Hinweise
+### <a name="notes"></a>Notizen
 * Das oben stehende Beispiel erstellt ein Datenbankkonto mit zwei Regionen. Es ist auch möglich, ein Datenbankkonto mit einer Region (die als Schreibregion festgelegt ist und den Failoverprioritätswert 0 aufweist) oder mit mehr als zwei Regionen zu erstellen. Weitere Informationen finden Sie unter [ Datenbankkonten für mehrere Regionen][scaling-globally].
 * Die Standorte müssen Regionen entsprechen, in denen Azure Cosmos DB allgemein verfügbar ist. Die aktuelle Liste der Regionen finden Sie auf der Seite [Azure Regionen](https://azure.microsoft.com/regions/#services).
 
@@ -194,8 +194,7 @@ Beispiel:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Herstellen einer Verbindung mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](create-documentdb-dotnet.md).
-* Informationen zum Herstellen einer Verbindung mit .NET Core finden Sie unter [Verbinden und Abfragen mit .NET Core](create-documentdb-dotnet-core.md).
+* Informationen zum Herstellen einer Verbindung mit .NET finden Sie unter [Verbinden und Abfragen mit .NET](create-sql-api-dotnet.md).
 * Informationen zum Herstellen einer Verbindung mit Node.js finden Sie unter [Verbinden und Abfragen mit Node.js und einer MongoDB-App](create-mongodb-nodejs.md).
 
 <!--Reference style links - using these makes the source content way more readable than using inline links-->

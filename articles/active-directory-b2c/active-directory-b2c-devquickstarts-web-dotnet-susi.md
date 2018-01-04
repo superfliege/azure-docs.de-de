@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.openlocfilehash: 067b9fcada0c641f836e98559a0166b52a2ec37d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e7a10ab2e523a98bd8762e209d0f4a13b12ef187
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-an-aspnet-web-app-with-azure-active-directory-b2c-sign-up-sign-in-profile-edit-and-password-reset"></a>Erstellen Sie mithilfe von Azure Active Directory B2C eine ASP.NET-Web-App mit Registrierung, Anmeldung, Profilbearbeitung und Kennwortzurücksetzung.
 
@@ -49,8 +49,6 @@ Bevor Sie Azure AD B2C verwenden können, müssen Sie ein Verzeichnis oder einen
 Als Nächstes müssen Sie die App in Ihrem B2C-Verzeichnis erstellen und registrieren. So werden Informationen bereitgestellt, die Azure AD B2C für die sichere Kommunikation mit Ihrer App benötigt. 
 
 [!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
-
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
 
 Dann enthalten Ihre Anwendungseinstellungen eine API und eine native Anwendung.
 

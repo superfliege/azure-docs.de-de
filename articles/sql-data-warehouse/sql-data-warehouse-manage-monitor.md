@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/31/2016
-ms.author: joeyong;barbkess
-ms.openlocfilehash: 7ce6c2cdf1e28852da536414533ccdcdaeb437e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.author: joeyong;barbkess;kevin
+ms.openlocfilehash: 56bae284bb83b1ff18bf2caf644e6dd071b8eb69
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Überwachen Ihrer Workload mit dynamischen Verwaltungssichten
 Dieser Artikel beschreibt, wie Sie mit dynamischen Verwaltungssichten Ihre Workload überwachen und die Ausführung von Abfragen in Azure SQL Data Warehouse untersuchen.
@@ -174,7 +174,7 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 Wenn die Abfrage aktiv auf Ressourcen einer anderen Abfrage wartet, lautet der Status **AcquireResources**.  Wenn die Abfrage über alle erforderlichen Ressourcen verfügt, ist der Status **Granted**.
 
 ## <a name="monitor-tempdb"></a>Überwachen von tempdb
-Eine hohe tempdb-Auslastung kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Überprüfen Sie zuerst, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass tempdb beim Ausführen der Abfrage vollständig ausgelastet ist. Im Folgenden wird beschrieben, wie zu jedem Knoten die tempdb-Auslastung pro Abfrage ermittelt wird. 
+Eine hohe tempdb-Auslastung kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass tempdb beim Ausführen der Abfrage vollständig ausgelastet ist. Im Folgenden wird beschrieben, wie zu jedem Knoten die tempdb-Auslastung pro Abfrage ermittelt wird. 
 
 Erstellen Sie die folgende Ansicht, um die entsprechende Knoten-ID für „sys.dm_pdw_sql_requests“ zuzuordnen. Dadurch können Sie andere Pass-Through-DMVs nutzen und diese Tabellen mit „sys.dm_pdw_sql_requests“ verknüpfen.
 
@@ -233,7 +233,7 @@ ORDER BY sr.request_id;
 ```
 ## <a name="monitor-memory"></a>Überwachen des Arbeitsspeichers
 
-Der Arbeitsspeicher kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Überprüfen Sie zuerst, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass die Speicherauslastung von SQL Server beim Ausführen der Abfrage die Grenzwerte erreicht.
+Der Arbeitsspeicher kann die Hauptursache für Probleme in Verbindung mit geringer Leistung und unzureichendem Arbeitsspeicher sein. Ziehen Sie die Skalierung Ihres Data Warehouse in Betracht, wenn Sie feststellen, dass die Speicherauslastung von SQL Server beim Ausführen der Abfrage die Grenzwerte erreicht.
 
 Die folgende Abfrage gibt die Speicherauslastung von SQL Server und die Speicherauslastung pro Knoten zurück:   
 ```sql
@@ -258,7 +258,7 @@ pc1.counter_name = 'Total Server Memory (KB)'
 AND pc2.counter_name = 'Target Server Memory (KB)'
 ```
 ## <a name="monitor-transaction-log-size"></a>Überwachen der Größe von Transaktionsprotokollen
-Die folgende Abfrage gibt die Größe von Transaktionsprotokollen für jede Verteilung zurück. Überprüfen Sie, ob Datenschiefe oder Zeilengruppen schlechter Qualität vorhanden sind, und führen Sie die entsprechenden Aktionen durch. Wenn eine der Protokolldateien 160 GB erreicht, sollten Sie Ihre Instanz eventuell zentral hochskalieren oder die Transaktionsgröße beschränken. 
+Die folgende Abfrage gibt die Größe von Transaktionsprotokollen für jede Verteilung zurück. Wenn eine der Protokolldateien 160 GB erreicht, sollten Sie Ihre Instanz eventuell zentral hochskalieren oder die Transaktionsgröße beschränken. 
 ```sql
 -- Transaction log size
 SELECT

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 01/03/2018
 ms.author: cgronlun
-ms.openlocfilehash: 47257bdb054b069c864ebf545b0c00bdfb05a9ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0482a680999e58b8be45334c9ae620b6b37ac273
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Data Science für Einsteiger, 1. Video: Die 5 Fragen, die Data Science beantwortet
 In den fünf kurzen Videos der Reihe *Data Science für Einsteiger* von einem Data Science-Experten erhalten Sie eine kurze Einführung in Data Science. In diesen Videos werden zwar nur die Grundlagen behandelt, sie sind aber hilfreich, wenn Sie sich selbst mit Data Science beschäftigen möchten oder mit Data Scientists arbeiten.
@@ -70,7 +70,7 @@ Diese Gruppe von Algorithmen wird als Klassifizierung mit zwei Klassen bezeichne
 
 Sie empfiehlt sich für Fragen, die nur zwei mögliche Antworten haben.
 
-Beispiel:
+Beispiel: 
 
 * Übersteht dieser Reifen die nächsten 1.500 km: ja oder nein?
 * Was bringt mehr Kunden: ein 5-€-Gutschein oder ein Rabatt von 25 %?

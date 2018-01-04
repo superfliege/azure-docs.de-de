@@ -3,7 +3,7 @@ title: "Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsof
 description: "Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über das Azure-Portal oder PowerShell"
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 4f51d9a5-2702-45f0-a2d5-a3635b58c416
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
-ms.author: tarcher
-ms.openlocfilehash: d67fa257574d6cb4ad4b18521900374fb51da290
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: 2921356f848739d602807236006f9867eaa2a4e4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -30,7 +30,7 @@ Der Zugriff in Azure DevTest Labs wird durch die [rollenbasierte Zugriffssteueru
 ## <a name="actions-that-can-be-performed-in-each-role"></a>Aktionen, die in jeder Rolle ausgeführt werden können
 Es gibt drei wichtige Rollen, die Sie einem Benutzer zuweisen können:
 
-* Besitzer
+* Owner (Besitzer)
 * DevTest Labs-Benutzer
 * Mitwirkender
 
@@ -39,19 +39,19 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 | **Aktionen, die Benutzer in dieser Rolle ausführen können** | **DevTest Labs-Benutzer** | **Besitzer** | **Mitwirkender** |
 | --- | --- | --- | --- |
 | **Lab-Aufgaben** | | | |
-| Benutzer zu einem Lab hinzufügen |Nein |Ja |Nein |
-| Kosteneinstellungen aktualisieren |Nein |Ja |Ja |
+| Benutzer zu einem Lab hinzufügen |Nein  |Ja |Nein  |
+| Kosteneinstellungen aktualisieren |Nein  |Ja |Ja |
 | **Grundlegende Aufgaben für virtuelle Computer** | | | |
-| Benutzerdefinierte Images hinzufügen und entfernen |Nein |Ja |Ja |
+| Benutzerdefinierte Images hinzufügen und entfernen |Nein  |Ja |Ja |
 | Formeln hinzufügen, aktualisieren und löschen |Ja |Ja |Ja |
-| Azure Marketplace-Images in eine Positivliste aufnehmen |Nein |Ja |Ja |
+| Azure Marketplace-Images in eine Positivliste aufnehmen |Nein  |Ja |Ja |
 | **Aufgaben für virtuelle Computer** | | | |
 | Virtuelle Computer erstellen |Ja |Ja |Ja |
 | Virtuelle Computer starten, beenden und löschen |Nur vom Benutzer erstellte virtuelle Computer |Ja |Ja |
-| VM-Richtlinien aktualisieren |Nein |Ja |Ja |
+| VM-Richtlinien aktualisieren |Nein  |Ja |Ja |
 | Datenträgern zu virtuellen Computern hinzufügen bzw. davon entfernen |Nur vom Benutzer erstellte virtuelle Computer |Ja |Ja |
 | **Artefakt-Aufgaben** | | | |
-| Artefaktrepositorys hinzufügen und entfernen |Nein |Ja |Ja |
+| Artefaktrepositorys hinzufügen und entfernen |Nein  |Ja |Ja |
 | Artefakte anwenden |Ja |Ja |Ja |
 
 > [!NOTE]
@@ -63,7 +63,7 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugefügt werden. Das schließt externe Benutzer mit einem [Microsoft-Konto (MSA)](devtest-lab-faq.md#what-is-a-microsoft-account)ein.
 Die folgenden Schritte führen Sie durch den Prozess des Hinzufügens eines Besitzers oder Benutzers zu einem Lab in Azure DevTest Labs:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs**.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
 4. Wählen Sie auf dem Blatt des Labs **Konfiguration**aus. 
@@ -117,7 +117,7 @@ Sie können einem Lab über das entsprechende Blatt im [Azure-Portal](http://go.
 
 Um einen Besitzer zu einem Azure-Abonnement hinzuzufügen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie **Weitere Dienste** und dann **Abonnements** aus der Liste aus.
 3. Wählen Sie das gewünschte Abonnement aus.
 4. Wählen Sie das Symbol **Zugriff** aus. 

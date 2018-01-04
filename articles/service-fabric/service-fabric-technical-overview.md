@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/30/2017
+ms.date: 12/18/2017
 ms.author: ryanwi
-ms.openlocfilehash: 2204fe7393cddb88c18415768a4c6f8494e83d7b
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: dc7e536ce40bf95e1950e1e44844cd8fe26ea1a1
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="service-fabric-terminology-overview"></a>Übersicht über Service Fabric-Terminologie
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices vereinfacht. In diesem Artikel wird die von Service Fabric verwendete Terminologie erläutert, damit Sie die in der Dokumentation verwendeten Begriffe verstehen.
@@ -85,7 +85,7 @@ Weitere Informationen zum Imagespeicherdienst finden Sie unter [Grundlegendes zu
 Weitere Informationen zum Bereitstellen von Anwendungen an den Imagespeicherdienst finden Sie unter [Bereitstellen von Anwendungen](service-fabric-deploy-remove-applications.md).
 
 **Failover-Manager-Dienst**: Jeder Service Fabric-Cluster verfügt über einen Failover-Manager-Dienst, der die folgenden Aktionen ausführt:
-   - Er führt Funktionen im Zusammenhang mit hoher Verfügbarkeit und Konsistenz der Dienste aus.
+   - Er führt Funktionen im Zusammenhang mit Hochverfügbarkeit und Konsistenz der Dienste aus.
    - Er orchestriert Anwendungs- und Clusterupgrades.
    - Er interagiert mit anderen Systemkomponenten.
 

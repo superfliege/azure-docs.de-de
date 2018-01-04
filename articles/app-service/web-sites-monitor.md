@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: byvinyal
-ms.openlocfilehash: 58ccdba6f01cfb7de72f28f185102bf7f618eab4
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 72694743a9e1f520211d133dcc0d7f473c087f38
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-monitor-apps-in-azure-app-service"></a>Gewusst wie: Überwachen von Apps in Azure App Service
 [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) stellt integrierte Überwachungsfunktionen im [Azure-Portal](https://portal.azure.com) bereit.
@@ -30,6 +30,8 @@ Das Azure-Portal bietet auch die Möglichkeit zum Überprüfen von **Kontingente
 ### <a name="quotas"></a>Kontingente
 In App Service gehostete Anwendungen unterliegen bestimmten *Grenzwerten* in Bezug auf die verwendbaren Ressourcen. Die Grenzwerte werden mit dem **App Service-Plan** definiert, der der App zugeordnet ist.
 
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
+
 Wenn die Anwendung unter einem Plan vom Typ **Free** oder **Shared** gehostet wird, werden die Grenzwerte für die Ressourcen, die von der App verwendet werden können, mit **Kontingenten** definiert.
 
 Wenn die Anwendung unter einem Plan vom Typ **Basic**, **Standard** oder **Premium** gehostet wird, werden die Grenzwerte der Ressourcen, die verwendet werden können, über die Elemente **Größe** (Klein, Mittel, Groß) und **Instanzanzahl** (1, 2, 3, ...) des **App Service-Plans** festgelegt.
@@ -40,7 +42,7 @@ Wenn die Anwendung unter einem Plan vom Typ **Basic**, **Standard** oder **Premi
   * Zulässige CPU-Menge für diese Anwendung in einem Fünf-Minuten-Intervall. Dieses Kontingent wird alle fünf Minuten zurückgesetzt.
 * **CPU(Day)**
   * Zulässige CPU-Gesamtmenge für diese Anwendung für einen Tag. Dieses Kontingent wird alle 24 Stunden um Mitternacht (UTC) zurückgesetzt.
-* **Arbeitsspeicher**
+* **Memory**
   * Zulässige Gesamtmenge an Arbeitsspeicher für diese Anwendung.
 * **Bandwidth**
   * Zulässige Gesamtmenge an ausgehender Bandbreite für diese Anwendung für einen Tag.

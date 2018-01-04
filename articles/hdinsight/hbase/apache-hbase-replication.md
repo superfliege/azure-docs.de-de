@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/09/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 6d7c2eaf139ddbff46a2fba99bdf5515f64be40c
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: b5497e9d66833ec8bc291c40d71931aff11820c2
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Einrichten der HBase-Clusterreplikation in virtuellen Azure-Netzwerken
 
@@ -31,7 +31,7 @@ In diesem Tutorial richten Sie eine Quell-/Ziel-Replikation ein. Andere Clustert
 Anwendungsfälle für die HBase-Replikation für ein einzelnes virtuelles Netzwerk sind:
 
 * Lastenausgleich. Sie können z.B. Scans oder MapReduce-Aufträge im Zielcluster ausführen und Daten im Quellcluster erfassen.
-* Hinzufügen hoher Verfügbarkeit.
+* Hinzufügen von Hochverfügbarkeit.
 * Migrieren von Daten zwischen HBase-Clustern.
 * Aktualisieren eines Azure HDInsight-Clusters von einer Version auf eine andere.
 
@@ -39,7 +39,7 @@ Anwendungsfälle für die HBase-Replikation für zwei virtuelle Netzwerks sind:
 
 * Einrichten der Notfallwiederherstellung.
 * Lastenausgleich und Partitionierung der Anwendung.
-* Hinzufügen hoher Verfügbarkeit.
+* Hinzufügen von Hochverfügbarkeit.
 
 Sie können Cluster mit [Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md)-Skripts aus [GitHub](https://github.com/Azure/hbase-utils/tree/master/replication) replizieren.
 
@@ -79,7 +79,7 @@ Die HBase-Replikation verwendet die IP-Adressen der virtuellen Zookeeper-Compute
 
 **So konfigurieren Sie statische IP-Adressen**
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppen** aus.
 3. Wählen Sie die Ressourcengruppe, die den HBase-Zielcluster enthält. Dies ist die Ressourcengruppe, die Sie bei Verwendung der Resource Manager-Vorlage zum Erstellen der Umgebung angegeben haben. Sie können die Liste mithilfe des Filters eingrenzen. Es wird eine Liste der Ressourcen angezeigt, die die beiden virtuellen Netzwerke enthalten.
 4. Wählen Sie das virtuelle Netzwerk, das den HBase-Zielcluster enthält. Wählen Sie z.B. **xxxx-vnet2**. Es werden drei Geräte angezeigt, deren Namen mit **nic-zookeepermode-** beginnen. Diese drei Geräte sind die virtuellen Zookeeper-Computer.
@@ -106,7 +106,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Standort | USA (Westen) |
+| Speicherort | USA (Westen) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet1 |
 | Adressraumpräfix | 10.1.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -128,7 +128,7 @@ Im Folgenden werden einige der hartcodierten Werte in der Vorlage aufgeführt:
 
 | Eigenschaft | Wert |
 |----------|-------|
-| Standort | USA (Ost) |
+| Speicherort | USA (Ost) |
 | VNet-Name | &lt;ClusterNamePrevix>-vnet2 |
 | Adressraumpräfix | 10.2.0.0/16 |
 | Subnetzname | Subnetz 1 |
@@ -155,13 +155,13 @@ Wenn Sie einen Cluster replizieren, müssen Sie die Tabellen angeben, die Sie re
 
 Wenn Sie eine Tabelle namens [Kontakte](apache-hbase-tutorial-get-started-linux.md) erstellen und einige Daten in die Tabelle einfügen möchten, befolgen Sie die Anweisungen unter **HBase-Tutorial: Erste Schritte mit Apache HBase in HDInsight**.
 
-## <a name="enable-replication"></a>Replikation aktivieren
+## <a name="enable-replication"></a>Aktivieren der Replikation
 
 Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azure-Portal aufrufen. Informationen zum Ausführen einer Skriptaktion mithilfe von Azure PowerShell und dem Azure CLI-Tool (Azure-Befehlszeilenschnittstellentool, Azure CLI) finden Sie unter [Anpassen von HDInsight-Clustern mithilfe von Skriptaktionen](../hdinsight-hadoop-customize-cluster-linux.md).
 
 **So aktivieren Sie die HBase-Replikation über das Azure-Portal**
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Öffnen Sie den HBase-Quellcluster.
 3. Wählen Sie im Clustermenü **Skriptaktionen**.
 4. Wählen Sie am oberen Rand der Seite **Neue übermitteln** aus.
@@ -182,7 +182,7 @@ Die folgenden Schritte zeigen, wie Sie das Skript mit Skriptaktionen aus dem Azu
 
 Erforderliche Argumente:
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |----|-----------|
 |-s, --src-cluster | Gibt den DNS-Namen des HBase-Quellclusters an. Beispiel: -s hbsrccluster, --src-cluster=hbsrccluster |
 |-d, --dst-cluster | Gibt den DNS-Namen des HBase-Zielclusters (Replikats) an. Beispiel: -s dsthbcluster, --src-cluster=dsthbcluster |
@@ -191,7 +191,7 @@ Erforderliche Argumente:
 
 Optionale Argumente:
 
-|Name|Beschreibung|
+|NAME|BESCHREIBUNG|
 |----|-----------|
 |-su, --src-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Quellcluster an. Der Standardwert lautet **admin**. |
 |-du, --dst-ambari-user | Gibt den Administratorbenutzernamen für Ambari im HBase-Zielcluster an. Der Standardwert lautet **admin**. |

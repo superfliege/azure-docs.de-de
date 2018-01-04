@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: ded33a94205a67c7a9bcd37a8f0c7747f1d709fa
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ffbc8af54ce542630f9bdc77a8823d3c2a22afd6
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Erste Schritte zur Integration von Anwendungen in Azure Active Directory
 ## <a name="overview"></a>Übersicht
@@ -57,7 +57,7 @@ Vor der Integration von Anwendungen in Azure AD sollten Sie unbedingt den aktuel
 Vielleicht können Sie nicht alle Fragen im Voraus beantworten, aber das ist kein Problem.  Dieser Leitfaden hilft Ihnen, einige dieser Fragen zu beantworten und einige fundierte Entscheidungen zu treffen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* Ein Azure-Abonnement und ein Azure Active Directory-Verzeichnis.  Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Azure für 30 Tage kostenlos testen. [Probieren Sie es aus!](https://azure.microsoft.com/trial/get-started-active-directory/)
+* Ein Azure-Abonnement und ein Azure Active Directory-Verzeichnis.  Wenn Sie noch kein Azure-Abonnement besitzen, können Sie Azure für 30 Tage kostenlos testen. [Erste Schritte mit einem Azure-Abonnement:](https://azure.microsoft.com/trial/get-started-active-directory/)
 
 ## <a name="application-integration-with-azure-ad"></a>Anwendungsintegration in Azure AD
 ### <a name="finding-unsanctioned-cloud-applications-with-cloud-app-discovery"></a>Suchen nach nicht genehmigten Cloudanwendungen per Cloud App Discovery
@@ -88,7 +88,7 @@ In den folgenden Artikeln werden Möglichkeiten zur Verwaltung des Zugriffs auf 
 ## <a name="integrating-custom-applications"></a>Integrieren benutzerdefinierter Anwendungen
 Wenn Sie eine neue Anwendung schreiben und Entwickler beim Nutzen von Azure AD unterstützen möchten, finden Sie unter [Leitfaden für Entwickler](active-directory-applications-guiding-developers-for-lob-applications.md)weitere Informationen.
 
-Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufügen möchten, finden Sie weitere Informationen unter [“Bring your own app” with Azure AD Self-Service SAML configuration](http://blogs.technet.com/b/ad/archive/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-gt-now-in-preview.aspx)(„Bring your own app“ mit Azure AD-Konfiguration für Self-Service SAML).
+Wenn Sie Ihre benutzerdefinierte Anwendung dem Azure-Anwendungskatalog hinzufügen möchten, finden Sie weitere Informationen unter [“Bring your own app” with Azure AD Self-Service SAML configuration](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/)(„Bring your own app“ mit Azure AD-Konfiguration für Self-Service SAML).
 
 ## <a name="see-also"></a>Weitere Informationen
 * [Artikelindex für die Anwendungsverwaltung in Azure Active Directory](active-directory-apps-index.md)

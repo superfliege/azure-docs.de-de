@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: df139383eb2fa20fe75ecc6b3f5e2aa0773f186c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a33855213c4bd3a677c8ebbed6624c85138d8ea6
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 Dieser Artikel stellt eine Ergänzung zum Hauptartikel zur Integration von Azure Data Factory und Azure Machine Learning dar: [Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory](transform-data-using-machine-learning.md). Wenn Sie dies noch nicht getan haben, lesen Sie zunächst den Hauptartikel, bevor Sie diesen Artikel lesen. 
@@ -60,11 +60,11 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 
 
 
-| Eigenschaft                      | Beschreibung                              | Erforderlich |
+| Eigenschaft                      | BESCHREIBUNG                              | Erforderlich |
 | :---------------------------- | :--------------------------------------- | :------- |
-| Name                          | Name der Aktivität in der Pipeline     | Ja      |
-| Beschreibung                   | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
-| Typ                          | Für die Azure Machine Learning-Ressourcenaktualisierungsaktivität ist der Aktivitätstyp **AzureMLUpdateResource**. | Ja      |
+| name                          | Name der Aktivität in der Pipeline     | Ja      |
+| Beschreibung                   | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
+| type                          | Für die Azure Machine Learning-Ressourcenaktualisierungsaktivität ist der Aktivitätstyp **AzureMLUpdateResource**. | Ja      |
 | linkedServiceName             | Mit Azure Machine Learning verknüpfter Dienst, der die „updateResourceEndpoint“-Eigenschaft enthält. | Ja      |
 | trainedModelName              | Name des „Trained Model“-Moduls im Webdienstexperiment an, das aktualisiert werden soll | Ja      |
 | trainedModelLinkedServiceName | Name des mit Azure Storage verknüpften Diensts, der die „ilearner“-Datei enthält, die vom Aktualisierungsvorgang hochgeladen wird | Ja      |
@@ -86,33 +86,6 @@ Damit der zuvor erwähnte Workflow vollständig funktioniert, müssen Sie zwei m
 2. Ein mit Azure Machine Learning verknüpfter Dienste für den Ressourcenaktualisierungsendpunkt des Vorhersagewebdiensts. Dieser verknüpfte Dienst wird von der Ressourcenaktualisierungsaktivität zum Aktualisieren des Vorhersagewebdiensts mithilfe der im vorherigen Schritt zurückgegebenen „iLearner“-Datei verwendet. 
 
 Für den zweiten mit Azure Machine Learning verknüpften Dienst unterscheidet sich die Konfiguration, wenn Ihr Azure Machine Learning-Webdienst ein klassischer oder neuer Webdienst ist. Die Unterschiede werden in den folgenden Abschnitten getrennt erläutert. 
-
-## <a name="web-service-is-a-classic-web-service"></a>Webdienst ist ein klassischer Webdienst
-Wenn der Vorhersagewebdienst ein **klassischer Webdienst** ist, erstellen Sie den zweiten **nicht standardmäßigen und aktualisierbaren Endpunkt** mithilfe des Azure-Portals. Die erforderlichen Schritte finden Sie im Artikel [Erstellen von Endpunkten](../machine-learning/machine-learning-create-endpoint.md). Führen Sie folgende Schritte aus, nachdem Sie den nicht standardmäßigen aktualisierbaren Endpunkt erstellt haben:
-
-* Klicken Sie auf **BATCHAUSFÜHRUNG**, um den URI-Wert für die **mlEndpoint**-JSON-Eigenschaft zu erhalten.
-* Klicken Sie auf den Link **RESSOURCE AKTUALISIEREN**, um den URI-Wert für die **updateResourceEndpoint**-JSON-Eigenschaft abzurufen. Den API-Schlüssel finden Sie auf der Seite des Endpunkts (unten rechts).
-
-![Aktualisierbarer Endpunkt](./media/update-machine-learning-models/updatable-endpoint.png)
-
-Erstellen Sie im Anschluss mithilfe des folgenden Beispiels eines verknüpften Diensts einen neuen mit Azure Machine Learning verknüpften Dienst. Der verknüpfte Dienst verwendet die apiKey-Variable für die Authentifizierung.  
-
-```json
-{
-    "name": "updatableScoringEndpoint2",
-    "properties": {
-        "type": "AzureML",
-        "typeProperties": {
-            "mlEndpoint": "https://ussouthcentral.services.azureml.net/workspaces/xxx/services/--scoring experiment--/jobs",
-            "apiKey": {
-            "type": "SecureString",
-            "value": "APIKeyOfEndpoint2"
-            },
-            "updateResourceEndpoint": "https://management.azureml.net/workspaces/xxx/webservices/--scoring experiment--/endpoints/endpoint2"
-        }
-    }
-}
-```
 
 ## <a name="web-service-is-new-azure-resource-manager-web-service"></a>Webdienst ist ein Azure Resource Manager-Webdienst 
 
