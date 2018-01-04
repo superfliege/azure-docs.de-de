@@ -27,7 +27,7 @@
           href: connect-csharp.md
         - name: Go
           href: connect-go.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Erstellen einer Datenbank'
       items:
@@ -55,7 +55,7 @@
           href: concepts-server-logs.md
         - name: Hochverfügbarkeit
           href: concepts-high-availability.md
-    - name: Ressourcen
+    - name: angeben
       items:
         - name: Tarife
           href: concepts-service-tiers.md
@@ -95,6 +95,8 @@
           href: howto-migrate-using-dump-and-restore.md
         - name: Importieren und Exportieren
           href: howto-migrate-using-export-and-import.md
+        - name: Migration mit minimaler Downtime
+          href: howto-migrate-online.md
     - name: Konfigurieren von Serverparametern
       items:
         - name: Azure-Portal
@@ -111,13 +113,13 @@
       items:
         - name: Erstellen von Warnungen zu Metriken
           href: howto-alert-on-metric.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/postgres
     - name: REST-API
       href: /rest/api/postgresql
-- name: Ressourcen
+- name: angeben
   items:
     - name: Bereitstellungsvorlagen
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbforpostgresql'

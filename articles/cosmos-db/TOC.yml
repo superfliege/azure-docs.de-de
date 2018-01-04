@@ -67,7 +67,7 @@
           href: create-cassandra-dotnet.md
         - name: Python
           href: create-cassandra-python.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Erstellen'
       items:
@@ -143,7 +143,7 @@
       href: unique-keys.md
     - name: Konsistenz
       href: consistency-levels.md
-    - name: Durchsatz
+    - name: Throughput
       href: request-units.md
     - name: APIs mit mehreren Modellen
       items:
@@ -173,7 +173,7 @@
         - name: SQL-API
           href: sql-api-index.md
           items:
-            - name: Ressourcen
+            - name: angeben
               href: sql-api-resources.md
             - name: SQL-Abfragen
               href: sql-api-sql-query.md
@@ -187,15 +187,17 @@
               href: programming.md
             - name: Leistungstests
               href: performance-testing.md
-            - name: Leistungstipps
+            - name: Tipps zur Leistungssteigerung für .NET
               href: performance-tips.md
+            - name: Tipps zur Leistungssteigerung für Java
+              href: performance-tips-java.md
             - name: Einrichtung mit mehreren Mastern
               href: multi-region-writers.md
             - name: DateTimes
               href: working-with-dates.md
             - name: Modellierung von Dokumentdaten
               href: modeling-data.md
-            - name: Lernprogramme
+            - name: Tutorials
               items:
                 - name: Schreiben der ersten App
                   items:
@@ -229,7 +231,7 @@
                   href: sql-api-nodejs-samples.md
                 - name: Python-Beispiele
                   href: sql-api-python-samples.md
-            - name: Ressourcen
+            - name: angeben
               items:
                 - name: Spickzettel zur SQL-Grammatik
                   href: sql-api-sql-query-cheat-sheet.md
@@ -378,7 +380,7 @@
           href: odbc-driver.md
         - name: Verwenden von Spring Boot Starter mit SQL-APIs
           href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
@@ -416,7 +418,7 @@
       items:
         - name: .NET
           href: graph-sdk-dotnet.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

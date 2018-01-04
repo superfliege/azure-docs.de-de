@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b609756f6fcea2a57210889d8082ffb45cbc92de
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 29c2f897cbc5affcd6b2a70ec95a1a8855a5db69
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>Erstellen einer Ruby-App in App Service unter Linux
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/06/2017
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Installieren von Ruby 2.4.1 oder höher</a>
-* <a href="https://git-scm.com/" target="_blank">Installieren Sie Git.</a>
+* <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -96,13 +96,13 @@ Es ist eine Ressourcengruppe erforderlich, die die erforderlichen Ressourcen fü
 az group create --location westeurope --name myResourceGroup
 ```
 
-Erstellen Sie mit dem Befehl [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) einen App Service-Plan für Ihre Web-App.
+Erstellen Sie mit dem Befehl [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) einen App Service-Plan für Ihre Web-App.
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
 ```
 
-Verwenden Sie als Nächstes den Befehl [az webapp create](https://docs.microsoft.com/cli/azure/webapp), um die Web-App zu erstellen, die den neu erstellten Service-Plan verwendet. Beachten Sie, dass die Runtime auf `ruby|2.3` festgelegt ist. Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
+Verwenden Sie als Nächstes den Befehl [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create), um die Web-App zu erstellen, die den neu erstellten Service-Plan verwendet. Beachten Sie, dass die Runtime auf `ruby|2.3` festgelegt ist. Vergessen Sie nicht, `<app name>` durch einen eindeutigen App-Namen zu ersetzen.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
@@ -147,7 +147,7 @@ To https://<your web app name>.scm.azurewebsites.net/<your web app name>.git
 myuser@ubuntu1234:~workspace/<app name>$
 ```
 
-Starten Sie Ihre Web-App nach Abschluss der Bereitstellung neu, damit die Bereitstellung wirksam wird. Verwenden Sie dazu den Befehl [az webapp restart](https://docs.microsoft.com/cli/azure/webapp#az_webapp_restart), wie hier gezeigt:
+Starten Sie Ihre Web-App nach Abschluss der Bereitstellung neu, damit die Bereitstellung wirksam wird. Verwenden Sie dazu den Befehl [az webapp restart](/cli/azure/webapp?view=azure-cli-latest#az_webapp_restart), wie hier gezeigt:
 
 ```azurecli-interactive
 az webapp restart --name <app name> --resource-group myResourceGroup

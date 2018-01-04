@@ -4,11 +4,11 @@ hide_bc: True
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 featureFlags: clicktale
-ms.openlocfilehash: 57c55fd3b7bf0152c30fb9dc1fb9348e63a89003
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 2df814a9132e13bd177e5690f97376bd793bd9b7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/02/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -189,7 +189,7 @@ ms.lasthandoff: 12/20/2017
                                                 </ul>
                                                 <h4>Speicher</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
+                                                    <li><a class="barLink" href="/azure/storage/">Blob-Speicher</a></li>
                                                 </ul>
                                                 <h4>AI und Cognitive Services</h4>
                                                 <ul class="noBullet">
@@ -303,7 +303,7 @@ ms.lasthandoff: 12/20/2017
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>Functions</p>
+                                                <p>Funktionen</p>
                                             </a>
                                         </li>
                                         <li>
@@ -427,12 +427,12 @@ ms.lasthandoff: 12/20/2017
                                             </a>
                                         </li>
                                     </ul>
-                                    <h3>Unternehmensintegration</h3>
+                                    <h3>Enterprise Integration</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logik-Apps</p>
+                                                <p>Logic Apps</p>
                                             </a>
                                         </li>
                                         <li>
@@ -533,7 +533,7 @@ ms.lasthandoff: 12/20/2017
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>Virtual Network</p>
+                                                <p>Virtuelles Netzwerk</p>
                                             </a>
                                         </li>
                                         <li>
@@ -638,7 +638,7 @@ ms.lasthandoff: 12/20/2017
                                         <li>
                                             <a href="/azure/cognitive-services/recommendations/overview">
                                                 <img src="media/index/API_Recommendations.svg" alt="" />
-                                                <p>Recommendations</p>
+                                                <p>Empfehlungen</p>
                                             </a>
                                         </li>
                                         <li>
@@ -813,7 +813,7 @@ ms.lasthandoff: 12/20/2017
                                         <li>
                                             <a href="/azure/storage/queues/storage-queues-introduction/">
                                                 <img src="media/index/logo_azure-storage-q.svg" alt="" />
-                                                <p>Queue Storage</p>
+                                                <p>Warteschlangenspeicher</p>
                                             </a>
                                         </li>
                                         <li>
@@ -837,7 +837,7 @@ ms.lasthandoff: 12/20/2017
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Sicherung</p>
+                                                <p>Backup </p>
                                             </a>
                                         </li>
                                         <li>
@@ -1044,7 +1044,7 @@ ms.lasthandoff: 12/20/2017
                                         <li>
                                             <a href="/azure/logic-apps/">
                                                 <img src="media/index/LogicApp.svg" alt="" />
-                                                <p>Logik-Apps</p>
+                                                <p>Logic Apps</p>
                                             </a>
                                         </li>                                        
                                     </ul>
@@ -1358,7 +1358,7 @@ ms.lasthandoff: 12/20/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Functions</h3>
+                                                    <h3>Funktionen</h3>
                                                     <p>Ereignisse mit serverlosem Code verarbeiten</p>
                                                 </div>
                                             </div>
@@ -1496,7 +1496,7 @@ ms.lasthandoff: 12/20/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtual Network</h3>
+                                                    <h3>Virtuelles Netzwerk</h3>
                                                     <p>Bereitstellen privater Netzwerke und optionales Herstellen einer Verbindung mit lokalen Datencentern</p>
                                                 </div>
                                             </div>
@@ -1749,7 +1749,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Queue Storage</h3>
+                                                    <h3>Warteschlangenspeicher</h3>
                                                     <p>Strapazierfähige Warteschlangen für Clouddienste mit großem Volumen</p>
                                                 </div>
                                             </div>
@@ -1825,7 +1825,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Sicherung</h3>
+                                                    <h3>Backup </h3>
                                                     <p>Einfache und zuverlässige Serversicherung in die Cloud</p>
                                                 </div>
                                             </div>
@@ -2728,7 +2728,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Suche</h3>
+                                                        <h3>Suchen,</h3>
                                                         <ul class="noBullet">
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Bing_News_Search.svg" alt="" />Bing News</a>
@@ -3022,7 +3022,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Logik-Apps</h3>
+                                                    <h3>Logic Apps</h3>
                                                     <p>Automatisieren des Zugriffs und der Nutzung von Daten über mehrere Clouds, ohne Code schreiben zu müssen</p>
                                                 </div>
                                             </div>
@@ -3046,7 +3046,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Logik-Apps</h3>
+                                                    <h3>Logic Apps</h3>
                                                     <p>Automatisieren des Zugriffs und der Nutzung von Daten über mehrere Clouds, ohne Code schreiben zu müssen</p>
                                                 </div>
                                             </div>
@@ -4161,6 +4161,34 @@ Azure-Befehlszeilenschnittstelle </h3>
                                                 </h3>
                                                 <p>
                                                     <a href="https://visualstudiogallery.msdn.microsoft.com/c9eb3ba8-0c59-4944-9a62-6eee37294597">Herunterladen</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="https://docs.microsoft.com/en-us/media/common/i_tools.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+SQL-Tools </h3>
+                                                <p>
+                                                    <a href="/sql/sql-operations-studio/download">SQL Operations Studio <sup>VORSCHAUVERSION</sup></a>
+                                                </p>
+                                                <p>
+                                                    <a href="/sql/ssms/download-sql-server-management-studio-ssms">SQL Server Management Studio (SSMS)</a>
+                                                </p>                                            <p>
+                                                    <a href="/sql/ssdt/download-sql-server-data-tools-ssdt">SQL Server Data Tools (SSDT)</a>
+                                                </p>
+                                                <p>
+                                                    <a href="/sql/tools/overview-sql-tools">Alle SQL-Tools</a>
                                                 </p>
                                             </div>
                                         </div>

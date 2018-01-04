@@ -1,5 +1,9 @@
 - name: Site Recovery-Dokumentation
   href: index.yml
+- name: Migration von lokalen Computern und virtuellen Azure-Computern
+  href: migrate/tutorial-migrate-on-premises-to-azure.md
+- name: Azure-zu-Azure-Notfallwiederherstellung
+  href: azure-to-azure/azure-to-azure-quickstart.md
 - name: Übersicht
   items:
     - name: Was ist Site Recovery?
@@ -9,7 +13,7 @@
   items:
     - name: Replizieren einer Azure-VM zu einer sekundären Region
       href: azure-to-azure-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Virtuelle Azure-Computer
       items:
@@ -55,6 +59,8 @@
       href: site-recovery-support-matrix-azure-to-azure.md
     - name: Lokal zu Azure – Supportmatrix
       href: site-recovery-support-matrix-to-azure.md
+    - name: Hyper-V zu Azure – Supportmatrix
+      href: support-matrix-hyper-v-to-azure.md
     - name: Lokal zu sekundärem Standort – Supportmatrix
       href: site-recovery-support-matrix-to-sec-site.md
     - name: Notfallwiederherstellung für Workloads
@@ -83,8 +89,12 @@
           href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
     - name: Notfallwiederherstellung
       items:
+        - name: Vorbereiten von Hyper-V für die Replikation in Azure
+          href: tutorial-prepare-on-premises-hyper-v.md
         - name: Virtuelle Hyper-V-Computer in Azure
           href: tutorial-hyper-v-to-azure.md
+        - name: Virtuelle Hyper-V-Computer in VMM-Clouds zu Azure
+          href: tutorial-hyper-v-vmm-to-azure.md
         - name: Physische Server nach Azure
           href: tutorial-physical-to-azure.md
         - name: Virtuelle Hyper-V-Computer an einem sekundären Standort
@@ -104,7 +114,7 @@
           items:
             - name: Hinzufügen von Azure-Runbooks zu Wiederherstellungsplänen
               href: site-recovery-runbook-automation.md
-        - name: Durchführen eines Test-Failovers
+        - name: Ausführen eines Testfailovers
           items:
             - name: Ausführen eines Testfailovers auf Azure
               href: site-recovery-test-failover-to-azure.md
@@ -189,7 +199,7 @@
               href: site-recovery-install-mobility-service-using-sccm.md
             - name: Bereitstellen des Mobilitätsdiensts mithilfe von Azure Automation DSC
               href: site-recovery-automate-mobility-service-install.md
-        - name: Replikation aktivieren
+        - name: Aktivieren der Replikation
           items:
             - name: Ermöglichen der Replikation von Azure zu Azure
               href: site-recovery-replicate-azure-to-azure.md
@@ -263,7 +273,7 @@
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: Erfassen von Protokollen und Beheben lokaler Probleme
           href: site-recovery-monitoring-and-troubleshooting.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.recoveryservices.siterecovery
@@ -275,7 +285,7 @@
   items:
     - name: Azure-Automatisierung
       href: /azure/automation/
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

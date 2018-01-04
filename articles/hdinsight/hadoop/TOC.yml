@@ -121,6 +121,9 @@
       items:
         - name: Analysieren mit Power Query
           href: apache-hadoop-connect-excel-power-query.md
+        - name: Herstellen einer Verbindung zwischen Power BI und Interactive Query
+          href: ../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md
+          maintainContext: true
         - name: Herstellen einer Verbindung von Power BI mit Hadoop
           href: apache-hadoop-connect-hive-power-bi.md
         - name: Verbinden von Excel mit Hadoop
@@ -302,7 +305,7 @@
         - name: Problembehandlung bei YARN
           href: ../hdinsight-troubleshoot-yarn.md
           maintainContext: true
-        - name: Ressourcen
+        - name: angeben
           items:
             - name: Informationen zur Verwendung von HDInsight unter Linux
               href: ../hdinsight-hadoop-linux-information.md
@@ -375,7 +378,7 @@
         - name: Überwachen der Clusterleistung
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Referenz
+- name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -446,7 +449,7 @@
         - name: Überwachen von Clustern mit der Ambari-API
           href: ../hdinsight-monitor-use-ambari-api.md
           maintainContext: true
-- name: Ressourcen
+- name: angeben
   items:
     - name: Versionshinweise
       href: ../hdinsight-release-notes.md

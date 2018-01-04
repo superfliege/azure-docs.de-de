@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 10/13/2017
-ms.openlocfilehash: fd99fec7ead28c02ffe0d8b8165e8a0ab89d525e
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 9a2648d800b803bf0d9d565a806e627c49bb1a00
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Erstellen von Vorschaukonten für Azure Machine Learning und Installieren von Azure Machine Learning Workbench
 Der Azure Machine Learning-Dienst (Vorschauversion) ist eine integrierte End-to-End-Lösung für Data Science und Advanced Analytics. Sie stellt eine Hilfe für professionelle Data Scientists dar, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -33,7 +33,7 @@ Derzeit können Sie die Azure Machine Learning Workbench-Desktop-App nur unter f
 - macOS High Sierra
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
-Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-azure-machine-learning-accounts"></a>Erstellen von Azure Machine Learning-Konten
 Verwenden Sie das Azure-Portal für die Bereitstellung von Azure Machine Learning-Konten: 
@@ -49,12 +49,12 @@ Verwenden Sie das Azure-Portal für die Bereitstellung von Azure Machine Learnin
 
 4. Geben Sie in das Formular für Machine Learning-Experimentieren die folgenden Informationen ein:
 
-   Einstellung|Empfohlener Wert|Beschreibung
+   Einstellung|Empfohlener Wert|BESCHREIBUNG
    ---|---|---
    Experimentation account name (Name des Experimentieren-Kontos) | _Eindeutiger Name_ |Wählen Sie einen eindeutigen Namen, der Ihr Konto identifiziert. Sie können Ihren eigenen Namen verwenden oder einen Abteilungs- oder Projektnamen, der am besten zu dem Experiment passt. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig. 
    Abonnement | _Ihr Abonnement_ |Wählen Sie das Azure-Abonnement aus, das Sie für das Experiment verwenden möchten. Wählen Sie bei mehreren Abonnements das Abonnement aus, über das die Ressource abgerechnet wird.
    Ressourcengruppe | _Ihre Ressourcengruppe_ | Sie können entweder einen neuen Ressourcengruppennamen erstellen oder einen bereits vorhandenen Namen aus Ihrem Abonnement verwenden.
-   Standort | _Die Region, die Ihren Benutzern am nächsten liegt_ | Wählen Sie den Standort aus, der Ihren Benutzern und den Datenressourcen am nächsten ist.
+   Speicherort | _Die Region, die Ihren Benutzern am nächsten liegt_ | Wählen Sie den Standort aus, der Ihren Benutzern und den Datenressourcen am nächsten ist.
    Number of seats (Anzahl von Arbeitsplätzen) | 2 | Geben Sie die Anzahl von Arbeitsplätzen ein. Diese Auswahl wirkt sich auf den [Preis](https://azure.microsoft.com/pricing/details/machine-learning/) aus. Die ersten beiden Arbeitsplätze sind kostenlos. Verwenden Sie für diese Schnellstartanleitung zwei Arbeitsplätze. Sie können die Anzahl der Arbeitsplätze später im Azure-Portal nach Bedarf aktualisieren.
    Speicherkonto | _Eindeutiger Name_ | Wählen Sie **Neu erstellen**, und geben Sie einen Namen an, um ein Azure-Speicherkonto zu erstellen. Oder wählen Sie die Option **Vorhandene verwenden** und dann Ihr vorhandenes Speicherkonto in der Dropdownliste aus. Das Speicherkonto ist erforderlich. Es wird zum Speichern von Projektartefakten und Ausführungsverlaufsdaten verwendet. 
    Workspace for Experimentation account (Arbeitsbereich für Experimentieren-Konto) | _Eindeutiger Name_ | Geben Sie einen Namen für den neuen Arbeitsbereich an. Der Name sollte 2 bis 32 Zeichen lang sein. Es sind nur alphanumerische Zeichen und der Bindestrich (-) zulässig.

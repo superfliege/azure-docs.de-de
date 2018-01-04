@@ -7,8 +7,10 @@
 # Anleitung
 ## Integrieren
 ### [Web-Apps](../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json)
-### [Cloud Services](cdn-cloud-service-with-cdn.md)
-### [Speicher](cdn-create-a-storage-account-with-cdn.md)
+### [Service Fabric](cdn-cloud-service-with-cdn.md)
+### Speicher
+#### [Integrieren eines Speicherkontos](cdn-create-a-storage-account-with-cdn.md)
+#### [SAS-Speichersupport](cdn-sas-storage-support.md)
 ### [Cross-Origin Resource Sharing](cdn-cors.md)
 ### [Hinzufügen einer benutzerdefinierten Domäne zum CDN-Endpunkt](cdn-map-content-to-custom-domain.md)
 ### [Konfigurieren von HTTPS für eine benutzerdefinierte Domäne](cdn-custom-ssl.md)
@@ -58,14 +60,14 @@
 ### [Status 404](cdn-troubleshoot-endpoint.md)
 ### [Dateikomprimierung](cdn-troubleshoot-compression.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
 ## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST](/rest/api/cdn/)
 
-# Ressourcen
+# angeben
 ##  [Regelmodul – Referenz](cdn-rules-engine-reference.md)
 ### [Regelmodul – Bedingte Ausdrücke](cdn-rules-engine-reference-conditional-expressions.md)
 ### [Regelmodul – Features](cdn-rules-engine-reference-features.md)
@@ -76,6 +78,6 @@
 ## [Preise](https://azure.microsoft.com/pricing/details/cdn/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=cdn)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cdn)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-cdn)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=cdn)
 

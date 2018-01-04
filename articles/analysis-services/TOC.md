@@ -23,12 +23,13 @@
 ### [Verwalten von Datenbankbenutzern](analysis-services-database-users.md)
 ### [Verwalten von Serveradministratoren](analysis-services-server-admins.md)
 ### [Überwachen von Servermetriken](analysis-services-monitor.md)
+### [Einrichten der Diagnoseprotokollierung](analysis-services-logging.md)
 ## Verbinden
 ### [Abrufen von Clientbibliotheken](analysis-services-data-providers.md)
 ### [Herstellen einer Verbindung mit Excel](analysis-services-connect-excel.md)
 ### [Herstellen einer Verbindung mit Power BI](analysis-services-connect-pbi.md)
 ### [Erstellen einer ODC-Datei](analysis-services-odc.md)
-## Lernprogramme
+## Tutorials
 ### [Adventure Works-Tutorial](tutorials/aas-adventure-works-tutorial.md)
 ### [Lektion 1: Erstellen eines neuen tabellarischen Modellprojekts](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 ### [Lektion 2: Abrufen von Daten](tutorials/aas-lesson-2-get-data.md)
@@ -47,14 +48,14 @@
 ### [Ergänzende Lektion – Dynamische Sicherheit](tutorials/aas-supplemental-lesson-dynamic-security.md)
 ### [Ergänzende Lektion – Unregelmäßige Hierarchien](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
-# Referenz
+# Verweis
 ## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)
 ## [TMSL-Referenz (Tabular Model Scripting Language)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)
 
-# Ressourcen
+# angeben
 ## [Beispiele](analysis-services-samples.md)
 ## [Teamblog zu Analysis Services](https://blogs.msdn.microsoft.com/analysisservices/)
 ## [Azure Analysis Services-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureAnalysisServices)

@@ -19,7 +19,7 @@
   items:
     - name: Bereitstellen von Azure Stack
       href: azure-stack-deploy-overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Anbieten von virtuellen Computern
       href: azure-stack-tutorial-tenant-vm.md
@@ -51,7 +51,7 @@
           href: azure-stack-run-powershell-script.md
         - name: Installieren von PowerShell
           href: azure-stack-powershell-install.md
-        - name: Registrieren
+        - name: 'Register '
           href: azure-stack-register.md
         - name: Herstellen einer Verbindung mit Azure Stack
           href: azure-stack-connect-azure-stack.md
@@ -121,6 +121,21 @@
               href: azure-stack-replace-disk.md
             - name: Ersetzen der Komponente
               href: azure-stack-replace-component.md
+        - name: Sichern von Azure Stack
+          href: azure-stack-backup-infrastructure-backup.md
+          items:
+            - name: Aktivieren der Sicherung für Azure Stack über die Verwaltungskonsole
+              href: azure-stack-backup-enable-backup-console.md
+            - name: Aktivieren der Sicherung für Azure Stack mit PowerShell
+              href: azure-stack-backup-enable-backup-powershell.md
+            - name: Sichern von Azure Stack
+              href: azure-stack-backup-back-up-azure-stack.md
+            - name: Wiederherstellen nach schwerwiegendem Datenverlust
+              href: azure-stack-backup-recover-data.md
+            - name: Best Practices für die Sicherung
+              href: azure-stack-backup-best-practices.md
+            - name: Referenz zur Sicherung
+              href: azure-stack-backup-reference.md
     - name: 'Sicherheit, Konformität und Identität'
       items:
         - name: Sicherheitsübersicht
@@ -233,7 +248,7 @@
           href: azure-stack-diagnostics.md
         - name: Erneutes Bereitstellen des Azure Stack Development Kits
           href: azure-stack-redeploy.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure Stack PowerShell
       href: /powershell/azure/azure-stack/overview?view=azurestackps-1.2.9
@@ -241,7 +256,7 @@
   items:
     - name: Benutzerdokumentation zu Azure Stack
       href: /azure/azure-stack/user/
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

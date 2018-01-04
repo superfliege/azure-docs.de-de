@@ -15,17 +15,17 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bac9169bc41927ef8cf88aee256b2e057ccad4e9
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 0dba36e5490af56debd3b64b20d39809cd5d5f81
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service, Azure Virtual Machines, Service Fabric und Azure Cloud Services im Vergleich
 ## <a name="overview"></a>Übersicht
 Azure bietet verschiedene Möglichkeiten zum Hosten von Websites: [Azure App Service][Azure App Service], [Virtual Machines][Virtual Machines], [Service Fabric][Service Fabric] und [Cloud Services][Cloud Services]. Dieser Artikel unterstützt Sie dabei, die verfügbaren Optionen zu verstehen und die richtige Wahl für Ihre Webanwendung zu treffen.
 
-Azure App Service stellt für die meisten Web-Apps die beste Wahl dar. Die Bereitstellungs- und die Verwaltungsfunktionen sind in die Plattform integriert. Websites können rasch skaliert werden, um hohe Datenaufkommen zu bewältigen. Außerdem bieten der integrierte Lastenausgleich und Traffic Manager eine hohe Verfügbarkeit. Sie können vorhandene Websites mit einem [Online-Migrationstool](https://www.migratetoazure.net/) problemlos in Azure App Service verschieben, eine Open-Source-App aus dem Web-App-Katalog verwenden oder eine neue Website mithilfe des Frameworks und der Tools Ihrer Wahl erstellen. Das Feature [WebJobs][WebJobs] erleichtert das Hinzufügen der Hintergrundauftragsverarbeitung zu Ihrer App Service-Web-App.
+Azure App Service stellt für die meisten Web-Apps die beste Wahl dar. Die Bereitstellungs- und die Verwaltungsfunktionen sind in die Plattform integriert. Websites können rasch skaliert werden, um hohe Datenaufkommen zu bewältigen. Außerdem bieten der integrierte Lastenausgleich und Traffic Manager Hochverfügbarkeit. Sie können vorhandene Websites mit einem [Online-Migrationstool](https://www.migratetoazure.net/) problemlos in Azure App Service verschieben, eine Open-Source-App aus dem Web-App-Katalog verwenden oder eine neue Website mithilfe des Frameworks und der Tools Ihrer Wahl erstellen. Das Feature [WebJobs][WebJobs] erleichtert das Hinzufügen der Hintergrundauftragsverarbeitung zu Ihrer App Service-Web-App.
 
 Service Fabric ist eine gute Wahl, wenn Sie eine neue App erstellen oder eine vorhandene App so umgestalten, dass eine Architektur aus Microservices verwendet werden kann. Apps, die in einem gemeinsam genutzten Pool von Computern ausgeführt werden, können klein anfangen und bei Bedarf auf Hunderte oder Tausende VMs skaliert werden. Zustandsbehaftete Dienste erleichtern das konsistente und zuverlässige Speichern des App-Zustands. Darüber hinaus verwaltet Service Fabric die Partitionierung, Skalierung und Verfügbarkeit für Sie.  Service Fabric unterstützt auch WebAPI mit Open Web Interface für .NET (OWIN) und ASP.NET Core.  Im Vergleich mit App Service bietet Service Fabric außerdem mehr Kontrolle über oder direkten Zugriff auf die zugrunde liegende Infrastruktur. Sie können eine Remoteverbindung mit Ihren Servern herstellen oder Serverstartaufgaben konfigurieren. Cloud Services entspricht Service Fabric hinsichtlich des Grads der Kontrolle im Vergleich mit der Bedienungsfreundlichkeit, gilt aber mittlerweile als veraltet, weshalb Service Fabric für Neuentwicklungen empfohlen wird.
 
@@ -34,7 +34,7 @@ Falls Sie über eine Anwendung verfügen, die wesentlich geändert werden müsst
 ## <a name="features"></a>Funktionsvergleich
 In der folgenden Tabelle werden die Funktionen von App Service, Cloud Services, Virtual Machines und Service Fabric verglichen, um Ihnen die Auswahl der richtigen Option zu erleichtern. Aktuelle Informationen über die Vereinbarung zum Servicelevel (SLA) in Bezug auf die jeweilige Option finden Sie unter [Azure-Vereinbarung zum Servicelevel](https://azure.microsoft.com/support/legal/sla/).
 
-| Funktion | App Service (Web-Apps) | Cloud Services (Webrollen) | Virtual Machines | Service Fabric | Hinweise |
+| Feature | App Service (Web-Apps) | Cloud Services (Webrollen) | Virtual Machines | Service Fabric | Notizen |
 | --- | --- | --- | --- | --- | --- |
 | Zeitnahe Bereitstellung |X | | |X |Die Bereitstellung einer Anwendung oder einer Anwendungsaktualisierung in Cloud Services oder das Erstellen eines virtuellen Computers nimmt mindestens einige Minuten in Anspruch. Die Bereitstellung einer Anwendung in einer Web-App dauert wenige Sekunden. |
 | Skalierung auf größere Computer ohne erneute Bereitstellung |X | | |X | |
@@ -110,6 +110,8 @@ Azure App Service ist eine hervorragende Lösung für dieses Szenario, da Sie mi
 * Verwenden Sie den Web-App-Katalog, um rasch gängige Webanwendungen wie z. B. WordPress einzurichten.
 * Fügen Sie Ihrer Anwendung nach Bedarf zusätzliche Azure-Dienste und -Funktionen hinzu.
 * Schützen Sie Ihre Web-App mit HTTPS.
+
+[!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 ### <a id="designer"></a> Ich bin Web-/Grafikdesigner und möchte für meine Kunden Websites entwerfen und erstellen.
 Für Webentwickler und -designer lässt sich Azure App Service leicht in eine Reihe von Frameworks und Tools integrieren. Dazu gehören eine Bereitstellungsunterstützung für Git und FTP sowie eine nahtlose Integration in Tools und Dienste wie Visual Studio oder SQL-Datenbank. Mit Azure App Service haben Sie folgende Möglichkeiten:
