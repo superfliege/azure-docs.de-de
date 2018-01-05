@@ -52,6 +52,7 @@
 ## Verwalten
 ### [Rotieren von Anmeldeinformationen für Eingabe und Ausgabe](stream-analytics-login-credentials-inputs-outputs.md)
 ### [Auftragszuverlässigkeit während Updates](stream-analytics-job-reliability.md)
+### [Konfigurieren des Kompatibilitätsgrads](stream-analytics-compatibility-level.md)
 
 ## Problembehandlung
 ### [Handbuch zur Problembehandlung](stream-analytics-troubleshooting-guide.md)
@@ -66,21 +67,21 @@
 ### [Verwenden des .NET-Verwaltungs SDK](stream-analytics-dotnet-management-sdk.md)
 ### [One-Click-Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
 ## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [Abfragesprache](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST](/rest/api/streamanalytics)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Blog](http://blogs.msdn.com/b/streamanalytics/)
 ## [Feedbackforum](http://feedback.azure.com/forums/270577-azure-stream-analytics)
 ## [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [Preise](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Versionshinweise](stream-analytics-release-notes.md)
+## [Anmerkungen zu dieser Version](stream-analytics-release-notes.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=stream-analytics)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-stream-analytics)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=stream-analytics)

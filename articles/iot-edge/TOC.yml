@@ -10,7 +10,7 @@
       href: quickstart-linux.md
     - name: Deploy to the edge - Windows (Bereitstellen im Edge-Bereich – Windows)
       href: quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Simulate an Edge device - Linux (Simulieren eines Edge-Geräts – Linux)
       href: tutorial-simulate-device-linux.md
@@ -26,8 +26,12 @@
       href: tutorial-deploy-function.md
 - name: Anleitungen
   items:
-    - name: Erstellen eines transparenten Gateways
-      href: how-to-create-transparent-gateway.md
+    - name: Erstellen von Gateways
+      items:
+        - name: Erstellen eines transparenten Gateways
+          href: how-to-create-transparent-gateway.md
+        - name: ModBus-Gateway
+          href: deploy-modbus-gateway.md
     - name: Deploy and monitor at scale (Bedarfsabhängiges Bereitstellen und Überwachen)
       href: how-to-deploy-monitor.md
     - name: Provision an IoT Core device (Bereitstellen eines IoT Core-Geräts)
@@ -63,7 +67,7 @@
       href: security.md
     - name: IoT Edge-Glossar
       href: iot-edge-glossary.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Katalog mit Azure Certified for IoT-Geräten
       href: 'https://catalog.azureiotsuite.com/'

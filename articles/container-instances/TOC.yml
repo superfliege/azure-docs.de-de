@@ -13,7 +13,7 @@
       href: container-instances-quickstart-portal.md
     - name: Erstellen eines Containers – PowerShell
       href: container-instances-quickstart-powershell.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1. Erstellen des Containerimages
       href: container-instances-tutorial-prepare-app.md
@@ -23,8 +23,8 @@
       href: container-instances-tutorial-deploy-app.md
 - name: Konzepte
   items:
-    - name: Regionen und Verfügbarkeit
-      href: container-instances-region-availability.md
+    - name: Kontingente und regionale Grenzwerte
+      href: container-instances-quotas.md
     - name: Beziehung zu Orchestratoren
       href: container-instances-orchestrator-relationship.md
     - name: Containergruppen
@@ -41,7 +41,7 @@
       href: container-instances-restart-policy.md
     - name: Behandeln von Bereitstellungsproblemen
       href: container-instances-troubleshooting.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/container
@@ -59,7 +59,7 @@
       href: /javascript/api/overview/azure/containerinstance
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.containerinstance/containergroups
-- name: Ressourcen
+- name: angeben
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'

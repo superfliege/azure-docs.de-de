@@ -13,7 +13,7 @@
       href: quick-create-portal.md
     - name: Erstellen eines virtuellen Computers – Azure PowerShell
       href: quick-create-powershell.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Erstellen/Verwalten von virtuellen Computern'
       href: tutorial-manage-vm.md
@@ -35,7 +35,7 @@
       href: tutorial-backup-vms.md
     - name: '10: Überwachen und Aktualisieren von virtuellen Computern'
       href: tutorial-monitoring.md
-    - name: 11 – Verwalten der Sicherheit virtueller Computer
+    - name: '11: Verwalten der Sicherheit virtueller Computer'
       href: tutorial-azure-security.md
     - name: '12: Bereitstellen von Jenkins'
       href: tutorial-jenkins-github-docker-cicd.md
@@ -94,7 +94,7 @@
     - name: Datenträgerspeicher
       href: about-disks-and-vhds.md
       items:
-        - name: Verwaltete Datenträger
+        - name: Managed Disks
           href: managed-disks-overview.md
         - name: Storage Premium
           href: premium-storage.md
@@ -197,6 +197,8 @@
               href: update-agent.md
         - name: Geplante Wartung
           href: maintenance-notifications.md
+        - name: Beschleunigte Wartung – häufig gestellte Fragen
+          href: accelerated-maintenance.md
         - name: Geplante Ereignisse
           href: scheduled-events.md
         - name: Überwachen von Metadaten
@@ -386,6 +388,8 @@
           href: ../../virtual-network/virtual-network-deploy-static-pip-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Verwenden mehrerer NICs
           href: multiple-nics.md
+        - name: Verwenden des beschleunigten Netzwerkbetriebs
+          href: ../../virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
         - name: Zuweisen eines öffentlichen DNS-Namens
           href: portal-create-fqdn.md
         - name: DNS-Auflösung
@@ -466,7 +470,7 @@
               href: troubleshoot-recovery-disks.md
             - name: Azure-Portal
               href: troubleshoot-recovery-disks-portal.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
@@ -482,7 +486,7 @@
       href: 'https://azure.microsoft.com/develop/python/'
     - name: REST
       href: /rest/api/compute
-- name: Ressourcen
+- name: angeben
   items:
     - name: Verfassen von Vorlagen
       href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json

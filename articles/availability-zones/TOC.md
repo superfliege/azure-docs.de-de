@@ -3,9 +3,9 @@
 ## [Featureseite für Resilienz mit Azure](http://azure.microsoft.com/features/resiliency)
 ## [Entwickeln robuster Anwendungen für Azure](https://docs.microsoft.com/azure/architecture/resiliency/)
 
-# Hohe Verfügbarkeit
+# Hochverfügbarkeit
 
-## [Hohe Verfügbarkeit für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications)
+## [Hochverfügbarkeit für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications)
 
 ## Dokumentation zu Verfügbarkeitszonen
 ### [Was sind Verfügbarkeitszonen?](az-overview.md)
@@ -20,7 +20,7 @@
 #### [Hinzufügen eines verwalteten Datenträgers in Verfügbarkeitszonen mit PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
 ### VM-Skalierungsgruppen
-#### [Erstellen einer VM-Skalierungsgruppe mit dem Azure-Portal](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
+#### [Erstellen einer Skalierungsgruppe in einer Verfügbarkeitszone](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
 
 ### Load Balancer
 #### [Was ist der Load Balancer?](../load-balancer/load-balancer-standard-overview.md)
@@ -39,6 +39,6 @@
 # Azure Backup
 ## [Verwenden von Azure Backup](https://docs.microsoft.com/azure/backup/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Azure-Regionen](https://azure.microsoft.com/regions/)

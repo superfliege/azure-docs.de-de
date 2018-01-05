@@ -22,6 +22,7 @@
 ## Bereitstellen
 ### [Erstellen mit Visual Studio](virtual-machine-scale-sets-vs-create.md)
 ### [Skalierungsgruppe mit verwalteten Datenträgern](virtual-machine-scale-sets-managed-disks.md)
+### [Verwenden von Verfügbarkeitszonen](virtual-machine-scale-sets-use-availability-zones.md)
 ### [Automatisches Skalieren einer Skalierungsgruppe](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Verwenden des Azure-Portals](virtual-machine-scale-sets-autoscale-portal.md)
 #### [Verwenden von Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
@@ -49,15 +50,15 @@
 ## Häufig gestellte Fragen
 ### [Häufig gestellte Fragen (FAQ) zu Skalierungsgruppen](virtual-machine-scale-sets-faq.md)
 
-# Referenz
+# Verweis
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure-Befehlszeilenschnittstelle](../virtual-machines/azure-cli-arm-commands.md)
 ## [REST](/rest/api/virtualmachinescalesets/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=compute)
 ## Preise 
 ### [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/)
 ### [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-vm-scale-set)

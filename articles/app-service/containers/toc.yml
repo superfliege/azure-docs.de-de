@@ -23,12 +23,14 @@
       href: quickstart-ruby.md
     - name: Bereitstellen eines benutzerdefinierten Docker-Images
       href: quickstart-custom-docker-image.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: App mit Datenbank'
       items:
         - name: .NET Core mit SQL-Datenbank
           href: tutorial-dotnetcore-sqldb-app.md
+        - name: Ruby mit MySQL
+          href: tutorial-ruby-mysql-app.md
         - name: PHP mit MySQL
           href: tutorial-php-mysql-app.md
         - name: Node.js mit MongoDB
@@ -133,7 +135,7 @@
           href: ../app-service-web-app-cloning.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
         - name: Verschieben von Ressourcen
           href: ../app-service-move-resources.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/appservice
@@ -141,7 +143,7 @@
       href: /powershell
     - name: REST-API
       href: /rest/api/appservice/
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
