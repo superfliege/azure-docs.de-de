@@ -12,8 +12,6 @@
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: Konfigurieren von Hive-Richtlinien
       href: apache-domain-joined-run-hive.md
-    - name: Kapazitätsplanung
-      href: ../hdinsight-capacity-planning.md
       maintainContext: true
     - name: Verwalten von in die Domäne eingebundenen Clustern
       href: apache-domain-joined-manage.md
@@ -48,7 +46,7 @@
     - name: Überwachen der Clusterleistung
       href: ../hdinsight-key-scenarios-to-monitor.md
       maintainContext: true
-- name: Referenz
+- name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -64,7 +62,7 @@
       href: /rest/api/hdinsight/
     - name: REST (Spark)
       href: /rest/api/hdinsightspark/
-- name: Ressourcen
+- name: angeben
   items:
     - name: Versionshinweise
       href: ../hdinsight-release-notes.md

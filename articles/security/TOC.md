@@ -54,6 +54,8 @@
 #### [Konformität – UK-OFFICIAL](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [Übersicht](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [Übersicht über Prinzipien](./blueprints/uk-official-three-tier-applications-principles-overview.md)
+#### Konformität – Finanzdienstleistungen
+##### [Finanzdienstleistungen für regulierte Workloads](./blueprints/financial-services-regulated-workloads.md)
 
 # Erste Schritte
 ## [Erste Schritte mit Azure-Sicherheit](azure-security-getting-started.md)
@@ -114,7 +116,7 @@
 
 ## Sicherheitsarchitektur
 ### [Datenklassifizierung](https://gallery.technet.microsoft.com/Data-Classification-for-51252f03)
-### [Notfallwiederherstellung und hohe Verfügbarkeit für in Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Notfallwiederherstellung und Hochverfügbarkeit für in Azure erstellte Anwendungen](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 # Verwandte Themen
 ## [Trust Center](security-microsoft-trust-center.md)
@@ -127,7 +129,7 @@
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Operations Management Suite](../operations-management-suite/oms-security-getting-started.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MVP-Programm für die Azure-Sicherheit](azure-security-mvp.md)
 ## [Cybersecurity-Consulting](azure-security-cyber-services.md)

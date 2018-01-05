@@ -5,8 +5,7 @@
 ## [Häufig gestellte Fragen](service-bus-faq.md)
 
 # Erste Schritte
-## [Erstellen eines Namespaces](service-bus-create-namespace-portal.md)
-### [Warteschlangen, Themen und Abonnements](service-bus-queues-topics-subscriptions.md)
+## [Erstellen eines Namespace](service-bus-create-namespace-portal.md)
 ## Verwenden von Warteschlangen
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -37,6 +36,7 @@
 
 ## Entwickeln
 ### Behandlung von Nachrichten
+#### [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
 #### [Nachrichten, Nutzlasten und Serialisierung](service-bus-messages-payloads.md)
 #### [Nachrichtenübertragungen, Sperren und Abrechnung](message-transfers-locks-settlement.md)
 #### [Nachrichtensequenzierung und -zeitstempel](message-sequencing.md)
@@ -70,7 +70,7 @@
 ### [Diagnoseprotokolle](service-bus-diagnostic-logs.md)
 ### [Anhalten und Reaktivieren von Messagingentitäten](entity-suspend.md)
 ### [Verwenden von Azure Resource Manager-Vorlagen](service-bus-resource-manager-overview.md)
-#### [Erstellen eines Namespaces](service-bus-resource-manager-namespace.md)
+#### [Erstellen eines Namespace](service-bus-resource-manager-namespace.md)
 #### [Erstellen eines Namespace und einer Warteschlange](service-bus-resource-manager-namespace-queue.md)
 #### [Erstellen eines Service Bus-Namespace mit Thema und Abonnement mit einer Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic.md)
 #### [Erstellen einer Autorisierungsregel für Namespace und Warteschlange](service-bus-resource-manager-namespace-auth-rule.md)
@@ -78,19 +78,19 @@
 #### 
 ### [Verwenden von Azure PowerShell zur Bereitstellung von Entitäten](service-bus-manage-with-ps.md)
 
-# Referenz
+# Verweis
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
 ## [Java](/java/api/overview/azure/servicebus)
 ## [Azure PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST](/rest/api/servicebus)
-## [Exceptions](service-bus-messaging-exceptions.md)
-## [Kontingente](service-bus-quotas.md)
+## [Ausnahmen](service-bus-messaging-exceptions.md)
+## [Quotas](service-bus-quotas.md)
 ## [SQLFilter-Syntax](service-bus-messaging-sql-filter.md)
 ## [SQLRuleAction-Syntax](service-bus-messaging-sql-rule-action.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [Blog](https://blogs.msdn.microsoft.com/servicebus/)
 ## [MSDN-Foren](https://social.msdn.microsoft.com/forums/home?forum=servbus)
@@ -101,7 +101,7 @@
 ## [ServiceBus360](https://www.servicebus360.com/)
 ## [Service Bus-Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=service-bus)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azureservicebus)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azureservicebus)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 
