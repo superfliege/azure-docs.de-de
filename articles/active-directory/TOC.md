@@ -286,7 +286,6 @@
 #### [bewährten Methoden](active-directory-conditional-access-best-practices.md)
 #### [Grundlegendes zu Geräterichtlinien für Office 365-Dienste](active-directory-conditional-access-device-policies.md)
 #### [Migrieren von klassischen Richtlinien](active-directory-conditional-access-migration.md)
-#### [Was-wäre-wenn-Tool](active-directory-conditional-access-whatif.md)
 #### Aufgaben
 ##### [Migrieren der klassischen MFA-Richtlinie](active-directory-conditional-access-migration-mfa.md)
 ##### [Einrichten des gerätebasierten bedingten Zugriffs](active-directory-conditional-access-policy-connected-applications.md)
