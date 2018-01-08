@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 11/20/2017
+ms.date: 12/01/2017
 ms.author: mimig
-ms.openlocfilehash: 44637049dd5d6cfe353afe98427d843a0d4e403a
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: c3d4637871ed56bd32e514c9de4374257e55d844
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-and-azure-cosmos-db"></a>Schnellstartanleitung: Erstellen einer Table-API-App mit .NET und Azure Cosmos DB 
 
@@ -36,7 +36,7 @@ Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kos
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 
 > [!IMPORTANT] 
-> Zum Arbeiten mit den allgemein verfügbaren Tabellen-API-SDKs müssen Sie ein neues Tabellen-API-Konto erstellen. Tabellen-API-Konten, die während der Vorschau erstellt wurden, werden von den allgemein verfügbaren SDKs nicht unterstützt.
+> Zur Verwendung der allgemein verfügbaren Tabellen-API-SDKs müssen Sie ein neues Tabellen-API-Konto erstellen. Tabellen-API-Konten, die während der Vorschau erstellt wurden, werden von den allgemein verfügbaren SDKs nicht unterstützt.
 >
 
 [!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
@@ -52,7 +52,7 @@ Sie können nun mithilfe des Daten-Explorers Daten zu einer neuen Tabelle hinzuf
 1. Erweitern Sie im Daten-Explorer **sample-database**, klicken Sie auf **Entitäten**, und klicken Sie anschließend auf **Entität hinzufügen**.
 
    ![Erstellen neuer Entitäten im Daten-Explorer im Azure-Portal](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-document.png)
-2. Geben Sie nun Daten in die Wertfelder „PartitionKey“ und „RowKey“ ein, und klicken Sie auf **Entität hinzufügen**.
+2. Geben Sie nun Daten in das Wertfeld „PartitionKey“ und „RowKey“ ein, und klicken Sie auf **Entität hinzufügen**.
 
    ![Festlegen des Partitions- und Zeilenschlüssels für eine neue Entität](./media/create-table-dotnet/azure-cosmosdb-data-explorer-new-entity.png)
   
@@ -60,9 +60,9 @@ Sie können nun mithilfe des Daten-Explorers Daten zu einer neuen Tabelle hinzuf
 
 ## <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
-Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenfolge fest und führen Sie diese aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
+Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenfolge fest, und führen Sie die App aus. Sie werden feststellen, wie einfach Sie programmgesteuert mit Daten arbeiten können. 
 
-1. Öffnen Sie ein Terminalfenster von Git (z. B. Git Bash), und verwenden Sie den Befehl `cd`, um den Ordner zu ändern, in den die Beispiel-App gespeichert wird. 
+1. Öffnen Sie ein Git-Terminalfenster (beispielsweise Git Bash), und wechseln Sie mithilfe des Befehls `cd` in einen Installationsordner für die Beispiel-App. 
 
     ```bash
     cd "C:\git-samples"
@@ -73,8 +73,15 @@ Klonen Sie jetzt eine Tabellen-App aus GitHub, legen Sie die Verbindungszeichenf
     ```bash
     git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
     ```
+## <a name="open-the-sample-application-in-visual-studio"></a>Öffnen der Beispielanwendung in Visual Studio
 
-3. Öffnen Sie anschließend in Visual Studio die Projektmappendatei „TableStorage“. 
+1. Klicken Sie in Visual Studio im Menü **Datei** auf **Öffnen** > **Projekt/Projektmappe**. 
+
+   ![Öffnen der Projektmappe](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
+
+2. Navigieren Sie zu dem Ordner, in dem Sie die Beispielanwendung geklont haben, und öffnen Sie die Datei „TableStorage.sln“.
+
+   ![Öffnen der geklonten Anwendung](media/create-table-dotnet/azure-cosmos-db-open-clone.png) 
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
@@ -82,23 +89,23 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
 
 1. Klicken Sie im [Azure-Portal](http://portal.azure.com/) auf **Verbindungszeichenfolge**. 
 
-    Kopieren Sie die primäre Verbindungszeichenfolge mithilfe der Kopierschaltfläche im rechten Bildschirmbereich.
+    Kopieren Sie mithilfe der Kopierschaltfläche im rechten Fensterbereich die **PRIMÄRE VERBINDUNGSZEICHENFOLGE**.
 
     ![Anzeigen und Kopieren der primären Verbindungszeichenfolge im Bereich „Verbindungszeichenfolge“](./media/create-table-dotnet/connection-string.png)
 
 2. Öffnen Sie in Visual Studio die Datei „App.config“. 
 
-3. Da der Speicheremulator in diesem Tutorial nicht verwendet wird, heben Sie die Auskommentierung von „StorageConnectionString“ in Zeile 8 auf, und kommentieren Sie „StorageConnectionString“ in Zeile 7 aus. Zeile 7 und 8 sollten jetzt wie folgt aussehen:
+3. Da der Azure SDK-Speicheremulator in diesem Tutorial nicht verwendet wird, heben Sie die Auskommentierung von „StorageConnectionString“ in Zeile 8 auf, und kommentieren Sie „StorageConnectionString“ in Zeile 7 aus. Die Zeilen 7 und 8 sollten jetzt wie folgt aussehen:
 
     ```
     <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     ```
 
-4. Fügen Sie die primäre Verbindungszeichenfolge aus dem Portal in den StorageConnectionString-Wert in Zeile 8 ein. Fügen Sie die Zeichenfolge innerhalb der Anführungszeichen ein. 
+4. Fügen Sie die **PRIMÄRE VERBINDUNGSZEICHENFOLGE** aus dem Portal in Zeile 8 in den StorageConnectionString-Wert ein. Fügen Sie die Zeichenfolge innerhalb der Anführungszeichen ein. 
 
     > [!IMPORTANT]
-    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Tabellen-API-SDK zu arbeiten. 
+    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet das, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um das allgemein verfügbare Tabellen-API-SDK verwenden zu können. 
     > 
 
     Zeile 8 sollte nun in etwa wie folgt aussehen:
@@ -107,7 +114,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
     ```
 
-5. Speichern Sie die Datei „App.config“.
+5. Drücken Sie STRG+S, um die Datei „App.config“ zu speichern.
 
 Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikation mit Azure Cosmos DB aktualisiert. 
 
@@ -115,29 +122,43 @@ Sie haben die App nun mit allen erforderlichen Informationen für die Kommunikat
 
 1. Klicken Sie in Visual Studio im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **TableStorage**, und klicken Sie anschließend auf **NuGet-Pakete verwalten**. 
 
-2. Geben Sie im NuGet-Feld **Durchsuchen** die Zeichenfolge *Microsoft.Azure.CosmosDB.Table* ein.
+   ![NuGet-Pakete verwalten](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
+2. Geben Sie im NuGet-Feld **Durchsuchen** die Zeichenfolge *Microsoft.Azure.CosmosDB.Table* ein. Dadurch wird die Clientbibliothek „Cosmos DB-Tabellen-API“ gefunden.
+   
+   ![NuGet-Registerkarte „Durchsuchen“](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 
-3. Installieren Sie die in den Ergebnissen enthaltene Bibliothek **Microsoft.Azure.CosmosDB.Table**. Dadurch werden das Paket der Table-API von Azure Cosmos DB und dessen Abhängigkeiten installiert.
+3. Klicken Sie auf **Installieren**, um die Bibliothek **Microsoft.Azure.CosmosDB.Table** zu installieren. Dadurch werden das Paket der Azure Cosmos DB-Tabellen-API sowie sämtliche Abhängigkeiten installiert.
 
-4. Öffnen Sie „BasicSamples.cs“, und fügen Sie in Zeile 30 und 52 einen Haltepunkt ein.
+    ![Klicken Sie auf „Installieren“.](media/create-table-dotnet/azure-cosmosdb-nuget-install.png)
 
-5. Drücken Sie STRG + F5, um die Anwendung auszuführen.
+4. Öffnen Sie „BasicSamples.cs“. Klicken Sie mit der rechten Maustaste auf die Zeile 52, wählen Sie **Haltepunkt** aus, und wählen Sie anschließend **Haltepunkt einfügen** aus. Fügen Sie in Zeile 55 einen weiteren Haltepunkt ein.
 
-    Im Konsolenfenster werden die Tabellendaten angezeigt, die der neuen Tabellendatenbank in Azure Cosmos DB hinzugefügt werden. 
+   ![Haltepunkt hinzufügen](media/create-table-dotnet/azure-cosmosdb-breakpoint.png) 
+
+5. Drücken Sie die Taste F5, um die Anwendung auszuführen.
+
+    Im Konsolenfenster wird der Name der neuen Tabellendatenbank in Azure Cosmos DB angezeigt (in diesem Fall: demo91ab4). 
     
+    ![Konsolenausgabe](media/create-table-dotnet/azure-cosmosdb-console.png)
+
     Wenn ein Fehler in Bezug auf Abhängigkeiten angezeigt wird, finden Sie weitere Informationen unter [Troubleshooting](table-sdk-dotnet.md#troubleshooting) (Problembehandlung).
 
-    Wenn der erste Haltepunkt erreicht wird, wechseln Sie zurück zum Daten-Explorer im Azure-Portal, erweitern Sie die Demo-Tabelle, und klicken Sie auf **Entitäten**. Die Registerkarte **Entitäten** auf der rechten Seite zeigt die neu hinzugefügte Entität. Die Telefonnummer für Benutzer lautet 425-555-0101.
+    Kehren Sie bei Erreichen des ersten Haltepunkts wieder zum Daten-Explorer im Azure-Portal zurück. Klicken Sie auf die Schaltfläche **Aktualisieren**, erweitern Sie die Demo-Tabelle, und klicken Sie auf **Entitäten**. Die Registerkarte **Entitäten** auf der rechten Seite zeigt die neue Entität, die für Walter Harp hinzugefügt wurde. Die Telefonnummer für die neue Entität lautet 425-555-0101.
+
+    ![Neue Entität](media/create-table-dotnet/azure-cosmosdb-entity.png)
     
-6. Schließen Sie die Registerkarte „Entitäten“ im Daten-Explorer.
+6. Schließen Sie im Daten-Explorer die Registerkarte **Entitäten**.
     
-7. Führen Sie die App bis zum nächsten Haltepunkt weiter aus.
+7. Drücken Sie F5, um die App bis zum nächsten Haltepunkt auszuführen. 
 
-    Wenn der Haltepunkt erreicht ist, wechseln Sie zurück zum Portal und klicken erneut auf die Registerkarte „Entitäten“. Beachten Sie, dass die Telefonnummer aktualisiert wurde und jetzt 425-555-0105 lautet.
+    Kehren Sie bei Erreichen des Haltepunkts wieder zum Azure-Portal zurück, und klicken Sie erneut auf **Entitäten**, um die Registerkarte **Entitäten** zu öffnen. Beachten Sie, dass die Telefonnummer aktualisiert wurde und nun 425-555-0105 lautet.
 
-8. Im Konsolenfenster drücken Sie STRG+C, um die Ausführung der App zu beenden. 
+8. Drücken Sie F5, um die App auszuführen. 
+ 
+   Die App fügt Entitäten für die Verwendung in einer erweiterten Beispiel-App hinzu, die von der Tabellen-API momentan nicht unterstützt wird. Anschließend löscht die App die von der Beispiel-App erstellten Tabellen.
 
-    Im Daten-Explorer können Sie jetzt Entitäten hinzufügen oder ändern und die Daten abfragen.
+9. Drücken Sie im Konsolenfenster die EINGABETASTE, um die Ausführung der App zu beenden. 
+  
 
 ## <a name="review-slas-in-the-azure-portal"></a>Überprüfen von SLAs im Azure-Portal
 

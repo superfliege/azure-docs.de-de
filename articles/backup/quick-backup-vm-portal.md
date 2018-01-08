@@ -1,5 +1,5 @@
 ---
-title: "Azure-Schnellstart – Sichern einer VM mit dem Azure-Portal | Microsoft-Dokumentation"
+title: "Azure-Schnellstartanleitung: Sichern eines virtuellen Computers über das Azure-Portal | Microsoft-Dokumentation"
 description: Es wird beschrieben, wie Sie Ihre virtuellen Computer mit dem Azure-Portal sichern.
 services: virtual-machines-windows, azure-backup
 documentationcenter: virtual-machines
@@ -13,19 +13,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 09/18/2017
+ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 68409d7832985bea635e4b6de341ea6aec6f560d
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 694d75b57d0f1b26640848344fbbe268fe285009
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Sichern eines virtuellen Computers in Azure
 Azure-Sicherungen können über das Azure-Portal erstellt werden. Bei dieser Methode können Sie die browserbasierte Benutzeroberfläche nutzen, um Azure-Sicherungen und alle dazugehörigen Ressourcen zu erstellen und zu konfigurieren. Sie können Ihre Daten schützen, indem Sie in regelmäßigen Abständen Sicherungen erstellen. Azure Backup erstellt Wiederherstellungspunkte, die in georedundanten Recovery-Tresoren gespeichert werden können. In diesem Artikel wird ausführlich beschrieben, wie Sie einen virtuellen Computer (VM) mit dem Azure-Portal sichern. 
 
-Dieser Schnellstart ermöglicht die Sicherung auf einer vorhandenen Azure-VM. Wenn Sie eine VM erstellen müssen, können Sie die [Erstellung mit dem Azure-Portal durchführen](../virtual-machines/windows/quick-create-portal.md).
+In dieser Schnellstartanleitung wird die Sicherung für einen vorhandenen virtuellen Azure-Computer aktiviert. Wenn Sie eine VM erstellen müssen, können Sie die [Erstellung mit dem Azure-Portal durchführen](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
 
@@ -35,14 +35,14 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 Erstellen Sie eine einfache geplante tägliche Sicherung in einem Recovery Services-Tresor. 
 
 1. Wählen Sie im Menü auf der linken Seite **Virtuelle Computer** aus. 
-2. Wählen Sie in der Liste eine VM aus, die gesichert werden soll. Wenn Sie die Befehle aus dem VM-Beispiel des Schnellstarts verwendet haben, hat die VM in der Ressourcengruppe *myResourceGroup* den Namen *myVM*.
-3. Wählen Sie im Abschnitt **Einstellungen** die Option **Backup** (Sichern). Das Fenster **Sicherung aktivieren** wird geöffnet.
+2. Wählen Sie in der Liste eine VM aus, die gesichert werden soll. Bei Verwendung der VM-Beispielbefehle aus der Schnellstartanleitung hat der virtuelle Computer den Namen *myVM* und befindet sich in der Ressourcengruppe *myResourceGroup*.
+3. Klicken Sie im Abschnitt **Vorgänge** auf **Sichern**. Das Fenster **Sicherung aktivieren** wird geöffnet.
 
 
 ## <a name="enable-backup-on-a-vm"></a>Aktivieren der Sicherung auf einer VM
 Ein Recovery Services-Tresor ist ein logischer Container, in dem die Sicherungsdaten für jede geschützte Ressource, z.B. Azure-VMs, gespeichert werden. Wenn der Sicherungsauftrag für eine geschützte Ressource ausgeführt wird, wird im Recovery Services-Tresor ein Wiederherstellungspunkt erstellt. Sie können einen dieser Wiederherstellungspunkte dann verwenden, um Daten für einen bestimmten Zeitpunkt wiederherzustellen.
 
-1. Wählen Sie **Neu erstellen**, und geben Sie einen Namen für den neuen Tresor an, z.B.**myRecoveryServicesVault**.
+1. Wählen Sie **Neu erstellen**, und geben Sie einen Namen für den neuen Tresor an, z.B.*myRecoveryServicesVault*.
 2. Wählen Sie **Use existing** (Vorhandene verwenden), falls noch nicht geschehen, und wählen Sie anschließend im Dropdownmenü die Ressourcengruppe Ihrer VM aus.
 
     ![Aktivieren der VM-Sicherung im Azure-Portal](./media/quick-backup-vm-portal/enable-backup.png)
@@ -52,6 +52,8 @@ Ein Recovery Services-Tresor ist ein logischer Container, in dem die Sicherungsd
     Sie erstellen und verwenden Richtlinien, um zu definieren, wann ein Sicherungsauftrag ausgeführt wird und wie lange die Wiederherstellungspunkte gespeichert werden. Bei der Standardschutzrichtlinie wird jeden Tag ein Sicherungsauftrag ausgeführt, und Wiederherstellungspunkte werden 30 Tage lang beibehalten. Sie können diese Standardrichtlinienwerte verwenden, um Ihre VM schnell zu schützen. 
 
 3. Wählen Sie zum Übernehmen der Standardwerte der Sicherungsrichtlinie die Option **Sicherung aktivieren**.
+
+Die Erstellung des Recovery Services-Tresors dauert einen Moment.
 
 
 ## <a name="start-a-backup-job"></a>Starten eines Sicherungsauftrags
@@ -86,14 +88,14 @@ Wenn Sie mit einem Backup-Tutorial fortfahren möchten, in dem die Wiederherstel
     Nachdem die VM-Sicherung beendet wurde und die Wiederherstellungspunkte entfernt wurden, können Sie die Ressourcengruppe löschen. Wenn Sie eine vorhandene VM verwendet haben, kann es auch sein, dass Sie die Ressourcengruppe und die VM beibehalten möchten.
 
 5. Wählen Sie im Menü auf der linken Seite die Option **Ressourcengruppen**. 
-6. Wählen Sie in der Liste Ihre Ressourcengruppe aus. Wenn Sie die Befehle aus dem VM-Beispiel des Schnellstarts verwendet haben, hat die Ressourcengruppe den Namen *myResourceGroup*.
+6. Wählen Sie in der Liste Ihre Ressourcengruppe aus. Bei Verwendung der VM-Beispielbefehle aus der Schnellstartanleitung heißt die Ressourcengruppe *myResourceGroup*.
 7. Wählen Sie die Option **Ressourcengruppe löschen**. Geben Sie als Bestätigung den Namen der Ressourcengruppe ein, und wählen Sie anschließend **Löschen**.
 
     ![Löschen der Ressourcengruppe über das Azure-Portal](./media/quick-backup-vm-portal/delete-resource-group.png)
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Schnellstart haben Sie einen Recovery Services-Tresor erstellt, den Schutz auf einer VM aktiviert und den ersten Wiederherstellungspunkt erstellt. Weitere Informationen zu Azure Backup und Recovery Services sind in den Tutorials enthalten.
+In dieser Schnellstartanleitung haben Sie einen Recovery Services-Tresor erstellt, den Schutz für einen virtuellen Computer aktiviert und den ersten Wiederherstellungspunkt erstellt. Weitere Informationen zu Azure Backup und Recovery Services sind in den Tutorials enthalten.
 
 > [!div class="nextstepaction"]
 > [Sichern von mehreren Azure-VMs](./tutorial-backup-vm-at-scale.md)

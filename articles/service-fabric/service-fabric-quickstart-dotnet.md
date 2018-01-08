@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 01/02/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 40b29ccb454caf5462807d6c24ca3f470865d368
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: bdf73cc13cbdbe75c426fc17fce2828164297826
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="create-a-net-service-fabric-application-in-azure"></a>Erstellen einer .NET Service Fabric-Anwendung in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -41,7 +41,7 @@ Mithilfe dieser Anwendung erfahren Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 So führen Sie diesen Schnellstart durch:
 1. [Installieren Sie Visual Studio 2017](https://www.visualstudio.com/) mit den Workloads **Azure-Entwicklung** und **ASP.NET und Webentwicklung**.
-2. [Installieren Sie Git.](https://git-scm.com/)
+2. [Installation von Git](https://git-scm.com/)
 3. [Installieren Sie das Microsoft Azure Service Fabric-SDK](http://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK).
 4. Führen Sie den folgenden Befehl aus, um für Visual Studio die Bereitstellung im lokalen Service Fabric-Cluster zu ermöglichen:
     ```powershell
@@ -92,7 +92,7 @@ Beim Debuggen der Anwendung in Visual Studio verwenden Sie einen lokalen Service
 Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 1. Öffnen Sie die Datei **/VotingWeb/Controllers/VotesController.cs**, und legen Sie in der **Put**-Methode der Web-API (Zeile 47) einen Breakpoint fest. Sie können in Visual Studio im Projektmappen-Explorer nach der Datei suchen.
 
-2. Öffnen Sie die Datei **/VotingData/ControllersVoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 50) einen Breakpoint fest.
+2. Öffnen Sie die Datei **/VotingData/Controllers/VoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 50) einen Breakpoint fest.
 
 3. Wechseln Sie zurück in den Browser, und klicken Sie auf eine Abstimmungsoption, oder fügen Sie eine neue Abstimmungsoption hinzu. Sie stoßen im API-Controller des Web-Front-Ends auf den ersten Breakpoint.
     - An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
@@ -171,8 +171,8 @@ Beim Bereitstellen von neuen Updates für Ihre Anwendung führt Service Fabric d
 Gehen Sie zum Aktualisieren der Anwendung wie folgt vor:
 
 1. Öffnen Sie die Datei **/VotingWeb/Views/Home/Index.cshtml** in Visual Studio.
-2. Ändern Sie die <h2> Überschrift auf der Seite durch Hinzufügen oder Aktualisieren des Texts. Ändern Sie beispielsweise die Überschrift in „Service Fabric Voting Sample v2“.
-3. Speichern Sie die Datei.
+2. Ändern Sie die Überschrift auf der Seite, indem Sie den Text ergänzen oder aktualisieren. Ändern Sie beispielsweise die Überschrift in „Service Fabric Voting Sample v2“.
+3. Speichern Sie die Datei .
 4. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **Voting**, und wählen Sie **Veröffentlichen**. Das Dialogfeld „Veröffentlichen“ wird angezeigt.
 5. Klicken Sie auf die Schaltfläche **Manifestversion**, um die Version des Diensts und der Anwendung zu ändern.
 6. Ändern Sie die Version des **Code**-Elements unter **VotingWebPkg** beispielsweise in „2.0.0“, und klicken Sie auf **Speichern**.

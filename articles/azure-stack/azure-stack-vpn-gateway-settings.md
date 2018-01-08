@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: brenduns
-ms.openlocfilehash: ed4a84965c37f66bbc7734f6043ad6f8f1666c1f
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 1276310a35d0d69a4111a58b9675f15bb5285a08
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="vpn-gateway-configuration-settings-for-azure-stack"></a>VPN-Gatewaykonfigurationseinstellungen für Azure Stack
 
@@ -90,9 +90,9 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 Wenn Sie das Gateway des virtuellen Netzwerks für eine VPN-Gatewaykonfiguration erstellen, müssen Sie einen VPN-Typ angeben. Der ausgewählte VPN-Typ hängt von der Verbindungstopologie ab, die Sie erstellen möchten.  Ein VPN-Typ kann zudem von der verwendeten Hardware abhängen. S2S-Konfigurationen erfordern ein VPN-Gerät. Einige VPN-Geräte unterstützen nur einen bestimmten VPN-Typ.
 
 > [!IMPORTANT]  
-> Aktuell unterstützt Azure Stack nur den routenbasierten VPN-Typ.  Wenn Ihr Gerät nur richtlinienbasierte VPNs unterstützt, werden Verbindungen mit diesen Geräten über Azure Stack nicht unterstützt.
+> Aktuell unterstützt Azure Stack nur den routenbasierten VPN-Typ. Wenn Ihr Gerät nur richtlinienbasierte VPNs unterstützt, werden Verbindungen mit diesen Geräten über Azure Stack nicht unterstützt.
 
-- **PolicyBased:** *(unterstützt von Azure, aber nicht von Azure Stack)* Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils per Kombination aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure-VNet konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) wird in der Regel als Zugriffsliste in der VPN-Gerätekonfiguration definiert.
+- **PolicyBased:** *(unterstützt von Azure, aber nicht von Azure Stack)* Bei richtlinienbasierten VPNs werden Pakete verschlüsselt und durch IPsec-Tunnel geleitet. Grundlage hierfür sind die IPsec-Richtlinien, die jeweils mit Kombinationen aus Adresspräfixen zwischen Ihrem lokalen Netzwerk und dem Azure Stack-VNET konfiguriert werden. Die Richtlinie (auch Datenverkehrsselektor genannt) wird in der Regel als Zugriffsliste in der VPN-Gerätekonfiguration definiert.
 
 - **RouteBased:** Bei RouteBased-VPNs werden Pakete auf der Grundlage der Routen der IP-Weiterleitungstabelle oder -Routingtabelle an die entsprechenden Tunnelschnittstellen weitergeleitet. An den Tunnelschnittstellen werden die Pakete dann ver- bzw. entschlüsselt. Die Richtlinie (bzw. der Datenverkehrsselektor) für RouteBased-VPNs wird im Any-to-Any-Format (bzw. als Platzhalter) konfiguriert. Der Wert für einen RouteBased-VPN-Typ lautet „RouteBased“.
 
@@ -108,7 +108,7 @@ Die folgende Tabelle enthält die Anforderungen für VPN-Gateways.
 
 | |Basic-VPN-Gateway (PolicyBased) | Basic-VPN-Gateway (RouteBased) | Standard-VPN-Gateway (RouteBased) | Hochleistungs-VPN-Gateway (RouteBased)|
 |--|--|--|--|--|
-| **Site-to-Site-Konnektivität (S2S)** | Nicht unterstützt | RouteBased-VPN-Konfiguration | RouteBased-VPN-Konfiguration | RouteBased-VPN-Konfiguration |
+| **Site-to-Site-Konnektivität (S2S-Konnektivität)** | Nicht unterstützt | RouteBased-VPN-Konfiguration | RouteBased-VPN-Konfiguration | RouteBased-VPN-Konfiguration |
 | **Authentifizierungsmethode**  | Nicht unterstützt | Vorinstallierter Schlüssel für S2S-Konnektivität  | Vorinstallierter Schlüssel für S2S-Konnektivität  | Vorinstallierter Schlüssel für S2S-Konnektivität  |   
 | **Maximale Anzahl von S2S-Verbindungen**  | Nicht unterstützt | 10 | 10| 30|
 |**Aktive Routingunterstützung (BGP)** | Nicht unterstützt | Nicht unterstützt | Unterstützt | Unterstützt |

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 5c5fa4927073ff52418a940fce59ca1f6b57daa6
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c9e0441ec42e5710f43bbe7fa8af4a9fe7447a69
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Was ist Azure IoT Suite?
 
@@ -30,6 +30,10 @@ Azure IoT Suite besteht aus einem Satz mit *vorkonfigurierten Lösungen*, für d
 * Mögliche Anpassung an Ihre jeweiligen Anforderungen
 
 Die vorkonfigurierten *IoT Suite*-Lösungen wurden alle gemäß denselben Prinzipien und Zielsetzungen entworfen.
+
+Das folgende Video gibt einen Überblick über die vorkonfigurierte Remoteüberwachungslösung:
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Meet-the-new-Remote-Monitoring-accelerator-for-Azure-IoT/Player]
 
 ## <a name="preconfigured-solutions-overview"></a>Übersicht über vorkonfigurierte Lösungen
 
@@ -74,7 +78,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 
 Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden während des Bereitstellungsprozesses einige Azure-Dienste konfiguriert. In der folgenden Tabelle werden die Dienste angezeigt, die in den vorkonfigurierten Lösungen verwendet werden:
 
-|                      | Remoteüberwachung  | Vorhersagbarer Wartungsbedarf | Verbundene Factory |
+|                      | Remoteüberwachung  | Predictive Maintenance | Verbundene Factory |
 | -------------------- | ------------------ | ---------------------- | ----------------- |
 | IoT Hub              | Ja                |                        | Ja               |
 | Event Hubs           |                    | Ja                    |                   |
@@ -102,10 +106,10 @@ Eine Übersicht über die Architektur einer typischen IoT-Lösung finden Sie unt
 
 Microsoft aktualisiert die vorkonfigurierten Lösungen in eine neue Architektur auf Basis von Microservices. In der folgenden Tabelle wird der aktuelle Status der vorkonfigurierten Lösungen angezeigt:
 
-| Vorkonfigurierte Lösung | Architektur  | Sprachen     |
+| Vorkonfigurierte Lösung | Architecture  | Sprachen     |
 | ---------------------- | ------------- | ------------- |
 | Remoteüberwachung      | Microservices | Java und .NET |
-| Vorhersagbarer Wartungsbedarf | MVC           | .NET          |
+| Predictive Maintenance | MVC           | .NET          |
 | Verbundene Factory      | MVC           | .NET          |
 
 In den folgenden Abschnitten wird beschrieben, welche Neuigkeiten es für die vorkonfigurierten Lösungen auf Basis von Microservices gibt:

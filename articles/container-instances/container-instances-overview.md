@@ -6,20 +6,20 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 07/20/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 98feed192f21cbc2bf9197b6d32646f50ddbd0c5
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 83666edc75a6c75fd2361e79192f9717d69fd746
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
 Container entwickeln sich mehr und mehr zum bevorzugten Instrument für das Packen, Bereitstellen und Verwalten von Cloudanwendungen. Mit Azure Container Instances lassen sich Container in Azure besonders schnell und einfach ausführen, ohne dass Sie dazu virtuelle Computer bereitstellen oder einen übergeordneten Dienst einführen müssen.
 
-Azure Container Instances ist eine großartige Lösung für jedes Szenario, das für die Verwendung isolierter Container geeignet ist. Hierzu zählen unter anderem einfache Anwendungen, Aufgabenautomatisierung und Erstellungsaufträge. Für Szenarien, die eine umfassende Containerorchestrierung erfordern (etwa für die containerübergreifende Dienstermittlung, automatische Skalierung und koordinierte Anwendungsupgrades), empfehlen wir [Azure Container Service](https://docs.microsoft.com/azure/container-service/).
+Azure Container Instances ist eine großartige Lösung für jedes Szenario, das für die Verwendung isolierter Container geeignet ist. Hierzu zählen unter anderem einfache Anwendungen, Aufgabenautomatisierung und Erstellungsaufträge. Für Szenarien, die eine umfassende Containerorchestrierung erfordern (etwa für die containerübergreifende Dienstermittlung, automatische Skalierung und koordinierte Anwendungsupgrades), empfehlen wir [Azure Container Service](../aks/index.yml) (AKS).
 
 ## <a name="fast-startup-times"></a>Schneller Start
 
@@ -39,7 +39,7 @@ Mit Azure Container Instances können Sie Ihre Container über eine öffentliche
 
 ## <a name="persistent-storage"></a>Permanenter Speicher
 
-Dank der Möglichkeit zur direkten Einbindung von Azure-Dateifreigaben können Sie mit Azure Container Instances den Zustand abrufen und speichern.
+Dank der Möglichkeit zur direkten [Einbindung von Azure Files-Freigaben](container-instances-mounting-azure-files-volume.md) können Sie mit Azure Container Instances den Zustand abrufen und speichern.
 
 ## <a name="linux-and-windows-containers"></a>Linux- und Windows-Container
 
@@ -47,7 +47,7 @@ Mit Azure Container Instances können Sie sowohl Windows- als auch Linux-Contain
 
 ## <a name="co-scheduled-groups"></a>Gemeinsam geplante Gruppen
 
-Azure Container Instances unterstützt die Planung von Gruppen mit mehreren Containern mit gemeinsamem Hostcomputer, lokalem Netzwerk, Speicher und Lebenszyklus. Dadurch können Sie Ihre Hauptanwendung mit anderen (unterstützenden) Anwendungen kombinieren (etwa mit der Protokollierung).
+Azure Container Instances unterstützt die Planung von [Gruppen mit mehreren Containern](container-instances-container-groups.md) mit gemeinsamem Hostcomputer, lokalem Netzwerk, Speicher und Lebenszyklus. Dadurch können Sie Ihre Hauptanwendung mit anderen (unterstützenden) Anwendungen kombinieren (etwa mit der Protokollierung).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

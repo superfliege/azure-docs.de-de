@@ -14,11 +14,11 @@ ms.tgt_pltfrm: node
 ms.workload: na
 ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: 0349afa355038644e695858cc42d12a68ca2bdd8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d79c05253da568d3a9b2f2912d22eab2df586821
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="get-started-with-relay-hybrid-connections"></a>Erste Schritte mit Relay-Hybridverbindungen
 
@@ -28,7 +28,7 @@ Dieses Tutorial bietet eine Einführung in [Azure Relay-Hybridverbindungen](rela
 
 ## <a name="what-will-be-accomplished"></a>Ziele
 
-Da für Hybridverbindungen sowohl eine Client- als auch eine Serverkomponente erforderlich ist, erstellen wir in diesem Tutorial zwei Konsolenanwendungen. Gehen Sie wie folgt vor:
+Da für Hybrid Connections sowohl eine Client- als auch eine Serverkomponente erforderlich ist, werden in diesem Tutorial zwei Konsolenanwendungen erstellt. Gehen Sie wie folgt vor:
 
 1. Erstellen eines Relay-Namespace mit dem Azure-Portal
 2. Erstellen einer Hybridverbindung mit dem Azure-Portal
@@ -56,13 +56,13 @@ Wenn Sie bereits eine Hybridverbindung erstellt haben, fahren Sie mit dem Abschn
 
 ## <a name="3-create-a-server-application-listener"></a>3. Erstellen einer Serveranwendung (Listener)
 
-Zum Lauschen und Empfangen von Nachrichten vom Relay schreiben wir eine Node.js-Konsolenanwendung.
+Schreiben Sie eine Node.js-Konsolenanwendung, um auf Nachrichten des Relays zu lauschen und sie zu empfangen.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-server](../../includes/relay-hybrid-connections-node-get-started-server.md)]
 
 ## <a name="4-create-a-client-application-sender"></a>4. Erstellen einer Clientanwendung (Absender)
 
-Zum Senden von Nachrichten an das Relay schreiben wir eine Node.js-Konsolenanwendung.
+Schreiben Sie eine Node.js-Konsolenanwendung, um Nachrichten an das Relay zu senden.
 
 [!INCLUDE [relay-hybrid-connections-node-get-started-client](../../includes/relay-hybrid-connections-node-get-started-client.md)]
 
@@ -76,9 +76,9 @@ Zum Senden von Nachrichten an das Relay schreiben wir eine Node.js-Konsolenanwen
 
 Glückwunsch! Sie haben mithilfe von Node.js eine Anwendung für End-to-End-Hybridverbindungen erstellt.
 
-## <a name="next-steps"></a>Nächste Schritte:
+## <a name="next-steps"></a>Nächste Schritte
 
-* [Relay – Häufig gestellte Fragen](relay-faq.md)
+* [Relay – häufig gestellte Fragen](relay-faq.md)
 * [Erstellen eines Namespaces](relay-create-namespace-portal.md)
 * [Erste Schritte mit .NET](relay-hybrid-connections-dotnet-get-started.md)
 * [Erste Schritte mit Node](relay-hybrid-connections-node-get-started.md)

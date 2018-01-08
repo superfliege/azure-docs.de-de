@@ -10,25 +10,28 @@ ms.service: mysql
 ms.custom: mvc, devcenter
 ms.topic: quickstart
 ms.devlang: java
-ms.date: 09/20/2017
-ms.openlocfilehash: aeca003a9b031a48804a057b627714b554298645
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/14/2017
+ms.openlocfilehash: 6d27ec96f56e576d4af02c5e0e70e6364bd5a9ec
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-database-for-mysql-use-java-to-connect-and-query-data"></a>Azure-Datenbank für MySQL: Verwenden von Java zum Verbinden und Abfragen von Daten
-Dieser Schnellstart zeigt, wie Sie mit einer Java-Anwendung eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. Bei den Schritten in diesem Artikel wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie unter Verwendung einer Java-Anwendung und des JDBC-Treibers [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) eine Verbindung mit einer Azure Database for MySQL-Instanz herstellen. Es wird veranschaulicht, wie Sie SQL-Anweisungen zum Abfragen, Einfügen, Aktualisieren und Löschen von Daten in der Datenbank verwenden. In diesem Artikel wird davon ausgegangen, dass Sie mit der Java-Entwicklung vertraut sind und noch keine Erfahrung mit Azure Database for MySQL haben.
+
+Auf der [Seite mit den MySQL-Connector-Beispielen](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html) stehen zahlreiche weitere Beispiele sowie Beispielcode zur Verfügung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
-- [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
-- [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
+1. In diesem Schnellstart werden die Ressourcen, die in den folgenden Anleitungen erstellt wurden, als Startpunkt verwendet:
+   - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe des Azure-Portals](./quickstart-create-mysql-server-database-using-azure-portal.md)
+   - [Erstellen eines Servers für Azure-Datenbank für MySQL mithilfe der Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
-Außerdem benötigen Sie Folgendes:
-- Herunterladen des JDBC-Treibers [MySQL-Connector/J](https://dev.mysql.com/downloads/connector/j/)
-- Fügen Sie die JDBC-JAR-Datei (z.B. „mysql-connector-java-5.1.42-bin.jar“) in den Classpath Ihrer Anwendung ein. Ausführlichere Informationen zu Klassenpfaden finden Sie bei Bedarf in der Dokumentation der Umgebung (beispielsweise für [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) oder [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
-- Stellen Sie sicher, dass die Sicherheit Ihrer Azure-Datenbank für MySQL-Verbindung so konfiguriert ist, dass die Firewall geöffnet ist und SSL-Einstellungen für Ihre Anwendung angepasst wurden, damit die Verbindungsherstellung erfolgreich ist.
+2. Stellen Sie sicher, dass die Sicherheit Ihrer Azure-Datenbank für MySQL-Verbindung so konfiguriert ist, dass die Firewall geöffnet ist und SSL-Einstellungen für Ihre Anwendung angepasst wurden, damit die Verbindungsherstellung erfolgreich ist.
+
+3. Rufen Sie den Connector „MySQL-Connector/J“ mit einer der folgenden Methoden ab:
+   - Verwenden Sie das Maven-Paket [mysql-connector-java](http://search.maven.org/#search%7Cga%7C1%7Cg%3A%22mysql%22%20AND%20a%3A%22mysql-connector-java%22), um die [mysql-Abhängigkeit](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.6) in die POM-Datei für Ihr Projekt aufzunehmen.
+   - Laden Sie den JDBC-Treiber [MySQL-Connector/J](https://dev.mysql.com/downloads/connector/j/) herunter, und nehmen Sie die JDBC-JAR-Datei (beispielsweise „mysql-connector-java-5.1.42-bin.jar“) in den Klassenpfad Ihrer Anwendung auf. Ausführlichere Informationen zu Klassenpfaden finden Sie bei Bedarf in der Dokumentation der Umgebung (beispielsweise [Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html) oder [Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html)).
 
 ## <a name="get-connection-information"></a>Abrufen von Verbindungsinformationen
 Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung mit der Azure SQL-Datenbank für MySQL erforderlich sind. Sie benötigen den vollqualifizierten Servernamen und die Anmeldeinformationen.
@@ -38,7 +41,7 @@ Rufen Sie die Verbindungsinformationen ab, die zum Herstellen einer Verbindung m
 3. Klicken Sie auf den Servernamen.
 4. Wählen Sie die Seite **Eigenschaften** des Servers aus, und notieren Sie sich den **Servernamen** und **den Anmeldenamen des Serveradministrators**.
  ![Servername für Azure-Datenbank für MySQL](./media/connect-java/1_server-properties-name-login.png)
-5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Serveradministrator-Anmeldenamen anzuzeigen und ggf. das Kennwort zurückzusetzen.
+5. Falls Sie die Anmeldeinformationen für Ihren Server vergessen, können Sie zur Seite **Übersicht** navigieren, um den Anmeldenamen des Serveradministrators anzuzeigen und ggf. das Kennwort zurückzusetzen.
 
 ## <a name="connect-create-table-and-insert-data"></a>Herstellen der Verbindung, Erstellen der Tabelle und Einfügen von Daten
 Verwenden Sie den folgenden Code, um die Verbindung herzustellen und die Daten zu laden, indem Sie die Funktion mit einer **INSERT**-SQL-Anweisung nutzen. Die [getConnection()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-connect-drivermanager.html)-Methode wird verwendet, um eine Verbindung mit MySQL herzustellen. Mit den Methoden [createStatement()](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-usagenotes-statements.html) und „execute()“ wird die Tabelle verworfen und erstellt. Mit dem „prepareStatement“-Objekt werden die Einfügebefehle erstellt, und „setString()“ und „setInt()“ werden zum Binden der Parameterwerte genutzt. Mit der „executeUpdate()“-Methode wird der Befehl für jeden Parametersatz ausgeführt, um die Werte einzufügen. 
@@ -392,5 +395,7 @@ public class DeleteTable {
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+Auf der [Seite mit den MySQL-Connector/J-Beispielen](https://dev.mysql.com/doc/connector-j/5.1/en/connector-j-examples.html) stehen zahlreiche weitere Beispiele sowie Beispielcode zur Verfügung.
+
 > [!div class="nextstepaction"]
 > [Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen](concepts-migrate-dump-restore.md)

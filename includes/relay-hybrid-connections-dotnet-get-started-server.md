@@ -1,13 +1,14 @@
 ### <a name="create-a-console-application"></a>Erstellen einer Konsolenanwendung
 
-Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**.
+Erstellen Sie in Visual Studio ein neues Projekt vom Typ **Konsolen-App (.NET Framework)**.
 
 ### <a name="add-the-relay-nuget-package"></a>Hinzufügen des Relay-NuGet-Pakets
 
-1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und klicken Sie anschließend auf **NuGet-Pakete verwalten**.
-2. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach „Microsoft Azure Relay“. Wählen Sie dann das Element **Microsoft Azure Relay** aus. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie danach dieses Dialogfeld.
+1. Klicken Sie mit der rechten Maustaste auf das neu erstellte Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
+2. Klicken Sie auf **Durchsuchen**, und suchen Sie nach **Microsoft.Azure.Relay**. Klicken Sie in den Suchergebnissen auf **Microsoft Azure-Relay**. 
+3. Klicken Sie auf **Installieren**, um die Installation abzuschließen. Schließen Sie das Dialogfeld.
 
-### <a name="write-some-code-to-receive-messages"></a>Schreiben von Code zum Empfangen von Nachrichten
+### <a name="write-code-to-receive-messages"></a>Schreiben von Code zum Empfangen von Nachrichten
 
 1. Ersetzen Sie die vorhandenen `using`-Anweisungen am Anfang der Datei „Program.cs“ durch die folgenden `using`-Anweisungen:
    
@@ -18,7 +19,7 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
     using System.Threading.Tasks;
     using Microsoft.Azure.Relay;
     ```
-2. Fügen Sie der `Program`-Klasse Konstanten als Hybridverbindungsdetails hinzu. Ersetzen Sie die Platzhalter in Klammern durch die Werte, die beim Erstellen der Hybridverbindung abgerufen wurden. Achten Sie darauf, dass Sie den vollqualifizierten Namespacenamen verwenden:
+2. Fügen Sie der `Program`-Klasse Konstanten als Hybridverbindungsdetails hinzu. Ersetzen Sie die Platzhalter in Klammern durch die Werte, die beim Erstellen der Hybridverbindung abgerufen wurden. Verwenden Sie den vollqualifizierten Namespacenamen.
    
     ```csharp
     private const string RelayNamespace = "{RelayNamespace}.servicebus.windows.net";
@@ -26,45 +27,45 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
     private const string KeyName = "{SASKeyName}";
     private const string Key = "{SASKey}";
     ```
-3. Fügen Sie der `Program`-Klasse die folgende Methode `ProcessMessagesOnConnection` hinzu:
+3. Fügen Sie der Klasse `Program` die Methode `ProcessMessagesOnConnection` hinzu:
    
     ```csharp
-    // Method is used to initiate connection
+    // The method initiates the connection.
     private static async void ProcessMessagesOnConnection(HybridConnectionStream relayConnection, CancellationTokenSource cts)
     {
         Console.WriteLine("New session");
    
         // The connection is a fully bidrectional stream. 
-        // We put a stream reader and a stream writer over it 
-        // which allows us to read UTF-8 text that comes from 
-        // the sender and to write text replies back.
+        // Put a stream reader and a stream writer over it.  
+        // This allows you to read UTF-8 text that comes from 
+        // the sender, and to write text replies back.
         var reader = new StreamReader(relayConnection);
         var writer = new StreamWriter(relayConnection) { AutoFlush = true };
         while (!cts.IsCancellationRequested)
         {
             try
             {
-                // Read a line of input until a newline is encountered
+                // Read a line of input until a newline is encountered.
                 var line = await reader.ReadLineAsync();
    
                 if (string.IsNullOrEmpty(line))
                 {
-                    // If there's no input data, we will signal that 
-                    // we will no longer send data on this connection
+                    // If there's no input data, signal that 
+                    // you will no longer send data on this connection,
                     // and then break out of the processing loop.
                     await relayConnection.ShutdownAsync(cts.Token);
                     break;
                 }
    
-                // Output the line on the console
+                // Write the line on the console.
                 Console.WriteLine(line);
    
-                // Write the line back to the client, prepending "Echo:"
+                // Write the line back to the client, prepended with "Echo:"
                 await writer.WriteLineAsync($"Echo: {line}");
             }
             catch (IOException)
             {
-                // Catch an IO exception that is likely caused because
+                // Catch an I/O exception. This likely occurred when
                 // the client disconnected.
                 Console.WriteLine("Client closed connection");
                 break;
@@ -73,11 +74,11 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
    
         Console.WriteLine("End session");
    
-        // Closing the connection
+        // Close the connection.
         await relayConnection.CloseAsync(cts.Token);
     }
     ```
-4. Fügen Sie der `Program`-Klasse wie folgt eine weitere Methode namens `RunAsync` hinzu:
+4. Fügen Sie der Klasse `Program` die Methode `RunAsync` hinzu:
    
     ```csharp
     private static async Task RunAsync()
@@ -87,26 +88,26 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
         var tokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(KeyName, Key);
         var listener = new HybridConnectionListener(new Uri(string.Format("sb://{0}/{1}", RelayNamespace, ConnectionName)), tokenProvider);
    
-        // Subscribe to the status events
+        // Subscribe to the status events.
         listener.Connecting += (o, e) => { Console.WriteLine("Connecting"); };
         listener.Offline += (o, e) => { Console.WriteLine("Offline"); };
         listener.Online += (o, e) => { Console.WriteLine("Online"); };
    
-        // Opening the listener will establish the control channel to
-        // the Azure Relay service. The control channel will be continuously 
-        // maintained and reestablished when connectivity is disrupted.
+        // Opening the listener establishes the control channel to
+        // the Azure Relay service. The control channel is continuously 
+        // maintained, and is reestablished when connectivity is disrupted.
         await listener.OpenAsync(cts.Token);
         Console.WriteLine("Server listening");
    
-        // Providing callback for cancellation token that will close the listener.
+        // Provide callback for the cancellation token that will close the listener.
         cts.Token.Register(() => listener.CloseAsync(CancellationToken.None));
    
         // Start a new thread that will continuously read the console.
         new Task(() => Console.In.ReadLineAsync().ContinueWith((s) => { cts.Cancel(); })).Start();
    
         // Accept the next available, pending connection request. 
-        // Shutting down the listener will allow a clean exit with 
-        // this method returning null
+        // Shutting down the listener allows a clean exit. 
+        // This method returns null.
         while (true)
         {
             var relayConnection = await listener.AcceptConnectionAsync();
@@ -118,7 +119,7 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
             ProcessMessagesOnConnection(relayConnection, cts);
         }
    
-        // Close the listener after we exit the processing loop
+        // Close the listener after you exit the processing loop.
         await listener.CloseAsync(cts.Token);
     }
     ```
@@ -128,7 +129,7 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
     RunAsync().GetAwaiter().GetResult();
     ```
    
-    Die fertige Datei „Program.cs“ sollte nun wie folgt aussehen:
+    Die fertige Datei „Program.cs“ sollte wie folgt aussehen:
    
     ```csharp
     namespace Server
@@ -158,26 +159,26 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
                 var tokenProvider = TokenProvider.CreateSharedAccessSignatureTokenProvider(KeyName, Key);
                 var listener = new HybridConnectionListener(new Uri(string.Format("sb://{0}/{1}", RelayNamespace, ConnectionName)), tokenProvider);
    
-                // Subscribe to the status events
+                // Subscribe to the status events.
                 listener.Connecting += (o, e) => { Console.WriteLine("Connecting"); };
                 listener.Offline += (o, e) => { Console.WriteLine("Offline"); };
                 listener.Online += (o, e) => { Console.WriteLine("Online"); };
    
-                // Opening the listener will establish the control channel to
-                // the Azure Relay service. The control channel will be continuously 
-                // maintained and reestablished when connectivity is disrupted.
+                // Opening the listener establishes the control channel to
+                // the Azure Relay service. The control channel is continuously 
+                // maintained, and is reestablished when connectivity is disrupted.
                 await listener.OpenAsync(cts.Token);
                 Console.WriteLine("Server listening");
    
-                // Providing callback for cancellation token that will close the listener.
+                // Provide callback for a cancellation token that will close the listener.
                 cts.Token.Register(() => listener.CloseAsync(CancellationToken.None));
    
                 // Start a new thread that will continuously read the console.
                 new Task(() => Console.In.ReadLineAsync().ContinueWith((s) => { cts.Cancel(); })).Start();
    
                 // Accept the next available, pending connection request. 
-                // Shutting down the listener will allow a clean exit with 
-                // this method returning null
+                // Shutting down the listener allows a clean exit. 
+                // This method returns null.
                 while (true)
                 {
                     var relayConnection = await listener.AcceptConnectionAsync();
@@ -189,7 +190,7 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
                     ProcessMessagesOnConnection(relayConnection, cts);
                 }
    
-                // Close the listener after we exit the processing loop
+                // Close the listener after you exit the processing loop.
                 await listener.CloseAsync(cts.Token);
             }
    
@@ -198,36 +199,36 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
                 Console.WriteLine("New session");
    
                 // The connection is a fully bidrectional stream. 
-                // We put a stream reader and a stream writer over it 
-                // which allows us to read UTF-8 text that comes from 
-                // the sender and to write text replies back.
+                // Put a stream reader and a stream writer over it.  
+                // This allows you to read UTF-8 text that comes from 
+                // the sender, and to write text replies back.
                 var reader = new StreamReader(relayConnection);
                 var writer = new StreamWriter(relayConnection) { AutoFlush = true };
                 while (!cts.IsCancellationRequested)
                 {
                     try
                     {
-                        // Read a line of input until a newline is encountered
+                        // Read a line of input until a newline is encountered.
                         var line = await reader.ReadLineAsync();
    
                         if (string.IsNullOrEmpty(line))
                         {
-                            // If there's no input data, we will signal that 
-                            // we will no longer send data on this connection
-                            // and then break out of the processing loop.
+                            // If there's no input data, signal that 
+                            // you will no longer send data on this connection.
+                            // Then, break out of the processing loop.
                             await relayConnection.ShutdownAsync(cts.Token);
                             break;
                         }
    
-                        // Output the line on the console
+                        // Write the line on the console.
                         Console.WriteLine(line);
    
-                        // Write the line back to the client, prepending "Echo:"
+                        // Write the line back to the client, prepended with "Echo:"
                         await writer.WriteLineAsync($"Echo: {line}");
                     }
                     catch (IOException)
                     {
-                        // Catch an IO exception that is likely caused because
+                        // Catch an I/O exception. This likely occurred when
                         // the client disconnected.
                         Console.WriteLine("Client closed connection");
                         break;
@@ -236,7 +237,7 @@ Starten Sie als Erstes Visual Studio, und erstellen Sie ein neues Projekt vom Ty
    
                 Console.WriteLine("End session");
    
-                // Closing the connection
+                // Close the connection.
                 await relayConnection.CloseAsync(cts.Token);
             }
         }

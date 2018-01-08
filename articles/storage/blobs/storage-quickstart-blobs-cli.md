@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: tamram
-ms.openlocfilehash: a300294c83cb206e6211985c736e3ff01bb1ab43
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 7313df35baadf7aa6d476f44b113dc60e6845f4b
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>Übertragen von Objekten nach/aus Azure Blob Storage mit der Azure-Befehlszeilenschnittstelle
 
@@ -35,9 +35,9 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 ## <a name="create-a-container"></a>Erstellen eines Containers
 
-Blobs werden immer in einen Container hochgeladen. Mit Containern können Sie Gruppen von Blobs so wie Dateien in Verzeichnissen auf Ihrem Computer organisieren.
+Blobs werden immer in einen Container hochgeladen. Sie können Gruppen von Blobs ähnlich wie Dateien in Ordnern auf Ihrem Computer organisieren.
 
-Erstellen Sie einen Container zum Speichern von Blobs mit dem Befehl [az storage container create](/cli/azure/storage/container#create).
+Erstellen Sie mit dem Befehl [az storage container create](/cli/azure/storage/container#create) einen Container zum Speichern von Blobs.
 
 ```azurecli-interactive
 az storage container create --name mystoragecontainer
@@ -45,9 +45,12 @@ az storage container create --name mystoragecontainer
 
 ## <a name="upload-a-blob"></a>Hochladen eines Blobs
 
-Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. Die meisten Dateien, die in Blob Storage gespeichert werden, werden als Blockblobs gespeichert. Anfügeblobs werden verwendet, wenn Daten einem vorhandenen Blob hinzugefügt werden müssen, ohne den vorhandenen Inhalt zu ändern, z.B. bei der Protokollierung. Seitenblobs sind die Grundlage für VHD-Dateien von virtuellen IaaS-Computern.
+Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. Die meisten Dateien, die in Blob Storage gespeichert werden, werden als Blockblobs gespeichert. Anfügeblobs werden verwendet, wenn Daten einem vorhandenen Blob hinzugefügt werden müssen, ohne den vorhandenen Inhalt zu ändern, z.B. bei der Protokollierung. Seitenblobs sind die Grundlage für VHD-Dateien von virtuellen IaaS-Computern.
 
-In diesem Beispiel wird ein Blob in den Container hochgeladen, der im letzten Schritt mit dem Befehl [az storage blob upload](/cli/azure/storage/blob#upload) erstellt wurde.
+Erstellen Sie zunächst eine Datei für den Upload in ein Blob.
+Verwenden Sie bei Verwendung von Azure Cloud Shell Folgendes, um eine Datei zu erstellen: `vi helloworld`. Wenn die Datei geöffnet wird, drücken Sie **EINFG**, geben Sie „Hello world“ ein, drücken Sie **ESC**, geben Sie `:x` ein, und drücken Sie die **EINGABETASTE**.
+
+In diesem Beispiel laden Sie mithilfe des Befehls [az storage blob upload](/cli/azure/storage/blob#upload) ein Blob in den Container hoch, den Sie im letzten Schritt erstellt haben.
 
 ```azurecli-interactive
 az storage blob upload \
@@ -56,7 +59,18 @@ az storage blob upload \
     --file ~/path/to/local/file
 ```
 
-Bei diesem Vorgang wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es vorhanden ist. Laden Sie beliebig viele Dateien hoch, bevor Sie fortfahren.
+Wenn Sie mithilfe der zuvor beschriebenen Methode eine Datei in Azure Cloud Shell erstellt haben, können Sie stattdessen den folgenden CLI-Befehl verwenden. (Beachten Sie, dass Sie keinen Pfad angeben müssen, da die Datei im Basisverzeichnis erstellt wurde. Normalerweise muss ein Pfad angegeben werden.)
+
+```azurecli-interactive
+az storage blob upload \
+    --container-name mystoragecontainer \
+    --name helloworld
+    --file helloworld
+```
+
+Dabei wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es bereits vorhanden ist. Laden Sie beliebig viele Dateien hoch, bevor Sie fortfahren.
+
+Wenn Sie mehrere Dateien gleichzeitig hochladen möchten, können Sie den Befehl [az storage blob upload-batch](/cli/azure/storage/blob#upload-batch) verwenden.
 
 ## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
@@ -70,7 +84,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>Herunterladen eines Blobs
 
-Mit dem Befehl [az storage blob download](/cli/azure/storage/blob#download) können Sie ein zuvor hochgeladenes Blob herunterladen.
+Mit dem Befehl [az storage blob download](/cli/azure/storage/blob#download) können Sie das zuvor hochgeladene Blob herunterladen.
 
 ```azurecli-interactive
 az storage blob download \

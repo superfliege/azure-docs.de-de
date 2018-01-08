@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/13/2017
+ms.date: 01/02/2018
 ms.author: yurid
-ms.openlocfilehash: 71dcafab92a9045388c2e602c0dc297aed32e527
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: b54dfc454cfcdefb56bfda9b242412e0f213b50b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="adaptive-application-controls-in-azure-security-center-preview"></a>Adaptive Anwendungssteuerungen in Azure Security Center (Vorschauversion)
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie die Anwendungssteuerung in Azure Security Center verwenden.
@@ -36,12 +36,11 @@ Mit adaptiven Anwendungssteuerungen lässt sich steuern, welche Anwendungen auf 
 ## <a name="how-to-enable-adaptive-application-controls"></a>Aktivieren adaptiver Anwendungssteuerungen
 Mit adaptiven Anwendungssteuerungen können Sie eine Gruppe von Anwendungen definieren, deren Ausführung in konfigurierten Ressourcengruppen zulässig ist. Dieses Feature steht nur für Windows-Computer (alle Versionen, klassisch oder Azure Resource Manager) zur Verfügung. Gehen Sie wie folgt vor, um das Anwendungswhitelisting in Security Center zu konfigurieren:
 
-1.  Öffnen Sie das Dashboard **Security Center**, und klicken Sie auf **Übersicht**.
-2.  Unter **Erweiterter Cloudschutz** zeigt die Kachel **Adaptive application controls** (Adaptive Anwendungssteuerungen) die Anzahl virtueller Computer, für die die Steuerung derzeit aktiviert ist (relativ zur Gesamtanzahl virtueller Computer). Auf dieser Kachel sehen Sie auch, wie viele Probleme in der letzten Woche gefunden wurden: 
+1.  Öffnen Sie das Dashboard **Security Center**, und klicken Sie im linken Navigationsbereich unter dem Abschnitt **Erweiterter Cloudschutz** auf **Adaptive Anwendungssteuerung**.
 
-    ![Adaptive Anwendungssteuerungen](./media/security-center-adaptive-application\security-center-adaptive-application-fig1.png)
+    ![Verteidigung](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
-3. Klicken Sie auf die Kachel **Adaptive Anwendungssteuerung**, um weitere Optionen anzuzeigen.
+2. Die Seite **Adaptive Anwendungssteuerung** wird angezeigt.
 
     ![controls](./media/security-center-adaptive-application/security-center-adaptive-application-fig2.png)
 

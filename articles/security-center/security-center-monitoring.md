@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/07/2017
+ms.date: 12/28/2017
 ms.author: yurid
-ms.openlocfilehash: d610a4ae97657013f6bb784790f073c3d986959f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a14528013b34b912f4f2e1bc07094c7b20a0f63c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Überwachen der Sicherheitsintegrität in Azure Security Center
 Dieser Artikel unterstützt Sie bei der Überwachung der Richtliniencompliance mithilfe der Überwachungsfunktionen von Azure Security Center.
@@ -45,15 +45,16 @@ Wenn Sie auf die Kachel **Compute** klicken, werden drei Registerkarten angezeig
 
 ![Fehlendes Systemupdate nach virtuellem Computer](./media/security-center-monitoring/security-center-monitoring-fig1-sep2017.png)
 
-Auf den einzelnen Registerkarten können sich jeweils mehrere Abschnitte befinden, und in jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zu den empfohlenen Problembehandlungsschritten für ein bestimmtes Problem anzuzeigen. 
+Auf den einzelnen Registerkarten können sich jeweils mehrere Abschnitte befinden, und in jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zu den empfohlenen Problembehandlungsschritten für ein bestimmtes Problem anzuzeigen.
 
 #### <a name="monitoring-recommendations"></a>Überwachen der Empfehlungen
-Dieser Abschnitt enthält die Gesamtanzahl und den jeweils aktuellen Status der virtuellen und physischen Computer, die für die automatische Bereitstellung initialisiert wurden. Wenn Sie auf diesen Eintrag klicken, öffnet sich **VM-Agent fehlt oder reagiert nicht**. 
+Dieser Abschnitt enthält die Gesamtanzahl und den jeweils aktuellen Status der virtuellen und physischen Computer, die für die automatische Bereitstellung initialisiert wurden. Wenn Sie auf diesen Eintrag klicken, werden die **Integritätsprobleme des Überwachungs-Agents** geöffnet.
 
-![Fehlendes Systemupdate nach virtuellem Computer](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
+![Integritätsprobleme des Überwachungs-Agents](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
+Virtuelle und physische Computer, die von Security Center nicht überwacht werden können, werden aufgeführt. Wählen Sie einen virtuellen oder physischen Computer aus, um ausführliche Informationen anzuzeigen. Die **ZUSTANDSÜBERWACHUNG** gibt Aufschluss über das Problem.
 
-#### <a name="recommendations"></a>Recommendations
+#### <a name="recommendations"></a>Empfehlungen
 Dieser Abschnitt enthält eine Reihe von [Empfehlungen für die einzelnen virtuellen und physischen Computer](security-center-virtual-machine-recommendations.md), die von Azure Security Center überwacht werden. Die erste Spalte enthält die Empfehlung. Die zweite Spalte enthält die Gesamtanzahl virtueller und physischer Computer, die von dieser Empfehlung betroffen sind. Die dritte Spalte gibt Aufschluss über den Schweregrad des Problems, wie im folgenden Screenshot zu sehen:
 
 ![Empfehlungen für virtuelle Computer](./media/security-center-monitoring/security-center-monitoring-fig2-sep2017.png)
@@ -79,7 +80,7 @@ Für **Fehlende Systemupdates** werden zwei Diagramme mit einer Zusammenfassung 
   * **Mittel**: Es liegt ein nicht kritisches Problem vor, oder es sind zusätzliche Schritte erforderlich, um einen Prozess abzuschließen oder eine Sicherheitslücke zu schließen.
   * **Niedrig**: Ein Sicherheitsrisiko, das behandelt werden sollte, jedoch keine unmittelbare Aufmerksamkeit erfordert. (Standardmäßig werden Empfehlungen mit dem Status „Niedrig“ nicht angezeigt, aber Sie können bei Bedarf nach diesen Empfehlungen filtern.)
 
-Klicken Sie zum Anzeigen der Empfehlungsdetails in der Liste auf den Namen des fehlenden Updates. 
+Klicken Sie zum Anzeigen der Empfehlungsdetails in der Liste auf den Namen des fehlenden Updates.
 
 ![Fehlende Systemupdates für einen bestimmten virtuellen Computer](./media/security-center-monitoring/security-center-monitoring-fig4-sep2017.png)
 
@@ -121,7 +122,7 @@ In einem Szenario, in dem eine Empfehlung vorliegt (was im vorherigen Beispiel n
 
 ![Clouddienstdetails](./media/security-center-monitoring/security-center-monitoring-fig8-new3.png)
 
-Eine Erläuterung der Empfehlung erhalten Sie, wenn Sie in der Spalte **BESCHREIBUNG** auf **Betriebssystemversion aktualisieren** klicken. 
+Eine Erläuterung der Empfehlung erhalten Sie, wenn Sie in der Spalte **BESCHREIBUNG** auf **Betriebssystemversion aktualisieren** klicken.
 
 ![Clouddienstempfehlungen](./media/security-center-monitoring/security-center-monitoring-fig8-new4.png)  
 
@@ -213,7 +214,7 @@ Hier finden Sie eine Liste mit allen Empfehlungen für diese Anwendung. Wenn Sie
 
 ![Dialogfeld „Web Application Firewall hinzufügen“](./media/security-center-monitoring/security-center-monitoring-fig18-ga.png)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azure Security Center verwenden können. Weitere Informationen zu Azure Security Center finden Sie in den folgenden Quellen:
 
 * [Festlegen von Sicherheitsrichtlinien in Azure Security Center:](security-center-policies.md) Hier erfahren Sie, wie Sie Sicherheitseinstellungen in Azure Security Center konfigurieren.

@@ -1,21 +1,21 @@
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
-2. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen**, und klicken Sie anschließend auf **Enterprise Integration** > **Relay**.
-3. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
+2. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen**. Klicken Sie anschließend auf **Unternehmensintegration** > **Relay**.
+3. Geben Sie unter **Namespace erstellen** einen Namespacenamen ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 4. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
-5. Wählen Sie im Feld **[Ressourcengruppe](../articles/azure-resource-manager/resource-group-portal.md)** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.      
+5. Wählen Sie im Feld [Ressourcengruppe](../articles/azure-resource-manager/resource-group-portal.md) eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.  
 6. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
    
     ![Namespace erstellen][create-namespace]
-7. Klicken Sie auf **Erstellen**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Nach einigen Minuten stellt das System Ressourcen für Ihr Konto bereit.
+7. Klicken Sie auf **Erstellen**. Ihr Dienstnamespace wird erstellt und aktiviert. Nach einigen Minuten stellt das System Ressourcen für Ihr Konto bereit.
 
-### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
+### <a name="get-management-credentials"></a>Abrufen von Anmeldeinformationen für die Verwaltung
 
 1. Klicken Sie auf **Alle Ressourcen** und dann auf den neu erstellten Namespacenamen.
-2. Klicken Sie im Fenster des Relaynamespace auf **Richtlinien für gemeinsamen Zugriff**.
-3. Klicken Sie im Fenster **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
+2. Klicken Sie unter dem Relaynamespace auf **Richtlinien für gemeinsamen Zugriff**.  
+3. Klicken Sie unter **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
    
     ![connection-info][connection-info]
-4. Klicken Sie auf dem Bildschirm **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
+4. Klicken Sie unter **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Schaltfläche **Kopieren**. Dadurch wird die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage kopiert. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
    
     ![connection-string][connection-string]
 

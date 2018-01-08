@@ -15,11 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
-ms.openlocfilehash: 7adaf2aa51d2a48116a816d83b42ba8416c157cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0218365a21f241b5672774005cd6e0417fba358b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-your-azure-ad-directory"></a>Verwalten Ihres Azure AD-Verzeichnisses
 
@@ -80,7 +80,6 @@ Für die Verwaltung von Microsoft-Clouddienstabonnements können Sie das [Azure 
 * Einrichten der lokalen Integration in Identitäts- und Authentifizierungsdienste von Azure AD
 
 Das Azure AD Admin Center, das Office 365 Admin Center, das Microsoft Intune-Kontoportal und die Azure AD-Cmdlets verwenden für Lese- und Schreibvorgänge eine einzelne gemeinsam genutzte Instanz von Azure AD, die dem Verzeichnis Ihrer Organisation zugeordnet ist. Jedes dieser Tools fungiert als Front-End-Schnittstelle, die Ihre Verzeichnisdaten abruft oder ändert.
-
 Wenn Sie die Daten Ihrer Organisation über eines der Portale oder mithilfe der Cmdlets ändern, während Sie im Kontext eines dieser Dienste angemeldet sind, werden die Änderungen auch in den anderen Portalen angezeigt, wenn Sie sich das nächste Mal anmelden. Diese Daten werden von allen Microsoft-Clouddiensten genutzt, die Sie abonnieren.
 
 Wenn Sie beispielsweise über das Office 365 Admin Center die Anmeldung eines Benutzers blockieren, wird dessen Anmeldung für jeden Dienst blockiert, den Ihre Organisation derzeit abonniert hat. Wenn Sie das gleiche Benutzerkonto über das Microsoft Intune-Kontoportal anzeigen, sehen Sie auch dort, dass der Benutzer blockiert ist.
@@ -117,8 +116,8 @@ Die folgenden Bedingungen werden überprüft:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Azure AD-Forum](https://social.msdn.microsoft.com/Forums/home?forum=WindowsAzureAD)
-* [Azure Multi-Factor Authentication-Forum](https://social.msdn.microsoft.com/Forums/home?forum=windowsazureactiveauthentication)
-* [Stack Overflow für Azure-Fragen](http://stackoverflow.com/questions/tagged/azure)
+* [Azure AD-Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuread)
+* [Azure Multi-Factor Authentication-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazureactiveauthentication)
+* [Stack Overflow für Azure-Fragen](https://stackoverflow.com/questions/tagged/azure-active-directory)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
 * [Zuweisen von Administratorrollen in Azure AD](active-directory-assign-admin-roles-azure-portal.md)

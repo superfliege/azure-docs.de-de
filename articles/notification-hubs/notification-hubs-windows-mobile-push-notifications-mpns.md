@@ -1,27 +1,27 @@
 ---
-title: Senden von Pushbenachrichtigungen mit Azure Notification Hubs unter Windows Phone | Microsoft Docs
+title: "Erste Schritte mit Azure Notification Hubs für Windows Phone-Apps | Microsoft-Dokumentation"
 description: "In diesem Lernprogramm erfahren Sie, wie Sie mit Azure Notification Hubs Pushbenachrichtigungen an eine Windows Phone 8- oder Windows Phone 8.1 Silverlight-Anwendung senden können."
 services: notification-hubs
 documentationcenter: windows
 keywords: Pushbenachrichtigung, Pushbenachrichtigung, Windows Phone Push
-author: ysxu
-manager: erikre
-editor: erikre
+author: jwhitedev
+manager: kpiteira
+editor: 
 ms.assetid: d872d8dc-4658-4d65-9e71-fa8e34fae96e
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 10/03/2016
-ms.author: yuaxu
-ms.openlocfilehash: f0bfe81f849813d146d644b32490af657b1071b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/22/2017
+ms.author: jawh
+ms.openlocfilehash: 7d44d0a0f8683ad6ad55136ad17879e98e26498b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
-# <a name="sending-push-notifications-with-azure-notification-hubs-on-windows-phone"></a>Senden von Pushbenachrichtigungen mit Azure Notification Hubs unter Windows Phone
+# <a name="get-started-with-azure-notification-hubs-for-windows-phone-apps"></a>Erste Schritte mit Azure Notification Hubs für Windows Phone-Apps
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>Übersicht
@@ -51,11 +51,11 @@ Das Abschließen dieses Lernprogramms ist eine Voraussetzung für alle anderen N
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
 <ol start="6">
-<li><p>Klicken Sie im Abschnitt <b>Notification Services</b> (unter <i>Einstellungen</i>) auf <b>Windows Phone (MPNS)</b>, und aktivieren Sie dann das Kontrollkästchen <b>Nicht authentifizierte Pushbenachrichtigungen zulassen</b>.</p>
+<li><p>Klicken Sie unter <b>Notification Services</b> auf <b>Windows Phone (MPNS)</b>, und aktivieren Sie dann das Kontrollkästchen <b>Nicht authentifizierte Pushbenachrichtigungen zulassen</b>.</p>
 </li>
 </ol>
 
-&emsp;&emsp;![Azure-Portal – Nicht authentifizierte Pushbenachrichtigungen aktivieren](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+&emsp;&emsp;![Azure-Portal: Nicht authentifizierte Pushbenachrichtigungen zulassen](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
 Der Hub ist jetzt erstellt und so konfiguriert, dass nicht authentifizierte Benachrichtigungen für Windows Phone gesendet werden.
 
@@ -129,62 +129,7 @@ Der Hub ist jetzt erstellt und so konfiguriert, dass nicht authentifizierte Bena
    
    > [!NOTE]
    > Zum Empfangen einer Popup-Pushbenachrichtigung muss die Anwendung nicht im Vordergrund ausgeführt werden.
-   > 
-   > 
-
-## <a name="send-push-notifications-from-your-backend"></a>Senden von Pushbenachrichtigungen von Ihrem Back-End
-Sie können Pushbenachrichtigungen mit Notification Hubs von jedem beliebigen Back-End über die öffentliche <a href="http://msdn.microsoft.com/library/windowsazure/dn223264.aspx">REST-Schnittstelle</a> senden. In diesem Tutorial senden Sie Pushbenachrichtigungen mithilfe einer .NET-Konsolenanwendung. 
-
-Ein Beispiel für das Senden von Pushbenachrichtigungen von einem mit Notification Hubs integrierten ASP.NET-WebAPI-Back-End finden Sie unter [Azure Notification Hubs – Benachrichtigen von Benutzern über .NET-Back-End](notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md).  
-
-Ein Beispiel zum Senden von Pushbenachrichtigungen über die [REST-APIs](https://msdn.microsoft.com/library/azure/dn223264.aspx) finden Sie unter [Verwenden von Notification Hubs von Java aus](notification-hubs-java-push-notification-tutorial.md) und [Verwenden von Notification Hubs von PHP aus](notification-hubs-php-push-notification-tutorial.md).
-
-1. Klicken Sie mit der rechten Maustaste auf die Projektmappe, wählen Sie **Hinzufügen** und **Neues Projekt** aus, und klicken Sie dann unter **Visual C#** auf **Windows**, **Konsolenanwendung** und **OK**.
-   
-       ![Visual Studio - New Project - Console Application][6]
-   
-    Damit wird der Projektmappe eine neue Visual C#-Konsolenanwendung hinzugefügt. Sie können dies auch in einer separaten Projektmappe durchführen.
-2. Klicken Sie auf **Extras**, auf **Bibliothekspaket-Manager** und dann auf **Paket-Manager-Konsole**.
-   
-    Daraufhin wird die Paket-Manager-Konsole angezeigt.
-3. Legen Sie im Fenster der **Paket-Manager-Konsole** als **Standardprojekt** das neue Konsolenanwendungsprojekt fest, und führen Sie dann im Konsolenfenster den folgenden Befehl aus:
-   
-       Install-Package Microsoft.Azure.NotificationHubs
-   
-   Dies fügt mithilfe des <a href="http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/">Microsoft.Azure.NotificationHubs-NuGet-Pakets</a> einen Verweis auf das Azure Notification Hubs-SDK hinzu.
-4. Öffnen Sie die Datei `Program.cs`, und fügen Sie die folgende `using`-Anweisung hinzu:
-   
-        using Microsoft.Azure.NotificationHubs;
-5. Fügen Sie in der `Program`-Klasse die folgende Methode hinzu:
-   
-        private static async void SendNotificationAsync()
-        {
-            NotificationHubClient hub = NotificationHubClient
-                .CreateClientFromConnectionString("<connection string with full access>", "<hub name>");
-            string toast = "<?xml version=\"1.0\" encoding=\"utf-8\"?>" +
-                "<wp:Notification xmlns:wp=\"WPNotification\">" +
-                   "<wp:Toast>" +
-                        "<wp:Text1>Hello from a .NET App!</wp:Text1>" +
-                   "</wp:Toast> " +
-                "</wp:Notification>";
-            await hub.SendMpnsNativeNotificationAsync(toast);
-        }
-   
-    Stellen Sie sicher, dass Sie den Platzhalter `<hub name>` durch den Namen des Notification Hubs ersetzen, der im Portal angezeigt wird. Ersetzen Sie außerdem den Platzhalter für die Verbindungszeichenfolge durch die Verbindungszeichenfolge **DefaultFullSharedAccessSignature** , die Sie im Abschnitt "Konfigurieren Ihres Notification Hubs" erhalten haben.
-   
-   > [!NOTE]
-   > Stellen Sie sicher, dass Sie die Verbindungszeichenfolge mit Vollzugriff (**Full**) verwenden, nicht mit Abhörzugriff (**Listen**). Die Verbindungszeichenfolge mit Abhörzugriff verfügt nicht über Berechtigungen zum Senden von Pushbenachrichtigungen.
-   > 
-   > 
-6. Fügen Sie in Ihrer `Main` -Methode die folgende Zeile hinzu:
-   
-         SendNotificationAsync();
-         Console.ReadLine();
-7. Legen Sie bei laufendem Windows Phone-Emulator und geschlossener App das Konsolenanwendungsprojekt als Standardstartprojekt fest, und drücken Sie dann zum Ausführen der App die Taste `F5` .
-   
-    Sie erhalten eine Popup-Pushbenachrichtigung. Durch Tippen auf das Popupbanner wird die App geladen.
-
-Sie finden alle möglichen Nutzlasten auf MSDN in den Themen [Toast-Katalog] und [Kachelkatalog].
+   >
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem einfachen Beispiel haben Sie Pushbenachrichtigungen an all Ihre Windows Phone 8-Geräte übertragen. 
@@ -220,7 +165,7 @@ Weitere Informationen zur Verwendung von Benachrichtigungshubs finden Sie in der
 [MPNS authenticated mode]: http://msdn.microsoft.com/library/windowsphone/develop/ff941099(v=vs.105).aspx
 [Verwenden von Notification Hubs für Pushbenachrichtigungen an Benutzer]: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
 [Verwenden von Benachrichtigungshubs zum Übermitteln von Nachrichten]: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-[Toast-Katalog]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
-[Kachelkatalog]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
+[toast catalog]: http://msdn.microsoft.com/library/windowsphone/develop/jj662938(v=vs.105).aspx
+[tile catalog]: http://msdn.microsoft.com/library/windowsphone/develop/hh202948(v=vs.105).aspx
 [Notification Hubs – Windows Phone Silverlight]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSLPhoneApp
 
