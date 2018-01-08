@@ -23,7 +23,7 @@
           href: quickstart-create-data-factory-portal.md
         - name: Resource Manager-Vorlage
           href: quickstart-create-data-factory-resource-manager-template.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1 – Bereitstellen von SSIS-Paketen in Azure
       href: tutorial-deploy-ssis-packages-azure.md
@@ -94,7 +94,7 @@
               href: connector-azure-file-storage.md
             - name: Azure Search
               href: connector-azure-search.md
-            - name: Azure SQL-Datenbank
+            - name: "Azure\_SQL-Datenbank"
               href: connector-azure-sql-database.md
             - name: Azure SQL Data Warehouse
               href: connector-azure-sql-data-warehouse.md
@@ -124,7 +124,7 @@
               href: connector-google-bigquery.md
             - name: Greenplum
               href: connector-greenplum.md
-            - name: HBase
+            - name: hbase
               href: connector-hbase.md
             - name: HDFS
               href: connector-hdfs.md
@@ -303,7 +303,9 @@
       items:
         - name: Erstellen eines Zeitplantriggers
           href: how-to-create-schedule-trigger.md
-- name: Referenz
+        - name: Erstellen eines Triggers für ein rollierendes Fenster
+          href: how-to-create-tumbling-window-trigger.md
+- name: Verweis
   items:
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.datafactory
@@ -313,7 +315,7 @@
       href: /rest/api/datafactory
     - name: Python
       href: /python/api/overview/azure/datafactory?view=azure-python
-- name: Ressourcen
+- name: angeben
   items:
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions.md

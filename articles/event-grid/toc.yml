@@ -16,7 +16,7 @@
       href: custom-event-quickstart-powershell.md
     - name: Erstellen eines benutzerdefinierten Ereignisses – Azure-Portal
       href: custom-event-quickstart-portal.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Überwachen von Änderungen an virtuellen Computern mit Logik-Apps
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
@@ -36,7 +36,9 @@
   items:
     - name: Streamen von Daten von Event Hubs zu Data Warehouse
       href: event-grid-event-hubs-integration.md
-- name: Referenz
+    - name: Vorlagen für Ereignisabonnements
+      href: event-subscription-template.md
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/eventgrid
@@ -57,7 +59,7 @@
           href: event-schema-event-hubs.md
         - name: Ressourcengruppen
           href: event-schema-resource-groups.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

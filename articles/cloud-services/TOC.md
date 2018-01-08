@@ -8,7 +8,7 @@
 ## [Einrichten eines Hybrid-HPC-Clusters mit Microsoft HPC Pack](cloud-services-setup-hybrid-hpcpack-cluster.md)
 
 # Anleitung
-## Planen
+## Plan
 ### [Größen virtueller Computer](cloud-services-sizes-specs.md)
 ### [Updates](cloud-services-update-azure-service.md)
 
@@ -44,6 +44,7 @@
 ### [Herstellen einer Verbindung mit einem benutzerdefinierten Domänencontroller](cloud-services-connect-to-custom-domain.md)
 
 ## Verwalten eines Diensts
+### [Maßnahmen im Zusammenhang mit der spekulativen Ausführung](mitigate-se.md}
 ### [Allgemeine Verwaltungsaufgaben](cloud-services-how-to-manage-portal.md)
 ### [Konfigurieren eines Clouddiensts](cloud-services-how-to-configure-portal.md)
 ### [Verwalten einer Cloud Services-Instanz mit Azure Automation](automation-manage-cloud-services.md)
@@ -92,7 +93,7 @@
 #### [Häufig gestellte Fragen zu Konnektivität und Netzwerken](cloud-services-connectivity-and-networking-faq.md)
 #### [Häufig gestellte Fragen zur Bereitstellung](cloud-services-deployment-faq.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
 ## [CSDEF (XML-Schema)](schema-csdef-file.md)
 ### [LoadBalancerProbe-Schema](schema-csdef-loadbalancerprobe.md)
@@ -104,7 +105,7 @@
 ### [NetworkConfiguration-Schema](schema-cscfg-networkconfiguration.md)
 ## [REST](/rest/api/compute/cloudservices/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=compute)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)

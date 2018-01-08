@@ -33,8 +33,8 @@
 #### [Herstellen einer Verbindung mit Azure AD Identity Protection](security-center-aadip-integration.md)
 ### [Implementieren von Sicherheitsempfehlungen](security-center-recommendations.md)
 ### [Anwendungsempfehlungen](security-center-application-recommendations.md)
-#### [Web Application Firewall hinzufügen](security-center-add-web-application-firewall.md)
-#### [Finalize application protection (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection)
+#### [Add a web application firewall](security-center-add-web-application-firewall.md)
+#### [Finalize application protection (Anwendungsschutz abschließen) (Anwendungsschutz abschließen)](security-center-add-web-application-firewall.md#finalize-application-protection)
 
 ### [Netzwerkempfehlungen](security-center-network-recommendations.md)
 #### [Hinzufügen einer Firewall der nächsten Generation](security-center-add-next-generation-firewall.md)
@@ -82,16 +82,17 @@
 ## Problembehandlung
 ### [Handbuch zur Problembehandlung](security-center-troubleshooting-guide.md)
 
-# Referenz
+# Verweis
 ## [REST](https://msdn.microsoft.com/en-US/library/mt704034(Azure.100).aspx)
 
 # Verwandte Themen
 ## [Sicherheit von Azure](/azure/security/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [Roadmap für Security Center-Bereitschaft](security-center-readiness-roadmap.md)
 ## [Azure-Blog zu Sicherheit, Datenschutz und Compliance](http://blogs.msdn.com/b/azuresecurity/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-## [Übersicht über den Dienst](https://azure.microsoft.com/services/security-center/)
+## [Übersicht über die Dienste](https://azure.microsoft.com/services/security-center/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=security-center)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=security-center)

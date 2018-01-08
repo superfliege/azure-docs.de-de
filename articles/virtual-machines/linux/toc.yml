@@ -197,6 +197,8 @@
               href: update-agent.md
         - name: Geplante Wartung
           href: maintenance-notifications.md
+        - name: Maßnahmen im Zusammenhang mit der spekulativen Ausführung
+          href: mitigate-se.md
         - name: Beschleunigte Wartung – häufig gestellte Fragen
           href: accelerated-maintenance.md
         - name: Geplante Ereignisse

@@ -11,7 +11,7 @@
       href: kubernetes-walkthrough.md
     - name: Erstellen eines AKS-Clusters – Portal
       href: kubernetes-walkthrough-portal.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Vorbereiten der Anwendung für AKS'
       href: tutorial-kubernetes-prepare-app.md
@@ -39,21 +39,25 @@
       href: kubernetes-helm.md
     - name: Entwickeln von Anwendungen mit Entwurf
       href: kubernetes-draft.md
-    - name: Dauerhafte Speicherung von Daten mit Azure Files
-      href: azure-files.md
     - name: Integration in Azure mit OSBA
       href: integrate-azure.md
     - name: Verwenden des Kubernetes-Dashboards
       href: kubernetes-dashboard.md
     - name: Erstellen eines Dienstprinzipals
       href: kubernetes-service-principal.md
-- name: Referenz
+    - name: Konfigurieren von Datenvolumes
+      items:
+        - name: Azure Files – persistentes Volume
+          href: azure-files-dynamic-pv.md
+        - name: Azure Files – Volume
+          href: azure-files.md
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks
-- name: Ressourcen
+- name: angeben
   items:
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/regions/services/'

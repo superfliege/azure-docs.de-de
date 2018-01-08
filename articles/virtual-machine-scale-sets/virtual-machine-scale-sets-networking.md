@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: negat
-ms.openlocfilehash: 21585717609a692d55ba60f74e39f3bccc0bc727
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 27f1ec18026b38d5cdb2aecfde2d01f32a86349e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -28,7 +28,7 @@ Wenn Sie eine Azure-VM-Skalierungsgruppe über das Portal bereitstellen, werden 
 Alle in diesem Artikel behandelten Features können mithilfe von Azure Resource Manager-Vorlagen konfiguriert werden. Für einige Features stehen auch Beispiele für die Azure-Befehlszeilenschnittstelle und PowerShell zur Verfügung. Verwenden Sie CLI 2.10 und PowerShell 4.2.0 oder höher.
 
 ## <a name="accelerated-networking"></a>Beschleunigter Netzwerkbetrieb
-Der [beschleunigte Netzwerkbetrieb](../virtual-network/virtual-network-create-vm-accelerated-networking.md) von Azure ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer und somit die Verbesserung der Netzwerkleistung. Wenn Sie den beschleunigten Netzwerkbetrieb mit Skalierungsgruppen verwenden möchten, legen Sie in den networkInterfaceConfigurations-Einstellungen Ihrer Skalierungsgruppe die Option „EnableAcceleratedNetworking“ auf **true** fest. Beispiel:
+Der beschleunigte Netzwerkbetrieb von Azure ermöglicht die E/A-Virtualisierung mit Einzelstamm (Single Root I/O Virtualization, SR-IOV) für einen virtuellen Computer und somit die Verbesserung der Netzwerkleistung. Weitere Informationen zur Verwendung des beschleunigten Netzwerkbetriebs finden Sie unter den entsprechenden Abschnitten für virtuelle [Windows](../virtual-network/create-vm-accelerated-networking-powershell.md)- oder [Linux](../virtual-network/create-vm-accelerated-networking-cli.md)-Computer. Wenn Sie den beschleunigten Netzwerkbetrieb mit Skalierungsgruppen verwenden möchten, legen Sie in den networkInterfaceConfigurations-Einstellungen Ihrer Skalierungsgruppe die Option „EnableAcceleratedNetworking“ auf **true** fest. Beispiel: 
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -59,11 +59,11 @@ az vmss create -g lbtest -n myvmss --image Canonical:UbuntuServer:16.04-LTS:late
 Standardmäßig werden für Skalierungsgruppen die spezifischen DNS-Einstellungen des VNETs und des Subnetzes verwendet, in dem sie erstellt wurden. Sie können die DNS-Einstellungen für eine Skalierungsgruppe allerdings direkt konfigurieren.
 ~
 ### <a name="creating-a-scale-set-with-configurable-dns-servers"></a>Erstellen einer Skalierungsgruppe mit konfigurierbaren DNS-Servern
-Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie dem Befehl **vmss create** das Argument **--dns-servers** und eine durch Leerzeichen getrennte Liste mit Server-IP-Adressen hinzu. Beispiel:
+Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie dem Befehl **vmss create** das Argument **--dns-servers** und eine durch Leerzeichen getrennte Liste mit Server-IP-Adressen hinzu. Beispiel: 
 ```bash
 --dns-servers 10.0.0.6 10.0.0.5
 ```
-Um benutzerdefinierte DNS-Server in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abschnitt „networkInterfaceConfigurations“ der Skalierungsgruppe eine Eigenschaft vom Typ „dnsSettings“ hinzu. Beispiel:
+Um benutzerdefinierte DNS-Server in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abschnitt „networkInterfaceConfigurations“ der Skalierungsgruppe eine Eigenschaft vom Typ „dnsSettings“ hinzu. Beispiel: 
 ```json
 "dnsSettings":{
     "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -73,7 +73,7 @@ Um benutzerdefinierte DNS-Server in einer Azure-Vorlage zu konfigurieren, fügen
 ### <a name="creating-a-scale-set-with-configurable-virtual-machine-domain-names"></a>Erstellen einer Skalierungsgruppe mit konfigurierbaren Domänennamen für virtuelle Computer
 Um mithilfe von CLI 2.0 eine Skalierungsgruppe mit einem benutzerdefinierten DNS-Namen für virtuelle Computer zu erstellen, fügen Sie dem Befehl **vmss create** das Argument **--vm-domain-name** mit einer Zeichenfolgendarstellung des Domänennamens hinzu.
 
-Um den Domänennamen in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abschnitt **networkInterfaceConfigurations** der Skalierungsgruppe eine Eigenschaft vom Typ **dnsSettings** hinzu. Beispiel:
+Um den Domänennamen in einer Azure-Vorlage zu konfigurieren, fügen Sie dem Abschnitt **networkInterfaceConfigurations** der Skalierungsgruppe eine Eigenschaft vom Typ **dnsSettings** hinzu. Beispiel: 
 
 ```json
 "networkProfile": {
@@ -118,7 +118,7 @@ In einigen Szenarien müssen virtuelle Computer in Skalierungsgruppen jedoch üb
 ### <a name="creating-a-scale-set-with-public-ip-per-virtual-machine"></a>Erstellen einer Skalierungsgruppe mit öffentlicher IP-Adresse pro virtuellem Computer
 Um mithilfe von CLI 2.0 eine Skalierungsgruppe zu erstellen, die jedem virtuellen Computer eine öffentliche IP-Adresse zuweist, fügen Sie dem Befehl **vmss create** den Parameter **--public-ip-per-vm** hinzu. 
 
-Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten, sollten Sie sich vergewissern, dass die API-Version der Ressource „Microsoft.Compute/virtualMachineScaleSets“ mindestens **2017-03-30** lautet. Fügen Sie dem Abschnitt „ipConfigurations“ für die Skalierungsgruppe dann eine JSON-Eigenschaft vom Typ **publicIpAddressConfiguration** hinzu. Beispiel:
+Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten, sollten Sie sich vergewissern, dass die API-Version der Ressource „Microsoft.Compute/virtualMachineScaleSets“ mindestens **2017-03-30** lautet. Fügen Sie dem Abschnitt „ipConfigurations“ für die Skalierungsgruppe dann eine JSON-Eigenschaft vom Typ **publicIpAddressConfiguration** hinzu. Beispiel: 
 
 ```json
 "publicIpAddressConfiguration": {
@@ -133,12 +133,12 @@ Beispielvorlage: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quick
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Abfragen der öffentlichen IP-Adressen der virtuellen Computer in einer Skalierungsgruppe
 Um mithilfe von CLI 2.0 die öffentlichen IP-Adressen aufzulisten, die den virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, verwenden Sie den Befehl **az vmss list-instance-public-ips**.
 
-Verwenden Sie den Befehl _Get-AzureRmPublicIpAddress_, um mit PowerShell öffentliche IP-Adressen für Skalierungsgruppen aufzulisten. Beispiel:
+Verwenden Sie den Befehl _Get-AzureRmPublicIpAddress_, um mit PowerShell öffentliche IP-Adressen für Skalierungsgruppen aufzulisten. Beispiel: 
 ```PowerShell
 PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
 ```
 
-Sie können die öffentlichen IP-Adressen auch abfragen, indem Sie direkt auf die Ressourcen-ID der Konfiguration der öffentlichen IP-Adresse verweisen. Beispiel:
+Sie können die öffentlichen IP-Adressen auch abfragen, indem Sie direkt auf die Ressourcen-ID der Konfiguration der öffentlichen IP-Adresse verweisen. Beispiel: 
 ```PowerShell
 PS C:\> Get-AzureRmPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
@@ -268,7 +268,7 @@ Ein virtueller Computer kann je nach Größe über bis zu acht NICs verfügen. I
 ## <a name="nsg-per-scale-set"></a>NSGs pro Skalierungsgruppe
 Netzwerksicherheitsgruppen können direkt auf eine Skalierungsgruppe angewendet werden. Hierzu muss dem Abschnitt mit den Netzwerkschnittstellenkonfigurationen der Skalierungsgruppen-VM-Eigenschaften ein Verweis hinzugefügt werden.
 
-Beispiel: 
+Beispiel:  
 ```
 "networkProfile": {
     "networkInterfaceConfigurations": [

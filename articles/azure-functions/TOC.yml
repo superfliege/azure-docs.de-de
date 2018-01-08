@@ -39,7 +39,7 @@
           href: functions-integrate-storage-queue-output-binding.md
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Funktionen mit Logic Apps
       href: functions-twitter-email.md
@@ -71,10 +71,10 @@
       items:
         - name: Unterstützte Sprachen
           href: supported-languages.md
-        - name: 'C#-Skript'
-          href: functions-reference-csharp.md
-        - name: Klassenbibliothek von .NET
+        - name: 'C# (Klassenbibliothek)'
           href: functions-dotnet-class-library.md
+        - name: 'C#-Skript (.csx)'
+          href: functions-reference-csharp.md
         - name: 'F#'
           href: functions-reference-fsharp.md
         - name: JavaScript
@@ -101,7 +101,7 @@
           href: durable-functions-http-api.md
         - name: Fehlerbehandlung
           href: durable-functions-error-handling.md
-        - name: Diagnose
+        - name: Diagnostics
           href: durable-functions-diagnostics.md
         - name: Timer
           href: durable-functions-timers.md
@@ -175,7 +175,7 @@
           href: durable-functions-counter.md
         - name: Benutzerinteraktion
           href: durable-functions-phone-verification.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Bindungen
       items:
@@ -201,7 +201,7 @@
           href: functions-bindings-storage-queue.md
         - name: SendGrid
           href: functions-bindings-sendgrid.md
-        - name: Service Bus
+        - name: SERVICE BUS
           href: functions-bindings-service-bus.md
         - name: Table Storage
           href: functions-bindings-storage-table.md
@@ -215,7 +215,7 @@
       href: functions-app-settings.md
     - name: OpenAPI-Referenz
       href: functions-api-definition.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=compute'

@@ -62,7 +62,7 @@
 #### [B2B und externe Office 365-Freigaben](active-directory-b2b-o365-external-user.md)
 #### [B2B-Lizenzierung](active-directory-b2b-licensing.md)
 #### [Aktuelle Einschränkungen](active-directory-b2b-current-limitations.md)
-#### [Häufig gestellte Fragen](active-directory-b2b-faq.md)
+#### [HÄUFIG GESTELLTE FRAGEN](active-directory-b2b-faq.md)
 #### [Problembehandlung für B2B](active-directory-b2b-troubleshooting.md)
 #### [Grundlegendes zu B2B-Benutzern](active-directory-b2b-user-properties.md)
 #### [B2B-Benutzertoken](active-directory-b2b-user-token.md)
@@ -108,12 +108,12 @@
 #### [Konfigurieren benannter Orte](active-directory-named-locations.md)
 #### [Suchen nach Aktivitätsberichten](active-directory-reporting-migration.md)
 #### [Verwenden des Azure Active Directory-Power BI-Inhaltspakets](active-directory-reporting-power-bi-content-pack-how-to.md)
-### Referenz
-#### [Aufbewahrung](active-directory-reporting-retention.md)
+### Verweis
+#### [Vermerkdauer](active-directory-reporting-retention.md)
 #### [Wartezeiten](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
 #### [Fehlercodes für Anmeldeaktivitäten](active-directory-reporting-activity-sign-ins-errors.md)
-#### [Mehrstufige Authentifizierung](active-directory-reporting-activity-sign-ins-mfa.md)
+#### [Multi-Factor Authentication](active-directory-reporting-activity-sign-ins-mfa.md)
 ### Problembehandlung
 #### [Fehlende Überwachungsdaten](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [Fehlende Daten in den Downloads](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -169,7 +169,7 @@
 ### [Cloud-App-Ermittlung](cloudappdiscovery-get-started.md)
 #### [Erstellen von Momentaufnahmenberichten](cloudappdiscovery-set-up-snapshots.md)
 #### [Konfigurieren des automatischen Uploads von Protokollen für kontinuierliche Berichte](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [Verwenden eines benutzerdefinierten Protokollparsers](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
+#### [Use a custom log parser](https://docs.microsoft.com/cloud-app-security/custom-log-parser) (Verwenden eines benutzerdefinierten Protokollparsers)
 #### Agent-basierte Ermittlung
 ##### [Was ist Cloud App Discovery?](active-directory-cloudappdiscovery-whatis.md)
 ##### [Aktualisieren von Registrierungseinstellungen](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
@@ -309,7 +309,7 @@
 #### [Aktivieren](active-directory-identityprotection-enable.md)
 #### [Erkennen von Sicherheitsrisiken](active-directory-identityprotection-vulnerabilities.md)
 #### [Risikoereignisse](active-directory-identity-protection-risk-events.md)
-#### [Notifications](active-directory-identityprotection-notifications.md)
+#### [Benachrichtigungen](active-directory-identityprotection-notifications.md)
 #### [Anmeldevorgang](active-directory-identityprotection-flows.md)
 #### [Simulieren von Risikoereignissen](active-directory-identityprotection-playbook.md)
 #### [Entsperren von Benutzern](active-directory-identityprotection-unblock-howto.md)
@@ -342,7 +342,7 @@
 ### [PoC-Playbook: Bausteine](active-directory-playbook-building-blocks.md)
 
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure PowerShell-Cmdlets](/powershell/azure/overview)
 ## [Java-API-Referenz](/java/api)
@@ -356,12 +356,12 @@
 ## [Azure AD für Entwickler](./develop/active-directory-how-to-integrate.md)
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
 ## [Preise](https://azure.microsoft.com/pricing/details/active-directory/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=active-directory)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
