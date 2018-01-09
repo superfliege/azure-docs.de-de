@@ -29,7 +29,7 @@
 #### [Adafruit Feather M0 mit Arduino IDE](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
 ## Erweiterte IoT-Szenarien
-### [Verwalten von Cloudgerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
+### [Verwalten von Cloud-zu-Gerät-Nachrichten mit iothub-explorer](iot-hub-explorer-cloud-device-messaging.md)
 ### [Speichern von IoT Hub-Nachrichten im Azure-Datenspeicher](iot-hub-store-data-in-azure-table-storage.md)
 ### [Datenvisualisierung in Power BI](iot-hub-live-data-visualization-in-power-bi.md)
 ### [Datenvisualisierung mit Web-Apps](iot-hub-live-data-visualization-in-web-apps.md)
@@ -143,7 +143,7 @@
 #### [Sicherheit durch X.509-Zertifikate einer Stammzertifizierungsstelle – Erste Schritte](iot-hub-security-x509-get-started.md)
 ##### [Erstellen von Zertifikaten – PowerShell](iot-hub-security-x509-create-certificates.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
 ## [Azure-CLI](/cli/azure/iot)
 ## [.NET (Dienst)](/dotnet/api/microsoft.azure.devices)
@@ -162,11 +162,12 @@
 
 # Verwandte Themen
 ## [Azure IoT Suite](https://azure.microsoft.com/documentation/suites/iot-suite/)
+## [Azure IoT Hub Device Provisioning-Dienst](https://azure.microsoft.com/documentation/services/iot-dps/)
 ## [Azure Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/)
 ## [Stream Analytics](https://azure.microsoft.com/documentation/services/stream-analytics/)
 ## [Machine Learning](https://azure.microsoft.com/documentation/services/machine-learning/)
 
-# Ressourcen
+# angeben
 ## [Katalog mit Azure Certified for IoT-Geräten](https://catalog.azureiotsuite.com/)
 ## [Azure IoT Developer Center](https://azure.microsoft.com/develop/iot/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=internet-of-things)
@@ -178,6 +179,6 @@
 ## [Preise](https://azure.microsoft.com/pricing/details/iot-hub/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=iot-hub)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-iot-hub)
 ## [Technische Fallstudien](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=iot-hub)

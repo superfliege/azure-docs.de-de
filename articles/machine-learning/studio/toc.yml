@@ -181,7 +181,7 @@
           href: use-sample-datasets.md
         - name: Beispiel für Kundenabwanderung
           href: azure-ml-customer-churn-scenario.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure PowerShell-Modul (Neu)
       href: /powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning
@@ -195,7 +195,7 @@
       href: web-service-error-codes.md
 - name: Verwandte Themen
   items:
-    - name: Cortana Intelligence Gallery
+    - name: Azure AI-Katalog
       items:
         - name: Übersicht
           href: gallery-how-to-use-contribute-publish.md
@@ -211,13 +211,13 @@
           href: gallery-competitions.md
         - name: Häufig gestellte Fragen zu Wettbewerben
           href: competition-faq.md
-        - name: Lernprogramme
+        - name: Tutorials
           href: gallery-tutorials.md
         - name: Sammlungen
           href: gallery-collections.md
         - name: Benutzerdefinierte Module
           href: gallery-custom-modules.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
