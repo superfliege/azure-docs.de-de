@@ -4,7 +4,7 @@
   items:
     - name: Informationen zu Azure Migrate
       href: migrate-overview.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Ermitteln und Bewerten virtueller VMware-Computer
       href: tutorial-assessment-vmware.md
@@ -22,8 +22,6 @@
       href: how-to-create-a-group.md
     - name: Gruppieren von Computern mithilfe von Computerabhängigkeiten
       href: how-to-create-group-machine-dependencies.md
-    - name: Gruppieren von Computern mithilfe von VMware-Tagging
-      href: how-to-tag-v-center.md
     - name: Einschränken einer Gruppe mithilfe von Gruppenabhängigkeiten
       href: how-to-create-group-dependencies.md
     - name: Anpassen einer Bewertung
@@ -32,7 +30,7 @@
       href: how-to-get-migration-tool.md
     - name: Problembehandlung für Azure Migrate
       href: troubleshooting-general.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure Migrate
       href: 'https://azure.microsoft.com/migrate'

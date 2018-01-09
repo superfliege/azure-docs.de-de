@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/04/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 794ad146ee8cb72370216677913013b6bbcb4b8f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
@@ -72,28 +72,31 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
  
     ![Schlüssel](media/functions-twitter-email/keys.png)
 
-## <a name="create-the-function"></a>Erstellen der Funktion
+[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
+
+## <a name="create-the-function-app"></a>Erstellen der Funktionen-App
 
 „Functions“ ist eine gute Möglichkeit, um Verarbeitungsaufgaben in einen Logic Apps-Workflow zu verlagern. In diesem Tutorial wird eine Funktion mit HTTP-Auslösung verwendet, um Tweet-Stimmungswerte aus Cognitive Services zu verarbeiten und einen Kategoriewert zurückzugeben.  
 
-1. Klicken Sie auf die Schaltfläche **Neu**, und wählen Sie **Compute** > **Funktionen-App** aus. Verwenden Sie anschließend die Einstellungen wie in der Tabelle unten angegeben. Akzeptieren Sie die Bedingungen, und wählen Sie dann **An Dashboard anheften** aus.
+[!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-    ![Erstellen einer Azure Functions-App](media/functions-twitter-email/create_fun.png)
+## <a name="create-an-http-triggered-function"></a>Erstellen einer durch HTTP ausgelösten Funktion  
 
-    | Einstellung      |  Empfohlener Wert   | Beschreibung       |
-    | --- | --- | --- |
-    | **Name** | MyFunctionApp | Wählen Sie einen eindeutigen Kontonamen. |
-    | **Ressourcengruppe** | myResourceGroup | Verwenden Sie für alle Dienste in diesem Tutorial dieselbe Ressourcengruppe.|
-    | **Hostingplan** | Verbrauchstarif | Dadurch werden Ihre Kosten- und Nutzungszuordnungen definiert.
-    | **Standort** | USA (Westen) | Verwenden Sie den nächstgelegenen Standort. |
-    | **Speicher** | Create New | Generiert automatisch ein neues Speicherkonto.|
-    | **Preisstufe** | F0 | Beginnen Sie mit dem niedrigsten Tarif. Wenn die Aufrufe nicht ausreichen, können Sie einen höheren Tarif festlegen.|
+1. Erweitern Sie die Funktionen-App, und klicken Sie auf die Schaltfläche **+** neben **Functions**. Wenn dies die erste Funktion in Ihrer Funktionen-App ist, wählen Sie **Benutzerdefinierte Funktion**. Hiermit wird der vollständige Satz von Funktionsvorlagen angezeigt.
 
-2. Wählen Sie Ihre Funktions-App im Dashboard aus, und erweitern Sie Ihre Funktion. Klicken Sie nacheinander auf die Schaltfläche **+** neben **Functions**, auf **Webhook und API**, auf  **CSharp** und dann auf **Diese Funktion erstellen**. Dadurch wird eine Funktion unter Verwendung der C#-Vorlage „HTTPTrigger“ erstellt. Der Code wird in einem neuen Fenster als `run.csx` angezeigt.
+    ![Schnellstartseite für Funktionen im Azure-Portal](media/functions-twitter-email/add-first-function.png)
 
-    ![Blatt „Funktionen-App“, Funktionen +](media/functions-twitter-email/add_fun.png)
+2. Geben Sie `http` in das Suchfeld ein, und wählen Sie dann **C#** für die HTTP-Triggervorlage aus. 
 
-3. Ersetzen Sie den Inhalt der Datei `run.csx` durch den folgenden Code, und klicken Sie auf **Speichern**:
+    ![Auswählen des HTTP-Triggers](./media/functions-twitter-email/select-http-trigger-portal.png)
+
+3. Geben Sie einen **Namen** für Ihre Funktion ein, wählen Sie `Function` als **[Authentifizierungsebene](functions-bindings-http-webhook.md#http-auth)** aus, und wählen Sie dann **Erstellen** aus. 
+
+    ![Erstellen der durch HTTP ausgelösten Funktion](./media/functions-twitter-email/select-http-trigger-portal-2.png)
+
+    Auf diese Weise wird eine C#-Skriptfunktion mithilfe der HTTP-Triggervorlage erstellt. Ihr Code wird in einem neuen Fenster als `run.csx` angezeigt.
+
+4. Ersetzen Sie den Inhalt der Datei `run.csx` durch den folgenden Code, und klicken Sie auf **Speichern**:
 
     ```csharp
     using System.Net;

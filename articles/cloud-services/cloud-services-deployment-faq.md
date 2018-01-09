@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/20/2017
+ms.date: 12/12/2017
 ms.author: genli
-ms.openlocfilehash: 755b8e7414f6e77d0013d2678e8d4228091e1e4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 61d1cc511bf541e75ffda3e84b116f78a434f6f1
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Probleme mit der Bereitstellung in Microsoft Azure Cloud Services – Häufig gestellte Fragen (FAQs)
 
@@ -75,3 +75,8 @@ Da es sich bei Cloud Services um eine klassische Ressource handelt, die nicht di
 
     Die Bereitstellung ist über das [Azure-Portal](https://portal.azure.com) möglich, da der Aufruf über einen Proxy/Shim erfolgt, wodurch die Kommunikation zwischen Azure Resource Manager-Ressourcen und klassischen Ressourcen ermöglicht wird. 
  
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Warum verlangt das Azure-Portal von mir die Angabe eines Speicherkontos für die Bereitstellung? 
+
+Im klassischen Portal wurde das Paket direkt in die Verwaltungs-API-Schicht hochgeladen, und die API-Schicht speicherte das Paket dann vorübergehend in einem internen Speicherkonto.  Dieser Vorgang verursacht Leistungs- und Skalierbarkeitsprobleme, da die API-Schicht nicht als Dateiuploaddienst konzipiert wurde.  Im Azure-Portal (Resource Manager-Bereitstellungsmodell) haben wir den Zwischenschritt des ersten Hochladens in die API-Schicht umgangen, da dies zu schnelleren und zuverlässigeren Bereitstellungen führt. 
+
+Was die Kosten anbelangt, so ist sie sehr gering, und Sie können dasselbe Speicherkonto für alle Bereitstellungen wiederverwenden. Sie können den [Speicherkostenrechner](https://azure.microsoft.com/en-us/pricing/calculator/#storage1) verwenden, um die Kosten zu ermitteln, die für das Hochladen des Dienstpakets (CSPKG), das Herunterladen des CSPKG und das anschließenden Löschen des CSPKG anfallen. 

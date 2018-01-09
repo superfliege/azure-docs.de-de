@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: v-deasim
-ms.openlocfilehash: 8f89ef5a1763d5fc4ad09a9aeae89ccf683138c7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2a94ba5cb9f026f66bc1f3b379f00b291a2299c9
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="control-azure-content-delivery-network-caching-behavior-with-caching-rules"></a>Steuern des Verhaltens beim Zwischenspeichern im Azure Content Delivery Network mit Cacheregeln
 
@@ -40,13 +40,19 @@ Informationen zum Standardverhalten beim Zwischenspeichern und die Header mit Ca
 So legen Sie CDN-Cacheregeln fest
 
 1. Öffnen Sie das Azure-Portal, und wählen Sie ein CDN-Profil sowie einen Endpunkt aus.
-2. Klicken Sie im linken Bereich unter „Einstellungen“ auf **Cache**.
-3. Erstellen Sie wie folgt eine globale Cacheregel:
+2. Klicken Sie im linken Bereich unter „Einstellungen“ auf **Cacheregeln**.
+
+   ![Schaltfläche für CDN-Cacheregeln](./media/cdn-caching-rules/cdn-caching-rules-btn.png)
+
+1. Erstellen Sie wie folgt eine globale Cacheregel:
    1. Legen Sie unter **Globale Cacheregeln** die Option **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** auf **Abfragezeichenfolgen ignorieren** fest.
    2. Legen Sie **Verhalten beim Zwischenspeichern** auf **Bei Fehlen festlegen**.
+       
    3. Geben Sie unter **Dauer bis Cacheablauf** in das Feld **Tage** die Zahl „10“ ein.
 
        Die globale Cacheregel wirkt sich auf alle Anforderungen an den Endpunkt aus. Diese Regel berücksichtigt die Ursprungsheader mit Cacheanweisungen, sofern diese vorhanden sind (`Cache-Control` oder `Expires`). Wenn diese nicht angegeben sind, wird der Cache auf 10 Tage festgelegt. 
+
+     ![Globale Cacheregeln](./media/cdn-caching-rules/cdn-global-caching-rules.png)
 
 4. Erstellen Sie wie folgt eine benutzerdefinierte Cacheregel:
     1. Legen Sie unter **Benutzerdefinierte Cacheregeln** die Option **Übereinstimmungsbedingung** auf **Pfad** und **Übereinstimmungswert** auf `/images/*.jpg` fest.
@@ -54,7 +60,7 @@ So legen Sie CDN-Cacheregeln fest
        
        Diese benutzerdefinierte Cacheregel legt für alle Bilddateien mit der Erweiterung `.jpg` im Ordner `/images` Ihres Endpunkts eine Cachedauer von 30 Tagen fest. Er überschreibt alle `Cache-Control`- oder `Expires`-HTTP-Header, die vom Ursprungsserver gesendet werden.
 
-  ![Dialogfeld „Cacheregeln“](./media/cdn-caching-rules/cdn-caching-rules-dialog.png)
+    ![Benutzerdefinierte Cacheregeln](./media/cdn-caching-rules/cdn-custom-caching-rules.png)
 
 > [!NOTE] 
 > Bei Dateien, die vor einer Regeländerung zwischengespeichert werden, wird die Cachedauereinstellung des Ursprungs beibehalten. Um die Cachedauer zurückzusetzen, müssen Sie [die Datei bereinigen](cdn-purge-endpoint.md). Bei Endpunkten vom **Azure CDN von Verizon** kann es bis zu 90 Minuten dauern, bis die Cacheregeln wirksam werden.

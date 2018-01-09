@@ -12,7 +12,7 @@
 
 # Anleitung
 ## Laden und Verschieben von Daten
-### [Verwenden von Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md)
+### [Verwenden von Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)
 ### [Verwenden von AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [Verwenden von DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Verwenden von Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
@@ -22,7 +22,7 @@
 ## Schützen von Daten
 ### [Sicherheitsübersicht](data-lake-store-security-overview.md)
 ### [Zugriffssteuerung in Data Lake Store](data-lake-store-access-control.md)
-### [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+### [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
 ### [Verschlüsselung](data-lake-store-encryption.md)
 
 ## Authentifizieren mit Data Lake Store
@@ -76,9 +76,9 @@
 
 ## Verwalten
 ### [Zugreifen auf Diagnoseprotokolle](data-lake-store-diagnostic-logs.md)
-### [Planen für hohe Verfügbarkeit](data-lake-store-disaster-recovery-guidance.md)
+### [Planen für Hochverfügbarkeit](data-lake-store-disaster-recovery-guidance.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)
 ## [Azure PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
@@ -87,9 +87,9 @@
 ## [Python (Kontoverwaltung)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python (Dateisystemverwaltung)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)
-## [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/dls)
+## [Azure-CLI](https://docs.microsoft.com/cli/azure/dls)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Data Lake Store-Blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Feedback über UserVoice](https://feedback.azure.com/forums/327234-data-lake)

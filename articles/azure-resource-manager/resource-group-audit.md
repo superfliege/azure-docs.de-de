@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9f90bc80c146c6c2da04aacbc110f7d389c0baa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecfb7f726d5447710948405b2dd83fcd1db3dff2
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen
 Mithilfe von Aktivitätsprotokollen können Sie Folgendes ermitteln:
@@ -38,10 +38,10 @@ Sie können Informationen aus den Aktivitätsprotokollen über das Portal, Power
    
     ![Aktivitätsprotokolle auswählen](./media/resource-group-audit/select-monitor.png)
 
-   Sie können auch automatisch nach dem Aktivitätsprotokoll für eine bestimmte Ressource oder Ressourcengruppe filtern, indem Sie auf dem Blatt der jeweiligen Ressource bzw. Ressourcengruppe die Option **Aktivitätsprotokoll** auswählen. Beachten Sie, dass das Aktivitätsprotokoll automatisch nach der ausgewählten Ressource gefiltert wird.
+   Sie können auch automatisch nach dem Aktivitätsprotokoll für eine bestimmte Ressource oder Ressourcengruppe filtern, indem Sie die Option **Aktivitätsprotokoll** auswählen. Beachten Sie, dass das Aktivitätsprotokoll automatisch nach der ausgewählten Ressource gefiltert wird.
    
     ![Nach Ressourcen filtern](./media/resource-group-audit/filtered-by-resource.png)
-2. Auf dem Blatt **Aktivitätsprotokoll** finden Sie eine Zusammenfassung der aktuellen Vorgänge.
+2. Im **Aktivitätsprotokoll** finden Sie eine Zusammenfassung der aktuellen Vorgänge.
    
     ![Aktionen anzeigen](./media/resource-group-audit/audit-summary.png)
 3. Um die Anzahl der angezeigten Vorgänge zu einzuschränken, wählen Sie verschiedene Bedingungen aus. Die folgende Abbildung zeigt beispielsweise die Felder **Zeitraum** und **Ereignis initiiert von**, die geändert wurden, um die Aktionen anzuzeigen, die von einem bestimmten Benutzer oder einer bestimmten Anwendung im letzten Monat durchgeführt wurden. Wählen Sie **Übernehmen** aus, um die Ergebnisse Ihrer Abfrage anzuzeigen.
@@ -147,4 +147,5 @@ Die REST-Vorgänge für die Arbeit mit Aktivitätsprotokollen gehören zur [Insi
 * Informationen zum Festlegen von Sicherheitsrichtlinien finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure](../active-directory/role-based-access-control-configure.md).
 * Weitere Informationen zu den Befehlen zum Anzeigen von Bereitstellungsvorgängen finden Sie unter [View deployment operations with Azure Resource Manager](resource-manager-deployment-operations.md) (Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager).
 * Informationen zum Verhindern von Löschvorgängen für eine Ressource für alle Benutzer finden Sie unter [Sperren von Ressourcen mit Azure Resource Manager](resource-group-lock-resources.md).
+* Eine Liste der Vorgänge, die für jeden Microsoft Azure Resource Manager-Anbieter verfügbar sind, finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](~/articles/active-directory/role-based-access-control-resource-provider-operations.md).
 
