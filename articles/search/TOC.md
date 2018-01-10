@@ -9,7 +9,7 @@
 ### [.NET](search-create-index-dotnet.md)
 ### [REST](search-create-index-rest-api.md)
 ## [Hinzufügen von Daten](search-what-is-data-import.md)
-### [Azure-Portal](search-import-data-portal.md)
+### [Azure portal](search-import-data-portal.md)
 ### [.NET](search-import-data-dotnet.md)
 ### [REST](search-import-data-rest-api.md)
 ## [Durchsuchen eines Index](search-query-overview.md)
@@ -17,7 +17,7 @@
 ### [.NET](search-query-dotnet.md)
 ### [REST](search-query-rest-api.md)
 
-# Lernprogramme
+# Tutorials
 
 ## [Entwickeln in .NET](search-howto-dotnet-sdk.md)
 ## [Synonymvorschau in .NET](search-synonyms-tutorial-sdk.md)
@@ -51,7 +51,7 @@
 ### [Azure Blob Storage-Indexer](search-howto-indexing-azure-blob-storage.md)
 ### [Azure Table Storage-Indexer](search-howto-indexing-azure-tables.md)
 ### [Azure SQL-Indexer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-### [Azure Cosmos DB-Indexer](search-howto-index-documentdb.md)
+### [Azure Cosmos DB-Indexer](search-howto-index-cosmosdb.md)
 ### [Indizieren von CSV-Blobs](search-howto-index-csv-blobs.md)
 ### [Indizieren von JSON-Blobs](search-howto-index-json-blobs.md)
 ### [Konfigurieren von Indexerverbindungen mit SQL Server auf virtuellen Azure-Computern](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)
@@ -84,7 +84,7 @@
 ### [Durchsuchen der Datenverkehrsanalyse](search-traffic-analytics.md)
 ### [Leistung und Optimierung](search-performance-optimization.md)
 
-# Referenz
+# Verweis
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (Verwaltung)](/dotnet/api/?term=microsoft.azure.management.search)
@@ -93,7 +93,7 @@
 ## [REST (Verwaltung)](/rest/api/searchmanagement)
 ## [Dienst-REST (Vorschau)](search-api-2016-09-01-preview.md)
 
-# Ressourcen
+# angeben
 
 ## [FAQ – Häufig gestellte Fragen](search-faq-frequently-asked-questions.md)
 ## [Preise](https://azure.microsoft.com/pricing/details/search/)
@@ -109,7 +109,7 @@
 ## Partner und Community
 ### [Azure Search – GitHub](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search)
 ### [MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureSearch)
-### [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-search)
+### [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-search)
 ### [Modellieren von relationalen Daten](http://blogs.technet.com/b/onsearch/archive/2015/09/08/modeling-the-adventureworks-inventory-database-for-azure-search.aspx)
 ### [Blog: Faceting mit mehreren Ebenen](http://blogs.technet.com/b/onsearch/archive/2015/09/09/multi-level-taxonomy-facets-in-azure-search.aspx)
 
