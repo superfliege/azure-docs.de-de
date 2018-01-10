@@ -64,6 +64,7 @@
 #### [Verketten von Entitäten mit automatischer Weiterleitung](service-bus-auto-forwarding.md)
 #### [Transaktionsverarbeitung](service-bus-transactions.md)
 #### [Implementierung von gekoppelten Namespaces](service-bus-paired-namespaces.md)
+### [End-to-End-Ablaufverfolgung und Diagnose](service-bus-end-to-end-tracing.md)
 ## Verwalten
 ### [Überwachen von Service Bus mit Azure-Überwachung](service-bus-metrics-azure-monitor.md)
 ### [Service Bus-Verwaltungsbibliotheken](service-bus-management-libraries.md)
