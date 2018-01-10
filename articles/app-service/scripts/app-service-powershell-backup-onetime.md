@@ -15,15 +15,15 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: f6e8410eae619977c0ce3779df2e725bd3be5393
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 5984a7707552b2740b48e3c9da40a5e96a3a279b
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="back-up-a-web-app"></a>Sichern einer Web-App
 
-Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und erstellt anschließend eine einmalige Sicherung für sie. 
+Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und anschließend eine einmalige Sicherung für sie. 
 
 Installieren Sie bei Bedarf Azure PowerShell anhand der Anleitung im [Azure PowerShell-Handbuch](/powershell/azure/overview), und führen Sie dann `Login-AzureRmAccount` aus, um eine Verbindung mit Azure herzustellen. 
 
@@ -48,7 +48,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) | Erstellt ein Speicherkonto. |
 | [New-AzureStorageContainer](/powershell/module/azure.storage/new-azurestoragecontainer) | Erstellt einen Azure-Speichercontainer. |
-| [New-AzureStorageContainerSASToken](/powershell/module/azurerm.resources/new-azurermresourcegroup) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [New-AzureStorageContainerSASToken](/powershell/module/azure.storage/new-azurestoragecontainersastoken) | Generiert ein SAS-Token für einen Azure-Speichercontainer.  |
 | [New-AzureRmAppServicePlan](/powershell/module/azurerm.websites/new-azurermappserviceplan) | Erstellt einen App Service-Plan. |
 | [New-AzureRmWebApp](/powershell/module/azurerm.websites/new-azurermwebapp) | Erstellt die Web-App. |
 | [New-AzureRmWebAppBackup](/powershell/module/azurerm.websites/new-azurermwebappbackup) | Erstellt eine Sicherung für eine Web-App. |

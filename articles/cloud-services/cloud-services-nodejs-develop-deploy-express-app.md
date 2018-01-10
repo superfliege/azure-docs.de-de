@@ -1,6 +1,6 @@
 ---
-title: Web-App mit Express (Node.js) | Microsoft-Dokumentation
-description: "Dieses Lernprogramm baut auf dem Lernprogramm für Clouddienste auf und zeigt, wie das Express-Modul verwendet wird."
+title: Erstellen und Bereitstellen einer Node.js-Express-App in Azure Cloud Services
+description: "Erstellen und Bereitstellen einer Express.js-Anwendung in Node.js für Azure Cloud Services"
 services: cloud-services
 documentationcenter: nodejs
 author: craigshoemaker
@@ -14,17 +14,18 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: cshoe
-ms.openlocfilehash: aa62438732db9e8df129440e6949858d9a61f65f
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: befca8d95880936e96d1b3618c172f87499627ed
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/07/2017
 ---
-# <a name="build-a-nodejs-web-application-using-express-on-an-azure-cloud-service"></a>Erstellen einer Node.js-Webanwendung mit Express in einem Azure-Cloud-Dienst
-Die Core Runtime von Node.js umfasst eine Reihe elementarer Funktionen.
-Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Tutorial erstellen Sie eine neue Anwendung mit dem Modul [Express][Express], das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
+# <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Erstellen und Bereitstellen einer Node.js-Webanwendung mit Express in Azure Cloud Services
 
-Unten finden Sie einen Screenshot der vollständigen Anwendung:
+Die Core Runtime von Node.js umfasst eine Reihe elementarer Funktionen.
+Entwickler verwenden bei der Entwicklung einer Node.js-Anwendung häufig Module von Drittanbietern, die über zusätzliche Funktionen verfügen. In diesem Tutorial erstellen Sie eine neue Anwendung mit dem Modul [Express](https://github.com/expressjs/express), das ein MVC-Framework zum Erstellen von Node.js-Webanwendungen bereitstellt.
+
+Nachfolgend sehen Sie einen Screenshot der fertigen Anwendung:
 
 ![Webbrowser, in dem 'Welcome to Express in Azure' angezeigt wird](./media/cloud-services-nodejs-develop-deploy-express-app/node36.png)
 

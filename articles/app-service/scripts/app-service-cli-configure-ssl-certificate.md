@@ -13,14 +13,14 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ab4e211bc2c3f7e99ab0246e7abba57795318245
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a0f6f70749c5a0f22ee015d199be490863e38738
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="bind-a-custom-ssl-certificate-to-a-web-app"></a>Binden eines benutzerdefinierten SSL-Zertifikats an eine Web-App
 
@@ -33,8 +33,7 @@ Dieses Skriptbeispiel erstellt eine Web-App und die zugehörigen Ressourcen in A
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
-
+Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -48,12 +47,12 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Befehl | Hinweise |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Erstellt eine Azure-Web-App. |
-| [az webapp config hostname add](https://docs.microsoft.com/cli/azure/webapp/config/hostname#az_webapp_config_hostname_add) | Ordnet eine benutzerdefinierte Domäne einer Web-App zu. |
-| [az webapp config ssl upload](https://docs.microsoft.com/cli/azure/webapp/config/ssl#az_webapp_config_ssl_upload) | Lädt ein benutzerdefiniertes SSL-Zertifikat in eine Web-App hoch. |
-| [az webapp config ssl bind](https://docs.microsoft.com/cli/azure/webapp/config/ssl#az_webapp_config_ssl_bind) | Bindet ein hochgeladenes SSL-Zertifikat an eine Web-App. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Erstellt eine Azure-Web-App. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az_webapp_config_hostname_add) | Ordnet eine benutzerdefinierte Domäne einer Web-App zu. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az_webapp_config_ssl_upload) | Lädt ein benutzerdefiniertes SSL-Zertifikat in eine Web-App hoch. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl?view=azure-cli-latest#az_webapp_config_ssl_bind) | Bindet ein hochgeladenes SSL-Zertifikat an eine Web-App. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

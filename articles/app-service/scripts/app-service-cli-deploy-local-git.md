@@ -13,14 +13,14 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 71cd1aeaa336d484d76e9a51511abcd38a878f00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21006e4a4f6733b54dc18163bbd2362af82fe7aa
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="create-a-web-app-and-deploy-code-from-a-local-git-repository"></a>Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository
 
@@ -31,7 +31,7 @@ Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -45,12 +45,11 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Befehl | Hinweise |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Erstellt eine Azure-Web-App. |
-| [az webapp deployment user set](https://review.docs.microsoft.com/cli/azure/webapp/deployment/user#set) | Legt die Anmeldeinformationen der Bereitstellung für App Service auf Kontoebene fest. |
-| [az webapp deployment source config-local-git](https://review.docs.microsoft.com/cli/azure/webapp/deployment/source#config-local-git) | Erstellt eine Konfiguration der Quellcodeverwaltung für ein lokales Git-Repository. |
-| [az webapp browse](https://docs.microsoft.com/cli/azure/webapp#az_webapp_browse) | Öffnen einer Azure-Web-App in einem Browser. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Erstellt eine Azure-Web-App. |
+| [`az webapp deployment user set`](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set) | Legt die Anmeldeinformationen der Bereitstellung für App Service auf Kontoebene fest. |
+| [`az webapp deployment source config-local-git`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_local_git) | Erstellt eine Konfiguration der Quellcodeverwaltung für ein lokales Git-Repository. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

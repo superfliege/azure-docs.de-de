@@ -13,14 +13,14 @@ ms.workload: web
 ms.devlang: azurecli
 ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 8e8874b29c620fe3777066e0f86ce018521cf657
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0325d948b83b6bfd16060b8c174b28a49bad317
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="map-a-custom-domain-to-a-web-app"></a>Zuordnen einer benutzerdefinierten Domäne zu einer Web-App
 
@@ -30,7 +30,7 @@ Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen 
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -44,10 +44,10 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Befehl | Hinweise |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Erstellt eine Azure-Web-App. |
-| [az webapp config hostname add](https://docs.microsoft.com/cli/azure/webapp/config/hostname#az_webapp_config_hostname_add) | Ordnet eine benutzerdefinierte Domäne einer Web-App zu. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Erstellt eine Azure-Web-App. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname?view=azure-cli-latest#az_webapp_config_hostname_add) | Ordnet eine benutzerdefinierte Domäne einer Web-App zu. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

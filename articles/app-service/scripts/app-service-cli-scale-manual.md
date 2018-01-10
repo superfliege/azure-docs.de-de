@@ -13,24 +13,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a8e9dc2d7767459fafe80a4986f5ac87e95e6e34
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 961805842e9beca0ee2e34abcd0c1355f502a46b
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="scale-a-web-app-manually"></a>Manuelles Skalieren einer Web-App
 
-In diesem Szenario erfahren Sie, wie Sie eine Ressourcengruppe, einen App Service-Plan und eine Web-App erstellen. Danach skalieren Sie den App Service-Plan von einer auf mehrere Instanzen.
+Dieses Beispielskript erstellt eine Ressourcengruppe, einen App Service-Plan und eine Web-App. Anschließend wird der App Service-Plan von einer auf mehrere Instanzen skaliert.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -44,10 +44,10 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Befehl | Hinweise |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. Dies ist wie eine Serverfarm für die Azure-Web-App. |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Erstellt eine Azure-Web-App. |
-| [az appservice plan update](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_update) | Aktualisiert Eigenschaften des App Service-Plans. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Erstellt eine Azure-Web-App. |
+| [`az appservice plan update`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_update) | Aktualisiert Eigenschaften des App Service-Plans. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: mfussell
-ms.openlocfilehash: aae828489b708a5b538df1d63c12be23d0423da7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b2ff715d8225bd0a9c7f6108f8804cdfa3189cc8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-security-policies-for-your-application"></a>Konfigurieren von Sicherheitsrichtlinien für Ihre Anwendung
 Durch Verwenden von Azure Service Fabric können Sie Anwendungen sichern, die im Cluster unter verschiedenen Benutzerkonten ausgeführt werden. Mit Service Fabric werden auch die Ressourcen gesichert, die von Anwendungen zum Zeitpunkt der Bereitstellung in den Benutzerkonten genutzt werden, z.B. Dateien, Verzeichnisse und Zertifikate. So lässt sich erreichen, dass ausgeführte Anwendungen auch in einer gemeinsamen gehosteten Umgebung sicher voneinander abgegrenzt sind.
@@ -30,7 +30,7 @@ Standardmäßig werden Service Fabric-Anwendungen unter dem Konto ausgeführt, u
 Sie können Benutzergruppen definieren und erstellen und dann jeder Gruppe Benutzer zur gemeinsamen Verwaltung hinzufügen. Dies ist nützlich, wenn es für verschiedene Diensteinstiegspunkte mehrere Benutzer gibt, die auf Gruppenebene bestimmte allgemeine Berechtigungen benötigen.
 
 ## <a name="configure-the-policy-for-a-service-setup-entry-point"></a>Konfigurieren der Richtlinie für einen Setupeinstiegspunkt für Dienste
-Wie im [Anwendungsmodell](service-fabric-application-model.md) beschrieben, ist der Setupeinstiegspunkt **SetupEntryPoint** ein privilegierter Einstiegspunkt, der mit den gleichen Anmeldeinformationen wie Service Fabric (meist mit dem Konto *NetworkService*) vor jedem anderen Einstiegspunkt ausgeführt wird. Die durch **EntryPoint** angegebene ausführbare Datei ist üblicherweise der Diensthost mit langer Ausführungsdauer. Mit einem separaten Setupeinstiegspunkt lässt sich also vermeiden, dass der die ausführbare Diensthostdatei über längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss. Die von **EntryPoint** angegebene ausführbare Datei wird ausgeführt, nachdem **SetupEntryPoint** erfolgreich beendet wurde. Der resultierende Prozess wird überwacht und neu gestartet (er beginnt wieder mit **SetupEntryPoint**), sofern er beendet wird oder abstürzt.
+Wie unter [Anwendungs- und Dienstmanifeste](service-fabric-application-and-service-manifests.md) beschrieben, ist der Setupeinstiegspunkt **SetupEntryPoint** ein privilegierter Einstiegspunkt, der mit den gleichen Anmeldeinformationen wie Service Fabric (meist mit dem Konto *NetworkService*) vor jedem anderen Einstiegspunkt ausgeführt wird. Die durch **EntryPoint** angegebene ausführbare Datei ist üblicherweise der Diensthost mit langer Ausführungsdauer. Mit einem separaten Setupeinstiegspunkt lässt sich also vermeiden, dass der die ausführbare Diensthostdatei über längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss. Die von **EntryPoint** angegebene ausführbare Datei wird ausgeführt, nachdem **SetupEntryPoint** erfolgreich beendet wurde. Der resultierende Prozess wird überwacht und neu gestartet (er beginnt wieder mit **SetupEntryPoint**), sofern er beendet wird oder abstürzt.
 
 Unten sehen Sie ein einfaches Beispiel für ein Dienstmanifest mit dem SetupEntryPoint und dem primären EntryPoint des Diensts.
 

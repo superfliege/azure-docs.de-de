@@ -1,33 +1,31 @@
 ---
-title: "Azure CLI-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung | Microsoft-Dokumentation"
-description: "Azure CLI-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung"
+title: "Azure CLI-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Dateien über FTP | Microsoft Docs"
+description: "Azure CLI-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Dateien über FTP"
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: erikre
+manager: cfowler
 editor: 
 tags: azure-service-management
-ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
 ms.service: app-service-web
 ms.workload: web
 ms.devlang: azurecli
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: sample
 ms.topic: sample
-ms.date: 12/11/2017
+ms.date: 12/12/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ccba0127904102e0956bc65eb682171aa8f22cb0
+ms.openlocfilehash: 9e71c5ac8bbf494ed60995457180efaf1a17111f
 ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/12/2017
 ---
-# <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung
+# <a name="create-a-web-app-and-deploy-files-with-ftp"></a>Erstellen einer Web-App und Bereitstellen von Dateien über FTP
 
-Dieses Beispielskript erstellt eine Web-App in App Service mit einem zusätzlichen Bereitstellungsslot namens „staging“ und stellt dann eine Beispiel-App im „staging“-Slot bereit.
+Dieses Beispielskript erstellt in App Service eine Web-App mit den zugehörigen Ressourcen und stellt dann eine statische HTML-Seite über FTP bereit. Für den FTP-Upload verwendet das Skript [cURL](https://en.wikipedia.org/wiki/CURL) als Beispiel. Sie können ein beliebiges FTP-Tool zum Hochladen Ihrer Dateien verwenden.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -35,11 +33,11 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die A
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "Create a web app and deploy code to a staging environment")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-ftp/deploy-ftp.sh "Create a web app and deploy files with FTP")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
-## <a name="script-explanation"></a>Erläuterung des Skripts
+## <a name="script-explanation"></a>Erläuterung des Skripts 
 
 Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft.
 
@@ -48,9 +46,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Erstellt eine Azure-Web-App. |
-| [`az webapp deployment slot create`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az_webapp_deployment_slot_create) | Erstellt einen Bereitstellungsslot. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config) | Ordnet eine Azure-Web-App einem Git- oder Mercurial-Repository zu. |
-| [`az webapp deployment slot swap`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az_webapp_deployment_slot_swap) | Ändert einen angegebenen Bereitstellungsslot in eine Produktionsumgebung. |
+| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az_webapp_deployment_list_publishing_profiles) | Rufen Sie die Details für verfügbare Web-App-Bereitstellungsprofile ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

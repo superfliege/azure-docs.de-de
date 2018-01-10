@@ -1,33 +1,30 @@
 ---
-title: "Azure CLI-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung | Microsoft-Dokumentation"
-description: "Azure CLI-Skriptbeispiel – Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung"
+title: "Azure CLI-Skriptbeispiel – Sichern einer Web-App | Microsoft Docs"
+description: "Azure CLI-Skriptbeispiel – Sichern einer Web-App"
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: erikre
+manager: cfowler
 editor: 
 tags: azure-service-management
-ms.assetid: 2b995dcd-e471-4355-9fda-00babcdb156e
 ms.service: app-service-web
 ms.workload: web
-ms.devlang: azurecli
-ms.tgt_pltfrm: na
+ms.devlang: na
 ms.topic: sample
-ms.date: 12/11/2017
+ms.date: 12/07/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ccba0127904102e0956bc65eb682171aa8f22cb0
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e585c9b203145dcdaf2b63a6044ba2e3bded9572
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/08/2017
 ---
-# <a name="create-a-web-app-and-deploy-code-to-a-staging-environment"></a>Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung
+# <a name="back-up-a-web-app"></a>Sichern einer Web-App
 
-Dieses Beispielskript erstellt eine Web-App in App Service mit einem zusätzlichen Bereitstellungsslot namens „staging“ und stellt dann eine Beispiel-App im „staging“-Slot bereit.
+Dieses Beispielskript erstellt eine Web-App in App Service mit den zugehörigen Ressourcen und anschließend eine einmalige Sicherung für sie. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +32,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die A
 
 ## <a name="sample-script"></a>Beispielskript
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/deploy-deployment-slot/deploy-deployment-slot.sh "Create a web app and deploy code to a staging environment")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/backup-onetime/backup-onetime.sh?highlight=3-7 "Back up a web app")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -46,11 +43,13 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | Befehl | Hinweise |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az storage account create`](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) | Erstellt ein Speicherkonto. |
+| [`az storage container create`](/cli/azure/storage/container?view=azure-cli-latest#az_storage_container_create) | Erstellt einen Azure-Speichercontainer. |
+| [`az storage container generate-sas`](/cli/azure/storage/container?view=azure-cli-latest#az_storage_container_generate_sas) | Generiert ein SAS-Token für einen Azure-Speichercontainer.  |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
 | [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Erstellt eine Azure-Web-App. |
-| [`az webapp deployment slot create`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az_webapp_deployment_slot_create) | Erstellt einen Bereitstellungsslot. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config) | Ordnet eine Azure-Web-App einem Git- oder Mercurial-Repository zu. |
-| [`az webapp deployment slot swap`](/cli/azure/webapp/deployment/slot?view=azure-cli-latest#az_webapp_deployment_slot_swap) | Ändert einen angegebenen Bereitstellungsslot in eine Produktionsumgebung. |
+| [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_create) | Erstellt eine Sicherung für eine Web-App. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az_webapp_config_backup_list) | Ruft eine Liste der Sicherungen für eine Web-App ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

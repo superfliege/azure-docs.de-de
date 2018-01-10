@@ -11,11 +11,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: adhurwit
-ms.openlocfilehash: 1846305e6834145046cf9903714c68e9a6fd4f7d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 107be940b4c105056c63f793fb0111b03469bf66
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-azure-key-vault-from-a-web-application"></a>Verwenden des Azure-Schlüsseltresors aus einer Webanwendung
 
@@ -36,7 +36,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 * Eine Webanwendung. Es werden die Schritte für eine ASP.NET MVC-Anwendung gezeigt, die in Azure als Web-App bereitgestellt wurde.
 
 >[!IMPORTANT]
->* Dieses Beispiel basiert auf einer älteren Methode zur manuellen Bereitstellung von AAD-Identitäten. Derzeit gibt es eine Vorschauversion eines neuen Features namens [Verwaltete Dienstidentität](https://docs.microsoft.com/azure/active-directory/msi-overview) (Managed Service Identity, MSI). Mit diesem Feature können AAD-Identitäten automatisch bereitgestellt werden. Weitere Details finden Sie unter folgendem Beispiel auf [github](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/).
+>* Dieses Beispiel basiert auf einer älteren Methode zur manuellen Bereitstellung von AAD-Identitäten. Derzeit gibt es eine Vorschauversion eines neuen Features namens [Verwaltete Dienstidentität](https://docs.microsoft.com/azure/active-directory/msi-overview) (Managed Service Identity, MSI). Mit diesem Feature können AAD-Identitäten automatisch bereitgestellt werden. Weitere Details finden Sie unter folgendem Beispiel auf [GitHub](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/).
 
 > [!NOTE]
 >* Es ist für dieses Lernprogramm wichtig, dass Sie die Schritte unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md) abgeschlossen haben , damit Sie über den URI zu einem geheimen Schlüssel und die Client-ID sowie den geheimen Schlüssel für den Client einer Webanwendung verfügen.
@@ -107,7 +107,7 @@ public static async Task<string> GetToken(string authority, string resource, str
 ```
 
 > [!NOTE]
->* Derzeit ist die neue Funktion „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) die einfachste Möglichkeit zum Authentifizieren. Weitere Details finden Sie unter dem folgenden Link zu einem Beispiel, in dem [Key Vault mit MSI in einer Anwendung in .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) verwendet wird, sowie im zugehörigen [Tutorial zu MSI mit App Service und Functions](https://docs.microsoft.com/en-us/azure/app-service/app-service-managed-service-identity). 
+>* Derzeit ist die neue Funktion „Verwaltete Dienstidentität“ (Managed Service Identity, MSI) die einfachste Möglichkeit zum Authentifizieren. Weitere Details finden Sie unter dem folgenden Link zu einem Beispiel, in dem [Key Vault mit MSI in einer Anwendung in .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet/) verwendet wird, sowie im zugehörigen [Tutorial zu MSI mit App Service und Functions](https://docs.microsoft.com/azure/app-service/app-service-managed-service-identity). 
 >* Die Verwendung einer Client-ID und eines geheimen Clientschlüssels stellt die andere Möglichkeit zur Authentifizierung einer Azure AD-Anwendung dar. Die Verwendung in Ihrer Webanwendung erlaubt auch die Trennung von Aufgaben und mehr Kontrolle über die Schlüsselverwaltung. Dafür muss jedoch der geheime Clientschlüssel in die Konfigurationseinstellungen eingefügt werden, was für einige als potenziell riskant angesehen wird. Nachfolgend finden Sie eine Erläuterung zur Verwendung einer Client-ID und eines Zertifikats anstelle von Client-ID und geheimem Clientschlüssel, um die Azure AD-Anwendung zu authentifizieren.
 
 ## <a id="appstart"></a>Abrufen des geheimen Schlüssel beim Anwendungsstart
@@ -147,11 +147,11 @@ Eine weitere Möglichkeit zur Authentifizierung einer Azure AD-Anwendung bietet
 Für unsere Zwecke werden wir ein Testzertifikat erstellen. Die folgenden Befehle können Sie an einer Entwicklerbefehlszeile verwenden, um ein Zertifikat zu erstellen. Passen Sie das Verzeichnis an, um den Speicherort für die Zertifikatdateien festzulegen.  Erhöhen Sie darüber hinaus zur Angabe des Start- und Enddatums für das Zertifikat das aktuelle Datum jeweils um ein Jahr.
 
 ```
-makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 03/07/2017 -e 03/07/2018 -r
+makecert -sv mykey.pvk -n "cn=KVWebApp" KVWebApp.cer -b 07/31/2017 -e 07/31/2018 -r
 pvk2pfx -pvk mykey.pvk -spc KVWebApp.cer -pfx KVWebApp.pfx -po test123
 ```
 
-Notieren Sie sich das Enddatum und das Kennwort für die PFX-Datei (in diesem Beispiel: 31.07.2016 und "test123"). Sie benötigen sie später.
+Notieren Sie sich das Enddatum und das Kennwort für die PFX-Datei (in diesem Beispiel: 31.07.2017 und „test123“). Sie benötigen sie später.
 
 Weitere Informationen zum Erstellen eines Testzertifikats finden Sie unter [How to: Create Your Own Test Certificate](https://msdn.microsoft.com/library/ff699202.aspx)
 

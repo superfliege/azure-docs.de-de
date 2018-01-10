@@ -13,24 +13,24 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: web
-ms.date: 06/19/2017
+ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 9630656a00a8a80c8ffd8fb59113dc1c8c523651
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e66b89332ce120133b660b931ba56eaca2a36ae
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="monitor-a-web-app-with-web-server-logs"></a>Überwachen einer Web-App mit Webserverprotokollen
 
-In diesem Szenario erstellen Sie eine Ressourcengruppe, einen App Service-Plan und eine Web-App und konfigurieren die Web-App so, dass Webserverprotokolle aktiviert sind. Danach laden Sie die Protokolldateien zur Überprüfung herunter.
+Dieses Beispielskript erstellt eine Ressourcengruppe, einen App Service-Plan und eine Web-App und konfiguriert die Web-App für das Aktivieren der Webserverprotokolle. Anschließend werden die Protokolldateien zur Überprüfung heruntergeladen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die CLI lokal installieren und verwenden möchten, benötigen Sie die Azure CLI-Version 2.0 oder höher. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -44,11 +44,11 @@ In diesem Skript werden die folgenden Befehle verwendet, um eine Ressourcengrupp
 
 | Befehl | Hinweise |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. Dies ist wie eine Serverfarm für die Azure-Web-App. |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Erstellt eine Azure-Web-App. |
-| [az webapp log config](https://docs.microsoft.com/cli/azure/webapp/log#az_webapp_log_config) | Konfiguriert, welche Protokolle von einer Azure-Web-App beibehalten werden. |
-| [az webapp log download](https://docs.microsoft.com/cli/azure/webapp/log#az_webapp_log_download) | Lädt die Protokolle einer Azure-Web-App auf Ihren lokalen Computer herunter. |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | Erstellt einen App Service-Plan. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Erstellt eine Azure-Web-App. |
+| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_config) | Konfiguriert, welche Protokolle von einer Azure-Web-App beibehalten werden. |
+| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_download) | Lädt die Protokolle einer Azure-Web-App auf Ihren lokalen Computer herunter. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

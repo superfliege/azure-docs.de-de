@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: glenga
-ms.openlocfilehash: 2b83dfe2f3e2645713ff7e1acfb4d7f26fe0d0cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbd2a53a7ba30915ed95cf6b0cb73b07a4f48a24
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Verwenden des verwalteten Clients für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -651,7 +651,7 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 2. Öffnen Sie Ihr Projekt in Visual Studio oder Xamarin Studio, und fügen Sie einen Verweis auf das NuGet-Paket `Microsoft.IdentityModel.CLients.ActiveDirectory` hinzu. Nehmen Sie in die Suche auch Vorabversionen auf.
 3. Fügen Sie je nach verwendeter Plattform den folgenden Code zu Ihrer Anwendung hinzu. Nehmen Sie dabei die folgenden Änderungen vor:
 
-   * Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, in dem Sie Ihre Anwendung bereitgestellt haben. Verwenden Sie folgendes Format: https://login.microsoftonline.com/contoso.onmicrosoft.com. Sie können diesen Wert von der Registerkarte „Domäne“ in Ihrer Azure Active Directory-Instanz im [klassischen Azure-Portal] kopieren.
+   * Ersetzen Sie **INSERT-AUTHORITY-HERE** durch den Namen des Mandanten, in dem Sie Ihre Anwendung bereitgestellt haben. Verwenden Sie folgendes Format: https://login.microsoftonline.com/contoso.onmicrosoft.com. Sie können diesen Wert im [Azure-Portal] in Ihrer Azure Active Directory-Instanz auf der Registerkarte „Domäne“ kopieren.
    * Ersetzen Sie **INSERT-RESOURCE-ID-HERE** durch die Client-ID für Ihr mobiles App-Back-End. Sie können die Client-ID im Portal auf der Registerkarte **Erweitert** unter **Azure Active Directory-Einstellungen** abrufen.
    * Ersetzen Sie **INSERT-CLIENT-ID-HERE** durch die Client-ID, die Sie aus der nativen Clientanwendung kopiert haben.
    * Ersetzen Sie mithilfe des HTTPS-Schemas **INSERT-REDIRECT-URI-HERE** durch den Endpunkt */.auth/login/done* Ihrer Website. Dieser Wert sollte so ähnlich lauten wie *https://contoso.azurewebsites.net/.auth/login/done*.
@@ -1122,7 +1122,6 @@ public class MyHandler : DelegatingHandler
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/en-us/library/azure/dn250579(v=azure.10).aspx
 [Azure-Portal]: https://portal.azure.com/
-[klassischen Azure-Portal]: https://manage.windowsazure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/en-us/library/system.guid.newguid(v=vs.110).aspx
 [ISupportIncrementalLoading]: http://msdn.microsoft.com/library/windows/apps/Hh701916.aspx
