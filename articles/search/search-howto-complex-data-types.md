@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
-ms.openlocfilehash: d576fd7bb267ae7a100589413185b595e3b2be42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7a7400fe7470439dfa957f1ddb463e0a7f1a271
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-model-complex-data-types-in-azure-search"></a>Gewusst wie: Modellieren komplexer Datentypen in Azure Search
 Externe Datasets, die zum Auffüllen eines Azure Search-Index verwendet werden, weisen manchmal hierarchische oder geschachtelte Teilstrukturen auf, die in einem tabellarischen Rowset nicht sauber unterteilt werden. Beispiele für solche Strukturen können mehrere Standorte und Telefonnummern für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch enthalten und so weiter. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe Datentypen*, *zusammengesetzte Datentypen*, *verbundene Datentypen* oder *aggregierte Datentypen* bezeichnet, um nur einige zu nennen.
@@ -66,7 +66,7 @@ In der Regel befinden sich die betreffenden Daten als JSON- oder XML-Dokumente o
 Während die Felder mit dem Namen „ID“, „Name“ und „Unternehmen“ problemlos 1:1 als Felder innerhalb eines Azure Search-Index zugeordnet werden können, enthält das Feld „Standorte“ ein Array von Standorten, die sowohl eine Gruppe von Standort-IDs als auch Standortbeschreibungen aufweisen. Angesichts der Tatsache, dass Azure Search keinen Datentyp aufweist, der dies unterstützt, benötigen wir für das Modellieren in Azure Search eine andere Methode. 
 
 > [!NOTE]
-> Dieses Verfahren wird auch im Blogbeitrag [Indexing DocumentDB with Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/) (Indizieren von DocumentDB mit Azure Search) von Kirk Evans beschrieben. In diesem wird ein Verfahren namens „Vereinfachen der Daten“ gezeigt, bei dem Felder namens `locationsID` und `locationsDescription` vorhanden sind, bei denen es sich jeweils um [Sammlungen](https://msdn.microsoft.com/library/azure/dn798938.aspx) (oder ein Array von Zeichenfolgen) handelt.   
+> Dieses Verfahren wird auch im Blogbeitrag [Indexing Cosmos DB with Azure Search](https://blogs.msdn.microsoft.com/kaevans/2015/03/09/indexing-documentdb-with-azure-seach/) (Indizieren von Cosmos DB mit Azure Search) von Kirk Evans beschrieben. In diesem wird ein Verfahren namens „Vereinfachen der Daten“ gezeigt, bei dem Felder namens `locationsID` und `locationsDescription` vorhanden sind, bei denen es sich jeweils um [Sammlungen](https://msdn.microsoft.com/library/azure/dn798938.aspx) (oder ein Array von Zeichenfolgen) handelt.   
 > 
 > 
 

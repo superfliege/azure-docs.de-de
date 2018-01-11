@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 09/18/2017
 ms.author: elbutter
-ms.openlocfilehash: 295cc59fdb23105534b4e7431902eaa720643330
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4c351d88b31adfa3443dd2231f67bb442f2b8fe0
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="how-to-use-elastic-query-with-sql-data-warehouse"></a>Vorgehensweise zur Verwendung elastischer Abfragen mit SQL Data Warehouse
 
@@ -78,7 +78,7 @@ Weitere Informationen zu elastischen Abfragen mit der SQL-Datenbank finden Sie u
 
 ### <a name="elastic-querying"></a>Ausführen von elastischen Abfragen
 
-- Die externe Tabelle und intern zwischengespeicherte Tabelle liegen als unterschiedliche Objekte in der SQL-Datenbankinstanz vor. Eventuell sollten Sie oberhalb des zwischengespeicherten Teils der Tabelle und der externen Tabelle eine Ansicht erstellen, die beide Tabellen enthält und Filter am Grenzpunkt der einzelnen Tabellen anwendet.
+- In vielen Fällen könnte man eine Art von gestreckter Tabelle verwalten, bei der sich ein Teil Ihrer Tabelle zu Leistungszwecken innerhalb der SQL-Datenbank als zwischengespeicherte Daten befinden, wobei die restlichen Daten in SQL Data Warehouse gespeichert werden. Sie benötigen zwei Objekte in der SQL-Datenbank: eine externe Tabelle in der SQL-Datenbank, die auf die Basistabelle in SQL Data Warehouse verweist, und den „zwischengespeicherten“ Teil der Tabelle in der SQL-Datenbank. Erwägen Sie die Erstellung einer Ansicht über den oberen Teil des zwischengespeicherten Teils der Tabelle und der externen Tabelle, die sowohl Tabellen vereint als auch Filter anwendet, die in der SQL-Datenbank und in SQL Data Warehouse materialisierte Daten trennt, die durch externe Tabellen offengelegt wurden.
 
   Stellen Sie sich vor, es müssten die Daten des letzten Jahrs in einer SQL-Datenbankinstanz gespeichert werden. Es gibt zwei Tabellen: Die **ext.Orders**-Tabelle, die auf die Data Warehouse-Auftragstabellen verweist, und die **dbo.Orders**-Tabelle, die die Daten der letzten Jahre in der SQL-Datenbankinstanz darstellt. Statt die Benutzer dazu aufzufordern, festzulegen, welche dieser Tabellen abgefragt werden soll, erstellen wir oberhalb der beiden Tabellen eine Ansicht am Partitionspunkt des letzten Jahres.
 
@@ -141,7 +141,11 @@ A: Ja. SQL-Datenbanken in einem Pool für elastische Datenbanken können elastis
 
 F: Gibt es eine Obergrenze für die Anzahl der Datenbanken, die ich für elastische Abfragen verwenden kann?
 
-A: Logische Server sind mit DTU-Grenzwerten versehen, um zu verhindern, dass Kunden versehentlich Mehrkosten entstehen. Wenn Sie neben einer SQL Data Warehouse-Instanz zusätzlich mehrere Datenbanken für elastische Abfragen aktivieren, kann es vorkommen, dass Sie unerwartet die Obergrenze erreichen. Senden Sie in diesem Fall eine Anfrage zur Erhöhung des DTU-Grenzwerts für Ihren logischen Server. Sie können Ihr Kontingent erhöhen, indem Sie ein [Supportticket erstellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) und als Anfragetyp *Kontingent* auswählen.
+A: Es gibt keine feste Obergrenze für die Anzahl der Datenbanken, die für elastische Abfragen verwendet werden können? Allerdings zählt jede elastische Abfrage (Abfragen, die SQL Data Warehouse treffen) zu den normalen Parallelitätsgrenzwerten.
+
+F: Gibt es DTU-Grenzwerte für elastische Abfragen?
+
+A: DTU-Grenzwerte werden für elastische Abfragen nicht anders vorgegeben. Die Standardrichtlinie ist, dass logische Server mit DTU-Grenzwerten versehen sind, um zu verhindern, dass Kunden versehentlich Mehrkosten entstehen. Wenn Sie neben einer SQL Data Warehouse-Instanz zusätzlich mehrere Datenbanken für elastische Abfragen aktivieren, kann es vorkommen, dass Sie unerwartet die Obergrenze erreichen. Senden Sie in diesem Fall eine Anfrage zur Erhöhung des DTU-Grenzwerts für Ihren logischen Server. Sie können Ihr Kontingent erhöhen, indem Sie ein [Supportticket erstellen](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) und als Anfragetyp *Kontingent* auswählen.
 
 F: Kann ich bei elastischen Abfragen die Sicherheit auf Zeilenebene bzw. dynamische Datenmaskierung (DDM) anwenden?
 

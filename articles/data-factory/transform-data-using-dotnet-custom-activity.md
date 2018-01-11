@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shengc
-ms.openlocfilehash: e470071ca0ff45fce0a410b18ea9a91e1925af4b
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 9673c5ad3ae48f9f2b8a47165b739cc2431060ae
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -107,7 +107,7 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 | Eigenschaft              | Beschreibung                              | Erforderlich |
 | :-------------------- | :--------------------------------------- | :------- |
-| Name                  | Name der Aktivität in der Pipeline     | Ja      |
+| name                  | Name der Aktivität in der Pipeline     | Ja      |
 | Beschreibung           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
 | Typ                  | Für die benutzerdefinierte Aktivität ist der Aktivitätstyp **Custom**. | Ja      |
 | linkedServiceName     | Mit Azure Batch verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  | Ja      |
@@ -308,14 +308,30 @@ Wenn Sie den Inhalt von „stdout.txt“ in nachgelagerten Aktivitäten nutzen m
 
   Mit den Änderungen, die in der benutzerdefinierten Aktivität von Azure Data Factory V2 eingeführt wurden, können Sie nun mühelos eine eigene benutzerdefinierte Codelogik in Ihrer bevorzugten Programmiersprache schreiben und diese unter den von Azure Batch unterstützten Betriebssystemen Windows und Linux ausführen. 
 
+  Die folgende Tabelle beschreibt die Unterschied zwischen einer benutzerdefinierten Aktivität in Azure Data Factory V2 und einer (benutzerdefinierten) DotNet-Aktivität in Azure Data Factory V1: 
+
+
+|Unterschiede      |Benutzerdefinierte ADFv2-Aktivität      |(Benutzerdefinierte) ADFv1 DotNet-Aktivität      |
+| ---- | ---- | ---- |
+|Definition benutzerdefinierter Logik      |Durch Ausführen von ausführbaren Dateien (vorhandene oder eine eigene ausführbare Datei implementieren)      |Durch Implementieren einer .NET DLL      |
+|Ausführungsumgebung der benutzerdefinierten Logik      |Windows oder Linux      |Windows (.NET Framework 4.5.2)      |
+|Ausführung von Skripts      |Direkte Unterstützung der Ausführung von Skripts (z.B. „cmd /c echo hello world“ auf Windows-VM)      |Erfordert Implementierung in die .NET DLL      |
+|Dataset erforderlich      |Optional      |Erforderlich, um Aktivitäten zu verketten und Informationen weiterzugeben      |
+|Übergeben von Informationen von der Aktivität an benutzerdefinierte Logik      |Über „ReferenceObjects“ („LinkedServices“ und „Datasets“) und „ExtendedProperties“ (benutzerdefinierte Eigenschaften)      |Über „ExtendedProperties“ (benutzerdefinierte Eigenschaften), Ein- und Ausgabedatasets      |
+|Abrufen von Informationen in benutzerdefinierte Logik      |Analysieren der Dateien „activity.json“, „linkedServices.json“ und „datasets.json“, die im selben Ordner wie die ausführbare Datei gespeichert sind      |Über .NET SDK (.NET Framework 4.5.2)      |
+|Protokollierung      |Schreibt direkt in STDOUT      |Implementieren der Protokollierung in .NET DLL      |
+
+
   Wenn Sie bereits über einen .NET-Code verfügen, der für die (benutzerdefinierte) DotNet-Aktivität von V1 geschrieben wurde, müssen Sie den Code gemäß den folgenden allgemeinen Richtlinien für diese ändern, damit sie mit einer benutzerdefinierten Aktivität von V2 funktionieren:  
 
-  > - Ändern Sie das Projekt von einer .NET-Klassenbibliothek in eine Konsolen-App. 
-  > - Starten Sie Ihre Anwendung mit der Main-Methode. Die Execute-Methode der IDotNetActivity-Schnittstelle ist nicht mehr erforderlich. 
-  > - Lesen und analysieren Sie die verknüpften Dienste, Datasets und Aktivitäten mit dem JSON-Serialisierungsmodul statt als stark typisierte Objekten, und übergeben Sie die Werte der erforderlichen Eigenschaften an Ihre eigene Hauptcodelogik. Ein Beispiel finden Sie im vorangehenden Code von „SampleApp.exe“. 
-  > - Das Protokollierungsobjekt wird nicht mehr unterstützt. Ausführbare Ausgaben können über die Konsole ausgegeben und werden in „stdout.txt“ gespeichert. 
-  > - Das NuGet-Paket „Microsoft.Azure.Management.DataFactories“ ist nicht mehr erforderlich. 
-  > - Kompilieren Sie Ihren Code, laden Sie ausführbare Dateien und Abhängigkeiten in Azure Storage hoch, und definieren Sie den Pfad in der folderPath-Eigenschaft. 
+   - Ändern Sie das Projekt von einer .NET-Klassenbibliothek in eine Konsolen-App. 
+   - Starten Sie Ihre Anwendung mit der Main-Methode. Die Execute-Methode der IDotNetActivity-Schnittstelle ist nicht mehr erforderlich. 
+   - Lesen und analysieren Sie die verknüpften Dienste, Datasets und Aktivitäten mit dem JSON-Serialisierungsmodul statt als stark typisierte Objekten, und übergeben Sie die Werte der erforderlichen Eigenschaften an Ihre eigene Hauptcodelogik. Ein Beispiel finden Sie im vorangehenden Code von „SampleApp.exe“. 
+   - Das Protokollierungsobjekt wird nicht mehr unterstützt. Ausführbare Ausgaben können über die Konsole ausgegeben und werden in „stdout.txt“ gespeichert. 
+   - Das NuGet-Paket „Microsoft.Azure.Management.DataFactories“ ist nicht mehr erforderlich. 
+   - Kompilieren Sie Ihren Code, laden Sie ausführbare Dateien und Abhängigkeiten in Azure Storage hoch, und definieren Sie den Pfad in der folderPath-Eigenschaft. 
+
+Ein vollständiges Beispiel dafür, wie die im Data Factory V1-Dokument beschriebene End-to-End-DLL und das Pipelinebeispiel [Verwenden benutzerdefinierter Aktivitäten in einer Azure Data Factory-Pipeline](https://docs.microsoft.com/en-us/azure/data-factory/v1/data-factory-use-custom-activities) in den Stil einer benutzerdefinierten Data Factory V2-Aktivität umgeschrieben werden können, finden Sie hier: [Beispiel einer benutzerdefinierten Data Factory V2-Aktivität](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample). 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Automatische Skalierung von Azure Batch
 Sie können einen Azure Batch-Pool auch mit dem Feature **Automatisch skalieren** erstellen. Sie können z.B. einen Azure Batch-Pool ohne dedizierte VM erstellen und dabei eine Formel für die automatische Skalierung angeben, die von der Anzahl der ausstehenden Aufgaben abhängig ist. 

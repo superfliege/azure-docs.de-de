@@ -5,20 +5,20 @@ services: active-directory
 keywords: "Passthrough-Authentifizierung mit Azure AD Connect, Active Directory installieren, erforderliche Komponenten für Azure AD, SSO, einmaliges Anmelden"
 documentationcenter: 
 author: swkrish
-manager: femila
+manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 12/12/2017
 ms.author: billmath
-ms.openlocfilehash: a7edfd1939ad45dd3309fe5eaee2afa36086e9eb
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 98de47eab2636277acfd6393a7574ae18487bc6a
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory-Passthrough-Authentifizierung: aktuelle Einschränkungen
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 12/06/2017
 Folgende Szenarios werden vollständig unterstützt:
 
 - Benutzeranmeldungen bei allen webbrowserbasierten Anwendungen
-- Benutzeranmeldungen bei Office 365-Clientanwendungen, die die [moderne Authentifizierung](https://aka.ms/modernauthga) unterstützen
-- Office 2016 und Office 2013 _mit_ moderner Authentifizierung
+- Benutzeranmeldungen bei Office-Anwendungen, die die [moderne Authentifizierung](https://aka.ms/modernauthga) unterstützen: Office 2016 und Office 2013 _mit_ moderner Authentifizierung
+- Benutzeranmeldungen bei Skype for Business, die moderne Authentifizierung unterstützen, einschließlich Online- und Hybridtopologien. Weitere Informationen zu unterstützten Topologien finden Sie [hier](https://technet.microsoft.com/library/mt803262.aspx).
 - Azure AD-Domänenbeitritte für Windows 10-Geräte
 - Unterstützung für Exchange ActiveSync
 
@@ -40,11 +40,11 @@ Folgende Szenarios werden vollständig unterstützt:
 Folgende Szenarios werden _nicht_ unterstützt:
 
 - Benutzeranmeldungen bei älteren Office-Clientanwendungen Office 2010 und Office 2013 _ohne_ moderne Authentifizierung. Organisationen wird empfohlen, möglichst zur modernen Authentifizierung zu wechseln. Die moderne Authentifizierung ermöglicht die Unterstützung der Passthrough-Authentifizierung. Sie trägt zudem mit Features für [bedingten Zugriff](../active-directory-conditional-access-azure-portal.md) wie etwa Multi-Factor Authentication (MFA) auch zum Schutz Ihrer Benutzerkonten bei.
-- Benutzeranmeldungen bei Skype for Business-Clientanwendungen, inklusive Skype for Business 2016
+- Benutzeranmeldungen bei Skype for Business-Clientanwendungen _ohne_ moderne Authentifizierung.
 - Benutzeranmeldungen bei PowerShell Version 1.0. Es empfiehlt sich, PowerShell 2.0 zu verwenden.
-- Azure Active Directory Domain Services
 - App-Kennwörter für Multi-Factor Authentication
 - Erkennen von Benutzern mit [kompromittierten Anmeldeinformationen](../active-directory-reporting-risk-events.md#leaked-credentials).
+- Für Azure AD Domain Services muss Kennworthashsynchronisierung auf dem Mandanten aktiviert sein. Aus diesem Grund funktionieren Mandanten, die Pass-Through-Authentifizierung verwenden, _nur_ in Szenarien nicht, die Azure AD Domain Services benötigen.
 
 >[!IMPORTANT]
 >Zur _ausschließlichen_ Umgehung nicht unterstützter Szenarien können Sie im Azure AD Connect-Assistenten auf der Seite [Optionale Features](active-directory-aadconnect-get-started-custom.md#optional-features) die Kennworthashsynchronisierung aktivieren.

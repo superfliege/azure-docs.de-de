@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2017
 ms.author: jingwang
-ms.openlocfilehash: 4b970341f9511a889bfcc288756b1be6a4f4647e
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 350ce0fd9a10d862e811dd1eaa39e0e90076e1ef
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="azure-data-factory-service-identity"></a>Azure Data Factory-Dienstidentität
 
@@ -172,3 +172,5 @@ Lesen Sie die folgenden Themen, die Ihnen zeigen, wann und wie Sie die Data Fact
 
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md)
 - [Kopieren von Daten von/zu Azure Data Lake Store mit verwalteter Dienstidentitätsauthentifizierung](connector-azure-data-lake-store.md)
+
+Unter [Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen](~/articles/active-directory/msi-overview.md) finden Sie weitere Informationen zur verwalteten Dienstidentität, auf der die Data Factory-Dienstidentität basiert. 

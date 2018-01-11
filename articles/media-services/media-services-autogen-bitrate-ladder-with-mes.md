@@ -6,29 +6,28 @@ documentationcenter:
 author: juliako
 manager: cfowler
 editor: 
-ms.assetid: 63ed95da-1b82-44b0-b8ff-eebd535bc5c7
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: b5616aa9f8b15ab576d914fbae89a56f64c27f4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ffced8e11f05d214995f9fc8506dd7c6c7deaa5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 #  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Verwenden von Azure Media Encoder Standard zum automatischen Generieren einer Reihe von Bitraten
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Thema wird gezeigt, wie Sie mit Media Encoder Standard (MES) automatisch eine Reihe von Bitraten/Auflösungs-Paaren auf Basis der eingegebenen Auflösung und Bitrate generieren können. Die automatisch generierte Voreinstellung wird nie die eingegebene Auflösung und Bitrate übersteigen. Ist die Eingabe beispielsweise 720p bei 3MBit/s, bleibt die Ausgabe bestenfalls bei 720p, und es beginnt mit niedrigeren Raten als 3MBit/s.
+In diesem Artikel wird gezeigt, wie Sie mit Media Encoder Standard (MES) automatisch eine Reihe von Bitraten/Auflösungs-Paaren auf Basis der eingegebenen Auflösung und Bitrate generieren können. Die automatisch generierte Voreinstellung wird nie die eingegebene Auflösung und Bitrate übersteigen. Ist die Eingabe beispielsweise 720p bei 3 MBit/s, bleibt die Ausgabe bestenfalls bei 720p, und es beginnt mit niedrigeren Raten als 3 MBit/s.
 
 ### <a name="encoding-for-streaming-only"></a>Codierung nur für Streaming
 
-Wenn Sie Ihr Quellvideo nur für das Streamen codieren möchten, verwenden Sie die Voreinstellung „Adaptives Streaming“, wenn Sie eine Codierungsaufgabe erstellen. Bei Verwendung der Voreinstellung **Adaptives Streaming** begrenzt der MES-Encoder eine Reihe von Bitraten/Auflösungs-Paaren intelligent. Allerdings können Sie die Codierungskosten nicht steuern, da der Dienst bestimmt, wie viele Ebenen bei welcher Auflösung verwendet werden. Am Ende dieses Themas finden Sie Beispiele von Ausgabeebenen, die von MES als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden. Das Ausgabeasset wird MP4-Dateien enthalten, wo Audio- und Videodaten sich nicht überlappen.
+Wenn Sie Ihr Quellvideo nur für das Streamen codieren möchten, verwenden Sie die Voreinstellung „Adaptives Streaming“, wenn Sie eine Codierungsaufgabe erstellen. Bei Verwendung der Voreinstellung **Adaptives Streaming** begrenzt der MES-Encoder eine Reihe von Bitraten/Auflösungs-Paaren intelligent. Allerdings können Sie die Codierungskosten nicht steuern, da der Dienst bestimmt, wie viele Ebenen bei welcher Auflösung verwendet werden. Am Ende dieses Artikels finden Sie Beispiele von Ausgabeebenen, die von MES als Ergebnis der Codierung mit der Voreinstellung **Adaptives Streaming** erzeugt wurden. Das Ausgabeasset enthält MP4-Dateien, wo Audio- und Videodaten sich nicht überlappen.
 
 ### <a name="encoding-for-streaming-and-progressive-download"></a>Codieren für das Streamen und den progressiven Download
 
@@ -41,7 +40,7 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
 - Erstellen eines Codierungsauftrags.
 - Abrufen eines Verweises auf den Media Encoder Standard-Encoder
 - Fügen Sie dem Auftrag eine Codierungsaufgabe hinzu, und geben Sie die Verwendung der Voreinstellung **Adaptives Streaming** an. 
-- Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
+- Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
 - Übermitteln des Auftrags.
 
@@ -51,28 +50,37 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel
 
-    using System;
-    using System.Configuration;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Threading;
+```
+using System;
+using System.Configuration;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
 
-    namespace AdaptiveStreamingMESPresest
+namespace AdaptiveStreamingMESPresest
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         // Field for service context.
         private static CloudMediaContext _context = null;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -122,26 +130,26 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
             Console.WriteLine("  Current state: " + e.CurrentState);
             switch (e.CurrentState)
             {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-            case JobState.Error:
+                case JobState.Finished:
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                    break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                    Console.WriteLine("Please wait...\n");
+                    break;
+                case JobState.Canceled:
+                case JobState.Error:
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
 
-                // Display or log error details as needed.
-                break;
-            default:
-                break;
+                    // Display or log error details as needed.
+                    break;
+                default:
+                    break;
             }
         }
         private static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
@@ -150,12 +158,13 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
             ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
             if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
             return processor;
         }
-        }
     }
+}
+```
 
 ## <a id="output"></a>Ausgabe
 

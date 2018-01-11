@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 812acea414096880c2b80958cb7c6f410f0d9c98
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.
@@ -45,10 +45,10 @@ Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In
     Ranger kann derzeit nur mit Yarn und Hive verwendet werden.
 
 ## <a name="create-domain-users"></a>Erstellen von Domänenbenutzern
-In [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]) haben Sie „hiveuser1“ und „hiveuser2“ erstellt. Diese beiden Benutzerkonten werden in diesem Tutorial verwendet.
+In [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]) haben Sie „hiveuser1“ und „hiveuser2“ erstellt. Diese beiden Benutzerkonten werden in diesem Tutorial verwendet.
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
-In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden in [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md#create-and-configure-azure-ad-ds-for-your-azure-ad) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]) erstellt.  Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
+In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf „hivesampletable“. Sie erteilen für bestimmte Spaltengruppen die Berechtigung „Auswählen“. Beide Benutzer wurden in [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md#optional-create-ad-users-and-groups) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]) erstellt.  Im nächsten Abschnitt testen Sie die beiden Richtlinien in Excel.
 
 **So erstellen Sie Ranger-Richtlinien**
 
@@ -138,7 +138,7 @@ So testen Sie die zweite Richtlinie (read-hivesampletable-devicemake), die Sie i
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Konfigurieren eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Configure Domain-joined HDInsight clusters (Preview)](apache-domain-joined-configure.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]).
-* Informationen zum Verwalten eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Manage Domain-joined HDInsight clusters (Preview)](apache-domain-joined-manage.md) (Verwalten von in die Domäne eingebundenen HDInsight-Clustern [Vorschau]).
+* Informationen zum Verwalten eines in die Domäne eingebundenen HDInsight-Clusters finden Sie unter [Verwalten von in die Domäne eingebundenen HDInsight-Clustern](apache-domain-joined-manage.md).
 * Informationen zum Ausführen von Hive-Abfragen per SSH für in die Domäne eingebundene HDInsight-Cluster finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md#domainjoined).
 * Informationen zum Verbinden von Hive unter Verwendung von Hive JDBC finden Sie unter [Herstellen einer Verbindung mit Hive unter Azure HDInsight per Hive-JDBC-Treiber](../hadoop/apache-hadoop-connect-hive-jdbc-driver.md).
 * Informationen zum Verbinden von Excel mit Hadoop unter Verwendung von Hive ODBC finden Sie unter [Verbinden von Excel über den Microsoft Hive ODBC-Treiber mit Hadoop](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).

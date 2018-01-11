@@ -1,6 +1,6 @@
 ---
 title: "Nächste Schritte bei der Service Fabric-Projekterstellung | Microsoft Docs"
-description: "Dieser Artikel enthält Links zu einer Reihe wichtiger Entwicklungsaufgaben für Service Fabric."
+description: "Erfahren Sie mehr über das Anwendungsprojekt, das Sie gerade in Visual Studio erstellt haben.  Erfahren Sie, wie Sie mithilfe von Tutorials Dienste erstellen können, und erfahren Sie mehr über die Entwicklung von Diensten für Service Fabric."
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,74 +12,65 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/28/2017
+ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: e04f9e57c65da42da73a5ee6a0b601dcbb318aaa
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 17eb1e7c2184fe9cae19685a47ea80716292b754
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Ihre Service Fabric-Anwendung und nächste Schritte
-Ihre Azure Service Fabric-Anwendung wurde erstellt. Dieser Artikel beschreibt die Zusammensetzung des Projekts und einige mögliche nächste Schritte.
+Ihre Azure Service Fabric-Anwendung wurde erstellt. In diesem Artikel werden einige Tutorials zum Ausprobieren, der Aufbau Ihres Projekts, weitere interessante Informationen und mögliche nächste Schritte beschrieben.
 
-## <a name="your-application"></a>Ihre Anwendung
+## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Erste Schritte mit Tutorials, exemplarischen Vorgehensweisen und Beispielen
+Wollen Sie loslegen?  
+
+Arbeiten Sie sich durch das Tutorial zur .NET-Anwendung. Erfahren Sie, wie Sie [eine App](service-fabric-tutorial-create-dotnet-app.md) mit einem ASP.NET Core-Front-End und einem zustandsbehafteten Back-End erstellen, [die Anwendung](service-fabric-tutorial-deploy-app-to-party-cluster.md) auf einen Cluster bereitstellen, [CI/CD konfigurieren](service-fabric-tutorial-deploy-app-with-cicd-vsts.md) und die [Überwachung und Diagnose](service-fabric-tutorial-monitoring-aspnet.md) einrichten.
+
+Oder probieren Sie eine der folgenden exemplarischen Vorgehensweisen aus, und erstellen Sie Ihre(n) erste(n)...
+- [Reliable Services-Dienst in C# unter Windows](service-fabric-reliable-services-quick-start.md) 
+- [Reliable Actors-Dienst in C# unter Windows](service-fabric-reliable-actors-get-started.md) 
+- [Ausführbaren Gastdienst unter Windows](quickstart-guest-app.md) 
+- [Windows-Containeranwendung](service-fabric-get-started-containers.md) 
+
+Vielleicht sind Sie auch daran interessiert, unsere [Beispielanwendungen](http://aka.ms/servicefabricsamples) auszuprobieren.
+
+## <a name="have-questions-or-feedback--need-to-report-an-issue"></a>Haben Sie Fragen oder Feedback?  Möchten Sie ein Problem melden?
+Lesen Sie die [häufig gestellte Fragen](service-fabric-common-questions.md) und finden Sie Antworten zu den Funktionen und zur Verwendung von Service Fabric.
+
+[Supportoptionen](service-fabric-support.md) listet Foren unter StackOverflow und MSDN auf, in denen Fragen gestellt werden, sowie Optionen für das Melden von Problemen, das Erhalten von Support und das Übermitteln von Produktfeedback.
+
+## <a name="the-application-project"></a>Das Anwendungsprojekt
 Jede neue Anwendung umfasst ein Anwendungsprojekt. Es gibt möglicherweise je nach gewähltem Diensttyp ein oder zwei zusätzliche Projekte.
 
-### <a name="the-application-project"></a>Das Anwendungsprojekt
 Das Anwendungsprojekt besteht aus Folgendem:
 
 * Ein Satz von Verweisen auf die Dienste, aus denen die Anwendung besteht.
 * Drei Veröffentlichungsprofile („1-Node Local“, „5-Node Local“ und „Cloud“), die Sie zum Verwalten der Voreinstellungen für die Arbeit mit unterschiedlichen Umgebungen verwenden können – z.B. für den Clusterendpunkt und eine Einstellung, ob standardmäßig Upgradebereitstellungen ausgeführt werden sollen.
-* Drei Anwendungsparameterdateien (wie oben), mit denen Sie umgebungsspezifische Anwendungskonfigurationen verwalten können, wie z.B. die Anzahl der Partitionen, die für einen Dienst erstellt werden sollen.
-* einem Bereitstellungsskript, mit dem Sie Ihre Anwendung über die Befehlszeile oder als Teil einer automatisierten fortlaufenden Integrations- und Bereitstellungspipeline bereitstellen können
-* das Anwendungsmanifest, das die Anwendung beschreibt Das Manifest finden Sie im Ordner „ApplicationPackageRoot“.
-
-### <a name="stateless-service"></a>Zustandsloser Dienst
-Wenn Sie einen neuen zustandslosen Dienst hinzufügen, fügt Visual Studio Ihrer Lösung ein Dienstprojekt hinzu, das einen von `StatelessService`abstammenden Typ enthält. Der Dienst erhöht eine lokale Variable im Zähler schrittweise.
-
-### <a name="stateful-service"></a>Zustandsbehafteter Dienst
-Wenn Sie einen neuen zustandsbehafteten Dienst hinzufügen, fügt Visual Studio Ihrer Lösung ein Dienstprojekt hinzu, das einen von `StatefulService`abstammenden Typ enthält. Der Dienst erhöht einen Zähler schrittweise in seiner `RunAsync`-Methode und speichert das Ergebnis in einem `ReliableDictionary`.
-
-### <a name="actor-service"></a>Actordienst
-Wenn Sie einen neuen Reliable Actor hinzufügen, fügt Visual Studio zwei Projekte zur Projektmappe hinzu: ein Akteurprojekt und ein Schnittstellenprojekt.
-
-Das Actor-Projekt bietet Methoden zum Einrichten und Abrufen des Werts eines Zählers, der innerhalb des Zustands des Actors zuverlässig persistent ist. Das Projekt enthält eine Schnittstelle, die andere Dienste zum Aufrufen des Akteurs nutzen können.
-
-### <a name="stateless-web-api"></a>Zustandslose Web-API
-Das zustandslose Web-API-Projekt bietet einen einfachen Webdienst, den Sie zum Öffnen Ihrer Anwendung für externe Clients verwenden können. Weitere Informationen dazu, wie das Projekt aufgebaut ist, finden Sie unter [Erste Schritte: Web-API-Dienste von Service Fabric mit selbstgehostetem OWIN](service-fabric-reliable-services-communication-webapi.md).
+* Drei Anwendungsparameterdateien (wie oben), mit denen Sie umgebungsspezifische Anwendungskonfigurationen verwalten können, wie z.B. die Anzahl der Partitionen, die für einen Dienst erstellt werden sollen. Erfahren Sie, wie Sie [Ihre Anwendung für mehrere Umgebungen konfigurieren](service-fabric-manage-multiple-environment-app-configuration.md).
+* einem Bereitstellungsskript, mit dem Sie Ihre Anwendung über die Befehlszeile oder als Teil einer automatisierten fortlaufenden Integrations- und Bereitstellungspipeline bereitstellen können Erfahren Sie mehr über das [Bereitstellen von Anwendungen mithilfe von PowerShell](service-fabric-deploy-remove-applications.md).
+* das Anwendungsmanifest, das die Anwendung beschreibt Das Manifest finden Sie im Ordner „ApplicationPackageRoot“. Erfahren Sie mehr über [Anwendungs- und Dienstmanifeste](service-fabric-application-model.md).
 
 
-### <a name="aspnet-core"></a>ASP.NET Core
-Das Service Fabric SDK umfasst die gleichen ASP.NET Core-Vorlagen, die auch für eigenständige ASP.NET Core-Projekte verfügbar sind: leere Vorlage, [Web-API][aspnet-webapi] und [Webanwendung][aspnet-webapp].
 
-### <a name="guest-executables-and-guest-containers"></a>Ausführbare Gastanwendungsdateien und Gastcontainer
+## <a name="learn-more-about-the-programming-models"></a>Weitere Informationen zu den Programmiermodellen
+Service Fabric bietet verschiedene Methoden zum Schreiben und Verwalten von Diensten.  Hier folgen eine Übersicht und konzeptionelle Informationen zu [zustandslosen und zustandsbehafteten Reliable Services](service-fabric-reliable-services-introduction.md), [Reliable Actors](service-fabric-reliable-actors-introduction.md), [Containern](service-fabric-containers-overview.md), [ausführbaren Gastdateien](service-fabric-deploy-existing-app.md) und [zustandslosen und zustandsbehafteten ASP.NET Core-Diensten](service-fabric-reliable-services-communication-aspnetcore.md).
 
-Bei einer Service Fabric-Gastanwendung handelt es sich um einen Dienst, der nicht mit den Programmiermodellen der Plattform erstellt wird. Sie können die Binärdateien für eine Gastanwendung entweder [direkt im Anwendungspaket](service-fabric-deploy-existing-app.md) oder [über ein Containerimage](service-fabric-deploy-container.md) packen. In beiden Fällen werden in Visual Studio die erforderlichen Artefakte im Ordner **ApplicationPackageRoot** des Anwendungsprojekts erstellt. Ein neues Dienstprojekt wird in Visual Studio nicht erstellt, da der Code bereits an anderer Stelle vorhanden ist. Wenn Sie Ihre Gastprojekte zusammen mit dem Service Fabric-Anwendungsprojekt verwalten möchten, können Sie sie der gleichen Visual Studio-Projektmappe hinzufügen.
+## <a name="learn-about-service-communication"></a>Weitere Informationen zur Dienstkommunikation
+Eine Service Fabric-Anwendung besteht aus verschiedenen Diensten, die jeweils eine bestimmte Aufgabe ausführen. Diese Dienste können miteinander kommunizieren und es kann Clientanwendungen außerhalb des Clusters geben, die sich mit den Diensten verbinden und mit ihnen kommunizieren. Erfahren Sie, wie die [Kommunikation mit und zwischen Ihren Diensten](service-fabric-connect-and-communicate-with-services.md) in Service Fabric eingerichtet wird. 
+
+## <a name="learn-about-configuring-application-security"></a>Weitere Informationen zum Konfigurieren der Anwendungssicherheit
+Sie können Anwendungen sichern, die im Cluster unter verschiedenen Benutzerkonten ausgeführt werden. Mit Service Fabric werden auch die Ressourcen gesichert, die von Anwendungen zum Zeitpunkt der Bereitstellung in den Benutzerkonten genutzt werden, z.B. Dateien, Verzeichnisse und Zertifikate. So lässt sich erreichen, dass ausgeführte Anwendungen auch in einer gemeinsamen gehosteten Umgebung sicher voneinander abgegrenzt sind.  Erfahren Sie, wie Sie [Sicherheitsrichtlinien für Ihre Anwendung konfigurieren](service-fabric-application-runas-security.md).
+
+Ihre Anwendung kann vertrauliche Informationen (z. B. Speicherverbindungszeichenfolgen, Kennwörter oder andere Werte, die nicht als Nur-Text verarbeitet werden sollen) enthalten. Erfahren Sie, wie Sie [geheime Schlüssel in der Anwendung verwalten](service-fabric-application-secret-management.md).
+
+## <a name="learn-about-the-application-lifecycle"></a>Weitere Informationen zum Anwendungslebenszyklus
+Ähnlich wie auf anderen Plattformen durchläuft eine Service Fabric-Anwendung normalerweise die folgenden Phasen: Entwurf, Entwicklung, Test, Bereitstellung, Upgrade, Wartung und Deinstallation. [Dieser Artikel](service-fabric-application-lifecycle.md) bietet eine Übersicht über die APIs und wie sie von den verschiedenen Rollen während der Phasen des Service Fabric-Anwendungslebenszyklus verwendet werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-### <a name="create-an-azure-cluster"></a>Erstellen eines Azure-Clusters
-Das Service Fabric-SDK stellt einen lokalen Cluster zu Entwicklungs- und Testzwecken bereit. Informationen zum Erstellen eines Clusters in Azure finden Sie unter [Einrichten eines Service Fabric-Clusters im Azure-Portal][create-cluster-in-portal].
+- [Erstellen eines Windows-Clusters in Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+- Visualisieren Ihres Clusters, einschließlich der bereitgestellten Anwendungen und des physischen Layouts, mit [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md)
+- [Versionierung und Upgrade Ihrer Dienste](service-fabric-application-upgrade-tutorial.md)
 
-### <a name="publish-your-application-to-azure"></a>Veröffentlichen der Anwendung in Azure
-Sie können Ihre Anwendung direkt aus Visual Studio in einem Azure-Cluster veröffentlichen. Informationen dazu finden Sie unter [Veröffentlichen Ihrer Anwendung in Azure][publish-app-to-azure].
 
-### <a name="use-service-fabric-explorer-to-visualize-your-cluster"></a>Visualisieren des Clusters mit Service Fabric Explorer
-Service Fabric Explorer bietet eine einfache Möglichkeit zum Visualisieren Ihres Clusters, einschließlich der bereitgestellten Anwendungen und des physischen Layouts. Informationen dazu finden Sie unter [Visualisieren Ihres Clusters mit Service Fabric Explorer][visualize-with-sfx].
-
-### <a name="version-and-upgrade-your-services"></a>Versionierung und Upgrade Ihrer Dienste
-Service Fabric ermöglicht eine unabhängige Versionierung und Upgrades von unabhängigen Diensten in einer Anwendung. Weitere Informationen finden Sie unter [Versionierung und Upgrade Ihrer Dienste][app-upgrade-tutorial].
-
-### <a name="configure-continuous-integration-with-visual-studio-team-services"></a>Konfigurieren der Continuous Integration in Visual Studio Team Services
-Informationen zur Einrichtung eines Continuous Integration-Prozesses für Ihre Service Fabric-Anwendung finden Sie unter [Konfigurieren der Continuous Integration in Visual Studio Team Services][ci-with-vso].
-
-<!-- Links -->
-[add-web-frontend]: service-fabric-add-a-web-frontend.md
-[create-cluster-in-portal]: service-fabric-cluster-creation-via-portal.md
-[publish-app-to-azure]: service-fabric-manage-application-in-visual-studio.md
-[visualize-with-sfx]: service-fabric-visualizing-your-cluster.md
-[ci-with-vso]: service-fabric-set-up-continuous-integration.md
-[reliable-services-webapi]: service-fabric-reliable-services-communication-webapi.md
-[app-upgrade-tutorial]: service-fabric-application-upgrade-tutorial.md
-[aspnet-webapi]: https://docs.asp.net/en/latest/tutorials/first-web-api.html
-[aspnet-webapp]: https://docs.asp.net/en/latest/tutorials/first-mvc-app/index.html

@@ -4,7 +4,7 @@ description: "Leitfaden zur Problembehandlung für die Azure AD Domain Services"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 4bc8c604-f57c-4f28-9dac-8b9164a0cf0b
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 3acecdf753162ad703ff51acf40c34335bf6cdcb
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services – Leitfaden zur Problembehandlung
 Dieser Artikel enthält Tipps zur Behandlung von Problemen, die beim Einrichten oder Verwalten der Azure Active Directory Domain Services auftreten können.
@@ -57,13 +57,10 @@ Der Grund für diesen Fehler ist ein Namenskonflikt in Bezug auf den Domänennam
 
 Führen Sie die folgenden Schritte aus, um zu prüfen, ob diese Anwendung vorhanden ist, und sie ggf. zu löschen:
 
-1. Navigieren Sie zum **klassischen Azure-Portal** ([https://manage.windowsazure.com](https://manage.windowsazure.com)).
-2. Wählen Sie den Knoten **Active Directory** im linken Bereich aus.
-3. Wählen Sie den Azure AD-Mandanten (Verzeichnis) aus, für den Sie die Azure AD Domain Services aktivieren möchten.
-4. Navigieren Sie zur Registerkarte **Anwendungen** .
-5. Wählen Sie in der Dropdownliste die Option **Anwendungen im Besitz meines Unternehmens** aus.
-6. Suchen Sie nach einer Anwendung mit dem Namen **Azure AD Domain Services Sync**. Wenn die Anwendung vorhanden ist, löschen Sie sie.
-7. Aktivieren Sie die Azure AD Domain Services erneut, sobald Sie die Anwendung gelöscht haben.
+1. Navigieren Sie zum Abschnitt **Anwendungen** in Ihrem Azure AD-Verzeichnis im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps/menuId/).
+2. Wählen Sie **Alle Anwendungen** in der Dropdownliste **Anzeigen** aus. Wählen Sie **Alle** in der Dropdownliste **Anwendungsstatus** aus. Wählen Sie **Alle** in der Dropdownliste **Anwendungssichtbarkeit** aus.
+3. Geben Sie im Suchfeld **Synchronisierung der Azure AD Domain Services** ein. Wenn die Anwendung vorhanden ist, klicken Sie darauf, und klicken Sie dann in der Symbolleiste auf die Schaltfläche **Löschen**, um sie zu löschen.
+4. Aktivieren Sie die Azure AD Domain Services erneut, sobald Sie die Anwendung gelöscht haben.
 
 ### <a name="invalid-configuration"></a>Ungültige Konfiguration
 **Fehlermeldung**:
@@ -153,7 +150,7 @@ Azure AD schützt Sie vor dem versehentlichen Löschen von Benutzerobjekten. Wen
 
 Das Benutzerkonto behält in Ihrer verwalteten Domäne auch dann den deaktivierten Status bei, wenn Sie im Azure AD-Verzeichnis ein Benutzerkonto mit demselben UPN neu erstellen. Um das Benutzerkonto aus Ihrer verwalteten Domäne zu entfernen, müssen Sie die Löschung aus Ihrem Azure AD-Mandanten erzwingen.
 
-Um das Benutzerkonto vollständig aus Ihrer verwalteten Domäne zu entfernen, löschen Sie den Benutzer dauerhaft aus Ihrem Azure AD-Mandanten. Verwenden Sie hierzu das PowerShell-Cmdlet „Remove-MsolUser“ mit der Option „-RemoveFromRecycleBin“, wie in diesem [MSDN-Artikel](https://msdn.microsoft.com/library/azure/dn194132.aspx) beschrieben.
+Um das Benutzerkonto vollständig aus Ihrer verwalteten Domäne zu entfernen, löschen Sie den Benutzer dauerhaft aus Ihrem Azure AD-Mandanten. Verwenden Die das PowerShell-Cmdlet `Remove-MsolUser` mit der Option `-RemoveFromRecycleBin`, wie in diesem [MSDN-Artikel](https://msdn.microsoft.com/library/azure/dn194132.aspx) beschrieben wird.
 
 ## <a name="contact-us"></a>So erreichen Sie uns
 Wenden Sie sich an das Produktteam der Azure Active Directory Domain Services, um [Feedback zu geben oder Support zu erhalten](active-directory-ds-contact-us.md).

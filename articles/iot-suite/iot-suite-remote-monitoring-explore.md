@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: f4461b5c10ea4e4cce4c13cb590dd398c37cb7b6
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e57ad43cc9a82e3944e93c6500ad5740818d10cc
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>Erkunden der Funktionen der vorkonfigurierten Remoteüberwachungslösung
 
@@ -43,7 +43,7 @@ Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es
 Sie können das Contoso-Beispiel für die IoT-Bereitstellung nutzen, um sich mit den grundlegenden Szenarien vertraut zu machen, die im Lieferumfang der Remoteüberwachungslösung enthalten sind. Diese Szenarien basieren auf IoT-Bereitstellungen aus der Praxis. Sie werden die Remoteüberwachungslösung später wahrscheinlich an Ihre jeweiligen Anforderungen anpassen, aber anhand des Contoso-Beispiels lernen Sie erst einmal die Grundlagen kennen.
 
 > [!NOTE]
-> Wenn Sie die Befehlszeilenschnittstelle zum Bereitstellen der vorkonfigurierten Lösung verwendet haben, enthält die Datei `deployment-{your deployment name}-output.json` Informationen zur Bereitstellung, z.B. die URL für den Zugriff auf das bereitgestellte Beispiel.
+> Wenn Sie die Befehlszeilenschnittstelle zum Bereitstellen der vorkonfigurierten Lösung verwendet haben, enthält die Datei `deployment-{your deployment name}-output.json` Informationen zur Bereitstellung, z. B. die URL für den Zugriff auf das bereitgestellte Beispiel.
 
 Mit dem Contoso-Beispiel wird eine Reihe von simulierten Geräten und dazugehörigen Regeln bereitgestellt. Nachdem Sie sich mit den grundlegenden Szenarien vertraut gemacht haben, können Sie unter [Perform advanced device monitoring using the remote monitoring solution](iot-suite-remote-monitoring-monitor.md) (Durchführen der erweiterten Geräteüberwachung mit der Remoteüberwachungslösung) weitere Features der Lösung erkunden.
 
@@ -101,11 +101,11 @@ Ihnen als Bediener wird im Dashboard ein Alarm in Bezug auf den Druck einer Käl
 
 1. Wählen Sie **Device detail** (Gerätedetails).
 
-1. Klicken Sie zum Navigieren zur Seite **Wartung** in der Spalte **Explore Alarm** (Alarm untersuchen) neben dem Alarm im Alarmraster auf **...**.
+1. Navigieren Sie zur Seite **Wartung**, und wählen Sie **Wartung** im Navigationsmenü aus.
 
 Auf der Seite **Wartung** können Sie die Details der Regel anzeigen, über die der Druckalarm für die Kältemaschine ausgelöst wurde.
 
-1. Sie können die Anzahl von Alarmauslösungen, Bestätigungen und offene und geschlossene Alarme sehen:
+1. In der Liste der Benachrichtigungen wird die Anzahl von Alarmauslösungen, Bestätigungen und offenen und geschlossenen Alarmen angezeigt:
 
     ![Seite „Wartung“ mit Liste der ausgelösten Alarme](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
@@ -123,9 +123,9 @@ Sie haben nun das Problem und das zugeordnete Gerät identifiziert, für das der
 
     ![Auswählen des Geräts und Planen einer Aktion](media/iot-suite-remote-monitoring-explore/maintenanceschedule.png)
 
-1. Kehren Sie zum Anzeigen des Auftragsstatus auf die Seite **Wartung** zurück, und zeigen Sie die Liste mit den Aufträgen in der Ansicht **Systemstatus** an. Sie sehen, dass der Auftrag ausgeführt wird, um den Ventildruck in der Kältemaschine zu verringern:
+1. Kehren Sie zum Anzeigen des Auftragsstatus auf die Seite **Wartung** zurück, und zeigen Sie die Liste mit den Aufträgen in der Ansicht **Aufträge** an. Sie sehen, dass der Auftrag ausgeführt wird, um den Ventildruck in der Kältemaschine zu verringern:
 
-    ![Status der Aufträge unter „Systemstatus“](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
+    ![Status der Aufträge in der Ansicht „Aufträge“](media/iot-suite-remote-monitoring-explore/maintenancerunningjob.png)
 
 Bestätigen Sie abschließend, dass die Telemetriewerte der Kältemaschine wieder normal sind.
 
@@ -167,13 +167,13 @@ Verwenden Sie die Seite **Geräte**, um die erforderlichen Aufgaben für die Ger
 
 Sie können die Seite **Wartung** verwenden, um den Auftrag während der Ausführung nachzuverfolgen.
 
-1. Navigieren Sie zum Anzeigen der Liste mit den Aufträgen zur Seite **Wartung**, und klicken Sie auf **Systemstatus**.
+1. Navigieren Sie zum Anzeigen der Liste mit den Aufträgen zur Seite **Wartung**, und klicken Sie auf **Aufträge**.
 
 1. Suchen Sie nach dem Ereignis, das zu dem von Ihnen erstellten Auftrag gehört. Vergewissern Sie sich, dass der Prozess für das Firmwareupdate richtig initiiert wurde.
 
-Sie können einen Filter erstellen, um sicherzustellen, dass die Firmwareversion richtig aktualisiert wurde.
+Sie können einen Filter erstellen, um sicherzustellen, dass die Firmwareversion ordnungsgemäß aktualisiert wurde.
 
-1. Navigieren Sie zum Erstellen eines Filters zur Seite **Geräte**, und wählen Sie **Verwalten**:
+1. Navigieren Sie zum Erstellen eines Filters zur Seite **Geräte**, und wählen Sie **Filter verwalten** aus:
 
     ![Verwalten von Gerätefiltern](media/iot-suite-remote-monitoring-explore/devicesmanagefilters.png)
 
@@ -202,7 +202,7 @@ Sie können Tagnamen erstellen, die für Geräte verwendet werden.
 
     ![Auswählen von Prototyp- und LKW-Geräten](media/iot-suite-remote-monitoring-explore/devicesmultiselect.png)
 
-1. Wählen Sie die Option **Tag**, und erstellen Sie dann ein neues Zeichenfolgentag mit dem Namen **FieldService** und dem Wert **ConnectedVehicle**. Wählen Sie einen Namen für den Auftrag aus. Klicken Sie anschließend auf **Übernehmen**:
+1. Wählen Sie die Option **Tag**, und erstellen Sie dann ein neues Texttag namens **FieldService** und mit dem Wert **ConnectedVehicle**. Wählen Sie einen Namen für den Auftrag aus. Klicken Sie anschließend auf **Übernehmen**:
 
     ![Hinzufügen von Tags zu Prototyp- und LKW-Geräten](media/iot-suite-remote-monitoring-explore/devicesaddtag.png)
 
@@ -210,7 +210,7 @@ Sie können Tagnamen erstellen, die für Geräte verwendet werden.
 
     ![Auswählen der Geräte „Chiller“ (Kältemaschine), „Elevator“ (Aufzug) und „Engine“ (Motor)](media/iot-suite-remote-monitoring-explore/devicesmultiselect2.png)
 
-1. Wählen Sie die Option **Tag**, und erstellen Sie anschließend ein neues Tag mit dem Namen **FieldService** und dem Wert **SmartBuilding**. Wählen Sie einen Namen für den Auftrag aus. Klicken Sie anschließend auf **Speichern**:
+1. Wählen Sie die Option **Tag**, und erstellen Sie anschließend ein neues Texttag mit dem Namen **FieldService** und dem Wert **SmartBuilding**. Wählen Sie einen Namen für den Auftrag aus. Klicken Sie anschließend auf **Speichern**:
 
     ![Hinzufügen eines Tags zu den Geräten „Chiller“ (Kältemaschine), „Engine“ (Motor) und „Elevator“ (Aufzug)](media/iot-suite-remote-monitoring-explore/devicesaddtag2.png)
 

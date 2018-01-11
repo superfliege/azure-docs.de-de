@@ -3,7 +3,7 @@ title: Erste Schritte mit Azure Automation DSC | Microsoft Docs
 description: "Erläuterung und Beispiele für die gängigsten Aufgaben in Azure Automation DSC (Desired State Configuration, Konfiguration des gewünschten Zustands)"
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: a3816593-70a3-403b-9a43-d5555fd2cee2
@@ -13,26 +13,26 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
-ms.author: magoedte;eslesar
-ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: magoedte;gwallace
+ms.openlocfilehash: e8b7d0d38f59589cbe6f82798b4e725af7b20e23
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Erste Schritte mit Azure Automation DSC
-In diesem Thema wird erläutert, wie die gängigsten Aufgaben mit Azure Automation Desired State Configuration (DSC) ausgeführt werden, z.B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md). Die DSC-Dokumentation finden Sie unter [Windows PowerShell DSC – Übersicht](https://msdn.microsoft.com/PowerShell/dsc/overview).
+In diesem Artikel wird erläutert, wie die gängigsten Aufgaben mit Azure Automation Desired State Configuration (DSC) ausgeführt werden, z. B. Erstellen, Importieren und Kompilieren von Konfigurationen, Hinzufügen zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über Azure Automation DSC finden Sie unter [Azure Automation DSC – Übersicht](automation-dsc-overview.md). Die DSC-Dokumentation finden Sie unter [Windows PowerShell DSC – Übersicht](https://msdn.microsoft.com/PowerShell/dsc/overview).
 
-Dieses Thema bietet eine detaillierte Anleitung zur Verwendung von Azure Automation DSC. Wenn Sie eine Beispielumgebung wünschen, die bereits eingerichtet ist, ohne die in diesem Thema beschriebenen Schritte zu befolgen, können Sie [diese ARM-Vorlage](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)verwenden. Mit dieser Vorlage wird eine vollständige Azure Automation DSC-Umgebung eingerichtet, einschließlich einer Azure-VM, die von Azure Automation DSC verwaltet wird.
+Dieser Artikel bietet eine detaillierte Anleitung zur Verwendung von Azure Automation DSC. Wenn Sie eine Beispielumgebung wünschen, die bereits eingerichtet ist, ohne die in diesem Artikel beschriebenen Schritte zu befolgen, können Sie die folgende [Resource Manager-Vorlage](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup) verwenden. Mit dieser Vorlage wird eine vollständige Azure Automation DSC-Umgebung eingerichtet, einschließlich einer Azure-VM, die von Azure Automation DSC verwaltet wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Um die Beispiele in diesem Thema ausführen zu können, ist Folgendes erforderlich:
+Um die Beispiele in diesem Artikel ausführen zu können, ist Folgendes erforderlich:
 
 * Ein Azure Automation-Konto. Informationen zum Erstellen eines ausführenden Azure Automation-Kontos finden Sie unter [Azure Run As Account](automation-sec-configure-azure-runas-account.md)(Ausführendes Azure-Konto).
 * Eine Azure Resource Manager-VM (nicht klassisch) unter Windows Server 2008 R2 oder höher. Eine Anleitung zum Erstellen einer VM finden Sie unter [Erstellen Ihres ersten virtuellen Windows-Computers im Azure-Portal](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>Erstellen einer DSC-Konfiguration
-Wir erstellen eine einfache [DSC-Konfiguration](https://msdn.microsoft.com/powershell/dsc/configurations), die abhängig von der Knotenzuweisung entweder das Vorhandensein oder Nichtvorhandensein des Windows- bzw. IIS-Features **Web-Server** sicherstellt.
+Sie erstellen eine einfache [DSC-Konfiguration](https://msdn.microsoft.com/powershell/dsc/configurations), die abhängig von der Knotenzuweisung entweder das Vorhandensein oder Nichtvorhandensein des Windows- bzw. IIS-Features **Web-Server** sicherstellt.
 
 1. Öffnen Sie die Windows PowerShell ISE (oder einen beliebigen Texteditor).
 2. Geben Sie den folgenden Text ein:
@@ -67,9 +67,9 @@ Wir erstellen eine einfache [DSC-Konfiguration](https://msdn.microsoft.com/power
 Diese Konfiguration ruft in jedem Knotenblock die Ressource [WindowsFeature](https://msdn.microsoft.com/powershell/dsc/windowsfeatureresource)auf, die das Vorhandensein oder Nichtvorhandensein des Features **Web-Server** sicherstellt.
 
 ## <a name="importing-a-configuration-into-azure-automation"></a>Importieren einer Konfiguration in Azure Automation
-Als Nächstes importieren wir die Konfiguration in das Automation-Konto.
+Als Nächstes importieren Sie die Konfiguration in das Automation-Konto.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie im Menü „Hub“ auf **Alle Ressourcen** und dann auf den Namen des Automation-Kontos.
 3. Klicken Sie auf dem Blatt **Automation-Konto** auf **DSC-Konfigurationen**.
 4. Klicken Sie auf dem Blatt **DSC-Konfigurationen** auf **Konfiguration hinzufügen**.
@@ -129,7 +129,7 @@ Bei erfolgreicher Erstellung eines Kompilierungsauftrags werden eine oder mehrer
     ![Screenshot des Blatts „DSC-Knotenkonfigurationen“](./media/automation-dsc-getting-started/NodeConfigs.png)
 
 ## <a name="onboarding-an-azure-vm-for-management-with-azure-automation-dsc"></a>Integrieren einer Azure-VM in die Verwaltung mit Azure Automation DSC
-Mit Azure Automation DSC können Sie Azure-VMs (mit dem klassischen oder Resource Manager-Modell), lokale VMs, Linux-Computer, AWS-VMs und lokale physische Computer verwalten. In diesem Thema wird das Integrieren in die Verwaltung von ausschließlich Azure Resource Manager-VMs behandelt. Informationen zum Integrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
+Mit Azure Automation DSC können Sie Azure-VMs (mit dem klassischen oder Resource Manager-Modell), lokale VMs, Linux-Computer, AWS-VMs und lokale physische Computer verwalten. In diesem Artikel erfahren Sie, wie ausschließlich Azure Resource Manager-VMs integriert werden. Informationen zum Integrieren anderer Computertypen finden Sie unter [Integrieren von Computern für die Verwaltung durch Azure Automation DSC](automation-dsc-onboarding.md).
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>So integrieren Sie eine Azure Resource Manager-VM in die Verwaltung mit Azure Automation DSC
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.

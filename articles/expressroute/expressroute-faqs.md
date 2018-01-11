@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
-ms.openlocfilehash: 0456cde7e30e9b25f8baebdcd15e0e029f89d7ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b8b547e3fc57d51f35aa7ca31b76f09593bb5f1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -117,15 +117,15 @@ Die Voraussetzungen finden Sie auf der Seite [ExpressRoute-Voraussetzungen](expr
 
 ### <a name="are-connections-to-expressroute-redundant"></a>Sind Verbindungen mit ExpressRoute redundant?
 
-Ja. Jede ExpressRoute-Verbindung verfügt über ein redundantes Paar von Querverbindungen mit hoher Verfügbarkeit.
+Ja. Jede ExpressRoute-Verbindung verfügt über ein redundantes Paar von Querverbindungen mit Hochverfügbarkeit.
 
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>Geht die Konnektivität verloren, wenn einer meiner ExpressRoute-Links ausfällt?
 
 Wenn eine der Querverbindungen ausfällt, bleibt die Konnektivität bestehen. Es steht eine redundante Verbindung zur Verfügung, um die Auslastung des Netzwerks zu unterstützen. Sie können zudem mehrere Verbindungen an einem anderen Peeringstandort erstellen, um die Ausfallsicherheit bei einem Fehler sicherzustellen.
 
-## <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Wie stelle ich hohe Verfügbarkeit in einem mit ExpressRoute verbundenen virtuellen Netzwerk sicher?
+## <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>Wie stelle ich Hochverfügbarkeit in einem mit ExpressRoute verbundenen virtuellen Netzwerk sicher?
 
-Hohe Verfügbarkeit erreichen Sie, indem Sie mehrere ExpressRoute-Verbindungen an verschiedenen Peeringstandorten mit Ihrem virtuellen Netzwerk verbinden. Wenn beispielsweise ein ExpressRoute-Standort ausfällt, erfolgt ein Failover der Verbindung auf einen anderen ExpressRoute-Standort. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Details zur Verbindungsgewichtung finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
+Hochverfügbarkeit erreichen Sie, indem Sie mehrere ExpressRoute-Verbindungen an verschiedenen Peeringstandorten mit Ihrem virtuellen Netzwerk verbinden. Wenn beispielsweise ein ExpressRoute-Standort ausfällt, erfolgt ein Failover der Verbindung auf einen anderen ExpressRoute-Standort. Standardmäßig wird Datenverkehr, der Ihr virtuelles Netzwerk verlässt, auf der Grundlage von ECMP (Equal Cost Multi-path Routing) weitergeleitet. Mit der Verbindungsgewichtung können Sie einer Verbindung den Vorzug geben. Weitere Details zur Verbindungsgewichtung finden Sie unter [Optimieren von ExpressRoute-Routing](expressroute-optimize-routing.md).
 
 ### <a name="onep2plink"></a>Wenn ich mich nicht am selben Standort wie ein Cloud Exchange befinde und mein Dienstanbieter Punkt-zu-Punkt-Verbindungen bereitstellt, muss ich zwei physische Verbindungen zwischen meinem lokalen Netzwerk und Microsoft anfordern?
 
@@ -181,7 +181,7 @@ Weitere Informationen finden Sie unter [Freigeben einer ExpressRoute-Verbindung 
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>Sind virtuelle Netzwerke, die mit der gleichen Verbindung verbunden sind, voneinander isoliert?
 
-Nein. Aus Routingsicht sind alle virtuellen Netzwerke, die mit derselben ExpressRoute-Verbindung verknüpft sind, Teil derselben Routingdomäne und nicht voneinander isoliert. Wenn Sie eine Isolierung der Routen benötigen, müssen Sie zuerst eine separate ExpressRoute-Verbindung erstellen.
+Nr. Aus Routingsicht sind alle virtuellen Netzwerke, die mit derselben ExpressRoute-Verbindung verknüpft sind, Teil derselben Routingdomäne und nicht voneinander isoliert. Wenn Sie eine Isolierung der Routen benötigen, müssen Sie zuerst eine separate ExpressRoute-Verbindung erstellen.
 
 ### <a name="can-i-have-one-virtual-network-connected-to-more-than-one-expressroute-circuit"></a>Kann mehr als ein virtuelles Netzwerk mit mehr als einer ExpressRoute-Verbindung verbunden sein?
 

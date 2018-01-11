@@ -4,7 +4,7 @@ description: "Auf dieser Seite finden Sie häufig gestellte Fragen zu Azure AD C
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9d11795aa8b768a8574c3f8bc375b74402825ba3
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 13f12f39fb72bd7d4e32056753a012c38034f807
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Häufig gestellte Fragen zu Azure Active Directory Connect
 
@@ -35,6 +35,11 @@ Dies wird in den Builds ab Februar 2016 unterstützt.
 Ja. Nach der Installation des Agents können Sie den Registrierungsprozess abschließen, indem Sie das folgende PowerShell-Cmdlet verwenden: 
 
 `Register-AzureADConnectHealthADDSAgent -Credentials $cred`
+
+**F: Unterstützt AADConnect die Synchronisierung aus zwei Domänen mit Azure AD?**</br>
+Ja, diese Möglichkeit wird unterstützt. Weitere Informationen finden Sie unter [Mehrere Domänen](active-directory-aadconnect-multiple-domains.md).
+ 
+**F: Werden mehrere Connectors für dieselbe Active Directory-Domäne in Azure AD Connect unterstützt?**</br> Nein, dies wird nicht unterstützt. 
 
 ## <a name="network"></a>Netzwerk
 **F: Die maximale Länge für offene Verbindungen in meinem Netzwerk wird durch eine Firewall, ein Netzwerkgerät o. ä. eingeschränkt. Wie hoch sollte der clientseitige Schwellenwert für die Zeitüberschreitung bei der Verwendung von Azure AD Connect sein?**  
@@ -78,8 +83,6 @@ Nein, dies wird derzeit nicht unterstützt.
 **F: Ist es möglich, das ImmutableId-Attribut manuell für vorhandene Azure AD-Gruppen-/Kontaktobjekte festzulegen, um eine Hard-Match-Zuordnung zu lokalen AD-Gruppen-/Kontaktobjekten durchzuführen?**  
 Nein, dies wird derzeit nicht unterstützt.
 
-
-
 ## <a name="custom-configuration"></a>Benutzerdefinierte Konfiguration
 **F: Wo sind die PowerShell-Cmdlets für Azure AD Connect dokumentiert?**  
 Mit Ausnahme der auf dieser Website dokumentierten Cmdlets werden keine PowerShell-Cmdlets in Azure AD Connect zur Verwendung für Kunden unterstützt.
@@ -95,8 +98,6 @@ Wir unterstützen derzeit keine Änderung der HTML-Attribute der Anmeldeseite. W
 
 **F: Gibt es eine Möglichkeit, gleichzeitige Sitzungen zu verhindern?**</br>
 Nein.
-
-
 
 ## <a name="troubleshooting"></a>Problembehandlung
 **F: Wie erhalte ich Hilfe zu Azure AD Connect?**

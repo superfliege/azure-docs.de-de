@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 12/07/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 4034fd0aa64627c107a43208dcca766f7f44d5d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5512be8ce5b9cf28bceb3468ec6032c0778156f4
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
-Ab Version 2.11 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z. B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte erfolgt durch **dynamische Manifeste**, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
+Ab Version 2.17 können Sie mit Media Services Filter für Ihre Medienobjekte definieren. Diese Filter sind serverseitige Regeln, mit denen Ihre Kunden verschiedene Aktionen ausführen können, z. B. Wiedergabe bestimmter Videoabschnitte (anstelle des gesamten Videos). Sie können zudem nur eine Teilmenge von Audio- und Videowiedergaben (anstelle von allen mit dem Medienobjekt verknüpften Wiedergaben) angeben, die für das Gerät eines Kunden geeignet sind. Diese Filterung der Medienobjekte erfolgt durch **dynamische Manifeste**, die auf Anfrage des Kunden zum Streamen von Videos basierend auf bestimmten Filtern erstellt werden.
 
 In diesem Thema werden allgemeine Szenarios behandelt, bei denen die Verwendung von Filtern für Ihre Kunden von großem Nutzen sein kann. Außerdem werden Links zu Themen vorgestellt, in denen die programmgesteuerte Erstellung von Filtern erläutert wird (derzeit können Sie Filter nur mit REST-APIs erstellen).
 
@@ -124,12 +124,12 @@ Ihre Medienobjekte können mehrere Audiosprachen enthalten, z. B. Englisch, Spa
 ![Filtern der Sprachspuren][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Kürzen des Starts eines Medienobjekts
-Bei den meisten Live-Streaming-Ereignissen führen Operatoren vor dem eigentlichen Ereignis einige Tests durch. Sie fügen z. B. die folgende Meldung vor dem Start des Ereignisses ein: "Programm beginnt sofort". Wenn das Programm archiviert wird, werden auch die Test- und Meldungsdaten archiviert und sind in der Präsentation enthalten. Diese Informationen sollten jedoch nicht auf den Clients angezeigt werden. Mit dynamischen Manifesten können Sie einen Filter für die Startzeit erstellen und die unerwünschten Daten aus dem Manifest entfernen.
+Bei den meisten Live-Streaming-Ereignissen führen Operatoren vor dem eigentlichen Ereignis einige Tests durch. Sie fügen z. B. die folgende Meldung vor dem Start des Ereignisses ein: "Programm beginnt sofort". Wenn das Programm archiviert wird, werden auch die Test- und Meldungsdaten archiviert und in die Präsentation einbezogen. Diese Informationen sollten jedoch nicht auf den Clients angezeigt werden. Mit dynamischen Manifesten können Sie einen Filter für die Startzeit erstellen und die unerwünschten Daten aus dem Manifest entfernen.
 
 ![Kürzen des Starts][trim_filter]
 
-## <a name="creating-sub-clips-views-from-a-live-archive"></a>Erstellen von Subclips (Ansichten) aus einem Livearchiv
-Viele Liveereignisse werden lange ausgeführt. Daher können Livearchive mehrere Ereignisse enthalten. Nach dem Ende des Liveereignisses möchten Sendeanstalten das Livearchiv möglicherweise in logische Sequenzen mit Programmstart und Programmende unterteilen. Anschließend sollen diese virtuellen Programme separat ohne Nachbearbeitung des Livearchivs veröffentlicht und keine separaten Medienobjekte erstellt werden (bei denen kein Nutzen aus den vorhandenen in den CDNs zwischengespeicherten Fragmenten gezogen wird). Beispiele für solche virtuellen Programme (Subclips) sind Halbzeiten eines Fußball- oder Basketballspiels, die Innings beim Baseball oder einzelne Wettbewerbe der Olympiade an einem bestimmten Nachmittag.
+## <a name="creating-subclips-views-from-a-live-archive"></a>Erstellen von Subclips (Ansichten) aus einem Livearchiv
+Viele Liveereignisse werden lange ausgeführt. Daher können Livearchive mehrere Ereignisse enthalten. Nach dem Ende des Liveereignisses möchten Sendeanstalten das Livearchiv möglicherweise in logische Sequenzen mit Programmstart und Programmende unterteilen. Anschließend sollen diese virtuellen Programme separat ohne Nachbearbeitung des Livearchivs veröffentlicht und keine separaten Medienobjekte erstellt werden (bei denen kein Nutzen aus den vorhandenen in den CDNs zwischengespeicherten Fragmenten gezogen wird). Beispiele für solche virtuellen Programme sind Halbzeiten eines Fußball- oder Basketballspiels, die Innings beim Baseball oder einzelne Wettbewerbe beliebiger Sportprogramme.
 
 Mit dynamischen Manifesten können Sie Filter mit Start- und Endzeiten sowie virtuelle Ansichten für Ihr Livearchiv erstellen. 
 
@@ -145,19 +145,19 @@ Zum gegenwärtigen Zeitpunkt umfasst Azure Media Services Umlaufarchive, bei den
 ![DVR-Fenster][dvr_filter]
 
 ## <a name="adjusting-livebackoff-live-position"></a>Anpassen von LiveBackoff (Liveposition)
-Mit der Filterung über Manifeste können mehrere Sekunden vom Rand eines Liveprogramms entfernt werden. So können Sendeanstalten die Präsentation am Vorschauveröffentlichungspunkt ansehen und Einfügepunkte für Werbespots erstellen, bevor die Zuschauer den Stream empfangen (normalerweise um 30 Sekunden zurückgehalten). Sendeanstalten können diese Werbespots dann an ihre Clientframeworks senden, sodass diese sie rechtzeitig empfangen und die Informationen vor der Ausstrahlung verarbeiten können.
+Mit der Filterung über Manifeste können mehrere Sekunden vom Rand eines Liveprogramms entfernt werden. Die Filterung gestattet es Sendeanstalten, die Präsentation am Vorschauveröffentlichungspunkt anzusehen und Einfügepunkte für Werbespots zu erstellen, bevor die Zuschauer den Stream empfangen (um 30 Sekunden zurückgehalten). Sendeanstalten können diese Werbespots dann an ihre Clientframeworks senden, sodass diese sie rechtzeitig empfangen und die Informationen vor der Ausstrahlung verarbeiten können.
 
-Neben der Unterstützung für Werbespots kann mithilfe von LiveBackoff die Livedownloadposition von Clients angepasst werden, sodass Clients anstelle der HHTP-Fehler 404 oder 412 weiterhin Fragmente empfangen, wenn sie den Rand des Livevideos erreichen.
+Neben der Unterstützung für Werbespots kann mithilfe der LiveBackoff-Einstellung die Betrachterposition angepasst werden, sodass Clients anstelle der HTTP-Fehler 404 oder 412 weiterhin Fragmente empfangen, wenn sie den Rand des Livevideos erreichen.
 
 ![livebackoff_filter][livebackoff_filter]
 
 ## <a name="combining-multiple-rules-in-a-single-filter"></a>Kombinieren mehrerer Regeln in einem Filter
-Sie können mehrere Filterregeln in ein und demselben Filter kombinieren. Als Beispiel können Sie eine Bereichsregel zum Entfernen von Meldungen aus einem Livearchiv definieren und zudem verfügbare Bitraten filtern. Das Endergebnis für mehrere Filterregeln ist die Mischung (nur die Schnittmenge) dieser Regeln.
+Sie können mehrere Filterregeln in ein und demselben Filter kombinieren. Als Beispiel können Sie eine „Bereichsregel“ zum Entfernen von Meldungen aus einem Livearchiv definieren und zudem verfügbare Bitraten filtern. Wenn mehrere Filterregeln angewendet werden, ist das Endergebnis die Schnittmenge aller Regeln.
 
 ![mehrere Regeln][multiple-rules]
 
 ## <a name="create-filters-programmatically"></a>Programmgesteuertes Erstellen von Filtern
-Im folgenden Thema werden Media Services-Entitäten beschrieben, die im Zusammenhang mit Filtern stehen. In diesem Thema wird auch erörtert, wie Filter programmgesteuert erstellt werden.  
+Im folgenden Artikel werden Media Services-Entitäten beschrieben, die im Zusammenhang mit Filtern stehen. In diesem Artikel wird auch erörtert, wie Filter programmgesteuert erstellt werden.  
 
 [Erstellen von Filtern mit REST-APIs](media-services-rest-dynamic-manifest.md).
 
@@ -166,15 +166,15 @@ Sie können auch mehrere Filter in einer einzelnen URL kombinieren.
 
 Das folgende Szenario zeigt, warum es sinnvoll sein kann, Filter zu kombinieren:
 
-1. Sie müssen Ihre Videoqualitäten für mobile Geräte wie Android oder iPAD filtern (um die Videoqualitäten einzuschränken). Zum Entfernen der unerwünschten Qualitäten würden Sie einen globalen Filter erstellen, der für die Geräteprofile geeignet ist. Wie bereits oben erwähnt, können globale Filter für alle Medienobjekte desselben Mediendienstkontos ohne weitere Zuordnung verwendet werden. 
+1. Sie müssen Ihre Videoqualitäten für mobile Geräte wie Android oder iPAD filtern (um die Videoqualitäten einzuschränken). Zum Entfernen der unerwünschten Qualitäten würden Sie einen globalen Filter erstellen, der für die Geräteprofile geeignet ist. Wie bereits zuvor in diesem Artikel erwähnt, können globale Filter für alle Medienobjekte desselben Mediendienstkontos ohne weitere Zuordnung verwendet werden. 
 2. Sie möchten außerdem die Start- und Endzeit Zeit eines Medienobjekts kürzen. Zu diesem Zweck erstellen Sie einen lokalen Filter und legen die Start- bzw. Endzeit fest. 
-3. Sie möchten die beiden Filter kombinieren (ohne Kombination müssten Sie den Qualitätsfilter zum Kürzungsfilter hinzufügen, was die Verwendung des Filters erschweren würde).
+3. Sie möchten die beiden Filter kombinieren (ohne Kombination müssen Sie den Qualitätsfilter zum Kürzungsfilter hinzufügen, was die Verwendung des Filters erschweren würde).
 
 Um Filter zu kombinieren, müssen Sie die Filternamen, durch Semikolons getrennt, zur Manifest-/Wiedergabelisten-URL hinzufügen. Angenommen, Sie verfügen über einen Filter mit dem Namen *MyMobileDevice* zum Filtern der Qualitäten und über einen weiteren Filter mit dem Namen *MyStartTime* zum Festlegen einer bestimmten Startzeit. Sie können diese Filter folgendermaßen kombinieren:
 
     http://teststreaming.streaming.mediaservices.windows.net/3d56a4d-b71d-489b-854f-1d67c0596966/64ff1f89-b430-43f8-87dd-56c87b7bd9e2.ism/Manifest(filter=MyMobileDevice;MyStartTime)
 
-Sie können bis zu 3 Filter kombinieren. 
+Sie können bis zu drei Filter kombinieren. 
 
 Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) Blog.
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 12/08/2017
 ms.author: asgang
-ms.openlocfilehash: dc7dff33aa2c3e844c6a91024fcfc98148416f7e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 209ec47388ee7291f8107df022e0c2bb202ba6b5
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Replizieren von virtuellen Azure-Computern in einer anderen Azure-Region
 
@@ -76,13 +76,13 @@ Im Abschnitt „Einstellungen“ können Sie die Eigenschaften des Zielspeichero
     > [!TIP]
     > Es wird empfohlen, den Zielspeicherort des Recovery Services-Tresors zu verwenden.
 
-2. **Zielressourcengruppe:** Dies ist die Ressourcengruppe, zu der alle replizierten virtuellen Computer gehören werden. Azure Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe, deren Name das Suffix „asr“ aufweist. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im Abschnitt unten gezeigt.    
+2. **Zielressourcengruppe:** Dies ist die Ressourcengruppe, zu der alle replizierten virtuellen Computer gehören. Azure Site Recovery erstellt standardmäßig in der Zielregion eine neue Ressourcengruppe, deren Name das Suffix „asr“ aufweist. Falls bereits eine von Azure Site Recovery erstellte Ressourcengruppe vorhanden ist, wird diese wiederverwendet. Sie können die Gruppe auch anpassen, wie im Abschnitt unten gezeigt.    
 3. **Virtuelles Zielnetzwerk:** Standardmäßig erstellt Azure Site Recovery in der Zielregion ein neues virtuelles Netzwerk, dessen Name das Suffix „asr“ aufweist. Dieses wird Ihrem Quellnetzwerk zugeordnet und für alle zukünftigen Schutzaktivitäten verwendet werden.
 
     > [!NOTE]
     > [Überprüfen Sie die Netzwerkdetails](site-recovery-network-mapping-azure-to-azure.md), um weitere Informationen zur Netzwerkzuordnung zu erhalten.
 
-4. **Zielspeicherkonten:** Standardmäßig erstellt Azure Site Recovery das neue Zielspeicherkonto, wobei die Konfiguration Ihres VM-Quellspeichers kopiert wird. Falls bereits ein von Azure Site Recovery erstelltes Speicherkonto vorhanden ist, wird dieses wiederverwendet.
+4. **Zielspeicherkonten:** Standardmäßig erstellt Azure Site Recovery ein neues Zielspeicherkonto, wobei die Konfiguration Ihres VM-Quellspeichers kopiert wird. Falls bereits ein von Azure Site Recovery erstelltes Speicherkonto vorhanden ist, wird dieses wiederverwendet.
 
 5. **Cachespeicherkonten:** Azure Site Recovery benötigt als zusätzliches Speicherkonto ein sogenanntes Cachespeicherkonto in der Quellregion. Alle Änderungen an den virtuellen Quellcomputern werden nachverfolgt und vor der Replikation dieser Computer am Zielspeicherort an das Cachespeicherkonto gesendet.
 

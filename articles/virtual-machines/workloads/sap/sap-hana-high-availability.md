@@ -1,5 +1,5 @@
 ---
-title: "Hohe Verfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs) | Microsoft-Dokumentation"
+title: "Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs) | Microsoft-Dokumentation"
 description: "Richten Sie die Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs) ein."
 services: virtual-machines-linux
 documentationcenter: 
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
-ms.openlocfilehash: 951150e621d21037b0adde7287b9f985290d8d11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f6ef18e93b8f77162b3524f31cb632e1db38f80
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Hochverfügbarkeit von SAP HANA auf virtuellen Azure-Computern (VMs)
 
@@ -85,12 +85,12 @@ Azure Marketplace enthält ein Image für SUSE Linux Enterprise Server für SAP-
 1. Erstellen Sie einen Load Balancer (intern)  
    Wählen Sie das VNET des obigen Schritts aus.
 1. Erstellen Sie den virtuellen Computer 1.  
-   https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   Verwenden Sie mindestens SLES4SAP 12 SP1. In diesem Beispiel verwenden wir das SLES4SAP 12 SP1 BYOS Image https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
    SLES für SAP-Anwendungen 12 SP1 (BYOS)  
    Wählen Sie Speicherkonto 1 aus.  
    Wählen Sie die Verfügbarkeitsgruppe aus.  
 1. Erstellen Sie den virtuellen Computer 2.  
-   https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
+   Verwenden Sie mindestens SLES4SAP 12 SP1. In diesem Beispiel verwenden wir das SLES4SAP 12 SP1 BYOS Image https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1  
    SLES für SAP-Anwendungen 12 SP1 (BYOS)  
    Wählen Sie Speicherkonto 2 aus.   
    Wählen Sie die Verfügbarkeitsgruppe aus.  
@@ -99,7 +99,7 @@ Azure Marketplace enthält ein Image für SUSE Linux Enterprise Server für SAP-
     1. Erstellen eines Front-End-IP-Pools
         1. Öffnen Sie den Load Balancer, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. „hana-frontend“).
-       1. OK klicken
+        1. OK klicken
         1. Notieren Sie nach Erstellen des neuen Front-End-IP-Pools dessen IP-Adresse.
     1. Erstellen eines Back-End-Pools
         1. Öffnen Sie den Load Balancer, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
@@ -109,7 +109,7 @@ Azure Marketplace enthält ein Image für SUSE Linux Enterprise Server für SAP-
         1. Wählen Sie die virtuellen Computer des SAP HANA-Clusters aus.
         1. OK klicken
     1. Erstellen eines Integritätstests
-       1. Öffnen Sie den Load Balancer, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
+        1. Öffnen Sie den Load Balancer, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
         1. Geben Sie den Namen des neuen Integritätstests ein (z.B. „hana-hp“).
         1. Wählen Sie TCP als Protokoll, Port 625**03**, halten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
         1. OK klicken
@@ -119,7 +119,7 @@ Azure Marketplace enthält ein Image für SUSE Linux Enterprise Server für SAP-
         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest, die Sie zuvor erstellt haben (z.B. „hana-frontend“).
         1. Behalten Sie TCP als Protokoll bei, geben Sie Port 3**03**15 ein.
         1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
-       1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
+        1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
         1. OK klicken
         1. Wiederholen Sie die oben genannten Schritte für Port 3**03**17.
 
@@ -145,7 +145,7 @@ Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforder
     1. Neues oder vorhandenes Subnetz  
        Bestimmt, ob ein neues virtuelles Netzwerk und Subnetz erstellt oder ein bestehendes Subnetz verwendet werden soll. Wenn Sie bereits über ein virtuelles Netzwerk verfügen, das mit dem lokalen Netzwerk verbunden ist, wählen Sie hier „vorhanden“ aus.
     1. Subnetz-ID  
-    Die ID des Subnetzes, mit dem die virtuellen Computer eine Verbindung herstellen sollen. Wählen Sie das Subnetz des virtuellen VPN- oder Express Route-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID sieht in der Regel wie folgt aus: /subscriptions/`<subscription id`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`>
+    Die ID des Subnetzes, mit dem die virtuellen Computer eine Verbindung herstellen sollen. Wählen Sie das Subnetz des virtuellen VPN- oder Express Route-Netzwerks aus, um den virtuellen Computer mit dem lokalen Netzwerk zu verbinden. Die ID sieht in der Regel wie folgt aus: /subscriptions/`<subscription ID`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`>
 
 ## <a name="setting-up-linux-ha"></a>Einrichten von Linux mit hoher Verfügbarkeit
 
@@ -229,7 +229,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: [A] – g
     sudo mkdir -p /hana/data
     sudo mkdir -p /hana/log
     sudo mkdir -p /hana/shared
-    # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+    # write down the ID of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
     sudo blkid
     </code></pre>
         * Erstellen Sie fstab-Einträge für die drei logischen Volumes.
@@ -476,13 +476,13 @@ Nachdem Sie die Berechtigungen für die virtuellen Computer bearbeitet haben, k�
 <pre>
 sudo vi crm-fencing.txt
 # enter the following to crm-fencing.txt
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 <code>
 primitive rsc_st_azure_1 stonith:fence_azure_arm \
-    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+    params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 primitive rsc_st_azure_2 stonith:fence_azure_arm \
-    params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+    params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 </code>
@@ -496,7 +496,7 @@ sudo crm configure load update crm-fencing.txt
 <pre>
 sudo vi crm-saphanatop.txt
 # enter the following to crm-saphana.txt
-# replace the bold string with your instance number and HANA system id
+# replace the bold string with your instance number and HANA system ID
 <code>
 primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHanaTopology \
     operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -516,7 +516,7 @@ sudo crm configure load update crm-saphanatop.txt
 <pre>
 sudo vi crm-saphana.txt
 # enter the following to crm-saphana.txt
-# replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
+# replace the bold string with your instance number, HANA system ID and the frontend IP address of the Azure load balancer. 
 <code>
 primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
     operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -627,7 +627,7 @@ Die Migration erstellt Speicherorteinschränkungen, die erneut gelöscht werden 
 <pre><code>
 crm configure edited
 
-# delete location contraints that are named like the following contraint. You should have two contraints, one for the SAP HANA resource and one for the IP address group.
+# delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
 location cli-prefer-g_ip_<b>HDB</b>_HDB<b>03</b> g_ip_<b>HDB</b>_HDB<b>03</b> role=Started inf: <b>saphanavm2</b>
 </code></pre>
 
@@ -643,4 +643,4 @@ crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 * [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
 * [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-* Informationen zur Erzielung von hoher Verfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md). 
+* Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md). 

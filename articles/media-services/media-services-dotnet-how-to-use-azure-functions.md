@@ -12,17 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f99fe340b6cfebaafb04af9dba8abf9cb0f09a2b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
 
-In diesem Thema wird veranschaulicht, wie Sie mit der Erstellung von Azure Functions beginnen, für die Media Services verwendet werden. Die in diesem Thema definierte Azure Function überwacht einen Speicherkontocontainer mit dem Namen **input** für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der BLOB-Trigger die Funktion aus. Informationen zu Azure Functions finden Sie unter [Übersicht](../azure-functions/functions-overview.md) und anderen Themen im Abschnitt **Azure Functions**.
+In diesem Artikel wird veranschaulicht, wie Sie mit der Erstellung von Azure Functions beginnen, für die Media Services verwendet werden. Die in diesem Artikel definierte Azure Function überwacht einen Speicherkontocontainer mit dem Namen **input** für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der Blobtrigger die Funktion aus. Informationen zu Azure Functions finden Sie unter [Übersicht](../azure-functions/functions-overview.md) und anderen Themen im Abschnitt **Azure Functions**.
 
 Wenn Sie vorhandene Azure Functions-Instanzen, die Azure Media Services verwenden, erkunden und bereitstellen möchten, sehen Sie sich [Media Services mit Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration). Dieses Repository enthält Beispiele, in denen Media Services verwendet wird. Hiermit werden Workflows veranschaulicht, bei denen es um das Erfassen von Inhalten direkt aus Blob Storage, die Codierung und das Rückschreiben von Inhalt in Blob Storage geht. Außerdem sind Beispiele dafür vorhanden, wie Sie Auftragsbenachrichtigungen über Webhooks und Azure-Warteschlangen überwachen. Sie können Ihre Funktionen auch basierend auf den Beispielen im Repository der [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration) entwickeln. Klicken Sie zur Bereitstellung der Funktionen auf die Schaltfläche **Bereitstellung in Azure**.
 
@@ -45,15 +45,15 @@ Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariabl
 
 Bei der in diesem Artikel definierte Funktion wird davon ausgegangen, dass Sie die folgenden Umgebungsvariablen in den App-Einstellungen definiert haben:
 
-**AMSAADTenantDomain** – Endpunkt für Azure AD-Mandanten. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
+**AMSAADTenantDomain**: Endpunkt für Azure AD-Mandanten. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
 
-**AMSRESTAPIEndpoint** – URI, der den REST-API-Endpunkt darstellt 
+**AMSRESTAPIEndpoint**: URI, der den REST-API-Endpunkt darstellt. 
 
-**AMSClientId** – Client-ID der Azure AD-Anwendung
+**AMSClientId**: Client-ID der Azure AD-Anwendung.
 
 **AMSClientSecret** – geheimer Clientschlüssel der Azure AD-Anwendung
 
-**StorageConnection** – Speicherverbindung des Kontos, das dem Media Services-Konto zugeordnet ist. Dieser Wert wird in den Dateien **function.json** und **run.csx** (unten beschrieben) verwendet.
+**StorageConnection**: Speicherverbindung des Kontos, das dem Media Services-Konto zugeordnet ist. Dieser Wert wird in den Dateien **function.json** und **run.csx** (unten beschrieben) verwendet.
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
@@ -61,7 +61,7 @@ Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functi
 
 1. Wählen Sie Ihre Funktionen-App aus, und klicken Sie auf **Neue Funktion**.
 2. Wählen Sie die Sprache **C#** und das Szenario **Datenverarbeitung** aus.
-3. Wählen Sie die Vorlage **BlobTrigger** aus. Diese Funktion wird ausgelöst, wenn ein BLOB in den **input**-Container hochgeladen wird. Der Name **input** wird unter **Path** im nächsten Schritt festgelegt.
+3. Wählen Sie die Vorlage **BlobTrigger** aus. Diese Funktion wird ausgelöst, wenn ein Blob in den **input**-Container hochgeladen wird. Der Name **input** wird unter **Path** im nächsten Schritt festgelegt.
 
     ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
@@ -125,7 +125,7 @@ Fügen Sie die folgende Definition der Datei „project.json“ hinzu.
     
 ### <a name="runcsx"></a>run.csx
 
-Dies ist der C#-Code für Ihre Funktion.  Die unten definierte Funktion überwacht einen Speicherkontocontainer mit dem Namen **input** (so wie im Pfad angegeben) für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der BLOB-Trigger die Funktion aus.
+Dies ist der C#-Code für Ihre Funktion.  Die unten definierte Funktion überwacht einen Speicherkontocontainer mit dem Namen **input** (so wie im Pfad angegeben) für neue MP4-Dateien. Sobald eine Datei in den Speichercontainer abgelegt wird, führt der Blobtrigger die Funktion aus.
     
 Das in diesem Abschnitt definierte Beispiel veranschaulicht Folgendes: 
 
@@ -134,7 +134,7 @@ Das in diesem Abschnitt definierte Beispiel veranschaulicht Folgendes:
 
 In der Praxis möchten Sie wahrscheinlich den Auftragsstatus nachverfolgen und Ihr codiertes Medienobjekt dann veröffentlichen. Weitere Informationen finden Sie unter [Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen](media-services-dotnet-check-job-progress-with-webhooks.md). Weitere Beispiele finden Sie unter [Media Services Azure Functions](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).  
 
-Ersetzen Sie den Inhalt der vorhandenen Datei „run.csx“ durch den folgenden Code. Klicken Sie auf **Speichern und ausführen**, nachdem Sie die Funktion definiert haben.
+Ersetzen Sie den Inhalt der vorhandenen Datei „run.csx“ durch folgenden Code: Wenn Sie mit der Definition Ihrer Funktion fertig sind, klicken Sie auf **Speichern und ausführen**.
 
 ```
 #r "Microsoft.WindowsAzure.Storage"
@@ -334,7 +334,7 @@ Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container
 1. Wählen Sie das Speicherkonto, das Sie in der Umgebungsvariablen **StorageConnection** angegeben haben.
 2. Klicken Sie auf **Blobs**.
 3. Klicken Sie auf **+ Container**. Geben Sie dem Container den Namen **input**.
-4. Wählen Sie **Hochladen**, und navigieren Sie zu einer MP4-Datei, die Sie hochladen möchten.
+4. Wählen Sie **Hochladen** aus, und navigieren Sie zu einer MP4-Datei, die Sie hochladen möchten.
 
 >[!NOTE]
 > Bei Verwendung eines Blobtriggers in einem Verbrauchsplan kann es bis zu 10 Minuten dauern, bis neue Blobs verarbeitet werden, nachdem eine Funktions-App in den Leerlauf gewechselt ist. Sobald die Funktions-App ausgeführt wird, werden die Blobs sofort verarbeitet. Weitere Informationen finden Sie unter [Blob Storage-Trigger und -Bindungen](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings).

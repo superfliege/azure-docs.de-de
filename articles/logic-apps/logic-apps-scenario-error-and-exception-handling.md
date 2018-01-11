@@ -16,11 +16,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/29/2016
 ms.author: LADocs; b-hoedid
-ms.openlocfilehash: 044de27c75da93c95609110d2b73336c42f746fe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8bae22b28b7de2f2579f310c8bd4b0e43885a0d
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scenario-exception-handling-and-error-logging-for-logic-apps"></a>Szenario: Ausnahmebehandlung und Fehlerprotokollierung für Logik-Apps
 
@@ -45,7 +45,7 @@ Das Projekt musste zwei wesentliche Anforderungen erfüllen:
 
 ## <a name="how-we-solved-the-problem"></a>Lösung des Problems
 
-Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/ "Azure Cosmos DB") gewählt (Cosmos DB verweist auf Datensätze als Dokumente). Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
+Als Repository für die Protokoll- und Fehlerdatensätze haben wir [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/ "Azure Cosmos DB") gewählt (Cosmos DB verweist auf Datensätze als Dokumente). Da Azure Logic Apps über eine Standardvorlage für alle Antworten verfügt, mussten wir kein benutzerdefiniertes Schema erstellen. Wir konnten sowohl für Fehler- als auch für Protokolldatensätze eine API-App zum **Einfügen** und **Abfragen** erstellen. Außerdem konnten wir jeweils ein Schema in der API-App definieren.  
 
 Eine weitere Anforderung war die endgültige Löschung von Datensätzen nach einem bestimmten Datum. Cosmos DB verfügt über eine Eigenschaft namens [Gültigkeitsdauer](https://azure.microsoft.com/blog/documentdb-now-supports-time-to-live-ttl/ "Gültigkeitsdauer"), mit der wir einen Wert für **Gültigkeitsdauer** für die einzelnen Datensätze oder Sammlungen festlegen konnten. Dadurch müssen Datensätze in Cosmos DB nicht mehr manuell gelöscht werden.
 
@@ -107,7 +107,7 @@ Wir müssen die Quelle (Anforderung) des Patientendatensatzes aus dem Dynamics C
    Der Trigger aus CRM liefert uns die folgenden Informationen: **CRM-Patienten-ID** (PatientID), **Datensatztyp**, **Neuer oder aktualisierter Datensatz** (boolescher Wert) und **SalesforceId**. **SalesforceId** kann NULL sein, da diese ID nur für Updates verwendet wird.
    Zum Abrufen des CRM-Datensatzes verwenden wir die CRM-Patienten-ID (**PatientID**) und den **Datensatztyp**.
 
-2. Im nächsten Schritt müssen wir den Vorgang **InsertLogEntry** DocumentDB-API-App wie hier veranschaulicht im Logik-App-Designer hinzufügen.
+2. Im nächsten Schritt müssen wir den Vorgang **InsertLogEntry** der Azure Cosmos DB-SQL-API-App wie hier veranschaulicht im Logik-App-Designer hinzufügen.
 
    **Protokolleintrag einfügen**
 
@@ -400,7 +400,7 @@ Nachdem Sie die Antwort erhalten haben, können Sie sie an die übergeordnete Lo
 
 ## <a name="cosmos-db-repository-and-portal"></a>Cosmos DB-Repository und -Portal
 
-Mit unserer Lösung haben wir den Funktionsumfang von [Cosmos DB](https://azure.microsoft.com/services/documentdb) erweitert.
+Mit unserer Lösung haben wir den Funktionsumfang von [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db) erweitert.
 
 ### <a name="error-management-portal"></a>Fehlerverwaltungsportal
 
@@ -430,14 +430,14 @@ Zum Anzeigen der Protokolle haben wir ebenfalls eine MVC-Web-App erstellt. Im An
 
 Unsere Ausnahmeverwaltungs-API-App für Azure Logic Apps (Open Source) bietet die hier beschriebenen Funktionen. Es gibt zwei Controller:
 
-* **ErrorController** : Fügt einen Fehlerdatensatz (Dokument) in eine DocumentDB-Sammlung ein.
-* **LogController** : Fügt einen Protokolldatensatz (Dokument) in eine DocumentDB-Sammlung ein.
+* **ErrorController** fügt einen Fehlerdatensatz (ein Dokument) in eine Azure Cosmos DB-Sammlung ein.
+* **LogController** fügt einen Protokolldatensatz (ein Dokument) in eine Azure Cosmos DB-Sammlung ein.
 
 > [!TIP]
-> Beide Controller nutzen `async Task<dynamic>`-Vorgänge, damit Vorgänge zur Laufzeit aufgelöst werden und wir das DocumentDB-Schema im Text des Vorgangs erstellen können. 
+> Beide Controller nutzen `async Task<dynamic>`-Vorgänge, damit Vorgänge zur Laufzeit aufgelöst werden und wir das Azure Cosmos DB-Schema im Text des Vorgangs erstellen können. 
 > 
 
-Jedes Dokument in DocumentDB muss eine eindeutige ID besitzen. Wir verwenden `PatientId` und fügen einen Zeitstempel hinzu, der in einen Unix-Zeitstempelwert (double) konvertiert wird. Wir schneiden den Wert ab, um den Bruchteil zu entfernen.
+Jedes Dokument in Azure Cosmos DB muss eine eindeutige ID aufweisen. Wir verwenden `PatientId` und fügen einen Zeitstempel hinzu, der in einen Unix-Zeitstempelwert (double) konvertiert wird. Wir schneiden den Wert ab, um den Bruchteil zu entfernen.
 
 Den Quellcode unserer Fehlercontroller-API können Sie sich bei [GitHub](https://github.com/HEDIDIN/LogicAppsExceptionManagementApi/blob/master/Logic App Exception Management API/Controllers/ErrorController.cs) ansehen.
 
@@ -479,7 +479,7 @@ Mit dem Ausdruck im obigen Codebeispiel wird geprüft, ob *Create_NewPatientReco
 ## <a name="summary"></a>Zusammenfassung
 
 * Sie können die Protokollierung und Fehlerbehandlung in einer Logik-App leicht implementieren.
-* DocumentDB kann als Repository für Protokoll- und Fehlerdatensätze (Dokumente) verwendet werden.
+* Sie können Azure Cosmos DB als Repository für Protokoll- und Fehlerdatensätze (Dokumente) verwenden.
 * Mit MVC können Sie ein Portal zum Anzeigen von Protokoll- und Fehlerdatensätzen erstellen.
 
 ### <a name="source-code"></a>Quellcode

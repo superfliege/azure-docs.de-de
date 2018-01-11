@@ -9,22 +9,22 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 12/11/2017
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 461feb952f7e2eddba9c7218b3463868e8cb7965
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 5810ff908d48fc4ff742d734e7c2457fdfe8cb03
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs
 
 In diesem Tutorial wird veranschaulicht, wie die Notfallwiederherstellung in Azure für lokale VMware-VMs unter Windows eingerichtet wird. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Recovery Services-Tresors für Site Recovery
-> * Einrichten der Quell- und Zielumgebungen für die Replikation
+> * Geben Sie die Replikationsquelle und das Replikationsziel an.
+> * Richten Sie die Quellreplikationsumgebung, einschließlich der lokalen Komponenten zur Sitewiederherstellung, und die Zielreplikationsumgebung ein.
 > * Erstellen einer Replikationsrichtlinie
 > * Aktivieren der Replikation für eine VM
 
@@ -35,37 +35,28 @@ Dies ist das dritte Tutorial in einer Reihe. In diesem Tutorial wird davon ausge
 
 Bevor Sie beginnen, empfiehlt sich eine [Überprüfung der Architektur](concepts-vmware-to-azure-architecture.md) für ein Notfallwiederherstellungsszenario.
 
-## <a name="configure-vmware-account-permissions"></a>Konfigurieren der VMware-Kontoberechtigungen
 
-1. Erstellen Sie eine Rolle auf der vCenter-Ebene. Weisen Sie der Rolle den Namen **Azure_Site_Recovery** zu.
-2. Weisen Sie der Rolle **Azure_Site_Recovery** die folgenden Rollen zu.
+## <a name="select-a-replication-goal"></a>Auswählen eines Replikationsziels
 
-   **Aufgabe** | **Rolle/Berechtigungen** | **Details**
-   --- | --- | ---
-   **VM-Ermittlung** | Data Center object (Rechenzentrenobjekt) –> Propagate to Child Object (An untergeordnetes Objekt weitergeben), role=Read-only (Rolle=schreibgeschützt) | Mindestens ein Benutzer mit Lesezugriff.<br/><br/> Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.
-   **Vollständige Replikation, Failover, Failback** |  Rechenzentrumsobjekt -> An untergeordnetes Objekt weitergeben, Rolle=Azure_Site_Recovery<br/><br/> Datenspeicher -> Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren<br/><br/> Netzwerk -> Netzwerk zuweisen<br/><br/> Ressource -> Zuweisen der VM zu einem Ressourcenpool, ausgeschaltete VM migrieren, eingeschaltete VM migrieren<br/><br/> Tasks (Aufgaben) -> Create task (Aufgabe erstellen), update task (Aufgabe aktualisieren)<br/><br/> Virtueller Computer -> Konfiguration<br/><br/> Virtueller Computer -> Interagieren -> Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren<br/><br/> Virtueller Computer -> Inventar -> Erstellen, Registrieren, Registrierung aufheben<br/><br/> Virtueller Computer -> Bereitstellung -> Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen<br/><br/> Virtual machine -> Snapshots -> Remove snapshots | Der Benutzer wird auf Datencenterebene zugewiesen und hat Zugriff auf alle Objekte im Datencenter.<br/><br/> Um den Zugriff einzuschränken, weisen Sie den untergeordneten Objekten (vSphere-Hosts, Datenspeicher, VMs und Netzwerke) die Rolle **No access** (Kein Zugriff) mit **Propagate to child object** (Auf untergeordnetes Objekt übertragen) zu.
-
-3. Erstellen Sie einen Benutzer auf dem vCenter-Server oder vSphere-Host. Weisen Sie dem Benutzer die Rolle zu.
-
-## <a name="specify-what-you-want-to-replicate"></a>Angeben der zu replizierenden Elemente
-
-Der Mobilitätsdienst muss auf jeder VMs installiert sein, den Sie replizieren möchten. Site Recovery installiert diesen Dienst automatisch, wenn Sie die Replikation für die VM aktivieren. Für die automatische Installation müssen Sie ein Konto vorbereiten, mit dem Site Recovery auf die VM zugreift.
-
-Sie können ein Domänenkonto oder ein lokales Konto verwenden. Bei Linux-VMs muss auf dem Linux-Quellserver das root-Konto verwendet werden. Wenn Sie kein Domänenkonto verwenden, deaktivieren Sie für Windows-VMs die Remote-Benutzerzugriffssteuerung auf dem lokalen Computer:
-
-  - Fügen Sie in der Registrierung unter **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System** den DWORD-Eintrag **LocalAccountTokenFilterPolicy** hinzu, und legen Sie den Wert auf 1 fest.
+1. Klicken Sie unter **Recovery Services-Tresore** auf den Tresornamen, **ContosoVMVault**.
+2. Klicken Sie in **Erste Schritte** auf „Site Recovery“. Klicken Sie dann auf **Infrastruktur vorbereiten**.
+3. Wählen Sie in **Schutzziel** > **Wo befinden sich Ihre Computer?** die Option **Lokal** aus.
+4. Wählen Sie in **Wohin möchten Sie Ihre Computer replizieren? die Option **Nach Azure** aus.
+5. Wählen Sie in **Sind Ihre Computer virtualisiert?** die Option **Ja, mit VMware vSphere Hypervisor** aus. Klicken Sie dann auf **OK**.
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-Das Einrichten der Quellumgebung umfasst das Herunterladen des einheitlichen Setups für Site Recovery, das Einrichten des Konfigurationsservers und seine Registrierung im Tresor sowie das Ermitteln von VMs.
+Laden Sie zum Einrichten der Quellumgebung die Datei für das einheitliche Setup von Site Recovery herunter. Sie führen Setup aus, um lokale Site Recovery-Komponenten zu installieren, VMware-Server im Tresor zu registrieren und lokale VMs zu ermitteln.
 
-Der Konfigurationsserver ist eine einzelne lokale VMware-VM, die alle Site Recovery-Komponenten hostet. Auf dieser VM werden der Konfigurationsserver, der Prozessserver und der Masterzielserver ausgeführt.
+### <a name="verify-on-premises-site-recovery-requirements"></a>Überprüfen lokaler Site Recovery-Anforderungen
+
+Sie benötigen eine einzelne, hochverfügbare, lokale VMware VM, um lokale Site Recovery-Komponenten zu hosten. Die Komponenten umfassen den Konfigurationsserver, Prozessserver und Masterzielserver.
 
 - Der Konfigurationsserver koordiniert die Kommunikation zwischen der lokalen Umgebung und Azure und verwaltet die Datenreplikation.
-- Der Prozessserver fungiert als Replikationsgateway. Empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure Storage. Der Prozessserver installiert auch den Mobility Service auf VMs, die Sie replizieren möchten, und führt auf lokalen VMware-Servern eine automatische Ermittlung durch.
+- Der Prozessserver fungiert als Replikationsgateway. Empfängt Replikationsdaten, optimiert sie durch Zwischenspeicherung, Komprimierung und Verschlüsselung und sendet sie an Azure Storage. Der Prozessserver installiert auch den Mobility Service auf VMs, die Sie replizieren möchten, und führt auf lokalen VMware VMs eine automatische Ermittlung durch.
 - Der Masterzielserver verarbeitet die Replikationsdaten während des Failbacks von Azure.
 
-Die Konfigurationsserver-VM muss eine VMware-VM mit hoher Verfügbarkeit sein, die die folgenden Anforderungen erfüllt:
+Die VM muss die folgenden Anforderungen erfüllen.
 
 | **Anforderung** | **Details** |
 |-----------------|-------------|
@@ -82,30 +73,25 @@ Die Konfigurationsserver-VM muss eine VMware-VM mit hoher Verfügbarkeit sein, d
 | Art der IP-Adresse | statischen |
 | Ports | 443 (Steuerkanalorchestrierung)<br/>9443 (Datentransport)|
 
-Stellen Sie auf der Konfigurationsserver-VM sicher, dass die Systemuhr mit einem Zeitserver synchronisiert ist.
-Die Zeit muss mit einer Toleranz von höchstens 15 Minuten synchronisiert werden. Wenn der Zeitunterschied größer als 15 Minuten ist, schlägt das Setup fehl.
+Außerdem haben Sie folgende Möglichkeiten: 
+- Stellen Sie sicher, dass die Systemuhr auf der VM mit einem Zeitserver synchronisiert ist. Die Zeit muss mit einer Toleranz von höchstens 15 Minuten synchronisiert werden. Wenn sie größer ist, tritt beim Setup ein Fehler auf.
+setup fails.
+- Stellen Sie sicher, dass die VM des Konfigurationsservers auf die folgenden URLs zugreifen kann:
 
-Stellen Sie sicher, dass der Konfigurationsserver auf die folgenden URLs zugreifen kann:
-
-   [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
+    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
     
-    - Bei Verwendung von auf IP-Adressen basierenden Firewallregeln muss die Kommunikation mit Azure möglich sein.
-
-- Lassen Sie die [Azure Datacenter IP Ranges](https://www.microsoft.com/download/confirmation.aspx?id=41653) (IP-Bereiche für Azure-Rechenzentren) und den HTTPS-Port (443) zu.
+- Stellen Sie sicher, dass auf IP-Adressen basierende Firewallregeln die Kommunikation mit Azure gestatten.
+    - Lassen Sie die [IP-Bereiche für Azure-Rechenzentrum](https://www.microsoft.com/download/confirmation.aspx?id=41653), Port 443 (HTTPS) und Port 9443 (Datenreplikation) zu.
     - Lassen Sie IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zu.
 
-Alle auf IP-Adressen basierenden Firewallregeln müssen die Kommunikation mit [IP-Bereichen für Azure-Rechenzentrum](https://www.microsoft.com/download/confirmation.aspx?id=41653) und den Ports 443 (HTTPS) und 9443 (Datenreplikation) zulassen. Sie müssen IP-Adressbereiche für die Azure-Region Ihres Abonnements und für die Region „USA, Westen“ (wird für Zugriffsteuerung und Identitätsverwaltung verwendet) zulassen.
 
-### <a name="download-the-site-recovery-unified-setup"></a>Herunterladen des einheitlichen Setups für Site Recovery
+### <a name="download-the-site-recovery-unified-setup-file"></a>Herunterladen der Datei für das einheitliche Setup von Site Recovery
 
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und klicken Sie auf **Alle Ressourcen**.
-2. Klicken Sie auf den Recovery Services-Tresor **ContosoVMVault**.
-3. Klicken Sie auf **Site Recovery** > **Infrastruktur vorbereiten** > **Schutzziel**.
-4. Wählen Sie **Lokal** für den Standort Ihrer Computer, **To Azure** (In Azure) für das Replikationsziel Ihrer Computer und **Yes, with VMware vSphere Hypervisor** (Ja, mit VMware vSphere Hypervisor) aus. Klicken Sie dann auf **OK**.
-5. Klicken Sie im Bereich „Quelle vorbereiten“ auf **+Konfigurationsserver**.
-6. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
-7. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
-8. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
+1. Klicken Sie im Tresor > **Infrastruktur vorbereiten** auf **Quelle**.
+1. Klicken Sie in **Quelle vorbereiten** auf **+Konfigurationsserver**.
+2. Überprüfen Sie unter **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
+3. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
+4. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen diesen beim Ausführen des einheitlichen Setups. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 
    ![Quelle einrichten](./media/tutorial-vmware-to-azure/source-settings.png)
 
@@ -146,9 +132,11 @@ Alle auf IP-Adressen basierenden Firewallregeln müssen die Kommunikation mit [I
 
 ### <a name="configure-automatic-discovery"></a>Konfigurieren der automatischen Ermittlung
 
-Zum Ermitteln von VMs muss der Konfigurationsserver eine Verbindung mit lokalen VMware-Servern herstellen. Fügen Sie für die Zwecke dieses Tutorials den vCenter-Server oder die vSphere-Hosts hinzu; verwenden Sie dabei ein Konto mit Administratorrechten auf dem Server.
+Zum Ermitteln von VMs muss der Konfigurationsserver eine Verbindung mit lokalen VMware-Servern herstellen. Fügen Sie für die Zwecke dieses Tutorials den vCenter-Server oder die vSphere-Hosts hinzu; verwenden Sie dabei ein Konto mit Administratorrechten auf dem Server. Sie haben dieses Konto im [vorherigen Tutorial](tutorial-prepare-on-premises-vmware.md) erstellt. 
 
-1. Starten Sie auf dem Konfigurationsserver die Datei **CSPSConfigtool.exe**. Diese finden Sie als Verknüpfung auf dem Desktop sowie unter „*Installationsort*\home\svsystems\bin“.
+So fügen Sie das Konto hinzu
+
+1. Starten Sie auf der VM des Konfigurationsservers die Datei **CSPSConfigtool.exe**. Diese finden Sie als Verknüpfung auf dem Desktop sowie unter „*Installationsort*\home\svsystems\bin“.
 
 2. Klicken Sie auf **Konten verwalten** > **Konto hinzufügen**.
 
@@ -158,7 +146,7 @@ Zum Ermitteln von VMs muss der Konfigurationsserver eine Verbindung mit lokalen 
 
    ![Details](./media/tutorial-vmware-to-azure/credentials2.png)
 
-Zum Hinzufügen eines Servers:
+So fügen Sie den VMware-Server hinzu
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und klicken Sie auf **Alle Ressourcen**.
 2. Klicken Sie auf den Recovery Services-Tresor **ContosoVMVault**.

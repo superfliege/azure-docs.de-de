@@ -14,13 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
-ms.openlocfilehash: 51c0bac3cd03965d002b3fe87804a0d7ea6cf63e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: a8acaa16265070308753c2a0df3a9e7b8a3a841a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-python"></a>Tutorial: Erste Schritte beim Erweitern von U-SQL um Python
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Bevor Sie beginnen, stellen Sie sicher, dass die Python-Erweiterungen in Ihrem Azure Data Lake Analytics-Konto installiert sind.
+
+* Wechseln Sie im Azure-Portal zu Ihrem Data Lake Analytics-Konto.
+* Klicken Sie im linken Menü unter **ERSTE SCHRITTE** auf **Beispielskripts**.
+* Klicken Sie auf **U-SQL-Erweiterungen installieren** und dann auf **OK**.
+
+## <a name="overview"></a>Übersicht 
 
 Mit Python-Erweiterungen für U-SQL können Entwickler Python-Code per Massively Parallel Processing ausführen. Im folgenden Beispiel werden die grundlegenden Schritte veranschaulicht:
 

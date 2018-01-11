@@ -4,7 +4,7 @@ description: "In diesem Thema wird die Funktion zum Verhindern von versehentlich
 services: active-directory
 documentationcenter: 
 author: AndKjell
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 6b852cb4-2850-40a1-8280-8724081601f7
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: a33fb729cff5007e40820af696cfec823a3ecfde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 72283424ab750d10f9a0739347650d0a9eee1520
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-sync-prevent-accidental-deletes"></a>Azure AD Connect-Synchronisierung: Verhindern von versehentlichen Löschvorgängen
 In diesem Thema wird die Funktion zum Verhindern von versehentlichen Löschungen (Verhindern versehentlicher Löschvorgänge) in Azure AD Connect beschrieben.
@@ -32,7 +32,7 @@ Häufige Szenarios für Löschvorgänge sind beispielsweise:
 * Das Löschen aller Objekte in einer Organisationseinheit.
 * Das Umbenennen einer Organisationseinheit, sodass alle darin enthaltenen Objekte als außerhalb des Synchronisierungsbereichs liegend betrachtet werden.
 
-Der Standardwert von 500 Objekten kann mit PowerShell mithilfe von `Enable-ADSyncExportDeletionThreshold`geändert werden. Sie sollten diesen Wert entsprechend der Größe Ihres Unternehmens konfigurieren. Da der Synchronisierungsplaner alle 30 Minuten ausgeführt wird, entspricht der Wert der Anzahl von Löschvorgängen, die innerhalb von 30 Minuten erfolgen.
+Der Standardwert von 500 Objekten kann mit PowerShell mit `Enable-ADSyncExportDeletionThreshold` geändert werden. Dies ist ein Bestandteil des AD-Synchronisierungsmoduls, das mit Azure Active Directory Connect installiert wird. Sie sollten diesen Wert entsprechend der Größe Ihres Unternehmens konfigurieren. Da der Synchronisierungsplaner alle 30 Minuten ausgeführt wird, entspricht der Wert der Anzahl von Löschvorgängen, die innerhalb von 30 Minuten erfolgen.
 
 Wenn zu viele Löschungen in Azure AD exportiert werden sollen, wird der Export angehalten, und Sie erhalten eine E-Mail-Nachricht wie die folgende:
 

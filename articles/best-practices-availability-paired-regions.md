@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 12/11/2017
 ms.author: raynew
-ms.openlocfilehash: 4a846cc3e2f06199bdef9e597198f309801d5c75
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 394f353837433e241e4da6f4accdb5eaa24bae46
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare
 
@@ -38,7 +38,8 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 | Australien |Australien (Osten) |Australien (Südosten) |
 | Kanada |Kanada, Mitte |Kanada, Osten |
 | China |China, Norden |China, Osten|
-| Indien |Indien (Mitte) |Indien, Süden |
+| Indien |Indien (Mitte) |Indien (Süden) |
+| Indien |Indien (Westen) (1) |Indien (Süden) |
 | Japan |Japan Ost |Japan (Westen) |
 | Korea |Korea, Mitte |Korea, Süden |
 | Nordamerika |USA (Mitte/Norden) |USA (Mitte/Süden) |
@@ -47,9 +48,9 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 | Nordamerika |USA, Westen 2 |USA, Westen-Mitte |
 | Europa |Nordeuropa |Westeuropa |
 | Japan |Japan Ost |Japan (Westen) |
-| Brasilien |Brasilien, Süden (1) |USA (Mitte/Süden) |
-| US Government |USA Gov Iowa (2) |US Government, Virginia |
-| US Government |USA Gov Virginia (3) |US Gov Texas |
+| Brasilien |Brasilien (Süden) (2) |USA (Mitte/Süden) |
+| US Government |US Gov Iowa (3) |US Government, Virginia |
+| US Government |US Gov Virginia (4) |US Gov Texas |
 | US Government |US Gov Arizona |US Gov Texas |
 | US-Verteidigungsministerium |US DoD, Osten |US DoD, Mitte |
 | UK |UK, Westen |UK, Süden |
@@ -57,11 +58,10 @@ Abbildung 1 – Diagramm von Azure-Regionspaaren
 
 Tabelle 1: Übersicht über Azure-Regionspaare
 
-> (1) Brasilien, Süden ist besonders, da dieses Gebiet ein Paar mit einer Region außerhalb des eigenen Gebiets bildet. „USA, Süden-Mitte“ fungiert als sekundäre Region von „Brasilien, Süden“, „Brasilien, Süden“ aber nicht als sekundäre Region von „USA, Süden-Mitte“.
->
-> (2) Die sekundäre Region von „USA Gov Iowa“ ist „USA Gov Virginia“, die sekundäre Region von „USA Gov Virginia“ ist jedoch nicht „USA Gov Iowa“.
-> 
-> (3) Die sekundäre Region von „USA Gov Virginia“ ist „USA Gov Texas“, die sekundäre Region von „USA Gov Texas“ ist nicht „USA Gov Virginia“.
+- > (1) Indien (Westen) ist anders, weil es mit einer anderen Region nur in eine Richtung ein Paar bildet. Die sekundäre Region von Indien (Westen) ist Indien (Süden), aber die sekundäre Region für Indien (Süden) ist Indien (Mitte).
+- > (2) Brasilien (Süden) ist besonders, da dieses Gebiet ein Paar mit einer Region außerhalb des eigenen Gebiets bildet. „USA, Süden-Mitte“ fungiert als sekundäre Region von „Brasilien, Süden“, „Brasilien, Süden“ aber nicht als sekundäre Region von „USA, Süden-Mitte“.
+- > (3) Die sekundäre Region von „US Gov Iowa“ ist „US Gov Virginia“, die sekundäre Region von „US Gov Virginia“ ist jedoch nicht „US Gov Iowa“.
+- > (4) Die sekundäre Region von „US Gov Virginia“ ist „US Gov Texas“, die sekundäre Region von „US Gov Texas“ ist nicht „US Gov Virginia“.
 
 
 Wir empfehlen das Replizieren von Workloads zwischen Regionalpaaren, um von Richtlinien für Isolierung und Verfügbarkeit von Azure zu profitieren. Beispielsweise werden geplante Azure-Systemupdates in Regionspaaren sequenziell (nicht gleichzeitig) bereitgestellt. Das heißt, dass selbst im seltenen Fall eines fehlerhaften Updates beide Regionen nicht gleichzeitig betroffen sind. Darüber hinaus wird im unwahrscheinlichen Fall eines umfassenden Ausfalls die Wiederherstellung mindestens einer Region aus jedem Paar priorisiert.

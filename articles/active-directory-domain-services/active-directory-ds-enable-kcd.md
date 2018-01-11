@@ -4,7 +4,7 @@ description: "Aktivieren der eingeschränkten Kerberos-Delegierung in verwaltete
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: stevenpo
+manager: mtillman
 editor: curtand
 ms.assetid: 938a5fbc-2dd1-4759-bcce-628a6e19ab9d
 ms.service: active-directory-ds
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 12/07/2017
 ms.author: maheshu
-ms.openlocfilehash: 0235944ef89cab7af152664651711edd5e80e632
-ms.sourcegitcommit: 3ee36b8a4115fce8b79dd912486adb7610866a7c
+ms.openlocfilehash: b09c725609fe866b0c9ba2f5b5789e00f808b1ab
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-on-a-managed-domain"></a>Konfigurieren der eingeschränkten Kerberos-Delegierung (KCD) in einer verwalteten Domäne
 Viele Anwendungen müssen im Kontext des Benutzers auf Ressourcen zugreifen. Active Directory unterstützt einen Mechanismus, die so genannte Kerberos-Delegierung, die diesen Anwendungsfall ermöglicht. Darüber hinaus können Sie die Delegierung einschränken, sodass im Kontext des Benutzers nur auf bestimmte Ressourcen zugegriffen werden kann. In Azure AD Domain Services verwaltete Domänen unterscheiden sich insofern von herkömmlichen Active Directory-Domänen, als dass sie sicherer gesperrt sind.
@@ -37,10 +37,10 @@ Mit der herkömmlichen KCD sind auch einige Probleme verbunden. Wenn der Domäne
 >
 >
 
-## <a name="resource-based-kerberos-constrained-delegation"></a>Ressourcenbasierte eingeschränkte Kerberos-Delegierung
-Seit Windows Server 2012 haben Dienstadministratoren die Möglichkeit, eingeschränkte Delegierung für den Dienst zu konfigurieren. In diesem Modell kann der Back-End-Dienstadministrator bestimmten Front-End-Diensten die Verwendung von KCD erlauben oder verweigern. Dieses Modell wird als **ressourcenbasierte eingeschränkte Kerberos-Delegierung** bezeichnet.
+## <a name="resource-based-kcd"></a>Ressourcenbasierte KCD
+Seit Windows Server 2012 haben Dienstadministratoren die Möglichkeit, eingeschränkte Delegierung für den Dienst zu konfigurieren. In diesem Modell kann der Back-End-Dienstadministrator bestimmten Front-End-Diensten die Verwendung von KCD erlauben oder verweigern. Dieses Modell wird als **ressourcenbasierte KCD** bezeichnet.
 
-Die ressourcenbasierte KCD wird mithilfe von PowerShell konfiguriert. Sie verwenden die Cmdlets „Set-ADComputer“ oder „Set-ADUser-Cmdlets“, je nachdem, ob es sich beim Konto für den Identitätswechsel um ein Computerkonto oder ein Benutzerkonto/Dienstkonto handelt.
+Die ressourcenbasierte KCD wird mithilfe von PowerShell konfiguriert. Sie verwenden die Cmdlets `Set-ADComputer` oder `Set-ADUser` abhängig davon, ob es sich beim Konto für den Identitätswechsel um ein Computerkonto oder ein Benutzerkonto/Dienstkonto handelt.
 
 ### <a name="configure-resource-based-kcd-for-a-computer-account-on-a-managed-domain"></a>Konfigurieren der ressourcenbasierten KCD für ein Computerkonto in einer verwalteten Domäne
 Angenommen, Sie haben eine Web-App, die auf dem Computer „contoso100-Webapp.contoso100.com“ ausgeführt wird. Sie muss im Kontext von Domänenbenutzern auf die Ressource zugreifen (eine Web-API, die auf „contoso100-api.contoso100.com“ ausgeführt wird). Hier wird gezeigt, wie Sie die ressourcenbasierte KCD für dieses Szenario einrichten würden.

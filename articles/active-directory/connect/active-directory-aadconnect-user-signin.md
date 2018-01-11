@@ -4,7 +4,7 @@ description: "Azure AD Connect-Benutzeranmeldung für benutzerdefinierte Einstel
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: curtand
 ms.assetid: 547b118e-7282-4c7f-be87-c035561001df
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.openlocfilehash: 1d580ae43925bfb2cbe0fd9461cfb7e207fa56ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4670ec3cacd8d69a4ed59aa2bbbeb2e5c893f173
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Azure AD Connect-Optionen für die Benutzeranmeldung
 Mit Azure Active Directory Connect (Azure AD) können sich Ihre Benutzer sowohl bei Cloud- als auch bei lokalen Ressourcen mit denselben Kennwörtern anmelden. In diesem Artikel werden die wichtigsten Konzepte für jedes Identitätsmodell beschrieben, um Sie bei der Auswahl der Identität zu unterstützen, die Sie für die Registrierung für Azure AD verwenden möchten.
@@ -28,6 +28,10 @@ Wenn Sie mit dem Azure AD-Identitätsmodell bereits vertraut sind und mehr über
 * [Kennworthashsynchronisierung](#password-synchronization) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
 * [Passthrough-Authentifizierung](active-directory-aadconnect-pass-through-authentication.md) mit [einmaliger Anmeldung (Single Sign-On, SSO)](active-directory-aadconnect-sso.md)
 * [Verbund-SSO (mit Active Directory Federation Services (AD FS))](#federation-that-uses-a-new-or-existing-farm-with-ad-fs-in-windows-server-2012-r2)
+
+> [!NOTE] 
+> Es ist wichtig zu beachten, dass Sie durch die Konfiguration des Verbunds für Azure AD eine Vertrauensstellung zwischen Ihrem Azure AD-Mandanten und Ihren Verbunddomänen einrichten. Mit dieser Vertrauensstellung verfügen Benutzer der Verbunddomäne über Zugriff auf Azure AD-Cloudressourcen innerhalb des Mandanten.  
+>
 
 ## <a name="choosing-the-user-sign-in-method-for-your-organization"></a>Auswählen einer Benutzeranmeldemethode für Ihre Organisation
 Für die meisten Organisationen, die lediglich die Benutzeranmeldung für Office 365, SaaS-Anwendungen und andere Azure AD-basierte Ressourcen aktivieren möchten, empfiehlt sich die Standardoption für die Kennworthashsynchronisierung. Einige Organisationen haben jedoch bestimmte Gründe, weshalb sie diese Option nicht verwenden können. Sie können entweder eine Verbundanmeldeoption wie AD FS verwenden oder die Passthrough-Authentifizierung. Sie können die folgende Tabelle verwenden, die Ihnen bei der Entscheidungsfindung hilft.

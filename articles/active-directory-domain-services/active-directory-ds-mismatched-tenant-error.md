@@ -4,7 +4,7 @@ description: "Verstehen und Lösen von Verzeichniskonfliktfehlern für vorhanden
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
-manager: mahesh-unnikrishnan
+manager: mtillman
 editor: curtand
 ms.assetid: 40eb75b7-827e-4d30-af6c-ca3c2af915c7
 ms.service: active-directory-ds
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 12/11/2017
 ms.author: maheshu
-ms.openlocfilehash: 9c9a47e9b3050eb7f41202d6a4b9202ba0f379df
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 24e11769e9b403bc00157e3f60869effa6a9633f
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>Beheben von Verzeichniskonfliktfehlern für vorhandene verwaltete Azure AD Domain Services-Domänen
-Sie verfügen über eine vorhandene verwaltete Domäne, die mit dem klassischen Azure-Portal aktiviert wurde. Wenn Sie zum neuen Azure-Portal navigieren und die verwaltete Domäne anzeigen, wird Ihnen die folgende Fehlermeldung angezeigt:
+Sie verwenden eine durch Azure AD Domain Services verwaltete Domäne. Wenn Sie zum Azure-Portal navigieren und die verwaltete Domäne anzeigen, wird die folgende Fehlermeldung angezeigt:
 
 ![Verzeichniskonfliktfehler](.\media\getting-started\mismatched-tenant-error.png)
 
@@ -33,7 +33,7 @@ Dieser Fehler wird verursacht, wenn die verwaltete Domäne, und das virtuelle Ne
 
 Das neue Azure-Portal (und speziell die Azure AD Domain Services-Erweiterung) basiert auf dem Azure Resource Manager. In der modernen Azure Resource Manager-Umgebung werden bestimmte Einschränkungen erzwungen, um ein höheres Maß an Sicherheit zu bieten und die rollenbasierte Zugriffssteuerung (RBAC) auf Ressourcen zu ermöglichen. Das Aktivieren von Azure AD Domain Services für Azure AD-Mandanten ist ein sensibler Vorgang, da er bewirkt, dass Anmeldeinformationshashes mit der verwalteten Domäne synchronisiert werden. Für diesen Vorgang ist es erforderlich, dass Sie Mandantenadministrator für das Verzeichnis sind. Darüber hinaus müssen Sie über Administratorrechte über das virtuelle Netzwerk verfügen, in dem Sie die verwaltete Domäne aktivieren. Damit die RBAC-Prüfungen konsequent arbeiten können, sollten die verwaltete Domäne und das virtuelle Netzwerk zum gleichen Azure AD-Mandanten gehören.
 
-Kurz gesagt, Sie können keine verwaltete Domäne für einen Azure AD-Mandanten „contoso.com“ in einem virtuellen Netzwerk aktivieren, das zu einem Azure-Abonnement gehört, das im Besitz eines anderen Azure AD-Mandanten „fabrikam.com“ ist. Das klassische Azure-Portal wurde nicht auf der Resource Manager-Plattform erstellt und erzwingt solche Einschränkungen nicht.
+Kurz gesagt, Sie können keine verwaltete Domäne für einen Azure AD-Mandanten „contoso.com“ in einem virtuellen Netzwerk aktivieren, das zu einem Azure-Abonnement gehört, das im Besitz eines anderen Azure AD-Mandanten „fabrikam.com“ ist. 
 
 **Gültige Konfiguration**: In diesem Bereitstellungsszenario ist die verwaltete Contoso-Domäne für den Contoso Azure AD-Mandanten aktiviert. Die verwaltete Domäne wird in einem virtuellen Netzwerk verfügbar gemacht, das zu einem Azure-Abonnement gehört, welches sich im Besitz des Contoso Azure AD-Mandanten befindet. Daher gehören sowohl die verwaltete Domäne als auch das virtuelle Netzwerk zum gleichen Azure AD-Mandanten. Diese Konfiguration ist gültig und wird vollständig unterstützt.
 

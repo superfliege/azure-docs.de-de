@@ -11,19 +11,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 8feabb464c87032db40a66a67f471d0f41cd98eb
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 63cfa92feb08f32081fe02d4202fa6256c7b99dc
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-mongodb-api-documentation"></a>Azure Cosmos DB: MongoDB-API-Dokumentation
 
 Dieser Artikel enthält Links zu allen Azure Cosmos DB-Inhalten, die für die MongoDB-API gelten.
 
-Diese Artikel gelten nicht für die DocumentDB-API, Graph-API oder Tabellen-API. 
+Diese Artikel gelten nicht für die SQL-API, Graph-API oder Tabellen-API. 
 
 ## <a name="introduction-and-concepts"></a>Einführung und Konzepte
 
@@ -31,16 +31,18 @@ Machen Sie sich zunächst mit den hier angegebenen Themen und Ressourcen vertrau
 
 - [Einführung in Azure Cosmos DB: API für MongoDB](mongodb-introduction.md)
 - [Herstellen einer Verbindung mit Ihrem MongoDB-Konto](connect-mongodb-account.md)
+- [Unterstützung der Features und Syntax von MongoDB](mongodb-feature-support.md)
 
 ## <a name="quickstarts"></a>Schnellstarts
 
-Die Schnellstartthemen bieten die schnellste Möglichkeit zum Erstellen einer funktionierenden Anwendung mit Azure Cosmos DB. In jeder Schnellstartanleitung erfahren Sie, wie Sie das benutzeroberflächenbasierte Azure-Portal und Ihre bevorzugte Programmiersprache verwenden, um Datenbanklösungen mit Azure Cosmos DB zu erstellen. Für jede Schnellstartanleitung sind klonbare Web-Apps im GitHub-Bereich verfügbar. 
+Anhand der Schnellstartthemen können Sie besonders schnell eine funktionierende Anwendung mit Azure Cosmos DB erstellen. In jeder Schnellstartanleitung erfahren Sie, wie Sie mithilfe des benutzeroberflächenbasierten Azure-Portals und Ihrer bevorzugten Programmiersprache Datenbanklösungen mit Azure Cosmos DB erstellen. Für jede Schnellstartanleitung sind klonbare Web-Apps im GitHub-Bereich verfügbar. 
 
 
-- [Azure Cosmos DB: Migrieren einer vorhandenen Web-App von Node.js MongoDB](create-mongodb-nodejs.md)
-- [Azure Cosmos DB: Erstellen einer Web-App mit einer MongoDB-API mit .NET und dem Azure-Portal](create-mongodb-dotnet.md)
-- [Azure Cosmos DB: Erstellen einer Konsolen-App mit einer MongoDB-API mit Java und dem Azure-Portal](create-mongodb-java.md)
-- [Azure Cosmos DB: Erstellen einer Konsolen-App mit einer MongoDB-API mit Golang und dem Azure-Portal](create-mongodb-golang.md)
+- [Node.js + Express + AngularJS + Web-Apps](create-mongodb-nodejs.md)
+- [.NET + Azure-Portal + Web-Apps](create-mongodb-dotnet.md)
+- [Java + Azure-Portal + Web-Apps](create-mongodb-java.md)
+- [Go + Azure-Portal + Go](create-mongodb-golang.md)
+- [Python + Flask + Azure-Portal](create-mongodb-flask.md)
 
 ## <a name="tutorials"></a>Lernprogramme
 
@@ -63,7 +65,7 @@ Diese Tutorials gehen noch eine Ebene tiefer als die Schnellstartanleitungen. In
 ### <a name="work-with-data"></a>Arbeiten mit Daten
 
 - [Azure Cosmos DB: Wie werden Abfragen mit der API für MongoDB durchgeführt?](tutorial-query-mongodb.md)
-- [Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der MongoDB-API](tutorial-global-distribution-mongodb.md)
+- [Globale Datenverteilung](tutorial-global-distribution-mongodb.md)
 
 ## <a name="developers-guide"></a>Entwicklerhandbuch
 

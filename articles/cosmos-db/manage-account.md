@@ -1,7 +1,7 @@
 ---
 title: "Verwalten eines Azure Cosmos DB-Kontos über das Azure-Portal | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Ihr Azure Cosmos DB-Konto über das Azure-Portal verwalten. Sie erhalten eine Anleitung, wie das Azure-Portal verwendet werden kann, um Konten anzuzeigen, zu kopieren, zu löschen und um auf Konten zuzugreifen."
-keywords: Azure-Portal, DocumentDB, Azure, Microsoft Azure
+keywords: Azure-Portal, Azure, Microsoft Azure
 services: cosmos-db
 documentationcenter: 
 author: kirillg
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: kirillg
-ms.openlocfilehash: 16cdd2780ae090a5388b3d2e6e4ab52a24f8116a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: e5820cb17cfbaa15f10f24881f02a37aec617267
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Verwalten eines Azure Cosmos DB-Kontos
 Erfahren Sie, wie Sie globale Konsistenz festlegen, mit Schlüsseln arbeiten und ein Azure Cosmos DB-Konto im Azure-Portal löschen.

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: f9bcecff4031bcf51e3885ad98da69d9be41b397
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 8ec4cf774306a5b74627adc0d405bab09645ec9a
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions
 
@@ -44,7 +44,7 @@ Der Azure Cosmos DB-Trigger, die Eingabebindung und die Ausgabebindung können i
 * Eine Eingabebindung an einen Azure Cosmos DB-Container kann in derselben Funktion wie ein Azure Cosmos DB-Trigger verwendet werden; die Verwendung mit oder ohne eine Ausgabebindung ist ebenfalls möglich. Mit einer solchen Kombination können Sie z.B. aktuelle Wechselkursinformationen (abgerufen mit einer Eingangsbindung in einen Kurscontainer) auf den Änderungsfeed für neue Bestellungen in Ihrem Einkaufswagendienst anwenden. Die aktualisierte Einkaufswagensumme kann mit angewendetem aktuellen Wechselkurs mithilfe einer Ausgabebindung in einen dritten Container geschrieben werden.
 
 > [!NOTE]
-> Derzeit funktionieren der Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen ausschließlich mit DocumentDB-, Tabellen- und Graph-API-Konten.
+> Derzeit funktionieren der Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen ausschließlich mit SQL- und Graph-API-Konten.
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -86,14 +86,14 @@ In den folgenden Abbildungen wird der Code im Azure-Portal für dieses Szenario 
 
 ### <a name="gaming-use-case---azure-cosmos-db-trigger-and-output-binding"></a>Gaming-Anwendungsfall: Azure Cosmos DB-Trigger und Ausgabebindung
 
-Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Graph-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB-Tabellendatenbank](table-introduction.md) schreiben, aus der sie leicht abgerufen werden können.
+Wenn in einer Gaming-Anwendung ein neuer Benutzer erstellt wird, können Sie mithilfe der [Azure Cosmos DB-Graph-API](graph-introduction.md) nach anderen Benutzern suchen, die diesen möglicherweise kennen. Anschließend können Sie die Ergebnisse in eine [Azure Cosmos DB-SQL-Datenbank] schreiben, aus der sie leicht abgerufen werden können.
 
 **Implementierung:** Verwenden eines Azure Cosmos DB-Triggers und einer Ausgabebindung
 
 1. Mithilfe einer Azure Cosmos DB-[Grafikdatenbank](graph-introduction.md), in der alle Benutzer gespeichert werden, können Sie eine neue Funktion mit einem Azure Cosmos DB-Trigger erstellen. 
 2. Bei Einfügen eines neuen Benutzers wird die Funktion aufgerufen, und das Ergebnis wird mithilfe einer **Ausgabebindung** gespeichert.
 3. Die Funktion fragt die Grafikdatenbank ab und sucht nach allen Benutzern, die in direkter Beziehung zum neuen Benutzer stehen. Das resultierende Dataset wird an die Funktion zurückgegeben.
-4. Diese Daten werden dann als Schlüssel-Wert-Paare in einer Azure Cosmos DB-[Tabellendatenbank](table-introduction.md) gespeichert, aus der sie von jeder Front-End-Anwendung abgerufen werden können, die den neuen Benutzer für seine verknüpften Freunde anzeigt.
+4. Diese Daten werden dann in einer Azure Cosmos DB gespeichert, aus der sie von jeder Front-End-Anwendung abgerufen werden können, die den neuen Benutzer für seine verknüpften Freunde anzeigt.
 
 ### <a name="retail-use-case---multiple-functions"></a>Einzelhandel-Anwendungsfall: Mehrere Funktionen
 

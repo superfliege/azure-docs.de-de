@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 10/03/2017
 ms.author: mimig
 ms.custom: cda
-ms.openlocfilehash: 7d26974f67b69b2b861ef11ad8d76f34f53d453f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 976be65fc4668a911bfa93ef87a7f14686a79f31
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="20-days-of-azure-cosmos-db-tips"></a>20 Tage Azure Cosmos DB-Tipps
 
@@ -103,7 +103,7 @@ Tipp 10: Kopieren Sie Ihre MongoDB-Daten mithilfe von Studio 3T (MongoChef) in A
 
 Tipp 11: Erstellen Sie eine Heldenverfolgungs-App mithilfe von React, Node.js und Azure Cosmos DB.
 
-Den entsprechenden Artikel finden Sie unter: [Erstellen einer MongoDB-App mit React und Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint).
+Den entsprechenden Artikel finden Sie unter: [Erstellen einer MongoDB-App mit React und Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint).
 
 [![Auf Twitter retweeten](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910156604875649025)[![Freigabe auf LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315922463670751233)
 
@@ -119,7 +119,7 @@ Tipp 12: Arbeiten Sie mit Azure #CosmosDB und @AzureFunctions ohne Server! Weite
 
 Tipp 13: Werden Sie zum Profi mit @John_Papa und Azure Cosmos DB. Beginnen Sie ganz von vorn, und erstellen Sie von Grund auf eine MEAN-App.
 
-Den entsprechenden Artikel finden Sie unter: [Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).
+Den entsprechenden Artikel finden Sie unter: [Erstellen einer MongoDB-App mit Angular und Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer).
 
 [![Auf Twitter retweeten](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910881618855907329)[![Freigabe auf LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316647045599944704)
 
@@ -177,7 +177,7 @@ Tipp 19: Partition! Partition! Partition! Warum und wie in Azure Cosmos DB. Weit
 
 Tipp 20: Alle mögen den guten alten Spickzettel. Bei Azure Cosmos DB gibt es auch einen. Sie finden ihn unter [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl).
 
-Spickzettel: [Azure Cosmos DB: PDF-Datei mit dem SQL-Abfragespickzettel für die DocumentDB-API](https://aka.ms/Nt01nl)
+Spickzettel: [PDF-Datei mit dem SQL-Abfragespickzettel für Azure Cosmos DB](https://aka.ms/Nt01nl)
 
 [![Auf Twitter retweeten](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)[![Freigabe auf LinkedIn](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
 
