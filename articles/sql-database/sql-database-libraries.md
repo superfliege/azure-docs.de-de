@@ -1,6 +1,6 @@
 ---
 title: "Verbindungsbibliotheken für SQL-Datenbank | Microsoft-Dokumentation"
-description: "Enthält Links für Moduldownloads, die die Verbindung mit SQL Server und SQL-Datenbank von zahlreichen Clientprogrammiersprachen ermöglichen."
+description: "Enthält Links für Moduldownloads, die Verbindungen mit SQL Server und SQL-Datenbank von zahlreichen Clientprogrammiersprachen ermöglichen."
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -15,33 +15,33 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: genemi
-ms.openlocfilehash: 44c4491e7c198eec43a31480ef3df748626b7b75
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 012acd2b53fc9205511530d3cc30803dceef88a0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="connectivity-libraries-and-frameworks-for-microsoft-sql-server"></a>Verbindungsbibliotheken und Frameworks für Microsoft SQL Server
+# <a name="connectivity-libraries-and-frameworks-for-sql-server"></a>Verbindungsbibliotheken und -frameworks für SQL Server
 
-Sehen Sie sich unsere [Tutorials zu ersten Schritten](http://aka.ms/sqldev), um einen schnellen Einstieg in Programmiersprachen wie C#, Java, Node.js, PHP und Python zu erhalten und eine Anwendung mithilfe von SQL Server unter Linux oder Windows oder in Docker unter macOS zu erstellen.
+Unsere [Tutorials „Erste Schritte“](http://aka.ms/sqldev) ermöglichen Ihnen den schnellen Einstieg in Programmiersprachen wie C#, Java, Node.js, PHP und Python. Erstellen Sie anschließend mit SQL Server unter Linux oder Windows oder mit Docker unter macOS eine App.
 
-Die folgende Tabelle listet Verbindungsbibliotheken oder *Treiber* auf, die Clientanwendungen in einer Vielzahl von Sprachen verwenden können, um eine Verbindung mit Microsoft SQL Server herzustellen und dieses lokal oder in der Cloud auszuführen unter Linux, Windows oder in Docker. Ebenso kann eine Verbindung mit Azure SQL-Datenbank und Azure SQL Data Warehouse hergestellt werden. 
+Die folgende Tabelle enthält Verbindungsbibliotheken oder *Treiber*, die Clientanwendungen unter Verwendung zahlreicher Programmiersprachen nutzen können, um eine Verbindung mit SQL Server in einer lokalen Umgebung oder in der Cloud herzustellen und SQL Server zu verwenden. Sie können unter Linux, Windows oder mit Docker verwendet werden, um Verbindungen mit Azure SQL-Datenbank und Azure SQL Data Warehouse herzustellen. 
 
-| Sprache | Plattform | Zusätzliche Ressourcen | Herunterladen | Erste Schritte |
+| Sprache | Plattform | Zusätzliche Ressourcen | Download | Erste Schritte |
 | :-- | :-- | :-- | :-- | :-- |
 | C# | Windows, Linux, macOS | [Microsoft ADO.NET für SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Download](https://www.microsoft.com/net/download/) | [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/csharp/ubuntu)
-| Java | Windows, Linux, macOS | [Microsoft JDBC Driver für SQL Server](http://msdn.microsoft.com/library/mt484311.aspx) | [Download](https://go.microsoft.com/fwlink/?linkid=852460) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
+| Java | Windows, Linux, macOS | [Microsoft JDBC-Treiber für SQL Server](http://msdn.microsoft.com/library/mt484311.aspx) | [Download](https://go.microsoft.com/fwlink/?linkid=852460) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/java/ubuntu)
 | PHP | Windows, Linux, macOS| [PHP SQL-Treiber für SQL Server](http://msdn.microsoft.com/library/dn865013.aspx) | Betriebssystem: <br/> \*[Windows](https://www.microsoft.com/download/details.aspx?id=20098) <br/> \*[Linux](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) <br/> \*[macOS](https://github.com/Microsoft/msphpsql/tree/dev#install-unix) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/php/ubuntu)
 | Node.js | Windows, Linux, macOS | [Node.js-Treiber für SQL Server](http://msdn.microsoft.com/library/mt652093.aspx) | [Installieren](https://msdn.microsoft.com/library/mt652094.aspx) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/node/ubuntu)
 | Python | Windows, Linux, macOS | [Python-SQL-Treiber](http://msdn.microsoft.com/library/mt652092.aspx) | Installationsoptionen: <br/> \*[pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \*[pyodbc](http://msdn.microsoft.com/library/mt763257.aspx) |  [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/python/ubuntu)
 | Ruby | Windows, Linux, macOS | [Ruby-Treiber für SQL Server](http://msdn.microsoft.com/library/mt691981.aspx) | [Installieren](https://msdn.microsoft.com/library/mt711041.aspx) | [Erste Schritte](https://www.microsoft.com/en-us/sql-server/developer-get-started/ruby/ubuntu)
 | C++ | Windows, Linux, macOS | [Microsoft ODBC-Treiber für SQL Server](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) | [Download](https://msdn.microsoft.com/en-us/library/mt654048(v=sql.1).aspx) |  
 
-In der folgenden Tabelle sind einige Beispiele für Frameworks und Webframeworks der objektrelationalen Abbildung (Object Relational Mapping, ORM) aufgelistet, die Clientanwendungen mit lokalem Microsoft SQL Server oder in der Cloud unter Linux, Windows oder in Docker und auch in Azure SQL-Datenbank und Azure SQL Data Warehouse verwenden können. 
+Die folgende Tabelle enthält Beispiele für ORM (Object-Relational Mapping)-Frameworks und Webframeworks, die Clientanwendungen mit SQL Server in einer lokalen Umgebung oder in der Cloud nutzen können. Die Frameworks können unter Linux, Windows oder mit Docker verwendet werden, um Verbindungen mit SQL-Datenbank und SQL Data Warehouse herzustellen. 
 
 | Sprache | Plattform | ORM(s) |
 | :-- | :-- | :-- |
-| C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/en-us/ef)<br>[Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/index) |
+| C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
 | Java | Windows, Linux, macOS |[Hibernate ORM](http://hibernate.org/orm)|
 | PHP | Windows, Linux | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
 | Node.js | Windows, Linux, macOS | [Sequelize ORM](http://docs.sequelizejs.com) |

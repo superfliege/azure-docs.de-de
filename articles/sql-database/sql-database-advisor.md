@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: sstein
-ms.openlocfilehash: 9b6c60a14578842f4b3b1a9e4724eab6de3f8815
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 84706837aeb416d13dab617f51a33d62a934c016
+ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/07/2017
 ---
 # <a name="performance-recommendations"></a>Empfehlungen zur Leistung
 
@@ -57,7 +57,12 @@ Damit Sie die Auswirkungen dieser Empfehlung besser abschätzen können, wird Ih
 
 Nach dem Anwenden dieser Empfehlung wird die erzwungene Parametrisierung innerhalb weniger Minuten für Ihre Datenbank aktiviert. Anschließend startet ein Überwachungsprozess, der ungefähr 24 Stunden ausgeführt wird. Nach Ablauf dieses Zeitraums können Sie einen Überprüfungsbericht anzeigen, der die CPU-Auslastung Ihrer Datenbank für die 24 Stunden vor und nach dem Anwenden der Empfehlung zeigt. Der SQL Database Advisor verfügt über einen Sicherheitsmechanismus, der die angewendete Empfehlung automatisch wieder zurücknimmt, falls ein Absinken der Leistung beobachtet wird.
 
-## <a name="fix-schema-issues-recommendations"></a>Empfehlungen zum Beheben von Schemaproblemen
+## <a name="fix-schema-issues-recommendations-preview"></a>Empfehlungen zum Beheben von Schemaproblemen (Vorschau)
+
+> [!IMPORTANT]
+> Empfehlungen zum Beheben von Schemaproblemen werden in Kürze von Microsoft eingestellt. Nutzen Sie für die automatische Überwachung von Problemen mit der Datenbankleistung zukünftig [Intelligent Insights](sql-database-intelligent-insights.md). Schemaprobleme, die zuvor von den Empfehlungen zum Beheben von Schemaproblemen abgedeckt wurden, werden ebenfalls behandelt.
+> 
+
 Empfehlungen zum **Beheben von Schemaproblemen** werden angezeigt, wenn der SQL-Datenbankdienst eine Anomalie in der Anzahl von schemabezogenen SQL-Fehlern erkennt, die in Ihrer Azure SQL-Datenbank auftreten. Diese Empfehlung wird in der Regel angezeigt, wenn in Ihrer Datenbank innerhalb einer Stunde mehrere schemabezogene Fehler auftreten (ungültiger Spaltenname, ungültiger Objektname usw.).
 
 Bei Schemaproblemen handelt es sich um eine Klasse von Syntaxproblemen in SQL Server, die auftreten, wenn die Definition einer SQL-Abfrage nicht auf die Definition des Datenbankschemas abgestimmt ist. Dies kann z.B. der Fall sein, wenn eine der von der Abfrage erwarteten Spalten in der Zieltabelle fehlt oder umgekehrt. 
@@ -66,7 +71,7 @@ Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQ
 
 | SQL-Fehlercode | Message |
 | --- | --- |
-| 201 |Die*'*'*-Prozedur oder -Funktion erwartet den '*'-Parameter, der nicht bereitgestellt wurde. |
+| 201 |Die *-Prozedur oder -Funktion erwartet den* -Parameter, der nicht bereitgestellt wurde. |
 | 207 |Ungültiger Spaltenname '*'. |
 | 208 |Ungültiger Objektname '*'. |
 | 213 |Der Spaltenname oder die Anzahl der bereitgestellten Werte entspricht nicht der Tabellendefinition. |

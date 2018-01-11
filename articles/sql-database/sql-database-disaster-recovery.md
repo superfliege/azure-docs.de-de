@@ -13,39 +13,45 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 04/14/2017
+ms.date: 12/13/2017
 ms.author: sashan
-ms.openlocfilehash: cbd54a2a309874c81d8384d789bebe4f94c97adf
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.reviewer: carlrab
+ms.openlocfilehash: 224c0b9f12595ec6cdc65e3d397fb62dba504d06
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Wiederherstellen einer Azure SQL-Datenbank oder Failover auf eine sekundäre Datenbank
 Azure SQL-Datenbank bietet die folgenden Features zur Wiederherstellung nach einem Ausfall:
 
-* [Aktive Georeplikation](sql-database-geo-replication-overview.md)
+* [Aktive Georeplikation und Failovergruppen](sql-database-geo-replication-overview.md)
 * [Geowiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 Informationen über Szenarien zum Thema Geschäftskontinuität sowie über die Funktionen, die diese Szenarien unterstützen, finden Sie unter [Geschäftskontinuität](sql-database-business-continuity.md).
 
-### <a name="prepare-for-the-event-of-an-outage"></a>Vorbereiten auf einen Ausfall
-Um eine erfolgreiche Wiederherstellung in eine andere Datenregion mithilfe der aktiven Georeplikation oder georedundanter Sicherungen durchzuführen, müssen Sie einen Server in einem anderen Rechenzentrum vorbereiten, um diesen bei einem Ausfall zum neuen primären Server hochstufen zu können. Darüber hinaus müssen Sie sorgfältig definierte Schritte dokumentiert und getestet haben, um eine reibungslose Wiederherstellung sicherzustellen. Folgende Vorbereitungsschritte sind erforderlich:
+> [!NOTE]
+> Bei Verwendung zonenredundanter Premium-Datenbanken oder -Pools erfolgt der Wiederherstellungsprozess automatisch, sodass das verbleibende Material nicht relevant ist. 
 
-* Identifizieren Sie den logischen Server in einer anderen Region, der der neue primäre Server werden soll. Bei der aktiven Georeplikation muss dies mindestens einer der sekundären Server sein, möglicherweise sogar alle. Bei der Geowiederherstellung ist dies im Allgemeinen ein Server in der [gekoppelten Region](../best-practices-availability-paired-regions.md) für die Region, in der sich Ihre Datenbank befindet.
+### <a name="prepare-for-the-event-of-an-outage"></a>Vorbereiten auf einen Ausfall
+Um eine erfolgreiche Wiederherstellung in eine andere Datenregion mithilfe von Failovergruppen oder georedundanter Sicherungen durchzuführen, müssen Sie einen Server in einem anderen Rechenzentrum vorbereiten, um diesen bei einem Ausfall zum neuen primären Server hochstufen zu können. Darüber hinaus müssen Sie sorgfältig definierte Schritte dokumentiert und getestet haben, um eine reibungslose Wiederherstellung sicherzustellen. Folgende Vorbereitungsschritte sind erforderlich:
+
+* Identifizieren Sie den logischen Server in einer anderen Region, der der neue primäre Server werden soll. Bei der Geowiederherstellung ist dies im Allgemeinen ein Server in der [gekoppelten Region](../best-practices-availability-paired-regions.md) für die Region, in der sich Ihre Datenbank befindet. Dadurch entfallen Kosten für zusätzlichen Datenverkehr während der Geowiederherstellungsvorgänge.
 * Identifizieren Sie die Firewallregeln auf Serverebene, die erforderlich sind, damit Benutzer auf die neue primäre Datenbank zugreifen können. Optional können Sie diese Regeln auch neu definieren.
 * Legen Sie fest, wie Benutzer an den neuen primären Server umgeleitet werden sollen, indem Sie z.B. Verbindungszeichenfolgen oder DNS-Einträge ändern.
 * Identifizieren Sie die Anmeldeinformationen, die in der Masterdatenbank auf dem neuen primären Server vorhanden sein müssen, und stellen Sie sicher, dass die entsprechenden Benutzer über die geeigneten Berechtigungen in der Masterdatenbank verfügen. Optional können Sie diese Informationen auch neu erstellen. Weitere Informationen finden Sie unter [Verwalten der Sicherheit der Azure SQL-Datenbank nach der Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
 * Identifizieren Sie die Warnungsregeln, die aktualisiert werden müssen, um der neuen primären Datenbank zugeordnet werden zu können.
 * Dokumentieren Sie die Überwachungskonfiguration in der aktuellen primären Datenbank.
-* Führen Sie ein [Notfallwiederherstellungsverfahren](sql-database-disaster-recovery-drills.md) durch. Um einen Ausfall für die Geowiederherstellung zu simulieren, können Sie die Quelldatenbank löschen oder umbenennen, um einen Fehler bei der Konnektivität der Anwendung zu verursachen. Um einen Ausfall für die aktive Georeplikation zu simulieren, können Sie die Webanwendung oder den virtuellen Computer deaktivieren, die bzw. der mit der Datenbank verbunden ist. Alternativ dazu können Sie ein Failover der Datenbank durchführen, um Fehler bei der Konnektivität der Anwendung zu verursachen.
+* Führen Sie ein [Notfallwiederherstellungsverfahren](sql-database-disaster-recovery-drills.md) durch. Um einen Ausfall für die Geowiederherstellung zu simulieren, können Sie die Quelldatenbank löschen oder umbenennen, um einen Fehler bei der Konnektivität der Anwendung zu verursachen. Um einen Ausfall unter Verwendung von Failovergruppen zu simulieren, können Sie die Webanwendung oder den virtuellen Computer deaktivieren, die bzw. der mit der Datenbank verbunden ist. Alternativ dazu können Sie ein Failover der Datenbank durchführen, um Fehler bei der Konnektivität der Anwendung zu verursachen.
 
 ## <a name="when-to-initiate-recovery"></a>Startzeitpunkt für die Wiederherstellung
-Der Wiederherstellungsvorgang wirkt sich auf die Anwendung aus. Er erfordert eine Änderung der SQL-Verbindungszeichenfolge oder eine Umleitung über DNS und kann zu dauerhaftem Datenverlust führen. Er sollte daher nur ausgeführt werden, wenn der Ausfall wahrscheinlich länger als die Anwendungs-RTO (Recovery Time Objective)dauert. Wenn die Anwendung in der Produktionsumgebung bereitgestellt wird, sollten Sie regelmäßige Überwachungen der Anwendungsintegrität durchführen und die folgenden Datenpunkte verwenden, um zu bestätigen, dass die Wiederherstellung erforderlich ist:
+Der Wiederherstellungsvorgang wirkt sich auf die Anwendung aus. Er erfordert eine Änderung der SQL-Verbindungszeichenfolge oder eine Umleitung über DNS und kann zu dauerhaftem Datenverlust führen. Er sollte daher nur ausgeführt werden, wenn der Ausfall wahrscheinlich länger als die Anwendungs-RTO (Recovery Time Objective) dauert. Wenn die Anwendung in der Produktionsumgebung bereitgestellt wird, sollten Sie regelmäßige Überwachungen der Anwendungsintegrität durchführen und die folgenden Datenpunkte verwenden, um zu bestätigen, dass die Wiederherstellung erforderlich ist:
 
 1. Permanente Verbindungsfehler zwischen Anwendungsebene und Datenbank.
 2. Das Azure-Portal zeigt eine Warnung zu einem Incident in der Region, der weit reichende Auswirkungen hat.
-3. Der Azure SQL-Datenbankserver wird als beeinträchtigt gekennzeichnet.
+
+> [!NOTE]
+> Wenn Sie Failovergruppen verwenden und sich für das automatische Failover entscheiden, erfolgt der Wiederherstellungsprozesses automatisch und transparent für die Anwendung. 
 
 Je nach Toleranz Ihrer Anwendung gegenüber einer Downtime und einer möglichen geschäftlichen Haftung können Sie die folgenden Wiederherstellungsoptionen in Betracht ziehen.
 
@@ -54,22 +60,21 @@ Verwenden Sie die Anforderung [Get Recoverable Database](https://msdn.microsoft.
 ## <a name="wait-for-service-recovery"></a>Warten auf die Dienstwiederherstellung
 Die Azure-Teams arbeiten intensiv daran, die Dienstverfügbarkeit so schnell wie möglich wiederherzustellen, aber je nach Fehlerursache kann die Wiederherstellung Stunden oder Tage in Anspruch nehmen.  Wenn Ihre Anwendung eine solche Downtime tolerieren kann, können Sie einfach warten, bis der Dienst wiederhergestellt wurde. In diesem Fall ist keine weitere Aktion erforderlich. Sie können den aktuellen Dienststatus auf unserem [Dashboard zur Azure-Dienstintegrität](https://azure.microsoft.com/status/)anzeigen. Nach der Dienstwiederherstellung in Ihrer Region wird die Verfügbarkeit Ihrer Anwendung wiederhergestellt.
 
-## <a name="fail-over-to-geo-replicated-secondary-database"></a>Failover auf eine georeplizierte sekundäre Datenbank
-Wenn eine Downtime für Ihre Anwendung zu einer geschäftlichen Haftung führen kann, sollten Sie georeplizierte Datenbanken für Ihre Anwendung einsetzen. So kann die Anwendungsverfügbarkeit bei einem Ausfall schnell in einer anderen Region wiederhergestellt werden. Hier finden Sie Informationen zum [Konfigurieren der Georeplikation](sql-database-geo-replication-portal.md).
+## <a name="fail-over-to-geo-replicated-secondary-server-in-the-failover-group"></a>Failover auf den georeplizierten sekundären Server in der Failovergruppe
+Wenn eine Downtime für Ihre Anwendung zu einer geschäftlichen Haftung führen kann, sollten Sie Failovergruppen einsetzen. So kann die Anwendungsverfügbarkeit bei einem Ausfall schnell in einer anderen Region wiederhergestellt werden. Erfahren Sie, wie Sie [Failovergruppen konfigurieren](sql-database-geo-replication-portal.md).
 
-Um die Verfügbarkeit der benötigten Datenbank(en) wiederherzustellen, müssen Sie mithilfe einer der unterstützten Methoden ein Failover auf die georeplizierte sekundäre Datenbank ausführen.
+Um die Verfügbarkeit der Datenbank(en) wiederherzustellen, müssen Sie mithilfe einer der unterstützten Methoden ein Failover auf den sekundären Server initiieren.
 
 In den folgenden Leitfäden finden Sie Informationen zum Failover auf eine georeplizierte sekundäre Datenbank:
 
-* [Failover auf eine georeplizierte sekundäre Datenbank mit dem Azure-Portal](sql-database-geo-replication-portal.md)
-* [Failover auf eine georeplizierte sekundäre Datenbank mit PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
-* [Failover auf eine georeplizierte sekundäre Datenbank mit T-SQL](/sql/t-sql/statements/alter-database-azure-sql-database)
+* [Failover auf einen georeplizierten sekundären Server mit dem Azure-Portal](sql-database-geo-replication-portal.md)
+* [Failover auf den sekundären Server mithilfe von PowerShell](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
 
 ## <a name="recover-using-geo-restore"></a>Wiederherstellen mit Geowiederherstellung
 Wenn eine Downtime Ihrer Anwendung keine geschäftliche Haftung nach sich zieht, können Sie [Geowiederherstellung](sql-database-recovery-using-backups.md) als Methode zum Wiederherstellen Ihrer Anwendungsdatenbank(en) nutzen. Hierbei wird eine Kopie der Datenbank aus der letzten georedundanten Sicherung erstellt.
 
 ## <a name="configure-your-database-after-recovery"></a>Konfigurieren der Datenbank nach der Wiederherstellung
-Wenn Sie ein Georeplikationsfailover oder die Geowiederherstellung ausführen, um Ihre Anwendung nach einem Ausfall wiederherzustellen, müssen Sie sicherstellen, dass die Verbindung mit der neuen Datenbank ordnungsgemäß konfiguriert ist, sodass der normale Anwendungsbetrieb wieder aufgenommen werden kann. Dies ist eine Prüfliste mit Aufgaben, anhand derer Sie die wiederhergestellte Datenbank für die Produktion vorbereiten können.
+Wenn Sie die Geowiederherstellung ausführen, um Ihre Anwendung nach einem Ausfall wiederherzustellen, müssen Sie sicherstellen, dass die Verbindung mit der neuen Datenbank ordnungsgemäß konfiguriert ist, sodass der normale Anwendungsbetrieb wieder aufgenommen werden kann. Dies ist eine Prüfliste mit Aufgaben, anhand derer Sie die wiederhergestellte Datenbank für die Produktion vorbereiten können.
 
 ### <a name="update-connection-strings"></a>Aktualisieren von Verbindungszeichenfolgen
 Da Ihre wiederhergestellte Datenbank auf einem anderen Server vorliegt, müssen Sie die Verbindungszeichenfolge Ihrer Anwendung so anpassen, dass sie auf den neuen Server verweist.
@@ -83,7 +88,7 @@ Sie müssen sicherstellen, dass die für den Server und die Datenbank konfigurie
 Stellen Sie sicher, dass alle von der Anwendung verwendeten Anmeldungen auf dem Server vorhanden sind, der die wiederhergestellte Datenbank hostet. Weitere Informationen finden Sie unter [Sicherheitskonfiguration für die Georeplikation](sql-database-geo-replication-security-config.md).
 
 > [!NOTE]
-> Konfigurieren und Testen Sie die Serverfirewallregeln und -anmeldungen (sowie deren Berechtigungen) während eines Notfallwiederherstellungverfahrens. Diese Objekte auf Serverebene und deren Konfiguration sind während des Ausfalls möglicherweise nicht verfügbar.
+> Konfigurieren und testen Sie die Serverfirewallregeln und -anmeldungen (sowie deren Berechtigungen) während eines Notfallwiederherstellungsverfahrens. Diese Objekte auf Serverebene und deren Konfiguration sind während des Ausfalls möglicherweise nicht verfügbar.
 > 
 > 
 

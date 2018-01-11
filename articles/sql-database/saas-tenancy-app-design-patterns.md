@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: billgib
-ms.openlocfilehash: 0377baaa4a0db7e3cb2041f3ca018322e379f0df
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 1b6c780000d8c5e31a78f7f83ae74c002e8f8349
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Mandantenmuster für mehrinstanzenfähige SaaS-Datenbanken
 
@@ -84,7 +84,7 @@ Wie beim Muster einer eigenständigen App ermöglicht auch die Verwendung von Ei
 
 Bei einer Datenbank pro Mandant lässt sich das Schema für einen oder mehrere einzelne Mandanten problemlos realisieren.  Der Hersteller der Anwendung muss Verfahren entwerfen, um sorgfältig Schemaanpassungen im großen Maßstab zu verwalten.
 
-#### <a name="elastic-pools"></a>Elastische Pools
+#### <a name="elastic-pools"></a>Pools für elastische Datenbanken
 
 Wenn Datenbanken in derselben Ressourcengruppe bereitgestellt werden, können sie in Pools für elastische Datenbanken gruppiert werden.  Die Pools bieten eine kosteneffiziente Methode, um Ressourcen auf eine Vielzahl von Datenbanken aufzuteilen.  Eine solche Pooloption ist günstiger, als die einzelnen Datenbanken so groß anzulegen, dass auftretende Verbrauchsspitzen verarbeitet werden können.  Auch wenn Datenbanken mit Pools gemeinsam auf Ressourcen zugreifen, können sie dennoch einen hohen Grad an Leistungsisolation erzielen.
 
@@ -101,7 +101,7 @@ Nehmen wir beispielsweise an, dass ein System ausschließlich auf einer Datenban
 Zu anderen Verwaltungsfunktionen, die sich gute skalieren lassen, zählen Folgende:
 
 - Integrierte Sicherungen
-- Hohe Verfügbarkeit.
+- Hochverfügbarkeit.
 - Datenträgerverschlüsselung
 - Leistungstelemetriedaten
 
@@ -165,7 +165,7 @@ Im hybriden Modell enthalten alle Datenbanken im Schema die Mandanten-ID.  Alle 
 
 Sie können einen bestimmten Mandanten jederzeit in eine eigene mehrinstanzenfähige Datenbank verschieben.  Sie können dies jederzeit rückgängig machen und den Mandanten wieder zu einer Datenbank mit mehreren Mandanten wechseln.  Sie können einem Mandanten bei der Bereitstellung einer neuen Datenbank auch eine neue Einzelinstanzdatenbank zuordnen.
 
-Das hybride Modell erweist sich vor allem dann als hilfreich, wenn große Unterschiede zwischen den Ressourcenanforderungen der identifizierbarer Mandantengruppen herrschen.  Nehmen wir zum Beispiel an, dass Mandanten mit einer kostenlosen Testversion nicht dieselbe hohe Leistungsebene garantiert wird wie Mandanten mit einem Abonnement.  Die Richtlinie könnte vorschreiben, dass Mandanten im kostenlosen Testzeitraum in einer mehrinstanzenfähigen Datenbank, die von allen Mandanten mit der kostenlosen Testversion gemeinsam genutzt wird, gespeichert werden sollen.  Wenn ein Mandant mit der kostenlosen Testversion ein Abonnement für den Diensttarif „Standard“ erwirbt, kann der Mandant in eine andere mehrinstanzenfähige Datenbank verschoben werden, die möglicherweise weniger Mandanten aufweist.  Ein Abonnent, der für den Diensttarif „Premium“ zahlt, kann in die neue Einzelinstanzdatenbank verschoben werden.
+Das hybride Modell erweist sich vor allem dann als hilfreich, wenn große Unterschiede zwischen den Ressourcenanforderungen der identifizierbarer Mandantengruppen herrschen.  Nehmen wir zum Beispiel an, dass Mandanten mit einer kostenlosen Testversion nicht dieselbe hohe Leistungsebene garantiert wird wie Mandanten mit einem Abonnement.  Die Richtlinie könnte vorschreiben, dass Mandanten im kostenlosen Testzeitraum in einer mehrinstanzenfähigen Datenbank, die von allen Mandanten mit der kostenlosen Testversion gemeinsam genutzt wird, gespeichert werden sollen.  Wenn ein Mandant mit der kostenlosen Testversion ein Abonnement für den Diensttarif „Standard“ erwirbt, kann der Mandant in eine andere mehrinstanzenfähige Datenbank verschoben werden, die möglicherweise weniger Mandanten aufweist.  Ein Abonnent, der für das Servicelevel „Premium“ zahlt, kann in seine eigene neue Einzelinstanzdatenbank verschoben werden.
 
 #### <a name="pools"></a>Pools
 

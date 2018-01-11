@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 7c741deba180af56414b0711de94ba110aeea9b8
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Installieren von Aufträgen für die elastische Datenbank – Übersicht
-[**Aufträge für die elastische Datenbank**](sql-database-elastic-jobs-overview.md) können mithilfe von PowerShell oder über das klassische Azure-Portal installiert werden. Der Zugriff zum Erstellen und Verwalten von Aufträgen mithilfe der PowerShell-API ist jedoch nur möglich, wenn Sie das PowerShell-Paket installieren. Darüber hinaus stellen die PowerShell-APIs zurzeit erheblich mehr Funktionen bereit als das Portal.
+[**Aufträge für die elastische Datenbank**](sql-database-elastic-jobs-overview.md) können mithilfe von PowerShell oder über das Azure-Portal installiert werden. Der Zugriff zum Erstellen und Verwalten von Aufträgen mithilfe der PowerShell-API ist jedoch nur möglich, wenn Sie das PowerShell-Paket installieren. Darüber hinaus stellen die PowerShell-APIs zurzeit erheblich mehr Funktionen bereit als das Portal.
 
 Wenn Sie **Aufträge für die elastische Datenbank** bereits über das Portal aus einem vorhandenen **Pool für elastische Datenbanken** installiert haben, finden Sie in der neuesten PowerShell-Vorschau Skripts, mit denen Sie ein Upgrade der vorhandenen Installation vornehmen können. Es wird dringend empfohlen, dass Sie ein Upgrade Ihrer Installation auf die neuesten Komponenten der **Aufträge für die elastische Datenbank** durchführen, um die über die PowerShell-APIs verfügbar gemachten neuen Funktionen nutzen zu können.
 
@@ -81,7 +81,7 @@ Die für diesen Beispielaufruf angegebenen Parameter können nach Ihren Wünsche
 
 <tr>
     <td>ServiceWorkerCount</td>
-    <td>Gibt die Anzahl der zu installierenden Arbeitsprozesse an. Dieser Parameter weist den Standardwert „1“ auf. Es kann eine höhere Anzahl Arbeitsprozesse verwendet werden, um den Dienst zu skalieren und höhere Verfügbarkeit bereitzustellen. Für Bereitstellungen, die eine hohe Verfügbarkeit des Diensts benötigen, wird der Wert „2“ empfohlen.</td>
+    <td>Gibt die Anzahl der zu installierenden Arbeitsprozesse an. Dieser Parameter weist den Standardwert „1“ auf. Es kann eine höhere Anzahl von Arbeitsprozessen verwendet werden, um den Dienst zu skalieren und Hochverfügbarkeit bereitzustellen. Für Bereitstellungen, die die Hochverfügbarkeit des Diensts benötigen, wird der Wert „2“ empfohlen.</td>
     </tr>
 
 </tr>
@@ -138,7 +138,7 @@ Zum Aktualisieren der Größe der VM einer Installation führen Sie das folgende
 
   <tr>
     <td>ServiceWorkerCount</td>
-    <td>Gibt die Anzahl der zu installierenden Arbeitsprozesse an.  Dieser Parameter weist den Standardwert „1“ auf.  Es kann eine höhere Anzahl Arbeitsprozesse verwendet werden, um den Dienst zu skalieren und höhere Verfügbarkeit bereitzustellen.  Für Bereitstellungen, die eine hohe Verfügbarkeit des Diensts benötigen, wird der Wert „2“ empfohlen.</td>
+    <td>Gibt die Anzahl der zu installierenden Arbeitsprozesse an.  Dieser Parameter weist den Standardwert „1“ auf.  Es kann eine höhere Anzahl von Arbeitsprozessen verwendet werden, um den Dienst zu skalieren und Hochverfügbarkeit bereitzustellen.  Für Bereitstellungen, die die Hochverfügbarkeit des Diensts benötigen, wird der Wert „2“ empfohlen.</td>
 </tr>
 
 </tr>

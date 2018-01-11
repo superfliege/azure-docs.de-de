@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: f136faf3df761b048c88e72f564f81fd32e630ab
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optimieren der Leistung mithilfe von In-Memory-Technologien in SQL-Datenbank
 
@@ -32,7 +32,7 @@ Hier sind zwei Beispiele dafür, wie In-Memory-OLTP geholfen hat, die Leistung d
 - Das folgende Video veranschaulicht anhand einer Beispielworkload eine erhebliche Verbesserung der Ressourcennutzung: [In-Memory-OLTP in Azure SQL-Datenbank](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB).
     - Weitere Informationen finden Sie im Blogbeitrag [In-Memory OLTP in Azure SQL Database Blog Post](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) (In-Memory OLTP in Azure SQL-Datenbank).
 
-In-Memory-Technologien sind in allen Datenbanken des Tarifs „Premium“, einschließlich Datenbanken im Premium-Tarif für elastische Pools, verfügbar.
+In-Memory-Technologien sind in allen Datenbanken des Tarifs „Premium“, einschließlich Datenbanken im Premium-Tarif für Pools für elastische Datenbanken, verfügbar.
 
 Im folgende Video werden potenzielle Leistungsvorteile mit In-Memory-Technologien in Azure SQL-Datenbank erklärt. Denken Sie daran, dass der Leistungsvorteil, den Sie erzielen, stets von vielen Faktoren abhängig ist. Dazu gehören die Art der Workload und Daten, die Zugriffsmuster der Datenbank usw.
 
@@ -77,9 +77,7 @@ Ausführliche Videos zu den Technologien:
 
 In-Memory-OLTP enthält speicheroptimierte Tabellen, die zum Speichern von Benutzerdaten verwendet werden. Diese Tabellen sind müssen in den Arbeitsspeicher passen. Da Sie Arbeitsspeicher direkt im SQL-Datenbank-Dienst verwalten, arbeiten wir mit dem Konzept eines Kontingents für Benutzerdaten. Dieses Konzept wird als *In-Memory-OLTP-Speicher* bezeichnet.
 
-Jeder unterstützte eigenständige Datenbanktarif und jeder Tarif für elastische Pools sieht eine bestimmte Menge von In-Memory-OLTP-Speicher vor. Zum Zeitpunkt der Verfassung erhalten Sie ein GB Speicher für alle 125 Datenbank-Transaktionseinheiten (DTUs) bzw. elastische Datenbank-Transaktionseinheiten (eDTUs).
-
-Der Artikel zu den [Tarifen für SQL-Datenbank](sql-database-service-tiers.md) enthält die offizielle Liste zum In-Memory-OLTP-Speicher in allen unterstützten eigenständigen Datenbanktarifen und Tarifen für elastische Pools.
+Jeder unterstützte eigenständige Datenbanktarif und jeder Tarif für Pools für elastische Datenbanken sieht eine bestimmte Menge von In-Memory-OLTP-Speicher vor. Zum Zeitpunkt der Verfassung erhalten Sie ein GB Speicher für alle 125 Datenbank-Transaktionseinheiten (DTUs) bzw. elastische Datenbank-Transaktionseinheiten (eDTUs). Weitere Informationen finden Sie unter [Ressourcenlimits](sql-database-resource-limits.md).
 
 Die folgenden Elemente werden bis zu Ihrer In-Memory-OLTP-Speicherkapazitätsobergrenze angerechnet:
 
@@ -91,9 +89,9 @@ Wenn Sie die Obergrenze erreichen, erhalten Sie einen Fehler vom Typ „Kontinge
 
 Weitere Informationen zur Überwachung der In-Memory-OLTP-Speicherverwendung und zum Konfigurieren von Benachrichtigungen, wenn die Obergrenze fast erreicht ist, finden Sie unter [Überwachen des In-Memory-OLTP-Speichers](sql-database-in-memory-oltp-monitoring.md).
 
-#### <a name="about-elastic-pools"></a>Hinweis zu elastischen Pools
+#### <a name="about-elastic-pools"></a>Hinweis zu Pools für elastische Datenbanken
 
-Bei elastischen Pools wird der In-Memory-OLTP-Speicher von allen Datenbanken im Pool gemeinsam genutzt. Aus diesem Grund kann die Verwendung in einer Datenbank andere Datenbanken möglicherweise beeinträchtigen. Zwei Lösungen dafür sind:
+Bei Pools für elastische Datenbanken wird der In-Memory-OLTP-Speicher von allen Datenbanken im Pool gemeinsam genutzt. Aus diesem Grund kann die Verwendung in einer Datenbank andere Datenbanken möglicherweise beeinträchtigen. Zwei Lösungen dafür sind:
 
 - Konfigurieren Sie eine maximale eDTU-Anzahl für Datenbanken, die niedriger als die eDTU-Anzahl für den ganzen Pool ist. Dieser Maximalwert begrenzt die In-Memory-OLTP-Speichernutzung in jeder Datenbank im Pool auf die Größe, die der eDTU-Anzahl entspricht.
 - Konfigurieren Sie eine minimale eDTU-Anzahl, die größer als 0 ist. Mit diesem Minimalwert wird sichergestellt, dass jede Datenbank im Pool die Menge des In-Memory-OLTP-Speichers zur Verfügung hat, die der konfigurierten minimalen eDTU-Anzahl entspricht.
@@ -134,7 +132,7 @@ SELECT * FROM sys.table_types WHERE is_memory_optimized=1
 SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 ```
 
-*Herunterstufen auf einen niedrigeren Premium-Tarif*: Daten in speicheroptimierten Tabellen müssen in den In-Memory-OLTP-Speicher passen, der dem Tarif der Datenbank zugeordnet oder im elastischen Pool verfügbar ist. Wenn Sie versuchen, zu einem niedrigeren Tarif zu wechseln oder die Datenbank in einen Pool zu verschieben, dem nicht genügend In-Memory-OLTP-Speicher zur Verfügung steht, misslingt der Vorgang.
+*Herunterstufen auf einen niedrigeren Premium-Tarif*: Daten in speicheroptimierten Tabellen müssen in den In-Memory-OLTP-Speicher passen, der dem Tarif der Datenbank zugeordnet oder im Pool für elastische Datenbanken verfügbar ist. Wenn Sie versuchen, zu einem niedrigeren Tarif zu wechseln oder die Datenbank in einen Pool zu verschieben, dem nicht genügend In-Memory-OLTP-Speicher zur Verfügung steht, misslingt der Vorgang.
 
 ### <a name="columnstore-indexes"></a>ColumnStore-Indizes
 
@@ -504,7 +502,7 @@ In einer Datenbank mit dem P2-Tarif können Sie etwa einen neunfachen Leistungsz
 - [Überwachen des In-Memory-OLTP-Speichers](sql-database-in-memory-oltp-monitoring.md) für In-Memory-OLTP
 
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 #### <a name="deeper-information"></a>Weiterführende Informationen
 

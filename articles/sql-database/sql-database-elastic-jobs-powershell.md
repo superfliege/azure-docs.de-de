@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: f9bdc28349c540ee68b421b7643e4bed099c9fdd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 357937aad5eb13ca87267629eb542cc43119dc0a
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>Erstellen und Verwalten von elastischen Aufträgen für SQL-Datenbank mithilfe von PowerShell (Vorschau)
 
@@ -203,7 +203,7 @@ Vor der Verwendung der Auftrags-APIs muss eine Verbindung mit der *Verwaltungsda
 ## <a name="encrypted-credentials-within-the-elastic-database-jobs"></a>Verschlüsselte Anmeldeinformationen innerhalb der Aufträge für die elastische Datenbank
 Datenbankanmeldeinformationen können mit verschlüsseltem Kennwort in die *Verwaltungsdatenbank* der Aufträge eingefügt werden. Die Anmeldeinformationen müssen gespeichert werden, um die Ausführung von Aufträgen zu einem späteren Zeitpunkt (unter Verwendung von Auftragszeitplänen) zu ermöglichen.
 
-Verschlüsselung funktioniert mithilfe eines Zertifikats, das im Rahmen des Installationsskripts erstellt wird. Das Installationsskript erstellt das Zertifikat und lädt es zwecks Entschlüsselung der gespeicherten verschlüsselten Kennwörter auf den Azure Cloud Service hoch. Der Azure-Clouddienst speichert den öffentlichen Schlüssel anschließend in der *Verwaltungsdatenbank* der Aufträge. Dies ermöglicht die Verschlüsselung eines übergebenen Kennworts durch die PowerShell-API oder die Schnittstelle des klassischen Azure-Portals, ohne dass das Zertifikat dazu lokal installiert sein muss.
+Verschlüsselung funktioniert mithilfe eines Zertifikats, das im Rahmen des Installationsskripts erstellt wird. Das Installationsskript erstellt das Zertifikat und lädt es zwecks Entschlüsselung der gespeicherten verschlüsselten Kennwörter auf den Azure Cloud Service hoch. Der Azure Cloud Service speichert den öffentlichen Schlüssel anschließend in der *Verwaltungsdatenbank* für Aufträge. Auf diese Weise kann die PowerShell-API oder die Azure-Portalschnittstelle ein übergebenes Kennwort verschlüsseln, ohne dass das Zertifikat lokal installiert sein muss.
 
 Die Kennwörter der Anmeldeinformationen werden verschlüsselt und sind vor Benutzern mit schreibgeschütztem Zugriff auf Auftragsobjekte für die elastische Datenbank geschützt. Böswillige Benutzer mit Lese-/Schreibzugriff auf Auftragsobjekte für die elastische Datenbank können jedoch ein Kennwort extrahieren. Die Anmeldeinformationen sind für die erneute Verwendung bei der Auftragsausführung bestimmt. Die Anmeldeinformationen werden beim Einrichten der Verbindungen an die Zieldatenbanken übergeben. Derzeit gibt es keinerlei Einschränkungen für die Zieldatenbanken, die für die einzelnen Anmeldeinformationen verwendet werden. Ein böswilliger Benutzer könnte also ein Datenbankziel für eine von ihm kontrollierte Datenbank hinzufügen. Der Benutzer könnte daraufhin einen Auftrag für diese Datenbank starten, um sich das Kennwort der Anmeldeinformationen zu beschaffen.
 
@@ -614,7 +614,7 @@ Informationen zur DACPAC-Erstellung finden Sie unter [Datenschichtanwendungen](h
     Write-Output $dacpac
 
 ### <a name="to-update-a-data-tier-application-dacpac-for-execution-across-databases"></a>So aktualisieren Sie eine Datenschichtanwendung (Data-tier Application, DACPAC) für die datenbankübergreifende Ausführung
-Vorhandene DACPACs, die bei Aufträge für die elastische Datenbank registriert sind, können so aktualisiert werden, dass sie auf neue URIs verweisen. Verwenden Sie das Cmdlet [**Set-AzureSqlJobContentDefinition**](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition), um den DACPAC-URI für ein vorhandendes registriertes DACPAC zu aktualisieren:
+Vorhandene DACPACs, die bei Aufträge für die elastische Datenbank registriert sind, können so aktualisiert werden, dass sie auf neue URIs verweisen. Verwenden Sie das Cmdlet [**Set-AzureSqlJobContentDefinition**](/powershell/module/elasticdatabasejobs/set-azuresqljobcontentdefinition), um den DACPAC-URI für ein vorhandenes registriertes DACPAC zu aktualisieren:
 
     $dacpacName = "{Dacpac Name}"
     $newDacpacUri = "{Uri}"

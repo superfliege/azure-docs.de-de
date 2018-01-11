@@ -1,6 +1,6 @@
 ---
 title: Migrieren klassischer Richtlinien in das Azure-Portal | Microsoft-Dokumentation
-description: Informationen zum Migrieren klassischer Richtlinien in das Azure-Portal.
+description: Wichtige Informationen zum Migrieren klassischer Richtlinien in das Azure-Portal.
 services: active-directory
 keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
 documentationcenter: 
@@ -13,162 +13,156 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/23/2017
+ms.date: 12/11/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: c584eddb5542c2c49d08d35bcaf8e7acb5c5b83a
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 16628bd4fa41d2e7697e1c2501f2ccd31dbd0496
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="migrate-classic-policies-in-the-azure-portal"></a>Migrieren klassischer Richtlinien in das Azure-Portal 
 
 
-Der [bedingte Zugriff](active-directory-conditional-access-azure-portal.md) ist eine Funktion von Azure Active Directory (Azure AD), mit der Sie den Zugriff autorisierter Benutzer auf Ihre Cloud-Apps steuern können. Während der Zweck immer noch derselbe ist, hat die Veröffentlichung des neuen Azure-Portals auch bedeutende Verbesserungen bei der Funktionsweise des bedingten Zugriffs mit sich gebracht. Die Richtlinien für den bedingten Zugriff, die Sie außerhalb des Azure-Portals konfiguriert haben, können mit den neuen Richtlinien, die Sie im Azure-Portal erstellen, gemeinsam vorhanden sein. Solange Sie sie nicht deaktivieren oder entfernen, werden sie weiterhin in Ihrer Umgebung angewendet. Wir empfehlen Ihnen jedoch, Ihre klassischen Richtlinien in die neuen Azure AD-Richtlinien für bedingten Zugriff zu migrieren, und zwar aus folgenden Gründen:
+Der [bedingte Zugriff](active-directory-conditional-access-azure-portal.md) ist eine Funktion von Azure Active Directory (Azure AD), mit der Sie den Zugriff autorisierter Benutzer auf Ihre Cloud-Apps steuern können. Während der Zweck immer noch derselbe ist, hat die Veröffentlichung des neuen Azure-Portals bedeutende Verbesserungen bei der Funktionsweise des bedingten Zugriffs mit sich gebracht.
 
-- Die neuen Richtlinien ermöglichen Ihnen, Szenarien anzupacken, die Sie mit klassischen Richtlinien nicht bewältigen konnten.
+Aus den folgenden Gründen sollten Sie das Migrieren der Richtlinien, die Sie nicht im Azure-Portal erstellt haben, in Erwägung ziehen:
+
+- Sie können jetzt Szenarien berücksichtigen, die bisher nicht behandelt werden konnten.
 
 - Sie können die Anzahl der zu verwaltenden Richtlinien reduzieren, indem Sie diese zusammenführen.   
 
-Dieses Thema unterstützt Sie bei der Migration Ihrer bestehenden klassischen Richtlinien in die neuen Azure AD-Richtlinien für bedingten Zugriff.
+- Sie können alle bedingten Zugriffsrichtlinien an einem zentralen Ort verwalten.
 
+- Das klassische Azure-Portal wird eingestellt.   
 
+In diesem Artikel erhalten Sie wichtige Informationen zum Migrieren Ihrer vorhandenen Richtlinien für bedingten Zugriff zum neuen Framework.
+ 
 ## <a name="classic-policies"></a>Klassische Richtlinien
 
-Die Richtlinien für den bedingten Zugriff auf Azure AD und Intune, die Sie nicht im Azure-Portal erstellt haben, werden auch als **klassische Richtlinien** bezeichnet. Um Ihre klassischen Richtlinien zu migrieren, benötigen Sie keinen Zugriff auf Ihr klassisches Azure-Portal. Das Azure-Portal bietet Ihnen die [Ansicht **Klassische Richtlinien (Vorschau)**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies), in der Sie die klassischen Richtlinien überprüfen können.
+Im [Azure-Portal](https://portal.azure.com) stellt die Seite [Bedingter Zugriff – Richtlinien](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/Policies) Ihren Einstiegspunkt in die Richtlinien für bedingten Zugriff dar. In Ihrer Umgebung sind jedoch möglicherweise auch Richtlinien für den bedingten Zugriff in Kraft, die Sie nicht mithilfe dieser Seite erstellt haben. Diese Richtlinien werden als *klassische Richtlinien* bezeichnet. Klassische Richtlinien sind Richtlinien für bedingten Zugriff, die Sie an diesen Orten erstellt haben:
 
-![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
+- Klassisches Azure-Portal
+- Klassisches Intune-Portal
+- Intune-App-Schutz-Portal
 
 
-### <a name="open-a-classic-policy"></a>Öffnen einer klassischen Richtlinie
+Auf der Seite **Bedingter Zugriff** können Sie auf Ihre klassischen Richtlinien zugreifen, indem Sie im Bereich **Verwalten** auf [**Klassische Richtlinien (Vorschau)**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ConditionalAccessBlade/ClassicPolicies) klicken. 
 
-**So öffnen Sie eine klassische Richtlinie**
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf der linken Navigationsleiste auf **Azure Active Directory**.
+![Azure Active Directory](./media/active-directory-conditional-access-migration/71.png)
 
-    ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
 
-2. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Verwalten** auf **Bedingter Zugriff**.
+Die Ansicht **Klassische Richtlinien** bietet Optionen für diese Aktionen:
 
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/02.png)
+- Filtern Ihrer klassischen Richtlinien.
  
-2. Klicken Sie auf der Seite **Bedingter Zugriff – Richtlinien** im Abschnitt **Verwalten** auf **Klassische Richtlinien (Vorschau)**.
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/72.png)
 
-3. Wählen Sie in der Liste der klassischen Richtlinien die gewünschte Richtlinie aus.   
+- Deaktivieren von klassischen Richtlinien.
 
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/34.png)
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/73.png)
+   
+- Überprüfen der Einstellungen einer klassischen Richtlinie (mit der Möglichkeit zur Deaktivierung).
+
+    ![Azure Active Directory](./media/active-directory-conditional-access-migration/74.png)
+
+
+Wenn Sie eine klassische Richtlinie deaktiviert haben, lässt sich dieser Schritt nicht mehr rückgängig machen. Das ist der Grund, warum sich die Gruppenmitgliedschaft bei einer klassischen Richtlinie mithilfe der Ansicht **Details** ändern lässt. 
+
+![Azure Active Directory](./media/active-directory-conditional-access-migration/75.png)
+
+Indem Sie entweder die ausgewählten Gruppen ändern oder bestimmte Gruppen ausschließen, können Sie die Wirkung einer deaktivierten klassischen Richtlinie an einigen Testbenutzern ausprobieren, bevor Sie die Richtlinie für alle enthaltenen Benutzer und Gruppen deaktivieren. 
 
 
 
 ## <a name="azure-ad-conditional-access-policies"></a>Azure AD-Richtlinien für bedingten Zugriff
 
-In diesem Thema finden Sie detaillierte Anweisungen zum Migrieren Ihrer klassischen Richtlinien, ohne mit Azure AD-Richtlinien für bedingten Zugriff vertraut zu sein. Doch wenn Sie mit den grundlegenden Konzepte und der Terminologie des bedingten Zugriffs in Azure AD vertraut sind, können Sie die Migration verbessern.
+Mit den Optionen für bedingten Zugriff im Azure-Portal können Sie alle Ihre Richtlinien an einem zentralen Ort verwalten. Da sich die Art der Implementierung von bedingtem Zugriff erheblich geändert hat, sollten Sie sich vor dem Migrieren Ihrer klassischen Richtlinien mit den zugrundeliegenden Konzepten vertraut machen.
 
 Siehe:
 
-- [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal.md), um mehr über die grundlegenden Konzepte und die Terminologie zu erfahren
+- [Bedingter Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal.md), um mehr über die grundlegenden Konzepte und die Terminologie zu erfahren.
 
-- [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md), um sich mit der Benutzeroberfläche im Azure-Portal vertraut zu machen
+- [Bewährte Methoden für den bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-best-practices.md), um hilfreiche Informationen zum Bereitstellen von bedingtem Zugriff in Ihrer Organisation zu erhalten.
+
+- [Erste Schritte mit dem bedingten Zugriff in Azure Active Directory](active-directory-conditional-access-azure-portal-get-started.md), um sich mit der Benutzeroberfläche im Azure-Portal vertraut zu machen.
 
 
  
+## <a name="migration-considerations"></a>Überlegungen zur Migration
+
+In diesen Artikel werden Azure AD-Richtlinien für bedingten Zugriff auch als *neue Richtlinien* bezeichnet.
+Ihre klassischen Richtlinien funktionieren weiterhin parallel zu Ihren neuen Richtlinien, bis Sie sie deaktivieren oder löschen. 
+
+Die folgenden Aspekte sind im Zusammenhang mit der Konsolidierung von Richtlinien wichtig:
+
+- Während klassische Richtlinien an eine bestimmte Cloud-App gebunden sind, können Sie in einer neuen Richtlinie beliebig viele Cloud-Apps auswählen.
+
+- In den Steuerelementen einer klassischen Richtlinie müssen in Verbindung mit einer neuen Richtlinie für eine Cloud-Apps alle Steuerelemente (*UND*) erfüllt sein. 
+
+
+- Eine neue Richtlinie eröffnet Ihnen folgende Möglichkeiten:
+ 
+    - Kombinieren mehrerer Bedingungen, wenn das für Ihr Szenario erforderlich ist. 
+
+    - Auswählen mehrerer Erteilungsanforderungen als Zugriffssteuerung, die mit logischem *ODER* (eins der ausgewählten Steuerelemente muss erfüllt sein) oder mit logischen *UND* (alle aktivierten Steuerelemente müssen erfüllt sein) kombiniert werden können.
+
+        ![Azure Active Directory](./media/active-directory-conditional-access-migration/25.png)
 
 
 
 
+### <a name="office-365-exchange-online"></a>Office 365 Exchange Online
 
-## <a name="multi-factor-authentication-policy"></a>Richtlinie für die mehrstufige Authentifizierung 
+Wenn Sie klassische Richtlinien für **Office 365 Exchange Online** migrieren möchten, die **Exchange Active Sync** als Bedingung für Client-Apps beinhalten, ist eine Konsolidierung in einer neuen Richtlinie möglicherweise nicht möglich. 
 
-Dieses Beispiel zeigt, wie Sie eine klassische Richtlinie migrieren, die eine mehrstufige Authentifizierung** für eine Cloud-App erfordert. 
+Dies ist beispielsweise dann der Fall, wenn Sie alle Typen von Client-Apps unterstützen möchten. In einer neuen Richtlinie, die **Exchange Active Sync** als Bedingung für Client-Apps beinhaltet, können keine weiteren Client-Apps ausgewählt werden.
 
-![Azure Active Directory](./media/active-directory-conditional-access-migration/33.png)
+![Azure Active Directory](./media/active-directory-conditional-access-migration/64.png)
 
+Eine Konsolidierung in einer neuen Richtlinie ist auch dann nicht möglich, wenn Ihre klassischen Richtlinien mehrere Bedingungen enthalten. Eine neue Richtlinie, in der **Exchange Active Sync** als Bedingung für Client-Apps konfiguriert ist, unterstützt keine weiteren Bedingungen:   
 
-**So migrieren Sie eine klassische Richtlinie**
+![Azure Active Directory](./media/active-directory-conditional-access-migration/08.png)
 
-1. [Öffnen Sie die klassische Richtlinie](#open-a-classic-policy) zum Abrufen der Konfigurationseinstellungen.
-2. Erstellen Sie eine neue Azure AD-Richtlinie für bedingten Zugriff, um Ihre klassische Richtlinie zu ersetzen. 
+Wenn Sie über eine neue Richtlinie verfügen, in der **Exchange Active Sync** als Client-App-Bedingung konfiguriert ist, müssen Sie sich vergewissern, dass keine weiteren Bedingungen konfiguriert sind. 
 
+![Azure Active Directory](./media/active-directory-conditional-access-migration/16.png)
+ 
 
-### <a name="create-a-new-conditional-access-policy"></a>Erstellen einer neuen Richtlinie für bedingten Zugriff
+[App-basierte](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) klassische Richtlinien für Office 365 Exchange Online, die **Exchange Active Sync** als Bedingung für Client-Apps enthalten, lassen **unterstützte** und **nicht unterstützte** [Geräteplattformen](active-directory-conditional-access-technical-reference.md#device-platform-condition) zu. Zwar können in einer zugeordneten neuen Richtlinie keine einzelnen Geräteplattformen konfiguriert werden, jedoch können Sie die Unterstützung auf [unterstützte Geräteplattformen](active-directory-conditional-access-technical-reference.md#device-platform-condition) einschränken. 
 
+![Azure Active Directory](./media/active-directory-conditional-access-migration/65.png)
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf der linken Navigationsleiste auf **Azure Active Directory**.
+Sie können mehrere klassische Richtlinien konsolidieren, die **Exchange Active Sync** als Bedingung für Client-Apps enthalten, wenn diese Punkte zutreffen:
 
-    ![Azure Active Directory](./media/active-directory-conditional-access-migration/01.png)
+- Nur **Exchange Active Sync** ist als Bedingung festgelegt 
 
-2. Klicken Sie auf der Seite **Azure Active Directory** im Abschnitt **Verwalten** auf **Bedingter Zugriff**.
+- Es sind mehrere Anforderungen für das Erteilen des Zugriffs konfiguriert
 
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/02.png)
+Ein häufiges Szenario ist die Konsolidierung von:
 
+- einer gerätebasierten klassischen Richtlinie aus dem klassischen Azure-Portal 
+- einer App-basierten klassischen Richtlinie in Intune-App-Schutz-Portal 
+ 
+In diesem Fall können Sie Ihre klassischen Richtlinien in einer neuen Richtlinie konsolidieren, für die beide Anforderungen aktiviert sind.
 
-
-3. Klicken Sie zum Öffnen der Seite **Neu** auf der Seite **Bedingter Zugriff** oben auf der Symbolleiste auf **Hinzufügen**.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/03.png)
-
-4. Geben Sie auf der Seite **Neu** im Textfeld **Name** einen Namen für Ihre Richtlinie ein.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/29.png)
-
-5. Klicken Sie im Abschnitt **Zuweisungen** auf **Benutzer und Gruppen**.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/05.png)
-
-    a. Wenn Sie alle Benutzer in der klassischen Richtlinie ausgewählt haben, klicken Sie auf **Alle Benutzer**. 
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/35.png)
-
-    b. Wenn Sie Gruppen in Ihrer klassischen Richtlinie ausgewählt haben, klicken Sie auf **Benutzer und Gruppen auswählen**, und wählen Sie dann die gewünschten Benutzer und Gruppen aus.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/36.png)
-
-    c. Wenn Sie ausgeschlossene Gruppen haben, klicken Sie auf die Registerkarte **Ausschließen**, und wählen Sie dann die gewünschten Benutzer und Gruppen aus. 
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/37.png)
-
-6. Klicken Sie zum Öffnen der Seite **Cloud-Apps** auf der Seite **Neu** im Abschnitt **Zuweisung** auf **Cloud-Apps**.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-azure-portal-get-started/07.png)
-
-8. Führen Sie auf der Seite **Cloud-Apps** die folgenden Schritte aus:
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/08.png)
-
-    a. Klicken Sie auf **Apps auswählen**.
-
-    b. Klicken Sie auf **Auswählen**.
-
-    c. Wählen Sie auf der Seite **Auswählen** Ihre Cloud-App aus, und klicken Sie dann auf **Auswählen**.
-
-    d. Klicken Sie auf der Seite **Cloud-Apps** auf **Fertig**.
+![Azure Active Directory](./media/active-directory-conditional-access-migration/62.png)
 
 
 
-9. Falls **Mehrstufige Authentifizierung anfordern** ausgewählt ist:
+### <a name="device-platforms"></a>Geräteplattformen
 
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/26.png)
+Klassische Richtlinien mit [App-basierten Steuerelementen](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement) sind bereits mit iOS und Android als [Bedingung für die Geräteplattform](active-directory-conditional-access-technical-reference.md#device-platform-condition) konfiguriert. 
 
-    a. Klicken Sie im Abschnitt **Zugriffssteuerungen** auf **Gewähren**.
+In einer neuen Richtlinie müssen Sie die zu unterstützenden [Geräteplattformen](active-directory-conditional-access-technical-reference.md#device-platform-condition) einzeln auswählen.
 
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/27.png)
-
-    b. Klicken Sie auf der Seite **Gewähren** auf **Zugriff gewähren**, und klicken Sie dann auf **Mehrstufige Authentifizierung anfordern**.
-
-    c. Klicken Sie auf **Auswählen**.
-
-
-10. Klicken Sie auf **Ein**, um Ihre Richtlinie zu aktivieren.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/30.png)
-
-11. Deaktivieren Sie die klassische Richtlinie. 
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-migration/38.png)
+![Azure Active Directory](./media/active-directory-conditional-access-migration/41.png)
 
 
 
+ 
  
 
 

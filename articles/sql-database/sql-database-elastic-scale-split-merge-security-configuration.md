@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: 94a4d5331aa2ed42a81e2e0bf890408f2db98fa7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 98f046a943c1fe33b421b3ab6830d78e6c4304a0
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge-Sicherheitskonfiguration
 Zur Verwendung des Split-Merge-Diensts müssen Sie die Sicherheit ordnungsgemäß konfigurieren. Der Dienst ist Teil der Funktion Elastic Scale von Microsoft Azure SQL-Datenbank. Weitere Informationen finden Sie im [Lernprogramm zum Split-Merge-Dienst für die elastische Skalierung](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
@@ -83,7 +83,7 @@ Clientzertifikate sind erforderlich, um Anforderungen an den Dienst zu authentif
 8. [Konfigurieren der zulässigen Clients in der Dienstkonfigurationsdatei](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>So verwenden Sie vorhandene Clientzertifikate
-1. [Find CA Public Key](#find-ca-public-key)
+1. [Suchen des öffentlichen Schlüssels der Zertifizierungsstelle](#find-ca-public-key)
 2. [Hochladen eines CA-Zertifikats zum Clouddienst](#Upload-CA-certificate-to-cloud-service)
 3. [Aktualisieren des CA-Zertifikats in der Dienstkonfigurationsdatei](#Update-CA-Certificate-in-Service-Configuration-File)
 4. [Kopieren der Clientfingerabdrücke](#Copy-Client-Certificate-Thumbprints)
@@ -439,7 +439,7 @@ Gehen Sie im Zertifikatimport-Assistenten wie folgt vor:
 9. Klicken Sie in allen Dialogfeldern auf **OK** .
 
 ## <a name="upload-certificate"></a>Hochladen des Zertifikats
-Gehen Sie im [Azure-Portal](https://portal.azure.com/)
+Gehen Sie im [Azure-Portal](https://portal.azure.com/) wie folgt vor:
 
 1. Wählen Sie **Cloud-Dienste**.
 2. Wählen Sie den Clouddienst aus.

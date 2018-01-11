@@ -13,18 +13,19 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.date: 12/13/2017
 ms.workload: On Demand
-ms.date: 09/08/2017
 ms.author: sashan
-ms.openlocfilehash: 0fb11ee553685618cc7466d3ad8b07ba01611027
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.reviewer: carlrab
+ms.openlocfilehash: 3d6ad95c1ca316b2e7c3f722315d2ddec03a3716
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Entwerfen eines hoch verfügbaren Diensts mit Azure SQL-Datenbank
 
-Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten für Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz bei regionalen Ausfällen und schwerwiegenden Fehlern bereitzustellen. Zudem wird eine schnelle Wiederherstellung in den sekundären Datenbanken ermöglicht. Dieser Artikel konzentriert sich auf gängige Anwendungsmuster und erörtert die Vor- und Nachteile der einzelnen Optionen. Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Beim Erstellen und Bereitstellen von hoch verfügbaren Diensten für Azure SQL-Datenbank verwenden Sie [Failovergruppen und aktive Georeplikation](sql-database-geo-replication-overview.md), um Resilienz bei regionalen Ausfällen und schwerwiegenden Fehlern bereitzustellen. Zudem wird eine schnelle Wiederherstellung in den sekundären Datenbanken ermöglicht. Dieser Artikel konzentriert sich auf gängige Anwendungsmuster und erörtert die Vor- und Nachteile der einzelnen Optionen. Informationen zur Verwendung der aktiven Georeplikation mit Pools für elastische Datenbanken finden Sie unter [Strategien zur Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 ## <a name="scenario-1-using-two-azure-regions-for-business-continuity-with-minimal-downtime"></a>Szenario 1: Verwenden von zwei Azure-Regionen für die Geschäftskontinuität mit minimalen Ausfallzeiten
 In diesem Szenario weist die Anwendung die folgenden Merkmale auf: 
@@ -162,4 +163,4 @@ Für Ihre spezifische Strategie einer cloudbasierten Notfallwiederherstellung k�
 ## <a name="next-steps"></a>Nächste Schritte
 * Eine Übersicht und verschiedene Szenarien zum Thema Geschäftskontinuität finden Sie unter [Übersicht über die Geschäftskontinuität](sql-database-business-continuity.md)
 * Informationen zur Georeplikation und zu Failovergruppen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md).  
-* Informationen zur Verwendung der aktiven Georeplikation mit elastischen Pools finden Sie unter [Strategien zur Notfallwiederherstellung mit elastischen Pools](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+* Informationen zur Verwendung der aktiven Georeplikation mit Pools für elastische Datenbanken finden Sie unter [Strategien zur Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
