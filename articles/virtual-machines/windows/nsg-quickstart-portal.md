@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mit dem Resource Manager-Bereitstellungsmode
 services: virtual-machines-windows
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 33bc0be0aeae6d0276fd8999b9ac0a010e3067ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f0af6ecdb45b263d39c3d2d6442f4ed555e3c3
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Öffnen von Ports zu einem virtuellen Computer mit dem Azure-Portal
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -38,7 +38,12 @@ Wählen Sie die neue Netzwerksicherheitsgruppe aus. Wählen Sie „Eingangssiche
 
 ![Hinzufügen einer eingehenden Regel](./media/nsg-quickstart-portal/add-inbound-rule.png)
 
-Wählen Sie im Dropdownmenü einen allgemeinen **Dienst**, z.B. *HTTP*, aus. Sie können auch *Benutzerdefiniert* auswählen, um einen bestimmten zu verwendenden Port anzugeben. Sie können die Priorität oder den Namen ggf. ändern. Die Priorität wirkt sich auf die Reihenfolge aus, in der Regeln angewendet werden – je niedriger der numerische Wert, desto früher wird die Regel angewendet. Sie können auch am oberen Rand dieses Bildschirms **Erweitert** auswählen, um z.B. einen bestimmten Quell-IP-Block oder Portbereich einzugeben. Wenn Sie fertig sind, wählen Sie **OK** aus, um die Regel zu erstellen:
+So erstellen Sie eine Regel, die Datenverkehr zulässt:
+
+- Wählen Sie die Schaltfläche **Einfach** aus. Im Fenster **Erweitert** werden standardmäßig einige zusätzliche Konfigurationsoptionen bereitgestellt, z. B. für die Definition eines bestimmten Quell-IP-Blocks oder Portbereichs.
+- Wählen Sie im Dropdownmenü einen allgemeinen **Dienst**, z.B. *HTTP*, aus. Sie können auch *Benutzerdefiniert* auswählen, um einen bestimmten zu verwendenden Port anzugeben. 
+- Sie können die Priorität oder den Namen ggf. ändern. Die Priorität wirkt sich auf die Reihenfolge aus, in der Regeln angewendet werden – je niedriger der numerische Wert, desto früher wird die Regel angewendet.
+- Wenn Sie fertig sind, wählen Sie **OK** aus, um die Regel zu erstellen:
 
 ![Erstellen einer eingehenden Regel](./media/nsg-quickstart-portal/create-inbound-rule.png)
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: 6b26108b000bac56fe7d49a3a634f2be9d7543a8
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6b15be022ba3b8373cfb852be8fc6915824801dc
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Übersicht über den Azure DDoS-Schutz Standard
 
@@ -35,12 +35,12 @@ Der Azure DDoS-Schutz in Kombination mit bewährten Anwendungsentwurfsmethoden s
 > [!IMPORTANT]
 > Der Azure DDoS-Schutz Standard befindet sich derzeit in der Vorschauphase. Schutz wird für jede Azure-Ressource bereitgestellt, der eine öffentliche Azure-IP-Adresse zugewiesen ist, wie z. B. virtuelle Computer, Lastenausgleichsmodule und Anwendungsgateways. Sie müssen sich für den Dienst [registrieren](http://aka.ms/ddosprotection), bevor Sie den DDoS-Schutz Standard für Ihr Abonnement aktivieren können. Nach der Registrierung setzt sich das DDoS-Team von Azure mit Ihnen in Verbindung und führt Sie durch den Aktivierungsprozess. Der DDoS-Schutz Standard ist nur in den Regionen USA (Osten), USA (Osten) 2, USA (Westen), USA (Westen-Mitte), Europa (Norden), Europa (Westen), Japan (Westen), Japan (Osten), Asien (Osten) und Asien (Südosten) verfügbar. Während der Vorschauphase entstehen für Sie für die Nutzung des Diensts keine Kosten.
 
-Wir empfehlen Ihnen, den DDoS-Schutz Standard in einer Entwicklungs-, Test- oder Produktionsumgebung zu testen. Nutzen Sie die folgenden Ressourcen, um Ihr Feedback zu Ihren Erfahrungen mitzuteilen:
+Wir empfehlen Ihnen, den DDoS-Schutzstandard in einer Entwicklungs-, Test- oder Produktionsumgebung zu testen. Nutzen Sie die folgenden Ressourcen, um Ihr Feedback zu Ihren Erfahrungen mitzuteilen:
 - [Azure DDoS-Schutz im Microsoft Azure-Forum](https://feedback.azure.com/forums/905032-azure-ddos-protection) 
 - [Azure DDoS-Schutz im MSDN-Forum](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azureddosprotection)
 - [Azure DDoS-Schutz in Stack Overflow](https://stackoverflow.com/tags/azure-ddos/info)
 
-[Öffnen Sie ein Azure-Supportticket](../azure-supportability/how-to-create-azure-support-request.md), wenn Sie Supportprobleme haben. In der Vorschauversion wird Support für den DDoS-Schutz Standard nach bestem Bemühen bereitgestellt.
+[Öffnen Sie ein Azure-Supportticket](../azure-supportability/how-to-create-azure-support-request.md), wenn Sie Supportprobleme haben. In der Vorschauversion wird Support für den DDoS-Schutzstandard nach bestem Bemühen bereitgestellt.
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS-Angriffstypen, die mit DDoS-Schutz Standard abgewehrt werden
 

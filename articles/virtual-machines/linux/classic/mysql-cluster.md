@@ -1,6 +1,6 @@
 ---
 title: Verwenden von Gruppen mit Lastenausgleich zum Gruppieren von MySQL | Microsoft Docs
-description: "Richten Sie einen Linux MySQL-Cluster mit Lastenausgleich und hoher Verfügbarkeit unter Verwendung des klassischen Bereitstellungsmodells in Azure ein."
+description: "Richten Sie einen Linux MySQL-Cluster mit Lastenausgleich und Hochverfügbarkeit unter Verwendung des klassischen Bereitstellungsmodells in Azure ein."
 services: virtual-machines-linux
 documentationcenter: 
 author: bureado
@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2015
 ms.author: jparrel
-ms.openlocfilehash: be178a59f7c3558cc0fef89e5529893f160c649b
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 8b39da7b96002e14c7d9a567ddc4f1dbc9d45c60
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-load-balanced-sets-to-clusterize-mysql-on-linux"></a>Verwenden von Gruppen mit Lastenausgleich zum Gruppieren von MySQL unter Linux
 > [!IMPORTANT]
 > Azure bietet zwei Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [Azure Resource Manager](../../../resource-manager-deployment-model.md) und klassisch. Dieser Artikel befasst sich mit der Verwendung des klassischen Bereitstellungsmodells. Microsoft empfiehlt für die meisten neuen Bereitstellungen die Verwendung des Ressourcen-Manager-Modells. Eine [Resource Manager-Vorlage](https://azure.microsoft.com/documentation/templates/mysql-replication/) ist verfügbar, wenn Sie einen MySQL-Cluster bereitstellen müssen.
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
-Der Zweck dieses Artikels besteht darin, die unterschiedlichen verfügbaren Ansätze für die Bereitstellung hoch verfügbarer Linux-basierter Dienste in Microsoft Azure zu untersuchen und zu veranschaulichen, wobei primär die hohe Verfügbarkeit von MySQL Server untersucht wird. Ein Video, das diesen Ansatz veranschaulicht, steht unter [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)zur Verfügung.
+Der Zweck dieses Artikels besteht darin, die unterschiedlichen verfügbaren Ansätze für die Bereitstellung hoch verfügbarer Linux-basierter Dienste in Microsoft Azure zu untersuchen und zu veranschaulichen, wobei primär die Hochverfügbarkeit von MySQL Server untersucht wird. Ein Video, das diesen Ansatz veranschaulicht, steht unter [Channel 9](http://channel9.msdn.com/Blogs/Open/Load-balancing-highly-available-Linux-services-on-Windows-Azure-OpenLDAP-and-MySQL)zur Verfügung.
 
 Wir beschreiben eine auf DRBD, Corosync und Pacemaker basierende hoch verfügbare Einzelmaster-MYSQL-Lösung mit zwei Knoten, die nichts gemeinsam nutzen. Nur auf einem Knoten wird jeweils MySQL ausgeführt. Das Lesen und Schreiben von der DRBD-Ressource wird auch nur jeweils auf einen Knoten begrenzt.
 
@@ -52,7 +52,7 @@ Sie benötigen die folgenden Ressourcen und Fähigkeiten:
   * Corosync und Pacemaker
 
 ### <a name="affinity-group"></a>Affinitätsgruppe
-Erstellen Sie eine Affinitätsgruppe für die Lösung, indem Sie sich beim klassischen Azure-Portal anmelden, **Einstellungen** auswählen und eine neue Affinitätsgruppe erstellen. Später zugeordnete Ressourcen werden zu dieser Affinitätsgruppe zugewiesen.
+Erstellen Sie eine Affinitätsgruppe für die Lösung, indem Sie sich beim Azure-Portal anmelden, **Einstellungen** auswählen und eine neue Affinitätsgruppe erstellen. Später zugeordnete Ressourcen werden zu dieser Affinitätsgruppe zugewiesen.
 
 ### <a name="networks"></a>Netzwerke
 Ein neues Netzwerk wird erstellt, und ein Subnetz wird im Netzwerk erstellt. In diesem Beispiel wird ein Netzwerk des Typs „10.10.10.0/24“ mit nur einem Subnetz des Typs „/24“ verwendet.

@@ -15,25 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: b6db0fbb4e0de896994954974ddcc39daad9c125
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9dabf666c633b59c7d1f9478b0e9cfe9d313e129
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatisieren der Bereitstellung virtueller Azure-Computer mit Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef ist ein hervorragendes Tool zur Automatisierung und für Konfigurationen mit gewünschten Zuständen.
 
-Mit unserer aktuellen Veröffentlichung der Cloud-API bietet Chef eine problemlose Integration in Azure und ermöglicht es Ihnen, bietet Ihnen die Möglichkeit, Konfigurationszustände über einen einzelnen Befehl bereitzustellen und zu implementieren.
+Mit der aktuellen Veröffentlichung der Cloud-API bietet Chef eine nahtlose Integration in Azure und bietet Ihnen die Möglichkeit, den Konfigurationsstatus über einen einzelnen Befehl bereitzustellen und zu implementieren.
 
-In diesem Artikel erfahren Sie, wie die Chef-Umgebung für die Bereitstellung virtueller Azure-Computer eingerichtet wird. Zudem werden Sie schrittweise durch die Erstellung einer Richtlinie und die anschließende Bereitstellung dieser Richtlinie auf einem virtuellen Azure-Computer geführt.
+Anhand dieses Artikels richten Sie die Chef-Umgebung für die Bereitstellung virtueller Azure-Computer ein. Zudem werden Sie schrittweise durch die Erstellung einer Richtlinie und die anschließende Bereitstellung dieses „Cookbooks“ auf einem virtuellen Azure-Computer geführt.
 
 Lassen Sie uns beginnen!
 
 ## <a name="chef-basics"></a>Grundlagen zu Chef
-Ich würde vorschlagen, Sie machen sich zuerst mit den grundlegenden Konzepten von Chef vertraut. Sehen Sie sich dazu einfach kurz <a href="http://www.chef.io/chef" target="_blank">hier</a> an, bevor Sie mit der exemplarischen Vorgehensweise beginnen. Die Grundlagen werden vor dem Start dennoch kurz zusammengefasst.
+Machen Sie sich zuerst [mit den grundlegenden Konzepten von Chef vertraut](http://www.chef.io/chef). 
 
 Das folgende Diagramm zeigt die allgemeine Chef-Architektur:
 
@@ -41,25 +41,24 @@ Das folgende Diagramm zeigt die allgemeine Chef-Architektur:
 
 Die Architektur von Chef setzt sich aus drei Hauptkomponenten zusammen: Chef-Server, Chef-Client (Knoten) und Chef-Arbeitsstation.
 
-Der Chef-Server ist unser Verwaltungspunkt, für den es zwei Optionen gibt: eine gehostete oder eine lokale Lösung. Wir werden eine gehostete Lösung verwenden.
+Der Chef-Server ist der Verwaltungspunkt, für den es zwei Optionen gibt: eine gehostete oder eine lokale Lösung. Wir werden eine gehostete Lösung verwenden.
 
 Der Chef-Client (Knoten) ist der Agent, der sich auf den Servern befindet, die Sie verwalten.
 
-Die Chef-Arbeitsstation ist unsere Verwaltungsarbeitsstation, auf der die Richtlinien erstellt und Verwaltungsbefehle ausgeführt werden. Wir führen den Befehl **knife** auf der Chef-Arbeitsstation aus, um unsere Infrastruktur zu verwalten.
+Die Chef-Arbeitsstation ist die Verwaltungsarbeitsstation, auf der Richtlinien erstellt und Verwaltungsbefehle ausgeführt werden. Sie führen den Befehl **knife** auf der Chef-Arbeitsstation aus, um die Infrastruktur zu verwalten.
 
-Es gibt zudem das Konzept von so genannten "Rezeptbüchern" (Cookbooks) und "Rezepten". Hierbei handelt es sich um Richtlinien, die wir definieren und auf unsere Server anwenden.
+Es gibt zudem das Konzept von so genannten "Rezeptbüchern" (Cookbooks) und "Rezepten". Hierbei handelt es sich um Richtlinien, die Sie definieren und auf die Server anwenden.
 
 ## <a name="preparing-the-workstation"></a>Vorbereiten der Arbeitsstation
-Zunächst bereiten wird die Arbeitsstation vor. Ich verwende eine Windows-Standardarbeitsstation. Wir müssen ein Verzeichnis zum Speichern unserer Konfigurationsdateien und Rezeptbücher erstellen.
+Zunächst bereiten wird die Arbeitsstation vor. Ich verwende eine Windows-Standardarbeitsstation. Sie müssen ein Verzeichnis zum Speichern der Konfigurationsdateien und Richtlinien erstellen.
 
 Erstellen Sie zunächst ein Verzeichnis namens C:\chef.
 
 Erstellen Sie dann ein zweites Verzeichnis namens „C:\chef\cookbooks“.
 
-Wir müssen jetzt unsere Azure-Einstellungsdatei herunterladen, damit Chef mit unserem Azure-Abonnement kommunizieren kann.
+Sie müssen jetzt die Azure-Einstellungsdatei herunterladen, damit Chef mit dem Azure-Abonnement kommunizieren kann.
 
-<!--Download your publish settings from [here](https://manage.windowsazure.com/publishsettings/).-->
-Laden Sie Ihre Veröffentlichungseinstellungen mit dem PowerShell Azure-Befehl [Get-AzurePublishSettingsFile](https://docs.microsoft.com/en-us/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) herunter. 
+Laden Sie Ihre Veröffentlichungseinstellungen mit dem PowerShell Azure-Befehl [Get-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/azure/get-azurepublishsettingsfile?view=azuresmps-4.0.0) herunter. 
 
 Speichern Sie die Datei mit den Veröffentlichungseinstellungen unter „C:\chef“.
 
@@ -147,13 +146,13 @@ Wenn alles richtig konfiguriert ist, wird eine Liste der verfügbaren Azure-Imag
 Herzlichen Glückwunsch. Die Arbeitsstation ist eingerichtet!
 
 ## <a name="creating-a-cookbook"></a>Erstellen eines Cookbooks
-Ein Cookbook wird von Chef dazu verwendet, um eine Reihe von Befehlen zu definieren, die auf dem verwalteten Client ausgeführt werden sollen. Die Cookbook-Erstellung ist unkompliziert, und wir verwenden den Befehl **chef generate cookbook** , um unsere Cookbook-Vorlage zu erstellen. Ich nenne mein Cookbook „Webserver“, da ich eine Richtlinie verwenden möchte, die automatisch IIS bereitstellt.
+Ein Cookbook wird von Chef dazu verwendet, um eine Reihe von Befehlen zu definieren, die auf dem verwalteten Client ausgeführt werden sollen. Die Cookbook-Erstellung ist unkompliziert. Mit dem Befehl **chef generate cookbook** wird die Cookbook-Vorlage erstellt. Ich nenne mein Cookbook „Webserver“, da ich eine Richtlinie verwenden möchte, die automatisch IIS bereitstellt.
 
 Führen Sie im Verzeichnis „C:\Chef“ den folgenden Befehl aus:
 
     chef generate cookbook webserver
 
-Dadurch werden eine Reihe von Dateien im Verzeichnis C:\Chef\cookbooks\webserver generiert. Wir müssen jetzt den Satz von Befehlen definieren, die unser Chef-Client auf dem verwalteten virtuellen Computer ausführen soll.
+Dadurch werden eine Reihe von Dateien im Verzeichnis C:\Chef\cookbooks\webserver generiert. Sie müssen jetzt den Satz von Befehlen definieren, die der Chef-Client auf dem verwalteten virtuellen Computer ausführen soll.
 
 Die Befehle werden in der Datei default.rb gespeichert. In dieser Datei werden eine Reihe von Befehlen definiert, die IIS installieren, starten und eine Vorlagendatei in den Ordner "wwwroot" kopieren.
 
@@ -176,7 +175,7 @@ Die Befehle werden in der Datei default.rb gespeichert. In dieser Datei werden e
 Speichern Sie die Datei, sobald Sie fertig sind.
 
 ## <a name="creating-a-template"></a>Erstellen einer Vorlage
-Wie bereits zuvor erwähnt, müssen wir eine Vorlagendatei generieren, die als unsere "default.html"-Standardseite verwendet wird.
+Wie bereits zuvor erwähnt, müssen Sie eine Vorlagendatei generieren, die als "default.html"-Standardseite verwendet wird.
 
 Führen Sie den folgenden Befehl aus, um die Vorlage zu generieren:
 
@@ -185,14 +184,14 @@ Führen Sie den folgenden Befehl aus, um die Vorlage zu generieren:
 Wechseln Sie nun zur Datei „C:\chef\cookbooks\webserver\templates\default\Default.htm.erb“. Fügen Sie der Datei etwas einfachen HTML-Code (Hello World) hinzu, und speichern Sie sie.
 
 ## <a name="upload-the-cookbook-to-the-chef-server"></a>Hochladen des Cookbooks auf den Chef-Server
-In diesem Schritt nehmen wir eine Kopie des Cookbooks, das wir auf unserem lokalen Computer erstellt haben, und laden es auf den von Chef gehosteten Server hoch. Sobald es hochgeladen ist, wird das Cookbook auf der Registerkarte **Richtlinie** angezeigt.
+In diesem Schritt nehmen Sie eine Kopie des Cookbooks, das Sie auf dem lokalen Computer erstellt haben, und laden sie auf den von Chef gehosteten Server hoch. Sobald es hochgeladen ist, wird das Cookbook auf der Registerkarte **Richtlinie** angezeigt.
 
     knife cookbook upload webserver
 
 ![][9]
 
 ## <a name="deploy-a-virtual-machine-with-knife-azure"></a>Bereitstellen eines virtuellen Computers mit Knife Azure
-Wir stellen jetzt einen virtuellen Azure-Computer bereit und wenden das Cookbook „Webserver“ an, das unseren IIS-Webdienst und die Standardwebseite installiert.
+Sie stellen jetzt einen virtuellen Azure-Computer bereit und wenden das Cookbook „Webserver“ an, das den IIS-Webdienst und die Standardwebseite installiert.
 
 Verwenden Sie hierzu den Befehl **knife azure server create** .
 

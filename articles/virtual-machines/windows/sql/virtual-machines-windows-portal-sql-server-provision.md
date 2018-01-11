@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines virtuellen Windows-Computers mit SQL Server 2017 in Azure | Microsoft-Dokumentation
-description: "In diesem Tutorial erfahren Sie, wie Sie über das Azure-Portal einen virtuellen Windows-Computer mit SQL Server 2017 erstellen."
+title: Konfigurieren von virtuellen Windows-Computern mit SQL Server 2017 im Azure-Portal | Microsoft-Dokumentation
+description: In dieser Anleitung werden die Optionen zum Erstellen von virtuellen Windows-Computern mit SQL Server 2017 im Azure-Portal beschrieben.
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -9,39 +9,29 @@ tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 10/10/2017
+ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 48f9f97d6e0aee6b2c84444289a427bebcb296e2
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 440c783de73652ad2d312cd92db8635dc65df9ed
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
-# <a name="provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal
+# <a name="how-to-create-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Erstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal
 
-> [!div class="op_single_selector"]
-> * [Portal](virtual-machines-windows-portal-sql-server-provision.md)
-> * [PowerShell](virtual-machines-windows-ps-sql-create.md)
-> * [Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
+In diesem Leitfaden werden die verschiedenen Optionen erläutert, die beim Erstellen eines virtuellen Windows-Computers mit SQL Server im Azure-Portal zur Auswahl stehen. Sie können die Schritte ausführen, um einen eigenen virtuellen Computer mit SQL Server zu erstellen und dabei die verschiedenen Auswahlmöglichkeiten kennenzulernen. Alternativ können Sie zu einem bestimmten Abschnitt wechseln, der auf einen bestimmten Schritt im Portal verweist.
 
-In diesem Schnellstarttutorial erstellen Sie über das Azure-Portal einen virtuellen Windows-Computer mit SQL Server.
+> [!TIP]
+> Um schnell mit den im Portal verfügbaren Standardwerten zu beginnen, lesen Sie [Schnellstart: Erstellen eines virtuellen Computers mit SQL Server im Azure-Portal](quickstart-sql-vm-create-portal.md).
 
-In diesem Lernprogramm lernen Sie Folgendes:
-
-* [Auswählen eines SQL-VM-Image aus dem Katalog](#select)
-* [Konfigurieren und Erstellen der VM](#configure)
-* [Öffnen der VM mit Remotedesktop](#remotedesktop)
-* [Herstellen einer Remoteverbindung mit SQL Server](#connect)
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a id="select"></a>Auswählen eines SQL-VM-Image aus dem Katalog
 
 1. Melden Sie sich mit Ihrem Konto beim [Azure-Portal](https://portal.azure.com) an.
-
-   > [!NOTE]
-   > Wenn Sie kein Azure-Konto haben, sollten Sie die Seite [Kostenlose einmonatige Testversion](https://azure.microsoft.com/pricing/free-trial/)besuchen.
 
 1. Klicken Sie im Azure-Portal auf **Neu**. Das Portal wird mit dem Fenster **Neu** geöffnet.
 
@@ -277,19 +267,11 @@ Sie können die Bereitstellung über das Azure-Portal überwachen. Auf der Schal
 
 Führen Sie die folgenden Schritte aus, um mithilfe von Remotedesktop eine Verbindung mit dem virtuellen SQL Server-Computer herzustellen:
 
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
+[!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
 Nachdem Sie eine Verbindung mit dem virtuellen SQL Server-Computer hergestellt haben, können Sie SQL Server Management Studio starten und mit Ihren Anmeldeinformationen für den lokalen Administrator eine Verbindung mit der Windows-Authentifizierung herstellen. Wenn Sie die SQL Server-Authentifizierung aktiviert haben, können Sie die Verbindung auch per SQL-Authentifizierung herstellen, indem Sie den während der Bereitstellung konfigurierten SQL-Benutzernamen und das Kennwort verwenden.
 
 Durch den Zugriff auf den Computer können Sie die Computer- und SQL Server-Einstellungen je nach Ihren Anforderungen direkt ändern. Beispielsweise können Sie die Firewalleinstellungen konfigurieren oder die SQL Server-Konfigurationseinstellungen ändern.
-
-## <a name="enable-tcpip-for-developer-and-express-editions"></a>Aktivieren von TCP/IP für die Editionen Developer und Express
-
-Bei der Bereitstellung eines neuen virtuellen SQL Server-Computers aktiviert Azure nicht automatisch das TCP/IP-Protokoll für die SQL Server-Editionen Developer und Express. In den folgenden Schritten wird erläutert, wie TCP/IP manuell aktiviert wird, sodass Sie über die IP-Adresse eine Remoteverbindung herstellen können.
-
-In diesen Schritten wird der **SQL Server-Konfigurations-Manager** verwendet, um das TCP/IP-Protokoll für SQL Server Developer und Express zu aktivieren.
-
-> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ## <a id="connect"></a>Herstellen einer Remoteverbindung mit SQL Server
 
@@ -300,7 +282,7 @@ In diesem Tutorial haben wir den Zugriffstyp **Öffentlich** für den virtuellen
 
 In den folgenden Abschnitten wird gezeigt, wie Sie eine Verbindung mit Ihrer SQL Server-Instanz auf der VM von einem anderen Computer über das Internet herstellen.
 
-> [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
+[!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

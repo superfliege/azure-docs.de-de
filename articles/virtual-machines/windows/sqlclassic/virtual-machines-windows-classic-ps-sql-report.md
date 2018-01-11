@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
-ms.openlocfilehash: 5e5c11251cd316e8161dbe362b300be76927ac01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Verwenden von PowerShell zum Erstellen einer Azure-VM mit einem Berichtsserver im einheitlichen Modus
 > [!IMPORTANT] 
@@ -35,7 +35,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
 ## <a name="prerequisites-and-assumptions"></a>Voraussetzungen und Annahmen
 * **Azure-Abonnement**: Überprüfen Sie die Anzahl von Kernen, die in Ihrem Azure-Abonnement verfügbar sind. Wenn Sie den virtuellen Computer in der empfohlenen Größe **A3** erstellen, benötigen Sie **4** verfügbare Kerne. Wenn Sie einen virtuellen Computer der Größe **A2** verwenden, benötigen Sie **2** verfügbare Kerne.
   
-  * Um die Kernebegrenzung Ihres Abonnements zu überprüfen, klicken Sie im klassischen Azure-Portal im linken Bereich auf EINSTELLUNGEN und dann im oberen Menü auf VERWENDUNG.
+  * Um die Kernebegrenzung Ihres Abonnements zu überprüfen, klicken Sie im Azure-Portal im linken Bereich auf „Einstellungen“ und dann im oberen Menü auf „Verwendung“.
   * Wenn Sie das Kernekontingent erhöhen möchten, wenden Sie sich an [Azure Support](https://azure.microsoft.com/support/options/). Informationen zur Größe eines virtuellen Computers finden Sie unter [Größen für Virtual Machines für Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * **Windows PowerShell-Skrips**: Für das Thema wird davon ausgegangen, dass Sie grundlegende Kenntnisse zu Windows PowerShell haben. Weitere Informationen zur Verwendung von Windows PowerShell finden Sie hier:
   
@@ -43,7 +43,7 @@ In diesem Thema wird beschrieben und sind Anleitungen enthalten, wie ein SQL Ser
   * [Getting Started with Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx)
 
 ## <a name="step-1-provision-an-azure-virtual-machine"></a>Schritt 1: Bereitstellen eines virtuellen Azure-Computers
-1. Navigieren Sie zum klassischen Azure-Portal.
+1. Navigieren Sie zum Azure-Portal.
 2. Klicken Sie im linken Bereich auf **Virtuelle Computer** .
    
     ![Virtuelle Microsoft Azure-Computer](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
@@ -118,7 +118,7 @@ Bei der Bereitstellung des virtuellen Computer wurde auf ihm ein selbstsignierte
 
 1. Damit der Stammzertifizierungsstelle des Zertifikats auf dem lokalen virtuellen Computer vertraut wird, fügen Sie das Zertifikat zu **Vertrauenswürdige Stammzertifizierungsstellen**hinzu. Es folgt eine Zusammenfassung der erforderlichen Schritte. Ausführliche Schritte dazu, wie die Zertifizierungsstelle als vertrauenswürdig eingestuft wird, finden Sie unter [Install a Server Certificate](https://technet.microsoft.com/library/cc740068).
    
-   1. Wählen Sie im klassischen Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
+   1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
       
        ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
       
@@ -154,7 +154,7 @@ Ausführlichere Schritte finden Sie im Abschnitt [Herstellen einer Verbindung mi
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>Verwenden eines Skripts, um den Berichtsserver und HTTP zu konfigurieren
 Wenn Sie das Windows PowerShell-Skript verwenden möchten, um den Berichtsserver zu konfigurieren, führen Sie die folgenden Schritte aus. Die Konfiguration umfasst HTTP, nicht HTTPS:
 
-1. Wählen Sie im klassischen Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
+1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
    
     ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
    
@@ -288,7 +288,7 @@ Wenn Sie das Windows PowerShell-Skript verwenden möchten, um den Berichtsserver
 ### <a name="use-script-to-configure-the-report-server-and-https"></a>Verwenden eines Skripts, um den Berichtsserver und HTTPS zu konfigurieren
 Wenn Sie ein Windows PowerShell-Skript verwenden möchten, um den Berichtsserver zu konfigurieren, führen Sie die folgenden Schritte aus. Die Konfiguration umfasst HTTPS, nicht HTTP:
 
-1. Wählen Sie im klassischen Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
+1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Abhängig von Ihrer Browserkonfiguration werden Sie möglicherweise aufgefordert, eine RDP-Datei zum Herstellen einer Verbindung mit dem virtuellen Computer zu speichern.
    
     ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif) Verwenden Sie den Namen des virtuellen Computers, den Benutzernamen und das Kennwort, die Sie bei der Erstellung des virtuellen Computers konfiguriert haben. 
    
@@ -496,10 +496,10 @@ Das Ergebnis umfasst Folgendes:
 ### <a name="use-configuration-manager-to-configure-the-report-server"></a>Verwenden des Konfigurations-Managers, um den Berichtsserver zu konfigurieren
 Wenn Sie nicht das PowerShell-Skript ausführen möchten, um den Berichtsserver zu konfigurieren, führen Sie die Schritte in diesem Abschnitt aus, in denen der Konfigurations-Manager für einheitlichen Modus für Reporting Services verwendet wird, um den Berichtsserver zu konfigurieren.
 
-1. Wählen Sie im klassischen Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Verwenden Sie den Benutzernamen und das Kennwort, den bzw. das Sie bei der Erstellung des virtuellen Computers konfiguriert haben.
+1. Wählen Sie im Azure-Portal den virtuellen Computer aus, und klicken Sie auf „Verbinden“. Verwenden Sie den Benutzernamen und das Kennwort, den bzw. das Sie bei der Erstellung des virtuellen Computers konfiguriert haben.
    
     ![Verbindung mit virtuellem Computer herstellen](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
-2. Führen Sie Windows Update aus, und installieren Sie die Updates auf dem virtuellen Computer. Ist ein Neustart des virtuellen Computers erforderlich, starten Sie den virtuellen Computer neu, und stellen Sie aus dem klassischen Azure-Portal wieder eine Verbindung mit dem virtuellen Computer her.
+2. Führen Sie Windows Update aus, und installieren Sie die Updates auf dem virtuellen Computer. Ist ein Neustart des virtuellen Computers erforderlich, starten Sie den virtuellen Computer neu, und stellen Sie aus dem Azure-Portal wieder eine Verbindung mit dem virtuellen Computer her.
 3. Geben Sie über das Startmenü auf dem virtuellen Computer **Reporting Services** ein, und öffnen Sie den **Konfigurations-Manager für Reporting Services**.
 4. Übernehmen Sie die Standardwerte für **Servername** und **Berichtsserverinstanz**. Klicken Sie auf **Verbinden**.
 5. Klicken Sie im linken Bereich auf **Webdienst-URL**.
@@ -595,7 +595,7 @@ In der folgende Tabelle sind einige der Optionen zusammengefasst, mit denen vorh
 
 ## <a name="minimize-cost-if-you-are-not-using-the-vm"></a>Minimieren der Kosten, wenn Sie den virtuellen Computer nicht verwenden
 > [!NOTE]
-> Um die Kosten für Ihre virtuellen Azure-Computer zu minimieren, fahren Sie die virtuellen Computer über das klassische Azure-Portal herunter, wenn diese nicht verwendet werden. Wenn Sie einen virtuellen Computer über dessen Windows-Energieoptionen herunterfahren, werden Ihnen weiterhin dieselben Kosten für den virtuellen Computer in Rechnung gestellt. Wenn Sie die Kosten verringern möchten, müssen Sie den virtuellen Computer im klassischen Azure-Portal herunterfahren. Wenn Sie den virtuellen Computer nicht mehr benötigen, sollten Sie den virtuellen Computer und die zugehörigen VHD-Dateien löschen, um Speicherkosten zu vermeiden. Weitere Informationen finden Sie im Abschnitt „FAQ“ unter [Virtual Machine – Preisdetails](https://azure.microsoft.com/pricing/details/virtual-machines/).
+> Um die Kosten für Ihre virtuellen Azure-Computer zu minimieren, fahren Sie die virtuellen Computer über das Azure-Portal herunter, wenn diese nicht verwendet werden. Wenn Sie einen virtuellen Computer über dessen Windows-Energieoptionen herunterfahren, werden Ihnen weiterhin dieselben Kosten für den virtuellen Computer in Rechnung gestellt. Wenn Sie die Kosten verringern möchten, müssen Sie den virtuellen Computer im Azure-Portal herunterfahren. Wenn Sie den virtuellen Computer nicht mehr benötigen, sollten Sie den virtuellen Computer und die zugehörigen VHD-Dateien löschen, um Speicherkosten zu vermeiden. Weitere Informationen finden Sie im Abschnitt „FAQ“ unter [Virtual Machine – Preisdetails](https://azure.microsoft.com/pricing/details/virtual-machines/).
 
 ## <a name="more-information"></a>Weitere Informationen
 ### <a name="resources"></a>Ressourcen

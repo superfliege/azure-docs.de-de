@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie mit dem Azure Resource Manager-Bereitstellun
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: eef9842b-495a-46cf-99a6-74e49807e74e
 ms.service: virtual-machines-linux
@@ -12,23 +12,33 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d176187fe465264b5f433260de5178b48ca9dd4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eaa3039c369057d39dfce0896b9a4d1cfad75550
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Öffnen von Ports und Endpunkten für einen virtuellen Linux-Computer mithilfe der Azure-CLI
-In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure CLI 2.0 einen Port für einen virtuellen Computer öffnen. Sie können diese Schritte auch mit [Azure CLI 1.0](nsg-quickstart-nodejs.md) ausführen.
+In Azure öffnen Sie einen Port oder erstellen einen Endpunkt für einen virtuellen Computer (VM), indem Sie einen Netzwerkfilter in einem Subnetz oder einer VM-Netzwerkschnittstelle erstellen. Sie platzieren diese Filter, mit denen sowohl eingehender als auch ausgehender Datenverkehr gesteuert werden kann, in einer Netzwerksicherheitsgruppe, die an die Ressource angefügt ist, die den Datenverkehr empfängt. Wir verwenden ein gängiges Beispiel für Webdatenverkehr über Port 80. In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure CLI 2.0 einen Port für einen virtuellen Computer öffnen. Sie können diese Schritte auch mit der [Azure CLI 1.0](nsg-quickstart-nodejs.md) ausführen.
 
-
-## <a name="quick-commands"></a>Schnellbefehle
 Um eine Netzwerksicherheitsgruppe und Regeln erstellen zu können, muss die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein.
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind etwa *myResourceGroup*, *myNetworkSecurityGroup* oder *myVnet*.
 
+
+## <a name="quickly-open-a-port-for-a-vm"></a>Schnelles Öffnen eines Ports für einen virtuellen Computer
+Wenn Sie in einem Entwicklungs-/Test-Szenario schnell einen Port für einen virtuellen Computer öffnen müssen, können Sie den Befehl [az vm open-port](/cli/azure/vm#az_vm_open_port) verwenden. Mit diesem Befehl werden eine Netzwerksicherheitsgruppe erstellt und eine Regel hinzugefügt, die auf einen virtuellen Computer oder ein Subnetz angewendet wird. Im folgenden Beispiel wird Port *80* auf dem virtuellen Computer *myVM* in der Ressourcengruppe *myResourceGroup* geöffnet.
+
+```azure-cli
+az vm open-port --resource-group myResourceGroup --name myVM --port 80
+```
+
+Wenn Sie zusätzliche Kontrolle über die Regeln benötigen (z. B. Definieren eines Quell-IP-Adressbereichs), fahren Sie mit den weiteren Schritten in diesem Artikel fort.
+
+
+## <a name="create-a-network-security-group-and-rules"></a>Erstellen einer Netzwerksicherheitsgruppe und von Regeln
 Erstellen Sie die Netzwerksicherheitsgruppe mit [az network nsg create](/cli/azure/network/nsg#create). Im folgenden Beispiel wird die Netzwerksicherheitsgruppe *myNetworkSecurityGroup* am Standort *USA, Osten* erstellt:
 
 ```azurecli
@@ -50,6 +60,8 @@ az network nsg rule create \
     --destination-port-range 80
 ```
 
+
+## <a name="apply-network-security-group-to-vm"></a>Anwenden der Netzwerksicherheitsgruppe auf den virtuellen Computer
 Ordnen Sie die Netzwerksicherheitsgruppe mit [az network nic update](/cli/azure/network/nic#update) der Netzwerkschnittstelle des virtuellen Computers zu. Im folgenden Beispiel wird die vorhandene Netzwerkschnittstelle *myNic* Ihrer Netzwerksicherheitsgruppe *myNetworkSecurityGroup* zugewiesen:
 
 ```azurecli

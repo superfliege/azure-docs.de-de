@@ -15,11 +15,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: a71efa7ff052c7c69de2b9aba3c1ed9328538e3f
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>Ausführen einer rechenintensiven Aufgabe in Java auf einem virtuellen Computer
 > [!IMPORTANT] 
@@ -51,7 +51,7 @@ Es folgt ein Beispiel für die Java-Anwendung, die die rechenintensive Aufgabe �
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="to-create-a-virtual-machine"></a>So erstellen Sie einen virtuellen Computer
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie nacheinander auf **Neu**, **Compute**, **Virtueller Computer** und **Aus Katalog**.
 3. Wählen Sie im Dialogfeld **Image ds virtuellen Computers auswählen** die Option **JDK 7 Windows Server 2012** aus.
    Beachten Sie, dass **JDK 6 Windows Server 2012** verfügbar ist, wenn Sie Legacyanwendungen haben, die noch nicht in JDK 7 ausgeführt werden können.
@@ -77,7 +77,7 @@ Es folgt ein Beispiel für die Java-Anwendung, die die rechenintensive Aufgabe �
    2. Klicken Sie auf **Fertig stellen**.
 
 ## <a name="to-remotely-log-in-to-your-virtual-machine"></a>So melden Sie sich von einem Remotestandort aus an Ihrem virtuellen Computer an
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Klicken Sie auf **Virtuelle Computer**.
 3. Klicken Sie auf den Namen des virtuellen Computers, an dem Sie sich anmelden möchten.
 4. Klicken Sie auf **Verbinden**.
@@ -90,15 +90,15 @@ Um Service Bus-Warteschlangen in Azure zu verwenden, müssen Sie zunächst einen
 
 So erstellen Sie einen Dienstnamespace:
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
-2. Klicken Sie unten links im Navigationsbereich des klassischen Azure-Portals auf **Service Bus, Zugriffssteuerung und Cache**.
-3. Klicken Sie im klassischen Azure-Portal links oben auf den Knoten **Service Bus** und dann auf die Schaltfläche **Neu**.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+2. Klicken Sie unten links im Navigationsbereich des Azure-Portals auf **Service Bus, Zugriffssteuerung und Cache**.
+3. Klicken Sie im Azure-Portal links oben auf den Knoten **Service Bus** und dann auf die Schaltfläche **Neu**.  
    ![Screenshot des Service Bus-Knotens][svc_bus_node]
 4. Geben Sie im Dialogfeld **Neuen Dienstnamespace erstellen** einen **Namespace** ein, und klicken Sie dann auf die Schaltfläche **Verfügbarkeit prüfen**, um sicherzustellen, dass er eindeutig ist.  
    ![Screenshot des Erstellens eines neuen Namespace][create_namespace]
 5. Nachdem Sie sichergestellt haben, dass der Namespace verfügbar ist, wählen Sie das Land oder die Region aus, in dem bzw. der Ihr Namespace gehostet werden soll, und klicken Sie dann auf die Schaltfläche **Namespace erstellen**.  
    
-   Der erstellte Namespace wird dann im klassischen Azure-Portal angezeigt und nach einem Moment aktiviert. Warten Sie, bis **Active** als Status angezeigt wird, bevor Sie mit dem nächsten Schritt fortfahren.
+   Der erstellte Namespace wird dann im Azure-Portal angezeigt und nach einem Moment aktiviert. Warten Sie, bis **Active** als Status angezeigt wird, bevor Sie mit dem nächsten Schritt fortfahren.
 
 ## <a name="obtain-the-default-management-credentials-for-the-namespace"></a>Abrufen der Standard-Anmeldeinformationen für die Namespaceverwaltung
 Um Verwaltungsvorgänge im neuen Namespace auszuführen, wie zum Beispiel das Erstellen einer Warteschlange, müssen Sie die Verwaltungsanmeldeinformationen für den Namespace abrufen.

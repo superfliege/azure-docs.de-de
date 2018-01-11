@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: sedusch
-ms.openlocfilehash: ed728011f2cb7b6108e19a916010fd5447c07093
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 609b811705bb6f116db055b756910450f8990528
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs auf dem SUSE Linux Enterprise Server for SAP Applications
 
@@ -50,8 +50,8 @@ ms.lasthandoff: 10/11/2017
 
 [sap-hana-ha]:sap-hana-high-availability.md
 
-In diesem Artikel wird das Bereitstellen der virtuellen Computer, das Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems beschrieben.
-In den Beispielkonfigurationen, Installationsbefehlen usw. werden die ASCS-Instanznummer „00“, die ERS-Instanznummer „02“ und die SAP-System-ID „NWS“ verwendet. Bezüglich der Namen der Ressourcen (z.B. virtuellen Computer, virtuellen Netzwerke) im Beispiel wird davon ausgegangen, dass Sie für die Erstellung der Ressourcen die [konvergierte Vorlage][template-converged] mit der SAP-System-ID „NWS“ verwendet haben.
+In diesem Artikel wird das Bereitstellen und Konfigurieren der virtuellen Computer, das Installieren des Clusterframeworks und das Installieren eines hochverfügbaren SAP NetWeaver 7.50-Systems beschrieben.
+In den Beispielkonfigurationen, Installationsbefehlen usw. Verwendet werden die ASCS-Instanznummer „00“, die ERS-Instanznummer „02“ und die SAP-System-ID „NWS“. Bezüglich der Namen der Ressourcen (z.B. virtuellen Computer, virtuellen Netzwerke) im Beispiel wird davon ausgegangen, dass Sie für die Erstellung der Ressourcen die [konvergierte Vorlage][template-converged] mit der SAP-System-ID „NWS“ verwendet haben.
 
 Lesen Sie zuerst die folgenden SAP Notes und Dokumente:
 
@@ -142,7 +142,7 @@ Der NFS-Server, SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver ERS und die
 ### <a name="deploying-linux"></a>Bereitstellen von Linux
 
 Der Azure Marketplace enthält ein Image für den SUSE Linux Enterprise Server for SAP Applications 12, das Sie zum Bereitstellen neuer virtueller Computer verwenden können.
-Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforderliche Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
+Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 1. Öffnen Sie im Azure-Portal die [SAP-Dateiservervorlage][template-file-server].   
 1. Legen Sie die folgenden Parameter fest:
@@ -475,7 +475,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo crm configure
 
    crm(live)configure# primitive vip_<b>NWS</b>_nfs IPaddr2 \
-     params ip=<b>10.0.0.4</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.4</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_nfs anything \
@@ -495,7 +495,7 @@ Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microso
 
 1. Gehen Sie zu <https://portal.azure.com>.
 1. Öffnen Sie das Blatt „Azure Active Directory“.  
-   Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die „Verzeichnis-ID“. Dies ist die **Mandanten-ID**.
+   Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Dies ist die **Mandanten-ID**.
 1. Klicken Sie auf „App-Registrierungen“.
 1. Klicken Sie auf "Hinzufügen".
 1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“, geben Sie eine Anmelde-URL ein (z.B. „http://localhost“), und klicken Sie auf „Erstellen“.
@@ -523,13 +523,13 @@ Nachdem Sie die Berechtigungen für die virtuellen Computer bearbeitet haben, k�
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -549,7 +549,7 @@ sudo crm configure property stonith-enabled=true
 
 Der Azure Marketplace enthält ein Image für den SUSE Linux Enterprise Server for SAP Applications 12, das Sie zum Bereitstellen neuer virtueller Computer verwenden können. Das Marketplace-Image enthält den Ressourcen-Agent für SAP NetWeaver.
 
-Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforderliche Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
+Sie können eine der Schnellstartvorlagen auf Github verwenden, um alle erforderlichen Ressourcen bereitzustellen. Die Vorlage stellt die virtuellen Computer, den Load Balancer, die Verfügbarkeitsgruppe etc. bereit. Führen Sie diese Schritte aus, um die Vorlage bereitzustellen:
 
 1. Öffnen Sie die [ASCS/SCS-Multi-SID-Vorlage][template-multisid-xscs] oder die [konvergierte Vorlage][template-converged] im Azure-Portal. Die ASCS/SCS-Vorlage erstellt nur die Regeln des Lastenausgleichs für die SAP NetWeaver ASCS/SCS- und ERS-Instanz (nur Linux), während die konvergierte Vorlage auch die Regeln des Lastenausgleichs für eine Datenbank (z.B. Microsoft SQL Server oder SAP HANA) erstellt. Wenn Sie ein SAP NetWeaver-basiertes System installieren und auch die Datenbank auf denselben Computern installieren möchten, verwenden Sie die [konvergierte Vorlage][template-converged].
 1. Legen Sie die folgenden Parameter fest:
@@ -967,7 +967,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ASCS IPaddr2 \
-     params ip=<b>10.0.0.10</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.10</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ASCS anything \
@@ -1008,7 +1008,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[1]** Installieren Sie SAP NetWeaver ASCS.  
 
-   Installieren Sie auf dem ersten Knoten SAP NetWeaver ASCS als Stamm mit einem virtuellen Hostnamen, der der IP-Adresse der Frontendkonfiguration des Lastenausgleichs für ASCS zugeordnet ist (z.B. <b>nws-ascs</b>, <b>10.0.0.10</b>), und der Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>00</b>).
+   Installieren Sie auf dem ersten Knoten SAP NetWeaver ASCS als Stamm mit einem virtuellen Hostnamen, welcher der IP-Adresse der Frontendkonfiguration des Lastenausgleichs für ASCS zugeordnet ist (z.B. <b>nws-ascs</b>, <b>10.0.0.10</b>), und der Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>00</b>).
 
    Sie können den sapinst-Parameter „SAPINST_REMOTE_ACCESS_USER“ verwenden, um anderen Benutzern als Stammbenutzern die Herstellung einer Verbindung mit sapinst zu ermöglichen.
 
@@ -1041,7 +1041,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
      op monitor interval="10s"
 
    crm(live)configure# primitive vip_<b>NWS</b>_ERS IPaddr2 \
-     params ip=<b>10.0.0.11</b> cidr_netmask=24 \
+     params ip=<b>10.0.0.11</b> cidr_netmask=<b>24</b> \
      op monitor interval=10 timeout=20
 
    crm(live)configure# primitive nc_<b>NWS</b>_ERS anything \
@@ -1092,7 +1092,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
 
 1. **[2]** Installieren Sie SAP NetWeaver ERS.  
 
-   Installieren Sie auf dem zweiten Knoten SAP NetWeaver ERS als Stamm mit einem virtuellen Hostnamen, der der IP-Adresse der Frontendkonfiguration des Lastenausgleichs für ERS zugeordnet ist (z.B. <b>nws-ers</b>, <b>10.0.0.11</b>) und der Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>02</b>).
+   Installieren Sie auf dem zweiten Knoten SAP NetWeaver ERS als Stamm mit einem virtuellen Hostnamen, welcher der IP-Adresse der Frontendkonfiguration des Lastenausgleichs für ERS zugeordnet ist (z.B. <b>nws-ers</b>, <b>10.0.0.11</b>) und der Instanznummer, die Sie für den Test des Lastenausgleichs verwendet haben (z.B. <b>02</b>).
 
    Sie können den sapinst-Parameter „SAPINST_REMOTE_ACCESS_USER“ verwenden, um anderen Benutzern als Stammbenutzern die Herstellung einer Verbindung mit sapinst zu ermöglichen.
 
@@ -1228,7 +1228,7 @@ Das STONITH-Gerät verwendet einen Dienstprinzipal zur Autorisierung bei Microso
 
 1. Gehen Sie zu <https://portal.azure.com>.
 1. Öffnen Sie das Blatt „Azure Active Directory“.  
-   Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die „Verzeichnis-ID“. Dies ist die **Mandanten-ID**.
+   Wechseln Sie zu „Eigenschaften“, und notieren Sie sich die Verzeichnis-ID. Dies ist die **Mandanten-ID**.
 1. Klicken Sie auf „App-Registrierungen“.
 1. Klicken Sie auf "Hinzufügen".
 1. Geben Sie einen Namen ein, wählen Sie den Anwendungstyp „Web-App/API“, geben Sie eine Anmelde-URL ein (z.B. „http://localhost“), und klicken Sie auf „Erstellen“.
@@ -1256,13 +1256,13 @@ Nachdem Sie die Berechtigungen für die virtuellen Computer bearbeitet haben, k�
 <pre><code>
 sudo crm configure
 
-# replace the bold string with your subscription id, resource group, tenant id, service principal id and password
+# replace the bold string with your subscription ID, resource group, tenant ID, service principal ID and password
 
 crm(live)configure# primitive rsc_st_azure_1 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# primitive rsc_st_azure_2 stonith:fence_azure_arm \
-   params subscriptionId="<b>subscription id</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant id</b>" login="<b>login id</b>" passwd="<b>password</b>"
+   params subscriptionId="<b>subscription ID</b>" resourceGroup="<b>resource group</b>" tenantId="<b>tenant ID</b>" login="<b>login ID</b>" passwd="<b>password</b>"
 
 crm(live)configure# colocation col_st_azure -2000: rsc_st_azure_1:Started rsc_st_azure_2:Started
 
@@ -1326,7 +1326,7 @@ Im Allgemeinen sollten Sie LVM für Volumes verwenden, die Daten- und Protokolld
    sudo chattr +i /hana/data
    sudo chattr +i /hana/log
    sudo chattr +i /hana/shared
-   # write down the id of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
+   # write down the ID of /dev/vg_hana_data/hana_data, /dev/vg_hana_log/hana_log and /dev/vg_hana_shared/hana_shared
    sudo blkid
    </code></pre>
    
@@ -1440,7 +1440,7 @@ Die folgenden Schritte basieren auf den Informationen zur Installation der SAP H
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number and HANA system id
+   # replace the bold string with your instance number and HANA system ID
    
    crm(live)configure# primitive rsc_SAPHanaTopology_<b>HDB</b>_HDB<b>03</b>   ocf:suse:SAPHanaTopology \
      operations $id="rsc_sap2_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1461,7 +1461,7 @@ Die folgenden Schritte basieren auf den Informationen zur Installation der SAP H
    <pre><code>
    sudo crm configure
 
-   # replace the bold string with your instance number, HANA system id and the frontend IP address of the Azure load balancer. 
+   # replace the bold string with your instance number, HANA system ID and the frontend IP address of the Azure load balancer. 
     
    crm(live)configure# primitive rsc_SAPHana_<b>HDB</b>_HDB<b>03</b> ocf:suse:SAPHana \
      operations $id="rsc_sap_<b>HDB</b>_HDB<b>03</b>-operations" \
@@ -1651,5 +1651,5 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
 * [SAP NetWeaver auf virtuellen Azure-Computern – Planungs- und Implementierungshandbuch][planning-guide]
 * [Bereitstellung von Azure Virtual Machines für SAP][deployment-guide]
 * [SAP NetWeaver auf virtuellen Azure-Computern – DBMS-Bereitstellungshandbuch][dbms-guide]
-* Informationen zur Erzielung von hoher Verfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
+* Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA in Azure (große Instanzen) finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md).
 * Informationen zur Erzielung von Hochverfügbarkeit und zur Planung der Notfallwiederherstellung für SAP HANA auf Azure-VMs finden Sie unter [Hochverfügbarkeit für SAP HANA auf Azure Virtual Machines (VMs)][sap-hana-ha].

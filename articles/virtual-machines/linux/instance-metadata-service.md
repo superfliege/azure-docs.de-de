@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 1ed64ece4d05dea93fd15e24aaf9921d8614277e
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 84d6c6b134d74e3d739fd1d65134672f2285787f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst
 
@@ -282,7 +282,7 @@ Folgende Datenkategorien werden über den Instanzmetadatendienst zur Verfügung 
 Daten | Beschreibung | Eingeführt in Version 
 -----|-------------|-----------------------
 location | Azure-Region, in der die VM ausgeführt wird | 2017-04-02 
-Name | Name des virtuellen Computers | 2017-04-02
+name | Name des virtuellen Computers | 2017-04-02
 offer | Stellen Sie Informationen für das VM-Image bereit. Dieser Wert ist nur für Images vorhanden, die mithilfe des Azure-Imagekatalogs bereitgestellt werden. | 2017-04-02
 Herausgeber | Herausgeber des VM-Images | 2017-04-02
 sku | Spezifische SKU für das VM-Image | 2017-04-02
@@ -402,7 +402,7 @@ Bash       | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.sh
 7. Gilt dies auch für VM-Skalierungsgruppeninstanzen?
    * Ja, der Metadatendienst ist für Skalierungsgruppeninstanzen verfügbar. 
 8. Wie beziehe ich Support für den Dienst?
-   * Um Support für den Dienst zu beziehen, erstellen Sie im Azure-Portal ein Supportproblem für die VM, auf der Sie nach wiederholten Versuchen keine Metadatenantwort erhalten. 
+   * Um Support für den Dienst zu beziehen, erstellen Sie im Azure-Portal eine Supportanfrage für die VM, auf der Sie nach wiederholten Versuchen keine Metadatenantwort erhalten. 
 
    ![Instanzmetadatenunterstützung](./media/instance-metadata-service/InstanceMetadata-support.png)
     
