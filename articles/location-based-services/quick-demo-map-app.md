@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0fcd25183617de879ada6d1f7d2a8fcf9551d6de
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 0edca9e5eb709eb3e1b42b45e5a41ac7a5ba1e75
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Starten einer Demonstration für die interaktive Kartensuche mit Azure Location Based Services (Vorschau)
 
@@ -44,7 +44,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 1. Laden Sie den Inhalt der Datei [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) herunter, oder kopieren Sie ihn.
 2. Speichern Sie den Inhalt dieser Datei lokal unter **AzureMapDemo.html**, und öffnen Sie die Datei in einem Text-Editor.
-3. Suchen Sie die Zeichenfolge **<insert-key>**, und ersetzen Sie sie durch den Wert für den **Primärschlüssel**, den Sie im vorherigen Abschnitt abgerufen haben. 
+3. Suchen Sie nach der Zeichenfolge **&#60;insert-key&#62;**, und ersetzen Sie sie durch den Wert für den **Primärschlüssel**, den Sie im vorherigen Abschnitt abgerufen haben. 
 
 
 ## <a name="launch-the-demo-application-for-azure-maps"></a>Starten der Demoanwendung für Azure Maps

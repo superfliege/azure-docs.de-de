@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/12/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: f283f8d79c5ae5fb6a72c84c9e9edb7bb8de4a83
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9f50a1762f003727e62b43b6e81e62b66878f2f
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-a-generic-webhook"></a>Erstellen einer Funktion, die durch einen generischen Webhook ausgelöst wird
 
@@ -48,9 +48,13 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-generic-webhook-triggered-function/add-first-function.png)
 
-2. Wählen Sie die Vorlage für einen **generischen Webhook in C#** aus. Geben Sie einen Namen für die C#-Funktion ein, und wählen Sie dann **Erstellen** aus.
+2. Geben Sie im Suchfeld `generic` ein, und wählen Sie dann Ihre gewünschte Sprache für die generische Webhook-Triggervorlage aus. In diesem Thema wird eine C#-Funktion verwendet.
 
-     ![Erstellen einer Funktion im Azure-Portal, die durch einen generischen Webhook ausgelöst wird](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png) 
+     ![Auswählen der generischen Webhook-Triggervorlage](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger.png)
+
+2. Geben Sie einen **Namen** für Ihre Funktion ein, und wählen Sie dann die Option **Erstellen**. 
+
+     ![Erstellen einer Funktion im Azure-Portal, die durch einen generischen Webhook ausgelöst wird](./media/functions-create-generic-webhook-triggered-function/functions-create-generic-webhook-trigger-2.png) 
 
 2. Klicken Sie in der neuen Funktion auf **</> Funktions-URL abrufen**, kopieren Sie den Wert, und speichern Sie ihn. Verwenden Sie diesen Wert zum Konfigurieren des Webhooks. 
 
@@ -68,7 +72,7 @@ Als Nächstes erstellen Sie einen Webhook-Endpunkt in einer Aktivitätsprotokoll
 
     ![Erstellen einer Aktivitätsprotokollwarnung](./media/functions-create-generic-webhook-triggered-function/functions-monitor-add-alert-settings.png)
 
-    | Einstellung      |  Empfohlener Wert   | Beschreibung                              |
+    | Einstellung      |  Empfohlener Wert   | BESCHREIBUNG                              |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Der Name der Aktivitätsprotokollwarnung** | resource-group-create-alert | Der Name der Aktivitätsprotokollwarnung |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, das Sie für dieses Tutorial verwenden | 
@@ -78,7 +82,7 @@ Als Nächstes erstellen Sie einen Webhook-Endpunkt in einer Aktivitätsprotokoll
     | **Ressourcengruppe**<br/>und **Ressource** | Alle | Überwacht alle Ressourcen |
     | **Vorgangsname** | Ressourcengruppe erstellen | Filtert Warnungen, um Vorgänge zu erstellen |
     | **Level** | Information | Schließen Sie Warnungen auf Informationsebene ein. | 
-    | **Status** | Erfolgreich | Filtert Warnungen für Aktionen, die erfolgreich abgeschlossen wurden |
+    | **Status** | Succeeded | Filtert Warnungen für Aktionen, die erfolgreich abgeschlossen wurden |
     | **Aktionsgruppe** | Neu | Erstellen Sie eine neue Aktionsgruppe, die die Aktion definiert, die bei einer Warnung ausgelöst wird. |
     | **Aktionsgruppenname** | function-webhook | Ein Name zur Identifikation der Aktionsgruppe  | 
     | **Kurzname** | funcwebhook | Ein kurzer Name für die Aktionsgruppe. |  

@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 476e103c7101621e116c5155241f56f1cb9036df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b1c5ef3868a14f42d75720984ea19bb495b887e4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
 
@@ -52,16 +52,20 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-scheduled-function/add-first-function.png)
 
-2. Wählen Sie die Vorlage **TimerTrigger** für die gewünschte Sprache. Verwenden Sie anschließend die Proxyeinstellungen wie in der Tabelle angegeben:
+2. Geben Sie im Suchfeld `timer` ein, und wählen Sie dann Ihre gewünschte Sprache für die Timertrigger-Vorlage aus. 
 
-    ![Erstellen Sie im Azure-Portal eine Funktion mit Auslösung per Timer.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+    ![Wählen Sie die Vorlage für eine Funktion mit Auslösung per Timer aus.](./media/functions-create-scheduled-function/functions-create-timer-trigger.png)
+
+3. Konfigurieren Sie den neuen Trigger mit den Einstellungen, die in der Tabelle unter der folgenden Abbildung enthalten sind.
+
+    ![Erstellen Sie im Azure-Portal eine Funktion mit Auslösung per Timer.](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
     | Einstellung | Empfohlener Wert | Beschreibung |
     |---|---|---|
-    | **Name Ihrer Funktion** | TimerTriggerCSharp1 | Definiert den Namen der Funktion mit Auslösung per Timer |
+    | **Name** | Standard | Definiert den Namen der Funktion mit Auslösung per Timer |
     | **[Zeitplan](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | Ein sechs Felder umfassender [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression), der die minütliche Ausführung der Funktion festlegt. |
 
-2. Klicken Sie auf **Erstellen**. Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
+2. Klicken Sie auf **Create**. Eine Funktion wird in der gewählten Sprache erstellt. Sie wird minütlich ausgeführt.
 
 3. Überprüfen Sie, ob die Funktion ausgeführt wird, indem Sie sich die Nachverfolgungsinformationen in den Protokollen ansehen.
 

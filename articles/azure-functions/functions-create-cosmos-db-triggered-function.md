@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: 2d2c83b1ce718e6954e908beb9080ace12a12a34
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2a4037d68413fb02ab3fe0c9a82af2ae22d10e68
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Erstellen einer durch Azure Cosmos DB ausgelösten Funktion
 
@@ -50,9 +50,9 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-cosmos-db-triggered-function/add-first-function.png)
 
-2. Suchen und wählen Sie die **Azure CosmosDBTrigger**-Vorlage für Ihre gewünschte Sprache.
+2. Geben Sie im Suchfeld `cosmos` ein, und wählen Sie dann Ihre gewünschte Sprache für die Azure Cosmos DB-Triggervorlage aus.
 
-    ![Erstellen der ausgelösten Azure Cosmos DB-Funktion](./media/functions-create-cosmos-db-triggered-function/select-cosmos-db-trigger-portal.png)
+    ![Auswählen des Azure Cosmos DB-Triggers](./media/functions-create-cosmos-db-triggered-function/select-cosmos-db-trigger-portal.png)
 
 3. Konfigurieren Sie den neuen Trigger mit den Einstellungen, die in der Tabelle unter der folgenden Abbildung enthalten sind.
 
@@ -60,10 +60,10 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
     
     | Einstellung      | Empfohlener Wert  | Beschreibung                                |
     | ------------ | ---------------- | ------------------------------------------ |
-    | **Name Ihrer Funktion** | Standard | Verwenden Sie den von der Vorlage vorgeschlagenen Standardfunktionsnamen. |
-    | **Datenbankname** | Aufgaben | Name der Datenbank mit der zu überwachenden Sammlung. |
+    | **Name** | Standard | Verwenden Sie den von der Vorlage vorgeschlagenen Standardfunktionsnamen. |
     | **Sammlungsname** | Items | Name der zu überwachenden Sammlung. |
     | **Erstellen der Leasesammlung, wenn sie nicht vorhanden ist** | Aktiviert | Die Sammlung ist noch nicht vorhanden und muss erstellt werden. |
+    | **Datenbankname** | Aufgaben | Name der Datenbank mit der zu überwachenden Sammlung. |
 
 4. Wählen Sie neben **Azure Cosmos DB-Kontoverbindung** die Option **Neu** und anschließend ein bestehendes Cosmos DB-Konto oder **+ Neu erstellen** aus. 
  
@@ -71,13 +71,13 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
 6. Wenn Sie ein neues Cosmos DB-Konto erstellen, verwenden Sie die **Neues Konto**-Einstellungen wie in der Tabelle angegeben.
 
-    | Einstellung      | Empfohlener Wert  | Beschreibung                                |
+    | Einstellung      | Empfohlener Wert  | BESCHREIBUNG                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | Name der Datenbank | Eindeutige ID für die Azure Cosmos DB-Datenbank  |
     | **API** | SQL (DocumentDB) | In diesem Thema wird die Dokumentdatenbank-API verwendet.  |
     | **Abonnement** | Azure-Abonnement | Azure-Abonnement  |
     | **Ressourcengruppe** | myResourceGroup |  Verwenden Sie die vorhandene Ressourcengruppe, die Ihre Funktions-App enthält. |
-    | **Standort**  | Europa, Westen | Wählen Sie einen Standort in der Nähe Ihrer Funktions-App oder in der Nähe anderer Apps aus, die die gespeicherten Dokumente verwenden.  |
+    | **Location**  | Europa, Westen | Wählen Sie einen Standort in der Nähe Ihrer Funktions-App oder in der Nähe anderer Apps aus, die die gespeicherten Dokumente verwenden.  |
 
 6. Klicken Sie auf **OK**, um die Datenbank zu erstellen. Die Datenbankerstellung dauert unter Umständen einige Minuten. Nach Abschluss der Datenbankerstellung wird die Datenbankverbindungszeichenfolge als Einstellung der Funktions-App gespeichert. Der Name dieser App-Einstellung wird in **Azure Cosmos DB-Kontoverbindung** eingefügt. 
 
@@ -107,7 +107,7 @@ Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto her un
  
     ![Definieren von taskCollection](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
  
-    | Einstellung|Empfohlener Wert|Beschreibung |
+    | Einstellung|Empfohlener Wert|BESCHREIBUNG |
     | ---|---|--- |
     | **Datenbank-ID** | Aufgaben |Der Name Ihrer neuen Datenbank. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen. |
     | **Sammlungs-ID** | Items | Der Name der neuen Sammlung. Dieser muss mit dem in der Funktionsbindung definierten Namen übereinstimmen.  |

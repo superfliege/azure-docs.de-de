@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3fd5a5b9d2e2eec485fd9ecc5380ad6adb9851d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77c8c8dbe6228d80062f34f4bb7fc93a1871e8c4
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Erstellen einer Funktion, die durch Azure Queue Storage ausgelöst wird
 
@@ -52,13 +52,16 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
 
-2. Wählen Sie die Vorlage **QueueTrigger** für die gewünschte Sprache aus, und verwenden Sie die in der Tabelle angegebenen Einstellungen.
+2. Geben Sie im Suchfeld `queue` ein, und wählen Sie dann Ihre gewünschte Sprache für die Queue Storage-Triggervorlage aus.
 
-    ![Erstellen Sie die Funktion, die durch die Speicherwarteschlange ausgelöst wird.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+    ![Wählen Sie die Triggervorlage für die Storage-Warteschlange aus.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+
+3. Verwenden Sie die Einstellungen, die in der Tabelle unter der Abbildung angegeben sind.
+    ![Konfigurieren der Funktion, die durch die Speicherwarteschlange ausgelöst wird](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
     
     | Einstellung | Empfohlener Wert | Beschreibung |
     |---|---|---|
-    | **Name Ihrer Funktion** | Eindeutig in Ihrer Funktionen-App | Der Name dieser Funktion mit Auslösung durch Warteschlange. |
+    | **Name** | Eindeutig in Ihrer Funktionen-App | Der Name dieser Funktion mit Auslösung durch Warteschlange. |
     | **Warteschlangenname**   | myqueue-items    | Der Name der zu verknüpfenden Warteschlange in Ihrem Speicherkonto. |
     | **Speicherkontoverbindung** | AzureWebJobStorage | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktionen-App verwendet wird, oder eine neue erstellen.  |    
 

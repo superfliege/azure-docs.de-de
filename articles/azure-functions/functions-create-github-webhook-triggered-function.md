@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: d70186513b7313c8181092bc93a723f21154f7bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>Erstellen einer Funktion, die durch einen GitHub-Webhook ausgelöst wird
 
@@ -51,9 +51,13 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-github-webhook-triggered-function/add-first-function.png)
 
-2. Wählen Sie die **GitHub-Webhook**-Vorlage für die gewünschte Sprache aus. **Benennen Sie die Funktion**, und wählen Sie anschließend **Erstellen**.
+2. Geben Sie im Suchfeld `github` ein, und wählen Sie dann Ihre gewünschte Sprache für die GitHub-Webhook-Triggervorlage aus. 
 
-     ![Erstellen einer Funktion, die durch einen GitHub-Webhook ausgelöst wird, im Azure-Portal](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+     ![Auswählen der GitHub-Webhook-Triggervorlage](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger.png) 
+
+2. Geben Sie einen **Namen** für Ihre Funktion ein, und wählen Sie dann die Option **Erstellen**. 
+
+     ![Konfigurieren der durch einen GitHub-Webhook ausgelösten Funktion im Azure-Portal](./media/functions-create-github-webhook-triggered-function/functions-create-github-webhook-trigger-2.png) 
 
 3. Klicken Sie in der neuen Funktion auf **</> Funktions-URL abrufen**, kopieren Sie die Werte, und speichern Sie diese. Führen Sie die gleichen Schritte für **</> GitHub-Geheimnis abrufen** aus. Diese Werte benötigen Sie, um den Webhook in GitHub zu konfigurieren.
 
@@ -73,7 +77,7 @@ Erstellen Sie als Nächstes einen Webhook in Ihrem GitHub-Repository.
 
     ![Hinzufügen der Webhook-URL und Festlegen des Geheimnisses](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 
-| Einstellung | Empfohlener Wert | Beschreibung |
+| Einstellung | Empfohlener Wert | BESCHREIBUNG |
 |---|---|---|
 | **URL der Nutzlast** | Der kopierte Wert | Verwenden Sie den von **</> Abrufen der Funktions-URL** zurückgegebenen Wert. |
 | **Geheimnis**   | Der kopierte Wert | Verwenden Sie den von **</> Abrufen des GitHub-Geheimnisses** zurückgegebenen Wert. |

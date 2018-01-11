@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2017
 ms.author: carlrab
-ms.openlocfilehash: c6c450b0b3b0422121d23ba5d5556637f6d298bc
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: c52ac86ad5f3ad97a2e6dca38a84444b45bd73e5
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL-Datenbank: Verwenden von Visual Studio Code zum Herstellen einer Verbindung mit und Abfragen von Daten
 
@@ -92,7 +92,7 @@ Verwenden Sie Visual Studio Code, um eine Verbindung mit Ihrem Azure SQL-Datenba
 
 4. Befolgen Sie die Eingabeaufforderungen, um die Verbindungseigenschaften für das neue Verbindungsprofil anzugeben. Drücken Sie nach dem Angeben der einzelnen Werte die **EINGABETASTE**, um fortzufahren. 
 
-   | Einstellung       | Empfohlener Wert | Beschreibung |
+   | Einstellung       | Empfohlener Wert | BESCHREIBUNG |
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **Servername | Der vollqualifizierte Servername | Der Name sollte etwa wie folgt lauten: **mynewserver20170313.database.windows.net**. |
    | **Datenbankname** | mySampleDatabase | Der Name der Datenbank, mit der eine Verbindung hergestellt werden soll. |
@@ -123,7 +123,7 @@ Verwenden Sie den folgenden Code, um mit der Transact-SQL-Anweisung [SELECT](htt
 
 2. Drücken Sie **STRG+UMSCHALT+E**, um Daten aus den Tabellen „Product“ und „ProductCategory“ abzurufen.
 
-    ![Abfrage](./media/sql-database-connect-query-vscode/query.png)
+    ![Abfragen](./media/sql-database-connect-query-vscode/query.png)
 
 ## <a name="insert-data"></a>Einfügen von Daten
 
@@ -183,5 +183,5 @@ Verwenden Sie den folgenden Code, um mit der Transact-SQL-Anweisung [DELETE](htt
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zum Herstellen einer Verbindung und Durchführen von Abfragen mit SQL Server Management Studio finden Sie unter [Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md).
-- Informationen zum Herstellen einer Verbindung sowie zum Abfragen mithilfe des Azure-Portals finden Sie unter [Azure portal: Use the SQL Query Editor to connect and query data](sql-database-connect-query-portal.md) (Azure-Portal: Verwenden des SQL-Abfrage-Editors für die Verbindungsherstellung und Abfrage von Daten).
+- Informationen zum Herstellen einer Verbindung sowie zum Abfragen mithilfe des Azure-Portals finden Sie unter [Verbinden und Abfragen mit dem SQL-Abfrage-Editor des Azure-Portals](sql-database-connect-query-portal.md).
 - Im [Blogpost zum Erstellen einer Datenbank-IDE mit der MSSQL-Erweiterung](https://msdn.microsoft.com/magazine/mt809115) finden Sie einen MSDN Magazine-Artikel zum Verwenden von Visual Studio Code.

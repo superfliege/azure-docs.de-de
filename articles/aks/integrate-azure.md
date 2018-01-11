@@ -8,26 +8,26 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 12/05/2017
 ms.author: seozerca
-ms.openlocfilehash: 18d082a1cd07e0b3572c93ea24b4e1edd92cad2a
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 339e600f18613e8cf4e5529c759ad33076d48654
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="integrate-with-azure-managed-services-using-open-service-broker-for-azure-osba"></a>Integrieren von mit Azure verwalteten Diensten mithilfe von Open Service Broker für Azure (OSBA)
 
-Zusammen mit dem [Kubernetes Service Catalog](https://github.com/kubernetes-incubator/service-catalog) ermöglicht Open Service Broker für Azure (OSBA) Entwicklern die Nutzung von mit Azure verwalteten Diensten in Kubernetes. Dieser Leitfaden konzentriert sich auf die Bereitstellung von Kubernetes Service Catalog, Open Service Broker für Azure (OSBA) und Anwendungen, die von Azure verwaltete Dienste mit Kubernetes nutzen.
+Zusammen mit dem [Kubernetes Service Catalog][kubernetes-service-catalog] ermöglicht Open Service Broker für Azure (OSBA) Entwicklern die Nutzung von mit Azure verwalteten Diensten in Kubernetes. Dieser Leitfaden konzentriert sich auf die Bereitstellung von Kubernetes Service Catalog, Open Service Broker für Azure (OSBA) und Anwendungen, die von Azure verwaltete Dienste mit Kubernetes nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * Ein Azure-Abonnement
 
-* Azure CLI 2.0: Sie können es [lokal installieren](/cli/azure/install-azure-cli) oder in [Azure Cloud Shell](../cloud-shell/overview.md) verwenden.
+* Azure CLI 2.0: Sie können es [lokal installieren][azure-cli-install] oder in [Azure Cloud Shell][azure-cloud-shell] verwenden.
 
-* Helm CLI 2.7+: Sie können es [lokal installieren](kubernetes-helm.md#install-helm-cli) oder in [Azure Cloud Shell](../cloud-shell/overview.md) verwenden.
+* Helm CLI 2.7+: Sie können sie [lokal installieren][helm-cli-install] oder in [Azure Cloud Shell][azure-cloud-shell] verwenden.
 
 * Berechtigungen zum Erstellen eines Dienstprinzipals mit der Rolle „Mitwirkender“ in Ihrem Azure-Abonnement
 
-* Ein vorhandener Azure Container Service-Cluster (AKS) Wenn Sie einen AKS-Cluster benötigen, befolgen Sie die Schnellstartanleitung [Erstellen eines AKS-Clusters](kubernetes-walkthrough.md).
+* Ein vorhandener Azure Container Service-Cluster (AKS) Befolgen Sie die Schnellstartanleitung [Erstellen eines AKS-Clusters][create-aks-cluster], wenn Sie einen AKS-Cluster benötigen.
 
 ## <a name="install-service-catalog"></a>Installieren des Dienstkatalogs
 
@@ -68,7 +68,7 @@ v1beta1.storage.k8s.io               10
 
 ## <a name="install-open-service-broker-for-azure"></a>Installieren von Open Service Broker für Azure
 
-Der nächste Schritt besteht darin, [Open Service Broker für Azure](https://github.com/Azure/open-service-broker-azure) zu installieren, das den Katalog für die von Azure verwalteten Dienste enthält. Beispiele für verfügbare Azure-Dienste sind Azure Database for PostgreSQL, Azure Redis Cache, Azure Database for MySQL, Azure Cosmos DB, Azure SQL-Datenbank und andere.
+Der nächste Schritt besteht darin, [Open Service Broker für Azure][open-service-broker-azure] zu installieren, worin der Katalog für die von Azure verwalteten Dienste enthalten ist. Beispiele für verfügbare Azure-Dienste sind Azure Database for PostgreSQL, Azure Redis Cache, Azure Database for MySQL, Azure Cosmos DB, Azure SQL-Datenbank und andere.
 
 Beginnen wir mit dem Hinzufügen des Helm-Repositorys für Open Service Broker für Azure:
 
@@ -76,7 +76,7 @@ Beginnen wir mit dem Hinzufügen des Helm-Repositorys für Open Service Broker f
 helm repo add azure https://kubernetescharts.blob.core.windows.net/azure
 ```
 
-Erstellen Sie einen [Dienstprinzipal](kubernetes-service-principal.md) mit dem folgenden Azure CLI-Befehl:
+Erstellen Sie einen [Dienstprinzipal][create-service-principal] mit dem folgenden Azure CLI-Befehl:
 
 ```azurecli-interactive
 az ad sp create-for-rbac
@@ -124,7 +124,7 @@ helm install azure/open-service-broker-azure --name osba --namespace osba \
     --set azure.clientSecret=$AZURE_CLIENT_SECRET
 ```
 
-Sobald die OSBA-Bereitstellung abgeschlossen ist, installieren Sie die [Dienstkatalog-CLI](https://github.com/Azure/service-catalog-cli), eine benutzerfreundliche Befehlszeilenschnittstelle für die Abfrage von Service Brokern, Dienstklassen, Dienstplänen und mehr.
+Sobald die OSBA-Bereitstellung abgeschlossen ist, installieren Sie die [Dienstkatalog-CLI][service-catalog-cli], eine benutzerfreundliche Befehlszeilenschnittstelle für die Abfrage von Service Brokern, Dienstklassen, Dienstplänen und mehr.
 
 Führen Sie die folgenden Befehle aus, um die Binärdatei der Dienstkatalog-CLI zu installieren:
 
@@ -184,4 +184,18 @@ kubectl get secrets -n wordpress -o yaml
 
 Wenn Sie sich an diesen Artikel halten, haben Sie den Dienstkatalog in einem Azure Container Service-Cluster (AKS) bereitgestellt. Sie haben Open Service Broker für Azure verwendet, um eine WordPress-Installation bereitzustellen, die von Azure verwaltete Dienste verwendet, in diesem Fall Azure Database for MySQL.
 
-Beziehen Sie sich auf das Repository [Azure-/Helm-Diagramme](https://github.com/Azure/helm-charts), um auf andere aktualisierte OSBA-basierte Helm-Diagramme zuzugreifen. Wenn Sie daran interessiert sind, eigene Diagramme zu erstellen, die mit OSBA arbeiten, lesen Sie [Erstellen eines neuen Diagramms](https://github.com/Azure/helm-charts#creating-a-new-chart).
+Über das Repository [Azure-/Helm-Diagramme][helm-charts] können Sie auf andere aktualisierte OSBA-basierte Helm-Diagramme zugreifen. Wenn Sie daran interessiert sind, eigene Diagramme zu erstellen, die für OSBA geeignet sind, helfen Ihnen die Informationen unter [Erstellen eines neuen Diagramms][helm-create-new-chart] weiter.
+
+<!-- LINKS - external -->
+[helm-charts]: https://github.com/Azure/helm-charts
+[helm-cli-install]: kubernetes-helm.md#install-helm-cli
+[helm-create-new-chart]: https://github.com/Azure/helm-charts#creating-a-new-chart
+[kubernetes-service-catalog]: https://github.com/kubernetes-incubator/service-catalog
+[open-service-broker-azure]: https://github.com/Azure/open-service-broker-azure
+[service-catalog-cli]: https://github.com/Azure/service-catalog-cli
+
+<!-- LINKS - internal -->
+[azure-cli-install]: /cli/azure/install-azure-cli
+[azure-cloud-shell]: ../cloud-shell/overview.md
+[create-aks-cluster]: ./kubernetes-walkthrough.md
+[create-service-principal]: ./kubernetes-service-principal.md

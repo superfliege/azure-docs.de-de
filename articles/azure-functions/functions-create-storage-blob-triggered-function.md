@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 12/07/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: db95f3991cfc36e0588f94aa7053bf3f5a794222
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e34d3634b592efe4581135f9dee52bf77d7506cd
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="create-a-function-triggered-by-azure-blob-storage"></a>Erstellen einer Funktion, die durch Azure Blob Storage ausgelöst wird
 
@@ -51,19 +51,23 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Schnellstartseite für Funktionen im Azure-Portal](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
 
-2. Wählen Sie die Vorlage **BlobTrigger** für die gewünschte Sprache aus, und verwenden Sie die in der Tabelle angegebenen Einstellungen.
+2. Geben Sie im Suchfeld `blob` ein, und wählen Sie dann Ihre gewünschte Sprache für die Blob Storage-Triggervorlage aus.
 
-    ![Erstellen Sie die Funktion, die durch Blob Storage ausgelöst wird.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+    ![Wählen Sie die Blob Storage-Triggervorlage aus.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+ 
+3. Verwenden Sie die Einstellungen, die in der Tabelle unter der Abbildung angegeben sind.
+
+    ![Erstellen Sie die Funktion, die durch Blob Storage ausgelöst wird.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
 
     | Einstellung | Empfohlener Wert | Beschreibung |
     |---|---|---|
-    | **Path**   | mycontainer/{name}    | Der Speicherort in Blob Storage, der überwacht wird. Der Dateiname des Blobs wird in der Bindung als _name_-Parameter übergeben.  |
-    | **Speicherkontoverbindung** | AzureWebJobStorage | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktionen-App verwendet wird, oder eine neue erstellen.  |
-    | **Name Ihrer Funktion** | Eindeutig in Ihrer Funktionen-App | Der Name dieser durch Blobs ausgelösten Funktion. |
+    | **Name** | Eindeutig in Ihrer Funktionen-App | Der Name dieser durch Blobs ausgelösten Funktion. |
+    | **Path**   | samples-workitems/{name}    | Der Speicherort in Blob Storage, der überwacht wird. Der Dateiname des Blobs wird in der Bindung als _name_-Parameter übergeben.  |
+    | **Speicherkontoverbindung** | AzureWebJobsStorage | Sie können die Speicherkontoverbindung verwenden, die bereits von Ihrer Funktionen-App verwendet wird, oder eine neue erstellen.  |
 
 3. Klicken Sie auf **Erstellen**, um die Funktion zu erstellen.
 
-Als Nächstes stellen Sie eine Verbindung zu Ihrem Azure Storage-Konto her und erstellen den **mycontainer**-Container.
+Als Nächstes stellen Sie eine Verbindung mit Ihrem Azure Storage-Konto her und erstellen den Container **samples-workitems**.
 
 ## <a name="create-the-container"></a>Erstellen des Containers
 
@@ -79,7 +83,7 @@ Als Nächstes stellen Sie eine Verbindung zu Ihrem Azure Storage-Konto her und e
 
     ![Geben Sie die Speicheranmeldeinformationen ein, und stellen Sie eine Verbindung her.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
 
-1. Erweitern Sie das angefügte Speicherkonto, klicken Sie mit der rechten Maustaste auf **Blob-Container**, und klicken Sie dann auf **Blob-Container erstellen**. Geben Sie `mycontainer` ein, und drücken Sie dann die EINGABETASTE.
+1. Erweitern Sie das angefügte Speicherkonto, klicken Sie mit der rechten Maustaste auf **Blob-Container**, und klicken Sie dann auf **Blob-Container erstellen**. Geben Sie `samples-workitems` ein, und drücken Sie dann die EINGABETASTE.
 
     ![Erstellen Sie eine Speicherwarteschlange.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
 
@@ -89,7 +93,7 @@ Nun verfügen Sie über einen Blob-Container und können die Funktion durch Hoch
 
 1. Gehen Sie zurück zum Azure-Portal, navigieren Sie zu Ihrer Funktion, erweitern Sie die **Protokolle** am unteren Rand der Seite, und stellen Sie sicher, dass das Protokollstreaming nicht angehalten ist.
 
-1. Erweitern Sie im Storage-Explorer Ihr Speicherkonto, **Blob-Container** und **mycontainer**. Klicken Sie auf **Hochladen** und dann auf **Dateien hochladen**.
+1. Erweitern Sie im Storage-Explorer Ihr Speicherkonto, **Blob-Container** und **samples-workitems**. Klicken Sie auf **Hochladen** und dann auf **Dateien hochladen**.
 
     ![Laden Sie eine Datei in den Blob-Container hoch.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
 
