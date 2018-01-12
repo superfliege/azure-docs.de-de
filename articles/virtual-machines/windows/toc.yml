@@ -125,7 +125,11 @@
         - name: 'Verwenden von C#'
           href: csharp.md
         - name: Verwenden eines speziellen Datenträgers
-          href: create-vm-specialized.md
+          items:
+            - name: Portal
+              href: create-vm-specialized-portal.md
+            - name: PowerShell
+              href: create-vm-specialized.md
         - name: 'Verwenden einer Vorlage mit C#'
           href: csharp-template.md
         - name: Erstellen eines virtuellen Computers mit Chef

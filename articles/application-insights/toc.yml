@@ -19,7 +19,7 @@
       href: app-insights-java-quick-start.md
     - name: Mobile
       href: app-insights-mobile-center-quickstart.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Suchen von Laufzeitausnahmen
       href: app-insights-tutorial-runtime-exceptions.md
@@ -99,7 +99,7 @@
               href: app-insights-profiler.md
             - name: Aktivieren des Profilers
               href: enable-profiler-compute.md
-            - name: Diagnose
+            - name: Diagnostics
               href: app-insights-azure-diagnostics.md
             - name: Vorschau
               href: app-insights-previews.md
@@ -131,9 +131,9 @@
               href: app-insights-java-agent.md
             - name: Filtern von Telemetriedaten
               href: app-insights-java-filter-telemetry.md
-        - name: Warnungen
+        - name: Alerts
           items:
-            - name: Availability
+            - name: Verfügbarkeit
               href: app-insights-monitor-web-app-availability.md
             - name: Metrikwarnungen
               href: app-insights-alerts.md
@@ -162,7 +162,7 @@
           items:
             - name: Dashboards
               href: app-insights-dashboards.md
-            - name: Suche
+            - name: 'Suchen,'
               href: app-insights-diagnostic-search.md
             - name: Metriken
               href: app-insights-metrics-explorer.md
@@ -265,7 +265,11 @@
           href: app-insights-analytics-troubleshooting.md
         - name: Java
           href: app-insights-java-troubleshoot.md
-- name: Referenz
+- name: Beispiele
+  items:
+    - name: Codebeispiele
+      href: 'https://azure.microsoft.com/resources/samples/?service=application-insights&sort=0'
+- name: Verweis
   items:
     - name: Analytics-Abfragesprache
       href: 'https://docs.loganalytics.io/'
@@ -298,7 +302,7 @@
       href: application-insights-correlation.md
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=application-insights'
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

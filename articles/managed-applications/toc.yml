@@ -8,10 +8,12 @@
   items:
     - name: Verwaltete Anwendung erstellen
       href: managed-apps-quickstart-cli.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Erstellen von Dateien für verwaltete Anwendungen
       href: publish-service-catalog-app.md
+    - name: Erstellen einer Marketplace-Anwendung
+      href: publish-marketplace-app.md
 - name: Beispiele
   items:
     - name: Azure-Befehlszeilenschnittstelle
@@ -28,7 +30,7 @@
       href: update-managed-resources.md
     - name: Veröffentlichen mithilfe des Portals
       href: publish-portal.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/managedapp
@@ -75,7 +77,7 @@
               href: microsoft-storage-multistorageaccountcombo.md
             - name: StorageAccountSelector
               href: microsoft-storage-storageaccountselector.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
