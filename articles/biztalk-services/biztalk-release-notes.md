@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f3662ed386c3a3d2d132a483e7192bddc26de06
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Versionshinweise für Azure BizTalk Services
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
+
+> [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Die Versionshinweise für Microsoft Azure BizTalk Services enthalten die bekannten Probleme dieser Version.
 
@@ -34,8 +36,8 @@ Die Versionshinweise für Microsoft Azure BizTalk Services enthalten die bekannt
 * Unterstützung von Organisationskonten:  
   * **Szenario**: Sie haben eine BizTalk Service-Bereitstellung mit einem Microsoft-Konto registriert (z.B. user@live.com). In diesem Szenario können nur Microsoft-Kontobenutzer den BizTalk Service im BizTalk Services-Portal verwalten. Ein Organisationskonto kann nicht verwendet werden.  
   * **Szenario**: Sie haben eine BizTalk Service-Bereitstellung, mithilfe eines Organisationskontos in Azure Active Directory registriert (z.B. user@fabrikam.com oder user@contoso.com). In diesem Szenario können nur Azure Active Directory-Benutzer innerhalb derselben Organisation den BizTalk Service im BizTalk Services-Portal verwalten. Ein Microsoft-Konto kann nicht verwendet werden.  
-* Wenn Sie einen BizTalk Service im klassischen Azure-Portal erstellen, werden Sie automatisch beim BizTalk Services-Portal registriert.
-  * **Szenario**: Sie melden sich beim klassischen Azure-Portal an, erstellen einen BizTalk Service und wählen dann zum ersten Mal **Verwalten** aus. Beim Öffnen des BizTalk Services-Portals wird der BizTalk Service automatisch registriert und steht für Ihre Bereitstellungen zur Verfügung.  
+* Wenn Sie einen BizTalk Service erstellen, werden Sie automatisch beim BizTalk Services-Portal registriert.
+  * **Szenario**: Sie melden sich bei Azure an, erstellen einen BizTalk Service und wählen dann zum ersten Mal **Verwalten** aus. Beim Öffnen des BizTalk Services-Portals wird der BizTalk Service automatisch registriert und steht für Ihre Bereitstellungen zur Verfügung.  
     Weitere Informationen finden Sie unter [Registrieren und Aktualisieren einer BizTalk Service-Bereitstellung im BizTalk Services-Portal](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
 ### <a name="august-14-update"></a>Update vom 14. August
@@ -95,7 +97,7 @@ Wenn Sie den Qualifizierer einer Identität ändern möchten, löschen Sie die V
 Anlagen für AS2-Nachrichten werden beim Senden oder Empfangen nicht unterstützt. Anlagen werden vielmehr ignoriert, und der Nachrichtentext wird als normale AS2-Nachricht verarbeitet.  
 
 ### <a name="resources-remembering-path"></a>Ressourcen: Speichern des Pfads
-Beim Hinzufügen von Ressourcen ****wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den vertrauenswürdigen Sites **** hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
+**Beim Hinzufügen von Ressourcen** wird der Pfad, der zuvor zum Hinzufügen einer Ressource verwendet wurde, unter Umständen nicht im Dialogfeld gespeichert. Fügen Sie die Website des BizTalk Services-Portals in Internet Explorer den **vertrauenswürdigen Sites**  hinzu, damit der zuvor verwendete Pfad gespeichert wird.  
 
 ### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Wenn Sie den Entitätsnamen einer Bridge ändern und das Projekt ohne Speichern der Änderungen schließen, tritt beim erneuten Öffnen der Entität ein Fehler auf
 Szenario mit Schritten in der angegebenen Reihenfolge:  
