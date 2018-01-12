@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8aec171b46df3e0e7f2a2d3cc9d44084d064e6fd
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -207,7 +207,7 @@ Zunächst werden Sie Benutzeroberflächenelemente zum vorhandenen Storyboard hin
 Die App kann jetzt verschiedene Kategorien im lokalen Speicher des Geräts speichern, die für die Registrierung beim Notification Hub verwendet werden, wenn die App gestartet wird.  Der Benutzer kann zur Laufzeit die Auswahl der Kategorien ändern und auf die **subscribe** -Methode klicken, um die Registrierung für das Gerät zu aktualisieren. Als Nächstes aktualisieren Sie die App zum Senden von Benachrichtigungen zu aktuellen Nachrichten direkt in der App selbst.
 
 ## <a name="optional-sending-tagged-notifications"></a>(Optional) Senden von Benachrichtigungen mit Tags
-Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [klassischen Azure-Portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden. 
+Wenn Sie keinen Zugriff auf Visual Studio haben, können Sie den nächsten Abschnitt überspringen und Benachrichtigungen direkt über die App senden. Sie können auch die richtige Vorlagenbenachrichtigung aus dem [Azure-Portal] mithilfe der Registerkarte „Debuggen“ für den Notification Hub senden. 
 
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
@@ -331,4 +331,4 @@ In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategor
 [Notification Hubs Guidance]: http://msdn.microsoft.com/library/dn530749.aspx
 [Notification Hubs How-To for iOS]: http://msdn.microsoft.com/library/jj927168.aspx
 [get-started]: /manage/services/notification-hubs/get-started-notification-hubs-ios/
-[klassischen Azure-Portal]: https://manage.windowsazure.com
+[Azure-Portal]: https://portal.azure.com

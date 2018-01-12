@@ -3,7 +3,7 @@ title: Kompilieren von Konfigurationen in Azure Automation DSC | Microsoft Docs
 description: "In diesem Artikel wird das Kompilieren von DSC-Konfigurationen (Desired State Configuration, Konfiguration des gewünschten Zustands) für Azure Automation beschrieben."
 services: automation
 documentationcenter: na
-author: eslesar
+author: georgewallace
 manager: carmonm
 ms.assetid: 49f20b31-4fa5-4712-b1c7-8f4409f1aecc
 ms.service: automation
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
-ms.author: magoedte; eslesar
-ms.openlocfilehash: 7b126072424bfc6ad54fd2497ffcdb410b9dc5fe
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.author: magoedte; gwallace
+ms.openlocfilehash: 96702fb1b377861c3692358a5754e73475cee84d
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Kompilieren von Konfigurationen in Azure Automation DSC
 
@@ -131,16 +131,16 @@ Informationen zum Übergeben von PSCredentials als Parameter finden Sie im Absch
 
 ## <a name="composite-resources"></a>Zusammengesetzte Ressourcen
 
-**Zusammengesetzte Ressourcen** ermöglichen es Ihnen, die DSC-Konfigurationen als geschachtelte Ressourcen innerhalb einer Konfiguration zu verwenden.  Dadurch können Sie mehrere Konfigurationen auf eine einzelne Ressource anwenden.  Unter [Zusammengesetzte Ressourcen: Verwenden einer DSC-Konfiguration als Ressource](https://docs.microsoft.com/en-us/powershell/dsc/authoringresourcecomposite) erhalten Sie weitere Informationen zu **zusammengesetzten Ressourcen**
+**Zusammengesetzte Ressourcen** ermöglichen es Ihnen, die DSC-Konfigurationen als geschachtelte Ressourcen innerhalb einer Konfiguration zu verwenden. Dadurch können Sie mehrere Konfigurationen auf eine einzelne Ressource anwenden.  Unter [Zusammengesetzte Ressourcen: Verwenden einer DSC-Konfiguration als Ressource](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite) erhalten Sie weitere Informationen zu **zusammengesetzten Ressourcen**
 
 > [!NOTE]
 > Damit **zusammengesetzte Ressourcen** korrekt kompiliert werden, müssen Sie zunächst sicherstellen, dass alle DSC-Ressourcen, auf denen die zusammengesetzten Elemente basieren, zuerst im Azure Automation-Kontomodulrepository installiert werden, da sie andernfalls nicht korrekt importiert werden.
 
-Zum Hinzufügen einer **zusammengesetzten DSC-Ressource** müssen Sie das Ressourcenmodul zu einem Archiv (*.zip) hinzufügen. Wechseln Sie in Ihrem Azure Automation-Konto zum Modulrepository.  Klicken Sie dann auf die Schaltfläche "Modul hinzufügen".
+Zum Hinzufügen einer **zusammengesetzten DSC-Ressource** müssen Sie das Ressourcenmodul zu einem Archiv (*.zip) hinzufügen. Wechseln Sie in Ihrem Azure Automation-Konto zum Modulrepository. Klicken Sie dann auf die Schaltfläche "Modul hinzufügen".
 
 ![Modul hinzufügen](./media/automation-dsc-compile/add_module.png)
 
-Navigieren Sie zu dem Verzeichnis, in dem sich Ihr Archiv befindet.  Wählen Sie die Archivdatei aus, und klicken Sie auf "OK".
+Navigieren Sie zu dem Verzeichnis, in dem sich Ihr Archiv befindet. Wählen Sie die Archivdatei aus, und klicken Sie auf "OK".
 
 ![Modul auswählen](./media/automation-dsc-compile/select_dscresource.png)
 
@@ -263,7 +263,7 @@ Configuration CredentialSample
 }
 ```
 
-Sie können die obige DSC-Konfiguration über PowerShell kompilieren. Mit dem folgenden PowerShell-Skript werden dem Azure Automation DSC-Pullserver die beiden Knotenkonfigurationen **CredentialSample.MyVM1** und **CredentialSample.MyVM2** hinzugefügt.
+Sie können die obige DSC-Konfiguration über PowerShell kompilieren. Mit dem folgenden PowerShell-Skript werden dem Azure Automation DSC-Pullserver die folgenden beiden Knotenkonfigurationen hinzugefügt: **CredentialSample.MyVM1** und **CredentialSample.MyVM2**.
 
 ```powershell
 $ConfigData = @{

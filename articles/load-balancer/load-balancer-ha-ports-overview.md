@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: f72f4a3a81fc3a03c86805787caeeacbe6135c5e
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 46e284d1636988390f3533d93bfd07399f45dc92
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="high-availability-ports-overview"></a>Übersicht über Hochverfügbarkeitsports
 
@@ -74,7 +74,7 @@ Für die Teilnahme an der Vorschauversion des Features für Hochverfügbarkeitsp
 
 Nachfolgend sind die unterstützten Konfigurationen oder Ausnahmen für das Feature für Hochverfügbarkeitsports aufgeführt:
 
-- Eine einzelne Front-End-IP-Konfiguration kann nur eine einzelne DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports oder eine einzelne Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports enthalten, niemals beides gleichzeitig.
+- Eine einzelne Front-End-IP-Konfiguration kann nur eine einzelne DSR-Lastenausgleichsregel (Direct Server Return – Floating IP in Azure) mit Hochverfügbarkeitsports oder eine einzelne Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports enthalten, niemals beides gleichzeitig.
 - Eine einzelne Netzwerkschnittstellen-IP-Konfiguration kann nur eine Nicht-DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports aufweisen. Sie können für diese IP-Konfiguration keine anderen Regeln konfigurieren.
 - Eine IP-Konfiguration einer einzelnen Netzwerkschnittstelle kann mindestens eine DSR-Lastenausgleichsregel mit Hochverfügbarkeitsports aufweisen, vorausgesetzt, dass alle ihre jeweiligen Front-End-IP-Konfigurationen eindeutig sind.
 - Wenn alle Lastenausgleichsregeln Hochverfügbarkeitsports (nur DSR) aufweisen, können gleichzeitig zwei (oder mehr) Load Balancer-Regeln, die auf denselben Back-End-Pool verweisen, vorhanden sein. Dasselbe gilt, wenn alle Regeln Nicht-Hochverfügbarkeitsports (DSR und Nicht-DSR) aufweisen. Wenn Hochverfügbarkeitsport- und Nicht-Hochverfügbarkeitsportregeln kombiniert wurden, können zwei dieser Lastenausgleichsregeln jedoch nicht gleichzeitig vorhanden sein.

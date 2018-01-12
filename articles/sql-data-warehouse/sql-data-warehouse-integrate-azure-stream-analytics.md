@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 14783f0464764a11d7f03a5db1c2d63728a4cb50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c5c0450cba541a9346f023057345c5fc9b147903
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-stream-analytics-with-sql-data-warehouse"></a>Verwenden von Azure Stream Analytics mit SQL Data Warehouse
 Azure Stream Analytics ist ein vollständig verwalteter Dienst, der eine geringe Latenz, hohe Verfügbarkeit und eine skalierbare komplexe Ereignisverarbeitung durch das Streaming von Daten in der Cloud bietet. Die Grundlagen finden Sie unter [Einführung in Azure Stream Analytics][Introduction to Azure Stream Analytics]. In [Erste Schritte mit Azure Stream Analytics][Get started using Azure Stream Analytics] können Sie sich dann mit dem Erstellen einer End-to-End-Lösung mit Stream Analytics vertraut machen.
@@ -53,7 +53,7 @@ Geben Sie auf der nächsten Seite die folgenden Werte ein:
   * Befindet sich die SQL Data Warehouse-Datenbank im selben Abonnement wie der Stream Analytics-Auftrag, wählen Sie die Option "SQL-Datenbank aus aktuellem Abonnement verwenden" aus.
   * Wenn die Datenbank sich in einem anderen Abonnement befindet, wählen Sie "SQL-Datenbank aus einem anderen Abonnement verwenden" aus.
 * *Datenbank*: Geben Sie den Namen einer Zieldatenbank an.
-* *Servername*: Geben Sie den Servernamen für die Datenbank an, die Sie soeben angegeben haben. Diese Angaben finden Sie im klassischen Azure-Portal.
+* *Servername*: Geben Sie den Servernamen für die Datenbank an, die Sie soeben angegeben haben. Diese Angaben finden Sie im Azure-Portal.
 
 ![][server-name]
 

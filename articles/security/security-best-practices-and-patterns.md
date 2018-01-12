@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 593cb6da3527a32906e8e9faa11dc13a3ef5440f
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c8a25d64f3925ec963d8d02c827bd2045994feac
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Sicherheit in Azure – bewährte Methoden und Muster
 Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muster zur Azure-Sicherheit zur Verfügung. Besuchen Sie unbedingt regelmäßig diese Website, um stets über Updates unserer wachsenden Liste bewährter Methoden und Muster zur Azure-Sicherheit informiert zu sein:  
@@ -30,7 +30,7 @@ Wir stellen Ihnen derzeit die folgenden Artikel zu bewährten Methoden und Muste
 * [Azure IaaS Security Best Practices (Bewährte Methoden für die Azure IaaS-Sicherheit)] (azure-security-iaas.md)
 * [Microsoft-Clouddienste und Netzwerksicherheit](../best-practices-network-security.md)
 * [Implementing a secure hybrid network architecture in Azure (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Azure PaaS – Best Practices] (https://docs.microsoft.com/en-us/azure/security/security-paas-deployments)
+* [Azure PaaS – Best Practices] (https://docs.microsoft.com/azure/security/security-paas-deployments)
 
 Azure bietet eine sichere Plattform, auf der Sie Ihre Lösungen erstellen können. Wir bieten auch Dienste und Technologien, um Ihre Lösungen in Azure sicherer zu gestalten. Wegen der zahlreichen verfügbaren Optionen möchten viele von Ihnen erfahren, was Microsoft als bewährte Methoden und Muster zur Verbesserung der Sicherheit empfehlen kann.
 

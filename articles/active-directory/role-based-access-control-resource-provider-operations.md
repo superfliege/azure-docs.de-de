@@ -4,7 +4,7 @@ description: "Hier finden Sie ausführliche Informationen zu den verfügbaren Vo
 services: active-directory
 documentationcenter: 
 author: jboeshart
-manager: 
+manager: mtillman
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -12,15 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 9fe7a5f254d8b384cae10ecd34e0bdafa433ff13
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 27880402d377701448d095a1295ece875729cd67
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
-In diesem Dokument werden die Vorgänge aufgeführt, die jedem Microsoft Azure Resource Manager-Ressourcenanbieter zur Verfügung stehen. Sie können in benutzerdefinierten Rollen verwendet werden, um präzise RBAC-Berechtigungen (Role-Based Access Control; rollenbasierte Zugriffssteuerung) für Ressourcen in Azure bereitzustellen. Hinweis: Hierbei handelt es sich nicht um eine umfassende Liste, und bei Anbieterupdates werden unter Umständen Vorgänge hinzugefügt oder entfernt. Vorgangszeichenfolgen weisen das Format `Microsoft.<ProviderName>/<ChildResourceType>/<action>` auf. Verwenden Sie zum Anzeigen einer umfassenden und aktuellen Liste entweder `Get-AzureRmProviderOperation` (PowerShell) oder `azure provider operations show` (Azure-Befehlszeilenschnittstelle), um Vorgänge von Azure-Ressourcenanbietern aufzulisten.
+In diesem Dokument werden die Vorgänge aufgeführt, die jedem Microsoft Azure Resource Manager-Ressourcenanbieter zur Verfügung stehen. Sie können in benutzerdefinierten Rollen verwendet werden, um präzise RBAC-Berechtigungen (Role-Based Access Control; rollenbasierte Zugriffssteuerung) für Ressourcen in Azure bereitzustellen. Hinweis: Hierbei handelt es sich nicht um eine umfassende Liste, und bei Anbieterupdates werden unter Umständen Vorgänge hinzugefügt oder entfernt. Vorgangszeichenfolgen weisen das Format `Microsoft.<ProviderName>/<ChildResourceType>/<action>` auf. 
+
+> [!NOTE]
+> Verwenden Sie zum Anzeigen einer umfassenden und aktuellen Liste entweder `Get-AzureRmProviderOperation` (PowerShell) oder `az provider operation list` (Azure-Befehlszeilenschnittstelle v2), um Vorgänge von Azure-Ressourcenanbietern aufzulisten.
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
 
@@ -2194,7 +2197,6 @@ Dieser Anbieter ist kein vollwertiger ARM-Anbieter und stellt keine ARM-Vorgäng
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich über das [Erstellen einer benutzerdefinierten Rolle](role-based-access-control-custom-roles.md).
-
 - Machen Sie sich mit den [integrierten RBAC-Rollen](role-based-access-built-in-roles.md) vertraut.
-
 - Informieren Sie sich über das Verwalten von Zugriffszuweisungen [nach Benutzer](role-based-access-control-manage-assignments.md) oder [nach Ressource](role-based-access-control-configure.md). 
+- Erfahren Sie mehr über das [Anzeigen von Aktivitätsprotokollen, um Aktionen mit Ressourcen zu überwachen](~/articles/azure-resource-manager/resource-group-audit.md)

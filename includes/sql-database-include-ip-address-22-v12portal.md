@@ -15,25 +15,32 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. Melden Sie sich unter „http://portal.azure.com/“ beim [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im linken Banner auf **ALLE DURCHSUCHEN**. Das Blatt **Durchsuchen** wird angezeigt.
-3. Scrollen Sie und klicken Sie auf **SQL-Server**. Das Blatt **SQL-Server** wird angezeigt.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+
+2. Wählen Sie in der Liste auf der linken Seite die Option **Durchsuchen** aus. 
+
+3. Scrollen Sie und wählen Sie **SQL-Server** aus. 
    
     ![Suchen Sie Ihren Azure SQL-Datenbankserver im Portal][b21-FindServerInPortal]
-4. Der Einfachheit halber klicken Sie auf das Minimieren-Steuerelement im früheren Blatt **Durchsuchen** .
+4. Minimieren Sie aus Gründen der Bequemlichkeit das Blatt **Durchsuchen**.
+
 5. Geben Sie im Filtertextfeld zunächst den Namen des Servers ein. Die Zeile wird angezeigt.
-6. Klicken Sie auf die Zeile für den Server. Ein Blatt für den Server wird angezeigt.
-7. Klicken Sie auf dem Serverblatt auf **Einstellungen**. Das Blatt **Einstellungen** wird angezeigt.
-8. Klicken Sie auf **Firewall**. Das Blatt **Firewalleinstellungen** wird angezeigt.
+
+6. Wählen Sie die Zeile für den Server aus. Ein Blatt für den Server wird angezeigt.
+
+7. Wählen Sie auf dem Serverblatt **Einstellungen** aus. 
+
+8. Wählen Sie **Firewall** aus. 
    
-    ![Klicken Sie auf "Einstellungen > Firewall"][b31-SettingsFirewallNavig]
-9. Klicken Sie auf **Client-IP hinzufügen**. Geben Sie einen Namen für die neue Regel in das erste Textfeld ein.
+    ![Wählen Sie „Einstellungen > Firewall“ aus.][b31-SettingsFirewallNavig]
+9. Wählen Sie **Client-IP hinzufügen** aus. Geben Sie einen Namen für die neue Regel in das erste Textfeld ein.
+
 10. Geben Sie die niedrigen und hohen IP-Adresswerte für den Bereich ein, den Sie aktivieren möchten.
     
-    * Es kann praktisch sein, wenn der niedrige Wert auf **.0** endet und der hohe auf **.255**.
+    * Es kann praktisch sein, wenn der niedrige Wert auf **.0** und der hohe Wert auf **.255** endet.
     
     ![Fügen Sie einen erlaubten IP-Adressbereich hinzu][b41-AddRange]
-11. Klicken Sie auf **Speichern**.
+11. Wählen Sie **Speichern** aus.
 
 <!-- Image references. -->
 

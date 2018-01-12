@@ -12,7 +12,7 @@ Virtuelle Computer der F-Serie sind eine hervorragende Wahl für Workloads, die 
 
 Die Fs-Serie verfügt zusätzlich zum Premium-Speicher über alle Vorteile der F-Serie.
 
-## <a name="fsv2-series"></a>Fsv2-Serie*
+## <a name="fsv2-series-sup1sup"></a>Fsv2-Serie <sup>1</sup>
 
 ACU: 195 – 210
 
@@ -25,9 +25,10 @@ ACU: 195 – 210
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64.000 (512)                                                           | Äußerst hoch                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128.000 (1024)                                                         | Äußerst hoch                                 |
 | Standard_F72s_v2 | 72     | 144         | 576            | 32             | 144.000 (1520)                                                         | Äußerst hoch                                 |
-* Virtuelle Computer der Fsv2-Serie verfügen über Hyper-Threading-Technologie von Intel®
 
-## <a name="fs-series"></a>Fs-Serie*
+<sup>1</sup> Virtuelle Computer der Fsv2-Serie verfügen über Hyper-Threading-Technologie von Intel®
+
+## <a name="fs-series-sup1sup"></a>Fs-Serie <sup>1</sup>
 
 ACU: 210 - 250
 
@@ -41,7 +42,7 @@ ACU: 210 - 250
 
 MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 
-* Der mit einer VM der Fs-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md).
+<sup>1</sup> Der mit einer VM der Fs-Serie maximal mögliche Datenträgerdurchsatz (IOPS oder MB/s) kann durch Anzahl, Größe und Striping der angefügten Datenträger beschränkt werden.  Nähere Informationen finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../articles/virtual-machines/windows/premium-storage.md).
 
 
 <br>

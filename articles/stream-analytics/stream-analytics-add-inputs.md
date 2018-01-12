@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 8bdbcf78f2892cbd1e1cc09cef220dff08dd9490
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a4eb8642a0496e126b79724b4048bae7cc15a68
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Hinzufügen einer Streamingdateneingabe oder von Verweisdaten zu einem Stream Analytics-Auftrag
 Erfahren Sie, wie Sie eine Datenquelle als Streamingdateneingabe aus Event Hubs oder als Verweisdaten aus dem Blobspeicher mit Ihrem Stream Analytics-Auftrag verknüpfen.
@@ -38,7 +38,7 @@ So fügen Sie Ihrem Stream Analytics-Auftrag eine Eingabe hinzu:
 
 1. Klicken Sie im Azure-Portal auf **Eingaben** und dann in Ihrem Stream Analytics-Auftrag auf **Eingabe hinzufügen**.
    
-    ![Klassisches Azure-Portal – Hinzufügen einer Eingabe](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)  
+    ![Azure-Portal – Eingabe hinzufügen](./media/stream-analytics-add-inputs/1-stream-analytics-add-inputs.png)  
    
     Klicken Sie im Azure-Portal in Ihrem Stream Analytics-Auftrag auf die Kachel **Eingaben** .  
    

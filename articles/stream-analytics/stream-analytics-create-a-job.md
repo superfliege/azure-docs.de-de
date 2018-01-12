@@ -15,37 +15,32 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.openlocfilehash: 05fdf1e20efd129cdfc27e1d37bc9e124edf5dcd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82b9c861fee820cdb0ca1891e0e62436f422d838
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Erstellen eines Auftrags zur Verarbeitung von Datenanalysen für Stream Analytics
 Die Ressource der obersten Ebene in Azure Stream Analytics ist ein Stream Analytics-Auftrag.  Er besteht aus einer oder mehreren Eingabedatenquellen, einer Abfrage zum Ausdrücken der Datentransformation und mindestens einem Ausgabeziel, in das Ergebnisse geschrieben werden. Dadurch kann der Benutzer die Verarbeitung von Datenanalysen für Streamingdatenszenarien durchführen.
 
 Erstellen Sie zuerst einen neuen Stream Analytics-Auftrag, um mit der Verwendung von Stream Analytics zu beginnen.  Beachten Sie, dass diese Aktion keine Auswirkungen auf die Abrechnung hat, bis der Auftrag gestartet wird.
 
-1. Melden Sie sich online beim [klassischen Azure-Portal](http://manage.windowsazure.com) oder dem [Azure-Portal](https://portal.azure.com/) an.
-2. Klicken Sie im Portal auf **Neu**, dann je nach Portal auf **Datendienste** oder **Datenanalysen**, klicken Sie anschließend auf **Azure Stream Analytics** oder **Stream Analytics** und dann auf **Schnellerfassung**.
+1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+2. Wählen Sie **Neu** > **Daten + Analysen** > **Stream Analytics-Auftrag** aus.
+3. Klicken Sie auf **Erstellen**.
    
-   ![Assistent für Aufträge zur Verarbeitung von Datenanalysen](./media/stream-analytics-create-a-job/1-stream-analytics-create-a-job.png)  
-   
-   ![Erstellen eines Auftrags zur Verarbeitung von Datenanalysen](./media/stream-analytics-create-a-job/4-stream-analytics-create-a-job.png)  
 3. Geben Sie die gewünschte Konfiguration für den Stream Analytics-Auftrag an.
    
    * Geben Sie im Feld **Auftragsname** einen Namen zur Identifizierung des Stream Analytics-Auftrags ein. Wenn der **Auftragsname** überprüft wurde, wird im Auftragsnamenfeld ein grünes Häkchen angezeigt. Der **Auftragsname** darf nur alphanumerische Zeichen und den Bindestrich „-“ enthalten und muss zwischen 3 und 63 Zeichen lang sein.
-   * Verwenden Sie die **Region** oder den **Standort** im Azure-Portal, um den geografischen Standort anzugeben, an dem der Auftrag ausgeführt werden soll.
-   * Bei Verwendung des Azure-Portals wählen oder erstellen Sie ein Speicherkonto für die Verwendung als das **regionale Überwachungskonto für Speicher**. Dieses Speicherkonto wird zum Speichern von Überwachungsdaten für alle Stream Analytics-Aufträge verwendet, die in dieser Region ausgeführt werden.
-   * Bei Verwendung des Azure-Portals geben Sie eine neue oder vorhandene **Ressourcengruppe** an, um verwandte Ressourcen für Ihre Anwendung zu speichern.
-4. Sobald die Optionen für den neuen Stream Analytics-Auftrag konfiguriert sind, klicken Sie auf **Stream Analytics-Auftrag erstellen**. Die Erstellung des Stream Analytics-Auftrags kann einige Minuten dauern. Sie können den Fortschritt im Benachrichtigungshub überwachen, um den Status zu überprüfen.
-   
-   ![Benachrichtigungshub für Aufträge zur Verarbeitung von Datenanalysen](./media/stream-analytics-create-a-job/2-stream-analytics-create-a-job.png)  
-   
+   * Unter **Standort** können Sie einen geografischen Standort für die Ausführung des Auftrags angeben.
+   * Geben Sie eine neue oder vorhandene **Ressourcengruppe** an, um verwandte Ressourcen für Ihre Anwendung zu speichern.
+4. Klicken Sie auf **Erstellen**.
+Die Erstellung des Stream Analytics-Auftrags kann einige Minuten dauern. Sie können den Fortschritt im Benachrichtigungshub überwachen, um den Status zu überprüfen.
+    
    ![Azure-Portal – Auftrag zur Verarbeitung von Datenanalysen – Auftrag erstellen](./media/stream-analytics-create-a-job/5-stream-analytics-create-a-job.png)  
 5. Für den neuen Auftrag wird der Status **Erstellt** angezeigt. Beachten Sie, dass die Schaltfläche **Start** deaktiviert ist. Vor dem Starten des Auftrags müssen Eingabe, Abfrage und Ausgabe des Auftrags konfiguriert werden.
-   
-   ![Auftrag zur Verarbeitung von Datenanalysen – Status](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
+
    
    ![Azure-Portal – Auftrag zur Verarbeitung von Datenanalysen – Status](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 

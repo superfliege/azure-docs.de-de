@@ -12,27 +12,27 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: b4d25f07349043da8cb745930fde3371c98f9960
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0391bb627ab899960d38b4eaf4478a6cdb8bd0b
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="customizing-media-encoder-standard-presets"></a>Anpassen von Media Encoder Standard-Voreinstellungen
 
 ## <a name="overview"></a>Übersicht
 
-In diesem Thema wird erläutert, wie Sie die erweiterten Codierungsaufgaben mithilfe von Media Encoder-Standard (MES) mit einer benutzerdefinierten Voreinstellung ausführen. In diesem Thema wird .NET verwendet, um eine Codierungsaufgabe und einen Auftrag zu erstellen, der diese Aufgabe ausführt.  
+In diesem Artikel wird erläutert, wie Sie die erweiterten Codierungsaufgaben mithilfe von Media Encoder-Standard (MES) mit einer benutzerdefinierten Voreinstellung ausführen. In diesem Artikel wird .NET verwendet, um eine Codierungsaufgabe und einen Auftrag zu erstellen, der diese Aufgabe ausführt.  
 
-In diesem Thema erfahren Sie, wie Sie eine Voreinstellung anpassen, indem Sie die Anzahl der Ebenen in der Voreinstellung [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) reduzieren. Das Thema [Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen](media-services-advanced-encoding-with-mes.md) zeigt benutzerdefinierte Voreinstellungen, die verwendet werden können, um erweiterte Codierungsaufgaben auszuführen.
+In diesem Artikel erfahren Sie, wie Sie eine Voreinstellung anpassen, indem Sie die Anzahl der Ebenen in der Voreinstellung [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) reduzieren. Der Artikel [Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen](media-services-advanced-encoding-with-mes.md) zeigt benutzerdefinierte Voreinstellungen, die verwendet werden können, um erweiterte Codierungsaufgaben auszuführen.
 
 ## <a id="customizing_presets"></a> Anpassen einer MES-Voreinstellung
 
 ### <a name="original-preset"></a>Ursprüngliche Voreinstellung
 
-Speichern Sie das im Thema [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) definierte JSON-Objekt in einer Datei mit der Erweiterung „.json“. Beispiel: **CustomPreset_JSON.json**.
+Speichern Sie das im Artikel [H264 Multiple Bitrate 720p](media-services-mes-preset-H264-Multiple-Bitrate-720p.md) definierte JSON-Objekt in einer Datei mit der Erweiterung „.json“. Beispiel: **CustomPreset_JSON.json**.
 
 ### <a name="customized-preset"></a>Benutzerdefinierte Voreinstellung
 
@@ -121,8 +121,8 @@ Im folgenden Codebeispiel wird das Media Services-.NET-SDK verwendet, um die fol
         string configuration = File.ReadAllText(fileName);  
 
 - Hinzufügen einer Codierungsaufgabe zum Auftrag 
-- Geben Sie das zu codierende Asset an.
-- Erstellen Sie ein Ausgabeasset, das das codierte Asset enthalten soll.
+- Geben Sie das zu codierende Medienobjekt an.
+- Erstellen Sie ein Ausgabemedienobjekt, das das codierte Medienobjekt enthält.
 - Fügen Sie einen Ereignishandler hinzu, um den Auftragsstatus zu überprüfen.
 - Übermitteln des Auftrags.
    
@@ -132,22 +132,27 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
 #### <a name="example"></a>Beispiel   
 
-    using System;
-    using System.Configuration;
-    using System.IO;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using System.Threading;
+```
+using System;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using System.Threading;
 
-    namespace CustomizeMESPresests
+namespace CustomizeMESPresests
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         // Field for service context.
         private static CloudMediaContext _context = null;
@@ -160,7 +165,11 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -213,26 +222,26 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
             Console.WriteLine("  Current state: " + e.CurrentState);
             switch (e.CurrentState)
             {
-            case JobState.Finished:
-                Console.WriteLine();
-                Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
-                break;
-            case JobState.Canceling:
-            case JobState.Queued:
-            case JobState.Scheduled:
-            case JobState.Processing:
-                Console.WriteLine("Please wait...\n");
-                break;
-            case JobState.Canceled:
-            case JobState.Error:
+                case JobState.Finished:
+                    Console.WriteLine();
+                    Console.WriteLine("Job is finished. Please wait while local tasks or downloads complete...");
+                    break;
+                case JobState.Canceling:
+                case JobState.Queued:
+                case JobState.Scheduled:
+                case JobState.Processing:
+                    Console.WriteLine("Please wait...\n");
+                    break;
+                case JobState.Canceled:
+                case JobState.Error:
 
-                // Cast sender as a job.
-                IJob job = (IJob)sender;
+                    // Cast sender as a job.
+                    IJob job = (IJob)sender;
 
-                // Display or log error details as needed.
-                break;
-            default:
-                break;
+                    // Display or log error details as needed.
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -242,13 +251,14 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
             ToList().OrderBy(p => new Version(p.Version)).LastOrDefault();
 
             if (processor == null)
-            throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
+                throw new ArgumentException(string.Format("Unknown media processor", mediaProcessorName));
 
             return processor;
         }
 
-        }
     }
+}
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

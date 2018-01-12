@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: bd4413c2-0d7c-41a7-aba4-b7a7a28c9448
 ms.service: active-directory
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 8e8ea13167ab4f1a43f753a91f9398582d519c6d
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 00292d0aed24ea034eba8686bcd9cbdd1ef676e3
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Tutorial: Azure Active Directory-Integration mit Teamwork.com
+# <a name="tutorial-azure-active-directory-integration-with-teamworkcomhttpswwwteamworkcomprojects"></a>Tutorial: Azure Active Directory-Integration mit [Teamwork.com](https://www.teamwork.com/projects)
 
 In diesem Tutorial erfahren Sie, wie Sie Teamwork.com in Azure Active Directory (Azure AD) integrieren.
 
@@ -37,7 +37,7 @@ Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter
 Um die Azure AD-Integration mit Teamwork.com konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein Teamwork.com-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein [Teamwork.com](https://www.teamwork.com/projects)-Abonnement im Pro-Plan oder höher
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.

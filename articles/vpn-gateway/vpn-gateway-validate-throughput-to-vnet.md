@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2017
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 3a1a6e2acd2ff40c2b35a6099f8a9fc7eb104bbc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e7e3c641791e7c72f5c2d6f8ecf674d1d7ee7ffa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Überprüfen des VPN-Durchsatzes zu einem virtuellen Netzwerk
 
@@ -53,7 +53,7 @@ Das folgende Diagramm zeigt die logische Verbindung von einem lokalen Netzwerk m
 4.  Bestimmen Sie die Bandbreite Ihres Internetdienstanbieters.
 5.  Berechnen Sie Ihren erwarteten Durchsatz – Niedrigste Bandbreite von (virtueller Computer, Gateway, Internetdienstanbieter) * 0,8.
 
-Wenn der berechnete Durchsatz nicht die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung erfüllt, müssen Sie die Bandbreite der Ressource erhöhen, die Sie als Engpass identifiziert haben. Informationen zum Ändern der Größe für ein Azure VPN Gateway finden Sie unter [Ändern einer Gateway-SKU](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Informationen zum Ändern der Größe eines virtuellen Computers finden Sie unter [Ändern der Größe eines virtuellen Computers](../virtual-machines/virtual-machines-windows-resize-vm.md). Wenn Sie nicht die erwartete Internetbandbreite erhalten, sollten Sie sich auch an Ihren Internetdienstanbieter wenden.
+Wenn der berechnete Durchsatz nicht die Grundvoraussetzungen für den Durchsatz Ihrer Anwendung erfüllt, müssen Sie die Bandbreite der Ressource erhöhen, die Sie als Engpass identifiziert haben. Informationen zum Ändern der Größe für ein Azure VPN Gateway finden Sie unter [Ändern einer Gateway-SKU](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md#gwsku). Informationen zum Ändern der Größe eines virtuellen Computers finden Sie unter [Ändern der Größe eines virtuellen Computers](../virtual-machines/virtual-machines-windows-resize-vm.md). Wenn Sie nicht die erwartete Internetbandbreite erhalten, sollten Sie sich auch an Ihren Internetdienstanbieter wenden.
 
 ## <a name="validate-network-throughput-by-using-performance-tools"></a>Überprüfen des Netzwerkdurchsatzes mithilfe von Leistungstools
 

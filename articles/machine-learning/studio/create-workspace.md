@@ -1,24 +1,22 @@
 ---
-title: Erstellen eines Machine Learning-Arbeitsbereichs | Microsoft Docs
+title: Erstellen eines Machine Learning Studio-Arbeitsbereichs | Microsoft Dokumentation
 description: "Erstellen eines Arbeitsbereichs für Azure Machine Learning Studio"
 services: machine-learning
-documentationcenter: 
 author: garyericson
 manager: jhubbard
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
-ms.author: garye;bradsev;ahgyger
-ms.openlocfilehash: 4e1fa0a9abd4721d15a94923263ff2f521bceee8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/07/2017
+ms.author: garye
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
+ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs
 Dieses Menü enthält Links zu Themen, in denen das Einrichten der verschiedenen Data Science-Umgebungen, die vom Cortana-Analyseprozess (CAP) verwendet werden, beschrieben wird.
@@ -39,16 +37,16 @@ Um Azure Machine Learning Studio verwenden zu können, benötigen Sie einen Mach
 
 2. Klicken Sie auf **+Neu**.
 
-3. Wählen Sie **Intelligence + Analyse**, klicken Sie auf **Machine Learning-Arbeitsbereich**, und klicken Sie dann auf **Erstellen**.
+3. Geben Sie im Suchfeld **Machine Learning Studio Workspace** ein, und wählen Sie das entsprechende Element aus. Klicken Sie dann am unteren Rand der Seite auf **Erstellen**.
 
-4. Geben Sie die Daten für Ihren Arbeitsbereich ein.
+4. Geben Sie die Daten für Ihren Arbeitsbereich ein:
 
     - Der *Arbeitsbereichsname* darf bis zu 260 Zeichen enthalten und darf nicht auf ein Leerzeichen enden. Der Name darf nicht die folgenden Zeichen enthalten: `< > * % & : \ ? + /`
     - Der von Ihnen gewählte (oder erstellte) *Webdiensttarif* wird zusammen mit dem zugehörigen von Ihnen ausgewählten *Tarif* verwendet, wenn Sie Webdienste aus diesem Arbeitsbereich bereitstellen.
 
     ![Erstellen eines neuen Arbeitsbereichs](./media/create-workspace/create-new-workspace.png)
 
-5. Klicken Sie auf **Erstellen**
+5. Klicken Sie auf **Erstellen**.
 
 Nachdem der Arbeitsbereich bereitgestellt wurde, können Sie ihn in Machine Learning Studio öffnen.
 

@@ -1,37 +1,36 @@
 ---
-title: "Speicherorte von Aktivitätsberichten im Azure-Portal | Microsoft-Dokumentation"
-description: "Erfahren Sie, wo Azure Active Directory-Aktivitätsberichte im Azure-Portal gespeichert werden."
+title: "Suchen von Benutzeraktivitätsberichten von Azure Active Directory im Azure-Portal | Microsoft-Dokumentation"
+description: "Erfahren Sie, wo sich die Azure Active Directory-Benutzeraktivitätsberichte im Azure-Portal befinden."
 services: active-directory
 documentationcenter: 
-author: MarkusVi
-manager: femila
+author: curtand
+manager: mtillman
 editor: 
 ms.assetid: d93521f8-dc21-4feb-aaff-4bb300f04812
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/21/2017
-ms.author: dhanyahk;markvi
+ms.date: 12/06/2017
+ms.author: curtand
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 6f1485ad57eb28841ef5fe585e8cf1b8eb29e4a7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 23c186e268e9a43982ec6c34d350900793fad8de
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Speicherorte von Aktivitätsberichten im Azure-Portal
 
-Wenn Sie vom klassischen Azure-Portal zum Azure-Portal wechseln, ändert sich die Anzeige der Aktivitätsprotokolle in Azure Active Directory (Azure AD). In einem kürzlich veröffentlichten [Blogbeitrag](https://blogs.technet.microsoft.com/enterprisemobility/2016/11/08/azuread-weve-just-turned-on-detailed-auditing-and-sign-in-logs-in-the-new-azure-portal/) erläutern wir, wie Sie Aktivitätsprotokolle im Kontext der Ressource, mit der Sie im Azure-Portal arbeiten, anzeigen können. In diesem Artikel beschrieben wir, wie Sie die im klassischen Azure-Portal vorhandenen Berichte in das neue Azure-Portal übertragen.
+In diesem Artikel beschreiben wir, wie Sie Benutzeraktivitätsberichte von Azure Active Directory im Azure-Portal finden.
 
 ## <a name="whats-new"></a>Neuigkeiten
 
-Die Berichte im klassischen Azure-Portal sind in Kategorien unterteilt:
-
-1.  Sicherheitsberichte
-2.  Aktivitätsberichte
-3.  Berichte zu integrierten Apps
+Die Berichte im klassischen Azure-Portal waren in Kategorien unterteilt:
+* Sicherheitsberichte
+* Aktivitätsberichte
+* Berichte zu integrierten Apps
 
 ### <a name="activity-and-integrated-app-reports"></a>Aktivitätsberichte und Berichte zu integrierten Apps
 
@@ -43,14 +42,14 @@ Sie finden diese Ansicht auf dem Blatt **Azure Active Directory** im Abschnitt *
 
 Die folgenden Berichte sind in dieser Ansicht zusammengefasst:
 
--   Überwachungsbericht
--   Kennwortzurücksetzungsaktivität
--   Aktivität "Registrierung für Zurücksetzen des Kennworts"
--   Self-Service-Gruppenaktivität
--   Namensänderungen für Office 365-Gruppen
--   Kontobereitstellungsaktivität
--   Status des Kennwortrollovers
--   Kontobereitstellungsfehler
+* Überwachungsbericht
+* Kennwortzurücksetzungsaktivität
+* Aktivität "Registrierung für Zurücksetzen des Kennworts"
+* Self-Service-Gruppenaktivität
+* Namensänderungen für Office 365-Gruppen
+* Kontobereitstellungsaktivität
+* Status des Kennwortrollovers
+* Kontobereitstellungsfehler
 
 
 Der Bericht zur Anwendungsnutzung wurde verbessert und ist nun in der Ansicht **Anmeldungen** enthalten. Sie finden diese Ansicht, indem Sie auf dem Blatt **Azure Active Directory** im Abschnitt **AKTIVITÄT** die Option **Anmeldungen** wählen.

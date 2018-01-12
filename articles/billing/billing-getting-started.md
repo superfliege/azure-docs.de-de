@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: tonguyen
-ms.openlocfilehash: d74f649a8b5f35ffe16479576959e5ebb2857bf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4bbb13f31c42a57815dca176408d5c2e82feb5e0
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Vermeiden unerwarteter Gebühren bei der Azure-Abrechnung und -Kostenverwaltung
 
@@ -28,6 +28,8 @@ Wenn Sie sich für Azure registrieren, sollten Sie sich einen Überblick über I
 - Für Abonnements über Enterprise Agreement (EA) ist die öffentliche Vorschau zum Anzeigen Ihrer Kosten im Azure-Portal verfügbar. Einige der folgenden Features sind für Abonnements von CSP-Kunden (Cloud Solution Provider, Cloud-Lösungsanbieter) oder Azure Sponsorship-Kunden eventuell nicht relevant. Weitere Informationen finden Sie unter [Zusätzliche Ressourcen für EA, CSP und Sponsorship](#other-offers).
 
 - Wenn Sie ein Abonnement für eine kostenlose Testversion, [Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), Azure in Open (AIO) oder BizSpark besitzen, wird Ihr Abonnement automatisch deaktiviert, sobald Ihr gesamtes Guthaben verbraucht ist. Erfahren Sie mehr über [Ausgabenlimits](#spending-limit), um zu vermeiden, dass Ihr Abonnement unerwartet deaktiviert wird.
+
+- Wenn Sie sich für ein [kostenloses Azure-Konto](https://azure.microsoft.com/en-us/free/) angemeldet haben, [können Sie einige der beliebtesten Azure-Dienste kostenlos für 12 Monate nutzen](billing-create-free-services-included-free-account.md). Weitere Informationen finden Sie zusammen mit den unten aufgelisteten Empfehlungen unter [Vermeiden Sie, dass Ihnen für Ihr kostenloses Azure-Konto Gebühren angezeigt werden](billing-avoid-charges-free-account.md).
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Abrufen der geschätzten Kosten vor dem Hinzufügen von Azure-Diensten
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: 0ae5d37507bb6e36589e9755faf8bd3471910257
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: d3388643a3d7c38104a4c61f94a8b68a86168846
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="dynamic-encryption-configure-content-key-authorization-policy"></a>Dynamische Verschlüsselung: Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -32,7 +32,7 @@ Wenn ein Player einen Stream anfordert, verwendet Media Services den angegebenen
 
 Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: **offen** oder **Token**. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im **Simple Web Tokens**-Format ([SWT](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und **JSON Web Token**-Format (JWT).
 
-Secure Token Services werden von Media Services nicht bereitgestellt. Sie können einen benutzerdefinierten STS erstellen oder Microsoft Azure ACS zum Ausstellen von Token nutzen. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausgabe von Ansprüchen konfiguriert sein, die Sie in der Konfiguration der Token-Einschränkung angegeben haben (wie in diesem Artikel beschrieben). Der Schlüsselübermittlungsdienst von Media Services gibt den Verschlüsselungsschlüssel an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Inhaltsschlüssel konfigurierten Ansprüchen übereinstimmen.
+Secure Token Services werden von Media Services nicht bereitgestellt. Sie können einen benutzerdefinierten STS erstellen oder Ausgabetoken von Azure Active Directory (AAD) verwenden. Der STS muss für die Erstellung eines mit dem angegebenen Schlüssel signierten Tokens und die Ausgabe von Ansprüchen konfiguriert sein, die Sie in der Konfiguration der Token-Einschränkung angegeben haben (wie in diesem Artikel beschrieben). Der Schlüsselbereitstellungsdienst von Media Services gibt den Verschlüsselungsschlüssel an den Client zurück, wenn das Token gültig ist und die Ansprüche im Token mit den für den Inhaltsschlüssel konfigurierten Ansprüchen übereinstimmen.
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 - [JWT-Tokenauthentifizierung](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
@@ -54,7 +54,6 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 > 
 > Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
 > 
-> Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden. Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md).
 > 
 > 
 
@@ -73,7 +72,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423578086&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=lZlyQ2%2bvH73qtJsb42%2fH3xF7r7EvQFR3UXyezuDENFU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: d732dbfa-54fc-474c-99d6-9b46a006f389
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 36
@@ -109,7 +108,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423580006&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=Ref3EsonGF7fUKCwGwGgiMnZitzIzsDOvvMTeVrVVPg%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: d225e357-e60e-4f42-add8-9d93aba1409a
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 168
@@ -145,7 +144,7 @@ Anforderung:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423580006&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=Ref3EsonGF7fUKCwGwGgiMnZitzIzsDOvvMTeVrVVPg%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 9847f705-f2ca-4e95-a478-8f823dbbaa29
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 154
@@ -166,7 +165,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423581565&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=JiNSG3w6r2C0nIyfKvTZj1uPJGjuitD%2b0sbfZ%2b2JDZI%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: e613efff-cb6a-41b4-984a-f4f8fb6e76a4
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 78
@@ -180,7 +179,7 @@ Antwort:
 ### <a name="token-restriction"></a>Token-Einschränkung
 In diesem Abschnitt wird beschrieben, wie eine Autorisierungsrichtlinie für Inhaltsschlüssel erstellt und dem Inhaltsschlüssel zugeordnet wird. Durch die Autorisierungsrichtlinie wird beschrieben, welche Autorisierungsanforderungen der Benutzer erfüllen muss, um den Schlüssel zu erhalten (beispielsweise wird überprüft, ob der Schlüssel, mit dem das Token signiert wurde, in der Liste der Überprüfungsschlüssel enthalten ist).
 
-Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanforderungen des Tokens in XML beschrieben werden. Die XML für die Konfiguration der Token-Einschränkung muss folgendem XML-Schema entsprechen.
+Zur Konfiguration der Token-Einschränkungsoption müssen die Autorisierungsanforderungen des Tokens in XML beschrieben werden. Die XML für die Konfiguration der Token-Einschränkung muss folgendem XML-Schema entsprechen:
 
 
 #### <a id="schema"></a>Schema für die Tokeneinschränkung
@@ -248,7 +247,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=bbbef702-e769-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423580720&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=5LsNu%2b0D4eD3UOP3BviTLDkUjaErdUx0ekJ8402xidQ%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 2643d836-bfe7-438e-9ba2-bc6ff28e4a53
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1079
@@ -300,7 +299,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=bbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423581565&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=JiNSG3w6r2C0nIyfKvTZj1uPJGjuitD%2b0sbfZ%2b2JDZI%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: 9e7fa407-f84e-43aa-8f05-9790b46e279b
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 58
@@ -337,7 +336,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423581565&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=JiNSG3w6r2C0nIyfKvTZj1uPJGjuitD%2b0sbfZ%2b2JDZI%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: f160ad25-b457-4bc6-8197-315604c5e585
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 593
@@ -385,7 +384,7 @@ Anforderung:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=juliakoams1&urn%3aSubscriptionId=zbbef702-2233-477b-9f16-bc4d3aa97387&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1423583561&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=5eZnkOsSv%2fLLEKmS%2bWObBlsNYyee8BQlp%2bUYbjugcJg%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: ab079b0e-2ba9-4cf1-b549-a97bfa6cd2d3
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 1525
@@ -448,5 +447,5 @@ Hinzufügen der AuthorizationPolicy zum ContentKey, wie [hier](#AddAuthorization
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel konfiguriert haben, fahren Sie mit dem Thema [Konfigurieren einer Übermittlungsrichtlinie für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md) fort.
+Nachdem Sie eine Autorisierungsrichtlinie für einen Inhaltsschlüssel konfiguriert haben, fahren Sie mit dem Artikel [Konfigurieren einer Übermittlungsrichtlinie für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md) fort.
 

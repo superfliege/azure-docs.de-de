@@ -4,7 +4,7 @@ description: "Erfahren Sie etwas über Benutzerstatus in Azure MFA."
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.assetid: 0b9fde23-2d36-45b3-950d-f88624a68fbd
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,24 +15,24 @@ ms.date: 06/26/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: b73b5e47e3e14742e5094b8b0e979de7835cb9c7
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: b7fb5135ac1ae776851d79f936eb860b4b121c71
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Vorgehensweise zum Erzwingen einer Überprüfung in zwei Schritten für einen Benutzer oder eine Gruppe
+# <a name="how-to-require-two-step-verification-for-a-user-or-group"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe
 
-Es gibt zwei Ansätze, um eine Überprüfung in zwei Schritten zu erzwingen. Die erste Option besteht darin, jeden einzelnen Benutzer für Azure Multi-Factor Authentication (MFA) zu aktivieren. Wenn Benutzer einzeln aktiviert werden, führen sie immer eine Überprüfung in zwei Schritten durch (bis auf einige Ausnahmen wie etwa, wenn sie sich von vertrauenswürdigen IP-Adressen aus anmelden oder wenn die gespeicherte Gerätefunktion aktiviert ist). Die zweite Möglichkeit besteht darin, eine Richtlinie für bedingten Zugriff einzurichten, die unter bestimmten Umständen eine Überprüfung in zwei Schritten erfordert.
+Es gibt zwei Ansätze, um eine zweistufige Überprüfung zu erzwingen. Die erste Option besteht darin, jeden einzelnen Benutzer für Azure Multi-Factor Authentication (MFA) zu aktivieren. Wenn Benutzer einzeln aktiviert werden, führen sie immer eine zweistufige Überprüfung durch (bis auf einige Ausnahmen wie etwa, wenn sie sich von vertrauenswürdigen IP-Adressen aus anmelden oder wenn die gespeicherte Gerätefunktion aktiviert ist). Die zweite Möglichkeit besteht darin, eine Richtlinie für bedingten Zugriff einzurichten, die unter bestimmten Umständen eine zweistufige Überprüfung erfordert.
 
 >[!TIP] 
->Wählen Sie eine der folgenden Methoden, um die Überprüfung in zwei Schritten zu erzwingen. Wählen Sie jedoch nicht beide Methoden aus. Durch die Aktivierung eines Benutzers für Azure MFA werden alle Richtlinien für bedingten Zugriff überschrieben.
+>Wählen Sie eine der folgenden Methoden, um die zweistufige Überprüfung zu erzwingen. Wählen Sie jedoch nicht beide Methoden aus. Durch die Aktivierung eines Benutzers für Azure MFA werden alle Richtlinien für bedingten Zugriff überschrieben.
 
 ## <a name="which-option-is-right-for-you"></a>Auswählen der für Sie geeigneten Option
 
-Die **Aktivierung von Azure MFA durch Ändern der Benutzerstatus** ist der herkömmliche Ansatz, um die Überprüfung in zwei Schritten zu erzwingen. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Bei allen Benutzern, die Sie aktivieren, ist der Ablauf identisch: Jedes Mal, wenn sie sich anmelden, müssen sie die Überprüfung in zwei Schritten ausführen. Durch die Aktivierung eines Benutzers werden alle Richtlinien für bedingten Zugriff überschrieben, die diesen Benutzer betreffen könnten. 
+Die **Aktivierung von Azure MFA durch Ändern der Benutzerstatus** ist der herkömmliche Ansatz, um die zweistufige Überprüfung zu erzwingen. Dies funktioniert sowohl für Azure MFA in der Cloud als auch für Azure MFA Server. Bei allen Benutzern, die Sie aktivieren, ist der Ablauf identisch: Jedes Mal, wenn sie sich anmelden, müssen sie die zweistufige Überprüfung ausführen. Durch die Aktivierung eines Benutzers werden alle Richtlinien für bedingten Zugriff überschrieben, die diesen Benutzer betreffen könnten. 
 
-Die **Aktivierung von Azure MFA mit einer Richtlinie für bedingten Zugriff** ist ein flexiblerer Ansatz, um die Überprüfung in zwei Schritten zu erzwingen. Er funktioniert jedoch nur bei Azure MFA in der Cloud. Zudem ist der bedingte Zugriff eine [kostenpflichtige Funktion von Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features). Sie können Richtlinien für bedingten Zugriff erstellen, die sowohl für Gruppen als auch für einzelne Benutzer gelten. Gruppen, bei denen ein hohes Risiko besteht, können umfassendere Einschränkungen zugewiesen werden. Alternativ kann die Überprüfung in zwei Schritten nur für Cloud-Apps mit hohem Risiko erzwungen und für Apps mit niedrigem Risiko übersprungen werden. 
+Die **Aktivierung von Azure MFA mit einer Richtlinie für bedingten Zugriff** ist ein flexiblerer Ansatz, um die zweistufige Überprüfung zu erzwingen. Er funktioniert jedoch nur bei Azure MFA in der Cloud. Zudem ist der bedingte Zugriff eine [kostenpflichtige Funktion von Azure Active Directory](https://www.microsoft.com/cloud-platform/azure-active-directory-features). Sie können Richtlinien für bedingten Zugriff erstellen, die sowohl für Gruppen als auch für einzelne Benutzer gelten. Gruppen, bei denen ein hohes Risiko besteht, können umfassendere Einschränkungen zugewiesen werden. Alternativ kann die zweistufige Überprüfung nur für Cloud-Apps mit hohem Risiko erzwungen und für Apps mit niedrigem Risiko übersprungen werden. 
 
 Bei beiden Optionen werden Benutzer aufgefordert, sich für Azure Multi-Factor Authentication zu registrieren, wenn Sie sich zum ersten Mal nach der Aktivierung der Anforderungen anmelden. Beide Optionen funktionieren auch mit den konfigurierbaren [Azure Multi-Factor Authentication-Einstellungen](multi-factor-authentication-whats-next.md).
 
@@ -40,11 +40,11 @@ Bei beiden Optionen werden Benutzer aufgefordert, sich für Azure Multi-Factor A
 
 Benutzerkonten in Azure Multi-Factor Authentication können die folgenden drei Zustände aufweisen:
 
-| Status | Beschreibung | Nicht-Browser-Apps betroffen | Browser-Apps und moderne Authentifizierung betroffen |
-|:---:|:---:|:---:|:--:|
-| Deaktiviert |Der Standardstatus für einen neuen Benutzer, der nicht für Azure Multi-Factor Authentication (MFA) registriert ist. |Nein |Nein |
-| Aktiviert |Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. |Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem das Aktualisierungstoken für die Sitzung abläuft, ist eine MFA-Registrierung erforderlich.|
-| Erzwungen |Der Benutzer wurde registriert und hat den Registrierungsprozess für Azure MFA abgeschlossen. |Ja.  Für Apps sind App-Kennwörter erforderlich. |Ja. MFA bei der Anmeldung erforderlich. |
+| Status | Beschreibung | Nicht-Browser-Apps betroffen | Browser-Apps betroffen | Moderne Authentifizierung betroffen |
+|:---:|:---:|:---:|:--:|:--:|
+| Deaktiviert |Der Standardstatus für einen neuen Benutzer, der nicht für Azure Multi-Factor Authentication (MFA) registriert ist. |Nein |Nein |Nein |
+| Aktiviert |Der Prozess der Registrierung für Azure MFA für den Benutzer wurde begonnen, aber noch nicht abgeschlossen. Der Benutzer wird aufgefordert, sich bei der nächsten Anmeldung zu registrieren. |Nein.  Sie werden weiterhin ausgeführt, bis die Registrierung abgeschlossen ist. | Ja. Nachdem die Sitzung abläuft, ist eine MFA-Registrierung erforderlich.| Ja. Nachdem das Zugriffstoken abläuft, ist eine MFA-Registrierung erforderlich. |
+| Erzwungen |Der Benutzer wurde registriert und hat den Registrierungsprozess für Azure MFA abgeschlossen. |Ja.  Für Apps sind App-Kennwörter erforderlich. |Ja. MFA bei der Anmeldung erforderlich. | Ja. MFA bei der Anmeldung erforderlich. |
 
 Der Status eines Benutzers gibt an, ob ein Administrator den Benutzer für Azure MFA registriert hat und ob der Registrierungsprozess abgeschlossen ist.
 
@@ -118,7 +118,7 @@ Der bedingte Zugriff ist eine kostenpflichtige Funktion von Azure Active Directo
 6. Klicken Sie unter **Zugriffskontrollen** auf **Gewähren**. Wählen Sie **Mehrstufige Authentifizierung anfordern**.
 7. Legen Sie **Richtlinie aktivieren** auf **Ein** fest, und wählen Sie dann **Speichern**.
 
-Mit den anderen Optionen in der Richtlinie für bedingten Zugriff können Sie genau angeben, wann die Überprüfung in zwei Schritten erforderlich sein soll. Beispielsweise könnten Sie eine Richtlinie für den folgenden Fall erstellen: Wenn Auftragnehmer von nicht vertrauenswürdigen Netzwerken aus über Geräte, die nicht in Domänen eingebunden sind, auf unsere Beschaffungs-App zugreifen, müssen sie die Überprüfung in zwei Schritten durchführen. 
+Mit den anderen Optionen in der Richtlinie für bedingten Zugriff können Sie genau angeben, wann die zweistufige Überprüfung erforderlich sein soll. Beispielsweise könnten Sie eine Richtlinie für den folgenden Fall erstellen: Wenn Auftragnehmer von nicht vertrauenswürdigen Netzwerken aus über Geräte, die nicht in Domänen eingebunden sind, auf unsere Beschaffungs-App zugreifen, müssen sie die zweistufige Überprüfung durchführen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

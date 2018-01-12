@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/03/2017
+ms.date: 12/11/2017
 ms.author: andredm
-ms.openlocfilehash: 6abbad8a086571702fd2e9d4d5d172189bb3c339
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 49d26defef56e6fc174cda57b24a126cd77227e4
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Versionshinweise für Azure Stack Development Kit
 
@@ -76,6 +76,7 @@ Die Anmerkungen zu dieser Version enthalten Informationen zu Verbesserungen, Feh
 - Wenn Sie unter **Netzwerk** auf **Verbindung** klicken, um eine VPN-Verbindung einzurichten, wird **VNET-zu-VNET** als möglicher Verbindungstyp aufgeführt. Wählen Sie diese Option nicht aus. Derzeit wird nur die Option **Standort-zu-Standort (IPsec)** unterstützt.
 - Sie können die Zuordnung einer öffentlichen IP-Adresse zu einem virtuellen Computer nicht aufheben, nachdem der virtuelle Computer erstellt und dieser IP-Adresse zugeordnet wurde. Die Aufhebung der Zuordnung war scheinbar erfolgreich, die zuvor zugewiesene öffentliche IP-Adresse bleibt dem ursprünglichen virtuellen Computer jedoch zugeordnet. Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglich zugeordneten virtuellen Computer (und nicht mit dem neuen) hergestellt wird. Derzeit müssen Sie ausschließlich neue öffentliche IP-Adressen für die Erstellung neuer virtueller Computer verwenden.
 - Azure Stack-Benutzer können möglicherweise VNETs oder Netzwerksicherheitsgruppen nicht bereitstellen, löschen oder ändern. Dieses Problem tritt in erster Linie bei nachfolgenden Updateversuchen desselben Pakets auf. Die Ursache ist ein Packproblem beim Update, das derzeit geprüft wird.
+- Der interne Lastenausgleich (ILB) behandelt MAC-Adressen für Back-End-VMs nicht ordnungsgemäß, wodurch Linux-Instanzen gestört werden.
  
 #### <a name="sqlmysql"></a>SQL/MySQL 
 - Es kann bis zu einer Stunde dauern, bevor Mandanten Datenbanken in einer neuen SQL SKU oder MySQL SKU erstellen können. 

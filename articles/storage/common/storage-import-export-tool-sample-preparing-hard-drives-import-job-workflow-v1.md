@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.openlocfilehash: 179c6bac9a2d9509baa0007a7008d75d0874a25e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 66e85bd3e9e43ae360d0507f5bdf3596abbeb7d1
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Beispielworkflow für die Vorbereitung von Festplatten für einen Importauftrag
 Dieses Thema führt Sie durch den vollständigen Prozess zur Vorbereitung von Laufwerken für einen Importauftrag.  
@@ -169,7 +169,7 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 
 ## <a name="copy-session-completion"></a>Abschluss der Kopiersitzungen
 
-Nach Abschluss der Kopiersitzungen können Sie die beiden Laufwerke vom Kopiercomputer trennen und sie an das entsprechende Microsoft Azure-Rechenzentrum senden. Bei der Erstellung des Importauftrags im [Azure-Portal](https://manage.windowsazure.com/) laden Sie die beiden Journaldateien `FirstDrive.jrn` und `SecondDrive.jrn` hoch.  
+Nach Abschluss der Kopiersitzungen können Sie die beiden Laufwerke vom Kopiercomputer trennen und sie an das entsprechende Microsoft Azure-Rechenzentrum senden. Laden Sie beim Erstellen des Importauftrags im [Azure-Portal](https://portal.azure.com) die beiden Journaldateien `FirstDrive.jrn` und `SecondDrive.jrn` hoch.  
   
 ## <a name="next-steps"></a>Nächste Schritte
 

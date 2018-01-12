@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 173ffbdd70313ef5a0d2af2cf1c8996d2395274a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: e00c4ab2fc8bb13a765f7c2154555607dddfc651
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>Erkennen von Problemen mithilfe schwellenwertbasierter Regeln
 
@@ -40,7 +40,7 @@ Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es
 
 ## <a name="view-the-rules-in-your-solution"></a>Anzeigen der Regeln in der Lösung
 
-Auf der Seite **Rules & Actions** (Regeln und Aktionen) in der Lösung wird eine Liste aller aktuellen Regeln angezeigt:
+Auf der Seite **Rules and Actions** (Regeln und Aktionen) in der Lösung wird eine Liste aller aktuellen Regeln angezeigt:
 
 ![Seite „Rules and Actions“ (Regeln und Aktionen)](media/iot-suite-remote-monitoring-automate/rulesactions.png)
 
@@ -67,16 +67,16 @@ Verwenden Sie zum Erstellen der Regel die folgenden Werte:
 | Einstellung          | Wert                                 |
 | ---------------- | ------------------------------------- |
 | Name             | Chiller warning                       |
-| Quelle           | **Chiller** device group              |
-| Trigger field    | Pressure                              |
+| Quelle           | **Chillers** device group             |
+| Trigger field    | pressure                              |
 | Trigger operator | Größer als                          |
 | Trigger value    | 150                                   |
 | Schweregrad   | Warnung                               |
-| Alarm event text | Chiller pressure has exceeded 150 PSI |
+| Beschreibung      | Chiller pressure has exceeded 150 PSI |
 
 Um die neue Regel zu speichern, wählen Sie **Apply** (Übernehmen) aus.
 
-Sie können den Zeitpunkt, zu dem die Regel ausgelöst wird, auf der Seite **Rules & Actions** (Regeln und Aktionen) oder auf der Seite **Dashboard** anzeigen.
+Sie können den Zeitpunkt, zu dem die Regel ausgelöst wird, auf der Seite **Rules and Actions** (Regeln und Aktionen) oder auf der Seite **Dashboard** anzeigen.
 
 ## <a name="edit-an-existing-rule"></a>Bearbeiten einer vorhandenen Regel
 

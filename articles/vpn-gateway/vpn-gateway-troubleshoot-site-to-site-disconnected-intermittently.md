@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: 96202a4d7e91a221aa655f58f29f2c8e24b86e4e
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 9bcf30fbf1febbd80aa8899253de8cb61f4ae6f8
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Problembehandlung: Unterbrechungen der Verbindung des Azure-Standort-zu-Standort-VPN
 
-Möglicherweise tritt bei Ihnen das Problem auf, dass eine neue oder bereits vorhandene Microsoft Azure Punkt-zu-Standort-VPN-Verbindung nicht stabil ist oder regelmäßig getrennt wird. Dieser Artikel enthält Schritte, mit denen Sie die Ursache ausfindig machen und das Problem beheben können. 
+Möglicherweise tritt bei Ihnen das Problem auf, dass eine neue oder bereits vorhandene Microsoft Azure Standort-zu-Standort-VPN-Verbindung nicht stabil ist oder regelmäßig getrennt wird. Dieser Artikel enthält Schritte, mit denen Sie die Ursache ausfindig machen und das Problem beheben können. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 

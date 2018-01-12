@@ -15,11 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2017
 ms.author: yuaxu
-ms.openlocfilehash: f3bfda250b7f8ed679d05057682b95683d402535
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d19a1b7c8d50ef0fde3cf65c9fd469bc34a27adc
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Pushbenachrichtigungen mit Azure Notification Hubs: Häufig gestellte Fragen
 ## <a name="general"></a>Allgemein
@@ -179,14 +179,14 @@ Falls Sie über kein Back-End verfügen und die App auf Zielgeräten gestartet w
 Innerhalb eines gewissen Zeitraums erhalten Geräte mit nicht geöffneten Apps keine Benachrichtigungen.
 
 ### <a name="is-there-audit-log-capability"></a>Steht ein Überwachungsprotokoll zur Verfügung?
-Alle Notification Hubs-Verwaltungsvorgänge werden in Vorgangsprotokollen erfasst, die im [klassischen Azure-Portal]zur Verfügung stehen.
+Alle Notification Hubs-Verwaltungsvorgänge werden in Vorgangsprotokollen erfasst, die im [Azure-Portal] zur Verfügung stehen.
 
 ## <a name="monitoring-and-troubleshooting"></a>Überwachung und Problembehandlung
 ### <a name="what-troubleshooting-capabilities-are-available"></a>Welche Funktionen für die Problembehandlung stehen zur Verfügung?
 Azure Notification Hubs bietet verschiedene Problembehandlungsfeatures – insbesondere für das häufig auftretende Problem verworfener Benachrichtigungen. Ausführliche Informationen finden Sie im [Whitepaper zur Problembehandlung für Notification Hubs].
 
 ### <a name="what-telemetry-features-are-available"></a>Welche Telemetriefunktionen stehen zur Verfügung?
-Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [klassischen Azure-Portal]. Ausführliche Informationen zu den Metriken finden Sie auf der Seite [Metrics].
+Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [Azure-Portal]. Ausführliche Informationen zu den Metriken finden Sie auf der Seite [Metrics].
 
 > [!NOTE]
 > Wenn Benachrichtigungen erfolgreich waren, bedeutet das einfach, dass Pushbenachrichtigungen an den externen PNS (beispielsweise APNS für Apple oder GCM für Google) übermittelt wurden. Der PNS hat die Aufgabe, die Benachrichtigungen an Zielgeräte zu übermitteln. In der Regel macht der PNS Übermittlungsmetriken nicht für Dritte verfügbar.  
@@ -195,7 +195,7 @@ Azure Notification Hubs ermöglicht die Anzeige von Telemetriedaten im [klassisc
 
 Wir bieten außerdem die Möglichkeit, Telemetriedaten programmgesteuert zu exportieren (im Standard-Tarif). Ausführliche Informationen finden Sie im [Metrikbeispiel für Notification Hubs].
 
-[klassischen Azure-Portal]: https://manage.windowsazure.com
+[Azure-Portal]: https://portal.azure.com
 [Notification Hubs – Preise]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
 [Fallstudie: Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942

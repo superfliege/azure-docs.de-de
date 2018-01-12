@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 191870aea5f35830115ae1e8885cd3035597411f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 6392a14f6bbc3c4708b36e3e1ab0b5b45a4d0671
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -242,7 +242,7 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 |Attribut|Beschreibung|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, nach dem für den Aufruf des Back-End-Diensts ein Fehler auftritt.|Nein|Keine Zeitüberschreitung|  
+|timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, nach dem für den Aufruf des Back-End-Diensts ein Fehler auftritt.|Nein|300 Sekunden|  
 |follow-redirects="true &#124; false"|Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.|Nein|false|  
   
 ### <a name="usage"></a>Verwendung  

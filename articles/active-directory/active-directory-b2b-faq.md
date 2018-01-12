@@ -4,7 +4,7 @@ description: "Erhalten Sie Antworten auf häufig gestellte Fragen zur Azure Acti
 services: active-directory
 documentationcenter: 
 author: sasubram
-manager: femila
+manager: mtillman
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 0e3ae7f176f41b4b0984dbef0748451c7ebff9e7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: fecfb7217434a93fd5d44f1f07709009de7710fb
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 
@@ -115,7 +115,7 @@ Es wird empfohlen, einen Benutzer aus der Partnerorganisation in die einladende 
 Wenn der Partner über einen Azure AD-Mandanten verfügt, der über einen Verbund in die lokale Authentifizierungsinfrastruktur eingebunden ist, wird automatisch lokales einmaliges Anmelden (Single Sign-On, SSO) ausgeführt. Wenn der Partner keinen Azure AD-Mandanten aufweist, wird für neue Benutzer ein Azure AD-Konto erstellt. 
 
 ### <a name="i-thought-azure-ad-b2b-didnt-accept-gmailcom-and-outlookcom-email-addresses-and-that-b2c-was-used-for-those-kinds-of-accounts"></a>Stimmt es, dass Azure AD B2B keine E-Mail-Adressen von gmail.com und outlook.com akzeptiert und B2C für diese Arten von Konten verwendet wird?
-Wir heben die Unterschiede zwischen der B2B- und B2C-Zusammenarbeit (Business-to-Company) im Hinblick auf die unterstützten Identitäten auf. Die verwendete Identität ist kein gutes Kriterium für die Entscheidung zwischen der Verwendung von B2B und B2C. Informationen zur Auswahl der Option für die Zusammenarbeit finden Sie unter [Vergleich der B2B- und B2C-Zusammenarbeit in Azure Active Directory](active-directory-b2b-compare-b2c.md).
+Wir heben die Unterschiede zwischen der B2B- und B2C-Zusammenarbeit (Business-to-Consumer) im Hinblick auf die unterstützten Identitäten auf. Die verwendete Identität ist kein gutes Kriterium für die Entscheidung zwischen der Verwendung von B2B und B2C. Informationen zur Auswahl der Option für die Zusammenarbeit finden Sie unter [Vergleich der B2B- und B2C-Zusammenarbeit in Azure Active Directory](active-directory-b2b-compare-b2c.md).
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Welche Anwendungen und Dienste unterstützen Azure B2B-Gastbenutzer?
 Alle in Azure AD integrierte Anwendungen unterstützen Azure B2B-Gastbenutzer. 

@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
+ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: e75929ee5d3f57af77c66910cc294a7c0fb6629a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0fdbd7fc4ec48037371ffa296cf668897e45b70
+ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
-Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist zwar möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht, können anonyme Benutzer eine Verbindung mit ihm herstellen. 
+Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist zwar möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 
 
 Dieser Artikel bietet eine Übersicht über Sicherheitsszenarien für Azure-Cluster und eigenständige Cluster sowie die verschiedenen Technologien, die Sie zu deren Implementierung verwenden können:
 

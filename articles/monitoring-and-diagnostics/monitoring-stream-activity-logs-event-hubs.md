@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/06/2017
 ms.author: johnkem
-ms.openlocfilehash: 88c5701279f370914fac68872d67b02a7571748a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0e507cf2804edbcdd6c87f47b30defbc6a5eb94
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamen des Azure-Aktivitätsprotokolls an Event Hubs
 Das [**Azure-Aktivitätsprotokoll**](monitoring-overview-activity-logs.md) kann nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Exportoption des Portals oder durch Aktivieren der Service Bus-Regel-ID in einem Protokollprofil (über die Azure PowerShell-Cmdlets oder über die Azure-Befehlszeilenschnittstelle).
@@ -30,7 +30,7 @@ Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für d
 * **Erstellen einer benutzerdefinierter Telemetrie- und Protokollierungsplattform:** Event Hubs ermöglicht dank des hochgradig skalierbaren Veröffentlichen/Abonnieren-Konzepts eine flexible Erfassung des Aktivitätsprotokolls. Dies ist interessant, wenn Sie bereits über eine benutzerdefinierte Telemetrieplattform verfügen oder eine solche Plattform erstellen möchten. [Informationen zur Verwendung von Event Hubs für eine globale Telemetrieplattform finden Sie in der Anleitung von Dan Rosanova.](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)
 
 ## <a name="enable-streaming-of-the-activity-log"></a>Aktivieren des Aktivitätsprotokollstreamings
-Das Aktivitätsprotokollstreaming kann entweder programmgesteuert oder über das Portal aktiviert werden. In beiden Fällen wählen Sie einen Service Bus-Namespace und eine SAS-Richtlinie für diesen Namespace aus. In diesem Namespace wird dann ein Event Hub erstellt, wenn das erste neue Aktivitätsprotokollereignis eintritt. Wenn Sie nicht über einen Service Bus-Namespace verfügen, müssen Sie diesen zunächst erstellen. Wenn Sie bereits Aktivitätsprotokollereignisse zu diesem Service Bus-Namespace übermittelt haben, wird der zuvor erstellte Event Hub wiederverwendet. Die SAS-Richtlinie definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden aktuell Berechtigungen für das **Verwalten**, **Senden** und **Lauschen** benötigt. Sie können freigegebene Zugriffsrichtlinien für Ihren Service Bus-Namespace im klassischen Portal auf der Registerkarte „Konfigurieren“ erstellen oder ändern. Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streamingfeature hinzufügen möchten, muss der Benutzer, der die Änderung vornimmt, in der Service Bus-Autorisierungsregel über die ListKey-Berechtigung verfügen.
+Das Aktivitätsprotokollstreaming kann entweder programmgesteuert oder über das Portal aktiviert werden. In beiden Fällen wählen Sie einen Service Bus-Namespace und eine SAS-Richtlinie für diesen Namespace aus. In diesem Namespace wird dann ein Event Hub erstellt, wenn das erste neue Aktivitätsprotokollereignis eintritt. Wenn Sie nicht über einen Service Bus-Namespace verfügen, müssen Sie diesen zunächst erstellen. Wenn Sie bereits Aktivitätsprotokollereignisse zu diesem Service Bus-Namespace übermittelt haben, wird der zuvor erstellte Event Hub wiederverwendet. Die SAS-Richtlinie definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an Event Hubs werden aktuell Berechtigungen für das **Verwalten**, **Senden** und **Lauschen** benötigt. Sie können freigegebene Zugriffsrichtlinien für Ihren Service Bus-Namespace im Azure-Portal auf der Registerkarte „Konfigurieren“ erstellen oder ändern. Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streamingfeature hinzufügen möchten, muss der Benutzer, der die Änderung vornimmt, in der Service Bus-Autorisierungsregel über die ListKey-Berechtigung verfügen.
 
 Der Service Bus- oder Event Hub-Namespace muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, den entsprechenden RBAC-Zugriff auf beide Abonnements hat.
 

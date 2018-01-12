@@ -12,18 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9815e01dffb0342979f17974527b559de8146fed
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
-Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können Media Services-Auftragsbenachrichtigungen mit Azure-Webhooks oder [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) überwachen. In diesem Thema wird die Verwendung von Webhooks veranschaulicht.
+Beim Ausführen von Aufträgen ist es nützlich, deren Fortschritt verfolgen zu können. Sie können Media Services-Auftragsbenachrichtigungen mit Azure-Webhooks oder [Azure Queue Storage](media-services-dotnet-check-job-progress-with-queues.md) überwachen. In diesem Artikel wird die Verwendung von Webhooks veranschaulicht.
 
-Dieses Thema beschreibt Folgendes
+In diesem Artikel werden die folgenden Schritte erläutert:
 
 *  Definieren einer Azure-Funktion, die zum Reagieren auf Webhooks angepasst wird. 
     
@@ -33,9 +33,9 @@ Dieses Thema beschreibt Folgendes
     >Bevor Sie fortfahren, stellen Sie sicher, dass Sie die Funktionsweise von [HTTP- und Webhookbindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook.md) verstehen.
     >
     
-* Hinzufügen eines Webhooks zu Ihrer Verschlüsselungsaufgabe und Angeben der Webhook-URL und des geheimen Schlüssels, auf die dieser Webhook reagiert. Sie finden am Ende des Themas ein Beispiel, das Ihrer Codierungsaufgabe einen Webhook hinzufügt.  
+* Hinzufügen eines Webhooks zu Ihrer Verschlüsselungsaufgabe und Angeben der Webhook-URL und des geheimen Schlüssels, auf die dieser Webhook reagiert. Sie finden am Ende des Artikels ein Beispiel, das Ihrer Codierungsaufgabe einen Webhook hinzufügt.  
 
-Die Definition verschiedener .NET Azure-Funktionen für Media Services (einschließlich der in diesem Thema gezeigten Funktion) finden Sie [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
+Die Definition verschiedener .NET Azure Functions für Media Services (einschließlich der in diesem Artikel gezeigten Funktion) finden Sie [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,7 +54,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 
 Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariablen hinzuzufügen, die in Ihren Funktionen verwendet werden. Klicken Sie zum Konfigurieren von App-Einstellungen auf den Link „App-Einstellungen konfigurieren“. 
 
-Im Abschnitt [Anwendungseinstellungen](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) werden die Parameter definiert, die in dem in diesem Thema definierten Webhook verwendet werden. Fügen Sie den App-Einstellungen außerdem die folgenden Parameter hinzu. 
+Im Abschnitt [Anwendungseinstellungen](media-services-dotnet-how-to-use-azure-functions.md#configure-function-app-settings) werden die Parameter definiert, die in dem in diesem Artikel definierten Webhook verwendet werden. Fügen Sie den App-Einstellungen außerdem die folgenden Parameter hinzu. 
 
 |Name|Definition|Beispiel| 
 |---|---|---|

@@ -3,28 +3,28 @@ title: "Unterschiede und Aspekte für virtuelle Computer in Azure Stack | Micros
 description: Es werden die Unterschiede und Aspekte beim Verwenden von virtuellen Computern in Azure Stack beschrieben.
 services: azure-stack
 documentationcenter: 
-author: SnehaGunda
+author: mattbriggs
 manager: femila
 editor: 
-ms.assetid: 
+ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
-ms.author: sngun
-ms.openlocfilehash: fa4816079660467e530237fef62aeadfef7fa8bd
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: mabrigg
+ms.openlocfilehash: fe655facf4da99d951a430db8ce603cc0ec7f224
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Aspekte von virtuellen Computern in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Bei virtuellen Computern handelt es sich hier um bedarfsgesteuerte, skalierbare Computingressourcen, die von Azure Stack angeboten werden. Bei der Nutzung von virtuellen Computern sollte Ihnen klar sein, dass es Unterschiede zwischen den verfügbaren Features in Azure und Azure Stack gibt. Dieser Artikel enthält eine Übersicht über die eindeutigen Aspekte für virtuelle Computer und die entsprechenden Features in Azure Stack. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Thema [Wichtige Aspekte: Verwenden von Diensten oder Erstellen von Apps für Azure Stack](azure-stack-considerations.md).
+Bei virtuellen Computern handelt es sich hier um bedarfsgesteuerte, skalierbare Computingressourcen, die von Azure Stack angeboten werden. Bei der Nutzung von virtuellen Computern sollte Ihnen klar sein, dass es Unterschiede zwischen den verfügbaren Features in Azure und Azure Stack gibt. Dieser Artikel enthält eine Übersicht über die eindeutigen Aspekte für virtuelle Computer und die entsprechenden Features in Azure Stack. Informationen zu allgemeinen Unterschieden zwischen Azure Stack und Azure finden Sie im Artikel [Key considerations](azure-stack-considerations.md) (Wichtige Aspekte).
 
 ## <a name="cheat-sheet-virtual-machine-differences"></a>Cheat Sheet: Unterschiede bei virtuellen Computern
 
@@ -33,7 +33,7 @@ Bei virtuellen Computern handelt es sich hier um bedarfsgesteuerte, skalierbare 
 | VM-Images | Der Azure Marketplace enthält Images, die Sie zum Erstellen eines virtuellen Computers verwenden können. Auf der Seite [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) können Sie die Liste mit den Images anzeigen, die im Azure Marketplace verfügbar sind. | Im Azure Stack-Marketplace sind standardmäßig keine Images verfügbar. Der Azure Stack-Cloudadministrator sollte Images veröffentlichen oder auf den Azure Stack-Marketplace herunterladen, bevor sie von Benutzern verwendet werden können. |
 | Größen virtueller Computer | Azure unterstützt eine Vielzahl von Größen für virtuelle Computer. Informationen zu den verfügbaren Größen und Optionen finden Sie in den Themen [Größen für virtuelle Windows-Computer in Azure (Windows)](../../virtual-machines/virtual-machines-windows-sizes.md) und [Größen für virtuelle Linux-Computer in Azure (Linux)](../../virtual-machines/linux/sizes.md). | Azure Stack unterstützt eine Teilmenge der VM-Größen, die in Azure verfügbar sind. Die Liste mit den unterstützten Größen finden Sie in diesem Artikel im Abschnitt [Größen virtueller Computer](#virtual-machine-sizes). |
 | Kontingente für virtuelle Computer | [Kontingentgrenzen](../../azure-subscription-service-limits.md#service-specific-limits) werden von Microsoft festgelegt. | Der Azure Stack-Cloudadministrator muss Kontingente zuweisen, bevor den Benutzern die virtuellen Computer angeboten werden. |
-| VM-Erweiterungen |Azure unterstützt eine Vielzahl von Erweiterungen für virtuelle Computer. Weitere Informationen zu den verfügbaren Erweiterungen finden Sie im Thema [Erweiterungen und Features für virtuelle Computer für Windows](../../virtual-machines/windows/extensions-features.md).| Azure Stack unterstützt eine Teilmenge der Erweiterungen, die in Azure verfügbar sind, und jede Erweiterung hat eine bestimmte Version. Der Azure Stack-Cloudadministrator kann jeweils wählen, welche Erweiterungen für seine Benutzer verfügbar gemacht werden sollen. Die Liste mit den unterstützten Erweiterungen finden Sie in diesem Artikel im Abschnitt [VM-Erweiterungen](#virtual-machine-extensions). |
+| VM-Erweiterungen |Azure unterstützt eine Vielzahl von Erweiterungen für virtuelle Computer. Weitere Informationen zu den verfügbaren Erweiterungen finden Sie im Artikel [Erweiterungen und Features für virtuelle Computer für Windows](../../virtual-machines/windows/extensions-features.md).| Azure Stack unterstützt eine Teilmenge der Erweiterungen, die in Azure verfügbar sind, und jede Erweiterung hat eine bestimmte Version. Der Azure Stack-Cloudadministrator kann jeweils wählen, welche Erweiterungen für seine Benutzer verfügbar gemacht werden sollen. Die Liste mit den unterstützten Erweiterungen finden Sie in diesem Artikel im Abschnitt [VM-Erweiterungen](#virtual-machine-extensions). |
 | Netzwerk für virtuelle Computer | Öffentliche IP-Adressen, die dem virtuellen Mandantencomputer zugewiesen sind, sind über das Internet zugänglich.<br><br><br>Azure Virtual Machines verfügen über einen feststehenden DNS-Namen. | Öffentliche IP-Adressen, die einem virtuellen Mandantencomputer zugewiesen sind, sind nur in der Azure Stack Development Kit-Umgebung zugänglich. Ein Benutzer muss per [RDP](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) oder [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) Zugriff auf das Azure Stack Development Kit haben, um eine Verbindung mit einem virtuellen Computer herstellen zu können, der in Azure Stack erstellt wird.<br><br>Virtuelle Computer, die in einer bestimmten Azure Stack-Instanz erstellt werden, verfügen über einen DNS-Namen basierend auf dem Wert, der vom Cloudadministrator konfiguriert wird. |
 | VM-Speicher | Unterstützt [verwaltete Datenträger](../../virtual-machines/windows/managed-disks-overview.md). | Verwaltete Datenträger werden in Azure Stack noch nicht unterstützt. |
 | API-Versionen | Azure verfügt für alle VM-Features immer über die aktuellen API-Versionen. | Azure Stack unterstützt bestimmte Azure-Dienste und bestimmte API-Versionen für diese Dienste. Die Liste mit den unterstützten API-Versionen finden Sie in diesem Artikel im Abschnitt [API-Versionen](#api-versions). |

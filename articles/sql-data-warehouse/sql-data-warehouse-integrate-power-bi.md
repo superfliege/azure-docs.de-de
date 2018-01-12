@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: martinle;barbkess
-ms.openlocfilehash: 4b7609fc5d6ce7bf0e3bd3ebf6d8f52e93a40a75
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ea9a2ff0c95a73b348d3b48e9e62957d5cce31c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-power-bi-with-sql-data-warehouse"></a>Verwenden von Power BI mit SQL Data Warehouse
 Wie bei Azure SQL-Datenbank ermöglicht auch SQL Data Warehouse Direct Connect leistungsfähige logische Pushdowns in Verbindung mit den Analysefunktionen von Power BI.  Abfragen werden mit Direct Connect in Echtzeit zurück an Ihr Azure SQL Data Warehouse gesendet, während Sie die Daten durchsuchen.  Dadurch haben Benutzer in Kombination mit der Skalierung von SQL Data Warehouse die Möglichkeit, in Minuten dynamische Berichte für Terabytes an Daten zu erstellen.  Darüber hinaus ermöglicht die Einführung der Schaltfläche "Open in Power BI" Benutzern, direkt eine Verbindung zwischen Power BI und SQL Data Warehouse herzustellen, ohne dass Informationen aus anderen Teilen von Azure gesammelt werden müssen.
@@ -39,7 +39,7 @@ Diese Einschränkungen und Hinweise können sich ändern, da wir die Umgebung we
 ## <a name="using-the-open-in-power-bi-button"></a>Mithilfe der Schaltfläche "Open in Power BI"
 Die einfachste Möglichkeit zum Navigieren zwischen Ihrem SQL Data Warehouse und Power BI ist über die Schaltfläche "Open in Power BI". Mit dieser Schaltfläche können Sie nahtlos beginnen, neue Dashboards in Power BI zu erstellen.  
 
-1. Navigieren Sie zunächst zu Ihrer SQL Data Warehouse-Instanz im klassischen Azure-Portal.
+1. Navigieren Sie zunächst zu Ihrer SQL Data Warehouse-Instanz im Azure-Portal.
 2. Klicken Sie auf die Schaltfläche „Open in Power BI“.
 3. Wenn Sie nicht direkt angemeldet werden können oder wenn Sie nicht über ein Power BI-Konto verfügen, müssen Sie sich anmelden.  
 4. Sie werden auf die SQL Data Warehouse-Verbindungsseite weitergeleitet, die bereits mit den Informationen aus dem SQL Data Warehouse ausgefüllt ist.

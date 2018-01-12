@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 26ab8f9ab561cc218f3dcb249741a96d8f14c579
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: bd152cc79c08124a1acab2aefc8652c7d162ea2c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Konfigurieren des Azure Machine Learning-Experimentieren-Diensts
 
@@ -221,7 +221,8 @@ _**Übersicht über die Ausführung eines virtuellen Remotecomputers für ein Py
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>Ausführen eines Skripts in einem HDInsight-Cluster
 HDInsight ist eine beliebte Plattform für die Big Data-Analyse mit Unterstützung von Apache Spark. Workbench ermöglicht das Experimentieren mit Big Data unter Verwendung von HDInsight Spark-Clustern. 
 
->![HINWEIS] Der HDInsight-Cluster muss Azure Blob als primären Speicher verwenden. Die Verwendung von Azure Data Lake-Speicher wird noch nicht unterstützt.
+>[!NOTE]
+>Der HDInsight-Cluster muss Azure Blob als primären Speicher verwenden. Die Verwendung von Azure Data Lake-Speicher wird noch nicht unterstützt.
 
 Sie können ein Computeziel und eine Laufzeitkonfiguration für einen HDInsight Spark-Cluster erstellen, indem Sie den folgenden Befehl verwenden:
 
@@ -269,7 +270,8 @@ az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP
 ```
 - Fügen Sie den von Workbench generierten öffentlichen Schlüssel der Datei „~/.ssh/authorized_keys“ auf dem angefügten Computeziel hinzu. 
 
-[!IMPORTANT] Sie müssen sich auf dem Computeziel mit demselben Benutzernamen anmelden, den Sie zum Erstellen des Computeziels verwendet haben. 
+>[!IMPORTANT]
+>Sie müssen sich auf dem Computeziel mit demselben Benutzernamen anmelden, den Sie zum Erstellen des Computeziels verwendet haben. 
 
 - Jetzt können Sie das Computeziel mit Authentifizierung über SSH-Schlüssel vorbereiten und verwenden.
 

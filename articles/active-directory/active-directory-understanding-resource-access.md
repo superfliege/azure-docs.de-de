@@ -4,21 +4,21 @@ description: "In diesem Thema werden Konzepte zum Einsatz von Abonnementadminist
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 ms.assetid: 174f1706-b959-4230-9a75-bf651227ebf6
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/06/2017
 ms.author: curtand
-ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 9492afeda8c11d9d4df866e416a2c2c7e1684569
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.custom: it-pro;
+ms.openlocfilehash: ad6658aaed55801ac8f6a39a721fb7469892303d
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="understanding-resource-access-in-azure"></a>Grundlegendes zum Zugriff auf Ressourcen in Azure
 
@@ -26,27 +26,22 @@ Die Zugriffssteuerung in Azure unterliegt zunächst den Abrechnungsaspekten. Der
 
 <br><br>![Azure-Konten][1]
 
-Außerdem sind Abonnements einem Verzeichnis zugeordnet. Durch das Verzeichnis wird eine Gruppe von Benutzern definiert. Diese können Benutzer aus der Organisation (Unternehmen oder Schule) sein, die das Verzeichnis erstellt hat, oder externe Benutzer (also Microsoft-Konten). Auf Abonnements kann über eine Teilmenge dieser Verzeichnisbenutzer zugegriffen werden, die entweder als Dienstadministrator (SA) oder Co-Administrator (CA) zugewiesen wurden. Die einzige Ausnahme besteht darin, dass Microsoft-Konten (früher Windows Live ID) – aus rechtlichen Gründen – als SA oder CA zugewiesen werden können, ohne im Verzeichnis vorhanden zu sein.
+Außerdem sind Abonnements einem Verzeichnis zugeordnet. Durch das Verzeichnis wird eine Gruppe von Benutzern definiert. Diese können Benutzer aus der Organisation (Unternehmen oder Schule) sein, die das Verzeichnis erstellt hat, oder externe Gastbenutzer. Auf Abonnements kann über eine Teilmenge dieser Verzeichnisbenutzer zugegriffen werden, die entweder als Dienstadministrator (SA) oder Co-Administrator (CA) zugewiesen wurden. Die einzige Ausnahme besteht darin, dass Microsoft-Konten (früher Windows Live ID) aus Gründen der Abwärtskompatibilität als SA oder CA zugewiesen werden können, ohne im Verzeichnis vorhanden zu sein.
 
 <br><br>![Zugriffssteuerung in Azure][2]
 
-Mit Funktionen im klassischen Azure-Portal können SAs, die mit einem Microsoft-Konto angemeldet sind, das einem Abonnement zugeordnete Verzeichnis ändern. Hierfür wird der Befehl **Verzeichnis bearbeiten** auf der Seite **Abonnements** unter **Einstellungen** verwendet. Beachten Sie, dass sich dieser Vorgang auf die Zugriffssteuerung dieses Abonnements auswirkt.
+Die Funktionalität im Azure-Portal ermöglicht es SAs, die mit einem Microsoft-Konto angemeldet sind, das Verzeichnis zu wechseln, dem ein Abonnement zugeordnet ist. Dieser Vorgang wirkt sich auf die Zugriffssteuerung dieses Abonnements aus.
 
-> [!NOTE]
-> Der Befehl **Verzeichnis bearbeiten** im klassischen Azure-Portal steht nicht für Benutzer zur Verfügung, die über ein Geschäfts- oder Schulkonto angemeldet sind, weil sich diese Konten nur an dem Verzeichnis anmelden können, zu dem sie gehören.
-> 
-> 
+<br><br>![Einfacher Benutzeranmeldungsablauf][3]
 
-<br><br>![Einfache Benutzeranmeldung − Ablauf][3]
-
-Im einfachen Fall erzwingt eine Organisation (etwa Contoso), dass die Abrechnung und die Zugriffssteuerung für dieselbe Gruppe von Abonnements erfolgen. Dies bedeutet, dass das Verzeichnis Abonnements zugeordnet ist, die sich im Besitz eines einzigen Azure-Kontos befinden. Nach der erfolgreichen Anmeldung beim klassischen Azure-Portal sehen Benutzer zwei Ressourcenauflistungen (in der Abbildung oben orangefarben dargestellt):
+Im einfachen Fall erzwingt eine Organisation (etwa Contoso), dass die Abrechnung und die Zugriffssteuerung für dieselbe Gruppe von Abonnements erfolgen. Dies bedeutet, dass das Verzeichnis Abonnements zugeordnet ist, die sich im Besitz eines einzigen Azure-Kontos befinden. Nach der erfolgreichen Anmeldung beim Azure-Portal sehen Benutzer zwei Ressourcenauflistungen (in der Abbildung oben orangefarben dargestellt):
 
 * Verzeichnisse, in denen ihr Benutzerkonto enthalten ist (aus dem Verzeichnis selbst oder als Fremdprinzipal hinzugefügt). Da das zum Anmelden verwendete Verzeichnis für diese Berechnung nicht relevant ist, werden Ihre Verzeichnisse immer angezeigt, unabhängig davon, wo Sie sich angemeldet haben.
 * Ressourcen als Teil von Abonnements, die dem für die Anmeldung verwendeten Verzeichnis zugeordnet sind UND auf das der Benutzer (als SA oder CA) zugreifen kann.
 
 <br><br>![Benutzer mit mehreren Abonnements und Verzeichnissen][4]
 
-Benutzer mit Abonnements, die mehrere Verzeichnisse umfassen, können den aktuellen Kontext des klassischen Azure-Portals mithilfe des Abonnementfilters wechseln. Im Hintergrund führt dies zu einer getrennten Anmeldung bei einem anderen Verzeichnis, allerdings ist durch einmaliges Anmelden (SSO) eine nahtlose Anmeldung gewährleistet.
+Benutzer mit Abonnements, die mehrere Verzeichnisse umfassen, können den aktuellen Kontext des Azure-Portals mithilfe des Abonnementfilters wechseln. Im Hintergrund führt dies zu einer getrennten Anmeldung bei einem anderen Verzeichnis, allerdings ist durch einmaliges Anmelden (SSO) eine nahtlose Anmeldung gewährleistet.
 
 Vorgänge wie das Verschieben von Ressourcen zwischen Abonnements können sich aufgrund dieser Einzelverzeichnisansicht von Abonnements schwieriger gestalten. Um die Ressourcen zu übertragen, müssen Sie die Abonnements u.U. zuerst mit dem Befehl **Verzeichnis bearbeiten** unter **Einstellungen** auf der Seite „Abonnements“ demselben Verzeichnis zuordnen.
 

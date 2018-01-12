@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: divacc@microsoft.com
-ms.openlocfilehash: 0985c7da429202cc6003df73c6ca17714b5a1287
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 9a9e9b3116c0d787162284197c8dbbd77374cff3
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="azure-marketplace-seller-guide"></a>Azure Marketplace-Verkäuferhandbuch
 
 Willkommen beim Azure Marketplace-Verkäuferhandbuch. Dieses Handbuch richtet sich an geschäftliche Benutzer und Produkt-Manager unabhängiger Softwarehersteller (Independent Software Vendors, ISVs), die ihre Azure-zertifizierten VM-Images und verwalteten Anwendungen an IT-Experten und -Entwickler verkaufen möchten. Azure-Kunden sind auf der ganzen Welt zu finden. Der [Azure Marketplace](https://azuremarketplace.microsoft.com/) bietet eine große Reichweite sowie einen erstklassigen Markt für Ihre Produkte.
 
 > [!NOTE]
-> Wenn Sie Ihre [verwaltete Anwendung](https://docs.microsoft.com/en-us/azure/managed-applications/overview) verkaufen möchten, befolgen Sie die [Anweisungen für das Auflisten der Anwendung im Azure Marketplace](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
+> Wenn Sie Ihre [verwaltete Anwendung](https://docs.microsoft.com/azure/managed-applications/overview) verkaufen möchten, befolgen Sie die [Anweisungen für das Auflisten der Anwendung im Azure Marketplace](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app).
 
 > [!NOTE]
 > Wenn Sie fertige SaaS-Produkte (Software-as-a-Service) an _IT-Spezialisten und Entwickler_ verkaufen möchten, erhalten Sie unter saas-on-amp@microsoft.com weitere Informationen zu den Möglichkeiten.
@@ -72,8 +72,8 @@ Inzwischen fragen Sie sich vielleicht, ob der Azure Marketplace das Richtige fü
 
 - **Erschließen Sie neue Kundenmärkte mit einem erweiterten Lösungsportfolio in Azure:** Profitieren Sie von Upselling- und Cross-Selling-Gelegenheiten für Marketplace-Angebote mit Azure-Diensten, die für Kunden des Microsoft Online Subscription-Programms (MOSP) sowie für Microsoft Enterprise Agreement-Kunden verfügbar sind. Marketplace-Angebote lassen sich problemlos in Ihre Präsentation der Kundenlösung und des Azure-Szenarios integrieren.
 - **Steigern Sie Geschäftswert und Auftragsvolumen mit vorhandenen und neuen Kunden:** Der Marketplace hilft Ihnen dabei, Ihr Auftragsvolumen zu erhöhen, Kundenprobleme bei der Verlagerung von Workloads in die Cloud zu beseitigen und Ihre Geschäfte rentabler zu machen. Erhöhen Sie den geschäftlichen Nutzen, indem Sie Komplettlösungen anbieten und Lücken der Azure-Cloudplattform schließen, um die Anforderungen der Kunden zu erfüllen.
-- **Sprechen Sie durch den Verkauf von Marketplace-Anwendungen und -Diensten ein breiteres Kundenspektrum an:** Mit dem Azure Marketplace können Sie leichter neue Kunden finden und binden. Viele Unternehmen müssen heutzutage Workloads in die Cloud verlagern und sich an dynamische Infrastrukturumgebungen anpassen. Diese Unternehmen können Sie mit passenden Anwendungen und Diensten unterstützen.
-- **Ergänzen und erweitern Sie den Funktionsumfang von Azure durch die Bündelung von Marketplace-Angeboten und Azure-Diensten:** Der Marketplace kann als Rahmen für szenariobasierte Kundengespräche dienen. Darüber hinaus können Sie über End-to-End-Lösungen sprechen und auf spezifische Plattformlücken und Kundenanforderungen eingehen. Außerdem können Sie durch den Verkauf von Lösungspaketen das Ökosystem der Azure-Plattform nutzen, um verschiedenste Kundenprobleme anzugehen – und Ihre Umsätze zu steigern.
+- **Sprechen Sie durch den Verkauf von Marketplace-Anwendungen und -Diensten ein breiteres Kundenspektrum an**. Mit dem Azure Marketplace können Sie leichter neue Kunden finden und binden. Viele Unternehmen müssen heutzutage Workloads in die Cloud verlagern und sich an dynamische Infrastrukturumgebungen anpassen. Diese Unternehmen können Sie mit passenden Anwendungen und Diensten unterstützen.
+- **Ergänzen und erweitern Sie den Funktionsumfang von Azure durch die Bündelung von Marketplace-Angeboten und Azure-Diensten**. Der Marketplace kann als Rahmen für szenariobasierte Kundengespräche dienen. Darüber hinaus können Sie über End-to-End-Lösungen sprechen und auf spezifische Plattformlücken und Kundenanforderungen eingehen. Außerdem können Sie durch den Verkauf von Lösungspaketen das Ökosystem der Azure-Plattform nutzen, um verschiedenste Kundenprobleme anzugehen – und Ihre Umsätze zu steigern.
 
 ## <a name="what39s-the-customer-base-for-the-marketplace"></a>Welchen Kundenstamm bietet der Marketplace?
 
@@ -100,7 +100,7 @@ Abbildung 1: Prozess für den Verkauf über den Azure Marketplace
 Abhängig von der Workload (VM oder verwaltete Anwendung), die Sie zu veröffentlichen planen, gehen Sie bei der Veröffentlichung Ihres Angebots unterschiedlich vor. Der folgende Inhalt konzentriert sich auf die Veröffentlichung von _VM-Angeboten_.
 
 > [!NOTE]
-> Wenn Sie Ihre [verwaltete Anwendung](https://docs.microsoft.com/en-us/azure/managed-applications/overview) verkaufen möchten, befolgen Sie die [Anweisungen für das Auflisten der Anwendung im Azure Marketplace](https://docs.microsoft.com/en-us/azure/managed-applications/publish-marketplace-app).
+> Wenn Sie Ihre [verwaltete Anwendung](https://docs.microsoft.com/azure/managed-applications/overview) verkaufen möchten, befolgen Sie die [Anweisungen für das Auflisten der Anwendung im Azure Marketplace](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app).
 
 > [!NOTE]
 > Wenn Sie fertige SaaS-Produkte (Software-as-a-Service) an _IT-Spezialisten und Entwickler_ verkaufen möchten, erhalten Sie unter saas-on-amp@microsoft.com weitere Informationen zu den Möglichkeiten.

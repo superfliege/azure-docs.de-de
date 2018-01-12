@@ -4,21 +4,23 @@ description: Zuweisen von benutzerdefinierten, mithilfe von PowerShell und der B
 services: active-directory
 documentationcenter: 
 author: andreicradu
-manager: catadinu
+manager: mtillman
 editor: kgremban
 ms.assetid: 
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 12/06/2017
 ms.author: a-crradu
-ms.openlocfilehash: 213b02205bbe7f767b6aff6a0693bb34b97cb9ec
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.reviewer: skwan
+ms.custom: it-pro
+ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="intro-on-role-based-access-control"></a>Einführung in die rollenbasierte Zugriffssteuerung
 
@@ -35,7 +37,7 @@ Für die Nutzung der rollenbasierten Zugriffssteuerung in einer Azure-Umgebung i
 * Stellen Sie sicher, dass der folgende Ressourcenanbieter für das Benutzerabonnement registriert ist: **Microsoft.Authorization**. Weitere Informationen zum Registrieren von Ressourcenanbietern finden Sie unter [Anbieter, Regionen, API-Versionen und Schemas für Resource Manager](../azure-resource-manager/resource-manager-supported-services.md).
 
 > [!NOTE]
-> Office 365-Abonnements oder Azure Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das O365-Portal bereitgestellt wurden, sind für die Nutzung bei der rollenbasierten Zugriffssteuerung nicht qualifiziert.
+> Office 365-Abonnements oder Azure Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das Office 365 Admin Center bereitgestellt wurden, sind für die Nutzung bei der rollenbasierten Zugriffssteuerung nicht qualifiziert.
 
 ## <a name="how-can-rbac-be-used"></a>Verwenden der rollenbasierten Zugriffssteuerung
 Die rollenbasierte Zugriffssteuerung kann in Azure in drei verschiedenen Bereichen angewendet werden. Hierbei handelt es sich um die folgenden drei Bereiche, nach Wichtigkeit sortiert:
@@ -102,7 +104,7 @@ Da der neue Benutzer ein organisationsexterner Benutzer ist, sind im Verzeichnis
 
 ![E-Mail-Einladungsnachricht für eine RBAC-Rolle](./media/role-based-access-control-create-custom-roles-for-internal-external-users/6.png)
 
-Der externe Benutzer wird ab jetzt im Azure Active Directory-Mandanten als externer Benutzer angezeigt – und zwar sowohl im Azure-Portal als auch im klassischen Portal.
+Der externe Benutzer wird ab jetzt im Azure Active Directory-Mandanten als externer Benutzer angezeigt, auch im Azure-Portal.
 
 
 
@@ -112,14 +114,7 @@ Der externe Benutzer wird ab jetzt im Azure Active Directory-Mandanten als exter
 
 
 
-
-
-![Blatt „Benutzer“ im klassischen Portal für Azure Active Directory](./media/role-based-access-control-create-custom-roles-for-internal-external-users/8.png)
-
-In beiden Portalen können die externen Benutzer in der Ansicht **Benutzer** anhand folgender Merkmale identifiziert werden:
-
-* Unterschiedliche Art von Symbol im Azure-Portal
-* Unterschiedlicher Erstellungspunkt im klassischen Portal
+In der **Benutzeransicht** können die externen Benutzer anhand des unterschiedlichen Symboltyps im Azure-Portal erkannt werden.
 
 Wenn jedoch einem externen Benutzer im Bereich **Abonnement** Zugriff als **Besitzer** oder **Mitwirkender** erteilt wird, darf der Benutzer nicht auf das Verzeichnis des Administratorbenutzers zugreifen, sofern der **globale Administrator** dies nicht gestattet. In den Benutzereigenschaften kann der **Benutzertyp** ermittelt werden, der über zwei allgemeine Parameter verfügt: **Mitglied** und **Gast**. Ein Mitglied ist ein Benutzer, der im Verzeichnis registriert ist, ein Gast dagegen ist ein Benutzer, der von einer externen Quelle in das Verzeichnis eingeladen wurde. Weitere Informationen finden Sie unter [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md).
 
@@ -145,9 +140,6 @@ Durch Zuweisen der integrierten RBAC-Rolle **Mitwirkender für virtuelle Compute
 * Keine Anzeige anderer Ressourcentypen im Abonnement
 * Kein Anwenden von Änderungen im Hinblick auf die Abrechnung
 
-> [!NOTE]
-> Da die rollenbasierte Zugriffssteuerung eine reine Funktion des Azure-Portals ist, gewährt sie keinen Zugriff auf das klassische Portal.
-
 ## <a name="assign-a-built-in-rbac-role-to-an-external-user"></a>Zuweisen einer integrierten RBAC-Rolle zu einem externen Benutzer
 In einem anderen Szenario in diesem Test wird der externe Benutzer „alflanigan@gmail.com“ als **Mitwirkender für virtuelle Computer** hinzugefügt.
 
@@ -156,9 +148,7 @@ In einem anderen Szenario in diesem Test wird der externe Benutzer „alflanigan
 
 ![Integrierte Rolle: Mitwirkender von virtuellen Computern](./media/role-based-access-control-create-custom-roles-for-internal-external-users/11.png)
 
-Normalerweise kann dieser externe Benutzer mit dieser integrierten Rolle nur virtuelle Computer und die zugehörigen Resource Manager-Ressourcen anzeigen und verwalten, die für die Bereitstellung erforderlich sind. Diese eingeschränkten Rollen bieten standardmäßig nur Zugriff auf die entsprechenden, im Azure-Portal erstellten Ressourcen. Unabhängig davon können einige Ressourcen weiterhin auch im klassischen Portal bereitgestellt sein (beispielsweise virtuelle Computer).
-
-
+Normalerweise kann dieser externe Benutzer mit dieser integrierten Rolle nur virtuelle Computer und die zugehörigen Resource Manager-Ressourcen anzeigen und verwalten, die für die Bereitstellung erforderlich sind. Auslegungsbedingt bieten diese eingeschränkten Rollen nur Zugriff auf ihre im Azure-Portal erstellten entsprechenden Ressourcen.
 
 
 

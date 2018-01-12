@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: a9e132a4-29e7-48bf-beb9-4148e617c8a9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 12/13/2017
 ms.author: jeedes
-ms.openlocfilehash: df72270ca6443b456c079b22425f1660aa522389
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b09dd977cbf5c4273667167217e86bb79ac2a9d8
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Tutorial: Azure Active Directory-Integration in ArcGIS Online
 
@@ -27,17 +28,9 @@ Die Integration von Azure AD in ArcGIS Online bietet die folgenden Vorteile:
 
 - Sie können in Azure AD steuern, wer auf ArcGIS Online Zugriff hat.
 - Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ArcGIS Online anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
-
-<!--## Overview
-
-To enable single sign-on with ArcGIS Online, it must be configured to use Azure Active Directory as an identity provider. This guide provides information and tips on how to perform this configuration in ArcGIS Online.
-
->[!Note]: 
->This embedded guide is brand new in the new Azure portal, and we’d love to hear your thoughts. Use the Feedback ? button at the top of the portal to provide feedback. The older guide for using the [Azure classic portal](https://manage.windowsazure.com) to configure this application can be found [here](https://github.com/Azure/AzureAD-App-Docs/blob/master/articles/en-us/_/sso_configure.md).-->
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,7 +45,7 @@ Um die Integration von Azure AD in ArcGIS Online konfigurieren zu können, benö
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
@@ -67,40 +60,37 @@ Zum Konfigurieren der Integration von Azure AD in ArcGIS Online müssen Sie Ihre
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“][1]
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![Blatt „Unternehmensanwendungen“][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie im Suchfeld als Suchbegriff **ArcGIS Online** ein.
+4. Geben Sie im Suchfeld **ArcGIS Online** ein, wählen Sie im Ergebnisbereich **ArcGIS Online** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_search.png)
+    ![ArcGIS Online in der Ergebnisliste](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_addfromgallery.png)
 
-5. Wählen Sie im Ergebnisbereich **ArcGIS Online** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei ArcGIS Online mithilfe eines Testbenutzers namens „Britta Simon“.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei ArcGIS Online mithilfe einer Testbenutzerin namens „Britta Simon“.
 
 Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in ArcGIS Online als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ArcGIS Online muss eine Linkbeziehung eingerichtet werden.
 
-Diese Linkbeziehung wird hergestellt, indem Sie den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** in ArcGIS Online zuweisen.
+Weisen Sie in ArcGIS Online den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD in ArcGIS Online müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines ArcGIS Online-Testbenutzers](#creating-an-arcgis-online-test-user)**, um eine Entsprechung von Britta Simon in ArcGIS Online zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines ArcGIS Online-Testbenutzers](#create-a-arcgis-online-test-user)**, um eine Entsprechung von Britta Simon in ArcGIS Online zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer ArcGIS Online-Anwendung.
 
@@ -108,28 +98,32 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ArcGIS Online** auf **Einmaliges Anmelden**.
 
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
+    ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
 
 3. Führen Sie im Abschnitt **Domäne und URLs für ArcGIS Online** die folgenden Schritte durch:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_url.png)
+    ![SSO-Informationen zur Domäne und den URLs für ArcGIS Online](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_url.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** den Wert im folgenden Format ein: `https://<company>.maps.arcgis.com`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.maps.arcgis.com`.
+
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `<companyname>.maps.arcgis.com`
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den ArcGIS Online-Client](http://support.esri.com/), um diesen Wert zu erhalten. 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den ArcGIS Online-Client](http://support.esri.com/en/), um diese Werte zu erhalten. 
+ 
 
-4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die XML-Datei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-arcgis-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-arcgis-tutorial/tutorial_general_400.png)
 
 6. Melden Sie sich in einem anderen Webbrowserfenster bei der ArcGIS-Unternehmenswebsite als Administrator an.
 
@@ -159,40 +153,41 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-
 
 > [!TIP]
 > Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
 
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+   ![Erstellen eines Azure AD-Testbenutzers][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-arcgis-tutorial/create_aaduser_01.png) 
+    ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-arcgis-tutorial/create_aaduser_01.png)
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-arcgis-tutorial/create_aaduser_02.png) 
+2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-arcgis-tutorial/create_aaduser_03.png) 
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-arcgis-tutorial/create_aaduser_02.png)
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-arcgis-tutorial/create_aaduser_04.png) 
+3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
+    ![Schaltfläche „Hinzufügen“](./media/active-directory-saas-arcgis-tutorial/create_aaduser_03.png)
 
-    b. Geben Sie im Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
+4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+    ![Dialogfeld „Benutzer“](./media/active-directory-saas-arcgis-tutorial/create_aaduser_04.png)
+
+    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
+
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
     d. Klicken Sie auf **Erstellen**.
  
-### <a name="creating-an-arcgis-online-test-user"></a>Erstellen eines ArcGIS Online-Testbenutzers
+### <a name="create-a-arcgis-online-test-user"></a>Erstellen eines ArcGIS Online-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei ArcGIS Online anmelden können, müssen sie in ArcGIS Online bereitgestellt werden.  
 Im Fall von ArcGIS Online ist die Bereitstellung eine manuelle Aufgabe.
@@ -223,11 +218,11 @@ Im Fall von ArcGIS Online ist die Bereitstellung eine manuelle Aufgabe.
     > [!NOTE]
     > Der Besitzer des Azure Active Directory-Kontos erhält eine E-Mail und folgt einem Link zur Bestätigung des Kontos, bevor es aktiv wird.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ArcGIS Online gewähren.
 
-![Benutzer zuweisen][200] 
+![Zuweisen der Benutzerrolle][200] 
 
 **Um Britta Simon zu ArcGIS Online zuzuweisen, führen Sie die folgenden Schritte durch:**
 
@@ -237,15 +232,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 2. Wählen Sie in der Anwendungsliste **ArcGIS Online** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_app.png) 
+    ![ArcGIS Online-Link in der Anwendungsliste](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_app.png)  
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Benutzer zuweisen][202] 
+    ![Link „Benutzer und Gruppen“][202]
 
 4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][203]
+    ![Bereich „Zuweisung hinzufügen“][203]
 
 5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
@@ -253,19 +248,17 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
 Wenn Sie im Zugriffsbereich auf die Kachel „ArcGIS Online“ klicken, sollten Sie automatisch bei Ihrer ArcGIS Online-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md).
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

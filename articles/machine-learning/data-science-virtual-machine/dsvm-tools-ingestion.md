@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 564c06c5017a77431b7d6fed7b43c47141b12252
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f1477c5fd8f57a815eeb603d2bde580bf78cca2
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>Datenerfassungstools für die Data Science-VM
 
@@ -35,7 +35,7 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren mehrerer Blobs aus Azure Storage in Azure Data Lake Store      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `adlcopy` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [Verwenden von AdlCopy]https://docs.microsoft.com/de-de/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| Links zu Beispielen      | [Using AdlCopy]https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | Verwandte Tools auf der DSVM      | AzCopy, Azure-Befehlszeile     |
 
 ## <a name="azure-command-line"></a>Azure-Befehlszeile
@@ -58,19 +58,19 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Kopieren von Dateien in Blob Storage, Kopieren von Blobs zwischen Konten      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `azcopy` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [AzCopy unter Windows](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)      |
+| Links zu Beispielen      | [AzCopy unter Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy)      |
 | Verwandte Tools auf der DSVM      | AdlCopy     |
 
 
-## <a name="azure-cosmos-db-documentdb-api-data-migration-tool"></a>Azure Cosmos DB: DocumentDB-API-Datenmigrationstool
+## <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB-Datenmigrationstool
 
 |    |           |
 | ------------- | ------------- |
-| Was ist das?   | Tool zum Importieren von Daten aus verschiedenen Quellen (einschließlich JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und Azure Cosmos DB-DocumentDB-API-Sammlungen) in Azure Cosmos DB oder Azure DocumentDB.      |
+| Was ist das?   | Tool zum Importieren von Daten aus verschiedenen Quellen (einschließlich JSON-Dateien, CSV-Dateien, SQL, MongoDB, Azure-Tabellenspeicher, Amazon DynamoDB und Azure Cosmos DB SQL-API-Sammlungen) in Azure Cosmos DB.      |
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren von Dateien von einem virtuellen Computer in CosmosDB, Importieren von Daten aus Azure-Tabellenspeicher in CosmosDB oder Importieren von Daten aus einer SQL Server-Datenbank in CosmosDB     |
 |  Verwendung/Ausführung    |   Öffnen Sie zum Verwenden der Befehlszeilenversion eine Eingabeaufforderung, und geben Sie `dt` ein. Öffnen Sie zum Verwenden des GUI-Tools eine Eingabeaufforderung, und geben Sie `dtui` ein.    |
-| Links zu Beispielen      | [Importieren von Daten in Azure Cosmos DB mit der DocumentDB-API](https://docs.microsoft.com/en-us/azure/cosmos-db/import-data)      |
+| Links zu Beispielen      | [Importieren von Daten in Azure Cosmos DB mit der DocumentDB-API](https://docs.microsoft.com/azure/cosmos-db/import-data)      |
 | Verwandte Tools auf der DSVM      | AzCopy, AdlCopy      |
 
 
@@ -82,7 +82,7 @@ Im Anschluss sind einige der Datenverschiebungstools aufgeführt, die auf der DS
 | Unterstützte DSVM-Versionen      | Windows      |
 | Typische Verwendung      | Importieren einer CSV-Datei in eine SQL Server-Tabelle, Exportieren einer SQL Server-Tabelle in eine Datei      |
 |  Verwendung/Ausführung    |   Öffnen Sie eine Eingabeaufforderung, und geben Sie `bcp` ein, um die Hilfe anzuzeigen.    |
-| Links zu Beispielen      | [bcp (Hilfsprogramm)](https://docs.microsoft.com/en-us/sql/tools/bcp-utility)      |
+| Links zu Beispielen      | [bcp (Hilfsprogramm)](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | Verwandte Tools auf der DSVM      | SQL Server, sqlcmd      |
 
 

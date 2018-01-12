@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 84c2eaaab2dfc09c93fbfeac3fe2bfcc7066a411
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="manage-and-configure-your-devices"></a>Verwalten und Konfigurieren von Geräten
 
@@ -40,13 +40,13 @@ Für dieses Tutorial benötigen Sie eine bereitgestellte Instanz der Remoteüber
 
 Falls Sie die Remoteüberwachungslösung noch nicht bereitgestellt haben, ist es ratsam, das Tutorial [Bereitstellen der vorkonfigurierten Remoteüberwachungslösung](iot-suite-remote-monitoring-deploy.md) durchzuarbeiten.
 
-## <a name="provision-a-simulated-device"></a>Bereitstellen eines simulierten Geräts
+## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
-Navigieren Sie in der Lösung zur Seite **Devices** (Geräte), und wählen Sie **Provision** (Bereitstellen) aus. Wählen Sie im Bereich **Provision** (Bereitstellen) die Option **Simulated** (Simuliert) aus:
+Navigieren Sie in der Lösung zur Seite **Devices** (Geräte), und wählen Sie **New Device** (Neues Gerät) aus. Wählen Sie im Bereich **New Device** (Neues Gerät) die Option **Simulated** (Simuliert) aus:
 
 ![Bereitstellen eines simulierten Geräts](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-Behalten Sie die auf **1** festgelegte Anzahl der bereitzustellenden Geräte bei. Wählen Sie **Engine** als **Device model** (Gerätemodell) und dann **Apply** (Übernehmen) aus, um das simulierte Gerät zu erstellen:
+Behalten Sie die auf **1** festgelegte Anzahl der bereitzustellenden Geräte bei. Wählen Sie **Faulty Engine** (Fehlerhafte Engine) als **Device model** (Gerätemodell) und dann **Apply** (Übernehmen) aus, um das simulierte Gerät zu erstellen:
 
 ![Bereitstellen eines simulierten Engine-Geräts](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
@@ -68,7 +68,7 @@ Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten nach unten, um **Diagn
 
 ## <a name="act-on-a-device"></a>Aktionen für ein Gerät
 
-Um Aktionen für ein Gerät auszuführen, wählen Sie es in der Geräteliste aus, und wählen Sie dann **Schedule** (Zeitplan) aus. Das Gerätemodell **Engine** gibt vier Methoden an, die ein Gerät unterstützen muss:
+Um Aktionen für ein oder mehrere Geräte auszuführen, wählen Sie sie in der Geräteliste aus, und wählen Sie dann **Schedule** (Zeitplan) aus. Das Gerätemodell **Engine** gibt vier Methoden an, die ein Gerät unterstützen muss:
 
 ![Engine-Methoden](media/iot-suite-remote-monitoring-manage/devicesmethods.png)
 
@@ -76,7 +76,7 @@ Wählen Sie **Restart** (Neustart) aus, legen Sie den Auftragsnamen auf **Restar
 
 ![Planen der Neustartmethode](media/iot-suite-remote-monitoring-manage/devicesrestartengine.png)
 
-Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **System Status** aus:
+Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **Jobs** (Aufträge) aus.
 
 ![Überwachen des geplanten Auftrags](media/iot-suite-remote-monitoring-manage/maintenancerestart.png)
 
@@ -96,7 +96,7 @@ Um eine Änderung vorzunehmen, fügen Sie einen Namen für den Auftrag hinzu, ak
 
 ![Aktualisieren des Eigenschaftswerts eines Geräts](media/iot-suite-remote-monitoring-manage/devicesreconfigurephysical.png)
 
-Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **System Status** aus.
+Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **Jobs** (Aufträge) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

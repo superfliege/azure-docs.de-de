@@ -45,7 +45,7 @@ In diesem Artikel werden folgende Themen erläutert:
 
 Cloud-init funktioniert auch Distributionen übergreifend. Verwenden Sie z.B. nicht **apt-get install** oder **yum install**, um ein Paket zu installieren. Stattdessen können Sie eine Liste mit zu installierenden Paketen definieren. „cloud-init“ verwendet automatisch das native Paketverwaltungstool für die ausgewählte Distribution.
 
- Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und VM-Skalierungsgruppen (VMSS). In der folgenden Tabelle sind die aktuell verfügbaren cloud-init-fähigen Images für die Azure-Plattform aufgeführt:
+ Wir arbeiten aktiv mit unseren Linux-Distributionspartnern zusammen, um cloud-init-fähige Images im Azure Marketplace zur Verfügung zu stellen. Mit diesen Images funktionieren Ihre cloud-init-Bereitstellungen und -Konfigurationen nahtlos bei VMs und Skalierungsgruppen von virtuellen Computern (VMSS). In der folgenden Tabelle sind die aktuell verfügbaren cloud-init-fähigen Images für die Azure-Plattform aufgeführt:
 
 | Herausgeber | Angebot | SKU | Version | cloud-init-fähig
 |:--- |:--- |:--- |:--- |:--- |:--- |

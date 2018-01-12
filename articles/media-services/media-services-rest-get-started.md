@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2017
+ms.date: 12/07/2017
 ms.author: juliako
-ms.openlocfilehash: ae2f73322f481b1c0b1e81d66ac3542c9e02d98c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 844e6756316aad13918c2a16391f33b2941de7dc
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
 Dieser Schnellstart führt Sie durch die Schritte zum Implementieren einer Anwendung zur Video-on-Demand (VoD)-Inhaltsübermittlung mit Azure Media Services (AMS)-REST-APIs.
 
-Das Lernprogramm stellt den Media Services-Arbeitsfluss und die gängigsten Programmierobjekte und Aufgaben für die Media Services-Entwicklung vor. Nach Abschluss des Lernprogramms sind Sie in der Lage, eine einfache Mediendatei zu streamen oder progressiv herunterzuladen, die Sie hochgeladen, codiert und heruntergeladen haben.
+Das Lernprogramm stellt den Media Services-Arbeitsfluss und die gängigsten Programmierobjekte und Aufgaben für die Media Services-Entwicklung vor. Nach Abschluss des Tutorials sind Sie in der Lage, eine einfache Mediendatei zu streamen oder progressiv herunterzuladen, die Sie hochgeladen, codiert und heruntergeladen haben.
 
 Die folgende Abbildung zeigt einige der am häufigsten verwendeten Objekte beim Entwickeln von VoD-Anwendungen mit dem Media Services OData-Modell.
 
@@ -51,9 +51,9 @@ Die folgenden Aufgaben werden in diesem Schnellstart beschrieben.
 6. Wiedergeben Ihrer Inhalte
 
 >[!NOTE]
->Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen finden Sie in [diesem](media-services-dotnet-manage-entities.md#limit-access-policies) Thema.
+>Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z. B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), verwenden Sie dieselbe Richtlinien-ID. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-dotnet-manage-entities.md#limit-access-policies).
 
-Weitere Informationen zu AMS-REST-Entitäten, die in diesem Thema verwendet werden, finden Sie unter [Azure Media Services REST-API-Referenz](/rest/api/media/services/azure-media-services-rest-api-reference). Siehe auch [Azure Media Services-Konzepte](media-services-concepts.md).
+Weitere Informationen zu AMS-REST-Entitäten, die in diesem Artikel verwendet werden, finden Sie unter [Azure Media Services REST-API-Referenz](/rest/api/media/services/azure-media-services-rest-api-reference). Siehe auch [Azure Media Services-Konzepte](media-services-concepts.md).
 
 >[!NOTE]
 >Wenn Sie in Media Services auf Entitäten zugreifen, müssen Sie bestimmte Headerfelder und Werte in Ihren HTTP-Anforderungen festlegen. Weitere Informationen finden Sie unter [Installation für die Entwicklung mit der Media Services-REST-API](media-services-rest-how-to-use.md).
@@ -79,16 +79,6 @@ Führen Sie folgende Schritte aus, um den Streamingendpunkt zu starten:
 ## <a id="connect"></a>Herstellen einer Verbindung mit dem Media Services-Konto mit der REST-API
 
 Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie unter [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung](media-services-use-aad-auth-to-access-ams-api.md). 
-
->[!NOTE]
->Nach der erfolgreichen Verbindung mit „https://media.windows.net“ erhalten Sie eine 301 Redirect-Antwort, in der ein anderer Media Services-URI angegeben ist. Nachfolgende Aufrufe müssen an den neuen URI gesendet werden.
-
-Wenn nach einem Verbindungsversuch folgende Meldung angezeigt wird:
-
-    HTTP/1.1 301 Moved Permanently
-    Location: https://wamsbayclus001rest-hs.cloudapp.net/api/
-
-sollten Sie nachfolgende API-Aufrufe an „https://wamsbayclus001rest-hs.cloudapp.net/api/“ senden.
 
 ## <a id="upload"></a>Erstellen eines neuen Medienobjekts und Hochladen einer Videodatei mit der REST-API
 
@@ -116,7 +106,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Sie ein Medienobjekt erstellen.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     x-ms-client-request-id: c59de965-bc89-4295-9a57-75d897e5221e
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 45
@@ -170,7 +160,7 @@ Nachdem Sie Ihre digitale Mediendatei in einen Blobcontainer hochgeladen haben, 
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 164
 
@@ -232,7 +222,7 @@ Im folgenden Beispiel wird veranschaulicht, wie eine AccessPolicy erstellt wird:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 74
 
@@ -293,7 +283,7 @@ Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eige
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421640053&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=vlG%2fPYdFDMS1zKc36qcFVWnaNh07UCkhYj3B71%2fk1YA%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 178
 
@@ -357,7 +347,7 @@ Nachdem Sie Ihre Datei nun hochgeladen haben, sollten Sie die FileAsset-Größe 
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
 
     {  
@@ -385,7 +375,7 @@ Im Erfolgsfall wird Folgendes zurückgegeben:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -404,7 +394,7 @@ Im Erfolgsfall wird Folgendes zurückgegeben:
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421662918&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=utmoXXbm9Q7j4tW1yJuMVA3egRiQy5FPygwadkmPeaY%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 **HTTP-Antwort**
@@ -435,7 +425,7 @@ Durch den folgenden Code wird die Encoder-ID angefordert.
     Accept: application/json
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=f7f09258-6753-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -469,7 +459,7 @@ Durch den folgenden Code wird die Encoder-ID angefordert.
     }
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
-Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Über die REST-API können Sie Aufträge und die zugehörigen Aufgaben auf folgende zwei Arten erstellen: Aufgaben können Inline über die Aufgabennavigationseigenschaft von Auftragsentitäten oder über die OData-Batchverarbeitung definiert werden. Das Media Services SDK verwendet die Batchverarbeitung. Zur einfacheren Lesbarkeit der Codebeispiele in diesem Thema werden die Tasks jedoch inline definiert. Weitere Informationen zur Batchverarbeitung finden Sie unter [Open Data Protocol (OData) Batch Processing](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)(in englischer Sprache).
+Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Über die REST-API können Sie Aufträge und die zugehörigen Aufgaben auf folgende zwei Arten erstellen: Aufgaben können Inline über die Aufgabennavigationseigenschaft von Auftragsentitäten oder über die OData-Batchverarbeitung definiert werden. Das Media Services SDK verwendet die Batchverarbeitung. Zur einfacheren Lesbarkeit der Codebeispiele in diesem Artikel werden die Tasks jedoch inline definiert. Weitere Informationen zur Batchverarbeitung finden Sie unter [Open Data Protocol (OData) Batch Processing](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)(in englischer Sprache).
 
 Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Der folgende Abschnitt dieser Dokumentation enthält eine Liste sämtlicher [Aufgabenvoreinstellungen](http://msdn.microsoft.com/library/mt269960) , die vom Media Encoder-Standardprozessor unterstützt werden.  
 
@@ -482,7 +472,7 @@ Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen u
     Accept: application/json;odata=verbose
     Accept-Charset: UTF-8
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
     Content-Length: 482
 
@@ -569,7 +559,7 @@ Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 
 Bei jeder Auftragsanforderung sind einige wichtige Punkte zu beachten:
 
-* TaskBody-Eigenschaften MÜSSEN literale XML-Elemente verwenden, um die Anzahl der vom Task verwendeten Eingabe- oder Ausgabemedienobjekte zu definieren. Das Thema „Aufgabe“ enthält die XML-Schemadefinition für den XML-Code.
+* TaskBody-Eigenschaften MÜSSEN literale XML-Elemente verwenden, um die Anzahl der vom Task verwendeten Eingabe- oder Ausgabemedienobjekte zu definieren. Der Artikel „Aufgabe“ enthält die XML-Schemadefinition für den XML-Code.
 * In der "TaskBody"-Definition muss jeder interne Wert für <inputAsset> und <outputAsset> als "JobInputAsset(value)" oder "JobOutputAsset(value)" festgelegt werden.
 * Eine Aufgabe kann mehrere Ausgabemedienobjekte besitzen. Ein JobOutputAsset(x)-Objekt kann nur ein Mal als Ausgabe einer Aufgabe in einem Auftrag verwendet werden.
 * Sie können JobInputAsset oder JobOutputAsset als Eingabemedienobjekt einer Aufgabe angeben.
@@ -595,7 +585,7 @@ Bei jeder Auftragsanforderung sind einige wichtige Punkte zu beachten:
 Weitere Informationen finden Sie unter [Erstellen eines Codierungsauftrags mit der Media Services REST-API](media-services-rest-encode-asset.md).
 
 ### <a name="monitor-processing-progress"></a>Überwachen des Verarbeitungsstatus
-Sie können den Auftragsstatus mithilfe der State-Eigenschaft abrufen, wie im folgenden Beispiel veranschaulicht.
+Sie können den Auftragsstatus mithilfe der State-Eigenschaft abrufen, wie im folgenden Beispiel veranschaulicht:
 
 **HTTP-Anforderung**
 
@@ -604,7 +594,7 @@ Sie können den Auftragsstatus mithilfe der State-Eigenschaft abrufen, wie im fo
     Accept: application/json;odata=verbose
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=zf84471d-2233-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1336908022&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=RYXOraO6Z%2f7l9whWZQN%2bypeijgHwIk8XyikA01Kx1%2bk%3d
     Host: wamsbayclus001rest-hs.net
     Content-Length: 0
@@ -665,7 +655,7 @@ Der folgende Code zeigt, wie Sie die ID des Ausgabemedienobjekts anfordern.
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=amstestaccount001&urn%3aSubscriptionId=z7f09258-2233-4ca2-b1ae-193798e2c9d8&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1421675491&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=9hUudHYnATpi5hN3cvTfgw%2bL4N3tL0fdsRnQnm6ZYIU%3d
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Host: wamsbayclus001rest-hs.cloudapp.net
 
 
@@ -742,7 +732,7 @@ Das folgende Beispiel zeigt, wie die AccessPolicy für Leseberechtigungen eines 
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
     Host: wamsbayclus001rest-hs.net
     Content-Length: 74
@@ -765,7 +755,7 @@ Der folgende Code zeigt, wie Sie eine URL abrufen, die zum Herunterladen einer z
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=zf84471d-b1ae-2233-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
     Host: wamsbayclus001rest-hs.net
     Content-Length: 182
@@ -858,7 +848,7 @@ Der folgende Code zeigt, wie Sie einen Streaming-URL-Locator erstellen:
     Accept: application/json
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
-    x-ms-version: 2.11
+    x-ms-version: 2.17
     Authorization: Bearer http%3a%2f%2fschemas.xmlsoap.org%2fws%2f2005%2f05%2fidentity%2fclaims%2fnameidentifier=youraccountname&urn%3aSubscriptionId=2f84471d-b1ae-4e75-aa09-010f0fc0cf5b&http%3a%2f%2fschemas.microsoft.com%2faccesscontrolservice%2f2010%2f07%2fclaims%2fidentityprovider=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&Audience=urn%3aWindowsAzureMediaServices&ExpiresOn=1337067658&Issuer=https%3a%2f%2fwamsprodglobal001acs.accesscontrol.windows.net%2f&HMACSHA256=dithjGvlXR9HlyAf5DE99N5OCYkPAxsHIcsTSjm9%2fVE%3d
     Host: wamsbayclus001rest-hs
     Content-Length: 182

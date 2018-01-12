@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 9aafd6300bebbb5505aa4ed707cac9716c8e6aa1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 622bb5971a6ad774e770f00d2d9f44999b844d12
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können
 
@@ -803,14 +803,14 @@ Azure Cosmos DB ist eine NoSQL-Datenbank in der Cloud. Sie ermöglicht Ihnen, mi
 
 Sie müssen die folgenden erforderlichen Schritte ausführen, um über die DSVM auf Azure Cosmos DB zuzugreifen.
 
-1. Installieren Sie das DocumentDB Python SDK (führen Sie ```pip install pydocumentdb``` an der Befehlszeile aus).
+1. Installieren des Azure Cosmos DB Python SDK (führen Sie ```pip install pydocumentdb``` an der Eingabeaufforderung aus)
 2. Erstellen Sie im [Azure-Portal](https://portal.azure.com) ein Azure Cosmos DB-Konto und eine Datenbank.
 3. Laden Sie [hier](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) das Azure Cosmos DB-Migrationstool herunter, und extrahieren Sie es in ein Verzeichnis Ihrer Wahl.
 4. Importieren Sie JSON-Daten, die in einem [öffentlichen Blobspeicher](https://cahandson.blob.core.windows.net/samples/volcano.json) gespeichert sind (Daten zu Vulkanen), mit den folgenden Befehlsparametern des Migrationstools („dtui.exe“ in dem Verzeichnis, in dem Sie das Cosmos DB-Migrationstool installiert haben) in Cosmos DB. Geben Sie die Quell-und Zielposition mit diesen Parametern ein:
    
     /s:JsonFile /s.Files:https://cahandson.blob.core.windows.net/samples/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1
 
-Sobald Sie die Daten importiert haben, können Sie in Jupyter das Notebook namens *DocumentDBSample* öffnen, das den Python-Code für den Zugriff auf DocumentDB und die Ausführung einiger grundlegender Abfragen enthält. Weitere Informationen zu Cosmos DB finden Sie auf der [Dokumentationsseite](https://docs.microsoft.com/azure/cosmos-db/) für den Dienst.
+Sobald Sie die Daten importiert haben, können Sie in Jupyter das Notebook namens *DocumentDBSample* öffnen, das den Python-Code für den Zugriff auf Azure Cosmos DB und die Ausführung einiger grundlegender Abfragen enthält. Weitere Informationen zu Cosmos DB finden Sie auf der [Dokumentationsseite](https://docs.microsoft.com/azure/cosmos-db/) für den Dienst.
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8. Erstellen von Berichten und Dashboard mit Power BI Desktop
 Nun visualisieren wir die Volcano JSON-Datei aus dem vorherigen Cosmos DB-Beispiel in Power BI, um visuelle Einblicke in die Daten zu erhalten. Eine ausführliche Anleitung finden Sie im [Power BI-Artikel](../../cosmos-db/powerbi-visualize.md). Die allgemeinen Schritte sind folgende:

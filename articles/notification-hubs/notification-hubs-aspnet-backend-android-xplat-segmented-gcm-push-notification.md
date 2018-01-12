@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.openlocfilehash: 76ec01c874fceedab7d76b2ef58e4b45b5489f58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b3fc05cfec2b20501a28f3d76f474ccd49e27e8
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Verwenden von Notification Hubs zum Übermitteln von aktuellen Nachrichten
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -278,7 +278,7 @@ Die App kann ist jetzt vollständig und kann verschiedene Kategorien in einem lo
 2. Aktivieren Sie eine oder mehrere Kategorien, und klicken Sie dann auf **Subscribe**.
    
     Die App konvertiert die ausgewählten Kategorien in Tags, und fordert eine neue Geräteregistrierung für die ausgewählten Tags vom Notification Hub an. Die registrierten Kategorien werden zurückgegeben und in einer Popupbenachrichtigung angezeigt.
-3. Senden Sie eine neue Benachrichtigung, indem Sie die .NET-Konsolen-App ausführen.  Alternativ können Sie mithilfe der Registerkarte „Debuggen“ des Notification Hub im [klassischen Azure-Portal]Vorlagenbenachrichtigungen mit Tags senden.
+3. Senden Sie eine neue Benachrichtigung, indem Sie die .NET-Konsolen-App ausführen.  Alternativ können Sie mithilfe der Registerkarte „Debuggen“ des Notification Hub im [Azure-Portal] Vorlagenbenachrichtigungen mit Tags senden.
    
     Die Benachrichtigungen für die ausgewählten Kategorien werden als Popupbenachrichtigungen angezeigt.
 
@@ -302,5 +302,5 @@ In diesem Lernprogramm haben Sie erfahren, wie aktuelle Nachrichten nach Kategor
 [Submit an app page]: http://go.microsoft.com/fwlink/p/?LinkID=266582
 [My Applications]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
-[klassischen Azure-Portal]: https://manage.windowsazure.com
+[Azure-Portal]: https://portal.azure.com
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591

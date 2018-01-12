@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5ee89d0ae4c3c56d164aff4e321ee99f015ba4fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b5b1d7723b57db2614dc889282f98e9673b4bbd
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
 Beim Ausführen von Codierungsaufträgen ist es nützlich, deren Status nachverfolgen zu können. Sie können Media Services zur Übermittlung von Benachrichtigungen an [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) konfigurieren. Sie können den Status des Auftrags überwachen, indem Sie Benachrichtigungen aus Queue Storage abrufen. 
@@ -27,7 +27,7 @@ Auf die an den Warteschlangenspeicher übermittelten Nachrichten kann von übera
 
 Häufig werden Media Services-Benachrichtigungen überwacht, wenn Sie ein Content Management System entwickeln, das nach Abschluss der Codierung eines Auftrags einige zusätzliche Aufgaben durchführen soll (z.B. den nächsten Schritt in einem Workflow auslösen oder Inhalte veröffentlichen).
 
-In diesem Thema wird gezeigt, wie Sie Benachrichtigungen aus Queue Storage abrufen.  
+In diesem Artikel wird gezeigt, wie Sie Benachrichtigungen aus Queue Storage abrufen.  
 
 ## <a name="considerations"></a>Überlegungen
 Beachten Sie Folgendes beim Entwickeln von Media Services-Anwendungen, die Queue Storage verwenden:
@@ -54,7 +54,7 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 9. Löscht die Warteschlange und den Benachrichtigungsendpunkt.
 
 > [!NOTE]
-> Die empfohlene Methode zum Überwachen des Auftragsstatus ist das Überwachen von Benachrichtigungen, wie im folgenden Beispiel gezeigt.
+> Die empfohlene Methode zum Überwachen des Auftragsstatus ist das Überwachen von Benachrichtigungen, wie im folgenden Beispiel gezeigt:
 >
 > Sie können aber auch den Status eines Auftrags mithilfe der **IJob.State** -Eigenschaft überprüfen.  Eine Benachrichtigung zum Abschluss eines Auftrags kann eintreffen, bevor der Zustand für **IJob** auf **Abgeschlossen** festgelegt wurde. Die **IJob.State**-Eigenschaft gibt den korrekten Zustand leicht verzögert an.
 >
@@ -64,6 +64,7 @@ Das Codebeispiel in diesem Abschnitt erfüllt die folgenden Aufgaben:
 
 1. Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben. 
 2. Erstellen Sie (unter einem beliebigen Pfad auf Ihrem lokalen Laufwerk) einen neuen Ordner, und kopieren Sie eine MP4-Datei, die Sie codieren und streamen oder progressiv herunterladen möchten. In diesem Beispiel wird der Pfad „C:\Media“ verwendet.
+3. Fügen Sie der Bibliothek **System.Runtime.Serialization** einen Verweis hinzu.
 
 ### <a name="code"></a>Code
 
@@ -120,9 +121,14 @@ namespace JobNotification
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
+
         private static readonly string _StorageConnectionString = 
             ConfigurationManager.AppSettings["StorageConnectionString"];
 
@@ -138,11 +144,15 @@ namespace JobNotification
             string endPointAddress = Guid.NewGuid().ToString();
 
             // Create the context.
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-
+            
             // Create the queue that will be receiving the notification messages.
             _queue = CreateQueue(_StorageConnectionString, endPointAddress);
 
@@ -326,7 +336,8 @@ namespace JobNotification
     }
 }
 ```
-Das Beispiel oben generiert die folgende Ausgabe. Die Werte können variieren.
+
+Das vorherige Beispiel erzeugt die folgende Ausgabe: Ihre Werte können davon abweichen.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

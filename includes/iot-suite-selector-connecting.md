@@ -8,7 +8,7 @@
 In diesem Tutorial implementieren Sie ein **Kühlgerät**, das die folgenden Telemetriedaten an die [vorkonfigurierte Lösung](../articles/iot-suite/iot-suite-what-are-preconfigured-solutions.md) für die Remoteüberwachung sendet:
 
 * Temperatur
-* Druck
+* Pressure
 * Luftfeuchtigkeit
 
 Der Einfachheit halber generiert der Code Beispieltelemetriewerte für den **Kühler**. Sie können das Beispiel noch erweitern, indem Sie echte Sensoren an Ihr Gerät anschließen und echte Telemetriedaten senden.
@@ -19,7 +19,7 @@ Das Beispielgerät führt auch folgende Vorgänge durch:
 * Antwortet auf Aktionen, die in der Lösung von der Seite **Geräte** ausgelöst wurden
 * Antwortet auf Konfigurationsänderungen, die von der Seite **Geräte** in der Lösung gesendet werden
 
-Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](http://azure.microsoft.com/pricing/free-trial/).
+Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Ausführliche Informationen finden Sie unter [Kostenlose Azure-Testversion](http://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -54,7 +54,7 @@ Um die Anmeldeinformationen zu ermitteln, anhand derer Ihr Gerät eine Verbindun
 
 1. Suchen Sie die Ressourcengruppe mit den Azure-Diensten, die Ihre Lösung für die Remoteüberwachung verwendet. Die Ressourcengruppe weist denselben Namen wie die Lösung für die Remoteüberwachung auf, die Sie bereitgestellt haben.
 
-1. Navigieren Sie in dieser Ressourcengruppe zu IoT Hub. Wählen Sie dann **Device Explorer**:
+1. Navigieren Sie in dieser Ressourcengruppe zu IoT Hub. Wählen Sie dann **IoT-Geräte** aus:
 
     ![Device Explorer](media/iot-suite-selector-connecting/deviceexplorer.png)
 

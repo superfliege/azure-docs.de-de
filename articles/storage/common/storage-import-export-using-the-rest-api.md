@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.openlocfilehash: b780385ad0af34bcb15639683d1aa5d689b38b50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a5a97a5d9f06aa73f1ad521e112fa25f215724f
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="using-the-azure-importexport-service-rest-api"></a>Verwenden der REST-API des Azure Import/Export-Diensts
 
-Der Microsoft Azure Import/Export-Dienst macht eine REST-API verfügbar, um die programmgesteuerte Kontrolle von Import-/Exportaufträgen zu ermöglichen. Mithilfe der REST-API können Sie alle Import-/Exportvorgänge durchführen, die mit dem [Azure-Portal](https://portal.azure.com/) möglich sind. Außerdem können Sie mit der REST-API bestimmte präzise Vorgänge durchführen (z.B. Abfragen des prozentualen Fortschritts eines Auftrags), die im klassischen Azure-Portal derzeit nicht verfügbar sind.
+Der Microsoft Azure Import/Export-Dienst macht eine REST-API verfügbar, um die programmgesteuerte Kontrolle von Import-/Exportaufträgen zu ermöglichen. Mithilfe der REST-API können Sie alle Import-/Exportvorgänge durchführen, die mit dem [Azure-Portal](https://portal.azure.com/) möglich sind. Außerdem können Sie mit der REST-API bestimmte präzise Vorgänge durchführen (z. B. Abfragen des prozentualen Fortschritts eines Auftrags), die im Azure-Portal derzeit nicht verfügbar sind.
 
-Eine Übersicht über den Import/Export-Dienst und ein Tutorial, in dem die Verwendung des klassischen Portals zum Erstellen und Verwalten von Import- und Exportaufträgen beschrieben wird, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage-import-export-service.md).
+Eine Übersicht über den Import/Export-Dienst und ein Tutorial, in dem die Verwendung des Portals zum Erstellen und Verwalten von Import- und Exportaufträgen beschrieben wird, finden Sie unter [Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in den Blobspeicher](../storage-import-export-service.md).
 
 ## <a name="service-endpoints"></a>Dienstendpunkte
 

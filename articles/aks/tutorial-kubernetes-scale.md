@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 9eba0de054b06233f2de7fb375010b4b40c6937f
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: ff8cf813f9c932f867413dbf7e76f949e0de2f26
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scale-application-in-azure-container-service-aks"></a>Skalieren einer Anwendung in Azure Container Service (AKS)
 
@@ -32,7 +32,7 @@ In den nachfolgenden Tutorials wird die Azure Voting-Anwendung aktualisiert. Zud
 
 In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, dieses Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt.
 
-Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages](./tutorial-kubernetes-prepare-app.md) zurück.
+Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
 ## <a name="scale-aks-nodes"></a>Skalieren der AKS-Knoten
 
@@ -64,7 +64,7 @@ Die Ausgabe sieht in etwa wie folgt aus:
 
 ## <a name="manually-scale-pods"></a>Manuelles Skalieren von Pods
 
-Bisher wurden die Front-End-Instanz und die Redis-Instanz der Azure Voting-App mit jeweils einem Replikat bereitgestellt. Führen Sie zum Überprüfen den Befehl [kubectl get](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) aus.
+Bisher wurden die Front-End-Instanz und die Redis-Instanz der Azure Voting-App mit jeweils einem Replikat bereitgestellt. Führen Sie zum Überprüfen den Befehl [kubectl get][kubectl-get] aus.
 
 ```azurecli
 kubectl get pods
@@ -78,13 +78,13 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-Ändern Sie die Anzahl von Pods in der `azure-vote-front`-Bereitstellung manuell mithilfe des Befehls [kubectl scale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale). In diesem Beispiel wird die Anzahl auf 5 erhöht.
+Ändern Sie die Anzahl von Pods in der `azure-vote-front`-Bereitstellung manuell mithilfe des Befehls [kubectl scale][kubectl-scale]. In diesem Beispiel wird die Anzahl auf 5 erhöht.
 
 ```azurecli
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Führen Sie [kubectl get pods](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) aus, um zu überprüfen, ob Kubernetes die Pods erstellt. Nach ca. einer Minute werden die zusätzlichen Pods ausgeführt:
+Führen Sie [kubectl get pods][kubectl-get] aus, um zu überprüfen, ob Kubernetes die Pods erstellt. Nach ca. einer Minute werden die zusätzlichen Pods ausgeführt:
 
 ```azurecli
 kubectl get pods
@@ -104,7 +104,7 @@ azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 
 ## <a name="autoscale-pods"></a>Automatisches Skalieren von Pods
 
-Kubernetes unterstützt [die automatische horizontale Skalierung von Pods](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/), um die Anzahl von Pods in einer Bereitstellung je nach CPU-Nutzung und anderen ausgewählten Metriken anzupassen.
+Kubernetes unterstützt [die automatische horizontale Skalierung von Pods][kubernetes-hpa], um die Anzahl von Pods in einer Bereitstellung je nach CPU-Nutzung und anderen ausgewählten Metriken anzupassen.
 
 Um die automatische Skalierungsfunktion zu verwenden, müssen CPU-Anforderungen und -Grenzwerte Ihrer Pods definiert sein. In der `azure-vote-front`-Bereitstellung fordert der Front-End-Container 0,25 CPUs an, und es gilt ein Grenzwert von 0,5 CPUs. Die Einstellungen sehen folgendermaßen aus:
 
@@ -116,7 +116,7 @@ resources:
      cpu: 500m
 ```
 
-Das folgende Beispiel verwendet den Befehl [kubectl autoscale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#autoscale), um die Anzahl von Pods in der `azure-vote-front`-Bereitstellung automatisch zu skalieren. Wenn die CPU-Nutzung 50 % übersteigt, erhöht die automatische Skalierungsfunktion die Anzahl von Pods auf den Maximalwert 10.
+Das folgende Beispiel verwendet den Befehl [kubectl autoscale][kubectl-autoscale], um die Anzahl von Pods in der `azure-vote-front`-Bereitstellung automatisch zu skalieren. Wenn die CPU-Nutzung 50 % übersteigt, erhöht die automatische Skalierungsfunktion die Anzahl von Pods auf den Maximalwert 10.
 
 
 ```azurecli
@@ -150,4 +150,14 @@ In diesem Tutorial haben Sie verschiedene Skalierungsfunktionen in Ihrem Kuberne
 Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Aktualisierung von Anwendungen im Cluster zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Aktualisieren einer Anwendung in Kubernetes](./tutorial-kubernetes-app-update.md)
+> [Aktualisieren einer Anwendung in Kubernetes][aks-tutorial-update-app]
+
+<!-- LINKS - external -->
+[kubectl-autoscale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#autoscale
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-scale]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#scale
+[kubernetes-hpa]: https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-update-app]: ./tutorial-kubernetes-app-update.md

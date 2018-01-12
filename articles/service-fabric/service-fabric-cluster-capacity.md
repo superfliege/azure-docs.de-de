@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: chackdan
-ms.openlocfilehash: f7c4a00d2c9be2d6b4d3d0b4dfb152deb2d0e217
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: cf690b7e5b0a2b19282c1655b6dc32e9eec6884c
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -107,7 +107,7 @@ Verwenden Sie die Silber- oder Gold-Dauerhaftigkeit für alle Knotentypen, die z
 
 
 > [!WARNING]
-> Es wird davon abgeraten, die VM-SKU-Größe für VM-Skalierungsgruppen zu ändern, die nicht mindestens mit der Dauerhaftigkeitsstufe „Silber“ ausgeführt werden. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine minimale Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten. 
+> Es wird davon abgeraten, die VM-SKU-Größe für VM Scale Sets zu ändern, die nicht mindestens mit der Dauerhaftigkeitsstufe „Silber“ ausgeführt werden. Bei der Änderung der VM-SKU-Größe handelt es sich um einen für Daten schädlichen direkten Infrastrukturvorgang. Ohne eine minimale Möglichkeit der Verzögerung oder Überwachung dieser Änderung ist es möglich, dass der Vorgang bei zustandsbehafteten Diensten zu Datenverlusten führt oder selbst bei zustandslosen Workloads unvorhergesehene Probleme auftreten. 
 > 
     
 3. Verwalten Sie mindestens fünf Knoten für alle VM-Skalierungsgruppen, für die die Dauerhaftigkeitsstufen „Gold“ oder „Silber“ aktiviert wurden.

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: b0fad1d151799f88c72cfe1359978d69cc1421c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d1e3c826e61b8dee264e1c01fd2d54ba7ebb636
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Häufig gestellte Fragen zur Verwendung von ClearDB MySql-Datenbanken mit Azure App Service
 In diesem Dokument werden häufige gestellte Fragen zu Verwendung und Erwerb von ClearDB MySQL-Datenbanken für Azure-Web-Apps beantwortet.
@@ -68,7 +68,7 @@ Wählen Sie für Web-Apps mindestens den Tarif Basic. Für ClearDB empfehlen wir
 Im [Azure-Portal](https://portal.azure.com) können Sie eine ClearDB-Datenbank mit freigegebenem Hosting zentral hochskalieren. Weitere Informationen finden Sie in [diesem Artikel](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/). Derzeit wird für ClearDB Premium-Cluster im Azure-Portal kein Upgrade unterstützt.
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Warum ist meine ClearDB-Datenbank im Azure-Portal nicht sichtbar?
-Wenn die ClearDB-Datenbank mithilfe von Azure Resource Manager oder über das [neue Azure-Portal](https://portal.azure.com) erstellt wird, ist sie im [alten Azure-Portal](https://manage.windowsazure.com) nicht sichtbar. Dies können Sie umgehen, indem Sie die Datenbank manuell mit der Web-App verknüpfen. Wenn Sie die ClearDB-Datenbank im [alten Portal](https://manage.windowsazure.com) erstellen, können Sie sie im [neuen Azure-Portal](https://portal.azure.com) auch nicht sehen. Hierfür ist keine Problemumgehung möglich.
+Wenn Sie die ClearDB-Datenbank auf klassische Weise erstellt haben, können Sie die Datenbank nicht im [Azure-Portal](https://portal.azure.com) sehen. Für dieses Szenario gibt es keine Problemumgehung.
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>Wen bitte ich um Unterstützung, wenn meine Datenbank ausfällt?
 Wenden Sie sich bei sämtlichen Datenbankproblemen an den [ClearDB-Support](https://www.cleardb.com/developers/help/support) . Stellen Sie bei Aufforderung Ihre Azure-Abonnementdaten bereit.

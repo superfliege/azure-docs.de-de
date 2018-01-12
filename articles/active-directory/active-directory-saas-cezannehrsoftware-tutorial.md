@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
+manager: mtillman
 ms.reviewer: joflore
 ms.assetid: 62b42e15-c282-492d-823a-a7c1c539f2cc
 ms.service: active-directory
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 620b0f62bceeda6fac87c31b325a078260f7d3d0
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 3934f814a9060adf275a4bdcc83403da4b2a4075
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Tutorial: Azure Active Directory-Integration mit Cezanne HR Software
 
@@ -125,25 +125,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_general_400.png)
 
-6. Klicken Sie im Abschnitt mit der **Cezanne HR Software-Konfiguration** auf **Cezanne HR Software konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+6. Klicken Sie im Abschnitt mit der **Cezanne HR Software-Konfiguration** auf **Cezanne HR Software konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen.
 
-    ![Cezanne HR Software-Konfiguration](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png) 
+    ![Cezanne HR Software-Konfiguration](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure.png)
 
-7. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem Cezanne HR Software-Mandanten als Administrator an.
+7. Scrollen Sie nach unten zum Abschnitt **Kurzübersicht**. Kopieren Sie die **URL für den SAML-SSO-Dienst und die SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
 
-8. Klicken Sie im linken Navigationsbereich auf **System Setup**(Systeminstallation). Wechseln Sie zu **Sicherheitseinstellungen**. Navigieren Sie anschließend zu **Single Sign-On Configuration**(Konfiguration des einmaligen Anmeldens).
+    ![Cezanne HR Software-Konfiguration](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_configure1.png)
+
+8. Melden Sie sich in einem anderen Webbrowserfenster an Ihrem Cezanne HR Software-Mandanten als Administrator an.
+
+9. Klicken Sie im linken Navigationsbereich auf **System Setup**(Systeminstallation). Wechseln Sie zu **Sicherheitseinstellungen**. Navigieren Sie anschließend zu **Single Sign-On Configuration**(Konfiguration des einmaligen Anmeldens).
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-9. Aktivieren Sie im Bereich **Allow users to log in using the following Single Sign-On (SSO) Service** (Benutzeranmeldung per SSO-Dienst zulassen) das Kontrollkästchen **SAML 2.0**, und wählen Sie die Option für die **Erweiterte Konfiguration** aus.
+10. Aktivieren Sie im Bereich **Allow users to log in using the following Single Sign-On (SSO) Service** (Benutzeranmeldung per SSO-Dienst zulassen) das Kontrollkästchen **SAML 2.0**, und wählen Sie die Option für die **Erweiterte Konfiguration** aus.
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
-10. Klicken Sie auf die Schaltfläche **Neu hinzufügen** .
+11. Klicken Sie auf die Schaltfläche **Neu hinzufügen** .
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_002.png)
 
-11. Führen Sie im Abschnitt **SAML 2.0 IDENTITY PROVIDERS** (SAML 2.0-IDENTITÄTSANBIETER) die folgenden Schritte aus:
+12. Führen Sie im Abschnitt **SAML 2.0 IDENTITY PROVIDERS** (SAML 2.0-IDENTITÄTSANBIETER) die folgenden Schritte aus:
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_003.png)
     
@@ -161,7 +165,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     g. Klicken Sie auf die Schaltfläche **OK** . 
 
-12. Klicken Sie auf die Schaltfläche **Save** .
+13. Klicken Sie auf die Schaltfläche **Save** .
 
     ![Einmaliges Anmelden auf App-Seite konfigurieren](./media/active-directory-saas-cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_004.png)
 

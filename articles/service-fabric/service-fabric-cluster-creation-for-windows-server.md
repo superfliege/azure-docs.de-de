@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/10/2017
 ms.author: chackdan;maburlik;dekapur
-ms.openlocfilehash: 6aa2905a97ec6b8c125f2ab9572a8e40bf525b27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b3b1e8a368419fe4014802f7b2a35b7ae3fba3c
+ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/08/2017
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Erstellen eines eigenständigen Clusters unter Windows Server
 Mithilfe von Azure Service Fabric können Sie Service Fabric-Cluster auf beliebigen virtuellen oder physischen Computern erstellen, auf denen Windows Server ausgeführt wird. So können Sie Service Fabric-Anwendungen in jeder Umgebung bereitstellen und ausführen, in der sich miteinander verbundene Windows Server-Computer befinden – lokal oder bei einem Cloudanbieter. Service Fabric stellt ein Setuppaket zum Erstellen von Service Fabric-Clustern bereit. Es wird als eigenständiges Paket für Windows Server bezeichnet.
@@ -36,7 +36,7 @@ Dieser Artikel führt Sie durch den Vorgang zum Erstellen eines eigenständigen 
 * Befragen Sie im [Azure Service Fabric-Forum](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureServiceFabric?) die Community zum eigenständigen Service Fabric-Paket für Windows Server.
 * Erstellen Sie ein Ticket für [Professional Support für Service Fabric](http://support.microsoft.com/oas/default.aspx?prid=16146).  Weitere Informationen zu Professional Support von Microsoft finden Sie [hier](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
 * Support für dieses Paket erhalten Sie auch im Rahmen von [Microsoft Premier Support](https://support.microsoft.com/en-us/premier).
-* Weitere Informationen finden Sie unter [Supportoptionen für Azure Service Fabric](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-support).
+* Weitere Informationen finden Sie unter [Supportoptionen für Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-support).
 * Führen Sie zum Erfassen der Protokolle für den Support den [eigenständigen Service Fabric-Protokollsammler](service-fabric-cluster-standalone-package-contents.md) aus.
 
 <a id="downloadpackage"></a>

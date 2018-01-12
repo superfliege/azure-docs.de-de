@@ -5,7 +5,7 @@ services: active-directory
 keywords: "bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff"
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/16/2017
+ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 74b97ac263dcc45f7a8dd7461cbdb23d9fd5e6fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8c6707505a6331b53e06b1de60575dd3637ea477
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Best Practices für den bedingten Zugriff in Azure Active Directory
 
@@ -100,86 +100,18 @@ Vermeiden Sie in Ihrer Umgebung die folgenden Konfigurationen:
 
 ## <a name="policy-migration"></a>Richtlinienmigration
 
-Falls Sie Richtlinien im klassischen Azure-Portal konfiguriert haben, sollten Sie diese aus folgenden Gründen migrieren:
+Aus den folgenden Gründen sollten Sie das Migrieren der Richtlinien, die Sie nicht im Azure-Portal erstellt haben, in Erwägung ziehen:
+
+- Sie können jetzt Szenarien berücksichtigen, die bisher nicht behandelt werden konnten.
+
+- Sie können die Anzahl der zu verwaltenden Richtlinien reduzieren, indem Sie diese zusammenführen.   
+
+- Sie können alle bedingten Zugriffsrichtlinien an einem zentralen Ort verwalten.
+
+- Das klassische Azure-Portal wird eingestellt.   
 
 
-- Ein Benutzer, der sowohl in einer Richtlinie des klassischen Azure-Portals als auch in einer Richtlinie des Azure-Portals enthalten ist, muss die Anforderungen beider Richtlinien erfüllen. 
-
-- Wenn Sie Ihre vorhandenen Richtlinien nicht migrieren, können Sie keine Richtlinien für die Zugriffsgewährung implementieren.
-
-
-### <a name="migration-from-the-azure-classic-portal"></a>Migration aus dem klassischen Azure-Portal
-
-Szenario: 
-
-- In Ihrem [klassischen Azure-Portal](https://manage.windowsazure.com) ist Folgendes konfiguriert:
-
-    - SharePoint Online
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-best-practices/14.png)
-
-    - Eine gerätebasierte Richtlinie zum bedingten Zugriff
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-best-practices/15.png)
-
-- Sie möchten im Azure-Portal eine Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung konfigurieren. 
- 
-
-#### <a name="configuration"></a>Konfiguration 
-
-- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
-
-- Migrieren Sie sie zum Azure-Portal. 
-
-- Fügen Sie Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung hinzu.
-
-
-### <a name="migrating-from-intune"></a>Migrieren aus Intune 
-
-Szenario:
-
-- In [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) ist eine Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung für Exchange Online oder SharePoint Online konfiguriert.
-
-    ![Bedingter Zugriff](./media/active-directory-conditional-access-best-practices/15.png)
-
-- Sie möchten im Azure-Portal zur Verwendung von bedingtem Zugriff mit mobiler Anwendungsverwaltung migrieren.
-
-
-#### <a name="configuration"></a>Konfiguration 
- 
-- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
-
-- Migrieren Sie sie zum Azure-Portal. 
-
-- Überprüfen Sie Ihre Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung, die in Intune für Exchange Online oder SharePoint Online konfiguriert sind.
-
-- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch **genehmigte Anwendungen erforderlich** sind. 
- 
-
-### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>Migrieren aus dem klassischen Azure-Portal und aus Intune
-
-Szenario:
-
-- Folgendes ist konfiguriert:
-
-    - **Klassisches Azure-Portal:** gerätebasierter bedingter Zugriff 
-
-    - **Intune:** Richtlinien zum bedingten Zugriff mit mobiler Anwendungsverwaltung 
-    
-- Sie möchten beide Richtlinien im Azure-Portal zur Verwendung von Richtlinien zum bedingtem Zugriff mit mobiler Anwendungsverwaltung migrieren.
-
-
-#### <a name="configuration"></a>Konfiguration
-
-- Überprüfen Sie Ihre gerätebasierten Richtlinien zum bedingten Zugriff.
-
-- Migrieren Sie sie zum Azure-Portal. 
-
-- Überprüfen Sie Ihre Richtlinie zum bedingten Zugriff mit mobiler Anwendungsverwaltung, die in Intune für Exchange Online oder SharePoint Online konfiguriert ist.
-
-- Geben Sie zusätzlich zur gerätebasierten Kontrolle an, dass auch genehmigte Anwendungen **erforderlich** sind. 
-
-
+Weitere Informationen finden Sie unter [Migrieren klassischer Richtlinien in das Azure-Portal](active-directory-conditional-access-migration.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,20 +7,20 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 8b84b90e72f8cac1fc1f8a90391b7a5a4f6be1f4
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 7550748c496f4e5c671ab49f9b139d2d4926d497
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>Testen der Lösung mit simulierten Geräten
 
-In diesem Tutorial wird erläutert, wie Sie den Microservice zur Gerätesimulation mit der vorkonfigurierten Remoteüberwachungslösung verwenden. Zur Veranschaulichung der Funktionen des Gerätesimulators werden in diesem Tutorial zwei Szenarien in der Contoso IoT-Anwendung verwendet.
+In diesem Tutorial wird erläutert, wie Sie den Microservice zur Gerätesimulation mit der vorkonfigurierten Remoteüberwachungslösung anpassen. Zur Veranschaulichung der Funktionen des Gerätesimulators werden in diesem Tutorial zwei Szenarien in der Contoso IoT-Anwendung verwendet.
 
 Im ersten Szenario möchte Contoso ein neues intelligentes Leuchtmittelgerät (Lightbulb) testen. Zum Durchführen der Tests erstellen Sie ein neues simuliertes Gerät mit den folgenden Merkmalen:
 
@@ -177,7 +177,7 @@ Die Datei `lightbulb-01.json` definiert die Merkmale des Typs, z.B. die generier
       "SwitchOff": {
         "Type": "javascript",
         "Path": "SwitchOff-method.js"
-      },
+      }
     }
     ```
 
@@ -273,9 +273,9 @@ Informationen zum lokalen Testen und Debuggen Ihrer Änderungen finden Sie unter
 
 Konfigurieren Sie das Projekt so, dass die Dateien des neuen **Lightbulb**-Geräts in das Ausgabeverzeichnis kopiert werden:
 
-* Stellen Sie bei Verwendung von Visual Studio sicher, dass die im vorherigen Abschnitt erstellten drei neuen Lightbulb-Dateien dem Projekt **Dienste** in der Projektmappe hinzugefügt werden. Markieren Sie sie dann mit dem **Projektmappen-Explorer**, damit sie in das Ausgabeverzeichnis kopiert werden.
+* Stellen Sie bei Verwendung von Visual Studio sicher, dass die im vorherigen Abschnitt erstellten vier neuen Lightbulb-Dateien dem Projekt **Dienste** in der Projektmappe hinzugefügt werden. Markieren Sie sie dann mit dem **Projektmappen-Explorer**, damit sie in das Ausgabeverzeichnis kopiert werden.
 
-* Öffnen Sie bei Verwendung von Visual Studio Code die Datei **Services.csproj**, und fügen Sie die im vorherigen Abschnitt erstellten drei neuen Lightbulb-Dateien hinzu. Sehen Sie sich als Beispiel die vorhandenen Einträge für die Gerätemodelldatei in der Datei **Services.csproj** an.
+* Öffnen Sie bei Verwendung von Visual Studio Code die Datei **Services.csproj**, und fügen Sie die im vorherigen Abschnitt erstellten vier neuen Lightbulb-Dateien hinzu. Sehen Sie sich als Beispiel die vorhandenen Einträge für die Gerätemodelldatei in der Datei **Services.csproj** an.
 
 Informationen zum Testen des neuen Geräts in einer bereitgestellten Lösung finden Sie in folgenden Quellen:
 

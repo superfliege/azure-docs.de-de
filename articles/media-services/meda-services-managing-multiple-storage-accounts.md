@@ -6,19 +6,18 @@ documentationcenter:
 author: Juliako
 manager: cfowler
 editor: 
-ms.assetid: 4e4a9ec3-8ddb-4938-aec1-d7172d3db858
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 12/10/2017
 ms.author: juliako
-ms.openlocfilehash: 0b407c3b092fd2c706775154cee3164a9869315a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c99d39a7e33a161d63cf934e0b5983e3977598c4
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten
 Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto mehrere Speicherkonten anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
@@ -26,7 +25,7 @@ Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto me
 * Lastenausgleich der Assets für mehrere Speicherkonten.
 * Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
 
-In diesem Thema wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](/powershell/module/azurerm.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
+In diesem Artikel wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](/powershell/module/azurerm.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
 
 ## <a name="considerations"></a>Überlegungen
 Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die folgenden Überlegungen:
@@ -42,7 +41,7 @@ Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den We
 
 ## <a name="to-attach-storage-accounts"></a>So fügen Sie Speicherkonten an  
 
-Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](/powershell/module/azurerm.media), wie im folgenden Beispiel gezeigt.
+Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](https://docs.microsoft.com/rest/api/media/mediaservice) und [PowerShell](/powershell/module/azurerm.media), wie im folgenden Beispiel gezeigt:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -91,15 +90,23 @@ namespace MultipleStorageAccounts
 
         // Read values from the App.config file.
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials = 
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);

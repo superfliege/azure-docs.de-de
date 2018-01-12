@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: 221bd7662eb4974395c7f970961d5bfb556417f4
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ffcf0766b89cdab7c79c28dad6bf4c80275e33fc
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Verwenden des Microsoft Azure Import/Export-Diensts zum Übertragen von Daten in Azure Store
 Dieser Artikel enthält schrittweise Anweisungen, wie Sie mit dem Import/Export-Dienst von Azure große Datenmengen auf sichere Weise in Azure Blob Storage und Azure Files übertragen können, indem Sie Festplattenlaufwerke an ein Azure-Rechenzentrum schicken. Sie können diesen Dienst auch zum Übertragen von Daten aus Azure Storage auf Festplattenlaufwerke und zum Versand an Ihre lokalen Standorte nutzen. Daten von einer einzelnen internen SATA-Festplatte können entweder in Azure Blob Storage oder in Azure Files importiert werden. 
@@ -177,6 +177,8 @@ Unterstützte Standorte für die Verschickung:
 * China, Osten
 * China, Norden
 * UK, Süden
+* Deutschland, Mitte
+* Deutschland, Nordosten
 
 ### <a name="shipping"></a>Versand
 **Schicken von Festplatten an das Rechenzentrum:**
@@ -493,7 +495,7 @@ Nein. Sie müssen sowohl für den Import als auch den Export Ihre eigenen Laufwe
 
 **Wie kann ich auf Daten zugreifen, die von diesem Dienst importiert werden?**
 
-Sie können über das Azure-Portal oder mithilfe eines eigenständigen Tools, dem Speicher-Explorer, auf die Daten in Ihrem Azure-Speicherkonto zugreifen. https://docs.microsoft.com/de-de/azure/vs-azure-tools-storage-manage-with-storage-explorer 
+Sie können über das Azure-Portal oder mithilfe eines eigenständigen Tools, dem Speicher-Explorer, auf die Daten in Ihrem Azure-Speicherkonto zugreifen. https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer 
 
 **Wie sehen meine Daten nach Abschluss des Importauftrags im Speicherkonto aus? Wird meine Verzeichnishierarchie beibehalten?**
 

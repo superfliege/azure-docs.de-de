@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: 0bcf56e06c34af94746d42d8af18e32fcd9a7496
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: f0337002bbaf554a6a775464edefc032e6c7bab2
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Häufig gestellte Fragen zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem Azure File Sync (Vorschauversion) verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -80,7 +80,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 ## <a name="azure-file-sync"></a>Azure-Dateisynchronisierung
 * <a id="afs-region-availability"></a>**Welche Regionen werden für Azure File Sync (Vorschau) unterstützt?**  
-    Azure File Sync ist derzeit in den Regionen „USA, Westen“, „Europa, Westen“, „Australien, Osten“ und „Asien, Südosten“ verfügbar. Unterstützung für weitere Regionen wird hinzugefügt, während auf die allgemeine Verfügbarkeit hingearbeitet wird. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](storage-sync-files-planning.md#region-availability).
+    Azure File Sync ist derzeit in den Regionen „USA, Osten“, „USA, Westen“, „Europa, Westen“, „Australien, Osten“ und „Asien, Südosten“ verfügbar. Unterstützung für weitere Regionen wird hinzugefügt, während auf die allgemeine Verfügbarkeit hingearbeitet wird. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](storage-sync-files-planning.md#region-availability).
 
 * <a id="cross-domain-sync"></a>**Kann ich in Domänen eingebundene Server und nicht in Domänen eingebundene Server in derselben Synchronisierungsgruppe verwenden?**  
     Ja. Eine Synchronisierungsgruppe kann Serverendpunkte mit unterschiedlichen Active Directory-Mitgliedschaften auch dann umfassen, wenn diese nicht in Domänen eingebunden sind. Diese Konfiguration funktioniert zwar technisch einwandfrei, aber es wird davon abgeraten, diese als normale Konfiguration zu verwenden. Der Grund ist, dass Zugriffssteuerungslisten (ACLs), die für Dateien und Ordner auf einem Server definiert sind, unter Umständen von anderen Servern in der Synchronisierungsgruppe nicht durchgesetzt werden können. Die besten Ergebnisse erzielen Sie, wenn Sie sich an die folgende Empfehlung halten: Führen Sie die Synchronisierung zwischen Servern durch, die in derselben Active Directory-Gesamtstruktur enthalten sind, zwischen Servern in unterschiedlichen Active Directory-Gesamtstrukturen, die aber über eingerichtete Vertrauensstellungen verfügen, oder zwischen Servern, die keiner Domäne angehören. Hierbei ist es nicht ratsam, diese Konfigurationen zu mischen.

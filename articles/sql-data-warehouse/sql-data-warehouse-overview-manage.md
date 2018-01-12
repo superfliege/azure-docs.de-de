@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: b14d0aad5a1f50c225391dbab27ec6240423a65a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7b81c12c31fe7de40acca6baa8972e65c306ee0
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>Verwalten von Datenbanken in Azure SQL Data Warehouse
 Mit SQL Data Warehouse werden viele Aspekte der Datenbankverwaltung automatisiert. Beispielsweise müssen Sie zum Skalieren der Leistung nur die Menge der Computeressourcen anpassen und dafür zahlen. SQL Data Warehouse übernimmt dann alle Aufgaben zum horizontalen Hoch- und Herunterskalieren.
@@ -47,7 +47,7 @@ Informationen zu den ersten Schritten mit dem Azure-Portal finden Sie unter [Ers
 ### <a name="sql-server-data-tools-in-visual-studio"></a>SQL Server Data Tools in Visual Studio
 Mit den [SQL Server Data Tools][SQL Server Data Tools] (SSDT) in Visual Studio können Sie eine Verbindung mit Ihren Datenbanken herstellen und diese verwalten und entwickeln. Wenn Sie ein Anwendungsentwickler sind, der mit Visual Studio oder anderen integrierten Entwicklungsumgebungen (IDEs) vertraut ist, sollten Sie SSDT in Visual Studio ausprobieren.
 
-SSDT enthält den SQL Server-Objekt-Explorer, mit dem Sie SQL Data Warehouse-Datenbanken visuell darstellen, Verbindungen zu diesen herstellen und Skripts für sie ausführen können. Um eine schnelle Verbindung mit SQL Data Warehouse herzustellen, klicken Sie einfach in der Befehlsleiste auf die Schaltfläche **In Visual Studio öffnen** , während Sie die Datenbankdetails im klassischen Azure-Portal anzeigen.  
+SSDT enthält den SQL Server-Objekt-Explorer, mit dem Sie SQL Data Warehouse-Datenbanken visuell darstellen, Verbindungen zu diesen herstellen und Skripts für sie ausführen können. Um eine schnelle Verbindung mit SQL Data Warehouse herzustellen, klicken Sie einfach in der Befehlsleiste auf die Schaltfläche **In Visual Studio öffnen**, während Sie die Datenbankdetails im Azure-Portal anzeigen.  
 
 Informationen zu den ersten Schritten mit SSDT in Visual Studio finden Sie unter [Abfragen von Azure SQL Data Warehouse mit Visual Studio][Query Azure SQL Data Warehouse with Visual Studio].
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 312a66544a5e64daa86b4902b57d4050f1f66af5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fc92916b4164990059010645daa29e72b7143cb
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitsrahmen: Autorisierung | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 | **Datenbank** | <ul><li>[Stellen Sie sicher, dass beim Herstellen einer Verbindung mit dem Datenbankserver Konten mit geringstmöglichen Berechtigungen verwendet werden.](#privileged-server)</li><li>[Implementieren Sie Sicherheit auf Zeilenebene (Row Level Security, RLS), um zu verhindern, dass Mandanten auf Daten anderer Mandanten zugreifen.](#rls-tenants)</li><li>[Die Rolle „SysAdmin“ darf nur gültige, erforderliche Benutzer enthalten.](#sysadmin-users)</li></ul> |
 | **IoT-Cloudgateway** | <ul><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Cloudgateway Token mit geringstmöglichen Berechtigungen.](#cloud-least-privileged)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie einen auf Sendeberechtigungen beschränkten SAS-Schlüssel, um Gerätetoken zu generieren.](#sendonly-sas)</li><li>[Verwenden Sie keine Zugriffstoken, die direkten Zugriff auf den Event Hub ermöglichen.](#access-tokens-hub)</li><li>[Verwenden Sie beim Herstellen einer Verbindung mit dem Event Hub SAS-Schlüssel, die über die erforderlichen Mindestberechtigungen verfügen.](#sas-minimum-permissions)</li></ul> |
-| **Azure DocumentDB** | <ul><li>[Verwenden Sie nach Möglichkeit Ressourcentoken, um eine Verbindung mit DocumentDB herzustellen.](#resource-docdb)</li></ul> |
+| **Azure DocumentDB** | <ul><li>[Verwenden Sie nach Möglichkeit Ressourcentoken, um eine Verbindung mit Azure Cosmos DB herzustellen.](#resource-docdb)</li></ul> |
 | **Azure-Vertrauensstellungsgrenze** | <ul><li>[Ermöglichen Sie mithilfe von RBAC eine differenzierte Zugriffsverwaltung für das Azure-Abonnement.](#grained-rbac)</li></ul> |
 | **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Beschränken Sie mithilfe von RBAC den Clientzugriff auf Clustervorgänge.](#cluster-rbac)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Führen Sie die Sicherheitsmodellierung durch, und verwenden Sie bei Bedarf die Sicherheit auf Feldebene.](#modeling-field)</li></ul> |
@@ -224,7 +224,7 @@ RLS ist als vorgefertigtes Datenbankfeature nur für SQL Server ab Version 2016 
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | N/V  |
 | **Referenzen**              | N/V  |
-| **Schritte** | Ein Ressourcentoken ist einer DocumentDB-Berechtigungsressource zugeordnet, und erfasst die Beziehung zwischen dem Benutzer einer Datenbank und der Berechtigung, über die der Benutzer für eine bestimmte bestimmte DocumentDB-Anwendungsressource (z. B. Sammlung, Dokument) verfügt. Verwenden Sie für den Zugriff auf DocumentDB immer ein Ressourcentoken, falls die Verarbeitung von Hauptschlüsseln oder Schlüsseln mit Leseberechtigung nicht bedenkenlos dem Client überlassen werden kann (beispielsweise im Falle einer Endbenutzeranwendung wie einem mobilen Client oder einem Desktopclient). Verwenden Sie Hauptschlüssel oder Schlüssel mit Leseberechtigung von Back-End-Anwendungen, die diese Schlüssel sicher speichern können.|
+| **Schritte** | Ein Ressourcentoken ist einer Azure Cosmos DB-Berechtigungsressource zugeordnet und erfasst die Beziehung zwischen dem Benutzer einer Datenbank und der Berechtigung, über die der Benutzer für eine bestimmte Azure Cosmos DB-Anwendungsressource (z. B. Sammlung, Dokument) verfügt. Verwenden Sie für den Zugriff auf Azure Cosmos DB immer ein Ressourcentoken, falls die Verarbeitung von Hauptschlüsseln oder Schlüsseln mit Leseberechtigung nicht bedenkenlos dem Client überlassen werden kann (z. B. im Falle einer Endbenutzeranwendung wie einem mobilen Client oder einem Desktopclient). Verwenden Sie Hauptschlüssel oder Schlüssel mit Leseberechtigung von Back-End-Anwendungen, die diese Schlüssel sicher speichern können.|
 
 ## <a id="grained-rbac"></a>Ermöglichen Sie mithilfe von RBAC eine differenzierte Zugriffsverwaltung für das Azure-Abonnement.
 

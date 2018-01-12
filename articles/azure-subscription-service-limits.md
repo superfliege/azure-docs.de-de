@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 12/11/2017
 ms.author: byvinyal
-ms.openlocfilehash: dc506ce0872721a6da1c440eead107396c249f5f
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 1ae97b47d306640f09a535975b8e4461f51dea9e
+ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 In diesem Dokument sind einige der gängigsten Einschränkungen in Microsoft Azure aufgeführt, die bisweilen auch als „Kontingente“ bezeichnet werden. Dieses Dokument behandelt derzeit nicht alle Azure-Dienste. Mit der Zeit wird diese Liste erweitert, um größere Teile der Plattform abzudecken.
@@ -29,7 +29,7 @@ Weitere Informationen zu den Azure-Preisen finden Sie in der [Azure-Preisübersi
 > [!NOTE]
 > Wenn Sie eine Einschränkung oder ein Kontingent über den **Standardgrenzwert** anheben möchten, [öffnen Sie eine gebührenfreie Onlinekundensupport-Anforderung](azure-supportability/resource-manager-core-quotas-request.md). Die Einschränkungen können nicht über den Wert unter **Maximales Limit** in den folgenden Tabellen angehoben werden. Falls die Spalte **Maximales Limit** nicht vorhanden ist, gelten für die entsprechende Ressource keine anpassbaren Einschränkungen.
 >
-> Bei Abonnements mit einer kostenlosen Testversion sind Einschränkungs- oder Kontingenterhöhungen nicht möglich. Wenn Sie über eine kostenlose Testversion verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade einer kostenlosen Azure-Testversion auf nutzungsbasierte Bezahlung](billing/billing-upgrade-azure-subscription.md).
+> Bei [Abonnements mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) sind Einschränkungs- oder Kontingenterhöhungen nicht möglich. Wenn Sie über ein [Abonnement mit einer kostenlosen Testversion](https://azure.microsoft.com/offers/ms-azr-0044p) verfügen, können Sie ein Upgrade auf ein Abonnement mit [nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) durchführen. Weitere Informationen finden Sie unter [Upgrade einer kostenlosen Azure-Testversion auf nutzungsbasierte Bezahlung](billing/billing-upgrade-azure-subscription.md) und [FAQ zum kostenlosen Azure-Konto](https://azure.microsoft.com/free/free-account-faq).
 >
 
 ## <a name="limits-and-the-azure-resource-manager"></a>Grenzwerte und der Azure-Ressourcen-Manager
@@ -85,6 +85,7 @@ In den folgenden Grenzwerten wurde eine neue Tabelle hinzugefügt, um alle abwei
 * [Service Bus](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL-Datenbank](#sql-database-limits)
+* [SQL Data Warehouse](#sql-data-warehouse-limits)
 * [Speicher](#storage-limits)
 * [StorSimple-System](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
@@ -309,7 +310,10 @@ Detailliertere Informationen zu Grenzwerten wie etwa für Dokumentgröße, Abfra
 ### <a name="sql-database-limits"></a>Grenzwerte für SQL-Datenbanken
 Einschränkungen für SQL-Datenbanken finden Sie unter [Ressourceneinschränkungen für SQL-Datenbank](sql-database/sql-database-resource-limits.md).
 
-## <a name="see-also"></a>Siehe auch
+### <a name="sql-data-warehouse-limits"></a>Einschränkungen zu SQL Data Warehouse
+Einschränkungen zu SQL Data Warehouse finden Sie unter [Ressourceneinschränkungen zu SQL Data Warehouse](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+
+## <a name="see-also"></a>Weitere Informationen
 [Grundlegendes zu Azure-Einschränkungen und -Steigerungen](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 
 [Größen virtueller Computer und Clouddienste für Azure](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

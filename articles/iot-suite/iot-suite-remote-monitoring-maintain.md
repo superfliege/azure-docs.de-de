@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 12/12/2017
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 46b0269b3f5b98e1bcecdbeabd5544e97bb5c06c
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: d26275b6b03115b775990c9efb5d4706fcb829d1
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>Beheben von Geräteproblemen
 
@@ -46,11 +46,7 @@ Wählen Sie die Option **Explore Alarm** (Alarm untersuchen) neben dem Alarm aus
 
 ![„Explore Alarm“ (Alarm untersuchen) im Dashboard](media/iot-suite-remote-monitoring-maintain/dashboardexplorealarm.png)
 
-Nun können Sie auf der Seite **Maintenance** (Wartung) eine Liste der Alarme sehen:
-
-![Liste der Alarme auf der Seite „Maintenance“ (Wartung)](media/iot-suite-remote-monitoring-maintain/maintenancealarms.png)
-
-Wählen Sie den Alarm in der Liste **Alarms** (Alarme) aus, um Details zum Alarm anzuzeigen. In der Detailansicht wird Folgendes angezeigt:
+Die Detailansicht des Alarms zeigt Folgendes an:
 
 * Zeitpunkt, zu dem der Alarm ausgelöst wurde
 * Statusinformationen zu den Geräten, die dem Alarm zugeordnet sind
@@ -70,7 +66,7 @@ In der Liste können Sie das **Prototype**-Gerät sehen, für das der Temperatur
 
 Um das Problem bei dem **Prototype**-Gerät zu beheben, müssen Sie die **DecreaseTemperature**-Methode auf dem Gerät aufrufen.
 
-Um Aktionen für ein Gerät auszuführen, wählen Sie es in der Geräteliste aus, und wählen Sie dann **Schedule** (Zeitplan) aus. Das Gerätemodell **Engine** gibt drei Methoden an, die ein Gerät unterstützen muss:
+Um Aktionen für ein Gerät auszuführen, wählen Sie es in der Geräteliste aus, und wählen Sie dann **Schedule** (Zeitplan) aus. Das Gerätemodell **Prototype** gibt vier Methoden an, die ein Gerät unterstützen muss:
 
 ![Anzeigen der vom Gerät unterstützten Methoden](media/iot-suite-remote-monitoring-maintain/maintenancemethods.png)
 
@@ -78,11 +74,11 @@ Wählen Sie **DecreaseTemperature** aus, und legen Sie den Auftragsnamen auf **D
 
 ![Erstellen des Auftrags zum Verringern der Temperatur](media/iot-suite-remote-monitoring-maintain/maintenancecreatejob.png)
 
-Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **System Status** aus. In der Ansicht **System Status** können Sie alle Aufträge und Methodenaufrufe in der Lösung anzeigen:
+Um den Status des Auftrags auf der Seite **Maintenance** (Wartung) nachzuverfolgen, wählen Sie **Jobs** (Aufträge) aus. In der Ansicht **Jobs** (Aufträge) können Sie alle Aufträge und Methodenaufrufe in der Lösung anzeigen:
 
 ![Überwachen des Auftrags zum Verringern der Temperatur](media/iot-suite-remote-monitoring-maintain/maintenancerunningjob.png)
 
-Zum Anzeigen der Details eines bestimmten Auftrags oder Methodenaufrufs wählen Sie ihn in der Liste in der Ansicht **System Status** aus:
+Zum Anzeigen der Details eines bestimmten Auftrags oder Methodenaufrufs wählen Sie ihn in der Liste in der Ansicht **Jobs** (Aufträge) aus:
 
 ![Anzeigen von Auftragsdetails](media/iot-suite-remote-monitoring-maintain/maintenancejobdetail.png)
 

@@ -4,8 +4,8 @@ description: "Erfahren Sie, wie eine „Eingaben“ genannte Datenverbindung mit
 keywords: Datenstrom, Datenverbindung, Ereignisstrom
 services: stream-analytics
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
 ms.service: stream-analytics
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/05/2017
-ms.author: samacha
-ms.openlocfilehash: 652137cf7a41f8d90a56aebe9f82fd37d5e4683d
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 12/11/2017
+ms.author: sngun
+ms.openlocfilehash: e8b55269e861dc010c911491d52973b674dd50ca
+ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/12/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>Datenverbindung: Erfahren Sie mehr über Datenstromeingaben aus Ereignissen in Stream Analytics
 Bei der Datenverbindung mit einem Stream Analytics-Auftrag handelt es sich um einen Datenstrom von Ereignissen aus einer Datenquelle, die als *Eingabe* des Auftrags bezeichnet wird. Stream Analytics bietet eine hervorragende Integration in Datenstromquellen von Azure wie [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) und [Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/). Diese Eingabequellen können aus demselben Azure-Abonnement wie dem Ihres Analyseauftrags oder aus einem anderen Abonnement stammen.
@@ -37,9 +37,9 @@ Informationen zum Erstellen von Verweisdateneingaben finden Sie unter [Verwenden
 
 ## <a name="compression"></a>Komprimierung
 
-Azure Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequellen (Event Hubs, IoT Hub und Blob Storage). Bei dieser Funktion wird im Azure-Portal auf dem Blatt **Neue Eingabe** eine neue Dropdownoption hinzugefügt, über die Sie optional die Komprimierung von Datenströmen auswählen können. Zu den unterstützten Komprimierungstypen zählen zurzeit „Keine“, „GZip“ und „Deflate“. 
+Azure Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequellen (Event Hubs, IoT Hub und Blob Storage). Bei dieser Funktion wird im Azure-Portal auf dem Blatt **Neue Eingabe** eine neue Dropdownoption hinzugefügt, über die Sie optional die Komprimierung von Datenströmen auswählen können. Derzeit werden folgende Referenztypen unterstützt: „Keine“, „GZip“ und „Deflate“. Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung.
 
-Komprimierungen werden nicht parallel zur Avro-Serialisierung unterstützt und sind nicht auf Verweisdaten anwendbar. 
+Sie müssen bei der Avro-Serialisierung keinen Komprimierungstyp angeben. Wenn die eingegebenen Avro-Daten komprimiert sind, werden sie transparent behandelt. 
 
 ## <a name="create-data-stream-input-from-event-hubs"></a>Erstellen einer Datenstromeingabe aus Event Hubs
 

@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 299eb74686f00dc6d5eb9a1c6127aa134dcd9b77
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: a5380a3815335d7347b57dac49a3dca02c9d981c
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="scale-an-azure-container-service-aks-cluster"></a>Skalieren eines Azure Container Service-Clusters (AKS)
 
-Es ist einfach, einen AKS-Cluster auf eine andere Anzahl von Knoten zu skalieren.  Wählen Sie die gewünschte Anzahl von Knoten aus, und führen Sie den Befehl `az aks scale` aus.  Beim Herunterskalieren werden die Knoten sorgfältig [gesperrt und ausgeglichen](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/), um die Unterbrechung ausgeführter Anwendungen zu minimieren.  Beim Hochskalieren wartet der Befehl `az`, bis die Knoten vom Kubernetes-Cluster als `Ready` markiert wurden.
+Es ist einfach, einen AKS-Cluster auf eine andere Anzahl von Knoten zu skalieren.  Wählen Sie die gewünschte Anzahl von Knoten aus, und führen Sie den Befehl `az aks scale` aus.  Beim Herunterskalieren werden die Knoten sorgfältig [gesperrt und ausgeglichen][kubernetes-drain], um die Unterbrechung ausgeführter Anwendungen zu minimieren.  Beim Hochskalieren wartet der Befehl `az`, bis die Knoten vom Kubernetes-Cluster als `Ready` markiert wurden.
 
 ## <a name="scale-the-cluster-nodes"></a>Skalieren der Clusterknoten
 
@@ -88,4 +88,10 @@ Ausgabe:
 Erfahren Sie mehr über die Bereitstellung und Verwaltung von AKS mit den AKS-Tutorials.
 
 > [!div class="nextstepaction"]
-> [AKS-Tutorial](./tutorial-kubernetes-prepare-app.md)
+> [AKS-Tutorial][aks-tutorial]
+
+<!-- LINKS - external -->
+[kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
+
+<!-- LINKS - internal -->
+[aks-tutorial]: ./tutorial-kubernetes-prepare-app.md

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: dd09a4df42c1022c2a9f96daf69591bbfc777d79
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: ca858408ecb258cc64645571d048de93449689d6
+ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 12/09/2017
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Schützen eines eigenständigen Windows-Clusters mithilfe von X.509-Zertifikaten
 In diesem Artikel wird beschrieben, wie Sie die Kommunikation zwischen verschiedenen Knoten eines eigenständigen Windows-Clusters sichern. Außerdem wird beschrieben, wie Sie mithilfe von X.509-Zertifikaten Clients authentifizieren, die sich mit diesem Cluster verbinden. Mit der Authentifizierung wird sichergestellt, dass nur autorisierte Benutzer auf den Cluster und bereitgestellte Anwendungen zugreifen und Verwaltungsaufgaben ausführen können. Die Zertifikatsicherheit sollte auf dem Cluster aktiviert werden, wenn der Cluster erstellt wird.  
@@ -255,7 +255,7 @@ Exportieren Sie das Zertifikat nun in eine PFX-Datei mit einem geschützten Kenn
    Write-Host $cert.ToString($true)
    ```
 
-Wenn Sie über ein Azure-Abonnement verfügen, führen Sie alternativ die Schritte im Abschnitt [Hinzufügen von Zertifikaten zum Schlüsseltresor](service-fabric-cluster-creation-via-arm.md#add-certificates-to-your-key-vault) aus.
+Wenn Sie über ein Azure-Abonnement verfügen, befolgen Sie alternativ die Schritte in [Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
 ## <a name="install-the-certificates"></a>Installieren der Zertifikate
 Sobald Sie über Zertifikate verfügen, können Sie diese auf den Clusterknoten installieren. Auf den Knoten muss die neueste Windows PowerShell 3.x-Version installiert sein. Wiederholen Sie die Schritte auf jedem Knoten für Cluster- und Serverzertifikate sowie für sekundäre Zertifikate.

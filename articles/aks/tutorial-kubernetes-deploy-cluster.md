@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: a03bbfbdedd418216c26379e9d8dbd780fa89fd8
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 2c2318d9a5f72800f9cfbd430dca448fd1e5746f
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Bereitstellen eines Azure Container Service-Clusters (AKS)
 
@@ -28,7 +28,7 @@ In den nachfolgenden Tutorials wird die Azure Vote-Anwendung im Cluster bereitge
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In vorherigen Tutorials wurde ein Containerimage erstellt und in eine Azure Container Registry-Instanz hochgeladen. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages](./tutorial-kubernetes-prepare-app.md) zurück.
+In vorherigen Tutorials wurde ein Containerimage erstellt und in eine Azure Container Registry-Instanz hochgeladen. Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
 ## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Aktivieren der AKS-Vorschau für Ihr Azure-Abonnement
 Während AKS in der Vorschau ist, erfordert das Erstellen neuer Cluster ein Featureflag für Ihr Abonnement. Sie können dieses Feature für eine beliebige Anzahl von Abonnements anfordern, die Sie verwenden möchten. Verwenden Sie den Befehl `az provider register` zum Registrieren des AKS-Anbieters:
@@ -41,7 +41,7 @@ Nach dem Registrieren können Sie jetzt einen Kubernetes-Cluster mit AKS erstell
 
 ## <a name="create-kubernetes-cluster"></a>Erstellen eines Kubernetes-Clusters
 
-Das folgende Beispiel erstellt einen Cluster mit dem Namen `myK8sCluster` in einer Ressourcengruppe namens `myResourceGroup`. Diese Ressourcengruppe wurde im [vorherigen Tutorial](./tutorial-kubernetes-prepare-acr.md) erstellt.
+Das folgende Beispiel erstellt einen Cluster mit dem Namen `myK8sCluster` in einer Ressourcengruppe namens `myResourceGroup`. Diese Ressourcengruppe wurde im [vorherigen Tutorial][aks-tutorial-prepare-acr] erstellt.
 
 ```azurecli
 az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 1 --generate-ssh-keys
@@ -51,7 +51,7 @@ Nach einigen Minuten ist die Bereitstellung abgeschlossen, und es werden Informa
 
 ## <a name="install-the-kubectl-cli"></a>Installieren der Befehlszeilenschnittstelle „kubectl“
 
-Zum Herstellen der Verbindung mit dem Kubernetes-Cluster auf Ihrem Clientcomputer verwenden Sie den Kubernetes-Befehlszeilenclient [kubectl](https://kubernetes.io/docs/user-guide/kubectl/).
+Zum Herstellen der Verbindung mit dem Kubernetes-Cluster auf Ihrem Clientcomputer verwenden Sie den Kubernetes-Befehlszeilenclient [kubectl][kubectl].
 
 Bei Verwendung von Azure Cloud Shell ist „kubectl“ bereits installiert. Führen Sie für eine lokale Installation den folgenden Befehl aus:
 
@@ -67,7 +67,7 @@ Führen Sie den folgenden Befehl aus, um „kubectl“ für die Verbindungsherst
 az aks get-credentials --resource-group=myResourceGroup --name=myK8sCluster
 ```
 
-Um die Verbindung mit dem Cluster zu überprüfen, führen Sie den Befehl [kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) aus.
+Um die Verbindung mit dem Cluster zu überprüfen, führen Sie den Befehl [kubectl get nodes][kubectl-get] aus.
 
 ```azurecli
 kubectl get nodes
@@ -94,4 +94,13 @@ In diesem Tutorial wurde ein Kubernetes-Cluster in AKS bereitgestellt. Die folge
 Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Ausführung von Anwendungen im Cluster zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Bereitstellen einer Anwendung in Kubernetes](./tutorial-kubernetes-deploy-application.md)
+> [Bereitstellen einer Anwendung in Kubernetes][aks-tutorial-deploy-app]
+
+<!-- LINKS - external -->
+[kubectl]: https://kubernetes.io/docs/user-guide/kubectl/
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+
+<!-- LINKS - internal -->
+[aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
+[aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

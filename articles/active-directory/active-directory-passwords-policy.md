@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: ae1e6c34b610aff245e051454269f0b8619b54c7
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 6b1abd23c6f578a3a776e6174d1ea0f47b3ba27d
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -85,7 +85,7 @@ Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges,
 
 | Eigenschaft | UserPrincipalName-Richtlinien |
 | --- | --- |
-| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> . - \_ ! \# ^ \~</li></ul> |
+| Zulässige Zeichen |<ul> <li>A – Z</li> <li>a – z</li><li>0 – 9</li> <li> zu erstellen und zu verwalten. - \_ ! \# ^ \~</li></ul> |
 | Unzulässige Zeichen |<ul> <li>Jedes @-Zeichen, das nicht den Benutzernamen und die Domäne trennt.</li> <li>Darf keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten.</li></ul> |
 | Längenbeschränkungen |<ul> <li>Die Gesamtlänge darf 113 Zeichen nicht überschreiten.</li><li>Vor dem @-Symbol sind bis zu 64 Zeichen zulässig.</li><li>Nach dem @-Symbol sind bis zu 48 Zeichen zulässig.</li></ul> |
 

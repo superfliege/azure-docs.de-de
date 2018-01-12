@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: 4a796920d5ff76d4ff4d41afe2ec14aa89ae2265
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: a101039b59eb1a4a3bcac25162c7f6373283e1b6
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 Das **Azure-Aktivitätsprotokoll** ist ein Abonnementprotokoll, das Einblicke in Ereignisse auf Abonnementebene ermöglicht, die in Azure aufgetreten sind. Dies schließt einen Datenbereich von Azure Resource Manager-Betriebsdaten bis hin zu Aktualisierungen für Dienstintegritätsereignisse ein. Das Aktivitätsprotokoll wurde bisher als „Überwachungsprotokolle“ oder „Vorgangsprotokolle“ bezeichnet, da die Verwaltungskategorie Ereignisse der Steuerungsebene für Ihre Abonnements enthält. Mit dem Aktivitätsprotokoll können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) ermitteln, die für die Ressourcen Ihres Abonnements durchgeführt wurden. Sie können auch den Status des Vorgangs und andere relevante Eigenschaften verstehen. Das Aktivitätsprotokoll umfasst keine Lesevorgänge (GET) oder Vorgänge für Ressourcen, die das klassische Modell/RDFE-Modell verwenden.
@@ -33,7 +33,7 @@ Sie können Ereignisse per Azure-Portal, Befehlszeilenschnittstelle, PowerShell-
 
 
 > [!WARNING]
-> Das Azure-Aktivitätsprotokoll ist in erster Linie für Aktivitäten bestimmt, die in Azure Resource Manager stattfinden. Es verfolgt keine Ressourcen nach, die das klassische Modell/RDFE-Modell verwenden. Einige klassische Ressourcentypen weisen einen Proxyressourcenanbieter in Azure Resource Manager auf (z.B. Microsoft.ClassicCompute). Wenn Sie mithilfe dieser Proxyressourcenanbieter über Azure Resource Manager mit einem klassischen Ressourcentyp interagieren, werden die Vorgänge im Aktivitätsprotokoll aufgeführt. Wenn Sie mit einem klassischen Ressourcentyp im klassischen Portal oder an anderer Stelle außerhalb der Azure Resource Manager-Proxys interagieren, werden Ihre Aktionen nur in das Vorgangsprotokoll aufgenommen. Das Vorgangsprotokoll kann in einem separaten Abschnitt des Portals durchsucht werden.
+> Das Azure-Aktivitätsprotokoll ist in erster Linie für Aktivitäten bestimmt, die in Azure Resource Manager stattfinden. Es verfolgt keine Ressourcen nach, die das klassische Modell/RDFE-Modell verwenden. Einige klassische Ressourcentypen weisen einen Proxyressourcenanbieter in Azure Resource Manager auf (z.B. Microsoft.ClassicCompute). Wenn Sie mithilfe dieser Proxyressourcenanbieter über Azure Resource Manager mit einem klassischen Ressourcentyp interagieren, werden die Vorgänge im Aktivitätsprotokoll aufgeführt. Wenn Sie mit einem klassischen Ressourcentyp außerhalb der Azure Resource Manager-Proxys interagieren, werden Ihre Aktionen nur in das Vorgangsprotokoll aufgenommen. Das Vorgangsprotokoll kann in einem separaten Abschnitt des Portals durchsucht werden.
 >
 >
 

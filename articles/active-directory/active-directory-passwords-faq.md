@@ -5,7 +5,7 @@ services: active-directory
 keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD"
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
+manager: mtillman
 ms.reviewer: sahenry
 ms.assetid: 
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6497421b1c51e361d6881332a19c19c7d47c8e29
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 4216c417d137c00587bf65b39410eca6f4cef8bc
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -41,6 +41,11 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * **F: Können meine Benutzer ihre eigenen Daten zur Kennwortzurücksetzung registrieren?**
 
   > **A:** Ja. Wenn die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Kennwortregistrierungsportal (http://aka.ms/ssprsetup) öffnen und ihre Authentifizierungsdaten registrieren. Benutzer können sich auch über den Zugriffsbereich (http://myapps.microsoft.com) registrieren. Bei der Registrierung über den Zugriffsbereich müssen die Benutzer ihr Profilbild auswählen. Anschließend wählen sie **Profil** und dann die Option **Für das Zurücksetzen des Kennworts registrieren** aus.
+  >
+  >
+* **F: Wenn ich Kennwortzurücksetzung für eine Gruppe aktiviere und mich anschließend entscheide, sie für alle zu aktivieren, müssen sich meine Benutzer dann erneut registrieren?**
+
+  > **A:** Nein. Benutzer mit aufgefüllten Authentifizierungsdaten müssen sich nicht erneut registrieren.
   >
   >
 * **F: Kann ich im Namen meiner Benutzer Daten zur Kennwortzurücksetzung definieren?**

@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Streamingendpunkten mit .NET SDK | Microsoft Docs
-description: Diese Thema zeigt, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
+description: Dieser Artikel zeigt, wie Sie Streamingendpunkte mithilfe des Azure-Portals verwalten.
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -13,20 +13,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 2f4f464f8604b6f453d6b50b736c6a3a889a3408
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ba17e7a89ebfeb3bd854bb906bdb887b0cd54064
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="manage-streaming-endpoints-with-net-sdk"></a>Verwalten von Streamingendpunkten mit .NET SDK
 
 >[!NOTE]
->Sehen Sie sich zunächst das Thema [Übersicht](media-services-streaming-endpoints-overview.md) an. Lesen Sie außerdem [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+>Sehen Sie sich zunächst den Artikel [Übersicht](media-services-streaming-endpoints-overview.md) an. Lesen Sie außerdem [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
-Der Code in diesem Thema zeigt, wie die folgenden Aufgaben mithilfe des Azure Media Services .NET SDK ausgeführt werden:
+Der Code in diesem Artikel zeigt, wie die folgenden Aufgaben mithilfe des Azure Media Services .NET SDK ausgeführt werden:
 
 - Untersuchen des Standard-Streamingendpunkts.
 - Erstellen/Hinzufügen eines neuen Streamingendpunkts.
@@ -45,7 +45,7 @@ Der Code in diesem Thema zeigt, wie die folgenden Aufgaben mithilfe des Azure Me
     >[!NOTE]
     >Der standardmäßige Streamingendpunkt kann nicht gelöscht werden.
 
-Weitere Informationen zum Skalieren des Streamingendpunkts finden Sie in [diesem](media-services-portal-scale-streaming-endpoints.md) Thema.
+Weitere Informationen zum Skalieren des Streamingendpunkts finden Sie in [diesem](media-services-portal-scale-streaming-endpoints.md) Artikel.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 
@@ -55,27 +55,37 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
     
 Ersetzen Sie den Code in „Program.cs“ durch den folgenden Code:
 
-    using System;
-    using System.Configuration;
-    using System.Linq;
-    using Microsoft.WindowsAzure.MediaServices.Client;
-    using Microsoft.WindowsAzure.MediaServices.Client.Live;
+```
+using System;
+using System.Configuration;
+using System.Linq;
+using Microsoft.WindowsAzure.MediaServices.Client;
+using Microsoft.WindowsAzure.MediaServices.Client.Live;
 
-    namespace AMSStreamingEndpoint
+namespace AMSStreamingEndpoint
+{
+    class Program
     {
-        class Program
-        {
         // Read values from the App.config file.
+
         private static readonly string _AADTenantDomain =
-        ConfigurationManager.AppSettings["AADTenantDomain"];
+            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
         private static readonly string _RESTAPIEndpoint =
-        ConfigurationManager.AppSettings["MediaServiceRESTAPIEndpoint"];
+            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+        private static readonly string _AMSClientId =
+            ConfigurationManager.AppSettings["AMSClientId"];
+        private static readonly string _AMSClientSecret =
+            ConfigurationManager.AppSettings["AMSClientSecret"];
 
         private static CloudMediaContext _context = null;
 
         static void Main(string[] args)
         {
-            var tokenCredentials = new AzureAdTokenCredentials(_AADTenantDomain, AzureEnvironments.AzureCloudEnvironment);
+            AzureAdTokenCredentials tokenCredentials =
+                new AzureAdTokenCredentials(_AADTenantDomain,
+                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                    AzureEnvironments.AzureCloudEnvironment);
+
             var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
 
             _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
@@ -104,10 +114,10 @@ Ersetzen Sie den Code in „Program.cs“ durch den folgenden Code:
             var name = "StreamingEndpoint" + DateTime.UtcNow.ToString("hhmmss");
             var option = new StreamingEndpointCreationOptions(name, 1)
             {
-            StreamingEndpointVersion = new Version("2.0"),
-            CdnEnabled = true,
-            CdnProfile = "CdnProfile",
-            CdnProvider = CdnProviderType.PremiumVerizon
+                StreamingEndpointVersion = new Version("2.0"),
+                CdnEnabled = true,
+                CdnProfile = "CdnProfile",
+                CdnProvider = CdnProviderType.PremiumVerizon
             };
 
             var streamingEndpoint = _context.StreamingEndpoints.Create(option);
@@ -118,7 +128,7 @@ Ersetzen Sie den Code in „Program.cs“ durch den folgenden Code:
         static public void UpdateStreamingEndpoint(IStreamingEndpoint streamingEndpoint)
         {
             if (streamingEndpoint.StreamingEndpointVersion == "1.0")
-            streamingEndpoint.StreamingEndpointVersion = "2.0";
+                streamingEndpoint.StreamingEndpointVersion = "2.0";
 
             streamingEndpoint.CdnEnabled = false;
             streamingEndpoint.Update();
@@ -128,9 +138,9 @@ Ersetzen Sie den Code in „Program.cs“ durch den folgenden Code:
         {
             streamingEndpoint.Delete();
         }
-        }
     }
-
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die Media Services-Lernpfade.

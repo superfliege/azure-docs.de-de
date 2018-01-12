@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 7b8b9072d0e2fd054ca07873c0a9ce772dc2941e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1751d33b5f6f6a506654daedd15bbd75ae271483
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Erstellen und Verwalten von Hybridverbindungen
 
 > [!IMPORTANT]
 > BizTalk-Hybridverbindungen ist veraltet und wird durch App Service-Hybridverbindungen ersetzt. Weitere Informationen, z.B. darüber, wie Sie Ihre vorhandenen BizTalk-Hybridverbindungen verwalten, finden Sie unter [Azure App Service-Hybridverbindungen](../app-service/app-service-hybrid-connections.md).
 
+>[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 ## <a name="overview-of-the-steps"></a>Übersicht über die Schritte
 1. Erstellen Sie eine Hybridverbindung, indem Sie den **host name** oder **FQDN** of the on-premises resource in your private netwoderk.
@@ -48,26 +49,9 @@ In diesem Thema werden diese Schritte aufgeführt.
 > 
 
 ## <a name="CreateHybridConnection"></a>Erstellen einer Hybridverbindung
-Eine Hybridverbindung kann im Azure-Portal anhand von Web-Apps **oder** BizTalk Services erstellt werden. 
+Eine Hybridverbindung kann in [Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) **oder** mit [BizTalk Services REST-APIs](https://msdn.microsoft.com/library/azure/dn232347.aspx) erstellt werden. 
 
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
-
-**So erstellen Sie Hybridverbindungen in BizTalk Services**:
-
-1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885)an.
-2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus. 
-   
-    Wenn Sie keinen vorhandenen BizTalk Service haben, können Sie [einen BizTalk Service erstellen](biztalk-provision-services.md).
-3. Wählen Sie die Registerkarte **Hybridverbindungen** aus:  
-   ![Registerkarte "Hybridverbindungen"][HybridConnectionTab]
-4. Wählen Sie **Hybridverbindung erstellen** aus, oder klicken Sie auf der Taskleiste auf die Schaltfläche **HINZUFÜGEN**. Geben Sie Folgendes ein:
-   
-   | Eigenschaft | Beschreibung |
-   | --- | --- |
-   | Name |Der Name der Hybridverbindung muss eindeutig sein, und es darf sich nicht um den Namen des BizTalk Service handeln. Sie können jeden beliebigen Namen eingeben; er sollte aber auf den Zweck hinweisen. Beispiele:<br/><br/>Gehaltsliste*SQLServer*<br/>Lieferliste*SharepointServer*<br/>Kunden*OracleServer* |
-   | Hostname |Geben Sie den vollständig qualifizierten Hostnamen, nur den Hostnamen oder die IPv4-Adresse der lokalen Ressource ein. Beispiele:<br/><br/>mySQLServer<br/>*mySQLServer*.*Domäne*.corp.*IhrUnternehmen*.com<br/>*myHTTPSharePointServer*<br/>*myHTTPSharePointServer*.*IhrUnternehmen*.com<br/>10.100.10.10<br/><br/>Beachten Sie bei Verwendung der IPv4-Adresse, dass Ihr Client- oder Anwendungscode die IP-Adresse unter Umständen nicht auflöst. Lesen Sie den wichtigen Hinweis am Anfang dieses Themas. |
-   | Port |Geben Sie die Portnummer der lokalen Ressource ein. Wenn Sie Web-Apps verwenden, geben Sie beispielsweise Port 80 oder Port 443 ein. Wenn Sie SQL Server verwenden, geben Sie Port 1433 ein. |
-5. Wählen Sie das Häkchen aus, um das Setup abzuschließen. 
 
 #### <a name="additional"></a>Zusätzlich
 * Es können mehrere Hybridverbindungen erstellt werden. Die Anzahl der zulässigen Verbindungen finden Sie unter [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md) für . 
@@ -78,16 +62,11 @@ Um eine Web-App oder Mobile App mit einer vorhandenen Hybridverbindung zu verkn�
 <!-- See [Access on-premises resources using hybrid connections in Azure App Service](../app-service-web/web-sites-hybrid-connection-get-started.md). -->
 
 ## <a name="InstallHCM"></a>Lokale Installation des Hybrid Connection Manager
-Nachdem eine Hybridverbindung erstellt wurde, installieren Sie den Hybrid Connection Manager auf der lokalen Ressource. Er kann aus Azure-Web-Apps oder BizTalk Service heruntergeladen werden. Schritte für BizTalk Services: 
+Nachdem eine Hybridverbindung erstellt wurde, installieren Sie den Hybrid Connection Manager auf der lokalen Ressource. Er kann aus Azure-Web-Apps oder BizTalk Service heruntergeladen werden. 
 
-1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885)an.
-2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus. 
-3. Wählen Sie die Registerkarte **Hybridverbindungen** aus:  
-   ![Registerkarte "Hybridverbindungen"][HybridConnectionTab]
-4. Wählen Sie auf der Taskleiste **lokale Setup**:  
-   ![lokale Setup][HCOnPremSetup]
-5. Wählen Sie **Installieren und konfigurieren** aus, um den Hybrid Connection Manager auf dem lokalen System herunterzuladen oder auszuführen. 
-6. Wählen Sie das Häkchen, um die Installation zu starten. 
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
+ 
+[Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) ist ebenfalls eine geeignete Ressource.
 
 <!--
 You can also download the Hybrid Connection Manager MSI file and copy the file to your on-premises resource. Specific steps:
@@ -113,25 +92,16 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 * Sie können Hybridverbindungen skalieren, indem Sie eine andere Instanz von Hybrid Connection Manager auf einem anderen Server installieren. Konfigurieren Sie den lokalen Listener so, dass er die gleiche Adresse wie der erste lokale Listener verwenden. In diesem Fall wird der Datenverkehr zufällig (Roundrobin) zwischen den aktiven lokalen Listenern verteilt. 
 
 ## <a name="ManageHybridConnection"></a>Verwalten von Hybridverbindungen
-Zum Verwalten der Hybridverbindungen haben Sie folgende Möglichkeiten:
 
-* Verwenden Sie das Azure-Portal und gehen Sie zu Ihrem BizTalk Service. 
-* Verwenden Sie [REST-APIs](http://msdn.microsoft.com/library/azure/dn232347.aspx).
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)] 
+
+[Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) ist ebenfalls eine geeignete Ressource.
 
 #### <a name="copyregenerate-the-hybrid-connection-strings"></a>Kopieren Sie die Hybridverbindungszeichenfolgen oder generieren Sie diese erneut.
-1. Melden Sie sich beim [klassischen Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=213885)an.
-2. Wählen Sie im linken Navigationsbereich die Option **BizTalk Services** aus, und wählen Sie dann Ihren BizTalk Service aus. 
-3. Wählen Sie die Registerkarte **Hybridverbindungen** aus:  
-   ![Registerkarte "Hybridverbindungen"][HybridConnectionTab]
-4. Wählen Sie die Hybridverbindung aus. Wählen Sie auf der Taskleiste **Verbindungen verwalten**:  
-   ![Verwalten von Optionen][HCManageConnection]
-   
-    **Verbindungen verwalten** führt die Anwendung und die Vor-Ort-Verbindungszeichenfolgen auf. Sie können die Verbindungszeichenfolgen kopieren oder den Zugriffsschlüssel in der Verbindungszeichenfolge regenerieren. 
-   
-    **Wenn Sie "Regenerieren" auswählen**, verändert sich der freigegebene Zugriffsschlüssel innerhalb der Verbindungszeichenfolge. Gehen Sie wie folgt vor:
-   
-   * Wählen Sie im klassischen Azure-Portal in der Azure-Anwendung **Synchronisierungsschlüssel** .
-   * Führen Sie das **lokale Setup**erneut aus. Wenn Sie das lokale Setup erneut ausführen, wird die lokale Ressource automatisch für die Verwendung der aktualisierten primären Verbindungszeichenfolge konfiguriert.
+
+[!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)] 
+
+[Azure App Service Hybrid Connections](../app-service/app-service-hybrid-connections.md) ist ebenfalls eine geeignete Ressource.
 
 #### <a name="use-group-policy-to-control-the-on-premises-resources-used-by-a-hybrid-connection"></a>Verwenden Sie Gruppenrichtlinien, um die von einer Hybridverbindung verwendeten lokalen Ressourcen zu steuern.
 1. Laden Sie die [administrativen Vorlagen des Hybrid Connection Manager](http://www.microsoft.com/download/details.aspx?id=42963)herunter.
@@ -149,7 +119,7 @@ Nach dem Kopieren können Sie den Gruppenrichtlinien-Editor verwenden, um die Ri
 ## <a name="see-also"></a>Weitere Informationen
 [REST API für die Verwaltung von BizTalk Services unter Microsoft Azure](http://msdn.microsoft.com/library/azure/dn232347.aspx)  
 [BizTalk Services: Editionsübersicht](biztalk-editions-feature-chart.md)  
-[Erstellen eines BizTalk Service im klassischen Azure-Portal](biztalk-provision-services.md)  
+[Erstellen eines BizTalk Service](biztalk-provision-services.md)  
 [BizTalk Services: Registerkarten "Dashboard", "Überwachen" und "Skalieren"](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png

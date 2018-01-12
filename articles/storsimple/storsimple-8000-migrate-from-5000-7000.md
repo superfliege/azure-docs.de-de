@@ -11,13 +11,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/16/2017
+ms.date: 12/11/2017
 ms.author: alkohli
-ms.openlocfilehash: b5c84dbea574afceba93d978425a70ce33271e36
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 36df62c4b01c623702707d39c6af59f4752ee6e0
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-8000-series-device"></a>Migrieren von Daten von einem Gerät der Serie StorSimple 5000 - 7000 zu einem Gerät der Serie 8000
 
@@ -73,12 +73,12 @@ Stellen Sie Folgendes sicher, bevor Sie mit der Migration beginnen:
     > [!IMPORTANT]
     > Es ist ratsam, dass Sie während des gesamten Migrationsprozesses seriellen Zugriff auf dieses Gerät haben. Falls es zu Geräteproblemen kommt, kann der serielle Zugriff für die Problembehandlung hilfreich sein.
 
-* Auf Ihrem Quellgerät der Serie 5000 oder 7000 wird die Softwareversion v2.1.1.518 ausgeführt. Frühere Versionen werden nicht unterstützt.
+* Auf Ihrem Quellgerät der Serie 5000 oder 7000 wird die Softwareversion v2.1.1.518 oder höher ausgeführt. Frühere Versionen werden nicht unterstützt.
 * Prüfen Sie oben rechts auf Ihrer Webbenutzeroberfläche die Version, die für Ihr Gerät der Serie 5000 oder 7000 ausgeführt wird. An dieser Stelle sollte die Softwareversion des Geräts angezeigt werden. Für die Migration sollte auf dem Gerät der Serie 5000 oder 7000 die Version v2.1.1.518 ausgeführt werden.
 
     ![Überprüfen der Softwareversion auf dem Legacygerät](media/storsimple-8000-migrate-from-5000-7000/check-version-legacy-device1.png)
 
-    * Führen Sie für Ihr System ein Upgrade auf die erforderliche Mindestversion durch, wenn Ihr aktives Gerät nicht über v2.1.1.518 verfügt. Eine ausführliche Anleitung finden Sie unter [Software Patch Upgrade Guide v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518) (Anleitung für Softwarepatchupgrade auf v2.1.1.518).
+    * Führen Sie für Ihr System ein Upgrade auf die erforderliche Mindestversion durch, wenn Ihr aktives Gerät nicht über v2.1.1.518 oder höher verfügt. Eine ausführliche Anleitung finden Sie unter [Software Patch Upgrade Guide v2.1.1.518](http://onlinehelp.storsimple.com/111_Appliance/6_System_Upgrade_Guides/Current_(v2.1.1)/000_Software_Patch_Upgrade_Guide_v2.1.1.518) (Anleitung für Softwarepatchupgrade auf v2.1.1.518).
     * Wenn Version v2.1.1.518 ausgeführt wird, können Sie auf der Webbenutzeroberfläche nachsehen, ob Benachrichtigungen zu Wiederherstellungsfehlern für die Registrierung vorhanden sind. Führen Sie die Registrierungswiederherstellung aus, falls dieser Vorgang fehlgeschlagen ist. Weitere Informationen finden Sie unter [Restoring Backup Registry](http://onlinehelp.storsimple.com/111_Appliance/2_User_Guides/1_Current_(v2.1.1)/1_Web_UI_User_Guide_WIP/2_Configuration/4_Cloud_Accounts/1_Cloud_Credentials#Restoring_Backup_Registry) (Wiederherstellen der Sicherungsregistrierung).
     * Wenn Sie über ein ausgefallenes Gerät verfügen, auf dem nicht v2.1.1.518 ausgeführt wird, können Sie ein Failover auf ein Ersatzgerät durchführen, auf dem v2.1.1.518 ausgeführt wird. Eine ausführliche Anleitung finden Sie unter den Informationen zur Notfallwiederherstellung Ihres StorSimple-Geräts der Serie 5000/7000.
     * Sichern Sie die Daten für Ihr Gerät, indem Sie eine Cloudmomentaufnahme erstellen.

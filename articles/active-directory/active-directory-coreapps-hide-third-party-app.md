@@ -1,10 +1,10 @@
 ---
-title: "Ausblenden einer Drittanbieteranwendung auf der Benutzeroberfläche in Azure Active Directory | Microsoft-Dokumentation"
-description: "Ausblenden einer Drittanbieteranwendung auf der Benutzeroberfläche in Azure Active Directory"
+title: "Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory | Microsoft-Dokumentation"
+description: "Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory"
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.workload: identity
@@ -15,18 +15,18 @@ ms.date: 10/11/2017
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 976cbb1341493186b9996d250ebca8f2f3688fdf
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 667fdd45bc9eb1f01ce3883006bb29274478cb83
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/11/2017
 ---
-# <a name="hide-a-third-party-application-from-users-experience-in-azure-active-directory"></a>Ausblenden einer Drittanbieteranwendung auf der Benutzeroberfläche in Azure Active Directory
+# <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory
 
-Wenn Sie eine Drittanbieteranwendung (eine App, die nicht von Microsoft veröffentlicht wurde) besitzen, die nicht im Zugriffsbereich des Benutzers oder im Office 365-Startfeldern angezeigt werden soll, steht Ihnen eine Option zur Verfügung, um diese App-Kachel auszublenden. Benutzer sind weiterhin berechtigt, diese App zu nutzen, wenn Sie diese ausblenden, sie wird jedoch nicht mehr in deren App-Startfeldern angezeigt. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein.
+Wenn Sie eine Anwendung besitzen, die nicht im Zugriffsbereich des Benutzers oder in Office 365-Startfeldern angezeigt werden soll, steht Ihnen eine Option zur Verfügung, um diese App-Kachel auszublenden. Diese Option ist nur für Drittanbieteranwendungen verfügbar (nicht von Microsoft veröffentlichte Apps). Benutzer sind weiterhin berechtigt, diese App zu nutzen, wenn Sie diese ausblenden, sie wird jedoch nicht mehr in deren App-Startfeldern angezeigt. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein. 
 
-## <a name="hiding-a-third-party-app-from-a-users-experience"></a>Ausblenden einer Drittanbieter-App auf der Benutzeroberfläche
-Befolgen Sie folgende Schritte, um eine Drittanbieter-App auf dem Zugriffsbereich eines Benutzers und in den App-Startfeldern von Office 365 auszublenden.
+## <a name="hiding-an-application-from-users-end-user-experiences"></a>Ausblenden einer Anwendung aus der Benutzeroberfläche von Endbenutzern
+Befolgen Sie folgende Schritte, um eine Anwendung im Zugriffsbereich eines Benutzers und in den App-Startfeldern von Office 365 auszublenden.
 
 ### <a name="how-do-i-hide-a-third-party-app-from-users-access-panel-and-o365-app-launchers"></a>Wie blende ich eine Drittanbieter-App aus dem Zugriffsbereich des Benutzers und den App-Startfeldern von Office 365 aus?
 

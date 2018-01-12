@@ -4,7 +4,7 @@ description: "Eine Administratorrolle kann folgende Aktionen ausführen: Erstell
 services: active-directory
 documentationcenter: 
 author: curtand
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 7fc27e8e-b55f-4194-9b8f-2e95705fb731
 ms.service: active-directory
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/26/2017
+ms.date: 12/13/2017
 ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: it-pro;
-ms.openlocfilehash: 7b768ee5dcb16859e88a0f8c0a0c1d5097498477
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 66df4d709b60f2eb80329b8527b2a6edeb123168
+ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Zuweisen von Administratorrollen in Azure Active Directory
 
-Mithilfe von Azure Active Directory (Azure AD) können Sie verschiedene Administratoren bestimmen, um unterschiedliche Funktionen zu erfüllen. Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal oder im klassischen Azure-Portal und können abhängig von ihrer Rolle unter anderem Benutzer erstellen oder bearbeiten, anderen administrative Rollen zuweisen, Benutzerkennwörter zurücksetzen, Benutzerlizenzen verwalten und Domänen verwalten. Ein Benutzer mit einer Administratorrolle besitzt die gleichen Berechtigungen für alle Clouddienste, die Ihre Organisation abonniert hat, unabhängig davon, ob Sie die Rolle im Office 365-Portal, im klassischen Azure-Portal oder mithilfe des Azure AD-Moduls für Windows PowerShell zuweisen.
+Mithilfe von Azure Active Directory (Azure AD) können Sie verschiedene Administratoren bestimmen, um unterschiedliche Funktionen zu erfüllen. Administratoren haben Zugriff auf verschiedene Funktionen im Azure-Portal und können abhängig von ihrer Rolle unter anderem Benutzer erstellen oder bearbeiten, anderen administrative Rollen zuweisen, Benutzerkennwörter zurücksetzen, Benutzerlizenzen verwalten und Domänen verwalten. Ein Benutzer mit einer Administratorrolle besitzt dieselben Berechtigungen für alle Clouddienste, die Ihre Organisation abonniert hat, unabhängig davon, ob Sie die Rolle im Office 365-Portal, im Azure-Portal oder mithilfe des Azure AD-Moduls für Windows PowerShell zuweisen.
 
 Die folgenden Administratorrollen sind verfügbar:
 
@@ -76,7 +76,7 @@ Die folgenden Administratorrollen sind verfügbar:
 
 * **Administrator für privilegierte Rollen**: Benutzer mit dieser Rolle können Rollenzuweisungen in Azure Active Directory und in Azure AD Privileged Identity Management vornehmen. Überdies ermöglicht diese Rolle die vollumfängliche Verwaltung von Privileged Identity Management.
 
-* **Sicherheitsadministrator**: Benutzer mit dieser Rolle verfügen über alle Leseberechtigungen der Rolle „Sicherheit lesen“ sowie die Möglichkeit, die Konfiguration für sicherheitsrelevante Dienste zu verwalten (z.B. Azure Active Directory Identity Protection, Privileged Identity Management und Office 365 Security &amp; Compliance Center). Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
+* **Sicherheitsadministrator**: Benutzer mit dieser Rolle verfügen über alle Leseberechtigungen der Rolle „Sicherheit lesen“ sowie die Möglichkeit, die Konfiguration für sicherheitsrelevante Dienste zu verwalten (z.B. Azure Active Directory Identity Protection, Azure Information Protection, Privileged Identity Management und Office 365 Security &amp; Compliance Center). Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 
 * **Sicherheit lesen**: Benutzer mit dieser Rolle verfügen über einen globalen schreibgeschützten Zugriff, einschließlich aller Informationen in Azure Active Directory, Identity Protection, Privileged Identity Management, sowie die Möglichkeit, Azure Active Directory-Anmeldeberichte und Überwachungsprotokolle zu lesen. Die Rolle gewährt außerdem Leseberechtigung im Office 365 Security & Compliance Center. Weitere Informationen zu Office 365-Berechtigungen finden Sie unter [Berechtigungen im Office 365 Security & Compliance Center](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1).
 

@@ -4,7 +4,7 @@ description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure-Port
 services: active-directory
 documentationcenter: .net
 author: priyamohanram
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 7dc7b89f-653f-405a-b5f4-2c1288720c15
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: priyamo
 ms.reviewer: elisol
-ms.openlocfilehash: 2f2817688beb2028fd0bba8522827d87a0097f21
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f32f57d4c8b3e13d2aa31b04ee10bb46a6c71f7
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="register-your-application-with-your-azure-active-directory-tenant"></a>Registrieren Ihrer Anwendung bei Ihrem Azure Active Directory-Mandanten
 
@@ -45,7 +45,7 @@ Mit dem Azure-Portal können Sie einfach die Einstellungen einer vorhandenen Anw
   * Auf der Seite **Eigenschaften** können Sie die allgemeine Informationen für die Anwendung ändern. Dazu gehören Anwendungsname, Anmelde-URL und Abmelde-URL.
   * Auf der Seite **Antwort-URLs** können Sie eine Antwort-URL hinzufügen, an die Azure AD Tokenantworten sendet.
   * Auf der Seite **Besitzer** können Sie Anwendungsbesitzer hinzufügen.
-  * Auf der Seite **Berechtigungen** können Sie Berechtigungen für die App konfigurieren. Beispiel: Klicken Sie zum Zugreifen auf die Microsoft Graph-API auf **Hinzufügen**, und wählen Sie in der API-Auswahl **Microsoft Graph** aus. Wählen Sie anschließend die erforderliche Berechtigung aus, z.B. **Verzeichnisdaten lesen**.
+  * Auf der Seite **Erforderliche Berechtigungen** können Sie Berechtigungen für die App konfigurieren. Beispiel: Klicken Sie zum Zugreifen auf die Microsoft Graph-API auf **Hinzufügen**, und wählen Sie in der API-Auswahl **Microsoft Graph** aus. Wählen Sie anschließend die erforderliche Berechtigung aus, z.B. **Verzeichnisdaten lesen**.
   * Auf der Seite **Schlüssel** können Sie Anwendungsgeheimnisse hinzufügen. Das Geheimnis wird nur einmal direkt nach der Erstellung angezeigt. Kopieren Sie es daher zur späteren Verwendung.
 
 ## <a name="use-the-inline-manifest-editor"></a>Verwenden des Inline-Manifest-Editors

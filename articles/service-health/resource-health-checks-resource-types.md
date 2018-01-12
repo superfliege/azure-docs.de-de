@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 10/09/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 22e1768257524400f341cf881dfebfb35115a43b
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b67e72af8a34799af97cd46f968636050f4ce485
+ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Ressourcentypen und Integritätsprüfungen in Azure Resource Health
 Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource Health ausgeführten Überprüfungen.
@@ -73,7 +73,7 @@ Es folgt eine vollständige Auflistung nach Ressourcentypen aller von Resource H
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |Ausgeführte Überprüfungen|
 |---|
-|<ul><li>Wurden Datenbank- oder Sammlungsanforderungen nicht ausgeführt, weil der DocumentDB-Dienst nicht verfügbar war?</li><li>Wurden Dokumentanforderungen nicht ausgeführt, weil der DocumentDB-Dienst nicht verfügbar war?</li></ul>|
+|<ul><li>Wurden Datenbank- oder Sammlungsanforderungen nicht ausgeführt, weil der Azure Cosmos DB-Dienst nicht verfügbar war?</li><li>Wurden Dokumentanforderungen nicht ausgeführt, weil der Azure Cosmos DB-Dienst nicht verfügbar war?</li></ul>|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft.network/connections
 |Ausgeführte Überprüfungen|

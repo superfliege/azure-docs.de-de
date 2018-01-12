@@ -4,7 +4,7 @@ description: "Erfahren Sie, welche Rollen mit der Erweiterung Azure Privileged I
 services: active-directory
 documentationcenter: 
 author: billmath
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: ac812ccc-cf4e-4ac2-b981-69598056c9ed
 ms.service: active-directory
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/31/2017
 ms.author: billmath
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: e3f67b978ff66cbb71709f2f8d66986a33149ae6
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: bba26a947607a3679d191a2cd8164d27f61e2ba1
+ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 12/11/2017
 ---
 # <a name="different-administrative-role-in-azure-active-directory-pim"></a>Verschiedene Administratorrollen in Azure Active Directory PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -27,9 +27,9 @@ ms.lasthandoff: 11/14/2017
 Sie können Benutzern Ihrer Organisation in Azure AD verschiedene Administratorrollen zuweisen. Mit diesen Rollenzuweisungen wird gesteuert, welche Aufgaben (beispielsweise das Hinzufügen oder Entfernen von Benutzern oder das Ändern von Diensteinstellungen) Benutzer in Azure AD, Office 365 und weiteren Microsoft Online Services und zugehörigen Anwendungen ausführen können.  
 
 > [!IMPORTANT]
-> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden.
+> Microsoft empfiehlt die Verwaltung von Azure AD mithilfe des [Azure AD Admin Centers](https://aad.portal.azure.com) im Azure-Portal.
 
-Ein globaler Administrator kann die **permanente** Rollenzuweisung von Benutzern in Azure AD aktualisieren. Hierzu können PowerShell-Cmdlets wie `Add-MsolRoleMember` und `Remove-MsolRoleMember` oder das klassische Portal verwendet werden, wie unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](active-directory-assign-admin-roles-azure-portal.md) beschrieben.
+Ein globaler Administrator kann die **permanente** Rollenzuweisung von Benutzern in Azure AD aktualisieren. Hierzu können PowerShell-Cmdlets wie `Add-MsolRoleMember` und `Remove-MsolRoleMember` oder das Portal verwendet werden, wie unter [Zuweisen von Administratorrollen in Azure Active Directory (Azure AD)](active-directory-assign-admin-roles-azure-portal.md) beschrieben.
 
 Azure AD Privileged Identity Management (PIM) verwaltet Richtlinien für den privilegierten Zugriff für Benutzer in Azure AD. PIM weist Benutzer einer oder mehreren Rollen in Azure AD zu, und Sie können eine Person permanent der Rolle zuweisen oder als für die Rolle berechtigt festlegen. Wenn ein Benutzer einer Rolle permanent zugewiesen ist oder eine berechtigte Rollenzuweisung aktiviert, kann er mit den dieser Rolle zugewiesenen Berechtigungen Verwaltungsaufgaben in Azure Active Directory, Office 365 und andere Anwendungen ausführen.
 
@@ -75,15 +75,14 @@ Azure-Abonnements und Ressourcengruppen werden auch nicht in Azure AD dargestell
 ## <a name="user-roles-and-signing-in"></a>Benutzerrollen und Durchführen der Anmeldung
 Bei einigen Microsoft-Diensten und -Anwendungen genügt es möglicherweise nicht, einen Benutzer einer Rolle zuzuweisen, um diesen Benutzer zu einem Administrator zu machen.
 
-Für den Zugriff auf das klassische Azure-Portal muss der Benutzer Dienst- oder Co-Administrator eines Azure-Abonnements sein, selbst wenn der Benutzer die Azure-Abonnements nicht verwalten muss.  Um beispielsweise Konfigurationseinstellungen für Azure AD im klassischen Portal zu verwalten, muss ein Benutzer sowohl globaler Administrator in Azure AD als auch Co-Administrator eines Azure-Abonnements sein.  Informationen zum Hinzufügen von Benutzern zu Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing/billing-add-change-azure-subscription-administrator.md).
+Für den Zugriff auf das Azure-Portal muss der Benutzer Dienst- oder Co-Administrator eines Azure-Abonnements sein, selbst wenn der Benutzer die Azure-Abonnements nicht verwalten muss.  Um beispielsweise Konfigurationseinstellungen für Azure AD zu verwalten, muss ein Benutzer sowohl globaler Administrator in Azure AD als auch Co-Administrator eines Azure-Abonnements sein.  Informationen zum Hinzufügen von Benutzern zu Azure-Abonnements finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen](../billing/billing-add-change-azure-subscription-administrator.md).
 
 Für den Zugriff auf Microsoft Online Services ist es möglicherweise erforderlich, einem Benutzer eine Lizenz zuzuweisen, bevor dieser das Dienstportal öffnen oder Verwaltungsaufgaben ausführen kann.
 
 ## <a name="assign-a-license-to-a-user-in-azure-ad"></a>Zuweisen einer Lizenz an einen Benutzer in Azure AD
-1. Melden Sie sich mit einem globalen Administratorkonto oder Co-Administratorkonto beim [klassischen Azure-Portal](http://manage.windowsazure.com) an.
-2. Wählen Sie im Hauptmenü den Eintrag **Alle Elemente** aus.
-3. Wählen Sie das Verzeichnis aus, das Sie verwenden möchten, und dem Lizenzen zugeordnet sind.
-4. Wählen Sie **Lizenzen**aus. Die Liste der verfügbaren Lizenzen wird angezeigt.
+1. Melden Sie sich mit einem globalen Administratorkonto oder Co-Administratorkonto beim [Azure-Portal](http://portal.azure.com) an.
+3. Wählen Sie Azure AD und das Verzeichnis aus, das Sie verwenden möchten, und dem Lizenzen zugeordnet sind.
+4. Wählen Sie **Lizenzen** auf der linken Seite aus. Die Liste der verfügbaren Lizenzen wird angezeigt.
 5. Wählen Sie den Lizenzplan aus, der die zu verteilenden Lizenzen enthält.
 6. Wählen Sie **Benutzer zuweisen**aus.
 7. Wählen Sie den Benutzer aus, dem Sie eine Lizenz zuweisen möchten.

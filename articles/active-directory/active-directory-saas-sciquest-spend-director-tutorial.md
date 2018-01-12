@@ -2,55 +2,55 @@
 title: 'Tutorial: Azure Active Directory-Integration mit SciQuest Spend Director | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und HSciQuest Spend Director konfigurieren.
 services: active-directory
-documentationcenter: 
+documentationCenter: na
 author: jeevansd
 manager: femila
-editor: 
+ms.reviewer: joflore
 ms.assetid: 9fab641b-292e-4bef-91d1-8ccc4f3a0c1f
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/17/2017
+ms.date: 12/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 84b707668dc45e92e6151f422f1c919f638533b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be9b17f31bedca1ae5704b484760c3ad24fbb14d
+ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/13/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sciquest-spend-director"></a>Lernprogramm: Azure Active Directory-Integration mit SciQuest Spend Director
-Dieses Tutorial soll Ihnen zeigen, wie Sie SciQuest Spend Director in Azure Active Directory (Azure AD) integrieren können.  
-Die Integration von SciQuest Spend Director in Azure AD bietet die folgenden Vorteile: 
 
-* Sie können in Azure AD steuern, wer auf SciQuest Spend Director Zugriff hat. 
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch für SciQuest Spend Director anzumelden (einmaliges Anmelden).
-* Sie können Ihre Konten an einem zentralen Ort verwalten – im klassischen Azure-Portal.
+In diesem Tutorial erfahren Sie, wie Sie SciQuest Spend Director in Azure Active Directory (Azure AD) integrieren.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
+Die Integration von SciQuest Spend Director in Azure AD bietet die folgenden Vorteile:
+
+- Sie können in Azure AD steuern, wer auf SciQuest Spend Director Zugriff hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch für SciQuest Spend Director anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
 Um die Azure AD-Integration mit SciQuest Spend Director konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement
-* Ein SciQuest Spend Director-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Azure AD-Abonnement
+- Ein SciQuest Spend Director-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-> 
-> 
 
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
-* Sie sollten keine Produktionsumgebung verwenden, sofern dies nicht erforderlich ist.
-* Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern. 
+- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-Ziel dieses Tutorials ist es, das einmalige Anmelden von Azure AD in einer Testumgebung zu testen.  
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
 
-1. Hinzufügen von SciQuest Spend Director aus dem Katalog 
+1. Hinzufügen von SciQuest Spend Director aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
 ## <a name="adding-sciquest-spend-director-from-the-gallery"></a>Hinzufügen von SciQuest Spend Director aus dem Katalog
@@ -58,205 +58,175 @@ Zum Konfigurieren der Integration von SciQuest Spend Director in Azure AD müsse
 
 **Um SciQuest Spend Director aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**. 
-   
-    ![Active Directory][1]
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Schaltfläche „Azure Active Directory“][1]
 
-3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
-   
-    ![Anwendungen][2]
+2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
-   
-    ![Anwendungen][3]
+    ![Blatt „Unternehmensanwendungen“][2]
+    
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
-   
-    ![Anwendungen][4]
+    ![Schaltfläche „Neue Anwendung“][3]
 
-6. Geben Sie im Suchfeld den Suchbegriff **SciQuest Spend Director**ein.
-   
-    ![Anwendungen][5]
+4. Geben Sie im Suchfeld **SciQuest Spend Director** ein, wählen Sie im Ergebnisbereich **SciQuest Spend Director** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-7. Wählen Sie im Ergebnisbereich **SciQuest Spend Director** aus, und klicken Sie dann auf **Abschließen**, um die Anwendung hinzuzufügen.
-   
-    ![Anwendungen][6]
+    ![SciQuest Spend Director in der Ergebnisliste](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_addfromgallery.png)
 
-## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt soll veranschaulicht werden, wie basierend auf einem Testbenutzer namens "Britta Simon" das einmalige Anmelden von Azure AD in SciQuest Spend Director konfiguriert und getestet werden kann.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer der entsprechende Gegenbenutzer in SciQuest Spend Director zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SciQuest Spend Director muss eine Linkbeziehung eingerichtet werden.  
-Diese Linkbeziehung wird hergestellt, indem Sie den **Benutzernamen** in Azure AD als **Benutzernamen** in SciQuest Spend Director zuweisen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei SciQuest Spend Director mithilfe einer Testbenutzerin namens Britta Simon.
+
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, wer der entsprechende Gegenbenutzer in SciQuest Spend Director zu einem Benutzer in Azure AD ist. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SciQuest Spend Director muss eine Linkbeziehung eingerichtet werden.
+
+Weisen Sie in SciQuest Spend Director den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei SciQuest Spend Director müssen Sie die folgenden Bausteinen ausführen:
 
-1. **[Konfigurieren der einmaligen Anmeldung in Azure AD](#configuring-azure-ad-single-single-sign-on)** – um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines SciQuest Spend Director-Testbenutzers](#creating-a-halogen-software-test-user)** – um eine Entsprechung von Britta Simon in SciQuest Spend Director zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** – um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#testing-single-sign-on)** – um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines SciQuest Spend Director-Testbenutzers](#create-a-sciquest-spend-director-test-user)** – um eine Entsprechung von Britta Simon in SciQuest Spend Director zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-single-sign-on"></a>Konfigurieren der einmaligen Anmeldung in Azure AD
-Das Ziel dieses Abschnitts besteht darin, das einmalige Anmelden von Azure AD im klassischen Azure-Portal zu aktivieren und das einmalige Anmelden in Ihrer SciQuest Spend Director-Anwendung zu konfigurieren.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer SciQuest Spend Director-Anwendung.
 
 **Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in SciQuest Spend Director die folgenden Schritte aus:**
 
-1. Klicken Sie im klassischen Azure-Portal auf der Anwendungsintegrationsseite **SciQuest Spend Director** auf **Einmaliges Anmelden konfigurieren**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu öffnen.
-   
-    ![Einmaliges Anmelden konfigurieren][8]
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SciQuest Spend Director** auf **Einmaliges Anmelden**.
 
-2. Wählen Sie auf der Seite **Wie sollen sich Benutzer bei SciQuest Spend Director anmelden?** die Option **Microsoft Azure AD – einmaliges Anmelden** aus, und klicken Sie dann auf **Weiter**.
-   
-    ![Azure AD – einmaliges Anmelden][9]
+    ![Konfigurieren des Links für einmaliges Anmelden][4]
 
-3. Führen Sie auf der Dialogseite **App-Einstellungen konfigurieren** die folgenden Schritte aus: 
-   
-    ![App-Einstellungen konfigurieren][10]
-   
-     a. Geben Sie im Textfeld **Anmelde-URL** die von Ihren Benutzern zur Anmeldung bei Ihrer SciQuest Spend Director-Anwendung verwendete URL in folgendem Format ein: *https://.*sciquest.com/**.
-   
-     b. Geben Sie im Textfeld **Antwort-URL** den gleichen Wert ein, den Sie in das Textfeld **Anmelde-URL** eingetippt haben. 
-   
-     c. Klicken Sie auf **Weiter**.
+2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+ 
+    ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_samlbase.png)
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden konfigurieren für SciQuest Spend Director** auf **Metadaten herunterladen**, und speichern Sie die Metadatendatei lokal auf Ihrem Computer.
-   
-    ![Was ist Azure AD Connect?][11]
+3. Führen Sie im Abschnitt **Domäne und URLs für SciQuest Spend Director** die folgenden Schritte aus:
 
-5. Wenden Sie sich an den SciQuest-Support, um diese Authentifizierungsmethode mithilfe der oben genannten heruntergeladenen Metadaten zu aktivieren.
+    ![SSO-Informationen zur Domäne und den URLs für SciQuest Spend Director](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_url.png)
 
-6. Bestätigen Sie im klassischen Azure-Portal die Konfiguration der einmaligen Anmeldung, und klicken Sie dann auf **Abschließen**, um das Dialogfeld **Einmaliges Anmelden konfigurieren** zu schließen. 
-   
-    ![Was ist Azure AD Connect?][15]
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.sciquest.com/apps/Router/SAMLAuth/<instancename>`.
 
-7. Klicken Sie auf der Seite **Bestätigung zur einmaligen Anmeldung** auf **Fertig stellen**.  
+    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<companyname>.sciquest.com`
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
-In diesem Abschnitt wird im klassischen Azure-Portal eine Testbenutzerin namens Britta Simon erstellt.
+    c. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<companyname>.sciquest.com/apps/Router/ExternalAuth/Login/<instancename>`
+
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Wenden Sie sich an das [Clientsupportteam von SciQuest Spend Director](https://www.jaggaer.com/contact-us/), um diese Werte zu erhalten. 
+
+4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_certificate.png) 
+
+5. Klicken Sie auf die Schaltfläche **Save** .
+
+    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_400.png)
+
+6. Zum Konfigurieren des einmaligen Anmeldens bei **SciQuest Spend Director** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [SciQuest Spend Director-Supportteam](https://www.jaggaer.com/contact-us/) senden.
+
+> [!TIP]
+> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
+> 
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+
+Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+
+   ![Erstellen eines Azure AD-Testbenutzers][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **klassischen Azure-Portals** auf **Active Directory**.
-   
-    ![Was ist Azure AD Connect?][100] 
+1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
 
-2. Wählen Sie in der Liste **Verzeichnis** das Verzeichnis aus, für das Sie die Verzeichnisintegration aktivieren möchten.
+    ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_01.png)
 
-3. Klicken Sie im Menü oben auf **Benutzer**, um die Liste der Benutzer anzuzeigen.
-   
-    ![Was ist Azure AD Connect?][101] 
+2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
-4. Um das Dialogfeld **Benutzer hinzufügen** zu öffnen, klicken Sie auf der Symbolleiste unten auf **Benutzer hinzufügen**. 
-   
-    ![Was ist Azure AD Connect?][102] 
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_02.png)
 
-5. Führen Sie auf der Dialogfeldseite **Informationen über diesen Benutzer** die folgenden Schritte aus:
-   
-    ![Was ist Azure AD Connect?][103] 
-   
-    a. Wählen Sie als **Benutzertyp** die Option **Neuer Benutzer in Ihrer Organisation** aus.
-   
-    b. Geben Sie in das Textfeld **Benutzername** den Namen **BrittaSimon** ein.
-   
-    c. Klicken Sie auf **Weiter**.
+3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
 
-6. Führen Sie auf der Dialogfeldseite **Benutzerprofil** die folgenden Schritte aus: 
-   
-    ![Was ist Azure AD Connect?][104] 
-   
-    a. Geben Sie in das Textfeld **Vorname** den Namen **Britta** ein.  
-   
-    b. Geben Sie in das Textfeld **Nachname** den Namen **Simon** ein.
-   
-    c. Geben Sie in das Textfeld **Anzeigename** den Namen **Britta Simon** ein.
-   
-    d. Wählen Sie in der Liste **Rolle** die Option **Benutzer** aus.
-   
-    e. Klicken Sie auf **Weiter**.
+    ![Schaltfläche „Hinzufügen“](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_03.png)
 
-7. Klicken Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** auf **Erstellen**.
-   
-    ![Was ist Azure AD Connect?][105]  
+4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
 
-8. Führen Sie auf der Dialogfeldseite **Vorübergehendes Kennwort abrufen** die folgenden Schritte aus:
-   
-    ![Was ist Azure AD Connect?][106]   
-   
-    a. Notieren Sie den Wert von **Neues Kennwort**.
-   
-    b. Klicken Sie auf **Fertig stellen**.   
+    ![Dialogfeld „Benutzer“](./media/active-directory-saas-sciquest-spend-director-tutorial/create_aaduser_04.png)
 
-### <a name="creating-a-sciquest-spend-director-test-user"></a>Erstellen eines SciQuest Spend Director-Testbenutzers
+    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
+
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+
+    d. Klicken Sie auf **Erstellen**.
+ 
+### <a name="create-a-sciquest-spend-director-test-user"></a>Erstellen eines SciQuest Spend Director-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in SciQuest Spend Director.
 
-Wenden Sie sich an das Supportteam von SciQuest Spend Director, und geben sie dort die Details zu Ihrem Testkonto  an, damit es erstellt wird.
+Wenden Sie sich an das [Supportteam von SciQuest Spend Director](https://www.jaggaer.com/contact-us/), und geben sie dort die Details zu Ihrem Testkonto an, damit es erstellt wird.
 
 Alternativ können Sie auch die Just-in-Time-Bereitstellung nutzen, ein Feature für einmaliges Anmelden, das von SciQuest Spend Director unterstützt wird.  
 Wenn die Just-in-Time-Bereitstellung aktiviert ist, werden Benutzer von SciQuest Spend Director beim Versuch des einmaligen Anmeldens automatisch erstellt, wenn sie nicht vorhanden sind. Mit dieser Funktion ist es nicht mehr erforderlich, Gegenbenutzer für einmaliges Anmelden manuell zu erstellen.
 
-Damit die Just-in-Time-Bereitstellung aktiviert wird, wenden Sie sich an das Supportteam von SciQuest Spend Director.
+Damit die Just-in-Time-Bereitstellung aktiviert wird, wenden Sie sich an das [Supportteam von SciQuest Spend Director](https://www.jaggaer.com/contact-us/).
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-Das Ziel dieses Abschnitts besteht darin, Britta Simon die Verwendung des einmaligen Anmeldens von Azure zu ermöglichen, indem sie Zugriff auf SciQuest Spend Director erhält.
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-![Was ist Azure AD Connect?][200]
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf SciQuest Spend Director erteilen.
+
+![Zuweisen der Benutzerrolle][200] 
 
 **Um Britta Simon SciQuest Spend Director zuzuweisen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie zum Öffnen der Anwendungsansicht im klassischen Azure-Portal im oberen Menü der Verzeichnisansicht auf **Anwendungen** .
-   
-    ![Was ist Azure AD Connect?][201]
+1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+
+    ![Benutzer zuweisen][201] 
 
 2. Wählen Sie in der Anwendungsliste **SciQuest Spend Director**aus.
-   
-    ![Was ist Azure AD Connect?][202]
 
-3. Klicken Sie im oberen Menü auf **Benutzer**.
-   
-    ![Was ist Azure AD Connect?][203]
+    ![SciQuest Spend Director-Link in der Anwendungsliste](./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquestspenddirector_app.png)  
 
-4. Wählen Sie in der Benutzerliste **Britta Simon**aus.
-   
-    ![Was ist Azure AD Connect?][204]
+3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-5. Klicken Sie auf der Symbolleiste unten auf **Zuweisen**.
-   
-    ![Was ist Azure AD Connect?][205]
+    ![Link „Benutzer und Gruppen“][202]
 
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-Das Ziel dieses Abschnitts ist das Testen Ihrer Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.  
+4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Bereich „Zuweisung hinzufügen“][203]
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+
+6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+    
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+
 Wenn Sie auf die Kachel SciQuest Spend Director im Zugriffsbereich klicken, sollten Sie automatisch in Ihrer SciQuest Spend Director-Anwendung angemeldet werden.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Weitere Ressourcen
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
+
 * [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](active-directory-saas-tutorial-list.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md)
 
 <!--Image references-->
+
 [1]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_01.png
 [2]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_02.png
 [3]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_03.png
 [4]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_04.png
-[5]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_01.png
-[6]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_05.png
-[8]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_06.png
-[9]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_07.png
-[10]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_08.png
-[11]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_03.png
-[15]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_04.png
 
-[100]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_09.png 
-[101]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_10.png 
-[102]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_11.png 
-[103]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_12.png 
-[104]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_13.png 
-[105]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_14.png 
-[106]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_15.png 
-[200]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_16.png 
-[201]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_17.png 
-[202]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_sciquest_spend_director_06.png
-[203]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_18.png
-[204]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_19.png
-[205]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_20.png
+[100]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_100.png
+
+[200]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_201.png
+[202]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_202.png
+[203]: ./media/active-directory-saas-sciquest-spend-director-tutorial/tutorial_general_203.png
 
