@@ -154,6 +154,8 @@
               href: Azure-stack-create-service-principals.md
             - name: Aktivieren der Mehrinstanzenfähigkeit
               href: azure-stack-enable-multitenancy.md
+        - name: Rotieren von Geheimnissen
+          href: azure-stack-rotate-secrets.md
     - name: Anbieten von Diensten
       items:
         - name: Übersicht über das Anbieten von Diensten
@@ -248,6 +250,8 @@
           href: azure-stack-troubleshooting.md
         - name: Diagnose in Azure Stack
           href: azure-stack-diagnostics.md
+        - name: Validierung für Azure Stack
+          href: azure-stack-diagnostic-test.md
         - name: Erneutes Bereitstellen des Azure Stack Development Kits
           href: azure-stack-redeploy.md
 - name: Verweis

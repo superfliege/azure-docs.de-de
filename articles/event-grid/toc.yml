@@ -38,6 +38,8 @@
       href: event-grid-event-hubs-integration.md
     - name: Vorlagen für Ereignisabonnements
       href: event-subscription-template.md
+    - name: Überwachen der Ereignisbereitstellung
+      href: monitor-event-delivery.md
 - name: Verweis
   items:
     - name: Azure-Befehlszeilenschnittstelle

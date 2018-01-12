@@ -217,7 +217,7 @@
 #### [Verwalten der Bereitstellung von Benutzerkonten](active-directory-enterprise-apps-manage-provisioning.md)
 #### [Verwalten des einmaligen Anmeldens für Unternehmens-Apps](active-directory-enterprise-apps-manage-sso.md)
 #### [Erweiterte Zertifikatsignatur für SAML-Apps](active-directory-enterprise-apps-advance-certificate-options.md)
-#### [Ausblenden einer Drittanbieter-App auf der Benutzeroberfläche](active-directory-coreapps-hide-third-party-app.md)
+#### [Ausblenden einer Anwendung auf der Benutzeroberfläche](active-directory-coreapps-hide-third-party-app.md)
 ### [Configure Sign-In Auto-Acceleration using HRD Policy (Konfigurieren der automatischen Anmeldebeschleunigung per HRD Policy)](active-directory-auto-acceleration-using-hrd.md)
 
 ### [Verwalten des Zugriffs auf Apps](active-directory-managing-access-to-apps.md)
@@ -283,6 +283,7 @@
 ## Schützen Ihrer Identitäten
 ### [Bedingter Zugriff](active-directory-conditional-access-azure-portal.md)
 #### [Kontrollen](active-directory-conditional-access-controls.md)
+#### [Ortsbedingung](active-directory-conditional-access-locations.md)
 #### [Erste Schritte](active-directory-conditional-access-azure-portal-get-started.md)
 #### [bewährten Methoden](active-directory-conditional-access-best-practices.md)
 #### [Grundlegendes zu Geräterichtlinien für Office 365-Dienste](active-directory-conditional-access-device-policies.md)

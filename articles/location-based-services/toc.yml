@@ -9,7 +9,7 @@
   items:
     - name: Karten-App mit Location Based Services
       href: quick-demo-map-app.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Suchen nach interessanten Punkten'
       href: tutorial-search-location.md
@@ -31,15 +31,15 @@
       href: how-to-use-map-control.md
     - name: Suchen nach einer Adresse
       href: how-to-search-for-address.md
-- name: Referenz
+- name: Verweis
   items:
-    - name: Funktionale API – REST
+    - name: Funktionale API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
-    - name: Verwaltungs-API – REST
+    - name: Verwaltungs-API
       href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
     - name: Kartensteuerelement-API – Javascript
       href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure IoT Developer Center
       href: 'https://azure.microsoft.com/develop/iot/'

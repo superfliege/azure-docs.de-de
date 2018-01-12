@@ -1,7 +1,7 @@
 # Übersicht
 ## [Informationen zu Azure DevTest Labs](devtest-lab-overview.md)
 ## [Konzepte](devtest-lab-concepts.md)
-## Szenarios
+## Szenarien
 ### [Verwenden von Labs für Entwickler](devtest-lab-developer-lab.md)
 ### [Verwenden von Labs für Testumgebungen](devtest-lab-test-env.md)
 ### [Verwenden von Labs zu Schulungszwecken](devtest-lab-training-lab.md)
@@ -16,6 +16,7 @@
 ### [Erstellen virtueller Computer](devtest-lab-add-vm.md)
 ### [Erstellen und Verwalten von abrufbaren VMs](devtest-lab-add-claimable-vm.md)
 ### [Erstellen und Verwalten virtueller Computer mit der Azure CLI](devtest-lab-vmcli.md)
+### [Erstellen eines virtuellen Computers mit einer Resource Manager-Vorlage](devtest-lab-use-resource-manager-template.md)
 ### [Neustarten eines virtuellen Computers](devtest-lab-restart-vm.md)
 
 ## Verwenden von Umgebungen in einem Lab
@@ -46,7 +47,6 @@
 
 ## Verwalten wiederverwendbarer Vorlagen
 ### [Hinzufügen eines Git-Repositorys für Artefakte und Vorlagen](devtest-lab-add-artifact-repo.md)
-### [Verwenden einer Resource Manager-Vorlage](devtest-lab-use-resource-manager-template.md)
 ### [Verwalten von Formeln](devtest-lab-manage-formulas.md)
 
 ## Verwalten von Artefakten
@@ -65,7 +65,7 @@
 ## Integrieren mit CI/CD
 ### [Integrieren von Labs in Ihre VSTS-CI/CD-Pipeline](devtest-lab-integrate-ci-cd-vsts.md)
 
-# Referenz
+# Verweis
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [Automatisches Erstellen oder Ändern von Labs](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
@@ -74,15 +74,15 @@
 
 
 # Verwandte Themen
-## [HÄUFIG GESTELLTE FRAGEN](devtest-lab-faq.md)
+## [Häufig gestellte Fragen](devtest-lab-faq.md)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=devtest-lab)
 ## [MSDN-Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs)
 ## [Team-Blog](https://blogs.msdn.microsoft.com/devtestlab/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 ## [Preise](https://azure.microsoft.com/pricing/details/devtest-lab/)
 
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)

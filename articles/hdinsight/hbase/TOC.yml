@@ -121,6 +121,8 @@
         - name: Hochladen von Daten für Hadoop-Aufträge
           href: ../hdinsight-upload-data.md
           maintainContext: true
+        - name: Massenladen von Daten in Phoenix mithilfe von psql
+          href: apache-hbase-phoenix-psql.md
         - name: Mehrere HDInsight-Cluster mit Data Lake Store
           href: ../hdinsight-multiple-clusters-data-lake-store.md
           maintainContext: true
@@ -161,7 +163,7 @@
         - name: Problembehandlung bei YARN
           href: ../hdinsight-troubleshoot-yarn.md
           maintainContext: true
-        - name: Ressourcen
+        - name: angeben
           items:
             - name: Informationen zur Verwendung von HDInsight unter Linux
               href: ../hdinsight-hadoop-linux-information.md
@@ -218,7 +220,7 @@
         - name: Überwachen der Clusterleistung
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Referenz
+- name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -289,7 +291,7 @@
         - name: Überwachen von Clustern mit der Ambari-API
           href: ../hdinsight-monitor-use-ambari-api.md
           maintainContext: true
-- name: Ressourcen
+- name: angeben
   items:
     - name: Versionshinweise
       href: ../hdinsight-release-notes.md
