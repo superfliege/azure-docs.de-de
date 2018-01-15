@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 7c1505f93b28008d51ad4a8cd3516ee5c4271071
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 960365d4dc842cf5ce5587599a155861390ebb26
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopieren von Daten aus MongoDB mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](v1/data-factory-on-premises-mongodb-connector.md)
-> * [Version 2 – Vorschau](connector-mongodb.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-on-premises-mongodb-connector.md)
+> * [Version 2 – Vorschauversion](connector-mongodb.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer MongoDB-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (General Availability, GA) ist, lesen Sie [MongoDB-Connector in V1](v1/data-factory-on-premises-mongodb-connector.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (General Availability, GA) ist, lesen Sie [MongoDB-Connector in V1](v1/data-factory-on-premises-mongodb-connector.md).
 
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
@@ -44,7 +44,8 @@ Der MongoDB-Connector unterstützt insbesondere Folgendes:
 Zum Kopieren von Daten aus einer MongoDB-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integrationslaufzeit einrichten. Im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md) finden Sie Details. Die Integrationslaufzeit bietet einen integrierten MongoDB-Treiber. Daher müssen beim Kopieren von Daten aus bzw. in MongoDB keine Treiber manuell installiert werden.
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den MongoDB-Connector verwendet werden:
 
@@ -52,9 +53,9 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ |Die type-Eigenschaft muss auf **MongoDb** festgelegt werden. |Ja |
+| type |Die type-Eigenschaft muss auf **MongoDb** festgelegt werden. |Ja |
 | server |IP-Adresse oder Hostname des MongoDB-Servers |Ja |
 | port |Der TCP-Port, den der MongoDB-Server verwendet, um auf Clientverbindungen zu lauschen |Nein (Standard = 27017) |
 | databaseName |Der Name der MongoDB-Datenbank, auf die Sie zugreifen möchten |Ja |
@@ -62,7 +63,7 @@ Folgende Eigenschaften werden für den mit MongoDB verknüpften Dienst unterstü
 | username |Benutzerkonto für den Zugriff auf MongoDB |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | password |Kennwort für den Benutzer Legen Sie für dieses Feld „SecureString“ fest. |Ja (wenn die Standardauthentifizierung verwendet wird) |
 | authSource |Der Name der MongoDB-Datenbank, die Sie zum Überprüfen Ihrer Anmeldeinformationen zur Authentifizierung verwenden möchten |Nein. Bei der Standardauthentifizierung werden standardmäßig das Administratorkonto und die Datenbank verwendet, die mit der databaseName-Eigenschaft angegeben wird |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
 
@@ -95,9 +96,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus MongoDB die type-Eigenschaft des Datasets auf **MongoDbCollection** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft des Datasets muss auf **MongoDbCollection** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **MongoDbCollection** festgelegt werden. | Ja |
 | collectionName |Der Name der Sammlung in der MongoDB-Datenbank |Ja |
 
 **Beispiel:**
@@ -126,9 +127,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus MongoDB den Quelltyp in der Kopieraktivität auf **MongoDbSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **MongoDbSource** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **MongoDbSource** festgelegt werden. | Ja |
 | query |Verwendet die benutzerdefinierte SQL-92-Abfrage zum Lesen von Daten. Beispiel: select * from MyTable. |Nein (wenn „collectionName“ im Dataset angegeben ist) |
 
 **Beispiel:**
@@ -177,14 +178,14 @@ Beim Kopieren von Daten aus MongoDB werden die folgenden Zuordnungen von MongoDB
 | MongoDB-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | Binär |Byte[] |
-| Boolean |Boolean |
-| Datum |DateTime |
-| NumberDouble |Doppelt |
+| Boolescher Wert |Boolescher Wert |
+| Datum |Datetime |
+| NumberDouble |Double |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
-| ObjectID |String |
-| String |String |
-| UUID |GUID |
+| ObjectID |Zeichenfolge |
+| Zeichenfolge |Zeichenfolge |
+| UUID |Guid |
 | Objekt |Renormalisiert in vereinfachte Spalten mit dem geschachtelten Trennzeichen „_“ |
 
 > [!NOTE]

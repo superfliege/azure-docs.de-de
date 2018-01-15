@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4c852d07d771a1eef0e6c2e4ef27cd36f31d8ddd
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 8382f6047ae222a01cc0e8d6ca9dcf5593d0dff6
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="low-utilization-of-cloud-resources-preview"></a>Niedrige Auslastung von Cloudressourcen (Vorschau)
 
 Application Insights analysiert die CPU-Auslastung der einzelnen Rolleninstanzen in Ihrer Anwendung automatisch und erkennt Instanzen mit niedriger CPU-Auslastung. Diese Erkennung ermöglicht es Ihnen, Ihre Azure-Ressourcen zu verringern und Kosten zu senken, indem Sie die Anzahl der von jeder Rolle verwendeten Rolleninstanzen oder die Anzahl der Rollen verringern.
 
-Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration von Leistungsindikatoren](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-performance-counters) für Ihre App. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten zu CPU-Leistungsindikatoren („Prozessorzeit (%)“) generiert.
+Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration von Leistungsindikatoren](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) für Ihre App. Sie ist aktiv, wenn Ihre App genügend Telemetriedaten zu CPU-Leistungsindikatoren („Prozessorzeit (%)“) generiert.
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wann erhalte ich diese Art von Benachrichtigung der intelligenten Erkennung?
 Eine typische Benachrichtigung tritt auf, wenn viele Ihrer Web-/Workerrolleninstanzen eine niedrige CPU-Auslastung aufweisen.

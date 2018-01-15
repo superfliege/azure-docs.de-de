@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: c7ad5f539afc25c7c36712f8af25ce4e4f6d31a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 56216f16ba3730d1488e45c0e7a81e87dbad6410
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="manage-azure-automation-account"></a>Verwalten eines Azure Automation-Kontos
 Das Zertifikat muss vor Ablauf Ihres Automation-Kontos erneuert werden. Wenn Sie der Meinung sind, dass das ausführende Konto kompromittiert wurde, können Sie es löschen und neu erstellen. In diesem Abschnitt wird beschrieben, wie Sie dabei vorgehen.
@@ -76,7 +76,7 @@ In den obigen und anderen Fällen einer Fehlkonfiguration erkennt das Automation
 
 Wenn Sie das ausführende Konto auswählen, wird im Bereich **Eigenschaften** die folgende Fehlermeldung angezeigt:
 
-![Warnmeldung mit Hinweis auf eine unvollständige Konfiguration des ausführenden Kontos](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png).
+![Warnmeldung mit Hinweis auf eine unvollständige Konfiguration des ausführenden Kontos](media/automation-manage-account/automation-account-runas-incomplete-config-msg.png)zu erstellen und zu verwalten.
 
 Sie können diese Probleme mit ausführenden Konten schnell beheben, indem Sie das Konto löschen und neu erstellen.
 

@@ -6,13 +6,13 @@ keywords: "Inventar, Inventur, Bestand, Automatisierung, Änderung, Nachverfolgu
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 09/13/2017
-ms.topic: hero-article
+ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 275e4e9103808710e2a71168a05b3440bb288c6a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 7b0e39e98a81231b68414f36ac5c1fc0897304a1
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Verwalten eines virtuellen Azure-Computers mit Bestandserfassung
 
@@ -23,7 +23,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erst
 Falls Sie noch nicht über einen virtuellen Azure-Computer verfügen, können Sie einen [virtuellen Computer erstellen](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
-Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="enable-inventory-collection-from-the-virtual-machine-resource-page"></a>Aktivieren der Bestandserfassung über die Ressourcenseite des virtuellen Computers
 

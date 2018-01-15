@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: d8e34924cb29e2e6469d009e40b04d5cee8930a6
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 0299e73aecca3b3e5714b37c8b0b776ec8561e29
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>Vorbeugende Wartung in der Praxis.
 
@@ -28,11 +28,11 @@ In diesem Szenario wird ein relativ [umfangreiches simuliertes Dataset](https://
 Im Folgenden finden Sie den Link zum öffentlichen GitHub-Repository: [https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)
 
 
-## <a name="use-case-overview"></a>Übersicht über Anwendungsfälle
+## <a name="use-case-overview"></a>Übersicht über den Anwendungsfall
 
 Ein großes Problem von Unternehmen mit Vermögensreichtum stellen die erheblichen Kosten für Verzögerungen aufgrund von mechanischen Problemen dar. Die meisten Unternehmen sind daran interessiert, vorherzusehen, wann diese Probleme auftreten, um sie vor dem Eintreten proaktiv zu verhindern. Ziel ist es, die Kosten durch Reduzierung von Ausfallzeiten zu senken und die Sicherheit möglicherweise zu erhöhen. 
 
-Dieses Szenario greift Ideen aus dem [Predictive Maintenance Playbook](https://docs.microsoft.com/en-us/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance) auf, um den Aufbau eines prädiktiven Modells für ein simuliertes Dataset zu demonstrieren. Die Beispieldaten werden aus gemeinsamen Elementen abgeleitet, die in vielen Predictive Maintenance-Anwendungsfällen beobachtet wurden.
+Dieses Szenario greift Ideen aus dem [Predictive Maintenance Playbook](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/cortana-analytics-playbook-predictive-maintenance) auf, um den Aufbau eines prädiktiven Modells für ein simuliertes Dataset zu demonstrieren. Die Beispieldaten werden aus gemeinsamen Elementen abgeleitet, die in vielen Predictive Maintenance-Anwendungsfällen beobachtet wurden.
 
 Das Geschäftsproblem für diese simulierten Daten ist die Vorhersage von Problemen, die durch Komponentenfehler verursacht wurden. Aus diesem Grund lautet die Frage hier: „*Wie hoch ist die Wahrscheinlichkeit, dass ein Computer aufgrund eines Komponentenfehlers ausfällt*?“ Dieses Problem wird als ein mehrklassiges Klassifizierungsproblem (mehrere Komponenten pro Computer) formatiert, und ein Machine Learning-Algorithmus wird verwendet, um das Vorhersagemodell zu erstellen. Das Modell wird mit Verlaufsdaten trainiert, die von Computern gesammelt wird. In diesem Szenario durchläuft ein Benutzer verschiedene Schritte zur Implementierung eines solchen Modells in der Azure Machine Learning Workbench-Umgebung.
 

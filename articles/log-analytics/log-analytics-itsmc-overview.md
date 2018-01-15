@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: v-jysur
-ms.openlocfilehash: 991f86c328aba9aa184658c7da748f24ee2d6506
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 6a08f042aad8ad00d712420d8f4d3b17305188e1
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="centrally-manage-itsm-work-items-using-it-service-management-connector-preview"></a>Zentrales Verwalten von ITSM-Arbeitselementen mit dem IT Service Management Connector (Vorschau)
 
@@ -93,19 +93,19 @@ ServiceDeskWorkItemType_s="Incident"
 
 - ServiceDeskConnectionName
 - Service Desk-ID
-- Zustand
+- State (Zustand)
 - Dringlichkeit
 - Auswirkung
-- Priority
+- Priorität
 - Eskalation
 - Erstellt von
 - Gelöst von
 - Geschlossen von
 - Quelle
 - Zugewiesen zu
-- Kategorie
+- Category (Kategorie)
 - Titel
-- Beschreibung
+- BESCHREIBUNG
 - Erstellt am
 - Geschlossen am
 - Gelöst am
@@ -126,12 +126,12 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Zugewiesen zu
 - Titel
 - Typ
-- Kategorie
+- Category (Kategorie)
 - Zustand
 - Eskalation
 - Konfliktstatus
 - Dringlichkeit
-- Priority
+- Priorität
 - Risiko
 - Auswirkung
 - Zugewiesen zu
@@ -143,26 +143,26 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Geplantes Enddatum
 - Startdatum der Arbeit
 - Enddatum der Arbeit
-- Beschreibung
+- BESCHREIBUNG
 - Computer
 
 ## <a name="output-data-for-a-servicenow-incident"></a>Ausgabedaten für einen ServiceNow-Incident
 
 | OMS-Feld | ITSM-Feld |
 |:--- |:--- |
-| ServiceDeskId_s| NUMBER |
-| IncidentState_s | Zustand |
+| ServiceDeskId_s| Number |
+| IncidentState_s | State (Zustand) |
 | Urgency_s |Dringlichkeit |
 | Impact_s |Auswirkung|
-| Priority_s | Priority |
+| Priority_s | Priorität |
 | CreatedBy_s | Geöffnet von |
 | ResolvedBy_s | Gelöst von|
 | ClosedBy_s  | Geschlossen von |
 | Source_s| Kontakttyp |
 | AssignedTo_s | Zugewiesen zu  |
-| Category_s | Kategorie |
+| Category_s | Category (Kategorie) |
 | Title_s|  Kurzbeschreibung |
-| Description_s|  Hinweise |
+| Description_s|  Notizen |
 | CreatedDate_t|  Geöffnet |
 | ClosedDate_t| closed|
 | ResolvedDate_t|Gelöst|
@@ -179,9 +179,9 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | Title_s|  Kurzbeschreibung |
 | Type_s|  Typ |
 | Category_s|  Category (Kategorie) |
-| CRState_s|  Zustand|
+| CRState_s|  State (Zustand)|
 | Urgency_s|  Dringlichkeit |
-| Priority_s| Priority|
+| Priority_s| Priorität|
 | Risk_s| Risiko|
 | Impact_s| Auswirkung|
 | RequestedDate_t  | Datum der Anforderung |
@@ -190,7 +190,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | PlannedEndDate_t  |   Geplantes Enddatum |
 | WorkStartDate_t  | Tatsächliches Startdatum |
 | WorkEndDate_t | Tatsächliches Enddatum|
-| Description_s | Beschreibung |
+| Description_s | BESCHREIBUNG |
 | Computer  | Konfigurationselement |
 
 **Log Analytics-Beispielbildschirm für ITSM-Daten:**
@@ -223,7 +223,7 @@ Mit der ITSMC-Lösung können Sie OMS-Warnungen konfigurieren, um die Erstellung
 6. Geben Sie die Details nach Bedarf an.
 7. Um ein gesondertes Arbeitselement für jeden Protokolleintrag dieser Warnung zu erstellen, aktivieren Sie das Kontrollkästchen **Einzelne Arbeitselemente für jeden Protokolleintrag erstellen**.
 
-    Oder
+    oder
 
     Lassen Sie dieses Kontrollkästchen deaktiviert, um nur ein Arbeitselement für eine beliebige Anzahl von Protokolleinträgen zu dieser Warnung zu erstellen.
 
@@ -292,11 +292,11 @@ Verwenden Sie beim Erstellen/Bearbeiten einer Azure-Warnungsregel eine Aktionsgr
 
 ## <a name="troubleshoot-itsm-connections-in-oms"></a>Problembehandlung bei ITSM-Verbindungen in OMS
 1.  Wenn für die Verbindung auf der Benutzeroberfläche der verbundenen Quelle ein Fehler auftritt, und die Fehlermeldung **Fehler beim Speichern der Verbindung** angezeigt wird, gehen Sie folgendermaßen vor:
- - Stellen Sie für ServiceNow-, Cherwell- und Provance-Verbindungen sicher,  
-        dass Sie Benutzername, Kennwort, Client-ID und geheimen Clientschlüssel für jede der Verbindungen richtig eingegeben haben.  
-        Überprüfen Sie, ob Sie über ausreichende Berechtigungen für das entsprechende ITSM-Produkt verfügen, um die Verbindung herzustellen.  
- - Stellen Sie für Service Manager sicher,  
-        dass die Web-App erfolgreich bereitgestellt und die Hybridverbindung erstellt wird. Um zu überprüfen, ob die Verbindung mit dem lokalen Service Manager-Computer erfolgreich hergestellt wird, besuchen Sie die Web-App-URL, wie in der Dokumentation zum Herstellen der [Hybridverbindung](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) erläutert.  
+- Stellen Sie für ServiceNow-, Cherwell- und Provance-Verbindungen sicher,  
+       dass Sie Benutzername, Kennwort, Client-ID und geheimen Clientschlüssel für jede der Verbindungen richtig eingegeben haben.  
+       Überprüfen Sie, ob Sie über ausreichende Berechtigungen für das entsprechende ITSM-Produkt verfügen, um die Verbindung herzustellen.  
+- Stellen Sie für Service Manager sicher,  
+       dass die Web-App erfolgreich bereitgestellt und die Hybridverbindung erstellt wird. Um zu überprüfen, ob die Verbindung mit dem lokalen Service Manager-Computer erfolgreich hergestellt wird, besuchen Sie die Web-App-URL, wie in der Dokumentation zum Herstellen der [Hybridverbindung](log-analytics-itsmc-connections.md#configure-the-hybrid-connection) erläutert.  
 
 2.  Wenn Daten von ServiceNow nicht in Log Analytics synchronisiert werden, stellen Sie sicher, dass sich die ServiceNow-Instanz nicht im Energiesparmodus befindet. ServiceNow-Entwicklungsinstanzen wechseln manchmal nach längerem Leerlauf in den Energiesparmodus. Melden Sie das Problem andernfalls.
 3.  Wenn OMS-Warnungen ausgelöst werden, aber keine Arbeitselemente im ITSM-Produkt erstellt werden, oder Konfigurationselemente nicht erstellt/nicht mit Arbeitselementen verknüpft werden, oder für sonstige allgemeine Informationen, nutzen Sie folgende Quellen:

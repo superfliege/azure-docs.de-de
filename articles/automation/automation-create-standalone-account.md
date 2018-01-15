@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: dc4bfa4a94eaa2fb4e0e821c4931dcd1963f3109
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 0397b45753ea64d1a33916d5e0dff12d6e1d80aa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>Erstellen eines eigenständigen Azure Automation-Kontos
 In diesem Thema wird veranschaulicht, wie Sie im Azure-Portal ein Automation-Konto für folgende Zwecke erstellen: Sie möchten Azure Automation evaluieren und kennenlernen, ohne die zusätzlichen Verwaltungslösungen oder die Integration in OMS Log Analytics zur erweiterten Überwachung von Runbookaufträgen zu verwenden.  Sie können diese Verwaltungslösungen später jederzeit hinzufügen oder in Log Analytics integrieren.  Mit dem Automation-Konto können Sie Runbooks authentifizieren, mit denen Ressourcen unter einer Azure Resource Manager-Bereitstellung oder einer klassischen Azure-Bereitstellung verwaltet werden.
@@ -42,7 +42,7 @@ Wenn Sie kein Mitglied der Active Directory-Instanz des Abonnements sind, bevor 
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal ein Azure Automation-Konto zu erstellen.    
 
 1. Melden Sie sich mit einem Konto, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist, beim Azure-Portal an.
-2. Klicken Sie auf **Neu**.<br><br> ![Auswählen der Option „Neu“ im Azure-Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
+2. Klicken Sie auf **New**.<br><br> ![Auswählen der Option „Neu“ im Azure-Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 3. Suchen Sie nach **Automation**, und wählen Sie dann in den Suchergebnissen die Option **Automation + Control**.<br><br> ![Suchen nach und Auswählen von Automation über den Marketplace](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
 3. Klicken Sie auf dem Blatt „Automation-Konten“ auf **Hinzufügen**.<br><br>![Automation-Konto hinzufügen](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
 
@@ -67,7 +67,7 @@ In diesem Abschnitt führen Sie die folgenden Schritte aus, um im Azure-Portal e
 ### <a name="resources-included"></a>Enthaltene Ressourcen
 Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch verschiedene Ressourcen erstellt.  In der folgenden Tabelle sind die Ressourcen für das ausführende Konto zusammengefasst.<br>
 
-| Ressource | Beschreibung |
+| Ressource | BESCHREIBUNG |
 | --- | --- |
 | AzureAutomationTutorial-Runbook |Ein grafisches Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
 | AzureAutomationTutorialScript-Runbook |Ein PowerShell-Beispielrunbook, das die Authentifizierung mithilfe des ausführenden Kontos veranschaulicht und alle Resource Manager-Ressourcen abruft. |
@@ -77,7 +77,7 @@ Nach der erfolgreichen Erstellung des Automation-Kontos werden automatisch versc
 
 In der folgenden Tabelle sind die Ressourcen für das klassische ausführende Konto zusammengefasst.<br>
 
-| Ressource | Beschreibung |
+| Ressource | BESCHREIBUNG |
 | --- | --- |
 | AzureClassicAutomationTutorial-Runbook |Ein grafisches Beispielrunbook, das alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status ausgibt. |
 | AzureClassicAutomationTutorialScript-Runbook |Ein PowerShell-Beispielrunbook, das alle klassischen virtuellen Computer in einem Abonnement mithilfe des klassischen ausführenden Kontos (Zertifikat) abruft und anschließend den VM-Namen und -Status ausgibt. |

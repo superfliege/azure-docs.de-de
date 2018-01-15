@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/27/2017
+ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a96e52bad725acb70a429c8eaafd6942b13d9b8
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7d4d680e3460fbeff73c2f334c6461da7967374d
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Managers zum Verwalten von Warnungen für StorSimple Virtual Array
 
@@ -125,7 +125,6 @@ In den folgenden Tabellen sind einige StorSimple-Warnungen aufgeführt, die unte
 * [Warnungen zu Auftragsfehlern](#job-failure-alerts)
 * [Leistungswarnungen](#performance-alerts)
 * [Sicherheitswarnungen](#security-alerts)
-* [Updatewarnungen](#update-alerts)
 
 ### <a name="cloud-connectivity-alerts"></a>Warnungen zur Cloudkonnektivität
 
@@ -164,13 +163,6 @@ In den folgenden Tabellen sind einige StorSimple-Warnungen aufgeführt, die unte
 | Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
 |:--- |:--- |:--- |
 | Das Kennwort für <*Name des Geräts*> läuft in <*Anzahl*> Tagen ab. |Kennwortwarnung. |Ihr Kennwort läuft in <Anzahl> Tagen ab. Sie sollten Ihr Kennwort ändern. Weitere Informationen finden Sie unter [Ändern des StorSimple Virtual Array-Geräteadministratorkennworts](storsimple-virtual-array-change-device-admin-password.md). |
-
-### <a name="update-alerts"></a>Updatewarnungen
-
-| Warnungstext | Ereignis | Weitere Informationen/Empfohlene Maßnahmen |
-|:--- |:--- |:--- |
-| Für Ihr Gerät sind neue Updates verfügbar. |Für das StorSimple Virtual Array sind Updates verfügbar. |Sie können neue Updates über die Seite **Wartung** installieren. |
-| Auf <*Name des Geräts*> konnte nicht nach neuen Updates gesucht werden. |Fehler beim Update. |Beim Installieren neuer Updates ist ein Fehler aufgetreten. Sie können die Updates manuell installieren. Wenden Sie sich an den [Microsoft Support](storsimple-contact-microsoft-support.md), wenn das Problem weiterhin besteht. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

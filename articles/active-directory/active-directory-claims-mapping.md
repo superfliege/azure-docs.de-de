@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 6f5ca44e08c783fdf22a14d71c56c3019cc2bb52
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Anspruchszuordnung in Azure Active Directory (Public Preview)
 
@@ -85,7 +85,7 @@ Eingeschränkte Ansprüche können mithilfe der Richtlinien nicht geändert werd
 |cloud_graph_host_name|
 |cloud_instance_name|
 |cnf|
-|Code|
+|code|
 |controls|
 |credential_keys|
 |csr|
@@ -154,10 +154,10 @@ Eingeschränkte Ansprüche können mithilfe der Richtlinien nicht geändert werd
 |refresh_token|
 |refreshtoken|
 |request_nonce|
-|Ressource|
+|resource|
 |role|
 |Rollen|
-|Bereich|
+|scope|
 |scp|
 |sid|
 |signature|
@@ -280,7 +280,7 @@ Wenn die Quelle „transformation“ ist, muss das **TransformationID**-Element 
 Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den Anspruch bereitstellt. Die folgende Tabelle listet die ID-Werte auf, die für jeden Wert der Quelle gültig sind.
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
-|Quelle|ID|Beschreibung|
+|Quelle|ID|BESCHREIBUNG|
 |-----|-----|-----|
 |Benutzer|surname|Familienname|
 |Benutzer|givenname|Vorname|
@@ -317,7 +317,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 |Benutzer|othermail|Andere E-Mail-Nachrichten|
 |Benutzer|country|Country|
 |Benutzer|city|City|
-|Benutzer|state|Zustand|
+|Benutzer|state|State (Zustand)|
 |Benutzer|jobtitle|Position|
 |Benutzer|employeeid|Mitarbeiter-ID|
 |Benutzer|facsimiletelephonenumber|Faxnummer|
@@ -353,7 +353,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Ausgaben erwartet. Diese werden mithilfe von **InputClaims**, **InputParameter** und **OutputClaims** definiert.
 
 #### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabelle 4: Transformation Methoden und erwartete Ein- und Ausgaben
-|Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|Beschreibung|
+|Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|BESCHREIBUNG|
 |-----|-----|-----|-----|
 |Join|string1, string2, separator|outputClaim|Verknüpft Eingabezeichenfolgen mit einer eingefügten Trennzeichen. Zum Beispiel: Zeichenfolge1:"foo@bar.com" , Zeichenfolge2:"sandbox" , Trennzeichen:"." ergibt outputClaim:"foo@bar.com.sandbox"|
 |ExtractMailPrefix|mail|outputClaim|Extrahiert den lokalen Teil einer E-Mail-Adresse. Zum Beispiel: mail:"foo@bar.com" ergibt outputClaim: "foo". Wenn kein @-Zeichen vorhanden ist, wird die ursprüngliche Eingabezeichenfolge unverändert zurückgegeben.|
@@ -378,7 +378,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 **SAML-NameID und -UPN:** Die Attribute, aus denen die Werte von NameID und UPN stammen, und die zulässigen Transformationsansprüche sind begrenzt.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabelle 5: Attribute, die als Datenquelle für SAML-NameID zulässig sind
-|Quelle|ID|Beschreibung|
+|Quelle|ID|BESCHREIBUNG|
 |-----|-----|-----|
 |Benutzer|mail|E-Mail-Adresse|
 |Benutzer|userprincipalname|Benutzerprinzipalname|
@@ -490,7 +490,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten 
     1. Führen Sie diesen Befehl aus, um die Richtlinie zu erstellen: 
      
      ``` powershell
-    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformation":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"Id":"string2","Value":"sandbox"},{"Id":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample” -Type "ClaimsMappingPolicy"
+    New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
     ```
     
     2. Führen Sie den folgenden Befehl aus, um Ihre neue Richtlinie anzuzeigen und deren „ObjectId“ abzurufen: 

@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 343facadfec217adaef9a05426e7ae914f4cfd38
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 8f586c12ce1d24cfccbd6804e80dae51f6adf085
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>Kopieren von Daten aus Teradata mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-onprem-teradata-connector.md)
-> * [Version 2: Vorschauversion](connector-teradata.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-onprem-teradata-connector.md)
+> * [Version 2 – Vorschauversion](connector-teradata.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Teradata-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Teradata-Connector in V1](v1/data-factory-onprem-teradata-connector.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (GA) ist, lesen Sie [Teradata-Connector in V1](v1/data-factory-onprem-teradata-connector.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -36,7 +36,7 @@ Sie können Daten aus einer Teradata-Datenbank in beliebige unterstützte Senken
 Der Teradata-Connector unterstützt insbesondere Folgendes:
 
 - Teradata, **Version 12 und höher**
-- Kopieren von Dateien unter Verwendung der Authentifizierung des Typs **Basic** oder **Windows**
+- Kopieren von Dateien unter Verwendung der **Standard**- oder **Windows**-Authentifizierung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -46,7 +46,8 @@ Führen Sie zum Verwenden dieses Teradata-Connectors diese Schritte aus:
 - Installieren Sie den [.NET-Datenanbieter für Teradata](http://go.microsoft.com/fwlink/?LinkId=278886), Version 14 oder höher, auf dem Computer mit der Integration Runtime.
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Teradata-Connector verwendet werden.
 
@@ -54,14 +55,14 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Teradata verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die „type“-Eigenschaft muss auf **Teradata** festgelegt sein. | Ja |
+| type | Die „type“-Eigenschaft muss auf **Teradata** festgelegt sein. | Ja |
 | server | Name des Teradata-Servers. | Ja |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank.<br/>Zulässige Werte: **Basic** und **Windows**. | Ja |
 | username | Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit der Teradata-Datenbank an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel:**
 
@@ -93,9 +94,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus Teradata die „type“-Eigenschaft des Datasets auf **RelationalTable** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die „type“-Eigenschaft des Datasets muss auf **RelationalTable** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **RelationalTable** festgelegt werden. | Ja |
 | tableName | Name der Tabelle in der Teradata-Datenbank. | Nein (wenn „query“ in der Aktivitätsquelle angegeben ist) |
 
 **Beispiel:**
@@ -122,10 +123,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Teradata den Quellentyp in der Kopieraktivität auf **RelationalSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
-| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ in „dataset“ angegeben ist) |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
+| query | Verwendet die benutzerdefinierte SQL-Abfrage zum Lesen von Daten. Beispiel: `"SELECT * FROM MyTable"`. | Nein (wenn „tableName“ im Dataset angegeben ist) |
 
 **Beispiel:**
 
@@ -169,41 +170,41 @@ Beim Kopieren von Daten aus Teradata werden die folgenden Zuordnungen von Terada
 | Blob |Byte[] |
 | Byte |Byte[] |
 | ByteInt |Int16 |
-| Char |String |
-| Clob |String |
-| Date |DateTime |
-| Decimal |Decimal |
-| Double |Doppelt |
-| Graphic |String |
-| Integer |Int32 |
-| Interval Day |TimeSpan |
-| Interval Day To Hour |TimeSpan |
-| Interval Day To Minute |TimeSpan |
-| Interval Day To Second |TimeSpan |
-| Interval Hour |TimeSpan |
-| Interval Hour To Minute |TimeSpan |
-| Interval Hour To Second |TimeSpan |
-| Interval Minute |TimeSpan |
-| Interval Minute To Second |TimeSpan |
-| Interval Month |String |
-| Interval Second |TimeSpan |
-| Interval Year |String |
-| Interval Year To Month |String |
-| Number |Doppelt |
-| Period(Date) |String |
-| Period(Time) |String |
-| Period(Time With Time Zone) |String |
-| Period(Timestamp) |String |
-| Period(Timestamp With Time Zone) |String |
+| Char |Zeichenfolge |
+| Clob |Zeichenfolge |
+| Datum |Datetime |
+| DECIMAL |DECIMAL |
+| Double |Double |
+| Graphic |Zeichenfolge |
+| Ganze Zahl  |Int32 |
+| Interval Day |Zeitraum |
+| Interval Day To Hour |Zeitraum |
+| Interval Day To Minute |Zeitraum |
+| Interval Day To Second |Zeitraum |
+| Interval Hour |Zeitraum |
+| Interval Hour To Minute |Zeitraum |
+| Interval Hour To Second |Zeitraum |
+| Interval Minute |Zeitraum |
+| Interval Minute To Second |Zeitraum |
+| Interval Month |Zeichenfolge |
+| Interval Second |Zeitraum |
+| Interval Year |Zeichenfolge |
+| Interval Year To Month |Zeichenfolge |
+| Number |Double |
+| Period(Date) |Zeichenfolge |
+| Period(Time) |Zeichenfolge |
+| Period(Time With Time Zone) |Zeichenfolge |
+| Period(Timestamp) |Zeichenfolge |
+| Period(Timestamp With Time Zone) |Zeichenfolge |
 | SmallInt |Int16 |
-| Zeit |TimeSpan |
-| Time With Time Zone |String |
-| Timestamp |DateTime |
-| Timestamp With Time Zone |Datetimeoffset |
+| Zeit |Zeitraum |
+| Time With Time Zone |Zeichenfolge |
+| Zeitstempel |Datetime |
+| Timestamp With Time Zone |DateTimeOffset |
 | VarByte |Byte[] |
-| VarChar |String |
-| VarGraphic |String |
-| Xml |String |
+| VarChar |Zeichenfolge |
+| VarGraphic |Zeichenfolge |
+| xml |Zeichenfolge |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

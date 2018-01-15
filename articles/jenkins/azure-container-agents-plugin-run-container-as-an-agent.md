@@ -14,11 +14,11 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 269e936cb79ba4138285f5dbd326413d70d5924d
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 04a60bf021ec6e265a3880264386ad32ec7e8177
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="build-a-project-in-azure-using-jenkins-and-azure-container-instances"></a>Erstellen eines Projekts in Azure mithilfe von Jenkins und Azure Container Instances
 
@@ -329,4 +329,4 @@ az group delete -n <resourceGroup>
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]
-> [Die neuesten Artikel und Beispiele finden Sie im Hub „Jenkins in Azure“](https://docs.microsoft.com/en-us/azure/jenkins/)
+> [Die neuesten Artikel und Beispiele finden Sie im Hub „Jenkins in Azure“](https://docs.microsoft.com/azure/jenkins/)

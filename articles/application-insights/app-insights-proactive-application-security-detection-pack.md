@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3e4604a154c16b785db1ab903587ae4a35d93c05
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 837525d70f28c0710b8a8b86d411a7854402207f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="application-security-detection-pack-preview"></a>Paket zur Anwendungsicherheitserkennung (Vorschau)
 
 Application Insights analysiert die von Ihrer Anwendung generierten Telemetriedaten automatisch und erkennt potentielle Sicherheitsprobleme. Diese Funktion ermöglicht es Ihnen, potenzielle Sicherheitsprobleme zu identifizieren und diese durch Reparieren der Anwendung oder durch Ergreifen der erforderlichen Sicherheitsmaßnahmen zu beheben.
 
-Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration Ihrer App für das Senden von Telemetriedaten](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-usage-overview).
+Diese Funktion erfordert keine spezielle Einrichtung, abgesehen von der [Konfiguration Ihrer App für das Senden von Telemetriedaten](https://docs.microsoft.com/azure/application-insights/app-insights-usage-overview).
 
 ## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Wann erhalte ich diese Art von Benachrichtigung der intelligenten Erkennung?
 Es gibt drei Arten von Sicherheitsproblemen, die erkannt werden:

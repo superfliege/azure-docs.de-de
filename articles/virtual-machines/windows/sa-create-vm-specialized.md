@@ -15,19 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 995437f5a4a6fe1bc99bfe7fee555d0ac53101a8
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Erstellen eines virtuellen Computers auf der Grundlage einer spezialisierten VHD in einem Speicherkonto
 
 Erstellen Sie einen neuen virtuellen Computer, indem Sie mit PowerShell einen spezialisierten nicht verwalteten Datenträger als Betriebssystem-Datenträger anfügen. Ein spezialisierter Datenträger ist eine Kopie einer VHD eines bereits vorhandenen virtuellen Computers, bei der die Benutzerkonten, Anwendungen und andere Statusdaten Ihres ursprünglichen virtuellen Computers erhalten bleiben. 
 
 Sie haben zwei Möglichkeiten:
-* [Hochladen einer VHD-Datei](create-vm-specialized.md#option-1-upload-a-specialized-vhd)
-* [Kopieren der VHD eines vorhandenen virtuellen Azure-Computers](create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
+* [Hochladen einer VHD-Datei](sa-create-vm-specialized.md#option-1-upload-a-specialized-vhd)
+* [Kopieren der VHD eines vorhandenen virtuellen Azure-Computers](sa-create-vm-specialized.md#option-2-copy-an-existing-azure-vm)
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 Wenn Sie PowerShell verwenden, vergewissern Sie sich, dass Sie die neueste Version des AzureRM.Compute-PowerShell-Moduls verwenden. Führen Sie den folgenden Befehl aus, um es zu installieren.

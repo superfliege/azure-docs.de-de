@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: 20d6f463d135028bf272c23de9f34be66e73325a
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 4ab0ddcc3a42ab4ebb7c9555f57bc2533989b071
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Kopieren von Daten aus SAP Business Warehouse mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](v1/data-factory-sap-business-warehouse-connector.md)
-> * [Version 2 – Vorschau](connector-sap-business-warehouse.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-sap-business-warehouse-connector.md)
+> * [Version 2 – Vorschauversion](connector-sap-business-warehouse.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus SAP Business Warehouse (BW) zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (General Availability, GA) ist, lesen Sie [SAP BW-Connector in V1](v1/data-factory-sap-business-warehouse-connector.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, die allgemein verfügbar (General Availability, GA) ist, lesen Sie [SAP BW-Connector in V1](v1/data-factory-sap-business-warehouse-connector.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -43,14 +43,15 @@ Dieser SAP Business Warehouse-Connector unterstützt insbesondere Folgendes:
 
 Zur Verwendung dieses SAP Business Warehouse-Connectors müssen Sie folgende Schritte durchführen:
 
-- Einrichten einer selbstgehosteten Integrationslaufzeit. Im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md) finden Sie Details.
+- Richten Sie eine selbstgehostete Integration Runtime ein. Im Artikel [Selbstgehostete Integration Runtime](create-self-hosted-integration-runtime.md) finden Sie Details.
 - Installieren der **SAP NetWeaver-Bibliothek** auf dem Computer mit der Integrationslaufzeit. Sie erhalten die SAP Netweaver-Bibliothek vom SAP-Administrator oder direkt aus dem [SAP Software Download Center](https://support.sap.com/swdc). Suchen Sie nach der **SAP Note #1025361**, um den Downloadspeicherort für die neueste Version zu ermitteln. Stellen Sie sicher, dass Sie die **64-Bit**-Version der SAP NetWeaver-Bibliothek auswählen, die der Installation der Integrationslaufzeit entspricht. Installieren Sie dann alle Dateien, die im SAP NetWeaver RFC SDK enthalten sind, entsprechend der SAP-Mitteilung (SAP Note). Die SAP NetWeaver-Bibliothek ist auch in der SAP Client Tools-Installation enthalten.
 
 > [!TIP]
 > Legen Sie die DLLs, die aus dem NetWeaver-RFC-SDK extrahiert wurden, im Ordner „system32“ ab.
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den SAP Business Warehouse-Connector verwendet werden:
 
@@ -58,15 +59,15 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit SAP Business Warehouse (BW) verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft muss auf **SapBw** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft muss auf **SapBw** festgelegt werden. | Ja |
 | server | Der Name des Servers, auf dem sich die SAP BW-Instanz befindet. | Ja |
 | systemNumber | Die Systemnummer des SAP BW-Systems.<br/>Zulässiger Wert: Zweistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
 | clientId | Client-ID des Clients im SAP BW-System.<br/>Zulässiger Wert: Dreistellige Dezimalzahl, die als Zeichenfolge angegeben ist. | Ja |
 | userName | Der Name des Benutzers, der Zugriff auf den SAP-Server hat. | Ja |
 | password | Kennwort für den Benutzer Legen Sie für dieses Feld „SecureString“ fest. | Ja |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Eine selbstgehostete Integrationslaufzeit ist erforderlich, wie unter [Voraussetzungen](#prerequisites) erwähnt wird. |Ja |
 
 **Beispiel:**
 
@@ -123,9 +124,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus SAP BW den Quelltyp in der Kopieraktivität auf **RelationalSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
+| type | Die „type“-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
 | query | Gibt die MDX-Abfrage an, mit der Daten aus der SAP BW-Instanz gelesen werden. | Ja |
 
 **Beispiel:**
@@ -167,27 +168,27 @@ Beim Kopieren von Daten aus SAP BW werden die folgenden Zuordnungen von SAP BW-D
 | SAP BW-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
 | ACCP | int |
-| CHAR | string |
-| CLNT | String |
+| CHAR | Zeichenfolge |
+| CLNT | Zeichenfolge |
 | CURR | Decimal |
-| CUKY | String |
-| DEC | Decimal |
-| FLTP | Doppelt |
+| CUKY | Zeichenfolge |
+| DEC | DECIMAL |
+| FLTP | Double |
 | INT1 | Byte |
 | INT2 | Int16 |
 | INT4 | int |
-| LANG | String |
-| LCHR | String |
+| LANG | Zeichenfolge |
+| LCHR | Zeichenfolge |
 | LRAW | Byte[] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | DECIMAL |
 | RAW | Byte[] |
 | RAWSTRING | Byte[] |
-| STRING | String |
-| EINHEIT | String |
-| DATS | string |
-| NUMC | string |
-| TIMS | String |
+| STRING | Zeichenfolge |
+| EINHEIT | Zeichenfolge |
+| DATS | Zeichenfolge |
+| NUMC | Zeichenfolge |
+| TIMS | Zeichenfolge |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

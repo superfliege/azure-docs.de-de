@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/13/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 2afdb257421b1333f451eb9d0dd4c2af5a12e946
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a0131fdbbf926d59eae06089cde109649a1433b8
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Machine Learning als IoT Edge-Modul – Vorschau
 
@@ -35,7 +35,7 @@ Das von Ihnen in diesem Tutorial erstellte Azure Machine Learning-Modul liest di
 * Das Azure IoT Edge-Gerät, das Sie mit der Schnellstartanleitung oder im ersten Tutorial erstellt haben.
 * Die IoT Hub-Verbindungszeichenfolge für den IoT Hub, mit dem Ihr IoT Edge-Gerät eine Verbindung herstellt
 * Ein Azure Machine Learning-Konto. Befolgen Sie zum Erstellen eines Kontos die Anweisungen in [Erstellen von Azure Machine Learning-Konten und Installieren von Azure Machine Learning Workbench](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-accounts). Sie müssen die Workbenchanwendung für dieses Tutorial nicht installieren. 
-* Modulverwaltung für Azure ML auf Ihrem Computer. Befolgen Sie die Anweisungen in [Setup für die Modellverwaltung](https://docs.microsoft.com/en-us/azure/machine-learning/preview/deployment-setup-configuration), um Ihre Umgebung einzurichten und ein Konto zu erstellen.
+* Modulverwaltung für Azure ML auf Ihrem Computer. Befolgen Sie die Anweisungen in [Setup für die Modellverwaltung](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration), um Ihre Umgebung einzurichten und ein Konto zu erstellen.
 
 ## <a name="create-the-azure-ml-container"></a>Erstellen des Azure ML-Containers
 In diesem Abschnitt laden Sie die trainierten Modelldateien herunter und konvertieren sie in einen Azure ML Container.  

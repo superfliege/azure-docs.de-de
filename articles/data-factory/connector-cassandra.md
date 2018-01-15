@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.openlocfilehash: eba08c38a5502368beda7ca7f84559ecca011133
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 4f83d61ff51b87b0a1dc120c62f3f986b46c6c8c
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Kopieren von Daten aus Cassandra mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](v1/data-factory-onprem-cassandra-connector.md)
-> * [Version 2 – Vorschau](connector-cassandra.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-onprem-cassandra-connector.md)
+> * [Version 2 – Vorschauversion](connector-cassandra.md)
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer Cassandra-Datenbank zu kopieren. Er baut auf dem Artikel zur [Übersicht über die Kopieraktivität](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (General Availability, GA) ist, lesen Sie [Cassandra-Connector in V1](v1/data-factory-onprem-cassandra-connector.md).
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (General Availability, GA) ist, lesen Sie [Cassandra-Connector in V1](v1/data-factory-onprem-cassandra-connector.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
@@ -44,7 +44,8 @@ Der Cassandra-Connector unterstützt insbesondere Folgendes:
 Zum Kopieren von Daten aus einer Cassandra-Datenbank, die nicht öffentlich zugänglich ist, müssen Sie eine selbstgehostete Integrationslaufzeit einrichten. Im Artikel [Selbstgehostete Integrationslaufzeit](create-self-hosted-integration-runtime.md) finden Sie Details. Die Integrationslaufzeit bietet einen integrierten Cassandra-Treiber. Daher müssen beim Kopieren von Daten aus bzw. nach Cassandra keine Treiber manuell installiert werden.
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den Cassandra-Connector verwendet werden:
 
@@ -52,15 +53,15 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit Cassandra verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ |Die type-Eigenschaft muss auf **Cassandra** festgelegt werden. |Ja |
+| type |Die type-Eigenschaft muss auf **Cassandra** festgelegt werden. |Ja |
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein (Standard = 9042) |
 | authenticationType | Typ der Authentifizierung für die Verbindung mit der Cassandra-Datenbank.<br/>Zulässige Werte sind **Basic** oder **Anonymous**. |Ja |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. Legen Sie für dieses Feld „SecureString“ fest. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
-| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. |Nein |
+| connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
 
 **Beispiel:**
 
@@ -92,9 +93,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus Cassandra die type-Eigenschaft des Datasets auf **RelationalTable** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft des Datasets muss auf **CassandraTable** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **CassandraTable** festgelegt werden. | Ja |
 | keyspace |Name des Keyspace oder Schemas in der Cassandra-Datenbank. |Nein (wenn „query“ für „CassandraSource“ nicht angegeben ist) |
 | tableName |Name der Tabelle in der Cassandra-Datenbank. |Nein (wenn „query“ für „CassandraSource“ nicht angegeben ist) |
 
@@ -126,9 +127,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Cassandra den Quelltyp in der Kopieraktivität auf **CassandraSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **CassandraSource** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **CassandraSource** festgelegt werden. | Ja |
 | query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |SQL-92-Abfrage oder CQL-Abfrage. Weitere Informationen finden Sie in der [Referenz zu CQL](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>Geben Sie beim Verwenden der SQL-Abfrage **keyspace name.table name** für die Tabelle an, die Sie abfragen möchten. |Nein (wenn „tableName“ und „keyspace“ im Dataset angegeben sind) |
 | consistencyLevel |Mit der Konsistenzebene (consistencyLevel) wird angegeben, wie viele Replikate auf eine Leseanforderung reagieren müssen, bevor Daten an die Clientanwendung zurückgegeben werden. Cassandra überprüft die angegebene Anzahl von Replikaten auf Daten, um die Leseanforderung zu erfüllen. Ausführliche Informationen finden Sie unter [Configuring data consistency](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) (Konfigurieren der Datenkonsistenz).<br/><br/>Zulässige Werte: **ONE**, **TWO**, **THREE**, **QUORUM**, **ALL**, **LOCAL_QUORUM**, **EACH_QUORUM** und **LOCAL_ONE**. |Nein (Standard = `ONE`) |
 
@@ -170,20 +171,20 @@ Beim Kopieren von Daten aus Cassandra werden die folgenden Zuordnungen von Cassa
 
 | Cassandra-Datentyp | Data Factory-Zwischendatentyp |
 |:--- |:--- |
-| ASCII |String |
+| ASCII |Zeichenfolge |
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |BOOLEAN |
 | DECIMAL |DECIMAL |
 | DOUBLE |DOUBLE |
 | FLOAT |Single |
-| INET |String |
+| INET |Zeichenfolge |
 | INT |Int32 |
-| TEXT |String |
-| TIMESTAMP |DateTime |
-| TIMEUUID |GUID |
-| UUID |GUID |
-| VARCHAR |String |
+| TEXT |Zeichenfolge |
+| TIMESTAMP |Datetime |
+| TIMEUUID |Guid |
+| UUID |Guid |
+| VARCHAR |Zeichenfolge |
 | VARINT |DECIMAL |
 
 > [!NOTE]
@@ -249,10 +250,10 @@ Die folgenden Tabellen enthalten die virtuellen Tabellen, in denen die Daten aus
 
 | pk_int | StringSet_value |
 | --- | --- |
-| 1 |Eine  |
+| 1 |Eine Datei |
 | 1 |b |
 | 1 |C |
-| 3 |Eine  |
+| 3 |Eine Datei |
 | 3 |E |
 
 ## <a name="next-steps"></a>Nächste Schritte

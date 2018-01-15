@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 8ec4cf774306a5b74627adc0d405bab09645ec9a
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: aeef39294bbf3ad4192fe116c6972e52bfa1c816
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Serverloses Datenbank-Computing mithilfe von Azure Functions
 
@@ -34,6 +34,9 @@ Mit Azure Cosmos DB und Azure Functions können Sie Ihre Datenbanken und serverl
 * Sie können jedoch auch eine Azure-Funktion an eine Azure Cosmos DB-Sammlung mithilfe einer **Eingabebindung** an eine Azure Cosmos DB-Sammlung binden. Eingabebindungen lesen Daten aus einem Container, wenn eine Funktion ausgeführt wird.
 * Binden Sie eine Funktion mithilfe einer **Ausgabebindung** an eine Azure Cosmos DB-Sammlung. Ausgabebindungen schreiben Daten in einen Container, wenn eine Funktion abgeschlossen wird.
 
+> [!NOTE]
+> Derzeit funktionieren der Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen ausschließlich mit SQL- und Graph-API-Konten.
+
 In der folgenden Abbildung wird jede einzelne dieser drei Integrationen veranschaulicht: 
 
 ![Integration von Azure Cosmos DB und Azure Functions](./media/serverless-computing-database/cosmos-db-azure-functions-integration.png)
@@ -42,9 +45,6 @@ Der Azure Cosmos DB-Trigger, die Eingabebindung und die Ausgabebindung können i
 * Eine Azure Cosmos DB-Trigger kann mit einer Ausgangsbindung an einen anderen Azure Cosmos DB-Container verwendet werden. Nachdem eine Funktion eine Aktion an einem Element im Änderungsfeed ausgeführt hat, können Sie es in einen anderen Container schreiben (beim Schreiben in den ursprünglichen Container würde im Endeffekt eine rekursive Schleife entstehen). Sie können jedoch auch einen Azure Cosmos DB-Trigger verwenden, um effektiv alle geänderten Elemente aus einem Container in einen anderen Container zu migrieren, unter Verwendung einer Ausgabebindung.
 * Eingabebindungen und Ausgabebindungen für Azure Cosmos DB können in derselben Azure-Funktion verwendet werden. Dies funktioniert gut in Fällen, in denen Sie mit der Eingabebindung bestimmte Daten suchen, sie in der Azure-Funktion ändern und anschließend nach der Änderung im selben oder einem anderen Container speichern möchten.
 * Eine Eingabebindung an einen Azure Cosmos DB-Container kann in derselben Funktion wie ein Azure Cosmos DB-Trigger verwendet werden; die Verwendung mit oder ohne eine Ausgabebindung ist ebenfalls möglich. Mit einer solchen Kombination können Sie z.B. aktuelle Wechselkursinformationen (abgerufen mit einer Eingangsbindung in einen Kurscontainer) auf den Änderungsfeed für neue Bestellungen in Ihrem Einkaufswagendienst anwenden. Die aktualisierte Einkaufswagensumme kann mit angewendetem aktuellen Wechselkurs mithilfe einer Ausgabebindung in einen dritten Container geschrieben werden.
-
-> [!NOTE]
-> Derzeit funktionieren der Azure Cosmos DB-Trigger, Eingabebindungen und Ausgabebindungen ausschließlich mit SQL- und Graph-API-Konten.
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
@@ -153,7 +153,7 @@ Stellen wir nun eine echte Verbindung zwischen Azure Cosmos DB und Azure Functio
 * [Erstellen eines Azure Cosmos DB-Triggers im Azure-Portal](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Erstellen eines Azure Functions-HTTP-Triggers mit einer Azure Cosmos DB-Eingabebindung](https://aka.ms/cosmosdbinputbind)
 * [Speichern von unstrukturierten Daten mit Azure Functions und Cosmos DB](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
-* [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-documentdb.md)
+* [Azure Cosmos DB-Bindungen und -Trigger](../azure-functions/functions-bindings-cosmosdb.md)
 
 
  

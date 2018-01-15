@@ -584,5 +584,5 @@ Nutzen Sie den folgenden Kommentarabschnitt, um uns Feedback zu geben und uns da
 [AZURE-portal]: https://portal.azure.com
 
 <!--Image references-->
-[![Sign in button][AAD-Sign-In]][AAD-Sign-In] [AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
+[![Sign in button][AAD-Sign-In]][AAD-Sign-In][AAD-Sign-In]: ./media/active-directory-devhowto-multi-tenant-overview/sign-in-with-microsoft-light.png
 

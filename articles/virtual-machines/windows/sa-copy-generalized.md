@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.openlocfilehash: d7f4a9558175835eba9096e6845726f21c7459d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 39ac47df65743dc807b060f34a6df16977ef49a1
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Erstellen nicht verwalteter VM-Images aus virtuellen Azure-Computern
 
@@ -46,7 +47,7 @@ Sie können auch einen virtuellen Linux-Computer unter Verwendung von `sudo waag
 1. Melden Sie sich bei dem virtuellen Windows-Computer an.
 2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\system32\sysprep**, und führen Sie anschließend `sysprep.exe` aus.
 3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren**.
+4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
 5. Klicken Sie auf **OK**.
    
     ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)
@@ -96,7 +97,7 @@ Sie können auch einen virtuellen Linux-Computer unter Verwendung von `sudo waag
     $vm.Statuses
     ```
 
-## <a name="create-the-image"></a>Erstellen des Image
+## <a name="create-the-image"></a>Erstellen des Images
 
 Erstellen Sie mithilfe des folgenden Befehls ein nicht verwaltetes Image des virtuellen Computers im Zielspeichercontainer. Das Image wird im demselben Speicherkonto wie der ursprüngliche virtuelle Computer erstellt. Der `-Path`-Parameter speichert eine Kopie der JSON-Vorlage für den virtuellen Quellcomputer auf dem lokalen Computer. Der Parameter `-DestinationContainerName` ist der Name des Containers, in dem Ihre Images aufbewahrt werden sollen. Falls der Container noch nicht vorhanden ist, wird er erstellt.
    

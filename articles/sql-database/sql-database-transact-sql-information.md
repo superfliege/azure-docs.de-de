@@ -3,7 +3,7 @@ title: "Auflösen von T-SQL-Unterschieden bei Migration zur Azure SQL-Datenbank 
 description: "Transact-SQL-Anweisungen, die in Azure SQL-Datenbank nicht vollständig unterstützt werden"
 services: sql-database
 documentationcenter: 
-author: BYHAM
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 10/23/2017
-ms.author: rickbyh
-ms.openlocfilehash: 5d9cfce0453bb32bf3512b5b8e3ed25c9c2fdbdf
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: carlrab
+ms.openlocfilehash: f311c0d139d5ec35cbd85a34bd5a5e991bccba3a
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank   
 Beim [Migrieren der Datenbank](sql-database-cloud-migrate.md) von SQL Server zu Azure SQL-Server stellen Sie möglicherweise fest, dass die Datenbank einige Umstrukturierungen erfordert, bevor SQL Server migriert werden kann. Dieser Artikel enthält Anleitungen, die Ihnen sowohl bei der Durchführung dieser Umstrukturierung als auch beim Verstehen der Gründe helfen, warum diese Umstrukturierung notwendig ist. Verwenden Sie zum Erkennen von Kompatibilitätsproblemen den [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
@@ -30,7 +30,7 @@ Die meisten Transact-SQL-Funktionen, die von Anwendungen verwendet werden, werde
 
 Darüber hinaus werden einige Features und Syntax überhaupt nicht unterstützt, da die Azure SQL-Datenbank entwickelt wurde, um Features von Abhängigkeiten auf Masterdatenbank und Betriebssystem zu isolieren. An sich sind die meisten Aktivitäten auf Serverebene für die SQL-Datenbank nicht geeignet. T-SQL-Anweisungen und -Optionen sind nicht verfügbar, wenn sie Optionen auf Serverebene, Betriebssystemkomponenten oder bestimmte Dateisystemkonfigurationen konfigurieren. Wenn solche Funktionen erforderlich sind, dann ist häufig eine andere geeignete Alternative von der SQL-Datenbank oder aus einem anderen Azure-Feature oder -Dienst verfügbar. 
 
-Zum Beispiel ist hohe Verfügbarkeit in Azure integriert, sodass Konfigurieren von Always On nicht erforderlich ist (obwohl es sinnvoll sein kann, aktive Georeplikation für schnellere Wiederherstellung im Notfall zu konfigurieren). Deshalb werden alle T-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf Always On beziehen, werden auch nicht unterstützt.
+Zum Beispiel ist Hochverfügbarkeit in Azure integriert, sodass Konfigurieren von Always On nicht erforderlich ist (obwohl es sinnvoll sein kann, aktive Georeplikation für schnellere Wiederherstellung im Notfall zu konfigurieren). Deshalb werden alle T-SQL-Anweisungen, die sich auf Verfügbarkeitsgruppen beziehen, nicht von der SQL-Datenbank unterstützt, und die dynamischen Verwaltungssichten, die sich auf Always On beziehen, werden auch nicht unterstützt.
 
 Eine Liste der Funktionen, die von der SQL-Datenbank unterstützt bzw. nicht unterstützt werden, finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md). Die Liste auf dieser Seite ergänzt diesen Artikel zu Richtlinien und Funktionen und konzentriert sich auf Transact-SQL-Anweisungen.
 
@@ -52,7 +52,7 @@ Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Fe
 - Die Verschlüsselung wird mit Ausnahme der erweiterbaren Schlüsselverwaltung unterstützt.
 - Ereignisse: Ereignisse, Ereignisbenachrichtigungen, Abfragebenachrichtigungen
 - Ablage von Dateien: Syntax im Zusammenhang mit der Ablage von Datenbankdateien, Größe und Datenbankdateien, die automatisch von Microsoft Azure verwaltet werden.
-- Hohe Verfügbarkeit: Syntax im Zusammenhang mit hoher Verfügbarkeit, die über Ihr Microsoft Azure-Konto verwaltet wird. Dies schließt die Syntax für die Sicherung, Wiederherstellung, für Always On, die Datenbankspiegelung, den Protokollversand und Wiederherstellungsmodi ein.
+- Hochverfügbarkeit: Syntax im Zusammenhang mit hoher Verfügbarkeit, die über Ihr Microsoft Azure-Konto verwaltet wird. Dies schließt die Syntax für die Sicherung, Wiederherstellung, für Always On, die Datenbankspiegelung, den Protokollversand und Wiederherstellungsmodi ein.
 - Protokollleser: Syntax, die vom Protokollleser abhängig ist, der nicht in der SQL-Datenbank verfügbar ist: Pushreplikation, Erfassung geänderter Daten. Die SQL-Datenbank kann ein Abonnent eines Pushreplikationsartikels sein.
 - Funktionen: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
 - Hardware: Syntax im Zusammenhang mit hardwarebezogenen Servereinstellungen: Arbeitsspeicher, Worker-Threads, CPU-Affinität, Ablaufverfolgungskennzeichen usw. Verwenden Sie stattdessen Dienstebenen.
@@ -77,7 +77,7 @@ Zusätzlich zu Transact-SQL-Anweisungen, die sich auf die nicht unterstützen Fe
 - `USE`-Anweisung: Sie müssen eine neue Verbindung mit der neuen Datenbank herstellen, um den Datenbankkontext in eine andere Datenbank zu ändern.
 
 ## <a name="full-transact-sql-reference"></a>Vollständige Transact-SQL-Referenz
-Weitere Informationen zu Transact-SQL-Grammatik und -Syntax sowie Beispiele finden Sie unter [Transact-SQL-Referenz (Datenbankmodul)](https://msdn.microsoft.com/library/bb510741.aspx) in der SQL Server-Onlinedokumentation. 
+Weitere Informationen zu Transact-SQL-Grammatik und -Syntax sowie Beispiele finden Sie unter [Transact-SQL-Referenz (Datenbank-Engine)](https://msdn.microsoft.com/library/bb510741.aspx) in der SQL Server-Onlinedokumentation. 
 
 ### <a name="about-the-applies-to-tags"></a>Informationen zu Tags vom Typ "Gilt für"
 Die Transact-SQL-Referenz umfasst Artikel zu SQL Server-Versionen ab 2008. Unter der Artikelüberschrift befindet sich ein Symbol, in dem die vier SQL Server-Plattformen aufgelistet sind und die Anwendbarkeit angezeigt wird. Beispielsweise wurden Verfügbarkeitsgruppen in SQL Server 2012 eingeführt. Der Artikel [CREATE AVAILABILTY GROUP](https://msdn.microsoft.com/library/ff878399.aspx) gibt an, dass die Anweisung für **SQL Server gilt (beginnend mit 2012)**. Die Anweisung gilt nicht für SQL Server 2008, SQL Server 2008 R2, Azure SQL-Datenbank, Azure SQL Data Warehouse oder Parallel Data Warehouse.

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: jingwang
-ms.openlocfilehash: ad3bc7ba38f5ea20586031bdcc3ae44f03f9da0b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e580c3f36ce19679d3edcf7a8861e4e492dfa9c5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Kopieren von Daten aus SAP Cloud for Customer (C4C) mithilfe von Azure Data Factory
 
@@ -34,7 +34,7 @@ Dieser Connector ermöglicht insbesondere, dass Azure Data Factory Daten aus/in 
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für den SAP Cloud for Customer-Connector verwendet werden.
 
@@ -42,13 +42,13 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 Folgende Eigenschaften werden für den mit SAP Cloud for Customer verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die „type“-Eigenschaft muss auf **SapCloudForCustomer**festgelegt sein. | Ja |
-| url | Die URL des SAP C4C OData-Diensts. | Ja |
+| type | Die „type“-Eigenschaft muss auf **SapCloudForCustomer**festgelegt sein. | Ja |
+| URL | Die URL des SAP C4C OData-Diensts. | Ja |
 | username | Geben Sie den Benutzernamen für die Verbindung mit dem SAP C4C-Server an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Legen Sie für dieses Feld „SecureString“ fest. | Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Quelle: Nein, Senke: Ja |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Quelle: Nein, Senke: Ja |
 
 >[!IMPORTANT]
 >Um Daten in SAP Cloud for Customer zu kopieren, erstellen Sie explizit [eine Azure IR](create-azure-integration-runtime.md#create-azure-ir) mit einem Standort in der Nähe Ihres SAP Cloud for Customer-Standorts, und nehmen Sie eine Zuordnung im verknüpften Dienst wie im folgenden Beispiel vor:
@@ -82,7 +82,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Um Daten aus SAP Cloud for Customer zu kopieren, legen Sie die „type“-Eigenschaft des Datasets auf **SapCloudForCustomerResource** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft des Datasets muss auf **SapCloudForCustomerResource** festgelegt werden. |Ja |
 | path | Geben Sie den Pfad der Entität „SAP C4C OData“ an. |Ja |
@@ -113,10 +113,10 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus SAP Cloud for Customer den Quelltyp in der Kopieraktivität auf **SapCloudForCustomerSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **SapCloudForCustomerSource** festgelegt sein.  | Ja |
-| query | Geben Sie die benutzerdefinierte OData-Abfrage zum Lesen von Daten an. | Nein |
+| query | Geben Sie die benutzerdefinierte OData-Abfrage zum Lesen von Daten an. | Nein  |
 
 Beispielabfrage zum Abrufen von Daten für einen bestimmten Tag: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
@@ -156,7 +156,7 @@ Beispielabfrage zum Abrufen von Daten für einen bestimmten Tag: `"query": "$fil
 
 Legen Sie zum Kopieren von Daten in SAP Cloud for Customer den Senkentyp in der Kopieraktivität auf **SapCloudForCustomerSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die „type“-Eigenschaft muss auf **SapCloudForCustomerSink**festgelegt sein.  | Ja |
 | writeBehavior | Das Schreibverhalten des Vorgangs. Optionen: „Insert“, „Update“. | Nein. Standard: „Insert“. |
@@ -210,18 +210,18 @@ Beim Kopieren von Daten aus SAP Cloud for Customer werden die folgenden Zuordnun
 | Edm.Binary | Byte[] |
 | Edm.Boolean | Bool |
 | Edm.Byte | Byte[] |
-| Edm.DateTime | DateTime |
-| Edm.Decimal | Decimal |
-| Edm.Double | Doppelt |
+| Edm.DateTime | Datetime |
+| Edm.Decimal | DECIMAL |
+| Edm.Double | Double |
 | Edm.Single | Single |
-| Edm.Guid | GUID |
+| Edm.Guid | Guid |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | String |
-| Edm.Time | TimeSpan |
-| Edm.DateTimeOffset | Datetimeoffset |
+| Edm.String | Zeichenfolge |
+| Edm.Time | Zeitraum |
+| Edm.DateTimeOffset | DateTimeOffset |
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -15,11 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
-ms.openlocfilehash: e6fc49855b449a7723a7f8a0c1c41516b3a44ee5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ROBOTS: NOINDEX
+ms.openlocfilehash: d8c700d7b23f0e86b4a190e3c1f1143d962a8d63
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Hochladen einer generalisierten VHD in Azure und Erstellen einer neuen VM
 
@@ -51,7 +52,7 @@ Stellen Sie sicher, dass die auf dem Computer ausgeführten Serverrollen von Sys
 1. Melden Sie sich bei dem virtuellen Windows-Computer an.
 2. Öffnen Sie das Eingabeaufforderungsfenster als Administrator. Wechseln Sie in das Verzeichnis **%windir%\system32\sysprep**, und führen Sie anschließend `sysprep.exe` aus.
 3. Wählen Sie unter **Systemvorbereitungsprogramm** die Option **Out-of-Box-Experience (OOBE) für System aktivieren**, und vergewissern Sie sich, dass das Kontrollkästchen **Verallgemeinern** aktiviert ist.
-4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren**.
+4. Wählen Sie unter **Optionen für Herunterfahren** die Option **Herunterfahren** aus.
 5. Klicken Sie auf **OK**.
    
     ![Starten von Sysprep](./media/upload-generalized-managed/sysprepgeneral.png)

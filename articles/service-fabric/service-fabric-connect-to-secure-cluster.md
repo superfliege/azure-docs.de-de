@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 01/10/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3f46d743b85b1133f64309f01074cbc3b430183f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15ea4cbc02a0311b26e75ae7156c42f6bc2b9b82
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="connect-to-a-secure-cluster"></a>Herstellen einer Verbindung mit einem sicheren Cluster
 
@@ -34,7 +34,7 @@ Verwenden Sie den Befehl `sfctl cluster select`, um eine Verbindung mit einem Cl
 
 Clientzertifikate können in zwei unterschiedlichen Größen dargestellt werden, entweder als ein Zertifikat- und Schlüsselpaar oder als eine einzelne Pem-Datei. Für kennwortgeschützte `pem`-Dateien, werden Sie automatisch zur Eingabe des Kennworts aufgefordert.
 
-Wenn Sie das Clientzertifikat als Pem-Datei speichern möchten, geben Sie den Dateipfad im `--pem`-Argument an. Beispiel:
+Wenn Sie das Clientzertifikat als Pem-Datei speichern möchten, geben Sie den Dateipfad im `--pem`-Argument an. Beispiel: 
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
@@ -48,7 +48,7 @@ Um ein Zertifikat anzugeben, verwenden Schlüsselpaare die Argumente `--cert` un
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --cert ./client.crt --key ./keyfile.key
 ```
 
-Manchmal schlägt die Zertifikatsüberprüfung für Zertifikate fehl, die zum Sichern von Test- oder Dev-Clustern verwendet werden. Geben Sie zum Umgehen der Zertifikatsüberprüfung die `--no-verify`-Option an. Beispiel:
+Manchmal schlägt die Zertifikatsüberprüfung für Zertifikate fehl, die zum Sichern von Test- oder Dev-Clustern verwendet werden. Geben Sie zum Umgehen der Zertifikatsüberprüfung die `--no-verify`-Option an. Beispiel: 
 
 > [!WARNING]
 > Verwenden Sie die `no-verify`-Option nicht, wenn Sie sich zur Produktion von Service Fabric-Clustern verbinden.
@@ -57,7 +57,7 @@ Manchmal schlägt die Zertifikatsüberprüfung für Zertifikate fehl, die zum Si
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
-Darüber hinaus können Sie Pfade zu den Verzeichnissen der Zertifikate von vertrauenswürdigen Zertifizierungsstellen oder zu individuellen Zertifikaten angeben. Um diese Pfade anzugeben, verwenden Sie das `--ca`-Argument. Beispiel:
+Darüber hinaus können Sie Pfade zu den Verzeichnissen der Zertifikate von vertrauenswürdigen Zertifizierungsstellen oder zu individuellen Zertifikaten angeben. Um diese Pfade anzugeben, verwenden Sie das `--ca`-Argument. Beispiel: 
 
 ```azurecli
 sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --ca ./trusted_ca
