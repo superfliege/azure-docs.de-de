@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie Fiddler oder Postman zum Senden von HT
 services: search
 documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 
 ms.service: search
@@ -12,17 +12,17 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/17/2017
+ms.date: 01/04/2018
 ms.author: heidist
-ms.openlocfilehash: d8da3f02fab90e0c690e320736409a4d113d634c
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: a9a6bc035ba9f02057e3086a9682b54282da19f3
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman
 
-Eine der einfachsten Möglichkeiten zum Untersuchen der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice) ist die Verwendung von Fiddler oder Postman, um HTTP-Anforderungen zu formulieren und die Antworten zu prüfen. In diesem Artikel experimentieren Sie mit Anforderungs- und Antwortnutzlasten, ohne dass Sie Code schreiben müssen.
+Eine der einfachsten Möglichkeiten zum Untersuchen der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice) ist die Verwendung von Fiddler oder Postman, um HTTP-Anforderungen zu formulieren und die Antworten zu prüfen. Mit den richtigen Tools und dieser Anleitung können Sie vor dem Schreiben von Code Anforderungen senden und Antworten anzeigen.
 
 > [!div class="checklist"]
 > * Herunterladen eines Web-API-Testtools
@@ -76,7 +76,7 @@ Formulieren Sie eine Anforderung, die wie im folgenden Screenshot aussieht. Wäh
 > [!Tip]
 > Sie können den Webdatenverkehr deaktivieren, um überschüssige HTTP-Aktivitäten auszublenden, die für die durchgeführten Aufgaben nicht relevant sind. Navigieren Sie in Fiddler zum Menü **File** (Datei), und deaktivieren Sie die Option **Capture Traffic** (Datenverkehr erfassen). 
 
-### <a name="postman"></a>Postman
+### <a name="postman"></a>postman
 
 Formulieren Sie eine Anforderung, die wie im folgenden Screenshot aussieht. Wählen Sie **PUT** als Verb aus. 
 
@@ -118,7 +118,7 @@ Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgen
 
 ![Fiddler-Anforderungstext][7]
 
-### <a name="postman"></a>Postman
+### <a name="postman"></a>postman
 
 Kopieren Sie die Indexdefinition in den Anforderungstext (ähnlich wie im folgenden Screenshot), und klicken Sie anschließend oben rechts auf **Send** (Senden), um die fertige Anforderung zu senden.
 
@@ -208,7 +208,7 @@ Falls Sie eine 207-Antwort erhalten, ist der Upload von mindestens einem Dokumen
 
 ![Fiddler-Anforderungsnutzlast][9]
 
-### <a name="postman"></a>Postman
+### <a name="postman"></a>postman
 
 Ändern Sie das Verb in **POST**. Ändern Sie die URL so, dass sie `/docs/index` enthält. Kopieren Sie die Dokumente in den Anforderungstext (ähnlich wie im folgenden Screenshot), und führen Sie anschließend die Anforderung aus.
 

@@ -16,11 +16,11 @@ ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 4a3e7bd851c2b7e082caeeb451c865eab4fe6635
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0209142da5d94e0ed863a07c9ea694232421cfb
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Erste Schritte mit Azure Multi-Factor Authentication-Server
 
@@ -50,7 +50,7 @@ Wenn ein Azure MFA-Masterserver offline geschaltet wird, können die untergeordn
 
 Stellen Sie sicher, dass der Server, den Sie für Azure Multi-Factor Authentication verwenden, die folgenden Anforderungen erfüllt:
 
-| Anforderungen an den Azure Multi-Factor Authentication-Server | Beschreibung |
+| Anforderungen an den Azure Multi-Factor Authentication-Server | BESCHREIBUNG |
 |:--- |:--- |
 | Hardware |<li>200 MB Festplattenspeicher</li><li>x32- oder x64-fähiger Prozessor</li><li>1 GB oder mehr RAM</li> |
 | Software |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, alle Editionen</li><li>Windows 8, alle Editionen</li><li>Windows 7, alle Editionen</li><li>Windows Vista, alle Editionen, SP1, SP2</li><li>Microsoft .NET 4.0 Framework</li><li>IIS 7.0 oder höher bei Installation des Benutzerportals oder des Webdienst-SDK</li> |
@@ -94,7 +94,7 @@ Wenn Sie das Ereignisbestätigungsfeature nicht verwenden und Ihre Benutzer kein
 Führen Sie die folgenden Schritte aus, um den Azure Multi-Factor Authentication-Server im Azure-Portal herunterzuladen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als Administrator an.
-2. Wählen Sie **Active Directory** >  **Multi-Factor Authentication** aus.
+2. Wählen Sie **Active Directory** > **MFA-Server**.
 3. Wählen Sie **Servereinstellungen** aus.
 4. Wählen Sie **Herunterladen** aus, und befolgen Sie die Anweisungen auf der Downloadseite, um das Installationsprogramm zu speichern. 
 
