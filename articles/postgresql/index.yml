@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Dokumentation zur Azure-Datenbank für PostgreSQL
+title: "Dokumentation zur Azure-Datenbank für PostgreSQL"
 metadata:
   document_id: c0fe8cd3-35da-e3e5-718e-8f3cf2f87f34
-  title: 'Dokumentation für Azure PostgreSQL – Tutorials, API-Referenz'
-  description: 'Die Azure-Datenbank für PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft Cloud für Entwickler, der auf der Open Source-PostgreSQL-Datenbank-Engine basiert.'
+  title: "Dokumentation für Azure PostgreSQL – Tutorials, API-Referenz"
+  description: "Die Azure-Datenbank für PostgreSQL ist ein relationaler Datenbankdienst in der Microsoft Cloud für Entwickler, der auf der Open Source-PostgreSQL-Datenbank-Engine basiert."
   services: postgresql
   author: czeumault
   manager: carolz
@@ -14,49 +14,54 @@ metadata:
   ms.topic: landing-page
   ms.date: 01/23/2017
   ms.author: carolz
+  ms.openlocfilehash: ef78955bf3b7453702725d0899f3f6813fa29ef2
+  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 01/12/2018
 abstract:
-  description: 'Die Azure-Datenbank für PostgreSQL ist ein relationaler Datenbankdienst, der auf der Open Source-PostgreSQL-Datenbank-Engine basiert.  Das vollständig verwaltete Database as a Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung, Sicherheit, hoher Verfügbarkeit und dynamischer Skalierung verarbeiten.  Beim Entwickeln von Anwendungen mit der Azure-Datenbank für PostgreSQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden.  Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für PostgreSQL verwenden.'
+  description: "Die Azure-Datenbank für PostgreSQL ist ein relationaler Datenbankdienst, der auf der Open Source-PostgreSQL-Datenbank-Engine basiert.  Das vollständig verwaltete Database as a Service-Angebot kann geschäftskritische Workloads mit vorhersagbarer Leistung, Sicherheit, Hochverfügbarkeit und dynamischer Skalierung verarbeiten.  Beim Entwickeln von Anwendungen mit der Azure-Datenbank für PostgreSQL können Sie die Open-Source-Tools und die Plattform Ihrer Wahl verwenden.  Hier erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie die Azure-Datenbank für PostgreSQL verwenden."
 sections:
-  - title: Fünfminütige Schnellstarts
+- title: "Fünfminütige Schnellstarts"
+  items:
+  - type: paragraph
+    text: 'Erfahren Sie, wie Sie eine PostgreSQL-Datenbank mit Folgendem erstellen:'
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Erfahren Sie, wie Sie eine PostgreSQL-Datenbank mit Folgendem erstellen:'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/portal.svg'
-            text: Azure-Portal
-            href: /azure/postgresql/quickstart-create-server-database-portal
-          - image:
-              src: 'https://docs.microsoft.com/en-us/azure/sql-database/media/index/cli.svg'
-            text: Azure-Befehlszeilenschnittstelle
-            href: /azure/postgresql/quickstart-create-server-database-azure-cli
-  - title: Schritt-für-Schritt-Tutorials
+    - image:
+        src: https://docs.microsoft.com/azure/sql-database/media/index/portal.svg
+      text: Azure-Portal
+      href: /azure/postgresql/quickstart-create-server-database-portal
+    - image:
+        src: https://docs.microsoft.com/azure/sql-database/media/index/cli.svg
+      text: Azure-Befehlszeilenschnittstelle
+      href: /azure/postgresql/quickstart-create-server-database-azure-cli
+- title: "Schritt-für-Schritt-Tutorials"
+  items:
+  - type: paragraph
+    text: "In diesem Artikel werden folgende Themen erläutert:"
+  - type: list
+    style: ordered
     items:
-      - type: paragraph
-        text: 'In diesem Artikel werden folgende Themen erläutert:'
-      - type: list
-        style: ordered
-        items:
-          - html: 'Erstellen einer Datenbank&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure-Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>'
-          - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Erstellen einer Web-App mit Python und der CLI</a>
-  - title: Beispiele
+    - html: Erstellen einer Datenbank&#58; <a href="/azure/postgresql/tutorial-design-database-using-azure-portal">Azure-Portal</a> | <a href="/azure/postgresql/tutorial-design-database-using-azure-cli">Azure CLI</a>
+    - html: <a href="/azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app?toc=%2fazure%2fpostgresql%2ftoc.json">Erstellen einer Web-App mit Python und der CLI</a>
+- title: Beispiele
+  items:
+  - type: paragraph
+    text: Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: Suchen von Skripts zum Verwalten allgemeiner Aufgaben.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure-Befehlszeilenschnittstelle</a>
-  - title: Referenz
+    - html: <a href="/azure/postgresql/sample-scripts-azure-cli">Azure-CLI</a>
+- title: Verweis
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure">Azure-CLI</a></p>
-          - title: REST
-            html: <p><a href="/rest/api/postgresql">REST-API</a></p>
+    - title: Befehlszeile
+      html: <p><a href="/cli/azure">Azure-CLI</a></p>
+    - title: REST
+      html: <p><a href="/rest/api/postgresql">REST-API</a></p>

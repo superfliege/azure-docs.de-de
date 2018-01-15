@@ -10,11 +10,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/26/2017
 ms.author: tomfitz
-ms.openlocfilehash: 7f0f18062bc426508ec98b190fe0b73e41e88aa2
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: a26cfc632dacb41435b3755409d3e91630f5f3eb
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -48,6 +48,8 @@ Informationen zum Veröffentlichen einer verwalteten Dienstkataloganwendung find
 
 Anbieter, die ihre Dienste kostenpflichtig anbieten möchten, können eine verwaltete Anwendung über den Azure Marketplace verfügbar machen. Die veröffentlichte Anwendung ist für Benutzer außerhalb der Organisation verfügbar. So können Anbieter verwalteter Dienste (Managed Service Providers, MSPs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und Systemintegratoren (SIs) ihre Lösung allen Azure-Kunden anbieten.
 
+Informationen zum Veröffentlichen einer verwalteten Anwendung im Marketplace finden Sie unter [Erstellen einer Marketplace-Anwendung](publish-marketplace-app.md).
+
 ## <a name="resource-groups-for-managed-applications"></a>Ressourcengruppen für verwaltete Anwendungen
 
 Die Ressourcen für eine verwaltete Anwendung befinden sich üblicherweise in zwei Ressourcengruppen. Eine wird vom Verbraucher verwaltet, die andere vom Herausgeber. Beim Definieren der verwalteten Anwendung gibt der Herausgeber die Zugriffsebenen an. Die folgende Abbildung zeigt ein Szenario, in dem der Herausgeber die Besitzerrolle für die verwaltete Ressourcengruppe anfordert. Der Herausgeber hat die Ressourcengruppe für den Verbraucher mit einer Schreibschutzsperre belegt.
@@ -70,4 +72,4 @@ Wenn der Verbraucher die verwaltete Anwendung löscht, wird auch die verwaltete 
 
 * Grundlegende Informationen zum Definieren und Bereitstellen einer verwalteten Anwendung finden Sie unter [Erstellen und Bereitstellen einer verwalteten Azure-Anwendung per Azure CLI](managed-apps-quickstart-cli.md).
 * Informationen zum Veröffentlichen einer internen Anwendung finden Sie unter [Erstellen einer Dienstkataloganwendung](publish-service-catalog-app.md).
-
+* Informationen zum Veröffentlichen von verwalteten Anwendungen im Marketplace finden Sie unter [Erstellen einer Marketplace-Anwendung](publish-marketplace-app.md).

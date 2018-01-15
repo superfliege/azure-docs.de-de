@@ -4,7 +4,7 @@ description: "IoT-Sensortags und -Datenströme mit Stream Analytics und Echtzeit
 keywords: "IoT-Lösung, erste Schritte mit IoT"
 services: stream-analytics
 documentationcenter: 
-author: samacha
+author: SnehaGunda
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3e829055-75ed-469f-91f5-f0dc95046bdb
@@ -14,12 +14,12 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 3146604dd2dbc626d8179d5c91e3cf895b9f67da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: sngun
+ms.openlocfilehash: a4b2fda6c5cc5ea341618ec5fa8638a5c887bf84
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>Erste Schritte mit Azure Stream Analytics zum Verarbeiten der Daten von IoT-Geräten
 In diesem Tutorial erfahren Sie, wie Sie Datenstrom-Verarbeitungslogik erstellen, um Daten von IoT-Geräten (Internet of Things) zu erfassen. Wir verwenden einen echten IoT-Anwendungsfall aus der Praxis, um zu zeigen, wie Sie Ihre Lösung schnell und wirtschaftlich erstellen.
@@ -31,11 +31,7 @@ In diesem Tutorial erfahren Sie, wie Sie Datenstrom-Verarbeitungslogik erstellen
 ## <a name="scenario"></a>Szenario
 Contoso, ein Unternehmen im Bereich der industriellen Automation, hat seinen Fertigungsprozess vollständig automatisiert. Die Maschinen im Werk verfügen über Sensoren, die Datenströme in Echtzeit ausgeben können. In diesem Szenario möchte ein Production Floor Manager in Echtzeit Einblick in die Sensordaten erhalten, um darin nach Mustern zu suchen und entsprechend darauf zu reagieren. Wir verwenden die Stream Analytics Query Language (SAQL) für die Sensordaten, um für den eingehenden Datenstrom interessante Muster zu ermitteln.
 
-In diesem Fall werden die Daten mit einem SensorTag-Gerät von Texas Instruments generiert.
-
-![Texas Instruments SensorTag](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-01.jpg)
-
-Die Nutzlast der Daten liegt im JSON-Format vor und sieht wie folgt aus:
+In diesem Fall werden die Daten mit einem SensorTag-Gerät von Texas Instruments generiert. Die Nutzlast der Daten liegt im JSON-Format vor und sieht wie folgt aus:
 
     {
         "time": "2016-01-26T20:47:53.0000000",  
@@ -68,7 +64,7 @@ Zur einfacheren Verwendung enthält dieser Leitfaden zu den ersten Schritten ein
    
     ![Auftrag wird erstellt](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
-### <a name="create-an-azure-stream-analytics-query"></a>Erstellen einer Azure Stream Analytics-Abfrage
+## <a name="create-an-azure-stream-analytics-query"></a>Erstellen einer Azure Stream Analytics-Abfrage
 Nachdem der Auftrag erstellt wurde, können Sie ihn öffnen und eine Abfrage erstellen. Sie können leicht auf den Auftrag zugreifen, indem Sie auf die entsprechende Kachel klicken.
 
 ![Auftragskachel](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)

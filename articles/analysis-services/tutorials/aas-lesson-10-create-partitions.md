@@ -13,24 +13,22 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 99f7fcbd3a2d3b6f6fe48c7fb2703d35d3b3a8fd
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a73836b784a5e86d01df51fb83d619890d56502a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-10-create-partitions"></a>Lektion 10: Erstellen von Partitionen
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-partitions"></a>Erstellen von Partitionen
 
 In dieser Lektion wird erläutert, wie Partitionen erstellt werden, um die Tabelle „FactInternetSales“ in kleinere logische Bereiche zu unterteilen, die unabhängig von anderen Partitionen verarbeitet (aktualisiert) werden können. Standardmäßig verfügt jede Tabelle Ihres Modells über eine Partition, die alle Spalten und Zeilen der Tabelle enthält. Bei der Tabelle „FactInternetSales“ sollen die Daten nach Jahren unterteilt werden: eine Partition für jedes der fünf Jahre in der Tabelle. Jede Partition kann so unabhängig voneinander verarbeitet werden. Weitere Informationen finden Sie unter [Partitionen](https://docs.microsoft.com/sql/analysis-services/tabular-models/partitions-ssas-tabular). 
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **15 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md) abgeschlossen haben.  
   
 ## <a name="create-partitions"></a>Erstellen von Partitionen  
   

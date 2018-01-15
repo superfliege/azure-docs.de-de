@@ -3,7 +3,7 @@ title: "Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mi
 description: Tipps zum Verbessern der Leistung bei Verwendung von Azure PowerShell mit Data Lake Store
 services: data-lake-store
 documentationcenter: 
-author: nitinme
+author: stewu
 manager: jhubbard
 editor: cgronlun
 ms.service: data-lake-store
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/30/2017
-ms.author: nitinme
-ms.openlocfilehash: 49404c7df6423a20c71347e4a764d5626110310e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/09/2018
+ms.author: stewu
+ms.openlocfilehash: 63e1114d49b7bcb8910e8cd8205f10d1e8587f61
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-store"></a>Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Azure Data Lake Store
 
@@ -25,7 +25,7 @@ In diesem Artikel sind die Eigenschaften aufgeführt, die optimiert werden könn
 
 ## <a name="performance-related-properties"></a>Leistungsbezogene Eigenschaften
 
-| Eigenschaft            | Standard | Beschreibung |
+| Eigenschaft            | Standard | BESCHREIBUNG |
 |---------------------|---------|-------------|
 | PerFileThreadCount  | 10      | Mit diesem Parameter können Sie die Anzahl von parallelen Threads zum Hochladen oder Herunterladen der einzelnen Dateien auswählen. Diese Zahl steht für die maximalen Threads, die pro Datei zugeordnet werden können, aber Sie erhalten je nach Szenario ggf. weniger Threads. (Wenn Sie beispielsweise eine Datei mit 1 KB hochladen, erhalten Sie auch dann nur einen Thread, wenn Sie 20 Threads anfordern.)  |
 | ConcurrentFileCount | 10      | Dieser Parameter gilt speziell für das Hochladen oder Herunterladen von Ordnern. Mit diesem Parameter wird die Anzahl von gleichzeitigen Dateien bestimmt, die hoch- oder heruntergeladen werden können. Diese Zahl steht für die maximale Anzahl von Dateien, die gleichzeitig hoch- oder heruntergeladen werden können, aber je nach Szenario erhalten Sie ggf. eine geringere Parallelität. (Wenn Sie beispielsweise zwei Dateien hochladen, erhalten Sie auch dann nur zwei gleichzeitige Dateiuploads, wenn Sie 15 anfordern.) |
@@ -95,7 +95,7 @@ Sie können diese Einstellungen weiter optimieren, indem Sie den Wert für **Per
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden von Azure Data Lake Store für Big Data-Anforderungen](data-lake-store-data-scenarios.md) 
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
-* [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
+* [Verwenden von Azure Data Lake Analytics mit Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Verwenden von Azure HDInsight mit Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)
 

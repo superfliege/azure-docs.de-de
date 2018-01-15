@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: yurid
-ms.openlocfilehash: 045cf83caa15cb2487b4781f3c1f42752880580c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5dedad4fa3695d1b210e1174d8f29966d2259889
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="integrate-security-center-security-policies-with-azure-policy"></a>Integrieren von Security Center-Sicherheitsrichtlinien in Azure Policy
-In diesem Artikel wird das Konfigurieren von Azure Security Center-Sicherheitsrichtlinien beschrieben, die auf Azure Policy basieren. 
+In diesem Artikel wird das Konfigurieren von Azure Security Center-Sicherheitsrichtlinien beschrieben, die auf Azure Policy basieren.
 
 ## <a name="how-security-policies-work"></a>Funktionsweise von Sicherheitsrichtlinien
 Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Standardsicherheitsrichtlinie. Sie können die Richtlinien in Security Center bearbeiten oder [Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) verwenden, um Folgendes zu erreichen:
@@ -51,7 +51,7 @@ Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements
 5. Gehen Sie wie folgt vor, um eine Richtliniendefinition zu löschen: Wählen Sie unter **Policies and Parameters** (Richtlinien und Parameter) neben der zu löschenden Definition die Option **Löschen**.
 
 6. Klicken Sie auf **Speichern**.  
-    Das Fenster **Available Definitions** (Verfügbare Definitionen) mit der Standardrichtlinie, die Security Center über Azure Policy zugewiesen ist, wird geöffnet. 
+    Das Fenster **Available Definitions** (Verfügbare Definitionen) mit der Standardrichtlinie, die Security Center über Azure Policy zugewiesen ist, wird geöffnet.
 
 7. (Optional) Führen Sie im Fenster **Available Definitions** (Verfügbare Definitionen) einen der folgenden Schritte aus:
 
@@ -68,12 +68,12 @@ Sie können die Standardsicherheitsrichtlinie für jedes Ihrer Azure-Abonnements
 
 ## <a name="available-security-policy-definitions"></a>Verfügbare Sicherheitsrichtliniendefinitionen
 
-Die folgende Tabelle gibt Aufschluss über die verfügbaren Richtliniendefinitionen in der Standardsicherheitsrichtlinie: 
+Die folgende Tabelle gibt Aufschluss über die verfügbaren Richtliniendefinitionen in der Standardsicherheitsrichtlinie:
 
 | Richtlinie | Zweck der aktivierten Richtlinie |
 | --- | --- |
 | Systemupdates |Ruft eine tägliche Liste mit verfügbaren Sicherheitsupdates und kritischen Updates von Windows Update oder Windows Server Update Services ab. Die abgerufene Liste richtet sich nach dem Dienst, der für Ihre virtuellen Computer konfiguriert wurde. Darin wird empfohlen, die fehlenden Updates anzuwenden. Bei Linux-Systemen wird für die Richtlinie das von der Distribution bereitgestellte Paketverwaltungssystem genutzt, um Pakete mit verfügbaren Updates zu ermitteln. Außerdem werden Sicherheitsupdates und kritische Updates für [Azure Cloud Services](../cloud-services/cloud-services-how-to-configure-portal.md)-VMs ermittelt. |
-| Sicherheitsrisiken des Betriebssystems |Führt eine tägliche Analyse von Betriebssystemkonfigurationen durch, um Probleme zu ermitteln, die mit einer Anfälligkeit des virtuellen Computers für Angriffe verbunden sind. Außerdem werden in der Richtlinie Konfigurationsänderungen empfohlen, um diesen Sicherheitsrisiken zu begegnen. Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (Zu diesem Zeitpunkt wird Windows Server 2016 nicht vollständig unterstützt.) |
+| Sicherheitskonfigurationen |Führt eine tägliche Analyse von Betriebssystemkonfigurationen durch, um Probleme zu ermitteln, die mit einer Anfälligkeit des virtuellen Computers für Angriffe verbunden sind. Außerdem werden in der Richtlinie Konfigurationsänderungen empfohlen, um diesen Sicherheitsrisiken zu begegnen. Weitere Informationen zu den spezifischen Konfigurationen, die überwacht werden, finden Sie in der [Liste mit den empfohlenen Basisregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). (Zu diesem Zeitpunkt wird Windows Server 2016 nicht vollständig unterstützt.) |
 | Endpoint Protection |Empfiehlt die Einrichtung von Endpoint Protection für alle virtuellen Windows-Computer (VMs), um Viren, Spyware und andere Schadsoftware zu erkennen und zu entfernen. |
 | Datenträgerverschlüsselung |Empfiehlt die Aktivierung der Datenträgerverschlüsselung auf allen virtuellen Computern, um den Datenschutz im Ruhezustand zu optimieren. |
 | Netzwerksicherheitsgruppen |Empfiehlt die Konfiguration von [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md) , um den eingehenden und ausgehenden Datenverkehr für VMs mit öffentlichen Endpunkten zu steuern. Für ein Subnetz konfigurierte Netzwerksicherheitsgruppen werden für alle Netzwerkschnittstellen der virtuellen Computer vererbt, sofern nichts anderes angegeben ist. Zusätzlich zur Überprüfung, ob eine Netzwerksicherheitsgruppe konfiguriert wurde, bewertet diese Richtlinie Sicherheitsregeln für eingehende Daten, um Regeln zum Zulassen von eingehendem Datenverkehr zu identifizieren. |

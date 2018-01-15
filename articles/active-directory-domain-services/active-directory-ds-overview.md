@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 23506804ee41688bfebeb0674d99154ff1c77e61
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2c00d324adfc1b71d436cb017214af98ff3002cf
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-active-directory-ad-domain-services"></a>Azure Active Directory-Domänendienste (AD)
 ## <a name="overview"></a>Übersicht
@@ -37,15 +37,17 @@ All diese Ansätze sind mit hohen Kosten und hohem Verwaltungsaufwand verbunden.
 Die Azure AD-Domänendienste sind für die Bereitstellung einer deutlich einfacheren Alternative konzipiert.
 
 ### <a name="watch-an-introductory-video"></a>Sehen Sie sich das Einführungsvideo an
-<iframe width="560" height="315" src="https://www.youtube.com/embed/T1Nd9APNceQ" frameborder="0" allowfullscreen></iframe>
 
+>[!VIDEO https://www.youtube.com/embed/T1Nd9APNceQ]
 
 ## <a name="introducing-azure-ad-domain-services"></a>Einführung in Azure AD-Domänendienste
+
 Azure AD Domain Services stellen verwaltete Domänendienste bereit, z.B. Domänenbeitritt, Gruppenrichtlinie, LDAP, Kerberos/NTLM-Authentifizierung, die mit Windows Server Active Directory vollständig kompatibel sind. Sie können diese Domänendienste nutzen, ohne dass Sie Domänencontroller in der Cloud bereitstellen, verwalten und patchen müssen. Die Azure AD-Domänendienste können in Ihren vorhandenen Azure AD-Mandanten integriert werden, wodurch es Benutzern ermöglicht wird, sich mit ihren Unternehmensanmeldeinformationen anzumelden. Außerdem können Sie vorhandene Gruppen und Benutzerkonten verwenden, um den Zugriff auf Ressourcen zu schützen. So stellen Sie sicher, dass die Verlagerung von lokalen Ressourcen auf Azure-Infrastrukturdienste reibungsloser verläuft.
 
 Die Azure AD-Domänendienste arbeiten unabhängig davon nahtlos, ob Ihr Azure AD-Mandant auf die Cloud beschränkt ist oder mit Ihrer lokalen Active Directory-Instanz synchronisiert ist.
 
 ### <a name="azure-ad-domain-services-for-cloud-only-organizations"></a>Azure AD-Domänendienste für Organisationen mit vollständiger Umstellung auf die Cloud
+
 Ein auf die Cloud beschränkter Azure AD-Mandant (häufig als „verwaltete Mandanten“ bezeichnet) verfügt nicht über einen lokalen Identitätsfußabdruck. Anders ausgedrückt: Benutzerkonten, die zugehörigen Kennwörter und Gruppenmitgliedschaften liegen als native Daten in der Cloud vor und werden deshalb in Azure AD erstellt und verwaltet. Stellen Sie sich vor, dass Contoso ein auf die Cloud beschränkter Azure AD-Mandant ist. Wie in der folgenden Abbildung dargestellt wird, hat der Administrator von Contoso ein virtuelles Netzwerk in den Azure-Infrastrukturdiensten konfiguriert. Anwendungen und Serverworkloads werden in diesem virtuellen Netzwerk auf virtuellen Azure-Computern bereitgestellt. Da es sich bei Contoso um einen auf die Cloud beschränkten Mandanten handelt, werden alle Benutzeridentitäten, ihre Anmeldeinformationen und Gruppenmitgliedschaften in Azure AD erstellt und verwaltet.
 
 ![Azure AD-Domänendienste – Übersicht](./media/active-directory-domain-services-overview/aadds-overview.png)

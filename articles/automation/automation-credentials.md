@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: bwren
-ms.openlocfilehash: 516f0ddcc50b3e6d744f70063b2112090d2e411d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ac253fda413718ded815c9a990ae61473a5d8870
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="credential-assets-in-azure-automation"></a>Anmeldeinformationsobjekte in Azure Automation
 Ein Automation-Anmeldeinformationsobjekt enthält ein [PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential)-Objekt, das Sicherheitsanmeldeinformationen wie beispielsweise einen Benutzernamen und ein Kennwort umfasst. Runbooks und DSC-Konfigurationen können Cmdlets verwenden, die zur Authentifizierung ein PSCredential-Objekt akzeptieren, oder sie extrahieren den Benutzernamen und das Kennwort aus dem PSCredential-Objekt, um diese Informationen für eine Anwendung oder einen Dienst bereitzustellen, die bzw. der eine Authentifizierung erfordert. Die Eigenschaften für ein Anmeldeinformationsobjekt werden sicher in Azure Automation gespeichert und können im Runbook oder in der DSC-Konfiguration über die Aktivität [Get-AutomationPSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) abgerufen werden.
@@ -29,7 +29,7 @@ Ein Automation-Anmeldeinformationsobjekt enthält ein [PSCredential](http://msdn
 ## <a name="azure-classic-powershell-cmdlets"></a>Klassische Azure PowerShell-Cmdlets
 Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Lieferumfang des [Azure PowerShell-Moduls](/powershell/azure/overview) , das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-| Cmdlets | Beschreibung |
+| Cmdlets | BESCHREIBUNG |
 |:--- |:--- |
 | [Get-AzureAutomationCredential](/powershell/module/azure/get-azureautomationcredential?view=azuresmps-3.7.0) |Ruft Informationen zu einem Anmeldeinformationsobjekt ab. Sie können mithilfe der Aktivität **Get-AutomationPSCredential** nur das Anmeldeinformationsobjekt selbst abrufen. |
 | [New-AzureAutomationCredential](/powershell/module/azure/new-azureautomationcredential?view=azuresmps-3.7.0) |Erstellt ein neues Anmeldeinformationsobjekt. |
@@ -39,7 +39,7 @@ Die Cmdlets in der folgenden Tabelle werden zum Erstellen und Verwalten von Auto
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-Cmdlets
 Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwalten von Automation-Anmeldeinformationsobjekten mit Windows PowerShell verwendet.  Sie gehören zum Lieferumfang des [AzureRM.Automation-Moduls](/powershell/azure/overview), das zur Verwendung in Automation-Runbooks und DSC-Konfigurationen verfügbar ist.
 
-| Cmdlets | Beschreibung |
+| Cmdlets | BESCHREIBUNG |
 |:--- |:--- |
 | [Get-AzureRmAutomationCredential](/powershell/module/azurerm.automation/get-azurermautomationcredential?view=azurermps-4.4.0) |Ruft Informationen zu einem Anmeldeinformationsobjekt ab.  |
 | [New-AzureRmAutomationCredential](/powershell/module/azurerm.automation/new-azurermautomationcredential?view=azurermps-4.4.0) |Erstellt ein neues Anmeldeinformationsobjekt. |
@@ -49,7 +49,7 @@ Die Cmdlets in der folgenden Tabelle werden für AzureRM zum Erstellen und Verwa
 ## <a name="runbook-activities"></a>Runbookaktivitäten
 Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinformationen in einem Runbook und DSC-Konfigurationen verwendet.
 
-| Aktivitäten | Beschreibung |
+| Aktivitäten | BESCHREIBUNG |
 |:--- |:--- |
 | Get-AutomationPSCredential |Ruft Anmeldeinformationen zur Verwendung in einem Runbook oder einer DSC-Konfiguration ab. Gibt ein [System.Management.Automation.PSCredential](http://msdn.microsoft.com/library/system.management.automation.pscredential) -Objekt zurück. |
 
@@ -59,7 +59,7 @@ Die Aktivitäten in der folgenden Tabelle werden für den Zugriff auf Anmeldeinf
 ## <a name="python2-functions"></a>Python2-Funktionen
 Mit der Funktion in der folgenden Tabelle wird auf Anmeldeinformationen in einem Python2-Runbook zugegriffen.
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 |:---|:---|
 | automationassets.get_automation_credential | Ruft Informationen zu einem Anmeldeinformationsobjekt ab. |
 
@@ -81,13 +81,6 @@ Die folgenden Beispielbefehle zeigen, wie Sie ein neues Automation-Anmeldeinform
     $pw = ConvertTo-SecureString "PassWord!" -AsPlainText -Force
     $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $user, $pw
     New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name "MyCredential" -Value $cred
-
-### <a name="to-create-a-new-credential-asset-with-the-azure-classic-portal"></a>So erstellen Sie ein neues Anmeldeinformationsobjekt über das klassische Azure-Portal
-1. Klicken Sie in Ihrem Automation-Konto im oberen Fensterbereich auf **Objekte** .
-2. Klicken Sie unten im Fenster auf **Einstellung hinzufügen**.
-3. Klicken Sie auf **Anmeldeinformationen hinzufügen**.
-4. Wählen Sie in der Dropdownliste **Anmeldeinformationstyp** die Option **PowerShell-Anmeldeinformationen** aus.
-5. Schließen Sie den Assistenten ab, und aktivieren Sie das Kontrollkästchen, um die neuen Anmeldeinformationen zu speichern.
 
 ## <a name="using-a-powershell-credential"></a>Verwenden von PowerShell-Anmeldeinformationen
 In einem Runbook oder einer DSC-Konfiguration rufen Sie ein Anmeldeinformationsobjekt mit der Aktivität **Get-AutomationPSCredential** ab. Diese Aktivität gibt ein [PSCredential-Objekt](http://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) zurück, das Sie mit einer Aktivität oder einem Cmdlet verwenden können, die oder das einen PSCredential-Parameter erfordert. Sie können auch die Eigenschaften des Anmeldeinformationsobjekts abrufen, um diese einzeln zu verwenden. Das Objekt besitzt eine Eigenschaft für den Benutzernamen und das sichere Kennwort. Oder Sie verwenden die Methode **GetNetworkCredential**, um ein [NetworkCredential](http://msdn.microsoft.com/library/system.net.networkcredential.aspx)-Objekt zurückzugeben, das eine unsichere Version des Kennworts bereitstellt.

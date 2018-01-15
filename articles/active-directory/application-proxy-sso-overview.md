@@ -3,7 +3,7 @@ title: "Verwalten von SSO für den Azure AD-Anwendungsproxy | Microsoft-Dokument
 description: "Enthält eine Beschreibung der Grundlagen von SSO (einmaliges Anmelden) mit dem Anwendungsproxy."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: e3f2ed6f019760fd4109c6fc3d8449d95c4959a9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 60422b4c8256df024bbc870fc43ec6b491f674f1
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-does-azure-ad-application-proxy-provide-single-sign-on"></a>Wie stellt der Azure AD-Anwendungsproxy das einmalige Anmelden bereit?
 
@@ -29,7 +29,7 @@ Zum Verwenden von Azure Active Directory für das einmalige Anmelden an Ihren An
 
 Führen Sie diese Schritte aus, um die Optionen für das einmalige Anmelden anzuzeigen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen** > **Alle Anwendungen**.
 3. Wählen Sie die App aus, für die Sie die Optionen für das einmalige Anmelden verwalten möchten.
 4. Wählen Sie **Einmaliges Anmelden**.
@@ -40,7 +40,7 @@ Im Dropdownmenü werden für Ihre Anwendung fünf Optionen für das einmalige An
 
 * Azure AD-SSO deaktiviert
 * Kennwortbasierte Anmeldung
-* Anmeldung über Link
+* Verknüpfte Anmeldung
 * Integrierte Windows-Authentifizierung
 * Headerbasierte Anmeldung
 
@@ -56,7 +56,7 @@ Wählen Sie **Kennwortbasierte Anmeldung**, wenn Sie Azure Active Directory als 
 
 Informationen zum Einrichten der kennwortbasierten Anmeldung finden Sie unter [Ermöglichen des einmaligen Anmeldens mit dem Azure AD-Anwendungsproxy – Public Preview](application-proxy-sso-azure-portal.md).
 
-## <a name="linked-sign-on"></a>Anmeldung über Link
+## <a name="linked-sign-on"></a>Verknüpfte Anmeldung
 
 Wählen Sie **Anmeldung über Link**, wenn Sie bereits eine SSO-Lösung für Ihre lokalen Identitäten eingerichtet haben. Diese Option ermöglicht Azure Active Directory die Nutzung von vorhandenen SSO-Lösungen, aber Ihre Benutzer haben weiterhin Remotezugriff auf die Anwendung. 
 

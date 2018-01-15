@@ -3,8 +3,8 @@ title: Client- und Server-SDK-Versionskontrolle in Mobile Apps und Mobile Servic
 description: "Liste der Client-SDKs und Kompatibilität mit Server-SDK-Versionen für Mobile Services und Azure Mobile Apps"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 35b19672-c9d6-49b5-b405-a6dcd1107cd5
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: f79e819b1547f81498ea213858faf3c75e374782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: 37bf36af535eb9b5c8b0ba38434b71f1a6686811
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Client- und Serverversionsverwaltung in Mobile Apps und Mobile Services
 Die neueste Version von Azure Mobile Services ist das Feature **Mobile Apps** von Azure App Service.
@@ -33,7 +33,7 @@ Weitere Informationen zum Migrieren zu App Service ohne Codeänderungen finden S
 ## <a name="header-specification"></a>Headerspezifikation
 Der Schlüssel `ZUMO-API-VERSION` kann entweder im HTTP-Header oder in der Abfragezeichenfolge angegeben werden. Der Wert ist eine Versionszeichenfolge im Format **x.y.z**.
 
-Beispiel:
+Beispiel: 
 
 GET https://service.azurewebsites.net/tables/TodoItem
 
@@ -85,7 +85,7 @@ Hinweis: Die Mobile Services-Client-SDKs senden *keinen* Headerwert für `ZUMO-A
 <!-- TODO: add Node npm version -->
 
 ### <a name="behavior-of-mobile-services-backends"></a>Verhalten von Mobile Services-Back-Ends
-| ZUMO-API-VERSION | Wert von MS_SkipVersionCheck | Antwort |
+| ZUMO-API-VERSION | Wert von MS_SkipVersionCheck | response |
 | --- | --- | --- |
 | Nicht angegeben |Beliebig |200 – OK |
 | Beliebiger Wert |True |200 – OK |
@@ -112,7 +112,7 @@ Die Versionsüberprüfung ist in den folgenden Versionen des Server-SDK enthalte
 | Node.js |[azure-mobile-apps](https://www.npmjs.com/package/azure-mobile-apps) |2.0.0 |
 
 ### <a name="behavior-of-mobile-apps-backends"></a>Verhalten von Mobile Apps-Back-Ends
-| ZUMO-API-VERSION | Wert von MS_SkipVersionCheck | Antwort |
+| ZUMO-API-VERSION | Wert von MS_SkipVersionCheck | response |
 | --- | --- | --- |
 | x.y.z oder NULL |True |200 – OK |
 | Null |False/Nicht angegeben |400 – Ungültige Anforderung |

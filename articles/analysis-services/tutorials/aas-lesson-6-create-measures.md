@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a80500e806d85d0c1dd01d10fea74f59c92fb50a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: fa47d4ea9aa019464e465c051b016dac7c224dc9
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-6-create-measures"></a>Lektion 6: Erstellen von Measures
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-measures"></a>Erstellen von Measures
 
 In dieser Lektion erstellen Sie Measures, die im Modell enthalten sein sollen. Ähnlich wie die berechneten Spalten, die Sie erstellt haben, ist ein Measure eine Berechnung, die mithilfe einer DAX-Formel erstellt wird. Im Gegensatz zu berechneten Spalten werden Measures anhand eines vom Benutzer ausgewählten *Filters* ausgewertet. Ein Beispiel ist eine bestimmte Spalte oder ein Slicer, die bzw. der im Feld für Zeilenbezeichnungen in einer PivotTable hinzugefügt wurde. Anschließend wird vom angewendeten Measure ein Wert für jede Zelle im Filter berechnet. Measures sind leistungsstarke, flexible Berechnungen, die Sie in fast allen Tabellenmodellen für dynamische Berechnungen von numerischen Daten einschließen können. Weitere Informationen finden Sie unter [Measures](https://docs.microsoft.com/sql/analysis-services/tabular-models/measures-ssas-tabular).
   
@@ -36,7 +34,7 @@ In dieser Lektion erstellen Sie Measures sowohl durch Eingabe einer DAX-Formel i
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **30 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 5: Erstellen berechneter Spalten](../tutorials/aas-lesson-5-create-calculated-columns.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 5: Erstellen berechneter Spalten](../tutorials/aas-lesson-5-create-calculated-columns.md) abgeschlossen haben.  
   
 ## <a name="create-measures"></a>Erstellen von Measures  
   

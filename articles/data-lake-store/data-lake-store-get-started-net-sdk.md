@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/13/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 018cf772f458bb29712ef9516c3af4e969a94564
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 682e8c9fc9e7f16d6b69cd73535c76e6c53c6b49
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>Kontoverwaltungsvorgänge in Azure Data Lake Store mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -44,10 +44,10 @@ Eine Anleitung zum Durchführen von Datenverwaltungsvorgängen in Data Lake Stor
 
    | Eigenschaft | Wert |
    | --- | --- |
-   | Kategorie |Vorlagen/Visual C#/Windows |
+   | Category (Kategorie) |Vorlagen/Visual C#/Windows |
    | Vorlage |Konsolenanwendung |
-   | Name |CreateADLApplication |
-4. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+   | NAME |CreateADLApplication |
+4. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 5. Fügen Sie Ihrem Projekt die NuGet-Pakete hinzu.
 
    1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen und dann auf **NuGet-Pakete verwalten**.
@@ -147,4 +147,4 @@ Im folgenden Codeausschnitt wird das zuvor erstellte Data Lake Store-Konto gelö
 * [Data Lake Store .NET SDK Reference (Referenz zum Data Lake Store .NET SDK)](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)

@@ -2,8 +2,8 @@
 title: "Aktivieren der Offlinesynchronisierung für Azure Mobile App (Cordova) | Microsoft-Dokumentation"
 description: Hier erfahren Sie, wie Sie Offlinedaten in Ihrer Cordova-Anwendung mithilfe einer mobilen App Service-App zwischenspeichern und synchronisieren.
 documentationcenter: cordova
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: 1a3f685d-f79d-4f8b-ae11-ff96e79e9de9
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-cordova-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/30/2016
-ms.author: glenga
-ms.openlocfilehash: 45e80ca672dfdb6defc6e5c1aac3d29f5479125c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: c12328a441a8cc438fa3e974863cc8adf8651b50
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Cordova-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -168,7 +168,7 @@ In diesem Abschnitt ändern Sie das Clientprojekt, um ein Offlineszenario mit ei
 
 3. Erstellen Sie die Client-App, und führen Sie sie aus. In der Konsole wird nach der Anmeldung jedes Mal eine Ausnahme protokolliert, wenn die App versucht, eine Synchronisierung mit dem Back-End durchzuführen. Neu hinzugefügte Elemente sind nur im lokalen Speicher vorhanden, bis sie per Push an das mobile Back-End übertragen werden. Die Client-App verhält sich so, als wäre sie mit dem Back-End verbunden.
 
-4. Schließen Sie die App, und starten Sie sie neu, um zu überprüfen, ob die neuen Elemente dauerhaft im lokalen Speicher gespeichert wurden.
+4. Schließen Sie die App und starten Sie sie erneut, um zu überprüfen, ob die neuen Elemente dauerhaft im lokalen Speicher gespeichert wurden.
 
 5. (Optional) Verwenden Sie Visual Studio zum Anzeigen der Azure SQL-Datenbanktabelle, um festzustellen, ob sich die Daten in der Back-End-Datenbank nicht geändert haben.
 

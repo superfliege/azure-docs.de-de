@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: dubansal
-ms.openlocfilehash: db72b1ca936e69a049d64f939d3399bfd9cdf89c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: ff8571c6447f32ef9a435f5200803e76f6013ffa
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="using-the-anomalydetection-operator"></a>Verwenden des ANOMALYDETECTION-Operators
 
@@ -78,7 +78,7 @@ Die Funktion gibt einen Datensatz mit allen drei Bewertungen als Ausgabe zurück
 - SlowPosTrendScore
 - SlowNegTrendScore
 
-Um die einzelnen Werte aus dem Datensatz zu extrahieren, verwenden Sie die **GetRecordPropertyValue** Funktion. Beispiel:
+Um die einzelnen Werte aus dem Datensatz zu extrahieren, verwenden Sie die **GetRecordPropertyValue** Funktion. Beispiel: 
 
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
@@ -89,7 +89,7 @@ Eine Anomalie eines bestimmten Typs wird erkannt, wenn eine dieser Anomaliebewer
 
 **ANOMALYDETECTION** nutzt die Semantik des gleitenden Fensters, was bedeutet, dass die Berechnung pro Ereignis ausgeführt wird, das die Funktion eingibt, und eine Bewertung für das Ergebnis produziert wird. Die Berechnung basiert auf Austauschbarkeits-Martingals, die überprüfen, ob sich die Verteilung der Ereigniswerte geändert hat. Wenn dies der Fall ist, wurde eine potenzielle Anomalie erkannt. Die zurückgegebene Bewertung ist ein Hinweis auf den Genauigkeitsgrad dieser Anomalie. Als interne Optimierung berechnet **ANOMALYDETECTION** die Anomaliebewertung eines Ereignisses basierend auf in *d* bis *2d* auftretenden Ereignissen, wobei *d* die angegebene Größe des Erkennungsfensters ist.
 
-**ANOMALYDETECTION** erwartet, dass die Eingabezeitreihen einheitlich sein. Ein Ereignisdatenstrom kann durch Aggregieren über ein rollierendes oder Hopping-Fenster vereinheitlicht werden. In Szenarien, in denen die Lücke zwischen Ereignissen immer kleiner als das Aggregationsfenster ist, reicht ein rollierendes Fenster, um die Zeitreihe zu vereinheitlichen. Wenn die Lücke größer sein kann, können die Lücken durch die Wiederholung des letzten Werts mit einem Hopping-Fenster ausgefüllt werden. Im folgenden Beispiel können beide Szenarien behandelt werden. Derzeit kann der `FillInMissingValuesStep`-Schritt nicht übersprungen werden. Ohne diesen Schritt tritt ein Kompilierungsfehler auf.
+**ANOMALYDETECTION** erwartet, dass die Eingabezeitreihen einheitlich sein. Ein Ereignisdatenstrom kann durch Aggregieren über ein rollierendes oder Hopping-Fenster vereinheitlicht werden. In Szenarien, in denen die Lücke zwischen Ereignissen immer kleiner als das Aggregationsfenster ist, reicht ein rollierendes Fenster, um die Zeitreihe zu vereinheitlichen. Wenn die Lücke größer sein kann, können die Lücken durch die Wiederholung des letzten Werts mit einem Hopping-Fenster ausgefüllt werden. Im folgenden Beispiel können beide Szenarien behandelt werden.
 
 ## <a name="performance-guidance"></a>Leistungsleitfaden
 
@@ -105,8 +105,6 @@ Eine Anomalie eines bestimmten Typs wird erkannt, wenn eine dieser Anomaliebewer
 
 Mit der folgenden Abfrage kann eine Warnung ausgegeben werden, wenn eine Anomalie erkannt wird.
 Wenn der Eingabedatenstrom nicht einheitlich ist, kann der Aggregationsschritt helfen, ihn in eine einheitliche Zeitreihe zu transformieren. Im Beispiel wird **AVG** verwendet, aber der bestimmte Aggregationstyp ist vom Benutzerszenario abhängig. Wenn darüber hinaus die Lücken einer Zeitreihe größer als das Aggregationsfenster sind, lösen keine Ereignisse in der Zeitreihe die Anomalieerkennung aus (in Übereinstimmung mit der Semantik des gleitenden Fensters). Daher wird die Annahme der Einheitlichkeit unterbrochen, wenn das nächste Ereignis eintrifft. In solchen Situationen benötigen wir eine Methode, um die Lücken in der Zeitreihe zu füllen. Ein möglicher Ansatz besteht darin, wie unten dargestellt das letzte Ereignis in jedem Hopping-Fenster zu nehmen.
-
-Wie bereits erwähnt, überspringen Sie jetzt nicht den `FillInMissingValuesStep`-Schritt. Ohne diesen Schritt tritt ein Kompilierungsfehler auf.
 
     WITH AggregationStep AS 
     (

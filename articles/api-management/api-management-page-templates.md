@@ -12,13 +12,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2017
+ms.date: 01/09/2018
 ms.author: apimpm
-ms.openlocfilehash: aca44e14ab85fcfeb9d1eb3c3eadfff7831c372f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 882bb27c7692f4eaf628d26f6081b1e1015be81b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="page-templates-in-azure-api-management"></a>Seitenvorlagen in Azure API Management
 Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des Entwicklerportals mit einem Satz von Vorlagen anzupassen, die den Inhalt konfigurieren. Unter Verwendung dieser Vorlagen können Sie die Seiteninhalte mithilfe von [DotLiquid](http://dotliquidmarkup.org/)-Syntax und dem Editor Ihrer Wahl (beispielsweise [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)) sowie verschiedenen lokalisierten [Zeichenfolgenressourcen](api-management-template-resources.md#strings), [Glyph-Ressourcen](api-management-template-resources.md#glyphs) und [Seitensteuerelementen](api-management-page-controls.md) an Ihre Bedürfnisse anpassen.  
@@ -32,7 +32,7 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 -   [Seite nicht gefunden](#PageNotFound)  
   
 > [!NOTE]
->  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund der kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Anpassen des Azure API Management-Entwicklerportals mithilfe von Vorlagen](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Beispielstandardvorlagen sind in der folgenden Dokumentation enthalten, können aber aufgrund von kontinuierlichen Verbesserungen geändert werden. Sie können die aktiven Standardvorlagen im Entwicklerportal anzeigen, indem Sie zu den gewünschten einzelnen Vorlagen navigieren. Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [So passen Sie das Azure API Management-Entwicklerportal mithilfe von Vorlagen an](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
 ##  <a name="SignIn"></a> Anmelden  
  Mit der Vorlage zum **Anmelden** können Sie die Anmeldeseite im Entwicklerportal anpassen.  
@@ -108,16 +108,16 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   
 ```json  
-{  
-    "Email": null,  
-    "Password": null,  
-    "ReturnUrl": null,  
-    "RememberMe": false,  
-    "RegistrationEnabled": true,  
-    "DelegationEnabled": false,  
-    "DelegationUrl": null,  
-    "SsoSignUpUrl": null,  
-    "AuxServiceUrl": "https://manage.windowsazure.com/#Workspaces/ApiManagementExtension/service/contoso5/dashboard",  
+{
+    "Email": null,
+    "Password": null,
+    "ReturnUrl": null,
+    "RememberMe": false,
+    "RegistrationEnabled": true,
+    "DelegationEnabled": false,
+    "DelegationUrl": null,
+    "SsoSignUpUrl": null,
+    "AuxServiceUrl": "https://portal.azure.com/#resource/subscriptions/{subscription ID}/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso5",
     "Providers": [  
         {  
             "Properties": {  
@@ -127,10 +127,10 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
             "AuthenticationType": "Aad",  
             "Caption": "Azure Active Directory"  
         }  
-    ],  
-    "UserRegistrationTerms": null,  
-    "UserRegistrationTermsEnabled": false  
-}  
+        ],
+    "UserRegistrationTerms": null,
+    "UserRegistrationTermsEnabled": false
+}
 ```  
   
 ##  <a name="SignUp"></a> Registrieren  
@@ -223,13 +223,13 @@ Azure API Management bietet Ihnen die Möglichkeit, den Inhalt von Seiten des En
   
 ### <a name="data-model"></a>Datenmodell  
   
-|Eigenschaft|Typ|Beschreibung|  
+|Eigenschaft|Typ|BESCHREIBUNG|  
 |--------------|----------|-----------------|  
-|referenceCode|string|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
-|errorCode|string|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
-|emailBody|string|Generierter E-Mail-Text, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
-|requestedUrl|string|Die angeforderte URL, wenn die Seite nicht gefunden wurde.|  
-|referrerUrl|string|Die Verweis-URL der angeforderten URL.|  
+|referenceCode|Zeichenfolge|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
+|errorCode|Zeichenfolge|Generierter Code, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
+|emailBody|Zeichenfolge|Generierter E-Mail-Text, wenn diese Seite aufgrund eines internen Fehlers angezeigt wurde.|  
+|requestedUrl|Zeichenfolge|Die angeforderte URL, wenn die Seite nicht gefunden wurde.|  
+|referrerUrl|Zeichenfolge|Die Verweis-URL der angeforderten URL.|  
   
 ### <a name="sample-template-data"></a>Vorlagenbeispieldaten  
   

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.openlocfilehash: 75b1862f288152fa2ff4619f807b86f94dc00e3f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ad18d82109e3048625f32d90af9677956350fb84
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="retrain-a-classic-web-service"></a>Erneutes Trainieren eines klassischen Webdiensts
 Der von Ihnen bereitgestellte Vorhersagewebdienst ist der Standardbewertungsendpunkt. Standardendpunkte werden mit den ursprünglichen Trainings- und Bewertungsexperimenten synchronisiert. Daher kann das trainierte Modell für den Standardendpunkt nicht ersetzt werden. Zum erneuten Trainieren des Webdiensts müssen Sie dem Webdienst einen neuen Endpunkt hinzufügen. 
@@ -66,7 +66,7 @@ So rufen Sie die Pfad-URL ab
 
 1. Kopieren Sie die URL, und fügen Sie sie in Ihren Browser ein.
 2. Klicken Sie auf den Link „Ressource aktualisieren“.
-3. Kopieren Sie die POST-URL der PATCH-Anforderung. Beispiel:
+3. Kopieren Sie die POST-URL der PATCH-Anforderung. Beispiel: 
    
      PATCH-URL: https://management.azureml.net/workspaces/00bf70534500b34rebfa1843d6/webservices/af3er32ad393852f9b30ac9a35b/endpoints/newendpoint2
 
@@ -116,7 +116,7 @@ Der *apiKey* und die *endpointUrl* für den Aufruf werden im Dashboard des Endpu
 
 Der Wert des Parameters *Name* in *Resources* muss mit dem Ressourcennamen des gespeicherten trainierten Modells im Vorhersageexperiment übereinstimmen. Gehen Sie wie folgt vor, um den Ressourcennamen abzurufen:
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **Machine Learning**.
 3. Klicken Sie unter „Name“ auf Ihren Arbeitsbereich und dann auf **Web Services**.
 4. Klicken Sie unter „Name“ auf **Census Model [predictive exp.]**.

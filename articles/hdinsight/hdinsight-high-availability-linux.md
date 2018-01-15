@@ -1,5 +1,5 @@
 ---
-title: "Hohe Verfügbarkeit für Hadoop – Azure HDInsight | Microsoft-Dokumentation"
+title: "Hochverfügbarkeit für Hadoop – Azure HDInsight | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie HDInsight-Cluster durch die Verwendung eines zusätzlichen Hauptknotens eine höhere Zuverlässigkeit und Verfügbarkeit bieten. Sie erfahren, wie dies Hadoop-Dienste wie Ambari und Hive beeinflusst, und wie eine Verbindung mit jedem Hauptknoten über SSH hergestellt wird."
 services: hdinsight
 editor: cgronlun
@@ -7,7 +7,7 @@ manager: jhubbard
 author: Blackmist
 documentationcenter: 
 tags: azure-portal
-keywords: "Hohe Verfügbarkeit, Hadoop"
+keywords: "Hochverfügbarkeit, Hadoop"
 ms.assetid: 99c9f59c-cf6b-4529-99d1-bf060435e8d4
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
@@ -15,19 +15,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 39894ba73c691ad547d8b5ab67ec9d5786a5229c
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: bf1840f77ebd39761a5ba1fd8fd1f98891dd8eca
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Verfügbarkeit und Zuverlässigkeit von Hadoop-Clustern in HDInsight
 
 HDInsight-Cluster stellen zwei Hauptknoten bereit, um die Verfügbarkeit und Zuverlässigkeit von ausgeführten Hadoop-Diensten und -Aufträgen zu verbessern.
 
-Hadoop erzielt hohe Verfügbarkeit und Zuverlässigkeit durch das Replizieren von Diensten und Daten über mehrere Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert. HDInsight bietet zwei Hauptknoten, um die Verfügbarkeit und Zuverlässigkeit von Hadoop zu verbessern.
+Hadoop erzielt Hochverfügbarkeit und Zuverlässigkeit durch das Replizieren von Diensten und Daten über mehrere Knoten in einem Cluster. Hadoop-Standarddistributionen weisen jedoch typischerweise nur einen einzigen Hauptknoten auf. Jeder Ausfall dieses Hauptknotens kann dazu führen, dass der Cluster nicht mehr funktioniert. HDInsight bietet zwei Hauptknoten, um die Verfügbarkeit und Zuverlässigkeit von Hadoop zu verbessern.
 
 > [!IMPORTANT]
 > Linux ist das einzige Betriebssystem, das unter HDInsight Version 3.4 oder höher verwendet wird. Weitere Informationen finden Sie unter [Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](hdinsight-component-versioning.md#hdinsight-windows-retirement).
@@ -41,7 +41,7 @@ Knoten in einem HDInsight-Cluster werden mithilfe von virtuellen Azure-Computern
 
 ### <a name="head-nodes"></a>Hauptknoten
 
-Zum Sicherstellen einer hohen Verfügbarkeit von Hadoop-Diensten stellt HDInsight zwei Hauptknoten bereit. Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des HDInsight-Clusters ausgeführt. Einige Dienste wie HDFS oder YARN sind jeweils nur auf einem Hauptknoten „aktiv“. Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
+Zum Sicherstellen der Hochverfügbarkeit von Hadoop-Diensten stellt HDInsight zwei Hauptknoten bereit. Beide Hauptknoten sind aktiv und werden gleichzeitig innerhalb des HDInsight-Clusters ausgeführt. Einige Dienste wie HDFS oder YARN sind jeweils nur auf einem Hauptknoten „aktiv“. Andere Dienste (z. B. HiveServer2 oder Hive-MetaStore) sind gleichzeitig auf beiden Hauptknoten aktiv.
 
 Hauptknoten (und andere Knoten in HDInsight) verfügen über numerische Werte als Teil des Hostnamens des Knotens. Beispiel: `hn0-CLUSTERNAME` oder `hn4-CLUSTERNAME`.
 

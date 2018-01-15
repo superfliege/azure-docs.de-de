@@ -13,24 +13,22 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 8cff85337ac7f5d1c0e00f09128cbbd4fa79741e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 57b3a172445047291f0aea5b1616b9dcbf6bf745
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-4-create-relationships"></a>Lektion 4: Erstellen von Beziehungen
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-relationships"></a>Beziehungen erstellen
 
 In dieser Lektion erfahren Sie, wie Sie die Beziehungen, die beim Importieren von Daten automatisch erstellt wurden, überprüfen und neue Beziehungen zwischen verschiedenen Tabellen hinzufügen. Eine Beziehung ist eine Verbindung zwischen zwei Tabellen, die festlegt, wie die Daten in diesen Tabellen korreliert werden sollen. Beispielsweise haben die Tabellen „DimProduct“ und „DimProductSubcategory“ eine Beziehung, die auf der Tatsache beruht, dass beide Produkte zu einer Unterkategorie gehören. Weitere Informationen finden Sie unter [Beziehungen](https://docs.microsoft.com/sql/analysis-services/tabular-models/relationships-ssas-tabular).
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 3: Markieren als Datumstabelle](../tutorials/aas-lesson-3-mark-as-date-table.md) abgeschlossen haben. 
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 3: Markieren als Datumstabelle](../tutorials/aas-lesson-3-mark-as-date-table.md) abgeschlossen haben. 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>Überprüfen von vorhandenen Beziehungen und Hinzufügen von neuen Beziehungen  
 Wenn Sie Daten mithilfe von Get Data importiert haben, haben Sie sieben Tabellen aus der Datenbank „AdventureWorksDW2014“ abgerufen. Beim Importieren von Daten aus einer relationalen Quelle werden im Allgemeinen vorhandene Beziehungen automatisch zusammen mit den Daten importiert. Damit mit Get Data im Datenmodell automatisch Beziehungen erstellt werden, müssen Beziehungen zwischen den Tabellen der Datenquelle bestehen.
@@ -60,7 +58,7 @@ Bevor Sie mit der Erstellung Ihres Modells fortfahren, sollten Sie überprüfen,
   
 3.  Stellen Sie sicher, dass die folgenden Beziehungen beim Importieren der Tabellen aus der Datenbank „AdventureWorksDW“ erstellt wurden:  
   
-    |Aktiv|Tabelle|Verknüpfte Nachschlagetabelle|  
+    |Aktiv|Table|Verknüpfte Nachschlagetabelle|  
     |----------|---------|------------------------|  
     |Ja|**DimCustomer [GeographyKey]**|**DimGeography [GeographyKey]**|  
     |Ja|**DimProduct [ProductSubcategoryKey]**|**DimProductSubcategory [ProductSubcategoryKey]**|  

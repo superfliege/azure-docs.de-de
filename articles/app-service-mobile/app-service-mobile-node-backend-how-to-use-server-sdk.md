@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: ab1a9dfa71c4b633392ef839bb848347fdd26431
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.author: crdun
+ms.openlocfilehash: 336da28bea7de313bced97e447fc6b7b1fb1390d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="how-to-use-the-azure-mobile-apps-nodejs-sdk"></a>Verwenden des Azure Mobile Apps SDK für Node.js
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -163,7 +163,7 @@ Wenn diese Option nur bei der lokalen Entwicklung zur Verfügung stehen soll, k�
 ## <a name="TableOperations"></a>Tabellenvorgänge
 Das Node.js-Server SDK für „azure-mobile-apps“ bietet Verfahren zum Verfügbarmachen von Datentabellen, die in Azure SQL-Datenbank als WebAPI gespeichert sind.  Es werden fünf Vorgänge bereitgestellt.
 
-| Vorgang | Beschreibung |
+| Vorgang | BESCHREIBUNG |
 | --- | --- |
 | GET /tables/*Tabellenname* |Alle Datensätze der Tabelle abrufen |
 | GET /tables/*Tabellenname*/:id |Bestimmten Datensatz der Tabelle abrufen |
@@ -318,9 +318,9 @@ Es ist ratsam, dass Sie *azureMobile.js* Ihrer *.gitignore*-Datei hinzufügen (o
 ### <a name="howto-appsettings"></a>Vorgehensweise: Konfigurieren von App-Einstellungen für Ihre mobile App
 Für die meisten Einstellungen in der Datei *azureMobile.js* gibt es im [Azure-Portal]eine entsprechende App-Einstellung.  Verwenden Sie die folgende Liste, um Ihre App unter „App-Einstellungen“ zu konfigurieren:
 
-| App-Einstellung | *azureMobile.js* -Einstellung | Beschreibung | Gültige Werte |
+| App-Einstellung | *azureMobile.js* -Einstellung | BESCHREIBUNG | Gültige Werte |
 |:--- |:--- |:--- |:--- |
-| **MS_MobileAppName** |Name |Der Name der App. |string |
+| **MS_MobileAppName** |name |Der Name der App. |Zeichenfolge |
 | **MS_MobileLoggingLevel** |logging.level |Mindestprotokolliergrad für die zu protokollierenden Meldungen. |error, warning, info, verbose, debug, silly |
 | **MS_DebugMode** |debug |Aktivieren oder Deaktivieren des Debugmodus. |true, false |
 | **MS_TableSchema** |data.schema |Name des Standardschemas für SQL-Tabellen |string (default: dbo) |
@@ -350,7 +350,7 @@ Das Verwenden von Azure SQL-Datenbank als Datenspeicher ist über alle Azure App
 2. Klicken Sie oben links im Fenster auf **+NEU** > **Web und mobil** > **Mobile App**, und geben Sie dann einen Namen für Ihr Mobile App-Back-End an.
 3. Geben Sie im Feld **Ressourcengruppe** den gleichen Namen wie für Ihre App ein.
 4. Es wird der App Service-Plan "Standard" ausgewählt.  Wenn Sie Ihren App Service-Plan ändern möchten, klicken Sie auf App Service-Plan > **+ Neu erstellen**.  Geben Sie einen Namen für den neuen App Service-Tarif ein, und wählen Sie einen geeigneten Speicherort.  Klicken Sie auf den Tarif, und wählen Sie einen geeigneten Tarif für den Dienst. Wählen Sie **Alle anzeigen** aus, um mehr Tarifoptionen anzuzeigen, z. B. **Free** und **Shared**.  Nachdem Sie den Tarif ausgewählt haben, klicken Sie auf die Schaltfläche **Auswählen**.  Klicken Sie wieder auf dem Blatt **App Service-Plan** auf **OK**.
-5. Klicken Sie auf **Erstellen**. Das Bereitstellen eines mobilen App-Back-Ends kann einige Minuten in Anspruch nehmen.  Nachdem das Mobile App-Back-End bereitgestellt wurde, wird im Portal das Blatt **Einstellungen** für das Mobile App-Back-End geöffnet.
+5. Klicken Sie auf **Create**. Das Bereitstellen eines mobilen App-Back-Ends kann einige Minuten in Anspruch nehmen.  Nachdem das Mobile App-Back-End bereitgestellt wurde, wird im Portal das Blatt **Einstellungen** für das Mobile App-Back-End geöffnet.
 
 Nach der Erstellung des mobilen App-Back-Ends können Sie wählen, ob Sie entweder für eine vorhandene SQL-Datenbank eine Verbindung mit Ihrem mobilen App-Back-End herstellen oder eine neue SQL-Datenbank erstellen.  In diesem Abschnitt erstellen wir eine SQL-Datenbank.
 

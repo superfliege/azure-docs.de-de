@@ -34,11 +34,11 @@
 - name: Verweis
   items:
     - name: Funktionale API
-      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services/'
+      href: 'https://docs.microsoft.com/rest/api/location-based-services/'
     - name: Verwaltungs-API
-      href: 'https://docs.microsoft.com/en-us/rest/api/location-based-services-management/'
+      href: 'https://docs.microsoft.com/rest/api/location-based-services-management/'
     - name: Kartensteuerelement-API – Javascript
-      href: 'https://docs.microsoft.com/en-us/javascript/api/location-based-services-javascript/'
+      href: 'https://docs.microsoft.com/javascript/api/location-based-services-javascript/'
 - name: angeben
   items:
     - name: Azure IoT Developer Center

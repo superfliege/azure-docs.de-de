@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 8586bc63ad9c1b3896b21f494ebbe14e6d25a439
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 > [!div class="op_single_selector"]
@@ -276,7 +276,7 @@ In einigen Fällen muss eine Funktion Eingaben und Ausgaben genau steuern. Spezi
 | `HttpResponseMessage<T>` | HTTP-Ausgabebindung | Anderer Rückgabestatus als 200   |
 
 > [!NOTE] 
-> Sie können zum Abrufen von HTTP-Headern und Abfragen auch die Anmerkung `@BindingName` verwenden. `@Bind("name") String query` durchläuft beispielsweise die HTTP-Anforderungsheader und Abfragen und übergibt diesen Wert an die Methode. Beispiel: `query` wird zu `"test"`, wenn die Anforderungs-URL wie folgt lautet: `http://example.org/api/echo?name=test`.
+> Sie können zum Abrufen von HTTP-Headern und Abfragen auch die Anmerkung `@BindingName` verwenden. `@BindingName("name") String query` durchläuft beispielsweise die HTTP-Anforderungsheader und Abfragen und übergibt diesen Wert an die Methode. Beispiel: `query` wird zu `"test"`, wenn die Anforderungs-URL wie folgt lautet: `http://example.org/api/echo?name=test`.
 
 ### <a name="metadata"></a>Metadaten
 

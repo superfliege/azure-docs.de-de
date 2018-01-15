@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 0cf24d8db845beb63b1b895f895da761488fd8ec
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 422d133841a380b1ef02e95245207c464089138d
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Erstellen eines Jenkins-Servers auf einem virtuellen Azure-Linux-Computer über das Azure-Portal
 
@@ -68,7 +68,7 @@ Navigieren Sie nach dem Starten des Tunnels auf Ihrem lokalen Computer zu http:/
 Führen Sie über die Befehlszeile den folgenden Befehl aus, während eine SSH-Verbindung mit dem virtuellen Jenkins-Computer besteht, um das anfängliche Kennwort abzurufen.
 
 ```bash
-`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
 Entsperren Sie das Jenkins-Dashboard zunächst mit diesem anfänglichen Kennwort.

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/05/2018
 ms.author: billmath
-ms.openlocfilehash: d25f682d3c42f95752d09454f778c3975f551cca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b842791be74094c87643528c0b4d3a65be6b3cb1
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -41,7 +41,7 @@ Stellen Sie sicher, dass die Passthrough-Authentifizierung in Ihrem Mandanten im
 
 Wenn der Benutzer sich nicht mit der Passthrough-Authentifizierung anmelden kann, wird ihm möglicherweise einer der folgenden benutzerseitigen Fehler auf der Azure AD-Anmeldeseite angezeigt: 
 
-|Error|Beschreibung|Lösung
+|Error|BESCHREIBUNG|Lösung
 | --- | --- | ---
 |AADSTS80001|Verbindung mit Active Directory kann nicht hergestellt werden.|Ensure that agent servers are members of the same AD forest as the users whose passwords need to be validated and they are able to connect to Active Directory. (Stellen Sie sicher, dass die Agent-Server Mitglieder derselben AD-Gesamtstruktur wie die Benutzer sind, deren Kennwörter überprüft werden müssen, und dass sie eine Verbindung zu Active Directory herstellen können.)  
 |AADSTS8002|Bei der Verbindung mit Active Directory ist ein Timeout aufgetreten.|Check to ensure that Active Directory is available and is responding to requests from the agents. (Überprüfen Sie, ob Active Directory verfügbar ist und auf Anforderungen der Agents antwortet.)
@@ -165,7 +165,7 @@ Weitere Informationen finden Sie auch in den Sicherheitsprotokollen Ihrer Domän
     </QueryList>
 ```
 
-### <a name="performance-monitor-counters"></a>Leistungsüberwachungsindikatoren
+## <a name="performance-monitor-counters"></a>Leistungsüberwachungsindikatoren
 
 Eine weitere Möglichkeit zum Überwachen des Authentifizierung-Agents ist das Nachverfolgen bestimmter Leistungsüberwachungsindikatoren auf jedem Server, auf dem der Authentifizierung-Agent installiert ist. Verwenden Sie die folgenden globalen Indikatoren **# PTA authentications**, **#PTA failed authentications** und **#PTA successful authentications**) und Fehlerzähler (**# PTA authentication errors**):
 

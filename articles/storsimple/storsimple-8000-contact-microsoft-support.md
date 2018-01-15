@@ -4,7 +4,7 @@ description: "Hier erfahren Sie, wie Sie eine Supportanfrage erstellen und eine 
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0df86e40d0dc1092ad7ff04f01bbc3e5e3d1c4e
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 
@@ -46,6 +46,7 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
    3. Wählen Sie in der Dropdownliste einen **Supportplan** aus, wenn Ihrem Abonnement mehrere Pläne zugeordnet sind. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
    4. Klicken Sie auf **Weiter**.
 
+
        ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
 3. Wählen Sie auf dem Blatt **Neue Supportanfrage** die Option **Schritt 2: Problem** aus. Gehen Sie auf dem Blatt **Problem** folgendermaßen vor:
@@ -58,13 +59,14 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
     6. Aktivieren Sie **Diagnoseinformationen freigeben**.
     7. Klicken Sie auf **Weiter**.
 
+
        ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. Klicken Sie auf dem Blatt **Neue Supportanfrage** auf **Schritt 3: Kontaktinformationen**. Führen Sie auf dem Blatt **Kontaktinformationen** folgende Schritte aus:
 
     1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
     2. Geben Sie in den Kontaktinformationen Ihren Namen, die E-Mail-Adresse und optional Ihr Land ein. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern** .
-    3. Klicken Sie auf **Erstellen**.
+    3. Klicken Sie auf **Create**.
    
         ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
@@ -97,7 +99,7 @@ Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 
 #### <a name="to-start-a-support-session"></a>So starten Sie eine Supportsitzung
 
-1. Greifen Sie auf das Gerät direkt über die serielle Konsole oder von einem Remotecomputer über eine Telnet-Sitzung zu. Führen Sie hierzu die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)aus.
+1. Greifen Sie auf das Gerät direkt über die serielle Konsole oder von einem Remotecomputer über eine Telnet-Sitzung zu. Führen Sie hierzu die Schritte unter [Verwenden von PuTTY für das Herstellen einer Verbindung mit der seriellen Gerätekonsole](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)aus.
 2. Drücken Sie in der Sitzung, die geöffnet wird, die **EINGABETASTE** , um eine Eingabeaufforderung zu öffnen.
 3. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d.h. die **Anmeldung mit Vollzugriff**.
 4. Geben Sie an der Eingabeaufforderung das folgende Kennwort ein:
@@ -115,4 +117,4 @@ Führen Sie zum Starten einer Supportsitzung die folgenden Schritte aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Siehe den Artikel [Beheben von Problemen mit der Bereitstellung von Geräten der StorSimple 8000-Serie](storsimple-troubleshoot-deployment.md).
+Siehe den Artikel [Beheben von Problemen mit der Bereitstellung von Geräten der StorSimple 8000-Serie](storsimple-8000-troubleshoot-deployment.md).

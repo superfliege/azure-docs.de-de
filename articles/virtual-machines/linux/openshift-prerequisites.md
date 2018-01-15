@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
 ms.author: haroldw
-ms.openlocfilehash: eb2bdd203bfbd170992358f48cde6f7b5c0bdf16
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5e287cd29fb305e78fe6338782838929007b17fc
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="common-prerequisites-for-deploying-openshift-in-azure"></a>Allgemeine Voraussetzungen für die Bereitstellung von OpenShift in Azure
 
@@ -47,7 +47,7 @@ In diesem Leitfaden erfahren Sie, wie Sie die Artefakte für die Voraussetzungen
 
 > [!div class="checklist"]
 > * Erstellen Sie einen Schlüsseltresor (Key Vault) zum Verwalten von SSH-Schlüsseln für den OpenShift-Cluster.
-> * Erstellen Sie einen Dienstprinzipal für den Azure-Cloudlösungsanbieter.
+> * Erstellen Sie einen Dienstprinzipal für Azure Cloud Solution Provider.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -94,7 +94,7 @@ Weitere Informationen zu SSH-Schlüsseln unter Windows finden Sie unter [Verwend
 Die OpenShift-Bereitstellung verwendet den erstellten SSH-Schlüssel zum Sicherstellen des Zugriffs auf den OpenShift-Master. Damit die Bereitstellung den SSH-Schlüssel sicher abrufen kann, speichern Sie den Schlüssel im Key Vault. Verwenden Sie hierzu den folgenden Befehl:
 
 ```azurecli
-az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift.rsa
+az keyvault secret set --vault-name keyvault --name keysecret --file ~/.ssh/openshift_rsa
 ```
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals 
@@ -130,7 +130,7 @@ Weitere Informationen über Dienstprinzipale finden Sie unter [Erstellen eines A
 In diesem Artikel wurden folgende Themen behandelt:
 > [!div class="checklist"]
 > * Erstellen Sie einen Schlüsseltresor (Key Vault) zum Verwalten von SSH-Schlüsseln für den OpenShift-Cluster.
-> * Erstellen Sie einen Dienstprinzipal für den Azure-Cloudlösungsanbieter.
+> * Erstellen Sie einen Dienstprinzipal für Azure Cloud Solution Provider.
 
 Als Nächstes können Sie einen OpenShift-Cluster bereitstellen:
 

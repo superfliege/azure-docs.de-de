@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: b7b27ca64d9aacabf96fdff8e7dca16f13000d19
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: e1734bdd22ecfc4e54074f02582f5a8eca7d4f59
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation-Szenario – Automatisieren der Entfernung von Ressourcengruppen
 Viele Kunden erstellen mehr als eine Ressourcengruppe. Einige werden unter Umständen für die Verwaltung von Produktionsanwendungen verwendet, und andere werden vielleicht als Entwicklungs-, Test- und Stagingumgebungen genutzt. Dabei kann nicht nur die Bereitstellung dieser Ressourcen automatisiert werden, es ist auch möglich, eine Ressourcengruppe mit nur einem Klick außer Betrieb zu setzen. Mit Azure Automation können Sie diese häufig anfallende Verwaltungsaufgabe optimieren. Darüber hinaus ist dieses Szenario auch hilfreich, wenn Sie ein Azure-Abonnement verwenden, für das ein durch ein Mitgliedsangebot wie MSDN oder das Microsoft Partner Network Cloud Essentials-Programm bedingtes Ausgabenlimit gilt.
@@ -28,14 +28,14 @@ Dieses Szenario basiert auf einem PowerShell-Runbook und dient dazu, einzelne od
 ## <a name="getting-the-scenario"></a>Abrufen des Szenarios
 Dieses Szenario umfasst ein PowerShell-Runbook, das Sie aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/Remove-ResourceGroup/1.0/DisplayScript) herunterladen können. Sie können es auch direkt über das Azure-Portal aus dem [Runbookkatalog](automation-runbook-gallery.md) importieren.<br><br>
 
-| Runbook | Beschreibung |
+| Runbook | BESCHREIBUNG |
 | --- | --- |
 | Remove-ResourceGroup |Entfernt eine oder mehrere Azure-Ressourcengruppen und die zugeordneten Ressourcen aus dem Abonnement. |
 
 <br>
 Für dieses Runbook sind folgende Eingabeparameter definiert:
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | NameFilter (erforderlich) |Ermöglicht die Angabe eines Namensfilters zur Einschränkung der zu löschenden Ressourcengruppen. Mehrere Werte können in Form einer kommagetrennten Liste übergeben werden.<br>Bei dem Filter wird die Groß-/Kleinschreibung nicht berücksichtigt, und jede Ressourcengruppe, die die Zeichenfolge enthält, wird als Übereinstimmung betrachtet. |
 | PreviewMode (optional) |Führt das Runbook aus, um zu ermitteln, welche Ressourcengruppen gelöscht werden, aber es wird keine Aktion ausgeführt.<br>Der Wert ist standardmäßig auf **true** festgelegt, um das versehentliche Löschen einzelner oder mehrerer Ressourcengruppen zu vermeiden, die an das Runbook übergeben wurden. |

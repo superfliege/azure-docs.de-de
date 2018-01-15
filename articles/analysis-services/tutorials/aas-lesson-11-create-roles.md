@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 1496e4523154ba791bf55a0708a1a77132f5257c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5fb0e2dd56e373ecf723a3672d9538bcc6dc68e3
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-11-create-roles"></a>Lektion 11: Erstellen von Rollen
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-roles"></a>Erstellen von Rollen
 
 In dieser Lektion lernen Sie, wie Sie Rollen erstellen können. Rollen bieten Modelldatenbankobjekt- und Datensicherheit, indem sie den Zugriff auf diejenigen Benutzer einschränken, die Mitglieder der Rolle sind. Jede Rolle ist mit einer einzigen Berechtigung definiert: Keine, Lesen, Lesen und Verarbeiten, Verarbeiten und Administrator. Rollen können während des Schreibens des Modells mit dem Rollen-Manager definiert werden. Nachdem ein Modell bereitgestellt wurde, können Sie Rollen verwalten, indem Sie SSMS verwenden. Weitere Informationen finden Sie unter [Rollen](https://docs.microsoft.com/sql/analysis-services/tabular-models/roles-ssas-tabular).
   
@@ -82,7 +80,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
   
 #### <a name="to-create-an-administrator-user-role"></a>So erstellen Sie die Benutzerrolle „Administrator“  
   
-1.  Klicken Sie auf **Neu**.  
+1.  Klicken Sie auf **New**.  
   
 2.  Benennen Sie die Rolle in **Administrator** um.  
   

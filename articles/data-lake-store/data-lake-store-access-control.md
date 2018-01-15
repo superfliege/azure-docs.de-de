@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/03/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 43582ae805d560e72fb8d03ab8e0abee4c4325b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Zugriffssteuerung in Azure Data Lake Store
 
@@ -261,7 +261,7 @@ Das Sticky Bit ist ein erweitertes Feature eines POSIX-Dateisystems. Im Kontext 
 
 Die folgende Tabelle veranschaulicht die Funktionsweise des Sticky Bits in Data Lake Store:
 
-| Benutzergruppe         | Datei    | Ordner |
+| Benutzergruppe         | File    | Ordner |
 |--------------------|---------|-------------------------|
 | Sticky Bit **AUS** | Keine Auswirkungen   | Keine Auswirkungen.           |
 | Sticky Bit **EIN**  | Keine Auswirkungen   | Sorgt dafür, dass nur **Administratoren** und der **zuständige Benutzer** eines untergeordneten Elements dieses Element löschen oder umbenennen können.               |
@@ -337,6 +337,6 @@ Nein.
 
 * [ACL using Access Control Lists on Linux](http://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/) (ACL mit Zugriffssteuerungslisten unter Linux)
 
-## <a name="see-also"></a>Siehe auch
+## <a name="see-also"></a>Weitere Informationen
 
 * [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)

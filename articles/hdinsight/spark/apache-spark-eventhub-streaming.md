@@ -4,7 +4,7 @@ description: Erstellen eines Apache Spark-Streamingbeispiels zum Senden eines Da
 keywords: Apache Spark-Streaming, Spark-Streaming, Spark-Beispiel, Apache Spark-Streamingbeispiel, Event Hub-Azure-Beispiel, Spark-Beispiel
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: mumian
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
-ms.author: nitinme
-ms.openlocfilehash: d0678388fea79797c3cb4cd84deeab827981ebff
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: jgao
+ms.openlocfilehash: 43ae956ca284485cc68f8120a31af1c493c0b254
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="apache-spark-streaming-process-data-from-azure-event-hubs-with-spark-cluster-on-hdinsight"></a>Apache Spark-Streaming: Verarbeiten von Daten aus Azure Event Hubs mit einem Spark-Cluster in HDInsight
 
@@ -35,7 +35,7 @@ In diesem Artikel erstellen Sie ein Apache Spark-Streamingbeispiel, das folgende
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
+* Ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
 * Ein Apache Spark-Cluster unter HDInsight. Eine Anleitung finden Sie unter [Erstellen von Apache Spark-Clustern in Azure HDInsight](apache-spark-jupyter-spark-sql.md).
 
@@ -246,7 +246,7 @@ Eine Beispielanwendung für das Scala-Streaming, die Ereignisse empfängt und an
      2. Klicken Sie auf das Symbol zum Hinzufügen (![Hinzufügen-Symbol](./media/apache-spark-eventhub-streaming/add-icon.png)) und auf **Java**, und navigieren Sie dann zu dem Speicherort, von dem Sie die JDBC-JAR-Treiberdatei heruntergeladen haben. Befolgen Sie die Anweisungen zum Hinzufügen der JAR-Datei in die Projektbibliothek.
 
          ![Hinzufügen fehlender Abhängigkeiten](./media/apache-spark-eventhub-streaming/add-missing-dependency-jars.png "Hinzufügen fehlender JAR-Abhängigkeitsdateien")
-     3. Klicken Sie auf **Übernehmen**.
+     3. Klicken Sie auf **Anwenden**.
 
 7. Erstellen Sie die JAR-Ausgabedatei. Führen Sie die folgenden Schritte aus:
 
@@ -264,7 +264,7 @@ Eine Beispielanwendung für das Scala-Streaming, die Ereignisse empfängt und an
       
        ![Apache Spark-Streamingbeispiel: Löschen der extrahierten JAR-Dateien](./media/apache-spark-eventhub-streaming/spark-streaming-example-delete-output-jars.png "Apache Spark-Streamingbeispiel: Löschen der extrahierten JAR-Dateien")
       
-       Vergewissern Sie sich, dass das Kontrollkästchen **Build on make** aktiviert ist, damit die JAR-Datei bei jeder Projekterstellung oder -aktualisierung erstellt wird. Klicken Sie auf **Übernehmen**.
+       Vergewissern Sie sich, dass das Kontrollkästchen **Build on make** aktiviert ist, damit die JAR-Datei bei jeder Projekterstellung oder -aktualisierung erstellt wird. Klicken Sie auf **Anwenden**.
    6. Auf der Registerkarte **Output Layout** am Ende der Spalte **Available Elements** werden die beiden SQL JDBC-JAR-Abhängigkeitsdateien aufgeführt, die Sie zuvor der Projektbibliothek hinzugefügt haben. Sie müssen diese der Registerkarte **Output Layout** hinzufügen. Klicken Sie mit der rechten Maustaste auf die JAR-Datei, und klicken Sie dann auf **Extract Into Output Root**.
       
        ![Apache Spark-Streamingbeispiel: Extrahieren der abhängigen JAR-Datei](./media/apache-spark-eventhub-streaming/spark-streaming-example-extract-dependency-jar.png "Apache Spark-Streamingbeispiel: Extrahieren der abhängigen JAR-Datei")  
@@ -345,7 +345,7 @@ Die Parameter sind ähnlich jenen, die Sie für die Textausgabe im vorherigen Sc
  Nach dem Ausführen des Befehls können Sie das mit dem Cluster verbundene Azure Storage-Konto überprüfen. Es sollte der erstellte Ordner **/EventStore10** angezeigt werden. Öffnen Sie eine Datei mit dem Präfix **part-**. Die Ereignisse sollten in einem JSON-Format verarbeitet worden sein.
 
 ### <a name="run-the-applications-to-receive-the-events-into-a-hive-table"></a>Ausführen von Anwendungen für den Empfang der Ereignisse in einer Hive-Tabelle
-Zum Ausführen der Spark-Streaminganwendung, die Ereignisse in eine Hive-Tabelle streamt, benötigen Sie einige zusätzliche Komponenten. Diese sind wie folgt:
+Zum Ausführen der Spark-Streaminganwendung, die Ereignisse in eine Hive-Tabelle streamt, benötigen Sie einige zusätzliche Komponenten. Dies sind:
 
 * datanucleus-api-jdo-3.2.6.jar
 * datanucleus-rdbms-3.2.9.jar
@@ -420,7 +420,7 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
 * [Entwurf von empfängerbasierter Verbindung und Direct DStream](https://www.slideshare.net/NanZhu/seattle-sparkmeetup032317)
 
-### <a name="scenarios"></a>Szenarios
+### <a name="scenarios"></a>Szenarien
 * [Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](apache-spark-use-bi-tools.md)
 * [Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
@@ -440,7 +440,7 @@ Eine Ausgabe ähnlich der folgenden sollte angezeigt werden:
 
 ### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](apache-spark-job-debugging.md)
 
 [hdinsight-versions]: hdinsight-component-versioning.md
 [hdinsight-upload-data]: ../hdinsight-upload-data.md

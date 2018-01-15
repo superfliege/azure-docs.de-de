@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/06/2017
-ms.openlocfilehash: f3b4b41593e0956e98f05c7f8d1c71632a489e56
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 7e489526fd1b6a7d38172d147df1f30d74119e95
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="classify-iris-part-2-build-a-model"></a>Klassifizieren von Iris – Teil 2: Erstellen eines Modells
 Azure Machine Learning-Dienste (Vorschau) sind eine integrierte End-to-End-Lösung für den Bereich Data Science und Advanced Analytics, mit der professionelle Datenanalysten Daten vorbereiten, Experimente entwickeln und Modelle in der Cloud bereitstellen können.
@@ -37,7 +37,7 @@ In diesem Tutorial wird das zeitlose Schwertlilien-Dataset ([Iris flower data se
 ## <a name="prerequisites"></a>Voraussetzungen
 Arbeiten Sie den ersten Teil dieser Tutorialreihe durch. Führen Sie vor dem vorliegenden Tutorial die Schritte im [Tutorial zum Vorbereiten von Daten](tutorial-classifying-iris-part-1.md) aus, um Azure Machine Learning-Ressourcen zu erstellen und die Azure Machine Learning Workbench-Anwendung zu installieren.
 
-Sie können optional mit der Ausführung von Skripts für einen lokalen Docker-Container experimentieren. Hierzu muss auf Ihrem Windows- oder Mac OS-Computer ein lokal installiertes und gestartetes Docker-Modul vorhanden sein. (Die Community Edition ist ausreichend.) Weitere Informationen zur Docker-Installation finden Sie in der [Docker-Installationsanleitung](https://docs.docker.com/engine/installation/).
+Sie können optional mit der Ausführung von Skripts für einen lokalen Docker-Container experimentieren. Hierzu muss auf Ihrem Windows- oder Mac OS-Computer eine lokal installierte und gestartete Docker-Engine vorhanden sein. (Die Community Edition ist ausreichend.) Weitere Informationen zur Docker-Installation finden Sie in der [Docker-Installationsanleitung](https://docs.docker.com/engine/installation/).
 
 Wenn Sie mit der Ausführung von Skripts in einem Docker-Container auf einem virtuellen Azure-Remotecomputer oder in einem Azure HDInsight Spark-Cluster experimentieren möchten, können Sie die [Anweisungen zum Erstellen einer Ubuntu-basierten Azure Data Science-VM oder eines HDInsight-Clusters](how-to-create-dsvm-hdi.md) befolgen.
 
@@ -176,7 +176,7 @@ In Azure Machine Learning Workbench wird jede Skriptausführung als Datensatz de
 Mit Machine Learning können Sie zusätzliche Ausführungsumgebungen wie Docker leicht konfigurieren und Ihr Skript in diesen Umgebungen ausführen. 
 
 >[!IMPORTANT]
->Für diesen Schritt muss ein Docker-Modul lokal installiert sein und gestartet werden. Weitere Informationen finden Sie der Anleitung zur Docker-Installation.
+>Für diesen Schritt muss eine Docker-Engine lokal installiert sein und gestartet werden. Weitere Informationen finden Sie der Anleitung zur Docker-Installation.
 
 1. Wählen Sie im linken Bereich das Symbol **Ordner**, um die Liste **Dateien** für Ihr Projekt zu öffnen. Erweitern Sie den Ordner `aml_config`. 
 
@@ -201,7 +201,7 @@ Mit Machine Learning können Sie zusätzliche Ausführungsumgebungen wie Docker 
    Im Hintergrund wird von Azure Machine Learning Workbench eine neue Docker-Datei erstellt. 
    In der neuen Datei wird auf das Docker-Basisimage verwiesen, das in der Datei `docker.compute` angegeben ist, sowie auf die davon abhängigen Python-Pakete in der Datei `conda_dependencies.yml`. 
    
-   Mit dem Docker-Modul werden die folgenden Aufgaben durchgeführt:
+   Mit der Docker-Engine werden die folgenden Aufgaben ausgeführt:
 
     - Herunterladen des Basisimage aus Azure
     - Installieren der Python-Pakete, die in der Datei `conda_dependencies.yml` angegeben sind
@@ -291,7 +291,7 @@ Mit Machine Learning können Sie zusätzliche Ausführungsumgebungen wie Docker 
    Wenn `run.py` abgeschlossen ist, wird in Workbench in der Listenansicht des Ausführungsverlaufs ein Graph angezeigt.
 
 ## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>Ausführen von Skripts in einem Docker-Container auf einem Remotecomputer
-Um Ihr Skript in einem Docker-Container auf einem Linux-Remotecomputer auszuführen, müssen Sie über SSH-Zugriff (Benutzername und Kennwort) für den Remotecomputer verfügen. Zudem muss auf dem Remotecomputer ein Docker-Modul installiert sein und ausgeführt werden. Am einfachsten erhalten Sie einen solchen Linux-Computer, indem Sie in Azure einen Ubuntu-basierten virtuellen Data Science-Computer (DSVM) erstellen. Erfahren Sie, wie Sie [einen Ubuntu-DSVM zur Verwendung in Azure ML Workbench erstellen](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal).
+Um Ihr Skript in einem Docker-Container auf einem Linux-Remotecomputer auszuführen, müssen Sie über SSH-Zugriff (Benutzername und Kennwort) für den Remotecomputer verfügen. Zudem muss auf dem Remotecomputer eine Docker-Engine installiert sein und ausgeführt werden. Am einfachsten erhalten Sie einen solchen Linux-Computer, indem Sie in Azure einen Ubuntu-basierten virtuellen Data Science-Computer (DSVM) erstellen. Erfahren Sie, wie Sie [einen Ubuntu-DSVM zur Verwendung in Azure ML Workbench erstellen](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal).
 
 >[!NOTE] 
 >Die CentOS-basierte DSVM wird *nicht* unterstützt.
@@ -345,7 +345,8 @@ Um Ihr Skript in einem Docker-Container auf einem Linux-Remotecomputer auszufüh
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>Ausführen des Skripts in einem HDInsight-Cluster
 Sie können dieses Skript auch in einem HDInsight Spark-Cluster ausführen. Erfahren Sie, wie Sie [einen HDInsight Spark-Cluster zur Verwendung in Azure ML Workbench erstellen](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal).
 
->![HINWEIS] Der HDInsight-Cluster muss Azure Blob als primären Speicher verwenden. Die Verwendung von Azure Data Lake-Speicher wird noch nicht unterstützt.
+>[!NOTE] 
+>Der HDInsight-Cluster muss Azure Blob als primären Speicher verwenden. Die Verwendung von Azure Data Lake-Speicher wird noch nicht unterstützt.
 
 1. Wenn Sie Zugriff auf einen Spark für Azure HDInsight-Cluster haben, generieren Sie wie hier gezeigt einen Befehl für die HDInsight-Laufzeitkonfiguration. Geben Sie den Namen des HDInsight-Clusters sowie Ihren Benutzernamen und Ihr Kennwort für HDInsight als Parameter an. Verwenden Sie den folgenden Befehl:
 

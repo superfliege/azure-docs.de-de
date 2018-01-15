@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f2849fe25fd0d5b3dc26598ffba7591cb7433161
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f131eb021d85766f12b0fb6cb8b5a07f965f9c97
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="intro"></a> Integrieren eines Clouddiensts in Azure CDN
 Ein Clouddienst kann in Azure CDN integriert werden, um beliebige Inhalte vom Speicherort des Clouddiensts zur Verfügung zu stellen. Dieser Ansatz bietet die folgenden Vorteile:
@@ -29,7 +29,7 @@ Ein Clouddienst kann in Azure CDN integriert werden, um beliebige Inhalte vom Sp
 * Einheitlicher Bereitstellungsworkflow für die Webanwendung und den vom CDN verarbeiteten Inhalt
 * Integrieren von ASP.NET-Bündelung und -Minimierung in Azure CDN
 
-## <a name="what-you-will-learn"></a>Sie lernen Folgendes
+## <a name="what-you-will-learn"></a>Lernziele
 In diesem Lernprogramm lernen Sie Folgendes:
 
 * [Integrieren eines Azure CDN-Endpunkts in einen Clouddienst und Bereitstellen von statischen Inhalten in Webseiten aus Azure CDN](#deploy)
@@ -38,10 +38,10 @@ In diesem Lernprogramm lernen Sie Folgendes:
 * [Verarbeiten von gebündelten und minimierten Inhalten über Azure CDN bei gleichzeitiger Beibehaltung des Skriptdebugvorgangs in Visual Studio](#bundling)
 * [Konfigurieren des Fallbacks für Skripts und CSS, wenn Ihr Azure CDN offline ist](#fallback)
 
-## <a name="what-you-will-build"></a>Was Sie erstellen
+## <a name="what-you-will-build"></a>Sie erstellen Folgendes
 Sie stellen eine Clouddienst-Webrolle unter Verwendung der ASP.NET-MVC-Standardvorlage bereit, fügen Code hinzu, um Inhalt aus einem integrierten Azure CDN zu verarbeiten, z. B. ein Bild, Ergebnisse von Controlleraktionen und die JavaScript- und CSS-Standarddateien; außerdem schreiben Sie Code zum Konfigurieren des Fallbackmechanismus für verarbeitete Bundles für den Fall, dass das CDN offline ist.
 
-## <a name="what-you-will-need"></a>Sie benötigen Folgendes
+## <a name="what-you-will-need"></a>Voraussetzungen
 Für dieses Lernprogramm ist Folgendes erforderlich:
 
 * Ein aktives [Microsoft Azure-Konto](/account/)
@@ -111,7 +111,7 @@ Ein CDN-Profil ist eine Sammlung von CDN-Endpunkten.  Jedes Profil enthält mind
 ## <a name="create-a-new-cdn-endpoint"></a>Erstellen eines neuen CDN-Endpunkts
 **So erstellen Sie einen neuen CDN-Endpunkt für das Speicherkonto**
 
-1. Navigieren Sie im [Azure-Verwaltungsportal](https://portal.azure.com)zu Ihrem CDN-Profil.  Eventuell haben Sie es im vorherigen Schritt an das Dashboard angeheftet.  Andernfalls können Sie es ermitteln, indem Sie nacheinander auf **Durchsuchen**, und **CDN-Profile** und dann auf das Profil klicken, dem Sie den Endpunkt hinzufügen möchten.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem CDN-Profil.  Eventuell haben Sie es im vorherigen Schritt an das Dashboard angeheftet.  Andernfalls können Sie es ermitteln, indem Sie nacheinander auf **Durchsuchen**, und **CDN-Profile** und dann auf das Profil klicken, dem Sie den Endpunkt hinzufügen möchten.
    
     Das Blatt für das CDN-Profil wird angezeigt.
    
@@ -150,7 +150,7 @@ Wenn Sie zu **http://*&lt;CDN-Name>*.azureedge.net/Content/bootstrap.css** navig
 
 ![](media/cdn-cloud-service-with-cdn/cdn-1-browser-access.PNG)
 
-Auf die gleiche Weise können Sie direkt von Ihrem CDN-Endpunkt aus auf jede öffentlich zugreifbare URL unter **http://*&lt;Dienstname>*.cloudapp.net/** zugreifen. Beispiel:
+Auf die gleiche Weise können Sie direkt von Ihrem CDN-Endpunkt aus auf jede öffentlich zugreifbare URL unter **http://*&lt;Dienstname>*.cloudapp.net/** zugreifen. Beispiel: 
 
 * Eine JS-Datei im Pfad "/Script"
 * Jede Inhaltsdatei im Pfad "/Content"
@@ -444,13 +444,13 @@ Führen Sie die folgenden Schritte aus, um ASP.NET-Bündelung und -Minimierung i
    
    * Der Ursprung dieser CDN-URL ist `http://<yourCloudService>.cloudapp.net/bundles/jquery?v=<W.X.Y.Z>`. Hierbei handelt es sich um das virtuelle Verzeichnis des Skriptbundles in Ihrem Clouddienst.
    * Da Sie einen CDN-Konstruktor verwenden, enthält das CDN-Skripttag für das Bündel nicht länger die automatisch generierte Versionszeichenfolge in der gerenderten URL. Sie müssen bei jeder Änderung des Skriptbundles manuell eine eindeutige Versionszeichenfolge generieren, um einen Cachefehler im Azure CDN zu erzwingen. Gleichzeitig muss diese eindeutige Versionszeichenfolge während der gesamten Lebensdauer der Bereitstellung konstant bleiben, um Cachetreffer im Azure CDN zu minimieren, nachdem das Bündel bereitgestellt wurde.
-   * Die Abfragezeichenfolge „v=<W.X.Y.Z>“ überträgt mithilfe von Pull aus *Properties\AssemblyInfo.cs* in Ihrem Webrollenprojekt. Sie können den Bereitstellungsworkflow so konfigurieren, dass die Assemblyversion bei jeder Veröffentlichung in Azure schrittweise erhöht wird. Alternativ können Sie einfach *Properties\AssemblyInfo.cs* in Ihrem Projekt so ändern, dass die Versionszeichenfolge bei jeder Erstellung automatisch schrittweise erhöht wird, indem Sie das Platzhalterzeichen „*“ verwenden. Beispiel:
+   * Die Abfragezeichenfolge „v=<W.X.Y.Z>“ überträgt mithilfe von Pull aus *Properties\AssemblyInfo.cs* in Ihrem Webrollenprojekt. Sie können den Bereitstellungsworkflow so konfigurieren, dass die Assemblyversion bei jeder Veröffentlichung in Azure schrittweise erhöht wird. Alternativ können Sie einfach *Properties\AssemblyInfo.cs* in Ihrem Projekt so ändern, dass die Versionszeichenfolge bei jeder Erstellung automatisch schrittweise erhöht wird, indem Sie das Platzhalterzeichen „*“ verwenden. Beispiel: 
      
         [assembly: AssemblyVersion("1.0.0.*")]
      
      Sie können auch jede andere Strategie zur Vereinfachung der Generierung einer für die Lebensdauer einer Bereitstellung eindeutigen Zeichenfolge verwenden.
 2. Veröffentlichen Sie den Clouddienst erneut, und rufen Sie die Startseite auf.
-3. Zeigen Sie den HTML-Code für die Seite an. Die CDN-URL sollte bei jeder erneuten Veröffentlichung von Änderungen im Clouddienst mit einer eindeutigen Versionszeichenfolge gerendert angezeigt werden. Beispiel:  
+3. Zeigen Sie den HTML-Code für die Seite an. Die CDN-URL sollte bei jeder erneuten Veröffentlichung von Änderungen im Clouddienst mit einer eindeutigen Versionszeichenfolge gerendert angezeigt werden. Beispiel:   
    
         ...
    

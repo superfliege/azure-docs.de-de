@@ -223,7 +223,7 @@
 - name: Verwandte Themen
   items:
     - name: Microsoft Cognitive Toolkit – CNTK
-      href: 'https://docs.microsoft.com/en-us/cognitive-toolkit/'
+      href: 'https://docs.microsoft.com/cognitive-toolkit/'
       maintainContext: true
     - name: Cortana Intelligence-Partnerlösungen
       items:
@@ -240,12 +240,12 @@
             - name: Anomalieerkennung
               href: apps-anomaly-detection-api.md
             - name: Cognitive Services
-              href: 'https://docs.microsoft.com/en-us/azure/cognitive-services/'
-            - name: Vorhersagbarer Wartungsbedarf
+              href: 'https://docs.microsoft.com/azure/cognitive-services/'
+            - name: Predictive Maintenance
               items:
                 - name: Übersicht
                   href: cortana-analytics-playbook-predictive-maintenance.md
-                - name: Architektur
+                - name: Architecture
                   href: cortana-analytics-architecture-predictive-maintenance.md
                 - name: Technischer Leitfaden
                   href: cortana-analytics-technical-guide-predictive-maintenance.md
@@ -257,7 +257,7 @@
                   href: cortana-analytics-playbook-vehicle-telemetry-deep-dive.md
                 - name: Einrichtung
                   href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
-- name: Ressourcen
+- name: angeben
   items:
     - name: TDSP-Tools und -Hilfsprogramme
       items:

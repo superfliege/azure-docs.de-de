@@ -9,11 +9,11 @@ ms.date: 10/11/2017
 ms.topic: reference
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 7e5bf6b11a2345b8f7353460548ab80b276d16f8
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 8862c5f318bed57e1934223cad778f5c45b0bf27
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="cost-management-training-videos"></a>Trainigsvideos zur Kostenverwaltung
 
@@ -21,48 +21,48 @@ Die folgenden Videos zeigen Ihnen mit Demonstrationen den Einstieg in die Kosten
 
 [An Introduction to Azure Cost Management Powered by Cloudyn](https://youtu.be/NWIRny6Wpsk) (Einführung in die Azure-Kostenverwaltung mit Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/NWIRny6Wpsk" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/NWIRny6Wpsk]
 
 [Analyzing your cloud billing data vs. time with Azure Cost Management Powered by Cloudyn](https://youtu.be/7LsVPHglM0g) (Analysieren Ihrer Cloudabrechnungsdaten in einem bestimmten Zeitraum mit der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7LsVPHglM0g" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/7LsVPHglM0g]
 
 [Adding Users to Azure Cost Management Powered by Cloudyn ](https://youtu.be/Nzn7GLahx30) (Hinzufügen von Benutzern zur Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Nzn7GLahx30?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/Nzn7GLahx30?ecver=1]
 
 [Creating a Cost Entity Hierarchy in Azure Cost Management Powered by Cloudyn](https://youtu.be/dAd9G7u0FmU) (Erstellen einer Kostenentitätshierarchie in der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/dAd9G7u0FmU?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/dAd9G7u0FmU?ecver=1]
 
 [Optimizing VM Size in Azure Cost Management Powered by Cloudyn](https://youtu.be/1xaZBNmV704) (Optimieren der Größe des virtuellen Computers in der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/1xaZBNmV704?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/1xaZBNmV704?ecver=1]
 
 [Defining a Cost Allocation Model in Azure Cost Management Powered by Cloudyn](https://youtu.be/FJzof_agKHY) (Definieren eines Kostenzuordnungsmodells in der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FJzof_agKHY?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/FJzof_agKHY?ecver=1]
 
 [Defining Custom Charges in Azure Cost Management Powered by Cloudyn](https://youtu.be/3HcgkGPQjXE) (Definieren benutzerdefinierter Gebühren in der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3HcgkGPQjXE?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/3HcgkGPQjXE?ecver=1]
 
 [How to Find Your EA Enrollment ID and API Key for use in Azure Cost Management Powered by Cloudyn](https://youtu.be/u_phLs_udig) (Suchen Ihrer EA-Registrierungs-ID und Ihres API-Schlüssels für die Verwendung in der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/u_phLs_udig?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/u_phLs_udig?ecver=1]
 
 [Finding your Directory GUID and Rate ID for use in Azure Cost Management Powered by Cloudyn](https://youtu.be/PaRjnyaNGMI) (Suchen Ihrer Directory-GUID und Rate-ID für die Verwendung in der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/PaRjnyaNGMI?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/PaRjnyaNGMI?ecver=1]
 
 [Assigning Accounts and Subscriptions to Cost Entities in Azure Cost Management by Cloudyn](https://youtu.be/d9uTWSdoQYo) (Zuweisen von Konten und Abonnements zu Kostenentitäten in der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/d9uTWSdoQYo?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/d9uTWSdoQYo?ecver=1]
 
 [Connecting to Azure Resource Manager with Azure Cost Management Powered by Cloudyn](https://youtu.be/oCIwvfBB6kk) (Herstellen einer Verbindung mit Azure Resource Manager mit der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
 [Analyzing your cloud billing data with Azure Cost Management Powered by Cloudyn](https://youtu.be/G0pvI3iLH-Y) (Analysieren Ihrer Cloudabrechnungsdaten mit der Azure-Kostenverwaltung von Cloudyn)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/G0pvI3iLH-Y?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/G0pvI3iLH-Y?ecver=1]

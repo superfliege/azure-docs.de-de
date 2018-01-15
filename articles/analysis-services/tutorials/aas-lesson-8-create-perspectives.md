@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a8bb8748d4fe39d664055549564d08524cdc80f3
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 190a9c998bceb97f8446265809b8d2c3bdc76abc
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-8-create-perspectives"></a>Lektion 8: Erstellen von Perspektiven
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-perspectives"></a>Erstellen von Perspektiven
 
 In dieser Lektion erstellen Sie eine Perspektive für Internetverkäufe. Durch eine Perspektive ist ein anzeigbarer Teil eines Modells definiert, in dem konzentrierte, geschäfts- oder anwendungsspezifische Sichtweisen geboten werden. Wenn sich ein Benutzer mit einem Modell verbindet und dabei eine Perspektive verwendet, sieht er nur die in dieser Perspektive definierten Objekte als Felder (Tabellen, Spalten, Measures, Hierarchien und KPIs). Weitere Informationen finden Sie unter [Perspektiven](https://docs.microsoft.com/sql/analysis-services/tabular-models/perspectives-ssas-tabular).
   
@@ -34,7 +32,7 @@ In dieser Lektion soll beschrieben werden, wie Sie Perspektiven erstellen und si
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **5 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 7: Erstellen von Key Performance Indicators](../tutorials/aas-lesson-7-create-key-performance-indicators.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 7: Erstellen von Key Performance Indicators](../tutorials/aas-lesson-7-create-key-performance-indicators.md) abgeschlossen haben.  
   
 ## <a name="create-perspectives"></a>Erstellen von Perspektiven  
   

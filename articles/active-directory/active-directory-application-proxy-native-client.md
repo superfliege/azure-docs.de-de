@@ -3,7 +3,7 @@ title: "Veröffentlichen nativer Client-Apps – Azure AD | Microsoft-Dokumentat
 description: "Erläutert, wie Sie es systemeigenen Client-Apps ermöglichen, mit einem Azure AD-Anwendungsproxyconnector zu kommunizieren und so einen sicheren Remotezugriff auf lokale Anwendungen bereitzustellen."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: f0cae145-e346-4126-948f-3f699747b96e
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: de49a8343a3db6c8b890050e7791f77105a09a3a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2be62c00d144e47cef8ea4df5aa82554f2bbcc18
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Aktivieren von nativen Client-Apps für die Interaktion mit Proxyanwendungen
 
@@ -39,7 +39,7 @@ Veröffentlichen Sie Ihre Proxyanwendung wie jede andere Anwendung, und weisen S
 ## <a name="step-2-configure-your-application"></a>Schritt 2: Konfigurieren der Anwendung
 Konfigurieren Sie Ihre systemeigene Anwendung wie folgt:
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zu **Azure Active Directory** > **App-Registrierungen**.
 3. Wählen Sie **Registrierung einer neuen Anwendung** aus.
 4. Geben Sie einen Namen für Ihre Anwendung an. Wählen Sie als Anwendungstyp **Nativ**, und geben Sie den Umleitungs-URI für Ihre Anwendung an. 

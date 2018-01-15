@@ -3,8 +3,8 @@ title: Upgrade von Mobile Services auf Azure App Service
 description: "Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung auf eine mobile App Service-App aktualisieren können."
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 81c8ba6245565368eab4cdaca297ff7656180605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: f07b1d6037ff8ca16b673e6a1a235769355a9993
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>Aktualisieren des vorhandenen .NET-Azure Mobile Service auf App Service
 Mobile App Service-Apps sind eine neue Methode zum Erstellen mobiler Anwendungen mit Microsoft Azure. Weitere Informationen finden Sie unter [Was sind Mobile Apps?].
@@ -89,7 +89,7 @@ Anschließend ersetzen Sie in der Datei „WebApiConfig.cs“ Folgendes:
         // Use this class to set WebAPI configuration options
         HttpConfiguration config = ServiceConfig.Initialize(new ConfigBuilder(options));
 
-durch
+with
 
         HttpConfiguration config = new HttpConfiguration();
         new MobileAppConfiguration()
@@ -153,9 +153,9 @@ In iOS sollten Sie das Core-Datenschema für Ihre Datenentitäten folgendermaße
 | Attribut | Typ | Hinweis |
 | --- | --- | --- |
 | id |Zeichenfolge, als erforderlich gekennzeichnet |Primärschlüssel im Remotespeicher |
-| createdAt |Date |(optional) Zuordnung zur createdAt-Systemeigenschaft |
-| updatedAt |Date |(optional) Zuordnung zur updatedAt-Systemeigenschaft |
-| Version |String |(optional) Zum Erkennen von Konflikten, Zuordnung zu „version“ |
+| createdAt |Datum |(optional) Zuordnung zur createdAt-Systemeigenschaft |
+| updatedAt |Datum |(optional) Zuordnung zur updatedAt-Systemeigenschaft |
+| Version |Zeichenfolge |(optional) Zum Erkennen von Konflikten, Zuordnung zu „version“ |
 
 #### <a name="querying-system-properties"></a>Abfragen von Systemeigenschaften
 In Azure Mobile Services werden Systemeigenschaften nicht standardmäßig gesendet, sondern nur auf Anforderung unter Verwendung der Abfragezeichenfolge `__systemProperties`. Im Gegensatz dazu werden Systemeigenschaften in Azure Mobile Apps **immer ausgewählt** , da sie Teil des Objektmodells des Server-SDK sind.

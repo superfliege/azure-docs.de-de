@@ -3,8 +3,8 @@ title: Migrieren von Mobile Services in eine mobile App Service-App
 description: "Erfahren Sie, wie einfach Sie Ihre Mobile Services-Anwendung in eine mobile App Service-App migrieren können."
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 07507ea2-690f-4f79-8776-3375e2adeb9e
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
-ms.author: glenga
-ms.openlocfilehash: ee64913629124f886e91478c21304956fbec9f90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: f3d89c627f462c9e34b2ff067972be56f5bed32f
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
 Mit der [allgemeinen Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
@@ -79,7 +79,7 @@ Als Ausgangspunkt empfehlen wir folgende Tarife:
 
 | Mobile Service-Tarif | App Service-Tarif |
 |:--- |:--- |
-| Free |F1 Free |
+| Kostenlos |F1 Free |
 | Basic |B1 Basic |
 | Standard |S1 Standard |
 
@@ -169,7 +169,7 @@ Alle Authentifizierungseinstellungen sind auf der migrierten Website als App-Ein
 
 | Anbieter | Client-ID | Geheimer Clientschlüssel | Andere Einstellungen |
 |:--- |:--- |:--- |:--- |
-| Microsoft Account |**MS\_MicrosoftClientID** |**MS\_MicrosoftClientSecret** |**MS\_MicrosoftPackageSID** |
+| Microsoft-Konto |**MS\_MicrosoftClientID** |**MS\_MicrosoftClientSecret** |**MS\_MicrosoftPackageSID** |
 | Facebook |**MS\_FacebookAppID** |**MS\_FacebookAppSecret** | |
 | Twitter |**MS\_TwitterConsumerKey** |**MS\_TwitterConsumerSecret** | |
 | Google |**MS\_GoogleClientID** |**MS\_GoogleClientSecret** | |
@@ -233,7 +233,7 @@ Ihre bedarfsgesteuerten Aufträge befinden sich in `App_Data/config/scripts/sche
 ### <a name="notification-hubs"></a>Notification Hubs
 Mobile Services verwendet Notification Hubs für Pushbenachrichtigungen.  Die folgenden App-Einstellungen werden verwendet, um den Notification Hub nach der Migration mit Ihrem Mobile Service zu verknüpfen:
 
-| Anwendungseinstellung | Beschreibung |
+| Anwendungseinstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **MS\_PushEntityNamespace** |Der Notification Hub-Namespace |
 | **MS\_NotificationHubName** |Der Notification Hub-Name |
@@ -266,7 +266,7 @@ In der Zwischenzeit stehen die Legacypush-Einstellungen (mit Ausnahme des APNS-Z
 ### <a name="app-settings"></a>Andere App-Einstellungen
 Die folgenden zusätzlichen App-Einstellungen werden aus Ihrem Mobile Service migriert und sind unter *Einstellungen* > *App Einstellungen*verfügbar:
 
-| Anwendungseinstellung | Beschreibung |
+| Anwendungseinstellung | BESCHREIBUNG |
 |:--- |:--- |
 | **MS\_MobileServiceName** |Der Name Ihrer App |
 | **MS\_MobileServiceDomainSuffix** |Das Domänenpräfix, z.B.: azure-mobile.net |
@@ -311,7 +311,7 @@ Normalerweise ist die Diagnoseprotokollierung in einem Azure App Service deaktiv
 4. Wählen Sie im Menü „FEATURES“ **Diagnoseprotokolle** .
 5. Klicken Sie für die folgenden Protokolle auf **EIN**: **Anwendungsprotokollierung (Dateisystem)**, **Detaillierte Fehlermeldungen** und **Ablaufverfolgung für Anforderungsfehler**.
 6. Klicken Sie für Webserverprotokollierung auf **Dateisystem** .
-7. Klicken Sie unten auf der Seite auf **Speichern**
+7. Klicken Sie unten auf der Seite auf **Speichern**.
 
 So zeigen Sie die Protokolle an:
 

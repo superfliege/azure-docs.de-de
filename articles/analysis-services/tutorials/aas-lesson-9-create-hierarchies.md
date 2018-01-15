@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 28e4e24f5706e88ede25060d5459617befd4aea9
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 041096b1a93fdc671939b6d6715a7836d1977e3c
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-9-create-hierarchies"></a>Lektion 9: Erstellen von Hierarchien
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-hierarchies"></a>Erstellen von Hierarchien
 
 In dieser Lektion lernen Sie, wie Sie Hierarchien erstellen können. Hierarchien sind Gruppen mit Spalten, die in Ebenen angeordnet sind. Eine Hierarchie vom Typ „Geografie“ kann beispielsweise über Unterebenen für Land, Bundesland, Landkreis und Ort verfügen. Hierarchien können in einer Feldliste einer Berichterstellungsclientanwendung getrennt von anderen Spalten auftreten. So können Clientbenutzer leichter durch diese navigieren und sie in Berichte einbeziehen. Weitere Informationen finden Sie unter [Hierarchien](https://docs.microsoft.com/sql/analysis-services/tabular-models/hierarchies-ssas-tabular).
   

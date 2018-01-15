@@ -11,14 +11,14 @@ ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: 2a57b60a2222d6e2ea864410edc6a32a0bf0c76c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 69670d789d75a99d69538821d88427bd8ac397be
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="getting-started-with-azure-automation"></a>Erste Schritte mit Azure Automation
 
@@ -88,10 +88,6 @@ Alle Automatisierungsaufgaben, die Sie für Ressourcen mit den Azure-Cmdlets in 
 
 Die Automation-Ressourcen für jedes Automation-Konto sind mit einer einzelnen Azure-Region verknüpft, aber die Automation-Konten können alle Ressourcen in Ihrem Abonnement verwalten. Erstellen Sie Automation-Konten in unterschiedlichen Regionen, wenn Ihre Richtlinien eine Isolierung von Daten und Ressourcen innerhalb einer spezifischen Region vorsehen.
 
-> [!NOTE]
-> Auf Automation-Konten und die darin enthaltenen Ressourcen, die mit dem Azure-Portal erstellt werden, kann im klassischen Azure-Portal nicht zugegriffen werden. Wenn Sie diese Konten oder die enthaltenen Ressourcen mit Windows PowerShell verwalten möchten, müssen Sie die Azure-Ressourcen-Manager-Module verwenden.
-> 
-
 Wenn Sie ein Automation-Konto im Azure-Portal erstellen, werden automatisch zwei Authentifizierungsentitäten erstellt:
 
 * Ein ausführendes Konto. Für dieses Konto werden ein Dienstprinzipal in Azure Active Directory (Azure AD) und ein Zertifikat erstellt. Außerdem wird die Rolle „Mitwirkender“ der rollenbasierten Zugriffssteuerung (RBAC) zugewiesen, die zum Verwalten von Resource Manager-Ressourcen mit Runbooks verwendet wird.
@@ -123,15 +119,15 @@ Wenn Sie ein Automation-Konto für eine bestimmte Region festgelegt haben und di
 
 | **Region** | **DNS-Einträge** |
 | --- | --- |
-| USA (Mitte/Süden) |scus-jobruntimedata-prod-su1.azure-automation.net |
+| USA Süd Mitte |scus-jobruntimedata-prod-su1.azure-automation.net |
 | USA (Ost) 2 |eus2-jobruntimedata-prod-su1.azure-automation.net |
 | USA, Westen-Mitte | wcus-jobruntimedata-prod-su1.azure-automation.net |
-| Westeuropa |we-jobruntimedata-prod-su1.azure-automation.net |
+| Europa, Westen |we-jobruntimedata-prod-su1.azure-automation.net |
 | Nordeuropa |ne-jobruntimedata-prod-su1.azure-automation.net |
 | Kanada, Mitte |cc-jobruntimedata-prod-su1.azure-automation.net |
 | Südostasien |sea-jobruntimedata-prod-su1.azure-automation.net |
-| Indien (Mitte) |cid-jobruntimedata-prod-su1.azure-automation.net |
-| Japan Ost |jpe-jobruntimedata-prod-su1.azure-automation.net |
+| Indien, Mitte |cid-jobruntimedata-prod-su1.azure-automation.net |
+| Japan, Osten |jpe-jobruntimedata-prod-su1.azure-automation.net |
 | Australien, Südosten |ase-jobruntimedata-prod-su1.azure-automation.net |
 | UK, Süden | uks-jobruntimedata-prod-su1.azure-automation.net |
 | US Government, Virginia | usge-jobruntimedata-prod-su1.azure-automation.us |
@@ -146,7 +142,7 @@ Wenn Sie eine Liste mit IP-Adressen statt Namen benötigen, können Sie die XML-
 
 Es gibt verschiedene Möglichkeiten, wie Sie im Azure-Portal ein Automation-Konto erstellen können.  In der folgenden Tabelle sind die einzelnen Bereitstellungstypen und die Unterschiede aufgeführt.  
 
-|Methode | Beschreibung |
+|Methode | BESCHREIBUNG |
 |-------|-------------|
 | Auswählen von Automation + Control über den Marketplace | Bei diesem Angebot werden ein Automation-Konto und ein OMS-Arbeitsbereich, die miteinander verknüpft sind, in derselben Ressourcengruppe und Region erstellt.  Die Integration mit OMS bietet als Vorteil auch die Verwendung von Log Analytics zum Überwachen und Analysieren des Runbook-Auftragsstatus und von Auftragsstreams über die Zeit sowie der Nutzung von erweiterten Features zum Eskalieren oder Untersuchen von Problemen. Das Angebot stellt außerdem die Lösungen für die Änderungsnachverfolgung und Updateverwaltung bereit, die standardmäßig aktiviert sind. |
 | Auswählen von Automation über den Marketplace | Es wird ein Automation-Konto in einer neuen oder vorhandenen Ressourcengruppe erstellt, die nicht mit einem OMS-Arbeitsbereich verknüpft ist und keine verfügbaren Lösungen des Angebots „Automation + Control“ enthält. Dies ist eine einfache Konfiguration zur Einführung in Automation, damit Sie lernen können, wie Sie Runbooks schreiben, DSC-Konfigurationen einrichten und die Funktionen des Diensts nutzen. |
@@ -159,7 +155,7 @@ Die empfohlene Methode zum Integrieren von Automation ist die Auswahl des Angebo
 
 1. Melden Sie sich mit einem Konto, das Mitglied der Rolle „Abonnement-Administratoren“ und Co-Administrator des Abonnements ist, beim Azure-Portal an.
 
-2. Klicken Sie auf **Neu**.<br><br> ![Auswählen der Option „Neu“ im Azure-Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
+2. Klicken Sie auf **New**.<br><br> ![Auswählen der Option „Neu“ im Azure-Portal](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
 
 3. Suchen Sie nach **Automation**, und wählen Sie dann in den Suchergebnissen die Option **Automation + Control**.<br><br> ![Suchen nach und Auswählen von „Automation & Control“ über den Marketplace](media/automation-offering-get-started/automation-portal-martketplace-select-automationandcontrol.png)<br>   
 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2017
 ms.author: danis
 ms.openlocfilehash: 5de2949561ed5f64582898006de7818e81f79f5b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="custom-script-extension-for-windows-using-the-classic-deployment-model"></a>Benutzerdefinierte Skripterweiterung für Windows im Rahmen des klassischen Bereitstellungsmodells
 
@@ -73,7 +73,7 @@ Der folgende JSON-Code zeigt das Schema für die benutzerdefinierte Skripterweit
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| Name | Wert/Beispiel |
+| NAME | Wert/Beispiel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Herausgeber | Microsoft.Compute |

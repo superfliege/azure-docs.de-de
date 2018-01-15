@@ -1,5 +1,5 @@
 ---
-title: "Welche Workloads können mit Azure Site Recovery geschützt werden? | Microsoft Docs"
+title: "Welche Workloads können mit Azure Site Recovery geschützt werden? | Microsoft-Dokumentation"
 description: "Hier werden die Workloads beschrieben, die mithilfe der Notfallwiederherstellung mit dem Azure Site Recovery-Dienst geschützt werden können."
 services: site-recovery
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/15/2017
 ms.author: raynew
-ms.openlocfilehash: 3105eaa9e97f02f2337832bef538959a94263ea4
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 03d311f84a4b9bc5f3a4c3c488ee7c84b1ef49ad
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Welche Workloads können mit Azure Site Recovery geschützt werden?
 
@@ -110,11 +110,11 @@ Mit Remotedesktopdiensten (RDS) werden eine Virtual Desktop Infrastructure (VDI)
 
 | **RDS** |**Replizieren von Azure-VMs in Azure** | **Replizieren von Hyper-V-VMs an einem sekundären Standort** | **Replizieren von Hyper-V-VMs in Azure** | **Replizieren von VMware-VMs an einem sekundären Standort** | **Replizieren von VMware-VMs in Azure** | **Replizieren von physischen Servern an einem sekundären Standort** | **Replizieren physischer Server in Azure** |
 |---| --- | --- | --- | --- | --- | --- | --- |
-| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
-| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein|Ja |Nein |Ja |Nein |Ja |Nein |
+| **Virtuelle Desktops eines Pools (nicht verwaltet)** |Nein |Ja |Nein  |Ja |Nein  |Ja |Nein  |
+| **Virtuelle Desktops eines Pools (verwaltet und ohne UPD)** |Nein |Ja |Nein  |Ja |Nein  |Ja |Nein  |
 | **Remoteanwendungen und Remotedesktopsitzungen (ohne UPD)** |Ja|Ja |Ja |Ja |Ja |Ja |Ja |
 
-[Set up disaster recovery for RDS using Azure Site Recovery](https://docs.microsoft.com/en-us/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) (Einrichten der Notfallwiederherstellung für RDS mit Azure Site Recovery)
+[Set up disaster recovery for RDS using Azure Site Recovery](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/rds-disaster-recovery-with-azure) (Einrichten der Notfallwiederherstellung für RDS mit Azure Site Recovery)
 
 [Erfahren Sie mehr](https://gallery.technet.microsoft.com/Remote-Desktop-DR-Solution-bdf6ddcb) über das Schützen von RDS.
 

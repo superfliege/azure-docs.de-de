@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
-ms.openlocfilehash: 8b0f3941526214455992ba2f0f6299df24323c9c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2ec1e02ccc8d8916f6d9d50ce787f2562f33fd7d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern
 
@@ -26,7 +26,7 @@ Bevor Sie einen [Azure Search-Index](search-what-is-an-index.md) abfragen könne
 
 In diesem Artikel wird die Verwendung von [Indexern](search-indexer-overview.md) behandelt, es werden aber auch Features beschrieben, die nur bei Azure SQL-Datenbanken verfügbar sind (z.B. die integrierte Änderungsnachverfolgung). 
 
-Zusätzlich zu Azure SQL-Datenbanken bietet Azure Search Indexer für [Azure Cosmos DB](search-howto-index-documentdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) und [Azure Table Storage](search-howto-indexing-azure-tables.md). Um Unterstützung für andere Datenquellen anzufordern, geben Sie im [Forum für Feedback zu Azure Search](https://feedback.azure.com/forums/263029-azure-search/) Feedback.
+Zusätzlich zu Azure SQL-Datenbanken bietet Azure Search Indexer für [Azure Cosmos DB](search-howto-index-cosmosdb.md), [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md) und [Azure Table Storage](search-howto-indexing-azure-tables.md). Um Unterstützung für andere Datenquellen anzufordern, geben Sie im [Forum für Feedback zu Azure Search](https://feedback.azure.com/forums/263029-azure-search/) Feedback.
 
 ## <a name="indexers-and-data-sources"></a>Indexer und Datenquellen
 
@@ -44,7 +44,7 @@ Sie können einen Azure SQL-Indexer wie folgt einrichten und konfigurieren:
 
 * Mit dem Datenimport-Assistenten im [Azure-Portal](https://portal.azure.com)
 * Mit dem Azure Search [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer?view=azure-dotnet)
-* Mit der Azure Search [REST-API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
+* Azure Search [REST-API](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)
 
 In diesem Artikel wird die REST-API verwendet, um **Indexer** und **Datenquellen** zu erstellen.
 
@@ -185,7 +185,7 @@ Azure Search verwendet eine **inkrementelle Indizierung**, um zu vermeiden, dass
 ### <a name="sql-integrated-change-tracking-policy"></a>Richtlinie für die integrierte SQL-Änderungsnachverfolgung
 Wenn die SQL-Datenbank die [Änderungsnachverfolgung](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server)unterstützt, wird empfohlen, die **Richtlinie für die integrierte SQL-Änderungsnachverfolgung**zu verwenden. Dies ist die effizienteste Richtlinie. Zudem sorgt sie dafür, dass Azure Search gelöschte Zeilen identifiziert, ohne dass Sie eine explizite „Vorläufig löschen“-Spalte in Ihrer Tabelle angeben müssen.
 
-#### <a name="requirements"></a>Anforderungen 
+#### <a name="requirements"></a>Requirements (Anforderungen) 
 
 + Anforderungen für die Datenbankversion:
   * SQL Server 2012 SP3 und höher bei Verwendung von SQL Server auf Azure-VMs.
@@ -216,7 +216,7 @@ Wenn Sie die Richtlinie für die integrierte SQL-Änderungsnachverfolgung verwen
 
 Diese Richtlinie zur Erkennung von Änderungen basiert auf einer Spalte mit oberem Grenzwert, die Version oder Uhrzeit der letzten Aktualisierung einer Zeile erfasst. Bei Verwendung einer Sicht müssen Sie eine Richtlinie mit oberem Grenzwert einsetzen. Die Spalte mit dem oberen Grenzwert muss die folgenden Anforderungen erfüllen.
 
-#### <a name="requirements"></a>Anforderungen 
+#### <a name="requirements"></a>Requirements (Anforderungen) 
 
 * Alle Einfügungen geben einen Wert für die Spalte an.
 * Alle Updates für ein Element ändern auch den Wert der Spalte.
@@ -283,7 +283,7 @@ Wenn Sie die Methode des "vorläufigen Löschens" verwenden, können Sie die Ric
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-search-data-types"></a>Zuordnung zwischen SQL- und Azure Search-Datentypen
-| SQL-Datentyp | Zulässige Ziel-Index-Feldtypen | Hinweise |
+| SQL-Datentyp | Zulässige Ziel-Index-Feldtypen | Notizen |
 | --- | --- | --- |
 | Bit |Edm.Boolean, Edm.String | |
 | int, smallint, tinyint |Edm.Int32, Edm.Int64, Edm.String | |
@@ -302,7 +302,7 @@ SQL-Indexer verfügt über mehrere Konfigurationseinstellungen:
 
 | Einstellung | Datentyp | Zweck | Standardwert |
 | --- | --- | --- | --- |
-| queryTimeout |string |Legt das Timeout für die Ausführung einer SQL-Abfrage fest |5 Minuten („00:05:00“) |
+| queryTimeout |Zeichenfolge |Legt das Timeout für die Ausführung einer SQL-Abfrage fest |5 Minuten („00:05:00“) |
 | disableOrderByHighWaterMarkColumn |bool |Bewirkt, dass bei der von der Richtlinie zum Erkennen von Änderungen mit oberem Grenzwert verwendeten SQL-Abfrage die ORDER BY-Klausel weggelassen wird. Siehe [Richtlinie zum Erkennen von Änderungen mit oberem Grenzwert](#HighWaterMarkPolicy). |false |
 
 Diese Einstellungen werden im `parameters.configuration`-Objekt in der Indexer-Definition verwendet. Um das Abfragetimeout z.B. auf 10 Minuten festzulegen, erstellen oder aktualisieren Sie den Indexer mit der folgenden Konfiguration:
@@ -325,7 +325,7 @@ Nicht direkt. Weder empfehlen noch unterstützen wir eine direkte Verbindung, da
 
 **F: Kann ich Azure SQL-Indexer mit anderen Datenbanken als SQL Server in IaaS auf Azure verwenden?**
 
-Nr. Wir unterstützen dieses Szenario nicht, da wir den Indexer mit keinen anderen Datenbanken als SQL Server getestet haben.  
+Nein. Wir unterstützen dieses Szenario nicht, da wir den Indexer mit keinen anderen Datenbanken als SQL Server getestet haben.  
 
 **F: Kann ich mehrere Indexer erstellen, die nach einem Zeitplan ausgeführt werden?**
 

@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/16/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 89a0f388815b3a0e2a6e020690f9a644e73bbcad
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: c5c4a687ffe512b15372d152b517834771e46328
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>Ergänzende Lektion – Unregelmäßige Hierarchien
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 In dieser ergänzenden Lektion beheben Sie ein häufiges Problem beim Pivotieren von Hierarchien, die leere Werte (Member) auf verschiedenen Ebenen enthalten. Ein Beispiel wäre etwa eine Organisation, in der einem hochrangigen Manager sowohl Abteilungsleiter als auch Mitarbeiter ohne Führungskompetenzen unterstellt sind. Ein anderes Beispiel wären geografische Hierarchien mit Land, Region und Stadt, bei denen einige Städte keinem Bundesland/Kanton untergeordnet sind (wie etwa im Fall von Washington D. C. oder Vatikanstadt). Wenn eine Hierarchie leere Member aufweist, steigt sie oft zu anderen oder unregelmäßigen Ebenen hinunter.
 
@@ -53,8 +51,8 @@ Wenn Sie das Projekt „AW Internet Sales“ im Rahmen des Tutorials erstellt ha
     | Tabelle 1           | Column       | Filterrichtung   | Tabelle 2     | Column      | Aktiv |
     |-------------------|--------------|--------------------|-------------|-------------|--------|
     | FactResellerSales | OrderDateKey | Standard            | DimDate     | Datum        | Ja    |
-    | FactResellerSales | DueDate      | Standard            | DimDate     | Datum        | Nein     |
-    | FactResellerSales | ShipDateKey  | Standard            | DimDate     | Datum        | Nein     |
+    | FactResellerSales | DueDate      | Standard            | DimDate     | Datum        | Nein      |
+    | FactResellerSales | ShipDateKey  | Standard            | DimDate     | Datum        | Nein      |
     | FactResellerSales | ProductKey   | Standard            | DimProduct  | ProductKey  | Ja    |
     | FactResellerSales | EmployeeKey  | Beide Tabellen | DimEmployee | EmployeeKey | Ja    |
 
@@ -125,7 +123,7 @@ Wenn Sie das Projekt „AW Internet Sales“ im Rahmen des Tutorials erstellt ha
 
     Das sieht doch sehr viel besser aus.
 
-## <a name="see-also"></a>Weitere Informationen   
+## <a name="see-also"></a>Siehe auch   
 [Lektion 9: Erstellen von Hierarchien](../tutorials/aas-lesson-9-create-hierarchies.md)  
 [Ergänzende Lektion – Dynamische Sicherheit](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [Ergänzende Lektion – Detailzeilen](../tutorials/aas-supplemental-lesson-detail-rows.md)  

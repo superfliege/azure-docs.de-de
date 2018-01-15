@@ -2,8 +2,8 @@
 title: "Aktivieren der Offlinesynchronisierung bei einer App für die universelle Windows-Plattform (UWP) mit Mobile Apps | Microsoft Docs"
 description: "Erfahren Sie, wie Sie mit einer Azure Mobile App Offlinedaten in Ihrer App für die universelle Windows-Plattform (UWP) zwischenspeichern und synchronisieren."
 documentationcenter: windows
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: 8fe51773-90de-4014-8a38-41544446d9b5
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 4b0a57c3bab688487eb9a50461b406e1a6e477c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: a16de4cef82c29f9b6becfae1901662ee1936934
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-sync-for-your-windows-app"></a>Aktivieren der Offlinesynchronisierung für Ihre Windows-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -30,11 +30,11 @@ In diesem Tutorial aktualisieren Sie das UWP-App-Projekt aus dem Tutorial [Erste
 
 Weitere Informationen zur Offlinesynchronisierungsfunktion finden Sie im Thema [Offlinedatensynchronisierung in Azure Mobile Apps].
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 Für dieses Tutorial gelten die folgenden Voraussetzungen:
 
 * Visual Studio 2013 unter Windows 8.1 oder höher.
-* Durchführung des Lernprogramms [Erstellen einer Windows-App][Erstellen einer Windows-App] \(in englischer Sprache).
+* Durchführung des Lernprogramms [create a windows app][create a windows app] \(in englischer Sprache).
 * [Azure Mobile Services SQLite Store][sqlite store nuget]
 * [SQLite for Universal Windows Platform Development](http://www.sqlite.org/downloads)
 
@@ -60,7 +60,7 @@ In diesem Abschnitt trennen Sie die Verbindung mit Ihrem Mobile App-Back-End, um
     Sie können auch Offlineverhalten demonstrieren, indem Sie WLAN und Mobilfunknetze auf dem Gerät deaktivieren oder den Flugzeugmodus verwenden.
 2. Drücken Sie **F5** , um die Anwendung zu erstellen und auszuführen. Beachten Sie, dass die Synchronisierung bei der Aktualisierung fehlgeschlagen ist, als die App gestartet wurde.
 3. Geben Sie neue Elemente ein. Beachten Sie, dass der Pushvorgang bei jedem Klick auf **Speichern** mit dem Status [CancelledByNetworkError] fehlschlägt. Die neuen Todo-Elemente sind jedoch im lokalen Speicher vorhanden und bleiben dort, bis sie per Push zum Back-End für die mobile App übertragen werden können.  Wenn Sie in einer Produktions-App diese Ausnahmen unterdrücken, verhält sich die Client-App, als ob sie immer noch mit dem Back-End für die mobile App verbunden wäre.
-4. Schließen Sie die App, und starten Sie sie neu, um zu überprüfen, ob die neuen Elemente dauerhaft im lokalen Speicher gespeichert wurden.
+4. Schließen Sie die App und starten Sie sie erneut, um zu überprüfen, ob die neuen Elemente dauerhaft im lokalen Speicher gespeichert wurden.
 5. (Optional:) Öffnen Sie den **Server-Explorer**in Visual Studio. Navigieren Sie in **Azure**->**SQL-Datenbanken** zu Ihrer Datenbank. Klicken Sie mit der rechten Maustaste auf Ihre Datenbank, und wählen Sie **In SQL Server-Objekt-Explorer öffnen**aus. Jetzt können nach Ihrer SQL-Datenbanktabelle und seinen Inhalten suchen. Stellen Sie sicher, dass die Daten in der Back-End-Datenbank nicht geändert wurden.
 6. (Optional) Verwenden Sie ein REST-Tool wie Fiddler oder Postman, um Ihr mobiles Back-End mit einer GET-Abfrage in Form von `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem`abzufragen.
 
@@ -105,7 +105,7 @@ In den folgenden Themen finden Sie weitere Hintergrundinformationen zum Offlines
 
 <!-- URLs. -->
 [Offlinedatensynchronisierung in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
-[Erstellen einer Windows-App]: app-service-mobile-windows-store-dotnet-get-started.md
+[create a windows app]: app-service-mobile-windows-store-dotnet-get-started.md
 [SQLite for Windows 8.1]: http://go.microsoft.com/fwlink/?LinkID=716919
 [SQLite for Windows Phone 8.1]: http://go.microsoft.com/fwlink/?LinkID=716920
 [SQLite for Windows 10]: http://go.microsoft.com/fwlink/?LinkID=716921

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: c5b7d5a5f20a4a70cbbbe43e33fdf65f12cb8e7d
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bebfdfdf72014019a49a6da0e512e72932b096ac
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Durchforsten einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
@@ -46,7 +46,7 @@ In diesem Tutorial verwenden Sie die [Azure Search-.NET-Clientbibliotheken](http
 
 * Eine Azure SQL-Datenbank, die die externe Datenquelle für einen Indexer bereitstellt. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung.
 
-* Visual Studio 2017. Sie können die kostenlose [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) verwenden. 
+* Visual Studio 2017 Sie können die kostenlose [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) verwenden. 
 
 > [!Note]
 > Bei Verwendung des kostenlosen Azure Search-Diensts gilt eine Obergrenze von drei Indizes, drei Indexern und drei Datenquellen. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
@@ -113,13 +113,13 @@ Den Suchdienstendpunkt und den Schlüssel finden Sie im Portal. Ein Schlüssel e
 
 In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchforsten kann. Für dieses Tutorial wird die Datendatei *hotels.sql* aus dem Projektmappenordner „\DotNetHowToIndexers“ verwendet. 
 
-### <a name="azure-sql-database"></a>Azure SQL-Datenbank
+### <a name="azure-sql-database"></a>Azure SQL-Datenbank
 
 Das Dataset in Azure SQL-Datenbank kann über das Azure-Portal unter Verwendung der Datei *hotels.sql* aus dem Beispiel erstellt werden. Azure Search nutzt vereinfachte Rowsets, wie sie beispielsweise auf der Grundlage einer Sicht oder Abfrage generiert werden. Die SQL-Datei in der Beispielprojektmappe erstellt eine einzelne Tabelle und füllt sie auf.
 
 In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine Datenbank vorhanden ist. In Schritt 2 werden Sie daher aufgefordert, beides zu erstellen. Optional: Falls Sie bereits über eine Ressource verfügen, können Sie ihr die Hoteltabelle hinzufügen (ab Schritt 4).
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
 
 2. Klicken Sie auf **Neu** > **SQL-Datenbank**, um eine Datenbank, einen Server und eine Ressourcengruppe zu erstellen. Dabei können Sie die Standardwerte und den günstigsten Tarif verwenden. Die Erstellung eines Servers hat unter anderem den Vorteil, dass Sie einen Administratorbenutzernamen und ein Kennwort angeben können. Diese werden in einem späteren Schritt zum Erstellen und Laden von Tabellen benötigt.
 
@@ -286,7 +286,7 @@ Wenn Sie die Dienste nicht mehr benötigen, gehen Sie im Azure-Portal wie folgt 
 Weitere Informationen und spezifische Aufgaben für andere unterstützte Datenquellen finden Sie in den folgenden Artikeln:
 
 * [Azure SQL-Datenbank oder SQL Server auf einem virtuellen Azure-Computer](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Indizieren von CSV-Blobs mit Azure Search-Blobindexer](search-howto-index-csv-blobs.md)

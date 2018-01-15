@@ -11,25 +11,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/23/2017
+ms.date: 01/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 0716bc6697b8350ec3f6c890e5fb7a1eb743bdd2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Tutorial: Azure Active Directory-Integration mit SCC LifeCycle
 In diesem Tutorial wird die Integration von Azure und  SCC LifeCycle erläutert.  
 
-Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
+Das in diesem Lernprogramm verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * Ein gültiges Azure-Abonnement
 * Ein SCC LifeCycle-Abonnement, für das einmaliges Anmelden (Single Sign-On, SSO) aktiviert ist
 
 Nach Abschluss dieses Tutorials können sich die Azure AD-Benutzer, die Sie SCC LifeCycle zugewiesen haben, mittels einmaliger Anmeldung auf der SCC LifeCycle-Unternehmenswebsite bei der Anwendung anmelden (durch den Dienstanbieter initiierte Anmeldung). Alternativ können sie den Zugriffsbereich nutzen (siehe [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md)).
 
-Das in diesem Lernprogramm beschriebene Szenario besteht aus den folgenden Bausteinen:
+Das in diesem Tutorial beschriebene Szenario besteht aus den folgenden Bausteinen:
 
 1. Aktivieren der Anwendungsintegration für SCC LifeCycle
 2. Konfigurieren des einmaligen Anmeldens (SSO)
@@ -50,7 +50,7 @@ In diesem Abschnitt wird beschrieben, wie Sie die Anwendungsintegration für SCC
 3. Klicken Sie zum Öffnen der Anwendungsansicht in der oberen Menüleiste der Verzeichnisansicht auf **Anwendungen** .
    
     ![Anwendungen](./media/active-directory-saas-scc-lifecycle-tutorial/IC700994.png "Anwendungen")
-4. Klicken Sie unten auf der Seite auf **Hinzufügen** .
+4. Klicken Sie unten auf der Seite auf **Add** .
    
     ![Anwendung hinzufügen](./media/active-directory-saas-scc-lifecycle-tutorial/IC749321.png "Anwendung hinzufügen")
 5. Klicken Sie im Dialogfeld **Was möchten Sie tun?** auf **Anwendung aus dem Katalog hinzufügen**.
@@ -104,7 +104,7 @@ Wenn ein zugewiesener Benutzer versucht, sich bei SCC LifeCycle anzumelden, wird
 > 
 
 ## <a name="assign-users"></a>Benutzer zuweisen
-Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
+Um Ihre Konfiguration zu testen, müssen Sie den Azure AD-Benutzern, denen Sie die Verwendung Ihrer Anwendung ermöglichen möchten, Zugriff auf die Anwendung gewähren. Weisen Sie dazu der Anwendung Benutzer zu.
 
 **Führen Sie die folgenden Schritte aus, um SCC LifeCycle Benutzer zuzuweisen:**
 

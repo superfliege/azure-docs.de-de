@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 6f9ca3d9b0f41210a3f43a8ae505f0a90b130b34
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>Verstehen, wie IoT Edge-Module verwendet, konfiguriert und wiederverwendet werden können – Vorschau
 
@@ -83,7 +83,7 @@ Routen haben die folgende Syntax:
 
 Als *Quelle* kommen alle folgenden Nachrichten infrage:
 
-| Quelle | Beschreibung |
+| Quelle | BESCHREIBUNG |
 | ------ | ----------- |
 | `/*` | Alle Gerät-zu-Cloud-Nachrichten von beliebigen Geräten oder Modulen |
 | `/messages/*` | Alle Gerät-zu-Cloud-Nachrichten, die von einem Gerät oder einem Modul über eine beliebige oder keine Ausgabe versendet wurden |
@@ -96,10 +96,10 @@ Jede Bedingung, die von der [IoT Hub-Abfragesprache][lnk-iothub-query] für IoT 
 
 Als Senke wird eines der folgenden Elemente verwendet:
 
-| Senke | Beschreibung |
+| Senke | BESCHREIBUNG |
 | ---- | ----------- |
 | `$upstream` | Sendet die Nachricht an IoT Hub |
-| `BrokeredEndpoint(/modules/{moduleId}/inputs/{input})` | Sendet die Nachricht an Eingang `{input}` von Modul `{moduleId}` |
+| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | Sendet die Nachricht an Eingang `{input}` von Modul `{moduleId}` |
 
 Es ist wichtig zu beachten, dass der Edge-Hub so genannte At-Least-Once-Zusicherungen enthält, d.h., Nachrichten werden lokal für den Fall gespeichert, dass eine Route die Nachricht nicht an die vorgesehene Senkel übertragen kann, wenn beispielsweise der Edge-Hub keine Verbindung mit IoT Hub herstellen kann oder das Zielmodul nicht angeschlossen ist.
 
@@ -193,27 +193,27 @@ Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanife
 
 ### <a name="edge-agent-twin-desired-properties"></a>Edge-Agent, gewünschte Eigenschaften von Gerätezwillingen
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | Schemaversion | Muss „1.0“ sein. | Ja |
 | runtime.type | Muss „Docker“ sein. | Ja |
 | runtime.settings.minDockerVersion | Legen Sie hier die für dieses Bereitstellungsmanifest mindestens erforderliche Docker-Version fest. | Ja |
-| runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den Edge-Agent-Container. [Docker-Protokollierungsoptionen][lnk-docker-logging-options] | Nein |
+| runtime.settings.loggingOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Protokollierungsoptionen für den Edge-Agent-Container. [Docker-Protokollierungsoptionen][lnk-docker-logging-options] | Nein  |
 | systemModules.edgeAgent.type | Muss „Docker“ sein. | Ja |
 | systemModules.edgeAgent.settings.image | Der URI des Edge-Agent-Image. Der Edge-Agent ist gegenwärtig nicht in der Lage, sich selbst zu aktualisieren. | Ja |
-| systemModules.edgeAgent.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code, der die Optionen für die Erstellung des Edge-Agent-Containers enthält. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein |
+| systemModules.edgeAgent.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code, der die Optionen für die Erstellung des Edge-Agent-Containers enthält. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
 | systemModules.edgeAgent.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Sie wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 | systemModules.edgeHub.type | Muss „Docker“ sein. | Ja |
 | systemModules.edgeHub.type | Muss „running“ sein. | Ja |
 | systemModules.edgeHub.restartPolicy | Muss „always“ sein. | Ja |
 | systemModules.edgeHub.settings.image | Der URI des Image des Edge-Hubs. | Ja |
-| systemModules.edgeHub.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Edge-Hubcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein |
+| systemModules.edgeHub.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Edge-Hubcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
 | systemModules.edgeHub.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Sie wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 | modules.{moduleId}.version | Benutzerdefinierte Zeichenfolge, die die Version des Moduls darstellt. | Ja |
 | modules.{moduleId}.type | Muss „Docker“ sein. | Ja |
 | modules.{moduleId}.restartPolicy | {"never" \| "on-failed" \| "on-unhealthy" \| "always"} | Ja |
 | modules.{moduleId}.settings.image | URI des Modulimage. | Ja |
-| modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein |
+| modules.{moduleId}.settings.createOptions | In eine Zeichenfolge umgewandelter JSON-Code mit den Optionen für die Erstellung des Modulcontainers. [Optionen zum Erstellen von Docker][lnk-docker-create-options] | Nein  |
 | modules.{moduleId}.configuration.id | Die ID der Bereitstellung, von der dieses Modul bereitgestellt wurde. | Sie wird von IoT Hub festgelegt, wenn dieses Manifest mithilfe einer Bereitstellung angewendet wird. Nicht Teil eines Bereitstellungsmanifests. |
 
 ### <a name="edge-agent-twin-reported-properties"></a>Vom Edge-Agent-Zwilling gemeldete Eigenschaften
@@ -231,7 +231,7 @@ Diese letzte Information ist nützlich für den Fall, dass die letzten gewünsch
 
 In der folgenden Tabelle sind die aus den gewünschten Eigenschaften kopierten Informationen nicht enthalten.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser ganzzahlige Wert bezeichnet die letzte vom Edge-Agent verarbeitete Version der gewünschten Eigenschaften. |
 | lastDesiredStatus.code | Dieser Statuscode nennt die letzten gewünschten Eigenschaften, die der Edge-Agent erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (Ungültige Konfiguration), `412` Invalid Schema Version (Ungültige Schemaversion), `417` The Desired Properties are Empty (Die gewünschten Eigenschaften sind leer), `500` Failed (Fehler) |
@@ -264,7 +264,7 @@ Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanife
 
 ### <a name="edge-hub-twin-desired-properties"></a>Edge-Hub, gewünschte Eigenschaften von Zwillingen
 
-| Eigenschaft | Beschreibung | Im Bereitstellungsmanifest erforderlich |
+| Eigenschaft | BESCHREIBUNG | Im Bereitstellungsmanifest erforderlich |
 | -------- | ----------- | -------- |
 | Schemaversion | Muss „1.0“ sein. | Ja |
 | routes.{routeName} | Eine Zeichenfolge, die eine Edge-Hubroute darstellt. | Das `routes`-Element kann vorhanden, aber leer sein. |
@@ -272,7 +272,7 @@ Die gewünschten Eigenschaften werden festgelegt, wenn ein Bereitstellungsmanife
 
 ### <a name="edge-hub-twin-reported-properties"></a>Edge-Hub, gemeldete Eigenschaften von Zwillingen
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | -------- | ----------- |
 | lastDesiredVersion | Dieser ganzzahlige Wert gibt die letzte Version der gewünschten Eigenschaften an, die vom Edge-Hub verarbeitet wurde. |
 | lastDesiredStatus.code | Dieser Statuscode nennt die letzten gewünschten Eigenschaften, die der Edge-Hub erkannt hat. Zulässige Werte: `200` Success (Erfolg), `400` Invalid Configuration (ungültige Konfiguration), `500` Failed (Fehler) |

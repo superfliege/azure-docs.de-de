@@ -2,8 +2,8 @@
 title: Aktivieren der Offlinesynchronisierung mit mobilen iOS-Apps | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mobile Azure App Service-Apps verwenden, um Offlinedaten in iOS-Anwendungen zwischenzuspeichern und zu synchronisieren.
 documentationcenter: ios
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 services: app-service\mobile
 ms.assetid: eb5b9520-0f39-4a09-940a-dadb6d940db8
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: glenga
-ms.openlocfilehash: 44c0d26b2d7d28322d436d4bda319d728c31a635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: b676b51241e4883fb1b4c40caba8e281bfa68a4c
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>Aktivieren der Offlinesynchronisierung mit mobilen iOS-Apps
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -88,7 +88,7 @@ Nun führen wir die eigentliche Synchronisierung aus und rufen Daten vom Remote-
        }];
    }
    ```
-* **Swift**:
+* **Swift:**
    ```swift
    func onRefresh(sender: UIRefreshControl!) {
       UIApplication.sharedApplication().networkActivityIndicatorVisible = true
@@ -161,9 +161,9 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 | Attribut | Typ |
 | --- | --- |
 | id | Integer 64 |
-| itemId | String |
+| itemId | Zeichenfolge |
 | Eigenschaften | Binärdaten |
-| Tabelle | String |
+| Tabelle | Zeichenfolge |
 | tableKind | Integer 16 |
 
 
@@ -173,7 +173,7 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
 | Attribut | Typ |
 | --- | --- |
-| id |String |
+| id |Zeichenfolge |
 | operationId |Integer 64 |
 | Eigenschaften |Binärdaten |
 | tableKind |Integer 16 |
@@ -184,11 +184,11 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 
 | Attribut | Typ |
 | --- | --- |
-| id |String |
-| key |String |
+| id |Zeichenfolge |
+| key |Zeichenfolge |
 | keyType |Integer 64 |
-| Tabelle |String |
-| value |String |
+| Tabelle |Zeichenfolge |
+| value |Zeichenfolge |
 
 ### <a name="data-table"></a>Datentabelle
 
@@ -197,16 +197,16 @@ Wenn Sie die Funktion für die Offlinesynchronisierung verwenden, definieren Sie
 | Attribut | Typ | Hinweis |
 | --- | --- | --- |
 | id | Zeichenfolge, als erforderlich gekennzeichnet |Primärschlüssel im Remotespeicher |
-| complete | Boolean | To-do-Elementfeld |
-| Text |string |To-do-Elementfeld |
+| complete | Boolescher Wert | To-do-Elementfeld |
+| text |string |To-do-Elementfeld |
 | createdAt | Datum | (optional) Zuordnung zur **createdAt**-Systemeigenschaft |
 | updatedAt | Datum | (optional) Zuordnung zur **updatedAt**-Systemeigenschaft |
-| Version | String | (optional) Zum Erkennen von Konflikten, Zuordnung zu „version“ |
+| Version | Zeichenfolge | (optional) Zum Erkennen von Konflikten, Zuordnung zu „version“ |
 
 ## <a name="setup-sync"></a>Ändern des Synchronisierungsverhaltens der App
 In diesem Abschnitt ändern Sie die App, sodass beim App-Start oder beim Einfügen und Aktualisieren von Elementen keine Synchronisierung erfolgt. Es wird nur synchronisiert, wenn die Aktualisierungsschaltfläche betätigt wird.
 
-**Objective-C**:
+**Objective-C:**
 
 1. Ändern Sie in **QSTodoListViewController.m** die **viewDidLoad**-Methode, um den Aufruf von `[self refresh]` am Ende der Methode zu entfernen. Nun werden die Daten beim App-Start nicht mit dem Server synchronisiert. Stattdessen werden sie mit dem Inhalt des lokalen Speichers synchronisiert.
 2. Ändern Sie in **QSTodoService.m** die Definition von`addItem` , sodass nach dem Einfügen des Elements keine Synchronisierung erfolgt. Entfernen Sie den `self syncData` -Block, und ersetzen Sie ihn durch Folgendes:
@@ -223,7 +223,7 @@ In diesem Abschnitt ändern Sie die App, sodass beim App-Start oder beim Einfüg
    }
    ```
 
-**Swift**:
+**Swift:**
 
 Kommentieren Sie in `viewDidLoad` in **ToDoTableViewController.swift** diese beiden Zeilen aus, wie hier gezeigt, um die Synchronisierung beim App-Start zu beenden. Als dieses Dokument verfasst wurde, hat die Swift-Todo-App den Dienst nicht aktualisiert, wenn ein Element hinzufügt oder abgeschlossen wird. Der Dienst wird nur beim App-Start aktualisiert.
 

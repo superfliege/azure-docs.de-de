@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3f4e0c68542cc38e1c0d90c6589e97134c3845f8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f66ddecd6b999400b05a4b00aa781ffef3f7887d
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-azure-blob-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-azure-blob-connector.md)
 > * [Version 2 – Vorschauversion](../connector-azure-blob-storage.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Blob Storage by using Azure Data Factory](../connector-azure-blob-storage.md) (Kopieren von Daten in oder aus Azure Blob Storage mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Blob Storage by using Azure Data Factory](../connector-azure-blob-storage.md) (Kopieren von Daten in oder aus Azure Blob Storage mit Azure Data Factory).
 
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Blob Storage zu kopieren. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
@@ -81,13 +81,13 @@ Data Factory unterstützt für das Schema von Lesedatenquellen wie Azure-Blob di
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält unter anderem Informationen zum Speicherort und Format der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **AzureBlob** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | folderPath |Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer\myblobfolder\ |Ja |
-| fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn **fileName** für ein Ausgabedataset nicht angegeben ist und **preserveHierarchy** in der Aktivitätssenke nicht angegeben ist, hat der Name der generierten Datei folgendes Format: „Data.<Guid>.txt“ (z.B. „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt“). |Nein |
-| partitionedBy |"partitionedBy" ist eine optionale Eigenschaft. "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "fileName" für Zeitreihendaten anzugeben. Beispiel: "folderPath" kann für jedes stündliche Datenaufkommen parametrisiert werden. Im Abschnitt [Nutzen der Eigenschaft „partitionedBy“](#using-partitionedBy-property) finden Sie Details und Beispiele. |Nein |
-| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein |
-| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein |
+| fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn **fileName** für ein Ausgabedataset nicht angegeben ist und **preserveHierarchy** in der Aktivitätssenke nicht angegeben ist, hat der Name der generierten Datei folgendes Format: „Data.<Guid>.txt“ (z.B. „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt“). |Nein  |
+| partitionedBy |"partitionedBy" ist eine optionale Eigenschaft. "partitionedBy" kann genutzt werden, um einen dynamischen Wert für "folderPath" oder "fileName" für Zeitreihendaten anzugeben. Beispiel: "folderPath" kann für jedes stündliche Datenaufkommen parametrisiert werden. Im Abschnitt [Nutzen der Eigenschaft „partitionedBy“](#using-partitionedBy-property) finden Sie Details und Beispiele. |Nein  |
+| format | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Sie müssen die **type** -Eigenschaft unter „format“ auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format). <br><br> Wenn Sie **Dateien unverändert zwischen dateibasierten Speichern kopieren** möchten (binäre Kopie), können Sie den Formatabschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein  |
+| Komprimierung | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind: **Gzip**, **Deflate**, **bzip2** und **ZipDeflate**. Unterstützte Grade sind: **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Datei- und Komprimierungsformate in Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |
 
 ### <a name="using-partitionedby-property"></a>Nutzen der partitionedBy-Eigenschaft
 Wie im vorherigen Abschnitt erwähnt, können die **partitionedBy**-Eigenschaft, [Data Factory-Funktionen und Systemvariablen](data-factory-functions-variables.md) verwendet werden, um für Zeitreihendaten einen dynamischen Wert für folderPath und filename anzugeben.
@@ -127,15 +127,15 @@ Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Akt
 
 **BlobSource** unterstützt die folgenden Eigenschaften im Abschnitt **typeProperties**:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| recursive |Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. |True (Standardwert), False |Nein |
+| recursive |Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. |True (Standardwert), False |Nein  |
 
 **BlobSink** unterstützt die folgenden Eigenschaften im Abschnitt **typeProperties**:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| copyBehavior |Definiert das Verhalten beim Kopieren, wenn die Quelle "BlobSource" oder "FileSystem" ist. |<b>PreserveHierarchy:</b> behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/><b>FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich in der ersten Ebene des Zielordners. Für die Zieldateien wird ein automatisch ein Name erzeugt. <br/><br/><b>MergeFiles:</b> führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. |Nein |
+| copyBehavior |Definiert das Verhalten beim Kopieren, wenn die Quelle "BlobSource" oder "FileSystem" ist. |<b>PreserveHierarchy:</b> behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/><b>FlattenHierarchy</b>: Alle Dateien aus dem Quellordner befinden sich in der ersten Ebene des Zielordners. Für die Zieldateien wird ein automatisch ein Name erzeugt. <br/><br/><b>MergeFiles:</b> führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei-/Blob-Name angegeben wurde, entspricht der Name dem angegebenen Namen, andernfalls dem automatisch generierten Dateinamen. |Nein  |
 
 **BlobSource** unterstützt darüber hinaus zum Zweck der Abwärtskompatibilität die beiden folgenden Eigenschaften:
 
@@ -183,15 +183,15 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     Jane, Doe
     ```
 ### <a name="create-the-data-factory"></a>Erstellen der Data Factory
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie oben links auf **+ NEU**, und klicken Sie auf **Intelligence + Analytics** (Intelligence und Analyse) und dann auf **Data Factory**.
 3. Gehen Sie auf dem Blatt **Neue Data Factory** wie folgt vor:   
-    1. Geben Sie **ADFBlobConnectorDF** für **Name** ein. Der Name der Azure Data Factory muss global eindeutig sein. Sollte der Fehler `*Data factory name “ADFBlobConnectorDF” is not available` angezeigt werden, ändern Sie den Namen der Data Factory (etwa „IhrNameADFBlobConnectorDF“), und wiederholen Sie den Vorgang. Im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie Benennungsregeln für Data Factory-Artefakte.
+    1. Geben Sie **ADFBlobConnectorDF** für **Name** ein. Der Name der Azure Data Factory muss global eindeutig sein. Sollte der Fehler `*Data factory name “ADFBlobConnectorDF” is not available` angezeigt werden, ändern Sie den Namen der Data Factory (etwa „IhrNameADFBlobConnectorDF“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](data-factory-naming-rules.md) .
     2. Wählen Sie Ihr Azure- **Abonnement**aus.
     3. Wählen Sie für „Ressourcengruppe“ die Option **Vorhandene verwenden** aus, um eine vorhandene Ressourcengruppe auszuwählen, oder wählen Sie **Erstellen** aus, um einen Namen für eine Ressourcengruppe einzugeben.
     4. Wählen Sie einen **Standort** für die Data Factory aus.
     5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.
-    6. Klicken Sie auf **Erstellen**.
+    6. Klicken Sie auf **Create**.
 3. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt: ![Data Factory-Startseite](./media/data-factory-azure-blob-connector/data-factory-home-page.png)
 
 ### <a name="copy-wizard"></a>Kopier-Assistent
@@ -207,7 +207,8 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     5. Ändern Sie den **Startzeitpunkt** in **21.04.2017**. 
     6. Ändern Sie den **Endzeitpunkt** in **25.04.2017**. Sie können das jeweilige Datum auch direkt eingeben, statt den Kalender zu durchlaufen.     
     8. Klicken Sie auf **Weiter**.
-      ![Kopiertool – Seite „Eigenschaften“](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
+      
+![Kopiertool – Seite „Eigenschaften“](./media/data-factory-azure-blob-connector/copy-tool-properties-page.png) 
 3. Klicken Sie auf der Seite **Quelldatenspeicher** auf die Kachel **Azure Blob Storage**. Sie können diese Seite verwenden, um den Quelldatenspeicher für die Kopieraufgabe anzugeben. Sie können einen verknüpften Datenspeicherdienst verwenden oder einen neuen Datenspeicher angeben. Wählen Sie zum Verwenden eines vorhandenen verknüpften Diensts die Option **AUS VORHANDENEN VERKNÜPFTEN DIENSTEN** aus, und wählen Sie den richtigen verknüpften Dienst aus. 
     ![Kopiertool – Seite „Quelldatenspeicher“](./media/data-factory-azure-blob-connector/copy-tool-source-data-store-page.png)
 4. Auf der Seite **Azure Blob Storage-Konto angeben** :
@@ -215,8 +216,9 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
    2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
    3. Wählen Sie Ihr Azure-Abonnement aus, oder übernehmen Sie **Alle auswählen** für **Azure-Abonnement**.   
    4. Wählen Sie in der Liste mit den **Azure-Speicherkonten**, die im ausgewählten Abonnement verfügbar sind, ein Azure-Speicherkonto aus. Sie können sich auch für das manuelle Eingeben von Speicherkontoeinstellungen entscheiden, indem Sie unter **Kontoauswahlmethode** die Option **Manuell eingeben** auswählen.
-   5. Klicken Sie auf **Weiter**. 
-      ![Kopiertool – Azure Blob Storage-Konto angeben](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
+   5. Klicken Sie auf **Weiter**.
+       
+![Kopiertool – Azure Blob Storage-Konto angeben](./media/data-factory-azure-blob-connector/copy-tool-specify-azure-blob-storage-account.png)
 5. Auf der Seite **Eingabedatei oder -ordner auswählen** :
    1. Doppelklicken Sie auf **adfblobcontainer**.
    2. Wählen Sie **input** aus, und klicken Sie auf **Auswählen**. In dieser exemplarischen Vorgehensweise wählen Sie den Ordner „input“ aus. Sie könnten stattdessen die Datei „emp.txt“ im Ordner auswählen. 
@@ -227,7 +229,8 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     3. Aktivieren Sie nicht die **Binärkopie**. Aktivieren Sie diese Option, um die Quelldatei als Binärkopie in das Ziel zu kopieren. Aktivieren Sie diese Option nicht für diese exemplarische Vorgehensweise, damit auf den nächsten Seiten weitere Optionen angezeigt werden. 
     4. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist. Wählen Sie einen Wert für diese Option aus, wenn die Quelldateien in einem der unterstützten Formate komprimiert sind. 
     5. Klicken Sie auf **Weiter**.
-    ![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
+    
+![Kopiertool – Eingabedatei- oder -ordner auswählen](./media/data-factory-azure-blob-connector/chose-input-file-folder.png) 
 7. Auf der Seite **File format settings** (Dateiformateinstellungen) werden die Trennzeichen und das Schema angezeigt. Diese Informationen werden vom Assistenten beim Analysieren der Datei automatisch erkannt. 
     1. Bestätigen Sie die folgenden Optionen: a. Das **Dateiformat** ist auf **Textformat** festgelegt. In der Dropdownliste werden alle unterstützten Formate angezeigt. Zum Beispiel: JSON, Avro, ORC, Parquet.
         b. Das **Spaltentrennzeichen** ist auf `Comma (,)` festgelegt. Die weiteren Spaltentrennzeichen, die von Data Factory unterstützt werden, werden in der Dropdownliste angezeigt. Sie können auch ein benutzerdefiniertes Trennzeichen angeben.
@@ -247,7 +250,8 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
    2. Überprüfen Sie, ob unter **Kontoauswahlmethode** die Option **Über Azure-Abonnements** ausgewählt ist.
    3. Wählen Sie Ihr Azure- **Abonnement**aus.  
    4. Wählen Sie Ihr Azure Storage-Konto aus. 
-   5. Klicken Sie auf **Weiter**.     
+   5. Klicken Sie auf **Weiter**.
+     
 10. Auf der Seite für **Ausgabedatei oder -ordner auswählen**: 
     6. Geben Sie **Ordnerpfad** als **adfblobconnector/output/{year}/{month}/{day}** an. Drücken Sie die **TAB-TASTE**.
     7. Wählen Sie für **Jahr** die Option **yyyy** aus.
@@ -256,7 +260,8 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
     10. Vergewissern Sie sich, dass der **Komprimierungstyp** auf **Kein** festgelegt ist.
     11. Vergewissern Sie sich, dass das **Kopierverhalten** auf **Dateien zusammenführen** festgelegt ist. Gibt es bereits eine Ausgabedatei mit demselben Namen, wird der neue Inhalt am Ende dieser Datei hinzugefügt.
     12. Klicken Sie auf **Weiter**.
-    ![Kopiertool – Ausgabedatei- oder -ordner auswählen](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
+    
+![Kopiertool – Ausgabedatei- oder -ordner auswählen](media/data-factory-azure-blob-connector/choose-the-output-file-or-folder.png)
 11. Überprüfen Sie auf der Seite **Dateiformateinstellungen** die Einstellungen, und klicken Sie auf **Weiter**. Eine der weiteren Optionen an dieser Stelle besteht darin, eine Kopfzeile (Header) zu der Ausgabedatei hinzuzufügen. Wenn Sie diese Option aktivieren, wird eine Kopfzeile hinzugefügt, die die Namen der Spalten aus dem Schema der Quelle enthält. Sie können die Standardspaltennamen ändern, wenn Sie das Schema für die Quelle anzeigen. Beispielsweise könnten Sie den Namen der ersten Spalte in „Vorname“ und den Namen der zweiten Spalte in „Nachname“ ändern. Die Ausgabedatei wird dann mit einer Kopfzeile generiert, die diese Namen als Spaltennamen enthält. 
     ![Kopiertool – Dateiformateinstellungen für das Ziel](media/data-factory-azure-blob-connector/file-format-destination.png)
 12. Vergewissern Sie sich auf der Seite **Leistungseinstellungen**, dass **Cloudeinheiten** und **Parallele Kopien** auf **Auto** festgelegt sind, und klicken Sie auf „Weiter“. Einzelheiten zu diesen Einstellungen finden Sie im [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md#parallel-copy).

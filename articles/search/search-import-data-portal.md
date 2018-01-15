@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 710543b5423d2b651545151eb4a8d426720e28e0
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>Importieren von Daten in Azure Search über das Portal
 Im Azure-Portal steht auf dem Azure Search-Dashboard der **Datenimport-Assistent** zur Verfügung, mit dem Sie Daten in einen Index laden können. 
@@ -40,7 +40,7 @@ Sie können diesen Workflow mithilfe von Beispieldaten in Azure Cosmos DB testen
 ## <a name="data-sources-supported-by-the-import-data-wizard"></a>Vom Datenimport-Assistenten unterstützte Datenquellen
 Der Datenimport-Assistent unterstützt die folgenden Datenquellen: 
 
-* Azure SQL-Datenbank
+* Azure SQL-Datenbank
 * Relationale SQL Server-Daten auf einem virtuellen Azure-Computer
 * Azure Cosmos DB
 * Azure-Blobspeicher
@@ -113,7 +113,7 @@ Der Assistent erstellt auch einen **Index**. In Azure Search muss ein Index nach
 Unter den folgenden Links finden Sie weitere Informationen zu Indexern:
 
 * [Verbinden von Azure SQL-Datenbank mit Azure Search mithilfe von Indexern](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md)
-* [Indizieren von Azure Cosmos DB](search-howto-index-documentdb.md)
+* [Indizieren von Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Indizieren von Dokumenten in Azure Blob Storage mit Azure Search](search-howto-indexing-azure-blob-storage.md)
 * [Indizieren von Azure Table Storage mit Azure Search](search-howto-indexing-azure-tables.md)
 

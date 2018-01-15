@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 3428c3852f156df850f4b9e8833d15f4ae32729d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 31c98b930ccb8203316e3a3b13c3c0dc7d74dd9c
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-powershell"></a>Erste Schritte mit Azure Data Lake-Speicher mithilfe von Azure PowerShell
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ Erfahren Sie, wie Sie mit Azure PowerShell ein Azure Data Lake-Speicherkonto ers
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Ein Azure-Abonnement**. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/pricing/free-trial/)(in englischer Sprache).
+* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
 * **Mindestens Azure PowerShell 1.0**. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ## <a name="authentication"></a>Authentifizierung
@@ -58,7 +58,7 @@ In diesem Artikel wird ein einfacheres Authentifizierungskonzept mit Data Lake S
         New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     ![Erstellen einer Azure-Ressourcengruppe](./media/data-lake-store-get-started-powershell/ADL.PS.CreateResourceGroup.png "Erstellen einer Azure-Ressourcengruppe")
-3. Erstellen Sie ein Azure Data Lake-Speicherkonto. Der angegebene Name darf nur Kleinbuchstaben und Zahlen enthalten.
+3. Erstellen Sie ein Azure Data Lake-Speicherkonto. Der angegebene Name darf nur Kleinbuchstaben und Zahlen enthalten.
 
         $dataLakeStoreName = "<your new Data Lake Store name>"
         New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName -Location "East US 2"
@@ -122,6 +122,6 @@ Geben Sie nach entsprechender Aufforderung **Y** ein, um das Konto zu löschen.
 ## <a name="next-steps"></a>Nächste Schritte
 * [Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Azure Data Lake Store](data-lake-store-performance-tuning-powershell.md)
 * [Verwenden von Azure Data Lake Store für Big Data-Anforderungen](data-lake-store-data-scenarios.md) 
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
-* [Verwenden von Azure Data Lake Analytics mit Data Lake-Speicher](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Verwenden von Azure HDInsight mit Data Lake-Speicher](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
+* [Verwenden von Azure Data Lake Analytics mit Data Lake Store](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Verwenden von Azure HDInsight mit Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/04/2018
 ms.author: larryfr
-ms.openlocfilehash: efb0a19e0793a93b2bfab93adb747e6f130341df
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 5550dc2ffc53c6ccd30ecb4901ec98c4d38e366b
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="write-to-hdfs-from-apache-storm-on-hdinsight"></a>Schreiben in HDFS aus Apache Storm auf HDInsight
 
@@ -34,7 +34,7 @@ Das Projekt mit dieser Topologie steht unter [https://github.com/Azure-Samples/h
 
 Um dieses Projekt zu kompilieren, benötigen Sie die folgende Konfiguration für Ihre Entwicklungsumgebung:
 
-* [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) oder höher HDInsight 3.5 oder höher erfordert Java 8.
+* [Java JDK 1.8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) oder höher HDInsight 3.5 oder höher erfordert Java 8.
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -59,7 +59,7 @@ HdfsBolt verwendet das von Ihnen bereitgestellte Dateischema, um zu verstehen, w
 
 Die folgende Tabelle enthält Beispiele für die Verwendung des Dateischemas für verschiedene Szenarien:
 
-| Schema | Hinweise |
+| Schema | Notizen |
 | ----- | ----- |
 | `wasb:///` | Das Standardspeicherkonto ist ein Blobcontainer in einem Azure Storage-Konto. |
 | `adl:///` | Das Standardspeicherkonto ist ein Verzeichnis in Azure Data Lake Store. Während der Clustererstellung geben Sie das Verzeichnis in Data Lake Store an, das der Stamm des Clusters von HDFS ist. Beispiel: das `/clusters/myclustername/`-Verzeichnis. |
@@ -140,7 +140,7 @@ Weitere Informationen zum Flux-Framework finden Sie unter [https://storm.apache.
 
 Standardmäßig schließt Storm in HDInsight nicht die Komponenten ein, die HdfsBolt zur Kommunikation mit Azure Storage oder Data Lake Store im Klassenpfad von Storm verwendet. Fügen Sie diese Komponenten mit folgender Skriptaktion dem `extlib`-Verzeichnis für Storm auf dem Cluster hinzu:
 
-* Skript-URI: `https://000aarperiscus.blob.core.windows.net/certs/stormextlib.sh`
+* Skript-URI: `https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`
 * Zutreffende Knoten: Nimbus, Supervisor
 * Parameter: keine
 

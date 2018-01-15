@@ -2,7 +2,7 @@
 title: "Aktivieren der Offlinesynchronisierung für Ihre Azure Mobile App (Xamarin.Forms) | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie mobile App Service-Apps verwenden, um Offlinedaten in Ihrer Xamarin.Forms-Anwendung zwischenzuspeichern und zu synchronisieren.
 documentationcenter: xamarin
-author: ggailey777
+author: conceptdev
 manager: yochayk
 editor: 
 services: app-service\mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-xamarin-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/04/2016
-ms.author: glenga
-ms.openlocfilehash: f2bed0a7124517319cc82405c4ab6b4d79aacfe1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: f88e6a4037bcca54982359742cdc6021f020882d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>Aktivieren der Offlinesynchronisierung für Ihre mobile Xamarin.Forms-App
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -149,7 +149,7 @@ In diesem Abschnitt stellen Sie erneut eine Verbindung zwischen der App und dem 
 
     Beachten Sie, dass die Daten zwischen der Datenbank und dem lokalen Speicher synchronisiert wurden und die Elemente enthalten, die Sie hinzugefügt haben, während Ihre App von der Verbindung getrennt war.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 * [Offlinedatensynchronisierung in Azure Mobile Apps][2]
 * [Verwenden des verwalteten Clients für Azure Mobile Apps][8]
 

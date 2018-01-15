@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/18/2017
+ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: 42dca05c4d7d104ed0e7e21f1e53411e5983cd38
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>Verwenden von Systemintegritätsberichten für die Problembehandlung
 Azure Service Fabric-Komponenten erstellen direkt Integritätsberichte für alle Entitäten im Cluster. Im [Integritätsspeicher](service-fabric-health-introduction.md#health-store) werden Entitäten basierend auf den Systemberichten erstellt und gelöscht. Darüber hinaus werden sie in einer Hierarchie organisiert, in der Interaktionen zwischen den Entitäten erfasst werden.
@@ -124,7 +124,7 @@ System.Hosting gibt eine Warnung aus, wenn definierte Knotenkapazitäten im Clus
 ## <a name="application-system-health-reports"></a>Systemintegritätsberichte für Anwendungen
 **System.CM**steht für den Cluster-Manager-Dienst und ist die Autorität, die die Informationen zu einer Anwendung verwaltet.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State (Zustand)
 System.CM gibt die Meldung „OK“ aus, wenn die Anwendung erstellt oder aktualisiert wurde. Der Integritätsspeicher wird informiert, wenn die Anwendung gelöscht wurde, damit sie aus dem Speicher entfernt werden kann.
 
 * **SourceId**: System.CM
@@ -157,7 +157,7 @@ HealthEvents                    :
 ## <a name="service-system-health-reports"></a>Dienst-Systemintegritätsberichte
 **System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu Diensten verwaltet.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State (Zustand)
 System.FM gibt die Meldung „OK“ aus, wenn der Dienst erstellt wurde. Die Entität wird aus dem Integritätsspeicher gelöscht, wenn der Dienst gelöscht wurde.
 
 * **SourceId**: System.FM
@@ -199,7 +199,7 @@ HealthEvents          :
 ## <a name="partition-system-health-reports"></a>Systemintegritätsberichte für Partitionen
 **System.FM**steht für den Failover-Manager-Dienst und ist die Autorität, die die Informationen zu den Dienstpartitionen verwaltet.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State (Zustand)
 System.FM gibt die Meldung „OK“ aus, wenn die Partition erstellt wurde und fehlerfrei ist. Die Entität wird aus dem Integritätsspeicher gelöscht, wenn die Partition gelöscht wird.
 
 Wenn die Replikatanzahl der Partition unterhalb des Mindestwerts liegt, wird ein Fehler gemeldet. Wenn der Mindestwert für die Replikatanzahl der Partition erfüllt wird, jedoch nicht die Zielreplikatanzahl, wird eine Warnung ausgegeben. Falls für die Partition ein Quorumverlust vorliegt, gibt System.FM einen Fehler aus.
@@ -376,7 +376,7 @@ In einem wie in dem Beispiel gezeigten Fall sind weitere Untersuchungen erforder
 ## <a name="replica-system-health-reports"></a>Systemintegritätsberichte für Replikate
 **System.RA**steht für die Reconfiguration Agent-Komponente und ist die Autorität für den Replikatzustand.
 
-### <a name="state"></a>Zustand
+### <a name="state"></a>State (Zustand)
 System.RA gibt „OK“ aus, wenn das Replikat erstellt wurde.
 
 * **SourceId**: System.RA
@@ -632,7 +632,7 @@ Die Eigenschaft und der Text geben an, welche API nicht ausgeführt wurde. Die n
 
 - **IStatefulServiceReplica.ChangeRole(P)**: Am häufigsten hat der Dienst keinen Task von `RunAsync` zurückgegeben.
 
-Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IReplicator**-Schnittstelle. Beispiel:
+Andere API-Aufrufe, die unterbrochen werden können, befinden sich in der **IReplicator**-Schnittstelle. Beispiel: 
 
 - **IReplicator.CatchupReplicaSet**: Diese Warnung weist auf eine der beiden folgenden Zustände hin. Entweder sind nicht ausreichend aktive Replikate vorhanden (dies kann durch Prüfen des Replikatzustands der Replikate in der Partition oder im System.FM-Integritätsbericht für eine unterbrochene Neukonfiguration ermittelt werden) oder die Replikate bestätigen Vorgänge nicht. Mit dem PowerShell-Cmdlet `Get-ServiceFabricDeployedReplicaDetail` kann der Zustand aller Replikate ermittelt werden. Das Problem liegt bei den Replikaten, deren `LastAppliedReplicationSequenceNumber`-Wert unter dem `CommittedSequenceNumber`-Wert des primären Replikats liegt.
 
@@ -743,7 +743,7 @@ HealthEvents                       :
                                      Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Download
+### <a name="download"></a>Herunterladen
 System.Hosting meldet einen Fehler, wenn das Herunterladen des Anwendungspakets nicht erfolgreich war.
 
 * **SourceId**: System.Hosting
@@ -821,7 +821,7 @@ HealthEvents               :
                              Transitions           : Error->Ok = 7/14/2017 4:55:14 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-### <a name="download"></a>Download
+### <a name="download"></a>Herunterladen
 System.Hosting meldet einen Fehler, wenn das Herunterladen des Dienstpakets nicht erfolgreich war.
 
 * **SourceId**: System.Hosting

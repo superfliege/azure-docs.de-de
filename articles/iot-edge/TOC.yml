@@ -6,13 +6,13 @@
       href: how-iot-edge-works.md
 - name: Schnellstarts
   items:
-    - name: Deploy to the edge - Linux (Bereitstellen im Edge-Bereich – Linux)
+    - name: Bereitstellen im Edge-Bereich – Linux/Mac
       href: quickstart-linux.md
     - name: Deploy to the edge - Windows (Bereitstellen im Edge-Bereich – Windows)
       href: quickstart.md
 - name: Tutorials
   items:
-    - name: Simulate an Edge device - Linux (Simulieren eines Edge-Geräts – Linux)
+    - name: Simulieren eines Edge-Geräts – Linux/Mac
       href: tutorial-simulate-device-linux.md
     - name: Simulate an Edge device - Windows (Simulieren eines Edge-Geräts – Windows)
       href: tutorial-simulate-device-windows.md

@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 12/05/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: f709e216f9308c4405776b25ca44b0aaddd3d3f8
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 151e875bd72598b0b788d68eee7fb186fca86f46
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff
 
@@ -88,7 +88,7 @@ Navigieren Sie zu Fiddler, und wählen Sie zuerst **Rules**  -> (Regeln) und ans
 
 Drücken Sie zum Fortsetzen der Anwendung **eine Taste**.
 
-Sobald die Anwendung erneut gestartet wird, treten beim Senden von Anforderungen an den primären Endpunkt Fehler auf. Die Anwendung versucht fünfmal, erneut eine Verbindung mit dem primären Endpunkt herzustellen. Wenn der Verbindungsaufbau mehr als fünfmal scheitert, fordert die Anwendung das Bild vom sekundären Endpunkt an, der schreibgeschützt ist. Nachdem die Anwendung das Bild erfolgreich 20 Mal vom sekundären Endpunkt abgerufen hat, versucht sie, eine Verbindung mit dem primären Endpunkt herzustellen. Wenn dieser weiterhin nicht erreichbar ist, beginnt die Anwendung erneut mit dem Lesen aus dem sekundären Endpunkt. Hierbei handelt es sich um das Muster [Trennschalter](/azure/architecture/patterns/circuit-breaker.md) (Circuit Breaker), das im vorherigen Tutorial beschrieben wurde.
+Sobald die Anwendung erneut gestartet wird, treten beim Senden von Anforderungen an den primären Endpunkt Fehler auf. Die Anwendung versucht fünfmal, erneut eine Verbindung mit dem primären Endpunkt herzustellen. Wenn der Verbindungsaufbau mehr als fünfmal scheitert, fordert die Anwendung das Bild vom sekundären Endpunkt an, der schreibgeschützt ist. Nachdem die Anwendung das Bild erfolgreich 20 Mal vom sekundären Endpunkt abgerufen hat, versucht sie, eine Verbindung mit dem primären Endpunkt herzustellen. Wenn dieser weiterhin nicht erreichbar ist, beginnt die Anwendung erneut mit dem Lesen aus dem sekundären Endpunkt. Hierbei handelt es sich um das Muster [Trennschalter](https://docs.microsoft.com/azure/architecture/patterns/circuit-breaker) (Circuit Breaker), das im vorherigen Tutorial beschrieben wurde.
 
 ![Einfügen einer benutzerdefinierten Regel](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 

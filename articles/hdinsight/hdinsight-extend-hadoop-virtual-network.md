@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 01/08/2017
 ms.author: larryfr
-ms.openlocfilehash: 7640c243495df88d89f61ed613d7fb68cef9a04b
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 67a58c2377af129d8e2bc0c67d2dffe179fe998f
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
@@ -273,9 +273,9 @@ Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, m�
     > [!IMPORTANT]
     > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier IP-Adressen aus Schritt 1.
 
-    | Land | Region | Zulässige IP-Adressen | Zulässiger Port | Richtung |
+    | Country | Region | Zulässige IP-Adressen | Zulässiger Port | Richtung |
     | ---- | ---- | ---- | ---- | ----- |
-    | Asien | Ostasien | 23.102.235.122</br>52.175.38.134 | 443 | Eingehend |
+    | Asien | Asien, Osten | 23.102.235.122</br>52.175.38.134 | 443 | Eingehend |
     | &nbsp; | Asien, Südosten | 13.76.245.160</br>13.76.136.249 | 443 | Eingehend |
     | Australien | Australien (Osten) | 104.210.84.115</br>13.75.152.195 | 443 | Eingehend |
     | &nbsp; | Australien, Südosten | 13.77.2.56</br>13.77.2.94 | 443 | Eingehend |
@@ -288,15 +288,15 @@ Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, m�
     | &nbsp; | Europa, Westen| 52.166.243.90</br>52.174.36.244 | 443 | Eingehend |
     | Deutschland | Deutschland, Mitte | 51.4.146.68</br>51.4.146.80 | 443 | Eingehend |
     | &nbsp; | Deutschland, Nordosten | 51.5.150.132</br>51.5.144.101 | 443 | Eingehend |
-    | Indien | Indien (Mitte) | 52.172.153.209</br>52.172.152.49 | 443 | Eingehend |
-    | Japan | Japan Ost | 13.78.125.90</br>13.78.89.60 | 443 | Eingehend |
-    | &nbsp; | Japan (Westen) | 40.74.125.69</br>138.91.29.150 | 443 | Eingehend |
+    | Indien | Indien, Mitte | 52.172.153.209</br>52.172.152.49 | 443 | Eingehend |
+    | Japan | Japan, Osten | 13.78.125.90</br>13.78.89.60 | 443 | Eingehend |
+    | &nbsp; | Japan, Westen | 40.74.125.69</br>138.91.29.150 | 443 | Eingehend |
     | Korea | Korea, Mitte | 52.231.39.142</br>52.231.36.209 | 433 | Eingehend |
     | &nbsp; | Korea, Süden | 52.231.203.16</br>52.231.205.214 | 443 | Eingehend
     | Vereinigtes Königreich | UK, Westen | 51.141.13.110</br>51.141.7.20 | 443 | Eingehend |
     | &nbsp; | UK, Süden | 51.140.47.39</br>51.140.52.16 | 443 | Eingehend |
     | USA | USA (Mitte) | 13.67.223.215</br>40.86.83.253 | 443 | Eingehend |
-    | &nbsp; | USA (Mitte/Norden) | 157.56.8.38</br>157.55.213.99 | 443 | Eingehend |
+    | &nbsp; | USA Nord Mitte | 157.56.8.38</br>157.55.213.99 | 443 | Eingehend |
     | &nbsp; | USA, Westen-Mitte | 52.161.23.15</br>52.161.10.167 | 443 | Eingehend |
     | &nbsp; | USA, Westen 2 | 52.175.211.210</br>52.175.222.222 | 443 | Eingehend |
 
@@ -424,17 +424,6 @@ $nsg = New-AzureRmNetworkSecurityGroup `
         -Access Allow `
         -Priority 305 `
         -Direction Inbound `
-    | Add-AzureRmNetworkSecurityRuleConfig `
-        -Name "blockeverything" `
-        -Description "Block everything else" `
-        -Protocol "*" `
-        -SourcePortRange "*" `
-        -DestinationPortRange "*" `
-        -SourceAddressPrefix "Internet" `
-        -DestinationAddressPrefix "VirtualNetwork" `
-        -Access Deny `
-        -Priority 500 `
-        -Direction Inbound
 # Set the changes to the security group
 Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
 # Apply the NSG to the subnet
@@ -478,7 +467,6 @@ Verwenden Sie die folgenden Schritte, um ein virtuelles Netzwerk zu erstellen, m
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 305 --direction "Inbound"
-    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n block --protocol "*" --source-port-range "*" --destination-port-range "*" --source-address-prefix "Internet" --destination-address-prefix "VirtualNetwork" --access "Deny" --priority 500 --direction "Inbound"
     ```
 
 3. Verwenden Sie den folgenden Befehl, um den eindeutigen Bezeichner für diese Netzwerksicherheitsgruppe abzurufen:

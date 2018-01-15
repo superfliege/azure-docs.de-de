@@ -3,8 +3,8 @@ title: "Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android | Microsof
 description: "Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android"
 services: app-service\mobile
 documentationcenter: android
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 ms.assetid: 5352d1e4-7685-4a11-aaf4-10bd2fa9f9fc
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
-ms.author: glenga
-ms.openlocfilehash: ac5cbb51a5ed340a6cbf2eeefa41feb337d28fb9
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.author: crdun
+ms.openlocfilehash: f04f3fc7d2ff2e01baa78571b2ba267f8e4905c6
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
 
@@ -99,7 +99,7 @@ MobileServiceClient mClient = new MobileServiceClient(
 
 Der Client benötigt außerdem Zugriff auf die Aktivität oder den Kontext, d.h. bei diesem Beispiel auf den Parameter `this`.  Die „MobileServiceClient“-Konstruktion muss in der `onCreate()`-Methode der Aktivität erfolgen, auf die in der Datei `AndroidManifest.xml` verwiesen wird.
 
-Es wird empfohlen, die Serverkommunikation in einer eigenen Klasse (mit Singleton-Muster) zu abstrahieren.  In diesem Fall müssen Sie die Aktivität innerhalb des Konstruktors übergeben, um den Dienst entsprechend zu konfigurieren.  Beispiel:
+Es wird empfohlen, die Serverkommunikation in einer eigenen Klasse (mit Singleton-Muster) zu abstrahieren.  In diesem Fall müssen Sie die Aktivität innerhalb des Konstruktors übergeben, um den Dienst entsprechend zu konfigurieren.  Beispiel: 
 
 ```java
 package com.example.appname.services;
@@ -198,7 +198,7 @@ Eine Azure Mobile Apps-Back-End-Tabelle definiert fünf spezielle Felder, von de
 * `byte[] version`: Die Version, die normalerweise als Zeichenfolge dargestellt wird, wird ebenfalls vom Server festgelegt.
 * `boolean deleted`: Gibt an, dass der Datensatz zwar gelöscht, aber noch nicht endgültig gelöscht wurde.  Verwenden Sie `deleted` nicht als Eigenschaft in Ihrer Klasse.
 
-`id` ist ein Pflichtfeld.  Die Felder `updatedAt` und `version` werden für die Offlinesynchronisierung (inkrementelle Synchronisierung bzw. zur Konfliktlösung) verwendet.  Das Feld `createdAt` ist ein Verweisfeld, das nicht vom Client verwendet wird.  Die Namen sind unveränderliche Namen der Eigenschaften.  Sie können jedoch mithilfe der [gson][3]-Bibliothek eine Zuordnung zwischen Ihrem Objekt und den unveränderlichen Namen erstellen.  Beispiel:
+`id` ist ein Pflichtfeld.  Die Felder `updatedAt` und `version` werden für die Offlinesynchronisierung (inkrementelle Synchronisierung bzw. zur Konfliktlösung) verwendet.  Das Feld `createdAt` ist ein Verweisfeld, das nicht vom Client verwendet wird.  Die Namen sind unveränderliche Namen der Eigenschaften.  Sie können jedoch mithilfe der [gson][3]-Bibliothek eine Zuordnung zwischen Ihrem Objekt und den unveränderlichen Namen erstellen.  Beispiel: 
 
 ```java
 package com.example.zumoappname;
@@ -447,7 +447,7 @@ Bei einer Anforderung aller Datensätze mit dieser Methode werden mindestens zwe
 
 ### <a name="chaining"></a>Verketten von Abfragemethoden
 
-Die beim Abfragen von Back-End-Tabellen verwendeten Methoden können verkettet werden. Durch die Verkettung von Abfragemethoden können Sie spezielle Spalten gefilterter Zeilen mit Sortierung und Paging abfragen. Sie können komplexe logische Filter erstellen.  Jede Abfragemethode gibt ein Query-Objekt zurück. Um die Methodenserie zu beenden und die Abfrage auszuführen, rufen Sie die **execute** -Methode auf. Beispiel:
+Die beim Abfragen von Back-End-Tabellen verwendeten Methoden können verkettet werden. Durch die Verkettung von Abfragemethoden können Sie spezielle Spalten gefilterter Zeilen mit Sortierung und Paging abfragen. Sie können komplexe logische Filter erstellen.  Jede Abfragemethode gibt ein Query-Objekt zurück. Um die Methodenserie zu beenden und die Abfrage auszuführen, rufen Sie die **execute** -Methode auf. Beispiel: 
 
 ```java
 List<ToDoItem> results = mToDoTable
@@ -517,7 +517,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 }
 ```
 
-Überschreiben Sie die **getView** -Methode der Klasse. Beispiel:
+Überschreiben Sie die **getView** -Methode der Klasse. Beispiel: 
 
 ```
     @Override
@@ -821,7 +821,7 @@ AsyncTask<Void, Void, Void> initializeStore(MobileServiceClient mClient)
 Für eine Onlinetabelle verwenden Sie `.getTable()`.  Verwenden Sie für eine Offlinetabelle `.getSyncTable()`:
 
 ```java
-MobileServiceTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
+MobileServiceSyncTable<ToDoItem> mToDoTable = mClient.getSyncTable("ToDoItem", ToDoItem.class);
 ```
 
 Alle Methoden, die für Onlinetabellen verfügbar sind (z.B. Filtern, Sortieren, Paginieren sowie Einfügen, Aktualisieren und Löschen von Daten), funktionieren für Offlinetabellen gleich.

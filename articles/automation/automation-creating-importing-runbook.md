@@ -14,25 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: f2e34e6a4d3d2f29fe6320d805e38e6fccbb74de
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 0484b1f230a8544e3de2388df2cbdab3b54f9d3d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Erstellen oder Importieren eines Runbooks in Azure Automation
 Sie können Azure Automation ein Runbook hinzufügen, indem Sie entweder [ein neues Runbook erstellen](#creating-a-new-runbook) oder ein vorhandenes Runbook aus einer Datei oder aus dem [Runbook-Katalog](automation-runbook-gallery.md) importieren. Dieser Artikel enthält Informationen zum Erstellen und Importieren von Runbooks aus einer Datei.  Einzelheiten zum Zugreifen auf Community-Runbooks und Module erfahren Sie in [Runbook und Modulkataloge für Azure Automation](automation-runbook-gallery.md).
 
 ## <a name="creating-a-new-runbook"></a>Erstellen eines neuen Runbooks
 Sie können ein neues Runbook in Azure Automation mithilfe eines der Azure-Portale oder Windows PowerShell erstellen. Sobald das Runbook erstellt wurde, können Sie es mithilfe der Informationen in [Grundlagen des PowerShell-Workflows](automation-powershell-workflow.md) und [Grafische Erstellung in Azure Automation](automation-graphical-authoring-intro.md) bearbeiten.
-
-### <a name="to-create-a-new-azure-automation-runbook-with-the-azure-classic-portal"></a>So erstellen Sie mit dem klassischen Azure-Portal ein neues Azure Automation-Runbook
-Sie können im Azure-Portal nur [PowerShell-Workflow-Runbooks](automation-runbook-types.md#powershell-workflow-runbooks) verwenden.
-
-1. Klicken Sie im klassischen Azure-Portal auf **Neu** > **App Services** > **Automation** > **Runbook** > **Schnellerfassung**.
-2. Geben Sie die erforderlichen Informationen ein, und klicken Sie dann auf **Erstellen**. Der Runbook-Name muss mit einem Buchstaben beginnen und kann Buchstaben, Zahlen, Unterstriche und Bindestriche enthalten.
-3. Wenn Sie das Runbook jetzt bearbeiten möchten, klicken Sie auf **Runbook bearbeiten**. Klicken Sie andernfalls auf **OK**.
-4. Ihr neues Runbook wird auf der Registerkarte **Runbooks** angezeigt.
 
 ### <a name="to-create-a-new-azure-automation-runbook-with-the-azure-portal"></a>So erstellen Sie ein neues Azure Automation-Runbook mit dem Azure-Portal
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
@@ -55,16 +47,6 @@ Sie können ein neues Runbook in Azure Automation erstellen, indem Sie ein Power
 * Eine .graphrunbook-Datei kann nur in ein neues [grafisches Runbook](automation-runbook-types.md#graphical-runbooks)importiert werden, und grafische Runbooks können nur aus einer .graphrunbook-Datei erstellt werden.
 * Eine .ps1-Datei mit einem PowerShell-Workflow kann nur in ein [PowerShell-Workflow- Runbook](automation-runbook-types.md#powershell-workflow-runbooks)importiert werden.  Enthält die Datei mehrere PowerShell-Workflows, schlägt der Import fehl. Sie müssen jeden Workflow in einer eigenen Datei speichern und einzeln importieren.
 * Eine .ps1-Datei, die keinen Workflow enthält, kann in ein [PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) oder ein [PowerShell-Workflow-Runbook](automation-runbook-types.md#powershell-workflow-runbooks) importiert werden.  Beim Importieren in ein PowerShell-Workflow-Runbook wird es in einen Workflow konvertiert, und Kommentare zu den vorgenommenen Änderungen werden in das Runbook aufgenommen.
-
-### <a name="to-import-a-runbook-from-a-file-with-the-azure-classic-portal"></a>So importieren Sie mit dem klassischen Azure-Portal ein Runbook aus einer Datei
-Mit dem folgenden Verfahren können eine Skriptdatei in Azure Automation importieren.  Beachten Sie, dass Sie mit diesem Portal nur eine .ps1-Datei in ein PowerShell-Workflow-Runbook importieren können.  Für andere Typen müssen Sie das Azure-Portal verwenden.
-
-1. Wählen Sie im klassischen Azure-Portal die Option **Automation** und anschließend ein Automation-Konto aus.
-2. Klicken Sie auf **Importieren**.
-3. Klicken Sie auf **Datei suchen** und suchen Sie die zu importierende Skriptdatei.
-4. Wenn Sie das Runbook jetzt bearbeiten möchten, klicken Sie auf **Runbook bearbeiten**. Klicken Sie andernfalls auf OK.
-5. Das neue Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
-6. Sie müssen [das Runbook veröffentlichen](#publishing-a-runbook) , bevor Sie es ausführen können.
 
 ### <a name="to-import-a-runbook-from-a-file-with-the-azure-portal"></a>So importieren Sie ein Runbook aus einer Datei mit dem Azure-Portal
 Mit dem folgenden Verfahren können eine Skriptdatei in Azure Automation importieren.  
@@ -105,11 +87,6 @@ Die folgenden Beispielbefehle zeigen, wie Sie eine Skriptdatei in ein Runbook im
 
 ## <a name="publishing-a-runbook"></a>Veröffentlichen eines Runbooks
 Wenn Sie ein neues Runbooks erstellen oder importieren, müssen Sie es veröffentlichen, bevor Sie es ausführen können.  Jedes Runbook in Automation umfasst eine Entwurfsversion und eine veröffentlichte Version. Nur die veröffentlichte Version kann ausgeführt werden, und nur die Entwurfsversion kann bearbeitet werden. Die veröffentlichte Version bleibt von Änderungen an der Entwurfsversion unberührt. Wenn die Entwurfsversion zur Verfügung gestellt werden soll, können Sie sie veröffentlichen und auf diese Weise die veröffentlichte Version mit der Entwurfsversion überschreiben.
-
-## <a name="to-publish-a-runbook-using-the-azure-classic-portal"></a>So veröffentlichen Sie ein Runbook mithilfe des klassischen Azure-Portals
-1. Öffnen Sie das Runbook im klassischen Azure-Portal.
-2. Klicken Sie am oberen Bildschirmrand auf **Autor**.
-3. Klicken Sie am unteren Bildschirmrand auf **Veröffentlichen**, und wählen Sie bei der Überprüfungsmeldung **Ja** aus.
 
 ## <a name="to-publish-a-runbook-using-the-azure-portal"></a>So veröffentlichen Sie ein Runbook mithilfe des Azure-Portals
 1. Öffnen Sie das Runbook im Azure-Portal.

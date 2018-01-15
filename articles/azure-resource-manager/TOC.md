@@ -16,7 +16,7 @@
 #### [Variablen](resource-manager-templates-variables.md)
 #### [Ressourcen](resource-manager-templates-resources.md)
 #### [Ausgaben](resource-manager-templates-outputs.md)
-### [Verknüpfen mit anderen Vorlagen](resource-group-linked-templates.md)
+### [Verknüpfte und geschachtelte Vorlagen](resource-group-linked-templates.md)
 ### [Definieren der Abhängigkeit zwischen Ressourcen](resource-group-define-dependencies.md)
 ### [Erstellen mehrerer Instanzen](resource-group-create-multiple.md)
 ### [Aktualisieren von Ressourcen](/azure/architecture/building-blocks/extending-templates/update-resource)
@@ -43,7 +43,7 @@
 ## Verwalten
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure-Befehlszeilenschnittstelle](xplat-cli-azure-resource-manager.md)
-### [Azure-Portal](resource-group-portal.md)
+### [Azure portal](resource-group-portal.md)
 ### [REST-API](resource-manager-rest-api.md)
 ### [Verwenden von Tags zum Organisieren von Ressourcen](resource-group-using-tags.md)
 ### [Verschieben von Ressourcen in neue Gruppen oder Abonnements](resource-group-move-resources.md)
@@ -54,8 +54,8 @@
 ## Steuern des Zugriffs
 ### Erstellen eines Dienstprinzipals
 #### [Azure PowerShell](resource-group-authenticate-service-principal.md)
-#### [Azure-Befehlszeilenschnittstelle](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Azure-Portal](resource-group-create-service-principal-portal.md)
+#### [Azure-CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Azure portal](resource-group-create-service-principal-portal.md)
 ### [Authentifizierungs-API für den Zugriff auf Abonnements](resource-manager-api-authentication.md)
 ### [Sperren von Ressourcen](resource-group-lock-resources.md)
 
@@ -80,7 +80,7 @@
 #### [Windows-Bereitstellungsprobleme](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 ### [Grundlegendes zu Bereitstellungsfehlern](resource-manager-troubleshoot-tips.md)
 
-# Referenz
+# Verweis
 ## [Vorlagenformat](/azure/templates/)
 ## [Vorlagenfunktionen](resource-group-template-functions.md)
 ### [Array- und Objektfunktionen](resource-group-template-functions-array.md)
@@ -91,17 +91,17 @@
 ### [Ressourcenfunktionen](resource-group-template-functions-resource.md)
 ### [Zeichenfolgenfunktionen](resource-group-template-functions-string.md)
 ## [PowerShell](/powershell/module/azurerm.resources)
-## [Azure-Befehlszeilenschnittstelle](/cli/azure/resource)
+## [Azure-CLI](/cli/azure/resource)
 ## [.NET](/dotnet/api/microsoft.azure.management.resourcemanager)
 ## [Java](/java/api/com.microsoft.azure.management.resources)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/resourcemanagement.html)
 ## [REST](/rest/api/resources/)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=azure-resource-manager)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [Drosselungsanforderungen](resource-manager-request-limits.md)
 ## [Nachverfolgen asynchroner Vorgänge](resource-manager-async-operations.md)
 ## [Videos](https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager)

@@ -3,8 +3,8 @@ title: "Hinzufügen von Authentifizierung auf iOS mit Azure Mobile Apps"
 description: "Erfahren Sie, wie Sie Azure Mobile Apps zum Authentifizieren Ihrer iOS-App über eine Vielzahl von Identitätsanbietern nutzen können, darunter AAD, Google, Facebook, Twitter und Microsoft."
 services: app-service\mobile
 documentationcenter: ios
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: ef3d3cbe-e7ca-45f9-987f-80c44209dc06
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-ios
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: glenga
-ms.openlocfilehash: 21a2cc6c1eaf4b34cbe8c2d7c4dbb69c8730cf32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: crdun
+ms.openlocfilehash: e0eeee05ebad2e8148752f988bbbc2f6a0d7c296
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Hinzufügen der Authentifizierung zu Ihrer iOS-App
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -52,7 +52,7 @@ Eine sichere Authentifizierung erfordert, dass Sie ein neues URL-Schema für Ihr
 Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird ausgelöst, da die App als nicht authentifizierter Benutzer auf das Back-End zugreift, aber die *TodoItem*-Tabelle nun eine Authentifizierung verlangt.
 
 ## <a name="add-authentication"></a>Hinzufügen von Authentifizierung zur App
-**Objective-C**:
+**Objective-C:**
 
 1. Öffnen Sie auf dem Mac *QSTodoListViewController.m* in Xcode, und fügen Sie folgende Methode hinzu:
 
@@ -133,7 +133,7 @@ Klicken Sie in Xcode auf **Run** , um die App zu starten. Eine Ausnahme wird aus
 
 6. Klicken Sie auf *Ausführen*, um die App zu starten, und melden Sie sich an. Nach der Anmeldung sollten Sie die Todo-Liste anzeigen und Änderungen vornehmen können.
 
-**Swift**:
+**Swift:**
 
 1. Öffnen Sie auf dem Mac *ToDoTableViewController.swift* in Xcode, und fügen Sie folgende Methode hinzu:
 

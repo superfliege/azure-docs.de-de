@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 01/04/2018
 ms.author: yurid
-ms.openlocfilehash: f4614ac55cde26e921edfe41160e2766aef6bb2c
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: b304ce8c60aefc417993574a0baa43cfc2298d66
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Verstehen der Sicherheitswarnungen in Azure Security Center
 In diesem Artikel werden die verschiedenen Arten von Sicherheitswarnungen und verwandte Informationen beschrieben, die in Azure Security Center verfügbar sind. Weitere Informationen zur Verwaltung von Warnungen und Vorfällen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
@@ -144,7 +144,6 @@ Security Center nutzt erweiterte Analysen, um auf der Grundlage der Analyse von 
 * **Verdächtige Dokumentanmeldeinformationen:** Diese Warnung weist auf einen verdächtigen, gängigen vorausberechneten Kennworthash hin, der von Schadsoftware zum Ausführen einer Datei verwendet wird.
 * **Dynamische PS-Skripterstellung:** Diese Warnung weist auf die dynamische Erstellung eines PowerShell-Skripts hin. Angreifer können auf diese Weise progressiv ein Skript erstellen, um IDS-Systeme zu umgehen.
 * **Metasploit-Indikatoren:** Diese Warnung weist auf Aktivitäten in Verbindung mit dem Metasploit Framework hin, das eine Reihe von Funktionen und Tools für Angreifer bereitstellt.
-* **SENSE-Manipulation:** Diese Warnung weist darauf hin, dass versucht wurde, SENSE (Sicherheitsüberwachungsdienst von Windows Defender ATP) zu deaktivieren.
 * **Verdächtige Kontoaktivität:** Diese Warnung weist darauf hin, dass versucht wurde, über ein Konto, das vor Kurzem kompromittiert wurde, eine Verbindung mit einem Computer herzustellen.
 * **Möglicher verdächtiger Zugriff auf Planungsaufgaben:** Diese Warnung weist auf die Ausführung eines Cron-Auftrags hin, was Angreifern ggf. die zeitplangesteuerte Ausführung schädlicher Programme ermöglicht.
 * **Möglicher verdächtiger Zugriff auf die Befehlsverlaufsdatei:** Diese Warnung weist auf ungewöhnlichen Zugriff auf die Befehlsverlaufsdatei hin.
@@ -189,7 +188,7 @@ Bei der Security Center-Bedrohungserkennung für Netzwerke werden automatisch Si
 
 Bei der Security Center-Ressourcenanalyse liegt der Schwerpunkt auf PaaS-Diensten (Platform as a Service), z.B. der Integration in das Feature für die [Azure SQL-Datenbank-Bedrohungserkennung](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection). Basierend auf den Analyseergebnissen aus diesen Bereichen löst Security Center eine ressourcenbezogene Warnung aus.
 
-* **Potenzielle Einschleusung von SQL-Befehlen:** Eine Einschleusung von SQL-Befehlen ist ein Angriff, bei dem schädlicher Code in Zeichenfolgen eingefügt wird, die später zur Analyse und Ausführung an eine Instanz von SQL Server übergeben werden. Da SQL Server alle syntaktisch gültigen Abfragen ausführt, die empfangen werden, sollte jedes Verfahren, bei dem SQL-Anweisungen erstellt werden, auf Sicherheitsrisiken in Bezug auf Einschleusungen überprüft werden. Für die SQL-Bedrohungserkennung werden Machine Learning, Verhaltensanalyse und Anomalieerkennung genutzt, um verdächtige Ereignisse zu ermitteln, die in Ihren Azure SQL-Datenbanken unter Umständen auftreten. Beispiel: 
+* **Potenzielle Einschleusung von SQL-Befehlen:** Eine Einschleusung von SQL-Befehlen ist ein Angriff, bei dem schädlicher Code in Zeichenfolgen eingefügt wird, die später zur Analyse und Ausführung an eine Instanz von SQL Server übergeben werden. Da SQL Server alle syntaktisch gültigen Abfragen ausführt, die empfangen werden, sollte jedes Verfahren, bei dem SQL-Anweisungen erstellt werden, auf Sicherheitsrisiken in Bezug auf Einschleusungen überprüft werden. Für die SQL-Bedrohungserkennung werden Machine Learning, Verhaltensanalyse und Anomalieerkennung genutzt, um verdächtige Ereignisse zu ermitteln, die in Ihren Azure SQL-Datenbanken unter Umständen auftreten. Beispiel:  
     * Versuchter Datenbankzugriff durch einen früheren Mitarbeiter
     * Angriffe mit Einschleusung von SQL-Befehlen
     * Ungewöhnlicher Zugriff auf eine Produktionsdatenbank durch einen Benutzer von zu Hause

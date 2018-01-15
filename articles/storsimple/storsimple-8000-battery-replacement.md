@@ -4,7 +4,7 @@ description: "Beschreibt das Entfernen, Ersetzen und Warten des Notfallakkus auf
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/05/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 174a3163082594ea6a49b7f5a78857848f8f0566
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8071cde67017ff031418f0d97da15a618c4969b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="replace-the-backup-battery-module-on-your-storsimple-device"></a>Ersetzen des Notfallakkus auf dem StorSimple-Gerät
 
@@ -46,7 +46,7 @@ Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Kompon
    
     **Abbildung 1:** Rückseite des Hauptgeräts mit PCM und Controllermodulen
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |
@@ -59,7 +59,7 @@ Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Kompon
    
     **Abbildung 2:** Rückseite des PCM mit Überwachungs-LEDs
    
-   | Bezeichnung | Beschreibung |
+   | Bezeichnung | BESCHREIBUNG |
    |:--- |:--- |
    | 1 |Stromausfall (Wechselstrom) |
    | 2 |Lüfterausfall |
@@ -67,7 +67,7 @@ Der Notfallakku für Ihr StorSimple-Gerät ist eine vor Ort austauschbare Kompon
    | 4 |PCM OK |
    | 5 |Stromausfall (Gleichstrom) |
    | 6 |Akku fehlerfrei |
-3. Um das PCM mit dem fehlerhaften Akku zu entfernen, führen Sie die Schritte unter [Entfernen eines PCM](storsimple-power-cooling-module-replacement.md#remove-a-pcm)aus.
+3. Um das PCM mit dem fehlerhaften Akku zu entfernen, führen Sie die Schritte unter [Entfernen eines PCM](storsimple-8000-power-cooling-module-replacement.md#remove-a-pcm)aus.
 4. Heben Sie bei entferntem PCM das Akkumodul nach oben, und drehen Sie den Griff, wie in der folgenden Abbildung dargestellt, um den Akku zu entfernen.
    
     ![Entfernen des Akkus aus dem PCM](./media/storsimple-battery-replacement/IC741019.png)
@@ -82,7 +82,7 @@ Führen Sie die folgenden Schritte aus, um den Notfallakku im PCM im primären G
 #### <a name="to-install-the-battery-module"></a>So installieren Sie den Notfallakku
 1. Setzen Sie den Notfallakku in der richtigen Ausrichtung im PCM ein.
 2. Drücken Sie den Notfallakku am Griff so weit, bis er auf der Verbindung sitzt.
-3. Ersetzen Sie das PCM im primären Gehäuse anhand der Richtlinien unter [Ersetzen einer Stromversorgungs- und Kühleinheit im StorSimple-Gerät](storsimple-power-cooling-module-replacement.md).
+3. Ersetzen Sie das PCM im primären Gehäuse anhand der Richtlinien unter [Ersetzen einer Stromversorgungs- und Kühleinheit im StorSimple-Gerät](storsimple-8000-power-cooling-module-replacement.md).
 4. Wechseln Sie nach dem Austausch zu Ihrem Gerät und dann im Azure-Portal zu **Überwachung** > **Hardwareintegrität**. Überprüfen Sie den Status des Akkus, um sicherzustellen, dass er richtig eingesetzt wurde. Ein grüner Status gibt an, dass der Akku fehlerfrei ist.
 
 ## <a name="maintain-the-backup-battery-module"></a>Warten des Notfallakkus

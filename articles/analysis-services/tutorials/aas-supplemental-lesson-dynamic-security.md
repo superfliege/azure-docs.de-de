@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 919094c5e8c528810ce6545d6b0cf8d9f95cca2a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 7512af39041090db22d4ef45ec46925c14c4adb9
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---dynamic-security"></a>Ergänzende Lektion – Dynamische Sicherheit
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 In dieser ergänzenden Lektion erstellen Sie eine zusätzliche Rolle, die dynamische Sicherheit implementiert. Die dynamische Sicherheit bietet Sicherheit auf Ebene der Zeilen auf Grundlage des Benutzernamens oder der Anmelde-ID des aktuell angemeldeten Benutzers. 
   
@@ -185,7 +183,7 @@ In dieser Aufgabe verwenden Sie die Funktion „Analysieren in Excel“ von SSDT
   
     Dieser Benutzer kann keine Internetverkaufsdaten eines anderen Gebiets durchsuchen oder abfragen, dem er nicht angehört. Diese Einschränkung wird vom Zeilenfilter verursacht, der für die Tabelle „DimSalesTerritory“ in der Benutzerrolle „Sales Employees by Territory“ definiert wurde. Dieser Filter schützt Daten für alle Daten, die mit anderen Verkaufsgebieten in Verbindung stehen.  
   
-## <a name="see-also"></a>Weitere Informationen  
+## <a name="see-also"></a>Siehe auch  
 [USERNAME Function (DAX) (Die Funktion USERNAME (DAX))](https://msdn.microsoft.com/library/hh230954.aspx)  
 [LOOKUPVALUE Function (DAX) (Die Funktion LOOKUPVALUE (DAX))](https://msdn.microsoft.com/library/gg492170.aspx)  
 [CUSTOMDATA Function (DAX) (Die Funktion CUSTOMDATA (DAX))](https://msdn.microsoft.com/library/hh213140.aspx)  

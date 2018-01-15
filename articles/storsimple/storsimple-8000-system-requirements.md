@@ -1,6 +1,6 @@
 ---
 title: Systemanforderungen der StorSimple 8000-Serie | Microsoft-Dokumentation
-description: "Beschreibt die Anforderungen und bewährten Methoden für Software, Netzwerke und hohe Verfügbarkeit für eine Microsoft Azure StorSimple-Lösung."
+description: "Beschreibt die Anforderungen und bewährten Methoden für Software, Netzwerke und Hochverfügbarkeit für eine Microsoft Azure StorSimple-Lösung."
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 485320e500d71bd85b69cfcd9628e133ad1c417c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4458187999d0795be8637f6f5615e4900ddd94cc
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software für StorSimple 8000-Serie, hohe Verfügbarkeit und Netzwerkanforderungen
+# <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>Software für StorSimple 8000-Serie, Hochverfügbarkeit und Netzwerkanforderungen
 
 ## <a name="overview"></a>Übersicht
 
@@ -30,7 +30,7 @@ Systemanforderungen:
 
 * **Softwareanforderungen für Speicherclients:** beschreibt die unterstützten Betriebssysteme und zusätzlichen Anforderungen für diese Betriebssysteme.
 * **Netzwerkanforderungen für das StorSimple-Gerät:** bietet Informationen zu den Ports, die in der Firewall für Datenverkehr von iSCSI, Cloud oder Verwaltung geöffnet sein müssen.
-* **Anforderungen an hohe Verfügbarkeit für StorSimple:** beschreibt die Anforderungen an hohe Verfügbarkeit und bewährte Methoden für das StorSimple-Gerät und den Hostcomputer.
+* **Anforderungen an Hochverfügbarkeit für StorSimple:** beschreibt die Anforderungen an Hochverfügbarkeit und bewährte Methoden für das StorSimple-Gerät und den Hostcomputer.
 
 ## <a name="software-requirements-for-storage-clients"></a>Softwareanforderungen für Speicherclients:
 
@@ -51,7 +51,7 @@ Die folgenden Softwareanforderungen gelten für Speicherclients, die auf das Sto
 
 Die folgenden Sofwareanforderungen gelten für die optionalen StorSimple-Komponenten (StorSimple Snapshot Manager und StorSimple-Adapter für SharePoint).
 
-| Component | Hostplattform | Weitere Anforderungen/Hinweise |
+| Komponente | Hostplattform | Weitere Anforderungen/Hinweise |
 | --- | --- | --- |
 | StorSimple Snapshot Manager |Windows Server 2008 R2 SP1, 2012, 2012 R2 |Die Verwendung für StorSimple Snapshot Manager unter Windows Server ist für die Sicherung/Wiederherstellung von gespiegelten dynamischen Datenträgern und für alle anwendungskonsistenten Sicherungen erforderlich.<br> Der StorSimple Snapshot Manager wird nur unter Windows Server 2008 R2 SP1 (64 Bit), Windows Server 2012 R2 und Windows Server 2012 unterstützt.<ul><li>Wenn Sie Windows Server 2012 verwenden, müssen Sie .NET 3.5 bis 4.5 installieren, bevor Sie den StorSimple Snapshot Manager installieren.</li><li>Bei Verwendung von Windows Server 2008 R2 SP1 müssen Sie Windows Management Framework 3.0 installieren, bevor Sie den StorSimple Snapshot Manager installieren.</li></ul> |
 | StorSimple-Adapter für SharePoint |Windows Server 2008 R2 SP1, 2012, 2012 R2 |<ul><li>Der StorSimple-Adapter für SharePoint wird nur in SharePoint 2010 und SharePoint 2013 unterstützt.</li><li>RBS erfordert SQL Server Enterprise Edition, Version 2008 R2 oder 2012.</li></ul> |
@@ -60,16 +60,16 @@ Die folgenden Sofwareanforderungen gelten für die optionalen StorSimple-Kompone
 
 Das StorSimple-Gerät ist ein gesperrtes Gerät. Allerdings müssen Ports in der Firewall für iSCSI-, Cloud- und Verwaltungsdatenverkehr geöffnet werden. In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall geöffnet werden müssen. In dieser Tabelle bezieht sich *ein* oder *eingehend* auf die Richtung, aus der eingehende Clientanforderungen auf das Gerät zugreifen. Entsprechend bezieht sich *aus* oder *ausgehend* auf die Richtung, in der das StorSimple-Gerät Daten über die Bereitstellung hinaus an externe Ziele sendet: z.B. ausgehende Verbindungen mit dem Internet.
 
-| Portnr.<sup>1,2</sup> | ein oder aus | Portbereich | Erforderlich | Hinweise |
+| Portnr.<sup>1,2</sup> | ein oder aus | Portbereich | Erforderlich | Notizen |
 | --- | --- | --- | --- | --- |
-| TCP 80 (HTTP)<sup>3</sup> |aus |WAN |Nein |<ul><li>Der ausgehende Port wird für den Internetzugriff zum Abrufen von Updates verwendet.</li><li>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden.</li><li>Um Systemupdates zuzulassen, muss dieser Port auch für die festen Controller-IPs geöffnet sein.</li></ul> |
+| TCP 80 (HTTP)<sup>3</sup> |aus |WAN |Nein  |<ul><li>Der ausgehende Port wird für den Internetzugriff zum Abrufen von Updates verwendet.</li><li>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden.</li><li>Um Systemupdates zuzulassen, muss dieser Port auch für die festen Controller-IPs geöffnet sein.</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |aus |WAN |Ja |<ul><li>Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet.</li><li>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden.</li><li>Um Systemupdates zuzulassen, muss dieser Port auch für die festen Controller-IPs geöffnet sein.</li><li>Dieser Port wird außerdem auf beiden Controllern für die Garbage Collection verwendet.</li></ul> |
 | UDP 53 (DNS) |aus |WAN |In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten DNS-Server verwenden. |
 | UDP 123 (NTP) |aus |WAN |In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten NTP-Server verwenden. |
 | TCP 9354 |aus |WAN |Ja |Der ausgehende Port wird vom StorSimple-Gerät für die Kommunikation mit dem StorSimple-Geräte-Manager-Dienst verwendet. |
-| 3260 (iSCSI) |Geben Sie in |LAN |Nein |Dieser Port wird für den Datenzugriff über iSCSI verwendet. |
-| 5985 |Geben Sie in |LAN |Nein |Der eingehende Port wird vom StorSimple-Momentaufnahme-Manager für die Kommunikation mit dem StorSimple-Gerät verwendet.<br>Dieser Port wird auch verwendet, wenn Sie eine Remoteverbindung mit Windows PowerShell für StorSimple über HTTP herstellen. |
-| 5986 |Geben Sie in |LAN |Nein |Dieser Port wird verwendet, wenn Sie eine Remoteverbindung mit Windows PowerShell für StorSimple über HTTPS herstellen. |
+| 3260 (iSCSI) |Geben Sie in |LAN |Nein  |Dieser Port wird für den Datenzugriff über iSCSI verwendet. |
+| 5985 |Geben Sie in |LAN |Nein  |Der eingehende Port wird vom StorSimple-Momentaufnahme-Manager für die Kommunikation mit dem StorSimple-Gerät verwendet.<br>Dieser Port wird auch verwendet, wenn Sie eine Remoteverbindung mit Windows PowerShell für StorSimple über HTTP herstellen. |
+| 5986 |Geben Sie in |LAN |Nein  |Dieser Port wird verwendet, wenn Sie eine Remoteverbindung mit Windows PowerShell für StorSimple über HTTPS herstellen. |
 
 <sup>1</sup> Es müssen keine eingehenden Ports für das öffentliche Internet geöffnet werden.
 
@@ -95,7 +95,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure Service Bus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.backup.windowsazure.com` |Geräteregistrierung |Nur DATA 0 |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure-Speicherkonten und Überwachung |Cloudaktivierte Netzwerkschnittstellen |
@@ -107,7 +107,7 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 
 | URL-Muster | Komponente/Funktionalität | Geräte-IPs |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure Service Bus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*`<br>`https://login-us.microsoftonline.com`<br>`https://login.microsoftonline.us` |StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.backup.windowsazure.us` |Geräteregistrierung |Nur DATA 0 |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Zertifikatswiderruf |Cloudaktivierte Netzwerkschnittstellen |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure-Speicherkonten und Überwachung |Cloudaktivierte Netzwerkschnittstellen |
@@ -167,19 +167,19 @@ Befolgen Sie zusätzlich zu den oben genannten Netzwerkanforderungen die folgend
 * Isolieren Sie den Datenverkehr für iSCSI und Cloud durch Verwendung jeweils eigener Netzwerkschnittstellen auf dem Gerät für den iSCSI- und Cloudzugriff. Weitere Informationen finden Sie unter [Ändern von Netzwerkschnittstellen](storsimple-8000-modify-device-config.md#modify-network-interfaces) für das StorSimple-Gerät.
 * Verwenden Sie keine Link Aggregation Control Protocol-Konfiguration (LACP) für die Netzwerkschnittstellen. Dies ist eine nicht unterstützte Konfiguration.
 
-## <a name="high-availability-requirements-for-storsimple"></a>Anforderungen an hohe Verfügbarkeit für StorSimple:
+## <a name="high-availability-requirements-for-storsimple"></a>Anforderungen an Hochverfügbarkeit für StorSimple:
 
 Die Hardwareplattform der StorSimple-Lösung bietet Features für Verfügbarkeit und Zuverlässigkeit, die als Grundlage für eine hoch verfügbare, fehlertolerante Speicherinfrastruktur in Ihrem Datencenter dienen. Es gibt jedoch Anforderungen und bewährte Methoden, die Sie einhalten sollten, um eine hohe Verfügbarkeit der StorSimple-Lösung sicherzustellen. Überprüfen Sie vor dem Bereitstellen von StorSimple sorgfältig die folgenden Anforderungen und bewährten Methoden für das StorSimple-Gerät und die verbundenen Hostcomputer.
 
 Weitere Informationen zur Überwachung und Wartung der Hardwarekomponenten Ihres StorSimple-Geräts finden Sie unter [Überwachen von Hardwarekomponenten und Status mithilfe des StorSimple-Geräte-Manager-Diensts](storsimple-8000-monitor-hardware-status.md) und [Austauschen von StorSimple-Hardwarekomponenten](storsimple-8000-hardware-component-replacement.md).
 
-### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Anforderungen und bewährte Methoden für eine hohe Verfügbarkeit des StorSimple-Geräts
+### <a name="high-availability-requirements-and-procedures-for-your-storsimple-device"></a>Anforderungen und bewährte Methoden für die Hochverfügbarkeit des StorSimple-Geräts
 
-Lesen Sie die folgenden Informationen sorgfältig durch, um eine hohe Verfügbarkeit des StorSimple-Geräts sicherzustellen.
+Lesen Sie die folgenden Informationen sorgfältig durch, um die Hochverfügbarkeit des StorSimple-Geräts sicherzustellen.
 
 #### <a name="pcms"></a>Stromversorgungs- und Kühleinheiten
 
-StorSimple-Geräte enthalten redundante Stromversorgungs- und Kühleinheiten (Power and Cooling Modules, PCMs), die per Hot-Swap ausgetauscht werden können. Jedes PCM verfügt über genügend Kapazität, um das gesamte Gehäuse zu versorgen. Um eine hohe Verfügbarkeit zu gewährleisten, müssen beide Stromversorgungs- und Kühleinheiten installiert sein.
+StorSimple-Geräte enthalten redundante Stromversorgungs- und Kühleinheiten (Power and Cooling Modules, PCMs), die per Hot-Swap ausgetauscht werden können. Jedes PCM verfügt über genügend Kapazität, um das gesamte Gehäuse zu versorgen. Um Hochverfügbarkeit zu gewährleisten, müssen beide Stromversorgungs- und Kühleinheiten installiert sein.
 
 * Verbinden Sie Ihre Stromversorgungs- und Kühleinheiten mit unterschiedlichen Stromquellen, um auch beim Ausfall einer Stromquelle die Verfügbarkeit zu gewährleisten.
 * Beim Ausfall einer Stromversorgungs- und Kühleinheit fordern Sie sofort einen Austausch an.
@@ -188,7 +188,7 @@ StorSimple-Geräte enthalten redundante Stromversorgungs- und Kühleinheiten (Po
 
 #### <a name="controller-modules"></a>Controllermodule
 
-StorSimple-Geräte enthalten redundante Controllermodule, die per Hot-Swap ausgetauscht werden können. Die Controllermodule werden aktiv/passiv ausgeführt. Zu jedem Zeitpunkt ist ein Controllermodul aktiv und dienstbereit, während das anderen Controllermodul passiv ist. Das passive Controllermodul wird eingeschaltet und in Betrieb versetzt, wenn das aktive Controllermodul ausfällt oder entfernt wird. Jedes Controllermodul weist genügend Kapazität auf, um das gesamte Gehäuse zu versorgen. Beide Controllermodule müssen installiert sein, um eine hohe Verfügbarkeit sicherzustellen.
+StorSimple-Geräte enthalten redundante Controllermodule, die per Hot-Swap ausgetauscht werden können. Die Controllermodule werden aktiv/passiv ausgeführt. Zu jedem Zeitpunkt ist ein Controllermodul aktiv und dienstbereit, während das anderen Controllermodul passiv ist. Das passive Controllermodul wird eingeschaltet und in Betrieb versetzt, wenn das aktive Controllermodul ausfällt oder entfernt wird. Jedes Controllermodul weist genügend Kapazität auf, um das gesamte Gehäuse zu versorgen. Beide Controllermodule müssen installiert sein, um Hochverfügbarkeit sicherzustellen.
 
 * Stellen Sie sicher, dass jederzeit beide Controllermodule installiert sind.
 * Beim Ausfall eines Controllermoduls fordern Sie sofort einen Austausch an.
@@ -209,7 +209,7 @@ Die Controllermodule von StorSimple-Geräten verfügen jeweils über vier 1-Giga
 * Wenn Sie die beiden 10-GbE-Schnittstellen aktiviert haben, stellen Sie diese über unterschiedliche Switches bereit.
 * Verwenden Sie nach Möglichkeit auf Servern MPIO, damit die Server Fehler bei Links, dem Netzwerk oder einzelnen Schnittstellen tolerieren können.
 
-Informationen zur Einbindung Ihres Geräts in das Netzwerk, um eine hohe Verfügbarkeit und Leistung zu erzielen, finden Sie unter [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) bzw. [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
+Informationen zur Einbindung Ihres Geräts in das Netzwerk, um Hochverfügbarkeit und Leistung zu erzielen, finden Sie unter [Installieren des StorSimple 8100-Geräts](storsimple-8100-hardware-installation.md#cable-your-storsimple-8100-device) bzw. [Installieren des StorSimple 8600-Geräts](storsimple-8600-hardware-installation.md#cable-your-storsimple-8600-device).
 
 #### <a name="ssds-and-hdds"></a>SSDs und HDDs
 
@@ -234,12 +234,12 @@ StorSimple-Geräte des Modells 8600 bieten zusätzlich zum normalen Gehäuse ei
 * Wenn ein SAS-Kabel ausfällt oder ersetzt werden muss (der Microsoft Support sollte in eine solche Entscheidung einbezogen werden), tauschen Sie nur das SAS-Kabel aus, das auch ersetzt werden muss.
 * Entfernen Sie niemals gleichzeitig beide SAS-Kabel aus dem System.
 
-### <a name="high-availability-recommendations-for-your-host-computers"></a>Empfehlungen zur hohen Verfügbarkeit für Ihre Hostcomputer
+### <a name="high-availability-recommendations-for-your-host-computers"></a>Empfehlungen zur Hochverfügbarkeit für Ihre Hostcomputer
 
-Lesen Sie sich diese bewährten Methoden sorgfältig durch, um eine hohe Verfügbarkeit der Hosts sicherzustellen, die mit dem StorSimple-Gerät verbunden sind.
+Lesen Sie sich diese bewährten Methoden sorgfältig durch, um die Hochverfügbarkeit der Hosts sicherzustellen, die mit dem StorSimple-Gerät verbunden sind.
 
 * Konfigurieren von StorSimple mit [Dateiserverclustern mit zwei Knoten][1]. Wenn Sie einzelne Fehlerquellen eliminieren und auf Hostseite Redundanz erzeugen, wird die gesamte Lösung höher verfügbar.
-* Verwenden Sie die in Windows Server 2012 (SMB 3.0) verfügbaren permanent verfügbaren Freigaben für eine hohe Verfügbarkeit während Failovern der Speichercontroller. Weitere Informationen zum Konfigurieren von Dateiserverclustern und permanent verfügbaren Freigaben mit Windows Server 2012 erhalten Sie in diesem [Vorführvideo](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)(in englischer Sprache).
+* Verwenden Sie die in Windows Server 2012 (SMB 3.0) verfügbaren permanent verfügbaren Freigaben für Hochverfügbarkeit während des Failovers von Speichercontrollern. Weitere Informationen zum Konfigurieren von Dateiserverclustern und permanent verfügbaren Freigaben mit Windows Server 2012 erhalten Sie in diesem [Vorführvideo](http://channel9.msdn.com/Events/IT-Camps/IT-Camps-On-Demand-Windows-Server-2012/DEMO-Continuously-Available-File-Shares)(in englischer Sprache).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

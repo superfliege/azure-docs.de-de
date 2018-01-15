@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 926b1b71ca27ede23e36dcf313ef51d4ea73fc02
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3442de96f346ef211672064584700a7ce183d929
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-13-deploy"></a>Lektion 13: Bereitstellen
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="deploy"></a>Bereitstellen
 
 In dieser Lektion konfigurieren Sie Bereitstellungseigenschaften, indem Sie einen Azure Analysis Services-Server für die Bereitstellung und einen Namen für das Modell angeben. Dann stellen Sie das Modell für diese Instanz bereit. Nachdem Sie Ihr Modell bereitgestellt haben, können Benutzer mithilfe einer Berichterstellungsclientanwendung eine Verbindung herstellen. Weitere Informationen finden Sie unter [Deploy to Azure Analysis Services](https://docs.microsoft.com/azure/analysis-services/analysis-services-deploy) (Bereitstellen in Azure Analysis Services, in englischer Sprache).  
   

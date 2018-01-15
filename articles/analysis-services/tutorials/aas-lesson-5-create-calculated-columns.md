@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: d7d2265aa82e54cdbd3b85e09a05e5ea55a7a2c2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9b491af1e5c9da03f48335f5793ed71ddaf644fb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-5-create-calculated-columns"></a>Lektion 5: Erstellen berechneter Spalten
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="create-calculated-columns"></a>Erstellen berechneter Spalten
 
 In dieser Lektion erstellen Sie Daten in Ihrem Modell, indem Sie berechnete Spalten hinzufügen. Sie können mithilfe des Abfrage-Editors berechnete Spalten (wie benutzerdefinierte Spalten) erstellen, wenn Sie „Daten abrufen“ verwenden, oder zu einem späteren Zeitpunkt im Modell-Designer, wie in diesem Tutorial. Weitere Informationen finden Sie unter [Berechnete Spalten](https://docs.microsoft.com/sql/analysis-services/tabular-models/ssas-calculated-columns).
   

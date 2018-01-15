@@ -122,9 +122,15 @@
           href: ../hdinsight-hadoop-manage-ambari.md
           maintainContext: true
           items:
+            - name: Optimieren von Clustern mit der Ambari-Webbenutzeroberfläche
+              href: ../hdinsight-changing-configs-via-ambari.md
+              maintainContext: true
             - name: Verwenden der Ambari-REST-API
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: Verwalten von Protokollen für einen HDInsight-Cluster
+          href: ../hdinsight-log-management.md
+          maintainContext: true
         - name: Hinzufügen von Speicherkonten
           href: ../hdinsight-hadoop-add-storage.md
           maintainContext: true
@@ -175,6 +181,9 @@
       href: ../hdinsight-troubleshoot-guide.md
       maintainContext: true
       items:
+        - name: Problembehandlung bei einem langsamen oder fehlerhaften HDInsight-Cluster
+          href: ../hdinsight-troubleshoot-failed-cluster.md
+          maintainContext: true
         - name: Problembehandlung bei HDFS
           href: ../hdinsight-troubleshoot-hdfs.md
           maintainContext: true
@@ -183,7 +192,7 @@
         - name: Problembehandlung bei YARN
           href: ../hdinsight-troubleshoot-yarn.md
           maintainContext: true
-        - name: Ressourcen
+        - name: angeben
           items:
             - name: Informationen zur Verwendung von HDInsight unter Linux
               href: ../hdinsight-hadoop-linux-information.md
@@ -224,7 +233,7 @@
         - name: Überwachen der Clusterleistung
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
-- name: Referenz
+- name: Verweis
   items:
     - name: Codebeispiele
       href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
@@ -270,7 +279,7 @@
         - name: Überwachen von Clustern mit der Ambari-API
           href: ../hdinsight-monitor-use-ambari-api.md
           maintainContext: true
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'

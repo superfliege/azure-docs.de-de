@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Windows PowerShell für StorSimple zum Verwa
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 04/03/2017
+ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 89e1054117f19e787da5330932021351fb016209
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 291de21d3d98bf9eb65adc7d506f3549171ee0a0
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Verwenden von Windows PowerShell für StorSimple zum Verwalten eines StorSimple-Geräts
 
@@ -67,13 +67,13 @@ Stellen Sie sicher, dass die folgenden PuTTY-Einstellungen zum Herstellen einer 
    | Zusätzliche Tastaturfunktionen aktivieren |Strg+Alt unterscheidet sich von AltGr |
    
     ![Unterstützte PuTTY-Einstellungen](./media/storsimple-windows-powershell-administration/IC740877.png)
-3. Klicken Sie auf **Übernehmen**.
+3. Klicken Sie auf **Anwenden**.
 4. Wählen Sie im Bereich **Kategorie** die Option **Übersetzung** aus.
 5. Wählen Sie im Listenfeld **Remotezeichensatz** die Option **UTF-8** aus.
 6. Klicken Sie unter **Handhabung von Strichzeichnungszeichen** auf **Verwenden von Unicode-Strichzeichnungscodepunkten**. Der folgende Screenshot zeigt die ordnungsgemäße PuTTY-Auswahl.
    
     ![PuTTY-Einstellungen für UTF](./media/storsimple-windows-powershell-administration/IC740878.png)
-7. Klicken Sie auf **Übernehmen**.
+7. Klicken Sie auf **Anwenden**.
 
 Sie können nun mit PuTTY eine Verbindung mit der seriellen Konsole des Geräts herstellen, indem Sie die folgenden Schritte ausführen.
 
@@ -96,9 +96,9 @@ Die folgende Abbildung zeigt die Runspaceoptionen, die im Menü der seriellen Ko
 
 Sie können zwischen folgenden Einstellungen wählen:
 
-1. **Anmelden mit Vollzugriff:** Diese Option erlaubt Ihnen das Herstellen einer Verbindung (mit den richtigen Anmeldeinformationen) mit dem **SSAdminConsole**-Runspace auf dem lokalen Controller. (Der lokale Controller ist der Controller, auf den Sie aktuell über die serielle Konsole Ihres StorSimple-Geräts zugreifen.) Diese Option kann auch verwendet werden, um dem Microsoft-Support den Zugriff auf den uneingeschränkten Runspace (eine Supportsitzung) zum Zweck der Behandlung möglicher Geräteprobleme zu erlauben. Nachdem Sie Option 1 für die Anmeldung verwendet haben, können Sie dem Microsoft-Supporttechniker durch Ausführen eines bestimmten Cmdlets den Zugriff auf den uneingeschränkten Runspace erlauben.  Ausführliche Informationen finden Sie unter [Starten einer Supportsitzung](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
+1. **Anmelden mit Vollzugriff:** Diese Option erlaubt Ihnen das Herstellen einer Verbindung (mit den richtigen Anmeldeinformationen) mit dem **SSAdminConsole**-Runspace auf dem lokalen Controller. (Der lokale Controller ist der Controller, auf den Sie aktuell über die serielle Konsole Ihres StorSimple-Geräts zugreifen.) Diese Option kann auch verwendet werden, um dem Microsoft-Support den Zugriff auf den uneingeschränkten Runspace (eine Supportsitzung) zum Zweck der Behandlung möglicher Geräteprobleme zu erlauben. Nachdem Sie Option 1 für die Anmeldung verwendet haben, können Sie dem Microsoft-Supporttechniker durch Ausführen eines bestimmten Cmdlets den Zugriff auf den uneingeschränkten Runspace erlauben. Ausführliche Informationen finden Sie unter [Starten einer Supportsitzung](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
    
-2. **Anmelden am Peercontroller mit Vollzugriff:** Diese Option ist im Wesentlichen mit Option 1 identisch. Sie können jedoch eine Verbindung (mit den richtigen Anmeldeinformationen) mit dem **SSAdminConsole**-Runspace auf dem Peercontroller herstellen. Da ein StorSimple-Gerät für hohe Verfügbarkeit mit zwei Controllern in einer Aktiv/Passiv-Konfiguration betrieben wird, bezieht sich Peer auf den anderen Controller im Gerät, auf das Sie über die serielle Konsole zugreifen.
+2. **Anmelden am Peercontroller mit Vollzugriff:** Diese Option ist im Wesentlichen mit Option 1 identisch. Sie können jedoch eine Verbindung (mit den richtigen Anmeldeinformationen) mit dem **SSAdminConsole**-Runspace auf dem Peercontroller herstellen. Da ein StorSimple-Gerät für Hochverfügbarkeit mit zwei Controllern in einer Aktiv/Passiv-Konfiguration betrieben wird, bezieht sich Peer auf den anderen Controller im Gerät, auf das Sie über die serielle Konsole zugreifen.
    Ähnlich wie Option 1 kann diese Option auch verwendet werden, um dem Microsoft-Support den Zugriff auf den uneingeschränkten Runspace auf einem Peercontroller zu erlauben.
 
 3. **Herstellen einer Verbindung mit beschränktem Zugriff** Diese Option wird für den Zugriff auf die Windows PowerShell-Benutzeroberfläche im eingeschränkten Modus verwendet. Sie werden nicht zur Eingabe von Anmeldeinformationen für den Zugriff aufgefordert. Diese Option stellt eine Verbindung mit einem eingeschränkteren Runspace im Vergleich zu den Optionen 1 und 2 her.  Einige der Aufgaben, die über Option 1 verfügbar sind, die in diesem Runspace **nicht* ausgeführt werden können:
@@ -126,8 +126,8 @@ Die Anzeigesprache ist unabhängig von der Sprache, die Sie mithilfe der Option 
 
 Sie können HTTP oder HTTPS verwenden, um über Windows PowerShell-Remoting eine Verbindung herzustellen. In den folgenden Tutorials werden die einzelnen Methoden beschrieben:
 
-* [Herstellen einer Remoteverbindung über HTTP](storsimple-remote-connect.md#connect-through-http)
-* [Herstellen einer Remoteverbindung über HTTPS](storsimple-remote-connect.md#connect-through-https)
+* [Herstellen einer Remoteverbindung über HTTP](storsimple-8000-remote-connect.md#connect-through-http)
+* [Herstellen einer Remoteverbindung über HTTPS](storsimple-8000-remote-connect.md#connect-through-https)
 
 ## <a name="connection-security-considerations"></a>Überlegungen zur Verbindungssicherheit
 
@@ -184,5 +184,5 @@ Sie können die Hilfe in der Windows PowerShell-Schnittstelle problemlos aktuali
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Probleme auf Ihrem StorSimple-Gerät bei einem der zuvor genannten Workflows auftreten, konsultieren Sie die [Tools zur Problembehandlung für StorSimple-Bereitstellungen](storsimple-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
+Wenn Probleme auf Ihrem StorSimple-Gerät bei einem der zuvor genannten Workflows auftreten, konsultieren Sie die [Tools zur Problembehandlung für StorSimple-Bereitstellungen](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
 

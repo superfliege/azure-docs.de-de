@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/11/2017
+ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: c336cda6f3af4e2a4647371458b2db3e97917105
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fb3d3dd518cbe0a603524f1bdc38d122582aa6b0
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Dienst-zu-Dienst-Authentifizierung bei Data Lake Store mithilfe des .NET SDK
 > [!div class="op_single_selector"]
@@ -45,10 +45,10 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Authentifizier
 
    | Eigenschaft | Wert |
    | --- | --- |
-   | Kategorie |Vorlagen/Visual C#/Windows |
+   | Category (Kategorie) |Vorlagen/Visual C#/Windows |
    | Vorlage |Konsolenanwendung |
-   | Name |CreateADLApplication |
-4. Klicken Sie auf **OK** , um das Projekt zu erstellen.
+   | NAME |CreateADLApplication |
+4. Klicken Sie auf **OK**, um das Projekt zu erstellen.
 
 5. Fügen Sie Ihrem Projekt die NuGet-Pakete hinzu.
 

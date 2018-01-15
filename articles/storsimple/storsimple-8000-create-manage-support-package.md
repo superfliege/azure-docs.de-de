@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 641109970865ea915f83d48488f1bdf5cb2d5242
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: c83caae58e73d6f2d0fe086938e0bbc5cfdf80c4
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Erstellen und Verwalten eines Unterstützungspakets für ein Gerät der StorSimple 8000-Serie
 
@@ -30,7 +30,7 @@ Dieses Tutorial enthält detaillierte Anleitungen für die Erstellung und Verwal
 
 ## <a name="create-a-support-package"></a>Unterstützungspaket erstellen
 
-In einigen Fällen müssen Sie das Unterstützungspaket über Windows PowerShell für StorSimple manuell erstellen. Beispiel:
+In einigen Fällen müssen Sie das Unterstützungspaket über Windows PowerShell für StorSimple manuell erstellen. Beispiel: 
 
 * Wenn Sie vertrauliche Informationen vor dem Freigeben für den Microsoft Support aus Ihren Protokolldateien entfernen müssen.
 * Wenn das Hochladen des Pakets aufgrund von Konnektivitätsproblemen schwierig ist.
@@ -71,7 +71,7 @@ Sie können das manuell generierte Unterstützungspaket per E-Mail für den Micr
 
 Sie können die folgenden Parameter mit dem Export-HcsSupportPackage-Cmdlet verwenden.
 
-| Parameter | Erforderlich/Optional | Beschreibung |
+| Parameter | Erforderlich/Optional | BESCHREIBUNG |
 | --- | --- | --- |
 | `-Path` |Erforderlich |Dient zum Angeben des Orts des freigegebenen Netzwerkordners für das Unterstützungspaket. |
 | `-EncryptionPassphrase` |Erforderlich |Dient zum Angeben einer Passphrase für die Verschlüsselung des Unterstützungspakets. |
@@ -147,6 +147,6 @@ Das folgende Beispiel veranschaulicht das Entschlüsseln, Bearbeiten und erneute
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über die [im Unterstützungspaket gesammelten Informationen](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs).
-* Informieren Sie sich darüber, wie Sie [mithilfe von Unterstützungspaketen und Geräteprotokollen Probleme bei der Gerätebereitstellung behandeln](storsimple-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
+* Informieren Sie sich darüber, wie Sie [mithilfe von Unterstützungspaketen und Geräteprotokollen Probleme bei der Gerätebereitstellung behandeln](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
 * Erfahren Sie, wie Sie [Ihr StorSimple-Gerät mithilfe des StorSimple-Geräte-Manager-Diensts verwalten](storsimple-8000-manager-service-administration.md).
 

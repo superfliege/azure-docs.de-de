@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 07b681f8721c7c5627eb6809d4fc2cb9536d65eb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d84a31e72d3e97ebb12f1747259fcb6e6b8fdcdc
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect-Synchronisierung: Funktionsreferenz
 In der Azure AD Connect-Synchronisierung werden Funktionen verwendet, um Attributwerte während der Synchronisierung zu ändern.  
@@ -155,12 +155,6 @@ Gibt einen DateTime-Wert auf Basis der Anfangszeit des Mitarbeiters zurück.
 
 `CDate("2013-01-10 4:00 PM -8")`  
 Gibt einen DateTime-Wert zurück, der „2013-01-11 12:00 AM“ darstellt.
-
-
-
-
-
-
 
 
 - - -
@@ -546,7 +540,7 @@ Die DNComponent-Funktion gibt den Wert einer angegebenen DN-Komponente von links
 * ComponentNumber: Die Komponente im zurückzugebenden DN
 
 **Beispiel:**  
-`DNComponent([dn],1)`  
+`DNComponent(CRef([dn]),1)`  
 Falls der DN „cn=Joe,ou=…“ lautet, wird „Joe“ zurückgegeben.
 
 - - -
@@ -564,12 +558,12 @@ Die DNComponentRev-Funktion gibt den Wert einer angegebenen DN-Komponente von re
 
 **Beispiel:**  
 Falls der DN „cn=Joe,ou=Atlanta,ou=GA,ou=US, dc=contoso,dc=com“ lautet, geben beide  
-`DNComponentRev([dn],3)`  
-`DNComponentRev([dn],1,"DC")`  
+`DNComponentRev(CRef([dn]),3)`  
+`DNComponentRev(CRef([dn]),1,"DC")`  
 „US“ zurück.
 
 - - -
-### <a name="error"></a>Fehler
+### <a name="error"></a>Error
 **Beschreibung:**  
 Die Error-Funktion wird verwendet, um einen benutzerdefinierten Fehler zurückzugeben.
 
@@ -812,7 +806,7 @@ Die umgekehrte Funktion heißt „IsNullOrEmpty“.
 `Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([director]),[director])`
 
 - - -
-### <a name="item"></a>Element
+### <a name="item"></a>Item
 **Beschreibung:**  
 Die Item-Funktion gibt ein Element aus einer mehrwertigen Zeichenfolge oder einem mehrwertigen Attribut zurück.
 
@@ -1168,7 +1162,7 @@ Die RTrim-Funktion entfernt nachfolgende Leerzeichen aus einer Zeichenfolge.
 Gibt „ Test“ zurück.
 
 - - -
-### <a name="select"></a>Wählen Sie
+### <a name="select"></a>Select
 **Beschreibung:**  
 Verarbeitet alle Werte in einem mehrwertigen Attribut (oder der Ausgabe eines Ausdrucks), basierend auf der angegebenen Funktion
 
@@ -1337,7 +1331,7 @@ Gibt „brown“ zurück.
 `Word("This,string!has&many separators",3,",!&#")`  
 Gibt „has“ zurück.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 * [Grundlegendes zu Ausdrücken für die deklarative Bereitstellung](active-directory-aadconnectsync-understanding-declarative-provisioning-expressions.md)
 * [Azure AD Connect-Synchronisierung: Anpassen von Synchronisierungsoptionen](active-directory-aadconnectsync-whatis.md)
 * [Integrieren lokaler Identitäten in Azure Active Directory](active-directory-aadconnect.md)
