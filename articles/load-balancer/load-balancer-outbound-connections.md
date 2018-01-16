@@ -3,8 +3,8 @@ title: Grundlegendes zu ausgehenden Verbindungen in Azure | Microsoft Docs
 description: "In diesem Artikel wird erläutert, wie Azure virtuellen Computern die Kommunikation mit öffentlichen Internetdiensten ermöglicht."
 services: load-balancer
 documentationcenter: na
-author: kumudd
-manager: timlt
+author: KumudD
+manager: jeconnoc
 editor: 
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d02960017b8793eccc2990a17e3d854991e877b6
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: b8e225ba4374c73dbabac3dddab9ba37fa798a5a
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understanding-outbound-connections-in-azure"></a>Grundlegendes zu ausgehenden Verbindungen in Azure
 
@@ -46,7 +46,7 @@ Sie können [Log Analytics für Azure Load Balancer](load-balancer-monitor-log.m
 
 ## <a name="load-balanced-vm-with-no-instance-level-public-ip-address"></a>VM mit Lastenausgleich ohne öffentliche IP-Adresse auf Instanzebene
 
-In diesem Szenario gehört die VM zum Azure Load Balancer-Pool.  Der VM ist keine öffentliche IP-Adresse zugewiesen. Die Lastenausgleichsressource muss mit einer Regel zum Verknüpfen der öffentlichen Front-End-IP mit dem Back-End-Pool konfiguriert werden.  Wenn Sie diese Konfiguration nicht abschließen, ergibt sich das Verhalten wie im vorhergehenden Abschnitt für [Eigenständige VM ohne öffentliche IP-Adresse auf Instanzebene](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address) beschrieben.
+In diesem Szenario gehört die VM zum Azure Load Balancer-Pool.  Der VM ist keine öffentliche IP-Adresse zugewiesen. Die Lastenausgleichsressource muss mit einer Lastenausgleichsregel zum Erstellen einer Verknüpfung der öffentlichen Front-End-IP mit dem Back-End-Pool konfiguriert werden. Wenn Sie diese Konfiguration nicht abschließen, ergibt sich das Verhalten wie im vorhergehenden Abschnitt für [Eigenständige VM ohne öffentliche IP-Adresse auf Instanzebene](load-balancer-outbound-connections.md#standalone-vm-with-no-instance-level-public-ip-address) beschrieben.
 
 Wenn die dem Lastenausgleich unterliegende VM einen ausgehenden Datenfluss erstellt, übersetzt Azure die private IP-Quelladresse des ausgehenden Datenflusses in die öffentliche IP-Adresse des öffentlichen Lastenausgleichs-Frond-End. Azure verwendet das Verfahren „Source Network Address Translation (SNAT, Übersetzung der Quellnetzwerkadresse)“ für diese Aufgabe. Kurzlebiger Ports der öffentlichen IP-Adresse des Lastenausgleichs werden verwendet, um einzelne Datenflüsse zu unterscheiden, die von der VM stammen. Beim Erstellen ausgehender Datenflüsse weist SNAT kurzlebige Ports dynamisch zu. In diesem Kontext werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet.
 
