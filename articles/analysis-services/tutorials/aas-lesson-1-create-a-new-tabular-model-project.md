@@ -13,19 +13,17 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: a2bfb714e92986465befd79aaa7b12f90b6490e7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: fbe0784ae133a0b9a54c94b4ba3db317c14b3766
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-1-create-a-tabular-model-project"></a>Lektion 1: Erstellen eines tabellarischen Modellprojekts
+# <a name="create-a-tabular-model-project"></a>Erstellen eines tabellarischen Modellprojekts
 
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
-
-In dieser Lektion verwenden Sie SQL Server Data Tools (SSDT), um ein neues tabellarisches Modellprojekt mit dem Kompatibilitätsgrad 1400 zu erstellen. Sobald das neue Projekt erstellt wurde, können Sie damit beginnen, Ihr Modell zu erstellen und Daten hinzuzufügen. In dieser Lektion wird eine kurze Einführung in die tabellarische Modellerstellungsumgebung in SSDT gegeben.  
+In dieser Lektion verwenden Sie Visual Studio mit SQL Server Data Tools (SSDT), um ein neues tabellarisches Modellprojekt mit dem Kompatibilitätsgrad 1400 zu erstellen. Sobald das neue Projekt erstellt wurde, können Sie damit beginnen, Ihr Modell zu erstellen und Daten hinzuzufügen. In dieser Lektion erhalten Sie eine kurze Einführung in die tabellarische Modellerstellungsumgebung in Visual Studio.  
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   
@@ -36,7 +34,7 @@ Dieses Thema ist die erste Lektion in einem Tutorial über tabellarische Modelle
   
 #### <a name="to-create-a-new-tabular-model-project"></a>Erstellen eines neuen tabellarischen Modellprojekts  
   
-1.  Klicken Sie in SSDT im **Menü** Datei auf **Neues** > **Projekt**.  
+1.  Klicken Sie in Visual Studio im Menü **Datei** auf **Neu** > **Projekt**.  
   
 2.  Erweitern Sie im Dialogfeld **Neues Projekt** Dialogfeld **installierte** > **Business- Intelligence-** > **Analysedienste**, und klicken Sie dann auf **tabellarisches Analysis Services-Projekts**.  
   
@@ -48,7 +46,7 @@ Dieses Thema ist die erste Lektion in einem Tutorial über tabellarische Modelle
   
 5.  Im **Designer für tabellarische Modelle** wählen Sie im Dialogfeld **Integrierter Arbeitsbereich** aus.  
   
-    Der Arbeitsbereich umfasst eine tabellarische Modelldatenbank, die denselben Namen trägt wie das Projekt während der Modellerstellung. Integrierter Arbeitsbereich bedeutet, dass SSDT eine integrierte Instanz verwendet und deswegen nur für die Modellerstellung kein separater Analysis Services-Server installiert werden muss.
+    Der Arbeitsbereich umfasst eine tabellarische Modelldatenbank, die denselben Namen trägt wie das Projekt während der Modellerstellung. Integrierter Arbeitsbereich bedeutet, dass Visual Studio eine integrierte Instanz verwendet und deswegen kein separater Analysis Services-Server installiert werden muss, der nur für die Modellerstellung bestimmt ist.
       
 6.  Wählen Sie in der Option **Kompatibilitätsgrad** **SQL Server 2017 / Azure Analysis Services (1400)**.   
  
@@ -58,9 +56,9 @@ Dieses Thema ist die erste Lektion in einem Tutorial über tabellarische Modelle
       
   
 ## <a name="understanding-the-ssdt-tabular-model-authoring-environment"></a>Grundlagen der tabellarischen Modellerstellungsumgebung von SSDT  
-Nachdem Sie nun ein neues tabellarisches Modellprojekt erstellt haben, möchten wir uns kurz die tabellarische Modellerstellungsumgebung in SSDT ansehen.  
+Nachdem Sie nun ein neues tabellarisches Modellprojekt erstellt haben, möchten wir uns kurz die tabellarische Modellerstellungsumgebung in Visual Studio ansehen.  
   
-Nachdem das Projekt erstellt wurde, wird es in SSDT geöffnet. Auf der rechten Seite unter **Tabellarischer Modell-Explorer** sehen Sie eine Strukturansicht der Objekte in Ihrem Modell. Die Ordner sind leer, da Sie noch keine Daten importiert haben. Ähnlich wie bei der Menüleiste können Sie mit der rechten Maustaste auf einen Objektordner klicken. In den verschiedenen Schritten in diesem Tutorial verwenden Sie den tabellarischen Modell-Explorer, um durch die verschiedenen Objekte in Ihrem Modellprojekt zu navigieren.
+Nachdem das Projekt erstellt wurde, wird es in Visual Studio geöffnet. Auf der rechten Seite unter **Tabellarischer Modell-Explorer** sehen Sie eine Strukturansicht der Objekte in Ihrem Modell. Die Ordner sind leer, da Sie noch keine Daten importiert haben. Ähnlich wie bei der Menüleiste können Sie mit der rechten Maustaste auf einen Objektordner klicken. In den verschiedenen Schritten in diesem Tutorial verwenden Sie den tabellarischen Modell-Explorer, um durch die verschiedenen Objekte in Ihrem Modellprojekt zu navigieren.
 
 ![aas-lesson1-tme](../tutorials/media/aas-lesson1-tme.png)
 

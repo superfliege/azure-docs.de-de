@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Machine Learning Studio? | Microsoft Docs
+title: Was ist Azure Machine Learning Studio? | Microsoft-Dokumentation
 description: "Übersicht über Azure ML Studio, ein Drag & Drop-Tool zum schnellen Erstellen von Modellen aus einer verwendungsbereiten Bibliothek mit Algorithmen und Modulen."
 keywords: Azure Machine Learning,Azure ML,ML Studio
 services: machine-learning
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 923bf1163e4d27e8c453fc2fcd58ebb80222bd6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a96e80fa3ece14c40159c6937a0e34c1ebc634ff
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 Microsoft Azure Machine Learning Studio ist ein Tool für die Zusammenarbeit per Drag & Drop, mit der Sie Lösungen für Vorhersageanalysen erstellen, testen und bereitstellen können, die mit Ihren Daten arbeiten. Machine Learning Studio veröffentlicht Modelle als Webdienste, die von benutzerdefinierten Apps oder BI-Tools wie Excel problemlos genutzt werden können.
@@ -64,9 +64,9 @@ Klicken Sie auf **Studio**, um zu **Azure Machine Learning Studio** zu gelangen.
 * **EINSTELLUNGEN** – eine Sammlung von Einstellungen, mit denen Sie Ihr Konto und Ihre Ressourcen konfigurieren
 
 ### <a name="gallery"></a>Gallery
-Klicken Sie auf **Katalog**, um zum **[Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/)** zu gelangen. In diesem Katalog teilt eine Community von Datenwissenschaftlern und Entwicklern Lösungen, die mithilfe von Komponenten der Cortana Intelligence Suite erstellt wurden.
+Wenn Sie auf **Katalog** klicken, gelangen Sie zum **[Azure AI-Katalog](http://gallery.cortanaintelligence.com/)**. In diesem Katalog teilt eine Community von Datenwissenschaftlern und Entwicklern Lösungen, die mithilfe von Komponenten der Cortana Intelligence Suite erstellt wurden.
 
-Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Lösungen im Cortana Intelligence-Katalog](gallery-how-to-use-contribute-publish.md).
+Weitere Informationen zum Katalog finden Sie unter [Teilen und Entdecken von Lösungen im Azure AI-Katalog](gallery-how-to-use-contribute-publish.md).
 
 ## <a name="components-of-an-experiment"></a>Komponenten eines Experiments
 Ein Experiment besteht auf Datasets, die Daten für Analysemodule bereitstellen, die Sie miteinander verbinden und so ein Vorhersagemodell konstruieren. Ein gültiges Experiment hat spezifisch folgende Eigenschaften:
@@ -83,7 +83,7 @@ Ein Beispiel für das Erstellen eines einfachen Experiments finden Sie unter [Er
 
 Eine ausführlichere exemplarische Vorgehensweise zum Erstellen einer Lösung für Vorhersageanalysen finden Sie unter [Entwickeln einer Vorhersagelösung mit Azure Machine Learning](walkthrough-develop-predictive-solution.md).
 
-### <a name="datasets"></a>DATASETS
+### <a name="datasets"></a>Datasets
 Ein DataSet besteht aus Daten, die in Machine Learning Studio hochgeladen wurden, sodass sie im Modellierungsprozess verwendet werden können. Machine Learning Studio enthält eine Reihe von Beispiel-DataSets, mit denen Sie experimentieren können, und bei Bedarf lassen sich weitere DataSets hochladen. Hier einige Beispiele der enthaltenen Datasets:
 
 * **MPG-Daten für verschiedene Autos**: Meilen-pro-Gallone-Werte für Autos, die anhand der Anzahl von Zylindern, Motorleistung usw. aufgeführt sind.

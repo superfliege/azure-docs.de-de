@@ -1,7 +1,7 @@
 ---
-title: "Kopieren von Machine Learning-Beispielexperimenten – Azure | Microsoft-Dokumentation"
-description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Cortana Intelligence-Katalog und Microsoft Azure Machine Learning neue Experimente zu erstellen.
-keywords: Machine learning-Beispiele, Beispielexperiment, Machine Learning-Beispiel
+title: "Erstellen von Experimenten aus Machine Learning-Beispielen – Azure | Microsoft-Dokumentation"
+description: Hier erfahren Sie, wie Sie Machine Learning-Beispielexperimente verwenden, um mit dem Azure AI-Katalog und Azure Machine Learning neue Experimente zu erstellen.
+keywords: Machine Learning-Beispiele, Beispielexperiment, Machine Learning-Beispiel, AI-Beispiele
 services: machine-learning
 documentationcenter: 
 author: cjgronlund
@@ -13,16 +13,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/28/2017
+ms.date: 01/05/2018
 ms.author: cgronlun
-ms.openlocfilehash: f798ac1b46d702dbb96a2384d96f2d14eb3cac0e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ea19f137acb23d3527315aae2624c746e138545
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="copy-example-experiments-to-create-new-machine-learning-experiments"></a>Kopieren von Beispielexperimenten zum Erstellen neuer Machine Learning-Experimente
-Hier erfahren Sie, wie Sie Beispielexperimente aus dem [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/) verwenden, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Auf der Grundlage der Beispiele können Sie eine eigene Machine Learning-Lösung erstellen.
+# <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von Machine Learning-Experimenten aus funktionierenden Beispielen im Azure AI-Katalog
+
+Hier erfahren Sie, wie Sie Beispielexperimente aus dem [Azure AI-Katalog](https://gallery.cortanaintelligence.com/) verwenden, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Auf der Grundlage der Beispiele können Sie eine eigene Machine Learning-Lösung erstellen.
 
 Der Katalog enthält Beispielexperimente des Microsoft Azure Machine Learning-Teams und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
 
@@ -30,7 +31,7 @@ Die Nutzung des Katalogs wird in dem dreiminütigen Video [Kopieren der Arbeit a
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
-## <a name="find-an-experiment-to-copy-in-cortana-intelligence-gallery"></a>Suchen nach einem zu kopierenden Experiment im Cortana Intelligence-Katalog
+## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Suchen nach einem zu kopierenden Experiment im Azure AI-Katalog
 Navigieren Sie zum [Katalog](https://gallery.cortanaintelligence.com/) und klicken Sie oben auf der Seite auf **Experiments** (Experimente), um anzuzeigen, welche Experimente verfügbar sind.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>Suchen nach den neuesten oder beliebtesten Experimenten
@@ -42,10 +43,10 @@ So durchsuchen Sie alle Experimente:
 1. Klicken Sie oben auf der Seite auf **Browse all** (Alle durchsuchen).
 2. Wählen Sie auf der linken Seite unter **Refine by** (Einschränken nach) im Abschnitt **Categories** (Kategorien) die Option **Experiment** aus, um alle im Katalog enthaltenen Experimente anzuzeigen.
 3. Es gibt verschiedene Möglichkeiten zur Ermittlung von Experimenten, die Ihre Anforderungen erfüllen:
-   * **Wählen Sie auf der linken Seite Filter aus.** Wenn Sie beispielsweise Experimente durchsuchen möchten, die einen Algorithmus zur PCA-basierten Erkennung von Anomalien verwenden, vergewissern Sie sich, dass unter **Categories** (Kategorien) die Option **Experiment** ausgewählt ist, und klicken Sie anschließend auf **Show all** (Alle anzeigen) aus. Wählen Sie unter **Algorithms Used** (Verwendete Algorithmen) die Option **PCA-Based Anomaly Detection** (PCA-basierte Erkennung von Anomalien) aus. <br></br>
-     ![Filter auswählen](./media/sample-experiments/refine-the-view.png)
+   * **Wählen Sie auf der linken Seite Filter aus.** Gehen Sie beispielsweise wie folgt vor, wenn Sie Experimente durchsuchen möchten, für die ein Algorithmus zur PCA-basierten Erkennung von Anomalien verwendet wird: Klicken Sie unter **Categories** (Kategorien) auf **Experiment**. Klicken Sie anschließend unter **Algorithms Used** (Verwendete Algorithmen) auf **Show all** (Alle anzeigen), und wählen Sie im Dialogfeld die Option **PCA-based Anomaly Detection** (PCA-basierte Erkennung von Anomalien). Unter Umständen müssen Sie scrollen, um die Option anzuzeigen.<br></br>
+     ![Filter auswählen](./media/sample-experiments/choose-an-algorithm.png)
    * **Verwenden Sie das Suchfeld.** Wenn Sie etwa nach Experimenten von Microsoft zur Ziffernerkennung suchen möchten, bei denen ein 2-Klassen-Support Vector Machine-Algorithmus verwendet wird, geben Sie im Suchfeld „digit recognition“ (Ziffernerkennung) ein. Wählen Sie anschließend die Filter **Experiment**, **Microsoft content only** und **Two-Class Support Vector Machine** aus:<br></br>
-     ![Verwenden des Suchfelds](./media/sample-experiments/search-for-experiments.png)
+     ![Suchfeld verwenden](./media/sample-experiments/search-for-experiments.png)
 4. Klicken Sie auf ein Experiment, um mehr darüber zu erfahren.
 5. Zum Ausführen und/oder Ändern des Experiments klicken Sie auf der Seite des Experiments auf **Open in Studio** (In Studio öffnen). <br></br>
 

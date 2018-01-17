@@ -13,23 +13,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/31/2017
+ms.date: 01/03/2018
 ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 9f51f46b0dc942bb9749f8e962a2872a8618245a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d3e14c18d5e4cd77f4c68d8a5d9d0b915e896695
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Apps, Berechtigungen und Zustimmung in Azure Active Directory
-In Azure Active Directory können Sie Ihrem Verzeichnis Anwendungen hinzufügen.  Die Anwendungen können je nach Art der Anwendung variieren.  Wählen Sie ein Verzeichnis und dann die Anwendungen aus, um sie im klassischen Portal anzuzeigen.
-
-![](media/active-directory-apps-permissions-consent/apps1.png)
+In Azure Active Directory können Sie Ihrem Verzeichnis Anwendungen hinzufügen.  Die Anwendungen können je nach Art der Anwendung variieren.  Wählen Sie ein Verzeichnis und dann die Anwendungen aus, um sie im Portal anzuzeigen.
 
 > [!IMPORTANT]
-> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten klassischen Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden.
+> Microsoft empfiehlt, für die Verwaltung von Azure AD anstelle des in diesem Artikel erwähnten Azure-Portals das [Azure AD Admin Center](https://aad.portal.azure.com) zu verwenden.
 
 ## <a name="types-of-apps"></a>App-Typen
 
@@ -71,11 +69,9 @@ Zusammenfassung:
 - Für eine delegierte Berechtigung kann „Zustimmung durch Benutzer zulässig“ oder „Zustimmung durch Administrator erforderlich“ angegeben werden.
 - Eine App kann sich wie ein Client (deklariert, dass sie Berechtigungen für eine Ressource benötigt), eine Ressource (deklariert, welche Berechtigungen sie verfügbar macht) oder wie beides verhalten.
 
-## <a name="controls"></a>Steuerelemente
+## <a name="controls"></a>Kontrollen
 
-Die folgende Liste enthält die verschiedenen Administratorsteuerelemente, die für diese Fälle verfügbar sind. Auf die Administratorsteuerelemente kann im klassischen Portal mit der Option „Konfigurieren“ unterhalb des Verzeichnisses zugegriffen werden.
-
-![](media/active-directory-apps-permissions-consent/apps7.png)
+Die folgende Liste enthält die verschiedenen Administratorsteuerelemente, die für diese Fälle verfügbar sind.
 
 Verwenden Sie im Azure-Portal die Option **Verwalten** > **Benutzereinstellungen**.
 
@@ -85,18 +81,14 @@ Verwenden Sie im Azure-Portal die Option **Verwalten** > **Benutzereinstellungen
 
 - Sie können steuern, ob Benutzer ihre Zustimmung für Apps erteilen können:
 
-Wählen Sie im klassischen Portal die Option **Benutzer können Anwendungen die Berechtigung für den Zugriff auf ihre Daten geben**.
-![](media/active-directory-apps-permissions-consent/apps8.png)
-
 Wählen Sie im Azure-Portal die Option **Benutzer können Apps Zugriff auf ihre Daten gewähren**.
 ![](media/active-directory-apps-permissions-consent/apps12.png)
 
 
 
-- Sie können steuern, ob Benutzer ihre eigenen Branchen-Apps mit nur einem Mandanten registrieren können: Wählen Sie im klassischen Portal die Option **Benutzer können integrierte Anwendungen hinzufügen**.
-![](media/active-directory-apps-permissions-consent/apps9.png)
+- Sie können steuern, ob Benutzer ihre eigenen Branchen-Apps mit nur einem Mandanten registrieren können:
 
-Wählen Sie im Azure-Portal die Option **Benutzer können Apps Zugriff auf ihre Daten gewähren**.
+Wählen Sie im Azure-Portal die Option **Benutzer können Anwendungen registrieren**.
 ![](media/active-directory-apps-permissions-consent/apps13.png)
 
 >[!NOTE]
@@ -108,20 +100,6 @@ Wählen Sie im Azure-Portal die Option **Benutzer können Apps Zugriff auf ihre 
 >- Beim Registrieren von Branchen-Apps mit nur einem Mandanten können Benutzer keine delegierten Berechtigungen für andere Apps anfordern, wenn für diese Berechtigungen die Zustimmung durch einen Administrator erforderlich ist.
 >- Benutzer können keine Änderungen an Apps vornehmen, deren Besitzer sie nicht sind.
 
-
-
-- Sie können steuern, ob Benutzer eigenmächtig vorab integrierte Apps hinzufügen können, für die das einmalige Anmelden per Kennwort („Password Vaulting“) verwendet wird. ![](media/active-directory-apps-permissions-consent/apps10.png)
-
-
-
-- Sie können steuern, unter welchen Bedingungen auf Anwendungen zugegriffen werden kann (bedingter Zugriff). Beachten Sie, dass dies sowohl für die Client-App als auch für die Ressourcen-App gilt. Angenommen, Sie legen eine Richtlinie für bedingten Zugriff fest, die besagt, dass auf die App „Office 365 Exchange Online“ nur von Computern zugegriffen werden kann, die kompatibel sind.  Diese Richtlinie gilt auch, wenn ein Benutzer versucht, eine Client-App zu verwenden, die Berechtigungen für Exchange Online anfordert.
-
-
-
-- Sie können verfolgen, für welche Apps die Zustimmung erteilt wurde und welche Apps verwendet werden.
-
-1.  Wenn ein Benutzer die Zustimmung für eine App erteilt, wird im Mandanten ein ServicePrincipal-Objekt erstellt. Die ServicePrincipal-Erstellung ist im Überwachungsbericht enthalten.
-2.  In den Berichten zur Anmeldeaktivität der Benutzer ist angegeben, an welcher App sich ein Benutzer anmeldet. 
 
 ## <a name="example"></a>Beispiel
 

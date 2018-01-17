@@ -13,21 +13,16 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 09/04/2017
+ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 954afd6d47f9bccdd2512ab92ba0d416231fb623
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 913cdd7906c5dc4ff48968230ce37c95fb441394
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Sichern virtueller Azure-Computer in Recovery Services-Tresoren
-> [!div class="op_single_selector"]
-> * [Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md)
-> * [Schützen von VMs mit einem Sicherungstresor](backup-azure-vms-first-look.md)
->
->
 
 In diesem Tutorial werden die Schritte zum Erstellen eines Recovery Services-Tresors und Sichern eines virtuellen Azure-Computers (VM) beschrieben. Recovery Services-Tresore schützen Folgendes:
 
@@ -48,15 +43,13 @@ Weitere Informationen darüber, welche Elemente Sie sichern können, finden Sie 
 >
 >
 
-[!INCLUDE [learn-about-Azure-Backup-deployment-models](../../includes/backup-deployment-models.md)]
-
 Je nach Anzahl von virtuellen Computern, die Sie schützen möchten, können Sie von unterschiedlichen Ausgangspunkten starten. Wenn Sie mit einem Vorgang mehrere virtuelle Computer sichern möchten, können Sie zum Recovery Services-Tresor navigieren und [den Sicherungsauftrag über das Tresordashboard initiieren](backup-azure-vms-first-look-arm.md#configure-the-backup-job-from-the-recovery-services-vault). Beim Sichern eines einzelnen virtuellen Computers können Sie den Sicherungsauftrag über das Blatt „VM-Verwaltung“ initiieren.
 
 ## <a name="configure-the-backup-job-from-the-vm-management-blade"></a>Konfigurieren des Sicherungsauftrags über das Blatt „VM-Verwaltung“
 
-Führen Sie die folgenden Schritte aus, um den Sicherungsauftrag im Azure-Portal über das Blatt „VM-Verwaltung“ zu konfigurieren. Diese Schritte gelten nicht für die virtuellen Computer im klassischen Portal.
+Führen Sie die folgenden Schritte aus, um den Sicherungsauftrag im Azure-Portal über das Blatt „VM-Verwaltung“ zu konfigurieren. Die folgenden Schritte gelten nur für virtuelle Computer im Azure-Portal.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im Menü „Hub“ auf **Weitere Dienste**, und geben Sie im Dialogfeld „Filter“ den Text **Virtuelle Computer** ein. Während der Eingabe wird die Liste mit den Ressourcen gefiltert. Wenn Sie den Eintrag „Virtuelle Computer“ sehen, können Sie ihn auswählen.
 
   ![Klicken Sie im Menü „Hub“ auf „Weitere Dienste“, um das Textdialogfeld zu öffnen, und geben Sie „Virtuelle Computer“ ein.](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
@@ -160,7 +153,7 @@ So erstellen Sie einen Recovery Services-Tresor
 6. Gehen Sie im Abschnitt **Ressourcengruppe** wie folgt vor:
 
     * Wählen Sie **Neu erstellen** aus, wenn Sie eine Ressourcengruppe erstellen möchten.
-    Oder
+    oder
     * Wählen Sie **Use existing** (Vorhandene verwenden) aus, und klicken Sie auf das Dropdownmenü, um eine Liste mit verfügbaren Ressourcengruppen anzuzeigen.
 
   Umfassende Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).

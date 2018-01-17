@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 6d667d42bfef2ec61b055009210d5621f51c17df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 458b316ba76ff7cace56eb21eaf105233e508741
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>Übersicht über die Geräteverwaltung mit IoT Hub
 ## <a name="introduction"></a>Einführung
@@ -57,7 +57,7 @@ In jeder dieser fünf Phasen müssen mehrere Anforderungen von Gerätebedienern 
     *Weiterführende Themen*: [Erste Schritte mit Gerätezwillingen][lnk-twins-getstarted], [Grundlegendes zu Gerätezwillingen][lnk-twins-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties]
 * **Bereitstellung:** Neue Geräte können sicher für IoT Hub bereitgestellt werden, und Bediener können die Funktionen eines Geräts sofort ermitteln.  Verwenden Sie die IoT Hub-Identitätsregistrierung, um flexible Geräteidentitäten und Anmeldeinformationen zu erstellen, und führen Sie diesen Vorgang mithilfe eines Auftrags als Massenvorgang durch. Erstellen Sie Geräte, um ihre Funktionen und Bedingungen über Geräteeigenschaften im Gerätezwilling zu melden.
   
-    *Weitere nützliche Informationen*: [Verwalten von Geräteidentitäten][lnk-identity-registry], [Massenverwaltung von Geräteidentitäten][lnk-bulk-identity], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties]
+    *Weitere nützliche Informationen*: [Verwalten von Geräteidentitäten][lnk-identity-registry], [Massenverwaltung von IoT Hub-Geräte-Identitäten][lnk-bulk-identity], [Tutorial: Verwenden von gewünschten Eigenschaften zum Konfigurieren von Geräten (Vorschau)][lnk-twin-properties], [Azure IoT Hub Device Provisioning-Dienst][lnk-dps].
 * **Konfiguration:** Massenvorgänge zum Ändern der Konfiguration und Firmwareupdates für Geräte können ohne Beeinträchtigung der Integrität und der Sicherheit durchgeführt werden. Verwenden Sie die gewünschten Eigenschaften, um diese Geräteverwaltungsvorgänge als Massenvorgang durchzuführen, oder verwenden Sie direkte Methoden und Broadcastaufträge.
   
     *Weitere nützliche Informationen*: [Verwenden von direkten Methoden][lnk-c2d-methods], [Aufrufen einer direkten Methode auf einem Gerät][lnk-methods-devguide], [Verwenden der Eigenschaften von Gerätezwillingen][lnk-twin-properties], [Planen und Übermitteln von Aufträgen][lnk-jobs], [Planen von Aufträgen auf mehreren Geräten][lnk-jobs-devguide]
@@ -113,3 +113,4 @@ Weitere Informationen zu den Geräteverwaltungsfunktionen in IoT Hub finden Sie 
 [lnk-methods-devguide]: iot-hub-devguide-direct-methods.md
 [lnk-jobs]: iot-hub-node-node-schedule-jobs.md
 [lnk-jobs-devguide]: iot-hub-devguide-jobs.md
+[lnk-dps]: https://azure.microsoft.com/documentation/services/iot-dps

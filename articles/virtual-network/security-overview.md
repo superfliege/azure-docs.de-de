@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 38101134beb59d9cae46e8ca00354e14d5c16c54
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: c3cba0c9ba38e7b0539fde7dc6460c76a47a19d6
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="network-security"></a>Netzwerksicherheit
 
@@ -48,13 +48,13 @@ Eine Netzwerksicherheitsgruppe kann – innerhalb der [Grenzwerte](../azure-subs
 
 |Eigenschaft  |Erklärung  |
 |---------|---------|
-|Name|Ein eindeutiger Name in der Netzwerksicherheitsgruppe.|
-|Priority | Eine Zahl zwischen 100 und 4.096. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.|
+|NAME|Ein eindeutiger Name in der Netzwerksicherheitsgruppe.|
+|Priorität | Eine Zahl zwischen 100 und 4.096. Regeln werden in der Reihenfolge ihrer Priorität verarbeitet. Regeln mit niedrigeren Zahlen werden vor Regeln mit höheren Zahlen verarbeitet, weil die Priorität für niedrigere Zahlen höher ist. Nachdem sich für den Datenverkehr eine Übereinstimmung mit einer Regel ergibt, wird die Verarbeitung angehalten. Daher werden alle Regeln mit niedrigerer Priorität (höherer Zahl), die über die gleichen Attribute wie Regeln mit höheren Prioritäten verfügen, nicht verarbeitet.|
 |Quelle oder Ziel| Beliebiges Element oder eine einzelne IP-Adresse, ein CIDR-Block (z.B. 10.0.0.0/24), ein Diensttag oder eine Anwendungssicherheitsgruppe. Informieren Sie sich über [Diensttags](#service-tags) und [Anwendungssicherheitsgruppen](#application-security-groups). Durch das Angeben eines Bereichs, eines Diensttags oder einer Anwendungssicherheitsgruppe haben Sie die Möglichkeit, weniger Sicherheitsregeln zu erstellen. Die Option zum Angeben mehrerer einzelner IP-Adressen und Bereiche (die Angabe mehrerer Diensttags oder Anwendungsgruppen ist nicht zulässig) in einer Regel wird als „Ergänzte Sicherheitsregeln“ bezeichnet. Erfahren Sie mehr über [Ergänzte Sicherheitsregeln](#augmented-security-rules). Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. Es ist nicht möglich, mehrere IP-Adressen und IP-Adressbereiche in Netzwerksicherheitsgruppen anzugeben, die mit dem klassischen Bereitstellungsmodell erstellt wurden.|
-|Protocol     | TCP, UDP oder „Any“ (Alle), also z.B. TCP, UDP und ICMP. Das Angeben von ICMP allein ist unzulässig. Wenn Sie ICMP benötigen, müssen Sie also „Any“ (Alle) verwenden. |
+|Protokoll     | TCP, UDP oder „Any“ (Alle), also z.B. TCP, UDP und ICMP. Das Angeben von ICMP allein ist unzulässig. Wenn Sie ICMP benötigen, müssen Sie also „Any“ (Alle) verwenden. |
 |Richtung| Gibt an, ob die Regel für ein- oder ausgehenden Datenverkehr gilt.|
-|Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Die Option zum Angeben mehrerer einzelner Ports und Portbereiche in einer Regel befindet sich in der Vorschauphase und wird als „ergänzte Sicherheitsregeln“ bezeichnet. Lesen Sie sich vor dem Verwenden von ergänzten Sicherheitsregeln die wichtigen Informationen unter [Vorschaufeatures](#preview-features) durch. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
-|Aktion     | Zulassen oder Verweigern        |
+|Portbereich     |Sie können einen einzelnen Port oder einen Bereich mit Ports angeben. Mögliche Angaben sind beispielsweise „80“ oder „10.000 - 10.005“. Das Angeben von Bereichen ermöglicht Ihnen die Erstellung von weniger Sicherheitsregeln. Ergänzte Sicherheitsregeln können nur in Netzwerksicherheitsgruppen erstellt werden, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. In Netzwerksicherheitsgruppen, die mit dem klassischen Bereitstellungsmodell erstellt wurden, können Sie in derselben Sicherheitsregel nicht mehrere Ports oder Portbereiche angeben.   |
+|anzuzeigen.     | Zulassen oder Verweigern        |
 
 Sicherheitsregeln sind zustandsbehaftet. Wenn Sie beispielsweise eine Sicherheitsregel für Datenverkehr in ausgehender Richtung an eine beliebige Adresse über Port 80 angeben, ist es nicht erforderlich, für die Antwort auf den ausgehenden Datenverkehr eine Sicherheitsregel für Datenverkehr in eingehender Richtung anzugeben. Sie müssen nur dann eine Sicherheitsregel für Datenverkehr in eingehender Richtung angeben, wenn die Kommunikation extern initiiert wird. Dies gilt auch für den umgekehrten Fall. Wenn eingehender Datenverkehr über einen Port zugelassen wird, ist es nicht erforderlich, für die Beantwortung des Datenverkehrs über den Port eine Sicherheitsregel für Datenverkehr in ausgehender Richtung anzugeben. Informationen zu den Grenzwerten beim Erstellen von Sicherheitsregeln finden Sie unter [Einschränkungen bei Azure](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
 
@@ -72,41 +72,41 @@ Wenn eine Netzwerksicherheitsgruppe keinem Subnetz und keiner Netzwerkschnittste
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|Priority|Quelle|Quellports|Ziel|Zielports|Protocol|Access|
+|Priorität|Quelle|Quellports|Ziel|Zielports|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0 - 65535|VirtualNetwork|0 - 65535|Alle|ZULASSEN|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|Priority|Quelle|Quellports|Ziel|Zielports|Protocol|Access|
+|Priorität|Quelle|Quellports|Ziel|Zielports|Protokoll|Access|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0 - 65535|0.0.0.0/0|0 - 65535|Alle|ZULASSEN|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|Priority|Quelle|Quellports|Ziel|Zielports|Protocol|Access|
+|Priorität|Quelle|Quellports|Ziel|Zielports|Protokoll|Access|
 |---|---|---|---|---|---|---|
-|65500|0.0.0.0/0|0 - 65535|0.0.0.0/0|0 - 65535|Alle|VERWEIGERN|
+|65500|0.0.0.0/0|0 - 65535|0.0.0.0/0|0 - 65535|Alle|Verweigern|
 
 ### <a name="outbound"></a>Ausgehend
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|Priority|Quelle|Quellports| Ziel | Zielports | Protocol | Access |
+|Priorität|Quelle|Quellports| Ziel | Zielports | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0 - 65535 | VirtualNetwork | 0 - 65535 | Alle | ZULASSEN |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|Priority|Quelle|Quellports| Ziel | Zielports | Protocol | Access |
+|Priorität|Quelle|Quellports| Ziel | Zielports | Protokoll | Access |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0 - 65535 | Internet | 0 - 65535 | Alle | ZULASSEN |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|Priority|Quelle|Quellports| Ziel | Zielports | Protocol | Access |
+|Priorität|Quelle|Quellports| Ziel | Zielports | Protokoll | Access |
 |---|---|---|---|---|---|---|
-| 65500 | 0.0.0.0/0 | 0 - 65535 | 0.0.0.0/0 | 0 - 65535 | Alle | VERWEIGERN |
+| 65500 | 0.0.0.0/0 | 0 - 65535 | 0.0.0.0/0 | 0 - 65535 | Alle | Verweigern |
 
 In den Spalten **Quelle** und **Ziel** handelt es sich bei *VirtualNetwork*, *AzureLoadBalancer* und *Internet* um [Diensttags](#tags) und nicht um IP-Adressen. In der Protokollspalte steht **Alle** für TCP, UDP und ICMP. Beim Erstellen einer Regel können Sie „TCP“, „UDP“ oder „Alle“ angeben, aber das Angeben von ICMP allein ist nicht möglich. Falls für Ihre Regel ICMP benötigt wird, müssen Sie als Protokoll daher *Alle* auswählen. *0.0.0.0/0* in den Spalten **Quelle** und **Ziel** steht für alle Adressen.
  
@@ -144,8 +144,7 @@ Informationen zu den Grenzwerten beim Erstellen von Anwendungssicherheitsgruppen
 Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Features, die sich in der Vorschauphase befinden, weisen nicht den gleichen Grad an Verfügbarkeit und Zuverlässigkeit wie bereits allgemein verfügbare Features auf. Vor der Verwendung von Anwendungssicherheitsgruppen müssen Sie diese entsprechend registrieren, indem Sie die Schritte 1 bis 5 in den Azure- bzw. PowerShell-Abschnitten unter [Filtern von Netzwerkdatenverkehr mit Netzwerken und Anwendungssicherheitsgruppen (Vorschau)](create-network-security-group-preview.md) ausführen. Für Anwendungssicherheitsgruppen gelten folgende Einschränkungen:
 
 -   Alle Netzwerkschnittstellen innerhalb einer Anwendungssicherheitsgruppe müssen sich im gleichen virtuellen Netzwerk befinden. Einer Anwendungssicherheitsgruppe können keine Netzwerkschnittstellen aus verschiedenen virtuellen Netzwerken hinzugefügt werden. Das virtuelle Netzwerk, in dem sich die erste Netzwerkschnittstelle befindet, die der Anwendungssicherheitsgruppe zugewiesen wurde, definiert das virtuelle Netzwerk, in dem sich alle später zugewiesenen Netzwerkschnittstellen befinden müssen.
-- Wenn Sie Anwendungssicherheitsgruppen als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise ASG1 Netzwerkschnittstellen aus VNet1 und ASG2 Netzwerkschnittstellen aus VNet2 enthält, kann ASG1 nicht als Quelle und ASG2 nicht als Ziel in einer Regel zugewiesen werden, da sich alle Netzwerkschnittstellen in VNet1 befinden müssen. 
-- Nur für die Verwendung in der Region „USA, Westen-Mitte“ verfügbar.
+- Wenn Sie Anwendungssicherheitsgruppen als Quelle und Ziel in einer Sicherheitsregel angeben, müssen sich die Netzwerkschnittstellen in beiden Anwendungssicherheitsgruppen im gleichen virtuellen Netzwerk befinden. Wenn also beispielsweise ASG1 Netzwerkschnittstellen aus VNet1 und ASG2 Netzwerkschnittstellen aus VNet2 enthält, kann ASG1 nicht als Quelle und ASG2 nicht als Ziel in einer Regel zugewiesen werden, da sich alle Netzwerkschnittstellen in VNet1 befinden müssen.
 
 ## <a name="azure-platform-considerations"></a>Aspekte der Azure Platform
 
@@ -159,7 +158,7 @@ Anwendungssicherheitsgruppen sind als Vorschauversion verfügbar. Features, die 
 
      - **Enterprise Agreement**: Die Kommunikation in ausgehender Richtung über Port 25 ist zulässig. Sie können ausgehende E-Mails direkt von virtuellen Computern an externe E-Mail-Anbieter senden, ohne dass Einschränkungen der Azure Platform bestehen. 
      - **Nutzungsbasierte Bezahlung:** Die Kommunikation in ausgehender Richtung über Port 25 wird für alle Ressourcen blockiert. Wenn Sie E-Mails von einem virtuellen Computer direkt an externe E-Mail-Anbieter senden müssen (ohne authentifiziertes SMTP-Relay), können Sie die Beseitigung der Einschränkung anfordern. Anfragen dieser Art werden von Microsoft geprüft und erst nach Durchführung von Betrugsprüfungen ggf. genehmigt. Erstellen Sie hierzu eine Supportanfrage mit einem Problemtyp der Art *Technisch*, *Konnektivität virtueller Netzwerke*, *E-Mail senden nicht möglich (SMTP/Port 25)*. Fügen Sie in die Supportanfrage Details dazu ein, warum für Ihr Abonnement das direkte Senden von E-Mails an E-Mail-Anbieter erforderlich ist, anstatt ein authentifiziertes SMTP-Relay zu verwenden. Wenn für Ihr Abonnement eine Ausnahmeregelung gewährt wird, können nur virtuelle Computer, die nach dem Startdatum der Ausnahmeregelung erstellt wurden, in ausgehender Richtung über Port 25 kommunizieren.
-     - **MSDN, Azure Pass, Azure in Open, Education, BizSpark und kostenlose Testversion**: Die Kommunikation in ausgehender Richtung über Port 25 wird für alle Ressourcen blockiert. Es können keine Anfragen zur Beseitigung der Einschränkungen gesendet werden, da keine Ausnahmen gewährt werden. Wenn Sie über Ihren virtuellen Computer E-Mails senden müssen, müssen Sie einen SMTP-Relaydienst verwenden.
+     - **Cloud-Dienstanbieter (CSP), MSDN, Azure Pass, Azure in Open, Education, BizSpark und kostenlose Testversion**: Die Kommunikation in ausgehender Richtung über Port 25 wird für alle Ressourcen blockiert. Es können keine Anfragen zur Beseitigung der Einschränkungen gesendet werden, da keine Ausnahmen gewährt werden. Wenn Sie über Ihren virtuellen Computer E-Mails senden müssen, müssen Sie einen SMTP-Relaydienst verwenden.
 
   Wenn für Sie in Azure das Senden von E-Mails über Port 25 zugelassen wird, kann von Microsoft nicht garantiert werden, dass E-Mail-Anbieter eingehende E-Mails von Ihrem virtuellen Computer akzeptieren. Falls ein bestimmter Anbieter E-Mails von Ihrem virtuellen Computer ablehnt, müssen Sie sich direkt an den Anbieter wenden, um Probleme mit der Nachrichtenzustellung oder Spamfilterung zu beheben, oder einen authentifizierten SMTP-Relaydienst verwenden. 
 

@@ -13,31 +13,29 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: fbc6187e80a42330c96ebaa1195ea188430894cc
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5a4dc7004245923fa6bda779114166ecf08d075f
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="supplemental-lesson---detail-rows"></a>Ergänzende Lektion – Detailzeilen
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
 In dieser ergänzenden Lektion verwenden Sie den DAX-Editor zum Definieren eines benutzerdefinierten Detailzeilenausdrucks. Ein Detailzeilenausdrucks ist eine Eigenschaft eines Measure, die Endbenutzer mit weiteren Informationen zu aggregierten Ergebnissen eines Measure versorgt. 
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses ergänzende Thema ist Teil eines Tutorials zur Tabellenmodellierung. Vor dem Ausführen der Aufgaben in dieser ergänzenden Lektion sollten Sie alle vorherigen Lektionen oder das Beispiel-Modellprojekt „Adventure Works Internet Sales“ abgeschlossen haben.  
+Diese ergänzende Lektion ist Teil eines Tutorials zur Tabellenmodellierung. Vor dem Ausführen der Aufgaben in dieser ergänzenden Lektion sollten Sie alle vorherigen Lektionen oder das Beispiel-Modellprojekt „Adventure Works Internet Sales“ abgeschlossen haben.  
   
-## <a name="what-do-we-need-to-solve"></a>Was müssen wir lösen?
+## <a name="whats-the-issue"></a>Um welches Problem geht es?
 Schauen Sie sich das Measure „InternetTotalSales“ an, bevor Sie einen Detailzeilenausdruck hinzufügen.
 
 1.  Klicken Sie in SSDT auf das Menü **Modell** und dann auf **In Excel analysieren**, um Excel zu öffnen und eine leere PivotTable zu erstellen.
   
-2.  Fügen Sie in den **PivotTable-Feldern** das Measure **InternetTotalSales** aus der Tabelle „FactInternetSales“ zu **Werte** hinzu, und **CalendarYear** aus der Tabelle „DimDate“ zu **Spalten** und **EnglishCountryRegionName** zu **Zeilen**. Ihre PivotTable zeigt Ihnen nun aggregierte Ergebnisse des Measure „InternetTotalSales“ nach Region und Jahr an. 
+2.  Fügen Sie in den **PivotTable-Feldern** das Measure **InternetTotalSales** aus der Tabelle „FactInternetSales“ zu **Werte** hinzu, und **CalendarYear** aus der Tabelle „DimDate“ zu **Spalten** und **EnglishCountryRegionName** zu **Zeilen**. Die PivotTable zeigt Ihnen nun aggregierte Ergebnisse des Measure „InternetTotalSales“ nach Region und Jahr an. 
 
     ![aas-lektion-detail-zeilen-pivottable](../tutorials/media/aas-lesson-detail-rows-pivottable.png)
 
@@ -51,7 +49,7 @@ Hier sollten Sie eine Tabelle mit Datenspalten und -zeilen sehen, die zum aggreg
 
 #### <a name="to-create-a-detail-rows-expression"></a>So erstellen Sie einen Dateizeilenausdruck 
   
-1. Klicken Sie in SSDT im Measureraster der Tabelle „FactInternetSales“ auf das Measure **InternetTotalSales**. 
+1. Klicken Sie im Measureraster der Tabelle „FactInternetSales“ auf das Measure **InternetTotalSales**. 
 
 2. Klicken Sie unter **Eigenschaften** > **Detailzeilenausdruck** auf die Schaltfläche „Editor“, um den DAX-Editor zu öffnen.
 
@@ -82,6 +80,6 @@ Hier sollten Sie eine Tabelle mit Datenspalten und -zeilen sehen, die zum aggreg
 
   
 ## <a name="see-also"></a>Weitere Informationen  
-[SELECTCOLUMNS-Funktion (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)   
+[SELECTCOLUMNS-Funktion (DAX)](https://msdn.microsoft.com/library/mt761759.aspx)  
 [Ergänzende Lektion – Dynamische Sicherheit](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [Ergänzende Lektion – Unregelmäßige Hierarchien](../tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  

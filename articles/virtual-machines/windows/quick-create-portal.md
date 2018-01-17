@@ -16,15 +16,15 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 7ccc9694f74b655d5b9497378632f05defdbcbf0
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 663a850cf46bf002808b9f791d9e8daefb6cc308
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-the-azure-portal"></a>Erstellen einer Windows-VM im Azure-Portal
 
-Virtuelle Azure-Computer können über das Azure-Portal erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von virtuellen Computern und alle zugehörigen Ressourcen. In diesem Schnellstart werden die Erstellung eines virtuellen Computers und die Installation eines Webservers auf der VM Schritt für Schritt beschrieben.
+Virtuelle Azure-Computer können über das Azure-Portal erstellt werden. Diese Methode bietet eine browserbasierte Benutzeroberfläche zum Erstellen und Konfigurieren von virtuellen Computern und alle zugehörigen Ressourcen. In diesem Schnellstart werden die Erstellung eines virtuellen Computers und die Installation eines Webservers auf dem virtuellen Computer Schritt für Schritt beschrieben.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -38,7 +38,7 @@ Melden Sie sich unter „http://portal.azure.com“ beim Azure-Portal an.
 
 2. Wählen Sie **Compute** und dann **Windows Server 2016 Datacenter**. 
 
-3. Geben Sie die Informationen zum virtuellen Computer ein. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Klicken Sie zum Abschluss auf **OK**.
+3. Geben Sie die Informationen zum virtuellen Computer ein. Der hier eingegebene Benutzername und das Kennwort werden zum Anmelden am virtuellen Computer verwendet. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen. Klicken Sie zum Abschluss auf **OK**.
 
     ![Eingeben grundlegender Informationen zu Ihrem virtuellen Computer im Portalblatt](./media/quick-create-portal/create-windows-vm-portal-basic-blade.png)  
 

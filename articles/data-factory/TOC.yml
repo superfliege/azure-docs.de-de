@@ -11,6 +11,10 @@
   items:
     - name: Erstellen einer Data Factory
       items:
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: quickstart-create-data-factory-portal.md
+        - name: Tool zum Kopieren von Daten
+          href: quickstart-create-data-factory-copy-data-tool.md
         - name: PowerShell
           href: quickstart-create-data-factory-powershell.md
         - name: .NET
@@ -19,35 +23,75 @@
           href: quickstart-create-data-factory-python.md
         - name: REST
           href: quickstart-create-data-factory-rest-api.md
-        - name: Portal
-          href: quickstart-create-data-factory-portal.md
         - name: Resource Manager-Vorlage
           href: quickstart-create-data-factory-resource-manager-template.md
 - name: Tutorials
   items:
     - name: 1 – Bereitstellen von SSIS-Paketen in Azure
-      href: tutorial-deploy-ssis-packages-azure.md
+      items:
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: tutorial-create-azure-ssis-runtime-portal.md
+        - name: PowerShell
+          href: tutorial-deploy-ssis-packages-azure.md
     - name: 2 – Kopieren von Daten in die Cloud
-      href: tutorial-copy-data-dot-net.md
+      items:
+        - name: Tool zum Kopieren von Daten
+          href: tutorial-copy-data-tool.md
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: tutorial-copy-data-portal.md
+        - name: PowerShell
+          href: tutorial-copy-data-dot-net.md
     - name: 3 – Kopieren von lokalen Daten in die Cloud
-      href: tutorial-hybrid-copy-powershell.md
+      items:
+        - name: Tool zum Kopieren von Daten
+          href: tutorial-hybrid-copy-data-tool.md
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: tutorial-hybrid-copy-portal.md
+        - name: PowerShell
+          href: tutorial-hybrid-copy-powershell.md
     - name: 4 – Massenkopieren von Daten
-      href: tutorial-bulk-copy.md
+      items:
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: tutorial-bulk-copy-portal.md
+        - name: PowerShell
+          href: tutorial-bulk-copy.md
     - name: 5 – Inkrementelles Kopieren von Daten
       href: tutorial-incremental-copy-overview.md
       items:
         - name: 5.1 – Kopieren aus einer Tabelle
-          href: tutorial-incremental-copy-powershell.md
+          items:
+            - name: 'Benutzeroberfläche (User Interface, UI)'
+              href: tutorial-incremental-copy-portal.md
+            - name: PowerShell
+              href: tutorial-incremental-copy-powershell.md
         - name: 5.2 – Kopieren aus mehreren Tabellen
-          href: tutorial-incremental-copy-multiple-tables-powershell.md
+          items:
+            - name: PowerShell
+              href: tutorial-incremental-copy-multiple-tables-powershell.md
         - name: 5.3. – Verwenden der Änderungsnachverfolgung
-          href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+          items:
+            - name: 'Benutzeroberfläche (User Interface, UI)'
+              href: tutorial-incremental-copy-change-tracking-feature-portal.md
+            - name: PowerShell
+              href: tutorial-incremental-copy-change-tracking-feature-powershell.md
     - name: 6 – Transformieren von Daten in der Cloud
-      href: tutorial-transform-data-spark-powershell.md
+      items:
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: tutorial-transform-data-spark-portal.md
+        - name: PowerShell
+          href: tutorial-transform-data-spark-powershell.md
     - name: 7 – Transformieren von Daten im virtuellen Netzwerk
-      href: tutorial-transform-data-hive-virtual-network.md
+      items:
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: tutorial-transform-data-hive-virtual-network-portal.md
+        - name: PowerShell
+          href: tutorial-transform-data-hive-virtual-network.md
     - name: 8 – Ablaufsteuerung
-      href: tutorial-control-flow.md
+      items:
+        - name: 'Benutzeroberfläche (User Interface, UI)'
+          href: tutorial-control-flow-portal.md
+        - name: PowerShell
+          href: tutorial-control-flow.md
 - name: Beispiele
   items:
     - name: Codebeispiele
@@ -66,10 +110,14 @@
       href: concepts-integration-runtime.md
 - name: Anleitungen
   items:
+    - name: Visuelles Erstellen von Data Factorys
+      href: author-visually.md
     - name: Kopieren von Daten
       items:
-        - name: Kopieren von Daten aus unterstützen Quellen in Ziele
+        - name: Kopieren von Daten mit der Copy-Aktivität
           href: copy-activity-overview.md
+        - name: Tool zum Kopieren von Daten
+          href: copy-data-tool.md
         - name: Lesen oder Schreiben partitionierter Daten
           href: how-to-read-write-partitioned-data.md
         - name: Connectors
@@ -86,6 +134,9 @@
               href: connector-azure-cosmos-db.md
             - name: Azure Data Lake Store
               href: connector-azure-data-lake-store.md
+              items:
+                - name: Laden von Data Lake Store
+                  href: load-azure-data-lake-store.md
             - name: Azure Database for MySQL
               href: connector-azure-database-for-mysql.md
             - name: Azure Database for PostgreSQL
@@ -98,6 +149,9 @@
               href: connector-azure-sql-database.md
             - name: Azure SQL Data Warehouse
               href: connector-azure-sql-data-warehouse.md
+              items:
+                - name: Laden von SQL Data Warehouse
+                  href: load-azure-sql-data-warehouse.md
             - name: Azure Table Storage
               href: connector-azure-table-storage.md
             - name: Cassandra
@@ -289,8 +343,6 @@
           href: create-azure-ssis-integration-runtime.md
     - name: Ausführen von SSIS-Paketen in Azure
       items:
-        - name: Erstellen einer Azure-SSIS-Integrationslaufzeit
-          href: create-azure-ssis-integration-runtime.md
         - name: Einbinden einer Azure SSIS-Integrationslaufzeit in ein VNET
           href: join-azure-ssis-integration-runtime-virtual-network.md
         - name: Verwalten der Azure SSIS-Integrationslaufzeit

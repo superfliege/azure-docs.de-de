@@ -10,7 +10,7 @@
 ### [Bereitstellen einer Spring Boot-Anwendung](service-fabric-quickstart-java-spring-boot.md)
 ### [Bereitstellen einer Reliable Services-Anwendung](service-fabric-quickstart-java-reliable-services.md)
 
-# Lernprogramme
+# Tutorials
 ## Bereitstellen einer .NET-App
 ### [1 – Erstellen einer .NET-Anwendung](service-fabric-tutorial-create-dotnet-app.md)
 ### [2 – Bereitstellen der Anwendung](service-fabric-tutorial-deploy-app-to-party-cluster.md)
@@ -44,7 +44,7 @@
 ## [Übersicht](service-fabric-content-roadmap.md)
 ## [Anwendungsszenarien](service-fabric-application-scenarios.md)
 ## [Muster und Szenarien](service-fabric-patterns-and-scenarios.md)
-## [Architektur](service-fabric-architecture.md)
+## [Architecture](service-fabric-architecture.md)
 ## [Terminologie](service-fabric-technical-overview.md)
 
 ## [Unterstützte Programmiermodelle](service-fabric-choose-framework.md)
@@ -64,7 +64,7 @@
 #### [Erweiterte Verwendung](service-fabric-reliable-services-advanced-usage.md)
 
 ### [Reliable Actors](service-fabric-reliable-actors-introduction.md)
-#### [Architektur](service-fabric-reliable-actors-platform.md)
+#### [Architecture](service-fabric-reliable-actors-platform.md)
 #### [Lebenszyklus und Garbage Collection](service-fabric-reliable-actors-lifecycle.md)
 #### [Zustandsverwaltung](service-fabric-reliable-actors-state-management.md)
 #### [Polymorphie](service-fabric-reliable-actors-polymorphism.md)
@@ -96,6 +96,7 @@
 ##### [Parameter für Anwendungsupgrades](service-fabric-application-upgrade-parameters.md)
 ##### [Datenserialisierung bei Anwendungsupgrades](service-fabric-application-upgrade-data-serialization.md)
 ##### [Weiterführende Themen zu Anwendungsupgrades](service-fabric-application-upgrade-advanced.md)
+#### [Verwalten von Anwendungen für mehrere Umgebungen](service-fabric-manage-multiple-environment-app-configuration.md)
 #### [Testen von Apps mit der Fehleranalyse](service-fabric-testability-overview.md)
 #### [Die ImageStoreConnectionString-Einstellung](service-fabric-image-store-connection-string.md)
 
@@ -108,7 +109,7 @@
 #### [Knotentypen und VM-Skalierungsgruppen](service-fabric-cluster-nodetypes.md)
 #### [Clusternetzwerkmuster](service-fabric-patterns-networking.md)
 ### [Clusterressourcen-Manager](service-fabric-cluster-resource-manager-introduction.md)
-#### [Architektur](service-fabric-cluster-resource-manager-architecture.md)
+#### [Architecture](service-fabric-cluster-resource-manager-architecture.md)
 #### [Beschreiben eines Clusters](service-fabric-cluster-resource-manager-cluster-description.md)
 #### [Übersicht über Anwendungsgruppen](service-fabric-cluster-resource-manager-application-groups.md)
 #### [Konfigurieren der Einstellungen des Clusterressourcen-Managers](service-fabric-cluster-resource-manager-configure-services.md)
@@ -226,7 +227,6 @@
 ## Arbeiten in einer Windows-/VS-Entwicklungsumgebung
 ### [Verwalten von Anwendungen in Visual Studio](service-fabric-manage-application-in-visual-studio.md)
 ### [Konfigurieren sicherer Verbindungen in Visual Studio](service-fabric-visualstudio-configure-secure-connections.md)
-### [Konfigurieren Ihrer Anwendung für mehrere Umgebungen](service-fabric-manage-multiple-environment-app-configuration.md)
 ### [Debuggen eines .NET-Diensts in VS](service-fabric-debugging-your-application.md)
 ### [Allgemeine Fehler und Ausnahmen](service-fabric-errors-and-exceptions.md)
 ### [Lokales Überwachen und Diagnostizieren](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
@@ -244,6 +244,9 @@
 
 ## Verwalten des Anwendungslebenszyklus
 ### [Packen einer Anwendung](service-fabric-package-apps.md)
+### [Verwenden von Parametern mit Konfigurationsdateien](service-fabric-how-to-parameterize-configuration-files.md)
+### [Angeben von Portnummern mithilfe von Parametern](service-fabric-how-to-specify-port-number-using-parameters.md)
+### [Angeben von Umgebungsvariablen](service-fabric-how-to-specify-environment-variables.md)
 
 ### Bereitstellen oder Entfernen von Anwendungen
 #### [Bereitstellen von Anwendungen in einem lokalen Cluster](service-fabric-get-started-with-a-local-cluster.md)
@@ -273,7 +276,7 @@
 ## Erstellen und Verwalten von Clustern
 ### Cluster in Azure
 #### Erstellen
-##### [Azure-Portal](service-fabric-cluster-creation-via-portal.md)
+##### [Azure portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 #### Skalieren
 ##### [Manuell](service-fabric-cluster-scale-up-down.md)
@@ -308,7 +311,7 @@
 ### Leistungsüberwachung
 #### [Leistungsüberwachung mit WAD](service-fabric-diagnostics-perf-wad.md)
 
-# Referenz
+# Verweis
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
 ## [Azure CLI (az sf)](/cli/azure/sf)
@@ -328,8 +331,9 @@
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST](/rest/api/servicefabric)
 ## [XML-Schema des Dienstmodells](service-fabric-service-model-schema.md)
+## [Umgebungsvariablen](service-fabric-environment-variables-reference.md)
 
-# Ressourcen
+# angeben
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/)
 ## [Häufig gestellte Fragen](service-fabric-common-questions.md)
 ## [Lernpfad](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)

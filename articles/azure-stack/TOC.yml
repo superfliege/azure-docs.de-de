@@ -19,7 +19,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Bereitstellen von Azure Stack
+    - name: Evaluieren von Azure Stack
       href: azure-stack-deploy-overview.md
 - name: Tutorials
   items:
@@ -31,8 +31,6 @@
       href: azure-stack-tutorial-app-service.md
 - name: Konzepte
   items:
-    - name: Überlegungen zur Planung
-      href: azure-stack-planning-considerations.md
     - name: Wartungsrichtlinie
       href: azure-stack-servicing-policy.md
     - name: Wichtige Features und Konzepte
@@ -43,7 +41,7 @@
       href: azure-stack-manage-basics.md
 - name: Anleitungen
   items:
-    - name: Bereitstellen
+    - name: Bereitstellen des ASDK
       items:
         - name: Voraussetzungen
           href: azure-stack-deploy.md
@@ -61,6 +59,23 @@
           href: azure-stack-add-default-image.md
         - name: Erstellen eines virtuellen Testcomputers
           href: azure-stack-provision-vm.md
+    - name: Bereitstellen von integrierten Azure Stack-Systemen
+      items:
+        - name: Überlegungen zur Bereitstellungsplanung
+          href: azure-stack-deployment-planning.md
+        - name: Entscheidungen bei der Bereitstellungsplanung
+          href: azure-stack-deployment-decisions.md
+        - name: Bereitstellung mit Azure-Verbindung
+          href: azure-stack-connected-deployment.md
+        - name: Bereitstellung ohne Azure-Verbindung
+          href: azure-stack-disconnected-deployment.md
+        - name: PKI-Anforderungen für die Azure Stack-Bereitstellung
+          href: azure-stack-pki-certs.md
+          items:
+            - name: Abrufen von PKI-Zertifikaten für die Azure Stack-Bereitstellung
+              href: azure-stack-get-pki-certs.md
+        - name: Registrieren von Azure Stack
+          href: azure-stack-registration.md
     - name: Rechenzentrumsintegration
       items:
         - name: DNS

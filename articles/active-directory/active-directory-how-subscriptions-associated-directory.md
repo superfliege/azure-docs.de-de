@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 4f5275584d75c88ce3ef5b607f315f3b425d2c3f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e063e6a46b6b99c4bbe749347e6887a930adb882
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory
 
@@ -46,7 +46,7 @@ Alle Benutzer verfügen über ein einzelnes Basisverzeichnis für die Authentifi
 
     ![Screenshot mit der Benutzeroberfläche zum Ändern des Verzeichnisses](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
 5. Klicken Sie auf **Ändern**.
-6. Erfolg! Rufen Sie mithilfe des Verzeichnisumschalters das neue Verzeichnis auf.
+6. Erfolg! Rufen Sie mithilfe des Verzeichnisumschalters das neue Verzeichnis auf. Es kann bis zu zehn Minuten dauern, bis alles richtig angezeigt wird.
 
     ![Screenshot mit der Erfolgsmeldung zur Änderung des Verzeichnisses](./media/active-directory-how-subscriptions-associated-directory/edit-directory-success.PNG)
 

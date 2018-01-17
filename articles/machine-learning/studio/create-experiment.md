@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
 ms.author: garye
-ms.openlocfilehash: 4cc8e78e3ce22d70546d8a25da17b56f4b7cc166
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 11496f0ca225baf0e6647a62aae09b8992f825c8
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning-Tutorial: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
 
@@ -81,7 +81,7 @@ In diesem Tutorial für maschinelles Lernen wird anhand von fünf grundlegenden 
 [Schritt 5: Erstellen von Preisprognosen für neue Fahrzeuge]: #step-5-predict-new-automobile-prices
 
 > [!TIP] 
-> Eine Arbeitskopie des folgenden Experiments finden Sie in der [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com). Wechseln Sie zu **[Your first data science experiment - Automobile price prediction (Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen)](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**, und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
+> Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure AI-Katalog](https://gallery.cortanaintelligence.com). Wechseln Sie zu **[Your first data science experiment - Automobile price prediction (Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen)](https://gallery.cortanaintelligence.com/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)**, und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich herunterzuladen.
 
 
 ## <a name="step-1-get-data"></a>Schritt 1: Bereitstellen von Daten
@@ -201,7 +201,7 @@ Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Da
 
 1. Ziehen Sie ein weiteres Modul [Select Columns in Dataset][select-columns] in den Experimentbereich. Verbinden Sie den linken Ausgabeport des Moduls [Clean Missing Data][clean-missing-data] mit dem Eingabeport des Moduls [Select Columns in Dataset][select-columns].
 
-    ![Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Moduls „Clean Missing Data“.][connect-clean-to-select]
+    ![Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Modul „Clean Missing Data“.][connect-clean-to-select]
     <br/>
     ***Verbinden Sie das Modul „Select Columns in Dataset“ mit dem Modul „Clean Missing Data“.***
 
@@ -327,7 +327,7 @@ Das endgültige Experiment sollte in etwa wie folgt aussehen:
 Da Sie nun das erste Tutorial zu maschinellem Lernen abgeschlossen und das Experiment eingerichtet haben, können Sie fortfahren, um das Modell zu verbessern und es als Prognosewebdienst bereitzustellen.
 
 - **Versuchen Sie, das Modell anhand von Iterationen zu verbessern:** Sie können z.B. die Funktionen ändern, die Sie für Ihre Vorhersage verwenden. Oder Sie können die Eigenschaften des [Linearen Regressionsalgorithmus][linear-regression] ändern oder einen völlig anderen Algorithmus ausprobieren. Sie können Ihrem Ereignis sogar gleichzeitig mehrere Algorithmen für Machine Learning hinzufügen und jeweils zwei davon vergleichen, indem Sie das Modul [Evaluate Model][evaluate-model] verwenden.
-Ein Beispiel für den Vergleich mehrerer Modelle in einem einzigen Experiment finden Sie unter [Compare Regressors (Vergleichen von Regressoren)](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) in der [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com).
+Ein Beispiel für den Vergleich mehrerer Modelle in nur einem Experiment finden Sie unter [Compare Regressors (Vergleichen von Regressoren)](https://gallery.cortanaintelligence.com/Experiment/Compare-Regressors-5) im [Azure AI-Katalog](https://gallery.cortanaintelligence.com).
 
     > [!TIP]
     > Mit der Schaltfläche **SPEICHERN UNTER** am unteren Rand der Seite können Sie Kopien der Iterationen Ihres Experiments speichern. Sie können alle Iterationen Ihres Experiments anzeigen, indem Sie am unteren Rand der Seite auf **AUSFÜHRUNGSVERLAUF ANZEIGEN** klicken. Weitere Informationen finden Sie unter [Verwalten von Experimentiterationen in Azure Machine Learning-Studio][runhistory].

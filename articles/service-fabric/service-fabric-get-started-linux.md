@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 9/19/2017
+ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: c77e357d56fc246de4e0e9af697e770c876d1d78
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3c59ad25294fe88f6145b6e55bb498cd958dbca2
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -128,6 +128,10 @@ sudo apt-get install servicefabricsdkcommon
   > Eigenständige Cluster werden unter Linux nicht unterstützt.
   >
 
+
+>   [!TIP]
+    Falls Sie über einen SSD-Datenträger verfügen, wird empfohlen, einen SSD-Ordnerpfad zu übergeben, indem Sie `--clusterdataroot` mit „devclustersetup.sh“ verwenden, um eine hohe Leistung zu erzielen.
+
 ## <a name="set-up-the-service-fabric-cli"></a>Einrichten der Service Fabric-Befehlszeilenschnittstelle
 
 Die [Service Fabric CLI](service-fabric-cli.md) enthält Befehle für die Interaktion mit Service Fabric-Entitäten, etwa Clustern und Anwendungen.
@@ -143,7 +147,7 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Serv
   sudo apt-get install npm
   sudo apt install nodejs-legacy
   ```
-2. Installieren des [Yeoman](http://yeoman.io/)-Vorlagengenerators auf dem Computer über npm
+2. Installieren Sie den [Yeoman](http://yeoman.io/)-Vorlagengenerator auf dem Computer über npm.
 
   ```bash
   sudo npm install -g yo

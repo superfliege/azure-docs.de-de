@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/04/2017
+ms.date: 1/09/2018
 ms.author: ryanwi
-ms.openlocfilehash: 3649cc2800e774f8dca1b88a1704744b4663a68d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4bd20cc9a553952ad86b662fa763e220cb8d8081
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
@@ -202,6 +202,30 @@ Konfigurieren Sie auch die Zuordnung vom Containerport zum Hostport, indem Sie i
     </Policies>
    </ServiceManifestImport>
 ``` 
+## <a name="configure-docker-healthcheck"></a>Konfigurieren von „docker HEALTHCHECK“ 
+Beim Starten von Version 6.1 integriert Service Fabric automatisch [docker HEALTHCHECK](https://docs.docker.com/engine/reference/builder/#healthcheck)-Ereignisse in seinen Bericht zur Systemintegrität. Wenn für Ihren Container **HEALTHCHECK** aktiviert ist, bedeutet dies Folgendes: Von Service Fabric wird die Dienstintegrität immer dann gemeldet, wenn sich der Integritätsstatus des Containers gemäß Meldung durch Docker ändert. Die Integritätsmeldung **OK** wird in [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) angezeigt, wenn für *health_status* die Meldung *healthy* erfolgt, und **WARNING**, wenn für *health_status* die Meldung *unhealthy* erfolgt. Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der **Dockerfile** enthalten sein, die beim Generieren des Containerimages verwendet wurde. 
+
+![HealthCheckHealthy][1]
+
+![HealthCheckUnealthyApp][2]
+
+![HealthCheckUnhealthyDsp][3]
+
+Sie können das **HEALTHCHECK**-Verhalten für jeden Container konfigurieren, indem Sie **HealthConfig**-Optionen im Rahmen von **ContainerHostPolicies** im Anwendungsmanifest angeben.
+
+```xml
+<ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="ContainerServicePkg" ServiceManifestVersion="2.0.0" />
+    <Policies>
+      <ContainerHostPolicies CodePackageRef="Code">
+        <HealthConfig IncludeDockerHealthStatusInSystemHealthReport="true" RestartContainerOnUnhealthyDockerHealthStatus="false" />
+      </ContainerHostPolicies>
+    </Policies>
+</ServiceManifestImport>
+```
+*IncludeDockerHealthStatusInSystemHealthReport* ist standardmäßig auf **true** und *RestartContainerOnUnhealthyDockerHealthStatus* auf **false** festgelegt. Wenn *RestartContainerOnUnhealthyDockerHealthStatus* auf **true** festgelegt ist, wird ein Container, für den wiederholt ein nicht fehlerfreier Zustand (unhealthy) gemeldet wird, neu gestartet (ggf. auf anderen Knoten).
+
+Falls Sie die **HEALTHCHECK**-Integration für den gesamten Service Fabric-Cluster deaktivieren möchten, müssen Sie [EnableDockerHealthCheckIntegration](service-fabric-cluster-fabric-settings.md) auf **false** festlegen.
 
 ## <a name="build-and-package-the-service-fabric-application"></a>Erstellen und Packen der Service Fabric-Anwendung
 Die Yeoman-Vorlagen von Service Fabric enthalten ein Buildskript für [Gradle](https://gradle.org/). Damit können Sie die Anwendung über das Terminal erstellen. Führen Sie Folgendes aus, um die Anwendung zu erstellen und zu packen:
@@ -231,6 +255,7 @@ Navigieren Sie in einem Browser zu Service Fabric Explorer (http://localhost:190
 Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser, und verweisen Sie auf die IP-Adresse, die über Port 4000 zurückgegeben wurde, z.B. http://localhost:4000 . Die Überschrift „Hello World!“ wird im Browser angezeigt.
 
 ![Hello World!][hello-world]
+
 
 ## <a name="clean-up"></a>Bereinigen
 Verwenden Sie das in der Vorlage bereitgestellte Deinstallationsskript, um die Anwendungsinstanz aus dem lokalen Entwicklungscluster zu löschen und die Registrierung des Anwendungstyps aufzuheben.
@@ -359,7 +384,6 @@ Sie können für die Runtime konfigurieren, wie lange nach dem Starten der Diens
 ```
 Das Standardzeitintervall ist auf 10 Sekunden festgelegt. Da es sich hierbei um eine dynamische Konfiguration handelt, wird bei einem reinen Konfigurationsupgrade für den Cluster das Timeout aktualisiert. 
 
-
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Konfigurieren der Runtime für die Entfernung nicht verwendeter Containerimages
 
 Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendete Containerimages aus dem Knoten entfernt. Diese Konfiguration ermöglicht die Freigabe von Speicherplatz, wenn zu viele Containerimages auf dem Knoten vorhanden sind.  Aktualisieren Sie zur Aktivierung dieses Features den Abschnitt `Hosting` im Clustermanifest, wie im folgenden Codeausschnitt gezeigt: 
@@ -380,6 +404,33 @@ Sie können den Service Fabric-Cluster so konfigurieren, dass er nicht verwendet
 
 Images, die nicht gelöscht werden sollen, können Sie unter dem Parameter `ContainerImagesToSkip` angeben. 
 
+## <a name="configure-container-image-download-time"></a>Konfigurieren der Downloadzeit für Containerimages
+
+Standardmäßig wird von der Service Fabric-Runtime ein Zeitraum von 20 Minuten für das Herunterladen und Extrahieren von Containerimages zugeteilt. Dies ist für die meisten Containerimages ausreichend. Für große Images oder bei einer langsamen Netzwerkverbindung kann es erforderlich sein, die Wartezeit bis zu dem Zeitpunkt, zu dem das Herunterladen und Extrahieren des Images abgebrochen wird, zu erhöhen. Dies kann mit dem Attribut **ContainerImageDownloadTimeout** im Abschnitt **Hosting** des Clustermanifests festgelegt werden, wie im folgenden Codeausschnitt dargestellt:
+
+```json
+{
+"name": "Hosting",
+        "parameters": [
+          {
+              "name": " ContainerImageDownloadTimeout ",
+              "value": "1200"
+          }
+]
+}
+```
+
+
+## <a name="set-container-retention-policy"></a>Festlegen der Aufbewahrungsrichtlinie für Container
+
+Als Hilfe bei der Diagnose von Startfehlern unterstützt Service Fabric (Version 6.1 oder höher) das Aufbewahren von Containern, die beendet wurden oder nicht gestartet werden konnten. Diese Richtlinie kann in der Datei **ApplicationManifest.xml** festgelegt werden, wie im folgenden Codeausschnitt gezeigt:
+
+```xml
+ <ContainerHostPolicies CodePackageRef="NodeService.Code" Isolation="process" ContainersRetentionCount="2"  RunInteractive="true"> 
+```
+
+Mit der Einstellung **ContainersRetentionCount** wird die Anzahl von Containern angegeben, die bei Fehlern beibehalten werden sollen. Wenn ein negativer Wert angegeben wird, werden alle fehlerhaften Container beibehalten. Wenn das Attribut **ContainersRetentionCount** nicht angegeben wird, werden keine Container beibehalten. Das Attribut **ContainersRetentionCount** unterstützt auch Anwendungsparameter, sodass Benutzer unterschiedliche Werte für Test- und Produktionscluster angeben können. Es wird empfohlen, bei Verwendung dieses Features Platzierungseinschränkungen zu nutzen, um den Containerdienst einem bestimmten Knoten zuzuordnen und zu verhindern, dass er auf andere Knoten verschoben wird. Alle Container, die mit diesem Feature beibehalten werden, müssen manuell entfernt werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum Ausführen von [Containern in Service Fabric](service-fabric-containers-overview.md)
@@ -389,3 +440,7 @@ Images, die nicht gelöscht werden sollen, können Sie unter dem Parameter `Cont
 
 [hello-world]: ./media/service-fabric-get-started-containers-linux/HelloWorld.png
 [sf-yeoman]: ./media/service-fabric-get-started-containers-linux/YoSF.png
+
+[1]: ./media/service-fabric-get-started-containers/HealthCheckHealthy.png
+[2]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_App.png
+[3]: ./media/service-fabric-get-started-containers/HealthCheckUnhealthy_Dsp.png

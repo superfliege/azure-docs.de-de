@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: fe50f159baedf5455c2ea3cfe825d6d826e70851
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: d8c4f5431d8e2d406cd5b203b468c447d4dd6e17
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery-Bereitstellungsplaner-Bericht
 Der erstellte Microsoft Excel-Bericht enthält die folgenden Tabellen:
@@ -45,7 +45,7 @@ Das Arbeitsblatt „On-premises Summary“ (Lokale Zusammenfassung) enthält ein
 
 **Observed typical data churn per day (GB)** (Beobachtete typische Datenänderungsrate pro Tag (GB)): Durchschnittliche Datenänderungsrate über alle Tage der Profilerstellung hinweg. Diese Anzahl wird als eine der Eingaben genutzt, um eine Entscheidung über die Anzahl von Konfigurationsservern und zusätzlichen Prozessservern zu treffen, die in der Bereitstellung verwendet werden sollen.
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>Empfehlungen
 
 Das Arbeitsblatt „Recommendations“ (Empfehlungen) des Berichts für „VMware zu Azure“ enthält je nach ausgewähltem gewünschtem RPO die folgenden Details:
 
@@ -182,7 +182,7 @@ Es kann sein, dass Sie in einer bestimmten Situation wissen, dass Sie keine höh
 
 **VM Name** (VM-Name): Der VM-Name oder die IP-Adresse, der bzw. die in „VMListFile“ verwendet wird, wenn ein Bericht erstellt wird. In dieser Spalte sind auch die Datenträger (VMDKs) angegeben, die an die VMs angefügt sind. Die Namen enthalten den ESXi-Hostnamen, um vCenter-VMs mit doppelten Namen oder IP-Adressen unterscheiden zu können. Der aufgeführte ESXi-Host ist der Host, auf dem die VM angeordnet wurde, als das Tool während der Profilerstellung die Ermittlung durchgeführt hat.
 
-**VM Compatibility** (VM-Kompatibilität): Mögliche Werte sind **Yes** und **Yes**\*. **Yes**\* steht für Fälle, in denen die VM für [Azure Storage Premium](https://aka.ms/premium-storage-workload) geeignet ist. Hier fällt der Datenträger mit hoher Datenänderungsrate bzw. hohem IOPS-Wert, für den das Profil erstellt wird, in die Kategorie P20 oder P30. Aufgrund der Größe des Datenträgers wird er aber auf P10 bzw. P20 heruntergestuft. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird. Beispiel:
+**VM Compatibility** (VM-Kompatibilität): Mögliche Werte sind **Yes** und **Yes**\*. **Yes**\* steht für Fälle, in denen die VM für [Azure Storage Premium](https://aka.ms/premium-storage-workload) geeignet ist. Hier fällt der Datenträger mit hoher Datenänderungsrate bzw. hohem IOPS-Wert, für den das Profil erstellt wird, in die Kategorie P20 oder P30. Aufgrund der Größe des Datenträgers wird er aber auf P10 bzw. P20 heruntergestuft. Das Speicherkonto entscheidet basierend auf der Größe, welchem Storage Premium-Datenträgertyp ein Datenträger zugeordnet wird. Beispiel: 
 * Bei weniger als 128 GB ist die Kategorie P10.
 * Bei 128 GB bis 256 GB wird die Kategorie P15 verwendet.
 * Bei 256 GB bis 512 GB wird die Kategorie P20 verwendet.
@@ -214,9 +214,9 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **NICs**: Die Anzahl von NICs auf der VM.
 
-**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt.
+**Boot Type** (Starttyp): Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten.  Derzeit unterstützt Azure Site Recovery Windows Server-EFI-VMs (Windows Server 2012, 2012 R2 und 2016), sofern die Anzahl von Partitionen auf dem Startdatenträger geringer als 4 ist und die Größe des Startsektors 512 Byte beträgt. Zum Schützen von EFI-VMs muss für den Azure Site Recovery Mobility Service die Version 9.13 oder höher verwendet werden. Für EFI-VMs wird nur das Failover unterstützt. Das Failback wird nicht unterstützt.  
 
-**OS Type**: Dies ist der Betriebssystemtyp der VM. Er kann „Windows“, „Linux“ oder „Other“ lauten.
+**OS Type**: Dies ist der Betriebssystemtyp der VM. Hier kann Windows, Linux oder ein anderer Typ angegeben werden. Dies richtet sich nach der ausgewählten Vorlage für VMware vSphere während der Erstellung der VM.  
 
 ## <a name="incompatible-vms"></a>Inkompatible VMs
 
@@ -228,20 +228,31 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 **VM Compatibility** (VM-Kompatibilität): Gibt an, warum die jeweilige VM für die Verwendung mit Site Recovery nicht kompatibel ist. Die Gründe werden für jeden inkompatiblen Datenträger der VM beschrieben. Basierend auf den veröffentlichten [Speichergrenzwerten](https://aka.ms/azure-storage-scalbility-performance) können dies folgende Gründe sein:
 
 * Der Datenträger ist größer als 4095 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 4095 GB sind.
+
 * Der Betriebssystemdatenträger ist größer als 2048 GB. Azure Storage unterstützt derzeit keine Datenträger, die größer als 2048 GB sind.
-* Der Starttyp ist EFI. Derzeit unterstützt Azure Site Recovery für virtuelle Computer nur den Starttyp „BIOS“.
 
 * Die VM-Gesamtgröße (Replikation + TFO) übersteigt den Grenzwert für die Unterstützung von Speicherkonten (35 TB). Diese Inkompatibilität tritt normalerweise auf, wenn ein einzelner Datenträger der VM über ein Leistungsmerkmal verfügt, das den unterstützten Azure- oder Site Recovery-Grenzwert für Standardspeicher überschreitet. Hierdurch fällt die VM in die Storage Premium-Zone. Die maximal unterstützte Größe für ein Storage Premium-Konto beträgt aber 35 TB, und eine einzelne geschützte VM kann nicht über mehrere Speicherkonten hinweg geschützt werden. Beachten Sie außerdem Folgendes: Wenn ein Testfailover auf einer geschützten VM durchgeführt wird, erfolgt dies unter demselben Speicherkonto, unter dem die Replikation durchgeführt wird. Richten Sie in diesem Fall die doppelte Größe des Datenträgers ein, damit die Replikation weiter durchgeführt werden kann und gleichzeitig das Testfailover erfolgreich ist.
-* Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 5.000 pro Datenträger.
+
+* Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 7.500 pro Datenträger.
+
 * Der IOPS-Quellwert übersteigt den unterstützten IOPS-Speichergrenzwert von 80.000 pro VM.
+
 * Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 10 MB/s für die durchschnittliche E/A-Größe für den Datenträger.
-* Die gesamte Datenänderungsrate für alle Datenträger auf der VM übersteigt den maximal unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 54 MB/s pro VM.
+
+* Die durchschnittliche Datenänderungsrate übersteigt den unterstützten Grenzwert für die Site Recovery-Datenänderungsrate von 25 MB/s für die durchschnittliche E/A-Größe der VM (Summe der Datenänderungen aller Datenträger).
+
+* Die Spitzenänderungsrate für alle Datenträger auf der VM übersteigt den maximal unterstützten Grenzwert für die Site Recovery-Spitzenänderungsrate von 54 MB/s pro VM.
+
 * Der durchschnittliche effektive Schreib-IOPS-Wert übersteigt den unterstützten Site Recovery-IOPS-Grenzwert von 840 für den Datenträger.
+
 * Der berechnete Momentaufnahmespeicher übersteigt den unterstützten Grenzwert für Momentaufnahmespeicher von 10 TB.
 
-**R/W IOPS (with Growth Factor)** (Lese/Schreib-IOPS (mit Zuwachsfaktor): Der IOPS-Wert für die Spitzenworkload auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie, dass der Lese/Schreib-IOPS-Gesamtwert der VM nicht immer die Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger einer VM ist. Der Grund ist, dass der Lese/Schreib-IOPS-Spitzenwert der VM der Spitzenwert der Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
+* Die gesamte Datenänderungsrate pro Tag übersteigt das unterstützte Limit für die Datenänderung pro Tag von 2 TB durch einen Prozessserver.
 
-**Data Churn (MBps) (with Growth Factor)** (Datenänderung (MBit/s) (mit Zuwachsfaktor)): Die Spitzenänderungsrate auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie Folgendes: Die gesamte VM-Datenänderung ist nicht immer die Summe der Datenänderung der einzelnen VM-Datenträger, da der Spitzenwert der VM-Datenänderung der Spitzenwert der Summe der Datenänderung seiner einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
+
+**Peak R/W IOPS (with Growth Factor)** (Lese/Schreib-IOPS-Spitzenwert (mit Zuwachsfaktor)): Der IOPS-Wert für die Spitzenworkload auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie, dass der Lese/Schreib-IOPS-Gesamtwert der VM nicht immer die Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger einer VM ist. Der Grund ist, dass der Lese/Schreib-IOPS-Spitzenwert der VM der Spitzenwert der Summe aller Lese/Schreib-IOPS-Werte der einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
+
+**Peak Data Churn in Mbps (with Growth Factor)** (Spitzendatenänderung (MBit/s) (mit Zuwachsfaktor)): Die Spitzenänderungsrate auf dem Datenträger (Standardeinstellung: 95. Perzentil), einschließlich des Faktors für den zukünftigen Zuwachs (Standardeinstellung: 30%). Beachten Sie Folgendes: Die gesamte VM-Datenänderung ist nicht immer die Summe der Datenänderung der einzelnen VM-Datenträger, da der Spitzenwert der VM-Datenänderung der Spitzenwert der Summe der Datenänderung seiner einzelnen Datenträger für jede Minute des Profilerstellungszeitraums ist.
 
 **Number of Disks** (Anzahl von Datenträgern): Die Gesamtzahl von VMDKs auf der VM.
 
@@ -253,14 +264,13 @@ Falls ein Datenträger aufgrund seiner Workloadmerkmale beispielsweise in die Ka
 
 **NICs**: Die Anzahl von NICs auf der VM.
 
-**Boot Type**: Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten. Derzeit unterstützt Azure Site Recovery nur den Starttyp „BIOS“. Alle virtuellen Computer mit dem Starttyp „EFI“ sind in der Tabelle unter „Inkompatible VMs“ aufgeführt.
+**Boot Type** (Starttyp): Dies ist der Starttyp der VM. Er kann entweder „BIOS“ oder „EFI“ lauten.  Derzeit unterstützt Azure Site Recovery Windows Server-EFI-VMs (Windows Server 2012, 2012 R2 und 2016), sofern die Anzahl von Partitionen auf dem Startdatenträger geringer als 4 ist und die Größe des Startsektors 512 Byte beträgt. Zum Schützen von EFI-VMs muss für den Azure Site Recovery Mobility Service die Version 9.13 oder höher verwendet werden. Für EFI-VMs wird nur das Failover unterstützt. Das Failback wird nicht unterstützt.
 
-**OS Type**: Dies ist der Betriebssystemtyp der VM. Er kann „Windows“, „Linux“ oder „Other“ lauten.
-
+**OS Type**: Dies ist der Betriebssystemtyp der VM. Hier kann Windows, Linux oder ein anderer Typ angegeben werden. Dies richtet sich nach der ausgewählten Vorlage für VMware vSphere während der Erstellung der VM. 
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery-Grenzwerte
 Die folgende Tabelle enthält die Azure Site Recovery-Grenzwerte. Diese Grenzwerte basieren auf unseren Tests, können aber nicht alle möglichen E/A-Kombinationen für Anwendungen abdecken. Die tatsächlichen Ergebnisse können je nach Ihrer E/A-Mischung für die Anwendungen variieren. Auch nach der Planung der Bereitstellung ist es zum Erzielen der bestmöglichen Ergebnisse stets zu empfehlen, umfangreiche Anwendungstests per Testfailover durchzuführen, um sich ein eindeutiges Bild der Anwendungsleistung zu verschaffen.
- 
+
 **Replikationsspeicherziel** | **Durchschnittliche E/A-Größe des Quelldatenträgers** |**Durchschnittliche Datenänderungsrate des Quelldatenträgers** | **Gesamte Datenänderungsrate des Quelldatenträgers pro Tag**
 ---|---|---|---
 Standardspeicher | 8 KB | 2 MB/s | 168 GB pro Datenträger
@@ -270,7 +280,14 @@ Premium-Datenträger – P10 oder P15 | 32 KB oder höher | 8 MB/s | 672 GB pro 
 Premium-Datenträger – P20, P30, P40 oder P50 | 8 KB    | 5 MB/s | 421 GB pro Datenträger
 Premium-Datenträger – P20, P30, P40 oder P50 | 16 KB oder höher |10 MB/s | 842 GB pro Datenträger
 
+**Quell-Datenänderungsrate** | **Maximales Limit**
+---|---
+Durchschnittliche Datenänderungsrate pro VM| 25 MB/s 
+Spitzenänderungsrate für alle Datenträger auf einer VM | 54 MB/s
+Maximale Datenänderung pro Tag, die von einem Prozessserver unterstützt wird | 2 TB 
+
 Dies sind Durchschnittswerte, bei denen eine E/A-Überlappung von 30% angenommen wird. Site Recovery kann einen höheren Durchsatz basierend auf dem Überlappungsverhältnis, höheren Schreibgrößen und dem tatsächlichen Workload-E/A-Verhalten verarbeiten. Für die obigen Zahlen wurde ein typischer Backlog von ca. fünf Minuten vorausgesetzt. Dies bedeutet, dass die Daten nach dem Hochladen verarbeitet werden und innerhalb von fünf Minuten ein Wiederherstellungspunkt erstellt wird.
+
 
 ## <a name="cost-estimation"></a>Cost Estimation (Kostenvorkalkulation)
 Erfahren Sie mehr über die [Kostenvorkalkulation](site-recovery-vmware-deployment-planner-cost-estimation.md). 

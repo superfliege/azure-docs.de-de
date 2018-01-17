@@ -1,5 +1,5 @@
 ---
-title: "Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“ | Microsoft-Dokumentation"
+title: "Azure Site Recovery Deployment Planner für „VMware zu Azure“ | Microsoft-Dokumentation"
 description: "In diesem Artikel wird die Ausführung von Azure Site Recovery-Bereitstellungsplaner im Modus für das Szenario „VMware zu Azure“ beschrieben."
 services: site-recovery
 documentationcenter: 
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/04/2017
 ms.author: nisoneji
-ms.openlocfilehash: aee19cd515e1cb75dcd791363270e1b6a6d094e4
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 71090d897634989a061181f4471368cfb5f14be0
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Ausführen von Azure Site Recovery-Bereitstellungsplaner für „VMware zu Azure“
-Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „VMware zu Azure“ in der Produktion.
+Dieser Artikel ist der Leitfaden zum Deployment Planner (Bereitstellungsplaner) von Azure Site Recovery für Bereitstellungen von „VMware zu Azure“ in der Produktion.
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Modi der Bereitstellungsplaner-Ausführung
@@ -34,7 +34,7 @@ Sie können das Befehlszeilentool (ASRDeploymentPlanner.exe) in einem der folgen
 Führen Sie das Tool zuerst im Modus für die Profilerstellung aus, um für die VM die Datenänderung und den IOPS-Wert zu erfassen. Führen Sie im Tool als Nächstes die Berichterstellung durch, um die Netzwerkbandbreite, die Speicheranforderungen und die Kosten für die Notfallwiederherstellung zu ermitteln.
 
 ## <a name="profile-vmware-vms"></a>Durchführen der Profilerstellung für VMware-VMs
-Im Profilerstellungsmodus stellt das Bereitstellungsplaner-Tool eine Verbindung mit dem vCenter Server bzw. vSphere ESXi-Host her, um Leistungsdaten zur VM zu sammeln.
+Im Profilerstellungsmodus stellt das Deployment Planner-Tool eine Verbindung mit dem vCenter Server bzw. vSphere ESXi-Host her, um Leistungsdaten zur VM zu sammeln.
 
 * Die Profilerstellung wirkt sich nicht negativ auf die Leistung der Produktions-VMs aus, weil keine direkte Verbindung damit hergestellt wird. Alle Leistungsdaten werden über den vCenter-Server/vSphere ESXi-Host ermittelt.
 * Um sicherzustellen, dass die Auswirkungen der Profilerstellung auf den Server vernachlässigbar sind, fragt das Tool den vCenter-Server/vSphere ESXi-Host alle 15 Minuten ab. Die Genauigkeit der Profilerstellung wird durch dieses Abfrageintervall nicht beeinträchtigt, weil die Leistungsindikatordaten vom Tool minutengenau gespeichert werden.
@@ -61,8 +61,9 @@ Ersetzen Sie &lsaquo;server name&rsaquo;, &lsaquo;user name&rsaquo;, &lsaquo;pas
 
 6. Öffnen Sie die Ausgabedatei im Editor, und kopieren Sie die Namen aller VMs, für die Profile erstellt werden sollen, in eine andere Datei (z.B. „ProfileVMList.txt“). Fügen Sie einen VM-Namen pro Zeile ein. Diese Datei wird als Eingabe für den Parameter *-VMListFile* des Befehlszeilentools verwendet.
 
-    ![Liste mit VM-Namen im Bereitstellungsplaner
+    ![Liste mit VM-Namen im Deployment Planner
 ](media/site-recovery-vmware-deployment-planner-run/profile-vm-list-v2a.png)
+
 ### <a name="start-profiling"></a>Starten der Profilerstellung
 Nachdem Sie die Liste mit den VMs für die Profilerstellung vorliegen haben, können Sie für das Tool den Modus für die Profilerstellung ausführen. Unten ist die Liste mit den obligatorischen und optionalen Parametern des Tools für die Ausführung im Modus für die Profilerstellung angegeben.
 
@@ -70,7 +71,7 @@ Nachdem Sie die Liste mit den VMs für die Profilerstellung vorliegen haben, kö
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Parametername | Beschreibung |
+| Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | Der vollständig qualifizierte Domänenname oder die IP-Adresse des vCenter-Servers/vSphere ESXi-Hosts, für dessen VMs die Profilerstellung durchgeführt werden soll.|
@@ -94,6 +95,17 @@ Es wird empfohlen, die Profilerstellung für Ihre VMs länger als 7 Tage durchzu
 Während der Profilerstellung können Sie optional den Namen eines Speicherkontos und den dazugehörigen Schlüssel übergeben, um den Durchsatz zu ermitteln, der für Site Recovery bei der Replikation vom Konfigurationsserver oder Prozessserver zu Azure erreicht werden kann. Wenn der Name des Speicherkontos und der Schlüssel während der Profilerstellung nicht übergeben werden, wird der erreichbare Durchsatz vom Tool nicht berechnet.
 
 Sie können mehrere Instanzen des Tools für verschiedene Gruppen von VMs ausführen. Stellen Sie sicher, dass die VM-Namen in den Gruppen für die Profilerstellung nicht mehr als einmal vorkommen. Wenn Sie beispielsweise Profile für zehn VMs (VM1 bis VM10) erstellt haben und nach einigen Tagen Profile für fünf weitere VMs (VM11 bis VM15) erstellen möchten, können Sie das Tool für die zweite Gruppe von VMs (VM11 bis VM15) über eine andere Befehlszeilenkonsole ausführen. Stellen Sie hierbei sicher, dass die zweite Gruppe von VMs keine Namen der VMs aus der ersten Profilerstellungsinstanz enthält, oder verwenden Sie für die zweite Ausführung ein anderes Ausgabeverzeichnis. Wenn zwei Instanzen des Tools für die Profilerstellung derselben VMs verwendet werden und dabei dasselbe Ausgabeverzeichnis genutzt wird, ist der generierte Bericht fehlerhaft.
+
+Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1.000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
+```
+<!-- Maximum number of vms supported-->
+<add key="MaxVmsSupported" value="1000"/>
+```
+Wenn Sie mit den Standardeinstellungen beispielsweise Profile für 1.500 VMs erstellen möchten, können Sie zwei Dateien vom Typ „VMList.txt“ verwenden. Eine mit 1.000 VMs und eine weitere mit 500 VMs. Führen Sie die beiden Instanzen des ASR-Bereitstellungsplaners aus, eine mit „VMList1.txt“ und eine mit „VMList2.txt“. Sie können zum Speichern der Profildaten beider VMList-VMs den gleichen Verzeichnispfad verwenden. 
+
+Es wurde verdeutlicht, dass basierend auf der Hardwarekonfiguration – vor allem der RAM-Größe des Servers, auf dem das Tool für die Berichtserstellung ausgeführt wird – der Vorgang aufgrund von unzureichendem Arbeitsspeicher fehlschlagen kann. Wenn Sie über gute Hardware verfügen, können Sie MaxVMsSupported auch auf einen höheren Wert festlegen.  
+
+Bei Verwendung von mehreren vCenter-Servern müssen Sie für die Profilerstellung eine Instanz von ASRDeploymentPlanner für jeden vCenter-Server ausführen.
 
 VM-Konfigurationen werden zu Beginn des Profilerstellungsvorgangs einmal erfasst und in einer Datei mit dem Namen „VMDetailList.xml“ gespeichert. Diese Informationen werden für die Berichterstellung verwendet. Alle Änderungen der VM-Konfiguration (z.B. erhöhte Anzahl von Kernen, Datenträgern oder NICs) vom Anfang bis zum Ende der Profilerstellung werden nicht erfasst. Wenn sich eine betroffene VM-Konfiguration während der Profilerstellung geändert hat, können Sie dieses Problem für die öffentliche Vorschauversion wie folgt umgehen, um bei der Berichterstellung die aktuellen VM-Details zu erhalten:
 
@@ -136,7 +148,7 @@ Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmo
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|Parametername | Beschreibung |
+|Parametername | BESCHREIBUNG |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  Der vollqualifizierte Name oder die IP-Adresse (der gleiche Name bzw. die gleiche IP-Adresse wie bei der Profilerstellung) des vCenter-/vSphere-Servers, auf dem sich die VMs für die Profilerstellung befinden, für die der Bericht erstellt werden soll. Beachten Sie Folgendes: Wenn Sie bei der Profilerstellung einen vCenter-Server verwendet haben, können Sie keinen vSphere-Server für die Berichterstellung verwenden (und umgekehrt).|
@@ -158,6 +170,12 @@ Nach Abschluss der Profilerstellung können Sie das Tool im Berichterstellungsmo
 |-TargetRegion|(Optional) Die Azure-Zielregion für die Replikation. Verwenden Sie diesen Parameter, um einen Bericht mit der jeweiligen Azure-Zielregion zu erstellen, da Azure über unterschiedliche Kosten pro Region verfügt.<br>Die Standardeinstellung ist „USA, Westen 2“ bzw. die zuletzt verwendete Zielregion.<br>Weitere Informationen finden Sie in der Liste mit den [unterstützten Zielregionen](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Optional) Das Angebot, das dem jeweiligen Abonnement zugeordnet ist. Die Standardeinstellung ist MS-AZR-0003P (nutzungsbasierte Bezahlung).|
 |-Currency|(Optional) Die Währung, in der Kosten im generierten Bericht angezeigt werden. Die Standardeinstellung ist „US-Dollar ($)“ bzw. die zuletzt verwendete Währung.<br>Weitere Informationen finden Sie in der Liste mit den [unterstützten Währungen](site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies).|
+
+Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1.000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
+```
+<!-- Maximum number of vms supported-->
+<add key="MaxVmsSupported" value="1000"/>
+```
 
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
 ```
@@ -211,7 +229,7 @@ Bei Verwendung der Werte des 95. Perzentils erhalten Sie ein genaues Bild der ec
 ## <a name="growth-factor-considerations"></a>Informationen zum Zuwachsfaktor
 **Warum sollte ich den Zuwachsfaktor beim Planen von Bereitstellungen berücksichtigen?**
 
-Es ist wichtig, dass Sie in Bezug auf Ihre Workloadmerkmale den Zuwachs und eine potenzielle vermehrte Nutzung im Laufe der Zeit berücksichtigen. Wenn sich Ihre Workloadmerkmale nach der Einrichtung des Schutzes ändern, können Sie in Bezug auf den Schutz nicht zu einem anderen Speicherkonto wechseln, ohne den Schutz zu deaktivieren und anschließend wieder zu aktivieren.
+Es ist wichtig, dass Sie in Bezug auf Ihre Workloadmerkmale den Zuwachs und eine potenzielle vermehrte Nutzung im Laufe der Zeit berücksichtigen. Wenn Sich Ihre Workloadmerkmale nach der Einrichtung des Schutzes ändern, können Sie in Bezug auf den Schutz nicht zu einem anderen Speicherkonto wechseln, ohne den Schutz zu deaktivieren und anschließend wieder zu aktivieren.
 
 Angenommen, Ihre VM ist derzeit für ein Standardspeicherkonto für die Replikation eingerichtet. Die Wahrscheinlichkeit ist hoch, dass es im Laufe der nächsten drei Monate zu mehreren Änderungen kommt:
 
@@ -230,7 +248,7 @@ Der erstellte Microsoft Excel-Bericht enthält die folgenden Informationen:
 * [Incompatible VMs](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms) (Inkompatible VMs)
 * [Cost Estimation](site-recovery-vmware-deployment-planner-cost-estimation.md) (Kostenvorkalkulation)
 
-![Bereitstellungsplaner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
+![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
 ## <a name="get-throughput"></a>Durchsatzberechnung
 
@@ -240,7 +258,7 @@ Führen Sie das Tool im GetThroughput-Modus aus, um den Durchsatz zu schätzen, 
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|Parametername | Beschreibung |
+|Parametername | BESCHREIBUNG |
 |-|-|
 | -Operation | GetThroughput |
 |-Virtualization|Geben Sie den Virtualisierungstyp an (VMware oder Hyper-V).|

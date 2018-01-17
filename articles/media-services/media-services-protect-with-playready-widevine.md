@@ -1,6 +1,6 @@
 ---
-title: "Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine | Microsoft Docs"
-description: "Mit Microsoft Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und Http-Live-Streaming (HLS)-Streams übermitteln, die mit Microsoft PlayReady DRM geschützt sind. Es ermöglicht Ihnen auch, DASH mit Widevine-DRM-Verschlüsselung bereitzustellen. In diesem Thema wird das dynamische Verschlüsseln mit PlayReady- und Widevine-DRM beschrieben."
+title: "Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine | Microsoft-Dokumentation"
+description: "Sie können Azure Media Services verwenden, um MPEG-DASH-, Smooth Streaming- und HTTP Live Streaming (HLS)-Streams zu übermitteln, die mit Microsoft PlayReady DRM geschützt sind. Außerdem können Sie sie nutzen, um DASH-Daten bereitzustellen, die mit Widevine DRM verschlüsselt wurden. In diesem Thema wird das dynamische Verschlüsseln mit PlayReady- und Widevine-DRM beschrieben."
 services: media-services
 documentationcenter: 
 author: juliako
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: fb62a82f351502b5067367b2306f296272b6575b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 54b9c38d1122d898dd584a189b9ea2e3405dc6f5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="using-playready-andor-widevine-dynamic-common-encryption"></a>Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine
+# <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>Verwenden von dynamischer allgemeiner Verschlüsselung mit PlayReady und/oder Widevine
 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-protect-with-playready-widevine.md)
@@ -30,92 +30,103 @@ ms.lasthandoff: 12/18/2017
 
 > [!NOTE]
 > Informationen zum Abrufen der aktuellen Version des Java SDK sowie zu den ersten Schritten beim Entwickeln mit Java finden Sie unter [Erste Schritte mit dem Java-Client-SDK für Azure Media Services](https://docs.microsoft.com/azure/media-services/media-services-java-how-to-use). <br/>
-> Wenn Sie das aktuelle PHP SDK für Media Services herunterladen möchten, suchen Sie im [Packagist-Repository](https://packagist.org/packages/microsoft/windowsazure#v0.5.7) nach Version 0.5.7 des Microsoft-/WindowAzure-Pakets.  
+> Wenn Sie das aktuelle PHP SDK für Media Services herunterladen möchten, können Sie im [Packagist-Repository](https://packagist.org/packages/microsoft/windowsazure#v0.5.7) nach Version 0.5.7 des Microsoft/WindowsAzure-Pakets suchen. 
 
 ## <a name="overview"></a>Übersicht
 
-Mit Microsoft Azure Media Services können Sie MPEG-DASH-, Smooth Streaming- und HTTP-Live-Streaming (HLS)-Streams übermitteln, die mit [Microsoft PlayReady DRM](https://www.microsoft.com/playready/overview/)geschützt sind. Sie können außerdem verschlüsselte DASH-Streams mit Widevine-DRM-Lizenzen bereitstellen. PlayReady und Widevine sind gemäß der Spezifikation Common Encryption (ISO/IEC 23001-7 CENC) verschlüsselt. Sie können das [AMS .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (ab Version 3.5.1) oder die REST-API verwenden, um die AssetDeliveryConfiguration für die Verwendung von Widevine zu konfigurieren.
+ Sie können Media Services verwenden, um MPEG-DASH-, Smooth Streaming- und HTTP Live Streaming (HLS)-Streams zu übermitteln, die per [PlayReady Digital Rights Management (DRM)](https://www.microsoft.com/playready/overview/) geschützt sind. Außerdem können Sie verschlüsselte DASH-Streams mit Widevine-DRM-Lizenzen bereitstellen. PlayReady und Widevine sind gemäß der Spezifikation Common Encryption (ISO/IEC 23001-7 CENC) verschlüsselt. Sie können das [Media Services .NET SDK](https://www.nuget.org/packages/windowsazure.mediaservices/) (ab Version 3.5.1) oder die REST-API verwenden, um AssetDeliveryConfiguration für die Verwendung von Widevine zu konfigurieren.
 
-Media Services bietet einen Dienst zum Übermitteln von PlayReady- und Widevine-DMR-Lizenzen. Mithilfe der von Media Services bereitgestellten APIs können Sie die Rechte und Einschränkungen konfigurieren, die für die PlayReady- oder Widevine-DRM-Laufzeit erzwungen werden sollen, wenn ein Benutzer geschützte Inhalte wiedergibt. Wenn ein Benutzer die mit DRM geschützten Inhalte anfordert, fordert die Playeranwendung eine Lizenz vom AMS-Lizenzdienst an. Die AMS-Lizenzdienst stellt dem Player eine Lizenz aus, sofern dieser autorisiert ist. Eine PlayReady- oder Widevine-Lizenz enthält den Entschlüsselungsschlüssel, der vom Clientplayer zum Entschlüsseln und Streamen des Inhalts verwendet werden kann.
+Media Services bietet einen Dienst zum Übermitteln von PlayReady- und Widevine-DMR-Lizenzen. Mithilfe der von Media Services bereitgestellten APIs können Sie die Rechte und Einschränkungen konfigurieren, die für die PlayReady- oder Widevine-DRM-Laufzeit erzwungen werden sollen, wenn ein Benutzer geschützte Inhalte wiedergibt. Wenn ein Benutzer die mit DRM geschützten Inhalte anfordert, fordert die Playeranwendung eine Lizenz vom Media Services-Lizenzdienst an. Wenn die Playeranwendung autorisiert wurde, gibt der Media Services-Lizenzdienst eine Lizenz für den Player aus. Eine PlayReady- oder Widevine-Lizenz enthält den Entschlüsselungsschlüssel, der vom Clientplayer zum Entschlüsseln und Streamen des Inhalts verwendet werden kann.
 
-Sie können sich auch von folgenden AMS-Partnern bei der Übermittlung von Widevine-Lizenzen unterstützen lassen: [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/), [EZDRM](http://ezdrm.com/), [castLabs](http://castlabs.com/company/partners/azure/). Weitere Informationen finden Sie in den Artikeln zur Integration in [Axinom](media-services-axinom-integration.md) und [castLabs](media-services-castlabs-integration.md).
+Sie können auch die folgenden Media Services-Partnerunternehmen zur Unterstützung bei der Bereitstellung von Widevine-Lizenzen nutzen: 
 
-Media Services unterstützt mehrere Möglichkeiten zur Autorisierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Tokeneinschränkung. Die durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Secure Token Service (STS) ausgestellt wurde. Media Services unterstützt Token im SWT-Format ([Simple Web Tokens](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2)) und im JWT-Format ([JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3)). Weitere Informationen finden Sie unter "Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel".
+* [Axinom](http://www.axinom.com/press/ibc-axinom-drm-6/) 
+* [EZDRM](http://ezdrm.com/) 
+* [castLabs](http://castlabs.com/company/partners/azure/) 
 
-Damit dynamische Verschlüsselung genutzt werden kann, müssen Sie über ein Medienobjekt verfügen, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Außerdem müssen Sie die Übermittlungsrichtlinien für das Medienobjekt konfigurieren (weiter unten in diesem Thema beschrieben). Basierend auf dem angegebenen Format in der Streaming-URL stellt der On-Demand-Streaming-Server dann sicher, dass der Datenstrom im ausgewählten Protokoll übermittelt wird. So müssen Sie die Dateien nur in einem einzelnen Speicherformat speichern und bezahlen. Die entsprechende HTTP-Antwort wird von Media Services basierend auf jeder einzelnen Clientanforderung erstellt und verfügbar gemacht.
+Weitere Informationen finden Sie in den Artikeln zur Integration in [Axinom](media-services-axinom-integration.md) und [castLabs](media-services-castlabs-integration.md).
+
+Media Services unterstützt mehrere Möglichkeiten zur Autorisierung von Benutzern, die Schlüssel anfordern. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Token. Eine durch Token eingeschränkte Richtlinie gilt nur zusammen mit einem Token, das von einem Sicherheitstokendienst (Security Token Service, STS) ausgestellt wurde. Media Services unterstützt Token im Format [Simple Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_2) (SWT) und [JSON Web Token](https://msdn.microsoft.com/library/gg185950.aspx#BKMK_3) (JWT). 
+
+Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-protect-with-aes128.md#configure_key_auth_policy).
+
+Damit die dynamische Verschlüsselung genutzt werden kann, müssen Sie über ein Medienobjekt verfügen, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Außerdem müssen Sie die Bereitstellungsrichtlinien für das Medienobjekt konfigurieren (weiter unten in diesem Thema beschrieben). Basierend auf dem angegebenen Format in der Streaming-URL stellt der On-Demand-Streaming-Server dann sicher, dass der Datenstrom im ausgewählten Protokoll übermittelt wird. Auf diese Weise werden die Dateien nur in einem Speicherformat gespeichert, und Sie zahlen auch nur für ein Format. Media Services reagiert auf die Anforderung eines Clients jeweils mit der richtigen HTTP-Antwort.
 
 Dieser Artikel ist für Entwickler hilfreich, die an Anwendungen arbeiten, bei denen mit mehreren DRMs, z.B. PlayReady und Widevine, geschützte Medien übermittelt werden. In diesem Artikel erfahren Sie, wie der PlayReady-Lizenzbereitstellungsdienst mit Autorisierungsrichtlinien so konfiguriert wird, dass nur autorisierte Clients PlayReady- oder Widevine-Lizenzen erhalten können. Es wird außerdem gezeigt, wie die dynamische Verschlüsselung mit PlayReady oder Widevine DRM über DASH genutzt wird.
 
 >[!NOTE]
->Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status **Wird ausgeführt** aufweisen. 
+>Beim Erstellen Ihres Media Services-Kontos wird dem Konto ein Standard-Streamingendpunkt mit dem Status „Beendet“ hinzugefügt. Um mit dem Streamen der Inhalte zu beginnen und die dynamische Paketerstellung und dynamische Verschlüsselung zu nutzen, muss der Streamingendpunkt, von dem Sie Inhalte streamen möchten, den Status „Wird ausgeführt“ aufweisen. 
 
-## <a name="download-sample"></a>Beispiel herunterladen
-Sie können das in diesem Artikel beschriebene Beispiel [hier](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm)herunterladen.
+## <a name="download-the-sample"></a>Herunterladen des Beispiels
+Sie können das in diesem Artikel beschriebene Beispiel über die Seite mit den [Azure-Beispielen auf GitHub](https://github.com/Azure-Samples/media-services-dotnet-dynamic-encryption-with-drm) herunterladen.
 
-## <a name="configuring-dynamic-common-encryption-and-drm-license-delivery-services"></a>Konfigurieren der dynamischen allgemeinen Verschlüsselung und von DRM-Lizenzbereitstellungsdiensten
+## <a name="configure-dynamic-common-encryption-and-drm-license-delivery-services"></a>Konfigurieren der dynamischen allgemeinen Verschlüsselung und von DRM-Lizenzbereitstellungsdiensten
 
-Die folgenden allgemeinen Schritte müssen ausgeführt werden, wenn Sie Ihre Medienobjekte mit PlayReady mithilfe des Media Services-Lizenzbereitstellungsdiensts schützen und außerdem dynamische Verschlüsselung verwenden möchten.
+Führen Sie die folgenden allgemeinen Schritte beim Schützen Ihrer Medienobjekte mit PlayReady unter Verwendung des Media Services-Lizenzbereitstellungsdiensts sowie der dynamischen Verschlüsselung aus:
 
-1. Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt.
-2. Codieren eines Medienobjekts, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält.
-3. Erstellen eines Inhaltsschlüssels und Zuordnen des Schlüssels zum codierten Medienobjekt In Media Services enthält der Inhaltsschlüssel den Verschlüsselungsschlüssel des Medienobjekts.
-4. Konfigurieren der Autorisierungsrichtlinie des Inhaltsschlüssels. Die Inhaltsschlüssel-Authentifizierungsrichtlinie muss von Ihnen konfiguriert und vom Client erfüllt werden, damit der Inhaltsschlüssel an den Client übermittelt wird.
+1. Erstellen Sie ein Medienobjekt, und laden Sie Dateien in das Medienobjekt hoch.
 
-    Bei der Erstellung der Inhaltsschlüssel-Autorisierungsrichtlinie müssen Sie Folgendes angeben: Übermittlungsmethode (PlayReady oder Widevine), Einschränkungen (offen oder Token) und Informationen zu den wichtigsten Übermittlungstypen, die definieren, wie der Schlüssel an den Client übermittelt wird ([PlayReady](media-services-playready-license-template-overview.md)- oder [Widevine](media-services-widevine-license-template-overview.md)-Lizenzvorlage).
+2. Codieren Sie ein Medienobjekt, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält.
 
-5. Konfigurieren der Übermittlungsrichtlinie für ein Medienobjekt. Die Konfiguration der Bereitstellungsrichtlinie umfasst Folgendes: das Bereitstellungsprotokoll (beispielsweise MPEG DASH, HLS, Smooth Streaming oder alle), die Art der dynamischen Verschlüsselung (beispielsweise allgemeine Verschlüsselung) sowie die Lizenzerwerbs-URL für PlayReady oder Widevine.
+3. Erstellen Sie einen Inhaltsschlüssel, und ordnen Sie den Schlüssels dem codierten Medienobjekt zu. In Media Services enthält der Inhaltsschlüssel den Verschlüsselungsschlüssel des Medienobjekts.
 
-    Sie können unterschiedliche Richtlinien für jedes Protokoll für das gleiche Medienobjekt anwenden. Sie können z. B. PlayReady-Verschlüsselung auf Smooth/DASH und AES Envelope auf HLS anwenden. Alle Protokolle, die nicht in einer Übermittlungsrichtlinie definiert sind (wenn Sie z. B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme besteht darin, wenn Sie überhaupt keine Übermittlungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
+4. Konfigurieren Sie eine Autorisierungsrichtlinie für Inhaltsschlüssel. Sie müssen die Autorisierungsrichtlinie für den Inhaltsschlüssel konfigurieren. Der Client muss die Richtlinie erfüllen, bevor der Inhaltsschlüssel an den Client übermittelt wird.
 
-6. Erstellen eines "OnDemand"-Locators, um eine Streaming-URL zu erhalten.
+    Beim Erstellen der Autorisierungsrichtlinie für den Inhaltsschlüssel müssen Sie die Bereitstellungsmethode (PlayReady oder Widevine) und die Einschränkungen (offen oder Token) angeben. Außerdem müssen Sie spezifische Informationen zum Typ der Schlüsselbereitstellung angeben, mit denen definiert wird, wie der Schlüssel für den Client bereitgestellt wird ([PlayReady](media-services-playready-license-template-overview.md)- oder [Widevine](media-services-widevine-license-template-overview.md)-Lizenzvorlage).
 
-Sie finden ein vollständiges .NET-Beispiel am Ende dieses Artikels.
+5. Konfigurieren Sie die Bereitstellungsrichtlinie für ein Medienobjekt. Die Konfiguration der Bereitstellungsrichtlinie umfasst auch das Bereitstellungsprotokoll (z.B. „MPEG-DASH“, „HLS“, „Smooth Streaming“ oder „Alle“). Außerdem enthält die Konfiguration den Typ der dynamischen Verschlüsselung (z.B. allgemeine Verschlüsselung) und die URL für den Erwerb der PlayReady- oder Widevine-Lizenz.
 
-In der folgenden Abbildung wird der oben beschriebene Workflow gezeigt. Hier wird das Token zur Authentifizierung verwendet.
+    Sie können für jedes Protokoll für das gleiche Medienobjekt jeweils eine andere Richtlinie anwenden. Beispielsweise können Sie die PlayReady-Verschlüsselung auf Smooth/DASH und einen AES Envelope auf HLS anwenden. Alle Protokolle, die nicht in einer Bereitstellungsrichtlinie definiert sind (wenn Sie z.B. eine einzelne Richtlinie hinzufügen, die nur HLS als Protokoll angibt), werden vom Streaming ausgeschlossen. Die einzige Ausnahme ist, wenn Sie überhaupt keine Bereitstellungsrichtlinie für Medienobjekte definiert haben. In diesem Fall sind alle Protokolle ohne Verschlüsselung zulässig.
+
+6. Erstellen eines OnDemand-Locators, um eine Streaming-URL zu erhalten.
+
+Ein vollständiges .NET-Beispiel finden Sie am Ende des Artikels.
+
+In der folgenden Abbildung ist der oben beschriebene Workflow dargestellt. Hier wird das Token zur Authentifizierung verwendet.
 
 ![Schützen mit PlayReady](media/media-services-content-protection-overview/media-services-content-protection-with-drm.png)
 
-Im weiteren Verlauf dieses Artikels finden Sie ausführliche Beschreibungen, Codebeispiele und Links zu Themen, die Sie informieren, wie die oben beschriebenen Aufgaben ausgeführt werden.
+Im weiteren Verlauf dieses Artikels finden Sie ausführliche Beschreibungen, Codebeispiele und Links zu Themen, die Informationen dazu enthalten, wie die oben beschriebenen Aufgaben ausgeführt werden.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
-Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie den zugeordneten Locator (sofern vorhanden) löschen und einen neuen Locator erstellen.
+Wenn Sie die Bereitstellungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie den zugeordneten Locator löschen und einen neuen Locator erstellen.
 
-Einschränkung bei der Verschlüsselung mit Widevine mit Azure Media Services: Die Verwendung mehrerer Inhaltsschlüssel wird derzeit nicht unterstützt.
+Derzeit wird die Verwendung von mehreren Inhaltsschlüsseln nicht unterstützt, wenn Sie für die Verschlüsselung Widevine mit Media Services verwenden. 
 
 ## <a name="create-an-asset-and-upload-files-into-the-asset"></a>Erstellen eines Medienobjekts und Hochladen von Dateien in das Medienobjekt
-Damit Sie Ihre Videos verwalten, codieren und streamen können, müssen Sie Ihre Inhalte zuerst in Microsoft Azure Media Services hochladen. Nachdem dies geschehen ist, sind Ihre Inhalte sicher in der Cloud zur weiteren Verarbeitung und zum weiteren Streaming gespeichert.
+Damit Sie Ihre Videos verwalten, codieren und streamen können, müssen Sie Ihre Inhalte zuerst in Media Services hochladen. Nachdem dies geschehen ist, sind Ihre Inhalte sicher in der Cloud zur weiteren Verarbeitung und für das weitere Streaming gespeichert.
 
-Ausführliche Informationen finden Sie unter [Hochladen von Dateien in ein Media Services-Konto](media-services-dotnet-upload-files.md).
+Weitere Informationen finden Sie unter [Hochladen von Dateien in ein Media Services-Konto](media-services-dotnet-upload-files.md).
 
-## <a name="encode-the-asset-containing-the-file-to-the-adaptive-bitrate-mp4-set"></a>Codieren eines Medienobjekts, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält
-Bei der dynamischen Verschlüsselung müssen Sie nur ein Medienobjekt erstellen, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Dann wird durch den bedarfsgesteuerten Streamingserver auf Basis des in der Manifest- und Fragmentanforderung angegebenen Formats sichergestellt, dass Sie den Datenstrom im ausgewählten Protokoll erhalten. So müssen Sie die Dateien nur in einem Speicherformat speichern und bezahlen. Die entsprechende Antwort wird von Media Services basierend auf Clientanforderungen erstellt und verfügbar gemacht. Weitere Informationen finden Sie im Artikel [Dynamische Paketerstellung – Übersicht](media-services-dynamic-packaging-overview.md).
+## <a name="encode-the-asset-that-contains-the-file-to-the-adaptive-bitrate-mp4-set"></a>Codieren Sie ein Medienobjekt, das die Sammlung von MP4-Dateien mit adaptiver Bitrate enthält.
+Bei der dynamischen Verschlüsselung erstellen Sie ein Medienobjekt, das eine Sammlung aus MP4-Dateien mit mehreren Bitraten oder Smooth Streaming-Quelldateien mit mehreren Bitraten enthält. Anschließend wird durch den bedarfsgesteuerten Streamingserver auf Basis des in der Manifest- und Fragmentanforderung angegebenen Formats sichergestellt, dass Sie den Datenstrom im ausgewählten Protokoll erhalten. So werden die Dateien nur in einem Speicherformat gespeichert, und Sie zahlen auch nur für ein Format. Media Services reagiert auf die Anforderungen eines Clients jeweils mit der richtigen Antwort. Weitere Informationen finden Sie in der Übersicht unter [Dynamische Paketerstellung](media-services-dynamic-packaging-overview.md).
 
-Informationen zum Codieren finden Sie unter [Codieren eines Assets mit Media Encoder Standard](media-services-dotnet-encode-with-media-encoder-standard.md).
+Informationen zum Codieren finden Sie unter [Codieren eines Medienobjekts mit Media Encoder Standard mit .NET](media-services-dotnet-encode-with-media-encoder-standard.md).
 
 ## <a id="create_contentkey"></a>Erstellen eines Inhaltsschlüssels und Zuordnen des Schlüssels zum codierten Medienobjekt
 In Media Services enthält der Inhaltsschlüssel den Schlüssel, mit dem ein Medienobjekt verschlüsselt werden soll.
 
-Ausführliche Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-dotnet-create-contentkey.md).
+Weitere Informationen finden Sie unter [Erstellen eines Inhaltsschlüssels](media-services-dotnet-create-contentkey.md).
 
 ## <a id="configure_key_auth_policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
-Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Die Inhaltsschlüssel-Authentifizierungsrichtlinie muss von Ihnen konfiguriert und vom Client (Player) erfüllt werden, damit der Schlüssel an den Client übermittelt wird. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Tokeneinschränkung.
+Media Services unterstützt mehrere Möglichkeiten zur Authentifizierung von Benutzern, die Schlüssel anfordern. Sie müssen die Autorisierungsrichtlinie für den Inhaltsschlüssel konfigurieren. Der Client (Player) muss die Richtlinie erfüllen, bevor der Schlüssel an den Client übermittelt wird. Die Autorisierungsrichtlinie für Inhaltsschlüssel kann eine oder mehrere Autorisierungseinschränkungen aufweisen: offen oder Token.
 
-Weitere Informationen finden Sie unter [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption).
+Weitere Informationen finden Sie unter [Konfigurieren von Autorisierungsrichtlinien für Inhaltsschlüssel](media-services-dotnet-configure-content-key-auth-policy.md#playready-dynamic-encryption).
 
-## <a id="configure_asset_delivery_policy"></a>Konfigurieren der Übermittlungsrichtlinie für Medienobjekte
-Konfigurieren Sie die Übermittlungsrichtlinie für Medienobjekte. Die Konfiguration der Übermittlungsrichtlinie für Medienobjekte umfasst Folgendes:
+## <a id="configure_asset_delivery_policy"></a>Konfigurieren einer Bereitstellungsrichtlinie für Medienobjekte
+Konfigurieren Sie die Bereitstellungsrichtlinie für Medienobjekte. Die Konfiguration der Bereitstellungsrichtlinie für Medienobjekte umfasst Folgendes:
 
 * Die DRM-Lizenzerwerbs-URL.
-* Das Übermittlungsprotokoll für Medienobjekte (beispielsweise MPEG DASH, HLS, Smooth Streaming oder alle).
-* Typ der dynamischen Verschlüsselung (in diesem Fall Common Encryption).
+* Das Übermittlungsprotokoll für Medienobjekte (z.B. „MPEG-DASH“, „HLS“, „Smooth Streaming“ oder „Alle“).
+* Typ der dynamischen Verschlüsselung (in diesem Fall allgemeine Verschlüsselung).
 
-Weitere Informationen finden Sie unter [Konfigurieren der Übermittlungsrichtlinie für Medienobjekte].
+Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte mit .NET SDK](media-services-dotnet-configure-asset-delivery-policy.md).
 
 ## <a id="create_locator"></a>Erstellen eines OnDemand-Streaminglocators, um eine Streaming-URL abzurufen
 Sie müssen die Streaming-URL für Smooth Streaming, DASH oder HLS für Ihre Benutzer bereitstellen.
 
 > [!NOTE]
-> Wenn Sie die Übermittlungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie einen vorhandenen Locator (sofern vorhanden) löschen und einen neuen Locator erstellen.
+> Wenn Sie die Bereitstellungsrichtlinie eines Medienobjekts hinzufügen oder aktualisieren, müssen Sie einen vorhandenen Locator löschen und einen neuen Locator erstellen.
 >
 >
 
@@ -124,23 +135,24 @@ Anweisungen zum Veröffentlichen eines Medienobjekts und Erstellen einer Streami
 ## <a name="get-a-test-token"></a>Abrufen eines Testtokens
 Rufen Sie ein Testtoken ab, das auf der Tokeneinschränkung basiert, die für die Schlüsselautorisierungsrichtlinie verwendet wurde.
 
-    // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
+    // Deserializes a string containing an XML representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
         TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
     // Generate a test token based on the data in the given TokenRestrictionTemplate.
-    //The GenerateTestToken method returns the token without the word “Bearer” in front
+    //The GenerateTestToken method returns the token without the word "Bearer" in front,
     //so you have to add it in front of the token string.
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 
 
-Sie können den [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) zum Testen des Datenstroms verwenden.
+Sie können den [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) verwenden, um Ihren Datenstrom zu testen.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 
-1. Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben. 
+1. Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.config“ mit Verbindungsinformationen, wie unter [Media Services-Entwicklung mit .NET](media-services-dotnet-how-to-use.md) beschrieben.
+
 2. Fügen Sie den **appSettings** in Ihrer Datei „app.config“ die folgenden Elemente hinzu:
 
         <add key="Issuer" value="http://testacs.com"/>
@@ -148,12 +160,14 @@ Sie können den [AMS Player](http://amsplayer.azurewebsites.net/azuremediaplayer
 
 ## <a name="example"></a>Beispiel
 
-Das folgende Beispiel veranschaulicht die Funktionen, die im Azure Media Services SDK für .NET, Version 3.5.2, hinzugefügt wurden (insbesondere die Möglichkeit zum Definieren einer Widevine-Lizenzvorlage und zum Anfordern einer Widevine-Lizenz aus Azure Media Services).
+Im folgenden Beispiel wird die Funktionalität veranschaulicht, die im Media Services SDK für .NET Version 3.5.2 eingeführt wurde. (Sie umfasst vor allem die Möglichkeit zum Definieren einer Widevine-Lizenzvorlage und zum Anfordern einer Widevine-Lizenz von Media Services.)
 
 Überschreiben Sie den Code in Ihrer Datei "Program.cs" mit dem in diesem Abschnitt gezeigten Code.
 
 >[!NOTE]
->Es gilt ein Grenzwert von 1.000.000 Richtlinien für verschiedene AMS-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Wenn Sie immer die gleichen Tage/Zugriffsberechtigungen verwenden, z.B. Richtlinien für Locator, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload), sollten Sie dieselbe Richtlinien-ID verwenden. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-dotnet-manage-entities.md#limit-access-policies).
+>Es gilt ein Grenzwert von 1 Millionen Richtlinien für verschiedene Media Services-Richtlinien (z.B. für die Locator-Richtlinie oder für ContentKeyAuthorizationPolicy). Falls Sie immer die gleichen Tage und Zugriffsberechtigungen verwenden, ist es ratsam, dieselbe Richtlinien-ID zu nutzen. Ein Beispiel hierfür ist die Verwendung von Richtlinien für Locators, die für einen längeren Zeitraum vorgesehen sind (Richtlinien ohne Upload). 
+
+Weitere Informationen finden Sie unter [Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK](media-services-dotnet-manage-entities.md#limit-access-policies).
 
 Stellen Sie sicher, dass die Variablen so aktualisiert werden, dass sie auf die Ordner zeigen, in denen sich Ihre Eingabedateien befinden.
 
@@ -237,14 +251,14 @@ namespace DynamicEncryptionWithDRM
 
             if (tokenRestriction && !String.IsNullOrEmpty(tokenTemplateString))
             {
-                // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
+                // Deserializes a string containing an XML representation of a TokenRestrictionTemplate
                 // back into a TokenRestrictionTemplate class instance.
                 TokenRestrictionTemplate tokenTemplate =
                     TokenRestrictionTemplateSerializer.Deserialize(tokenTemplateString);
 
-                // Generate a test token based on the the data in the given TokenRestrictionTemplate.
-                // Note, you need to pass the key id Guid because we specified
-                // TokenClaim.ContentKeyIdentifierClaim in during the creation of TokenRestrictionTemplate.
+                // Generate a test token based on the data in the given TokenRestrictionTemplate.
+                // Note that you need to pass the key ID GUID because 
+                // TokenClaim.ContentKeyIdentifierClaim was specified during the creation of TokenRestrictionTemplate.
                 Guid rawkey = EncryptionUtils.GetKeyIdAsGuid(key.Id);
                 string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey,
                                             DateTime.UtcNow.AddDays(365));
@@ -253,7 +267,7 @@ namespace DynamicEncryptionWithDRM
             }
 
             // You can use the http://amsplayer.azurewebsites.net/azuremediaplayer.html player to test streams.
-            // Note that DASH works on IE 11 (via PlayReady), Edge (via PlayReady), Chrome (via Widevine).
+            // Note that DASH works on Internet Explorer 11 (via PlayReady), Edge (via PlayReady), and Chrome (via Widevine).
 
             string url = GetStreamingOriginLocator(encodedAsset);
             Console.WriteLine("Encrypted DASH URL: {0}/manifest(format=mpd-time-csf)", url);
@@ -331,8 +345,8 @@ namespace DynamicEncryptionWithDRM
         static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
         {
 
-            // Create ContentKeyAuthorizationPolicy with Open restrictions
-            // and create authorization policy          
+            // Create ContentKeyAuthorizationPolicy with open restrictions
+            // and create an authorization policy.         
 
             List<ContentKeyAuthorizationPolicyRestriction> restrictions = new List<ContentKeyAuthorizationPolicyRestriction>
                 {
@@ -409,7 +423,7 @@ namespace DynamicEncryptionWithDRM
             contentKeyAuthorizationPolicy.Options.Add(PlayReadyPolicy);
             contentKeyAuthorizationPolicy.Options.Add(WidevinePolicy);
 
-            // Associate the content key authorization policy with the content key
+            // Associate the content key authorization policy with the content key.
             contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
             contentKey = contentKey.UpdateAsync().Result;
 
@@ -431,41 +445,41 @@ namespace DynamicEncryptionWithDRM
 
         static private string ConfigurePlayReadyLicenseTemplate()
         {
-            // The following code configures PlayReady License Template using .NET classes
+            // The following code configures the PlayReady license template by using .NET classes
             // and returns the XML string.
 
             //The PlayReadyLicenseResponseTemplate class represents the template for the response sent back to the end user.
             //It contains a field for a custom data string between the license server and the application
-            //(may be useful for custom app logic) as well as a list of one or more license templates.
+            //(which might be useful for custom app logic) as well as a list of one or more license templates.
             PlayReadyLicenseResponseTemplate responseTemplate = new PlayReadyLicenseResponseTemplate();
 
-            // The PlayReadyLicenseTemplate class represents a license template for creating PlayReady licenses
-            // to be returned to the end users.
+            // The PlayReadyLicenseTemplate class represents a license template you can use to create PlayReady licenses
+            // to be returned to end users.
             //It contains the data on the content key in the license and any rights or restrictions to be
-            //enforced by the PlayReady DRM runtime when using the content key.
+            //enforced by the PlayReady DRM runtime when you use the content key.
             PlayReadyLicenseTemplate licenseTemplate = new PlayReadyLicenseTemplate();
             //Configure whether the license is persistent (saved in persistent storage on the client)
-            //or non-persistent (only held in memory while the player is using the license).  
+            //or nonpersistent (held in memory only while the player uses the license).  
             licenseTemplate.LicenseType = PlayReadyLicenseType.Nonpersistent;
 
             // AllowTestDevices controls whether test devices can use the license or not.  
             // If true, the MinimumSecurityLevel property of the license
-            // is set to 150.  If false (the default), the MinimumSecurityLevel property of the license is set to 2000.
+            // is set to 150. If false (the default), the MinimumSecurityLevel property of the license is set to 2,000.
             licenseTemplate.AllowTestDevices = true;
 
-            // You can also configure the Play Right in the PlayReady license by using the PlayReadyPlayRight class.
-            // It grants the user the ability to playback the content subject to the zero or more restrictions
-            // configured in the license and on the PlayRight itself (for playback specific policy).
-            // Much of the policy on the PlayRight has to do with output restrictions
+            // You also can configure the PlayRight in the PlayReady license by using the PlayReadyPlayRight class.
+            // It grants the user the ability to play back the content subject to the zero or more restrictions
+            // configured in the license and on the PlayRight itself (for playback-specific policy).
+            // Much of the policy on the PlayRight has to do with output restrictions,
             // which control the types of outputs that the content can be played over and
-            // any restrictions that must be put in place when using a given output.
-            // For example, if the DigitalVideoOnlyContentRestriction is enabled,
-            //then the DRM runtime will only allow the video to be displayed over digital outputs
-            //(analog video outputs won’t be allowed to pass the content).
+            // any restrictions that must be put in place when you use a given output.
+            // For example, if DigitalVideoOnlyContentRestriction is enabled,
+            // the DRM runtime allows the video to be displayed only over digital outputs
+            //(analog video outputs aren't allowed to pass the content).
 
-            //IMPORTANT: These types of restrictions can be very powerful but can also affect the consumer experience.
-            // If the output protections are configured too restrictive,
-            // the content might be unplayable on some clients. For more information, see the PlayReady Compliance Rules document.
+            //IMPORTANT: These types of restrictions can be very powerful but also can affect the consumer experience.
+            // If output protections are too restrictive, 
+            // content might be unplayable on some clients. For more information, see the PlayReady Compliance Rules document.
 
             // For example:
             //licenseTemplate.PlayRight.AgcAndColorStripeRestriction = new AgcAndColorStripeRestriction(1);
@@ -508,10 +522,10 @@ namespace DynamicEncryptionWithDRM
 
             // GetKeyDeliveryUrl for Widevine attaches the KID to the URL.
             // For example: https://amsaccount1.keydelivery.mediaservices.windows.net/Widevine/?KID=268a6dcb-18c8-4648-8c95-f46429e4927c.  
-            // The WidevineBaseLicenseAcquisitionUrl (used below) also tells Dynamaic Encryption
-            // to append /? KID =< keyId > to the end of the url when creating the manifest.
-            // As a result Widevine license acquisition URL will have KID appended twice,
-            // so we need to remove the KID that in the URL when we call GetKeyDeliveryUrl.
+            // WidevineBaseLicenseAcquisitionUrl (used in the following) also tells dynamic encryption
+            // to append /? KID =< keyId > to the end of the URL when you create the manifest.
+            // As a result, the Widevine license acquisition URL has the KID appended twice,
+            // so you need to remove the KID in the URL when you call GetKeyDeliveryUrl.
 
             Uri widevineUrl = key.GetKeyDeliveryUrl(ContentKeyDeliveryType.Widevine);
             UriBuilder uriBuilder = new UriBuilder(widevineUrl);
@@ -526,8 +540,8 @@ namespace DynamicEncryptionWithDRM
 
             };
 
-            // In this case we only specify Dash streaming protocol in the delivery policy,
-            // All other protocols will be blocked from streaming.
+            // In this case, we specify only the DASH streaming protocol in the delivery policy.
+            // All other protocols are blocked from streaming.
             var assetDeliveryPolicy = _context.AssetDeliveryPolicies.Create(
                 "AssetDeliveryPolicy",
             AssetDeliveryPolicyType.DynamicCommonEncryption,
@@ -535,7 +549,7 @@ namespace DynamicEncryptionWithDRM
             assetDeliveryPolicyConfiguration);
 
 
-            // Add AssetDelivery Policy to the asset
+            // Add AssetDelivery Policy to the asset.
             asset.DeliveryPolicies.Add(assetDeliveryPolicy);
 
         }
@@ -548,14 +562,14 @@ namespace DynamicEncryptionWithDRM
         static public string GetStreamingOriginLocator(IAsset asset)
         {
 
-            // Get a reference to the streaming manifest file from the  
+            // Get a reference to the streaming manifest file from the 
             // collection of files in the asset.
 
             var assetFile = asset.AssetFiles.Where(f => f.Name.ToLower().
                          EndsWith(".ism")).
                          FirstOrDefault();
 
-            // Create a 30-day readonly access policy.
+            // Create a 30-day read-only access policy.
             IAccessPolicy policy = _context.AccessPolicies.Create("Streaming policy",
             TimeSpan.FromDays(30),
             AccessPermissions.Read);
@@ -594,16 +608,13 @@ namespace DynamicEncryptionWithDRM
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie die Media Services-Lernpfade.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Feedback geben
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## <a name="see-also"></a>Siehe auch
-[CENC mit Multi-DRM und Access Control](media-services-cenc-with-multidrm-access-control.md)
-
-[Konfigurieren der Widevine-Paketerstellung mit AMS](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services)
-
-[Ankündigung von Google Widevine-Diensten zur Lizenzbereitstellung in Azure Media Services](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)
+## <a name="see-also"></a>Weitere Informationen
+* [CENC mit mehreren DRM-Systemen und Access Control: Referenzentwurf und -implementierung in Azure und Azure Media Services](media-services-cenc-with-multidrm-access-control.md)
+* [Configure Widevine packaging with Media Services](http://mingfeiy.com/how-to-configure-widevine-packaging-with-azure-media-services) (Konfigurieren der Widevine-Paketerstellung mit Media Services)
+* [Ankündigung von Google Widevine-Diensten zur Lizenzbereitstellung in Azure Media Services](https://azure.microsoft.com/blog/announcing-general-availability-of-google-widevine-license-services/)

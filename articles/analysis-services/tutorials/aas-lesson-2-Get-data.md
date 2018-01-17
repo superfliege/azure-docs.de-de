@@ -13,24 +13,22 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 0bf5eb51d3fea8ff4a62d9e7f6d76c771aaaaf77
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 138f9f6e85d5e206c8b09d5c93822cfef5dd1246
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-2-get-data"></a>Lektion 2: Abrufen von Daten
+# <a name="get-data"></a>Datensammlung
 
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
-
-In dieser Lektion verwenden Sie Get Data in SSDT zum Herstellen einer Verbindung mit der AdventureWorksDW2014-Beispieldatenbank. Weiterhin wählen Sie Daten aus, erstellen eine Vorschau und einen Filter und führen dann den Import in Ihr Arbeitsbereichsmodell aus.  
+In dieser Lektion verwenden Sie Get Data in SSDT zum Herstellen einer Verbindung mit der AdventureWorks-Beispieldatenbank. Außerdem wählen Sie Daten aus, erstellen eine Vorschau und einen Filter und führen dann den Import in Ihr Arbeitsbereichsmodell durch.  
   
 Mit Get Data können Sie Daten aus einer großen Anzahl von Quellen importieren: Azure SQL Database, Oracle, Sybase, OData Feed, Teradata, Dateien etc. Die Daten können auch mit einem Power Query-M-Formelausdruck abgefragt werden.
 
 > [!NOTE]
-> Die Aufgaben und Bilder in diesem Tutorial zeigen das Herstellen einer Verbindung mit einer AdventureWorksDW2014-Datenbank auf einem lokalen Server. In bestimmten Fällen kann sich eine AdventureWorksDW2014-Datenbank in Azure davon unterscheiden.
+> Die Aufgaben und Bilder in diesem Tutorial zeigen das Herstellen einer Verbindung mit einer AdventureWorksDW2014-Datenbank auf einem lokalen Server. In bestimmten Fällen kann sich eine AdventureWorks-Datenbank in Azure hiervon unterscheiden.
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **10 Minuten**  
   

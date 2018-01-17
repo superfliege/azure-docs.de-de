@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
 ms.author: tamram
-ms.openlocfilehash: 0c3fc2d73a0caf0e0331cb9073bfcc0574240dac
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: bd96cf7eb1c0c7f51b110da848a8df7914ad85c7
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Ausführen von Blobspeichervorgängen über die Azure-Befehlszeilenschnittstelle
 
@@ -74,7 +74,7 @@ az storage container set-permission \
 
 ## <a name="upload-a-blob-to-a-container"></a>Hochladen eines Blobs in einen Container
 
-Blob Storage unterstützt Block-, Anfüge- und Seitenblobs. In Azure Storage werden hauptsächlich Blockblobs gespeichert. Anfügeblobs werden verwendet, wenn einem vorhandenen Blob Daten hinzugefügt werden müssen, ohne den vorhandenen Inhalt zu ändern (etwa bei der Protokollierung). Seitenblobs liegen den VHD-Dateien virtueller IaaS-Computer zugrunde.
+Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. In Azure Storage werden hauptsächlich Blockblobs gespeichert. Anfügeblobs werden verwendet, wenn einem vorhandenen Blob Daten hinzugefügt werden müssen, ohne den vorhandenen Inhalt zu ändern (etwa bei der Protokollierung). Seitenblobs liegen den VHD-Dateien virtueller IaaS-Computer zugrunde.
 
 In diesem Beispiel wird mit dem Befehl [az storage blob upload](/cli/azure/storage/blob#upload) ein Blob in den im letzten Schritt erstellten Container hochgeladen.
 

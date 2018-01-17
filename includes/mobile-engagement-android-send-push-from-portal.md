@@ -2,7 +2,7 @@
 
 Damit Mobile Engagement Pushbenachrichtigungen in Ihrem Namen senden kann, müssen Sie Mobile Engagement den Zugriff auf Ihren API-Schlüssel gewähren. Dies wird durch Konfigurieren und Eingeben Ihres Schlüssels im Mobile Engagement-Portal erreicht.
 
-1. Stellen Sie über das klassische Azure-Portal sicher, dass Sie sich in der App befinden, die wir für dieses Projekt verwenden, und klicken Sie dann am unteren Rand auf die Schaltfläche **Einbinden** :
+1. Stellen Sie über das Azure-Portal sicher, dass Sie sich in der App befinden, die wir für dieses Projekt verwenden, und klicken Sie dann am unteren Rand auf die Schaltfläche **Einbinden**:
 
     ![](./media/mobile-engagement-create-app-in-portal-new/engage-button.png)
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/29/2017
 ms.author: joflore
-ms.openlocfilehash: 99052718d268135e1b9c51d019513aa59afede84
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c94b20ec984c96cfb8e7339826ee933ea4194bfc
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="securing-cloud-resources-with-azure-multi-factor-authentication-and-ad-fs"></a>Sichern von Cloud-Ressourcen mit Azure Multi-Factor Authentication und AD FS
 Wenn Ihre Organisation über einen Verbund mit Azure Active Directory verfügt, können Sie Multi-Factor Authentication oder Active Directory Federation Services (AD FS) zum Sichern von Ressourcen verwenden, auf die über Azure AD zugegriffen wird. Führen Sie die folgenden Verfahren aus, um Azure Active Directory-Ressourcen mit Azure Multi-Factor Authentication oder Active Directory-Verbunddiensten zu sichern.
@@ -83,16 +83,13 @@ Als Erstes müssen wir die AD FS-Ansprüche konfigurieren. Erstellen Sie zwei A
 ### <a name="configure-azure-multi-factor-authentication-trusted-ips-with-federated-users"></a>Konfigurieren vertrauenswürdiger IPs der Azure Multi-Factor Authentication mit Partnerbenutzern
 Da die Ansprüche jetzt vorhanden sind, können wir vertrauenswürdige IPs konfigurieren.
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
-2. Klicken Sie im linken Bereich auf **Active Directory**.
-3. Wählen Sie unter „Verzeichnis“ das Verzeichnis aus, in dem Sie vertrauenswürdige IPs einrichten möchten.
-4. Klicken Sie im ausgewählten Verzeichnis auf **Konfigurieren**.
-5. Klicken Sie im Abschnitt „Multi-Factor Authentication“ auf **Diensteinstellungen verwalten**.
-6. Wählen Sie auf der Seite „Diensteinstellungen“ unter den vertrauenswürdigen IPs die Option **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen**.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.com) an.
+2. Wählen Sie **Azure Active Directory** > **Bedingter Zugriff** > **Benannte Orte**.
+3. Wählen Sie auf dem Blatt **Bedingter Zugriff – Benannte Orte** die Option **Durch MFA bestätigte IPs konfigurieren**.
 
-   ![Cloud](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
-   
-7. Klicken Sie auf **Speichern**.
-8. Sobald die Updates angewendet wurden, klicken Sie auf **Schließen**.
+   ![Bedingter Azure AD-Zugriff – Benannte Orte – Durch MFA bestätigte IPs konfigurieren](./media/multi-factor-authentication-get-started-adfs-cloud/trustedip6.png)
+
+4. Wählen Sie auf der Seite „Diensteinstellungen“ unter **Vertrauenswürdige IPs** die Option **Für Anforderungen von Partnerbenutzern in meinem Intranet die mehrstufige Authentifizierung überspringen**.  
+5. Klicken Sie auf **Speichern**.
 
 Fertig! An diesem Punkt sollten Office 365-Partnerbenutzer nur MFA verwenden müssen, wenn ein Anspruch von außerhalb des Unternehmensintranets stammt.

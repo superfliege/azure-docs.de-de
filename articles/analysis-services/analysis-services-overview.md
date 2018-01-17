@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Analysis Services? | Microsoft Docs
+title: "Übersicht über Azure Analysis Services | Microsoft-Dokumentation"
 description: "Verschaffen Sie sich einen Überblick über Analysis Services in Azure."
 services: analysis-services
 documentationcenter: 
@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/08/2017
+ms.date: 01/04/2017
 ms.author: owend
-ms.openlocfilehash: 60097a18afc76e09ecd7d69eececea53e9712bec
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: fe46b3c099c4fd4e04a39e2b2f127c1206711e60
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
+# <a name="azure-analysis-services-overview"></a>Azure Analysis Services – Übersicht
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)
 
 Azure Analysis Services bietet professionelle Datenmodellierung in der Cloud. Die vollständig verwaltete PaaS-Lösung (Platform-as-a-Service) ist in Azure-Datenplattformdienste integriert. 
@@ -64,7 +64,7 @@ Azure Analysis Services-Server können in folgenden [Azure-Regionen](https://azu
 
 | Amerika | Europa | Asien-Pazifik |
 |----------|--------|--------------|
-|  Brasilien Süd<br> Kanada, Mitte<br> USA (Ost) 2<br> USA (Mitte/Norden)<br> USA (Mitte/Süden)<br> USA, Westen-Mitte<br> USA (West) | Nordeuropa<br> UK, Süden<br> Europa, Westen |   Australien, Südosten<br> Japan Ost<br> Südostasien<br> Indien, Westen  |
+|  Brasilien Süd<br> Kanada, Mitte<br> USA (Ost) 2<br> USA Nord Mitte<br> USA Süd Mitte<br> USA, Westen-Mitte<br> USA (Westen) | Nordeuropa<br> UK, Süden<br> Europa, Westen |   Australien, Südosten<br> Japan, Osten<br> Asien, Südosten<br> Indien, Westen  |
 
 Diese Liste ist unter Umständen nicht vollständig, da immer wieder neue Regionen hinzukommen. Die Standortauswahl erfolgt, wenn Sie Ihren Server im Azure-Portal oder mithilfe von Azure Resource Manager-Vorlagen erstellen. Aus Leistungsgründen empfiehlt es sich, einen Standort in der Nähe Ihrer größten Benutzerbasis zu wählen. Stellen Sie Ihre Modelle auf redundanten Servern in mehreren Regionen bereit, um [Hochverfügbarkeit](analysis-services-bcdr.md) zu gewährleisten.
 

@@ -13,26 +13,24 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: be23d25fe9765025b86e86687fb38b2dab61269e
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8d7f79db612ee02eaf585f9b45d888b3533a91b2
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-12-analyze-in-excel"></a>Lektion 12: Analysieren in Excel
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="analyze-in-excel"></a>In Excel analysieren
 
 In dieser Lektion verwenden Sie die Funktion „In Excel analysieren“, um Microsoft Excel zu öffnen, automatisch eine Verbindung mit dem Arbeitsbereichsmodell herzustellen und automatisch eine PivotTable zum Arbeitsblatt hinzuzufügen. Die Funktion „In Excel analysieren“ bietet eine schnelle und einfache Möglichkeit, vor der Bereitstellung ihres Modells die Wirksamkeit Ihres Modelldesigns zu testen. In dieser Lektion führen Sie keine Datenanalyse durch. Der Zweck dieser Lektion ist, Sie als Urheber des Modells mit den Tools vertraut zu machen ,die Sie zum Testen Ihres Modelldesigns verwenden können.   
   
-Excel muss auf dem gleichen Computer wie SSDT installiert sein, um diese Lektion abschließen zu können.
+Excel muss auf demselben Computer wie Visual Studio installiert sein, um diese Lektion durcharbeiten zu können.
   
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **5 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 11: Erstellen von Rollen ](../tutorials/aas-lesson-11-create-roles.md) abgeschlossen haben.  
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 11: Erstellen von Rollen ](../tutorials/aas-lesson-11-create-roles.md) abgeschlossen haben.  
   
 ## <a name="browse-using-the-default-and-internet-sales-perspectives"></a>Durchsuchen mithilfe der Standard- und Internet Sales-Perspektive  
 In den ersten Aufgaben durchsuchen Sie Ihr Modell mithilfe der Standardperspektive, die alle Modellobjekte enthält, und der Internet Sales-Perspektive, die Sie vorher erstellt haben. Die Internet Sales-Perspektive schließt das Customer-Tabellenobjekt aus.  

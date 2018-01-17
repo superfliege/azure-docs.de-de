@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/01/2017
 ms.author: jingwang
-ms.openlocfilehash: efe34835d20e3b0aa679ceaa4a6428848c735a3e
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: b7f8836fb792151dbfdd156735d3e2c297c80cd8
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung 
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** aus der Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
@@ -384,12 +384,12 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern der Version für die �
     DataFactoryName   : IncCopyChgTrackingDF
     Structure         :
     Properties        : Microsoft.Azure.Management.DataFactory.Models.AzureSqlTableDataset
-        ```
+    ```
 
-## Create a pipeline for the full copy
-In this step, you create a pipeline with a copy activity that copies the entire data from the source data store (Azure SQL Database) to the destination data store (Azure Blob Storage).
+## <a name="create-a-pipeline-for-the-full-copy"></a>Erstellen einer Pipeline für den vollständigen Kopiervorgang
+In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität, bei der die gesamten Daten aus dem Quelldatenspeicher (Azure SQL-Datenbank) in den Zieldatenspeicher (Azure Blob Storage) kopiert werden.
 
-1. Create a JSON file: FullCopyPipeline.json in same folder with the following content: 
+1. Erstellen Sie in demselben Ordner die JSON-Datei „FullCopyPipeline.json“ mit folgendem Inhalt: 
 
     ```json
     {

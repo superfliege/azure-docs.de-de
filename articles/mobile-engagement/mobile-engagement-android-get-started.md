@@ -14,11 +14,11 @@ ms.devlang: Java
 ms.topic: hero-article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 4acd06591b05b9328b35400e0932cfcf92cb7e80
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 2c5d9c5458b77263a5d1da93e5305e61999f229f
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-android-apps"></a>Erste Schritte mit Azure Mobile Engagement für Android-Apps
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
@@ -32,14 +32,14 @@ Sie benötigen die [Android Developer Tools](https://developer.android.com/sdk/i
 Außerdem ist das [Mobile Engagement Android SDK](https://aka.ms/vq9mfn)erforderlich.
 
 > [!IMPORTANT]
-> Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie noch kein Konto haben, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started).
+> Um dieses Tutorial abzuschließen, benötigen Sie ein aktives Azure-Konto. Wenn Sie über kein Konto verfügen, können Sie in nur wenigen Minuten ein kostenloses Testkonto erstellen. Einzelheiten finden Sie unter [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-android-get-started).
 >
 >
 
 ## <a name="set-up-mobile-engagement-for-your-android-app"></a>Einrichten von Mobile Engagement für Ihre Android-App
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a name="connect-your-app-to-the-mobile-engagement-backend"></a>Verbinden der App mit dem Mobile Engagement-Back-End
+## <a name="connect-your-app-to-the-mobile-engagement-backend"></a>Verbinden Sie Ihre App mit dem Mobile Engagement-Back-End
 In diesem Lernprogramm wird eine "einfache Integration" dargestellt. Dabei handelt es sich um den minimalen erforderlichen Satz zur Sammlung von Daten und zum Senden einer Pushbenachrichtigung. Sie erstellen eine einfache App mit Android Studio, um die Integration zu veranschaulichen.
 
 Die vollständige Dokumentation zur Integration finden Sie unter [Android SDK für Mobile Engagement](mobile-engagement-android-sdk-overview.md).
@@ -92,7 +92,7 @@ Android Studio erstellt jetzt die Demo-App, in die wir Mobile Engagement integri
 
         import com.microsoft.azure.engagement.EngagementAgent;
         import com.microsoft.azure.engagement.EngagementConfiguration;
-3. Wechseln Sie auf der Seite **Verbindungsinformationen** Ihrer App zurück zum klassischen Azure-Portal, und kopieren Sie die **Verbindungszeichenfolge**.
+3. Wechseln Sie zurück zum Azure-Portal auf der Seite **Verbindungsinformationen** Ihrer App, und kopieren Sie die **Verbindungszeichenfolge**.
 
       ![](../../includes/media/mobile-engagement-create-app-in-portal-new/app-connection-info.png)
 

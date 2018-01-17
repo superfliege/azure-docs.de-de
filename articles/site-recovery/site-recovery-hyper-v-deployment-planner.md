@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: 815148d2a39ce8b18092619c9687a56b457c8339
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 0baf595266e71fad2df16996d63af3ba7d23a6ac
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Azure Site Recovery-Bereitstellungsplaner für „Hyper-V zu Azure“
 Dieser Artikel ist der Leitfaden zum Azure Site Recovery-Bereitstellungsplaner für Bereitstellungen von „Hyper-V zu Azure“ in der Produktion.
@@ -28,7 +28,7 @@ Bevor Sie mit dem Schützen von virtuellen Hyper-V-Computern (VMs) mit Site Reco
 
 Außerdem ist es erforderlich, den richtigen Typ und die richtige Anzahl von Azure-Zielspeicherkonten zu erstellen. Sie erstellen entweder Standard- oder Storage Premium-Konten und berücksichtigen dabei für Ihre Quellproduktionsserver den Zuwachs, der sich im Laufe der Zeit durch eine vermehrte Nutzung ergeben kann. Sie wählen den Speichertyp pro VM basierend auf den Workloadmerkmalen, z.B. Lese/Schreib-E/A-Vorgänge pro Sekunde (IOPS) oder Datenänderung, und den Azure Site Recovery-Grenzwerten aus. 
 
-Der Azure Site Recovery-Bereitstellungsplaner (Version 2) ist ein Befehlszeilentool für Notfallwiederherstellungsszenarien für „Hyper-V zu Azure“ und „VMware zu Azure“. Sie können mit diesem Tool per Remoteverbindung die Profilerstellung für mehrere Hyper-V-VMs durchführen (ohne jegliche Auswirkung auf die Produktion), um die Anforderungen an die Bandbreite und den Azure-Speicher zu ermitteln und für einen erfolgreichen Ablauf der Replikation und von Testfailovern bzw. Failovern zu sorgen. Das Tool kann ausgeführt werden, ohne dass lokal Azure Site Recovery-Komponenten installiert werden müssen. Um genaue Ergebnisse zum erzielten Durchsatz zu erhalten, empfehlen wir Ihnen aber, den Planer unter Windows Server auszuführen. Dieser Server sollte die gleiche Hardwarekonfiguration wie einer der Hyper-V-Server aufweisen, die Sie zum Aktivieren des Schutzes per Notfallwiederherstellung in Azure verwenden. 
+Der Azure Site Recovery-Bereitstellungsplaner ist ein Befehlszeilentool für Notfallwiederherstellungsszenarien für „Hyper-V zu Azure“ und „VMware zu Azure“. Sie können mit diesem Tool per Remoteverbindung die Profilerstellung für mehrere Hyper-V-VMs durchführen (ohne jegliche Auswirkung auf die Produktion), um die Anforderungen an die Bandbreite und den Azure-Speicher zu ermitteln und für einen erfolgreichen Ablauf der Replikation und von Testfailovern bzw. Failovern zu sorgen. Das Tool kann ausgeführt werden, ohne dass lokal Azure Site Recovery-Komponenten installiert werden müssen. Um genaue Ergebnisse zum erzielten Durchsatz zu erhalten, empfehlen wir Ihnen aber, den Planer unter Windows Server auszuführen. Dieser Server sollte die gleiche Hardwarekonfiguration wie einer der Hyper-V-Server aufweisen, die Sie zum Aktivieren des Schutzes per Notfallwiederherstellung in Azure verwenden. 
 
 Das Tool umfasst die folgenden Details:
 
@@ -78,17 +78,17 @@ Das Tool umfasst die folgenden Details:
 
 | | **VMware zu Azure** |**Hyper-V in Azure**|**Azure zu Azure**|**Hyper-V zum sekundären Standort**|**VMware zum sekundären Standort**
 --|--|--|--|--|--
-Unterstützte Szenarien |Ja|Ja|Nein|Ja*|Nein
-Unterstützte Version | vCenter 6.5, 6.0 oder 5.5| Windows Server 2016, Windows Server 2012 R2 | NA |Windows Server 2016, Windows Server 2012 R2|NA
-Unterstützte Konfiguration|vCenter, ESXi| Hyper-V-Cluster, Hyper-V-Host|NA|Hyper-V-Cluster, Hyper-V-Host|NA|
-Anzahl von Servern, für die pro ausgeführter Azure Site Recovery-Bereitstellungsplaner-Instanz die Profilerstellung durchgeführt werden kann |Einzeln (für VMs, die zu einem vCenter Server oder einem ESXi-Server gehören, kann die Profilerstellung auf einmal durchgeführt werden)|Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| NA |Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| NA
+Unterstützte Szenarien |Ja|Ja|Nein |Ja*|Nein 
+Unterstützte Version | vCenter 6.5, 6.0 oder 5.5| Windows Server 2016, Windows Server 2012 R2 | Nicht verfügbar |Windows Server 2016, Windows Server 2012 R2|Nicht verfügbar
+Unterstützte Konfiguration|vCenter, ESXi| Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|Hyper-V-Cluster, Hyper-V-Host|Nicht verfügbar|
+Anzahl von Servern, für die pro ausgeführter Azure Site Recovery-Bereitstellungsplaner-Instanz die Profilerstellung durchgeführt werden kann |Einzeln (für VMs, die zu einem vCenter Server oder einem ESXi-Server gehören, kann die Profilerstellung auf einmal durchgeführt werden)|Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar |Mehrere (für VMs mehrerer Hosts oder Hostcluster kann die Profilerstellung auf einmal durchgeführt werden)| Nicht verfügbar
 
 *Das Tool ist hauptsächlich für das Notfallwiederherstellungsszenario „Hyper-V zu Azure“ bestimmt. Für die Notfallwiederherstellung vom Typ „Hyper-V zum sekundären Standort“ kann es nur zum besseren Verständnis von quellseitigen Empfehlungen eingesetzt werden, z.B. erforderliche Netzwerkbandbreite, erforderlicher freier Speicherplatz auf den einzelnen Hyper-V-Quellservern und Batchverarbeitungszahlen und Batchdefinitionen der ersten Replikation.  Ignorieren Sie die Azure-Empfehlungen und Kosten im Bericht. Außerdem gilt der Vorgang „Durchsatzberechnung“ nicht für das Notfallwiederherstellungsszenario „Hyper-V zu sekundärem Standort“.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Das Tool verfügt für Hyper-V über drei Hauptphasen: Abrufen der VM-Liste, Profilerstellung und Berichterstellung. Es gibt auch noch eine vierte Option, mit der nur der Durchsatz berechnet wird. Die Anforderungen für den Server, auf dem die einzelnen Phasen ausgeführt werden müssen, sind in der folgenden Tabelle angegeben:
 
-| Serveranforderung | Beschreibung |
+| Serveranforderung | BESCHREIBUNG |
 |---|---|
 |Abrufen der VM-Liste, Profilerstellung und Messung des Durchsatzes |<ul><li>Betriebssystem: Microsoft Windows Server 2016 oder Microsoft Windows Server 2012 R2 </li><li>Computerkonfiguration: 8 vCPUs, 16 GB RAM, 300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[Microsoft Visual C++ Redistributable für Visual Studio 2012](https://aka.ms/vcplusplus-redistributable)</li><li>Zugriff auf Azure über das Internet von diesem Server</li><li>Azure-Speicherkonto</li><li>Administratorzugriff auf dem Server</li><li>Mindestens 100 GB freier Speicherplatz (bei 1.000 VMs mit durchschnittlich drei Datenträgern, Profilerstellung über 30 Tage)</li><li>Die VM, von der aus Sie das Azure Site Recovery-Bereitstellungsplaner-Tool ausführen, muss der Liste „TrustedHosts“ aller Hyper-V-Server hinzugefügt werden.</li><li>Alle VMs des Hyper-V-Servers, für die die Profilerstellung durchgeführt werden soll, müssen der Liste „TrustedHosts“ der Client-VM hinzugefügt werden, auf der Sie das Tool ausführen. [Erfahren Sie mehr zum Hinzufügen von Servern zur Liste „TrustedHosts“](#steps-to-add-servers-into-trustedhosts-list). </li><li> Das Tool sollte mit Administratorberechtigungen in PowerShell oder über die Befehlszeilenkonsole auf dem Client ausgeführt werden.</ul></ul>|
 | Berichterstellung | Windows-PC oder Windows-Server mit Microsoft Excel 2013 oder höher |
@@ -121,9 +121,9 @@ Die empfohlene Konfiguration der VM lautet wie folgt: 8 vCPUs, 16 GB RAM, 300 GB
 3.  Extrahieren Sie den ZIP-Ordner.
 Der Ordner enthält mehrere Dateien und Unterordner. Die ausführbare Datei ist die Datei „ASRDeploymentPlanner.exe“ im übergeordneten Ordner.
 
-Beispiel: Kopieren Sie die ZIP-Datei auf das Laufwerk „E:\“, und extrahieren Sie sie. E:\ASR Deployment Planner_v2.0.zip
+Beispiel: Kopieren Sie die ZIP-Datei auf das Laufwerk „E:\“, und extrahieren Sie sie. E:\ASR Deployment Planner_v2.1.zip
 
-E:\ASR Deployment Planner_v2.0\ASRDeploymentPlanner.exe
+E:\ASR Deployment Planner_v2.1\ASRDeploymentPlanner.exe
 
 ### <a name="updating-to-the-latest-version-of-deployment-planner"></a>Aktualisieren auf die neueste Version des Bereitstellungsplaners
 Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Version des Bereitstellungsplaners verfügen:
@@ -136,6 +136,11 @@ Wählen Sie eine der folgenden Vorgehensweisen, wenn Sie über eine vorherige Ve
   >Übergeben Sie beim Starten der Profilerstellung mit der neuen Version den gleichen Pfad des Ausgabeverzeichnisses, damit die Profildaten vom Tool an die vorhandenen Dateien angefügt werden. Zum Erstellen des Berichts wird ein vollständiger Satz von Profilerstellungsdaten verwendet. Wenn Sie ein anderes Ausgabeverzeichnis übergeben, werden neue Dateien erstellt und alte Profilerstellungsdaten nicht zum Erstellen des Berichts verwendet.
   >
   >Jeder neue Deployment Planner ist ein kumulatives Update der ZIP-Datei. Es ist nicht erforderlich, die neuesten Dateien in den vorherigen Ordner zu kopieren. Sie können einen neuen Ordner erstellen und verwenden.
+
+## <a name="version-history"></a>Versionsverlauf
+Die aktuelle Version des Tools ASR-Bereitstellungsplaner ist 2.1.
+Auf der Seite [ASR Deployment Planner Version History](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx) (ASR-Bereitstellungsplaner – Versionsverlauf) finden Sie Informationen zu den Fehlerbehebungen, die in den einzelnen Updates hinzugefügt werden.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Ausführen des Bereitstellungsplaners](site-recovery-hyper-v-deployment-planner-run.md).

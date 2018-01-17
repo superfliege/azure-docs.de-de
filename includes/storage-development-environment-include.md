@@ -2,15 +2,15 @@
 Richten Sie als Nächstes Ihre Entwicklungsumgebung in Visual Studio ein, damit Sie die Codebeispiele dieser Anleitung ausprobieren können.
 
 ### <a name="create-a-windows-console-application-project"></a>Erstellen eines Windows-Konsolenanwendungsprojekts
-Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2017 erstellen. Die Schritte in anderen Versionen von Visual Studio sind aber ähnlich.
+Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2017 erstellen. Die Schritte sind in anderen Versionen von Visual Studio ähnlich.
 
 1. Wählen Sie **Datei** > **Neu** > **Projekt**.
 2. Wählen Sie **Installiert** > **Vorlagen** > **Visual C#** > **Klassischer Windows-Desktop**.
 3. Wählen Sie **Konsolen-App (.NET Framework)**.
-4. Geben Sie im Feld **Name:** einen Namen für Ihre Anwendung ein.
+4. Geben Sie im Feld **Name** einen Namen für Ihre Anwendung ein.
 5. Klicken Sie auf **OK**.
 
-![Dialogfeld für die Projekterstellung in Visual Studio](./media/storage-development-environment-include/storage-development-environment-include-1.png)
+![Screenshot: Dialogfeld „Neues Projekt“ in Visual Studio](./media/storage-development-environment-include/storage-development-environment-include-1.png)
 
 Alle Codebeispiele in diesem Tutorial können in der Datei `Program.cs` Ihrer Konsolenanwendung der `Main()`-Methode hinzugefügt werden.
 
@@ -24,9 +24,9 @@ Es gibt zwei Pakete, auf die Sie in Ihrem Projekt für dieses Tutorial verweisen
 
 Sie können NuGet verwenden, um beide Pakete zu erhalten. Folgen Sie diesen Schritten:
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
-2. Suchen Sie online nach „WindowsAzure.Storage“, und klicken Sie auf **Installieren** , um die Storage Client Library und die dazugehörigen Abhängigkeiten zu installieren.
-3. Suchen Sie online nach „WindowsAzure.ConfigurationManager“, und klicken Sie auf **Installieren**, um Azure Configuration Manager zu installieren.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
+2. Suchen Sie online nach „WindowsAzure.Storage“, und wählen Sie **Installieren**, um die Storage Client Library und die dazugehörigen Abhängigkeiten zu installieren.
+3. Suchen Sie online nach „WindowsAzure.ConfigurationManager“, und wählen Sie **Installieren**, um Azure Configuration Manager zu installieren.
 
 > [!NOTE]
 > Das Storage Client Library-Paket ist auch im [Azure SDK für .NET](https://azure.microsoft.com/downloads/)enthalten. Wir empfehlen Ihnen aber die Installation der Storage Client Library über NuGet, um sicherzustellen, dass Sie immer über die aktuelle Version der Clientbibliothek verfügen.

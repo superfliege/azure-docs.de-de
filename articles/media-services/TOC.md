@@ -135,8 +135,9 @@
 ### [AES-128-Verschlüsselung](media-services-protect-with-aes128.md)
 ### [PlayReady/Widevine für Streaming](media-services-protect-with-playready-widevine.md)
 ### [FairPlay für Streaming](media-services-protect-hls-with-fairplay.md)
-### [PlayReady (offline)](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
-### [FairPlay (offline)](media-services-protect-hls-with-offline-fairplay.md)
+### [PlayReady (offline) für Windows 10](https://blogs.msdn.microsoft.com/playready4/2016/10/26/does-azure-media-services-support-offline-mode/)
+### [FairPlay (offline) für iOS](media-services-protect-hls-with-offline-fairplay.md)
+### [Widevine (offline) für Android](offline-widevine-for-android.md)
 ### [Configure in Azure portal](media-services-portal-protect-content.md) (Konfigurieren im Azure-Portal)
 ### [Bereitstellen von DRM-Lizenzen](media-services-deliver-keys-and-licenses.md)
 ### Erstellen von ContentKeys

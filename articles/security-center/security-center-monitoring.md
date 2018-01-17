@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/28/2017
+ms.date: 01/03/2018
 ms.author: yurid
-ms.openlocfilehash: a14528013b34b912f4f2e1bc07094c7b20a0f63c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Überwachen der Sicherheitsintegrität in Azure Security Center
 Dieser Artikel unterstützt Sie bei der Überwachung der Richtliniencompliance mithilfe der Überwachungsfunktionen von Azure Security Center.
@@ -48,11 +48,11 @@ Wenn Sie auf die Kachel **Compute** klicken, werden drei Registerkarten angezeig
 Auf den einzelnen Registerkarten können sich jeweils mehrere Abschnitte befinden, und in jedem Abschnitt können Sie eine einzelne Option auswählen, um weitere Details zu den empfohlenen Problembehandlungsschritten für ein bestimmtes Problem anzuzeigen.
 
 #### <a name="monitoring-recommendations"></a>Überwachen der Empfehlungen
-Dieser Abschnitt enthält die Gesamtanzahl und den jeweils aktuellen Status der virtuellen und physischen Computer, die für die automatische Bereitstellung initialisiert wurden. Wenn Sie auf diesen Eintrag klicken, werden die **Integritätsprobleme des Überwachungs-Agents** geöffnet.
+Dieser Abschnitt enthält die Gesamtanzahl und den jeweils aktuellen Status der virtuellen und physischen Computer, die für die automatische Bereitstellung initialisiert wurden. Dieses Beispiel enthält eine Empfehlung: **Integritätsprobleme des Überwachungs-Agents**.  Wählen Sie diese Empfehlung aus.
 
 ![Integritätsprobleme des Überwachungs-Agents](./media/security-center-monitoring/security-center-monitoring-fig1-new003-2017.png)
 
-Virtuelle und physische Computer, die von Security Center nicht überwacht werden können, werden aufgeführt. Wählen Sie einen virtuellen oder physischen Computer aus, um ausführliche Informationen anzuzeigen. Die **ZUSTANDSÜBERWACHUNG** gibt Aufschluss über das Problem.
+**Integritätsprobleme des Überwachungs-Agents** wird geöffnet. Virtuelle und physische Computer, die von Security Center nicht überwacht werden können, werden aufgeführt. Wählen Sie einen virtuellen oder physischen Computer aus, um ausführliche Informationen anzuzeigen. Unter **ZUSTANDSÜBERWACHUNG** wird ein Grund angegeben, warum die Überwachung mit Security Center nicht durchgeführt werden kann. Das [Handbuch zur Problembehandlung für Security Center](security-center-troubleshooting-guide.md#monitoring-agent-health-issues) enthält eine Liste mit Werten, Beschreibungen und Lösungsschritten für die **ZUSTANDSÜBERWACHUNG**.
 
 #### <a name="recommendations"></a>Empfehlungen
 Dieser Abschnitt enthält eine Reihe von [Empfehlungen für die einzelnen virtuellen und physischen Computer](security-center-virtual-machine-recommendations.md), die von Azure Security Center überwacht werden. Die erste Spalte enthält die Empfehlung. Die zweite Spalte enthält die Gesamtanzahl virtueller und physischer Computer, die von dieser Empfehlung betroffen sind. Die dritte Spalte gibt Aufschluss über den Schweregrad des Problems, wie im folgenden Screenshot zu sehen:

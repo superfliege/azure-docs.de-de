@@ -13,17 +13,15 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 7a77efb21d38c7c5ff5ca6e17757cbfa9e845ad7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 25e4475c77a25e4dcdcb90729f8633656bb186ff
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="lesson-3-mark-as-date-table"></a>Lektion 3: Markieren als Datumstabelle
-
-[!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
+# <a name="mark-as-date-table"></a>Markieren als Datumstabelle
 
 In Lektion 2: Abrufen von Daten, Import einer Dimensionstabelle namens DimDate. Die in Ihrem Modell mit DimDate benannte Tabelle kann auch als eine *Datumstabelle* bekannt sein, da sie Tages- und Uhrzeitdaten enthält.  
   
@@ -36,11 +34,11 @@ Doch bevor Sie die Datumstabelle und die Datumsspalte markieren, sollten Sie etw
 Geschätzte Zeit zum Bearbeiten dieser Lektion: **3 Minuten**  
   
 ## <a name="prerequisites"></a>Voraussetzungen  
-Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der vorgegebenen Reihenfolge durchgeführt werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 2: Abrufen von Daten](../tutorials/aas-lesson-2-get-data.md) abgeschlossen haben. 
+Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richtigen Reihenfolge absolviert werden sollte. Bevor Sie diese Lektion beginnen, sollten Sie die vorherige [Lektion 2: Abrufen von Daten](../tutorials/aas-lesson-2-get-data.md) abgeschlossen haben. 
 
 ### <a name="to-rename-the-fulldatealternatekey-column"></a>Umbenennen der Spalte FullDateAlternateKey
 
-1.  Klicken Sie im Modell-Designer auf die Tabelle **DimDate**.
+1.  Klicken Sie im Modell-Designer auf die **DimDate**-Tabelle.
 
 2.  Doppelklicken Sie auf die Kopfzeile der Spalte **FullDateAlternateKey**, und benennen Sie sie in **Datum** um.
 

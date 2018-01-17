@@ -7,4 +7,5 @@
 3. Klicken Sie in der Firebase-Konsole auf das Zahnrad für Ihr Projekt und dann auf **Projekteinstellungen**.
 
     ![](./media/notification-hubs-enable-firebase-cloud-messaging/notification-hubs-firebase-console-project-settings.png)
-4. Klicken Sie in den Projekteinstellungen auf die Registerkarte **Cloud Messaging**, und kopieren Sie den Wert unter **Serverschlüssel** und **Absender-ID**. Sie verwenden diese Werte später, um die Zugriffsrichtlinie für den Benachrichtigungs-Hub und Ihren Benachrichtigungshandler in der App zu konfigurieren.
+4. Klicken Sie in Ihren Projekteinstellungen auf die Registerkarte **Allgemein**, und laden Sie anschließend die Datei **google-services.json** herunter, die den Server-API-Schlüssel und die Client-ID enthält.
+5. Klicken Sie in den Projekteinstellungen auf die Registerkarte **Cloud Messaging**, und kopieren Sie den Wert unter **Legacy server key** (Legacyserverschlüssel). Dieser Wert wird zum Konfigurieren der Zugriffsrichtlinie für den Benachrichtigungs-Hub verwendet.

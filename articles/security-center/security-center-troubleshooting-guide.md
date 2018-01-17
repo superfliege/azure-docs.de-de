@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 01/03/2018
 ms.author: yurid
-ms.openlocfilehash: d61bf2af5eb7ca5d1da1aac406f4b8fe55c7f75b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e471f04a86cde73bbdb333826a5e0d25684a4547
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Handbuch zur Problembehandlung
 Dieses Handbuch ist für IT-Experten, Informationssicherheitsanalysten und Cloudadministratoren konzipiert, in deren Organisation Azure Security Center verwendet wird und die Security Center-Probleme lösen müssen.
 
->[!NOTE] 
+>[!NOTE]
 >Ab Anfang Juni 2017 verwendet Security Center den Microsoft Monitoring Agent zum Sammeln und Speichern von Daten. Weitere Informationen finden Sie unter [Azure Security Center – Plattformmigration](security-center-platform-migration.md). Die Informationen in diesem Artikel stellen Security Center-Funktionen nach dem Umstieg auf den Microsoft Monitoring Agent vor.
 >
 
@@ -49,8 +49,8 @@ Wenn Sie die Dienstverwaltungskonsole („services.msc“) öffnen, sehen Sie au
 
 Wenn Sie erfahren möchten, welche Version des Agents Sie verwenden, öffnen Sie den **Task-Manager**, und suchen Sie auf der Registerkarte **Prozesse** den **Microsoft Monitoring Agent-Dienst**. Klicken Sie mit der rechten Maustaste darauf, und klicken Sie dann auf **Eigenschaften**. Auf der Registerkarte **Details** wird die Dateiversion wie unten dargestellt angezeigt:
 
-![Datei](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
-   
+![File](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig6.png)
+
 
 ## <a name="microsoft-monitoring-agent-installation-scenarios"></a>Installationsszenarien für den Microsoft Monitoring Agent
 Es gibt zwei Installationsszenarien, die bei der Installation des Microsoft Monitoring Agents auf Ihrem Computer zu unterschiedlichen Ergebnissen führen können. Folgende Szenarien werden unterstützt:
@@ -61,7 +61,24 @@ zu erstellen und zu verwalten.
 
 >[!NOTE]
 > Um das Verhalten im zweiten Szenario zu vermeiden, müssen Sie die neueste Version des Agents herunterladen.
-> 
+>
+
+## <a name="monitoring-agent-health-issues"></a>Integritätsprobleme des Überwachungs-Agents
+Mit der **Zustandsüberwachung** wird der Grund dafür definiert, warum Security Center keine erfolgreiche Überwachung von VMs und Computern durchführen kann, die für die automatische Bereitstellung initialisiert wurden. In der folgenden Tabelle sind die Werte, Beschreibungen und Lösungsschritte der **Zustandsüberwachung** enthalten.
+
+| Zustandsüberwachung | Beschreibung | Lösungsschritte |
+|---|---|---|
+| Agent-Installation ausstehend | Die Microsoft Monitoring Agent-Installation ist noch nicht abgeschlossen.  Die Installation kann einige Stunden dauern. | Warten Sie, bis die automatische Installation abgeschlossen wurde. |
+| Energiezustand „Aus“ | Die VM wurde beendet.  Der Microsoft Monitoring Agent kann nur auf einer VM installiert werden, die ausgeführt wird. | Starten Sie den virtuellen Computer neu. |
+| Azure-VM-Agent fehlt oder ist ungültig | Der Microsoft Monitoring Agent wurde noch nicht installiert.  Damit die Erweiterung von Security Center installiert werden kann, ist ein gültiger Azure-VM-Agent erforderlich. | Führen Sie für den Azure-VM-Agent auf der VM die Installation, Neuinstallation oder ein Upgrade durch. |
+| VM ist nicht zur Installation bereit  | Der Microsoft Monitoring Agent ist noch nicht installiert, da die VM nicht für die Installation bereit ist. Die VM ist aufgrund eines Problems mit dem VM-Agent oder der VM-Bereitstellung noch nicht für die Installation bereit. | Überprüfen Sie den Status der VM. Kehren Sie im Portal zu **Virtuelle Computer** zurück, und wählen Sie die VM aus, um Statusinformationen zu erhalten. |
+|Fehler bei der Installation – allgemeiner Fehler | Der Microsoft Monitoring Agent wurde installiert, aber es ist ein Fehler aufgetreten. | [Führen Sie die Installation der Erweiterung manuell durch](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension), oder deinstallieren Sie die Erweiterung, damit Security Center versucht, die Installation erneut zu starten. |
+| Fehler bei der Installation – lokaler Agent ist bereits installiert | Bei der Microsoft Monitoring Agent-Installation ist ein Fehler aufgetreten. Von Security Center wurde ein lokaler Agent (OMS oder SCOM) identifiziert, der auf der VM bereits installiert ist. Zur Vermeidung einer Multi-Homing-Konfiguration, wenn die VM an zwei separate Arbeitsbereiche meldet, wurde die Microsoft Monitoring Agent-Installation beendet. | Es gibt hierfür zwei Lösungsmöglichkeiten: [manuelle Installation der Erweiterung](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension) und Herstellung einer Verbindung mit Ihrem gewünschten Arbeitsbereich. Oder Sie legen Ihren gewünschten Arbeitsbereich als Standardarbeitsbereich fest und aktivieren die automatische Bereitstellung des Agents.  Siehe [Aktivieren der automatischen Bereitstellung](security-center-enable-data-collection.md). |
+| Agent kann keine Verbindung mit dem Arbeitsbereich herstellen | Der Microsoft Monitoring Agent wurde installiert, aber es ist ein Fehler im Zusammenhang mit der Netzwerkkonnektivität aufgetreten.  Stellen Sie sicher, dass Internetzugriff besteht oder dass für den Agent ein gültiger HTTP-Proxy konfiguriert wurde. | Siehe [Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent](#troubleshooting-monitoring-agent-network-requirements). |
+| Verbindung des Agents mit fehlendem oder unbekanntem Arbeitsbereich | Security Center hat erkannt, dass der auf der VM installierte Microsoft Monitoring Agent mit einem Arbeitsbereich verbunden ist, für den er keine Zugriffsberechtigung besitzt. | Dies kann in zwei Fällen vorkommen. Der Arbeitsbereich wurde gelöscht und ist nicht mehr vorhanden. Installieren Sie den Agent mit dem richtigen Arbeitsbereich neu, oder deinstallieren Sie den Agent, und lassen Sie für Security Center die Durchführung der automatischen Installation für die Bereitstellung zu. Im zweiten Fall ist der Arbeitsbereich Teil eines Abonnements, für das Security Center keine Berechtigungen besitzt. Für Security Center sind Abonnements erforderlich, um für die Microsoft-Sicherheitsressourcenanbieter den Zugriff zu ermöglichen. Registrieren Sie das Abonnement beim Microsoft-Sicherheitsressourcenanbieter, um dies zu aktivieren. Verwenden Sie hierfür die API, PowerShell oder das Portal, oder filtern Sie im Dashboard **Übersicht** von Security Center einfach nach dem Abonnement. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/resource-manager-supported-services.md#portal). |
+| Agent reagiert nicht oder ID fehlt | Security Center kann die von der VM gescannten Sicherheitsdaten nicht abrufen, obwohl der Agent installiert ist. | Der Agent meldet keine Daten, einschließlich Heartbeat. Unter Umständen ist der Agent beschädigt, oder der Datenverkehr ist aus einem bestimmten Grund blockiert. Es kann auch sein, dass der Agent zwar Daten meldet, aber eine Azure-Ressourcen-ID fehlt, sodass die Daten nicht der Azure-VM zugeordnet werden können. |
+| Agent nicht installiert | Die Datensammlung ist deaktiviert. | Aktivieren Sie die Datensammlung in der Sicherheitsrichtlinie, oder installieren Sie den Microsoft Monitoring Agent manuell. |
+
 
 ## <a name="troubleshooting-monitoring-agent-network-requirements"></a>Beheben von Problemen mit den Netzwerkanforderungen für den Überwachungs-Agent
 Damit Agents eine Verbindung mit Security Center herstellen und sich bei diesem registrieren können, müssen sie Zugriff auf Netzwerkressourcen, einschließlich der Portnummern und Domänen-URLs, haben.
@@ -86,12 +103,12 @@ Wenn mit dem Agent Onboardingprobleme auftreten, lesen Sie den Artikel [How to t
 Der Gast-Agent ist der übergeordnete Prozess aller Vorgänge der [Microsoft Antimalware](../security/azure-security-antimalware.md)-Erweiterung. Wenn beim Prozess für den Gast-Agent ein Fehler auftritt, schlägt die Microsoft Antimalware, die als untergeordneter Prozess des Gast-Agents ausgeführt wird, unter Umständen auch fehl.  In diesen Fällen ist es ratsam, die folgenden Optionen zu überprüfen:
 
 - Wenn die Ziel-VM ein benutzerdefiniertes Image ist und der Ersteller der VM den Gast-Agent nicht installiert hat.
-- Wenn das Ziel keine Windows-VM ist, sondern eine Linux-VM, tritt bei der Installation der Windows-Version der Antimalware-Erweiterung auf einer Linux-VM ein Fehler auf. Der Linux-Gast-Agent verfügt über bestimmte Anforderungen in Bezug auf die Betriebssystemversion und die erforderlichen Pakete, und wenn diese Anforderungen nicht erfüllt werden, funktioniert der VM-Agent auch dafür nicht. 
+- Wenn das Ziel keine Windows-VM ist, sondern eine Linux-VM, tritt bei der Installation der Windows-Version der Antimalware-Erweiterung auf einer Linux-VM ein Fehler auf. Der Linux-Gast-Agent verfügt über bestimmte Anforderungen in Bezug auf die Betriebssystemversion und die erforderlichen Pakete, und wenn diese Anforderungen nicht erfüllt werden, funktioniert der VM-Agent auch dafür nicht.
 - Wenn die VM mit einer alten Version des Gast-Agent erstellt wurde. In diesem Fall sollten Sie beachten, dass einige alte Agents nicht selbst automatisch das Update auf die neuere Version durchführen können, weil dieses Problem dadurch verursacht werden kann. Verwenden Sie immer die aktuelle Version des Gast-Agents, wenn Sie Ihre eigenen Images erstellen.
 - Für einige Verwaltungssoftwareanwendungen von Drittanbietern wird der Gast-Agent ggf. deaktiviert oder der Zugriff auf bestimmte Dateispeicherorte blockiert. Stellen Sie sicher, dass der Agent in der Ausschlussliste enthalten ist, wenn auf Ihrer VM Software von Drittanbietern installiert ist.
 - Bestimmte Firewalleinstellungen oder Netzwerksicherheitsgruppen (NSGs) können bewirken, dass der Netzwerkdatenverkehr zum und vom Gast-Agent blockiert wird.
 - Es kann sein, dass bestimmte Zugriffssteuerungslisten (Access Control Lists, ACLs) den Datenträgerzugriff verhindern.
-- Durch einen Mangel an Speicherplatz kann verhindert werden, dass der Gast-Agent richtig funktioniert. 
+- Durch einen Mangel an Speicherplatz kann verhindert werden, dass der Gast-Agent richtig funktioniert.
 
 Die Microsoft Antimalware-Benutzeroberfläche ist standardmäßig deaktiviert. Unter [Enabling Microsoft Antimalware User Interface on ARM VMs Post Deployment](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/09/enabling-microsoft-antimalware-user-interface-post-deployment/) (Aktivieren der Microsoft Antimalware-Benutzeroberfläche auf ARM-VMs nach der Bereitstellung) finden Sie weitere Informationen dazu, wie Sie sie bei Bedarf aktivieren.
 
@@ -100,7 +117,7 @@ Die Microsoft Antimalware-Benutzeroberfläche ist standardmäßig deaktiviert. U
 Wenn beim Laden des Security Center-Dashboards Probleme auftreten, stellen Sie sicher, dass der Benutzer, der das Security Center-Abonnement registriert (d.h. der erste Benutzer, der Security Center mit dem Abonnement geöffnet hat), und der Benutzer, der die Datensammlung aktivieren möchte, entweder *Besitzer* oder *Mitwirkender* des Abonnements sind. Ab diesem Zeitpunkt können auch Benutzer mit der *Leser*-Berechtigung für das Abonnement die Richtlinie unter „dashboard/alerts/recommendation/policy“ anzeigen.
 
 ## <a name="contacting-microsoft-support"></a>Kontaktaufnahme mit dem Microsoft-Support
-Einige Probleme können mit den Richtlinien in diesem Artikel identifiziert werden, während andere im öffentlichen Security Center- [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)dokumentiert sind. Falls Sie weitere Hilfe zur Problembehandlung benötigen, können Sie wie unten gezeigt über das **Azure-Portal** eine neue Supportanfrage erstellen: 
+Einige Probleme können mit den Richtlinien in diesem Artikel identifiziert werden, während andere im öffentlichen Security Center- [Forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSecurityCenter)dokumentiert sind. Falls Sie weitere Hilfe zur Problembehandlung benötigen, können Sie wie unten gezeigt über das **Azure-Portal** eine neue Supportanfrage erstellen:
 
 ![Microsoft-Support](./media/security-center-troubleshooting-guide/security-center-troubleshooting-guide-fig2.png)
 
@@ -114,4 +131,3 @@ In diesem Dokument haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Azure S
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md) : Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
 * [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md) : Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security Blog](http://blogs.msdn.com/b/azuresecurity/) (Blog zur Azure-Sicherheit): Hier finden Sie Blogbeiträge zur Azure-Sicherheit und -Compliance.
-

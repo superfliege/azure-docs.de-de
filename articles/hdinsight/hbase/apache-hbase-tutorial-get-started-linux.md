@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/03/2017
 ms.author: jgao
-ms.openlocfilehash: e4f2a4d5263b30b16ffd137c47fb63caa8340e16
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 1073c8eb0bfb8176f81826c4ea8967d5c04098ec
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>Erste Schritte mit einem Apache HBase-Beispiel in HDInsight
 
@@ -31,14 +31,14 @@ Erfahren Sie, wie Sie einen HBase-Cluster in HDInsight erstellen, HBase-Tabellen
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit diesem HBase-Beispiel beginnen können, benötigen Sie folgende Elemente:
 
-* **Ein Azure-Abonnement**. Siehe [How to get Azure Free trial for testing Hadoop in HDInsight](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)(in englischer Sprache).
+* **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 * [Secure Shell (SSH)](../hdinsight-hadoop-linux-use-ssh-unix.md). 
 * [curl](http://curl.haxx.se/download.html).
 
 ## <a name="create-hbase-cluster"></a>Erstellen eines HBase-Clusters
 Beim folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um einen HBase-Cluster und das abhängige Azure Storage-Standardkonto zu erstellen. Informationen zu den Parametern, die in diesem Verfahren und in anderen Verfahren zur Clustererstellung verwendet werden, finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../hdinsight-hadoop-provision-linux-clusters.md).
 
-1. Klicken Sie auf die folgende Abbildung, um die Vorlage im Azure-Portal zu öffnen: Die Vorlage befindet sich in einem öffentlichen Blobcontainer. 
+1. Klicken Sie auf die folgende Abbildung, um die Vorlage im Azure-Portal zu öffnen: Die Vorlage finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/).
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-linux%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hbase-tutorial-get-started-linux/deploy-to-azure.png" alt="Deploy to Azure"></a>
 2. Geben Sie auf dem Blatt **Benutzerdefinierte Bereitstellung** die folgenden Werte ein:

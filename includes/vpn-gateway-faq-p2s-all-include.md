@@ -59,6 +59,6 @@ Benutzer können mithilfe des integrierten Windows-VPN-Clients, der IKEv2 unters
 
 Azure unterstützt nur Windows und Mac für P2S-VPN.
 
-### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enabled-radius-andor-ikev2-vpn-on-it"></a>Ich verfüge bereits über ein bereitgestelltes Azure-VPN-Gateway. Kann ich RADIUS und/oder IKEv2-VPN darauf aktivieren?
+### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enable-radius-andor-ikev2-vpn-on-it"></a>Ich verfüge bereits über ein bereitgestelltes Azure-VPN-Gateway. Kann ich RADIUS und/oder IKEv2-VPN darauf aktivieren?
 
-Ja, Sie können diese neuen Features für bereits bereitgestellte Gateways aktivieren, sowohl über PowerShell als auch über das Azure-Portal.
+Ja. Sie können diese neuen Features aus bereits bereitgestellten Gateways per PowerShell oder über das Azure-Portal aktivieren, sofern die verwendete Gateway-SKU RADIUS bzw. IKEv2 unterstützt. Die Basic-SKU des VPN-Gateways weist beispielsweise keine Unterstützung von RADIUS oder IKEv2 auf.

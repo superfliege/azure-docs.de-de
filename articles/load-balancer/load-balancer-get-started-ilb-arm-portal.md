@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5b983ca9ff28aac7f0e0501f353c48deeb6adcd5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8f0f575319eec0517366079c637ad7565530ac70
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>Erstellen eines internen Lastenausgleichs über das Azure-Portal
 
 > [!div class="op_single_selector"]
-> * [Azure-Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Vorlage](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
@@ -43,7 +43,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen internen
 1. Öffnen Sie einen Browser, navigieren Sie zum [Azure-Portal](http://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 2. Klicken Sie oben links auf dem Bildschirm auf **Neu** > **Netzwerk** > **Lastenausgleich**.
 3. Geben Sie auf dem Blatt **Lastenausgleich erstellen** einen **Namen** für den Lastenausgleich ein.
-4. Klicken Sie unter **Schema** auf **Intern**.
+4. Klicken Sie unter **Typ** auf **Intern**.
 5. Klicken Sie auf **Virtuelles Netzwerk**, und wählen Sie dann das virtuelle Netzwerk aus, in dem Sie den Lastenausgleich erstellen möchten.
 
    > [!NOTE]
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal einen internen
    > Wenn Sie eine statische IP-Adresse verwenden möchten, müssen Sie eine Adresse für den Lastenausgleich angeben.
 
 8. Geben Sie unter **Ressourcengruppe** den Namen einer neuen Ressourcengruppe für den Lastenausgleich ein, oder klicken Sie auf **Vorhandene auswählen**, und wählen Sie eine vorhandene Ressourcengruppe aus.
-9. Klicken Sie auf **Erstellen**.
+9. Klicken Sie auf **Create**.
 
 ## <a name="configure-load-balancing-rules"></a>Konfigurieren von Lastenausgleichsregeln
 
@@ -66,16 +66,16 @@ Konfigurieren Sie einen Back-End-Adresspool und einen Test, bevor Sie eine Laste
 ### <a name="step-1-configure-a-backend-pool"></a>Schritt 1: Konfigurieren eines Back-End-Pools
 
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule** und dann auf den zuvor erstellten Lastenausgleich.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Back-End-Pools**.
-3. Klicken Sie auf dem Blatt **Back-End-Adresspools** auf **Hinzufügen**.
-4. Geben Sie auf dem Blatt **Back-End-Pool hinzufügen** einen **Namen** für den Back-End-Pool ein, und klicken Sie dann auf **OK**.
+2. Klicken Sie auf der Seite **Einstellungen** auf **Back-End-Pools**.
+3. Klicken Sie auf der Seite **Back-End-Adresspools** auf **Hinzufügen**.
+4. Geben Sie auf der Seite **Back-End-Pool hinzufügen** einen **Namen** für den Back-End-Pool ein, und klicken Sie dann auf **OK**.
 
 ### <a name="step-2-configure-a-probe"></a>Schritt 2: Konfigurieren eines Tests
 
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule** und dann auf den zuvor erstellten Lastenausgleich.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Tests**.
-3. Klicken Sie auf dem Blatt **Tests** auf **Hinzufügen**.
-4. Geben Sie auf dem Blatt **Test hinzufügen** einen **Namen** für den Test ein.
+2. Klicken Sie auf der Seite **Einstellungen** auf **Integritätstests**.
+3. Klicken Sie auf der Seite **Integritätstests** auf **Hinzufügen**.
+4. Geben Sie auf der Seite **Integritätstest hinzufügen** einen **Namen** für den Test ein.
 5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
 6. Geben Sie unter **Port**den Port an, der beim Zugreifen auf den Test verwendet werden soll.
 7. Geben Sie unter **Pfad** (nur für HTTP-Tests) den Pfad an, der als Test verwendet werden soll.
@@ -86,10 +86,10 @@ Konfigurieren Sie einen Back-End-Adresspool und einen Test, bevor Sie eine Laste
 ### <a name="step-3-configure-load-balancing-rules"></a>Schritt 3: Konfigurieren von Lastenausgleichsregeln
 
 1. Klicken Sie im Azure-Portal auf **Durchsuchen** > **Lastenausgleichsmodule** und dann auf den zuvor erstellten Lastenausgleich.
-2. Klicken Sie auf dem Blatt **Einstellungen** auf **Lastenausgleichsregeln**.
-3. Klicken Sie auf dem Blatt **Lastenausgleichsregeln** auf **Hinzufügen**.
-4. Geben Sie auf dem Blatt **Lastenausgleichsregel hinzufügen** einen **Namen** für die Regel ein.
-5. Wählen Sie unter **Protokoll** entweder **HTTP** (für Websites) oder **TCP** (für andere TCP-basierte Anwendungen) aus.
+2. Klicken Sie auf der Seite **Einstellungen** auf **Lastenausgleichsregeln**.
+3. Klicken Sie auf der Seite **Lastenausgleichsregeln** auf **Hinzufügen**.
+4. Geben Sie auf der Seite **Lastenausgleichsregel hinzufügen** einen **Namen** für die Regel ein.
+5. Wählen Sie unter **Protokoll** die Option **TCP** oder **UDP**.
 6. Geben Sie unter **Port** den Port an, mit dem Clients im Lastenausgleich eine Verbindung herstellen.
 7. Geben Sie unter **Back-End-Port**den Port an, der im Back-End-Pool verwendet werden soll (in der Regel sind der Lastenausgleichsport und der Back-End-Port identisch).
 8. Wählen Sie unter **Back-End-Pool** den Back-End-Pool aus, den Sie zuvor erstellt haben.

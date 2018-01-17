@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: shlo
-ms.openlocfilehash: fb664b76a948244d96a26b199a4e8e6c83bae0f4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 7961f998b59991b47e1c22d826bf0a50fcd09099
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Einführung in Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](v1/data-factory-introduction.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-introduction.md)
 > * [Version 2 – Vorschauversion](introduction.md)
 
 In Zeiten von Big Data werden unorganisierte Rohdaten häufig in relationalen, nicht relationalen und anderen Speichersystemen gespeichert. Für sich genommen mangelt es den Rohdaten allerdings an Kontext bzw. an der nötigen Aussagekraft, um von Analysten, Datenspezialisten oder Entscheidungsträgern in Unternehmen sinnvoll genutzt werden zu können. 
@@ -43,7 +43,7 @@ Darüber hinaus können die Ausgabedaten für Datenspeicher wie Azure SQL Data W
 > [!NOTE]
 > Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, lesen Sie die [Einführung in Data Factory für Version 1](v1/data-factory-introduction.md).
 
-## <a name="how-does-it-work"></a>Funktionsweise
+## <a name="how-does-it-work"></a>Wie funktioniert dies?
 Die Pipelines (datengesteuerten Workflows) in Azure Data Factory umfassen in der Regel vier Schritte:
 
 ![Vier Schritte eines datengesteuerten Workflows](media/introduction/four-steps-of-a-workflow.png)
@@ -62,7 +62,7 @@ Mit Data Factory können Sie die [Kopieraktivität](copy-activity-overview.md) i
 Wenn Daten in einem zentralen Datenspeicher in der Cloud gespeichert sind, können Sie die erfassten Daten mithilfe von Compute Services wie HDInsight Hadoop, Spark, Data Lake Analytics und Machine Learning verarbeiten oder transformieren. Darauf folgt das Erstellen transformierter Daten nach einem verwaltbaren und gesteuerten Zeitplan, um Produktionsumgebungen mit vertrauenswürdigen Daten zu versorgen.
 
 ### <a name="publish"></a>Veröffentlichen
-Nachdem die Rohdaten in einem für Unternehmen nutzbaren Format vorliegen, laden Sie sie mit Azure Data Warehouse, Azure SQL-Datenbank, Azure CosmosDB oder einem anderen Analysemodul, auf das Ihre Benutzer in ihren Business Intelligence-Tools verweisen können.
+Nachdem die Rohdaten in einem für Unternehmen nutzbaren Format vorliegen, laden Sie sie mit Azure Data Warehouse, Azure SQL-Datenbank, Azure CosmosDB oder einer anderen Analyse-Engine, auf die Ihre Benutzer in ihren Business Intelligence-Tools verweisen können.
 
 ### <a name="monitor"></a>Überwachen
 Nachdem Sie Ihre Pipeline für die Datenintegration erfolgreich erstellt und bereitgestellt haben und einen geschäftlichen Nutzen aus den optimierten Daten ziehen können, können Sie die geplanten Aktivitäten und Pipelines auf Erfolgs- und Fehlerraten überwachen. Azure Data Factory bietet integrierte Unterstützung für die Pipelineüberwachung über Azure Monitor, API, PowerShell, Microsoft Operations Management Suite und Integritätsbereiche im Azure-Portal.
@@ -78,7 +78,7 @@ Der Vorteil hierbei ist, dass die Pipeline Ihnen das Verwalten der Aktivitäten 
 ### <a name="activity"></a>Aktivität
 Aktivitäten stellen einen Verarbeitungsschritt in einer Pipeline dar. Beispielsweise können Sie eine Kopieraktivität verwenden, um Daten zwischen zwei Datenspeichern zu kopieren. Analog hierzu können Sie eine Hive-Aktivität verwenden, die eine Hive-Abfrage für einen Azure HDInsight-Cluster ausführt, um Ihre Daten zu transformieren oder zu analysieren. Data Factory unterstützt drei Arten von Aktivitäten: Datenverschiebungsaktivitäten, Datentransformationsaktivitäten und Steuerungsaktivitäten.
 
-### <a name="datasets"></a>DATASETS
+### <a name="datasets"></a>Datasets
 Datasets stellen Datenstrukturen in den Datenspeichern dar, die einfach auf die Daten zeigen bzw. verweisen, die Sie in Ihren Aktivitäten als Eingaben oder Ausgaben verwenden möchten. 
 
 ### <a name="linked-services"></a>Verknüpfte Dienste
@@ -119,9 +119,9 @@ Derzeit können Data Factorys in den Regionen „USA, Osten“, „USA, Osten 2�
 
 In Azure Data Factory selbst werden keine Daten gespeichert. Der Dienst ermöglicht das Erstellen von datengesteuerten Workflows, um die Verschiebung von Daten zwischen unterstützten Datenspeichern und die Verarbeitung von Daten mithilfe von Computediensten in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem können Sie mit programmgesteuerten und UI-basierten Mechanismen Workflows überwachen und verwalten.
 
-Data Factory ist zwar nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ verfügbar, aber der Datenverschiebungsdienst für Data Factory steht global in verschiedenen Regionen zur Verfügung. Wenn sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einem in der lokalen Umgebung installierten Datenverwaltungsgateway verschoben.
+Data Factory ist zwar nur in den Regionen „USA, Osten“, „USA, Osten 2“ und „Europa, Westen“ verfügbar, aber der Datenverschiebungsdienst für Data Factory steht global in verschiedenen Regionen zur Verfügung. Wenn sich ein Datenspeicher hinter einer Firewall befindet, werden die Daten stattdessen von einer in der lokalen Umgebung installierten selbstgehosteten Integration Runtime verschoben.
 
-Nehmen wir beispielsweise an, dass Ihre Compute-Umgebungen wie Azure HDInsight-Cluster und Azure Machine Learning in der Region „Europa, Westen“ ausgeführt werden. Sie können eine Azure Data Factory-Instanz in der Region „Europa, Norden“ erstellen und mit ihr Aufträge in Ihren Computeumgebungen in der Region „Europa, Westen“ planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Compute-Umgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Compute-Umgebung ändert sich aber nicht.
+Nehmen wir beispielsweise an, dass Ihre Compute-Umgebungen wie Azure HDInsight-Cluster und Azure Machine Learning in der Region „Europa, Westen“ ausgeführt werden. Sie können eine Azure Data Factory-Instanz in der Region „USA, Osten“ oder „USA, Osten 2“ erstellen und damit Aufträge in Ihren Computeumgebungen in der Region „Europa, Westen“ planen. Es dauert ein paar Millisekunden, bis Data Factory den Auftrag in Ihrer Compute-Umgebung ausgelöst hat. Die Dauer für die Ausführung des Auftrags in Ihrer Compute-Umgebung ändert sich aber nicht.
 
 ## <a name="compare-with-version-2"></a>Vergleich mit Version 2
 Eine Liste mit den Unterschieden zwischen Version 1 und Version 2 des Data Factory-Diensts finden Sie unter [Compare Azure Data Factory versions 1 and 2](compare-versions.md) (Vergleich der Azure Data Factory-Versionen 1 und 2). 

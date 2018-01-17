@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/02/2017
 ms.author: nisoneji
-ms.openlocfilehash: bb4ec5cfd455ab0cc22ab693c2a07eed9883dc76
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 5c7ff99c2f67f82f9a7d605d9960960f84e96900
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-hyper-v-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für „Hyper-V zu Azure“
 
@@ -41,7 +41,7 @@ Die folgende Tabelle enthält eine Liste mit den erforderlichen und optionalen P
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
-| Parametername | Beschreibung |
+| Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | GetVMList |
 | -User | Benutzername zum Herstellen der Verbindung mit dem Hyper-V-Host oder Hyper-V-Cluster. Der Benutzer muss über Administratorzugriff verfügen.|
@@ -86,7 +86,7 @@ Die folgende Tabelle enthält eine Liste mit den erforderlichen und optionalen P
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
-| Parametername | Beschreibung |
+| Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | StartProfiling |
 | -User | Benutzername zum Herstellen der Verbindung mit dem Hyper-V-Host oder Hyper-V-Cluster. Der Benutzer muss über Administratorzugriff verfügen.|
@@ -106,6 +106,15 @@ Es wird empfohlen, die Profilerstellung für Ihre VMs länger als 7 Tage durchzu
 Während der Profilerstellung können Sie optional den Namen eines Speicherkontos und den dazugehörigen Schlüssel übergeben, um den Durchsatz zu ermitteln, der für Azure Site Recovery bei der Replikation vom Hyper-V-Server zu Azure erreicht werden kann. Wenn der Name des Speicherkontos und der Schlüssel während der Profilerstellung nicht übergeben werden, wird der erreichbare Durchsatz vom Tool nicht berechnet.
 
 Sie können mehrere Instanzen des Tools für verschiedene Gruppen von VMs ausführen. Stellen Sie sicher, dass die VM-Namen in den Gruppen für die Profilerstellung nicht mehr als einmal vorkommen. Wenn Sie beispielsweise Profile für zehn VMs (VM1 bis VM10) erstellt haben und nach einigen Tagen Profile für fünf weitere VMs (VM11 bis VM15) erstellen möchten, können Sie das Tool für die zweite Gruppe von VMs (VM11 bis VM15) über eine andere Befehlszeilenkonsole ausführen. Stellen Sie hierbei sicher, dass die zweite Gruppe von VMs keine Namen der VMs aus der ersten Profilerstellungsinstanz enthält, oder verwenden Sie für die zweite Ausführung ein anderes Ausgabeverzeichnis. Wenn zwei Instanzen des Tools für die Profilerstellung derselben VMs verwendet werden und dabei dasselbe Ausgabeverzeichnis genutzt wird, ist der generierte Bericht fehlerhaft. 
+
+Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1.000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
+```
+<!-- Maximum number of vms supported-->
+<add key="MaxVmsSupported" value="1000"/>
+```
+Wenn Sie mit den Standardeinstellungen beispielsweise Profile für 1.500 VMs erstellen möchten, können Sie zwei Dateien vom Typ „VMList.txt“ verwenden. Eine mit 1.000 VMs und eine weitere mit 500 VMs. Führen Sie die beiden Instanzen des ASR-Bereitstellungsplaners aus, eine mit „VMList1.txt“ und eine mit „VMList2.txt“. Sie können zum Speichern der Profildaten beider VMList-VMs den gleichen Verzeichnispfad verwenden. 
+
+Es wurde verdeutlicht, dass basierend auf der Hardwarekonfiguration – vor allem der RAM-Größe des Servers, auf dem das Tool für die Berichtserstellung ausgeführt wird – der Vorgang aufgrund von unzureichendem Arbeitsspeicher fehlschlagen kann. Wenn Sie über gute Hardware verfügen, können Sie MaxVMsSupported auch auf einen höheren Wert festlegen.  
 
 VM-Konfigurationen werden zu Beginn des Profilerstellungsvorgangs einmal erfasst und in einer Datei mit dem Namen „VMDetailList.xml“ gespeichert. Diese Informationen werden für die Berichterstellung verwendet. Alle Änderungen der VM-Konfiguration (z.B. erhöhte Anzahl von Kernen, Datenträgern oder NICs) vom Anfang bis zum Ende der Profilerstellung werden nicht erfasst. Wenn sich die Konfiguration einer VM während der Profilerstellung geändert hat, können Sie diese Problemumgehung nutzen, um bei der Berichterstellung die aktuellen VM-Details abzurufen:
 
@@ -150,7 +159,7 @@ Die folgende Tabelle enthält eine Liste mit den erforderlichen und optionalen T
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
-| Parametername | Beschreibung |
+| Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | GenerateReport |
 |-VMListFile | Die Datei mit der Liste mit den VMs für die Profilerstellung, für die der Bericht erstellt werden soll. Der Dateipfad kann absolut oder relativ sein. Für Hyper-V ist diese Datei die Ausgabedatei des Vorgangs GetVMList. Falls Sie die Vorbereitung manuell durchführen, sollte die Datei einen Servernamen oder eine IP-Adresse gefolgt vom VM-Namen mit dem Trennzeichen „\“ pro Zeile enthalten. Der in der Datei angegebene VM-Name sollte dem VM-Namen auf dem Hyper-V-Host entsprechen.<ul>Beispiel: Die Datei „VMList.txt“ enthält die folgenden VMs:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
@@ -168,6 +177,12 @@ ASRDeploymentPlanner.exe -Operation GenerateReport /?
 |-TargetRegion|(Optional) Die Azure-Zielregion für die Replikation. Verwenden Sie diesen Parameter, um einen Bericht mit der jeweiligen Azure-Zielregion zu erstellen, da Azure über unterschiedliche Kosten pro Region verfügt.<br>Die Standardeinstellung ist „USA, Westen 2“ bzw. die zuletzt verwendete Zielregion.<br>Weitere Informationen finden Sie in der Liste mit den [unterstützten Zielregionen](site-recovery-hyper-v-deployment-planner-cost-estimation.md#supported-target-regions).|
 |-OfferId|(Optional) Das Angebot, das dem jeweiligen Abonnement zugeordnet ist. Die Standardeinstellung ist MS-AZR-0003P (nutzungsbasierte Bezahlung).|
 |-Currency|(Optional) Die Währung, in der Kosten im generierten Bericht angezeigt werden. Die Standardeinstellung ist „US-Dollar ($)“ bzw. die zuletzt verwendete Währung.<br>Weitere Informationen finden Sie in der Liste mit den [unterstützten Währungen](site-recovery-hyper-v-deployment-planner-cost-estimation.md#supported-currencies).|
+
+Standardmäßig ist das Tool so konfiguriert, dass für bis zu 1.000 VMs Profile und Berichte erstellt werden. Sie können diesen Grenzwert ändern, indem Sie den Schlüsselwert MaxVMsSupported in der Datei *ASRDeploymentPlanner.exe.config* ändern.
+```
+<!-- Maximum number of vms supported-->
+<add key="MaxVmsSupported" value="1000"/>
+```
 
 ### <a name="examples"></a>Beispiele
 #### <a name="example-1-generate-a-report-with-default-values-when-the-profiled-data-is-on-the-local-drive"></a>Beispiel 1: Berichterstellung mit Standardwerten, wenn sich die Profilerstellungsdaten auf dem lokalen Laufwerk befinden
@@ -206,6 +221,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Dire
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization Hyper-V -Directory “E:\Hyper-V_ProfiledData” -VMListFile “E:\Hyper-V_ProfiledData\ProfileVMList1.txt”  -SubscriptionID 4d19f16b-3e00-4b89-a2ba-8645edf42fe5 -OfferID MS-AZR-0148P -TargetRegion southindia -Currency INR
 ```
+
 
 ## <a name="percentile-value-used-for-the-calculation"></a>Für die Berechnung verwendeter Perzentilwert
 **Welcher Perzentilstandardwert der Leistungsmetriken, die während der Profilerstellung gesammelt wurden, wird vom Tool für die Berichterstellung verwendet?**
@@ -253,7 +269,7 @@ Führen Sie das Tool im GetThroughput-Modus aus, um den Durchsatz zu schätzen, 
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
- Parametername | Beschreibung |
+ Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | GetThroughtput |
 |-Virtualization|Geben Sie den Virtualisierungstyp an (VMware oder Hyper-V).|

@@ -11,28 +11,28 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/10/2017
+ms.date: 01/03/2018
 ms.author: shlo
-ms.openlocfilehash: c472cf080f8138ec6d0210f3ca4a8b3f3c33e7ae
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 88ae5dfbf6246ecf92d6528ad3d9a8e5fb57e4b0
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory 
+# <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Pipelineausführung und Trigger in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1 – Allgemein verfügbar](v1/data-factory-scheduling-and-execution.md)
+> * [Version 1: allgemein verfügbar](v1/data-factory-scheduling-and-execution.md)
 > * [Version 2 – Vorschauversion](concepts-pipeline-execution-triggers.md)
 
-**Pipelineausführung** ist ein Begriff in Azure Data Factory, Version 2, der eine Instanz einer Pipelineausführung definiert. Beispiel: Angenommen, Sie haben eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (Pipelineausführungen). Jede Pipelineausführung weist eine eindeutige Pipelineausführungs-ID aus. Dabei handelt es sich um eine GUID, die die jeweilige Pipelineausführung eindeutig definiert. Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in Pipelines definierte Parameter übergeben. Es gibt zwei Möglichkeiten zum Ausführen einer Pipeline: **manuell** oder über einen **Trigger**. Dieser Artikel enthält Informationen zu beiden Möglichkeiten der Ausführung einer Pipeline. 
+**Pipelineausführung** ist ein Begriff in Azure Data Factory, Version 2, der eine Instanz einer Pipelineausführung definiert. Beispiel: Angenommen, Sie haben eine Pipeline, die um 8:00, 9:00 und 10:00 Uhr ausgeführt wird. In diesem Fall erfolgen drei separate Ausführungen der Pipeline (Pipelineausführungen). Jede Pipelineausführung weist eine eindeutige Pipelineausführungs-ID aus. Dabei handelt es sich um eine GUID, die die jeweilige Pipelineausführung eindeutig definiert. Zur Instanziierung von Pipelineausführungen werden in der Regel Argumente an in Pipelines definierte Parameter übergeben. Es gibt zwei Möglichkeiten zum Ausführen einer Pipeline: **manuell** oder über einen **Trigger**. Dieser Artikel enthält Informationen zu beiden Möglichkeiten der Ausführung einer Pipeline.
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschauversion verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Data Factory – Planung und Ausführung](v1/data-factory-scheduling-and-execution.md) für V1.
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie Version 1 des Data Factory-Diensts verwenden, der allgemein verfügbar (GA) ist, lesen Sie [Data Factory – Planung und Ausführung](v1/data-factory-scheduling-and-execution.md) für V1.
 
 ## <a name="run-pipeline-on-demand"></a>Pipeline bedarfsgesteuert ausführen
-Bei dieser Methode führen Sie Ihre Pipeline manuell aus. Sie wird auch als eine bedarfsgesteuerte Ausführung einer Pipeline betrachtet. 
+Bei dieser Methode führen Sie Ihre Pipeline manuell aus. Sie wird auch als eine bedarfsgesteuerte Ausführung einer Pipeline betrachtet.
 
-Beispiel: Angenommen, Sie haben eine Pipeline mit dem Namen **CopyPipeline**, die Sie ausführen möchten. Dabei handelt es sich um eine einfache Pipeline mit einer einzelnen Aktivität, die Daten aus einem Quellordner in Azure Blob Storage in einen Zielordner im selben Speicher kopiert. Definition der Beispielpipeline: 
+Beispiel: Angenommen, Sie haben eine Pipeline mit dem Namen **CopyPipeline**, die Sie ausführen möchten. Dabei handelt es sich um eine einfache Pipeline mit einer einzelnen Aktivität, die Daten aus einem Quellordner in Azure Blob Storage in einen Zielordner im selben Speicher kopiert. Definition der Beispielpipeline:
 
 ```json
 {
@@ -76,9 +76,9 @@ Beispiel: Angenommen, Sie haben eine Pipeline mit dem Namen **CopyPipeline**, di
 }
 
 ```
-Die Pipeline nutzt zwei Parameter: „sourceBlobContainer“ und „sinkBlobContainer“, wie in der JSON-Definition dargestellt. Sie können Werte an diese Parameter zur Laufzeit übergeben. 
+Die Pipeline nutzt zwei Parameter: „sourceBlobContainer“ und „sinkBlobContainer“, wie in der JSON-Definition dargestellt. Sie können Werte an diese Parameter zur Laufzeit übergeben.
 
-Zur manuellen Ausführung der Pipeline können Sie eine der folgenden Methoden verwenden: .NET, PowerShell, REST und Python. 
+Zur manuellen Ausführung der Pipeline können Sie eine der folgenden Methoden verwenden: .NET, PowerShell, REST und Python.
 
 ### <a name="rest-api"></a>REST-API
 Beispiel für einen REST-Befehl:  
@@ -90,7 +90,7 @@ https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGrou
 Ein vollständiges Beispiel finden Sie unter [Quickstart: create a data factory using REST API](quickstart-create-data-factory-rest-api.md) (Schnellstart: Erstellen einer Data Factory mithilfe der REST-API).
 
 ### <a name="powershell"></a>PowerShell
-Beispiel für einen PowerShell-Befehl: 
+Beispiel für einen PowerShell-Befehl:
 
 ```powershell
 Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
@@ -116,8 +116,8 @@ Die Antwortnutzlast ist eine eindeutige ID der Pipelineausführung:
 
 Ein vollständiges Beispiel finden Sie unter [Quickstart: create a data factory using PowerShell](quickstart-create-data-factory-powershell.md) (Schnellstart: Erstellen einer Data Factory mithilfe von PowerShell).
 
-### <a name="net"></a>.NET 
-Beispiel für einen .NET-Aufruf: 
+### <a name="net"></a>.NET
+Beispiel für einen .NET-Aufruf:
 
 ```csharp
 client.Pipelines.CreateRunWithHttpMessagesAsync(resourceGroup, dataFactoryName, pipelineName, parameters)
@@ -129,11 +129,11 @@ Ein vollständiges Beispiel finden Sie unter [Quickstart: create a data factory 
 > Mit der .NET API können Sie Data Factory-Pipelines in Azure Functions, Ihren eigenen Webdiensten usw. aufrufen.
 
 ## <a name="triggers"></a>Trigger
-Trigger bieten die zweite Möglichkeit zur Ausführung einer Pipeline. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Data Factory unterstützt derzeit einen Trigger, der eine Pipeline nach einem Realzeitplan aufruft. Es heißt **Planer-Trigger**. Derzeit unterstützt Data Factory keine ereignisbasierten Trigger wie einen Trigger einer Pipelineausführung im Fall eines Dateieingangs.
+Trigger bieten die zweite Möglichkeit zur Ausführung einer Pipeline. Trigger stellen eine Verarbeitungseinheit dar, die bestimmt, wann eine Pipelineausführung initiiert werden soll. Data Factory unterstützt derzeit zwei Arten von Triggern: den **Zeitplantrigger**, der eine Pipeline nach einem Realzeitplan aufruft, und den **Trigger für ein rollierendes Fenster**, der nach einem regelmäßigen Intervall funktioniert, während der Status beibehalten wird. Derzeit unterstützt Data Factory keine ereignisbasierten Trigger wie einen Trigger einer Pipelineausführung im Fall eines Dateieingangs.
 
 Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten, oder ein einzelner Trigger kann mehrere Pipelines starten. In der folgenden JSON-Definition eines Triggers bezieht sich die **Pipelines**-Eigenschaft auf eine Liste der Pipelines, die vom jeweiligen Trigger ausgelöst werden, sowie auf Werte für Pipeline-Parameter.
 
-### <a name="basic-trigger-definition"></a>Grundlegende Triggerdefinition: 
+### <a name="basic-trigger-definition"></a>Grundlegende Triggerdefinition:
 ```json
     "properties": {
         "name": "MyTrigger",
@@ -159,13 +159,19 @@ Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine ein
     }
 ```
 
-## <a name="scheduler-trigger"></a>Planer-Trigger
-Der Planer-Trigger führt Pipelines nach einem Realzeitplan aus. Dieser Trigger unterstützt periodische und erweiterte Kalenderoptionen (wöchentlich, Montag um 17:00 Uhr und Donnerstag um 9:00 Uhr). Er ist insofern flexibel, als er von DataSet-Mustern unabhängig ist und nicht zwischen Zeitreihendaten und Nicht-Zeitreihendaten unterscheidet.
+## <a name="schedule-trigger"></a>Zeitplantrigger
+Der Zeitplantrigger führt Pipelines nach einem Realzeitplan aus. Dieser Trigger unterstützt periodische und erweiterte Kalenderoptionen (wöchentlich, Montag um 17:00 Uhr und Donnerstag um 9:00 Uhr). Er ist insofern flexibel, als er von DataSet-Mustern unabhängig ist und nicht zwischen Zeitreihendaten und Nicht-Zeitreihendaten unterscheidet.
 
-### <a name="scheduler-trigger-json-definition"></a>JSON-Definition für Planer-Trigger
-Wenn Sie einen Planer-Trigger erstellen, können Sie die Zeitplanung und Wiederholung mithilfe von JSON wie im Beispiel in diesem Abschnitt gezeigt festlegen. 
+Ausführlichere Informationen zu Zeitplantriggern und Beispiele finden Sie unter [Erstellen eines Triggers in Azure Data Factory, der eine Pipeline gemäß einem Zeitplan ausführt](how-to-create-schedule-trigger.md).
 
-Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in der Triggerdefinition einen Pipelineverweis auf die jeweilige Pipeline. Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten.
+## <a name="tumbling-window-trigger"></a>Trigger für ein rollierendes Fenster
+Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe.
+Ausführlichere Informationen zu Triggern für ein rollierendes Fenster und Beispiele finden Sie unter [How to create a trigger that runs a pipeline on a tumbling window](how-to-create-tumbling-window-trigger.md) (Erstellen eines Triggers, der eine Pipeline in einem rollierenden Fenster ausführt).
+
+### <a name="scheduler-trigger-json-definition"></a>JSON-Definition für Zeitplantrigger
+Wenn Sie einen Zeitplantrigger erstellen, können Sie die Zeitplanung und Wiederholung mithilfe von JSON wie im Beispiel in diesem Abschnitt gezeigt festlegen. 
+
+Damit der Zeitplantrigger die Ausführung der Pipeline startet, verwenden Sie in der Triggerdefinition einen Pipelineverweis auf die jeweilige Pipeline. Pipelines und Trigger haben eine m:m-Beziehung. Mehrere Trigger können eine einzelne Pipeline starten. Ein einzelnder Trigger kann mehrere Pipelines starten.
 
 ```json
 {
@@ -174,7 +180,7 @@ Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in 
     "typeProperties": {
       "recurrence": {
         "frequency": <<Minute, Hour, Day, Week, Year>>,
-        "interval": <<int>>,             // optional, how often to fire (default to 1)
+        "interval": <<int>>,             // how often to fire
         "startTime": <<datetime>>,
         "endTime": <<datetime>>,
         "timeZone": "UTC"
@@ -215,10 +221,10 @@ Damit der Planer-Trigger die Ausführung der Pipeline startet, verwenden Sie in 
 >  Die **parameters**-Eigenschaft ist eine obligatorische Eigenschaft unter **pipelines**. Auch wenn für Ihre Pipeline keine Parameter verwendet werden, sollten Sie eine leere JSON-Datei für Parameter einfügen, da die Eigenschaft vorhanden sein muss.
 
 
-### <a name="overview-scheduler-trigger-schema"></a>Übersicht: Schema des Planer-Triggers
+### <a name="overview-scheduler-trigger-schema"></a>Übersicht: Schema des Zeitplantriggers
 Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten Elemente für die Wiederholung und Zeitplanung in einem Trigger:
 
-JSON-Eigenschaft |     Beschreibung
+JSON-Eigenschaft |     BESCHREIBUNG
 ------------- | -------------
 startTime | „startTime“ ist eine Datums-/Uhrzeitangabe. Bei einfachen Zeitplänen ist „startTime“ das erste Vorkommen. Bei komplexen Zeitplänen wird der Trigger frühestens bei „startTime“ gestartet.
 endTime | Gibt Datum und Uhrzeit für das Ende des Triggers an. Der Trigger wird nach diesem Zeitpunkt nicht ausgeführt. „endTime“ darf nicht in der Vergangenheit liegen.
@@ -228,6 +234,16 @@ frequency | Stellt die Einheit der Häufigkeit dar, mit der der Trigger wiederho
 interval | Das interval-Objekt ist eine positive ganze Zahl. Es gibt das Intervall für die Häufigkeit an, die bestimmt, wie oft der Trigger ausgeführt wird. Ist „interval“ also beispielsweise auf „3“ und „frequency“ auf „week“ festgelegt, wird der Trigger alle drei Wochen ausgeführt.
 schedule | Die Wiederholung eines Triggers mit einer bestimmten Häufigkeit wird auf der Grundlage eines Wiederholungszeitplans angepasst. Ein Zeitplan enthält Anpassungen auf der Grundlage von Minuten, Stunden, Wochentagen, Monatstagen und Wochennummer.
 
+
+## <a name="tumbling-window-trigger-vs-schedule-trigger"></a>Vergleich eines Triggers für ein rollierendes Fenster mit einem Zeitplantrigger
+Wenn der Trigger für ein rollierendes Fenster und der Zeitplantrigger jeweils auf Zeit-Heartbeats basieren, inwiefern unterscheiden sie sich dann?
+Für den Trigger für ein rollierendes Fenster:
+* **Abgleichszenarien**: Trigger für ein rollierendes Fenster unterstützen Abgleichszenarien, sodass Ausführungen für Fenster in der Vergangenheit geplant werden können. Zeitplantrigger können nur für Zeiträume ab dem gegenwärtigen Zeitpunkt ausgeführt werden.
+* **Zuverlässigkeit:** Bei Triggern für ein rollierendes Fenster werden Pipelineausführungen für alle Fenster ab einem Startdatum lückenlos mit einer Zuverlässigkeit von 100% geplant.
+* **Wiederholen**: Trigger für ein rollierendes Fenster verfügen über eine Wiederholungsfunktion. Für fehlgeschlagene Pipelineausführungen wird vom Benutzer im Rahmen der Triggerdefinition standardmäßig eine Wiederholungsrichtlinie mit dem Wert 0 oder 1 angegeben. Außerdem wird automatisch ein Wiederholungsversuch für Instanzen durchgeführt, wenn Ausführungen fehlschlagen, weil Einschränkungen in Bezug auf Parallelität, Server oder Drosselung bestehen. Hierzu gehören die Statuscodes 400 (Benutzerfehler), 429 (Zu viele Anforderungen) und 500 (Interner Serverfehler).
+* **Parallelität**: Mit Triggern für ein rollierendes Fenster können Benutzer explizit Parallelitätslimits für den Trigger festlegen (maximal 1 bis 50 parallel ausgelöste Pipelineausführungen).
+* **Variablen für Fensterstart- und -ende**: Für Trigger für ein rollierendes Fenster können Benutzer auf triggerOutputs().windowStartTime und triggerOutputs().windowEndTime als Triggersystemvariablen in der Triggerdefinition zugreifen, mit denen die Start- bzw. Endzeit für Fenster angegeben wird. Wenn Sie beispielsweise über einen Trigger für ein rollierendes Fenster verfügen, das jede Stunde ausgeführt wird, lautet dies für das Fenster von 1 Uhr bis 2 Uhr „triggerOutputs().WindowStartTime = 2017-09-01T01:00:00Z“ bzw. „triggerOutputs().WindowEndTime = 2017-09-01T02:00:00Z“.
+* **Beziehung zwischen Pipeline und Trigger**: Zeitplantrigger verfügen über eine n:m-Beziehung zu Pipelines. Ein Zeitplantrigger kann mehrere Pipelines auslösen. Trigger für ein rollierendes Fenster verfügen über eine 1:1-Beziehung zu Pipelines. Ein Trigger für ein rollierendes Fenster kann nur eine Pipeline auslösen.
 
 ### <a name="schedule-trigger-example"></a>Beispiel für Zeitplantrigger
 
@@ -263,15 +279,15 @@ schedule | Die Wiederholung eines Triggers mit einer bestimmten Häufigkeit wird
 }
 ```
 
-### <a name="overview-scheduler-trigger-schema-defaults-limits-and-examples"></a>Übersicht: Standardwerte, Einschränkungen und Beispiele Planer-Trigger-Schema
+### <a name="overview-scheduler-trigger-schema-defaults-limits-and-examples"></a>Übersicht: Standardwerte, Einschränkungen und Beispiele für Zeitplantrigger-Schema
 
 JSON-Name | Werttyp | Erforderlich | Standardwert | Gültige Werte | Beispiel
 --------- | ---------- | --------- | ------------- | ------------ | -------
-startTime | String | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | ```"startTime" : "2013-01-09T09:30:00-08:00"```
+startTime | Zeichenfolge | Ja | Keine | Datum/Uhrzeit (nach ISO 8601) | ```"startTime" : "2013-01-09T09:30:00-08:00"```
 recurrence | Objekt | Ja | Keine | Wiederholungsobjekt | ```"recurrence" : { "frequency" : "monthly", "interval" : 1 }```
-interval | Number | Nein | 1 | 1 bis 1000. | ```"interval":10```
-endTime | String | Ja | Keine | Datums-/Uhrzeitwert für einen Zeitpunkt in der Zukunft | `"endTime" : "2013-02-09T09:30:00-08:00"`
-schedule | Objekt | Nein | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }`
+interval | Number | Ja | Keine | 1 bis 1000. | ```"interval":10```
+endTime | Zeichenfolge | Ja | Keine | Datums-/Uhrzeitwert für einen Zeitpunkt in der Zukunft | `"endTime" : "2013-02-09T09:30:00-08:00"`
+schedule | Objekt | Nein  | Keine | Zeitplanobjekt | `"schedule" : { "minute" : [30], "hour" : [8,17] }`
 
 ### <a name="deep-dive-starttime"></a>Ausführliche Betrachtung: „startTime“
 Die folgende Tabelle verdeutlicht, wie „startTime“ die Ausführung eines Triggers beeinflusst:
@@ -283,7 +299,7 @@ Startzeit in der Zukunft oder Gegenwart | Wird einmalig zur angegebenen Startzei
 
 Das folgende Beispiel veranschaulicht, was passiert, wenn „startTime“ in der Vergangenheit liegt und nur „recurrence“, aber kein Zeitplan angegeben ist. In diesem Beispiel wird davon ausgegangen, dass die aktuelle Zeit `2017-04-08 13:00` ist, „startTime“ auf `2017-04-07 14:00` festgelegt ist und für „recurrence“ ein Zwei-Tages-Intervall (mit „frequency: day“ und „interval: 2“) angegeben wurde. Beachten Sie, dass „startTime“ in der Vergangenheit liegt.
 
-Unter diesen Umständen erfolgt die erste Ausführung um `2017-04-09 at 14:00`. Das Scheduler-Modul berechnet die Ausführungen auf Grundlage der Startzeit. In der Vergangenheit liegende Instanzen werden verworfen. Das Modul verwendet die nächste in der Zukunft liegende Instanz. In diesem Fall ist „startTime“ auf `2017-04-07 at 2:00pm` festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also um `2017-04-09 at 2:00pm`.
+Unter diesen Umständen erfolgt die erste Ausführung um `2017-04-09 at 14:00`. Die Scheduler-Engine berechnet die Ausführungen auf Grundlage der Startzeit. In der Vergangenheit liegende Instanzen werden verworfen. Die Engine verwendet die nächste in der Zukunft liegende Instanz. In diesem Fall ist „startTime“ auf `2017-04-07 at 2:00pm` festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also um `2017-04-09 at 2:00pm`.
 
 Die erste Ausführungszeit ist auch dieselbe, wenn als Startzeit `2017-04-05 14:00` oder `2017-04-01 14:00` angegeben ist. Nach der ersten Ausführung werden nachfolgende Ausführungen anhand des Zeitplans berechnet. Daher finden sie um `2017-04-11 at 2:00pm`, dann `2017-04-13 at 2:00pm` und dann `2017-04-15 at 2:00pm`usw. statt.
 
@@ -299,13 +315,13 @@ Bei Angabe mehrerer Zeitplanelemente werden diese in absteigender Reihenfolge au
 Die folgende Tabelle enthält eine ausführliche Beschreibung der Zeitplanelemente:
 
 
-JSON-Name | Beschreibung | Gültige Werte
+JSON-Name | BESCHREIBUNG | Gültige Werte
 --------- | ----------- | ------------
-minutes | Minuten der Stunde, zu denen der Trigger ausgeführt wird | <ul><li>Integer</li><li>Array mit ganzen Zahlen</li></ul>
-hours | Stunden des Tages, zu denen der Trigger ausgeführt wird | <ul><li>Integer</li><li>Array mit ganzen Zahlen</li></ul>
-weekDays | Tage der Woche, an denen der Trigger ausgeführt wird Kann nur bei wöchentlicher Häufigkeit angegeben werden. | <ul><li>Montag, Dienstag, Mittwoch, Donnerstag, Freitag, Samstag und Sonntag</li><li>Array mit beliebigen Werten (maximale Arraygröße: 7)</li></p>Keine Beachtung der Groß-/Kleinschreibung</p>
+minutes | Minuten der Stunde, zu denen der Trigger ausgeführt wird | <ul><li>Array mit ganzen Zahlen</li></ul>
+hours | Stunden des Tages, zu denen der Trigger ausgeführt wird | <ul><li>Array mit ganzen Zahlen</li></ul>
+weekDays | Tage der Woche, an denen der Trigger ausgeführt wird Kann nur bei wöchentlicher Häufigkeit angegeben werden. | <ul><li>Array mit beliebigen folgenden Werten (maximale Arraygröße: 7)<ul><li>Montag</li><li>Dienstag</li><li>Mittwoch</li><li>Donnerstag</li><li>Freitag</li><li>Samstag</li><li>Sonntag</li></ul></li></p>Keine Beachtung der Groß-/Kleinschreibung</p>
 monthlyOccurrences | Bestimmt, an welchen Tagen im Monat der Trigger ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. | Array mit monthlyOccurence-Objekten: `{ "day": day,  "occurrence": occurence }` <p> Der Tag ist der Wochentag, an dem der Trigger ausgeführt wird. `{Sunday}` steht beispielsweise für jeden Sonntag im Monat. Erforderlich.<p>Das Vorkommen steht für den Tag innerhalb des Monats. Mit `{Sunday, -1}` wird beispielsweise der letzte Sonntag des Monats angegeben. Optional.
-monthDays | Tag des Monats, an dem der Trigger ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. | <ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31</li><li>Ein Array von Werten</li>
+monthDays | Tag des Monats, an dem der Trigger ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. | <ul><li>Ein Array mit den folgenden Werten</li><ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31</li></ul></ul> |
 
 
 ## <a name="examples-recurrence-schedules"></a>Beispiele: Wiederholungszeitpläne
@@ -313,7 +329,7 @@ Dieser Abschnitt enthält verschiedene Beispiele für Wiederholungszeitpläne, b
 
 Bei den Beispielzeitplänen wird jeweils davon ausgegangen, dass „interval“ auf „1“ festgelegt ist. Darüber hinaus wird davon ausgegangen, dass für den Zeitplan jeweils eine passende Häufigkeit angegeben ist. Beispielsweise kann der Zeitplan bei Angabe einer täglichen Häufigkeit nicht mit „monthDays“ angepasst werden. Diese Einschränkungen werden in der Tabelle im vorhergehenden Abschnitt erwähnt. 
 
-Beispiel | Beschreibung
+Beispiel | BESCHREIBUNG
 ------- | -----------
 `{"hours":[5]}` | Tägliche Ausführung um 5:00 Uhr
 `{"minutes":[15], "hours":[5]}` | Tägliche Ausführung um 5:15 Uhr
@@ -346,6 +362,8 @@ Beispiel | Beschreibung
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Arbeiten Sie die folgenden Tutorials durch: 
+Arbeiten Sie die folgenden Tutorials durch:
 
 - [Schnellstart: Erstellen einer Data Factory mithilfe von .NET](quickstart-create-data-factory-dot-net.md)
+- [Erstellen eines Triggers in Azure Data Factory, der eine Pipeline gemäß einem Zeitplan ausführt](how-to-create-schedule-trigger.md)
+- [How to: Create a Tumbling Window Trigger](how-to-create-tumbling-window-trigger.md) (Erstellen eines Triggers, der eine Pipeline in einem rollierenden Fenster ausführt)

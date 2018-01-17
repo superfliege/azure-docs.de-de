@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/17/2017
 ms.author: juliako
-ms.openlocfilehash: e3090da9b2c5b8f99545a1f7f9601bfd8d5221f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 707d5db04d66760a12d0c947c8a86347fd0c73d9
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Hochladen von Dateien in ein Media Services-Konto mithilfe des Diensts „Aspera Server On Demand“ in Azure
 
@@ -28,12 +28,12 @@ ms.lasthandoff: 10/11/2017
   
 **Aspera Server On Demand** für Azure kann über den [Azure Marketplace](https://azure.microsoft.com/en-us/marketplace/) erworben werden. Melden Sie sich beim Azure Marketplace bitte mit Ihrer Windows Live ID an, wenn Sie **Aspera Server On Demand** für Azure erwerben möchten.
 
-In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie in Azure mithilfe des Diensts **Aspera Server On Demand** Dateien in ein Speicherkonto hochladen, das einem Media Services-Konto zugeordnet ist. 
+In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie in Azure mithilfe des Diensts **Aspera Server On-Demand** Dateien in ein Speicherkonto hochladen, das einem Media Services-Konto zugeordnet ist. 
 
 Ein Beispiel für die Verwendung von Azure-Funktionen mit Aspera und Media Services finden Sie [hier](https://github.com/Azure-Samples/media-services-dotnet-functions-integration/tree/master/103-aspera-ingest).
 
 >[!NOTE]
->Mit Azure Media Services-Medienprozessoren (MPs) können nur Dateien bis zu einer bestimmten Größe verarbeitet werden. Ausführliche Informationen zur Dateigrößenbeschränkung finden Sie in [diesem Thema](media-services-quotas-and-limitations.md).
+>Mit Azure Media Services-Medienprozessoren (MPs) können nur Dateien bis zu einer bestimmten Größe verarbeitet werden. Ausführliche Informationen zur Dateigrößenbeschränkung finden Sie in [diesem Artikel](media-services-quotas-and-limitations.md).
 >
 
 ## <a name="prerequisites"></a>Voraussetzungen 
@@ -56,7 +56,7 @@ Melden Sie sich beim Azure Marketplace an, und gehen Sie anschließend wie hier 
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera002.png)
 
-3. Geben Sie die spezifischen Informationen für Ihr Server On Demand-Abonnement an.
+3. Geben Sie die spezifischen Informationen für Ihr Server On-Demand-Abonnement an.
 
    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera003.png)
 
@@ -118,7 +118,7 @@ Melden Sie sich beim Azure Marketplace an, und gehen Sie anschließend wie hier 
 
     ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 
 In diesem Artikel wurden die folgenden Ressourcen erwähnt: 
 

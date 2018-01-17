@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: renash
-ms.openlocfilehash: 712f66ade5709311721e5a4a8416f305f2e16e6b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: f96aa9fe12aba28e1ac3429f012419341bdf92c1
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="introduction-to-azure-files"></a>Einführung in Azure Files
 Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (auch als Common Internet File System oder CIFS bezeichnet) zugegriffen werden kann. Azure-Dateifreigaben können gleichzeitig durch die Cloud oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. Außerdem können Azure-Dateifreigaben auf Windows Server-Instanzen per Azure-Dateisynchronisierung (Vorschauversion) zwischengespeichert werden, um in der Nähe des Datennutzungsorts für schnellen Zugriff zu sorgen.
@@ -32,18 +32,18 @@ Azure Files bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die 
 Verwendungsmöglichkeiten für Azure-Dateifreigaben:
 
 * **Ersetzen oder Erweitern von lokalen Dateiservern**:  
-    Azure Files kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig ersetzen bzw. erweitern. Gängige Betriebssysteme wie Windows, macOS und Linux auf der ganzen Welt können Azure-Dateifreigaben direkt bereitstellen. Azure-Dateifreigaben können auch per Azure-Dateisynchronisierung auf Windows Server-Instanzen repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine leistungsstarke und verteilte Zwischenspeicherung zu erzielen.
+    Azure Files kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig ersetzen bzw. erweitern. Gängige Betriebssysteme wie Windows, macOS und Linux auf der ganzen Welt können Azure-Dateifreigaben direkt bereitstellen. Azure-Dateifreigaben können auch per Azure File Sync auf Windows Server-Instanzen repliziert werden (entweder lokal oder in der Cloud), um für die Daten am Ort ihrer Verwendung eine hohe Leistung und eine verteilte Zwischenspeicherung zu erzielen.
 
 * **Lift &amp; Shift-Anwendungen:**  
     Azure Files vereinfacht Lift & Shift-Vorgänge in die Cloud für Anwendungen, bei denen erwartet wird, dass auf einer Dateifreigabe Dateianwendungs- oder Benutzerdaten gespeichert werden. Azure Files ermöglicht nicht nur das klassische Lift & Shift-Szenario, bei dem sowohl die Anwendung als auch die dazugehörigen Daten nach Azure verschoben werden, sondern auch das Lift & Shift-Hybridszenario, bei dem die Anwendungsdaten nach Azure Files verschoben werden und die Anwendung weiter lokal ausgeführt wird. 
 
 * **Einfachere Cloudentwicklung:**  
-    Azure Files kann auch auf verschiedene Arten genutzt werden, um neue Cloudentwicklungsprojekte zu vereinfachen. Beispiel:
+    Azure Files kann auch auf verschiedene Arten genutzt werden, um neue Cloudentwicklungsprojekte zu vereinfachen. Beispiel: 
     * **Gemeinsame Anwendungseinstellungen:**  
         Bei verteilten Anwendungen befinden sich die Konfigurationsdateien häufig an einem zentralen Ort, sodass viele Anwendungsinstanzen darauf zugreifen können. Anwendungsinstanzen können ihre Konfiguration über die Datei-REST-API laden, und Menschen können je nach Bedarf darauf zugreifen, indem sie die SMB-Freigabe lokal bereitstellen.
 
     * **Diagnosefreigabe:**  
-        Eine Azure-Dateifreigabe ist für Cloudanwendungen ein guter Ort zum Ablegen von Schreibprotokollen, Metriken und Absturzabbildern. Protokolle können von den Anwendungsinstanzen über die Datei-REST-API geschrieben werden, und Entwickler können darauf zugreifen, indem sie die Dateifreigabe auf ihrem lokalen Computer bereitstellen. Dies führt zu einer hohen Flexibilität, da Entwickler sich mit der Cloudentwicklung beschäftigen können, ohne dafür ihre vertrauten und bevorzugten Tools aufgeben zu müssen.
+        Eine Azure-Dateifreigabe ist für Cloudanwendungen ein guter Ort zum Schreiben von Protokollen, Metriken und Absturzabbildern. Protokolle können von den Anwendungsinstanzen über die Datei-REST-API geschrieben werden, und Entwickler können darauf zugreifen, indem sie die Dateifreigabe auf ihrem lokalen Computer bereitstellen. Dies führt zu einer hohen Flexibilität, da Entwickler sich mit der Cloudentwicklung beschäftigen können, ohne dafür ihre vertrauten und bevorzugten Tools aufgeben zu müssen.
 
     * **Entwickeln/Testen/Debuggen:**  
         Für die Arbeit an virtuellen Computern in der Cloud benötigen Entwickler und Administratoren häufig verschiedene Tools oder Hilfsprogramme. Das Kopieren dieser Hilfsprogramme und Tools auf die einzelnen VMs kann sehr zeitaufwändig sein. Indem eine Azure-Dateifreigabe lokal auf den VMs bereitgestellt wird, können Entwickler und Administratoren schnell auf ihre Tools und Hilfsprogramme zugreifen, ohne sie kopieren zu müssen.
