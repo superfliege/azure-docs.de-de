@@ -6,14 +6,14 @@ keywords: DSC, Konfiguration, Automatisierung
 author: KrisBash
 ms.author: krbash
 ms.date: 12/17/2017
-ms.topic: hero-article
+ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e9e75f1714217f452d55aba49929fec767df3353
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 7f35acc0d8d553a3f5d1576ae18cbafd1dcbb225
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Linux-Computers per Desired State Configuration
 
@@ -31,7 +31,7 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 Melden Sie sich unter „https://portal.azure.com“ an Azure an.
 
 ## <a name="onboard-a-virtual-machine"></a>Integrieren eines virtuellen Computers
-Es gibt viele verschiedene Methoden zum Integrieren eines Computers und Aktivieren der Desired State Configuration. In dieser Schnellstartanleitung wird die Integration über ein Automation-Konto behandelt. Weitere Informationen zu den unterschiedlichen Methoden zum Integrieren Ihrer Computer in die Desired State Configuration finden Sie im Artikel zur [Integration](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-onboarding).
+Es gibt viele verschiedene Methoden zum Integrieren eines Computers und Aktivieren der Desired State Configuration. In dieser Schnellstartanleitung wird die Integration über ein Automation-Konto behandelt. Weitere Informationen zu den unterschiedlichen Methoden zum Integrieren Ihrer Computer in die Desired State Configuration finden Sie im Artikel zur [Integration](https://docs.microsoft.com/azure/automation/automation-dsc-onboarding).
 
 1. Wählen Sie links im Azure-Portal die Option **Automation-Konten**. Falls die Option im linken Bereich nicht sichtbar ist, können Sie auf **Alle Dienste** klicken und in den angezeigten Ergebnissen danach suchen.
 1. Wählen Sie in der Liste ein Automation-Konto aus.
@@ -39,7 +39,7 @@ Es gibt viele verschiedene Methoden zum Integrieren eines Computers und Aktivier
 1. Klicken Sie auf die Menüoption **Azure-VM hinzufügen**.
 1. Suchen Sie nach dem virtuellen Computer, für den Sie DSC aktivieren möchten. Sie können das Suchfeld verwenden und die Optionen filtern, um einen bestimmten virtuellen Computer zu ermitteln.
 1. Klicken Sie auf den virtuellen Computer, und wählen Sie dann die Option **Verbinden**.
-1. Wählen Sie die gewünschten DSC-Einstellungen für den virtuellen Computer aus. Wenn Sie bereits eine Konfiguration vorbereitet haben, können Sie sie unter *Name der Knotenkonfiguration* angeben. Sie können den [Konfigurationsmodus](https://docs.microsoft.com/en-us/powershell/dsc/metaconfig) festlegen, um das Konfigurationsverhalten für den Computer zu steuern.
+1. Wählen Sie die gewünschten DSC-Einstellungen für den virtuellen Computer aus. Wenn Sie bereits eine Konfiguration vorbereitet haben, können Sie sie unter *Name der Knotenkonfiguration* angeben. Sie können den [Konfigurationsmodus](https://docs.microsoft.com/powershell/dsc/metaconfig) festlegen, um das Konfigurationsverhalten für den Computer zu steuern.
 1. Klicken Sie auf **OK**
 
 ![Integrieren einer Azure-VM in DSC](./media/automation-quickstart-dsc-configuration/dsc-onboard-azure-vm.png)
@@ -105,7 +105,7 @@ Gehen Sie wie folgt vor, um die Konfiguration zu importieren:
 
 ## <a name="compile-a-configuration"></a>Kompilieren einer Konfiguration
 
-DSC-Konfigurationen müssen in eine Kontenkonfiguration (MOF-Dokument) kompiliert werden, bevor sie einem Knoten zugewiesen werden. Bei der Kompilierung wird die Konfiguration überprüft, und es können Parameterwerte eingegeben werden. Weitere Informationen zum Kompilieren einer Konfiguration finden Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile).
+DSC-Konfigurationen müssen in eine Kontenkonfiguration (MOF-Dokument) kompiliert werden, bevor sie einem Knoten zugewiesen werden. Bei der Kompilierung wird die Konfiguration überprüft, und es können Parameterwerte eingegeben werden. Weitere Informationen zum Kompilieren einer Konfiguration finden Sie unter [Kompilieren von Konfigurationen in Azure Automation DSC](https://docs.microsoft.com/azure/automation/automation-dsc-compile).
 
 Gehen Sie wie folgt vor, um die Konfiguration zu kompilieren:
 
@@ -141,6 +141,6 @@ In dieser Schnellstartanleitung haben Sie eine Linux-VM in DSC integriert, eine 
 > [!div class="nextstepaction"]
 > [Fortlaufende Bereitstellung auf virtuellen Computern mit Automation DSC und Chocolatey](./automation-dsc-cd-chocolatey.md)
 
-* Weitere Informationen zu PowerShell Desired State Configuration finden Sie unter [Windows PowerShell DSC – Übersicht](https://docs.microsoft.com/en-us/powershell/dsc/overview).
-* Weitere Informationen zur Verwaltung von Automation DSC mit PowerShell finden Sie unter [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/?view=azurermps-5.0.0).
-* Informationen zum Weiterleiten von DSC-Berichten an Log Analytics für Berichterstellungs- und Warnzwecke finden Sie unter [Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-diagnostics). 
+* Weitere Informationen zu PowerShell Desired State Configuration finden Sie unter [Windows PowerShell DSC – Übersicht](https://docs.microsoft.com/powershell/dsc/overview).
+* Weitere Informationen zur Verwaltung von Automation DSC mit PowerShell finden Sie unter [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0).
+* Informationen zum Weiterleiten von DSC-Berichten an Log Analytics für Berichterstellungs- und Warnzwecke finden Sie unter [Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics). 
