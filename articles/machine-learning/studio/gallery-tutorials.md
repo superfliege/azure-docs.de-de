@@ -1,6 +1,6 @@
 ---
-title: Tutorials im Cortana Intelligence-Katalog | Microsoft Docs
-description: Entdecken und Freigeben von Tutorials im Cortana Intelligence-Katalog.
+title: Tutorials im Azure AI-Katalog | Microsoft-Dokumente
+description: Entdecken und Freigeben von Tutorials im Azure AI-Katalog.
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: eee86899c14905655c4217d5fcf3865ca594366f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be5ecf81c71dbf39593b2afb46ac0ae09ede466a
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-tutorials-in-cortana-intelligence-gallery"></a>Entdecken und Freigeben von Tutorials im Cortana Intelligence-Katalog
+# <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Entdecken und Freigeben von Tutorials im Azure AI-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="tutorials"></a>Tutorials
-Der Cortana Intelligence-Katalog bietet mehrere [Tutorials](https://gallery.cortanaintelligence.com/tutorials), die Ihnen die Technologien und Konzepte für maschinelles Lernen näherbringen. In den Tutorials können auch fortgeschrittene Methoden für Probleme im Zusammenhang mit maschinellem Lernen beschrieben sein.
+Der Azure AI-Katalog bietet mehrere [Tutorials](https://gallery.cortanaintelligence.com/tutorials), die Ihnen die Technologien und Konzepte für maschinelles Lernen näherbringen. In den Tutorials können auch fortgeschrittene Methoden für Probleme im Zusammenhang mit maschinellem Lernen beschrieben sein.
 
 ## <a name="discover"></a>Entdecken
 Zum Durchsuchen der Tutorials im [Katalog](http://gallery.cortanaintelligence.com) wählen Sie unter **Mehr** die Option **Tutorials** aus.
@@ -72,7 +72,7 @@ Sie können ein Tutorial dem Katalog hinzufügen, um anderen Benutzern dabei zu 
 
 7. Klicken Sie auf **Erstellen**.
 
-Ihr Tutorial befindet sich jetzt im Cortana Intelligence-Katalog. Ihre Tutorials werden auf der Seite Ihres Kontos unter der Registerkarte **Elemente** angezeigt.
+Ihr Tutorial befindet sich nun im Azure AI-Katalog. Ihre Tutorials werden auf der Seite Ihres Kontos unter der Registerkarte **Elemente** angezeigt.
 
 **[Wechseln zum Katalog](http://gallery.cortanaintelligence.com)**
 

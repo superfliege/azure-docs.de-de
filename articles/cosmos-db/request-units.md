@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: mimig
-ms.openlocfilehash: 57e8274d67bff86832d9cd070b781ade6575dee7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: c7aadb4e535ed221f882f251324b6d4e633c2d5e
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 Jetzt verfügbar: [Rechner für Anforderungseinheiten](https://www.documentdb.com/capacityplanner) in Azure Cosmos DB. Erfahren Sie mehr unter [Schätzen der Durchsatzanforderungen](request-units.md#estimating-throughput-needs).
@@ -55,7 +55,7 @@ Wir empfehlen Ihnen, sich zunächst das folgende Video anzusehen, in dem Aravind
 ## <a name="specifying-request-unit-capacity-in-azure-cosmos-db"></a>Angeben der Kapazität der Anforderungseinheiten in Azure Cosmos DB
 Wenn Sie eine neue Sammlung, eine Tabelle oder einen Graph beginnen, geben Sie die Anzahl von Anforderungseinheiten (Request Units, RUs) pro Sekunde an, die reserviert werden sollen. Basierend auf dem bereitgestellten Durchsatz ordnet Azure Cosmos DB physische Partitionen zum Hosten Ihrer Sammlung zu, und Daten werden gemäß ihres Wachstums zwischen Partitionen aufgeteilt/neu verteilt.
 
-Azure Cosmos DB erfordert die Angabe eines Partitionsschlüssels, wenn eine Sammlung mit 2.500 oder mehr Anforderungseinheiten bereitgestellt wird. Ein Partitionsschlüssel ist auch erforderlich, um den Durchsatz Ihrer Sammlung künftig auf über 2.500 Anforderungseinheiten zu skalieren. Das Konfigurieren eines [Partitionsschlüssels](partition-data.md) beim Erstellen eines Containers wird daher unabhängig von Ihrem ursprünglichen Durchsatz dringend empfohlen. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Sammlung/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
+Azure Cosmos DB-Container können als „mit fester Größe“ oder als „unbegrenzt“ erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RU/s und einen [Partitionsschlüssel](partition-data.md) angeben. Da Ihre Daten möglicherweise auf mehrere Partitionen aufgeteilt werden müssen, ist es notwendig, einen Partitionsschlüssel mit hoher Kardinalität (Hunderte bis Millionen von unterschiedlichen Werten) auszuwählen. Durch Auswahl eines Partitionsschlüssels mit vielen unterschiedlichen Werten stellen Sie sicher, dass Sammlung/Tabelle/Graph und Anforderungen von Azure Cosmos DB einheitlich skaliert werden können. 
 
 > [!NOTE]
 > Ein Partitionsschlüssel ist eine logische Grenze, keine physische. Daher müssen Sie die Anzahl der unterschiedlichen Partitionsschlüsselwerte nicht beschränken. Es ist in der Tat besser, mehr unterschiedliche Partitionschlüsselwerte zu haben, da Azure Cosmos DB dann mehr Optionen für den Lastenausgleich zur Verfügung stehen.
@@ -201,7 +201,7 @@ Vor diesem Hintergrund besteht eine Methode zum Abschätzen des von der Anwendun
 > 
 > 
 
-Beispiel:
+Beispiel: 
 
 1. Notieren Sie die berechneten Anforderungseinheiten für das Erstellen (Einfügen) eines typischen Elements. 
 2. Notieren Sie die berechneten Anforderungseinheiten für das Lesen eines typischen Elements.
@@ -210,7 +210,7 @@ Beispiel:
 5. Notieren Sie die berechneten Anforderungseinheiten für benutzerdefinierte Skripts (gespeicherte Prozeduren, Trigger, benutzerdefinierte Funktionen), die von der Anwendung genutzt werden.
 6. Berechnen Sie die erforderlichen Anforderungseinheiten anhand der geschätzten Anzahl von Vorgängen, die erwartungsgemäß pro Sekunde ausgeführt werden.
 
-### <a id="GetLastRequestStatistics"></a>Verwenden des GetLastRequestStatistics-Befehls von API für MongoDB
+## <a id="GetLastRequestStatistics"></a>Verwenden des GetLastRequestStatistics-Befehls von API für MongoDB
 API für MongoDB unterstützt den benutzerdefinierten Befehl *getLastRequestStatistics*, um die Anforderungsgebühr für bestimmte Vorgänge abzurufen.
 
 Führen Sie z.B. in der Mongo Shell den Vorgang aus, für den Sie die Anforderungsgebühr überprüfen möchten.
@@ -310,7 +310,7 @@ Die folgende Tabelle zeigt die ungefähre Anzahl berechneter Anforderungseinheit
 
 Diese Tabelle zeigt darüber hinaus die ungefähre Anzahl berechneter Anforderungseinheiten für normale Abfragen, die in der Anwendung verwendet werden:
 
-| Abfrage | Berechnete Anforderungseinheiten | Anzahl zurückgegebener Elemente |
+| Abfragen | Berechnete Anforderungseinheiten | Anzahl zurückgegebener Elemente |
 | --- | --- | --- |
 | Nahrungsmittel nach ID auswählen |~2,5 RUs |1 |
 | Nahrungsmittel nach Hersteller auswählen |~7 RUs |7 |

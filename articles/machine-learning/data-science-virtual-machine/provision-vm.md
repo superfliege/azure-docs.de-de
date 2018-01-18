@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: d0a9926f49e2be66a9d51a1bb0e4e19342205880
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: d71d8e44d0327515ed302c5c902ce87587e36c7d
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen der Data Science Virtual Machine für Windows in Azure
 Der virtuelle Microsoft Data Science-Computer ist das Image eines virtuellen Windows Azure-Computers (VM), das vorinstalliert und mit einigen gängigen Tools konfiguriert ist, die häufig für Datenanalysen und Machine Learning verwendet werden. Die enthaltenen Tools sind:
@@ -37,7 +37,8 @@ Der virtuelle Microsoft Data Science-Computer ist das Image eines virtuellen Win
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): Ein Tool, das eine schnelle und präzise Boosted Tree-Implementierung ermöglicht.
   * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily, R-Analysetool zum einfachen Lernen): Ein Tool, das die ersten Schritte von Datenanalysen und Machine Learning in R vereinfacht, indem eine GUI-basierte Datenuntersuchung und -modellierung mit automatischer R-Codegenerierung verwendet wird.
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/): Eine Software für visuelles Data Mining und Machine Learning in Java.
-  * [Apache Drill](https://drill.apache.org/): Ein schemaloses SQL-Abfragemodul für Hadoop, NoSQL und Cloud Storage.  Unterstützt ODBC- und JDBC-Schnittstellen, um NoSQL- und Dateiabfragen mit BI-Standardtools wie PowerBI, Excel und Tableau zu ermöglichen.
+  * 
+            [Apache Drill](https://drill.apache.org/): Eine schemalose SQL-Abfrage-Engine für Hadoop, NoSQL und Cloud Storage.  Unterstützt ODBC- und JDBC-Schnittstellen, um NoSQL- und Dateiabfragen mit BI-Standardtools wie PowerBI, Excel und Tableau zu ermöglichen.
 * Bibliotheken in R und Python zur Verwendung in Azure Machine Learning und anderen Azure-Diensten
 * Git einschließlich Git Bash für den Einsatz mit Quellcoderepositorys einschließlich GitHub, Visual Studio Team Services
 * Windows-Ports einiger gängiger Linux-Befehlszeilenprogramme (einschließlich awk, sed, perl, grep, find, wget, curl usw.), auf die über die Befehlszeile zugegriffen werden kann. 
@@ -200,5 +201,5 @@ Mit den folgenden Schritten können Sie noch mehr lernen und entdecken.
 * Navigieren Sie zu **C:\Programme\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**, um Beispiele für die RevoScaleR-Bibliothek in R zu finden, die Datenanalysen auf Unternehmensebene unterstützt.  
 * Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](http://aka.ms/dsvmtenthings)
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)vollständige Analyselösungen systematisch erstellen.
-* Besuchen Sie die [Azure Machine Learning Gallery](http://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol im **Startmenü** und auf dem Desktop der virtuellen Maschine dieser Galerie bereitgestellt.
+* Besuchen Sie den [Azure AI-Katalog](http://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol im **Startmenü** und auf dem Desktop der virtuellen Maschine dieser Galerie bereitgestellt.
 

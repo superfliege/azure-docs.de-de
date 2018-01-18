@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2017
+ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: cf690b7e5b0a2b19282c1655b6dc32e9eec6884c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 Die Kapazitätsplanung ist ein wichtiger Schritt bei jeder Produktionsbereitstellung. Nachfolgend sind einige Aspekte aufgeführt, die Sie dabei berücksichtigen müssen.
@@ -69,7 +69,7 @@ Cluster mit mehreren Knotentypen verfügen über einen primären Knotentyp. Die 
 
 Für diese Berechtigung können die folgenden Werte festgelegt werden:
 
-* Gold: Die Infrastrukturaufträge können für eine Dauer von zwei Stunden pro UD angehalten werden. Die Dauerhaftigkeit „Gold“ kann nur für VM-SKUs mit vollständigen Knoten wie D15_V2, G5 usw. aktiviert werden.
+* Gold: Die Infrastrukturaufträge können für eine Dauer von zwei Stunden pro UD angehalten werden. Die Dauerhaftigkeitsstufe „Gold“ kann nur für Full-Node-VM-SKUs wie L32s, GS5, G5, DS15_v2, D15_v2 usw. aktiviert werden. (Normalerweise handelt es sich bei allen unter „http://aka.ms/vmspecs“ aufgeführten Knoten, die mit „Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird“ gekennzeichnet sind, um Full-Node-VMs).
 * Silber – Die Infrastrukturaufträge können für eine Dauer von 10 Minuten pro UD angehalten werden. Diese Option ist für alle virtuellen Standardcomputer ab einem Kern verfügbar.
 * Bronze: Keine Berechtigungen Dies ist die Standardoption. Verwenden Sie diese Dauerhaftigkeitsstufe nur für Knotentypen, die _nur_ zustandslose Workloads ausführen. 
 

@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: haining;garye
-ms.openlocfilehash: 848d0a0882d538cadadf3172a20e628799488042
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: f7c839a8471dc54daebc47d0bb5a450358f5250d
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen
 **Was sind Cortana Intelligence-Wettbewerbe?**
 
-Die Microsoft Cortana Intelligence-Wettbewerbe ermöglichen es uns, eine globale Community Datenbegeisterter durch das gemeinsame Lösen einiger der komplexesten Data Science-Probleme der Welt zu vereinen. Cortana Intelligence-Wettbewerbe ermöglichen Datenbegeisterten aus der ganzen Welt, zu wetteifern und äußerst präzise und intelligente Data Science-Modelle zu erstellen. Unsere ausgerichteten Wettbewerbe basieren auf eindeutigen Datasets, die erstmals öffentlich verfügbar gemacht wurden. Teilnehmer können Preise gewinnen oder über unsere öffentliche Bestenliste (Top 10) Anerkennung erhalten. Klicken Sie [hier](http://aka.ms/CIComp) , um auf die Wettbewerbshomepage zu gelangen.
+Die Microsoft Cortana Intelligence-Wettbewerbe vereinen eine globale Community Datenbegeisterter durch das gemeinsame Lösen einiger der komplexesten Data Science-Probleme der Welt. Cortana Intelligence-Wettbewerbe ermöglichen Datenbegeisterten aus der ganzen Welt, zu wetteifern und äußerst präzise und intelligente Data Science-Modelle zu erstellen. Diese ausgerichteten Wettbewerbe basieren auf eindeutigen Datasets, die erstmals öffentlich verfügbar gemacht wurden. Teilnehmer können Preise gewinnen oder über die öffentliche Bestenliste (Top 10) Anerkennung erhalten. Sie können über [aka.ms/CIComp](http://aka.ms/CIComp) auf die Wettbewerbshomepage zugreifen.
 
 **Wie oft wird Microsoft neue Wettbewerbe veröffentlichen?**
 
@@ -31,29 +31,29 @@ Wir werden regelmäßig Erstanbieterwettbewerbe von Microsoft starten (etwa alle
 
 **Wo kann ich allgemeine Fragen zu Data Science stellen?**
 
-Bitte verwenden Sie unser [Microsoft Azure Machine Learning-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning).
+Allgemeine Fragen können Sie im [Microsoft Azure Machine Learning-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning) stellen.
 
 **Wie kann ich an einem Wettbewerb teilnehmen?**
 
-Greifen Sie in der [Cortana Intelligence Gallery](https://gallery.cortanaintelligence.com/) auf die Startseite mit den [Competitions](https://gallery.cortanaintelligence.com/competitions) (Wettbewerben) zu, oder besuchen Sie [http://aka.ms/CIComp](http://aka.ms/CIComp). Auf der Startseite sind alle aktuellen Wettbewerbe aufgeführt. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs.
+Greifen Sie im [Azure AI-Katalog](https://gallery.cortanaintelligence.com/) auf die Homepage mit den [Competitions](https://gallery.cortanaintelligence.com/competitions) (Wettbewerben) zu, oder besuchen Sie [http://aka.ms/CIComp](http://aka.ms/CIComp). Auf der Startseite sind alle aktuellen Wettbewerbe aufgeführt. Auf der Anmeldeseite jedes Wettbewerbs finden Sie genaue Anweisungen und Teilnahmeregeln, Preise und die Dauer des Wettbewerbs.
 
-1. Suchen Sie nach dem Wettbewerb, an dem Sie teilnehmen möchten. Lesen Sie sich alle Anweisungen durch, und sehen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche **Enter Competition** (Am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Sie werden wahrscheinlich den Großteil Ihrer Zeit für diesen Schritt aufwenden.   
+1. Suchen Sie nach dem Wettbewerb, an dem Sie teilnehmen möchten, lesen Sie sich alle Anweisungen durch, und sehen Sie sich das Videotutorial an. Klicken Sie anschließend auf die Schaltfläche **Enter Competition** (Am Wettbewerb teilnehmen), um das Starterexperiment in Ihren vorhandenen Azure Machine Learning-Arbeitsbereich zu kopieren. Wenn Sie noch keinen Zugriff auf einen Arbeitsbereich haben, müssen Sie vorab einen erstellen. Führen Sie das Starterexperiment aus und beobachten Sie die Leistungsmetrik. Nutzen Sie anschließend Ihre Kreativität, um die Leistung des Modells zu verbessern. Sie werden wahrscheinlich den Großteil Ihrer Zeit für diesen Schritt aufwenden.   
 
-2. Erstellen Sie mit dem trainierten Modell aus dem Starterexperiment ein Vorhersageexperiment. Passen Sie anschließend sorgfältig das Ein- und Ausgabeschema des Webdiensts an, um sicherzustellen, dass diese den in der Wettbewerbsdokumentation angegebenen Anforderungen entsprechen. Das Tutorialdokument enthält normalerweise ausführliche Anleitungen. Sie können sich, falls vorhanden, auch das Videotutorial ansehen.   
+2. Erstellen Sie mit dem trainierten Modell aus dem Starterexperiment ein Vorhersageexperiment. Passen Sie anschließend sorgfältig das Ein- und Ausgabeschema des Webdiensts an, um sicherzustellen, dass diese den in der Wettbewerbsdokumentation angegebenen Anforderungen entsprechen. Das Tutorialdokument enthält generell ausführliche Anleitungen hierzu. Sie können sich, falls vorhanden, auch das Videotutorial ansehen.   
 
 3. Stellen Sie aus Ihrem Vorhersageexperiment heraus einen Webdienst bereit. Testen Sie Ihren Webdienst mithilfe der Schaltfläche **Test** oder der für Sie automatisch erstellten Excel-Vorlage, um sicherzustellen, dass er richtig funktioniert.   
 
-4. Reichen Sie Ihren Webdienst als Wettbewerbsbeitrag ein, und sehen Sie sich Ihre öffentliche Bewertung auf der Wettbewerbsseite des Cortana Intelligence-Katalogs an. Freuen Sie sich, wenn Sie es in die Bestenliste schaffen!  
+4. Reichen Sie Ihren Webdienst als Wettbewerbsbeitrag ein, und sehen Sie sich Ihre öffentliche Bewertung auf der Wettbewerbsseite des Azure AI-Katalogs an. Freuen Sie sich, wenn Sie es in die Bestenliste schaffen!  
 
-Nachdem Sie einen Beitrag erfolgreich eingereicht haben, können Sie zurück zum kopierten Starterexperiment gehen, den Vorgang wiederholen, Ihr Vorhersageexperiment und Ihren Webdienst aktualisieren und einen neuen Beitrag einreichen.   
+Nachdem Sie einen Beitrag erfolgreich eingereicht haben, können Sie zum kopierten Starterexperiment zurückkehren. Danach können Sie Ihr Vorhersageexperiment wiederholen und aktualisieren, den Webdienst aktualisieren und einen neuen Beitrag einreichen.   
 
 **Kann ich Open Source-Tools für die Teilnahme an diesen Wettbewerben verwenden?**
 
-Die Wettbewerbsteilnehmer verwenden Azure Machine Learning Studio. Dies ist ein cloudbasierter Dienst innerhalb der Cortana Intelligence Suite zum Entwickeln der Data Science-Modelle und zum Erstellen von Wettbewerbsbeiträgen, die eingereicht werden können. Machine Learning Studio bietet nicht nur eine grafische Benutzeroberfläche zum Erstellen von Machine Learning-Experimenten, sondern erlaubt auch die Verwendung Ihrer eigenen R- und Python-Skripts für die native Ausführung. Die Laufzeiten von R und Python in Studio enthalten umfangreiche Pakete für die Open Source-Programmiersprachen R und Python. Sie können außerdem Ihre eigenen Pakete als Teil des Experiments importieren. Studio verfügt auch über einen integrierten Jupyter Notebook-Dienst, um Ihnen das freie Durchsuchen von Daten zu ermöglichen. Natürlich können Sie die im Wettbewerb verwendeten Datasets jederzeit herunterladen und in Ihrem Lieblingstool außerhalb von Machine Learning Studio erkunden. 
+Die Wettbewerbsteilnehmer verwenden Azure Machine Learning Studio, ein cloudbasierter Dienst innerhalb der Cortana Intelligence Suite, um die Data Science-Modelle zu entwickeln und Wettbewerbsbeiträge zu erstellen, die eingereicht werden können. Machine Learning Studio bietet nicht nur eine grafische Benutzeroberfläche zum Erstellen von Machine Learning-Experimenten, sondern erlaubt auch die Verwendung Ihrer eigenen R- und Python-Skripts für die native Ausführung. Die R- und die Python-Runtime in Studio enthalten viele Open Source-Pakete für R/Python. Sie können auch Ihre eigenen Pakete als Teil des Experiments importieren. Studio verfügt auch über einen integrierten Jupyter Notebook-Dienst, um Ihnen das freie Durchsuchen von Daten zu ermöglichen. Natürlich können Sie die im Wettbewerb verwendeten Datasets jederzeit herunterladen und in Ihrem Lieblingstool außerhalb von Machine Learning Studio erkunden. 
 
 **Muss ich ein Datenexperte sein, um teilnehmen zu dürfen?**
 
-Nein. Wir empfehlen Datenbegeisterten, Data Science-Interessierten und anderen angehenden Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Sie richten sich an:
+Nein. Wir ermutigen Datenbegeisterte, jeden Data Science-Interessierten und andere angehende Datenexperten sogar, an unserem Wettbewerb teilzunehmen. Wir haben Hilfedokumente entworfen, um jedem die Teilnahme zu ermöglichen. Zur Zielgruppe gehören:
 
 * **Datenentwickler**, **Datenexperten**, **BI**- und **Analyseexperten**: Personen, die für die Produktion von Daten- und Analyseinhalten zur Verwendung durch andere Benutzer verantwortlich sind
 * **Data Stewards**: Personen, die sich mit den Daten auskennen und wissen, was sie bedeuten und welchem Zweck sie dienen
@@ -65,7 +65,7 @@ Die Wettbewerbsplattform unterstützt derzeit keine Teilnahme als Team. Jeder We
 
 **Muss ich für die Teilnahme an einem Wettbewerb bezahlen?**
 
-Die Teilnahme an Wettbewerben ist kostenlos. Jedoch ist für die Teilnahme der Zugriff auf einen Azure Machine Learning-Arbeitsbereich erforderlich. Sie können einen kostenlosen Arbeitsbereich ohne eine Kreditkarte erstellen, indem Sie sich einfach mit einem gültigen Microsoft- oder Office 365-Konto anmelden. Wenn Sie bereits Azure- oder Cortana Intelligence Suite-Kunde sind, können Sie innerhalb desselben Azure-Abonnements einen Standardarbeitsbereich erstellen und verwenden. Auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing) können Sie ein Azure-Abonnement erwerben. Beachten Sie, dass die üblichen Gebühren anfallen, wenn Sie einen Standardarbeitsbereich zum Erstellen von Experimenten verwenden. Weitere Informationen finden Sie unter [Machine Learning Preise](https://azure.microsoft.com/pricing/details/machine-learning/). 
+Die Teilnahme an Wettbewerben ist kostenlos. Jedoch ist für die Teilnahme der Zugriff auf einen Azure Machine Learning-Arbeitsbereich erforderlich. Sie können einen kostenlosen Arbeitsbereich ohne eine Kreditkarte erstellen, indem Sie sich einfach mit einem gültigen Microsoft- oder Office 365-Konto anmelden. Wenn Sie bereits Azure- oder Cortana Intelligence Suite-Kunde sind, können Sie innerhalb desselben Azure-Abonnements einen Standardarbeitsbereich erstellen und verwenden. Auf der Seite [Azure-Preise](https://azure.microsoft.com/pricing) können Sie ein Azure-Abonnement erwerben. Beachten Sie, dass die üblichen Gebühren anfallen, wenn Sie einen Standardarbeitsbereich zum Erstellen von Experimenten verwenden. Weitere Informationen finden Sie unter [Machine Learning Studio – Preise](https://azure.microsoft.com/pricing/details/machine-learning/). 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
@@ -78,7 +78,7 @@ Die Vorgehensweise ist wie folgt:
 * Das gesamte im Wettbewerb verwendete Dataset wird nach dem Zufallsprinzip mit Schichtung in Trainings- und Testdaten (die restlichen Daten) aufgeteilt. Die Zufallsaufteilung ist geschichtet, um sicherzustellen, dass die Bezeichnungsverteilungen in den Trainings- sowie den Testdaten konsistent sind.
 * Die Trainingsdaten werden hochgeladen und Ihnen als Teil des Starterexperiments in der „Import Data“-Modulkonfiguration zur Verfügung gestellt.
 * Die Testdaten werden weiter unterteilt in öffentliche und private Testdaten mit derselben Schichtung.
-* Die öffentlichen Testdaten werden für die erste Bewertungsrunde verwendet. Das Ergebnis wird als öffentliche Bewertung bezeichnet und ist das, was beim Einreichen Ihres Beitrags in Ihrem Einreichungsverlauf angezeigt wird. Diese Bewertung wird für jeden Beitrag, den Sie einreichen, berechnet. Auf Grundlage dieser öffentlichen Bewertung werden Sie in die öffentliche Bestenliste eingeordnet.
+* Die öffentlichen Testdaten werden für die erste Bewertungsrunde verwendet. Das Ergebnis wird als öffentliche Bewertung bezeichnet. Es ist das, was Sie in Ihrem Einreichungsverlauf sehen, wenn Sie Ihren Beitrag einreichen. Diese Bewertung wird für jeden Beitrag, den Sie einreichen, berechnet. Auf Grundlage dieser öffentlichen Bewertung werden Sie in die öffentliche Bestenliste eingeordnet.
 * Die privaten Testdaten werden für die finale Bewertungsrunde nach Ende des Wettbewerbs verwendet. Dies wird als private Bewertung bezeichnet. 
 * Von jedem Teilnehmer wird aus den Beiträgen mit der höchsten öffentlichen Bewertung eine feste Anzahl von Beiträgen automatisch für die private Bewertungsrunde ausgewählt (dieser Wert kann je nach Wettbewerb variieren). Der Beitrag mit der höchsten privaten Bewertung wird dann für die endgültige Rangliste ausgewählt, die schließlich als Grundlage für die Bestimmung der Gewinner dient.  
 

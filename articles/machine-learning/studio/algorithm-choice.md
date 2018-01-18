@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
 ms.author: garye
-ms.openlocfilehash: f645890fc5e08dd468002c1ff0af79ba636ccce3
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Auswählen von Algorithmen für Microsoft Azure Machine Learning
 Die Antwort auf die Frage „Welchen Algorithmus für Machine Learning sollte ich verwenden?“ lautet immer „Kommt darauf an“. Es hängt von der Größe, Qualität und Art der Daten ab. Es hängt davon ab, was Sie mit der Antwort anfangen möchten. Es hängt davon ab, wie die mathematische Logik des Algorithmus in Anweisungen für den Computer übersetzt wurde, den Sie verwenden. Und es hängt davon ab, wie viel Zeit Sie haben. Selbst der erfahrenste Datenanalyst kann Ihnen nicht sagen, welcher Algorithmus die besten Ergebnisse liefert, bevor er ihn ausprobiert hat.
@@ -42,7 +42,7 @@ Die Pfad- und Algorithmusbezeichnungen in den Diagrammen sind wie folgt zu lesen
 Manchmal ist keine davon eine optimale Lösung. Sie dienen als Faustregelempfehlungen. Machen Sie sich also keine Sorgen über ihre Exaktheit.
 Einige Datenanalysten, mit denen ich gesprochen habe, haben mir gesagt, dass die einzige sichere Methode zum Herausfinden des idealen Algorithmus darin besteht, alle auszuprobieren.
 
-Es folgt ein Beispiel aus dem [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/). Dabei handelt es sich um ein Experiment, mit dem mehrere Algorithmen auf dieselben Daten angewendet und die Ergebnisse verglichen werden: [Vergleichen von Multiklassen-Klassifizierungen: Buchstabenerkennung](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+Hier folgt ein Beispiel aus dem [Azure AI-Katalog](http://gallery.cortanaintelligence.com/). Dabei handelt es sich um ein Experiment, mit dem mehrere Algorithmen auf dieselben Daten angewendet und die Ergebnisse verglichen werden: [Vergleichen von Multiklassen-Klassifizierungen: Buchstabenerkennung](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Informationen zum Herunterladen und Drucken des Diagramms, mit dem Sie sich einen Überblick über die Machine Learning Studio-Funktionen verschaffen können, finden Sie unter [Übersichtsdiagramm der Azure Machine Learning Studio-Funktionen](studio-overview-diagram.md).

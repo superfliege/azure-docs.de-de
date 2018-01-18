@@ -1,178 +1,98 @@
 ---
-title: "Überwachen eines Clouddiensts| Microsoft-Dokumentation"
-description: "Hier erfahren Sie mehr über die Überwachung von Clouddiensten im klassischen Azure-Portal."
+title: "Überwachen eines Azure-Clouddiensts| Microsoft Docs"
+description: "Hier wird beschrieben, welche Aspekte die Überwachung eines Azure-Clouddiensts umfasst und welche Optionen verfügbar sind."
 services: cloud-services
 documentationcenter: 
 author: thraka
 manager: timlt
 editor: 
-ms.assetid: 5c48d2fb-b8ea-420f-80df-7aebe2b66b1b
+ms.assetid: 
 ms.service: cloud-services
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2015
+ms.date: 12/22/2017
 ms.author: adegeo
-ms.openlocfilehash: c369b22cf068a473343b006eb1b06fdd350d31db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c63a49c65f2d8261caa534308477888c752a89da
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="how-to-monitor-cloud-services"></a>Überwachung von Clouddiensten
-[!INCLUDE [disclaimer](../../includes/disclaimer.md)]
+# <a name="introduction-to-cloud-service-monitoring"></a>Einführung in die Überwachung von Clouddiensten
 
-Im klassischen Azure-Portal können Sie `key` -Leistungsmetriken Ihrer Clouddienste überwachen. Sie können die Überwachungsstufe für die einzelnen Dienstrollen auf minimal oder ausführlich einstellen und die Überwachungsanzeige anpassen. Ausführliche Überwachungsdaten werden in einem Speicherkonto gespeichert, auf das Sie außerhalb des Portals Zugriff haben. 
+Sie können wichtige Leistungsmetriken für beliebige Clouddienste überwachen. Für jede Clouddienstrolle werden minimale Daten zur CPU-Nutzung, Netzwerkverwendung und Datenträgerverwendung erfasst. Wenn auf eine Rolle des Clouddiensts die Erweiterung `Microsoft.Azure.Diagnostics` angewendet wurde, können für die Rolle zusätzliche Datenpunkte erfasst werden. Dieser Artikel bietet eine Einführung in die Azure-Diagnose für Clouddienste.
 
-Die Überwachungsanzeigen im klassischen Azure-Portal können ausführlich konfiguriert werden. Sie können die zu überwachenden Metriken in der Metrikenliste auf der Seite **Überwachen** auswählen. Außerdem können Sie auswählen, welche Metriken in den Diagrammen auf der Seite **Überwachen** und im Dashboard eingetragen werden sollen. 
+Bei der grundlegenden Überwachung werden alle drei Minuten Leistungsindikatordaten aus den Rolleninstanzen abgefragt und erfasst. Daten aus der grundlegenden Überwachung werden nicht unter Ihrem Speicherkonto gespeichert und verursachen keine zusätzlichen Kosten.
 
-## <a name="concepts"></a>Konzepte
-Standardmäßig werden neue Clouddienste mit minimaler Überwachung eingerichtet. Dabei werden Leistungsindikatoren des Hostbetriebssystems für die Rolleninstanzen (virtuelle Computer) gesammelt. Die minimalen Metriken beschränken sich auf CPU-Auslastung, Dateneingang, Datenausgang, Lese- und Schreibdurchsatz von Laufwerken. Mit der ausführlichen Überwachung erhalten Sie zusätzliche Metriken auf Basis von Leistungsdaten der einzelnen virtuellen Computer (Rolleninstanzen). Die ausführliche Überwachung ermöglicht eine genauere Analyse von Problemen beim Betrieb von Anwendungen.
+Bei der erweiterten Überwachung werden in Intervallen von fünf Minuten, einer Stunde und zwölf Stunden zusätzliche Metriken abgefragt und erfasst. Die aggregierten Daten werden unter einem Speicherkonto in Tabellen gespeichert und nach zehn Tagen gelöscht. Das verwendete Speicherkonto wird nach der Rolle konfiguriert. Sie können verschiedene Speicherkonten für verschiedene Rollen verwenden. Die Konfiguration erfolgt mithilfe einer Verbindungszeichenfolge in der [CSDEF](cloud-services-model-and-package.md#servicedefinitioncsdef)- und [CSCFG](cloud-services-model-and-package.md#serviceconfigurationcscfg)-Datei.
 
-Die Daten der Leistungsindikatoren aus Rolleninstanzen werden standardmäßig alle 3 Minuten von der Rolleninstanz gemessen und übertragen. Bei der ausführlichen Überwachung werden die Leistungsindikatorendaten für die einzelnen Rolleninstanzen und rolleninstanzübergreifend für die einzelnen Rollen in Intervallen von 5 Minuten, 1 Stunde und 12 Stunden aggregiert. Die aggregierten Daten werden nach 10 Tagen gelöscht.
 
-Nach dem Aktivieren der ausführlichen Überwachung werden die aggregierten Überwachungsdaten in Tabellen in Ihrem Speicherkonto gespeichert. Um die ausführliche Überwachung für eine Rolle zu aktivieren, müssen Sie eine Diagnose-Verbindungszeichenfolge konfigurieren, die auf das Speicherkonto verweist. Sie können unterschiedliche Speicherkonten für unterschiedliche Rollen verwenden.
+## <a name="basic-monitoring"></a>Grundlegende Überwachung
 
-Bei einer ausführlichen Überwachung steigen Ihre Speicherkosten für Datenspeicher, Datenübertragung und Speichertransaktionen an. Für minimale Überwachung wird kein Speicherkonto benötigt. Die Daten der die bei minimaler Überwachungsstufe gesammelten Metriken werden nicht in Ihrem Speicherkonto gespeichert, selbst wenn Sie die Überwachungsstufe auf ausführlich stellen.
+Wie in der Einführung beschrieben, erfasst ein Clouddienst automatisch grundlegende Überwachungsdaten vom virtuellen Hostcomputer. Zu diesen Daten gehören: CPU-Prozentsatz, Netzwerk-E/A und Lese-/Schreibzugriffe auf Datenträger. Die erfassten Überwachungsdaten werden automatisch auf den Übersichts- und Metrikseiten des Clouddiensts im Azure-Portal angezeigt. 
 
-## <a name="how-to-configure-monitoring-for-cloud-services"></a>Konfigurieren der Überwachung für Clouddienste
-Führen Sie die folgenden Schritte aus, um im klassischen Azure-Portal ausführliche oder minimale Überwachung zu konfigurieren. 
+Für die grundlegende Überwachung wird kein Speicherkonto benötigt. 
 
-### <a name="before-you-begin"></a>Voraussetzungen
-* Erstellen Sie ein *klassisches* Speicherkonto zum Speichern der Überwachungsdaten. Sie können unterschiedliche Speicherkonten für unterschiedliche Rollen verwenden. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-create-storage-account.md#create-a-storage-account).
-* Aktivieren Sie die Azure-Diagnose für Ihre Clouddienstrollen. Siehe [Konfigurieren der Diagnose für Cloud Services](cloud-services-dotnet-diagnostics.md).
+![Kacheln der grundlegenden Clouddienstüberwachung](media/cloud-services-how-to-monitor/basic-tiles.png)
 
-Stellen Sie sicher, dass die Diagnose-Verbindungszeichenfolge in der Konfiguration der Rolle vorhanden ist. Sie können die ausführliche Überwachung erst aktivieren, wenn die Azure-Diagnose aktiviert ist und eine Diagnoseverbindungszeichenfolge in der Rollenkonfiguration eingeschlossen wurde.   
+## <a name="advanced-monitoring"></a>Erweiterte Überwachung
 
-> [!NOTE]
-> Projekte für Azure SDK 2.5 haben die Diagnoseverbindungszeichenfolge nicht automatisch in der Projektvorlage eingeschlossen. Für diese Projekte müssen Sie die Diagnoseverbindungszeichenfolge manuell der Rollenkonfiguration hinzufügen.
-> 
-> 
+Bei der erweiterten Überwachung wird die Azure-Diagnoseerweiterung (und optional das Application Insights SDK) für die zu überwachende Rolle verwendet. Die Diagnoseerweiterung verwendet (pro Rolle) eine Konfigurationsdatei mit dem Namen **diagnostics.wadcfgx** zur Konfiguration der überwachten Diagnosemetriken. Die von der Azure-Diagnoseerweiterung erfassten Daten werden unter einem Azure Storage-Konto gespeichert, das in den **WADCFGX**-, [CSDEF](cloud-services-model-and-package.md#servicedefinitioncsdef)- und [CSCFG](cloud-services-model-and-package.md#serviceconfigurationcscfg)-Dateien konfiguriert wird. Dies bedeutet, dass die erweiterte Überwachung mit zusätzlichen Kosten verbunden ist.
 
-**so fügen Sie der Rollenkonfiguration Diagnoseverbindungszeichenfolgen manuell hinzu**
+Während der Erstellung einer Rolle wird ihr von Visual Studio die Azure-Diagnoseerweiterung hinzugefügt. Diese Erweiterung kann die folgenden Informationstypen erfassen:
 
-1. Öffnen Sie das Cloud Services-Projekt in Visual Studio.
-2. Doppelklicken Sie auf die **Rolle**, um den Rollendesigner zu öffnen, und wählen Sie die Registerkarte **Einstellungen** aus
-3. Suchen Sie nach der Einstellung namens **Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString**. 
-4. Wenn diese Einstellung nicht vorhanden ist, klicken Sie auf die Schaltfläche **Einstellung hinzufügen**, um sie der Konfiguration hinzufügen, und ändern Sie den Typ für die neue Einstellung in **ConnectionString**.
-5. Legen Sie den Wert für die Verbindungszeichenfolge, indem Sie auf die Schaltfläche **...** klicken. Dies öffnet ein Dialogfeld, sodass Sie ein Speicherkonto auswählen können.
-   
-    ![Visual Studio-Einstellungen](./media/cloud-services-how-to-monitor/CloudServices_Monitor_VisualStudioDiagnosticsConnectionString.png)
+* Benutzerdefinierte Leistungsindikatoren
+* Anwendungsprotokolle
+* Windows-Ereignisprotokolle
+* .NET-Ereignisquelle
+* IIS-Protokolle
+* Manifestbasiertes ETW
+* Absturzabbilder
+* Benutzerdefinierte Fehlerprotokolle
 
-### <a name="to-change-the-monitoring-level-to-verbose-or-minimal"></a>Ändern der Überwachungsstufe auf ausführlich oder minimal
-1. Öffnen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/)die Seite **Konfigurieren** für die Clouddienst-Bereitstellung.
-2. Klicken Sie unter **Stufe** auf **Ausführlich** oder **Minimal**. 
-3. Klicken Sie auf **Speichern**.
+Die Daten werden zwar vollständig unter dem Speicherkonto aggregiert, allerdings bietet das Portal keine native Möglichkeit, die Daten in einem Diagramm darzustellen. Sie können einen anderen Dienst wie Application Insights nutzen, um die Daten zu korrelieren und darzustellen.
 
-Nachdem Sie die ausführliche Überwachung aktiviert haben, sollten Sie die Überwachungsdaten im klassischen Azure-Portal nach kurzer Zeit sehen können.
+### <a name="use-application-insights"></a>Verwenden von Application Insights
 
-Leistungsindikatordaten und aggregierte Überwachungsdaten werden im Speicherkonto in Tabellen abgelegt, deren Namen von der Bereitstellungs-ID der jeweiligen Rollen abhängen. 
+Wenn Sie den Clouddienst über Visual Studio veröffentlichen, können Sie die Diagnosedaten an Application Insights senden. Sie können die Application Insights-Ressource dann erstellen oder die Daten an eine vorhandene Ressource senden. Ihr Clouddienst kann von Application Insights auf Verfügbarkeit, Leistung, Fehler und Auslastung überwacht werden. Application Insights können benutzerdefinierte Diagramme hinzugefügt werden. So haben Sie immer die für Sie relevanten Daten im Blick. Rolleninstanzdaten können mithilfe des Application Insights SDKs in Ihrem Clouddienstprojekt erfasst werden. Weitere Informationen zur Integration von Application Insights finden Sie unter [Application Insights für Azure Cloud Services](../application-insights/app-insights-cloudservices.md).
 
-## <a name="how-to-receive-alerts-for-cloud-service-metrics"></a>Empfangen von Warnungen für Metriken von Clouddiensten
-Sie können Warnungen auf Basis der Überwachungsmetriken Ihrer Clouddienste empfangen. Auf der Seite **Verwaltungsdienste** im klassische Azure-Portal können Sie Regeln erstellen, die einen Alarm auslösen, wenn eine bestimmte Metrik einen von Ihnen ausgewählten Wert erreicht. Außerdem können Sie eine E-Mail senden, wenn der Alarm ausgelöst wird. Weitere Informationen finden Sie unter [Empfangen von Warnbenachrichtigungen und Verwalten von Warnregeln in Azure](http://go.microsoft.com/fwlink/?LinkId=309356).
+Hinweis: Sie können die Leistungsindikatoren (und weiteren Einstellungen), die Sie über die Windows Azure-Diagnoseerweiterung festgelegt haben, mithilfe von Application Insights anzeigen, erhalten allerdings noch bessere Darstellungsmöglichkeiten, wenn Sie das Application Insights SDK in die Worker- und Webrollen integrieren.
 
-## <a name="how-to-add-metrics-to-the-metrics-table"></a>Hinzufügen von Metriken zur Metrikentabelle
-1. Öffnen Sie im [klassischen Azure-Portal](http://manage.windowsazure.com/)die Seite **Monitor** für den Clouddienst.
-   
-    Standardmäßig zeigt die Metrikentabelle eine Teilmenge der verfügbaren Metriken an. Die Abbildung zeit die Standardmetriken für Clouddienste. Diese sind beschränkt auf die Leistungsindikatoren für Speicher/verfügbare MByte, und die Daten werden auf Rollenebene aggregiert. Unter **Metriken hinzufügen** können Sie weitere aggregierte Metriken oder Metriken auf Rollenebene für die Überwachung im klassischen Azure-Portal auswählen.
-   
-    ![Ausführliche Anzeige](./media/cloud-services-how-to-monitor/CloudServices_DefaultVerboseDisplay.png)
-2. Hinzufügen von Metriken zur Metrikentabelle:
-   
-   1. Klicken Sie auf **Metriken hinzufügen**, um **Metriken auswählen** zu öffnen, wie unten gezeigt.
-      
-       Die erste verfügbare Metrik ist erweitert, um die verfügbaren Optionen anzuzeigen. Für jede Metrik zeigt die oberste Option die aggregierten Überwachungsdaten für alle Rollen an. Zusätzlich können Sie einzelne Rollen auswählen, deren Daten angezeigt werden sollen.
-      
-       ![Metriken hinzufügen](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics.png)
-   2. So wählen Sie die anzuzeigenden Metriken aus
-      
-      * Klicken Sie auf den Pfeil nach unten neben der Metrik, um die Überwachungsoptionen zu erweitern.
-      * Markieren Sie die Kontrollkästchen für alle Überwachungsoptionen, die Sie anzeigen möchten.
-        
-        Sie können bis zu 50 Metriken in der Metrikentabelle anzeigen.
-        
-        > [!TIP]
-        > Bei der ausführlichen Überwachung kann die Metrikenliste Dutzende von Metriken enthalten. Zeigen Sie mit der Maus auf den rechten Rand des Dialogfelds, um eine Bildlaufleiste anzuzeigen. Um die Liste zu filtern, klicken Sie auf das Suchsymbol und geben Sie Text in das Suchfeld ein, wie unten gezeigt.
-        > 
-        > 
-        
-        ![Suche zum Hinzufügen von Metriken](./media/cloud-services-how-to-monitor/CloudServices_AddMetrics_Search.png)
-3. Wählen Sie die gewünschten Metriken aus, und klicken Sie auf OK (Kontrollkästchen).
-   
-    Die ausgewählten Metriken werden zur Metrikentabelle hinzugefügt, wie unten gezeigt.
-   
-    ![Überwachen von Metriken](./media/cloud-services-how-to-monitor/CloudServices_Monitor_UpdatedMetrics.png)
-4. Um eine Metrik aus der Metrikentabelle zu löschen, klicken Sie auf die Metrik, um diese auszuwählen, und anschließend auf **Metrik löschen**. (Die Option **Metrik löschen** ist nur sichtbar, wenn Sie eine Metrik ausgewählt haben.)
 
-### <a name="to-add-custom-metrics-to-the-metrics-table"></a>So fügen Sie benutzerdefinierte Metriken zur Metrikentabelle hinzu
-Die Überwachungsstufe **Ausführlich** bietet eine Liste der Standardmetriken, die Sie im Portal überwachen können. Darüber hinaus können Sie alle benutzerdefinierten Metriken oder Leistungsindikatoren über das Portal überwachen, die von der Anwendung definiert wurden.
+## <a name="add-advanced-monitoring"></a>Hinzufügen der erweiterten Überwachung
 
-Für die folgenden Schritte wird davon ausgegangen, dass Sie die Überwachungsstufe **Ausführlich** aktiviert und die Anwendung so konfiguriert haben, dass benutzerdefinierte Leistungsindikatoren erfasst und übertragen werden. 
+Wenn Sie noch nicht über ein **klassisches** Speicherkonto verfügen, [erstellen Sie zunächst ein Konto](../storage/common/storage-create-storage-account.md#create-a-storage-account). Stellen Sie sicher, dass das Speicherkonto mit dem **klassischen Bereitstellungsmodell** erstellt wird.
 
-Zum Anzeigen von benutzerdefinierten Leistungsindikatoren im Portal müssen Sie die Konfiguration im Wad-Control-Container aktualisieren:
+Navigieren Sie als Nächstes zur Ressource **Speicherkonto (klassisch)**. Wählen Sie **Einstellungen** > **Zugriffsschlüssel** aus, und kopieren Sie den Wert unter **Primäre Verbindungszeichenfolge**. Sie benötigen diesen Wert für den Clouddienst. 
 
-1. Öffnen Sie das Blob "Wad-Control-Container" im Diagnosespeicherkonto. Sie können dafür Visual Studio oder einen anderen Speicher-Explorer verwenden.
-   
-    ![Server-Explorer von Visual Studio](./media/cloud-services-how-to-monitor/CloudServices_Monitor_VisualStudioBlobExplorer.png)
-2. Navigieren Sie gemäß dem Muster **DeploymentId/ RoleName/RoleInstance** zum Blobpfad, um die Konfiguration für die Rolleninstanz zu suchen. 
-   
-    ![Speicher-Explorer von Visual Studio](./media/cloud-services-how-to-monitor/CloudServices_Monitor_VisualStudioStorage.png)
-3. Laden Sie die Konfigurationsdatei für die Rolleninstanz herunter, und aktualisieren Sie sie, um alle benutzerdefinierten Leistungsindikatoren einzuschließen. Fügen Sie beispielsweise zur Überwachung von *Byte geschrieben/s* für das *Laufwerk C* Folgendes unter dem Knoten **PerformanceCounters\Subscriptions** hinzu:
-   
-    ```xml
-    <PerformanceCounterConfiguration>
-    <CounterSpecifier>\LogicalDisk(C:)\Disk Write Bytes/sec</CounterSpecifier>
-    <SampleRateInSeconds>180</SampleRateInSeconds>
-    </PerformanceCounterConfiguration>
-    ```
-4. Speichern Sie die Änderungen, und laden Sie die Konfigurationsdatei an demselben Speicherort hoch, wobei Sie die vorhandene Datei im Blob überschreiben.
-5. Wechseln Sie in der Konfiguration des klassischen Azure-Portals in den ausführlichen Modus. Wenn Sie bereits im ausführlichen Modus waren, müssen Sie zuerst auf "Minimal" umschalten und dann wieder auf "Ausführlich".
-6. Der benutzerdefinierten Leistungsindikator steht jetzt im Dialogfeld **Metriken hinzufügen** zur Verfügung. 
+Es gibt zwei Konfigurationsdateien, die Sie zur Aktivierung der erweiterten Diagnose ändern müssen: **ServiceDefinition.csdef** und **ServiceConfiguration.cscfg**. Wahrscheinlich verfügen Sie über zwei **CSCFG**-Dateien, eine mit dem Namen **ServiceConfiguration.cloud.cscfg** für die Bereitstellung in Azure und eine mit dem Namen **ServiceConfiguration.local.cscfg**, die für lokale Debugbereitstellungen verwendet wird. Ändern Sie beide.
 
-## <a name="how-to-customize-the-metrics-chart"></a>Anpassen des Metrikendiagramms
-1. In der Metrikentabelle können Sie bis zu 6 Metriken auswählen, die im Metrikendiagramm angezeigt werden sollen. Klicken Sie auf das Kontrollkästchen links von einer Metrik, um diese auszuwählen. Heben Sie die Auswahl in der Metrikentabelle auf, um eine Metrik aus dem Metrikendiagramm zu entfernen.
-   
-    Die ausgewählten Metriken in der Metrikentabelle werden zum Metrikendiagramm hinzugefügt. Auf kleinen Bildschirmen wird eine Auswahlliste mit **n weitere** angezeigt. Diese enthält Metrikenheader, die nicht auf den Bildschirm passen.
-2. Wählen Sie Relativ oder Absolut im oberen Bereich des Diagramms, um zwischen relativen (nur endgültiger Wert für jede Metrik) und absoluten Werten (Y-Achse wird angezeigt) umzuschalten.
-   
-    ![Relativ oder Absolut](./media/cloud-services-how-to-monitor/CloudServices_Monitor_RelativeAbsolute.png)
-3. Wählen Sie 1 Stunde, 24 Stunden oder 7 Tage im oberen Bereich des Diagramms aus, um das Zeitintervall für das Metrikendiagramm zu ändern.
-   
-    ![Anzeigeintervall für die Überwachung](./media/cloud-services-how-to-monitor/CloudServices_Monitor_DisplayPeriod.png)
-   
-    Das Metrikendiagramm im Dashboard stellt die Metriken auf eine andere Weise dar. Eine Standardauswahl an Metriken ist verfügbar, und Metriken werden durch Auswählen des Metrikheaders hinzugefügt oder entfernt.
+Fügen Sie in der Datei **ServiceDefinition.csdef** für jede Rolle, für die die erweiterte Diagnose verwendet werden soll, eine neue Einstellung mit dem Namen `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` hinzu. Dieser Wert wird der Datei von Visual Studio hinzugefügt, wenn Sie ein neues Projekt erstellen. Falls sie fehlt, können Sie sie jetzt hinzufügen. 
 
-### <a name="to-customize-the-metrics-chart-on-the-dashboard"></a>Anpassen des Metrikendiagramms im Dashboard
-1. Öffnen Sie das Dashboard für den Clouddienst.
-2. Hinzufügen oder Entfernen von Metriken im Diagramm:
-   
-   * Markieren Sie das Kontrollkästchen für die Metrik im Tabellenkopf, um eine neue Metrik anzuzeigen. Klicken Sie auf einem engen Bildschirm auf den nach unten zeigenden Pfeil neben ***n*??Metriken**, um eine Metrik zu zeichnen, die im Diagrammkopfbereich nicht angezeigt werden kann.
-   * Heben Sie die Auswahl des entsprechenden Kontrollkästchens auf, um eine aktuell angezeigte Metrik zu löschen.
-   
-3. Umschalten zwischen **relativer** und **absoluter** Anzeige.
-4. Wählen Sie aus, ob Daten für 1 Stunde, 24 Stunden oder 7 Tage angezeigt werden sollen.
-
-## <a name="how-to-access-verbose-monitoring-data-outside-the-azure-classic-portal"></a>Gewusst wie: Zugreifen auf ausführliche Überwachungsdaten außerhalb des klassischen Azure-Portals
-Ausführliche Überwachungsdaten werden in Tabellen in Speicherkonten gespeichert, die Sie für die einzelnen Rollen angeben. Pro Clouddienstbereitstellung werden sechs Tabellen für die Rolle erstellt. Jeweils zwei dieser Tabellen sind für die einzelnen Intervalle (5 Minuten, 1 Stunde und 12 Stunden). Eine dieser Tabellen speichert Aggregationen auf Rollenebene, und die andere Tabelle speichert Aggregationen für Rolleninstanzen. 
-
-Die Tabellennamen haben das folgende Format:
-
-```
-WAD*deploymentID*PT*aggregation_interval*[R|RI]Table
+```xml
+<ServiceDefinition name="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6">
+  <WorkerRole name="WorkerRoleWithSBQueue1" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" />
 ```
 
-Hinweis:
+Dadurch wird eine neue Einstellung definiert, die jeder Datei **ServiceConfiguration.cscfg** hinzugefügt werden muss. Öffnen und ändern Sie jede **CSCFG**-Datei. Fügen Sie eine Einstellung mit dem Namen `Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString` hinzu. Legen Sie den Wert entweder auf die **Primäre Verbindungszeichenfolge** des klassischen Speicherkontos fest oder auf `UseDevelopmentStorage=true`, wenn Sie den lokalen Speicher auf Ihrem Entwicklungscomputer verwenden möchten.
 
-* *deploymentID* ist die GUID der Clouddienstbereitstellung
-* *aggregation_interval* = 5M, 1H oder 12H
-* Aggregationen auf Rollenebene = R
-* Aggregationen für Rolleninstanzen = RI
+```xml
+<ServiceConfiguration serviceName="AnsurCloudService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="4" osVersion="*" schemaVersion="2015-04.2.6">
+  <Role name="WorkerRoleWithSBQueue1">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=mystorage;AccountKey=KWwkdfmskOIS240jnBOeeXVGHT9QgKS4kIQ3wWVKzOYkfjdsjfkjdsaf+sddfwwfw+sdffsdafda/w==" />
 
-Die folgenden Tabellen speichern z. B. ausführliche Überwachungsdaten aggregiert in 1-stündige Intervalle:
-
+<!-- or use the local development machine for storage
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+-->
 ```
-WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRTable (hourly aggregations for the role)
 
-WAD8b7c4233802442b494d0cc9eb9d8dd9fPT1HRITable (hourly aggregations for role instances)
-```
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Informationen zu Application Insights mit Cloud Services](../application-insights/app-insights-cloudservices.md)
+

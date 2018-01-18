@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/15/2017
+ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 986aa2a3254374f77c5e21b7d7b7562ced660744
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 2e609b205c32d2ea5ca58586e9f8ba9623ef7580
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Anpassen von Service Fabric-Clustereinstellungen und der Fabric-Upgraderichtlinie
-In diesem Dokument wird beschrieben, wie Sie verschiedene Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
+In diesem Dokument erfahren Sie, wie Sie die verschiedenen Fabric-Einstellungen und die Fabric-Upgraderichtlinie für Ihren Service Fabric-Cluster anpassen. Die Anpassungen können über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage vorgenommen werden.
 
 > [!NOTE]
 > Im Portal sind nicht alle Einstellungen verfügbar. Falls eine der unten aufgeführten Einstellungen nicht über das Portal verfügbar sein sollte, passen Sie dies mithilfe einer Azure Resource Manager-Vorlage an.
@@ -52,14 +52,14 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-diagnostics"></a>Name des Abschnitts: Diagnostics
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| ConsumerInstances |String | Dynamisch |Die Liste der DCA-Consumerinstanzen. |
-| ProducerInstances |String | Dynamisch |Die Liste der DCA-Producerinstanzen. |
+| ConsumerInstances |Zeichenfolge | Dynamisch |Die Liste der DCA-Consumerinstanzen. |
+| ProducerInstances |Zeichenfolge | Dynamisch |Die Liste der DCA-Producerinstanzen. |
 | AppEtwTraceDeletionAgeInDays |Ganze Zahl, Standardwert 3 | Dynamisch |Anzahl der Tage, nach denen wir alte ETL-Dateien löschen, die ETW-Ablaufverfolgungen von Anwendungen enthalten. |
 | AppDiagnosticStoreAccessRequiresImpersonation |Boolesch, Standardwert „true“ | Dynamisch |Gibt an, ob ein Identitätswechsel erforderlich ist, wenn für die Anwendung auf Diagnosespeicher zugegriffen wird. |
 | MaxDiskQuotaInMB |Ganze Zahl, Standardwert 65536 | Dynamisch |Datenträgerkontingent in MB für Windows Fabric-Protokolldateien. |
 | DiskFullSafetySpaceInMB |Ganze Zahl, Standardwert 1024 | Dynamisch |Verbleibender Speicherplatz in MB, der vor der Verwendung durch DCA geschützt werden soll. |
 | ApplicationLogsFormatVersion |Ganze Zahl, Standardwert 0 | Dynamisch |Version für das Format der Anwendungsprotokolle. Unterstützte Werte sind 0 und 1. Version 1 umfasst mehr Felder aus dem ETW-Ereignisdatensatz als Version 0. |
-| ClusterId |String | Dynamisch |Die eindeutige ID des Clusters. Diese wird generiert, wenn der Cluster erstellt wird. |
+| ClusterId |Zeichenfolge | Dynamisch |Die eindeutige ID des Clusters. Diese wird generiert, wenn der Cluster erstellt wird. |
 | EnableTelemetry |Boolesch, Standardwert „true“ | Dynamisch |Damit werden Telemetriedaten aktiviert oder deaktiviert. |
 | EnableCircularTraceSession |Boolesch, Standardwert „false“ | statischen |Das Flag gibt an, ob zirkuläre Ablaufverfolgungssitzungen verwendet werden sollen. |
 
@@ -73,16 +73,16 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | --- | --- | --- | --- |
 | IsEnabled |Boolesch, Standardwert „true“ | Dynamisch |Das Flag gibt an, ob die Erfassung von Leistungsindikatoren für den lokalen Knoten aktiviert ist. |
 | SamplingIntervalInSeconds |Ganze Zahl, Standardwert 60 | Dynamisch |Samplingintervall für Leistungsindikatoren, die erfasst werden. |
-| Counters |String | Dynamisch |Durch Trennzeichen getrennte Liste der zu erfassenden Leistungsindikatoren. |
+| Counters |Zeichenfolge | Dynamisch |Durch Trennzeichen getrennte Liste der zu erfassenden Leistungsindikatoren. |
 | MaxCounterBinaryFileSizeInMB |Ganze Zahl, Standardwert 1 | Dynamisch |Maximale Größe (in MB) für jede Leistungsindikator-Binärdatei. |
 | NewCounterBinaryFileCreationIntervalInMinutes |Ganze Zahl, Standardwert 10 | Dynamisch |Maximales Intervall (in Sekunden), nach dem eine neue Leistungsindikator-Binärdatei erstellt wird. |
 
 ### <a name="section-name-setup"></a>Name des Abschnitts: Setup
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| FabricDataRoot |String | Nicht zulässig |Das Service Fabric-Datenstammverzeichnis. Standardwert für Azure ist „d:\svcfab“. |
-| FabricLogRoot |String | Nicht zulässig |Das Service Fabric-Protokollstammverzeichnis. Hier werden SF-Protokolle und Ablaufverfolgungen platziert. |
-| ServiceRunAsAccountName |String | Nicht zulässig |Der Kontoname, unter dem der Fabric-Hostdienst ausgeführt werden soll. |
+| FabricDataRoot |Zeichenfolge | Nicht zulässig |Das Service Fabric-Datenstammverzeichnis. Standardwert für Azure ist „d:\svcfab“. |
+| FabricLogRoot |Zeichenfolge | Nicht zulässig |Das Service Fabric-Protokollstammverzeichnis. Hier werden SF-Protokolle und Ablaufverfolgungen platziert. |
+| ServiceRunAsAccountName |Zeichenfolge | Nicht zulässig |Der Kontoname, unter dem der Fabric-Hostdienst ausgeführt werden soll. |
 | SkipFirewallConfiguration |Boolesch, Standardwert „false“ | Nicht zulässig |Gibt an, ob Firewalleinstellungen vom System festgelegt werden müssen oder nicht. Dies gilt nur, wenn Sie die Windows-Firewall verwenden. Wenn Sie Firewalls von Drittanbietern verwenden, müssen Sie die Ports für das System und die zu verwendenden Anwendungen öffnen. |
 |NodesToBeRemoved|string, Standardwert ""| Dynamisch |Der Knoten, die als Teil des Konfigurationsupgrades entfernt werden sollen. (Nur für eigenständige Bereitstellungen)|
 |ContainerNetworkSetup|Boolesch, Standardwert FALSE| statischen |Gibt an, ob ein Containernetzwerk eingerichtet werden soll.|
@@ -107,8 +107,8 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | CheckpointThresholdInMB |Ganze Zahl, Standardwert 50 |statischen|Ein Prüfpunkt wird initiiert, wenn die Protokollnutzung diesen Wert überschreitet. |
 | MaxAccumulatedBackupLogSizeInMB |Ganze Zahl, Standardwert 800 |statischen|Die maximale kumulierte Größe von Sicherungsprotokollen in einer bestimmten Sicherungsprotokollkette (in MB). Die Anforderung einer inkrementellen Sicherung ist nicht erfolgreich, wenn die inkrementelle Sicherung ein Sicherungsprotokoll generiert, durch das die kumulierte Größe der Sicherungsprotokolle seit der entsprechenden vollständigen Sicherung diese Größe überschreitet. In einem solchen Fall muss der Benutzer eine vollständige Sicherung durchführen. |
 | MaxWriteQueueDepthInKB |Ganze Zahl, Standardwert 0 |Nicht zulässig| Ganze Zahl für die maximale Tiefe der Schreibwarteschlange, die für die zentrale Protokollierung verwendet werden kann, entsprechend der Angabe in Kilobytes für das Protokoll, das diesem Replikat zugeordnet ist. Dieser Wert ist die maximale Anzahl von Bytes, die während der Updates für die zentrale Protokollierung ausstehend sein können. Der Wert kann 0 sein, damit die zentrale Protokollierung einen geeigneten Wert berechnet, oder ein Vielfaches von 4. |
-| SharedLogId |String |Nicht zulässig|Freigegebener Protokollbezeichner. Dies ist eine GUID, und sie sollte für jedes freigegebene Protokoll eindeutig sein. |
-| SharedLogPath |String |Nicht zulässig|Pfad zum freigegebenen Protokoll. Wenn dieser Wert leer ist, wird das freigegebene Standardprotokoll verwendet. |
+| SharedLogId |Zeichenfolge |Nicht zulässig|Freigegebener Protokollbezeichner. Dies ist eine GUID, und sie sollte für jedes freigegebene Protokoll eindeutig sein. |
+| SharedLogPath |Zeichenfolge |Nicht zulässig|Pfad zum freigegebenen Protokoll. Wenn dieser Wert leer ist, wird das freigegebene Standardprotokoll verwendet. |
 | SlowApiMonitoringDuration |Zeit in Sekunden, Standardwert 300 |statischen| Geben Sie für die API eine Dauer an, bevor eine Warnung zu einem Integritätsereignis ausgelöst wird.|
 | MinLogSizeInMB |Ganze Zahl, Standardwert 0 |statischen|Die minimale Größe des Transaktionsprotokolls. Das Protokoll kann auf keine Größe unterhalb dieser Einstellung gekürzt werden. 0 gibt an, dass die minimale Protokollgröße durch den Replikator anhand anderer Einstellungen bestimmt wird. Bei einem höheren Wert erhöht sich die Möglichkeit zur Erstellung von Teilkopien und inkrementellen Sicherungen, da sich dadurch das Risiko verringert, dass relevante Protokolldatensätze abgeschnitten werden. |
 
@@ -178,7 +178,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 ### <a name="section-name-paas"></a>Name des Abschnitts: Paas
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
 | --- | --- | --- | --- |
-| ClusterId |string, Standardwert "" |Nicht zulässig|X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet. |
+| ClusterId |string, Standardwert "" |Nicht zulässig|Der X509-Zertifikatspeicher, der vom Fabric für den Konfigurationsschutz verwendet wird. |
 
 ### <a name="section-name-fabrichost"></a>Name des Abschnitts: FabricHost
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -525,7 +525,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 | DeactivateNode |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Deaktivierung eines Knotens. |
 | DeactivateNodesBatch |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für die Deaktivierung mehrerer Knoten. |
 | RemoveNodeDeactivations |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Zurücksetzen der Deaktivierung mehrerer Knoten. |
-| GetNodeDeactivationStatus |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Überprüfen des Deaktivierungstatus. |
+| GetNodeDeactivationStatus |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für das Überprüfen des Deaktivierungsstatus. |
 | NodeStateRemoved |string, Standardwert „Admin“ |Dynamisch| Sicherheitskonfiguration für Berichte zur Entfernung des Knotenstatus. |
 | RecoverPartition |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für die Wiederherstellung einer Partition. |
 | RecoverPartitions |string, Standardwert „Admin“ | Dynamisch|Sicherheitskonfiguration für die Wiederherstellung von Partitionen. |
@@ -556,7 +556,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 | GetUpgradesPendingApproval |string, Standardwert „Admin“ |Dynamisch| Löst GetUpgradesPendingApproval auf einer Partition aus. |
 | StartApprovedUpgrades |string, Standardwert „Admin“ |Dynamisch| Löst StartApprovedUpgrades auf einer Partition aus. |
 | Pingen |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Clientpingvorgänge. |
-| Abfrage |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Abfragen. |
+| Abfragen |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für Abfragen. |
 | NameExists |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für Überprüfungen auf das Vorhandensein von Benennungs-URIs. |
 | EnumerateSubnames |string, Standardwert „Admin\“|\|Benutzer" |Dynamisch| Sicherheitskonfiguration für die Enumeration von Benennungs-URIs. |
 | EnumerateProperties |string, Standardwert „Admin\“|\|Benutzer" | Dynamisch|Sicherheitskonfiguration für die Enumeration von Benennungseigenschaften. |
@@ -672,13 +672,13 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |DeploymentRetryBackoffInterval| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(10)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Backoffintervall für den Fehler bei der Bereitstellung. Bei jedem Continuous Deployment-Fehler wiederholt das System die Bereitstellung bis zu MaxDeploymentFailureCount Mal. Das Wiederholungsintervall ist das Produkt aus dem Continuous Deployment-Fehler und dem Backoffintervall der Bereitstellung. |
 |EnableActivateNoWindow| Boolesch, Standardwert FALSE|Dynamisch| Der aktivierte Prozess wird im Hintergrund ohne Konsole erstellt. |
 |EnableProcessDebugging|Boolesch, Standardwert FALSE|Dynamisch| Ermöglicht das Starten von Anwendungshosts unter dem Debugger. |
-|EndpointProviderEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht die Verwaltung von Endpunktressourcen durch Fabric. Erfordert die Angabe des Start- und Endportbereichs dder Anwendungen in FabricNode. |
+|EndpointProviderEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht die Verwaltung von Endpunktressourcen durch Fabric. Erfordert die Angabe des Start- und Endportbereichs der Anwendungen in FabricNode. |
 |FabricContainerAppsEnabled| Boolesch, Standardwert FALSE|statischen| |
 |FirewallPolicyEnabled|Boolesch, Standardwert FALSE|statischen| Ermöglicht das Öffnen von Firewallports für die Endpunktressourcen mit expliziten Ports, die in ServiceManifest angegeben werden. |
 |GetCodePackageActivationContextTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für die CodePackageActivationContext-Aufrufe. Dies gilt nicht für Ad-hoc-Dienste. |
 |IPProviderEnabled|Boolesch, Standardwert FALSE|statischen|Ermöglicht die Verwaltung von IP-Adressen. |
 |NTLMAuthenticationEnabled|Boolesch, Standardwert FALSE|statischen| Ermöglicht die Unterstützung für die Verwendung von NTLM durch die Codepakete, die als andere Benutzer ausgeführt werden, damit die Prozesse computerübergreifend sicher kommunizieren können. |
-|NTLMAuthenticationPasswordSecret|SecureString, Standardwert Common::SecureString(L"")|statischen|Ein verschlüsselter Hash, der verwendet wird, um das Kennwort für NTLM-Benutzer zu generieren. Muss festgelegt werden, wenn NTLMAuthenticationEnabled auf TRUE festgelegt ist. Wird vom Bereitsteller überprüft. |
+|NTLMAuthenticationPasswordSecret|SecureString, Standardwert Common::SecureString(L"")|statischen|Eine verschlüsselte Zeichenfolge, der verwendet wird, um das Kennwort für NTLM-Benutzer zu generieren. Muss festgelegt werden, wenn NTLMAuthenticationEnabled auf TRUE festgelegt ist. Wird vom Bereitsteller überprüft. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(3)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Umgebungsspezifische Einstellungen. Das regelmäßige Intervall, in dem das Hosting auf neue Zertifikate für die FileStoreService-NTLM-Konfiguration scannt. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|TimeSpan, Standardwert Common::TimeSpan::FromMinutes(4)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Das Timeout für die Konfiguration von NTLM-Benutzern mit allgemeinen Zertifikatnamen. Die NTLM-Benutzer sind für FileStoreService-Freigaben erforderlich. |
 |RegisterCodePackageHostTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch| Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den FabricRegisterCodePackageHost-Synchronisierungsaufruf. Dies gilt für nur Multicode-Paketanwendungshosts wie FWP. |
@@ -686,6 +686,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |RunAsPolicyEnabled| Boolesch, Standardwert FALSE|statischen| Ermöglicht das Ausführen von Codepaketen als anderer lokaler Benutzer als der Benutzer, unter dem der Fabric-Prozess ausgeführt wird. Um diese Richtlinie zu aktivieren, muss Fabric als SYSTEM oder als Benutzer mit SeAssignPrimaryTokenPrivilege ausgeführt werden. |
 |ServiceFactoryRegistrationTimeout| TimeSpan, Standardwert Common::TimeSpan::FromSeconds(120)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Der Timeoutwert für den Register(Stateless/Stateful)ServiceFactory-Synchronisierungsaufruf. |
 |ServiceTypeDisableGraceInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Das Zeitintervall, nach dem der Diensttyp deaktiviert werden kann. |
+|EnableDockerHealthCheckIntegration|Boolesch, Standardwert TRUE|statischen|Ermöglicht die Integration von HEALTCHECK-Ereignissen des Docker-Tools in den Service Fabric-Systemintegritätsbericht. |
 
 ### <a name="section-name-federation"></a>Name des Abschnitts: Federation
 | **Parameter** | **Zulässige Werte** | **Upgraderichtlinie** | **Anleitung oder Kurzbeschreibung** |
@@ -773,7 +774,7 @@ PropertyGroup|X509NameMap, Standardwert None|Dynamisch| |
 |MaxSecondaryReplicationQueueSize|uint, Standardwert 2048|statischen|Dies ist die maximale Anzahl von Vorgängen, die in der sekundären Replikationswarteschlange vorhanden sein können. Beachten Sie, dass der Wert eine Potenz von 2 sein muss.|
 |MaxSecondaryReplicationQueueMemorySize|uint, Standardwert 0|statischen|Dies ist der maximale Wert für die sekundäre Replikationswarteschlange in Bytes.|
 |QueueHealthMonitoringInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(30)|statischen|Geben Sie die Zeitspanne in Sekunden an. Dieser Wert bestimmt den Zeitraum, der vom Replikator verwendet wird, um alle Warnungs-/Fehlerintegritätsereignisse in den Warteschlangen des Replikationsvorgangs zu überwachen. Der Wert „0“ deaktiviert die Systemüberwachung. |
-|QueueHealthWarningAtUsagePercent|uint, Standardwert 80|statischen|Dieser Wert bestimmt die Verwendung der Replikationswarteschlange (in Prozent), nach der eine Warnung zu hoher Warteschlangenverwendung gemeldet wird. Dies geschieht nach einem Toleranzintervall, das durch QueueHealthMonitoringInterval angegeben wird. Wenn die Warteschlangenverwendung im Toleranzintervall unter diesen Prozentsatz fällt, wird die Warnung nicht gemeldet.|
+|QueueHealthWarningAtUsagePercent|uint, Standardwert 80|statischen|Dieser Wert bestimmt die Verwendung der Replikationswarteschlange (in Prozent), nach der eine Warnung zu hoher Warteschlangenverwendung gemeldet wird. Dies geschieht nach einem Toleranzintervall, das durch QueueHealthMonitoringInterval angegeben wird. Wenn die Warteschlangenverwendung im Toleranzintervall unter diesen Prozentsatz fällt|
 |RetryInterval|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(5)|statischen|Geben Sie die Zeitspanne in Sekunden an. Wenn ein Vorgang nicht ausgeführt oder abgelehnt wurde, bestimmt dieser Zeitgeber, wie oft der Replikator das Senden des Vorgangs erneut versucht.|
 
 ### <a name="section-name-transport"></a>Abschnittsname: Transport

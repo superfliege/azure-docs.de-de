@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: ryanwi
-ms.openlocfilehash: 486a27d7ca576c8fe1552c02eb24ece6b8bb2ba8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93c86f4805257aee8e04ef80e33b3cec0fd3c67d
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="package-an-application"></a>Packen einer Anwendung
 In diesem Artikel wird beschrieben, wie eine Service Fabric-Anwendung paketiert und für die Bereitstellung vorbereitet wird.
@@ -48,7 +48,7 @@ D:\TEMP\MYAPPLICATIONTYPE
 Die Ordner werden nach den **Name** -Attributen der jeweils zugehörigen Elemente benannt. Wenn das Dienstmanifest beispielsweise zwei Codepakete mit den Namen **MyCodeA** und **MyCodeB** umfasst, enthalten zwei Ordner mit denselben Namen die jeweils erforderlichen Binärdateien für jedes Codepaket.
 
 ## <a name="use-setupentrypoint"></a>Verwenden von SetupEntryPoint
-Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Anforderung, eine ausführbare Datei vor dem Starten des Diensts auszuführen, sowie die Anforderung, einen Vorgang mit erhöhten Rechten auszuführen. Beispiel:
+Gängige Szenarios für die Verwendung von **SetupEntryPoint** sind die Anforderung, eine ausführbare Datei vor dem Starten des Diensts auszuführen, sowie die Anforderung, einen Vorgang mit erhöhten Rechten auszuführen. Beispiel: 
 
 * Einrichten und Initialisieren von Umgebungsvariablen, die die ausführbare Datei des Diensts benötigt. Dies ist nicht auf Dateien beschränkt, die mit den Service Fabric-Programmiermodellen geschrieben wurden. „npm.exe“ benötigt beispielsweise einige Umgebungsvariablen, die zum Bereitstellen einer node.js-Anwendung konfiguriert wurden.
 * Einrichten einer Zugriffssteuerung durch Installieren von Sicherheitszertifikaten.
@@ -85,7 +85,7 @@ Test-ServiceFabricApplicationPackage : The EntryPoint MySetup.bat is not found.
 FileName: C:\Users\servicefabric\AppData\Local\Temp\TestApplicationPackage_7195781181\nrri205a.e2h\MyApplicationType\MyServiceManifest\ServiceManifest.xml
 ```
 
-Dieser Fehler gibt an, dass die Datei *MySetup.bat* , auf die im Dienstmanifest **SetupEntryPoint** verwiesen wird, im Codepaket fehlt. Nach dem Hinzufügen der fehlenden Datei wird die Überprüfung der Anwendung erfolgreich abgeschlossen:
+Dieser Fehler gibt an, dass die Datei *MySetup.bat*, auf die im Dienstmanifest **SetupEntryPoint** verwiesen wird, im Codepaket fehlt. Nach dem Hinzufügen der fehlenden Datei wird die Überprüfung der Anwendung erfolgreich abgeschlossen:
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -115,11 +115,11 @@ Wenn [Anwendungsparameter](service-fabric-manage-multiple-environment-app-config
 
 Wenn Sie wissen, in welchem Cluster die Anwendung bereitgestellt wird, empfiehlt es sich, diese Angabe im Parameter `ImageStoreConnectionString` zu übergeben. In diesem Fall wird das Paket auch anhand älterer Versionen der Anwendung, die bereits im Cluster ausgeführt werden, überprüft. Beispielsweise kann bei der Überprüfung festgestellt werden, ob bereits ein Paket mit derselben Version, jedoch mit einem anderen Inhalt bereitgestellt wurde.  
 
-Sobald die Anwendung korrekt paketiert wurde und die Überprüfung bestanden hat, beurteilen Sie basierend auf der Größe und Anzahl der Dateien, ob eine Komprimierung erforderlich ist.
+Sobald die Anwendung ordnungsgemäß gepackt ist und die Überprüfung bestanden hat, können Sie das Paket komprimieren, um Bereitstellungsvorgänge zu beschleunigen.
 
 ## <a name="compress-a-package"></a>Komprimieren eines Pakets
 Wenn ein Paket groß ist oder viele Dateien enthält, können Sie es zur schnelleren Bereitstellung komprimieren. Durch eine Komprimierung werden die Anzahl der Dateien und die Größe des Pakets verringert.
-Das [Hochladen komprimierter Anwendungspakete](service-fabric-deploy-remove-applications.md#upload-the-application-package) kann länger dauern als das Hochladen nicht komprimierter Pakete (besonders, wenn die für die Komprimierung benötigte Zeit mit eingerechnet wird), aber das [Registrieren](service-fabric-deploy-remove-applications.md#register-the-application-package) und das [Aufheben der Registrierung des Anwendungstyps](service-fabric-deploy-remove-applications.md#unregister-an-application-type) erfolgen bei einem komprimierten Paket schneller.
+Bei einem komprimierten Anwendungspaket kann das [Hochladen des Anwendungspakets](service-fabric-deploy-remove-applications.md#upload-the-application-package) im Vergleich zum Hochladen des nicht komprimierten Pakets länger dauern. Dies gilt insbesondere dann, wenn die Komprimierung im Rahmen des Kopiervorgangs erfolgt. Mit Komprimierung verläuft die [Registrierung](service-fabric-deploy-remove-applications.md#register-the-application-package) und die [Aufhebung der Registrierung des Anwendungstyps](service-fabric-deploy-remove-applications.md#unregister-an-application-type) schneller.
 
 Für komprimierte und nicht komprimierte Pakete gilt dasselbe Bereitstellungsverfahren. Wenn das Paket komprimiert ist, wird es als solches im Clusterabbildspeicher gespeichert und vor Ausführung der Anwendung auf dem Knoten dekomprimiert.
 Bei der Komprimierung wird das gültige Service Fabric-Paket durch die komprimierte Version ersetzt. Der Ordner muss Schreibberechtigungen zulassen. Wird ein bereits komprimiertes Paket komprimiert, werden keine Änderungen vorgenommen.
@@ -127,8 +127,7 @@ Bei der Komprimierung wird das gültige Service Fabric-Paket durch die komprimie
 Sie können ein Paket komprimieren, indem Sie den Powershell-Befehl [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) mit dem Schalter `CompressPackage` ausführen. Das Paket kann anhand desselben Befehls mit dem Schalter `UncompressPackage` dekomprimiert werden.
 
 Mit dem folgenden Befehl wird das Paket komprimiert, ohne dass es im Abbildspeicher kopiert wird. Mit [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) ohne `SkipCopy`-Flag können Sie ein komprimiertes Paket bei Bedarf in ein oder mehrere Service Fabric-Cluster kopieren.
-Das Paket enthält nun ZIP-Dateien für die Pakete `code`, `config` und `data` . Das Anwendungsmanifest und die Dienstmanifeste werden nicht komprimiert, da sie für zahlreiche interne Vorgänge (z.B. Paketfreigabe, Extraktion des Namen und der Version des Anwendungstyps für bestimmte Überprüfungen) benötigt werden.
-Eine Komprimierung der Manifeste würde dazu führen, dass diese Vorgänge unwirksam werden.
+Das Paket enthält nun ZIP-Dateien für die Pakete `code`, `config` und `data`. Das Anwendungsmanifest und die Dienstmanifeste werden nicht gezippt, da sie für viele interne Vorgänge erforderlich sind. Beispielsweise muss bei der Paketfreigabe und der Extraktion des Namens und der Version von Anwendungstypen für bestimmte Überprüfungen immer auf die Manifeste zugegriffen werden. Eine Komprimierung der Manifeste würde dazu führen, dass diese Vorgänge unwirksam werden.
 
 ```
 PS D:\temp> tree /f .\MyApplicationType
@@ -169,10 +168,9 @@ Wenn es sich um ein großes Paket handelt, legen Sie ein ausreichend langes Time
 PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApplicationType -ApplicationPackagePathInImageStore MyApplicationType -ImageStoreConnectionString fabric:ImageStore -CompressPackage -TimeoutSec 5400
 ```
 
-Intern berechnet das Service Fabric-Paket zur Überprüfung Prüfsummen für die Anwendungspakete. Bei der Komprimierung werden die Prüfsummen für die komprimierten Versionen der einzelnen Pakete berechnet.
-Wenn Sie eine nicht komprimierte Version des Anwendungspakets kopiert haben und dieses Paket komprimieren möchten, müssen Sie die Versionen der Pakete `code`, `config` und `data` ändern, um einen Prüfsummenkonflikt zu vermeiden. Wenn die Pakete unverändert sind, können Sie [diff provisioning](service-fabric-application-upgrade-advanced.md) verwenden, anstatt die Version zu ändern. Beziehen Sie bei dieser Option nicht das unveränderte Paket ein, sondern verweisen Sie vom Dienstmanifest aus darauf.
+Intern berechnet das Service Fabric-Paket zur Überprüfung Prüfsummen für die Anwendungspakete. Bei der Komprimierung werden die Prüfsummen für die komprimierten Versionen der einzelnen Pakete berechnet. Beim Generieren einer neuen ZIP-Datei aus demselben Anwendungspaket werden andere Prüfsummen erstellt. Um Überprüfungsfehler zu vermeiden, verwenden Sie die [Diff-Bereitstellung](service-fabric-application-upgrade-advanced.md). Bei dieser Option dürfen keine unveränderten Pakete in der neuen Version enthalten sein. Stattdessen verweisen sie direkt aus dem neuen Dienstmanifest darauf.
 
-Gleichermaßen gilt: Wenn Sie eine komprimierte Version des Pakets hochgeladen haben und ein unkomprimiertes Paket verwenden möchten, müssen Sie die Versionen aktualisieren, um den Prüfsummenkonflikt zu vermeiden.
+Wenn die Diff-Bereitstellung nicht verwendet werden kann und Sie die Pakete einschließen müssen, generieren Sie für die `code`-, `config`- und `data`-Pakete neue Versionen, um Prüfsummenkonflikte zu vermeiden. Bei Verwendung eines komprimierten Pakets müssen für unveränderte Pakete neue Versionen generiert werden. Dies gilt unabhängig davon, ob für die Vorgängerversion eine Komprimierung verwendet wurde oder nicht.
 
 Das Paket ist nun ordnungsgemäß verpackt, überprüft und ggf. komprimiert. Somit ist es für die [Bereitstellung](service-fabric-deploy-remove-applications.md) in einem oder in mehreren Service Fabric-Clustern bereit.
 
@@ -186,6 +184,26 @@ Sie können Visual Studio anweisen, Pakete bei der Bereitstellung zu komprimiere
         <CopyPackageParameters CompressPackage="true"/>
     </PublishProfile>
 ```
+
+## <a name="create-an-sfpkg"></a>Erstellen einer SFPKG-Datei
+Ab Version 6.1 unterstützt Service Fabric die Bereitstellung aus einem externen Speicher.
+Bei dieser Option muss das Anwendungspaket nicht in den Imagespeicher kopiert werden. Stattdessen können Sie eine `sfpkg`-Datei erstellen und in einen externen Speicher hochladen und dann bei der Bereitstellung für Service Fabric den Download-URI angeben. Dasselbe Paket kann für mehrere Cluster bereitgestellt werden. Die Bereitstellung aus dem externen Speicher spart die Zeit, die für das Kopieren des Pakets in jeden Cluster benötigt wird.
+
+Die `sfpkg`-Datei ist eine ZIP-Datei, die das ursprüngliche Anwendungspaket enthält und die Erweiterung „.sfpkg“ aufweist.
+Das Anwendungspaket innerhalb der ZIP-Datei kann komprimiert oder unkomprimiert sein. Die Komprimierung des Anwendungspakets innerhalb der ZIP-Datei erfolgt wie [zuvor erwähnt](service-fabric-package-apps.md#compress-a-package) auf Code-, Konfigurations- und Datenpaketebene.
+
+Um eine `sfpkg` zu erstellen, beginnen Sie mit einem Ordner, der das ursprüngliche (komprimierte oder unkomprimierte) Anwendungspaket enthält. Verwenden Sie anschließend ein beliebiges Hilfsprogramm, um den Ordner mit der Erweiterung „.sfpkg“ zu zippen. Verwenden Sie z. B. [ZipFile.CreateFromDirectory](https://msdn.microsoft.com/library/hh485721(v=vs.110).aspx).
+
+```csharp
+ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
+```
+
+Die `sfpkg` muss „Out-of-Band“, außerhalb von Service Fabric in den externen Speicher hochgeladen werden. Beim externen Speicher kann es sich um einen beliebigen Speicher handeln, der einen HTTP- oder HTTPS-REST-Endpunkt verfügbar macht. Während der Bereitstellung führt Service Fabric einen GET-Vorgang zum Herunterladen des `sfpkg`-Anwendungspakets aus. Daher muss der Speicher Lesezugriffe auf das Paket zulassen.
+
+Verwenden Sie zum Bereitstellen des Pakets die externe Bereitstellung. Diese erfordert den Download-URI und die Informationen zum Anwendungstyp.
+
+>[!NOTE]
+> Bei der Bereitstellung auf Grundlage des relativen Pfads zum Imagespeicher werden derzeit keine `sfpkg`-Dateien unterstützt. Aus diesem Grund sollte die `sfpkg` nicht in den Imagespeicher kopiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Bereitstellen und Entfernen von Anwendungen][10] beschreibt, wie Sie mit PowerShell Anwendungsinstanzen verwalten.

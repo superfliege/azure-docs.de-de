@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 9ceb299b3ee521aeefb45c21920bd3b6e0049d26
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Sammeln von Modelldaten mithilfe der Datensammlung
 
-Mithilfe des Features „Modelldatensammlung“ in Azure Machine Learning Workbench können Sie Modelleingaben und Vorhersagen eines Machine Learning-Webdiensts archivieren.
+Mithilfe des Features „Modelldatensammlung“ in Azure Machine Learning können Sie Modelleingaben und Vorhersagen eines Machine Learning-Webdiensts archivieren.
 
 ## <a name="install-the-data-collection-package"></a>Installieren des Datensammlungspakets
 Sie können die Datensammlungsbibliothek nativ unter Linux und Windows installieren.
@@ -37,6 +37,12 @@ Installieren Sie unter Linux zunächst die libxml++-Bibliothek. Führen Sie den 
 Führen Sie dann den folgenden Befehl aus:
 
     pip install azureml.datacollector
+
+## <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
+
+Modelldatensammlung hängt von zwei Umgebungsvariablen ab. AML_MODEL_DC_STORAGE_ENABLED muss auf **true** (Kleinbuchstaben) festgelegt werden, und AML_MODEL_DC_STORAGE muss auf die Verbindungszeichenfolge für das Azure Storage-Konto festgelegt werden, in dem Sie die Daten speichern möchten.
+
+Diese Umgebungsvariablen sind bereits festgelegt, wenn der Webdienst auf einem Cluster in Azure ausgeführt wird. Wird der Webdienst lokal ausgeführt, müssen Sie die Variablen selbst festlegen. Wenn Sie Docker verwenden, verwenden Sie den -e-Parameter des Docker-Ausführungsbefehls, um die Umgebungsvariablen zu übergeben.
 
 ## <a name="collect-data"></a>Sammeln von Daten
 
@@ -81,7 +87,7 @@ Um die Modelldatensammlung zu verwenden, müssen Sie die folgenden Änderungen a
 ## <a name="view-the-collected-data"></a>Anzeigen der gesammelten Daten
 So zeigen Sie die gesammelten Daten im Blobspeicher an:
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie **Weitere Dienste** aus.
 3. Geben Sie im Suchfeld **Speicherkonten** ein, und drücken Sie die EINGABETASTE.
 4. Wählen Sie auf dem Suchblatt **Speicherkonten** die Ressource **Speicherkonto** aus. Verwenden Sie die folgenden Schritte, um Ihr Speicherkonto zu ermitteln:

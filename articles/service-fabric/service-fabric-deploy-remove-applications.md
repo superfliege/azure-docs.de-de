@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: f19141919b3c61123e0e94c4513f872e095620c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 49f26a6195713a5bcdd8ab5711f3bf715f3e033f
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Bereitstellen und Entfernen von Anwendungen mit PowerShell
 > [!div class="op_single_selector"]
-> * [Ressourcen-Manager](service-fabric-application-arm-resource.md)
+> * [Resource Manager](service-fabric-application-arm-resource.md)
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Service Fabric-Befehlszeilenschnittstelle](service-fabric-application-lifecycle-sfctl.md)
 > * [FabricClient-APIs](service-fabric-deploy-remove-applications-fabricclient.md)
@@ -32,16 +32,28 @@ ms.lasthandoff: 12/21/2017
 Sobald der [Anwendungstyp gepackt][10] wurde, ist die Anwendung für die Bereitstellung in einem Azure Service Fabric-Cluster bereit. Die Bereitstellung umfasst die folgenden drei Schritte:
 
 1. Hochladen des Anwendungspakets in den Imagespeicher
-2. Registrierung des Anwendungstyps
+2. Registrieren des Anwendungstyps mit dem relativen Pfad des Imagespeichers
 3. Erstellen der Anwendungsinstanz
 
-Nachdem eine Anwendung bereitgestellt wurde und eine Instanz im Cluster ausgeführt wird, können Sie die Anwendungsinstanz und ihren Anwendungstyp löschen. Das vollständige Entfernen einer Anwendung aus dem Cluster umfasst die folgenden Schritte:
+Sobald die bereitgestellte Anwendung nicht mehr benötigt wird, können Sie die Anwendungsinstanz und deren Anwendungstyp löschen. Das vollständige Entfernen einer Anwendung aus dem Cluster umfasst die folgenden Schritte:
 
 1. Entfernen (oder Löschen) der ausgeführten Anwendungsinstanz
 2. Aufheben der Registrierung des Anwendungstyps, wenn er nicht mehr benötigt wird
-3. Entfernen des Anwendungspakets aus dem Image-Speicher
+3. Entfernen des Anwendungspakets aus dem Imagespeicher
 
 Wenn Sie Visual Studio zum Bereitstellen und Debuggen von Anwendungen in Ihrem lokalen Entwicklungscluster verwenden, werden alle vorherigen Schritte automatisch über ein PowerShell-Skript ausgeführt.  Dieses Skript befindet sich im Ordner *Skripts* des Anwendungsprojekts. In diesem Artikel wird die grundlegende Funktionsweise dieses Skripts erläutert, sodass Sie die gleichen Vorgänge außerhalb von Visual Studio ausführen können. 
+
+Eine weitere Möglichkeit zum Bereitstellen einer Anwendung besteht darin, eine externe Bereitstellung zu verwenden. Das Anwendungspaket kann [als `sfpkg` gepackt](service-fabric-package-apps.md#create-an-sfpkg) und in einen externen Speicher hochgeladen werden. In diesem Fall ist kein Upload in den Imagespeicher erforderlich. Für die Bereitstellung sind die folgenden Schritte erforderlich:
+
+1. Laden Sie die `sfpkg` in einen externen Speicher hoch. Beim externen Speicher kann es sich um einen beliebigen Speicher handeln, der einen HTTP- oder HTTPS-REST-Endpunkt verfügbar macht.
+2. Registrieren Sie den Anwendungstyp unter Verwendung des Download-URIs für den externen Speicher und der Typinformationen für die Anwendung.
+2. Erstellen Sie die Anwendungsinstanz.
+
+Entfernen Sie zur Bereinigung die Anwendungsinstanzen, und heben Sie die Registrierung des Anwendungstyps auf. Da das Paket nicht in den Imagespeicher kopiert wurde, muss kein temporärer Speicherort bereinigt werden. Ab Service Fabric, Version 6.1, ist eine Bereitstellung aus dem externen Speicher verfügbar.
+
+>[!NOTE]
+> Visual Studio unterstützt derzeit keine externe Bereitstellung.
+
  
 ## <a name="connect-to-the-cluster"></a>Verbinden mit dem Cluster
 Bevor Sie die in diesem Artikel aufgeführten PowerShell-Befehle ausführen, stellen Sie immer zuerst über [Connect-ServiceFabricCluster](/powershell/module/servicefabric/connect-servicefabriccluster?view=azureservicefabricps) eine Verbindung mit dem Service Fabric-Cluster her. Führen Sie zum Herstellen der Verbindung mit dem lokalen Entwicklungscluster den folgenden Befehl aus:
@@ -123,7 +135,7 @@ Im Folgenden werden beispielhaft Komprimierungsstatistiken für einige Pakete au
 |2048|1000|00:01:04.3775554|1231|
 |5012|100|00:02:45.2951288|3074|
 
-Nachdem ein Paket komprimiert wurde, kann es bei Bedarf in einen oder in mehrere Service Fabric-Cluster hochgeladen werden. Für komprimierte und nicht komprimierte Pakete gilt dasselbe Bereitstellungsverfahren. Wenn das Paket komprimiert ist, wird es als solches im Clusterabbildspeicher gespeichert und vor Ausführung der Anwendung auf dem Knoten dekomprimiert.
+Nachdem ein Paket komprimiert wurde, kann es bei Bedarf in einen oder in mehrere Service Fabric-Cluster hochgeladen werden. Für komprimierte und nicht komprimierte Pakete gilt dasselbe Bereitstellungsverfahren. Komprimierte Pakete werden in dieser Form im Clusterimagespeicher gespeichert. Die Pakete werden auf dem Knoten dekomprimiert, bevor die Anwendung ausgeführt wird.
 
 
 Im folgenden Beispiel wird das Paket in den Imagespeicher in einen Ordner mit dem Namen „MyApplicationV1“ hochgeladen:
@@ -162,17 +174,27 @@ Der Anwendungstyp und die Version, der bzw. die im Anwendungsmanifest deklariert
 
 Führen Sie das Cmdlet [Register ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) aus, um den Anwendungstyp im Cluster zu registrieren, und für die Bereitstellung verfügbar zu machen:
 
+### <a name="register-the-application-package-copied-to-image-store"></a>Registrieren des in den Imagespeicher kopierten Anwendungspakets
+Wenn ein Paket zuvor in den Imagespeicher kopiert wurde, wird vom Registrierungsvorgang der relative Pfad im Imagespeicher angegeben.
+
 ```powershell
-PS C:\> Register-ServiceFabricApplicationType MyApplicationV1
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackagePathInImageStore MyApplicationV1
 Register application type succeeded
 ```
 
 „MyApplicationV1“ ist der Ordner im Imagespeicher, in dem sich das Anwendungspaket befindet. Der Anwendungstyp mit dem Namen „MyApplicationType“ und Version „1.0.0“ (beides befindet sich im Anwendungsmanifest) ist jetzt im Cluster registriert.
 
+### <a name="register-the-application-package-copied-to-an-external-store"></a>Registrieren des in einen externen Speicher kopierten Anwendungspakets
+Ab Service Fabric, Version 6.1, unterstützt die Bereitstellung das Herunterladen des Pakets aus einem externen Speicher. Der Download-URI stellt den Pfad zum [`sfpkg`-Anwendungspaket](service-fabric-package-apps.md#create-an-sfpkg) dar, unter dem das Anwendungspaket über das HTTP- oder HTTPS-Protokoll heruntergeladen werden kann. Das Paket muss zuvor an diesen externen Speicherort hochgeladen worden sein. Der URI muss Lesezugriffe zulassen, damit die Datei von Service Fabric heruntergeladen werden kann. Die `sfpkg`-Datei muss die Erweiterung „.sfpkg“ aufweisen. Der Bereitstellungsvorgang sollte die Informationen zum Anwendungstyp beinhalten, wie im Anwendungsmanifest angegeben.
+
+```
+PS C:\> Register-ServiceFabricApplicationType -ApplicationPackageDownloadUri "https://sftestresources.blob.core.windows.net:443/sfpkgholder/MyAppPackage.sfpkg" -ApplicationTypeName MyApp -ApplicationTypeVersion V1 -Async
+```
+
 Der Befehl [Register-ServiceFabricApplicationType](/powershell/module/servicefabric/register-servicefabricapplicationtype?view=azureservicefabricps) wird erst zurückgegeben, wenn das Anwendungspaket vom System erfolgreich registriert wurde. Die Dauer des Registriervorgangs hängt von der Größe und dem Inhalt des Anwendungspakets ab. Verwenden Sie bei Bedarf den Parameter **-TimeoutSec**, wenn ein längeres Zeitlimit erforderlich ist (das Standardzeitlimit beträgt 60 Sekunden).
 
-Wenn es sich um ein großes Anwendungspaket handelt oder Timeouts auftreten, verwenden Sie den Parameter **-Async**. Der Befehl wird zurückgegeben, wenn der Cluster den Registrierungsbefehl akzeptiert. Die Verarbeitung wird bei Bedarf fortgesetzt.
-Der Befehl [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) listet alle erfolgreich registrierten Anwendungstypversionen und deren Registrierungsstatus auf. Sie können mithilfe dieses Befehls ermitteln, wann die Registrierung abgeschlossen ist.
+Wenn es sich um ein großes Anwendungspaket handelt oder Timeouts auftreten, verwenden Sie den Parameter **-Async**. Der Befehl wird zurückgegeben, wenn der Cluster den Registrierungsbefehl akzeptiert. Der Registrierungsvorgang wird bei Bedarf fortgesetzt.
+Mit dem Befehl [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) werden die Anwendungstypversionen und deren Registrierungsstatus aufgelistet. Sie können mithilfe dieses Befehls ermitteln, wann die Registrierung abgeschlossen ist.
 
 ```powershell
 PS C:\> Get-ServiceFabricApplicationType
@@ -184,7 +206,7 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="remove-an-application-package-from-the-image-store"></a>Entfernen eines Anwendungspakets aus dem Imagespeicher
-Es wird empfohlen, nach erfolgreicher Registrierung der Anwendung das Anwendungspaket zu entfernen.  Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen.  Die Speicherung nicht verwendeter Anwendungspakete nimmt Speicherplatz in Anspruch und führt zu Leistungsproblemen der Anwendung.
+Wenn ein Paket in den Imagespeicher kopiert wurde, sollten Sie es aus dem temporären Verzeichnis entfernen, nachdem die Anwendung erfolgreich registriert wurde. Sie können Systemressourcen freigeben, indem Sie Anwendungspakete aus dem Imagespeicher löschen. Die Speicherung nicht verwendeter Anwendungspakete nimmt Speicherplatz in Anspruch und führt zu Leistungsproblemen der Anwendung.
 
 ```powershell
 PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1
@@ -244,7 +266,7 @@ PS C:\> Get-ServiceFabricApplication
 ```
 
 ## <a name="unregister-an-application-type"></a>Aufheben der Registrierung eines Anwendungstyps
-Wird eine bestimmte Version eines Anwendungstyps nicht mehr benötigt, sollten Sie die Registrierung des Anwendungstyps mit dem Cmdlet [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) aufheben. Durch das Aufheben der Registrierung nicht verwendeter Anwendungstypen wird Speicherplatz, der vom Imagespeicher verwendet wird, dadurch freigegeben, dass Anwendungsbinärdateien entfernt werden. Ein Aufheben der Registrierung eines Anwendungstyps bewirkt nicht, dass das Anwendungspaket entfernt wird. Die Registrierung eines Anwendungstyps kann nur aufgehoben werden, wenn keine Anwendungen für den Typ instanziiert sind und keine ausstehenden Anwendungsupgrades vorliegen, die auf den Typ verweisen.
+Wird eine bestimmte Version eines Anwendungstyps nicht mehr benötigt, sollten Sie die Registrierung des Anwendungstyps mit dem Cmdlet [Unregister-ServiceFabricApplicationType](/powershell/module/servicefabric/unregister-servicefabricapplicationtype?view=azureservicefabricps) aufheben. Durch das Aufheben der Registrierung nicht verwendeter Anwendungstypen wird der vom Imagespeicher verwendete Speicherplatz freigegeben, indem Anwendungstypdateien entfernt werden. Beim Aufheben der Registrierung eines Anwendungstyps wird das Anwendungspaket, das in das temporäre Verzeichnis des Imagespeichers kopiert wurde, nicht entfernt (falls ein Kopiervorgang in den Imagespeicher ausgeführt wurde). Die Registrierung eines Anwendungstyps kann nur aufgehoben werden, wenn keine Anwendungen für den Typ instanziiert sind und keine ausstehenden Anwendungsupgrades vorliegen, die auf den Typ verweisen.
 
 Führen Sie [Get-ServiceFabricApplicationType](/powershell/module/servicefabric/get-servicefabricapplicationtype?view=azureservicefabricps) aus, um die derzeit im Cluster registrierten Anwendungstypen anzuzeigen:
 
@@ -334,6 +356,8 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+[Packen einer Anwendung](service-fabric-package-apps.md)
+
 [Service Fabric-Anwendungsupgrade](service-fabric-application-upgrade.md)
 
 [Einführung in Service Fabric-Integrität](service-fabric-health-introduction.md)

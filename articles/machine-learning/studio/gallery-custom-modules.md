@@ -1,6 +1,6 @@
 ---
-title: "Cortana Intelligence-Katalog – benutzerdefinierte Module | Microsoft Docs"
-description: Lernen Sie benutzerdefinierte Machine Learning-Module im Cortana Intelligence-Katalog kennen.
+title: Benutzerdefinierte Module im Azure AI-Katalog | Microsoft-Dokumentation
+description: Entdecken von benutzerdefinierten Machine Learning-Modulen im Azure AI-Katalog.
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 4bab94c04f09261eaa88b9e6a225c05f57992ab0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 278a24c44b76e6df097355b91d94a146be4aa9a9
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-custom-machine-learning-modules-in-cortana-intelligence-gallery"></a>Lernen Sie benutzerdefinierte Machine Learning-Module im Cortana Intelligence-Katalog kennen
+# <a name="discover-custom-machine-learning-modules-in-azure-ai-gallery"></a>Entdecken von benutzerdefinierten Machine Learning-Modulen im Azure AI-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="custom-modules-for-machine-learning-studio"></a>Benutzerdefinierte Module für Machine Learning Studio
-Im Cortana Intelligence-Katalog sind einige [benutzerdefinierte Module](https://gallery.cortanaintelligence.com/customModules) verfügbar, die die Funktionen von Azure Machine Learning Studio erweitern. Sie können diese Module zur Verwendung in Ihren Experimenten importieren, um noch fortschrittlichere Predictive Analytics-Lösungen entwickeln zu können.
+Im Azure AI-Katalog sind einige [benutzerdefinierte Module](https://gallery.cortanaintelligence.com/customModules) verfügbar, die die Funktionen von Azure Machine Learning Studio erweitern. Sie können diese Module zur Verwendung in Ihren Experimenten importieren, um noch fortschrittlichere Predictive Analytics-Lösungen entwickeln zu können.
 
 Zurzeit bietet der Katalog Module zu *Zeitserienanalysen*, *Zuordnungsregeln*, *Clusteringalgorithmen* (über k-Means hinaus), *Visualisierungen* sowie andere leistungsstarke Hilfsprogramme.
 
@@ -49,10 +49,10 @@ Auf der Detailseite eines benutzerdefinierten Moduls können Sie im Abschnitt **
 
 ![Fügen Sie Ihre eigenen Kommentare hinzu](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="import"></a>Import
+## <a name="import"></a>Importieren
 Sie können alle benutzerdefinierten Module aus dem Katalog in Ihre eigenen Experimente importieren.
 
-Der Cortana Intelligence-Katalog bietet die folgenden zwei Möglichkeiten, eine Kopie des Moduls zu importieren:
+Der Azure AI-Katalog bietet die folgenden zwei Möglichkeiten, eine Kopie des Moduls zu importieren:
 
 * **Aus dem Katalog**. Wenn Sie ein benutzerdefiniertes Modul aus dem Katalog importieren, erhalten Sie auch ein Beispielexperiment für die Verwendung des Moduls.
 * **Aus Machine Learning Studio**. Sie können jedes benutzerdefinierte Modul importieren, während Sie Machine Learning Studio verwenden (in diesem Fall erhalten Sie das Beispielexperiment nicht).
@@ -78,7 +78,7 @@ Zusätzlich zum Beispielexperiment wird das benutzerdefinierte Modul in Ihren Ar
 
 Das benutzerdefinierte Modul wird in Ihren Arbeitsbereich kopiert und zusammen mit den anderen integrierten oder benutzerdefinierten Machine Learning Studio-Modulen in der Modulpalette platziert. Sie können es jetzt wie andere Module in Ihrem Arbeitsbereich in Ihren eigenen Experimenten verwenden.
 
-## <a name="use"></a>Verwenden Sie
+## <a name="use"></a>Zweck
 
 Unabhängig davon, welche Methode Sie zum Importieren eines benutzerdefinierten Moduls auswählen, wird das Modul beim Importieren in der Modulpalette in Machine Learning Studio platziert. Sie können das benutzerdefinierte Modul aus der Modulpalette in allen Experimenten im Arbeitsbereich genau wie alle anderen Module verwenden.
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
 ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 1cd2bbb6adecaba908252bd42fce292654a5cf5a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Benutzerdefinierte R-Module in Azure Machine Learning
 
@@ -29,7 +29,7 @@ In diesem Thema erfahren Sie, wie ein benutzerdefiniertes R-Modul erstellt und i
 ## <a name="what-is-a-custom-r-module"></a>Was ist ein benutzerdefiniertes R-Modul?
 Ein **benutzerdefiniertes Modul** ist ein vom Benutzer bestimmtes Modul, dass in Ihrem Arbeitsbereich hochgeladen und als Teil eines Azure Machine Learning Experiments ausgeführt werden kann. Ein **benutzerdefiniertes R-Modul** ist ein benutzerdefiniertes Modul, das eine vom Benutzer erstellte R-Funktion ausführt. **R** ist eine Programmiersprache für statistische Berechnungen und Grafiken, die häufig von Statistikern und Datenanalysten für die Implementierung von Algorithmen verwendet wird. Derzeit wird in benutzerdefinierten Modulen ausschließlich R unterstützt, für zukünftige Versionen sind jedoch bereits weitere Sprachen geplant.
 
-Benutzerdefinierte Module haben in Azure Machine Learning einen **erstrangigen Status** und können somit genau wie andere Module verwendet werden. Sie können mit anderen Modulen ausgeführt sowie in veröffentlichte Experimente oder in Visualisierungen eingeschlossen werden. Sie haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment mit benutzerdefinierten Modulen kann auch im Cortana Intelligence-Katalog veröffentlicht und somit komfortabel weitergegeben werden.
+Benutzerdefinierte Module haben in Azure Machine Learning einen **erstrangigen Status** und können somit genau wie andere Module verwendet werden. Sie können mit anderen Modulen ausgeführt sowie in veröffentlichte Experimente oder in Visualisierungen eingeschlossen werden. Sie haben die Kontrolle über den vom Modul implementierten Algorithmus, die verwendeten Eingangs- und Ausgangsports, die Parameter für die Modellierung und andere Laufzeitmerkmale. Ein Experiment, das benutzerdefinierte Module enthält, kann auch im Azure AI-Katalog veröffentlicht werden, sodass es einfach freigegeben werden kan.
 
 ## <a name="files-in-a-custom-r-module"></a>Dateien in einem benutzerdefinierten R-Modul
 Ein benutzerdefiniertes R-Modul wird durch eine ZIP-Datei definiert, die mindestens zwei Dateien enthält:
@@ -287,9 +287,9 @@ Ein Modul-Parameter wird mithilfe des untergeordneten**Arg**-Elements des Abschn
   * **allowedTypes** : Dient zum Filtern der zur Auswahl stehenden Spaltentypen. Folgende Werte sind gültig: 
     
     * Numeric
-    * Boolean
+    * Boolescher Wert
     * Kategorisch
-    * string
+    * Zeichenfolge
     * Bezeichnung
     * Feature
     * Punkte

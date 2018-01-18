@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: 1dacbbef915580b0095ef588f3dafad35daf1bde
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d541e5a1af5e57cd5956a026d7772076509c8514
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="service-fabric-container-networking-modes"></a>Netzwerkmodi für Service Fabric-Container
 
@@ -178,12 +178,12 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
 
    |Einstellung |Wert | |
    | --- | --- | --- |
-   |Priority |2000 | |
-   |Name |Custom_Dns  | |
+   |Priorität |2000 | |
+   |NAME |Custom_Dns  | |
    |Quelle |VirtualNetwork | |
    |Ziel | VirtualNetwork | |
    |Dienst | DNS (UDP/53) | |
-   |Aktion | ZULASSEN  | |
+   |anzuzeigen. | ZULASSEN  | |
    | | |
 
 4. Geben Sie im Anwendungsmanifest für jeden Dienst den Netzwerkmodus an: `<NetworkConfig NetworkType="Open">`. Im Netzwerkmodus **Open** erhält der Dienst eine dedizierte IP-Adresse. Wenn kein Modus angegeben ist, wird für den Dienst standardmäßig der Modus **nat** verwendet. Im folgenden Beispielmanifest können die Dienste `NodeContainerServicePackage1` und `NodeContainerServicePackage2` über denselben Port lauschen. (Beide Dienste lauschen über `Endpoint1`.) Wenn der Netzwerkmodus „Open“ angegeben ist, können keine `PortBinding`-Konfigurationen angegeben werden.
@@ -220,6 +220,16 @@ Wenn ein Containerdienst neu gestartet oder im Cluster auf einen anderen Knoten 
     >[!NOTE]
     >Bei Linux-Clustern wird die Verwendung unterschiedlicher Netzwerkmodi für verschiedene Dienste nicht unterstützt. 
     >
+
+5. Wenn der Modus **Open** ausgewählt ist, sollte die **Endpoint**-Definition im Dienstmanifest explizit auf das Codepaket verweisen, das dem Endpunkt entspricht. Dies gilt auch, wenn das Dienstpaket nur über ein Codepaket verfügt. 
+   
+   ```xml
+   <Resources>
+     <Endpoints>
+       <Endpoint Name="ServiceEndpoint" Protocol="http" Port="80" CodePackageRef="Code"/>
+     </Endpoints>
+   </Resources>
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Modellieren von Anwendungen in Service Fabric](service-fabric-application-model.md)

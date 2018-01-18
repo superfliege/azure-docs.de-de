@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: ecb70b88f6548e4730bcc1578de2f748cda33b0a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 9ea5be818cfc104c243ce31cc0e2d0f10135259f
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="create-container-images-for-service-fabric"></a>Erstellen von Containerimages für Service Fabric
 
@@ -58,44 +58,40 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-Das Verzeichnis „container-tutorial“ enthält einen Ordner mit dem Namen „azure-vote“. Dieser Ordner „azure-vote“ enthält den Front-End-Quellcode und eine Dockerfile-Datei zum Erstellen des Front-Ends. Das Verzeichnis „container-tutorial“ enthält auch das Verzeichnis „redis“, das wiederum die Dockerfile-Datei zum Erstellen des Redis-Images enthält. Diese Verzeichnisse enthalten die erforderlichen Ressourcen für diese Tutorialreihe. 
+Die Projektmappe enthält zwei Ordner und die Datei „docker-compse.yml“. Der Ordner „azure-vote“ enthält den Python-Front-End-Dienst und die zur Imageerstellung verwendete Dockerfile. Das Verzeichnis „Voting“ enthält das Service Fabric-Anwendungspaket, das für den Cluster bereitgestellt wird. Diese Verzeichnisse enthalten die erforderlichen Ressourcen für dieses Tutorial.  
 
 ## <a name="create-container-images"></a>Erstellen von Containerimages
 
-Führen Sie im Verzeichnis „azure-vote“ den folgenden Befehl aus, um das Image für die Front-End-Webkomponente zu erstellen. Dieser Befehl verwendet die Dockerfile-Datei in diesem Verzeichnis, um das Image zu erstellen. 
+Führen Sie im Verzeichnis **azure-vote** den folgenden Befehl aus, um das Image für die Front-End-Webkomponente zu erstellen. Dieser Befehl verwendet die Dockerfile-Datei in diesem Verzeichnis, um das Image zu erstellen. 
 
 ```bash
 docker build -t azure-vote-front .
 ```
 
-Führen Sie im Verzeichnis „redis“ den folgenden Befehl aus, um das Image für das Redis-Back-End zu erstellen. Dieser Befehl verwendet die Dockerfile-Datei in diesem Verzeichnis, um das Image zu erstellen. 
-
-```bash
-docker build -t azure-vote-back .
-```
-
-Verwenden Sie anschließend den Befehl [docker-images](https://docs.docker.com/engine/reference/commandline/images/), um die erstellten Images anzuzeigen.
+Die Befehlsausführung kann eine Weile dauern, da alle erforderlichen Abhängigkeiten vom Docker-Hub abgerufen werden müssen. Verwenden Sie anschließend den Befehl [docker-images](https://docs.docker.com/engine/reference/commandline/images/), um die erstellten Images anzuzeigen.
 
 ```bash
 docker images
 ```
 
-Beachten Sie, dass vier Images heruntergeladen oder erstellt wurden. Das Image *azure-vote-front* enthält die Anwendung. Es wurde von einem *Python*-Image von Docker Hub abgeleitet. Das Redis-Image wurde aus Docker Hub heruntergeladen.
+Beachten Sie, dass zwei Images heruntergeladen oder erstellt wurden. Das Image *azure-vote-front* enthält die Anwendung. Es wurde von einem *Python*-Image von Docker Hub abgeleitet.
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-back              latest              bf9a858a9269        3 seconds ago        107MB
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-redis                        latest              9813a7e8fcc0        2 days ago           107MB
 tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 
 ```
 
 ## <a name="deploy-azure-container-registry"></a>Bereitstellen von Azure Container Registry
 
-Führen Sie zunächst den Befehl [az login](/cli/azure/login) aus, um sich bei Ihrem Azure-Konto anzumelden. 
+Führen Sie zunächst den Befehl **az login** aus, um sich bei Ihrem Azure-Konto anzumelden. 
 
-Verwenden Sie dann den Befehl [az account](/cli/azure/account#set), um Ihr Abonnement für die Erstellung der Azure Container Registry-Instanz auszuwählen. 
+```bash
+az login
+```
+
+Verwenden Sie dann den Befehl **az account**, um Ihr Abonnement für die Erstellung der Azure Container Registry-Instanz auszuwählen. Anstelle von <subscription_id> müssen Sie die Abonnement-ID Ihres Azure-Abonnements angeben. 
 
 ```bash
 az account set --subscription <subscription_id>
@@ -103,23 +99,23 @@ az account set --subscription <subscription_id>
 
 Für die Bereitstellung einer Azure Container Registry-Instanz benötigen Sie zunächst eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#create) eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *westus* erstellt. Wählen Sie die Ressourcengruppe in einer Region in Ihrer Nähe aus. 
+Erstellen Sie mit dem Befehl **az group create** eine Ressourcengruppe. In diesem Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* in der Region *westus* erstellt.
 
 ```bash
-az group create --name myResourceGroup --location westus
+az group create --name <myResourceGroup> --location westus
 ```
 
-Erstellen Sie mit dem Befehl [az acr create](/cli/azure/acr#create) eine Azure Container Registry-Instanz. Der Name einer Containerregistrierung **muss eindeutig sein**.
+Erstellen Sie mit dem Befehl **az acr create** eine Azure Container Registry-Instanz. Ersetzen Sie \<acrName> durch den Namen der Containerregistrierung, die Sie für Ihr Abonnement erstellen möchten. Dieser muss aus alphanumerischen Zeichen bestehen und eindeutig sein. 
 
 ```bash
-az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
+az acr create --resource-group <myResourceGroup> --name <acrName> --sku Basic --admin-enabled true
 ```
 
-Für den Rest dieses Tutorials verwenden wir „acrname“ als Platzhalter für den von Ihnen gewählten Namen der Containerregistrierung.
+Im weiteren Verlauf des Tutorials verwenden wir „acrName“ als Platzhalter für den von Ihnen gewählten Namen der Containerregistrierung. Bitte notieren Sie sich diesen Wert. 
 
 ## <a name="log-in-to-your-container-registry"></a>Anmelden bei Ihrer Containerregistrierung
 
-Melden Sie sich zunächst bei Ihrer ACR-Instanz an, bevor Sie Images in diese pushen. Verwenden Sie den Befehl [az acr login](/cli/azure/acr?view=azure-cli-latest#az_acr_login), um den Vorgang abzuschließen. Geben Sie den eindeutigen Namen an, den die Containerregistrierung bei ihrer Erstellung erhalten hat.
+Melden Sie sich zunächst bei Ihrer ACR-Instanz an, bevor Sie Images in diese pushen. Verwenden Sie den Befehl **az acr login**, um den Vorgang abzuschließen. Geben Sie den eindeutigen Namen an, den die Containerregistrierung bei ihrer Erstellung erhalten hat.
 
 ```bash
 az acr login --name <acrName>
@@ -141,9 +137,7 @@ Ausgabe:
 
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
-azure-vote-back              latest              bf9a858a9269        3 seconds ago        107MB
 azure-vote-front             latest              052c549a75bf        About a minute ago   708MB
-redis                        latest              9813a7e8fcc0        2 days ago           107MB
 tiangolo/uwsgi-nginx-flask   python3.6           590e17342131        5 days ago           707MB
 ```
 
@@ -153,16 +147,18 @@ Führen Sie den folgenden Befehl aus, um den loginServer-Namen abzurufen:
 az acr show --name <acrName> --query loginServer --output table
 ```
 
+Dadurch wird eine Tabelle mit den folgenden Ergebnissen ausgegeben. Dieses Ergebnis wird zur Kennzeichnung Ihres **azure-vote-front**-Images verwendet, bevor es im nächsten Schritt an die Containerregistrierung weitergeleitet wird.
+
+```bash
+Result
+------------------
+<acrName>.azurecr.io
+```
+
 Kennzeichnen Sie nun das Image *azure-vote-front* mit dem „loginServer“-Namen der Containerregistrierung. Fügen Sie zudem `:v1` am Ende des Imagenamens hinzu. Dieses Tag gibt die Imageversion an.
 
 ```bash
-docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v1
-```
-
-Kennzeichnen Sie dann das Image *azure-vote-back* mit dem loginServer-Namen der Containerregistrierung. Fügen Sie zudem `:v1` am Ende des Imagenamens hinzu. Dieses Tag gibt die Imageversion an.
-
-```bash
-docker tag azure-vote-back <acrLoginServer>/azure-vote-back:v1
+docker tag azure-vote-front <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
 Führen Sie nach der Kennzeichnung den Befehl „docker images“ aus, um den Vorgang zu überprüfen.
@@ -172,11 +168,8 @@ Ausgabe:
 
 ```bash
 REPOSITORY                             TAG                 IMAGE ID            CREATED             SIZE
-azure-vote-back                        latest              bf9a858a9269        22 minutes ago      107MB
-<acrName>.azurecr.io/azure-vote-back    v1                  bf9a858a9269        22 minutes ago      107MB
 azure-vote-front                       latest              052c549a75bf        23 minutes ago      708MB
-<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf        23 minutes ago      708MB
-redis                                  latest              9813a7e8fcc0        2 days ago          107MB
+<acrName>.azurecr.io/azure-vote-front   v1                  052c549a75bf       23 minutes ago      708MB
 tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5 days ago          707MB
 
 ```
@@ -188,15 +181,7 @@ tiangolo/uwsgi-nginx-flask             python3.6           590e17342131        5
 Verwenden Sie das folgende Beispiel, und ersetzen Sie den ACR-loginServer-Namen durch den loginServer-Namen aus Ihrer Umgebung.
 
 ```bash
-docker push <acrLoginServer>/azure-vote-front:v1
-```
-
-Pushen Sie das Image *azure-vote-back* in die Registrierung. 
-
-Verwenden Sie das folgende Beispiel, und ersetzen Sie den ACR-loginServer-Namen durch den loginServer-Namen aus Ihrer Umgebung.
-
-```bash
-docker push <acrLoginServer>/azure-vote-back:v1
+docker push <acrName>.azurecr.io/azure-vote-front:v1
 ```
 
 Die Ausführung der Docker-Push-Befehle nimmt einige Minuten in Anspruch.
@@ -214,7 +199,6 @@ Ausgabe:
 ```bash
 Result
 ----------------
-azure-vote-back
 azure-vote-front
 ```
 
@@ -222,7 +206,7 @@ Nach Abschluss des Tutorials ist das Containerimage in einer privaten Azure Cont
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden eine Anwendung aus GitHub gepullt sowie Containerimages erstellt und in eine Registrierung gepusht. Die folgenden Schritte wurden ausgeführt:
+In diesem Tutorial wurden eine Anwendung aus GitHub gepullt sowie Containerimages erstellt und in eine Registrierung gepusht. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
 > * Klonen der Anwendungsquelle von GitHub  

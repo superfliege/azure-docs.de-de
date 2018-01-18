@@ -1,22 +1,22 @@
 ---
-title: "Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über GitHub | Microsoft-Dokumentation"
-description: "Erstellen einer Funktionen-App und Bereitstellen von Funktionscode über GitHub"
+title: Erstellen einer Funktion in Azure, die aus GitHub bereitgestellt wird | Microsoft-Dokumentation
+description: Erstellen einer Funktions-App und Bereitstellen von Funktionscode aus einem GitHub-Repository mit Azure Functions.
 services: functions
 ms.service: functions
 keywords: 
 ms.devlang: azurecli
 author: syntaxc4
 ms.author: cfowler
-ms.date: 04/27/2017
+ms.date: 01/09/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 8b148651d041bbc27e2deccec57b1759ce0095d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4224bc7973cd1e3ca36799db9f23a124fcba807
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
-# <a name="create-an-app-service"></a>Erstellen eines App Service
+# <a name="create-a-function-in-azure-that-is-deployed-from-github"></a>Erstellen einer Funktion in Azure, die aus GitHub bereitgestellt wird
 
 Dieses Beispielskript erstellt mit dem [Verbrauchsplan](../functions-scale.md#consumption-plan) eine Funktionen-App mit den zugehörigen Ressourcen und stellt Ihren Funktionscode kontinuierlich aus einem GitHub-Repository bereit. In diesem Beispiel benötigen Sie Folgendes:
 
@@ -27,7 +27,7 @@ Dieses Beispielskript erstellt mit dem [Verbrauchsplan](../functions-scale.md#co
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Thema die Azure CLI-Version 2.0 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
+Wenn Sie die Azure CLI dagegen lokal verwenden, müssen Sie Version 2.0 oder höher verwenden. Um die Azure CLI-Version zu ermitteln, führen Sie `az --version` aus. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="sample-script"></a>Beispielskript
 
@@ -41,7 +41,7 @@ Dieses Beispiel erstellt eine Azure-Funktionen-App und stellt Funktionscode übe
 
 Jeder Befehl in der Tabelle ist mit der zugehörigen Dokumentation verknüpft. Das Skript verwendet die folgenden Befehle:
 
-| Befehl | Hinweise |
+| Get-Help | Notizen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
 | [az storage account create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Erstellt einen App Service-Plan. |

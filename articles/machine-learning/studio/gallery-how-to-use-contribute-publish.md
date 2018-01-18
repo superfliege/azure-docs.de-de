@@ -1,6 +1,6 @@
 ---
-title: Cortana Intelligence-Katalog | Microsoft Docs
-description: Teilen und entdecken Sie Analyseressourcen und vieles mehr im Cortana Intelligence-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
+title: Azure AI-Katalog | Microsoft-Dokumentation
+description: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure AI-Katalog. Lernen Sie von anderen Benutzern, und leisten Sie Ihren eigenen Beitrag zur Community.
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9da6cc9d306930fbec33ecebc85784d0d1e1532d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d60815e848277637e3d692a676dbde838b249754
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="share-and-discover-resources-in-the-cortana-intelligence-gallery"></a>Teilen und Entdecken von Ressourcen im Cortana Intelligence-Katalog
+# <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure AI-Katalog
 [!INCLUDE [gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 <!-- separating these 2 includes -->
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Was finde ich im Katalog?
-Der Cortana Intelligence-Katalog enthält viele Ressourcen, die Sie verwenden können, um Ihre eigenen Analytics-Lösungen zu entwickeln.
+Der Azure AI-Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
 
 * **[Experiments (Experimente)](gallery-experiments.md)**: Der Katalog enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
 * **[Jupyter Notebooks](gallery-jupyter-notebooks.md)**: Jupyter Notebooks umfassen Code, Datenvisualisierungen und Dokumentationen in einem einzelnen, interaktiven Zeichenbereich.
@@ -48,7 +48,7 @@ Diese grundlegenden Katalogressourcen können auf unterschiedliche Weise logisch
 
 Unter **[Competitions (Wettbewerbe)](gallery-competitions.md)** haben Sie schließlich die Möglichkeit, gegen die Community der Data Scientists anzutreten und komplexe Probleme mit der Cortana Intelligence Suite zu lösen.
 
-![Startseite des Cortana Intelligence-Katalogs](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
+![Azure AI-Katalog-Homepage](./media/gallery-how-to-use-contribute-publish/gallery-home-page.png)
 
 ## <a name="discover-and-learn"></a>Entdecken und Lernen
 Jeder kann in den unterschiedlichen Arten von Ressourcen im Katalog, die von Microsoft und der erweiterten Analytics-Community bereitgestellt wurden, stöbern und sie durchsuchen.

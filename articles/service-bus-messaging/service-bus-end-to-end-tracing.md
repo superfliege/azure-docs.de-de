@@ -1,0 +1,232 @@
+---
+title: "Azure Service Bus – End-to-End-Ablaufverfolgung und Diagnose | Microsoft Docs"
+description: "Übersicht über die Diagnose und die End-to-End-Ablaufverfolgung für den Service Bus-Client"
+services: service-bus-messaging
+documentationcenter: 
+author: lmolkova
+manager: timlt
+editor: 
+ms.service: service-bus-messaging
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 12/18/2017
+ms.author: lmolkova
+ms.openlocfilehash: 847056acd2d97391782dcac1874a2739b7f5825c
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/10/2018
+---
+# <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
+
+Eines der häufigsten Probleme bei der Microservice-Entwicklung besteht darin, Abläufe von einem Client aus über alle an der Verarbeitung beteiligten Dienste zu verfolgen. Eine solche Fähigkeit ist nützlich für das Debuggen, die Leistungsanalyse, A/B-Tests und andere gängige Diagnoseszenarien.
+Ein Teil des Problems besteht darin, die logischen Arbeitsschritte nachzuverfolgen. Dies umfasst neben der Auswertung der Nachrichtenverarbeitung auch die Latenz und externe Abhängigkeitsaufrufe. Der andere Teil ist die Korrelation dieser Diagnoseereignisse über Prozessgrenzen hinweg.
+
+Wenn ein Producer eine Nachricht über eine Warteschlange sendet, geschieht dies in der Regel im Rahmen eines anderen logischen Vorgangs, der von einem anderen Client oder Dienst initiiert wird. Derselbe Vorgang wird vom Consumer fortgesetzt, sobald dieser eine Nachricht empfängt. Meistens gibt sowohl der Producer als auch der Consumer (sowie andere an der Verarbeitung beteiligten Dienste) Telemetrieereignisse aus, die zur Nachverfolgung des Vorgangsflusses und des Ergebnisses herangezogen werden. Um diese Ereignisse zu korrelieren und den Vorgang bis zum Ende zu verfolgen, muss jeder Dienst, der Telemetriedaten meldet, die einzelnen Ereignisse mit einem Ablaufverfolgungskontext kennzeichnen.
+
+Microsoft Azure Service Bus-Messaging verfügt über definierte Nutzlasteigenschaften, die sowohl von Producern als auch von Consumern zur Übergabe dieser Ablaufverfolgungskontexte verwendet werden müssen.
+Das Protokoll basiert auf dem [HTTP-Korrelationsprotokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md).
+
+| Eigenschaftenname        | Beschreibung                                                 |
+|----------------------|-------------------------------------------------------------|
+|  Diagnostic-Id       | Ein eindeutiger Bezeichner eines externen Aufrufs, der vom Producer an die Warteschlange gesendet wird. Unter [Request-Id im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#request-id) finden Sie weitere Begründungen, Überlegungen und Informationen zum Format |
+|  Correlation-Context | des Vorgangskontexts, der über alle Dienste hinweg weitergegeben wird, die an der Vorgangsverarbeitung beteiligt sind. Weitere Informationen finden Sie unter [Correlation-Context im HTTP-Protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md#correlation-context). |
+
+## <a name="service-bus-net-client-auto-tracing"></a>Automatische Ablaufverfolgung im Service Bus-Client für .NET
+
+Ab Version 3.0.0 stellt der [Microsoft Azure Service Bus-Client für .NET](/dotnet/api/microsoft.azure.servicebus.queueclient) Instrumentierungspunkte für die Ablaufverfolgung bereit, die von Ablaufverfolgungssystemen oder von Clientcode verwendet werden können.
+Die Instrumentierung ermöglicht die Nachverfolgung aller Aufrufe, die von Clientseite an den Service Bus-Messagingdienst gesendet werden. Nachdem die Nachrichtenverarbeitung nach dem [Muster „Meldungshandler“](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) abgeschlossen wurde, wird die Nachrichtenverarbeitung ebenfalls instrumentiert.
+
+### <a name="tracking-with-azure-application-insights"></a>Nachverfolgung mithilfe von Azure Application Insights
+
+[Microsoft Application Insights](https://azure.microsoft.com/services/application-insights/) bietet umfassende Funktionen zur Leistungsüberwachung, darunter die automatische Nachverfolgung von Anforderungen und Abhängigkeiten.
+
+Installieren Sie je nach Projekttyp ggf. das Application Insights SDK:
+- [ASP.NET](../application-insights/app-insights-asp-net.md)-Version 2.5-beta2 oder höher
+- [ASP.NET Core](../application-insights/app-insights-asp-net-core.md)-Version 2.2.0-beta2 oder höher.
+Über diese Links können Sie Details zur Erstellung von Ressourcen sowie zur Installation und Konfiguration des SDKs (falls erforderlich) abrufen. Weitere Informationen zu Nicht-ASP.NET-Anwendungen finden Sie im Artikel [Azure Application Insights für Konsolenanwendungen](../application-insights/application-insights-console.md).
+
+Wenn Sie das [Muster „Meldungshandler“](/dotnet/api/microsoft.azure.servicebus.queueclient.registermessagehandler) zum Verarbeiten von Nachrichten verwenden, sind Sie bereits fertig: Alle Service Bus-Aufrufe, die von Ihrem Dienst durchgeführt werden, werden automatisch nachverfolgt und mit anderen Telemetrieelementen korreliert. Andernfalls finden Sie im folgenden Beispiel Informationen zur manuellen Nachverfolgung der Nachrichtenverarbeitung.
+
+#### <a name="trace-message-processing"></a>Nachrichtenverarbeitung nachverfolgen
+
+```csharp
+private readonly TelemetryClient telemetryClient;
+
+async Task ProcessAsync(Message message)
+{
+    var activity = message.ExtractActivity();
+    
+    // If you are using Microsoft.ApplicationInsights package version 2.6-beta or higher, you should call StartOperation<RequestTelemetry>(activity) instead
+    using (var operation = telemetryClient.StartOperation<RequestTelemetry>("Process", activity.RootId, activity.ParentId))
+    {
+        telemetryClient.TrackTrace("Received message");
+        try 
+        {
+           // process message
+        }
+        catch (Exception ex)
+        {
+             telemetryClient.TrackException(ex);
+             operation.Telemetry.Success = false;
+             throw;
+        }
+
+        telemetryClient.TrackTrace("Done");
+   }
+}
+```
+
+In diesem Beispiel wird `RequestTelemetry` für jede verarbeitete Nachricht einschließlich Zeitstempel, Dauer und Ergebnis (Erfolg) gemeldet. Zur Telemetrie gehört auch eine Gruppe von Korrelationseigenschaften.
+Geschachtelte Ablaufverfolgungen und Ausnahmen, die während der Nachrichtenverarbeitung gemeldet werden, werden ebenfalls mit Korrelationseigenschaften gekennzeichnet, um sie als "untergeordnete Elemente" von `RequestTelemetry` auszuweisen.
+
+Falls Sie während der Nachrichtenverarbeitung unterstützte externe Komponenten aufrufen, werden diese ebenfalls automatisch nachverfolgt und korreliert. Weitere Informationen zur manuellen Nachverfolgung und Korrelation finden Sie unter [Nachverfolgen benutzerdefinierter Vorgänge mit dem Application Insights .NET SDK](../application-insights/application-insights-custom-operations-tracking.md).
+
+### <a name="tracking-without-tracing-system"></a>Nachverfolgung ohne Ablaufverfolgungssystem
+Falls die automatische Nachverfolgung von Service Bus-Aufrufen von Ihrem Ablaufverfolgungssystem nicht unterstützt wird, empfiehlt es sich, das Ablaufverfolgungssystem oder die Anwendung entsprechend zu erweitern. In diesem Abschnitt werden die Diagnoseereignisse beschrieben, die vom Service Bus .NET-Client gesendet werden.  
+
+Der Service Bus .NET-Client verwendet zwei primitive Typen, um die .NET-Ablaufverfolgung zu instrumentieren: [System.Diagnostics.Activity](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) und [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md).
+
+`Activity` dient als Ablaufverfolgungskontext, während `DiagnosticSource` ein Benachrichtigungsmechanismus ist. 
+
+Falls kein Listener für die DiagnosticSource-Ereignisse vorhanden ist, wird die Instrumentierung deaktiviert. In diesem Fall liegen die Instrumentierungskosten bei Null. DiagnosticSource übergibt die Kontrolle vollständig an den Listener:
+- Der Listener steuert, welche Datenquellen und Ereignisse überwacht werden.
+- Der Listener steuert die Ereignisrate und den Stichprobenumfang.
+- Ereignisse werden mit einer Nutzlast gesendet, die vollständigen Kontext bereitstellt. Auf diese Weise können Sie das Message-Objekt während des Ereignisses abrufen und ändern.
+
+Machen Sie sich mit dem [DiagnosticSource-Benutzerleitfaden](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) vertraut, bevor Sie mit der Implementierung fortfahren.
+
+Als Nächstes erstellen wir einen Listener für Service Bus-Ereignisse in der ASP.NET Core-App, die die Protokollierung mithilfe von Microsoft.Extension.Logger durchführt.
+Dabei wird die [System.Reactive.Core](https://www.nuget.org/packages/System.Reactive.Core)-Bibliothek verwendet, um DiagnosticSource zu abonnieren (aber auch ohne Bibliothek kann DiagnosticSource ganz einfach abonniert werden).
+
+```csharp
+public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory factory, IApplicationLifetime applicationLifetime)
+{
+    // configuration...
+
+    var serviceBusLogger = factory.CreateLogger("Microsoft.Azure.ServiceBus");
+
+    IDisposable innerSubscription = null;
+    IDisposable outerSubscription = DiagnosticListener.AllListeners.Subscribe(delegate (DiagnosticListener listener)
+    {
+        // subscribe to the Service Bus DiagnosticSource
+        if (listener.Name == "Microsoft.Azure.ServiceBus")
+        {
+            // receive event from Service Bus DiagnosticSource
+            innerSubscription = listener.Subscribe(delegate (KeyValuePair<string, object> evnt)
+            {
+                // Log operation details once it's done
+                if (evnt.Key.EndsWith("Stop"))
+                {
+                    Activity currentActivity = Activity.Current;
+                    TaskStatus status = (TaskStatus)evnt.Value.GetProperty("Status");
+                    serviceBusLogger.LogInformation($"Operation {currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}");
+                }
+            });
+        }
+    });
+
+    applicationLifetime.ApplicationStopping.Register(() =>
+    {
+        outerSubscription?.Dispose();
+        innerSubscription?.Dispose();
+    });
+}
+```
+
+In diesem Beispiel werden die Dauer, das Ergebnis, der eindeutige Bezeichner und die Startzeit der einzelnen Service Bus-Vorgänge vom Listener protokolliert.
+
+#### <a name="events"></a>Ereignisse
+
+Für jeden Vorgang werden zwei Ereignisse gesendet: Start und Stop. In den meisten Fällen kommt es nur auf die Stop-Ereignisse an. Diese enthalten neben dem Ergebnis des Vorgangs die Startzeit und die Dauer in Form von Activity-Eigenschaften.
+
+Die Ereignisnutzlast stellt einen Listener mit dem Vorgangskontext bereit, repliziert eingehende API-Parameter und gibt einen Wert zurück. Die Stop-Ereignisnutzlast verfügt über alle Eigenschaften der Start-Ereignisnutzlast, sodass Sie das Start-Ereignis vollständig außer Acht lassen können.
+
+Alle Ereignisse verfügen außerdem über die Entity-Eigenschaft und die Endpoint-Eigenschaft, die in der folgenden Tabelle nicht berücksichtigt sind.
+  * `string Entity` – der Name der Entität (Warteschlange, Thema usw.)
+  * `Uri Endpoint` – die URL des Service Bus-Endpunkts
+
+Jedes Stop-Ereignis verfügt über die `Status`-Eigenschaft, mit der der asynchrone `TaskStatus`-Vorgang abgeschlossen wurde. Aus Gründen der Übersichtlichkeit wird die Eigenschaft in der folgenden Tabelle nicht berücksichtigt.
+
+Im Folgenden finden Sie eine vollständige Liste der instrumentierten Vorgänge:
+
+| Vorgangsname | Nachverfolgte API | Bestimmte Nutzlasteigenschaften|
+|----------------|-------------|---------|
+| Microsoft.Azure.ServiceBus.Send | [MessageSender.SendAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.sendasync) | IList<Message> Messages – eine Liste der gesendeten Nachrichten |
+| Microsoft.Azure.ServiceBus.ScheduleMessage | [MessageSender.ScheduleMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.schedulemessageasync) | Message Message – die aktuell verarbeitete Nachricht<br/>DateTimeOffset ScheduleEnqueueTimeUtc – der Offset der geplanten Nachricht<br/>long SequenceNumber – die Sequenznummer der geplanten Nachricht (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.Cancel | [MessageSender.CancelScheduledMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagesender.cancelscheduledmessageasync) | long SequenceNumber – die Sequenznummer der abzubrechenden Nachricht | 
+| Microsoft.Azure.ServiceBus.Receive | [MessageReceiver.ReceiveAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receiveasync) |int RequestedMessageCount – die maximale Anzahl von Nachrichten, die empfangen werden können<br/>IList<Message> Messages – die Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.Peek | [MessageReceiver.PeekAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.peekasync) | int FromSequenceNumber – der Startpunkt für das Durchsuchen eines Nachrichtenbatches<br/>int RequestedMessageCount – die Anzahl der abzurufenden Nachrichten<br/>IList<Message> Messages – die Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.ReceiveDeferred | [MessageReceiver.ReceiveDeferredMessageAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.receivedeferredmessageasync) | IEnumerable<long> SequenceNumbers – eine Liste, die die zu empfangenden Sequenznummern enthält<br/>IList<Message> Messages – die Liste der empfangenen Nachrichten (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.Complete | [MessageReceiver.CompleteAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.completeasync) | IList<string> LockTokens – die Liste, die die Sperrtokens der Nachrichten enthält, die abgeschlossen werden sollen|
+| Microsoft.Azure.ServiceBus.Abandon | [MessageReceiver.AbandonAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.abandonasync) | string LockToken – das Sperrtoken der Nachricht, die vorzeitig beendet werden soll |
+| Microsoft.Azure.ServiceBus.Defer | [MessageReceiver.DeferAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deferasync) | string LockToken – das Sperrtoken der Nachricht, die verzögert werden soll | 
+| Microsoft.Azure.ServiceBus.DeadLetter | [MessageReceiver.DeadLetterAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.deadletterasync) | string LockToken – das Sperrtoken der Nachricht, die in die Warteschlange für unzustellbare Nachrichten verschoben werden soll | 
+| Microsoft.Azure.ServiceBus.RenewLock | [MessageReceiver.RenewLockAsync](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync) | string LockToken – das Sperrtoken der Nachricht, deren Sperre erneuert werden soll<br/>DateTime LockedUntilUtc – das neue Ablaufdatum des Sperrtokens und die Uhrzeit im UTC-Format (Stop-Ereignisnutzlast)|
+| Microsoft.Azure.ServiceBus.Process | Die in [IReceiverClient.RegisterMessageHandler](/dotnet/api/microsoft.azure.servicebus.core.ireceiverclient.registermessagehandler) bereitgestellte Lambda-Funktion des Meldungshandlers | Message Message – die aktuell verarbeitete Nachricht |
+| Microsoft.Azure.ServiceBus.ProcessSession | Die in [IQueueClient.RegisterSessionHandler](/dotnet/api/microsoft.azure.servicebus.iqueueclient.registersessionhandler) bereitgestellte Lambda-Funktion des Handlers der Nachrichtensitzung | Message Message – die aktuell verarbeitete Nachricht<br/>IMessageSession Session – die verarbeitete Sitzung |
+| Microsoft.Azure.ServiceBus.AddRule | [SubscriptionClient.AddRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.addruleasync) | RuleDescription Rule – die Regelbeschreibung, in der die hinzuzufügende Regel angegeben wird |
+| Microsoft.Azure.ServiceBus.RemoveRule | [SubscriptionClient.RemoveRuleAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.removeruleasync) | string RuleName – der Name der Regel, die entfernt werden soll |
+| Microsoft.Azure.ServiceBus.GetRules | [SubscriptionClient.GetRulesAsync](/dotnet/api/microsoft.azure.servicebus.subscriptionclient.getrulesasync) | IEnumerable<RuleDescription> Rules – alle Regeln, die dem Abonnement zugeordnet sind (nur Stop-Nutzlast) |
+| Microsoft.Azure.ServiceBus.AcceptMessageSession | [ISessionClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.azure.servicebus.isessionclient.acceptmessagesessionasync) | string SessionId – die in den Nachrichten enthaltene sessionId |
+| Microsoft.Azure.ServiceBus.GetSessionState | [IMessageSession.GetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.getstateasync) | string SessionId – die in den Nachrichten enthaltene sessionId<br/>byte [] State – der Sitzungszustand (Stop-Ereignisnutzlast) |
+| Microsoft.Azure.ServiceBus.SetSessionState | [IMessageSession.SetStateAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.setstateasync) | string SessionId – die in den Nachrichten enthaltene sessionId<br/>byte [] State – der Sitzungszustand |
+| Microsoft.Azure.ServiceBus.RenewSessionLock | [IMessageSession.RenewSessionLockAsync](/dotnet/api/microsoft.azure.servicebus.imessagesession.renewsessionlockasync) | string SessionId – die in den Nachrichten enthaltene sessionId |
+| Microsoft.Azure.ServiceBus.Exception | eine beliebige instrumentierte API| Exception Exception – die Exception-Instanz |
+
+In jedem Ereignis haben Sie Zugriff auf das `Activity.Current`-Element, das den aktuellen Vorgangskontext enthält.
+
+#### <a name="logging-additional-properties"></a>Protokollieren zusätzlicher Eigenschaften
+
+`Activty.Current` stellt detaillierte Kontextinformationen zum aktuellen Vorgang und untergeordneten Vorgängen bereit. Weitere Informationen finden Sie in der [Activity-Dokumentation](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md).
+Die Service Bus-Instrumentierung stellt zusätzliche Informationen in `Activity.Current.Tags` bereit. Diese enthalten `MessageId` und `SessionId`, sofern verfügbar.
+
+Aktivitäten, durch die die Ereignisse Receive, Peek und ReceiveDeferred nachverfolgt werden, können ebenfalls das `RelatedTo`-Tag aufweisen. Das Tag enthält eine genaue Liste mit den `Diagnostic-Id`(s) der Nachrichten, die als Ergebnis empfangen wurden.
+Ein solcher Vorgang kann dazu führen, dass mehrere unverbundene Nachrichten empfangen werden. Da die `Diagnostic-Id` zu Beginn des Vorgangs nicht bekannt ist, kann nur dieses Tag helfen, Receive-Vorgänge mit Process-Vorgängen zu korrelieren. Es ist außerdem nützlich für die Analyse von Leistungsproblemen, um zu überprüfen, wie lange der Nachrichtenempfang gedauert hat.
+
+Sie können Tags auch durchlaufen, um sie effizient zu protokollieren. Im Folgenden ist dargestellt, wie der vorangehende Code mit Tags aussieht: 
+
+```csharp
+Activity currentActivity = Activity.Current;
+TaskStatus status = (TaskStatus)evnt.Value.GetProperty("Status");
+
+var tagsList = new StringBuilder();
+foreach (var tags in currentActivity.Tags)
+{
+    tagsList.Append($", "{tags.Key}={tags.Value}");
+}
+
+serviceBusLogger.LogInformation($"{currentActivity.OperationName} is finished, Duration={currentActivity.Duration}, Status={status}, Id={currentActivity.Id}, StartTime={currentActivity.StartTimeUtc}{tagsList}");
+```
+
+#### <a name="filtering-and-sampling"></a>Filtern und Stichprobenumfang
+
+In einigen Fällen ist es wünschenswert, nur einen Teil der Ereignisse zu protokollieren, um den zusätzlichen Leistungsaufwand oder die Speicherauslastung zu reduzieren. Beispielsweise können Sie nur Stop-Ereignisse (wie im vorangehenden Beispiel) oder einen Stichprobenprozentsatz protokollieren. 
+`DiagnosticSource` bietet zu diesem Zweck das `IsEnabled`-Prädikat. Weitere Informationen finden Sie unter [Kontextbasierte Filterung in DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md#context-based-filtering).
+
+`IsEnabled` kann mehrmals für einen einzelnen Vorgang aufgerufen werden, um Leistungseinbußen zu minimieren.
+
+`IsEnabled` wird in der folgenden Abfolge aufgerufen:
+
+1. `IsEnabled(<OperationName>, string entity, null)` entspricht `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Das Start- und das Stop-Ereignis am Ende fehlen. Verwenden Sie das Element, um bestimmte Vorgänge oder Warteschlangen herauszufiltern. Wenn durch den Rückruf `false` zurückgegeben wird, werden keine Ereignisse für den Vorgang gesendet.
+
+  * Für den Process-Vorgang und den ProcessSession-Vorgang wird ebenfalls ein `IsEnabled(<OperationName>, string entity, Activity activity)`-Rückruf empfangen. Verwenden Sie das Element, um Ereignisse auf der Basis von `activity.Id`-Eigenschaften oder Tags-Eigenschaften zu filtern.
+  
+2. `IsEnabled(<OperationName>.Start)` entspricht `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Durch diesen Code wird überprüft, ob das Start-Ereignis ausgelöst werden soll. Das Ergebnis wirkt sich nur auf das Start-Ereignis, nicht aber auf die weitere Instrumentierung aus.
+
+Für das Stop-Ereignis ist keine `IsEnabled`-Eigenschaft vorhanden.
+
+Wenn ein Vorgang eine Ausnahme zurückgibt, wird `IsEnabled("Microsoft.Azure.ServiceBus.Exception")` aufgerufen. Sie können auch nur Exception-Ereignisse abonnieren und die übrigen Instrumentierungsschritte auslassen. In diesem Fall müssen solche Ausnahmen trotzdem behandelt werden. Da die weitere Instrumentierung deaktiviert ist, werden die Nachrichten zwischen Consumer und Producer ohne Ablaufverfolgungskontext weitergeleitet.
+
+Sie können `IsEnabled` auch zur Implementierung von Stichprobenstrategien verwenden. Durch die Stichprobenentnahme auf der Grundlage von `Activity.Id` oder `Activity.RootId` wird über alle Ebenen eine konsistente Stichprobenentnahme sichergestellt (sofern die Weiterleitung über das Ablaufverfolgungssystem oder den eigenen Code erfolgt).
+
+Falls mehrere `DiagnosticSource`-Listener für dieselbe Quelle vorhanden sind, muss nur ein Listener das Ereignis akzeptieren. Es kann also sein, dass `IsEnabled` nicht aufgerufen wird.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* [Service Bus – Grundlagen](service-bus-fundamentals-hybrid-solutions.md)
+* [Application Insights-Korrelation](../application-insights/application-insights-correlation.md)
+* [Abhängigkeitsüberwachung in Application Insights](../application-insights/app-insights-asp-net-dependencies.md), um zu überprüfen, ob REST, SQL oder andere externe Ressourcen Ihr System verlangsamen.
+* [Nachverfolgen von benutzerdefinierten Vorgängen mit dem Application Insights .NET SDK](../application-insights/application-insights-custom-operations-tracking.md)

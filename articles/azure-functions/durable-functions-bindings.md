@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 02c3e0e919b556bc6d4bb41d9c66b4a6d29bdd68
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 3be59e32de22e0939ee887fba1d20829f1ef22eb
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Bindungen für Durable Functions (Azure Functions)
 
@@ -66,7 +66,7 @@ Hier sind einige Hinweise zum Orchestrierungstrigger angegeben:
 
 Die Orchestrierungstriggerbindung unterstützt sowohl Ein- als auch Ausgaben. Hier sind einige Dinge aufgeführt, die Sie in Bezug auf die Eingabe- und Ausgabeverarbeitung wissen sollten:
 
-* **Eingaben**: Orchestrierungsfunktionen unterstützen nur [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) als Parametertyp. Deserialisierungseingaben direkt in die Funktionssignatur werden nicht unterstützt. Im Code muss die [GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)-Methode zum Abrufen von Eingaben der Orchestratorfunktion verwendet werden. Bei diesen Eingaben muss es sich um Typen handeln, für die eine JSON-Serialisierung möglich ist.
+* **Eingaben**: Orchestrierungsfunktionen unterstützen nur [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) als Parametertyp. Deserialisierung von Eingaben direkt in die Funktionssignatur wird nicht unterstützt. Im Code muss die [GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_GetInput__1)-Methode zum Abrufen von Eingaben der Orchestratorfunktion verwendet werden. Bei diesen Eingaben muss es sich um Typen handeln, für die eine JSON-Serialisierung möglich ist.
 * **Ausgaben**: Orchestrierungstrigger unterstützen sowohl Ausgabewerte als auch Eingaben. Der Rückgabewert der Funktion wird verwendet, um den Ausgabewert zuzuweisen, und er muss per JSON serialisierbar sein. Wenn eine Funktion `Task` oder `void` zurückgibt, wird als Ausgabe der Wert `null` gespeichert.
 
 > [!NOTE]
@@ -85,7 +85,7 @@ public static string Run([OrchestrationTrigger] DurableOrchestrationContext cont
 }
 ```
 
-Die meisten Orchestratorfunktionen rufen andere Funktionen auf. In diesem „Hello World“-Beispiel wird veranschaulicht, wie eine Funktion aufgerufen wird:
+Die meisten Orchestratorfunktionen rufen Aktivitätsfunktionen auf. In diesem „Hello World“-Beispiel wird veranschaulicht, wie eine Aktivitätsfunktion aufgerufen wird:
 
 ```csharp
 [FunctionName("HelloWorld")]
@@ -141,7 +141,7 @@ Hier sind einige Hinweise zum Aktivitätstrigger aufgeführt:
 Die Aktivitätstriggerbindung unterstützt sowohl Ein- als auch Ausgaben – genau wie der Orchestrierungstrigger. Hier sind einige Dinge aufgeführt, die Sie in Bezug auf die Eingabe- und Ausgabeverarbeitung wissen sollten:
 
 * **Eingaben**: Für Aktivitätsfunktionen wird nativ [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) als Parametertyp verwendet. Alternativ dazu kann eine Aktivitätsfunktion mit jedem Parametertyp deklariert werden, der per JSON serialisierbar ist. Bei Verwendung von `DurableActivityContext` können Sie [GetInput\<T>](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html#Microsoft_Azure_WebJobs_DurableActivityContext_GetInput__1) aufrufen, um die Eingabe der Aktivitätsfunktion abzurufen und zu deserialisieren.
-* **Ausgaben**: Aktivitätstrigger unterstützen sowohl Ausgabewerte als auch Eingaben. Der Rückgabewert der Funktion wird verwendet, um den Ausgabewert zuzuweisen, und er muss per JSON serialisierbar sein. Wenn eine Funktion `Task` oder `void` zurückgibt, wird als Ausgabe der Wert `null` gespeichert.
+* **Ausgaben**: Aktivitätsfunktionen unterstützen sowohl Ausgabewerte als auch Eingaben. Der Rückgabewert der Funktion wird verwendet, um den Ausgabewert zuzuweisen, und er muss per JSON serialisierbar sein. Wenn eine Funktion `Task` oder `void` zurückgibt, wird als Ausgabe der Wert `null` gespeichert.
 * **Metadaten**: Aktivitätsfunktionen können an einen `string instanceId`-Parameter gebunden werden, um die Instanz-ID der übergeordneten Orchestrierung zu erhalten.
 
 > [!NOTE]
@@ -180,7 +180,7 @@ Mit der Bindung des Orchestrierungsclients können Sie Funktionen schreiben, die
 
 Bei Verwendung von Visual Studio können Sie die Bindung an den Orchestrierungsclient durchführen, indem Sie das .NET-Attribut [OrchestrationClientAttribute](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.OrchestrationClientAttribute.html) verwenden.
 
-Wenn Sie Skriptsprachen (z.B. *CSX*-Dateien) für die Entwicklung nutzen, wird der Orchestrierungstrigger mit dem folgenden JSON-Objekt im `bindings`-Array der Datei „function.json“ definiert:
+Wenn Sie Skriptsprachen (z.B. *CSX*-Dateien) für die Entwicklung nutzen, wird der Orchestrierungstrigger mit dem folgenden JSON-Objekt im `bindings`-Array der *function.json*-Datei definiert:
 
 ```json
 {
@@ -193,7 +193,7 @@ Wenn Sie Skriptsprachen (z.B. *CSX*-Dateien) für die Entwicklung nutzen, wird d
 ```
 
 * `taskHub`: Wird in Szenarien verwendet, in denen mehrere Funktionen-Apps dasselbe Speicherkonto nutzen, aber voneinander isoliert werden müssen. Wenn Sie hier nichts angeben, wird der Standardwert aus `host.json` verwendet. Dieser Wert muss mit dem Wert übereinstimmen, der von den Zielorchestratorfunktionen verwendet wird.
-* `connectionName`: Der Name einer App-Einstellung, die eine Speicherverbindungszeichenfolge enthält. Das Speicherkonto, für das diese Verbindungszeichenfolge steht, muss dem Speicherkonto entsprechen, das von den Zielorchestratorfunktionen verwendet wird. Wenn nichts angegeben ist, wird die Standardverbindungszeichenfolge für die Funktionen-App genutzt.
+* `connectionName`: Der Name einer App-Einstellung, die eine Speicherkonto-Verbindungszeichenfolge enthält. Das Speicherkonto, für das diese Verbindungszeichenfolge steht, muss dem Speicherkonto entsprechen, das von den Zielorchestratorfunktionen verwendet wird. Wenn nichts angegeben ist, wird die Speicherkonto-Standardverbindungszeichenfolge für die Funktionen-App verwendet.
 
 > [!NOTE]
 > In den meisten Fällen ist es empfehlenswert, diese Eigenschaften wegzulassen und das Standardverhalten zu nutzen.
@@ -228,7 +228,7 @@ public static Task Run(
 
 ### <a name="client-sample-not-visual-studio"></a>Clientbeispiel (nicht Visual Studio)
 
-Wenn Sie für die Entwicklung nicht Visual Studio nutzen, können Sie die folgende Datei „function.json“ erstellen. In diesem Beispiel wird veranschaulicht, wie Sie eine per Warteschlange ausgelöste Funktion konfigurieren, für die die langlebige Orchestrierungsclientbindung verwendet wird:
+Wenn Sie für die Entwicklung nicht Visual Studio nutzen, können Sie die folgende *function.json*-Datei erstellen. In diesem Beispiel wird veranschaulicht, wie Sie eine per Warteschlange ausgelöste Funktion konfigurieren, für die die langlebige Orchestrierungsclientbindung verwendet wird:
 
 ```json
 {

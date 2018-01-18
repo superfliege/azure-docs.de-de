@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.openlocfilehash: 519ac38c484b9631a3fc096a17be026e9378a178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2adfffa00a726fe2c452c25dd777ef054319b04
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 ## <a name="overview"></a>Übersicht
@@ -44,7 +44,7 @@ Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Sc
 >
 
 ## <a name="api-deployment"></a>API-Bereitstellung
-Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Dies können Sie vom [Cortana Intelligence-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) aus tun.  Hiermit werden Ihrem Azure-Abonnement zwei AzureML-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs von der [AzureML-Webdienste](https://services.azureml.net/webservices/) Seite aus verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
+Um die API zu verwenden, müssen Sie sie für Ihr Azure-Abonnement bereitstellen, wo sie als Azure Machine Learning-Webdienst gehostet wird.  Sie können dies aus dem [Azure AI-Katalog](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) vornehmen.  Hiermit werden Ihrem Azure-Abonnement zwei AzureML-Webdienste (und die mit ihnen verknüpften Ressourcen) bereitgestellt – einer für die Erkennung von Anomalien mit Saisonabhängigkeitserkennung und ein weiterer ohne Saisonabhängigkeitserkennung.  Sobald die Bereitstellung abgeschlossen ist, können Sie die APIs von der [AzureML-Webdienste](https://services.azureml.net/webservices/) Seite aus verwalten.  Von dieser Seite aus finden Sie Ihre Endpunkt-Speicherorte und API-Schlüssel sowie Beispielcodes für den API-Aufruf.  Ausführlichere Anweisungen finden Sie [hier](https://docs.microsoft.com/azure/machine-learning/machine-learning-manage-new-webservice).
 
 ## <a name="scaling-the-api"></a>Skalieren der API
 Standardmäßig enthält der kostenlose Dev/Test-Abrechnungsplan Ihrer Bereitstellung 1.000 Transaktionen/Monat und 2 Computestunden/Monat.  Sie können nach Ihren Bedürfnissen auf einen anderen Plan aktualisieren.  Informationen zu den Preisen verschiedener Pläne finden Sie [hier](https://azure.microsoft.com/en-us/pricing/details/machine-learning/) unter „Produktions-Web-API-Preise“.
@@ -108,7 +108,7 @@ Die Score-API wird zum Ausführen der Anomaly Detection (Anomalieerkennung) für
 ### <a name="detectors"></a>Erkennungsmodule
 Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kategorien. Details zu bestimmten Eingabeparametern und Ausgaben für jedes Erkennungsmodul finden Sie in der folgenden Tabelle.
 
-| Kategorie des Erkennungsmoduls | Erkennungsmodul | Beschreibung | Eingabeparameter | Ausgaben |
+| Kategorie des Erkennungsmoduls | Erkennungsmodul | BESCHREIBUNG | Eingabeparameter | Ausgaben |
 | --- | --- | --- | --- | --- |
 | Spitzenerkennungsmodule |TSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Werte vom ersten und dritten Quartil |*tspikedetector.sensitivity:* Verwendet einen Ganzzahlwert im Bereich 1-10, Standard: 3. Mit höheren Werten werden Extremwerte erfasst, wodurch die Empfindlichkeit abnimmt. |TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
 | Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.sensitivity:* Verwendet einen Ganzzahlwert im Bereich 1-10, Standard: 3. Mit höheren Werten werden Extremwerte erfasst, wodurch die Empfindlichkeit abnimmt. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. | |
@@ -118,7 +118,7 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 ### <a name="parameters"></a>Parameter
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | Beschreibung | Standardeinstellung | Typ | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Typ | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | detectors.historyWindow |Verwendeter Verlauf (in Anzahl von Datenpunkten) für die Anomalieberechnung |500 |integer |10 - 2.000 |Von Zeitreihe abhängig |
 | detectors.spikesdips | Ob nur Spikes, nur Dips oder beides erkannt werden soll |Beides |enumerated |Both, Spikes, Dips |Beides |
@@ -128,12 +128,12 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |N/V |
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt. 
 
-| Ausgaben | Beschreibung |
+| Ausgaben | BESCHREIBUNG |
 | --- | --- |
-| Time |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
+| Zeit |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | Daten |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | TSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom TSpike-Erkennungsmodul erkannt wird |
 | ZSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom ZSpike-Erkennungsmodul erkannt wird |
@@ -154,7 +154,7 @@ Die Detektoren im Saisonabhängigkeits-Endpunkt ähneln denen im Nicht-Saisonabh
 
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:
 
-| Eingabeparameter | Beschreibung | Standardeinstellung | Typ | Gültiger Bereich | Vorgeschlagener Bereich |
+| Eingabeparameter | BESCHREIBUNG | Standardeinstellung | Typ | Gültiger Bereich | Vorgeschlagener Bereich |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |Aggregationsintervall in Sekunden zum Aggregieren von Eingabezeitreihen |0 (keine Aggregation) |integer |0: Aggregation überspringen, andernfalls > 0 |5 Minuten bis 1 Tag, von Zeitreihe abhängig |
 | preprocess.aggregationFunc |Funktion zum Aggregieren von Daten im angegebenen AggregationInterval |mean |enumerated |mean, sum, length |N/V |
@@ -166,17 +166,17 @@ Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folg
 | negtrenddetector.sensitivity |Empfindlichkeit für Erkennungsmodul für negative Trends |3.25 |double |Keine |3,25 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | tspikedetector.sensitivity |Empfindlichkeit für TSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
 | zspikedetector.sensitivity |Empfindlichkeit für ZSpike-Erkennungsmodul |3 |integer |1 - 10 |3 - 5 (niedrigerer Wert = höhere Empfindlichkeit) |
-| seasonality.enable |Gibt an, ob eine saisonabhängige Analyse durchgeführt wird. |true |Boolescher Wert |true, false |Von Zeitreihe abhängig |
+| seasonality.enable |Gibt an, ob eine saisonabhängige Analyse durchgeführt wird. |true |boolean |true, false |Von Zeitreihe abhängig |
 | seasonality.numSeasonality |Maximale Anzahl von zu erkennenden periodischen Zyklen |1 |integer |1, 2 |1 - 2 |
 | seasonality.transform |Gibt an, ob saisonale (und) Trendkomponenten entfernt werden sollen, bevor die Anomalieerkennung angewendet wird. |deseason |enumerated |none, deseason, deseasontrend |N/V |
 | postprocess.tailRows |Anzahl von aktuellen Datenpunkten, die in den Ausgabeergebnissen beibehalten werden sollen |0 |integer |0 (alle Datenpunkte beibehalten), oder geben Sie die Anzahl von Punkten an, die in den Ergebnissen beibehalten werden sollen |N/V |
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 Die API führt alle Erkennungsmodule für Ihre Zeitreihendaten aus und gibt für jeden Zeitpunkt Anomaliebewertungen und binäre Spitzenindikatoren zurück. In der Tabelle unten sind die Ausgaben der API aufgeführt. 
 
-| Ausgaben | Beschreibung |
+| Ausgaben | BESCHREIBUNG |
 | --- | --- |
-| Time |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
+| Zeit |Zeitstempel aus Rohdaten oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | OriginalData |Werte aus Rohdaten, oder aggregierte (und/oder) zugeordnete Daten, wenn Aggregation (und/oder) die Zuordnung fehlender Daten angewendet wird |
 | ProcessedData |Eine der folgenden Möglichkeiten:  <ul><li>Saisonabhängig angepasste Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseason“ gewählt wurde.</li><li>Saisonabhängig angepasste und trendbereinigte Zeitreihen, wenn eine signifikante Saisonabhängigkeit erkannt und die Option „deseasontrend“ gewählt wurde</li><li>Andernfalls identisch mit „OriginalData“</li> |
 | TSpike |Binärer Indikator, um anzugeben, ob eine Spitze vom TSpike-Erkennungsmodul erkannt wird |

@@ -14,17 +14,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 27312846caf4f51e708b48655578846a52cbd1c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e29e472860890e3f44af79c42c31ff524acb9276
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Timer in Durable Functions (Azure Functions)
 
 [Durable Functions](durable-functions-overview.md) bieten *permanente Timer* für die Verwendung in Orchestratorfunktionen zum Implementieren von Verzögerungen oder zum Einrichten von Timeouts für asynchrone Aktionen. Permanente Timer sollten in Orchestratorfunktionen anstelle von `Thread.Sleep` oder `Task.Delay` verwendet werden.
 
-Sie erstellen einen permanenten Timer durch Aufrufen von [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_). Die Methode gibt eine Aufgabe zurück, die an einem bestimmten Datum zu einer bestimmten Zeit fortgesetzt wird.
+Sie erstellen einen permanenten Timer, indem Sie die [CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_)-Methode in [DurableOrchestrationContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html) aufrufen. Die Methode gibt eine Aufgabe zurück, die an einem bestimmten Datum zu einer bestimmten Zeit fortgesetzt wird.
 
 ## <a name="timer-limitations"></a>Timereinschränkungen
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
 ms.author: v-donglo
-ms.openlocfilehash: 9024bc82c0de5b8058a848cc809a2571baa7ce83
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 2e71fa46f88ce219bee96a223a034078a037b4d3
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal
 Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
@@ -110,7 +110,7 @@ Das Dashboard des Plans enthält die folgenden Informationen:
 
 ## <a name="manage-classic-web-services"></a>Verwalten von klassischen Webdiensten
 > [!NOTE]
-> Die Verfahren in diesem Abschnitt gelten für das Verwalten klassischer Webdienste im Azure Machine Learning Web Services-Portal. Informationen zum Verwalten klassischer Webdienste über Machine Learning Studio und das klassische Azure-Portal finden Sie unter [Verwalten eines Azure Machine Learning-Arbeitsbereichs](manage-workspace.md).
+> Die Verfahren in diesem Abschnitt gelten für das Verwalten klassischer Webdienste im Azure Machine Learning Web Services-Portal. Informationen zum Verwalten klassischer Webdienste über Machine Learning Studio und das Azure-Portal finden Sie unter [Verwalten eines Azure Machine Learning-Arbeitsbereichs](manage-workspace.md).
 > 
 > 
 

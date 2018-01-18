@@ -1,6 +1,6 @@
 ---
-title: Cortana Intelligence-Katalog Sammlungen | Microsoft Docs
-description: Entdecken und Teilen von Sammlungen im Cortana Intelligence-Katalog.
+title: Sammlungen im Azure AI-Katalog | Microsoft-Dokumentation
+description: Entdecken und Freigeben von Sammlungen im Azure AI-Katalog.
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 9ca9b45bf977a562982535feb4093fcee0f10a05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a90686d42aa3187e358d9ba3c8c5c3fb579a1d5e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-and-share-collections-in-cortana-intelligence-gallery"></a>Entdecken und Teilen von Sammlungen im Cortana Intelligence-Katalog
+# <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Entdecken und Freigeben von Sammlungen im Azure AI-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="collections"></a>Sammlungen
@@ -71,7 +71,7 @@ Beispielsweise können Sie eine Sammlung verwenden, um Elemente zu einem bestimm
     ![Wählen Sie „Öffentlich“ oder „Nicht aufgeführt“ aus.](./media/gallery-collections/create-collection-page-3.png)
 7. Klicken Sie auf **Erstellen**.
 
-Ihre Sammlung befindet sich jetzt im Cortana Intelligence-Katalog. Ihre Sammlungen werden auf der Seite Ihres Kontos unter der Registerkarte **Sammlung** angezeigt.
+Ihre Sammlung befindet sich nun im Azure AI-Katalog. Ihre Sammlungen werden auf der Seite Ihres Kontos unter der Registerkarte **Sammlung** angezeigt.
 
 ### <a name="add-items-to-a-collection"></a>Hinzufügen von Elementen zu einer Sammlung
 Um der Sammlung Elemente hinzuzufügen, öffnen Sie die Sammlung, wählen **Bearbeiten** und dann **Element hinzufügen** aus.

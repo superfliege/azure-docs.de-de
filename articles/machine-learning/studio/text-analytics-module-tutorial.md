@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: roastala
-ms.openlocfilehash: 5f45a500c7cc28b6d6ad3fcac780791d43067ff3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a43dc7162be4b2f3cfd122c6a87921caf2e3e418
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Erstellen von Textanalysemodellen in Azure Machine Learning Studio
 Mit Azure Machine Learning können Sie Textanalysemodelle erstellen und operationalisieren. Diese Modelle können Ihnen z.B. helfen, Probleme bei der Klassifizierung von Dokumenten oder Stimmungsanalyse zu lösen.
@@ -33,7 +33,7 @@ In einem Experiment zur Textanalyse würden Sie in der Regel Folgendes tun:
 
 In diesem Tutorial lernen Sie diese Schritte anhand eines Stimmungsanalysemodells unter Verwendung eines Amazon Book Reviews-Datasets (weitere Informationen finden Sie im Forschungsbericht „Biographies, Bollywood, Boom-boxes and Blenders: Domain Adaptation for Sentiment Classification“ von John Blitzer, Mark Dredze und Fernando Pereira; Association of Computational Linguistics [ACL], 2007). Dieses Dataset besteht aus Beurteilungsergebnissen (1 - 2 oder 4 - 5) und einem Freiformtext. Das Ziel ist die Vorhersage des Beurteilungsergebnisses: niedrig (1 - 2) oder hoch (4 - 5).
 
-Sie finden Experimente, die in diesem Tutorial behandelt werden, in der Cortana Intelligence Gallery:
+Sie finden Experimente, die in diesem Tutorial behandelt werden, im Azure AI-Katalog:
 
 [Predict Book Reviews (Vorhersagen von Buchbesprechungen)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
 

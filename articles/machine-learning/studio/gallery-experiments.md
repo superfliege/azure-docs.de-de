@@ -1,6 +1,6 @@
 ---
-title: Experimente im Cortana Intelligence-Katalog | Microsoft Docs
-description: Entdecken und Teilen von Experimenten im Cortana Intelligence-Katalog.
+title: Experimente im Azure AI-Katalog | Microsoft-Dokumentation
+description: Entdecken und Freigeben von Experimenten im Azure AI-Katalog.
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: 472ecac4ac1d9a86f0a3ad8271dd96257c331e5f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad41d431b78a69e54bb5e4df3aaea1ec7c858b7f
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-experiments-in-cortana-intelligence-gallery"></a>Entdecken von Experimenten im Cortana Intelligence-Katalog
+# <a name="discover-experiments-in-azure-ai-gallery"></a>Entdecken und Freigeben von Experimenten im Azure AI-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="experiments-for-machine-learning-studio"></a>Experimente für Machine Learning Studio
@@ -42,10 +42,10 @@ Sie können weitere Informationen zu einem Experiment auf der Detailseite des Ex
 
 ![Fügen Sie Ihre eigenen Kommentare hinzu](./media/gallery-how-to-use-contribute-publish/comments.png)
 
-## <a name="download"></a>Download
+## <a name="download"></a>Herunterladen
 Sie können eine Kopie jedes Experiments aus dem Katalog in den Machine Learning Studio-Arbeitsbereich herunterladen. Anschließend können Sie die Kopie bearbeiten, um Ihre eigenen Lösungen zu erstellen.
 
-Der Cortana Intelligence-Katalog bietet die folgenden zwei Möglichkeiten, eine Kopie eines Experiments zu importieren:
+Der Azure AI-Katalog bietet die folgenden zwei Möglichkeiten, eine Kopie eines Experiments zu importieren:
 
 * **Aus dem Katalog**. Wenn Sie ein interessantes Experiment im Katalog finden, können Sie eine Kopie herunterladen und im Machine Learning Studio-Arbeitsbereich öffnen.
 * **Aus Machine Learning Studio**. Sie können in Machine Learning Studio jedes beliebige Experiment im Katalog als Vorlage verwenden, um ein neues Experiment zu erstellen.

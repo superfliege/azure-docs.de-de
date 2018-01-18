@@ -1,6 +1,6 @@
 ---
-title: Cortana Intelligence-Katalog Wettbewerbe | Microsoft Docs
-description: Entdecken Sie Wettbewerbe im Cortana Intelligence-Katalog.
+title: Wettbewerbe im Azure AI-Katalog | Microsoft-Dokumentation
+description: Entdecken von Wettbewerben im Azure AI-Katalog.
 services: machine-learning
 documentationcenter: 
 author: garyericson
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: roopalik;garye
-ms.openlocfilehash: e9c1ae9448ad7179c33bbbafa34a4643a4840d0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e39d636b3322201465700a4c9de83dda1bbefcc
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
-# <a name="discover-competitions-in-the-cortana-intelligence-gallery"></a>Entdecken Sie Wettbewerbe im Cortana Intelligence-Katalog
+# <a name="discover-competitions-in-the-azure-ai-gallery"></a>Entdecken von Wettbewerben im Azure AI-Katalog
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]
 
 ## <a name="cortana-intelligence-competitions"></a>Cortana Intelligence-Wettbewerbe
@@ -29,12 +29,12 @@ Unter **[Competitions (Wettbewerbe)](https://gallery.cortanaintelligence.com/com
 Antworten auf häufig gestellte Fragen zu Wettbewerben finden Sie unter [Microsoft Cortana Intelligence-Wettbewerbe – Häufig gestellte Fragen](competition-faq.md).
 
 ## <a name="discover"></a>Entdecken
-  Wenn Sie im Katalog nach Competitions suchen möchten, öffnen Sie den [Katalog](http://gallery.cortanaintelligence.com), fahren Sie mit der Maus über **More (Mehr)** oben auf der Katalog-Startseite, und wählen Sie **Competitions**.
+Die Seite **[Competitions](https://gallery.cortanaintelligence.com/competitions)** (Wettbewerbe) ([aka.ms/CIComp](http://aka.ms/CIComp)) zeigt eine Liste der am häufigsten verwendeten Wettbewerbe an.
 
 ![Wählen Sie Competitions auf der Startseite des Katalogs aus](./media/gallery-competitions/select-competitions-in-gallery.png)
 
- Die Seite **[Competitions](https://gallery.cortanaintelligence.com/competitions)** (Wettbewerbe) zeigt eine Liste der am häufigsten verwendeten Wettbewerbe.
-Klicken Sie auf **Alle anzeigen**, um alle Wettbewerbe anzuzeigen.
+ 
+ Klicken Sie auf **Alle anzeigen**, um alle Wettbewerbe anzuzeigen.
 Auf dieser Seite können Sie alle Wettbewerbe im Katalog durchsuchen. Sie können auch suchen, indem Sie links auf der Seite Filterkriterien auswählen und oben Suchbegriffe eingeben.
 
  Klicken Sie auf einen beliebigen Wettbewerb, um die Detailseite des Wettbewerbs zu öffnen und weitere Informationen zu erhalten. Auf dieser Seite können Sie Kommentare hinzufügen, Feedback geben oder Fragen im Kommentarbereich stellen. Außerdem können Sie diese Seite auch mit Freunden oder Kollegen teilen, indem Sie die entsprechenden Funktionen von LinkedIn oder Twitter verwenden. Sie können auch einen Link zum Wettbewerb per E-Mail senden, um andere Benutzer zum Besuch der Seite einzuladen.
