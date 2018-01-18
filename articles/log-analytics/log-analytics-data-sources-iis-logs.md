@@ -1,6 +1,6 @@
 ---
-title: IIS-Protokolle in Log Analytics | Microsoft Docs
-description: "IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Log Analytics gesammelt werden können.  Dieser Artikel beschreibt die Konfiguration der Sammlung von IIS-Protokollen sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
+title: IIS-Protokolle in Azure Log Analytics | Microsoft-Dokumentation
+description: "IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Log Analytics gesammelt werden können.  In diesem Artikel wird beschrieben, wie Sie die Erfassung von IIS-Protokollen konfigurieren, und aus welchen Bestandteilen die im Log Analytics-Arbeitsbereich erstellten Datensätze bestehen."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 01/07/2018
 ms.author: bwren
-ms.openlocfilehash: 20155e7f0ad817993b5926a1a83b8683ab124075
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: b8ce4e6fe6e12aa3edb81abad1589924e3e121e4
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="iis-logs-in-log-analytics"></a>IIS-Protokolle in Log Analytics
 IIS (Internet Information Services, Internetinformationsdienste) speichern Benutzeraktivitäten in Protokolldateien, die von Log Analytics gesammelt werden können.  
@@ -41,7 +41,7 @@ Log Analytics sammelt etwa alle 15 Minuten IIS-Protokolleinträge aus jeder verb
 ## <a name="iis-log-record-properties"></a>Eigenschaften der IIS-Protokolldatensätze
 IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Computer |Name des Computers, auf dem das Ereignis gesammelt wurde. |
 | cIP |IP-Adresse des Clients. |
@@ -68,7 +68,7 @@ IIS-Protokolldatensätze weisen den Typ **W3CIISLog** auf und besitzen die in de
 ## <a name="log-searches-with-iis-logs"></a>Protokollsuchvorgänge mit IIS-Protokollen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die IIS-Protokolldatensätze abrufen.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 |:--- |:--- |
 | W3CIISLog |Alle IIS-Protokolldatensätze. |
 | W3CIISLog &#124; where scStatus==500 |Alle IIS-Protokolleinträge mit dem Rückgabestatus 500 |
@@ -78,5 +78,5 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, die II
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Konfigurieren Sie Log Analytics für die Sammlung von Daten aus anderen [Datenquellen](log-analytics-data-sources.md) zur Analyse.
-* Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
 * Konfigurieren Sie Warnungen in Log Analytics, sodass Sie proaktiv benachrichtigt werden, wenn in IIS-Protokollen wichtige Probleme gefunden werden.

@@ -1,26 +1,23 @@
 ---
 title: "Konfigurieren der Azure Active Directory-Authentifizierung – SQL| Microsoft-Dokumentation"
-description: Erfahren Sie, wie Sie unter Verwendung der Azure Active Directory-Authentifizierung eine Verbindung mit SQL-Datenbank und SQL Data Warehouse herstellen.
+description: "Erfahren Sie, wie Sie unter Verwendung der Azure Active Directory-Authentifizierung eine Verbindung mit SQL-Datenbank und SQL Data Warehouse herstellen – nachdem Sie Azure AD konfiguriert haben."
 services: sql-database
-documentationcenter: 
-author: BYHAM
-manager: jhubbard
-editor: 
-tags: 
+author: GithubMirek
+manager: johammer
 ms.assetid: 7e2508a1-347e-4f15-b060-d46602c5ce7e
 ms.service: sql-database
 ms.custom: security
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: Active
-ms.date: 07/10/2017
-ms.author: rickbyh
-ms.openlocfilehash: f0c9578217beff22b4a322b363c7499943311d88
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.date: 01/09/2018
+ms.author: mireks
+ms.openlocfilehash: 93fb39770a0b0c63011c05505be411c7470fea0a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank oder SQL Data Warehouse
 
@@ -32,33 +29,14 @@ In diesem Artikel erfahren Sie, wie Sie ein Azure AD erstellen und auffüllen un
 ## <a name="create-and-populate-an-azure-ad"></a>Erstellen und Auffüllen von Azure AD
 Erstellen Sie ein Azure Active Directory-Verzeichnis, und füllen Sie es mit Benutzern und Gruppen. Azure AD kann die verwaltete Azure AD-Anfangsdomäne sein. Azure AD kann auch ein lokaler Active Directory Domain Services im Verbund mit Azure AD sein.
 
-Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Verwalten Ihres Azure AD-Verzeichnisses](https://msdn.microsoft.com/library/azure/hh967611.aspx)[ sowie unter Verwalten von Azure AD mit Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) und [erforderliche Ports und Protokolle für die Hybrid-Identität](../active-directory/active-directory-aadconnect-ports.md).
+Weitere Informationen finden Sie unter [Integrieren Ihrer lokalen Identitäten in Azure Active Directory](../active-directory/active-directory-aadconnect.md), [Hinzufügen eines benutzerdefinierten Domänennamens zu Azure AD](../active-directory/active-directory-domains-add-azure-portal.md), [Microsoft Azure unterstützt jetzt den Verbund mit Windows Server Active Directory](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Verwalten Ihres Azure AD-Verzeichnisses](../active-directory/active-directory-administer.md)[ sowie unter Verwalten von Azure AD mit Windows PowerShell](/powershell/azure/overview?view=azureadps-2.0) und [erforderliche Ports und Protokolle für die Hybrid-Identität](..//active-directory/connect/active-directory-aadconnect-ports.md).
 
-## <a name="optional-associate-or-change-the-active-directory-that-is-currently-associated-with-your-azure-subscription"></a>Optional: Zuordnen oder Ändern des aktiven Verzeichnisses für Ihr Azure-Abonnement
-Um Ihre Datenbank dem Azure AD-Verzeichnis für Ihre Organisation zuzuordnen, kennzeichnen Sie das Verzeichnis für das Azure-Abonnement, das die Datenbank hostet, als vertrauenswürdiges Verzeichnis. Weitere Informationen zu Azure-Abonnements finden Sie unter [Wie Azure-Abonnements mit Azure AD verknüpft sind](https://msdn.microsoft.com/library/azure/dn629581.aspx).
+## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory
 
-**Zusätzliche Informationen:** Jedes Azure-Abonnement weist eine Vertrauensstellung mit einer Azure AD-Instanz auf. Dies bedeutet, dass es diesem Verzeichnis bei der Authentifizierung von Benutzern, Diensten und Geräten vertraut. Mehrere Abonnements können dem gleichen Verzeichnis vertrauen, ein Abonnement vertraut jedoch nur einem Verzeichnis. Sie können unter [https://manage.windowsazure.com/](https://manage.windowsazure.com/) auf der Registerkarte **Einstellungen** ermitteln, welchem Verzeichnis Ihr Abonnement vertraut. Diese Vertrauensstellung, die ein Abonnement mit einem Verzeichnis aufweist, unterscheidet sich von der Beziehung, die ein Abonnement mit allen anderen Ressourcen in Azure (Websites, Datenbanken usw.) hat. Diese ähneln eher den untergeordneten Ressourcen eines Abonnements. Wenn ein Abonnement abläuft, wird der Zugriff auf die anderen Ressourcen, die dem Abonnement zugeordnet sind, ebenfalls beendet. Das Verzeichnis verbleibt jedoch in Azure, und Sie können ihm ein anderes Abonnement zuordnen und weiterhin die Benutzer des Verzeichnisses verwalten. Weitere Informationen zu Ressourcen finden Sie unter [Grundlegendes zur Zugriffssteuerung in Azure sowie zur Integration in Azure Active Directory](https://msdn.microsoft.com/library/azure/dn584083.aspx).
+1. Ordnen Sie Ihr Azure-Abonnement Azure Active Directory zu, indem Sie das Verzeichnis für das Azure-Abonnement, das die Datenbank hostet, als vertrauenswürdiges Verzeichnis kennzeichnen. Weitere Informationen finden Sie unter [Beziehung zwischen Azure-Abonnements und Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
+2. Verwenden Sie den Verzeichnisumschalter im Azure-Portal, um zu dem der Domäne zugeordneten Abonnement zu wechseln.
 
-Die folgenden Verfahren zeigen Ihnen, wie Sie das zugeordnete Verzeichnis für ein Abonnement ändern.
-1. Melden Sie sich als Azure-Abonnementadministrator beim [klassischen Azure-Portal](https://manage.windowsazure.com/) an.
-2. Wählen Sie auf dem Banner links die Option **EINSTELLUNGEN**aus.
-3. Ihre Abonnements werden im Bildschirm mit den Einstellungen angezeigt. Wenn das gewünschte Abonnement nicht angezeigt wird, klicken Sie oben auf **Abonnements**, anschließend auf der Dropdownliste **NACH VERZEICHNIS FILTERN**, und wählen das Verzeichnis aus, das Ihre Abonnements enthält. Klicken Sie dann auf **ANWENDEN**.
-   
-    ![Abonnement auswählen][4]
-4. Klicken Sie im Bereich **Einstellungen** auf Ihr Abonnement, und klicken Sie dann im unteren Seitenbereich auf **VERZEICHNIS BEARBEITEN**.
-   
-    ![Einstellungen im Portal][5]
-5. Wählen Sie im Feld **VERZEICHNIS BEARBEITEN** die Azure Active Directory-Instanz aus, die Ihrer SQL Server- oder SQL Data Warehouse-Instanz zugeordnet ist, und klicken Sie dann auf den Pfeil zum Fortfahren.
-   
-    ![Verzeichnis auswählen][6]
-6. Bestätigen Sie im Dialogfeld **BESTÄTIGEN** für die Verzeichniszuordnung, die Meldung **Alle Co-Administratoren werden entfernt**.
-   
-    ![Verzeichniszuordnung bestätigen][7]
-7. Klicken Sie auf das Häkchen, um das Portal neu zu laden.
-
-   > [!NOTE]
-   > Wenn Sie das Verzeichnis ändern, wird der Zugriff für alle Co-Administratoren, Azure AD-Benutzer und -Gruppen und alle verzeichnisgestützten Ressourcenbenutzer entfernt. Ein Zugriff auf dieses Abonnement oder die zugehörigen Ressourcen ist durch diese Benutzer anschließend nicht mehr möglich. Nur Sie als Dienstadministrator können den Zugriff für Prinzipale basierend auf dem neuen Verzeichnis konfigurieren. Es kann längere Zeit dauern, bis diese Änderung an alle Ressourcen weitergegeben wurde. Die Änderung des Verzeichnisses führt auch zu einer Änderung des Azure AD-Administrators für die SQL-Datenbank und SQL Data Warehouse und deaktiviert den Datenbankzugriff für alle bestehenden Azure AD-Benutzer. Der Azure AD-Administrator muss zurückgesetzt werden (siehe Beschreibung unten), und es müssen neue Azure AD-Benutzer erstellt werden.
-   >  
+   **Zusätzliche Informationen:** Jedes Azure-Abonnement weist eine Vertrauensstellung mit einer Azure AD-Instanz auf. Dies bedeutet, dass es diesem Verzeichnis bei der Authentifizierung von Benutzern, Diensten und Geräten vertraut. Mehrere Abonnements können dem gleichen Verzeichnis vertrauen, ein Abonnement vertraut jedoch nur einem Verzeichnis. Diese Vertrauensstellung, die ein Abonnement mit einem Verzeichnis aufweist, unterscheidet sich von der Beziehung, die ein Abonnement mit allen anderen Ressourcen in Azure (Websites, Datenbanken usw.) hat. Diese ähneln eher den untergeordneten Ressourcen eines Abonnements. Wenn ein Abonnement abläuft, wird der Zugriff auf die anderen Ressourcen, die dem Abonnement zugeordnet sind, ebenfalls beendet. Das Verzeichnis verbleibt jedoch in Azure, und Sie können ihm ein anderes Abonnement zuordnen und weiterhin die Benutzer des Verzeichnisses verwalten. Weitere Informationen zu Ressourcen finden Sie unter [Grundlegendes zur Zugriffssteuerung in Azure sowie zur Integration in Azure Active Directory](../active-directory/active-directory-b2b-admin-add-users.md). Weitere Informationen zu dieser Vertrauensstellung finden Sie unter [Zuweisen oder Hinzufügen eines Azure-Abonnements zu Azure Active Directory](../active-directory/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="create-an-azure-ad-administrator-for-azure-sql-server"></a>Erstellen eines Azure AD-Administrators für die Azure SQL Server-Instanz
 Jede Azure SQL Server-Instanz (mit Hosten von SQL-Datenbank oder SQL Data Warehouse) wird zunächst mit einem einzelnen Serveradministratorkonto konfiguriert, das als Administrator für die gesamte Azure SQL Server-Instanz fungiert. Anschließend muss ein zweiter SQL Server-Administrator erstellt werden, bei dem es sich um ein Azure AD-Konto handelt. Dieser Prinzipal wird als eigenständiger Datenbankbenutzer in der Masterdatenbank erstellt. Als Administratoren sind die Serveradministratorkonten Mitglieder der Rolle **db_owner** in jeder Benutzerdatenbank. Der Zugriff auf alle Benutzerdatenbanken erfolgt als Benutzer **dbo**. Weitere Informationen zu den Serveradministratorkonten finden Sie unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md).
@@ -106,7 +84,7 @@ Um einen Azure AD-Administrator bereitzustellen, führen Sie die folgenden Azure
 
 Verwenden Sie folgende Cmdlets zum Bereitstellen und Verwalten des Azure AD-Administrators:
 
-| Cmdlet-Name | Beschreibung |
+| Cmdlet-Name | BESCHREIBUNG |
 | --- | --- |
 | [Set-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/set-azurermsqlserveractivedirectoryadministrator) |Stellt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse bereit. (Muss aus dem aktuellen Abonnement stammen.) |
 | [Remove-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Entfernt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse. |
@@ -154,7 +132,7 @@ Sie können auch einen Azure Active Directory-Administrator mithilfe der REST-AP
 
 ### <a name="cli"></a>Befehlszeilenschnittstelle (CLI)  
 Sie können auch einen Azure AD-Administrator bereitstellen, indem Sie die folgenden CLI-Befehle aufrufen:
-| Befehl | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | --- | --- |
 |[az sql server ad-admin create](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) |Stellt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse bereit. (Muss aus dem aktuellen Abonnement stammen.) |
 |[az sql server ad-admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Entfernt einen Azure Active Directory-Administrator für die Azure SQL Server-Instanz oder Azure SQL Data Warehouse. |
@@ -222,7 +200,7 @@ Weitere Informationen zum Erstellen eigenständiger Datenbankbenutzer basierend 
 >  Wenn Sie die Benachrichtigung **Das Verbindungstimeout ist abgelaufen.** erhalten, müssen Sie möglicherweise den Parameter `TransparentNetworkIPResolution` der Verbindungszeichenfolge auf FALSE festlegen. Weitere Informationen finden Sie unter [Connection timeout issue with .NET Framework 4.6.1 – TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/) (Verbindungstimeout-Problem mit .NET Framework 4.6.1 – TransparentNetworkIPResolution).   
 
    
-Wenn Sie einen Datenbankbenutzer erstellen, erhält dieser Benutzer die Berechtigung **VERBINDEN** und kann sich als Mitglied der Rolle **ÖFFENTLICH** mit dieser Datenbank verbinden. Anfänglich stehen dem Benutzer nur die Berechtigungen zur Verfügung, die der Rolle **ÖFFENTLICH** gewährt wurden, sowie sämtliche Berechtigungen, die Azure AD-Gruppen erteilt wurden, denen der Benutzer angehört. Nachdem Sie einen Azure AD-basierten eigenständigen Datenbankbenutzer bereitgestellt haben, können Sie dem Benutzer zusätzliche Berechtigungen gewähren. Die Vorgehensweise ist hierbei mit der Berechtigungszuweisung für alle weiteren Benutzertypen identisch. Typischerweise gewähren Sie Datenbankrollen die gewünschten Berechtigungen, und weisen diesen Rollen anschließend Benutzer zu. Weitere Informationen finden Sie unter [Database Engine Permission Basics (in englischer Sprache)](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Weitere Informationen zu besonderen SQL-Datenbankrollen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md).
+Wenn Sie einen Datenbankbenutzer erstellen, erhält dieser Benutzer die Berechtigung **VERBINDEN** und kann sich als Mitglied der Rolle **ÖFFENTLICH** mit dieser Datenbank verbinden. Anfänglich stehen dem Benutzer nur die Berechtigungen zur Verfügung, die der Rolle **ÖFFENTLICH** gewährt wurden, sowie sämtliche Berechtigungen, die Azure AD-Gruppen erteilt wurden, denen der Benutzer angehört. Nachdem Sie einen Azure AD-basierten eigenständigen Datenbankbenutzer bereitgestellt haben, können Sie dem Benutzer zusätzliche Berechtigungen gewähren. Die Vorgehensweise ist hierbei mit der Berechtigungszuweisung für alle weiteren Benutzertypen identisch. Typischerweise gewähren Sie Datenbankrollen die gewünschten Berechtigungen, und weisen diesen Rollen anschließend Benutzer zu. Weitere Informationen finden Sie unter [Erste Schritte mit Berechtigungen für die Datenbank-Engine](http://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Weitere Informationen zu besonderen SQL-Datenbankrollen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in Azure SQL-Datenbank](sql-database-manage-logins.md).
 Ein Verbunddomänen-Benutzerkonto, das als externer Benutzer in eine verwaltete Domäne importiert wird, muss die Identität der verwalteten Domäne verwenden.
 
 > [!NOTE]
@@ -244,7 +222,7 @@ Die folgenden Verfahren zeigen Ihnen, wie Sie mithilfe von SQL Server Management
 
 Verwenden Sie diese Methode, wenn Sie mit Ihren Azure Active Directory-Anmeldeinformationen aus einer Verbunddomäne bei Windows angemeldet sind.
 
-1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory: integriert** aus. Es ist kein Kennwort erforderlich bzw. es kann kein Kennwort eingegeben werden, weil Ihre vorhandenen Anmeldeinformationen zur Verbindungsherstellung verwendet werden.   
+1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbank-Engine herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory: integriert** aus. Es ist kein Kennwort erforderlich bzw. es kann kein Kennwort eingegeben werden, weil Ihre vorhandenen Anmeldeinformationen zur Verbindungsherstellung verwendet werden.   
 
     ![Integrierte AD-Authentifizierung auswählen][11]
 2. Klicken Sie auf die Schaltfläche **Optionen**, und geben Sie auf der Seite **Verbindungseigenschaften** im Feld  **Mit Datenbank verbinden** den Namen der Benutzerdatenbank ein, mit der die Verbindung hergestellt werden soll. (Die Option **AD-Domänenname oder Mandanten-ID** wird nur für Optionen der Reihe **universell mit MFA-Unterstützung** unterstützt, andernfalls wird sie abgeblendet dargestellt.)  
@@ -257,7 +235,7 @@ Verwenden Sie diese Methode, wenn Sie unter Verwendung der verwalteten Azure AD-
 
 Verwenden Sie diese Methode, wenn Sie mit Ihren Windows-Anmeldeinformationen aus einer Domäne angemeldet sind, die nicht im Verbund mit Azure konfiguriert ist, oder wenn Sie die Azure AD-Authentifizierung mit Azure AD basierend auf der Anfangs- oder der Clientdomäne nutzen.
 
-1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbankmodul herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory: Kennwort** aus.
+1. Starten Sie Management Studio oder Data Tools, und wählen Sie im Dialogfeld **Verbindung mit dem Server herstellen** (oder **Verbindung mit Datenbank-Engine herstellen**) im Feld **Authentifizierung** die Einstellung **Active Directory: Kennwort** aus.
 2. Geben Sie im Feld **Benutzername** Ihren Azure Active Directory-Benutzernamen im Format **username@domain.com** ein. Es muss sich um ein Konto aus Azure Active Directory oder um ein Konto aus einer Domäne handeln, die im Verbund mit Azure Active Directory konfiguriert ist.
 3. Geben Sie im Feld **Kennwort** Ihr Benutzerkennwort für das Azure Active Directory-Konto oder das Verbunddomänenkonto ein.
 

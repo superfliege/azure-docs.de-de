@@ -1,6 +1,6 @@
 ---
-title: Antworten auf Warnungen in OMS Log Analytics | Microsoft-Dokumentation
-description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ihrem OMS-Repository identifiziert, und Sie können proaktiv über Probleme informiert werden oder Aktionen aufrufen, um zu versuchen, die Probleme zu beheben.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können."
+title: Antworten auf Warnungen in Azure Log Analytics | Microsoft-Dokumentation
+description: "Warnungen in Log Analytics identifizieren wichtige Informationen in Ihrem Azure-Arbeitsbereich. Anhand von Warnungen werden Sie proaktiv über Probleme informiert, oder es werden Aktionen aufgerufen, die das Problem beheben sollen.  In diesem Artikel wird beschrieben, wie Sie eine Warnungsregel erstellen, und es werden die verschiedenen Aktionen vorgestellt, die Sie durchführen können."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2017
+ms.date: 01/08/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d936cf467ee7043b171cfc845f247f891f52f599
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: e80481f074bc196caae7c03f54134eaef0fb46d5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Hinzufügen von Aktionen zu Warnungsregeln in Log Analytics
 Wenn eine [Warnung in Log Analytics erstellt wird](log-analytics-alerts.md), können Sie optional [eine Warnungsregel konfigurieren](log-analytics-alerts.md), um eine oder mehrere Aktionen auszuführen.  Dieser Artikel beschreibt die verschiedenen verfügbaren Aktionen und Details zu ihrer jeweiligen Konfiguration.
 
-| Aktion | Beschreibung |
+| anzuzeigen. | BESCHREIBUNG |
 |:--|:--|
 | [E-Mail](#email-actions) | Senden einer E-Mail mit den Details der Warnung an einen oder mehrere Empfänger |
 | [Webhook](#webhook-actions) | Aufrufen eines externen Prozesses mit einer einzelnen HTTP POST-Anforderung |
@@ -36,9 +36,9 @@ Bei E-Mail-Aktionen wird eine E-Mail mit den Details der Warnung an einen oder m
 
 E-Mail-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaften.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Betreff |Der Betreff der E-Mail.  Sie können den Haupttext der E-Mail nicht ändern. |
+| Antragsteller |Der Betreff der E-Mail.  Sie können den Haupttext der E-Mail nicht ändern. |
 | Empfänger |Adressen aller E-Mail-Empfänger.  Verwenden Sie als Trennzeichen ein Semikolon (;), wenn Sie mehrere Adressen angeben. |
 
 
@@ -48,7 +48,7 @@ Mit Webhookaktionen können Sie einen externen Prozess über eine HTTP POST-Anfo
 
 Webhook-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaften.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Webhook-URL |Die URL des Webhooks. |
 | Benutzerdefinierte JSON-Nutzlast |Benutzerdefinierte Nutzlast, die mit dem Webhook gesendet wird.  Weitere Informationen siehe unten. |
@@ -59,7 +59,7 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 >[!NOTE]
 > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Webhooknutzlast geändert.  Details des Formats werden in [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.  Ein Beispiel finden Sie unten in den [Beispielen](#sample-payload).
 
-| Parameter | Variable | Beschreibung |
+| Parameter | Variable | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | AlertRuleName |#alertrulename |Der Name der Warnungsregel. |
 | AlertThresholdOperator |#thresholdoperator |Schwellenwertoperator für die Warnungsregel  *Größer als* oder *Kleiner als* |
@@ -71,7 +71,7 @@ Webhooks enthalten eine URL und eine Nutzlast im JSON-Format, wobei es sich um d
 | SearchIntervalStartTimeUtc |#searchintervalstarttimeutc |Startzeit für die Abfrage im UTC-Format |
 | SearchQuery |#searchquery |Von der Warnungsregel verwendete Protokollsuchabfrage |
 | SearchResults |Siehe unten |Von der Abfrage im JSON-Format zurückgegebene Datensätze.  Auf die ersten 5.000 Datensätze beschränkt. |
-| WorkspaceID |#workspaceid |ID Ihres OMS-Arbeitsbereichs |
+| WorkspaceID |#workspaceid |ID Ihres Log Analytics-Arbeitsbereichs. |
 
 Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält.  Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter.
 
@@ -97,15 +97,15 @@ Sie können beispielsweise Folgendes verwenden, um eine benutzerdefinierte Nutzl
     }
 
 
-Ein vollständiges Beispiel für die Erstellung einer Warnungsregel mit einem Webhook, um einen externen Dienst zu starten, können Sie unter [Erstellen einer Warnungs-Webhook-Aktion in OMS Log Analytics zum Senden einer Nachricht an Slack](log-analytics-alerts-webhooks.md) durchgehen.
+Ein vollständiges Beispiel für die Erstellung einer Warnungsregel mit einem Webhook, um einen externen Dienst zu starten, können Sie unter [Erstellen einer Warnungs-Webhook-Aktion in Log Analytics zum Senden einer Nachricht an Slack](log-analytics-alerts-webhooks.md) durchgehen.
 
 
 ## <a name="runbook-actions"></a>Runbookaktionen
-Bei Runbookaktionen wird ein Runbook in Azure Automation gestartet.  Zum Verwenden dieser Art von Aktion muss die [Automation-Lösung](log-analytics-add-solutions.md) im OMS-Arbeitsbereich installiert und konfiguriert sein.  Sie können eines der Runbooks im Automation-Konto auswählen, die Sie in der Automation-Lösung konfiguriert haben.
+Bei Runbookaktionen wird ein Runbook in Azure Automation gestartet.  Zum Verwenden dieser Art von Aktion muss die [Automation-Lösung](log-analytics-add-solutions.md) im Log Analytics-Arbeitsbereich installiert und konfiguriert sein.  Sie können eines der Runbooks im Automation-Konto auswählen, die Sie in der Automation-Lösung konfiguriert haben.
 
 Runbook-Aktionen erfordern die in der folgenden Tabelle aufgeführten Eigenschaften.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:---|
 | Runbook | Runbook, das Sie starten möchten, wenn eine Warnung erstellt wird. |
 | Run on (Ausführen auf) | Geben Sie **Azure** an, um das Runbook in der Cloud auszuführen.  Geben Sie **Hybrid Worker** an, um das Runbook auf einem Agent auszuführen, auf dem [Hybrid Runbook Worker](../automation/automation-hybrid-runbook-worker.md ) installiert ist.  |
@@ -117,7 +117,7 @@ Sie können die Parameter des Runbooks nicht direkt ausfüllen, aber der [$Webho
 >[!NOTE]
 > Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, hat sich die Runbooknutzlast geändert.  Details des Formats werden in [Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse) beschrieben.  Ein Beispiel finden Sie unten in den [Beispielen](#sample-payload).  
 
-| Knoten | Beschreibung |
+| Knoten | BESCHREIBUNG |
 |:--- |:--- |
 | id |Pfad und GUID der Suche |
 | __metadata |Informationen zur Warnung, einschließlich der Anzahl der Datensätze und des Status der Suchergebnisse |

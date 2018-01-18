@@ -1,5 +1,5 @@
 ---
-title: "Anzeigen von Azure-Aktivitätsprotokollen mit Log Analytics | Microsoft-Dokumentation"
+title: "Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics | Microsoft-Dokumentation"
 description: "Mithilfe der Azure-Lösung für Aktivitätsprotokolle können Sie das Azure-Aktivitätsprotokoll in all Ihren Azure-Abonnements analysieren und suchen."
 services: log-analytics
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.openlocfilehash: fa8f51d621bc262ec72ef03929689c4af3c339a6
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e4f112a221221c7f68cc31c80fb43417bb617632
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="view-azure-activity-logs"></a>Anzeigen von Azure-Aktivitätsprotokollen
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Erfassen und Analysieren von Azure-Aktivitätsprotokollen in Log Analytics
 
 ![Symbol „Azure-Aktivitätsprotokolle“](./media/log-analytics-activity/activity-log-analytics.png)
 
@@ -50,12 +50,12 @@ Wenn Sie den Free-Tarif verwenden, zählen Aktivitätsprotokolle nicht zum tägl
 
 Im Gegensatz zu den meisten anderen Log Analytics-Lösungen werden die Daten für Aktivitätsprotokolle nicht von Agents erfasst. Alle von der Lösung verwendeten Daten stammen direkt von Azure.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 | --- | --- | --- |
-| [Windows-Agents](log-analytics-windows-agent.md) | Nein | Die Lösung erfasst keine Informationen von Windows-Agents. |
-| [Linux-Agents](log-analytics-linux-agents.md) | Nein | Die Lösung erfasst keine Informationen von Linux-Agents. |
-| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
-| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein | Die Lösung erfasst keine Informationen von Azure Storage. |
+| [Windows-Agents](log-analytics-windows-agent.md) | Nein  | Die Lösung erfasst keine Informationen von Windows-Agents. |
+| [Linux-Agents](log-analytics-linux-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Linux-Agents. |
+| [SCOM-Verwaltungsgruppe](log-analytics-om-agents.md) | Nein  | Die Lösung erfasst keine Informationen von Agents in einer verbundenen SCOM-Verwaltungsgruppe. |
+| [Azure-Speicherkonto](log-analytics-azure-storage.md) | Nein  | Die Lösung erfasst keine Informationen von Azure Storage. |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -88,7 +88,7 @@ Klicken Sie auf die Kachel **Azure-Aktivitätsprotokolle**, um das Dashboard **A
 
 Die Aktivitätsprotokolldaten werden nur angezeigt, *nachdem* Sie die Aktivitätsprotokolle so konfiguriert haben, dass sie in der Lösung gespeichert werden. Andernfalls werden die Daten nicht angezeigt.
 
-| Blatt | Beschreibung |
+| Blatt | BESCHREIBUNG |
 | --- | --- |
 | Azure Activity Log Entries (Azure-Aktivitätsprotokolleinträge) | Zeigt ein Balkendiagramm aller Datensätze des ersten Azure-Aktivitätsprotokolleintrags für den ausgewählten Datumsbereich sowie eine Liste der ersten 10 Aktivitätsaufrufer an. Klicken Sie auf das Balkendiagramm, um eine Protokollsuche für <code>Type=AzureActivity</code> durchzuführen. Klicken Sie auf ein Aufruferelement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Element zurückgegeben werden. |
 | Activity Logs by Status (Aktivitätsprotokolle nach Status) | Zeigt ein Ringdiagramm für den Status der Azure-Aktivitätsprotokolle für den ausgewählten Datumsbereich an. Zeigt außerdem eine Liste der ersten zehn Statuseinträge an. Klicken Sie auf das Diagramm, um eine Protokollsuche für <code>Type=AzureActivity &#124; measure count() by ActivityStatus</code> durchzuführen. Klicken Sie auf ein Statuselement, um eine Protokollsuche durchzuführen, mit der alle Aktivitätsprotokolleinträge für das Statuselement zurückgegeben werden. |

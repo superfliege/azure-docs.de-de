@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 12/04/2017
+ms.date: 12/14/2017
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 67ec6489a6aeed946d41ac8b297d3d99b86e4169
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: f62e5a224c2fb33714a80bc47b98238208b787e5
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Häufig gestellte Fragen zu Azure Cost Management
 
@@ -46,6 +46,30 @@ Sie müssen die Azure-Abrechnungs-API aktivieren, bevor Sie den Azure EA-API-Sch
 
 Unter Umständen müssen Sie auch Abteilungsadministratoren, Kontobesitzern und Unternehmensadministratoren Berechtigungen zum _Anzeigen von Gebühren_ per Abrechnungs-API gewähren.
 
+## <a name="why-dont-i-see-optimizer-recommendations"></a>Warum werden mir keine Optimierungsempfehlungen angezeigt?
+
+Empfehlungen sind nur für aktivierte Konten verfügbar. In Berichtskategorien für **Optimierung** werden für Konten, die *deaktiviert* sind, keine Empfehlungsinformationen angezeigt. Dazu zählen:
+
+- Optimierungs-Manager
+- Größenoptimierung
+- Ineffizienzen
+
+Falls Sie keine Empfehlungsdaten für die Optimierung anzeigen können, sind einige Ihrer Konten höchstwahrscheinlich deaktiviert. Um ein Konto zu aktivieren, müssen Sie es mit Ihren Azure-Anmeldeinformationen registrieren.
+
+So aktivieren Sie ein Konto:
+
+1.  Klicken Sie im Cloudyn-Portal in der rechten oberen Ecke auf **Settings** (Einstellungen), und wählen Sie **Cloud Accounts** (Cloudkonten) aus.
+2.  Suchen Sie auf der Registerkarte „Microsoft Azure-Konten“ nach Konten, für die **deaktivierte** Abonnements vorliegen.
+3.  Klicken Sie rechts neben einem deaktivierten Konto auf das Symbol **Bearbeiten**, das wie ein Bleistift aussieht.
+4.  Die Mandanten-ID und die Kosten-ID werden automatisch ermittelt. Klicken Sie auf **Weiter**.
+
+5.  Sie werden zum Azure-Portal weitergeleitet. Melden Sie sich beim Portal an, und autorisieren Sie für Cloudyn-Collector den Zugriff auf Ihre Azure-Daten.
+6.  Sie werden als Nächstes auf die Verwaltungsseite für Cloudyn-Konten weitergeleitet, und Ihr Abonnement wird aktualisiert, sodass als Kontostatus **aktiv** angezeigt wird. Es wird ein grünes Häkchen angezeigt.
+7.  Sollte für manche Abonnements kein grünes Häkchen angezeigt werden, bedeutet das, dass Sie nicht zum Erstellen einer Lese-App (Cloudyn-Collector) für das Abonnement berechtigt sind. Ein Benutzer mit höheren Berechtigungen für das Abonnement muss die Schritte 3 und 4 wiederholen.  
+
+Nachdem Sie die vorherigen Schritte ausgeführt haben, können Sie innerhalb von ein bis zwei Tagen Optimierungsempfehlungen anzeigen. Allerdings kann es bis zu fünf Tage dauern, bis vollständige Optimierungsdaten verfügbar sind.
+
+
 ## <a name="how-do-i-enable-suspended-or-locked-out-users"></a>Wie kann ich angehaltene oder gesperrte Benutzer aktivieren?
 
 Wenn Sie eine Warnung mit der Anforderung erhalten, dass der Zugriff für einen Benutzer zugelassen werden soll, müssen Sie das Benutzerkonto aktivieren.
@@ -66,10 +90,7 @@ Wenn Sie Ihre E-Mail-Adresse in Cloudyn von der Standardadresse in Azure in eine
 
 Es wird empfohlen, mindestens zwei Cloudyn-Administratorkonten zu erstellen, falls eines der Konten gesperrt wird.
 
-Wenn Sie sich nicht beim Cloudyn-Portal anmelden können, sollten Sie sicherstellen, dass Sie die richtige Azure Cost Management-URL für die Anmeldung bei Cloudyn verwenden. Verwenden Sie eine der folgenden URLs:
-
-- https://azure.cloudyn.com
-- https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade
+Wenn Sie sich nicht beim Cloudyn-Portal anmelden können, sollten Sie sicherstellen, dass Sie die richtige Azure Cost Management-URL für die Anmeldung bei Cloudyn verwenden. Verwenden Sie [https://azure.cloudyn.com](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
 Vermeiden Sie die Verwendung der direkten Cloudyn-URL „https://app.cloudyn.com“.
 

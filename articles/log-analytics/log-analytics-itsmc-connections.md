@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.openlocfilehash: d1f6d3af5fc414d06f4a6d3aeda660b759a88353
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: ee5d8d118234ca0335922be1a29c6ce1e68eb7b6
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>Verbinden von ITSM-Produkten/-Diensten mit dem IT Service Management Connector (Vorschau)
 Dieser Artikel enthält Informationen zur Verbindung Ihres ITSM-Produkts/-Diensts mit IT Service Management Connector (ITSMC) in OMS sowie zur zentralen Verwaltung Ihrer Arbeitselemente. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](log-analytics-itsmc-overview.md).
@@ -56,7 +56,7 @@ Verwenden Sie das folgende Verfahren zum Verbinden Ihrer System Center Service M
 > [!NOTE]
 > Alle diese Parameter sind erforderlich.
 
-| **Field** | **Beschreibung** |
+| **Feld** | **Beschreibung** |
 | --- | --- |
 | **Name**   | Geben Sie einen Namen für die System Center Service Manager-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später beim Konfigurieren von Arbeitselementen in dieser Instanz/Anzeigen ausführlicher Protokollanalysen. |
 | **Auswählen des Verbindungstyps**   | Wählen Sie **System Center Service Manager** aus. |
@@ -91,7 +91,7 @@ Führen Sie das Skript nach Bereitstellung der folgenden erforderlichen Details 
 
 - Details zum Azure-Abonnement
 - Ressourcengruppenname
-- Ort
+- Speicherort
 - Details zum Service Manager-Server (Servername, Domäne, Benutzername und Kennwort)
 - Präfix des Namens der Website für Ihre Web-App
 - Service Bus-Namespace.
@@ -171,17 +171,21 @@ Die folgende Beispielabbildung zeigt die Details einer erfolgreichen Verbindung:
 Die folgenden Abschnitte enthalten ausführliche Informationen zum Verbinden Ihres ServiceNow-Produkts mit ITSMC in OMS.
 
 ### <a name="prerequisites"></a>Voraussetzungen
-
 Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
-
 - ITSMC wurde installiert. Weitere Informationen: [Hinzufügen der IT Service Management Connector-Lösung](log-analytics-itsmc-overview.md#adding-the-it-service-management-connector-solution).
-- Unterstützte ServiceNow-Versionen: Fuji, Geneva, Helsinki.
+- Von ServiceNow unterstützte Versionen: Jakarta, Istanbul, Helsinki, Geneva
 
-ServiceNow-Administratoren müssen in ihrer ServiceNow-Instanz die folgenden Schritte ausführen:
-- Generieren der Client-ID und des geheimen Clientschlüssels für das ServiceNow-Produkt. Informationen zum Generieren der Client-ID und des geheimen Clientschlüssels finden Sie unter [OAuth-Setup](http://wiki.servicenow.com/index.php?title=OAuth_Setup).
-- Installieren der Benutzer-App für die Microsoft OMS-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.0 )
+**ServiceNow-Administratoren müssen in ihrer ServiceNow-Instanz die folgenden Schritte ausführen**:
+- Generieren der Client-ID und des geheimen Clientschlüssels für das ServiceNow-Produkt. Informationen zum Generieren der Client-ID und des geheimen Clientschlüssels finden Sie in dem für Sie zutreffenden Abschnitt:
+
+    - [OAuth-Setup für Jakarta](https://docs.servicenow.com/bundle/jakarta-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [OAuth-Setup für Istanbul](https://docs.servicenow.com/bundle/istanbul-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [OAuth-Setup für Helsinki](https://docs.servicenow.com/bundle/helsinki-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+    - [OAuth-Setup für Geneva](https://docs.servicenow.com/bundle/geneva-servicenow-platform/page/administer/security/task/t_SettingUpOAuth.html)
+
+
+- Installieren der Benutzer-App für die Microsoft OMS-Integration (ServiceNow-App). [Weitere Informationen](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1)
 - Erstellen der Benutzerrolle „Integration“ für die installierte Benutzer-App. Informationen zum Erstellen der Benutzerrolle „Integration“ finden Sie [hier](#create-integration-user-role-in-servicenow-app).
-
 
 ### <a name="connection-procedure"></a>**Verbindungsverfahren**
 Verwenden Sie das folgende Verfahren, um eine ServiceNow-Verbindung zu erstellen:
@@ -196,7 +200,7 @@ Verwenden Sie das folgende Verfahren, um eine ServiceNow-Verbindung zu erstellen
 > [!NOTE]
 > Alle diese Parameter sind erforderlich.
 
-| **Field** | **Beschreibung** |
+| **Feld** | **Beschreibung** |
 | --- | --- |
 | **Name**   | Geben Sie einen Namen für die ServiceNow-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später in OMS beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/Anzeigen ausführlicher Protokollanalysen. |
 | **Auswählen des Verbindungstyps**   | Wählen Sie **ServiceNow** aus. |
@@ -286,7 +290,7 @@ Verwenden Sie das folgende Verfahren, um eine Provance-Verbindung zu erstellen:
 > [!NOTE]
 > Alle diese Parameter sind erforderlich.
 
-| **Field** | **Beschreibung** |
+| **Feld** | **Beschreibung** |
 | --- | --- |
 | **Name**   | Geben Sie einen Namen für die Provenance-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später in OMS beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/Anzeigen ausführlicher Protokollanalysen. |
 | **Auswählen des Verbindungstyps**   | Wählen Sie **Provance** aus. |
@@ -331,7 +335,7 @@ Verwenden Sie das folgende Verfahren, um eine Cherwell-Verbindung zu erstellen:
 > [!NOTE]
 > Alle diese Parameter sind erforderlich.
 
-| **Field** | **Beschreibung** |
+| **Feld** | **Beschreibung** |
 | --- | --- |
 | **Name**   | Geben Sie einen Namen für die Cherwell-Instanz ein, die Sie mit ITSMC verbinden möchten.  Diesen Namen verwenden Sie später in OMS beim Konfigurieren von Arbeitselementen in dieser ITSM-Instanz/Anzeigen ausführlicher Protokollanalysen. |
 | **Auswählen des Verbindungstyps**   | Wählen Sie **Cherwell** aus. |

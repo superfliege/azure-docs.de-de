@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 3c621fc557ed466ddf2b514136a32d98be454325
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 2b725c60dbcb9737b00ffd5fb43273b26dda1ea8
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 
@@ -31,17 +31,17 @@ Zum Anzeigen und Anwenden von Empfehlungen zur Leistung benötigen Sie die richt
 
 Verwenden Sie die folgenden Schritte, um Empfehlungen zur Leistung im Azure-Portal zu suchen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Weitere Dienste** > **SQL-Datenbanken**, und klicken Sie auf Ihre Datenbank.
 3. Navigieren Sie zu **Empfehlungen zur Leistung**, um die verfügbaren Empfehlungen für die ausgewählte Datenbank anzuzeigen.
 
 Empfehlungen zur Leistung werden in einer Tabelle angezeigt, ähnlich wie in folgender Abbildung dargestellt:
 
-![Recommendations](./media/sql-database-advisor-portal/recommendations.png)
+![Empfehlungen](./media/sql-database-advisor-portal/recommendations.png)
 
 Empfehlungen werden nach möglichen Auswirkungen auf die Leistung in die folgenden Kategorien unterteilt:
 
-| Auswirkung | Beschreibung |
+| Auswirkung | BESCHREIBUNG |
 |:--- |:--- |
 | Hoch |Empfehlungen für hohe Auswirkungen sollten den größten Einfluss auf die Leistung haben. |
 | Mittel |Empfehlungen für mittlere Auswirkungen sollten die Leistung verbessern, jedoch nicht wesentlich. |
@@ -91,6 +91,10 @@ Falls gewünscht, können Sie verworfene Einträge wieder zur Liste **Empfehlung
 2. Wählen Sie einen verworfenen Eintrag aus der Liste, um dessen Details anzuzeigen.
 3. Klicken Sie optional auf **"Verwerfen" rückgängig machen**, um den Eintrag wieder der Hauptliste der **Empfehlungen** hinzuzufügen.
 
+> [!NOTE]
+> Beachten Sie, dass bei Aktivierung von [Automatische Optimierung](sql-database-automatic-tuning.md) für die SQL-Datenbank eine Empfehlung nie automatisch angewendet wird, wenn Sie diese einmal manuell in der Liste verworfen haben. Das Verwerfen einer Empfehlung ist eine praktische Möglichkeit für Benutzer, die automatische Optimierung auch in Fällen aktiviert zu halten, in denen eine bestimmte Empfehlung nicht angewendet werden sollte.
+> Sie können dieses Verhalten rückgängig machen, indem Sie mithilfe der Option „"Verwerfen"rückgängig machen“ verworfene Empfehlungen wieder der Liste der Empfehlungen hinzufügen.
+> 
 
 ### <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
 Sie können den Azure SQL-Datenbank so konfigurieren, dass Empfehlungen automatisch implementiert werden. Sobald Empfehlungen zur Verfügung stehen, werden sie automatisch angewendet. Wie bei allen vom Dienst verwalteten Empfehlungen wird eine Empfehlung rückgängig gemacht, wenn sie sich negativ auf die Leistung auswirkt.
@@ -116,7 +120,7 @@ Empfehlungen, die den Status **Ausstehend**, **Wird geprüft** oder **Erfolg** a
 ## <a name="monitoring-operations"></a>Überwachen von Vorgängen
 Eine Empfehlung wird möglicherweise nicht umgehend angewendet. Im Portal finden Sie ausführliche Informationen zum Status der Empfehlungen. Indizes können die folgenden Zustände aufweisen:
 
-| Status | Beschreibung |
+| Status | BESCHREIBUNG |
 |:--- |:--- |
 | Ausstehend |Der Befehl zum Anwenden der Empfehlung wurde empfangen und ist für die Ausführung geplant. |
 | Wird ausgeführt |Die Empfehlung wird angewendet. |

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 12/15/2017
 ms.author: maheshu
-ms.openlocfilehash: e070dfad6ca51b941f1af60f85463f4534493dff
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d55abe651f69e3539e7584b40a7aedf419bccda1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Konfigurieren von sicherem LDAP (LDAPS) für eine durch Azure AD Domain Services verwaltete Domäne
 
@@ -117,6 +117,7 @@ Wenn Sie Probleme beim Herstellen einer Verbindung mit der verwalteten Domäne �
 * Stellen Sie sicher, dass der LDAP-Client (z.B. „ldp.exe“) eine Verbindung mit dem sicheren LDAP-Endpunkt mit einem DNS-Namen herstellt, nicht mit der IP-Adresse.
 * Stellen Sie sicher, dass der DNS-Name, mit dem der LDAP-Client eine Verbindung herstellt, in die öffentliche IP-Adresse für sicheres LDAP in der verwalteten Domäne aufgelöst wird.
 * Stellen Sie sicher, dass das sichere LDAP-Zertifikat für die verwaltete Domäne den DNS-Namen im Attribut für den Antragsteller oder den alternativen Antragstellernamen aufweist.
+* Wenn Sie über das Internet über sicheres LDAP eine Verbindung herstellen, vergewissern Sie sich, dass die NSG-Einstellungen für das virtuelle Netzwerk den Datenverkehr aus dem Internet an Port 636 zulassen.
 
 Wenn Sie weiterhin Probleme beim Herstellen einer Verbindung mit der verwalteten Domäne über sicheres LDAP haben, [bitten Sie das Produktteam](active-directory-ds-contact-us.md) um Hilfe. Nehmen Sie dabei die folgende Informationen auf, damit das Problem besser diagnostiziert werden kann:
 * Einen Screenshot von „ldp.exe“ beim Herstellen einer Verbindung, die fehlschlägt.
@@ -126,7 +127,7 @@ Wenn Sie weiterhin Probleme beim Herstellen einer Verbindung mit der verwalteten
 
 ## <a name="related-content"></a>Verwandte Inhalte
 * [Erste Schritte mit Azure AD Domain Services](active-directory-ds-getting-started.md)
-* [Verwalten einer durch Azure AD-Domänendienste verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
+* [Verwalten einer durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-domain.md)
 * [Verwalten von Gruppenrichtlinien in einer durch Azure Active Directory Domain Services verwalteten Domäne](active-directory-ds-admin-guide-administer-group-policy.md)
 * [Netzwerksicherheitsgruppen](../virtual-network/virtual-networks-nsg.md)
 * [Erstellen einer Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)

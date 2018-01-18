@@ -1,5 +1,5 @@
 ---
-title: Computergruppen in Log Analytics-Protokollsuchen | Microsoft Docs
+title: Computergruppen bei Protokollsuchen in Azure Log Analytics| Microsoft-Dokumentation
 description: "Mit Computergruppen in Log Analytics können Sie Protokollsuchvorgänge auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, sowie wie sie diese in einer Suche verwenden."
 services: log-analytics
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 17a59a38b6a445a7f42df171a711669f95fc84c2
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
 
@@ -27,7 +27,7 @@ Mit Computergruppen in Log Analytics können Sie [Protokollsuchvorgänge](log-an
 ## <a name="creating-a-computer-group"></a>Erstellen einer Computergruppe
 Sie können eine Computergruppe in Log Analytics mithilfe einer der Methoden in der folgenden Tabelle erstellen.  Einzelheiten zu den einzelnen Methoden finden Sie in den Abschnitten unten. 
 
-| Methode | Beschreibung |
+| Methode | BESCHREIBUNG |
 |:--- |:--- |
 | Protokollsuche |Erstellen Sie eine Protokollsuche, die eine Liste mit Computern zurückgibt. |
 | Protokollsuch-API |Verwenden Sie die Protokollsuch-API, um programmgesteuert eine Computergruppe basierend auf den Ergebnissen einer Protokollsuche zu erstellen. |
@@ -44,11 +44,11 @@ Sie können für eine Computergruppe eine beliebige Abfrage verwenden. Diese mus
 
 Die folgende Tabelle beschreibt die Eigenschaften, durch die eine Computergruppe definiert wird.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:---|:---|
 | Anzeigename   | Name der Suche, die im Portal angezeigt werden soll |
 | Category (Kategorie)       | Kategorie zum Organisieren von Suchvorgängen im Portal |
-| Abfrage          | die Abfrage für die Computergruppe |
+| Abfragen          | die Abfrage für die Computergruppe |
 | Funktionsalias | ein eindeutiger Alias, mit dem die Computergruppe bei einer Abfrage identifiziert wird |
 
 Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-Portal wie folgt vor:
@@ -83,7 +83,7 @@ Sie können Log Analytics zum Importieren von Active Directory-Sicherheitsgruppe
 Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Wenn Sie Log Analytics für das Importieren von WSUS-Gruppenmitgliedschaften konfigurieren, werden dabei die Zielgruppenmitgliedschaften aller Computer mit dem OMS-Agent analysiert.  Bei Verwendung clientseitiger Zielgruppen wird die Gruppenmitgliedschaft aller Computer, die mit OMS verbunden und Teil einer WSUS-Zielgruppe sind, in Log Analytics importiert. Bei Verwendung serverseitiger Zielgruppen sollte der OMS-Agent auf dem WSUS-Server installiert sein, damit die Informationen zur Gruppenmitgliedschaft in OMS importiert werden können.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert. 
+Wenn Sie Log Analytics für das Importieren von WSUS-Gruppenmitgliedschaften konfigurieren, werden dabei die Zielgruppenmitgliedschaften aller Computer mit dem OMS-Agent analysiert.  Bei Verwendung clientseitiger Zielgruppen wird die Gruppenmitgliedschaft aller Computer, die mit Log Analytics verbunden und Teil einer WSUS-Zielgruppe sind, in Log Analytics importiert. Bei Verwendung serverseitiger Zielgruppen sollte der OMS-Agent auf dem WSUS-Server installiert sein, damit die Informationen zur Gruppenmitgliedschaft in Log Analytics importiert werden können.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert. 
 
 Sie können Log Analytics zum Importieren von WSUS-Gruppen in den **Erweiterten Einstellungen** von Log Analytics im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **WSUS** und anschließend **WSUS-Gruppenmitgliedschaften importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
 
@@ -145,9 +145,9 @@ Die folgende Abfrage würde UpdateSummary-Datensätze ausschließlich für Compu
 
 
 ## <a name="computer-group-records"></a>Computergruppen-Datensätze
-Im OMS-Repositorys wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf der Protokollsuche erstellt.
+Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf der Protokollsuche erstellt.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Typ |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |

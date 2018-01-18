@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 09/20/2017
 ms.author: sstein
-ms.openlocfilehash: 84706837aeb416d13dab617f51a33d62a934c016
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: ea1069d4ec29ad66562a6798a8b13998d0d2ef89
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="performance-recommendations"></a>Empfehlungen zur Leistung
 
@@ -36,7 +36,7 @@ Indizes, die mit Empfehlungen erstellt wurden, sind immer als „auto_created“
 
 Nachdem die Empfehlung zum Erstellen eines Indexes angewendet wurde, vergleicht Azure SQL-Datenbank die Leistung der Abfragen mit der Baselineleistung. Wenn der neue Index die Leistung verbessert hat, wird die Empfehlung als erfolgreich gekennzeichnet. Zudem wird ein Auswirkungsbericht erstellt. Wenn der Index nicht zum gewünschten Ergebnis geführt hat, wird er automatisch rückgängig gemacht. Auf diese Weise stellt Azure SQL-Datenbank sicher, dass Empfehlungen die Leistung der Datenbank nur verbessern.
 
-Jede **Index erstellen**-Empfehlung hat eine Backoffrichtlinie, die verhindert, dass die Empfehlung angewendet wird, wenn der DTU-Verbrauch der Datenbank oder des Pools in den letzten 20 Minuten über 80 % gelegen hat, oder wenn der Speicher über 90 % ausgelastet ist. In diesem Fall wird die Empfehlung verschoben.
+Jede **Index erstellen**-Empfehlung hat eine Backoffrichtlinie, die verhindert, dass die Empfehlung bei einem hohen Ressourcenverbrauch einer Datenbank oder eines Pools angewendet wird. In der Backoffrichtlinie werden CPU, Daten-E/A, Protokoll-E/A und verfügbarer Speicher berücksichtigt. Wenn CPU, Daten-E/A oder Protokoll-E/A in den letzten 30 Minuten über 80 % lagen, wird die Indexerstellung verschoben. Wenn der verfügbare Speicher nach der Indexerstellung bei unter 10 % liegen würde, geht die Empfehlung in den Status „Fehler“ über. Falls nach einigen Tagen die automatische Optimierung weiterhin davon ausgeht, dass dieser Index von Vorteil wäre, wird der Prozess erneut gestartet. Dieser Prozess wird wiederholt, bis es genügend freier Speicherplatz zum Erstellen eines Indexes verfügbar ist oder der Index nicht mehr als vorteilhaft betrachtet wird.
 
 ## <a name="drop-index-recommendations"></a>Empfehlungen zum Löschen eines Indexes
 Zusätzlich zum Erkennen eines fehlenden Indexes analysiert die Azure SQL-Datenbank kontinuierlich die Leistung der vorhandenen Indizes. Wenn der Index nicht verwendet wird, empfiehlt die Azure SQL-Datenbank, dass dieser gelöscht wird. Das Löschen eines Indexes wird in zwei Fällen empfohlen:
@@ -71,7 +71,7 @@ Empfehlungen zum Beheben von Schemaproblemen werden angezeigt, wenn der Azure SQ
 
 | SQL-Fehlercode | Message |
 | --- | --- |
-| 201 |Die *-Prozedur oder -Funktion erwartet den* -Parameter, der nicht bereitgestellt wurde. |
+| 201 |Die*'*'*-Prozedur oder -Funktion erwartet den '*'-Parameter, der nicht bereitgestellt wurde. |
 | 207 |Ungültiger Spaltenname '*'. |
 | 208 |Ungültiger Objektname '*'. |
 | 213 |Der Spaltenname oder die Anzahl der bereitgestellten Werte entspricht nicht der Tabellendefinition. |

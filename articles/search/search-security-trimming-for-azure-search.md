@@ -1,6 +1,6 @@
 ---
-title: "Sicherheitskürzung mit Azure Search"
-description: "Implementieren Sie Sicherheitskürzung mithilfe von Azure Search-Filtern."
+title: "Sicherheitsfilter zum Einschränken von Ergebnissen in Azure Search | Microsoft-Dokumentation"
+description: "Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Benutzeridentitäten"
 ms.custom: 
 ms.date: 08/07/2017
 ms.service: search
@@ -11,15 +11,15 @@ caps.latest.revision: "26"
 author: revitalbarletz
 ms.author: revitalb
 manager: jlembicz
-ms.openlocfilehash: 7ca5502efa281dcc0f374312d8f36f8c64d9c6c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: c829399f9c21846d8ee5b43945e2565565279820
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-with-azure-search"></a>Sicherheitskürzung mit Azure Search
+# <a name="security-filters-for-trimming-results-in-azure-search"></a>Sicherheitsfilter zum Einschränken von Ergebnissen in Azure Search
 
-Sie können Sicherheitsfilter auf Suchergebnisse anwenden, um den Zugriff auf das Dokument basierend auf der Benutzeridentität einzuschränken. Diese Suchfunktion erfordert im Allgemeinen das Vergleichen der Identität derjenigen, die die Suche anfordern, mit einem Feld, das die Prinzipien enthält, wer Berechtigungen für das Dokument besitzt. Wenn eine Übereinstimmung gefunden wird, erhält der Benutzer oder Prinzipal (z.B. eine Gruppe oder Rolle) Zugriff auf dieses Dokument.
+Sie können Sicherheitsfilter anwenden, um Suchergebnisse in Azure Search basierend auf der Benutzeridentität einzuschränken. Diese Suchfunktion erfordert im Allgemeinen das Vergleichen der Identität derjenigen, die die Suche anfordern, mit einem Feld, das die Prinzipien enthält, wer Berechtigungen für das Dokument besitzt. Wenn eine Übereinstimmung gefunden wird, erhält der Benutzer oder Prinzipal (z.B. eine Gruppe oder Rolle) Zugriff auf dieses Dokument.
 
 Eine Möglichkeit, um das Filtern der Sicherheit zu erreichen, erfolgt über eine komplizierte Disjunktion von Gleichheitsausdrücken, z.B. `Id eq 'id1' or Id eq 'id2'` usw. Dieser Ansatz ist fehleranfällig, schwierig zu verwalten und verlangsamt die Antwortzeit von Anfragen um mehrere Sekunden, wenn die Liste Hunderte oder Tausende von Werten enthält. 
 
@@ -155,3 +155,8 @@ Es sollten die Dokumente zurückgegeben werden, bei denen `group_ids` entweder �
 
 Auf diese Weise können Sie Ergebnisse basierend auf der Benutzeridentität und der `search.in()`-Funktion von Azure Search filtern. Sie können diese Funktion verwenden, um Prinzipalbezeichner für den anfordernden Benutzer zu übergeben, um diese mit den Prinzipalbezeichnern zu vergleichen, die dem entsprechenden Zieldokument zugeordnet sind. Wenn eine Suchanforderung verarbeitet wird, filtert die `search.in`-Funktion die Suchergebnisse heraus, für die keiner der Prinzipale des Benutzers über Lesezugriff verfügt. Der Prinzipalbezeichner kann beispielsweise Sicherheitsgruppen, Rollen oder sogar die Identität des Benutzers darstellen.
  
+## <a name="see-also"></a>Weitere Informationen
+
++ [Auf der Active Directory-Identität basierende Zugriffssteuerung mithilfe von Azure Search-Filtern](search-security-trimming-for-azure-search-with-aad.md)
++ [Filter in Azure Search](search-filters.md)
++ [Datensicherheit und Zugriffssteuerung in Azure Search-Vorgängen](search-security-overview.md)
