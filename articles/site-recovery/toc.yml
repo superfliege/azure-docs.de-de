@@ -69,10 +69,12 @@
       href: concepts-hyper-v-to-secondary-architecture.md
     - name: Azure zu Azure – Supportmatrix
       href: site-recovery-support-matrix-azure-to-azure.md
-    - name: Lokal zu Azure – Supportmatrix
-      href: site-recovery-support-matrix-to-azure.md
+    - name: VMware zu Azure – Supportmatrix
+      href: support-matrix-vmware-to-azure.md
     - name: Hyper-V zu Azure – Supportmatrix
       href: support-matrix-hyper-v-to-azure.md
+    - name: Lokal zu Azure – Supportmatrix
+      href: site-recovery-support-matrix-to-azure.md
     - name: Lokal zu sekundärem Standort – Supportmatrix
       href: site-recovery-support-matrix-to-sec-site.md
     - name: Notfallwiederherstellung für Workloads
@@ -181,6 +183,8 @@
           items:
             - name: Quellumgebung – VMware zu Azure
               href: site-recovery-set-up-vmware-to-azure.md
+            - name: Bereitstellen des Konfigurationsservers für VMware und physische Server
+              href: how-to-deploy-configuration-server.md
             - name: Quellumgebung – physisch zu Azure
               href: site-recovery-set-up-physical-to-azure.md
         - name: Einrichten der Zielumgebung

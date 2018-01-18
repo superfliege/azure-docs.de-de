@@ -13,7 +13,7 @@
       href: quick-backup-vm-powershell.md
     - name: Sichern einer VM – CLI
       href: quick-backup-vm-cli.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Sichern virtueller Azure-Computer nach Skalierung
       href: tutorial-backup-vm-at-scale.md
@@ -101,13 +101,13 @@
           items:
             - name: Verwalten von Azure-VM-Sicherungen im Azure-Portal
               href: backup-azure-manage-vms.md
-            - name: Überwachen von Warnungen für Azure-VM-Sicherungen im Azure-Portal
+            - name: Überwachen von Warnungen für Azure-VM-Sicherungen
               href: backup-azure-monitor-vms.md
         - name: Wiederherstellen von Daten von virtuellen Computern
           items:
             - name: Wiederherstellen von Dateien aus Azure-VM-Sicherungen
               href: backup-azure-restore-files-from-vm.md
-            - name: Wiederherstellen der mit Azure Resource Manager bereitgestellten virtuellen Computer im Azure-Portal
+            - name: Wiederherstellen virtueller Computer im Azure-Portal
               href: backup-azure-arm-restore-vms.md
             - name: Wiederherstellen verschlüsselter virtueller Computer
               href: backup-azure-vms-encryption.md
@@ -125,7 +125,7 @@
       items:
         - name: Vorbereiten von DPM-Workloads im Azure-Portal
           href: backup-azure-dpm-introduction.md
-        - name: Verwenden von System Center DPM zum Sichern eines Exchange-Servers
+        - name: Verwenden von DPM zum Sichern eines Exchange-Servers
           href: backup-azure-backup-exchange-server.md
         - name: Wiederherstellen von Daten auf einem anderen DPM-Server
           href: backup-azure-alternate-dpm-server.md
@@ -141,7 +141,7 @@
           href: backup-dpm-automation.md
         - name: Windows Server im Azure-Portal
           href: backup-client-automation.md
-    - name: Azure SQL-Datenbank
+    - name: "Azure\_SQL-Datenbank"
       items:
         - name: Konfigurieren der langfristigen Sicherungsaufbewahrung
           href: ../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json
@@ -183,13 +183,13 @@
           href: backup-azure-mabs-troubleshoot.md
         - name: Behandeln von Problemen mit dem Azure Backup-Agent
           href: backup-azure-mars-troubleshoot.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.recoveryservices.backup
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

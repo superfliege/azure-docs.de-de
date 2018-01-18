@@ -44,9 +44,14 @@
 ## Problembehandlung
 ### [Häufig gestellte Fragen](active-directory-ds-faqs.md)
 ### [Handbuch zur Problembehandlung](active-directory-ds-troubleshooting.md)
+### [Problembehandlung für Warnungen](active-directory-ds-troubleshoot-alerts.md)
+#### [Korrigieren einer fehlerhaften NSG-Konfiguration](active-directory-ds-troubleshoot-nsg.md)
+#### [Wiederherstellen fehlender Dienstprinzipale](active-directory-ds-troubleshoot-service-principals.md)
+#### [Fehler im Zusammenhang mit Secure LDAP](active-directory-ds-troubleshoot-ldaps.md)
 ### [Beheben von Fehlern durch nicht übereinstimmende Mandanten](active-directory-ds-mismatched-tenant-error.md)
 
-# Referenz
+
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 
 # Verwandte Themen
@@ -54,7 +59,7 @@
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
 ## [Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
-# Ressourcen
+# angeben
 ## [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [So erreichen Sie uns](active-directory-ds-contact-us.md)
