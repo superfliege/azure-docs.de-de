@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 01/04/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f503f373ec32ffcdd9be3ca03da6ec5e1b10e35a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ec6489f796dab0fa24bbadf542429d4cf853c414
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten
 
@@ -32,11 +32,12 @@ Wenn Sie in einer lokalen Active Directory-Umgebung Ihre in die Domäne eingebun
 
 Bevor Sie beginnen, in Azure AD eingebundene Hybridgeräte in Ihrer Umgebung zu konfigurieren, sollten Sie sich mit den unterstützten Szenarien und den Einschränkungen vertraut machen.  
 
+Wenn Sie das [Systemvorbereitungstool (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) verwenden, vergewissern Sie sich, dass Sie Images von einer Installation von Windows erstellen, die noch nicht bei Azure AD registriert wurde.
+
 In diesem Thema werden die folgenden Bezeichnungen verwendet, um die Lesbarkeit der Beschreibungen zu erleichtern: 
 
 - **Aktuelle Windows-Geräte**: Diese Bezeichnung bezieht sich auf in die Domäne eingebundene Geräte, auf denen Windows 10 oder Windows Server 2016 ausgeführt wird.
 - **Kompatible Windows-Geräte**: Diese Bezeichnung bezieht sich auf alle **unterstützten** in die Domäne eingebundenen Windows-Geräte, auf denen weder Windows 10 noch Windows Server 2016 ausgeführt wird.  
-
 
 ### <a name="windows-current-devices"></a>Aktuelle Windows-Geräte
 
@@ -66,6 +67,15 @@ Azure AD Connect:
 - Sorgt dafür, dass die Zuordnung zwischen dem Computerkonto in Ihrer lokalen AD-Instanz (Active Directory) und dem Geräteobjekt in Azure AD beibehalten wird. 
 - Ermöglicht die Verwendung von anderen gerätebezogenen Features, z.B. Windows Hello for Business.
 
+Achten Sie darauf, dass von Computern innerhalb Ihres Unternehmensnetzwerks zur Registrierung von Computern bei Azure AD auf die folgenden URLs zugegriffen werden kann:
+
+- https://enterpriseregistration.windows.net
+
+- https://login.microsoftonline.com
+
+- https://device.login.microsoftonline.com
+
+Wenn für Ihre Organisation Zugriff auf das Internet über einen ausgehenden Proxy erforderlich ist, muss WPAD (Web Proxy Auto-Discovery) installiert sein, damit Windows 10-Computer bei Azure AD registriert werden können.
 
 
 ## <a name="configuration-steps"></a>Konfigurationsschritte
@@ -448,7 +458,7 @@ Das folgende Skript dient Ihnen als Hilfe beim Erstellen der oben beschriebenen 
 
     Set-AdfsRelyingPartyTrust -TargetIdentifier urn:federation:MicrosoftOnline -IssuanceTransformRules $crSet.ClaimRulesString 
 
-### <a name="remarks"></a>Hinweise 
+### <a name="remarks"></a>Anmerkungen 
 
 - Mit diesem Skript werden die Regeln an die bereits vorhandenen Regeln angefügt. Führen Sie das Skript nicht zweimal aus, weil der Regelsatz dann doppelt hinzugefügt wird. Stellen Sie sicher, dass keine entsprechenden Regeln für diese Ansprüche vorhanden sind (unter den jeweiligen Bedingungen), bevor Sie das Skript erneut ausführen.
 

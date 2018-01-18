@@ -1,5 +1,5 @@
 ---
-title: "Grundlegendes über Ihre Azure-Rechnung | Microsoft-Dokumentation"
+title: Grundlegendes zu Ihrer Azure-Rechnung
 description: Erfahren Sie, wie Sie die Nutzung und Abrechnung Ihres Azure-Abonnements anzeigen und verstehen.
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: edd4702ccab9162329bf83993d236eec9ec40b3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54de5e123dbb51948eb62d90b444ebd78f9879cb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Grundlegendes über Benennungen in Ihrer Microsoft Azure-Rechnung
+
 Die Rechnung enthält eine Zusammenfassung der Gebühren sowie Zahlungsanweisungen. Die Rechnung steht im [Azure-Portal](https://portal.azure.com/) im PDF-Format (Portable Document Format) zum Download bereit oder kann per E-Mail gesendet werden. Weitere Informationen finden Sie unter [Abrufen von Azure-Rechnungen und täglichen Nutzungsdaten](billing-download-azure-invoice-daily-usage-date.md).
 
 Im Folgenden einige Hinweise, die Sie beachten sollten:
@@ -31,9 +32,7 @@ Im Folgenden einige Hinweise, die Sie beachten sollten:
 
 -   Bei Abrechnungen für internationale Kunden sind die aufgeführten Gebühren nur Schätzwerte, da Banken unterschiedliche Umrechnungsgebühren erheben.
 
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/jWG1lyJe3Mg" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/jWG1lyJe3Mg]
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>Detaillierte Erläuterungen zu Benennungen und Beschreibungen der Rechnung
 In den folgenden Abschnitten werden die meisten Benennungen, die Sie in Ihrer Rechnung finden, sowie die Beschreibungen für jede Benennung aufgeführt.
@@ -44,7 +43,7 @@ Der Abschnitt mit den Kontoinformationen der Rechnung befindet sich oben auf der
 
 ![Abschnitt mit Kontoinformationen der Rechnung](./media/billing-understand-your-invoice/1.png)
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Bestellnr. des Kunden |Eine optionale Bestellnummer, die Ihnen zur Nachverfolgung zugewiesen wird |
 | Invoice No. |Eine eindeutige, von Microsoft generierte Rechnungsnummer, die für Nachverfolgungszwecke verwendet wird |
@@ -65,7 +64,7 @@ Der Name des Abonnements („Produktionsspeicher“) ist der Name des Abonnement
 #### <a name="understand-the-previous-charges"></a>Grundlegendes über die vorherigen Gebühren
 In den Abschnitten „Vorheriger Saldo“, „Zahlungen“ und „Restwert“ der Rechnung werden die Transaktionen seit Ihrem letzten Abrechnungszeitraum zusammengefasst.
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Previous Balance |Der fällige Gesamtbetrag von Ihrem letzten Abrechnungszeitraum |
 | Payments |Sämtliche mit Ihrem letzten Abrechnungszeitraum verrechneten Zahlungen und Guthaben |
@@ -74,7 +73,7 @@ In den Abschnitten „Vorheriger Saldo“, „Zahlungen“ und „Restwert“ de
 #### <a name="understand-the-current-charges"></a>Informationen zu aktuellen Gebühren
 Der Abschnitt „Aktuelle Gebühren“ der Rechnung enthält Details zu Ihren monatlichen Gebühren für den aktuellen Abrechnungszeitraum.
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 | Usage Charges |Dies sind die monatlichen Gesamtgebühren für ein Abonnement für den aktuellen Abrechnungszeitraum.|
 | Discounts |In Ihrem aktuellen Abrechnungszeitraum angewendete Dienstrabatte.|
@@ -84,7 +83,7 @@ Der Abschnitt „Aktuelle Gebühren“ der Rechnung enthält Details zu Ihren mo
 
 In der folgenden Tabelle werden Angaben zu Käufer und Zahlungsanweisungen auf der zweiten Seite Ihrer Rechnung beschrieben.
 
-| Begriff |Beschreibung |
+| Begriff |BESCHREIBUNG |
 | --- | --- |
 | Sold To |Die Profiladresse im Konto. <br/><br/>Weitere Informationen zum Ändern dieser Adresse finden Sie unter [Ändern von Profilinformationen für Ihr Azure-Konto, beispielsweise Kontakt-E-Mail-Adresse, Adresse und Telefonnummer](billing-how-to-change-azure-account-profile.md).|
 | Payment Instructions |Anweisungen zur Zahlung je nach Zahlungsmethode (z.B. per Kreditkarte oder Rechnung) |
@@ -97,14 +96,14 @@ Der Abschnitt „Nutzungsgebühren“ der Rechnung enthält Informationen zu Ihr
 
 In der folgenden Tabelle werden die Spaltenüberschriften des Abschnitts „Nutzungsgebühren“ in Ihrer Rechnung beschrieben.
 
-| Begriff |Beschreibung |
+| Begriff |BESCHREIBUNG |
 | --- | --- |
-| Name |Gibt den Dienst der obersten Ebene für die Nutzung an |
+| NAME |Gibt den Dienst der obersten Ebene für die Nutzung an |
 | Typ |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
 | Ressource |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
 | Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden |
 | Consumed |Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde |
-| Included |Die Menge der Verbrauchseinheit, die kostenlos in Ihrem Abrechnungszeitraum inbegriffen ist |
+| Enthalten |Die Menge der Verbrauchseinheit, die kostenlos in Ihrem Abrechnungszeitraum inbegriffen ist |
 | Billable |Zeigt den Unterschied zwischen der verbrauchten und der enthaltenen Menge an. Dieser Betrag wird Ihnen in Rechnung gestellt. Bei Angeboten mit nutzungsbasierter Bezahlung ohne eine im Angebot enthaltene Menge entspricht der Wert hier dem Wert unter „Verbrauchte Menge“. |
 | Rate |Die Rate, die Ihnen pro abrechenbare Einheit in Rechnung gestellt wird |
 | Wert |Zeigt das Ergebnis der Multiplikation der Spalte „Overage Quantity“ mit der Spalte „Rate“ an. Wenn die verbrauchte Menge die enthaltene Menge nicht überschreitet, fallen in dieser Spalte keine Gebühren an. |

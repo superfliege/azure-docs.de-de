@@ -6,13 +6,13 @@ author: djrosanova
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 01/10/2018
 ms.author: darosa
-ms.openlocfilehash: e0f8afdfd84ea3c0c061459c27da285f6ae8957e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten 
 
@@ -62,9 +62,10 @@ Event Grid fügt allen Wiederholungsintervallen eine geringfügige zufällige An
 
 ## <a name="retry-duration"></a>Wiederholungszeitraum
 
-Während der Vorschauphase laufen alle Ereignisse in Azure Event Grid ab, die nicht innerhalb von zwei Stunden übermittelt werden. Vor der allgemeinen Verfügbarkeit wird dieser Zeitraum auf 24 Stunden erhöht. 
+Während der Vorschauphase laufen alle Ereignisse in Azure Event Grid ab, die nicht innerhalb von zwei Stunden übermittelt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Informationen zum Anzeigen des Status von Ereignisübermittlungen finden Sie unter [Überwachen der Event Grid-Nachrichtenübermittlung](monitor-event-delivery.md).
 * Eine Einführung in Event Grid finden Sie unter [Informationen zu Event Grid](overview.md).
 * Um sich schnell mit der Verwendung von Event Grid vertraut zu machen, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md).

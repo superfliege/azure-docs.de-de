@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: d8688ab2daefd400e9c0948853459dd238fa0d43
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 0fb8c55937c1f4c29c542204673a2f41e3ae29db
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale---preview"></a>Grundlegendes zu IoT Edge-Bereitstellungen für einzelne Geräte oder bedarfsabhängig (Vorschau)
 
@@ -57,9 +57,25 @@ Die Konfigurationsmetadaten für jedes Modul enthalten Folgendes:
 
 ### <a name="target-condition"></a>Zielbedingung
 
-Die Zielbedingungen geben an, ob ein IoT Edge-Gerät im Umfang einer Bereitstellung enthalten sein soll. Zielbedingungen basieren auf Gerätezwillingstags. 
+Die Zielbedingung wird während der Lebensdauer der Bereitstellung kontinuierlich ausgewertet, um jedes neue Gerät einzubeziehen, das die Anforderungen erfüllt, bzw. Geräte zu entfernen, die die Bedingung nicht mehr erfüllen. Die Bereitstellung wird reaktiviert, wenn der Dienst Änderungen an der Zielbedingung feststellt. Nehmen wir an, Sie verfügen über eine Bereitstellung A mit der Zielbedingung „tags.environment = 'prod'“. Zum Zeitpunkt, da Sie die Bereitstellung starten, gibt es 10 Geräte in der Produktionsumgebung. Die Module werden erfolgreich auf diesen 10 Geräten installiert. Der Status des IoT Edge-Agents wird als 10 Geräte insgesamt, 10 erfolgreiche Antworten, 0 Fehlerantworten und 0 ausstehende Antworten angezeigt. Jetzt fügen Sie 5 weitere Geräte mit „tags.environment = 'prod'“ hinzu. Der Dienst erkennt die Änderung, und der Status des IoT Edge-Agents ist zu dem Zeitpunkt, da er die Bereitstellung auf den fünf neuen Geräten versucht, 15 Geräte insgesamt, 10 erfolgreiche Antworten, 0 Fehlerantworten und 5 ausstehende Antworten.
 
-### <a name="priority"></a>Priority
+Verwenden Sie eine beliebige boolesche Bedingung auf Tags von Gerätezwillingen oder die Geräte-ID, um die Zielgeräte auszuwählen. Wenn Sie eine Bedingung mit Tags verwenden möchten, müssen Sie auf dem Gerätezwilling einen Abschnitt „"tags":{}“ auf der gleichen Ebene wie die Eigenschaften hinzufügen. [Weitere Informationen über Tags in Gerätezwillingen](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)
+
+Beispiel für die Zielbedingung:
+* deviceId ='linuxprod1'
+* tags.environment ='prod'
+* tags.environment = 'prod' AND tags.location = 'westus'
+* tags.environment = 'prod' OR tags.location = 'westus'
+* tags.operator = 'John' AND tags.environment = 'prod' NOT deviceId = 'linuxprod1'
+
+Beim Erstellen einer Zielbedingung gelten die folgenden Einschränkungen:
+
+* Sie können auf einem Gerätezwilling nur eine Zielbedingung mithilfe von Tags oder der Geräte-ID erstellen.
+* Doppelte Anführungszeichen sind in keinem Teil der Zielbedingung zulässig. Verwenden Sie einfache Anführungszeichen.
+* Einfache Anführungszeichen werden für die Werte der Zielbedingung verwendet. Daher müssen Sie für ein einfaches Anführungszeichen ein weiteres einfaches Anführungszeichen als Escapezeichen verwenden, wenn es Teil des Gerätenamens ist. Beispielsweise müsste die Zielbedingung für „operator'sDevice“ in der Form „deviceId='operator''sDevice'“ geschrieben werden.
+* Zahlen, Buchstaben und die folgenden Zeichen sind in Werten für Zielbedingungen zulässig:-:.+%_#*? (),=@;$
+
+### <a name="priority"></a>Priorität
 
 Eine Priorität definiert, ob eine Bereitstellung auf einem Zielgerät relativ zu anderen Bereitstellungen angewendet werden soll. Bei der Bereitstellungspriorität handelt es sich um eine positive ganze Zahl, wobei höhere Werte eine höhere Priorität angeben. Wenn ein IoT Edge-Gerät Ziel mehrerer Bereitstellungen ist, wird die Bereitstellung mit der höchsten Priorität angewendet.  Bereitstellungen mit niedrigeren Prioritäten werden nicht angewendet, und Bereitstellungen werden nicht zusammengeführt.  Wenn ein Gerät Ziel von mehreren Bereitstellungen mit gleicher Priorität ist, gilt die zuletzt erstellte Bereitstellung (entsprechend dem Erstellungszeitstempel).
 

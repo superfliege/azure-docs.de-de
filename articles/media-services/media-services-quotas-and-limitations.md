@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: juliako
-ms.openlocfilehash: 4b55b6cb87443871decf6f14ef3949e76433afcc
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 79de06407a66e936f19579574ef90478799c9953
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
 In diesem Artikel sind die für Microsoft Azure Media Services geltenden Kontingente und Einschränkungen beschrieben.
@@ -29,17 +29,8 @@ In diesem Artikel sind die für Microsoft Azure Media Services geltenden Konting
 Um Änderungen an den bereitgestellten Standardkontingenten anzufordern, können Sie ein Supportticket öffnen. Fügen Sie in die Anforderung ausführliche Informationen zu den gewünschten Kontingentänderungen, den Verwendungsfallszenarien und den benötigten Regionen ein.
 
 ### <a name="how-to-open-a-support-ticket"></a>Öffnen eines Supporttickets
-Um ein Supportticket zu öffnen, gehen Sie folgendermaßen vor:
+Wechseln Sie im Azure-Portal zu [Hilfe und Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest). Wenn Sie nicht bei Azure angemeldet sind, werden Sie zur Eingabe Ihrer Anmeldeinformationen aufgefordert.
 
-1. Klicken Sie auf [Support erhalten](https://manage.windowsazure.com/?getsupport=true). Wenn Sie nicht angemeldet sind, werden Sie zur Eingabe Ihrer Anmeldeinformationen aufgefordert.
-2. Wählen Sie Ihr Abonnement aus.
-3. Wählen Sie unter Supporttyp „Technisch“ aus.
-4. Klicken Sie auf „Ticket erstellen“.
-5. Wählen Sie „Azure Media Services“ in der Produktliste auf der nächsten Seite aus.
-6. Wählen Sie einen Problemtyp aus, der Ihr Problem beschreibt.
-7. Klicken Sie auf „Weiter“.
-8. Befolgen Sie die Anweisungen auf der nächsten Seite, und geben Sie dann die Details zu Ihrem Problem an.
-9. Klicken Sie auf "Senden", um das Ticket zu öffnen.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

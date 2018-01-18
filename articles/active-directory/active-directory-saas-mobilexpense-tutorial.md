@@ -1,42 +1,43 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in MobileXpense | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und MobileXpense konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Mobile Xpense | Microsoft-Dokumentation'
+description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Mobile Xpense konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: e649fc4e-3e15-4948-b977-00bfe9f7db13
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 01/05/2018
 ms.author: jeedes
-ms.openlocfilehash: f1d65a2404fc90943bba4921158f5366bc9778ac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3beea4dc7889d84ba2724b9b4ebf88d2fae3a284
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-mobilexpense"></a>Tutorial: Azure Active Directory-Integration in MobileXpense
+# <a name="tutorial-azure-active-directory-integration-with-mobile-xpense"></a>Tutorial: Azure Active Directory-Integration mit Mobile Xpense
 
-In diesem Tutorial erfahren Sie, wie Sie MobileXpense in Azure Active Directory (Azure AD) integrieren.
+In diesem Tutorial erfahren Sie, wie Sie Mobile Xpense in Azure Active Directory (Azure AD) integrieren.
 
-Die Integration von MobileXpense in Azure AD bietet die folgenden Vorteile:
+Die Integration von Mobile Xpense in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf MobileXpense hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei MobileXpense anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+- Sie können in Azure AD steuern, wer Zugriff auf Mobile Xpense hat.
+- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Mobile Xpense anzumelden (einmaliges Anmelden).
+- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](active-directory-appssoaccess-whatis.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen Folgendes, um die Azure AD-Integration mit MobileXpense konfigurieren zu können:
+Um die Azure AD-Integration mit Mobile Xpense konfigurieren zu können, benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement
-- Ein MobileXpense-Abonnement, für das einmaliges Anmelden aktiviert ist
+- Ein Mobile Xpense-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 > [!NOTE]
 > Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
@@ -44,155 +45,154 @@ Sie benötigen Folgendes, um die Azure AD-Integration mit MobileXpense konfiguri
 Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
 
 - Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von MobileXpense aus dem Katalog
+1. Hinzufügen von Mobile Xpense aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
 
-## <a name="adding-mobilexpense-from-the-gallery"></a>Hinzufügen von MobileXpense aus dem Katalog
-Zum Konfigurieren der Integration von MobileXpense in Azure AD müssen Sie MobileXpense aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
+## <a name="adding-mobile-xpense-from-the-gallery"></a>Hinzufügen von Mobile Xpense aus dem Katalog
+Zum Konfigurieren der Integration von Mobile Xpense in Azure AD müssen Sie Mobile Xpense aus dem Katalog zur Liste der verwalteten SaaS-Apps hinzufügen.
 
-**Führen Sie die folgenden Schritte aus, um MobileXpense aus dem Katalog hinzuzufügen:**
+**Um Mobile Xpense aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“][1]
 
 2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
 
-    ![Anwendungen][2]
+    ![Blatt „Unternehmensanwendungen“][2]
     
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Anwendungen][3]
+    ![Schaltfläche „Neue Anwendung“][3]
 
-4. Geben Sie in das Suchfeld **MobileXpense** ein.
+4. Geben Sie im Suchfeld **Mobile Xpense**  ein, wählen Sie im Ergebnisbereich **Mobile Xpense**  aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_search.png)
+    ![Mobile Xpense in der Ergebnisliste](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_addfromgallery.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **MobileXpense** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_addfromgallery.png)
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Mobile Xpense mithilfe einer Testbenutzerin namens Britta Simon.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei MobileXpense mithilfe der Testbenutzerin Britta Simon.
+Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Mobile Xpense als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mobile Xpense muss eine Linkbeziehung eingerichtet werden.
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in MobileXpense als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in MobileXpense muss eine Linkbeziehung eingerichtet werden.
+Weisen Sie in Mobile Xpense den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
 
-Weisen Sie in MobileXpense den Wert des **Benutzernamens** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Mobile Xpense müssen Sie die folgenden Bausteine ausführen:
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei MobileXpense müssen Sie die folgenden Bausteine ausführen:
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+3. **[Erstellen eines Mobile Xpense-Testbenutzers](#create-a-mobile-xpense-test-user)**, um ein Pendant von Britta Simon in Mobile Xpense zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** , um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** – um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines MobileXpense-Testbenutzers](#creating-a-mobilexpense-test-user)**, um eine Pendant von Britta Simon in MobileXpense zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)** , um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Mobile Xpense-Anwendung.
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden mit Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer MobileXpense-Anwendung.
+**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Mobile Xpense die folgenden Schritte aus:**
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei MobileXpense die folgenden Schritte aus:**
+1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Mobile Xpense** auf **Einmaliges Anmelden**.
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **MobileXpense** auf **Einmaliges Anmelden**.
-
-    ![Einmaliges Anmelden konfigurieren][4]
+    ![Konfigurieren des Links für einmaliges Anmelden][4]
 
 2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_samlbase.png)
+    ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für MobileXpense** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+3. Führen Sie im Abschnitt **Domäne und URLs für Mobile Xpense** die folgenden Schritte aus, wenn Sie die Anwendung im IDP-initiierten Modus konfigurieren möchten:
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
+    ![SSO-Informationen zur Domäne und den URLs für Mobile Xpense](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url11.png)
 
-    Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<sub domain>.mobilexpense.com/SSO/SAML20/SAML/AssertionConsumerService.aspx`
+    a. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://mobilexpense.com/ServiceProvider`
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten:
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<sub-domain>.mobilexpense.com/NET/SSO/SAML20/SAML/AssertionConsumerService.aspx`
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url22.png)
+4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<sub domain>.mobilexpense.com/<customername>`
+    ![SSO-Informationen zur Domäne und den URLs für Mobile Xpense](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_url22.png)
 
-> [!NOTE] 
-> Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Wenden Sie sich an das [Supportteam von MobileXpense](http://www.mobilexpense.net/contact), um diese Werte zu erhalten. 
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<sub-domain>.mobilexpense.com/<customername>`.
+     
+    > [!NOTE] 
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit der tatsächlichen Antwort-URL und Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von Mobile Xpense](http://www.mobilexpense.net/contact), um diese Werte zu erhalten. 
 
 5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_certificate.png) 
+    ![Downloadlink für das Zertifikat](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_certificate.png) 
 
 6. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mobilexpense-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-mobilexpense-tutorial/tutorial_general_400.png)
 
-8. Zum Konfigurieren des einmaligen Anmeldens bei **MobileXpense** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [MobileXpense-Supportteam](http://www.mobilexpense.net/contact) senden.
+7. Zum Konfigurieren des einmaligen Anmeldens bei **MobileXpense** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [MobileXpense-Supportteam](http://www.mobilexpense.net/contact) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 > [!TIP]
-> Während Sie die App einrichten, können Sie im [Azure-Portal](https://portal.azure.com) eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
-> 
+> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Eingebettete Azure AD-Dokumentation]( https://go.microsoft.com/fwlink/?linkid=845985).
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+   ![Erstellen eines Azure AD-Testbenutzers][100]
 
 **Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_01.png) 
+    ![Schaltfläche „Azure Active Directory“](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_01.png)
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_02.png) 
+2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_02.png)
+
+3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+
+    ![Schaltfläche „Hinzufügen“](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_03.png)
+
+4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+
+    ![Dialogfeld „Benutzer“](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_04.png)
+
+    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
+
+    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
+
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+
+    d. Klicken Sie auf **Create**.
  
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_03.png) 
-
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/active-directory-saas-mobilexpense-tutorial/create_aaduser_04.png) 
-
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
-
-    d. Klicken Sie auf **Erstellen**.
- 
-### <a name="creating-a-mobilexpense-test-user"></a>Erstellen eines MobileXpense-Testbenutzers
+### <a name="create-a-mobile-xpense-test-user"></a>Erstellen eines Testbenutzers in Mobile Xpense
 
 In diesem Abschnitt erstellen Sie in MobileXpense einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen von Benutzern in der MobileXpense-Plattform vom [MobileXpense-Supportteam](http://www.mobilexpense.net/contact) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie ihr Zugriff auf MobileXpense gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie Zugriff auf Mobile Xpense erteilen.
 
-![Benutzer zuweisen][200] 
+![Zuweisen der Benutzerrolle][200] 
 
-**Führen Sie die folgenden Schritte aus, um Britta Simon MobileXpense zuzuweisen:**
+**Um Britta Simon Mobile Xpense zuzuweisen, führen Sie die folgenden Schritte aus:**
 
 1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
 
     ![Benutzer zuweisen][201] 
 
-2. Wählen Sie in der Anwendungsliste **MobileXpense** aus.
+2. Wählen Sie in der Anwendungsliste **Mobile Xpense** aus.
 
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_app.png) 
+    ![Mobile Xpense-Link in der Anwendungsliste](./media/active-directory-saas-mobilexpense-tutorial/tutorial_mobilexpense_app.png)  
 
 3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
 
-    ![Benutzer zuweisen][202] 
+    ![Link „Benutzer und Gruppen“][202]
 
 4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][203]
+    ![Bereich „Zuweisung hinzufügen“][203]
 
 5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
 
@@ -200,12 +200,12 @@ In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azu
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
     
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „MobileXpense“ klicken, sollten Sie automatisch bei Ihrer MobileXpense-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://msdn.microsoft.com/library/dn308586). 
+Wenn Sie im Zugriffsbereich auf die Kachel Mobile Xpense klicken, werden Sie automatisch in Ihrer Mobile Xpense-Anwendung angemeldet.
+Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](active-directory-saas-access-panel-introduction.md). 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

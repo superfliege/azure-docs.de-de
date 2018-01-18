@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: e831048f34ecf6e89595adc4bfd58b5977e04bdb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: be84225eca9cbaa25b9a0dfb8e74e0981b283096
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des FMLE zum Senden eines Single-Bitrate-Livedatenstroms
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.lasthandoff: 12/21/2017
 >
 >
 
-In diesem Thema wird beschrieben, wie Sie den [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) zum Senden eines Single-Bitrate-Datenstroms an AMS-Kanäle konfigurieren, die für Livecodierung aktiviert sind. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
+In diesem Artikel wird beschrieben, wie Sie den [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) zum Senden eines Single-Bitrate-Datenstroms an AMS-Kanäle konfigurieren, die für Livecodierung aktiviert sind. Weitere Informationen finden Sie unter [Arbeiten mit Kanälen, die zum Ausführen von Live Encoding mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md).
 
 In diesem Tutorial wird gezeigt, wie Sie Azure Media Services (AMS) mit dem Tool Azure Media Services Explorer (AMSE) verwalten. Dieses Tool kann nur auf Windows-PCs ausgeführt werden. Verwenden Sie unter Mac OS oder Linux das Azure-Portal, um [Kanäle](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) und [Programme](media-services-portal-creating-live-encoder-enabled-channel.md) zu erstellen.
 
-Beachten Sie, dass in diesem Tutorial AAC verwendet wird. AAC wird jedoch vom FMLE nicht standardmäßig unterstützt. Sie müssen ggf. ein Plug-In für AAC-Codierung erwerben, z.B. von MainConcept: [AAC-Plug-In](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+In diesem Tutorial wird AAC verwendet. AAC wird jedoch vom FMLE nicht standardmäßig unterstützt. Sie müssen ggf. ein Plug-In für AAC-Codierung erwerben, z.B. von MainConcept: [AAC-Plug-In](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * [Erstellen eines Azure Media Services-Kontos](media-services-portal-create-account.md)
@@ -47,7 +47,7 @@ Beachten Sie, dass in diesem Tutorial AAC verwendet wird. AAC wird jedoch vom FM
 * Bei der Verwendung softwarebasierter Encoder schließen Sie alle nicht benötigten Programme.
 
 ## <a name="create-a-channel"></a>Erstellen eines Kanals
-1. Navigieren Sie im AMSE-Tool zur Registerkarte **Live** , und klicken Sie mit der rechten Maustaste in den Kanalbereich. Wählen Sie im Menü die Option **Kanal erstellen** aus.
+1. Navigieren Sie im AMSE-Tool zur Registerkarte **Live**, und klicken Sie mit der rechten Maustaste in den Kanalbereich. Wählen Sie im Menü die Option **Kanal erstellen** aus.
 
     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle1.png)
 
@@ -106,14 +106,14 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
    * Level: 4.0
    * Keyframe Frequency: 2 Sekunden
 
-     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
+     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
 3. Legen Sie die folgenden wichtigen Audioeinstellungen fest:
 
    * Format: AAC
    * Sample Rate: 44100 Hz
    * Bit Rate: 192 Kbit/s
 
-     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
+     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
 4. Rufen Sie die Eingabe-URL des Kanals ab, um diese dem FMLE- **RTMP-Endpunkt**zuzuweisen.
 
     Navigieren Sie zurück zum AMSE-Tool, und überprüfen Sie den Abschlussstatus des Kanals. Sobald sich der Status von **Wird gestartet** in **Wird ausgeführt** ändert, können Sie die Eingabe-URL abrufen.
@@ -123,7 +123,7 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle6.png)
 5. Fügen Sie diese Informationen in das Feld **FMS-URL** des Ausgabebereichs ein, und weisen Sie einen Datenstromnamen zu.
 
-    ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
+    ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle7.png)
 
     Wiederholen Sie für zusätzliche Redundanz diese Schritte für die sekundäre Eingabe-URL.
 6. Wählen Sie **Verbinden**aus.
@@ -142,7 +142,7 @@ Navigieren Sie zum AMSE-Tool, und klicken Sie mit der rechten Maustaste auf den 
 
 Wenn der Datenstrom im Player angezeigt wird, wurde der Encoder ordnungsgemäß für die Verbindung mit AMS konfiguriert.
 
-Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und die Encodereinstellungen anpassen. Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troubleshooting-live-streaming.md) .  
+Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und die Encodereinstellungen anpassen. Eine Anleitung finden Sie im Artikel zur [Problembehandlung](media-services-troubleshooting-live-streaming.md).  
 
 ## <a name="create-a-program"></a>Erstellen eines Programms
 1. Nachdem die Kanalwiedergabe überprüft wurde, erstellen Sie ein Programm. Klicken Sie im AMSE-Tool auf der Registerkarte **Live** mit der rechten Maustaste in den Programmbereich, und wählen Sie **Create New Program** (Neues Programm erstellen) aus.  
@@ -161,7 +161,7 @@ Wenn eine Fehlermeldung angezeigt wird, müssen Sie den Kanal zurücksetzen und 
 Der Datenstrom kann jetzt in einen Player eingebettet oder an eine Zielgruppe für die Livewiedergabe verteilt werden.  
 
 ## <a name="troubleshooting"></a>Problembehandlung
-Eine Anleitung finden Sie im Thema [Problembehandlung](media-services-troubleshooting-live-streaming.md) .
+Eine Anleitung finden Sie im Artikel zur [Problembehandlung](media-services-troubleshooting-live-streaming.md).
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

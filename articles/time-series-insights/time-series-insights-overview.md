@@ -1,31 +1,38 @@
 ---
-title: Was ist Azure Time Series Insights? | Microsoft Docs
+title: Was ist Azure Time Series Insights? | Microsoft-Dokumentation
 description: "Einführung in Azure Time Series Insights, einem neuen Dienst zum Analysieren von Zeitreihendaten und für IoT-Lösungen."
 services: time-series-insights
 ms.service: time-series-insights
-author: op-ravi
-ms.author: omravi
+author: ashannon7
+ms.author: anshan
 manager: jhubbard
 editor: MarkMcGeeAtAquent
 ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/15/2017
-ms.openlocfilehash: 95cb26ada6f8ea39bc1a437a755f80ee7ddb7698
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 2a0d3e829ed28912b56a022aa6aa82ade1718e35
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="what-is-azure-time-series-insights"></a>Was ist Azure Time Series Insights?
 
 Time Series Insights ist zum Speichern, Visualisieren und Abfragen großer Mengen an Zeitreihendaten ausgelegt, z.B. der von IoT-Geräten generierten Daten.  Wenn Sie Zeitreihendaten in der Cloud speichern, verwalten, abfragen oder visualisieren möchten, ist Time Series Insights wahrscheinlich der richtige Dienst für Sie.  
 
-Wenn Sie eine Anwendung zur internen Verwendung oder zur Verwendung durch externe Kunden erstellen, kann Time Series Insights als Back-End für die Indizierung, Speicherung und Aggregation von Zeitreihendaten verwendet werden.  Darüber hinaus können Sie eine benutzerdefinierte Visualisierungs- und Benutzeroberfläche erstellen.  Time Series Insights umfasst REST-Abfrage-APIs zur Ermöglichung dieses Szenarios.  
+Time Series Insights hat vier Hauptaufgaben bzw. -merkmale:
+
+- Erstens ist die Lösung vollständig in Cloudgateways wie Azure IoT Hub und Azure Event Hubs integriert. Sie stellt einfach eine Verbindung mit diesen Ereignisquellen her und analysiert JSON in Nachrichten und Strukturen, die Daten in fehlerfreien Zeilen und Spalten enthalten. Die Lösung verbindet Metadaten mit Telemetrie und indiziert Ihre Daten in einem einspaltigem Speicher.
+- Zweitens verwaltet Time Series Insights die Speicherung Ihrer Daten. Um einen jederzeitigen Zugriff auf Daten zu gewährleisten, speichert die Lösung Ihre Daten bis zu 400 Tage im Arbeitsspeicher und auf SSD-Datenträgern. Sie können im Bedarfsfall Milliarden von Ereignissen in Sekundenschnelle interaktiv abfragen.
+- Drittens bietet Time Series Insights über den TSI-Explorer eine standardmäßige Visualisierung.  
+- Viertens bietet Time Series Insights einen Abfragedienst, sowohl im TSI-Explorer als auch durch den Einsatz von APIs, die einfach zu integrieren sind, um Ihre Zeitreihendaten in kundenspezifische Anwendungen einzubetten.  
+
+Wenn Sie eine Anwendung zur internen Verwendung oder zur Verwendung durch externe Kunden erstellen, kann Time Series Insights als Back-End für die Indizierung, Speicherung und Aggregation von Zeitreihendaten verwendet werden. Darüber hinaus können Sie eine benutzerdefinierte Visualisierungs- und Benutzeroberfläche erstellen.  Time Series Insights stellt Abfrage-APIs zum Ermöglichen dieses Szenarios zur Verfügung.  
 
 Wenn Sie nicht sicher sind, ob es sich bei Ihren Daten um Zeitreihendaten handelt, erhalten Sie hier alle wichtigen Informationen.  Zeitreihendaten stellen dar, wie eine Ressource oder ein Prozess sich im Zeitablauf ändert.  Sie sind insofern eindeutig, als sie über einen Zeitstempel verfügen und Zeit als Achse am aussagekräftigsten ist.  Zeitreihendaten gehen normalerweise in zeitlicher Reihenfolge ein und werden in der Regel als Einfügung und nicht als Aktualisierung in der Datenbank behandelt.  Da in Time Series Insights jedes neue Ereignis als Zeile erfasst und gespeichert wird, werden Änderungen im Lauf der Zeit gemessen, sodass Sie zurückblicken und zukünftige Änderungen vorhersagen können.  Die Speicherung, Indizierung, Abfrage, Analyse und Visualisierung großer Mengen an Zeitreihendaten können eine Herausforderung darstellen.  
 
-## <a name="primary-scenarios"></a>Hauptszenarien
+## <a name="primary-scenarios"></a>Primäre Szenarien
 
 - Skalierbare Speicherung von Zeitreihendaten  
   - Im Kern enthält Time Series Insights eine Datenbank, die im Hinblick auf Zeitreihendaten entworfen wurde.  Da Time Series Insights skalierbar und vollständig verwaltet ist, wird die Speicherung und Verwaltung von Ereignissen verarbeitet.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/24/2017
 ms.author: elioda
-ms.openlocfilehash: fd047b8618f6e6814e0656ac2ab19e30016016fa
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 450f2d38f7b641bcf6b8be061969404a1b582b4c
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Gerätezwillinge, Aufträge und Nachrichtenrouting
 
@@ -35,6 +35,17 @@ Angenommen, Ihre IoT Hub-Gerätezwillinge weisen die folgende Struktur auf:
 {
     "deviceId": "myDeviceId",
     "etag": "AAAAAAAAAAc=",
+    "status": "enabled",
+    "statusUpdateTime": "0001-01-01T00:00:00",    
+    "connectionState": "Disconnected",    
+    "lastActivityTime": "0001-01-01T00:00:00",
+    "cloudToDeviceMessageCount": 0,
+    "authenticationType": "sas",    
+    "x509Thumbprint": {    
+        "primaryThumbprint": null,
+        "secondaryThumbprint": null
+    },
+    "version": 2,
     "tags": {
         "location": {
             "region": "US",
@@ -137,6 +148,12 @@ Diese Gruppierungsabfrage würde ein ähnliches Ergebnis wie im folgenden Beispi
         "status": "Error"
     }
 ]
+```
+
+Mithilfe von Projektionsabfragen können Entwickler nur die interessierenden Eigenschaften zurückgeben. Um beispielsweise den Zeitpunkt der letzten Aktivität aller getrennten Geräte abzurufen, verwenden Sie die folgende Abfrage:
+
+```sql
+SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 ```
 
 ### <a name="c-example"></a>C#-Beispiel
@@ -466,16 +483,16 @@ Die folgenden Operatoren werden unterstützt:
 | Logisch |AND, OR, NOT |
 | Vergleich |=, !=, <, >, <=, >=, <> |
 
-### <a name="functions"></a>Functions
+### <a name="functions"></a>Funktionen
 Bei Abfragen von Zwillingen und Aufträgen wird nur folgende Funktion unterstützt:
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 | -------- | ----------- |
 | IS_DEFINED(Eigenschaft) | Gibt einen booleschen Wert zurück, um anzugeben, ob der Eigenschaft ein Wert zugewiesen wurde (inklusive `null`). |
 
 In Routenbedingungen werden die folgenden mathematischen Funktionen unterstützt:
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 | -------- | ----------- |
 | ABS(x) | Gibt den absoluten (positiven) Wert des angegebenen numerischen Ausdrucks zurück. |
 | EXP(x) | Gibt den Exponentialwert des angegebenen numerischen Ausdrucks (e^x) zurück. |
@@ -488,7 +505,7 @@ In Routenbedingungen werden die folgenden mathematischen Funktionen unterstützt
 
 In Routenbedingungen werden die folgenden Typüberprüfungs- und Umwandlungsfunktionen unterstützt:
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 | -------- | ----------- |
 | AS_NUMBER | Konvertiert die Eingabezeichenfolge in eine Zahl. `noop`, wenn die Eingabe eine Zahl ist; `Undefined`, wenn die Zeichenfolge keine Zahl darstellt.|
 | IS_ARRAY | Gibt einen booleschen Wert zurück, der angibt, ob der angegebene Ausdruck vom Typ „Array“ ist. |
@@ -502,7 +519,7 @@ In Routenbedingungen werden die folgenden Typüberprüfungs- und Umwandlungsfunk
 
 In Routenbedingungen werden die folgenden Zeichenfolgenfunktionen unterstützt:
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 | -------- | ----------- |
 | CONCAT(x, y, …) | Gibt eine Zeichenfolge zurück, die das Ergebnis der Verkettung von zwei oder mehr Zeichenfolgenwerten darstellt. |
 | LENGTH(x) | Gibt die Anzahl der Zeichen im angegebenen Zeichenfolgenausdruck zurück.|

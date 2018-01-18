@@ -1,50 +1,57 @@
 ---
-title: Azure-Containerregistrierungsrepositorys
-description: "Verwenden der Azure-Containerregistrierungsrepositorys für Docker-Images"
+title: Azure Container Registry-Repositorys im Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Azure Container Registry-Repositorys im Azure-Portal anzeigen.
 services: container-registry
 author: cristy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 3321dd1d8bbd1b8232c26491edd8c374df16b813
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 593972e972207a27d1232fcb0c1bf220ac3a8def
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="azure-container-registry-repositories"></a>Azure-Containerregistrierungsrepositorys
+# <a name="view-container-registry-repositories-in-the-azure-portal"></a>Anzeigen von Azure Container Registry-Repositorys im Azure-Portal
 
-Mit der Azure-Containerregistrierung können Sie Containerimages in Repositorys speichern. Indem Sie Images in Repositorys speichern, können Sie Gruppen von Images (oder Versionen von Images) in einer isolierten Umgebung ablegen. Sie können diese Repositorys angeben, wenn Sie Images in Ihre Registrierung übertragen (Push).
-
+Mit Azure Container Registry können Sie Docker-Containerimages in Repositorys speichern. Indem Sie Images in Repositorys speichern, können Sie Gruppen von Images (oder Versionen von Images) in einer isolierten Umgebung speichern. Sie können diese Repositorys angeben, wenn Sie Images per Push in Ihre Registrierung übertragen, und ihren Inhalt im Azure-Portal anzeigen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure-Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder [Azure CLI 2.0](container-registry-get-started-azure-cli.md).
-* **Docker CLI**: Installieren Sie das [Docker-Modul](https://docs.docker.com/engine/installation/), um Ihren lokalen Computer als Docker-Host einzurichten und auf die Befehle der Docker CLI zuzugreifen.
-* **Abrufen eines Images (Pull)**: Rufen Sie ein Image aus der öffentlichen Docker Hub-Registrierung ab, markieren Sie es mit einem Tag, und übertragen Sie es in Ihre Registrierung. Anleitungen dazu, wie Images übertragen und abrufen, finden Sie unter [Pushübertragung eines Docker-Images in eine private Azure-Registrierung](container-registry-get-started-docker-cli.md).
 
+* **Containerregistrierung**: Erstellen Sie in Ihrem Azure-Abonnement eine Containerregistrierung. Verwenden Sie beispielsweise das [Azure-Portal](container-registry-get-started-portal.md) oder die [Azure CLI](container-registry-get-started-azure-cli.md).
+* **Docker CLI**: Installieren Sie [Docker][docker-install] auf dem lokalen Computer. Anschließend steht Ihnen die Docker-Befehlszeilenschnittstelle zur Verfügung.
+* **Containerimage**: Übertragen Sie ein Image per Push an Ihre Containerregistrierung. Anleitungen für Push- und Pull-Vorgänge für Images finden Sie unter [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md).
 
-## <a name="viewing-repositories-in-the-portal"></a>Anzeigen von Repositorys im Portal
+## <a name="view-repositories-in-azure-portal"></a>Anzeigen von Repositorys im Azure-Portal
 
-Nachdem Sie Images in Ihre Containerregistrierung übertragen haben, wird im Azure-Portal eine Liste der Repositorys angezeigt, in denen die Images gehostet werden.
+Sie können eine Liste der Repositorys, in denen Ihre Bilder gespeichert sind, sowie die Imagetags im Azure-Portal anzeigen.
 
-Wenn Sie die Schritte im Artikel [Pushübertragung eines Docker-Images in eine private Azure-Registrierung](container-registry-get-started-docker-cli.md) ausgeführt haben, verfügen Sie jetzt über ein Nginx-Image in Ihrer Containerregistrierung. Im Rahmen der Anweisungen sollten Sie einen Namespace für das Image angegeben haben. Im folgenden Beispiel wird das NGinx-Image mit dem Befehl in das Repository „Samples“ übertragen:
+Wenn Sie die Schritte unter [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md) befolgt haben (und das Image anschließend nicht gelöscht haben), sollten Sie in der Containerregistrierung über ein Nginx-Image verfügen. Die Anweisungen in diesem Artikel besagen, dass Sie das Image mit einem Namespace, „samples“ in `/samples/nginx`, versehen. Zur Erinnerung: Der [docker push][docker-push]-Befehl, der in diesem Artikel angegeben war, lautete:
 
-```
+```Bash
 docker push myregistry.azurecr.io/samples/nginx
 ```
- Die Azure-Containerregistrierung unterstützt Repositorynamespaces mit mehreren Ebenen. Mit dieser Funktion können Sie Sammlungen mit Images für eine bestimmte App oder eine Sammlung von Apps für bestimmte Entwicklungs- oder Betriebsteams gruppieren. Weitere Informationen zu Repositorys in Containerregistrierungen finden Sie unter [Private Docker-Containerregistrierungen in Azure](container-registry-intro.md).
 
-So zeigen Sie die Containerregistrierungsrepositorys an:
+ Da Azure Container Registry Namespaces mit mehreren Ebenen unterstützt, können Sie Sammlungen mit Images für eine bestimmte App oder eine Sammlung von Apps auf verschiedene Entwicklungs- oder Betriebsteams beschränken. Weitere Informationen zu Repositorys in Containerregistrierungen finden Sie unter [Private Docker-Containerregistrierungen in Azure](container-registry-intro.md).
 
-1. Anmelden beim Azure-Portal
-2. Wählen Sie auf dem Blatt **Azure Containerregistrierung** die Registrierung aus, die Sie untersuchen möchten.
-3. Klicken Sie auf dem Blatt „Registrierung“ auf **Repositorys**, um eine Liste aller Repositorys und Images anzuzeigen.
-4. (Optional) Wählen Sie ein bestimmtes Image aus, um die Tags anzuzeigen
+So zeigen Sie ein Repository an
+
+1. Melden Sie sich beim [Azure-Portal][portal] an.
+1. Wählen Sie die **Azure Container Registry** aus, an die Sie das Nginx-Image per Push übertragen haben.
+1. Wählen Sie **Repositorys** aus, um eine Liste der Repositorys anzuzeigen, die die Images in der Registrierung enthalten.
+1. Wählen Sie ein Repository aus, um die Imagetags in diesem Repository anzuzeigen.
+
+Wenn Sie beispielsweise das Nginx-Image entsprechend den Anweisungen unter [Push- und Pull-Vorgänge für Images](container-registry-get-started-docker-cli.md) per Push übermittelt haben, sollte Folgendes angezeigt werden:
 
 ![Repositorys im Portal](./media/container-registry-repositories/container-registry-repositories.png)
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie sich mit den Grundlagen vertraut gemacht haben, können Sie mit der Verwendung Ihrer Registrierung beginnen! Beginnen Sie beispielsweise, indem Sie Containerimages in einem [Azure Container Service](https://azure.microsoft.com/documentation/services/container-service/)-Cluster bereitstellen.
+
+Nachdem Sie nun mit den Grundlagen des Anzeigens und Arbeitens mit Repositorys im Portal vertraut sind, versuchen Sie, Azure Container Registry mit einem [Azure Container Service](../aks/tutorial-kubernetes-prepare-app.md)-Cluster (AKS) zu verwenden.
+
+<!-- LINKS - External -->
+[docker-install]: https://docs.docker.com/engine/installation/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[portal]: https://portal.azure.com

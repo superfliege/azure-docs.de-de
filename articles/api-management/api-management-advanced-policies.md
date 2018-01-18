@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 6392a14f6bbc3c4708b36e3e1ab0b5b45a4d0671
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: b8c181282dd28582a8fb02f611424ffd608fd1ec
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="api-management-advanced-policies"></a>API Management – Erweiterte Richtlinien
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -25,14 +25,14 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 ##  <a name="AdvancedPolicies"></a> Erweiterte Richtlinien  
   
 -   [Ablaufsteuerung](api-management-advanced-policies.md#choose) – Bedingte Anwendung von Richtlinienanweisungen basierend auf den Ergebnissen der Auswertung von booleschen [Ausdrücken](api-management-policy-expressions.md)  
--   [Anforderung weiterleiten](#ForwardRequest) – leitet die Anforderung an den Back-End-Dienst.
+-   [Anforderung weiterleiten](#ForwardRequest) – Leitet die Anforderung an den Back-End-Dienst.
 -   [Parallelität einschränken:](#LimitConcurrency) verhindert die Ausführung der eingeschlossenen Richtlinien durch mehr als die angegebene Anzahl von Anforderungen gleichzeitig.
 -   [Protokoll an Event Hub](#log-to-eventhub) – Sendet Nachrichten im angegebenen Format an einen von einem Protokollierungstool definierten Event Hub. 
 -   [Modellantwort](#mock-response) – bricht die Pipelineausführung ab und gibt die Modellantwort unmittelbar an den Aufrufer zurück.
 -   [Wiederholen](#Retry) – Wiederholt die Ausführung der eingeschlossenen Richtlinienanweisungen, falls und bis die Bedingung erfüllt ist. Die Ausführung wird mit den angegebenen Zeitintervallen und bis zur angegebenen Anzahl der Wiederholungsversuche wiederholt.  
 -   [Zurückgegebene Antwort](#ReturnResponse) – bricht die Pipeline-Ausführung ab und gibt die angegebene Antwort unmittelbar an den Aufrufer zurück. 
 -   [Unidirektionale Anforderung senden](#SendOneWayRequest) – sendet eine Anforderung an die angegebene URL, ohne auf eine Antwort zu warten.  
--   [Sendeanforderung](#SendRequest) – Sendet eine Anforderung an die angegebene URL.  
+-   [Sendeanforderung](#SendRequest) – sendet eine Anforderung an die angegebene URL.  
 -   [HTTP-Proxy festlegen](#SetHttpProxy): Sie können weitergeleitete Anforderungen über einen HTTP-Proxy leiten.  
 -   [Anforderungsmethode festlegen](#SetRequestMethod) – Dient der Vornahme von Änderungen der HTTP-Anforderungsmethode.  
 -   [Statuscode festlegen](#SetStatus) – Ändert den HTTP-Statuscode in den angegebenen Wert.  
@@ -122,15 +122,15 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |choose|Stammelement|Ja|  
 |when|Die Bedingung, die für die Teile `if` oder `ifelse` der `choose`-Richtlinie verwendet werden soll. Wenn die `choose`-Richtlinie über mehrere `when`-Abschnitte verfügt, werden diese nacheinander ausgewertet. Wenn die Bedingung (`condition`) eines when-Elements bei der Auswertung `true` ergibt, werden keine weiteren `when`-Bedingungen ausgewertet.|Ja|  
-|otherwise|Enthält den Richtliniencodeausschnitt, der verwendet werden soll, wenn die Auswertung für keine `when`-Bedingung `true` ergibt.|Nein|  
+|otherwise|Enthält den Richtliniencodeausschnitt, der verwendet werden soll, wenn die Auswertung für keine `when`-Bedingung `true` ergibt.|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|  
+|Attribut|BESCHREIBUNG|Erforderlich|  
 |---------------|-----------------|--------------|  
 |condition="boolescher Ausdruck &#124; boolesche Konstante"|Der boolesche Ausdruck bzw. die Konstante, der bzw. die ausgewertet werden soll, wenn die enthaltende `when`-Richtlinienanweisung ausgewertet wird.|Ja|  
   
@@ -234,16 +234,16 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |forward-request|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, nach dem für den Aufruf des Back-End-Diensts ein Fehler auftritt.|Nein|300 Sekunden|  
-|follow-redirects="true &#124; false"|Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.|Nein|false|  
+|timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, nach dem für den Aufruf des Back-End-Diensts ein Fehler auftritt.|Nein |300 Sekunden|  
+|follow-redirects="true &#124; false"|Gibt an, ob Umleitungen vom Back-End-Dienst vom Gateway verfolgt oder an den Aufrufer zurückgegeben werden.|Nein |false|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -281,13 +281,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
 
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|    
 |limit-concurrency|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|--------------|  
 |key|Eine Zeichenfolge. Ausdruck zulässig. Gibt den Bereich der Parallelität an. Kann von mehreren Richtlinien verwendet werden.|Ja|N/V|  
 |max-count|Eine ganze Zahl. Gibt eine maximale Anzahl von Anforderungen an, die an die Richtlinie weitergeleitet werden können|Ja|N/V|  
@@ -331,13 +331,13 @@ Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinie
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |log-to-eventhub|Stammelement Der Wert dieses Elements ist die Zeichenfolge für die Protokollierung in Ihrem Event Hub.|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|  
+|Attribut|BESCHREIBUNG|Erforderlich|  
 |---------------|-----------------|--------------|  
 |logger-id|Die ID des Protokollierungstools, das bei Ihrem API Management-Dienst registriert ist.|Ja|  
 |partition-id|Gibt den Index der Partition an, an die Nachrichten gesendet werden.|Optional. Dieses Attribut darf nicht genutzt werden, wenn `partition-key` verwendet wird.|  
@@ -374,16 +374,16 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |mock-response|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|--------------|  
-|status-code|Gibt den Statuscode der Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen|Nein|200|  
-|Inhaltstyp|Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen|Nein|Keine|  
+|status-code|Gibt den Statuscode der Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen|Nein |200|  
+|Inhaltstyp|Gibt den Headerwert `Content-Type` für die Antwort an und wird verwendet, um ein passendes Beispiel oder Schema auszuwählen|Nein |Keine|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -412,7 +412,7 @@ status code and media type. If no example or schema found, the content is empty.
 ```  
   
 ### <a name="example"></a>Beispiel  
- Im folgenden Beispiel wird bis zu zehnmal versucht, die Anforderungsweiterleitung zu wiederholen, indem der exponentielle Wiederholungsalgorithmus verwendet wird. Da `first-fast-retry` auf „false“ festgelegt ist, unterliegen alle Wiederholungsversuche dem exponentiellen Wiederholungsalgorithmus.  
+ Im folgenden Beispiel wird mit einem exponentiellen Wiederholungsalgorithmus bis zu zehnmal versucht, die Anforderungsweiterleitung zu wiederholen. Da `first-fast-retry` auf „false“ festgelegt ist, unterliegen alle Wiederholungsversuche dem exponentiellen Wiederholungsalgorithmus.  
   
 ```xml  
   
@@ -430,20 +430,20 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |retry|Stammelement Kann beliebige andere Richtlinien als untergeordnete Elemente enthalten.|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|condition|Ein boolesches Literal oder ein [Ausdruck](api-management-policy-expressions.md), mit dem angegeben wird, ob Wiederholungsversuche beendet (`false`) oder fortgesetzt (`true`) werden sollen.|Ja|–|  
+|condition|Ein boolesches Literal oder ein [Ausdruck](api-management-policy-expressions.md), mit dem angegeben wird, ob Wiederholungsversuche beendet (`false`) oder fortgesetzt (`true`) werden sollen.|Ja|N/V|  
 |count|Eine positive Zahl, mit der die maximale Anzahl von Wiederholungsversuchen angegeben wird.|Ja|N/V|  
 |interval|Ein positiver Wert in Sekunden, mit dem das Warteintervall zwischen den Wiederholungsversuchen angegeben wird.|Ja|N/V|  
-|max-interval|Ein positiver Wert in Sekunden, mit dem das maximale Warteintervall zwischen den Wiederholungsversuchen angegeben wird. Wird zum Implementieren eines exponentiellen Wiederholungsalgorithmus verwendet.|Nein|–|  
-|delta|Ein positiver Wert in Sekunden, mit dem das Inkrement für das Warteintervall angegeben wird. Wird zum Implementieren der linearen und exponentiellen Wiederholungsalgorithmen verwendet.|Nein|–|  
-|first-fast-retry|Wenn `true` festgelegt ist, wird der erste Wiederholungsversuch sofort durchgeführt.|Nein|`false`|  
+|max-interval|Ein positiver Wert in Sekunden, mit dem das maximale Warteintervall zwischen den Wiederholungsversuchen angegeben wird. Wird zum Implementieren eines exponentiellen Wiederholungsalgorithmus verwendet.|Nein |N/V|  
+|delta|Ein positiver Wert in Sekunden, mit dem das Inkrement für das Warteintervall angegeben wird. Wird zum Implementieren der linearen und exponentiellen Wiederholungsalgorithmen verwendet.|Nein |N/V|  
+|first-fast-retry|Wenn `true` festgelegt ist, wird der erste Wiederholungsversuch sofort durchgeführt.|Nein |`false`|  
   
 > [!NOTE]
 >  Wenn nur `interval` angegeben ist, werden Wiederholungsversuche nach **festen** Intervallen durchgeführt.  
@@ -485,16 +485,16 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |return-response|Stammelement|Ja|  
-|set-header|Eine [set-header](api-management-transformation-policies.md#SetHTTPheader)-Richtlinienanweisung.|Nein|  
-|set-body|Eine [set-body](api-management-transformation-policies.md#SetBody)-Richtlinienanweisung.|Nein|  
-|set-status|Eine [set-status](api-management-advanced-policies.md#SetStatus)-Richtlinienanweisung.|Nein|  
+|set-header|Eine [set-header](api-management-transformation-policies.md#SetHTTPheader)-Richtlinienanweisung.|Nein |  
+|set-body|Eine [set-body](api-management-transformation-policies.md#SetBody)-Richtlinienanweisung.|Nein |  
+|set-status|Eine [set-status](api-management-advanced-policies.md#SetStatus)-Richtlinienanweisung.|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|  
+|Attribut|BESCHREIBUNG|Erforderlich|  
 |---------------|-----------------|--------------|  
 |response-variable-name|Der Name der Kontextvariablen, auf die beispielsweise von einer vorgelagerten [send-request](api-management-advanced-policies.md#SendRequest)-Richtlinie verwiesen wird und die ein `Response`-Objekt enthält.|Optional.|  
   
@@ -551,21 +551,21 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |send-one-way-request|Stammelement|Ja|  
-|url|Die URL der Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|  
+|URL|Die URL der Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|  
 |method|Die HTTP-Methode für die Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|  
-|Header|Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.|Nein|  
-|body|Anforderungstext|Nein|  
+|Header|Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.|Nein |  
+|body|Anforderungstext|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein|Neu|  
-|Name|Gibt den Namen des festzulegenden Headers an.|Ja|–|  
-|exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|  
+|mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein |Neu|  
+|name|Gibt den Namen des festzulegenden Headers an.|Ja|N/V|  
+|exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -630,24 +630,24 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |send-request|Stammelement|Ja|  
-|url|Die URL der Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|  
+|URL|Die URL der Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|  
 |method|Die HTTP-Methode für die Anforderung.|„Nein“, wenn „mode=copy“, andernfalls „Ja“.|  
-|Header|Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.|Nein|  
-|body|Anforderungstext|Nein|  
+|Header|Anforderungsheader. Verwenden Sie mehrere Headerelemente für mehrere Anforderungsheader.|Nein |  
+|body|Anforderungstext|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein|Neu|  
-|response-variable-name="string"|Falls nicht vorhanden, wird `context.Response` verwendet.|Nein|–|  
-|timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, bis für den Aufruf der URL ein Fehler auftritt.|Nein|60|  
-|ignore-error|Bei „true“ und einem Fehler für die Anforderung:<br /><br /> -   Wenn „response-variable-name“ angegeben wurde, ist dies ein Nullwert.<br />-   Wenn „response-variable-name“ nicht angegeben wurde, wird „context.Request“ nicht aktualisiert.|Nein|false|  
-|Name|Gibt den Namen des festzulegenden Headers an.|Ja|–|  
-|exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein|override|  
+|mode="string"|Bestimmt, ob dies eine neue Anforderung oder eine Kopie der aktuellen Anforderung ist. Im Ausgangsmodus wird der Anforderungstext durch „mode=copy“ nicht initialisiert.|Nein |Neu|  
+|response-variable-name="string"|Falls nicht vorhanden, wird `context.Response` verwendet.|Nein |N/V|  
+|timeout="integer"|Das Zeitüberschreitungsintervall in Sekunden, bis für den Aufruf der URL ein Fehler auftritt.|Nein |60|  
+|ignore-error|Bei „true“ und einem Fehler für die Anforderung:<br /><br /> -   Wenn „response-variable-name“ angegeben wurde, ist dies ein Nullwert.<br />-   Wenn „response-variable-name“ nicht angegeben wurde, wird „context.Request“ nicht aktualisiert.|Nein |false|  
+|name|Gibt den Namen des festzulegenden Headers an.|Ja|N/V|  
+|exists-action|Gibt die auszuführende Aktion an, wenn ein Header bereits angegeben wurde. Dieses Attribut muss einen der folgenden Werte aufweisen.<br /><br /> – override – Ersetzt den Wert des vorhandenen Headers.<br />– skip – Ersetzt den vorhandenen Headerwert nicht.<br />– append – Fügt den Wert an den vorhandenen Headerwert an.<br />– delete – Entfernt den Header aus der Anforderung.<br /><br /> Bei `override` führt die Auflistung mehrerer Einträge mit demselben Namen dazu, dass der Header gemäß aller Einträge festgelegt wird (die mehrfach aufgeführt sind); nur die aufgelisteten Werte werden im Ergebnis festgelegt.|Nein |override|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -676,22 +676,22 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |proxy|Stammelement|Ja|  
 
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
 |url="string"|Proxy-URL im Format http://host:port.|Ja|N/V|  
-|username="string"|Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird.|Nein|N/V|  
-|password="string"|Kennwort, das für die Authentifizierung mit dem Proxy verwendet wird.|Nein|N/V|  
+|username="string"|Der Benutzername, der für die Authentifizierung mit dem Proxy verwendet wird.|Nein |N/V|  
+|password="string"|Kennwort, das für die Authentifizierung mit dem Proxy verwendet wird.|Nein |N/V|  
 
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
   
--   **Richtlinienabschnitte:** inbound  
+-   **Richtlinienabschnitte**: inbound  
   
 -   **Richtlinienbereiche:** alle Bereiche  
 
@@ -736,7 +736,7 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |set-method|Stammelement Mit dem Wert des Elements wird die HTTP-Methode angegeben.|Ja|  
   
@@ -776,15 +776,15 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |set-status|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|code="integer"|Der zurückzugebende HTTP-Statuscode.|Ja|–|  
+|code="integer"|Der zurückzugebende HTTP-Statuscode.|Ja|N/V|  
 |reason="string"|Eine Beschreibung des Grunds zum Zurückgeben des Statuscodes.|Ja|N/V|  
   
 ### <a name="usage"></a>Verwendung  
@@ -811,15 +811,15 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |set-variable|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|  
+|Attribut|BESCHREIBUNG|Erforderlich|  
 |---------------|-----------------|--------------|  
-|Name|Der Name der Variablen.|Ja|  
+|name|Der Name der Variablen.|Ja|  
 |value|Der Wert der Variablen. Dies kann ein Ausdruck oder ein Literalwert sein.|Ja|  
   
 ### <a name="usage"></a>Verwendung  
@@ -878,13 +878,13 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |Ablaufverfolgung|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
 |Quelle|Das Zeichenfolgenliteral ist für die Ablaufverfolgungsanzeige aussagekräftig und gibt die Quelle der Nachricht an.|Ja|N/V|  
   
@@ -945,15 +945,15 @@ Beachten Sie die Verwendung von [Eigenschaften](api-management-howto-properties.
   
 ### <a name="elements"></a>Elemente  
   
-|Element|Beschreibung|Erforderlich|  
+|Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
 |wait|Stammelement Darf nur die Richtlinien `send-request`, `cache-lookup-value` und `choose` als untergeordnete Elemente enthalten.|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
-|Attribut|Beschreibung|Erforderlich|Standard|  
+|Attribut|BESCHREIBUNG|Erforderlich|Standard|  
 |---------------|-----------------|--------------|-------------|  
-|for|Bestimmt, ob die `wait`-Richtlinie wartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind, oder nur eine. Zulässige Werte sind:<br /><br /> -   `all`: Es wird gewartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind.<br />-   any: Es wird gewartet, bis eine beliebige unmittelbar untergeordnete Richtlinie abgeschlossen ist. Nachdem die erste unmittelbar untergeordnete Richtlinie abgeschlossen wurde, wird die `wait`-Richtlinie abgeschlossen, und die Ausführung aller anderen unmittelbar untergeordneten Richtlinien wird beendet.|Nein|alle|  
+|for|Bestimmt, ob die `wait`-Richtlinie wartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind, oder nur eine. Zulässige Werte sind:<br /><br /> -   `all`: Es wird gewartet, bis alle unmittelbar untergeordneten Richtlinien abgeschlossen sind.<br />-   any: Es wird gewartet, bis eine beliebige unmittelbar untergeordnete Richtlinie abgeschlossen ist. Nachdem die erste unmittelbar untergeordnete Richtlinie abgeschlossen wurde, wird die `wait`-Richtlinie abgeschlossen, und die Ausführung aller anderen unmittelbar untergeordneten Richtlinien wird beendet.|Nein |alle|  
   
 ### <a name="usage"></a>Verwendung  
  

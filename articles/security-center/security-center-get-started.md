@@ -1,6 +1,6 @@
 ---
-title: Schnellstarthandbuch zu Azure Security Center | Microsoft Docs
-description: "Dieser Artikel enthält hilfreiche Informationen zum schnellen Einstieg in Azure Security Center. Sie erhalten eine Einführung in die Sicherheitsüberwachungs- und Richtlinienverwaltungs-Komponenten und werden zu weiterführenden Schritten geleitet."
+title: "Schnellstart für Azure Security Center: Einbinden Ihres Azure-Abonnements in Security Center Standard | Microsoft-Dokumentation"
+description: "Dieser Schnellstart zeigt Ihnen, wie Sie für zusätzliche Sicherheit ein Upgrade auf den Security Center-Tarif Standard durchführen können."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,125 +12,109 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/07/2018
 ms.author: terrylan
-ms.openlocfilehash: c28f92af96f31d1c386cf072f83fc142b9a7f588
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ac4e3b36b08223f7e3b54850ed53a8185e85f0d2
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="azure-security-center-quick-start-guide"></a>Schnellstarthandbuch zu Azure Security Center
-Dieser Artikel enthält hilfreiche Informationen zum schnellen Einstieg in Azure Security Center. Sie erhalten eine Einführung in die Sicherheitsüberwachungs- und Richtlinienverwaltungs-Komponenten.
+# <a name="quickstart-onboard-your-azure-subscription-to-security-center-standard"></a>Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard
+Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den Schutz vor Bedrohungen für Ihre Hybrid Cloud-Workloads. Während der Free-Tarif nur eingeschränkte Sicherheit für Ihre Azure-Ressourcen bietet, erweitert der Standard-Tarif diese Funktionen auf lokale Umgebungen und andere Clouds. Security Center Standard hilft Ihnen, Sicherheitsrisiken zu finden und zu beseitigen, Zugriffs- und Anwendungssteuerungen anzuwenden, um böswillige Aktivitäten zu blockieren, Bedrohungen mithilfe von Analysen und intelligenter Funktionen zu erkennen und bei Angriffen schnell zu reagieren. Sie können Security Center Standard die ersten 60 Tage kostenlos testen.
+
+In diesem Artikel führen Sie für zusätzliche Sicherheit ein Upgrade auf den Tarif Standard durch und installieren den Microsoft Monitoring Agent auf Ihren virtuellen Computern, um Sicherheitslücken und Bedrohungen ausfindig zu machen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testkonto](https://azure.microsoft.com/pricing/free-trial/) registrieren.
 
-Der Free-Tarif von Security Center ist für alle Azure-Abonnements automatisch aktiviert und umfasst die Sicherheitsrichtlinie, die kontinuierliche Bewertung der Sicherheit und umsetzbare Sicherheitsempfehlungen für den Schutz Ihrer Azure-Ressourcen.
+Um ein Abonnement auf den Standard-Tarif zu aktualisieren, muss Ihnen die Rolle „Abonnementbesitzer“, „Mitwirkender“ am Abonnement oder „Sicherheitsadministrator“ zugewiesen werden.
 
-Sie können über das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/)auf Security Center zugreifen. Weitere Informationen zum Azure-Portal finden Sie in der [Dokumentation zum Portal](https://azure.microsoft.com/documentation/services/azure-portal/).
+## <a name="enable-your-azure-subscription"></a>Aktivieren Ihres Azure-Abonnements
 
-## <a name="permissions"></a>Berechtigungen
-In Security Center werden Ihnen nur dann Informationen zu einer Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, der eine Ressource angehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist. Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Permissions in Azure Security Center](security-center-permissions.md) (Berechtigungen in Azure Security Center).
+1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an.
+2. Wählen Sie im Menü **Microsoft Azure** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet.
 
-## <a name="data-collection"></a>Datensammlung
-Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie hinsichtlich Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Security Center stellt den Microsoft Monitoring Agent auf allen vorhandenen unterstützten virtuellen Azure-Computern sowie auf allen neuen virtuellen Computern bereit, die erstellt werden. Weitere Informationen zur Funktionsweise der Datensammlung finden Sie unter [Aktivieren der Datensammlung](security-center-enable-data-collection.md).
+ ![Übersicht über das Security Center][2]
 
-Die automatische Bereitstellung wird dringend empfohlen und für Abonnements des Standard-Tarifs von Security Center vorausgesetzt. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
+In der **Security Center – Übersicht** erhalten Sie einen vereinheitlichten Überblick über den Sicherheitsstatus Ihrer Hybrid Cloud-Workloads und können so die Sicherheit Ihrer Workloads ermitteln und bewerten sowie Risiken identifizieren und mindern. Das Security Center aktiviert automatisch alle Ihre Azure-Abonnements, die Sie oder ein anderer Abonnementbenutzer nicht zuvor dem Free-Tarif zugeordnet haben.
 
-Weitere Informationen zu den Tarifen Standard und Free finden Sie unter [Azure Security Center-Preise](security-center-pricing.md).
+Sie können die Liste der Abonnements einsehen und filtern, indem Sie auf den Menüeintrag **Abonnements** klicken. Das Security Center beginnt anschließend mit der Bewertung der Sicherheit dieser Abonnements, um Sicherheitsrisiken auszumachen. Um die Arten von Beurteilungen anzupassen, können Sie die Sicherheitsrichtlinie ändern. Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei.
 
-In den folgenden Schritten wird beschrieben, wie Sie auf die Komponenten von Security Center zugreifen und diese verwenden.
+Innerhalb weniger Minuten nach dem ersten Start von Security Center wird Ihnen Folgendes angezeigt:
 
-> [!NOTE]
-> Im Artikel wird der Dienst anhand einer Beispielbereitstellung vorgestellt. Es handelt sich nicht um eine Schritt-für-Schritt-Anleitung.
->
->
+- **Empfehlungen** für Möglichkeiten zur Verbesserung der Sicherheit Ihrer Azure-Abonnements. Wenn Sie auf die Kachel **Empfehlungen** klicken, wird eine priorisierte Liste eingeblendet.
+- Eine Bestandsaufnahme von Ressourcen der Typen **Compute**, **Netzwerk**, **Speicher und Daten** sowie **Anwendungen**, die nun von Security Center zusammen mit dem jeweiligen Sicherheitsstatus bewertet werden.
 
-## <a name="access-security-center"></a>Zugreifen auf Security Center
-Führen Sie im Portal folgende Schritte aus, um auf Security Center zuzugreifen:
+Um den vollen Nutzen aus Security Center zu ziehen, müssen Sie die folgenden Schritte ausführen, um auf den Standard-Tarif zu aktualisieren und den Microsoft Monitoring Agent zu installieren.
 
-1. Wählen Sie im Menü **Microsoft Azure** die Option **Security Center**.
+## <a name="upgrade-to-the-standard-tier"></a>Upgrade auf den Standard-Tarif
+Für die Zwecke des Schnellstarts und der Tutorials für Security Center müssen Sie ein Upgrade auf den Standard-Tarif durchführen. Die ersten 60 Tage sind kostenlos, und Sie können jederzeit zum Free-Tarif zurückkehren.
 
-   ![Azure-Menü][1]
-2. Wenn Sie zum ersten Mal auf Security Center zugreifen, wird das Blatt **Willkommen** geöffnet. Wählen Sie **Security Center starten** aus, um **Security Center** zu öffnen.
-   ![Bildschirm „Willkommen“][10]
-3. Nachdem Sie Security Center über das Blatt „Willkommen“ gestartet oder im Microsoft Azure-Menü die Option „Security Center“ gewählt haben, wird **Security Center** geöffnet. Um zukünftig einfacher auf das Blatt **Security Center** zugreifen zu können, wählen Sie die Option **Blatt an Dashboard anheften** (oben rechts) aus.
-   ![Option „Blatt an Dashboard anheften“][2]
+1. Klicken Sie im Hauptmenü von Security Center auf **Integration in erweiterte Sicherheit**.
 
-## <a name="use-security-center"></a>Verwenden von Security Center
-Sie können die Sicherheitsrichtlinien für Ihre Azure-Abonnements und Ressourcengruppen konfigurieren. Wir konfigurieren nun eine Sicherheitsrichtlinie für Ihr Abonnement:
+2. Unter **Integration in erweiterte Sicherheit** werden von Security Center für die Integration geeignete Abonnements und Arbeitsbereiche aufgeführt. Wählen Sie in der Liste ein Abonnement aus.
+
+  ![Auswählen eines Abonnements][4]
+
+3. **Sicherheitsrichtlinie** liefert Informationen zu den im Abonnement enthaltenen Ressourcengruppen. **Preise** wird auch geöffnet.
+4. Wählen Sie unter **Preise** die Option **Standard** aus, um ein Upgrade von Free auf Standard durchzuführen. Klicken Sie dann auf **Speichern**.
+
+  ![Auswählen von „Standard“][5]
+
+Nach Upgrade auf den Standard-Tarif haben Sie nun Zugriff auf zusätzliche Security Center-Funktionen, darunter **adaptive Anwendungssteuerungen**, **Just-in-Time-VM-Zugriff**, **Sicherheitswarnungen**, **Informationen zu Bedrohungen**, **Automation-Playbooks** und mehr. Beachten Sie, dass Sicherheitswarnungen nur dann angezeigt werden, wenn Security Center bösartige Aktivitäten erkennt.
+
+  ![Sicherheitswarnungen][7]
+
+## <a name="automate-data-collection"></a>Automatisieren der Datensammlung
+Security Center sammelt Daten von Ihren virtuellen Azure-Computern (VMs) und Azure-fremden Computern, um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mithilfe von Microsoft Monitoring Agent gesammelt. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in Ihren Arbeitsbereich. Standardmäßig erstellt Security Center einen neuen Arbeitsbereich für Sie.
+
+Bei aktivierter automatischer Bereitstellung wird Microsoft Monitoring Agent von Security Center auf allen unterstützten virtuellen Azure-Computern sowie auf allen neu erstellten virtuellen Computern installiert. Die automatische Bereitstellung wird dringend empfohlen.
+
+So aktivieren Sie die automatische Bereitstellung von Microsoft Monitoring Agent:
 
 1. Klicken Sie im Hauptmenü von Security Center auf **Sicherheitsrichtlinie**.
-2. Wählen Sie unter **Security Center – Sicherheitsrichtlinie** ein Abonnement aus.
-3. Unter **Sicherheitsrichtlinie – Datensammlung** ist **Automatische Bereitstellung** aktiviert. Security Center stellt den Microsoft Monitoring Agent auf allen vorhandenen unterstützten virtuellen Azure-Computern sowie auf allen neuen virtuellen Computern bereit, die erstellt werden.
+2. Wählen Sie das Abonnement aus.
+3. Klicken Sie unter **Sicherheitsrichtlinie** auf **Datensammlung**.
+4. Klicken Sie unter **Datensammlung** auf **Ein**, um die automatische Bereitstellung zu aktivieren.
+5. Wählen Sie **Speichern** aus.
 
-    ![Sicherheitsrichtlinie][12]
+  ![Aktivieren der automatischen Bereitstellung][6]
 
-4. Wählen Sie auf dem Blatt **Sicherheitsrichtlinie** die Richtlinienkomponente **Sicherheitsrichtlinie** aus.
+Mit diesen neuen Einblicken in Ihre Azure-VMs kann Security Center zusätzliche Empfehlungen in Bezug auf den Status von Systemupdates, Sicherheitskonfigurationen für Betriebssysteme und des Endgeräteschutzes geben sowie zusätzliche Sicherheitswarnungen generieren.
 
-     ![Sicherheitsrichtlinie][11]
+  ![Empfehlungen][8]
 
-5. Aktivieren Sie unter **Empfehlungen anzeigen für** die Empfehlungen, die im Rahmen der Sicherheitsrichtlinie verwendet werden sollen. Beispiele:
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Wenn Sie planen, mit den nachfolgenden Schnellstartanleitungen und Tutorials fortzufahren, sollten Sie weiter den Tarif „Standard“ nutzen und die automatische Bereitstellung aktiviert lassen. Gehen Sie wie folgt vor, falls Sie nicht fortfahren oder zum Free-Tarif zurückkehren möchten:
 
-   * Durch Festlegen von **Systemupdates** auf **Ein** werden alle unterstützten VMs auf fehlende Betriebssystemupdates überprüft.
-   * Durch Festlegen von **Sicherheitsrisiken des Betriebssystems** auf **Ein** werden alle unterstützten VMs untersucht, um Betriebssystemkonfigurationen zu ermitteln, die den virtuellen Computer anfälliger für Angriffe machen können.
+1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
+2. Wählen Sie das Abonnement oder die Richtlinie aus, für das bzw. die Sie zu „Free“ zurückwechseln möchten. Der Bereich **Sicherheitsrichtlinie** wird geöffnet.
+3. Wählen Sie unter **RICHTLINIENKOMPONENTEN** die Option **Tarif**.
+4. Wählen Sie **Free**, um für das Abonnement vom Tarif „Standard“ zu „Free“ zu wechseln.
+5. Wählen Sie **Speichern** aus.
 
-6. Wählen Sie **Speichern** aus.
+Gehen Sie wie folgt vor, um die automatische Bereitstellung zu deaktivieren:
 
-### <a name="view-recommendations"></a>Anzeigen von Empfehlungen
-1. Kehren Sie zum Blatt **Security Center** zurück, und klicken Sie auf die Kachel **Empfehlungen**. Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen. Wenn von Security Center potenzielle Sicherheitsrisiken identifiziert werden, werden die Empfehlungen auf dem Blatt **Empfehlungen** angezeigt.
-   ![Empfehlungen in Azure Security Center][5]
-2. Wählen Sie eine Empfehlung auf dem Blatt **Empfehlungen** aus, um weitere Informationen anzuzeigen und Maßnahmen zum Beheben des Problems zu ergreifen.
+1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie die Option **Sicherheitsrichtlinie**.
+2. Wählen Sie das Abonnement aus, für das Sie die automatische Bereitstellung deaktivieren möchten.
+3. Wählen Sie unter **Sicherheitsrichtlinie – Datensammlung** unter **Onboarding** die Option **Aus**, um die automatische Bereitstellung zu deaktivieren.
+4. Wählen Sie **Speichern** aus.
 
-### <a name="view-the-security-state-of-your-resources"></a>Anzeigen des Sicherheitsstatus Ihrer Ressourcen
-1. Kehren Sie zum Blatt **Security Center** zurück. Der Abschnitt **Prävention** des Dashboards enthält Indikatoren, die den Sicherheitsstatus für VMs, Netzwerk, Daten und Anwendungen anzeigen.
-2. Wählen Sie **Compute**, um weitere Informationen anzuzeigen. Das Blatt **Compute** wird mit drei Registerkarten geöffnet:
-
-  - **Übersicht**: Enthält Empfehlungen zur Überwachung und zu VMs.
-  - **VMs und Computer:** Liste mit dem aktuellen Sicherheitszustand aller virtueller und physischen Computer.
-  - **Clouddienste**: Liste mit den von Security Center überwachten Web- und Workerrollen
-
-    ![Computesicherheitsintegrität][6]
-
-3. Wählen Sie auf der Registerkarte **Übersicht** eine Empfehlung aus, um weitere Informationen anzuzeigen und/oder Maßnahmen zur Konfiguration der erforderlichen Steuerelemente zu ergreifen.
-4. Wählen Sie auf der Registerkarte **VMs und Computer** eine Ressource aus, um zusätzliche Details anzuzeigen.
-
-### <a name="view-security-alerts"></a>Anzeigen von Sicherheitswarnungen
-1. Kehren Sie zum Blatt **Security Center** zurück, und klicken Sie auf die Kachel **Sicherheitswarnungen**. Das Blatt **Sicherheitswarnungen** wird mit einer Liste angezeigt, in der die Warnungen aufgeführt sind. Die Warnungen werden bei der Security Center-Analyse Ihrer Sicherheitsprotokolle und der Netzwerkaktivität generiert. Die Liste enthält Warnungen integrierter Partnerlösungen.
-   ![Sicherheitswarnungen in Azure Security Center][7]
-
-2. Wählen Sie eine Warnung aus, um weitere Informationen anzuzeigen. Bei diesem Beispiel wählen wir die Option **Erkennung der Änderung einer Systembinärdatei in Dumpfilter**. Es werden Blätter geöffnet, die weitere Details zur Warnung enthalten.
-   ![Details zu Sicherheitswarnungen in Azure Security Center][8]
-
-### <a name="view-the-health-of-your-partner-solutions"></a>Anzeigen der Integrität Ihrer Partnerlösungen
-1. Kehren Sie zum Blatt **Security Center** zurück. Auf der Kachel **Sicherheitslösungen** können Sie auf einen Blick den Integritätsstatus Ihrer Partnerlösungen prüfen, die in Ihr Azure-Abonnement integriert sind.
-2. Wählen Sie die Kachel **Sicherheitslösungen** aus. Ein Blatt mit einer Liste der Partnerlösungen, die mit dem Security Center verbunden sind, wird geöffnet.
-   ![Partnerlösungen][9]
-3. Wählen Sie eine Partnerlösung aus. Auf dem geöffneten Blatt werden der Status der Partnerlösung und die zugeordneten Ressourcen der Lösung angezeigt. Wählen Sie die Option **Lösungskonsole** , um die Verwaltungsoberfläche des Partners für diese Lösung zu öffnen.
-
-   ![Partnerlösungen][13]
+>[!NOTE]
+> Wenn Sie die automatische Bereitstellung deaktivieren, wird Microsoft Monitoring Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
+>
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurden die Security Center-Komponenten für die Sicherheitsüberwachung und Richtlinienverwaltung vorgestellt. Nachdem Sie sich jetzt mit Security Center vertraut gemacht haben, können Sie die folgenden Schritte ausprobieren:
+In diesem Schnellstart haben Sie ein Upgrade auf den Standard-Tarif durchgeführt und den Microsoft Monitoring Agent für ein einheitliches Sicherheitsmanagement und Bedrohungsschutz für Ihre Hybrid Cloud-Workloads bereitgestellt. Wenn Sie mehr darüber erfahren möchten, wie Sie Security Center verwenden können, fahren Sie mit dem Schnellstart für das Einbinden von Windows-Computern fort, die lokal und in anderen Clouds installiert sind.
 
-* Informationen dazu, wie eine Sicherheitsrichtlinie für Ihr Azure-Abonnement konfiguriert wird, finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](security-center-policies.md).
-* Unter [Verwalten von Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md) erfahren Sie, wie die Empfehlungen in Security Center Ihnen beim Schutz Ihrer Azure-Ressourcen helfen.
-* Unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md) finden Sie Informationen zum Überprüfen und Verwalten Ihrer aktuellen Sicherheitswarnungen.
-- Unter [Partner- und Lösungsintegration](security-center-partner-integration.md) erfahren Sie mehr zur Integration mit Partnern zum Verbessern der allgemeinen Sicherheit.
-- Unter [Azure Security Center-Datensicherheit](security-center-data-security.md) erfahren Sie, wie Daten in Security Center verwaltet und geschützt werden.
-* Informieren Sie sich über die [Funktionen der erweiterten Bedrohungserkennung](security-center-detection-capabilities.md), die Teil des [Standard-Tarifs](security-center-pricing.md) von Security Center sind. Der Standard-Tarif wird für die ersten 60 Tage kostenlos angeboten.
-* Antworten auf Fragen zur Verwendung von Security Center finden Sie unter [Azure Security Center – Häufig gestellte Fragen](security-center-faq.md).
+> [!div class="nextstepaction"]
+> [Schnellstart: Einbinden von Windows-Computern in Azure Security Center](quick-onboard-windows-computer.md)
 
 <!--Image references-->
-[1]: ./media/security-center-get-started/azure-menu.png
-[2]: ./media/security-center-get-started/security-center-pin.png
-[5]: ./media/security-center-get-started/recommendations.png
-[6]: ./media/security-center-get-started/resources-health.png
-[7]: ./media/security-center-get-started/security-alert.png
-[8]: ./media/security-center-get-started/security-alert-detail.png
-[9]: ./media/security-center-get-started/partner-solutions.png
-[10]: ./media/security-center-get-started/welcome.png
-[11]: ./media/security-center-get-started/show-recommendations-for.png
-[12]: ./media/security-center-get-started/automatic-provisioning.png
-[13]: ./media/security-center-get-started/partner-solutions-detail.png
+[2]: ./media/security-center-get-started/overview.png
+[4]: ./media/security-center-get-started/onboarding.png
+[5]: ./media/security-center-get-started/pricing.png
+[6]: ./media/security-center-get-started/enable-automatic-provisioning.png
+[7]: ./media/security-center-get-started/security-alerts.png
+[8]: ./media/security-center-get-started/recommendations.png

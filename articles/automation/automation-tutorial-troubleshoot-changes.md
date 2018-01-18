@@ -6,14 +6,14 @@ keywords: "Änderung, Nachverfolgung, Automatisierung"
 author: jennyhunter-msft
 ms.author: jehunte
 ms.date: 12/14/2017
-ms.topic: hero-article
+ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ae9ac6baaaeca418fcd3478145c50d1fa7917d7e
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Problembehandlung für Änderungen in Ihrer Umgebung
 
@@ -158,7 +158,7 @@ Nachdem die Lösung für die Änderungsnachverfolgung und den Bestand aktiviert 
 
 Wählen Sie auf Ihrer VM unter **VORGÄNGE** die Option **Änderungsnachverfolgung**.
 
-![Erstellen einer Warnung im klassischen OMS-Portal](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
+![Screenshot mit der Liste der Änderungen an der VM](./media/automation-tutorial-troubleshoot-changes/change-tracking-list.png)
 
 Im Diagramm werden Änderungen angezeigt, die im Laufe der Zeit durchgeführt wurden.
 Nachdem Sie eine Aktivitätsprotokollverbindung hinzugefügt haben, werden oben im Liniendiagramm Azure-Aktivitätsprotokollereignisse angezeigt.

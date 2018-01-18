@@ -3,8 +3,8 @@ title: Arbeiten mit der verwalteten Clientbibliothek von Mobile App Service-Apps
 description: "Erfahren Sie, wie Sie einen .NET-Client für Mobile App Service-Apps von Azure mit Windows- und Xamarin-Apps verwenden."
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: conceptdev
+manager: crdun
 editor: 
 ms.assetid: 0280785c-e027-4e0d-aaf2-6f155e5a6197
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/04/2017
-ms.author: glenga
-ms.openlocfilehash: cbd2a53a7ba30915ed95cf6b0cb73b07a4f48a24
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.author: crdun
+ms.openlocfilehash: c80265432f4ee3120e3125b45712dc0e7a434708
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Verwenden des verwalteten Clients für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -36,7 +36,7 @@ Die .NET-Plattform unterstützt die folgenden Plattformen:
 * Xamarin Android-Releases für API 19 bis 24 (KitKat bis Nougat)
 * Xamarin iOS-Releases für iOS-Versionen 8.0 und höher
 * Universelle Windows-Plattform
-* Windows Phone 8,1
+* Windows Phone 8.1
 * Windows Phone 8.0 außer für Silverlight-Anwendungen
 
 Die Authentifizierung für den „Serverfluss“ verwendet eine Webansicht für die dargestellte Benutzeroberfläche.  Wenn das Gerät keine Benutzeroberfläche in Form einer Webansicht darstellen kann, sind andere Authentifizierungsmethoden erforderlich.  Dieses SDK eignet sich daher nicht für Geräte vom Typ „Überwachung“ oder für ähnlich eingeschränkte Geräte.
@@ -67,7 +67,7 @@ Informationen zum Erstellen von Tabellen in Ihrem Mobile Apps-Back-End finden Si
 Verwenden Sie eine der folgenden Methoden, um das SDK-Paket für verwaltete Clients für Mobile Apps von [NuGet][9]zu installieren:
 
 * **Visual Studio**: Klicken Sie mit der rechten Maustaste auf Ihr Projekt, klicken Sie auf **NuGet-Pakete verwalten**, suchen Sie nach dem `Microsoft.Azure.Mobile.Client`-Paket, und klicken Sie anschließend auf **Installieren**.
-* **Xamarin Studio**: Klicken Sie mit der rechten Maustaste auf Ihr Projekt, klicken Sie auf **Hinzufügen**>**NuGet-Pakete hinzufügen**, suchen Sie nach dem `Microsoft.Azure.Mobile.Client `-Paket, und klicken Sie anschließend auf **Paket hinzufügen**.
+* **Xamarin Studio**: Klicken Sie mit der rechten Maustaste auf Ihr Projekt, klicken Sie auf **Hinzufügen** > **NuGet-Pakete hinzufügen**, suchen Sie nach dem `Microsoft.Azure.Mobile.Client `-Paket, und klicken Sie dann auf **Paket hinzufügen**.
 
 Denken Sie daran, in der Datei Ihrer Hauptaktivität die folgende **using** -Anweisung hinzuzufügen:
 
@@ -244,7 +244,7 @@ In tatsächlichen Apps können Sie ähnliche Abfragen wie im vorherigen Beispiel
 > `[EnableQuery(MaxTop=1000)]`
 
 
-### <a name="selecting"></a>Gewusst wie: Auswählen bestimmter Spalten
+### <a name="selecting"></a>Auswählen bestimmter Spalten
 Sie können angeben, welche Eigenschaften im Ergebnis enthalten sein sollen, indem Sie eine [Select] -Klausel zu Ihrer Abfrage hinzufügen. Der folgende Code zeigt, wie Sie nur ein Feld auswählen oder auch mehrere Felder auswählen und formatieren können:
 
 ```
@@ -374,7 +374,7 @@ Zwei oder mehr Clients können gleichzeitig versuchen, das gleiche Element zu be
 
 Mobile Apps unterstützt die Steuerung für optimistische Parallelität, indem Änderungen an Elementen in der Spalte `version` mit den Systemeigenschaften nachverfolgt werden, die für jede Tabelle im Mobile App-Back-End definiert wird. Bei jeder Aktualisierung eines Datensatzes wird die `version` -Eigenschaft des entsprechenden Datensatzes von Mobile Apps auf einen neuen Wert festgelegt. Bei jeder Aktualisierungsanforderung wird die `version` -Eigenschaft des in der Anforderung enthaltenen Datensatzes mit der Eigenschaft des Datensatzes auf dem Server verglichen. Wenn die mit der Anforderung übergebene Version nicht mit dem Back-End übereinstimmt, löst die Clientbibliothek eine `MobileServicePreconditionFailedException<T>` -Ausnahme aus. Der in der Ausnahme enthaltene Typ ist der Datensatz des Back-Ends, der die Serverversion des entsprechenden Datensatzes enthält. Anschließend kann die Anwendung anhand dieser Informationen entscheiden, ob die Updateanforderung erneut mit dem korrekten `version` -Wert vom Back-End ausgeführt werden soll, um Commits für die Änderungen auszuführen.
 
-Definieren Sie eine Spalte in der Tabellenklasse für die `version` -Systemeigenschaft, um die optimistische Parallelität zu aktivieren. Beispiel:
+Definieren Sie eine Spalte in der Tabellenklasse für die `version` -Systemeigenschaft, um die optimistische Parallelität zu aktivieren. Beispiel: 
 
 ```
 public class TodoItem
@@ -428,7 +428,7 @@ private async void UpdateToDoItem(TodoItem item)
 
 private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 {
-    //Ask user to choose the resoltion between versions
+    //Ask user to choose the resolution between versions
     MessageDialog msgDialog = new MessageDialog(
         String.Format("Server Text: \"{0}\" \nLocal Text: \"{1}\"\n",
         serverItem.Text, localItem.Text),
@@ -612,7 +612,7 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 Diese Form ist ein typisierter Methodenaufruf, der erfordert, dass der **MarkAllResult**-Rückgabetyp definiert ist. Typisierte und nicht typisierte Methoden werden unterstützt.
 
 Die InvokeApiAsync()-Methode stellt „/api/“ der API voran, die Sie aufrufen möchten, sofern diese API nicht mit einem Schrägstrich „/“ beginnt.
-Beispiel:
+Beispiel: 
 
 * `InvokeApiAsync("completeAll",...)` ruft /api/completeAll auf dem Back-End auf.
 * `InvokeApiAsync("/.auth/me",...)` ruft /.auth/me auf dem Back-End auf.
@@ -620,14 +620,14 @@ Beispiel:
 Sie können mit InvokeApiAsync jede WebAPI aufrufen, einschließlich WebAPIs, die nicht in Azure Mobile Apps definiert sind.  Bei Verwendung von InvokeApiAsync() werden die entsprechenden Header, einschließlich der Authentifizierungsheader, mit der Anforderung gesendet.
 
 ## <a name="authentication"></a>Authentifizieren von Benutzern
-Mobile Apps unterstützt die Authentifizierung und Autorisierung von App-Benutzern mit verschiedenen externen Identitätsanbietern: Facebook, Google, Microsoft Account, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Authentifizierung zu Ihrer App hinzufügen].
+Mobile Apps unterstützt die Authentifizierung und Autorisierung von App-Benutzern mit verschiedenen externen Identitätsanbietern: Facebook, Google, Microsoft Account, Twitter und Azure Active Directory. Sie können Berechtigungen für Tabellen vergeben, um den Zugriff auf bestimmte Operationen auf authentifizierte Benutzer zu beschränken. Außerdem können Sie die Identität authentifizierter Benutzer verwenden, um Autorisierungsregeln in Serverskripts zu implementieren. Weitere Informationen finden Sie im Lernprogramm [Hinzufügen von Authentifizierung zu Ihrer App].
 
 Zwei Authentifizierungsflüsse werden unterstützt: *vom Client verwalteter* und *vom Server verwalteter* Fluss. Der vom Server verwaltete Fluss bietet die einfachste Authentifizierungsform, da in diesem Fall die Authentifizierungs-Webschnittstelle des Anbieters verwendet wird. Der vom Client verwaltete Fluss ermöglicht eine tiefere Integration mit gerätespezifischen Fähigkeiten, da in diesem Fall anbieterspezifische und gerätespezifische SDKs verwendet werden.
 
 > [!NOTE]
 > In Ihren Produktions-Apps sollten Sie einen vom Client verwalteten Fluss nutzen.
 
-Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Authentifizierung zu Ihrer App hinzufügen].
+Zum Einrichten der Authentifizierung müssen Sie Ihre App bei mindestens einem Identitätsanbieter registrieren.  Der Identitätsanbieter generiert eine Client-ID und einen geheimen Clientschlüssel für Ihre App.  Diese Werte werden in Ihrem Back-End festgelegt, um die Authentifizierung/Autorisierung über Azure App Service zu aktivieren.  Weitere Informationen finden Sie in den detaillierten Anweisungen im Tutorial [Hinzufügen von Authentifizierung zu Ihrer App].
 
 In diesem Abschnitt werden die folgenden Themen behandelt:
 
@@ -1092,7 +1092,7 @@ public class MyHandler : DelegatingHandler
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
-[Authentifizierung zu Ihrer App hinzufügen]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Hinzufügen von Authentifizierung zu Ihrer App]: app-service-mobile-windows-store-dotnet-get-started-users.md
 [Synchronisieren von Offlinedaten in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
 [Hinzufügen von Pushbenachrichtigungen zu Ihrer App]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Registrieren Ihrer App für die Verwendung einer Microsoft-Kontoanmeldung]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md

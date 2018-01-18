@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/21/2017
 ms.author: steveesp
-ms.openlocfilehash: 8afb0075eba0093aba8841db1731fb64afb7f6a5
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 490db57e9f36bed5575b7af5a6e2673fb63af3a8
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Testen der Bandbreite / des Durchsatzes (NTTTCP)
 
@@ -161,4 +161,5 @@ ntttcp -s -m <2 x nr cores>,*,<Linux  server IP> -ns -t 300
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer](virtual-network-optimize-network-bandwidth.md) hilft Ihnen womöglich bei Ihrem Szenario, abhängig von den Ergebnissen.
+* Erfahren Sie mehr über die [Zuweisung von Bandbreite zu virtuellen Computern] (virtual-machine-network-throughput.md)
 * Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen (FAQs)](virtual-networks-faq.md).

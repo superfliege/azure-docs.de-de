@@ -1,5 +1,5 @@
 ---
-title: "Grundlegendes über die detaillierte Nutzung in Azure | Microsoft-Dokumentation"
+title: "Grundlegendes über die detaillierte Nutzung in Azure"
 description: "Erfahren Sie, wie Sie die Abschnitte Ihrer CSV-Datei mit ausführlichen Nutzungsdaten Ihres Azure-Abonnements anzeigen und verstehen."
 services: 
 documentationcenter: 
@@ -14,13 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/31/2017
 ms.author: tonguyen
-ms.openlocfilehash: a99e0dfea16f9fe9776d24fc94eac9ee18c7b2b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 999f24b5a5c1bd5d259b785f9107697d2928b4eb
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Grundlegendes über Benennungen zu den Gebühren in der Datei mit ausführlichen Nutzungsdaten zu Microsoft Azure 
+
 Die CSV-Datei mit ausführlichen Informationen zu Nutzungsgebühren enthält Gebühren für die tägliche Nutzung und die Nutzung auf der Ebene von Verbrauchseinheiten für den aktuellen Abrechnungszeitraum. 
 
 Informationen zum Abrufen der Datei mit ausführlichen Nutzungsdaten finden Sie unter [Vorgehensweise zum Abrufen von Azure-Rechnungen und Daten zur täglichen Nutzung](billing-download-azure-invoice-daily-usage-date.md).
@@ -28,18 +29,17 @@ Sie ist als Datei mit kommagetrennten Werten (CSV) verfügbar, die Sie in einem 
 
 Nutzungsgebühren sind die **monatlichen** Gesamtgebühren für ein Abonnement. Die Nutzungsgebühren berücksichtigen keine Guthaben oder Rabatte.
 
-
-<div style="padding-top: 56.25%; position: relative; width: 100%;">
-<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/p13S350M2Vk" frameborder="0" allowfullscreen></iframe>
-</div>
+>[!VIDEO https://www.youtube.com/embed/p13S350M2Vk]
 
 ## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>Detaillierte Erläuterungen zu Benennungen und Beschreibungen der Datei mit ausführlichen Nutzungsdaten
+
 In den folgenden Abschnitten werden die in Version 2 der Datei mit den detaillierten Informationen zur Nutzung verwendeten Benennungen beschrieben.
 
 ### <a name="statement"></a>Anweisung
+
 Im obersten Abschnitt der CSV-Datei mit ausführlichen Nutzungsdaten werden die während des Abrechnungszeitraums des Monats verwendeten Dienste angezeigt. Die folgende Tabelle enthält die in diesem Abschnitt aufgeführten Begriffe und Beschreibungen.
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 |Billing Period |Der Abrechnungszeitraum, in dem die Verbrauchseinheiten verwendet wurden |
 |Meter Category |Gibt den Dienst der obersten Ebene für die Nutzung an |
@@ -47,7 +47,7 @@ Im obersten Abschnitt der CSV-Datei mit ausführlichen Nutzungsdaten werden die 
 |Meter Name |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
 |Meter Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden |
 |SKU |Gibt den eindeutigen Systembezeichner für jede Azure-Verbrauchseinheit an |
-|Einheit |Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
+|Unit |Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
 |Consumed Quantity |Die Menge der Verbrauchseinheit, die während des Abrechnungszeitraums genutzt wurde |
 |Included Quantity |Die Menge der Verbrauchseinheit, die kostenlos in Ihrem Abrechnungszeitraum inbegriffen ist |
 |Overage Quantity |Zeigt den Unterschied zwischen der verbrauchten und der enthaltenen Menge an. Dieser Betrag wird Ihnen in Rechnung gestellt. Bei Angeboten mit nutzungsbasierter Bezahlung ohne eine im Angebot enthaltene Menge entspricht der Wert hier dem Wert unter „Verbrauchte Menge“. |
@@ -62,7 +62,7 @@ Im obersten Abschnitt der CSV-Datei mit ausführlichen Nutzungsdaten werden die 
 
 Im Abschnitt „Tägliche Nutzung“ der CSV-Datei werden Nutzungsdetails angezeigt, die sich auf die Fakturierungshäufigkeiten auswirken. Die folgende Tabelle enthält die in diesem Abschnitt aufgeführten Begriffe und Beschreibungen.
 
-| Begriff | Beschreibung |
+| Begriff | BESCHREIBUNG |
 | --- | --- |
 |Usage Date |Das Datum, an dem die Verbrauchseinheit genutzt wurde |
 |Meter Category |Gibt den Dienst der obersten Ebene an, zu dem dieser Verbrauch gehört |
@@ -70,7 +70,7 @@ Im Abschnitt „Tägliche Nutzung“ der CSV-Datei werden Nutzungsdetails angeze
 |Meter Sub-Category |Definiert den Typ des Azure-Diensts und kann sich auf den Tarif auswirken |
 |Meter Name |Gibt die Maßeinheit für die genutzte Verbrauchseinheit an |
 |Meter Region |Gibt den Standort des Rechenzentrums für bestimmte Dienste an, die basierend auf dem Standort des Rechenzentrums berechnet werden |
-|Einheit |Gibt die Einheit an, in der die Verbrauchseinheit in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
+|Unit |Gibt die Einheit an, in der die Verbrauchseinheit in Rechnung gestellt wird. Beispiele sind GB, Stunden oder 10.000 s. |
 |Consumed Quantity |Die Menge der Verbrauchseinheit, die an diesem Tag verbraucht wurde |
 |Resource Location |Gibt das Rechenzentrum an, in dem die Verbrauchseinheit ausgeführt wird |
 |Consumed Service |Der verwendete Azure-Plattformdienst |

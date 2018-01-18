@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: bryanla
-ms.openlocfilehash: 5e771026950652c7d9c8e817773915a5a4c4ab63
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c9e3ce4bbe33d06af64d97e1455ec20902d0ff4
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in"></a>Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für die Anmeldung 
 
-[!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)] Dieser Artikel enthält PowerShell- und CLI-Skriptbeispiele für die Anmeldung mit einem MSI-Dienstprinzipal sowie eine Anleitung zu wichtigen Themen, z.B. zur Fehlerbehandlung.
+[!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]  
+Dieser Artikel enthält PowerShell- und CLI-Skriptbeispiele für die Anmeldung mit einem MSI-Dienstprinzipal sowie eine Anleitung zu wichtigen Themen, z.B. zur Fehlerbehandlung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

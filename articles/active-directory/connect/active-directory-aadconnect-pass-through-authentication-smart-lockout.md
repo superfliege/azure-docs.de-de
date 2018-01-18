@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 01/09/2018
 ms.author: billmath
-ms.openlocfilehash: abd9b8559cb70be6d03b85cfe19a6b37b7069985
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory-Passthrough-Authentifizierung: Smart Lockout
 
@@ -36,7 +36,7 @@ Smart Lockout unterscheidet auch zwischen Anmeldeversuchen echter Benutzer und A
 Passthrough-Authentifizierung leitet Kennwortvalidierungsanforderungen an Ihr lokales Active Directory (AD) weiter. Daher müssen Sie Angreifer daran hindern, die Active Directory-Konten Ihrer Benutzer sperren zu können. Active Directory hat eigene Kontosperrungsrichtlinien, insbesondere die Richtlinien [Kontensperrungsschwelle](https://technet.microsoft.com/library/hh994574(v=ws.11).aspx) und [Zurücksetzungsdauer des Kontosperrungszählers](https://technet.microsoft.com/library/hh994568(v=ws.11).aspx). Konfigurieren Sie den Azure AD-Sperrschwellenwert und die Azure AD-Sperrdauer entsprechend, um Angriffe in der Cloud herausfiltern, bevor sie das lokale Active Directory erreichen.
 
 >[!NOTE]
->Die Smart Lookout-Funktion ist kostenlos und ist standardmäßig für alle Kunden _aktiviert_. Wenn Sie aber den Azure AD-Sperrschwellenwert und die Azure AD-Sperrdauer mit der Graph-API ändern möchten, muss Ihr Mandant mindestens eine Azure AD Premium P2-Lizenz haben. Sie benötigen nicht _pro Benutzer_ eine Azure AD Premium P2-Lizenz zum Verwenden der intelligenten Sperrfunktion mit Pass-Through-Authentifizierung.
+>>Die Smart Lookout-Funktion ist kostenlos und ist standardmäßig für alle Kunden _aktiviert_. Zum Modifizieren der Werte der Kontensperrungsschwelle und der Sperrungsdauer von Azure AD mit der Graph-API muss Ihr Mandant für Azure AD Premium P2 aktiviert sein. 
 
 Um sicherzustellen, dass die lokalen Active Directory-Konten Ihrer Benutzer gut geschützt sind, müssen Sie folgende Voraussetzungen gewährleisten:
 

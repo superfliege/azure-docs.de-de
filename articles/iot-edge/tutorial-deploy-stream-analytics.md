@@ -9,11 +9,11 @@ ms.author: v-masebo
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5c9231f400b00f455f30692c58f007bd63d3cc76
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f40fb81fc03e796b906db12bf3bf6904b27b46eb
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-azure-stream-analytics-as-an-iot-edge-module---preview"></a>Bereitstellen von Azure Stream Analytics als IoT Edge-Modul – Vorschau
 
@@ -51,7 +51,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 In diesem Abschnitt erstellen Sie einen Azure Stream Analytics-Auftrag, um Daten aus Ihrem IoT Hub abzurufen, die gesendeten Telemetriedaten bei Ihrem Gerät abzufragen und die Ergebnisse an einen Azure Blob Storage-Container weiterzuleiten. Weitere Informationen finden Sie im Abschnitt „Übersicht“ der [Stream Analytics-Dokumentation][azure-stream]. 
 
-### <a name="create-a-storage-account"></a>Erstellen Sie ein Speicherkonto.
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
 Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als Ausgabe in Ihrem Azure Stream Analytics-Auftrag verwendet wird. Das Beispiel in diesem Abschnitt verwendet den Speichertyp „Blob“. Weitere Informationen finden Sie im Abschnitt „Blobs“ in der [Azure Storage-Dokumentation][azure-storage].
 
@@ -59,7 +59,7 @@ Ein Azure Storage-Konto ist erforderlich, um einen Endpunkt anzugeben, der als A
 
 2. Geben Sie im Bereich **Speicherkonto erstellen** einen Namen für Ihr Speicherkonto ein, wählen Sie den gleichen Speicherort aus, in dem Ihr IoT Hub gespeichert ist, und wählen Sie dann **Erstellen** aus. Notieren Sie sich den Namen für die spätere Verwendung.
 
-    ![Erstellen Sie ein Speicherkonto.][1]
+    ![Speicherkonto erstellen][1]
 
 3. Wechseln Sie zu dem Speicherkonto, das Sie soeben erstellt haben, und wählen Sie **Blobs durchsuchen** aus. 
 
@@ -153,7 +153,7 @@ Sie können den Azure Stream Analytics-Auftrag jetzt auf Ihrem IoT Edge-Gerät b
 
     ![Modul festlegen][6]
 
-6. Kopieren Sie den Namen, der automatisch für Ihr Azure Stream Analytics-Modul generiert wurde. 
+6. Kopieren Sie den Namen Ihres Azure Stream Analytics-Moduls. 
 
     ![Temperaturmodul][11]
 

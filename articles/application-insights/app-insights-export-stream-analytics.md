@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 10/18/2016
+ms.date: 01/04/2018
 ms.author: mbullwin
-ms.openlocfilehash: 978af1a57a5fc3d9c95d517288a074c636874984
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ddaf7bf12854aa5f80c1d292613c3049850ca3ff
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Verwenden von Stream Analytics zum Verarbeiten von Daten, die aus Application Insights exportiert wurden
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) ist das ideale Tool für die Verarbeitung von Daten, die [aus Application Insights exportiert wurden](app-insights-export-telemetry.md). Stream Analytics kann Daten aus einer Vielzahl von Quellen abrufen. Das Tool kann die Daten transformieren und filtern und anschließend an eine Vielzahl von Senken weiterleiten.
@@ -76,27 +76,27 @@ Durch fortlaufende Exportaktivitäten werden Daten an ein Azure-Speicherkonto ü
 Die Ereignisse werden in Blobdateien im JSON-Format geschrieben. Jede Datei kann ein oder mehrere Ereignisse enthalten. Daher möchten wir die Ereignisdaten lesen und die gewünschten Felder herausfiltern. Es gibt viele verschiedene Möglichkeiten zur Nutzung der Daten, aber unser Plan besteht darin, die Daten mit Stream Analytics per Pipe an Power BI weiterzureichen.
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Erstellen einer Azure Stream Analytics-Instanz
-Wählen Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/)den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrags:
+Wählen Sie im [Azure-Portal](https://portal.azure.com/) den Azure Stream Analytics-Dienst aus, und erstellen Sie einen neuen Stream Analytics-Auftrag:
 
-![](./media/app-insights-export-stream-analytics/090.png)
+![](./media/app-insights-export-stream-analytics/SA001.png)
 
-![](./media/app-insights-export-stream-analytics/100.png)
+![](./media/app-insights-export-stream-analytics/SA002.png)
 
-Wenn der neue Auftrag erstellt ist, erweitern Sie die Details:
+Wählen Sie nach dem Erstellen des neuen Auftrags die Option **Zu Ressource wechseln** aus.
 
-![](./media/app-insights-export-stream-analytics/110.png)
+![](./media/app-insights-export-stream-analytics/SA003.png)
 
-### <a name="set-blob-location"></a>Festlegen des Blobspeicherorts
+### <a name="add-a-new-input"></a>Hinzufügen einer neuen Eingabe
+
+![](./media/app-insights-export-stream-analytics/SA004.png)
+
 Legen Sie den Auftrag so fest, dass er Eingaben vom Blob für den fortlaufenden Export erhält:
 
-![](./media/app-insights-export-stream-analytics/120.png)
+![](./media/app-insights-export-stream-analytics/SA005.png)
 
 Jetzt benötigen Sie den primären Zugriffsschlüssel aus Ihrem Speicherkonto, den Sie zuvor notiert haben. Legen Sie diesen als Speicherkontoschlüssel fest.
 
-![](./media/app-insights-export-stream-analytics/130.png)
-
 ### <a name="set-path-prefix-pattern"></a>Festlegen des Präfixmusters des Pfads
-![](./media/app-insights-export-stream-analytics/140.png)
 
 **Achten Sie darauf, dass das Datum das Format „JJJJ-MM-TT“ (mit Bindestrichen) aufweist.**
 
@@ -114,33 +114,19 @@ In diesem Beispiel:
 > [!NOTE]
 > Überprüfen Sie den Speicher, um sicherzustellen, dass der Pfad stimmt.
 > 
-> 
 
-### <a name="finish-initial-setup"></a>Fertig stellen des ersten Setups
-Bestätigen Sie das Serialisierungsformat:
+## <a name="add-new-output"></a>Hinzufügen einer neuen Ausgabe
+Wählen Sie Ihren Auftrag und dann **Ausgaben**  >  **Hinzufügen** aus.
 
-![Bestätigen Sie den Vorgang, und schließen Sie den Assistenten.](./media/app-insights-export-stream-analytics/150.png)
+![](./media/app-insights-export-stream-analytics/SA006.png)
 
-Schließen Sie den Assistenten, und warten Sie, bis das Setup abgeschlossen ist.
 
-> [!TIP]
-> Verwenden Sie den Beispielbefehl, um einige Daten herunterzuladen. Behalten Sie ihn als Testbeispiel, um Ihre Abfrage zu debuggen.
-> 
-> 
-
-## <a name="set-the-output"></a>Festlegen der Ausgabe
-Nun wählen Sie Ihren Auftrag aus und legen die Ausgabe fest.
-
-![Wählen Sie den neuen Kanal aus, klicken Sie auf „Ausgaben“ > „Hinzufügen“ > „Power BI“.](./media/app-insights-export-stream-analytics/160.png)
+![Wählen Sie den neuen Kanal aus, klicken Sie auf „Ausgaben“ > „Hinzufügen“ > „Power BI“.](./media/app-insights-export-stream-analytics/SA010.png)
 
 Geben Sie Ihr **Geschäfts- oder Schulkonto** an, um Stream Analytics für den Zugriff auf Ihre Power BI-Ressource zu autorisieren. Geben Sie anschließend Namen für die Ausgabe sowie für den Power BI-Zieldatensatz und die Zieltabelle an.
 
-![Erfinden Sie drei Namen.](./media/app-insights-export-stream-analytics/170.png)
-
 ## <a name="set-the-query"></a>Festlegen der Abfrage
 Die Abfrage bestimmt die Übersetzung von der Eingabe zur Ausgabe.
-
-![Wählen Sie den Auftrag aus, und klicken Sie auf „Abfrage“. Fügen Sie das folgenden Beispiel ein.](./media/app-insights-export-stream-analytics/180.png)
 
 Überprüfen Sie mithilfe der Testfunktion, ob Sie die richtige Ausgabe erhalten. Geben Sie die Beispieldaten an, die Sie der Eingabeseite entnommen haben. 
 
@@ -162,7 +148,7 @@ Fügen Sie diese Abfrage ein:
 
 * export-input ist der Alias, den wir der Datenstromeingabe gegeben haben.
 * „pbi-outout“ ist der definierte Ausgabealias.
-* Wir verwenden [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx) , da sich der Ereignisname in einem geschachtelten JSON-Arrray befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx) -Klausel gruppiert die Elemente in Zeiträume von einer Minute.
+* Wir verwenden [OUTER APPLY GetElements](https://msdn.microsoft.com/library/azure/dn706229.aspx), weil sich der Ereignisname in einem geschachtelten JSON-Array befindet. Die SELECT-Anweisung wählt dann den Ereignisnamen zusammen mit der Anzahl der Instanzen mit diesem Namen im angegebenen Zeitraum aus. Die [Group By](https://msdn.microsoft.com/library/azure/dn835023.aspx)-Klausel gruppiert die Elemente in Zeiträume von einer Minute.
 
 ### <a name="query-to-display-metric-values"></a>Abfrage zum Anzeigen metrischer Werte
 ```SQL
@@ -206,7 +192,7 @@ Fügen Sie diese Abfrage ein:
 ## <a name="run-the-job"></a>Ausführen des Auftrags
 Sie können ein Datum in der Vergangenheit auswählen, ab dem der Auftrag ausgeführt werden soll. 
 
-![Wählen Sie den Auftrag aus, und klicken Sie auf „Abfrage“. Fügen Sie das folgenden Beispiel ein.](./media/app-insights-export-stream-analytics/190.png)
+![Wählen Sie den Auftrag aus, und klicken Sie auf „Abfrage“. Fügen Sie das folgenden Beispiel ein.](./media/app-insights-export-stream-analytics/SA008.png)
 
 Warten Sie, bis der Auftrag ausgeführt wird.
 

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: dbb88e033d5be73b7b069d69c095d8df2c1faf1b
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 12/04/2017
+ms.openlocfilehash: 6dbed1a834d74047178a9f996683d65520047e66
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Einschränkungen in Azure-Datenbank für PostgreSQL
 Der Azure-Datenbank für PostgreSQL-Dienst ist in der öffentlichen Vorschau verfügbar. In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen im Datenbankdienst beschrieben.
@@ -27,12 +27,12 @@ In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Compute-Einheite
 | | |
 | :------------------------- | :---------------- |
 | **Max. Anzahl von Verbindungen**        |                   |
-| 50 Compute-Einheiten (Basic)     | 50 Verbindungen    |
-| 100 Compute-Einheiten (Basic)    | 100 Verbindungen   |
-| 100 Compute-Einheiten (Standard) | 200 Verbindungen   |
-| 200 Compute-Einheiten (Standard) | 300 Verbindungen   |
-| 400 Compute-Einheiten (Standard) | 400 Verbindungen   |
-| 800 Compute-Einheiten (Standard) | 500 Verbindungen   |
+| 50 Compute-Einheiten (Basic)     | 55 Verbindungen    |
+| 100 Compute-Einheiten (Basic)    | 105 Verbindungen   |
+| 100 Compute-Einheiten (Standard) | 150 Verbindungen   |
+| 200 Compute-Einheiten (Standard) | 250 Verbindungen   |
+| 400 Compute-Einheiten (Standard) | 480 Verbindungen   |
+| 800 Compute-Einheiten (Standard) | 950 Verbindungen   |
 | **Max. Anzahl von Compute-Einheiten**      |                   |
 | Basic-Dienstebene         | 100 Compute-Einheiten |
 | Standard-Dienstebene      | 800 Compute-Einheiten |
@@ -40,8 +40,9 @@ In jedem Diensttarif ist eine maximale Anzahl von Verbindungen, Compute-Einheite
 | Basic-Dienstebene         | 1 TB              |
 | Standard-Dienstebene      | 1 TB              |
 
-Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgende Fehlermeldung angezeigt:
+Das Azure-System benötigt fünf Verbindungen, um den Azure Database for PostgreSQL-Server zu überwachen. Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgende Fehlermeldung angezeigt:
 > SCHWERWIEGEND: Es sind bereits zu viele Clients vorhanden.
+
 
 ## <a name="preview-functional-limitations"></a>Funktionale Beschränkungen der Vorschau
 ### <a name="scale-operations"></a>Skalierungsvorgänge
@@ -50,7 +51,7 @@ Wenn die max. Anzahl von Verbindungen erreicht wird, wird möglicherweise folgen
 3.  Die Verringerung der Größe des Serverspeichers wird nicht unterstützt.
 
 ### <a name="server-version-upgrades"></a>Upgrades von Serverversionen
-- Die automatisierte Migration zwischen Hauptversionen von Datenbankmodulen wird derzeit nicht unterstützt.
+- Die automatisierte Migration zwischen Hauptversionen von Datenbank-Engines wird derzeit nicht unterstützt.
 
 ### <a name="subscription-management"></a>Abonnementverwaltung
 - Die dynamische Verschiebung von vorab erstellten Servern zwischen Abonnement- und Ressourcengruppen wird derzeit nicht unterstützt.

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 2ab14183a0ca4ade7873dbdece407937a746b663
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 1619b3c67fb68f05c4af999a38794e4a52c22264
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="addremove-an-azure-file-sync-preview-server-endpoint"></a>Hinzufügen/Entfernen eines Serverendpunkts für Azure File Sync (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -32,7 +32,7 @@ Zum Erstellen eines Serverendpunkts müssen Sie zunächst sicherstellen, dass di
 - Auf dem Server ist der Azure-Dateisynchronisierungs-Agent installiert und registriert. Anweisungen zum Installieren des Azure-Dateisynchronisierungs-Agents finden Sie im Artikel [Registrieren/Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-server-registration.md). 
 - Stellen Sie sicher, dass der Speichersynchronisierungsdienst bereitgestellt wurde. Informationen zum Bereitstellen eines Speichersynchronisierungsdiensts finden Sie unter [Bereitstellen der Azure-Dateisynchronisierung (Vorschau)](storage-sync-files-deployment-guide.md). 
 - Stellen Sie sicher, dass eine Synchronisierungsgruppe bereitgestellt wurde. Erfahren Sie, wie Sie eine [Synchronisierungsgruppe erstellen](storage-sync-files-deployment-guide.md#create-a-sync-group).
-- Stellen Sie sicher, dass der Server mit dem Internet verbunden ist und dass der Zugriff auf Azure möglich ist.
+- Stellen Sie sicher, dass der Server mit dem Internet verbunden ist und dass der Zugriff auf Azure möglich ist. Wir verwenden Port 443 für die gesamte Kommunikation zwischen dem Server und unserem Dienst.
 
 ## <a name="add-a-server-endpoint"></a>Hinzufügen eines Serverendpunkts
 Um einen Serverendpunkt hinzuzufügen, navigieren Sie zu der gewünschten Synchronisierungsgruppe, und wählen Sie „Serverendpunkt hinzufügen“ aus.

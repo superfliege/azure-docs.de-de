@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: raynew
-ms.openlocfilehash: 2b274244cc7b7fd0fc3eee22a57a51db77370370
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: b8075f0e1149a6fc5194347fc34e2a16d5eb2ffc
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="assessment-calculations"></a>Bewertungsberechnungen
 
@@ -31,7 +31,7 @@ Computer, die Sie zu Azure migrieren möchten, müssen Azure-Anforderungen und E
 --- | ---
 **Starttyp** | Der Starttyp des Gastbetriebssystems muss BIOS und nicht UEFI sein.
 **Kerne** | Die Anzahl der Kerne in den Computer darf maximal der Anzahl der für einen virtuellen Azure-Computer unterstützten Kerne (32) entsprechen.<br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate die genutzten Kerne beim Vergleich. Wenn in den Bewertungseinstellungen ein Komfortfaktor festgelegt ist, wird die Anzahl der genutzten Kerne mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Leistungsverlauf vorhanden ist, verwendet Azure Migrate die zugeordneten Kerne ohne Anwendung des Komfortfaktors.
-**Arbeitsspeicher** | Die Größe des Computerarbeitsspeichers darf maximal dem zulässigen Arbeitsspeicher (448 GB) für einen virtuellen Azure-Computer entsprechen. <br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten Arbeitsspeicher beim Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> 
+**Memory** | Die Größe des Computerarbeitsspeichers darf maximal dem zulässigen Arbeitsspeicher (448 GB) für einen virtuellen Azure-Computer entsprechen. <br/><br/> Wenn der Leistungsverlauf verfügbar ist, berücksichtigt Azure Migrate den genutzten Arbeitsspeicher beim Vergleich. Wenn ein Komfortfaktor festgelegt ist, wird der genutzte Arbeitsspeicher mit dem Komfortfaktor multipliziert.<br/><br/> Wenn kein Verlauf vorhanden ist, wird der zugeordnete Arbeitsspeicher ohne Anwendung des Komfortfaktors verwendet.<br/><br/> 
 **Windows Server 2003–2008 R2** | 32-Bit und 64-Bit-Unterstützung.<br/><br/> Azure bietet nur bestmögliche Unterstützung.
 **Windows Server 2008 R2 mit allen SPs** | 64-Bit-Unterstützung.<br/><br/> Azure bietet vollständige Unterstützung.
 **Windows Server 2012 und alle SPs** | 64-Bit-Unterstützung.<br/><br/> Azure bietet vollständige Unterstützung.
@@ -47,10 +47,11 @@ Computer, die Sie zu Azure migrieren möchten, müssen Azure-Anforderungen und E
 
 Nachdem ein Computer als geeignet für Azure markiert wurde, wird er von Azure Migrate anhand der folgenden Kriterien einer VM-Größe in Azure zugeordnet:
 
-- **Speicherüberprüfung**: Azure Migrate versucht, jeden an den Computer angefügten Datenträger einem Datenträger in Azure zuzuordnen: – Azure Migrate multipliziert die E/A-Vorgänge pro Sekunde (IOPS) mit dem Komfortfaktor. Außerdem wird der Durchsatz (in Mbit/s) der einzelnen Datenträger mit dem Komfortfaktor multipliziert. So wird für einen effektiven Datenträger-IOPS und -Durchsatz gesorgt. Auf dieser Grundlage ordnet Azure Migrate den Datenträger einem Standard- oder Premium-Datenträger in Azure zu.
-    - Wenn der Dienst keinen Datenträger mit dem erforderlichen IOPS und Durchsatz finden kann, wird der Computer als ungeeignet für Azure gekennzeichnet.
-    - Wenn mehrere geeignete Datenträger gefunden werden, wählt Azure Migrate diejenigen aus, die die Speicherredundanzmethode sowie den in den Bewertungseinstellungen festgelegten Speicherort unterstützen.
-    - Falls mehrere geeignete Datenträger vorhanden sind, werden die mit den geringsten Kosten ausgewählt.
+- **Speicherüberprüfung**: Azure Migrate versucht, jeden an den Computer angefügten Datenträger einem Datenträger in Azure zuzuordnen:
+    - Azure Migrate multipliziert die E/A-Vorgänge pro Sekunde (IOPS) mit dem Komfortfaktor. Außerdem wird der Durchsatz (in Mbit/s) der einzelnen Datenträger mit dem Komfortfaktor multipliziert. So wird für einen effektiven Datenträger-IOPS und -Durchsatz gesorgt. Auf dieser Grundlage ordnet Azure Migrate den Datenträger einem Standard- oder Premium-Datenträger in Azure zu.
+      - Wenn der Dienst keinen Datenträger mit dem erforderlichen IOPS und Durchsatz finden kann, wird der Computer als ungeeignet für Azure gekennzeichnet.
+      - Wenn mehrere geeignete Datenträger gefunden werden, wählt Azure Migrate diejenigen aus, die die Speicherredundanzmethode sowie den in den Bewertungseinstellungen festgelegten Speicherort unterstützen.
+      - Falls mehrere geeignete Datenträger vorhanden sind, werden die mit den geringsten Kosten ausgewählt.
 - **Durchsatz des Speicherdatenträgers**: [Erfahren Sie mehr](../azure-subscription-service-limits.md#storage-limits) über Azure-Grenzwerte pro Datenträger und virtuellen Computer.
 - **Datenträgertyp**: Azure Migrate unterstützt nur verwaltete Datenträger.
 - **Netzwerküberprüfung**: Azure Migrate versucht, einen virtuellen Azure-Computer zu finden, der die Anzahl von NICs auf dem lokalen Computer unterstützen kann.

@@ -1,5 +1,5 @@
 ---
-title: "Die Elemente der Einladungs-E-Mail für die Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation"
+title: "Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory | Microsoft-Dokumentation"
 description: "Vorlage für die Einladungs-E-Mail von Azure Active Directory B2B-Zusammenarbeit"
 services: active-directory
 documentationcenter: 
@@ -7,21 +7,19 @@ author: sasubram
 manager: mtillman
 editor: 
 tags: 
-ms.assetid: 
+ms.custom: seohack1
 ms.service: active-directory
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: ae8f96caaaeb9f3dad9f9f122b56fe264a5d7aec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7b82565a337f331b8b0eda723ccd58c3beaebdd9
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
-# <a name="the-elements-of-the-b2b-collaboration-invitation-email"></a>Die Elemente der Einladungs-E-Mail von B2B-Zusammenarbeit
+# <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory
 
 Einladungs-E-Mails sind eine wichtige Komponente zum Onboarding von Partnern als Benutzer von B2B-Zusammenarbeit in Azure AD. Sie können diese verwenden, um die Vertrauenswürdigkeit des Empfängers zu erhöhen. Sie können der E-Mail Rechtmäßigkeit und Glaubwürdigkeit verleihen, um sicherzustellen, dass der Empfänger ohne Bedenken die Schaltfläche **Loslegen** auswählt und die Einladung annimmt. Diese Vertrauensstellung ist eine der wichtigsten Voraussetzungen dafür, Konflikte bei der Freigabe zu reduzieren. Außerdem können Sie die E-Mail damit auch viel ansprechender machen.
 
@@ -30,7 +28,7 @@ Einladungs-E-Mails sind eine wichtige Komponente zum Onboarding von Partnern als
 ## <a name="explaining-the-email"></a>Erläuterungen zur E-Mail
 Sehen wir uns einige Elemente der E-Mail an, damit Sie diese Funktionen optimal nutzen können.
 
-### <a name="subject"></a>Subject (Antragsteller)
+### <a name="subject"></a>Antragsteller
 Der Betreff der E-Mail folgt dem folgenden Muster: Sie werden zur Organisation &lt;Mandantenname&gt; eingeladen
 
 ### <a name="from-address"></a>Absenderadresse
@@ -55,7 +53,7 @@ Wenn Sie noch kein Profilbild eingerichtet haben, wird anstelle des Bilds ein Sy
 
   ![Anzeigen der Initialen des einladenden Benutzers](media/active-directory-b2b-invitation-email/inviters-initials.png)
 
-### <a name="body"></a>body
+### <a name="body"></a>Body
 Der Text enthält die Nachricht, die der einladende Benutzer erstellt hat bzw. die über die Einladungs-API übergeben wurde. Dies ist ein Textbereich, der aus Sicherheitsgründen keine HTML-Tags verarbeitet.
 
 ### <a name="footer-section"></a>Fußzeilenabschnitt
@@ -79,7 +77,7 @@ Weitere Artikel zur Azure AD B2B-Zusammenarbeit:
 * [Wie fügen Azure Active Directory-Administratoren B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-admin-add-users.md)
 * [Wie fügen Information-Worker B2B-Zusammenarbeitsbenutzer hinzu?](active-directory-b2b-iw-add-users.md)
 * [B2B-Zusammenarbeit: Einlösen von Einladungen](active-directory-b2b-redemption-experience.md)
-* [Lizenzierung von Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
+* [Lizenzierung der Azure AD B2B-Zusammenarbeit](active-directory-b2b-licensing.md)
 * [Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-troubleshooting.md)
 * [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](active-directory-b2b-faq.md)
 * [Azure Active Directory B2B-Zusammenarbeit: API und Anpassung](active-directory-b2b-api.md)

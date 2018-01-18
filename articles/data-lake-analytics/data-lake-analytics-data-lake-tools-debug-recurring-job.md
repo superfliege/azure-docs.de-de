@@ -1,5 +1,5 @@
 ---
-title: "Behandeln von Problemen mit nicht normalen periodischen Aufträgen | Microsoft-Dokumentation"
+title: "Problembehandlung für einen nicht normalen periodischen Auftrag | Microsoft-Dokumentation"
 description: "Hier erfahren Sie, wie Sie mithilfe von Azure Data Lake Tools für Visual Studio einen nicht normalen periodischen Auftrag debuggen."
 services: data-lake-analytics
 documentationcenter: 
@@ -14,21 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/27/2017
 ms.author: yanacai
-ms.openlocfilehash: a358f94b117c12511028a875e56b5c9dba8d3382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9b60c861810d6577b33aa0cdf14f26dc2cfc0e4d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
-# <a name="how-to-troubleshoot-an-abnormal-recurring-job"></a>Behandeln von Problemen mit nicht normalen periodischen Aufträgen
+# <a name="troubleshoot-an-abnormal-recurring-job"></a>Problembehandlung für einen nicht normalen periodischen Auftrag
 
-In diesem Dokument erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) Probleme mit periodischen Aufträgen behandeln. Weitere Informationen zu Pipelineaufträgen und periodischen Aufträgen finden Sie [hier](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/).
-Periodische Aufträge verwenden in der Regel die gleiche Abfragelogik und ähnliche Eingabedaten. Ein Beispiel wäre ein periodischer Auftrag, der jeden Montag um 8 Uhr ausgeführt wird, um die aktiven Benutzer der letzten Woche zu zählen, wobei die Skripts für diese Aufträge eine einzelne Skriptvorlage mit der Abfragelogik verwenden und als Auftragseingaben die Nutzungsdaten der Vorwoche herangezogen werden. Durch die gemeinsame Verwendung der gleichen Abfragelogik und einer ähnlichen Eingabe ergibt sich in der Regel eine ähnliche und stabile Auftragsleistung. Sollte bei einem Ihrer periodischen Aufträge plötzlich unnormales Verhalten, ein Fehler oder eine starke Verlangsamung auftreten, haben Sie folgende Möglichkeiten:
+In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure Data Lake Tools für Visual Studio](http://aka.ms/adltoolsvs) Probleme mit periodischen Aufträgen behandeln. Im [Blog zu Azure Data Lake und Azure HDInsight](https://blogs.msdn.microsoft.com/azuredatalake/2017/09/19/managing-pipeline-recurring-jobs-in-azure-data-lake-analytics-made-easy/) erfahren Sie mehr zur Pipeline und zu periodischen Aufträgen.
 
-1.  Ermitteln Sie anhand der Statistikberichte für die Vorschaudurchläufe des periodischen Auftrags, was passiert ist.
-2.  Vergleichen Sie die den nicht normalen Auftrag mit einem normalen Auftrag, um zu ermitteln, was sich geändert hat.
+Periodische Aufträge verwenden in der Regel die gleiche Abfragelogik und ähnliche Eingabedaten. Stellen Sie sich als Beispiel einen periodischen Auftrag vor, der montags um 8:00 Uhr ausgeführt wird, der die in der letzten Woche aktiven Benutzer zählt. Die Skripts für diese Aufträge teilen sich eine Skriptvorlage, die die Abfragelogik enthält. Die Eingaben für diese Aufträge sind die Nutzungsdaten der letzten Woche. Die gemeinsame Nutzung derselben Abfragelogik und ähnlicher Eingaben bedeutet in der Regel, dass die Leistung dieser Aufträge vergleichbar und stabil ist. Wenn einer Ihrer periodischen Aufträge plötzlich eine abnormale Leistung liefert, fehlschlägt oder sich stark verlangsamt, sollten Sie Folgendes tun:
 
-Die Ansicht für zugehörige Aufträge**** in Azure Data Lake Tools für Visual Studio trägt in beiden Fällen zu einer schnelleren Problembehandlung bei.
+- Ermitteln Sie anhand der Statistikberichte für die vorherigen Ausführungen des periodischen Auftrags, was passiert ist.
+- Vergleichen Sie die den nicht normalen Auftrag mit einem normalen Auftrag, um zu ermitteln, was sich geändert hat.
+
+**Die Ansicht für zugehörige Aufträge**in Azure Data Lake Tools für Visual Studio trägt in beiden Fällen zu einer schnelleren Problembehandlung bei.
 
 ## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>Schritt 1: Suchen nach periodischen Aufträgen und Öffnen der Ansicht für zugehörige Aufträge
 
@@ -36,38 +37,40 @@ Um ein Problem mit einem periodischen Auftrag unter Verwendung der Ansicht für 
 
 ### <a name="case-1-you-have-the-url-for-the-recurring-job"></a>Fall 1: Sie verfügen über die URL für den periodischen Auftrag.
 
-Unter **Tools > Data Lake > Auftragsansicht** können Sie die Auftrags-URL einfügen, um die Auftragsansicht in Visual Studio zu öffnen, und über „Zugehörige Aufträge anzeigen“ gelangen Sie zur Ansicht für zugehörige Aufträge.
+Über **Tools** > **Data Lake** > **Auftragsansicht** können Sie die Auftrags-URL zum Öffnen der Auftragsansicht in Visual Studio einfügen. Wählen Sie **Zugehörige Aufträge anzeigen**, um die entsprechende Ansicht zu öffnen.
 
-![Anzeigen zugehöriger Aufträge in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
+![Link „Zugehörige Aufträge anzeigen“ in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
 ### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>Fall 2: Sie verfügen über die Pipeline für den periodischen Auftrag, aber nicht über die URL.
 
-In Visual Studio können Sie unter **Server-Explorer > <Ihr Data Lake Analytics-Konto> > Pipelines** den Pipelinebrowser öffnen. (Sollten Sie diesen Knoten im Server-Explorer nicht finden, laden Sie [hier](http://aka.ms/adltoolsvs) das neueste Tool herunter.) Auf der linken Seite des Pipelinebrowsers werden alle Pipelines für das ADLA-Konto aufgeführt. Sie können die Pipelines erweitern, um alle periodischen Aufträge anzuzeigen. Klicken Sie auf den Auftrag, für den ein Problem vorliegt. Daraufhin öffnet sich auf der rechten Seite die Ansicht für zugehörige Aufträge.
+In Visual Studio können Sie unter **Server-Explorer > <Ihr Azure Data Lake Analytics-Konto> > Pipelines** den Pipelinebrowser öffnen. (Wenn Sie diesen Knoten im Server-Explorer nicht finden, [laden Sie hier das neueste Plug-In herunter](http://aka.ms/adltoolsvs).) 
 
-![Anzeigen zugehöriger Aufträge in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
+![Auswählen des Knotens „Pipelines“](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/pipeline-browser.png)
 
-![Anzeigen zugehöriger Aufträge in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
+Links im Pipelinebrowser werden alle Pipelines für das Data Lake Analytics-Konto aufgelistet. Sie können die Pipelines erweitern, um alle periodischen Aufträge zu finden, und dann denjenigen auswählen, der Probleme hat. Die Ansicht „Verwandter Auftrag“ wird auf der rechten Seite geöffnet.
 
-## <a name="step-2-analyze-statistics-report"></a>Schritt 2: Analysieren des Statistikberichts
+![Auswählen einer Pipeline und Öffnen der Ansicht „Verwandter Auftrag“](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-view.png)
 
-Im oberen Bereich der Ansicht für zugehörige Aufträge werden eine Zusammenfassung und ein Statistikbericht angezeigt. Hier können Sie die potenzielle Ursache für die das Problem ermitteln. 
+## <a name="step-2-analyze-a-statistics-report"></a>Schritt 2: Analysieren eines Statistikberichts
 
-1.  Suchen Sie als Erstes im Bericht nach dem nicht normalen Auftrag. Die X-Achse zeigt die Auftragsübermittlungszeit, anhand der Sie den nicht normalen Auftrag ermitteln können.
-2.  Gehen Sie wie folgt vor, um die Statistik zu prüfen, Informationen zu der Abweichung von der Norm zu erhalten und Lösungsmöglichkeiten zu ermitteln.
+Eine Zusammenfassung und ein Statistikbericht werden oben in der Ansicht „Verwandter Auftrag“ angezeigt. Dort können Sie die potenzielle Ursache des Problems finden. 
 
-![Anzeigen zugehöriger Aufträge in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
+1.  Im Bericht zeigt die X-Achse den Zeitpunkt der Übermittlung des Auftrags an. Ermitteln Sie mit ihrer Hilfe den nicht ordnungsgemäßen Auftrag.
+2.  Verwenden Sie den Prozess im folgenden Diagramm, um Statistiken zu überprüfen und Einblicke in das Problem und die möglichen Lösungen zu erhalten.
 
-## <a name="step-3-compare-the-abnormal-recurring-job-to-a-normal-job"></a>Schritt 3: Vergleichen des nicht normalen periodischen Auftrags mit einem normalen Auftrag
+![Prozessdiagramm zur Überprüfung von Statistiken](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-Sie finden alle übermittelten periodischen Aufträge in der Auftragsliste im unteren Bereich der Ansicht für zugehörige Aufträge. Per Rechtsklick können Sie den nicht normalen Auftrag mit einem vorherigen normalen Auftrag vergleichen und in der Auftragsvergleichsansicht weitere Erkenntnisse gewinnen sowie nach Lösungsmöglichkeiten suchen.
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>Schritt 3: Vergleichen des nicht normalen Auftrags mit einem normalen Auftrag
 
-![Anzeigen zugehöriger Aufträge in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/compare-job.png)
+Sie finden alle übermittelten periodischen Aufträge in der Auftragsliste im unteren Bereich der Ansicht „Verwandter Auftrag“. Um mehr Einblicke und mögliche Lösungen zu erhalten, klicken Sie mit der rechten Maustaste auf den nicht normalen Auftrag. Verwenden Sie die Ansicht „Auftragsvergleich“, um den nicht normalen Auftrag mit einem früheren normalen Auftrag zu vergleichen.
 
-In der Regel empfiehlt es sich, auf die großen Unterschiede zwischen den beiden Aufträgen zu achten, da die Leistungsprobleme wahrscheinlich auf sie zurückzuführen sind. Mit den unten angegebenen Schritten können Sie zudem eine ausführlichere Prüfung durchführen.
+![Kontextmenü für den Vergleich von Aufträgen](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/compare-job.png)
 
-![Anzeigen zugehöriger Aufträge in Data Lake Analytics-Tools](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
+Achten Sie auf die großen Unterschiede zwischen diesen beiden Aufträgen. Diese Unterschiede sind wahrscheinlich für die Leistungsprobleme verantwortlich. Führen Sie zur weiteren Überprüfung die Schritte in der folgenden Abbildung aus:
+
+![Prozessdiagramm zur Überprüfung von Unterschieden zwischen Aufträgen](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-diff-debugging-flow.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Lösen von Problemen aufgrund von Datenschiefe mithilfe von Azure Data Lake Tools für Visual Studio](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
+* [Lösen von Datenschiefeproblemen](data-lake-analytics-data-lake-tools-data-skew-solutions.md)
 * [Debuggen von benutzerdefiniertem C#-Code für fehlerhafte U-SQL-Aufträge](data-lake-analytics-debug-u-sql-jobs.md)

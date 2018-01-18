@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.openlocfilehash: 7d5252cab8c6238126c802b8c6a5293bb448e65e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -127,13 +127,17 @@ Dieser Satz von Konfigurationsinformationen enthält vertrauliche Informationen,
 }
 ```
 
-Name | Wert
+NAME | Wert
 ---- | -----
 storageAccountName | Der Name des Speicherkontos, in dem von der Erweiterung Daten geschrieben werden
 storageAccountEndPoint | (optional:) Der Endpunkt, der die Cloud mit dem Speicherkonto angibt. Wenn diese Einstellung fehlt, verwendet LAD standardmäßig die öffentliche Azure-Cloud `https://core.windows.net`. Um ein Speicherkonto in Azure Deutschland, Azure Government oder Azure China zu verwenden, legen Sie diesen Wert entsprechend fest.
 storageAccountSasToken | Ein [Konto-SAS-Token](https://azure.microsoft.com/blog/sas-update-account-sas-now-supports-all-storage-services/) für Blob-und Tabellendienste (`ss='bt'`); gilt für Container und Objekte (`srt='co'`) und gewährt die Berechtigungen zum Hinzuzufügen, Erstellen, Auflisten, Aktualisieren und Schreiben (`sp='acluw'`). Fügen Sie *nicht* das vorangestellte Fragezeichen (?) ein.
 mdsdHttpProxy | (optional:) HTTP-Proxyinformationen, die erforderlich sind, damit die Erweiterung Verbindungen mit dem angegebenen Speicherkonto und dem Endpunkt herstellen kann
 sinksConfig | (optional:) Details zu alternativen Zielen, an die Metriken und Ereignisse übermittelt werden können. Die spezifischen Details der einzelnen Datensenken, die von der Erweiterung unterstützt werden, sind in den folgenden Abschnitten beschrieben.
+
+
+> [!NOTE]
+> Beim Bereitstellen der Erweiterung mit einer Azure-Bereitstellungsvorlage müssen das Speicherkonto und das SAS-Token vorab erstellt worden sein und der Vorlage übergeben werden. Sie können nicht eine VM und ein Speicherkonto bereitstellen und die Erweiterung in einer einzelnen Vorlage konfigurieren. Das Erstellen eines SAS-Tokens innerhalb einer Vorlage wird aktuell nicht unterstützt.
 
 Sie können das erforderliche SAS-Token einfach über das Azure-Portal erstellen.
 
@@ -165,7 +169,7 @@ In diesem optionalen Abschnitt werden zusätzliche Ziele definiert, an die die E
 
 Element | Wert
 ------- | -----
-Name | Eine Zeichenfolge, die zum Verweisen auf diese Senke an anderer Stelle in der Konfiguration der Erweiterung verwendet wird
+name | Eine Zeichenfolge, die zum Verweisen auf diese Senke an anderer Stelle in der Konfiguration der Erweiterung verwendet wird
 type | Der Typ der Senke, die definiert wird. Bestimmt die anderen Werte in Instanzen dieses Typs (sofern vorhanden).
 
 Version 3.0 der Linux-Diagnoseerweiterung unterstützt zwei Senkentypen: EventHub und JsonBlob.
@@ -267,7 +271,7 @@ sampleRateInSeconds | (optional:) Das Standardintervall zwischen der Erfassung v
 
 Element | Wert
 ------- | -----
-resourceId | Die Azure Resource Manager-Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, zu der der virtuelle Computer gehört. Diese Einstellung muss ebenfalls angegeben werden, wenn in der Konfiguration eine JsonBlob-Senke verwendet wird.
+Ressourcen-ID | Die Azure Resource Manager-Ressourcen-ID des virtuellen Computers oder der VM-Skalierungsgruppe, zu der der virtuelle Computer gehört. Diese Einstellung muss ebenfalls angegeben werden, wenn in der Konfiguration eine JsonBlob-Senke verwendet wird.
 scheduledTransferPeriod | Die Häufigkeit, mit der aggregierte Metriken berechnet und an den Azure-Metrikendienst übertragen werden, als ein Zeitintervall im Format ISO 8601. Das kleinste Übertragungsintervall ist 60 Sekunden, d.h. PT1M. Sie müssen mindestens einen scheduledTransferPeriod-Wert angeben.
 
 Die Werte für die Metriken, die im Abschnitt performanceCounters angegeben wurden, werden alle 15 Sekunden oder in der explizit für den Leistungsindikator festgelegten Häufigkeit erfasst. Wenn mehrere scheduledTransferPeriod-Werte (wie im Beispiel) angegeben wurden, wird jede Aggregation unabhängig von den anderen berechnet.

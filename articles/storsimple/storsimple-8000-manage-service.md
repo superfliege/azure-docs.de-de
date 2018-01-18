@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: alkohli
-ms.openlocfilehash: 5f31e32bb7cbd747af2e03699cfb2c6418828f8d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 96dcda25cde2473387842fd01421b6bb619e4ece
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
 
@@ -27,6 +27,9 @@ ms.lasthandoff: 11/17/2017
 Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er verfügt über Verbindungen mit mehreren StorSimple-Geräten. Nachdem Sie den Dienst erstellt haben, können Sie alle Geräte, die mit den StorSimple-Geräte-Manager-Dienst verbunden sind, von einem zentralen Standort aus verwalten und damit den Verwaltungsaufwand minimieren.
 
 In diesem Tutorial werden die erforderlichen Schritte zum Erstellen, Löschen und Migrieren des Diensts und die Verwaltung des Dienstsregistrierungsschlüssels beschrieben. Die Informationen in diesem Artikel gelten nur für Geräte der StorSimple 8000-Serie. Weitere Informationen zu StorSimple Virtual Arrays finden Sie unter [Bereitstellen eines StorSimple-Geräte-Manager-Diensts für das StorSimple Virtual Array](storsimple-virtual-array-manage-service.md).
+
+> [!NOTE]
+> Alle klassischen StorSimple-Geräte-Manager werden automatisch in das neue Azure-Portal verschoben. Wenn Sie Fragen haben, finden Sie entsprechende Informationen unter [FAQ: Verschieben zum Azure-Portal](storsimple-8000-move-azure-portal-faq.md). Die PowerShell-Cmdlets für Azure Service Management (ASM) werden nach dem Umstieg auf das neue Azure-Portal nicht mehr unterstützt. Aktualisieren Sie die Skripts zum Verwalten Ihrer Geräte. Anschließend finden Sie unter [Verwalten von StorSimple-Geräten mit SDK-basierten Azure Resource Manager-Skripts](storsimple-8000-automation-azurerm-scripts.md) weitere Informationen. Im neuen Azure-Portal werden Geräte mit ausgeführtem Update 5.0 oder höher unterstützt. Wenn Ihr Gerät nicht auf dem neuesten Stand ist, installieren Sie Update 5 sofort. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie dieses Gerät nicht aktualisieren. Verwenden Sie die neueste Version der Software, um ein neues Cloudgerät mit Update 5.0 zu erstellen und dann ein Failover auf das neu erstellte Cloudgerät auszuführen. Alle Geräte mit ausgeführtem Update 4.0 oder früher weisen [reduzierte Verwaltungsfunktionalität](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0) auf. 
 
 ## <a name="create-a-service"></a>Erstellen von Diensten
 Um einen StorSimple-Geräte-Manager-Dienst zu erstellen, benötigen Sie Folgendes:
@@ -57,86 +60,6 @@ Für jeden StorSimple-Geräte-Manager-Dienst gibt es die folgenden Attribute:
 * **Status**: der Status des Diensts mit den möglichen Werten **Aktiv**, **Wird erstellt** oder **Online**.
 * **Standort:** der geografische Standort, an dem das StorSimple-Gerät bereitgestellt wird.
 * **Abonnement:** das Abonnement für die Abrechnung, das mit Ihrem Dienst verbunden ist.
-
-## <a name="move-a-service-to-azure-portal"></a>Verschieben eines Diensts in das Azure-Portal
-Geräte der StorSimple-Serie 8000 können jetzt im Azure-Portal verwaltet werden. Wenn es bereits einen Dienst zum Verwalten der StorSimple-Geräte gibt, wird empfohlen, den Dienst in das Azure-Portal zu verschieben. Das klassische Azure-Portal für den StorSimple Manager-Dienst wird nur noch bis zum 30. September 2017 unterstützt. Wenn Sie auf das neue Azure-Portal umsteigen möchten, finden Sie entsprechende Informationen unter [Überlegungen zur Umstellung](#considerations-for-transition). 
-
-> [!NOTE]
-> Ab dem 5. Oktober 2017 werden Ihre klassischen StorSimple Device Manager automatisch in das neue Azure-Portal verschoben. Hierbei handelt es sich um einen Vorgang in mehreren Phasen. Sie werden über die Verschiebung per E-Mail und über Portalbenachrichtigungen informiert. Wenn Sie Fragen haben, finden Sie entsprechende Informationen unter [FAQ: Verschieben zum Azure-Portal](storsimple-8000-move-azure-portal-faq.md).
-
-### <a name="considerations-for-transition"></a>Überlegungen zur Umstellung
-
-Überprüfen Sie die Auswirkungen der Migration in das neue Azure-Portal, bevor Sie den Dienst verschieben.
-
-> [!NOTE]
-> Die vorhandenen PowerShell-Cmdlets für die Verwaltung von Azure-Diensten werden nach dem Umstieg auf das neue Azure-Portal nicht mehr unterstützt. Aktualisieren Sie die Skripts so, dass Ihre Geräte über das Azure Resource Manager SDK verwaltet werden. Weitere Informationen finden Sie unter [Verwalten von StorSimple-Geräten mit SDK-basierten Azure Resource Manager-Skripts](storsimple-8000-automation-azurerm-scripts.md).
-> Im neuen Azure-Portal werden Geräte mit ausgeführtem Update 3.0 oder höher unterstützt. Wenn Ihr Gerät nicht auf dem neuesten Stand ist, wird dringend empfohlen, dass Sie so bald wie möglich Update 5 anwenden.
-
-#### <a name="before-you-transition"></a>Vor der Umstellung
-
-* Ihr Dienst wird mit Update 3.0 oder höher ausgeführt. Wenn auf Ihrem Gerät eine ältere Version ausgeführt wird, sollten Sie unbedingt Update 5 über die Hotfixmethode installieren. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie die Cloud Appliance nicht aktualisieren. Verwenden Sie die neueste Version der Software, um eine neue Cloud Appliance mit Update 5.0 zu erstellen und dann ein Failover für die neu erstellte Cloud Appliance auszuführen.
-
-* Nach erfolgter Umstellung auf das neue Azure-Portal können sie nicht mehr das klassische Azure-Portal zum Verwalten Ihres StorSimple-Geräts nutzen.
-
-* Bei der Umstellung kommt es für das Gerät zu keinen Unterbrechungen oder Ausfallzeiten.
-
-* Die Umstellung erfolgt für alle StorSimple-Gerät-Manager im angegebenen Abonnement.
-
-#### <a name="during-the-transition"></a>Während der Umstellung
-
-* Sie können Ihr Gerät nicht im Portal verwalten.
-* Vorgänge wie Tiering und geplante Sicherungen sind weiterhin möglich.
-* Löschen Sie während der Umstellung nicht die alten StorSimple-Geräte-Manager.
-
-#### <a name="after-the-transition"></a>Nach der Umstellung
-
-* Sie können Ihre Geräte nicht mehr im klassischen Portal verwalten.
-
-* Die vorhandenen PowerShell-Cmdlets für die Verwaltung von Azure-Diensten werden nicht unterstützt. Aktualisieren Sie die Skripts so, dass Ihrer Geräte mit Azure Resource Manager verwaltet werden. Beispielskripts, die das Resource Manager SDK verwenden, finden Sie unter [storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools).
-
-* Ihre Dienst- und Gerätekonfiguration bleibt erhalten. Alle Ihre Volumes und Sicherungen werden auch auf das neue Azure-Portal umgestellt.
-
-### <a name="begin-transition"></a>Einleiten der Umstellung
-
-Führen Sie die folgenden Schritte aus, um Ihren Dienst auf das Azure-Portal umzustellen.
-
-1. Wechseln Sie im neuen Azure-Portal zu Ihrem vorhandenen StorSimple Manager-Dienst.
-    ![Weitere Dienste](./media/storsimple-8000-manage-service/service-browse01.png) ![Auswählen von Device Manager](./media/storsimple-8000-manage-service/service-browse02.png)
-
-2. Sie werden in einer Benachrichtigung informiert, dass der StorSimple-Geräte-Manager-Dienst jetzt im Azure-Portal verfügbar ist. Der Dienst wird im Azure-Portal als StorSimple Device Manager-Dienst bezeichnet.
-    ![Benachrichtigung zur Migration](./media/storsimple-8000-manage-service/service-transition1.jpg)
-    
-    1. Stellen Sie sicher, dass Sie die gesamten Auswirkungen der Migration geprüft haben.
-    2. Überprüfen Sie die Liste der StorSimple-Geräte-Manager, die aus dem klassischen Portal verschoben werden.
-
-3. Klicken Sie auf **Migrieren**. Die Umstellung beginnt und kann einige Minuten in Anspruch nehmen.
-
-Sobald die Umstellung abgeschlossen ist, können Sie Ihre Geräte über den StorSimple-Geräte-Manager-Dienst im Azure-Portal verwalten. Wenn keine Option für die Migration zum Azure-Portal angezeigt wird, Sie die Verschiebung jedoch durchführen möchten, können Sie [eine Anfrage erstellen](https://aka.ms/ss8000-cx-signup).
-
-## <a name="supported-operations-on-devices-running-versions-prior-to-update-30"></a>Unterstützte Vorgänge auf Geräten mit einer Version vor Update 3.0
-Im Azure-Portal werden nur die StorSimple-Geräte mit ausgeführtem Update 3.0 und höher unterstützt. Die Geräte mit früheren Versionen werden eingeschränkt unterstützt. In der folgenden Tabelle sind die Vorgänge aufgeführt, die auf Geräten mit Softwareversionen vor Update 3.0 unterstützt werden, nachdem die Umstellung auf das Azure-Portal erfolgt ist.
-
-| Vorgang                                                                                                                       | Unterstützt      |
-|---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Registrieren eines Geräts                                                                                                               | Ja            |
-| Konfigurieren von Geräteeinstellungen (allgemein, Netzwerk und Sicherheit)                                                                | Ja            |
-| Suchen nach, Herunterladen und Installieren von Updates                                                                                             | Ja            |
-| Deaktivieren des Geräts                                                                                                               | Ja            |
-| Löschen des Geräts                                                                                                                   | Ja            |
-| Erstellen, Ändern und Löschen eines Volumecontainers                                                                                   | Nein             |
-| Erstellen, Ändern und Löschen eines Volumes                                                                                             | Nein             |
-| Erstellen, Ändern und Löschen einer Sicherungsrichtlinie                                                                                      | Nein             |
-| Erstellen einer manuellen Sicherung                                                                                                            | Nein             |
-| Erstellen einer geplanten Sicherung                                                                                                         | Nicht zutreffend |
-| Wiederherstellen eines Sicherungssatzes                                                                                                        | Nein             |
-| Klonen eines Gerät mit ausgeführtem Update 3.0 und höher <br> Auf dem Quellgerät wird eine Version vor Update 3.0 ausgeführt.                                | Ja            |
-| Klonen eines Gerät mit ausgeführter Version vor Update 3.0                                                                          | Nein             |
-| Failover als Quellgerät <br> (von einem Gerät mit Version vor Update 3.0 auf ein Gerät mit Update 3.0 und höher)                                                               | Ja            |
-| Failover als Zielgerät <br> (auf ein Gerät mit Softwareversion vor Update 3.0)                                                                                   | Nein             |
-| Erstellen einer Warnung                                                                                                                  | Ja            |
-| Anzeigen von im klassischen Portal erstellten Sicherungsrichtlinien, Sicherungskatalogen, Volumes, Volumecontainern, Überwachungsdiagrammen, Aufträgen und Warnungen | Ja            |
-| Aktivieren und Deaktivieren von Gerätecontrollern                                                                                              | Ja            |
-
 
 ## <a name="delete-a-service"></a>Löschen von Diensten
 
@@ -196,7 +119,7 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 
 
 
-## <a name="change-the-service-data-encryption-key"></a>Ändern des Dienstdaten-Verschlüsselungsschlüssels
+## <a name="change-the-service-data-encryption-key"></a>Ändern des Verschlüsselungsschlüssels für Dienstdaten
 Dienstdaten-Verschlüsselungsschlüssel werden verwendet, um vertrauliche Kundendaten zu verschlüsseln, beispielsweise Anmeldeinformationen für das Speicherkonto, die vom StorSimple Manager-Dienst zum StorSimple-Gerät gesendet werden. Sie müssen diese Schlüssel regelmäßig ändern, wenn Ihre IT-Organisation über eine Richtlinie zur Schlüsselrotation für Speichergeräte verfügt. Das Verfahren zur Schlüsseländerung kann variieren, je nachdem, ob ein einzelnes Gerät oder mehrere Geräte vom StorSimple Manager-Dienst verwaltet werden. Weitere Informationen finden Sie unter [StorSimple-Sicherheit und -Datenschutz](storsimple-8000-security.md).
 
 Das Ändern den Verschlüsselungsschlüssel für Dienstdaten wird in drei Schritten vollzogen:
@@ -262,6 +185,31 @@ Führen Sie die folgenden Schritte aus, um den Verschlüsselungsschlüssel für 
 2. Öffnen Sie PowerShell, und geben Sie an der Eingabeaufforderung Folgendes ein: `Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
 
 Mit diesem Skript wird sichergestellt, dass der Dienstdatenverschlüsselungs-Schlüssel in allen 8010/8020 Cloud Appliances unter dem Device Manager festgelegt wird.
+
+## <a name="supported-operations-on-devices-running-versions-prior-to-update-50"></a>Unterstützte Vorgänge auf Geräten mit einer Version vor Update 5.0
+Im Azure-Portal werden nur die StorSimple-Geräte mit ausgeführtem Update 5.0 und höher unterstützt. Die Geräte mit früheren Versionen werden eingeschränkt unterstützt. In der folgenden Tabelle sind die Vorgänge aufgeführt, die auf Geräten mit Softwareversionen vor Update 5.0 unterstützt werden, nachdem die Umstellung auf das Azure-Portal erfolgt ist.
+
+| Vorgang                                                                                                                       | Unterstützt      |
+|---------------------------------------------------------------------------------------------------------------------------------|----------------|
+| Registrieren eines Geräts                                                                                                               | Ja            |
+| Konfigurieren von Geräteeinstellungen (allgemein, Netzwerk und Sicherheit)                                                                | Ja            |
+| Suchen nach, Herunterladen und Installieren von Updates                                                                                             | Ja            |
+| Deaktivieren des Geräts                                                                                                               | Ja            |
+| Löschen des Geräts                                                                                                                   | Ja            |
+| Erstellen, Ändern und Löschen eines Volumecontainers                                                                                   | Nein              |
+| Erstellen, Ändern und Löschen eines Volumes                                                                                             | Nein              |
+| Erstellen, Ändern und Löschen einer Sicherungsrichtlinie                                                                                      | Nein              |
+| Erstellen einer manuellen Sicherung                                                                                                            | Nein              |
+| Erstellen einer geplanten Sicherung                                                                                                         | Nicht zutreffend |
+| Wiederherstellen eines Sicherungssatzes                                                                                                        | Nein              |
+| Klonen eines Gerät mit ausgeführtem Update 3.0 und höher <br> Auf dem Quellgerät wird eine Version vor Update 3.0 ausgeführt.                                | Ja            |
+| Klonen eines Gerät mit ausgeführter Version vor Update 3.0                                                                          | Nein              |
+| Failover als Quellgerät <br> (von einem Gerät mit Version vor Update 3.0 auf ein Gerät mit Update 3.0 und höher)                                                               | Ja            |
+| Failover als Zielgerät <br> (auf ein Gerät mit Softwareversion vor Update 3.0)                                                                                   | Nein              |
+| Erstellen einer Warnung                                                                                                                  | Ja            |
+| Anzeigen von im klassischen Portal erstellten Sicherungsrichtlinien, Sicherungskatalogen, Volumes, Volumecontainern, Überwachungsdiagrammen, Aufträgen und Warnungen | Ja            |
+| Aktivieren und Deaktivieren von Gerätecontrollern                                                                                              | Ja            |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Weitere Informationen zum [StorSimple-Bereitstellungsprozess](storsimple-8000-deployment-walkthrough-u2.md)

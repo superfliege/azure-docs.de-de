@@ -60,7 +60,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
     Von Azure wird Ihr Speicherkonto als Container für Ihre nicht verwalteten Datenträger genutzt. Wenn Sie einen virtuellen Azure-Computer der DS-, DSv2-, GS- oder Fs-Serie von Azure mit nicht verwalteten Datenträgern erstellen und ein Premium-Speicherkonto auswählen, werden Ihr Betriebssystem und die Datenträger in diesem Speicherkonto gespeichert.
 
 ## <a name="supported-vms"></a>Unterstützte VMs
-Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS- und FS-Serie. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
+Storage Premium unterstützt virtuelle Computer der DS-, DSv2-, GS-, Ls-, Fs- und B-Serie. Mit diesen VM-Typen können Sie Standard- und Premium-Speicherdatenträger verwenden. Sie können keine Premium-Speicherdatenträger für VM-Serien verwenden, die nicht mit Storage Premium kompatibel sind.
 
 Informationen zu VM-Typen und -Größen in Azure für Windows finden Sie unter [Windows-VM-Größen](../articles/virtual-machines/windows/sizes.md). Informationen zu VM-Typen und -Größen in Azure für Linux finden Sie unter [Linux-VM-Größen](../articles/virtual-machines/linux/sizes.md).
 
@@ -234,7 +234,7 @@ Um die Skalierbarkeitsziele in Storage Premium für alle Storage Premium-Datentr
 
 Die folgenden Linux-Distributionen wurden für Azure Storage Premium überprüft. Wir empfehlen Ihnen, Ihre virtuellen Computer auf mindestens eine dieser Versionen (oder eine höhere Version) zu aktualisieren, um eine bessere Leistung und Stabilität mit Storage Premium zu erzielen. Für einige Versionen sind die neuesten Linux-Integrationsdienste (LIS v4.0) für Azure erforderlich. Verwenden Sie den in der folgenden Tabelle angegebenen Link, um eine Distribution herunterzuladen und zu installieren. Wir fügen der Liste weitere Images hinzu, wenn die jeweilige Überprüfung abgeschlossen ist. Beachten Sie Folgendes: Unser Überprüfungen zeigen, dass die Leistung für jedes Image variiert. Die Leistung hängt von den Workloadmerkmalen und Ihren Imageeinstellungen ab. Verschiedene Images werden für verschiedene Arten von Workloads optimiert.
 
-| Verteilung | Version | Unterstützter Kernel | Details |
+| Distribution | Version | Unterstützter Kernel | Details |
 | --- | --- | --- | --- |
 | Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |

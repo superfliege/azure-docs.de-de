@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 7dafb491cec908ffbb3683991919654f3d3eb452
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f1cf113f75bc5a96af8c33d4b83d1bd0f5c6efd
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Erstellen, Ändern oder Löschen von Netzwerkschnittstellen
 
@@ -48,16 +48,16 @@ Wenn Sie im Azure-Portal eine VM erstellen, generiert das Portal für Sie eine N
 
     |Einstellung|Erforderlich|Details|
     |---|---|---|
-    |Name|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Im Lauf der Zeit verfügen Sie wahrscheinlich über mehrere Netzwerkschnittstellen in Ihrem Azure-Abonnement. Lesen Sie den Artikel zu [Benennungskonventionen](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions) mit Vorschlägen zum Festlegen einer Benennungskonvention zum Vereinfachen der Verwaltung mehrerer Netzwerkschnittstellen. Nach dem Erstellen kann der Name der Netzwerkschnittstelle nicht mehr geändert werden.|
+    |NAME|Ja|Der Name muss innerhalb der ausgewählten Ressourcengruppe eindeutig sein. Im Lauf der Zeit verfügen Sie wahrscheinlich über mehrere Netzwerkschnittstellen in Ihrem Azure-Abonnement. Lesen Sie den Artikel zu [Benennungskonventionen](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions) mit Vorschlägen zum Festlegen einer Benennungskonvention zum Vereinfachen der Verwaltung mehrerer Netzwerkschnittstellen. Nach dem Erstellen kann der Name der Netzwerkschnittstelle nicht mehr geändert werden.|
     |Virtuelles Netzwerk|Ja|Wählen Sie das virtuelle Netzwerk für die Netzwerkschnittstelle aus. Sie können eine Netzwerkschnittstelle nur einem virtuellen Netzwerk zuweisen, das dasselbe Abonnement und denselben Standort wie die Netzwerkschnittstelle hat. Nachdem eine Netzwerkschnittstelle erstellt wurde, können Sie das virtuelle Netzwerk, dem sie zugewiesen ist, nicht mehr ändern. Der virtuelle Computer, dem Sie die Netzwerkschnittstelle hinzufügen, muss auch denselben Standort und dasselbe Abonnement wie die Netzwerkschnittstelle aufweisen.|
     |Subnetz|Ja|Wählen Sie ein Subnetz innerhalb des ausgewählten virtuellen Netzwerks aus. Das Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, kann nach der Erstellung geändert werden.|
-    |Zuweisung der privaten IP-Adresse|Ja| Mit dieser Einstellung wählen Sie die Zuweisungsmethode für die IPv4-Adresse aus. Wählen Sie aus den folgenden Methoden für die Zuweisung: **Dynamisch:** Bei Wahl dieser Option weist Azure automatisch eine verfügbare Adresse aus dem Adressraum des Subnetzes zu, das Sie ausgewählt haben. Azure kann einer Netzwerkschnittstelle eine andere Adresse zuweisen, wenn der zugehörige virtuelle Computer gestartet wird, nachdem er sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befand. Die Adresse bleibt unverändert, wenn der virtuelle Computer neu gestartet wird, ohne sich zuvor im Zustand „Beendet (Zuordnung aufgehoben)“ befunden zu haben. **Statisch:** Bei Wahl dieser Option müssen Sie eine verfügbare IP-Adresse innerhalb des Adressraums des ausgewählten Subnetzes manuell zuweisen. Statische Adressen bleiben unverändert, bis Sie sie ändern oder die Netzwerkschnittstelle gelöscht wird. Die Zuweisungsmethode kann nach Erstellung der Netzwerkschnittstelle geändert werden. Der DHCP-Server von Azure weist diese Adresse der Netzwerkschnittstelle innerhalb des Betriebssystems des virtuellen Computers zu.|
-    |Netzwerksicherheitsgruppe|Nein| Belassen Sie diese Einstellung auf **Keine** festgelegt, wählen Sie eine vorhandene [Netzwerksicherheitsgruppe](virtual-networks-nsg.md) aus, oder [erstellen Sie eine Netzwerksicherheitsgruppe](virtual-networks-create-nsg-arm-pportal.md). Mithilfe von Netzwerksicherheitsgruppen können Sie den ein- und ausgehenden Netzwerkdatenverkehr für eine Netzwerkschnittstelle steuern. Auf eine Netzwerkschnittstelle kann maximal eine Netzwerksicherheitsgruppe angewendet werden. Auch auf das Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, kann maximal eine Netzwerksicherheitsgruppe angewendet werden. Wenn eine Netzwerksicherheitsgruppe auf eine Netzwerkschnittstelle und auf das Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, angewendet wird, kommt es in einigen Fällen zu unerwarteten Ergebnissen. Informationen zum Beheben von Problemen mit Netzwerksicherheitsgruppen, die auf Netzwerkschnittstellen und Subnetze angewendet werden, finden Sie im Artikel [Beheben von Problemen bei Netzwerksicherheitsgruppen](virtual-network-nsg-troubleshoot-portal.md#nsg).|
+    |Zuweisung der privaten IP-Adresse|Ja| Mit dieser Einstellung wählen Sie die Zuweisungsmethode für die IPv4-Adresse aus. Wählen Sie aus den folgenden Methoden für die Zuweisung: **Dynamisch:** Bei Wahl dieser Option weist Azure automatisch die nächste verfügbare Adresse aus dem Adressraum des Subnetzes zu, das Sie ausgewählt haben. **Statisch:** Bei Wahl dieser Option müssen Sie eine verfügbare IP-Adresse innerhalb des Adressraums des ausgewählten Subnetzes manuell zuweisen. Statische und dynamische Adressen bleiben unverändert, bis Sie sie ändern oder die Netzwerkschnittstelle gelöscht wird. Die Zuweisungsmethode kann nach Erstellung der Netzwerkschnittstelle geändert werden. Der DHCP-Server von Azure weist diese Adresse der Netzwerkschnittstelle innerhalb des Betriebssystems des virtuellen Computers zu.|
+    |Netzwerksicherheitsgruppe|Nein | Belassen Sie diese Einstellung auf **Keine** festgelegt, wählen Sie eine vorhandene [Netzwerksicherheitsgruppe](virtual-networks-nsg.md) aus, oder [erstellen Sie eine Netzwerksicherheitsgruppe](virtual-networks-create-nsg-arm-pportal.md). Mithilfe von Netzwerksicherheitsgruppen können Sie den ein- und ausgehenden Netzwerkdatenverkehr für eine Netzwerkschnittstelle steuern. Auf eine Netzwerkschnittstelle kann maximal eine Netzwerksicherheitsgruppe angewendet werden. Auch auf das Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, kann maximal eine Netzwerksicherheitsgruppe angewendet werden. Wenn eine Netzwerksicherheitsgruppe auf eine Netzwerkschnittstelle und auf das Subnetz, dem die Netzwerkschnittstelle zugewiesen ist, angewendet wird, kommt es in einigen Fällen zu unerwarteten Ergebnissen. Informationen zum Beheben von Problemen mit Netzwerksicherheitsgruppen, die auf Netzwerkschnittstellen und Subnetze angewendet werden, finden Sie im Artikel [Beheben von Problemen bei Netzwerksicherheitsgruppen](virtual-network-nsg-troubleshoot-portal.md#nsg).|
     |Abonnement|Ja|Wählen Sie eines Ihrer Azure-[Abonnements](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) aus. Der virtuelle Computer, an den Sie eine Netzwerkschnittstelle anfügen, und das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen, müssen zu demselben Abonnement gehören.|
-    |Private IP-Adresse (IPv6)|Nein| Wenn Sie dieses Kontrollkästchen aktivieren, wird der Netzwerkschnittstelle zusätzlich zu der IPv4-Adresse der Netzwerkschnittstelle eine IPv6-Adresse zugewiesen. Im Abschnitt [IPv6](#IPv6) dieses Artikels finden Sie wichtige Informationen zur Verwendung von IPv6 bei Netzwerkschnittstellen. Eine Auswahl der Zuweisungsmethode für die IPv6-Adresse ist nicht möglich. Wenn Sie eine IPv6-Adresse zuweisen, erfolgt die Zuordnung mit der dynamischen Methode.
+    |Private IP-Adresse (IPv6)|Nein | Wenn Sie dieses Kontrollkästchen aktivieren, wird der Netzwerkschnittstelle zusätzlich zu der IPv4-Adresse der Netzwerkschnittstelle eine IPv6-Adresse zugewiesen. Im Abschnitt [IPv6](#IPv6) dieses Artikels finden Sie wichtige Informationen zur Verwendung von IPv6 bei Netzwerkschnittstellen. Eine Auswahl der Zuweisungsmethode für die IPv6-Adresse ist nicht möglich. Wenn Sie eine IPv6-Adresse zuweisen, erfolgt die Zuordnung mit der dynamischen Methode.
     |IPv6-Name (wird nur angezeigt, wenn das Kontrollkästchen **Private IP-Adresse (IPv6)** aktiviert ist) |Ja, wenn das Kontrollkästchen **Private IP-Adresse (IPv6)** aktiviert ist.| Dieser Name wird einer sekundären IP-Konfiguration für die Netzwerkschnittstelle zugewiesen. Weitere Informationen zu IP-Konfigurationen finden Sie im Abschnitt [Anzeigen der Einstellungen von Netzwerkschnittstellen](#view-network-interface-settings) in diesem Artikel.|
     |Ressourcengruppe|Ja|Wählen Sie eine vorhandene [Ressourcengruppe](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) aus, oder erstellen Sie eine. Eine Netzwerkschnittstelle kann sich in der gleichen (oder in einer anderen) Ressourcengruppe befinden wie der virtuelle Computer, an den Sie sie anfügen, oder wie das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen.|
-    |Standort|Ja|Der virtuelle Computer, an den Sie eine Netzwerkschnittstelle anfügen, und das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen, müssen sich an demselben [Standort](https://azure.microsoft.com/regions) befinden. Dieser wird auch als Region bezeichnet.|
+    |Speicherort|Ja|Der virtuelle Computer, an den Sie eine Netzwerkschnittstelle anfügen, und das virtuelle Netzwerk, mit dem Sie eine Verbindung herstellen, müssen sich an demselben [Standort](https://azure.microsoft.com/regions) befinden. Dieser wird auch als Region bezeichnet.|
 
 Das Portal stellt keine Option bereit, mit der Sie der Netzwerkschnittstelle beim Erstellen eine öffentliche IP-Adresse zuweisen können. Sie können allerdings im Portal eine öffentliche IP-Adresse erstellen und diese einer Netzwerkschnittstelle zuweisen, wenn Sie im Portal einen virtuellen Computer erstellen. Informationen zum Hinzufügen einer öffentlichen IP-Adresse zur Netzwerkschnittstelle nach deren Erstellung finden Sie im Artikel zum [Verwalten von IP-Adressen](virtual-network-network-interface-addresses.md). Wenn Sie eine Netzwerkschnittstelle mit einer öffentlichen IP-Adresse erstellen möchten, müssen Sie zum Erstellen der Netzwerkschnittstelle die Befehlszeilenschnittstelle oder PowerShell verwenden.
 
@@ -66,7 +66,7 @@ Das Portal stellt keine Option bereit, mit der Sie der Netzwerkschnittstelle bei
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 |PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
@@ -92,7 +92,7 @@ Sie können die meisten Einstellungen für eine Netzwerkschnittstelle anzeigen u
 
 Wenn eine IPv6-Adresse einer Netzwerkschnittstelle zugewiesen ist, gibt die PowerShell-Ausgabe zurück, dass die Adresse zugewiesen ist, aber nicht die zugewiesene Adresse selbst. Auf ähnliche Weise gibt die Befehlszeilenschnittstelle zurück, dass die Adresse zugewiesen ist, als Ausgabe für die Adresse jedoch lediglich *NULL*.
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list): Anzeigen von im Abonnement enthaltenen Netzwerkschnittstellen; [az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show): Anzeigen der Einstellungen für eine Netzwerkschnittstelle|
 |PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json): Anzeigen von im Abonnement enthaltenen Netzwerkschnittstellen oder der Einstellungen für eine Netzwerkschnittstelle|
@@ -112,7 +112,7 @@ Der DHCP-Server von Azure weist den DNS-Server der Netzwerkschnittstelle innerha
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -134,7 +134,7 @@ Die Einstellung muss für jede Netzwerkschnittstelle aktiviert werden, die an de
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -155,7 +155,7 @@ Sie können das Subnetz, aber nicht das virtuelle Netzwerk ändern, dem eine Net
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
 |PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -174,7 +174,7 @@ Wenn Sie eine Netzwerkschnittstelle löschen, werden alle ihr zugewiesenen MAC- 
 
 **Befehle**
 
-|Tool|Befehl|
+|Tool|Get-Help|
 |---|---|
 |Befehlszeilenschnittstelle (CLI)|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
@@ -184,7 +184,7 @@ In den folgenden Artikeln erfahren Sie, wie Sie virtuelle Computer mit mehreren 
 
 **Befehle**
 
-|Task|Tool|
+|Aufgabe|Tool|
 |---|---|
 |Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Erstellen eines virtuellen Computers mit einer NIC und mehreren IPv4-Adressen|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

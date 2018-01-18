@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: 64e8d4a88ea78e0de065e5a2c12dba4885e08bad
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9a3aa1680ada03e4472db3a198a3b806511671ed
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Bereitstellen von Widevine-Lizenzen für Azure Media Services mithilfe von Axinom
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ In diesem Artikel wird beschrieben, wie von Axinom verwaltete Lizenzserver integ
 * Generieren eines JWT-Tokens zum Erfüllen der Lizenzserveranforderungen
 * Entwickeln einer Azure Media Player-App, die den Lizenzerwerb mithilfe der JWT-Tokenauthentifizierung unterstützt
 
-Das vollständige System und die Übermittlung von Inhaltsschlüssel, Schlüssel-ID, Schlüsselwert, JTW-Token und dessen Ansprüchen können am besten mithilfe des folgenden Diagramms veranschaulicht werden.
+Das vollständige System und die Übermittlung von Inhaltsschlüssel, Schlüssel-ID, Schlüsselwert, JTW-Token und dessen Ansprüchen können am besten mithilfe des folgenden Diagramms veranschaulicht werden:
 
 ![DASH und CENC](./media/media-services-axinom-integration/media-services-axinom1.png)
 
@@ -50,7 +50,7 @@ Sie können dynamischen CENC-Schutz mit Multi-DRM für DASH-Streaming mit den be
 1. PlayReady-Schutz für MS-Edge und IE11, der Einschränkungen für die Autorisierung mittels Token aufweisen kann. Eine Einschränkungsrichtlinie mit Token muss von einem Token begleitet werden, das von einem Sicherheitstokendienst (STS) wie Azure Active Directory ausgestellt wird.
 2. Widevine-Schutz für Chrome, für den eine Authentifizierung mittels Token mithilfe eines von einem anderen STS ausgestellten Tokens erfolgen kann. 
 
-Im Abschnitt [Generierung von JWT-Token](media-services-axinom-integration.md#jwt-token-generation) erfahren, warum Azure Active Directory nicht als ein STS für den Widevine-Lizenzserver von Axinom verwendet werden kann.
+Im Abschnitt [Generierung von JWT-Token](media-services-axinom-integration.md#jwt-token-generation) erfahren Sie, warum Azure Active Directory nicht als ein STS für den Widevine-Lizenzserver von Axinom verwendet werden kann.
 
 ### <a name="considerations"></a>Überlegungen
 1. Verwenden Sie den von Axinom angegebenen Schlüsselwert (8888000000000000000000000000000000000000) und Ihre generierte oder ausgewählte Schlüssel-ID zum Generieren des Inhaltsschlüssels zum Konfigurieren des Schlüsselbereitstellungsdiensts. Der Axinom-Lizenzserver stellt alle Lizenzen, die Inhaltsschlüssel enthalten, basierend auf demselben Schlüsselwert aus, der für Test- und Produktionsumgebungen gültig ist.
@@ -65,7 +65,7 @@ Der von Axinom bereitgestellte Widevine-Lizenzserver verlangt die Authentifizier
 
 Der Rest des AMP-Codes ist eine standardmäßige AMP-API, wie im AMP-Dokument [hier](http://amp.azure.net/libs/amp/latest/docs/)beschrieben.
 
-Beachten Sie, dass das oben genannte Javascript zum Festlegen des benutzerdefinierten Autorisierungsheaders noch immer ein vorübergehender Ansatz ist, ehe der offizielle endgültige Ansatz in AMP freigegeben wird.
+Das oben genannte Javascript ist zum Festlegen des benutzerdefinierten Autorisierungsheaders noch immer ein vorübergehender Ansatz, ehe der offizielle endgültige Ansatz in AMP freigegeben wird.
 
 ## <a name="jwt-token-generation"></a>Generierung von JWT-Token
 Der Widevine-Lizenzserver von Axinom verlangt die Authentifizierung mittels JWT-Token. Darüber hinaus hat einer der Ansprüche im JWT-Token anstelle eines primitiven Datentyps einen komplexen Objekttyp.
@@ -136,7 +136,7 @@ Widevine-Lizenzserver von Axinom
 
 ### <a name="considerations"></a>Überlegungen
 1. Obwohl der AMS PlayReady-Lizenzbereitstellungsdienst die Angabe "Bearer=" vor einem Authentifizierungstoken erfordert, wird diese vom Widevine-Lizenzserver von Axinom nicht verwendet.
-2. Der Axinom-Kommunikationsschlüssel wird als Signaturschlüssel verwendet. Beachten Sie, dass der Schlüssel eine hexadezimale Zeichenfolge ist. Er muss jedoch beim Codieren als eine Reihe von Bytes und nicht als Zeichenfolge behandelt werden. Dies wird mithilfe der "ConvertHexStringToByteArray"-Methode erreicht.
+2. Der Axinom-Kommunikationsschlüssel wird als Signaturschlüssel verwendet. Der Schlüssel ist eine hexadezimale Zeichenfolge. Er muss jedoch beim Codieren als eine Reihe von Bytes und nicht als Zeichenfolge behandelt werden. Dies wird mithilfe der "ConvertHexStringToByteArray"-Methode erreicht.
 
 ## <a name="retrieving-key-id"></a>Abrufen der Schlüssel-ID
 Sie haben möglicherweise bemerkt, dass im Code zum Generieren eines JWT-Tokens die Schlüssel-ID erforderlich ist. Da das JWT-Token vor dem Laden des AMP-Players bereit sein muss, muss die Schlüssel-ID abgerufen werden, um das JWT-Token zu generieren.
@@ -189,7 +189,7 @@ Die folgenden Parameter sind in der Minilösung erforderlich, die den Widevine-L
 | Kommunikationsschlüssel-ID |Muss als Wert des Anspruchs „com_key_id“ in das JWT-Token eingeschlossen werden (siehe [diesen](media-services-axinom-integration.md#jwt-token-generation) Abschnitt). |
 | Kommunikationsschlüssel |Muss als Signaturschlüssel des JWT-Tokens verwendet werden (siehe [diesen](media-services-axinom-integration.md#jwt-token-generation) Abschnitt). |
 | Schlüsselwert |Muss verwendet werden, um den Inhaltsschlüssel mit einer angegebenen Inhaltsschlüssel-ID zu generieren (siehe [diesen](media-services-axinom-integration.md#content-protection) Abschnitt). |
-| Widevine-Lizenzerwerbs-URL |Muss beim Konfigurieren der Übermittlungsrichtlinie für Medienobjekte für DASH-Streaming verwendet werden (siehe [diesen](media-services-axinom-integration.md#content-protection) Abschnitt). |
+| Widevine-Lizenzerwerbs-URL |Muss beim Konfigurieren der Übermittlungsrichtlinie für Medienobjekte für DASH-Streaming verwendet werden (siehe [dieser](media-services-axinom-integration.md#content-protection) Abschnitt). |
 | Inhaltsschlüssel-ID |Muss als Teil des Werts des Anspruchs "entitlement_message" des JWT-Tokens eingeschlossen werden (siehe [diesen](media-services-axinom-integration.md#jwt-token-generation) Abschnitt). |
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade

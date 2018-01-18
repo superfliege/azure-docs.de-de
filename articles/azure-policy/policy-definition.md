@@ -9,11 +9,11 @@ ms.date: 10/31/2017
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: 1b8fd12e071bfbd01567803370e510e7e07ccb99
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: c4cb8acd12cbda5784d0ea48f7782e47f57db8b5
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -192,7 +192,7 @@ Folgende Felder werden unterstützt:
 * `tags.*`
 * Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
 
-### <a name="effect"></a>Effekt
+### <a name="effect"></a>Wirkung
 Die Richtlinie unterstützt die folgenden Arten von Effekten:
 
 * **Deny** generiert ein Ereignis im Überwachungsprotokoll und lässt die Anforderung fehlschlagen.
@@ -200,7 +200,6 @@ Die Richtlinie unterstützt die folgenden Arten von Effekten:
 * **Append** fügt der Anforderung verschiedene definierte Felder hinzu.
 * **AuditIfNotExists** aktiviert das Überwachen, wenn eine Ressource nicht vorhanden ist.
 * **DeployIfNotExists** stellt eine Ressource bereit, falls noch keine vorhanden ist. Dieser Effekt wird derzeit nur über integrierte Richtlinien unterstützt.
-* **DenyIfNotExists** verweigert das Erstellen einer exist-Bedingung, wenn diese nicht vorhanden ist.
 
 Für **append**müssen Sie die folgenden Details angeben:
 
@@ -216,7 +215,7 @@ Für **append**müssen Sie die folgenden Details angeben:
 
 Der Wert kann entweder eine Zeichenfolge oder ein Objekt im JSON-Format sein.
 
-Mit **AuditIfNotExists**, **DeployIfNotExists** und **DenyIfNotExists** können Sie das Vorhandensein einer untergeordneten Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. verlangen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
+Mit **AuditIfNotExists** und **DeployIfNotExists** können Sie das Vorhandensein einer untergeordneten Ressource auswerten und eine Regel anwenden, wenn diese Ressource nicht vorhanden ist. Sie können z.B. verlangen, dass ein Network Watcher für alle virtuellen Netzwerke bereitgestellt wird.
 Ein Beispiel für das Überwachen, wenn keine VM-Erweiterung bereitgestellt wird, finden Sie unter [Audit if extension does not exist (Überwachen bei nicht vorhandener Erweiterung)](scripts/audit-ext-not-exist.md).
 
 
@@ -226,7 +225,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 **Microsoft.Cache/Redis**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Cache/Redis/enableNonSslPort | Hiermit wird festgelegt, ob der Nicht-SSL-Redis-Serverport (6379) aktiviert ist. |
 | Microsoft.Cache/Redis/shardCount | Hiermit wird die Anzahl der zu erstellenden Shards auf einem Premium-Clustercache festgelegt.  |
@@ -236,13 +235,13 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 **Microsoft.Cdn/profiles**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.CDN/profiles/sku.name | Hiermit wird der Name des Tarifs festgelegt. |
 
 **Microsoft.Compute/disks**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
 | Microsoft.Compute/imagePublisher | Hiermit wird der Herausgeber des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
@@ -252,7 +251,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 **Microsoft.Compute/virtualMachines**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | Legen Sie den Bezeichner des Images fest, das zum Erstellen des virtuellen Computers verwendet wurde. |
 | Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
@@ -269,7 +268,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 **Microsoft.Compute/virtualMachines/extensions**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Compute/virtualMachines/extensions/publisher | Hiermit wird der Name des Herausgebers der Erweiterung festgelegt. |
 | Microsoft.Compute/virtualMachines/extensions/type | Hiermit wird der Typ der Erweiterung festgelegt. |
@@ -277,7 +276,7 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 **Microsoft.Compute/virtualMachineScaleSets**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Compute/imageId | Legen Sie den Bezeichner des Images fest, das zum Erstellen des virtuellen Computers verwendet wurde. |
 | Microsoft.Compute/imageOffer | Hiermit wird das Angebot des Plattformimage oder des Marketplace-Image festgelegt, mit dem die VM erstellt wird. |
@@ -293,26 +292,26 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 **Microsoft.Network/applicationGateways**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Network/applicationGateways/sku.name | Hiermit wird die Größe des Gateways festgelegt. |
 
 **Microsoft.Network/virtualNetworkGateways**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Network/virtualNetworkGateways/gatewayType | Hiermit wird der Typ des virtuellen Netzwerkgateways festgelegt. |
 | Microsoft.Network/virtualNetworkGateways/sku.name | Hiermit wird der Name der Gateway-SKU festgelegt. |
 
 **Microsoft.Sql/servers**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Sql/servers/version | Hiermit wird die Version des Servers festgelegt. |
 
 **Microsoft.Sql/databases**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Sql/servers/databases/edition | Hiermit wird die Edition der Datenbank festgelegt. |
 | Microsoft.Sql/servers/databases/elasticPoolName | Hiermit wird der Name des Pools für elastische Datenbanken festgelegt, in dem die Datenbank enthalten ist. |
@@ -321,14 +320,14 @@ Eigenschaftenaliase dienen zum Zugreifen auf bestimmte Eigenschaften für einen 
 
 **Microsoft.Sql/elasticpools**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | servers/elasticpools | Microsoft.Sql/servers/elasticPools/dtu | Hiermit wird die freigegebene Gesamt-DTU für den Pool für elastische Datenbanken festgelegt. |
 | servers/elasticpools | Microsoft.Sql/servers/elasticPools/edition | Hiermit wird die Edition des Pools für elastische Datenbanken festgelegt. |
 
 **Microsoft.Storage/storageAccounts**
 
-| Alias | Beschreibung |
+| Alias | BESCHREIBUNG |
 | ----- | ----------- |
 | Microsoft.Storage/storageAccounts/accessTier | Hiermit wird die Zugriffsebene für die Abrechnung festgelegt. |
 | Microsoft.Storage/storageAccounts/accountType | Hiermit wird der SKU-Name festgelegt. |

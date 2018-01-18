@@ -1,5 +1,5 @@
 ---
-title: "Einführung in Azure Security Center | Microsoft Docs"
+title: Was ist Azure Security Center?| Microsoft-Dokumentation
 description: Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funktionen und dazu, wie es funktioniert.
 services: security-center
 documentationcenter: na
@@ -12,65 +12,105 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/26/2017
+ms.date: 01/08/2018
 ms.author: terrylan
-ms.openlocfilehash: 21415af0d449d639d000e07afdb4de3680a64774
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 50a54b8d2a73807aa9a0217f7ccf971b8c516494
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="introduction-to-azure-security-center"></a>Einführung in Azure Security Center
-Sie erhalten Informationen zu Azure Security Center, zu dessen wichtigsten Funktionen und dazu, wie es funktioniert.
+# <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
+Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Mit Security Center können Sie Sicherheitsrichtlinien für Ihre Workloads anwenden, die Angriffsfläche für Bedrohungen verringern sowie Angriffe erkennen und darauf reagieren.
 
-## <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
-Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden.  Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberangriffen Schritt halten können.
+Gründe für die Verwendung von Security Center
 
-In der Übersicht von Security Center erhalten Sie einen kurzen Überblick über den Sicherheitsstatus Ihrer Azure-Workloads und Azure-fremden Workloads und können so die Sicherheit Ihrer Workloads ermitteln und bewerten sowie Risiken identifizieren und mindern.
+- **Zentrale Richtlinienverwaltung**: Stellen Sie die Einhaltung unternehmensspezifischer oder gesetzlicher Sicherheitsvorschriften sicher, indem Sie Sicherheitsrichtlinien für alle Hybridcloud-Workloads zentral verwalten.
+- **Laufende Sicherheitsbewertung**: Überwachen Sie die Sicherheit von Computern, Netzwerken, Speicher- und Datendiensten und Anwendungen, um potenzielle Sicherheitsprobleme aufzudecken.
+- **Umsetzbare Empfehlungen**: Beseitigen Sie mit priorisierten, direkt umsetzbaren Sicherheitsempfehlungen Sicherheitslücken, bevor sie von Angreifern ausgenutzt werden können.
+- **Erweiterter Cloudschutz**: Reduzieren Sie Bedrohungen mithilfe eines Just-in-Time-Zugriffs auf Verwaltungsports und Whitelists, um Anwendungen zu steuern, die auf Ihren VMs ausgeführt werden.
+- **Priorisierte Warnungen und Vorfälle**: Konzentrieren Sie sich mittels priorisierter Warnungen und Vorfälle auf die größten Bedrohungen.
+- **Integrierte Sicherheitslösungen**: Sammeln, durchsuchen und analysieren Sie Sicherheitsdaten aus verschiedensten Quellen (einschließlich verbundener Partnerlösungen).
 
-![Übersicht](./media/security-center-intro/security-center-intro-fig1.png)
+In der **Übersicht über Security Center** erhalten Sie einen kurzen Überblick über den Sicherheitsstatus Ihrer Azure-Workloads und Azure-fremden Workloads und können so die Sicherheit Ihrer Workloads ermitteln und bewerten sowie Risiken identifizieren und mindern. Dank integrierter Dashboards erhalten Sie sofort Einblick in Sicherheitswarnungen und -lücken, die Aufmerksamkeit erfordern.
 
-## <a name="why-use-security-center"></a>Gründe für die Verwendung von Security Center
+![Übersicht][1]
 
-**Einheitliche Sichtbarkeit und Steuerung**
+## <a name="centralized-policy-management"></a>Zentrale Richtlinienverwaltung
+Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Security Center können Sie Richtlinien definieren und auf die Art der Workload oder Vertraulichkeit Ihrer Daten abstimmen.
 
-- **Verstehen des Sicherheitsstatus hybrider Workloads**. Verwalten Sie die Sicherheit aller Hybridcloud-Workloads (lokale Clouds, Azure-Clouds und andere Cloudplattformen) über eine Konsole. Dank integrierter Dashboards erhalten Sie sofort Einblicke in Sicherheitsprobleme, die Ihre Aufmerksamkeit erfordern.
-- **Einblick in die Cloudworkloads**. Halten Sie Schritt mit sich schnell ändernden Cloudworkloads. Erkennen und integrieren Sie automatisch neue Ressourcen, die in Ihren Azure-Abonnements erstellt wurden.
-- **Zentrale Richtlinienverwaltung**. Stellen Sie die Einhaltung unternehmensspezifischer oder gesetzlicher Sicherheitsvorschriften sicher, indem Sie Sicherheitsrichtlinien für alle Hybridcloud-Workloads zentral verwalten.
-- **Sicherheitsdaten aus zahlreichen Quellen**. Sammeln, durchsuchen und analysieren Sie Sicherheitsdaten aus verschiedensten Quellen (einschließlich verbundener Partnerlösungen wie Netzwerkfirewalls und anderer Microsoft-Dienste). 
-- **Integration in vorhandene Sicherheitsworkflows**. Mit REST-APIs können Sie auf Sicherheitsinformationen zugreifen und sie integrieren und analysieren, um vorhandene Tools und Prozesse zu verknüpfen.
-- **Berichterstellung zur Compliance**. Demonstrieren Sie mithilfe von Sicherheitsdaten und Datenerkenntnissen die Compliance, und erstellen Sie einfach Nachweise für Prüfer.
+Security Center-Richtlinien enthalten folgende Komponenten:
 
-**Adaptiver Schutz vor Bedrohungen**
+- **Datensammlung:** Bestimmt die Einstellungen für die Agent-Bereitstellung und [Sammlung von Sicherheitsdaten](security-center-enable-data-collection.md).
+- **Sicherheitsrichtlinie:** Bestimmt, welche Steuerungsinstrumente Security Center überwacht und empfiehlt, indem die [Sicherheitsrichtlinie](security-center-policies.md) bearbeitet wird.
+- **E-Mail-Benachrichtigungen:** Bestimmt Sicherheitskontakte und Einstellungen für [E-Mail-Benachrichtigungen](security-center-provide-security-contact-details.md).
+- **Tarif:** Definiert die [Tarifauswahl](security-center-pricing.md) (Free oder Standard). Der gewählte Tarif beeinflusst, welche Security Center-Features für betroffene Ressourcen verfügbar sind.
 
-- **Fortlaufende Sicherheitsbewertung**. Überwachen Sie die Sicherheit Ihrer Computer, Netzwerke und Azure-Dienste mithilfe Hunderter integrierter oder selbst erstellter Sicherheitsbewertungen. Identifizieren Sie Softwarekomponenten und Konfigurationen, die anfällig für Angriffe sind.
-- **Direkt umsetzbare Empfehlungen**. Beseitigen Sie mit priorisierten, direkt umsetzbaren Sicherheitsempfehlungen und integrierten Playbooks für die Automatisierung Sicherheitslücken, bevor sie von Angreifern ausgenutzt werden können.
-- **Adaptive Anwendungssteuerungen**. Blockieren Sie Schadsoftware und andere unerwünschten Anwendungen mithilfe von Whitelist-Empfehlungen, die auf Ihre spezifischen Azure-Workloads abgestimmt sind und durch Machine Learning unterstützt werden. 
-- **Sicherheit beim Netzwerkzugriff**. Verkleinern Sie die Angriffsfläche des Netzwerks mit kontrolliertem Just-in-Time-Zugriff auf die Verwaltungsports virtueller Azure-Computer, um die Gefahr von Brute-Force- und anderen Netzwerkangriffen erheblich zu senken.
+![Sicherheitsrichtlinie][2]
 
-**Intelligente Bedrohungserkennung und entsprechende Gegenmaßnahmen**
+Weitere Informationen finden Sie in der [Übersicht über Sicherheitsrichtlinien](security-center-policies-overview.md).
 
-- **Umfassendste Threat Intelligence in der Branche**. Nutzen Sie den Microsoft Intelligent Security Graph, der Billionen Signale von Microsoft-Diensten und -Systemen weltweit nutzt, um neue und aktuelle Bedrohungen zu ermitteln.
-- **Erweiterte Bedrohungserkennung**. Nutzen Sie integrierte Verhaltensanalysen und Machine Learning, um Angriffe und Zero-Day-Exploits zu erkennen. Überwachen Sie Netzwerke, Computer und Clouddienste auf neue Angriffe und auf Aktivitäten nach einer Sicherheitsverletzung.
-- **Priorisierte Warnungen und Vorfälle**. Konzentrieren Sie sich zunächst auf die größten Bedrohungen. Dabei helfen Ihnen priorisierte Warnungen und Vorfälle, verschiedene Warnungstypen einem einzelnen Angriffsversuch zuzuordnen. Sie können auch eigene benutzerdefinierte Sicherheitswarnungen erstellen.
-- **Optimierte Untersuchung**. Bewerten Sie über eine visuelle, interaktive Oberfläche schnell den Umfang und die Auswirkungen eines Angriffs. Verwenden Sie vordefinierte Abfragen oder Ad-hoc-Abfragen für eine ausführlichere Untersuchung von Sicherheitsdaten. 
-- **Kontextbezogene Threat Intelligence**. Visualisieren Sie die Quelle von Angriffen auf einer interaktiven Weltkarte. Verwenden Sie integrierte Threat Intelligence-Berichte, um wertvolle Einblicke in die Techniken und Ziele bekannter böswilliger Akteure zu erhalten.
+## <a name="continuous-security-assessment"></a>Laufende Sicherheitsbewertung
+Security Center analysiert den Sicherheitsstatus Ihrer Computeressourcen, virtuellen Netzwerke, Speicher- und Datendienste sowie Anwendungen. Die laufende Bewertung hilft Ihnen dabei, potenzielle Sicherheitsprobleme zu erkennen, z.B. Systeme mit fehlenden Sicherheitsupdates oder ungeschützten Netzwerkports. Wählen Sie im Abschnitt „Prävention“ eine Kachel aus, um weitere Informationen anzuzeigen, einschließlich einer Liste mit Ressourcen und Sicherheitsrisiken, die erkannt wurden.
 
-## <a name="get-started"></a>Erste Schritte
-Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Security Center wird mit Ihrem Azure-Abonnement aktiviert. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/pricing/free-trial/)registrieren. 
+![Überwachung der Sicherheitsintegrität][3]
 
-[Erste Schritte mit Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-get-started) werden Sie schnell durch die Komponenten zur Sicherheitsüberwachung und Richtlinienverwaltung von Security Center geführt. 
+Weitere Informationen finden Sie unter [Überwachen der Sicherheitsintegrität](security-center-monitoring.md).
 
+## <a name="actionable-recommendations"></a>Umsetzbare Empfehlungen
+Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen und Azure-fremder Ressourcen, um potenzielle Sicherheitsrisiken zu erkennen. Eine Liste mit priorisierten Sicherheitsempfehlungen führt Sie durch den Prozess der Behebung von Sicherheitsproblemen.
+
+![Empfehlungen][4]
+
+Weitere Informationen finden Sie unter [Verwalten von Sicherheitsempfehlungen](security-center-recommendations.md).
+
+## <a name="just-in-time-vm-access"></a>Just-in-Time-VM-Zugriff
+Verkleinern Sie die Angriffsfläche des Netzwerks mithilfe eines gesteuerten Just-in-Time-Zugriffs auf die Verwaltungsports virtueller Azure-Computer, um die Gefahr von Brute-Force- und anderen Netzwerkangriffen erheblich zu senken.
+
+![Just-in-Time-VM-Zugriff][5]
+
+Legen Sie Regeln fest, wie Benutzer eine Verbindung mit virtuellen Computern herstellen können. Bei Bedarf kann der Zugriff über das Security Center oder PowerShell angefordert werden. Solange die Anforderung den Regeln entspricht, wird der Zugriff für die angeforderte Zeit automatisch gewährt.
+
+Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe des Just-In-Time-Features](security-center-just-in-time.md).
+
+## <a name="adaptive-application-controls"></a>Adaptive Anwendungssteuerungen
+Blockieren Sie Schadsoftware und andere unerwünschten Anwendungen mithilfe von Whitelist-Empfehlungen, die auf Ihre spezifischen Azure-Workloads abgestimmt sind und durch Machine Learning unterstützt werden.
+
+![Adaptive Anwendungssteuerungen][6]
+
+Überprüfen und klicken Sie, um die empfohlenen Whitelistregeln für Anwendungen anzuwenden, die vom Security Center generiert wurden, oder um bereits konfigurierte Regeln zu bearbeiten.
+
+Weitere Informationen finden Sie unter [Adaptive Anwendungssteuerungen](security-center-adaptive-application.md).
+
+## <a name="prioritized-alerts-and-incidents"></a>Priorisierte Warnungen und Vorfälle
+Security Center nutzt fortschrittliche Analysefunktionen und globale Bedrohungsdaten, um eingehende Angriffe und Aktivitäten nach einem Angriff zu erkennen. Warnungen werden priorisiert und in Vorfälle gruppiert, sodass Sie sich auf die wichtigsten Bedrohungen konzentrieren können. Sie können auch eigene benutzerdefinierte Sicherheitswarnungen erstellen.
+
+![Priorisierte Warnungen und Vorfälle][7]
+
+Sie können Umfang und Auswirkungen eines Angriffs auf einer visuellen, interaktiven Untersuchungsoberfläche schnell einschätzen und vordefinierte oder Ad-hoc-Abfragen zur detaillierten Untersuchung von Sicherheitsdaten verwenden.
+
+Weitere Informationen finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen](security-center-managing-and-responding-alerts.md).
+
+## <a name="integrate-your-security-solutions"></a>Integrieren Ihrer Sicherheitslösungen
+Sie können in Security Center Sicherheitsdaten aus verschiedensten Quellen (einschließlich verbundener Partnerlösungen wie Netzwerkfirewalls und anderer Microsoft-Dienste) sammeln, durchsuchen und analysieren.
+
+![Integrieren von Sicherheitslösungen][8]
+
+Weitere Informationen finden Sie unter [Integrieren von Sicherheitslösungen](security-center-partner-integration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument wurden Security Center, seine wichtigsten Funktionen sowie die ersten Schritte zu seiner Nutzung vorgestellt. Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* [Planungs- und Betriebshandbuch für Azure Security Center:](security-center-planning-and-operations-guide.md) Hier erfahren Sie, wie Sie die Verwendung von Security Center auf Grundlage der Sicherheitsanforderungen und des Cloudverwaltungsmodells Ihres Unternehmens optimieren können.
-* [Festlegen von Sicherheitsrichtlinien:](https://docs.microsoft.com/azure/security-center/security-center-policies) Erfahren Sie, wie Sie Sicherheitsrichtlinien für Ihre Azure-Abonnements und -Ressourcengruppen konfigurieren.
-* [Verwalten von Sicherheitsempfehlungen:](https://docs.microsoft.com/azure/security-center/security-center-recommendations) Erfahren Sie, wie Empfehlungen Ihnen beim Schutz Ihrer Azure- und Nicht-Azure-Ressourcen helfen.
-* [Überwachen der Sicherheitsintegrität:](https://docs.microsoft.com/azure/security-center/security-center-monitoring) Erfahren Sie, wie Sie die Integrität Ihrer Azure-und Nicht-Azure-Ressourcen überwachen.
-* [Verwalten von und Reagieren auf Sicherheitswarnungen:](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) Erfahren Sie, wie Sie Sicherheitswarnungen verwalten und darauf reagieren.
-* [Überwachen von Partnerlösungen:](https://docs.microsoft.com/azure/security-center/security-center-partner-solutions) Erfahren Sie, wie der Integritätsstatus Ihrer Partnerlösungen überwacht wird.
-* [Security Center – Häufig gestellte Fragen:](https://docs.microsoft.com/azure/security-center/security-center-faq) Hier finden Sie häufig gestellte Fragen zur Verwendung von Security Center.
+- Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/free/)registrieren.
+- Der Security Center-Tarif „Free“ wird mit Ihrem Azure-Abonnement aktiviert. Um die Vorteile der erweiterten Funktionen für die Sicherheitsverwaltung und Erkennung von Bedrohungen nutzen zu können, müssen Sie ein Upgrade auf den Tarif „Standard“ durchführen. Der Standard-Tarif ist für die ersten 60 Tage kostenlos. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+- Wenn Sie Security Center Standard nun aktivieren möchten, erfahren Sie im [Schnellstart: Einbinden Ihres Azure-Abonnements in Azure Security Center](security-center-get-started.md), welche Schritte Sie ausführen müssen.
 
 
+<!--Image references-->
+[1]: ./media/security-center-intro/overview.png
+[2]: ./media/security-center-intro/security-policy.png
+[3]: ./media/security-center-intro/compute.png
+[4]: ./media/security-center-intro/recommendations.png
+[5]: ./media/security-center-intro/just-in-time-vm-access.png
+[6]: ./media/security-center-intro/adaptive-app-controls.png
+[7]: ./media/security-center-intro/security-alerts.png
+[8]: ./media/security-center-intro/security-solutions.png

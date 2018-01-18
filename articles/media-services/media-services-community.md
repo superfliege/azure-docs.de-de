@@ -14,23 +14,22 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: ef77ed3a4efee7ebcdd716376be78db38ce46f8f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96bd97abf598414ebc88e955437c02873ff43ca8
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services-Community
-Auf dieser Seite der Azure Media Services-Community (AMS) lernen Sie verschiedene Möglichkeiten kennen, wie Sie Neuigkeiten zu AMS erfahren, sich neue Videos und Podcasts ansehen, Fragen stellen und Feedback geben können.   
+Auf dieser Seite der Azure Media Services-Community (AMS) lernen Sie verschiedene Möglichkeiten kennen, wie Sie Neuigkeiten zu AMS erfahren. Sie können auch neue Videos und Podcasts ansehen, Fragen stellen und Feedback geben.   
 
 ## <a name="videos-and-podcasts"></a>Videos und Podcasts
-| Episode | Referent | Datum |
-| --- | --- | --- |
-| [Protecting your Media Content with DRM](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/) |Mingfei Yang |19.02.2016 |
-| [Protecting your Media Content with AES Encryption](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/) |Mingfei Yang |19.02.2016 |
-| [Azure Media Services Developer Deep Dive](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/) |Mingfei Yang |27.04.2015 |
-| [Azure Media Indexer automatically creates transcripts for your media](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/) |Adarsh Solanki |09.07.2015 |
-| [Microsoft Hyperlapse in Azure Media Services with Adarsh Solanki](https://azure.microsoft.com/documentation/videos/microsoft-hyperlapse-in-azure-media-services-with-adarsh-solanki/) |Adarsh Solanki |07.10.2015 |
+
+- [Protecting your Media Content with DRM](https://azure.microsoft.com/documentation/videos/azurefridayprotectingyourmediacontentdrm/) 
+- [Protecting your Media Content with AES Encryption](https://azure.microsoft.com/documentation/videos/azure-media-services-protecting-your-media-content-with-aes-encryption/) 
+- [Azure Media Services Developer Deep Dive](https://azure.microsoft.com/documentation/videos/build-2015-azure-media-services-developer-deep-dive/) 
+- [Azure Media Indexer automatically creates transcripts for your media](https://azure.microsoft.com/documentation/videos/azure-media-indexer-autoatically-creates-transcripts-for-your-media-with-adarsh-solanki/)  
+- [Microsoft Hyperlapse in Azure Media Services with Adarsh Solanki](https://azure.microsoft.com/documentation/videos/microsoft-hyperlapse-in-azure-media-services-with-adarsh-solanki/) 
 
 ## <a name="provide-feedback-and-make-suggestions"></a>Feedback und Vorschläge
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]

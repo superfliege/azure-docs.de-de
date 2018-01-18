@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 58f7f71fd619eea2865ed42d2808fe6ae3e75c1f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 3133b0166689142a635926077bdb4e0abeba287c
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="api-management-policy-expressions"></a>Richtlinienausdrücke in API Management
 Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt Zugriff auf die implizit bereitgestellte [Kontextvariable](api-management-policy-expressions.md#ContextVariables) und eine zulässige [Teilmenge](api-management-policy-expressions.md#CLRTypes) von .NET Framework-Typen.  
@@ -26,13 +26,13 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 > [!TIP]
 >  Weitere Informationen zu Richtlinienausdrücken finden Sie im Video zu [Richtlinienausdrücken](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/).  
 >   
->  Demonstrationen der Konfiguration von Richtlinien und der Verwendung von Richtlinienausdrücken finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Episode 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Dieses Video enthält die folgenden Demonstrationen von Richtlinienausdrücken.  
+>  Demonstrationen der Konfiguration von Richtlinien und der Verwendung von Richtlinienausdrücken finden Sie unter [Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) (Cloud Cover-Episode 177 zu weiteren API Management-Funktionen mit Vlad Vinogradsky). Dieses Video enthält die folgenden Demonstrationen von Richtlinienausdrücken:  
 >   
->  -   10:30 – Hier sehen Sie, wie Richtlinien auf API-Ebene angewendet werden, um dem Back-End-Dienst mithilfe der Richtlinien [Abfragezeichenfolgenparameter festlegen](api-management-transformation-policies.md#SetQueryStringParameter) und [HTTP-Header festlegen](api-management-transformation-policies.md#SetHTTPheader) Kontextinformationen bereitzustellen. Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie diese Richtlinien in Aktion sehen können.  
-> -   13:50 – Hier wird die Verwendung der Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) gezeigt, um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren. Ab 18:50 finden Sie eine Demonstration des Aufrufs eines Vorgangs über das Entwicklerportal, sowohl mit dem als auch ohne das erforderliche Autorisierungstoken.  
-> -   21:00 – Hier sehen Sie, wie eine [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ablaufverfolgung eingesetzt wird, um die Auswertung von Richtlinien und die Ergebnisse der Auswertungen anzuzeigen.  
-> -   25:25 – Hier wird die Verwendung von Richtlinienausdrücken mit den Richtlinien [Aus dem Cache abrufen](api-management-caching-policies.md#GetFromCache) und [In Cache ablegen](api-management-caching-policies.md#StoreToCache) gezeigt, um die Dauer des API Management-Antwortcachings zu konfigurieren. Diese entspricht dem Zwischenspeichern von Antworten des Back-End-Diensts wie durch die `Cache-Control`-Anweisung des Back-End-Diensts angegeben.  
-> -   34:30 – Hier wird gezeigt, wie Inhalte gefiltert werden, indem Datenelemente mit den Richtlinien [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Text festlegen](api-management-transformation-policies.md#SetBody) aus der über den Back-End-Dienst empfangenen Antwort entfernt werden. Beginnen Sie bei 31:50, um eine Übersicht über die [API „The Dark Sky Forecast“](https://developer.forecast.io/) zu erhalten, die für diese Demo verwendet wird.  
+>  -   10:30 – Hier wird das Bereitstellen von Kontextinformationen für Ihren Back-End-Dienst gezeigt. Verwenden Sie die Richtlinien [Abfragezeichenfolgenparameter festlegen](api-management-transformation-policies.md#SetQueryStringParameter) und [HTTP-Header festlegen](api-management-transformation-policies.md#SetHTTPheader), um diese Informationen bereitzustellen. Bei 12:10 wird das Aufrufen eines Vorgangs im Entwicklerportal gezeigt, sodass Sie diese Richtlinien in Aktion sehen können.  
+> -   13:50 – Hier wird die Verwendung der Richtlinie [JWT überprüfen](api-management-access-restriction-policies.md#ValidateJWT) gezeigt, um den Zugriff auf Vorgänge basierend auf Tokenansprüchen vorab zu autorisieren. Spulen Sie bis 15:00 vor, um zu sehen, wie die Richtlinien im Richtlinien-Editor konfiguriert werden. Bei 18:50 wird das Aufrufen eines Vorgangs aus dem Entwicklerportal sowohl mit als auch ohne das benötigte Autorisierungstoken gezeigt.  
+> -   21:00 – Hier wird die Verwendung einer [API-Inspektor](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/)-Ablaufverfolgung veranschaulicht, um die Auswertung von Richtlinien und die Ergebnisse dieser Auswertungen anzuzeigen.  
+> -   25:25 – Hier wird gezeigt, wie Ausdrücke mit den Richtlinien [Aus Cache abrufen](api-management-caching-policies.md#GetFromCache) und [In Cache speichern](api-management-caching-policies.md#StoreToCache) verwendet werden, um das Zwischenspeichern von Antworten für API Management zu konfigurieren. Legen Sie eine Dauer fest, die dem Zwischenspeichern von Antworten des Back-End-Diensts entspricht, wie in der `Cache-Control`-Anweisung des Back-End-Diensts angegeben.  
+> -   34:30 – Hier wird gezeigt, wie Inhalte gefiltert werden. Entfernen Sie Datenelemente mit den Richtlinien [Ablaufsteuerung](api-management-advanced-policies.md#choose) und [Text festlegen](api-management-transformation-policies.md#SetBody) aus der vom Back-End empfangenen Antwort. Beginnen Sie bei 31:50, um eine Übersicht über die [API „The Dark Sky Forecast“](https://developer.forecast.io/) zu erhalten, die für diese Demo verwendet wird.  
 > -   Informationen zum Herunterladen der in diesem Video verwendeten Richtlinienanweisungen finden Sie im Github-Repository unter [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies).  
   
   
@@ -68,10 +68,10 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 ```  
   
 ##  <a name="PolicyExpressionsUsage"></a> Verwendung  
- Ausdrücke können als Attributwerte oder Textwerte in einer beliebigen API Management-[Richtlinie](api-management-policies.md) verwendet werden, sofern in der Richtlinienreferenz nicht anders angegeben.  
+ Ausdrücke können als Attributwerte oder Textwerte in beliebigen API Management-[Richtlinien](api-management-policies.md) verwendet werden (sofern in der Richtlinienreferenz nicht anders angegeben).  
   
 > [!IMPORTANT]
->  Beachten Sie, dass bei Verwendung von Richtlinienausdrücken nur eine begrenzte Überprüfung der Richtlinienausdrücke beim Definieren der Richtlinie stattfindet. Da die Ausdrücke vom Gateway zur Laufzeit in der eingehenden oder ausgehenden Pipeline ausgeführt werden, führen zur Laufzeit von den Richtlinienausdrücken generierte Ausnahmen zu einem Laufzeitfehler im API-Aufruf.  
+>  Bei Verwendung von Richtlinienausdrücken erfolgt nur eine begrenzte Überprüfung der Richtlinienausdrücke beim Definieren der Richtlinie. Ausdrücke werden vom Gateway zur Laufzeit ausgeführt, und durch Richtlinienausdrücke generierte Ausnahmen führen zu einem Laufzeitfehler.  
   
 ##  <a name="CLRTypes"></a> In Richtlinienausdrücken zulässige .NET Framework-Typen  
  Die folgende Tabelle enthält die .NET Framework-Typen und die zugehörigen Mitglieder, die in Richtlinienausdrücken zulässig sind.  
@@ -140,7 +140,7 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |System.Text.RegularExpressions.Group|Captures, Success|  
 |System.Text.RegularExpressions.GroupCollection|Count, Item|  
 |System.Text.RegularExpressions.Match|Empty, Groups, Result|  
-|System.Text.RegularExpressions.Regex|.ctor, IsMatch, Match, Matches, Replace|  
+|System.Text.RegularExpressions.Regex|(Konstruktor), IsMatch, Match, Matches, Replace|  
 |System.Text.RegularExpressions.RegexOptions|Compiled, IgnoreCase, IgnorePatternWhitespace, Multiline, None, RightToLeft, Singleline|  
 |System.TimeSpan|Alle|  
 |System.Tuple|Alle|  
@@ -172,8 +172,8 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
   
 |Kontextvariable|Zulässige Methoden, Eigenschaften und Parameterwerte|  
 |----------------------|-------------------------------------------------------|  
-|context|Api: IApi<br /><br /> Bereitstellung<br /><br /> LastError<br /><br /> Vorgang<br /><br /> Produkt<br /><br /> Anforderung<br /><br /> RequestId: GUID<br /><br /> Antwort<br /><br /> Abonnement<br /><br /> Tracing: bool<br /><br /> Benutzer<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
-|context.Api|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> ServiceUrl: IUrl|  
+|context|Api: IApi<br /><br /> Bereitstellung<br /><br /> LastError<br /><br /> Vorgang<br /><br /> Produkt<br /><br /> Anforderung<br /><br /> RequestId: GUID<br /><br /> response<br /><br /> Abonnement<br /><br /> Tracing: bool<br /><br /> Benutzer<br /><br /> Variables:IReadOnlyDictionary<string, object><br /><br /> void Trace(message: string)|  
+|context.Api|Id: string<br /><br /> IsRevisionCurrent: bool<br /><br />  Name: string<br /><br /> Path: string<br /><br /> Revision: string<br /><br /> ServiceUrl: IUrl<br /><br /> Version: string |  
 |context.Deployment|Region: string<br /><br /> ServiceName: string<br /><br /> Certificates: IReadOnlyDictionary<string, X509Certificate2>|  
 |context.LastError|Source: string<br /><br /> Reason: string<br /><br /> Message: string<br /><br /> Scope: string<br /><br /> Section: string<br /><br /> Path: string<br /><br /> PolicyId: string<br /><br /> Weitere Informationen zu context.LastError finden Sie unter [Fehlerbehandlung](api-management-error-handling-policies.md).|  
 |context.Operation|Id: string<br /><br /> Method: string<br /><br /> Name: string<br /><br /> UrlTemplate: string|  
@@ -186,14 +186,14 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |context.User|Email: string<br /><br /> FirstName: string<br /><br /> Groups: IEnumerable<IGroup\><br /><br /> Id: string<br /><br /> Identities: IEnumerable<IUserIdentity\><br /><br /> LastName: string<br /><br /> Note: string<br /><br /> RegistrationDate: DateTime|  
 |IApi|Id: string<br /><br /> Name: string<br /><br /> Path: string<br /><br /> Protocols: IEnumerable<string\><br /><br /> ServiceUrl: IUrl<br /><br /> SubscriptionKeyParameterNames: ISubscriptionKeyParameterNames|  
 |IGroup|Id: string<br /><br /> Name: string|  
-|IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Mit der `context.Request.Body.As<T>`-Methode und der `context.Response.Body.As<T>`-Methode werden ein Anforderungs- und ein Antwortnachrichtentext in einem angegebenen Typ `T` gelesen. In der Standardeinstellung verwendet die Methode den Datenstrom des Originalnachrichtentexts und bewirkt, dass er nach seiner Rückgabe nicht mehr verfügbar ist. Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter auf `true` fest. Ein Beispiel finden Sie [hier](api-management-transformation-policies.md#SetBody).|  
+|IMessageBody|As<T\>(preserveContent: bool = false): Where T: string, JObject, JToken, JArray, XNode, XElement, XDocument<br /><br /> Mit der `context.Request.Body.As<T>`-Methode und der `context.Response.Body.As<T>`-Methode werden ein Anforderungs- und ein Antwortnachrichtentext in einem angegebenen Typ `T` gelesen. Standardmäßig verwendet die Methode den Datenstrom des Originalnachrichtentexts und sorgt dafür, dass er nach seiner Rückgabe nicht mehr verfügbar ist. Wenn dies vermieden werden und die Methode eine Kopie des Textdatenstroms verarbeiten soll, legen Sie den `preserveContent`-Parameter auf `true` fest. Ein Beispiel finden Sie [hier](api-management-transformation-policies.md#SetBody).|  
 |IUrl|Host: string<br /><br /> Path: string<br /><br /> Port: int<br /><br /> Query: IReadOnlyDictionary<string, string[]><br /><br /> QueryString: string<br /><br /> Scheme: string|  
 |IUserIdentity|Id: string<br /><br /> Provider: string|  
 |ISubscriptionKeyParameterNames|Header: string<br /><br /> Query: string|  
-|string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName: string<br /><br /> defaultValue: string<br /><br /> Gibt durch Trennzeichen getrennte Abfrageparameterwerte oder `defaultValue` zurück, wenn der Parameter nicht gefunden wird.|  
+|string IUrl.Query.GetValueOrDefault(queryParameterName: string, defaultValue: string)|queryParameterName: string<br /><br /> defaultValue: string<br /><br /> Gibt durch Trennzeichen getrennte Abfrageparameterwerte oder `defaultValue` zurück, wenn der Parameter nicht gefunden wurde.|  
 |T context.Variables.GetValueOrDefault<T\>(variableName: string, defaultValue: T)|variableName: string<br /><br /> defaultValue: T<br /><br /> Gibt eine Variablenwertumwandlung in den Typ `T` oder `defaultValue` zurück, wenn die Variable nicht gefunden wird.<br /><br /> Diese Methode löst eine Ausnahme aus, wenn der angegebene Typ nicht mit dem tatsächlichen Typ der zurückgegebenen Variablen übereinstimmt.|  
 |BasicAuthCredentials AsBasic(input: this string)|input: string<br /><br /> Wenn der Eingabeparameter einen gültigen Anforderungsheaderwert für die Autorisierung der HTTP-Standardauthentifizierung enthält, gibt die Methode ein Objekt des Typs `BasicAuthCredentials` zurück; andernfalls gibt die Methode NULL zurück.|  
-|bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: string<br /><br /> result: out BasicAuthCredentials<br /><br /> Wenn der Eingabeparameter einen gültigen Anforderungsheaderwert für die Autorisierung der HTTP-Standardauthentifizierung enthält, gibt die Methode `true` zurück, und der Ergebnisparameter enthält einen Wert des Typs `BasicAuthCredentials`; andernfalls gibt die Methode `false` zurück.|  
+|bool TryParseBasic(input: this string, result: out BasicAuthCredentials)|input: string<br /><br /> result: out BasicAuthCredentials<br /><br /> Wenn der Eingabeparameter einen gültigen Wert für die HTTP-Standardauthentifizierungsautorisierung im Anforderungsheader enthält, gibt die Methode `true` zurück, und der Ergebnisparameter enthält einen Wert des Typs `BasicAuthCredentials`. Andernfalls gibt die Methode `false` zurück.|  
 |BasicAuthCredentials|Password: string<br /><br /> UserId: string|  
 |Jwt AsJwt(input: this string)|input: string<br /><br /> Wenn der Eingabeparameter einen gültigen JWT-Tokenwert enthält, gibt die Methode ein Objekt des Typs `Jwt` zurück; andernfalls gibt die Methode `null` zurück.|  
 |bool TryParseJwt(input: this string, result: out Jwt)|input: string<br /><br /> result: out Jwt<br /><br /> Wenn der Eingabeparameter einen gültigen JWT-Tokenwert enthält, gibt die Methode `true` zurück, und der Ergebnisparameter enthält einen Wert des Typs `Jwt`; andernfalls gibt die Methode `false` zurück.|  
@@ -202,9 +202,9 @@ Die Syntax für Richtlinienausdrücke entspricht C# 6.0. Jeder Ausdruck besitzt 
 |byte[] Encrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - zu verschlüsselnder Klartext<br /><br />alg - Name eines symmetrischen Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt verschlüsselten Klartext zurück.|
 |byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - zu verschlüsselnder Klartext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />Gibt verschlüsselten Klartext zurück.|
 |byte[] Encrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - zu verschlüsselnder Klartext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt verschlüsselten Klartext zurück.|
-|byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - zu verschlüsselnder Chiffretext<br /><br />alg - Name eines symmetrischen Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
-|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - zu verschlüsselnder Chiffretext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />Gibt Klartext zurück.|
-|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - zu verschlüsselnder Chiffretext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
+|byte[] Decrypt(input: this byte[], alg: string, key:byte[], iv:byte[])|input - zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Name eines symmetrischen Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />Gibt Klartext zurück.|
+|byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - Eingabe – zu entschlüsselnder Verschlüsselungstext<br /><br />alg - Verschlüsselungsalgorithmus<br /><br />key - Verschlüsselungsschlüssel<br /><br />iv - Initialisierungsvektor<br /><br />Gibt Klartext zurück.|
 
 ## <a name="video"></a>Video
 

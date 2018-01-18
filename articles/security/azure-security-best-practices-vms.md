@@ -1,5 +1,5 @@
 ---
-title: "Bewährte Methoden für die Sicherheit virtueller Azure-Computer | Microsoft-Dokumentation"
+title: "Bewährte Methoden für die Sicherheit virtueller Computer in Azure"
 description: "Dieser Artikel enthält eine Reihe bewährter Sicherheitsmethoden für virtuelle Computer in Azure."
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
-ms.openlocfilehash: db8b0cc58738308116da84f2a45d6507c87f3cde
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 6541d09d7f1a7e85333f54797dba7db79328e9de
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="best-practices-for-azure-vm-security"></a>Bewährte Methoden für die Sicherheit virtueller Azure-Computer
 
@@ -114,7 +114,7 @@ Security Center kann aktiv nach Bedrohungen suchen, und potenzielle Bedrohungen 
 
 Im folgenden Video erfahren Sie, wie Security Center Sie beim Identifizieren potenzieller Bedrohungen für Ihre virtuellen Computer in Azure unterstützt:
 
-<iframe src="https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Security-Center-in-Incident-Response/player]
 
 Organisationen, die für ihre virtuellen Computer kein hohes Maß an Sicherheit erzwingen, bleiben potenzielle Vorfälle, bei denen nicht autorisierte Benutzer versuchen, die eingerichteten Sicherheitskontrollen zu umgehen, verborgen.
 

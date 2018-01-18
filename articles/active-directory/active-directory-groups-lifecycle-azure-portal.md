@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 01/05/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: d485d2e7d22ea79a87dc52dbc063a811f4a1a2ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b454ed7257e8d3f91e585cee2b559c54371fb15
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>Konfigurieren des Ablaufs für Office 365-Gruppen (Vorschauversion)
 
@@ -30,9 +30,7 @@ Der Lebenszyklus von Office 365-Gruppen kann jetzt durch Festlegen von Ablauffea
 -   Gelöschte Office 365-Gruppen können innerhalb von 30 Tagen von den Gruppenbesitzern oder vom Administrator wiederhergestellt werden.
 
 > [!NOTE]
-> Zum Festlegen des Ablaufs für Office 365-Gruppen ist eine Azure Active Directory Premium-Lizenz oder eine Azure Active Directory Basic-EDU-Lizenz für alle Mitglieder der Gruppen erforderlich, auf die Ablaufeinstellungen angewendet werden.
-> 
-> Hinweis für Kunden mit Azure Active Directory Basic-Lizenz, die diese Richtlinie zum ersten Mal konfigurieren: Verwenden Sie Azure Active Directory-PowerShell-Cmdlets. Danach können Sie die Ablaufeinstellungen entweder mithilfe von PowerShell oder über das Azure AD-Portal aktualisieren (mit einem Konto, das in Ihrem Azure AD-Mandanten als Benutzerkontoadministrator oder globaler Administrator fungiert).
+> Zum Festlegen des Ablaufs für Office 365-Gruppen ist eine Azure Active Directory Premium-Lizenz oder eine für alle Mitglieder der Gruppen erforderlich, auf die Ablaufeinstellungen angewendet werden.
 
 Informationen zum Herunterladen und Installieren der Azure AD-PowerShell-Cmdlets finden Sie unter [Azure Active Directory PowerShell for Graph - Public Preview Release 2.0.0.137](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137) (Azure Active Directory: PowerShell für Graph – öffentliche Vorschauversion 2.0.0.137).
 

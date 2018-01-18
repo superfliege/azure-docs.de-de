@@ -3,10 +3,9 @@ title: Integrieren von Anwendungen in Azure Active Directory
 description: "Es wird beschrieben, wie Sie eine Anwendung in Azure AD hinzufügen, aktualisieren oder sie aus Azure Active Directory (Azure AD) entfernen."
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: PatAltimore
 manager: mtillman
 editor: mbaldwin
-ms.assetid: ae637be5-0b71-4b1e-b1fe-b83df3eb4845
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -16,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: b4e2ff19cb14ac0abdea1d76ee965b542f6fa7ec
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e398536ff6f660c75e4e063040eab33a831d65c6
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Integrieren von Anwendungen in Azure Active Directory
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -35,7 +34,7 @@ Weitere Informationen zu den beiden Azure AD-Objekten, die eine registrierte Anw
 Jede Anwendung muss zunächst in einem Azure AD-Mandanten registriert werden, um die Funktionen von Azure AD nutzen zu können. Dieser Registrierungsvorgang umfasst das Angeben von Details zu Ihrer Anwendung in Azure AD. Beispielsweise muss die URL für den Speicherort angegeben werden, die URL, an die nach der Authentifizierung eines Benutzers Antworten gesendet werden sollen, die URI zum Identifizieren der App usw.
 
 ### <a name="to-register-a-new-application-using-the-azure-portal"></a>Registrieren einer neuen Anwendung mit dem Azure-Portal
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen** und **Registrierung einer neuen Anwendung**.
 
@@ -111,10 +110,10 @@ Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwe
 - Delegierte Berechtigungen: Ihre Clientanwendung benötigt als angemeldeter Benutzer Zugriff auf die Web-API. Der Zugriff ist jedoch durch die ausgewählte Berechtigung eingeschränkt. Diese Art von Berechtigung kann von einem Benutzer erteilt werden, sofern für die Berechtigung nicht die Zustimmung durch einen Administrator erforderlich ist. 
 
   > [!NOTE]
-  > Durch Hinzufügen einer delegierten Berechtigung zu einer Anwendung erteilen Sie den Benutzern im Mandanten nicht automatisch Ihre Zustimmung wie zuvor im klassischen Azure-Portal. Benutzer müssen den hinzugefügten delegierten Berechtigungen bei der Ausführung noch manuell zustimmen, sofern der Administrator nicht auf die Schaltfläche **Erteilen von Berechtigungen** im Abschnitt **Erforderliche Berechtigungen** der Anwendungsseite im Azure-Portal klickt. 
+  > Durch Hinzufügen einer delegierten Berechtigung zu einer Anwendung erteilen Sie den Benutzern im Mandanten nicht automatisch Ihre Zustimmung. Benutzer müssen den hinzugefügten delegierten Berechtigungen bei der Ausführung noch manuell zustimmen, sofern der Administrator nicht auf die Schaltfläche **Erteilen von Berechtigungen** im Abschnitt **Erforderliche Berechtigungen** der Anwendungsseite im Azure-Portal klickt. 
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>So fügen Sie Anmeldeinformationen für Anwendungen oder Zugriffsberechtigungen für Web-APIs hinzu
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf.
 
@@ -154,7 +153,7 @@ Im folgenden Abschnitt erfahren Sie, wie Sie Zugriffsbereiche verfügbar machen,
 
 #### <a name="adding-access-scopes-to-your-resource-application"></a>Hinzufügen von Zugriffsbereichen zu Ihrer Ressourcenanwendung
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf.
@@ -239,7 +238,7 @@ Wenn Sie eine Anwendung schreiben, die Sie Ihren Kunden oder Partnern außerhalb
 
 Gehen Sie wie folgt vor, um externen Benutzern den Zugriff auf Ihre Anwendung zu ermöglichen: 
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet.
 4. Klicken Sie auf der Seite **Einstellungen** auf **Eigenschaften**, und schieben Sie den Regler für **Mehrinstanzenfähig** auf **Ja**.
@@ -276,7 +275,7 @@ Die implizite OAuth 2.0-Gewährung ist für Anwendungen standardmäßig deaktivi
 > Ausführliche Informationen zur Bearbeitung des Anwendungsmanifests finden Sie im vorherigen Abschnitt [Konfigurieren einer Ressourcenanwendung zum Bereitstellen von Web-APIs](#configuring-a-resource-application-to-expose-web-apis).
 >
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet.
 4. Wechseln Sie auf die Seite **Manifest bearbeiten**, indem Sie auf der Registrierungsseite der Anwendung auf **Manifest** klicken. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest im Portal bearbeiten können (**Bearbeiten**). Suchen Sie nach dem Wert „oauth2AllowImplicitFlow“, und ändern sie ihn in „true“. Standardmäßig ist „false“ festgelegt.
@@ -293,14 +292,14 @@ In diesem Abschnitt wird die Vorgehensweise beim Entfernen der Registrierung ein
 Anwendungen, die von Ihrer Organisation registriert wurden, werden unter dem Filter „Meine Apps“ auf der Hauptseite „App-Registrierungen“ Ihres Mandanten angezeigt. Dies sind die Anwendungen, die Sie manuell über das Azure-Portal oder programmgesteuert per PowerShell oder Graph-API registriert haben. Genauer gesagt, werden sie sowohl durch ein Anwendungs- als auch Dienstprinzipalobjekt in Ihrem Mandanten dargestellt. Weitere Informationen finden Sie unter [Anwendungsobjekte und Dienstprinzipalobjekte](active-directory-application-objects.md).
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>So entfernen Sie eine Einzelinstanzanwendung aus Ihrem Verzeichnis
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet.
 4. Klicken Sie auf der Hauptseite der Anwendung für die Registrierung auf **Löschen**.
 5. Klicken Sie in der Bestätigungsmeldung auf **Ja** .
 
 #### <a name="to-remove-a-multi-tenant-application-from-its-home-directory"></a>So entfernen Sie eine mehrinstanzenfähige Anwendung aus ihrem Stammverzeichnis
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wenn Sie unter Ihrem Konto mehrere Zugriffsmöglichkeiten haben, können Sie oben rechts auf Ihr Konto klicken und Ihre Portalsitzung auf den gewünschten Azure AD-Mandanten festlegen.
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet.
 4. Wählen Sie auf der Seite **Einstellungen** die Option **Eigenschaften**, und legen Sie **Mehrinstanzenfähig** auf **Nein** fest, um Ihre Anwendung zuerst auf die Verwendung eines einzelnen Mandanten festzulegen. Klicken Sie anschließend auf **Speichern**. Die Dienstprinzipalobjekte der Anwendung verbleiben auf den Mandanten aller Organisationen, die bereits ihre Zustimmung erteilt haben.

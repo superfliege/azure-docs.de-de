@@ -1,5 +1,5 @@
 ---
-title: "Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory | Microsoft-Dokumentation"
+title: "Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory"
 description: "Anleitung und Szenarien für Entwickler zum bedingten Zugriff mit Azure AD"
 services: active-directory
 keywords: 
@@ -8,17 +8,16 @@ manager: mtillman
 editor: PatAltimore
 ms.author: dadobali
 ms.date: 07/19/2017
-ms.assetid: 115bdab2-e1fd-4403-ac15-d4195e24ac95
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: c3b691022b02aa2f3836c4e3a96dd5db7affad76
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 346f19b01460aaa4aeb2c2d97c07ef11924ec80f
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Anleitung für Entwickler zum bedingten Zugriff mit Azure Active Directory
 
@@ -28,7 +27,7 @@ Azure Active Directory (AD) bietet verschiedene Methoden zum Sichern Ihrer App u
 * Ermöglicht nur bei Intune registrierten Geräten den Zugriff auf bestimmte Dienste
 * Einschränken von Benutzerstandorten und IP-Adressbereichen
 
-Weitere Informationen über alle Funktionen des bedingten Zugriffs finden Sie unter [Bedingter Zugriff im klassischen Azure-Portal](../active-directory-conditional-access-azure-portal.md). 
+Weitere Informationen über alle Funktionen des bedingten Zugriffs finden Sie unter [Bedingter Zugriff in Azure Active Directory](../active-directory-conditional-access-azure-portal.md). 
 
 In diesem Artikel konzentrieren wir uns auf die Bedeutung des bedingten Zugriffs für Entwickler, die Apps für Azure AD erstellen.  Dabei werden Kenntnisse über [einzel](active-directory-integrating-applications.md)- und [mehrinstanzenfähige](active-directory-devhowto-multi-tenant-overview.md) Apps sowie über [allgemeine Authentifizierungsmuster](active-directory-authentication-scenarios.md) vorausgesetzt.
 
@@ -218,7 +217,7 @@ Wenn Sie dieses Szenario testen möchten, sehen Sie sich unser [“Im-Auftrag-vo
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure AD](../active-directory-conditional-access-azure-portal.md).
+* Weitere Informationen zu den Funktionen finden Sie unter [Bedingter Zugriff in Azure Active Directory](../active-directory-conditional-access-azure-portal.md).
 * Weitere Azure AD-Codebeispiele finden Sie im [GitHub-Repository mit Codebeispielen](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory). 
 * Weitere Informationen zum ADAL-SDK und zum Zugriff auf die Referenzdokumentation finden Sie in der [Bibliotheksanleitung](active-directory-authentication-libraries.md).
 * Weitere Informationen zu Szenarien mit mehreren Mandanten finden Sie unter [Anmelden von Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster](active-directory-devhowto-multi-tenant-overview.md).

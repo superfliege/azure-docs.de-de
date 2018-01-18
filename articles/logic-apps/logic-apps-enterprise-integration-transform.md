@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f09819a1bfd380cd826a478471e673b6d5ff9ee7
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>Unternehmensintegration mit XML-Transformationen
 ## <a name="overview"></a>Übersicht
@@ -72,6 +72,28 @@ Sie können jetzt Ihre Transformation testen, indem Sie eine Anforderung an den 
 * Verwenden Sie das Feature Testzuordnung zum Hinzufügen einer XML-Beispielnachricht. Mit einem einfachen Mausklick können Sie die erstellte Zuordnung testen und die generierte Ausgabe anzeigen.  
 * Hochladen vorhandener Zuordnungen  
 * Unterstützung für das XML-Format.
+
+## <a name="adanced-features"></a>Erweiterte Funktionen
+Auf die folgenden Funktionen kann nur über die Codeansicht zugegriffen werden.
+
+### <a name="byte-order-mark"></a>Bytereihenfolge-Marke
+Die Antwort der Transformation beginnt standardmäßig mit der Bytereihenfolge-Marke (BOM). Wenn Sie diese Funktion deaktivieren möchten, geben Sie `disableByteOrderMark` für die Eigenschaft `transformOptions` an:
+
+````json
+"Transform_XML": {
+    "inputs": {
+        "content": "@{triggerBody()}",
+        "integrationAccount": {
+            "map": {
+                "name": "TestMap"
+            }
+        },
+        "transformOptions": "disableByteOrderMark"
+    },
+    "runAfter": {},
+    "type": "Xslt"
+}
+````
 
 ## <a name="learn-more"></a>Weitere Informationen
 * [Weitere Informationen zum Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  

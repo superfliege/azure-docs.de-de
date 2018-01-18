@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 11/03/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 9aea299738eb5cac6fe6d3b633707862d978fff0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ac9a1a8c59a26393d32f9c543e630c302b7ced9d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>Filtern von Netzwerkdatenverkehr mit Netzwerken und Anwendungssicherheitsgruppen (Vorschau)
 
@@ -31,7 +31,7 @@ Die folgenden Abschnitte enthalten Schritte, die Sie vornehmen können, um Netzw
 Dieser Artikel enthält die Schritte, um Netzwerksicherheitsgruppen mit dem Bereitstellungsmodell des Ressourcen-Managers zu erstellen. Wir empfehlen dieses Bereitstellungsmodell zum Erstellen von Netzwerksicherheitsgruppen. Weitere Informationen zum Erstellen einer klassischen Netzwerksicherheitsgruppe finden Sie unter [Create a network security group (classic) (Erstellen einer klassischen Netzwerksicherheitsgruppe)](virtual-networks-create-nsg-classic-ps.md). Wenn Sie mit den Azure-Bereitstellungsmodellen nicht vertraut sind, lesen Sie unter [Grundlegendes zu Azure-Bereitstellungsmodellen](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) nach.
 
 > [!NOTE]
-> In diesem Tutorial werden Funktionen von Netzwerksicherheitsgruppen verwendet, die sich derzeit in der Vorschauversion befinden. Funktionen, die sich in der Vorschauversion befinden, weisen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie bereits allgemein verfügbare Funktionen auf. Die Funktionen sind nur in der folgenden Region verfügbar: USA, Westen-Mitte. Informationen zum Implementieren von Netzwerksicherheitsgruppen unter ausschließlicher Verwendung der Funktionen der allgemein verfügbaren Version finden Sie unter [Erstellen von Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md). 
+> In diesem Tutorial werden Funktionen von Netzwerksicherheitsgruppen verwendet, die sich derzeit in der Vorschauversion befinden. Funktionen, die sich in der Vorschauversion befinden, weisen nicht die gleiche Verfügbarkeit und Zuverlässigkeit wie bereits allgemein verfügbare Funktionen auf. Informationen zum Implementieren von Netzwerksicherheitsgruppen unter ausschließlicher Verwendung der Funktionen der allgemein verfügbaren Version finden Sie unter [Erstellen von Netzwerksicherheitsgruppen](virtual-networks-create-nsg-arm-pportal.md). 
 
 ## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
@@ -42,14 +42,14 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 3. Melden Sie sich mit dem Befehl `az login` bei Azure an.
 4. Registrieren Sie sich für die Vorschauversion, indem Sie die folgenden Befehle eingeben:
     
-    ```azurecli-interactive
+    ```azurecli
     az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     az provider register --namespace Microsoft.Network
     ``` 
 
 5. Bestätigen Sie, dass Sie für die Vorschauversion registriert sind, indem Sie folgenden Befehl eingeben:
 
-    ```azurecli-interactive
+    ```azurecli
     az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
     ```
 
@@ -58,7 +58,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 
 6. Führen Sie das folgende Bash-Skript aus, um eine Ressourcengruppe zu erstellen:
 
-    ```azurecli-interactive
+    ```azurecli
     #!/bin/bash
     
     az group create \
@@ -68,7 +68,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 
 7. Erstellen Sie drei Anwendungssicherheitsgruppen, eine für jeden Servertyp:
 
-    ```azurecli-interactive
+    ```azurecli
     az network asg create \
       --resource-group myResourceGroup \
       --name WebServers \
@@ -87,7 +87,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 
 8. Erstellen Sie eine Netzwerksicherheitsgruppe:
 
-    ```azurecli-interactive
+    ```azurecli
     az network nsg create \
       --resource-group myResourceGroup \
       --name myNsg \
@@ -96,7 +96,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 
 9. Erstellen Sie Sicherheitsregeln in der NSG, und legen Sie dabei die Anwendungssicherheitsgruppen als Ziel fest:
     
-    ```azurecli-interactive    
+    ```azurecli    
     az network nsg rule create \
       --resource-group myResourceGroup \
       --nsg-name myNsg \
@@ -136,7 +136,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 
 10. Erstellen Sie ein virtuelles Netzwerk: 
     
-    ```azurecli-interactive
+    ```azurecli
     az network vnet create \
       --name myVnet \
       --resource-group myResourceGroup \
@@ -147,7 +147,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 
 11. Ordnen Sie die Netzwerksicherheitsgruppe dem Subnetz im virtuellen Netzwerk zu:
 
-    ```azurecli-interactive
+    ```azurecli
     az network vnet subnet update \
       --name mySubnet \
       --resource-group myResourceGroup \
@@ -157,7 +157,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
     
 12. Erstellen Sie drei Netzwerkschnittstellen, eine für jeden Servertyp: 
 
-    ```azurecli-interactive
+    ```azurecli
     az network nic create \
       --resource-group myResourceGroup \
       --name myNic1 \
@@ -183,11 +183,11 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       --application-security-groups "DatabaseServers"
     ```
 
-    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 9 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise gilt nur *WebRule* für *myNic1*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *WebServers* ist und die Regel die Anwendungssicherheitsgruppe *WebServers* als Ziel angibt. Die Regeln *AppRule* und *DatabaseRule* werden nicht auf *myNic1* angewandt, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *AppServers* und *DatabaseServers* ist.
+    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 9 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise gilt nur *AppRule* für *myNic2*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *AppServers* ist und die Regel die Anwendungssicherheitsgruppe *AppServers* als Ziel angibt. Die Regeln *WebRule* und *DatabaseRule* werden nicht auf *myNic2* angewandt, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *WebServers* und *DatabaseServers* ist. Sowohl die Regel *WebRule* als auch *AppRule* gilt jedoch für *myNic1*, da die Netzwerkschnittstelle *myNic1* Mitglied beider Anwendungssicherheitsgruppen *WebServers* und *AppServers* ist und die Regeln die Anwendungssicherheitsgruppen *WebServers* und *AppServers* als Ziel angeben. 
 
 13. Erstellen Sie einen virtuellen Computer für jeden Servertyp, und fügen Sie die entsprechende Netzwerkschnittstelle jedem virtuellen Computer an. In diesem Beispiel werden virtuelle Windows-Computer erstellt. Sie können jedoch *win2016datacenter* in *UbuntuLTS* ändern, um stattdessen virtuelle Linux-Computer zu erstellen.
 
-    ```azurecli-interactive
+    ```azurecli
     # Update for your admin password
     AdminPassword=ChangeYourAdminPassword1
 
@@ -198,7 +198,8 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       --nics myNic1 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -207,7 +208,8 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       --nics myNic2 \
       --image win2016datacenter \
       --admin-username azureuser \
-      --admin-password $AdminPassword
+      --admin-password $AdminPassword \
+      --no-wait
 
     az vm create \
       --resource-group myResourceGroup \
@@ -281,8 +283,8 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       -SourceAddressPrefix Internet `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $webAsg.id `
-      -DestinationPortRange 80  
-
+      -DestinationPortRange 80
+    
     $appRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "AppRule" `
       -Access Allow `
@@ -292,8 +294,8 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       -SourceApplicationSecurityGroupId $webAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $appAsg.id `
-      -DestinationPortRange 443 
-
+      -DestinationPortRange 443
+      
     $databaseRule = New-AzureRmNetworkSecurityRuleConfig `
       -Name "DatabaseRule" `
       -Access Allow `
@@ -303,7 +305,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       -SourceApplicationSecurityGroupId $appAsg.id `
       -SourcePortRange * `
       -DestinationApplicationSecurityGroupId $databaseAsg.id `
-      -DestinationPortRange 1336    
+      -DestinationPortRange 1336
     ``` 
 
 9. Erstellen Sie eine Netzwerksicherheitsgruppe:
@@ -361,7 +363,7 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
       -ApplicationSecurityGroup $databaseAsg
     ```
 
-    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 8 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise gilt nur *WebRule* für *myNic1*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *WebServers* ist und die Regel die Anwendungssicherheitsgruppe *WebServers* als Ziel angibt. Die Regeln *AppRule* und *DatabaseRule* werden nicht auf *myNic1* angewandt, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *AppServers* und *DatabaseServers* ist.
+    Nur die entsprechende Sicherheitsregel, die Sie in Schritt 8 erstellt haben, wird auf die Netzwerkschnittstelle angewendet. Dies basiert auf der Anwendungssicherheitsgruppe, der die Netzwerkschnittstelle angehört. Beispielsweise gilt nur *AppRule* für *myNic2*, da die Netzwerkschnittstelle Mitglied der Anwendungssicherheitsgruppe *AppServers* ist und die Regel die Anwendungssicherheitsgruppe *AppServers* als Ziel angibt. Die Regeln *WebRule* und *DatabaseRule* werden nicht auf *myNic2* angewandt, da die Netzwerkschnittstelle kein Mitglied der Anwendungssicherheitsgruppen *WebServers* und *DatabaseServers* ist. Sowohl die Regel *WebRule* als auch *AppRule* gilt jedoch für *myNic1*, da die Netzwerkschnittstelle *myNic1* Mitglied beider Anwendungssicherheitsgruppen *WebServers* und *AppServers* ist und die Regeln die Anwendungssicherheitsgruppen *WebServers* und *AppServers* als Ziel angeben. 
 
 13. Erstellen Sie einen virtuellen Computer für jeden Servertyp, und fügen Sie die entsprechende Netzwerkschnittstelle jedem virtuellen Computer an. In diesem Beispiel werden virtuelle Windows-Computer erstellt. Bevor Sie das Skript ausführen, können Sie *-Windows* in *-Linux*, *MicrosoftWindowsServer* in *Canonical*, *WindowsServer* in *UbuntuServer* und *2016-Datacenter* in *14.04.2-LTS* ändern, um stattdessen virtuelle Linux-Computer zu erstellen.
 
@@ -429,6 +431,33 @@ Die Azure-CLI-Befehle sind unter Windows, Linux und macOS identisch. Es gibt jed
 
 14. **Optional**: Löschen Sie die Ressourcen, die Sie in diesem Tutorial erstellt haben, indem Sie die Schritte unter [Löschen von Ressourcen](#delete-cli) durchführen.
 
+## <a name="remove-a-nic-from-an-asg"></a>Entfernen einer Netzwerkkarte aus einer ASG
+Nachdem Sie eine Netzwerkschnittstelle aus einer Anwendungssicherheitsgruppe entfernt haben, wird keine der Regeln, die die Anwendungssicherheitsgruppe angeben, auf die entfernte Netzwerkschnittstelle angewendet.
+
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+Um *myNic3* aus allen Anwendungssicherheitsgruppen zu entfernen, geben Sie den folgenden Befehl ein:
+
+```azurecli
+az network nic update \
+  --name myNic3 \
+  --resource-group myResourceGroup \
+  --remove ipConfigurations[0].applicationSecurityGroups
+```
+
+### <a name="powershell"></a>PowerShell
+
+Um *myNic3* aus allen Anwendungssicherheitsgruppen zu entfernen, geben Sie die folgenden Befehle ein:
+
+```powershell
+$nic=Get-AzureRmNetworkInterface `
+  -Name myNic3 `
+  -ResourceGroupName myResourceGroup
+
+$nic.IpConfigurations[0].ApplicationSecurityGroups = $null
+$nic | Set-AzureRmNetworkInterface 
+```
+
 ## <a name="delete"></a>Löschen von Ressourcen
 
 Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die Sie erstellt haben, möglicherweise wieder löschen, damit keine Nutzungsgebühren anfallen. Durch das Löschen einer Ressourcengruppe werden auch alle Ressourcen in dieser Ressourcengruppe gelöscht.
@@ -443,7 +472,7 @@ Wenn Sie dieses Tutorial abgeschlossen haben, möchten Sie die Ressourcen, die S
 
 Geben Sie in einer CLI-Sitzung den folgenden Befehl ein:
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup --yes
 ```
 

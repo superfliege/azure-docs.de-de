@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 01/15/2018
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: 66e002b092e02f92a33c6e498b176331ebdc190f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 26dc5d5ffce84206450123132c0633c2aa323e9f
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="problem-installing-the-application-access-panel-browser-extension"></a>Problem beim Installieren der Browsererweiterung für den Anwendungszugriffsbereich
 
@@ -32,14 +32,13 @@ Der Zugriffsbereich erfordert einen Browser, der JavaScript unterstützt und in 
 
 Für kennwortbasiertes SSO eignen sich folgende Browser des Endbenutzers:
 
--   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher
-
--   Edge in Windows 10 Anniversary Edition oder höher 
+-   Edge unter Windows 10 Anniversary Edition oder höher 
 
 -   Chrome – unter Windows 7 oder höher und MacOS x oder höher
 
 -   Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
 
+-   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher (eingeschränkte Unterstützung)
 ## <a name="how-to-install-the-access-panel-browser-extension"></a>Installieren der Browsererweiterung für den Zugriffsbereich
 
 Führen Sie zum Installieren der Browsererweiterung für den Zugriffsbereich die folgenden Schritte aus:
@@ -64,6 +63,31 @@ Sie können die Erweiterung für Chrome und Edge auch direkt über die folgenden
 
 -   [Zugriffsbereichserweiterung für Edge](https://www.microsoft.com/store/apps/9pc9sckkzk84) 
 
+## <a name="how-do-i-use-the-my-apps-secure-sign-in-extension"></a>Wie verwende ich die Erweiterung zur sicheren Anmeldung bei „Meine Apps“?
+Ändern der Standard-URL von „Meine Apps“ für die Erweiterung
+
+Bei Verwendung einer anderen URL von „Meine Apps“ als „https://myapps.microsoft.com“ müssen Sie die Standard-URL durch Ausführen der folgenden Schritte konfigurieren:
+1. **Klicken Sie mit der rechten Maustaste** auf das Symbol für die Erweiterung, ohne bei der Erweiterung angemeldet zu sein.
+2. Klicken Sie im Menü auf **Meine Apps-URL auswählen**.
+3. **Wählen Sie** Ihre Standard-URL aus.
+4. Klicken Sie auf das Symbol für die Erweiterung.
+5. Melden Sie sich bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+
+Direktes Anmelden bei einer App über den Browser
+1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+2. Navigieren Sie zu der **Anmelde-URL** der App, bei der Sie sich anmelden möchten. Dies ist in der Regel die URL der App, die das Anmeldeformular anzeigt.
+3. Der Status der Erweiterung sollte sich ändern, sodass Sie darüber informiert werden, dass ein Kennwort verfügbar ist. Klicken Sie auf das **Symbol für die Erweiterung**, um sich anzumelden.
+
+Starten einer App über die Erweiterung
+1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+2. Klicken Sie auf das Symbol für die Erweiterung, um das zugehörige **Menü** zu öffnen.
+3. **Suchen** Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
+4. Klicken Sie in den **Suchergebnissen** auf die App, um sie zu starten.
+5. In der Verknüpfungsliste **Zuletzt verwendet** werden auch die letzten drei gestarteten Apps angezeigt.
+
+> [!NOTE]
+> Diese Optionen sind nur für Edge, Chrome und Firefox verfügbar.
+
 ## <a name="setting-up-a-group-policy-for-internet-explorer"></a>Einrichten einer Gruppenrichtlinie für Internet Explorer
 
 Sie können eine Gruppenrichtlinie einrichten, um die Zugriffsbereichserweiterung für Internet Explorer per Remotezugriff auf den Computern Ihrer Benutzer zu installieren.
@@ -72,13 +96,16 @@ Die folgenden Voraussetzungen müssen erfüllt sein:
 
 -   Sie haben [Active Directory-Domänendienste](https://msdn.microsoft.com/library/aa362244%28v=vs.85%29.aspx)eingerichtet und die Computer Ihrer Benutzer Ihrer Domäne hinzugefügt.
 
--   Zum Bearbeiten des Gruppenrichtlinienobjekts benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer. [Weitere Informationen](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx).
+-   Zum Bearbeiten des Gruppenrichtlinienobjekts benötigen Sie die Berechtigung „Einstellungen bearbeiten“. Standardmäßig verfügen Mitglieder der folgenden Sicherheitsgruppen über diese Berechtigung: Domänenadministratoren, Organisationsadministratoren und Richtlinien-Ersteller-Besitzer. [Weitere Informationen](https://technet.microsoft.com/library/cc781991%28v=ws.10%29.aspx)
 
 Das Tutorial [Bereitstellen der Zugriffsbereichserweiterung für Internet Explorer mit der Gruppenrichtlinie](active-directory-saas-ie-group-policy.md) bietet Ihnen Schritt-für-Schritt-Anweisungen zum Konfigurieren der Gruppenrichtlinie und Bereitstellen der Gruppenrichtlinie für Benutzer.
 
-## <a name="troubleshoot-the-access-panel-in-internet-explorer"></a>Problembehandlung für den Zugriffsbereich in Internet Explorer
+## <a name="troubleshoot-the-access-panel-extension-in-internet-explorer"></a>Problembehandlung der Zugriffsbereichserweiterung in Internet Explorer
 
 Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](active-directory-saas-ie-troubleshooting.md), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
+
+> [!NOTE]
+> Für IE besteht eine eingeschränkte Unterstützung, und es werden keine neuen Softwareupdates mehr dafür empfangen. Edge ist der empfohlene Browser.
 
 ## <a name="if-these-troubleshooting-steps-do-not-resolve-the-issue"></a>Wenn das Problem mit diesen Problembehandlungsschritten nicht behoben wird
 

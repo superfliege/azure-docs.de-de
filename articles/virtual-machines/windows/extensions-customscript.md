@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/16/2017
 ms.author: danis
-ms.openlocfilehash: 25677c2a4ab78c601f4d4a8630787f6f16dda3c4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9a8eae62d2dcb4c422b707909a27c84c7bf1aab3
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -28,6 +28,11 @@ Die benutzerdefinierte Skripterweiterung lädt Skripts auf virtuelle Azure-Compu
 In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterung über das Azure PowerShell-Modul ausführen. Sie erfahren, wie Sie eine Azure Resource Manager-Vorlage verwenden, und erhalten Informationen zu Problembehandlungsschritten für Windows-Systeme.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+> [!NOTE]  
+> Verwenden Sie die benutzerdefinierte Skripterweiterung nicht, um „Update-AzureRmVM“ mit der gleichen VM als Parameter auszuführen, da der Befehl dann auf sich selbst wartet.  
+>   
+> 
 
 ### <a name="operating-system"></a>Betriebssystem
 
@@ -79,7 +84,7 @@ Der folgende JSON-Code zeigt das Schema für die benutzerdefinierte Skripterweit
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| Name | Wert/Beispiel |
+| NAME | Wert/Beispiel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Herausgeber | Microsoft.Compute |
@@ -131,7 +136,7 @@ Hierbei ist `<n>` eine dezimale Ganzzahl, die sich zwischen verschiedenen Ausfü
 
 Beim Ausführen des Befehls `commandToExecute` legt die Erweiterung dieses Verzeichnis (z.B. `...\Downloads\2`) als aktuelles Arbeitsverzeichnis fest. Dies ermöglicht die Verwendung relativer Pfade, um die heruntergeladenen Dateien mithilfe der `fileURIs`-Eigenschaft aufzufinden. Beispiele hierfür finden Sie in der unten stehenden Tabelle.
 
-Da sich der absolute Downloadpfad im Lauf der Zeit ändern kann, empfiehlt es sich, in der Zeichenfolge `commandToExecute` nach Möglichkeit relative Pfade zu Skripts und Dateien zu verwenden. Beispiel:
+Da sich der absolute Downloadpfad im Lauf der Zeit ändern kann, empfiehlt es sich, in der Zeichenfolge `commandToExecute` nach Möglichkeit relative Pfade zu Skripts und Dateien zu verwenden. Beispiel: 
 ```json
     "commandToExecute": "powershell.exe . . . -File './scripts/myscript.ps1'"
 ```

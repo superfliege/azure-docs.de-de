@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: gwallace
-ms.openlocfilehash: 0c399a24962efc1263ed35361a96c98bc60633ee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bfdec6d3982bb7744374a8026a41c3d548aca612
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Integrieren von Computern für die Verwaltung durch Azure Automation DSC
 
@@ -36,7 +36,7 @@ Azure Automation DSC kann verwendet werden, um eine Vielzahl von Computern zu ve
 Wenn Sie noch nicht zum Verwalten von Computerkonfigurationen in der Cloud bereit sind, kann Azure Automation DSC auch ausschließlich als Endpunkt für Berichte verwendet werden. Dadurch können Sie die gewünschte Konfiguration über DSC lokal festlegen und umfassende Berichtsdetails zur Kompatibilität von Knoten mit dem gewünschten Zustand in Azure Automation anzeigen.
 
 > [!NOTE]
-> Die Verwaltung virtueller Computer mit DSC ist kostenlos inbegriffen, wenn die installierte DSC-Erweiterung für die virtuellen Computer eine höhere Version als 2.7 aufweist.  Weitere Informationen finden Sie auf der [**Preisseite für Automation**](https://azure.microsoft.com/en-us/pricing/details/automation/).
+> Die Verwaltung virtueller Computer mit DSC ist kostenlos inbegriffen, wenn die installierte DSC-Erweiterung für die virtuellen Computer eine höhere Version als 2.70 aufweist. Weitere Informationen finden Sie auf der [**Preisseite für Automation**](https://azure.microsoft.com/en-us/pricing/details/automation/).
 
 
 In den folgenden Abschnitten wird beschrieben, wie Sie jeden Computertyp in Azure Automation DSC integrieren können.

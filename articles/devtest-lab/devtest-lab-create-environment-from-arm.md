@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: v-craic
-ms.openlocfilehash: 3fd0f15c695bcd22a51233846ace8711a4fcd635
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 55a6c5cd5a0544b297bb68841c5ff0314f48dcc9
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 01/02/2018
 Erfahren Sie mehr über die zahlreichen [Vorteile der Verwendung von Resource Manager-Vorlagen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#the-benefits-of-using-resource-manager) zum Bereitstellen, Aktualisieren oder Löschen aller Ihrer Labressourcen in einem einzigen Vorgang.
 
 > [!NOTE]
-> Wenn Sie eine Resource Manager-Vorlage als Grundlage zum Erstellen weiterer Lab-VMs verwenden, sind jedoch einige Unterschiede dahingehend zu berücksichtigen, ob Sie einzelne oder mehrere VMs erstellen. Durch Verwenden der Azure Resource Manager-Vorlage eines virtuellen Computers lassen sich diese Unterschiede besser veranschaulichen.
+> Wenn Sie eine Resource Manager-Vorlage als Grundlage zum Erstellen weiterer Lab-VMs verwenden, sind jedoch einige Unterschiede dahingehend zu berücksichtigen, ob Sie einzelne oder mehrere VMs erstellen. Unter [Verwenden der Azure Resource Manager-Vorlage eines virtuellen Computers](devtest-lab-use-resource-manager-template.md) werden diese Unterschiede detaillierter veranschaulicht.
 >
 >
 
@@ -67,16 +67,16 @@ Mit den folgenden Schritten können Sie Ihrem Lab über das Azure-Portal ein Rep
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.   
-1. Wählen Sie auf dem Blatt des Labs die Option **Configuration and Policies** (Konfiguration und Richtlinien) aus.
+1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.
 
     ![Konfiguration und Richtlinien](./media/devtest-lab-create-environment-from-arm/configuration-and-policies-menu.png)
 
-1. Wählen Sie in der Einstellungsliste **Configuration and Policies** (Konfiguration und Richtlinien) die Option **Repositorys** aus. Auf dem Blatt **Repositorys** werden die Repositorys aufgelistet, die dem Lab hinzugefügt wurden. Für alle Labs wird automatisch ein Repository namens `Public Repo` generiert und mit dem [DevTest Labs-GitHub-Repository](https://github.com/Azure/azure-devtestlab) verbunden, das mehrere verwendbare VM-Artefakte enthält.
+1. Wählen Sie in der Einstellungsliste **Configuration and Policies** (Konfiguration und Richtlinien) die Option **Repositorys** aus. Auf der Seite **Repositorys** werden die Repositorys aufgelistet, die dem Lab hinzugefügt wurden. Für alle Labs wird automatisch ein Repository namens `Public Repo` generiert und mit dem [DevTest Labs-GitHub-Repository](https://github.com/Azure/azure-devtestlab) verbunden, das mehrere verwendbare VM-Artefakte enthält.
 
     ![Öffentliches Repository](./media/devtest-lab-create-environment-from-arm/public-repo.png)
 
 1. Wählen Sie **Hinzufügen+** aus, um Ihr Azure Resource Manager-Vorlagenrepository hinzuzufügen.
-1. Wenn sich das zweite Blatt vom Typ **Repositorys** öffnet, geben Sie die erforderlichen Informationen ein:
+1. Wenn sich der zweite Bereich des Typs **Repositorys** öffnet, geben Sie die erforderlichen Informationen ein:
     - **Name**: Geben Sie den im Lab verwendeten Repositorynamen ein.
     - **Git-Klon-URL:** Geben Sie die Git-HTTPS-Klon-URL aus GitHub oder Visual Studio Team Services ein.  
     - **Verzweigung**: Geben Sie den Verzweigungsnamen für den Zugriff auf Ihre Azure Resource Manager-Vorlagendefinitionen ein. 
@@ -85,28 +85,29 @@ Mit den folgenden Schritten können Sie Ihrem Lab über das Azure-Portal ein Rep
     
         ![Öffentliches Repository](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 
+
 1. Wenn alle erforderlichen Felder ausgefüllt wurden und bei der Überprüfung der Angaben keine Fehler aufgetreten sind, wählen Sie **Speichern** aus.
 
 Im nächsten Abschnitt erfahren Sie, wie Sie Umgebungen auf der Grundlage einer Azure Resource Manager-Vorlage erstellen.
 
-## <a name="create-an-environment-from-an-azure-resource-manager-template"></a>Erstellen einer Umgebung auf der Grundlage einer Azure Resource Manager-Vorlage
+## <a name="create-an-environment-from-a-resource-manager-template-using-the-azure-portal"></a>Erstellen einer Umgebung auf der Grundlage einer Azure Resource Manager-Vorlage im Azure-Portal
 
-Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde, können Ihre Labbenutzer mit folgenden Schritten eine Umgebung über das Azure-Portal erstellen:
+Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde, können Ihre Lab-Benutzer mit folgenden Schritten eine Umgebung über das Azure-Portal erstellen:
 
 1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus.   
-1. Wählen Sie auf dem Blatt des Labs die Option **Hinzufügen+** aus.
-1. Auf dem Blatt **Basisdesign auswählen** werden die Basisimages, die Sie mit Ihren Azure Resource Manager-Vorlagen verwenden können, zuerst aufgeführt. Wählen Sie die gewünschte Azure Resource Manager-Vorlage aus.
+1. Wählen Sie die Bereich des Labs die Option **Hinzufügen+** aus.
+1. Im Bereich **Basis auswählen** werden die Basisimages, die Sie mit Ihren Azure Resource Manager-Vorlagen verwenden können, zuerst aufgeführt. Wählen Sie die gewünschte Azure Resource Manager-Vorlage aus.
 
     ![Auswählen einer Grundlage](./media/devtest-lab-create-environment-from-arm/choose-a-base.png)
   
-1. Geben Sie auf dem Blatt **Hinzufügen** den Wert für **Umgebungsname** ein. Der Umgebungsname ist der Name, der Ihren Benutzern im Lab angezeigt wird. Die restlichen Eingabefelder sind in der Azure Resource Manager-Vorlage definiert. Falls in der Vorlage Standardwerte definiert sind oder die Datei `azuredeploy.parameter.json` vorhanden ist, werden in diesen Eingabefeldern Standardwerte angezeigt. Für Parameter vom Typ *Sichere Zeichenfolge* können Sie die Geheimnisse verwenden, die im [persönlichen geheimen Speicher](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store) des Labs gespeichert sind.
+1. Geben Sie im Bereich **Hinzufügen** den Wert für **Umgebungsname** ein. Der Umgebungsname ist der Name, der Ihren Benutzern im Lab angezeigt wird. Die restlichen Eingabefelder sind in der Azure Resource Manager-Vorlage definiert. Falls in der Vorlage Standardwerte definiert sind oder die Datei `azuredeploy.parameter.json` vorhanden ist, werden in diesen Eingabefeldern Standardwerte angezeigt. Für Parameter vom Typ *Sichere Zeichenfolge* können Sie die Geheimnisse verwenden, die im [persönlichen geheimen Speicher](https://azure.microsoft.com/en-us/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store) des Labs gespeichert sind.
 
-    ![Blatt „Hinzufügen“](./media/devtest-lab-create-environment-from-arm/add.png)
+    ![Hinzufügen eines Bereichs](./media/devtest-lab-create-environment-from-arm/add.png)
 
     > [!NOTE]
-    > Einige Parameterwerte werden als leere Werte angezeigt (auch wenn sie angegeben wurden). Wenn Benutzer diese Werte also Parametern in einer Azure Resource Manager-Vorlage zuweisen, zeigt DevTest Labs die Werte nicht an. Stattdessen werden leere Eingabefelder angezeigt, in die die Labbenutzer beim Erstellen der Umgebung einen Wert eingeben müssen.
+    > Einige Parameterwerte werden als leere Werte angezeigt (auch wenn sie angegeben wurden). Wenn Benutzer diese Werte also Parametern in einer Azure Resource Manager-Vorlage zuweisen, zeigt DevTest Labs die Werte nicht an. Stattdessen werden leere Eingabefelder angezeigt, in die Lab-Benutzer beim Erstellen der Umgebung einen Wert eingeben müssen.
     > 
     > - GEN-UNIQUE
     > - GEN-UNIQUE-[N]
@@ -114,7 +115,7 @@ Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde,
     > - GEN-PASSWORD 
  
 1. Wählen Sie **Hinzufügen** aus, um die Umgebung zu erstellen. Die Bereitstellung der Umgebung beginnt umgehend, und der Status wird in der Liste **My virtual machines** (Meine virtuellen Computer) angezeigt. Vom Lab wird automatisch eine neue Ressourcengruppe erstellt, um alle in der Azure Resource Manager-Vorlage definierten Ressourcen bereitzustellen.
-1. Wählen Sie die erstellte Umgebung in der Liste **My virtual machines** (Meine virtuellen Computer) aus, um das Ressourcengruppenblatt zu öffnen, und erkunden Sie alle in der Umgebung bereitgestellten Ressourcen.
+1. Wählen Sie die erstellte Umgebung in der Liste **My virtual machines** (Meine virtuellen Computer) aus, um den Ressourcengruppenbereich zu öffnen, und erkunden Sie alle in der Umgebung bereitgestellten Ressourcen.
     
     ![Liste mit Ihren virtuellen Computern](./media/devtest-lab-create-environment-from-arm/all-environment-resources.png)
    
@@ -126,7 +127,51 @@ Nachdem im Lab ein Azure Resource Manager-Vorlagenrepository konfiguriert wurde,
 
     ![Umgebungsaktionen](./media/devtest-lab-create-environment-from-arm/environment-actions.png)
 
+## <a name="deploy-a-resource-manager-template-to-create-a-vm"></a>Bereitstellen einer Resource Manager-Vorlage zum Erstellen einer VM
+Nachdem Sie eine Resource Manager-Vorlage gespeichert und an Ihre Anforderungen angepasst haben, können Sie sie zum Automatisieren der VM-Erstellung verwenden. 
+- Unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy) wird beschrieben, wie Sie Azure PowerShell mit Resource Manager-Vorlagen verwenden, um Ihre Ressourcen in Azure bereitzustellen. 
+- Unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli) wird beschrieben, wie Sie die Azure CLI mit Resource Manager-Vorlagen verwenden, um Ihre Ressourcen in Azure bereitzustellen.
+
+> [!NOTE]
+> Nur Benutzer mit einer Berechtigung der Art „Labbesitzer“ können VMs aus einer Resource Manager-Vorlage erstellen, indem sie Azure PowerShell nutzen. Wenn Sie die VM-Erstellung per Resource Manager-Vorlage automatisieren möchten und nur über Benutzerberechtigungen verfügen, können Sie den [Befehl **az lab vm create** in der CLI](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create) verwenden.
+
+### <a name="general-limitations"></a>Allgemeine Einschränkungen 
+
+Berücksichtigen Sie diese Einschränkungen bei der Verwendung einer Resource Manager-Vorlage in DevTest Labs:
+
+- Jede von Ihnen erstellte Resource Manager-Vorlage kann sich nicht auf vorhandene Ressourcen beziehen, sondern nur auf neue Ressourcen. Wenn Sie eine vorhandene Resource Manager-Vorlage haben, die Sie normalerweise außerhalb von DevTest Labs bereitstellen und Verweise auf vorhandene Ressourcen enthält, kann sie nicht im Lab verwendet werden.
+
+   Die einzige Ausnahme ist, dass Sie auf ein bestehendes virtuelles Netzwerk verweisen **können**. 
+
+- Formeln können nicht mithilfe von Lab-VMs erstellt werden, die anhand einer Resource Manager-Vorlage erstellt wurden. 
+
+- Benutzerdefinierte Images können nicht mithilfe von Lab-VMs erstellt werden, die anhand einer Resource Manager-Vorlage erstellt wurden. 
+
+- Die meisten Richtlinien werden nicht beachtet, wenn Sie Resource Manager-Vorlagen bereitstellen.
+
+   Beispielsweise kann eine Labrichtlinie festgelegt sein, laut der ein Benutzer nur fünf VMs erstellen kann. Wenn der Benutzer jedoch eine Resource Manager-Vorlage bereitstellt, die Dutzende von VMs erstellt, wird dies zugelassen. Es folgen Richtlinien, die nicht beachtet werden:
+
+   - Anzahl der VMs pro Benutzer
+   - Anzahl der Premium-VMs pro Lab-Benutzer
+   - Anzahl der Premium-Datenträger pro Lab-Benutzer
+
+
+### <a name="configure-environment-resource-group-access-rights-for-lab-users"></a>Konfigurieren von Zugriffsrechten für Lab-Benutzer in der Umgebungsressourcengruppe
+
+Lab-Benutzer können eine Resource Manager-Vorlage bereitstellen. Doch standardmäßig verfügen sie über die Berechtigung „Leser“, was bedeutet, dass sie die Ressourcen in einer Umgebungsressourcengruppe nicht ändern können. Beispielsweise können sie ihre Ressourcen nicht anhalten oder starten.
+
+Führen Sie diese Schritte aus, um Ihren Lab-Benutzern das Zugriffsrecht „Mitwirkender“ zu erteilen. Wenn sie anschließend eine Resource Manager-Vorlage bereitstellen, können sie die Ressourcen in dieser Umgebung bearbeiten. 
+
+
+1. Wählen Sie im Bereich **Übersicht** des Labs die Option **Konfiguration und Richtlinien** aus.
+1. Wählen Sie **Labeinstellungen** aus.
+1. Wählen Sie im Bereich „Labeinstellungen“ die Option **Mitwirkender** aus, um Lab-Benutzern Schreibberechtigungen zu erteilen.
+
+    ![Konfigurieren von Zugriffsrechten für Lab-Benutzer](./media/devtest-lab-create-environment-from-arm/configure-access-rights.png)
+
+1. Wählen Sie **Speichern** aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
-* Nach der Erstellung des virtuellen Computers können Sie auf dem Blatt des virtuellen Computers die Option **Verbinden** auswählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
+* Nach der Erstellung des virtuellen Computers können Sie im Verwaltungsbereich des virtuellen Computers die Option **Verbinden** auswählen, um eine Verbindung mit dem virtuellen Computer herzustellen.
 * Anzeigen und Verwalten von Ressourcen in einer Umgebung durch Auswählen der Umgebung in der Liste **My virtual machines** (Meine virtuellen Computer) in Ihrem Lab. 
 * Sehen Sie sich die [Azure Resource Manager-Vorlagen aus dem Katalog mit Azure-Schnellstartvorlagen](https://github.com/Azure/azure-quickstart-templates) an.

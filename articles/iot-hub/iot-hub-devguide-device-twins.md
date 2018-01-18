@@ -15,15 +15,16 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afadedf72562452e4d57d4545efe59cd8d37c907
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 3b2b2877efe5f898b5759c03ac0ddcf3ecc03901
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
 *Gerätezwillinge* sind JSON-Dokumente, in denen Gerätestatusinformationen gespeichert werden, einschließlich Metadaten, Konfigurationen und Bedingungen. Azure IoT Hub pflegt einen Gerätezwilling für jedes Gerät, das Sie mit IoT Hub verbinden. Dieser Artikel beschreibt Folgendes:
+
 
 * Die Struktur des Gerätezwillings: *Tags*, *gewünschte Eigenschaften* und *gemeldete Eigenschaften*.
 * Die Vorgänge, die Geräte-Apps und Back-Ends auf Gerätezwillingen ausführen können
@@ -51,8 +52,7 @@ Ein Gerätezwilling ist ein JSON-Dokument, das Folgendes enthält:
 * **Tags:** Ein Abschnitt des JSON-Dokuments, in dem das Lösungs-Back-End Lese- und Schreibvorgänge ausführen kann. Tags sind für Geräte-Apps nicht sichtbar.
 * **Gewünschte Eigenschaften:** Werden in Verbindung mit gemeldeten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Das Lösungs-Back-End kann gewünschte Eigenschaften festlegen, die von der Geräte-App gelesen werden können. Die Geräte-App kann auch Benachrichtigungen über Änderungen an den gewünschten Eigenschaften erhalten.
 * **Gemeldete Eigenschaften** Werden in Verbindung mit gewünschten Eigenschaften zum Synchronisieren von Gerätekonfigurationen oder -zuständen verwendet. Die Geräte-App kann gemeldete Eigenschaften festlegen, die vom Lösungs-Back-End gelesen und abgefragt werden können.
-
-Darüber hinaus enthält der Stamm des JSON-Dokuments für einen Gerätezwilling die schreibgeschützten Eigenschaften der zugehörigen Geräteidentität aus der [Identitätsregistrierung][lnk-identity].
+* **Geräteidentitätseigenschaften**. Der Stamm des JSON-Dokuments für einen Gerätezwilling enthält die schreibgeschützten Eigenschaften der zugehörigen Geräteidentität aus der [Identitätsregistrierung][lnk-identity].
 
 ![][img-twin]
 
@@ -60,13 +60,19 @@ Das folgende Beispiel zeigt das JSON-Dokument für einen Gerätezwilling:
 
         {
             "deviceId": "devA",
-            "generationId": "123",
+            "etag": "AAAAAAAAAAc=", 
             "status": "enabled",
             "statusReason": "provisioned",
+            "statusUpdateTime": "0001-01-01T00:00:00",
             "connectionState": "connected",
-            "connectionStateUpdatedTime": "2015-02-28T16:24:48.789Z",
             "lastActivityTime": "2015-02-30T16:24:48.789Z",
-
+            "cloudToDeviceMessageCount": 0, 
+            "authenticationType": "sas",
+            "x509Thumbprint": {     
+                "primaryThumbprint": null, 
+                "secondaryThumbprint": null 
+            }, 
+            "version": 2, 
             "tags": {
                 "$etag": "123",
                 "deploymentLocation": {
@@ -94,7 +100,7 @@ Das folgende Beispiel zeigt das JSON-Dokument für einen Gerätezwilling:
             }
         }
 
-Im Stammobjekt befinden sich die Systemeigenschaften und Containerobjekte für `tags` sowie die `reported`- und `desired`-Eigenschaften. Der Container `properties` enthält einige schreibgeschützte Elemente (`$metadata`, `$etag` und `$version`), die in den Abschnitten zu den [Metadaten des Gerätezwillings][lnk-twin-metadata] und zur [optimistischen Parallelität][lnk-concurrency] beschrieben sind.
+Im Stammobjekt befinden sich die Geräteidentitätseigenschaften und Containerobjekte für `tags` sowie die `reported`- und `desired`-Eigenschaften. Der Container `properties` enthält einige schreibgeschützte Elemente (`$metadata`, `$etag` und `$version`), die in den Abschnitten zu den [Metadaten des Gerätezwillings][lnk-twin-metadata] und zur [optimistischen Parallelität][lnk-concurrency] beschrieben sind.
 
 ### <a name="reported-property-example"></a>Beispiel für eine gemeldete Eigenschaft
 Im vorherigen Beispiel enthält der Gerätezwilling eine `batteryLevel`-Eigenschaft, die von der Geräte-App gemeldet wird. Mit dieser Eigenschaft können Geräte anhand des letzten gemeldeten Akkustands abgefragt und Aktionen auf ihnen ausgeführt werden. Ein weiteres Beispiel wäre das Melden von Gerätefunktionen oder Verbindungsoptionen durch das Gerät.
@@ -103,7 +109,7 @@ Im vorherigen Beispiel enthält der Gerätezwilling eine `batteryLevel`-Eigensch
 > Gemeldete Eigenschaften tragen zur Vereinfachung von Szenarien bei, in denen das Lösungs-Back-End den letzten bekannten Wert einer Eigenschaft abfragen soll. Verwenden Sie [Gerät-zu-Cloud-Nachrichten][lnk-d2c], wenn das Lösungs-Back-End Gerätetelemetriedaten in Form von Folgen von Ereignissen mit Zeitstempeln abfragen muss (beispielsweise als Zeitreihe).
 
 ### <a name="desired-property-example"></a>Beispiel für eine gewünschte Eigenschaft
-Im vorherigen Beispiel werden die gewünschten und gemeldeten Eigenschaften des `telemetryConfig`-Gerätezwillings vom Lösungs-Back-End und von der Geräte-App verwendet, um die Telemetriekonfiguration für dieses Gerät zu synchronisieren. Beispiel:
+Im vorherigen Beispiel werden die gewünschten und gemeldeten Eigenschaften des `telemetryConfig`-Gerätezwillings vom Lösungs-Back-End und von der Geräte-App verwendet, um die Telemetriekonfiguration für dieses Gerät zu synchronisieren. Beispiel: 
 
 1. Das Lösungs-Back-End legt die gewünschte Eigenschaft mit dem gewünschten Konfigurationswert fest. Hier sehen Sie den Teil des Dokuments mit der festgelegten gewünschten Eigenschaft:
    
@@ -158,7 +164,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
 
     - Eigenschaften
 
-    | Name | Wert |
+    | NAME | Wert |
     | --- | --- |
     $content-type | Anwendung/json |
     $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
@@ -172,7 +178,7 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
 
     Nachrichtensystemeigenschaften ist das Symbol `'$'` vorangestellt.
 
-    - body
+    - Body
         
     Dieser Abschnitt enthält alle Zwillingsänderungen in einem JSON-Format. Er verwendet das gleiche Format wie ein Patch, jedoch mit dem Unterschied, dass alle Zwillingsabschnitte enthalten sein können (Tags, properties.reported, properties.desired) und dass die $metadata-Elemente enthalten sind. Beispiel:
     ```
@@ -240,13 +246,13 @@ Tags, gewünschte Eigenschaften und gemeldete Eigenschaften sind JSON-Objekte mi
 * Alle Zeichenfolgenwerte können höchstens 4 KB lang sein.
 
 ## <a name="device-twin-size"></a>Größe des Gerätezwillings
-IoT Hub erzwingt eine Größenbegrenzung von 8 KB für die Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
+IoT Hub erzwingt eine Größenbegrenzung von je 8 KB für die jeweiligen Gesamtwerte von `tags`, `properties/desired` und `properties/reported`, ausgenommen schreibgeschützte Elemente.
 Die Größe wird durch Zusammenzählen aller Zeichen mit Ausnahme von UNICODE-Steuerzeichen (Segmente C0 und C1) und Leerzeichen außerhalb von Zeichenfolgenkonstanten berechnet.
 IoT Hub gibt für alle Vorgänge, die die Größe dieser Dokumente über den Grenzwert hinaus erhöhen würden, einen Fehler zurück.
 
 ## <a name="device-twin-metadata"></a>Metadaten des Gerätezwillings
 IoT Hub verwaltet den Zeitstempel der letzten Aktualisierung für jedes JSON-Objekt in den gewünschten und gemeldeten Eigenschaften des Gerätezwillings. Zeitstempel verwenden UTC und sind im [ISO8601]-Format codiert: `YYYY-MM-DDTHH:MM:SS.mmmZ`.
-Beispiel:
+Beispiel: 
 
         {
             ...

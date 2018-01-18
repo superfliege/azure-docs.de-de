@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2017
+ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee3462c13101d18921dc488b08c79e1e4e02ff3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ace3042cc00cedd005955cdfb82c557fd4a8fb2
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>Erstellen einer Verwaltungslösungsdatei in der Operations Management Suite (OMS) (Vorschau)
 > [!NOTE]
@@ -69,7 +69,7 @@ Ein Beispielparameter ist unten dargestellt.
 
 In der folgenden Tabelle werden die Attribute eines Parameters beschrieben.
 
-| Attribut | Beschreibung |
+| Attribut | BESCHREIBUNG |
 |:--- |:--- |
 | type |Der Datentyp für den Parameter. Das für den Benutzer angezeigte Eingabesteuerelement hängt vom Datentyp ab.<br><br>bool – Dropdownfeld<br>string – Textfeld<br>int – Textfeld<br>securestring – Kennwortfeld<br> |
 | category |Optionale Kategorie für den Parameter.  Parameter in der gleichen Kategorie werden gruppiert. |
@@ -84,14 +84,14 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 >
 >
 
-| Parameter | Typ | Beschreibung |
+| Parameter | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| accountName |string |Azure Automation-Kontoname |
-| pricingTier |string |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
-| regionId |string |Region des Azure Automation-Kontos |
-| solutionName |string |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
-| workspaceName |string |Name des Log Analytics-Arbeitsbereichs. |
-| workspaceRegionId |string |Region des Azure Log Analytics-Arbeitsbereichs |
+| .<Name der Region |Zeichenfolge |Azure Automation-Kontoname |
+| pricingTier |Zeichenfolge |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |
+| regionId |Zeichenfolge |Region des Azure Automation-Kontos |
+| solutionName |Zeichenfolge |Name der Lösung  Wenn Sie die Lösung über Schnellstartvorlagen bereitstellen, sollten Sie „solutionName“ als Parameter definieren, damit Sie eine Zeichenfolge definieren können und dies nicht durch den Benutzer erfolgen muss. |
+| workspaceName |Zeichenfolge |Name des Log Analytics-Arbeitsbereichs. |
+| workspaceRegionId |Zeichenfolge |Region des Azure Log Analytics-Arbeitsbereichs |
 
 
 Unten stehend finden Sie die Struktur der Standardparameter, die Sie kopieren und in Ihrer Lösungsdatei einfügen können.  
@@ -132,7 +132,7 @@ Unten stehend finden Sie die Struktur der Standardparameter, die Sie kopieren un
 
 Sie verweisen in anderen Elementen der Lösung mit der Syntax **parameters('parameter name')** auf die Parameterwerte.  Um z.B. auf den Namen des Arbeitsbereichs zuzugreifen, verwenden Sie **parameters('workspaceName')**.
 
-## <a name="variables"></a>Variablen
+## <a name="variables"></a>Variables
 [Variablen](../azure-resource-manager/resource-group-authoring-templates.md#variables) sind Werte, die Sie in der restlichen Verwaltungslösung verwenden.  Diese Werte werden dem Benutzer, der die Lösung installiert, nicht verfügbar gemacht.  Sie stellen dem Ersteller einen zentralen Ort bereit, an dem dieser Werte verwalten kann, die in der Lösung möglicherweise mehrfach verwendet werden. Platzieren Sie beliebige Werte für Ihre Lösung in Variablen anstatt sie im **resources**-Element hartzucodieren.  Dadurch ist der Code besser lesbar und Sie können diese Werte einfach in späteren Versionen ändern.
 
 Im Folgenden finden Sie ein Beispiel eines **variables**-Elements mit typischen Parametern, die in Lösungen verwendet werden.
@@ -161,12 +161,12 @@ Sie können auch komplexe Variablen mit mehreren Gruppen von Werten definieren. 
 
 Sie verweisen in diesem Fall in der Lösung mit der Syntax **variables('variable name').property** auf Variablenwerte.  Um beispielsweise auf die SolutionName-Variable zuzugreifen, verwenden Sie **variables('Solution').Name**.
 
-## <a name="resources"></a>Ressourcen
+## <a name="resources"></a>angeben
 [Ressourcen](../azure-resource-manager/resource-group-authoring-templates.md#resources) definieren die verschiedenen Ressourcen, die von Ihrer Verwaltungslösung installiert und konfiguriert werden.  Dies ist der größte und komplexeste Teil der Vorlage.  Sie erhalten die Struktur und die vollständige Beschreibung der Ressourcenelemente unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md#resources).  Verschiedene Ressourcen, die Sie in der Regel definieren, werden in anderen Artikeln in dieser Dokumentation beschrieben. 
 
 
 ### <a name="dependencies"></a>Abhängigkeiten
-Die **dependsOn**-Elemente geben eine [Abhängigkeit](../azure-resource-manager/resource-group-define-dependencies.md) auf einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](operations-management-suite-solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](operations-management-suite-solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
+Das **dependsOn**-Element gibt eine [Abhängigkeit](../azure-resource-manager/resource-group-define-dependencies.md) von einer anderen Ressource an.  Wenn die Lösung installiert ist, wird keine Ressource erstellt, bis nicht alle Abhängigkeiten erstellt wurden.  Beispielsweise kann Ihre Lösung möglicherweise [ein Runbook starten](operations-management-suite-solutions-resources-automation.md#runbooks), wenn sie mithilfe einer [Auftragsressource](operations-management-suite-solutions-resources-automation.md#automation-jobs) erstellt wurde.  Die Auftragsressource würde dann von der Runbookressource abhängig sein, um sicherzustellen, dass das Runbook erstellt wird, bevor der Auftrag erstellt wird.
 
 ### <a name="oms-workspace-and-automation-account"></a>OMS-Arbeitsbereich und Automation-Konto
 Verwaltungslösungen erfordern einen [OMS-Arbeitsbereich](../log-analytics/log-analytics-manage-access.md) für Ansichten und ein [Automation-Konto](../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen.  Diese müssen verfügbar sein, bevor die Ressourcen in der Lösung erstellt werden und sie sollten nicht in der Lösung selbst definiert werden.  Der Benutzer wird [einen Arbeitsbereich und ein Konto angeben](operations-management-suite-solutions.md#oms-workspace-and-automation-account), wenn dieser Ihre Lösung bereitstellt. Als Autor sollten Sie aber die nachstehenden Punkte beachten.
@@ -176,7 +176,7 @@ Jede Lösung erfordert einen Ressourceneintrag im Element **resources**, der die
 
 
     {
-      "name": "[concat(variables('Solution').Name, '[' ,parameters('workspacename'), ']')]",
+      "name": "[concat(variables('Solution').Name, '[' ,parameters('workspaceName'), ']')]",
       "location": "[parameters('workspaceRegionId')]",
       "tags": { },
       "type": "Microsoft.OperationsManagement/solutions",
@@ -185,7 +185,7 @@ Jede Lösung erfordert einen Ressourceneintrag im Element **resources**, der die
         <list-of-resources>
       ],
       "properties": {
-        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspacename'))]",
+        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]",
         "referencedResources": [
             <list-of-referenced-resources>
         ],
@@ -211,7 +211,7 @@ Die Lösungsressource muss über eine [Abhängigkeit](../azure-resource-manager/
 ### <a name="properties"></a>Eigenschaften
 Die Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.  Dies umfasst die Ressourcen, die in der Lösung enthalten sind oder von dieser referenziert werden. Dadurch wird definiert, wie die Ressource nach Installation der Lösung verwaltet wird.  Jede Ressource in der Lösung muss entweder in der Eigenschaft **referencedResources** oder in der Eigenschaft **containedResources** aufgelistet werden.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | workspaceResourceId |ID des Log Analytics-Arbeitsbereichs im Format *<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>*. |
 | referencedResources |Liste der Ressourcen in der Lösung, die nicht entfernt werden sollen, wenn die Lösung entfernt wird. |
@@ -222,9 +222,9 @@ Das obige Beispiel ist für eine Lösung mit einem Runbook, einem Zeitplan und e
 ### <a name="plan"></a>Plan
 Die Entität **Plan** der Lösungsressource weist die Eigenschaften in der folgenden Tabelle auf.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Name |Name der Lösung |
+| name |Name der Lösung |
 | Version |Die Version der Lösung, wie vom Autor festgelegt. |
 | product |Eindeutige Zeichenfolge zum Identifizieren der Lösung. |
 | Herausgeber |Herausgeber der Lösung |

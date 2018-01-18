@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-ms.openlocfilehash: 20c3e3c1cb85308cad47054c2efa87f61cae0f22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1e45d394a4c442a4fb255ed6d838a589e98860e
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="how-to-build-complex-schedules-and-advanced-recurrence-with-azure-scheduler"></a>Erstellen komplexer Zeitpläne und erweiterter Serien mit Azure Scheduler
 ## <a name="overview"></a>Übersicht
@@ -59,7 +59,7 @@ Zum Erstellen eines einfachen Zeitplans mithilfe der [Azure Scheduler-REST-API](
         "recurrence":                     // optional
         {
             "frequency": "week",     // can be "year" "month" "day" "week" "hour" "minute"
-            "interval": 1,                // optional, how often to fire (default to 1)
+            "interval": 1,                // how often to fire
             "schedule":                   // optional (advanced scheduling specifics)
             {
                 "weekDays": ["monday", "wednesday", "friday"],
@@ -89,13 +89,13 @@ In diesem Abschnitt gehen wir ausführlicher auf die einzelnen Elemente ein.
 
 | **JSON-Name** | **Werttyp** | **Erforderlich?** | **Standardwert** | **Gültige Werte** | **Beispiel** |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| ***startTime*** |String |Nein |Keine |Datum/Uhrzeit (nach ISO 8601) |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
-| ***recurrence*** |Objekt |Nein |Keine |Wiederholungsobjekt |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
-| ***frequency*** |String |Ja |Keine |"minute", "hour", "day", "week", "month" |<code>"frequency" : "hour"</code> |
-| ***interval*** |Number |Nein |1 |1 bis 1000. |<code>"interval":10</code> |
-| ***endTime*** |String |Nein |Keine |Datums-/Uhrzeitwert für einen Zeitpunkt in der Zukunft |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
-| ***count*** |Number |Nein |Keine |>= 1 |<code>"count": 5</code> |
-| ***schedule*** |Objekt |Nein |Keine |Zeitplanobjekt |<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code> |
+| ***startTime*** |Zeichenfolge |Nein  |Keine |Datum/Uhrzeit (nach ISO 8601) |<code>"startTime" : "2013-01-09T09:30:00-08:00"</code> |
+| ***recurrence*** |Objekt |Nein  |Keine |Wiederholungsobjekt |<code>"recurrence" : { "frequency" : "monthly", "interval" : 1 }</code> |
+| ***frequency*** |Zeichenfolge |Ja |Keine |"minute", "hour", "day", "week", "month" |<code>"frequency" : "hour"</code> |
+| ***interval*** |Number |Ja |Keine |1 bis 1000. |<code>"interval":10</code> |
+| ***endTime*** |Zeichenfolge |Nein  |Keine |Datums-/Uhrzeitwert für einen Zeitpunkt in der Zukunft |<code>"endTime" : "2013-02-09T09:30:00-08:00"</code> |
+| ***count*** |Number |Nein  |Keine |>= 1 |<code>"count": 5</code> |
+| ***schedule*** |Objekt |Nein  |Keine |Zeitplanobjekt |<code>"schedule" : { "minute" : [30], "hour" : [8,17] }</code> |
 
 ## <a name="deep-dive-starttime"></a>Ausführliche Betrachtung: *startTime*
 Die folgende Tabelle verdeutlicht, wie *startTime* die Ausführung eines Auftrags beeinflusst.
@@ -108,7 +108,7 @@ Die folgende Tabelle verdeutlicht, wie *startTime* die Ausführung eines Auftrag
 
 Das folgende Beispiel veranschaulicht, was passiert, wenn *startTime* in der Vergangenheit liegt und nur *recurrence*, aber kein *schedule* angegeben ist.  In diesem Beispiel wird davon ausgegangen, dass die aktuelle Zeit „2015-04-08-13:00“ ist, *startTime* auf „2015-04-07 14:00“ festgelegt ist und für *recurrence* ein Zwei-Tages-Intervall (mit „*frequency*: day“ und „*interval*: 2“) angegeben wurde. Beachten Sie, dass *startTime* in der Vergangenheit liegt.
 
-Unter diesen Umständen ist die *erste Ausführung* am 9.4.2015 um 14:00 Uhr\. Das Scheduler-Modul berechnet die Ausführungen auf Grundlage der Startzeit.  In der Vergangenheit liegende Instanzen werden verworfen. Das Modul verwendet die nächste in der Zukunft liegende Instanz.  In vorliegenden Fall ist *startTime* auf 14:00 Uhr am 7.4.2015 festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 9.4.2015 um 14:00 Uhr.
+Unter diesen Umständen ist die *erste Ausführung* am 9.4.2015 um 14:00 Uhr\. Die Scheduler-Engine berechnet die Ausführungen auf Grundlage der Startzeit.  In der Vergangenheit liegende Instanzen werden verworfen. Die Engine verwendet die nächste in der Zukunft liegende Instanz.  In vorliegenden Fall ist *startTime* auf 14:00 Uhr am 7.4.2015 festgelegt. Die nächste Instanz folgt zwei Tage nach diesem Zeitpunkt, also am 9.4.2015 um 14:00 Uhr.
 
 Beachten Sie, dass die erste Ausführung auch dann zu diesem Zeitpunkt stattfinden würde, wenn als Startzeit der 5.4.2015 oder der 1.4.2015 (jeweils 14:00 Uhr) angegeben wäre\. Nach der ersten Ausführung werden die nachfolgenden Ausführungen auf der Grundlage des Zeitplans berechnet und erfolgen jeweils um 14:00 Uhr am 11.4.2015, am 13.4.2015, am 15.4.2015 usw.
 
@@ -125,11 +125,11 @@ Die folgende Tabelle enthält eine ausführliche Beschreibung der *Zeitplaneleme
 
 | **JSON-Name** | **Beschreibung** | **Gültige Werte** |
 |:--- |:--- |:--- |
-| **minutes** |Minuten der Stunde, in der der Auftrag ausgeführt wird |<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul> |
-| **hours** |Stunden des Tages, an dem der Auftrag ausgeführt wird |<ul><li>Ganze Zahl oder</li><li>Array mit ganzen Zahlen</li></ul> |
-| **weekDays** |Die Wochentage, an denen der Auftrag ausgeführt wird. Kann nur bei wöchentlicher Häufigkeit angegeben werden. |<ul><li>"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" oder "Sunday"</li><li>Array mit beliebigen der oben angegebenen Werte (maximale Arraygröße: 7)</li></ul>Die Groß-/Kleinschreibung wird *nicht* beachtet. |
+| **minutes** |Minuten der Stunde, in der der Auftrag ausgeführt wird |<ul><li>Array mit ganzen Zahlen</li></ul> |
+| **hours** |Stunden des Tages, an dem der Auftrag ausgeführt wird |<ul><li>Array mit ganzen Zahlen</li></ul> |
+| **weekDays** |Die Wochentage, an denen der Auftrag ausgeführt wird. Kann nur bei wöchentlicher Häufigkeit angegeben werden. |<ul><li>Array mit beliebigen folgenden Werten (maximale Arraygröße: 7)<ul><li>„Monday“</li><li>„Tuesday“</li><li>„Wednesday“</li><li>„Thursday“</li><li>„Friday“</li><li>„Saturday“</li><li>„Sunday“</li></ul></li></ul>Die Groß-/Kleinschreibung wird *nicht* beachtet. |
 | **monthlyOccurrences** |Bestimmt, an welchen Tagen im Monat der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Array mit monthlyOccurrence-Objekten:</li></ul> <pre>{ "day": *day*,<br />  "occurrence":*occurrence*<br />}</pre><p> *Tag* ist der Wochentag, an dem der Auftrag ausgeführt wird. „{Sunday}“ steht beispielsweise für jeden Sonntag im Monat. Erforderlich.</p><p>*Vorkommen* steht für den Tag innerhalb des Monats. Mit „{Sunday, -1}“ wird beispielsweise der letzte Sonntag des Monats angegeben. Optional.</p> |
-| **monthDays** |Der Tag des Monats, an dem der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31.</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31.</li><li>Array mit den oben genannten Werten</li></ul> |
+| **monthDays** |Der Tag des Monats, an dem der Auftrag ausgeführt wird. Kann nur bei monatlicher Häufigkeit angegeben werden. |<ul><li>Ein Array mit den folgenden Werten</li><ul><li>Beliebiger Wert, für den Folgendes gilt: <= -1 und >= -31.</li><li>Beliebiger Wert, für den Folgendes gilt: >= 1 und <= 31.</li></ul></ul> |
 
 ## <a name="examples-recurrence-schedules"></a>Beispiele: Wiederholungszeitpläne
 Im Anschluss folgen verschiedene Beispiele für Wiederholungszeitpläne, bei denen jeweils das schedule-Objekt und die dazugehörigen Elemente im Mittelpunkt stehen.
@@ -170,7 +170,7 @@ Bei den folgenden Zeitplänen wird jeweils davon ausgegangen, dass *interval* au
 | <code>{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}</code> |Ausführung im 15-Minuten-Takt am letzten Freitag des Monats |
 | <code>{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}</code> |Ausführung um 5:15 Uhr, 5:45 Uhr, 17:15 Uhr und 17:45 Uhr am dritten Mittwoch jedes Monats |
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
  [Was ist Azure Scheduler?](scheduler-intro.md)
 
  [Konzepte, Terminologie und Entitätshierarchie für Azure Scheduler](scheduler-concepts-terms.md)

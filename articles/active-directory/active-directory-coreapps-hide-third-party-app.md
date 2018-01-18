@@ -1,6 +1,6 @@
 ---
 title: "Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory | Microsoft-Dokumentation"
-description: "Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory"
+description: "Ausblenden einer Anwendung auf der Benutzeroberfläche in Zugriffsbereichen von Azure Active Directory oder Startfeldern von Office 365"
 services: active-directory
 documentationcenter: 
 author: billmath
@@ -11,24 +11,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 01/04/2018
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 667fdd45bc9eb1f01ce3883006bb29274478cb83
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 00307311ca2bc1432f2de3755575adf1804f9c77
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Ausblenden einer Anwendung auf der Benutzeroberfläche in Azure Active Directory
 
-Wenn Sie eine Anwendung besitzen, die nicht im Zugriffsbereich des Benutzers oder in Office 365-Startfeldern angezeigt werden soll, steht Ihnen eine Option zur Verfügung, um diese App-Kachel auszublenden. Diese Option ist nur für Drittanbieteranwendungen verfügbar (nicht von Microsoft veröffentlichte Apps). Benutzer sind weiterhin berechtigt, diese App zu nutzen, wenn Sie diese ausblenden, sie wird jedoch nicht mehr in deren App-Startfeldern angezeigt. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen globaler Administrator für das Verzeichnis sein. 
+Wenn Sie eine Anwendung besitzen, die nicht im Zugriffsbereich des Benutzers oder in Office 365-Startfeldern angezeigt werden soll, stehen Ihnen Optionen zur Verfügung, um diese App-Kachel auszublenden.  Die folgenden zwei Optionen stehen zum Ausblenden von Anwendungen in App-Startfeldern von Benutzern zur Verfügung.
+
+- Ausblenden einer Drittanbieteranwendung in Zugriffsbereichen von Benutzern und Office 365-App-Startfeldern
+- Ausblenden aller Office 365-Anwendungen in Zugriffsbereichen von Benutzern
+
+Benutzer sind weiterhin berechtigt, diese App zu nutzen, wenn Sie diese ausblenden, sie wird jedoch nicht mehr in deren App-Startfeldern angezeigt. Sie benötigen die entsprechenden Berechtigungen zum Verwalten der Unternehmens-App, und Sie müssen ein globaler Administrator für das Verzeichnis sein.
+
 
 ## <a name="hiding-an-application-from-users-end-user-experiences"></a>Ausblenden einer Anwendung aus der Benutzeroberfläche von Endbenutzern
-Befolgen Sie folgende Schritte, um eine Anwendung im Zugriffsbereich eines Benutzers und in den App-Startfeldern von Office 365 auszublenden.
+Je nach Ihrer Situation können Sie die Schritte unten verwenden, um Anwendungen in Zugriffsbereichen auszublenden.
 
 ### <a name="how-do-i-hide-a-third-party-app-from-users-access-panel-and-o365-app-launchers"></a>Wie blende ich eine Drittanbieter-App aus dem Zugriffsbereich des Benutzers und den App-Startfeldern von Office 365 aus?
+Befolgen Sie folgende Schritte, um eine Anwendung im Zugriffsbereich eines Benutzers und in den App-Startfeldern von Office 365 auszublenden.
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
 2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
@@ -42,8 +49,20 @@ Befolgen Sie folgende Schritte, um eine Anwendung im Zugriffsbereich eines Benut
 ![Unternehmens-Apps](media/active-directory-coreapps-hide-third-party-app/app3.png)
 8.  Klicken Sie auf **Speichern** .
 
+### <a name="how-do-i-hide-office-365-applications-from-users-access-panel"></a>Gewusst wie: Ausblenden von Office 365-Anwendungen in Zugriffsbereichen von Benutzern
+
+Mithilfe der folgenden Schritte können Sie alle Office 365-Anwendungen im Zugriffsbereich ausblenden. Diese Apps werden im Office 365-Portal weiterhin angezeigt.
+
+1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator für das Verzeichnis konfiguriert ist.
+2.  Wählen Sie **Weitere Dienste** aus, geben Sie **Azure Active Directory** in das Textfeld ein, und drücken Sie die **EINGABETASTE**.
+3.  Wählen Sie auf dem Bildschirm **Azure Active Directory – *Verzeichnisname*** (d.h. dem Azure AD-Bildschirm für das Verzeichnis, das Sie verwalten) **Benutzereinstellungen** aus.
+4.  Wählen Sie auf dem Bildschirm **Benutzereinstellungen** unter **Unternehmensanwendungen** für **Benutzer können Office 365-Apps nur im Office 365-Portal anzeigen** den Wert **Ja** aus.
+
+![Unternehmens-Apps](media/active-directory-coreapps-hide-third-party-app/apps4.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 * [Alle meine Gruppen anzeigen](active-directory-groups-view-azure-portal.md)
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](active-directory-coreapps-assign-user-azure-portal.md)
 * [Entfernen einer Benutzer- oder Gruppenzuweisung aus einer Unternehmens-App](active-directory-coreapps-remove-assignment-azure-portal.md)
 * [Ändern des Namens oder Logos einer Unternehmens-App](active-directory-coreapps-change-app-logo-user-azure-portal.md)
+

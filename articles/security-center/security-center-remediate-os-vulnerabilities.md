@@ -1,6 +1,6 @@
 ---
-title: Beheben von Betriebssystem-Sicherheitsrisiken in Azure Security Center | Microsoft Docs
-description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung „Betriebssystem-Sicherheitsrisiken beheben“ umsetzen."
+title: Korrigieren von Sicherheitskonfigurationen in Azure Security Center | Microsoft-Dokumentation
+description: "In diesem Dokument wird erläutert, wie Sie die Azure Security Center-Empfehlung **Sicherheitskonfigurationen korrigieren** umsetzen."
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,33 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 01/04/2018
 ms.author: terrylan
-ms.openlocfilehash: 39879c22278a55f841e294cda5a89bec2bdf6988
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 412234b1486fa15cbc399bcf43be8ce90aac252a
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
-# <a name="remediate-os-vulnerabilities-in-azure-security-center"></a>Beheben von Betriebssystem-Sicherheitsrisiken in Azure Security Center
-Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Konfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
+# <a name="remediate-security-configurations-in-azure-security-center"></a>Korrigieren von Sicherheitskonfigurationen in Azure Security Center
+Azure Security Center analysiert täglich das Betriebssystem Ihrer virtuellen Computer (VMs) und physischen Computer auf Konfigurationen, die sie möglicherweise anfälliger für Angriffe machen. Security Center empfiehlt die Behandlung von Sicherheitsrisiken, wenn die Betriebssystemkonfiguration nicht den empfohlenen Sicherheitskonfigurationsregeln entspricht, und empfiehlt Konfigurationsänderungen, um diese Sicherheitsrisiken zu beseitigen.
 
-> [!NOTE]
-> Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335).
->
->
+Weitere Informationen zu den speziellen Konfigurationen, die überwacht werden, finden Sie in der [Liste der empfohlenen Konfigurationsregeln](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335). Weitere Informationen zum Anpassen von Sicherheitskonfigurationen in Security Center finden Sie unter [Anpassen von Sicherheitskonfigurationen für Betriebssysteme](security-center-customize-os-security-config.md).
 
 ## <a name="implement-the-recommendation"></a>Implementieren der Empfehlung
-„Betriebssystem-Sicherheitsrisiken beheben“ wird als Empfehlung in Security Center präsentiert. Diese Empfehlung wird unter **Empfehlungen** und unter **Compute** angezeigt.
+Das Korrigieren nicht übereinstimmender Sicherheitskonfigurationen wird in Security Center als Empfehlung angezeigt. Diese Empfehlung wird unter **Empfehlungen** und unter **Compute** angezeigt.
 
-In diesem Beispiel betrachten wir die Empfehlung **Betriebssystem-Sicherheitsrisiken beheben (durch Microsoft)** unter **Compute**.
+In diesem Beispiel betrachten wir die Empfehlung **Sicherheitskonfigurationen korrigieren** unter **Compute**.
 1. Klicken Sie im Hauptmenü von Security Center auf **Compute**.
 
-   ![Betriebssystem-Sicherheitsrisiken beheben][1]
+   ![Korrigieren von Sicherheitskonfigurationen][1]
 
-2. Klicken Sie unter **Compute** auf **Betriebssystem-Sicherheitsrisiken beheben (durch Microsoft)**. Das Dashboard **Konflikt durch Sicherheitsrisiken für Betriebssystem (von Microsoft)** wird geöffnet.
+2. Wählen Sie unter **Compute** die Option **Sicherheitskonfigurationen korrigieren**. Der Bereich **Sicherheitskonfigurationen** wird geöffnet.
 
-   ![Betriebssystem-Sicherheitsrisiken beheben][2]
+   ![Sicherheitskonfigurationen][2]
 
   Im oberen Bereich des Dashboards befindet sich Folgendes:
 
@@ -77,11 +74,11 @@ In diesem Beispiel betrachten wir die Empfehlung **Betriebssystem-Sicherheitsris
   - TATSÄCHLICHER Wert: Zurückgegebener Wert, nachdem das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgeglichen hat
   - REGELVORGANG: Vom Security Center verwendeter Regelvorgang, wenn das Security Center die Betriebssystemkonfiguration Ihres virtuellen Computers mit der Regel abgleicht
 
-4. Klicken Sie auf dem oberen Menüband auf das Symbol **Suche**. Die Suche wird mit einer Liste der Arbeitsbereiche geöffnet, die virtuelle und physische Computer mit dem ausgewählten Betriebssystem-Sicherheitsrisiko enthalten. Dieses Blatt für die Arbeitsbereichauswahl wird nur angezeigt, wenn die ausgewählte Regel für mehrere virtuelle Computer gilt, die mit unterschiedlichen Arbeitsbereichen verbunden sind.
+4. Klicken Sie auf dem oberen Menüband auf das Symbol **Suche**. Die Suche wird mit einer Liste der Arbeitsbereiche geöffnet, die virtuelle und physische Computer mit den ausgewählten nicht übereinstimmenden Sicherheitskonfigurationen enthalten. Dieses Blatt für die Arbeitsbereichauswahl wird nur angezeigt, wenn die ausgewählte Regel für mehrere virtuelle Computer gilt, die mit unterschiedlichen Arbeitsbereichen verbunden sind.
 
   ![Aufgeführte Arbeitsbereiche][4]
 
-5. Wählen Sie einen Arbeitsbereich aus. Eine für den Arbeitsbereich mit dem Betriebssystem-Sicherheitsrisiko gefilterte Log Analytics-Suchabfrage wird geöffnet.
+5. Wählen Sie einen Arbeitsbereich aus. Eine für den Arbeitsbereich mit den nicht übereinstimmenden Sicherheitskonfigurationen gefilterte Log Analytics-Suchabfrage wird geöffnet.
 
   ![Arbeitsbereich mit Betriebssystem-Sicherheitsrisiko][5]
 
@@ -90,7 +87,9 @@ In diesem Beispiel betrachten wir die Empfehlung **Betriebssystem-Sicherheitsris
   ![Für diesen Computer gefiltert][6]
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Betriebssystem-Sicherheitsrisiken beheben“ umsetzen. Sie können den Satz der Konfigurationsregeln [hier](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)überprüfen. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](https://nvd.nist.gov/cce/index.cfm) finden Sie weitere Informationen.
+In diesem Artikel wurde gezeigt, wie Sie die Security Center-Empfehlung „Sicherheitskonfigurationen korrigieren“ umsetzen. Weitere Informationen zum Anpassen von Sicherheitskonfigurationen in Security Center finden Sie unter [Anpassen von Sicherheitskonfigurationen für Betriebssysteme](security-center-customize-os-security-config.md).
+
+Sie können den Satz der Konfigurationsregeln [hier](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)überprüfen. Security Center verwendet die Common Configuration Enumeration (CCE), um Konfigurationsregeln eindeutige Bezeichner zuzuweisen. Auf der Website zu [CCE](https://nvd.nist.gov/cce/index.cfm) finden Sie weitere Informationen.
 
 Weitere Informationen zu Security Center finden Sie in den folgenden Ressourcen:
 

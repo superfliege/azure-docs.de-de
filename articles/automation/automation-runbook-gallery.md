@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 70bbc131f153efd88816450c239920c79665fdff
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: d6a950d69e5279c3cc19d8e457bfa23c2b40f515
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Runbook und Modulkataloge für Azure Automation
 Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie eine Vielzahl von Szenarien nutzen, die bereits von Microsoft und der Community entwickelt wurden.  Sie können diese Szenarien ohne Anpassung verwenden oder als Ausgangspunkt nutzen und für Ihre spezifischen Anforderungen bearbeiten.
@@ -26,23 +26,14 @@ Statt eigene Runbooks und Module in Azure Automation zu erstellen, können Sie e
 Sie können Runbooks aus dem [Runbook-Katalog](#runbooks-in-runbook-gallery) und Module aus dem [PowerShell-Katalog](#modules-in-powerShell-gallery) abrufen.  Sie können auch etwas zur Community beitragen, indem Sie von Ihnen entwickelte Szenarien zur Verfügung stellen.
 
 ## <a name="runbooks-in-runbook-gallery"></a>Runbooks im Runbook-Katalog
-Der [Runbook-Katalog](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) bietet zahlreiche Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Sie können entweder ein Runbook aus dem Katalog herunterladen, der im [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload) gehostet ist, oder Sie können Runbooks direkt aus dem Katalog über das klassische Azure-Portal oder Azure-Portal importieren.
+Der [Runbook-Katalog](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=RootCategory&f\[0\].Value=WindowsAzure&f\[1\].Type=SubCategory&f\[1\].Value=WindowsAzure_automation&f\[1\].Text=Automation) bietet zahlreiche Runbooks von Microsoft und der Community, die Sie in Azure Automation importieren können. Sie können entweder ein Runbook aus dem Katalog herunterladen, der im [TechNet Script Center](https://gallery.technet.microsoft.com/scriptcenter/site/upload) gehostet ist, oder Sie können Runbooks direkt aus dem Katalog über das Azure-Portal importieren.
 
-Das direkte Importieren aus dem Runbook-Katalog ist nur über das klassische Azure-Portal oder das Azure-Portal möglich. Diese Funktion kann nicht mithilfe von Windows PowerShell ausgeführt werden.
+Das direkte Importieren aus dem Runbook-Katalog ist nur über das Azure-Portal möglich. Diese Funktion kann nicht mithilfe von Windows PowerShell ausgeführt werden.
 
 > [!NOTE]
 > Überprüfen Sie unbedingt den Inhalt der aus dem Runbook-Katalog heruntergeladenen Runbooks, und seien Sie äußerst vorsichtig, wenn Sie sie in einer Produktionsumgebung installieren und ausführen.|
 > 
 > 
-
-### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-classic-portal"></a>So importieren Sie mit dem klassischen Azure-Portal ein Runbook aus dem Runbook-Katalog
-1. Klicken Sie im Azure-Portal auf **Neu** **App Services**, **Automation**, **Runbook**, **From Gallery** (Aus Katalog).
-2. Wählen Sie eine Kategorie aus, um verwandte Runbooks anzuzeigen, und wählen Sie ein Runbook aus, um seine Details anzuzeigen. Klicken Sie zum Auswählen des gewünschten Runbooks auf die Schaltfläche mit dem nach rechts weisenden Pfeil.
-   
-    ![Runbook-Katalog](media/automation-runbook-gallery/runbook-gallery.png)
-3. Überprüfen Sie den Inhalt des Runbooks, und beachten Sie alle Anforderungen in der Beschreibung. Klicken Sie anschließend auf die Schaltfläche mit dem Pfeil nach rechts.
-4. Überprüfen Sie die Details des Runbooks, und klicken Sie anschließend auf das Häkchen. Der Runbookname ist bereits ausgefüllt.
-5. Das Runbook wird auf der Registerkarte **Runbooks** des Automation-Kontos angezeigt.
 
 ### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>So importieren Sie mit dem Azure-Portal ein Runbook aus dem Runbook-Katalog
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.
@@ -84,7 +75,7 @@ Microsoft empfiehlt, Runbooks aus dem Runbook-Katalog hinzuzufügen, die für an
 * Der Katalog wird von Automation stündlich aktualisiert. Ihre Beiträge werden daher unter Umständen nicht sofort angezeigt.
 
 ## <a name="modules-in-powershell-gallery"></a>Module im PowerShell-Katalog
-PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](http://www.powershellgallery.com) verfügbar.  Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch herunterladen und manuell installieren.  Die Module können nicht direkt über das klassische Azure-Portal installiert werden, Sie können sie jedoch wie alle anderen Module auch herunterladen und installieren.
+PowerShell-Module enthalten Cmdlets, die Sie in Ihren Runbooks verwenden können. Vorhandene Module, die Sie in Azure Automation installieren können, sind im [PowerShell-Katalog](http://www.powershellgallery.com) verfügbar.  Sie starten diesen Katalog über das Azure-Portal und installieren die Module direkt in Azure Automation. Sie können sie auch herunterladen und manuell installieren.  
 
 ### <a name="to-import-a-module-from-the-automation-module-gallery-with-the-azure-portal"></a>So importieren Sie mit dem Azure-Portal ein Modul aus dem Automation-Modulkatalog
 1. Öffnen Sie im Azure-Portal Ihr Automation-Konto.

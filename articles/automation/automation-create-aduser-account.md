@@ -1,6 +1,6 @@
 ---
 title: Erstellen eines Azure AD-Benutzerkontos | Microsoft-Dokumentation
-description: "In diesem Artikel wird beschrieben, wie Sie Azure AD-Benutzerkonto-Anmeldeinformationen für Runbooks in Azure Automation zum Authentifizieren für Azure und klassisches Azure erstellen."
+description: "In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen für Azure AD-Benutzerkonten für Runbooks in Azure Automation zum Authentifizieren in Azure erstellen."
 services: automation
 documentationcenter: 
 author: georgewallace
@@ -10,61 +10,35 @@ keywords: Azure Active Directory-Benutzer, Azure Service Management, Azure AD-Be
 ms.assetid: fcfe266d-b22e-4dfb-8272-adcab09fc0cf
 ms.service: automation
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 700c4419821934daac89025c889b21d8e2ef46b6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f0a9664898cd27529daf73d130dd25fd296a9b48
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="authenticate-runbooks-with-azure-classic-deployment-and-resource-manager"></a>Authentifizieren von Runbooks mit klassischer Azure-Bereitstellung und Resource Manager-Bereitstellung
 In diesem Artikel werden die Schritte beschrieben, die Sie zum Konfigurieren eines Azure AD-Benutzerkontos für Azure Automation-Runbooks ausführen müssen, die für Ressourcen des klassischen Azure-Bereitstellungsmodells oder Azure Resource Manager-Bereitstellungsmodells ausgeführt werden.  Diese Authentifizierungsidentität wird für Azure Resource Manager-basierte Runbooks zwar weiterhin unterstützt, aber die empfohlene Methode ist die Verwendung eines ausführenden Azure-Kontos.       
 
 ## <a name="create-a-new-azure-active-directory-user"></a>Erstellen eines neuen Azure Active Directory-Benutzers
-1. Melden Sie sich im klassischen Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
-2. Wählen Sie **Active Directory**und dann den Namen des Verzeichnisses Ihrer Organisation.
-3. Wählen Sie die Registerkarte **Benutzer** und dann im Befehlsbereich die Option **Benutzer hinzufügen**.
-4. Wählen Sie auf der Seite **Informationen über diesen Benutzer** unter **Art des Benutzers** die Option **Neuer Benutzer in Ihrem Unternehmen**.
-5. Geben Sie einen Benutzernamen ein.  
-6. Wählen Sie den Verzeichnisnamen aus, der Ihrem Azure-Abonnement auf der Active Directory-Seite zugeordnet ist.
-7. Geben Sie auf der Seite **Benutzerprofil** den Vornamen und Nachnamen, einen Anzeigenamen sowie über die Liste **Rollen** einen Benutzer an.  Wählen Sie nicht die Option **Multi-Factor Authentication aktivieren**aus.
-8. Notieren Sie sich den vollständigen Namen des Benutzers und das vorläufige Kennwort.
-9. Wählen Sie **Einstellungen > Administratoren > Hinzufügen**.
-10. Geben Sie den vollständigen Namen des Benutzers ein, den Sie erstellt haben.
-11. Wählen Sie das Abonnement aus, das der Benutzer verwalten soll.
-12. Melden Sie sich bei Azure ab, und melden Sie sich anschließend mit den soeben erstellten Anmeldeinformationen wieder an. Sie werden aufgefordert, das Kennwort des Benutzers zu ändern.
-
-## <a name="create-an-automation-account-in-azure-classic-portal"></a>Erstellen eines Automation-Kontos im klassischen Azure-Portal
-In diesem Abschnitt führen Sie die folgenden Schritte aus, um ein Azure Automation-Konto im Azure-Portal zu erstellen, das für Ihre Runbooks zum Verwalten von Ressourcen im Rahmen der klassischen Azure-Bereitstellung verwendet wird.  
-
-> [!NOTE]
-> Mit dem klassischen Azure-Portal erstellte Automation-Konten können sowohl mit dem klassischen Azure-Portal als auch mit dem Azure-Portal und beiden Cmdlet-Sätzen verwaltet werden. Nach dem Erstellen des Kontos macht es keinen Unterschied, wie Sie Ressourcen innerhalb des Kontos erstellen und verwalten. Wenn Sie planen, auch weiterhin das klassische Azure-Portal zu verwenden, sollten Sie dieses anstelle des Azure-Portals für das Erstellen von Automation-Konten verwenden.
-> 
-> 
-
-1. Melden Sie sich im klassischen Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
-2. Wählen Sie **Automation**.
-3. Wählen Sie auf der Seite **Automation** die Option **Automation-Konto erstellen**.
-4. Geben Sie im Feld **Automation-Konto erstellen** einen Namen für das neue Automation-Konto ein, und wählen Sie in der Dropdownliste eine **Region** aus.  
-5. Klicken Sie auf **OK** , um die Einstellungen zu übernehmen und das Konto zu erstellen.
-6. Nach der Erstellung wird es auf der Seite **Automation** aufgeführt.
-7. Wenn Sie auf das Konto klicken, gelangen Sie auf die Dashboardseite.  
-8. Wählen Sie auf der Seite mit dem Automation-Dashboard die Option **Ressourcen**.
-9. Wählen Sie auf der Seite **Ressourcen** unten die Option **Einstellungen hinzufügen**.
-10. Wählen Sie auf der Seite **Einstellungen hinzufügen** die Option **Anmeldeinformationen hinzufügen**.
-11. Wählen Sie auf der Seite **Anmeldeinformationen definieren** in der Dropdownliste **Typ der Anmeldeinformationen** die Option **Windows PowerShell-Anmeldeinformationen**, und geben Sie einen Namen für die Anmeldeinformationen an.
-12. Geben Sie auf der folgenden Seite **Anmeldeinformationen definieren** im Feld **Benutzername** den Benutzernamen des zuvor erstellten AD-Benutzerkontos und in den Feldern **Kennwort** und **Kennwort bestätigen** das Kennwort ein. Klicken Sie zum Speichern der Änderungen auf **OK** .
+1. Melden Sie sich im Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
+2. Wählen Sie **Azure Active Directory** > **Benutzer und Gruppen** > **Alle Benutzer** > **Neuer Benutzer**.
+3. Geben Sie Details zum Benutzer ein, beispielsweise **Name** und **Benutzername**.  
+4. Notieren Sie sich den vollständigen Namen des Benutzers und das vorläufige Kennwort.
+5. Klicken Sie auf **Verzeichnisrolle**.
+6. Weisen Sie die Rolle „Globaler oder eingeschränkter Administrator“ zu.
+7. Melden Sie sich bei Azure ab, und melden Sie sich anschließend mit den soeben erstellten Anmeldeinformationen wieder an. Sie werden aufgefordert, das Kennwort des Benutzers zu ändern.
 
 ## <a name="create-an-automation-account-in-the-azure-portal"></a>Erstellen eines Automation-Kontos im Azure-Portal
 In diesem Abschnitt führen Sie die folgenden Schritte aus, um ein Azure Automation-Konto im Azure-Portal zu erstellen, das für Ihre Runbooks zum Verwalten von Ressourcen im Azure Resource Manager-Modus verwendet wird.  
 
 1. Melden Sie sich im Azure-Portal als Dienstadministrator für das Azure-Abonnement an, das Sie verwalten möchten.
 2. Wählen Sie die Option **Automation-Konten**.
-3. Klicken Sie auf dem Blatt „Automation-Konten“ auf **Hinzufügen**.<br><br>![Automation-Konto hinzufügen](media/automation-create-aduser-account/add-automation-acct-properties.png)
+3. Wählen Sie **Hinzufügen**.<br><br>![Automation-Konto hinzufügen](media/automation-create-aduser-account/add-automation-acct-properties.png)
 4. Geben Sie auf dem Blatt **Automation-Konto hinzufügen** im Feld **Name** einen Namen für das neue Automation-Konto ein.
 5. Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement für das neue Konto sowie eine neue oder vorhandene **Ressourcengruppe** und den **Standort** eines Azure-Rechenzentrums an.
 6. Wählen Sie für die Option **Ausführendes Azure-Konto erstellen** den Wert **Ja** aus, und klicken Sie auf die Schaltfläche **Erstellen**.  

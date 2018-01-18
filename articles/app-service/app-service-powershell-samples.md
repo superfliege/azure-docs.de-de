@@ -16,15 +16,15 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: e2f6f764372b1a9786847c9382abfd18fe5b87c0
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: ba2bd2b185c395e54f2f085317a424a2aa1b4421
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell-Beispiele
 
-Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe von Azure PowerShell erstellt wurden.
+Die folgende Tabelle enthält Links zu PowerShell-Skripts, die mithilfe von Azure PowerShell erstellt wurden.
 
 | | |
 |-|-|
@@ -32,7 +32,7 @@ Die folgende Tabelle enthält Links zu Bash-Skripts, die mithilfe von Azure Powe
 | [Erstellen einer Web-App mit Bereitstellung über GitHub](./scripts/app-service-powershell-deploy-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine Azure-Web-App, die Code aus GitHub bezieht. |
 | [Erstellen einer Web-App dauerhafter Bereitstellung über GitHub](./scripts/app-service-powershell-continuous-deployment-github.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine Azure-Web-App, die dauerhaft Code aus GitHub bereitstellt. |
 | [Erstellen einer Web-App und Bereitstellen von Code mit FTP](./scripts/app-service-powershell-deploy-ftp.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Azure-Web-App und lädt Dateien aus einem lokalen Verzeichnis mithilfe von FTP hoch. |
-| [Erstellen einer Web-App und Bereitstellen von Code über ein lokales Git-Repository](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Azure-Web-App und konfiguriert einen Codepush aus einem lokalen Git-Repository. |
+| [Erstellen einer Web-App und Bereitstellen von Code über ein lokales GitHub-Repository](./scripts/app-service-powershell-deploy-local-git.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Azure-Web-App und konfiguriert einen Codepush aus einem lokalen Git-Repository. |
 | [Erstellen einer Web-App und Bereitstellen von Code in einer Stagingumgebung](./scripts/app-service-powershell-deploy-staging-environment.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Erstellt eine Azure-Web-App mit einem Bereitstellungsslot für Änderungen am Stagingcode. |
 |**Konfigurieren der App**||
 | [Zuordnen einer benutzerdefinierten Domäne zu einer Web-App](./scripts/app-service-powershell-configure-custom-domain.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Erstellt eine Azure-Web-App und ordnet ihr einen benutzerdefinierten Domänennamen zu. |

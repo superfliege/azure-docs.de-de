@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: 1115408443e11c8b0d26b83217c5f63e4b6ba819
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 036c192c5f52a1943bc2799ad6c7e6db7bbffcc4
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-Formate und -Codecs
 Dieses Dokument enthält eine Liste der gängigsten Import- und Exportdateiformate, die Sie mit Media Encoder Standard verwenden können.
@@ -52,7 +52,7 @@ oder
 
 * MXF-, GXF- und QuickTime-Dateien, in denen die Audiospuren als separate PCM-Tracks befördert, die Kanalzuordnung jedoch (für Stereo oder 5.1) aus den Dateimetadaten abgeleitet werden kann.
 
-Beachten Sie, dass der Support für die explizite oder vom Benutzer angegebene Kanalzuordnung in naher Zukunft bereitgestellt wird.
+Der Support für die explizite oder vom Benutzer angegebene Kanalzuordnung wird in naher Zukunft bereitgestellt.
 
 ## <a name="input-video-codecs"></a>Codecs für Videoeingang
 | Codecs für Videoeingang | Unterstützt |
@@ -65,7 +65,7 @@ Beachten Sie, dass der Support für die explizite oder vom Benutzer angegebene K
 | MPEG-2 (bis zu 422 Profile und High Level; Varianten wie XDCAM, XDCAM HD, XDCAM IMX, CableLabs® und D10 eingeschlossen) |Bis zu 422 Profile |
 | MPEG-1 |Ja |
 | VC-1/WMV9 |Ja |
-| Canopus HQ/HQX |Nein |
+| Canopus HQ/HQX |Nein  |
 | MPEG-4 Teil 2 |Ja |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Ja |
 | YUV420, nicht komprimiert oder Mezzanine |Ja |
@@ -88,10 +88,10 @@ Beachten Sie, dass der Support für die explizite oder vom Benutzer angegebene K
 | [Opus](http://go.microsoft.com/fwlink/?LinkId=822667) |Ja |
 | [Vorbis](https://en.wikipedia.org/wiki/Vorbis)</a> |Ja |
 | AMR (Adaptive Multi-Rate) |Ja |
-| AES (SMPTE 331M und 302M, AES3-2003) |Nein |
-| Dolby® E |Nein |
-| Dolby® Digital (AC3) |Nein |
-| Dolby® Digital Plus (E-AC3) |Nein |
+| AES (SMPTE 331M und 302M, AES3-2003) |Nein  |
+| Dolby® E |Nein  |
+| Dolby® Digital (AC3) |Nein  |
+| Dolby® Digital Plus (E-AC3) |Nein  |
 
 ## <a name="output-formats-and-codecs"></a>Ausgabeformate und Codecs
 In der folgenden Tabelle werden die Codecs und Dateiformate aufgeführt, die für den Export unterstützt werden.

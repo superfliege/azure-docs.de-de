@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a02f6cf0923bbe7083ba29fac5f59bcce9f5ab44
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8fbd707b6708661ab0d655afadff2b18694a981e
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem beim Installieren des Anwendungsproxy-Agent-Connectors
 
@@ -37,9 +37,9 @@ Wenn bei der Installation eines Connectors ein Fehler auftritt, entstammt die Ha
 
 **Ziel**: Überprüfen Sie, ob der Connectorcomputer eine Verbindung mit dem Registrierungsendpunkt des AAD-Anwendungsproxys und der Microsoft-Anmeldeseite herstellen kann.
 
-1.  Öffnen Sie einen Browser, und wechseln Sie zu der folgenden Webseite: <https://aadap-portcheck.connectorporttest.msappproxy.net>. Überprüfen Sie dann, ob die Verbindungen mit Rechenzentren in den USA (Mitte und Osten) mit den Ports 9090 und 9091 funktionieren.
+1.  Öffnen Sie einen Browser, und wechseln Sie zu der folgenden Webseite: <https://aadap-portcheck.connectorporttest.msappproxy.net>. Überprüfen Sie dann, ob die Verbindungen mit Rechenzentren in den USA (Mitte und Osten) mit den Ports 80 und 443 funktionieren.
 
-2.  Wenn keiner dieser Ports erfolgreich ist (kein grünes Häkchen aufweist), stellen Sie sicher, dass die Firewall oder der Back-End-Proxy über \*.msappproxy.net mit ordnungsgemäß definierten Ports 9090 und 9091 verfügt.
+2.  Wenn keiner dieser Ports erfolgreich ist (kein grünes Häkchen aufweist), stellen Sie sicher, dass die Firewall oder der Back-End-Proxy über \*.msappproxy.net mit ordnungsgemäß definierten Ports 80 und 443 verfügt.
 
 3.  Öffnen Sie einen Browser (separate Registerkarte), und wechseln Sie zur folgenden Webseite: <https://login.microsoftonline.com>. Stellen Sie sicher, dass Sie sich bei dieser Seite anmelden können.
 

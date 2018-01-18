@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: d06dd0a8ec63202825be347c4b69e21a6dd4b7db
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 637b380dacc91e4ad55044c1d92936be2435138d
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hinzufügen, Ändern oder Entfernen von IP-Adressen für Azure-Netzwerkschnittstellen
 
@@ -138,9 +138,9 @@ Standardmäßig weisen die Azure-DHCP-Server der Netzwerkschnittstelle die priva
 > [!WARNING]
 > Wenn sich die als primäre IP-Adresse einer Netzwerkschnittstelle im Betriebssystem des virtuellen Computers festgelegte IPv4-Adresse je von der privaten IPv4-Adresse unterscheiden sollte, die der primären IP-Konfiguration der primären Netzwerkschnittstelle eines virtuellen Computers in Azure zugewiesen ist, verlieren Sie die Konnektivität mit dem virtuellen Computer.
 
-Es gibt Situationen, in denen die IP-Adresse einer Netzwerkschnittstelle im Betriebssystem des virtuellen Computers manuell festgelegt werden muss. Dies gilt beispielsweise für das manuelle Festlegen der primären und sekundären IP-Adressen eines Windows-Betriebssystems beim Hinzufügen mehrerer IP-Adressen zu einem virtuellen Azure-Computer. Bei einem virtuellen Linux-Computer müssen Sie möglicherweise nur die sekundären IP-Adressen manuell festlegen. Weitere Informationen finden Sie unter [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](virtual-network-multiple-ip-addresses-portal.md#os-config). Wenn Sie die IP-Adresse im Betriebssystem manuell festlegen, sollten Sie die Adressen der IP-Konfiguration für eine Netzwerkschnittstelle immer mit der statischen (anstelle der dynamischen) Zuweisungsmethode zuweisen. Durch das Zuweisen der Adresse mithilfe der statischen Methode wird sichergestellt, dass sich die Adresse in Azure nicht ändert. Wenn Sie die einer IP-Konfiguration zugewiesene Adresse einmal ändern müssen, beachten Sie folgende Empfehlungen:
+Es gibt Situationen, in denen die IP-Adresse einer Netzwerkschnittstelle im Betriebssystem des virtuellen Computers manuell festgelegt werden muss. Dies gilt beispielsweise für das manuelle Festlegen der primären und sekundären IP-Adressen eines Windows-Betriebssystems beim Hinzufügen mehrerer IP-Adressen zu einem virtuellen Azure-Computer. Bei einem virtuellen Linux-Computer müssen Sie möglicherweise nur die sekundären IP-Adressen manuell festlegen. Weitere Informationen finden Sie unter [Hinzufügen von IP-Adressen zu einem VM-Betriebssystem](virtual-network-multiple-ip-addresses-portal.md#os-config). Wenn Sie die einer IP-Konfiguration zugewiesene Adresse einmal ändern müssen, beachten Sie folgende Empfehlungen:
 
-1. Ändern Sie die Zuweisung der IP-Adresse innerhalb des Betriebssystems zurück in DHCP, und starten Sie den virtuellen Computer neu, um sicherzustellen, dass der virtuelle Computer eine Adresse von den Azure-DHCP-Servern erhält.
+1. Vergewissern Sie sich, dass der virtuelle Computer eine Adresse von den Azure DHCP-Servern empfängt. Sobald dies erfolgt ist, ändern Sie die Zuweisung der IP-Adresse im Betriebssystem wieder zurück zu DHCP, und führen Sie einen Neustart des virtuellen Computers aus.
 2. Beenden Sie den virtuellen Computer (und heben die Zuordnung auf).
 3. Ändern Sie die IP-Adresse für die IP-Konfiguration in Azure.
 4. Starten Sie den virtuellen Computer.

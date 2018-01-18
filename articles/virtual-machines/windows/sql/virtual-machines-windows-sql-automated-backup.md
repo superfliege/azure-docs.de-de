@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/05/2017
+ms.date: 01/05/2018
 ms.author: jroth
-ms.openlocfilehash: 91aab896dd5f06c950ee0ed8f36cc6a953d91611
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 281aac8229c55cde1f36857a8f1042aa08f7e372
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="automated-backup-for-sql-server-2014-virtual-machines-resource-manager"></a>Automatisierte Sicherung für SQL Server 2014-VMs (Resource Manager)
 
@@ -48,7 +48,7 @@ Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Vora
 > [!IMPORTANT]
 > Die automatisierte Sicherung funktioniert mit SQL Server 2014. Bei Einsatz von SQL Server 2016 können Sie die automatisierte Sicherung v2 zum Sichern Ihrer Datenbanken verwenden. Weitere Informationen finden Sie unter [Automated Backup v2 for SQL Server 2016 Azure Virtual Machines (Resource Manager)](virtual-machines-windows-sql-automated-backup-v2.md) (Automatisierte Sicherung v2 für SQL Server 2016-VMs in Azure [Resource Manager]).
 
-**Datenbankkonfiguration**:
+**Datenbankkonfiguration:**
 
 - Zieldatenbanken müssen das vollständige Wiederherstellungsmodell verwenden. Weitere Informationen zu den Auswirkungen des vollständigen Wiederherstellungsmodells auf Sicherungen finden Sie unter [Sichern beim vollständigen Wiederherstellungsmodell](https://technet.microsoft.com/library/ms190217.aspx).
 - Zieldatenbanken müssen die Standardinstanz von SQL Server aufweisen. Die SQL Server-IaaS-Erweiterung unterstützt keine benannten Instanzen.
@@ -57,7 +57,7 @@ Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Vora
 
 - Ressourcen-Manager
 
-**Azure PowerShell**:
+**Azure PowerShell:**
 
 - [Installieren Sie die aktuellen Azure PowerShell-Befehle](/powershell/azure/overview) , wenn Sie die automatisierte Sicherung mit PowerShell konfigurieren möchten.
 
@@ -68,7 +68,7 @@ Beachten Sie bei der Verwendung der automatisierten Sicherung die folgenden Vora
 
 In der folgenden Tabelle werden die Optionen beschrieben, die für die automatisierte Sicherung konfiguriert werden können. Die tatsächlichen Konfigurationsschritte variieren abhängig davon, ob Sie das Azure-Portal oder Azure Windows PowerShell-Befehle verwenden.
 
-| Einstellung | Bereich (Standard) | Beschreibung |
+| Einstellung | Bereich (Standard) | BESCHREIBUNG |
 | --- | --- | --- |
 | **Automatisierte Sicherung** | Aktivieren/Deaktivieren (deaktiviert) | Aktiviert oder deaktiviert die automatisierte Sicherung für eine Azure-VM mit SQL Server 2014 Standard oder Enterprise. |
 | **Aufbewahrungszeitraum** | 1 bis 30 Tage (30 Tage) | Die Anzahl von Tagen, für die eine Sicherung aufbewahrt wird. |
@@ -109,7 +109,7 @@ Falls Sie die automatisierte Sicherung zum ersten Mal aktivieren, konfiguriert A
 
 ## <a name="configuration-with-powershell"></a>Konfiguration mit PowerShell
 
-Die automatisierte Sicherung kann mithilfe von PowerShell konfiguriert werden. Bevor Sie beginnen, müssen Sie Folgendes tun:
+Die automatisierte Sicherung kann mithilfe von PowerShell konfiguriert werden. Führen Sie zur Vorbereitung folgende Schritte aus:
 
 - [Laden Sie die aktuelle Version von Azure PowerShell herunter, und installieren Sie sie.](http://aka.ms/webpi-azps)
 - Öffnen Sie Windows PowerShell, und ordnen Sie es Ihrem Konto zu. Befolgen Sie hierfür die Schritte im Abschnitt [Konfigurieren Ihres Abonnements](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-ps-sql-create#configure-your-subscription) des Bereitstellungsthemas.
@@ -129,11 +129,14 @@ Wenn die SQL Server-IaaS-Agent-Erweiterung installiert ist, wird „SqlIaaSAgent
 Falls die Erweiterung nicht installiert oder nicht erfolgreich bereitgestellt wurde, können Sie sie mithilfe des folgenden Befehls installieren. Neben dem Namen des virtuellen Computers und der Ressourcengruppe müssen Sie auch die Region (**$region**) angeben, in der sich Ihr virtueller Computer befindet.
 
 ```powershell
-$region = “EASTUS2”
+$region = "EASTUS2"
 Set-AzureRmVMSqlServerExtension -VMName $vmname `
     -ResourceGroupName $resourcegroupname -Name "SQLIaasExtension" `
     -Version "1.2" -Location $region
 ```
+
+> [!IMPORTANT]
+> Wenn die Erweiterung noch nicht installiert ist, wird der SQL Server-Dienst durch die Installation der Erweiterung neu gestartet.
 
 ### <a id="verifysettings"></a> Überprüfen der aktuellen Einstellungen
 

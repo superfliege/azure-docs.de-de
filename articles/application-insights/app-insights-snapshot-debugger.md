@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 2f1f9f306d7759cbd1202c985da27a2a3b879ebd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f3cdcaf49999d2d5d1ee639cb41916a2584b84f2
+ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 
@@ -62,8 +62,6 @@ Die folgenden Umgebungen werden unterstützt:
         <MaximumCollectionPlanSize>50</MaximumCollectionPlanSize>
         <!-- How often to reset problem counters. -->
         <ProblemCounterResetInterval>06:00:00</ProblemCounterResetInterval>
-        <!-- The maximum number of snapshots allowed in one minute. -->
-        <SnapshotsPerMinuteLimit>2</SnapshotsPerMinuteLimit>
         <!-- The maximum number of snapshots allowed per day. -->
         <SnapshotsPerDayLimit>50</SnapshotsPerDayLimit>
         </Add>
@@ -77,8 +75,8 @@ Die folgenden Umgebungen werden unterstützt:
 
 1. Falls noch nicht geschehen, [aktivieren Sie Application Insights für Ihre ASP.NET Core-Web-App](app-insights-asp-net-core.md).
 
-> [!NOTE]
-> Stellen Sie sicher, dass Ihre Anwendung mindestens auf Version 2.1.1 des Microsoft.ApplicationInsights.AspNetCore-Pakets verweist.
+    > [!NOTE]
+    > Stellen Sie sicher, dass Ihre Anwendung mindestens auf Version 2.1.1 des Microsoft.ApplicationInsights.AspNetCore-Pakets verweist.
 
 2. Binden Sie das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre App ein.
 
@@ -122,7 +120,7 @@ Die folgenden Umgebungen werden unterstützt:
    }
    ```
 
-4. Konfigurieren Sie den Momentaufnahmesammler durch Hinzufügen eines SnapshotCollectorConfiguration-Abschnitts zur Datei „appsettings.json“. Beispiel:
+4. Konfigurieren Sie den Momentaufnahmesammler durch Hinzufügen eines SnapshotCollectorConfiguration-Abschnitts zur Datei „appsettings.json“. Beispiel: 
 
    ```json
    {
@@ -174,8 +172,8 @@ Weisen Sie hierzu den Benutzern, die Momentaufnahmen untersuchen, die Rolle `App
 1. Klicken Sie auf die Schaltfläche „Speichern“, um den Benutzer der Rolle hinzuzufügen.
 
 
-[!IMPORTANT]
-    In Variablen- und Parameterwerten von Momentaufnahmen können persönliche und andere vertrauliche Informationen enthalten sein.
+> [!IMPORTANT]
+> In Variablen- und Parameterwerten von Momentaufnahmen können persönliche und andere vertrauliche Informationen enthalten sein.
 
 ## <a name="debug-snapshots-in-the-application-insights-portal"></a>Debuggen von Momentaufnahmen im Application Insights-Portal
 
@@ -276,6 +274,41 @@ MinidumpUploader.exe Information: 0 : Deleted PDB scan marker D:\local\Temp\Dump
 ```
 
 Bei Anwendungen, die _nicht_ in App Service gehostet werden, befinden sich die Uploaderprotokolle im selben Ordner wie die Minidumpdateien: `%TEMP%\Dumps\<ikey>` (`<ikey>` steht hierbei für Ihren Instrumentierungsschlüssel).
+
+### <a name="troubleshooting-cloud-services"></a>Problembehandlung bei Cloud Services
+Für Rollen in Cloud Services ist der standardmäßige temporäre Ordner möglicherweise zu klein, um die MiniDump-Dateien zu speichern, was dazu führt, dass Momentaufnahmen verloren gehen.
+Der erforderliche Speicherplatz hängt vom gesamten Arbeitssatz Ihrer Anwendung und der Anzahl gleichzeitiger Momentaufnahmen ab.
+Der Arbeitssatz einer 32-Bit-ASP.NET-Webrolle liegt in der Regel zwischen 200 MB und 500 MB.
+Sie sollten mindestens zwei gleichzeitige Momentaufnahmen zulassen.
+Wenn Ihre Anwendung beispielsweise 1 GB des gesamten Arbeitssatzes verwendet, sollten Sie sicherstellen, dass ein Speicherplatz von mindestens 2 GB zum Speichern von Momentaufnahmen zur Verfügung steht.
+Führen Sie die folgenden Schritte aus, um Ihre Clouddienstrolle mit einer dedizierten lokalen Ressource für Momentaufnahmen zu konfigurieren.
+
+1. Fügen Sie Ihrem Clouddienst eine neue lokale Ressource hinzu, indem Sie die Cloud Service-Definitionsdatei (CSDF) bearbeiten. Im folgenden Beispiel wird eine Ressource namens `SnapshotStore` mit einer Größe von 5 GB definiert.
+```xml
+   <LocalResources>
+     <LocalStorage name="SnapshotStore" cleanOnRoleRecycle="false" sizeInMB="5120" />
+   </LocalResources>
+```
+
+2. Ändern Sie die `OnStart`-Methode Ihrer Rolle, um eine Umgebungsvariable hinzuzufügen, die auf die lokale Ressource `SnapshotStore` zeigt.
+```C#
+   public override bool OnStart()
+   {
+       Environment.SetEnvironmentVariable("SNAPSHOTSTORE", RoleEnvironment.GetLocalResource("SnapshotStore").RootPath);
+       return base.OnStart();
+   }
+```
+
+3. Aktualisieren Sie die Datei „ApplicationInsights.config“ Ihrer Rolle, um den von `SnapshotCollector` verwendeten Speicherort des temporären Ordners zu überschreiben.
+```xml
+  <TelemetryProcessors>
+    <Add Type="Microsoft.ApplicationInsights.SnapshotCollector.SnapshotCollectorTelemetryProcessor, Microsoft.ApplicationInsights.SnapshotCollector">
+      <!-- Use the SnapshotStore local resource for snapshots -->
+      <TempFolder>%SNAPSHOTSTORE%</TempFolder>
+      <!-- Other SnapshotCollector configuration options -->
+    </Add>
+  </TelemetryProcessors>
+```
 
 ### <a name="use-application-insights-search-to-find-exceptions-with-snapshots"></a>Suchen nach Ausnahmen mit Momentaufnahmen über die Application Insights-Suche
 
