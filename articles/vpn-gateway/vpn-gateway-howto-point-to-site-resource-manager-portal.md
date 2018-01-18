@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: fc3ba82003d7714ee26ffcfb32f096f0374d2800
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 39129572ac9908429dc9b9ef64930e896afc355f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der nativen Azure-Zertifikatauthentifizierung: Azure-Portal
 
@@ -36,7 +36,7 @@ Mit einem P2S-VPN-Gateway (Point-to-Site) können Sie von einem einzelnen Client
 
 Clients, die eine Verbindung herstellen, können die folgenden Authentifizierungsmethoden verwenden:
 
-* RADIUS-Server – Derzeit in der Vorschauphase
+* RADIUS-Server
 * VPN-Gateway mit nativer Azure-Zertifikatauthentifizierung
 
 Dieser Artikel unterstützt Sie beim Konfigurieren einer P2S-Konfiguration mit nativer Azure-Zertifikatauthentifizierung. Wenn Sie RADIUS zum Authentifizieren von Benutzern verwenden möchten, die eine Verbindung herstellen, lesen Sie die Informationen unter [Configure a Point-to-Site connection to a VNet using RADIUS authentication: PowerShell (Preview)](point-to-site-how-to-radius-ps.md) (Konfigurieren einer P2S-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell (Vorschauversion)).
@@ -47,7 +47,7 @@ Point-to-Site-Verbindungen erfordern weder ein VPN-Gerät noch eine öffentliche
 
 * SSTP ist ein SSL-basierter VPN-Tunnel, der nur auf Windows-Clientplattformen unterstützt wird. Er kann Firewalls durchdringen und ist daher optimal für die ortsunabhängige Verbindungsherstellung mit Azure geeignet. Auf Serverseite werden die SSTP-Versionen 1.0, 1.1 und 1.2 unterstützt. Der Client entscheidet, welche Version verwendet wird. Unter Windows 8.1 und höher wird standardmäßig SSTP 1.2 verwendet.
 
-* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden. IKEv2 befindet sich derzeit in der Vorschauphase.
+* IKEv2-VPN, eine standardbasierte IPsec-VPN-Lösung. IKEv2-VPN kann zum Herstellen einer Verbindung von Mac-Geräten (OSX-Version 10.11 und höher) verwendet werden.
 
 Für Point-to-Site-Verbindungen mit nativer Azure-Zertifikatauthentifizierung wird Folgendes benötigt:
 
@@ -139,7 +139,7 @@ Nachdem das Gateway erstellt wurde, laden Sie die Informationen des öffentliche
 
 Wenn Sie eine P2S-Verbindung mit einem anderen Clientcomputer als dem für die Generierung der Clientzertifikate verwendeten Computer herstellen möchten, müssen Sie ein Clientzertifikat installieren. Beim Installieren eines Clientzertifikats benötigen Sie das Kennwort, das beim Exportieren des Clientzertifikats erstellt wurde.
 
-Stellen Sie sicher, dass das Clientzertifikat zusammen mit der gesamten Zertifikatkette als PFX-Datei exportiert wurden (Standardeinstellung). Andernfalls sind die Stammzertifikatinformationen nicht auf dem Clientcomputer vorhanden, und der Client kann nicht ordnungsgemäß authentifiziert werden. 
+Stellen Sie sicher, dass das Clientzertifikat zusammen mit der gesamten Zertifikatkette als PFX-Datei exportiert wurden (Standardeinstellung). Andernfalls sind die Stammzertifikatinformationen nicht auf dem Clientcomputer vorhanden, und der Client kann nicht ordnungsgemäß authentifiziert werden.
 
 Die Installationsschritte finden Sie unter [Installieren eines Clientzertifikats für Point-to-Site-Verbindungen mit Azure-Zertifikatauthentifizierung](point-to-site-how-to-vpn-client-install-azure-cert.md).
 

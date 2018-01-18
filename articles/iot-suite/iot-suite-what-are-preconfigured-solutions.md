@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
+ms.date: 17/01/2018
 ms.author: dobett
-ms.openlocfilehash: c9e0441ec42e5710f43bbe7fa8af4a9fe7447a69
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 0ac6226b1e5773b1212b70172e2c13a0a5c925a8
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="what-is-azure-iot-suite"></a>Was ist Azure IoT Suite?
 
@@ -62,7 +62,7 @@ In der folgenden Tabelle wird gezeigt, welchen IoT-Features die Lösungen zugeor
 | ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
 | [Remoteüberwachung](iot-suite-remote-monitoring-explore.md)  |Ja |Ja |Ja |-   |Ja |Ja |-   |
 | [Vorhersagbarer Wartungsbedarf](iot-suite-predictive-overview.md)   |Ja |Ja |-   |-   |Ja |Ja |Ja |
-| [Verbundene Factory](iot-suite-connected-factory-overview.md) |Ja |Ja |Ja |Ja |Ja |Ja |-   |
+| [Verbundene Factory](iot-suite-connected-factory-overview.md) |Ja |- |- |Ja |Ja |Ja |-   |
 
 * *Datenerfassung:*Skalierbarer Dateneingang in der Cloud
 * *Geräteidentität:* Verwalten eindeutiger Geräteidentitäten und Steuern des Gerätezugriffs auf die Lösung.
@@ -83,11 +83,11 @@ Wenn Sie eine vorkonfigurierte Lösung bereitstellen, werden während des Bereit
 | IoT Hub              | Ja                |                        | Ja               |
 | Event Hubs           |                    | Ja                    |                   |
 | Time Series Insights |                    |                        | Ja               |
-| Containerdienste   | Ja                |                        | Ja               |
+| Containerdienste   | Ja                |                        |                   |
 | Stream Analytics     |                    | Ja                    |                   |
 | Web-Apps             | Ja                | Ja                    | Ja               |
-| Cosmos DB            | Ja                | Ja                    | Ja               |
-| Azure-Tabellen         |                    | Ja                    | Ja               |
+| Cosmos DB            | Ja                | Ja                    |                    |
+| Azure Storage         |                    | Ja                    | Ja               |
 
 > [!NOTE]
 > Weitere Informationen zu den Ressourcen, die mit der vorkonfigurierten Remoteüberwachungslösung bereitgestellt werden, finden Sie in [diesem Artikel](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/blob/master/README.md#basic-vs-standard-deployments) auf GitHub.
