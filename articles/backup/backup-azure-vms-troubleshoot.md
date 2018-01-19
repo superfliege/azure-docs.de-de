@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.openlocfilehash: d09208596de4609faace67e11926ad30f68cd901
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Problembehandlung bei der Sicherung virtueller Azure-Computer
 Sie können die Problembehandlung für Fehler, die beim Verwenden von Azure Backup auftreten, mit den Informationen in der unten angegebenen Tabelle durchführen.
@@ -73,11 +73,11 @@ Azure Backup unterstützt derzeit keine Datenträgergrößen, die [größer als 
 | Fehlerdetails | Problemumgehung |
 | --- | --- |
 | Der Abbruch wird für diesen Auftragstyp nicht unterstützt. Warten Sie, bis der Auftrag abgeschlossen ist. |Keine |
-| Der Auftrag kann in diesem Status nicht abgebrochen werden. Warten Sie, bis der Auftrag abgeschlossen ist. <br>OR<br> The selected job is not in a cancelable state (Der ausgewählte Auftrag kann in diesem Status nicht abgebrochen werden) – Bitte warten Sie, bis der Auftrag abgeschlossen ist. |Der Auftrag wurde mit hoher Wahrscheinlichkeit bereits fast ganz abgeschlossen. Warten Sie, bis der Auftrag vollständig abgeschlossen wurde.|
+| Der Auftrag kann in diesem Status nicht abgebrochen werden. Warten Sie, bis der Auftrag abgeschlossen ist. <br>OR<br> Der ausgewählte Auftrag kann in diesem Status nicht abgebrochen werden. Warten Sie, bis der Auftrag abgeschlossen ist. |Der Auftrag wurde mit hoher Wahrscheinlichkeit bereits fast ganz abgeschlossen. Warten Sie, bis der Auftrag vollständig abgeschlossen wurde.|
 | Das Abbrechen des Auftrags ist nicht möglich, da sich dieser nicht in Bearbeitung befindet. Der Abbruch wird nur für Aufträge in Bearbeitung unterstützt. Wiederholen Sie den Abbruchversuch für einen Auftrag, der sich in Bearbeitung befindet. |Dies wird durch einen vorübergehenden Zustand verursacht. Warten Sie eine Minute, und wiederholen Sie den Abbruchvorgang. |
 | Fehler beim Abbrechen des Auftrags – Warten Sie, bis der Auftrag abgeschlossen ist. |Keine |
 
-## <a name="restore"></a>Wiederherstellen
+## <a name="restore"></a>Restore 
 | Fehlerdetails | Problemumgehung |
 | --- | --- |
 | Cloudinterner Fehler bei der Wiederherstellung |<ol><li>Der Clouddienst, in dem Sie die Wiederherstellung durchführen möchten, ist mit DNS-Einstellungen konfiguriert. Prüfen Sie  <br>$deployment = Get-AzureDeployment -ServiceName "ServiceName" -Slot "Production"     Get-AzureDns -DnsSettings $deployment.DnsSettings<br>Wenn eine Adresse konfiguriert wurde, bedeutet dies, dass DNS-Einstellungen konfiguriert sind.<br> <li>Der Clouddienst, in dem Sie die Wiederherstellung ausführen möchten, ist mit ReservedIP konfiguriert, und vorhandene virtuelle Computer im Clouddienst haben den Status „Beendet“.<br>Sie können mithilfe des folgenden PowerShell-Cmdlets überprüfen, ob ein Clouddienst eine IP-Adresse reserviert hat:<br>$deployment = Get-AzureDeployment -ServiceName "servicename" -Slot "Production" $dep.ReservedIPName <br><li>Sie versuchen, einen virtuellen Computer mit den folgenden speziellen Netzwerkkonfigurationen im selben Clouddienst wiederherzustellen. <br>– Virtuelle Computer unter Load Balancer-Konfiguration (intern und extern)<br>– Virtuelle Computer mit mehreren reservierten IP-Adressen<br>– Virtuelle Computer mit mehreren NICs<br>Wählen Sie einen neuen Clouddienst auf der Benutzeroberfläche aus, oder lesen Sie die [Überlegungen zu Wiederherstellungen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations) für virtuelle Computer mit speziellen Netzwerkkonfigurationen.</ol> |

@@ -45,7 +45,7 @@
               href: quick-enroll-device-x509-java.md
             - name: Node.js
               href: quick-enroll-device-x509-node.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: '1: Einrichten von Cloudressourcen'
       href: tutorial-set-up-cloud.md
@@ -77,11 +77,13 @@
       href: use-hsm-with-sdk.md
     - name: Steuern des Zugriffs auf den Bereitstellungsdienst
       href: how-to-control-access.md
-- name: Referenz
+    - name: Verwenden der Azure-Befehlszeilenschnittstelle zum Verwalten des Gerätebereitstellungsdiensts
+      href: how-to-manage-dps-with-cli.md
+- name: Verweis
   items:
     - name: REST
       href: /rest/api/iot-dps
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure IoT Hub
       href: 'https://azure.microsoft.com/services/iot-hub/'
