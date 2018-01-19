@@ -6,13 +6,13 @@
 ## [Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 ## [Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-## [Azure-Befehlszeilenschnittstelle](data-lake-analytics-get-started-cli2.md)
+## [Azure-CLI](data-lake-analytics-get-started-cli2.md)
 
 # Anleitung
 
 ## Verwalten von Data Lake Analytics
 ### [Azure-Portal](data-lake-analytics-manage-use-portal.md)
-### [Azure-Befehlszeilenschnittstelle](data-lake-analytics-manage-use-cli.md)
+### [Azure-CLI](data-lake-analytics-manage-use-cli.md)
 ### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
 ### [.NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md)
 ### [Python SDK](data-lake-analytics-manage-use-python-sdk.md)
@@ -43,7 +43,7 @@
 ### [Lokales Ausführen und Debuggen in VSCode](data-lake-tools-for-vscode-local-run-and-debug.md)
 ### [U-SQL-Programmierbarkeitshandbuch](data-lake-analytics-u-sql-programmability-guide.md)
 
-# Referenz
+# Verweis
 ## [Codebeispiele](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-analytics)
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
@@ -52,7 +52,7 @@
 ## [REST](/rest/api/datalakeanalytics/)
 ## [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://docs.microsoft.com/cli/azure/dla)
 
-# Ressourcen
+# angeben
 ## [Azure Data Lake-Blog](https://blogs.msdn.microsoft.com/azuredatalake/)
 ## [Azure-Roadmap](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [Feedback über UserVoice](https://feedback.azure.com/forums/327234-data-lake)
@@ -60,4 +60,5 @@
 ## [Preise](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 ## [Dienstupdates](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Stapelüberlauf](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Videos](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)

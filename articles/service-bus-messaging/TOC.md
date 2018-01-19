@@ -21,7 +21,6 @@
 ### [PHP](service-bus-php-how-to-use-topics-subscriptions.md)
 ### [Python](service-bus-python-how-to-use-topics-subscriptions.md)
 ### [Ruby](service-bus-ruby-how-to-use-topics-subscriptions.md)
-## [Erstellen einer Service Bus-Anwendung mit mehreren Ebenen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 
 # Anleitung
 ## Planen und Entwerfen
@@ -29,6 +28,7 @@
 ### [Rollenbasierte Zugriffssteuerung (Vorschauversion)](service-bus-role-based-access-control.md)
 ### [Premium-Messaging](service-bus-premium-messaging.md)
 ### [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
+### [Erstellen einer Service Bus-Anwendung mit mehreren Ebenen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### [Optimieren der Leistung](service-bus-performance-improvements.md)
 ### [Georedundante Notfallwiederherstellung und Georeplikation](service-bus-geo-dr.md)
 ### [Asynchrones Messaging und Hochverfügbarkeit](service-bus-async-messaging.md)

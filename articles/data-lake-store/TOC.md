@@ -12,7 +12,7 @@
 
 # Anleitung
 ## Laden und Verschieben von Daten
-### [Verwenden von Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)
+### [Verwenden von Azure Data Factory](../data-factory/load-azure-data-lake-store.md)
 ### [Verwenden von AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)
 ### [Verwenden von DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Verwenden von Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
@@ -66,7 +66,7 @@
 ### [Zugreifen von VMs in Azure VNET](data-lake-store-connectivity-from-vnets.md)
 ### [Verwenden mit Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [Verwenden mit Azure Event Hubs](data-lake-store-archive-eventhub-capture.md)
-### [Verwenden mit Data Factory](../data-factory/connector-azure-data-lake-store.md)
+### [Verwenden mit Data Factory](../data-factory/load-azure-data-lake-store.md)
 ### [Verwenden mit Stream Analytics](data-lake-store-stream-analytics.md)
 ### [Verwenden mit Power BI](data-lake-store-power-bi.md)
 ### [Verwenden mit Data Catalog](data-lake-store-with-data-catalog.md)
