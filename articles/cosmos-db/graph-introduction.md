@@ -2,7 +2,7 @@
 title: "Einführung in die Graph-APIs von Azure Cosmos DB | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie anhand der Graph-Abfragesprache Gremlin von Apache TinkerPop umfangreiche Diagramme mit niedrigen Latenzen durch Azure Cosmos DB speichern, abfragen und traversieren können."
 services: cosmos-db
-author: dennyglee
+author: luisbosquez
 documentationcenter: 
 ms.assetid: b916644c-4f28-4964-95fe-681faa6d6e08
 ms.service: cosmos-db
@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/15/2017
-ms.author: denlee
-ms.openlocfilehash: 71d9d03b45d8c4fcf8acb41871dcf3f1304955aa
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 01/05/2017
+ms.author: lbosq
+ms.openlocfilehash: 14921dbeb0b670e4ec29a224caca07da12bfb82b
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Einführung in die Graph-API von Azure Cosmos DB
 
@@ -98,12 +98,12 @@ Azure Cosmos DB bietet im Vergleich zu anderen Diagrammdatenbanken auf dem Markt
 
 * Einstellbare Konsistenzebenen
 
- Die Konsistenz kann über fünf klar definierte Ebenen abgestimmt werden, um für ein ausgewogenes Verhältnis zwischen Konsistenz und Leistung zu sorgen. Für Abfragen und Lesevorgänge bietet Azure Cosmos DB fünf verschiedene Konsistenzebenen – „stark“, „begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „letztlich“. Mit diesen granularen, wohldefinierten Konsistenzebenen können fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz geschlossen werden. Weitere Informationen finden Sie unter [Verwenden von Konsistenzebenen zum Maximieren der Verfügbarkeit und Leistung in DocumentDB](consistency-levels.md).
+ Die Konsistenz kann über fünf klar definierte Ebenen abgestimmt werden, um für ein ausgewogenes Verhältnis zwischen Konsistenz und Leistung zu sorgen. Für Abfragen und Lesevorgänge bietet Azure Cosmos DB fünf verschiedene Konsistenzebenen – „stark“, „begrenzte Veraltung“, „Sitzung“, „Präfixkonsistenz“ und „letztlich“. Mit diesen granularen, wohldefinierten Konsistenzebenen können fundierte Kompromisse zwischen Konsistenz, Verfügbarkeit und Latenz geschlossen werden. Weitere Informationen finden Sie unter [Einstellbare Datenkonsistenzebenen in Azure Cosmos DB](consistency-levels.md).
 
 Azure Cosmos DB bietet zudem die Möglichkeit, mehrere Modelle wie Dokumente und Diagramme in denselben Containern bzw. Datenbanken zu verwenden. Sie können eine Dokumentsammlung verwenden, um Diagrammdaten zusammen mit Dokumenten zu speichern. Sowohl mit SQL-Abfragen über JSON als auch mit Gremlin Abfragen können Sie dieselben Daten wie ein Diagramm abfragen.
 
 ## <a name="get-started"></a>Erste Schritte
-Sie können die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell oder das Azure-Portal mit Unterstützung für die Graph-API verwenden, um Azure Cosmos DB-Konten zu erstellen. Nach der Erstellung von Konten wird im Azure-Portal ein Dienstendpunkt wie `https://<youraccount>.graphs.azure.com` bereitgestellt, der ein WebSocket-Front-End für Gremlin bietet. Um eine Verbindung mit diesem Endpunkt herzustellen und Anwendungen in Java, Node.js oder einem beliebigen Gremlin-Clienttreiber zu erstellen, können Sie Ihre TinkerPop-kompatiblen Tools wie die [Gremin-Konsole](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) konfigurieren.
+Sie können die Azure-Befehlszeilenschnittstelle (CLI), Azure PowerShell oder das Azure-Portal mit Unterstützung für die Graph-API verwenden, um Azure Cosmos DB-Konten zu erstellen. Nach der Erstellung von Konten wird im Azure-Portal ein Dienstendpunkt wie `https://<youraccount>.gremlin.cosmosdb.azure.com` bereitgestellt, der ein WebSocket-Front-End für Gremlin bietet. Um eine Verbindung mit diesem Endpunkt herzustellen und Anwendungen in Java, Node.js oder einem beliebigen Gremlin-Clienttreiber zu erstellen, können Sie Ihre TinkerPop-kompatiblen Tools wie die [Gremin-Konsole](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) konfigurieren.
 
 In der folgenden Tabelle werden gängige Gremlin-Treiber aufgeführt, die Sie für Azure Cosmos DB verwenden können:
 
@@ -113,7 +113,7 @@ In der folgenden Tabelle werden gängige Gremlin-Treiber aufgeführt, die Sie f�
 | [Node.js](https://www.npmjs.com/package/gremlin) |[Gremlin-JavaScript auf Github](https://github.com/jbmusso/gremlin-javascript) |
 | [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) |[TinkerPop-Dokumente](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
 
-Azure Cosmos DB bietet neben den [Azure Cosmos DB-SDKs](documentdb-sdk-dotnet.md) über NuGet auch eine .NET-Bibliothek mit Gremlin-Erweiterungsmethoden. Diese Bibliothek stellt einen In-Process-Gremlin-Server zur Verfügung, mit dem eine direkte Verbindung zu DocumentDB-Datenpartitionen hergestellt werden kann.
+Azure Cosmos DB bietet neben den [Azure Cosmos DB-SDKs](sql-api-sdk-dotnet.md) über NuGet auch eine .NET-Bibliothek mit Gremlin-Erweiterungsmethoden. Diese Bibliothek stellt einen „prozessinternen“ Gremlin-Server zur Verfügung, mit dem eine direkte Verbindung mit Datenpartitionen hergestellt werden kann.
 
 | Herunterladen | Dokumentation |
 | --- | --- |
@@ -131,7 +131,7 @@ Im Folgenden werden einige Szenarien vorgestellt, in denen die Diagrammunterstü
 
  Durch die Kombination von Daten über Ihre Kunden und deren Interaktionen mit anderen Personen können Sie individuelle Erlebnisse schaffen, das Kundenverhalten vorhersagen oder Personen mit ähnlichen Interessen vernetzen. Azure Cosmos DB kann zum Verwalten sozialer Netzwerke sowie zum Nachverfolgen von Kundenpräferenzen und -daten verwendet werden.
 
-* Empfehlungsmodule
+* Empfehlungs-Engines
 
  Dieses Szenario kommt häufig im Einzelhandel vor. Durch die Kombination von Informationen zu Produkten, Benutzern und Benutzerinteraktionen (z.B. Einkäufe, Surfverhalten oder Bewertungen eines Artikels) können Sie benutzerdefinierte Empfehlungen erstellen. Die geringe Latenz, flexible Skalierung und native Diagrammunterstützung von Azure Cosmos DB sind für die Modellierung solcher Interaktionen ideal.
 

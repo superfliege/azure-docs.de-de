@@ -1,31 +1,35 @@
 ## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
 
-In diesem Abschnitt wird die Einrichtung Ihrer Entwicklungsumgebung erläutert. Diese umfasst das Erstellen einer ASP.NET MVC-App, das Hinzufügen einer Verbindung mit verbundenen Diensten, das Hinzufügen eines Controllers und das Angeben der erforderlichen Namespace-Direktiven.
+Dieser Abschnitt führt Sie durch das Einrichten der Entwicklungsumgebung. Dies umfasst das Erstellen einer ASP.NET MVC-App, das Hinzufügen einer Verbindung mit verbundenen Diensten, das Hinzufügen eines Controllers und das Angeben der erforderlichen Namespacedirektiven.
 
 ### <a name="create-an-aspnet-mvc-app-project"></a>Erstellen einer ASP.NET MVC-App
 
 1. Öffnen Sie Visual Studio.
 
-1. Wählen Sie im Hauptmenü **Datei->Neu->Projekt**.
+1. Wählen Sie im Hauptmenü **Datei** > **Neu** > **Projekt** aus.
 
-1. Legen Sie im Dialogfeld **Neues Projekt** die in der folgenden Abbildung hervorgehobenen Optionen fest:
+1. Wählen Sie im Dialogfeld **Neues Projekt** die Optionen **Web** > **ASP.NET-Webanwendung (.NET Framework)** aus. Geben Sie im Feld **Name** den Wert **StorageAspNet** an. Klicken Sie auf **OK**.
 
-    ![Erstellen eines ASP.NET-Projekts](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
+    ![Screenshot: Dialogfeld „Neues Projekt“](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 
-1. Klicken Sie auf **OK**.
+1. Wählen Sie im Dialogfeld **Neue ASP.NET-Webanwendung** die Option **MVC** aus, und klicken Sie dann auf **OK**.
 
-1. Legen Sie im Dialogfeld **Neues ASP.NET-Projekt** die in der folgenden Abbildung hervorgehobenen Optionen fest:
+    ![Screenshot: Dialogfeld „Neue ASP.NET-Webanwendung“](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
 
-    ![Angeben von MVC](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
+### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Herstellen einer Verbindung mit einem Azure-Speicherkonto über verbundene Dienste
 
-1. Klicken Sie auf **OK**.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt.
 
-### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Herstellen einer Verbindung mit einem Azure-Speicherkonto mithilfe von Verbundene Dienste
+2. Wählen Sie im Kontextmenü **Hinzufügen** > **Verbundener Dienst** aus.
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie im Kontextmenü **Hinzufügen->Verbundener Dienst** aus.
+1. Wählen Sie im Dialogfeld **Verbundene Dienste** die Option **Cloudspeicher mit Azure Storage** und dann **Konfigurieren** aus.
 
-1. Wählen Sie im Dialogfeld **Verbundenen Dienst hinzufügen** die Option **Azure Storage** aus, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
+    ![Screenshot: Dialogfeld „Verbundene Dienste“](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-    ![Dialogfeld „Verbundener Dienst“](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
+1. Wählen Sie im Dialogfeld **Azure Storage** das Azure-Speicherkonto aus, das für dieses Tutorial verwendet werden soll. Um ein neues Azure-Speicherkonto zu erstellen, wählen Sie **Neues Azure-Speicherkonto erstellen** aus, und füllen Sie das Formular aus. Wählen Sie **Hinzufügen** aus, nachdem Sie entweder ein vorhandenes Speicherkonto ausgewählt oder ein neues Speicherkonto erstellt haben. Visual Studio installiert das NuGet-Paket für Azure Storage und eine Speicherverbindungszeichenfolge in **Web.config**.
 
-1. Wählen Sie im Dialogfeld **Azure Storage** das gewünschte Azure-Speicherkonto aus, mit dem Sie arbeiten möchten, und wählen Sie **Hinzufügen**.
+> [!TIP]
+> Informationen zum Erstellen eines Speicherkontos mit dem [Azure-Portal](https://portal.azure.com) finden Sie unter [Informationen zu Azure-Speicherkonten](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+>
+> Sie können ein Azure-Speicherkonto auch mit [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [Azure CLI](../articles/storage/common/storage-azure-cli.md) oder [Azure Cloud Shell](../articles/cloud-shell/overview.md) erstellen.
+

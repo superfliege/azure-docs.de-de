@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: f6496fb62670c480ce543a51225856f0fb5d89b5
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 5e1c3df24b0fc3e733981ab3f8814a9e6641f5f1
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Zugreifen auf Diagnoseprotokolle für Azure Data Lake Store
 Erfahren Sie, wie Sie die Diagnoseprotokollierung für Ihr Data Lake Store-Konto aktivieren, und wie Sie die für Ihr Konto erfassten Protokolle anzeigen.
 
-Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Store-Konten zum Erfassen von Datenzugriffs-Überwachungspfaden aktivieren, die Informationen wie die Liste der Benutzer, die auf die Daten zugreifen, die Häufigkeit des Zugriffs auf die Daten, die Größe der im Konto gespeicherten Datenmenge usw. liefern.
+Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Store-Konten zum Erfassen von Datenzugriffs-Überwachungspfaden aktivieren, die Informationen wie die Liste der Benutzer, die auf die Daten zugreifen, die Häufigkeit des Zugriffs auf die Daten, die Größe der im Konto gespeicherten Datenmenge usw. liefern. Wenn die Diagnose- und/oder Anforderungsprotokollierung aktiviert ist, erfolgt diese auf Grundlage der besten Leistung. Protokolleinträge für Anforderungen und Diagnose werden nur erstellt, wenn Anforderungen für den Dienstendpunkt vorhanden sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Ein Azure-Abonnement**. Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
@@ -47,7 +47,7 @@ Organisationen können die Diagnoseprotokollierung für ihre Azure Data Lake Sto
         
         * Wählen Sie die Option zum **Streamen an einen Event Hub**, um die Protokolldaten an einen Azure Event Hub zu streamen. Wahrscheinlich werden Sie diese Option verwenden, wenn Sie eine Downstreamverarbeitungs-Pipeline einsetzen, um eingehende Protokolle in Echtzeit zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Azure Event Hub angeben, den Sie verwenden möchten.
 
-        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Operations Management Suite-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden.
+        * Wählen Sie die Option zum **Senden an Log Analytics**, um die generierten Protokolldaten mithilfe des Azure Log Analytics-Diensts zu analysieren. Wenn Sie diese Option auswählen, müssen Sie die Details für den Operations Management Suite-Arbeitsbereich angeben, den Sie zum Ausführen der Protokollanalyse verwenden. Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../log-analytics/log-analytics-tutorial-viewdata.md).
      
    * Geben Sie an, ob Sie Überwachungsprotokolle oder Anforderungsprotokolle oder beides abrufen möchten.
    * Geben Sie die Anzahl der Tage an, für die die Daten beibehalten werden müssen. Die Aufbewahrung ist nur zutreffend, wenn Sie Azure-Speicherkonten zum Archivieren von Protokolldaten verwenden.
@@ -114,27 +114,27 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Anforderungsprotok
     }
 
 #### <a name="request-log-schema"></a>Anforderungsprotokollschema
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| in |String |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |String |Die ID der Ressource, auf der der Vorgang stattfand. |
-| category |String |Die Protokollkategorie. Beispiel: **Anforderungen**. |
-| operationName |String |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
-| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
-| callerIpAddress |String |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
-| correlationId |String |Die ID des Protokolls, die verwendet werden kann, um einen Satz verbundener Protokolleinträge zu gruppieren. |
-| Identität |Objekt |Die Identität, die das Protokoll erstellt hat. |
+| time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
+| Ressourcen-ID |Zeichenfolge |Die ID der Ressource, auf der der Vorgang stattfand. |
+| category |Zeichenfolge |Die Protokollkategorie. Beispiel: **Anforderungen**. |
+| operationName |Zeichenfolge |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType |Zeichenfolge |Der Status des Vorgangs, beispielsweise 200. |
+| callerIpAddress |Zeichenfolge |Die IP-Adresse des Clients, der die Anforderung gestellt hat. |
+| correlationId |Zeichenfolge |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
+| identity |Objekt |Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="request-log-properties-schema"></a>Eigenschaftenschema des Anforderungsprotokolls
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| HttpMethod |String |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
-| Pfad |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| HttpMethod |Zeichenfolge |Die HTTP-Methode, die für den Vorgang verwendet werden. Beispiel: GET. |
+| path |Zeichenfolge |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 | RequestContentLength |int |Die Inhaltslänge der HTTP-Anforderung. |
-| ClientRequestId |String |Die ID, die diese Anforderung eindeutig identifiziert. |
-| StartTime |String |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
-| EndTime |String |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
+| ClientRequestId |Zeichenfolge |Die ID, die diese Anforderung eindeutig identifiziert. |
+| StartTime |Zeichenfolge |Der Zeitpunkt, zu dem der Server die Anforderung empfangen hat. |
+| EndTime |Zeichenfolge |Der Zeitpunkt, zu dem der Server eine Antwort gesendet hat. |
 
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsprotokoll. Jeder Blob hat ein Stammobjekt namens **records** , das ein Array von Protokollobjekten enthält.
@@ -160,26 +160,35 @@ Hier ist ein Beispiel für einen Eintrag im JSON-formatierten Überwachungsproto
     }
 
 #### <a name="audit-log-schema"></a>Überwachungsprotokollschema
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| in |String |Der Zeitstempel (UTC) des Protokolls. |
-| Ressourcen-ID |String |Die ID der Ressource, auf der der Vorgang stattfand. |
-| category |String |Die Protokollkategorie. Beispiel: **Überwachung**. |
-| operationName |String |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
-| resultType |String |Der Status des Vorgangs, beispielsweise 200. |
-| correlationId |String |Die ID des Protokolls, die verwendet werden kann, um einen Satz verbundener Protokolleinträge zu gruppieren. |
-| Identität |Objekt |Die Identität, die das Protokoll erstellt hat. |
+| time |Zeichenfolge |Der Zeitstempel (UTC) des Protokolls. |
+| Ressourcen-ID |Zeichenfolge |Die ID der Ressource, auf der der Vorgang stattfand. |
+| category |Zeichenfolge |Die Protokollkategorie. Beispiel: **Überwachung**. |
+| operationName |Zeichenfolge |Der Name des protokollierten Vorgangs. Beispielsweise „getfilestatus“. |
+| resultType |Zeichenfolge |Der Status des Vorgangs, beispielsweise 200. |
+| correlationId |Zeichenfolge |Die ID des Protokolls, die verwendet werden kann, um einen Satz verwandter Protokolleinträge zu gruppieren. |
+| identity |Objekt |Die Identität, die das Protokoll erstellt hat. |
 | Eigenschaften |JSON |Weitere Informationen siehe unten. |
 
 #### <a name="audit-log-properties-schema"></a>Eigenschaftenschema des Überwachungsprotokolls
-| Name | Typ | Beschreibung |
+| NAME | Typ | BESCHREIBUNG |
 | --- | --- | --- |
-| StreamName |String |Der Pfad, in dem der Vorgang durchgeführt wurde. |
+| StreamName |Zeichenfolge |Der Pfad, in dem der Vorgang durchgeführt wurde. |
 
 ## <a name="samples-to-process-the-log-data"></a>Beispiele für die Verarbeitung der Protokolldaten
+Beim Senden von Protokollen aus Azure Data Lake Store an Azure Log Analytics (Informationen zum Verwenden von Log Analytics finden Sie unter [Anzeigen oder Analysieren der mit der Log Analytics-Protokollsuche gesammelten Daten](../log-analytics/log-analytics-tutorial-viewdata.md)) gibt die folgende Abfrage eine Tabelle mit einer Liste der Benutzeranzeigenamen, die Uhrzeit der Ereignisse, die Anzahl von Ereignissen zur Zeit des Ereigniseintritts sowie ein visuelles Diagramm zurück. Diese kann ganz einfach bearbeitet werden, sodass Benutzer-GUIDs oder weitere Attribute angezeigt werden:
+
+```
+search *
+| where ( Type == "AzureDiagnostics" )
+| summarize count(TimeGenerated) by identity_s, TimeGenerated
+```
+
+
 Azure Data Lake Store stellt ein Muster bereit, nach dem die Protokolldaten verarbeitet und analysiert werden sollen. Sie finden das Beispiel hier: [https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample](https://github.com/Azure/AzureDataLake/tree/master/Samples/AzureDiagnosticsSample). 
 
-## <a name="see-also"></a>Siehe auch
-* [Übersicht über Azure Data Lake-Speicher](data-lake-store-overview.md)
-* [Sichern von Daten in Data Lake-Speicher](data-lake-store-secure-data.md)
+## <a name="see-also"></a>Weitere Informationen
+* [Übersicht über Azure Data Lake Store](data-lake-store-overview.md)
+* [Sichern von Daten in Data Lake Store](data-lake-store-secure-data.md)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 2f7a65d32f662d7e265e58c5fe7d9dea81a4e63c
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 998956d00ae6d3be605163b566f5667a3bb95f38
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimieren des Netzwerkdurchsatzes für virtuelle Azure-Computer
 
@@ -26,16 +26,16 @@ Virtuelle Azure-Computer weisen standardmäßige Netzwerkeinstellungen auf, die 
 
 ## <a name="windows-vm"></a>Windows-VM
 
-Wenn Ihr virtueller Windows-Computer [beschleunigten Netzwerkbetrieb](virtual-network-create-vm-accelerated-networking.md) unterstützt, ist die Aktivierung dieser Funktion im Hinblick auf den Durchsatz die optimale Konfiguration. Alle anderen virtuellen Windows-Computer, die die empfangsseitige Skalierung (Receive Side Scaling; RSS) verwenden, können einen höheren maximalen Durchsatz als ein virtueller Computer ohne RSS erreichen. RSS kann auf virtuellen Windows-Computern standardmäßig deaktiviert sein. Führen Sie die folgenden Schritte aus, um zu bestimmen, ob RSS aktiviert ist und um sie ggf. zu aktivieren.
+Wenn Ihr virtueller Windows-Computer den [beschleunigten Netzwerkbetrieb](create-vm-accelerated-networking-powershell.md) unterstützt, ist die Aktivierung dieser Funktion im Hinblick auf den Durchsatz die optimale Konfiguration. Alle anderen virtuellen Windows-Computer, die die empfangsseitige Skalierung (Receive Side Scaling; RSS) verwenden, können einen höheren maximalen Durchsatz als ein virtueller Computer ohne RSS erreichen. RSS kann auf virtuellen Windows-Computern standardmäßig deaktiviert sein. Führen Sie die folgenden Schritte aus, um zu ermitteln, ob RSS aktiviert ist und um die Funktion ggf. zu aktivieren:
 
-1. Geben Sie den PowerShell-Befehl `Get-NetAdapterRss` ein, um anzuzeigen, ob RSS für ein Netzwerk aktiviert ist. In der folgenden Beispielausgabe aus `Get-NetAdapterRss` ist RSS nicht aktiviert.
+1. Geben Sie den PowerShell-Befehl `Get-NetAdapterRss` ein, um zu ermitteln, ob RSS für einen Netzwerkadapter aktiviert ist. In der folgenden Beispielausgabe aus `Get-NetAdapterRss` ist RSS nicht aktiviert.
 
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
     Enabled                 : False
     ```
-2. Geben Sie den folgenden Befehl zum Aktivieren von RSS ein:
+2. Geben Sie den folgenden Befehl ein, um RSS zu aktivieren:
 
     ```powershell
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
@@ -46,7 +46,7 @@ Wenn Ihr virtueller Windows-Computer [beschleunigten Netzwerkbetrieb](virtual-ne
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled              : True
+    Enabled                  : True
     ```
 
 ## <a name="linux-vm"></a>Linux-VM
@@ -55,13 +55,15 @@ RSS ist auf einem virtuellen Azure Linux-Computer immer standardmäßig aktivier
 
 ### <a name="ubuntu-for-new-deployments"></a>Ubuntu für neue Bereitstellungen
 
-Der Ubuntu-Azure-Kernel ermöglicht die beste Netzwerkleistung in Azure. Er ist seit dem 21. September 2017 der Standardkernel. Um diesen Kernel zu erhalten, installieren Sie zunächst wie folgt die neueste unterstützte Version 16.04-LTS:
+Der Ubuntu-Azure-Kernel ermöglicht die beste Netzwerkleistung in Azure. Er ist seit dem 21. September 2017 der Standardkernel. Um diesen Kernel zu nutzen, installieren Sie zunächst wie folgt die neueste unterstützte Version 16.04-LTS:
+
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
 "Sku": "16.04-LTS",
 "Version": "latest"
 ```
+
 Nach der Erstellung geben Sie die folgenden Befehle zum Abrufen des neuesten Updates ein: Diese Schritte können auch für virtuelle Computer verwendet werden, auf denen derzeit der Ubuntu-Azure-Kernel ausgeführt wird.
 
 ```bash
@@ -96,7 +98,8 @@ uname -r
 #4.11.0-1014-azure
 ```
 
-Wenn Ihr virtueller Computer den Azure-Kernel nicht enthält, beginnt die Versionsnummer in der Regel mit „4.4“. Führen Sie in diesen Fällen die folgenden Befehle als Root-Benutzer aus:
+Wenn Ihr virtueller Computer den Azure-Kernel nicht umfasst, beginnt die Versionsnummer in der Regel mit „4.4“. Wenn Ihr VM den Azure-Kernel nicht enthält, führen Sie die folgenden Befehle als Root-Benutzer aus:
+
 ```bash
 #run as root or preface with sudo
 apt-get update
@@ -109,14 +112,15 @@ reboot
 ### <a name="centos"></a>CentOS
 
 Um die neuesten Optimierungen zu erhalten, empfiehlt es sich, einen virtuellen Computer mit der letzten unterstützten Version zu erstellen. Geben Sie dazu die folgenden Parameter an:
+
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
 "Sku": "7.4",
 "Version": "latest"
 ```
-Bei neuen und vorhandenen virtuellen Computer kann die Installation der aktuellen Version von Linux Integration Services (LIS) vorteilhaft sein.
-Die Optimierung des Durchsatzes ist in LIS enthalten, beginnend mit Version 4.2.2-2. Spätere Verbesserungen können außerdem weitere Verbesserungen enthalten. Geben Sie die folgenden Befehle zum Installieren der neuesten Version von LIS ein:
+
+Bei neuen und vorhandenen virtuellen Computer kann die Installation der aktuellen Version von Linux Integration Services (LIS) vorteilhaft sein. Die Optimierung des Durchsatzes ist in LIS enthalten, beginnend mit Version 4.2.2-2. Spätere Verbesserungen können außerdem weitere Verbesserungen enthalten. Geben Sie die folgenden Befehle zum Installieren der neuesten Version von LIS ein:
 
 ```bash
 sudo yum update
@@ -127,14 +131,15 @@ sudo yum install microsoft-hyper-v
 ### <a name="red-hat"></a>Red Hat
 
 Um die Optimierungen zu erhalten, empfiehlt es sich, einen virtuellen Computer mit der letzten unterstützten Version zu erstellen. Geben Sie dazu die folgenden Parameter an:
+
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
 "Sku": "7-RAW"
 "Version": "latest"
 ```
-Bei neuen und vorhandenen virtuellen Computer kann die Installation der aktuellen Version von Linux Integration Services (LIS) vorteilhaft sein.
-Die Optimierung des Durchsatzes erfolgt in LIS, beginnend mit 4.2. Geben Sie die folgenden Befehle ein, um LIS herunterzuladen und zu installieren:
+
+Bei neuen und vorhandenen virtuellen Computer kann die Installation der aktuellen Version von Linux Integration Services (LIS) vorteilhaft sein. Die Optimierung des Durchsatzes erfolgt in LIS, beginnend mit 4.2. Geben Sie die folgenden Befehle ein, um LIS herunterzuladen und zu installieren:
 
 ```bash
 mkdir lis4.2.3-1
@@ -148,5 +153,6 @@ install.sh #or upgrade.sh if prior LIS was previously installed
 Weitere Informationen zu Linux Integration Services Version 4.2 für Hyper-V erhalten Sie auf der [Downloadseite](https://www.microsoft.com/download/details.aspx?id=55106).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Nachdem Sie nun die VM optimiert haben, sehen Sie sich das Ergebnis beim [Testen der Bandbreite bzw. des Durchsatzes der Azure-VM](virtual-network-bandwidth-testing.md) für Ihr Szenario an.
+* Sehen Sie sich das optimierte Ergebnis an, indem Sie [die Bandbreite bzw. den Durchsatz der Azure-VM](virtual-network-bandwidth-testing.md) für Ihr Szenario testen.
+* Lesen Sie mehr über die [Zuweisung von Bandbreite zu virtuellen Computern] (virtual-machine-network-throughput.md).
 * Weitere Informationen finden Sie unter [Azure Virtual Network – häufig gestellte Fragen (FAQs)](virtual-networks-faq.md).

@@ -4,21 +4,21 @@ description: "In diesem Thema erhalten Sie eine ausführliche Übersicht über R
 services: active-directory
 keywords: Azure Active Directory Identity Protection, Sicherheit, Risiko, Risikostufe, Sicherheitsrisiko, Sicherheitsrichtlinie
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 5ff0bcf9bdf9eaf1b4f0084acf9e5ee6ccfeba19
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 59c8932f7676a5388413baf2edb5d9e259769f93
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory-Risikoereignisse
 
@@ -31,9 +31,13 @@ Derzeit werden von Azure Active Directory sechs Typen von Risikoereignissen erka
 - [Unmöglicher Ortswechsel zu atypischen Orten](#impossible-travel-to-atypical-locations) 
 - [Anmeldungen von infizierten Geräten](#sign-ins-from-infected-devices) 
 - [Anmeldungen von IP-Adressen mit verdächtigen Aktivitäten](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-- [Anmeldungen von unbekannten Standorten](#sign-in-from-unfamiliar-locations) (ausschließlich für **Azure Active Directory Premium P2** Editionen)
+- [Anmeldungen von unbekannten Standorten](#sign-in-from-unfamiliar-locations) 
+
 
 ![Risikoereignis](./media/active-directory-reporting-risk-events/91.png)
+
+Welche Informationen Sie zu einem erkannten Risikoereignis erhalten, richtet sich nach Ihrem Azure AD-Abonnement. Die Azure AD Premium P2-Edition bietet die ausführlichsten Informationen zu allen zugrunde liegenden erkannten Ereignissen. Mit der Azure AD Premium-P1-Edition werden erkannte Ereignisse, die nicht durch Ihre Lizenz abgedeckt sind, als das Risikoereignis **Anmeldung mit erhöhtem Risiko erkannt** angezeigt.
+
 
 Dieses Thema enthält eine ausführliche Übersicht darüber, was Risikoereignisse sind und wie Sie diese zum Schutz Ihrer Azure AD-Identitäten verwenden können.
 
@@ -137,7 +141,7 @@ Es wird empfohlen, dass Sie sich sofort an den Benutzer wenden, um zu überprüf
 Der unmögliche Ortswechsel ist normalerweise ein zuverlässiger Hinweis darauf, dass sich ein Hacker erfolgreich anmelden konnte. Es kann aber zu falsch positiven Ergebnissen kommen, wenn ein Benutzer mit einem neuen Gerät unterwegs ist oder eine VPN-Verbindung nutzt, die von anderen Personen der Organisation normalerweise nicht verwendet wird. Eine weitere Quelle für falsch positive Ergebnisse sind Anwendungen, von denen Server-IPs fälschlicherweise als Client-IPs übergeben werden. Hierbei kann der Eindruck entstehen, dass Anmeldungen über das Rechenzentrum durchgeführt werden, in dem das Back-End der Anwendung gehostet wird (häufig sind dies Microsoft-Rechenzentren, die den Eindruck entstehen lassen, dass Anmeldungen über im Besitz von Microsoft befindliche IP-Adressen abgewickelt werden). Aufgrund dieser falsch positiven Ergebnisse ergibt sich die Risikostufe **Mittel** für dieses Risikoereignis.
 
 > [!TIP]
-> Sie können die Anzahl der gemeldeten falsch positiven Ergebnisse für diesen Risikoereignistyp verringern, indem Sie [Benannte Orte](active-directory-named-locations.md) konfigurieren. 
+> Sie können die Anzahl der gemeldeten falsch positiven Ergebnisse für diesen Risikoereignistyp verringern, indem Sie [benannte Orte](active-directory-named-locations.md) konfigurieren. 
 
 ### <a name="sign-in-from-unfamiliar-locations"></a>Anmeldungen von unbekannten Standorten
 

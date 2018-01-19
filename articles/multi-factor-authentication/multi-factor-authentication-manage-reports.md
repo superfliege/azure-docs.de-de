@@ -4,58 +4,53 @@ description: "Beschreibt, wie Sie das Berichte-Feature für Multi-Factor Authent
 services: multi-factor-authentication
 documentationcenter: 
 author: MicrosoftGuyJFlo
-manager: femila
-editor: curtand
+manager: mtillman
 ms.assetid: 3f6b33c4-04c8-47d4-aecb-aa39a61c4189
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 12/15/2017
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: a0ac1711b6bfb8f461cd775ed1f3409925643615
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 696f4ae3cb479a208e73e53a9a9a437caeabd294
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
-Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre Organisation verwenden können. Auf diese Berichte können Sie über das Multi-Factor Authentication-Verwaltungsportal zugreifen. In der folgenden Tabelle sind die verfügbaren Berichte aufgeführt:
+Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre Organisation im Azure-Portal verwenden können. In der folgenden Tabelle sind die verfügbaren Berichte aufgeführt:
 
-| Bericht | Beschreibung |
-|:--- |:--- |
-| Verwendung |Die Nutzungsberichte geben Informationen zur Gesamtnutzung, Benutzerzusammenfassungen und Benutzerdetails an. |
-| Serverstatus |Dieser Bericht zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind. |
-| Verlauf – gesperrte Benutzer |Dieser Bericht zeigt den Verlauf von Anforderungen zum Sperren oder Entsperren von Benutzern an. |
-| Verlauf – Umgangene Benutzer |Dieser Bericht zeigt den Verlauf von Anforderungen an, die mehrstufige Authentifizierung für die Telefonnummer des Benutzers zu umgehen. |
-| Betrugswarnung |Dieser Bericht zeigt den Verlauf von Betrugswarnungen an, die im angegebenen Zeitraum übermittelt wurden. |
-| In Warteschlange |Hier werden Berichte aufgelistet, die zur Verarbeitung und aufgrund ihres Status in der Warteschlange sind. Nach Abschluss des Berichts wird ein Link zum Herunterladen oder Anzeigen des Berichts bereitgestellt. |
+| Bericht | Speicherort | BESCHREIBUNG |
+|:--- |:--- |:--- |
+| Verlauf – gesperrte Benutzer | Azure AD > MFA-Server > Benutzer blockieren/entsperren | Zeigt die Liste der Anforderungen zum Blockieren und Entsperren von Benutzern an. |
+| Nutzung und Betrugswarnungen | Azure AD > Anmeldungen | Bietet Informationen zur Gesamtnutzung, Übersichts- und Detailinformationen zu Benutzern sowie einen Verlauf von Betrugswarnungen, die im angegebenen Zeitraum gesendet wurden. |
+| Nutzung für lokale Komponenten | Azure AD > MFA-Server > Aktivitätsbericht | Bietet Informationen zur Gesamtnutzung für MFA durch die NPS-Erweiterung, AD FS und den MFA-Server. |
+| Verlauf – Umgangene Benutzer | Azure AD > MFA-Server > Einmalumgehung | Zeigt den Verlauf von Anforderungen zur Umgehung der Multi-Factor Authentication für einen Benutzer an. |
+| Serverstatus | Azure AD > MFA-Server > Serverstatus | Zeigt den Status von Multi-Factor Authentication-Servern an, die mit Ihrem Konto verknüpft sind. |
 
-## <a name="view-reports"></a>Anzeigen von Berichten
+## <a name="view-reports"></a>Anzeigen von Berichten 
 
-1. Melden Sie sich beim [klassischen Azure-Portal](https://manage.windowsazure.com)an.
-2. Wählen Sie im linken Bereich "Active Directory" aus.
-3. Gehen Sie nach einer der beiden folgenden Optionen vor, abhängig davon, ob Sie Authentifizierungsanbieter nutzen:
-   * **Option 1**: Klicken Sie auf die Registerkarte mit den Multi-Factor Authentication-Anbietern. Wählen Sie Ihren MFA-Anbieter, und klicken Sie auf die Schaltfläche **Verwalten** am unteren Rand.
-   * **Option 2**: Wählen Sie Ihr Verzeichnis aus, und klicken Sie auf die Registerkarte **Konfigurieren**. Klicken Sie im Abschnitt „Multi-Factor Authentication“ auf „ **Diensteinstellungen verwalten**“. Klicken Sie am unteren Rand der Seite mit den Einstellungen für den MFA-Dienst auf den Link „Portal aufrufen“.
-4. Wählen Sie im Azure Multi-Factor Authentication-Verwaltungsportal auf der linken Seite im Bereich **Einen Bericht anzeigen** den gewünschten Berichtstyp aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Wählen Sie auf der linken Seite **Azure Active Directory** > **MFA-Server** aus.
+3. Wählen Sie den Bericht aus, den Sie anzeigen möchten.
 
-<center>![Cloud](./media/multi-factor-authentication-manage-reports/report.png)</center>
+   <center>![Cloud](./media/multi-factor-authentication-manage-reports/report.png)</center>
 
 ## <a name="powershell-reporting"></a>PowerShell-Berichterstellung
 
-Identifizieren Sie Benutzer, die sich für MFA registriert haben, mithilfe des folgenden PowerShell-Befehls.
+Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich für MFA registriert haben.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods -ne $null} | Select-Object -Property UserPrincipalName```
 
-Identifizieren Sie Benutzer, die sich nicht für MFA registriert haben, mithilfe des folgenden PowerShell-Befehls.
+Identifizieren Sie mithilfe des folgenden PowerShell-Befehls Benutzer, die sich nicht für MFA registriert haben.
 
 ```Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-Object -Property UserPrincipalName```
 
-**Weitere Ressourcen**
+## <a name="next-steps"></a>Nächste Schritte
 
 * [Für Benutzer](end-user/multi-factor-authentication-end-user.md)
-* [Azure Multi-Factor Authentication bei MSDN](https://msdn.microsoft.com/library/azure/dn249471.aspx)
+* [Bereitstellungsort](multi-factor-authentication-get-started.md)

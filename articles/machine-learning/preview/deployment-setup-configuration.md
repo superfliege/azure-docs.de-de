@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 08/29/2017
-ms.openlocfilehash: 61ecea71874b05c2c5f7572aa6128fc320422b1f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 12/6/2017
+ms.openlocfilehash: c8949e4f66623951ef66005b3acc2b2279486b4d
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="model-management-setup"></a>Einrichtung der Modellverwaltung
 
@@ -25,8 +25,8 @@ Mithilfe der Azure ML-Modellverwaltung können Sie Machine Learning-Modelle, die
 Am Ende dieses Dokuments sollte Ihre Modellverwaltungsumgebung eingerichtet und für die Bereitstellung Ihrer Machine Learning-Modelle bereit sein.
 
 ## <a name="what-you-need-to-get-started"></a>Voraussetzungen
-Um diesen Leitfaden bestmöglich zu nutzen, sollten Sie als Besitzer Zugriff auf ein Azure-Abonnement haben, in dem Sie Ihre Modelle bereitstellen können.
-Die CLI ist in Azure Machine Learning Workbench und [Azure DSVMs](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) (Data Science Virtual Machines) vorinstalliert.
+Um diesen Leitfaden bestmöglich zu nutzen, sollten Sie als Mitwirkender Zugriff auf ein Azure-Abonnement oder eine Ressourcengruppe haben, in dem bzw. der Sie Ihre Modelle bereitstellen können.
+Die CLI ist in Azure Machine Learning Workbench und [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) (Data Science Virtual Machines) vorinstalliert.
 
 ## <a name="using-the-cli"></a>Verwenden der CLI
 Um die CLIs (Befehlszeilenschnittstellen) in Workbench zu nutzen, klicken Sie auf **Datei** -> **Eingabeaufforderung öffnen**. 
@@ -84,10 +84,12 @@ Schritte im Anschluss an die Einrichtung der Umgebung:
 - Während des Authentifizierungsvorgangs werden Sie für die Authentifizierung zur Angabe eines Kontos aufgefordert. Wichtig: Wählen Sie ein Konto mit einem gültigen Azure-Abonnement und ausreichenden Berechtigungen zum Erstellen von Ressourcen im Konto aus. Wenn die Anmeldung abgeschlossen ist, werden Ihre Abonnementinformationen angezeigt, und Sie werden gefragt, ob Sie mit dem ausgewählten Konto fortfahren möchten.
 
 ### <a name="environment-setup"></a>Einrichten der Umgebung
-Zum Starten des Einrichtungsvorgangs müssen Sie den Umgebungsanbieter registrieren, indem Sie folgenden Befehl eingeben:
+Zum Starten des Einrichtungsvorgangs müssen Sie einige Umgebungsanbieter registrieren, indem Sie die folgenden Befehle eingeben:
 
 ```azurecli
 az provider register -n Microsoft.MachineLearningCompute
+az provider register -n Microsoft.ContainerRegistry
+az provider register -n Microsoft.ContainerService
 ```
 #### <a name="local-deployment"></a>Lokale Bereitstellung
 Um Ihren Webdienst auf dem lokalen Computer zu installieren und zu testen, richten Sie mit folgendem Befehl eine lokale Umgebung ein. Der Name der Ressourcengruppe ist optional.
@@ -128,7 +130,7 @@ Der Befehl zum Einrichten der Clusterumgebung erstellt die folgenden Ressourcen 
 - Ein Application Insights-Konto
 
 >[!IMPORTANT]
-> Zum Erstellen einer Clusterumgebung müssen Sie ein Besitzer im Azure-Abonnement sein und außerdem einen Dienstprinzipal erstellen können. Um zu überprüfen, ob Sie über ausreichende Berechtigungen verfügen, befolgen Sie die Anweisungen auf dieser Seite: [Erstellen einer Azure Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal).
+> Um erfolgreich eine Clusterumgebung zu erstellen, benötigen Sie im Azure-Abonnement oder in der Ressourcengruppe Zugriff als Mitwirkender.
 
 Die Ressourcengruppe, das Speicherkonto und die ACR werden schnell erstellt. Die ACS-Bereitstellung kann bis zu 20 Minuten dauern. 
 

@@ -15,15 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 57e28215124bc0330517c541e4cb74a66d939ff5
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: 860099b2634765f3088199c89341f0b48b20b801
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/09/2018
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>Einführung in R Server und Open-Source-R-Funktionen in HDInsight
 
 Microsoft R Server ist als Bereitstellungsoption bei der Erstellung von HDInsight-Clustern in Azure verfügbar. Diese neue Funktion ermöglicht Datenanalysten, Statistikern und R-Programmierern bei Bedarf den Zugriff auf skalierbare, verteilte Analysemethoden in HDInsight.
+
+[!INCLUDE [hdinsight-price-change](../../../includes/hdinsight-enhancements.md)]
 
 Die Größe der Cluster kann an bevorstehende Projekte und Aufgaben entsprechend angepasst werden. Werden sie nicht mehr benötigt, können sie auch entfernt werden. Da diese Cluster Teil von Azure HDInsight sind, steht für sie rund um die Uhr Support für Unternehmen zur Verfügung, und das SLA garantiert eine Betriebszeit von 99,9 %. Außerdem besteht die Möglichkeit zur Integration in andere Komponenten des Azure-Ökosystems.
 
@@ -96,11 +98,11 @@ Eine weitere vollständige IDE-Option ist die Installation einer Desktop-IDE, di
 Schließlich können Sie nach dem Herstellen einer Verbindung über SSH oder PuTTY durch Eingabe von **R** an der Linux-Eingabeaufforderung auf die R Server-Konsole auf dem Edgeknoten zugreifen. Wenn Sie die Konsolenschnittstelle verwenden, ist es sinnvoll, einen Texteditor für die R-Skriptentwicklung in einem anderen Fenster auszuführen und Abschnitte Ihres Skripts nach Bedarf auszuschneiden und in die R-Konsole einzufügen.
 
 ## <a name="learn-about-pricing"></a>Informationen zu Preisen
-Die Gebühren für einen HDInsight-Cluster mit R Server sind ähnlich strukturiert wie die Gebühren für die HDInsight-Standardcluster. Sie basieren auf der Größe der zugrundeliegenden VMs des Clusters sowie der Daten und Edgeknoten. Hinzu kommt eine stündliche Zusatzgebühr pro Kern. Weitere Informationen zu den Preisen für HDInsight und zur Verfügbarkeit einer kostenlosen Testversion für 30 Tage, finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
+Die Gebühren für einen HDInsight-Cluster mit R Server sind ähnlich strukturiert wie die Gebühren für die HDInsight-Standardcluster. Sie basieren auf der Größe der zugrundeliegenden VMs des Clusters sowie der Daten und Edgeknoten. Hinzu kommt eine stündliche Zusatzgebühr pro Kern. Weitere Informationen zu den Preisen von HDInsight finden Sie unter [HDInsight – Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung von R Server mit HDInsight-Clustern finden Sie unter den folgenden Themen:
 
-* [Erste Schritte mit R Server in HDInsight (Vorschau)](r-server-get-started.md)
+* [Erste Schritte mit R Server in HDInsight](r-server-get-started.md)
 * [Rechenkontextoptionen für R Server in HDInsight](r-server-compute-contexts.md)
 * [Azure Storage-Optionen für R Server in HDInsight](r-server-storage.md)

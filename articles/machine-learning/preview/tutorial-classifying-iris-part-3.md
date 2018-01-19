@@ -9,13 +9,13 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
-ms.topic: hero-article
+ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 70286104db1b70aebd2f8b0feb4a0854b3cc2bb9
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: b8e245f13af1dd011a92bbf0584b1689a1a0399f
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>Klassifizieren von Iris, Teil 3: Bereitstellen eines Modells
 Bei Azure Machine Learning-Diensten (Vorschauversion) handelt es sich um eine integrierte Data Science- und Advanced Analytics-End-to-End-Lösung für professionelle Data Scientists. Data Scientists können die Lösung nutzen, um Daten vorzubereiten, Experimente zu entwickeln und Modelle für die Cloud bereitzustellen.
@@ -39,7 +39,7 @@ Arbeiten Sie die ersten beiden Teile dieser Tutorial-Reihe durch:
 
    * Führen Sie das [Tutorial zum Erstellen eines Modells](tutorial-classifying-iris-part-2.md) aus, um in Azure Machine Learning ein Modell für die logistische Regression zu erstellen.
 
-Hierzu benötigen Sie ein lokal installiertes und ausgeführtes Docker-Modul. Alternativ können Sie als Bereitstellungsziel einen Azure Container Service-Cluster in Azure verwenden.
+Hierzu benötigen Sie eine lokal installierte und ausgeführte Docker-Engine. Alternativ können Sie als Bereitstellungsziel einen Azure Container Service-Cluster in Azure verwenden.
 
 ## <a name="download-the-model-pickle-file"></a>Herunterladen der pickle-Modelldatei
 Im vorherigen Teil des Tutorials wurde das Skript **iris_sklearn.py** lokal in Machine Learning Workbench ausgeführt. Mit dieser Aktion wurde das Modell für die logistische Regression über das beliebte Python-Paket [pickle](https://docs.python.org/2/library/pickle.html) für die Objektserialisierung serialisiert. 
@@ -124,10 +124,10 @@ Als Nächstes können Sie Ihre Umgebung für die Operationalisierung des Modells
 ## <a name="prepare-to-operationalize-locally"></a>Vorbereiten der lokalen Operationalisierung
 Verwenden Sie für Docker-Container auf Ihrem lokalen Computer die Bereitstellung vom Typ _Lokaler Modus_.
 
-Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Das Docker-Modul muss lokal ausgeführt werden, um die folgenden Schritte zum Operationalisieren des Modells auszuführen. Sie können das Flag `-h` am Ende von Befehlen verwenden, um Hilfe zu den Befehlen zu erhalten.
+Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Die Docker-Engine muss lokal ausgeführt werden, um die folgenden Schritte zum Operationalisieren des Modells auszuführen. Sie können das Flag `-h` am Ende von Befehlen verwenden, um Hilfe zu den Befehlen zu erhalten.
 
 >[!NOTE]
->Falls Sie nicht über ein lokales Docker-Modul verfügen, können Sie trotzdem fortfahren, indem Sie in Azure einen Cluster für die Bereitstellung erstellen. Stellen Sie lediglich sicher, dass Sie den Cluster nach Abschluss des Tutorials löschen, damit keine laufenden Gebühren anfallen.
+>Falls Sie nicht über eine lokale Docker-Engine verfügen, können Sie trotzdem fortfahren, indem Sie in Azure einen Cluster für die Bereitstellung erstellen. Stellen Sie lediglich sicher, dass Sie den Cluster nach Abschluss des Tutorials löschen, damit keine laufenden Gebühren anfallen.
 
 1. Öffnen Sie die Befehlszeilenschnittstelle (CLI).
    Wählen Sie in der Anwendung Azure Machine Learning Workbench im Menü **Datei** die Option **Eingabeaufforderung öffnen**.
@@ -160,6 +160,9 @@ Sie können _Lokaler Modus_ für Entwicklungs- und Testzwecke nutzen. Das Docker
    ``` 
 
    In der dritten Zeile der Ausgabe wird **"registrationState": "Registering"** angezeigt. Warten Sie kurz ab, und wiederholen Sie dann den Befehl **show**, bis in der Ausgabe **"registrationState": "Registered"** angezeigt wird.
+
+   >[!NOTE] 
+   Beim Bereitstellen in einem ACS-Cluster folgen Sie genau demselben Ansatz, um den Ressourcenanbieter **Microsoft.ContainerService** zu registrieren.
 
 3. Erstellen Sie die Umgebung. Sie müssen diesen Schritt einmal pro Umgebung ausführen. Führen Sie ihn beispielsweise einmal für die Entwicklungsumgebung und einmal für die Produktionsumgebung aus. Verwenden Sie den _lokalen Modus_ für diese erste Umgebung. Sie können den Switch `-c` oder `--cluster` im folgenden Befehl später ausprobieren, um eine Umgebung im _Clustermodus_ einzurichten.
 
@@ -206,7 +209,7 @@ Sie können nun den Echtzeit-Webdienst erstellen.
 1. Verwenden Sie den folgenden Befehl, um einen Echtzeit-Webdienst zu erstellen:
 
    ```azurecli
-   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c amlconfig\conda_dependencies.yml
+   az ml service create realtime -f score_iris.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true -c aml_config\conda_dependencies.yml
    ```
    Bei diesem Befehl wird eine Webdienst-ID zur späteren Verwendung generiert.
 
@@ -298,7 +301,7 @@ Verwenden Sie einen JSON-codierten Datensatz, der ein Array mit vier Zufallszahl
 
 ## <a name="view-the-collected-data-in-azure-blob-storage"></a>Anzeigen der gesammelten Daten im Azure-Blobspeicher
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Suchen Sie nach Ihren Speicherkonten. Wählen Sie hierzu **Weitere Dienste**.
 

@@ -1,5 +1,5 @@
 ---
-title: "Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion) | Microsoft-Dokumentation"
+title: "Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)"
 description: "Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)"
 services: storage
 documentationcenter: na
@@ -14,25 +14,76 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: b5cd022c87a6a7a9e18f33b869db04e72be5cef7
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 6268cff5f6c87d269f431dcdf5e6a1ee2e2bcf1f
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Versionshinweise für Microsoft Azure-Speicher-Explorer (Vorschauversion)
 
-Dieser Artikel enthält die Versionshinweise für Azure Storage-Explorer 0.9.2 (Vorschauversion) sowie die Versionshinweise für frühere Versionen.
+Dieser Artikel enthält die Versionsanmerkungen für Azure Storage-Explorer 0.9.3 (Vorschauversion) sowie die Versionsanmerkungen für frühere Versionen.
 
 Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tools-storage-manage-with-storage-explorer.md) handelt es sich um eine eigenständige App, über die Sie unter Windows, MacOS und Linux komfortabel mit Azure Storage-Daten arbeiten können.
+
+## <a name="version-093"></a>Version 0.9.3
+08.12.2017
+
+### <a name="download-azure-storage-explorer-093-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.3 (Vorschauversion)
+- [Azure Storage-Explorer 0.9.3 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Azure Storage-Explorer 0.9.3 (Vorschauversion) für Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Azure Storage-Explorer 0.9.3 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="new"></a>Neu
+* Das vorhandene Storage-Explorer-Fenster wird in folgenden Fällen wiederverwendet:
+    * Sie öffnen Links, die im Storage-Explorer generiert wurden.
+    * Sie öffnen den Storage-Explorer vom Portal aus.
+    * Sie öffnen den Storage-Explorer über die Azure Storage VS Code-Erweiterung (demnächst verfügbar).
+* Es wurde die Möglichkeit hinzugefügt, aus dem Storage-Explorer heraus ein neues Storage-Explorer-Fenster zu öffnen.
+    * Bei Windows befindet sich im Menü „Datei“ und im Kontextmenü der Taskleiste eine Option „Neues Fenster“.
+    * Bei Mac befindet sich im App-Menü eine Option „Neues Fenster“.
+
+### <a name="fixes"></a>Fehlerbehebungen
+* Alte Aktivitäten wurden nicht ordnungsgemäß bereinigt. Dies wirkte sich auf die Leistung von Aufträgen mit langer Ausführungszeit aus. Diese Aktivitäten werden jetzt ordnungsgemäß bereinigt.
+* Aktionen mit großen Mengen an Dateien und Verzeichnissen führten gelegentlich zu einem Einfrieren von Storage-Explorer. Anforderungen an Azure für Dateifreigaben werden jetzt gedrosselt, um die Nutzung von Systemressourcen zu begrenzen.
+
+### <a name="known-issues"></a>Bekannte Probleme
+* Storage-Explorer unterstützt keine ADFS-Konten.
+* Tastenkombinationen für „Explorer anzeigen“ und „Kontenverwaltung anzeigen“ sollten entsprechend STRG/BEFEHL+UMSCHALT+E oder STRG/BEFEHL+UMSCHALT+A sein.
+* Beim Hochladen bestimmter Dateien als Anfügeblobs für Azure Stack tritt möglicherweise ein Fehler auf.
+* Nach dem Klicken auf „Abbrechen“ für eine Aufgabe kann es eine Weile dauern, bis die betreffende Aufgabe abgebrochen wird. Der Grund hierfür ist, dass wir die hier beschriebene Problemumgehung für „Filter abbrechen“ verwenden.
+* Wenn Sie die falsche PIN/das falsche Smartcard-Zertifikat auswählen, müssen Sie einen Neustart ausführen, damit diese Entscheidung in Speicher-Explorer unwirksam gemacht wird.
+* Im Bereich mit den Kontoeinstellungen wird unter Umständen angezeigt, dass Sie Anmeldeinformationen erneut eingeben müssen, um Abonnements zu filtern.
+* Beim Umbenennen von Blobs (einzeln oder in einem umbenannten Blobcontainer) werden Momentaufnahmen nicht beibehalten. Alle anderen Eigenschaften und Metadaten für Blobs, Dateien und Entitäten werden beim Umbenennen beibehalten.
+* Obwohl Azure Stack derzeit keine Dateifreigaben unterstützt, wird dennoch ein Knoten „Dateifreigaben“ unter einem angefügten Azure Stack-Speicherkonto angezeigt.
+* Die von Storage-Explorer verwendete Electron-Shell hat Probleme mit einigen GPU-Hardwarebeschleunigern (Grafikprozessor). Wenn Storage-Explorer ein leeres Hauptfenster anzeigt, können Sie versuchen, Storage-Explorer über die Befehlszeile zu starten und die GPU-Beschleunigung durch Hinzufügen des Switches `--disable-gpu` zu deaktivieren:
+```
+./StorageExplorer --disable-gpu
+```
+* Für Benutzer unter Ubuntu 14.04 müssen Sie sicherstellen, dass GCC auf dem neuesten Stand ist. Hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Für Benutzer unter Ubuntu 17.04 müssen Sie GConf installieren; hierzu können Sie die folgenden Befehle ausführen und anschließend Ihren Computer neu starten:
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-092"></a>Version 0.9.2
 01.11.2017
 
 ### <a name="download-azure-storage-explorer-092-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.2 (Vorschauversion)
-- [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Windows](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Macintosh](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Linux](https://go.microsoft.com/fwlink/?LinkId=722418)
+* [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
+* [Azure Storage-Explorer 0.9.2 (Vorschauversion) für Mac herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
+* [Azure Storage Explorer 0.9.2 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
+
+
 
 ### <a name="hotfixes"></a>Hotfixes
 * Abhängig von der lokalen Zeitzone waren beim Bearbeiten von Edm.DateTime-Werten für Tabellenentitäten unerwartete Datenänderungen möglich. Der Editor verwendet nun ein Nur-Text-Feld, mit dem die Edm.DateTime-Werte präzise und einheitlich gesteuert werden können.
@@ -95,13 +146,32 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 
 
+
+
+
+## <a name="previous-releases"></a>Vorgängerversionen
+
+* [Version 0.9.1 / 0.9.0](#version-091)
+* [Version 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [Version 0.8.13](#version-0813)
+* [Version 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
+* [Version 0.8.9 / 0.8.8](#version-089--088)
+* [Version 0.8.7](#version-087)
+* [Version 0.8.6](#version-086)
+* [Version 0.8.5](#version-085)
+* [Version 0.8.4](#version-084)
+* [Version 0.8.3](#version-083)
+* [Version 0.8.2](#version-082)
+* [Version 0.8.0](#version-080)
+* [Version 0.7.20160509.0](#version-07201605090)
+* [Version 0.7.20160325.0](#version-07201603250)
+* [Version 0.7.20160129.1](#version-07201601291)
+* [Version 0.7.20160105.0](#version-07201601050)
+* [Version 0.7.20151116.0](#version-07201511160)
+
 ## <a name="version-091--090-preview"></a>Version 0.9.1/0.9.0 (Vorschauversion)
 10/20/2017
-### <a name="download-azure-storage-explorer-091-preview"></a>Herunterladen von Azure Storage-Explorer 0.9.1 (Vorschauversion)
-* [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Windows herunterladen](https://go.microsoft.com/fwlink/?LinkId=809306)
-* [Azure Storage-Explorer 0.9.1 (Vorschauversion) für Mac herunterladen](https://go.microsoft.com/fwlink/?LinkId=809307)
-* [Azure Storage Explorer 0.9.1 (Vorschauversion) für Linux herunterladen](https://go.microsoft.com/fwlink/?LinkId=809308)
-
 ### <a name="new"></a>Neu
 * Unterstützung der Vorschau für Azure Cosmos DB:
     * [Onlinedokumentation](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
@@ -153,28 +223,6 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-
-
-## <a name="previous-releases"></a>Vorgängerversionen
-
-* [Version 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [Version 0.8.13](#version-0813)
-* [Version 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [Version 0.8.9 / 0.8.8](#version-089--088)
-* [Version 0.8.7](#version-087)
-* [Version 0.8.6](#version-086)
-* [Version 0.8.5](#version-085)
-* [Version 0.8.4](#version-084)
-* [Version 0.8.3](#version-083)
-* [Version 0.8.2](#version-082)
-* [Version 0.8.0](#version-080)
-* [Version 0.7.20160509.0](#version-07201605090)
-* [Version 0.7.20160325.0](#version-07201603250)
-* [Version 0.7.20160129.1](#version-07201601291)
-* [Version 0.7.20160105.0](#version-07201601050)
-* [Version 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-0816"></a>Version 0.8.16
 21.08.2017
@@ -324,9 +372,9 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 ### <a name="version-089--088"></a>Version 0.8.9 / 0.8.8
 23.02.2017
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/R6gonK3cYAc?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/R6gonK3cYAc?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/SrRPCm94mfE?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/SrRPCm94mfE?ecver=1]
 
 
 #### <a name="new"></a>Neu
@@ -357,7 +405,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 16.12.2016
 ### <a name="version-087"></a>Version 0.8.7
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/Me4Y4jxoer8?ecver=1]
 
 #### <a name="new"></a>Neu
 
@@ -445,7 +493,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 12.09.2016
 ### <a name="version-084"></a>Version 0.8.4
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/cr5tOGyGrIQ?ecver=1]
 
 #### <a name="new"></a>Neu
 
@@ -466,7 +514,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 03.08.2016
 ### <a name="version-083"></a>Version 0.8.3
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/HeGW-jkSd9Y?ecver=1]
 
 #### <a name="new"></a>Neu
 
@@ -492,7 +540,7 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 07.07.2016
 ### <a name="version-082"></a>Version 0.8.2
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/nYgKbRUNYZA?ecver=1]
 
 #### <a name="new"></a>Neu
 
@@ -515,11 +563,11 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 15.06.2016
 ### <a name="version-080"></a>Version 0.8.0
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ycfQhKztSIY?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/ycfQhKztSIY?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/k4_kOUCZ0WA?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/k4_kOUCZ0WA?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/3zEXJcGdl_k?ecver=1]
 
 #### <a name="new"></a>Neu
 
@@ -560,10 +608,9 @@ Bei der [Vorschauversion des Microsoft Azure-Speicher-Explorers](./vs-azure-tool
 
 ### <a name="version-07201603250"></a>Version 0.7.20160325.0
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/imbgBRHX65A?ecver=1" frameborder="0" allowfullscreen></iframe>
+>[!VIDEO https://www.youtube.com/embed/imbgBRHX65A?ecver=1]
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1" frameborder="0" allowfullscreen></iframe>
-
+>[!VIDEO https://www.youtube.com/embed/ceX-P8XZ-s8?ecver=1]
 
 #### <a name="new"></a>Neu
 

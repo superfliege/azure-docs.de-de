@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 12/18/2017
 ms.author: jeannt
-ms.openlocfilehash: b3dca9e75df2d057d7ee1b314faac490e5f10a08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b82fe8e8c8bc4ac9c45370d90fa9330d749878
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="analyzing-customer-churn-by-using-azure-machine-learning"></a>Analysieren der Kundenabwanderung mithilfe von Microsoft Azure Machine Learning
 ## <a name="overview"></a>Übersicht
@@ -28,23 +28,23 @@ Dieser Artikel bietet eine Referenzimplementierung eines Projekts zur Analyse de
 Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
 
 > [!NOTE]
-> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1).
+> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1).
 > 
 > 
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="the-problem-of-customer-churn"></a>Das Problem der Kundenabwanderung
-Firmen müssen sich sowohl auf dem Verbrauchermarkt als auch in allen Unternehmenssektoren mit der Kundenabwanderung auseinandersetzen. Gelegentlich kann es zur übermäßigen Abwanderung kommen, die dann Grundsatzentscheidungen beeinflusst. Die traditionelle Lösung besteht darin, eine starke Abwanderungsbereitschaft von Kunden vorherzusagen und sich über einen Concierge-Dienst, Marketingkampagnen oder Sonderregelungen mit ihren Bedürfnissen auseinanderzusetzen. Diese Ansätze können von Branche zu Branche unterschiedlich sein und auch innerhalb einer Branche (z. B. Telekommunikation) je nach bestimmter Verbrauchergruppe variieren.
+Firmen müssen sich sowohl auf dem Verbrauchermarkt als auch in allen Unternehmenssektoren mit der Kundenabwanderung auseinandersetzen. Gelegentlich kann es zur übermäßigen Abwanderung kommen, die dann Grundsatzentscheidungen beeinflusst. Die traditionelle Lösung besteht darin, eine starke Abwanderungsbereitschaft von Kunden vorherzusagen und sich über einen Concierge-Dienst, Marketingkampagnen oder Sonderregelungen mit ihren Bedürfnissen auseinanderzusetzen. Die jeweilige Vorgehensweise variiert je nach Branche. Auch innerhalb einer einzigen Branche (z.B. Telekommunikation) kann das Vorgehen je nach Verbrauchergruppe variieren.
 
-Die Gemeinsamkeit besteht darin, dass die Unternehmen diese besonderen Bemühungen zur Kundenbindung minimieren müssen. Eine natürliche Methode wäre somit, jeden Kunden mit einer Abwanderungswahrscheinlichkeit zu bewerten und sich mit einer bestimmten Anzahl (N) der Kunden mit den höchsten Werten zu befassen. Die Kunden mit den höchsten Bewertungen sind möglicherweise die einträglichsten Kunden. In komplexeren Szenarios wird bei der Auswahl der Anwärter für Sonderregelungen eine Gewinnfunktion verwendet. Diese Überlegungen sind jedoch nur ein Teil der ganzheitlichen Strategie zur Behandlung der Abwanderung. Die Unternehmen müssen auch das Risiko (und die zugehörige Risikobereitschaft), das Interventionsniveau und die zugehörigen Kosten sowie die eingängige Kundensegmentierung berücksichtigen.  
+Die Gemeinsamkeit besteht darin, dass die Unternehmen diese besonderen Bemühungen zur Kundenbindung minimieren müssen. Eine natürliche Methode wäre somit, jeden Kunden mit einer Abwanderungswahrscheinlichkeit zu bewerten und sich mit einer bestimmten Anzahl (N) der Kunden mit den höchsten Werten zu befassen. Die Kunden mit den höchsten Werten sind wahrscheinlich die lukrativsten. In komplexeren Szenarien wird bei der Auswahl der Kandidaten für Sonderregelungen eine Gewinnfunktion verwendet. Diese Überlegungen sind jedoch nur ein Teil der Gesamtstrategie zur Bekämpfung der Kundenabwanderung. Die Unternehmen müssen auch das Risiko (und die zugehörige Risikobereitschaft), das Interventionsniveau und die zugehörigen Kosten sowie die eingängige Kundensegmentierung berücksichtigen.  
 
 ## <a name="industry-outlook-and-approaches"></a>Branchenprognose und Ansätze
 Ein durchdachter Umgang mit der Abwanderung ist ein Zeichen für eine gefestigte Branche. Das klassische Beispiel ist die Telekommunikationsbranche, in der Kunden häufig den Anbieter wechseln. Diese spontane Abwanderung ist ein wesentliches Problem. Darüber hinaus haben die Anbieter wichtige Erfahrungen zu *Abwanderungsargumenten*gesammelt, die für die Kunden die Faktoren für einen Wechsel darstellen.
 
-In der Mobilfunkbranche stellt z. B. die Auswahl an Mobiltelefonen oder Geräten ein bekanntes Argument für eine Abwanderung dar. Daher besteht eine beliebte Strategie darin, den Preis für ein Mobiltelefon für Neukunden zu subventionieren und Bestandskunden bei einem Upgrade den vollen Preis zu berechnen. Diese Strategie hat in der Vergangenheit dazu geführt, dass die Kunden von einem Anbieter zum nächsten wechseln, um einen neuen Rabatt zu erhalten. Dies hat die Anbieter wiederum dazu veranlasst, ihre Strategien zu überarbeiten.
+In der Mobilfunkbranche stellt z. B. die Auswahl an Mobiltelefonen oder Geräten ein bekanntes Argument für eine Abwanderung dar. Daher besteht eine beliebte Strategie darin, den Preis für ein Mobiltelefon für Neukunden zu subventionieren und Bestandskunden bei einem Upgrade den vollen Preis zu berechnen. Diese Strategie hat in der Vergangenheit dazu geführt, dass die Kunden von einem Anbieter zum nächsten wechseln, um erneut einen Rabatt zu erhalten. Dies hat die Anbieter wiederum dazu veranlasst, ihre Strategien zu überarbeiten.
 
-Die hohe Volatilität bei den Mobiltelefonangeboten ist ein Faktor, der Abwanderungsmodelle sehr schnell entkräftet, die auf aktuellen Mobiltelefonmodellen basieren. Zudem sind Mobiltelefone nicht nur Telekommunikationsgeräte, sondern auch Prestigeobjekte (denken Sie an das iPhone), und diese gesellschaftlichen Einflusswerte befinden sich außerhalb des Bereichs normaler Telekommunikationsdatenbestände.
+Die hohe Volatilität bei Mobiltelefonangeboten ist ein Faktor, durch den Abwanderungsmodelle, die auf aktuellen Mobiltelefonmodellen basieren, schnell unbrauchbar werden. Darüber hinaus sind Mobiltelefone nicht nur Kommunikationsgeräte, sondern ein modisches Statement (denken Sie an das iPhone). Diese sozialen Einflüsse befinden sich außerhalb des Bereichs normaler Datasets für die Telekommunikation.
 
 Das Endergebnis hinsichtlich der Modellerstellung ist, dass Sie keinen vernünftigen Grundsatz formulieren können, indem Sie einfach bekannte Abwanderungsgründe beseitigen. Tatsächlich ist eine durchgängige Modellierungsstrategie **obligatorisch**, einschließlich der klassischen Modelle zur Quantifizierung bestimmter Variablen (z. B. Entscheidungsbäume).
 
@@ -109,7 +109,7 @@ Die folgenden Diagramme veranschaulichen die verwendeten Daten.
  
 
 > Beachten Sie, dass diese Daten privat sind, weshalb Modell und Daten nicht freigegeben werden dürfen.
-> Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com/) unter [Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) unter [Telco Customer Churn](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Weitere Informationen zum Implementieren eines Abwanderungsanalysemodells mit Cortana Intelligence Suite finden Sie auch in [diesem Video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) von Senior Program Manager Wee Hyong Tok. 
 > 
@@ -211,16 +211,6 @@ Wir hoffen, dieses Thema weiter behandeln zu können, insbesondere in Bezug auf 
 ## <a name="conclusion"></a>Zusammenfassung
 In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe von Azure Machine Learning implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
 
-**Weitere Informationen:**  
-
-Konnte Ihnen dieses Dokument helfen? Bitte senden Sie uns Ihr Feedback. Teilen Sie uns auf einer Skala von 1 (schlecht) bis 5 (ausgezeichnet) mit, wie Sie dieses Dokument bewerten, und nennen Sie uns einen Grund für diese Bewertung. Beispiel:  
-
-* Erfolgt die positive Bewertung aufgrund geeigneter Beispiele, ausgezeichneter Screenshots, anschaulicher Beschreibungen oder aus anderen Gründen?
-* Erfolgt die negative Bewertung aufgrund schlechter Beispiele, ungenauer Screenshots oder missverständlicher Beschreibungen?  
-
-Dieses Feedback hilft uns dabei, die Qualität der von uns veröffentlichten Whitepaper zu verbessern.   
-
-[Feedback senden](mailto:sqlfback@microsoft.com).
  
 
 ## <a name="references"></a>Referenzen
@@ -232,7 +222,7 @@ Dieses Feedback hilft uns dabei, die Qualität der von uns veröffentlichten Whi
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn) (in englischer Sprache)
 
-[5] [Telco churn model template](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) (Vorlage für ein Abwanderungsmodell für Telekommunikationsunternehmen) in der [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com/) (Cortana Intelligence-Katalog) 
+[5] Vorlage [Telco Churn Model](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) 
  
 
 ## <a name="appendix"></a>Anhang

@@ -1,24 +1,16 @@
 ---
 title: "Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure mit Azure Migrate | Microsoft-Dokumentation"
 description: "In diesem Artikel wird beschrieben, wie lokale virtuelle VMware-Computer für die Migration zu Azure mithilfe des Azure Migrate-Diensts ermittelt und bewertet werden."
-services: migration-planner
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: a2521630-730f-4d8b-b298-e459abdced46
-ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.service: azure-migrate
+ms.topic: tutorial
+ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: b0818fbc1d227093fcc1b9b925d0859b8580f9c1
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: a5019d3f729f2efbd01fca021b0089c7f99b0014
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -52,10 +44,10 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 ## <a name="create-a-project"></a>Erstellen eines Projekts
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
-2. Suchen Sie nach **Azure Migrate**, und wählen Sie den Dienst (**Azure Migrate (Vorschau)**) in den Suchergebnissen aus. Klicken Sie dann auf **Erstellen**.
+2. Suchen Sie nach **Azure Migrate**, und wählen Sie den Dienst **Azure Migrate (Vorschau)** in den Suchergebnissen aus. Klicken Sie dann auf **Erstellen**.
 3. Geben Sie einen Projektnamen und das Azure-Abonnement für das Projekt an.
 4. Erstellen Sie eine neue Ressourcengruppe.
-5. Geben Sie die Region an, in der das Projekt erstellt wird, und klicken Sie dann auf **Erstellen**. Die von lokalen virtuellen Computern erfassten Metadaten werden in dieser Region gespeichert. In dieser Vorschauversion können Sie ein Azure Migrate-Projekt nur in der Region „USA, Westen-Mitte“ erstellen. Sie können Ihre Migration jedoch trotzdem für jeden beliebigen Zielort von Azure planen. 
+5. Geben Sie die Region an, in der das Projekt erstellt werden soll, und klicken Sie dann auf **Erstellen**. In dieser Vorschauversion können Sie ein Azure Migrate-Projekt nur in der Region „USA, Westen-Mitte“ erstellen. Sie können Ihre Migration jedoch trotzdem für jeden beliebigen Zielort von Azure planen. Der für das Projekt angegebene Standort wird nur zum Speichern der Metadaten verwendet, die von den lokalen VMs erfasst werden. 
 
     ![Azure Migrate](./media/tutorial-assessment-vmware/project-1.png)
     
@@ -81,17 +73,18 @@ Azure Migrate erstellt einen lokalen virtuellen Computer, der als „Collectorap
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. Der generierte Hash muss folgenden Einstellungen entsprechen.
     
-    Für die OVA-Version 1.0.8.38
+    Für OVA-Version 1.0.8.49:
     **Algorithmus** | **Hashwert**
     --- | ---
-    MD5 | dd27dd6ace28f9195a2b5d52a4003067 
-    SHA1 | d2349e06a5d4693fc2a1c0619591b9e45c36d695
-    SHA256 | 1492a0c6d6ef76e79269d5cd6f6a22f336341e1accbc9e3dfa5dad3049be6798
+    MD5 | 8779eea842a1ac465942295c988ac0c7 
+    SHA1 | c136c52a0f785e1fd98865e16479dd103704887d
+    SHA256 | 5143b1144836f01dd4eaf84ff94bc1d2c53f51ad04b1ca43ade0d14a527ac3f9
 
-    Für die OVA-Version 1.0.8.40
+    Für OVA-Version 1.0.8.40:
+
     **Algorithmus** | **Hashwert**
     --- | ---
-    MD5 | afbae5a2e7142829659c21fd8a9def3f
+    MD5 |afbae5a2e7142829659c21fd8a9def3f
     SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
     SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
 
@@ -116,19 +109,24 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
 1. Klicken Sie in der vSphere-Clientkonsole mit der rechten Maustaste auf den virtuellen Computer, und wählen Sie **Konsole öffnen** aus.
 2. Geben Sie die Einstellungen für die Sprache, die Zeitzone und das Kennwort für die Appliance an.
 3. Klicken Sie auf dem Desktop auf die Verknüpfung **Collector ausführen**.
-4. Öffnen Sie im Azure Migrate-Collector die Option **Set Up Prerequisites** (Voraussetzungen einrichten).
+4. Öffnen Sie im Azure Migrate-Collector die Option **Erforderliche Komponenten einrichten**.
     - Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
     - Der Collector überprüft, ob der virtuelle Computer über Internetzugriff verfügt.
     - Wenn der virtuelle Computer über einen Proxy auf das Internet zugreift, klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
-    - Der Collector überprüft, ob der Windows-Profiler-Dienst ausgeführt wird. Der Dienst wird standardmäßig auf dem virtuellen Collectorcomputer installiert.
+
+    > [!NOTE]
+    > Die Proxyadresse muss im Format http://ProxyIPAddress oder http://ProxyFQDN eingegeben werden. Es werden nur HTTP-Proxys unterstützt.
+
+    - Der Collector überprüft, ob der Collector-Dienst ausgeführt wird. Der Dienst wird standardmäßig auf dem virtuellen Collectorcomputer installiert.
     - Laden Sie die VMware PowerCLI herunter, und installieren Sie sie.
-. Gehen Sie in **Computer ermitteln** wie folgt vor:
+
+5. Nehmen Sie in **vCenter Server-Details angeben** die folgenden Einstellungen vor:
     - Geben Sie den Namen (FQDN) oder die IP-Adresse des vCenter-Servers an.
     - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, über das der Collector virtuelle Computer auf dem vCenter-Server ermittelt.
     - Wählen Sie unter **Sammlungsbereich** einen Bereich für die Ermittlung virtueller Computer aus. Der Collector kann nur virtuelle Computer innerhalb des angegebenen Bereichs ermitteln. Der Bereich kann auf einen bestimmten Ordner, ein Rechenzentrum oder einen Cluster festgelegt werden. Er sollte nicht mehr als 1000 virtuelle Computer umfassen. 
-    - Wählen Sie in **Tag category for grouping** (Tagkategorie für Gruppierung) die Option **Keine** aus.
-1. Geben Sie unter **Projekt auswählen** die ID und den Schlüssel für das Azure Migrate-Projekt an, die sie im Portal kopiert haben. Wenn Sie diese Angaben nicht kopiert haben, öffnen Sie das Azure-Portal über den virtuellen Collectorcomputer. Klicken Sie auf der Seite **Übersicht** des Projekts auf **Computer ermitteln**, und kopieren Sie die Werte.  
-2. Überwachen Sie die Ermittlung in **Complete Discovery** (Ermittlung abschließen), und prüfen Sie, ob sich die von den virtuellen Computern erfassten Metadaten innerhalb des Bereichs befinden. Der Collector gibt eine ungefähre Ermittlungszeit an.
+
+6. Geben Sie unter **Migrationsprojekt angeben** die ID und den Schlüssel für das Azure Migrate-Projekt an, die sie im Portal kopiert haben. Wenn Sie diese Angaben nicht kopiert haben, öffnen Sie das Azure-Portal über den virtuellen Collectorcomputer. Klicken Sie auf der Seite **Übersicht** des Projekts auf **Computer ermitteln**, und kopieren Sie die Werte.  
+7. Überwachen Sie in **Sammlungsfortschritt anzeigen** die Ermittlung, und vergewissern Sie sich, dass sich die von den VMs erfassten Metadaten innerhalb des zulässigen Bereichs befinden. Der Collector gibt eine ungefähre Ermittlungszeit an.
 
 > [!NOTE]
 > Der Collector unterstützt nur „Englisch (USA)“ als Sprache des Betriebssystems und die Sprache der Collectorschnittstelle. Die Unterstützung für weitere Sprachen ist in Kürze verfügbar.
@@ -175,7 +173,7 @@ In dieser Ansicht wird der Bereitschaftsstatus für jeden Computer angezeigt.
 Diese Ansicht zeigt die gesamten Compute- und Speicherkosten für den Betrieb der virtuellen Computer in Azure zusammen mit den Details für die einzelnen Computer. Kostenschätzungen werden anhand der Empfehlungen für die leistungsbasierte Größe eines Computers und der zugehörigen Datenträger und anhand der Bewertungseigenschaften berechnet. 
 
 > [!NOTE]
-> Die Kostenschätzung von Azure Migrate bezieht sich auf die Ausführung der lokalen virtuellen Computer als virtuelle Azure IaaS-Computer (Infrastructure-as-a-Service). Sie berücksichtigt keine Kosten für PaaS (Platform-as-a-Service) oder SaaS (Software-as-a-Service). 
+> Die Kostenschätzung von Azure Migrate bezieht sich auf die Ausführung der lokalen virtuellen Computer als virtuelle Azure IaaS-Computer (Infrastructure-as-a-Service). Darin werden keine PaaS- (Platform-as-a-Service) oder SaaS-Kosten (Software-as-a-Service) berücksichtigt. 
 
 Die geschätzten monatlichen Kosten für Compute und Speicher werden für alle virtuellen Computer in der Gruppe aggregiert. 
 
@@ -187,6 +185,6 @@ Sie können einen Drilldown ausführen, um die Details für einen bestimmten Com
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Informationen](how-to-scale-assessment.md) zum Einrichten einer Bewertung für eine große Anzahl von lokalen Computern
-- Informationen zum Erstellen detaillierter Bewertungsgruppen mithilfe der [Zuordnung von Computerabhängigkeiten](how-to-create-group-machine-dependencies.md)
+- [Weitere Informationen](how-to-scale-assessment.md) zum Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
+- Informationen zum Erstellen vertrauenswürdiger Bewertungsgruppen mithilfe der [Zuordnung von Computerabhängigkeiten](how-to-create-group-machine-dependencies.md)
 - [Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen

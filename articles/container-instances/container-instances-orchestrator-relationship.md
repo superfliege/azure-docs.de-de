@@ -1,19 +1,19 @@
 ---
 title: Azure Container Instances und Containerorchestrierung
-description: Verstehen Sie, wie Azure Container Instances mit Containerorchestratoren interagiert
+description: Hier erfahren Sie, wie Azure Container Instances mit Containerorchestratoren interagiert.
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 01/09/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a51e746c501cca0521972b09d145439348d1d22d
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4954dcb4cb03407b85ad35aec94920e39644844b
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances und Containerorchestratoren
 
@@ -40,8 +40,6 @@ Azure Container Instances ermöglicht einen mehrstufigen Ansatz für die Orchest
 
 Da die gesamte zugrundeliegende Infrastruktur von Container Instances von Azure verwaltet wird, muss sich eine Orchestrierungsplattform nicht darum kümmern, einen geeigneten Hostcomputer zu finden, auf dem ein einzelner Container ausgeführt werden kann. Die Flexibilität der Cloud stellt sicher, dass immer einer verfügbar ist. Stattdessen kann sich der Orchestrator auf die Aufgaben konzentrieren, die die Entwicklung von Architekturen mit mehreren Containern vereinfachen, darunter das Skalieren und Koordinieren von Upgrades.
 
-
-
 ## <a name="potential-scenarios"></a>Mögliche Szenarios
 
 Die Orchestratorintegration mit Azure Container Instances ist zwar noch am Entstehen, aber wir gehen davon aus, dass einige andere Umgebungen entstehen können:
@@ -50,9 +48,9 @@ Die Orchestratorintegration mit Azure Container Instances ist zwar noch am Entst
 
 Aufgrund des schnellen Starts und der sekundengenauen Abrechnung bietet eine ausschließlich auf Azure Container Instances basierende Umgebung die schnellste Möglichkeit, um einzusteigen und mit sehr variablen Workloads umzugehen.
 
-### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Kombination aus Container Instances und Containern in virtuellen Computern
+### <a name="combination-of-container-instances-and-containers-in-virtual-machines"></a>Kombination aus Container Instances und Containern in Virtual Machines
 
-Für stabile Workloads mit langer Ausführungszeit ist es normalerweise günstiger, Container in einem Cluster dedizierter virtueller Computer auszuführen als dieselben Container mit Container Instances auszuführen. Allerdings bietet Container Instances eine tolle Lösung für die schnelle Erweiterung oder Verringerung Ihrer Gesamtkapazität, um auf unerwartete oder vorübergehende Spitzen bei der Auslastung zu reagieren. Anstatt die Anzahl der virtuellen Computer in Ihrem Cluster horizontal zu skalieren und dann zusätzliche Container auf diesen Computern bereitzustellen, kann der Orchestrator einfach die zusätzlichen Container mithilfe von Container Instances einplanen und sie wieder entfernen, wenn sie nicht mehr gebraucht werden.
+Für stabile Workloads mit langer Ausführungszeit ist es normalerweise günstiger, Container in einem Cluster dedizierter virtueller Computer auszuführen als dieselben Container mit Container Instances auszuführen. Allerdings bietet Container Instances eine tolle Lösung für die schnelle Erweiterung oder Verringerung Ihrer Gesamtkapazität, um auf unerwartete oder vorübergehende Spitzen bei der Auslastung zu reagieren. Anstatt die Anzahl der virtuellen Maschinen in Ihrem Cluster horizontal zu skalieren und dann zusätzliche Container auf diesen Computern bereitzustellen, kann der Orchestrator einfach mithilfe von Container Instances zusätzliche Container einplanen und wieder entfernen, wenn sie nicht mehr benötigt werden.
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>Beispiel für die Implementierung: Azure Container Instances-Connector für Kubernetes
 
@@ -75,6 +73,6 @@ Erstellen Sie Ihren ersten Container mit Azure Container Instances mithilfe der 
 [aci-connector-k8s-gif]: ./media/container-instances-orchestrator-relationship/aci-connector-k8s.gif
 
 <!-- LINKS -->
-[aci-connector-k8s]: https://github.com/azure/aci-connector-k8s
+[aci-connector-k8s]: https://github.com/virtual-kubelet/virtual-kubelet/tree/master/providers/azure
 [kubelet-doc]: https://kubernetes.io/docs/admin/kubelet/
 [pod-doc]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

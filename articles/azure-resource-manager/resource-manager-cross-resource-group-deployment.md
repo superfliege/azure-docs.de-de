@@ -11,23 +11,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/01/2017
+ms.date: 12/18/2017
 ms.author: tomfitz
-ms.openlocfilehash: 763f46b9b5be7edf06ee0604bfc51a2482405b60
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 48ba938db992ce192d8afb51365d87fba4422590
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen
 
-In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourcengruppe bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Sie möchten beispielsweise den virtuellen Sicherungscomputer für Azure Site Recovery in einer separaten Ressourcengruppe und an einem separaten Standort bereitstellen. Resource Manager ermöglicht die Verwendung geschachtelter Vorlagen, um nicht das Abonnement und die Ressourcengruppe, die für die übergeordnete Vorlage verwendet werden, sondern andere Abonnements und Ressourcengruppen als Ziel festzulegen.
-
-Die Ressourcengruppe ist der Lebenszykluscontainer für die Anwendung und ihre Ressourcensammlung. Sie erstellen die Ressourcengruppe außerhalb der Vorlage und geben die gewünschte Ressourcengruppe für die Bereitstellung an. Eine Einführung zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](resource-group-overview.md).
+In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne [Ressourcengruppe](resource-group-overview.md) bereit. Es gibt jedoch Szenarien, bei denen Sie eine Reihe von Ressourcen zwar gemeinsam, aber in verschiedenen Ressourcengruppen oder Abonnements bereitstellen möchten. Sie möchten beispielsweise den virtuellen Sicherungscomputer für Azure Site Recovery in einer separaten Ressourcengruppe und an einem separaten Standort bereitstellen. Resource Manager ermöglicht die Verwendung geschachtelter Vorlagen, um nicht das Abonnement und die Ressourcengruppe, die für die übergeordnete Vorlage verwendet werden, sondern andere Abonnements und Ressourcengruppen als Ziel festzulegen.
 
 ## <a name="specify-a-subscription-and-resource-group"></a>Angeben eines Abonnements und einer Ressourcengruppe
 
-Um eine andere Ressource als Ziel festzulegen, müssen Sie während der Bereitstellung eine geschachtelte oder verknüpfte Vorlage verwenden. Der Ressourcentyp `Microsoft.Resources/deployments` stellt Parameter für `subscriptionId` und `resourceGroup` bereit. Diese Eigenschaften ermöglichen Ihnen die Angabe eines anderen Abonnements und einer anderen Ressourcengruppe für die geschachtelte Bereitstellung. Alle Ressourcengruppen müssen vorhanden sein, bevor Sie die Bereitstellung ausführen. Ohne Angabe von Abonnement-ID oder Ressourcengruppe werden das Abonnement und die Ressourcengruppe aus der übergeordneten Vorlage verwendet.
+Um eine andere Ressource als Ziel festzulegen, verwenden Sie eine geschachtelte oder verknüpfte Vorlage. Der Ressourcentyp `Microsoft.Resources/deployments` stellt Parameter für `subscriptionId` und `resourceGroup` bereit. Diese Eigenschaften ermöglichen Ihnen die Angabe eines anderen Abonnements und einer anderen Ressourcengruppe für die geschachtelte Bereitstellung. Alle Ressourcengruppen müssen vorhanden sein, bevor Sie die Bereitstellung ausführen. Ohne Angabe von Abonnement-ID oder Ressourcengruppe werden das Abonnement und die Ressourcengruppe aus der übergeordneten Vorlage verwendet.
+
+Gehen Sie zum Angeben einer anderen Ressourcengruppe und eines Abonnements wie folgt vor:
+
+```json
+"resources": [
+    {
+        "apiVersion": "2017-05-10",
+        "name": "nestedTemplate",
+        "type": "Microsoft.Resources/deployments",
+        "resourceGroup": "[parameters('secondResourceGroup')]",
+        "subscriptionId": "[parameters('secondSubscriptionID')]",
+        ...
+    }
+]
+```
+
+Wenn sich Ihre Ressourcengruppen in demselben Abonnement befinden, können Sie den Wert **subscriptionId** entfernen.
 
 Im folgenden Beispiel werden zwei Speicherkonten bereitgestellt: eins in der während der Bereitstellung angegebenen Ressourcengruppe und eins in einer im Parameter `secondResourceGroup` angegebenen Ressourcengruppe:
 
@@ -106,93 +121,7 @@ Im folgenden Beispiel werden zwei Speicherkonten bereitgestellt: eins in der wä
 
 Wenn Sie für `resourceGroup` den Namen einer nicht vorhandenen Ressourcengruppe angeben, tritt bei der Bereitstellung ein Fehler auf.
 
-## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
-
-Verwenden Sie zum Bereitstellen der Beispielvorlage eine Azure PowerShell- oder Azure CLI-Version von Mai 2017 oder später. Verwenden Sie für diese Beispiele die [abonnementübergreifende Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) in GitHub.
-
-### <a name="two-resource-groups-in-the-same-subscription"></a>Zwei Ressourcengruppen im gleichen Abonnement
-
-PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Ressourcengruppen im gleichen Abonnement Folgendes:
-
-```powershell
-$firstRG = "primarygroup"
-$secondRG = "secondarygroup"
-
-New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
-New-AzureRmResourceGroup -Name $secondRG -Location eastus
-
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName $firstRG `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
-  -storagePrefix storage `
-  -secondResourceGroup $secondRG `
-  -secondStorageLocation eastus
-```
-
-Azure CLI: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Ressourcengruppen im gleichen Abonnement Folgendes:
-
-```azurecli-interactive
-firstRG="primarygroup"
-secondRG="secondarygroup"
-
-az group create --name $firstRG --location southcentralus
-az group create --name $secondRG --location eastus
-az group deployment create \
-  --name ExampleDeployment \
-  --resource-group $firstRG \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
-  --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
-```
-
-Nach Abschluss der Bereitstellung werden zwei Ressourcengruppen angezeigt. Jede Ressourcengruppe enthält ein Speicherkonto.
-
-### <a name="two-resource-groups-in-different-subscriptions"></a>Zwei Ressourcengruppen in unterschiedlichen Abonnements
-
-PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Abonnements Folgendes:
-
-```powershell
-$firstRG = "primarygroup"
-$secondRG = "secondarygroup"
-
-$firstSub = "<first-subscription-id>"
-$secondSub = "<second-subscription-id>"
-
-Select-AzureRmSubscription -Subscription $secondSub
-New-AzureRmResourceGroup -Name $secondRG -Location eastus
-
-Select-AzureRmSubscription -Subscription $firstSub
-New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
-
-New-AzureRmResourceGroupDeployment `
-  -ResourceGroupName $firstRG `
-  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
-  -storagePrefix storage `
-  -secondResourceGroup $secondRG `
-  -secondStorageLocation eastus `
-  -secondSubscriptionID $secondSub
-```
-
-Azure CLI: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Abonnements Folgendes:
-
-```azurecli-interactive
-firstRG="primarygroup"
-secondRG="secondarygroup"
-
-firstSub="<first-subscription-id>"
-secondSub="<second-subscription-id>"
-
-az account set --subscription $secondSub
-az group create --name $secondRG --location eastus
-
-az account set --subscription $firstSub
-az group create --name $firstRG --location southcentralus
-
-az group deployment create \
-  --name ExampleDeployment \
-  --resource-group $firstRG \
-  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
-  --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
-```
+Verwenden Sie zum Bereitstellen der Beispielvorlage die Azure PowerShell-Version 4.0.0 oder höher bzw. die Azure CLI-Version 2.0.0 oder höher.
 
 ## <a name="use-the-resourcegroup-function"></a>Verwenden der resourceGroup()-Funktion
 
@@ -230,9 +159,59 @@ Wenn Sie einen Link zu einer getrennten Vorlage einrichten, wird „resouceGroup
 }
 ```
 
-Um die verschiedenen Optionen zur Auflösung von `resourceGroup()` zu testen, stellen Sie eine [Beispielvorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) bereit, die das Ressourcengruppenobjekt für die übergeordnete Vorlage, die Inlinevorlage und die verknüpfte Vorlage zurückgibt. Die übergeordnete Vorlage und die Inlinevorlage werden beide in die gleiche Ressourcengruppe aufgelöst. Die verknüpfte Vorlage wird in die verknüpfte Ressourcengruppe aufgelöst.
+## <a name="example-templates"></a>Beispielvorlagen
 
-Verwenden Sie für PowerShell Folgendes:
+Die folgenden Vorlagen veranschaulichen die Bereitstellungen von mehreren Ressourcengruppen. Skripts zum Bereitstellen der Vorlagen werden nach der Tabelle angezeigt.
+
+|Vorlage  |BESCHREIBUNG  |
+|---------|---------|
+|[Abonnementübergreifende Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crosssubscription.json) |Stellt ein Speicherkonto für eine Ressourcengruppe und ein weiteres Speicherkonto für eine zweite Ressourcengruppe bereit. Schließen Sie einen Wert für die Abonnement-ID ein, wenn sich die zweite Ressourcengruppe in einem anderen Abonnement befindet. |
+|[Übergreifende Vorlage für Ressourcengruppeneigenschaften](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) |Veranschaulicht, wie die `resourceGroup()`-Funktion aufgelöst wird. Sie stellt keine Ressourcen bereit. |
+
+### <a name="powershell"></a>PowerShell
+
+PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Ressourcengruppen im **gleichen Abonnement** Folgendes:
+
+```powershell
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus
+```
+
+PowerShell: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in **zwei Abonnements** Folgendes:
+
+```powershell
+$firstRG = "primarygroup"
+$secondRG = "secondarygroup"
+
+$firstSub = "<first-subscription-id>"
+$secondSub = "<second-subscription-id>"
+
+Select-AzureRmSubscription -Subscription $secondSub
+New-AzureRmResourceGroup -Name $secondRG -Location eastus
+
+Select-AzureRmSubscription -Subscription $firstSub
+New-AzureRmResourceGroup -Name $firstRG -Location southcentralus
+
+New-AzureRmResourceGroupDeployment `
+  -ResourceGroupName $firstRG `
+  -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json `
+  -storagePrefix storage `
+  -secondResourceGroup $secondRG `
+  -secondStorageLocation eastus `
+  -secondSubscriptionID $secondSub
+```
+
+PowerShell: Verwenden Sie zum Testen, wie das **Ressourcengruppenobjekt** für die übergeordnete Vorlage, die Inlinevorlage und die verknüpfte Vorlage aufgelöst wird, Folgendes:
 
 ```powershell
 New-AzureRmResourceGroup -Name parentGroup -Location southcentralus
@@ -244,7 +223,46 @@ New-AzureRmResourceGroupDeployment `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crossresourcegroupproperties.json
 ```
 
-Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+
+Azure CLI: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in zwei Ressourcengruppen im **gleichen Abonnement** Folgendes:
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+az group create --name $firstRG --location southcentralus
+az group create --name $secondRG --location eastus
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=tfstorage secondResourceGroup=$secondRG secondStorageLocation=eastus
+```
+
+Azure CLI: Verwenden Sie zum Bereitstellen von zwei Speicherkonten in **zwei Abonnements** Folgendes:
+
+```azurecli-interactive
+firstRG="primarygroup"
+secondRG="secondarygroup"
+
+firstSub="<first-subscription-id>"
+secondSub="<second-subscription-id>"
+
+az account set --subscription $secondSub
+az group create --name $secondRG --location eastus
+
+az account set --subscription $firstSub
+az group create --name $firstRG --location southcentralus
+
+az group deployment create \
+  --name ExampleDeployment \
+  --resource-group $firstRG \
+  --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/crosssubscription.json \
+  --parameters storagePrefix=storage secondResourceGroup=$secondRG secondStorageLocation=eastus secondSubscriptionID=$secondSub
+```
+
+Azure CLI: Verwenden Sie zum Testen, wie das **Ressourcengruppenobjekt** für die übergeordnete Vorlage, die Inlinevorlage und die verknüpfte Vorlage aufgelöst wird, Folgendes:
 
 ```azurecli-interactive
 az group create --name parentGroup --location southcentralus

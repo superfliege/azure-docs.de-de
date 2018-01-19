@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: chackdan
-ms.openlocfilehash: 0065874c2f992ad9c18f68303878fb580ee8b391
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e5dd1ebd290c950c7f2bda3dae088f3ee7f836fd
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-service-fabric-cluster-by-using-azure-resource-manager"></a>Erstellen eines Service Fabric-Clusters in Azure mithilfe von Azure Resource Manager 
 > [!div class="op_single_selector"]
@@ -362,7 +362,7 @@ Wir haben eine Reihe von Windows PowerShell-Skripts erstellt, um einige Schritte
 1. [Laden Sie die Skripts auf Ihren Computer herunter][sf-aad-ps-script-download].
 2. Klicken Sie mit der rechten Maustaste auf die ZIP-Datei, wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Entsperren**, und klicken Sie anschließend auf **Übernehmen**.
 3. Extrahieren Sie die ZIP-Datei.
-4. Führen Sie `SetupApplications.ps1` aus, und geben Sie „TenantId“, „ClusterName“ und „WebApplicationReplyUrl“ als Parameter an. Beispiel:
+4. Führen Sie `SetupApplications.ps1` aus, und geben Sie „TenantId“, „ClusterName“ und „WebApplicationReplyUrl“ als Parameter an. Beispiel: 
 
 ```powershell
     .\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html'
@@ -377,7 +377,7 @@ Die Mandanten-ID (TenantId) können Sie mithilfe des PowerShell-Befehls `Get-Azu
 
 https://&lt;Cluster-Domäne&gt;:19080/Explorer
 
-Sie werden aufgefordert, sich bei einem Konto anzumelden, das über Administratorrechte für den Azure AD-Mandanten verfügt. Nach der Anmeldung erstellt das Skript die Webanwendung und die native Anwendung, die Ihren Service Fabric-Cluster darstellen. Wenn Sie sich die Anwendungen des Mandanten im [klassischen Azure-Portal][azure-classic-portal] ansehen, sollten zwei neue Einträge angezeigt werden:
+Sie werden aufgefordert, sich bei einem Konto anzumelden, das über Administratorrechte für den Azure AD-Mandanten verfügt. Nach der Anmeldung erstellt das Skript die Webanwendung und die native Anwendung, die Ihren Service Fabric-Cluster darstellen. Wenn Sie sich die Anwendungen des Mandanten im [Azure-Portal][azure-portal] ansehen, sollten zwei neue Einträge angezeigt werden:
 
    * *Clustername*\_Cluster
    * *Clustername*\_Client
@@ -615,17 +615,22 @@ Falls Probleme auftreten und Sie kryptische Nachrichten erhalten, verwenden Sie 
 <a name="assign-roles"></a>
 
 ## <a name="assign-users-to-roles"></a>Zuweisen von Benutzern zu Rollen
-Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den von Service Fabric unterstützten Rollen zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator). Für die Rollenzuweisung können Sie das [klassische Azure-Portal][azure-classic-portal] verwenden.
+Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den von Service Fabric unterstützten Rollen zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator). Für die Rollenzuweisung können Sie das [Azure-Portal][azure-portal] verwenden.
 
-1. Navigieren Sie im Azure-Portal zu Ihrem Mandanten, und wählen Sie **Anwendungen** aus.
-2. Wählen Sie die Webanwendung aus. Diese besitzt einen Namen wie `myTestCluster_Cluster`.
-3. Klicken Sie auf die Registerkarte **Benutzer** .
-4. Wählen Sie einen zuzuweisenden Benutzer aus, und klicken Sie anschließend am unteren Bildschirmrand auf die Schaltfläche **Zuweisen**.
+1. Wählen Sie im Azure-Portal rechts oben Ihren Mandanten aus.
 
-    ![Schaltfläche „Benutzer zu Rollen zuweisen“][assign-users-to-roles-button]
-5. Wählen Sie die Rolle aus, die dem Benutzer zugewiesen werden soll.
+    ![Schaltfläche zur Auswahl des Mandanten][select-tenant-button]
+2. Wählen Sie auf der Registerkarte links **Azure Active Directory** aus, und klicken Sie dann auf „Unternehmensanwendungen“.
+3. Wählen Sie „Alle Anwendungen“ aus, und suchen Sie dann nach einer Webanwendung mit einem Namen wie `myTestCluster_Cluster`. Wählen Sie die Webanwendung aus.
+4. Klicken Sie auf die Registerkarte **Benutzer und Gruppen**.
 
-    ![Dialogfeld „Benutzer zuweisen“][assign-users-to-roles-dialog]
+    ![Registerkarte „Benutzer und Gruppen“][users-and-groups-tab]
+5. Klicken Sie auf der neuen Seite auf die Schaltfläche **Benutzer hinzufügen**, wählen Sie einen Benutzer und die zuzuweisende Rolle aus, und klicken Sie dann unten auf der Seite auf die Schaltfläche **Auswählen**.
+
+    ![Seite zum Zuweisen von Benutzern zu Rollen][assign-users-to-roles-page]
+6. Klicken Sie unten auf der Seite auf die Schaltfläche **Zuweisen**.
+
+    ![Bestätigung der Zuweisung][assign-users-to-roles-confirm]
 
 > [!NOTE]
 > Weitere Informationen zu Rollen in Service Fabric finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](service-fabric-cluster-security-roles.md).
@@ -665,7 +670,7 @@ Wenn Sie versuchen, sich in Service Fabric Explorer bei Azure AD anzumelden, wir
 Die Cluster(web)anwendung für Service Fabric Explorer versucht, sich bei Azure AD zu authentifizieren, und gibt im Rahmen der Anforderung die Rückgabe-URL für die Umleitung an. Die URL ist jedoch nicht in der Liste **ANTWORT-URL** der Azure AD-Anwendung enthalten.
 
 #### <a name="solution"></a>Lösung
-Fügen Sie auf der Registerkarte **Konfigurieren** der Cluster(web)anwendung die URL von Service Fabric Explorer der Liste **ANTWORT-URL** hinzu, oder ersetzen Sie eines der Elemente in der Liste. Speichern Sie anschließend Ihre Änderung.
+Klicken Sie auf der AAD-Seite auf „App-Registrierungen“, wählen Sie Ihre Clusteranwendung aus, und klicken Sie dann auf die Schaltfläche **Antwort-URLs**. Fügen Sie auf der Seite „Antwort-URLs“ die URL von Service Fabric Explorer zur Liste hinzu, oder ersetzen Sie eines der Elemente in der Liste. Speichern Sie anschließend Ihre Änderung.
 
 ![Antwort-URL für Webanwendung][web-application-reply-url]
 
@@ -690,10 +695,10 @@ Sie verfügen jetzt über einen sicheren Cluster, für den Azure Active Director
 
 <!-- Links -->
 [azure-powershell]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
-[azure-CLI]:https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
+[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest
 [key-vault-get-started]:../key-vault/key-vault-get-started.md
 [aad-graph-api-docs]:https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog
-[azure-classic-portal]: https://portal.azure.com/
+[azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]: ../active-directory/active-directory-howto-tenant.md
 [service-fabric-visualizing-your-cluster]: service-fabric-visualizing-your-cluster.md
@@ -703,13 +708,15 @@ Sie verfügen jetzt über einen sicheren Cluster, für den Azure Active Director
 [service-fabric-secure-cluster-5-node-1-nodetype]: https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure
 [resource-group-template-deploy]: https://azure.microsoft.com/documentation/articles/resource-group-template-deploy/
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
-[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#Create-a-Service-Fabric-cluster- Resource-Manager-template
+[customize-your-cluster-template]: service-fabric-cluster-creation-via-arm.md#create-a-service-fabric-cluster-resource-manager-template
 
 <!-- Images -->
 [cluster-security-arm-dependency-map]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-arm-dependency-map.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
-[assign-users-to-roles-button]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-button.png
-[assign-users-to-roles-dialog]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles.png
+[select-tenant-button]: ./media/service-fabric-cluster-creation-via-arm/select-tenant-button.png
+[users-and-groups-tab]: ./media/service-fabric-cluster-creation-via-arm/users-and-groups-tab.png
+[assign-users-to-roles-page]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-page.png
+[assign-users-to-roles-confirm]: ./media/service-fabric-cluster-creation-via-arm/assign-users-to-roles-confirm.png
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-via-arm/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-via-arm/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-via-arm/web-application-reply-url.png

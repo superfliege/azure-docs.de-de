@@ -13,16 +13,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.openlocfilehash: 2f8691b0aadbd97e87996c2683849a6db3b74618
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d66b5aa4eb2ad90596dfe9e26bbc18996c967295
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurieren von Anmeldeinformationen für die Azure App Service-Bereitstellung
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) unterstützt zwei Arten von Anmeldeinformationen für [lokale Git-Bereitstellungen](app-service-deploy-local-git.md) und [FTP/S-Bereitstellungen](app-service-deploy-ftp.md). Diese sind nicht identisch mit Ihren Azure Active Directory-Anmeldeinformationen.
 
-* **Anmeldeinformationen auf Benutzerebene**: ein Satz von Anmeldeinformationen für das gesamte Azure-Konto. Hiermit können Sie App Service für alle Apps in allen Abonnements bereitstellen, für die das Azure-Konto über Zugriffsberechtigungen verfügt. Dies ist der Standardsatz von Anmeldeinformationen, den Sie in **App Services** > **&lt;App-Name>** > **Anmeldeinformationen für Bereitstellung** konfigurieren. Dies ist auch der Standardsatz, der in der Portal-GUI angezeigt wird (z.B. **Übersicht** und **Eigenschaften** auf dem [Ressourcenblatt](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App).
+* **Anmeldeinformationen auf Benutzerebene**: ein Satz von Anmeldeinformationen für das gesamte Azure-Konto. Hiermit können Sie App Service für alle Apps in allen Abonnements bereitstellen, für die das Azure-Konto über Zugriffsberechtigungen verfügt. Dies ist der Standardsatz von Anmeldeinformationen, den Sie in **App Services** > **&lt;App-Name>** > **Anmeldeinformationen für Bereitstellung** konfigurieren. Dies ist auch der Standardsatz, der auf der Benutzeroberfläche des Portals angezeigt wird (z.B. **Übersicht** und **Eigenschaften** auf der [Ressourcenseite](../azure-resource-manager/resource-group-portal.md#manage-resources) Ihrer App).
 
     > [!NOTE]
     > Beim Delegieren des Zugriffs auf Azure-Ressourcen über die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) oder Co-Administratorberechtigungen kann jeder Azure-Benutzer, dem Zugriff auf eine App gewährt wird, seine eigenen Anmeldeinformationen auf Benutzerebene nutzen, bis der Zugriff aufgehoben wird. Diese Anmeldeinformationen für die Bereitstellung dürfen nicht mit anderen Azure-Benutzer geteilt werden.
@@ -38,14 +38,14 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="userscope"></a>Festlegen und Zurücksetzen der Anmeldeinformationen auf Benutzerebene
 
-Sie können die Anmeldeinformationen auf Benutzerebene auf dem [Ressourcenblatt](../azure-resource-manager/resource-group-portal.md#manage-resources) einer App konfigurieren. Unabhängig von der App, in der Sie diese Anmeldeinformationen konfigurieren, gelten sie für alle Apps und für alle Abonnements in Ihrem Azure-Konto. 
+Sie können die Anmeldeinformationen auf Benutzerebene auf der [Ressourcenseite](../azure-resource-manager/resource-group-portal.md#manage-resources) einer App konfigurieren. Unabhängig von der App, in der Sie diese Anmeldeinformationen konfigurieren, gelten sie für alle Apps und für alle Abonnements in Ihrem Azure-Konto. 
 
 So konfigurieren Sie die Anmeldeinformationen auf Benutzerebene
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf „App Service“ >  **&lt;eine_App>** > **Anmeldeinformationen für Bereitstellung**.
 
     > [!NOTE]
-    > Im Portal muss mindestens eine App vorhanden sein, bevor Sie auf das Blatt mit den Anmeldeinformationen für die Bereitstellung zugreifen können. Mit der [Azure-CLI](/cli/azure/webapp/deployment/user#set) können Sie die Anmeldeinformationen auf Benutzerebene jedoch ohne eine vorhandene App konfigurieren.
+    > Im Portal muss mindestens eine App vorhanden sein, bevor Sie auf die Seite mit den Anmeldeinformationen für die Bereitstellung zugreifen können. Mit der [Azure-CLI](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az_webapp_deployment_user_set) können Sie die Anmeldeinformationen auf Benutzerebene jedoch ohne eine vorhandene App konfigurieren.
 
 2. Konfigurieren Sie den Benutzernamen und das Kennwort, und klicken Sie dann auf **Speichern**.
 

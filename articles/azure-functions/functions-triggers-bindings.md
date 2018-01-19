@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Triggern und Bindungen in Azure Functions
+title: Trigger und Bindungen in Azure Functions
 description: "Erfahren Sie, wie Sie Trigger und Bindungen in Azure Functions verwenden, um die Verbindung Ihrer Codeausführung mit Onlineereignissen und cloudbasierten Diensten herzustellen."
 services: functions
 documentationcenter: na
@@ -15,24 +15,27 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: e3413c9e1055ca9198dae4a467bcf47372ad4ecb
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: a122271b5fdffd9db33a7dca5908e15f002041d7
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Konzepte für Azure Functions-Trigger und -Bindungen
-Azure Functions ermöglicht Ihnen das Schreiben von Code, in dem über *Trigger* und *Bindungen* auf Ereignisse in Azure und anderen Diensten reagiert wird. Dieser Artikel ist eine konzeptionelle Übersicht über Trigger und Bindungen für alle unterstützten Programmiersprachen. Hier sind die Funktionen beschrieben, die für alle Bindungen identisch sind.
+
+Dieser Artikel ist eine konzeptionelle Übersicht über Trigger und Bindungen in Azure Functions. Hier werden die Funktionen beschrieben, die für alle Bindungen und alle unterstützten Sprachen identisch sind.
 
 ## <a name="overview"></a>Übersicht
 
-Trigger und Bindungen sind eine deklarative Möglichkeit, zu definieren, wie eine Funktion aufgerufen wird und mit welchen Daten sie arbeitet. Ein *Trigger* definiert, wie eine Funktion aufgerufen wird. Eine Funktion darf nur einen Trigger haben. Trigger haben zugeordnete Daten, in üblicherweise mit der Nutzlast identisch sind, von der die Funktion ausgelöst wurde.
+Ein *Trigger* definiert, wie eine Funktion aufgerufen wird. Eine Funktion darf nur einen Trigger haben. Trigger haben zugeordnete Daten, in üblicherweise mit der Nutzlast identisch sind, von der die Funktion ausgelöst wurde.
 
-Eingabe- und Ausgabe-*Bindungen* bieten eine deklarative Möglichkeit, aus Code heraus Verbindungen mit Daten herzustellen. Ähnlich zu Triggern geben Sie Verbindungszeichenfolgen und andere Eigenschaften in der Konfiguration Ihrer jeweiligen Funktion an. Bindungen sind optional, und eine Funktion kann mehrere Eingabe- und Ausgabebindungen haben. 
+Eingabe- und Ausgabe-*Bindungen* bieten eine deklarative Möglichkeit, aus Code heraus Verbindungen mit Daten herzustellen. Bindungen sind optional, und eine Funktion kann mehrere Eingabe- und Ausgabebindungen haben. 
 
-Durch Verwenden von Triggern und Bindungen können Sie Code schreiben, der allgemeiner ist und in dem die Details der Dienste, mit denen er interagiert, nicht hartcodiert sind. Daten, die von Diensten stammen, werden schlicht Eingabewerte für Ihren Funktionscode. Um Daten an einen anderen Dienst auszugeben (z. B. Erstellen einer neuen Zeile in Azure Table Storage), verwenden Sie den Rückgabewert der Methode. Sie können aber auch, wenn Sie mehrere Werte ausgeben müssen, ein Hilfsobjekt verwenden. Trigger und Bindungen haben die **name**-Eigenschaft, die ein Bezeichner ist, den Sie in Ihrem Code verwenden, um auf die jeweilige die Bindung zuzugreifen.
+Mithilfe von Triggern und Bindungen können Sie die Hartcodierung der Informationen zu den Diensten vermeiden, mit denen Sie arbeiten. Ihre Funktion empfängt Daten (z.B. den Inhalt einer Warteschlangennachricht) in Funktionsparametern. Sie senden Daten (z.B. um eine Warteschlangennachricht zu erstellen), indem Sie den Rückgabewert der Funktion, einen `out`-Parameter oder ein [Sammlerobjekt](functions-reference-csharp.md#writing-multiple-output-values) verwenden.
 
-Sie können Trigger und Bindungen im Azure Functions-Portal auf der Registerkarte **Integrieren** konfigurieren. Im Hintergrund ändert die Benutzeroberfläche eine Datei namens *function.json* im Verzeichnis für Funktionen. Sie können diese Datei bearbeiten, indem Sie zu **Erweiterter Editor** wechseln.
+Wenn Sie Funktionen mithilfe des Azure-Portals entwickeln, werden Trigger und Bindungen in einer *function.json*-Datei konfiguriert. Das Portal stellt eine Benutzeroberfläche für diese Konfiguration zur Verfügung, Sie können die Datei jedoch direkt bearbeiten, indem Sie in den **erweiterten Editor** wechseln.
+
+Wenn Sie beim Entwickeln von Funktionen Visual Studio verwenden, um eine Klassenbibliothek zu erstellen, konfigurieren Sie Trigger und Bindungen, indem Sie Methoden und Parameter mit Attributen ausstatten.
 
 ## <a name="supported-bindings"></a>Unterstützte Bindungen
 
@@ -42,66 +45,9 @@ Informationen darüber, welche Bindungen sich in der Vorschauversion befinden od
 
 ## <a name="example-queue-trigger-and-table-output-binding"></a>Beispiel: Triggerwarteschlange und Tabellenausgabebindung
 
-Angenommen, Sie möchten immer dann eine neue Zeile in Azure Table Storage schreiben, wenn in Azure Queue Storage eine neue Nachricht eingetroffen ist. Dieses Szenario kann mit einem Azure-Warteschlangentrigger und einer Azure Table Storage-Ausgabebindung implementiert werden. 
+Ein Beispiel: Sie möchten immer dann eine neue Zeile in Azure Table Storage schreiben, wenn in Azure Queue Storage eine neue Nachricht eintrifft. Dieses Szenario kann mit einem Azure Queue Storage-Trigger und einer Azure Table Storage-Ausgabebindung implementiert werden. 
 
-Für einen Azure Queue Storage-Trigger sind die folgenden Informationen auf der Registerkarte **Integrieren** erforderlich:
-
-* Der Name der App-Einstellung, die die Azure Storage-Kontoverbindungszeichenfolge für Azure Queue Storage enthält
-* Der Name der Warteschlange
-* Der Bezeichner im Code, um den Inhalt der Warteschlangennachricht zu lesen, beispielsweise `order`
-
-Um in Azure Table Storage zu schreiben, verwenden Sie eine Ausgabebindung mit den folgenden Details:
-
-* Der Name der App-Einstellung, die die Azure Storage-Kontoverbindungszeichenfolge für Azure Table Storage enthält
-* Der Tabellenname
-* Der Bezeichner im Code, um Ausgabeelemente oder den Rückgabewert der Funktion zu erstellen
-
-Bindungen nutzen in den App-Einstellungen gespeicherte Verbindungszeichenfolgenwerte, um die bewährte Methode zu erzwingen, gemäß der *function.json* keine Dienstgeheimnisse, sondern nur die Namen der App-Einstellungen enthält.
-
-Verwenden Sie dann in Ihrem Code die Bezeichner, die Sie zum Einbinden von Azure Storage bereitgestellt haben.
-
-```cs
-#r "Newtonsoft.Json"
-
-using Newtonsoft.Json.Linq;
-
-// From an incoming queue message that is a JSON object, add fields and write to Table Storage
-// The method return value creates a new row in Table Storage
-public static Person Run(JObject order, TraceWriter log)
-{
-    return new Person() { 
-            PartitionKey = "Orders", 
-            RowKey = Guid.NewGuid().ToString(),  
-            Name = order["Name"].ToString(),
-            MobileNumber = order["MobileNumber"].ToString() };  
-}
- 
-public class Person
-{
-    public string PartitionKey { get; set; }
-    public string RowKey { get; set; }
-    public string Name { get; set; }
-    public string MobileNumber { get; set; }
-}
-```
-
-```javascript
-// From an incoming queue message that is a JSON object, add fields and write to Table Storage
-// The second parameter to context.done is used as the value for the new row
-module.exports = function (context, order) {
-    order.PartitionKey = "Orders";
-    order.RowKey = generateRandomId(); 
-
-    context.done(null, order);
-};
-
-function generateRandomId() {
-    return Math.random().toString(36).substring(2, 15) +
-        Math.random().toString(36).substring(2, 15);
-}
-```
-
-Es folgt die *function.json*-Datei, die dem obigen Code entspricht. Sie können jeweils dieselbe Konfiguration verwenden, unabhängig von der Sprache der Funktionsimplementierung.
+Hier sehen Sie eine *function.json*-Datei für dieses Szenario. 
 
 ```json
 {
@@ -123,9 +69,88 @@ Es folgt die *function.json*-Datei, die dem obigen Code entspricht. Sie können 
   ]
 }
 ```
+
+Das erste Element im Array `bindings` ist der Queue Storage-Trigger. Die Eigenschaften `type` und `direction` identifizieren den Trigger. Die Eigenschaft `name` identifiziert den Funktionsparameter, der den Inhalt der Warteschlangennachricht empfangen wird. Der Name der zu überwachenden Warteschlange befindet sich in `queueName`, und die Verbindungszeichenfolge befindet sich in der App-Einstellung, die durch `connection` festgelegt ist.
+
+Das zweite Element im Array `bindings` ist die Azure Table Storage-Ausgabebindung. Die Eigenschaften `type` und `direction` identifizieren die Bindung. Die Eigenschaft `name` gibt an, wie die Funktion die neue Tabellenzeile bereitstellt. In diesem Fall wird der Rückgabewert der Funktion verwendet. Der Name der Tabelle befindet sich in `tableName`, und die Verbindungszeichenfolge befindet sich in der App-Einstellung, die durch `connection` festgelegt ist.
+
 Wenn Sie den Inhalt von *function.json* im Azure-Portal anzeigen und bearbeiten möchten, klicken Sie für die Funktion auf der Registerkarte **Integrieren** auf die Option **Erweiterter Editor**.
 
-Weitere Codebeispiele sowie Informationen zum Einbeziehen von Azure Storage finden Sie unter [Trigger und Bindungen für Azure Storage in Azure Functions](functions-bindings-storage.md).
+> [!NOTE]
+> Beim Wert von `connection` handelt es sich nicht um die Verbindungszeichenfolge selbst, sondern um den Namen einer App-Einstellung, die die Verbindungszeichenfolge enthält. In Bindungen werden Verbindungszeichenfolgen in App-Einstellungen gespeichert, damit sichergestellt ist, dass *function.json* keine Geheimnisse eines Diensts enthält.
+
+Folgender C#-Skriptcode arbeitet mit Triggern und Bindungen. Beachten Sie, dass der Parameter `order` den Inhalt der Warteschlangennachricht bereitstellt. Dieser Name ist erforderlich, da der Eigenschaftswert `name` in *function.json* `order` lautet. 
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json.Linq;
+
+// From an incoming queue message that is a JSON object, add fields and write to Table storage
+// The method return value creates a new row in Table Storage
+public static Person Run(JObject order, TraceWriter log)
+{
+    return new Person() { 
+            PartitionKey = "Orders", 
+            RowKey = Guid.NewGuid().ToString(),  
+            Name = order["Name"].ToString(),
+            MobileNumber = order["MobileNumber"].ToString() };  
+}
+ 
+public class Person
+{
+    public string PartitionKey { get; set; }
+    public string RowKey { get; set; }
+    public string Name { get; set; }
+    public string MobileNumber { get; set; }
+}
+```
+
+Die gleiche function.json-Datei kann mit einer JavaScript-Funktion verwendet werden:
+
+```javascript
+// From an incoming queue message that is a JSON object, add fields and write to Table Storage
+// The second parameter to context.done is used as the value for the new row
+module.exports = function (context, order) {
+    order.PartitionKey = "Orders";
+    order.RowKey = generateRandomId(); 
+
+    context.done(null, order);
+};
+
+function generateRandomId() {
+    return Math.random().toString(36).substring(2, 15) +
+        Math.random().toString(36).substring(2, 15);
+}
+```
+
+In einer Klassenbibliothek werden die gleichen Trigger- und Bindungsinformationen – Warteschlangen- und Tabellennamen, Speicherkonten sowie Funktionsparameter für Ein- und Ausgabe – durch Attribute bereitgestellt:
+
+```csharp
+ public static class QueueTriggerTableOutput
+ {
+     [FunctionName("QueueTriggerTableOutput")]
+     [return: Table("outTable", Connection = "MY_TABLE_STORAGE_ACCT_APP_SETTING")]
+     public static Person Run(
+         [QueueTrigger("myqueue-items", Connection = "MY_STORAGE_ACCT_APP_SETTING")]JObject order, 
+         TraceWriter log)
+     {
+         return new Person() {
+                 PartitionKey = "Orders",
+                 RowKey = Guid.NewGuid().ToString(),
+                 Name = order["Name"].ToString(),
+                 MobileNumber = order["MobileNumber"].ToString() };
+     }
+ }
+
+ public class Person
+ {
+     public string PartitionKey { get; set; }
+     public string RowKey { get; set; }
+     public string Name { get; set; }
+     public string MobileNumber { get; set; }
+ }
+```
 
 ## <a name="binding-direction"></a>Bindungsrichtung
 
@@ -135,9 +160,11 @@ Alle Trigger und Bindungen enthalten eine `direction`-Eigenschaft in der Datei *
 - Für Eingabe- und Ausgabebindungen werden `in` und `out` verwendet.
 - Einige Bindungen unterstützen die spezielle Richtung `inout`. Wenn Sie `inout` verwenden, ist nur **Erweiterter Editor** auf der Registerkarte **Integrieren** verfügbar.
 
+Wenn Sie zum Konfigurieren von Triggern und Bindungen [Attribute in einer Klassenbibliothek](functions-dotnet-class-library.md) verwenden, wird die Richtung in einem Attributkonstruktor angegeben oder aus dem Parametertyp abgeleitet.
+
 ## <a name="using-the-function-return-type-to-return-a-single-output"></a>Verwenden des Funktionsrückgabetyps, um eine einzelne Ausgabe zurückzugeben
 
-Im vorhergehenden Beispiel wird gezeigt, wie der Funktionsrückgabewert verwendet wird, um Ausgabe für eine Bindung bereitzustellen, wozu der spezielle Namensparameter `$return` verwendet wird. (Dies wird nur in Sprachen unterstützt, die Rückgabewerte haben, z. B. C#, JavaScript und F#.) Hat eine Funktion mehrere Ausgabebindungen, verwenden Sie `$return` nur für eine der Ausgabebindungen. 
+Im vorhergehenden Beispiel wird gezeigt, wie der Funktionsrückgabewert verwendet wird, um eine Ausgabe für eine Bindung bereitzustellen, die in *function.json* durch den speziellen Wert `$return` für die Eigenschaft `name` festgelegt ist. (Dies wird nur in Sprachen unterstützt, die Rückgabewerte haben, z.B. C#, JavaScript und F#.) Hat eine Funktion mehrere Ausgabebindungen, verwenden Sie `$return` nur für eine der Ausgabebindungen. 
 
 ```json
 // excerpt of function.json
@@ -190,9 +217,9 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 ## <a name="binding-datatype-property"></a>Binden der „dataType“-Eigenschaft
 
-Verwenden Sie die Typen in .NET, um den Datentyp für die Eingabedaten zu definieren. Verwenden Sie zum Beispiel `string`, um eine Bindung mit dem Text eines Warteschlangentriggers zu erstellen – einem Bytearray zum Lesen im Binärformat und einem benutzerdefinierten Typ zum Deserialisieren in einem POCO-Objekt.
+Verwenden Sie in .NET den Parametertyp, um den Datentyp für die Eingabedaten zu definieren. Verwenden Sie zum Beispiel `string`, um eine Bindung mit dem Text eines Warteschlangentriggers zu erstellen – einem Bytearray zum Lesen im Binärformat und einem benutzerdefinierten Typ zum Deserialisieren in einem POCO-Objekt.
 
-Für dynamisch typisierte Sprachen wie JavaScript verwenden Sie die `dataType`-Eigenschaft in der Bindungsdefinition. Um beispielsweise den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, verwenden Sie den Typ `binary`:
+Für dynamisch typisierte Sprachen wie JavaScript verwenden Sie die Eigenschaft `dataType` in der *function.json*-Datei. Um z.B. den Inhalt einer HTTP-Anforderung im Binärformat zu lesen, legen Sie `dataType` auf `binary` fest:
 
 ```json
 {
@@ -206,6 +233,7 @@ Für dynamisch typisierte Sprachen wie JavaScript verwenden Sie die `dataType`-E
 Andere Optionen für `dataType` sind `stream` und `string`.
 
 ## <a name="resolving-app-settings"></a>Auflösen von App-Einstellungen
+
 Es hat sich bewährt, Geheimnisse und Verbindungszeichenfolgen nicht in Konfigurationsdateien, sondern über App-Einstellungen zu verwalten. Dies schränkt den Zugriff auf diese Geheimnisse ein und bewirkt, dass es hinsichtlich der Sicherheit unbedenklich ist, *function.json* in einem öffentlichen Quellcodeverwaltungs-Repository zu speichern.
 
 App-Einstellungen sind auch nützlich, wenn Sie die jeweilige Konfiguration entsprechend der Umgebung ändern möchten. Beispielsweise kann es sein, dass Sie in einer Testumgebung eine andere Warteschlange oder einen anderen Blob Storage-Container überwachen möchten.
@@ -228,6 +256,18 @@ Im folgenden Beispiel ist ein Azure Queue Storage-Trigger gezeigt, in dem die Ap
 }
 ```
 
+Sie können den gleichen Ansatz auch in Klassenbibliotheken verwenden:
+
+```csharp
+[FunctionName("QueueTrigger")]
+public static void Run(
+    [QueueTrigger("%input-queue-name%")]string myQueueItem, 
+    TraceWriter log)
+{
+    log.Info($"C# Queue trigger function processed: {myQueueItem}");
+}
+```
+
 ## <a name="trigger-metadata-properties"></a>Metadateneigenschaften von Triggern
 
 Viele Trigger stellen zusätzlich zur Datennutzlast (z. B. die Warteschlangennachricht, von der eine Funktion ausgelöst wurde) weitere Metadatenwerte bereit. Diese Werte können als Eingabeparameter in C# und F# oder als Eigenschaften für das `context.bindings`-Objekt in JavaScript verwendet werden. 
@@ -237,14 +277,12 @@ Beispielsweise unterstützt ein Azure Queue Storage-Trigger die folgenden Eigens
 * QueueTrigger – Auslösen von Nachrichteninhalt, wenn gültige Zeichenfolge
 * DequeueCount
 * ExpirationTime
-* ID
+* id
 * InsertionTime
 * NextVisibleTime
 * PopReceipt
 
-Details der Metadateneigenschaften für jeden Trigger sind im entsprechenden Referenzthema beschrieben. Dokumentation ist auch im Portal auf der Registerkarte **Integrieren** im Abschnitt **Dokumentation** verfügbar, der sich unter dem Bereich für Bindungskonfigurationen befindet.  
-
-Da Blobtrigger einige Verzögerungen haben, können Sie beispielsweise einen Warteschlangentrigger verwenden, um Ihre Funktion auszuführen (siehe [Blob Storage-Trigger](functions-bindings-storage-blob.md#trigger)). Die Warteschlangennachricht würde den Namen der Blobdatei enthalten, für die ausgelöst werden soll. Durch Verwenden der `queueTrigger`-Metadateneigenschaft können Sie dieses Verhalten vollständig in Ihrer Konfiguration statt in Ihrem Code angeben.
+Der Zugriff auf diese Metadatenwerte ist über die *function.json*-Dateieigenschaften möglich. Angenommen, Sie verwenden einen Warteschlangentrigger und die Warteschlangennachricht enthält den Namen eines Blobs, den Sie lesen möchten. In der *function.json*-Datei können Sie die Metadateneigenschaft `queueTrigger` in der Blobeigenschaft `path` verwenden, wie im folgenden Beispiel gezeigt:
 
 ```json
   "bindings": [
@@ -264,13 +302,13 @@ Da Blobtrigger einige Verzögerungen haben, können Sie beispielsweise einen War
   ]
 ```
 
-Metadateneigenschaften von einem Trigger können auch in einem *Bindungsausdruck* für eine andere Bindung verwendet werden, wie dies im folgenden Abschnitt beschrieben ist.
+Details der Metadateneigenschaften für jeden Trigger sind im entsprechenden Referenzartikel beschrieben. Ein Beispiel finden Sie unter [Warteschlangentrigger-Metadaten](functions-bindings-storage-queue.md#trigger---message-metadata). Dokumentation ist auch im Portal auf der Registerkarte **Integrieren** im Abschnitt **Dokumentation** verfügbar, der sich unter dem Bereich für Bindungskonfigurationen befindet.  
 
 ## <a name="binding-expressions-and-patterns"></a>Bindungsausdrücke und Muster
 
-Eines der leistungsstärksten Merkmale von Triggern und Bindungen sind *Bindungsausdrücke*. In einer Bindung können Sie Musterausdrücke definieren, die dann in anderen Bindungen oder in Code verwendet werden können. Triggermetadaten können auch in Bindungsausdrücken verwendet werden, wie dies im Beispiel im vorherigen Abschnitt gezeigt ist.
+Eines der leistungsstärksten Merkmale von Triggern und Bindungen sind *Bindungsausdrücke*. In der Konfiguration für eine Bindung können Sie Musterausdrücke definieren, die dann in anderen Bindungen oder in Code verwendet werden können. Triggermetadaten können auch in Bindungsausdrücken verwendet werden, wie im vorherigen Abschnitt gezeigt.
 
-Angenommen, Sie möchten die Größe der Bilder in einem bestimmte Blob Storage-Container ähnlich ändern wie mit der Vorlage für Bildgrößenänderung (**Image Resizer**) auf der Seite **Neue Funktion**. Wechseln Sie zu **Neue Funktion** -> Sprache **C#** -> Szenario **Beispiele** -> **ImageResizer-CSharp**. 
+Angenommen, Sie möchten die Größe der Bilder in einem bestimmten Blobspeichercontainer ähnlich ändern wie mit der Vorlage für Bildgrößenänderung (**Image Resizer**) auf der Seite **Neue Funktion** des Azure-Portals (siehe das Szenario **Beispiele**). 
 
 So sieht die *function.json*-Definition aus:
 
@@ -295,7 +333,7 @@ So sieht die *function.json*-Definition aus:
 }
 ```
 
-Beachten Sie, dass der `filename`-Parameter sowohl in der Definition des Blobtriggers als auch in der Blob-Ausgabebindung verwendet wird. Dieser Parameter kann auch in Funktionscode verwendet werden.
+Beachten Sie, dass der Parameter `filename` sowohl in der Definition des Blobtriggers als auch in der Blobausgabebindung verwendet wird. Dieser Parameter kann auch in Funktionscode verwendet werden.
 
 ```csharp
 // C# example of binding to {filename}
@@ -309,9 +347,41 @@ public static void Run(Stream image, string filename, Stream imageSmall, TraceWr
 <!--TODO: add JavaScript example -->
 <!-- Blocked by bug https://github.com/Azure/Azure-Functions/issues/248 -->
 
+Sie haben auch die Möglichkeit, Bindungsausdrücke und -muster für Attribute in Klassenbibliotheken zu verwenden. Hier ist z.B. eine Funktion zur Bildgrößenänderung in einer Klassenbibliothek:
 
-### <a name="random-guids"></a>Zufällige GUIDs
-Azure Functions bietet über den `{rand-guid}`-Bindungsausdruck eine benutzerfreundliche Syntax zum Generieren von GUIDs. Im folgenden Beispiel wird dies verwendet, um einen eindeutigen Blobnamen zu generieren: 
+```csharp
+[FunctionName("ResizeImage")]
+[StorageAccount("AzureWebJobsStorage")]
+public static void Run(
+    [BlobTrigger("sample-images/{name}")] Stream image, 
+    [Blob("sample-images-sm/{name}", FileAccess.Write)] Stream imageSmall, 
+    [Blob("sample-images-md/{name}", FileAccess.Write)] Stream imageMedium)
+{
+    var imageBuilder = ImageResizer.ImageBuilder.Current;
+    var size = imageDimensionsTable[ImageSize.Small];
+
+    imageBuilder.Build(image, imageSmall,
+        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+
+    image.Position = 0;
+    size = imageDimensionsTable[ImageSize.Medium];
+
+    imageBuilder.Build(image, imageMedium,
+        new ResizeSettings(size.Item1, size.Item2, FitMode.Max, null), false);
+}
+
+public enum ImageSize { ExtraSmall, Small, Medium }
+
+private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dictionary<ImageSize, (int, int)>() {
+    { ImageSize.ExtraSmall, (320, 200) },
+    { ImageSize.Small,      (640, 400) },
+    { ImageSize.Medium,     (800, 600) }
+};
+```
+
+### <a name="create-guids"></a>Erstellen von GUIDs
+
+Der Bindungsausdruck `{rand-guid}` erstellt eine GUID. Im folgenden Beispiel wird eine GUID verwendet, um einen eindeutigen Blobnamen zu generieren: 
 
 ```json
 {
@@ -324,7 +394,7 @@ Azure Functions bietet über den `{rand-guid}`-Bindungsausdruck eine benutzerfre
 
 ### <a name="current-time"></a>Die aktuelle Zeit
 
-Sie können den Bindungsausdruck `DateTime` verwenden, der in `DateTime.UtcNow` aufgelöst wird.
+Der Bindungsausdruck `DateTime` wird in `DateTime.UtcNow` aufgelöst.
 
 ```json
 {
@@ -335,7 +405,7 @@ Sie können den Bindungsausdruck `DateTime` verwenden, der in `DateTime.UtcNow` 
 }
 ```
 
-## <a name="bind-to-custom-input-properties-in-a-binding-expression"></a>Binden an benutzerdefinierte Eingabeeigenschaften in einem Bindungsausdruck
+## <a name="bind-to-custom-input-properties"></a>Binden an benutzerdefinierte Eingabeeigenschaften
 
 In Bindungsausdrücken kann auch auf Eigenschaften verwiesen werden, die in der Triggernutzlast definiert sind. Beispielsweise könnte es sein, dass Sie über einen Dateinamen, der in einem Webhook bereitgestellt wird, ein dynamisches Binden an eine Blob Storage-Datei vornehmen möchten.
 
@@ -408,9 +478,14 @@ module.exports = function (context, info) {
 
 ## <a name="configuring-binding-data-at-runtime"></a>Konfigurieren von Bindungsdaten zur Laufzeit
 
-In C# und anderen .NET-Sprachen können Sie ein imperatives Bindungsmuster verwenden, im Gegensatz zu den deklarativen Bindungen in *function.json*. Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Weitere Informationen finden Sie in der C#-Referenz für Entwickler unter [Bindung zur Laufzeit durch imperative Bindungen](functions-reference-csharp.md#imperative-bindings).
+In C# und anderen .NET-Sprachen können Sie ein imperatives Bindungsmuster verwenden, im Gegensatz zu den deklarativen Bindungen in *function.json* und Attributen. Imperative Bindung eignet sich, wenn Bindungsparameter zur Laufzeit statt zur Entwurfszeit berechnet werden müssen. Weitere Informationen finden Sie in der C#-Referenz für Entwickler unter [Bindung zur Laufzeit durch imperative Bindungen](functions-reference-csharp.md#imperative-bindings).
+
+## <a name="functionjson-file-schema"></a>function.json-Dateischema
+
+Das *function.json*-Dateischema finden Sie unter [http://json.schemastore.org/function](http://json.schemastore.org/function).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zu einer bestimmten Bindung finden Sie in den folgenden Artikeln:
 
 - [HTTP und Webhooks](functions-bindings-http-webhook.md)
@@ -420,7 +495,7 @@ Weitere Informationen zu einer bestimmten Bindung finden Sie in den folgenden Ar
 - [Table Storage](functions-bindings-storage-table.md)
 - [Event Hub](functions-bindings-event-hubs.md)
 - [Service Bus](functions-bindings-service-bus.md)
-- [Azure Cosmos DB](functions-bindings-documentdb.md)
+- [Azure Cosmos DB](functions-bindings-cosmosdb.md)
 - [Microsoft Graph](functions-bindings-microsoft-graph.md)
 - [SendGrid](functions-bindings-sendgrid.md)
 - [Twilio](functions-bindings-twilio.md)

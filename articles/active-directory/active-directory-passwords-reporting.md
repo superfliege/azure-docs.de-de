@@ -1,5 +1,5 @@
 ---
-title: 'Berichterstellung: Azure AD SSPR | Microsoft-Dokumentation'
+title: "Berichte der Self-Service-Kennwortzurücksetzung – Azure Active Directory"
 description: "Berichterstellung zu Ereignissen der Self-Service-Kennwortzurücksetzung von Azure AD"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 1d27dd77547c62a3c2f77aeba214f05326c9cab4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c1f8beaf73bfa424c9a5c86df430822b5626282b
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -64,6 +64,12 @@ Die Art und Weise, wie Aktivitäten zur Kennwortzurücksetzung und zur Registrie
 
 Die API für Azure AD-Berichte und -Ereignisse unterstützt das Abrufen aller Informationen, die in Berichten zu Kennwortzurücksetzung und zu Registrierung für die Kennwortzurücksetzung enthalten sind. Mithilfe dieser API können Sie einzelne Ereignisse zur Kennwortzurücksetzung und zur Registrierung für die Kennwortzurücksetzung herunterladen und diese in die von Ihnen gewünschte Berichtstechnologie integrieren.
 
+> [!IMPORTANT]
+> Derzeit ruft die API für Azure AD-Berichte und -Ereignisse bis zu *75.000 Einzelereignisse* der Typen [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) und [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) ab. Die API berücksichtigt die letzten 30 Tage.
+> 
+> Wenn Sie weiter zurückliegende Daten abrufen oder speichern möchten, sollten Sie sie in einer externen Datenbank speichern, indem Sie die API verwenden, um die resultierenden Deltas abzufragen. Es empfiehlt sich, dass Sie mit dem Abrufen dieser Daten beginnen, sobald Sie damit begonnen haben, SSPR in Ihrer Organisation zu verwenden. Speichern Sie die Daten extern, und gehen Sie dann so vor, dass Sie die Deltas ab diesem Zeitpunkt vorwärts verfolgen.
+>
+
 ### <a name="how-to-get-started-with-the-reporting-api"></a>Erste Schritte mit der Reporting-API
 
 Um auf diese Daten zuzugreifen, müssen Sie eine kleine Anwendung oder ein Skript schreiben, um die Daten von unseren Servern abzurufen. Weitere Informationen finden Sie unter [Erste Schritte mit der Berichterstellungs-API von Azure Active Directory](active-directory-reporting-api-getting-started.md).
@@ -72,12 +78,6 @@ Nachdem Sie ein funktionierendes Skript haben, sollten Sie sich mit den Kennwort
 
 * [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent): Listet die Spalten auf, die für Kennwortzurücksetzungsereignisse verfügbar sind.
 * [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent): Listet die Spalten auf, die für Ereignisse zum Registrieren der Kennwortzurücksetzung verfügbar sind.
-
-### <a name="reporting-api-data-retrieval-limitations"></a>Datenabrufeinschränkungen der Reporting-API
-
-Derzeit ruft die API für Azure AD-Berichte und -Ereignisse bis zu *75.000 Einzelereignisse* der Typen [SsprActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprActivityEvent) und [SsprRegistrationActivityEvent](https://msdn.microsoft.com/library/azure/mt126081.aspx#BKMK_SsprRegistrationActivityEvent) ab. Die API erstreckt sich über die *letzten 30 Tage*.
-
-Wenn Sie weiter zurückliegende Daten abrufen oder speichern möchten, sollten Sie sie in einer externen Datenbank speichern, indem Sie die API verwenden, um die resultierenden Deltas abzufragen. Es empfiehlt sich, dass Sie mit dem Abrufen dieser Daten beginnen, sobald Sie damit begonnen haben, SSPR in Ihrer Organisation zu verwenden. Speichern Sie die Daten extern, und gehen Sie dann so vor, dass Sie die Deltas ab diesem Zeitpunkt vorwärts verfolgen.
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Beschreibung der Berichtsspalten im Azure-Portal
 
@@ -203,7 +203,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * [Bereitstellen der Kennwortzurücksetzung ohne erforderliche Endbenutzerregistrierung](active-directory-passwords-data.md)
 * [Authentifizierungsmethoden](active-directory-passwords-how-it-works.md#authentication-methods)
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](active-directory-passwords-policy.md)
-* [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
+* [Übersicht über die Kennwortrückschreibung](active-directory-passwords-writeback.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)

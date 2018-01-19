@@ -15,31 +15,31 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: d1098ea7f7ab7765f9769dd2e398eb3b62c5557b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 009b909f9d92c6a21babffae3984be36a7682476
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Welche Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?
 
-Erfahren Sie mehr über die Komponenten und Versionen des Hadoop-Ökosystems in Azure HDInsight sowie über die Servicelevels Standard und Premium. Darüber hinaus erfahren Sie, wie Sie Hadoop-Komponentenversionen in HDInsight überprüfen. 
+Erfahren Sie mehr über die Komponenten und Versionen des Apache Hadoop-Ökosystems in Microsoft Azure HDInsight sowie über das Enterprise Security Package. Darüber hinaus erfahren Sie, wie Sie Hadoop-Komponentenversionen in HDInsight überprüfen. 
 
 Jede HDInsight-Version ist eine Cloud-Distribution von Hortonworks Data Platform (HDP).
 
 ## <a name="hadoop-components-available-with-different-hdinsight-versions"></a>Verfügbare Hadoop-Komponenten in verschiedenen Versionen von HDInsight
 Azure HDInsight unterstützt mehrere Hadoop-Clusterversionen, die jederzeit bereitgestellt werden können. Jede ausgewählte Version erstellt eine bestimmte Version der HDP-Distribution und eine Reihe von Komponenten innerhalb dieser Distribution. Ab dem 17. Februar 2017 ist die in Azure HDInsight derzeit als Standardclusterversion verwendete Version die Version 3.5, die auf HDP 2.5 basiert.
 
-Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der folgenden Tabelle aufgeführt. 
+Die den HDInsight-Clusterversionen zugeordneten Komponentenversionen sind in der folgenden Tabelle aufgeführt: 
 
 > [!NOTE]
 > Die Standardversion für den HDInsight-Dienst kann ohne vorherige Ankündigung geändert werden. Wenn eine Versionsabhängigkeit vorliegt, geben Sie die HDInsight-Version an, wenn Sie Ihrer Cluster mit dem .NET SDK mit Azure PowerShell und der Azure-Befehlszeilenschnittstelle erstellen.
 
-| Component | HDInsight 3.6 (Standard) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
+| Komponente | HDInsight 3.6 (Standard) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- |--- |
-| Hortonworks Data Platform |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2,0 |
+| Hortonworks Data Platform |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Apache Hadoop und YARN |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
 | Apache Tez |0.7.0 |0.7.0 |0.7.0 |0.7.0 |0.5.2 |0.4.0 |-|
 | Apache Pig |0.16.0 |0.16.0 |0.15.0 |0.15.0 |0.14.0 |0.12.1 |0.12.0 |
@@ -74,25 +74,79 @@ Für Windows-basierte Cluster besteht eine weitere Möglichkeit zum Prüfen von 
 In den [HDInsight-Versionshinweisen](hdinsight-release-notes.md) finden Sie zusätzliche Anmerkungen zu den aktuellen Versionen von HDInsight.
 
 ## <a name="supported-hdinsight-versions"></a>Unterstützte HDInsight-Versionen
-Die folgende Tabelle enthält die Versionen von HDInsight, die derzeit im Azure-Portal verfügbar sind. HDP-Versionen, die jeder HDInsight-Version entsprechen, werden zusammen mit der Produkt-Releasedaten aufgeführt. Der Ablauf der Unterstützung und die Deaktivierungstermine werden ebenfalls bereitgestellt, wenn sie bekannt sind.
+In den folgenden Tabellen sind die Versionen von HDInsight aufgeführt. HDP-Versionen, die jeder HDInsight-Version entsprechen, werden zusammen mit der Produkt-Releasedaten aufgeführt. Der Ablauf der Unterstützung und die Deaktivierungstermine werden ebenfalls bereitgestellt, wenn sie bekannt sind.
+
+### <a name="available-versions"></a>Verfügbare Versionen
+
+Die folgende Tabelle enthält die im Azure-Portal verfügbaren Versionen von HDInsight sowie Bereitstellungsmethoden wie z.B. PowerShell und .NET SDK.
+
+| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Die Verfügbarkeit im Azure-Portal | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4. April 2017 | | |Ja |Ja |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16.0.4 LTS |30. September 2016 |5. September 2017 |31. Mai 2018 |Ja |Ja |
+| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |2. Dezember 2015 |27. Juni 2016 |31. Juli 2018 |Ja |Nein  |
 
 > [!NOTE]
-> Nachdem die Unterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das klassische Microsoft Azure-Portal verfügbar. Clusterversionen stehen jedoch bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) und das .NET SDK zur Verfügung.
-> 
+> Nachdem die Unterstützung für eine Version abgelaufen ist, ist sie möglicherweise nicht mehr über das Microsoft Azure-Portal verfügbar. Clusterversionen stehen jedoch bis zum Zeitpunkt ihrer Deaktivierung weiterhin über den Parameter `Version` im Windows PowerShell-Befehl [New-AzureRmHDInsightCluster](https://msdn.microsoft.com/library/mt619331.aspx) und das .NET SDK zur Verfügung.
+>
+
+### <a name="retired-versions"></a>Eingestellte Versionen
+
+Die folgende Tabelle enthält die Versionen von HDInsight, die derzeit **nicht** im Azure-Portal verfügbar sind.
+
+| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Herausgabedatum | Supportablaufdatum | Deaktivierungstermin | Hochverfügbarkeit |  Die Verfügbarkeit im Azure-Portal | 
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |29. März 2016 |29. Dezember 2016 |9. Januar 2018 |Ja |Nein  |
+| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |2. Dezember 2015 |27. Juni 2016 |31. Juli 2017 |Ja |Nein  |
+| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS oder Windows Server 2012 R2 |18. Februar 2015 |1. März 2016 |1. April 2017 |Ja |Nein  |
+| HDInsight 3.1 |HDP 2,1 |Windows Server 2012 R2 |24. Juni 2014 |18. Mai 2015 |30. Juni 2016 |Ja |Nein  |
+| HDInsight 3.0 |HDP 2,0 |Windows Server 2012 R2 |11. Februar 2014 |17. September 2014 |30. Juni 2015 |Ja |Nein  |
+| HDInsight 2.1 |HDP 1,3 |Windows Server 2012 R2 |28. Oktober 2013 |12. Mai 2014 |31. Mai 2015 |Ja |Nein  |
+| HDInsight 1.6 |HDP 1.1 | |28. Oktober 2013 |26. April 2014 |31. Mai 2015 |Nein  |Nein  |
+
+> [!NOTE]
 > Hochverfügbare Cluster mit zwei Hauptknoten werden standardmäßig für HDInsight Version 2.1 und höher bereitgestellt. Für HDInsight Version 1.6-Cluster sind sie nicht verfügbar.
 
-| HDInsight-Version | HDP-Version | Betriebssystem des virtuellen Computers | Hohe Verfügbarkeit | Herausgabedatum | Die Verfügbarkeit im Azure-Portal | Supportablaufdatum | Deaktivierungstermin |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 3.6 |HDP 2.6 |Ubuntu 16 |Ja |4. April 2017 |Ja | | |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |Ja |30. September 2016 |Ja |5. September 2017 |31. Mai 2018 |
-| HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |Ja |29. März 2016 |Ja |29. Dezember 2016 |9. Januar 2018 |
-| HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |Ja |2. Dezember 2015 |Ja |27. Juni 2016 |31. Juli 2018 |
-| HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |Ja |2. Dezember 2015 |Ja |27. Juni 2016 |31. Juli 2017 |
-| HDInsight 3.2 |HDP 2.2 |Ubuntu 12.04 LTS oder Windows Server 2012 R2 |Ja |18. Februar 2015 |Nein |1. März 2016 |1. April 2017 |
-| HDInsight 3.1 |HDP 2,1 |Windows Server 2012 R2 |Ja |24. Juni 2014 |Nein |18. Mai 2015 |30. Juni 2016 |
-| HDInsight 3.0 |HDP 2,0 |Windows Server 2012 R2 |Ja |11. Februar 2014 |Nein |17. September 2014 |30. Juni 2015 |
-| HDInsight 2.1 |HDP 1,3 |Windows Server 2012 R2 |Ja |28. Oktober 2013 |Nein |12. Mai 2014 |31. Mai 2015 |
-| HDInsight 1.6 |HDP 1.1 | |Nein |28. Oktober 2013 |Nein |26. April 2014 |31. Mai 2015 |
+## <a name="enterprise-security-package-for-hdinsight"></a>Enterprise Security Package für HDInsight
+
+Azure HDInsight ist ein optionales Paket, das Sie während der Clustererstellung zu Ihrem HDInsight-Cluster hinzufügen können. Das Enterprise Security Package unterstützt Folgendes:
+
+- Integration in Active Directory für die Authentifizierung
+
+    Bisher konnten Sie HDInsight-Cluster ausschließlich mit einem lokalen Administratorbenutzer oder einem lokalen SSH-Benutzer erstellen. Der lokale Administratorbenutzer kann auf alle Dateien, Ordner, Tabellen und Spalten zugreifen.  Mit dem Enterprise Security Package können Sie die rollenbasierte Zugriffssteuerung aktivieren, indem Sie HDInsight-Cluster in Ihr eigenes Active Directory integrieren, zu dem das lokale Active Directory, Azure Active Directory Domain Services oder Active Directory auf dem virtuellen IaaS-Computer gehören. Der Domänenadministrator des Clusters kann Benutzern die Berechtigung erteilen, ihren eigenen Firmen- oder Domänenbenutzernamen und ihr eigenes Kennwort für den Zugriff auf den Cluster zu verwenden. 
+
+    Weitere Informationen finden Sie unter 
+
+    - [Einführung in die Hadoop-Sicherheit mit in die Domäne eingebundenen HDInsight-Clustern](./domain-joined/apache-domain-joined-introduction.md)
+    - [Planen von in die Azure-Domäne eingebundenen Hadoop-Clustern in HDInsight](./domain-joined/apache-domain-joined-architecture.md)
+    - [Konfigurieren einer in die Domäne eingebundenen Sandboxumgebung](./domain-joined/apache-domain-joined-configure.md)
+    - [Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern mit Azure Active Directory Domain Services](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
+
+- Autorisierung für Daten
+
+    - Integration in Apache Ranger für die Autorisierung für Hive-, Spark SQL- und Yarn-Warteschlangen
+    - Sie können die Zugriffssteuerung für Dateien und Ordner festlegen.
+
+    Weitere Informationen finden Sie unter 
+
+    - [Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung](./domain-joined/apache-domain-joined-run-hive.md)
+
+- Anzeigen der Überwachungsprotokolle zum Überwachen der Zugriffe und konfigurierten Richtlinien 
+
+### <a name="supported-cluster-types"></a>Unterstützte Clustertypen
+
+Derzeit wird das Enterprise Security Package nur durch die folgenden Clustertypen unterstützt:
+
+- Hadoop (nur HDInsight 3.6)
+- Spark
+- Interactive Query
+
+### <a name="support-for-azure-data-lake-store"></a>Unterstützung für Azure Data Lake-Speicher
+
+Das Enterprise Security Package unterstützt die Verwendung von Azure Data Lake Store sowohl als Primärspeicher als auch als Zusatzspeicher.
+
+### <a name="pricing-and-sla"></a>Preise und SLA
+Informationen zu Preisen und SLA für das Enterprise Security Package finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="hdinsight-windows-retirement"></a>HDInsight-Windows-Deaktivierung
 Microsoft Azure HDInsight-Version 3.3 war die letzte Version von HDInsight unter Windows. Das Deaktivierungstermin für HDInsight unter Windows ist der 31. Juli 2018. Wenn Sie HDInsight-Cluster unter Windows 3.3 oder früheren Versionen haben, müssen Sie HDInsight vor dem 31. Juli 2018 in Linux migrieren (HDInsight Version 3.5 oder höher). Durch die Migration in das Linux-Betriebssystem können Sie weiterhin HDInsight-Cluster erstellen und in der Größe anpassen. Unterstützung für HDInsight Version 3.3 unter Windows ist am 27. Juni 2016 abgelaufen.
@@ -102,7 +156,7 @@ Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssyst
 ## <a name="faqs"></a>Häufig gestellte Fragen
 
 ### <a name="what-is-the-timeline-for-retiring-hdinsight-on-windows"></a>Was ist die Zeitachse für das Deaktivieren von HDInsight unter Windows?
-Das Deaktivierungstermin für HDInsight unter Windows ist der 31. Juli 2018. Wenn das geplante Deaktivierungstermin für Ihre Region abweicht, werden Sie separat benachrichtigt. 
+Das Deaktivierungstermin für HDInsight unter Windows ist der 31. Juli 2018. Wenn der geplante Deaktivierungstermin für Ihre Region abweicht, werden Sie separat benachrichtigt. 
 
 ### <a name="what-is-the-impact-of-retiring-hdinsight-on-windows-for-existing-customers"></a>Welche Auswirkungen hat die Deaktivierung von HDInsight unter Windows für bestehende Kunden?
 Nachdem HDInsight unter Windows deaktiviert wurde, können Sie keine neuen HDInsight-Cluster unter Windows erstellen oder die Größe eines vorhandenen HDInsight-Windows-Clusters ändern. Die Unterstützung für HDInsight Version 3.3 ist am 27. Juni 2016 abgelaufen. Daher gibt es keinen Support oder bei Fehlerbehebungen für HDInsight 3.3 oder frühere Versionen. Zukünftige Releases von HDInsight stehen nur unter Linux zur Verfügung. Es wird keine zukünftige Version von HDInsight unter Windows geben.
@@ -120,7 +174,7 @@ Wechseln Sie im Azure-Portal zur Übersichtsseite des HDInsight-Clusters, und su
 Das HDInsight-Windows-Cluster wird wie gehabt ausgeführt, Sie können aber keine neuen HDInsight-Cluster unter Windows erstellen oder die Größe eines vorhandenen HDInsight-Windows-Clusters ändern. 
 
 ### <a name="my-cluster-has-a-net-dependency-how-do-i-resolve-this-dependency-on-linux"></a>Meine Cluster hat eine .NET-Abhängigkeit. Wie beheben ich diese Abhängigkeit unter Linux?
-Sie können Ihre Linux-Cluster-Abhängigkeit mit dem [Mono-Projekt](http://www.mono-project.com/) beheben. Diese Open-Source-Implementierung von .NET ist für HDInsight-Linux-Cluster verfügbar. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](hdinsight-migrate-from-windows-to-linux.md). 
+Sie können Ihre Linux-Cluster-Abhängigkeit mit dem [Mono-Projekt](http://www.mono-project.com/) beheben. Diese Open Source-Implementierung von .NET ist für HDInsight-Linux-Cluster verfügbar. Weitere Informationen finden Sie im [HDInsight-Migrationsdokument](hdinsight-migrate-from-windows-to-linux.md). 
 
 ### <a name="im-a-new-customer-for-hdinsight-on-windows-how-can-i-create-an-hdinsight-windows-cluster"></a>Ich bin ein neuer Kunde von HDInsight unter Windows. Wie kann ich ein HDInsight-Windows-Cluster erstellen?
 Seit dem 3. Juli 2017 können nur bestehende HDInsight-Windows-Kunden neue HDInsight-Windows-Cluster erstellen. Neue Kunden können keine HDInsight-Windows-Cluster über das Azure-Portal mit PowerShell oder dem SDK erstellen. Es wird empfohlen neuen Kunden, ein Linux-HDInsight-Cluster zu erstellen. Bestehende Kunden können bis zum Deaktivierungstermin von HDInsight unter Windows neue HDInsight-Windows-Cluster erstellen. 
@@ -129,9 +183,9 @@ Seit dem 3. Juli 2017 können nur bestehende HDInsight-Windows-Kunden neue HDIns
 Nein, die Preise für HDInsight sind für alle Betriebssysteme gleich. 
 
 ### <a name="what-are-the-customer-advantages-associated-with-the-move-to-only-using-hdinsight-on-linux"></a>Welche Vorteile haben Kunden dadurch, dass HDInsight nur noch unter Linux verwendet werden kann?
-* Schnellere Markteinführungszeiten für Open-Source-Big-Data-Technologien über HDInsight
+* Schnellere Markteinführungszeiten für Open Source-Technologien für Big Data mithilfe von HDInsight
 * Support durch eine große Community und ein umfangreiches Ökosystem
-* Möglichkeit der aktiven Entwicklung durch die Open-Source-Community für Hadoop und neuere Big-Data-Technologien
+* Möglichkeit der aktiven Entwicklung durch die Open Source-Community für Hadoop und andere Big Data-Technologien
 
 ### <a name="does-hdinsight-on-linux-provide-additional-functionality-beyond-what-is-available-in-hdinsight-on-windows"></a>Bietet HDInsight unter Linux zusätzliche Funktionalität, die über die unter Windows verfügbare hinausgeht?
 Ab HDInsight Version 3.4 hat Microsoft HDInsight nur für das Linux-Betriebssystem bereitgestellt. Daher sind einige der Komponenten in HDInsight nur für Linux verfügbar. Dies schließt Apache Ranger, Kafka, Interactive Query, Spark HDInsight-Anwendungen und Azure Data Lake Store als primäres Dateisystem ein. 
@@ -165,36 +219,10 @@ Dieser Abschnitt enthält Links zu den Anmerkungen zu dieser Version für Horton
 * HDInsight-Clusterversion 2.1 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 1.3][hdp-1-3-0] basiert.
 * HDInsight-Clusterversion 1.6 verwendet eine Hadoop-Distribution, die auf [Hortonworks Data Platform 1.1][hdp-1-1-0] basiert.
 
-## <a name="hdinsight-standard-and-hdinsight-premium"></a>HDInsight Standard und HDInsight Premium
 
-Azure HDInsight bietet die Cloudlösungen für Big Data in zwei Kategorien an: _Standard_ und _Premium_. In der folgenden Tabelle sind die _nur_ in HDInsight Premium verfügbaren Funktionen aufgeführt. Funktionen, die nicht explizit in der Tabelle beschrieben werden, sind in den Versionen HDInsight Standard und HDInsight Premium verfügbar.
 
-> [!NOTE]
-> HDInsight Premium befindet sich derzeit in der Vorschauphase und ist nur für Linux-Cluster verfügbar.
 
-| HDInsight Premium-Funktion | Beschreibung |
-| --- | --- |
-| In die Domäne eingebundene HDInsight-Cluster |Binden Sie HDInsight-Cluster in AAD-Domänen (Azure Active Directory) ein, um eine unternehmensweite Sicherheit zu erzielen. Sie können in HDInsight Premium eine Liste mit Mitarbeitern Ihres Unternehmens konfigurieren, die eine Authentifizierung per Azure AD für die Anmeldung in einem HDInsight-Cluster durchführen können. Der Unternehmensadministrator kann mithilfe von [Apache Ranger](http://hortonworks.com/apache/ranger/) die rollenbasierte Zugriffskontrolle für Hive-Sicherheit konfigurieren und so den Datenzugriff optimal beschränken. Darüber hinaus kann der Administrator den mitarbeiterspezifischen Datenzugriff sowie jegliche Änderung der Zugriffssteuerungsrichtlinien überwachen und so ein hohes Maß an Kontrolle über Unternehmensressourcen erreichen. Weitere Informationen finden Sie unter [Configure domain-joined HDInsight clusters](./domain-joined/apache-domain-joined-configure.md) (Konfigurieren von in die Domäne eingebundenen HDInsight-Clustern). |
 
-### <a name="cluster-types-supported-in-hdinsight-premium"></a>In HDInsight Premium unterstützte Clustertypen
-Die folgende Tabelle enthält die Clustertypen, die in HDInsight Premium unterstützt werden.
-
-| Clustertyp | Standard | Premium (Vorschau) |
-| --- | --- | --- |
-| Hadoop |Ja |Ja (nur HDInsight 3.6) |
-| Spark |Ja |Nein |
-| HBase |Ja |Nein |
-| Storm |Ja |Nein |
-| R Server |Ja |Nein |
-| Interactive Query |Ja |Nein |
-| Kafka (Vorschau) |Ja |Nein | 
-
-### <a name="support-for-azure-data-lake-store-in-hdinsight-premium"></a>Unterstützung für Azure Data Lake Store in HDInsight Premium
-
-HDInsight Premium-Cluster unterstützen Azure Data Lake Store nicht als primären Speicher. Sie können Azure Data Lake Store jedoch weiterhin als Add-On-Speicher mit HDInsight Premium-Clustern verwenden.
-
-### <a name="pricing-and-sla"></a>Preise und SLA
-Informationen zu Preisen und SLA für HDInsight Premium finden Sie unter [HDInsight-Preise](https://azure.microsoft.com/pricing/details/hdinsight/).
 
 ## <a name="default-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Standardknotenkonfiguration und Standardgrößen von virtuellen Computern für Cluster
 Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster.
@@ -206,28 +234,28 @@ Die folgenden Tabellen enthalten die Standard-VM-Größen für HDInsight-Cluster
 
 * Alle unterstützten Regionen, mit Ausnahme von „Brasilien, Süden“ und „Japan, Westen“:
 
-  | Clustertyp | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | Head – Standard-VM-Größe |D3 v2 |D3 v2 |A3 |D12 v2 |D12 v2 |
-  | Head – empfohlene VM-Größen |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2 |A3, A4, A5 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
-  | Worker – Standard-VM-Größe |D3 v2 |D3 v2 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
-  | Worker – empfohlene VM-Größen |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
-  | Zookeeper – Standard-VM-Größen | |A3 |A2 | | |
-  | Zookeeper – empfohlene VM-Größen | |A3, A4, A5 |A2, A3, A4 | | |
-  | Edge – Standard-VM-Größe | | | | |Windows: D12 v2; Linux: D4 v2 |
-  | Edge – empfohlene VM-Größe | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | Clustertyp | Hadoop | hbase | Interactive Query | Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | Head – Standard-VM-Größe |D3 v2 |D3 v2 | D13, D14 |A3 |D12 v2 |D12 v2 |
+  | Head – empfohlene VM-Größen |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |A3, A4, A5 |D12 v2, D13 v2, D14 v2 |D12 v2, D13 v2, D14 v2 |
+  | Worker – Standard-VM-Größe |D3 v2 |D3 v2  | D13, D14 |D3 v2 |Windows: D12 v2; Linux: D4 v2 |Windows: D12 v2; Linux: D4 v2 |
+  | Worker – empfohlene VM-Größen |D3 v2, D4 v2, D12 v2 |D3 v2, D4 v2, D12 v2  | D13, D14 |D3 v2, D4 v2, D12 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
+  | Zookeeper – Standard-VM-Größen | |A3 | |A2 | | |
+  | Zookeeper – empfohlene VM-Größen | |A3, A4, A5 | | A2, A3, A4 | | |
+  | Edge – Standard-VM-Größe | | | | | |Windows: D12 v2; Linux: D4 v2 |
+  | Edge – empfohlene VM-Größe | | | | | |Windows: D12 v2, D13 v2, D14 v2; Linux: D4 v2, D12 v2, D13 v2, D14 v2 |
 * Nur „Brasilien, Süden“ und „Japan, Westen“ (hier keine v2-Größen):
 
-  | Clustertyp | Hadoop | HBase | Storm | Spark | R Server |
-  | --- | --- | --- | --- | --- | --- |
-  | Head – Standard-VM-Größe |D3 |D3 |A3 |D12 |D12 |
-  | Head – empfohlene VM-Größen |D3, D4, D12 |D3, D4, D12 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |
-  | Worker – Standard-VM-Größe |D3 |D3 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
-  | Worker – empfohlene VM-Größen |D3, D4, D12 |D3, D4, D12 |D3, D4, D12 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
-  | Zookeeper – Standard-VM-Größen | |A2 |A2 | | |
-  | Zookeeper – empfohlene VM-Größen | |A2, A3, A4 |A2, A3, A4 | | |
-  | Edge – Standard-VM-Größen | | | | |Windows: D12; Linux: D4 |
-  | Edge – empfohlene VM-Größen | | | | |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Clustertyp | Hadoop | hbase | Interactive Query |Storm | Spark | R Server |
+  | --- | --- | --- | --- | --- | --- | --- |
+  | Head – Standard-VM-Größe |D3 |D3  | D13, D14 |A3 |D12 |D12 |
+  | Head – empfohlene VM-Größen |D3, D4, D12 |D3, D4, D12  | D13, D14 |A3, A4, A5 |D12, D13, D14 |D12, D13, D14 |
+  | Worker – Standard-VM-Größe |D3 |D3  | D13, D14 |D3 |Windows: D12; Linux: D4 |Windows: D12; Linux: D4 |
+  | Worker – empfohlene VM-Größen |D3, D4, D12 |D3, D4, D12  | D13, D14 |D3, D4, D12 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
+  | Zookeeper – Standard-VM-Größen | |A2 | | A2 | | |
+  | Zookeeper – empfohlene VM-Größen | |A2, A3, A4 | |A2, A3, A4 | | |
+  | Edge – Standard-VM-Größen | | | | | |Windows: D12; Linux: D4 |
+  | Edge – empfohlene VM-Größen | | | | | |Windows: D12, D13, D14; Linux: D4, D12, D13, D14 |
 
 > [!NOTE]
 > - Head wird für den Storm-Clustertyp als *Nimbus* bezeichnet.

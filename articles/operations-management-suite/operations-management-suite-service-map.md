@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: c07290a5003189b0b773bd9b9c995400b424c7f4
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="use-the-service-map-solution-in-operations-management-suite"></a>Verwenden von Service Map in der Operations Management Suite (OMS)
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -49,7 +49,7 @@ Service Map-Agents sammeln Informationen über alle über TCP verbundenen Prozes
 
 ![Service Map-Übersicht](media/oms-service-map/service-map-overview.png)
 
-Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozesse mit aktiven Netzwerkverbindungen während des ausgewählten Zeitraums anzuzeigen. Wenn ein Remotecomputer mit einem Service Map-Agent erweitert wird, um Details zu den Prozessen anzuzeigen, werden nur die Prozesse angezeigt, die mit dem untersuchten Computer kommunizieren. Die Anzahl der Front-End-Computer ohne Agents, die eine Verbindung mit dem untersuchten Computer herstellen, wird links neben den Prozessen angegeben, mit denen eine Verbindung hergestellt wird. Wenn der untersuchte Computer eine Verbindung mit einem Back-End-Computer ohne Agent herstellt, wird der Back-End-Server zusammen mit anderen Verbindungen mit derselben Portnummer einer Serverportgruppe hinzugefügt.
+Computer können in der Zuordnung erweitert werden, um die ausgeführten Prozessgruppen und Prozesse mit aktiven Netzwerkverbindungen während des ausgewählten Zeitraums anzuzeigen. Wenn ein Remotecomputer mit einem Service Map-Agent erweitert wird, um Details zu den Prozessen anzuzeigen, werden nur die Prozesse angezeigt, die mit dem untersuchten Computer kommunizieren. Die Anzahl der Front-End-Computer ohne Agents, die eine Verbindung mit dem untersuchten Computer herstellen, wird links neben den Prozessen angegeben, mit denen eine Verbindung hergestellt wird. Wenn der untersuchte Computer eine Verbindung mit einem Back-End-Computer ohne Agent herstellt, wird der Back-End-Server zusammen mit anderen Verbindungen mit derselben Portnummer einer Serverportgruppe hinzugefügt.
 
 Standardmäßig zeigt Service Map Abhängigkeitsinformationen der letzten 30 Minuten an. Mithilfe der Zeitauswahl in der linken oberen Ecke können Sie Zuordnungen nach historischen Zeiträumen (maximal eine Stunde) abfragen, um zu zeigen, wie die Abhängigkeiten in der Vergangenheit aussahen, z.B. während eines Incidents oder vor einer Änderung. Service Map-Daten werden in kostenpflichtigen Arbeitsbereichen 30 Tage lang gespeichert, in kostenlosen Arbeitsbereichen 7 Tage lang.
 
@@ -59,6 +59,9 @@ Am unteren Rand jedes Servers in der Zuordnung wird möglicherweise eine Liste d
 Je nach Schweregrad der Statusbadges können die Computerknotenrahmen rot (kritisch), gelb (Warnung) oder blau (Information) sein. Die Farbe stellt den schwerwiegendsten Status aller Statusbadges dar. Ein grauer Rahmen gibt einen Knoten an, der keine Statusindikatoren an.
 
 ![Statusbadges](media/oms-service-map/status-badges.png)
+
+## <a name="process-groups"></a>Prozessgruppen
+Prozessgruppen kombinieren Prozesse, die mit einem gemeinsamen Produkt oder Dienst verknüpft sind.  Wenn ein Computerknoten erweitert wird, zeigt er sowohl eigenständige Prozesse als auch Prozessgruppen an.  Wenn eingehende oder ausgehende Verbindungen mit einem Prozess innerhalb einer Prozessgruppe ausfallen, wird die Verbindung für die gesamte Prozessgruppe als ausgefallen angezeigt.
 
 ## <a name="machine-groups"></a>Computergruppen
 Mit Computergruppen können Sie sich Zuordnungen im Zusammenhang mit einem bestimmten Serverset anschauen, und nicht nur eine, sodass Sie alle Member einer mehrschichtigen Anwendung oder eines Serverclusters in einer Zuordnung sehen.
@@ -121,7 +124,7 @@ Klicken Sie auf die Auslassungszeichen neben dem Gruppennamen in der Gruppenlist
 ## <a name="role-icons"></a>Rollensymbole
 Bestimmte Prozesse haben bestimmte Rollen auf Computern: Webserver, Anwendungsserver, Datenbank usw. Service Map versieht Prozess- und Computerfelder mit Rollensymbolen, damit die Rolle eines Prozesses oder Servers auf einen Blick erkannt werden kann.
 
-| Rollensymbol | Beschreibung |
+| Rollensymbol | BESCHREIBUNG |
 |:--|:--|
 | ![Webserver](media/oms-service-map/role-web-server.png) | Webserver |
 | ![App-Server](media/oms-service-map/role-application-server.png) | Anwendungsserver |
@@ -277,7 +280,7 @@ Da für einen angegebenen Prozess und Computer in einem angegebenen Zeitraum mö
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL-Datensätze
 Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | Typ | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
@@ -304,7 +307,7 @@ Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server
 ### <a name="servicemapprocesscl-type-records"></a>Datensätze des ServiceMapProcess_CL-Typs
 Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über TCP verbundene Prozesse auf Servern mit Service Map-Agents. Die Eigenschaften der Datensätze sind in der folgenden Tabelle aufgeführt:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--|:--|
 | Typ | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
@@ -330,34 +333,34 @@ Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über T
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 
 ### <a name="list-all-known-machines"></a>Auflisten aller bekannten Computer
-Type=ServiceMapComputer_CL | dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Auflisten der physischen Arbeitsspeicherkapazität aller verwalteten Computer
-Type=ServiceMapComputer_CL | select PhysicalMemory_d, ComputerName_s | Dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Auflisten von Computernamen, DNS, IP und Betriebssystem
-Type=ServiceMapComputer_CL | select ComputerName_s, OperatingSystemFullName_s, DnsNames_s, IPv4Addresses_s | dedup ResourceId
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Suchen nach allen Prozesse mit „sql“ in der Befehlszeile
-Type=ServiceMapProcess_CL CommandLine_s = \*sql\* | dedup ResourceId
+ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Suchen eines Computers (aktuellster Datensatz) anhand des Ressourcennamens
-Type=ServiceMapComputer_CL "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Suchen eines Computers (aktuellster Datensatz) anhand der IP-Adresse
-Type=ServiceMapComputer_CL "10.229.243.232" | dedup ResourceId
+search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Auflisten aller bekannten Prozesse auf einem angegebenen Computer auf
-Type=ServiceMapProcess_CL MachineResourceName_s="m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | dedup ResourceId
+ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-all-computers-running-sql"></a>Auflisten aller Computer, auf denen SQL ausgeführt wird
-Type=ServiceMapComputer_CL ResourceName_s IN {Type=ServiceMapProcess_CL \*sql\* | Distinct MachineResourceName_s} | dedup ResourceId | Distinct ComputerName_s
+ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Auflisten aller eindeutigen Produktversionen von „curl“ im eigenen Rechenzentrum
-Type=ServiceMapProcess_CL ExecutableName_s=curl | Distinct ProductVersion_s
+ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Erstellen einer Computergruppe mit allen Computern, auf denen CentOS ausgeführt wird
-Type=ServiceMapComputer_CL OperatingSystemFullName_s = \*CentOS\* | Distinct ComputerName_s
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
 
 ## <a name="rest-api"></a>REST-API

@@ -14,12 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio
-ms.openlocfilehash: fa00f176ff56c13033907e134fc236c291308028
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/12/2018
 ---
+> [!NOTE]
+> Diese Dokumentation ist nicht mehr aktuell und ist nicht genau. Wechseln Sie stattdessen zum [Azure Marketplace-Verkäuferhandbuch](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide), um einen Leitfaden zur Veröffentlichung eines Angebots im Azure Marketplace zu erhalten.
+
 # <a name="publish-and-manage-an-offer-in-the-azure-marketplace"></a>Veröffentlichen und Verwalten eines Angebots im Azure Marketplace
 Dieser Artikel soll Entwickler dabei unterstützen, ihre im Azure Marketplace aufgeführten Lösungen zu erstellen, bereitzustellen und zu verwalten, damit sie von anderen Azure-Kunden und -Partnern erworben und genutzt werden können.
 
@@ -33,7 +36,7 @@ Als Herausgeber einer Lösung müssen Sie zunächst definieren, welche Art von L
 |Lösungstyp|Virtueller Computer|Lösungsvorlage|
 |---|---|---|
 |**Definition**|Vorkonfigurierte Images mit einem vollständig installierten Betriebssystem und mindestens einer Anwendung. Ein Image eines virtuellen Computers stellt die erforderlichen Informationen zum Erstellen und Bereitstellen virtueller Computer im Azure Virtual Machines-Dienst bereit.|Eine Datenstruktur, die auf einen oder mehrere bestimmte Azure-Dienste verweisen kann, unter anderem auf von anderen Verkäufern veröffentlichte Dienste. Azure-Abonnenten können diese verwenden, um ein oder mehrere Angebote zentral auf koordinierte Weise bereitzustellen.|
-|**Beispiel**|Als Azure-Herausgeber haben Sie eine VM mit einem innovativen Datenbankdienst erstellt und überprüft. Andere Azure-Abonnenten möchten diese VM erwerben und in ihren Clouddienstumgebungen bereitstellen.|Als Azure-Herausgeber haben Sie einige Dienste aus Azure zusammengefasst und können nun im Handumdrehen Clouddienste mit Lastenausgleich, erweiterter Sicherheit und hoher Verfügbarkeit bereitstellen. Andere Azure-Abonnenten können Zeit sparen, indem sie die Lösungsvorlage erwerben, die ihr Ziel erfüllt. Sie müssen dann nicht dieselben oder ähnliche Azure-Dienste manuell suchen, beschaffen, bereitstellen und konfigurieren.|
+|**Beispiel**|Als Azure-Herausgeber haben Sie eine VM mit einem innovativen Datenbankdienst erstellt und überprüft. Andere Azure-Abonnenten möchten diese VM erwerben und in ihren Clouddienstumgebungen bereitstellen.|Als Azure-Herausgeber haben Sie einige Dienste aus Azure zusammengefasst und können nun im Handumdrehen Clouddienste mit Lastenausgleich, erweiterter Sicherheit und Hochverfügbarkeit bereitstellen. Andere Azure-Abonnenten können Zeit sparen, indem sie die Lösungsvorlage erwerben, die ihr Ziel erfüllt. Sie müssen dann nicht dieselben oder ähnliche Azure-Dienste manuell suchen, beschaffen, bereitstellen und konfigurieren.|
 
 > [!NOTE]
 > Einige Schritte sind bei den unterschiedlichen Lösungstypen gleich, andere sind lösungstypabhängig. In diesem Artikel erhalten Sie eine kurze Übersicht darüber, welche Schritte für die einzelnen Lösungstypen erforderlich sind.
@@ -94,8 +97,8 @@ Verwalten Sie Ihre Lösung mithilfe folgender Ressourcen:
 * [Hinzufügen einer neuen SKU unter einem aufgelisteten Angebot](marketplace-publishing-vm-image-post-publishing.md#add-a-new-sku-under-a-listed-offer)
 * [Ändern der Anzahl der Datenträger für eine aufgelistete SKU](marketplace-publishing-vm-image-post-publishing.md#change-the-data-disk-count-for-a-listed-sku)
 * [Löschen eines aufgelisteten Angebots aus dem Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md)
-* [Löschen einer aufgelisteten SKU aus dem Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
-* [Löschen der aktuellen Version einer aufgelisteten SKU aus dem Azure Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
+* [Löschen einer aufgelisteten SKU aus dem Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-a-listed-sku-from-the-marketplace)
+* [Löschen der aktuellen Version einer aufgelisteten SKU aus dem Marketplace](marketplace-publishing-vm-image-post-publishing.md#delete-the-current-version-of-a-listed-sku-from-the-marketplace)
 * [Zurücksetzen des Listenpreises auf Produktionswerte](marketplace-publishing-vm-image-post-publishing.md#revert-the-listing-price-to-production-values)
 * [Zurücksetzen des Abrechnungsmodells auf Produktionswerte](marketplace-publishing-vm-image-post-publishing.md#revert-the-billing-model-to-production-values)
 * [Zurücksetzen der Sichtbarkeitseinstellung einer aufgelisteten SKU auf den Produktionswert](marketplace-publishing-vm-image-post-publishing.md#revert-the-visibility-setting-of-a-listed-sku-to-the-production-value)

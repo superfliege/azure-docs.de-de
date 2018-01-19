@@ -4,7 +4,7 @@ description: "Erfahren Sie mehr über die Sicherheitsverwaltung für SQL-Datenba
 keywords: "Sicherheit für SQL-Datenbank,Datenbanksicherheitsverwaltung,Anmeldesicherheit,Datenbanksicherheit,Datenbankzugriff"
 services: sql-database
 documentationcenter: 
-author: BYHAM
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -16,23 +16,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 01/23/2017
-ms.author: rickbyh
-ms.openlocfilehash: 0e66eec6c1843df49d3dc323cd109fb9eeb708c3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: carlrab
+ms.openlocfilehash: 4963e67317f22140c318e29bcd03bce4b9f57ab6
+ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="controlling-and-granting-database-access"></a>Steuern und Gewähren von Datenbankzugriff
 
-Wenn Firewallregeln konfiguriert wurden, können Benutzer über ein Administratorkonto, als Datenbankbesitzer oder als Datenbankbenutzer in der Datenbank eine Verbindung mit SQL-Datenbank herstellen.  
+Nachdem Firewallregeln konfiguriert wurden, können Benutzer über ein Administratorkonto, als Datenbankbesitzer oder als Datenbankbenutzer in der Datenbank eine Verbindung mit einer SQL-Datenbank herstellen.  
 
 >  [!NOTE]  
 >  Dieses Thema gilt für Azure SQL-Server sowie für Datenbanken von SQL-Datenbank und SQL Data Warehouse, die auf dem Azure SQL-Server erstellt werden. Der Einfachheit halber wird nur SQL-Datenbank verwendet, wenn sowohl SQL-Datenbank als auch SQL Data Warehouse gemeint sind. 
 >
 
 > [!TIP]
-> Unter [Schützen der Azure SQL-Datenbank](sql-database-security-tutorial.md) finden Sie ein Tutorial.
+> Ein Tutorial finden Sie unter [Schützen von Azure SQL-Datenbank](sql-database-security-tutorial.md).
 >
 
 
@@ -155,7 +155,7 @@ Bei der effizienten Zugriffsverwaltung werden Berechtigungen verwendet, die Grup
 Bei den Datenbankrollen kann es sich um integrierte Rollen handeln, z.B. **db_owner**, **db_ddladmin**, **db_datawriter**, **db_datareader**, **db_denydatawriter** und **db_denydatareader**. **db_owner** wird häufig verwendet, um nur einigen Benutzern uneingeschränkte Berechtigungen zu erteilen. Die anderen festen Datenbankrollen sind hilfreich, um bei der Entwicklung schnell eine einfache Datenbank zu erhalten, aber sie sind auch für die meisten Produktionsdatenbanken zu empfehlen. Die feste Datenbankrolle **db_datareader** gewährt beispielsweise Lesezugriff auf jede Tabelle der Datenbank. Dies ist im Normalfall nicht unbedingt erforderlich. Es ist viel besser, die Anweisung [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) zum Erstellen Ihrer eigenen benutzerdefinierten Datenbankrollen zu verwenden und jeder Rolle sorgfältig nur die Berechtigungen zu gewähren, die für die jeweilige Aufgabe benötigt werden. Wenn ein Benutzer Mitglied mehrerer Rollen ist, verfügt er über die zusammengefassten Berechtigungen all dieser Rollen.
 
 ## <a name="permissions"></a>Berechtigungen
-Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt oder verweigert werden können. Viele dieser Berechtigungen sind geschachtelt. Die `UPDATE`-Berechtigung für ein Schema enthält beispielsweise für jede Tabelle des Schemas die `UPDATE`-Berechtigung. Wie bei den meisten Berechtigungssystemen wird eine Gewährung durch die Verweigerung einer Berechtigung außer Kraft gesetzt. Aufgrund der Schachtelung und der Anzahl von Berechtigungen muss ein geeignetes Berechtigungssystem sorgfältig entworfen werden, um für Ihre Datenbank den richtigen Schutz sicherzustellen. Beginnen Sie mit der Liste der Berechtigungen unter [Berechtigungen (Datenbankmodul)](https://msdn.microsoft.com/library/ms191291.aspx), und sehen Sie sich die [Grafik in Postergröße](http://go.microsoft.com/fwlink/?LinkId=229142) mit den Berechtigungen an.
+Es gibt mehr als 100 Berechtigungen, die in SQL-Datenbank individuell gewährt oder verweigert werden können. Viele dieser Berechtigungen sind geschachtelt. Die `UPDATE`-Berechtigung für ein Schema enthält beispielsweise für jede Tabelle des Schemas die `UPDATE`-Berechtigung. Wie bei den meisten Berechtigungssystemen wird eine Gewährung durch die Verweigerung einer Berechtigung außer Kraft gesetzt. Aufgrund der Schachtelung und der Anzahl von Berechtigungen muss ein geeignetes Berechtigungssystem sorgfältig entworfen werden, um für Ihre Datenbank den richtigen Schutz sicherzustellen. Beginnen Sie mit der Liste der Berechtigungen unter [Berechtigungen (Datenbank-Engine)](https://msdn.microsoft.com/library/ms191291.aspx), und sehen Sie sich die [Grafik in Postergröße](http://go.microsoft.com/fwlink/?LinkId=229142) mit den Berechtigungen an.
 
 
 ### <a name="considerations-and-restrictions"></a>Wichtige Aspekte und Einschränkungen

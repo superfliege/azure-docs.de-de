@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: zivr
-ms.openlocfilehash: d354e50217dabebfeb16df29d4954181ff67e28f
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: d551a62a59e0a7f63f5fd4862680a271de659a19
+ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Linux-Computer
 
@@ -32,7 +32,7 @@ Azure führt regelmäßig Updates durch, um die Zuverlässigkeit, Leistung und S
 
 Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede Welle hat einen anderen Umfang (Regionen).
 
-- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an Abonnementbesitzer und -mitbesitzer gesendet. Für die Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
+- Eine Welle beginnt mit einer Kundenbenachrichtigung. Die Benachrichtigung wird standardmäßig an Abonnementbesitzer und -mitbesitzer gesendet. Den Benachrichtigungen können mit Azure-[Aktivitätsprotokollwarnungen](../../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) weitere Empfänger und Nachrichtenoptionen wie E-Mail, SMS und Webhooks hinzugefügt werden.  
 - Zum Zeitpunkt der Benachrichtigung wird ein *Self-Service-Zeitfenster* verfügbar gemacht. Während dieses Zeitfensters können Sie ermitteln, welche Ihrer virtuellen Computer von der Welle betroffen sind, und die Wartung gemäß eigener Planungsanforderungen starten.
 - Im Anschluss an das Self-Service-Zeitfenster beginnt das *Zeitfenster für die geplante Wartung*. Irgendwann in diesem Zeitfenster plant Azure die erforderliche Wartung und wendet sie auf Ihren virtuellen Computer an. 
 
@@ -82,18 +82,18 @@ Informationen zu geplanten Wartungen können mithilfe von [azure vm get-instance
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung für den virtuellen Computer geplant, gibt der Befehl keine Wartungsinformationen zurück. 
 
 ```azure-cli
-az vm get-instance-view  - g rgName  -n vmName 
+az vm get-instance-view -g rgName -n vmName
 ```
 
 Unter „MaintenanceRedeployStatus“ werden folgende Werte zurückgegeben: 
 
-| Wert | Beschreibung   |
+| Wert | BESCHREIBUNG   |
 |-------|---------------|
 | IsCustomerInitiatedMaintenanceAllowed | Gibt an, ob Sie zum aktuellen Zeitpunkt die Wartung für den virtuellen Computer starten können. ||
 | PreMaintenanceWindowStartTime         | Der Anfang des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
 | PreMaintenanceWindowEndTime           | Das Ende des Self-Service-Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
-| MaintenanceWindowStartTime            | Der Anfang des geplanten Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
-| MaintenanceWindowEndTime              | Das Ende des geplanten Wartungszeitfensters, in dem Sie die Wartung für Ihren virtuellen Computer initiieren können. ||
+| MaintenanceWindowStartTime            | Der Anfang des geplanten Wartungszeitfensters, in dem Azure die Wartung für Ihren virtuellen Computer initiiert. ||
+| MaintenanceWindowEndTime              | Das Ende des geplanten Wartungszeitfensters, in dem Azure die Wartung für Ihren virtuellen Computer initiiert. ||
 | LastOperationResultCode               | Das Ergebnis des letzten Wartungsinitiierungsversuchs für den virtuellen Computer. ||
 
 
@@ -159,7 +159,7 @@ Weitere Informationen zu Hochverfügbarkeit finden Sie unter [Regionen und Verf�
 
 **F: Wie lange dauert es, meinen virtuellen Computer neu zu starten?**
 
-**A:** Je nach Größe Ihres virtuellen Computers kann der Neustart bis zu mehreren Minuten dauern. Beachten Sie, dass Ihnen bei Verwendung von Cloud Services (Web-/Workerrolle), VM-Skalierungsgruppen oder Verfügbarkeitsgruppen 30 Minuten zwischen den einzelnen Gruppen von virtuellen Computern (UD) zur Verfügung stehen. 
+**A:** Je nach Größe Ihres virtuellen Computers kann der Neustart während des Self-Service-Wartungsfensters mehrere Minuten dauern. Die von Azure im geplanten Wartungsfenster initiierten Neustarts dauern in der Regel etwa 25 Minuten. Beachten Sie, dass Ihnen bei Verwendung von Cloud Services (Web-/Workerrolle), VM-Skalierungsgruppen oder Verfügbarkeitsgruppen während des geplanten Wartungsfensters zwischen den einzelnen Gruppen von virtuellen Computern (UD) 30 Minuten zur Verfügung stehen.
 
 **F: Wie sind die Erfahrungen mit Cloud Services (Web-/Workerrolle), Service Fabric und VM-Skalierungsgruppen?**
 

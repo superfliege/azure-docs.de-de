@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 3ccbaaf55d2bdfedffcdb5ca069798328e2d75fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>Sicherheitskonzepte beim IoT Hub Device Provisioning-Dienst 
 
@@ -46,22 +46,51 @@ Gerätegeheimnisse können auch in Software (Arbeitsspeicher) gespeichert werden
 
 TPM kann sich auf einen Standard zum sicheren Speichern von Schlüsseln, mit denen die Plattform authentifiziert wird, oder auf die E/A-Schnittstelle beziehen, die für die Interaktion mit den Modulen zum Implementieren des Standards verwendet wird. TPMs können als diskrete Hardware, integrierte Hardware, firmwarebasiert oder softwarebasiert vorhanden sein. Erfahren Sie mehr über [TPMs und TPM-Nachweis](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation). Der Device Provisioning-Dienst unterstützt nur TPM 2.0.
 
-## <a name="endorsement-key"></a>Endorsement Key
+### <a name="endorsement-key"></a>Endorsement Key
 
-Der Endorsement Key ist ein asymmetrischer Schlüssel innerhalb des TPM, der zur Fertigungszeit eingefügt wurde und für jedes TPM eindeutig ist. Der Endorsement Key kann nicht geändert oder entfernt werden. Der private Teil des Endorsement Key wird niemals außerhalb des TPM freigegeben. Der öffentliche Teil des Endorsement Key wird dagegen für die Erkennung eines Original-TPM verwendet. Erfahren Sie mehr über den [Endorsement Key](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
+Der Endorsement Key ist ein asymmetrischer Schlüssel im TPM, der zur Fertigungszeit intern generiert oder eingefügt wurde und für jedes TPM eindeutig ist. Der Endorsement Key kann nicht geändert oder entfernt werden. Der private Teil des Endorsement Key wird niemals außerhalb des TPM freigegeben. Der öffentliche Teil des Endorsement Key wird dagegen für die Erkennung eines Original-TPM verwendet. Erfahren Sie mehr über den [Endorsement Key](https://technet.microsoft.com/library/cc770443(v=ws.11).aspx).
 
-## <a name="storage-root-key"></a>Speicherstammschlüssel
+### <a name="storage-root-key"></a>Speicherstammschlüssel
 
 Der Speicherstammschlüssel wird im TPM gespeichert und zum Schützen von in Anwendungen erstellten TPM-Schlüsseln verwendet, sodass diese Schlüssel nicht ohne das TPM verwendet werden können. Der Speicherstammschlüssel wird generiert, wenn Sie den Besitz des TPM übernehmen. Wenn Sie das TPM löschen, damit ein neuer Benutzer den Besitz übernehmen kann, wird ein neuer Speicherstammschlüssel generiert. Erfahren Sie mehr über den [Speicherstammschlüssel](https://technet.microsoft.com/library/cc753560(v=ws.11).aspx).
 
-## <a name="root-certificate"></a>Stammzertifikat
+## <a name="x509-certificates"></a>X.509-Zertifikate
 
-Ein Stammzertifikat ist ein X.509-Zertifikattyp, der eine Zertifizierungsstelle darstellt und selbstsigniert ist. Es handelt sich um das Ende der Zertifikatkette.
+Die Verwendung von X.509-Zertifikaten als Nachweismechanismus ist eine exzellente Möglichkeit, die Produktion zu skalieren und die Gerätebereitstellung zu vereinfachen. X.509-Zertifikate sind üblicherweise in einer Zertifikatvertrauenskette angeordnet, in der jedes Zertifikat in der Kette durch den privaten Schlüssel des nächsthöheren Zertifikats signiert ist. Den Abschluss der Kette bildet ein selbstsigniertes Stammzertifikat. So entsteht eine delegierte Vertrauenskette vom Stammzertifikat, das durch eine vertrauenswürdige Stammzertifizierungsstelle generiert wird, über jede Zwischenzertifizierungsstelle bis hinunter zum Zertifikat für die endgültige Entität, das auf einem Gerät installiert ist. Weitere Informationen finden Sie unter [Geräteauthentifizierung mit X.509-Zertifikaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview). 
 
-## <a name="intermediate-certificate"></a>Zwischenzertifikat
+Häufig repräsentiert die Zertifikatkette eine bestimmte logische oder physische Hierarchie im Zusammenhang mit den Geräten. Ein Beispiel: Ein Hersteller stellt ein selbstsigniertes Zertifizierungsstellen-Stammzertifikat aus, generiert mit diesem Zertifikat ein eindeutiges Zertifizierungsstellen-Zwischenzertifikat für jedes Werk, generiert mit diesem Zertifikat wiederum in jedem Werk ein eindeutiges Zertifizierungsstellen-Zwischenzertifikat für jeden Produktionsbereich im Werk und generiert schließlich mit diesem Zertifikat ein eindeutiges Gerätezertifikat für jedes Gerät, das in diesem Bereich gefertigt wird. Weitere Informationen finden Sie unter [Konzeptgrundlagen der X.509-Zertifizierungsstellenzertifikate in der IoT-Branche](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-concept). 
 
-Ein Zwischenzertifikat ist ein X.509-Zertifikat, das vom Stammzertifikat (oder einem anderen Zertifikat mit dem Stammzertifikat in seiner Kette) signiert wurde und das zum Signieren des untergeordneten Zertifikats verwendet wird.
+### <a name="root-certificate"></a>Stammzertifikat
 
-## <a name="leaf-certificate"></a>Untergeordnetes Zertifikat
+Ein Stammzertifikat ist ein selbstsigniertes X.509-Zertifikat, das eine Zertifizierungsstelle repräsentiert. Es handelt sich um den Endpunkt bzw. Vertrauensanker der Zertifikatkette. Stammzertifikate können von einer Organisation selbst ausgestellt oder bei einer Stammzertifizierungsstelle erworben werden. Weitere Informationen finden Sie unter [Abrufen von X.509-CA-Zertifikaten](https://docs.microsoft.com/azure/iot-hub/iot-hub-security-x509-get-started#get-x509-ca-certificates). Das Stammzertifikat kann auch als Zertifizierungsstellen-Stammzertifikat bezeichnet werden.
 
-Ein untergeordnetes Zertifikat (oder Endeinheitzertifikat) wird zur Identifizierung des Zertifikatinhabers verwendet und enthält in seiner Zertifikatkette das Stammzertifikat. Mit dem untergeordneten Zertifikat werden kein anderen Zertifikate signiert.
+### <a name="intermediate-certificate"></a>Zwischenzertifikat
+
+Ein Zwischenzertifikat ist ein X.509-Zertifikat, das vom Stammzertifikat (oder einem anderen Zwischenzertifikat mit dem Stammzertifikat in seiner Kette) signiert wurde. Das letzte Zwischenzertifikat in einer Kette wird zum Signieren des untergeordneten Zertifikats verwendet. Ein Zwischenzertifikat kann auch als Zertifizierungsstellen-Zwischenzertifikat bezeichnet werden.
+
+### <a name="leaf-certificate"></a>Untergeordnetes Zertifikat
+
+Das untergeordnete Zertifikat bzw. Zertifikat für die endgültige Entität identifiziert den Zertifikatinhaber. Es verfügt in seiner Zertifikatkette über das Stammzertifikat sowie über null, ein oder mehrere Zwischenzertifikate. Mit dem untergeordneten Zertifikat werden kein anderen Zertifikate signiert. Es identifiziert das Gerät eindeutig beim Bereitstellungsdienst und wird zuweilen auch als Gerätezertifikat bezeichnet. Während der Authentifizierung verwendet das Gerät den mit diesem Zertifikat verknüpften Schlüssel, um auf eine Besitznachweisanforderung des Diensts zu antworten. Weitere Informationen finden Sie unter [Authentifizieren von Geräten, die mit X.509-Zertifikaten signiert sind](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates).
+
+## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>Steuern des Gerätezugriffs auf den Bereitstellungsdienst mit X.509-Zertifikaten
+
+Der Bereitstellungsdienst macht zwei Arten von Registrierungseinträgen verfügbar, mit denen Sie den Zugriff auf Geräte steuern können, die den X.509-Nachweismechanismus verwenden:  
+
+- [Individuelle Registrierung](./concepts-service.md#individual-enrollment): Diese Einträge werden mit dem Gerätezertifikat konfiguriert, das einem bestimmten Gerät zugeordnet ist. Diese Einträge steuern die Registrierung für bestimmte Geräte.
+- [Registrierungsgruppe](./concepts-service.md#enrollment-group): Diese Einträge sind einem bestimmten Zertifizierungsstellen-Zwischenzertifikat oder -Stammzertifikat zugeordnet. Diese Einträge steuern die Registrierung für alle Geräte, die in ihrer Zertifikatkette über ein Zertifizierungsstellen-Zwischenzertifikat oder -Stammzertifikat verfügen. 
+
+Wenn ein Gerät eine Verbindung mit dem Bereitstellungsdienst herstellt, räumt der Dienst spezifischeren Registrierungseinträge eine höhere Priorität ein als weniger spezifischen Registrierungseinträgen. Wenn also für das Gerät ein individueller Registrierungseintrag vorliegt, wendet der Bereitstellungsdienst diesen Eintrag an. Wenn keine individuelle Registrierung für das Gerät vorliegt und eine Registrierungsgruppe für das erste Zwischenzertifikat in der Zertifikatkette des Geräts vorhanden ist, wendet der Dienst diesen Eintrag an. Dies wird in der gesamten Kette bis hin zum Stammzertifikat fortgesetzt. Der Dienst wendet den ersten anwendbaren Eintrag an, den er findet. Dabei gilt Folgendes:
+
+- Wenn der erste gefundene Registrierungseintrag aktiviert ist, stellt der Dienst das Gerät bereit.
+- Wenn der erste gefundene Registrierungseintrag deaktiviert ist, stellt der Dienst das Gerät nicht bereit.  
+- Wenn für keins der Zertifikate in der Zertifikatkette des Geräts ein Registrierungseintrag gefunden wird, stellt der Dienst das Gerät nicht bereit. 
+
+Dieser Mechanismus und die hierarchische Struktur von Zertifikatketten bieten ein hohes Maß an Flexibilität bei der Steuerung des Zugriffs für einzelne Geräte ebenso wie für Gerätegruppen. Nehmen Sie beispielsweise an, Sie verfügen über fünf Geräte mit folgenden Zertifikatketten: 
+
+- *Gerät 1*: Stammzertifikat -> Zertifikat A -> Zertifikat für Gerät 1
+- *Gerät 2*: Stammzertifikat -> Zertifikat A -> Zertifikat für Gerät 2
+- *Gerät 3*: Stammzertifikat -> Zertifikat A -> Zertifikat für Gerät 3
+- *Gerät 4*: Stammzertifikat -> Zertifikat B -> Zertifikat für Gerät 4
+- *Gerät 5*: Stammzertifikat -> Zertifikat B -> Zertifikat für Gerät 5
+
+Anfangs können Sie einen einzigen aktivierten Gruppenregistrierungseintrag für das Stammzertifikat erstellen, um allen fünf Geräten den Zugriff zu ermöglichen. Sollte zu einem späteren Zeitpunkt Zertifikat B kompromittiert werden, können Sie einen deaktivierten Registrierungsgruppeneintrag für Zertifikat B erstellen, um die Registrierung von *Gerät 4* und *Gerät 5* zu verhindern. Wenn später auch *Gerät 3* kompromittiert wird, können Sie einen deaktivierten Registrierungseintrag für das Zertifikat dieses Geräts erstellen. Damit wird der Zugriff für *Gerät 3* widerrufen, *Gerät 1* und *Gerät 2* können sich jedoch weiterhin registrieren.

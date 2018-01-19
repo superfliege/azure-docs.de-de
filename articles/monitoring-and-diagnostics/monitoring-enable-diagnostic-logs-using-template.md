@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/30/2017
+ms.date: 12/22/2017
 ms.author: johnkem
-ms.openlocfilehash: 2f764bc14e882f71957299b833d5bc1a6765622a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6355433dab7bac910dd89a50b74df13d6cf1b8fc
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="automatically-enable-diagnostic-settings-at-resource-creation-using-a-resource-manager-template"></a>Automatisches Aktivieren von Diagnoseeinstellungen bei der Ressourcenerstellung mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/resource-group-authoring-templates.md) Diagnoseeinstellungen für eine Ressource konfigurieren, wenn die Ressource erstellt wird. Dadurch können Sie automatisch mit dem Streamen Ihrer Diagnoseprotokolle und Metriken an Event Hubs beginnen, sie in einem Speicherkonto archivieren oder sie bei der Erstellung einer Ressource an Log Analytics senden.
@@ -40,19 +40,31 @@ Im Anschluss finden Sie ein Beispiel für die JSON-Vorlagendatei, die für compu
 ## <a name="non-compute-resource-template"></a>Vorlage für computefremde Ressourcen
 Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
 
-1. Fügen Sie Parameter für den Speicherkontonamen, die Service Bus-Regel-ID und/oder die OMS Log Analytics-Arbeitsbereichs-ID zum Parameterblob hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Log Analytics zu ermöglichen).
+1. Fügen Sie dem Parameterblob Parameter für den Speicherkontonamen, die Event Hub-Autorisierungsregel-ID und/oder die OMS Log Analytics-Arbeitsbereichs-ID hinzu (um die Archivierung von Diagnoseprotokollen in einem Speicherkonto, das Streamen von Protokollen an Event Hubs und/oder das Senden von Protokollen an Log Analytics zu ermöglichen).
    
     ```json
+    "settingName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the setting."
+      }
+    },
     "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
       }
     },
-    "serviceBusRuleId": {
+    "eventHubAuthorizationRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Resource ID of the Service Bus Rule for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
+      }
+    },
+    "eventHubName": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
       }
     },
     "workspaceId":{
@@ -72,10 +84,12 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
         "dependsOn": [
           "[/*resource Id for which Diagnostic Logs will be enabled>*/]"
         ],
-        "apiVersion": "2015-07-01",
+        "apiVersion": "2017-05-01-preview",
         "properties": {
+          "name": "[parameters('settingName')]",
           "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-          "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+          "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+          "eventHubName": "[parameters('eventHubName')]",
           "workspaceId": "[parameters('workspaceId')]",
           "logs": [ 
             {
@@ -89,7 +103,7 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
           ],
           "metrics": [
             {
-              "timeGrain": "PT1M",
+              "category": "AllMetrics",
               "enabled": true,
               "retentionPolicy": {
                 "enabled": false,
@@ -102,7 +116,7 @@ Für computefremde Ressourcen müssen zwei Schritte ausgeführt werden:
     ]
     ```
 
-Das Eigenschaftenblob für die Diagnoseeinstellung verwendet das in [diesem Artikel](https://msdn.microsoft.com/library/azure/dn931931.aspx)beschriebene Format. Das Hinzufügen der `metrics`-Eigenschaft ermöglicht Ihnen, auch Ressourcenmetriken an diese gleichen Ausgaben zu senden, vorausgesetzt dass [Azure Monitor-Metriken von der Ressource unterstützt werden](monitoring-supported-metrics.md).
+Das Eigenschaftenblob für die Diagnoseeinstellung verwendet das in [diesem Artikel](https://docs.microsoft.com/rest/api/monitor/ServiceDiagnosticSettings/CreateOrUpdate)beschriebene Format. Das Hinzufügen der `metrics`-Eigenschaft ermöglicht Ihnen, auch Ressourcenmetriken an diese gleichen Ausgaben zu senden, vorausgesetzt dass [Azure Monitor-Metriken von der Ressource unterstützt werden](monitoring-supported-metrics.md).
 
 Im folgenden vollständigen Beispiel wird eine Logik-App erstellt und das Streamen an Event Hubs sowie das Speichern in einem Speicherkonto aktiviert.
 
@@ -122,16 +136,28 @@ Im folgenden vollständigen Beispiel wird eine Logik-App erstellt und das Stream
       "type": "string",
       "defaultValue": "http://azure.microsoft.com/en-us/status/feed/"
     },
+    "settingName": {
+      "type": "string",
+      "metadata": {
+        "description": "Name of the setting."
+      }
+    },
     "storageAccountName": {
       "type": "string",
       "metadata": {
         "description": "Name of the Storage Account in which Diagnostic Logs should be saved."
       }
     },
-    "serviceBusRuleId": {
+    "eventHubAuthorizationRuleId": {
       "type": "string",
       "metadata": {
-        "description": "Service Bus Rule Id for the Service Bus Namespace in which the Event Hub should be created or streamed to."
+        "description": "Resource ID of the event hub authorization rule for the Event Hubs namespace in which the event hub should be created or streamed to."
+      }
+    },
+    "eventHubName": {
+      "type": "string",
+      "metadata": {
+        "description": "Optional. Name of the event hub within the namespace to which logs are streamed. Without this, an event hub is created for each log category."
       }
     },
     "workspaceId": {
@@ -188,10 +214,12 @@ Im folgenden vollständigen Beispiel wird eine Logik-App erstellt und das Stream
           "dependsOn": [
             "[resourceId('Microsoft.Logic/workflows', parameters('logicAppName'))]"
           ],
-          "apiVersion": "2015-07-01",
+          "apiVersion": "2017-05-01-preview",
           "properties": {
+            "name": "[parameters('settingName')]",
             "storageAccountId": "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]",
-            "serviceBusRuleId": "[parameters('serviceBusRuleId')]",
+            "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
+            "eventHubName": "[parameters('eventHubName')]",
             "workspaceId": "[parameters('workspaceId')]",
             "logs": [
               {

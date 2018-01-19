@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: 62b1bf66647c762b17410c37fe6ebd996f577d25
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 91de03f3472244341f4cf086bc8a2f56f7d2e487
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="copy-data-fromto-dynamics-365dynamics-crm-using-azure-data-factory"></a>Kopieren von Daten aus/zu Dynamics 365 bzw. Dynamics CRM mithilfe von Azure Data Factory
 
@@ -46,11 +46,11 @@ Für Dynamics 365 werden insbesondere die folgenden Anwendungstypen unterstützt
 - Dynamics 365 for Marketing
 
 > [!NOTE]
-> Um den Dynamics-Connector zu verwenden, speichern Sie Ihr Kennwort in Azure Key Vault, und sorgen Sie dafür, dass die ADF-Kopieraktivität beim Kopieren der Daten dort abgerufen wird. Informationen zur Konfiguration finden Sie im Abschnitt [Eigenschaften verknüpfter Dienste](#linked-service-properties).
+> Um den Dynamics-Connector zu verwenden, speichern Sie Ihr Kennwort in Azure Key Vault, sodass die Kopieraktivität das Kennwort beim Kopieren der Daten dort abruft. Informationen zur Konfiguration finden Sie im Abschnitt [Eigenschaften verknüpfter Dienste](#linked-service-properties).
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Sie können mit dem .NET SDK, Python SDK, Azure PowerShell, der REST-API oder der Azure Resource Manager-Vorlage eine Pipeline mit einer Kopieraktivität erstellen. Im [Tutorial zur Kopieraktivität](quickstart-create-data-factory-dot-net.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+[!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
 Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Dynamics verwendet werden.
 
@@ -60,18 +60,18 @@ Folgende Eigenschaften werden für den mit Dynamics verknüpften Dienst unterst�
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 und Dynamics CRM Online
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft muss auf **Dynamics** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft muss auf **Dynamics** festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Muss für Dynamics Online **Online** lauten. | Ja |
 | organizationName | Der Organisationsname der Dynamics-Instanz. | Nein. Er sollte angegeben werden, wenn dem Benutzer mehr als eine Dynamics-Instanz zugeordnet ist. |
 | authenticationType | Der Authentifizierungstyp für die Verbindungsherstellung mit dem Dynamics-Server. Geben Sie für Dynamics Online **Office 365** an. | Ja |
 | username | Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit Dynamics an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Sie müssen das Kennwort zu Azure Key Vault hinzufügen und als „AzureKeyVaultSecret“ konfigurieren. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Quelle: Nein, Senke: Ja |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein für die Quelle. Ja für die Senke, wenn der mit der Quelle verknüpfte Dienst keine IR aufweist. |
 
 >[!IMPORTANT]
->Um Daten zu Dynamics zu kopieren, erstellen Sie explizit [eine Azure IR](create-azure-integration-runtime.md#create-azure-ir) mit einem Standort in der Nähe Ihres Dynamics-Standorts und nehmen Sie eine Zuordnung im verknüpften Dienst wie im folgenden Beispiel vor.
+>Beim Kopieren von Daten **nach** Dynamics kann die standardmäßige Azure Integration Runtime nicht zum Ausführen des Kopiervorgangs verwendet werden. Mit anderen Worten, wenn Ihr mit der Quelle verknüpfter Dienst keine festgelegte IR hat, erstellen Sie explizit [eine Azure-IR](create-azure-integration-runtime.md#create-azure-ir) mit einem Standort in der Nähe Ihres Dynamics-Standorts, und nehmen Sie eine Zuordnung im mit Dynamics verknüpften Dienst wie im folgenden Beispiel vor.
 
 **Beispiel: Dynamics Online mithilfe der Office 365-Authentifizierung**
 
@@ -107,9 +107,9 @@ Folgende Eigenschaften werden für den mit Dynamics verknüpften Dienst unterst�
 
 *Die zusätzlichen Eigenschaften im Vergleich zu Dynamics Online lauten „hostName“ und „Port“.*
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft muss auf **Dynamics** festgelegt werden. | Ja |
+| type | Die type-Eigenschaft muss auf **Dynamics** festgelegt werden. | Ja |
 | deploymentType | Der Bereitstellungstyp der Dynamics-Instanz. Muss für Dynamics lokal mit IFD **OnPremisesWithIfd** lauten.| Ja |
 | **hostName** | Der Hostname des lokalen Dynamics-Servers. | Ja |
 | **port** | Der Port des lokalen Dynamics-Servers. | Nein (Standard = 443) |
@@ -117,7 +117,7 @@ Folgende Eigenschaften werden für den mit Dynamics verknüpften Dienst unterst�
 | authenticationType | Der Authentifizierungstyp für die Verbindungsherstellung mit dem Dynamics-Server. Geben Sie für Dynamics lokal mit IFD **Ifd** an. | Ja |
 | username | Geben Sie einen Benutzernamen für das Herstellen der Verbindung mit Dynamics an. | Ja |
 | password | Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. Hinweis: Sie müssen das Kennwort zu Azure Key Vault hinzufügen und als „AzureKeyVaultSecret“ konfigurieren. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Key Vault](store-credentials-in-key-vault.md). | Ja |
-| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure-Integrationslaufzeit verwendet. | Quelle: Nein, Senke: Ja |
+| connectVia | Die [Integrationslaufzeit](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Quelle: Nein, Senke: Ja |
 
 >[!IMPORTANT]
 >Um Daten zu Dynamics zu kopieren, erstellen Sie explizit [eine Azure IR](create-azure-integration-runtime.md#create-azure-ir) mit dem Standort in der Nähe Ihres Dynamics-Standorts, und nehmen Sie eine Zuordnung im verknüpften Dienst wie im folgenden Beispiel vor.
@@ -160,9 +160,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus/zu Dynamics die type-Eigenschaft des Datasets auf **DynamicsEntity** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft des Datasets muss auf **DynamicsEntity** festgelegt werden. |Ja |
+| type | Die type-Eigenschaft des Datasets muss auf **DynamicsEntity** festgelegt werden. |Ja |
 | entityName | Der logische Name der abzurufenden Entität. | Quelle: Nein (wenn „query“ in der Aktivitätsquelle angegeben ist), Senke: Ja |
 
 > [!IMPORTANT]
@@ -213,9 +213,9 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften zum Definieren vo
 
 Legen Sie zum Kopieren von Daten aus Dynamics den Quelltyp in der Kopieraktivität auf **DynamicsSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DynamicsSource** festgelegt werden.  | Ja |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf **DynamicsSource** festgelegt werden.  | Ja |
 | query  | FetchXML ist eine proprietäre Abfragesprache, die in Microsoft Dynamics (online und lokal) verwendet wird. Sehen Sie sich das folgende Beispiel an, und erfahren Sie mehr über das [Erstellen von Abfragen mit FetchXML](https://msdn.microsoft.com/en-us/library/gg328332.aspx). | Nein (wenn „entityName“ im Dataset angegeben ist)  |
 
 **Beispiel:**
@@ -274,9 +274,9 @@ Legen Sie zum Kopieren von Daten aus Dynamics den Quelltyp in der Kopieraktivit�
 
 Legen Sie zum Kopieren von Daten zu Dynamics den Senkentyp in der Kopieraktivität auf **DynamicsSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **DynamicsSink** festgelegt werden.  | Ja |
+| type | Die type-Eigenschaft der Senke der Kopieraktivität muss auf **DynamicsSink** festgelegt werden.  | Ja |
 | writeBehavior | Das Schreibverhalten des Vorgangs.<br/>Der zulässige Wert ist **„Upsert“**. | Ja |
 | writeBatchSize | Die Zeilenanzahl der Daten, die in jedem Batch in Dynamics geschrieben werden. | Nein (Standard = 10) |
 | ignoreNullValues | Gibt an, ob Nullwerte von Eingabedaten (außer Schlüsselfeldern) während des Schreibvorgangs ignoriert werden sollen.<br/>Zulässige Werte sind **true** und **false**.<br>- true: Lassen Sie die Daten im Zielobjekt unverändert, wenn Sie einen upsert-/update-Vorgang durchführen, und fügen Sie einen definierten Standardwert ein, wenn Sie einen Einfügevorgang durchführen.<br/>- false: Aktualisieren Sie die Daten im Zielobjekt zu NULL, wenn Sie einen upsert-/update-Vorgang durchführen, und fügen Sie einen NULL-Wert ein, wenn Sie einen Einfügevorgang durchführen.  | Nein (Standard = false) |
@@ -322,28 +322,28 @@ Legen Sie zum Kopieren von Daten zu Dynamics den Senkentyp in der Kopieraktivit�
 
 Beim Kopieren von Daten aus Dynamics werden die folgenden Zuordnungen von Dynamics-Datentypen zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
 
-Konfigurieren Sie anhand der folgenden Zuordnungstabelle den entsprechenden ADF-Datentyp in der Datasetstruktur auf Grundlage des Dynamics-Quelldatentyps:
+Konfigurieren Sie anhand der folgenden Zuordnungstabelle den entsprechenden Data Factory-Datentyp in der Datasetstruktur auf Grundlage des Dynamics-Quelldatentyps:
 
 | Dynamics-Datentyp | Data Factory-Zwischendatentyp | Als Quelle unterstützt | Als Senke unterstützt |
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode.BigInt | Long | ✓ | ✓ |
-| AttributeTypeCode.Boolean | Boolean | ✓ | ✓ |
+| AttributeTypeCode.Boolean | Boolescher Wert | ✓ | ✓ |
 | AttributeType.Customer | Guid | ✓ |  |
-| AttributeType.DateTime | Datetime | ✓ | ✓ |
-| AttributeType.Decimal | Decimal | ✓ | ✓ |
-| AttributeType.Double | Doppelt | ✓ | ✓ |
-| AttributeType.EntityName | String | ✓ | ✓ |
+| AttributeType.DateTime | DateTime | ✓ | ✓ |
+| AttributeType.Decimal | DECIMAL | ✓ | ✓ |
+| AttributeType.Double | Double | ✓ | ✓ |
+| AttributeType.EntityName | Zeichenfolge | ✓ | ✓ |
 | AttributeType.Integer | Int32 | ✓ | ✓ |
 | AttributeType.Lookup | Guid | ✓ |  |
-| AttributeType.ManagedProperty | Boolean | ✓ |  |
-| AttributeType.Memo | String | ✓ | ✓ |
-| AttributeType.Money | Decimal | ✓ |  |
+| AttributeType.ManagedProperty | Boolescher Wert | ✓ |  |
+| AttributeType.Memo | Zeichenfolge | ✓ | ✓ |
+| AttributeType.Money | DECIMAL | ✓ | ✓ |
 | AttributeType.Owner | Guid | ✓ | |
 | AttributeType.Picklist | Int32 | ✓ | ✓ |
 | AttributeType.Uniqueidentifier | Guid | ✓ | ✓ |
-| AttributeType.String | String | ✓ | ✓ |
-| AttributeType.State | Int32 | ✓ |  |
-| AttributeType.Status | Int32 | ✓ |  |
+| AttributeType.String | Zeichenfolge | ✓ | ✓ |
+| AttributeType.State | Int32 | ✓ | ✓ |
+| AttributeType.Status | Int32 | ✓ | ✓ |
 
 
 > [!NOTE]

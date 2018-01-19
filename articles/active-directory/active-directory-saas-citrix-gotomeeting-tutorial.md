@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: bcaf19f2-5809-4e1c-acbc-21a8d3498ccf
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 1c3ea5175b02e35e7c624ce936d59fd82163b0fc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4826dee82e62ffac70d7ca3d6dcfe005129de764
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>Tutorial: Azure Active Directory-Integration mit GoToMeeting
 
@@ -48,7 +48,7 @@ Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen 
 - Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptelementen:
+In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
 1. Hinzufügen von GoToMeeting aus dem Katalog
 2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
@@ -104,24 +104,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
     ![Dialogfeld „Einmaliges Anmelden“](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_samlbase.png)
 
-3. Klicken Sie im Abschnitt **Domäne und URLs für GoToMeeting** auf **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Aktionen aus.
+3. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für GoToMeeting** aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für GoToMeeting](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_ssourl.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für GoToMeeting](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://authentication.logmeininc.com/saml/sp`
-
-    b. Geben Sie im Textfeld **Antwort-URL** folgende URL ein: `https://authentication.logmeininc.com/saml/acs`
-
-    c. Geben Sie im Textfeld **Relayzustand** eine der folgenden URLs ein:
-
-    **Für GoToMeeting**: `https://global.gotomeeting.com`
-    
-    **Für GoToTraining**: `https://global.gototraining.com`
-
-    **Für GoToWebinar**: `https://global.gotowebinar.com`
-
-    **Für GoToAssist**: `https://app.gotoassist.com`
-
+    Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://login.citrixonline.com/saml/sp`.
 
 4. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
@@ -129,25 +116,25 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 5. Klicken Sie auf die Schaltfläche **Save** .
 
-    ![Schaltfläche „Einmaliges Anmelden konfigurieren“](./media/active-directory-saas-gotomeeting-tutorial/tutorial_general_400.png)
+    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/active-directory-saas-gotomeeting-tutorial/tutorial_general_400.png)
 
 6. Zum Generieren der **Metadaten**-URL führen Sie die folgenden Schritte aus:
 
     a. Klicken Sie auf **App-Registrierungen**.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
    
     b. Klicken Sie auf **Endpunkte**, um das Dialogfeld **Endpunkte** zu öffnen.  
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
 
     c. Klicken Sie auf die Schaltfläche „Kopieren“, um die **VERBUNDMETADATENDOKUMENT**-URL zu kopieren und in Editor einzufügen.
     
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
      
     d. Kehren Sie nun zur Eigenschaftenseite von **GoToMeeting** zurück, kopieren Sie die **Anwendungs-ID** mithilfe der Schaltfläche **Kopieren**, und fügen Sie sie in Editor ein.
  
-    ![Einmaliges Anmelden konfigurieren](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
 
     e. Generieren Sie die **Metadaten-URL** mithilfe des folgenden Musters:`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
 
@@ -155,7 +142,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![GoToMeeting-Konfiguration](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
 
-8. Melden Sie sich in einem anderen Browserfenster bei [GoToMeeting Organization Center](https://account.citrixonline.com/organization/administration/) an.
+8. Melden Sie sich in einem anderen Browserfenster bei [GoToMeeting Organization Center](https://organization.logmeininc.com/) an.
 
 9. Auf der Registerkarte **Identitätsanbieter** können Sie die Azure-Einstellungen konfigurieren, indem Sie entweder die generierte **Metadaten-URL** oder die heruntergeladene **Metadatendatei** oder **Manuell** angeben.
 
@@ -227,7 +214,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
 
-    d. Klicken Sie auf **Erstellen**.
+    d. Klicken Sie auf **Create**.
  
 ### <a name="create-a-gotomeeting-test-user"></a>Erstellen eines Testbenutzers für GoToMeeting
 

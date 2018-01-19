@@ -3,7 +3,7 @@ title: Automatische Betriebssystemupgrades mit Azure-VM-Skalierungsgruppen | Mic
 description: Erfahren Sie, wie Sie das Betriebssystem automatisch auf VM-Instanzen in einer Skalierungsgruppe aktualisieren.
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: gbowerman
+author: gatneil
 manager: jeconnoc
 editor: 
 tags: azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
-ms.author: guybo
-ms.openlocfilehash: 32358b23bb0a0a878e986150dd992513579d61c4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.date: 12/07/2017
+ms.author: negat
+ms.openlocfilehash: 145f4ec92b142a1585ba17bf6e49c7824cc32529
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Automatische Betriebssystemupgrades für Azure-VM-Skalierungsgruppen
 
@@ -39,10 +39,10 @@ Das automatische Betriebssystemupgrade weist folgende Merkmale auf:
 ## <a name="preview-notes"></a>Hinweise zur Vorschauversion 
 In der Vorschau gelten die folgenden Begrenzungen und Einschränkungen:
 
-- Automatische Betriebssystemupgrades unterstützen nur [drei Betriebssystem-SKUs](#supported-os-images). Es gibt keine SLA oder Garantien. Es wird empfohlen, automatische Upgrades in der Vorschau nicht auf kritische Produktionsworkloads anzuwenden.
+- Automatische Betriebssystemupgrades unterstützen nur [vier Betriebssystem-SKUs](#supported-os-images). Es gibt keine SLA oder Garantien. Es wird empfohlen, automatische Upgrades in der Vorschau nicht auf kritische Produktionsworkloads anzuwenden.
 - Unterstützung für Skalierungsgruppen im Service Fabric-Cluster wird bald verfügbar sein.
 - Azure-Datenträgerverschlüsselung (zurzeit in der Vorschau) wird derzeit **nicht** mit automatischen Betriebssystemupgrades für VM-Skalierungsgruppen unterstützt.
-- Die Portalumgebung wird in Kürze unterstützt.
+- Eine Portalumgebung ist in Kürze verfügbar.
 
 
 ## <a name="register-to-use-automatic-os-upgrade"></a>Registrieren für die Verwendung automatischer Betriebssystemupgrades
@@ -78,18 +78,29 @@ Derzeit werden die folgenden SKUs unterstützt (weitere werden später hinzugef�
     
 | Herausgeber               | Angebot         |  Sku               | Version  |
 |-------------------------|---------------|--------------------|----------|
+| Canonical               | UbuntuServer  | 16.04-LTS          | neueste   |
 | MicrosoftWindowsServer  | Windows Server | 2012-R2-Datacenter | neueste   |
 | MicrosoftWindowsServer  | Windows Server | 2016-Datacenter    | neueste   |
-| Canonical               | UbuntuServer  | 16.04-LTS          | neueste   |
+| MicrosoftWindowsServer  | Windows Server | 2016-Datacenter-Smalldisk | neueste   |
+
 
 
 ## <a name="application-health"></a>Anwendungsintegrität
-Während eines Betriebssystemupgrades werden VM-Instanzen in einer Skalierungsgruppe batchweise nacheinander aktualisiert. Das Upgrade sollte nur fortgesetzt werden, wenn die Kundenanwendung auf den aktualisierten VM-Instanzen fehlerfrei ist. Es wird empfohlen, dass die Anwendung dem Upgrademodul für das Skalierungsgruppen-Betriebssystem Integritätssignale zur Verfügung stellt. Standardmäßig wertet die Plattform während Betriebssystemupgrades den VM-Energiezustand und den Status der Erweiterungsbereitstellung aus, um festzustellen, ob eine VM-Instanz nach einem Upgrade fehlerfrei ist. Während des Betriebssystemupgrades einer VM-Instanz wird ihr Betriebssystemdatenträger durch einen neuen Datenträger ersetzt, der auf der neuesten Imageversion basiert. Nachdem das Betriebssystemupgrade abgeschlossen wurde, werden die konfigurierten Erweiterungen auf diesen VMs ausgeführt. Erst wenn alle Erweiterungen auf einem virtuellen Computer erfolgreich bereitgestellt wurden, wird die Anwendung als fehlerfrei angesehen. 
+Während eines Betriebssystemupgrades werden VM-Instanzen in einer Skalierungsgruppe batchweise nacheinander aktualisiert. Das Upgrade sollte nur fortgesetzt werden, wenn die Kundenanwendung auf den aktualisierten VM-Instanzen fehlerfrei ist. Es wird empfohlen, dass die Anwendung der Upgrade-Engine für das Skalierungsgruppen-Betriebssystem Integritätssignale zur Verfügung stellt. Standardmäßig wertet die Plattform während Betriebssystemupgrades den VM-Energiezustand und den Status der Erweiterungsbereitstellung aus, um festzustellen, ob eine VM-Instanz nach einem Upgrade fehlerfrei ist. Während des Betriebssystemupgrades einer VM-Instanz wird ihr Betriebssystemdatenträger durch einen neuen Datenträger ersetzt, der auf der neuesten Imageversion basiert. Nachdem das Betriebssystemupgrade abgeschlossen wurde, werden die konfigurierten Erweiterungen auf diesen VMs ausgeführt. Erst wenn alle Erweiterungen auf einem virtuellen Computer erfolgreich bereitgestellt wurden, wird die Anwendung als fehlerfrei angesehen. 
 
 Eine Skalierungsgruppe kann optional mit Anwendungsintegritätstests konfiguriert werden, um der Plattform genaue Informationen zum fortlaufenden Status der Anwendung bereitzustellen. Anwendungsintegritätstests sind benutzerdefinierte Lastenausgleichs-Prüfpunkte, die als Integritätssignal verwendet werden. Die auf einer Skalierungsgruppen-VM-Instanz ausgeführte Anwendung kann auf externe HTTP- oder TCP-Anforderungen reagieren und dadurch anzeigen, dass sie fehlerfrei ist. Weitere Informationen zur Funktionsweise von benutzerdefinierten Lastenausgleichstests finden Sie unter [Grundlegendes zu Lastenausgleichstests](../load-balancer/load-balancer-custom-probe-overview.md). Ein Anwendungsintegritätstest ist für automatische Betriebssystemupgrades nicht erforderlich, wird jedoch dringend empfohlen.
 
 Wenn die Skalierungsgruppe für die Verwendung mehrerer Platzierungsgruppen konfiguriert ist, müssen Tests mit einem [Standardlastenausgleich](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview) verwendet werden.
 
+### <a name="important-keep-credentials-up-to-date"></a>Wichtig: Ihre Anmeldeinformationen müssen aktuell sein
+Wenn Ihre Skalierungsgruppe Anmeldeinformationen zum Zugriff auf externe Ressourcen verwendet – wenn z.B. eine VM-Erweiterung konfiguriert wurde, die ein SAS-Token für das Speicherkonto verwendet –, müssen Sie sicherstellen, dass die Anmeldeinformationen immer auf dem neuesten Stand sind. Wenn die verwendeten Anmeldeinformationen (Zertifikate und Token eingeschlossen) abgelaufen sind, kommt es beim Upgrade zu einem Fehler, und der erste VM-Batch wechselt in einen fehlerhaften Zustand.
+
+Um nach einem Fehler bei der Ressourcenauthentifizierung die VMs wiederherzustellen und automatische Betriebssystemupgrades erneut zu aktivieren, führen Sie die folgenden Schritte aus:
+
+* Generieren Sie das Token (oder andere Anmeldeinformationen) neu, die an Ihre Erweiterungen übergeben werden.
+* Stellen Sie sicher, dass in der VM verwendete Anmeldeinformationen zur Kommunikation mit externen Entitäten aktuell sind.
+* Aktualisieren Sie Erweiterungen im Skalierungsgruppenmodell mit den neuen Token.
+* Stellen Sie die aktualisierte Skalierungsgruppe bereit, um alle VM-Instanzen – einschließlich der fehlerhaften – zu aktualisieren. 
 
 ### <a name="configuring-a-custom-load-balancer-probe-as-application-health-probe-on-a-scale-set"></a>Konfigurieren eines benutzerdefinierten Lastenausgleichstests als Anwendungsintegritätstest für eine Skalierungsgruppe
 Erstellen Sie als bewährte Methode einen Lastenausgleichstest explizit für die Skalierungsgruppenintegrität. Es kann derselbe Endpunkt für einen vorhandenen HTTP-Test oder einen TCP-Test verwendet werden, für einen Integritätstest ist jedoch möglicherweise ein anderes Verhalten als bei einem herkömmlichen Lastenausgleichstest erforderlich. Beispielsweise kann ein herkömmliche Lastenausgleichstest den Status „Fehlerhaft“ zurückgeben, wenn die Last der Instanz zu hoch ist, obwohl dies zum Ermitteln der Instanzintegrität bei einem automatischen Betriebssystemupgrade möglicherweise nicht angemessen ist. Konfigurieren Sie den Test so, dass eine hohe Stichprobenrate von unter zwei Minuten gilt.
@@ -141,7 +152,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -VMScaleSetName $vmssname -Virtual
 
 Im folgenden Beispiel werden automatische Upgrades für die Skalierungsgruppe *myVMSS* in der Ressourcengruppe *myResourceGroup* mit der Azure-Befehlszeilenschnittstelle (2.0.20 oder höher) konfiguriert:
 
-```azure-cli
+```azurecli
 rgname="myResourceGroup"
 vmssname="myVMSS"
 az vmss update --name $vmssname --resource-group $rgname --set upgradePolicy.AutomaticOSUpgrade=true
@@ -161,7 +172,7 @@ Get-AzureRmVmssRollingUpgrade -ResourceGroupName myResourceGroup -VMScaleSetName
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 Im folgenden Beispiel wird der Status der Skalierungsgruppe *myVMSS* in der Ressourcengruppe *myResourceGroup* mit der Azure-Befehlszeilenschnittstelle (2.0.20 oder höher) überprüft:
 
-```azure-cli
+```azurecli
 az vmss rolling-upgrade get-latest --resource-group myResourceGroup --name myVMSS
 ```
 
@@ -212,7 +223,7 @@ Für eine erweiterte Nutzung von Anwendungsintegritätstests führen Skalierungs
 5. Wenn der Kunde Anwendungsintegritätstests konfiguriert hat, wartet das Upgrade bis zu 5 Minuten darauf, dass die Tests fehlerfrei werden, dann wird unmittelbar mit dem nächsten Batch fortgefahren. Andernfalls wartet es 30 Minuten, bevor mit den nächsten Batch fortgefahren wird.
 6. Wenn weitere zu aktualisierende Instanzen verbleiben, wird für den nächsten Batch mit Schritt 1 fortgefahren, andernfalls ist das Upgrade beendet.
 
-Das Upgrademodul für das Skalierungsgruppen-Betriebssystem überprüft die allgemeine Integrität der VM-Instanzen, bevor die jeweiligen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere für die gleiche Zeit geplante oder nicht geplante Wartungen in Azure-Rechenzentren statt, die die Verfügbarkeit Ihrer virtuellen Computer beeinträchtigen können. Es ist daher möglich, dass vorübergehend mehr als 20 % der Instanzen nicht verfügbar sind. In solchen Fällen wird das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches beendet.
+Die Upgrade-Engine für das Skalierungsgruppen-Betriebssystem überprüft die allgemeine Integrität der VM-Instanzen, bevor die jeweiligen Batches aktualisiert werden. Beim Aktualisieren eines Batches finden eventuell andere für die gleiche Zeit geplante oder nicht geplante Wartungen in Azure-Rechenzentren statt, die die Verfügbarkeit Ihrer virtuellen Computer beeinträchtigen können. Es ist daher möglich, dass vorübergehend mehr als 20 % der Instanzen nicht verfügbar sind. In solchen Fällen wird das Upgrade der Skalierungsgruppe am Ende des aktuellen Batches beendet.
 
 
 ## <a name="deploy-with-a-template"></a>Bereitstellen mit einer Vorlage

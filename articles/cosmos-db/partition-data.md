@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 01/05/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f7f5e2939ed09c0fbb4eb81f066075553376ff57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0032a00883cedfe754e14293dc13a1009f6dd3a0
+ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partitionieren und Skalieren in Azure Cosmos DB
 
@@ -31,19 +31,29 @@ Partitionierung und Partitionsschlüssel werden im folgenden Azure Friday-Video 
 > 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Partitionierung in Azure Cosmos DB
-In Azure Cosmos DB können Sie schemalose Daten jeder Größe innerhalb von Millisekunden speichern und abfragen. Azure Cosmos DB stellt Container für das Speichern von Daten bereit, die als *Sammlungen* (für Dokumente), *Graphen* oder *Tabellen* bezeichnet werden. Container sind logische Ressourcen und können eine oder mehrere physische Partitionen bzw. einen oder mehrere Server umfassen. Die Anzahl der Partitionen wird von Azure Cosmos DB auf Basis der Speichergröße und des bereitgestellten Durchsatzes des Containers bestimmt. Jede Partition in Azure Cosmos DB verfügt über eine festgelegte Menge an zugeordnetem SSD-gestütztem Speicher und wird für eine hohe Verfügbarkeit repliziert. Die Partitionsverwaltung erfolgt vollständig über Azure Cosmos DB, Sie müssen also weder komplexen Code schreiben noch Ihre Partitionen verwalten. Für Azure Cosmos DB-Container gelten keine Obergrenzen hinsichtlich Speicherplatz und Durchsatz. 
+In Azure Cosmos DB können Sie schemalose Daten jeder Größe innerhalb von Millisekunden speichern und abfragen. Azure Cosmos DB stellt Container für das Speichern von Daten bereit, die als *Sammlungen* (für Dokumente), *Graphen* oder *Tabellen* bezeichnet werden. 
+
+Container sind logische Ressourcen und können eine oder mehrere physische Partitionen bzw. einen oder mehrere Server umfassen. Die Anzahl der Partitionen wird von Azure Cosmos DB auf Basis der Speichergröße und des bereitgestellten Durchsatzes des Containers bestimmt. 
+
+Eine physische Partition ist eine feste Menge an reserviertem SSD-gestütztem Speicher. Jede physische Partition wird repliziert, um Hochverfügbarkeit zu erzielen. Ein Container besteht aus mindestens einer physischen Partition. Die Verwaltung der physischen Partitionen erfolgt vollständig über Azure Cosmos DB, Sie müssen also weder komplexen Code schreiben noch Ihre Partitionen verwalten. Für Azure Cosmos DB-Container gelten keine Obergrenzen hinsichtlich Speicherplatz und Durchsatz. 
+
+Eine logische Partition ist eine Partition innerhalb einer physischen Partition, die alle Daten speichert, die mit einem einzelnen Partitionsschlüsselwert verknüpft sind. Eine logische Partition ist maximal 10 GB groß. Im folgenden Diagramm verfügt ein einzelner Container über drei logische Partitionen. Jede logische Partition speichert die Daten für jeweils einen Partitionsschlüssel: LAX, AMS oder MEL. Die Größe der logischen LAX-, AMS- bzw. MEL-Partitionen darf die Höchstgrenze für logische Partitionen von 10 GB nicht überschreiten. 
 
 ![Ressourcenpartitionierung](./media/introduction/azure-cosmos-db-partitioning.png) 
 
-Die Partitionierung ist für Ihre Anwendung transparent. Azure Cosmos DB unterstützt schnelle Lese- und Schreibvorgänge, Abfragen, Transaktionslogik, Konsistenzebenen und eine präzise Zugriffssteuerung über Methoden- bzw. API-Aufrufe einer einzigen Containerressource. Der Dienst übernimmt die Verteilung von Daten über Partitionen sowie das Routing von Abfrage-Anforderungen an die richtige Partition. 
+Wenn eine Sammlung die [Partitionierungsvoraussetzungen](#prerequisites) erfüllt, ist der Partitionierungsvorgang für Ihre Anwendung transparent. Azure Cosmos DB unterstützt schnelle Lese- und Schreibvorgänge, Abfragen, Transaktionslogik, Konsistenzebenen und eine präzise Zugriffssteuerung über Methoden- bzw. API-Aufrufe einer einzigen Containerressource. Der Dienst übernimmt die Verteilung von Daten auf physische und logische Partitionen sowie das Routing von Abfrageanforderungen an die richtige Partition. 
 
-Wie funktioniert die Partitionierung? Jedes Element muss zur eindeutigen Identifizierung über einen Partitionsschlüssel und einen Zeilenschlüssel verfügen. Der Partitionsschlüssel fungiert als logische Partition für Ihre Daten und bietet Azure Cosmos DB eine natürliche Grenze für die Verteilung von Daten über Partitionen hinweg. So funktioniert die Partitionierung in Azure Cosmos DB:
+## <a name="how-does-partitioning-work"></a>Wie funktioniert die Partitionierung?
 
-* Sie stellen einen Azure Cosmos DB-Container mit einem Durchsatz von `T` Anforderungen/Sek. bereit.
-* Im Hintergrund stellt Azure Cosmos DB die Partitionen bereit, die zum Verarbeiten von `T` Anforderungen/Sek. erforderlich sind. Wenn `T` höher ist als der maximale Durchsatz pro Partition `t`, stellt Azure Cosmos DB `N` = `T/t` Partitionen bereit.
-* Azure Cosmos DB ordnet den Schlüsselbereich der Partitionsschlüsselhashes den `N` Partitionen gleichmäßig zu. Daher hostet jede (physische) Partition 1-N Partitionsschlüsselwerte (logische Partitionen).
-* Wenn eine physische Partition `p` ihren Speichergrenzwert erreicht, teilt Azure Cosmos DB `p` nahtlos in zwei neue Partitionen (`p1` und `p2`) auf. Die Werte werden ungefähr zur Hälfte der Schlüssel auf die Partitionen aufgeteilt. Dieser Aufteilungsvorgang ist für Ihre Anwendung nicht sichtbar.
-* Ähnliches gilt, wenn Sie einen höheren Durchsatz als `t*N` bereitstellen: Azure Cosmos DB teilt mindestens eine Ihrer Partitionen auf, um den höheren Durchsatz zu unterstützen.
+Wie funktioniert die Partitionierung? Jedes Element muss zur eindeutigen Identifizierung über einen Partitionsschlüssel und einen Zeilenschlüssel verfügen. Der Partitionsschlüssel fungiert als logische Partition für Ihre Daten und bietet Azure Cosmos DB eine natürliche Grenze für die Verteilung von Daten über physische Partitionen hinweg. Denken Sie daran, dass sich die Daten für eine einzelne logische Partition innerhalb einer einzelnen physischen Partition befinden müssen, wobei die Verwaltung der physischen Partition durch Azure Cosmos DB erfolgt. 
+
+So funktioniert die Partitionierung in Azure Cosmos DB:
+
+* Sie stellen einen Azure Cosmos DB-Container mit einem Durchsatz von **T** Anforderungen pro Sekunden bereit.
+* Im Hintergrund stellt Azure Cosmos DB die Partitionen bereit, die zum Verarbeiten von **T** Anforderungen pro Sekunde erforderlich sind. Wenn **T** höher ist als der maximale Durchsatz pro Partition **t**, stellt Azure Cosmos DB **N = T/t** Partitionen bereit.
+* Azure Cosmos DB ordnet den Schlüsselbereich der Partitionsschlüsselhashes den **N** Partitionen gleichmäßig zu. Daher hostet jede (physische) Partition **1/N** Partitionsschlüsselwerte (logische Partitionen).
+* Wenn eine physische Partition **p** ihren Speichergrenzwert erreicht, teilt Azure Cosmos DB **p** nahtlos in zwei neue Partitionen (**p1** und **p2**) auf. Die Werte werden ungefähr zur Hälfte der Schlüssel auf die Partitionen aufgeteilt. Dieser Aufteilungsvorgang ist für Ihre Anwendung nicht sichtbar. Wenn eine physische Partition ihr Speicherlimit erreicht und alle Daten in der physischen Partition zum selben logischen Partitionsschlüssel gehören, erfolgt keine Aufteilung. Dies liegt daran, dass sich alle Daten für einen einzelnen logischen Partitionsschlüssel in derselben physischen Partition befinden müssen und somit die physische Partition nicht in p1 und p2 aufgeteilt werden kann. In diesem Fall sollte eine andere Partitionsschlüsselstrategie angewendet werden.
+* Wenn Sie einen höheren Durchsatz als **t*N** bereitstellen, teilt Azure Cosmos DB mindestens eine Ihrer Partitionen auf, um den höheren Durchsatz zu unterstützen.
 
 Die jeweilige Semantik für Partitionsschlüssel ist je nach Semantik der verschiedenen APIs geringfügig unterschiedlich, wie in der folgenden Tabelle dargestellt:
 
@@ -54,19 +64,28 @@ Die jeweilige Semantik für Partitionsschlüssel ist je nach Semantik der versch
 | Graph | Benutzerdefinierte Partitionsschlüsseleigenschaft | `id` (feststehend) | 
 | Table | `PartitionKey` (feststehend) | `RowKey` (feststehend) | 
 
-Azure Cosmos DB arbeitet mit hashbasierter Partitionierung. Wenn Sie ein Element schreiben, erstellt Azure Cosmos DB einen Hashwert für den Partitionsschlüsselwert und verwendet das Hashergebnis, um zu ermitteln, in welcher Partition das Element gespeichert werden soll. Azure Cosmos DB speichert alle Elemente mit dem gleichen Partitionsschlüssel in der gleichen physischen Partition. Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Sie müssen einen Eigenschaftsnamen auswählen, der eine Vielzahl von Werten zulässt und gleichmäßige Zugriffsmuster aufweist.
+Azure Cosmos DB arbeitet mit hashbasierter Partitionierung. Wenn Sie ein Element schreiben, erstellt Azure Cosmos DB einen Hashwert für den Partitionsschlüsselwert und verwendet das Hashergebnis, um zu ermitteln, in welcher Partition das Element gespeichert werden soll. Azure Cosmos DB speichert alle Elemente mit dem gleichen Partitionsschlüssel in der gleichen physischen Partition. Die Auswahl des Partitionsschlüssels ist eine wichtige Entscheidung, die Sie zur Entwurfszeit treffen müssen. Sie müssen einen Eigenschaftsnamen auswählen, der eine Vielzahl von Werten zulässt und gleichmäßige Zugriffsmuster aufweist. Wenn eine physische Partition ihr Speicherlimit erreicht und derselbe Partitionsschlüssel für alle Daten in der Partition vorhanden ist, gibt Azure Cosmos DB eine Fehlermeldung zurück, dass die maximale Größe des Partitionsschlüssels von 10 GB erreicht wurde, und die Partition wird nicht geteilt. Dies zeigt, dass die Wahl eines Partitionsschlüssels eine sehr wichtige Entscheidung ist.
 
 > [!NOTE]
 > Es hat sich bewährt, einen Partitionsschlüssel mit vielen unterschiedlichen Werten (mindestens Hunderte oder Tausende) auszuwählen.
 >
 
-Azure Cosmos DB-Container können *feststehend* oder *unbegrenzt* erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Bei einigen APIs kann der Partitionsschlüssel für Container mit fester Größe weggelassen werden. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 2.500 RU/s angeben.
+Azure Cosmos DB-Container können *mit fester Größe* oder *unbegrenzt* im Azure-Portal erstellt werden. Container mit fester Größe weisen eine Obergrenze von 10 GB und 10.000 RUs/Sek. (Request Units, Anforderungseinheiten) auf. Um einen unbegrenzten Container zu erstellen, müssen Sie einen Mindestdurchsatz von 1.000 RUs/Sek. und einen Partitionsschlüssel angeben.
 
 Sie sollten überprüfen, wie Ihre Daten auf Partitionen verteilt sind. Wechseln Sie zur Überprüfung im Portal zu Ihrem Azure Cosmos DB-Konto, und klicken Sie im Abschnitt **Überwachung** auf **Metrik**. Klicken Sie anschließend im rechten Bereich auf die Registerkarte **Speicher**, um anzuzeigen, wie Ihre Daten auf verschiedene physische Partitionen verteilt sind.
 
 ![Ressourcenpartitionierung](./media/partition-data/partitionkey-example.png)
 
 Die linke Abbildung zeigt das Ergebnis eines ungeeigneten Partitionsschlüssels und die rechte Abbildung das Ergebnis eines geeigneten Partitionsschlüssels. Sie sehen, dass in der linken Abbildung die Daten nicht gleichmäßig auf die Partitionen verteilt sind. Es empfiehlt sich, die Daten zu verteilen, sodass das Diagramm der rechten Abbildung ähnelt.
+
+<a name="prerequisites"></a>
+## <a name="prerequisites-for-partitioning"></a>Voraussetzungen für die Partitionierung
+
+Für physische Partitionen, die sich automatisch in **p1** und **p2** aufteilen, wie unter [Wie funktioniert die Partitionierung?](#how-does-partitioning-work) beschrieben, muss der Container mit einem Durchsatz von mindestens 1.000 RUs/Sek. erstellt und ein Partitionsschlüssel bereitgestellt werden. Wählen Sie beim Erstellen eines Containers im Azure-Portal für die Speicherkapazität die Option **Unbegrenzt**, um die Vorteile der Partitionierung und automatischen Skalierung zu nutzen. 
+
+Wenn Sie einen Container im Azure-Portal oder programmgesteuert erstellt haben, der anfängliche Durchsatz mindestens 1.000 RUs/Sek. betrug und Ihre Daten einen Partitionsschlüssel enthalten, können Sie die Vorteile der Partitionierung ohne Änderungen an Ihrem Container nutzen. Dies schließt Container **mit fester Größe** ein, solange der anfängliche Container mit mindestens 1.000 RUs/Sek. Durchsatz erstellt wurde und ein Partitionsschlüssel in den Daten vorhanden ist.
+
+Wenn Sie einen Container **mit fester Größe** ohne Partitionsschlüssel oder einen Container **mit fester Größe** mit einem Durchsatz von weniger als 1.000 RUs/Sek. erstellt haben, kann der Container nicht automatisch geteilt werden, wie in diesem Artikel beschrieben. Zur Migration von Daten aus einem solchen Container in einen unbegrenzten Container (mit einem Durchsatz von mindestens 1.000 RUs/Sek. und einem Partitionsschlüssel) müssen Sie das [Datenmigrationstool](import-data.md) oder die [Änderungsfeedbibliothek](change-feed.md) verwenden, um die Änderungen zu migrieren. 
 
 ## <a name="partitioning-and-provisioned-throughput"></a>Partitionierung und bereitgestellter Durchsatz
 Azure Cosmos DB ist auf vorhersagbare Leistung ausgelegt. Wenn Sie einen Container erstellen, reservieren Sie Durchsatz hinsichtlich der *[Anforderungseinheiten](request-units.md) (Request Units, RUs) pro Sekunde*. Jeder Anforderung wird eine Gebühr für Anforderungseinheiten zugewiesen, die sich proportional zur vom Vorgang genutzten Menge an Systemressourcen wie CPU, Arbeitsspeicher und E/A verhält. Der Lesevorgang eines Dokuments der Größe 1 KB mit einer Sitzungskonsistenz beansprucht eine Anforderungseinheit. Ein Lesevorgang entspricht einer RU, unabhängig von der Anzahl der gespeicherten Elemente oder der Anzahl gleichzeitiger Anforderungen, die parallel ausgeführt werden. Größere Elemente erfordern mehr Anforderungseinheiten. Wenn Sie die Größe Ihrer Entitäten sowie die von Ihrer Anwendung benötigte Anzahl an Lesevorgängen kennen, können Sie Ihrer Anwendung für den Lesevorgang exakt den benötigten Durchsatz bereitstellen. 
@@ -127,25 +146,18 @@ Ergebnisse:
 
 ### <a name="table-api"></a>Tabelle-API
 
-Bei der Tabellen-API geben Sie den Durchsatz für Tabellen in der appSettings-Konfiguration für Ihre Anwendung an.
-
-```xml
-<configuration>
-    <appSettings>
-      <!--Table creation options -->
-      <add key="TableThroughput" value="700"/>
-    </appSettings>
-</configuration>
-```
-
-Dann können Sie mit dem Azure Table Storage-SDK die Tabelle erstellen. Der Partitionsschlüssel wird implizit als `PartitionKey`-Wert erstellt. 
+Zum Erstellen einer Tabelle mithilfe der Tabellen-API von Azure Cosmos DB wenden Sie die CreateIfNotExists-Methode an. 
 
 ```csharp
 CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
 
 CloudTable table = tableClient.GetTableReference("people");
-table.CreateIfNotExists();
+table.CreateIfNotExists(throughput: 800);
 ```
+
+Der Durchsatz ist als Argument von CreateIfNotExists festgelegt.
+
+Der Partitionsschlüssel wird implizit als `PartitionKey`-Wert erstellt. 
 
 Mit folgendem Codeausschnitt können Sie eine einzelne Entität abrufen:
 

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d40f67c354e29f3a58c9d0f1967e0154b5b998d0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6b5c139766af9e166b12e8833c2ced8be08e743a
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="what-is-the-access-panel"></a>Was ist der Zugriffsbereich?
 
@@ -70,7 +70,33 @@ Nach der Authentifizierung können Sie mit den Anwendungen interagieren, die Ihr
 
 Die Mindestanforderung für den Zugriffsbereich ist ein Browser mit JavaScript-Unterstützung und CSS-Aktivierung. Damit ein Benutzer sich per kennwortbasiertem einmaligem Anmelden bei Anwendungen anmelden kann, muss die Erweiterung für den Zugriffsbereich im Browser installiert sein. Die Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung auswählen, die für kennwortbasiertes einmaliges Anmelden konfiguriert ist.
 
-Die Zugriffsbereichserweiterung ist derzeit für die Browser Internet Explorer 8 oder höher, Edge, Chrome und Firefox verfügbar.
+Die Zugriffsbereichserweiterung ist derzeit verfügbar für:
+-   Edge unter Windows 10 Anniversary Edition oder höher 
+
+-   Chrome – unter Windows 7 oder höher und MacOS x oder höher
+
+-   Firefox 26.0 oder höher – unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+
+-   Internet Explorer 8, 9, 10, 11 – unter Windows 7 oder höher (eingeschränkte Unterstützung)
+
+## <a name="my-apps-secure-sign-in-extension"></a>Erweiterung zur sicheren Anmeldung bei „Meine Apps“
+Mithilfe der Erweiterung können Benutzer das kennwortbasierte einmalige Anmelden nutzen. Nach der Installation können Benutzer auch zusätzliche Features aktivieren, indem sie auf **Melden Sie sich an, um loszulegen** klicken, um sich bei der Erweiterung anzumelden. 
+
+- Benutzer können sich direkt bei Apps anmelden, indem sie die **Anmelde-URL** der App aufrufen. Sobald der Benutzer zur Anmelde-URL der App navigiert, erkennt die Erweiterung dies und bietet dem Benutzer die Möglichkeit, sich von der Erweiterung aus anzumelden.
+- Benutzer können auch jede ihrer Apps über den Zugriffsbereich starten, indem sie die **Schnellsuche** der Erweiterung verwenden. 
+- Zudem zeigt die Erweiterung den Benutzern unter **Zuletzt verwendet** die drei Anwendungen an, die sie zuletzt gestartet haben.
+
+> [!NOTE]
+> Zusätzliche Features sind nur für Edge, Chrome und Firefox verfügbar.
+>
+>
+
+Bei Verwendung einer anderen Meine Apps-URL als „https://myapps.microsoft.com“ müssen Sie die Standard-URL durch Ausführen der folgenden Schritte konfigurieren:
+1. **Klicken Sie mit der rechten Maustaste** auf das Symbol für die Erweiterung, ohne bei der Erweiterung angemeldet zu sein.
+2. Klicken Sie im Menü auf **Meine Apps-URL auswählen**.
+3. **Wählen Sie** Ihre Standard-URL aus.
+4. Klicken Sie auf das Symbol für die Erweiterung.
+5. Melden Sie sich bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
 
 ## <a name="mobile-app-support"></a>Unterstützung für mobile Apps
 

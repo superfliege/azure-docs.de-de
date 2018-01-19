@@ -1,5 +1,5 @@
 ---
-title: "Gewusst wie: Verwalten der Geräteregistrierungen für Azure IoT Hub | Microsoft-Dokumentation"
+title: "Verwalten von Geräteregistrierungen mit dem Azure-Portal | Microsoft-Dokumentation"
 description: "Gewusst wie: Verwalten der Geräteregistrierungen für Ihren DPS-Dienst im Azure-Portal"
 services: iot-dps
 keywords: 
@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: c230e73f83d8acd0f142e037f70a80c9e0e4107e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 06cc215e5c4087c7a38937de10eaa066037ac444
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="how-to-manage-device-enrollments-in-the-iot-hub-device-provisioning-service"></a>Gewusst wie: Verwalten der Geräteregistrierungen im IoT Hub Device Provisioning-Dienst
+# <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Verwalten von Geräteregistrierungen mit dem Azure-Portal
 
 Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts oder einer Gruppe von Geräten, die sich zu einem beliebigen Zeitpunkt beim Azure IoT Hub Device Provisioning-Dienst registrieren können. Der Registrierungsdatensatz enthält die erste gewünschte Konfiguration für die Geräte im Rahmen dieser Registrierung, einschließlich des gewünschten IoT Hubs. Dieser Artikel zeigt Ihnen die Verwaltung von Geräteregistrierungen für Ihren Bereitstellungsdienst.
 
@@ -27,9 +27,9 @@ Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts ode
 
 Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu registrieren:
 
-1. Eine **Registrierungsgruppe** ist ein Eintrag für eine Gruppe von Geräten mit einem gemeinsamen Nachweismechanismus von X. 509-Zertifikaten, signiert von der gleichen Stammzertifizierungsstelle. Es empfiehlt sich, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind. Beachten Sie, dass Sie nur Geräte registrieren können, die den X. 509-Nachweismechanismus als *Registrierungsgruppen* verwenden. 
+* Eine **Registrierungsgruppe** ist ein Eintrag für eine Gruppe von Geräten, für die ein gemeinsamer Nachweismechanismus mit X.509-Zertifikaten verwendet wird, die durch dasselbe Signaturzertifikat signiert werden. Hierbei kann es sich um das [Stammzertifikat](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) oder das [Zwischenzertifikat](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate) handeln, das zum Erstellen des Gerätezertifikats auf einem physischen Gerät verwendet wird. Es empfiehlt sich, eine Registrierungsgruppe für eine große Anzahl von Geräten, die eine gewünschte Erstkonfiguration gemeinsam nutzen, oder für Geräte zu verwenden, die alle demselben Mandanten zugeordnet sind. Beachten Sie, dass Sie nur Geräte registrieren können, die den X. 509-Nachweismechanismus als *Registrierungsgruppen* verwenden. 
 
-    Sie können mit den folgenden Schritten im Portal eine Registrierungsgruppe für eine Gruppe von Geräten erstellen.
+    Sie können mit den folgenden Schritten im Portal eine Registrierungsgruppe für eine Gruppe von Geräten erstellen:
 
     1. Melden Sie sich beim Azure-Portal an, und klicken Sie im linken Menü auf **Alle Ressourcen**.
     2. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.
@@ -40,9 +40,9 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
         ![Registrierungsgruppe im Portal](./media/how-to-manage-enrollments/group-enrollment.png)
 
     
-2. Eine **individuelle Registrierung** ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden entweder X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Individuelle Registrierungen sollten für Geräte, die besondere Erstkonfigurationen erfordern, oder Geräte verwendet werden, die nur SAS-Tokens über das TPM oder das virtuelle TPM als Nachweismechanismus verwenden können. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
+* Eine **individuelle Registrierung** ist ein Eintrag für ein einzelnes Gerät, das registriert werden kann. Individuelle Registrierungen verwenden entweder X.509-Zertifikate oder SAS-Token (in einem physischen oder virtuellen TPM) als Nachweismechanismen. Individuelle Registrierungen sollten für Geräte, die besondere Erstkonfigurationen erfordern, oder Geräte verwendet werden, die nur SAS-Tokens über das TPM oder das virtuelle TPM als Nachweismechanismus verwenden können. Bei individuellen Registrierungen ist möglicherweise die gewünschte IoT Hub-Geräte-ID angegeben.
 
-    Sie können eine individuelle Registrierung im Portal mithilfe der folgenden Schritte erstellen. 
+    Sie können mit den folgenden Schritten eine individuelle Registrierung im Portal erstellen:
 
     1. Melden Sie sich beim Azure-Portal an, und klicken Sie im linken Menü auf **Alle Ressourcen**.
     2. Klicken Sie auf den Gerätebereitstellungsdienst, bei dem Sie Ihr Gerät aus der Liste der Ressourcen registrieren möchten.
@@ -55,7 +55,7 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
 
 
 ## <a name="update-an-enrollment-entry"></a>Aktualisieren eines Registrierungseintrags
-Sie können einen vorhandenen Registrierungseintrag im Portal mit den folgenden Schritten aktualisieren.
+Sie können mit den folgenden Schritten einen vorhandenen Registrierungseintrag im Portal aktualisieren:
 
 1. Öffnen Sie Ihren Gerätebereitstellungsdienst im Azure-Portal, und klicken Sie auf **Registrierungen verwalten**. 
 2. Navigieren Sie zu dem Registrierungseintrag, den Sie ändern möchten. Klicken Sie auf den Eintrag, worauf zusammenfassende Informationen zu Ihrer Geräteregistrierung geöffnet werden. 
@@ -66,7 +66,7 @@ Sie können einen vorhandenen Registrierungseintrag im Portal mit den folgenden 
 
 
 ## <a name="remove-a-device-enrollment"></a>Entfernen einer Geräteregistrierung
-In Fällen, in denen Ihre Geräte nicht in einem IoT Hub bereitgestellt werden müssen, können Sie den zugehörigen Registrierungseintrag im Portal mithilfe der folgenden Schritte entfernen.
+In Fällen, in denen Ihre Geräte nicht in einem IoT Hub bereitgestellt werden müssen, können Sie mit den folgenden Schritten den zugehörigen Registrierungseintrag im Portal entfernen:
 
 1. Öffnen Sie Ihren Gerätebereitstellungsdienst im Azure-Portal, und klicken Sie auf **Registrierungen verwalten**. 
 2. Navigieren Sie zu dem Registrierungseintrag, den Sie entfernen möchten, und wählen Sie ihn aus. 

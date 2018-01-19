@@ -1,5 +1,5 @@
 ---
-title: "Azure AD SSPR – Problembehandlung | Microsoft-Dokumentation"
+title: "Problembehandlung bei der Self-Service-Kennwortzurücksetzung – Azure Active Directory"
 description: "Azure AD Self-Service-Kennwortzurücksetzung – Problembehandlung"
 services: active-directory
 keywords: 
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 73c8ea046a5bdbeaca1b3f357fc41f0a6938db1e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c489cf13574c49161b2dde22500f4ab7478a928b
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung
 
@@ -86,7 +86,7 @@ Haben Sie Probleme mit der Self-Service-Kennwortzurücksetzung (Self-Service Pas
 | Der Dienst für die Kennwortzurücksetzung startet lokal nicht. Das Anwendungsereignisprotokoll des Azure AD Connect-Computers enthält den Fehler 6800. <br> <br> Nach der Integration können Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre Kennwörter nicht zurücksetzen. | Bei aktiviertem Kennwortrückschreiben ruft das Synchronisierungsmodul die Bibliothek für das Rückschreiben auf, um die Konfiguration (Integration) mittels Kommunikation mit dem Cloudintegrationsdienst durchzuführen. Fehler bei der Integration oder beim Start des WCF-Endpunkts ( Windows Communication Foundation) für das Kennwortrückschreiben führen zu Fehlern im Ereignisprotokoll auf Ihrem Azure AD Connect-Computer. <br> <br> Im Rahmen des Neustarts des ADSync-Diensts (Azure AD Sync) wird der WCF-Endpunkt gestartet, sofern das Kennwortrückschreiben konfiguriert wurde. Falls beim Starten des Endpunkts jedoch ein Fehler auftritt, wird der Fehler 6800 protokolliert, und der Synchronisierungsdienst wird gestartet. Dieses Ereignis bedeutet, dass der Endpunkt für das Kennwortrückschreiben nicht gestartet wurde. Die Ereignisprotokolldetails für dieses Ereignis (6800) geben – zusammen mit den von der PasswordResetService-Komponente generierten Ereignisprotokolleinträgen – an, warum der Endpunkt nicht gestartet werden kann. Überprüfen Sie diese Ereignisprotokollfehler, und versuchen Sie Azure AD Connect neu zu starten, wenn das Kennwortrückschreiben weiterhin nicht funktioniert. Sollte das Problem bestehen bleiben, versuchen Sie, das Kennwortrückschreiben zu deaktivieren und erneut zu aktivieren.
 | Wenn ein Benutzer versucht, ein Kennwort zurückzusetzen oder ein Konto mit aktiviertem Kennwortrückschreiben zu entsperren, tritt dabei ein Fehler auf. <br> <br> Darüber hinaus wird nach dem Entsperren ein Ereignis im Azure AD Connect-Ereignisprotokoll mit folgendem Inhalt angezeigt: „Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long“ (Das Synchronisierungsmodul hat einen Fehler zurückgegeben: hr=800700CE, message=Der Dateiname oder die Erweiterung ist zu lang.) | Suchen Sie das Active Directory-Konto für Azure AD Connect, und setzen Sie das Kennwort zurück, sodass es maximal 127 Zeichen umfasst. Öffnen Sie dann über das **Startmenü** den **Synchronisierungsdienst**. Navigieren Sie zu **Connectors**, und suchen Sie **Active Directory Connector**. Wählen Sie diesen Connector aus, und klicken Sie anschließend auf **Eigenschaften**. Navigieren Sie zur Seite **Anmeldeinformationen**, und geben Sie das neue Kennwort ein. Wählen Sie **OK**, um die Seite zu schließen. |
 | Im letzten Schritt des Azure AD Connect-Installationsvorgangs wird ein Fehler mit dem Hinweis angezeigt, dass das Kennwortrückschreiben nicht konfiguriert werden konnte. <br> <br> Das Azure AD Connect-Anwendungsereignisprotokoll enthält den Fehler 32009 mit dem Text „Error getting auth token“ (Fehler beim Abrufen des Authentifizierungstokens). | Dieser Fehler tritt in den folgenden beiden Fällen auf: <br><ul><li>Sie haben zu Beginn der Azure AD Connect-Installation ein falsches Kennwort für das globale Administratorkonto angegeben.</li><li>Sie haben versucht, zu Beginn der Azure AD Connect-Installation einen Verbundbenutzer für das globale Administratorkonto zu verwenden.</li></ul> Vergewissern Sie sich zur Behebung dieses Problems, dass Sie für den globalen Administrator, den Sie zu Beginn des Installationsprozesses angegeben haben, kein Verbundkonto verwenden. Vergewissern Sie sich außerdem, dass das angegebene Kennwort korrekt ist. |
-| Das Ereignisprotokoll für den Azure AD Connect-Computer enthält den Fehler 32002, der durch Ausführen von „PasswordResetService“ ausgelöst wurde. <br> <br> Der Fehler lautet: „Error Connecting to ServiceBus. The token provider was unable to provide a security token.“ (Fehler beim Herstellen einer Verbindung mit ServiceBus. Der Tokenanbieter konnte kein Sicherheitstoken bereitstellen.) | Ihre lokale Umgebung kann keine Verbindung mit dem Azure Service Bus-Endpunkt in der Cloud herstellen. Dieser Fehler wird durch eine Firewallregel verursacht, die eine ausgehende Verbindung mit einem bestimmten Port oder einer Webadresse blockiert. Weitere Informationen finden Sie unter [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md). Starten Sie nach dem Aktualisieren dieser Regeln den Azure AD Connect-Computer neu. Anschließend sollte das Kennwortrückschreiben wieder funktionieren. |
+| Das Ereignisprotokoll für den Azure AD Connect-Computer enthält den Fehler 32002, der durch Ausführen von „PasswordResetService“ ausgelöst wurde. <br> <br> Der Fehler lautet: „Error Connecting to ServiceBus. The token provider was unable to provide a security token.“ (Fehler beim Herstellen einer Verbindung mit „ServiceBus“. Der Tokenanbieter konnte kein Sicherheitstoken bereitstellen.) | Ihre lokale Umgebung kann keine Verbindung mit dem Azure Service Bus-Endpunkt in der Cloud herstellen. Dieser Fehler wird durch eine Firewallregel verursacht, die eine ausgehende Verbindung mit einem bestimmten Port oder einer Webadresse blockiert. Weitere Informationen finden Sie unter [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md). Starten Sie nach dem Aktualisieren dieser Regeln den Azure AD Connect-Computer neu. Anschließend sollte das Kennwortrückschreiben wieder funktionieren. |
 | Nachdem alles einige Zeit funktioniert hat, können Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung ihre Kennwörter nicht mehr zurücksetzen. | In seltenen Fällen kann der Dienst für das Kennwortrückschreiben möglicherweise nicht neu gestartet werden, wenn Azure AD Connect neu gestartet wurde. Prüfen Sie in diesen Fällen zunächst, ob das Kennwortrückschreiben lokal aktiviert ist. Hierzu können Sie entweder den Azure AD Connect-Assistenten oder PowerShell verwenden. (Eine entsprechende Anleitung finden Sie in den Abschnitten weiter oben.) Wenn das Feature aktiviert ist, versuchen Sie erneut, es zu aktivieren oder zu deaktivieren – entweder über die Benutzeroberfläche oder über PowerShell. Sollte das nicht funktionieren, deinstallieren Sie Azure AD Connect vollständig, und installieren Sie es neu. |
 | Verbundbenutzern oder Benutzern mit Kennworthashsynchronisierung, die versuchen, ihr Kennwort zurückzusetzen, wird ein Fehler angezeigt, wenn sie versuchen, ihr Kennwort zu übermitteln. Der Fehler deutet auf ein Dienstproblem hin. <br ><br> Zusätzlich zu diesem Problem wird in den lokalen Ereignisprotokollen während der Vorgänge zur Kennwortzurücksetzung möglicherweise ein Fehler mit dem Hinweis angezeigt, dass dem Verwaltungs-Agent der Zugriff verweigert wurde. | Sollten diese Fehler in Ihrem Ereignisprotokoll enthalten sein, stellen Sie sicher, dass das ADMA-Konto (Active Directory Management Agent, Active Directory-Verwaltungs-Agent), das im Rahmen der Konfiguration im Assistenten angegeben wurde, über die erforderlichen Berechtigungen für das Kennwortrückschreiben verfügt. <br> <br> Nach Erteilung der Berechtigung kann es bis zu einer Stunde dauern, bis die Berechtigungen über den Hintergrundtask `sdprop` auf dem Domänencontroller (DC) angewendet wurden. <br> <br> Damit die Kennwortzurücksetzung funktioniert, müssen die Berechtigungen in die Sicherheitsbeschreibung des Benutzerobjekts geschrieben werden, dessen Kennwort zurückgesetzt wird. Bis diese Berechtigung im Benutzerobjekt angezeigt werden, treten bei der Kennwortzurücksetzung weiterhin Zugriffsverweigerungsfehler auf. |
 | Verbundbenutzern oder Benutzern mit Kennworthashsynchronisierung, die versuchen, ihr Kennwort zurückzusetzen, wird nach der Kennwortübermittlung ein Fehler angezeigt. Der Fehler deutet auf ein Dienstproblem hin. <br> <br> Darüber hinaus wird im Ereignisprotokoll bei Vorgängen zur Kennwortzurücksetzung für den Azure AD Connect-Dienst möglicherweise ein Fehler mit dem Hinweis auf ein nicht gefundenes Objekt angezeigt. | Dieser Fehler deutet üblicherweise darauf hin, dass das Synchronisierungsmodul entweder das Benutzerobjekt im Azure AD-Connectorbereich oder das verknüpfte Metaverse- oder Azure AD-Connectorbereichsobjekt nicht gefunden hat. <br> <br> Stellen Sie zur Behandlung dieses Problems sicher, dass für den Benutzer tatsächlich eine Synchronisierung der lokalen Umgebung über die aktuelle Azure AD Connect-Instanz zu Azure AD erfolgt, und untersuchen Sie den Zustand des Objekts in den Connectorbereichen und im Metaverse (MV). Vergewissern Sie sich, dass das AD CS-Objekt (Active Directory-Zertifikatdienste) über die Regel „Microsoft.InfromADUserAccountEnabled.xxx“ mit dem MV-Objekt verbunden ist.|
@@ -99,7 +99,7 @@ Eine bewährte Methode bei der Problembehandlung für das Kennwortrückschreiben
 
 ### <a name="if-the-source-of-the-event-is-adsync"></a>Ereignisquelle „ADSync“
 
-| Code | Name oder Meldung | Beschreibung |
+| Code | Name oder Meldung | BESCHREIBUNG |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619: “A restriction prevents the password from being changed to the current one specified.” (BAIL: MMS(4924) 0x80230619: Eine Einschränkung verhindert, dass das Kennwort in die aktuelle Angabe geändert wird.) | Dieses Ereignis tritt auf, wenn der Dienst für das Kennwortrückschreiben versucht, ein Kennwort für Ihr lokales Verzeichnis festzulegen, das die in der Domäne geltenden Anforderungen im Hinblick auf Alter, Verlauf, Komplexität oder Filterung für Kennwörter nicht erfüllt. <br> <br> Wenn Sie ein Mindestkennwortalter festgelegt haben und das Kennwort kürzlich geändert wurde, können Sie das Kennwort erst wieder ändern, wenn es das für Ihre Domäne festgelegte Kennwortalter erreicht hat. Zu Testzwecken sollte das Mindestalter auf 0 festgelegt werden. <br> <br> Wenn Sie Anforderungen für den Kennwortverlauf festgelegt haben, müssen Sie ein Kennwort auswählen, das die letzten *n* Male nicht verwendet wurde, wobei *n* für die Einstellung des Kennwortverlaufs steht. Wenn Sie ein Kennwort auswählen, das die letzten *n* Male verwendet wurde, tritt ein Fehler auf. Zu Testzwecken sollte der Kennwortverlauf auf 0 festgelegt werden. <br> <br> Wenn Anforderungen an die Kennwortkomplexität gelten, werden diese erzwungen, wenn der Benutzer versucht, ein Kennwort zu ändern oder zurückzusetzen. <br> <br> Wenn Sie Kennwortfilter aktiviert haben und ein Benutzer versucht, ein Kennwort auszuwählen, das nicht den Filterkriterien entspricht, tritt bei der Kennwortänderung oder -zurücksetzung ein Fehler auf. |
 | 6329 | MMS(3040): admaexport.cpp(2837): Die LDAP-Kennwortrichtliniensteuerung ist auf dem Server nicht vorhanden. | Dieses Problem tritt auf, wenn die Steuerung „LDAP_SERVER_POLICY_HINTS_OID“ (1.2.840.113556.1.4.2066) auf den DCs nicht aktiviert ist. Die Steuerung muss aktiviert werden, um das Kennwortrückschreiben-Feature verwenden zu können. Hierzu müssen die DCs mindestens über Windows Server 2008 (mit dem neuesten SP) verfügen. Falls Ihre Domänencontroller mit 2008 (vor R2) betrieben werden, müssen Sie auch den [Hotfix KB2386717](http://support.microsoft.com/kb/2386717) anwenden. |
@@ -107,7 +107,7 @@ Eine bewährte Methode bei der Problembehandlung für das Kennwortrückschreiben
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Ereignisquelle „PasswordResetService“
 
-| Code | Name oder Meldung | Beschreibung |
+| Code | Name oder Meldung | BESCHREIBUNG |
 | --- | --- | --- |
 | 31001 | PasswordResetStart | Dieses Ereignis gibt an, dass der lokale Dienst eine aus der Cloud stammende Anforderung zur Kennwortzurücksetzung für einen Verbundbenutzer oder einen Benutzer mit Kennworthashsynchronisierung erkannt hat. Hierbei handelt es sich jeweils um das erste Ereignis eines Rückschreibvorgangs für Kennwortzurücksetzungen. |
 | 31002 | PasswordResetSuccess | Dieses Ereignis gibt an, dass ein Benutzer im Zuge einer Kennwortzurücksetzung ein neues Kennwort ausgewählt hat. Das Kennwort wurde überprüft und erfüllt die Kennwortanforderungen des Unternehmens. Es wurde erfolgreich in die lokale Active Directory-Umgebung zurückgeschrieben. |
@@ -165,7 +165,18 @@ Im Allgemeinen empfiehlt es sich, diese Schritte in der angegebenen Reihenfolge 
 
 ### <a name="confirm-network-connectivity"></a>Bestätigen der Netzwerkkonnektivität
 
-Die häufigste Fehlerursache besteht darin, dass die Firewall und/oder Proxyports sowie Leerlauftimeouts falsch konfiguriert sind. Weitere Informationen finden Sie im Artikel [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) unter „Konnektivität“.
+Die häufigste Fehlerursache besteht darin, dass die Firewall und/oder Proxyports sowie Leerlauftimeouts falsch konfiguriert sind. 
+
+Für Azure AD Connect, Version 1.1.443.0 und höher, benötigen Sie ausgehenden HTTPS-Zugriff auf Folgendes:
+
+   - passwordreset.microsoftonline.com
+   - servicebus.windows.net
+
+Mehr Granularität bietet die aktualisierte Liste der [IP-Bereiche für Microsoft Azure-Rechenzentren](https://www.microsoft.com/download/details.aspx?id=41653), die jeden Mittwoch aktualisiert wird und jeweils am darauffolgenden Montag in Kraft tritt.
+
+Weitere Informationen finden Sie im Artikel [Voraussetzungen für Azure AD Connect](./connect/active-directory-aadconnect-prerequisites.md) unter „Konnektivität“.
+
+
 
 ### <a name="restart-the-azure-ad-connect-sync-service"></a>Neustarten des Azure AD Connect-Synchronisierungsdiensts
 
