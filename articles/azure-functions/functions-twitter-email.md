@@ -17,10 +17,10 @@ ms.date: 12/08/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 9402dbbf66bbbf7ff23f3fc29cbb38f8aa8615e6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-a-function-that-integrates-with-azure-logic-apps"></a>Erstellen einer Funktion, die in Azure Logic Apps integriert ist
 
@@ -51,7 +51,7 @@ Führen Sie nun diese Schritte zum Erstellen Ihrer Funktionen-App durch, sofern 
 
 Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Verwenden Sie die Textanalyse-API, um die Stimmungslage der überwachten Tweets zu ermitteln.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 2. Klicken Sie in der linken oberen Ecke des Azure-Portals auf die Schaltfläche **Neu**.
 
@@ -62,7 +62,7 @@ Die Cognitive Services-APIs sind in Azure als einzelne Ressourcen verfügbar. Ve
     | Einstellung      |  Empfohlener Wert   | Beschreibung                                        |
     | --- | --- | --- |
     | **Name** | MyCognitiveServicesAccnt | Wählen Sie einen eindeutigen Kontonamen. |
-    | **Standort** | USA (Westen) | Verwenden Sie den nächstgelegenen Standort. |
+    | **Location** | USA (Westen) | Verwenden Sie den nächstgelegenen Standort. |
     | **Preisstufe** | F0 | Beginnen Sie mit dem niedrigsten Tarif. Wenn die Aufrufe nicht ausreichen, können Sie einen höheren Tarif festlegen.|
     | **Ressourcengruppe** | myResourceGroup | Verwenden Sie für alle Dienste in diesem Tutorial dieselbe Ressourcengruppe.|
 
@@ -145,7 +145,7 @@ Sie verfügen nun über eine Funktion zum Kategorisieren von Stimmungswerten. Al
     | ----------------- | ------------ | ------------- |
     | **Name** | TweetSentiment | Wählen Sie einen geeigneten Namen für Ihre App. |
     | **Ressourcengruppe** | myResourceGroup | Wählen Sie dieselbe vorhandene Ressourcengruppe wie zuvor. |
-    | **Standort** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe aus. |    
+    | **Location** | USA (Ost) | Wählen Sie einen Standort in Ihrer Nähe aus. |    
 
 4. Aktivieren Sie **An Dashboard anheften**, und klicken Sie auf **Erstellen**, um die Logik-App zu erstellen. 
 
@@ -165,7 +165,7 @@ Erstellen Sie zuerst eine Verbindung mit Ihrem Twitter-Konto. Die Logik-App füh
 
     ![Twitter-Connectoreinstellungen](media/functions-twitter-email/azure_tweet.png)
 
-    | Einstellung      |  Empfohlener Wert   | Beschreibung                                        |
+    | Einstellung      |  Empfohlener Wert   | BESCHREIBUNG                                        |
     | ----------------- | ------------ | ------------- |
     | **Suchtext** | #Azure | Verwenden Sie ein Hashtag, das beliebt genug ist, damit im gewählten Zeitraum neue Tweets generiert werden. Wenn Sie den Free-Tarif verwenden und Ihr Hashtag eine zu hohe Beliebtheit aufweist, kann es passieren, dass das Transaktionskontingent Ihrer Cognitive Services-API schnell aufgebraucht ist. |
     | **Frequency** | Minute | Die Häufigkeitseinheit, die zum Abfragen von Twitter verwendet wird.  |
@@ -228,7 +228,7 @@ Der letzte Teil des Workflows ist das Auslösen einer E-Mail, wenn der Wert für
 
     ![Konfigurieren Sie die E-Mail für die Aktion „E-Mail senden“.](media/functions-twitter-email/send_email.png)
 
-    | Einstellung      |  Empfohlener Wert   | Beschreibung  |
+    | Einstellung      |  Empfohlener Wert   | BESCHREIBUNG  |
     | ----------------- | ------------ | ------------- |
     | **An** | Geben Sie Ihre E-Mail-Adresse ein | Die E-Mail-Adresse, an die die Benachrichtigung gesendet wird. |
     | **Betreff** | Negative Tweet-Stimmung erkannt  | Die Betreffzeile der E-Mail-Benachrichtigung.  |

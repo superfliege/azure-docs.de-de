@@ -17,10 +17,10 @@ ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: 47b4d70c991bd618ea4ea6e5d2fd1dea86911798
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Standortbedingungen beim bedingten Zugriff in Azure Active Directory 
 
@@ -39,7 +39,7 @@ Azure AD ermöglicht das einmalige Anmelden bei Geräten, Apps und Diensten von 
 Ein Standort ist eine Bezeichnung für einen Netzwerkspeicherort, entweder in Form eines benannten Standorts oder von vertrauenswürdigen IPs aufgrund von mehrstufiger Authentifizierung.
 
 
-## <a name="named-locations"></a>Benannte Standorte 
+## <a name="named-locations"></a>Benannte Orte 
 
 Mithilfe von benannten Standorten können Sie logische Gruppierungen von IP-Adressbereichen, Ländern und Regionen erstellen. 
 
@@ -92,17 +92,17 @@ Wenn bei beiden Schritten ein Fehler auftritt, wird ein Benutzer nicht mehr als 
 
 Beim Konfigurieren der Standortbedingung können Sie zwischen diesen Optionen wählen:
 
-- Alle Standorte 
-- Alle vertrauenswürdigen Standorte
-- Ausgewählte Standorte
+- Jeden beliebigen Speicherort 
+- Alle vertrauenswürdigen Speicherorte
+- Ausgewählte Speicherorte
 
 ![Standorte](./media/active-directory-conditional-access-locations/01.png)
 
-### <a name="any-location"></a>Alle Standorte
+### <a name="any-location"></a>Jeden beliebigen Speicherort
 
 Standardmäßig bewirkt das Aktivieren von **Alle Standorte**, dass eine Richtlinie auf alle IP-Adressen angewendet wird, was jede beliebige Adresse im Internet bedeutet. Diese Einstellung ist nicht auf IP-Adressen beschränkt, die von Ihnen als benannter Standort konfiguriert wurden. Wenn Sie **Alle Standorte** aktivieren, können Sie bestimmte Standorte trotzdem noch von einer Richtlinie ausschließen. Beispielsweise können Sie eine Richtlinie auf alle Standorte mit Ausnahme vertrauenswürdiger Standorte anwenden, um den Geltungsbereich auf alle Standorte mit Ausnahme des Unternehmensnetzwerks festzulegen.
 
-### <a name="all-trusted-locations"></a>Alle vertrauenswürdigen Standorte
+### <a name="all-trusted-locations"></a>Alle vertrauenswürdigen Speicherorte
 
 Diese Option gilt für:
 
@@ -110,7 +110,7 @@ Diese Option gilt für:
 - **Für MFA vertrauenswürdige IPs** (sofern konfiguriert)
 
 
-### <a name="selected-locations"></a>Ausgewählte Standorte
+### <a name="selected-locations"></a>Ausgewählte Speicherorte
 
 Mit dieser Option können Sie einen oder mehrere benannte Speicherorte auswählen. Damit eine Richtlinie mit dieser Einstellung gilt, muss ein Benutzer von einem der ausgewählten Standorte aus eine Verbindung herstellen. Wenn Sie auf **Auswählen** klicken, wird das Steuerelement für die Auswahl von benannten Netzwerken geöffnet und zeigt die Liste der benannten Netzwerke an. In dieser Liste ist außerdem zu sehen, ob der Netzwerkstandort als vertrauenswürdig gekennzeichnet wurde. Der benannte Standort, der als **Für MFA vertrauenswürdige IPs** bezeichnet ist, wird zum Einschließen der IP-Einstellungen verwendet, die auf der Einstellungsseite des mehrstufigen Authentifizierungsdiensts konfiguriert werden können.
 

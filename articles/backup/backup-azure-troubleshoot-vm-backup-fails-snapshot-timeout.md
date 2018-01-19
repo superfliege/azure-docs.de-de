@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
-ms.author: genli;markgal;
-ms.openlocfilehash: a07fb9388f1e83bd167cf7c65cd3cd1e4f51ecd1
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 01/09/2018
+ms.author: genli;markgal;sogup;
+ms.openlocfilehash: 5eb326dfd89d9cc64eb0e05286e64c87e090e0a1
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Behandeln von Agent- oder erweiterungsbezogenen Problemen in Azure Backup
 
@@ -28,12 +28,20 @@ Dieser Artikel enthält Schritte für die Problembehebung bei Sicherungsfehlern,
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]
 
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM-Agent kann nicht mit Azure Backup kommunizieren
+
+> [!NOTE]
+> Führen Sie den folgenden Befehl für die betroffenen VMs aus, wenn dieser Fehler für Ihre Azure Linux-VM-Sicherungen seit dem 4. Januar 2018 auftritt:
+
+    sudo rm -f /var/lib/waagent/*.[0-9]*.xml
+
 Nachdem Sie einen virtuellen Computer für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem mit dem VM-Agent kommuniziert wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Eine der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird, und dies kann wiederum zu einem Backup-Fehler führen. Führen Sie die folgenden Schritte zur Problembehandlung in der angegebenen Reihenfolge aus, und wiederholen Sie den Vorgang.
+
 ##### <a name="cause-1-the-vm-has-no-internet-accessthe-vm-has-no-internet-access"></a>Ursache 1: [Der virtuelle Computer kann nicht auf das Internet zugreifen.](#the-vm-has-no-internet-access)
 ##### <a name="cause-2-the-agent-is-installed-in-the-vm-but-is-unresponsive-for-windows-vmsthe-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Ursache 2: [Der Agent ist auf dem virtuellen Computer installiert, reagiert aber nicht (bei virtuellen Windows-Computern)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms).
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Ursache 3: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Ursache 4: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>Ursache 5: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden.](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-6-azure-classic-vms-may-require-additional-step-to-complete-registrationazure-classic-vms-may-require-additional-step-to-complete-registration"></a>Ursache 6: [Klassische Azure-VMs erfordern möglicherweise einen zusätzlichen Schritt zum Abschließen der Registrierung.](#azure-classic-vms-may-require-additional-step-to-complete-registration)
 
 ## <a name="snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>Fehler beim Momentaufnahmevorgang aufgrund fehlender Netzwerkkonnektivität auf dem virtuellen Computer
 Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, wird der Auftrag von Backup initiiert, indem die Kommunikation mit der VM-Sicherungserweiterung durchgeführt wird, um eine Zeitpunkt-Momentaufnahme zu erstellen. Eine der folgenden Bedingungen kann verhindern, dass die Momentaufnahme ausgelöst wird, und dies kann wiederum zu einem Backup-Fehler führen. Führen Sie die folgenden Schritte zur Problembehandlung in der angegebenen Reihenfolge aus, und wiederholen Sie den Vorgang.
@@ -65,6 +73,7 @@ Nachdem Sie eine VM für den Azure Backup-Dienst registriert und geplant haben, 
 ##### <a name="cause-3-the-agent-installed-in-the-vm-is-out-of-date-for-linux-vmsthe-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Ursache 3: [Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)
 ##### <a name="cause-4-the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-takenthe-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Ursache 4: [Der Momentaufnahmestatus kann nicht abgerufen werden, oder es kann keine Momentaufnahme erstellt werden.](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)
 ##### <a name="cause-5-the-backup-extension-fails-to-update-or-loadthe-backup-extension-fails-to-update-or-load"></a>Ursache 5: [Die Sicherungserweiterung kann nicht aktualisiert oder geladen werden.](#the-backup-extension-fails-to-update-or-load)
+##### <a name="cause-6-backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lockbackup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>Ursache 6: [Der Sicherungsdienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen.](#backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock)
 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>Die angegebene Datenträgerkonfiguration wird nicht unterstützt.
 
@@ -99,7 +108,7 @@ Probieren Sie eine der hier angegebenen Methoden aus, um dieses Problem zu löse
 1. Wenn Netzwerkeinschränkungen bestehen (beispielsweise in Form einer Netzwerksicherheitsgruppe), ist es ratsam, einen HTTP-Proxyserver zum Weiterleiten des Datenverkehrs bereitzustellen.
 2. Fügen Sie der Netzwerksicherheitsgruppe, falls vorhanden, Regeln hinzu, um den Zugriff auf das Internet über den HTTP-Proxyserver zuzulassen.
 
-Informationen dazu, wie Sie einen HTTP-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-vms-prepare.md#using-an-http-proxy-for-vm-backups).
+Informationen dazu, wie Sie einen HTTP-Proxy für VM-Sicherungen einrichten, finden Sie unter [Vorbereiten der Umgebung für die Sicherung virtueller Azure-Computer](backup-azure-arm-vms-prepare.md#establish-network-connectivity).
 
 Falls Sie Managed Disks verwenden, müssen Sie eventuell einen zusätzlichen Port (8443) für die Firewalls öffnen.
 
@@ -115,7 +124,7 @@ Der VM-Agent wurde möglicherweise beschädigt, oder der Dienst wurde angehalten
 6. Die Windows Guest Agent-Dienste sollten dann in Dienste angezeigt werden
 7. Versuchen Sie, eine On-Demand-/Ad-hoc-Sicherung auszuführen, indem Sie im Portal auf „Jetzt sichern“ klicken.
 
-Vergewissern Sie sich außerdem, dass im System des virtuellen Computers **[.NET 4.5 installiert](https://docs.microsoft.com/en-us/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)** ist. Dies ist für die Kommunikation des VM-Agent mit dem Dienst erforderlich
+Vergewissern Sie sich außerdem, dass im System des virtuellen Computers **[.NET 4.5 installiert](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed)** ist. Dies ist für die Kommunikation des VM-Agent mit dem Dienst erforderlich
 
 ### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Der auf dem virtuellen Computer installierte Agent ist veraltet (bei virtuellen Linux-Computern).
 
@@ -183,4 +192,49 @@ Gehen Sie wie folgt vor, um die Erweiterung zu deinstallieren:
 6. Klicken Sie auf **Deinstallieren**.
 
 Hiermit wird bewirkt, dass die Erweiterung während der nächsten Sicherung neu installiert wird.
+
+### <a name="azure-classic-vms-may-require-additional-step-to-complete-registration"></a>Klassische Azure-VMs erfordern möglicherweise einen zusätzlichen Schritt zum Abschließen der Registrierung.
+Der Agent in klassischen Azure-VMs muss registriert werden, damit eine Verbindung mit dem Sicherungsdienst hergestellt und die Sicherung gestartet werden kann.
+
+#### <a name="solution"></a>Lösung
+
+Nach der Installation des VM-Gast-Agents starten Sie Azure PowerShell. <br>
+1. Verwenden Sie zur Anmeldung beim Azure-Konto Folgendes: <br>
+       `Login-AzureAsAccount`<br>
+2. Überprüfen Sie, ob die ProvisionGuestAgent-Eigenschaft der VM auf TRUE festgelegt ist, indem Sie die folgenden Befehle ausführen: <br>
+        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
+        `$vm.VM.ProvisionGuestAgent`<br>
+3. Wenn die Eigenschaft auf FALSE festgelegt ist, führen Sie die folgenden Befehle aus, um sie auf TRUE zu setzen:<br>
+        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
+        `$vm.VM.ProvisionGuestAgent = $true`<br>
+4. Führen Sie dann den folgenden Befehl aus, um die VM zu aktualisieren: <br>
+        `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
+5. Versuchen Sie, die Sicherung neu zu starten. <br>
+
+### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>Der Sicherungsdienst ist aufgrund einer Ressourcengruppensperre nicht berechtigt, die alten Wiederherstellungspunkte zu löschen.
+Dieses Problem betrifft speziell verwaltete VMs, bei denen der Benutzer die Ressourcengruppe sperrt und der Sicherungsdienst die älteren Wiederherstellungspunkte nicht löschen kann. Aus diesem Grund treten bei neuen Sicherungen Fehler auf, da das Back-End einen Grenzwert von maximal 18 Wiederherstellungspunkten vorgibt.
+
+#### <a name="solution"></a>Lösung
+
+Um das Problem zu beheben, führen Sie die folgenden Schritte aus, damit die Wiederherstellungspunktsammlung entfernt werden kann: <br>
+ 
+1. Entfernen Sie die Sperre der Ressourcengruppe, in der sich die VM befindet. 
+     
+2. Installieren Sie ARMClient mithilfe von Chocolatey: <br>
+   https://github.com/projectkudu/ARMClient
+     
+3. Melden Sie sich beim ARMClient an: <br>
+             `.\armclient.exe login`
+         
+4. Rufen Sie die zur VM gehörigen Wiederherstellungspunktsammlung ab: <br>
+    `.\armclient.exe get https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30`
+
+    Beispiel: `.\armclient.exe get https://management.azure.com/subscriptions/f2edfd5d-5496-4683-b94f-b3588c579006/resourceGroups/winvaultrg/providers/Microsoft.Compute/restorepointcollections/AzureBackup_winmanagedvm?api-version=2017-03-30`
+             
+5. Löschen Sie die Wiederherstellungspunktsammlung: <br>
+            `.\armclient.exe delete https://management.azure.com/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Compute/restorepointcollections/AzureBackup_<VM-Name>?api-version=2017-03-30` 
+ 
+6. Bei der nächsten geplanten Sicherung werden automatisch eine Wiederherstellungspunktsammlung und neue Wiederherstellungspunkte generiert. 
+ 
+7. Das Problem tritt erneut auf, wenn Sie die Ressourcengruppe wieder sperren, da die Anzahl von Wiederherstellungspunkten auf 18 begrenzt ist und die Sicherungen nach Erreichen dieses Grenzwerts nicht ausgeführt werden können. 
 

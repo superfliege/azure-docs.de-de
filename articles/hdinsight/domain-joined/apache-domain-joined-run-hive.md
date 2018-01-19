@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
 ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>Konfigurieren von Hive-Richtlinien in HDInsight mit Domänenverknüpfung
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.
@@ -82,7 +82,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
 ## <a name="create-hive-odbc-data-source"></a>Erstellen einer Hive ODBC-Datenquelle
 Die Anleitung finden Sie unter [Erstellen einer Hive ODBC-Datenquelle](../hadoop/apache-hadoop-connect-excel-hive-odbc-driver.md).  
 
- | Eigenschaft  |Beschreibung |
+ | Eigenschaft  |BESCHREIBUNG |
  | --- | --- |
  | Name der Datenquelle | Geben Sie einen Namen für die Datenquelle an. |
  | Host | Geben Sie „&lt;HDInsightClusterName>.azurehdinsight.net“ ein. Beispiel: myHDICluster.azurehdinsight.net |
@@ -92,7 +92,7 @@ Die Anleitung finden Sie unter [Erstellen einer Hive ODBC-Datenquelle](../hadoop
  | Mechanismus | Wählen Sie **Azure HDInsight Service** aus. |
  | HTTP-Pfad | Lassen Sie dieses Feld leer. |
  | Benutzername | Geben Sie hiveuser1@contoso158.onmicrosoft.com ein. Aktualisieren Sie ggf. den Domänennamen, falls er sich unterscheidet. |
- | Kennwort | Geben Sie das Kennwort für „hiveuser1“ ein. |
+ | Password | Geben Sie das Kennwort für „hiveuser1“ ein. |
 
 Klicken Sie vor dem Speichern der Datenquelle auf **Testen**.
 
