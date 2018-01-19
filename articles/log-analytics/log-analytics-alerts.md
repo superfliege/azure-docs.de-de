@@ -4,7 +4,7 @@ description: "Mit Warnungen in Log Analytics werden wichtige Informationen in Ih
 services: log-analytics
 documentationcenter: 
 author: bwren
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: 6cfd2a46-b6a2-4f79-a67b-08ce488f9a91
 ms.service: log-analytics
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2017
+ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: ee11f64484a66fad06b6536a18f9b3e239fa40d5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Grundlegendes zu Warnungen in Log Analytics
 
-Mit Warnungen werden in Log Analytics wichtige Informationen in Ihrem Log Analytics-Repository identifiziert.  Dieser Artikel enthält Details zur Funktionsweise von Warnungsregeln in Log Analytics und beschreibt die Unterschiede verschiedener Arten von Warnungsregeln.
+Mit Warnungen werden in Log Analytics wichtige Informationen in Ihrem Log Analytics-Repository identifiziert.  In diesem Artikel werden einige der Entwurfsentscheidungen behandelt, die basierend auf der Sammlungshäufigkeit der abgefragten Daten, den zufälligen Verzögerungen bei der Datenerfassung, die möglicherweise durch die Netzwerklatenz oder Verarbeitungskapazität verursacht werden, und der Ausführung des Commits für die Daten in das Log Analytics-Repository erfolgen müssen.  Er enthält zudem Details zur Funktionsweise von Warnungsregeln in Log Analytics und beschreibt die Unterschiede verschiedener Arten von Warnungsregeln.
 
 Informationen zum Erstellen von Warnungsregeln finden Sie in den folgenden Artikeln:
 
@@ -30,18 +30,42 @@ Informationen zum Erstellen von Warnungsregeln finden Sie in den folgenden Artik
 - Erstellen von Warnungsregeln mithilfe einer [Resource Manager-Vorlage](../operations-management-suite/operations-management-suite-solutions-resources-searches-alerts.md)
 - Erstellen von Warnungsregeln mithilfe der [REST-API](log-analytics-api-alerts.md)
 
+## <a name="considerations"></a>Überlegungen
 
-## <a name="alert-rules"></a>Warnungsregeln
+Details zur Häufigkeit der Datensammlung für verschiedene Lösungen und Datentypen stehen unter [Details zur Datensammlung](log-analytics-add-solutions.md#data-collection-details) im Artikel zur Übersicht über Lösungen zur Verfügung. Wie in diesem Artikel erwähnt, kann die Datensammlung auch in längeren Abständen von nur einmal alle sieben Tage oder nur *bei Benachrichtigung* erfolgen. Es ist wichtig, dass Sie sich vor dem Einrichten von Warnungen über die Häufigkeit der Datensammmlung im Klaren sind und diese berücksichtigen. 
+
+- Die Sammlungshäufigkeit bestimmt, wie oft die OMS-Agents auf Computern Daten an Log Analytics senden. Wenn die Sammlungshäufigkeit beispielsweise 10 Minuten beträgt und im System keine anderen Verzögerungen auftreten, können die Zeitstempel der übertragenen Daten zwischen 0 und 10 Minuten zurückliegen, bevor die Daten im Repository hinzugefügt und in Log Analytics durchsucht werden können.
+
+- Bevor eine Warnung ausgelöst werden kann, müssen die Daten in das Repository geschrieben werden, sodass sie bei Abfragen verfügbar sind. Aufgrund der oben genannten Latenz entspricht die Sammlungshäufigkeit nicht dem Zeitpunkt, zu dem die Daten für Abfragen verfügbar sind. Auch wenn die Daten beispielsweise exakt alle 10 Minuten gesammelt werden, können sie im Datenrepository in unregelmäßigen Intervallen verfügbar sein. Hypothetisch können Daten, die in Intervallen von 0, 10 und 20 Minuten erfasst werden, jeweils nach 25, 28 und 35 Minuten oder nach einem durch Erfassungslatenz beeinflussten unregelmäßigen Intervall für die Suche verfügbar sein. Der schlimmste Fall für diese Verzögerungen ist in der [SLA für Log Analytics](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1) dokumentiert, die keine Verzögerung umfasst, die durch die Sammlungshäufigkeit oder Netzwerklatenz zwischen dem Computer und dem Log Analytics-Dienst entstanden ist.
+
+
+## <a name="alert-rules"></a>Warnregeln
 
 Warnungen werden mithilfe von Warnungsregeln erstellt, für die in regelmäßigen Abständen automatisch Protokollsuchen durchgeführt werden.  Wenn die Ergebnisse der Protokollsuche bestimmte Kriterien erfüllen, wird ein Warnungsdatensatz erstellt.  Die Regel kann dann automatisch eine oder mehrere Aktionen ausführen, um Sie proaktiv über die Warnung zu informieren oder einen anderen Prozess aufzurufen.  Verschiedene Typen von Warnungsregeln verwenden für diese Analyse unterschiedliche Logik.
 
 ![Log Analytics-Warnungen](media/log-analytics-alerts/overview.png)
 
+Da bei der Erfassung von Protokolldaten eine erwartete Latenz besteht, kann die absolute Zeit zwischen der Indizierung von Daten und dem Zeitpunkt der Verfügbarkeit der Daten für die Suche nicht vorhersehbar sein.  Die nahezu in Echtzeit mögliche Verfügbarkeit der erfassten Daten sollte beim Definieren von Warnungsregeln berücksichtigt werden.    
+
+Zwischen der Zuverlässigkeit von Warnungen und der Reaktionsfähigkeit von Warnungen muss eine Abwägung vorgenommen werden. Sie können Warnungsparameter konfigurieren, um falsche und fehlende Warnungen zu minimieren, oder Warnungsparameter so festlegen, dass eine schnelle Reaktion auf die überwachten Bedingungen erfolgt, wobei jedoch gelegentlich auch falsche oder fehlende Warnungen generiert werden.
+
 Warnungsregeln werden anhand der folgenden Details definiert:
 
 - **Protokollsuche**:  Die Abfrage, die bei jeder Auslösung der Warnungsregel ausgeführt wird.  Mit den von dieser Abfrage zurückgegebenen Datensätzen wird ermittelt, ob eine Warnung erstellt werden muss.
-- **Zeitfenster**:  Gibt den Zeitraum für die Abfrage an.  Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Wenn das Zeitfenster beispielsweise auf 60 Minuten festgelegt ist und die Abfrage um 13:15 Uhr ausgeführt wird, werden nur Datensätze zurückgegeben, die zwischen 12:15 und 13:15 Uhr erstellt wurden.
-- **Häufigkeit**:  Gibt an, wie oft die Abfrage ausgeführt werden soll. Dies kann ein beliebiger Wert zwischen 5 Minuten und 24 Stunden sein. Er sollte kleiner als oder gleich dem Zeitfensterwert sein.  Wenn der Wert größer als das Zeitfenster ist, besteht das Risiko, dass Datensätze ausgelassen werden.<br>Angenommen, Sie verwenden ein Zeitfenster von 30 Minuten und eine Häufigkeit von 60 Minuten.  Wenn die Abfrage um 13:00 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 12:30 und 13:00 Uhr zurück.  Wenn die Abfrage dann das nächste Mal um 14 Uhr ausgeführt wird, gibt sie die Datensätze für den Zeitraum zwischen 13:30 und 14:00 Uhr zurück.  Alle Datensätze, die zwischen 13:00 und 13:30 erstellt werden, werden also nicht ausgewertet.
+- **Zeitfenster**:  Gibt den Zeitraum für die Abfrage an.  Die Abfrage gibt nur Datensätze zurück, die innerhalb dieses aktuellen Zeitbereichs erstellt wurden.  Dies kann ein beliebiger Wert zwischen fünf Minuten und 24 Stunden sein. Der Zeitbereich muss groß genug sein, um angemessene Verzögerungen bei der Erfassung abzudecken. Das Zeitfenster muss doppelt so lang sein wie die längste verarbeitbare Verzögerung.<br> Wenn beispielsweise Warnungen für Verzögerungen von 30 Minuten zuverlässig sein sollen, muss der Zeitbereich auf eine Stunde festgelegt sein.  
+
+    Es treten möglicherweise zwei Symptome auf, wenn der Zeitbereich zu kurz ist.
+
+    - **Fehlende Warnungen:** Angenommen, die Erfassungsverzögerung beträgt manchmal 60 Minuten, meistens jedoch 15 Minuten.  Wenn das Zeitfenster auf 30 Minuten festgelegt ist, wird bei einer Verzögerung von 60 Minuten eine Warnung versäumt, da die Daten nicht für die Suche verfügbar sind, wenn die Warnungsabfrage ausgeführt wird. 
+   
+        >[!NOTE]
+        >Es ist nicht möglich, zu diagnostizieren, warum die Warnung versäumt wird. Beispielsweise werden im Fall oben die Daten 60 Minuten nach der Ausführung der Warnungsabfrage in das Repository geschrieben. Wenn am nächsten Tag festgestellt wird, dass eine Warnung versäumt wurde, und die Abfrage am nächsten Tag im richtigen Zeitintervall ausgeführt wird, entsprechen die Kriterien der Protokollsuche dem Ergebnis. Es scheint dann so, als hätte die Warnung ausgelöst werden sollen. Tatsächlich wurde die Warnung jedoch nicht ausgelöst, da die Daten noch nicht verfügbar waren, als die Warnungsabfrage ausgeführt wurde. 
+        >
+ 
+    - **Falsche Warnungen:** In einigen Fällen dienen Warnungsabfragen der Identifizierung nicht vorhandener Ereignisse. Ein Beispiel hierfür ist die Erkennung, wann ein virtueller Computer offline geschaltet ist, durch Suchen nach fehlenden Heartbeats. Wenn der Heartbeat innerhalb des Zeitfensters für Warnungen nicht für die Suche verfügbar ist, wird wie im Szenario oben eine Warnung generiert, da die Heartbeatdaten noch nicht durchsucht werden konnten und daher fehlen. Das gleiche Ergebnis tritt ein, wenn der virtuelle Computer tatsächlich offline geschaltet ist und deshalb keine Heartbeatdaten generiert werden. Bei der Ausführung der Abfrage am nächsten Tag im richtigen Zeitfenster wird angezeigt, dass Heartbeats vorhanden waren und bei der Warnung Fehler aufgetreten sind. Tatsächlich waren die Heartbeats noch nicht für die Suche verfügbar, da das Zeitfenster für Warnungen zu kurz festgelegt wurde.  
+
+- **Häufigkeit**:  Gibt an, wie oft die Abfrage ausgeführt werden soll, und kann verwendet werden, um die Reaktionsfähigkeit der Warnungen im Normalfall zu steigern. Der Wert kann zwischen fünf Minuten und 24 Stunden liegen und sollte kleiner oder gleich dem Zeitfenster für Warnungen sein.  Wenn der Wert größer als das Zeitfenster ist, besteht das Risiko, dass Datensätze ausgelassen werden.<br>Wenn Verzögerungen bis zu 30 Minuten zuverlässig sein sollen und die normale Verzögerung 10 Minuten beträgt, sollte das Zeitfenster auf eine Stunde und der Häufigkeitswert auf 10 Minuten festgelegt werden. Dadurch wird für Daten mit einer Erfassungsverzögerung von 10 Minuten 10 bis 20 Minuten nach dem Generieren der Warnungsdaten eine Warnung ausgelöst.<br>Um zu vermeiden, dass aufgrund eines zu großen Zeitfensters mehrere Warnungen für dieselben Daten erstellt werden, kann die Option [Warnungen unterdrücken](log-analytics-tutorial-response.md#create-alerts) verwendet werden, sodass Warnungen mindestens für die Dauer des Zeitfensters unterdrückt werden.
+  
 - **Schwellenwert**:  Die Ergebnisse der Protokollsuche werden ausgewertet, um festzustellen, ob eine Warnung generiert werden soll.  Der Schwellenwert ist für verschiedene Typen von Warnungsregeln unterschiedlich.
 
 Es gibt zwei Typen von Warnungsregeln in Log Analytics.  Diese Typen werden in den nachstehenden Abschnitten ausführlich beschrieben.
@@ -76,18 +100,15 @@ Es kann auch vorkommen, dass Sie eine Warnung erstellen möchten, ohne dass ein 
 
 Falls beispielsweise eine Warnung erfolgen soll, wenn der Prozessor zu mehr als 90 Prozent ausgelastet ist, können Sie eine Abfrage wie die folgende verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen:
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90
-
-    
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
 Falls eine Warnung erfolgen soll, wenn der Prozessor innerhalb eines bestimmten Zeitfensters im Schnitt zu mehr als 90 Prozent ausgelastet ist, können Sie wie im folgenden Beispiel eine Abfrage mit dem [measure-Befehl](log-analytics-search-reference.md#commands) verwenden und dabei den Schwellenwert für die Warnungsregel auf **Größer als 0** festlegen:
 
-    Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90
+    Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
-    
 >[!NOTE]
-> Falls für Ihren Arbeitsbereich noch kein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden: `Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90`
-> `Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90`
+> Falls für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](log-analytics-log-search-upgrade.md) durchgeführt wurde, müssen die obigen Abfragen wie folgt geändert werden: `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" and CounterValue>90`
+> `Perf | where ObjectName=="Processor" and CounterName=="% Processor Time" | summarize avg(CounterValue) by Computer | where CounterValue>90`
 
 
 ## <a name="metric-measurement-alert-rules"></a>Warnungsregeln des Typs „Metrische Maßeinheit“
@@ -110,7 +131,7 @@ Der Schwellenwert für Warnungsregeln des Typs „Metrische Maßeinheit“ wird 
 #### <a name="example"></a>Beispiel
 Angenommen, Sie wünschen sich eine Warnung, wenn ein beliebiger Computer binnen 30 Minuten dreimal die Prozessornutzung von 90 % überschreitet.  Dazu erstellen Sie eine Warnungsregel mit den folgenden Details.  
 
-**Abfrage:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
+**Abfrage:** Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer Interval 5minute<br>
 **Zeitfenster:** 30 Minuten<br>
 **Warnungshäufigkeit:** 5 Minuten<br>
 **Aggregatwert:** Größer als 90<br>
@@ -125,7 +146,7 @@ Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da 
 ## <a name="alert-records"></a>Warnungsdatensätze
 Für Warnungsdatensätze, die in Log Analytics mit Warnungsregeln erstellt wurden, ist **Warnung** als **Typ** und **OMS** als **SourceSystem** festgelegt.  Sie verfügen über die Eigenschaften, die in der folgenden Tabelle aufgeführt sind.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Typ |*Warnung* |
 | SourceSystem |*OMS* |
@@ -133,7 +154,7 @@ Für Warnungsdatensätze, die in Log Analytics mit Warnungsregeln erstellt wurde
 | AlertName |Name der Warnung. |
 | AlertSeverity |Schweregrad der Warnung. |
 | LinkToSearchResults |Link zur Log Analytics-Protokollsuche, mit der die Datensätze aus der Abfrage zurückgegeben werden, mit der die Warnung erstellt wurde |
-| Abfrage |Der Text der Abfrage, die ausgeführt wurde. |
+| Abfragen |Der Text der Abfrage, die ausgeführt wurde. |
 | QueryExecutionEndTime |Gibt das Ende des Zeitraums für die Abfrage an. |
 | QueryExecutionStartTime |Gibt den Beginn des Zeitraums für die Abfrage an. |
 | ThresholdOperator | Operator, der von der Warnungsregel verwendet wird. |
@@ -146,5 +167,5 @@ Es gibt noch andere Arten von Warnungsdatensätzen, die von der [Alert Managemen
 ## <a name="next-steps"></a>Nächste Schritte
 * Installieren Sie die [Lösung für die Warnungsverwaltung](log-analytics-solution-alert-management.md), um die in Log Analytics erstellten Warnungen und die über System Center Operations Manager gesammelten Warnungen zu analysieren.
 * Informieren Sie sich weiter über [Protokollsuchen](log-analytics-log-searches.md) , bei denen Warnungen generiert werden können.
-* Arbeiten Sie eine exemplarische Vorgehensweise für das [Konfigurieren eines Webhooks](log-analytics-alerts-webhooks.md) mit einer Warnungsregel durch.  
+* Arbeiten Sie eine exemplarische Vorgehensweise für das [Konfigurieren eines Webooks](log-analytics-alerts-webhooks.md) mit einer Warnungsregel durch.  
 * Informieren Sie sich darüber, wie Sie [Runbooks in Azure Automation](https://azure.microsoft.com/documentation/services/automation) schreiben, um von Warnungen identifizierte Probleme zu beheben.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: 0302b4f8f4171d288a7e7c62de036c6f1cec8212
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 98f3b1fe5a0f1d7518e8f0ef6f2a478f59559139
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren vom lokalen Standort in Azure
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/22/2017
 In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für Azure Site Recovery bei der Replikation und Wiederherstellung in Azure beschrieben. Weitere Informationen zu den Anforderungen für Azure Site Recovery finden Sie in den [Voraussetzungen](site-recovery-prereq.md).
 
 > [!NOTE]
-> Stellen Sie sicher, dass Sie ein Update auf die neueste Version von Site Recovery-Anbieter und -Agent durchführen, um die Kompatibilität mit den Updates in der Unterstützungsmatrix zu gewährleisten.
+> Stellen Sie sicher, dass Sie ein Update auf die neueste Version des Site Recovery-Anbieters und des -Agents durchführen, um Kompatibilität mit den Updates in der Unterstützungsmatrix zu gewährleisten.
 
 
 ## <a name="support-for-deployment-options"></a>Unterstützung für Bereitstellungsoptionen
@@ -35,7 +35,7 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 --- | --- | ---
 **Azure-Portal** | Lokale VMware-VMs in Azure Storage, mit Azure Resource Manager oder klassischem Speicher und Netzwerken.<br/><br/> Failover auf Resource Manager-basierte oder klassische VMs. | Lokale virtuelle Hyper-V-Computer zu Azure Storage, mit Resource Manager oder klassischem Speicher und Netzwerken.<br/><br/> Failover auf Resource Manager-basierte oder klassische VMs.
 **Klassisches Portal** | Nur im Wartungsmodus. Neue Tresore können nicht erstellt werden. | Nur im Wartungsmodus.
-**PowerShell** | Derzeit nicht unterstützt. | Unterstützt
+**PowerShell** | Unterstützt | Unterstützt
 
 
 ## <a name="support-for-datacenter-management-servers"></a>Unterstützung für Datencenter-Verwaltungsserver
@@ -68,45 +68,44 @@ Die folgende Tabelle fasst die Unterstützung der replizierten Betriebssysteme i
 
  **VMware-/physische Server** | **Hyper-V (mit/ohne VMM)** |
 --- | --- |
-Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung)\*, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/><br/> Red Hat Enterprise Linux: 5.2 nach 5.11, 6.1 nach 6.9, 7.0 nach 7.3 <br/><br/>CentOS: 5.2 nach 5.11, 6.1 nach 6.9, 7.0 nach 7.3 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(Ein Upgrade von replizierenden Computern von SLES 11 SP3 auf SLES 11 SP4 wird nicht unterstützt. Wenn für einen replizierten Computer ein Upgrade von SLES 11 SP3 auf SLES 11 SP4 durchgeführt wurde, müssen Sie die Replikation deaktivieren und den Computer nach dem Upgrade erneut schützen.) | Alle [von Azure unterstützten](https://technet.microsoft.com/library/cc794868.aspx) Gastbetriebssysteme
+Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung)\*, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1<br/><br/> Red Hat Enterprise Linux: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.4<br/><br/>CentOS: 5.2 bis 5.11, 6.1 bis 6.9, 7.0 bis 7.4 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7 <br/><br/>Debian 8<br/><br/>Oracle Enterprise Linux 6.4, 6.5, auf dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/>SUSE Linux Enterprise Server 11 SP3 <br/><br/>SUSE Linux Enterprise Server 11 SP4 <br/>(Ein Upgrade von replizierenden Computern von SLES 11 SP3 auf SLES 11 SP4 wird nicht unterstützt. Wenn für einen replizierten Computer ein Upgrade von SLES 11 SP3 auf SLES 11 SP4 durchgeführt wurde, müssen Sie die Replikation deaktivieren und den Computer nach dem Upgrade erneut schützen.) | Alle [von Azure unterstützten](https://technet.microsoft.com/library/cc794868.aspx) Gastbetriebssysteme
 
 >[!NOTE]
 >
 > \*Windows Server 2016, Nano Server wird nicht unterstützt.
-
->[!IMPORTANT]
->(Gilt für VMware-/physische Server, die zu Azure replizieren)
 >
-> Server mit Red Hat Enterprise Linux Server 7+ und CentOS 7+ mit der Kernel-Version 3.10.0-514 werden ab Version 9.8 des Azure Site Recovery Mobility Service unterstützt.<br/><br/>
-> Kunden mit dem Kernel 3.10.0-514 mit einer Version des Mobility Service, die niedriger als Version 9.8 ist, müssen die Replikation deaktivieren, die Version des Mobility Service auf Version 9.8 aktualisieren und dann die Replikation erneut aktivieren.
+> Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.
+>
+> Upgrades von Hauptversionen einer Linux-Distribution auf einem mit Azure Site Recovery geschützten virtuellen VMware-Computer oder einem physischen Server werden nicht unterstützt. Deaktivieren Sie während des Upgrades des Betriebssystems von einer Hauptversion auf eine andere (z.B. CentOS 6.* nach CentOS 7.*) die Replikation für den Computer, aktualisieren Sie das Betriebssystem auf dem Computer, und aktivieren Sie dann die Replikation erneut.
+> 
 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>Unterstützte Ubuntu-Kernel-Versionen für VMware-/physische Server
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | 9.9 | 3.13.0-24-generic bis 3.13.0-117-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic bis 3.13.0-121-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic bis 3.13.0-128-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-91-generic |
 14.04 LTS | 9.12 | 3.13.0-24-generic to 3.13.0-132-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic to 4.4.0-96-generic |
+14.04 LTS | 9.13 | 3.13.0-24-generic bis 3.13.0-137-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-104-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic bis 4.4.0-81-generic,<br/>4.8.0-34-generic bis 4.8.0-56-generic,<br/>4.10.0-14-generic bis 4.10.0-24-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic bis 4.4.0-91-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-32-generic |
 16.04 LTS | 9.12 | 4.4.0-21-generic to 4.4.0-96-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic to 4.10.0-35-generic |
+16.04 LTS | 9.13 | 4.4.0-21-generic bis 4.4.0-104-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Unterstützte Dateisysteme und Gastspeicherkonfigurationen unter Linux (VMware-/physische Server)
 
-Die folgenden Dateisysteme und die folgende Software für Speicherkonfigurationen wird auf Linux-Servern unterstützt, die auf VMware- oder physischen Servern ausgeführt werden:
+Die folgenden Dateisysteme und die folgende Software für Speicherkonfigurationen werden auf Linux-Servern unterstützt, die auf VMware- oder physischen Servern ausgeführt werden:
 * Dateisysteme: ext3, ext4, ReiserFS (nur Suse Linux Enterprise Server), XFS
 * Volume-Manager: LVM2
-* Multipfad-Software: Gerätemapper
+* Multipfadsoftware: Gerätemapper
 
 Paravirtualisierte Speichergeräte (Geräte, die durch paravirtualisierte Treiber exportiert werden) werden nicht unterstützt.<br/>
 E/A-Geräte mit Blöcken mit mehreren Warteschlangen werden nicht unterstützt.<br/>
 Physische Server mit HP CCISS-Speichercontroller werden nicht unterstützt.<br/>
 
 >[!Note]
-> Auf Linux-Servern müssen sich die folgenden Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) auf demselben Datenträger (dem Datenträger mit dem Betriebssystem) auf dem Quellserver befinden: / (root), /boot, /usr, /usr/local, /var, /etc<br/><br/>
-> XFSv5-Funktionen auf XFS-Dateisystemen wie Metadaten-Prüfsummen werden ab Version 9.10 von Mobility Service unterstützt. Wenn Sie XFSv5-Funktionen verwenden, stellen Sie sicher, dass Sie die Version 9.10 oder höher von Mobility Service ausführen. Mit dem Hilfsprogramm „xfs_info“ können Sie den XFS-Superblock für die Partition überprüfen. Wenn ftype auf 1 festgelegt ist, werden Features von XFS v5 verwendet.
+> Auf Linux-Servern müssen sich die folgenden Verzeichnisse (sofern als separate Partitionen/Dateisysteme eingerichtet) auf demselben Datenträger (dem Datenträger mit dem Betriebssystem) auf dem Quellserver befinden: „/“ (root), „/boot“, „/usr“, „/usr/local“, „/var“, „/etc“. „/boot“ sollte sich außerdem auf einer Festplattenpartition und nicht auf einem LVM-Volume befinden.<br/><br/>
 >
 
 
@@ -120,17 +119,17 @@ Die folgenden Tabellen fassen die Unterstützung der Netzwerkkonfiguration in ve
 NIC-Teaming | Ja<br/><br/>Wird nicht unterstützt, wenn physische Computer repliziert werden| Ja
 VLAN | Ja | Ja
 IPv4 | Ja | Ja
-IPv6 | Nein | Nein
+IPv6 | Nein  | Nein 
 
 ### <a name="guest-vm-network-configuration"></a>Konfiguration von Gast-VM-Netzwerken
 
 **Konfiguration** | **VMware-/physische Server** | **Hyper-V (mit/ohne Virtual Machine Manager)**
 --- | --- | ---
-NIC-Teaming | Nein | Nein
+NIC-Teaming | Nein  | Nein 
 IPv4 | Ja | Ja
-IPv6 | Nein | Nein
+IPv6 | Nein  | Nein 
 Statische IP-Adresse (Windows) | Ja | Ja
-Statische IP-Adresse (Linux) | Ja <br/><br/>Virtuelle Computer werden konfiguriert, damit Sie DHCP auf dem Failback verwenden  | Nein
+Statische IP-Adresse (Linux) | Ja <br/><br/>Virtuelle Computer werden für die Verwendung von DHCP bei Failback konfiguriert.  | Nein 
 Multi-NIC | Ja | Ja
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>Netzwerkkonfiguration für virtuellen Azure-Computer nach Failover
@@ -145,7 +144,7 @@ Multi-NIC | Ja | Ja
 Reservierte IP | Ja | Ja
 IPv4 | Ja | Ja
 Behalten der Quell-IP | Ja | Ja
-Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage) | Nein | Nein
+Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage) | Nein  | Nein 
 
 
 ## <a name="support-for-storage"></a>Speicherunterstützung
@@ -164,21 +163,21 @@ Multipfad (MPIO)<br></br>Getestet mit: Microsoft DSM, EMC PowerPath 5.7 SP4, EMC
 
 **Konfiguration** | **VMware-/physische Server** | **Hyper-V (mit/ohne Virtual Machine Manager)**
 --- | --- | ---
-VMDK | Ja | –
+VMDK | Ja | N/V
 VHD/VHDX | N/V | Ja
-Gen 2-VM | – | Ja
-EFI/UEFI| Nein | Ja
-Freigegebener Clusterdatenträger | Nein | Nein
-Verschlüsselter Datenträger | Nein | Nein
-NFS | Nein | N/V
-SMB 3.0 | Nein | Nein
+Gen 2-VM | N/V | Ja
+EFI/UEFI| Nein  | Ja
+Freigegebener Clusterdatenträger | Nein  | Nein 
+Verschlüsselter Datenträger | Nein  | Nein 
+NFS | Nein  | N/V
+SMB 3.0 | Nein  | Nein 
 RDM | Ja<br/><br/> Nicht verfügbar für physische Server | N/V
 Datenträger > 1 TB | Ja<br/><br/>Maximal 4.095 GB | Ja<br/><br/>Maximal 4.095 GB
 Datenträger mit einer logischen und physikalischen Sektorgröße von jeweils 4 KB | Ja | Nicht für VMs der 1. Generation unterstützt<br/><br/>Nicht für VMs der Generation 2 unterstützt
 Datenträger mit einer logischen Sektorgröße von 4 KB und einer physikalischen Sektorgröße von 512 Byte | Ja |  Ja
 Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM (logische Volumeverwaltung) | Ja | Ja
-Speicherplätze | Nein | Ja
-Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein | Nein
+Speicherplätze | Nein  | Ja
+Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein  | Nein 
 Ausschließen von Datenträgern | Ja | Ja
 Multipfad (MPIO) | N/V | Ja
 
@@ -187,13 +186,14 @@ Multipfad (MPIO) | N/V | Ja
 LRS | Ja | Ja
 GRS | Ja | Ja
 RA-GRS | Ja | Ja
-Speicherebene „Kalt“ | Nein | Nein
-Speicherebene „Heiß“| Nein | Nein
-Blockblobs | Nein | Nein
+Speicherebene „Kalt“ | Nein  | Nein 
+Speicherebene „Heiß“| Nein  | Nein 
+Blockblobs | Nein  | Nein 
 Verschlüsselung ruhender Daten (SSE)| Ja | Ja
 Storage Premium | Ja | Ja
-Import-/Exportdienst | Nein | Nein
-Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage), die in dem Ziel- oder Cachespeicherkonto konfiguriert wurden, das zum Speichern der Replikationsdaten verwendet wird | Nein | Nein
+Import-/Exportdienst | Nein  | Nein 
+Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage), die in dem Ziel- oder Cachespeicherkonto konfiguriert wurden, das zum Speichern der Replikationsdaten verwendet wird | Nein  | Nein 
+Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nein  | Nein 
 
 
 ## <a name="support-for-azure-compute-configuration"></a>Unterstützung für Azure-Computekonfiguration
@@ -228,8 +228,8 @@ Sie können Site Recovery zum Replizieren virtueller Maschinen und physischer Se
 
 **Aktion** | **VMware-/physische Server** | **Hyper-V (ohne Virtual Machine Manager)** | **Hyper-V (mit Virtual Machine Manager)**
 --- | --- | --- | ---
-Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein | Nein | Nein
-Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein | Nein | Nein
+Tresor über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein  | Nein 
+Speicher, Netzwerk, Azure-VMs über Ressourcengruppen hinweg verschieben<br/><br/> Innerhalb von und über Abonnements hinweg | Nein  | Nein  | Nein 
 
 
 ## <a name="support-for-provider-and-agent"></a>Unterstützung für Anbieter und Agent

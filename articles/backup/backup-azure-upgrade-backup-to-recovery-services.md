@@ -1,5 +1,5 @@
 ---
-title: "Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor (Vorschau) | Microsoft-Dokumentation"
+title: "Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor | Microsoft-Dokumentation"
 description: "Befehle und Supportinformationen zur Durchführung eines Upgrades für Ihren Sicherungstresor in Azure auf einen Recovery Services-Tresor."
 services: backup
 documentationcenter: dev-center-name
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/09/2017
+ms.date: 1/4/2018
 ms.author: sogup;markgal;arunak
-ms.openlocfilehash: 4867a43aab1357cb8e01c2ddcef74cdebb41a84a
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 8396a7276fde10eb95a22ed07fa61625acfdd77f
+ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
 
@@ -34,7 +34,7 @@ Die Durchführung eines Upgrades für einen Sicherungstresor auf einen Recovery 
 ## <a name="changes-to-your-automation-and-tool-after-upgrading"></a>Änderungen an der Automatisierung und an den Tools nach dem Upgrade
 
 Bei der Vorbereitung Ihrer Infrastruktur auf das Tresorupgrade müssen Sie Ihre vorhandene Automatisierung bzw. Ihre vorhandenen Tools aktualisieren, um sicherzustellen, dass diese nach dem Upgrade weiterhin funktionieren.
-Ziehen Sie hierzu die Referenzen zu PowerShell-Cmdlets für das [Service Manager-Bereitstellungsmodell](backup-client-automation-classic.md) und das [Resource Manager-Bereitstellungsmodell](backup-client-automation.md) zu Rate.
+Verwenden Sie die Referenz zu PowerShell-Cmdlets für das [Resource Manager-Bereitstellungsmodell](backup-client-automation.md).
 
 
 ## <a name="before-you-upgrade"></a>Vor dem Upgrade
@@ -62,7 +62,7 @@ RecoveryServicesVaultUpgrade-1.0.2.ps1 **-SubscriptionID** `<subscriptionID>` **
 **SubscriptionID**: Die Abonnement-ID-Nummer des Tresors, für den das Upgrade durchgeführt wird.<br/>
 **VaultName**: Der Name des Sicherungstresors, für den das Upgrade durchgeführt wird.<br/>
 **Location**: Der Speicherort des Tresors, für den das Upgrade durchgeführt wird.<br/>
-**ResourceType**: Enthält „BackupVault“.<br/>
+**ResourceType**: Verwenden Sie „BackupVault“.<br/>
 **TargetResourceGroupName**: Legen Sie eine Ressourcengruppe fest, da Sie für den Tresor ein Upgrade auf eine Resource Manager-basierte Bereitstellung durchführen. Sie können eine vorhandene Ressourcengruppe verwenden oder eine erstellen, indem Sie einen neuen Namen angeben. Wenn Sie den Namen einer Ressourcengruppe falsch schreiben, können Sie eine neue Ressourcengruppe erstellen. Weitere Informationen zu Ressourcengruppen finden Sie in der [Übersicht über Ressourcengruppen](../azure-resource-manager/resource-group-overview.md#resource-groups).
 
 >[!NOTE]
@@ -120,7 +120,7 @@ Konfigurieren Sie nach einem Upgrade auf einen Recovery Services-Tresor Berichte
 Nein. Laufende Sicherungen werden während und nach dem Upgrade ohne Unterbrechung durchgeführt.
 
 **Was geschieht mit meinen Tresoren, wenn ich kein Upgrade durchführe?**</br>
-Da alle neuen Funktionen nur für Recovery Services-Tresore gelten, wird dringend empfohlen, Ihre Tresore zu aktualisieren. Microsoft wird nach und nach das klassische Azure-Portal einstellen. Ab dem 1. September 2017 wird von Microsoft automatisch ein Upgrade von Sicherungstresoren auf Recovery Services-Tresore gestartet. Nach dem 30. November 2017 können Sicherungstresore nicht mehr mithilfe von PowerShell erstellt werden. Der Tresor kann in der Zwischenzeit jederzeit automatisch aktualisiert werden. Es empfiehlt sich, dass Sie Ihren Tresor so bald wie möglich upgraden.
+Da alle neuen Funktionen nur für Recovery Services-Tresore gelten, wird dringend empfohlen, Ihre Tresore zu aktualisieren. Ab dem 1. September 2017 wird von Microsoft automatisch ein Upgrade von Sicherungstresoren auf Recovery Services-Tresore gestartet. Nach dem 30. November 2017 können Sicherungstresore nicht mehr mithilfe von PowerShell erstellt werden. Der Tresor kann in der Zwischenzeit jederzeit automatisch aktualisiert werden. Es empfiehlt sich, dass Sie Ihren Tresor so bald wie möglich upgraden.
 
 **Was bedeutet dieser Upgradeplan für meine vorhandenen Tools?**</br>
 Updaten Sie auf das Resource Manager-Bereitstellungsmodell. Recovery Services-Tresore wurden für die Verwendung im Resource Manager-Bereitstellungsmodell erstellt. Die Planung für das Resource Manager-Bereitstellungsmodell und das Berücksichtigen der Unterschiede in Ihren Tresoren ist dabei wichtig. 
@@ -134,11 +134,8 @@ Nein. Ein Rollback wird nicht unterstützt, nachdem erfolgreich ein Upgrade für
 **Kann ich mein Abonnement oder meine Ressourcen überprüfen, um zu ermitteln, ob sie für das Upgrade geeignet sind?**</br>
 Ja. Der erste Schritt beim Upgrade ist die Prüfung der Ressourcen hinsichtlich ihrer Eignung für das Upgrade. Falls bei der Überprüfung der Voraussetzungen ein Fehler auftritt, erhalten Sie Meldungen über alle Gründe, aus denen das Upgrade nicht durchgeführt werden kann.
 
-**Über welche Berechtigungen muss ich zum Auslösen des Tresorupgrades verfügen?**</br>
-Um ein Tresorupgrade durchführen zu können, müssen Sie im klassischen Azure-Portal als Co-Administrator für das Abonnement hinzugefügt werden. Dies ist auch erforderlich, wenn Sie im Azure-Portal bereits als Besitzer hinzugefügt wurden. Versuchen Sie, einen Co-Administrator für das Abonnement im klassischen Azure-Portal hinzuzufügen, um herauszufinden, ob Sie Co-Administrator für das Abonnement sind. Wenn Sie keinen Co-Administrator hinzufügen können, wenden Sie sich an einen Dienstadministrator oder Co-Administrator für das Abonnement, um sich als Co-Administrator hinzufügen zu lassen.
-
 **Kann ich ein Upgrade für meinen CSP-basierten Sicherungstresor durchführen?**</br>
-Nr. Derzeit kann kein Upgrade für CSP-basierte Sicherungstresore durchgeführt werden. In den nächsten Versionen wird eine Unterstützung für das Upgrade von CSP-basierten Sicherungstresoren verfügbar sein.
+Nein. Derzeit kann kein Upgrade für CSP-basierte Sicherungstresore durchgeführt werden. In den nächsten Versionen wird eine Unterstützung für das Upgrade von CSP-basierten Sicherungstresoren verfügbar sein.
 
 **Kann ich meinen klassischen Tresor nach dem Upgrade anzeigen?**</br>
 Nein. Sie können den klassischen Tresor nach dem Upgrade weder anzeigen noch verwalten. Sie können lediglich das neue Azure-Portal für alle Verwaltungsaktionen im Tresor verwenden.
@@ -156,6 +153,6 @@ Wenn irgendein Teil des Tresorupgrades fehlschlägt, beachten Sie die in der Feh
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln erhalten Sie weitere Informationen:</br>
-[Sichern einer IaaS-VM](backup-azure-arm-vms-prepare.md)</br>
-[Sichern von Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Sichern von Windows Server](backup-configure-vault.md).
+[Sichern eines virtuellen IaaS-Computers](backup-azure-arm-vms-prepare.md)</br>
+[Sichern eines Azure Backup Server-Computers](backup-azure-microsoft-azure-backup.md)</br>
+[Sichern eines Windows Server-Computers](backup-configure-vault.md)

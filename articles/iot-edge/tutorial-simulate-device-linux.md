@@ -7,18 +7,18 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: elioda
-ms.date: 10/16/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 327a959ad97897fd19f45a0599f37492938df104
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux---preview"></a>Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux – Vorschau
+# <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Bereitstellen von Azure IoT Edge auf einem simulierten Gerät unter Linux oder macOS – Vorschau
 
-Mit Azure IoT Edge können Sie Analyse und Datenbearbeitung auf Ihren Geräten durchführen, statt alle Daten per Push in die Cloud zu übertragen. Die IoT Edge-Tutorials veranschaulichen, wie Sie verschiedene Modultypen bereitstellen, die aus Azure-Diensten oder benutzerdefiniertem Code entwickelt wurden. Zunächst jedoch benötigen Sie ein Testgerät. 
+Mit Azure IoT Edge können Sie Analysen und die Datenverarbeitung auf Ihren Geräten durchführen, statt alle Daten per Push in die Cloud zu übertragen. Die IoT Edge-Tutorials veranschaulichen, wie Sie verschiedene Modultypen bereitstellen, die aus Azure-Diensten oder benutzerdefiniertem Code entwickelt wurden. Zunächst jedoch benötigen Sie ein Testgerät. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -33,10 +33,14 @@ Das simulierte Gerät, das Sie in diesem Tutorial erstellen, ist ein Überwachun
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bei diesem Tutorial wird davon ausgegangen, dass Sie einen Computer oder einen virtuellen Computer mit Linux zum Simulieren eines Geräts im Internet der Dinge verwenden. Zur erfolgreichen Bereitstellung eines IoT Edge-Geräts sind folgende Dienste erforderlich:
+Dieses Tutorial verwendet Ihren Computer oder Ihren virtuellen Computer wie ein IoT-Gerät (Internet der Dinge). Um Ihr Gerät in ein IoT Edge-Gerät umzuwandeln, sind folgende Dienste erforderlich:
 
-- [Installieren Sie Docker für Linux][lnk-docker-ubuntu], und stellen Sie sicher, dass das Programm ausgeführt wird. 
-- In den meisten Linux-Distributionen, einschließlich Ubuntu, ist Python 2.7 bereits installiert. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob pip installiert ist: `sudo apt-get install python-pip`.
+* Python pip zum Installieren der IoT Edge-Runtime.
+   * Linux: `sudo apt-get install python-pip`.
+   * macOS: `sudo easy_install pip`.
+* Docker zum Ausführen des IoT Edge-Moduls
+   * [Installieren Sie Docker für Linux][lnk-docker-ubuntu], und stellen Sie sicher, dass das Programm ausgeführt wird. 
+   * [Installieren Sie Docker für macOS][lnk-docker-mac], und stellen Sie sicher, dass das Programm ausgeführt wird. 
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT Hubs
 
@@ -130,4 +134,5 @@ Dieses Tutorial bildet die Voraussetzung für alle anderen IoT Edge-Tutorials. S
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
+[lnk-docker-mac]: https://docs.docker.com/docker-for-mac/install/
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer

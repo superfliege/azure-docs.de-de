@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: tomfitz
-ms.openlocfilehash: 78e5749369de1dd9865f61baefd70e6ce4bde31d
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 7f88cd2a9e23ec1b142fc754ada49a8562e774bc
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="using-linked-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften Vorlagen bei der Bereitstellung von Azure-Ressourcen
+# <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
-Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder eine Hauptvorlage mit mehreren verknüpften Vorlagen verwenden. Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen und Vorlagen wiederverwenden.
+Um Ihre Lösung bereitzustellen, können Sie entweder eine Einzelvorlage oder eine Hauptvorlage mit mehreren verwandten Vorlagen verwenden. Bei der verwandten Vorlage kann es sich entweder um eine separate Datei handeln, auf die aus der Hauptvorlage verwiesen wird, oder um eine Vorlage, die in der Hauptvorlage geschachtelt ist.
+
+Bei kleinen bis mittelgroßen Lösungen lässt sich eine Einzelvorlage einfacher verstehen und verwalten. Sie können alle Ressourcen und Werte in einer einzelnen Datei anzeigen. In erweiterten Szenarien können Sie mithilfe verknüpfter Vorlagen die Lösung in Zielkomponenten unterteilen und Vorlagen wiederverwenden.
 
 Bei Verwendung verknüpfter Vorlagen erstellen Sie eine Hauptvorlage, in der während der Bereitstellung Parameterwerte empfangen werden. Die Hauptvorlage enthält alle verknüpften Vorlagen und übergibt bei Bedarf Werte an diese Vorlagen.
 
 ![Verknüpfte Vorlagen](./media/resource-group-linked-templates/nestedTemplateDesign.png)
 
-## <a name="link-to-a-template"></a>Verknüpfen mit einer Vorlage
+## <a name="link-or-nest-a-template"></a>Verknüpfen oder Schachteln einer Vorlage
 
 Zum Verknüpfen mit einer anderen Vorlage fügen Sie der Hauptvorlage eine **Bereitstellungsressource** hinzu.
 
@@ -40,17 +42,17 @@ Zum Verknüpfen mit einer anderen Vorlage fügen Sie der Hauptvorlage eine **Ber
       "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
-          <inline-template-or-external-template>
+          <nested-template-or-external-template>
       }
   }
 ]
 ```
 
-Die Eigenschaften, die Sie für die Bereitstellungsressource angeben, variieren je nachdem, ob Sie eine externe Vorlage verknüpfen oder eine Inlinevorlage in die Hauptvorlage einbetten.
+Die Eigenschaften, die Sie für die Bereitstellungsressource angeben, variieren in Abhängigkeit davon, ob Sie eine externe Vorlage verknüpfen oder eine Inlinevorlage mit der Hauptvorlage schachteln.
 
-### <a name="inline-template"></a>Inlinevorlage
+### <a name="nested-template"></a>Geschachtelte Vorlage
 
-Verwenden Sie zum Einbetten der verknüpften Vorlage die Eigenschaft **Vorlage**, und fügen Sie die Vorlage ein.
+Verwenden Sie zum Schachteln der Vorlage mit der Hauptvorlage die **template**-Eigenschaft, und geben Sie die Vorlagensyntax an.
 
 ```json
 "resources": [
@@ -63,8 +65,6 @@ Verwenden Sie zum Einbetten der verknüpften Vorlage die Eigenschaft **Vorlage**
       "template": {
         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
         "contentVersion": "1.0.0.0",
-        "parameters": {},
-        "variables": {},
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
@@ -76,12 +76,13 @@ Verwenden Sie zum Einbetten der verknüpften Vorlage die Eigenschaft **Vorlage**
             }
           }
         ]
-      },
-      "parameters": {}
+      }
     }
   }
 ]
 ```
+
+Für geschachtelte Vorlagen können Sie keine Parameter oder Variablen verwenden, die in der geschachtelten Vorlage definiert sind. Sie können Parameter und Variablen über die Hauptvorlage verwenden. Im vorherigen Beispiel wird mit `[variables('storageName')]` kein Wert aus der geschachtelten Vorlage abgerufen, sondern aus der Hauptvorlage. Diese Einschränkung gilt nicht für externe Vorlagen.
 
 ### <a name="external-template-and-external-parameters"></a>Externe Vorlage und externe Parameter
 
@@ -176,7 +177,7 @@ In den folgenden Beispielen wird veranschaulicht, wie Sie auf eine verknüpfte V
 }
 ```
 
-Die übergeordnete Vorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegebenen Wert ab. Beachten Sie, dass sie durch den Namen auf die Bereitstellungsressource verweist und den Namen der von der verknüpften Vorlage zurückgegebenen Eigenschaft verwendet.
+Die Hauptvorlage stellt die verknüpfte Vorlage bereit und ruft den zurückgegebenen Wert ab. Beachten Sie, dass sie durch den Namen auf die Bereitstellungsressource verweist und den Namen der von der verknüpften Vorlage zurückgegebenen Eigenschaft verwendet.
 
 ```json
 {
@@ -309,9 +310,9 @@ Um beim Bereitstellen eines Lastenausgleichs die öffentliche IP-Adresse aus der
 }
 ```
 
-## <a name="linked-templates-in-deployment-history"></a>Verknüpfte Vorlagen im Bereitstellungsverlauf
+## <a name="linked-and-nested-templates-in-deployment-history"></a>Verknüpfte und geschachtelte Vorlagen im Bereitstellungsverlauf
 
-Der Resource Manager verarbeitet jede verknüpfte Vorlage als separate Bereitstellung im Bereitstellungsverlauf. Daher wird eine übergeordnete Vorlage mit drei verknüpften Vorlagen im Bereitstellungsverlauf wie folgt angezeigt:
+Der Resource Manager verarbeitet jede Vorlage als separate Bereitstellung im Bereitstellungsverlauf. Daher wird eine Hauptvorlage mit drei verknüpften oder geschachtelten Vorlagen im Bereitstellungsverlauf wie folgt angezeigt:
 
 ![Bereitstellungsverlauf](./media/resource-group-linked-templates/deployment-history.png)
 
@@ -480,7 +481,7 @@ az group deployment create --resource-group ExampleGroup --template-uri $url?$to
 
 Die folgenden Beispiele zeigen gängige Nutzungsszenarien für verknüpften Vorlagen.
 
-|Hauptvorlage  |Verknüpfte Vorlage |Beschreibung  |
+|Hauptvorlage  |Verknüpfte Vorlage |BESCHREIBUNG  |
 |---------|---------| ---------|
 |[Hello World](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworldparent.json) |[Verknüpfte Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/helloworld.json) | Gibt eine Zeichenfolge aus der verknüpften Vorlage zurück. |
 |[Lastenausgleich mit öffentlicher IP-Adresse](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) |[Verknüpfte Vorlage](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) |Gibt die öffentliche IP-Adresse aus der verknüpften Vorlage zurück und legt diesen Wert im Lastenausgleichsmodul fest. |

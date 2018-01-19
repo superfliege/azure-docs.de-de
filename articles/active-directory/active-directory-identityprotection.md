@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: d9a83c1f1adb0a3dedaf7f8f0665de8bb809c4e8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e66d033d95efccf53ea2de889b5811fe2eafb76a
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -202,7 +202,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 * [Risikobehaftete Anmeldung blockiert](active-directory-identityprotection-flows.md#risky-sign-in-blocked)  
 * [Anmeldeverfahren von Azure AD Identity Protection](active-directory-identityprotection-flows.md)  
 
-**So öffnen Sie das entsprechende Konfigurationsdialogfeld:**
+**Um den entsprechenden Konfigurationsdialog zu öffnen**:
 
 - Klicken Sie auf dem Blatt **Azure AD Identity Protection** im Abschnitt **Konfigurieren** auf **Richtlinie zum Anmelderisiko**.
 
@@ -291,7 +291,7 @@ Das zugehörige Dialogfeld bietet zwei verschiedene Methoden zum Zurücksetzen e
 
 ![Richtlinie](./media/active-directory-identityprotection/1005.png "Richtlinie")
 
-**So öffnen Sie das entsprechende Konfigurationsdialogfeld:**
+**Um den entsprechenden Konfigurationsdialog zu öffnen**:
 
 1. Klicken Sie auf dem Blatt **Azure AD Identity Protection** auf **Benutzer mit Risikomarkierung**.
 
@@ -343,7 +343,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 * [Wiederherstellung für kompromittierte Konten](active-directory-identityprotection-flows.md#compromised-account-recovery)  
 * [Blockierter Ablauf bei kompromittierten Konten](active-directory-identityprotection-flows.md#compromised-account-blocked)  
 
-**So öffnen Sie das entsprechende Konfigurationsdialogfeld:**
+**Um den entsprechenden Konfigurationsdialog zu öffnen**:
 
 - Klicken Sie auf dem Blatt **Azure AD Identity Protection** im Abschnitt **Konfigurieren** auf **Richtlinie zum Benutzerrisiko**.
 
@@ -390,7 +390,7 @@ Eine Übersicht über die zugehörige Benutzeroberfläche finden Sie unter:
 * [Registrierung für Multi-Factor Authentication](active-directory-identityprotection-flows.md#multi-factor-authentication-registration)  
 * [Anmeldeverfahren von Azure AD Identity Protection](active-directory-identityprotection-flows.md)  
 
-**So öffnen Sie das entsprechende Konfigurationsdialogfeld:**
+**Um den entsprechenden Konfigurationsdialog zu öffnen**:
 
 - Klicken Sie auf dem Blatt **Azure AD Identity Protection** im Abschnitt **Konfigurieren** auf **Registrierung für mehrstufige Authentifizierung**.
 

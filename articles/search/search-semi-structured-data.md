@@ -8,40 +8,39 @@ ms.topic: tutorial
 ms.date: 10/12/2017
 ms.author: v-rogara
 ms.custom: mvc
-ms.openlocfilehash: ea57fa35f09299f95cdfd3c11b44657d35972295
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: a80ae99c2ada00885019ee93e4ef36821340d3a5
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="search-semi-structured-data-in-cloud-storage"></a>Durchsuchen von teilweise strukturierten Daten in Cloudspeicher
+# <a name="part-2-search-semi-structured-data-in-cloud-storage"></a>Teil 2: Durchsuchen von teilweise strukturierten Daten in Cloudspeicher
 
-In dieser zweiteiligen Tutorialreihe erfahren Sie, wie Sie teilweise strukturierte und unstrukturierte Daten mit Azure Search durchsuchen. In diesem Tutorial wird veranschaulicht, wie Sie teilweise strukturierte Daten, z.B. im JSON-Format, durchsuchen, die in Azure-Blobs gespeichert sind. Teilweise strukturierte Daten enthalten Tags oder Markierungen, mit denen Inhalte in den Daten voneinander getrennt werden. Sie unterscheiden sich von strukturierten Daten darin, dass keine formale Strukturierung gemäß einem Datenmodell durchgeführt wird, z.B. einem relationalen Datenbankschema.
+In einer zweiteiligen Tutorialreihe erfahren Sie, wie Sie teilweise strukturierte und unstrukturierte Daten mit Azure Search durchsuchen. In [Teil 1](../storage/blobs/storage-unstructured-search.md) haben Sie etwas über das Durchsuchen von unstrukturierten Daten erfahren, jedoch wurden auch wichtige Voraussetzungen für dieses Tutorial behandelt, etwa das Erstellen des Speicherkontos. 
 
-In diesem Teil wird Folgendes beschrieben:
+In Teil 2 geht es um teilweise strukturierte Daten, z.B. im JSON-Format, die in Azure-Blobs gespeichert sind. Teilweise strukturierte Daten enthalten Tags oder Markierungen, mit denen Inhalte in den Daten voneinander getrennt werden. Sie bilden den Unterschied zwischen unstrukturierte Daten, die in ihrer Gesamtheit indiziert werden müssen, und formal strukturierten Daten, die sich nach einem Datenmodell richten, z.B. ein Schema mit einer relationalen Datenbank, die feldweise durchsucht werden kann.
+
+In Teil 2 erfahren Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen und Auffüllen eines Index in einem Azure Search-Dienst
-> * Verwenden des Azure Search-Diensts zum Durchsuchen des Index
+> * Konfigurieren einer Azure Search-Datenquelle für einen Azure-Blobcontainer
+> * Erstellen und Auffüllen eines Azure Search-Index und eines Indexers zum Durchsuchen des Containers und Extrahieren von durchsuchbarem Inhalt
+> * Durchsuchen des soeben erstellten Index
 
 > [!NOTE]
-> Die Unterstützung von JSON-Arrays ist ein Vorschaufeature in Azure Search. Es ist im Portal derzeit nicht verfügbar. Aus diesem Grund verwenden wir die Vorschauversion der REST-API, in der das Feature enthalten ist, und ein REST-Clienttool zum Aufrufen der API.
+> Dieses Tutorial basiert auf JSON-Array-Unterstützung, die derzeit als Vorschaufeature in Azure Search vorhanden ist. Sie ist nicht im Portal verfügbar. Aus diesem Grund verwenden wir die Vorschauversion der REST-API, in der dieses Feature enthalten ist, und ein REST-Clienttool zum Aufrufen der API.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für dieses Tutorial benötigen Sie Folgendes:
-* Arbeiten Sie das [vorherige Tutorial](../storage/blobs/storage-unstructured-search.md) durch.
-    * In diesem Tutorial werden das Speicherkonto und der Suchdienst aus dem vorherigen Tutorial verwendet.
-* Installieren Sie einen REST-Client, und machen Sie sich mit dem Erstellen einer HTTP-Anforderung vertraut.
+* Abschluss des [vorhergehenden Tutorials](../storage/blobs/storage-unstructured-search.md), in dem das Speicherkonto und der Suchdienst aus dem vorherigen Tutorial bereitgestellt wurden.
 
+* Installieren eines REST-Clients und Vertrautmachen mit dem Erstellen einer HTTP-Anforderung. Für dieses Tutorial nutzen wir [Postman](https://www.getpostman.com/). Sie können auch einen anderen REST-Client verwenden, wenn Sie damit bereits gut vertraut sind.
 
-## <a name="set-up-the-rest-client"></a>Einrichten des REST-Clients
+## <a name="set-up-postman"></a>Einrichten von Postman
 
-Sie benötigen einen REST-Client, um dieses Tutorial durcharbeiten zu können. Für dieses Tutorial nutzen wir [Postman](https://www.getpostman.com/). Sie können auch einen anderen REST-Client verwenden, wenn Sie damit bereits gut vertraut sind.
+Starten Sie Postman, und richten Sie eine HTTP-Anforderung ein. Wenn Sie mit diesem Tool nicht vertraut sind, finden Sie weitere Informationen unter [Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman](search-fiddler.md).
 
-Starten Sie Postman, nachdem Sie die Anwendung installiert haben.
-
-Falls Sie zum ersten Mal REST-Aufrufe für Azure durchführen, hilft Ihnen diese kurze Einführung in die wichtigsten Komponenten für dieses Tutorial weiter: Die Anforderungsmethode für jeden Aufruf in diesem Tutorial ist „POST“. Die Headerschlüssel sind „Content-type“ und „api-key“. Die Werte der Headerschlüssel sind „application/json“ bzw. Ihr „Administratorschlüssel“ (der Administratorschlüssel ist ein Platzhalter für Ihren Primärschlüssel für die Suche). Im Text ordnen Sie den eigentlichen Inhalt Ihres Aufrufs an. Je nach verwendetem Client kann der Aufbau Ihrer Abfrage leicht abweichen, aber hier erhalten Sie die grundlegenden Informationen.
+Die Anforderungsmethode für jeden Aufruf in diesem Tutorial ist „POST“. Die Headerschlüssel sind „Content-type“ und „api-key“. Die Werte der Headerschlüssel sind „application/json“ bzw. Ihr „Administratorschlüssel“ (der Administratorschlüssel ist ein Platzhalter für Ihren Primärschlüssel für die Suche). Im Text ordnen Sie den eigentlichen Inhalt Ihres Aufrufs an. Je nach verwendetem Client kann der Aufbau Ihrer Abfrage leicht abweichen, aber hier erhalten Sie die grundlegenden Informationen.
 
   ![Teilweise strukturierte Suche](media/search-semi-structured-data/postmanoverview.png)
 
@@ -98,7 +97,7 @@ Stellen Sie sicher, dass Sie vor dem Ausführen des Aufrufs im Text `[storage ac
 }
 ```
 
-Das Ergebnis sollte in etwa wie folgt aussehen:
+Die Antwort sollte in etwa wie folgt aussehen:
 
 ```json
 {
@@ -162,7 +161,7 @@ Ersetzen Sie zunächst die URL. Fügen Sie den folgenden Code in den Text ein, u
 }
 ```
 
-Das Ergebnis sollte in etwa wie folgt aussehen:
+Die Antwort sollte in etwa wie folgt aussehen:
 
 ```json
 {

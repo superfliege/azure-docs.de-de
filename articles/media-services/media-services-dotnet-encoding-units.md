@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2017
 ms.author: juliako;milangada;
-ms.openlocfilehash: 4a1bf91c3b3e9dd4d42d84f205a9bc07a71525c2
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9274e2807beeb0fd517ba1e848cfc26db1c57655
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-scale-encoding-with-net-sdk"></a>Skalieren der Codierung mit .NET SDK
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="overview"></a>Übersicht
 > [!IMPORTANT]
-> Lesen Sie unbedingt das [Übersichtsthema](media-services-scale-media-processing-overview.md) , um weitere Informationen zum Skalieren der Medienverarbeitung zu erhalten.
+> Lesen Sie unbedingt die [Übersicht](media-services-scale-media-processing-overview.md), um weitere Informationen zum Skalieren der Medienverarbeitung zu erhalten.
 > 
 > 
 
@@ -54,19 +54,6 @@ Führen Sie folgende Schritte aus, um den Typ reservierter Einheiten und die Anz
 
 ## <a name="opening-a-support-ticket"></a>Öffnen eines Supporttickets
 Standardmäßig kann jedes Media Services-Konto auf bis zu 25 für das Codieren und bis zu 4 für das bedarfsgesteuerte Streaming reservierte Einheiten skaliert werden. Sie können einen höheren Grenzwert durch Öffnen eines Supporttickets anfordern.
-
-### <a name="open-a-support-ticket"></a>Öffnen eines Supporttickets
-Um ein Supportticket zu öffnen, gehen Sie folgendermaßen vor:
-
-1. Klicken Sie auf [Support erhalten](https://manage.windowsazure.com/?getsupport=true). Wenn Sie nicht angemeldet sind, werden Sie zur Eingabe Ihrer Anmeldeinformationen aufgefordert.
-2. Wählen Sie Ihr Abonnement aus.
-3. Wählen Sie unter Supporttyp „Technisch“ aus.
-4. Klicken Sie auf "Create Ticket".
-5. Wählen Sie „Azure Media Services“ in der Produktliste auf der nächsten Seite aus.
-6. Wählen Sie einen Problemtyp aus, der Ihr Problem beschreibt.
-7. Klicken Sie auf „Weiter“.
-8. Befolgen Sie die Anweisungen auf der nächsten Seite, und geben Sie dann die Details zu Ihrem Problem an.
-9. Klicken Sie auf "Senden", um das Ticket zu öffnen.
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 8e707c193c5a8e294710973e128e1cf96d4f6461
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 10c8b708cad245f4ac0304489beb36dcf63cd4b1
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Verwalten registrierter Server mit Azure File Sync (Vorschau)
 Mit Azure File Sync (Vorschau) können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -63,7 +63,7 @@ Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von Azu
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>Registrieren des Servers mit der Benutzeroberfläche für die Serverregistrierung
 > [!Important]  
-> Abonnements von Cloudlösungsanbietern können die Benutzeroberfläche für die Serverregistrierung nicht verwenden. Verwenden Sie stattdessen PowerShell (unten diesem Abschnitt).
+> Cloud Solution Provider-Abonnements können die Benutzeroberfläche für die Serverregistrierung nicht verwenden. Verwenden Sie stattdessen PowerShell (unten diesem Abschnitt).
 
 1. Wenn die Benutzeroberfläche für die Serverregistrierung nicht unmittelbar nach Abschluss der Installation des Azure File Sync-Agents gestartet wird, können Sie sie manuell starten, indem Sie `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe` ausführen.
 2. Klicken Sie auf *Anmelden*, um auf Ihr Azure-Abonnement zuzugreifen. 
@@ -82,7 +82,7 @@ Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von Azu
 > Wenn der Server Mitglied eines Failoverclusters ist, muss die Serverregistrierung für jeden einzelnen Server ausgeführt werden. Wenn Sie die registrierten Server im Azure-Portal anzeigen, werden alle Knoten von Azure File Sync automatisch als Mitglied des gleichen Failoverclusters erkannt und entsprechend gruppiert.
 
 #### <a name="register-the-server-with-powershell"></a>Registrieren des Servers mit PowerShell
-Sie können auch Serverregistrierung auch über PowerShell ausführen. Dies ist die einzige unterstützte Methode zur Serverregistrierung für Abonnements von Cloudlösungsanbietern:
+Sie können auch Serverregistrierung auch über PowerShell ausführen. Dies ist die einzige unterstützte Methode zur Serverregistrierung für Cloud Solution Provider-Abonnements:
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -147,9 +147,9 @@ Da Azure File Sync selten der einzige Dienst ist, der in Ihrem Rechenzentrum aus
 > Das Festlegen von zu niedrigen Grenzwerten wirkt sich auf die Leistung der Synchronisierung durch Azure File Sync und auf Rückrufe aus.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Festlegen von Netzwerklimits für Azure File Sync
-Sie können die Netzwerknutzung von Azure File Sync mithilfe des Cmdlets „StorageSyncNetworkLimit“ beschränken. 
+Sie können die Netzwerknutzung von Azure File Sync mithilfe der `StorageSyncNetworkLimit`-Cmdlets drosseln. 
 
-Sie können beispielsweise ein neues Netzwerklimit erstellen, um sicherzustellen, dass Azure File Sync an Werktagen zwischen 9:00 und 17:00 Uhr nicht mehr als 10 MBit/s verbraucht: 
+Sie können beispielsweise ein neues Drossellimit erstellen, um sicherzustellen, dass Azure File Sync an Werktagen zwischen 9:00 und 17:00 Uhr nicht mehr als 10 MBit/s verbraucht: 
 
 ```PowerShell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"

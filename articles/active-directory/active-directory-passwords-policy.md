@@ -1,5 +1,5 @@
 ---
-title: 'Richtlinie: Azure AD SSPR | Microsoft-Dokumentation'
+title: "Richtlinien für die Self-Service-Kennwortzurücksetzung – Azure Active Directory"
 description: "Richtlinienoptionen zur Self-Service-Kennwortzurücksetzung in Azure AD"
 services: active-directory
 keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD"
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 6b1abd23c6f578a3a776e6174d1ea0f47b3ba27d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 51eb7c594c02310c083b42b6c0d964b4af239d76
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -74,7 +74,7 @@ Eine Ein-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus einem Elemen
 
 * Es ist keine benutzerdefinierte Domäne vorhanden (*.onmicrosoft.com). 
 
-  und 
+  and 
 
   Azure AD Connect synchronisiert keine Identitäten.
 
@@ -93,7 +93,7 @@ Jedes Benutzerkonto, das sich bei Azure AD anmeldet, muss über ein eindeutiges,
 
 In der folgenden Tabelle sind die verfügbaren Kennwortrichtlinieneinstellungen beschrieben, die auf die in Azure AD erstellten und verwalteten Benutzerkonten angewendet werden können:
 
-| Eigenschaft | Anforderungen |
+| Eigenschaft | Requirements (Anforderungen) |
 | --- | --- |
 | Zulässige Zeichen |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ “ ( ) ;</li></ul> |
 | Unzulässige Zeichen |<ul><li>Unicode-Zeichen</li><li>Leerzeichen</li><li> Nur für sichere Kennwörter: Dürfen keinen Punkt (.) unmittelbar vor dem @-Symbol enthalten.</li></ul> |
@@ -158,6 +158,6 @@ Die folgenden Artikel enthalten weitere Informationen zur Kennwortzurücksetzung
 * [Welche Authentifizierungsmethoden sind für Benutzer verfügbar?](active-directory-passwords-how-it-works.md#authentication-methods)
 * [Worum handelt es sich beim Rückschreiben von Kennwörtern, und warum sollte ich mir Gedanken darüber machen?](active-directory-passwords-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](active-directory-passwords-reporting.md)
-* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
+* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
 * [Ich habe eine Frage, die nicht an einer anderen Stelle abgedeckt wurde.](active-directory-passwords-faq.md)

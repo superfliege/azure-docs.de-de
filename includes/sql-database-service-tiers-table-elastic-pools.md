@@ -4,7 +4,7 @@ sql-database-elastic-pool.md
 -->
 
  
-### <a name="basic-elastic-pool-limits"></a>Grenzwerte für elastische Pools – Basic
+### <a name="basic-elastic-pool-limits"></a>Grenzwerte für Pools für elastische Datenbanken – Basic
 
 | eDTUs pro Pool | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
@@ -20,7 +20,7 @@ sql-database-elastic-pool.md
 | Max. Speicherkapazität pro Datenbank (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 
 ||||||||
 
-### <a name="standard-elastic-pool-limits"></a>Grenzwerte für elastische Pools – Standard
+### <a name="standard-elastic-pool-limits"></a>Grenzwerte für Pools für elastische Datenbanken – Standard
 
 | eDTUs pro Pool | **50** | **100** | **200** | **300** | **400** | **800**| 
 |:---|---:|---:|---:| ---: | ---: | ---: | 
@@ -36,7 +36,7 @@ sql-database-elastic-pool.md
 | Max. Speicherkapazität pro Datenbank (GB)* | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
-### <a name="standard-elastic-pool-limits-continued"></a>Grenzwerte für elastische Pools – Standard (Fortsetzung) 
+### <a name="standard-elastic-pool-limits-continued"></a>Grenzwerte für Pools für elastische Datenbanken – Standard (Fortsetzung) 
 
 | eDTUs pro Pool | **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
@@ -52,7 +52,7 @@ sql-database-elastic-pool.md
 | Max. Speicherlösungen pro Datenbank (GB)* | 1024 | 1024 | 1024 | 1024 | 1024 | 
 ||||||||
 
-### <a name="premium-elastic-pool-limits"></a>Grenzwerte für elastische Pools – Premium
+### <a name="premium-elastic-pool-limits"></a>Grenzwerte für Pools für elastische Datenbanken – Premium
 
 | eDTUs pro Pool | **125** | **250** | **500** | **1000** | **1500**| 
 |:---|---:|---:|---:| ---: | ---: | 
@@ -68,7 +68,7 @@ sql-database-elastic-pool.md
 | Max. Speicherkapazität pro Datenbank (GB)* | 1024 | 1024 | 1024 | 1024 | 1024 | 
 ||||||||
 
-### <a name="premium-elastic-pool-limits-continued"></a>Grenzwerte für elastische Pools – Premium (Fortsetzung) 
+### <a name="premium-elastic-pool-limits-continued"></a>Grenzwerte für Pools für elastische Datenbanken – Premium (Fortsetzung) 
 
 | eDTUs pro Pool | **2000** | **2500** | **3000** | **3500** | **4000**|
 |:---|---:|---:|---:| ---: | ---: | 
@@ -84,7 +84,7 @@ sql-database-elastic-pool.md
 | Max. Speicherkapazität pro Datenbank (GB)* | 1024 | 1024 | 1024 | 1024 | 1024 | 
 ||||||||
 
-### <a name="premium-rs-elastic-pool-limits"></a>Grenzwerte für elastische RS-Pools – Premium
+### <a name="premium-rs-elastic-pool-limits"></a>Grenzwerte für Pools für elastische RS-Datenbanken – Premium
 
 | eDTUs pro Pool | **125** | **250** | **500** | **1000** |
 |:---|---:|---:|---:| ---: | ---: | 
@@ -103,7 +103,7 @@ sql-database-elastic-pool.md
 > [!IMPORTANT]
 > \* Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Details finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/). Speichergrößen, die den integrierten Speicher überschreiten, befinden sich in der Vorschauphase und werden gegen Aufpreis bereitgestellt. Weitere Details finden Sie unter [SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/).
 >
-> \* Im Premium-Tarif ist eine Speicherkapazität von mehr als 1 TB folgenden Regionen verfügbar: „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“, „Europa, Westen“, „Deutschland, Mitte“, „Asien, Südosten“, „Japan, Osten“, „Australien, Osten“, „Kanada, Mitte“ und „Kanada, Osten“. 
+> \* Im Premium-Tarif ist derzeit eine Speicherkapazität von mehr als 1 TB in folgenden Regionen verfügbar: „Australien, Osten“, „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „Frankreich, Mitte“, „Deutschland, Mitte“, „Japan, Osten“, „Südkorea, Mitte“, „USA, Süden-Mitte“, „Asien, Südosten“, „USA, Osten 2“, „USA, Westen“, „USA Gov Virginia“ und „Europa, Westen“. 
 >
 >\*\* Die minimale bzw. maximale Anzahl von eDTUs pro Datenbank ab 200 eDTUs in **Standard**-Pools befindet sich in der Vorschauphase.
 >

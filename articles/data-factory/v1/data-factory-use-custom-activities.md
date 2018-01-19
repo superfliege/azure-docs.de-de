@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 10/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 0794952fdfbcc49cc66273be2d46484014ae1677
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: c741f995c32bf6fa9ba4e0646573be8cdb67a7c3
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-use-custom-activities.md)
+> * [Version 1: allgemein verfügbar](data-factory-use-custom-activities.md)
 > * [Version 2 – Vorschauversion](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Use custom activities in an Azure Data Factory pipeline](../transform-data-using-dotnet-custom-activity.md) (Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Use custom activities in an Azure Data Factory pipeline](../transform-data-using-dotnet-custom-activity.md) (Verwenden von benutzerdefinierten Aktivitäten in einer Azure Data Factory-Pipeline).
 
 Es existieren zwei Aktivitätstypen, die Sie in einer Azure Data Factory-Pipeline verwenden können.
 
@@ -36,12 +36,11 @@ Es existieren zwei Aktivitätstypen, die Sie in einer Azure Data Factory-Pipelin
 
 Erstellen Sie zum Verschieben von Daten in oder aus einem Datenspeicher, der von Data Factory nicht unterstützt wird, eine **benutzerdefinierte Aktivität** mit Ihrer eigenen Datenverschiebungslogik, und verwenden Sie die Aktivität in einer Pipeline. Wenn Sie Daten auf eine Weise transformieren/verarbeiten müssen, die von Data Factory nicht unterstützt wird, können Sie auch eine benutzerdefinierte Aktivität mit Ihrer eigenen Datentransformationslogik erstellen und in einer Pipeline verwenden. 
 
-Sie können eine benutzerdefinierte Aktivität so konfigurieren, dass sie in einem **Azure Batch**-Pool mit virtuellen Computern oder in einem Windows-basierten **Azure HDInsight**-Cluster ausgeführt wird. Bei Verwendung von Azure Batch können Sie nur einen vorhandenen Azure Batch-Pool verwenden. Beim Verwenden von HDInsight können Sie dagegen einen vorhandenen HDInsight-Cluster oder einen Cluster verwenden, der zur Laufzeit für Sie automatisch bedarfsabhängig erstellt wird.  
+Sie können eine benutzerdefinierte Aktivität so konfigurieren, dass sie in einem **Azure Batch**-Pool mit virtuellen Computern ausgeführt wird. Bei Verwendung von Azure Batch können Sie nur einen vorhandenen Azure Batch-Pool verwenden.
 
-Die folgende exemplarische Vorgehensweise bietet Schritt-für-Schritt-Anleitungen zum Erstellen einer benutzerdefinierten .NET-Aktivität und zur Verwendung der benutzerdefinierten Aktivität in einer Pipeline. Für die exemplarische Vorgehensweise wird ein mit **Azure Batch** verknüpfter Dienst verwendet. Falls Sie stattdessen einen verknüpften Azure HDInsight-Dienst verwenden möchten, erstellen Sie einen verknüpften Dienst vom Typ **HDInsight** (eigener HDInsight-Cluster) oder **HDInsightOnDemand** (Data Factory erstellt bedarfsabhängig einen HDInsight-Cluster). Konfigurieren Sie anschließend die benutzerdefinierte Aktivität für die Verwendung des verknüpften HDInsight-Diensts. Weitere Informationen zur Verwendung von Azure HDInsight zum Ausführen der benutzerdefinierten Aktivität finden Sie im Abschnitt [Verwenden von mit Azure HDInsight verknüpften Diensten](#use-hdinsight-compute-service) .
+Die folgende exemplarische Vorgehensweise bietet Schritt-für-Schritt-Anleitungen zum Erstellen einer benutzerdefinierten .NET-Aktivität und zur Verwendung der benutzerdefinierten Aktivität in einer Pipeline. Für die exemplarische Vorgehensweise wird ein mit **Azure Batch** verknüpfter Dienst verwendet. 
 
 > [!IMPORTANT]
-> - Die benutzerdefinierten .NET Aktivitäten können nur in Windows-basierten HDInsight-Clustern ausgeführt werden. Eine Umgehung dieser Einschränkung ist das Verwenden der Map-/Reduce-Aktivität zum Ausführen von benutzerdefiniertem Java-Code in einem Linux-basierten HDInsight-Cluster. Eine weitere Option ist das Verwenden eines Azure Batch-Pools mit VMs zum Ausführen benutzerdefinierter Aktivitäten anstelle eines HDInsight-Clusters.
 > - Ein Datenverwaltungsgateway kann nicht über eine benutzerdefinierte Aktivität verwendet werden, um auf lokale Datenquellen zuzugreifen. Das [Datenverwaltungsgateway](data-factory-data-management-gateway.md) unterstützt derzeit nur die Kopieraktivität und die Aktivität mit gespeicherten Prozeduren in Data Factory.   
 
 ## <a name="walkthrough-create-a-custom-activity"></a>Exemplarische Vorgehensweise: Erstellen einer benutzerdefinierten Aktivität
@@ -113,7 +112,9 @@ Die Methode gibt ein Wörterbuch zurück, das künftig zum Verketten benutzerdef
      <li>Wählen Sie <b>C:\ADFGetStarted</b> als <b>Speicherort</b>.</li>
      <li>Klicken Sie auf <b>OK</b> , um das Projekt zu erstellen.</li>
    </ol>
-2. Klicken Sie auf **Extras**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **aket-Manager-Konsole**.
+   
+2. Klicken Sie auf **Extras**, zeigen Sie auf **NuGet-Paket-Manager**, und klicken Sie auf **Paket-Manager-Konsole**.
+
 3. Führen Sie in der Paket-Manager-Konsole den folgenden Befehl zum Importieren von **Microsoft.Azure.Management.DataFactories**aus.
 
     ```PowerShell
@@ -479,8 +480,6 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 
        Für die **poolName** -Eigenschaft können Sie auch die ID des Pools anstelle des Namens des Pools angeben.
 
-      > [!IMPORTANT]
-      > Data Factory unterstützt im Gegensatz zu HDInsight für Azure Batch keine bedarfsorientierte Option. Sie können nur Ihren eigenen Azure Batch-Pool in einer Azure Data Factory verwenden.   
     
 
 ### <a name="step-3-create-datasets"></a>Schritt 3: Erstellen von Datasets
@@ -786,115 +785,6 @@ Weitere Informationen hierzu finden Sie unter [Automatisches Skalieren von Compu
 
 Wenn der Pool die Standardeinstellung für [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx)verwendet, kann es 15 bis 30 Minuten dauern, bis der Batch-Dienst den virtuellen Computer vorbereitet hat und die benutzerdefinierte Aktivität ausgeführt wird.  Wenn der Pool eine andere Einstellung für „autoScaleEvaluationInterval“ nutzt, könnte der Batch-Dienst „autoScaleEvaluationInterval“ + 10 Minuten verwenden.
 
-## <a name="use-hdinsight-compute-service"></a>Verwenden des HDInsight-Computediensts
-In der exemplarischen Vorgehensweise haben Sie ein Azure Batch-Compute verwendet, um die benutzerdefinierte Aktivität auszuführen. Sie können auch Ihren eigenen Windows-basierten HDInsight-Cluster verwenden oder von Data Factory einen bedarfsgesteuerten Windows-basierten HDInsight-Cluster erstellen und die benutzerdefinierte Aktivität im HDInsight-Cluster ausführen lassen. Im Anschluss finden Sie die Schritte zum Verwenden eines HDInsight-Clusters:
-
-> [!IMPORTANT]
-> Die benutzerdefinierten .NET Aktivitäten können nur in Windows-basierten HDInsight-Clustern ausgeführt werden. Eine Umgehung dieser Einschränkung ist das Verwenden der Map-/Reduce-Aktivität zum Ausführen von benutzerdefiniertem Java-Code in einem Linux-basierten HDInsight-Cluster. Eine weitere Option ist das Verwenden eines Azure Batch-Pools mit VMs zum Ausführen benutzerdefinierter Aktivitäten anstelle eines HDInsight-Clusters.
- 
-
-1. Erstellen Sie einen mit Azure HDInsight verknüpften Dienst.   
-2. Verwenden Sie den mit HDInsight verknüpften Dienst anstelle von **AzureBatchLinkedService** in der JSON-Pipeline.
-
-Wenn Sie dies anhand der exemplarischen Vorgehensweise testen möchten, können Sie die **Start**- und **Endzeiten** für die Pipeline ändern, um das Szenario mit dem Azure HDInsight-Dienst zu testen.
-
-#### <a name="create-azure-hdinsight-linked-service"></a>Erstellen des mit Azure-HDInsight verknüpften Diensts
-Der Azure Data Factory-Dienst unterstützt das Erstellen eines Clusters bei Bedarf und verwendet ihn zum Verarbeiten der Eingabe zum Erzeugen von Ausgabedaten. Sie können auch Ihren eigenen Cluster für den gleichen Zweck verwenden. Wenn Sie den bedarfsgesteuerten HDInsight-Cluster verwenden, wird für jeden Slice ein Cluster erstellt. Bei Verwendung eines eigenen HDInsight-Clusters ist der Cluster sofort zur Sliceverarbeitung bereit. Aus diesem Grund werden bei Verwendung des bedarfsgesteuerten Clusters die Ausgabedaten möglicherweise nicht so schnell angezeigt wie bei der Verwendung Ihres eigenen Clusters.
-
-> [!NOTE]
-> Zur Laufzeit wird eine Instanz einer .NET-Aktivität nur auf einem Workerknoten im HDInsight-Cluster ausgeführt. Eine Skalierung auf mehrere Knoten ist nicht möglich. Mehrere Instanzen der .NET-Aktivität können auf verschiedenen Knoten des HDInsight-Clusters parallel ausgeführt werden.
->
->
-
-##### <a name="to-use-an-on-demand-hdinsight-cluster"></a>So verwenden Sie einen bedarfsgesteuerten HDInsight-Cluster
-1. Klicken Sie im **Azure Batch-Konto**im linken Menü auf **Verfassen und bereitstellen** .
-2. Klicken Sie im Data Factory-Editor auf der Befehlsleiste auf **Neu berechnen**, und wählen Sie im Menü die Option **On-demand HDInsight cluster** (Bedarfsgesteuerter HDInsight-Cluster) aus.
-3. Nehmen Sie die folgenden Änderungen am JSON-Skript vor:
-
-   1. Geben Sie für die Eigenschaft **clusterSize** die Größe des HDInsight-Clusters an.
-   2. Geben Sie für die **timeToLive** -Eigenschaft an, wie lange sich der Cluster im Leerlauf befinden darf, bevor er gelöscht wird.
-   3. Geben Sie für die **version** -Eigenschaft die HDInsight-Version an, die Sie verwenden möchten. Wenn Sie diese Eigenschaft ausschließen, wird die neueste Version verwendet.  
-   4. Geben Sie für **linkedServiceName** den Text **AzureStorageLinkedService** an.
-
-        ```JSON
-        {
-           "name": "HDInsightOnDemandLinkedService",
-           "properties": {
-               "type": "HDInsightOnDemand",
-               "typeProperties": {
-                   "clusterSize": 4,
-                   "timeToLive": "00:05:00",
-                   "osType": "Windows",
-                   "linkedServiceName": "AzureStorageLinkedService",
-               }
-           }
-        }
-        ```
-
-    > [!IMPORTANT]
-    > Die benutzerdefinierten .NET Aktivitäten können nur in Windows-basierten HDInsight-Clustern ausgeführt werden. Eine Umgehung dieser Einschränkung ist das Verwenden der Map-/Reduce-Aktivität zum Ausführen von benutzerdefiniertem Java-Code in einem Linux-basierten HDInsight-Cluster. Eine weitere Option ist das Verwenden eines Azure Batch-Pools mit VMs zum Ausführen benutzerdefinierter Aktivitäten anstelle eines HDInsight-Clusters.
-
-4. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.
-
-##### <a name="to-use-your-own-hdinsight-cluster"></a>So verwenden Sie Ihren eigenen HDInsight-Cluster:
-1. Klicken Sie im **Azure Batch-Konto**im linken Menü auf **Verfassen und bereitstellen** .
-2. Klicken Sie im **Data Factory-Editor** auf der Befehlsleiste auf **Neu berechnen**, und wählen Sie im Menü die Option **HDInsight-Cluster** aus.
-3. Nehmen Sie die folgenden Änderungen am JSON-Skript vor:
-
-   1. Geben Sie für die **clusterUri** -Eigenschaft die URL für Ihr HDInsight ein. Beispiel: https://<clustername>.azurehdinsight.net/     
-   2. Geben Sie für die **UserName** -Eigenschaft den Benutzernamen ein, der Zugriff auf den HDInsight-Cluster hat.
-   3. Geben Sie für die **Password** -Eigenschaft das Kennwort für das Benutzerkonto ein.
-   4. Geben Sie für die **LinkedServiceName**-Eigenschaft **AzureStorageLinkedService** ein.
-4. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften Dienst bereitzustellen.
-
-Weitere Informationen finden Sie unter [Verknüpfte Computedienste](data-factory-compute-linked-services.md) .
-
-Verwenden Sie in der **Pipeline-JSON-Datei**den mit HDInsight verknüpften (bedarfsgesteuerten oder eigenen) Dienst:
-
-```JSON
-{
-  "name": "ADFTutorialPipelineCustom",
-  "properties": {
-    "description": "Use custom activity",
-    "activities": [
-      {
-        "Name": "MyDotNetActivity",
-        "Type": "DotNetActivity",
-        "Inputs": [
-          {
-            "Name": "InputDataset"
-          }
-        ],
-        "Outputs": [
-          {
-            "Name": "OutputDataset"
-          }
-        ],
-        "LinkedServiceName": "HDInsightOnDemandLinkedService",
-        "typeProperties": {
-          "AssemblyName": "MyDotNetActivity.dll",
-          "EntryPoint": "MyDotNetActivityNS.MyDotNetActivity",
-          "PackageLinkedService": "AzureStorageLinkedService",
-          "PackageFile": "customactivitycontainer/MyDotNetActivity.zip",
-          "extendedProperties": {
-            "SliceStart": "$$Text.Format('{0:yyyyMMddHH-mm}', Time.AddMinutes(SliceStart, 0))"
-          }
-        },
-        "Policy": {
-          "Concurrency": 2,
-          "ExecutionPriorityOrder": "OldestFirst",
-          "Retry": 3,
-          "Timeout": "00:30:00",
-          "Delay": "00:00:00"
-        }
-      }
-    ],
-    "start": "2016-11-16T00:00:00Z",
-    "end": "2016-11-16T05:00:00Z",
-    "isPaused": false
-  }
-}
-```
 
 ## <a name="create-a-custom-activity-by-using-net-sdk"></a>Erstellen einer benutzerdefinierten Aktivität mit dem .NET SDK
 In der exemplarischen Vorgehensweise in diesem Artikel erstellen Sie eine Data Factory mit einer Pipeline, die die benutzerdefinierte Aktivität mithilfe des Azure-Portals verwendet. Der folgende Code zeigt, wie die Data Factory stattdessen mit dem .NET-SDK erstellt wird. Weitere Informationen zur Verwendung des SDK für die programmgesteuerte Erstellung von Pipelines finden Sie im Artikel [Erstellen einer Pipeline mit einer Kopieraktivität durch die .NET-API](data-factory-copy-activity-tutorial-using-dotnet-api.md). 

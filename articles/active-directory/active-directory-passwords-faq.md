@@ -1,5 +1,5 @@
 ---
-title: "Häufig gestellte Fragen: Azure AD SSPR | Microsoft-Dokumentation"
+title: "Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung – Azure Active Directory"
 description: "Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung in Azure AD"
 services: active-directory
 keywords: "Active Directory-Kennwortverwaltung, Kennwortverwaltung, Self-Service-Kennwortzurücksetzung in Azure AD"
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4216c417d137c00587bf65b39410eca6f4cef8bc
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 697b82c8197a9a7ff4c60ce6fa60e098396c2bca
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>Häufig gestellte Fragen zur Kennwortverwaltung
 
@@ -245,7 +245,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
   >
 
-## <a name="password-writeback"></a>Rückschreiben von Kennwörtern
+## <a name="password-writeback"></a>Kennwortrückschreiben
 
 * **F: Wie funktioniert das Rückschreiben von Kennwörtern im Detail?**
 
@@ -294,5 +294,5 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * [Kennwortrichtlinien und -einschränkungen in Azure Active Directory](active-directory-passwords-policy.md)
 * [Übersicht über die Kennwortrückschreibung](active-directory-passwords-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](active-directory-passwords-reporting.md)
-* [Ausführliche Informationen zur Self-Service-Kennwortzurücksetzung in Azure AD](active-directory-passwords-how-it-works.md)
+* [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](active-directory-passwords-how-it-works.md)
 * [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)

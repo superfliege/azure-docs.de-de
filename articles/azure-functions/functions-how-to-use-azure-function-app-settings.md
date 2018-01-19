@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.openlocfilehash: a6cfcd939cb0f21d01fe849ef04619ec9c1c972a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: f174766d4ab909fea0feea517a17b9d648722c2a
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Verwalten einer Funktionen-App im Azure-Portal 
 
@@ -70,7 +70,7 @@ Weitere Informationen zum Verwenden von App Service-Einstellungen finden Sie unt
 
 | | |
 |-|-|
-| ![Anwendungseinstellungen für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | Auf dem App Service-Blatt **Anwendungseinstellungen** können Sie Frameworkversionen, das Remotedebuggen, App-Einstellungen und Verbindungszeichenfolgen konfigurieren und verwalten. Wenn Sie Ihre Funktionen-App in andere Dienste von Azure oder Drittanbietern integrieren, können Sie hier die entsprechenden Einstellungen ändern. |
+| ![Anwendungseinstellungen für Funktionen-Apps.](./media/functions-how-to-use-azure-function-app-settings/function-app-application-settings.png) | Auf dem App Service-Blatt **Anwendungseinstellungen** können Sie Frameworkversionen, das Remotedebuggen, App-Einstellungen und Verbindungszeichenfolgen konfigurieren und verwalten. Wenn Sie Ihre Funktionen-App in andere Dienste von Azure oder Drittanbietern integrieren, können Sie hier die entsprechenden Einstellungen ändern. Scrollen Sie zum Löschen einer Einstellung nach rechts, und wählen Sie rechts am Ende der Zeile das Symbol **X** (in der folgenden Abbildung nicht dargestellt).
 
 ![Konfigurieren von Anwendungseinstellungen](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-settings.png)
 

@@ -1,6 +1,6 @@
 ---
 title: 'Azure Backup: Anwendungskonsistente Sicherungen von Linux-VMs | Microsoft-Dokumentation'
-description: "Verwenden Sie Skripts, um für Ihre virtuellen Linux-Computer anwendungskonsistente Sicherungen in Azure zu gewährleisten. Die Skripts gelten nur für Linux-VMs in einer Ressourcen-Manager-Bereitstellung. Sie gelten nicht für Windows-VMs oder Dienst-Manager-Bereitstellungen. Dieser Artikel führt Sie durch die Schritte zum Konfigurieren von Skripts, einschließlich zur Problembehandlung."
+description: "Erstellen Sie anwendungskonsistente Sicherungen Ihrer virtuellen Linux-Computer in Azure. In diesem Artikel wird beschrieben, wie Sie das Skriptframework zum Sichern von in Azure bereitgestellten Linux-VMs konfigurieren. Außerdem enthält dieser Artikel Informationen zur Problembehandlung."
 services: backup
 documentationcenter: dev-center-name
 author: anuragmehrotra
@@ -12,33 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 4/12/2017
+ms.date: 1/12/2018
 ms.author: anuragm;markgal
-ms.openlocfilehash: 378c65bec8fd1f880ed459e76f5e4b5d85e49d2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c2437b4cd90deda3e7239d87837a47a072f52835
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/13/2018
 ---
-# <a name="application-consistent-backup-of-azure-linux-vms-preview"></a>Anwendungskonsistente Sicherung von Azure-Linux-VMs (Vorschau)
+# <a name="application-consistent-backup-of-azure-linux-vms"></a>Anwendungskonsistente Sicherung von virtuellen Linux-Computern in Azure
 
-In diesem Artikel finden Sie Informationen zum Pre-Skript- und Post-Skript-Framework von Linux und wie es zum Erstellen anwendungskonsistenter Sicherungen von Azure-Linux-VMs genutzt werden kann.
-
-> [!Note]
-> Das Pre-Skript- und Post-Skript-Framework wird nur für virtuelle Linux-Computer unterstützt, die mit Azure Resource Manager bereitgestellt wurden. Skripts für Anwendungskonsistenz werden nicht für mit Service Manager bereitgestellte virtuelle Computer und nicht für Windows-VMs unterstützt.
->
+Beim Erstellen von Sicherungsmomentaufnahmen für Ihre VMs bedeutet Anwendungskonsistenz, dass Ihre Anwendungen gestartet werden, wenn die VMs nach dem Wiederherstellen gestartet werden. Wie Sie sich sicherlich denken können, ist die Anwendungskonsistenz äußerst wichtig. Zur Sicherstellung der Anwendungskonsistenz für Ihre Linux-VMs könne Sie das Pre-Skript- und Post-Skript-Framework von Linux verwenden, um anwendungskonsistente Sicherungen zu erstellen. Das Pre-Skript- und Post-Skript-Framework unterstützt virtuelle Linux-Computer, die mit Azure Resource Manager bereitgestellt wurden. Skripts für Anwendungskonsistenz unterstützen keine mit Service Manager bereitgestellten virtuellen Computer oder Windows-VMs.
 
 ## <a name="how-the-framework-works"></a>Funktionsweise des Frameworks
 
-Das Framework bietet eine Option zum Ausführen benutzerdefinierter Pre-Skripts und Post-Skripts beim Erstellen einer VM-Momentaufnahme. Pre-Skripts werden unmittelbar vor Erstellen der VM-Momentaufnahme und Post-Skripts unmittelbar nach Erstellen der VM-Momentaufnahme ausgeführt. Dies ermöglicht Ihnen, Ihre Anwendung und Umgebung beim Erstellen von VM-Momentaufnahmen flexibel zu steuern.
+Das Framework bietet eine Option zum Ausführen benutzerdefinierter Pre-Skripts und Post-Skripts beim Erstellen einer VM-Momentaufnahme. Pre-Skripts werden unmittelbar vor dem Erstellen der VM-Momentaufnahme und Post-Skripts unmittelbar nach dem Erstellen der VM-Momentaufnahme ausgeführt. Pre-Skripts und Post-Skripts ermöglichen es Ihnen, Ihre Anwendung und Umgebung beim Erstellen von VM-Momentaufnahmen flexibel zu steuern.
 
-In diesem Szenario ist das Sicherstellen anwendungskonsistenter VM-Sicherungen wichtig. Das Pre-Skript kann für die Anwendung native APIs aufrufen, um die E/A-Vorgänge stillzulegen und den Arbeitsspeicherinhalt auf den Datenträger zu leeren. Dies stellt sicher, dass die Momentaufnahme anwendungskonsistent ist (d.h., dass die Anwendung gestartet wird, wenn der virtuelle Computer nach der Wiederherstellung hochgefahren wird). Mit dem Post-Skript können die E/A-Vorgänge reaktiviert werden. Dies erfolgt mithilfe von für die Anwendung nativen APIs, sodass die Anwendung im Anschluss an die VM-Momentaufnahmen den normalen Betrieb fortsetzen kann.
+Pre-Skripts rufen APIs nativer Anwendungen auf, mit denen die E/A-Vorgänge stillgelegt werden und der Arbeitsspeicherinhalt auf den Datenträger geleert wird. Mit diesen Aktionen wird sichergestellt, dass die Momentaufnahme anwendungskonsistent ist. Für Post-Skripts werden APIs nativer Anwendungen genutzt, um die E/A-Vorgänge zu reaktivieren, damit die Anwendung nach der Erstellung der VM-Momentaufnahme wieder den normalen Betrieb aufnehmen kann.
 
 ## <a name="steps-to-configure-pre-script-and-post-script"></a>Schritte zum Konfigurieren des Pre- und Post-Skripts
 
 1. Melden Sie sich bei der zu sichernden Linux-VM als Root-Benutzer an.
 
-2. Laden Sie die Datei **VMSnapshotScriptPluginConfig.json** von [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) herunter, und kopieren Sie sie dann auf allen zu sichernden VMs in den Ordner **/etc/azure**. Erstellen Sie das Verzeichnis **/etc/azure**, sofern noch nicht vorhanden.
+2. Laden Sie von [GitHub](https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig) die Datei **VMSnapshotScriptPluginConfig.json** herunter, und kopieren Sie sie für alle VMs, die Sie sichern möchten, in den Ordner **/etc/azure**. Erstellen Sie den Ordner **/etc/azure**, falls er nicht vorhanden ist.
 
 3. Kopieren Sie das Pre-Skript und Post-Skript für Ihre Anwendung auf alle zu sichernden VMs. Sie können die Skripts in einem beliebigen Speicherort auf der VM kopieren. In der Datei **VMSnapshotScriptPluginConfig.json** müssen Sie den vollständigen Pfad der Skriptdateien aktualisieren.
 
@@ -51,8 +47,8 @@ In diesem Szenario ist das Sicherstellen anwendungskonsistenter VM-Sicherungen w
    - **Post-Skript:** Berechtigung „700“. Beispiel: Nur der Root-Benutzer darf die Berechtigungen „read“, „write“ und „execute“ für diese Datei haben.
 
    > [!Important]
-   > Das Framework bietet Benutzern sehr viele Möglichkeiten. Deshalb ist es wichtig, dass es geschützt ist und dass nur der Root-Benutzer Zugriff auf wichtige JSON- und Skriptdateien hat.
-   > Wenn die genannten Voraussetzungen nicht erfüllt sind, wird das Skript nicht ausgeführt. Dies führt zu einer dateisystem- bzw. absturzkonsistenten Sicherung.
+   > Das Framework bietet Benutzern sehr viele Möglichkeiten. Schützen Sie das Framework, und stellen Sie sicher, dass nur der Benutzer „root“ Zugriff auf kritische JSON-Dateien und Skriptdateien hat.
+   > Wenn die Anforderungen nicht erfüllt sind, wird das Skript nicht ausgeführt. Dies führt zu einem Absturz des Dateisystems und einer inkonsistenten Sicherung.
    >
 
 5. Konfigurieren Sie **VMSnapshotScriptPluginConfig.json** entsprechend der folgenden Beschreibung:
@@ -62,9 +58,9 @@ In diesem Szenario ist das Sicherstellen anwendungskonsistenter VM-Sicherungen w
 
     - **postScriptLocation**: Geben Sie den vollständigen Pfad des Post-Skripts auf der zu sichernden VM an.
 
-    - **preScriptParams:** Geben Sie die optionalen Parameter an, die an das Pre-Skript übergeben werden müssen. Alle Parameter müssen in Anführungszeichen gesetzt und mehrere Parameter durch ein Komma getrennt werden.
+    - **preScriptParams:** Geben Sie die optionalen Parameter an, die an das Pre-Skript übergeben werden müssen. Alle Parameter müssen in Anführungszeichen eingeschlossen werden. Trennen Sie die Parameter durch ein Komma, falls Sie mehrere Parameter verwenden.
 
-    - **postScriptParams:** Geben Sie die optionalen Parameter an, die an das Post-Skript übergeben werden müssen. Alle Parameter müssen in Anführungszeichen gesetzt und mehrere Parameter durch ein Komma getrennt werden.
+    - **postScriptParams:** Geben Sie die optionalen Parameter an, die an das Post-Skript übergeben werden müssen. Alle Parameter müssen in Anführungszeichen eingeschlossen werden. Trennen Sie die Parameter durch ein Komma, falls Sie mehrere Parameter verwenden.
 
     - **preScriptNoOfRetries:** Legen Sie die Häufigkeit fest, mit der das Pre-Skript bei einem Fehler vor seinem Abschluss wiederholt werden soll. Null bedeutet nur einen Versuch und keine Wiederholung bei einem Fehler.
 

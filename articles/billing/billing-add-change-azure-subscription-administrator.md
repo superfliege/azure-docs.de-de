@@ -13,42 +13,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/30/2017
+ms.date: 01/04/2018
 ms.author: genli
-ms.openlocfilehash: d78174cd968c0f918a07027daf1e59665d6b6c1e
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: dc09f29fec78d408e1560bfa0a943f16ab50c760
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/04/2018
 ---
-# <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten
+# <a name="add-or-change-azure-subscription-administrators"></a>Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 
-Sie können den Azure-Administrator ändern, der Ihr Azure-Abonnement oder die in Ihrem Abonnement verwendeten Azure-Dienste verwaltet. Um Azure-Abrechnungsinformationen anzuzeigen und Abonnements zu verwalten, müssen Sie sich im Kontocenter als Kontoadministrator anmelden. 
+Klassische Azure-Abonnementadministratoren und die [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](../active-directory/role-based-access-control-what-is.md) von Azure sind zwei Systeme zum Verwalten des Zugriffs auf Azure-Ressourcen:
+
+* Klassische Abonnementadministratorrollen ermöglichen eine grundlegende Zugriffsverwaltung und umfassen den Kontoadministrator, Dienstadministrator sowie Co-Administratoren.
+    * Wenn Sie sich für ein neues Azure-Abonnement registrieren, wird Ihr Konto standardmäßig sowohl als Kontoadministrator als auch als Dienstadministrator eingerichtet.
+    * Co-Administratoren können nach der Registrierung hinzugefügt werden.
+* Die rollenbasierte Zugriffssteuerung (RBAC) ist ein neueres System, das eine präzise Zugriffsverwaltung mit vielen integrierten Rollen, Flexibilität in Bezug auf den Umfang und benutzerdefinierte Rollen ermöglicht.
+    * Benutzer, die nur über RBAC-Rollen und nicht über klassische Abonnementadministrator-Rollen verfügen, können aber keine klassischen Azure-Bereitstellungen verwalten.
+
+Um für eine bessere Kontrolle und eine Vereinfachung der Zugriffsverwaltung zu sorgen, empfehlen wir, RBAC für alle Anforderungen der Zugriffsverwaltung zu verwenden. Es ist ratsam, nach Möglichkeit vorhandene Zugriffsrichtlinien mit RBAC neu zu konfigurieren. 
 
 <a name="add-an-admin-for-a-subscription"></a>
 
 ## <a name="add-an-rbac-owner-admin-for-a-subscription-in-azure-portal"></a>Hinzufügen eines Administrators mit der RBAC-Rolle „Besitzer“ für ein Abonnement im Azure-Portal 
 
-Um eine Person als Administrator für ein Abonnement im Azure-Portal hinzuzufügen, empfiehlt es sich, ihr die [RBAC](../active-directory/role-based-access-control-configure.md)-Rolle „Besitzer“ zuzuweisen. Benutzer mit der Rolle „Besitzer“ können die Ressourcen in dem von Ihnen zugewiesenen Abonnement verwalten, verfügen aber über keine Zugriffsrechte für andere Abonnements. Die Besitzer, die Sie über das [Azure-Portal](https://portal.azure.com) hinzufügen, können im [klassischen Azure-Portal](https://manage.windowsazure.com) keine Ressourcen verwalten.
+Wenn Sie eine Person als Administrator für die Dienstverwaltung von Azure-Abonnements hinzufügen möchten, sollten Sie ihr die RBAC-Rolle „Besitzer“ zuordnen. Benutzer mit der Rolle „Besitzer“ können die Ressourcen in dem von Ihnen zugewiesenen Abonnement verwalten, verfügen aber über keine Zugriffsrechte für andere Abonnements.
 
-1. Melden Sie sich bei der [Ansicht „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
-1. Wählen Sie das Abonnement aus, auf das der Administrator zugreifen soll.
-1. Wählen Sie im Menü die Option **Zugriffssteuerung (IAM)** aus.
-1. Wählen Sie **Hinzufügen** > **Rolle** > **Besitzer**. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten. Wählen Sie den Benutzer und dann **Speichern** aus.
+1. Navigieren Sie im [ Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zu **Abonnements**.
+2. Wählen Sie das Abonnement aus, für das Sie Zugriff gewähren möchten.
+3. Wählen Sie im Menü die Option **Zugriffssteuerung (IAM)** aus.
+4. Wählen Sie im Feld **Rolle** die Option **Besitzer**. 
+5. Wählen Sie im Feld **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Anwendung**. 
+6. Geben Sie im Feld **Auswählen** die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten. Wählen Sie den Benutzer und dann **Speichern** aus.
 
     ![Screenshot mit ausgewählter Besitzerrolle](./media/billing-add-change-azure-subscription-administrator/add-role.png)
+
+Hierdurch erhält der Benutzer vollständigen Zugriff auf alle Ressourcen, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. Verwenden Sie das Menü „IAM“ des Bereichs, um Zugriff für einen anderen Bereich zu gewähren, z.B. eine Ressourcengruppe. 
 
 ## <a name="add-or-change-co-administrator"></a>Hinzufügen oder Ändern eines Co-Administrators
 
 Nur ein Besitzer kann als Co-Administrator hinzugefügt werden. Andere Benutzer mit Rollen wie „Mitwirkender“ oder „Leser“ können nicht als Co-Administratoren hinzugefügt werden.
 
+> [!TIP]
+> Sie müssen lediglich das Konto „Besitzer“ als Co-Administrator hinzufügen, wenn der Benutzer klassische Azure-Bereitstellungen verwalten soll. Wir empfehlen Ihnen, für alle anderen Zwecke RBAC zu nutzen.
+
 1. Wenn noch nicht erfolgt, fügen Sie einen Benutzer entsprechend den Anweisungen oben als Besitzer hinzu.
-2. **Klicken Sie mit der rechten Maustaste** auf den soeben hinzugefügten Benutzer mit der Rolle „Besitzer“, und wählen Sie dann **Als Co-Administrator hinzufügen** aus. Wenn die Option **Als Co-Administrator hinzufügen** nicht angezeigt wird, aktualisieren Sie die Seite, oder versuchen Sie es mit einem anderen Internetbrowser. 
+2. **Klicken Sie mit der rechten Maustaste** auf den soeben hinzugefügten Benutzer mit der Rolle „Besitzer“, und wählen Sie dann **Als Co-Administrator hinzufügen** aus. Wenn die Option **Als Co-Administrator hinzufügen** nicht angezeigt wird, können Sie die Seite aktualisieren oder es mit einem anderen Internetbrowser versuchen. 
 
-     ![Screenshot, auf dem der Co-Administrator hinzugefügt wird](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
-
-    >[!TIP]
-    >Sie müssen das Konto „Besitzer“ als Co-Administrator hinzufügen, wenn der Benutzer die Azure-Dienste im [klassischen Azure-Portal](https://manage.windowsazure.com/) verwalten soll.
+    ![Screenshot, auf dem der Co-Administrator hinzugefügt wird](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
     Klicken Sie zum Entfernen der Co-Administratorberechtigung **mit der rechten Maustaste** auf den Benutzer „Co-Administrator“, und wählen Sie dann **Co-Administrator entfernen** aus.
 
@@ -58,7 +70,7 @@ Nur ein Besitzer kann als Co-Administrator hinzugefügt werden. Andere Benutzer 
 
 ## <a name="change-the-service-administrator-for-an-azure-subscription"></a>Ändern des Dienstadministrators für ein Azure-Abonnement
 
-Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern. Standardmäßig ist der Dienstadministrator bei der Registrierung identisch mit dem Kontoadministrator.
+Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement ändern. Standardmäßig ist der Dienstadministrator bei der Registrierung identisch mit dem Kontoadministrator. Wenn der Dienstadministrator in einen anderen Benutzer geändert wird, verliert der Kontoadministrator den Zugriff auf das Azure-Portal. Der Kontoadministrator kann aber immer das Kontocenter verwenden, um den Dienstadministrator wieder auf sich selbst festzulegen.
 
 1. Stellen Sie sicher, dass Ihr Szenario unterstützt wird, indem Sie die [Einschränkungen beim Ändern von Dienstadministratoren](#limits) überprüfen.
 1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/subscriptions) als Kontoadministrator an.
@@ -74,38 +86,38 @@ Nur der Kontoadministrator kann den Dienstadministrator für ein Abonnement änd
 
 ### <a name="limitations-for-changing-service-administrators"></a>Einschränkungen beim Ändern von Dienstadministratoren
 
-* Jedes Abonnement ist einem Azure AD-Verzeichnis zugeordnet. Um das Verzeichnis zu finden, dem das Abonnement zugeordnet ist, navigieren Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) zu **Einstellungen** > **Abonnements**. Überprüfen Sie dort die Abonnement-ID, und suchen Sie dann das Verzeichnis.
+* Jedes Abonnement ist einem Azure AD-Verzeichnis zugeordnet. Sie finden das Verzeichnis, dem das Abonnement zugeordnet ist, indem Sie zu [**Abonnements**](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) navigieren und ein Abonnement auswählen, um das Verzeichnis anzuzeigen.
 * Wenn Sie mit einem Geschäfts-, Schul- oder Unikonto angemeldet sind, können Sie andere Konten in Ihrer Organisation als Dienstadministrator hinzufügen. Beispielsweise kann abby@contoso.com das Konto bob@contoso.com als Dienstadministrator hinzufügen, aber nicht john@notcontoso.com, es sei denn, john@notcontoso.com ist im Verzeichnis „contoso.com“ enthalten. Mit einem Geschäfts-, Schul- oder Unikonto angemeldete Benutzer können Benutzer mit Microsoft-Konten weiterhin als Dienstadministrator hinzufügen.
 
   | Anmeldemethode | Hinzufügen eines Microsoft-Kontobenutzers als Dienstadministrator? | Hinzufügen eines Geschäfts-, Schul- oder Unikontos in der gleichen Organisation als Dienstadministrator? | Hinzufügen eines Geschäfts-, Schul- oder Unikontos in einer anderen Organisation als Dienstadministrator? |
   | --- | --- | --- | --- |
-  |  Microsoft Account |Ja |Nein |Nein |
-  |  Geschäfts-, Schul- oder Unikonto |Ja |Ja |Nein |
+  |  Microsoft-Konto |Ja |Nein  |Nein  |
+  |  Geschäfts-, Schul- oder Unikonto |Ja |Ja |Nein  |
 
 ## <a name="change-the-account-administrator-for-an-azure-subscription"></a>Ändern des Kontoadministrators für ein Azure-Abonnement
 
-Informationen zum Ändern des Kontoadministrators für ein Abonnement finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](billing-subscription-transfer.md).
+Der Kontoadministrator ist der Benutzer, der sich ursprünglich für das Azure-Abonnement registriert hat, und er ist der verantwortliche Besitzer des Abonnements (auch in Bezug auf die Abrechnung). Informationen zum Ändern des Kontoadministrators für ein Abonnement finden Sie unter [Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto](billing-subscription-transfer.md).
 
 <a name="check-the-account-administrator-of-the-subscription"></a>
 
 **Sie sind nicht sicher, wer der Kontoadministrator ist?** Folgen Sie diesen Schritten:
 
-1. Melden Sie sich bei der [Ansicht „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) an.
+1. Navigieren Sie im [ Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zu **Abonnements**.
 1. Wählen Sie das zu überprüfende Abonnement aus, und sehen Sie unter **Einstellungen** nach.
 1. Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.  
 
-## <a name="types-of-azure-admin-accounts"></a>Arten von Azure-Administratorkonten
+## <a name="types-of-classic-subscription-admins"></a>Arten von klassischen Abonnementadministratoren
 
- Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Arten von Administratorrollen in Microsoft Azure. Die folgende Tabelle beschreibt den Unterschied zwischen diesen drei Administratorrollen.
+ Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Arten von klassischen Abonnementadministratoren in Azure. Das Konto, das zum Registrieren für Azure verwendet wird, wird automatisch sowohl als Kontoadministrator als auch als Dienstadministrator eingerichtet. Anschließend können zusätzliche Co-Administratoren hinzugefügt werden. In der folgenden Tabelle sind die genauen Unterschiede zwischen diesen drei Administratorrollen beschrieben. 
 
-| Administratorrolle | Begrenzung | Beschreibung |
+> [!TIP]
+> Zur besseren Kontrolle und für eine präzise Zugriffsverwaltung empfehlen wir die Verwendung der rollenbasierten Zugriffssteuerung von Azure, bei der Benutzer mehreren Rollen hinzugefügt werden können. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-what-is.md).
+
+| Administrator für klassisches Abonnement | Begrenzung | BESCHREIBUNG |
 | --- | --- | --- |
-| Kontoadministrator (AA) |1 pro Azure-Konto |Dies ist die Person, die sich für Azure-Abonnements angemeldet oder diese erworben hat und die für den Zugriff auf das [Kontocenter](https://account.azure.com/Subscriptions) und zum Ausführen verschiedener Verwaltungsaufgaben berechtigt ist. Dazu gehört z. B. die Möglichkeit zum Erstellen von Abonnements, Kündigen von Abonnements, Ändern der Abrechnung für ein Abonnement und Ändern des Dienstadministrators. |
-| Dienstadministrator (SA) |1 pro Azure-Abonnement |Diese Rolle ist zum Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)berechtigt. Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator. |
-| Co-Administrator (CA) im [klassischen Azure-Portal](https://manage.windowsazure.com) |200 pro Abonnement |Diese Rolle verfügt über die gleichen Zugriffsrechte wie der Dienstadministrator, kann jedoch die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern. |
-
-Die rollenbasierte Zugriffssteuerung in Azure Active Directory (RBAC, Role-based Access Control) ermöglicht es, Benutzer mehreren Rollen hinzuzufügen. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../active-directory/role-based-access-control-configure.md).
-
+| Kontoadministrator (AA) |1 pro Azure-Konto |Dies ist der Benutzer, der sich für das Azure-Abonnement registriert hat und für den Zugriff auf das [Kontocenter](https://account.azure.com/Subscriptions) und zum Ausführen verschiedener Verwaltungsaufgaben berechtigt ist. Hierzu gehört beispielsweise die Möglichkeit zum Erstellen von neuen Abonnements, Kündigen von Abonnements, Ändern der Abrechnung für ein Abonnement und Ändern des Dienstadministrators. Der Kontoadministrator ist vom Konzept her der für die Abrechnung relevante Besitzer des Abonnements. Bei RBAC wird dem Kontoadministrator keine Rolle zugewiesen.|
+| Dienstadministrator (SA) |1 pro Azure-Abonnement |Diese Rolle ist zum Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)berechtigt. Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator. Bei RBAC wird die Rolle „Besitzer“ dem Dienstadministrator für den Abonnementbereich zugeordnet.|
+| Co-Administrator (CA) |200 pro Abonnement |Diese Rolle verfügt über die gleichen Zugriffsrechte wie der Dienstadministrator, kann jedoch die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern. Bei RBAC wird die Rolle „Besitzer“ dem Co-Administrator für den Abonnementbereich zugeordnet.|
 
 ## <a name="learn-more-about-resource-access-control-and-active-directory"></a>Weitere Informationen zu Ressourcenzugriffssteuerung und Active Directory
 

@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/20/2017
-ms.openlocfilehash: 54038785f513e56b07f5f3fafa3dbd6d4b6e7400
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/12/2018
+ms.openlocfilehash: d1e3a4fd4415afb995f614ac687096f6fb8ece95
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning-Workbench – bekannte Probleme und Anleitung zur Problembehandlung 
 Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu suchen und zu beheben, die bei der Verwendung der Anwendung Azure Machine Learning Workbench auftreten können. 
@@ -28,7 +28,7 @@ Wir betreiben ein MSDN-Forum, in dem Sie Fragen stellen können. Das Forum wird 
 ## <a name="gather-diagnostics-information"></a>Sammeln von Diagnoseinformationen
 Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können, wenn Sie um Hilfe bitten. Die Protkolldateien finden Sie hier:
 
-### <a name="installer"></a>Installer
+### <a name="installer-log"></a>Installationsprotokoll
 Sollten Sie beim Installieren auf ein Problem stoßen, können Sie die Protokolldateien des Installers in den folgenden Verzeichnissen finden:
 
 ```
@@ -40,18 +40,7 @@ Sollten Sie beim Installieren auf ein Problem stoßen, können Sie die Protokoll
 ```
 Sie können die Inhalte dieser Verzeichnisse zippen und uns zur Diagnose zukommen lassen.
 
-### <a name="app-update"></a>App-Update 
-#### <a name="no-update-notification-on-windows-desktop"></a>Keine Updatebenachrichtigung auf dem Windows-Desktop 
-Dieses Problem wird in einem zukünftigen Update behoben. In der Zwischenzeit können Sie das Problem umgehen, indem Sie es vermeiden, die App über die an die Taskleiste angeheftete Verknüpfung zu starten. Starten Sie die App stattdessen mithilfe des Startmenüs oder der Startsuchleiste oder über die Verknüpfung auf dem Desktop (sofern vorhanden). 
-
-#### <a name="no-update-notification-on-an-ubuntu-data-sciece-virtual-machine-dsvm"></a>Keine Updatebenachrichtigung auf einem virtuellen Ubuntu-Computer für Data Science
-Führen Sie die folgenden Schritte aus, um die aktuelle Anwendung herunterzuladen:   
-   - Entfernen Sie den Ordner „\Users\AppData\Local\amlworkbench“.
-   - Entfernen des Skripts `c:\dsvm\tools\setup\InstallAMLFromLocal.ps1`
-   - Entfernen der Desktopverknüpfung, die das oben genannte Skript startet
-   - Führen Sie mithilfe von [https://aka.ms/azureml-wb-msi](https://aka.ms/azureml-wb-msi) eine Neuinstallation aus.
-
-### <a name="workbench-desktop-app"></a>Workbench-Desktopanwendung
+### <a name="workbench-desktop-app-log"></a>Workbench-Desktop-App-Protokoll
 Wenn Sie sich nicht anmelden können oder die Workbench-Desktopanwendung abstürzt, können Sie die Protokolldateien in den folgenden Verzeichnissen überprüfen:
 ```
 # Windows
@@ -62,7 +51,7 @@ Wenn Sie sich nicht anmelden können oder die Workbench-Desktopanwendung abstür
 ``` 
 Sie können die Inhalte dieser Verzeichnisse zippen und uns zur Diagnose zukommen lassen.
 
-### <a name="experiment-execution"></a>Experimentausführung
+### <a name="experiment-execution-log"></a>Experimentausführungsprotokoll
 Sollte ein bestimmtes Skript während der Übermittlung von der Desktop-App fehlschlagen, versuchen Sie es erneut über die CLI mithilfe des Befehls `az ml experiment submit`. Daraufhin sollte Ihnen eine vollständige Fehlermeldung im JSON-Format angezeigt werden, die insbesondere einen **Vorgangs-ID-Wert** enthält. Senden Sie die JSON-Datei einschließlich des **Vorgangs-ID-Wertes** an uns, und wir helfen Ihnen bei der Diagnose. 
 
 Wenn ein bestimmtest Skript zwar erfolgreich übermittelt wird, aber die Ausführung fehlschlägt, sollte es die **Ausführungs-ID** ausdrucken, um die betreffende Ausführung zu ermitteln. Sie können die betreffenden Protokolldateien mit dem folgenden Befehl verpacken:
@@ -96,6 +85,8 @@ Wenn Sie in Azure ML Workbench arbeiten, können Sie uns auch ein Stirnrunzeln (
 
 - Die RevoScalePy-Bibliothek wird nur unter Windows und Linux (in Docker-Containern) unterstützt. Unter macOS wird sie nicht unterstützt.
 
+- Jupyter Notebooks weisen eine maximale Größe von 5 MB aus, wenn sie über die Workbench-App geöffnet werden. Sie können große Notebooks über die Befehlszeilenschnittstelle mit dem Befehl „az ml notebook start“ öffnen und die Zellenausgaben bereinigen, um die Dateigröße zu reduzieren.
+
 ## <a name="cant-update-workbench"></a>Workbench kann nicht aktualisiert werden.
 Wenn ein neues Update verfügbar ist, zeigt die Startseite der Workbench-App eine Meldung an, in der Sie über das neue Update informiert werden. In der linken unteren Ecke der App wird auf dem Glockensymbol eine Updatemarkierung angezeigt. Klicken Sie auf die Markierung, und befolgen Sie die Anweisungen des Installations-Assistenten, um das Update zu installieren. 
 
@@ -113,7 +104,7 @@ Leider gibt es hierfür keine einfache Lösung. Sie müssen die folgenden Schrit
    - Entfernen der Desktopverknüpfung, die das oben genannte Skript startet
    - Herunterladen des Installationsprogramms von https://aka.ms/azureml-wb-msi und erneutes Installieren
 
-## <a name="get-stuck-at-checking-experimentation-account-screen-after-logging-in"></a>Festhängen nach der Anmeldung am Bildschirm zur Überprüfung des Experimentieren-Kontos
+## <a name="stuck-at-checking-experimentation-account-screen-after-logging-in"></a>Festhängen nach der Anmeldung am Bildschirm zur Überprüfung des Experimentieren-Kontos
 Nach der Anmeldung kann es vorkommen, dass die Workbench-App auf einem leeren Bildschirm mit der Meldung „Experimentieren-Konto wird überprüft“ mit einem drehenden Rad stecken bleibt. Führen Sie zum Beheben dieses Problems die folgenden Schritte aus:
 1. Fahren Sie die App herunter.
 2. Löschen Sie die folgende Datei:
@@ -127,7 +118,7 @@ Nach der Anmeldung kann es vorkommen, dass die Workbench-App auf einem leeren Bi
 3. Starten Sie die App neu.
 
 ## <a name="cant-delete-experimentation-account"></a>Das Experimentieren-Konto kann nicht gelöscht werden.
-Sie können mit der Befehlszeilenschnittstelle ein Experimentierkonto löschen, müssen jedoch untergeordnete Arbeitsbereiche und die untergeordneten Projekte in diesen untergeordneten Arbeitsbereichen zuerst löschen. Andernfalls wird eine Fehlermeldung angezeigt.
+Sie können mit der Befehlszeilenschnittstelle ein Experimentierkonto löschen, müssen jedoch untergeordnete Arbeitsbereiche und die untergeordneten Projekte in diesen untergeordneten Arbeitsbereichen zuerst löschen. Andernfalls wird der Fehler „Ressource kann nicht gelöscht werden, bevor verschachtelte Ressourcen gelöscht wurden“ angezeigt.
 
 ```azure-cli
 # delete a project
@@ -147,6 +138,15 @@ Wenn Sie das Windows 10 Fall Creators Update besitzen und das Projekt in einem l
 
 ## <a name="file-name-too-long-on-windows"></a>Dateiname unter Windows zu lang
 Wenn Sie Workbench unter Windows verwenden, kann das Problem der Standardbeschränkung der Dateinamenlänge auf maximal 260 Zeichen und dadurch der Fehler „Das System kann den angegebenen Pfad nicht finden“ auftreten. Sie können die Einstellung eines Registrierungsschlüssels ändern, um viel längere Dateipfadnamen zu gestatten. Ausführliche Informationen zum Festlegen des Registrierungsschlüssels _MAX_PATH_ finden Sie in [diesem Artikel](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath).
+
+## <a name="interrupt-cli-execution-output"></a>Unterbrechen der Ausgabe der CLI-Ausführung
+Wenn Sie eine Experimentieren-Ausführung mit `az ml experiment submit` oder `az ml notebook start` starten und die Ausgabe unterbrechen möchten: 
+- Verwenden Sie unter Windows die Tastenkombination STRG+UNTBR.
+- Verwenden Sie unter macOS STRG+C.
+
+Beachten Sie, dass dies nur den Ausgabestream im Fenster der Befehlszeilenschnittstelle unterbricht. Ein gerade ausgeführter Auftrag wird nicht unterbrochen. Wenn Sie einen laufenden Auftrag abbrechen möchten, verwenden Sie den Befehl `az ml experiment cancel -r <run_id> -t <target name>`.
+
+Auf Windows-Computern mit Tastaturen, die keine UNTBR-Taste aufweisen, sind auch die Alternativen Fn+B, STRG+Fn+B oder Fn+Esc möglich. Die genaue Tastenkombination finden Sie in der Dokumentation Ihres Hardwareherstellers.
 
 ## <a name="docker-error-read-connection-refused"></a>Docker-Fehler „read: connection refused“
 Bei der Ausführung für einen lokalen Docker-Container kann es vorkommen, dass der folgende Fehler angezeigt wird: 
@@ -190,7 +190,7 @@ Falls Sie über eine kompliziertere sudo-Konfiguration verfügen, ist es ratsam,
 Der obige Fehler kann auch vorkommen, wenn Sie in Azure keine Ubuntu-basierte Linux-VM als Ausführungsziel verwenden. Wir unterstützen nur Ubuntu-basierte Linux-VMs für die Remoteausführung. 
 
 ## <a name="vm-disk-is-full"></a>VM-Datenträger ist voll
-Standardmäßig erhalten Sie beim Erstellen einer neuen Linux-VM in Azure einen Datenträger für das Betriebssystem mit 30 GB. Für das Docker-Modul wird standardmäßig derselbe Datenträger zum Pullen von Images und zum Ausführen von Containern verwendet. Dies kann dazu führen, dass der Betriebssystemdatenträger schnell voll ist. In diesem Fall wird ein Fehler der Art „VM-Datenträger ist voll“ angezeigt.
+Standardmäßig erhalten Sie beim Erstellen einer neuen Linux-VM in Azure einen Datenträger für das Betriebssystem mit 30 GB. Für die Docker-Engine wird standardmäßig derselbe Datenträger zum Pullen von Images und zum Ausführen von Containern verwendet. Dies kann dazu führen, dass der Betriebssystemdatenträger schnell voll ist. In diesem Fall wird ein Fehler der Art „VM-Datenträger ist voll“ angezeigt.
 
 Eine schnelle Lösung des Problems besteht darin, alle nicht mehr verwendeten Docker-Images zu entfernen. Mit dem folgenden Docker-Befehl wird dieser Vorgang durchgeführt. (Sie müssen natürlich per SSH auf die VM zugreifen, um den Docker-Befehl über eine Bash-Shell auszuführen.)
 
@@ -198,9 +198,20 @@ Eine schnelle Lösung des Problems besteht darin, alle nicht mehr verwendeten Do
 $ docker system prune -a
 ```
 
-Sie können auch einen Datenträger für Daten hinzufügen und das Docker-Modul so konfigurieren, dass dieser Datenträger zum Speichern von Images verwendet wird. [Hier wird beschrieben, wie Sie einen Datenträger für Daten hinzufügen](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk). Anschließend können Sie [ändern, wo Images von Docker gespeichert werden](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
+Sie können auch einen Datenträger für Daten hinzufügen und die Docker-Engine so konfigurieren, dass dieser Datenträger zum Speichern von Images verwendet wird. [Hier wird beschrieben, wie Sie einen Datenträger für Daten hinzufügen](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk). Anschließend können Sie [ändern, wo Images von Docker gespeichert werden](https://forums.docker.com/t/how-do-i-change-the-docker-image-installation-directory/1169).
 
-Sie können auch den Betriebssystemdatenträger erweitern, ohne dass es erforderlich ist, die Konfiguration des Docker-Moduls zu ändern. [Hier erfahren Sie, wie Sie den Betriebssystemdatenträger erweitern](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/add-disk).
+Sie können auch den Betriebssystemdatenträger erweitern, ohne dass es erforderlich ist, die Konfiguration der Docker-Engine zu ändern. [Hier erfahren Sie, wie Sie den Betriebssystemdatenträger erweitern](https://docs.microsoft.com/azure/virtual-machines/linux/expand-disks).
+
+```azure-cli
+#Deallocate VM (stopping will not work)
+$ az vm deallocate --resource-group myResourceGroup  --name myVM
+
+# Update Disc Size
+$ az disk update --resource-group myResourceGroup --name myVM --size-gb 250
+    
+# Start VM    
+$ az vm start --resource-group myResourceGroup  --name myVM
+```
 
 ## <a name="sharing-c-drive-on-windows"></a>Freigeben von Laufwerk C unter Windows
 Wenn die Ausführung in einem lokalen Docker-Container unter Windows erfolgt, kann die Leistung verbessert werden, indem `sharedVolumes` in der Datei `docker.compute` unter `aml_config` auf `true` festgelegt wird. Hierfür muss das Laufwerk C aber im _Tool „Docker for Windows“_ freigegeben werden. Versuchen Sie Folgendes, wenn Sie Laufwerk C nicht freigeben können:
@@ -213,6 +224,18 @@ Wenn die Ausführung in einem lokalen Docker-Container unter Windows erfolgt, ka
 * Bei der Freigabe von Laufwerk C mit Domänenanmeldeinformationen könnte die Freigabe bei der Arbeit in Netzwerken beendet werden, in denen der Domänencontroller nicht erreichbar ist (z.B. Heimnetzwerk, öffentliches WLAN usw.). Weitere Informationen finden Sie in [diesem Beitrag](https://blogs.msdn.microsoft.com/stevelasker/2016/06/14/configuring-docker-for-windows-volumes/).
 
 Es kommt zwar zu leichten Leistungseinbußen, aber Sie können das Freigabeproblem auch vermeiden, indem Sie `sharedVolumne` in der Datei `docker.compute` auf `false` festlegen.
+
+## <a name="wipe-clean-workbench-installation"></a>Vollständiges Löschen einer Workbench-Installation
+Im Allgemeinen ist dies nicht erforderlich. Falls Sie jedoch eine Installation vollständig löschen müssen, werden dazu folgende Schritte ausgeführt:
+
+- Unter Windows:
+  - Stellen Sie zuerst sicher, dass Sie das Applet _Programme hinzufügen oder entfernen_ in der _Systemsteuerung_ zum Entfernen des Anwendungseintrags _Azure Machine Learning Workbench_ verwenden.  
+  - Laden Sie dann eines der folgenden Skripts herunter, und führen Sie es aus:
+    - [Skript für die Windows-Befehlszeile](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.cmd).
+    - [Skript für Windows PowerShell](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_win.ps1). (Möglicherweise müssen Sie `Set-ExecutionPolicy Unrestricted` in einem PowerShell-Fenster mit erhöhten Rechten ausführen, bevor Sie das Skript ausführen können.)
+- Unter MacOS:
+  - Laden Sie einfach das [Bash-Shellskript für macOS](https://github.com/Azure/MachineLearning-Scripts/blob/master/cleanup/cleanup_mac.sh) herunter, und führen Sie es aus.
+
 
 ## <a name="some-useful-docker-commands"></a>Hilfreiche Docker-Befehle
 

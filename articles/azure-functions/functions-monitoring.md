@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
-ms.openlocfilehash: 1a8158dd60b6e2eb15a16bf3efb60ef30d602fd6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 6f38fe1e99c734bf09a403ea93b6487a71110cac
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="monitor-azure-functions"></a>Überwachen von Azure Functions
 
@@ -37,7 +37,7 @@ Damit eine Funktionen-App Daten an Application Insights senden kann, muss sie de
 
 * [Erstellen Sie eine verbundene Application Insights-Instanz, wenn Sie die Funktionen-App erstellen](#new-function-app).
 * [Stellen Sie für eine Application Insights-Instanz eine Verbindung mit einer vorhandenen Funktionen-App her](#existing-function-app).
- 
+
 ### <a name="new-function-app"></a>Neue Funktionen-App
 
 Aktivieren Sie Application Insights auf der Seite **Erstellen** der Funktionen-App:
@@ -65,6 +65,14 @@ Rufen Sie den Instrumentierungsschlüssel ab, und speichern Sie ihn in einer Fun
    ![Hinzufügen des Instrumentierungsschlüssels zu den App-Einstellungen](media/functions-monitoring/add-ai-key.png)
 
 1. Klicken Sie auf **Speichern**.
+
+## <a name="disable-built-in-logging"></a>Deaktivieren der integrierten Protokollierung
+
+Wenn Sie Application Insights aktivieren, ist es ratsam, die [integrierte Protokollierung mit Verwendung des Azure-Speichers](#logging-to-storage) zu deaktivieren. Die integrierte Protokollierung ist für Tests mit einfachen Workloads hilfreich, aber sie ist nicht für die Nutzung in der Produktion mit hohen Auslastungen bestimmt. Für die Produktionsüberwachung empfehlen wir die Verwendung von Application Insights. Bei Nutzung der integrierten Protokollierung in der Produktion kann der Protokollierungsdatensatz aufgrund einer Drosselung von Azure Storage ggf. unvollständig sein.
+
+Löschen Sie die App-Einstellung `AzureWebJobsDashboard`, um die integrierte Protokollierung zu deaktivieren. Informationen zum Löschen von App-Einstellungen im Azure-Portal finden Sie im Abschnitt **Anwendungseinstellungen** unter [Verwalten einer Funktionen-App im Azure-Portal](functions-how-to-use-azure-function-app-settings.md#settings).
+
+Wenn Sie Application Insights aktivieren und die integrierte Protokollierung deaktivieren, gelangen Sie über die Registerkarte **Überwachen** für eine Funktion im Azure-Portal zu Application Insights.
 
 ## <a name="view-telemetry-data"></a>Anzeigen von Telemetriedaten
 
@@ -464,58 +472,41 @@ Abhängigkeiten der Funktion gegenüber anderen Diensten werden nicht automatisc
 
 ## <a name="monitoring-without-application-insights"></a>Überwachen ohne Application Insights
 
-Wir empfehlen die Nutzung von Application Insights zum Überwachen von Funktionen, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können. Sie finden Telemetrie- und Protokolldaten aber auch auf den Seiten des Azure-Portals für eine Funktionen-App. 
+Wir empfehlen die Nutzung von Application Insights zum Überwachen von Funktionen, da Sie damit mehr Daten erhalten und diese Daten besser analysieren können. Sie finden Protokolle und Telemetriedaten aber auch auf den Seiten des Azure-Portals für eine Funktionen-App.
 
-Wenn Sie für eine Funktion die Registerkarte **Überwachen** wählen, erhalten Sie eine Liste mit Funktionsausführungen. Wählen Sie eine Funktionsausführung aus, um die Dauer, Eingabedaten, Fehler und zugehörigen Protokolldateien zu überprüfen.
+### <a name="logging-to-storage"></a>Protokollierung im Speicher
 
-> [!IMPORTANT]
-> Wenn Sie den [Verbrauchstarif](functions-overview.md#pricing) für Azure Functions verwenden, zeigt die Kachel **Überwachung** der Funktionen-App keine Daten. Das liegt an der dynamischen Skalierung und Verwaltung von Computeinstanzen durch die Plattform. Diese Metriken sind in einem Verbrauchstarif ohne Bedeutung.
+Für die integrierte Protokollierung wird das Speicherkonto verwendet, das über die Verbindungszeichenfolge in der App-Einstellung `AzureWebJobsDashboard` angegeben wird. Wenn diese App-Einstellung konfiguriert wurde, werden die Protokollierungsdaten im Azure-Portal angezeigt. Wählen Sie auf einer Funktionen-App-Seite eine Funktion und anschließend die Registerkarte **Überwachen**, um eine Liste mit den Funktionsausführungen anzuzeigen. Wählen Sie eine Funktionsausführung aus, um die Dauer, Eingabedaten, Fehler und zugehörigen Protokolldateien zu überprüfen.
+
+Wenn Sie Application Insights nutzen und die [integrierte Protokollierung deaktiviert](#disable-built-in-logging) haben, gelangen Sie über die Registerkarte **Überwachen** zu Application Insights.
 
 ### <a name="real-time-monitoring"></a>Überwachung in Echtzeit
 
-Die Überwachung in Echtzeit ist verfügbar, indem Sie auf der Registerkarte **Überwachen** der Funktion auf **Liveereignisdatenstrom** klicken. Der Liveereignisdatenstrom wird in einem Diagramm auf einer neuen Registerkarte im Browser angezeigt.
+Sie können Protokolldateien mithilfe der [Azure-Befehlszeilenschnittstelle 2.0 (Azure CLI 2.0)](/cli/azure/install-azure-cli) oder über [Azure PowerShell](/powershell/azure/overview) in eine Befehlszeilensitzung auf einer lokalen Arbeitsstation streamen.  
 
-> [!NOTE]
-> Es gibt ein bekanntes Problem, das dazu führen kann, dass Ihre Daten nicht aufgefüllt werden. Unter Umständen müssen Sie die Browserregisterkarte mit dem Liveereignisdatenstrom schließen und dann erneut auf **Liveereignisdatenstrom** klicken, damit Ihre Ereignisdatenstromdaten richtig aufgefüllt werden. 
-
-Diese Statistiken werden in Echtzeit erfasst, aber die grafische Darstellung der Ausführungsdaten kann ca. 10 Sekunden verzögert erfolgen.
-
-### <a name="monitor-log-files-from-a-command-line"></a>Überwachen von Protokolldateien über eine Befehlszeile
-
-Sie können Protokolldateien mithilfe der Azure-Befehlszeilenschnittstelle 1.0 oder über PowerShell in eine Befehlszeilensitzung auf einer lokalen Arbeitsstation streamen.
-
-### <a name="monitor-function-app-log-files-with-the-azure-cli-10"></a>Überwachen der Protokolldateien von Funktionen-Apps mit der Azure-Befehlszeilenschnittstelle 1.0
-
-[Installieren Sie zuerst die Azure CLI 1.0](../cli-install-nodejs.md) (Azure-Befehlszeilenschnittstelle 1.0), und [melden Sie sich an Azure an](/cli/azure/authenticate-azure-cli).
-
-Verwenden Sie die folgenden Befehle, um den klassischen Dienstverwaltungsmodus zu aktivieren, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
+Verwenden Sie für Azure CLI 2.0 die folgenden Befehle, um sich anzumelden, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
 
 ```
-azure config mode asm
-azure account list
-azure account set <subscriptionNameOrId>
-azure site log tail -v <function app name>
+az login
+az account list
+az account set <subscriptionNameOrId>
+az appservice web log tail --resource-group <resource group name> --name <function app name>
 ```
 
-### <a name="monitor-function-app-log-files-with-powershell"></a>Überwachen der Protokolldateien von Funktionen-Apps mit PowerShell
-
-Als Erstes [installieren und konfigurieren Sie Azure PowerShell](/powershell/azure/overview).
-
-Verwenden Sie die folgenden Befehle, um Ihr Azure-Konto hinzuzufügen, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
+Verwenden Sie für Azure PowerShell die folgenden Befehle, um Ihr Azure-Konto hinzuzufügen, Ihr Abonnement auszuwählen und Protokolldateien zu streamen:
 
 ```
 PS C:\> Add-AzureAccount
 PS C:\> Get-AzureSubscription
-PS C:\> Get-AzureSubscription -SubscriptionName "MyFunctionAppSubscription" | Select-AzureSubscription
-PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
+PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-AzureSubscription
+PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
 ```
 
-Weitere Informationen finden Sie unter [Vorgehensweise: Streaming von Protokollen](../app-service/web-sites-enable-diagnostic-log.md#streamlogs). 
+Weitere Informationen finden Sie unter [Vorgehensweise: Streaming von Protokollen](../app-service/web-sites-enable-diagnostic-log.md#streamlogs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Weitere Informationen zu Application Insights](https://docs.microsoft.com/azure/application-insights/)
+Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-> [!div class="nextstepaction"]
-> [Weitere Informationen zum von Functions verwendeten Protokollierungsframework](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
+* [Application Insights](/azure/application-insights/)
+* [ASP.NET Core-Protokollierung](/aspnet/core/fundamentals/logging/)

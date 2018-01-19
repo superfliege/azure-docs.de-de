@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 3faa6c1867808436a66a2b33ea1a9d79ede2c8fb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 45c8632f4e03c86cf4e32c6d1151977792f32add
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/13/2018
 ---
 > [!WARNING]
-> Die Integration von Azure Active Directory ist nur in den Tarifen [Developer und Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) enthalten.
+> Die Integration von Azure Active Directory ist nur in den Tarifen [Developer, Standard und Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) enthalten.
 
 # <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Active Directory in Azure API Management
 ## <a name="overview"></a>Übersicht

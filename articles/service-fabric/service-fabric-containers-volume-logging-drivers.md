@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 772e51519d1ad45ababa0f4c1f4b402d280f9c14
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5923cea82fbae25fa670556ae27f6cba77a73940
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>Verwenden von Docker-Volume-Plug-Ins und Docker-Protokollierungstreibern im Container
 Azure Service Fabric unterstützt die Angabe von [Docker-Volume-Plug-Ins](https://docs.docker.com/engine/extend/plugins_volume/) und [Docker-Protokollierungstreibern](https://docs.docker.com/engine/admin/logging/overview/) für Ihren Containerdienst. Sie können Ihre Daten in [Azure Files](https://azure.microsoft.com/services/storage/files/) beibehalten, wenn Ihr Container auf einen anderen Host verschoben oder neu gestartet wird.
@@ -39,6 +39,11 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
     AZURE_STORAGE_ACCOUNT_KEY="[MY-STORAGE-ACCOUNT-KEY]" \
     DEBUG=1
 ```
+
+> [!NOTE]
+> Windows Server 2016 Datacenter unterstützt keine SMB-Bereitstellungen auf dem Host ([nur unter Windows Server Version 1709 unterstützt](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage)). Dies verhindert die Verwendung bestimmter Volumetreiber, z.B. Azure Files-Volumetreiber. Stattdessen ist es möglich, die Freigaben über **net use** direkt im Container einzubinden. 
+>   
+
 
 ## <a name="specify-the-plug-in-or-driver-in-the-manifest"></a>Angeben des Plug-Ins oder Treibers im Manifest
 Die Plug-Ins sind im Anwendungsmanifest wie folgt angegeben:

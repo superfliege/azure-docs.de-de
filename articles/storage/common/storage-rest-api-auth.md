@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 11/27/2017
 ms.author: robinsh
-ms.openlocfilehash: 73921f7fd4de65513f647db92b737a79f1043182
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 521487c3ed38f191308e14e4d542358438945556
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
@@ -32,7 +32,7 @@ Die Anwendung listet die Container im Blobspeicher für ein Speicherkonto auf. S
 
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* Ein allgemeines Speicherkonto. Wenn Sie keine Speicherkonten haben, können Sie das [Azure-Portal](https://portal.azure.com), [PowerShell](storage-quickstart-create-storage-account-powershell.md) oder [Azure CLI](storage-quickstart-create-storage-account-cli.md) verwenden, um ein Konto zu erstellen.
+* Ein allgemeines Speicherkonto. Falls Sie noch kein Speicherkonto haben, lesen Sie [Erstellen eines Speicherkontos](storage-quickstart-create-account.md).
 
 * Mit dem Beispiel in diesem Artikel wird veranschaulicht, wie Sie die Container in einem Speicherkonto auflisten. Fügen Sie zum Anzeigen der Ausgabe dem Blobspeicher im Speicherkonto einige Container hinzu, bevor Sie beginnen.
 

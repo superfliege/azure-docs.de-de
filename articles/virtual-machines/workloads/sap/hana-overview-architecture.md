@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/31/2017
+ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2461e5fbf620fa2651792b47d41e9835d4d6ef8c
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: e48e0e256306707ca7fde3636a4215b235fa2eb7
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>Übersicht und Architektur von SAP HANA in Azure (große Instanzen)
 
@@ -36,16 +36,18 @@ Die Kundenisolation im Infrastrukturstempel wird in Mandanten durchgeführt. Im 
 
 Diese Bare-Metal-Servereinheiten unterstützen nur das Ausführen von SAP HANA. Die SAP-Anwendungsschicht oder die Middlewareschicht der Workload werden in Microsoft Azure Virtual Machines ausgeführt. Der Infrastrukturstempel, die die Einheiten von SAP HANA in Azure (große Instanzen) ausführen, sind mit dem Azure Network-Backbone verbunden, sodass die Konnektivitätwartezeit zwischen Einheiten von SAP HANA in Azure (große Instanzen) und Azure Virtual Machines gering gehalten wird.
 
-Dieses Dokument ist eines von fünf, die sich mit dem Thema SAP HANA in Azure (große Instanzen) beschäftigen. In diesem Dokument werden die grundlegende Architektur, Verantwortlichkeiten, bereitgestellte Dienste und Funktionen der höchsten Ebene der Lösung besprochen. Für die meisten Bereiche, wie Netzwerke und Konnektivität, finden Sie ausführlichere Informationen und Detailbetrachtungen in den vier anderen Dokumenten. Die Dokumentation zu SAP HANA in Azure (große Instanzen) beschäftigt sich nicht mit Aspekten, die die Installation und Bereitstellung von SAP NetWeaver in Azure-VMs betreffen. Dieses Thema wird in einer separaten Dokumentation abgedeckt, die sich im selben Dokumentationscontainer befindet. 
+Dieses Dokument ist eines von mehreren, die sich mit SAP HANA in Azure (große Instanzen) beschäftigen. In diesem Dokument werden die grundlegende Architektur, Verantwortlichkeiten, bereitgestellte Dienste und Funktionen der höchsten Ebene der Lösung besprochen. Für die meisten Bereiche, wie Netzwerke und Konnektivität, finden Sie ausführlichere Informationen und Detailbetrachtungen in den vier anderen Dokumenten. Die Dokumentation zu SAP HANA in Azure (große Instanzen) beschäftigt sich nicht mit Aspekten, die die Installation und Bereitstellung von SAP NetWeaver in Azure-VMs betreffen. SAP NetWeaver in Azure wird in separaten Dokumenten abgedeckt, die sich im selben Azure-Dokumentationscontainer befinden. 
 
 
-Die fünf Teile dieses Handbuchs behandeln die folgenden Themen:
+Die anderen Dokumente mit Anleitungen zu großen HANA-Instanzen behandeln die folgenden Bereiche:
 
 - [Übersicht und Architektur von SAP HANA in Azure (große Instanzen)](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-- [Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Problembehandlung und Überwachung von SAP HANA in Azure (große Instanzen)](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Einrichten von Hochverfügbarkeit unter SUSE mit STONITH](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/ha-setup-with-stonith)
+- [Sichern und Wiederherstellen des Betriebssystems für Typ-II-SKUs](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/os-backup-type-ii-skus)
 
 ## <a name="definitions"></a>Definitionen
 
@@ -90,9 +92,9 @@ Im Vergleich zur Ausführung von SAP HANA in Azure Virtual Machines bietet diese
 - Hardware von SAP HANA in Azure (große Instanzen) ist dedizierte Hardware, die in einer IaaS (Infrastructure-as-a-Service) mit vorinstalliertem SUSE Linux Enterprise Server oder Red Hat Enterprise Linux bereitgestellt wird. Wie bei Azure Virtual Machines liegen weitere Updates und die Wartung für das Betriebssystem in Ihrer Verantwortung.
 - Die Installation von HANA oder zusätzlichen Komponenten, die zum Ausführen von SAP HANA auf Einheiten von HANA (große Instanzen) erforderlich sind, liegt in Ihrer Verantwortung, ebenso wie alle entsprechenden laufenden Vorgänge und Administrationsaufgaben für SAP HANA in Azure.
 - Zusätzlich zu den hier beschriebenen Lösungen können Sie andere Komponenten in Ihrem Azure-Abonnement installieren, das eine Verbindung mit SAP HANA in Azure (große Instanzen) herstellt.  Hierzu gehören beispielsweise Komponenten, die die Kommunikation mit und/oder direkt an die SAP HANA-Datenbank ermöglichen (Jumpserver, RDP-Server, SAP HANA Studio, SAP Data Services für SAP BI-Szenarien oder Netzwerküberwachungslösungen).
-- Wie in Azure bietet HANA (große Instanzen) unterstützende Funktionalität zum Ermöglichen von hoher Verfügbarkeit und Notfallwiederherstellung.
+- Wie in Azure bietet HANA (große Instanzen) unterstützende Funktionalität zum Ermöglichen von Hochverfügbarkeit und Notfallwiederherstellung.
 
-## <a name="architecture"></a>Architektur
+## <a name="architecture"></a>Architecture
 
 Auf allgemeiner Ebene befindet sich die SAP-Anwendungsschicht in der Lösung „SAP HANA auf Azure (große Instanzen)“ auf virtuellen Azure-Computern, und die Datenbankschicht liegt auf mit SAP TDI konfigurierter Hardware, die sich in einem Stapel für große Instanzen in derselben Azure-Region befindet, die mit Azure IaaS verbunden ist.
 
@@ -130,14 +132,14 @@ Ebenso, wie Sie bei Azure Virtual Machines zwischen verschiedenen VM-Typen ausw�
 
 Ab Juli 2017 ist SAP HANA in Azure (große Instanzen) in verschiedenen Konfigurationen in den Azure-Regionen „USA, Westen“, „USA, Osten“, „Australien, Osten“, „Australien, Südosten“, „Europa, Westen“ und „Europa, Norden“ verfügbar:
 
-| SAP-Lösung | CPU | Arbeitsspeicher | Speicher | Availability |
+| SAP-Lösung | CPU | Arbeitsspeicher | Speicher | Verfügbarkeit |
 | --- | --- | --- | --- | --- |
 | Optimiert für OLAP: SAP BW, BW/4HANA<br /> oder SAP HANA für generische OLAP-Workload | SAP HANA in Azure S72<br /> – 2 x Intel® Xeon®-Prozessor E7-8890 v3<br /> 36 CPU-Kerne und 72 CPU-Threads |  768 GB |  3 TB | Verfügbar |
 | --- | SAP HANA in Azure S144<br /> – 4 x Intel® Xeon®-Prozessor E7-8890 v3<br /> 72 CPU-Kerne und 144 CPU-Threads |  1,5 TB |  6 TB | Wird nicht mehr angeboten |
 | --- | SAP HANA in Azure S192<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 CPU-Kerne und 192 CPU-Threads |  2,0 TB |  8 TB | Verfügbar |
 | --- | SAP HANA in Azure S384<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  4,0 TB |  16 TB | Bestellbereit |
 | Optimiert für OLTP: SAP Business Suite<br /> auf SAP HANA oder S/4HANA (OLTP),<br /> generisches OLTP | SAP HANA in Azure S72m<br /> – 2 x Intel® Xeon®-Prozessor E7-8890 v3<br /> 36 CPU-Kerne und 72 CPU-Threads |  1,5 TB |  6 TB | Verfügbar |
-|---| SAP HANA in Azure S144m<br /> – 4 x Intel® Xeon®-Prozessor E7-8890 v3<br /> 72 CPU-Kerne und 144 CPU-Threads |  3,0 TB |  12 TB | Wird nicht mehr angeboten |
+|---| SAP HANA in Azure S144m<br /> – 4 x Intel® Xeon®-Prozessor E7-8890 v3<br /> 72 CPU-Kerne und 144 CPU-Threads |  3,0 TB |  12TB | Wird nicht mehr angeboten |
 |---| SAP HANA in Azure S192m<br /> – 4 x Intel® Xeon® Processor E7-8890 v4<br /> 96 CPU-Kerne und 192 CPU-Threads  |  4,0 TB |  16 TB | Verfügbar |
 |---| SAP HANA in Azure S384m<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  6,0 TB |  18 TB | Bestellbereit |
 |---| SAP HANA in Azure S384xm<br /> – 8 x Intel® Xeon® Processor E7-8890 v4<br /> 192 CPU-Kerne und 384 CPU-Threads |  8,0 TB |  22 TB |  Bestellbereit |
@@ -235,7 +237,7 @@ Die folgende Liste enthält weitere Details zu den einzelnen Schichten und Ihren
 
 Die zugrunde liegende Infrastruktur von HANA (große Instanzen) bietet Funktionen zur Sicherung und Wiederherstellung des Betriebssystemvolumes. Auch die Nutzung dieser Funktionalität liegt in Ihrer Verantwortung.
 
-**Middleware:** Hauptsächlich die SAP HANA-Instanz. Verwaltung, Betrieb und Überwachung liegen in Ihrer Verantwortung. Es werden Funktionen bereitgestellt, mit denen Sie Speichermomentaufnahmen zur Sicherung/Wiedherstellung und zur Notfallwiederherstellung verwenden können. Diese Funktionen werden von der Infrastruktur bereitgestellt. Zu Ihren Zuständigkeiten gehören jedoch auch das Entwerfen einer Architektur für hohe Verfügbarkeit oder Notfallwiederherstellung mit diesen Funktionen, die Nutzung dieser Funktionen und die Überwachung der erfolgreichen Ausführung der Speichermomentaufnahmen.
+**Middleware:** Hauptsächlich die SAP HANA-Instanz. Verwaltung, Betrieb und Überwachung liegen in Ihrer Verantwortung. Es werden Funktionen bereitgestellt, mit denen Sie Speichermomentaufnahmen zur Sicherung/Wiedherstellung und zur Notfallwiederherstellung verwenden können. Diese Funktionen werden von der Infrastruktur bereitgestellt. Zu Ihren Zuständigkeiten gehören jedoch auch das Entwerfen einer Architektur für Hochverfügbarkeit oder Notfallwiederherstellung mit diesen Funktionen, die Nutzung dieser Funktionen und die Überwachung der erfolgreichen Ausführung der Speichermomentaufnahmen.
 
 **Daten:** Ihre von SAP HANA verwalteten Daten und andere Daten, z.B. Sicherungsdateien auf Volumes oder Dateifreigaben. Zu Ihren Zuständigkeiten gehören das Überwachen des freien Speicherplatzes und das Verwalten des Inhalts auf den Volumes sowie die Überwachung der erfolgreichen Ausführung von Sicherungen von Datenträgern und Speichermomentaufnahmen. Die erfolgreiche Ausführung der Datenreplikation auf DR-Standorte liegt jedoch in der Verantwortung von Microsoft.
 
@@ -261,7 +263,7 @@ Für Greenfield-Implementierungen steht der SAP Quick Sizer zur Verfügung, um A
 
 Die Arbeitsspeicheranforderungen für HANA steigen mit zunehmender Datenmenge, daher sollten Sie die jetzige Arbeitsspeichernutzung kennen und dazu in der Lage sein, die zukünftige Nutzung zu prognostizieren. Basierend auf den Speicheranforderungen können Sie Ihren Bedarf dann einer der SKUs für HANA (große Instanzen) zuordnen.
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Diese Liste führt die Anforderungen zum Ausführen von SAP HANA in Azure (große Instanzen) auf.
 
@@ -310,7 +312,7 @@ Die Unterstützungsmatrix der anderen SAP HANA-Version mit den verschiedenen Lin
 - Erfahrung und Kenntnisse zu IaaS und den zugehörigen Komponenten.
 - Erfahrung und Kenntnisse zur Bereitstellung von SAP-Workload in Azure.
 - Für die SAP HANA-Installation zertifizierte Mitarbeiter.
-- Kenntnisse der SAP-Architektur zum Entwerfen von hoher Verfügbarkeit und Notfallwiederherstellung für SAP HANA.
+- Kenntnisse der SAP-Architektur zum Entwerfen von Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA.
 
 **SAP:**
 
@@ -357,7 +359,7 @@ Diese Größen sind grobe Volumezahlen, die je nach Bereitstellung und den Tools
 
 Sie als Kunde benötigen möglicherweise mehr Speicher. In diesem Fall können Sie Speicher hinzufügen, indem Sie zusätzlichen Speicherplatz in 1-TB-Einheiten kaufen. Dieser zusätzliche Speicher kann als zusätzliches Volume hinzugefügt werden. Alternativ kann es verwendet werden, um ein oder mehrere vorhandene Volumes zu erweitern. Es ist nicht möglich, die Größe der Volumes zu verringern, so wie ursprünglich bereitgestellt und größtenteils durch die obenigen Tabellen dokumentiert. Es ist ebenso wenig möglich, die Namen der Volumes oder Bereitstellungsnamen zu ändern. Die Speichervolumes werden, wie oben beschrieben, an die Einheiten von HANA (große Instanzen) als NFS4 Volumes angefügt.
 
-Als Kunde können Sie Speichermomentaufnahmen für die Sicherung/Wiederherstellung und Notfallwiederherstellung nutzen. Weitere Informationen zu diesem Thema finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Als Kunde können Sie Speichermomentaufnahmen für die Sicherung/Wiederherstellung und Notfallwiederherstellung nutzen. Weitere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SAP HANA in Azure (große Instanzen)](hana-overview-high-availability-disaster-recovery.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ### <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 Der für HANA (große Instanzen) genutzte Speicher ermöglicht eine transparente Verschlüsselung der Daten, die auf den Datenträgern gespeichert werden. Sie können optional festlegen, dass diese Art der Verschlüsselung zum Zeitpunkt der Bereitstellung einer Einheit von HANA (große Instanzen) aktiviert ist. Sie können auch den unmittelbaren Wechsel zu den verschlüsselten Volumes nach der Bereitstellung auswählen. Der Schritt von den unverschlüsselten zu den verschlüsselten Volumes ist transparent und erfordert keine Ausfallzeit. 
@@ -464,14 +466,18 @@ Durch das Bereitstellen der SAP-Anwendungsschicht oder -komponenten in mehreren 
 
 ### <a name="routing-in-azure"></a>Routing in Azure
 
-Es gibt zwei wichtige Überlegungen zum Netzwerkrouting für SAP HANA in Azure (große Instanzen):
+Es gibt drei wichtige Überlegungen zum Netzwerkrouting für SAP HANA in Azure (große Instanzen):
 
-1. SAP HANA in Azure (große Instanzen) ist nur für Azure-VMs in der dedizierten ExpressRoute-Verbindung und nicht direkt vom lokalen System aus zugänglich. Manche Administrationsclients und Anwendungen, die einen direkten Zugriff benötigen (z.B. eine lokale Ausführung von SAP Solution Manager) können nicht auf die SAP HANA-Datenbank zugreifen.
+1. SAP HANA in Azure (große Instanzen) ist nur über Azure-VMs in der dedizierten ExpressRoute-Verbindung und nicht direkt vom lokalen System aus zugänglich. Direkter lokaler Zugriff auf Einheiten großer HANA-Instanzen, die von Microsoft für Sie bereitgestellt werden, ist aufgrund vorübergehender Routingeinschränkungen in der aktuellen Azure-Netzwerkarchitektur, die für große SAP HANA-Instanzen verwendet wird, nicht sofort möglich. Manche Administrationsclients und Anwendungen, die einen direkten Zugriff benötigen (z.B. eine lokale Ausführung von SAP Solution Manager) können nicht auf die SAP HANA-Datenbank zugreifen.
 
-2. Einheiten von SAP HANA (große Instanzen) in Azure haben eine zugewiesene IP-Adresse aus dem Server-IP-Pooladressbereich, den Sie als Kunde übermittelt haben (weitere Informationen finden Sie unter [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)).  Zugriff auf diese IP-Adresse ist über das Azure-Abonnement und ExpressRoute möglich, womit die Verbindung von Azure VNets mit HANA (große Instanzen) in Azure hergestellt wird. Die aus diesem Server-IP-Pooladressbereich zugewiesene IP-Adresse wird direkt der Hardwareeinheit zugewiesen und NICHT mehr der NAT unterzogen, wie es in den ersten Bereitstellungen dieser Lösung der Fall war. 
+2. Wenn Sie zum Zweck der Notfallwiederherstellung Einheiten großer HANA-Instanzen in zwei verschiedenen Azure-Regionen bereitgestellt haben, gelten dieselben vorübergehenden Routingeinschränkungen. Mit anderen Worten: Die IP-Adressen einer Einheit einer großen HANA-Instanz in einer Region (z.B. „USA, Westen“) werden nicht an eine Einheit einer großen HANA-Instanz in einer anderen Region (z.B. „USA, Osten“) weitergeleitet. Dies ist unabhängig von der Nutzung des Azure-Netzwerkpeerings zwischen Regionen oder von Kreuzverbindungen von ExpressRoute-Verbindungen, die Einheiten großer HANA-Instanzen mit Azure-VNETs verbinden. Dies wird etwas weiter unten in dieser Dokumentation dargestellt. Diese Einschränkung, die durch die bereitgestellte Architektur verursacht wird, verhindert die unmittelbare Verwendung der HANA-Systemreplikation als Funktionalität zur Notfallwiederherstellung.
+
+3. Einheiten von SAP HANA (große Instanzen) in Azure haben eine zugewiesene IP-Adresse aus dem Server-IP-Pooladressbereich, den Sie als Kunde übermittelt haben (weitere Informationen finden Sie unter [Infrastruktur und Verbindungen mit SAP HANA in Azure (große Instanzen)](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)).  Zugriff auf diese IP-Adresse ist über das Azure-Abonnement und ExpressRoute möglich, womit die Verbindung von Azure VNets mit HANA (große Instanzen) in Azure hergestellt wird. Die aus diesem Server-IP-Pooladressbereich zugewiesene IP-Adresse wird direkt der Hardwareeinheit zugewiesen und NICHT mehr der NAT unterzogen, wie es in den ersten Bereitstellungen dieser Lösung der Fall war. 
 
 > [!NOTE] 
-> Wenn Sie eine Verbindung mit SAP HANA in Azure (große Instanzen) in einem _Data Warehouse_-Szenario herstellen müssen, in dem Anwendungen und/oder Endbenutzer eine Verbindung mit der (direkt ausgeführten) SAP HANA-Datenbank herstellen müssen, muss eine andere Netzwerkkomponente verwendet werden: ein Reverseproxy zum Routen von Daten in beide Richtungen. Beispiel: F5 BIG-IP, NGINX mit Traffic Manager, in Azure als virtuelle Firewall-/Datenverkehrsroutinglösung bereitgestellt.
+> Wenn Sie die Einschränkung beim vorübergehenden Routing wie in den ersten beiden Listeneinträgen oben umgehen möchten, müssen Sie zusätzliche Komponenten für das Routing verwenden. Folgende Komponenten können zum Umgehen dieser Einschränkung verwendet werden: Reverseproxy für die Weiterleitung von Daten in beide Richtungen. Beispiel: F5 BIG-IP, NGINX mit Traffic Manager, in Azure als virtuelle Firewall-/Datenverkehrsroutinglösung bereitgestellt.
+> Verwenden von [IPTables-Regeln](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) auf einer Linux-VM zum Aktivieren des Routings zwischen lokalen Standorten und Einheiten großer HANA-Instanzen oder zwischen Einheiten großer HANA-Instanzen in unterschiedlichen Regionen.
+> Denken Sie daran, dass Microsoft keine Implementierung und keinen Support für benutzerdefinierte Lösungen anbietet, die Netzwerkgeräte von Drittanbietern oder IPTables verwenden. Der Support muss durch den Hersteller der verwendeten Komponente oder den Integrator bereitgestellt werden. 
 
 ### <a name="internet-connectivity-of-hana-large-instances"></a>Internetkonnektivität von HANA (große Instanzen)
 HANA (große Instanzen) besitzt KEINE direkte Internetkonnektivität. Dies schränkt z.B. Ihre Möglichkeit ein, das Betriebssystemimage direkt beim Betriebssystemanbieter zu registrieren. Daher müssen Sie möglicherweise mit dem lokalen SLES SMT-Server oder RHEL Subscription Manager arbeiten.

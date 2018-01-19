@@ -6,33 +6,36 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 12/19/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 568a99d44a5a32339d438ed1025670d12ecce791
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: a42c01917926a4297c97cf9c5dfd1333dbef6793
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Containergruppen in Azure Container Instances
 
-Die oberste Ressource in Azure Container Instances ist eine Containergruppe. In diesem Artikel wird beschrieben, was Containergruppen sind und welche Arten von Szenarien sie aktivieren.
+Die oberste Ressource in Azure Container Instances ist die *Containergruppe*. In diesem Artikel wird beschrieben, was Containergruppen sind und welche Arten von Szenarien damit möglich sind.
 
 ## <a name="how-a-container-group-works"></a>Funktionsweise einer Containergruppe
 
-Eine Containergruppe ist eine Sammlung von Containern, die auf demselben Hostcomputer geplant werden und für die Lebenszyklus, lokales Netzwerk und Speichervolumen gemeinsam genutzt werden. Dies ähnelt dem *Pod*-Konzept in [Kubernetes](https://kubernetes.io/docs/concepts/workloads/pods/pod/) und [DC/OS](https://dcos.io/docs/1.9/deploying-services/pods/).
+Eine Containergruppe ist eine Sammlung mit Containern, die auf demselben Hostcomputer geplant werden. Für die Container einer Containergruppe werden der Lebenszyklus, das lokale Netzwerk und die Speichervolumes gemeinsam genutzt. Dies ähnelt dem *Pod*-Konzept in [Kubernetes][kubernetes-pod] und [DC/OS][dcos-pod].
 
 Das folgende Diagramm zeigt ein Beispiel für eine Containergruppe, die mehrere Container enthält.
 
-![Beispiel zu Containergruppen][container-groups-example]
+![Diagramm zu Containergruppen][container-groups-example]
 
-Beachten Sie Folgendes:
+Für diese Beispielcontainergruppe gilt Folgendes:
 
-- Die Gruppe wird auf einem einzelnen Hostcomputer geplant.
-- Die Gruppe macht eine einzelne öffentliche IP-Adresse mit einem Port verfügbar.
-- Die Gruppe besteht aus zwei Containern. Ein Container lauscht über Port 80 und der andere über Port 5000.
-- Die Gruppe enthält zwei Azure-Dateifreigaben als Volumebereitstellungen, und jeder Container stellt eine der Freigaben lokal bereit.
+* Sie wird auf einem einzelnen Hostcomputer geplant.
+* Sie macht eine einzelne öffentliche IP-Adresse mit einem Port verfügbar.
+* Sie besteht aus zwei Containern. Ein Container lauscht über Port 80 und der andere über Port 5000.
+* Sie enthält zwei Azure-Dateifreigaben als Volumebereitstellungen, und jeder Container stellt eine der Freigaben lokal bereit.
+
+> [!NOTE]
+> Gruppen mit mehreren Containern sind aktuell auf Linux-Container beschränkt. Bis alle Features auch in Windows-Containern verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und regionale Verfügbarkeit für Azure Container Instances](container-instances-quotas.md).
 
 ### <a name="networking"></a>Netzwerk
 
@@ -42,18 +45,23 @@ Containergruppen nutzen eine IP-Adresse und einen Portnamespace dieser IP-Adress
 
 Sie können externe Volumes für die Bereitstellung in einer Containergruppe angeben. Sie können diese Volumes bestimmten Pfaden in den einzelnen Containern einer Gruppe zuordnen.
 
-## <a name="common-scenarios"></a>Gängige Szenarien
+## <a name="common-scenarios"></a>Häufige Szenarios
 
-Gruppen mit mehreren Containern sind nützlich, wenn Sie eine einzelne funktionale Aufgabe in eine geringe Anzahl von Containerimages unterteilen möchten, die von unterschiedlichen Teams bereitgestellt werden können und über separate Ressourcenanforderungen verfügen. Beispiel für Verwendung:
+Gruppen mit mehreren Containern sind nützlich, wenn Sie eine einzelne funktionale Aufgabe in eine geringe Anzahl von Containerimages unterteilen möchten, die von unterschiedlichen Teams bereitgestellt werden können und über separate Ressourcenanforderungen verfügen.
 
-- Ein Anwendungscontainer und ein Protokollierungscontainer. Mit dem Protokollierungscontainer werden die Protokolle und Metriken gesammelt, die von der Hauptanwendung ausgegeben werden, und in den Langzeitspeicher geschrieben.
-- Eine Anwendung und ein Überwachungscontainer. Der Überwachungscontainer sendet regelmäßig eine Anforderung an die Anwendung, um sicherzustellen, dass sie ausgeführt wird und richtig reagiert. Andernfalls wird eine Warnung ausgelöst.
-- Ein Container, über den eine Webanwendung bereitgestellt wird, und ein Container, der den aktuellen Inhalt aus der Quellcodeverwaltung abruft.
+Beispiel für Verwendung:
+
+* Ein Anwendungscontainer und ein Protokollierungscontainer. Mit dem Protokollierungscontainer werden die Protokolle und Metriken gesammelt, die von der Hauptanwendung ausgegeben werden, und in den Langzeitspeicher geschrieben.
+* Eine Anwendung und ein Überwachungscontainer. Der Überwachungscontainer sendet regelmäßig eine Anforderung an die Anwendung, um sicherzustellen, dass sie ausgeführt wird und richtig reagiert. Andernfalls wird eine Warnung ausgelöst.
+* Ein Container, über den eine Webanwendung bereitgestellt wird, und ein Container, der den aktuellen Inhalt aus der Quellcodeverwaltung abruft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informieren Sie sich über das [Bereitstellen einer Gruppe mit mehreren Containern](container-instances-multi-container-group.md) per Azure Resource Manager-Vorlage.
 
 <!-- IMAGES -->
-
 [container-groups-example]: ./media/container-instances-container-groups/container-groups-example.png
+
+<!-- LINKS - External -->
+[dcos-pod]: https://dcos.io/docs/1.10/deploying-services/pods/
+[kubernetes-pod]: https://kubernetes.io/docs/concepts/workloads/pods/pod/

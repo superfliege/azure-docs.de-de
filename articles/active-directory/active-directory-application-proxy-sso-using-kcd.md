@@ -3,7 +3,7 @@ title: Einmaliges Anmelden mit Anwendungsproxy | Microsoft Docs
 description: "Erläutert das Bereitstellen von einmaligem Anmelden mit Azure AD-Anwendungsproxy."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: ded0d9c9-45f6-47d7-bd0f-3f7fd99ab621
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
-ms.openlocfilehash: d93dcdd1d6ae8de262c08ba095ca773795f0dec3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 170498b2876947a45128377fa6cecb3931784237
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Eingeschränkte Delegierung von Kerberos für die einmalige Anmeldung zu Ihren Apps mit dem Anwendungsproxy
 
@@ -91,7 +91,7 @@ Weitere Informationen zu Kerberos finden Sie unter [All you want to know about K
 Nicht-Windows-Apps verwenden normalerweise Benutzernamen oder Namen von SAM-Konten statt E-Mail-Adressen von Domänen. Wenn diese Situation auf Ihre Anwendungen zutrifft, müssen Sie das Feld „Delegierte Identität für Anmeldung“ konfigurieren, um Ihre Cloudidentitäten mit Ihren Anwendungsidentitäten zu verbinden. 
 
 ## <a name="working-with-different-on-premises-and-cloud-identities"></a>Bereitstellen von einmaligem Anmelden bei Ihren Apps mit dem Anwendungsproxy
-Der Anwendungsproxy geht davon aus, dass Benutzer in der Cloud genau dieselbe Identität wie lokal besitzen. Wenn diese nicht der Fall ist, können Sie noch immer KCD für das einmalige Anmelden verwenden. Konfigurieren Sie eine **Delegierte Identität für Anmeldung** für jede Anwendung, um anzugeben, welche Identität bei der Durchführung des einmaligen Anmeldens verwendet werden soll.  
+Der Anwendungsproxy geht davon aus, dass Benutzer in der Cloud genau dieselbe Identität wie lokal besitzen. Wenn dies nicht der Fall ist, können Sie weiterhin KCD für das einmalige Anmelden verwenden. Konfigurieren Sie eine **Delegierte Identität für Anmeldung** für jede Anwendung, um anzugeben, welche Identität bei der Durchführung des einmaligen Anmeldens verwendet werden soll.  
 
 Diese Funktion ermöglicht vielen Organisationen mit unterschiedlichen lokalen Identitäten und Cloudidentitäten SSO aus der Cloud auf lokale Apps, ohne dass der Benutzer unterschiedliche Benutzernamen und Kennwörter eingeben muss. Hierzu gehören Organisationen mit folgenden Merkmalen:
 

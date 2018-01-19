@@ -2,7 +2,7 @@
 
 In diesem Artikel gehen wir auf einige häufig gestellte Fragen zu Azure Managed Disks und Storage Premium ein.
 
-## <a name="managed-disks"></a>Verwaltete Datenträger
+## <a name="managed-disks"></a>Managed Disks
 
 **Was ist Azure Managed Disks?**
 
@@ -101,6 +101,10 @@ Azure Managed Disks unterstützt momentan nur lokal redundanten Speicher (LRS).
 
 Nein. Dies wird derzeit nicht unterstützt. 
 
+**Kann ich auf meinen Datenträgern eine Lease unterbrechen?**
+
+Nein. Dies wird derzeit nicht unterstützt, da eine Lease dafür da ist, versehentliches Löschen zu verhindern, wenn der Datenträger verwendet wird.
+
 **Kann ich die Eigenschaft „Computername“ ändern, wenn ein spezialisierter Betriebssystemdatenträger (der nicht mit dem Systemvorbereitungstool erstellt wurde und nicht generalisiert ist) zur Bereitstellung einer VM verwendet wird?**
 
 Nein. Sie können die Eigenschaft „Computername“ nicht aktualisieren. Die neue VM erbt diese von der übergeordneten VM, mit der der Betriebssystem-Datenträger erstellt wurde. 
@@ -137,7 +141,7 @@ Ja, Sie können ein Failover auf einem virtuellen Computer mit Managed Disks aus
 
 **Hat die Migration auf Azure-VMs, die mit Azure Site Recovery (ASR) geschützt sind, über die Azure-zu-Azure-Replikation irgendwelche Auswirkungen?**
 
-Ja. Der ASR-Azure-zu-Azure-Schutz wird für VMs mit Managed Disks nicht unterstützt. Er wird erst ab Ende 2018 unterstützt. 
+Ja. Der ASR-Azure-zu-Azure-Schutz wird für VMs mit Managed Disks nicht unterstützt. Er wird erst ab Ende des ersten Quartals 2018 unterstützt. 
 
 **Kann ich VMs mit nicht verwalteten Datenträgern, die sich auf Speicherkonten befinden, die verschlüsselt sind oder dies waren, zu verwalteten Datenträgern migrieren?**
 

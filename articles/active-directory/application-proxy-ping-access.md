@@ -3,7 +3,7 @@ title: "Headerbasierte Authentifizierung mit PingAccess für Azure AD-Anwendungs
 description: "Veröffentlichen von Anwendungen mit PingAccess und App-Proxy zum Unterstützen der headerbasierten Authentifizierung."
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: daveba
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
-ms.author: kgremban
+ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 7c2e56a5f747aa2a37fc4bed0e3f3877b64f2be2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bfff8ebff87b6c3c501202e95c463a0f4e235ffc
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Headerbasierte Authentifizierung für einmaliges Anmelden mit Anwendungsproxy und PingAccess
 
@@ -73,6 +73,10 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 4. Wählen Sie **Lokale Anwendung** aus.
 5. Füllen Sie die Pflichtfelder mit Informationen zur neuen App aus. Befolgen Sie diese Anleitung für die folgenden Einstellungen:
    - **Interne URL:** Normalerweise geben Sie die URL an, über die Sie zur Anmeldeseite der App gelangen, wenn Sie sich im Unternehmensnetzwerk befinden. Für dieses Szenario muss der Connector den PingAccess-Proxy als Startseite der App verwenden. Verwenden Sie dieses Format: `https://<host name of your PA server>:<port>`. Der Standardport ist 3000, Sie können diesen aber in PingAccess konfigurieren.
+
+    > [!WARNING]
+    > Für diesen SSO-Typ muss die interne URL HTTPS anstelle von HTTP verwenden.
+
    - **Methode für die Vorauthentifizierung** : Azure Active Directory
    - **URL in Headern übersetzen**: Nein
 
@@ -83,7 +87,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 7. Wählen Sie im Schnellstartmenü **Zuweisen eines Benutzers zu Testzwecken** aus, und fügen Sie der Anwendung mindestens einen Benutzer hinzu. Stellen Sie sicher, dass dieses Testkonto auf die lokale Anwendung zugreifen kann.
 8. Wählen Sie **Zuweisen** aus, um die Zuweisung des Testbenutzers zu speichern.
 9. Wählen Sie auf dem Blatt „App-Verwaltung“ **Einmaliges Anmelden** aus.
-10. Wählen Sie im Dropdownmenü **Headerbasierte Anmeldung** aus. Wählen Sie **Speichern**aus.
+10. Wählen Sie im Dropdownmenü **Headerbasierte Anmeldung** aus. Wählen Sie **Speichern** aus.
 
    >[!TIP]
    >Wenn Sie das headerbasierte einmalige Anmelden zum ersten Mal verwenden, müssen Sie PingAccess installieren. Verwenden Sie den Link auf dieser SSO-Seite zum Herunterladen von PingAccess, um sicherzustellen, dass Ihr Azure-Abonnement automatisch Ihrer PingAccess-Installation zugeordnet wird. Sie können die Download-Website jetzt öffnen oder später zu dieser Seite zurückkehren. 
@@ -135,7 +139,7 @@ Führen Sie diese Schritte aus, um Ihre App zu veröffentlichen. Eine ausführli
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>Optional – Aktualisieren von GraphAPI zum Senden von benutzerdefinierten Feldern
 
-Eine Liste von Sicherheitstoken, die Azure AD für die Authentifizierung sendet, finden Sie unter [Azure AD-Tokenreferenz](./develop/active-directory-token-and-claims.md). Wenn Sie einen benutzerdefinierten Anspruch benötigen, der andere Token sendet, verwenden Sie GraphAPI, um das App-Feld *acceptMappedClaims* auf **True** festzulegen. Sie können nur den Azure AD Graph Explorer für diese Konfiguration verwenden. 
+Eine Liste von Sicherheitstoken, die Azure AD für die Authentifizierung sendet, finden Sie unter [Azure AD-Tokenreferenz](./develop/active-directory-token-and-claims.md). Wenn Sie einen benutzerdefinierten Anspruch benötigen, der andere Token sendet, legen Sie mit dem Graph-Tester oder dem Manifest für die Anwendung im Azure-Portal das App-Feld *acceptMappedClaims* auf **True** fest.    
 
 In diesem Beispiel wird der Graph-Tester verwendet:
 
@@ -146,6 +150,13 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
+Dieses Beispiel verwendet das [Azure-Portal](https://portal.azure.com) zum Aktualisieren des Felds *acceptedMappedClaims*:
+1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com) an.
+2. Klicken Sie auf **Azure Active Directory** > **App-Registrierungen**.
+3. Wählen Sie Ihre Anwendung und dann **Manifest** aus.
+4. Wählen Sie **Bearbeiten** aus, suchen Sie nach dem Feld *acceptedMappedClaims*, und ändern Sie den Wert in **true**.
+![App-Manifest](media/application-proxy-ping-access/application-proxy-ping-access-manifest.PNG)
+1. Wählen Sie **Speichern** aus.
 
 >[!NOTE]
 >Um einen benutzerdefinierten Anspruch zu verwenden, benötigen Sie auch eine für diese Anwendung definierte und ihr zugewiesene benutzerdefinierte Richtlinie.  Diese Richtlinie sollte alle erforderlichen benutzerdefinierten Attribute enthalten.

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 4/20/2017
+ms.date: 12/18/2017
 ms.author: saurse;nkolli;trinadhk
-ms.openlocfilehash: 074d21269206b243f8b0e8747811544132805229
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32a48a34711a7f053a74e103deb6853150de3903
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.  
@@ -31,7 +31,7 @@ Mit der Offlineseeding-Funktion von Azure Backup und Azure Import/Export können
 Das [Update vom August 2016 von Azure Backup (und höher)](http://go.microsoft.com/fwlink/?LinkID=229525) enthält das *Azure-Tool für die Datenträgervorbereitung*namens „AzureOfflineBackupDiskPrep“, das folgende Funktionen bietet:
 
 * Es unterstützt Sie beim Vorbereiten Ihrer Laufwerke für Azure Import mit dem Azure Import/Export-Tool.
-* Es erstellt automatisch einen Azure-Importauftrag für den Azure Import/Export-Dienst im [klassischen Azure-Portal](https://manage.windowsazure.com) (bei älteren Versionen von Azure Backup muss dieser dagegen manuell erstellt werden).
+* Im [Azure-Portal](https://ms.portal.azure.com) wird automatisch ein Azure-Importauftrag für den Azure Import/Export-Dienst erstellt.
 
 Nachdem die Sicherungsdaten in Azure hochgeladen wurden, kopiert Azure Backup die Sicherungsdaten in den Sicherungstresor, und die inkrementellen Sicherungen werden geplant.
 
@@ -46,7 +46,7 @@ Nachdem die Sicherungsdaten in Azure hochgeladen wurden, kopiert Azure Backup di
   * Ein Azure Backup-Tresor wurde erstellt.
   * Tresoranmeldeinformationen wurden heruntergeladen.
   * Der Azure Backup-Agent wurde auf dem Windows-Server/Windows-Client oder System Center Data Protection Manager-Server installiert, und der Computer ist beim Azure Backup-Tresor registriert.
-* [Laden Sie die Datei mit den Azure-Veröffentlichungseinstellungen](https://manage.windowsazure.com/publishsettings) auf den Computer herunter, von dem Ihre Daten gesichert werden sollen.
+* [Laden Sie die Datei mit den Azure-Veröffentlichungseinstellungen](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade) auf den Computer herunter, von dem Ihre Daten gesichert werden sollen.
 * Bereiten Sie einen Stagingspeicherort vor. Dabei kann es sich um eine Netzwerkfreigabe oder ein zusätzliches Laufwerk auf dem Computer handeln. Der Stagingspeicherort ist ein Übergangsspeicher, der während dieses Workflows temporär verwendet wird. Stellen Sie sicher, dass der Stagingspeicherort genügend Speicherplatz für Ihre erste Kopie bietet. Wenn Sie beispielsweise einen 500-GB-Dateiserver sichern möchten, muss der Stagingbereich mindestens 500 GB groß sein. (Aufgrund der Komprimierung wird weniger Speicherplatz genutzt.)
 * Stellen Sie sicher, dass Sie ein unterstütztes Laufwerk verwenden. Für den Import/Export-Dienst werden nur 2,5-Zoll-SSD-Laufwerke bzw. interne 2,5-Zoll- oder 3,5-Zoll-SATA II- oder -III-Festplatten unterstützt. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/common/storage-import-export-service.md#hard-disk-drives) die aktuell vom Dienst unterstützten Laufwerke nach.
 * Aktivieren Sie BitLocker auf dem Computer, an den der SATA-Laufwerkswriter angeschlossen ist.
@@ -67,13 +67,13 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
     * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Hierbei kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
     * **Name des Azure-Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
-    * **Azure-Veröffentlichungseinstellungen**: Eine XML-Datei, die Informationen zu Ihrem Abonnementprofil enthält. Außerdem enthält sie sichere Anmeldeinformationen, die Ihrem Abonnement zugeordnet sind. Sie können die [Datei herunterladen](https://manage.windowsazure.com/publishsettings). Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
+    * **Azure-Veröffentlichungseinstellungen**: Eine XML-Datei, die Informationen zu Ihrem Abonnementprofil enthält. Außerdem enthält sie sichere Anmeldeinformationen, die Ihrem Abonnement zugeordnet sind. Sie können die [Datei herunterladen](https://portal.azure.com/#blade/Microsoft_Azure_ClassicResources/PublishingProfileBlade). Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
     * **Azure-Abonnement-ID**: Die Azure-Abonnement-ID für das Abonnement, in dem Sie den Azure-Importauftrag initiieren möchten. Falls Sie über mehrere Azure-Abonnements verfügen, verwenden Sie die ID des Abonnements, das Sie dem Importauftrag zuordnen möchten.
-    * **Azure-Speicherkonto**: Das klassische Speicherkonto im angegebenen Azure-Abonnement, das dem Azure-Importauftrag zugeordnet wird.
+    * **Azure Storage-Konto**: Das Speicherkonto im Azure-Abonnement, das dem Azure-Importauftrag zugeordnet ist.
     * **Azure-Speichercontainer**: Der Name des Zielspeicherblobs im Azure-Speicherkonto, in das die Daten dieses Auftrags importiert werden.
 
     > [!NOTE]
-    > Wenn Sie Ihren Server über das [Azure-Portal](https://portal.azure.com) bei einem Azure Recovery Services-Tresor für Ihre Sicherungen registriert haben und kein CSP-Abonnement (Cloud Solution Provider = Cloudlösungsanbieter) besitzen, können Sie über das Azure-Portal trotzdem ein klassisches Speicherkonto erstellen und es für den Workflow zur Offlinesicherung verwenden.
+    > Wenn Sie Ihren Server über das [Azure-Portal](https://portal.azure.com) bei einem Azure Recovery Services-Tresor für Ihre Sicherungen registriert haben und kein CSP-Abonnement (Cloud Solution Provider = Cloudlösungsanbieter) besitzen, können Sie über das Azure-Portal trotzdem ein Speicherkonto erstellen und es für den Workflow zur Offlinesicherung verwenden.
     >
     >
 
@@ -106,7 +106,7 @@ Das Azure-Tool für die Datenträgervorbereitung ist im Installationsverzeichnis
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to PublishSettingsFile*>]`
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     | --- | --- |
     | s:&lt;*Pfad zum Stagingspeicherort*&gt; |Obligatorische Eingabe zum Angeben des Pfads zum Stagingspeicherort, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
     | p:&lt;*Pfad zu PublishSettingsFile*&gt; |Optionale Eingabe zum Angeben des Pfads zur Datei **Azure-Veröffentlichungseinstellungen**, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. |
@@ -123,7 +123,7 @@ Das Azure-Tool für die Datenträgervorbereitung ist im Installationsverzeichnis
 
     Das Tool beginnt dann, den Datenträger mit den Sicherungsdaten vorzubereiten. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie unter Umständen weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
 
-    Nach der erfolgreichen Ausführung des Tools sind ein oder mehrere Datenträger, die Sie angegeben haben, für den Versand an Azure vorbereitet. Außerdem wird im klassischen Azure-Portal ein Importauftrag mit dem Namen erstellt, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. Zum Schluss zeigt das Tool die Lieferadresse des Azure-Datencenters an, an die die Datenträger gesendet werden müssen, und den Link, unter dem Sie den Importauftrag im klassischen Azure-Portal finden.
+    Nach der erfolgreichen Ausführung des Tools sind ein oder mehrere Datenträger, die Sie angegeben haben, für den Versand an Azure vorbereitet. Außerdem wird im Azure-Portal ein Importauftrag mit dem Namen erstellt, den Sie im Workflow **Initiieren der Offlinesicherung** eingegeben haben. Zum Schluss zeigt das Tool die Lieferadresse des Azure-Datencenters an, an die die Datenträger gesendet werden müssen, und den Link, unter dem Sie den Importauftrag im Azure-Portal finden.
 
     ![Azure-Tool für die Datenträgervorbereitung – Abgeschlossen](./media/backup-azure-backup-import-export/azureDiskPreparationToolSuccess.png)<br/>
 
@@ -161,7 +161,7 @@ Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Spei
     >
     >
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 | --- | --- |
 | /j:<*JournalFile*> |Der Pfad zur Journaldatei. Jedes Laufwerk muss über genau eine Journaldatei verfügen. Die Journaldatei darf sich nicht auf dem Ziellaufwerk befinden. Die Dateierweiterung der Journaldatei lautet ".jrn" und wird bei der Ausführung dieses Befehls erstellt. |
 | /id:<*SessionId*> |Die Sitzungs-ID identifiziert eine Kopiersitzung. Sie wird verwendet, um eine exakte Wiederherstellung einer unterbrochenen Kopiersitzung sicherzustellen. Die in einer Kopiersitzung kopierten Dateien werden in einem Verzeichnis gespeichert, das nach der Sitzungs-ID auf dem Ziellaufwerk benannt wird. |
@@ -181,7 +181,7 @@ Nach Abschluss des Importauftrags sind die Daten der Erstsicherung in Ihrem Spei
   ![PowerShell-Ausgabe](./media/backup-azure-backup-import-export/psoutput.png)
 
 ### <a name="create-an-import-job-in-the-azure-portal"></a>Erstellen eines Importauftrags im Azure-Portal
-1. Navigieren Sie im [klassischen Azure-Portal](https://manage.windowsazure.com/) zu Ihrem Speicherkonto, klicken Sie auf **Import/Export** und dann im Aufgabenbereich auf **Importauftrag erstellen**.
+1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com/) zu Ihrem Speicherkonto, und klicken Sie auf **Import/Export** und dann im Aufgabenbereich auf **Importauftrag erstellen**.
 
     ![Registerkarte „Import/Export“ im Azure-Portal](./media/backup-azure-backup-import-export/azureportal.png)
 

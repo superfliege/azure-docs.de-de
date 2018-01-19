@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/11/2018
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 89ddbaff88584d83a109b68707f9a9b3accb8e70
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a2ba6c6b59ba4decdfd621a62ec07ae04bfb98cb
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="reset-your-work-or-school-password"></a>Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos
 
@@ -122,7 +122,7 @@ Sie sollten jetzt auf Ihr Konto zugreifen können. Andernfalls wenden Sie sich a
 
 | Fehlerbeschreibung| Welcher Fehler wird angezeigt?| Lösung |
 | --- | --- | --- |
-| Beim Versuch, mein Kennwort zu ändern, tritt ein Fehler auf. | Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten. Wiederholen Sie den Vorgang mit einem anderen Kennwort. | Verwenden Sie ein Kennwort, das nicht so leicht zu erraten ist. |
+| Beim Versuch, mein Kennwort zu ändern, tritt ein Fehler auf. | Ihr Kennwort ist aufgrund eines enthaltenen Worts, Ausdrucks oder Musters leider leicht zu erraten. Wiederholen Sie den Vorgang mit einem anderen Kennwort. | Verwenden Sie ein Kennwort, das nicht so einfach zu erraten ist. |
 | Nach der Eingabe meiner Benutzer-ID wird mir die Seite „Wenden Sie sich an Ihren Administrator“ angezeigt. | Wenden Sie sich an Ihren Administrator. <br> <br> Es wurde ermittelt, dass das Kennwort Ihres Benutzerkontos nicht von Microsoft verwaltet wird. Ihr Kennwort kann daher nicht automatisch zurückgesetzt werden. <br> <br> Sie müssen sich an Ihr IT-Team wenden, um weitere Unterstützung zu erhalten. | Diese Meldung wird angezeigt, weil Ihr IT-Team Ihr Kennwort in Ihrer lokalen Umgebung verwaltet. Sie können Ihr Kennwort nicht über den Link „Sie können nicht auf Ihr Konto zugreifen?“ zurücksetzen. <br> <br> Wenden Sie sich zum Zurücksetzen des Kennworts direkt an Ihr IT-Team, und teilen Sie diesem mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit das Team dieses Feature für Sie aktivieren kann.|
 | Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Ihr Konto ist für ein Zurücksetzen des Kennworts nicht aktiviert“. | Ihr Konto ist nicht für die Kennwortzurücksetzung aktiviert. <br> <br> Ihr IT-Team hat Ihr Konto nicht zur Verwendung dieses Diensts eingerichtet. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil Ihr IT-Team die Kennwortzurücksetzung über den Link „Sie können nicht auf Ihr Konto zugreifen?“ für Ihre Organisation nicht aktiviert hat oder weil das Team Ihnen keine Berechtigung für die Nutzung dieses Features gewährt hat. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur Kontaktaufnahme mit einem Administrator“, und teilen Sie dem IT-Team Ihres Unternehmens in einer E-Mail mit, dass Sie Ihr Kennwort zurücksetzen möchten, damit das Team dieses Feature für Sie aktivieren kann. |
 | Nach dem Eingeben meiner Benutzer-ID erhalte ich die Fehlermeldung „Das Konto konnte nicht überprüft werden“. | Das Konto konnte nicht überprüft werden. <br> <br> Wenn Sie möchten, können wir einen Administrator in Ihrer Organisation kontaktieren, um Ihr Kennwort für Sie zurückzusetzen. | Diese Meldung wird angezeigt, weil die Kennwortzurücksetzung für Sie zwar aktiviert ist, Sie sich aber nicht für die Nutzung dieses Diensts registriert haben. Registrieren Sie sich für die Kennwortzurücksetzung unter http://aka.ms/ssprsetup, sobald der Zugriff auf Ihr Konto wieder möglich ist. <br> <br> Klicken Sie zum Zurücksetzen Ihres Kennworts auf den Link zur Kontaktaufnahme mit einem Administrator, um eine E-Mail an das IT-Team Ihres Unternehmens zu senden. |
@@ -141,4 +141,3 @@ Sie sollten jetzt auf Ihr Konto zugreifen können. Andernfalls wenden Sie sich a
 [LoginScreen]: ./media/active-directory-passwords-update-your-own-password/login-screen.png "Link „Kennwort zurücksetzen“ auf dem Windows 10 Fall Creators Update-Anmeldebildschirm"
 [ContactMethod]: ./media/active-directory-passwords-update-your-own-password/reset-contact-method-screen.png "Überprüfen Ihrer Authentifizierungsdaten"
 [ResetPassword]: ./media/active-directory-passwords-update-your-own-password/reset-password-screen.png "Ändern des Kennworts"
-

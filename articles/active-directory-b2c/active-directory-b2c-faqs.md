@@ -1,12 +1,11 @@
 ---
-title: "Häufig gestellte Fragen: Azure Active Directory B2C | Microsoft-Dokumentation"
-description: "Häufig gestellte Fragen zu Azure Active Directory B2C"
+title: "Häufig gestellte Fragen – Azure Active Directory B2C"
+description: "Häufig gestellte Fragen (FAQ) zu Azure Active Directory B2C"
 services: active-directory-b2c
-documentationcenter: 
-author: saeeda
+author: PatAltimore
 manager: mtillman
-editor: bryanla
-ms.assetid: ed33c2ca-76d0-442a-abb1-8b7b7bb92d6a
+editor: saeeda
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: 8bc487bdcc33f70d39d884830bfaf9187828694e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 38f33f2a5d0bba4686cfeef121f2087326e1897d
+ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure Active Directory B2C: Häufig gestellte Fragen 
 Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory (Azure AD) B2C beantwortet. Die Seite wird bei Bedarf aktualisiert.
@@ -64,9 +63,9 @@ Sie können das [Feature für Unternehmensbranding](../active-directory/customiz
 
     ![Screenshot einer angepassten Bestätigungs-E-Mail](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
-Die E-Mail-Signatur enthält den Namen des B2C-Mandanten, den Sie bei der ursprünglichen Erstellung des B2C-Mandanten angegeben haben. Sie können den Namen mit folgenden Schritten ändern:
+Die E-Mail-Signatur enthält den Namen des Azure AD B2C-Mandanten, den Sie bei der ursprünglichen Erstellung des Azure AD B2C-Mandanten angegeben haben. Sie können den Namen mit folgenden Schritten ändern:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) als Abonnementadministrator an.
+1. Melden Sie sich als globaler Administrator beim [Azure-Portal](https://portal.azure.com/) an.
 1. Öffnen Sie das Blatt **Azure Active Directory**.
 1. Klicken Sie auf die Registerkarte **Eigenschaften**.
 1. Ändern Sie das Feld **Name**.
@@ -106,22 +105,22 @@ Nein. Azure AD B2C unterstützt nicht den gleichen Berichtssatz wie Azure AD Pre
 Ja.  Lesen Sie die Informationen zur [Sprachanpassung](active-directory-b2c-reference-language-customization.md). Diese Funktion befindet sich in der öffentlichen Vorschauphase.  Wir bieten Übersetzungen für 36 Sprachen an, und Sie können alle Zeichenfolgen gemäß Ihren Anforderungen außer Kraft setzen und anpassen.
 
 ### <a name="can-i-use-my-own-urls-on-my-sign-up-and-sign-in-pages-that-are-served-by-azure-ad-b2c-for-instance-can-i-change-the-url-from-loginmicrosoftonlinecom-to-logincontosocom"></a>Kann ich auf meinen von Azure AD B2C bereitgestellten Seiten für die Registrierung und Anmeldung meine eigenen URLs verwenden? Kann ich beispielsweise die URL von „login.microsoftonline.com“ in „login.contoso.com“ ändern?
-Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Sie erreichen dieses Ziel nicht, indem Sie Ihre Domäne auf der Registerkarte **Domänen** im klassischen Azure-Portal überprüfen.
+Derzeit ist dies nicht möglich. Dieses Feature ist aber geplant. Sie erreichen dieses Ziel nicht, indem Sie Ihre Domäne auf der Registerkarte **Domänen** im Azure-Portal überprüfen.
 
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Wie lösche ich meinen Azure AD B2C-Mandanten?
 Führen Sie die folgenden Schritte aus, um Ihren Azure AD B2C-Mandanten zu löschen:
 
 1. Führen Sie die folgenden Schritte aus, um im Azure-Portal zu den [Azure AD B2C-Einstellungen](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) zu wechseln.
 1. Navigieren Sie zu **Anwendungen**, **Identitätsanbieter** und **Alle Richtlinien**, und löschen Sie jeweils alle Einträge.
-1. Melden Sie sich jetzt beim [klassischen Azure-Portal](https://manage.windowsazure.com/) als Abonnementadministrator an. (Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
-1. Navigieren Sie links zur Active Directory-Erweiterung, und klicken Sie auf Ihren B2C-Mandanten.
-1. Klicken Sie auf die Registerkarte **Benutzer** .
-1. Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Abonnementadministrator-Benutzers, als der Sie gerade angemeldet sind. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
-1. Klicken Sie auf die Registerkarte **Anwendungen** .
-1. Wählen Sie im Dropdownfeld **Anzeigen** die Einstellung **Anwendungen im Besitz meines Unternehmens** aus, und klicken Sie auf das Häkchen.
-1. Die Anwendung **b2c-extensions-app** wird angezeigt. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
-1. Navigieren Sie erneut zur Active Directory-Erweiterung, und wählen Sie Ihren B2C-Mandanten aus.
-1. Klicken Sie unten auf der Seite auf **Löschen** . Folgen Sie den Anweisungen auf dem Bildschirm, um den Vorgang abzuschließen.
+1. Melden Sie sich nun beim [Azure-Portal](https://portal.azure.com/) als Abonnementadministrator an. (Verwenden Sie dasselbe Geschäfts-, Schul- oder Unikonto bzw. dasselbe Microsoft-Konto, mit dem Sie sich bei Azure registriert haben.)
+1. Wechseln Sie zu dem Azure AD B2C-Mandanten, den Sie löschen möchten.
+2. Navigieren Sie zum Active Directory-Menü auf der linken Seite.
+3. Wählen Sie **Benutzer und Gruppen**.
+4. Wählen Sie nacheinander die einzelnen Benutzer aus – mit Ausnahme des Abonnementadministrator-Benutzers, als der Sie gerade angemeldet sind. Klicken Sie im unteren Bereich der Seite auf **Löschen**, und klicken Sie auf **Ja**, wenn Sie zur Bestätigung aufgefordert werden.
+5. Klicken Sie auf **App-Registrierungen**.
+6. Wählen Sie die Anwendung **b2c-extensions-app** aus. Klicken Sie auf **Löschen** und dann bei der Frage auf **Ja**.
+7. Wählen Sie **Übersicht**.
+8. Klicken Sie auf **Verzeichnis löschen**. Folgen Sie den Anweisungen auf dem Bildschirm, um den Vorgang abzuschließen.
 
 ### <a name="can-i-get-azure-ad-b2c-as-part-of-enterprise-mobility-suite"></a>Kann ich Azure AD B2C als Teil der Enterprise Mobility Suite erwerben?
 Nein. Azure AD B2C ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nicht Teil der Enterprise Mobility Suite.

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/21/2017
+ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: japere
-ms.openlocfilehash: 5887dbd606acd1df47be1c421bee1a1008dc91d1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9bec51e1d49308baecc76143ec80902d2da418e8
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="do-you-need-help-with-the-my-apps-portal"></a>Hilfe zum Portal „Meine Apps“ in Azure Active Directory
 
@@ -51,17 +51,17 @@ Falls Sie Ihr Kennwort ändern möchten, es vergessen oder nie von der IT-Abteil
 Endbenutzer können mithilfe der Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) selbstständig ihr Kennwort zurücksetzen oder ihr Konto entsperren. Um diese Funktion verwenden zu können, müssen Sie zunächst Authentifizierungsmethoden registrieren oder die vordefinierten Authentifizierungsmethoden bestätigen, die Ihr Administrator angegeben hat. Weitere Informationen finden Sie unter [Registrieren für die Self-Service-Kennwortzurücksetzung](active-directory-passwords-reset-register.md).
 
 
-## <a name="i-am-having-trouble-installing-the-my-apps-portal-browser-extension"></a>Ich habe Probleme bei der Installation der Browsererweiterung für das Portal „Meine Apps“
+## <a name="i-am-having-trouble-installing-the-my-apps-secure-sign-in-extension"></a>Ich habe Probleme bei der Installation der Erweiterung zur sicheren Anmeldung bei „Meine Apps“.
 
 Überprüfen Sie, ob Sie den erforderlichen Browser verwenden:
 
 - Für das Portal benötigen Sie einen Browser der JavaScript unterstützt und in dem CSS aktiviert ist. Wenn Sie kennwortbasierte Apps für einmaliges Anmelden verwenden, muss die dazugehörige Browsererweiterung auch installiert werden. Diese Erweiterung wird automatisch heruntergeladen, wenn Sie eine Anwendung starten, die für kennwortbasierte Apps für einmaliges Anmelden konfiguriert ist.
 
 - Die Erweiterung erfordert folgenden Browser:
-    - Internet Explorer 8, 9, 10, 11 unter Windows 7 oder höher
     - Edge unter Windows 10 Anniversary Edition oder höher
     - Chrome unter Windows 7 oder höher und macOS X oder höher
     - Firefox 26.0 oder höher unter Windows XP SP2 oder höher und Mac OS X 10.6 oder höher
+    - Internet Explorer 8, 9, 10, 11 unter Windows 7 oder höher (eingeschränkte Unterstützung)
 
 Sie können die Erweiterung für Chrome und Firefox auch direkt über die folgenden Links herunterladen:
 
@@ -76,6 +76,32 @@ Wenn nach der Installation Probleme auftreten, führen Sie die folgenden Schritt
 - Starten Sie Ihren Browser neu und melden Sie sich im Portal „Meine Apps“ an.
 
 - Löschen Sie über Ihren Browser die Cookies und melden Sie sich im Portal „Meine Apps“ an.
+- Befolgen Sie die Anleitung [Problembehandlung in der Zugriffsbereichserweiterung für Internet Explorer](https://docs.microsoft.com/azure/active-directory/active-directory-saas-ie-troubleshooting), um Zugriff auf ein Diagnosetool und Schritt-für-Schritt-Anweisungen zum Konfigurieren der Erweiterung für Internet Explorer zu erhalten.
+
+## <a name="how-do-i-use-the-my-apps-secure-sign-in-extension"></a>Wie verwende ich die Erweiterung zur sicheren Anmeldung bei „Meine Apps“?
+Ändern der Standard-URL von „Meine Apps“ für die Erweiterung
+
+Bei Verwendung einer anderen URL von „Meine Apps“ als https://myapps.microsoft.com müssen Sie die Standard-URL durch Ausführen der folgenden Schritte konfigurieren:
+1. **Klicken Sie mit der rechten Maustaste** auf das Symbol für die Erweiterung, ohne bei der Erweiterung angemeldet zu sein.
+2. Klicken Sie im Menü auf **Meine Apps-URL auswählen**.
+3. **Wählen Sie** Ihre Standard-URL aus.
+4. Klicken Sie auf das Symbol für die Erweiterung.
+5. Melden Sie sich bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+
+Direktes Anmelden bei einer App über den Browser
+1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+2. Navigieren Sie zu der **Anmelde-URL** der App, bei der Sie sich anmelden möchten. Dies ist in der Regel die URL der App, die das Anmeldeformular anzeigt.
+3. Der Status der Erweiterung sollte sich ändern, sodass Sie darüber informiert werden, dass ein Kennwort verfügbar ist. Klicken Sie auf das **Symbol für die Erweiterung**, um sich anzumelden.
+
+Starten einer App über die Erweiterung
+1. Melden Sie sich nach der Installation der Erweiterung bei der Erweiterung an, indem Sie **Melden Sie sich an, um loszulegen** auswählen.
+2. Klicken Sie auf das Symbol für die Erweiterung, um das zugehörige Menü zu öffnen.
+3. **Suchen** Sie nach einer App, die im Portal „Meine Apps“ zur Verfügung steht.
+4. Klicken Sie in den **Suchergebnissen** auf die App, um sie zu starten.
+5. In der Verknüpfungsliste **Zuletzt verwendet** werden auch die letzten drei gestarteten Apps angezeigt.
+
+> [!NOTE]
+> Diese Optionen sind nur für Edge, Chrome und Firefox verfügbar.
 
 ## <a name="how-do-i-add-a-new-app"></a>Wie füge ich eine neue App hinzu?
 
@@ -92,9 +118,9 @@ Wenn nach der Installation Probleme auftreten, führen Sie die folgenden Schritt
 
 ## <a name="how-do-i-manage-my-group-memberships"></a>Wie verwalte ich meine Gruppenmitgliedschaften?
 
-1. Klicken Sie auf die App-Kachel „Gruppen“. 
-2. Klicken Sie zum Erstellen einer Gruppe unter „Gruppen in meinem Besitz“ auf „Gruppe erstellen“ und folgen Sie den Anweisungen.
-3. Um einer Gruppe beizutreten, klicken Sie unter „Gruppen in meinem Besitz“ auf „Gruppe beitreten“ und befolgen Sie die Anweisungen.
+1. Klicken Sie auf die Kachel **Gruppen**. 
+2. Klicken Sie zum Erstellen einer Gruppe unter „Gruppen in meinem Besitz“ auf **Gruppe erstellen**, und folgen Sie den Anweisungen.
+3. Um einer Gruppe beizutreten, klicken Sie unter „Gruppen in meinem Besitz“ auf **Gruppe beitreten**, und befolgen Sie die Anweisungen.
 
 **Hinweise:**
 

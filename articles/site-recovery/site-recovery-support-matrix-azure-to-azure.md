@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/31/2017
+ms.date: 12/08/2017
 ms.author: sujayt
-ms.openlocfilehash: 7dae1d903b6cbb6a74f89443ec9601c6b4b9d078
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: c15583b9420355bb7c35bd107b899c59e80e3741
+ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/13/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure Site Recovery-Supportmatrix zum Replizieren aus Azure in Azure
 
@@ -42,7 +42,7 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 
 ## <a name="resource-move-support"></a>Unterstützung für das Verschieben von Ressourcen
 
-**Typ des Verschiebevorgangs für Ressourcen** | **Unterstützt/Nicht unterstützt** | **Hinweise:**  
+**Typ des Verschiebevorgangs für Ressourcen** | **Unterstützt/Nicht unterstützt** | **Anmerkungen**  
 --- | --- | ---
 **Tresor über Ressourcengruppen hinweg verschieben** | Nicht unterstützt |Sie können den Recovery Services-Tresor nicht über Ressourcengruppen hinweg verschieben.
 **Verschieben von Compute, Speicher und Netzwerk über Ressourcengruppen hinweg** | Nicht unterstützt |Wenn Sie nach dem Aktivieren der Replikation einen virtuellen Computer (oder zugehörige Komponenten wie Speicher und Netzwerk) verschieben, müssen Sie die Replikation deaktivieren und dann wieder für den virtuellen Computer aktivieren.
@@ -51,10 +51,10 @@ In diesem Artikel werden die unterstützten Konfigurationen und Komponenten für
 
 ## <a name="support-for-deployment-models"></a>Unterstützung für Bereitstellungsmodelle
 
-**Bereitstellungsmodell** | **Unterstützt/Nicht unterstützt** | **Hinweise:**  
+**Bereitstellungsmodell** | **Unterstützt/Nicht unterstützt** | **Anmerkungen**  
 --- | --- | ---
 **Klassisch** | Unterstützt | Sie können einen replizierten klassischen virtuellen Computer nur als klassischen virtuellen Computer wiederherstellen. Eine Wiederherstellung als virtueller Ressourcen-Manager-Computer ist nicht möglich. Wenn Sie einen klassischen virtuellen Computer ohne ein virtuelles Netzwerk und direkt in einer Azure-Region bereitstellen, wird er nicht unterstützt.
-**Ressourcen-Manager** | Unterstützt |
+**Resource Manager** | Unterstützt |
 
 >[!NOTE]
 >
@@ -80,8 +80,8 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3
-- CentOS 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3
+- Red Hat Enterprise Linux 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3, 7.4
+- CentOS 6.5, 6.6, 6.7, 6.8, 6.9, 7.0, 7.1, 7.2, 7.3, 7.4
 - Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Debian 7
@@ -94,23 +94,26 @@ Die unten aufgeführte Unterstützung gilt für alle Workloads unter dem genannt
 
 >[!NOTE]
 >
-> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung, auf denen das „cloud-init“-Paket zum Konfigurieren von Cloud-VMs verwendet wird, kann bei einem Failover (abhängig von der „cloud-init“-Konfiguration) die kennwortbasierte Anmeldung deaktiviert sein. Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem das Kennwort im Azure-Portal im Menü „Einstellungen“ (im Abschnitt SUPPORT + PROBLEMBEHANDLUNG) der VM nach erfolgtem Failover zurückgesetzt wird.
+> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung, auf denen das Paket cloud-init zum Konfigurieren von Cloud-VMs verwendet wird, kann bei einem Failover (abhängig von der cloud-init-Konfiguration) die kennwortbasierte Anmeldung deaktiviert sein. Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem das Kennwort im Azure-Portal im Menü „Einstellungen“ (im Abschnitt „SUPPORT + PROBLEMBEHANDLUNG“) der VM nach erfolgtem Failover zurückgesetzt wird.
 
 ### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Ubuntu-Kernelversionen für virtuelle Azure-Computer
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-14.04 LTS | 9.9 | 3.13.0-24-generic bis 3.13.0-117-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-75-generic |
 14.04 LTS | 9.10 | 3.13.0-24-generic bis 3.13.0-121-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-81-generic |
 14.04 LTS | 9.11 | 3.13.0-24-generic bis 3.13.0-125-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-83-generic |
+14.04 LTS | 9.12 | 3.13.0-24-generic to 3.13.0-132-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic to 4.4.0-96-generic |
+14.04 LTS | 9.13 | 3.13.0-24-generic bis 3.13.0-137-generic,<br/>3.16.0-25-generic bis 3.16.0-77-generic,<br/>3.19.0-18-generic bis 3.19.0-80-generic,<br/>4.2.0-18-generic bis 4.2.0-42-generic,<br/>4.4.0-21-generic bis 4.4.0-104-generic |
 16.04 LTS | 9.10 | 4.4.0-21-generic bis 4.4.0-81-generic,<br/>4.8.0-34-generic bis 4.8.0-56-generic,<br/>4.10.0-14-generic bis 4.10.0-24-generic |
 16.04 LTS | 9.11 | 4.4.0-21-generic bis 4.4.0-83-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-27-generic |
+16.04 LTS | 9.12 | 4.4.0-21-generic to 4.4.0-96-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic to 4.10.0-35-generic |
+16.04 LTS | 9.13 | 4.4.0-21-generic bis 4.4.0-104-generic,<br/>4.8.0-34-generic bis 4.8.0-58-generic,<br/>4.10.0-14-generic bis 4.10.0-42-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Unterstützte Dateisysteme und Gastspeicherkonfigurationen auf virtuellen Azure-Computern unter Linux
 
 * Dateisysteme: ext3, ext4, ReiserFS (nur Suse Linux Enterprise Server), XFS
 * Volume-Manager: LVM2
-* Multipfad-Software: Gerätemapper
+* Multipfadsoftware: Gerätemapper
 
 ## <a name="region-support"></a>Unterstützung für Regionen
 
@@ -122,6 +125,9 @@ Amerika | Kanada, Osten; Kanada, Mitte; USA, Süden-Mitte; USA, Westen-Mitte; US
 Europa | Vereinigtes Königreich, Westen; Vereinigtes Königreich, Süden; Europa, Norden; Europa, Westen
 Asien | Indien, Süden; Indien, Mitte; Asien, Südosten; Asien, Osten; Japan, Osten; Japan, Westen; Korea, Mitte; Korea, Süden
 Australien   | „Australien, Osten“, „Australien, Südosten“
+Azure Government    | „US GOV Virginia“; „US GOV Iowa“; „US GOV Arizona“; „US GOV Texas“; „US DoD, Osten“; „US DoD, Mitte“
+Deutschland | „Deutschland, Mitte“; „Deutschland, Nordosten“
+China | „China, Osten“, „China, Norden“
 
 >[!NOTE]
 >
@@ -130,7 +136,7 @@ Australien   | „Australien, Osten“, „Australien, Südosten“
 
 ## <a name="support-for-compute-configuration"></a>Unterstützung für Computekonfiguration
 
-**Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**
+**Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Anmerkungen**
 --- | --- | ---
 Größe | Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM | Weitere Informationen finden Sie unter [Größen für virtuelle Azure-Computer](../virtual-machines/windows/sizes.md).
 Verfügbarkeitsgruppen | Unterstützt | Wenn Sie die Standardoption beim Schritt „Replikation aktivieren“ im Verwaltungsportal verwenden, wird die Verfügbarkeitsgruppe automatisch basierend auf der Konfiguration der Quellregion erstellt. Sie können die Zielverfügbarkeitsgruppe jederzeit unter „Repliziertes Element“ > „Einstellungen“ > „Compute und Netzwerk“ > „Verfügbarkeitsgruppe“ ändern.
@@ -143,7 +149,7 @@ Mit Site Recovery migrierte virtuelle Computer | Unterstützt | Wenn ein VMware-
 
 ## <a name="support-for-storage-configuration"></a>Unterstützung für Speicherkonfiguration
 
-**Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**
+**Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Anmerkungen**
 --- | --- | ---
 Maximale Datenträgergröße für das Betriebssystem | 2.048 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
 Maximale Größe des Datenträgers für Daten | 4095 GB | Weitere Informationen finden Sie unter [Von VMs verwendete Datenträger](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)
@@ -164,13 +170,14 @@ GRS | Unterstützt |
 RA-GRS | Unterstützt |
 ZRS | Nicht unterstützt |  
 Kalter und heißer Speicher | Nicht unterstützt | Datenträger für virtuelle Computer werden auf kaltem und heißem Speicher nicht unterstützt.
-Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage)  | Nein | Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt. 
+Dienstendpunkte von virtuellen Netzwerken (Firewalls und virtuelle Netzwerke in Azure Storage)  | Nein  | Das Gewähren des Zugriffs auf bestimmte virtuelle Azure-Netzwerke auf Cachespeicherkonten, die zum Speichern replizierter Daten verwendet werden, wird nicht unterstützt. 
+Allgemeine V2-Speicherkonten (heiße und kalte Ebene) | Nein  | Die Transaktionskosten steigen gegenüber allgemeinen V1-Speicherkonten erheblich an.
 
 >[!IMPORTANT]
 > Stellen Sie sicher, dass Sie die Skalierbarkeits- und Leistungsziele für VM-Datenträger für virtuelle [Linux](../virtual-machines/linux/disk-scalability-targets.md)- oder [Windows](../virtual-machines/windows/disk-scalability-targets.md)-Computer beachten, um Leistungsprobleme zu vermeiden. Wenn Sie die Standardeinstellungen übernehmen, erstellt Site Recovery die erforderlichen Datenträger und Speicherkonten auf Basis der Quellkonfiguration. Wenn Sie Ihre eigenen Einstellungen anpassen und verwenden möchten, achten Sie darauf, die Skalierbarkeits- und Leistungsziele für Datenträger für Ihre virtuellen Quellcomputer einzuhalten.
 
 ## <a name="support-for-network-configuration"></a>Unterstützung der Netzwerkkonfiguration
-**Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Hinweise:**
+**Konfiguration** | **Unterstützt/Nicht unterstützt.** | **Anmerkungen**
 --- | --- | ---
 Netzwerkschnittstelle (NIC) | Bis zur maximalen Anzahl von NICs, die von einer bestimmten Größe von virtuellen Azure-Computern unterstützt werden | Netzwerkkarten werden bei der Erstellung des virtuellen Computers als Teil des Testfailover- oder Failovervorgangs erstellt. Die Anzahl der Netzwerkkarten auf dem virtuellen Failovercomputer ist abhängig von der Anzahl der Netzwerkkarten, die auf dem virtuellen Quellcomputer vorhanden waren, als die Replikation aktiviert wurde. Wenn Sie Netzwerkkarten nach dem Aktivieren der Replikation hinzufügen/entfernen, hat dies keine Auswirkungen auf den virtuellen Failovercomputer.
 Internetlastenausgleich | Unterstützt | Sie müssen den vorkonfigurierten Lastenausgleich mit einem Azure-Automatisierungsskript in einem Wiederherstellungsplan zuordnen.

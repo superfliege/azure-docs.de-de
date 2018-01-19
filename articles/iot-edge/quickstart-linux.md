@@ -6,16 +6,16 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 11/16/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: bfa6652eac34f88baf09f55353cf58227a20e4cf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/12/2018
 ---
-# <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-linux-device---preview"></a>Schnellstart: Bereitstellen des ersten IoT Edge-Moduls über das Azure-Portal auf einem Linux-Gerät – Vorschau
+# <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux- oder macOS-Gerät – Vorschau
 
 Mit Azure IoT Edge werden die Vorteile der Cloud auf Ihre IoT-Geräte übertragen. In diesem Thema erfahren Sie, wie Sie die Cloudschnittstelle zur Remotebereitstellung von vordefiniertem Code auf einem IoT Edge-Gerät verwenden.
 
@@ -23,10 +23,14 @@ Wenn Sie über kein aktives Azure-Abonnement verfügen, können Sie ein [kostenl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Simulieren Sie für diese Aufgabe ein IoT-Gerät mit Ihrem Computer oder einem virtuellen Computer. Zur erfolgreichen Bereitstellung eines IoT Edge-Geräts sind folgende Dienste erforderlich:
+Dieser Schnellstart verwendet Ihren Computer oder Ihren virtuellen Computer wie ein IoT-Gerät (Internet der Dinge). Um Ihr Gerät in ein IoT Edge-Gerät umzuwandeln, sind folgende Dienste erforderlich:
 
-- [Installieren Sie Docker unter Linux][lnk-docker-ubuntu], und stellen Sie sicher, dass dieses Programm ausgeführt wird. 
-- In den meisten Linux-Distributionen, einschließlich Ubuntu, ist Python 2.7 bereits installiert. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob pip installiert ist: `sudo apt-get install python-pip`.
+* Python pip zum Installieren der IoT Edge-Runtime.
+   * Linux: `sudo apt-get install python-pip`.
+   * macOS: `sudo easy_install pip`.
+* Docker zum Ausführen des IoT Edge-Moduls
+   * [Installieren Sie Docker für Linux][lnk-docker-ubuntu], und stellen Sie sicher, dass das Programm ausgeführt wird. 
+   * [Installieren Sie Docker für macOS][lnk-docker-mac], und stellen Sie sicher, dass das Programm ausgeführt wird. 
 
 ## <a name="create-an-iot-hub-with-azure-cli"></a>Erstellen eines IoT Hubs mit der Azure-Befehlszeilenschnittstelle
 
@@ -135,6 +139,7 @@ Sie haben gelernt, wie Sie ein IoT Edge-Modul auf einem IoT Edge-Gerät bereitst
 
 <!-- Links -->
 [lnk-docker-ubuntu]: https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/ 
+[lnk-docker-mac]: https://docs.docker.com/docker-for-mac/install/
 [lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
 [lnk-account]: https://azure.microsoft.com/free
 [lnk-portal]: https://portal.azure.com

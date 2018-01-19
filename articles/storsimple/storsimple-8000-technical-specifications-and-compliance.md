@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: d7cd31dcb2278284ada6e7ac1d8beab9e1b5b1df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 95dbd80e740210c3800a0af10071875a6d6f0939
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>Technische Spezifikationen und Kompatibilität des StorSimple-Geräts
 
@@ -40,7 +40,7 @@ Das EBOD-Gehäuse enthält ein PCM mit 580 W, und das primäre Gehäuse wird mi
 | Maximaler Eingangsstrom |20 A |20 A |
 | Leistungsfaktorkorrektur |> 95 % Nenneingangsspannung |> 95 % Nenneingangsspannung |
 | Oberschwingungen |Erfüllt EN61000-3-2 |Erfüllt EN61000-3-2 |
-| Ausgabe |5 V Standbyspannung bei 2,0 A |5 V Standbyspannung bei 2,7 A |
+| Output |5 V Standbyspannung bei 2,0 A |5 V Standbyspannung bei 2,7 A |
 | +5 V bei 42 A |+5 V bei 40 A | |
 | +12 V bei 38 A |+12 V bei 38 A | |
 | Hot-Plug-fähig |Ja |Ja |
@@ -80,7 +80,7 @@ Sowohl das StorSimple 8100 als auch das StorSimple 8600 verfügen über eine Kom
 | Insgesamt nutzbare Kapazität* |~ 15 TB |~38 TB |
 | Maximale Kapazität der Lösung (einschließlich Cloud) |200 TB |500 TB |
 
-<sup>* </sup>- *Die nutzbare Gesamtkapazität umfasst die Kapazität, die für Daten, Metadaten und Puffer verfügbar ist.*
+<sup>* </sup>- *Die nutzbare Gesamtkapazität beinhaltet die Kapazität, die für Daten, Metadaten und Puffer verfügbar ist. Sie können lokale Volumes von bis zu 8,5 TB auf dem 8100-Gerät und von bis zu 22,5 TB auf dem größeren 8600-Gerät bereitstellen. Weitere Informationen finden Sie unter [Lokale StorSimple-Volumes](storsimple-8000-local-volume-faq.md).*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>Gehäuseabmessungen und Gewicht
 
@@ -176,7 +176,7 @@ Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweilige
 
 ### <a name="ac-power-cords---usa-must-be-nrtl-listed"></a>Netzkabel – USA (muss NRTL-registriert sein)
 
-| Component | Spezifikation |
+| Komponente | Spezifikation |
 | --- | --- |
 | Kabeltyp |SV oder SVT, 18 AWG Minimum, 3 Leiter, 2,0 m Maximallänge |
 | Stecker |NEMA 5-15P-Stecker mit Erdung und Nennwerten von 120 V, 10 A; oder IEC 320 C14, 250 V, 10 A |
@@ -184,7 +184,7 @@ Der Stecker und das gesamte Netzkabelmodul müssen den Richtlinien des jeweilige
 
 ### <a name="ac-power-cords---europe"></a>Netzkabel – Europa
 
-| Component | Spezifikation |
+| Komponente | Spezifikation |
 | --- | --- |
 | Kabeltyp |Harmonisiert, H05-VVF-3G1.0 |
 | Steckdose |IEC 320 C-13, 250 V, 10 A |

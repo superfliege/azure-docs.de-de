@@ -14,26 +14,65 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: f961ef253fd090d3f064c9da5950d5eab6547e61
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b43eb5e78b70f38226e3e8cb53d1530d348c7c20
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Versionsveröffentlichungsverlauf
 Das Azure Active Directory-Team aktualisiert Azure AD Connect Health regelmäßig mit neuen Features und Funktionen. In diesem Artikel werden die veröffentlichten Versionen und Features beschrieben.
+
+## <a name="december-2017"></a>Dezember 2017
+**Agent-Aktualisierung:**
+
+*   Azure AD Connect Health-Agent für AD DS (Version 3.0.145.0)
+  1. Verbesserungen bei der Agent-Verfügbarkeit 
+  2. Neue Befehle zur Problembehandlung beim Agent hinzugefügt
+  3. Fehlerbehebungen und allgemeine Verbesserungen
+*   Azure AD Connect Health-Agent für AD FS (Version 3.0.145.0)
+  1. Neue Befehle zur Problembehandlung beim Agent hinzugefügt
+  2. Verbesserungen bei der Agent-Verfügbarkeit 
+  3. Fehlerbehebungen und allgemeine Verbesserungen
+  
+## <a name="october-2017"></a>Oktober 2017
+**Agent-Aktualisierung:**
+
+ * Azure AD Connect Health-Agent für Sync (Version 3.0.129.0), veröffentlicht mit Azure AD Connect Version 1.1.649.0
+<br></br> Ein Problem mit der Versionskompatibilität zwischen Azure AD Connect und dem Azure AD Connect Health-Agent für die Synchronisierung wurde behoben. Dieses Problem betrifft Kunden, die ein direktes Upgrade von Azure AD Connect auf Version 1.1.647.0 durchführen, aber derzeit die Health-Agent Version 3.0.127.0 verwenden. Nach dem Upgrade kann der Health-Agent keine Integritätsdaten mehr über den Azure AD Connect-Synchronisierungsdienst an den Azure AD-Integritätsdienst senden. Behoben wird dieses Problem, indem Version 3.0.129.0 des Health-Agents während des direkten Upgrades von Azure AD Connect installiert wird. Zwischen Version 3.0.129.0 des Health-Agents und Version 1.1.649.0 von Azure AD Connect bestehen keine Kompatibilitätsprobleme.
+
+## <a name="july-2017"></a>Juli 2017
+**Agent-Aktualisierung:**
+
+*   Azure AD Connect Health-Agent für AD DS (Version 3.0.68.0)
+  1. Fehlerbehebungen und allgemeine Verbesserungen
+  2. Unterstützung für unabhängige Clouds
+*   Azure AD Connect Health-Agent für AD FS (Version 3.0.68.0)
+  1. Fehlerbehebungen und allgemeine Verbesserungen
+  2. Unterstützung für unabhängige Clouds
+* Azure AD Connect Health-Agent für Sync (Version 3.0.68.0), veröffentlicht mit Azure AD Connect Version 1.1.614.0
+1. Unterstützung für Microsoft Azure Government-Cloud und Microsoft Cloud Deutschland
+
+## <a name="april-2017"></a>April 2017      
+**Agent-Aktualisierung:**
+
+*   Azure AD Connect Health-Agent für AD FS (Version 3.0.12.0)
+  1. Fehlerbehebungen und allgemeine Verbesserungen
+*   Azure AD Connect Health-Agent für AD DS (Version 3.0.12.0)
+  1. Verbesserungen beim Hochladen von Leistungsindikatoren
+  2. Fehlerbehebungen und allgemeine Verbesserungen
 
 ## <a name="october-2016"></a>Oktober 2016
 **Agent-Aktualisierung:**
 
 * Azure AD Connect Health-Agent für AD FS \(Version 2.6.408.0\)
-  1. Verbesserungen beim Erkennen von Client-IP-Adressen bei Authentifizierungsanforderungen
-  2. Fehlerbehebungen im Zusammenhang mit Warnungen
+1. Verbesserungen beim Erkennen von Client-IP-Adressen bei Authentifizierungsanforderungen
+2. Fehlerbehebungen im Zusammenhang mit Warnungen
 * Azure AD Connect Health-Agent für AD DS (Version 2.6.408.0)
-  1. Fehlerbehebungen im Zusammenhang mit Warnungen.
+1. Fehlerbehebungen im Zusammenhang mit Warnungen.
 * Azure AD Connect Health-Agent für Sync (Version 2.6.353.0), veröffentlicht mit Azure AD Connect Version 1.1.281.0
-  1. Bereitstellen der für die Berichte zu Synchronisierungsfehlern benötigten Daten
-  2. Fehlerbehebungen im Zusammenhang mit Warnungen
+1. Bereitstellen der für die Berichte zu Synchronisierungsfehlern benötigten Daten
+2. Fehlerbehebungen im Zusammenhang mit Warnungen
 
 **Neue Vorschaufeatures:**
 

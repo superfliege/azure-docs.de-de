@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 01/03/2018
 ms.author: billmath
-ms.openlocfilehash: 3dc6be73abafb99772ed428bd4f22c1797c9b1bc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1fd07d506b2edc789d71001ac520b9ebddc3e1d9
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="azure-ad-connect-sync-how-to-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Thema wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
@@ -171,11 +171,27 @@ Sie können das Synchronisierungsmodul anweisen, dass vor den Standardregeln wei
 
 Bei Bedarf können Sie eine Vielzahl von benutzerdefinierten Synchronisierungsregeln einrichten, die den gleichen **PrecedenceBefore**-Wert verwenden.
 
-
 ## <a name="enable-synchronization-of-preferreddatalocation"></a>Aktivieren der Synchronisierung von „PreferredDataLocation“
+Standardmäßig befinden sich die Office 365-Ressourcen für Ihre Benutzer in der gleichen Region wie Ihr Azure AD-Mandant. Wenn sich Ihr Mandant z.B. in Nordamerika befindet, befinden sich die Exchange-Postfächer der Benutzer ebenfalls in Nordamerika. Für ein multinationales Unternehmen ist dies möglicherweise nicht optimal. Die Region des Benutzers kann durch Festlegen des preferredDataLocation-Attributs definiert werden.
+
+Die Bereiche in Office 365 sind:
+
+| Region | BESCHREIBUNG |
+| --- | --- |
+| NAM | Nordamerika |
+| EUR | Europa |
+| APC | Asien-Pazifik |
+| JPN | Japan |
+| AUS | Australien |
+| CAN | Kanada |
+| GBR | Großbritannien |
+| LAM | Lateinamerika |
+
+Nicht alle Office 365-Workloads unterstützen die Festlegung der Benutzerregion.
+
 Azure AD Connect unterstützt in Version 1.1.524.0 und höher die Synchronisierung des Attributs **PreferredDataLocation** für **Benutzerobjekte**. Genauer gesagt wurden folgende Änderungen eingeführt:
 
-* Das Schema des Objekttyps **Benutzer** im Azure AD-Connector wird um das Attribut „PreferredDataLocation“ erweitert, das vom Typ „Zeichenfolge“ und einwertig ist.
+* Das Schema des Objekttyps **Benutzer** im Azure AD-Connector wird um das PreferredDataLocation-Attribut erweitert, das ein einwertiger Zeichenfolgentyp ist.
 
 * Das Schema des Objekttyps **Person** in der Metaverse wird um das Attribut „PreferredDataLocation“ erweitert, das vom Typ „Zeichenfolge“ und einwertig ist.
 
@@ -185,33 +201,27 @@ Standardmäßig ist das Attribut „PreferredDataLocation“ nicht für die Sync
 > Derzeit kann in Azure AD das Attribut „PreferredDataLocation“ sowohl in synchronisierten Benutzerobjekten als auch Cloudbenutzerobjekten direkt mithilfe von Azure AD PowerShell konfiguriert werden. Nachdem Sie die Synchronisierung des Attributs „PreferredDataLocation“ aktiviert haben, dürfen Sie das Attribut nicht mehr in **synchronisierten Benutzerobjekten** mit Azure AD PowerShell konfigurieren, da Azure AD Connect diese basierend auf den Quellattributwerten im lokalen Active Directory überschreibt.
 
 > [!IMPORTANT]
-> Ab dem 1. September 2017 kann in Azure AD das Attribut „PreferredDataLocation“ in **synchronisierten Benutzerobjekten** nicht mehr direkt mithilfe von Azure AD PowerShell konfiguriert werden. Für die Konfiguration des Attributs „PreferredLocation“ in synchronisierten Benutzerobjekten dürfen Sie nur Azure AD Connect verwenden.
+> Seit dem 1. September 2017 kann in Azure AD das PreferredDataLocation-Attribut in **synchronisierten Benutzerobjekten** nicht mehr direkt mithilfe von Azure AD PowerShell konfiguriert werden. Für die Konfiguration des PreferredLocation-Attributs in synchronisierten Benutzerobjekten müssen Sie Azure AD Connect verwenden.
 
 Bevor Sie die Synchronisierung des Attributs „PreferredDataLocation“ aktivieren, müssen Sie folgende Schritte durchführen:
 
- * Legen Sie zuerst fest, welches lokale Active Directory-Attribut als Quellattribut verwendet werden soll. Dieses muss vom Typ **Zeichenfolge** und **einwertig** sein.
+ * Legen Sie zuerst fest, welches lokale Active Directory-Attribut als Quellattribut verwendet werden soll. Dieses muss vom Typ **einwertige Zeichenfolge** sein. In den Schritten unten wird eines der extensionAttributes verwendet.
 
  * Wenn Sie das Attribut „PreferredDataLocation“ mithilfe von Azure AD PowerShell zuvor in vorhandenen synchronisierten Benutzerobjekten in Azure AD konfiguriert haben, müssen Sie ein **Backport** für die Attributwerte auf die entsprechenden Benutzerobjekte im lokalen Active Directory durchführen.
- 
+
     > [!IMPORTANT]
     > Wenn Sie kein Backport für die Attributwerte auf die entsprechenden Benutzerobjekte im lokalen Active Directory durchführen, entfernt Azure AD Connect bei aktivierter Synchronisierung für das Attribut „PreferredDataLocation“ die vorhandenen Attributwerte in Azure AD.
 
  * Es wird empfohlen, das Quellattribut jetzt in mindestens einigen lokalen AD-Benutzerobjekten zu konfigurieren, die später für die Überprüfung verwendet werden.
- 
+
 Die Schritte zum Aktivieren der Synchronisierung des Attributs „PreferredDataLocation“ können wie folgt zusammengefasst werden:
 
 1. Deaktivieren des Synchronisierungsplaners und Sicherstellen, dass derzeit keine Synchronisierung ausgeführt wird
-
 2. Hinzufügen des Quellattributs zum lokalen AD-Connectorschema
-
 3. Hinzufügen von „PreferredDataLocation“ zum Azure AD-Connectorschema
-
 4. Erstellen einer Synchronisierungsregel für eingehende Daten zur Übertragung des Attributwerts aus dem lokalen Active Directory
-
 5. Erstellen einer Synchronisierungsregel für ausgehende Daten zur Übertragung des Attributwerts an Azure AD
-
 6. Ausführen des vollständigen Synchronisierungszyklus
-
 7. Aktivieren des Synchronisierungsplaners
 
 > [!NOTE]
@@ -220,80 +230,59 @@ Die Schritte zum Aktivieren der Synchronisierung des Attributs „PreferredDataL
 ### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Schritt 1: Deaktivieren des Synchronisierungsplaners und Sicherstellen, dass derzeit keine Synchronisierung ausgeführt wird
 Stellen Sie sicher, dass keine Synchronisierung ausgeführt wird, während Sie Synchronisierungsregeln aktualisieren. So vermeiden Sie, dass unbeabsichtigte Änderungen nach Azure AD exportiert werden. So deaktivieren Sie den integrierten Synchronisierungsplaner:
 
- 1. Starten Sie eine PowerShell-Sitzung auf dem Azure AD Connect-Server.
-
- 2. Deaktivieren Sie die geplante Synchronisierung durch Ausführung des Cmdlets `Set-ADSyncScheduler -SyncCycleEnabled $false`.
- 
- 3. Starten Sie **Synchronization Service Manager**, indem Sie zu „START“ > „Synchronization Service“ navigieren.
- 
- 4. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *In Arbeit* angezeigt wird.
+1. Starten Sie eine PowerShell-Sitzung auf dem Azure AD Connect-Server.
+2. Deaktivieren Sie die geplante Synchronisierung durch Ausführung des Cmdlets `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+3. Starten Sie **Synchronization Service Manager**, indem Sie zu **START** > **Synchronization Service** navigieren.
+4. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *In Arbeit* angezeigt wird.
 
 ![Synchronization Service Manager – Überprüfen, dass keine Vorgänge durchgeführt werden](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step1.png)
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Schritt 2: Hinzufügen des Quellattributs zum lokalen AD-Connectorschema
-Nicht alle AD-Attribute werden in den lokale AD-Connectorbereich importiert. So fügen Sie das Quellattribut zur Liste der importierten Attribute hinzu:
+Nicht alle AD-Attribute werden in den lokale AD-Connectorbereich importiert. Wenn Sie ein Attribut ausgewählt haben, das in der Standardeinstellung nicht synchronisiert wird, müssen Sie es importieren. So fügen Sie das Quellattribut zur Liste der importierten Attribute hinzu:
 
- 1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
- 
- 2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Eigenschaften** aus.
- 
- 3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
- 
- 4. Stellen Sie sicher, dass das Quellattribut in der Attributliste aktiviert ist.
- 
- 5. Klicken Sie zum Speichern auf **OK**.
+1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
+2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Eigenschaften** aus.
+3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
+4. Stellen Sie sicher, dass das von Ihnen ausgewählte Quellattribut in der Attributliste aktiviert ist.
+5. Klicken Sie zum Speichern auf **OK**.
 
 ![Hinzufügen des Quellattributs zum lokalen AD-Connectorschema](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step2.png)
 
 ### <a name="step-3-add-preferreddatalocation-to-the-azure-ad-connector-schema"></a>Schritt 3: Hinzufügen von „PreferredDataLocation“ zum Azure AD-Connectorschema
-Standardmäßig wird das Attribut „PreferredDataLocation“ nicht in den Azure AD Connect-Bereich importiert. So fügen Sie das Attribut „PreferredDataLocation“ zur Liste der importierten Attribute hinzu:
+Standardmäßig wird das PreferredDataLocation-Attribut nicht in den Azure AD Connect-Bereich importiert. So fügen Sie das Attribut „PreferredDataLocation“ zur Liste der importierten Attribute hinzu:
 
- 1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
-
- 2. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Eigenschaften** aus.
-
- 3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
-
- 4. Stellen Sie sicher, dass das Attribut „PreferredDataLocation“ in der Attributliste aktiviert ist.
-
- 5. Klicken Sie zum Speichern auf **OK**.
+1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
+2. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Eigenschaften** aus.
+3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
+4. Wählen Sie das PreferredDataLocation-Attribut in der Attributliste aus.
+5. Klicken Sie zum Speichern auf **OK**.
 
 ![Hinzufügen des Quellattributs zum Azure AD-Connectorschema](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step3.png)
 
 ### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Schritt 4: Erstellen einer Synchronisierungsregel für eingehende Daten zur Übertragung des Attributwerts aus dem lokalen Active Directory
 Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung des Attributwerts aus dem Quellattribut im lokalen Active Directory auf die Metaverse:
 
-1. Starten Sie den **Synchronisierungsregel-Editor**, indem Sie zu „START“ > „Synchronisierungsregel-Editor“ navigieren.
-
+1. Starten Sie den **Synchronisierungsregel-Editor**, indem Sie zu **START** > **Synchronisierungsregel-Editor** navigieren.
 2. Legen Sie den Suchfilter **Richtung** auf **Eingehend** fest.
-
 3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**, um eine neue Regel für eingehende Daten zu erstellen.
-
 4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
- 
+
     | Attribut | Wert | Details |
     | --- | --- | --- |
-    | Name | *Geben Sie einen Namen ein.* | Beispiel: *In from AD – User PreferredDataLocation* |
-    | Beschreibung | *Geben Sie eine Beschreibung ein.* |  |
+    | NAME | *Geben Sie einen Namen ein.* | Beispiel: *In from AD – User PreferredDataLocation* |
+    | BESCHREIBUNG | *Geben Sie eine benutzerdefinierte Beschreibung an.* |  |
     | Verbundenes System | *Wählen Sie den lokalen AD-Connector aus.* |  |
     | Objekttyp des verbundenen Systems | **Benutzer** |  |
     | Metaverse-Objekttyp | **Person** |  |
     | Verknüpfungstyp | **Join** |  |
     | Rangfolge | *Wählen Sie eine Zahl zwischen 1 und 99 aus.* | Die Zahlen zwischen 1 und 99 sind für benutzerdefinierte Synchronisierungsregeln reserviert. Wählen Sie keinen Wert aus, der von einer anderen Synchronisierungsregel verwendet wird. |
 
-5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe mit folgender Klausel hinzu**:
- 
-    | Attribut | Operators | Wert |
-    | --- | --- | --- |
-    | adminDescription | NOTSTARTWITH | Benutzer\_ | 
- 
-    Der Bereichsfilter legt fest, auf welche lokalen AD-Objekte diese Synchronisierungsregel für eingehende Daten angewendet wird. In diesem Beispiel verwenden wir denselben Bereichsfilter wie die OOB-Synchronisierungsregel *In from AD – User Common*, die verhindert, dass die Synchronisierungsregel auf Benutzerobjekte angewendet wird, die über die Funktion zum Rückschreiben von Azure AD-Benutzern erstellt wurden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
-
+5. Lassen Sie die **Bereichsfilter** leer, um alle Objekte einzubeziehen. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
 6. Navigieren Sie zur Registerkarte **Transformation**, und implementieren Sie folgende Transformationsregel:
- 
+
     | Flowtyp | Zielattribut | Quelle | Einmal anwenden | Zusammenführungstyp |
     | --- | --- | --- | --- | --- |
-    | Direkt | PreferredDataLocation | Wählen Sie das Quellattribut aus. | Deaktiviert | Aktualisieren |
+    |Direkt | PreferredDataLocation | Wählen Sie das Quellattribut aus. | Deaktiviert | Aktualisieren |
 
 7. Klicken Sie auf **Hinzufügen**, um die Regel für eingehende Daten zu erstellen.
 
@@ -303,32 +292,29 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung des Attributwerts von der Metaverse auf das Attribut „PreferredDataLocation“ in Azure AD:
 
 1. Navigieren Sie zum **Synchronisierungsregel-Editor**.
-
 2. Legen Sie den Suchfilter **Richtung** auf **Ausgehend** fest.
-
 3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**.
-
 4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
     | Attribut | Wert | Details |
-    | --- | --- | --- |
-    | Name | *Geben Sie einen Namen ein.* | Beispiel: „Out to AAD – User PreferredDataLocation“ |
-    | Beschreibung | *Geben Sie eine Beschreibung ein.* |
-    | Verbundenes System | *Wählen Sie den AAD-Connector aus.* |
+    | ----- | ------ | --- |
+    | NAME | *Geben Sie einen Namen ein.* | Beispiel: „Out to AAD – User PreferredDataLocation“ |
+    | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* ||
+    | Verbundenes System | *Wählen Sie den AAD-Connector aus.* ||
     | Objekttyp des verbundenen Systems | Benutzer ||
     | Metaverse-Objekttyp | **Person** ||
     | Verknüpfungstyp | **Join** ||
     | Rangfolge | *Wählen Sie eine Zahl zwischen 1 und 99 aus.* | Die Zahlen zwischen 1 und 99 sind für benutzerdefinierte Synchronisierungsregeln reserviert. Wählen Sie keinen Wert aus, der von einer anderen Synchronisierungsregel verwendet wird. |
 
 5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe mit zwei Klauseln hinzu**:
- 
-    | Attribut | Operators | Wert |
+
+    | Attribut | Operator | Wert |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | Benutzer |
-    | cloudMastered | NOTEQUAL | True  |
+    | cloudMastered | NOTEQUAL | True |
 
     Der Bereichsfilter legt fest, auf welche Azure AD-Objekte diese Synchronisierungsregel für ausgehende Daten angewendet wird. In diesem Beispiel verwenden wir den Bereichsfilter aus der OOB-Synchronisierungsregel „Out to AD – User Identity“. Er verhindert, dass die Synchronisierungsregel auf Benutzerobjekte angewendet wird, die nicht über das lokale Active Directory synchronisiert wurden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
-    
+
 6. Navigieren Sie zur Registerkarte **Transformation**, und implementieren Sie folgende Transformationsregel:
 
     | Flowtyp | Zielattribut | Quelle | Einmal anwenden | Zusammenführungstyp |
@@ -340,16 +326,16 @@ Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung de
 ![Erstellen einer Synchronisierungsregel für ausgehende Daten](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step5.png)
 
 ### <a name="step-6-run-full-synchronization-cycle"></a>Schritt 6: Ausführen des vollständigen Synchronisierungszyklus
-Der vollständige Synchronisierungszyklus ist im Allgemeinen erforderlich, da wir sowohl zum AD- als auch zum Azure AD-Connectorschema neue Attribute hinzugefügt und benutzerdefinierte Synchronisierungsregeln eingeführt haben. Es wird empfohlen, die Änderungen vor dem Export nach Azure AD zu überprüfen. Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während Sie die Schritte des vollständigen Synchronisierungszyklus manuell ausführen. 
+Der vollständige Synchronisierungszyklus ist im Allgemeinen erforderlich, da wir sowohl zum AD- als auch zum Azure AD-Connectorschema neue Attribute hinzugefügt und benutzerdefinierte Synchronisierungsregeln eingeführt haben. Es wird empfohlen, die Änderungen vor dem Export nach Azure AD zu überprüfen. Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während Sie die Schritte des vollständigen Synchronisierungszyklus manuell ausführen.
 
 1. Führen Sie im **lokalen AD-Connector** den Schritt **Vollständiger Import** aus:
 
    1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Vorgänge**.
 
-   2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Ausführen...** aus.
+   2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Ausführen** aus.
 
    3. Wählen Sie im Popupdialogfeld **Vollständiger Import** aus, und klicken Sie auf **OK**.
-    
+
    4. Warten Sie, bis der Vorgang abgeschlossen ist.
 
     > [!NOTE]
@@ -360,19 +346,220 @@ Der vollständige Synchronisierungszyklus ist im Allgemeinen erforderlich, da wi
    1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Ausführen...** aus.
 
    2. Wählen Sie im Popupdialogfeld **Vollständiger Import** aus, und klicken Sie auf **OK**.
-   
+
    3. Warten Sie, bis der Vorgang abgeschlossen ist.
 
 3. Überprüfen Sie die Änderungen an den Synchronisierungsregeln zu einem vorhandenen Benutzerobjekt:
 
-Das Quellattribut aus dem lokalen Active Directory und „PreferredDataLocation“ aus Azure AD wurden in den jeweiligen Connectorbereich importiert. Bevor Sie mit dem Schritt „Vollständige Synchronisierung“ fortfahren, wird empfohlen, eine **Vorschau** zu einem vorhandenen Benutzerobjekt im lokalen AD-Connectorbereich auszuführen. In dem von Ihnen ausgewählten Objekt muss das Quellattribut aufgefüllt sein. Eine erfolgreiche **Vorschau**, bei dem „PreferredDataLocation“ in der Metaverse aufgefüllt ist, ist ein guter Indikator dafür, dass Sie die Synchronisierungsregeln korrekt konfiguriert haben. Informationen zum Durchführen einer **Vorschau** finden Sie im Abschnitt [Überprüfen der Änderungen](#verify-the-change).
+Das Quellattribut aus dem lokalen Active Directory und der PreferredDataLocation aus Azure AD wurden in den jeweiligen Connectorbereich importiert. Bevor Sie mit dem Schritt „Vollständige Synchronisierung“ fortfahren, wird empfohlen, eine **Vorschau** zu einem vorhandenen Benutzerobjekt im lokalen AD-Connectorbereich auszuführen. In dem von Ihnen ausgewählten Objekt muss das Quellattribut aufgefüllt sein. Eine erfolgreiche **Vorschau**, bei dem „PreferredDataLocation“ in der Metaverse aufgefüllt ist, ist ein guter Indikator dafür, dass Sie die Synchronisierungsregeln korrekt konfiguriert haben. Informationen zum Durchführen einer **Vorschau** finden Sie im Abschnitt [Überprüfen der Änderungen](#verify-the-change).
+
+4. Führen Sie im **lokalen AD-Connector** den Schritt **Vollständige Synchronisierung** aus:
+
+   1. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Ausführen** aus.
+
+   2. Wählen Sie im Popupdialogfeld **Vollständige Synchronisierung** aus, und klicken Sie auf **OK**.
+
+   3. Warten Sie, bis der Vorgang abgeschlossen ist.
+
+5. Stellen Sie sicher, dass **Ausstehende Exporte** in Azure AD festgelegt ist, indem Sie wie folgt vorgehen:
+
+   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Search Connector Space** (Connectorbereich durchsuchen) aus.
+
+   2. Gehen Sie im Popupdialogfeld „Connectorbereich durchsuchen“ wie folgt vor:
+
+      1. Legen Sie den **Bereich** auf **Ausstehender Export** fest.
+
+      2. Aktivieren Sie alle drei Kontrollkästchen: **Hinzufügen, Ändern und Löschen**.
+
+      3. Klicken Sie auf die Schaltfläche **Durchsuchen**, um die Liste von Objekten mit Änderungen, die exportiert werden sollen, abzurufen. Um die Änderungen für ein bestimmtes Objekt zu untersuchen, doppelklicken Sie auf das Objekt.
+
+      4. Stellen Sie sicher, dass die Änderungen Ihren Erwartungen entsprechen.
+
+6. Führen Sie im **Azure AD-Connector** den Schritt **Exportieren** aus.
+
+   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Ausführen** aus.
+
+   2. Wählen Sie im Popupdialogfeld „Connector ausführen“ den Schritt **Exportieren** aus, und klicken Sie auf **OK**.
+
+   3. Warten Sie, bis der Export nach Azure AD abgeschlossen ist.
+
+> [!NOTE]
+> Sie werden möglicherweise feststellen, dass die Schritte „Vollständige Synchronisierung“ auf dem Azure AD-Connector und „Exportieren“ zum AD-Connector nicht enthalten sind. Diese Schritte sind nicht erforderlich, da die Attributwerte lediglich von dem lokalen Active Directory auf Azure AD übertragen werden.
+
+### <a name="step-7-re-enable-sync-scheduler"></a>Schritt 7: Erneutes Aktivieren des Synchronisierungsplaners
+So aktivieren Sie erneut den integrierten Synchronisierungsplaner:
+
+1. Starten Sie eine PowerShell-Sitzung.
+2. Aktivieren Sie die geplante Synchronisierung durch Ausführung des Cmdlets `Set-ADSyncScheduler -SyncCycleEnabled $true` wieder.
+
+## <a name="enable-synchronization-of-usertype"></a>Synchronisierung des Benutzertyps aktivieren
+Azure AD Connect unterstützt ab Version 1.1.524.0 die Synchronisierung des **UserType**-Attributs für **User**-Objekte. Genauer gesagt wurden folgende Änderungen eingeführt:
+
+- Das Schema des Objekttyps **User** im Azure AD-Connector wird um das UserType-Attribut erweitert, das vom Typ „Zeichenfolge“ und einwertig ist.
+- Das Schema des Objekttyps **Person** im Metaverse wird um das UserType-Attribut erweitert, das vom Typ „Zeichenfolge“ und einwertig ist.
+
+Standardmäßig ist das UserType-Attribut nicht für die Synchronisierung aktiviert, da kein entsprechendes UserType-Attribut im lokalen Active Directory vorhanden ist. Sie müssen die Synchronisierung manuell aktivieren. Vor dem Aktivieren der Synchronisierung des UserType-Attributs sollten Sie sich mit dem folgenden Verhalten vertraut machen, das von Azure AD erzwungen wird:
+
+- Azure AD akzeptiert nur zwei Werte für das UserType-Attribut: **Member** und **Guest**.
+- Wenn das UserType-Attribut nicht für die Synchronisierung in Azure AD Connect aktiviert ist, ist das UserType-Attribut von Azure AD-Benutzern, die über die Verzeichnissynchronisierung erstellt wurden, auf **Member** festgelegt.
+- Azure AD erlaubt nicht das Ändern des UserType-Attributs vorhandener Azure AD-Benutzer durch Azure AD Connect. Es kann nur während der Erstellung des Azure AD-Benutzers festgelegt werden.
+
+Vor dem Aktivieren der Synchronisierung des UserType-Attributs müssen Sie entscheiden, wie das UserType-Attribut vom lokalen AD abgeleitet wird. Die beiden folgenden Ansätze werden häufig angewendet:
+
+- Legen Sie ein nicht verwendetes lokales AD-Attribut (z.B. extensionAttribute1) als Quellattribut fest. Das festgelegte lokale AD-Attribut sollte vom Typ **Zeichenfolge** und einwertig sein und den Wert **Member** oder **Guest** enthalten. Wenn Sie sich für diesen Ansatz entscheiden, müssen Sie vor dem Aktivieren der Synchronisierung des UserType-Attributs sicherstellen, dass das ausgewählte Attribut mit dem richtigen Wert für alle vorhandenen Benutzerobjekte im lokalen Active Directory, die mit Azure AD synchronisiert werden, aufgefüllt wird.
+- Alternativ können Sie den Wert für das UserType-Attribut auch aus anderen Eigenschaften ableiten. Angenommen, Sie möchten alle Benutzer als „Guest“ synchronisieren, wenn ihr lokales AD-Attribut UserPrincipalName mit dem Domänenteil „@partners.fabrikam123.org“ endet. Wie bereits erwähnt, erlaubt Azure AD Connect nicht das Ändern des UserType-Attributs vorhandener Azure AD-Benutzer durch Azure AD Connect. Aus diesem Grund müssen Sie sicherstellen, dass die verwendete Logik mit der bereits vorhandenen Konfiguration des UserType-Attributs für alle vorhandenen Azure AD-Benutzer in Ihrem Mandanten konsistent ist.
+
+Die Schritte zum Aktivieren der Synchronisierung des UserType-Attributs können wie folgt zusammengefasst werden:
+
+>[!NOTE]
+> Im restlichen Teil dieses Abschnitts werden diese Schritte erläutert. Sie werden im Kontext einer Azure AD-Bereitstellung mit einer Topologie mit einer einzelnen Gesamtstruktur und ohne benutzerdefinierte Synchronisierungsregeln beschrieben. Wenn Sie über eine Topologie mit mehreren Gesamtstrukturen verfügen, benutzerdefinierte Synchronisierungsregeln konfiguriert haben oder einen Stagingserver verwenden, müssen Sie die Schritte entsprechend anpassen.
+
+1.  Deaktivieren des **Synchronisierungsplaners** und Sicherstellen, dass derzeit keine Synchronisierung ausgeführt wird
+2.  Hinzufügen des **Quellattributs** zum lokalen AD-Connectorschema
+3.  Hinzufügen von **UserType** zum Azure AD-Connectorschema
+4.  Erstellen einer Synchronisierungsregel für eingehende Daten zur Übertragung des Attributwerts aus dem lokalen Active Directory
+5.  Erstellen einer Synchronisierungsregel für ausgehende Daten zur Übertragung des Attributwerts an Azure AD
+6.  Ausführen des **vollständigen Synchronisierungszyklus**
+7.  Aktivieren des **Synchronisierungsplaners**
+
+
+### <a name="step-1-disable-sync-scheduler-and-verify-there-is-no-synchronization-in-progress"></a>Schritt 1: Deaktivieren des Synchronisierungsplaners und Sicherstellen, dass derzeit keine Synchronisierung ausgeführt wird
+Stellen Sie sicher, dass keine Synchronisierung ausgeführt wird, während Sie Synchronisierungsregeln aktualisieren. So vermeiden Sie, dass unbeabsichtigte Änderungen nach Azure AD exportiert werden. So deaktivieren Sie den integrierten Synchronisierungsplaner:
+
+ 1. Starten Sie eine PowerShell-Sitzung auf dem Azure AD Connect-Server.
+ 2. Deaktivieren Sie die geplante Synchronisierung durch Ausführung des Cmdlets `Set-ADSyncScheduler -SyncCycleEnabled $false`.
+ 3. Starten Sie **Synchronization Service Manager**, indem Sie zu „START“ > „Synchronization Service“ navigieren.
+ 4. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *In Arbeit* angezeigt wird.
+
+![Synchronization Service Manager – Überprüfen, dass keine Vorgänge durchgeführt werden](./media/active-directory-aadconnectsync-change-the-configuration/preferredDataLocation-step1.png)
+
+### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Schritt 2: Hinzufügen des Quellattributs zum lokalen AD-Connectorschema
+Nicht alle AD-Attribute werden in den lokale AD-Connectorbereich importiert. So fügen Sie das Quellattribut zur Liste der importierten Attribute hinzu:
+
+ 1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
+ 2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Eigenschaften** aus.
+ 3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
+ 4. Stellen Sie sicher, dass das Quellattribut in der Attributliste aktiviert ist.
+ 5. Klicken Sie zum Speichern auf **OK**.
+![Hinzufügen des Quellattributs zum lokalen AD-Connectorschema](./media/active-directory-aadconnectsync-change-the-configuration/usertype1.png)
+
+### <a name="step-3-add-usertype-to-the-azure-ad-connector-schema"></a>Schritt 3: Hinzufügen von UserType zum Azure AD-Connectorschema
+Standardmäßig wird das UserType-Attribut nicht in den Azure AD Connect-Bereich importiert. So fügen Sie das UserType-Attribut der Liste der importierten Attribute hinzu
+
+ 1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
+ 2. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Eigenschaften** aus.
+ 3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
+ 4. Stellen Sie sicher, dass das Attribut „PreferredDataLocation“ in der Attributliste aktiviert ist.
+ 5. Klicken Sie zum Speichern auf **OK**.
+
+![Hinzufügen des Quellattributs zum Azure AD-Connectorschema](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
+
+### <a name="step-4-create-an-inbound-synchronization-rule-to-flow-the-attribute-value-from-on-premises-active-directory"></a>Schritt 4: Erstellen einer Synchronisierungsregel für eingehende Daten zur Übertragung des Attributwerts aus dem lokalen Active Directory
+Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung des Attributwerts aus dem Quellattribut im lokalen Active Directory auf die Metaverse:
+
+1. Starten Sie den **Synchronisierungsregel-Editor**, indem Sie zu „START“ > „Synchronisierungsregel-Editor“ navigieren.
+2. Legen Sie den Suchfilter **Richtung** auf **Eingehend** fest.
+3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**, um eine neue Regel für eingehende Daten zu erstellen.
+4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
+
+    | Attribut | Wert | Details |
+    | --- | --- | --- |
+    | NAME | *Geben Sie einen Namen ein.* | Beispiel: *Aus AD – Benutzer UserType* |
+    | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* |  |
+    | Verbundenes System | *Wählen Sie den lokalen AD-Connector aus.* |  |
+    | Objekttyp des verbundenen Systems | **Benutzer** |  |
+    | Metaverse-Objekttyp | **Person** |  |
+    | Verknüpfungstyp | **Join** |  |
+    | Rangfolge | *Wählen Sie eine Zahl zwischen 1 und 99 aus.* | Die Zahlen zwischen 1 und 99 sind für benutzerdefinierte Synchronisierungsregeln reserviert. Wählen Sie keinen Wert aus, der von einer anderen Synchronisierungsregel verwendet wird. |
+
+5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe mit folgender Klausel hinzu**:
+
+    | Attribut | Operator | Wert |
+    | --- | --- | --- |
+    | adminDescription | NOTSTARTWITH | Benutzer\_ |
+
+    Der Bereichsfilter legt fest, auf welche lokalen AD-Objekte diese Synchronisierungsregel für eingehende Daten angewendet wird. In diesem Beispiel verwenden wir denselben Bereichsfilter wie die OOB-Synchronisierungsregel „In from AD – User Common“, die verhindert, dass die Synchronisierungsregel auf Benutzerobjekte angewendet wird, die über die Funktion zum Rückschreiben von Azure AD-Benutzern erstellt wurden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
+
+6. Navigieren Sie zur Registerkarte **Transformation**, und implementieren Sie die gewünschte Transformationsregel. Wenn Sie beispielsweise ein nicht verwendetes lokales AD-Attribut (z.B. extensionAttribute1) als Quellattribut für UserType festgelegt haben, können Sie einen direkten Attributfluss implementieren:
+
+    | Flowtyp | Zielattribut | Quelle | Einmal anwenden | Zusammenführungstyp |
+    | --- | --- | --- | --- | --- |
+    | Direkt | UserType | extensionAttribute1 | Deaktiviert | Aktualisieren |
+
+    Ein weiteres Beispiel: Sie möchten den Wert für das UserType-Attribut aus anderen Eigenschaften ableiten. Angenommen, Sie möchten alle Benutzer als „Guest“ synchronisieren, wenn ihr lokales AD-Attribut UserPrincipalName mit dem Domänenteil „@partners.fabrikam123.org“ endet. Sie können einen Ausdruck implementieren:
+
+    | Flowtyp | Zielattribut | Quelle | Einmal anwenden | Zusammenführungstyp |
+    | --- | --- | --- | --- | --- |
+    | Direkt | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | Deaktiviert | Aktualisieren |
+
+7. Klicken Sie auf **Hinzufügen**, um die Regel für eingehende Daten zu erstellen.
+
+![Erstellen einer Synchronisierungsregel für eingehende Daten](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
+
+### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>Schritt 5: Erstellen einer Synchronisierungsregel für ausgehende Daten zur Übertragung des Attributwerts an Azure AD
+Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung des Attributwerts von der Metaverse auf das Attribut „PreferredDataLocation“ in Azure AD:
+
+1. Navigieren Sie zum **Synchronisierungsregel-Editor**.
+2. Legen Sie den Suchfilter **Richtung** auf **Ausgehend** fest.
+3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**.
+4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
+
+    | Attribut | Wert | Details |
+    | ----- | ------ | --- |
+    | NAME | *Geben Sie einen Namen ein.* | Beispiel: „Nach AD – Benutzer UserType“ |
+    | BESCHREIBUNG | *Geben Sie eine Beschreibung ein.* ||
+    | Verbundenes System | *Wählen Sie den AAD-Connector aus.* ||
+    | Objekttyp des verbundenen Systems | Benutzer ||
+    | Metaverse-Objekttyp | **Person** ||
+    | Verknüpfungstyp | **Join** ||
+    | Rangfolge | *Wählen Sie eine Zahl zwischen 1 und 99 aus.* | Die Zahlen zwischen 1 und 99 sind für benutzerdefinierte Synchronisierungsregeln reserviert. Wählen Sie keinen Wert aus, der von einer anderen Synchronisierungsregel verwendet wird. |
+
+5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe mit zwei Klauseln hinzu**:
+
+    | Attribut | Operator | Wert |
+    | --- | --- | --- |
+    | sourceObjectType | EQUAL | Benutzer |
+    | cloudMastered | NOTEQUAL | True |
+
+    Der Bereichsfilter legt fest, auf welche Azure AD-Objekte diese Synchronisierungsregel für ausgehende Daten angewendet wird. In diesem Beispiel verwenden wir den Bereichsfilter aus der OOB-Synchronisierungsregel „Out to AD – User Identity“. Er verhindert, dass die Synchronisierungsregel auf Benutzerobjekte angewendet wird, die nicht über das lokale Active Directory synchronisiert wurden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
+
+6. Navigieren Sie zur Registerkarte **Transformation**, und implementieren Sie folgende Transformationsregel:
+
+    | Flowtyp | Zielattribut | Quelle | Einmal anwenden | Zusammenführungstyp |
+    | --- | --- | --- | --- | --- |
+    | Direkt | UserType | UserType | Deaktiviert | Aktualisieren |
+
+7. Klicken Sie auf **Hinzufügen**, um die Regel für ausgehende Daten zu erstellen.
+
+![Erstellen einer Synchronisierungsregel für ausgehende Daten](./media/active-directory-aadconnectsync-change-the-configuration/usertype4.png)
+
+### <a name="step-6-run-full-synchronization-cycle"></a>Schritt 6: Ausführen des vollständigen Synchronisierungszyklus
+Der vollständige Synchronisierungszyklus ist im Allgemeinen erforderlich, da wir sowohl zum AD- als auch zum Azure AD-Connectorschema neue Attribute hinzugefügt und benutzerdefinierte Synchronisierungsregeln eingeführt haben. Es wird empfohlen, die Änderungen vor dem Export nach Azure AD zu überprüfen. Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während Sie die Schritte des vollständigen Synchronisierungszyklus manuell ausführen.
+
+1. Führen Sie im **lokalen AD-Connector** den Schritt **Vollständiger Import** aus:
+
+   1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Vorgänge**.
+   2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Ausführen...** aus.
+   3. Wählen Sie im Popupdialogfeld **Vollständiger Import** aus, und klicken Sie auf **OK**.
+   4. Warten Sie, bis der Vorgang abgeschlossen ist.
+
+    > [!NOTE]
+    > Sie können den Schritt „Vollständiger Import“ im lokalen AD-Connector überspringen, wenn das Quellattribut bereits in der Liste der importierten Attribute enthalten ist. Mit anderen Worten: Sie mussten bei [Schritt 2 zum Hinzufügen des Quellattributs zum lokalen AD-Connectorschemas](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema) keine Änderungen vornehmen.
+
+2. Führen Sie im **Azure AD-Connector** den Schritt **Vollständiger Import** aus:
+
+   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Ausführen...** aus.
+   2. Wählen Sie im Popupdialogfeld **Vollständiger Import** aus, und klicken Sie auf **OK**.
+   3. Warten Sie, bis der Vorgang abgeschlossen ist.
+
+3. Überprüfen Sie die Änderungen an den Synchronisierungsregeln zu einem vorhandenen Benutzerobjekt:
+
+    Das Quellattribut aus dem lokalen Active Directory und UserType aus Azure AD wurden in den jeweiligen Connectorbereich importiert. Bevor Sie mit dem Schritt „Vollständige Synchronisierung“ fortfahren, wird empfohlen, eine **Vorschau** zu einem vorhandenen Benutzerobjekt im lokalen AD-Connectorbereich auszuführen. In dem von Ihnen ausgewählten Objekt muss das Quellattribut aufgefüllt sein. Eine erfolgreiche **Vorschau**, bei der UserType in der Metaverse aufgefüllt ist, ist ein guter Indikator dafür, dass Sie die Synchronisierungsregeln korrekt konfiguriert haben. Informationen zum Durchführen einer **Vorschau** finden Sie im Abschnitt [Überprüfen der Änderungen](#verify-the-change).
 
 4. Führen Sie im **lokalen AD-Connector** den Schritt **Vollständige Synchronisierung** aus:
 
    1. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Ausführen...** aus.
-  
    2. Wählen Sie im Popupdialogfeld **Vollständige Synchronisierung** aus, und klicken Sie auf **OK**.
-   
    3. Warten Sie, bis der Vorgang abgeschlossen ist.
 
 5. Stellen Sie sicher, dass **Ausstehende Exporte** in Azure AD festgelegt ist, indem Sie wie folgt vorgehen:
@@ -382,19 +569,14 @@ Das Quellattribut aus dem lokalen Active Directory und „PreferredDataLocation�
    2. Gehen Sie im Popupdialogfeld „Connectorbereich durchsuchen“ wie folgt vor:
 
       1. Legen Sie den **Bereich** auf **Ausstehender Export** fest.
-      
       2. Aktivieren Sie alle drei Kontrollkästchen: **Hinzufügen, Ändern und Löschen**.
-      
       3. Klicken Sie auf die Schaltfläche **Durchsuchen**, um die Liste von Objekten mit Änderungen, die exportiert werden sollen, abzurufen. Um die Änderungen für ein bestimmtes Objekt zu untersuchen, doppelklicken Sie auf das Objekt.
-      
       4. Stellen Sie sicher, dass die Änderungen Ihren Erwartungen entsprechen.
 
 6. Führen Sie im **Azure AD-Connector** den Schritt **Exportieren** aus.
-      
+
    1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Ausführen...** aus.
-   
    2. Wählen Sie im Popupdialogfeld „Connector ausführen“ den Schritt **Exportieren** aus, und klicken Sie auf **OK**.
-   
    3. Warten Sie, bis der Export nach Azure AD abgeschlossen ist.
 
 > [!NOTE]
@@ -404,9 +586,7 @@ Das Quellattribut aus dem lokalen Active Directory und „PreferredDataLocation�
 So aktivieren Sie erneut den integrierten Synchronisierungsplaner:
 
 1. Starten Sie eine PowerShell-Sitzung.
-
 2. Aktivieren Sie die geplante Synchronisierung durch Ausführung des Cmdlets `Set-ADSyncScheduler -SyncCycleEnabled $true` wieder.
-
 
 
 ## <a name="next-steps"></a>Nächste Schritte
