@@ -74,7 +74,7 @@
     - name: Cost Management
       tocHref: /azure/cost-management/
       topicHref: /azure/cost-management/
-    - name: Functions
+    - name: Funktionen
       tocHref: /azure/azure-functions/
       topicHref: /azure/azure-functions/
     - name: Azure Government
@@ -101,7 +101,7 @@
     - name: Unterstützungsmöglichkeiten
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
-    - name: Sicherung
+    - name: 'Backup '
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch
@@ -218,7 +218,7 @@
         - name: Hadoop
           tocHref: /azure/hdinsight/hadoop
           topicHref: /azure/hdinsight/hadoop/apache-hadoop-introduction
-        - name: HBase
+        - name: hbase
           tocHref: /azure/hdinsight/hbase
           topicHref: /azure/hdinsight/hbase/apache-hbase-overview
         - name: Interactive Query
@@ -239,6 +239,9 @@
         - name: Storm
           tocHref: /azure/hdinsight/storm
           topicHref: /azure/hdinsight/storm/apache-storm-overview
+    - name: IoT Edge
+      tocHref: /azure/iot-edge/
+      topicHref: /azure/iot-edge/
     - name: IoT Hub
       tocHref: /azure/iot-hub/
       topicHref: /azure/iot-hub/
@@ -254,7 +257,7 @@
     - name: Log Analytics
       tocHref: /azure/log-analytics/
       topicHref: /azure/log-analytics/
-    - name: Logik-Apps
+    - name: Logic Apps
       tocHref: /azure/logic-apps/
       topicHref: /azure/logic-apps/
     - name: Machine Learning
@@ -362,7 +365,7 @@
     - name: Scheduler
       tocHref: /azure/scheduler/
       topicHref: /azure/scheduler/
-    - name: Suche
+    - name: 'Suchen,'
       tocHref: /azure/search/
       topicHref: /azure/search/
     - name: Sicherheit
@@ -448,7 +451,7 @@
             - name: Klassische Windows-Bereitstellungen
               tocHref: /azure/virtual-machines/windows/classic/
               topicHref: /azure/virtual-machines/windows/classic/
-    - name: Virtual Network
+    - name: Virtuelles Netzwerk
       tocHref: /azure/virtual-network/
       topicHref: /azure/virtual-network/
     - name: VPN Gateway

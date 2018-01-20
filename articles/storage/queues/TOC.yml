@@ -4,7 +4,7 @@
       href: storage-queues-introduction.md
 - name: Erste Schritte
   items:
-    - name: Erstellen Sie ein Speicherkonto.
+    - name: Speicherkonto erstellen
       href: ../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Entwickeln
       items:
@@ -100,7 +100,7 @@
               href: ../common/storage-enable-and-view-metrics.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
     - name: Beispiele
       href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=queue'
-- name: Referenz
+- name: Verweis
   items:
     - name: PowerShell
       href: /powershell/module/azure.storage
@@ -142,7 +142,7 @@
           href: /rest/api/storagerp
         - name: Import/Export
           href: /rest/api/storageimportexport
-- name: Ressourcen
+- name: angeben
   items:
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=storage'
