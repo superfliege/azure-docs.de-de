@@ -52,7 +52,7 @@ public void SignOut()
 Erstellen Sie in Visual Studio eine neue Ansicht, um die Schaltfläche „Anmelden“ hinzufügen und Benutzerinformationen nach der Authentifizierung anzuzeigen:
 
 1.  Klicken Sie mit der rechten Maustaste auf den Ordner `Views\Home`, und wählen Sie `Add View` aus.
-2.  Geben Sie dem Projekt den Namen `Index`.
+2.  Vergeben Sie den Namen `Index`.
 3.  Fügen Sie der Datei den folgenden HTML-Code hinzu, der die Schaltfläche „Anmelden“ enthält:
 
 ```html

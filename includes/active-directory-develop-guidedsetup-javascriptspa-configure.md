@@ -18,7 +18,7 @@ Nun müssen Sie Ihre Anwendung im *Microsoft-Anwendungsregistrierungsportal* reg
 3. Stellen Sie sicher, dass die Option *Geführtes Setup* deaktiviert ist.
 4.  Klicken Sie auf `Add Platform`, und wählen Sie dann `Web` aus.
 5. Fügen Sie die `Redirect URL` hinzu, die der URL der Anwendung Ihrem Webserver gemäß entspricht. Informationen über Anweisungen zum Festlegen/Abrufen der Umleitungs-URL in Visual Studio und Python finden Sie in den folgenden Abschnitten.
-6. Klicken Sie unten auf der Seite auf *Speichern*
+6. Klicken Sie unten auf der Seite auf *Speichern*.
 
 > #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>Visual Studio-Anweisungen zum Abrufen der Umleitungs-URL
 > Zum Abrufen Ihrer Umleitungs-URL befolgen Sie die folgenden Anweisungen:

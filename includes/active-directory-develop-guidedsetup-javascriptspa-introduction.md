@@ -18,7 +18,7 @@ Die über diesen Leitfaden erstellte Beispiel-App ermöglicht eine JavaScript-Ei
 
 In diesem Leitfaden werden die folgenden Bibliotheken verwendet:
 
-|Bibliothek|Beschreibung|
+|Bibliothek|BESCHREIBUNG|
 |---|---|
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library für JavaScript-Vorschau|
 
