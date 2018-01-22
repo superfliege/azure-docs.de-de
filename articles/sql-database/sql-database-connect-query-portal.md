@@ -15,17 +15,17 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 08/02/2017
+ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 7f85d569fee4e13c28a09347159f16fc4b4ae626
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure-Portal: Verwenden des SQL-Abfrage-Editors zum Verbinden und Abfragen von Daten
 
-Der SQL-Abfrage-Editor ist ein Abfragetool im Browser und eine effiziente und einfache Möglichkeit, SQL-Abfragen in Ihrer Azure SQL-Datenbank oder in Azure SQL Data Warehouse auszuführen, ohne das Azure-Portal zu verlassen. In diesem Schnellstart wird veranschaulicht, wie Sie den Abfrage-Editor zum Herstellen einer Verbindung mit einer SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten in der Datenbank abzufragen, einzufügen, zu aktualisieren und zu löschen. 
+Der SQL-Abfrage-Editor ist ein Abfragetool im Browser und eine effiziente und einfache Möglichkeit, SQL-Abfragen in Ihrer Azure SQL-Datenbank oder in Azure SQL Data Warehouse auszuführen, ohne das Azure-Portal zu verlassen. In diesem Schnellstart wird veranschaulicht, wie Sie den Abfrage-Editor zum Herstellen einer Verbindung mit einer SQL-Datenbank verwenden und anschließend Transact-SQL-Anweisungen nutzen, um Daten in der Datenbank abzufragen, einzufügen, zu aktualisieren und zu löschen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -44,17 +44,15 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
 
 1. Klicken Sie im Menü auf der linken Seite auf **SQL-Datenbanken** und dann auf die Datenbank, die Sie abfragen möchten.
 
-2. Klicken Sie auf der Seite „SQL-Datenbank“ für Ihre Datenbank auf der Symbolleiste auf **Tools**. Die Seite „Tools“ wird geöffnet.
+2. Suchen Sie auf der SQL-Datenbankseite für Ihre Datenbank im linken Menü nach **Daten-Explorer (Vorschau)**, und klicken Sie darauf.
 
-    ![Menü „Tools“](./media/sql-database-connect-query-portal/tools-menu.png)
+    ![Suchen des Abfrage-Editors](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 
-3. Klicken Sie auf **Abfrage-Editor (Vorschau)**, auf das Kontrollkästchen **Preview-Bedingungen** und dann auf **OK**. Die Seite mit dem Abfrage-Editor wird geöffnet.
+3. Klicken Sie auf **Anmelden**, und wählen Sie dann die Option **SQL Server-Authentifizierung**, wenn die Aufforderung angezeigt wird. Geben Sie anschließend den Benutzernamen und das Kennwort des Serveradministrators an, die Sie beim Erstellen der Datenbank angegeben haben.
 
-4. Klicken Sie auf **Anmelden**, und wählen Sie dann die Option **SQL Server-Authentifizierung**, wenn die Aufforderung angezeigt wird. Geben Sie anschließend den Benutzernamen und das Kennwort des Serveradministrators an, die Sie beim Erstellen der Datenbank angegeben haben.
+    ![Anmeldung](./media/sql-database-connect-query-portal/login-menu.png)
 
-    ![Anmeldung](./media/sql-database-connect-query-portal/login-menu.png) 
-
-5. Klicken Sie auf **OK**, um sich anzumelden.
+4. Klicken Sie auf **OK**, um sich anzumelden.
 
 
 ## <a name="connect-using-azure-ad"></a>Herstellen einer Verbindung mithilfe von Azure AD
@@ -70,11 +68,11 @@ Wenn Sie einen Active Directory-Administrator konfigurieren, können Sie eine ei
 
 3. Klicken Sie auf dem Blatt „Active Directory-Administrator“ auf den Befehl **Administrator festlegen**, und wählen Sie den Benutzer oder die Gruppe aus, der bzw. die als Active Directory-Administrator fungieren soll.
 
-    ![Auswählen von Active Directory](./media/sql-database-connect-query-portal/select-active-directory.png) 
+    ![Auswählen von Active Directory](./media/sql-database-connect-query-portal/select-active-directory.png)
 
 4. Klicken Sie oben auf dem Blatt „Active Directory-Administrator“ auf den Befehl **Speichern**, um Ihren Active Directory-Administrator festzulegen.
 
-Navigieren Sie zu der SQL-Datenbank, die Sie abfragen möchten, klicken Sie auf der Symbolleiste auf **Tools**, und wählen Sie die Option **Abfrage-Editor (Vorschau)**. Die Seite mit dem Abfrage-Editor wird geöffnet, und es wird automatisch eine Verbindung mit der Datenbank hergestellt.
+Navigieren Sie zu der SQL-Datenbank, die Sie abfragen möchten, und klicken Sie im linken Menü auf **Daten-Explorer (Vorschau)**. Die Seite mit dem Daten-Explorer wird geöffnet, und es wird automatisch eine Verbindung mit der Datenbank hergestellt.
 
 
 ## <a name="run-query-using-query-editor"></a>Ausführen einer Abfrage mit dem Abfrage-Editor
@@ -154,13 +152,13 @@ Beim Verwenden der Vorschauversion des Abfrage-Editors sollten Sie Folgendes wis
 
 1. Stellen Sie sicher, dass Sie die Option „Zugriff auf Azure-Dienste erlauben“ in den Azure SQL Server-Firewalleinstellungen auf „EIN“ festgelegt haben. Mit dieser Option erhält der SQL-Abfrage-Editor Zugriff auf Ihre SQL-Datenbanken und Data Warehouses.
 
-2. Die Anmeldung per Azure Active Directory-Administrator funktioniert nicht für Konten, für die die zweistufige Authentifizierung aktiviert ist. 
+2. Die Anmeldung per Azure Active Directory-Administrator funktioniert nicht für Konten, für die die zweistufige Authentifizierung aktiviert ist.
 
 3. E-Mail-Konten (z.B. outlook.com, hotmail.com, live.com, gmail.com, yahoo.com) werden noch nicht als Active Directory-Administratoren unterstützt. Stellen Sie sicher, dass Sie einen Benutzer auswählen, der entweder nativ im Azure Active Directory erstellt oder in einen Azure Active Directory-Verbund eingefügt wurde.
 
 4. Abfragen von räumlichen Daten werden im Abfrage-Editor noch nicht unterstützt. Wenn räumliche Spalten abgefragt werden, führt dies zum Fehler „System.IO.FileNotFoundException“.
 
-5. Für Datenbanktabellen und -sichten ist keine IntelliSense-Unterstützung vorhanden. Der Editor unterstützt aber das automatische Vervollständigen von Namen, die bereits eingegeben wurden. 
+5. Für Datenbanktabellen und -sichten ist keine IntelliSense-Unterstützung vorhanden. Der Editor unterstützt aber das automatische Vervollständigen von Namen, die bereits eingegeben wurden.
 
 6. Durch das Drücken der Taste F5 wird die Seite mit dem Abfrage-Editor aktualisiert, und die derzeit aktive Abfrage geht verloren. Verwenden Sie in der Symbolleiste die Schaltfläche „Ausführen“, um Abfragen auszuführen.
 

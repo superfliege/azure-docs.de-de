@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: e90879c70e47d2bc5034b4fbf2b0ed7172fe131e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b28300c4ed0a0c6f35bf49808b8ed12d4e180610
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graphdatenbank mit Java und dem Azure-Portal
 
@@ -129,13 +129,19 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
     `hosts: [test-graph.graphs.azure.com]`
 
-3. Verwenden Sie die Schaltfläche „Kopieren“ im Azure-Portal, um den Primärschlüssel zu kopieren und ihn über `$masterKey$` in `password: $masterKey$` einzufügen.
+3. Ändern Sie `graphs` in `gremlin.cosmosdb` im Wert `endpoint`. (Falls Sie Ihr Graphdatenbankkonto vor dem 20. Dezember 2017 erstellt haben, lassen Sie den Endpunktwert unverändert, und fahren Sie mit dem nächsten Schritt fort.)
+
+    Der Endpunktwert sollte nun wie folgt aussehen:
+
+    `"endpoint": "https://testgraphacct.gremlin.cosmosdb.azure.com:443/"`
+
+4. Verwenden Sie die Schaltfläche „Kopieren“ im Azure-Portal, um den Primärschlüssel zu kopieren und ihn über `$masterKey$` in `password: $masterKey$` einzufügen.
 
     Die vierte Zeile von „remote.xaml“ sollte etwa wie folgt aussehen: 
 
     `password: 2Ggkr662ifxz2Mg==`
 
-4. Ändern Sie die dritte Zeile von „remote.yaml“ in
+5. Ändern Sie die dritte Zeile von „remote.yaml“ in
 
     `username: /dbs/$database$/colls/$collection$`
 
@@ -143,7 +149,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
 
     `username: /dbs/sample-database/colls/sample-graph`
 
-5. Speichern Sie die Datei „remote.yaml“.
+6. Speichern Sie die Datei „remote.yaml“.
 
 ## <a name="run-the-console-app"></a>Ausführen der Konsolenanwendung
 

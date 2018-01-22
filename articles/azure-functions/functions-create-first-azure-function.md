@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 16680aaf2f49ae8ece440d0e44b49d6cd1f8fad7
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 754ca6e5297c3be9166efa7a40a5ba3714911c99
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Erstellen Ihrer ersten Funktion im Azure-Portal
 
@@ -52,21 +52,25 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
    
     ![Schnellstart von Functions im Azure-Portal](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 
-Eine Funktion wird in Ihrer gewählten Sprache anhand der Vorlage für eine Funktion mit Auslösung per HTTP erstellt. Sie können die neue Funktion ausführen, indem Sie eine HTTP-Anforderung senden.
+Eine Funktion wird in Ihrer gewählten Sprache anhand der Vorlage für eine Funktion mit Auslösung per HTTP erstellt. In diesem Thema wird zwar eine C#-Skriptfunktion im Portal gezeigt, Sie können jedoch eine Funktion in einer beliebigen [unterstützten Sprache](supported-languages.md) erstellen. 
+
+Nun können Sie die neue Funktion ausführen, indem Sie eine HTTP-Anforderung senden.
 
 ## <a name="test-the-function"></a>Testen der Funktion
 
-1. Klicken Sie in der neuen Funktion auf **</> Get function URL**, wählen Sie **default (Function key)** aus, und klicken Sie dann auf **Kopieren**. 
+1. Klicken Sie in der neuen Funktion rechts oben auf **</> Funktions-URL abrufen**, wählen Sie **default (Function key)** (Standard (Funktionsschlüssel)) aus, und klicken Sie dann auf **Kopieren**. 
 
     ![Kopieren der URL der Funktion aus dem Azure-Portal](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie die Abfragezeichenfolge `&name=<yourname>` an die URL an, und betätigen Sie die Taste `Enter` auf Ihrer Tastatur, um die Anforderung auszuführen. Im Folgenden finden Sie ein Beispiel der Antwort, die im Edge-Browser von der Funktion zurückgegeben wird:
+2. Fügen Sie die URL der Funktion in die Adressleiste Ihres Browsers ein. Fügen Sie den Wert der Abfragezeichenfolge `&name=<yourname>` am Ende der URL hinzu, und drücken Sie die Taste `Enter` auf Ihrer Tastatur, um die Anforderung auszuführen. Daraufhin sollte die von der Funktion zurückgegebene Antwort im Browser angezeigt werden.  
+
+    Das folgende Beispiel zeigt die Antwort im Edge-Browser. Bei anderen Browsern wird möglicherweise auch XML-Code angezeigt.
 
     ![Funktionsantwort im Browser.](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
     Die Anfrage-URL enthält einen Schlüssel, der standardmäßig über HTTP auf Ihre Funktion zugreifen muss.   
 
-3. Wenn Ihre Funktion ausgeführt wird, werden Nachverfolgungsinformationen in die Protokolle geschrieben. Kehren Sie zu Ihrer Funktion im Portal zurück, und klicken Sie auf den Pfeil nach oben am unteren Bildschirmrand, um **Protokolle** zu erweitern. Dann wird Ihnen die Nachverfolgungsausgabe der vorherigen Ausführung angezeigt. 
+3. Wenn Ihre Funktion ausgeführt wird, werden Nachverfolgungsinformationen in die Protokolle geschrieben. Kehren Sie zu Ihrer Funktion im Portal zurück, und klicken Sie am unteren Bildschirmrand auf den Pfeil, um **Protokolle** zu erweitern und die Nachverfolgungsausgabe der vorherigen Ausführung anzuzeigen. 
 
    ![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-first-azure-function/function-view-logs.png)
 

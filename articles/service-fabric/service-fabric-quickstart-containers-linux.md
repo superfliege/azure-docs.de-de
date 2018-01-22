@@ -2,24 +2,24 @@
 title: Erstellen einer Azure Service Fabric-Containeranwendung unter Linux | Microsoft-Dokumentation
 description: "Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Service Fabric.  Erstellen Sie ein Docker-Image mit Ihrer Anwendung, übertragen Sie es per Push an eine Containerregistrierung, erstellen Sie eine Service Fabric-Containeranwendung, und stellen Sie diese bereit."
 services: service-fabric
-documentationcenter: .net
-author: rwike77
+documentationcenter: linux
+author: suhuruli
 manager: timlt
 editor: 
 ms.assetid: 
 ms.service: service-fabric
-ms.devlang: dotNet
+ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
-ms.author: ryanwi
+ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: a3fa592e08ab05dfc56cf0c0c13eb6a64a7e2052
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 23cc9ce855eeba9e9a365e42beeee01b09f0fee3
+ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/11/2018
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Bereitstellen einer Azure Service Fabric-Containeranwendung unter Linux in Azure
 Azure Service Fabric ist eine Plattform für verteilte Systeme zum Bereitstellen und Verwalten von skalierbaren und zuverlässigen Microservices und Containern. 
@@ -66,30 +66,41 @@ Informationen zum Erstellen Ihres eigenen Clusters finden Sie unter [Bereitstell
 > Der Web-Front-End-Dienst ist für das Lauschen auf eingehenden Datenverkehr über Port 80 konfiguriert. Stellen Sie sicher, dass der Port in Ihrem Cluster geöffnet ist. Wenn Sie einen Partycluster verwenden, ist dieser Port geöffnet.
 >
 
-### <a name="deploy-the-application-manifests"></a>Bereitstellen der Anwendungsmanifeste 
+### <a name="install-service-fabric-command-line-interface-and-connect-to-your-cluster"></a>Installieren der Service Fabric-Befehlszeilenschnittstelle und Herstellen einer Verbindung mit Ihrem Cluster
 Installieren der [Service Fabric-Befehlszeilenschnittstelle (sfctl)](service-fabric-cli.md) in Ihrer CLI-Umgebung
 
 ```azurecli-interactive
 pip3 install --user sfctl 
 export PATH=$PATH:~/.local/bin
 ```
+
 Stellen Sie eine Verbindung mit dem Service Fabric-Cluster in Azure her, indem Sie die Azure CLI verwenden. Der Endpunkt ist der Verwaltungsendpunkt Ihres Clusters, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080`.
 
 ```azurecli-interactive
 sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:19080
 ```
 
+### <a name="deploy-the-service-fabric-application"></a>Bereitstellen der Service Fabric-Anwendung 
+Service Fabric-Containeranwendungen können mithilfe des beschriebenen Service Fabric-Anwendungspakets oder mithilfe von Docker Compose bereitgestellt werden. 
+
+#### <a name="deploy-using-service-fabric-application-package"></a>Bereitstellen mithilfe des Service Fabric-Anwendungspakets
 Verwenden Sie das bereitgestellte Installationsskript, um die Definition der Abstimmungsanwendung in den Cluster zu kopieren, den Anwendungstyp zu registrieren und eine Instanz der Anwendung zu erstellen.
 
 ```azurecli-interactive
 ./install.sh
 ```
 
+#### <a name="deploy-the-application-using-docker-compose"></a>Bereitstellen der Anwendung mithilfe von Docker Compose
+Verwenden Sie Docker Compose mit dem folgenden Befehl, um die Anwendung in dem Service Fabric-Cluster bereitzustellen und zu installieren.
+```azurecli-interactive
+sfctl compose create --deployment-name TestApp --file-path docker-compose.yml
+```
+
 Öffnen Sie einen Browser, und navigieren Sie zum Service Fabric Explorer unter http://\<URL meines Azure Service Fabric-Clusters>:19080/Explorer, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`. Erweitern Sie den Knoten „Anwendungen“, um zu prüfen, ob nun ein Eintrag für den Abstimmungsanwendungstyp und die von Ihnen erstellte Instanz vorhanden ist.
 
 ![Service Fabric Explorer][sfx]
 
-Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser mit der URL Ihres Clusters, z.B. `http://linh1x87d1d.westus.cloudapp.azure.com:80`. Die Abstimmungsanwendung sollte im Browser angezeigt werden.
+Stellen Sie eine Verbindung mit dem ausgeführten Container her.  Öffnen Sie einen Webbrowser mit der URL Ihres Clusters (Beispiel: `http://linh1x87d1d.westus.cloudapp.azure.com:80`). Die Abstimmungsanwendung sollte im Browser angezeigt werden.
 
 ![quickstartpic][quickstartpic]
 

@@ -13,13 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 75be5be0bef4dd07c8560076f47055105a70ee05
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f80e682a89dcf6b5d3d5d6f2f15c4eeab2046e7
+ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: Erstellen einer Graph-Datenbank mit PHP und dem Azure-Portal
 
@@ -137,7 +137,9 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
     ]);
     ```
 
-3. Ändern Sie den `username`-Parameter im Verbindungsobjekt mit Ihrem Graph- und Datenbanknamen ab. Wenn Sie die empfohlenen Werte `sample-database` und `sample-graph` verwendet haben, sollte der Parameter wie folgt aussehen:
+3. Falls Ihr Graphdatenbankkonto am oder nach dem 20. Dezember 2017 erstellt wurde, ändern Sie `graphs.azure.com` im Hostnamen in `gremlin.cosmosdb.azure.com`.
+
+4. Ändern Sie den `username`-Parameter im Verbindungsobjekt mit Ihrem Graph- und Datenbanknamen ab. Wenn Sie die empfohlenen Werte `sample-database` und `sample-graph` verwendet haben, sollte der Parameter wie folgt aussehen:
 
     `'username' => '/dbs/sample-database/colls/sample-graph'`
 
@@ -155,7 +157,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
     ]);
     ```
 
-4. Verwenden Sie die Schaltfläche zum Kopieren im Azure-Portal, um den PRIMÄRSCHLÜSSEL zu kopieren und ihn über `your_primary_key` in den Kennwortparameter einzufügen.
+5. Verwenden Sie die Schaltfläche zum Kopieren im Azure-Portal, um den PRIMÄRSCHLÜSSEL zu kopieren und ihn über `your_primary_key` in den Kennwortparameter einzufügen.
 
     Die Verbindungsobjektinitialisierung sollte jetzt so aussehen:
 
@@ -171,7 +173,7 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Verbindungsinformationen abzur
     ]);
     ```
 
-5. Speichern Sie die Datei `connect.php`.
+6. Speichern Sie die Datei `connect.php`.
 
 ## <a name="run-the-console-app"></a>Ausführen der Konsolenanwendung
 

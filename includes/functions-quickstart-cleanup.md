@@ -1,5 +1,19 @@
-Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie planen, mit den nachfolgenden Schnellstarts oder Tutorials fortzufahren, sollten Sie die in diesem Schnellstart erstellten Ressourcen nicht bereinigen. 
+Andere Schnellstarts dieser Sammlung bauen auf diesem Schnellstart auf. Wenn Sie mit nachfolgenden Schnellstartanleitungen, Tutorials oder mit einem der Dienste, die Sie im Rahmen dieser Schnellstartanleitung erstellt haben, weiterarbeiten möchten, überspringen Sie die Bereinigung der Ressourcen.
 
-Wenn Sie den Vorgang nicht fortsetzen möchten, klicken Sie auf die **Ressourcengruppe** für die Funktionen-App im Portal und dann auf **Löschen**. 
+*Ressourcen* bezieht sich im Zusammenhang mit Azure auf Funktions-Apps, Funktionen, Speicherkonten und Ähnliches. Sie werden in *Ressourcengruppen* zusammengefasst, und sämtliche Inhalte einer Gruppe können durch Löschen der Gruppe gelöscht werden. 
 
-![Wählen Sie die Ressourcengruppe aus, die aus der Funktionen-App gelöscht werden soll.](./media/functions-quickstart-cleanup/functions-app-delete-resource-group.png)
+Im Rahmen dieser Schnellstartanleitungen haben Sie Ressourcen erstellt. Für diese Ressourcen fallen je nach [Kontostatus](https://azure.microsoft.com/account/) und [Dienstpreisen](https://azure.microsoft.com/pricing/) unter Umständen Kosten an. Nicht mehr benötigte Ressourcen können wie folgt gelöscht werden:
+
+1. Navigieren Sie im Azure-Portal zur Seite **Ressourcengruppe**. 
+
+   Von der Seite „Funktions-App“ aus gelangen Sie zu dieser Seite, indem Sie auf die Registerkarte **Übersicht** und anschließend unter **Ressourcengruppe** auf den Link klicken.
+
+   ![Wählen Sie auf der Seite „Funktions-App“ die zu löschende Ressourcengruppe aus.](./media/functions-quickstart-cleanup/functions-app-delete-resource-group.png)
+
+   Vom Dashboard aus gelangen Sie zu dieser Seite, indem Sie auf **Ressourcengruppen** klicken und anschließend die Ressourcengruppe auswählen, die Sie für diese Schnellstartanleitung verwendet haben.
+
+2. Prüfen Sie auf der Seite **Ressourcengruppe** die Liste mit den enthaltenen Ressourcen, und vergewissern Sie sich, dass es sich dabei um die Ressourcen handelt, die Sie löschen möchten.
+ 
+3. Klicken Sie auf **Ressourcengruppe löschen**, und folgen Sie den Anweisungen.
+
+   Der Löschvorgang kann einige Minuten dauern. Nach Abschluss des Vorgangs wird kurz eine Benachrichtigung angezeigt. Sie können auch am oberen Seitenrand auf das Glockensymbol klicken, um die Benachrichtigung anzuzeigen.

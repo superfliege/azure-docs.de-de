@@ -1,38 +1,29 @@
 ---
-title: Informationen zu Azure Site Recovery | Microsoft Docs
+title: Informationen zu Azure Site Recovery | Microsoft-Dokumentation
 description: "Enthält eine Übersicht über den Azure Site Recovery-Dienst und eine Zusammenfassung der Bereitstellungsszenarien."
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: cfreeman
-editor: 
-ms.assetid: e9b97b00-0c92-4970-ae92-5166a4d43b68
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/01/2017
+ms.topic: overview
+ms.date: 01/07/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b4b39cd23557093edaec97f7ef7a3e354f1ecd03
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: c6ec4b6e468bf03b18c0f26d1c61a17309a83eb2
+ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/08/2018
 ---
 # <a name="about-site-recovery"></a>Informationen zu Azure Site Recovery
 
-Willkommen beim Azure Site Recovery-Dienst! Dieser Artikel enthält eine kurze Übersicht über den Dienst.
+Willkommen beim Azure Site Recovery-Dienst! Dieser Artikel enthält eine kurze Dienstübersicht.
 
-## <a name="business-continuity-and-disaster-recovery-bcdr-with-azure-recovery-services"></a>Geschäftskontinuität und Notfallwiederherstellung (Business Continuity and Disaster Recovery, BCDR) mit Azure Recovery Services
-
-Als Organisation müssen Sie ermitteln, wie Sie Ihre Daten schützen und die Ausführung von Apps/Workloads sicherstellen können, wenn es zu geplanten und ungeplanten Ausfällen kommt.
+Organisationen benötigen eine BCDR-Strategie (Business Continuity and Disaster Recovery; Geschäftskontinuität und Notfallwiederherstellung), die den Schutz ihrer Daten sowie die Verfügbarkeit ihrer Apps und Workloads gewährleistet, wenn geplante oder ungeplante Ausfälle auftreten.
 
 Azure Recovery Services unterstützen Sie bei Ihrer BCDR-Strategie:
 
-- **Site Recovery-Dienst**: Site Recovery sorgt für Geschäftskontinuität, indem Ihre Apps auf VMs weiter ausgeführt werden und physische Server verfügbar bleiben, wenn ein Standort ausfällt. Site Recovery repliziert Workloads, die auf VMs und physischen Servern ausgeführt werden, damit sie an einem sekundären Ort verfügbar bleiben, wenn die Verfügbarkeit des primären Standorts nicht mehr gegeben ist. Workloads werden am primären Standort wiederhergestellt, wenn er wieder betriebsbereit ist.
-- **Backup-Dienst**: Zusätzlich sorgt der [Azure Backup](https://docs.microsoft.com/azure/backup/)-Dienst dafür, dass Ihre Daten sicher und wiederherstellbar bleiben, indem sie in Azure gesichert werden.
+- **Site Recovery-Dienst:** Site Recovery sorgt dafür, dass geschäftliche Apps und Workloads während Ausfällen weiter ausgeführt werden, und trägt so zur Aufrechterhaltung der Geschäftskontinuität bei. Site Recovery repliziert Workloads, die auf physischen und virtuellen Computern ausgeführt werden, von einem primären Standort an einen sekundären Standort. Im Falle eines Ausfalls am primären Standort können Sie ein Failover auf den sekundären Standort ausführen und von dort aus auf die Apps zugreifen. Wenn der primäre Standort dann wieder verfügbar ist, können Sie ein Failback ausführen.  
+- **Backup-Dienst**: Der Dienst [Azure Backup](https://docs.microsoft.com/azure/backup/) sichert Ihre Daten in Azure und sorgt so dafür, dass Ihre Daten sicher und wiederherstellbar bleiben.
 
 Site Recovery kann die Replikation für folgende Bereiche verwalten:
 
@@ -42,32 +33,33 @@ Site Recovery kann die Replikation für folgende Bereiche verwalten:
 
 ## <a name="what-does-site-recovery-provide"></a>Was bietet Site Recovery?
 
+
 **Feature** | **Details**
 --- | ---
-**Bereitstellen einer einfachen BCDR-Lösung** | Mit Site Recovery können Sie Replikation, Failover und Failback von einem zentralen Ort im Azure-Portal aus einrichten und verwalten.
-**Replikation von Azure-VMs** | Sie können Ihre BCDR-Strategie so einrichten, dass Azure-VMs zwischen Azure-Regionen repliziert werden.
-**Replizieren von lokalen VMs an einem anderen Ort** | Sie können lokale VMs und physische Server in Azure oder an einem sekundären lokalen Ort replizieren. Mit der Replikation in Azure entfallen die Kosten und die Komplexität, die mit der Verwaltung eines sekundären Datencenters verbunden sind.
-**Replizieren beliebiger Workloads** | Sie können beliebige Workloads replizieren, die auf unterstützten Azure-VMs, lokalen Hyper-V-VMs, VMware-VMs und physischen Windows/Linux-Servern ausgeführt werden.
-**Sicherstellen der Robustheit und des Schutzes von Daten** | Site Recovery orchestriert die Replikation, ohne dass dies Auswirkungen auf die Anwendungsdaten hat. Da die replizierten Daten in Azure Storage gespeichert werden, profitieren Sie von der entsprechenden Resilienz. Bei einem Failover werden virtuelle Azure-Computer auf der Grundlage der replizierten Daten erstellt.
-**Erfüllen von RTOs und RPOs** | Halten Sie die Grenzwerte Ihrer Organisation für Recovery Time Objectives (RTO) und Recovery Point Objectives (RPO) ein. Site Recovery ermöglicht eine fortlaufende Replikation für virtuelle Azure-Computer und virtuelle VMware-Computer sowie eine Replikationsfrequenz von nur 30 Sekunden für Hyper-V. Sie können Recovery Time Objectives (RTOs) weiter reduzieren, indem Sie eine Einbindung in die [Azure Traffic Manager](https://azure.microsoft.com/blog/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/)-Integration durchführen.
-**Beibehalten der Konsistenz für Apps bei einem Failover** | Sie können Wiederherstellungspunkte mit anwendungskonsistenten Momentaufnahmen konfigurieren. Mit anwendungskonsistenten Momentaufnahmen werden Datenträgerdaten, alle Daten im Arbeitsspeicher und alle aktiven Transaktionen erfasst.
-**Testen ohne Unterbrechungen** | Sie können auf einfache Weise Testfailover ausführen, um Übungen zur Notfallwiederherstellung zu unterstützen, ohne dass sich dies auf die laufende Replikation auswirkt.
-**Ausführen von flexiblen Failovern** | Sie können geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Wenn der primäre Standort wieder verfügbar ist, kann problemlos ein Failback ausgeführt werden.
-**Erstellen von Wiederherstellungsplänen** | Sie können Failover und Wiederherstellungen von Anwendungen mit mehreren Ebenen auf mehreren VMs mit Wiederherstellungsplänen anpassen und sequenzieren. Sie gruppieren Computer innerhalb von Plänen und fügen Skripts und manuelle Aktionen hinzu. Wiederherstellungspläne können in Azure Automation-Runbooks integriert werden.
-**Integrieren in vorhandene BCDR-Technologien** | Site Recovery ist in andere BCDR-Technologien integriert. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen, einschließlich der nativen Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
-**Integrieren in die Automation-Bibliothek** | Eine umfassende Azure Automation-Bibliothek bietet produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Site Recovery integriert werden können.
-**Verwalten von Netzwerkeinstellungen** | Site Recovery ist in Azure integriert, um eine einfache Anwendungsnetzwerkverwaltung zu ermöglichen, z.B. das Reservieren von IP-Adressen, Konfigurieren von Lastenausgleichsmodulen und Integrieren von Azure Traffic Manager zur Durchführung von effizienten Netzwerkwechseln.
+**Einfache BCDR-Lösung** | Mit Site Recovery können Sie Replikation, Failover und Failback von einem zentralen Ort im Azure-Portal aus einrichten und verwalten.
+**Replikation virtueller Azure-Computer** | Sie können die Notfallwiederherstellung virtueller Azure-Computer aus einer primären Region in einer sekundären Region einrichten.
+**Replikation lokaler virtueller Computer** | Sie können lokale virtuelle Computer und physische Server in Azure oder in einem sekundären Datencenter replizieren. Mit der Replikation in Azure entfallen die Kosten und die Komplexität, die mit der Verwaltung eines sekundären Datencenters verbunden sind.
+**Workloadreplikation** | Sie können beliebige Workloads replizieren, die auf unterstützten virtuellen Azure-Computern, auf lokalen virtuellen Hyper-V- und VMware-Computern und auf physischen Windows-/Linux-Servern ausgeführt werden.
+**Datenresilienz** | Site Recovery orchestriert die Replikation, ohne dass dies Auswirkungen auf die Anwendungsdaten hat. Wenn Sie Daten in Azure replizieren, werden diese in Azure Storage gespeichert, und Sie profitieren von der entsprechenden Resilienz. Bei einem Failover werden virtuelle Azure-Computer auf der Grundlage der replizierten Daten erstellt.
+**RTO- und RPO-Ziele** | Halten Sie die Grenzwerte Ihrer Organisation für Recovery Time Objectives (RTO) und Recovery Point Objectives (RPO) ein. Site Recovery ermöglicht eine fortlaufende Replikation für virtuelle Azure-Computer und virtuelle VMware-Computer sowie eine Replikationsfrequenz von nur 30 Sekunden für Hyper-V. Mittels Integration in [Azure Traffic Manager](https://azure.microsoft.com/blog/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) können Sie RTO weiter reduzieren.
+**Beibehalten der Konsistenz für Apps bei einem Failover** | Bei der Replizierung können Sie Wiederherstellungspunkte mit anwendungskonsistenten Momentaufnahmen verwenden. Diese Momentaufnahmen umfassen Datenträgerdaten, sämtliche Daten im Arbeitsspeicher sowie alle aktiven Transaktionen.
+**Testen ohne Unterbrechungen** | Sie können komfortabel Übungen zur Notfallwiederherstellung durchführen, ohne die laufende Replikation zu beeinflussen.
+**Flexible Failover** | Sie können geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Wenn der primäre Standort wieder verfügbar ist, kann problemlos ein Failback ausgeführt werden.
+**Angepasste Wiederherstellungspläne** | Mit Wiederherstellungsplänen können Sie Failover und Wiederherstellungen von Anwendungen mit mehreren Ebenen anpassen und sequenzieren, die auf mehreren virtuellen Computern ausgeführt werden. In einem Wiederherstellungsplan können Sie Computer zusammenfassen und bei Bedarf Skripts und manuelle Aktionen hinzufügen. Wiederherstellungspläne können in Azure Automation-Runbooks integriert werden.
+**BCDR-Integration** | Site Recovery ist in andere BCDR-Technologien integriert. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen – mit nativer Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
+**Azure Automation-Integration** | Eine umfassende Azure Automation-Bibliothek bietet produktionsbereite, anwendungsspezifische Skripts, die heruntergeladen und in Site Recovery integriert werden können.
+**Netzwerkintegration** | Site Recovery ist in Azure integriert, um eine einfache Anwendungsnetzwerkverwaltung zu ermöglichen, z.B. das Reservieren von IP-Adressen, Konfigurieren von Lastenausgleichsmodulen und Integrieren von Azure Traffic Manager zur Durchführung von effizienten Netzwerkwechseln.
 
 
 ## <a name="what-can-i-replicate"></a>Was kann ich replizieren?
 
 **Unterstützt** | **Details**
 --- | ---
-**Was kann ich replizieren?** | Virtuelle Azure-Computer zwischen Azure-Regionen<br/><br/>  Lokale VMware-VMs, Hyper-V-VMs, physische Server (Windows und Linux) in Azure<br/><br/> Lokale VMware VMs, Hyper-V-VMs, physische Server in Virtual Machine Manager (VMM)
-**Welche Regionen werden für Site Recovery unterstützt?** | [Unterstützte Regionen](https://azure.microsoft.com/regions/services/) |
-**Welche Betriebssysteme benötigen replizierte Computer?** | [Azure-VM-Anforderungen](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)</br></br>[VMware-VM-Anforderungen](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Für virtuelle Hyper-V-Computer wird jedes [Gastbetriebssystem](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) unterstützt, das auch von Azure und Hyper-V unterstützt wird.<br/><br/> [Anforderungen physischer Server](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
-**Welche VMware-Server/-Hosts benötige ich?** | VMware-VMs können sich auf [unterstützten vSphere-Hosts/vCenter-Servern](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) befinden.
-**Welche Workloads kann ich replizieren?** | Sie können jede Workload replizieren, die auf einem unterstützten Replikationscomputer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für eine [Reihe von Apps](site-recovery-workload.md#workload-summary) durchgeführt.
+**Replikationsszenarien** | Replizieren Sie virtuelle Azure-Computer aus einer Azure-Region in eine andere.<br/><br/>  Replizieren Sie lokale virtuelle VMware-Computer, virtuelle Hyper-V-Computer und physische Server (Windows und Linux) in Azure.<br/><br/> Replizieren Sie lokale virtuelle VMware-Computer, von System Center VMM verwaltete virtuelle Hyper-V-Computer und physische Server an einem sekundären Standort.
+**Regionen** | Informationen zu unterstützten Regionen für Site Recovery finden Sie [hier](https://azure.microsoft.com/regions/services/). |
+**Replizierte Computer** | Überprüfen Sie die Replikationsanforderungen für [virtuelle Azure-Computer](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions), [lokale virtuelle Computer](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions) und [physische Server](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions).
+**VMware-Server/-Hosts** | Virtuelle VMware-Computer, die Sie replizieren möchten, können sich auf [unterstützten vSphere-Hosts/vCenter-Servern](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers) befinden.
+**Workloads** | Sie können jede Workload replizieren, die auf einem für die Replikation geeigneten Computer ausgeführt wird. Darüber hinaus hat das Site Recovery-Team App-spezifische Tests für eine [Reihe von Apps](site-recovery-workload.md#workload-summary) durchgeführt.
 
 
 

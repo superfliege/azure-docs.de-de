@@ -13,18 +13,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/07/2017
+ms.date: 01/03/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b1c5ef3868a14f42d75720984ea19bb495b887e4
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 33f6cd9e10782bb8ff1b0ddf6d047aebc83f8008
+ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Erstellen einer Funktion in Azure, die von einem Timer ausgelöst wird
 
-Erfahren Sie, wie Sie mithilfe von Azure Functions eine Funktion erstellen können, die nach einem von Ihnen definierten Zeitplan ausgeführt wird.
+Hier erfahren Sie, wie Sie mithilfe von Azure Functions eine [serverlose](https://azure.microsoft.com/overview/serverless-computing/) Funktion erstellen, die nach einem von Ihnen definierten Zeitplan ausgeführt wird.
 
 ![Erstellen einer Funktionen-App im Azure-Portal](./media/functions-create-scheduled-function/function-app-in-portal-editor.png)
 
@@ -71,13 +71,13 @@ Erstellen Sie als Nächstes in der neuen Funktionen-App eine Funktion.
 
     ![Viewer der Funktionsprotokolle im Azure-Portal](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 
-Jetzt können Sie den Zeitplan der Funktion anpassen, sodass sie nicht mehr so häufig ausgeführt wird, z.B. nur noch stündlich. 
+Nun ändern Sie den Zeitplan der Funktion so, dass sie nicht mehr einmal pro Minute sondern einmal pro Stunde ausgeführt wird. 
 
 ## <a name="update-the-timer-schedule"></a>Aktualisieren des Timerzeitplans
 
 1. Erweitern Sie die Funktion, und klicken Sie auf **Integrieren**. Hier können Sie Eingabe- und Ausgabebindungen für Ihre Funktion definieren und den Zeitplan festlegen. 
 
-2. Geben Sie einen neuen Wert des **Zeitplans** von `0 0 */1 * * *` ein, und klicken Sie anschließend auf **Speichern**.  
+2. Geben Sie einen neuen Stundenwert für den **Zeitplan** ein (`0 0 */1 * * *`), und klicken Sie anschließend auf **Speichern**.  
 
 ![Aktualisieren des Timerzeitplans von Funktionen im Azure-Portal](./media/functions-create-scheduled-function/functions-timer-trigger-change-schedule.png)
 

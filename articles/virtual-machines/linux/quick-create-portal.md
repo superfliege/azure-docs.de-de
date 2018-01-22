@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ac6ed21f3cf363137381b82835a11d0920aee3b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: c587a2ba10606a08aec7a75e4bdc6fe5cc297be9
+ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Erstellen einer Linux-VM mit dem Azure-Portal
 
@@ -32,11 +32,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart benötigen Sie ein SSH-Schlüsselpaar. Sie können diesen Schritt überspringen, wenn Sie bereits über ein vorhandenes SSH-Schlüsselpaar verfügen.
 
-Führen Sie diesen Befehl über eine Bash-Shell aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Die Ausgabe des Befehls enthält den Dateinamen der Datei mit dem öffentlichen Schlüssel. Kopieren Sie den Inhalt der Datei mit dem öffentlichen Schlüssel in die Zwischenablage.
+Führen Sie diesen Befehl über eine Bash-Shell aus, und befolgen Sie die Anweisungen auf dem Bildschirm. Die Ausgabe des Befehls enthält den Dateinamen der Datei mit dem öffentlichen Schlüssel. Kopieren Sie den Inhalt der Datei mit dem öffentlichen Schlüssel (`cat ~/.ssh/id_rsa.pub`) in die Zwischenablage. Achten Sie bei Verwendung des Windows-Subsystems für Linux darauf, dass Sie keine Zeilenumbruchzeichen aus der Ausgabe kopieren. Notieren Sie sich den Namen der Datei mit dem privaten Schlüssel für später.
 
 ```bash
 ssh-keygen -t rsa -b 2048
 ```
+
+Ausführlichere Informationen zu diesem Vorgang finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys).
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure 
 
@@ -102,7 +104,7 @@ Mit einer Netzwerksicherheitsgruppe (NSG) wird eingehender und ausgehender Daten
 2. Wählen Sie die **Netzwerksicherheitsgruppe** aus. Die NSG können Sie anhand der Spalte **Typ** identifizieren. 
 3. Klicken Sie im Menü auf der linken Seite unter „Einstellungen“ auf **Eingangssicherheitsregeln**.
 4. Klicken Sie auf **Hinzufügen**.
-5. Geben Sie unter **Name** den Text **http** ein. Stellen Sie sicher, dass **Portbereich** auf 80 und **Aktion** auf **Zulassen** festgelegt ist. 
+5. Geben Sie unter **Name** den Text **http** ein. Vergewissern Sie sich, dass **Quellportbereich** auf `*`, **Zielportbereich** auf *80* und **Aktion** auf  *Zulassen* festgelegt ist. 
 6. Klicken Sie auf **OK**.
 
 

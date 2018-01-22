@@ -9,11 +9,11 @@ ms.topic: overview
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 83666edc75a6c75fd2361e79192f9717d69fd746
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 01e539856adbdcf02dc4e49087a3ab71b328db5a
+ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/05/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -43,7 +43,9 @@ Dank der Möglichkeit zur direkten [Einbindung von Azure Files-Freigaben](contai
 
 ## <a name="linux-and-windows-containers"></a>Linux- und Windows-Container
 
-Mit Azure Container Instances können Sie sowohl Windows- als auch Linux-Container mit der gleichen API planen. Geben Sie einfach die Art des Basisbetriebssystems an. Alles andere ist identisch.
+Mit Azure Container Instances können Sie sowohl Windows- als auch Linux-Container mit der gleichen API planen. Geben Sie einfach den BS-Typ an, wenn Sie Ihre [Containergruppen](container-instances-container-groups.md) erstellen.
+
+Einige Features sind momentan auf Linux-Container beschränkt. Bis alle Features auch für Windows-Container verfügbar sind, finden Sie die aktuellen Plattformunterschiede unter [Kontingente und Regionsverfügbarkeit für Azure Container Instances](container-instances-quotas.md).
 
 ## <a name="co-scheduled-groups"></a>Gemeinsam geplante Gruppen
 
