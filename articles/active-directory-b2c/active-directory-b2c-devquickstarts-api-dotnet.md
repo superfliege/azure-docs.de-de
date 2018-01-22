@@ -1,5 +1,5 @@
 ---
-title: Azure AD B2C | Microsoft Docs
+title: "Schützen einer Web-API – ASP.NET – Azure Active Directory B2C | Microsoft-Dokumentation"
 description: "Es wird beschrieben, wie Sie eine .NET-Web-API mithilfe von Azure Active Directory B2C erstellen, die mit OAuth 2.0-Zugriffstoken für die Authentifizierung geschützt ist."
 services: active-directory-b2c
 documentationcenter: .net
@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 03/17/2017
+ms.date: 01/14/2018
 ms.author: parakhj
-ms.openlocfilehash: 713bf8ea670b1c2b35a05ebd8cd9450c711cbf3b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.custom: seohack1
+ms.openlocfilehash: 68c0f50e20b5a1a44ff2cb1bc5df35d60928b911
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: Erstellen einer .NET-Web-API
 
@@ -38,8 +39,8 @@ Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine Web-API-App erstellen. D
 
 * Fügen Sie der Anwendung eine **Web-App** oder **Web-API** hinzu.
 * Verwenden Sie den **Umleitungs-URI** `https://localhost:44332/` für die Web-App. Dies ist der Standardspeicherort des Web-App-Clients für dieses Codebeispiel.
-* Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Sie benötigen sie später.
-* Geben Sie einen App-Bezeichner in das Feld **App-ID-URI** ein. Kopieren Sie den vollständigen **App-ID-URI**. Sie benötigen sie später.
+* Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Sie benötigen die Information später.
+* Geben Sie einen App-Bezeichner in das Feld **App-ID-URI** ein. Kopieren Sie den vollständigen **App-ID-URI**. Sie benötigen die Information später.
 * Fügen Sie über das Menü **Published scopes** (Veröffentlichte Bereiche) Berechtigungen hinzu.
 
 ## <a name="create-your-policies"></a>Erstellen der Richtlinien
@@ -54,7 +55,7 @@ In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-direc
 
 Nachdem Sie die Richtlinie erfolgreich erstellt haben, können Sie Ihre App erstellen.
 
-## <a name="download-the-code"></a>Herunterladen des Codes
+## <a name="download-the-code"></a>Laden Sie den Code herunter.
 
 Der Code für dieses Tutorial wird auf [GitHub](https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi) verwaltet. Sie können das Beispiel klonen, indem Sie Folgendes ausführen:
 

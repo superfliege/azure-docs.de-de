@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
-ms.openlocfilehash: d00c6e0acf437d2bfc3c27e948f4646a6685b08f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad31e869d998d29d403ff97c17150c5078ce856d
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Zugreifen auf Azure Key Vault hinter einer Firewall
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>F: Meine Key Vault-Clientanwendung muss hinter einer Firewall angeordnet sein. Welche Ports, Hosts oder IP-Adressen sollten geöffnet sein, um den Zugriff auf einen Schlüsseltresor zu ermöglichen?
@@ -38,8 +38,8 @@ Schlüsseltresor-Clientanwendungen müssen zur Authentifizierung auf Azure Activ
 
 | Prinzipaltyp | Endpunkt:Port |
 | --- | --- |
-| Benutzer mit Microsoft-Konto<br> (Beispiel: user@hotmail.com) |**Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443<br><br> und <br>login.live.com:443 |
-| Benutzer- oder Dienstprinzipal mit einem Geschäfts-, Schul- oder Unikonto bei Azure AD (z.B. user@contoso.com) |**Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443 |
+| Benutzer mit Microsoft-Konto<br> (Beispiel: user@hotmail.com) |**Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443<br><br> und <br>login.live.com:443 |
+| Benutzer- oder Dienstprinzipal mit einem Geschäfts-, Schul- oder Unikonto bei Azure AD (z.B. user@contoso.com) |**Global:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login.microsoftonline.us:443<br><br>**Azure Deutschland:**<br> login.microsoftonline.de:443 |
 | Benutzer- oder Dienstprinzipal mit einem Geschäfts-, Schul- oder Unikonto plus Active Directory-Verbunddienste (AD FS) oder einem anderen Verbundendpunkt (z.B. user@contoso.com) |Alle Endpunkte für ein Geschäfts-, Schul- oder Unikonto plus AD FS oder anderen Verbundendpunkten |
 
 Es sind noch andere komplexe Szenarien möglich. Weitere Informationen finden Sie unter [Authentifizierungsszenarien für Azure AD](/documentation/articles/active-directory-authentication-scenarios/), [Integrieren von Anwendungen in Azure Active Directory](/documentation/articles/active-directory-integrating-applications/) und [Active Directory-Authentifizierungsprotokolle](https://msdn.microsoft.com/library/azure/dn151124.aspx).  

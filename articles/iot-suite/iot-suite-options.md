@@ -11,11 +11,11 @@ ms.topic: get-started-article
 ms.date: 11/10/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a23835f341bf02f8e662782984d95bfe194030b
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 1a979bde37d247da5c630547924cadbd79c4a6a4
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="compare-azure-iot-options"></a>Vergleich von Azure IoT-Optionen
 
@@ -27,13 +27,13 @@ Im Artikel [Azure und das Internet der Dinge](iot-suite-what-is-azure-iot.md) wi
 
 Zum Implementieren dieser Architektur stellt Azure IoT mehrere Optionen bereit, die jeweils für verschiedene Gruppen von Kundenanforderungen geeignet sind:
 
-* [Azure IoT Suite](index.md) ist eine für Unternehmen konzipierte Sammlung mit [vorkonfigurierten Lösungen](iot-suite-what-are-preconfigured-solutions.md) auf Basis von Azure PaaS (Platform-as-a-Service), mit denen Sie die Entwicklung von benutzerdefinierten IoT-Lösungen beschleunigen können.
+* [Azure IoT Suite](index.md) ist eine für Unternehmen konzipierte Sammlung mit [vorkonfigurierten Lösungen](iot-suite-what-are-preconfigured-solutions.md) auf Basis von Azure-PaaS (Platform-as-a-Service), mit denen Sie die Entwicklung von benutzerdefinierten IoT-Lösungen beschleunigen können.
 
-* [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) ist eine SaaS-Lösung, bei der ein modellbasierter Ansatz verwendet wird, damit Sie für Unternehmen geeignete IoT-Lösungen erstellen können, ohne dass dafür Wissen zur Entwicklung von Cloudlösungen vorhanden sein muss.
+* [Microsoft IoT Central](https://www.microsoft.com/internet-of-things/iot-central-saas-solutions) ist eine SaaS-Lösung (Software-as-a-Service) mit einem modellbasierten Ansatz, der die Entwicklung von IoT-Lösungen für Unternehmen ermöglicht, ohne dass Sie dazu mit der Entwicklung von Cloudlösungen vertraut sein müssen.
 
 ## <a name="azure-iot-hub"></a>Azure IoT Hub
 
-Azure IoT Hub ist die Azure PaaS-Kernanwendung (Platform-as-a-Service), die sowohl von Microsoft IoT Central als auch von Azure IoT Suite genutzt wird. IoT Hub ermöglicht die zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einer Cloudlösung. Mit IoT Hub können Sie beispielsweise folgende Anforderungen der IoT-Implementierung erfüllen:
+Azure IoT Hub ist die Azure PaaS-Kernanwendung, die sowohl von Microsoft IoT Central als auch von Azure IoT Suite genutzt wird. IoT Hub ermöglicht die zuverlässige und sichere bidirektionale Kommunikation zwischen Millionen von IoT-Geräten und einer Cloudlösung. Mit IoT Hub können Sie beispielsweise folgende Anforderungen der IoT-Implementierung erfüllen:
 
 * Gerätekonnektivität und -verwaltung mit hohem Volumen
 * Telemetriedatenerfassung mit hohem Volumen

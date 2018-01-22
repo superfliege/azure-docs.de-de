@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie die globale Verteilung von Azure Cosmos DB mi
 services: cosmos-db
 keywords: globale Verteilung, Graph, Gremlin
 documentationcenter: 
-author: dennyglee
+author: luisbosquez
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 8b815047-2868-4b10-af1d-40a1af419a70
@@ -13,38 +13,38 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/10/2017
-ms.author: denlee
+ms.date: 01/02/2018
+ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: eb55bdee60400b4b14f47a6a0b1d0682b267d26f
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 1806bde383f04747f1f0fef46e5cf4d38de1e939
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="how-to-setup-azure-cosmos-db-global-distribution-using-the-graph-api"></a>Einrichten der globalen Verteilung von Azure Cosmos DB mithilfe der Graph-API
 
-In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal die globale Verteilung von Azure Cosmos DB einrichten und dann mithilfe der Graph-API eine Verbindung herstellen (Vorschau).
+In diesem Artikel wird beschrieben, wie Sie im Azure-Portal die globale Verteilung von Azure Cosmos DB einrichten und dann mithilfe der Graph-API eine Verbindung herstellen.
 
 In diesem Artikel werden die folgenden Aufgaben behandelt: 
 
 > [!div class="checklist"]
 > * Konfigurieren der globalen Verteilung mit dem Azure-Portal
-> * Konfigurieren der globalen Verteilung mit den [Graph-APIs](graph-introduction.md) (Vorschau)
+> * Konfigurieren der globalen Verteilung mit den [Graph-APIs](graph-introduction.md)
 
 [!INCLUDE [cosmos-db-tutorial-global-distribution-portal](../../includes/cosmos-db-tutorial-global-distribution-portal.md)]
 
 
 ## <a name="connecting-to-a-preferred-region-using-the-graph-api-using-the-net-sdk"></a>Herstellen einer Verbindung mit einer bevorzugten Region mithilfe der Graph-API über das .NET SDK
 
-Die Graph-API wird als eine Erweiterungsbibliothek zusätzlich zum DocumentDB SDK verfügbar gemacht.
+Die Graph-API wird als Erweiterungsbibliothek zusätzlich zur SQL-API verfügbar gemacht.
 
 Um von der [globalen Verteilung](distribute-data-globally.md)zu profitieren, können Clientanwendungen in einer Liste die Reihenfolge angeben, in der Regionen bei Dokumentvorgängen bevorzugt verwendet werden sollen. Dies lässt sich durch Einrichten einer Verbindungsrichtlinie erreichen. Basierend auf der Azure Cosmos DB-Kontokonfiguration, der aktuellen regionalen Verfügbarkeit und der angegebenen Liste der bevorzugten Regionen wählt das SDK den optimalen Endpunkt für Schreib- und Lesevorgänge aus.
 
 Diese Liste wird beim Initialisieren einer Verbindung mithilfe der SDKs angegeben. Die SDKs akzeptieren einen optionalen Parameter „PreferredLocations“, bei dem es sich um eine sortierte Liste von Azure-Regionen handelt.
 
-* **Schreibvorgänge**: Das SDK sendet automatisch alle Schreibvorgänge an die aktuell für solche Vorgänge ausgewählte Region.
-* **Lesevorgänge**: Alle Lesevorgänge werden an die erste verfügbare Region in der Liste „PreferredLocations“ gesendet. Wenn bei der Anforderung ein Fehler auftritt, führt der Client ein Failover zur nächsten Region auf der Liste durch, usw. Die SDKs versuchen nur, in den in „PreferredLocations“ angegebenen Regionen Lesevorgänge auszuführen. Wenn z.B. ein Cosmos DB-Konto in drei Regionen verfügbar ist, der Client aber nur zwei Leseregionen für „PreferredLocations“ angibt, werden auch bei einem Failover keine Lesevorgänge außerhalb der Schreibregion verarbeitet.
+* **Schreibvorgänge**: Das SDK sendet automatisch alle Schreibvorgänge an die aktuelle Schreibregion.
+* **Lesevorgänge**: Alle Lesevorgänge werden an die erste verfügbare Region in der Liste „PreferredLocations“ gesendet. Wenn bei der Anforderung ein Fehler auftritt, führt der Client ein Failover zur nächsten Region in der Liste durch, und so weiter. Die SDKs versuchen nur, in den in „PreferredLocations“ angegebenen Regionen Lesevorgänge auszuführen. Wenn z. B. das Cosmos DB-Konto in drei Regionen verfügbar ist, der Client aber nur zwei Leseregionen für „PreferredLocations“ angibt, werden auch bei einem Failover keine Lesevorgänge außerhalb der Schreibregion verarbeitet.
 
 Die Anwendung kann die vom SDK ausgewählten aktuellen Schreib- und Leseendpunkte anhand von zwei Eigenschaften überprüfen: WriteEndpoint und ReadEndpoint. Diese stehen im SDK der Version 1.8 und höher zur Verfügung. Wenn die PreferredLocations-Eigenschaft nicht festgelegt ist, werden alle Anforderungen von der aktuellen Schreibregion verarbeitet.
 
@@ -87,7 +87,7 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 
 > [!div class="checklist"]
 > * Konfigurieren der globalen Verteilung mit dem Azure-Portal
-> * Konfigurieren der globalen Verteilung mit den DocumentDB-APIs
+> * Konfigurieren der globalen Verteilung mit den SQL-APIs
 
 Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie mit dem lokalen Azure Cosmos DB-Emulator lokal entwickeln können.
 

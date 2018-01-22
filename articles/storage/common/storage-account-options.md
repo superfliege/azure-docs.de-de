@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: jirwin
-ms.openlocfilehash: 7f07734433694999d38429ca264c58c5f3c619e1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 1b1770e25b4b423466120cb74c08edacf2de3977
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-storage-account-options"></a>Optionen für Azure Storage-Konten
 
@@ -31,7 +31,7 @@ Azure Storage enthält drei verschiedene Kontooptionen, für die jeweils untersc
 * Konten vom Typ **General Purpose v1 (GPv1)** ermöglichen die Nutzung aller Azure Storage-Dienste, bieten aber ggf. nicht die aktuellen Features oder die niedrigsten GB-Preise. Beispielsweise werden die Speicherebenen „Cool“ und „Archiv“ in GPv1 nicht unterstützt.  Die Preise für Transaktionen sind niedriger, sodass Workloads mit hohen Datenänderungs- oder Leseraten ggf. von der Nutzung dieses Kontotyps profitieren.
 
 ### <a name="changing-account-kind"></a>Ändern der Kontoart
-Benutzer können für ein GPv1- oder ein Blob Storage-Konto jederzeit ein Upgrade auf ein GPv2-Konto durchführen, indem sie das Portal, die CLI oder PowerShell verwenden. Diese Änderung kann nicht rückgängig gemacht werden, und es sind keine anderen Änderungen zulässig.
+Benutzer können für ein GPv1-Konto jederzeit ein Upgrade auf ein GPv2-Konto durchführen. Hierzu können Sie das Portal, die Befehlszeilenschnittstelle oder PowerShell verwenden. Diese Änderung kann nicht rückgängig gemacht werden, und es sind keine anderen Änderungen zulässig. Ein Upgrade auf GPv2 ist in Kürze auch für Blob Storage-Konten möglich.
 
 ## <a name="general-purpose-v2"></a>General Purpose v2
 Bei **General Purpose v2 (GPv2)** handelt es sich um Speicherkonten, die alle Features für alle Speicherdienste unterstützen, z.B. Blobs, Files, Queues und Tables. Für Blockblobs können Sie auf Grundlage von Zugriffsmustern zwischen den Speicherebenen „Hot“ und „Cool“ (auf Kontoebene) bzw. zwischen den Ebenen „Hot“, „Cool“ und „Archiv“ (auf Blobebene) wählen. Speichern Sie Daten, auf die häufig, weniger häufig und selten zugegriffen wird, auf den Speicherebenen „Hot“, „Cool“ bzw. „Archiv“, um die Kosten zu optimieren. Folgendes ist wichtig: Das GPv1-Konto kann per Portal, CLI oder PowerShell auf ein GPv2-Konto aktualisiert werden. GPv2-Konten unterstützen alle APIs und Features, die auch für Blob Storage- und GPv1-Konten unterstützt werden, und verfügen über alle nützlichen Features dieser Kontotypen in Bezug auf Dauerhaftigkeit, Verfügbarkeit, Skalierbarkeit und Leistung.
@@ -51,7 +51,7 @@ Blob Storage-Konten machen das Attribut **Access Tier** (Zugriffsebene) auf Kont
 ## <a name="general-purpose-v1"></a>General Purpose v1
 **General Purpose v1 (GPv1)** ist der älteste Typ von Speicherkonto. Dies ist die einzige Art von Konto, die für das klassische Bereitstellungsmodell verwendet werden kann. Features wie die Speicherebenen „Cool“ und „Archiv“ sind in GPv1 nicht verfügbar. Für GPv1 gelten im Allgemeinen höhere GB-Speicherkosten und niedrigere Transaktionskosten als für GPv2- oder Blob Storage-Konten.
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>Empfehlungen
 
 Weitere Informationen zu Speicherkonten finden Sie unter [Informationen zu Azure-Speicherkonten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) .
 
@@ -96,7 +96,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 ### <a name="create-a-gpv2-storage-account-using-the-azure-portal"></a>Erstellen eines GPv2-Speicherkontos mit dem Azure-Portal
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen Sie im Menü „Hub“ die Option **Neu** > **Daten und Speicher** > **Speicherkonto** aus.
 
@@ -130,9 +130,9 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 11. Klicken Sie auf **Erstellen** , um das Speicherkonto zu erstellen.
 
-### <a name="convert-a-gpv1-or-blob-storage-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Konvertieren eines GPv1- oder Blob Storage-Kontos in ein GPv2-Speicherkonto mit dem Azure-Portal
+### <a name="convert-a-gpv1-account-to-a-gpv2-storage-account-using-the-azure-portal"></a>Konvertieren eines GPv1-Kontos in ein GPv2-Speicherkonto über das Azure-Portal
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
 
@@ -146,7 +146,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 ### <a name="change-the-storage-tier-of-a-gpv2-storage-account-using-the-azure-portal"></a>Ändern der Speicherebene für ein GPv2-Speicherkonto mithilfe des Azure-Portals
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Navigieren Sie zu Ihrem Speicherkonto, wählen Sie „Alle Ressourcen“, und wählen Sie dann Ihr Speicherkonto aus.
 
@@ -158,7 +158,7 @@ In den folgenden Beispielen kann die Zugriffsebene nicht auf „Archiv“ festge
 
 ### <a name="change-the-storage-tier-of-a-blob-using-the-azure-portal"></a>Ändern der Speicherebene für ein Blob mithilfe des Azure-Portals
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen Sie zum Navigieren zu Ihrem Blob in Ihrem Speicherkonto die Option „Alle Ressourcen“, und wählen Sie Ihr Speicherkonto, Ihren Container und dann Ihr Blob aus.
 
@@ -247,7 +247,7 @@ Bei Verwendung eines GRS- oder RA-GRS-Speicherkontos können die Datenübertragu
 
 ## <a name="migrating-existing-data"></a>Migrieren vorhandener Daten
 
-Ein GPv1- oder Blob Storage-Konto kann leicht auf GPv2 aktualisiert werden, ohne dass es zu Ausfallzeiten oder API-Änderungen kommt oder Daten verschoben werden müssen. Dies ist einer der Hauptvorteile von GPv2-Konten gegenüber Blob Storage-Konten.
+Ein GPv1-Konto kann problemlos auf GPv2 aktualisiert werden, ohne dass es zu Ausfallzeiten oder API-Änderungen kommt oder Daten verschoben werden müssen. Dies ist einer der Hauptvorteile von GPv2-Konten gegenüber Blob Storage-Konten.
 
 Wenn Sie ein Blob Storage-Konto migrieren möchten, können Sie die unten angegebene Anleitung verwenden.
 
@@ -280,15 +280,19 @@ Ausführlichere Informationen finden Sie unter [Erste Schritte mit Azure Blob St
 
 **Bleiben bereits vorhandene Speicherkonten weiterhin verfügbar?**
 
-Ja. Bereits vorhandene Speicherkonten sind weiterhin verfügbar (zu gleichen Preisen und mit unveränderten Funktionen).  Für sie kann keine Speicherebene ausgewählt werden, und diese Möglichkeit ist auch in Zukunft nicht geplant.
+Ja. Bereits vorhandene Speicherkonten (GPv1) sind weiterhin zu gleichen Preisen und mit unveränderten Funktionen verfügbar.  Für GPv1-Konten kann keine Speicherebene gewählt werden, und diese Möglichkeit ist auch in Zukunft nicht geplant.
 
 **Warum und wann sollte ich GPv2-Speicherkonten verwenden?**
 
 GPv2-Speicherkonten sind auf geringstmögliche GB-Speicherkosten ausgelegt und verfügen gleichzeitig über wettbewerbsfähige Branchenpreise für Transaktionen und Datenzugriff. In Zukunft wird für die Speicherung von Blobs die Verwendung von GPv2-Speicherkonten empfohlen, da Funktionen, z.B. Änderungsbenachrichtigungen, basierend auf diesem Kontotyp eingeführt werden. Es liegt aber bei Ihnen, wann Sie das Upgrade (abhängig von Ihren geschäftlichen Anforderungen) durchführen.  Beispielsweise können Sie vor dem Durchführen des Upgrades Ihre Transaktionsmuster optimieren.
 
+Eine Herabstufung von GPv2 wird nicht unterstützt. Machen Sie sich daher vor dem GPv2-Upgrade Ihrer Konten mit den preislichen Auswirkungen vertraut.
+
 **Kann ich mein vorhandenes Speicherkonto auf ein GPv2-Speicherkonto aktualisieren?**
 
-Ja. GPv1- oder Blob Storage-Konten können im Portal leicht auf GPv2 aktualisiert werden.
+Ja. GPv1-Konten lassen sich über das Portal komfortabel auf GPv2 upgraden. Sie können dazu aber auch PowerShell oder die Befehlszeilenschnittstelle verwenden. Blob Storage-Konten können mithilfe von PowerShell oder über die Befehlszeilenschnittstelle auf GPv2 aktualisiert werden. GPv2-Upgrades für Blob Storage-Konten sind in Kürze aber auch über das Portal möglich.
+
+Eine Herabstufung von GPv2 wird nicht unterstützt. Machen Sie sich daher vor dem GPv2-Upgrade Ihrer Konten mit den preislichen Auswirkungen vertraut.
 
 **Kann ich Objekte innerhalb des gleichen Kontos auf beiden Speicherebenen speichern?**
 
@@ -315,6 +319,8 @@ Nein. Blob Storage-Konten unterstützen keine Seitenblobs, sondern nur Block- un
 **Muss ich zur Verwendung von GPv2-Speicherkonten meine vorhandenen Anwendungen ändern?**
 
 GPv2-Speicherkonten sind zu 100% API-konsistent mit GPv1- und Blob Storage-Konten. Solange Sie für Ihre Anwendung Blockblobs oder Anfügeblobs verwenden und Version 2014-02-14 (oder höher) der [REST-API für Speicherdienste](https://msdn.microsoft.com/library/azure/dd894041.aspx) nutzen, sollte Ihre Anwendung funktionieren. Bei Verwendung einer älteren Protokollversion müssen Sie Ihre Anwendung aktualisieren, sodass sie die neue Version verwendet und beide Arten von Speicherkonten problemlos genutzt werden können. Unabhängig von der Art des verwendeten Speicherkontos empfehlen wir grundsätzlich die Verwendung der neuesten Version.
+
+Bei GPv2 sind die Preise für Transaktionen und Bandbreite generell höher als bei GPv1. Aus diesem Grund empfiehlt es sich unter Umständen, vor dem Upgrade eine Optimierung Ihrer Transaktionsmuster durchzuführen, um einen Anstieg der Gesamtkosten zu vermeiden.
 
 **Ändert sich etwas für die Benutzer?**
 

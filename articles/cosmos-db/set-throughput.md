@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: d541bb19ba7e5ecb44c9fe91b1e232d4d9c2170e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf6eadbae328b1551da861fb5a11930ee830d415
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Festlegen von Durchsatz für Azure Cosmos DB-Container
 
@@ -36,7 +36,7 @@ In der folgenden Tabelle sind die für Container verfügbaren Durchsätze aufgef
         <tr>
             <td valign="top"><p>Minimaler Durchsatz</p></td>
             <td valign="top"><p>400 Anforderungseinheiten pro Sekunde</p></td>
-            <td valign="top"><p>2.500 Anforderungseinheiten pro Sekunde</p></td>
+            <td valign="top"><p>1.000 Anforderungseinheiten pro Sekunde</p></td>
         </tr>
         <tr>
             <td valign="top"><p>Maximaler Durchsatz</p></td>
@@ -51,16 +51,16 @@ In der folgenden Tabelle sind die für Container verfügbaren Durchsätze aufgef
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com) in einem neuen Fenster.
 2. Klicken Sie in der linken Leiste auf **Azure Cosmos DB**, oder klicken Sie unten auf **Weitere Dienste**, scrollen Sie zu **Datenbanken**, und klicken Sie dann auf **Azure Cosmos DB**.
 3. Wählen Sie Ihr Cosmos DB-Konto aus.
-4. Klicken Sie im neuen Fenster im Navigationsmenü auf **Daten-Explorer (Vorschau)**.
+4. Klicken Sie im neuen Fenster im Navigationsmenü auf **Daten-Explorer**.
 5. Erweitern Sie im neuen Fenster die Datenbank und den Container, und klicken Sie dann auf **Skalierungseinstellungen**.
 6. Geben Sie im neuen Fenster den neuen Durchsatzwert im Feld **Durchsatz** ein, und klicken Sie dann auf **Speichern**.
 
 <a id="set-throughput-sdk"></a>
 
-## <a name="to-set-the-throughput-by-using-the-documentdb-api-for-net"></a>So legen Sie den Durchsatz mithilfe der DocumentDB-API für .NET fest
+## <a name="to-set-the-throughput-by-using-the-sql-api-for-net"></a>So legen Sie den Durchsatz mithilfe der SQL-API für .NET fest
 
 ```C#
-//Fetch the resource to be updated
+// Fetch the offer of the collection whose throughput needs to be updated
 Offer offer = client.CreateOfferQuery()
     .Where(r => r.ResourceLink == collection.SelfLink)    
     .AsEnumerable()
@@ -69,19 +69,41 @@ Offer offer = client.CreateOfferQuery()
 // Set the throughput to the new value, for example 12,000 request units per second
 offer = new OfferV2(offer, 12000);
 
-//Now persist these changes to the database by replacing the original resource
+// Now persist these changes to the collection by replacing the original offer resource
 await client.ReplaceOfferAsync(offer);
+```
+
+<a id="set-throughput-java"></a>
+
+## <a name="to-set-the-throughput-by-using-the-sql-api-for-java"></a>So legen Sie den Durchsatz mithilfe der SQL-API für Java fest
+
+Dieser Codeausschnitt stammt aus der Datei „OfferCrudSamples.java“ im Repository [azure-documentdb-java](https://github.com/Azure/azure-documentdb-java/blob/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples/OfferCrudSamples.java). 
+
+```Java
+// find offer associated with this collection
+Iterator < Offer > it = client.queryOffers(
+    String.format("SELECT * FROM r where r.offerResourceId = '%s'", collectionResourceId), null).getQueryIterator();
+assertThat(it.hasNext(), equalTo(true));
+
+Offer offer = it.next();
+assertThat(offer.getString("offerResourceId"), equalTo(collectionResourceId));
+assertThat(offer.getContent().getInt("offerThroughput"), equalTo(throughput));
+
+// update the offer
+int newThroughput = 10300;
+offer.getContent().put("offerThroughput", newThroughput);
+client.replaceOffer(offer);
 ```
 
 ## <a name="throughput-faq"></a>Häufig gestellte Fragen zum Durchsatz
 
 **Kann der Durchsatz auf unter 400 RU/s festgelegt werden?**
 
-400 RU/s ist der in Cosmos DB verfügbare minimale Durchsatz für Sammlungen mit nur einer Partition (2500 RU/s ist der minimale Durchsatz für partitionierte Sammlungen). Die Anforderungseinheiten werden in Intervallen von 100 RU/s festgelegt, der Durchsatz kann jedoch nicht auf 100 RU/s oder einen anderen Wert unter 400 RU/s festgelegt werden. Wenn Sie nach einer kostengünstigen Methode zum Entwickeln und Testen von Cosmos DB suchen, können Sie den kostenlosen [Azure Cosmos DB-Emulator](local-emulator.md) verwenden, der lokal kostenfrei bereitgestellt werden kann. 
+400 RU/s ist der in Cosmos DB verfügbare minimale Durchsatz für Container mit nur einer Partition (1.000 RU/s ist der minimale Durchsatz für partitionierte Container). Die Anforderungseinheiten werden in Intervallen von 100 RU/s festgelegt, der Durchsatz kann jedoch nicht auf 100 RU/s oder einen anderen Wert unter 400 RU/s festgelegt werden. Wenn Sie nach einer kostengünstigen Methode zum Entwickeln und Testen von Cosmos DB suchen, können Sie den kostenlosen [Azure Cosmos DB-Emulator](local-emulator.md) verwenden, der lokal kostenfrei bereitgestellt werden kann. 
 
 **Wie kann ich den Durchsatz mit der MongoDB-API festlegen?**
 
-Es gibt keine MongoDB-API-Erweiterung zum Festlegen des Durchsatzes. Es wird empfohlen, die DocumentDB-API zu verwenden, wie unter [So legen Sie den Durchsatz mithilfe der DocumentDB-API für .NET fest](#set-throughput-sdk) beschrieben.
+Es gibt keine MongoDB-API-Erweiterung zum Festlegen des Durchsatzes. Es wird empfohlen, die SQL-API zu verwenden, wie unter [So legen Sie den Durchsatz mithilfe der SQL-API für .NET fest](#set-throughput-sdk) beschrieben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
