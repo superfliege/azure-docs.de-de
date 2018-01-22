@@ -52,9 +52,15 @@
     - name: '2: Einrichten des Geräts'
       href: tutorial-set-up-device.md
     - name: '3: Bereitstellen eines Geräts für einen IoT-Hub'
-      href: tutorial-provision-device-to-hub.md
+      items:
+        - name: C
+          href: tutorial-provision-device-to-hub.md
+        - name: 'C#'
+          href: tutorial-net-provision-device-to-hub.md
     - name: '4: Bereitstellung von Geräten für mehrere Hubs'
       href: tutorial-provision-multiple-hubs.md
+    - name: '5: Bereitstellen von Gruppenregistrierungen'
+      href: tutorial-group-enrollments.md
 - name: Konzepte
   items:
     - name: Gerätekonzepte
@@ -73,6 +79,8 @@
           href: how-to-manage-enrollments-sdks.md
     - name: Widerrufen von Gerätezugriff
       href: how-to-revoke-device-access-portal.md
+    - name: Aufheben der Bereitstellung von Geräten
+      href: how-to-unprovision-devices.md
     - name: Verwenden von HSM mit SDK
       href: use-hsm-with-sdk.md
     - name: Steuern des Zugriffs auf den Bereitstellungsdienst

@@ -13,7 +13,7 @@
       href: automation-quickstart-create-runbook.md
     - name: Erstellen einer DSC-Konfiguration
       href: automation-quickstart-dsc-configuration.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: Nachverfolgen von aktualisierten Dateien mit Watchertasks
       href: automation-watchers-tutorial.md
@@ -131,10 +131,10 @@
       items:
         - name: Runbook-Katalog
           href: automation-runbook-gallery.md
+        - name: Starten eines Runbooks über Azure-Warnungen
+          href: automation-create-alert-triggered-runbook.md
         - name: Erstellen einer Amazon Web Service-VM
           href: automation-scenario-aws-deployment.md
-        - name: Wartung nach Azure-VM-Warnung
-          href: automation-azure-vm-alert-integration.md
         - name: Starten und Beenden von virtuellen Computern mit JSON-Tags
           href: automation-scenario-start-stop-vm-wjson-tags.md
         - name: Entfernen einer Ressourcengruppe
@@ -181,7 +181,7 @@
           href: automation-troubleshooting-automation-errors.md
         - name: Problembehandlung für Hybrid Runbook Worker
           href: automation-troubleshooting-hybrid-runbook-worker.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Azure PowerShell
       href: /powershell/module/azurerm.automation
@@ -193,7 +193,7 @@
       href: /rest/api/automation
     - name: REST (klassisch)
       href: 'https://msdn.microsoft.com/library/azure/mt163781'
-- name: Ressourcen
+- name: angeben
   items:
     - name: Einführungsvideo für Automation
       href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'

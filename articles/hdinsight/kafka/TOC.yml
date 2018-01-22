@@ -45,6 +45,10 @@
           maintainContext: true
     - name: Entwickeln
       items:
+        - name: Verwenden der Producer- und Consumer-API (Kafka)
+          href: apache-kafka-producer-consumer-api.md
+        - name: Verwenden der Kafka-Stream-API
+          href: apache-kafka-streams-api.md
         - name: Verwenden leerer Edgeknoten
           href: ../hdinsight-apps-use-edge-node.md
           maintainContext: true

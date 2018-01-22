@@ -128,6 +128,8 @@
           href: azure-stack-manage-storage-shares.md
         - name: Verwalten von virtuellen Computern mit Windows Azure Pack
           href: azure-stack-manage-windows-azure-pack.md
+        - name: Starten und Beenden von Azure Stack
+          href: azure-stack-start-and-stop.md
         - name: Austauschen von Hardware
           items:
             - name: Knotenaktionen
