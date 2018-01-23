@@ -28,7 +28,7 @@ Um eine nahtlose Interoperabilität zwischen Protokollen zu gewährleisten, defi
 * Einen Satz an *Anwendungseigenschaften*. Ein Wörterbuch mit Zeichenfolgeneigenschaften. Die Anwendung kann diese definieren und darauf zugreifen, ohne den Nachrichtentext deserialisieren zu müssen. IoT Hub ändert diese Eigenschaften nie.
 * Ein nicht lesbarer binärer Textkörper.
 
-Eigenschaftennamen und Eigenschaftswerte dürfen nur alphanumerische ASCII-Zeichen sowie die Zeichen ``{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` enthalten. Dies gilt für folgende Situationen:  
+Eigenschaftennamen und Eigenschaftswerte dürfen nur alphanumerische ASCII-Zeichen sowie die Zeichen ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` enthalten. Dies gilt für folgende Situationen:  
 
 * Senden von Gerät-zu-Cloud-Nachrichten über das Protokoll HTTPS
 * Senden von Cloud-an-Gerät-Nachrichten.

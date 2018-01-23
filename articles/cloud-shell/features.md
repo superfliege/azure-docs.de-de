@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: 79c3f376c2800e2ce9123c31af6e1aa2aacfcf00
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: a6627ab6febc763ae3f1cd464f26ad641f7c717d
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Features und Tools für Bash in Azure Cloud Shell
 
-[!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
 > [!TIP]
 > Features und Tools sind auch in [PowerShell](features-powershell.md) verfügbar.
@@ -50,7 +50,7 @@ Dateien außerhalb von `$Home` und der Zustand des Computers werden nicht sitzun
 
 ## <a name="tools"></a>Tools
 
-|Kategorie   |Name   |
+|Category (Kategorie)   |NAME   |
 |---|---|
 |Linux-Tools            |Bash<br> sh<br> tmux<br> dig<br>               |
 |Azure-Tools            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) und [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard) <br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) <br> [blobxfer](https://github.com/Azure/blobxfer#blobxfer) |
@@ -59,7 +59,7 @@ Dateien außerhalb von `$Home` und der Zustand des Computers werden nicht sitzun
 |Buildtools            |Make<br> Maven<br> npm<br> pip         |
 |Container             |[Docker-CLI](https://github.com/docker/cli)/[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS-CLI](https://github.com/dcos/dcos-cli)         |
 |Datenbanken              |MySQL-Client<br> PostgreSQL-Client<br> [SQLCMD-Hilfsprogramm](https://docs.microsoft.com/sql/tools/sqlcmd-utility)<br> [mssql-scripter](https://github.com/Microsoft/sql-xplat-cli) |
-|Sonstige                  |iPython-Client<br> [Cloud Foundry-CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/)<br> [Ansible](https://www.ansible.com/microsoft-azure)|
+|Andere                  |iPython-Client<br> [Cloud Foundry-CLI](https://github.com/cloudfoundry/cli)<br> [Terraform](https://www.terraform.io/docs/providers/azurerm/) |
 
 ## <a name="language-support"></a>Sprachunterstützung
 
@@ -74,4 +74,4 @@ Dateien außerhalb von `$Home` und der Zustand des Computers werden nicht sitzun
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Bash in Cloud Shell – Schnellstart](quickstart.md) <br>
-[Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/).
+[Erfahren Sie mehr über Azure CLI 2.0](https://docs.microsoft.com/cli/azure/)
