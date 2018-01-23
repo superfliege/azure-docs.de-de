@@ -28,13 +28,13 @@
 ### [Rollenbasierte Zugriffssteuerung (Vorschauversion)](service-bus-role-based-access-control.md)
 ### [Premium-Messaging](service-bus-premium-messaging.md)
 ### [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-### [Erstellen einer Service Bus-Anwendung mit mehreren Ebenen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### [Optimieren der Leistung](service-bus-performance-improvements.md)
 ### [Georedundante Notfallwiederherstellung und Georeplikation](service-bus-geo-dr.md)
 ### [Asynchrones Messaging und Hochverfügbarkeit](service-bus-async-messaging.md)
 ### [Handhabung von Ausfällen und Notfällen](service-bus-outages-disasters.md)
 
 ## Entwickeln
+### [Erstellen einer Service Bus-Anwendung mit mehreren Ebenen](service-bus-dotnet-multi-tier-app-using-service-bus-queues.md)
 ### Behandlung von Nachrichten
 #### [Service Bus-Warteschlangen, -Themen und -Abonnements](service-bus-queues-topics-subscriptions.md)
 #### [Nachrichten, Nutzlasten und Serialisierung](service-bus-messages-payloads.md)

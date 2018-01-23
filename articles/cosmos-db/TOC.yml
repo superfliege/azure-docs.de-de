@@ -341,7 +341,7 @@
         - name: Verwalten von Schlüsseln und Konsistenz
           href: manage-account.md
         - name: Azure-Speicher-Explorer
-          href: tutorial-documentdb-and-mongodb-in-storage-explorer.md
+          href: storage-explorer.md
         - name: Sicherheit
           items:
             - name: Verschlüsselung ruhender Daten
