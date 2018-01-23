@@ -4,7 +4,7 @@ description: "Hier erhalten Sie Antworten auf häufig gestellte Fragen zu VM-Ska
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/8/2017
+ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: bcbf536390786b61544d3e09638d89e6b3b5c004
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen
 
@@ -73,7 +73,7 @@ In dem Beispiel werden die CPU-Metrik auf der Hostebene und die Metrik für die 
 
 ### <a name="how-do-i-set-alert-rules-on-a-virtual-machine-scale-set"></a>Wie lege ich Warnungsregeln für eine VM-Skalierungsgruppe fest?
 
-Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) bzw. unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende Befehlszeilenschnittstelle](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
+Metrikwarnungen für VM-Skalierungsgruppen können über PowerShell oder über die Azure-Befehlszeilenschnittstelle erstellt werden. Weitere Informationen finden Sie unter [Azure Monitor – PowerShell-Schnellstartbeispiele](https://azure.microsoft.com/documentation/articles/insights-powershell-samples/#create-alert-rules) und unter [Azure Monitor – Schnellstartbeispiele für die plattformübergreifende CLI](https://azure.microsoft.com/documentation/articles/insights-cli-samples/#work-with-alerts).
 
 Die Zielressourcen-ID (TargetResourceId) der VM-Skalierungsgruppe sieht wie folgt aus: 
 
@@ -216,11 +216,11 @@ Sie können öffentliche SSH-Schlüssel bei der Erstellung eines virtuellen Linu
     }
 ```
  
-linuxConfiguration-Elementname | Erforderlich | Typ | Beschreibung
+linuxConfiguration-Elementname | Erforderlich | Typ | BESCHREIBUNG
 --- | --- | --- | --- |  ---
-ssh | Nein | Sammlung | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
-path | Ja | String | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
-keyData | Ja | String | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
+ssh | Nein  | Sammlung | Gibt die SSH-Schlüsselkonfiguration für ein Linux-Betriebssystem an.
+path | Ja | Zeichenfolge | Gibt den Linux-Dateipfad für die SSH-Schlüssel oder das Zertifikat an.
+keyData | Ja | Zeichenfolge | Gibt einen Base64-codierten öffentlichen SSH-Schlüssel an.
 
 Ein Beispiel finden Sie in der [GitHub-Schnellstartvorlage „101-vm-sshkey“](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json).
 
@@ -281,7 +281,7 @@ Wenn Sie für einen virtuellen Computer ein Reimaging durchführen, werden die Z
  
 ### <a name="what-happens-if-you-delete-a-certificate-from-the-key-vault"></a>Was geschieht, wenn Sie ein Zertifikat aus dem Schlüsseltresor löschen?
 
-Wenn das Geheimnis aus dem Schlüsseltresor gelöscht wird und Sie anschließend für alle Ihre virtuellen Computer `stop deallocate` ausführen und sie dann neu starten, tritt ein Fehler auf. Der Grund für den Fehler: Der CRP muss das Geheimnis aus dem Schlüsseltresor abrufen, das ist aber nicht möglich. In diesem Szenario können Sie die Zertifikate aus dem VM-Skalierungsgruppenmodell löschen. 
+Wenn das Geheimnis aus dem Schlüsseltresor gelöscht wird und Sie anschließend für alle Ihre virtuellen Computer `stop deallocate` ausführen und diese dann neu starten, tritt ein Fehler auf. Der Grund für den Fehler: Der CRP muss das Geheimnis aus dem Schlüsseltresor abrufen, das ist aber nicht möglich. In diesem Szenario können Sie die Zertifikate aus dem VM-Skalierungsgruppenmodell löschen. 
 
 Kundengeheimnisse werden von der CRP-Komponente nicht speichert. Wenn Sie `stop deallocate` für alle virtuellen Computer in der VM-Skalierungsgruppe ausführen, wird der Cache gelöscht. In diesem Szenario werden die Geheimnisse aus dem Schlüsseltresor abgerufen.
 
@@ -337,7 +337,7 @@ VM-Skalierungsgruppen sind hinsichtlich der Konformität ein grundlegender Besta
 
 Weitere Informationen finden Sie im [Microsoft Trust Center](https://www.microsoft.com/TrustCenter/Compliance/PCI).
 
-### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-vm-scale-sets"></a>Funktioniert die [verwaltete Azure-Dienstidentität](https://docs.microsoft.com/azure/active-directory/msi-overview) mit VM-Skalierungsgruppen?
+### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>Funktioniert die [verwaltete Azure-Dienstidentität](https://docs.microsoft.com/azure/active-directory/msi-overview) mit Skalierungsgruppen für virtuelle Computer?
 
 Ja. Einige MSI-Beispielvorlagen finden Sie in den Azure-Schnellstartvorlagen. Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux). Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows).
 
@@ -369,24 +369,30 @@ Informationen zur Erweiterungssequenzierung in VM-Skalierungsgruppen finden Sie 
  
 ### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>Wie setze ich das Kennwort für virtuelle Computer in meiner VM-Skalierungsgruppe zurück?
 
-Das Kennwort für virtuelle Computer in Ihrer VM-Skalierungsgruppe können Sie mithilfe von Zugriffserweiterungen für virtuelle Computer zurücksetzen. 
+Es gibt zwei Hauptmethoden zum Ändern des Kennworts für virtuelle Computer in Skalierungsgruppen.
 
-Verwenden Sie das folgende PowerShell-Beispiel:
+- Ändern Sie das Modell der VM-Skalierungsgruppe direkt. Verfügbar ab Compute-API 2017-12-01.
 
-```powershell
-$vmssName = "myvmss"
-$vmssResourceGroup = "myvmssrg"
-$publicConfig = @{"UserName" = "newuser"}
-$privateConfig = @{"Password" = "********"}
- 
-$extName = "VMAccessAgent"
-$publisher = "Microsoft.Compute"
-$vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
-$vmss = Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
-Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
-```
- 
- 
+    Aktualisieren Sie die Administratoranmeldeinformationen direkt im Skalierungsgruppenmodell (z. B. mit dem Azure-Ressourcen-Explorer, mit PowerShell oder mit CLI). Sobald die Skalierungsgruppe aktualisiert wurde, werden für alle neuen virtuellen Computer die neuen Anmeldeinformationen verwendet. Vorhandene virtuelle Computer erhalten die neuen Anmeldeinformationen nur, wenn für sie ein Reimaging durchgeführt wird. 
+
+- Setzen Sie das Kennwort mit den Zugriffserweiterungen für virtuelle Computer zurück.
+
+    Verwenden Sie das folgende PowerShell-Beispiel:
+    
+    ```powershell
+    $vmssName = "myvmss"
+    $vmssResourceGroup = "myvmssrg"
+    $publicConfig = @{"UserName" = "newuser"}
+    $privateConfig = @{"Password" = "********"}
+     
+    $extName = "VMAccessAgent"
+    $publisher = "Microsoft.Compute"
+    $vmss = Get-AzureRmVmss -ResourceGroupName $vmssResourceGroup -VMScaleSetName $vmssName
+    $vmss = Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss -Name $extName -Publisher $publisher -Setting $publicConfig -ProtectedSetting $privateConfig -Type $extName -TypeHandlerVersion "2.0" -AutoUpgradeMinorVersion $true
+    Update-AzureRmVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
+    ```
+
+
 ### <a name="how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set"></a>Wie füge ich allen virtuellen Computern in meiner VM-Skalierungsgruppe eine Erweiterung hinzu?
 
 Wenn die Aktualisierungsrichtlinie auf **Automatisch** festgelegt ist, werden durch die erneute Bereitstellung der Vorlage mit den neuen Erweiterungseigenschaften alle virtuellen Computer aktualisiert.
@@ -461,7 +467,7 @@ Zum Ausführen eines benutzerdefinierten Skripts, das in einem privaten Speicher
 
 ## <a name="networking"></a>Netzwerk
  
-### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-will-apply-to-all-the-vm-nics-in-the-set"></a>Kann einer Skalierungsgruppe eine Netzwerksicherheitsgruppe (NSG) zugewiesen werden, sodass diese für alle VM-NICs in der Gruppe gilt?
+### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Kann einer Skalierungsgruppe eine Netzwerksicherheitsgruppe (NSG) zugewiesen werden, sodass diese für alle VM-NICs in der Gruppe gilt?
 
 Ja. Eine Netzwerksicherheitsgruppe kann direkt auf eine Skalierungsgruppe angewendet werden, indem im Abschnitt „networkInterfaceConfigurations“ des Netzwerkprofils darauf verwiesen wird. Beispiel:
 
@@ -517,7 +523,7 @@ Informationen zum Bereitstellen einer VM-Skalierungsgruppe für ein vorhandenes 
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Wie füge ich die IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe der Ausgabe einer Vorlage hinzu?
 
-Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [ARM: Get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (ARM: Abrufen der privaten IP-Adressen einer VMSS).
+Informationen zum Hinzufügen der IP-Adresse des ersten virtuellen Computers in einer VM-Skalierungsgruppe zur Ausgabe einer Vorlage finden Sie unter [ARM - get VMSS's private IPs](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips) (Azure Resource Manager: Abrufen der privaten IP-Adressen der virtuellen Computer einer Skalierungsgruppe).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>Kann ich Skalierungsgruppen mit beschleunigten Netzwerken verwenden?
 
@@ -543,7 +549,7 @@ Ja. Um beschleunigte Netzwerke zu verwenden, legen Sie „enableAcceleratedNetwo
 
 ### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>Wie kann ich den DNS-Server konfigurieren, der von einer Skalierungsgruppe verwendet wird?
 
-Um eine VM-Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie ein dnsSettings-JSON-Paket im Abschnitt „networkInterfaceConfigurations“ der Skalierungsgruppe hinzu. Beispiel:
+Um eine VM-Skalierungsgruppe mit einer benutzerdefinierten DNS-Konfiguration zu erstellen, fügen Sie ein dnsSettings-JSON-Paket im Abschnitt „networkInterfaceConfigurations“ zur Skalierungsgruppe hinzu. Beispiel:
 ```json
     "dnsSettings":{
         "dnsServers":["10.0.0.6", "10.0.0.5"]
@@ -651,7 +657,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 ```
 Die erforderlichen „workspaceId“ und „workspaceKey“ finden Sie im OMS-Portal. Klicken Sie auf der Übersichtsseite auf die Kachel „Einstellungen“. Klicken Sie oben auf die Registerkarte „Verbundene Datenquellen“.
 
-Hinweis: Wenn für die Skalierungsgruppe _upgradePolicy_ der Wert „Manuell“ festgelegt ist, müssen Sie die Erweiterung auf alle virtuellen Computer in der Gruppe anwenden, indem Sie für diese ein Upgrade durchführen. Für die Befehlszeilenschnittstelle wäre dies _az vmss update-instances_.
+Hinweis: Wenn die Skalierungsgruppe _upgradePolicy_ auf „Manual“ festgelegt ist, müssen Sie die Erweiterung auf alle virtuellen Computer in der Gruppe anwenden, indem Sie für diese ein Upgrade durchführen. Für die Befehlszeilenschnittstelle wäre dies _az vmss update-instances_.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

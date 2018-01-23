@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: f12ee39f900373fcab80e59bc20de59fa039f0ff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 23f111bef6a68115e4474f3c13e91d69d7e89e1c
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Problembehandlung bei der Azure-Dateisynchronisierung (Vorschau)
 Verwenden Sie Azure File Sync (Vorschau), um die Dateifreigaben Ihrer Organisation in Azure Files zu zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit Azure File Sync werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -42,6 +42,9 @@ StorageSyncAgent.msi /l*v Installer.log
 
 > [!Note]  
 > Bei der Agent-Installation tritt ein Fehler auf, wenn der Computer für die Nutzung von Microsoft Update eingerichtet ist und der Windows Update-Dienst nicht ausgeführt wird.
+
+<a id="agent-installation-websitename-failure"></a>**Fehler bei der Installation des Agents: „Storage Sync Agent Wizard ended prematurely“ (Assistent für Speichersynchronisierungs-Agent wurde vorzeitig beendet)**  
+Dieses Problem kann auftreten, wenn der Standardname der IIS-Website geändert wurde. Um dieses Problem zu umgehen, benennen Sie die IIS-Standardwebsite in „Default Web Site“ um, und versuchen Sie die Installation erneut. Dieses Problem wird in einem zukünftigen Update des Agents behoben. 
 
 <a id="server-registration-missing"></a>**Der Server ist im Azure-Portal nicht unter „Registrierte Server“ aufgeführt.**  
 Wenn ein Server für einen Speichersynchronisierungsdienst nicht unter **Registrierte Server** aufgeführt wird:
@@ -91,7 +94,7 @@ Für die Erstellung eines Cloudendpunkts muss Ihr Benutzerkonto über die folgen
 * Schreiben: Rollenzuweisung erstellen
 
 Die folgenden integrierten Rollen verfügen über die erforderlichen Microsoft-Autorisierungsberechtigungen:  
-* Besitzer
+* Owner (Besitzer)
 * Benutzerzugriffsadministrator
 
 So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen verfügt:  
@@ -102,10 +105,11 @@ So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen v
     * **Rollenzuweisung** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
     * **Rollendefinition** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
 
-<a id="cloud-endpoint-deleteinternalerror"></a>**Fehler beim Löschen des Cloudendpunkts: „MgmtInternalError“**  
-Dieses Problem kann auftreten, wenn die Azure-Dateifreigabe oder das Speicherkonto vor dem Löschen des Cloudendpunkts gelöscht wurde. Dieses Problem wird in einer zukünftigen Version behoben. Wenn dies erfolgt ist, können Sie einen Cloudendpunkt löschen, nachdem Sie die Azure-Dateifreigabe oder das Speicherkonto gelöscht haben.
+<a id="server-endpoint-createjobfailed"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898)**                                                                                                                           
+Dieses Problem tritt auf, wenn sich der Serverendpunktpfad auf dem Systemvolume befindet und Cloudtiering aktiviert ist. Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
 
-Um das Auftreten dieses Problems in der Zwischenzeit zu verhindern, sollten Sie den Cloudendpunkt löschen, bevor Sie die Azure-Dateifreigabe oder das Speicherkonto löschen.
+<a id="server-endpoint-deletejobexpired"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“**                
+Dieses Problem tritt auf, wenn der Server offline ist oder keine Netzwerkkonnektivität hat. Ist der Server nicht mehr verfügbar, heben Sie die Registrierung des Servers im Portal auf, wodurch die Serverendpunkte gelöscht werden. Um die Serverendpunkte zu löschen, führen Sie die Schritte aus, die unter [Aufheben der Registrierung eines Servers mit Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) beschrieben sind.
 
 ## <a name="sync"></a>Synchronisierung
 <a id="afs-change-detection"></a>**Wie lange dauert es, bis eine Datei auf Servern in der Synchronisierungsgruppe synchronisiert wird, wenn ich die Datei direkt auf meiner Azure-Dateifreigabe mithilfe von SMB oder über das Portal erstellt habe?**  

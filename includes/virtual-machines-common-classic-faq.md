@@ -58,7 +58,7 @@ Wenn bei Remotedesktop oder SSH Probleme auftreten, installieren und verwenden S
 
 Zusätzliche Optionen für virtuelle Windows-Computer:
 
-* Suchen Sie den virtuellen Computer im klassischen Azure-Portal, und klicken Sie auf der Befehlsleiste auf **Remotezugriff zurücksetzen** .
+* Suchen Sie den virtuellen Computer im Azure-Portal, und klicken Sie auf der Befehlsleiste auf **Remotezugriff zurücksetzen**.
 * Lesen Sie [Problembehandlung bei Remotedesktopverbindungen mit einem Windows-basierten virtuellen Azure-Computer](../articles/virtual-machines/windows/troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Verwenden Sie Windows PowerShell-Remoting zum Herstellen der Verbindung mit dem virtuellen Computer, oder erstellen Sie zusätzliche Endpunkte, damit andere Ressourcen die Verbindung mit dem virtuellen Computer herstellen können. Weitere Informationen finden Sie unter [Einrichten von Endpunkten für einen virtuellen Computer](../articles/virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
@@ -85,7 +85,7 @@ Falls Sie den Benutzernamen oder das Kennwort vergessen und den VM-Agent install
 
 Weitere Details:
 
-* Wenn Sie bei Linux-Images das klassische Azure-Portal verwenden, ist „azureuser“ als Standardbenutzername angegeben. Sie können diesen Namen aber ändern, indem Sie den virtuellen Computer mit der Option „Aus Katalog“ und nicht mit „Schnellerfassung“ erstellen. Mit "Aus Katalog" können Sie auch entscheiden, ob Sie ein Kennwort und/oder einen SSH-Schlüssel für die Anmeldung verwenden möchten. Bei dem Benutzerkonto handelt es sich um einen Benutzer ohne Berechtigungen mit sudo-Zugriff zum Ausführen von privilegierten Befehlen. Das root-Konto ist deaktiviert.
+* Wenn Sie für Linux-Images das Azure-Portal verwenden, ist „azureuser“ als Standardbenutzername angegeben. Sie können diesen Namen aber ändern, indem Sie den virtuellen Computer mit der Option „Aus Katalog“ und nicht mit „Schnellerfassung“ erstellen. Mit "Aus Katalog" können Sie auch entscheiden, ob Sie ein Kennwort und/oder einen SSH-Schlüssel für die Anmeldung verwenden möchten. Bei dem Benutzerkonto handelt es sich um einen Benutzer ohne Berechtigungen mit sudo-Zugriff zum Ausführen von privilegierten Befehlen. Das root-Konto ist deaktiviert.
 * Für Windows-Images müssen Sie einen Benutzernamen und ein Kennwort bereitstellen, wenn Sie den virtuellen Computer erstellen. Das Konto wird der Gruppe "Administratoren" hinzugefügt.
 
 ## <a name="can-azure-run-anti-virus-on-my-virtual-machines"></a>Kann Azure Antivirenprogramme auf meinen virtuellen Computern ausführen?
@@ -96,7 +96,7 @@ Azure bietet verschiedene Optionen für Virenschutz-Softwarelösungen. Ihre Verw
 * [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/2014/05/13/deploying-antimalware-solutions-on-azure-virtual-machines/)
 
 ## <a name="what-are-my-options-for-backup-and-recovery"></a>Welche Optionen sind für Sicherung und Wiederherstellung verfügbar?
-Die Azure-Sicherung ist als Vorschau in bestimmten Regionen verfügbar. Weitere Informationen finden Sie unter [Sichern eines virtuellen Azure-Computers](../articles/backup/backup-azure-vms.md). Andere Lösungen sind von zertifizierten Partnern erhältlich. Aktuelle Angebote finden Sie auf dem Azure Marketplace.
+Die Azure-Sicherung ist als Vorschau in bestimmten Regionen verfügbar. Weitere Informationen finden Sie unter [Sichern eines virtuellen Azure-Computers](../articles/backup/backup-azure-arm-vms.md). Andere Lösungen sind von zertifizierten Partnern erhältlich. Aktuelle Angebote finden Sie auf dem Azure Marketplace.
 
 Eine weitere Option ist die Verwendung der Momentaufnahmefunktionen von Blob-Speichern. Hierfür müssen Sie den virtuellen Computer vor jedem Vorgang herunterfahren, für den eine Blob-Momentaufnahme benötigt wird. Dadurch werden ausstehende Schreibvorgänge gespeichert und das Dateisystem in einen konsistenten Zustand versetzt.
 
@@ -105,7 +105,7 @@ Bei Azure wird ein Stundenpreis basierend auf Größe und Betriebssystem des vir
 
 Es fallen Gebühren an, wenn der Status des virtuellen Computers "Wird ausgeführt" oder "Angehalten" lautet. Beim Status "Beendet (Zuordnung aufgehoben)" werden keine Gebühren berechnet. Um einen virtuellen Computer in den Status "Beendet (Zuordnung aufgehoben)"zu versetzen, führen Sie einen der folgenden Schritte aus:
 
-* Fahren Sie den virtuellen Computer über das klassische Azure-Portal herunter, oder löschen Sie ihn darüber.
+* Fahren Sie den virtuellen Computer über das Azure-Portal herunter, oder löschen Sie ihn darüber.
 * Verwenden Sie das Stop-AzureVM-Cmdlet, das im Azure PowerShell-Modul verfügbar ist.
 * Verwenden Sie den Vorgang "Shutdown Role" in der Dienstverwaltungs-REST-API, und geben Sie "StoppedDeallocated" für das PostShutdownAction-Element an.
 
@@ -118,7 +118,7 @@ Nicht geplante Wartungsereignisse können eintreten, wenn Azure ein schwerwiegen
 
 Für alle eigenständigen virtuellen Computer (d.h. virtuelle Computer, die nicht Teil einer Verfügbarkeitsgruppe sind) benachrichtigt Azure den Dienstadministrator des Abonnements per E-Mail mindestens eine Woche vor der geplanten Wartung, da die virtuellen Computer während des Updates möglicherweise neu gestartet werden. Bei Anwendungen, die auf den virtuellen Computer ausgeführt werden, kann es zu Ausfällen kommen.
 
-Sie können auch über das klassische Azure-Portal oder Azure PowerShell die Neustartprotokolle anzeigen, wenn der Neustart aufgrund einer geplanten Wartung durchgeführt wurde. Weitere Informationen finden Sie unter [Anzeigen von Neustartprotokollen für virtuelle Computer](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
+Sie können auch über das Azure-Portal oder Azure PowerShell die Neustartprotokolle anzeigen, wenn der Neustart aufgrund einer geplanten Wartung durchgeführt wurde. Weitere Informationen finden Sie unter [Anzeigen von Neustartprotokollen für virtuelle Computer](https://azure.microsoft.com/blog/2015/04/01/viewing-vm-reboot-logs/).
 
 Um Redundanz bereitzustellen, platzieren Sie zwei oder mehr ähnlich konfigurierte virtuelle Computer in der gleichen Verfügbarkeitsgruppe. Dadurch wird sichergestellt, dass während geplanter oder ungeplanter Wartungen mindestens ein virtueller Computer verfügbar ist. Azure garantiert für diese Konfiguration bestimmte Verfügbarkeitsstufen für virtuelle Computer. Weitere Details finden Sie unter [Verwalten der Verfügbarkeit virtueller Computer](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 

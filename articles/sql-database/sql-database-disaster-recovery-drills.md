@@ -12,14 +12,15 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
+ms.date: 10/20/2016
 ms.workload: Inactive
-ms.date: 07/31/2016
 ms.author: sashan
-ms.openlocfilehash: 8e395153fc9907107156c3412e5e0de554c83750
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.reviewer: carlrab
+ms.openlocfilehash: 73c2cbe978c980cbe1269b34cdb9f5ff86113e61
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="performing-disaster-recovery-drill"></a>Ausführen von Notfallwiederherstellungsverfahren
 Es wird empfohlen, in regelmäßigen Abständen Überprüfungen der Anwendungsbereitschaft für den Wiederherstellungsworkflow durchzuführen. Überprüfungen des Anwendungsverhaltens und der Auswirkungen von Datenverlusten und/oder Unterbrechungen durch Failover gehören zu einem angemessenen Entwicklungsverfahren. Solche Überprüfungen werden auch für die meisten Branchenstandards im Zuge von Zertifizierungen zur Geschäftskontinuität vorausgesetzt.
@@ -30,13 +31,13 @@ Notfallwiederherstellungsverfahren umfassen Folgendes:
 * Wiederherstellen
 * Überprüfen der Anwendungsintegrität nach der Wiederherstellung
 
-Abhängig vom [Entwurf Ihrer Anwendung für Geschäftskontinuität](sql-database-business-continuity.md)kann der verbundene Workflow variieren. Im Folgenden beschreiben wir bewährte Methoden zur Ausführung von Notfallwiederherstellungen im Kontext von Azure SQL-Datenbank.
+Abhängig vom [Entwurf Ihrer Anwendung für Geschäftskontinuität](sql-database-business-continuity.md)kann der verbundene Workflow variieren. In diesem Artikel sind die bewährten Methoden zum Durchführen eines Notfallwiederherstellungsverfahrens im Kontext von Azure SQL-Datenbank beschrieben.
 
 ## <a name="geo-restore"></a>Geografische Wiederherstellung
-Um Datenverluste beim Durchführen von Notfallwiederherstellungsverfahren zu verhindern, empfehlen wir die Verwendung einer Testumgebung, indem Sie eine Kopie der Produktionsumgebung erstellen und diese zum Überprüfen des Failoverworkflows der Anwendung verwenden.
+Um Datenverluste beim Durchführen eines Notfallwiederherstellungsverfahrens zu verhindern, sollten Sie das Verfahren mit einer Testumgebung ausführen, indem Sie eine Kopie der Produktionsumgebung erstellen und diese zum Überprüfen des Failoverworkflows der Anwendung verwenden.
 
 #### <a name="outage-simulation"></a>Simulieren von Ausfällen
-Um die Ausfallzeit zu simulieren, können Sie die Quelldatenbank löschen oder umbenennen. Dadurch wird ein Verbindungsfehler für die Anwendung verursacht.
+Um die Ausfallzeit zu simulieren, können Sie die Quelldatenbank umbenennen. Dadurch wird ein Verbindungsfehler für die Anwendung verursacht.
 
 #### <a name="recovery"></a>Wiederherstellen
 * Führen Sie die Geowiederherstellung der Datenbank auf einem anderen Server aus, wie [hier](sql-database-disaster-recovery.md)beschrieben.
@@ -45,22 +46,22 @@ Um die Ausfallzeit zu simulieren, können Sie die Quelldatenbank löschen oder u
 #### <a name="validation"></a>Überprüfen
 * Schließen Sie das Verfahren ab, indem Sie die Anwendungsintegrität nach der Wiederherstellung sicherstellen (einschließlich der Verbindungszeichenfolgen, Anmeldungen, grundlegenden Funktionstests oder sonstigen Überprüfungen, die Teil der Standardabmeldeverfahren von Anwendungen sind).
 
-## <a name="geo-replication"></a>Georeplikation
-Für eine durch Georeplikation geschützte Datenbank beinhaltet das Verfahren ein geplantes Failover auf die sekundäre Datenbank. Durch das geplante Failover wird sichergestellt, dass die primäre und die sekundäre Datenbank beim Wechseln der Rollen synchronisiert bleiben. Im Gegensatz zum ungeplanten Failover führt dieser Vorgang nicht zu Datenverlust, daher kann er auch in einer Produktionsumgebung ausgeführt werden.
+## <a name="failover-groups"></a>Failovergruppen
+Für eine durch Failovergruppen geschützte Datenbank beinhaltet das Verfahren ein geplantes Failover auf den sekundären Server. Durch das geplante Failover wird sichergestellt, dass die primäre und die sekundäre Datenbank in der Failovergruppe beim Wechseln der Rollen synchronisiert bleiben. Im Gegensatz zum ungeplanten Failover führt dieser Vorgang nicht zu Datenverlust, daher kann er auch in einer Produktionsumgebung ausgeführt werden.
 
 #### <a name="outage-simulation"></a>Simulieren von Ausfällen
 Um die Ausfallzeit zu simulieren, können Sie die Web-Anwendung oder den virtuellen Computer deaktivieren, die bzw. der mit der Datenbank verbunden ist. Dies führt zu Verbindungsfehlern für die Webclients.
 
 #### <a name="recovery"></a>Wiederherstellen
 * Stellen Sie sicher, dass die Anwendungskonfiguration in der Notfallwiederherstellungsregion auf die vorherige sekundäre Datenbank verweist. Diese Datenbank wird zur neuen primären Datenbank, auf die vollständig zugegriffen werden kann.
-* Ausführen eines [geplanten Failovers](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) , um die sekundäre Datenbank als neue primäre Datenbank festzulegen
+* Löst ein [geplantes Failover](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) der Failovergruppe vom sekundären Server aus.
 * Führen Sie die Anweisungen unter [Konfigurieren einer Datenbank nach der Wiederherstellung](sql-database-disaster-recovery.md) aus, um die Wiederherstellung abzuschließen.
 
 #### <a name="validation"></a>Überprüfen
-* Schließen Sie das Verfahren ab, indem Sie die Anwendungsintegrität nach der Wiederherstellung sicherstellen (einschließlich der Verbindungszeichenfolgen, Anmeldungen, grundlegenden Funktionstests oder sonstigen Überprüfungen, die Teil der Standardabmeldeverfahren von Anwendungen sind).
+Schließen Sie das Verfahren ab, indem Sie die Anwendungsintegrität nach der Wiederherstellung überprüfen (einschließlich Funktionalitätstests oder sonstiger Überprüfungen, die für die Verfahrensgenehmigungen erforderlich sind).
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informationen über Szenarien für die Geschäftskontinuität finden Sie unter [Szenarien für die Geschäftskontinuität](sql-database-business-continuity.md)
+* Informationen über Szenarien für die Geschäftskontinuität finden Sie unter [Szenarien für die Geschäftskontinuität](sql-database-business-continuity.md).
 * Informationen über automatisierte Sicherungen von Azure SQL-Datenbanken finden Sie unter [Automatisierte SQL-Datenbanksicherungen](sql-database-automated-backups.md)
-* Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md)
-* Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation](sql-database-geo-replication-overview.md)  
+* Informationen zum Verwenden automatisierter Sicherungen für die Wiederherstellung finden Sie unter [Wiederherstellen einer Datenbank aus vom Dienst initiierten Sicherungen](sql-database-recovery-using-backups.md).
+* Informationen zu schnelleren Wiederherstellungsoptionen finden Sie unter [Aktive Georeplikation und Failovergruppen](sql-database-geo-replication-overview.md).  

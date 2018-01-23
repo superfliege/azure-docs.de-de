@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 9/06/2017
+ms.date: 12/11/2017
 ms.author: tamram
-ms.openlocfilehash: 4100e8b90e37d6f4ab5123dfd682452c21c77998
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
@@ -26,7 +26,7 @@ Ein Feature von cloudbasierten Infrastrukturen wie Azure Storage ist, dass sie e
 
 Azure Storage bietet vier Auswahlmöglichkeiten für die Redundanz der Daten in Ihrem Speicherkonto:
 
-LRS (Locally Redundant Storage, lokal redundanter Speicher)
+- LRS (Locally Redundant Storage, lokal redundanter Speicher)
 - ZRS (Zone Redundant Storage, zonenredundanter Speicher) 
 - GRS (Geo-Redundant Storage, georedundanter Speicher)
 - RA-GRS (Read Access Geo-Redundant Storage, georedundanter Speicher mit Lesezugriff). 
