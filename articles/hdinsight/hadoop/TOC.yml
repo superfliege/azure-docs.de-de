@@ -4,6 +4,9 @@
   items:
     - name: Übersicht
       href: apache-hadoop-introduction.md
+    - name: Hadoop-Architektur in HDInsight
+      href: ../hdinsight-hadoop-architecture.md
+      maintainContext: true
     - name: Hadoop-Komponenten in HDInsight
       href: ../hdinsight-component-versioning.md
       maintainContext: true
@@ -153,6 +156,12 @@
           maintainContext: true
         - name: Erweiterte Analyse für HDInsight
           href: apache-hadoop-deep-dive-advanced-analytics.md
+        - name: Machine Learning in HDInsight
+          href: ../hdinsight-machine-learning-overview.md
+          maintainContext: true
+        - name: Bedarfsorientiertes Streaming in HDInsight
+          href: ../hdinsight-streaming-at-scale-overview.md
+          maintainContext: true
     - name: Erweitern von Clustern
       items:
         - name: Anpassen von Clustern mithilfe von Bootstrap

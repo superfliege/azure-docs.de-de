@@ -170,6 +170,8 @@
               href: app-insights-live-stream.md
             - name: Anwendungszuordnung
               href: app-insights-app-map.md
+            - name: Transaktionsdiagnose
+              href: app-insights-transaction-diagnostics.md
             - name: HockeyApp-Daten
               href: app-insights-hockeyapp-bridge-app.md
         - name: Visual Studio
