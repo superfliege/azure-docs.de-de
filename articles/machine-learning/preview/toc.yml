@@ -11,7 +11,7 @@
   items:
     - name: Installieren und Erstellen
       href: quickstart-installation.md
-- name: Lernprogramme
+- name: Tutorials
   items:
     - name: 1 – Vorbereiten von Daten
       href: tutorial-classifying-iris-part-1.md
@@ -108,7 +108,7 @@
           href: scenario-document-collection-analysis.md
         - name: Zuordnung von Fragen und Antworten
           href: scenario-qna-matching.md
-        - name: Vorhersagbarer Wartungsbedarf
+        - name: Predictive Maintenance
           href: scenario-predictive-maintenance.md
         - name: Klassifizierung von Luftbildern
           href: scenario-aerial-image-classification.md
@@ -130,7 +130,7 @@
           href: scenario-image-classification-using-cntk.md
         - name: Deep Learning für Predictive Maintenance
           href: scenario-deep-learning-for-predictive-maintenance.md
-- name: Referenz
+- name: Verweis
   items:
     - name: Vorbereitung der Daten
       items:
@@ -182,7 +182,9 @@
           href: release-notes-sprint-2.md
         - name: Sprint 2 QFE – Dezember 2017
           href: release-notes-sprint-2.1.md
-- name: Ressourcen
+        - name: Sprint 3 – Januar 2018
+          href: release-notes-sprint-3.md
+- name: angeben
   items:
     - name: Häufig gestellte Fragen
       href: frequently-asked-questions.md

@@ -87,6 +87,8 @@
       href: how-to-control-access.md
     - name: Verwenden der Azure-Befehlszeilenschnittstelle zum Verwalten des Gerätebereitstellungsdiensts
       href: how-to-manage-dps-with-cli.md
+    - name: Verwenden der SDK-Tools für die Entwicklung
+      href: how-to-use-sdk-tools.md
 - name: Verweis
   items:
     - name: REST

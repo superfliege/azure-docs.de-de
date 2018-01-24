@@ -4,11 +4,11 @@ hide_bc: True
 title: Microsoft Azure-Dokumentation
 description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
 featureFlags: clicktale
-ms.openlocfilehash: 301a88918d96d94a8e3878cd5d8d33cbabcffdc1
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 2cc74958c62ed99c75e848094e9da40fb21dddd3
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/23/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -1047,7 +1047,7 @@ ms.lasthandoff: 01/18/2018
                                                 <img src="media/index/LogicApp.svg" alt="" />
                                                 <p>Logic Apps</p>
                                             </a>
-                                        </li>                                        
+                                        </li>
                                     </ul>
                                 </div>
                                 <div class="group">
@@ -1303,7 +1303,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Skalierungsgruppen für virtuelle Computer</h3>
-                                                    <p>Zehntausende virtuelle Linux- und Windows-Computer verwalten und skalieren</p>
+                                                    <p>Verwalten und zentrales Hochskalieren Tausender virtueller Linux- und Windows-Computer</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1341,7 +1341,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>App Service</h3>
-                                                    <p>Bereitstellen von Web-Apps unter Linux mit Containern</p>
+                                                    <p>Schnelle Erstellung von leistungsstarken Cloud-Apps für Web- und Mobilgeräte</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1379,7 +1379,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service (AKS)</h3>
-                                                    <p>Bedarfsgerechtes Ausführen von Containeranwendungen mit Kubernetes</p>
+                                                    <p>Vereinfachen der Bereitstellung, der Verwaltung und des Betriebs von Kubernetes</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1455,7 +1455,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Cloud Services</h3>
-                                                    <p>Hoch verfügbare und unbegrenzt skalierbare Cloudanwendungen und APIs erstellen</p>
+                                                    <p>Erstellen hoch verfügbarer und unbegrenzt skalierbarer Cloudanwendungen und APIs</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1536,8 +1536,7 @@ ms.lasthandoff: 01/18/2018
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Gateway</h3>
-                                                    <p>
-Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungssteuerung </p>
+                                                    <p>Erstellen sicherer, skalierbarer und hoch verfügbarer Web-Front-Ends in Azure</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1594,7 +1593,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>Bereitstellen von Inhalten für Endbenutzer über ein robustes Netzwerk aus globalen Rechenzentren</p>
+                                                    <p>Gewährleisten einer sicheren, zuverlässigen Inhaltsbereitstellung mit umfassender weltweiter Reichweite</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1670,7 +1669,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Network Watcher</h3>
-                                                    <p>Überwachen und Diagnostizieren von Bedingungen auf der Ebene des Netzwerkszenarios</p>
+                                                    <p>Lösung für die Überwachung und Diagnose der Netzwerkleistung</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1713,7 +1712,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Blob Storage</h3>
-                                                    <p>Hochgradig skalierbarer Objektspeicher für unstrukturierte Daten</p>
+                                                    <p>REST-basierter Objektspeicher für unstrukturierte Daten</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1732,7 +1731,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Datenspeicher</h3>
-                                                    <p>Datenträgerspeicher für virtuelle Computer</p>
+                                                    <p>Dauerhafte, sichere Datenträgeroptionen zur Unterstützung virtueller Computer</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1751,7 +1750,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Warteschlangenspeicher</h3>
-                                                    <p>Strapazierfähige Warteschlangen für Clouddienste mit großem Volumen</p>
+                                                    <p>Effektives Skalieren von Apps entsprechend dem Datenverkehr</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1770,7 +1769,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>File Storage</h3>
-                                                    <p>Einfaches, verteiltes, plattformübergreifendes Dateisystem</p>
+                                                    <p>Dateifreigaben, die das standardmäßige SMB 3.0-Protokoll verwenden</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1808,7 +1807,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Hybridcloudspeicher für Unternehmen zur Senkung der Kosten und zur Verbesserung der Datensicherheit</p>
+                                                    <p>Senken von Kosten mit einer Unternehmenslösung für Hybridcloudspeicher</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1846,7 +1845,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>Orchestrieren der Notfallwiederherstellung von Azure-VMs sowie lokalen VMs und physischen Servern</p>
+                                                    <p>Orchestrieren von Schutz und Wiederherstellung privater Clouds</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1946,7 +1945,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>Bereitstellen von Inhalten für Endbenutzer über ein robustes Netzwerk aus globalen Rechenzentren </p>
+                                                    <p>Gewährleisten einer sicheren, zuverlässigen Inhaltsbereitstellung mit umfassender weltweiter Reichweite</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1984,7 +1983,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Search</h3>
-                                                    <p>Vollständig verwaltete SaaS-Lösung (Search-as-a-Service)</p>
+                                                    <p>Vollständig verwaltetes SaaS-Angebot (Search-as-a-Service)</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2022,7 +2021,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>Eine skalierbare Pushbenachrichtigungs-Engine zum Senden mehrerer Millionen Nachrichten in kürzester Zeit</p>
+                                                    <p>Senden von Pushbenachrichtigungen an jede Plattform und von jedem Back-End aus</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2046,7 +2045,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service (AKS)</h3>
-                                                    <p>Bedarfsgerechtes Ausführen von Containeranwendungen mit Kubernetes</p>
+                                                    <p>Vereinfachen der Bereitstellung, der Verwaltung und des Betriebs von Kubernetes</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2279,7 +2278,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Tabellenspeicher</h3>
-                                                    <p>Global verteilte Datenbank mit Unterstützung mehrerer Datenmodelle in jeder Größenordnung</p>
+                                                    <p>NoSQL-Schlüsselwertspeicher unter Verwendung von teilweise strukturierten Datasets</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2298,7 +2297,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis-Cache</h3>
-                                                    <p>Hoher Durchsatz, geringe Latenzzeit beim Zugriff auf Daten zum Erstellen schneller, skalierbarer Anwendungen</p>
+                                                    <p>Topleistung für Anwendungen dank hohem Durchsatz und Datenzugriff mit geringer Latenz</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2322,7 +2321,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HDInsight</h3>
-                                                    <p>Cloudbasierte Hadoop-, Spark-, R Server-, HBase- und Storm-Cluster bereitstellen</p>
+                                                    <p>Bereitstellen cloudbasierter Hadoop-, Spark-, R Server-, HBase- und Storm-Cluster</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2398,7 +2397,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Analysis Services</h3>
-                                                    <p>Professionelle Datenmodellierung in der Cloud</p>
+                                                    <p>Für große Unternehmen geeignetes Analysemodul-as-a-Service</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2474,7 +2473,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning Studio</h3>
-                                                    <p>Leistungsfähiges, cloudbasiertes Predictive Analytics-Tool für Predictive Maintenance</p>
+                                                    <p>Einfaches Erstellen, Bereitstellen und Verwalten von Predictive Analytics-Lösungen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2493,7 +2492,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Datenkatalog</h3>
-                                                    <p>Ermöglichen einer unternehmensweiten Self-Service-Datenquellenermittlung</p>
+                                                    <p>Erzielen eines größeren Nutzens aus Ihren Unternehmensdatenbeständen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2558,7 +2557,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning-Dienste</h3>
-                                                    <p>Leistungsfähiges, cloudbasiertes Predictive Analytics-Tool für Predictive Maintenance</p>
+                                                    <p>Künstliche Intelligenz für jedermann – mit einer umfassenden, skalierbaren und vertrauenswürdigen Plattform mit Experiment- und Modellverwaltung</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2834,7 +2833,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT Edge</h3>
-                                                    <p>Ausdehnen intelligenter Cloudfunktionen auf Edgegeräte</p>
+                                                    <p>Erweitern der Intelligenz der Cloud für Edgegeräte</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2872,13 +2871,13 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Location Based Services</h3>
-                                                    <p>Karten, Wegbeschreibungen, Suche und andere zuverlässige Geodienste</p>
+                                                    <p>Räumlicher Kontext für Daten dank einfacher und sicherer Standort-APIs</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                             <li>
                                 <a href="/azure/event-hubs/">
                                     <div class="cardSize">
@@ -2929,7 +2928,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Machine Learning-Dienste</h3>
-                                                    <p>Leistungsfähiges, cloudbasiertes Predictive Analytics-Tool für Predictive Maintenance</p>
+                                                    <p>Künstliche Intelligenz für jedermann – mit einer umfassenden, skalierbaren und vertrauenswürdigen Plattform mit Experiment- und Modellverwaltung</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2948,7 +2947,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Notification Hubs</h3>
-                                                    <p>Eine skalierbare Pushbenachrichtigungs-Engine zum Senden mehrerer Millionen Nachrichten in kürzester Zeit</p>
+                                                    <p>Senden von Pushbenachrichtigungen an jede Plattform und von jedem Back-End aus</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3030,7 +3029,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                         </div>
                                     </div>
                                 </a>
-                            </li>                            
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -3105,7 +3104,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>StorSimple</h3>
-                                                    <p>Hybridcloudspeicher für Unternehmen zur Senkung der Kosten und zur Verbesserung der Datensicherheit</p>
+                                                    <p>Senken von Kosten mit einer Unternehmenslösung für Hybridcloudspeicher</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3143,7 +3142,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Datenkatalog</h3>
-                                                    <p>Ermöglichen einer unternehmensweiten Self-Service-Datenquellenermittlung</p>
+                                                    <p>Erzielen eines größeren Nutzens aus Ihren Unternehmensdatenbeständen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3224,7 +3223,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Security Center</h3>
-                                                    <p>Bedrohungen durch mehr Transparenz verhindern, erkennen und behandeln</p>
+                                                    <p>Einheitliche Funktionen für Sicherheitsverwaltung und erweiterter Schutz vor Bedrohungen über hybride Cloudworkloads hinweg</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3262,7 +3261,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Schlüsseltresor</h3>
-                                                    <p>Erfahren, wie Kryptografieschlüssel und geheime Schlüssel verwaltet werden</p>
+                                                    <p>Sichern und Beibehalten der Kontrolle über Schlüssel und andere Geheimnisse</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3338,7 +3337,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Multi-Factor Authentication</h3>
-                                                    <p>Schutz des Zugriffs auf Ihre Daten und Apps mit einer zusätzlichen Authentifizierungsstufe</p>
+                                                    <p>Mehr Sicherheit für Ihre Daten und Apps – ohne zusätzlichen Aufwand für Benutzer</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3500,7 +3499,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure-Richtlinie</h3>
-                                                    <p>Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen </p>
+                                                    <p>Implementieren von unternehmensweiter Governance und umfassender Standards für Azure-Ressourcen</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3519,7 +3518,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure-Kostenverwaltung</h3>
-                                                    <p>Nachverfolgen der Cloudnutzung und der Ausgaben</p>
+                                                    <p>Optimieren der Cloudausgaben bei Maximierung des Cloudpotenzials</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3576,7 +3575,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>Mehr erfahren über das Transformieren von Maschinendaten in operative Intelligence</p>
+                                                    <p>Sammeln, Durchsuchen und Visualisieren von Computerdaten – lokal und in der Cloud</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3690,7 +3689,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Advisor</h3>
-                                                    <p>Verbessern der Wirtschaftlichkeit, Leistung, Hochverfügbarkeit und Sicherheit der Azure-Ressourcen</p>
+                                                    <p>Ihr personalisiertes Azure-Empfehlungsmodul mit Best Practices</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3709,7 +3708,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Service Health</h3>
-                                                    <p>Stellt personalisierte Hilfe und Unterstützung bei Problemen mit Azure-Diensten bereit, die sich auf Ihre Arbeit auswirken.</p>
+                                                    <p>Profitieren Sie von personalisierter Hilfe und Unterstützung bei Problemen mit Azure-Diensten, die sich auf Ihre Arbeit auswirken.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3728,7 +3727,7 @@ Layer-7-Load Balancer mit integriertem HTTP-Lastenausgleich und Bereitstellungss
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Verwaltete Anwendungen</h3>
-                                                    <p>Verwalten von bereitgestellten Lösungen für Ihre Kunden</p>
+                                                    <p>Vereinfachen der Verwaltung von Cloudangeboten</p>
                                                 </div>
                                             </div>
                                         </div>

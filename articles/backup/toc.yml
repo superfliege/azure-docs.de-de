@@ -97,6 +97,8 @@
               href: backup-azure-arm-vms.md
             - name: Sichern verschlüsselter virtueller Computer
               href: backup-azure-vms-encryption.md
+            - name: Aktivieren der VM-Sicherung während der Erstellung virtueller Computer
+              href: backup-during-vm-creation.md
         - name: Verwalten und Überwachen virtueller Computer
           items:
             - name: Verwalten von Azure-VM-Sicherungen im Azure-Portal
