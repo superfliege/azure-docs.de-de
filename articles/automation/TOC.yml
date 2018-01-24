@@ -27,6 +27,24 @@
       href: automation-tutorial-troubleshoot-changes.md
 - name: Anleitung
   items:
+    - name: Updateverwaltung
+      items:
+        - name: Übersicht
+          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: Verwalten von Updates für mehrere virtuelle Computer
+          href: manage-update-multi.md
+        - name: Integrieren von SCCM mit OMS-Updateverwaltung
+          href: oms-solution-updatemgmt-sccmintegration.md
+    - name: Änderungsnachverfolgung
+      items:
+        - name: Übersicht
+          href: ../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: Nachverfolgen von Änderungen auf Ihren virtuellen Computern
+          href: automation-vm-change-tracking.md
+    - name: Inventory
+      items:
+        - name: Verwalten eines virtuellen Computers mit Inventursammlung
+          href: automation-vm-inventory.md
     - name: Authentifizierung und Sicherheit
       items:
         - name: Erstellen eines eigenständigen Automation-Kontos
@@ -135,8 +153,10 @@
           href: automation-create-alert-triggered-runbook.md
         - name: Erstellen einer Amazon Web Service-VM
           href: automation-scenario-aws-deployment.md
-        - name: Starten und Beenden von virtuellen Computern mit JSON-Tags
-          href: automation-scenario-start-stop-vm-wjson-tags.md
+        - name: Wartung nach Azure-VM-Warnung
+          href: automation-azure-vm-alert-integration.md
+        - name: Starten und Beenden von virtuellen Computern außerhalb der Kernzeit
+          href: automation-solution-vm-management.md
         - name: Entfernen einer Ressourcengruppe
           href: automation-scenario-remove-resourcegroup.md
         - name: Integration der Quellcodeverwaltung mit GitHub Enterprise
@@ -147,22 +167,6 @@
           href: automation-invoke-runbook-from-omsla-alert.md
         - name: Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook
           href: automation-deploy-template-runbook.md
-    - name: Lösungen
-      items:
-        - name: Updateverwaltung
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json
-        - name: Verwalten von Updates für mehrere virtuelle Computer
-          href: manage-update-multi.md
-        - name: Integrieren von SCCM mit OMS-Updateverwaltung
-          href: oms-solution-updatemgmt-sccmintegration.md
-        - name: Änderungsnachverfolgung
-          href: ../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json
-        - name: Nachverfolgen von Änderungen auf Ihren virtuellen Computern
-          href: automation-vm-change-tracking.md
-        - name: Verwalten eines virtuellen Computers mit Inventursammlung
-          href: automation-vm-inventory.md
-        - name: Starten und Beenden von virtuellen Computern außerhalb der Kernzeit
-          href: automation-solution-vm-management.md
     - name: Überwachen
       items:
         - name: Weiterleiten von Azure Automation-Auftragsdaten an Log Analytics
