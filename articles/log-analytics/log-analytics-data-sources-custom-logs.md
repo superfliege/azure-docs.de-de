@@ -1,6 +1,6 @@
 ---
-title: Erfassen benutzerdefinierter Protokolle in OMS Log Analytics | Microsoft-Dokumentation
-description: "Log Analytics kann Ereignisse aus Textdateien auf Windows- und Linux-Computern sammeln.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
+title: Erfassen benutzerdefinierter Protokolle in Azure Log Analytics | Microsoft-Dokumentation
+description: "Log Analytics kann Ereignisse aus Textdateien auf Windows- und Linux-Computern sammeln.  Dieser Artikel enthält Informationen zum Definieren eines neuen benutzerdefinierten Protokolls sowie Details zu den Datensätzen, die im Log Analytics-Arbeitsbereich erstellt werden."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: bwren
-ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Benutzerdefinierte Protokolle in Log Analytics
 Mithilfe der Datenquelle „Custom Logs“ (Benutzerdefinierte Protokolle) in Log Analytics können Ereignisse aus Textdateien auf Windows- und Linux-Computern gesammelt werden. Viele Anwendungen protokollieren Informationen nicht in standardmäßigen Protokollierungsdiensten wie Windows-Ereignisprotokoll oder Syslog, sondern in Textdateien.  Mithilfe des Log Analytics-Features [Benutzerdefinierte Felder](log-analytics-custom-fields.md) können gesammelte Datensätze im Protokoll individuell analysiert und einzelnen Feldern zugeordnet werden.
@@ -42,19 +42,19 @@ Die zu sammelnden Protokolldateien müssen folgende Kriterien erfüllen:
 Gehen Sie zum Definieren einer benutzerdefinierten Protokolldatei wie folgt vor.  Am Ende dieses Artikels finden Sie eine exemplarische Vorgehensweise für das Hinzufügen eines benutzerdefinierten Protokolls.
 
 ### <a name="step-1-open-the-custom-log-wizard"></a>Schritt 1: Öffnen des Assistenten für benutzerdefinierte Protokolle
-Mit dem im OMS-Portal ausgeführten Assistenten für benutzerdefinierte Protokolle können Sie ein neues benutzerdefiniertes Protokoll für die Sammlung definieren.
+Mit dem im Azure-Portal ausgeführten Assistenten für benutzerdefinierte Protokolle können Sie ein neues benutzerdefiniertes Protokoll für die Sammlung definieren.
 
-1. Navigieren Sie im OMS-Portal zu **Einstellungen**.
-2. Klicken Sie auf **Daten** und anschließend auf **Benutzerdefinierte Protokolle**.
+1. Klicken Sie im Azure-Portal auf **Log Analytics**, auf Ihren Arbeitsbereich und anschließend auf **Erweiterte Einstellungen**.
+2. Klicken Sie auf **Daten** > **Benutzerdefinierte Protokolle**.
 3. Standardmäßig werden alle Konfigurationsänderungen automatisch per Push an alle Agents weitergegeben.  Bei Linux-Agents wird eine Konfigurationsdatei an den Fluentd-Datensammler gesendet.  Wenn Sie diese Datei manuell auf jedem Linux-Agent ändern möchten, deaktivieren Sie das Kontrollkästchen *Nachstehende Konfiguration auf meine Linux-Computer anwenden*.
 4. Klicken Sie auf **Hinzufügen+** , um den Assistenten für benutzerdefinierte Protokolle zu öffnen.
 
-### <a name="step-2-upload-and-parse-a-sample-log"></a>Schritt 2. Hochladen und Analysieren eines Beispielprotokolls
+### <a name="step-2-upload-and-parse-a-sample-log"></a>Schritt 2: Hochladen und Analysieren eines Beispielprotokolls
 Als Erstes muss ein benutzerdefiniertes Beispielprotokoll hochgeladen werden.  Der Assistent überprüft die Einträge in dieser Datei und zeigt sie zur Überprüfung an.  Log Analytics verwendet bei der Identifizierung der einzelnen Datensätze das von Ihnen angegebene Trennzeichen.
 
 Das Standardtrennzeichen **Neue Zeile** wird für Protokolldateien verwendet, die pro Zeile jeweils einen einzelnen Eintrag enthalten.  Falls die Zeile mit einer Datums- und Uhrzeitangabe in einem kompatiblen Format beginnt, können Sie als Trennzeichen die Option **Zeitstempel** angeben. Diese Option unterstützt Einträge, die sich über mehrere Zeilen erstrecken.
 
-Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einzelnen, in OMS gespeicherten Datensätze in der Protokolldatei mit der Datums-/Uhrzeitangabe des jeweiligen Eintrags aufgefüllt.  Bei Verwendung eines Trennzeichens vom Typ „Neue Zeile“ wird die TimeGenerated-Eigenschaft mit dem Zeitpunkt (Datum und Uhrzeit) aufgefüllt, an dem Log Analytics den Eintrag gesammelt hat.
+Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einzelnen, in Log Analytics gespeicherten Datensätze in der Protokolldatei mit der Datums-/Uhrzeitangabe des jeweiligen Eintrags aufgefüllt.  Bei Verwendung eines Trennzeichens vom Typ „Neue Zeile“ wird die TimeGenerated-Eigenschaft mit dem Zeitpunkt (Datum und Uhrzeit) aufgefüllt, an dem Log Analytics den Eintrag gesammelt hat.
 
 
 1. Klicken Sie auf **Durchsuchen**, und navigieren Sie zu einer Beispieldatei.  Hinweis: Bei manchen Browsern ist diese Schaltfläche unter Umständen mit **Datei auswählen** beschriftet.
@@ -65,14 +65,14 @@ Bei Verwendung der Zeitstempeloption wird die TimeGenerated-Eigenschaft der einz
 5. Klicken Sie auf **Weiter**.
 
 
-### <a name="step-3-add-log-collection-paths"></a>Schritt 3. Hinzufügen von Protokollsammlungspfaden
+### <a name="step-3-add-log-collection-paths"></a>Schritt 3: Hinzufügen von Protokollsammlungspfaden
 Definieren Sie für den Agent mindestens einen Pfad, an dem sich das benutzerdefinierte Protokoll befindet.  Sie können entweder einen bestimmten Pfad und Namen für die Protokolldatei angeben oder einen Pfad mit einem Platzhalter für den Namen verwenden.  Dadurch werden Anwendungen unterstützt, die täglich oder bei Erreichen einer bestimmten Dateigröße eine neue Datei erstellen.  Sie können auch mehrere Pfade für eine einzelne Protokolldatei angeben.
 
 Ein Beispiel: Angenommen, eine Anwendung erstellt jeden Tag eine Protokolldatei, und das Datum ist jeweils Teil des Dateinamens (etwa „log20100316.txt“). In einem solchen Fall kann beispielsweise ein Muster wie *log\*.txt* verwendet werden, um sämtliche Protokolldateien abzudecken, die nach dem Benennungsschema der Anwendung erstellt werden.
 
 Die folgende Tabelle enthält Musterbeispiele für die Angabe verschiedener Protokolldateien:
 
-| Beschreibung | Pfad |
+| BESCHREIBUNG | path |
 |:--- |:--- |
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\Logs* mit der Erweiterung „.txt“ |C:\Logs\\\*.txt |
 | Alle Dateien auf dem Windows-Agent im Verzeichnis *C:\Logs* mit einem Namen, der mit „log“ beginnt und die Erweiterung „.txt“ besitzt |C:\Logs\log\*.txt |
@@ -105,13 +105,12 @@ Der gesamte Protokolleintrag wird in einer einzelnen Eigenschaft namens **RawDat
 
 An dieser Stelle wird keine ausführliche Anleitung zum Analysieren des benutzerdefinierten Protokolleintrags bereitgestellt.  Diese finden Sie in der Dokumentation zu [Benutzerdefinierte Felder](log-analytics-custom-fields.md) .
 
-## <a name="disabling-a-custom-log"></a>Deaktivieren eines benutzerdefinierten Protokolls
-Sie können die Definition eines benutzerdefinierten Protokolls nicht mehr entfernen, nachdem dieses erstellt wurde, aber Sie können es deaktivieren, indem Sie alle Sammlungspfade entfernen.
+## <a name="removing-a-custom-log"></a>Entfernen eines benutzerdefinierten Protokolls
+Gehen Sie im Azure-Portal wie folgt vor, um ein benutzerdefiniertes Protokoll zu entfernen, das Sie zuvor definiert haben:
 
-1. Navigieren Sie im OMS-Portal zu **Einstellungen**.
-2. Klicken Sie auf **Daten** und anschließend auf **Benutzerdefinierte Protokolle**.
-3. Klicken Sie auf **Details** neben der Definition des zu deaktivierenden benutzerdefinierten Protokolls.
-4. Entfernen Sie alle Sammlungspfade für die Definition des benutzerdefinierten Protokolls.
+1. Klicken Sie im Menü **Daten** in den erweiterten **Einstellungen** für Ihren Arbeitsbereich auf **Benutzerdefinierte Protokolle**, um eine Liste mit allen Ihren benutzerdefinierten Protokollen anzuzeigen.
+2. Klicken Sie neben dem benutzerdefinierten Protokoll, das Sie entfernen möchten, auf **Entfernen**.
+
 
 ## <a name="data-collection"></a>Datensammlung
 Log Analytics sammelt etwa alle fünf Minuten neue Einträge aus den einzelnen benutzerdefinierten Protokollen.  Der Agent protokolliert für jede Protokolldatei, aus der er Daten sammelt, seine Position.  Wenn der Agent für einen bestimmten Zeitraum offline geht, sammelt Log Analytics Einträge ab dem Zeitpunkt der letzten Sammlung, unabhängig davon, ob die Einträge erstellt wurden, während der Agent offline war.
@@ -121,7 +120,7 @@ Sämtliche Inhalte des Protokolleintrags werden in eine einzelne Eigenschaft nam
 ## <a name="custom-log-record-properties"></a>Eigenschaften benutzerdefinierter Protokolldatensätze
 Benutzerdefinierte Protokolldatensätze besitzen einen Typ mit dem von Ihnen angegebenen Protokollnamen sowie die Eigenschaften aus der folgenden Tabelle:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | TimeGenerated |Der Zeitpunkt (Datum und Uhrzeit), zu dem der Datensatz von Log Analytics gesammelt wurde.  Wenn das Protokoll ein zeitbasiertes Trennzeichen verwendet, handelt es sich hierbei um die Zeitangabe aus dem Eintrag. |
 | SourceSystem |Die Art des Agents, auf dem das Ereignis gesammelt wurde. <br> OpsManager: Windows-Agent (Direktverbindung oder System Center Operations Manager) <br> Linux: Alle Linux-Agents |
@@ -129,11 +128,11 @@ Benutzerdefinierte Protokolldatensätze besitzen einen Typ mit dem von Ihnen ang
 | ManagementGroupName |Name der Verwaltungsgruppe für System Center Operations Manager-Agents.  Bei anderen Agents lautet dieser „AOI-\<Arbeitsbereich-ID\>“. |
 
 ## <a name="log-searches-with-custom-log-records"></a>Protokollsuchvorgänge mit benutzerdefinierten Protokolleinträgen
-Datensätze aus benutzerdefinierten Protokollen werden genau wie Datensätze aus anderen Datenquellen im OMS-Repository gespeichert.  Sie besitzen einen Typ mit dem Namen, den Sie beim Definieren des Protokolls angegeben haben. Dadurch können Sie bei der Suche die Type-Eigenschaft verwenden, um Datensätze abzurufen, die in einem bestimmten Protokoll gesammelt wurden.
+Datensätze aus benutzerdefinierten Protokollen werden genau wie Datensätze aus anderen Datenquellen im Log Analytics-Arbeitsbereich gespeichert.  Sie besitzen einen Typ mit dem Namen, den Sie beim Definieren des Protokolls angegeben haben. Dadurch können Sie bei der Suche die Type-Eigenschaft verwenden, um Datensätze abzurufen, die in einem bestimmten Protokoll gesammelt wurden.
 
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Datensätze aus benutzerdefinierten Protokollen abrufen:
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 |:--- |:--- |
 | MyApp_CL |Alle Ereignisse aus einem benutzerdefinierten Protokoll namens „MyApp_CL“. |
 | MyApp_CL &#124; where Severity_CF=="error" |Alle Ereignisse aus einem benutzerdefinierten Protokoll namens „MyApp_CL“ mit dem Wert *error* in einem benutzerdefinierten Feld namens *Severity_CF*. |
@@ -175,4 +174,4 @@ Wir definieren mithilfe benutzerdefinierter Felder die Felder *EventTime*, *Code
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Verwenden Sie [benutzerdefinierte Felder](log-analytics-custom-fields.md), um die Einträge des benutzerdefinierten Protokolls in einzelne Felder aufzuschlüsseln.
-* Informieren Sie sich über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.
+* Erfahren Sie mehr über [Protokollsuchvorgänge](log-analytics-log-searches.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.

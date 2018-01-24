@@ -11,130 +11,181 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: e5d7a5ec1c28a552420aba5e2cd6c8c7bbf4213d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST
 
-Das Azure Media Services-Team hat die Azure Active Directory-Authentifizierungsunterstützung (Azure AD) für den Azure Media Services-Zugriff veröffentlicht. Außerdem wurde angekündigt, dass geplant ist, die Azure Access Control-Dienstauthentifizierung für den Media Services-Zugriff als veraltet einzustufen. Da jedes Azure-Abonnement und jedes Media Services-Konto einem Azure AD-Mandanten zugeordnet ist, ist die Unterstützung der Azure AD-Authentifizierung mit vielen Vorteilen in Bezug auf die Sicherheit verbunden. Details zu dieser Änderung und Migration (bei Verwendung des Media Services-.NET-SDK für Ihre App) finden Sie in den folgenden Blogbeiträgen und Artikeln:
+Bei Verwendung der Azure AD-Authentifizierung mit Azure Media Services können Sie auf zwei Arten authentifizieren:
 
-- [Azure Media Services announces support for AAD and deprecation of ACS authentication](https://azure.microsoft.com/blog/azure%20media%20service%20aad%20auth%20and%20acs%20deprecation) (Azure Media Services-Ankündigung: Unterstützung für AAD und Einstellung der ACS-Authentifizierung)
-- [Access the Azure Media Services API with Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md) (Zugreifen auf die Azure Media Services-API mit Azure AD-Authentifizierung)
-- [Use Azure AD authentication to access Azure Media Services API with .NET](media-services-dotnet-get-started-with-aad.md) (Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per .NET)
-- [Get started with Azure AD authentication by using the Azure portal](media-services-portal-get-started-with-aad.md) (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal)
+- Die **Benutzerauthentifizierung** dient der Authentifizierung einer Person, die die App zum Interagieren mit Azure Media Services-Ressourcen verwendet. Die interaktive Anwendung sollte den Benutzer zuerst zur Eingabe seiner Anmeldeinformationen auffordern. Ein Beispiel hierfür ist eine Verwaltungskonsolen-App, die von autorisierten Benutzern zum Überwachen von Codierungsaufträgen oder Livestreaming verwendet wird. 
+- Die **Dienstprinzipalauthentifizierung** dient der Authentifizierung eines Diensts. Anwendungen, für die diese Authentifizierungsmethode normalerweise verwendet wird, sind Apps, die Daemondienste, Dienste der mittleren Ebene oder geplante Aufträge wie Web-Apps, Funktions-Apps, Logik-Apps, APIs oder Microservices ausführen.
 
-Einige Kunden müssen ihre Media Services-Lösungen unter den folgenden Einschränkungen entwickeln:
+    In diesem Tutorial wird gezeigt, wie Sie die Azure AD-**Dienstprinzipal**authentifizierung für den Zugriff auf die AMS-API mit REST verwenden. 
 
-*   Sie verwenden eine Programmiersprache, die nicht Microsoft .NET oder C# ist, oder die Laufzeitumgebung ist nicht Windows.
-*   Azure AD-Bibliotheken, z.B. Active Directory-Authentifizierungsbibliotheken, sind für die Programmiersprache nicht verfügbar oder können für die Laufzeitumgebung nicht genutzt werden.
+    > [!NOTE]
+    > **Dienstprinzipale** werden als Best Practice für die meisten Anwendungen empfohlen, die eine Verbindung mit Azure Media Services herstellen. 
 
-Einige Kunden haben Anwendungen entwickelt, indem die REST-API sowohl für die Access Control-Authentifizierung als auch für den Azure Media Services-Zugriff verwendet wurde. Für diese Kunden benötigen Sie einen Ansatz, bei dem nur die REST-API für die Azure AD-Authentifizierung und den nachfolgenden Azure Media Services-Zugriff verwendet wird. Hierbei besteht keine Abhängigkeit von den Azure AD-Bibliotheken oder vom Media Services-.NET-SDK. In diesem Artikel wird eine Lösung beschrieben und Beispielcode für das Szenario bereitgestellt. Da der Code auf REST-API-Aufrufe beschränkt ist und keine Abhängigkeit von Azure AD- oder Azure Media Services-Bibliotheken besteht, kann er leicht in andere Programmiersprachen übersetzt werden.
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Abrufen der Authentifizierungsinformationen aus dem Azure-Portal
+> * Abrufen des Zugriffstokens mithilfe von Postman
+> * Testen der **Assets**-API unter Verwendung des Zugriffstokens
+
 
 > [!IMPORTANT]
 > Derzeit wird für Media Services das Azure Access Control-Dienstauthentifizierungsmodell unterstützt. Die Access Control-Authentifizierung gilt aber ab dem 1. Juni 2018 als veraltet. Es wird empfohlen, möglichst bald zum Azure AD-Authentifizierungsmodell zu migrieren.
 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="design"></a>Entwurf
+- Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
+- [Erstellen Sie ein Azure Media Services-Konto mithilfe des Azure-Portals](media-services-portal-create-account.md).
+- Lesen Sie den Artikel [Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung – Übersicht](media-services-use-aad-auth-to-access-ams-api.md).
+- Installieren Sie den [Postman](https://www.getpostman.com/)-REST-Client, um die in diesem Artikel gezeigten REST-APIs auszuführen. 
 
-In diesem Artikel wird für die Authentifizierung und Autorisierung der folgende Aufbau verwendet:
+    In diesem Tutorial wird **Postman** verwendet, grundsätzlich ist aber jedes REST-Tool geeignet. Andere Alternativen sind: **Visual Studio Code** mit dem REST-Plug-In oder **Telerik Fiddler**. 
 
-*  Autorisierungsprotokoll: OAuth 2.0. OAuth 2.0 ist ein Websicherheitsstandard, der sowohl für die Authentifizierung als auch für die Autorisierung gilt. Er wird von Google, Microsoft, Facebook und PayPal unterstützt. Die Ratifizierung ist im Oktober 2012 erfolgt. Microsoft setzt voll auf die Unterstützung von OAuth 2.0 und OpenID Connect. Beide Standards werden in mehreren Diensten und Clientbibliotheken unterstützt, z.B. Azure Active Directory, Open Web Interface for .NET (OWIN) Katana und Azure AD-Bibliotheken.
-*  Gewährungstyp: Gewährungstyp „Clientanmeldeinformationen“. Clientanmeldeinformationen stellen in OAuth 2.0 einen von vier Gewährungstypen dar. Er wird häufig für den Azure AD Microsoft Graph-API-Zugriff genutzt.
-*  Authentifizierungsmodus: Dienstprinzipal. Der andere Authentifizierungsmodus ist die Benutzerauthentifizierung oder die interaktive Authentifizierung.
+## <a name="get-the-authentication-information-from-the-azure-portal"></a>Abrufen der Authentifizierungsinformationen aus dem Azure-Portal
 
-Insgesamt sind vier Anwendungen oder Dienste am Azure AD-Authentifizierungs- und -Autorisierungsablauf für die Verwendung von Media Services beteiligt. In der folgenden Tabelle werden die Anwendungen und Dienste sowie der Ablauf beschrieben:
+### <a name="overview"></a>Übersicht
 
-|Anwendungstyp |Anwendung |Ablauf|
-|---|---|---|
-|Client | Kunden-App oder -Lösung | Diese App (eigentlich: ihr Proxy) wird unter dem Azure AD-Mandanten registriert, in dem sich das Azure-Abonnement und das Mediendienstkonto befinden. Der Dienstprinzipal der registrierten App erhält dann die Rolle „Besitzer“ oder „Mitwirkender“ in der Access Control (IAM) des Mediendienstkontos. Der Dienstprinzipal wird durch die App-Client-ID und den geheimen Clientschlüssel dargestellt. |
-|Identitätsanbieter (IDP) | Azure AD als IDP | Der registrierte App-Dienstprinzipal (Client-ID und geheimer Clientschlüssel) wird von Azure AD als IDP authentifiziert. Diese Authentifizierung wird intern und implizit durchgeführt. Wie beim Ablauf mit Clientanmeldeinformationen auch, wird anstelle des Benutzers der Client authentifiziert. |
-|Secure Token Service (STS)/OAuth-Server | Azure AD als STS | Nach der Authentifizierung durch den IDP (bzw. im OAuth 2.0-Kontext den „OAuth-Server“) wird von Azure AD als STS/OAuth-Server ein Zugriffstoken oder JSON Web Token (JWT) für den Zugriff auf die Ressource der mittleren Ebene ausgestellt: in unserem Fall ist dies der Media Services-REST-API-Endpunkt. |
-|Ressource | Media Services-REST-API | Jeder Aufruf der Media Services-REST-API wird von einem Zugriffstoken autorisiert, das von Azure AD als STS oder vom OAuth-Server ausgestellt wird. |
+Für den Zugriff auf die Media Services-API müssen Sie die folgenden Datenpunkte erfassen.
 
-Wenn Sie den Beispielcode ausführen und ein JWT oder Zugriffstoken ausführen, verfügt das JWT über die folgenden Attribute:
+|Einstellung|Beispiel|Beschreibung|
+|---|-------|-----|
+|Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service) für Azure AD wird unter Verwendung des folgenden Formats erstellt: https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
+|REST-API-Endpunkt|https://amshelloworld.restv2.westus.media.azure.net/api/|Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden.|
+|Client-ID (Anwendungs-ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Client-ID der Azure AD-Anwendung. Die Client-ID ist erforderlich, um das Zugriffstoken abzurufen. |
+|Clientgeheimnis|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD-Anwendungsschlüssel (Clientgeheimnis). Das Clientgeheimnis ist erforderlich, um das Zugriffstoken abzurufen.|
 
-    aud: "https://rest.media.azure.net",
+### <a name="get-aad-auth-info-from-the-azure-portal"></a>Abrufen von AAD-Authentifizierungsinformationen aus dem Azure-Portal
 
-    iss: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
 
-    iat: 1497146280,
+1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+2. Navigieren zu Ihrer AMS-Instanz.
+3. Wählen Sie **API-Zugriff** aus.
+4. Klicken Sie auf **Verbindung mit Azure Media Services-API über Dienstprinzipal herstellen**.
 
-    nbf: 1497146280,
-    exp: 1497150180,
+    ![API-Zugriff](./media/connect-with-rest/connect-with-rest01.png)
 
-    aio: "Y2ZgYDjuy7SptPzO/muf+uRu1B+ZDQA=",
+5. Wählen Sie eine vorhandene **Azure AD-Anwendung** aus, oder erstellen Sie eine neue Anwendung (nachfolgend gezeigt).
 
-    appid: "02ed1e8e-af8b-477e-af3d-7e7219a99ac6",
+    > [!NOTE]
+    > Damit die Azure Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle **Mitwirkender** oder **Besitzer** für das Media Services-Konto verfügen, auf das zugegriffen werden soll. Wenn eine Ausnahme mit dem Text „Der Remoteserver hat einen Fehler zurückgegeben: 401 – Nicht autorisiert“ zurückgegeben wird, finden Sie weitere Informationen unter [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
-    appidacr: "1",
+    Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
+    
+    1. Klicken Sie auf **Neu erstellen**.
+    2. Geben Sie einen Namen ein.
+    3. Klicken Sie erneut auf **Neu erstellen**.
+    4. Klicken Sie auf **Speichern**.
 
-    idp: "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
+    ![API-Zugriff](./media/connect-with-rest/new-app.png)
 
-    oid: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+    Die neue App wird auf der Seite angezeigt.
 
-    sub: "a938cfcc-d3de-479c-b0dd-d4ffe6f50f7c",
+6. Rufen Sie die **Client-ID** (Anwendungs-ID) ab.
+    
+    1. Wählen Sie die Anwendung aus.
+    2. Die **Client-ID** wird im Fenster rechts angezeigt. 
 
-    tid: "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    ![API-Zugriff](./media/connect-with-rest/existing-client-id.png).
 
-Hier sind die Zuordnungen zwischen den Attributen im JWT und den vier Anwendungen bzw. Diensten der vorherigen Tabelle angegeben:
+7.  Rufen Sie den **Schlüssel** der Anwendung (das Clientgeheimnis) ab. 
 
-|Anwendungstyp |Anwendung |JWT-Attribut |
-|---|---|---|
-|Client- |Kunden-App oder -Lösung |appid: „02ed1e8e-af8b-477e-af3d-7e7219a99ac6“. Die Client-ID einer Anwendung, die Sie im nächsten Abschnitt für Azure AD registrieren. |
-|Identitätsanbieter (IDP) | Azure AD als IDP |IDP: „https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/“. Die GUID ist die ID des Microsoft-Mandanten (microsoft.onmicrosoft.com). Jeder Mandant verfügt über eine eigene eindeutige ID. |
-|Secure Token Service (STS)/OAuth-Server |Azure AD als STS | iss: „https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/“. Die GUID ist die ID des Microsoft-Mandanten (microsoft.onmicrosoft.com). |
-|Ressource | Media Services-REST-API |aud: „https://rest.media.azure.net“. Der Empfänger oder die Zielgruppe des Zugriffstokens. |
+    1. Klicken Sie auf die Schaltfläche **Anwendung verwalten** (beachten Sie, dass sich die Client-ID unter **Anwendungs-ID** befindet). 
+    2. Klicken Sie auf **Schlüssel**.
+    
+        ![API-Zugriff](./media/connect-with-rest/manage-app.png)
+    3. Generieren Sie den App-Schlüssel (das Clientgeheimnis), indem Sie **BESCHREIBUNG** und **LÄUFT AB** ausfüllen und auf **Speichern** klicken.
+    
+        Nach dem Klicken auf die Schaltfläche **Speichern** wird der Schlüsselwert angezeigt. Kopieren Sie den Schlüsselwert, bevor Sie das Blatt verlassen.
 
-## <a name="steps-for-setup"></a>Setup-Schritte
+    ![API-Zugriff](./media/connect-with-rest/connect-with-rest03.png)
 
-Weitere Informationen zum Registrieren und Einrichten einer Azure Active Directory-Anwendung (AAD) und zum Abrufen von Schlüsseln für das Aufrufen des Azure Media Services-REST-API-Endpunkts finden Sie im Artikel [Erste Schritte mit der Azure AD-Authentifizierung im Azure-Portal](media-services-portal-get-started-with-aad.md)
+Sie können Werte für AD-Verbindungsparameter für Ihre Datei „web.config“ oder „app.config“ hinzufügen, um diese später im Code zu verwenden.
 
+> [!IMPORTANT]
+> Der **Clientschlüssel** ist ein wichtiges Geheimnis und muss sicher in einem Schlüsseltresor gespeichert oder in der Produktion verschlüsselt werden.
 
-## <a name="info-to-collect"></a>Zu sammelnde Informationen
+## <a name="get-the-access-token-using-postman"></a>Abrufen des Zugriffstokens mithilfe von Postman
 
-Sammeln Sie als Vorbereitung auf die REST-Codierung die folgenden Datenpunkte zum Einfügen in den Code:
+In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** eine REST-API ausführen, die ein JWT-Bearertoken (Zugriffstoken) zurückgibt. Um eine beliebige Media Services-REST-API aufzurufen, müssen Sie Ihren Aufrufen den Autorisierungsheader und den Wert „Bearer *Ihr_Zugriffstoken*“ hinzufügen (wie im nächsten Abschnitt dieses Tutorials gezeigt). 
 
-*   Azure AD als STS-Endpunkt: https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token. Von diesem Endpunkt aus wird ein JWT-Zugriffstoken angefordert. Azure AD dient nicht nur als IDP, sondern auch als STS. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken). Ein JWT-Token verfügt über verschiedene Ansprüche.
-*   Azure Media Services-REST-API als Ressource oder Zielgruppe: https://rest.media.azure.net.
-*   Client-ID: Siehe Schritt 2 unter [Setup-Schritte](#steps-for-setup).
-*   Geheimer Clientschlüssel: Siehe Schritt 2 unter [Setup-Schritte](#steps-for-setup).
-*   Ihr REST-API-Endpunkt des Media Services-Kontos im folgenden Format:
+1. Öffnen Sie **Postman**.
+2. Wählen Sie **POST**aus.
+3. Geben Sie die URL mit Ihrem Mandantennamen im folgenden Format ein: Der Mandantenname muss auf **.onmicrosoft.com**, die URL muss auf **oauth2/token** enden: 
 
-    https://[mediendienstkonto-name].restv2.[rechenzentrum].media.azure.net/API 
+    https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token
 
-    Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden. Beispiel: https://willzhanmswjapan.restv2.japanwest.media.azure.net/API.
+4. Wählen Sie die Registerkarte **Headers** (Header) aus.
+5. Geben Sie die Informationen für **Headers** (Header) mithilfe der Schlüssel/Wert-Daten ein. 
 
-Sie können diese fünf Parameter dann in Ihre web.config- oder app.config-Datei einfügen und im Code verwenden.
+    ![Datentabelle](./media/connect-with-rest/headers-data-grid.png)
 
-## <a name="sample-code"></a>Beispielcode
+    Alternativ können Sie auf den Link **Bulk Edit** (Massenbearbeitung) im rechten Bereich des Postman-Fensters klicken und den folgenden Code einfügen.
 
-Den Beispielcode finden Sie unter [Azure AD Authentication for Azure Media Services Access: Both via REST API](https://github.com/willzhan/WAMSRESTSoln) (Azure AD-Authentifizierung für Azure Media Services-Zugriff: Jeweils per REST-API).
+        Content-Type:application/x-www-form-urlencoded
+        Keep-Alive:true
 
-Der Beispielcode besteht aus zwei Teilen:
+6. Wechseln Sie zur Registerkarte **Body** (Anforderungskörper).
+7. Geben Sie die Informationen für den Anforderungskörper mithilfe der Schlüssel/Wert-Daten ein (ersetzen Sie die Werte für Client-ID und Geheimnis). 
 
-*   Einem DLL-Bibliotheksprojekt mit dem gesamten REST-API-Code für die Azure AD-Authentifizierung und -Autorisierung. Außerdem enthält er eine Methode zum Durchführen von REST-API-Aufrufen des Media Services-REST-API-Endpunkts mit dem Zugriffstoken.
-*   Einem Konsolentestclient, mit dem die Azure AD-Authentifizierung initiiert und verschiedene Media Services-REST-API-Instanzen aufgerufen werden.
+    ![Datentabelle](./media/connect-with-rest/data-grid.png)
 
-Das Beispielprojekt verfügt über drei Features:
+    Alternativ können Sie auf den Link **Bulk Edit** (Massenbearbeitung) im rechten Bereich des Postman-Fensters klicken und den folgenden Anforderungskörper einfügen (ersetzen Sie die Werte für Client-ID und Geheimnis):
 
-*   Azure AD-Authentifizierungen über die Gewährung von Clientanmeldeinformationen unter ausschließlicher Verwendung der REST-API.
-*   Azure Media Services-Zugriff unter ausschließlicher Verwendung der REST-API.
-*   Azure Storage-Zugriff unter ausschließlicher Verwendung der REST-API (wie beim Erstellen eines Media Services-Kontos per REST-API).
+        grant_type:client_credentials
+        client_id:{Your Client ID that you got from your AAD Application}
+        client_secret:{Your client secret that you got from your AAD Application's Keys}
+        resource:https://rest.media.azure.net
 
+8. Klicken Sie auf **Send** (Senden).
 
-## <a name="where-is-the-refresh-token"></a>Wo ist das Aktualisierungstoken?
+    ![Tokenabruf](./media/connect-with-rest/connect-with-rest04.png)
 
-Einige Leser fragen sich vielleicht Folgendes: Wo ist das Aktualisierungstoken? Warum wird hier kein Aktualisierungstoken genutzt?
+Die zurückgegebene Antwort enthält das **Zugriffstoken**, das Sie für den Zugriff auf beliebige AMS-APIs verwenden.
 
-Der Zweck eines Aktualisierungstokens besteht nicht darin, ein Zugriffstoken zu aktualisieren. Es ist so konzipiert, dass die Endbenutzerauthentifizierung umgangen wird und trotzdem ein gültiges Zugriffstoken verfügbar ist, wenn ein früheres Token abläuft. Ein besserer Name für ein Aktualisierungstoken wäre daher beispielsweise „Token zur Umgehung der erneuten Benutzeranmeldung“.
+## <a name="test-the-assets-api-using-the-access-token"></a>Testen der **Assets**-API unter Verwendung des Zugriffstokens
 
-Wenn Sie den Ablauf zur Gewährung der OAuth 2.0-Autorisierung verwenden (Benutzername und Kennwort, im Namen eines Benutzers), dient ein Aktualisierungstoken zum Beschaffen eines erneuerten Zugriffstokens ohne Anforderung des Benutzereingriffs. Für den Ablauf zur Gewährung von OAuth 2.0-Clientanmeldeinformationen, der in diesem Artikel beschrieben wird, fungiert der Client im eigenen Namen. Sie benötigen keinerlei Benutzereingriff, und der Autorisierungsserver muss kein Aktualisierungstoken für Sie bereitstellen. Wenn Sie die **GetUrlEncodedJWT**-Methode debuggen, fällt Ihnen auf, dass die Antwort vom Tokenendpunkt ein Zugriffstoken enthält, aber kein Aktualisierungstoken.
+In diesem Abschnitt wird gezeigt, wie Sie mithilfe von **Postman** auf die **Assets**-API zugreifen.
+
+1. Öffnen Sie **Postman**.
+2. Wählen Sie **GET**aus.
+3. Fügen Sie den REST-API-Endpunkt ein (z.B. https://amshelloworld.restv2.westus.media.azure.net/api/Assets).
+4. Wählen Sie die Registerkarte **Authorization** (Autorisierung) aus. 
+5. Klicken Sie auf **Bearer Token** (Bearertoken).
+6. Fügen Sie das Token ein, das im vorherigen Abschnitt erstellt wurde.
+
+    ![Tokenabruf](./media/connect-with-rest/connect-with-rest05.png)
+
+    > [!NOTE]
+    > Die Postman-Benutzeroberfläche für einen Mac und einen PC unterscheidet sich möglicherweise. Wenn die Mac-Version im Abschnitt **Authentication** (Authentifizierung) keine Option „Bearer Token“ (Bearertoken) in der Dropdownliste aufweist, müssen Sie den **Authorization**-Header auf dem Mac-Client manuell hinzufügen.
+
+   ![Autorisierungsheader](./media/connect-with-rest/auth-header.png)
+
+7. Wählen Sie **Headers** (Header) aus.
+5. Klicken Sie im rechten Bereich des Postman-Fensters auf **Bulk Edit** (Massenbearbeitung).
+6. Fügen Sie folgenden Header ein:
+
+        x-ms-version:2.15
+        Accept:application/json
+        Content-Type:application/json
+        DataServiceVersion:3.0
+        MaxDataServiceVersion:3.0
+
+7. Klicken Sie auf **Send** (Senden).
+
+Die zurückgegebene Antwort enthält die Assets in Ihrem Konto.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erste Schritte mit dem [Hochladen von Dateien in Ihr Konto](media-services-dotnet-upload-files.md).
+* Probieren Sie den Beispielcode aus, der in [Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Azure Media Services-API per REST](https://github.com/willzhan/WAMSRESTSoln) verwendet wird.
+* [Hochladen von Dateien mit .NET](media-services-dotnet-upload-files.md)
