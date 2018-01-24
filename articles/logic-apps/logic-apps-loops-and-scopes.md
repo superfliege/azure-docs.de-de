@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: a17de187f67c075147ea8ff7f69434014eea3fdb
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 9cdbe4a12a0b16341a1e52f176901045baf327b5
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Schleifen, Bereiche und Auflösen von Batches in Logik-Apps
   
@@ -26,9 +26,9 @@ Logic Apps bietet eine Reihe von Verfahren zum Arbeiten mit Arrays, Sammlungen, 
   
 ## <a name="foreach-loop-and-arrays"></a>ForEach-Schleife und -Arrays
   
-Logic Apps erlaubt Schleifen über einen Satz von Daten und das Ausführen von Aktionen für jedes Element.  Dies wird über die `foreach`-Aktion ermöglicht.  Sie können im Designer eine foreach-Schleife hinzufügen.  Nachdem Sie das Array ausgewählt haben, das Sie durchlaufen möchten, können Sie mit dem Hinzufügen von Aktionen beginnen.  Sie können mehrere Aktionen für jede foreach-Schleife hinzufügen.  Innerhalb der Schleife können Sie dann angeben, was bei jedem Wert des Arrays passieren soll.
+Logic Apps erlaubt Schleifen über einen Satz von Daten und das Ausführen von Aktionen für jedes Element.  Eine Schleife für eine Sammlung kann mithilfe der Aktion `foreach` ausgeführt werden.  Im Designer können Sie eine foreach-Schleife hinzufügen.  Nachdem Sie das Array ausgewählt haben, das Sie durchlaufen möchten, können Sie mit dem Hinzufügen von Aktionen beginnen.  Sie können mehrere Aktionen für jede foreach-Schleife hinzufügen.  Innerhalb der Schleife können Sie dann angeben, was bei den einzelnen Werten des Arrays passieren soll.
 
-Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten dargestellt angeben.  Dies ist ein Beispiel für eine foreach-Schleife, die eine E-Mail-Nachricht für jede E-Mail-Adresse sendet, die „microsoft.com“ enthält:
+  In diesem Beispiel wird für jede E-Mail-Adresse, die „microsoft.com“ enthält, eine E-Mail gesendet. Bei Verwendung der Codeansicht können Sie eine foreach-Schleife wie im folgenden Beispiel angeben:
 
 ``` json
 {
@@ -66,7 +66,7 @@ Wenn Sie die Codeansicht verwenden, können Sie eine foreach-Schleife wie unten 
 }
 ```
   
-  Eine `foreach`-Aktion kann Arrays mit bis zu 5.000 Zeilen durchlaufen.  Standardmäßig wird jede Iteration gleichzeitig ausgeführt.  
+  Eine `foreach`-Aktion kann Arrays mit Tausenden von Entitäten durchlaufen.  Die Iterationen werden standardmäßig parallel ausgeführt.  Ausführliche Informationen zu Array- und Parallelitätslimits finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](logic-apps-limits-and-config.md).
 
 ### <a name="sequential-foreach-loops"></a>Sequenzielle ForEach-Schleifen
 
@@ -83,13 +83,15 @@ Zum Aktivieren der sequenziellen Ausführung einer ForEach-Schleife muss der Vor
   
 ## <a name="until-loop"></a>Until-Schleife
   
-  Sie können eine Aktion oder eine Reihe von Aktionen ausführen, bis eine Bedingung erfüllt ist.  Das häufigste Szenario hierfür ist der Aufruf eines Endpunkts, bis Sie die gewünschte Antwort erhalten.  Sie können im Designer eine until-Schleife hinzufügen.  Sie können nach dem Hinzufügen von Aktionen innerhalb der Schleife die Beendigungsbedingung sowie die Schleifenlimits festlegen.  Es gibt eine einminütige Verzögerung zwischen Schleifendurchläufen.
+  Sie können eine Aktion oder eine Reihe von Aktionen ausführen, bis eine Bedingung erfüllt ist.  Das gängigste Szenario für die Verwendung einer until-Schleife ist das Aufrufen eines Endpunkts, bis die gewünschte Antwort zurückgegeben wird.  Sie können im Designer eine until-Schleife hinzufügen.  Sie können nach dem Hinzufügen von Aktionen innerhalb der Schleife die Beendigungsbedingung sowie die Schleifenlimits festlegen.
   
-  Wenn Sie die Codeansicht verwenden, können Sie eine until-Schleife wie unten dargestellt angeben.  Dies ist ein Beispiel für den Aufruf eines HTTP-Endpunkts bis der Antworttext den Wert „Completed“ hat.  Die Schleife wird beendet, wenn 
+  In diesem Beispiel wird ein HTTP-Endpunkt aufgerufen, bis der Antworttext den Wert „Completed“ hat.  Der Vorgang wird abgeschlossen, wenn eine der folgenden Bedingungen erfüllt ist: 
   
-  * die HTTP-Antwort den Status „Completed“ aufweist
-  * sie für 1 Stunde ausgeführt wurde
-  * sie 100-mal durchlaufen wurde.
+  * Die HTTP-Antwort hat den Status „Completed“.
+  * Der Vorgang wurde eine Stunde lang ausgeführt.
+  * Die Schleife wurde 100 Mal durchlaufen.
+  
+  Bei Verwendung der Codeansicht können Sie eine until-Schleife wie im folgenden Beispiel angeben:
   
   ``` json
   {
@@ -117,9 +119,9 @@ Zum Aktivieren der sequenziellen Ausführung einer ForEach-Schleife muss der Vor
   
 ## <a name="spliton-and-debatching"></a>SplitOn und Auflösen von Batches
 
-Mitunter empfängt ein Trigger ein Array von Elementen, die Sie aus dem Batch lösen möchten, um einen Workflow pro Element zu starten.  Dies kann über den Befehl `spliton` erreicht werden.  Wenn Ihr Trigger-Swagger eine Nutzlast angibt, die ein Array ist, wird standardmäßig ein `spliton` hinzugefügt und eine Ausführung pro Element gestartet.  SplitOn kann nur einem Trigger hinzugefügt werden.  Dies kann manuell konfiguriert oder in der Codeansicht mit der Definition überschrieben werden.  Derzeit kann SplitOn Arrays mit bis zu 5.000 Elementen auflösen.  Sie können `spliton` nicht zusammen mit einer Implementierung des synchronisierten Antwortmusters verwenden.  Jeder aufgerufene Workflow, der eine `response`-Aktion sowie ein `spliton`-Element umfasst, wird asynchron ausgeführt und sendet sofort eine `202 Accepted`-Antwort.  
+Mitunter empfängt ein Trigger ein Array von Elementen, die Sie aus dem Batch lösen möchten, um einen Workflow pro Element zu starten.  Dieses Auflösen eines Batchs kann über den Befehl `spliton` erreicht werden.  Wenn Ihr Trigger-Swagger eine Nutzlast angibt, bei der es sich um ein Array handelt, wird ein Element vom Typ `spliton` hinzugefügt. Der Befehl `spliton` startet eine Ausführung pro Element im Array.  SplitOn kann nur einem Trigger hinzugefügt werden, der manuell konfiguriert oder überschrieben werden kann. Sie können `spliton` nicht zusammen mit einer Implementierung des synchronisierten Antwortmusters verwenden.  Jeder aufgerufene Workflow, der neben `spliton` auch über eine `response`-Aktion verfügt, wird asynchron ausgeführt und sendet sofort eine `202 Accepted`-Antwort.  
 
-SplitOn kann in der Codeansicht wie im folgenden Beispiel angegeben werden.  Damit wird ein Array von Elementen empfangen und zeilenweise aufgelöst.
+  Dieses Beispiel empfängt ein Array von Elementen und führt eine zeilenweise Batchauflösung durch. SplitOn kann in der Codeansicht wie im folgenden Beispiel angegeben werden:
 
 ```
 {
@@ -139,7 +141,7 @@ SplitOn kann in der Codeansicht wie im folgenden Beispiel angegeben werden.  Dam
 
 ## <a name="scopes"></a>Bereiche
 
-Es ist möglich, eine Reihe von Aktionen zusammen in einem Bereich zu gruppieren.  Dies ist besonders nützlich für die Implementierung der Ausnahmebehandlung.  Sie können im Designer einen neuen Bereich hinzufügen und in diesem mit dem Hinzufügen von Aktionen beginnen.  Sie können Bereiche in der Codeansicht wie folgt definieren:
+Es ist möglich, eine Reihe von Aktionen zusammen in einem Bereich zu gruppieren.  Bereiche sind besonders für die Implementierung der Ausnahmenbehandlung hilfreich.  Sie können im Designer einen neuen Bereich hinzufügen und in diesem mit dem Hinzufügen von Aktionen beginnen.  Sie können Bereiche in der Codeansicht wie im folgenden Beispiel definieren:
 
 
 ```

@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 2fccf7cae61f4d8862640b89d39f9d4480362429
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 39caeef2648730194827e04e020d8eaea5414f4f
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="giving-access-to-manage-azure-ad-privileged-identity-management"></a>Gewähren des Zugriffs zur Verwaltung von Azure AD Privileged Identity Management
-Der globale Administrator, der Azure AD Privileged Identity Management (PIM) für eine Organisation aktiviert, erhält automatisch Rollenzuweisungen und Zugriff auf PIM. Andere Benutzer dagegen erhalten nicht standardmäßig Schreibzugriff, auch nicht die weiteren globalen Administratoren. Andere globale Administratoren, Sicherheitsadministratoren und Benutzer mit der Berechtigung „Sicherheit lesen“ erhalten schreibgeschützten Zugriff auf Azure AD PIM. Um Zugriff auf PIM zu gewähren, kann der erste Benutzer andere der Rolle **Administrator für privilegierte Rollen** zuweisen. Diese Zuweisung muss innerhalb von PIM erfolgen und kann nicht über PowerShell oder andere Portale geändert werden.
+Der globale Administrator, der Azure AD Privileged Identity Management (PIM) für eine Organisation aktiviert, erhält automatisch Rollenzuweisungen und Zugriff auf PIM. Andere Benutzer dagegen erhalten nicht standardmäßig Schreibzugriff, auch nicht die weiteren globalen Administratoren. Andere globale Administratoren, Sicherheitsadministratoren und Benutzer mit Leseberechtigung für Sicherheitsfunktionen erhalten schreibgeschützten Zugriff auf Azure AD PIM. Um Zugriff auf PIM zu gewähren, kann der erste Benutzer andere der Rolle **Administrator für privilegierte Rollen** zuweisen. Diese Zuweisung muss innerhalb von PIM erfolgen und kann nicht über PowerShell oder andere Portale geändert werden.
 
 > [!NOTE]
 > Für die Verwaltung von Azure AD PIM ist Azure MFA erforderlich. Da Microsoft-Konten nicht für Azure MFA registriert werden können, kann ein Benutzer, der sich mit einem Microsoft-Konto anmeldet, nicht auf Azure AD PIM zugreifen.

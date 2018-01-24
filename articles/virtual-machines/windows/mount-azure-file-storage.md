@@ -3,7 +3,7 @@ title: "Bereitstellen von Azure File Storage über einen virtuellen Windows Azur
 description: "Speichern Sie die Datei mit Azure File Storage in der Cloud, und stellen Sie Ihre Clouddateifreigabe über einen virtuellen Azure-Computer bereit."
 documentationcenter: 
 author: cynthn
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 
 ms.service: virtual-machines-windows
@@ -11,30 +11,30 @@ ms.workload:
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 01/02/2018
 ms.author: cynthn
-ms.openlocfilehash: 6ffb2d2da1e2439df6f5da543411e3c2c68d3435
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d537bdc882487784baef9f693e4677c76d3bd8d
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-azure-file-shares-with-windows-vms"></a>Verwenden von Azure-Dateifreigaben mit virtuellen Windows-Computern 
 
-Sie können Azure-Dateifreigaben verwenden, um Dateien über den virtuellen Computer zu speichern und darauf zuzugreifen. Sie können beispielsweise ein Skript oder eine Anwendungskonfigurationsdatei speichern, das bzw. die für alle virtuellen Computer freigegeben werden soll. In diesem Abschnitt erfahren Sie, wie eine Azure-Dateifreigabe erstellt und bereitgestellt wird und wie Dateien hoch- und heruntergeladen werden.
+Sie können Azure-Dateifreigaben verwenden, um Dateien über den virtuellen Computer zu speichern und darauf zuzugreifen. Sie können beispielsweise ein Skript oder eine Anwendungskonfigurationsdatei speichern, das bzw. die für alle virtuellen Computer freigegeben werden soll. In diesem Artikel erfahren Sie, wie eine Azure-Dateifreigabe erstellt und eingebunden wird und wie Dateien hoch- und heruntergeladen werden.
 
 ## <a name="connect-to-a-file-share-from-a-vm"></a>Verbinden einer Dateifreigabe über einen virtuellen Computer
 
-In diesem Abschnitt wird davon ausgegangen, dass Sie bereits über eine Dateifreigabe verfügen, die Sie verbinden möchten. Wenn Sie eine Dateifreigabe erstellen müssen, finden Sie weiter unter in diesem Abschnitt unter [Erstellen einer Dateifreigabe](#create-a-file-share) weitere Informationen.
+In diesem Abschnitt wird davon ausgegangen, dass Sie bereits über eine Dateifreigabe verfügen, die Sie verbinden möchten. Wenn Sie eine Dateifreigabe erstellen müssen, finden Sie weiter unten in diesem Artikel unter [Erstellen einer Dateifreigabe](#create-a-file-share) weitere Informationen.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **Speicherkonten**.
 3. Wählen Sie Ihr Speicherkonto aus.
 4. Wählen Sie auf der Seite **Übersicht** unter **Dienste** die Option **Dateien** aus.
-5. Wählen Sie eine Dateifreigabe aus.
+5. Wählen Sie eine Dateifreigabe aus, oder klicken Sie auf **+ Dateifreigabe**, um eine neue Dateifreigabe zu erstellen.
 6. Klicken Sie auf **Verbinden**, um eine Seite zu öffnen, auf der die Befehlszeilensyntax für die Bereitstellung der Dateifreigabe über Windows oder Linux angezeigt wird.
-7. Heben Sie die Syntax des Befehls hervor, und fügen Sie sie in Notepad oder einem anderen Ort ein, an dem Sie problemlos darauf zugreifen können. 
-8. Bearbeiten Sie die Syntax: Entfernen Sie das vorangestellte ** > **, und ersetzen Sie *[Laufwerkbuchstabe]* durch den Buchstaben des Laufwerks (z.B. **Y:**), auf dem Sie die Dateifreigabe bereitstellen möchten.
+7. Wählen Sie unter **Laufwerkbuchstaben** den Buchstaben aus, mit dem Sie das Laufwerk identifizieren möchten.
+8. Wählen Sie aus, welche Syntax verwendet werden soll, und wählen Sie die Schaltfläche „Kopieren“ auf der rechten Seite aus, um die Syntax in die Zwischenablage zu kopieren. Fügen Sie sie an einer Stelle ein, an der Sie problemlos darauf zugreifen können. 
 8. Stellen Sie eine Verbindung zum virtuellen Computer her, und öffnen Sie eine Eingabeaufforderung.
 9. Fügen Sie die Syntax der bearbeiteten Verbindung ein, und drücken Sie die **EINGABETASTE**.
 10. Wenn die Verbindung erstellt wurde, erhalten Sie folgende Nachricht: **Der Befehl wurde erfolgreich abgeschlossen.**
@@ -43,17 +43,17 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits über eine Dateifre
 
 
 ## <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **Speicherkonten**.
 3. Wählen Sie Ihr Speicherkonto aus.
 4. Wählen Sie auf der Seite **Übersicht** unter **Dienste** die Option **Dateien** aus.
-5. Klicken Sie auf der Seite „Dateidienst“ auf **+ „Dateifreigabe“**, um Ihre erste Dateifreigabe zu erstellen.\
+5. Klicken Sie auf der Seite „Dateidienst“ auf **+ Dateifreigabe**.
 6. Geben Sie den Dateifreigabenamen ein. Dateifreigabenamen können Kleinbuchstaben, Zahlen und Bindestriche enthalten. Der Name darf nicht mit einem Bindestrich beginnen, und Sie dürfen nicht mehrere aufeinander folgende Bindestriche verwenden. 
 7. Geben Sie ein Limit für die Dateigröße ein (bis zu 5.120 GB).
-8. Klicken Sie auf **OK**, um die Dateifreigabe bereitzustellen.
+8. Klicken Sie auf **OK**, um die Dateifreigabe zu erstellen.
    
 ## <a name="upload-files"></a>Hochladen von Dateien
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **Speicherkonten**.
 3. Wählen Sie Ihr Speicherkonto aus.
 4. Wählen Sie auf der Seite **Übersicht** unter **Dienste** die Option **Dateien** aus.
@@ -63,7 +63,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits über eine Dateifre
 8. Klicken Sie auf **Hochladen**, um die Datei in der Dateifreigabe hochzuladen.
 
 ## <a name="download-files"></a>Herunterladen von Dateien
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im linken Menü auf **Speicherkonten**.
 3. Wählen Sie Ihr Speicherkonto aus.
 4. Wählen Sie auf der Seite **Übersicht** unter **Dienste** die Option **Dateien** aus.

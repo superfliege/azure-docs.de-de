@@ -7,6 +7,7 @@ author: anta
 manager: ireiter
 editor: anta
 ms.assetid: 
+ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: bd0ddfcffdb6f946f9a3786f3d0add1740be861b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 17903df93e11b8d1a5b9c6fbe5fd8e53302f45f4
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="energy-demand-time-series-forecasting"></a>Vorhersagen von Zeitreihen für den Energiebedarf
 
@@ -45,7 +46,7 @@ Das öffentliche GitHub-Repository für dieses reale Szenario enthält alle Mate
 [https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting](https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting)
 
 
-## <a name="use-case-overview"></a>Übersicht über Anwendungsfälle
+## <a name="use-case-overview"></a>Übersicht über den Anwendungsfall
 
 Der Schwerpunkt dieses Szenarios liegt auf der Vorhersage des Energiebedarfs, die zum Ziel hat, die zukünftige Belastung eines Energienetzes vorherzusagen. Dies ist ein zentraler Geschäftsvorgang für Unternehmen im Energiesektor, da Operatoren ein ausgewogenes Verhältnis zwischen der verbrauchten Energie in einem Netz und der bereitgestellten Energie sicherstellen müssen. Wird im Netz zu viel Energie bereitgestellt, kann dies zu Energieverschwendung oder technischen Fehlern führen. Zu wenig Energie hingegen kann zu Stromausfällen bei den Kunden führen. Netzoperatoren können in der Regel kurzfristige Entscheidungen zur Energiebereitstellung im Netz treffen und so die Last im Gleichgewicht halten. Daher ist eine präzise kurzfristige Vorhersage des Energiebedarfs für den Operator enorm wichtig, um die richtigen Entscheidungen zu treffen.
 
@@ -56,13 +57,11 @@ Dieses Szenario enthält Informationen zur Erstellung einer Lösung für die Vor
 - Ein [Azure-Konto](https://azure.microsoft.com/free/) (kostenlose Testversionen verfügbar)
 - Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstart-Installationshandbuch](./quickstart-installation.md) zur Installation des Programms und der Erstellung eines Arbeitsbereichs.
 - In diesem Beispiel wird davon ausgegangen, dass Sie die Azure ML Workbench mit einem lokal installierten [Docker-Modul](https://www.docker.com/) unter Windows 10 ausführen. Wenn Sie macOS verwenden, sind die Anweisungen weitgehend identisch.
-- Installierte Azure Machine Learning-Operationalisierung mit einer lokal eingerichteten Bereitstellungsumgebung und einem Konto zur Modellverwaltung, das wie in diesem [Handbuch](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md) beschrieben erstellt wurde.
+- Installierte Azure Machine Learning-Operationalisierung mit einer lokal eingerichteten Bereitstellungsumgebung und einem Konto zur Modellverwaltung, das wie in diesem [Handbuch](./model-management-configuration.md) beschrieben erstellt wurde.
 - Als Voraussetzung für dieses Beispiel müssen Sie die Pandas-Installation auf Version 0.20.3 oder höher aktualisieren und matplotlib installieren. Klicken Sie in der Workbench im Menü *Datei* auf *Eingabeaufforderung öffnen*, und führen Sie die folgenden Befehle aus, um diese Abhängigkeiten zu installieren:
 
     ```
-    conda install "pandas>=0.20.3"
-
-    conda install matplotlib
+    conda install "pandas>=0.21.1"
     ```
     
 ## <a name="create-a-new-workbench-project"></a>Erstellen eines neuen Workbench-Projekts
@@ -70,14 +69,14 @@ Dieses Szenario enthält Informationen zur Erstellung einer Lösung für die Vor
 Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
 1.  Öffnen Sie Azure Machine Learning Workbench.
 2.  Klicken Sie auf der Seite **Projekte** auf **+**, wählen Sie **Neues Projekt** aus, und signieren Sie es.
-3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein.
+3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein
 4.  Geben Sie im Suchfeld **Projektvorlagen suchen** den Suchbegriff „Energy Demand Time Series Forecasting“ ein, und wählen Sie die Vorlage aus.
 5.  Klicken Sie auf **Erstellen**
 
 
 ## <a name="data-description"></a>Datenbeschreibung
 
-Es gibt zwei DataSets: `nyc_demand.csv` und `nyc_weather.csv`:
+Mit diesem Beispiel werden zwei Datasets bereitgestellt, die mit dem `1-data-preparation.ipynb`-Notebook heruntergeladen werden können: `nyc_demand.csv` und `nyc_weather.csv`.
 
 **nyc_demand.csv** enthält die stündlich erfassten Energiebedarfswerte für New York City in den Jahren 2012 bis 2017. Die Daten haben die folgende einfache Struktur:
 

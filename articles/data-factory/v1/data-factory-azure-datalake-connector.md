@@ -12,22 +12,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 12/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f74a953d04e8633e802b33903de603b39ac08e9b
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: cc3128d3d07210d5c8e3ebe70c6c1d8ebaa9b863
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Kopieren von Daten nach bzw. aus Data Lake Store mit Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1: Allgemein verfügbare Version](data-factory-azure-datalake-connector.md)
+> * [Version 1: allgemein verfügbar](data-factory-azure-datalake-connector.md)
 > * [Version 2 – Vorschauversion](../connector-azure-data-lake-store.md)
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 1 der Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Data Lake Store by using Azure Data Factory](../connector-azure-data-lake-store.md) (Kopieren von Daten in oder aus Azure Data Lake Store mit Azure Data Factory).
+> Dieser Artikel bezieht sich auf Version 1 von Data Factory, die allgemein verfügbar (GA) ist. Bei Verwendung der Version 2 des Data Factory-Diensts in der Vorschau finden Sie weitere Informationen unter [Copy data to or from Azure Data Lake Store by using Azure Data Factory](../connector-azure-data-lake-store.md) (Kopieren von Daten in oder aus Azure Data Lake Store mit Azure Data Factory).
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten in bzw. aus Azure Data Lake Store zu verschieben. Er baut auf dem Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) (Übersicht über die Datenverschiebung per Kopieraktivität) auf.
 
@@ -71,7 +71,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 Ein verknüpfter Dienst verbindet einen Data Store mit einer Data Factory. Sie erstellen einen verknüpften Dienst vom Typ **AzureDataLakeStore**, um Ihre Data Lake Store-Instanz mit Ihrer Data Factory zu verknüpfen. In der folgenden Tabelle sind die JSON-Elemente beschrieben, die für verknüpfte Dienste von Data Lake Store spezifisch sind. Sie können zwischen der Authentifizierung per Dienstprinzipal und per Benutzeranmeldeinformationen wählen.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | **type** | Die type-Eigenschaft muss auf **AzureDataLakeStore** festgelegt werden. | Ja |
 | **dataLakeStoreUri** | Informationen zum Azure Data Lake Store-Konto. Diese Informationen haben eines der folgenden Formate: `https://[accountname].azuredatalakestore.net/webhdfs/v1` oder `adl://[accountname].azuredatalakestore.net/`. | Ja |
@@ -84,15 +84,15 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 * Anwendungsschlüssel 
 * Mandanten-ID
 
-> [!TIP]
+> [!IMPORTANT]
 > Erteilen Sie dem Dienstprinzipal die korrekte Berechtigung in Azure Data Lake Store:
->- Wenn Sie Pipelines mithilfe des Kopier-Assistenten erstellen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Erteilen Sie außerdem für Ihren Data Lake Store-Stamm („/“) und die untergeordneten Elemente mindestens die Berechtigung **Lesen und Ausführen**. Andernfalls wird unter Umständen die Meldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
->- Wenn Sie Data Lake Store als Quelle verwenden möchten, erteilen Sie mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung auf Kontoebene.
->- Wenn Sie Data Lake Store als Senke verwenden möchten, erteilen Sie mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen** für die Erstellung untergeordneter Elemente im Ordner. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Falls Sie die Verwendung dieser IAM-Rolle vermeiden möchten, geben Sie in der Kopieraktivität [executionLocation](data-factory-data-movement-activities.md#global) mit dem Standort Ihrer Data Lake Store-Instanz an.
+>- **Wenn Sie Data Lake Store als Quelle verwenden möchten**, erteilen Sie mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung auf Kontoebene.
+>- **Wenn Sie Data Lake Store als Senke verwenden möchten**, erteilen Sie mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen** für die Erstellung untergeordneter Elemente im Ordner. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Falls Sie die Verwendung dieser IAM-Rolle vermeiden möchten, geben Sie in der Kopieraktivität [executionLocation](data-factory-data-movement-activities.md#global) mit dem Standort Ihrer Data Lake Store-Instanz an.
+>- Wenn Sie **Pipelines mithilfe des Kopier-Assistenten erstellen**, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Erteilen Sie außerdem für Ihren Data Lake Store-Stamm („/“) und die untergeordneten Elemente mindestens die Berechtigung **Lesen und Ausführen**. Andernfalls wird unter Umständen die Meldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | **servicePrincipalId** | Geben Sie die Client-ID der Anwendung an. | Ja |
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an. | Ja |
@@ -119,10 +119,16 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 ### <a name="user-credential-authentication"></a>Authentifizierung mit Benutzeranmeldeinformationen
 Alternativ können Sie die Authentifizierung mit Benutzeranmeldeinformationen verwenden, um Daten aus bzw. nach Data Lake Store zu kopieren. Geben Sie hierzu die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | **authorization** | Klicken Sie im Data Factory-Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Hierdurch wird die automatisch generierte Autorisierungs-URL dieser Eigenschaft zugewiesen. | Ja |
 | **sessionId** | OAuth-Sitzungs-ID aus der OAuth-Autorisierungssitzung. Jede Sitzungs-ID ist eindeutig und darf nur einmal verwendet werden. Diese Einstellung wird automatisch generiert, wenn Sie den Data Factory-Editor verwenden. | Ja |
+
+> [!IMPORTANT]
+> Erteilen Sie dem Benutzer die korrekte Berechtigung in Azure Data Lake Store:
+>- **Wenn Sie Data Lake Store als Quelle verwenden möchten**, erteilen Sie mindestens die Datenzugriffsberechtigung **Lesen und Ausführen**, um den Inhalt eines Ordners aufzulisten und zu kopieren, oder die Berechtigung **Lesen**, um eine einzelne Datei zu kopieren. Es gelten keine Anforderungen für die Zugriffssteuerung auf Kontoebene.
+>- **Wenn Sie Data Lake Store als Senke verwenden möchten**, erteilen Sie mindestens die Datenzugriffsberechtigung **Schreiben und Ausführen** für die Erstellung untergeordneter Elemente im Ordner. Wenn Sie Azure IR für die Erstellung von Kopien verwenden (sowohl Quellen als auch Senken befinden sich in der Cloud), um Data Factory die Erkennung der Data Lake Store-Region zu ermöglichen, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Falls Sie die Verwendung dieser IAM-Rolle vermeiden möchten, geben Sie in der Kopieraktivität [executionLocation](data-factory-data-movement-activities.md#global) mit dem Standort Ihrer Data Lake Store-Instanz an.
+>- Wenn Sie **Pipelines mithilfe des Kopier-Assistenten erstellen**, erteilen Sie in der Kontozugriffssteuerung (IAM) mindestens die Rolle **Leser**. Erteilen Sie außerdem für Ihren Data Lake Store-Stamm („/“) und die untergeordneten Elemente mindestens die Berechtigung **Lesen und Ausführen**. Andernfalls wird unter Umständen die Meldung „Die angegebenen Anmeldeinformationen sind ungültig“ angezeigt.
 
 **Beispiel: Authentifizierung mit Benutzeranmeldeinformationen**
 ```json
@@ -147,7 +153,6 @@ Der Autorisierungscode, den Sie mit der Schaltfläche **Autorisieren** generiere
 Fehler beim Anmeldevorgang: invalid_grant - AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21-09-31Z.
 
 Die Zeiten bis zum Ablauf der Autorisierungscodes für die verschiedenen Benutzerkonten finden Sie in der folgenden Tabelle:
-
 
 | Benutzertyp | Läuft ab nach |
 |:--- |:--- |
@@ -185,18 +190,61 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 ```
 Nähere Informationen zu den im Code verwendeten Data Factory-Klassen finden Sie in den Themen [AzureDataLakeStoreLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakestorelinkedservice.aspx), [AzureDataLakeAnalyticsLinkedService-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.azuredatalakeanalyticslinkedservice.aspx) und [AuthorizationSessionGetResponse-Klasse](https://msdn.microsoft.com/library/microsoft.azure.management.datafactories.models.authorizationsessiongetresponse.aspx). Fügen Sie einen Verweis auf Version `2.9.10826.1824` von `Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll` für die im Code verwendete `WindowsFormsWebAuthenticationDialog`-Klasse hinzu.
 
+## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
+
+**Symptom:** Beim Kopieren von Daten **nach** Azure Data Lake Store tritt folgender Fehler bei der Kopieraktivität auf:
+
+  ```
+  Failed to detect the region for Azure Data Lake account {your account name}. Please make sure that the Resource Group name: {resource group name} and subscription ID: {subscription ID} of this Azure Data Lake Store resource are correct.
+  ```
+
+**Grundursache:** Es gibt zwei mögliche Ursachen:
+
+1. Die Werte von `resourceGroupName` und/oder `subscriptionId`, die im verknüpften Azure Data Lake Store-Dienst angegeben sind, sind falsch;
+2. Der Benutzer oder der Dienstprinzipal verfügt nicht über die erforderliche Berechtigung.
+
+**Lösung:**
+
+1. Achten Sie darauf, dass die `subscriptionId` und der `resourceGroupName`, die Sie in den `typeProperties` für den verknüpften Dienst angeben, tatsächlich den für Ihr Data Lake-Konto gültigen Werten entsprechen.
+
+2. Achten Sie darauf, dem Benutzer oder dem Dienstprinzipal für das Data Lake-Konto mindestens die Rolle „**Leser**“ zu erteilen. Dazu gehen Sie wie folgt vor:
+
+    1. Navigieren Sie zu Azure-Portal > Ihr Data Lake Store-Konto
+    2. Klicken Sie auf dem Data Lake Store-Blatt auf „Zugriffssteuerung (IAM)“
+    3. Klicken Sie auf dem Blatt „Zugriffssteuerung (IAM)“ auf „Hinzufügen“
+    4. Legen Sie die „Rolle“ als „Leser“ fest, und wählen Sie den Benutzer oder den Dienstprinzial aus, den Sie zum Kopieren verwenden, um den Zugriff zu erteilen
+
+3. Wenn Sie dem Benutzer oder dem Dienstprinzipal nicht die Rolle „Benutzer“ zuweisen möchten, können Sie alternativ in der Kopieraktivität [einen Ausführungsort explizit angeben](data-factory-data-movement-activities.md#global), nämlich den Speicherort Ihres Data Lake Stores. Beispiel:
+
+    ```json
+    {
+      "name": "CopyToADLS",
+      "type": "Copy",
+      ......
+      "typeProperties": {
+        "source": {
+          "type": "<source type>"
+        },
+        "sink": {
+          "type": "AzureDataLakeStoreSink"
+        },
+        "exeuctionLocation": "West US"
+      }
+    }
+    ```
+
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Um ein Dataset zur Darstellung von Eingabedaten in einem Data Lake Store anzugeben, legen Sie die **type**-Eigenschaft des Datasets auf **AzureDataLakeStore** fest. Legen Sie die **linkedServiceName**-Eigenschaft des Datasets auf den Namen des mit dem Data Lake Store verknüpften Diensts fest. Eine vollständige Liste mit den JSON-Abschnitten und -Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Die Abschnitte eines Datasets in JSON-Code, z.B. **structure**, **availability** und **policy**, sind für alle Datasettypen (z.B. Azure SQL-Datenbank, Azure-Blob und Azure-Tabelle) ähnlich. Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält beispielsweise Informationen zum Speicherort und Format der Daten im Datenspeicher. 
 
 Der Abschnitt **typeProperties** für ein Dataset des Typs **AzureDataLakeStore** enthält die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | **folderPath** |Der Pfad zum Container und Ordner in Data Lake Store. |Ja |
-| **fileName** |Der Name der Datei in Azure Data Lake Store. Die **fileName**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. <br/><br/>Wenn Sie für **fileName** einen Wert angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn **fileName** nicht angegeben ist, werden beim Kopieren alle Dateien unter **folderPath** für das Eingabedataset einbezogen.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: „Data._Guid_.txt“. Beispiel: „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt“. |Nein |
-| **partitionedBy** |Die **partitionedBy**-Eigenschaft ist optional. Sie können sie verwenden, um einen dynamischen Pfad und Dateinamen für Zeitreihendaten anzugeben. Beispiel: **folderPath** kann für jedes stündliche Datenaufkommen parametrisiert werden. Weitere Informationen und Beispiele finden Sie unter [partitionedBy-Eigenschaft](#using-partitionedby-property). |Nein |
-| **format** | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format) des Artikels [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den `format`-Abschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein |
-| **compression** | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**. Unterstützte Grade sind **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein |
+| **fileName** |Der Name der Datei in Azure Data Lake Store. Die **fileName**-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. <br/><br/>Wenn Sie für **fileName** einen Wert angeben, funktioniert die Aktivität (einschließlich Kopieren) für die jeweilige Datei.<br/><br/>Wenn **fileName** nicht angegeben ist, werden beim Kopieren alle Dateien unter **folderPath** für das Eingabedataset einbezogen.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: „Data._Guid_.txt“. Beispiel: „Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt“. |Nein  |
+| **partitionedBy** |Die **partitionedBy**-Eigenschaft ist optional. Sie können sie verwenden, um einen dynamischen Pfad und Dateinamen für Zeitreihendaten anzugeben. Beispiel: **folderPath** kann für jedes stündliche Datenaufkommen parametrisiert werden. Weitere Informationen und Beispiele finden Sie unter [partitionedBy-Eigenschaft](#using-partitionedby-property). |Nein  |
+| **format** | Die folgenden Formattypen werden unterstützt: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat** und **ParquetFormat**. Sie müssen die **type**-Eigenschaft unter **format** auf einen dieser Werte festlegen. Weitere Informationen finden Sie in den Abschnitten [Textformat](data-factory-supported-file-and-compression-formats.md#text-format), [JSON-Format](data-factory-supported-file-and-compression-formats.md#json-format), [Avro-Format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC-Format](data-factory-supported-file-and-compression-formats.md#orc-format) und [Parquet-Format](data-factory-supported-file-and-compression-formats.md#parquet-format) des Artikels [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md). <br><br> Wenn Sie Dateien unverändert zwischen dateibasierten Speichern kopieren möchten (binäre Kopie), können Sie den `format`-Abschnitt bei den Definitionen von Eingabe- und Ausgabedatasets überspringen. |Nein  |
+| **compression** | Geben Sie den Typ und den Grad der Komprimierung für die Daten an. Unterstützte Typen sind **GZip**, **Deflate**, **BZIP2** und **ZipDeflate**. Unterstützte Grade sind **Optimal** und **Schnellste**. Weitere Informationen finden Sie unter [Von Azure Data Factory unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md#compression-support). |Nein  |
 
 ### <a name="the-partitionedby-property"></a>partitionedBy-Eigenschaft
 Sie können die Eigenschaften **folderPath** und **fileName** für Zeitreihendaten mit der **partitionedBy**-Eigenschaft, Data Factory-Funktionen und Systemvariablen angeben. Ausführliche Informationen finden Sie im Artikel [Azure Data Factory – Funktionen und Systemvariablen](data-factory-functions-variables.md).
@@ -234,16 +282,16 @@ Die Eigenschaften im Abschnitt **typeProperties** einer Aktivität können je na
 
 **AzureDataLakeStoreSource** unterstützt die folgende Eigenschaft im Abschnitt **typeProperties**:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| **recursive** |Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. |True (Standardwert), False |Nein |
+| **recursive** |Gibt an, ob die Daten rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelesen werden. |True (Standardwert), False |Nein  |
 
 
 **AzureDataLakeStoreSink** unterstützt die folgenden Eigenschaften im Abschnitt **typeProperties**:
 
-| Eigenschaft | Beschreibung | Zulässige Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
-| **copyBehavior** |Gibt das Kopierverhalten an. |<b>PreserveHierarchy</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/><b>FlattenHierarchy</b>: Alle Dateien aus dem Quellordner werden auf der ersten Ebene des Zielordners erstellt. Die Namen der Zieldateien werden automatisch generiert.<br/><br/><b>MergeFiles</b>: Führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. |Nein |
+| **copyBehavior** |Gibt das Kopierverhalten an. |<b>PreserveHierarchy</b>: Behält die Dateihierarchie im Zielordner bei. Der relative Pfad der Quelldatei zum Quellordner entspricht dem relativen Pfad der Zieldatei zum Zielordner.<br/><br/><b>FlattenHierarchy</b>: Alle Dateien aus dem Quellordner werden auf der ersten Ebene des Zielordners erstellt. Die Namen der Zieldateien werden automatisch generiert.<br/><br/><b>MergeFiles</b>: Führt alle Dateien aus dem Quellordner in einer Datei zusammen. Wenn der Datei- oder Blobname angegeben wurde, entspricht der Name der Zusammenführungsdatei dem angegebenen Namen. Andernfalls wird der Dateiname automatisch generiert. |Nein  |
 
 ### <a name="recursive-and-copybehavior-examples"></a>Beispiele für "recursive" und "copyBehavior"
 Dieser Abschnitt beschreibt das resultierende Verhalten des Kopiervorgangs für verschiedene Kombinationen von rekursiven und CopyBehavior-Werten.

@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 12/14/2017
 ms.author: JeffGo
-ms.openlocfilehash: 58c83b74041e0e2e82729f569c53aca59f3aed43
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: da76eaf92bf27195b4f1780511818a7689300f66
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="add-hosting-servers-for-use-by-the-sql-adapter"></a>Hinzufügen von Hostservern für die Verwendung durch den SQL-Adapter
 
@@ -28,11 +28,9 @@ Sie können SQL Server-Instanzen auf virtuellen Computern in Ihrer [Azure Stack]
 * Die SQL-Instanz muss für die Verwendung durch den Ressourcenanbieter und durch Benutzerworkloads vorgesehen sein. Sie können keine SQL-Instanz verwenden, die durch andere Consumer, einschließlich App Services, verwendet wird.
 * Der Ressourcenanbieteradapter ist nicht in eine Domäne eingebunden und kann nur per SQL-Authentifizierung eine Verbindung herstellen.
 * Sie müssen ein Konto mit entsprechenden Berechtigungen für die Verwendung durch den Ressourcenanbieter konfigurieren.
-* Der Netzwerkdatenverkehr vom Ressourcenanbieter zu SQL erfolgt über den Port 1433. Dieser Port kann nicht geändert werden.
 * Der Ressourcenanbieter und die Benutzer (z.B. Web-Apps) verwenden das Benutzernetzwerk, sodass in diesem Netzwerk Konnektivität mit der SQL-Instanz erforderlich ist. Diese Anforderung bedeutet normalerweise, dass sich die IP-Adressen der SQL-Instanzen in einem öffentlichen Netzwerk befinden müssen.
 * Sie sind für die Verwaltung der SQL-Instanzen und deren Hosts verantwortlich. Der Ressourcenanbieter installiert weder Patches, noch führt er Sicherung oder Wechsel von Anmeldeinformationen o.Ä. durch.
 * Mithilfe von SKUs können unterschiedliche Klassen von SQL-Funktionen, z.B. die Leistung, Always On usw., erstellt werden.
-
 
 
 Einige Images für SQL-IaaS-VMs sind über das Marketplace-Verwaltungsfeature verfügbar. Achten Sie darauf, immer die neueste Version der SQL-IaaS-Erweiterung herunterzuladen, bevor Sie einen virtuellen Computer mit einem Marketplace-Artikel bereitstellen. Die SQL-Images sind mit den in Azure verfügbaren SQL-VMs identisch. Für virtuelle SQL-Computer, die mit diesen Images erstellt werden, stellen die IaaS-Erweiterung und die zugehörigen Portalerweiterungen Features wie das automatische Patchen und Sicherungsfunktionen bereit.
@@ -73,6 +71,8 @@ Zum Hinzufügen eines eigenständigen Hostservers, der bereits bereitgestellt wu
 
   ![Neue Hostserver](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
+    Sie können optional einen Instanznamen aufnehmen, und eine Portnummer kann angegeben werden, wenn die Instanz nicht dem Standardport 1433 zugewiesen ist.
+
   > [!NOTE]
   > Sofern die SQL-Instanz für den Azure Resource Manager-Benutzer und -Administrator zugänglich ist, kann sie vom Ressourcenanbieter gesteuert werden. Die SQL-Instanz __muss__ ausschließlich dem Ressourcenanbieter zugeordnet sein.
 
@@ -86,10 +86,10 @@ Zum Hinzufügen eines eigenständigen Hostservers, der bereits bereitgestellt wu
 
     Beispiel:
 
-    ![SKUs](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+![SKUs](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 >[!NOTE]
-Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Sie können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
+> Es kann bis zu einer Stunde dauern, bis SKUs im Portal angezeigt werden. Benutzer können erst eine Datenbank erstellen, wenn die SKU vollständig erstellt wurde.
 
 ## <a name="provide-capacity-using-sql-always-on-availability-groups"></a>Angeben der Kapazität mithilfe von SQL-AlwaysOn-Verfügbarkeitsgruppen
 Für das Konfigurieren von SQL-Always On-Instanzen sind zusätzliche Schritte und mindestens drei virtuelle (oder physische) Computer erforderlich.
@@ -126,7 +126,7 @@ Um SQL-Always On-Hostserver hinzuzufügen, führen Sie die folgenden Schritte au
     Auf dem Blatt **SQL Hosting Servers** (SQL-Hostserver) können Sie den SQL-Server-Ressourcenanbieter mit tatsächlichen SQL-Serverinstanzen verbinden, die als Back-End des Ressourcenanbieters dienen.
 
 
-3. Füllen Sie das Formular mit den Verbindungsdetails Ihrer SQL Server-Instanz aus, und verwenden Sie dabei den FQDN oder die IPv4-Adresse des Always On-Listeners. Geben Sie die Kontoinformationen für das Konto, das Sie mit Systemadministratorrechten konfiguriert haben, an.
+3. Füllen Sie das Formular mit den Verbindungsdetails Ihrer SQL Server-Instanz aus, und verwenden Sie dabei den FQDN oder die IPv4-Adresse des Always On-Listeners (und optional die Portnummer). Geben Sie die Kontoinformationen für das Konto, das Sie mit Systemadministratorrechten konfiguriert haben, an.
 
 4. Aktivieren Sie dieses Kontrollkästchen, um Instanzen von SQL-AlwaysOn-Verfügbarkeitsgruppe zu unterstützen.
 
@@ -137,7 +137,7 @@ Um SQL-Always On-Hostserver hinzuzufügen, führen Sie die folgenden Schritte au
 
 ## <a name="making-sql-databases-available-to-users"></a>Verfügbarmachen von SQL-Datenbanken für Benutzer
 
-Erstellen Sie Pläne und Angebote, um SQL-Datenbanken für Benutzer zur Verfügung zu stellen. Fügen Sie dem Plan den Dienst Microsoft.SqlAdapter hinzu. Außerdem müssen Sie ein vorhandenes Kontingent hinzufügen oder ein neues erstellen. Wenn Sie ein Kontingent erstellen, können Sie die Kapazität angeben, die Sie dem Benutzer gewähren möchten.
+Erstellen Sie Pläne und Angebote, um SQL-Datenbanken für Benutzer zur Verfügung zu stellen. Fügen Sie dem Plan den Dienst Microsoft.SqlAdapter hinzu. Außerdem müssen Sie entweder ein vorhandenes Kontingent hinzufügen oder ein neues erstellen. Wenn Sie ein Kontingent erstellen, geben Sie die Kapazität an, die Sie dem Benutzer gewähren möchten.
 
 ![Erstellen von Plänen und Angeboten, die Datenbanken umfassen](./media/azure-stack-sql-rp-deploy/sqlrp-newplan.png)
 

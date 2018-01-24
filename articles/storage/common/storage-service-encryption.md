@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: tamram
-ms.openlocfilehash: 772c36c8310a4bf30c62def507382fe74427e0d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32f622c39583a25a7bc53ffcb6d9be779459badc
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption für ruhende Daten
 Azure Storage Service Encryption (SSE) für ruhende Daten unterstützt Sie dabei, Ihre Daten zu schützen, um die Sicherheits- und Complianceverpflichtungen Ihrer Organisation zu erfüllen. Mit diesem Feature verschlüsselt Azure Storage Ihre Daten automatisch, bevor sie im Speicher abgelegt werden, und entschlüsselt sie vor dem Abrufen. Verschlüsselung, Entschlüsselung und Schlüsselverwaltung sind für Benutzer vollständig transparent.
@@ -159,7 +159,7 @@ A: Derzeit nicht; die Schlüssel werden vollständig von Microsoft verwaltet.
 
 **F: Ist SSE standardmäßig aktiviert, wenn ich ein neues Speicherkonto erstelle?**
 
-A: SSE ist nicht standardmäßig aktiviert. Sie können dieses Feature im Azure-Portal aktivieren. Außerdem können Sie dieses Feature programmgesteuert mit der Speicherressourcenanbieter-REST-API aktivieren.
+A: Das Azure Storage-Team arbeitet daran, die Verschlüsselung mit von Microsoft verschlüsselten Schlüsseln standardmäßig für alle Daten, die in Azure Storage (Blob-, Datei-, Tabellen- und Warteschlangenspeicher) geschrieben werden, sowie für alle neuen und bestehenden Speicherkonten (Azure Resource Manager und klassische Speicherkonten) zu ermöglichen.
 
 **F: Wo liegt der Unterschied zu Azure Disk Encryption?**
 

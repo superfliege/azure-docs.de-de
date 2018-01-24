@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: e66dc2af18785c6c8e83815129c8bca5b877d25b
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: f8ba1a6308dfe234fff700d363fb9252b94570e2
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profilerstellung für Live-Azure-Web-Apps mit Application Insights
 
@@ -227,6 +227,82 @@ Wenn Sie den Profiler konfigurieren, werden an den Einstellungen der Web-App Akt
 7. Wählen Sie auf der Kudu-Website **Site extensions** (Websiteerweiterungen) aus.
 8. Installieren Sie __Application Insights__ aus dem Katalog der Azure-Web-Apps.
 9. Starten Sie die Web-App neu.
+
+## <a id="profileondemand"></a> Manuelles Auslösen des Profilers
+Bei der Entwicklung des Profilers haben wir eine Befehlszeilenschnittstelle hinzugefügt, damit wir den Profiler für App Services testen konnten. Über diese Schnittstelle können Benutzer auch anpassen, wie der Profiler gestartet wird. Im Allgemeinen nutzt der Profiler das Kudu-System des App Service zum Verwalten der Profilerstellung im Hintergrund. Wenn Sie die Application Insights-Erweiterung installieren, erstellen wir einen fortlaufenden Webauftrag zum Hosten des Profilers. Wir nutzen dieselbe Technologie zum Erstellen eines neuen Webauftrags, den Sie an Ihre Anforderungen anpassen können.
+
+In diesem Abschnitt wird Folgendes beschrieben:
+
+1.  Erstellen eines Webauftrags, über den der Profiler durch das Betätigen einer Schaltfläche für die Dauer von zwei Minuten gestartet werden kann
+2.  Erstellen eines Webauftrags, mit dem die Ausführung des Profilers geplant werden kann
+3.  Festlegen von Argumenten für den Profiler
+
+
+### <a name="set-up"></a>Einrichtung
+Zuerst machen wir uns mit dem Dashboard des Webauftrags vertraut. Klicken Sie unter „Einstellungen“ auf die Registerkarte „Webaufträge“.
+
+![Blatt „Webaufträge“](./media/app-insights-profiler/webjobs-blade.png)
+
+Sie sehen, dass in diesem Dashboard alle Webaufträge angezeigt werden, die auf Ihrer Site derzeit installiert sind. Sie können den Webauftrag „ApplicationInsightsProfiler2“ anzeigen, für den der Profilerauftrag ausgeführt wird. An diesem Punkt erstellen wir unsere neuen Webaufträge für die manuelle und geplante Profilerstellung.
+
+Zuerst rufen wir die erforderlichen Binärdateien ab.
+
+1.  Navigieren Sie zunächst zur Kudu-Website. Klicken Sie unter der Registerkarte mit den Entwicklungstools auf die Registerkarte „Advanced Tools“ (Erweiterte Tools) mit dem Kudu-Logo. Klicken Sie auf „Go“ (Los). Eine neue Site wird geöffnet, und Sie werden automatisch angemeldet.
+2.  Als Nächstes müssen wir die Profiler-Binärdateien herunterladen. Navigieren Sie oben auf der Seite über „Debug Console“ (Debugging-Konsole) > „CMD“ zum Datei-Explorer.
+3.  Klicken Sie auf „site“ > „wwwroot“ > „App_Data“ > „jobs“ > „continuous“ („Site“ > „wwwroot“ > „App_Data“ > „Aufträge“ > „Fortlaufend“). Der Ordner „ApplicationInsightsProfiler2“ wird angezeigt. Klicken Sie links vom Ordner auf das Downloadsymbol. Die Datei „ApplicationInsightsProfiler2.zip“ wird heruntergeladen.
+4.  Es werden alle Dateien heruntergeladen, die Sie benötigen. Es ist ratsam, vor dem Fortfahren ein sauberes Verzeichnis zu erstellen, in das dieses ZIP-Archiv verschoben werden kann.
+
+### <a name="setting-up-the-web-job-archive"></a>Einrichten des Archivs für Webaufträge
+Wenn Sie der Azure-Website einen neuen Webauftrag hinzufügen, erstellen Sie praktisch ein ZIP-Archiv, in dem „run.cmd“ enthalten ist. Mit „run.cmd“ wird das Webauftragssystem angewiesen, was beim Ausführen des Webauftrags zu tun ist. Es gibt noch andere Optionen, zu denen die Dokumentation zu Webaufträgen Informationen enthält, aber für unsere Zwecke benötigen wir keine weiteren Optionen.
+
+1.  Erstellen Sie als Erstes einen neuen Ordner. Meinem Ordner habe ich den Namen „RunProfiler2Minutes“ gegeben.
+2.  Kopieren Sie die Dateien aus dem extrahierten Ordner „ApplicationInsightProfiler2“ in diesen neuen Ordner.
+3.  Erstellen Sie eine neue Datei „run.cmd“. (Ich habe diesen Arbeitsordner der Einfachheit halber zuvor in VS Code geöffnet.)
+4.  Fügen Sie den Befehl `ApplicationInsightsProfiler.exe start --engine-mode immediate --single --immediate-profiling-duration 120` hinzu, und speichern Sie die Datei.
+a.  Der Befehl `start` bewirkt den Start des Profilers.
+b.  Mit `--engine-mode immediate` wird der Profiler angewiesen, dass sofort mit der Profilerstellung begonnen werden soll.
+c.  `--single` bedeutet, dass die Ausführung gestartet und dann automatisch beendet werden soll. d.  `--immediate-profiling-duration 120` bedeutet, dass der Profiler 120 Sekunden bzw. 2 Minuten lang ausgeführt werden soll.
+5.  Speichern Sie diese Datei.
+6.  Archivieren Sie diesen Ordner. Sie können mit der rechten Maustaste auf den Ordner klicken und „Senden an“ > „ZIP-komprimierter Ordner“ wählen. Es wird eine ZIP-Datei mit dem Namen Ihres Ordners erstellt.
+
+![Befehl zum Starten der Profilerstellung](./media/app-insights-profiler/start-profiler-command.png)
+
+Wir verfügen nun über eine ZIP-Datei für Webaufträge, die wir zum Einrichten von Webaufträgen auf unserer Site verwenden können.
+
+### <a name="add-a-new-web-job"></a>Hinzufügen eines neuen Webauftrags
+Als Nächstes fügen wir auf unserer Site einen neuen Webauftrag hinzu. In diesem Beispiel wird veranschaulicht, wie Sie einen manuell ausgelösten Webauftrag hinzufügen. Nachdem Sie sich mit diesem Vorgang vertraut gemacht haben, können Sie fast die gleichen Schritte zum Hinzufügen eines geplanten Auftrags ausführen. Sie können sich selbst eingehender über nach Zeitplan ausgelöste Aufträge informieren.
+
+1.  Navigieren Sie zum Dashboard für Webaufträge.
+2.  Klicken Sie in der Symbolleiste auf den Befehl „Hinzufügen“.
+3.  Geben Sie Ihrem Webauftrag einen Namen. Ich habe zur besseren Verständlichkeit einen Namen gewählt, der zum Namen des Archivs passt. Er kann unterschiedliche Versionen von „run.cmd“ umfassen.
+4.  Klicken Sie im Formular im Abschnitt für den Dateiupload auf das Symbol zum Öffnen einer Datei, und suchen Sie nach der ZIP-Datei, die Sie oben erstellt haben.
+5.  Wählen Sie als Typ die Option „Ausgelöst“.
+6.  Wählen Sie unter „Trigger“ die Option „Manuell“.
+7.  Wählen Sie „OK“, um zu speichern.
+
+![Befehl zum Starten der Profilerstellung](./media/app-insights-profiler/create-webjob.png)
+
+### <a name="run-the-profiler"></a>Ausführen des Profilers
+
+Da wir jetzt über einen neuen Webauftrag verfügen, der manuell ausgelöst werden kann, können wir versuchen, ihn auszuführen.
+
+1.  Auf einem Computer kann jeweils nur ein Prozess vom Typ „ApplicationInsightsProfiler.exe“ ausgeführt werden. Überprüfen Sie als Erstes also über dieses Dashboard, ob fortlaufende Webaufträge deaktiviert sind. Klicken Sie auf die Zeile, und wählen Sie „Beenden“. Wählen Sie in der Symbolleiste die Option „Aktualisieren“, und vergewissern Sie sich, dass für den Auftrag der Status „Beendet“ angezeigt wird.
+2.  Klicken Sie auf die Zeile mit dem neuen Webauftrag, den Sie hinzugefügt haben, und wählen Sie „Ausführen“.
+3.  Klicken Sie bei weiterhin ausgewählter Zeile in der Symbolleiste auf den Befehl „Protokolle“. Sie gelangen zu einem Dashboard für den Webauftrag, den Sie gestartet haben. Die aktuellen Ausführungen und die dazugehörigen Ergebnisse werden angezeigt.
+4.  Klicken Sie auf die Ausführung, die Sie gerade gestartet haben.
+5.  Wenn alles problemlos verläuft, sollte zu sehen sein, dass einige Diagnoseprotokolle vom Profiler eingehen. Dies ist die Bestätigung, dass die Profilerstellung gestartet wurde.
+
+### <a name="things-to-consider"></a>Zu beachtende Aspekte
+
+Diese Vorgehensweise ist zwar relativ einfach, aber es müssen einige Punkte beachtet werden.
+
+1.  Da dieser Vorgang nicht von unserem Dienst verwaltet wird, haben wir keine Möglichkeit, die Binärdateien für den Agent für Ihren Webauftrag zu aktualisieren. Derzeit verfügen wir nicht über eine stabile Downloadseite für unsere Binärdateien. Wir können die aktuellen Dateien also nur abrufen, indem wir die Erweiterung aktualisieren und das Abrufen aus dem fortlaufenden Ordner wie oben durchführen.
+2.  Da hierbei Befehlszeilenargumente verwendet werden, die ursprünglich für die Nutzung durch Entwickler und nicht durch Endbenutzer entworfen wurden, können sich diese Argumente in Zukunft ändern. Denken Sie beim Durchführen von Upgrades also daran. Dies sollte kein Problem darstellen, da Sie einen Webauftrag hinzufügen und ausführen und die Funktionsfähigkeit testen können. In Zukunft soll hierfür eine Benutzeroberfläche erstellt werden, damit der manuelle Prozess nicht mehr erforderlich ist, aber dieser Punkt sollte in diesem Zusammenhang beachtet werden.
+3.  Das Feature „Webaufträge“ für App Services ist eindeutig: Bei der Ausführung des Webauftrags wird sichergestellt, dass Ihr Prozess über die gleichen Umgebungsvariablen und App-Einstellungen verfügt, die auch für Ihre Website gelten sollen. Dies bedeutet Folgendes: Es ist nicht erforderlich, dass Sie den Instrumentierungsschlüssel über die Befehlszeile an den Profiler übergeben, da er einfach aus der Umgebung abgerufen werden kann. Sie müssen aber einen Instrumentierungsschlüssel angeben, wenn Sie den Profiler in Ihrer Dev Box oder auf einem Computer außerhalb von App Services ausführen möchten. Hierzu können Sie das Argument `--ikey <instrumentation-key>` übergeben. Beachten Sie, dass dieser Wert mit dem Instrumentierungsschlüssel übereinstimmen muss, der von Ihrer Anwendung verwendet wird. Der Protokollausgabe des Profilers können Sie entnehmen, mit welchem iKey der Profiler gestartet wurde und ob über diesen Instrumentierungsschlüssel während der Profilerstellung Aktivitäten erkannt wurden.
+4.  Die manuell ausgelösten Webaufträge können per Webhook ausgelöst werden. Sie können diese URL abrufen, indem Sie im Dashboard mit der rechten Maustaste auf den Webauftrag klicken und die Eigenschaften anzeigen oder die Eigenschaften in der Symbolleiste auswählen, nachdem Sie den Webauftrag in der Tabelle ausgewählt haben. Da online viele Artikel zu diesem Thema verfügbar sind, gehe ich hier nicht weiter ins Detail. Es besteht aber die Möglichkeit, den Profiler über Ihre CI/CD-Pipeline (z.B. VSTS) oder beispielsweise Microsoft Flow (https://flow.microsoft.com/de-de/) auszulösen. Die Möglichkeiten sind vielfältig, je nachdem, wie komplex Sie Ihre Datei „run.cmd“ gestalten möchten (übrigens kann auch „run.ps1“ verwendet werden).  
+
+
+
 
 ## <a id="aspnetcore"></a>Unterstützung von ASP.NET Core
 

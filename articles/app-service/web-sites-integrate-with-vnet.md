@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: ccompy
-ms.openlocfilehash: 72ff0c13319218f8ef91aff9208772fcb0fd9459
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b755197af7e8791e01273bcc25f72c0d92ef6bc2
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrieren Ihrer App in ein Azure Virtual Network
 In diesem Dokument wird die Azure App Service-Funktion für die Integration in ein Virtual Network beschrieben und veranschaulicht, wie Sie diese mit Apps in [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)einrichten. Falls Sie sich mit Azure Virtual Networks (VNETs) noch nicht auskennen, hilft Ihnen vielleicht diese Beschreibung weiter: Es handelt sich um eine Funktion, mit der Sie viele Azure-Ressourcen in einem nicht über das Internet routbaren Netzwerk anordnen können, für das Sie den Zugriff kontrollieren. Diese Netzwerke können dann mit verschiedenen VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Virtuelle Netzwerke][VNETOverview]. 
@@ -39,7 +39,7 @@ Für die Funktion für die VNET-Integration gilt Folgendes:
 * erfordert den Tarif Standard, Premium oder Isoliert 
 * funktioniert mit klassischem Modus oder Resource Manager-VNET 
 * TCP und UDP wird unterstützt
-* funktioniert mit Web-Apps, mobilen und API-Apps
+* funktioniert mit Web-, Mobile, API- und Funktions-Apps
 * eine App kann nur jeweils mit einem VNET eine Verbindung herstellen
 * bis zu fünf VNETs können in einen App Service-Plan integriert werden 
 * ein VNET kann im Rahmen eines App Service-Plans von mehreren Apps verwendet werden
@@ -93,7 +93,7 @@ Wenn Ihr VNET kein Gateway aufweist und auch nicht über „Punkt-zu-Standort“
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>Aktivieren von „Punkt-zu-Standort“ in einem Resource Manager-VNET
-Um ein Resource Manager-VNET mit einem Gateway und Punkt-zu-Standort zu konfigurieren, können Sie entweder PowerShell verwenden, wie unter [Konfigurieren einer Punkt-zu-Site-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S] beschrieben, oder das Azure-Portal, wie unter [Konfigurieren einer Punkt-zu-Site-Verbindung mit einem VNET über das Azure-Portal][V2VNETPortal] beschrieben. Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar. Beachten Sie, dass Sie für die Punkt-zu-Standort-Konfiguration keine Zertifikate erstellen müssen. Dies wird automatisch konfiguriert, wenn Sie eine Verbindung Ihrer Web-App mit dem VNET herstellen. 
+Um ein Resource Manager-VNET mit einem Gateway und Punkt-zu-Standort zu konfigurieren, können Sie entweder PowerShell verwenden, wie unter [Konfigurieren einer Punkt-zu-Site-Verbindung mit einem virtuellen Netzwerk mithilfe von PowerShell][V2VNETP2S] beschrieben, oder das Azure-Portal, wie unter [Konfigurieren einer Punkt-zu-Site-Verbindung mit einem VNET über das Azure-Portal][V2VNETPortal] beschrieben. Die Benutzeroberfläche zum Ausführen dieser Funktion ist noch nicht verfügbar. Beachten Sie, dass Sie für die Punkt-zu-Site-Konfiguration keine Zertifikate erstellen müssen. Dies wird automatisch konfiguriert, wenn Sie eine Verbindung Ihrer Web-App mit dem VNET herstellen. 
 
 ### <a name="creating-a-pre-configured-vnet"></a>Erstellen eines vorkonfigurierten VNET
 Wenn Sie ein neues VNET erstellen möchten, das mit einem Gateway und „Punkt-zu-Standort“ konfiguriert ist, kann dafür die App Service-Netzwerkbenutzeroberfläche verwendet werden. Dies ist allerdings nur bei einem Resource Manager-VNET möglich. Wenn Sie ein klassisches VNET mit einem Gateway und „Punkt-zu-Standort“ erstellen möchten, müssen Sie es manuell über die Netzwerkbenutzeroberfläche erstellen. 
@@ -258,6 +258,10 @@ Wenn die mit VNET gehostete VM auf ein lokales System zugreifen kann, die App je
 * Ihre lokalen Firewalls blockieren den Datenverkehr des Punkt-zu-Standort-IP-Bereichs
 * Es liegt eine benutzerdefinierte Route (UDR) im VNET vor, die den Punkt-zu-Standort-basierten Datenverkehr nicht auf das lokale Netzwerk lässt
 
+## <a name="powershell-automation"></a>PowerShell-Automatisierung
+
+Sie können App Service mithilfe von PowerShell in ein virtuelles Azure-Netzwerk integrieren. Ein ausführungsbereites Skript finden Sie unter [Verbinden einer App in Azure App Service mit einem virtuellen Azure-Netzwerk](https://gallery.technet.microsoft.com/scriptcenter/Connect-an-app-in-Azure-ab7527e3).
+
 ## <a name="hybrid-connections-and-app-service-environments"></a>Hybridverbindungen und App Service-Umgebungen
 Es gibt drei Funktionen, die den Zugriff auf im VNET gehostete Ressourcen ermöglichen. Sie lauten wie folgt:
 
@@ -265,11 +269,11 @@ Es gibt drei Funktionen, die den Zugriff auf im VNET gehostete Ressourcen ermög
 * Hybridverbindungen
 * App Service-Umgebungen
 
-Für Hybridverbindungen müssen Sie in Ihrem Netzwerk einen Relay-Agent installieren, und zwar den Hybrid Connection Manager (HCM). Für den HCM muss eine Verbindung mit Azure und auch mit Ihrer Anwendung hergestellt werden können. Diese Lösung eignet sich besonders gut für ein Remotenetzwerk, z. B. Ihr lokales Netzwerk, oder auch ein anderes in der Cloud gehostetes Netzwerk, weil dafür kein über das Internet zugänglicher Endpunkt erforderlich ist. Der HCM kann nur unter Windows ausgeführt werden, und Sie können bis zu fünf Instanzen verwenden, um für eine hohe Verfügbarkeit zu sorgen. Für Hybridverbindungen wird aber nur TCP unterstützt, und für jeden Endpunkt einer Hybridverbindung muss eine bestimmte host:port-Kombination verwendet werden. 
+Für Hybridverbindungen müssen Sie in Ihrem Netzwerk einen Relay-Agent installieren, und zwar den Hybrid Connection Manager (HCM). Für den HCM muss eine Verbindung mit Azure und auch mit Ihrer Anwendung hergestellt werden können. Diese Lösung eignet sich besonders gut für ein Remotenetzwerk, z. B. Ihr lokales Netzwerk, oder auch ein anderes in der Cloud gehostetes Netzwerk, weil dafür kein über das Internet zugänglicher Endpunkt erforderlich ist. Der HCM kann nur unter Windows ausgeführt werden, und Sie können bis zu fünf Instanzen verwenden, um für Hochverfügbarkeit zu sorgen. Für Hybridverbindungen wird aber nur TCP unterstützt, und für jeden Endpunkt einer Hybridverbindung muss eine bestimmte host:port-Kombination verwendet werden. 
 
 Mit der Funktion für die App Service-Umgebung können Sie eine Instanz von Azure App Service in Ihrem VNET ausführen. Hiermit können Ihre Apps ohne weitere Schritte auf Ressourcen in Ihrem VNET zugreifen. Ein Beispiel für einen weiteren Vorteil einer App Service-Umgebung ist, dass Sie Dv2-basierte Worker mit bis zu 14 GB RAM verwenden können. Ein weiterer Vorteil ist, dass Sie das System je nach Ihren Anforderungen skalieren können. Im Gegensatz zu Umgebungen mit mehreren Mandanten, wo Ihr ASP auf 20 Instanzen beschränkt ist, können Sie in einer ASE bis zu 100 ASP-Instanzen zentral hochskalieren. Eine App Service-Umgebung können Sie mit einem ExpressRoute-VPN verwenden, was für die VNET-Integration nicht möglich ist. 
 
-Bei den Anwendungsfällen gibt es zwar einige Überschneidungen, aber diese Funktionen können sich nicht gegenseitig ersetzen. Das Wissen, welche Funktion verwendet werden sollte, richtet sich nach Ihren Anforderungen. Beispiel:
+Bei den Anwendungsfällen gibt es zwar einige Überschneidungen, aber diese Funktionen können sich nicht gegenseitig ersetzen. Das Wissen, welche Funktion verwendet werden sollte, richtet sich nach Ihren Anforderungen. Beispiel: 
 
 * Wenn Sie Entwickler sind, einfach eine Website unter Azure ausführen möchten und dafür den Zugriff auf die Datenbank auf der Arbeitsstation unter Ihrem Schreibtisch ermöglichen möchten, ist es am einfachsten, Hybrid Connections zu verwenden. 
 * Wenn Sie in einem großen Unternehmen arbeiten, das eine größere Zahl von Webeigenschaften in der Public Cloud anordnen und im eigenen Netzwerk verwalten möchte, ist es ratsam, die App Service-Umgebung zu verwenden. 

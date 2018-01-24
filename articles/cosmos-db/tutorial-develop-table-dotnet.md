@@ -12,18 +12,18 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 12/18/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 29e6187c59f34122e98819b5775af261494995ca
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 41d7e42f203170e4fa3b8e3a8c973e23808f941b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: Entwickeln mit der Tabellen-API in .NET
 
-Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets von den Vorteilen der globalen Verteilung und der horizontalen Skalierung profitieren, die Azure Cosmos DB zugrunde liegen.
+Azure Cosmos DB ist der global verteilte Microsoft-Datenbankdienst mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen.
 
 Dieses Tutorial enthält die folgenden Aufgaben: 
 
@@ -62,7 +62,7 @@ Weitere Informationen zu komplexen Azure Table Storage-Aufgaben finden Sie unter
 * [Einführung in die Tabellen-API von Azure Cosmos DB](table-introduction.md)
 * Alle Details zu verfügbaren APIs finden Sie in der Referenzdokumentation für den Tabellenspeicherdienst: [Azure Cosmos DB Table API .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cosmosdb/client?view=azure-dotnet) (.NET SDK für die Azure Cosmos DB-Tabellen-API).
 
-### <a name="about-this-tutorial"></a>Informationen zu diesem Lernprogramm
+### <a name="about-this-tutorial"></a>Informationen zu diesem Tutorial
 Dieses Tutorial wendet sich an Entwickler, die mit dem Azure Table Storage-SDK vertraut sind und die verfügbaren Premium-Features mit Azure Cosmos DB verwenden möchten. Es basiert auf [Erste Schritte mit Azure Table Storage mit .NET](table-storage-how-to-use-dotnet.md) und zeigt, wie zusätzliche Funktionen wie sekundäre Indizes, bereitgestellter Durchsatz und Multihosting genutzt werden können. Wir behandeln die Verwendung des Azure-Portals zum Erstellen eines Azure Cosmos DB-Kontos, erstellen anschließend eine Tabellenanwendung und stellen sie bereit. Wir zeigen Ihnen auch .NET-Beispiele zum Erstellen und Löschen einer Tabelle sowie zum Einfügen, Aktualisieren, Löschen und Abfragen von Tabellendaten. 
 
 Falls Sie Visual Studio 2017 noch nicht installiert haben, können Sie die **kostenlose** [Visual Studio 2017 Community-Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**.
@@ -116,10 +116,10 @@ Wechseln Sie nun zurück zum Azure-Portal, um die Informationen der Verbindungsz
     <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
     ```
 
-4. Fügen Sie die primäre Verbindungszeichenfolge aus dem Portal in den Wert „StorageConnectionString“ in Zeile 8 ein. Fügen Sie die Zeichenfolge innerhalb der Anführungszeichen ein.
+4. Fügen Sie die primäre Verbindungszeichenfolge aus dem Portal in den StorageConnectionString-Wert in Zeile 8 ein. Fügen Sie die Zeichenfolge innerhalb der Anführungszeichen ein.
    
     > [!IMPORTANT]
-    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Table-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Table-API-SDK zu arbeiten. 
+    > Wenn Ihr Endpunkt „documents.azure.com“ verwendet, bedeutet dies, dass Sie über ein Vorschaukonto verfügen und ein [neues Tabellen-API-Konto](#create-a-database-account) erstellen müssen, um mit dem allgemein verfügbaren Tabellen-API-SDK zu arbeiten. 
     >
 
     Zeile 8 sollte nun in etwa wie folgt aussehen:
@@ -137,7 +137,7 @@ Azure Cosmos DB unterstützt eine Reihe von Funktionen, die nicht in der Azure T
 
 Auf bestimmte Funktionen wird über neue Überladungen von CreateCloudTableClient zugegriffen, die es ermöglichen, eine Verbindungsrichtlinie und eine Konsistenzebene anzugeben.
 
-| Verbindungseinstellungen für Tabellen | Beschreibung |
+| Verbindungseinstellungen für Tabellen | BESCHREIBUNG |
 | --- | --- |
 | Verbindungsmodus  | Azure Cosmos DB unterstützt zwei Konnektivitätsmodi. Im `Gateway`-Modus werden Anforderungen immer an das Azure Cosmos DB-Gateway gerichtet, das sie an die entsprechenden Datenpartitionen weiterleitet. Im `Direct`-Konnektivitätsmodus ruft der Client die Zuordnung von Tabellen zu Partitionen ab, und Anforderungen werden direkt an Datenpartitionen gerichtet. `Direct` (Standard) wird empfohlen.  |
 | Verbindungsprotokoll | Azure Cosmos DB unterstützt zwei Verbindungsprotokolle – `Https` und `Tcp`. `Tcp` ist der Standard und wird empfohlen, da es einfacher ist. |
@@ -146,10 +146,8 @@ Auf bestimmte Funktionen wird über neue Überladungen von CreateCloudTableClien
 
 Weitere Funktionen können über die folgenden `appSettings`-Konfigurationswerte aktiviert werden.
 
-| Schlüssel | Beschreibung |
+| Schlüssel | BESCHREIBUNG |
 | --- | --- |
-| TableThroughput | Reservierter Durchsatz für die Tabelle, ausgedrückt in Anforderungseinheiten (RU) pro Sekunde. Einzelne Tabellen können Hunderte Millionen von RU/s unterstützen. Weitere Informationen finden Sie unter [Anforderungseinheiten in DocumentDB](request-units.md). Der Standardwert ist `400`. |
-| TableIndexingPolicy | Der Spezifikation der Indizierungsrichtlinie entsprechende JSON-Zeichenfolge. Unter [Indizierungsrichtlinien für DocumentDB](indexing-policies.md) erfahren Sie, wie Sie die Indizierungsrichtlinie ändern können, um bestimmte Spalten ein- bzw. auszuschließen. |
 | TableQueryMaxItemCount | Konfigurieren Sie die maximale Anzahl von Elementen, die in einem einzelnen Roundtrip pro Tabellenabfrage zurückgegeben werden. Der Standardwert ist `-1`, sodass Azure Cosmos DB den Wert zur Laufzeit dynamisch bestimmen kann. |
 | TableQueryEnableScan | Wenn die Abfrage den Index für keinen Filter verwenden kann, führen Sie sie dennoch über eine Überprüfung aus. Der Standardwert ist `false`.|
 | TableQueryMaxDegreeOfParallelism | Der Grad der Parallelität für die Ausführung einer partitionsübergreifenden Abfrage. `0` ist seriell ohne Vorabruf, `1` ist seriell mit Vorabruf, und höhere Werte steigern den Grad der Parallelität. Der Standardwert ist `-1`, sodass Azure Cosmos DB den Wert zur Laufzeit dynamisch bestimmen kann. |
@@ -164,10 +162,6 @@ Um den Standardwert zu ändern, öffnen Sie die Datei `app.config` in Visual Stu
       <add key="CosmosDBStorageConnectionString" 
         value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.azure.com" />
       <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key; TableEndpoint=https://account-name.documents.azure.com" />
-
-      <!--Table creation options -->
-      <add key="TableThroughput" value="700"/>
-      <add key="TableIndexingPolicy" value="{""indexingMode"": ""Consistent""}"/>
 
       <!-- Table query options -->
       <add key="TableQueryMaxItemCount" value="-1"/>
@@ -194,13 +188,13 @@ Dann erstellen Sie eine Tabelle mit `CloudTable`. Tabellen können in Azure Cosm
 
 ```csharp
 CloudTable table = tableClient.GetTableReference("people");
-
-table.CreateIfNotExists();
+400
+table.CreateIfNotExists(throughput: 800);
 ```
 
 Bei den Methoden zum Erstellen von Tabellen gibt es einen wichtigen Unterschied. Im Gegensatz zu dem verbrauchsbasierten Modell für Transaktionen von Azure Storage reserviert Azure Cosmos DB Durchsatz. Der Durchsatz ist dediziert/reserviert, sodass niemals eine Drosselung erfolgt, wenn Ihre Anforderungsrate höchstens dem bereitgestellten Durchsatz entspricht.
 
-Sie können den Standarddurchsatz konfigurieren, indem Sie die Einstellung für `TableThroughput` im Hinblick auf RUs (Anforderungseinheiten) pro Sekunde konfigurieren. 
+Sie können den Standarddurchsatz konfigurieren, indem Sie ihn als Parameter von „CreateIfNotExists“ aufnehmen.
 
 Ein Lesevorgang für eine 1-KB-Entität ist als 1 RU normalisiert, und andere Vorgänge sind basierend auf ihrer CPU-, Arbeitsspeicher- und IOPS-Auslastung auf einen festen RU-Wert normalisiert. Erfahren Sie mehr über [Anforderungseinheiten in Azure Cosmos DB](request-units.md) und insbesondere über [Schlüsselwertspeicher](key-value-store-cost.md).
 
@@ -301,7 +295,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 }
 ```
 
-Azure Cosmos DB unterstützt die gleiche Abfragefunktionalität wie Azure Table Storage für die Tabellen-API. Azure Cosmos DB unterstützt auch Sortieren, Aggregieren, räumliche Abfrage, Hierarchie und eine Vielzahl von integrierten Funktionen. Die zusätzliche Funktionalität wird in einem zukünftigen Dienstupdate in der Tabellen-API bereitgestellt. Unter [SQL-Abfrage und SQL-Syntax in DocumentDB](documentdb-sql-query.md) finden Sie eine Übersicht dieser Funktionen. 
+Azure Cosmos DB unterstützt die gleiche Abfragefunktionalität wie Azure Table Storage für die Tabellen-API. Azure Cosmos DB unterstützt auch Sortieren, Aggregieren, räumliche Abfrage, Hierarchie und eine Vielzahl von integrierten Funktionen. Die zusätzliche Funktionalität wird in einem zukünftigen Dienstupdate in der Tabellen-API bereitgestellt. Unter [SQL-Abfrage und SQL-Syntax in DocumentDB](sql-api-sql-query.md) finden Sie eine Übersicht dieser Funktionen. 
 
 ## <a name="replace-an-entity"></a>Ersetzen einer Entität
 Um eine Entität zu aktualisieren, rufen Sie sie aus dem Tabellendienst ab, ändern Sie das Entitätsobjekt, und speichern Sie die Änderungen dann im Tabellendienst. Mit dem folgenden Code wird die Telefonnummer eines vorhandenen Kunden geändert. 

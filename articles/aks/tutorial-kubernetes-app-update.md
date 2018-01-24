@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 95c609ab49fe478eda48b2a2eca6a772d1356d18
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 6de5173aedc836f7a2d56370ea8e54ad6e77ab5e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="update-an-application-in-azure-container-service-aks"></a>Aktualisieren einer Anwendung in Azure Container Service (AKS)
 
@@ -33,9 +33,9 @@ In nachfolgenden Tutorials wird die Operations Management Suite für die Überwa
 
 In vorherigen Tutorials wurde eine Anwendung in ein Containerimage gepackt, das Image wurde in Azure Container Registry hochgeladen, und es wurde ein Kubernetes-Cluster erstellt. Anschließend wurde die Anwendung im Kubernetes-Cluster ausgeführt. 
 
-Zudem wurde ein Anwendungsrepository geklont, das den Anwendungsquellcode und eine vorab erstellte Docker Compose-Datei enthält, die in diesem Tutorial verwendet wird. Stellen Sie sicher, dass Sie einen Klon des Repositorys erstellt und in das geklonte Verzeichnis gewechselt haben. Darin befindet sich ein Verzeichnis mit dem Namen `azure-vote` und eine Datei mit dem Namen `docker-compose.yml`.
+Zudem wurde ein Anwendungsrepository geklont, das den Anwendungsquellcode und eine vorab erstellte Docker Compose-Datei enthält, die in diesem Tutorial verwendet wird. Stellen Sie sicher, dass Sie einen Klon des Repositorys erstellt und in das geklonte Verzeichnis gewechselt haben. Darin befindet sich ein Verzeichnis mit dem Namen `azure-vote` und eine Datei mit dem Namen `docker-compose.yaml`.
 
-Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages](./tutorial-kubernetes-prepare-app.md) zurück. 
+Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück. 
 
 ## <a name="update-application"></a>Aktualisieren der Anwendung
 
@@ -61,7 +61,7 @@ Speichern und schließen Sie die Datei.
 
 ## <a name="update-container-image"></a>Aktualisieren des Containerimages
 
-Verwenden Sie [docker-compose](https://docs.docker.com/compose/), um das Front-End-Image neu zu erstellen und die aktualisierte Anwendung auszuführen. Mit dem `--build`-Argument wird Docker Compose angewiesen, das Anwendungsimage neu zu erstellen.
+Verwenden Sie [docker-compose][docker-compose], um das Front-End-Image neu zu erstellen und die aktualisierte Anwendung auszuführen. Mit dem `--build`-Argument wird Docker Compose angewiesen, das Anwendungsimage neu zu erstellen.
 
 ```console
 docker-compose up --build -d
@@ -83,13 +83,13 @@ Rufen Sie den Anmeldeservernamen mit dem Befehl [az acr list](/cli/azure/acr#lis
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Verwenden Sie [docker tag](https://docs.docker.com/engine/reference/commandline/tag/), um das Image zu kennzeichnen. Ersetzen Sie `<acrLoginServer>` durch den Namen des Azure Container Registry-Anmeldeservers oder den Hostnamen der öffentlichen Registrierung. Beachten Sie außerdem, dass die Imageversion auf `redis-v2` aktualisiert wird.
+Verwenden Sie [docker tag][docker-tag], um das Image zu kennzeichnen. Ersetzen Sie `<acrLoginServer>` durch den Namen des Azure Container Registry-Anmeldeservers oder den Hostnamen der öffentlichen Registrierung. Beachten Sie außerdem, dass die Imageversion auf `redis-v2` aktualisiert wird.
 
 ```console
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Verwenden Sie [docker push](https://docs.docker.com/engine/reference/commandline/push/), um das Image in Ihre Registrierung hochzuladen. Ersetzen Sie `<acrLoginServer>` durch den Namen des Azure Container Registry-Anmeldeservers.
+Verwenden Sie [docker push][docker-push], um das Image in Ihre Registrierung hochzuladen. Ersetzen Sie `<acrLoginServer>` durch den Namen des Azure Container Registry-Anmeldeservers.
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:redis-v2
@@ -97,7 +97,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v2
 
 ## <a name="deploy-update-application"></a>Bereitstellen der aktualisierten Anwendung
 
-Zur Gewährleistung der maximalen Betriebszeit müssen mehrere Instanzen des Anwendungs-Pods ausgeführt werden. Überprüfen Sie diese Konfiguration mit dem Befehl [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get).
+Zur Gewährleistung der maximalen Betriebszeit müssen mehrere Instanzen des Anwendungs-Pods ausgeführt werden. Überprüfen Sie diese Konfiguration mit dem Befehl [kubectl get pod][kubectl-get].
 
 ```
 kubectl get pod
@@ -120,13 +120,13 @@ Wenn das Image „azure-vote-front“ nicht auf mehreren Pods ausgeführt wird, 
 kubectl scale --replicas=3 deployment/azure-vote-front
 ```
 
-Um die Anwendung zu aktualisieren, verwenden Sie den Befehl [kubectl set](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#set). Aktualisieren Sie `<acrLoginServer>` mit dem Anmeldeserver oder dem Hostnamen der Containerregistrierung.
+Um die Anwendung zu aktualisieren, verwenden Sie den Befehl [kubectl set][kubectl-set]. Aktualisieren Sie `<acrLoginServer>` mit dem Anmeldeserver oder dem Hostnamen der Containerregistrierung.
 
 ```azurecli
 kubectl set image deployment azure-vote-front azure-vote-front=<acrLoginServer>/azure-vote-front:redis-v2
 ```
 
-Verwenden Sie zum Überwachen der Bereitstellung den Befehl [kubectl get pod](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get). Nach Bereitstellung der aktualisierten Anwendung werden die Pods beendet und mit dem neuen Containerimage neu erstellt.
+Verwenden Sie zum Überwachen der Bereitstellung den Befehl [kubectl get pod][kubectl-get]. Nach Bereitstellung der aktualisierten Anwendung werden die Pods beendet und mit dem neuen Containerimage neu erstellt.
 
 ```azurecli
 kubectl get pod
@@ -167,4 +167,15 @@ In diesem Tutorial haben Sie eine Anwendung aktualisiert und diese Aktualisierun
 Im nächsten Tutorial erfahren Sie, wie Sie Kubernetes mit der Operations Management Suite überwachen.
 
 > [!div class="nextstepaction"]
-> [Überwachen von Kubernetes mit Log Analytics](./tutorial-kubernetes-monitor.md)
+> [Überwachen von Kubernetes mit Log Analytics][aks-tutorial-monitor]
+
+<!-- LINKS - external -->
+[docker-compose]: https://docs.docker.com/compose/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
+[kubectl-set]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#set
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md

@@ -12,11 +12,11 @@ ms.workload: storage-backup-recovery
 ms.date: 12/08/2017
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 5464eea75c89a95e6bf74b3f24fe92f3652f5db9
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 3db1ead1f1a8b83cc47f53b915ed54bb78db7ab3
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>Einrichten einer Notfallwiederherstellung für Azure-VMs in eine sekundäre Azure-Region (Vorschau)
 
@@ -107,7 +107,7 @@ Azure Site Recovery bietet drei integrierte Rollen zum Steuern von Site Recovery
 
 Erfahren Sie mehr über [integrierte Rollen von Azure RBAC](../active-directory/role-based-access-built-in-roles.md).
 
-## <a name="enable-replication"></a>Replikation aktivieren
+## <a name="enable-replication"></a>Aktivieren der Replikation
 
 ### <a name="select-the-source"></a>Auswählen der Quelle
 
@@ -129,10 +129,10 @@ Site Recovery ruft eine Liste der virtuellen Computer ab, die dem Abonnement und
 
 Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für die Zielregion. Sie können die Einstellungen abhängig von Ihren Anforderungen ändern.
 
-1. Klicken Sie auf **Einstellungen**, um die Zieleinstellungen anzuzeigen.
-2. Um die Standardeinstellungen für das Ziel außer Kraft zu setzen, klicken Sie auf **Anpassen**. 
+1. Klicken Sie auf **Einstellungen**, um die Ziel- und Replikationseinstellungen anzuzeigen.
+2. Um die Standardzieleinstellungen zu überschreiben, klicken Sie neben **Ressourcengruppe, Netzwerk, Speicher und Verfügbarkeitsgruppen** auf **Anpassen**.
 
-![Konfigurieren von Einstellungen](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+  ![Konfigurieren von Einstellungen](./media/azure-to-azure-tutorial-enable-replication/settings.png)
 
 
 - **Zielspeicherort**: Die Zielregion, die zur Notfallwiederherstellung verwendet wird. Der Zielspeicherort sollte mit dem Speicherort des Site Recovery-Tresors übereinstimmen.
@@ -148,11 +148,23 @@ Site Recovery erstellt Standardeinstellungen und Replikationsrichtlinien für di
 
 - **Zielverfügbarkeitsgruppen**: Standardmäßig erstellt Site Recovery in der Zielregion eine neue Verfügbarkeitsgruppe mit dem Suffix „asr“. Sie können Verfügbarkeitsgruppen nur dann hinzufügen, wenn virtuelle Computer zu einer Gruppe in der Quellregion gehören.
 
+Um die Einstellungen für die Standardreplikationsrichtlinie zu überschreiben, klicken Sie neben **Replikationsrichtlinie** auf **Anpassen**.  
+
 - **Replikationsrichtlinienname**: Name der Richtlinie.
 
 - **Aufbewahrungszeitraum des Wiederherstellungspunkts**: Standardmäßig behält Site Recovery Wiederherstellungspunkte 24 Stunden lang bei. Sie können einen Wert zwischen 1 und 72 Stunden konfigurieren.
 
 - **App-konsistente Momentaufnahmenhäufigkeit**: Standardmäßig erstellt Site Recovery alle vier Stunden eine App-konsistente Momentaufnahme. Sie können einen Wert zwischen 1 und 12 Stunden konfigurieren. Eine App-konsistente Momentaufnahme ist eine Zeitpunkt-Momentaufnahme der Anwendungsdaten innerhalb der VM. VSS (Volume Shadow Copy Service, Volumeschattenkopie-Dienst) stellt sicher, dass Apps zum Zeitpunkt der Momentaufnahme konsistent sind.
+
+- **Replikationsgruppe**: Wenn für Ihre Anwendung VM-übergreifende Konsistenz mehrerer virtueller Computer erforderlich ist, können Sie eine Replikationsgruppe für diese VMs erstellen. Standardmäßig sind die ausgewählten VMs nicht Teil einer Replikationsgruppe.
+
+  Klicken Sie neben **Replikationsrichtlinie** auf **Anpassen**, und wählen Sie **Ja** zum Aktivieren der Konsistenz mehrerer virtueller Computer, um die VMs einer Replikationsgruppe hinzuzufügen. Sie können eine neue Replikationsgruppe erstellen oder eine vorhandene Replikationsgruppe verwenden. Wählen Sie die VMs aus, die der Replikationsgruppe angehören sollen, und klicken Sie auf **OK**.
+
+> [!IMPORTANT]
+  Alle Computer in einer Replikationsgruppe verfügen beim Failover über absturz- und anwendungskonsistente Wiederherstellungspunkte. Das Aktivieren der Konsistenz mehrerer virtueller Computer kann sich auf die Leistung der Workload auswirken und sollte nur verwendet werden, wenn Computer dieselbe Workload ausführen und eine Konsistenz erforderlich ist.
+
+> [!IMPORTANT]
+  Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird. Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, müssen Sie sicherstellen, dass der ausgehende Datenverkehr auf Port 20004 gemäß Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
 
 ### <a name="track-replication-status"></a>Nachverfolgen des Replikationsstatus
 

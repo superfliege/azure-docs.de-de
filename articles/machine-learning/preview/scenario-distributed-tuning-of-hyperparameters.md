@@ -4,15 +4,17 @@ description: "In diesem Szenario wird die verteilte Optimierung von Hyperparamet
 services: machine-learning
 author: pechyony
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.author: dmpechyo
+manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 4f739ff26c3df8add01bed6d797f292ff6e26db9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f0c466c433701c295bde00258d9ff7fd267b71f7
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Verteilte Optimierung von Hyperparametern mit Azure Machine Learning Workbench
 
@@ -26,7 +28,7 @@ Im Folgenden finden Sie den Link zum öffentlichen GitHub-Repository:
 ## <a name="use-case-overview"></a>Übersicht über den Anwendungsfall
 
 Viele Machine Learning-Algorithmen verfügen über einen oder mehrere Knöpfe, die als Hyperparameter bezeichnet werden. Diese Knöpfe ermöglichen das Optimieren von Algorithmen, um eine Optimierung ihrer Leistung für künftige Daten zu erzielen, gemessen anhand von benutzerdefinierten Metriken (z.B. Genauigkeit, AUC, RMSE). Datenanalysten müssen Wert für Hyperparameter angeben, wenn sie ein Modell mit Trainingsdaten erstellen und bevor die Zukunftstestdaten angezeigt werden. Wie können die Werte von Hyperparametern auf Grundlage der bekannten Trainingsdaten festgelegt werden, sodass das Modell bei den unbekannten Testdaten eine gute Leistung liefert? 
-
+    
 Ein gängiges Verfahren für das Optimieren von Hyperparametern ist eine *Rastersuche*, kombiniert mit der *Kreuzvalidierung*. Die Kreuzvalidierung ist ein Verfahren, bei dem bewertet wird, wie gut ein Modell, das mit einem Trainingsset trainiert wurde, für das Testset prognostiziert werden kann. Bei diesem Verfahren wird das DataSet in K Teilmengen unterteilt, und der Algorithmus wird in K Durchläufen per RoundRobin trainiert. Dies gilt für alle Teilmengen bis auf eine, die als „verbleibende Teilmenge“ bezeichnet wird. Wir berechnen den Durchschnittswert der Metriken von K Modellen für K verbleibende Teilmengen. Dieser Durchschnittswert, der *kreuzvalidierte Leistungsschätzwert*, hängt von den Werten der Hyperparameter ab, die beim Erstellen von K Modellen verwendet wurden. Beim Optimieren von Hyperparametern durchsuchen wir den Raum der möglichen Hyperparameterwerte, um diejenigen zu ermitteln, bei denen der Kreuzvalidierungs-Leistungsschätzwert optimiert wird. Die Rastersuche ist ein gängiges Suchverfahren. Bei der Rastersuche ist der Raum der möglichen Werte mehrerer Hyperparameter ein Kreuzprodukt der Gruppen von möglichen Werten einzelner Hyperparameter. 
 
 Die Rastersuche unter Verwendung der Kreuzvalidierung kann sehr zeitaufwendig sein. Wenn ein Algorithmus fünf Hyperparameter mit je fünf möglichen Werten aufweist, verwenden wir K = 5 Teilmengen. Wir führen dann eine Rastersuche durch, indem wir 5<sup>6</sup> = 15.625 Modelle trainieren. Glücklicherweise ist die Rastersuche mit Kreuzvalidierung ein komplett paralleles Verfahren, und alle diese Modelle können parallel trainiert werden.
@@ -37,13 +39,15 @@ Die Rastersuche unter Verwendung der Kreuzvalidierung kann sehr zeitaufwendig se
 * Eine installierte Kopie der [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) nach dem [Schnellstarthandbuch zum Installieren und Erstellen](./quickstart-installation.md), um die Workbench zu installieren und Konten zu erstellen.
 * In diesem Szenario wird davon ausgegangen, dass Sie die Azure ML Workbench mit einem lokal installierten Docker-Modul unter Windows 10 oder macOS ausführen. 
 * Um das Szenario mit einem Docker-Remotecontainer auszuführen, stellen Sie die Ubuntu Data Science Virtual Machine (DSVM) bereit. Befolgen Sie dazu die entsprechenden [Anweisungen](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Es wird empfohlen, einen virtuellen Computer mit mindestens 8 Kernen und 28 GB Arbeitsspeicher zu verwenden. D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. 
-* Zum Ausführen dieses Szenarios mit einem Spark-Cluster stellen Sie anhand dieser [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) einen Azure HDInsight-Cluster bereit. Es wird empfohlen, einen Cluster mit mindestens den folgenden Eigenschaften zu verwenden: 
-- 6 Workerknoten
-- 8 Kerne
-- 28 GB Arbeitsspeicher in Header- und Workerknoten D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf. Es wird empfohlen, die folgenden Parameter zur Maximierung der Clusterleistung zu ändern.
-- spark.executor.instances
-- spark.executor.cores
-- spark.executor.memory 
+* Zum Ausführen dieses Szenarios mit einem Spark-Cluster stellen Sie anhand dieser [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters) einen Azure HDInsight-Cluster bereit.   
+Es wird empfohlen, einen Cluster mit mindestens den folgenden Eigenschaften zu verwenden:
+    - 6 Workerknoten
+    - 8 Kerne
+    - 28 GB Arbeitsspeicher in Header- und Workerknoten D4-Instanzen von virtuellen Computern weisen eine solche Kapazität auf.       
+    - Es wird empfohlen, die folgenden Parameter zur Maximierung der Clusterleistung zu ändern:
+        - spark.executor.instances
+        - spark.executor.cores
+        - spark.executor.memory 
 
 Sie können diese [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager) befolgen und die Definitionen im Abschnitt „custom spark defaults“ (benutzerdefinierte Spark-Standardwerte) bearbeiten.
 
@@ -55,7 +59,7 @@ Sie können diese [Anweisungen](https://docs.microsoft.com/azure/hdinsight/hdins
 
 Wir verwenden das Dataset [TalkingData](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data). Dieses Dataset enthält Ereignisse aus den Apps in Mobiltelefonen. Das Ziel besteht darin, Geschlecht und Alterskategorie des Mobiltelefonnutzers zu ermitteln; Grundlage sind die Art des Telefons und die vom Nutzer kürzlich generierten Ereignisse.  
 
-## <a name="scenario-structure"></a>Struktur des Szenarios
+## <a name="scenario-structure"></a>Szenariostruktur
 Für dieses Szenario sind mehrere Ordner im GitHub-Repository vorhanden. Code und Konfigurationsdateien befinden sich im Ordner **Code**, die gesamte Dokumentation im Ordner **Docs** und sämtliche Bilder im Ordner **Images**. Der Stammordner enthält eine README-Datei mit einer kurzen Zusammenfassung dieses Szenarios.
 
 ### <a name="getting-started"></a>Erste Schritte

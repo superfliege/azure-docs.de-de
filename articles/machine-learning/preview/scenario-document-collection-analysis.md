@@ -2,18 +2,19 @@
 title: "Analysieren von Dokumentsammlungen – Azure | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie eine umfangreiche Sammlung von Dokumenten zusammenfassen und analysieren. Dazu gehören auch Techniken wie das Lernen von Ausdrücken, das Modellieren von Themen und die Themenmodellanalyse mithilfe der Azure ML Workbench."
 services: machine-learning
-documentationcenter: 
 author: kehuan
 ms.author: kehuan
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: mwinkle
+ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview, mldocs
 ms.service: machine-learning
+ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 5ef1589e28c01d750641873d3c8482f61d90a887
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: a6034652f27765bb20db4dbbb4c25741b261e50a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="document-collection-analysis"></a>Analysieren von Dokumentsammlungen
 
@@ -66,7 +67,7 @@ Folgende Voraussetzungen müssen zum Ausführen dieses Beispiels erfüllt sein:
 Erstellen Sie ein neues Projekt mit diesem Beispiel als Vorlage:
 1.  Öffnen Sie Azure Machine Learning Workbench.
 2.  Klicken Sie auf der Seite **Projekte** auf **+**, wählen Sie **Neues Projekt** aus, und signieren Sie es.
-3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein.
+3.  Geben Sie die Informationen für das neue Projekt im Bereich **Neues Projekt erstellen** ein
 4.  Geben Sie im Suchfeld **Projektvorlagen suchen** den Suchbegriff „Document Collection Analysis“ (Dokumentsammlungsanalyse) ein, und wählen Sie die Vorlage aus.
 5.  Klicken Sie auf **Erstellen**
 
@@ -82,17 +83,17 @@ In diesem Szenario enthalten die unformatierten Daten eine Reihe von legislative
 
 Es gibt neun Datenfelder in der Datendatei. Die Datenfeldnamen und Beschreibungen werden im Folgenden aufgelistet.
 
-| Feldname | Typ | Beschreibung | Enthält fehlende Werte |
+| Feldname | Typ | BESCHREIBUNG | Enthält fehlende Werte |
 |------------|------|-------------|---------------|
-| `ID` | String | Die ID des Gesetzes bzw. Beschlusses. Das Format dieses Felds lautet [Gesetzesart][Nummer]-[Kongress]. „hconres1-93“ bedeutet z.B., dass die Gesetzesart „hconres“ (für „House Concurrent Resolution“, siehe [dieses Dokument](https://github.com/unitedstates/congress/wiki/bills#basic-information)), die Gesetznummer „1“ und die Kongressnummer „93“ lauten. | Nein |
-| `Text` | String | Der Inhalt des Gesetzes bzw. Beschlusses. | Nein |
-| `Date` | String | Das Datum, an dem das Gesetz/der Beschluss ursprünglich eingereicht wurde. Im Format „jjjj-mm-tt“. | Nein |
-| `SponsorName` | String | Der Name des ursprünglichen Unterstützers, der das Gesetz/den Beschluss eingereicht hat. | Ja |
-| `Type` | String | Der Titeltyp des primären Unterstützers, entweder „rep“ (Representative) oder „s“ (Senator). | Ja |
-| `State` | String | Der Status des ursprünglichen Unterstützers. | Ja |
-| `District` | Integer | Die Distriktnummer des ursprünglichen Unterstützers, wenn der Titeltyp „Representative“ ist. | Ja |
-| `Party` | String | Die Partei des ursprünglichen Unterstützers. | Ja |
-| `Subjects` | String | Die Themenbegriffe, die dem Gesetz von der Library of Congress kumulativ hinzugefügt wurden. Die Ausdrücke werden durch Kommas getrennt. Diese Begriffe werden von einer Person in der Library of Congress geschrieben und sind in der Regel noch nicht enthalten, wenn die Informationen zum Gesetz das erste Mal veröffentlicht werden. Sie können jederzeit hinzugefügt werden. Daher ist es möglich, dass einige Begriffe am Ende des Lebenszyklus eines Gesetzes nicht mehr relevant sind. | Ja |
+| `ID` | Zeichenfolge | Die ID des Gesetzes bzw. Beschlusses. Das Format dieses Felds lautet [Gesetzesart][Nummer]-[Kongress]. „hconres1-93“ bedeutet z.B., dass die Gesetzesart „hconres“ (für „House Concurrent Resolution“, siehe [dieses Dokument](https://github.com/unitedstates/congress/wiki/bills#basic-information)), die Gesetznummer „1“ und die Kongressnummer „93“ lauten. | Nein  |
+| `Text` | Zeichenfolge | Der Inhalt des Gesetzes bzw. Beschlusses. | Nein  |
+| `Date` | Zeichenfolge | Das Datum, an dem das Gesetz/der Beschluss ursprünglich eingereicht wurde. Im Format „jjjj-mm-tt“. | Nein  |
+| `SponsorName` | Zeichenfolge | Der Name des ursprünglichen Unterstützers, der das Gesetz/den Beschluss eingereicht hat. | Ja |
+| `Type` | Zeichenfolge | Der Titeltyp des primären Unterstützers, entweder „rep“ (Representative) oder „s“ (Senator). | Ja |
+| `State` | Zeichenfolge | Der Status des ursprünglichen Unterstützers. | Ja |
+| `District` | Ganze Zahl  | Die Distriktnummer des ursprünglichen Unterstützers, wenn der Titeltyp „Representative“ ist. | Ja |
+| `Party` | Zeichenfolge | Die Partei des ursprünglichen Unterstützers. | Ja |
+| `Subjects` | Zeichenfolge | Die Themenbegriffe, die dem Gesetz von der Library of Congress kumulativ hinzugefügt wurden. Die Ausdrücke werden durch Kommas getrennt. Diese Begriffe werden von einer Person in der Library of Congress geschrieben und sind in der Regel noch nicht enthalten, wenn die Informationen zum Gesetz das erste Mal veröffentlicht werden. Sie können jederzeit hinzugefügt werden. Daher ist es möglich, dass einige Begriffe am Ende des Lebenszyklus eines Gesetzes nicht mehr relevant sind. | Ja |
 
 ## <a name="scenario-structure"></a>Szenariostruktur
 
@@ -100,7 +101,7 @@ Das Analysebeispiel für die Dokumentsammlung ist in zwei Arten von Ergebnissen 
 
 Die Dateien in diesem Beispiel sind wie folgt organisiert.
 
-| Dateiname | Typ | Beschreibung |
+| Dateiname | Typ | BESCHREIBUNG |
 |-----------|------|-------------|
 | `aml_config` | Ordner | Der Konfigurationsordner der Azure Machine Learning Workbench. Informationen zur Konfiguration der Durchführung der Experimente finden Sie in [dieser Dokumentation](./experimentation-service-configuration-reference.md). |
 | `Code` | Ordner | Der Codeordner, in dem die Python-Skripts und das Python-Paket gespeichert werden |

@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/13/2017
-ms.author: pajosh;markgal;trinadhk
+ms.author: pajosh;markgal;trinadhk; sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2425523dacd9a0e1e078ec8cd082ac40534d25a
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 509e891207d1469ed244eab4512ec66420284fd5
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup
 In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtuellen Computern mit Azure Backup beschrieben. Außerdem enthält er Details zu unterstützten Szenarien, Voraussetzungen und Problembehandlungsschritten für Fehler.
@@ -77,11 +77,17 @@ Führen Sie die folgenden Schritte zum Festlegen des Sicherungsziels, Definieren
 6. Wählen Sie die verschlüsselten virtuellen Computer aus, die der angegebenen Richtlinie zugeordnet werden sollen, und klicken Sie auf **OK**.
 
       ![Auswählen von verschlüsselten VMs](./media/backup-azure-vms-encryption/selected-encrypted-vms.png)
-7. Auf dieser Seite wird eine Meldung mit einem Hinweis zu Schlüsseltresoren angezeigt, die den ausgewählten verschlüsselten virtuellen Computern zugeordnet sind. Für Backup ist Lesezugriff auf die Schlüssel und Geheimnisse im Schlüsseltresor erforderlich. Diese Berechtigungen werden verwendet, um die Schlüssel und Geheimnisse zusammen mit den zugeordneten virtuellen Computern zu sichern. *Sie müssen dem Sicherungsdienst die Berechtigungen zum Zugriff auf den Schlüsseltresor gewähren, damit Sicherungen funktionieren.* Sie können diese Berechtigungen mit den [im folgenden Abschnitt beschriebenen Schritten](#provide-permissions-to-azure-backup) gewähren.
+7. Auf dieser Seite wird eine Meldung mit einem Hinweis zu Schlüsseltresoren angezeigt, die den ausgewählten verschlüsselten virtuellen Computern zugeordnet sind. Für Backup ist Lesezugriff auf die Schlüssel und Geheimnisse im Schlüsseltresor erforderlich. Diese Berechtigungen werden verwendet, um die Schlüssel und Geheimnisse zusammen mit den zugeordneten virtuellen Computern zu sichern.<br>
+Falls Sie ein **Mitgliedsbenutzer** sind, erhält der Prozess zum Aktivieren der Sicherung ohne Benutzereingriff Zugriff auf den Schlüsseltresor, um verschlüsselte virtuelle Computer zu sichern.
 
-      ![Meldung zu verschlüsselten VMs](./media/backup-azure-vms-encryption/encrypted-vm-warning-message.png)
+   ![Meldung zu verschlüsselten VMs](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
 
-      Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie unten auf der Seite auf **Sicherung aktivieren**. Mit **Sicherung aktivieren** wird die Richtlinie im Tresor und auf den virtuellen Computern bereitgestellt.
+   Für einen **Gastbenutzer** müssen Sie dem Sicherungsdienst die Berechtigungen zum Zugriff auf den Schlüsseltresor gewähren, damit Sicherungen funktionieren. Sie können diese Berechtigungen mit den [im folgenden Abschnitt beschriebenen Schritten](#provide-permissions-to-backup) gewähren.
+
+   ![Meldung zu verschlüsselten VMs](./media/backup-azure-vms-encryption/guest-user-encrypted-vm-warning-message.png)
+ 
+    Nachdem Sie nun alle Einstellungen für den Tresor definiert haben, klicken Sie unten auf der Seite auf **Sicherung aktivieren**. Mit **Sicherung aktivieren** wird die Richtlinie im Tresor und auf den virtuellen Computern bereitgestellt.
+  
 8. Die nächste Phase der Vorbereitung ist die Installation des VM-Agents, bzw. sicherzustellen, dass der VM-Agent installiert ist. Führen Sie dazu die Schritte unter [Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms-prepare.md) aus.
 
 ### <a name="trigger-a-backup-job"></a>Auslösen eines Sicherungsauftrags

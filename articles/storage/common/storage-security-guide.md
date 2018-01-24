@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: c3973c7e529cd1d0ecd98ae17d4d979d0d458ef3
-ms.sourcegitcommit: 5bced5b36f6172a3c20dbfdf311b1ad38de6176a
+ms.openlocfilehash: 9cb109dd9ce5a14bb80be61577c10d7191ec5ce6
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 ## <a name="overview"></a>Übersicht
@@ -82,7 +82,7 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 * Bevor Sie dem Benutzer eine Rolle zuweisen können, muss er in Ihrem Azure Active Directory eingerichtet werden.
 * Sie können einen Bericht darüber erstellen, wer wem welche Art des Zugriffs – und in welchem Bereich – mit PowerShell oder der Azure-Befehlszeilenschnittstelle gewährt/entzogen hat.
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 * [Rollenbasierte Zugriffssteuerung in Azure Active Directory](../../active-directory/role-based-access-control-configure.md)
 
   Dieser Artikel beschreibt die rollenbasierte Steuerung des Zugriffs auf Azure Active Directory, und wie sie funktioniert.
@@ -141,7 +141,7 @@ Ein weiterer Vorteil der Verwendung von Azure Key Vault ist, dass Sie auch den Z
 
 Hinweis: Sie sollten nur jeweils einen der Schlüssel gleichzeitig in allen Ihren Anwendungen verwenden. Wenn Sie „Key 1“ an einigen Stellen und „Key 2“ an anderen verwenden, können Sie die Verwendung der Schlüssel nicht wechseln, ohne dass einige Anwendungen den Zugriff verlieren.
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 * [Informationen zu Azure-Speicherkonten](storage-create-storage-account.md#regenerate-storage-access-keys)
 
   Dieser Artikel bietet einen Überblick über Speicherkonten und behandelt Anzeigen, Kopieren und Neugenerieren von Speicherzugriffsschlüsseln.
@@ -229,7 +229,7 @@ Wenn Sie eine SAS verwenden, die von einer gespeicherten Zugriffsrichtlinie abge
 
 Da Sie bei Verwendung einer SAS, die von einer gespeicherten Zugriffsrichtlinie abgeleitet ist, die SAS sofort widerrufen können, sollten Sie nach Möglichkeit immer die gespeicherte Zugriffsrichtlinie verwenden.
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 Weitere ausführliche Informationen zur Verwendung von SAS und gespeicherten Zugriffsrichtlinien mit Beispielen finden Sie in den folgenden Artikeln:
 
 * Dies sind die Referenzartikel.
@@ -268,13 +268,13 @@ Beachten Sie: Azure-Dateifreigaben können zwar mit Unix verwendet werden, doch 
 
 Sie können die Verwendung der Verschlüsselung mit dem Dienst Azure Files erzwingen, indem Sie [Sichere Übertragung erforderlich](../storage-require-secure-transfer.md) für das Speicherkonto aktivieren. Wenn Sie REST-APIs verwenden, ist HTTPs erforderlich. Bei SMB können nur SMB-Verbindungen erfolgreich eine Verbindung herstellen, die die Verschlüsselung unterstützen.
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 * [Einführung in Azure Files](../files/storage-files-introduction.md)
 * [Erste Schritte mit Azure Files unter Windows](../files/storage-how-to-use-files-windows.md)
 
   Dieser Artikel bietet eine Übersicht über Azure-Dateifreigaben sowie das Bereitstellen und Verwenden in Windows.
 
-* [Verwenden von Azure Files mit Linux](../files/storage-how-to-use-files-linux.md)
+* [How to use Azure Files with Linux (Verwenden von Azure Files mit Linux)](../files/storage-how-to-use-files-linux.md)
 
   Dieser Artikel beschreibt das Einbinden einer Azure-Dateifreigabe in Linux-Systeme und das Hoch- und Herunterladen von Dateien.
 
@@ -295,7 +295,7 @@ Diese Einstellung gilt für das gesamte Speicherkonto. Sie können dieses Featur
 
 Derzeit werden die Schlüssel für die Verschlüsselung von Microsoft verwaltet. Wir generieren die Schlüssel ursprünglich und verwalten die sichere Speicherung der Schlüssel sowie die reguläre Rotation gemäß der internen Microsoft-Richtlinie. In Zukunft erhalten Sie die Möglichkeit, Ihre eigenen Verschlüsselungsschlüssel zu verwalten, und wir bieten Ihnen einen Migrationspfad von den von Microsoft verwalteten Schlüsseln zu von Kunden verwalteten Schlüsseln.
 
-Dieses Feature ist für Standard Storage- und Storage Premium-Konten verfügbar, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. SSE gilt nur für Blockblobs, Seitenblobs und Anfügeblobs. Die anderen Typen von Daten, einschließlich Tabellen, Warteschlangen und Dateien, werden nicht verschlüsselt.
+Dieses Feature ist für Standard Storage- und Storage Premium-Konten verfügbar, die mit dem Resource Manager-Bereitstellungsmodell erstellt wurden. SSE gilt für jede Art von Daten: Blockblobs, Seitenblobs, Anfügeblobs, Tabellen, Warteschlangen und Dateien.
 
 Daten werden nur dann verschlüsselt, wenn SSE aktiviert ist und die Daten in den Blobspeicher geschrieben werden. Das Aktivieren oder Deaktivieren von SSE wirkt sich nicht auf vorhandene Daten aus. Mit anderen Worten: Wenn Sie diese Verschlüsselung aktivieren, werden bereits vorhandene Daten nicht verschlüsselt. Es werden auch keine bereits vorhandenen Daten entschlüsselt, wenn Sie SSE deaktivieren.
 
@@ -312,7 +312,7 @@ Die clientseitige Verschlüsselung wird in Java und .NET-Speicherclientbibliothe
 
 Für die Verschlüsselung selbst können Sie Ihre eigenen Verschlüsselungsschlüssel generieren und verwalten. Sie können auch von der Azure Storage-Clientbibliothek generierte Schlüssel verwenden oder die Schlüssel von Azure Key Vault generieren lassen. Sie können Ihre Verschlüsselungsschlüssel in Ihrem lokalen Schlüsselspeicher oder in Azure Key Vault speichern. Azure Key Vault ermöglicht Ihnen, bestimmten Benutzern mit Active Directory Zugriff auf die geheimen Schlüssel in Azure Key Vault zu gewähren. Dies bedeutet, dass nicht jeder aus Azure Key Vault lesen und die Schlüssel abrufen kann, die Sie für die clientseitige Verschlüsselung verwenden.
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 * [Verschlüsseln und Entschlüsseln von Blobs in Microsoft Azure Storage per Azure-Schlüsseltresor](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 
   Dieser Artikel zeigt Ihnen die Verwendung der clientseitigen Verschlüsselung mit Azure Key Vault, z. B. zum Erstellen der KEK und deren Speicherung im Tresor mit PowerShell.
@@ -353,7 +353,7 @@ Die Lösung unterstützt nicht die folgenden Szenarien, Features und Technologie
 
 Dieses Feature stellt sicher, dass alle Daten auf den Datenträgern Ihrer virtuellen Computer in Azure Storage ruhend verschlüsselt sind.
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 * [Azure-Datenträgerverschlüsselung für virtuelle Windows- und Linux-IaaS-Computer](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)
 
 ### <a name="comparison-of-azure-disk-encryption-sse-and-client-side-encryption"></a>Vergleich zwischen Azure Disk Encryption, SSE und clientseitiger Verschlüsselung
@@ -368,7 +368,7 @@ Wenn Sie über eine lokale, noch nicht verschlüsselte VHD-Datei verfügen, kön
 
 Wenn Sie einen Datenträger hinzufügen und ihn auf dem virtuellen Computer einbinden, können Sie Azure Disk Encryption für diesen Datenträger aktivieren. Dieser Datenträger wird zuerst lokal verschlüsselt, und dann führt die Dienstverwaltungsebene einen verzögerten Schreibvorgang im Speicher aus, damit der Speicherinhalt verschlüsselt wird.
 
-#### <a name="client-side-encryption"></a>clientseitiger Verschlüsselung
+#### <a name="client-side-encryption"></a>Clientseitige Verschlüsselung
 Die clientseitige Verschlüsselung ist die sicherste Methode zum Verschlüsseln Ihrer Daten, da die Verschlüsselung vor der Übertragung stattfindet und die Daten als ruhende Daten verschlüsselt werden. Allerdings ist es hierzu erforderlich, dass Sie Ihren Anwendungen, die den Speicher benutzen, Code hinzuzufügen, und das möchten Sie vielleicht nicht. In diesen Fällen können Sie HTTPS für die Übertragung Ihrer Daten und SSE zum Verschlüsseln ruhender Daten verwenden.
 
 Mit der clientseitigen Verschlüsselung können Sie Tabellenentitäten, Warteschlangennachrichten und Blobs verschlüsseln. Mit SSE können Sie nur Blobs verschlüsseln. Wenn Sie Tabellen- und Warteschlangendaten verschlüsseln müssen, sollten Sie die clientseitige Verschlüsselung verwenden.
@@ -380,7 +380,7 @@ Die clientseitige Verschlüsselung ist eine zusätzliche Belastung des Clients, 
 #### <a name="storage-service-encryption-sse"></a>Storage Service Encryption (SSE)
 SSE wird von Azure Storage verwaltet. SSE sorgt nicht für die Sicherheit der Daten während der Übertragung, verschlüsselt sie jedoch beim Schreiben in Azure Storage. Die Verwendung dieser Funktion hat keine Auswirkungen auf die Leistung.
 
-Sie können mit SSE nur Blockblobs, Anfügeblobs und Seitenblobs verschlüsseln. Wenn Sie Tabellen- oder Warteschlangendaten verschlüsseln müssen, sollten Sie die clientseitige Verschlüsselung verwenden.
+Sie können jede Art von Daten für das Speicherkonto mithilfe von SSE verschlüsseln (Blockblobs, Anfügeblobs, Seitenblobs, Tabellendaten, Warteschlangendaten und Dateien).
 
 Wenn Sie ein Archiv oder eine Bibliothek von VHD-Dateien besitzen, die Sie als Grundlage für die Erstellung neuer virtueller Computer verwenden, können Sie ein neues Speicherkonto erstellen, SSE aktivieren und anschließend die VHD-Dateien in dieses Konto hochladen. Diese VHD-Dateien werden von Azure Storage verschlüsselt.
 
@@ -433,7 +433,7 @@ Drei Fälle interessieren uns.
 
 Sie können diese Protokolle mit dem Microsoft Message Analyzer anzeigen und analysieren. Er enthält Such- und Filterfunktionen. Stellen Sie sich z. B. vor, Sie möchten nach Instanzen von „GetBlob“ suchen, um festzustellen, ob die Verwendung Ihren Erwartungen entspricht, d. h. um sicherzustellen, dass niemand unzulässig auf Ihr Speicherkonto zugreift.
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 * [Speicheranalyse](../storage-analytics.md)
 
   Dieser Artikel bietet eine Übersicht über die Speicheranalyse und die Art, wie Sie sie aktivieren können.
@@ -488,7 +488,7 @@ Die einzelnen Zeilen haben folgende Bedeutung:
 * **ExposedHeaders** Diese Antwortheader sollten vom Browser für den Anforderungsaussteller verfügbar gemacht werden. In diesem Beispiel sind alle Header verfügbar, die mit „x-ms-meta-“ beginnen.
 * **MaxAgeInSeconds** Der maximale Zeitraum, für den ein Browser die Anforderung „preflight OPTIONS“ zwischenspeichert. (Weitere Informationen zur Preflight-Anforderung finden Sie im ersten Artikel unten.)
 
-#### <a name="resources"></a>Ressourcen
+#### <a name="resources"></a>angeben
 Weitere Informationen zu CORS und zur CORS-Aktivierung finden Sie in diesen Ressourcen.
 
 * [Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste](../storage-cors-support.md)

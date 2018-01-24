@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 06/06/2017
 ms.author: tvoellm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bafbd43d65a0f46f87a13cea4a2a6299d3bf43ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d3811a9d59e388a1ceaacdefebc17afeda5b07d
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js
 
@@ -59,6 +59,7 @@ Sie können beide Zertifikate erneut generieren, indem Sie im Azure Cosmos DB-Em
 
 4. Klicken Sie auf **Weiter**.
 
+
     ![Exportieren des lokalen Azure Cosmos DB-Emulators, Schritt 4](./media/local-emulator-export-ssl-certificates/database-local-emulator-export-step-4.png)
 
 5. Klicken Sie auf **Nein, privaten Schlüssel nicht exportieren** und dann auf **Weiter**.
@@ -87,11 +88,11 @@ Sobald das SSL-Zertifikat „CosmosDBEmulatorCertificate“ installiert ist, sol
 
 ## <a name="how-to-use-the-certificate-in-python"></a>Verwenden des Zertifikats in Python
 
-Das [Python SDK (ab Version 2.0.0)](documentdb-sdk-python.md) für die DocumentDB-API verwendet beim Herstellen einer Verbindung mit dem lokalen Emulator standardmäßig nicht das SSL-Zertifikat. Wenn Sie die SSL-Validierung verwenden möchten, befolgen Sie die Beispiele in der Dokumentation zu [Python-Wrappern für Socketobjekte](https://docs.python.org/2/library/ssl.html).
+Das [Python SDK (ab Version 2.0.0)](sql-api-sdk-python.md) für die SQL-API verwendet beim Herstellen einer Verbindung mit dem lokalen Emulator standardmäßig nicht das SSL-Zertifikat. Wenn Sie die SSL-Validierung verwenden möchten, befolgen Sie die Beispiele in der Dokumentation zu [Python-Wrappern für Socketobjekte](https://docs.python.org/2/library/ssl.html).
 
 ## <a name="how-to-use-the-certificate-in-nodejs"></a>Verwenden des Zertifikats in Node.js
 
-Das [Node.js-SDK (ab Version 1.10.1)](documentdb-sdk-node.md) für die DocumentDB-API verwendet beim Herstellen einer Verbindung mit dem lokalen Emulator standardmäßig nicht das SSL-Zertifikat. Wenn Sie die SSL-Validierung verwenden möchten, befolgen Sie die Beispiele in der [Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)-Dokumentation.
+Das [Node.js SDK (ab Version 1.10.1)](sql-api-sdk-node.md) für die SQL-API verwendet beim Herstellen einer Verbindung mit dem lokalen Emulator standardmäßig nicht das SSL-Zertifikat. Wenn Sie die SSL-Validierung verwenden möchten, befolgen Sie die Beispiele in der [Node.js](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)-Dokumentation.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

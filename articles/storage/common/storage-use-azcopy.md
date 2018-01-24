@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/14/2017
 ms.author: seguler
-ms.openlocfilehash: 1a4c52babe76e59eacb30e8be91ed934cdbe305b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d4a7ceabc8cdb97fc8a0f29756d7648d253fe21
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>Übertragen von Daten mit AzCopy unter Windows
-AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten zu und von Microsoft Azure Blob, File und Table Storage entwickelt wurde, wobei durch einfache Befehle optimale Leistung erzielt wird. Sie können Daten von einem Objekt zu einem anderen innerhalb Ihres Speicherkontos oder von einem Speicherkonto zu einem anderen kopieren.
+AzCopy ist ein Befehlszeilenprogramm, das entwickelt wurde, um Daten in/aus Microsoft Azure Blob, File und Table Storage zu kopieren. Hierbei werden einfache Befehle verwendet, die für optimale Leistung konzipiert sind. Sie können Daten zwischen einem Dateisystem und einem Speicherkonto oder zwischen Speicherkonten kopieren.  
 
 Es gibt zwei Versionen von AzCopy, die Sie herunterladen können. AzCopy unter Windows ist mit .NET Framework aufgebaut und bietet Windows Formatvorlage-Befehlszeilenoptionen. [AzCopy unter Linux](storage-use-azcopy-linux.md) ist mit .NET Core-Framework aufgebaut, das auf Linux-Plattformen ausgerichtet ist, die POSIX-Formatvorlage-Befehlszeilenoptionen anbieten. Dieser Artikel behandelt AzCopy unter Windows.
 

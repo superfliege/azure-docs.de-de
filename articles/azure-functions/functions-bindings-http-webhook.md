@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 6b3da498a613d63515ecb624b87496cf536c0ebf
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 080712e0a6c05348e7163f3c8e2055e6ff2806b2
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>HTTP- und Webhookbindungen in Azure Functions
 
@@ -41,14 +41,14 @@ Standardmäßig antwortet ein HTTP-Trigger auf die Anforderung mit dem Statuscod
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#trigger---c-example)
-* [C#-Skript](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C#-Skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
 
-Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die in der Abfragezeichenfolge oder im Text der HTTP-Anforderung nach einem `name`-Parameter sucht.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die in der Abfragezeichenfolge oder im Text der HTTP-Anforderung nach einem `name`-Parameter sucht.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -235,14 +235,14 @@ module.exports = function(context, req) {
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#webhook---c-example)
-* [C#-Skript](#webhook---c-script-example)
+* [C#](#webhook---c-example)
+* [C#-Skript (.csx)](#webhook---c-script-example)
 * [F#](#webhook---f-example)
 * [JavaScript](#webhook---javascript-example)
 
 ### <a name="webhook---c-example"></a>Webhook: C#-Beispiel
 
-Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die HTTP 200 als Antwort auf eine generische JSON-Anforderung sendet.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die HTTP 200 als Antwort auf eine generische JSON-Anforderung sendet.
 
 ```cs
 [FunctionName("HttpTriggerCSharp")]
@@ -364,7 +364,7 @@ module.exports = function (context, data) {
 
 ## <a name="trigger---attributes"></a>Trigger: Attribute
 
-Verwenden Sie für [vorkompilierte C#](functions-dotnet-class-library.md)-Funktionen das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) definierte Attribut [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs).
+Verwenden Sie in [C#-Bibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Http](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Http) definierte [HttpTrigger](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs)-Attribut.
 
 Sie können die Autorisierungsebene und die zulässigen HTTP-Methoden in den Konstruktorparametern für das Attribut festlegen. Außerdem gibt es Eigenschaften für den Webhooktyp und die Routenvorlage. Weitere Informationen zu diesen Einstellungen finden Sie unter [Trigger: Konfiguration](#trigger---configuration). Dies ist ein `HttpTrigger`-Attribut in einer Methodensignatur:
 
@@ -377,18 +377,19 @@ public static HttpResponseMessage Run(
 }
  ```
 
-Ein vollständiges Beispiel finden Sie unter [Trigger: vorkompiliertes C#-Beispiel](#trigger---c-example).
+Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger---c-example).
 
 ## <a name="trigger---configuration"></a>Trigger: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `HttpTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 | **type** | –| Erforderlich – muss auf `httpTrigger` festgelegt sein. |
 | **direction** | –| Erforderlich – muss auf `in` festgelegt sein. |
 | **name** | –| Erforderlich – der Variablenname, der im Funktionscode für die Anforderung oder den Anforderungstext verwendet wird. |
-| **authLevel** |  **AuthLevel** |Bestimmt, welche Schlüssel (sofern erforderlich) in der Anforderung vorhanden sein müssen, um die Funktion aufzurufen. Bei den Autorisierungsebenen kann es sich um einen der folgenden Werte handeln: <ul><li><code>anonymous</code>: Es ist kein API-Schlüssel erforderlich.</li><li><code>function</code>: Es ist ein funktionsspezifischer API-Schlüssel erforderlich. Dies ist der Standardwert, wenn kein anderer Wert angegeben wird.</li><li><code>admin</code>: Der Hauptschlüssel ist erforderlich.</li></ul> Weitere Informationen finden Sie im Abschnitt zu [Autorisierungsschlüsseln](#authorization-keys). |
+| <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Bestimmt, welche Schlüssel (sofern erforderlich) in der Anforderung vorhanden sein müssen, um die Funktion aufzurufen. Bei den Autorisierungsebenen kann es sich um einen der folgenden Werte handeln: <ul><li><code>anonymous</code>: Es ist kein API-Schlüssel erforderlich.</li><li><code>function</code>: Es ist ein funktionsspezifischer API-Schlüssel erforderlich. Dies ist der Standardwert, wenn kein anderer Wert angegeben wird.</li><li><code>admin</code>: Der Hauptschlüssel ist erforderlich.</li></ul> Weitere Informationen finden Sie im Abschnitt zu [Autorisierungsschlüsseln](#authorization-keys). |
 | **methods** |**Methoden** | Ein Array der HTTP-Methoden, auf die diese Funktion antwortet. Wird dieses Array nicht angegeben, antwortet die Funktion auf alle HTTP-Methoden. Siehe [Anpassen des HTTP-Endpunkts](#trigger---customize-the-http-endpoint). |
 | **route** | **Route** | Definiert die Routenvorlage, mit der gesteuert wird, auf welche Anforderungs-URLs die Funktion antwortet. Wenn kein anderer Wert angegeben wird, lautet der Standardwert `<functionname>`. Weitere Informationen finden Sie unter [Anpassen des HTTP-Endpunkts](#customize-the-http-endpoint). |
 | **webHookType** | **WebHookType** |Konfiguriert den HTTP-Trigger so, dass er als [Webhookempfänger](https://en.wikipedia.org/wiki/Webhook) für den angegebenen Anbieter fungiert. Legen Sie die `methods` Eigenschaft nicht fest, wenn Sie diese Eigenschaft festlegen. Der Webhooktyp kann folgende Werte annehmen:<ul><li><code>genericJson</code>: Ein allgemeiner Webhookendpunkt ohne Logik für einen bestimmten Anbieter. Diese Einstellung beschränkt Anforderungen auf solche, die HTTP POST verwenden und den Inhaltstyp `application/json` aufweisen.</li><li><code>github</code>: Die Funktion antwortet auf [GitHub-Webhooks](https://developer.github.com/webhooks/). Verwenden Sie die _authLevel_-Eigenschaft nicht mit GitHub-Webhooks. Weitere Informationen finden Sie im Abschnitt zu GitHub-Webhooks weiter unten in diesem Artikel.</li><li><code>slack</code>: Die Funktion antwortet auf [Slack-Webhooks](https://api.slack.com/outgoing-webhooks). Verwenden Sie die _authLevel_-Eigenschaft nicht mit Slack-Webhooks. Weitere Informationen finden Sie im Abschnitt zu Slack-Webhooks weiter unten in diesem Artikel.</li></ul>|
@@ -533,13 +534,13 @@ Die Datei [host.json](functions-host-json.md) enthält Einstellungen, mit denen 
 
 [!INCLUDE [functions-host-json-http](../../includes/functions-host-json-http.md)]
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 
 Verwenden Sie die HTTP-Ausgabebindung, um eine Antwort an den Absender der HTTP-Anforderung zu senden. Diese Bindung erfordert einen HTTP-Trigger und ermöglicht Ihnen, die Antwort, die der Anforderung des Triggers zugeordnet ist, benutzerdefiniert anzupassen. Wenn keine HTTP-Ausgabebindung angegeben wird, gibt ein HTTP-Trigger den Statuscode „HTTP 200 OK“ mit leerem Text zurück. 
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
-Für vorkompilierten C#-Code gibt es keine Konfigurationseigenschaften für ausgabespezifische Bindungen. Um eine HTTP-Antwort zu senden, legen Sie als Rückgabetyp der Funktion `HttpResponseMessage` oder `Task<HttpResponseMessage>` fest.
+Für C#-Klassenbibliotheken gibt es keine Konfigurationseigenschaften für ausgabespezifische Bindungen. Um eine HTTP-Antwort zu senden, legen Sie als Rückgabetyp der Funktion `HttpResponseMessage` oder `Task<HttpResponseMessage>` fest.
 
 Bei anderen Sprachen wird eine HTTP-Ausgabebindung wie im folgenden Beispiel dargestellt durch ein JSON-Objekt im `bindings`-Array von „function.json“ definiert:
 
@@ -553,7 +554,7 @@ Bei anderen Sprachen wird eine HTTP-Ausgabebindung wie im folgenden Beispiel dar
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* festlegen.
 
-|Eigenschaft  |Beschreibung  |
+|Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 | **type** |Muss auf `http` festgelegt sein. |
 | **direction** | Muss auf `out` festgelegt sein. |

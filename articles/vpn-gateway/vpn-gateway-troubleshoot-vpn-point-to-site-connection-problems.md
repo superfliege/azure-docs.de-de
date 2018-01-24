@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2017
+ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 76ab1600903705aad7f18f48f41cb7119c3c09bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Problembehandlung: Azure Punkt-zu-Standort-Verbindungsprobleme
 
@@ -42,7 +42,7 @@ Gehen Sie folgendermaßen vor, um dieses Problem zu beheben:
 
 1. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
 
-    | Zertifikat | Ort |
+    | Zertifikat | Speicherort |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
     | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
@@ -83,7 +83,7 @@ Wenn Sie versuchen, mithilfe des VPN-Client mit einem virtuellen Netzwerk von Az
 
 1. Stellen Sie sicher, dass sich die folgenden Zertifikate im richtigen Speicherort befinden:
 
-    | Zertifikat | Ort |
+    | Zertifikat | Speicherort |
     | ------------- | ------------- |
     | AzureClient.pfx  | Aktueller Benutzer\Eigene Zertifikate\Zertifikate |
     | Azuregateway-*GUID*.cloudapp.net  | Aktueller Benutzer\Vertrauenswürdige Stammzertifizierungsstellen|
@@ -136,7 +136,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 1. Öffnen Sie „mmc.exe“.
 2. Fügen Sie das **Zertifikate** -Snap-in hinzu.
 3. Wählen Sie das **Computer** -Konto für den lokalen Computer aus.
-4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) > **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
+4. Klicken Sie mit der rechten Maustaste auf den Knoten **Vertrauenswürdige Stammzertifizierungsstellen**. Klicken Sie auf **All-Task** (Alle Aufgaben) >  **Importieren**, und suchen Sie nach der CER-Datei, die Sie aus dem VPN-Clientkonfigurationspaket extrahiert haben.
 5. Starten Sie den Computer neu. 
 6. Versuchen Sie eine erneute Installation des VPN-Clients.
 
@@ -146,7 +146,7 @@ Extrahieren Sie das VPN-Clientkonfigurationspaket, und suchen Sie nach der CER-D
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung:
 
-**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Die Daten für die &lt;*Zertifikat-ID*&gt; des Zertifikats sind ungültig.**
+*Fehler beim Speichern des Gateways für virtuelle Netzwerke *Gatewayname&lt;**&gt;. Die Daten für die &lt;*Zertifikat-ID*&gt; des Zertifikats sind ungültig.**
 
 ### <a name="cause"></a>Ursache 
 
@@ -181,7 +181,7 @@ Stellen Sie sicher, dass die Daten im Zertifikat keine ungültigen Zeichen wie Z
 
 Wenn Sie versuchen, die Änderungen für das VPN-Gateway im Azure-Portal zu speichern, erhalten Sie die folgende Fehlermeldung: 
 
-**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Fehler: Der Ressourcenname &lt;*Zertifikatname, den Sie versuchen hochzuladen,*&gt; ist ungültig**.
+**Fehler beim Speichern des Gateways für virtuelle Netzwerke &lt;*Gatewayname*&gt;. Fehler: Der Ressourcenname &lt;*Zertifikatname, den Sie versuchen hochzuladen,*&gt; ist ungültig.
 
 ### <a name="cause"></a>Ursache
 
@@ -263,3 +263,52 @@ Sie entfernen die Punkt-zu-Standort-VPN-Verbindung und installieren anschließen
 ### <a name="solution"></a>Lösung
 
 Löschen Sie die alte VPN-Client-Konfigurationsdateien von **C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections**, und führen Sie anschließend das VPN-Client-Installationsprogramm erneut aus, um das Problem zu beheben.
+
+## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Auflösung des FQDN der Ressourcen in der lokalen Domäne durch den Point-to-Site-VPN-Client nicht möglich
+
+### <a name="symptom"></a>Symptom
+
+Wenn der Client mithilfe einer Point-to-Site-VPN-Verbindung eine Verbindung mit Azure herstellt, kann Azure nicht den FQDN der Ressourcen in Ihrer lokalen Domäne auflösen.
+
+### <a name="cause"></a>Ursache
+
+Der Point-to-Site-VPN-Client verwendet Azure DNS-Server, die im virtuellen Azure-Netzwerk konfiguriert sind. Die Azure DNS-Server haben gegenüber den im Client konfigurierten lokalen DNS-Servern Vorrang, sodass alle DNS-Abfragen an die Azure DNS-Server gesendet werden. Wenn die Azure DNS-Server nicht die Datensätze für die lokalen Ressourcen beinhalten, tritt ein Fehler bei der Abfrage auf.
+
+### <a name="solution"></a>Lösung
+
+Stellen Sie zur Behebung des Problems sicher, dass die Azure DNS-Server, die im virtuellen Azure-Netzwerk verwendet werden, die DNS-Datensätze für lokale Ressourcen auflösen können. Hierfür können Sie DNS-Weiterleitungen oder bedingte Weiterleitungen verwenden. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server).
+
+## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>Herstellen einer Verbindung mit Azure-Ressourcen trotz bestehender Point-to-Site-VPN-Verbindung nicht möglich 
+
+### <a name="cause"></a>Ursache
+
+Dieses Problem kann auftreten, wenn der VPN-Client nicht die Routen vom Azure-VPN-Gateway erhält.
+
+### <a name="solution"></a>Lösung
+
+Um dieses Problem zu lösen, [setzen Sie das Azure-VPN-Gateway zurück](vpn-gateway-resetgw-classic.md).
+
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Fehler: „Die Sperrfunktion konnte die Sperre nicht überprüfen, weil der Sperrserver offline war.(Fehler 0x80092013)“
+
+### <a name="causes"></a>Ursachen
+Diese Fehlermeldung tritt auf, wenn der Client nicht auf „http://crl3.digicert.com/ssca-sha2-g1.crl“ und „http://crl4.digicert.com/ssca-sha2-g1.cr“ zugreifen kann.  Für die Sperrprüfung ist Zugriff auf diese beiden Websites erforderlich.  Dieses Problem tritt in der Regel auf dem Client auf, für den der Proxyserver konfiguriert wurde. In einigen Umgebungen wird diese an der Edgefirewall verweigert, wenn die Anforderungen nicht über den Proxyserver erfolgen.
+
+### <a name="solution"></a>Lösung
+
+Überprüfen Sie die Proxyservereinstellungen, und stellen Sie sicher, dass der Client auf „http://crl3.digicert.com/ssca-sha2-g1.crl“ und „http://crl4.digicert.com/ssca-sha2-g1.cr“ zugreifen kann.
+
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-Clientfehler: Die Verbindung wurde aufgrund einer auf dem RAS-/VPN-Server konfigurierten Richtlinie verhindert. (Fehler 812)
+
+### <a name="cause"></a>Ursache
+
+Dieser Fehler tritt auf, wenn der für die Authentifizierung des VPN-Clients verwendete RADIUS-Server falsche Einstellungen aufweist. 
+
+### <a name="solution"></a>Lösung
+
+Stellen Sie sicher, dass der RADIUS-Server ordnungsgemäß konfiguriert ist. Weitere Informationen finden Sie unter [Integration der RADIUS-Authentifizierung mit dem Azure Multi-Factor Authentication-Server](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md).
+
+## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>„Fehler 405“ beim Herunterladen des Stammzertifikats aus VPN Gateway
+
+### <a name="cause"></a>Ursache
+
+Das Stammzertifikat wurde nicht installiert. Das Stammzertifikat ist im **Zertifikatspeicher für vertrauenswürdige Anbieter** des Clients installiert.

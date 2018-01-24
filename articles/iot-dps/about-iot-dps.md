@@ -12,13 +12,13 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 4a2ac24442c425e1c2f2e81badef5dbd3a8dcf5e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 108ae4a66d2c13906cd0892b6c8ee5b20c3ca605
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service-preview"></a>Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning-Dienst (Vorschau)
+# <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Bereitstellung von Geräten mit dem Azure IoT Hub Device Provisioning-Dienst
 Microsoft Azure bietet einen umfangreichen Satz von integrierten öffentlichen Clouddiensten für alle Ihre IoT-Lösunganforderungen. Der IoT Hub Device Provisioning-Dienst ist ein Hilfsdienst für IoT Hub, der die JIT-Bereitstellung im richtigen IoT-Hub ohne manuelles Eingreifen ermöglicht, sodass Kunden Millionen von Geräten sicher und skalierbar bereitstellen können.
 
 ## <a name="when-to-use-device-provisioning-service"></a>Wann sollte der Device Provisioning-Dienst verwendet werden?
@@ -105,7 +105,7 @@ Der Device Provisioning-Dienst ist in vielen Regionen verfügbar. Wir führen un
 > [!NOTE]
 > Der Device Provisioning-Dienst ist global und nicht an einen Standort gebunden. Sie müssen jedoch eine Region angeben, in der Ihre dem Device Provisioning-Dienstprofil zugeordneten Metadaten gespeichert werden sollen.
 
-## <a name="availability"></a>Availability
+## <a name="availability"></a>Verfügbarkeit
 Wir setzen eine Vereinbarung zum Servicelevel (SLA) von 99,9 % für den Device Provisioning-Dienst um, und Sie können [die SLA lesen](https://azure.microsoft.com/support/legal/sla/iot-hub/). Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
 
 ## <a name="quotas"></a>Kontingente

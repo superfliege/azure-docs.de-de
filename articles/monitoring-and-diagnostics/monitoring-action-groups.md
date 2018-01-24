@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: ancav
-ms.openlocfilehash: 7347be8520e643cd166851d3f525a9a0726b40c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 05775415e210333cf63565e7b5b554d014f6ba23
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 ## <a name="overview"></a>Übersicht ##
@@ -29,7 +29,7 @@ Sie können eine Liste von Aktionen mit Aktionsgruppen konfigurieren. Diese Grup
 Eine Aktivitätsgruppe kann bis zu zehn Aktionen jedes Aktionstyps enthalten. Jede Aktion besteht aus den folgenden Eigenschaften:
 
 * **Name:** ein eindeutiger Bezeichner innerhalb der Aktionsgruppe.  
-* **Aktionstyp**: Senden Sie eine SMS, eine E-Mail oder Daten an ein ITSM-Tool, oder rufen Sie einen Webhook auf.
+* **Aktionstyp**: eine SMS senden, eine E-Mail senden, einen Webhook aufrufen, Daten an ein ITSM-Tool senden, eine Azure-App aufrufen oder ein Automation-Runbook ausführen.
 * **Details**: Die entsprechende Telefonnummer oder E-Mail-Adresse, die entsprechenden Details zur ITSM-Verbindung oder der entsprechende Webhook-URI.
 
 Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konfigurierung von Aktionsgruppen finden Sie unter [Aktionsgruppen-Resource Manager-Vorlagen](monitoring-create-action-group-with-resource-manager-template.md).
@@ -38,7 +38,7 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 1. Wählen Sie im [Portal](https://portal.azure.com) die Option **Überwachen**. Das Blatt **Überwachen** konsolidiert alle Ihre Überwachungseinstellungen und Daten in einer Ansicht.
 
     ![Der Dienst „Überwachen“](./media/monitoring-action-groups/home-monitor.png)
-2. Wählen Sie im Abschnitt **Aktivitätsprotokoll** die Option **Aktionsgruppen**.
+2. Wählen Sie im Abschnitt **Einstellungen** die Option **Aktionsgruppen** aus.
 
     ![Registerkarte „Aktionsgruppen“](./media/monitoring-action-groups/action-groups-blade.png)
 3. Wählen Sie **Aktionsgruppe hinzufügen**, und füllen Sie die Felder aus.
@@ -56,14 +56,12 @@ Weitere Informationen zum Verwenden von Azure Resource Manager-Vorlagen zur Konf
 
     a. **Name**: Geben Sie einen eindeutigen Bezeichner für diese Aktion an.
 
-    b. **Aktionstyp**: Wählen Sie „SMS“, „E-Mail“, „Webhook“ oder „ITSM“ aus.
+    b. **Aktionstyp**: Wählen Sie SMS, E-Mail, Webhook, Azure-App, ITSM oder Automation-Runbook aus.
 
-    c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, Details zur ITSM-Verbindung oder einen Webhook-URI an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt. 
+    c. **Details:** Geben Sie basierend auf dem Aktionstyp eine Telefonnummer, eine E-Mail-Adresse, einen Webhook-URI, eine Azure-App, eine ITSM-Verbindung oder ein Automation-Runbook an. Legen Sie für die ITSM-Aktion darüber hinaus **Arbeitselement** und andere Felder fest, die Ihr ITSM-Tool benötigt. 
 
-> [!NOTE]
-> Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md). ITSM-Aktionen können zurzeit nur für Aktivitätsprotokollwarnungen durchgeführt werden. Für andere Warnungstypen ist diese Aktion zurzeit nicht verfügbar.
->
->
+   > [!NOTE]
+   > Für eine ITSM-Aktion muss eine ITSM-Verbindung hergestellt werden. Informieren Sie sich, wie Sie [eine ITSM-Verbindung erstellen](../log-analytics/log-analytics-itsmc-overview.md). ITSM-Aktionen können zurzeit nur für Aktivitätsprotokollwarnungen durchgeführt werden. Für andere Warnungstypen ist diese Aktion zurzeit nicht verfügbar.
 
 8. Wählen Sie **OK**, um die Aktionsgruppe zu erstellen.
 

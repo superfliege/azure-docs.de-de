@@ -4,22 +4,22 @@ description: "Aufbewahrungsrichtlinien für Berichtdaten in Azure Active Directo
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: 183e53b0-0647-42e7-8abe-3e9ff424de12
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/17/2017
+ms.date: 12/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 933d251903f4ca74902e984e7a1581a75345ee7f
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 61d3e8fbe26ab24ba0b551e52be0769228f09a11
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Aufbewahrungsrichtlinien für Azure Active Directory-Berichte
 
@@ -40,8 +40,8 @@ Dieses Thema enthält Antworten auf die am häufigsten gestellten Fragen im Zusa
 
 **A:**
 
-- **Sofort** – Wenn Sie bereits mit Berichten im klassischen Azure-Portal gearbeitet haben.
-- **Innerhalb von 2 Stunden** – Wenn Sie die Berichterstellung im klassischen Azure-Portal nicht aktiviert haben.
+- **Sofort** – Wenn Sie bereits mit Berichten im Azure-Portal gearbeitet haben
+- **Innerhalb von 2 Stunden** – Wenn Sie die Berichterstellung im Azure-Portal nicht aktiviert haben
 
 ---
 **F: Wie wird die Erfassung von Sicherheitssignalen gestartet?**  
@@ -60,7 +60,7 @@ Dieses Thema enthält Antworten auf die am häufigsten gestellten Fragen im Zusa
 | :--                    | :--           | :--                 | :--                 |
 | Verzeichnisprüfbericht        | 7 Tage        | 30 Tage             | 30 Tage             |
 | Benutzeranmeldeaktivität       | N/V           | 30 Tage             | 30 Tage             |
-| Azure MFA-Nutzung        | 90 Tage       | 90 Tage             | 90 Tage             |
+| Azure MFA-Nutzung        | 30 Tage       | 30 Tage             | 30 Tage             |
 
 **Sicherheitssignale**
 

@@ -1,24 +1,16 @@
 ---
-title: "Überprüfen der Architektur für die Replikation physischer Server in Azure | Microsoft-Dokumentation"
+title: Architektur der Replikation vom physischen Server nach Azure in Azure Site Recovery | Microsoft-Dokumentation
 description: "Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Replizieren von lokalen physischen Servern in Azure mit dem Azure Site Recovery-Dienst verwendet werden."
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: aac3450e-dfac-4e20-b377-1a6cd39d04ca
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 02dafa60f19df88123358446ac72d9be85577554
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bae8688e322efd0a0556cf01e319252d42fc31d
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>Physische Server in der Architektur für die Azure-Replikation
 
@@ -63,22 +55,18 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 Nachdem die Replikation eingerichtet ist und Sie einen Notfallwiederherstellungsdrill (Testfailover) ausgeführt haben, um zu prüfen, ob alles wie erwartet arbeitet, können Sie bei Bedarf ein Failover und Failback ausführen. Beachten Sie Folgendes:
 
 - Geplante Failover werden nicht unterstützt.
-- Sie müssen ein Failback auf einer lokalen virtuellen VMware-VM durchführen. Daher benötigen Sie eine lokale VMware-Infrastruktur, auch wenn Sie lokale physische Server in Azure replizieren.
-
-
-1. Sie führen ein Failover für einen einzelnen Computer aus oder erstellen Wiederherstellungspläne, um ein Failover zusammen für mehrere Computer auszuführen.
-2. Wenn Sie ein Failover ausführen, werden Azure-VMs aus replizierten Daten im Azure-Speicher erstellt.
-3. Nachdem das erste Failover ausgelöst wird, committen Sie es, um von der Azure-VM auf die Workload zuzugreifen.
-
-Wenn Ihr primärer lokaler Standort wieder verfügbar ist, können Sie das Failback durchführen.
-
-1. Sie müssen eine Failbackinfrastruktur festlegen, die Folgendes enthält:
+- Sie müssen ein Failback auf einer lokalen virtuellen VMware-VM durchführen. Daher benötigen Sie eine lokale VMware-Infrastruktur, auch wenn Sie lokale physische Server nach Azure replizieren.
+- Sie führen ein Failover für einen einzelnen Computer aus oder erstellen Wiederherstellungspläne, um ein Failover zusammen für mehrere Computer auszuführen.
+- Wenn Sie ein Failover ausführen, werden Azure-VMs aus replizierten Daten im Azure-Speicher erstellt.
+- Nachdem das erste Failover ausgelöst wird, committen Sie es, um von der Azure-VM auf die Workload zuzugreifen.
+- Wenn Ihr primärer lokaler Standort wieder verfügbar ist, können Sie das Failback durchführen.
+- Sie müssen eine Failbackinfrastruktur festlegen, die Folgendes enthält:
     - **Temporärer Prozessserver in Azure**: Sie legen für ein Failback von Azure eine Azure-VM fest, die als Prozessserver agiert, um die Replikation von Azure zu verarbeiten. Nach Beendigung des Failbacks können Sie diese VM löschen.
     - **VPN-Verbindung**: Für das Failback benötigen Sie eine VPN-Verbindung (oder Azure ExpressRoute-Verbindung) zwischen dem Azure-Netzwerk und dem lokalen Standort.
     - **Separater Masterzielserver**: Der lokale Masterzielserver, der mit dem Konfigurationsserver in der lokalen VMware-VM installiert wurde, führt standardmäßig das Failback durch. Wenn Sie jedoch ein Failback für große Mengen an Datenverkehr ausführen müssen, sollten Sie einen separaten lokalen Masterzielserver einrichten.
     - **Failbackrichtlinie**: Für die Replikation zurück an den lokalen Standort benötigen Sie eine Failbackrichtlinie. Sie wurde automatisch erstellt, als Sie die Replikationsrichtlinie aus lokalen VMs in Azure erstellt haben.
     - **VMware-Infrastruktur**: Für das Failback benötigen Sie eine VMware-Infrastruktur. Ein Failback zu einem physischen Server ist nicht möglich.
-2. Nachdem die Komponenten vorhanden sind, tritt das Failback in drei Phasen auf:
+- Nachdem die Komponenten vorhanden sind, tritt das Failback in drei Phasen auf:
     - Phase 1: Schützen Sie die Azure VMs erneut, sodass Sie die Replikation von Azure zurück zu den lokalen VMware-VMs durchführen.
     - Phase 2: Führen Sie ein Failover zum lokalen Standort aus.
     - Phase 3: Nachdem für Workloads das Failback ausgeführt wurde, aktivieren Sie die Replikation erneut.
@@ -90,5 +78,4 @@ Wenn Ihr primärer lokaler Standort wieder verfügbar ist, können Sie das Failb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Überprüfen Sie die Supportmatrix. Folgen Sie dem Tutorial, um VMware in der Azure-Replikation zu aktivieren.
-Führen Sie ein Failover und ein Failback aus.
+Absolvieren Sie [dieses Tutorial](tutorial-physical-to-azure.md), um die Replikation von physischen Servern nach Azure zu aktivieren.

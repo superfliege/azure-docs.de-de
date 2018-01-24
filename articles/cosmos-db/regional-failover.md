@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 10/17/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 93a9bf568b1047e1af4e7825c3ca99bf11945560
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 3a8b32440ce3ec6cd2da7aaccf218a94e0ee3e77
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Automatische regionale Failover für die Geschäftskontinuität in Azure Cosmos DB
-Azure Cosmos DB vereinfacht die globale Verteilung von Daten, indem es vollständig verwaltete [Datenbankkonten in mehreren Regionen](distribute-data-globally.md) bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. Cosmos DB-Konten bieten hohe Verfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen](consistency-levels.md), transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit flexibel zu skalieren. 
+Azure Cosmos DB vereinfacht die globale Verteilung von Daten, indem es vollständig verwaltete [Datenbankkonten in mehreren Regionen](distribute-data-globally.md) bietet, die für eine sorgfältig austarierte Balance zwischen Konsistenz, Verfügbarkeit und Leistung mit den entsprechenden Garantien sorgen. Cosmos DB-Konten bieten Hochverfügbarkeit, Latenzen im einstelligen Millisekundenbereich, mehrere [klar abgegrenzte Konsistenzebenen](consistency-levels.md), transparentes regionales Failover mit Multihosting-APIs sowie die Fähigkeit, Durchsatz und Speicher für alle Konten weltweit flexibel zu skalieren. 
 
 Azure Cosmos DB unterstützt sowohl explizite als auch richtlinienbasiere Failover, mit denen Sie das Verhalten des gesamten Systems im Fall von Fehlern steuern können. In diesem Artikel wird Folgendes erläutert:
 
@@ -44,9 +44,9 @@ Der folgende Codeausschnitt zeigt, wie Sie eine Anwendung in mehreren Regionen i
 
 * Die Anwendung wird in der Region „USA, Westen“ bereitgestellt (z.B. mithilfe von Azure App Services). 
 * Sie wird mit `West US` als erste bevorzugte Region für Lesevorgänge mit geringer Latenz konfiguriert.
-* Sie wird mit `North Europe` als zweite bevorzugte Region für hohe Verfügbarkeit während regionaler Failover konfiguriert.
+* Sie wird mit `North Europe` als zweite bevorzugte Region für Hochverfügbarkeit während regionaler Failover konfiguriert.
 
-In der DocumentDB-API sieht die Konfiguration wie der folgende Codeausschnitt aus:
+In der SQL-API sieht diese Konfiguration wie der folgende Codeausschnitt aus:
 
 ```cs
 ConnectionPolicy usConnectionPolicy = new ConnectionPolicy 
@@ -64,7 +64,7 @@ DocumentClient usClient = new DocumentClient(
     usConnectionPolicy);
 ```
 
-Die Anwendung wird auch in der Region „Europa, Norden“ bereitgestellt, mit umgekehrter Reihenfolge der bevorzugten Regionen. Es wird also „Europa, Norden“ als erste Region für Lesevorgänge mit geringer Latenz konfiguriert. Danach wird „USA, Westen“ als zweite bevorzugte Region für hohe Verfügbarkeit während regionaler Failover konfiguriert.
+Die Anwendung wird auch in der Region „Europa, Norden“ bereitgestellt, mit umgekehrter Reihenfolge der bevorzugten Regionen. Es wird also „Europa, Norden“ als erste Region für Lesevorgänge mit geringer Latenz konfiguriert. Danach wird „USA, Westen“ als zweite bevorzugte Region für Hochverfügbarkeit während regionaler Failover konfiguriert.
 
 Das folgende Architekturdiagramm zeigt eine Anwendungsbereitstellung in mehreren Regionen, in der Cosmos DB und die Anwendung so konfiguriert sind, dass sie in vier geografischen Azure-Regionen verfügbar sind.  
 
@@ -134,13 +134,13 @@ Im Folgenden finden Sie einige häufige Szenarien, in denen ein manuelles Failov
 
 **Dienstupdate**: Bestimmte global verteilte Anwendungsbereitstellungen umfassen möglicherweise eine Weiterleitung des Datenverkehrs an eine andere Region über den Traffic Manager während geplanter Dienstupdates. In diesen Anwendungsbereitstellungen können jetzt manuelle Failover durchgeführt werden, um den Schreibstatus in der Region beizubehalten, in der während des Dienstupdatefensters aktiver Datenverkehr stattfinden wird.
 
-**BCDR-Tests (Business Continuity und Disaster Recovery, Geschäftskontinuität und Notfallwiederherstellung)**: Die Entwicklungs- und Veröffentlichungsprozesse der meisten Unternehmensanwendungen umfassen Tests der Geschäftskontinuität. Tests der Geschäftskontinuität und Notfallwiederherstellung sind häufig ein wichtiger Schritt bei Kompatibilitätszertifizierungen und beim Garantieren der Dienstverfügbarkeit bei Regionsausfällen. Sie können die BCDR-Fähigkeit Ihrer Anwendungen, die Cosmos DB für die Speicherung verwenden, testen, indem Sie ein manuelles Failover Ihres Cosmos DB-Kontos auslösen und/oder eine Region dynamisch hinzufügen oder entfernen.
+**BCDR- und HADR-Tests (Business Continuity und Disaster Recovery, Geschäftskontinuität und Notfallwiederherstellung; High Availability and Disaster Recovery, Hochverfügbarkeit und Notfallwiederherstellung)**: Die Entwicklungs- und Veröffentlichungsprozesse der meisten Unternehmensanwendungen umfassen Tests der Geschäftskontinuität. Tests der Geschäftskontinuität und Notfallwiederherstellung sind häufig ein wichtiger Schritt bei Kompatibilitätszertifizierungen und beim Garantieren der Dienstverfügbarkeit bei Regionsausfällen. Sie können die BCDR-Fähigkeit Ihrer Anwendungen, die Cosmos DB für die Speicherung verwenden, testen, indem Sie ein manuelles Failover Ihres Cosmos DB-Kontos auslösen und/oder eine Region dynamisch hinzufügen oder entfernen.
 
 In diesem Artikel wurde erläutert, wie manuelle und automatische Failover in Cosmos DB funktionieren und wie Sie Ihre Cosmos DB-Konten und -Anwendungen so konfigurieren, dass sie global verfügbar sind. Mithilfe der globalen Replikationsunterstützung von Cosmos DB können Sie die End-to-End-Latenz verbessern und sicherstellen, dass die Hochverfügbarkeit auch bei Regionsausfällen erhalten bleibt. 
 
 ## <a id="NextSteps"></a>Nächste Schritte
 * Erfahren Sie, wie Cosmos DB die [globale Verteilung](distribute-data-globally.md) unterstützt.
 * Erfahren Sie mehr über die [globale Konsistenz bei Azure Cosmos DB](consistency-levels.md).
-* Entwickeln Sie mit mehreren Regionen mit der [DocumentDB-API](../cosmos-db/tutorial-global-distribution-documentdb.md) für Azure Cosmos DB.
-* Erfahren Sie, wie Sie mit Azure DocumentDB [Schreibarchitekturen mit mehreren Regionen](multi-region-writers.md) erstellen.
+* Entwickeln mit mehreren Regionen mit der [SQL-API](tutorial-global-distribution-sql-api.md) für Azure Cosmos DB
+* Erfahren Sie, wie Sie mit Azure Cosmos DB [Schreibarchitekturen mit mehreren Regionen](multi-region-writers.md) erstellen.
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 597ea863275a5603e093307ce4334ae68e5ea5cf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: db4cfe91b8d27b5336763eff7c6f22f0f345caf2
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Office 365- oder Azure AD-Domänen erstellen.
@@ -29,11 +29,11 @@ Für die Erstellung mehrerer Domänen der obersten Ebene als Verbund mit Azure A
 Bei einem Verbund einer Domäne mit Azure AD werden für die Domäne in Azure mehrere Eigenschaften festgelegt.  Eine wichtige Eigenschaft ist die IssuerUri-Eigenschaft.  Dies ist ein URI, der von Azure AD zum Identifizieren der Domäne verwendet wird, der das Token zugeordnet ist.  Der URI muss nicht in einen bestimmten Wert aufgelöst werden, aber es muss sich um einen gültigen URI handeln.  Standardmäßig wird diese Eigenschaft von Azure AD auf den Wert des Verbunddienstbezeichners in Ihrer lokalen AD FS-Konfiguration festgelegt.
 
 > [!NOTE]
-> Der Bezeichner des Verbunddiensts ist ein URI, mit dem ein Verbunddienst eindeutig identifiziert wird.  Der Verbunddienst ist eine Instanz von AD FS, die als Sicherheitstokendienst fungiert. 
-> 
-> 
+> Der Bezeichner des Verbunddiensts ist ein URI, mit dem ein Verbunddienst eindeutig identifiziert wird.  Der Verbunddienst ist eine Instanz von AD FS, die als Sicherheitstokendienst fungiert.
+>
+>
 
-Sie können den IssuerUri mit dem folgenden PowerShell-Befehl anzeigen: `Get-MsolDomainFederationSettings -DomainName <your domain>`.
+Sie können das IssuerUri-Element mit dem folgenden PowerShell-Befehl anzeigen: `Get-MsolDomainFederationSettings -DomainName <your domain>`.
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
@@ -62,9 +62,9 @@ Wenn Sie sich die Einstellungen der neuen Domäne „bmfabrikam.com“ ansehen, 
 
 Beachten Sie, dass `-SupportMultipleDomain` nicht zu einer Änderung der anderen Endpunkte führt, die weiterhin so konfiguriert sind, dass sie auf unseren Verbunddienst unter „adfs.bmcontoso.com“ verweisen.
 
-Außerdem wird mit `-SupportMultipleDomain` sichergestellt, dass das AD FS-System den richtigen Issuer-Wert in Token einfügt, die für Azure AD ausgegeben werden. Dazu wird der Domänenteil des Benutzerprinzipalnamens (UPN) verwendet und als Domäne im IssuerUri festgelegt, d.h. „https://{upn suffix}/adfs/services/trust“. 
+Außerdem wird mit `-SupportMultipleDomain` sichergestellt, dass das AD FS-System den richtigen Issuer-Wert in Token einfügt, die für Azure AD ausgegeben werden. Dazu wird der Domänenteil des Benutzerprinzipalnamens (UPN) verwendet und als Domäne im IssuerUri festgelegt, d.h. „https://{upn suffix}/adfs/services/trust“.
 
-Während der Authentifizierung in Azure AD oder Office 365 wird daher das IssuerUri-Element im Token des Benutzers verwendet, um die Domäne in Azure AD zu finden.  Wenn keine Übereinstimmung gefunden wird, schlägt die Authentifizierung fehl. 
+Während der Authentifizierung in Azure AD oder Office 365 wird daher das IssuerUri-Element im Token des Benutzers verwendet, um die Domäne in Azure AD zu finden.  Wenn keine Übereinstimmung gefunden wird, schlägt die Authentifizierung fehl.
 
 Wenn der UPN eines Benutzers beispielsweise bsimon@bmcontoso.com lautet, wird das IssuerUri-Element in dem von AD FS ausgestellten Token auf „http://bmcontoso.com/adfs/services/trust“ festgelegt. Dies entspricht der Azure AD-Konfiguration und die Authentifizierung ist erfolgreich.
 
@@ -75,8 +75,8 @@ Unten sehen Sie die angepasste Anspruchsregel, die diese Logik implementiert:
 
 > [!IMPORTANT]
 > Zum Verwenden des Switch -SupportMultipleDomain bei dem Versuch, neue Domänen hinzuzufügen oder bereits hinzugefügte Domänen zu konvertieren, müssen Sie die Verbundvertrauensstellung so eingerichtet haben, dass diese standardmäßig unterstützt werden.  
-> 
-> 
+>
+>
 
 ## <a name="how-to-update-the-trust-between-ad-fs-and-azure-ad"></a>Aktualisieren der Vertrauensstellung zwischen AD FS und Azure AD
 Wenn Sie die Vertrauensstellung zwischen AD FS und Ihrer Instanz von Azure AD nicht eingerichtet haben, müssen Sie diese Vertrauensstellung unter Umständen neu erstellen.  Dies liegt daran, dass für die IssuerUri der Standardwert festgelegt wird, wenn sie anfänglich ohne den Parameter `-SupportMultipleDomain` eingerichtet wird.  Im Screenshot unten ist zu sehen, dass IssuerUri auf „https://adfs.bmcontoso.com/adfs/services/trust“ festgelegt ist.
@@ -97,7 +97,7 @@ Verwenden Sie die unten angegebenen Schritte, um eine weitere Domäne der oberst
 
 Führen Sie die folgenden Schritte aus, um die Microsoft Online-Vertrauensstellung zu entfernen und die ursprüngliche Domäne zu aktualisieren.
 
-1. Öffnen Sie auf Ihrem AD FS-Verbundserver die Option für die **AD FS-Verwaltung** 
+1. Öffnen Sie auf Ihrem AD FS-Verbundserver die Option für die **AD FS-Verwaltung**
 2. Erweitern Sie auf der linken Seite die Optionen **Vertrauensstellungen** und **Vertrauensstellungen der vertrauenden Seite**.
 3. Löschen Sie auf der rechten Seite den Eintrag **Microsoft Office 365 Identity Platform** .
    ![Microsoft Online entfernen](./media/active-directory-multiple-domains/trust4.png)
@@ -137,7 +137,7 @@ Wenn Sie eine Unterdomäne hinzufügen, erbt sie die Einstellungen der übergeor
 Angenommen, Sie verfügen über „bmcontoso.com“ und fügen dann „corp.bmcontoso.com“ hinzu.  Dies bedeutet, dass der IssuerUri für einen Benutzer von „corp.bmcontoso.com“ wie folgt lauten muss: **http://bmcontoso.com/adfs/services/trust**.  Mit der oben für Azure AD implementierten Standardregel wird aber ein Token mit folgendem Aussteller generiert: **http://corp.bmcontoso.com/adfs/services/trust**. Dies stimmt nicht mit dem erforderlichen Wert der Domäne überein, und bei der Authentifizierung tritt ein Fehler auf.
 
 ### <a name="how-to-enable-support-for-sub-domains"></a>Aktivieren der Unterstützung für Unterdomänen
-Um dieses Problem zu umgehen, muss die AD FS-Vertrauensstellung der vertrauenden Seite für Microsoft Online aktualisiert werden.  Hierzu müssen Sie eine benutzerdefinierte Anspruchsregel so konfigurieren, dass beim Erstellen des benutzerdefinierten Issuer-Werts alle Unterdomänen aus dem UPN-Suffix des Benutzers entfernt werden. 
+Um dieses Problem zu umgehen, muss die AD FS-Vertrauensstellung der vertrauenden Seite für Microsoft Online aktualisiert werden.  Hierzu müssen Sie eine benutzerdefinierte Anspruchsregel so konfigurieren, dass beim Erstellen des benutzerdefinierten Issuer-Werts alle Unterdomänen aus dem UPN-Suffix des Benutzers entfernt werden.
 
 Dies ist mit dem folgenden Anspruch möglich:
 
@@ -152,14 +152,13 @@ Führen Sie die folgenden Schritte aus, um einen benutzerdefinierten Anspruch zu
 2. Klicken Sie mit der rechten Maustaste auf die Microsoft Online-Vertrauensstellung der vertrauenden Seite, und wählen Sie „Anspruchsregeln bearbeiten“.
 3. Wählen Sie die dritte Anspruchsregel aus, und ersetzen Sie ![Anspruch bearbeiten](./media/active-directory-multiple-domains/sub1.png).
 4. Ersetzen Sie den aktuellen Anspruch:
-   
+
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, ".+@(?<domain>.+)","http://${domain}/adfs/services/trust/"));
-   
+
        with
-   
+
         c:[Type == "http://schemas.xmlsoap.org/claims/UPN"] => issue(Type = "http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid", Value = regexreplace(c.Value, "^.*@([^.]+\.)*?(?<domain>([^.]+\.?){2})$", "http://${domain}/adfs/services/trust/"));
 
     ![Anspruch ersetzen](./media/active-directory-multiple-domains/sub2.png)
 
 5. Klicken Sie auf "OK".  Klicken Sie auf „Übernehmen“.  Klicken Sie auf "OK".  Schließen Sie die AD FS-Verwaltung.
-

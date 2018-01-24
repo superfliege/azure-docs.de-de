@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: tdykstra
-ms.openlocfilehash: a1305432d98c2e9f9f8bc30cacc62d49b1a8ba36
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 5cfb968b201f49d5b7029a0b677e3ce2a8aa6cb9
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Azure Table Storage-Bindungen für Azure Functions
 
@@ -35,8 +35,8 @@ Verwenden Sie die Azure Table Storage-Eingabebindung, um eine Tabelle in einem A
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code zum Lesen einer einzelnen Entität](#input---c-example-1)
-* [Vorkompilierter C#-Code zum Lesen mehrerer Entitäten](#input---c-example-2)
+* [C#: Lesen einer einzelnen Entität](#input---c-example-1)
+* [C#: Lesen mehrerer Entitäten](#input---c-example-2)
 * [C#-Skript: Lesen einer einzelnen Entität](#input---c-script-example-1)
 * [C#-Skript: Lesen mehrerer Entitäten](#input---c-script-example-2)
 * [F#](#input---f-example-2)
@@ -44,7 +44,7 @@ Sehen Sie sich das sprachspezifische Beispiel an:
 
 ### <a name="input---c-example-1"></a>Eingabe: C#-Beispiel 1
 
-Das folgende Beispiel zeigt [vorkompilierten C#-Code](functions-dotnet-class-library.md) zum Lesen einer einzelnen Tabellenzeile. 
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) zum Lesen einer einzelnen Tabellenzeile. 
 
 Der Zeilenschlüsselwert „{queueTrigger}“ gibt an, dass der Zeilenschlüssel aus der Zeichenfolge der Warteschlangennachricht stammt.
 
@@ -71,7 +71,7 @@ public class TableStorage
 
 ### <a name="input---c-example-2"></a>Eingabe: C#-Beispiel 2
 
-Das folgende Beispiel zeigt [vorkompilierten C#-Code](functions-dotnet-class-library.md) zum Lesen mehrerer Tabellenzeilen. Die Klasse `MyPoco` leitet sich von `TableEntity` ab.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) zum Lesen mehrerer Tabellenzeilen. Die Klasse `MyPoco` leitet sich von `TableEntity` ab.
 
 ```csharp
 public class TableStorage
@@ -286,7 +286,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>Eingabe: Attribute
  
-Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-class-library.md) die folgenden Attribute, um eine Tabelleneingabebindung zu konfigurieren:
+Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die folgenden Attribute, um eine Tabelleneingabebindung zu konfigurieren:
 
 * [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs) (definiert im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs))
 
@@ -316,7 +316,7 @@ Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-cla
   }
   ```
 
-  Ein vollständiges Beispiel finden Sie unter [Eingabe: vorkompiliertes C#-Beispiel](#input---c-example).
+  Ein vollständiges Beispiel finden Sie unter [Eingabe: C#-Beispiel](#input---c-example).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) (definiert im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs))
 
@@ -346,7 +346,7 @@ Das zu verwendende Speicherkonto wird anhand von Folgendem bestimmt (in der ange
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Table` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type** | – | Muss auf `table` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie die Bindung im Azure Portal erstellen.|
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie die Bindung im Azure Portal erstellen. |
@@ -381,7 +381,7 @@ Die Table Storage-Eingabebindung unterstützt folgende Szenarien:
 
   Legen Sie die Eigenschaften `filter` und `take` fest. Legen Sie `partitionKey` oder `rowKey` nicht fest. Verwenden Sie `context.bindings.<name>`, um auf die Eingabetabellenentität(en) zuzugreifen. Die deserialisierten Objekte verfügen über die Eigenschaften `RowKey` und `PartitionKey`.
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 
 Verwenden Sie eine Azure Table Storage-Ausgabebindung, um Entitäten in eine Tabelle in einem Azure Storage-Konto zu schreiben.
 
@@ -389,14 +389,14 @@ Verwenden Sie eine Azure Table Storage-Ausgabebindung, um Entitäten in eine Tab
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#output---c-example)
-* [C#-Skript](#output---c-script-example)
+* [C#](#output---c-example)
+* [C#-Skript (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
 
-Das folgende Beispiel zeigt [vorkompilierten C#-Code](functions-dotnet-class-library.md) mit einem HTTP-Trigger zum Schreiben einer einzelnen Tabellenzeile. 
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md) mit einem HTTP-Trigger zum Schreiben einer einzelnen Tabellenzeile. 
 
 ```csharp
 public class TableStorage
@@ -569,7 +569,7 @@ module.exports = function (context) {
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
 
-Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) definierte Attribut [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs).
+Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs](http://www.nuget.org/packages/Microsoft.Azure.WebJobs) definierte Attribut [TableAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs).
 
 Der Konstruktor des Attributs akzeptiert den Tabellennamen. Er kann für einen `out`-Parameter oder für den Rückgabewert der Funktion verwendet werden, wie im folgenden Beispiel zu sehen:
 
@@ -597,15 +597,15 @@ public static MyPoco TableOutput(
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: vorkompiliertes C#-Beispiel](#output---c-example).
+Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
 
-Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Methoden- oder Parameterebene angeben. Weitere Informationen finden Sie unter [Eingabe: Attribute](#input---attributes-for-precompiled-c).
+Mit dem Attribut `StorageAccount` können Sie das Speicherkonto auf Klassen-, Methoden- oder Parameterebene angeben. Weitere Informationen finden Sie unter [Eingabe: Attribute](#input---attributes).
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `Table` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type** | – | Muss auf `table` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie die Bindung im Azure Portal erstellen.|
 |**direction** | – | Muss auf `out` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie die Bindung im Azure Portal erstellen. |

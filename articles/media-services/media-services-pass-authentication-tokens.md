@@ -15,44 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: dwgeo
-ms.openlocfilehash: 0e56726266898e5738dd797a8a019987d457170e
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 7d143242231444b8557a303d1b504d5311693f1a
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/21/2017
 ---
-# <a name="how-clients-pass-tokens-to-azure-media-services-key-delivery-service"></a>Übergeben von Token an den Schlüsselbereitstellungsdienst von Azure Media Services durch Clients
-Wir erhalten ständig Fragen darüber, wie ein Player Token an unsere Schlüsselbereitstellungsdienste übergeben kann, die verifiziert werden, während der Player den Schlüssel erhält. Wir unterstützen Simple Web Token (SWT) und JSON Web Token (JWT) als Tokenformate. Die Tokenauthentifizierung kann auf jede Art von Schlüssel angewendet werden, unabhängig davon, ob Sie Common Encryption oder die AES-Umschlagverschlüsselung im System verwenden.
+# <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>Erfahren Sie, wie Clients Token an den Schlüsselbereitstellungsdienst von Azure Media Services übergeben.
+Kunden fragen häufig, wie ein Player Token für die Überprüfung an den Schlüsselübermittlungsdienst von Azure Media Services übergeben kann, damit der Player den Schlüssel abrufen kann. Media Services unterstützt die Formate „Simple Web Token“ (SWT) und „JSON Web Token“ (JWT). Die Tokenauthentifizierung kann auf jede Art von Schlüssel angewendet werden, unabhängig davon, ob Sie die Common Encryption oder die AES-Umschlagverschlüsselung (Advanced Encryption Standard) im System verwenden.
 
-Die folgenden Möglichkeiten, wie Sie den Token mit Ihrem Player übergeben können, hängen vom Player und der Plattform ab, auf die sie ausgerichtet sind:
+ Je nach Player und Zielplattform haben Sie folgende Möglichkeiten, das Token mit Ihrem Player zu übergeben:
+
 - Über die HTTP-Autorisierungsheader.
-> [!NOTE]
-> Beachten Sie, dass das Präfix „Bearer“ gemäß der OAuth 2.0-Spezifikationen erwartet wird. Es gibt einen Beispielplayer mit einer Tokenkonfiguration, der auf der Azure Media Player-[Demoseite](http://ampdemo.azureedge.net/) gehostet wird. Wählen Sie AES (JWT-Token) oder AES (SWT-Token) aus, um die Videoquelle festzulegen. Das Token wird über den Autorisierungsheader übergeben.
+    > [!NOTE]
+    > Das Präfix „Bearer“ wird gemäß den OAuth 2.0-Spezifikationen erwartet. Ein Beispielplayer mit einer Tokenkonfiguration wird auf der Azure Media Player-[Demoseite](http://ampdemo.azureedge.net/) gehostet. Wählen Sie **AES (JWT-Token)** oder **AES (SWT-Token)** aus, um die Videoquelle festzulegen. Das Token wird über den Autorisierungsheader übergeben.
 
-- Durch Hinzufügen eines URL-Abfrageparameters mit „token=tokenvalue“.  
-> [!NOTE]
-> Beachten Sie, dass das Präfix „Bearer“ nicht erwartet wird. Da das Token über eine URL gesendet wird, müssen Sie die Tokenzeichenfolge schützen. Hier folgt ein C#-Beispielcode zur Vorgehensweise:
+- Durch Hinzufügen eines URL-Abfrageparameters mit „token=tokenvalue“:  
+    > [!NOTE]
+    > Das Präfix „Bearer“ wird nicht erwartet. Da das Token über eine URL gesendet wird, müssen Sie die Tokenzeichenfolge schützen. Hier folgt ein C#-Beispielcode zur Veranschaulichung der Vorgehensweise:
 
-```csharp
+    ```csharp
     string armoredAuthToken = System.Web.HttpUtility.UrlEncode(authToken);
     string uriWithTokenParameter = string.Format("{0}&token={1}", keyDeliveryServiceUri.AbsoluteUri, armoredAuthToken);
     Uri keyDeliveryUrlWithTokenParameter = new Uri(uriWithTokenParameter);
-```
+    ```
 
 - Über das Feld „CustomData“.
-Nur für den Erwerb von PlayReady-Lizenzen über das Feld „CustomData“ der PlayReady License Acquisition Challenge. In diesem Fall muss sich das Token innerhalb des unten beschriebenen XML-Dokuments befinden.
+Diese Option wird nur für den Erwerb von PlayReady-Lizenzen über das Feld „CustomData“ der PlayReady License Acquisition Challenge verwendet. In diesem Fall muss sich das Token innerhalb des hier beschriebenen XML-Dokuments befinden:
 
-```xml
+    ```xml
     <?xml version="1.0"?>
     <CustomData xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyCustomData/v1"> 
         <Token></Token> 
     </CustomData>
-```
-Platzieren Sie Ihr Authentifizierungstoken im Element <Token>.
+    ```
+    Platzieren Sie Ihr Authentifizierungstoken im Token-Element.
 
-- Über eine alternative HLS-Wiedergabeliste. Wenn Sie die Tokenauthentifizierung für die AES- und HLS-Wiedergabe unter iOS/Safari konfigurieren müssen, gibt es keine Möglichkeit, das Token direkt zu senden. Informationen zum Ändern der Wiedergabeliste, damit dieses Szenario ermöglicht wird, finden Sie in diesem [Blogbeitrag](http://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
+- Über eine alternative HLS-Wiedergabeliste (HTTP Live Streaming). Wenn Sie die Tokenauthentifizierung für die AES- und HLS-Wiedergabe unter iOS/Safari konfigurieren müssen, gibt es keine Möglichkeit, das Token direkt zu senden. Weitere Informationen zum Ändern der Wiedergabeliste, damit dieses Szenario ermöglicht wird, finden Sie in [diesem Blogbeitrag](http://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/).
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie die Media Services-Lernpfade.
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

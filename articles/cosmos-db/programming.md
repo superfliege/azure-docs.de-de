@@ -1,7 +1,7 @@
 ---
 title: "Serverseitige JavaScript-Programmierung für Azure Cosmos DB | Microsoft-Dokumentation"
 description: Erfahren Sie, wie Sie Azure Cosmos DB dazu verwenden, gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen in JavaScript zu schreiben. Erhalten Sie Tipps zur Datenbankprogrammierung und mehr.
-keywords: Datenbanktrigger, gespeicherte Prozedur, Datenbankprogramm, sproc, documentdb, Azure, Microsoft Azure
+keywords: Datenbanktrigger, gespeicherte Prozedur, Datenbankprogramm, sproc, Azure, Microsoft Azure
 services: cosmos-db
 documentationcenter: 
 author: aliuy
@@ -13,15 +13,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2016
+ms.date: 12/07/2017
 ms.author: andrl
-ms.openlocfilehash: ef191c3c8d85afa389859956d30b5ac0275053d2
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d8438d126c1f994e51871e80bb11610ec95b0814
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmos-db-server-side-programming-stored-procedures-database-triggers-and-udfs"></a>Azure Cosmos DB-serverseitige Programmierung : gespeicherte Prozeduren, Datenbanktrigger und benutzerdefinierte Funktionen
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
+
 Erfahren Sie, wie Entwickler dank der in die Azure Cosmos DB-Sprache integrierten transaktionalen Ausführung von JavaScript **gespeicherte Prozeduren**, **Trigger** und **benutzerdefinierte Funktionen** (User Defined Functions, UDFs) in nativem [ECMAScript 2015](http://www.ecma-international.org/ecma-262/6.0/)-JavaScript erstellen können. Dadurch können Sie für ein Datenbankprogramm Anwendungslogik schreiben, die direkt auf den Partitionen des Datenbankspeichers bereitgestellt und ausgeführt werden kann. 
 
 Für den Beginn empfiehlt sich folgendes Video, in dem Andrew Liu das serverseitige Datenbankprogrammiermodell von Cosmos DB kurz vorstellt. 
@@ -53,7 +56,7 @@ Dieser Ansatz von *„JavaScript als modernes T-SQL“* befreit die Anwendungsen
   * Es wird eine Abstraktionsschicht über den Rohdaten hinzugefügt, die es Datenarchitekten gestattet, ihre Anwendungen unabhängig von den Daten zu entwickeln. Dies ist aufgrund der komplizierten Annahmen, die bei der direkten Behandlung der Daten zur Anwendung hinzugefügt werden müssen, insbesondere bei schemafreien Daten von Vorteil.  
   * Durch diese Abstraktion können Unternehmen ihre Daten schützen, indem sie den Zugriff über die Scripts optimieren.  
 
-Die Erstellung und Ausführung von Datenbanktriggern, gespeicherten Prozeduren und benutzerdefinierten Abfrageoperatoren wird über die [REST-API](/rest/api/documentdb/), über [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) und über [Client-SDKs](documentdb-sdk-dotnet.md) auf vielen Plattformen unterstützt. Hierzu zählen unter anderem .NET, Node.js und JavaScript.
+Die Erstellung und Ausführung von Datenbanktriggern, gespeicherten Prozeduren und benutzerdefinierten Abfrageoperatoren wird über das [Azure-Portal](https://portal.azure.com), die [REST-API](/rest/api/documentdb/), [Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases) und [Client-SDKs](sql-api-sdk-dotnet.md) auf vielen Plattformen unterstützt. Hierzu zählen unter anderem .NET, Node.js und JavaScript.
 
 In diesem Tutorial wird das [Node.js SDK mit Q Promises](http://azure.github.io/azure-documentdb-node-q/) verwendet, um die Syntax und Verwendung von gespeicherten Prozeduren, Triggern und benutzerdefinierten Funktionen (User Defined Functions, UDFs) zu veranschaulichen.   
 
@@ -437,7 +440,7 @@ Dieser Trigger fragt das Metadatendokument ab und aktualisiert es mit den Detail
 Ein wichtiges Element ist die **transaktionale** Ausführung von Triggern in Cosmos DB. Dieser nachgestellte Trigger wird als Teil derselben Transaktion wie bei der Erstellung des ursprünglichen Dokuments ausgeführt. Daher schlägt die gesamte Transaktion fehl und es wird ein Rollback ausgeführt, wenn vom nachgestellten Trigger eine Ausnahme ausgelöst wird (wenn das Metadatendokument z. B. nicht aktualisiert werden konnte). Es wird kein Dokument erstellt und stattdessen eine Ausnahme zurückgegeben.  
 
 ## <a id="udf"></a>Benutzerdefinierte Funktionen
-Mithilfe der benutzerdefinierten Funktionen (UDFs) kann die Grammatik der SQL-Abfragesprache der DocumentDB-API erweitert und eine benutzerdefinierte Geschäftslogik implementiert werden. Sie können ausschließlich innerhalb von Abfragen aufgerufen werden. Sie haben keinen Zugriff auf das Kontextobjekt und sind als JavaScript-Komponente vorgesehen, die ausschließlich der Berechnung dient. Daher können benutzerdefinierte Funktionen auf sekundären Replikaten des Cosmos DB-Diensts ausgeführt werden.  
+Mithilfe von benutzerdefinierten Funktionen (UDFs) ist es möglich, die Grammatik der SQL-Abfragesprache von Azure Cosmos DB zu erweitern und eine benutzerdefinierte Geschäftslogik zu implementieren. Sie können ausschließlich innerhalb von Abfragen aufgerufen werden. Sie haben keinen Zugriff auf das Kontextobjekt und sind als JavaScript-Komponente vorgesehen, die ausschließlich der Berechnung dient. Daher können benutzerdefinierte Funktionen auf sekundären Replikaten des Cosmos DB-Diensts ausgeführt werden.  
 
 Das folgende Beispiel erstellt eine UDF, um die Einkommenssteuer auf Basis der Sätze verschiedener Einkommensgruppen zu berechnen. Dann werden sie innerhalb einer Abfrage ausgeführt, um alle Personen zu finden, die mehr als 20.000 $ Steuern gezahlt haben.
 
@@ -479,7 +482,7 @@ Die UDF kann anschließend wie im folgenden Beispiel in Abfragen verwendet werde
     });
 
 ## <a name="javascript-language-integrated-query-api"></a>JavaScript-Language Integrated Query (LINQ)-API
-Zusätzlich zu Abfragen mithilfe der SQL-Grammatik von DocumentDB ermöglicht das serverseitige SDK die Durchführung optimierter Abfragen mithilfe einer flüssigen JavaScript-Schnittstelle, die keinerlei SQL-Kenntnisse voraussetzt. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie lodash vergleichbar ist, Prädikatfunktionen in verkettbare Funktionsaufrufe übergeben. Abfragen werden von der JavaScript-Laufzeit zur effizienten Ausführung mithilfe von Azure Cosmos DB-Indizes analysiert.
+Zusätzlich zu Abfragen mit der SQL-Grammatik von Azure Cosmos DB ermöglicht das serverseitige SDK die Durchführung optimierter Abfragen mithilfe einer flüssigen JavaScript-Schnittstelle, die keinerlei SQL-Kenntnisse voraussetzt. Mit der JavaScript-Abfrage-API können Sie programmgesteuert Abfragen erstellen, indem Sie unter Verwendung einer Syntax, die mit den integrierten und weit verbreiteten JavaScript-Bibliotheken von ECMAScript5 wie lodash vergleichbar ist, Prädikatfunktionen in verkettbare Funktionsaufrufe übergeben. Abfragen werden von der JavaScript-Laufzeit zur effizienten Ausführung mithilfe von Azure Cosmos DB-Indizes analysiert.
 
 > [!NOTE]
 > `__` (doppelter Unterstrich) ist ein Alias für `getContext().getCollection()`.
@@ -642,7 +645,7 @@ Im Folgenden werden die Abfragen in der Tabelle oben erläutert.
 
 
 ## <a name="runtime-support"></a>Laufzeitunterstützung
-Die [serverseitige DocumentDB JavaScript-API](http://azure.github.io/azure-documentdb-js-server/) unterstützt die meisten gängigen Funktionen der JavaScript-Sprache gemäß dem [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)-Standard.
+Die [serverseitige JavaScript-API](http://azure.github.io/azure-documentdb-js-server/) von Azure Cosmos DB unterstützt die meisten gängigen Features der JavaScript-Sprache gemäß dem [ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)-Standard.
 
 ### <a name="security"></a>Sicherheit
 Gespeicherte Prozeduren und Trigger werden bei JavaScript in einer Sandkastenlösung verwaltet, damit die Auswirkungen eines Skripts nicht zu den anderen Skripts gelangen, ohne die Momentaufnahmetransaktionsisolation der Datenbankschicht zu durchlaufen. Die Laufzeitumgebungen werden in einem Pool zusammengefasst, aber nach jeder Ausführung vom Kontext bereinigt. Daher sind sie untereinander garantiert vor unbeabsichtigten Nebeneffekten geschützt.
@@ -651,7 +654,7 @@ Gespeicherte Prozeduren und Trigger werden bei JavaScript in einer Sandkastenlö
 Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen (UDFs) werden implizit in das Bytecodeformat vorkompiliert, um den Kompilierungsaufwand zum Zeitpunkt des jeweiligen Skriptaufrufs zu vermeiden. Dadurch wird sichergestellt, dass gespeicherte Prozeduren schnell aufgerufen werden können und kompakt sind.
 
 ## <a name="client-sdk-support"></a>Client-SDK-Unterstützung
-Zusätzlich zur DocumentDB-API für den [Node.js](documentdb-sdk-node.md)-Client verfügt Azure Cosmos DB über [.NET](documentdb-sdk-dotnet.md), [.NET Core](documentdb-sdk-dotnet-core.md), [Java](documentdb-sdk-java.md), [JavaScript](http://azure.github.io/azure-documentdb-js/) und [Python SDKs](documentdb-sdk-python.md) für die DocumentDB-API. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können jedem dieser SDKs erstellt und ausgeführt werden. Das folgende Beispiel zeigt, wie eine gespeicherte Prozedur mithilfe des .NET-Clients erstellt und ausgeführt wird. Beachten Sie, wie die .NET-Typen als JSON an die gespeicherte Prozedur übergeben und eingelesen werden.
+Zusätzlich zur Azure Cosmos DB-API für [Node.js](sql-api-sdk-node.md) verfügt Azure Cosmos DB über SDKs zu [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](http://azure.github.io/azure-documentdb-js/) und [Python](sql-api-sdk-python.md) für die SQL-API. Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen können jedem dieser SDKs erstellt und ausgeführt werden. Das folgende Beispiel zeigt, wie eine gespeicherte Prozedur mithilfe des .NET-Clients erstellt und ausgeführt wird. Beachten Sie, wie die .NET-Typen als JSON an die gespeicherte Prozedur übergeben und eingelesen werden.
 
     var markAntiquesSproc = new StoredProcedure
     {
@@ -684,7 +687,7 @@ Zusätzlich zur DocumentDB-API für den [Node.js](documentdb-sdk-node.md)-Client
     Document createdDocument = await client.ExecuteStoredProcedureAsync<Document>(UriFactory.CreateStoredProcedureUri("db", "coll", "ValidateDocumentAge"), document, 1920);
 
 
-Dieses Beispiel zeigt, wie mit der [DocumentDB .NET-API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) ein vorangestellter Trigger und ein Dokument mit aktiviertem Trigger erstellt werden. 
+Dieses Beispiel zeigt, wie mit der [SQL-.NET-API](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet) ein vorangestellter Trigger und ein Dokument mit aktiviertem Trigger erstellt werden. 
 
     Trigger preTrigger = new Trigger()
     {
@@ -705,7 +708,7 @@ Dieses Beispiel zeigt, wie mit der [DocumentDB .NET-API](/dotnet/api/overview/az
         });
 
 
-Das nachfolgende Beispiel veranschaulicht die Erstellung einer benutzerdefinierten Funktion (UDF) und deren Verwendung in einer [SQL-Abfrage der DocumentDB-API](documentdb-sql-query.md).
+Das nachfolgende Beispiel veranschaulicht die Erstellung einer benutzerdefinierten Funktion (UDF) und deren Verwendung in einer [SQL-Abfrage](sql-api-sql-query.md).
 
     UserDefinedFunction function = new UserDefinedFunction()
     {
@@ -802,7 +805,7 @@ Sobald Sie eine oder mehrere gespeicherte Prozeduren, Trigger und benutzerdefini
 
 Weitere Informationen zur serverseitigen Azure Cosmos DB-Programmierung finden Sie auch in den folgenden Referenzen und Ressourcen:
 
-* [Azure Cosmos DB SDKs](documentdb-sdk-dotnet.md)
+* [Azure Cosmos DB SDKs](sql-api-sdk-dotnet.md)
 * [DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio/releases)
 * [JSON](http://www.json.org/) 
 * [JavaScript-ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)

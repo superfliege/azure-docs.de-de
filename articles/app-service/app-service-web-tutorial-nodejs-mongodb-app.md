@@ -15,15 +15,19 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 9fc11352a031ac1c1abcc6c6bd173bd9b0e8a222
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: 7603625da3f5f54862b2a0ead0ebb68f4fb1cfa8
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="build-a-nodejs-and-mongodb-web-app-in-azure"></a>Erstellen einer Node.js- und MongoDB-Web-App in Azure
 
-Azure-Web-Apps bietet einen hochgradig skalierbaren Webhosting-Dienst mit Self-Patching. In diesem Tutorial wird gezeigt, wie Sie eine Node.js-Web-App in Azure erstellen und mit einer MongoDB-Datenbank verbinden. Wenn Sie fertig sind, wird eine MEAN-Anwendung (MongoDB, Express, AngularJS und Node.js) in [Azure App Service](app-service-web-overview.md) ausgeführt. Zur Vereinfachung verwendet die Beispielanwendung das [MEAN.js-Webframework](http://meanjs.org/).
+> [!NOTE]
+> In diesem Artikel wird eine App in App Service unter Windows bereitgestellt. Informationen zur Bereitstellung in App Service unter _Linux_ finden Sie unter [Erstellen einer Node.js- und MongoDB-Web-App in Azure App Service unter Linux](./containers/tutorial-nodejs-mongodb-app.md).
+>
+
+Azure-Web-Apps bietet einen überaus skalierbaren Webhostingdienst mit eigenständigem Patchen. In diesem Tutorial wird gezeigt, wie Sie eine Node.js-Web-App in Azure erstellen und mit einer MongoDB-Datenbank verbinden. Wenn Sie fertig sind, wird eine MEAN-Anwendung (MongoDB, Express, AngularJS und Node.js) in [Azure App Service](app-service-web-overview.md) ausgeführt. Zur Vereinfachung verwendet die Beispielanwendung das [MEAN.js-Webframework](http://meanjs.org/).
 
 ![In Azure App Service ausgeführte MEAN.js-App](./media/app-service-web-tutorial-nodejs-mongodb-app/meanjs-in-azure.png)
 
@@ -41,8 +45,9 @@ Sie lernen Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-1. [Installieren Sie Git.](https://git-scm.com/)
+1. [Installation von Git](https://git-scm.com/)
 1. [Installieren Sie Node.js und NPM.](https://nodejs.org/)
+1. [Installieren des Browsers](https://bower.io/) (erforderlich für [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started))
 1. [Installieren von Gulp.js](http://gulpjs.com/) (erforderlich für [MEAN.js](http://meanjs.org/docs/0.5.x/#getting-started))
 1. [Installieren und Ausführen von MongoDB Community Edition](https://docs.mongodb.com/manual/administration/install-community/) 
 
@@ -126,7 +131,7 @@ Für MongoDB verwendet dieses Tutorial [Azure Cosmos DB](/azure/documentdb/). Co
 
 ### <a name="create-a-cosmos-db-account"></a>Erstellen eines Cosmos DB-Kontos
 
-Erstellen Sie in der Cloud Shell mit dem Befehl [az cosmosdb create](/cli/azure/cosmosdb#create) ein Cosmos DB-Konto.
+Erstellen Sie in der Cloud Shell mit dem Befehl [az cosmosdb create](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_create) ein Cosmos DB-Konto.
 
 Ersetzen Sie im folgenden Befehl den Platzhalter *\<cosmosdb_name>* durch einen eindeutigen Cosmos DB-Namen. Dieser eindeutige Name wird als Teil des Cosmos DB-Endpunkts (`https://<cosmosdb_name>.documents.azure.com/`) verwendet, daher muss er für alle Cosmos DB-Konten in Azure eindeutig sein. Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche (-) enthalten, und er muss zwischen 3 und 50 Zeichen lang sein.
 
@@ -160,7 +165,7 @@ In diesem Schritt verbinden Sie die MEAN.js-Beispielanwendung mithilfe einer Mon
 
 ### <a name="retrieve-the-database-key"></a>Abrufen des Datenbankschlüssels
 
-Um eine Verbindung mit der Cosmos DB-Datenbank herstellen zu können, benötigen Sie den Datenbankschlüssel. Rufen Sie in der Cloud Shell den Primärschlüssel mit dem Befehl [az cosmosdb list-keys](/cli/azure/cosmosdb#list-keys) ab.
+Um eine Verbindung mit der Cosmos DB-Datenbank herstellen zu können, benötigen Sie den Datenbankschlüssel. Rufen Sie in der Cloud Shell den Primärschlüssel mit dem Befehl [az cosmosdb list-keys](/cli/azure/cosmosdb?view=azure-cli-latest#az_cosmosdb_list_keys) ab.
 
 ```azurecli-interactive
 az cosmosdb list-keys --name <cosmosdb_name> --resource-group myResourceGroup
@@ -256,7 +261,7 @@ In diesem Schritt stellen Sie die mit MongoDB verbundene Node.js-Anwendung in Az
 
 Standardmäßig integriert das MEAN.js-Projekt die Datei _config/env/local-production.js_ nicht in das Git-Repository. Daher verwenden Sie für Ihre Azure-Web-App die App-Einstellungen zum Definieren der MongoDB-Verbindungszeichenfolge.
 
-Verwenden Sie zum Festlegen der App-Einstellungen den [az webapp config appsettings update](/cli/azure/webapp/config/appsettings#update)-Befehl in der Cloud Shell. 
+Verwenden Sie zum Festlegen der App-Einstellungen den Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) in der Cloud Shell. 
 
 Im folgenden Beispiel wird die App-Einstellung `MONGODB_URI` in der Azure-Web-App konfiguriert. Ersetzen Sie die Platzhalter *\<app_name>*, *\<cosmosdb_name>* und *\<primary_master_key>*.
 
@@ -460,7 +465,7 @@ Alle zuvor hinzugefügten Artikel werden weiterhin angezeigt. Vorhandene Daten i
 
 Wenn Ihre Node.js-Anwendung in Azure App Service ausgeführt wird, können Sie die Konsolenprotokolle auf Ihr Terminal umleiten. Auf diese Weise erhalten Sie die gleichen Diagnosemeldungen, die Ihnen beim Debuggen von Anwendungsfehlern helfen.
 
-Verwenden Sie zum Starten des Streamings von Protokolldateien den Befehl [az webapp log tail](/cli/azure/webapp/log#tail) in Cloud Shell.
+Verwenden Sie zum Starten des Streamings von Protokolldateien den Befehl [az webapp log tail](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) in Cloud Shell.
 
 ```azurecli-interactive
 az webapp log tail --name <app_name> --resource-group myResourceGroup

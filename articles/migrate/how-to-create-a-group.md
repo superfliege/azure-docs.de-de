@@ -5,13 +5,13 @@ author: rayne-wiselman
 ms.service: azure-migrate
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 429a9150d1fbf50c0e3fa2046eb64affc8db8e5d
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: f42b184cddb3274d7ee0163c10cac002ccfbef62
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="group-machines-for-assessment"></a>Gruppieren von Computern für die Bewertung
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Gruppe mit Computern für die B
 
 ## <a name="create-a-group"></a>Erstellen einer Gruppe
 
-1. Klicken Sie im **Dashboard** des Azure Migrate-Projekts auf  **Gruppen** > **+Gruppe**, und geben Sie einen Gruppennamen an.
+1. Klicken Sie in der **Übersicht** des Azure Migrate-Projekts unter „Verwalten“ auf  **Gruppen** > **+Gruppe**, und geben Sie einen Gruppennamen an.
 2. Fügen Sie Computer zur Gruppe hinzu, und klicken Sie auf  **Erstellen**. 
 3. Sie können optional festlegen, dass eine neue Bewertung für die Gruppe ausgeführt wird. 
 
@@ -30,5 +30,5 @@ Nachdem die Gruppe erstellt wurde, können Sie sie ändern, indem Sie die Gruppe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zum Erstellen detaillierterer Gruppen mithilfe der [Zuordnung von Computerabhängigkeiten](how-to-create-group-machine-dependencies.md)
-- Weitere Informationen zur [Berechnung von Bewertungen](concepts-assessment-calculation.md)
+- Erfahren Sie mehr über das Erstellen von Gruppen mit hoher Vertrauenswürdigkeit mithilfe der [Zuordnung von Computerabhängigkeiten](how-to-create-group-machine-dependencies.md).
+- [Weitere Informationen](concepts-assessment-calculation.md) zur Berechnung von Bewertungen

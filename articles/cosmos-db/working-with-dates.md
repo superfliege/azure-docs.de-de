@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: arramac
-ms.openlocfilehash: b6a77e33eea24000037ffb31d7aae3cb1d345ce9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a54884196e5b4ff5b16425e902abeb8d82aa8f1
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="working-with-dates-in-azure-cosmos-db"></a>Arbeiten mit Datumsangaben in Azure Cosmos DB
 Azure Cosmos DB bietet Schemaflexibilität und eine umfassende Indizierung über ein natives [JSON](http://www.json.org)-Datenmodell. Alle Azure Cosmos DB-Ressourcen mit Datenbanken, Sammlungen, Dokumenten und gespeicherten Prozeduren werden als JSON-Dokumente modelliert und gespeichert. Aufgrund der erforderlichen Portierbarkeit unterstützt JSON (ebenso wie Azure Cosmos DB) nur einen kleinen Satz grundlegender Typen: String, Number, Boolean, Array, Object und Null. JSON ist jedoch flexibel und ermöglicht es Entwicklern und Frameworks, komplexere Daten darzustellen, indem deren Grundtypen verwendet und als Objekte oder Arrays zusammengestellt werden. 
@@ -26,7 +26,7 @@ Azure Cosmos DB bietet Schemaflexibilität und eine umfassende Indizierung über
 Zusätzlich zu den grundlegenden Typen benötigen viele Anwendungen den [DateTime](https://msdn.microsoft.com/library/system.datetime(v=vs.110).aspx)-Typ, um Daten und Zeitstempel darzustellen. Dieser Artikel beschreibt, wie Entwickler Datumsangaben in Azure Cosmos DB über das .NET SDK speichern, abrufen und abfragen können.
 
 ## <a name="storing-datetimes"></a>Speichern von DateTime-Werten
-Standardmäßig serialisiert das [Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) DateTime-Werte als [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874)-Zeichenfolgen. Die meisten Anwendungen können die standardmäßige Zeichenfolgendarstellung aus folgenden Gründen für DateTime verwenden:
+Standardmäßig serialisiert das [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) DateTime-Werte als [ISO 8601](http://www.iso.org/iso/catalogue_detail?csnumber=40874)-Zeichenfolgen. Die meisten Anwendungen können die standardmäßige Zeichenfolgendarstellung aus folgenden Gründen für DateTime verwenden:
 
 * Zeichenfolgen können verglichen werden, und die relative Reihenfolge der DateTime-Werte wird beibehalten, wenn diese in Zeichenfolgen umgewandelt werden. 
 * Für diesen Ansatz sind weder benutzerdefinierter Code noch Attribute für die JSON-Konvertierung erforderlich.
@@ -75,7 +75,7 @@ Bereichsabfragen werden bei DateTime-Werten häufig ausgeführt. Wenn Sie z.B. a
 Weitere Informationen zum Konfigurieren von Indizierungsrichtlinien finden Sie unter [Azure Cosmos DB-Indizierungsrichtlinien](indexing-policies.md).
 
 ## <a name="querying-datetimes-in-linq"></a>Abfragen von DateTime-Werten in LINQ
-Das DocumentDB .NET SDK unterstützt automatisch die Abfrage von Daten, die über LINQ in Azure Cosmos DB gespeichert sind. Der folgende Codeausschnitt zeigt z.B. eine LINQ-Abfrage, die Aufträge filtert, die in den letzten drei Tagen ausgeliefert wurden.
+Das .NET SDK für SQL unterstützt automatisch die Abfrage von Daten, die über LINQ in Azure Cosmos DB gespeichert sind. Der folgende Codeausschnitt zeigt z.B. eine LINQ-Abfrage, die Aufträge filtert, die in den letzten drei Tagen ausgeliefert wurden.
 
     IQueryable<Order> orders = client.CreateDocumentQuery<Order>("/dbs/orderdb/colls/orders")
         .Where(o => o.ShipDate >= DateTime.UtcNow.AddDays(-3));
@@ -83,11 +83,11 @@ Das DocumentDB .NET SDK unterstützt automatisch die Abfrage von Daten, die übe
     // Translated to the following SQL statement and executed on Azure Cosmos DB
     SELECT * FROM root WHERE (root["ShipDate"] >= "2016-12-18T21:55:03.45569Z")
 
-Weitere Informationen über die SQL-Abfragesprache von Azure Cosmos DB und den LINQ-Anbieter finden Sie unter [Abfragen von Cosmos DB](documentdb-sql-query.md).
+Weitere Informationen über die SQL-Abfragesprache von Azure Cosmos DB und den LINQ-Anbieter finden Sie unter [Abfragen von Cosmos DB](sql-api-sql-query.md).
 
 In diesem Artikel wurde erläutert, wie DateTime-Werte in Azure Cosmos DB gespeichert, indiziert und abgefragt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Herunterladen und Ausführen der [Codebeispiele auf GitHub](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/code-samples)
-* Weitere Informationen zu [DocumentDB-API-Abfragen](documentdb-sql-query.md)
+* Weitere Informationen zu [SQL-Abfragen](sql-api-sql-query.md)
 * Weitere Informationen zu den [Indizierungsrichtlinien von Azure Cosmos DB](indexing-policies.md)

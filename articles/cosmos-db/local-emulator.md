@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2017
 ms.author: arramac
-ms.openlocfilehash: 5ea254110a24ea3315d614ebca2d43bda0e1a674
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 240961e0caa1cf2b5c31e854e925f914eb7edc00
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Verwenden des Azure Cosmos DB-Emulators für lokale Entwicklungs- und Testvorgänge
 
@@ -64,7 +64,7 @@ Der Azure Cosmos DB-Emulator stellt eine High-Fidelity-Emulation des Azure Cosmo
 Wir haben zwar eine sehr detailgetreue Emulation des tatsächlichen Azure Cosmos DB-Diensts erstellt, allerdings unterscheidet sich die Implementierung des Azure Cosmos DB-Emulators von der des Diensts. Der Azure Cosmos DB-Emulator verwendet Standardkomponenten des Betriebssystems, z.B. das lokale Dateisystem für Persistenz und den HTTPS-Protokollstapel für Konnektivität. Dies bedeutet, dass einige Funktionen, die die Azure-Infrastruktur benötigen, über den Azure Cosmos DB-Emulator nicht verfügbar sind. Hierzu gehören beispielsweise die globale Replikation, Lese-/Schreibvorgänge mit Wartezeit im einstelligen Millisekundenbereich und optimierbare Konsistenzebenen.
 
 > [!NOTE]
-> Zu diesem Zeitpunkt unterstützt der Daten-Explorer im Emulator nur die Erstellung von DocumentDB-API-Sammlungen und MongoDB-Sammlungen. Der Daten-Explorer im Emulator unterstützt derzeit nicht die Erstellung von Tabellen und Diagrammen. 
+> Zum aktuellen Zeitpunkt unterstützt der Daten-Explorer im Emulator nur die Erstellung von SQL-API-Sammlungen und MongoDB-Sammlungen. Der Daten-Explorer im Emulator unterstützt derzeit nicht die Erstellung von Tabellen und Diagrammen. 
 
 ## <a name="differences-between-the-emulator-and-the-service"></a>Unterschiede zwischen dem Emulator und dem Dienst 
 Da der Azure Cosmos DB-Emulator eine emulierte Umgebung bereitstellt, die auf einer lokalen Entwicklerarbeitsstation ausgeführt wird, gibt es einige funktionelle Unterschiede zwischen dem Emulator und einem Azure Cosmos DB-Konto in der Cloud:
@@ -136,7 +136,7 @@ Sie können den Emulator in einem lokalen Netzwerk ausführen. Um Netzwerkzugrif
 Wenn der Netzwerkzugriff zum ersten Mal bereitgestellt wird, sollte der Benutzer den Emulator herunterfahren und das Datenverzeichnis des Emulators (C:\Benutzer\benutzername\AppData\Local\CosmosDBEmulator) löschen.
 
 ## <a name="developing-with-the-emulator"></a>Entwickeln mit dem Emulator
-Wenn der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie ein unterstütztes [Azure Cosmos DB-SDK](documentdb-sdk-dotnet.md) oder die [Azure Cosmos DB-REST-API](/rest/api/documentdb/) für die Interaktion mit dem Emulator verwenden. Der Azure Cosmos DB-Emulator enthält auch einen integrierten Daten-Explorer, mit dem Sie Sammlungen für die DocumentDB- und MongoDB-APIs erstellen sowie Dokumente anzeigen und bearbeiten können, ohne Code schreiben zu müssen.   
+Wenn der Azure Cosmos DB-Emulator auf Ihrem Desktop ausgeführt wird, können Sie ein unterstütztes [Azure Cosmos DB-SDK](sql-api-sdk-dotnet.md) oder die [Azure Cosmos DB-REST-API](/rest/api/documentdb/) für die Interaktion mit dem Emulator verwenden. Der Azure Cosmos DB-Emulator enthält auch einen integrierten Daten-Explorer, mit dem Sie Sammlungen für die SQL- und MongoDB-APIs erstellen sowie Dokumente anzeigen und bearbeiten können, ohne Code schreiben zu müssen.   
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
@@ -390,7 +390,7 @@ Verwenden Sie die folgenden Tipps zum Behandeln von Problemen, die für den Azur
 Zum Sammeln von Debugablaufverfolgungen führen Sie die folgenden Befehle an einer Administratoreingabeaufforderung aus:
 
 1. `cd /d "%ProgramFiles%\Azure Cosmos DB Emulator"`
-2. `CosmosDB.Emulator.exe /shutdown`. Beobachten Sie die Taskleiste, um sicherzugehen, dass das Programm beendet wurde; dies kann eine Minute dauern. Sie können auch einfach auf der Benutzeroberfläche des Azure Cosmos DB-Emulators auf **Beenden** klicken.
+2. `CosmosDB.Emulator.exe /shutdown`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist. Beobachten Sie die Taskleiste, um sicherzugehen, dass das Programm beendet wurde; dies kann eine Minute dauern. Sie können auch einfach auf der Benutzeroberfläche des Azure Cosmos DB-Emulators auf **Beenden** klicken.
 3. `CosmosDB.Emulator.exe /starttraces`
 4. `CosmosDB.Emulator.exe`
 5. Reproduzieren des Problems Wenn der Daten-Explorer nicht funktioniert, müssen Sie nur einige Sekunden warten, bis der Browser geöffnet wird, um den Fehler zu erfassen.

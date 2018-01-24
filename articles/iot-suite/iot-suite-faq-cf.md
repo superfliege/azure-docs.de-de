@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/10/2017
-ms.author: corywink
-ms.openlocfilehash: d4cb452b34ddefc70dc1adcff0e5fead072aa16a
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.date: 12/12/2017
+ms.author: dobett
+ms.openlocfilehash: 16685787b04d26f09e2b8778faac257571162aac
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Häufig gestellte Fragen zur vorkonfigurierten IoT Suite Connected Factory-Lösung
 
@@ -42,7 +42,7 @@ Die OPC Unified Architecture (UA), die 2008 veröffentlicht wurde, ist ein platt
 
 ### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Warum hat sich Microsoft für OPC UA als vorkonfigurierte Lösung für eine verbundene Factory entschieden?
 
-Microsoft hat OPC UA ausgewählt, da es sich um einen offenen, nicht proprietären, plattformunabhängigen, von der Industrie anerkannten und bewährten Standard handelt. Er stellt eine Voraussetzung für Referenzarchitekturlösungen für die Industrie 4.0 (RAMI4.0) dar und gewährleistet die Interoperabilität zwischen einer Vielzahl von Herstellungsverfahren und -geräten. Microsoft sieht bei seinen Kunden einen Bedarf an der Erstellung von Industrie 4.0-Lösungen. Die Unterstützung für OPC UA verringert die Barrieren für Kunden, ihre Ziele zu erreichen, und bietet sofort Geschäftsvorteile.
+Microsoft hat OPC UA ausgewählt, da es sich um einen offenen, nicht proprietären, plattformunabhängigen, von der Industrie anerkannten und bewährten Standard handelt. Er stellt eine Voraussetzung für Referenzarchitekturlösungen für die Industrie 4.0 (RAMI4.0) dar und gewährleistet die Interoperabilität zwischen einer Vielzahl von Herstellungsverfahren und -geräten. Microsoft sieht bei seinen Kunden einen Bedarf für die Erstellung von Industrie 4.0-Lösungen. Die Unterstützung für OPC UA verringert die Barrieren für Kunden, ihre Ziele zu erreichen, und bietet sofort Geschäftsvorteile.
 
 ### <a name="how-do-i-add-a-public-ip-address-to-the-simulation-vm"></a>Wie füge ich der Simulations-VM eine öffentliche IP-Adresse hinzu?
 
@@ -82,7 +82,7 @@ Wenn Sie die Lösung über www.azureiotsuite.com bereitgestellt haben, können S
 1. Um zu prüfen, welche Container aktiv sind, führen Sie `docker ps` aus.
 1. Um alle Simulationscontainer anzuhalten, führen Sie `./stopsimulation` aus.
 1. Um alle Simulationscontainer zu starten, gehen Sie folgendermaßen vor:
-    * Exporten Sie eine Shellvariable mit dem Namen **IOTHUB_CONNECTIONSTRING**. Verwenden Sie den Wert der **IotHubOwnerConnectionString**-Einstellung in der Datei `<name of your deployment>.config.user`. Beispiel:
+    * Exporten Sie eine Shellvariable mit dem Namen **IOTHUB_CONNECTIONSTRING**. Verwenden Sie den Wert der **IotHubOwnerConnectionString**-Einstellung in der Datei `<name of your deployment>.config.user`. Beispiel: 
 
         ```
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
@@ -143,6 +143,64 @@ Untersuchen Sie die Daten, die von einem der Publisher-Geräte gesendet werden:
 * publisher.seattle.corp.contoso
 
 Wenn Sie feststellen, dass keine Daten an IoT Hub gesendet werden, liegt ein Problem mit der Simulation vor. Als erstes sollten Sie die Protokolldateien der Simulationskomponenten analysieren. Informationen dazu finden Sie unter [Wie kann ich Protokolldaten aus dem Simulationskomponenten abrufen?](#how-can-i-get-log-data-from-the-simulation-components) Versuchen Sie danach, die Simulation anzuhalten und neu zu starten. Wenn weiterhin keine Daten gesendet werden, aktualisieren Sie die Simulation insgesamt. Informationen dazu finden Sie unter [Wie aktualisiere ich die Simulation in der VM?](#how-do-i-update-the-simulation-in-the-vm)
+
+### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>Wie aktiviere ich in meiner Connected Factory-Lösung eine interaktive Karte?
+
+Um in Ihrer Connected Factory-Lösung eine interaktive Karte aktivieren zu können, müssen Sie über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen. Wenn Sie beim Bereitstellen der Connected Factory-Lösung auf www.azureiotsuite.com über einen Tarif vom Typ „Bing Karten-API für Unternehmen“ verfügen, wird die interaktive Karte automatisch für Sie aktiviert.
+
+### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Wie erstelle ich ein Konto vom Typ „Bing Karten-API für Unternehmen“?
+
+Sie können kostenlos einen *Tarif vom Typ „Bing Karten für Unternehmen“ für die erste interne Transaktionsebene* erhalten. Einem Azure-Abonnement können allerdings maximal zwei dieser Tarife hinzugefügt werden. Falls Sie über kein Konto vom Typ „Bing Karten-API für Unternehmen“ verfügen, erstellen Sie eines, indem Sie im Azure-Portal auf **+ Ressource erstellen** klicken. Suchen Sie dann nach **Bing Karten-API für Unternehmen**, und befolgen Sie die Erstellungsanweisungen.
+
+![Bing-Schlüssel](media/iot-suite-faq-cf/bing.png)
+
+### <a name="how-to-obtain-your-bing-maps-api-for-enterprise-querykey"></a>Wie erhalte ich meinen Abfrageschlüssel für die Bing Karten-API für Unternehmen?
+
+Fügen Sie im Azure-Portal nach dem Erstellen Ihres Tarifs vom Typ „Bing Karten-API für Unternehmen“ der Ressourcengruppe Ihrer Connected Factory-Lösung eine Ressource vom Typ „Bing Karten für Unternehmen“ hinzu.
+
+1. Navigieren Sie im Azure-Portal zu der Ressourcengruppe mit dem Tarif vom Typ „Bing Karten-API für Unternehmen“.
+
+1. Klicken Sie auf **Alle Einstellungen** und dann auf **Schlüsselverwaltung**.
+
+1. Dort befinden sich zwei Schlüssel: **MasterKey** und **QueryKey**. Kopieren Sie den Wert von **QueryKey**.
+
+1. Legen Sie die Umgebungsvariable `$env:MapApiQueryKey` in Ihrer PowerShell-Umgebung auf den Abfrageschlüssel (**QueryKey**) Ihres Tarifs fest, um den Schlüssel für das Skript `build.ps1` verfügbar zu machen. Das Buildskript fügt den Wert dann automatisch den App Service-Einstellungen hinzu.
+
+1. Führen Sie unter Verwendung des Skripts `build.ps1` eine lokale oder cloudbasierte Bereitstellung aus.
+
+### <a name="how-do-enable-the-interactive-map-while-debugging-locally"></a>Wie aktiviere ich die interaktive Karte während des lokalen Debuggens?
+
+Legen Sie den Wert der Einstellung `MapApiQueryKey` in den Dateien `local.user.config` und `<yourdeploymentname>.user.config` im Stammverzeichnis Ihrer Bereitstellung auf den Wert des zuvor kopierten Abfrageschlüssels (**QueryKey**) fest, um die interaktive Karte während des lokalen Debuggens zu aktivieren.
+
+### <a name="how-do-i-use-a-different-image-at-the-home-page-of-my-dashboard"></a>Wie kann ich das Bild auf der Startseite meines Dashboards ändern?
+
+Ersetzen Sie das Bild `WebApp\Content\img\world.jpg`, um das statische Bild auf der Startseite des Dashboards zu ändern. Erstellen Sie die Web-App anschließend neu, und stellen Sie sie erneut bereit.
+
+### <a name="how-do-i-use-non-opc-ua-devices-with-connected-factory"></a>Wie kann ich OPC UA-fremde Geräte mit der Connected Factory-Lösung verwenden?
+
+Gehen Sie wie folgt vor, um Telemetriedaten von OPC UA-fremden Geräten an eine Connected Factory-Lösung zu senden:
+
+1. [Konfigurieren Sie eine neue Station in der Connected Factory-Topologie](iot-suite-connected-factory-configure.md) (in der Datei `ContosoTopologyDescription.json`).
+
+1. Erfassen Sie die Telemetriedaten in einem für Connected Factory geeigneten JSON-Format:
+
+    ```json
+    [
+      {
+        "ApplicationUri": "<the_value_of_OpcUri_of_your_station",
+        "DisplayName": "<name_of_the_datapoint>",
+        "NodeId": "value_of_NodeId_of_your_datapoint_in_the_station",
+        "Value": {
+          "Value": <datapoint_value>,
+          "SourceTimestamp": "<timestamp>"
+        }
+      }
+    ]
+    ```
+
+1. Das Format von `<timestamp>` lautet: `2017-12-08T19:24:51.886753Z`
+
+1. Starten Sie den Connected Factory-App Service neu.
 
 ### <a name="next-steps"></a>Nächste Schritte
 

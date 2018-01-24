@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ef0395a9c666732ba117822f46e8d2a7540aee14
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 60e0feb1e45ac5d9f35eac9667eaf9004d77e86a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="prepare-application-for-azure-container-service-aks"></a>Vorbereiten einer Anwendung für Azure Container Service (AKS)
 
@@ -32,9 +32,9 @@ In den nachfolgenden Tutorials wird das Containerimage in eine Azure Container R
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Begriffe wie Container und Containerimages sowie grundlegende Docker-Befehle bekannt sind. Eine Einführung in die Grundlagen der Container finden Sie bei Bedarf unter [Get started with Docker (Erste Schritte mit Docker)]( https://docs.docker.com/get-started/). 
+In diesem Tutorial wird vorausgesetzt, dass zentrale Docker-Begriffe wie Container und Containerimages sowie grundlegende Docker-Befehle bekannt sind. Eine Einführung in die Grundlagen der Container finden Sie bei Bedarf unter [Get started with Docker][docker-get-started] (Erste Schritte mit Docker). 
 
-Für dieses Tutorial ist eine Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- oder [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-System konfiguriert werden kann.
+Für dieses Tutorial ist eine Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-for-mac], [Windows-][docker-for-windows] oder [Linux-][docker-for-linux]System konfiguriert werden kann.
 
 Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Aus diesem Grund wird empfohlen, eine vollständige Docker-Entwicklungsumgebung zu verwenden.
 
@@ -58,15 +58,15 @@ Im Verzeichnis befinden sich der Anwendungsquellcode, eine vorab erstellte Docke
 
 ## <a name="create-container-images"></a>Erstellen von Containerimages
 
-[Docker Compose](https://docs.docker.com/compose/) kann verwendet werden, um die Erstellung von Containerimages und die Bereitstellung von Anwendungen mit mehreren Containern zu automatisieren.
+[Docker Compose][docker-compose] kann verwendet werden, um die Erstellung von Containerimages und die Bereitstellung von Anwendungen mit mehreren Containern zu automatisieren.
 
-Führen Sie die Datei `docker-compose.yml` aus, um das Containerimage zu erstellen, das Redis-Image herunterzuladen und die Anwendung zu starten.
+Führen Sie die Datei `docker-compose.yaml` aus, um das Containerimage zu erstellen, das Redis-Image herunterzuladen und die Anwendung zu starten.
 
 ```console
 docker-compose up -d
 ```
 
-Verwenden Sie anschließend den Befehl [docker-images](https://docs.docker.com/engine/reference/commandline/images/), um die erstellten Images anzuzeigen.
+Verwenden Sie anschließend den Befehl [docker-images][docker-images], um die erstellten Images anzuzeigen.
 
 ```console
 docker images
@@ -81,7 +81,7 @@ redis                        latest     a1b99da73d05        7 days ago          
 tiangolo/uwsgi-nginx-flask   flask      788ca94b2313        9 months ago        694MB
 ```
 
-Führen Sie den Befehl [docker ps](https://docs.docker.com/engine/reference/commandline/ps/) aus, um die ausgeführten Container anzuzeigen.
+Führen Sie den Befehl [docker ps][docker-ps] aus, um die ausgeführten Container anzuzeigen.
 
 ```console
 docker ps
@@ -131,4 +131,16 @@ In diesem Tutorial wurde eine Anwendung getestet und es wurden Containerimages f
 Wechseln Sie zum nächsten Tutorial, und erfahren Sie, wie Containerimages in einer Azure Container Registry gespeichert werden.
 
 > [!div class="nextstepaction"]
-> [Übertragen von Images zu Azure Container Registry mithilfe von Push](./tutorial-kubernetes-prepare-acr.md)
+> [Übertragen von Images zu Azure Container Registry mithilfe von Push][aks-tutorial-prepare-acr]
+
+<!-- LINKS - external -->
+[docker-compose]: https://docs.docker.com/compose/
+[docker-for-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-for-mac]: https://docs.docker.com/docker-for-mac/
+[docker-for-windows]: https://docs.docker.com/docker-for-windows/
+[docker-get-started]: https://docs.docker.com/get-started/
+[docker-images]: https://docs.docker.com/engine/reference/commandline/images/
+[docker-ps]: https://docs.docker.com/engine/reference/commandline/ps/
+
+<!-- LINKS - internal -->
+[aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md

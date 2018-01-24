@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/16/2017
+ms.date: 12/14/2017
 ms.author: tomfitz
-ms.openlocfilehash: b8d1988a8705e0708e412c24fb5b49f5ece31429
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: b0bc5abd768be0fa5876aaef108cd71a15d94510
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 In diesem Artikel wird die Struktur einer Azure Resource Manager-Vorlage beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind. Die Vorlage besteht aus JSON-Code und Ausdrücken, mit denen Sie Werte für Ihre Bereitstellung erstellen können. Ein ausführliches Tutorial zum Erstellen einer Vorlage finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](resource-manager-create-first-template.md).
@@ -37,14 +37,14 @@ In der einfachsten Struktur enthält eine Vorlage die folgenden Elemente:
 }
 ```
 
-| Elementname | Erforderlich | Beschreibung |
+| Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | $schema |Ja |Speicherort der JSON-Schemadatei, die die Version der Vorlagensprache beschreibt. Verwenden Sie die im vorherigen Beispiel gezeigte URL. |
 | contentVersion |Ja |Version der Vorlage (z. B. 1.0.0.0). Sie können einen beliebigen Wert für dieses Element resources. Bei der Bereitstellung von Ressourcen mithilfe der Vorlage kann mit diesem Wert sichergestellt werden, dass die richtige Vorlage verwendet wird. |
-| parameters |Nein |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
-| variables |Nein |Werte, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen. |
+| Parameter |Nein  |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
+| variables |Nein  |Werte, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen. |
 | resources |Ja |Ressourcentypen, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden. |
-| outputs |Nein |Werte, die nach der Bereitstellung zurückgegeben werden. |
+| outputs |Nein  |Werte, die nach der Bereitstellung zurückgegeben werden. |
 
 Jedes Element enthält Eigenschaften, die Sie festlegen können. Das folgende Beispiel enthält die vollständige Syntax für eine Vorlage:
 
@@ -139,18 +139,16 @@ Jedes Element enthält Eigenschaften, die Sie festlegen können. Das folgende Be
 
 In diesem Artikel werden die Abschnitte der Vorlage ausführlicher beschrieben.
 
-## <a name="expressions-and-functions"></a>Ausdrücke und Funktionen
+## <a name="syntax"></a>Syntax
 Die grundlegende Syntax der Vorlage ist JSON. Allerdings erweitern Ausdrücke und Funktionen die JSON-Werte, die in der Vorlage zur Verfügung stehen.  Ausdrücke werden innerhalb von JSON-Zeichenfolgenliteralen geschrieben, deren erstes und letztes Zeichen jeweils eine Klammer ist: `[` und `]`. Der Wert des Ausdrucks wird bei der Bereitstellung der Vorlage ausgewertet. Trotz der Schreibweise als Zeichenfolgenliteral kann das Ergebnis der Auswertung des Ausdrucks ein anderer JSON-Typ sein, z.B. ein Array oder Integer. Dies hängt vom jeweiligen Ausdruck ab.  Wenn eine Literalzeichenfolge mit einer Klammer `[` beginnen, aber nicht als Ausdruck interpretiert werden soll, fügen Sie am Anfang der Zeichenfolge eine weitere Klammer ein: `[[`.
 
 In der Regel verwenden Sie Ausdrücke mit Funktionen, um Vorgänge zum Konfigurieren der Bereitstellung durchzuführen. Genau wie in JavaScript haben Funktionsaufrufe das Format `functionName(arg1,arg2,arg3)`. Auf Eigenschaften verweisen Sie mithilfe der Operatoren Punkt und [Index].
 
-Das folgende Beispiel zeigt, wie Sie verschiedene Funktionen beim Erstellen von Werten verwenden:
+Das folgende Beispiel zeigt, wie Sie verschiedene Funktionen beim Erstellen eines Werts verwenden:
 
 ```json
 "variables": {
-    "location": "[resourceGroup().location]",
-    "usernameAndPassword": "[concat(parameters('username'), ':', parameters('password'))]",
-    "authorizationHeader": "[concat('Basic ', base64(variables('usernameAndPassword')))]"
+    "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 }
 ```
 
@@ -159,408 +157,66 @@ Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](resource-group-template
 ## <a name="parameters"></a>Parameter
 Im Abschnitt „Parameter“ der Vorlage geben Sie an, welche Werte Sie beim Bereitstellen der Ressourcen eingeben können. Mit diesen Parameterwerten können Sie die Bereitstellung anpassen, indem Sie Werte resources, die für eine bestimmte Umgebung (z. B. Entwicklung, Testing oder Produktion) maßgeschneidert sind. Sie müssen in der Vorlage nicht unbedingt Parameter resources, aber ohne Parameter stellt Ihre Vorlage immer dieselben Ressourcen mit den gleichen Namen, Speicherorten und Eigenschaften bereit.
 
-Sie definieren Parameter mit der folgenden Struktur:
+Das folgende Beispiel zeigt eine einfache Parameterdefinition:
 
 ```json
 "parameters": {
-    "<parameter-name>" : {
-        "type" : "<type-of-parameter-value>",
-        "defaultValue": "<default-value-of-parameter>",
-        "allowedValues": [ "<array-of-allowed-values>" ],
-        "minValue": <minimum-value-for-int>,
-        "maxValue": <maximum-value-for-int>,
-        "minLength": <minimum-length-for-string-or-array>,
-        "maxLength": <maximum-length-for-string-or-array-parameters>,
-        "metadata": {
-            "description": "<description-of-the parameter>" 
-        }
+  "siteNamePrefix": {
+    "type": "string",
+    "metadata": {
+      "description": "The name prefix of the web app that you wish to create."
     }
-}
+  },
+},
 ```
 
-| Elementname | Erforderlich | Beschreibung |
-|:--- |:--- |:--- |
-| parameterName |Ja |Der Name des Parameters. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| Typ |Ja |Der Typ des Parameterwerts. Informationen finden Sie nach dieser Tabelle in der Liste der zulässigen Typen. |
-| defaultValue |Nein |Der Standardwert für den Parameter, wenn kein Wert für den Parameter angegeben wird. |
-| allowedValues |Nein |Ein Array der zulässigen Werte für den Parameter, um sicherzustellen, dass der richtige Wert angegeben wird. |
-| minValue |Nein |Der Mindestwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
-| maxValue |Nein |Der Höchstwert für Parameter vom Typ "int", einschließlich des angegebenen Werts. |
-| minLength |Nein |Die Mindestlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
-| maxLength |Nein |Die Höchstlänge der Parameter „string“, „secureString“ und „array“, einschließlich des angegebenen Werts. |
-| Beschreibung |Nein |Beschreibung des Parameters, der Benutzern im Portal angezeigt wird. |
-
-Die zulässigen Typen und Werte lauten folgendermaßen:
-
-* **string**
-* **secureString**
-* **int**
-* **bool**
-* **object** 
-* **secureObject**
-* **array**
-
-Um einen Parameter als optional anzugeben, geben Sie einen Standardwert (kann eine leere Zeichenfolge sein) an. 
-
-Wenn Sie einen Parameternamen in der Vorlage resources, die einem Parameter im Befehl zum Bereitstellen der Vorlage entspricht, sind die bereitgestellten Werte möglicherweise mehrdeutig. Resource Manager löst diese Probleme durch Hinzufügen des Postfix-Elements **FromTemplate** zum Vorlagenparameter. Beispiel: Falls Sie einen Parameter namens **ResourceGroupName** in Ihrer Vorlage einfügen, wird ein Konflikt mit dem Parameter **ResourceGroupName** im Cmdlet [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) verursacht. Sie werden während der Bereitstellung zur Eingabe eines Werts für **ResourceGroupNameFromTemplate** aufgefordert. Im Allgemeinen sollten Sie diese Verwirrung vermeiden, indem Sie Parametern nicht dieselben Namen wie Parametern für Bereitstellungsvorgänge geben.
-
-> [!NOTE]
-> Für Kennwörter, Schlüssel und andere geheime Informationen sollte der Typ **secureString** verwendet werden. Wenn Sie vertrauliche Daten an ein JSON-Objekt übergeben, verwenden Sie den Typ **secureObject**. Vorlagenparameter des Typs „secureString“ oder „secureObject“ können nach der Bereitstellung der Ressource nicht mehr gelesen werden. 
-> 
-> Im folgenden Eintrag im Bereitstellungsverlauf werden beispielsweise die Werte für eine Zeichenfolge und ein Objekt, jedoch nicht für „secureString“ und „secureObject“ angezeigt.
->
-> ![Anzeigen der Bereitstellungswerte](./media/resource-group-authoring-templates/show-parameters.png)  
->
-
-Im folgenden Beispiel wird veranschaulicht, wie Sie Parameter definieren:
-
-```json
-"parameters": {
-    "siteName": {
-        "type": "string",
-        "defaultValue": "[concat('site', uniqueString(resourceGroup().id))]"
-    },
-    "hostingPlanName": {
-        "type": "string",
-        "defaultValue": "[concat(parameters('siteName'),'-plan')]"
-    },
-    "skuName": {
-        "type": "string",
-        "defaultValue": "F1",
-        "allowedValues": [
-          "F1",
-          "D1",
-          "B1",
-          "B2",
-          "B3",
-          "S1",
-          "S2",
-          "S3",
-          "P1",
-          "P2",
-          "P3",
-          "P4"
-        ]
-    },
-    "skuCapacity": {
-        "type": "int",
-        "defaultValue": 1,
-        "minValue": 1
-    }
-}
-```
-
-Informationen zum Eingeben der Parameterwerte während der Bereitstellung finden Sie unter [Bereitstellen einer Anwendung mit einer Azure Resource Manager-Vorlage](resource-group-template-deploy.md). 
+Informationen zum Definieren von Parametern finden Sie im [Abschnitt „Parameters“ von Azure Resource Manager-Vorlagen](resource-manager-templates-parameters.md).
 
 ## <a name="variables"></a>Variables
 Im Abschnitt „variables“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Sie müssen nicht unbedingt variables definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden.
 
-Sie definieren variables mit der folgenden Struktur:
+Im folgenden Beispiel wird eine einfache Variablendefinition gezeigt:
 
 ```json
 "variables": {
-    "<variable-name>": "<variable-value>",
-    "<variable-name>": { 
-        <variable-complex-type-value> 
-    }
-}
-```
-
-Das folgende Beispiel zeigt, wie Sie eine Variable definieren, die aus zwei Parameterwerten erstellt wird:
-
-```json
-"variables": {
-    "connectionString": "[concat('Name=', parameters('username'), ';Password=', parameters('password'))]"
-}
-```
-
-Das nächste Beispiel zeigt eine Variable mit einem komplexen JSON-Typ sowie variables, die aus anderen variables erstellt werden:
-
-```json
-"parameters": {
-    "environmentName": {
-        "type": "string",
-        "allowedValues": [
-          "test",
-          "prod"
-        ]
-    }
-},
-"variables": {
-    "environmentSettings": {
-        "test": {
-            "instancesSize": "Small",
-            "instancesCount": 1
-        },
-        "prod": {
-            "instancesSize": "Large",
-            "instancesCount": 4
-        }
-    },
-    "currentEnvironmentSettings": "[variables('environmentSettings')[parameters('environmentName')]]",
-    "instancesSize": "[variables('currentEnvironmentSettings').instancesSize]",
-    "instancesCount": "[variables('currentEnvironmentSettings').instancesCount]"
-}
-```
-
-Sie können die **copy**-Syntax zum Erstellen einer Variablen mit einem Array mehrerer Elemente verwenden. Sie geben eine Zahl für die Anzahl von Elementen an. Jedes Element enthält die Eigenschaften im **input**-Objekt. Sie können „copy“ entweder innerhalb einer Variablen oder zum Erstellen der Variablen verwenden. Im folgenden Beispiel sind beide Ansätze dargestellt:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {
-    "disk-array-on-object": {
-      "copy": [
-        {
-          "name": "disks",
-          "count": 5,
-          "input": {
-            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-            "diskSizeGB": "1",
-            "diskIndex": "[copyIndex('disks')]"
-          }
-        }
-      ]
-    },
-    "copy": [
-      {
-        "name": "disks-top-level-array",
-        "count": 5,
-        "input": {
-          "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-          "diskSizeGB": "1",
-          "diskIndex": "[copyIndex('disks-top-level-array')]"
-        }
-      }
-    ]
-  },
-  "resources": [],
-  "outputs": {
-    "exampleObject": {
-      "value": "[variables('disk-array-on-object')]",
-      "type": "object"
-    },
-    "exampleArrayOnObject": {
-      "value": "[variables('disk-array-on-object').disks]",
-      "type" : "array"
-    },
-    "exampleArray": {
-      "value": "[variables('disks-top-level-array')]",
-      "type" : "array"
-    }
-  }
-}
-```
-
-Sie können auch mehrere Objekte angeben, wenn Sie Variablen durch Kopieren erstellen. Im folgenden Beispiel werden zwei Arrays als Variablen definiert. Ein Array namens **disks-top-level-array** mit fünf Elementen. Ein anderes Array namens **a-different-array** mit drei Elementen.
-
-```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
+  "webSiteName": "[concat(parameters('siteNamePrefix'), uniqueString(resourceGroup().id))]",
 },
 ```
 
-## <a name="resources"></a>Ressourcen
-Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden. Dieser Abschnitt kann komplizierter werden, da Sie die Typen, die sie bereitstellen, verstehen müssen, um die richtigen Werte resources zu können. Die ressourcenspezifischen Werte (apiVersion, type und properties), die Sie festlegen müssen, finden Sie unter [Definieren von Ressourcen in Azure Resource Manager-Vorlagen](/azure/templates/). 
+Informationen zum Definieren von Variablen finden Sie im [Abschnitt „Variables“ von Azure Resource Manager-Vorlagen](resource-manager-templates-variables.md).
 
-Sie definieren Ressourcen mit der folgenden Struktur:
+## <a name="resources"></a>angeben
+Im Ressourcenabschnitt definieren Sie die Ressourcen, die bereitgestellt oder aktualisiert werden. Dieser Abschnitt kann komplizierter werden, da Sie die Typen, die sie bereitstellen, verstehen müssen, um die richtigen Werte resources zu können.
 
 ```json
 "resources": [
   {
-      "condition": "<boolean-value-whether-to-deploy>",
-      "apiVersion": "<api-version-of-resource>",
-      "type": "<resource-provider-namespace/resource-type-name>",
-      "name": "<name-of-the-resource>",
-      "location": "<location-of-resource>",
-      "tags": {
-          "<tag-name1>": "<tag-value1>",
-          "<tag-name2>": "<tag-value2>"
-      },
-      "comments": "<your-reference-notes>",
-      "copy": {
-          "name": "<name-of-copy-loop>",
-          "count": "<number-of-iterations>",
-          "mode": "<serial-or-parallel>",
-          "batchSize": "<number-to-deploy-serially>"
-      },
-      "dependsOn": [
-          "<array-of-related-resource-names>"
-      ],
-      "properties": {
-          "<settings-for-the-resource>",
-          "copy": [
-              {
-                  "name": ,
-                  "count": ,
-                  "input": {}
-              }
-          ]
-      },
-      "resources": [
-          "<array-of-child-resources>"
-      ]
-  }
-]
-```
-
-| Elementname | Erforderlich | Beschreibung |
-|:--- |:--- |:--- |
-| condition | Nein | Boolescher Wert, der angibt, ob die Ressource bereitgestellt wird. |
-| apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. |
-| type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). |
-| Name |Ja |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Darüber hinaus überprüfen Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. |
-| location |Variabel |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. eine Rollenzuweisung) jedoch nicht. Weitere Informationen finden Sie unter [Festlegen des Ressourcenspeicherorts in Azure Resource Manager-Vorlagen](resource-manager-template-location.md). |
-| tags |Nein |Markierungen, die der Ressource zugeordnet sind Weitere Informationen finden Sie unter [Kennzeichnen von Ressourcen in Azure Resource Manager-Vorlagen](resource-manager-template-tags.md). |
-| Kommentare |Nein |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage |
-| copy |Nein |Wenn mehr als eine Instanz erforderlich ist, die Anzahl der zu erstellenden Ressourcen. Der Standardmodus ist parallel. Geben Sie den seriellen Modus an, wenn nicht alle Ressourcen gleichzeitig bereitgestellt werden sollen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md). |
-| dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Vermeiden Sie das Hinzufügen unnötiger Abhängigkeiten, da diese die Bereitstellung verlangsamen und Ringabhängigkeiten schaffen können. Tipps für das Festlegen von Abhängigkeiten finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](resource-group-define-dependencies.md). |
-| Eigenschaften |Nein |Ressourcenspezifische Konfigurationseinstellungen. Die Werte für die Eigenschaften sind mit den Werten identisch, die Sie im Anforderungstext für den REST-API-Vorgang (PUT-Methode) angegeben haben, um die Ressource zu erstellen. Sie können auch ein Kopierarray angeben, um mehrere Instanzen einer Eigenschaft zu erstellen. Weitere Informationen finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen in Azure Resource Manager](resource-group-create-multiple.md). |
-| resources |Nein |Untergeordnete Ressourcen, die von der definierten Ressource abhängig sind. Stellen Sie nur Ressourcentypen bereit, die laut Schema der übergeordneten Ressource zulässig sind. Der vollqualifizierte Typ der untergeordneten Ressource enthält den übergeordneten Ressourcentyp, z.B. **Microsoft.Web/sites/extensions**. Eine Abhängigkeit von der übergeordneten Ressource ist nicht impliziert. Sie müssen diese Abhängigkeit explizit definieren. |
-
-Der Abschnitt „Ressourcen“ enthält ein Array mit den bereitzustellenden Ressourcen. Innerhalb jeder Ressource können Sie auch ein Array untergeordneter Ressourcen definieren. Der Abschnitt „Ressourcen“ kann daher beispielsweise folgende Struktur aufweisen:
-
-```json
-"resources": [
-  {
-      "name": "resourceA",
-  },
-  {
-      "name": "resourceB",
-      "resources": [
-        {
-            "name": "firstChildResourceB",
-        },
-        {   
-            "name": "secondChildResourceB",
-        }
-      ]
-  },
-  {
-      "name": "resourceC",
-  }
-]
-```      
-
-Weitere Informationen zum Definieren von untergeordneten Ressourcen finden Sie unter [Festlegen von Namen und Typ für eine untergeordnete Ressource in einer Resource Manager-Vorlage](resource-manager-template-child-resource.md).
-
-Das Element **condition** gibt an, ob die Ressource bereitgestellt wird. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Um zum Beispiel anzugeben, ob ein neues Speicherkonto bereitgestellt wird, verwenden Sie:
-
-```json
-{
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
-    "apiVersion": "2017-06-01",
+    "apiVersion": "2016-08-01",
+    "name": "[variables('webSiteName')]",
+    "type": "Microsoft.Web/sites",
     "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
-}
+    "properties": {
+      "serverFarmId": "/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Web/serverFarms/<plan-name>"
+    }
+  }
+],
 ```
 
-Ein Beispiel für die Verwendung einer neuen oder einer vorhandenen Ressource finden Sie unter [Vorlage für neue oder vorhandene Ressourcenbedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).
-
-Um anzugeben, ob ein virtueller Computer mit einem Kennwort oder einem SSH-Schlüssel bereitgestellt wird, definieren Sie zwei Versionen des virtuellen Computers in der Vorlage, und verwenden Sie **condition**, um die Nutzung zu unterscheiden. Übergeben Sie einen Parameter, der angibt, welches Szenario bereitgestellt werden soll.
-
-```json
-{
-    "condition": "[equals(parameters('passwordOrSshKey'),'password')]",
-    "apiVersion": "2016-03-30",
-    "type": "Microsoft.Compute/virtualMachines",
-    "name": "[concat(variables('vmName'),'password')]",
-    "properties": {
-        "osProfile": {
-            "computerName": "[variables('vmName')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
-        },
-        ...
-    },
-    ...
-},
-{
-    "condition": "[equals(parameters('passwordOrSshKey'),'sshKey')]",
-    "apiVersion": "2016-03-30",
-    "type": "Microsoft.Compute/virtualMachines",
-    "name": "[concat(variables('vmName'),'ssh')]",
-    "properties": {
-        "osProfile": {
-            "linuxConfiguration": {
-                "disablePasswordAuthentication": "true",
-                "ssh": {
-                    "publicKeys": [
-                        {
-                            "path": "[variables('sshKeyPath')]",
-                            "keyData": "[parameters('adminSshKey')]"
-                        }
-                    ]
-                }
-            }
-        },
-        ...
-    },
-    ...
-}
-``` 
-
-Ein Beispiel für die Verwendung eines Kennworts oder eines SSH-Schlüssels zum Bereitstellen von virtuellen Computern finden Sie unter [Vorlage für Benutzername- oder SSH-Bedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
+Weitere Informationen finden Sie im [Abschnitt „Resources“ von Azure Resource Manager-Vorlagen](resource-manager-templates-resources.md).
 
 ## <a name="outputs"></a>Ausgaben
 Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. Sie könnten z. B. den URI für den Zugriff auf eine bereitgestellte Ressource zurückgeben.
 
-Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
-
 ```json
 "outputs": {
-    "<outputName>" : {
-        "type" : "<type-of-output-value>",
-        "value": "<output-value-expression>"
-    }
+  "newHostName": {
+    "type": "string",
+    "value": "[reference(variables('webSiteName')).defaultHostName]"
+  }
 }
 ```
 
-| Elementname | Erforderlich | Beschreibung |
-|:--- |:--- |:--- |
-| outputName |Ja |Name des Ausgabewerts. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| Typ |Ja |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie Vorlagen-Eingabeparameter. |
-| value |Ja |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. |
-
-Das folgende Beispiel zeigt einen Wert, der im Ausgabeabschnitt zurückgegeben wird.
-
-```json
-"outputs": {
-    "siteUri" : {
-        "type" : "string",
-        "value": "[concat('http://',reference(resourceId('Microsoft.Web/sites', parameters('siteName'))).hostNames[0])]"
-    }
-}
-```
-
-Weitere Informationen zum Arbeiten mit Vorlagen finden Sie unter [Freigeben des Status in Azure-Ressourcen-Manager-Vorlagen](best-practices-resource-manager-state.md).
+Weitere Informationen finden Sie im [Abschnitt „Outputs“ von Azure Resource Manager-Vorlagen](resource-manager-templates-outputs.md).
 
 ## <a name="template-limits"></a>Vorlagengrenzwerte
 

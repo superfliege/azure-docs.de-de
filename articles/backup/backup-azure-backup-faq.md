@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 0c91c320edb82ddfdc21372a168a2dc50449ce90
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 66c2f1c5e8ba26d5c50cf60b7f448406814408b0
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Fragen zum Azure Backup-Dienst
-Dieser Artikel enthält Antworten auf häufig gestellte Fragen, damit Sie sich schnell mit den Komponenten von Azure Backup vertraut machen können. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Fragen zu Azure Backup können Sie durch Klicken auf **Kommentare** (rechts) stellen. Kommentare erscheinen am Ende dieses Artikels. Zum Kommentieren wird ein Livefyre-Konto benötigt. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
+In diesem Artikel werden allgemeine Fragen zu den Azure Backup-Komponenten beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Fragen zu Azure Backup können Sie durch Klicken auf **Kommentare** (rechts) stellen. Kommentare erscheinen am Ende dieses Artikels. Zum Kommentieren wird ein Livefyre-Konto benötigt. Außerdem können Sie Fragen zum Azure Backup-Dienst im [Diskussionsforum](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)stellen.
 
 Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um sich einen Überblick über die Abschnitte dieses Artikels zu verschaffen.
 
@@ -30,7 +30,7 @@ Verwenden Sie die Links auf der rechten Seite unter **In diesem Artikel**, um si
 ## <a name="recovery-services-vault"></a>Recovery Services-Tresor
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription-br"></a>Gibt es eine Beschränkung hinsichtlich der Anzahl von Tresoren, die in einem Azure-Abonnement erstellt werden können? <br/>
-Ja. Ab September 2016 können Sie 25 Recovery Services- bzw. Sicherungstresore pro Abonnement erstellen. Pro Abonnement können für jede unterstützte Region von Azure Backup bis zu 25 Recovery Services-Tresore erstellt werden. Erstellen Sie ein zusätzliches Abonnement, falls Sie zusätzliche Tresore benötigen.
+Ja. Ab September 2016 können Sie 25 Recovery Services-Tresore pro Abonnement erstellen. Pro Abonnement können für jede unterstützte Region von Azure Backup bis zu 25 Recovery Services-Tresore erstellt werden. Erstellen Sie ein zusätzliches Abonnement, falls Sie zusätzliche Tresore benötigen.
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können? <br/>
 Ja. Sie können bis zu 50 Computer pro Tresor registrieren. Bei virtuellen Azure-IaaS-Computern liegt die Beschränkung bei 200 VMs pro Tresor. Wenn Sie weitere Computer registrieren müssen, erstellen Sie einen anderen Tresor.
@@ -41,19 +41,11 @@ Alle für denselben Tresor registrierten Server können die Daten wiederherstell
 ### <a name="can-i-migrate-my-backup-data-or-vault-between-subscriptions-br"></a>Kann ich meine Sicherungsdaten oder meinen Sicherungstresor zwischen Abonnements „migrieren“? <br/>
 Nein. Der Tresor wird auf einer Abonnementebene erstellt und kann nach seiner Erstellung keinem anderen Abonnement zugewiesen werden.
 
-### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-classic-mode-still-supported-br"></a>Recovery Services-Tresor basieren auf Resource Manager. Werden Sicherungstresore (klassischer Modus) weiterhin unterstützt? <br/>
-Alle vorhandenen Sicherungstresore im [klassischen Portal](https://manage.windowsazure.com) werden weiterhin unterstützt. Sie können das klassische Portal aber nicht mehr nutzen, um neue Sicherungstresore bereitzustellen. Microsoft empfiehlt die Verwendung von Recovery Services-Tresoren für alle Bereitstellungen, da zukünftige Verbesserungen nur für Recovery Services-Tresore gelten. Wenn Sie versuchen, einen Sicherungstresor im klassischen Portal zu erstellen, werden Sie an das [Azure-Portal](https://portal.azure.com) weitergeleitet.
+### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>Recovery Services-Tresor basieren auf Resource Manager. Werden Sicherungstresore weiterhin unterstützt? <br/>
+Sicherungstresore wurden in Recovery Services-Tresore umgewandelt. Wenn Sie den Sicherungstresor nicht in einen Recovery Services-Tresor umgewandelt haben, wurde dieser Vorgang für Sie übernommen. 
 
 ### <a name="can-i-migrate-a-backup-vault-to-a-recovery-services-vault-br"></a>Kann ich einen Backup-Tresor zu einem Recovery Services-Tresor migrieren? <br/>
-Ja, Sie können nun ein Upgrade für Ihren Sicherungstresor auf einen Recovery Services-Tresor durchführen. Ausführliche Informationen finden Sie im Artikel [Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor](backup-azure-upgrade-backup-to-recovery-services.md).
-
-### <a name="i-backed-up-my-classic-vms-in-a-backup-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault"></a>Ich habe meine klassischen virtuellen Computer in einem Sicherungstresor gesichert. Kann ich meine virtuellen Computer vom klassischen Modus in den Resource Manager-Modus migrieren und diese in einem Recovery Services-Tresor schützen?
-Klassische VM-Wiederherstellungspunkte in einem Sicherungstresor migrieren nicht automatisch zu Recovery Services-Tresoren, wenn Sie die virtuellen Computer vom klassischen Modus zum Resource Manager-Modus migrieren. Führen Sie die folgenden Schritte aus, um Ihre VM-Sicherungen zu übertragen:
-
-1. Wechseln Sie im Sicherungstresor zur Registerkarte **Geschützte Elemente**, und wählen Sie den virtuellen Computer aus. Klicken Sie auf [Schutz beenden](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines). Aktivieren Sie die Option *Zugeordnete Sicherungsdaten löschen***nicht**.
-2. Löschen Sie die Sicherungs-/Momentaufnahmenerweiterung vom virtuellen Computer.
-3. Migrieren Sie den virtuellen Computer vom klassischen Modus zum Resource Manager-Modus. Stellen Sie sicher, dass die Speicher- und Netzwerkinformationen des virtuellen Computers ebenfalls zum Resource Manager-Modus migriert werden.
-4. Erstellen Sie einen Recovery Services-Tresor, und konfigurieren Sie die Sicherung auf dem migrierten virtuellen Computer mithilfe der Aktion **Sicherung** oben auf dem Tresordashboard. Weitere ausführliche Informationen zum Sichern von virtuellen Computern in einem Recovery Services-Tresor finden Sie unter [Einführung: Schützen von VMs mit einem Recovery Services-Tresor](backup-azure-vms-first-look-arm.md).
+Alle Sicherungstresore wurden in Recovery Services-Tresore umgewandelt. Wenn Sie den Sicherungstresor nicht in einen Recovery Services-Tresor umgewandelt haben, wurde dieser Vorgang für Sie übernommen.
 
 ## <a name="azure-backup-agent"></a>Azure Backup-Agent
 Eine ausführliche Liste mit Fragen finden Sie in den [häufig gestellten Fragen zur Sicherung von Dateien/Ordnern mit Azure](backup-azure-file-folder-backup-faq.md).
@@ -92,7 +84,7 @@ Wenn Sie einen Sicherungsauftrag für eine Azure-VM abbrechen, werden die übert
 Ja. Sie können Sicherungsaufträge unter Windows Server oder auf Windows-Arbeitsstationen bis zu dreimal pro Tag ausführen. Für System Center DPM können Sie Sicherungsaufträge bis zu zweimal pro Tag ausführen. Für IaaS-VMs können Sie einen Sicherungsauftrag einmal pro Tag ausführen. Sie können die Planungsrichtlinie für Windows Server oder eine Windows-Arbeitsstation verwenden, um tägliche oder wöchentliche Zeitpläne anzugeben. Mit System Center DPM können Sie tägliche, wöchentliche, monatliche und jährliche Zeitpläne angeben.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-i-backed-upbr"></a>Warum ist die Datenmenge, die an den Recovery Services-Tresor übertragen wird, kleiner als die von mir gesicherte Datenmenge?<br/>
- Alle Daten, die vom Azure Backup-Agent, von SCDPM oder Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Sicherungstresor 30 bis 40% kleiner.
+ Alle Daten, die vom Azure Backup-Agent, von SCDPM oder Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Recovery Services-Tresor 30 bis 40 Prozent kleiner.
 
 ## <a name="what-can-i-back-up"></a>Für die Sicherung geeignete Daten
 ### <a name="which-operating-systems-do-azure-backup-support-br"></a>Welche Betriebssysteme werden von Azure Backup unterstützt? <br/>

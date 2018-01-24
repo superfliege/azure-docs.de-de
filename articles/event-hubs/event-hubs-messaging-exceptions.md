@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 1a5922506a0db4277b205ba3390c9c30034c177d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 964475ba8b42ac41707fa78468bfe551677c595f
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs-Messagingausnahmen
-In diesem Artikel werden einige der Ausnahmen aufgeführt, die von den Azure Service Bus-Messaging-APIs generiert werden. Hierzu zählt auch Event Hubs. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
+
+In diesem Artikel werden einige der Ausnahmen aufgeführt, die von der Azure Service Bus-Messaging-API-Bibliothek generiert werden. Hierzu zählen auch Event Hubs-APIs. Diese Referenz kann geändert werden. Prüfen Sie darum bei Bedarf, ob Aktualisierungen vorgenommen wurden.
 
 ## <a name="exception-categories"></a>Ausnahmekategorien
+
 Die von den Event Hubs-APIs generierten Ausnahmen können – zusammen mit den zugehörigen Korrekturmaßnahmen – zu den folgenden Kategorien gehören.
 
 1. Fehler der Benutzercodierung: [System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx), [System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx), [System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx), [System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx). Allgemeine Maßnahme: Korrigieren Sie den Code, bevor Sie fortfahren.
@@ -82,9 +84,9 @@ Dieser Fehler kann aus zwei Gründen auftreten:
     
     Lösung: Eine Überarbeitung der Strategie für die Partitionsverteilung oder die Verwendung von [EventHubClient.Send(eventDataWithOutPartitionKey)](/dotnet/api/microsoft.servicebus.messaging.eventhubclient#Microsoft_ServiceBus_Messaging_EventHubClient_Send_Microsoft_ServiceBus_Messaging_EventData_) behebt das Problem möglicherweise.
 
-2. Der Event Hubs-Namespace enthält nicht genügend Durchsatzeinheiten. (Überprüfen Sie die Angabe im [Azure-Portal](https://portal.azure.com) auf dem Blatt des Event Hubs-Namespace auf dem Blatt **Metriken**). Beachten Sie, dass im Portal aggregierte Informationen für einen Zeitraum von einer Minute angezeigt werden. Wir messen den Durchsatz jedoch in Echtzeit, daher handelt es sich nur um eine Schätzung.
+2. Der Event Hubs-Namespace enthält nicht genügend Durchsatzeinheiten. (Überprüfen Sie die Angabe im [Azure-Portal](https://portal.azure.com) im Fenster des Event Hubs-Namespace auf dem Bildschirm **Metriken**). Beachten Sie, dass im Portal aggregierte Informationen für einen Zeitraum von einer Minute angezeigt werden. Wir messen den Durchsatz jedoch in Echtzeit, daher handelt es sich nur um eine Schätzung.
 
-    Lösung: Die Erhöhung der Durchsatzeinheiten für den Namespace kann helfen. Diesen Schritt können Sie im Portal auf dem Blatt **Skalieren** des Event Hubs-Namespace ausführen.
+    Lösung: Die Erhöhung der Durchsatzeinheiten für den Namespace kann helfen. Diesen Schritt können Sie im Portal im Fenster **Skalieren** des Bildschirms mit dem Event Hubs-Namespace ausführen.
 
 ### <a name="error-code-50001"></a>Fehlercode 50001
 

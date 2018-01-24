@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: mabrigg
-ms.openlocfilehash: 55688ad4959d59e41dca9be2d00011e1d41ebd8c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 96eebf340f13f2f5e9e922fee8032d04fce1d130
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="monitor-updates-in-azure-stack-using-the-privileged-endpoint"></a>Überwachen von Änderungen in Azure Stack mithilfe des privilegierten Endpunkts
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Sie können mit dem privilegierten Endpunkt den Status eines Azure Stack-Updatevorgangs überwachen und ein fehlerhaftes Update vom letzten erfolgreichen Schritt aus fortsetzen. 
+Sie können mit dem privilegierten Endpunkt den Status eines Azure Stack-Updatevorgangs überwachen und ein fehlerhaftes Update vom letzten erfolgreichen Schritt aus fortsetzen, sollte das Azure Stack-Portal nicht verfügbar sein.  Das Azure Stack-Portal ist die empfohlene Methode zum Verwalten von Updates in Azure Stack.
 
 Die folgenden neuen PowerShell-Cmdlets für die Updateverwaltung sind im Update 1710 für in Azure Stack integrierte Systeme enthalten.
 
-| Cmdlet  | Beschreibung  |
+| Cmdlet  | BESCHREIBUNG  |
 |---------|---------|
 | `Get-AzureStackUpdateStatus` | Gibt den Status des derzeit ausgeführten, abgeschlossenen oder fehlerhaften Updates zurück Stellt den allgemeinen Status des Updatevorgangs sowie ein XML-Dokument, das den aktuellen Schritt und den zugehörigen Status beschreibt, bereit |
 | `Get-AzureStackUpdateVerboseLog` | Gibt die ausführlichen Protokolle zurück, die vom Update generiert werden |
@@ -70,7 +70,7 @@ Sie können auch programmgesteuert ermitteln, ob die Cmdlets verfügbar sind, in
    ```powershell
    $commands | ? Source -eq $updateManagementModuleName 
    ```
-   Beispiel:
+   Beispiel: 
    ```powershell
    $commands | ? Source -eq $updateManagementModuleName
    

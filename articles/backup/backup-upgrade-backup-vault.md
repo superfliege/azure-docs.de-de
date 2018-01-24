@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2017
 ms.author: trinadhk, sogup
-ms.openlocfilehash: cfc2fde552b029412042474e31a1b28dd80b3021
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 708983fc2c5264d1213bdb32b665dcccc5ca9df9
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="backup-vault-upgraded-to-recovery-services-vault"></a>Zum Recovery Services-Tresor aktualisierter Sicherungstresor
 Dieser Artikel bietet einen Überblick darüber, was der Recovery Services-Tresor bietet, enthält häufig gestellte Fragen zum Upgrade des vorhandenen Sicherungstresors zum Recovery Services-Tresor und nach dem Upgrade auszuführende Schritte. Ein Recovery Services-Tresor ist die Azure Resource Manager-Entsprechung eines Sicherungstresors, der Ihre Sicherungsdaten enthält. Bei den Daten handelt es sich in der Regel um Kopien von Daten oder Konfigurationsinformationen für virtuelle Computer (VMs), Workloads, Server oder Arbeitsstationen – lokal oder in Azure.
@@ -71,7 +71,7 @@ Konfigurieren Sie nach einem Upgrade auf einen Recovery Services-Tresor Berichte
 Nein. Laufende Sicherungen werden während und nach dem Upgrade ohne Unterbrechung durchgeführt.
 
 **Was bedeutet dieser Upgradeplan für meine vorhandenen Tools?**</br>
-Sie müssen Ihre bestehende Automatisierung oder die bestehenden Tools auf das Resource Manager-Bereitstellungsmodell aktualisieren, um sicherzustellen, dass sie nach dem Upgrade weiterhin funktionieren. Ziehen Sie hierzu die Referenzen zu PowerShell-Cmdlets für das [Service Manager-Bereitstellungsmodell](backup-client-automation-classic.md) und das [Resource Manager-Bereitstellungsmodell](backup-client-automation.md) zu Rate.
+Sie müssen Ihre bestehende Automatisierung oder die bestehenden Tools auf das Resource Manager-Bereitstellungsmodell aktualisieren, um sicherzustellen, dass sie nach dem Upgrade weiterhin funktionieren. Verwenden Sie die Referenz zu PowerShell-Cmdlets für das [Resource Manager-Bereitstellungsmodell](backup-client-automation.md).
 
 **Kann ich nach dem Upgrade ein Rollback ausführen?**</br>
 Nein. Ein Rollback wird nicht unterstützt, nachdem erfolgreich ein Upgrade für die Ressourcen durchgeführt wurde.
@@ -101,6 +101,6 @@ Wenn irgendein Teil des Tresorupgrades fehlschlägt, beachten Sie die in der Feh
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie die folgenden Artikel für:</br>
-[Sichern einer IaaS-VM](backup-azure-arm-vms-prepare.md)</br>
-[Sichern von Azure Backup Server](backup-azure-microsoft-azure-backup.md)</br>
-[Sichern von Windows Server](backup-configure-vault.md)
+[Sichern eines virtuellen IaaS-Computers](backup-azure-arm-vms-prepare.md)</br>
+[Sichern eines Azure Backup Server-Computers](backup-azure-microsoft-azure-backup.md)</br>
+[Sichern eines Windows Server-Computers](backup-configure-vault.md)

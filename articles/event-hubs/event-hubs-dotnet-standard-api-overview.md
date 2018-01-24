@@ -12,25 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: eea682c40cd415b383a8b2f0004a5f3648e2f01f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 855f6e7f401621d7f923d68215ca880c05d38629
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard-API – Übersicht
+
 In diesem Artikel werden einige der wichtigsten .NET Standard-Client-APIs von Event Hubs zusammengefasst. Derzeit gibt es zwei .NET Standard-Clientbibliotheken:
-* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)
-  *  Diese Bibliothek stellt alle grundlegenden Laufzeitvorgänge bereit.
-* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor)
-  * Diese Bibliothek fügt zusätzliche Funktionen hinzu, die es ermöglichen, verarbeitete Ereignisse nachzuverfolgen. Dies ist die einfachste Möglichkeit zum Lesen aus einem Event Hub.
+
+* [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs): Stellt alle grundlegenden Laufzeitvorgänge bereit.
+* [Microsoft.Azure.EventHubs.Processor](/dotnet/api/microsoft.azure.eventhubs.processor): Diese Bibliothek fügt zusätzliche Funktionen hinzu, die es ermöglichen, verarbeitete Ereignisse nachzuverfolgen. Dies ist die einfachste Möglichkeit zum Lesen aus einem Event Hub.
 
 ## <a name="event-hubs-client"></a>Event Hubs-Client
+
 [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient) ist das primäre Objekt zum Senden von Ereignissen, Erstellen von Empfängern und Abrufen von Laufzeitinformationen. Dieser Client ist mit einem bestimmten Event Hub verknüpft und erstellt eine neue Verbindung mit dem Event Hubs-Endpunkt.
 
 ### <a name="create-an-event-hubs-client"></a>Erstellen eines Event Hubs-Clients
+
 Ein [EventHubClient](/dotnet/api/microsoft.azure.eventhubs.eventhubclient)-Objekt wird aus einer Verbindungszeichenfolge erstellt. Die einfachste Möglichkeit zum Instanziieren eines neuen Clients sehen Sie im folgenden Beispiel:
 
 ```csharp
@@ -49,6 +51,7 @@ var eventHubClient = EventHubClient.CreateFromConnectionString(connectionStringB
 ```
 
 ### <a name="send-events"></a>Senden von Ereignisse
+
 Mithilfe der [EventData](/dotnet/api/microsoft.azure.eventhubs.eventdata)-Klasse können Sie Ereignisse an einen Event Hub senden. Der Text muss ein `byte`-Array oder ein `byte`-Arraysegment sein.
 
 ```csharp
@@ -61,17 +64,19 @@ await eventHubClient.SendAsync(data);
 ```
 
 ### <a name="receive-events"></a>Empfangen von Ereignissen
-Zum Empfangen von Ereignissen von Event Hubs empfiehlt sich die Verwendung eines [Ereignisprozessorhosts](#event-processor-host-apis), der eine Funktion zum automatischen Nachverfolgen von Offset und Partitionsinformationen verfügbar macht. In bestimmten Situationen bevorzugen Sie jedoch unter Umständen die Flexibilität der Event Hubs-Kernbibliothek, um Ereignisse zu empfangen.
+
+Zum Empfangen von Ereignissen von Event Hubs empfiehlt sich die Verwendung eines [Ereignisprozessorhosts](#event-processor-host-apis), der eine Funktion zum automatischen Nachverfolgen von Offset und Partitionsinformationen des Event Hubs verfügbar macht. In bestimmten Situationen bevorzugen Sie jedoch unter Umständen die Flexibilität der Event Hubs-Kernbibliothek, um Ereignisse zu empfangen.
 
 #### <a name="create-a-receiver"></a>Erstellen eines Receivers
-Receiver sind an bestimmte Partitionen gebunden. Damit alle Ereignisse in einem Event Hub empfangen werden können, müssen Sie mehrere Instanzen erstellen. Im Allgemeinen empfiehlt es sich, die Partitionsinformationen programmgesteuert abzurufen und nicht die Partitions-IDs fest zu programmieren. Hierfür können Sie die [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync)-Methode verwenden.
+
+Receiver sind an bestimmte Partitionen gebunden. Damit alle Ereignisse in einem Event Hub empfangen werden können, müssen Sie mehrere Instanzen erstellen. Es empfiehlt sich, die Partitionsinformationen programmgesteuert abzurufen und nicht die Partitions-IDs fest zu programmieren. Hierfür können Sie die [GetRuntimeInformationAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient#Microsoft_Azure_EventHubs_EventHubClient_GetRuntimeInformationAsync)-Methode verwenden.
 
 ```csharp
 // Create a list to keep track of the receivers
 var receivers = new List<PartitionReceiver>();
 // Use the eventHubClient created above to get the runtime information
 var runTimeInformation = await eventHubClient.GetRuntimeInformationAsync();
-// Loop over the resulting partition ids
+// Loop over the resulting partition IDs
 foreach (var partitionId in runTimeInformation.PartitionIds)
 {
     // Create the receiver
@@ -81,7 +86,7 @@ foreach (var partitionId in runTimeInformation.PartitionIds)
 }
 ```
 
-Da Ereignisse niemals aus einem Event Hub entfernt werden, sondern nur ablaufen, müssen Sie den korrekten Startpunkt festlegen. Das folgende Beispiel zeigt mögliche Kombinationen.
+Da Ereignisse niemals aus einem Event Hub entfernt werden, sondern nur ablaufen, müssen Sie den korrekten Startpunkt festlegen. Das folgende Beispiel zeigt mögliche Kombinationen:
 
 ```csharp
 // partitionId is assumed to come from GetRuntimeInformationAsync()
@@ -97,6 +102,7 @@ var receiver = eventHubClient.CreateReceiver(PartitionReceiver.DefaultConsumerGr
 ```
 
 #### <a name="consume-an-event"></a>Nutzen eines Ereignisses
+
 ```csharp
 // Receive a maximum of 100 messages in this call to ReceiveAsync
 var ehEvents = await receiver.ReceiveAsync(100);
@@ -116,6 +122,7 @@ if (ehEvents != null)
 ```
 
 ## <a name="event-processor-host-apis"></a>Ereignisprozessorhost-APIs
+
 Diese APIs bieten Flexibilität für Workerprozesse, die möglicherweise nicht mehr verfügbar sind, indem Partitionen auf verfügbare Worker aufgeteilt werden.
 
 ```csharp
@@ -137,7 +144,7 @@ var eventProcessorHost = new EventProcessorHost(
 // Start/register an EventProcessorHost
 await eventProcessorHost.RegisterEventProcessorAsync<SimpleEventProcessor>();
 
-// Disposes of the Event Processor Host
+// Disposes the Event Processor Host
 await eventProcessorHost.UnregisterEventProcessorAsync();
 ```
 

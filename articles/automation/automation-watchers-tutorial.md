@@ -12,94 +12,149 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/15/2017
+ms.date: 12/11/2017
 ms.author: eamono
-ms.openlocfilehash: 0ddd31f7ce2217c1136eccd391bb30bd4461c3e5
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 294faa48f9840919b087594835706bad8048d45b
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="azure-automation-watcher-tasks-enable-you-to-respond-to-events-happening-in-your-local-datacenter"></a>Mit Azure Automation-Watchertasks können Sie auf Ereignisse reagieren, die in Ihrem lokalen Rechenzentrum auftreten.
+# <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Erstellen von Azure Automation-Watchertasks zum Nachverfolgen von Dateiänderungen auf einem lokalen Computer
 
-In diesem Tutorial erfahren Sie, wie Sie einen neuen Watchertask erstellen, um Folgendes durchzuführen:
+Azure Automation verwendet Watchertasks, um das System auf Ereignisse und Triggeraktionen zu überwachen. Dieses Tutorial führt Sie durch die Schritte zum Erstellen eines Watchertasks, mit dem Sie überwachen können, ob einem Verzeichnis eine neue Datei hinzugefügt wird.
+
+In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen Sie ein Watcherrunbook, das in einem Verzeichnis nach neuen Dateien sucht.
-> * Erstellen Sie eine Automation-Variable, um den letzten Zeitpunkt zu bewahren, an dem eine Datei vom Watcher verarbeitet wurde.
-> * Erstellen Sie ein Aktionsrunbook, das aufgerufen wird, wenn das Watcherrunbook eine neue Datei findet.
-> * Erstellen Sie einen Watchertask, der das Watcherrunbook und das Aktionsrunbook auswählt.
-> * Lösen Sie einen Watcher aus, indem Sie eine neue Datei zu einem Verzeichnis hinzufügen.
-> * Untersuchen Sie die Ausgabe des Aktionsrunbooks, das Informationen zur neuen Dateien anzeigt.  
+> * Importieren eines Watcherrunbooks
+> * Erstellen einer Automation-Variable
+> * Erstellen eines Aktionsrunbooks
+> * Erstellen eines Watchertasks
+> * Auslösen eines Watchers
+> * Untersuchen der Ausgabe
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Abschließen dieses Tutorials müssen folgende Voraussetzungen erfüllt sein.
-+ Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
-+ [Automation-Konto](automation-offering-get-started.md), um die Watcher- und Aktionsrunbooks und den Watchertask aufzunehmen.
-+ [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), in dem der Watchertask ausgeführt wird.
+Für dieses Tutorials müssen folgende Voraussetzungen erfüllt sein:
 
-## <a name="create-a-watcher-runbook-that-looks-for-new-files"></a>Erstellen eines Watcherrunbooks für die Suche nach neuen Dateien
-1.  Öffnen Sie das Automation-Konto, und klicken Sie auf die Seite „Runbooks“.
-2.  Klicken Sie auf die Schaltfläche „Katalog durchsuchen“.
-![Runbookliste über die Benutzeroberfläche](media/automation-watchers-tutorial/WatcherTasksRunbookList.png)
-3.  Suchen Sie nach „Watch-NewFile“, und importieren Sie das Runbook in das Automation-Konto.
-![Veröffentlichen des Runbooks über die Benutzeroberfläche](media/automation-watchers-tutorial/Watch-NewFileRunbook.png)
-4.  Klicken Sie auf „Bearbeiten“, um die Runbookquelle anzuzeigen, und klicken Sie dann auf die Schaltfläche „Veröffentlichen“.
+* Azure-Abonnement. Wenn Sie noch kein Abonnement haben, können Sie Ihre [MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) registrieren.
+* [Automation-Konto](automation-offering-get-started.md), um die Watcher- und Aktionsrunbooks und den Watchertask aufzunehmen.
+* [Hybrid Runbook Worker](automation-hybrid-runbook-worker.md), in dem der Watchertask ausgeführt wird.
 
-## <a name="create-an-automation-variable-to-keep-the-last-time-a-file-was-processed-by-the-watcher"></a>Erstellen einer Automation-Variable, um den letzten Zeitpunkt zu bewahren, an dem eine Datei vom Watcher verarbeitet wurde
-1.  Öffnen Sie die Seite „Variablen“ unter „FREIGEGEBENE RESSOURCEN“, und klicken Sie auf „Variable hinzufügen“. ![Auflisten von Variablen über die Benutzeroberfläche](media/automation-watchers-tutorial/WatcherVariableList.png)
-2.  Geben Sie „Watch-NewFileTimestamp“ für den Namen ein.
-3.  Wählen Sie für „Typ“ die Option „DateTime“ aus, und klicken Sie dann auf die Schaltfläche „Erstellen“.
-![Erstellen einer Wasserzeichenvariablen über die Benutzeroberfläche](media/automation-watchers-tutorial/WatcherWatermarkVariable.png)
+## <a name="import-a-watcher-runbook"></a>Importieren eines Watcherrunbooks
 
-## <a name="create-an-action-runbook-that-is-called-when-the-watcher-runbook-finds-a-new-file"></a>Erstellen eines Aktionsrunbooks, das aufgerufen wird, wenn das Watcherrunbook eine neue Datei findet
-1.  Klicken Sie unter der Kategorie „PROZESSAUTOMATISIERUNG“ auf die Seite „Runbooks“.
-2.  Klicken Sie auf die Schaltfläche „Katalog durchsuchen“.
-3.  Suchen Sie nach „Process-NewFile“, und importieren Sie das Runbook in das Automation-Konto.
-4.  Klicken Sie auf „Bearbeiten“, um die Runbookquelle anzuzeigen, und klicken Sie dann auf die Schaltfläche „Veröffentlichen“.
-![Verarbeiten des Watchers über die Benutzeroberfläche](media/automation-watchers-tutorial/Watch-ProcessNewFile.png)
+Dieses Tutorial verwendet ein Watcherrunbook namens **Watch-NewFile**, um nach neuen Dateien in einem Verzeichnis zu suchen. Das Watcherrunbook ruft die Uhrzeit des letzten bekannten Schreibzugriffs auf die Dateien in einem Ordner ab und sucht nach Dateien, die jünger sind als dieser Zeitpunkt. Im folgenden Schritt importieren Sie dieses Runbook in Ihr Automation-Konto.
+
+1. Öffnen Sie Ihr Automation-Konto, und klicken Sie auf die Seite **Runbooks**.
+1. Klicken Sie auf die Schaltfläche **Katalog durchsuchen**.
+1. Suchen Sie nach „Watcherrunbook“, wählen Sie **Watcherrunbook, das nach neuen Dateien in einem Verzeichnis sucht** aus, und klicken Sie auf **Importieren**.
+  ![Importieren eines Automation-Runbooks über die Benutzeroberfläche](media/automation-watchers-tutorial/importsourcewatcher.png)
+1. Geben Sie einen Namen und eine Beschreibung für das Runbook ein, und wählen Sie **OK**, um das Runbook in Ihr Automation-Konto zu importieren.
+1. Wählen Sie **Bearbeiten** aus, und klicken Sie dann auf **Veröffentlichen**. Wählen Sie bei der Aufforderung **Ja** aus, um das Runbook zu veröffentlichen.
+
+## <a name="create-an-automation-variable"></a>Erstellen einer Automation-Variable
+
+Eine [Automation-Variable](automation-variables.md) wird verwendet, um die Zeitstempel zu speichern, die das vorhergehende Runbook aus jeder Datei liest und speichert. 
+
+1. Wählen Sie unter **Freigegebene Ressourcen** die Option **Variablen** aus, und klicken Sie dann auf **+Variable hinzufügen**.
+1. Geben Sie als Namen „Watch-NewFileTimestamp“ ein.
+1. Wählen Sie den Typ „DateTime“ aus.
+1. Klicken Sie auf die Schaltfläche **Erstellen**. Damit wird die Automation-Variable erstellt.
+
+## <a name="create-an-action-runbook"></a>Erstellen eines Aktionsrunbooks
+
+Ein Aktionsrunbook wird in einem Watchertask verwendet, um Aktionen für die von einem Watcherrunbook übergebenen Daten auszuführen. In diesem Schritt importieren Sie ein vordefiniertes Aktionsrunbook namens „Process-NewFile“.
+
+1. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie in der Kategorie **Prozessautomatisierung** die Option **Runbooks** aus.
+1. Klicken Sie auf die Schaltfläche **Katalog durchsuchen**.
+1. Suchen Sie nach „Watcheraktion“, wählen Sie **Watcheraktion, die von einem Watcherrunbook ausgelöste Ereignisse verarbeitet** aus, und klicken Sie auf **Importieren**.
+  ![Importieren eines Aktionsrunbooks über die Benutzeroberfläche](media/automation-watchers-tutorial/importsourceaction.png)
+1. Geben Sie einen Namen und eine Beschreibung für das Runbook ein, und wählen Sie **OK**, um das Runbook in Ihr Automation-Konto zu importieren.
+1. Wählen Sie **Bearbeiten** aus, und klicken Sie dann auf **Veröffentlichen**. Wählen Sie bei der Aufforderung **Ja** aus, um das Runbook zu veröffentlichen.
+
+## <a name="create-a-watcher-task"></a>Erstellen eines Watchertasks
+
+Der Watchertask besteht aus zwei Teilen, dem Watcher und der Aktion. Der Watcher wird in einem Intervall ausgeführt, das im Watchertask definiert ist. Daten aus dem Watcherrunbook werden an das Aktionsrunbook übergeben. In diesem Schritt konfigurieren Sie den Watchertask und verweisen dabei auf die Watcher- und Aktionsrunbooks, die in den vorherigen Schritten definiert wurden.
+
+1. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie in der Kategorie **Prozessautomatisierung** die Option **Watchertasks** aus.
+1. Wählen Sie die Seite „Watchertasks“ aus, und klicken Sie auf die Schaltfläche **+Watchertask hinzufügen**.
+1. Geben Sie „WatchMyFolder“ als Namen ein.
+
+1. Wählen Sie **Watcher konfigurieren** und dann das Runbook **Watch-NewFile** aus.
+
+1. Geben Sie die folgende Werte für die Parameter ein:
+
+   * **Ordnerpfad**: Ein Ordner in dem Hybrid Worker, in dem neue Dateien erstellt werden. d:\examplefiles
+   * **Erweiterung**: Lassen Sie dieses Feld leer, um alle Dateierweiterungen zu verarbeiten.
+   * **Rekursiv durchlaufen**: Behalten Sie hier den Standardwert bei.
+   * **Ausführungseinstellungen**: Wählen Sie den Hybrid Worker aus.
+
+1. Klicken Sie auf „OK“ und dann auf „Auswählen“, um zur Watcherseite zurückzukehren.
+1. Wählen Sie **Aktion konfigurieren** und dann das Runbook „Process-NewFile“ aus.
+1. Geben Sie die folgende Werte für die Parameter ein:
+
+   *    **Ereignisdaten**: Lassen Sie dieses Feld leer. Die Daten werden vom Watcherrunbook übergeben.  
+   *    **Ausführungseinstellungen**: Übernehmen Sie hier „Azure“, da dieses Runbook im Automation-Dienst ausgeführt wird.
+
+1. Klicken Sie auf **OK** und dann auf „Auswählen“, um zur Watcherseite zurückzukehren.
+1. Klicken Sie auf **OK**, um den Watchertask zu erstellen.
+
+![Konfigurieren der Watcheraktion über die Benutzeroberfläche](media/automation-watchers-tutorial/watchertaskcreation.png)
+
+## <a name="trigger-a-watcher"></a>Auslösen eines Watchers
+
+Um zu testen, ob der Watcher erwartungsgemäß funktioniert, müssen Sie eine Testdatei erstellen.
+
+Stellen Sie eine Remoteverbindung mit dem Hybrid Worker her. Öffnen Sie **PowerShell**, und erstellen Sie im Ordner eine Testdatei.
+  
+   ```PowerShell-interactive
+   New-Item -Name ExampleFile1.txt
+   ```
+
+Das folgende Beispiel zeigt die erwartete Ausgabe.
+
+```
+    Directory: D:\examplefiles
 
 
-## <a name="create-a-watcher-task-that-selects-the-watcher-runbook-and-action-runbook"></a>Erstellen eines Watchertasks, der das Watcherrunbook und das Aktionsrunbook auswählt
-1.  Öffnen Sie die Seite „Watchertasks“, und klicken Sie auf die Schaltfläche „Watchertask hinzufügen“.
-![Watcherliste über die Benutzeroberfläche](media/automation-watchers-tutorial/WatchersList.png)
-2.  Geben Sie „WatchMyFolder“ als Namen ein.
-3.  Wählen Sie „Watcher konfigurieren“ und dann das Runbook „Watch-NewFile“ aus.
-![Konfigurieren des Watchers über die Benutzeroberfläche](media/automation-watchers-tutorial/ConfigureWatcher.png)
-4.  Geben Sie die folgende Werte für die Parameter ein:
-    *   ORDNERPFAD: Ein Ordner auf dem Hybrid Worker, auf dem die neuen Dateien erstellt werden.
-    *   ERWEITERUNG: Lassen Sie dieses Feld leer, um alle Dateierweiterungen zu verarbeiten.
-    *   REKURSIV DURCHLAUFEN: Übernehmen Sie den Standardwert.
-    *   AUSFÜHRUNGSEINSTELLUNGEN: Wählen Sie den Hybrid Worker aus.
-5.  Klicken Sie auf „OK“ und dann auf „Auswählen“, um zur Watcherseite zurückzukehren.
-6.  Wählen Sie „Aktion konfigurieren“ und dann das Runbook „Prozess-NewFile“ aus.
-![Konfigurieren der Watcheraktion über die Benutzeroberfläche](media/automation-watchers-tutorial/ConfigureAction.png)
-7.  Geben Sie die folgende Werte für die Parameter ein:
-    *   EREIGNISDATEN: Lassen Sie dieses Feld leer. Die Daten werden vom Watcherrunbook übergeben.
-    *   AUSFÜHRUNGSEINSTELLUNGEN: Übernehmen Sie hier „Azure“, da dieses Runbook im Automation-Dienst ausgeführt wird.
-8.  Klicken Sie auf „OK“ und dann auf „Auswählen“, um zur Watcherseite zurückzukehren.
-9.  Klicken Sie auf „OK“, um den Watchertask zu erstellen.
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+-a----       12/11/2017   9:05 PM              0 ExampleFile1.txt
+```
 
-## <a name="trigger-a-watcher-by-adding-a-new-file-to-a-directory"></a>Auslösen eines Watchers, indem eine neue Datei zu einem Verzeichnis hinzugefügt wird
-1.  Wechseln Sie remote in den Hybrid Worker.
-2.  Fügen Sie eine neue Textdatei zu dem Ordner hinzu, der vom Watchertask überwacht wird.
+## <a name="inspect-the-output"></a>Untersuchen der Ausgabe
 
-## <a name="inspect-the-output-from-the-action-runbook-that-shows-information-on-the-new-file"></a>Untersuchen der Ausgabe des Aktionsrunbooks, das Informationen zur neuen Dateien anzeigt
-1.  Klicken Sie auf den Watchertask für „WatchMyFolder“.
-2.  Klicken Sie auf „Watcherdatenströme anzeigen“, um zu überprüfen, ob der Watcher die neue Datei gefunden und das Aktionsrunbook gestartet hat.
-3.  Klicken Sie auf „Watcheraktionsaufträge anzeigen“, um den Aktionsrunbookauftrag anzuzeigen.
-![Watcheraktionsaufträge über die Benutzeroberfläche](media/automation-watchers-tutorial/WatcherActionJobs.png)
+1. Navigieren Sie zu Ihrem Automation-Konto, und wählen Sie in der Kategorie **Prozessautomatisierung** die Option **Watchertasks** aus.
+1. Wählen Sie den Watchertask „WatchMyFolder“ aus.
+1. Klicken Sie unter **Datenströme** auf **Watcherdatenströme anzeigen**, um zu überprüfen, ob der Watcher die neue Datei gefunden und das Aktionsrunbook gestartet hat.
+1. Klicken Sie auf **Watcheraktionsaufträge anzeigen**, um den Aktionsrunbookauftrag anzuzeigen. Sie können jeden einzelnen Auftrag auswählen, um die Details anzuzeigen.
 
+   ![Watcheraktionsaufträge über die Benutzeroberfläche](media/automation-watchers-tutorial/WatcherActionJobs.png)
 
-## <a name="next-steps"></a>Nächste Schritte:
+Im folgenden Beispiel sehen Sie die erwartete Ausgabe, wenn die neue Datei gefunden wurde:
 
-Weitere Informationen finden Sie unter [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md).
+```
+Message is Process new file...
 
 
 
+Passed in data is @{FileName=D:\examplefiles\ExampleFile1.txt; Length=0}
+```
 
+## <a name="next-steps"></a>Nächste Schritte
 
+In diesem Tutorial haben Sie Folgendes gelernt:
 
+> [!div class="checklist"]
+> * Importieren eines Watcherrunbooks
+> * Erstellen einer Automation-Variable
+> * Erstellen eines Aktionsrunbooks
+> * Erstellen eines Watchertasks
+> * Auslösen eines Watchers
+> * Untersuchen der Ausgabe
 
+Klicken Sie auf folgenden Link, um weitere Informationen zum Erstellen von Runbooks zu erhalten:
 
+> [!div class="nextstepaction"]
+> [Mein erstes PowerShell-Runbook](automation-first-runbook-textual-powershell.md).

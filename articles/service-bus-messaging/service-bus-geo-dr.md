@@ -11,208 +11,99 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 49f2992245d694f85b7b1f1c34339f1445c9d699
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: fdeb9ba55fc8eade95f6fca88f47dd12aa18a480
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 12/16/2017
 ---
-# <a name="azure-service-bus-geo-disaster-recovery-preview"></a>Georedundante Notfallwiederherstellung in Azure Service Bus (Vorschau)
+# <a name="azure-service-bus-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Service Bus
 
-Wenn in regionalen Rechenzentren Ausfallzeiten auftreten, ist es wichtig, dass die Datenverarbeitung in einer anderen Region oder einem anderen Rechenzentrum fortgesetzt wird. Daher sind die *georedundante Notfallwiederherstellung* und die *Georeplikation* wichtige Funktionen für jedes Unternehmen. Azure Service Bus unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
+Falls gesamte Azure-Regionen oder -Datencenter ausfallen (wenn keine [Verfügbarkeitszonen](../availability-zones/az-overview.md) verwendet werden), ist es von entscheidender Bedeutung, dass die Datenverarbeitung in einer anderen Region oder in einem anderen Datencenter fortgesetzt werden kann. Daher sind die *georedundante Notfallwiederherstellung* und die *Georeplikation* wichtige Funktionen für jedes Unternehmen. Azure Service Bus unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
 
-Die Vorschauversion der georedundanten Notfallwiederherstellung ist derzeit nur in zwei Regionen verfügbar: **USA, Norden-Mitte** und **USA, Süden-Mitte**.
+Das Feature für die georedundante Notfallwiederherstellung ist für die Service Bus Premium-SKU global verfügbar. 
 
 ## <a name="outages-and-disasters"></a>Ausfälle und Notfälle
 
-Im Artikel [Bewährte Methoden zum Schützen von Anwendungen vor Service Bus-Ausfällen und Notfällen](service-bus-outages-disasters.md) wird zwischen „Ausfällen“ und „Notfällen“ unterschieden. Dieser Unterschied muss beachtet werden. Ein *Ausfall* ist die vorübergehende Nichtverfügbarkeit von Azure Service Bus und kann einige Komponenten des Diensts, z.B. einen Nachrichtenspeicher, oder selbst das gesamte Rechenzentrum betreffen. Nachdem das Problem behoben wurde, ist Service Bus jedoch wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für einen Ausfall ist ein Stromausfall im Rechenzentrum.
+Es ist wichtig, dass Sie den Unterschied zwischen „Ausfällen“ und „Notfällen“ kennen. Ein *Ausfall* ist die vorübergehende Nichtverfügbarkeit von Azure Service Bus und kann einige Komponenten des Diensts, z.B. einen Nachrichtenspeicher, oder selbst das gesamte Rechenzentrum betreffen. Nachdem das Problem behoben wurde, ist Service Bus aber wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für einen Ausfall ist ein Stromausfall im Rechenzentrum. Bei einigen Ausfällen handelt es sich nur um kurze Verbindungsunterbrechungen aufgrund von vorübergehenden Problemen bzw. Netzwerkproblemen. 
 
-Ein *Notfall* wird als dauerhafter oder längerer Verlust einer Service Bus-[Skalierungseinheit](service-bus-architecture.md#service-bus-scale-units) oder eines Rechenzentrums definiert. Das Rechenzentrum kann danach wieder zur Verfügung stehen oder für Stunden oder Tage ausfallen. Beispiele für Notfälle sind Feuer, Überflutung und Erdbeben. Ein Notfall, der dauerhaft wird, kann möglicherweise zum Verlust einiger Nachrichten oder anderer Daten führen. In den meisten Fällen kommt es allerdings zu keinem Datenverlust, und Nachrichten können wiederhergestellt werden, sobald das Rechenzentrum gesichert ist.
+Ein *Notfall* ist als dauerhafter oder längerer Ausfall eines Service Bus-Clusters, einer Azure-Region oder eines Datencenters definiert. Die Region oder das Datencenter kann danach wieder zur Verfügung stehen oder einige Stunden oder Tage lang ausfallen. Beispiele für Notfälle sind Feuer, Überflutung und Erdbeben. Ein Notfall, der dauerhaft wird, kann ggf. zum Verlust von Nachrichten, Ereignissen oder anderen Daten führen. In den meisten Fällen kommt es allerdings zu keinem Datenverlust, und Nachrichten können wiederhergestellt werden, sobald das Rechenzentrum gesichert ist.
 
-Die Funktion der georedundanten Notfallwiederherstellung von Azure Service Bus ist eine Lösung zur Notfallwiederherstellung. Die Konzepte und der Workflow, die in diesem Artikel beschrieben werden, gelten für Notfallszenarien und nicht für vorübergehende Ausfälle.  
+Die Funktion der georedundanten Notfallwiederherstellung von Azure Service Bus ist eine Lösung zur Notfallwiederherstellung. Die Konzepte und der Workflow, die in diesem Artikel beschrieben werden, gelten für Notfallszenarien und nicht für vorübergehende Ausfälle. Eine ausführliche Erläuterung der Notfallwiederherstellung in Microsoft Azure finden Sie in [diesem Artikel](/azure/architecture/resiliency/disaster-recovery-azure-applications).   
 
 ## <a name="basic-concepts-and-terms"></a>Allgemeine Konzepte und Begriffe
 
-Die Funktion zur Notfallwiederherstellung implementiert die Notfallwiederherstellung von Metadaten und basiert auf einem primären und einem sekundären Namespace zur Notfallwiederherstellung. Beachten Sie, dass die Funktion zur georedundanten Notfallwiederherstellung nur für [Premium-Namespaces](service-bus-premium-messaging.md) verfügbar ist. Sie müssen keine Änderungen an den Verbindungszeichenfolgen vornehmen, da die Verbindung über einen Alias hergestellt wird.
+Bei der Funktion zur Notfallwiederherstellung wird die Notfallwiederherstellung von Metadaten implementiert, und sie basiert auf speziellen primären und sekundären Namespaces. Beachten Sie, dass die Funktion zur georedundanten Notfallwiederherstellung nur für die [Premium-SKU](service-bus-premium-messaging.md) verfügbar ist. Sie müssen keine Änderungen an den Verbindungszeichenfolgen vornehmen, da die Verbindung über einen Alias hergestellt wird.
 
 In diesem Artikel werden die folgenden Begriffe verwendet:
 
--  *Alias:* Die Hauptverbindungszeichenfolge.
+-  *Alias*: Der Name für die Konfiguration einer von Ihnen eingerichteten Notfallwiederherstellung. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen. 
 
--  *Primärer/sekundärer Namespace:* Beschreibt die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist „aktiv“ und empfängt Nachrichten, der sekundäre Namespace ist „passiv“ und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces sind synchronisiert, sodass beide ohne Änderungen am Anwendungscode nahtlos Nachrichten annehmen können.
+-  *Primärer/sekundärer Namespace:* Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist „aktiv“ und empfängt Nachrichten (dies kann ein vorhandener oder ein neuer Namespace sein). Der sekundäre Namespace ist „passiv“ und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces sind synchronisiert, sodass beide ohne Änderungen am Anwendungscode oder von Verbindungszeichenfolgen nahtlos Nachrichten annehmen können. Sie müssen den Alias verwenden, um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt. 
 
--  *Metadaten:* Ihre Darstellung von Objekten in Azure Service Bus. Derzeit werden nur Metadaten unterstützt.
+-  *Metadaten:* Entitäten, z.B. Warteschlangen, Themen und Abonnements und die dazugehörigen Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten werden nicht repliziert. 
 
--  *Failover:* Der Vorgang zum Aktivieren des sekundären Namespace. Sie müssen Nachrichten aus dem ehemals primären Namespace pullen, nachdem dieser wieder verfügbar geworden ist, und den Namespace dann löschen. Zum Erstellen eines weiteren Failovers fügen Sie der Kopplung einen neuen sekundären Namespace hinzu. Wenn Sie den zuvor primären Namespace nach einem Failover wiederverwenden möchten, müssen Sie zunächst alle vorhandenen Entitäten aus dem Namespace entfernen. Stellen Sie sicher, dass Sie alle Nachrichten empfangen, bevor Sie dies tun.
+-  *Failover:* Der Vorgang zum Aktivieren des sekundären Namespace.
 
-## <a name="failover-workflow"></a>Failoverworkflow
+## <a name="setup-and-failover-flow"></a>Setup und Failoverablauf
 
-Der folgende Abschnitt bietet angefangen beim Einrichten des ersten Failovers eine Übersicht über den gesamten Failoverprozess.
+Der folgende Abschnitt enthält eine Übersicht über den Failoverprozess, und es wird beschrieben, wie Sie das erste Failover einrichten. 
 
 ![1][]
 
-Sie richten zunächst einen primären und einen sekundären Namespace ein und erstellen dann eine Kopplung. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. Schließlich müssen Sie Triggerlogik hinzufügen (z.B. Geschäftslogik, die erkennt, wenn der Namespace nicht verfügbar ist, und das Failover initiiert). Mit der Service Bus-Funktion für die [Nachrichtensuche](message-browsing.md) können Sie die Namespaceverfügbarkeit überprüfen.
+### <a name="setup"></a>Einrichtung
 
-Nachdem Sie die Überwachung und die Notfallwiederherstellung eingerichtet haben, können Sie mit dem Failoverprozess fortfahren. Wenn der Trigger ein Failover initiiert oder Sie das Failover manuell initiieren, sind zwei Schritte erforderlich:
+Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. Abschließend sollten Sie einige Überwachungsfunktionen hinzufügen, um erkennen zu können, ob ein Failover erforderlich ist. In den meisten Fällen ist der Dienst nur ein Teil eines großen Ökosystems, sodass automatische Failover selten möglich sind, da Failover sehr häufig synchron mit dem restlichen Subsystem oder der Infrastruktur durchgeführt werden müssen.
 
-1. Bei einem weiteren Ausfall soll das Failover wieder ausgeführt werden können. Richten Sie daher einen zweiten passiven Namespace ein, und aktualisieren Sie die Kopplung. 
-2. Nachdem der neue Namespace verfügbar ist, können Nachrichten aus dem ehemals primären Namespace gepullt werden. Anschließend können Sie den alten primären Namespace wiederverwenden oder löschen.
+### <a name="example"></a>Beispiel
+
+In einem Beispiel für dieses Szenario geht es um eine POS-Lösung (Point of Sale), die entweder Nachrichten oder Ereignisse ausgibt. Service Bus übergibt diese Ereignisse an eine Lösung für die Zuordnung oder Neuformatierung, von der dann zugeordnete Daten zur weiteren Verarbeitung an ein anderes System weitergeleitet werden. An diesem Punkt werden all diese Systeme ggf. in derselben Azure-Region gehostet. Die Entscheidung darüber, wann für welchen Teil ein Failover durchgeführt wird, richtet sich nach dem Datenfluss in Ihrer Infrastruktur. 
+
+Sie können das Failover entweder mit Überwachungssystemen oder mit benutzerdefinierten Überwachungslösungen automatisieren. Für diese Art der Automatisierung sind aber zusätzliche Planungs- und Arbeitsschritte erforderlich, und dies würde den Rahmen dieses Artikels sprengen.
+
+### <a name="failover-flow"></a>Failoverablauf
+
+Beim Initiieren des Failovers müssen zwei Schritte ausgeführt werden:
+
+1. Bei einem weiteren Ausfall soll das Failover erneut ausgeführt werden können. Richten Sie daher einen weiteren passiven Namespace ein, und aktualisieren Sie die Kopplung. 
+
+2. Rufen Sie Nachrichten per Pullvorgang aus dem primären Namespace ab, nachdem er wieder verfügbar ist. Verwenden Sie diesen Namespace danach für das reguläre Messaging außerhalb Ihrer eingerichteten geografischen Wiederherstellung, oder löschen Sie den alten primären Namespace.
+
+> [!NOTE]
+> Es wird nur die Semantik für „Fail Forward“ unterstützt. Bei diesem Szenario führen Sie das Failover und anschließend die Reparatur mit einem neuen Namespace durch. Ein Failback wird nicht unterstützt, z.B. in einem SQL-Cluster. 
 
 ![2][]
 
-## <a name="set-up-disaster-recovery"></a>Einrichten der Notfallwiederherstellung
+## <a name="management"></a>Verwaltung
 
-In diesem Abschnitt wird beschrieben, wie Sie Ihren eigenen Code für die georedundante Notfallwiederherstellung in Service Bus erstellen. Dazu benötigen Sie zwei Namespaces an unabhängigen Standorten, z.B. „USA, Süden-Mitte“ und „USA, Norden-Mitte“. Im folgenden Beispiel wird Visual Studio 2017 verwendet.
+Falls Sie einen Fehler gemacht haben (z.B. eine Kopplung der falschen Regionen während des anfänglichen Setups), können Sie die Kopplung der beiden Namespaces jederzeit trennen. Löschen Sie den Alias, falls Sie die gekoppelten Namespaces als reguläre Namespaces verwenden möchten.
 
-1.  Erstellen Sie ein neues Projekt vom Typ **Konsolen-App (.NET Framework)** in Visual Studio, und geben Sie einen Namen an, z.B. **SBGeoDR**.
+## <a name="use-existing-namespace-as-alias"></a>Verwenden des vorhandenen Namespace als Alias
 
-2.  Installieren Sie die folgenden NuGet-Pakete:
-    1.  Microsoft.IdentityModel.Clients.ActiveDirectory
-    2.  Microsoft.Azure.Management.ServiceBus
+Bei einem Szenario, für das Sie die Verbindungen von Producern und Consumern nicht ändern können, können Sie Ihren Namespacenamen als Aliasnamen verwenden. Den Beispielcode finden Sie auf [GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR_existing_namespace_name).
 
-3. Stellen Sie sicher, dass Version 10.0.3 des Newtonsoft.Json-NuGet-Pakets verwendet wird.
+## <a name="samples"></a>Beispiele
 
-3.  Fügen Sie im Code die folgenden `using`-Anweisungen ein:
+In den [Beispielen auf GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoDR/SBGeoDR2/SBGeoDR2) wird veranschaulicht, wie Sie ein Failover einrichten und initiieren. In diesen Beispielen werden die folgenden Konzepte veranschaulicht:
 
-    ```csharp
-    using System.Threading;
-    using Microsoft.Azure.Management.ServiceBus;
-    using Microsoft.Azure.Management.ServiceBus.Models;
-    using Microsoft.IdentityModel.Clients.ActiveDirectory;
-    using Microsoft.Rest;
-    ```
+- Einstellungen, die in Azure Active Directory für die Verwendung von Azure Resource Manager mit Service Bus erforderlich sind 
+- Schritte, die zum Ausführen des Beispielcodes erforderlich sind 
+- Senden und Empfangen aus dem aktuellen primären Namespace 
+- Verwenden eines vorhandenen Namespace als Alias
 
-4. Ändern Sie die `main()`-Methode, um zwei Premium-Namespaces hinzuzufügen:
+## <a name="considerations"></a>Überlegungen
 
-    ```csharp
-    // 1. Create primary namespace (optional).
+Beachten Sie für diesen Release Folgendes:
 
-    var namespaceParams = new SBNamespace()
-    {
-        Location = "South Central US",
-        Sku = new SBSku()
-        {
-            Name = SkuName.Premium,
-            Capacity = 1
-        }
+1. Berücksichtigen Sie bei der Failoverplanung auch den Zeitfaktor. Falls beispielsweise länger als 15 bis 20 Minuten keine Konnektivität vorhanden ist, treffen Sie ggf. die Entscheidung, das Failover zu initiieren. 
+ 
+2. Die Tatsache, dass keine Daten repliziert werden, bedeutet, dass derzeit keine aktiven Sitzungen repliziert werden. Außerdem kann es sein, dass die Duplikaterkennung und geplante Nachrichten nicht funktionieren. Neue Sitzungen, geplante Nachrichten und neue Duplikate funktionieren. 
 
-    };
+3. Die Durchführung eines Failovers für eine komplexe verteilte Infrastruktur sollte mindestens einmal [durchgespielt](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) werden. 
 
-    var namespace1 = client.Namespaces.CreateOrUpdate(resourceGroupName, geoDRPrimaryNS, namespaceParams);
-
-    // 2. Create secondary namespace (optional if you already have an empty namespace available).
-
-    var namespaceParams2 = new SBNamespace()
-    {
-        Location = "North Central US",
-        Sku = new SBSku()
-        {
-            Name = SkuName.Premium,
-            Capacity = 1
-        }
-
-    };
-
-    // If you re-run this program while namespaces are still paired this operation will fail with a bad request.
-    // This is because we block all updates on secondary namespaces once it is paired.
-
-    var namespace2 = client.Namespaces.CreateOrUpdate(resourceGroupName, geoDRSecondaryNS, namespaceParams2);
-    ```
-
-5. Aktivieren Sie die Kopplung zwischen den beiden Namespaces, und rufen Sie den Alias ab, den Sie später zum Herstellen der Verbindung mit den Entitäten verwenden:
-
-    ```csharp
-    // 3. Pair the namespaces to enable DR.
-
-    ArmDisasterRecovery drStatus = client.DisasterRecoveryConfigs.CreateOrUpdate(
-        resourceGroupName,
-        geoDRPrimaryNS,
-        alias,
-        new ArmDisasterRecovery { PartnerNamespace = geoDRSecondaryNS });
-
-    // A similar loop can be used to check if other operations (Failover, BreakPairing, Delete) 
-    // mentioned below have been successful.
-    while (drStatus.ProvisioningState != ProvisioningStateDR.Succeeded)
-    {
-        Console.WriteLine("Waiting for DR to be set up. Current state: " +
-        drStatus.ProvisioningState);
-        drStatus = client.DisasterRecoveryConfigs.Get(
-        resourceGroupName,
-        geoDRPrimaryNS,
-        alias);
-
-        Thread.CurrentThread.Join(TimeSpan.FromSeconds(30));
-    }
-    ```
-
-Sie haben erfolgreich zwei gekoppelte Namespaces eingerichtet. Nun können Sie Entitäten zum Überwachen der Metadatensynchronisierung erstellen. Wenn Sie direkt danach ein Failover ausführen möchten, sollten Sie einige Zeit einrechnen, bis die Metadaten synchronisiert sind. Sie können eine kurze Ruhezeit hinzufügen, z.B.:
-
-```csharp
-client.Topics.CreateOrUpdate(resourceGroupName, geoDRPrimaryNS, "myTopic", new SBTopic());
-client.Subscriptions.CreateOrUpdate(resourceGroupName, geoDRPrimaryNS, "myTopic", "myTopic-Sub1", new SBSubscription());
-
-// sleeping to allow metadata to sync across primary and secondary
-Thread.Sleep(1000 * 60);
-```
-
-Nun können Sie Entitäten über das Portal oder über Azure Resource Manager hinzufügen und anzeigen, wie sie synchronisiert werden. Sofern Sie das Failover nicht manuell ausführen möchten, sollten Sie eine App erstellen, die den primären Namespace überwacht und ein Failover initiiert, wenn er nicht mehr verfügbar ist. 
-
-## <a name="initiate-a-failover"></a>Initiieren eines Failovers
-
-Mit dem folgenden Code wird veranschaulicht, wie ein Failover initiiert wird:
-
-```csharp
-// Note that this failover operation is always run against the secondary namespace 
-// (because primary might be down at time of failover).
-
-client.DisasterRecoveryConfigs.FailOver(resourceGroupName, geoDRSecondaryNS, alias);
-```
-
-Fügen Sie nach dem Auslösen des Failovers einen neuen passiven Namespace hinzu, und erstellen Sie die Kopplung neu. Den Code zum Erstellen einer neuen Kopplung finden Sie im vorherigen Abschnitt. Zudem müssen Sie die Nachrichten aus dem alten primären Namespace entfernen, nachdem das Failover abgeschlossen ist. Beispiele zum Empfangen von Nachrichten aus einer Warteschlange finden Sie unter [Erste Schritte mit Warteschlangen](service-bus-dotnet-get-started-with-queues.md).
-
-## <a name="how-to-disable-geo-disaster-recovery"></a>Deaktivieren der georedundanten Notfallwiederherstellung
-
-Der folgende Code veranschaulicht, wie eine Namespacekopplung deaktiviert wird:
-
-```csharp
-client.DisasterRecoveryConfigs.BreakPairing(resourceGroupName, geoDRPrimaryNS, alias);
-```
-
-Mit dem folgenden Code wird der erstellte Alias gelöscht:
-
-```csharp
-// Delete the DR config (alias).
-// Note that this operation must run against the namespace to which the alias is currently pointing.
-// If you break the pairing and want to delete the namespaces afterwards, you must delete the alias first.
-
-client.DisasterRecoveryConfigs.Delete(resourceGroupName, geoDRPrimaryNS, alias);
-```
-
-## <a name="steps-after-a-failover-failback"></a>Schritte nach einem Failover (Failback)
-
-Führen Sie nach einem Failover die folgenden beiden Schritte aus:
-
-1.  Erstellen Sie einen neuen passiven sekundären Namespace. Den entsprechenden Code finden Sie im vorherigen Abschnitt.
-2.  Entfernen Sie die verbleibenden Nachrichten aus der Warteschlange.
-
-## <a name="alias-connection-string-and-test-code"></a>Alias-Verbindungszeichenfolge und Testcode
-
-Wenn Sie den Failoverprozess testen möchten, können Sie eine Beispielanwendung schreiben, die Nachrichten über den Alias an den primären Namespace pusht. Stellen Sie dazu sicher, dass Sie die Alias-Verbindungszeichenfolge von einem aktiven Namespace abrufen. Die aktuelle Vorschauversion enthält keine andere Schnittstelle für den direkten Abruf der Verbindungszeichenfolge. Mit dem folgenden Beispielcode wird vor und nach dem Failover eine Verbindung hergestellt:
-
-```csharp
-var accessKeys = client.Namespaces.ListKeys(resourceGroupName, geoDRPrimaryNS, "RootManageSharedAccessKey");
-var aliasPrimaryConnectionString = accessKeys.AliasPrimaryConnectionString;
-var aliasSecondaryConnectionString = accessKeys.AliasSecondaryConnectionString;
-
-if(aliasPrimaryConnectionString == null)
-{
-    accessKeys = client.Namespaces.ListKeys(resourceGroupName, geoDRSecondaryNS, "RootManageSharedAccessKey");
-    aliasPrimaryConnectionString = accessKeys.AliasPrimaryConnectionString;
-    aliasSecondaryConnectionString = accessKeys.AliasSecondaryConnectionString;
-}
-```
+4. Das Synchronisieren von Entitäten kann einige Zeit dauern, z.B. eine Minute für 50 bis 100 Entitäten. Abonnements und Regeln zählen ebenfalls zu den Entitäten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

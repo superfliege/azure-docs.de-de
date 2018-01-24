@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 52015dc2f8450bb1af1587df8c0ccc3bda3c9db8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a2a55a6ad6a721a39c9f064aad817f841dd3235
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Migrieren vom Azure Active Directory-Access Control Service zur SAS-Autorisierung
 
-Bei Service Bus-Anwendungen standen in der Vergangenheit zwei verschiedene Autorisierungsmodelle zur Wahl: das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md) und ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
+Bei Service Bus-Anwendungen standen bisher zwei verschiedene Autorisierungsmodelle zur Wahl: Zum einen gab es das direkt von Service Bus bereitgestellte [SAS-Tokenmodell (Shared Access Signature)](service-bus-sas.md). Zum anderen gab es ein Verbundmodell, bei dem die Verwaltung von Autorisierungsregeln intern vom [Azure Active Directory](/azure/active-directory/)-Access Control Service (ACS) verwaltet wird und vom ACS bezogene Token zur Autorisierung des Zugriffs auf die gewünschten Features an Service Bus übergeben werden.
 
 Das ACS-Autorisierungsmodell wurde längst von der [SAS-Autorisierung](service-bus-authentication-and-authorization.md) als bevorzugtes Modell abgelöst, und in sämtlichen Dokumentationen, Leitfäden und Beispielen wird heutzutage nur noch SAS verwendet. Außerdem können inzwischen keine neuen Service Bus-Namespaces mit ACS-Koppelung mehr erstellt werden.
 

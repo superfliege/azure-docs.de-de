@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 4355e7a8c220dea03df5eda54ed4e94d6ebc5c94
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 23b05909bda7785b45aeaeed0bd75a90de9ffe50
+ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>Übersicht zum Verwalten von Updates in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Microsoft wird in regelmäßigen Abständen Updatepakete für integrierte Azure Stack-Systeme veröffentlichen. Die Veröffentlichung erfolgt in der Regel am vierten Dienstag des Monats (ab allgemeiner Verfügbarkeit). Wenden Sie sich an Ihren OEM, um Informationen zu seinem Benachrichtigungsprozess zu erhalten und sicherzustellen, dass Ihre Organisation Updatebenachrichtigungen erhält. Weitere Informationen zu bestimmten Releases finden Sie außerdem hier unter „Konzepte\Versionshinweise\Versionshinweise zu integrierten Systemen“.
+Microsoft wird in regelmäßigen Abständen Updatepakete für integrierte Azure Stack-Systeme veröffentlichen. Die Veröffentlichung erfolgt in der Regel am vierten Dienstag des Monats (ab allgemeiner Verfügbarkeit). Wenden Sie sich an Ihren OEM, um Informationen zu seinem Benachrichtigungsprozess zu erhalten und sicherzustellen, dass Ihre Organisation Updatebenachrichtigungen erhält. Weitere Informationen zu bestimmten Releases finden Sie außerdem hier unter „Übersicht\Versionshinweise\Versionshinweise zu integrierten Systemen“.
 
 Jedes Release von Microsoft-Softwareupdates ist in einem einzelnen Updatepaket gebündelt. Als Azure Stack-Operator können Sie problemlos über das Administratorportal diese Updatepakete importieren, installieren und ihren Installationsstatus überwachen. 
 
@@ -65,6 +65,6 @@ Die Update-Kachel zeigt die aktuelle Version von Azure Stack. Sie gelangen mithi
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Azure Stack-Wartungsrichtlinie](azure-stack-servicing-policy.md) 
-- [Regionsverwaltung in Azure Stack](azure-stack-region-management.md)     
+- [Region management in Azure Stack](azure-stack-region-management.md) (Regionsverwaltung in Azure Stack)     
 
 

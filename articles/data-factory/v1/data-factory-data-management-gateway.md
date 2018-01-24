@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: a1b5346b590081c703ccdc5197e08f35bcaf76e3
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: af05f407661c2606719e733e373d0dad7bff3230
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -137,7 +137,7 @@ Zwei Firewalls müssen berücksichtigt werden: Die **Unternehmensfirewall**, die
 
 Auf Ebene der Unternehmensfirewall müssen Sie die folgenden Domänen und ausgehenden Ports konfigurieren:
 
-| Domänennamen | Ports | Beschreibung |
+| Domänennamen | Ports | BESCHREIBUNG |
 | --- | --- | --- |
 | *.servicebus.windows.net |443, 80 |Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet |
 | *.core.windows.net |443 |Wird für das gestaffelte Kopieren mit einem Azure-Blob (sofern konfiguriert) verwendet|
@@ -188,7 +188,7 @@ Der Datenverwaltungsgateway-Hostdienst wird automatisch neu gestartet, nachdem S
 Wenn Sie die Proxyeinstellungen nach der erfolgreichen Registrierung des Gateways anzeigen oder aktualisieren möchten, verwenden Sie den Datenverwaltungsgateway-Konfigurations-Manager.
 
 1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**.
-2. Wechseln Sie zur Registerkarte **Einstellungen** .
+2. Wechseln Sie zur Registerkarte **Einstellungen**.
 3. Klicken Sie im Abschnitt **HTTP-Proxy** auf den Link **Ändern**, um das Dialogfeld **HTTP-Proxy festlegen** zu öffnen.  
 4. Nachdem Sie auf die Schaltfläche **Weiter** geklickt haben, wird ein Dialogfeld mit einer Warnung angezeigt, in dem Sie bestätigen müssen, dass die Proxyeinstellung gespeichert und der Gatewayhostdienst neu gestartet werden soll.
 
@@ -290,7 +290,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 2. Wechseln Sie in den Ordner „C:\Programme\Microsoft Data Management Gateway\2.0\PowerShellScript“.
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.   
 
-    Für ein Gateway mit hoher Verfügbarkeit (Vorschauversion) ist ein zusätzlicher AuthKey-Parameter erforderlich.
+    Für ein Gateway mit Hochverfügbarkeit (Vorschauversion) ist ein zusätzlicher AuthKey-Parameter erforderlich.
     ```PowerShell
     .\GatewayAutoUpdateToggle.ps1  -off -AuthKey <your auth key>
     ```
@@ -323,6 +323,9 @@ Auf der Seite „Einstellungen“ können Sie die folgenden Aktionen ausführen:
 * **Status** des Endpunkts
 * **SSL-Zertifikat anzeigen** wird für die SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.  
 
+### <a name="remote-access-from-intranet"></a>Remotezugriff über das Intranet  
+Diese Funktion wird erst später aktiviert. Im Rahmen der nächsten Updates (v3.4 oder höher) wird eine Funktion zum Aktivieren/Deaktivieren von Remoteverbindungen bereitgestellt, die derzeit über Port 8050 (siehe Abschnitt weiter oben) hergestellt werden. Zum Verschlüsseln der Anmeldeinformationen können Sie PowerShell oder die Anwendung für die Anmeldeinformationsverwaltung verwenden. 
+
 ### <a name="diagnostics-page"></a>Seite „Diagnose“
 Auf der Seite „Diagnose“ können Sie die folgenden Aktionen ausführen:
 
@@ -354,9 +357,9 @@ Im Azure-Portal können Sie auf einem Gatewaycomputer nahezu in Echtzeit Momenta
 
 Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayknoten**:  
 
-Überwachungseigenschaft | Beschreibung
+Überwachungseigenschaft | BESCHREIBUNG
 :------------------ | :---------- 
-Name | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind. Der Knoten ist ein lokaler Windows-Computer, auf dem das Gateway installiert ist. Informationen zur Verwendung von mehr als einem Knoten (bis zu vier Knoten) auf einem einzelnen logischen Gateway finden Sie unter [Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit](data-factory-data-management-gateway-high-availability-scalability.md).    
+NAME | Name des logischen Gateways und der Knoten, die dem Gateway zugeordnet sind. Der Knoten ist ein lokaler Windows-Computer, auf dem das Gateway installiert ist. Informationen zur Verwendung von mehr als einem Knoten (bis zu vier Knoten) auf einem einzelnen logischen Gateway finden Sie unter [Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit](data-factory-data-management-gateway-high-availability-scalability.md).    
 Status | Status des logischen Gateways und der Gatewayknoten. Beispiel: Online/Offline/Eingeschränkt usw. Informationen zu diesen Status finden Sie im Abschnitt [Gatewaystatus](#gateway-status). 
 Version | Zeigt die Version des logischen Gateways und jedes Gatewayknotens an. Die Version des logischen Gateways wird basierend auf der Version bestimmt, die die meisten Knoten der Gruppe aufweisen. Wenn Knoten mit unterschiedlichen Versionen am Setup des logischen Gateways beteiligt sind, funktionieren nur die Knoten mit der gleichen Versionsnummer wie beim logischen Gateway richtig. Andere Knoten befinden sich im eingeschränkten Modus und müssen manuell aktualisiert werden (nur für den Fall, dass die automatische Aktualisierung fehlschlägt). 
 Verfügbarer Arbeitsspeicher | Verfügbarer Arbeitsspeicher auf einem Gatewayknoten. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. 
@@ -365,7 +368,7 @@ Netzwerk (Eingang/Ausgang) | Netzwerkauslastung eines Gatewayknotens. Dieser Wer
 Gleichzeitige Aufträge (ausgeführt/Limit) | Anzahl von Aufträgen oder Aufgaben, die auf den einzelnen Knoten ausgeführt werden. Dieser Wert steht für eine Momentaufnahme nahezu in Echtzeit. Mit „Limit“ wird angegeben, wie viele Aufträge für einen Knoten jeweils gleichzeitig ausgeführt werden können. Dieser Wert wird basierend auf der Größe des Computers definiert. Sie können das Limit erhöhen, um die Ausführung von gleichzeitigen Aufträgen in erweiterten Szenarien zentral hochzuskalieren, in denen CPU, Arbeitsspeicher und Netzwerk nicht voll ausgelastet sind, aber Zeitüberschreitungen für Aktivitäten auftreten. Diese Funktion ist auch für ein Gateway mit nur einem Knoten verfügbar (auch wenn die Skalierbarkeits- und Verfügbarkeitsfunktion nicht aktiviert ist).  
 Rolle | Bei einem Gateway mit mehreren Knoten gibt es zwei Arten von Rollen: Verteiler und Worker. Alle Knoten sind Worker. Dies bedeutet, dass alle Knoten zum Ausführen von Aufträgen verwendet werden können. Es ist nur ein Verteilerknoten vorhanden, der zum Durchführen der Pullvorgänge für Aufgaben bzw. Aufträge von Clouddiensten und Verteilen an die einzelnen Workerknoten (einschließlich sich selbst) genutzt wird.
 
-Auf dieser Seite werden einige Einstellungen angezeigt, die mehr Sinn ergeben, wenn das Gateway mindestens zwei Knoten enthält (Szenario mit horizontalem Hochskalieren). Ausführliche Informationen zum Einrichten eines Gateways mit mehreren Knoten finden Sie unter [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hohe Verfügbarkeit und Skalierbarkeit (Vorschauversion)).
+Auf dieser Seite werden einige Einstellungen angezeigt, die mehr Sinn ergeben, wenn das Gateway mindestens zwei Knoten enthält (Szenario mit horizontalem Hochskalieren). Ausführliche Informationen zum Einrichten eines Gateways mit mehreren Knoten finden Sie unter [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)).
 
 ### <a name="gateway-status"></a>Gatewaystatus
 Die folgende Tabelle enthält die möglichen Status eines **Gatewayknotens**: 

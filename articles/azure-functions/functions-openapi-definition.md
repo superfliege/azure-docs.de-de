@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 08/25/2017
+ms.date: 12/15/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
-ms.openlocfilehash: a196df5b4ab47b234b48594da45cd4d72f604086
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2bf1a3e80e96d76b15340f87166b2b4762271cf3
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>Erstellen einer OpenAPI-Definition für eine Funktion
 REST-APIs werden häufig mithilfe einer OpenAPI-Definition beschrieben (früher bezeichnet als [Swagger](http://swagger.io/)-Datei). Diese Definition enthält Informationen zu den in einer API verfügbaren Vorgängen sowie zur Strukturierung der Anforderungs- und Antwortdaten für die API.
@@ -48,9 +48,17 @@ Sie müssen über eine Funktionen-App verfügen, die die Ausführung Ihrer Funkt
 
 In diesem Tutorial wird eine von HTTP ausgelöste Funktion verwendet, die zwei Parameter akzeptiert: die geschätzte Zeit zum Durchführen einer Turbinenreparatur (in Stunden) und die Kapazität der Turbine (in Kilowatt). Die Funktion berechnet dann die Kosten einer Reparatur und den Umsatzerlös, der in einem Zeitraum von 24 Stunden von der Turbine generiert werden könnte.
 
-1. Erweitern Sie Ihre Funktionen-App, klicken Sie neben **Functions** auf die Schaltfläche **+**, und klicken Sie auf die Vorlage **HTTPTrigger**. Geben Sie `TurbineRepair` für den **Namen** der Funktion ein, und klicken Sie auf **Erstellen**.
+1. Erweitern Sie die Funktionen-App, und wählen Sie die Schaltfläche **+** neben **Functions** aus. Wenn dies die erste Funktion in Ihrer Funktionen-App ist, wählen Sie **Benutzerdefinierte Funktion**. Hiermit wird der vollständige Satz von Funktionsvorlagen angezeigt. 
 
-    ![Blatt „Funktionen-App“, Funktionen +](media/functions-openapi-definition/add-function.png)
+    ![Schnellstartseite für Funktionen im Azure-Portal](media/functions-openapi-definition/add-first-function.png)
+
+2. Geben Sie `http` in das Suchfeld ein, und wählen Sie dann **C#** für die HTTP-Triggervorlage aus. 
+ 
+    ![Auswählen des HTTP-Triggers](./media/functions-openapi-definition/select-http-trigger-portal.png)
+
+3. Geben Sie `TurbineRepair` als **Namen** der Funktion ein, wählen Sie `Function` als **[Authentifizierungsebene](functions-bindings-http-webhook.md#http-auth)** aus, und wählen Sie dann **Erstellen** aus.  
+
+    ![Erstellen der durch HTTP ausgelösten Funktion](./media/functions-openapi-definition/select-http-trigger-portal-2.png)
 
 1. Ersetzen Sie den Inhalt der Datei „run.csx“ durch den folgenden Code, und klicken Sie auf **Speichern**:
 
@@ -117,7 +125,7 @@ Jetzt können Sie die OpenAPI-Definition generieren. Diese Definition kann von a
 
     1. Ändern Sie auf der Registerkarte **Integrieren** der neuen HTTP-Triggerfunktion die Einstellung **Zulässige HTTP-Methoden** in **Ausgewählte Methoden**.
 
-    1. Deaktivieren Sie unter **Ausgewählte HTTP-Methoden** alle Optionen außer **POST**.
+    1. Deaktivieren Sie unter **Ausgewählte HTTP-Methoden** alle Optionen außer **POST**, und klicken Sie dann auf **Speichern**.
 
         ![Ausgewählte HTTP-Methoden](media/functions-openapi-definition/selected-http-methods.png)
         
@@ -264,7 +272,7 @@ Bevor Sie die API-Definition verwenden, empfiehlt es sich, sie in der Azure Func
 
 1. Kehren Sie zur API-Definition zurück: **function-demo-energy** > **Plattformfeatures** > **API-Definition**.
 
-1. Klicken Sie im rechten Bereich auf **Change Authentication** (Authentifizierung ändern), geben Sie den kopierten API-Schlüssel ein, und klicken Sie auf **Authentifizieren**.
+1. Klicken Sie im rechten Bereich auf **Authenticate** (Authentifizieren), geben Sie den kopierten API-Schlüssel ein, und klicken Sie auf **Authentifizieren**.
 
     ![Authentifizieren mit einem API-Schlüssel](media/functions-openapi-definition/authenticate-api-key.png)
 
@@ -278,7 +286,7 @@ Bevor Sie die API-Definition verwenden, empfiehlt es sich, sie in der Azure Func
 
     Beachten Sie, dass in der Benutzeroberfläche die Beschreibungen aus der API-Definition verwendet werden.
 
-1. Klicken Sie auf **Send a request** (Anforderung senden) und anschließend auf die Registerkarte **Pretty** (Schöndruck), um die Ausgabe anzuzeigen.
+1. Klicken Sie auf **Send request** (Anforderung senden) und anschließend auf die Registerkarte **Pretty** (Schöndruck), um die Ausgabe anzuzeigen.
 
     ![Send a request (Anforderung senden)](media/functions-openapi-definition/send-request.png)
 

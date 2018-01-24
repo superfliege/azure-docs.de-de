@@ -9,17 +9,17 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 084c6bf3855bdc757c3f2926b35eaf7bba0ef389
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: b01aa01df198ce75b2f8b66d28a2db68b1c30b87
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="monitor-azure-container-service-aks"></a>Überwachen von Azure Container Service (AKS)
 
 Die Überwachung des Kubernetes-Clusters und der Kubernetes-Container ist vor allem dann entscheidend, wenn Sie einen umfangreichen Produktionscluster mit mehreren Anwendungen verwalten.
 
-In diesem Tutorial konfigurieren Sie die Überwachung Ihres AKS-Clusters mithilfe der [Containerlösung für Log Analytics](../log-analytics/log-analytics-containers.md).
+In diesem Tutorial konfigurieren Sie die Überwachung Ihres AKS-Clusters mithilfe der [Containerlösung für Log Analytics][log-analytics-containers].
 
 Dieses Tutorial – Teil 7 von 8 – behandelt folgende Aufgaben:
 
@@ -32,7 +32,7 @@ Dieses Tutorial – Teil 7 von 8 – behandelt folgende Aufgaben:
 
 In vorherigen Tutorials wurden eine Anwendung in Containerimages gepackt, diese Images in Azure Container Registry hochgeladen und ein Kubernetes-Cluster erstellt.
 
-Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages](./tutorial-kubernetes-prepare-app.md) zurück.
+Wenn Sie diese Schritte nicht ausgeführt haben und dies jetzt nachholen möchten, kehren Sie zum [Tutorial 1 – Erstellen von Containerimages][aks-tutorial-prepare-app] zurück.
 
 ## <a name="configure-the-monitoring-solution"></a>Konfigurieren der Überwachungslösung
 
@@ -58,7 +58,7 @@ Klicken Sie zum Abrufen dieser Werte auf den **OMS-Arbeitsbereich** im linken Me
 
 ## <a name="configure-monitoring-agents"></a>Konfigurieren der Überwachungs-Agents
 
-Die folgende Kubernetes-Manifestdatei kann zum Konfigurieren der Containerüberwachungs-Agents in einem Kubernetes-Cluster verwendet werden. Mit der Datei wird ein Kubernetes-[DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) erstellt, das einen einzelnen Pod auf jedem Clusterknoten ausführt.
+Die folgende Kubernetes-Manifestdatei kann zum Konfigurieren der Containerüberwachungs-Agents in einem Kubernetes-Cluster verwendet werden. Mit der Datei wird ein Kubernetes-[DaemonSet][kubernetes-daemonset] erstellt, das einen einzelnen Pod auf jedem Clusterknoten ausführt.
 
 Speichern Sie den folgenden Text in einer Datei mit dem Namen `oms-daemonset.yaml`, und ersetzen Sie die Platzhalterwerte für `WSID` und `KEY` durch die ID und den Schlüssel Ihres Log Analytics-Arbeitsbereichs.
 
@@ -98,6 +98,8 @@ spec:
           name: container-hostname
         - mountPath: /var/log
           name: host-log
+        - mountPath: /var/lib/docker/containers/
+          name: container-log
        livenessProbe:
         exec:
          command:
@@ -124,6 +126,9 @@ spec:
     - name: host-log
       hostPath:
        path: /var/log
+    - name: container-log
+      hostPath:
+       path: /var/lib/docker/containers/
 ```
 
 Erstellen Sie das DaemonSet mit dem folgenden Befehl:
@@ -153,7 +158,7 @@ Wählen Sie im Azure-Portal den Log Analytics-Arbeitsbereich aus, der an das Das
 
 ![Dashboard](./media/container-service-tutorial-kubernetes-monitor/oms-containers-dashboard.png)
 
-Ausführliche Anweisungen zum Abfragen und Analysieren von Überwachungsdaten finden Sie in der [Dokumentation zu Azure Log Analytics](../log-analytics/index.yml).
+Ausführliche Anweisungen zum Abfragen und Analysieren von Überwachungsdaten finden Sie in der [Dokumentation zu Azure Log Analytics][log-analytics-docs].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -167,4 +172,14 @@ In diesem Tutorial haben Sie Ihren Kubernetes-Cluster mit der OMS überwacht. Si
 Fahren Sie mit dem nächsten Tutorial fort, um mehr über die Aktualisierung von Kubernetes auf eine neue Version zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Kubernetes aktualisieren](./tutorial-kubernetes-upgrade-cluster.md)
+> [Kubernetes aktualisieren][aks-tutorial-upgrade]
+
+<!-- LINKS - external -->
+[kubernetes-daemonset]: https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/
+
+<!-- LINKS - internal -->
+[aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
+[aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[aks-tutorial-upgrade]: ./tutorial-kubernetes-upgrade-cluster.md
+[log-analytics-containers]: ../log-analytics/log-analytics-containers.md
+[log-analytics-docs]: ../log-analytics/index.yml

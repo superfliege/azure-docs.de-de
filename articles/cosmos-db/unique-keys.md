@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: rafats
-ms.openlocfilehash: 127b42b67a3e29022ac5d9535751a1b2a3be250e
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Eindeutige Schlüssel in Azure Cosmos DB
 
 Eindeutige Schlüssel bieten Entwicklern die Möglichkeit, ihrer Datenbank eine zusätzliche Datenintegritätsebene hinzuzufügen. Durch das Erstellen eine Richtlinie für eindeutige Schlüssel beim Erstellen eines Containers wird die Eindeutigkeit von einem oder mehreren Werten pro [Partitionsschlüssel](partition-data.md) gewährleistet. Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, ist keine Erstellung neuer oder aktualisierter Elemente mit Werten möglich, die von der Einschränkung auf eindeutige Schlüssel festgelegte Werte duplizieren.   
 
 > [!NOTE]
-> Eindeutige Schlüssel werden von den aktuellen Versionen der [.NET](documentdb-sdk-dotnet.md) und [.NET Core](documentdb-sdk-dotnet-core.md) DocumentDB (SQL)-SDKs sowie der [MongoDB-API](mongodb-feature-support.md#unique-indexes) unterstützt. Die Tabellen-API und die Graph-API unterstützen derzeit keine eindeutigen Schlüssel. 
+> Eindeutige Schlüssel werden von den aktuellen Versionen der [.NET](sql-api-sdk-dotnet.md)- und [.NET Core](sql-api-sdk-dotnet-core.md)-SQL SDKs sowie der [MongoDB-API](mongodb-feature-support.md#unique-indexes) unterstützt. Die Tabellen-API und die Graph-API unterstützen derzeit keine eindeutigen Schlüssel. 
 > 
 >
 
@@ -54,7 +54,7 @@ Eindeutige Schlüssel müssen beim Erstellen des Containers definiert werden, un
 
 Vorhandene Container können nicht zur Verwendung eindeutiger Schlüssel aktualisiert werden.
 
-Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, kann die Richtlinie nicht geändert werden, es sei denn, Sie erstellen den Container neu. Wenn Sie für vorhandene Daten eindeutige Schlüssel implementieren möchten, erstellen Sie den neuen Container und verwenden dann das entsprechende Datenmigrationstool, um die Daten in den neuen Container zu verschieben. Für DocumentDB (SQL)-Container verwenden Sie das [Datenmigrationstool](import-data.md). Für MongoDB-Container verwenden Sie [„mongoimport.exe“ oder „mongorestore.exe“](mongodb-migrate.md).
+Nachdem ein Container mit einer Richtlinie für eindeutige Schlüssel erstellt wurde, kann die Richtlinie nicht geändert werden, es sei denn, Sie erstellen den Container neu. Wenn Sie für vorhandene Daten eindeutige Schlüssel implementieren möchten, erstellen Sie den neuen Container und verwenden dann das entsprechende Datenmigrationstool, um die Daten in den neuen Container zu verschieben. Verwenden Sie für SQL-Container das [Datenmigrationstool](import-data.md). Für MongoDB-Container verwenden Sie [„mongoimport.exe“ oder „mongorestore.exe“](mongodb-migrate.md).
 
 Jeder eindeutige Schlüssel kann höchstens 16 Pfadwerte (z. B. „/firstName“, „/lastName“, „/address/zipCode“ usw.) enthalten. 
 
@@ -64,9 +64,9 @@ Gebühren für Anforderungseinheiten für das Erstellen, Aktualisieren und Lösc
 
 Eindeutige Schlüssel mit geringer Dichte werden nicht unterstützt. Wenn Werte für einige eindeutige Pfade fehlen, werden sie als spezieller NULL-Wert behandelt, für den die Eindeutigkeitseinschränkung gilt.
 
-## <a name="documentdb-sql-api-sample"></a>Beispiel für DocumentDB (SQL)-API
+## <a name="sql-api-sample"></a>SQL-API-Beispiel
 
-Im folgenden Codebeispiel wird die Erstellung eines neuen DocumentDB (SQL)-Containers mit zwei Einschränkungen auf eindeutige Schlüssel veranschaulicht. Die erste Einschränkung ist die firstName- lastName-, email-Einschränkung, die im vorangehenden Beispiel beschrieben wurde. Die zweite Einschränkung betrifft die Adresse und Postleitzahl des Benutzers. Eine JSON-Beispieldatei, die die Pfade in dieser Richtlinie für eindeutige Schlüssel verwendet, folgt dem Codebeispiel. 
+Im folgenden Codebeispiel wird die Erstellung eines neuen SQL-Containers mit zwei Einschränkungen auf eindeutige Schlüssel veranschaulicht. Die erste Einschränkung ist die firstName- lastName-, email-Einschränkung, die im vorangehenden Beispiel beschrieben wurde. Die zweite Einschränkung betrifft die Adresse und Postleitzahl des Benutzers. Eine JSON-Beispieldatei, die die Pfade in dieser Richtlinie für eindeutige Schlüssel verwendet, folgt dem Codebeispiel. 
 
 ```csharp
 // Create a collection with two separate UniqueKeys, one compound key for /firstName, /lastName,

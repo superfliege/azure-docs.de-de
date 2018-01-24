@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: jroth
-ms.openlocfilehash: 6386678bdac3630f3e003187ff3d12c0ce053b90
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 03580952800e595125fc48d169f7d4aa7846dd3f
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Bewährte Methoden zur Leistung für SQL Server auf virtuellen Azure-Computern
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/15/2017
 
 Dieses Thema enthält bewährte Methoden zur Optimierung der Leistung von SQL Server in Microsoft Azure Virtual Machines. Es empfiehlt sich, beim Ausführen von SQL Server in Azure Virtual Machines weiterhin die gleichen Optionen zur Optimierung der Datenbankleistung zu verwenden, die für SQL Server in der lokalen Server-Umgebung gelten. Die Leistung einer relationalen Datenbank in einer öffentlichen Cloud hängt jedoch von vielen Faktoren ab, z. B. der Größe eines virtuellen Computers und der Konfiguration der Datenträger für Daten.
 
-Wenn Sie SQL Server-Images erstellen, [empfiehlt sich die Bereitstellung der virtuellen Computer im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Über virtuelle SQL Server-Computer, die im Portal mit Resource Manager bereitgestellt werden, werden alle diese optimalen Verfahren implementiert, darunter auch die Speicherkonfiguration.
+Wenn Sie SQL Server-Images erstellen, [empfiehlt sich die Bereitstellung der virtuellen Computer im Azure-Portal](virtual-machines-windows-portal-sql-server-provision.md). Für im Portal mit Resource Manager bereitgestellte SQL Server-VMs werden Best Practices angewendet.
 
 Dieser Artikel konzentriert sich auf die *optimale* Leistung von SQL Server auf Azure-VMs. Wenn Ihre Workload weniger anspruchsvoll ist, sind möglicherweise nicht alle unten aufgeführten Optimierungen erforderlich. Berücksichtigen Sie bei der Evaluierung dieser Empfehlungen Ihre Leistungsanforderungen und Workloadmuster.
 
@@ -61,7 +61,7 @@ Virtuelle Computer der DS-Serie (sowie der DSv2- und GS-Serie) unterstützen [St
 > [!WARNING]
 > Storage Standard verfügt über unterschiedliche Latenzen und Bandbreiten und sollte nur für Entwicklungs-/Testworkloads verwendet werden. Für Produktionsworkloads sollte Storage Premium verwendet werden.
 
-Außerdem sollten Sie Ihr Azure-Speicherkonto im selben Rechenzentrum wie Ihre SQL Server-VMs erstellen, um Übertragungsverzögerungen zu verringern. Wenn Sie ein Speicherkonto erstellen, deaktivieren Sie die Georeplikation, da keine konsistente Schreibreihenfolge über mehrere Datenträger gewährleistet werden kann. Konfigurieren Sie stattdessen eine SQL Server-Notfallwiederherstellungstechnologie zwischen zwei Azure-Rechenzentren. Weitere Informationen finden Sie unter [Hohe Verfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md).
+Außerdem sollten Sie Ihr Azure-Speicherkonto im selben Rechenzentrum wie Ihre SQL Server-VMs erstellen, um Übertragungsverzögerungen zu verringern. Wenn Sie ein Speicherkonto erstellen, deaktivieren Sie die Georeplikation, da keine konsistente Schreibreihenfolge über mehrere Datenträger gewährleistet werden kann. Konfigurieren Sie stattdessen eine SQL Server-Notfallwiederherstellungstechnologie zwischen zwei Azure-Rechenzentren. Weitere Informationen finden Sie unter [Hochverfügbarkeit und Notfallwiederherstellung für SQL Server auf virtuellen Azure-Computern](virtual-machines-windows-sql-high-availability-dr.md).
 
 ## <a name="disks-guidance"></a>Leitfaden für Datenträger
 
@@ -90,6 +90,9 @@ Für virtuelle Computer, die Storage Premium unterstützen (DS-Serie, DSv2-Serie
 ### <a name="data-disks"></a>Datenträger
 
 * **Verwenden Sie Datenträger für Daten- und Protokolldateien:** Verwenden Sie mindestens 2 [P30-Datenträger](../premium-storage.md#scalability-and-performance-targets) in Storage Premium, wobei sich auf einem Datenträger die Protokolldateien und auf dem anderen die Datendateien und „tempdb“ befinden. Jeder Storage Premium-Datenträger stellt je nach Größe eine Reihe von IOPS und Bandbreiten (MB/s) bereit, wie im folgenden Artikel beschrieben: [Verwenden von Storage Premium für Datenträger](../premium-storage.md).
+
+   > [!NOTE]
+   > Beim Bereitstellen einer SQL Server-VM im Portal haben Sie die Möglichkeit, Ihre Speicherkonfiguration zu bearbeiten. Je nach Konfiguration konfiguriert Azure einen oder mehrere Datenträger. Mehrere Datenträger werden in einem einzelnen Speicherpool mit Striping zusammengefasst. Sowohl die Daten- als auch die Protokolldateien befinden sich in dieser Konfiguration zusammen und nicht auf zwei getrennten Datenträgern. Weitere Informationen finden Sie unter [Speicherkonfiguration für SQL Server-VMs](virtual-machines-windows-sql-server-storage-configuration.md).
 
 * **Datenträgerstriping**: Für einen höheren Durchsatz können Sie zusätzliche Datenträger für Daten hinzufügen und Datenträgerstriping verwenden. Um die Anzahl der Datenträger zu ermitteln, müssen Sie die Anzahl der IOPS und die Bandbreite analysieren, die für die Protokolldateien und für Ihre Daten und die TempDB-Dateien erforderlich sind. Beachten Sie, dass verschiedene VM-Größen über unterschiedliche Grenzwerte für die unterstützte Anzahl der IOPS und die Bandbreiten verfügen. Informationen finden Sie in den Tabellen zu IOPS pro [Größe des virtuellen Computers](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Verwenden Sie die folgenden Richtlinien:
 

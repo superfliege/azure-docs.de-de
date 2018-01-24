@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 07/22/2016
 ms.author: mlearned
-ms.openlocfilehash: fcd58736d8915a61683a416fb9bf3892ba7b7bd8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7df8bb2dd61466fd9af6492277d54cf0ffdfeb0b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="debugging-apps-in-a-local-docker-container"></a>Debuggen von Apps in einem lokalen Docker-Container
 ## <a name="overview"></a>Übersicht
@@ -54,7 +54,7 @@ Um Änderungen schnell zu durchlaufen, können Sie Ihre Anwendung in einem Conta
 
 1. Legen Sie die Projektmappenkonfiguration auf `Debug` fest, und drücken Sie **&lt;STRG+F5>**, um Ihr Docker-Image zu erstellen und lokal auszuführen.
 
-    Sobald das Containerimage erstellt wurde und in einem Docker-Container ausgeführt wird, startet Visual Studio, die Web-App in Ihrem Standardbrowser.
+    Sobald das Containerimage erstellt wurde und in einem Docker-Container ausgeführt wird, startet Visual Studio die Web-App in Ihrem Standardbrowser.
     Lesen Sie den Abschnitt [Problembehandlung](vs-azure-tools-docker-troubleshooting-docker-errors.md) , wenn Sie den Browser Microsoft Edge verwenden oder sonstige Fehlermeldungen erhalten.
 2. Wechseln Sie zur Seite „Info“, auf der wir unsere Änderungen vornehmen.
 3. Kehren Sie zu Visual Studio zurück, und öffnen Sie `Views\Home\About.cshtml`.

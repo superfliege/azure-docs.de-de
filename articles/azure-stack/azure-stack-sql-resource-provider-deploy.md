@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 01/09/2018
 ms.author: JeffGo
-ms.openlocfilehash: 80b693420768d574b2371211298562ba35e7ed97
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e2f29a1686d0f4baa88b9d37bac0261952f4caa6
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Verwenden von SQL-Datenbanken in Microsoft Azure Stack
 
@@ -60,10 +60,10 @@ Sie müssen mindestens eine SQL Server-Instanz erstellen oder Zugriff auf extern
 
     | Azure Stack-Build | SQL RP-Installationsprogramm |
     | --- | --- |
-    | 1.0.171122.1 | [SQL RP Version 1.1.12.0](https://aka.ms/azurestacksqlrp) |
+    |1.0.180102.3 oder 1.0.180106.1 (mehrere Knoten) | [SQL RP Version 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
+    | 1.0.171122.1 | [SQL RP Version 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
     | 1.0.171028.1 | [SQL RP Version 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
-    | 1.0.170928.3 | [SQL RP Version 1.1.3.0](https://aka.ms/azurestacksqlrp1709) |
-   
+  
 
 4. Das Azure Stack-Stammzertifikat wird vom privilegierten Endpunkt abgerufen. Für ASDK wird im Rahmen dieses Prozesses ein selbstsigniertes Zertifikat erstellt. Bei mehreren Knoten müssen Sie ein entsprechendes Zertifikat bereitstellen.
 

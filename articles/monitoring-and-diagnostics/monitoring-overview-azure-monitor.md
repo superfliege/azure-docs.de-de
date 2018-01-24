@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/23/2017
 ms.author: robb
 ms.custom: mvc
-ms.openlocfilehash: 8de1eca5a3e52533e05d93cfe30de612e3d0c648
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ed9ace24778f000b42013cc0ce4d7dacf4a1d4fb
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="overview-of-azure-monitor"></a>Übersicht über Azure Monitor
 Dieser Artikel bietet einen Überblick über den Azure Monitor-Dienst in Microsoft Azure. Er bietet einen Überblick über die Funktionen von Azure Monitor und stellt Verknüpfungen zu zusätzlichen Informationen über die Verwendung von Azure Monitor bereit.  Ein Einführungsvideo finden Sie über die Links im Abschnitt „Nächste Schritte“ weiter unten in diesem Artikel. 
@@ -43,7 +43,7 @@ Die Seite stellt einen Ausgangspunkt für die Navigation dar, einschließlich de
 
 Wenn Sie die Seite öffnen, können Sie zwischen den Abonnements auswählen, für die Sie über Lesezugriff verfügen. Für ein ausgewähltes Abonnement sehen Sie Folgendes:
 
-- **Ausgelöste Warnungen und Warnungsquellen**: Diese Tabelle zeigt eine Zusammenfassung der Anzahlen, Warnungsquellen und die Anzahl von ausgelösten Warnungen für die ausgewählte Zeitdauer an. Dies gilt für Metrik- und Aktivitätsprotokollwarnungen.
+- **Ausgelöste Warnungen und Warnungsquellen**: Diese Tabelle zeigt eine Zusammenfassung der Anzahlen, Warnungsquellen und die Anzahl von ausgelösten Warnungen für die ausgewählte Zeitdauer an. Dies gilt für Metrik- und Aktivitätsprotokollwarnungen. *<Änderung: Die einheitliche Oberfläche „Warnungen (Vorschauversion)“ wird auch für alle Warnungen angezeigt, d.h. für Ereignisse, Metriken und Protokolle.>*
 - **Aktivitätsprotokollfehler**: Wenn eine Ihrer Azure-Ressourcen Ereignisse mit dem Schweregrad „Fehler“ protokolliert, können Sie eine allgemeine Anzahl anzeigen und durch die Seite des Aktivitätsprotokolls klicken, um jedes Ereignis zu untersuchen.
 - **Azure Service Health**: Ihnen wird die Anzahl von Problemen der Dienstintegrität angezeigt sowie geplante Wartungsereignisse und Integritätsempfehlungen. Azure Service Health stellt persönliche Informationen bereit, wenn sich Probleme in der Azure-Infrastruktur auf Ihre Dienste auswirken.  Weitere Informationen finden Sie unter [Azure Service Health](../service-health/service-health-overview.md).  
 - **Application Insights**: Anzeige der KPIs für jede AppInsights-Ressource im aktuellen Abonnement. Die KPIs sind für die serverseitige Überwachung der Anwendungen (ASP.NET-Apps, Java, Node und allgemeine Anwendungstypen) optimiert. Diese KPIs enthalten Metriken für die Anforderungsrate, Antwortdauer, Fehlerrate und die Verfügbarkeit in Prozent. 
@@ -55,6 +55,7 @@ Wenn Sie Log Analytics oder Application Insights nicht integriert oder keine Azu
 ## <a name="azure-monitor-sources---compute-subset"></a>Azure Monitor-Quellen – Computeteilmenge
 
 ![Modell zur Überwachung und Diagnose für Nicht-Computeressourcen](./media/monitoring-overview-azure-monitor/Monitoring_Azure_Resources-compute_v6.png)
+
 
 Diese Compute Services umfassen: 
 - Cloud Services 
@@ -121,10 +122,10 @@ Einige Möglichkeiten, diese Daten zu nutzen:
 - Sie laden die Daten in ein lokales Archiv herunter oder verändern Ihre Aufbewahrungsrichtlinie in der Cloud, um die Daten über längere Zeiträume zu speichern  
 - Sie belassen die Daten für einen unbegrenzten Zeitraum zur Archivierung in Azure Storage. 
 
-### <a name="query"></a>Abfrage
+### <a name="query"></a>Abfragen
 Sie können die Azure Monitor-REST-API, Befehle der plattformübergreifenden Befehlszeilenschnittstelle, PowerShell-Cmdlets oder das .NET SDK verwenden, um auf die Daten im System oder in Azure Storage zuzugreifen.
 
-Beispiele: 
+Beispiele:
 
 * Abrufen von Daten für eine von Ihnen geschriebene, benutzerdefinierte Überwachungsanwendung
 * Erstellen von benutzerdefinierten Abfragen und Senden der Daten an eine Drittanbieteranwendung
@@ -141,7 +142,10 @@ Einige Beispiele für Visualisierungsmethoden:
 
 
 ### <a name="automate"></a>Automatisieren
-Sie können die Überwachungsdaten nutzen, um Warnungen, Ereignisse oder sogar ganze Prozesse auszulösen. Beispiele:
+> [!NOTE]
+> Im Zuge der kontinuierlichen Weiterentwicklung von Warnungen für Microsoft Azure, steht nun eine einheitliche Oberfläche für Warnungen als Vorschauversion zur Verfügung. Weitere Informationen zu [Azure-Warnungen (Vorschauversion)](monitoring-overview-unified-alerts.md)
+
+In der Standardversion von Azure-Warnungen können Sie Überwachungsdaten nutzen, um Warnungen oder sogar ganze Prozesse auszulösen. Beispiele:
 
 * Verwenden der Daten, um Compute-Instanzen je nach Anwendungslast automatisch horizontal hoch- oder herunterzuskalieren
 * Senden von E-Mails, wenn eine Metrik einen vorgegebenen Schwellenwert überschreitet

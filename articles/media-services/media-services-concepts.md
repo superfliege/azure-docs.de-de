@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: juliako
-ms.openlocfilehash: f7d2fd61dce93e8100ec33f82cd648b77efc1c0f
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: bb02aaf541d2d2f4b1206136847af2b46621501d
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte
 Dieses Thema bietet eine Übersicht über die wichtigsten Konzepte von Media Services.
 
-## <a id="assets"></a>Medienobjekte und Speicher
+## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Medienobjekte und Speicher
 ### <a name="assets"></a>Objekte
 Ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/operations/asset) enthält digitale Dateien (z.B. Video, Audio, Bilder, Sammlungen von Miniaturansichten, Textspuren und Untertiteldateien) sowie die Metadaten zu diesen Dateien. Nachdem die digitalen Dateien in ein Medienobjekt geladen wurden, können Sie in den Codierungs- und Streaming-Workflows der Media Services verwendet werden.
 
@@ -71,7 +71,7 @@ Ein BLOB-Container dient zur Gruppierung eines Satzes von BLOBs. BLOB-Container 
 > 
 > 
 
-### <a id="locators"></a>Locator
+### <a name="a-idlocatorslocators"></a><a id="locators"/>Locators
 [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Anhand einer Zugriffsrichtlinie werden die Berechtigungen eines Clients und die Dauer definiert, für die der Client auf eine bestimmte Ressource zugreifen kann. Locator können eine n:1-Beziehung mit einer Zugriffsrichtlinie aufweisen, wobei verschiedene Locator verschiedenen Clients verschiedene Startzeiten und Verbindungstypen bereitstellen können, wobei alle dieselben Berechtigungen und Einstellungen für die Dauer verwenden; aufgrund einer Einschränkung der Richtlinie für den gemeinsamen Zugriff, die von Azure Storage Services festgelegt wird, können jedoch nicht mehr als fünf eindeutige Locator mit einem bestimmten Medienobjekt gleichzeitig verknüpft sein. 
 
 Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator, die zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) oder für den progressiven Download von Medien verwendet werden, und SAS-URL-Locator, die zum Hochladen oder Herunterladen von Mediendateien auf/von Azure Storage verwendet werden. 
@@ -127,7 +127,7 @@ Jedes Programm (Ereignis) ist mit einem Medienobjekt verknüpft. Zum Veröffentl
 
 Ein Kanal unterstützt bis zu drei gleichzeitig ausgeführte Programme, sodass Sie mehrere Archive desselben eingehenden Datenstroms erstellen können. Auf diese Weise können Sie verschiedene Teile eines Ereignisses nach Bedarf veröffentlichen und archivieren. Beispielsweise könnte Ihre Geschäftsanforderung darin bestehen, 6 Stunden eines Programms zu archivieren, jedoch nur die letzten 10 Minuten zu senden. Dazu müssen Sie zwei Programme erstellen, die gleichzeitig ausgeführt werden. Ein Programm wird auf die Archivierung von 6 Stunden des Ereignisses festgelegt. Dieses Programm wird jedoch nicht veröffentlicht. Das andere Programm wird auf die Archivierung von 10 Minuten festgelegt. Dieses Programm wird veröffentlicht.
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter 
 
 * [Arbeiten mit Kanälen, die zum Ausführen von Livecodierung mit Azure Media Services aktiviert wurden](media-services-manage-live-encoder-enabled-channels.md)
 * [Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen](media-services-live-streaming-with-onprem-encoders.md)
@@ -156,7 +156,7 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Schützen mit PlayReady/Widevine](media-services-protect-with-playready-widevine.md)
 
 ## <a name="delivering"></a>Übermitteln
-### <a id="dynamic_packaging"></a>Dynamische Paketerstellung
+### <a name="a-iddynamicpackagingdynamic-packaging"></a><a id="dynamic_packaging"/>Dynamische Paketerstellung
 Bei der Arbeit mit Media Services empfiehlt es sich, Zwischendateien immer in einen MP4-Satz mit adaptiver Bitrate zu codieren und anschließend mithilfe der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md)in das gewünschte Format zu konvertieren.
 
 ### <a name="streaming-endpoint"></a>Streamingendpunkt
@@ -186,7 +186,7 @@ Der progressive Download ermöglicht die Wiedergabe von Medien, bevor die gesamt
 >[!NOTE]
 >Verschlüsselte Medienobjekte müssen entschlüsselt werden, wenn diese für den progressiven Download verfügbar sein sollen.
 
-Um Benutzern URLs für den progressiven Download bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt. Anschließend müssen Sie den Namen der MP4-Datei anhängen. Beispiel:
+Um Benutzern URLs für den progressiven Download bereitzustellen, müssen Sie zuerst einen OnDemandOrigin-Locator erstellen. Beim Erstellen des Locators erhalten Sie den Basispfad für das Medienobjekt. Anschließend müssen Sie den Namen der MP4-Datei anhängen. Beispiel: 
 
 http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny_H264_650kbps_AAC_und_ch2_96kbps.mp4
 

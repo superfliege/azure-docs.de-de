@@ -10,20 +10,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 12/14/2017
 ms.author: jingwang
-ms.openlocfilehash: f7604e251bd62ec382ac9ace3de058e345abb863
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Speichern von Anmeldeinformationen in Azure Key Vault
 
-Sie können Anmeldeinformationen für Datenspeicher in einem [Azure Key Vault](../key-vault/key-vault-whatis.md)-Tresor speichern. Azure Data Factory ruft die Anmeldeinformationen ab, wenn eine Aktivität erfolgt, die den Datenspeicher verwendet. Derzeit unterstützen nur der [Dynamics-Connector](connector-dynamics-crm-office-365.md) und der [Salesforce-Connector](connector-salesforce.md) diese Funktion.
+Sie können Anmeldeinformationen für Datenspeicher in einem [Azure Key Vault](../key-vault/key-vault-whatis.md)-Tresor speichern. Azure Data Factory ruft die Anmeldeinformationen ab, wenn eine Aktivität erfolgt, die den Datenspeicher verwendet.
+
+Derzeit unterstützen der [Dynamics-Connector](connector-dynamics-crm-office-365.md), der [Salesforce-Connector](connector-salesforce.md) und einige kürzlich aktivierte Connectors diese Funktion. Weitere Connectors werden später bereitgestellt. Details finden Sie in den jeweiligen Connectorthemen. Für die Geheimnisfelder, die diese Funktion unterstützen, wird folgender Hinweis in der Beschreibung angezeigt: *„Sie können dieses Feld optional als SecureString markieren, um es sicher in ADF zu speichern, oder dieses Kennwort in Azure Key Vault speichern und von dort von der Kopieraktivität abrufen lassen, wenn Datenkopiervorgänge durchgeführt werden. Weitere Informationen finden Sie unter „Speichern von Anmeldeinformationen in Key Vault“.“*
 
 > [!NOTE]
-> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Einführung in Azure Data Factory](v1/data-factory-introduction.md) weiter.
+> Dieser Artikel bezieht sich auf Version 2 von Data Factory, die zurzeit als Vorschau verfügbar ist. Wenn Sie die allgemein verfügbare Version 1 (GA) des Data Factory-Diensts verwenden, helfen Ihnen die Informationen unter [Dokumentation zur Version 1 von Data Factory](v1/data-factory-introduction.md) weiter.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -42,9 +44,9 @@ Führen Sie die folgenden Schritte aus, um auf in Azure Key Vault gespeicherte A
 
 Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die "type"-Eigenschaft muss auf **AzureKeyVault** festgelegt werden. | Ja |
+| type | Die "type"-Eigenschaft muss auf **AzureKeyVault** festgelegt werden. | Ja |
 | baseUrl | Geben Sie die Azure Key Vault-URL an. | Ja |
 
 **Beispiel:**
@@ -65,11 +67,11 @@ Folgende Eigenschaften werden für den mit Azure Key Vault verknüpften Dienst u
 
 Die folgenden Eigenschaften werden unterstützt, wenn Sie ein Feld in einem verknüpften Dienst konfigurieren, das auf ein Geheimnis im Schlüsseltresor verweist:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| Typ | Die "type"-Eigenschaft des Felds muss auf **AzureKeyVaultSecret** festgelegt werden. | Ja |
+| type | Die "type"-Eigenschaft des Felds muss auf **AzureKeyVaultSecret** festgelegt werden. | Ja |
 | secretName | Der Name des Geheimnisses im Azure-Schlüsseltresor. | Ja |
-| secretVersion | Die Version des Geheimnisses im Azure-Schlüsseltresor.<br/>Falls nicht angegeben, wird immer die neueste Version des Geheimnisses verwendet.<br/>Falls angegeben, wird die angegebene Version verwendet.| Nein |
+| secretVersion | Die Version des Geheimnisses im Azure-Schlüsseltresor.<br/>Falls nicht angegeben, wird immer die neueste Version des Geheimnisses verwendet.<br/>Falls angegeben, wird die angegebene Version verwendet.| Nein  |
 | store | Verweist auf einen mit Azure Key Vault verknüpften Dienst, in dem Sie die Anmeldeinformationen speichern. | Ja |
 
 **Beispiel: (siehe den Abschnitt „Kennwort“)**

@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 12/14/2017
 ms.author: mblythe
 ms.custom: 
-ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28c2fc8246851807e1f65911d6a5d56322c5ea16
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="call-a-function-from-powerapps"></a>Aufrufen einer Funktion aus PowerApps
 Die Plattform [PowerApps](https://powerapps.microsoft.com) ermöglicht Fachleuten in Unternehmen die Erstellung von Apps ohne herkömmlichen Anwendungscode. Professionelle Entwickler können die Funktionen von PowerApps mithilfe von Azure Functions erweitern und gleichzeitig sicherstellen, dass sich PowerApps-App-Ersteller nicht mit technischen Details beschäftigen müssen.
@@ -45,34 +45,8 @@ In diesem Thema lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 + Ein aktives [PowerApps-Konto](https://powerapps.microsoft.com/tutorials/signup-for-powerapps.md) mit den gleichen Anmeldeinformationen wie Ihr Azure-Konto 
-+ Excel (als Datenquelle für Ihre App)
++ Excel und die [Excel-Beispieldatei](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx) (als Datenquelle für Ihre App)
 + Absolvierung des Tutorials [Erstellen einer OpenAPI-Definition für eine Funktion](functions-openapi-definition.md)
-
-
-## <a name="prepare-sample-data-in-excel"></a>Vorbereiten von Beispieldaten in Excel
-Als Erstes bereiten wir Beispieldaten für die Verwendung in der App vor. Kopieren Sie die folgende Tabelle in Excel: 
-
-| Titel      | Breitengrad  | Longtitude  | LastServiceDate | MaxOutput | ServiceRequired | EstimatedEffort | InspectionNotes                            |
-|------------|-----------|-------------|-----------------|-----------|-----------------|-----------------|--------------------------------------------|
-| Turbine 1  | 47.438401 | -121.383767 | 2/23/2017       | 2850      | Ja             | 6               | This is the second issue this month.       |
-| Turbine 4  | 47.433385 | -121.383767 | 5/8/2017        | 5400      | Ja             | 6               |                                            |
-| Turbine 33 | 47.428229 | -121.404641 | 6/20/2017       | 2800      |                 |                 |                                            |
-| Turbine 34 | 47.463637 | -121.358824 | 2/19/2017       | 2800      | Ja             | 7               |                                            |
-| Turbine 46 | 47.471993 | -121.298949 | 3/2/2017        | 1200      |                 |                 |                                            |
-| Turbine 47 | 47.484059 | -121.311171 | 8/2/2016        | 3350      |                 |                 |                                            |
-| Turbine 55 | 47.438403 | -121.383767 | 10/2/2016       | 2400      | Ja             | 40               | We have some parts coming in for this one. |
-
-1. Wählen Sie die Daten in Excel aus, und klicken Sie auf der Registerkarte **Start** auf **Als Tabelle formatieren**.
-
-    ![Formatieren als Tabelle](media/functions-powerapps-scenario/format-table.png)
-
-1. Wählen Sie eine beliebige Formatvorlage aus, und klicken Sie auf **OK**.
-
-1. Geben Sie bei ausgewählter Tabelle auf der Registerkarte **Entwurf** unter **Tabellenname** die Zeichenfolge `Turbines` ein.
-
-    ![Tabellenname](media/functions-powerapps-scenario/table-name.png)
-
-1. Speichern Sie die Excel-Arbeitsmappe.
 
 [!INCLUDE [Export an API definition](../../includes/functions-export-api-definition.md)]
 
@@ -97,35 +71,35 @@ Die benutzerdefinierte API (auch benutzerdefinierter Connector genannt) ist zwar
 ## <a name="create-an-app-and-add-data-sources"></a>Erstellen einer App und Hinzufügen von Datenquellen
 Nun können Sie die App in PowerApps erstellen und die Excel-Daten sowie die benutzerdefinierte API als Datenquellen für die App hinzufügen.
 
-1. Klicken Sie im linken Bereich von [web.powerapps.com](https://web.powerapps.com) auf **Neue App**.
+1. Klicken Sie auf [web.powerapps.com](https://web.powerapps.com) auf **Mit leerer App starten** > ![Symbol für Telefon-App ](media/functions-powerapps-scenario/icon-phone-app.png) (Telefon) > **Diese App erstellen**.
 
-1. Klicken Sie unter **Leere App** auf **Telefonlayout**.
+    ![Mit leerer App starten: Telefon-App](media/functions-powerapps-scenario/create-phone-app.png)
 
-    ![Erstellen einer Tablet-App](media/functions-powerapps-scenario/create-phone-app.png)
-
-    Die App wird in PowerApps Studio für Web geöffnet. Die folgende Abbildung zeigt die verschiedenen Bereiche von PowerApps Studio. In der Abbildung ist die fertige App zu sehen. Der mittlere Bereich ist bei Ihnen zunächst noch leer.
+    Die App wird in PowerApps Studio für Web geöffnet. Die folgende Abbildung zeigt die verschiedenen Bereiche von PowerApps Studio.
 
     ![PowerApps Studio](media/functions-powerapps-scenario/powerapps-studio.png)
 
-    **(1) Linke Navigationsleiste:** Enthält eine hierarchische Ansicht aller Steuerelemente der einzelnen Bildschirme.
+    **(A) Linke Navigationsleiste:** Enthält eine hierarchische Ansicht aller Steuerelemente der einzelnen Bildschirme.
 
-    **(2) Mittlerer Bereich:** Zeigt den Bildschirm, an dem Sie gerade arbeiten.
+    **(B) Mittlerer Bereich:** Zeigt den Bildschirm, an dem Sie gerade arbeiten.
 
-    **(3) Rechter Bereich:**: Dient zum Festlegen von Optionen wie Layout und Datenquellen.
+    **(C) Rechter Bereich:** Dient zum Festlegen von Optionen wie Layout und Datenquellen.
 
-    **(4) Dropdownliste für Eigenschaften:** Dient zum Auswählen der Eigenschaften, für die die Formeln gelten.
+    **(D) Dropdownliste für Eigenschaften:** Dient zum Auswählen der Eigenschaften, für die die Formeln gelten.
 
-    **(5) Bearbeitungsleiste:** Dient zum Hinzufügen von Formeln (wie in Excel), die das Verhalten der App definieren.
+    **(E) Bearbeitungsleiste:** Dient zum Hinzufügen von Formeln (wie in Excel), die das Verhalten der App definieren.
     
-    **(6) Menüband:** Hier können Sie Steuerelemente hinzufügen und Designelemente anpassen.
+    **(F) Menüband:** Ermöglicht das Hinzufügen von Steuerelementen und das Anpassen von Designelementen.
 
 1. Fügen Sie die Excel-Datei als Datenquelle hinzu.
 
-    1. Klicken Sie im rechten Bereich auf der Registerkarte **Daten** auf **Datenquelle hinzufügen**.
+    Die zu importierenden Daten sehen wie folgt aus:
 
-        ![Hinzufügen einer Datenquelle](media/functions-powerapps-scenario/add-data-source.png)
+    ![Zu importierende Excel-Daten](media/functions-powerapps-scenario/excel-table.png)
 
-    1. Klicken Sie auf **Der App statische Daten hinzufügen**.
+    1. Klicken Sie auf der App-Canvas auf **Mit Daten verbinden**.
+
+    1. Klicken Sie im Bereich **Daten** auf **Der App statische Daten hinzufügen**.
 
         ![Hinzufügen einer Datenquelle](media/functions-powerapps-scenario/add-static-data.png)
 
@@ -135,9 +109,10 @@ Nun können Sie die App in PowerApps erstellen und die Excel-Daten sowie die ben
 
         ![Hinzufügen einer Datenquelle](media/functions-powerapps-scenario/choose-table.png)
 
+
 1. Fügen Sie die benutzerdefinierte API als Datenquelle hinzu.
 
-    1. Klicken Sie auf der Registerkarte **Daten** auf **Datenquelle hinzufügen**.
+    1. Klicken Sie im Bereich **Daten** auf **Datenquelle hinzufügen**.
 
     1. Klicken Sie auf **Turbine Repair**.
 
@@ -156,17 +131,21 @@ Nachdem die Datenquellen nun in der App verfügbar sind, fügen Sie ihr einen Bi
 
     ![Ändern des Titels und Anpassen der Kataloggröße](media/functions-powerapps-scenario/gallery-title.png)
 
-1. Wählen Sie den Katalog aus, und ändern Sie im rechten Bereich auf der Registerkarte **Daten** die Datenquelle von **CustomGallerySample** in **Turbines**.
+1. Vergewissern Sie sich, dass der Katalog ausgewählt ist, und klicken Sie im rechten Bereich unter **Eigenschaften** auf **CustomGallerySample**.
 
     ![Ändern der Datenquelle](media/functions-powerapps-scenario/change-data-source.png)
 
+1. Wählen Sie im Bereich **Daten** in der Liste die Option **Turbines** aus.
+
+    ![Auswählen einer Datenquelle](media/functions-powerapps-scenario/select-data-source.png)
+
     Da das Dataset kein Bild enthält, passen wir als Nächstes das Layout an, damit es besser zu den Daten passt. 
 
-1. Ändern Sie im rechten Bereich die Option **Layout** in **Titel, Untertitel und Text**.
+1. Ändern Sie im Bereich **Daten** die Option **Layout** in **Titel, Untertitel und Text**.
 
     ![Ändern des Kataloglayouts](media/functions-powerapps-scenario/change-layout.png)
 
-1. Ändern Sie als letzten Schritt im rechten Bereich die im Katalog angezeigten Felder.
+1. Ändern Sie als Letztes im Bereich **Daten** die im Katalog angezeigten Felder.
 
     ![Ändern der Katalogfelder](media/functions-powerapps-scenario/change-fields.png)
     
@@ -185,6 +164,8 @@ Nachdem die Datenquellen nun in der App verfügbar sind, fügen Sie ihr einen Bi
 1. Der ursprüngliche Bildschirm wird in der App nicht benötigt. Zeigen Sie im linken Bereich auf **Screen1**, klicken Sie auf **. . .**, und klicken Sie anschließend auf **Löschen**.
 
     ![Löschen des Bildschirms](media/functions-powerapps-scenario/delete-screen.png)
+
+1. Klicken Sie auf **Datei**, und benennen Sie die App. Klicken Sie im linken Menü auf **Speichern** und anschließend rechts unten auf **Speichern**.
 
 In einer Produktions-App werden üblicherweise noch weitere Formatierungsschritte ausgeführt, wir widmen uns an dieser Stelle jedoch dem wichtigen Aspekt dieses Szenarios: dem Aufrufen der Funktion.
 
@@ -229,7 +210,7 @@ Sie verfügen nun über eine App, die Zusammenfassungsdaten für die einzelnen T
 ## <a name="run-the-app"></a>Ausführen der App
 Sie verfügen nun über eine vollständige App! Führen Sie als Nächstes die App aus, um die Funktionsaufrufe in Aktion zu erleben.
 
-1. Klicken Sie rechts oben in PowerApps Studio auf die Schaltfläche zum Ausführen: ![Schaltfläche zum Ausführen der App](media/functions-powerapps-scenario/f5-arrow-sm.png).
+1. Klicken Sie rechts oben in PowerApps Studio auf die Schaltfläche zum Ausführen: ![Schaltfläche zum Ausführen der App](media/functions-powerapps-scenario/f5-arrow-sm.png)zu erstellen und zu verwalten.
 
 1. Wählen Sie eine Turbine aus, die für **ServiceRequired** den Wert `Yes` besitzt, und klicken Sie anschließend auf die Schaltfläche für die Kostenberechnung (**Calculate costs**). Das Ergebnis sollte in etwa wie folgt aussehen:
 

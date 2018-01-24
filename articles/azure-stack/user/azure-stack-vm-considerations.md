@@ -3,7 +3,7 @@ title: "Unterschiede und Aspekte für virtuelle Computer in Azure Stack | Micros
 description: Es werden die Unterschiede und Aspekte beim Verwenden von virtuellen Computern in Azure Stack beschrieben.
 services: azure-stack
 documentationcenter: 
-author: mattbriggs
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: 6613946D-114C-441A-9F74-38E35DF0A7D7
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
-ms.author: mabrigg
-ms.openlocfilehash: fe655facf4da99d951a430db8ce603cc0ec7f224
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 11/17/2018
+ms.author: brenduns
+ms.openlocfilehash: 6eafa2a5058ef1309cbf50be069ea1bb12f7e5b9
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Aspekte von virtuellen Computern in Azure Stack
 
@@ -40,9 +40,9 @@ Bei virtuellen Computern handelt es sich hier um bedarfsgesteuerte, skalierbare 
 |VM-Verfügbarkeitsgruppen|Mehrere Fehlerdomänen (zwei oder drei pro Region)<br>Mehrere Updatedomänen<br>Unterstützung von verwalteten Datenträgern|Einzelne Fehlerdomäne<br>Einzelne Updatedomäne<br>Keine Unterstützung von verwalteten Datenträgern|
 |VM-Skalierungsgruppen|Automatische Skalierung wird unterstützt|Automatische Skalierung wird nicht unterstützt<br>Fügen Sie einer Skalierungsgruppe mit dem Portal, Resource Manager-Vorlagen oder PowerShell weitere Instanzen hinzu.
 
-## <a name="virtual-machine-sizes"></a>Größen virtueller Computer 
+## <a name="virtual-machine-sizes"></a>Größen virtueller Computer
 
-Das Azure Stack Development Kit unterstützt die folgenden Größen: 
+Azure Stack unterstützt die folgenden Größen:
 
 | Typ | Größe | Bereich der unterstützten Größen |
 | --- | --- | --- |
@@ -55,33 +55,33 @@ Das Azure Stack Development Kit unterstützt die folgenden Größen:
 |Arbeitsspeicheroptimiert|DS-Serie|DS11 - DS14|
 |Arbeitsspeicheroptimiert |DSv2-Serie|DS11_v2 - DS14_v2|
 
-Die VM-Größen und ihre zugeordneten Ressourcenmengen sind für Azure Stack und Azure konsistent. Dies umfasst beispielsweise die Arbeitsspeichermenge, die Anzahl von Kernen und die Anzahl bzw. Größe von Datenträgern für Daten, die erstellt werden können. Die Leistung der gleichen VM-Größe in Azure Stack richtet sich aber nach den zugrunde liegenden Merkmalen der jeweiligen Azure Stack-Umgebung.
+Die VM-Größen und ihre zugeordneten Ressourcenmengen sind für Azure Stack und Azure konsistent. Diese Konsistenz umfasst beispielsweise die Arbeitsspeichermenge, die Anzahl von Kernen und die Anzahl bzw. Größe von Datenträgern für Daten, die erstellt werden können. Die Leistung der gleichen VM-Größe in Azure Stack richtet sich aber nach den zugrunde liegenden Merkmalen der jeweiligen Azure Stack-Umgebung.
 
-## <a name="virtual-machine-extensions"></a>VM-Erweiterungen 
+## <a name="virtual-machine-extensions"></a>VM-Erweiterungen
 
- Das Azure Stack Development Kit unterstützt die folgenden Versionen von VM-Erweiterungen:
+ Azure Stack unterstützt die folgenden Versionen von VM-Erweiterungen:
 
 ![VM-Erweiterungen](media/azure-stack-vm-considerations/vm-extensions.png)
 
 Verwenden Sie das folgende PowerShell-Skript, um die Liste mit den VM-Erweiterungen abzurufen, die in Ihrer Azure Stack-Umgebung verfügbar sind:
 
-```powershell 
+```powershell
 Get-AzureRmVmImagePublisher -Location local | `
   Get-AzureRmVMExtensionImageType | `
   Get-AzureRmVMExtensionImage | `
   Select Type, Version | `
-  Format-Table -Property * -AutoSize 
+  Format-Table -Property * -AutoSize
 ```
 
-## <a name="api-versions"></a>API-Versionen 
+## <a name="api-versions"></a>API-Versionen
 
-VM-Features im Azure Stack Development Kit unterstützen die folgenden API-Versionen:
+VM-Features in Azure Stack unterstützen die folgenden API-Versionen:
 
 ![VM-Ressourcentypen](media/azure-stack-vm-considerations/vm-resoource-types.png)
 
 Sie können das folgende PowerShell-Skript verwenden, um die API-Versionen für die VM-Features abzurufen, die in Ihrer Azure Stack-Umgebung verfügbar sind:
 
-```powershell 
+```powershell
 Get-AzureRmResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
   Select * -Expand ApiVersions | `

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: b44129400e878e9032623e4d0962153d50303660
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 25b89571277e393fbad7cdd6e193d9b3f02f3ee5
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="install-powershell-for-azure-stack"></a>Installieren von PowerShell für Azure Stack  
 
@@ -49,7 +49,7 @@ Deinstallieren Sie vor der Installation der erforderlichen Version unbedingt all
    Get-Module -ListAvailable | where-Object {$_.Name -like “Azure*”} | Uninstall-Module
    ```
 
-* Melden Sie sich beim Development Kit an. Wenn Sie eine VPN-Verbindung herstellen möchten, melden Sie sich beim Windows-basierten externen Client an. Löschen Sie aus den Ordnern `C:\Program Files (x86)\WindowsPowerShell\Modules` und `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` alle Ordner, die mit „Azure“ beginnen. Durch das Löschen dieser Ordner werden alle vorhandenen PowerShell-Module aus den Benutzerbereichen „AzureStackAdmin“ und „global“ entfernt. 
+* Melden Sie sich beim Development Kit an. Wenn Sie eine VPN-Verbindung herstellen möchten, melden Sie sich beim Windows-basierten externen Client an. Löschen Sie aus den Ordnern `C:\Program Files\WindowsPowerShell\Modules` und `C:\Users\AzureStackAdmin\Documents\WindowsPowerShell\Modules` alle Ordner, die mit „Azure“ beginnen. Durch das Löschen dieser Ordner werden alle vorhandenen PowerShell-Module aus den Benutzerbereichen „AzureStackAdmin“ und „global“ entfernt. 
 
 In den folgenden Abschnitten werden die Schritte beschrieben, die zum Installieren von PowerShell für Azure Stack erforderlich sind. PowerShell kann in Azure Stack-Instanzen installiert werden, die in verbundenen, partiell verbundenen oder nicht verbundenen Szenarien betrieben werden. 
 
@@ -126,7 +126,6 @@ In einem nicht verbundenen Szenario müssen Sie zuerst die PowerShell-Module auf
      -SourceLocation $SourceLocation `
      -InstallationPolicy Trusted
 
-   ```powershell
    Install-Module AzureRM `
      -Repository $RepoName
 

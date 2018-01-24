@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 11/21/2017
 ms.author: sujayt
-ms.openlocfilehash: 726c12d3c91a6e4fdc77397a736aaa161f0e830c
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 02d68d091cbbe02e1b5b628924ded1c2155f7119
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Problembehandlung für Azure-zu-Azure-VM-Replikationsprobleme
 
@@ -131,6 +131,20 @@ Wenn Ihre Azure-VM bei der Auswahl zur Aktivierung der Replikation nicht angezei
 
 Sie können das [Skript zum Entfernen veralteter ASR-Konfigurationen](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412) verwenden und die veraltete Site Recovery-Konfiguration auf der Azure-VM entfernen. Nach dem Entfernen der veralteten Konfiguration sollte die VM beim Aktivieren der Replikation angezeigt werden.
 
+## <a name="vms-provisioning-state-is-not-valid-error-code-150019"></a>Der Bereitstellungsstatus des virtuellen Computers ist ungültig (Fehlercode 150019)
+
+Um die Replikation auf dem virtuellen Computer zu aktivieren, muss der Bereitstellungsstatus **Erfolgreich** lauten. Sie können den Status des virtuellen Computers überprüfen, indem Sie die nachstehenden Schritte ausführen.
+
+1.  Wählen Sie unter **Alle Dienste** im Azure-Portal **Ressourcen-Explorer** aus.
+2.  Erweitern Sie die Liste **Abonnements**, und wählen Sie Ihr Abonnement aus.
+3.  Erweitern Sie die Liste **Ressourcengruppen**, und wählen Sie die Ressourcengruppe des virtuellen Computers aus.
+4.  Erweitern Sie die Liste **Ressourcen**, und wählen Sie den virtuellen Computer aus.
+5.  Überprüfen Sie das Feld **provisioningState** in der Instanzansicht rechts.
+
+### <a name="fix-the-problem"></a>Beheben des Problems
+
+- Wenn **provisioningState** den Status **Fehler** aufweist, wenden Sie sich mit den Informationen zur Problembehandlung an den Support.
+- Wenn **provisioningState** den Status **Aktualisieren** aufweist, wird möglicherweise gerade eine andere Erweiterung bereitgestellt. Überprüfen Sie, ob gerade Vorgänge mit dem virtuellen Computer ausgeführt werden, warten Sie, bis diese abgeschlossen sind, und wiederholen Sie dann den Auftrag **Replikation aktivieren** für die Sitewiederherstellung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Replizieren virtueller Azure-Computer](azure-to-azure-quickstart.md)

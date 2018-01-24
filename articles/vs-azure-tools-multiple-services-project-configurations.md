@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2017
 ms.author: kraigb
-ms.openlocfilehash: a6f9b300cd832c5f9615f70ee297e3c5ad728e44
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 8125ef36f730b745d63c39493f48d14a5a33d76c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="configuring-your-azure-project-in-visual-studio-to-use-multiple-service-configurations"></a>Konfigurieren Ihres Azure-Projekts in Visual Studio zur Verwendung mehrerer Dienstkonfigurationen
 
@@ -54,7 +54,7 @@ Die Option **HTTPS-Endpunkt** ist nur verfügbar, wenn Sie bereits einen HTTPS-E
 
 Wenn Sie bereits einen HTTPS-Endpunkt hinzugefügt haben, ist die Option „HTTPS-Endpunkt“ standardmäßig aktiviert. Visual Studio startet nun beim Start des Debugvorgangs neben dem Browser für den HTTP-Endpunkt einen Browser für diesen Endpunkt, vorausgesetzt dass beide Startoptionen aktiviert sind.
 
-### <a name="diagnostics"></a>Diagnose
+### <a name="diagnostics"></a>Diagnostics
 
 Die Diagnosefunktion ist standardmäßig für die Webrolle aktiviert. Das Azure-Clouddienstprojekt und Speicherkonto wurden auf die Verwendung des lokalen Speicheremulators festgelegt. Wenn die Bereitstellung in Azure erfolgen soll, klicken Sie auf die Generatorschaltfläche (**…**), um stattdessen Azure-Speicher zu verwenden. Sie können die Diagnosedaten entweder bei Bedarf oder in automatisch geplanten Intervallen an das Speicherkonto übertragen. Weitere Informationen zur Azure-Diagnose erhalten Sie unter [Aktivieren der Diagnose in Azure Cloud Services und Virtual Machines](cloud-services/cloud-services-dotnet-diagnostics.md).
 
@@ -77,7 +77,7 @@ Wählen Sie für neue oder vorhandene Verbindungszeichenfolgen **...** * rechts 
 
 1. Wählen Sie unter **Verbindung herstellen über** die Option **Ihr Abonnement**aus, um ein Speicherkonto aus einem Abonnement auszuwählen. Visual Studio ruft dann die Anmeldeinformationen des Speicherkontos automatisch aus der `.publishsettings`-Datei ab.
 1. Mit der Option **Manuell eingegebene Anmeldeinformationen** können Sie den Kontonamen und -schlüssel mithilfe von Informationen aus dem Azure-Portal direkt angeben. Kopieren des Kontoschlüssels: a. Navigieren Sie im Azure-Portal zum Speicherkonto, und wählen Sie **Schlüssel verwalten**.
-    2. Markieren Sie auf der Seite **Schlüsselzugriff verwalten** den Text des primären Zugriffsschlüssels, und drücken Sie dann STRG+C, um ihn zu kopieren.
+    2. Um den Kontoschlüssel zu kopieren, navigieren Sie im Azure-Portal zu dem Speicherkonto, wählen **Einstellungen > Zugriffsschlüssel** aus und verwenden die Schaltfläche „Kopieren“, um den primären Zugriffsschlüssel in die Zwischenablage zu kopieren.
 1. Wählen Sie eine der Verbindungsoptionen aus. Bei **Benutzerdefinierte Endpunkte angeben** werden Sie aufgefordert, bestimmte URLs für Blobs, Tabellen und Warteschlangen anzugeben. Benutzerdefinierte Endpunkte ermöglichen Ihnen die Verwendung [benutzerdefinierter Domänen](storage/blobs/storage-custom-domain-name.md) und eine genauere Steuerung des Zugriffs. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Verbindungszeichenfolgen](./storage/common/storage-configure-connection-string.md).
 1. Wählen Sie **OK** und dann **Datei > Speichern**, um die Konfiguration mit der neuen Verbindungszeichenfolge zu aktualisieren.
 

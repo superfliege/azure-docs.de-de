@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 956f44068db8fe9c8c7a839a0ce80c19e2b2f11c
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 58c8ba2682cc9cc8f2089d2a70cc95a03079832e
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="manage-azure-disks-with-powershell"></a>Verwalten von Azure-Datenträgern mit PowerShell
 
@@ -151,7 +151,7 @@ In diesem Tutorial haben Sie Informationen zu VM-Datenträgern erhalten, darunte
 > * Datenträger
 > * Standard- und Premium-Datenträger
 > * Datenträgerleistung
-> * Anfügen und Vorbereiten von Datenträgern
+> * Anfügen und Vorbereiten von Datenträgern für Daten
 
 Im nächsten Tutorial erfahren Sie, wie die VM-Konfiguration automatisiert werden kann.
 

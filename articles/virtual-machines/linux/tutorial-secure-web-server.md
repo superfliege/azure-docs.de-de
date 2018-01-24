@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie den NGINX-Webserver mit SSL-Zertifikaten auf 
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/17/2017
+ms.date: 12/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d2d6a0b00704e1d97be9a4c5bd00ba37374419e5
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 6b333b75f571e367470037ab9ce8b273fcae5498
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="secure-a-web-server-with-ssl-certificates-on-a-linux-virtual-machine-in-azure"></a>Sichern eines Webservers mit SSL-Zertifikaten auf einem virtuellen Linux-Computer in Azure
 Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Verschlüsseln des Webdatenverkehrs verwendet werden. Diese SSL-Zertifikate können in Azure Key Vault gespeichert werden. Sie ermöglichen sichere Bereitstellungen von Zertifikaten auf virtuellen Linux-Computern in Azure. In diesem Tutorial lernen Sie Folgendes:
@@ -33,7 +33,7 @@ Zum Sichern von Webservern kann ein SSL-Zertifikat (Secure Sockets Layer) zum Ve
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.  
+Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.22 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0]( /cli/azure/install-azure-cli) Informationen dazu.  
 
 
 ## <a name="overview"></a>Übersicht
@@ -83,7 +83,7 @@ vm_secret=$(az vm format-secret --secret "$secret")
 ### <a name="create-a-cloud-init-config-to-secure-nginx"></a>Erstellen einer cloud-init-Konfiguration zum Sichern von NGINX
 [Cloud-init](https://cloudinit.readthedocs.io) ist ein weit verbreiteter Ansatz zum Anpassen einer Linux-VM beim ersten Start. Sie können mit cloud-init Pakete installieren und Dateien schreiben oder Benutzer und Sicherheit konfigurieren. Da cloud-init während des ersten Startvorgangs ausgeführt wird, müssen Sie keine zusätzlichen Schritte oder erforderlichen Agents auf Ihre Konfiguration anwenden.
 
-Wenn Sie einen virtuellen Computer erstellen, werden Zertifikate und Schlüssel im geschützten Verzeichnis */var/lib/waagent/* gespeichert. Verwenden Sie cloud-init, um die Vorgänge zum Hinzufügen des Zertifikats zum virtuellen Computer und zum Konfigurieren des Webservers zu automatisieren. In diesem Beispiel wird der NGINX-Webserver installiert und konfiguriert. Dasselbe Verfahren kann zum Installieren und Konfigurieren von Apache verwendet werden. 
+Wenn Sie einen virtuellen Computer erstellen, werden Zertifikate und Schlüssel im geschützten Verzeichnis */var/lib/waagent/* gespeichert. Verwenden Sie cloud-init, um die Vorgänge zum Hinzufügen des Zertifikats zum virtuellen Computer und zum Konfigurieren des Webservers zu automatisieren. In diesem Beispiel installieren und konfigurieren Sie den NGINX-Webserver. Dasselbe Verfahren kann zum Installieren und Konfigurieren von Apache verwendet werden. 
 
 Erstellen Sie eine Datei namens *cloud-init-web-server.txt*, und fügen Sie die folgende Konfiguration ein:
 

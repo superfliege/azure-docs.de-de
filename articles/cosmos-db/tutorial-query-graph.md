@@ -1,5 +1,5 @@
 ---
-title: "Wie werden Abfragen von Diagrammdaten in Azure Cosmos DB durchgeführt? | Microsoft Docs"
+title: "Wie werden Abfragen von Diagrammdaten in Azure Cosmos DB durchgeführt? | Microsoft-Dokumentation"
 description: "Erfahren Sie, wie Sie Abfragen von Diagrammdaten in Azure Cosmos DB durchführen."
 services: cosmos-db
 documentationcenter: 
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 05/10/2017
+ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: 358f2650f767057f4a220d3b3b8507de4ce14e6f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 5a635abfa9fa10cd8c8498e3c95a17af997cea3e
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-with-the-graph-api-preview"></a>Azure Cosmos DB: Wie werden Abfragen mit der Graph-API (Vorschau) durchgeführt?
+# <a name="azure-cosmos-db-how-to-query-with-the-graph-api"></a>Azure Cosmos DB: Wie werden Abfragen mit der Graph-API durchgeführt?
 
-Die [Graph-API](graph-introduction.md) (Vorschau) von Azure Cosmos DB unterstützt [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-Abfragen. Dieser Artikel enthält Beispieldokumente und Abfragen, um Ihnen den Einstieg zu erleichtern. Eine detaillierte Gremlin-Referenz finden Sie im Artikel [Azure Cosmos DB Gremlin graph support](gremlin-support.md) (Azure Cosmos DB: Gremlin-Graphunterstützung).
+Die [Graph-API](graph-introduction.md) von Azure Cosmos DB unterstützt [Gremlin](https://github.com/tinkerpop/gremlin/wiki)-Abfragen. Dieser Artikel enthält Beispieldokumente und Abfragen, um Ihnen den Einstieg zu erleichtern. Eine detaillierte Gremlin-Referenz finden Sie im Artikel [Azure Cosmos DB Gremlin graph support](gremlin-support.md) (Azure Cosmos DB: Gremlin-Graphunterstützung).
 
 In diesem Artikel werden die folgenden Aufgaben behandelt: 
 
@@ -85,4 +85,4 @@ In diesem Tutorial haben Sie die folgenden Aufgaben ausgeführt:
 Sie können jetzt mit dem nächsten Tutorial fortfahren, um zu erfahren, wie Sie Ihre Daten global verteilen.
 
 > [!div class="nextstepaction"]
-> [Globales Verteilen Ihrer Daten](tutorial-global-distribution-documentdb.md)
+> [Globales Verteilen Ihrer Daten](tutorial-global-distribution-sql-api.md)

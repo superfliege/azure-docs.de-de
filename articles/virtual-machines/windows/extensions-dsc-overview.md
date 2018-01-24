@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 01/09/2017
 ms.author: zachal
-ms.openlocfilehash: c05c2d541a5f526f362f9cd72fe6d878374112b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: deb360e36b68f7ddb13b00946c700d0c83890ca6
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -37,11 +37,9 @@ In diesem Artikel wird die PowerShell-Erweiterung zum Konfigurieren des gewünsc
 ## <a name="terms-and-concepts"></a>Begriffe und Konzepte
 Für dieses Handbuch müssen Sie mit folgenden Konzepten vertraut sein:
 
-Konfiguration: Ein DSC-Konfigurationsdokument. 
-
-Knoten: Ein Ziel für die DSC-Konfiguration. In diesem Dokument bezieht sich „Knoten“ immer auf einen virtuellen Azure-Computer.
-
-Konfigurationsdaten: Eine PSD1-Datei mit Umgebungsdaten für eine Konfiguration.
+* **Konfiguration:** ein DSC-Konfigurationsdokument. 
+* **Knoten:** ein Ziel für die DSC-Konfiguration. In diesem Dokument bezieht sich „Knoten“ immer auf einen virtuellen Azure-Computer.
+* **Konfigurationsdaten:** eine PSD1-Datei mit Umgebungsdaten für eine Konfiguration
 
 ## <a name="architectural-overview"></a>Übersicht über die Architektur
 Die Azure DSC-Erweiterung nutzt das VM-Agent-Framework von Azure zur Übermittlung und Inkraftsetzung von DSC-Konfigurationen auf virtuellen Azure-Computern sowie zur Erstellung entsprechender Berichte. Die DSC-Erweiterung erwartet eine ZIP-Datei mit mindestens einem Konfigurationsdokument sowie einen Parametersatz, der entweder über das Azure PowerShell SDK oder über das Azure-Portal bereitgestellt wird.
@@ -146,7 +144,9 @@ Set-AzureRmVmDscExtension -Version 2.21 -ResourceGroupName $resourceGroup -VMNam
 ## <a name="logging"></a>Protokollierung
 Speicherort der Protokolle:
 
-C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[Versionsnummer]
+```
+C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\[Version Number]
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu PowerShell DSC finden Sie im [PowerShell-Dokumentationscenter](https://msdn.microsoft.com/powershell/dsc/overview). 

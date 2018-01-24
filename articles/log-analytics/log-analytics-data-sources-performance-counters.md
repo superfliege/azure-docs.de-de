@@ -1,6 +1,6 @@
 ---
 title: Sammeln und Analysieren von Leistungsindikatoren in Azure Log Analytics | Microsoft-Dokumentation
-description: "Daten aus Leistungsindikatoren werden von Log Analytics gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im OMS-Repository gespeichert werden und wie sie im OMS-Portal analysiert werden können."
+description: "Daten aus Leistungsindikatoren werden von Log Analytics gesammelt, um die Leistung von Windows- und Linux-Agents zu analysieren.  Dieser Artikel beschreibt, wie Sie die Sammlung von Leistungsindikatoren sowohl für Windows- als auch für Linux-Agents konfigurieren, wie die Daten im Arbeitsbereich gespeichert werden und wie sie im Azure-Portal analysiert werden können."
 services: log-analytics
 documentationcenter: 
 author: mgoedtel
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/19/2017
 ms.author: magoedte
-ms.openlocfilehash: d0345155b2c13bd0b4341ce53272e7d84cd233fb
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 0f7119f280f2eb51222ade2ea7984b560a02f667
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Windows- und Linux-Leistungsindikatoren in Log Analytics
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Log Analytics kann in sehr kurzen Intervallen Leistungsindikatoren abrufen, um Analysen nahezu in Echtzeit zu ermöglichen. Darüber hinaus kann Log Analytics Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -26,13 +26,13 @@ Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Ha
 ![Leistungsindikatoren](media/log-analytics-data-sources-performance-counters/overview.png)
 
 ## <a name="configuring-performance-counters"></a>Konfigurieren von Leistungsindikatoren
-Sie konfigurieren Leistungsindikatoren im OMS-Portal über das [Menü „Daten“ in den Log Analytics-Einstellungen](log-analytics-data-sources.md#configuring-data-sources).
+Sie konfigurieren Leistungsindikatoren über das [Menü „Daten“ in den Log Analytics-Einstellungen](log-analytics-data-sources.md#configuring-data-sources).
 
-Wenn Sie die Windows- oder Linux-Leistungsindikatoren zum ersten Mal für einen neuen OMS-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen.  Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.  Stellen Sie sicher, dass alle Leistungsindikatoren aktiviert sind, die Sie anfänglich erstellen möchten, und klicken Sie dann auf **Ausgewählte Leistungsindikatoren hinzufügen**.
+Wenn Sie die Windows- oder Linux-Leistungsindikatoren zum ersten Mal für einen neuen Log Analytics-Arbeitsbereich konfigurieren, haben Sie die Möglichkeit, schnell mehrere allgemeine Indikatoren zu erstellen.  Diese werden in einer Liste aufgeführt, und neben jedem Indikator finden Sie ein Kontrollkästchen.  Stellen Sie sicher, dass alle Leistungsindikatoren aktiviert sind, die Sie anfänglich erstellen möchten, und klicken Sie dann auf **Ausgewählte Leistungsindikatoren hinzufügen**.
 
 Sie können für Windows-Leistungsindikatoren eine bestimmte Instanz für jeden Leistungsindikator auswählen. Bei Linux-Leistungsindikatoren gilt, dass die Instanz eines Indikators, die Sie wählen, für alle untergeordneten Indikatoren des übergeordneten Indikators gilt. Die folgende Tabelle zeigt die allgemeinen Instanzen, die jeweils für die Linux- und Windows-Leistungsindikatoren verfügbar sind.
 
-| Instanzname | Beschreibung |
+| Instanzname | BESCHREIBUNG |
 | --- | --- |
 | \_Gesamt |Gesamtsumme aller Instanzen |
 | \* |Alle Instanzen |
@@ -65,7 +65,7 @@ Gehen Sie folgendermaßen vor, um einen neuen Linus-Leistungsindikator hinzuzuf�
 5. Wenn Sie mit dem Hinzufügen von Leistungsindikatoren fertig sind, klicken Sie auf die Schaltfläche **Speichern** am oberen Bildschirmrand, um die Konfiguration zu speichern.
 
 #### <a name="configure-linux-performance-counters-in-configuration-file"></a>Konfigurieren von Linux-Leistungsindikatoren in der Konfigurationsdatei
-Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des OMS-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agenten bearbeiten.  Die gesammelten Leistungsmetriken, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<Arbeitsbereichs-ID\>/conf/omsagent.conf** gesteuert.
+Sie müssen die Linux-Leistungsindikatoren nicht mithilfe des Azure-Portals konfigurieren, sondern können die Konfigurationsdateien auch auf dem Linux-Agent bearbeiten.  Die gesammelten Leistungsmetriken, werden durch die Konfiguration in **/etc/opt/microsoft/omsagent/\<Arbeitsbereichs-ID\>/conf/omsagent.conf** gesteuert.
 
 Jedes Objekt oder jede Kategorie von Leistungsindikatoren, die gesammelt werden sollen, sollten in der Konfigurationsdatei als einzelnes `<source>` -Element definiert sein. Die Syntax folgt dem unten angegebenen Muster.
 
@@ -80,7 +80,7 @@ Jedes Objekt oder jede Kategorie von Leistungsindikatoren, die gesammelt werden 
 
 Die in diesem Element verwendeten Parameter werden in der folgenden Tabelle beschrieben.
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:--|:--|
 | object\_name | Der Objektname für die Sammlung. |
 | instance\_regex |  Ein *regulärer Ausdruck*, der definiert, welche Instanzen gesammelt werden sollen. Der Wert `.*` gibt alle Instanzen an. Sie können `_Total` angeben, um die Prozessormetriken nur für die Instanz „\_Total“ zu sammeln. Um die Prozessmetriken nur für die crond- und sshd-Instanzen zu sammeln, können Sie `(crond\|sshd)` angeben. |
@@ -182,12 +182,12 @@ Im Folgenden wird die Standardkonfiguration für Leistungsmetriken beschrieben.
     </source>
 
 ## <a name="data-collection"></a>Datensammlung
-Log Analytics sammelt die Daten aller angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, sondern die Rohdaten stehen während des durch Ihr OMS-Abonnement festgelegten Zeitraums in allen Protokollsuchansichten als unformatierte Daten zur Verfügung.
+Log Analytics sammelt die Daten aller angegebenen Leistungsindikatoren im angegebenen Stichprobenintervall auf allen Agents, auf denen diese Indikatoren installiert sind.  Die Daten werden nicht aggregiert, sondern die Rohdaten stehen während des durch Ihr Abonnement festgelegten Zeitraums in allen Protokollsuchansichten zur Verfügung.
 
 ## <a name="performance-record-properties"></a>Eigenschaften von Leistungsdatensätzen
 Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Computer |Computer, auf dem das Ereignis gesammelt wurde. |
 | CounterName |Name des Leistungsindikators. |
@@ -206,7 +206,7 @@ Leistungsdatensätze weisen den Typ **Perf** auf und besitzen die in der folgend
 ## <a name="log-searches-with-performance-records"></a>Protokollsuchvorgänge mit Leistungsdatensätzen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Leistungsdatensätze abrufen.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 |:--- |:--- |
 | Perf |Alle Leistungsdaten. |
 | Perf &#124; where Computer == "MyComputer" |Alle Leistungsdaten eines bestimmten Computers. |
@@ -220,12 +220,7 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, d
 | Perf &#124; where CounterName == "Prozessorzeit (%)" and InstanceName == "_Total" and Computer == "MyComputer" &#124; summarize ["min(CounterValue)"] = min(CounterValue), ["avg(CounterValue)"] = avg(CounterValue), ["percentile75(CounterValue)"] = percentile(CounterValue, 75), ["max(CounterValue)"] = max(CounterValue) by bin(TimeGenerated, 1h), Computer |Durchschnittliche, minimale, maximale und 75.-Perzentil-CPU-Nutzung pro Stunde für einen bestimmten Computer |
 | Perf &#124; where ObjectName == "MSSQL$INST2:Databases" and InstanceName == "master" | Alle Leistungsdaten aus dem Datenbank-Leistungsobjekt für die Masterdatenbank von der benannten SQL Server-Instanz INST2.  
 
-## <a name="viewing-performance-data"></a>Anzeigen von Leistungsdaten
-Wenn Sie eine Protokollsuche nach Leistungsdaten durchführen, wird standardmäßig die **Listenansicht** angezeigt.  Um die Daten in grafischer Form anzuzeigen, klicken Sie auf **Metriken**.  Für eine detaillierte grafische Darstellung klicken Sie auf **+** neben dem gewünschten Leistungsindikator.  
 
-![Metrikenansicht, reduziert](media/log-analytics-data-sources-performance-counters/metricscollapsed.png)
-
-Informationen zum Aggregieren von Leistungsdaten in einer Protokollsuche finden Sie unter [On-demand metric aggregation and visualization in OMS](http://blogs.technet.microsoft.com/msoms/2016/02/26/on-demand-metric-aggregation-and-visualization-in-oms/) (On-Demand-Aggregation und -Visualisierung von Metriken in OMS).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

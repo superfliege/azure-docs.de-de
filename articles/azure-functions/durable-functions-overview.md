@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: fa0d5cf7469a1a36fe0ab9a712cd4f8c963ceb48
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Übersicht über Durable Functions (Vorschauversion)
 
@@ -215,7 +215,7 @@ public static async Task Run(DurableOrchestrationContext ctx)
         if (approvalEvent == await Task.WhenAny(approvalEvent, durableTimeout))
         {
             timeoutCts.Cancel();
-            await ctx.CallActivityAsync("HandleApproval", approvalEvent.Result);
+            await ctx.CallActivityAsync("ProcessApproval", approvalEvent.Result);
         }
         else
         {
@@ -235,7 +235,7 @@ Im Hintergrund baut die Erweiterung Durable Functions auf dem [Durable Task Fram
 
 Orchestratorfunktionen verwalten ihren Ausführungsstatus zuverlässig mithilfe eines als [Ereignisherkunftsermittlung](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing) bezeichneten Cloudentwurfsmusters. Anstatt den *aktuellen* Status einer Orchestrierung direkt zu speichern, verwendet die Erweiterung Durable Functions einen ausschließlich zum Anfügen bestimmten Speicher, um die *vollständige Reihe der Aktionen* aufzuzeichnen, die von der Funktionsorchestrierung durchgeführt werden. Dies hat im Vergleich zum Sichern des vollständigen Laufzeitstatus zahlreiche Vorteile wie Verbesserung der Leistung, Skalierbarkeit und Reaktionsfähigkeit. Weitere Vorteile sind die endgültige Konsistenz von Transaktionsdaten und das Verwalten vollständiger Überwachungspfade und des Verlaufs. Die Überwachungspfade selbst aktivieren zuverlässige kompensierende Aktionen.
 
-Die Verwendung der Ereignisherkunftsermittlung durch diese Erweiterung ist transparent. Im Hintergrund gibt der `await`-Operator in einer Orchestratorfunktion die Steuerung des Orchestratorthreads an den Durable Task Framework-Verteiler zurück. Der Verteiler committet dann alle neuen Aktionen, die die Orchestratorfunktion geplant hat (z.B. Aufrufen mindestens einer untergeordneten Funktion oder Planen eines permanenten Timers) in den Speicher. Dieser transparente Commitvorgang wird dem *Ausführungsverlauf* der Orchestrierungsinstanz angefügt. Der Verlauf wird im permanenten Speicher gespeichert. Dann fügt die Commitaktion Nachrichten an eine Warteschlange an, um die eigentliche Arbeit zu planen. An diesem Punkt kann die Orchestratorfunktion aus dem Arbeitsspeicher entladen werden. Die Abrechnung für sie wird beendet, wenn Sie den Verbrauchstarif für Azure Functions verwenden.  Wenn weitere Aufgaben bewältigt werden müssen, wird die Funktion neu gestartet und ihr Status wiederhergestellt.
+Die Verwendung der Ereignisherkunftsermittlung durch diese Erweiterung ist transparent. Im Hintergrund gibt der `await`-Operator in einer Orchestratorfunktion die Steuerung des Orchestratorthreads an den Durable Task Framework-Verteiler zurück. Der Verteiler committet dann alle neuen Aktionen, die die Orchestratorfunktion geplant hat (z.B. Aufrufen mindestens einer untergeordneten Funktion oder Planen eines permanenten Timers) in den Speicher. Dieser transparente Commitvorgang wird dem *Ausführungsverlauf* der Orchestrierungsinstanz angefügt. Der Verlauf wird in einer Speichertabelle gespeichert. Dann fügt die Commitaktion Nachrichten an eine Warteschlange an, um die eigentliche Arbeit zu planen. An diesem Punkt kann die Orchestratorfunktion aus dem Arbeitsspeicher entladen werden. Die Abrechnung für sie wird beendet, wenn Sie den Verbrauchstarif für Azure Functions verwenden.  Wenn weitere Aufgaben bewältigt werden müssen, wird die Funktion neu gestartet und ihr Status wiederhergestellt.
 
 Sobald eine Orchestrierungsfunktion weitere Aufgaben ausführen muss (z.B. wird eine Antwortnachricht empfangen, oder ein permanenter Timer läuft ab), wird der Orchestrator reaktiviert und führt erneut die gesamte Funktion von Beginn an neu aus, um den lokalen Status wiederherzustellen. Wenn der Code während dieser Wiedergabe versucht, eine Funktion aufzurufen (oder eine andere asynchrone Aktion auszuführen), zieht Durable Task Framework den *Ausführungsverlauf* der aktuellen Orchestrierung zu Rate. Wenn festgestellt wird, dass die Aktivitätsfunktion bereits ausgeführt wurde und ein Ergebnis erbracht hat, wird dieses Funktionsergebnis wiedergegeben und der Orchestratorcode weiter ausgeführt. Dieser Vorgang wird fortgesetzt, bis der Funktionscode an einen Punkt gelangt, an dem er entweder abgeschlossen oder neue asynchrone Arbeit geplant ist.
 
@@ -249,7 +249,7 @@ Derzeit ist C# die einzige unterstützte Sprache für Durable Functions. Dies sc
 
 ## <a name="monitoring-and-diagnostics"></a>Überwachung und Diagnose
 
-Die Erweiterung Durable Functions gibt automatisch strukturierte Nachverfolgungsdaten an [Application Insights](functions-monitoring.md) aus, wenn die Funktionen-App mit einem Application Insights-Schlüssel konfiguriert ist. Diese Nachverfolgungsdaten können verwendet werden, um das Verhalten und den Verlauf Ihrer Orchestrierungen zu überwachen.
+Die Erweiterung Durable Functions gibt automatisch strukturierte Nachverfolgungsdaten an [Application Insights](functions-monitoring.md) aus, wenn die Funktions-App mit einem Application Insights-Instrumentierungsschlüssel konfiguriert ist. Diese Nachverfolgungsdaten können verwendet werden, um das Verhalten und den Verlauf Ihrer Orchestrierungen zu überwachen.
 
 Hier ist ein Beispiel für die Anzeige der Durable Functions-Nachverfolgungsereignisse im Application Insights-Portal mit [Application Insights – Analyse](https://docs.microsoft.com/azure/application-insights/app-insights-analytics):
 

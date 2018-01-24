@@ -8,11 +8,11 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: marsma
-ms.openlocfilehash: 3c7c57b05220d1e82c3baa8bc266e02d961a84be
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: a922525970eac9af6657e58daae971912183b369
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="run-a-containerized-task-in-azure-container-instances"></a>Ausführen von Aufgaben in Containern in Azure Container Instances
 
@@ -20,13 +20,13 @@ Da Container in Azure Container Instances sehr schnell und bequem bereitgestellt
 
 Mit einer konfigurierbaren Neustartrichtlinie können Sie angeben, dass Container beendet werden, wenn ihre Prozesse abgeschlossen wurden. Da Containerinstanzen nach Sekunden abgerechnet werden, fallen nur Gebühren für die Computerressourcen an, die beim Ausführen des Containers verwendet werden, der Ihre Aufgabe ausführt.
 
-In den Beispielen in diesem Artikel wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet. Sie benötigen Azure CLI-Version 2.0.21 oder höher mit einer [lokalen Installation](/cli/azure/install-azure-cli), oder Sie verwenden die CLI in der [Azure Cloud Shell](../cloud-shell/overview.md).
+In den Beispielen in diesem Artikel wird die Azure-Befehlszeilenschnittstelle (Azure CLI) verwendet. Sie benötigen eine [lokale Installation][azure-cli-install] von Azure CLI, Version 2.0.21 oder höher, oder Sie verwenden die Befehlszeilenschnittstelle in der [Azure Cloud Shell](../cloud-shell/overview.md).
 
 ## <a name="container-restart-policy"></a>Container-Neustartrichtlinie
 
 Wenn Sie einen Container in Azure Container Instances erstellen, können Sie eine von drei Einstellungen für Neustartrichtlinien festlegen.
 
-| Neustartrichtlinie   | Beschreibung |
+| Neustartrichtlinie   | BESCHREIBUNG |
 | ---------------- | :---------- |
 | `Always` | Container in der Containergruppe werden immer neu gestartet. Dies ist die **Standardeinstellung**, wenn beim Erstellen des Containers keine Neustartrichtlinie angegeben wird. |
 | `Never` | Container in der Containergruppe werden nie neu gestartet. Die Container werden höchstens einmal ausgeführt. |
@@ -46,7 +46,7 @@ az container create \
 
 ## <a name="run-to-completion-example"></a>Beispiel für das Ausführen bis zum Abschluss
 
-Um die Richtlinie für den Neustart in der Praxis zu sehen, erstellen Sie eine Containerinstanz aus dem Image [microsoft/aci-wordcount](https://hub.docker.com/r/microsoft/aci-wordcount/), und geben Sie die Neustartrichtlinie `OnFailure` an. Bei diesem Beispielcontainer wird ein Python-Skript ausgeführt, das standardmäßig den Text von Shakespeares [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) analysiert, die 10 häufigsten Wörter an STDOUT schreibt und dann beendet wird.
+Um die Richtlinie für den Neustart in der Praxis zu sehen, erstellen Sie eine Containerinstanz aus dem Image [microsoft/aci-wordcount][aci-wordcount-image], und geben Sie die Neustartrichtlinie `OnFailure` an. Bei diesem Beispielcontainer wird ein Python-Skript ausgeführt, das standardmäßig den Text von Shakespeares [Hamlet](http://shakespeare.mit.edu/hamlet/full.html) analysiert, die 10 häufigsten Wörter an STDOUT schreibt und dann beendet wird.
 
 Führen Sie den Beispielcontainer mit dem folgenden [az container create][az-container-create]-Befehl aus:
 
@@ -168,7 +168,11 @@ Ausgabe:
 
 Details zum dauerhaften Speichern der Ausgabe von Containern, die bis zum Abschluss ausgeführt werden, finden Sie unter [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](container-instances-mounting-azure-files-volume.md).
 
-<!-- LINKS -->
+<!-- LINKS - External -->
+[aci-wordcount-image]: https://hub.docker.com/r/microsoft/aci-wordcount/
+
+<!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az_container_create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az_container_logs
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az_container_show
+[azure-cli-install]: /cli/azure/install-azure-cli

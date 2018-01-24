@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: d8a5f3c915b1e3b6e11cec9c5540fa192f5f85dd
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: b1bca62e256c1ede5df6888dd7c47ce2aa816bb9
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Prüfpunkte und Wiedergabe in Durable Functions (Azure Functions)
 
@@ -63,7 +63,7 @@ Nachdem der Prüfpunktvorgang abgeschlossen ist, kann die Orchestratorfunktion a
 
 Nach Abschluss des Vorgangs sieht der Verlauf der obigen Funktion in Azure Table Storage etwa wie folgt aus (zu Darstellungszwecken gekürzt):
 
-| PartitionKey (InstanceId)                     | EventType             | Zeitstempel               | Eingabe | Name             | Ergebnis                                                    | Status | 
+| PartitionKey (InstanceId)                     | EventType             | Zeitstempel               | Eingabe | NAME             | Ergebnis                                                    | Status | 
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|---------------------| 
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362Z |       |                  |                                                           |                     | 
 | eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852Z | null  | E1_HelloSequence |                                                           |                     | 
@@ -90,7 +90,7 @@ Einige Hinweise zu den Spaltenwerten:
     * **TaskScheduled**: Eine Aktivitätsfunktion wurde geplant. Der Name der Aktivitätsfunktion wird in der Spalte `Name` erfasst.
     * **TaskCompleted**: Eine Aktivitätsfunktion wurde abgeschlossen. Das Ergebnis der Funktion ist in der Spalte `Result` enthalten.
     * **TimerCreated**: Ein permanenter Timer wurde erstellt. Die Spalte `FireAt` enthält die geplante UTC-Uhrzeit, zu der der Timer abläuft.
-    * **TimerFired**: Ein permanenter Timer ist abgelaufen.
+    * **TimerFired**: Ein permanenter Timer wurde ausgelöst.
     * **EventRaised**: Ein externes Ereignis wurde an die Orchestrierungsinstanz gesendet. In der Spalte `Name` wird der Name des Ereignisses und in der Spalte `Input` die Nutzlast des Ereignisses erfasst.
     * **OrchestratorCompleted**: Die Orchestratorfunktion befindet sich im Wartezustand.
     * **ContinueAsNew**: Die Orchestratorfunktion wurde abgeschlossen und mit einem neuen Zustand neu gestartet. Die Spalte `Result` enthält den Wert, der als Eingabe in der neu gestarteten Instanz verwendet wird.
@@ -98,10 +98,10 @@ Einige Hinweise zu den Spaltenwerten:
 * **Timestamp**: Der UTC-Zeitstempel des Verlaufsereignisses.
 * **Name**: Der Name der Funktion, die aufgerufen wurde.
 * **Input**: Die Eingabe der Funktion im JSON-Format.
-* **Output**: Die Ausgabe der Funktion, also ihr Rückgabewert.
+* **Result**: Die Ausgabe der Funktion, also ihr Rückgabewert.
 
 > [!WARNING]
-> Die Tabelle ist zwar als Debugtool nützlich, aber Sie sollten keine Abhängigkeiten dafür einrichten. Dies kann sich ggf. ändern, wenn die Erweiterung „Durable Functions“ weiterentwickelt wird.
+> Die Tabelle ist zwar als Debugtool nützlich, aber Sie sollten keine Abhängigkeiten dafür einrichten. Dies kann sich im Rahmen der Weiterentwicklung der Erweiterung Durable Functions ändern.
 
 Jedes Mal, wenn die Funktion aus einem `await`-Zustand fortgesetzt wird, führt das Durable Task Framework die Orchestratorfunktion von Grund auf neu aus. Bei jeder erneuten Ausführung wird der Ausführungsverlauf herangezogen, um zu ermitteln, ob der aktuelle asynchrone Vorgang durchgeführt wurde.  Wenn ja, gibt das Framework die Ausgabe dieses Vorgangs sofort wieder und fährt mit dem nächsten `await`-Element fort. Dieser Prozess wird fortgesetzt, bis der gesamte Verlauf wiedergegeben wurde. An diesem Punkt werden alle lokalen Variablen in der Orchestratorfunktion auf ihre vorherigen Werte wiederhergestellt.
 

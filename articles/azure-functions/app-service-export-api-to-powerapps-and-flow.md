@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 12/15/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: efa5a50564d94dbecd4bc7fcb4082b01d16f680d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7482ca27c2edcb281180fb8fbbfb1884a515d379
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Exportieren einer in Azure gehosteten API nach PowerApps und Microsoft Flow
 
@@ -34,7 +34,7 @@ Vor dem Exportieren einer API müssen Sie die API mithilfe einer OpenAPI-Definit
 
 Um die API-Definition zu exportieren, gehen Sie folgendermaßen vor:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Functions- oder App Service-Anwendung.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Azure Functions- oder einer anderen App Service-Anwendung.
 
     Wenn Sie Azure Functions verwenden, wählen Sie Ihre Funktionen-App aus, und klicken Sie dann auf **Plattformfeatures** und **API-Definition**.
 
@@ -48,11 +48,11 @@ Um die API-Definition zu exportieren, gehen Sie folgendermaßen vor:
 
     ![Schaltfläche „Nach PowerApps + Microsoft Flow exportieren“](media/app-service-export-api-to-powerapps-and-flow/export-apps-flow.png)
 
-3. Wählen Sie den **Exportmodus**:
+3. Wählen Sie den **Exportmodus** aus:
 
-    Mit **Express** können Sie innerhalb des Azure-Portals den benutzerdefinierten Connector erstellen. Hierfür müssen Sie bei PowerApps oder Microsoft Flow angemeldet sein und über die Berechtigung zum Erstellen von Connectors in der Zielumgebung verfügen. Dies ist die empfohlene Vorgehensweise, wenn diese Anforderung erfüllt werden kann. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des Expressexports](#express).
+    Mit **Express** können Sie innerhalb des Azure-Portals den benutzerdefinierten Connector erstellen. Hierfür müssen Sie bei PowerApps oder Microsoft Flow angemeldet sein und über die Berechtigung zum Erstellen von Connectors in der Zielumgebung verfügen. Dies ist die empfohlene Vorgehensweise, wenn diese beiden Anforderungen erfüllt werden können. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des Expressexports](#express).
 
-    Über die Option **Manuell** können Sie die API-Definition exportieren, die Sie anschließend über die Portale PowerApps oder Microsoft Flow importieren. Dies ist die empfohlene Vorgehensweise, wenn der Azure-Benutzer und der Benutzer mit der Berechtigung zum Erstellen von Connectors nicht dieselbe Person sind oder der Connector in einem anderen Mandanten erstellt werden muss. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des manuellen Exports](#manual).
+    Über die Option **Manuell** können Sie die API-Definition exportieren, die Sie anschließend über die Portale PowerApps oder Microsoft Flow importieren. Dies ist die empfohlene Vorgehensweise, wenn der Azure-Benutzer und der Benutzer mit der Berechtigung zum Erstellen von Connectors nicht dieselbe Person sind oder der Connector in einem anderen Azure-Mandanten erstellt werden muss. Wenn Sie diesen Modus verwenden, befolgen Sie die unten stehenden Anweisungen unter [Verwenden des manuellen Exports](#manual).
 
     ![Exportmodus](media/app-service-export-api-to-powerapps-and-flow/export-mode.png)
 
@@ -68,7 +68,7 @@ Um den Export im **Express**-Modus durchzuführen, gehen Sie folgendermaßen vor
 
 2. Verwenden Sie die Einstellungen aus der Tabelle.
 
-    |Einstellung|Beschreibung|
+    |Einstellung|BESCHREIBUNG|
     |--------|------------|
     |**Umgebung**|Wählen Sie die Umgebung aus, in der der benutzerdefinierte Connector gespeichert werden soll. Weitere Informationen finden Sie in der [Umgebungsübersicht](https://powerapps.microsoft.com/tutorials/environments-overview/).|
     |**Name der benutzerdefinierten API**|Geben Sie einen Namen ein, der in der Connectorliste der Generatoren PowerApps und Microsoft Flow angezeigt werden soll.|
@@ -95,21 +95,25 @@ Um den Export im **manuellen** Modus durchzuführen, gehen Sie folgendermaßen v
 
     In diesem Beispiel wird die Sicherheitsdefinition des API-Schlüssels gezeigt, die in der OpenAPI-Definition einbezogen wurde.
 
-Nachdem Sie die API-Definition exportiert haben, importieren Sie sie, um einen benutzerdefinierten Connector in PowerApps und Microsoft Flow zu erstellen. Im folgenden Beispiel wird PowerApps verwendet. Da benutzerdefinierte Connectors jedoch von den beiden Diensten gemeinsam genutzt werden, muss die Definition nur einmal importiert werden.
+Nachdem Sie die API-Definition exportiert haben, importieren Sie sie, um einen benutzerdefinierten Connector in PowerApps und Microsoft Flow zu erstellen. Da benutzerdefinierte Connectors von den beiden Diensten gemeinsam genutzt werden, muss die Definition nur einmal importiert werden.
 
 Um die API-Definition in PowerApps und Microsoft Flow zu importieren, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich bei [web.powerapps.com](https://web.powerapps.com) oder [flow.microsoft.com](https://flow.microsoft.com/) an. 
+1. Navigieren Sie zu [web.powerapps.com](https://web.powerapps.com) oder [flow.microsoft.com](https://flow.microsoft.com).
 
-2. Klicken Sie rechts oben auf der Seite auf die Schaltfläche **Einstellungen** (Zahnradsymbol), und wählen Sie **Benutzerdefinierte Connectors** aus.
+2. Klicken Sie in der rechten oberen Ecke auf das Zahnradsymbol und dann auf **Benutzerdefinierte Connectors**.
 
-    ![Benutzerdefinierte Connectors](media/app-service-export-api-to-powerapps-and-flow/custom-connectors.png)
+   ![Zahnradsymbol im Dienst](media/app-service-export-api-to-powerapps-and-flow/icon-gear.png)
 
-3. Klicken Sie auf **Benutzerdefinierten Connector erstellen**.
+3. Klicken Sie auf **Benutzerdefinierten Connector erstellen** und dann auf **Import an OpenAPI definition** (OpenAPI-Definition importieren).
 
-4. Geben Sie auf der Registerkarte **Allgemein** einen Namen für Ihre API an, und laden Sie anschließend die OpenAPI-Definition hoch, oder fügen Sie die Metadaten-URL ein. Klicken Sie auf **Hochladen** und dann auf **Weiter**.
+   ![Erstellen eines benutzerdefinierten Connectors](media/app-service-export-api-to-powerapps-and-flow/flow-apps-create-connector.png)
 
-    ![Registerkarte "Allgemein"](media/app-service-export-api-to-powerapps-and-flow/tab-general.png)
+4. Geben Sie einen Namen für den benutzerdefinierten Connector ein, navigieren Sie dann zu der exportierten OpenAPI-Definition, und klicken Sie auf **Weiter**.
+
+   ![Hochladen der OpenAPI-Definition](media/app-service-export-api-to-powerapps-and-flow/flow-apps-upload-definition.png)
+
+4. Überprüfen Sie auf der Registerkarte **Allgemein** die Informationen, die aus der OpenAPI-Definition stammen.
 
 5. Geben Sie auf der Registerkarte **Sicherheit** die für den Authentifizierungstyp entsprechenden Werte ein, wenn Sie zur Angabe von Authentifizierungsinformationen aufgefordert werden. Klicken Sie auf **Weiter**.
 

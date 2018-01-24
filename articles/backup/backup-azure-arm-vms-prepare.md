@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
-ms.author: markgal;trinadhk;
-ms.openlocfilehash: 686cc45f219a10259c1b5cc0f0793c4ee392ee74
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: markgal;trinadhk;sogup;
+ms.openlocfilehash: 3c2ea9e5872454b0bac67c39362a1f94b6fa47b8
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern
 
@@ -63,6 +63,7 @@ Machen Sie sich vor der Vorbereitung der Umgebung mit diesen Einschränkungen ve
 * Im Netzwerk bereitgestellte und an einen virtuellen Computer angefügte Laufwerke werden nicht in die Sicherungsdaten einbezogen.
 * Das Ersetzen eines vorhandenen virtuellen Computers während der Wiederherstellung wird nicht unterstützt. Wenn Sie versuchen, die VM wiederherzustellen, obwohl die VM vorhanden ist, wird die Wiederherstellung nicht ausgeführt.
 * Die regionsübergreifende Sicherung und Wiederherstellung wird nicht unterstützt.
+* Derzeit wird die Sicherung und Wiederherstellung virtueller Computer in der ACL nicht unterstützt. Die Sicherung virtueller Computer wird nicht unterstützt, wenn Sie das Feature für Speicher im VNET aktiviert haben. Dieses Feature sorgt dafür, dass nur über bestimmte VNETs/Subnetze und/oder IP-Adressen auf Speicherkonten zugegriffen werden kann.
 * Sie können virtuelle Computer in allen öffentlichen Regionen von Azure sichern. (Siehe [Checkliste](https://azure.microsoft.com/regions/#services) der unterstützten Regionen.) Wenn die gewünschte Region derzeit nicht unterstützt wird, wird sie bei der Erstellung des Tresors in der Dropdownliste nicht angezeigt.
 * Das Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, wird nur über PowerShell unterstützt. Weitere Informationen finden Sie unter [Wiederherstellen von Multi-DC-Domänencontrollern](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 * Das Wiederherstellen virtueller Computer mit den folgenden besonderen Netzwerkkonfigurationen wird nur über PowerShell unterstützt. Virtuelle Computer, die mit dem Wiederherstellungsworkflow der Benutzeroberfläche erstellt werden, weisen diese Netzwerkkonfigurationen nach dem Abschluss des Wiederherstellungsvorgangs nicht auf. Weitere Informationen finden Sie unter [Wiederherstellen von VMs mit speziellen Netzwerkkonfigurationen](backup-azure-arm-restore-vms.md#restore-vms-with-special-network-configurations).
@@ -75,7 +76,7 @@ Bei einem Recovery Services-Tresor handelt es sich um eine Entität, in der alle
 
 So erstellen Sie einen Recovery Services-Tresor
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Wählen Sie im Menü **Hub** die Option **Durchsuchen**, und geben Sie dann **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Ressourcenliste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Recovery Services-Tresore**.
 
     ![Eingabe im Feld und Auswahl von „Recovery Services-Tresore“ in den Ergebnissen](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>

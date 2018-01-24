@@ -22,6 +22,7 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
     * Klicken Sie auf **OK**, um die TCP/IP-Einstellungen zu schließen, und dann erneut auf **OK**, um die Adaptereinstellungen zu schließen. Die RDP-Verbindung wird wiederhergestellt.
 
 6. Geben Sie an einer Eingabeaufforderung den Befehl *ipconfig /all*ein. Alle hinzugefügten IP-Adressen werden angezeigt, und DHCP ist deaktiviert.
+7. Konfigurieren Sie Windows so, dass die private IP-Adresse der primären IP-Konfiguration in Azure als die primäre IP-Adresse für Windows verwendet wird. Ausführliche Informationen finden Sie unter [No Internet access from Azure Windows VM that has multiple IP addresses](https://support.microsoft.com/help/4040882/no-internet-access-from-azure-windows-vm-that-has-multiple-ip-addresse) (Kein Internetzugriff über einen virtuellen Azure Windows-Computer mit mehreren IP-Adressen). 
 
 
 ### <a name="validation-windows"></a>Überprüfung (Windows)

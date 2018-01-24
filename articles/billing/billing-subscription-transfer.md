@@ -14,42 +14,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 08/15/2017
+ms.date: 12/13/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9beef44b3fbaf26d49757544f32b97c7ef2cf425
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f061197cbe9fd52594d9fb000d8f3bcbd2d5285
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Besitzes eines Azure-Abonnements auf ein anderes Konto
 
-Sie können Ihr Abonnement im Kontocenter auf einen anderen Benutzer übertragen. Verwenden Sie diese Funktion, um die Abonnementabrechnung an eine andere Person zu übergeben, das Anmeldekonto zu ändern oder das Abonnement in ein anderes Verzeichnis zu verschieben. Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](billing-how-to-switch-azure-offer.md).
+Übertragen Sie Ihr Abonnement im Kontocenter auf einen anderen Benutzer, um den Kontoadministrator zu ändern und den Besitz der Abonnementabrechnung zu übergeben. Wie Sie Ihr Abonnement in ein anderes Angebot ändern können, erfahren Sie unter [Umstellen Ihres Azure-Abonnements auf ein anderes Angebot](billing-how-to-switch-azure-offer.md).
 
 > [!IMPORTANT]
 > 
 > Derzeit werden Abonnementübertragungen für kostenlose Testversionen oder [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/)-Abonnements (AIO) nicht unterstützt. Wie Sie dies umgehen können, erfahren Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../azure-resource-manager/resource-group-move-resources.md).
-
-<a id="supported"></a>
-
-## <a name="whats-supported"></a>Unterstützte Umstellungen:
-
-Die Self-Service-Abonnementübertragung ist für die in der folgenden Tabelle aufgeführten Angebote oder Abonnementtypen verfügbar. Zur Übertragung anderer Abonnements, z.B. [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) oder Supportpläne, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-
-| Angebotsname                                                                             | Angebotsnummer |
-|----------------------------------------------------------------------------------------|--------------|
-| [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
-| [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
-| [MSDN-Plattformen](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
-| [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
-| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
-| [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
-| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
-| [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
-| [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
-
-\*[Über das EA-Portal](#EA)
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>Übertragen des Besitzes eines Azure-Abonnements
 
@@ -88,14 +68,33 @@ Der Unternehmensadministrator kann den Besitz von Abonnements in einer Registrie
 
 ## <a name="next-steps-after-accepting-ownership-of-a-subscription"></a>Nächste Schritte nach dem Übernehmen des Besitzes eines Abonnements
 
-1. Sie sind nun der Kontoadministrator. Überprüfen und aktualisieren Sie den Dienstadministrator und die Co-Administratoren. Sie verwalten Administratoren im [klassischen Azure-Portal](https://manage.windowsazure.com) unter „Einstellungen“. [Erfahren Sie mehr über Administratorrollen](billing-add-change-azure-subscription-administrator.md).
-1. Sie können auch die rollenbasierte Zugriffskontrolle (RBAC) für Ihr Abonnement und die Dienste verwenden. Besuchen Sie das [Azure-Portal](https://portal.azure.com). [Erfahren Sie mehr über RBAC](../active-directory/role-based-access-control-configure.md).
+1. Sie sind nun der Kontoadministrator. Überprüfen und aktualisieren Sie die Rollen für Dienstadministrator und Co-Administratoren und andere RBAC-Rollen. Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Azure-Administratorrollen, die das Abonnement oder die Dienste verwalten](billing-add-change-azure-subscription-administrator.md).
 1. Aktualisieren Sie die Anmeldeinformationen für die Dienste dieses Abonnements, darunter:
    1. Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../cloud-services/cloud-services-certs-create.md)
    1. Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-create-storage-account.md).
    1. Anmeldeinformationen für den Remotezugriff für Dienste wie Azure Virtual Machines. 
 1. [Aktualisieren Sie die Abrechnungswarnungen für dieses Abonnement](billing-set-up-alerts.md) im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions). 
-1. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID in diesem Abonnement aktualisieren. Sie können die Partner-ID im [Azure-Kontocenter](https://account.windowsazure.com/Subscriptions) aktualisieren.
+1. Wenn Sie mit einem Partner arbeiten, sollten Sie die Partner-ID in diesem Abonnement aktualisieren. Sie können die Partner-ID im [Azure-Portal](https://portal.azure.com) aktualisieren.
+
+<a id="supported"></a>
+
+## <a name="whats-supported"></a>Unterstützte Umstellungen:
+
+Die Self-Service-Abonnementübertragung ist für die in der folgenden Tabelle aufgeführten Angebote oder Abonnementtypen verfügbar. Zur Übertragung anderer Abonnements, z.B. [Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) oder Supportpläne, [wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+
+| Angebotsname                                                                             | Angebotsnummer |
+|----------------------------------------------------------------------------------------|--------------|
+| [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*|MS-AZR-0017P        |
+| [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)          | MS-AZR-0025P        |
+| [MSDN-Plattformen](https://azure.microsoft.com/offers/ms-azr-0062p/)                     | MS-AZR-0062P        |
+| [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/)                      | MS-AZR-0003P        |
+| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)             | MS-AZR-0023P        |
+| [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)           | MS-AZR-0063P        |
+| [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P        |
+| [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)         | MS-AZR-0059P        |
+| [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)    | MS-AZR-0060P        |
+
+\*[Über das EA-Portal](#EA)
 
 <a id="faq"></a>
 
@@ -111,7 +110,7 @@ Der Kontoadministrator ist die Person, die sich für das Azure-Abonnement regist
 
 ### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Wird alles übertragen? Auch Ressourcengruppen, virtuelle Computer, Datenträger und andere aktive Dienste?
 
-Ja, alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden auf den neuen Besitzer übertragen. Allerdings werden [Administratorrollen](billing-add-change-azure-subscription-administrator.md) und Richtlinien für die [rollenbasierte Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-configure.md), die Sie eingerichtet haben, nicht zwischen verschiedenen Verzeichnissen übertragen.
+Alle Ressourcen wie virtuelle Computer, Datenträger und Websites werden auf den neuen Besitzer übertragen. Allerdings werden [Administratorrollen](billing-add-change-azure-subscription-administrator.md) und Richtlinien für die [rollenbasierte Zugriffssteuerung (RBAC)](../active-directory/role-based-access-control-configure.md), die Sie eingerichtet haben, nicht zwischen verschiedenen Verzeichnissen übertragen. [App-Registrierungen](../active-directory//develop/active-directory-integrating-applications.md) und andere mandantenspezifische Dienste werden ebenfalls nicht übertragen.
 
 ### <a id="no-button"></a> Warum wird die Schaltfläche „Abonnement übertragen“ nicht angezeigt?
 

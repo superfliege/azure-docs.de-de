@@ -3,7 +3,7 @@ title: Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs | Microsof
 description: Erfahren Sie, wie Sie mit Azure DevTest Labs ein vorhandenes virtuelles Netzwerk und ein Subnetz konfigurieren und auf einem virtuellen Computer verwenden.
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 6cda99c2-b87e-4047-90a0-5df10d8e9e14
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
-ms.author: tarcher
-ms.openlocfilehash: 7048d5d1054906d712ac0422dacfe1ccca97fcc0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.author: v-craic
+ms.openlocfilehash: 21daa8ff756ee30c6d454d49af7db20afe488c47
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs
 Wie im Artikel [Hinzufügen eines virtuellen Computers zu einem Lab](devtest-lab-add-vm.md) erläutert, können Sie beim Erstellen eines virtuellen Computers in einem Lab ein konfiguriertes virtuelles Netzwerk angeben. Dies ist z.B. erforderlich, wenn Sie von Ihren virtuellen Computern aus auf Ihre Unternehmensnetzwerkressourcen zugreifen müssen, und zwar über ein virtuelles Netzwerk, das mit ExpressRoute oder Site-to-Site-VPN konfiguriert wurde.
@@ -28,7 +28,7 @@ In diesem Artikel wird veranschaulicht, wie Sie Ihr vorhandenes virtuelles Netzw
 ## <a name="configure-a-virtual-network-for-a-lab-using-the-azure-portal"></a>Konfigurieren eines virtuellen Netzwerks für ein Lab über das Azure-Portal
 Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtuellen Netzwerks (und Subnetzes) zu einem Lab, sodass es beim Erstellen eines virtuellen Computers in dem gleichen Lab verwendet werden kann. 
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 1. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 1. Wählen Sie in der Liste der Labs das gewünschte Lab aus. 
 1. Wählen Sie im Hauptbereich des Labs die Option **Konfiguration und Richtlinien** aus.
@@ -58,12 +58,12 @@ Die folgenden Schritte führen Sie durch das Hinzufügen eines vorhandenen virtu
 1. Wählen Sie **OK** aus, um den Bereich mit dem Labsubnetz zu schließen.
 1. Wählen Sie **Speichern** aus, um den Bereich mit dem virtuellen Netzwerk zu schließen.
 
-Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines virtuellen Computers ausgewählt werden. Informationen zum Erstellen eines virtuellen Computers und zum Angeben eines virtuellen Netzwerks finden Sie im Artikel [Hinzufügen einer VM mit Artefakten zu einem Lab](devtest-lab-add-vm-with-artifacts.md). 
+Jetzt ist das virtuelle Netzwerk konfiguriert und kann beim Erstellen eines virtuellen Computers ausgewählt werden. Informationen zum Erstellen eines virtuellen Computers und zum Angeben eines virtuellen Netzwerks finden Sie im Artikel [Hinzufügen eines virtuellen Computers zu einem Lab in Azure DevTest Labs](devtest-lab-add-vm.md). 
 
 Die [Dokumentation zu Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network) enthält weitere Informationen zur Verwendung von VNETs, einschließlich Informationen zum Einrichten und Verwalten eines VNET und zum Verbinden von diesem mit Ihrem lokalen Netzwerk.
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie Ihrem Lab das gewünschte virtuelle Netzwerk hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
+Nachdem Sie Ihrem Lab das gewünschte virtuelle Netzwerk hinzugefügt haben, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm.md).
 

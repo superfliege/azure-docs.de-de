@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 36ebffb41211e443cc1619df46f50247945cc57c
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 363a7e8a5b5be2175cb2f6d3539878673a2b469a
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="review-usage-and-costs"></a>Überprüfen der Nutzung und der Kosten
 
@@ -29,7 +29,7 @@ Die Azure-Kostenverwaltung von Cloudyn zeigt Nutzung und Kosten auf, sodass Sie 
 
 ## <a name="open-the-cloudyn-portal"></a>Öffnen des Cloudyn-Portals
 
-Die Nutzung und die Kosten werden generell im Cloudyn-Portal überprüft. Öffnen Sie das Cloudyn-Portal aus dem Azure-Portal, oder navigieren Sie zu https://app.cloudyn.com, und melden Sie sich dort an.
+Die Nutzung und die Kosten werden generell im Cloudyn-Portal überprüft. Öffnen Sie das Cloudyn-Portal über das Azure-Portal, oder navigieren Sie zu https://azure.cloudyn.com, und melden Sie sich dort an.
 
 ## <a name="track-usage-and-cost-trends"></a>Nachverfolgen der Nutzung und der Kosten
 

@@ -3,7 +3,7 @@ title: Georedundante Notfallwiederherstellung in Azure Event Hubs | Microsoft-Do
 description: "Verwenden von geografischen Regionen für das Failover und zum Durchführen der Notfallwiederherstellung in Azure Event Hubs"
 services: event-hubs
 documentationcenter: 
-author: ShubhaVijayasarathy
+author: sethmanheim
 manager: timlt
 editor: 
 ms.service: event-hubs
@@ -11,103 +11,94 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/13/2017
+ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: 94c2782b3166fbc65ae755291a82a2a14556b96f
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 237b0639be75e12cff56f40ac76426aba7a8a701
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 12/16/2017
 ---
-# <a name="azure-event-hubs-geo-disaster-recovery-preview"></a>Georedundante Notfallwiederherstellung in Azure Event Hubs (Vorschau)
+# <a name="azure-event-hubs-geo-disaster-recovery"></a>Georedundante Notfallwiederherstellung in Azure Event Hubs
 
-Wenn in regionalen Rechenzentren Ausfallzeiten auftreten, ist es wichtig, dass die Datenverarbeitung in einer anderen Region oder einem anderen Rechenzentrum fortgesetzt wird. Daher sind die *georedundante Notfallwiederherstellung* und die *Georeplikation* wichtige Funktionen für jedes Unternehmen. Azure Event Hubs unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
+Beim Ausfall gesamter Azure-Regionen oder -Datencentern (ohne Verwendung von [Verfügbarkeitszonen](../availability-zones/az-overview.md)) muss die Datenverarbeitung unbedingt in einer anderen Region oder in einem anderen Datencenter fortgesetzt werden können. Daher sind die *georedundante Notfallwiederherstellung* und die *Georeplikation* wichtige Funktionen für jedes Unternehmen. Azure Event Hubs unterstützt die georedundante Notfallwiederherstellung und die Georeplikation auf Namespaceebene. 
 
-Die Funktion der georedundanten Notfallwiederherstellung von Azure Event Hubs ist eine Lösung zur Notfallwiederherstellung. Die Konzepte und der Workflow, die in diesem Artikel beschrieben werden, gelten für Notfallszenarien und nicht für vorübergehende Ausfälle.
+Das Feature für die georedundante Notfallwiederherstellung ist für die Event Hubs Standard-SKU global verfügbar.
 
-Eine ausführliche Erläuterung der Notfallwiederherstellung in Microsoft Azure finden Sie in [diesem Artikel](/azure/architecture/resiliency/disaster-recovery-azure-applications). 
+## <a name="outages-and-disasters"></a>Ausfälle und Notfälle
 
-## <a name="terminology"></a>Terminologie
+Es ist wichtig, dass Sie den Unterschied zwischen „Ausfällen“ und „Notfällen“ kennen. Ein *Ausfall* ist die vorübergehende Nichtverfügbarkeit von Azure Event Hubs und kann einige Komponenten des Diensts (etwa einen Nachrichtenspeicher) oder aber das gesamte Datencenter betreffen. Nachdem das Problem behoben wurde, ist Event Hubs allerdings wieder verfügbar. In der Regel führt ein Ausfall nicht zum Verlust von Nachrichten oder anderen Daten. Ein Beispiel für einen Ausfall ist ein Stromausfall im Rechenzentrum. Bei einigen Ausfälle handelt es sich nur um kurze Verbindungsunterbrechungen aufgrund von vorübergehenden Problemen oder Netzwerkproblemen. 
 
-**Kopplung**: Der primäre Namespace wird als *aktiv* bezeichnet und empfängt Nachrichten. Der Failovernamespace ist *passiv* und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces sind synchronisiert, sodass beide ohne Änderungen am Anwendungscode nahtlos Nachrichten annehmen können. Das Einrichten der Konfiguration für die Notfallwiederherstellung zwischen der aktiven und der passiven Region wird als *Koppeln* der Regionen bezeichnet.
+Ein *Notfall* ist als dauerhafter oder längerer Ausfall eines Event Hubs-Clusters, einer Azure-Region oder eines Datencenters definiert. Die Region oder das Datencenter wird ggf. wieder verfügbar, kann aber auch für mehrere Stunden oder Tage ausfallen. Beispiele für Notfälle sind Feuer, Überflutung und Erdbeben. Ein Notfall, der dauerhaft wird, kann zum Verlust von Nachrichten, Ereignissen oder anderen Daten führen. In den meisten Fällen kommt es allerdings zu keinem Datenverlust, und Nachrichten können wiederhergestellt werden, sobald das Rechenzentrum gesichert ist.
 
-**Alias**: Ein Name für die Konfiguration einer Notfallwiederherstellung, die Sie einrichten. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen.
+Das Feature der georedundanten Notfallwiederherstellung von Azure Event Hubs ist eine Lösung zur Notfallwiederherstellung. Die Konzepte und der Workflow, die in diesem Artikel beschrieben werden, gelten für Notfallszenarien und nicht für vorübergehende Ausfälle. Eine ausführliche Erläuterung der Notfallwiederherstellung in Microsoft Azure finden Sie in [diesem Artikel](/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
-**Metadaten**: Bezieht sich auf Event Hub-Namen, Consumergruppen, Partitionen, Durchsatzeinheiten, Entitäten und Eigenschaften, die dem Namespace zugeordnet sind.
+## <a name="basic-concepts-and-terms"></a>Allgemeine Konzepte und Begriffe
 
-## <a name="enable-geo-disaster-recovery"></a>Aktivieren der georedundanten Notfallwiederherstellung
+Die Notfallwiederherstellungsfeature implementiert die Notfallwiederherstellung von Metadaten und basiert auf primären und sekundären Namespaces für die Notfallwiederherstellung. Beachten Sie, dass das Feature zur georedundanten Notfallwiederherstellung nur für die [Standard-SKU](https://azure.microsoft.com/pricing/details/event-hubs/) verfügbar ist. Sie müssen keine Änderungen an den Verbindungszeichenfolgen vornehmen, da die Verbindung über einen Alias hergestellt wird.
 
-Die georedundante Notfallwiederherstellung in Event Hubs wird in drei Schritten aktiviert: 
+In diesem Artikel werden die folgenden Begriffe verwendet:
 
-1. Erstellen Sie eine Geo-Kopplung, die eine Alias-Verbindungszeichenfolge erstellt und die Live-Replikation von Metadaten ermöglicht. 
-2. Aktualisieren Sie die vorhandene Client-Verbindungszeichenfolge auf den Alias, der in Schritt 1 erstellt wurde.
-3. Initiieren Sie das Failover: Die Geo-Kopplung wird unterbrochen, und der Alias verweist auf den sekundären Namespace als seinen neuen primären Namespace.
+-  *Alias:* Der Name für die Konfiguration einer Notfallwiederherstellung, die Sie einrichten. Der Alias stellt einen einzelnen, stabilen, vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) als Verbindungszeichenfolge bereit. Anwendungen verwenden diese Alias-Verbindungszeichenfolge, um eine Verbindung mit einem Namespace herzustellen. 
 
-Die folgende Abbildung zeigt diesen Workflow:
+-  *Primärer/sekundärer Namespace:* Die Namespaces, die dem Alias entsprechen. Der primäre Namespace ist aktiv und empfängt Nachrichten. (Dies kann ein bereits vorhandener oder ein neuer Namespace sein.) Der sekundäre Namespace ist passiv und empfängt keine Nachrichten. Die Metadaten zwischen beiden Namespaces werden synchronisiert, sodass beide nahtlos und ohne Änderung des Anwendungscodes oder der Verbindungszeichenfolge Nachrichten entgegennehmen können. Um sicherzustellen, dass nur der aktive Namespace Nachrichten empfängt, müssen Sie den Alias verwenden. 
 
-![Ablauf der Geo-Kopplung][1] 
+-  *Metadaten:* Entitäten (beispielsweise Event Hubs und Consumergruppen) sowie deren Eigenschaften des Diensts, die dem Namespace zugeordnet sind. Beachten Sie, dass nur Entitäten und ihre Einstellungen automatisch repliziert werden. Nachrichten und Ereignisse werden nicht repliziert. 
 
-### <a name="step-1-create-a-geo-pairing"></a>Schritt 1: Erstellen einer Geo-Kopplung
+-  *Failover:* Der Vorgang zum Aktivieren des sekundären Namespace.
 
-Für das Erstellen einer Kopplung zwischen zwei Regionen benötigen Sie einen primären und einen sekundären Namespace. Anschließend erstellen Sie einen Alias, um die Geo-Kopplung zu bilden. Sobald die Namespaces mit einem Alias gekoppelt sind, werden die Metadaten regelmäßig in beide Namespaces repliziert. 
+## <a name="setup-and-failover-flow"></a>Setup und Failoverablauf
 
-Dies wird im folgenden Code veranschaulicht:
+Im folgenden Abschnitt finden Sie eine Übersicht über den Failoverprozess und erfahren, wie Sie das erste Failover einrichten. 
 
-```csharp
-ArmDisasterRecovery adr = await client.DisasterRecoveryConfigs.CreateOrUpdateAsync(
-                                    config.PrimaryResourceGroupName,
-                                    config.PrimaryNamespace,
-                                    config.Alias,
-                                    new ArmDisasterRecovery(){ PartnerNamespace = config.SecondaryNamespace});
-```
+![1][]
 
-### <a name="step-2-update-existing-client-connection-strings"></a>Schritt 2: Aktualisieren der vorhandenen Client-Verbindungszeichenfolgen
+### <a name="setup"></a>Einrichtung
 
-Sobald die Geo-Kopplung abgeschlossen ist, müssen die Verbindungszeichenfolgen aktualisiert werden, die auf den primären Namespace verweisen, um auf die Alias-Verbindungszeichenfolge zu verweisen. Rufen Sie die Verbindungszeichenfolgen wie im folgenden Beispiel dargestellt ab:
+Zuerst erstellen bzw. verwenden Sie einen vorhandenen primären Namespace und einen neuen sekundären Namespace und koppeln diese anschließend. Über diese Kopplung erhalten Sie einen Alias, mit dem Sie eine Verbindung herstellen können. Da Sie einen Alias verwenden, müssen Sie keine Verbindungszeichenfolgen ändern. Nur neue Namespaces können der Failoverkopplung hinzugefügt werden. Abschließend sollten Sie einige Überwachungsfunktionen hinzufügen, um zu ermitteln, ob ein Failover erforderlich ist. In den meisten Fällen ist der Dienst Teil eines großen Ökosystems, sodass automatische Failover selten möglich sind, da Failover sehr häufig synchron mit dem restlichen Subsystem oder der Infrastruktur durchgeführt werden müssen.
 
-```csharp
-var accessKeys = await client.Namespaces.ListKeysAsync(config.PrimaryResourceGroupName,
-                                                       config.PrimaryNamespace, "RootManageSharedAccessKey");
-var aliasPrimaryConnectionString = accessKeys.AliasPrimaryConnectionString;
-var aliasSecondaryConnectionString = accessKeys.AliasSecondaryConnectionString;
-```
+### <a name="example"></a>Beispiel
 
-### <a name="step-3-initiate-a-failover"></a>Schritt 3: Initiieren eines Failovers
+In einem Beispiel für dieses Szenario geht es um eine POS-Lösung (Point of Sale), die entweder Nachrichten oder Ereignisse ausgibt. Event Hubs übergibt diese Ereignisse an eine Lösung für die Zuordnung oder Neuformatierung, von der dann zugeordnete Daten zur weiteren Verarbeitung an ein anderes System weitergeleitet werden. An diesem Punkt werden alle diese Systeme ggf. in derselben Azure-Region gehostet. Die Entscheidung darüber, wann für welchen Teil ein Failover durchgeführt wird, richtet sich nach dem Datenfluss in Ihrer Infrastruktur. 
 
-Wenn ein Notfall eintritt oder Sie ein Failover auf den sekundären Namespace initiieren möchten, beginnen die Metadaten und Daten damit, in den sekundären Namespace zu fließen. Da die Anwendungen die Alias-Verbindungszeichenfolgen verwenden, ist keine weitere Aktion erforderlich, da diese automatisch aus den Event Hubs im sekundären Namespace lesen und in diese schreiben. 
+Sie können das Failover entweder mit Überwachungssystemen oder mit benutzerdefinierten Überwachungslösungen automatisieren. Für diese Art der Automatisierung sind aber zusätzliche Planungs- und Arbeitsschritte erforderlich, was den Rahmen dieses Artikels sprengen würde.
 
-Der folgende Code veranschaulicht, wie ein Failover ausgelöst wird:
+### <a name="failover-flow"></a>Failoverablauf
 
-```csharp
-await client.DisasterRecoveryConfigs.FailOverAsync(config.SecondaryResourceGroupName,
-                                                   config.SecondaryNamespace, config.Alias);
-```
+Im Zuge der Initiierung des Failovers müssen zwei Schritte ausgeführt werden:
 
-Sobald ein Failover abgeschlossen ist und Sie die Daten benötigen, die im primären Namespace vorhanden sind, müssen Sie eine explizite Verbindungszeichenfolge für die Event Hubs im primären Namespace verwenden, um die Daten zu extrahieren.
+1. Bei einem weiteren Ausfall muss ein erneutes Failover möglich sein. Richten Sie daher einen weiteren passiven Namespace ein, und aktualisieren Sie die Kopplung. 
 
-### <a name="other-operations-optional"></a>Andere Vorgänge (optional)
+2. Übertragen Sie Nachrichten mithilfe von Pull aus dem primären Namespace, nachdem er wieder verfügbar ist. Verwenden Sie danach diesen Namespace für das reguläre Messaging außerhalb Ihrer Einrichtung für die georedundante Wiederherstellung, oder löschen Sie den alten primären Namespace.
 
-Sie können die Geo-Kopplung wie im folgenden Code dargestellt ebenfalls unterbrechen oder einen Alias löschen. Beachten Sie, dass Sie zunächst die Geo-Kopplung unterbrechen müssen, um eine Alias-Verbindungszeichenfolge zu löschen:
+> [!NOTE]
+> Es wird nur die Semantik für „Fail Forward“ unterstützt. In diesem Szenario führen Sie das Failover und anschließend die Reparatur mit einem neuen Namespace durch. Ein Failback wird nicht unterstützt, z.B. in einem SQL-Cluster. 
 
-```csharp
-// Break pairing
-await client.DisasterRecoveryConfigs.BreakPairingAsync(config.PrimaryResourceGroupName,
-                                                       config.PrimaryNamespace, config.Alias);
+![2][]
 
-// Delete alias connection string
-// Before the alias is deleted, pairing must be broken
-await client.DisasterRecoveryConfigs.DeleteAsync(config.PrimaryResourceGroupName,
-                                                 config.PrimaryNamespace, config.Alias);
-```
+## <a name="management"></a>Verwaltung
 
-## <a name="considerations-for-public-preview"></a>Überlegungen für die öffentliche Vorschauversion
+Sollte Ihnen ein Fehler unterlaufen sein (etwa die Kopplung der falschen Regionen während der Ersteinrichtung), können Sie die Kopplung der beiden Namespaces jederzeit wieder aufheben. Wenn Sie die gekoppelten Namespaces als reguläre Namespaces verwenden möchten, löschen Sie den Alias.
 
-Beachten Sie folgende Überlegungen für dieses Release:
+## <a name="samples"></a>Beispiele
 
-1. Die Funktion für die georedundante Notfallwiederherstellung ist nur in den Regionen „USA, Norden-Mitte“ und „USA, Süden-Mitte“ verfügbar. 
-2. Das Feature wird nur für neu erstellte Namespaces unterstützt.
-3. Für die Vorschauversion ist nur die Replikation der Metadaten aktiviert. Tatsächliche Daten werden nicht repliziert.
-4. Bei der Vorschauversion entstehen keine Kosten für das Aktivieren des Features. Allerdings fallen Kosten für die reservierten Durchsatzeinheiten der primären und sekundären Namespaces an.
+Das [Beispiel auf GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/GeoDRClient) zeigt, wie Sie ein Failover einrichten und initiieren. In diesem Beispiel werden folgende Konzepte veranschaulicht:
+
+- Einstellungen, die in Azure Active Directory für die Verwendung von Azure Resource Manager mit Event Hubs erforderlich sind 
+- Schritte, die zum Ausführen des Beispielcodes erforderlich sind 
+- Senden und Empfangen aus dem aktuellen primären Namespace 
+
+## <a name="considerations"></a>Überlegungen
+
+Beachten Sie für diesen Release Folgendes:
+
+1. Berücksichtigen Sie bei der Failoverplanung auch den Zeitfaktor. Falls beispielsweise länger als 15 bis 20 Minuten keine Konnektivität vorhanden ist, empfiehlt es sich unter Umständen, das Failover zu initiieren. 
+ 
+2. Die Tatsache, dass keine Daten repliziert werden, bedeutet, dass derzeit keine aktiven Sitzungen repliziert werden. Außerdem kann es sein, dass die Duplikaterkennung und geplante Nachrichten nicht funkionieren. Neue Sitzungen, geplante Nachrichten und neue Duplikate funktionieren. 
+
+3. Die Durchführung eines Failovers für eine komplexe verteilte Infrastruktur sollte mindestens einmal [durchgespielt](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation) werden. 
+
+4. Das Synchronisieren von Entitäten kann einige Zeit dauern (etwa eine Minute pro 50 bis 100 Entitäten).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -118,7 +109,7 @@ Weitere Informationen zu Event Hubs erhalten Sie unter den folgenden Links:
 
 * Erste Schritte mit einem [Event Hubs-Tutorial](event-hubs-dotnet-standard-getstarted-send.md)
 * [Event Hubs – häufig gestellte Fragen](event-hubs-faq.md)
-* [Sample applications that use Event Hubs (Beispielanwendung mit Verwendung von Event Hubs)](https://github.com/Azure/azure-event-hubs/tree/master/samples)
+* [Beispielanwendungen mit Event Hubs](https://github.com/Azure/azure-event-hubs/tree/master/samples)
 
-[1]: ./media/event-hubs-geo-dr/eh-geodr1.png
-
+[1]: ./media/event-hubs-geo-dr/geo1.png
+[2]: ./media/event-hubs-geo-dr/geo2.png

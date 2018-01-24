@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 03764377b3ea0e17d4a192a7e05bb495ec56f331
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9cab81b6072c6f096f6f1a419cebcca9630ebde3
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Hinzufügen, Aktualisieren oder Entfernen einer Kredit- oder Debitkarte für Azure
 
@@ -77,7 +77,7 @@ Wenn Ihre Kreditkarte anderen aktiven Microsoft-Abonnements zugeordnet ist, kön
 
 Nach der Deaktivierung oder Kündigung Ihres Abonnements warten wir 90 Tage, bevor wir Ihr Abonnement endgültig löschen. Während der Aufbewahrungsdauer wird die Zahlungsmethode beibehalten, für den Fall, dass Sie das Abonnement reaktivieren möchten. Anschließend wird das Abonnement vollständig gelöscht.
 
-Wenn Sie Ihre Kredit- oder Debitkarte vor Ablauf des Beibehaltungszeitraums von 90 Tagen entfernen möchten, [wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+Wenn Sie Ihre Kredit- oder Debitkarte vor Ablauf des Beibehaltungszeitraums von 90 Tagen entfernen möchten, [reaktivieren Sie Ihr Abonnement](billing-subscription-become-disable.md). Wenn die Reaktivierung nicht möglich ist, [wenden Sie sich an den Azure-Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="why-do-i-keep-getting-your-login-session-has-expired-please-click-here-to-log-back-in"></a>Warum wird beständig die Meldung „Ihre Anmeldesitzung ist abgelaufen. Klicken Sie hier, um sich wieder anzumelden.“ angezeigt?
 
@@ -96,6 +96,10 @@ Wenn Sie [auf Rechnung zahlen](billing-how-to-pay-by-invoice.md), senden Sie Ihr
 ### <a name="how-do-i-make-a-one-time-payment"></a>Wie tätige ich eine einmalige Zahlung?
 
 Leider unterstützt Azure derzeit keine einmaligen Zahlungen für Kredit- oder Debitkarten. 
+
+### <a name="how-do-i-change-the-tax-id"></a>Wie ändere ich die Steuernummer?
+
+Navigieren Sie zum Hinzufügen oder Aktualisieren der Steuernummer im [Azure-Kontocenter zu **Profil**](https://account.azure.com/Profile), und klicken Sie auf **Steuereintrag**. Diese Steuernummer wird auf Ihrer Rechnung angezeigt und für die Berechnung von Steuerbefreiungen verwendet.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 

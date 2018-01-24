@@ -1,59 +1,59 @@
 
 ## <a name="set-up-your-project"></a>Einrichten des Projekts
 
-Dieser Abschnitt enthält detaillierte Anleitungen zum Erstellen eines neuen Projekts, um zu veranschaulichen, wie Sie eine Windows Desktop .NET (XAML)-Anwendung mit *Mit Microsoft anmelden* so integrieren können, dass Sie Web-APIs abfragen kann, die ein Token erfordern.
+In diesem Abschnitt erstellen Sie ein neues Projekt, um zu veranschaulichen, wie Sie eine Windows Desktop .NET-Anwendung (XAML) mit *Mit Microsoft anmelden* so integrieren können, dass Sie Web-APIs abfragen kann, die ein Token erfordern.
 
-Die in diesem Leitfaden erstellte Anwendung macht eine Schaltfläche für Graph verfügbar und zeigt Ergebnisse auf dem Bildschirm sowie eine Abmeldeschaltfläche an.
+Die Anwendung, die Sie anhand dieser Anleitung erstellen, zeigt eine Schaltfläche zum Aufrufen eines Diagramms, einen Ergebnisbereich und eine Abmeldeschaltfläche an.
 
-> Möchten Sie stattdessen das Visual Studio-Projekt dieses Beispiels herunterladen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip), und fahren Sie mit dem Schritt [Konfiguration](#create-an-application-express) fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
+> [!NOTE]
+> Möchten Sie stattdessen das Visual Studio-Projekt dieses Beispiels herunterladen? [Laden Sie ein Projekt herunter](https://github.com/Azure-Samples/active-directory-dotnet-desktop-msgraph-v2/archive/master.zip), und fahren Sie mit dem [Konfigurationsschritt](#create-an-application-express) fort, um das Codebeispiel vor der Ausführung zu konfigurieren.
+>
 
+Gehen Sie zum Erstellen der Anwendung wie folgt vor:
+1. Klicken Sie in Visual Studio auf **Datei** > **Neu** > **Projekt**.
+2. Wählen Sie unter **Vorlagen** die Option **Visual C#** aus.
+3. Wählen Sie abhängig von der verwendeten Visual Studio-Version entweder **WPF-App** oder **WPF-Anwendung** aus.
 
-### <a name="create-your-application"></a>Erstellen der Anwendung
-1. In Visual Studio: `File` > `New` > `Project`<br/>
-2. Wählen Sie  *unter* Vorlagen`Visual C#` aus.
-3. Wählen Sie `WPF App` (oder je nach Ihrer Visual Studio-Version *WPF-Anwendung*) aus.
+## <a name="add-msal-to-your-project"></a>Hinzufügen von MSAL zu Ihrem Projekt
+1. Klicken Sie in Visual Studio auf **Tools** > **NuGet-Paket-Manager**> **Paket-Manager-Konsole**.
+2. Fügen Sie im Fenster „Paket-Manager-Konsole“ den folgenden Azure PowerShell-Befehl ein:
 
-## <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>Hinzufügen der MSAL (Microsoft Authentication Library) zu Ihrem Projekt
-1. In Visual Studio: `Tools` > `Nuget Package Manager` > `Package Manager Console`
-2. Kopieren Sie Folgendes, und fügen Sie es in das Fenster „Paket-Manager-Konsole“ ein:
+    ```powershell
+    Install-Package Microsoft.Identity.Client -Pre
+    ```
 
-```powershell
-Install-Package Microsoft.Identity.Client -Pre
-```
-
-> Das obige Paket installiert die Microsoft Authentication Library (MSAL). Die MSAL kümmert sich um das Erfassen, Zwischenspeichern und Aktualisieren von Benutzertoken für den Zugriff auf APIs, die von Azure Active Directory v2 geschützt werden.
+    > [!NOTE] 
+    > Dieser Befehl installiert die Microsoft-Authentifizierungsbibliothek. MSAL übernimmt die Erfassung, Zwischenspeicherung und Aktualisierung von Benutzertoken für den Zugriff auf die durch Azure Active Directory v2 geschützten APIs.
+    >
 
 ## <a name="add-the-code-to-initialize-msal"></a>Hinzufügen des Codes zum Initialisieren der MSAL
-Dieser Schritt hilft Ihnen beim Erstellen einer Klasse zum Verarbeiten der Interaktion mit der MSAL, z.B. zum Verarbeiten von Token.
+In diesem Schritt erstellen Sie eine Klasse zur Handhabung der Interaktion mit MSAL (beispielsweise die Handhabung von Token).
 
-1. Öffnen Sie die Datei `App.xaml.cs`, und fügen Sie in den Verweis auf die MSAL-Bibliothek zur Klasse hinzu:
+1. Öffnen Sie die Datei *App.xaml.cs*, und fügen Sie der Klasse den Verweis für MSAL hinzu:
 
-```csharp
-using Microsoft.Identity.Client;
-```
+    ```csharp
+    using Microsoft.Identity.Client;
+    ```
 <!-- Workaround for Docs conversion bug -->
-<ol start="2">
-<li>
-Aktualisieren Sie die „App“-Klasse wie folgt:
-</li>
-</ol>
 
-```csharp
-public partial class App : Application
-{
-    //Below is the clientId of your app registration. 
-    //You have to replace the below with the Application Id for your app registration
-    private static string ClientId = "your_client_id_here";
+2. Aktualisieren Sie die App-Klasse wie folgt:
 
-    public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
+    ```csharp
+    public partial class App : Application
+    {
+        //Below is the clientId of your app registration. 
+        //You have to replace the below with the Application Id for your app registration
+        private static string ClientId = "your_client_id_here";
 
-}
-```
+        public static PublicClientApplication PublicClientApp = new PublicClientApplication(ClientId);
 
-## <a name="create-your-applications-ui"></a>Erstellen der Benutzeroberfläche Ihrer Anwendung
-Im folgenden Abschnitt wird gezeigt, wie eine Anwendung einen geschützten Back-End-Server wie Microsoft Graph abfragen kann. Die Datei „MainWindow.xaml“ sollte als Teil Ihrer Projektvorlage automatisch erstellt werden. Öffnen Sie diese Datei, und befolgen Sie dann die nachstehenden Anweisungen:
+    }
+    ```
 
-Ersetzen Sie `<Grid>` Ihrer Anwendung durch Folgendes:
+## <a name="create-the-application-ui"></a>Erstellen der Anwendungsbenutzeroberfläche
+In diesem Abschnitt erfahren Sie, wie eine Anwendung einen geschützten Back-End-Server wie Microsoft Graph abfragen kann. 
+
+Die Datei *MainWindow.xaml* sollte als Teil Ihrer Projektvorlage automatisch erstellt werden. Öffnen Sie diese Datei, und ersetzen Sie den Knoten *\<Grid>* Ihrer Anwendung durch den folgenden Code:
 
 ```xml
 <Grid>
@@ -69,3 +69,4 @@ Ersetzen Sie `<Grid>` Ihrer Anwendung durch Folgendes:
     </StackPanel>
 </Grid>
 ```
+

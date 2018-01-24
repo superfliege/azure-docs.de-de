@@ -1,6 +1,6 @@
 ---
-title: Erfassen und Analysieren von Windows-Ereignisprotokollen in OMS Log Analytics | Microsoft-Dokumentation
-description: "Windows-Ereignisprotokolle gehören zu den häufigsten von Log Analytics verwendeten Datenquellen.  Dieser Artikel beschreibt die Konfiguration der Sammlung von Windows-Ereignisprotokollen sowie Details zu den Datensätzen, die im OMS-Repository erstellt werden."
+title: Erfassen und Analysieren von Windows-Ereignisprotokollen in Azure Log Analytics | Microsoft-Dokumentation
+description: "Windows-Ereignisprotokolle gehören zu den häufigsten von Log Analytics verwendeten Datenquellen.  In diesem Artikel wird beschrieben, wie Sie die Erfassung von Windows-Ereignisprotokollen konfigurieren, und aus welchen Bestandteilen die im Log Analytics-Arbeitsbereich erstellten Datensätze bestehen."
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 12/11/2017
 ms.author: bwren
-ms.openlocfilehash: ddead0903c7c5f29bc996e305699ced596d0a4f5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 7a7deb4d7a287b2e9613e6035a7ffd7bb6f14f9c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Datenquellen für Windows-Ereignisprotokolle in Log Analytics
 Windows-Ereignisprotokolle sind eine der häufigsten [Datenquellen](log-analytics-data-sources.md) zum Sammeln von Daten mithilfe von Windows-Agents, da viele Anwendungen Daten in das Windows-Ereignisprotokoll schreiben.  Sie können Ereignisse aus Standardprotokollen wie beispielsweise dem System- und dem Anwendungsprotokoll sammeln und darüber hinaus benutzerdefinierte Protokolle angeben, die von den zu überwachenden Anwendungen erstellt werden.
@@ -44,7 +44,7 @@ Log Analytics sammelt jedes Ereignis mit einem ausgewählten Schweregrad aus ein
 ## <a name="windows-event-records-properties"></a>Eigenschaften von Windows-Ereignisdatensätzen
 Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der folgenden Tabelle aufgeführten Eigenschaften:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
 | Computer |Name des Computers, auf dem das Ereignis gesammelt wurde. |
 | EventCategory |Kategorie des Ereignisses. |
@@ -64,7 +64,7 @@ Windows-Ereignisdatensätze weisen den Typ **Event** auf und besitzen die in der
 ## <a name="log-searches-with-windows-events"></a>Protokollsuchvorgänge mit Windows-Ereignissen
 Die folgende Tabelle zeigt verschiedene Beispiele für Protokollsuchvorgänge, die Windows-Ereignisdatensätze abrufen.
 
-| Abfrage | Beschreibung |
+| Abfragen | BESCHREIBUNG |
 |:---|:---|
 | Ereignis |Alle Windows-Ereignisse. |
 | Event &#124; where EventLevelName == "error" |Alle Windows-Ereignisse mit dem Schweregrad „error“. |

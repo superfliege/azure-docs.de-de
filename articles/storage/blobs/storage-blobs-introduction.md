@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: tamram
-ms.openlocfilehash: 6059ce809e7a8b2115e391d9db5b5b0a8626109e
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: b6814eea9120e0ee86afe333c11354fe49821978
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="introduction-to-blob-storage"></a>Einführung in Blob Storage
 
@@ -38,7 +38,7 @@ Der BLOB-Dienst umfasst die folgenden Komponenten:
 
 ![Blob-Architektur](./media/storage-blobs-introduction/blob1.png)
 
-* **Speicherkonto:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Bei diesem Speicherkonto kann es sich um ein **allgemeines Speicherkonto** oder ein **Blob Storage-Konto** handeln, das speziell für die Speicherung von Objekten bzw. Blobs verwendet wird. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+* **Speicherkonto:** Alle Zugriffe auf den Azure-Speicher erfolgen über ein Speicherkonto. Dieses Speicherkonto kann ein **allgemeines Speicherkonto (v1 oder v2)** oder ein **Blob Storage-Konto** sein. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 * **Container:** Ein Container dient zur Gruppierung eines Satzes von Blobs. Alle BLOBs müssen sich in Containern befinden. Ein Konto kann eine beliebige Anzahl von Containern enthalten. In einem Container kann eine beliebige Anzahl von BLOBs gespeichert sein. Beachten Sie, dass der Containername ausschließlich Kleinbuchstaben enthalten darf.
 

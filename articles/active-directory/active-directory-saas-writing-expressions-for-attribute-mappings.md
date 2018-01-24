@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, u
 services: active-directory
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
 ms.service: active-directory
 ms.workload: identity
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: markvi
-ms.openlocfilehash: 2811b4d57f69425ef119c88f80b32d24c6c32195
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: b916d71cfed55c9e904caa07e8f2167d684639aa
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -26,8 +26,8 @@ Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer de
 Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von Visual Basic for Applications (VBA) ähnlich.
 
 * Der gesamte Ausdruck muss mittels Funktionen definiert werden, die aus einem Namen mit darauffolgenden Argumenten in Klammern bestehen:  <br>
-  *Funktionsname(&lt;&lt;Argument 1&gt;&gt;,&lt;<argument N>&gt;)*
-* Sie können Funktionen ineinander verschachteln. Beispiel: <br> *FunktionEins(FunktionZwei(&lt;<argument1>&gt;))*
+  *Funktionsname(<<Argument 1>>,<<argument N>>)*
+* Sie können Funktionen ineinander verschachteln. Beispiel:  <br> *FunktionEins(FunktionZwei(&lt;<argument1>&gt;))*
 * Sie können drei verschiedene Argumententypen an die Funktionen übergeben:
   
   1. Attribute, die in eckige Klammern eingeschlossen werden müssen. Beispiel: [Attributname]
@@ -36,7 +36,7 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 * Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel: "Firmenname: \"Contoso\""
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
-[Anfügen](#append)&nbsp;&nbsp;&nbsp;&nbsp;[FormatDateTime](#formatdatetime)&nbsp;&nbsp;&nbsp;&nbsp;[Join](#join)&nbsp;&nbsp;&nbsp;&nbsp;[Mid](#mid)&nbsp;&nbsp;&nbsp;&nbsp;[Not](#not)&nbsp;&nbsp;&nbsp;&nbsp;[Replace](#replace)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces)&nbsp;&nbsp;&nbsp;&nbsp;[Switch](#switch)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)
 
 - - -
 ### <a name="append"></a>Anfügen
@@ -46,10 +46,10 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **Suffix** |Erforderlich |String |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **Suffix** |Erforderlich |Zeichenfolge |Die Zeichenfolge, die Sie am Ende des Quellwerts anfügen möchten |
 
 - - -
 ### <a name="formatdatetime"></a>FormatDateTime
@@ -59,11 +59,11 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **Eingabeformat** |Erforderlich |String |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
-| **Ausgabeformat** |Erforderlich |String |Format des Ausgabedatums. |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **Eingabeformat** |Erforderlich |Zeichenfolge |Erwartetes Format des Quellwerts. Unterstützte Formate finden Sie unter [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
+| **Ausgabeformat** |Erforderlich |Zeichenfolge |Format des Ausgabedatums. |
 
 - - -
 ### <a name="join"></a>Join
@@ -75,10 +75,10 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **Trennzeichen** |Erforderlich |String |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
-| **Quelle1  … QuelleN ** |Erforderlich, unterschiedlich oft |String |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
+| **Trennzeichen** |Erforderlich |Zeichenfolge |Zeichenfolge, die zur Trennung von Quellwerten verwendet wird, wenn diese zu einer einzelnen Zeichenfolge zusammengesetzt werden. Kann "" sein, wenn kein Trennzeichen erforderlich ist. |
+| **Quelle1  … QuelleN ** |Erforderlich, unterschiedlich oft |Zeichenfolge |Zeichenfolgenwerte, die zusammengesetzt werden sollen. |
 
 - - -
 ### <a name="mid"></a>Mid
@@ -88,10 +88,10 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs. |
-| **start** |Erforderlich |Ganze Zahl |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs. |
+| **start** |Erforderlich |integer |Index in der **Quellzeichenfolge** , an dem die Teilzeichenfolge beginnen soll. Das erstes Zeichen in der Zeichenfolge hat den Index 1, das zweite Zeichen hat den Index 2 usw. |
 | **Länge** |Erforderlich |Ganze Zahl |Die Länge der Teilzeichenfolge. Wenn die Länge außerhalb der **Quellzeichenfolge** endet, gibt die Funktion die Teilzeichenfolge zwischen **Startindex** und dem Ende der **Quellzeichenfolge** zurück. |
 
 - - -
@@ -102,12 +102,12 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind "True" oder "False". |
 
 - - -
-### <a name="replace"></a>Ersetzen von
+### <a name="replace"></a>Replace
 **Funktion:**<br> ObsoleteReplace(Quelle, AlterWert, RegexMuster, RegexGruppenname, Ersatzwert, Ersatzattributname, Vorlage)
 
 **Beschreibung:**<br>
@@ -129,15 +129,27 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **AlterWert** |Optional |String |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
-| **RegexMuster** |Optional |String |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Wenn "Ersatzeigenschaftsname" verwendet wird, das Muster, das zum Extrahieren des Werts aus der Ersatzeigenschaft verwendet wird. |
-| **RegexGruppenname** |Optional |String |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von „Ersatzeigenschaftsname“ wird der Wert dieser Gruppe als „Ersatzwert“ aus der Ersatzeigenschaft extrahiert. |
-| **Ersatzwert** |Optional |String |Neuer Wert, durch den der alte Wert ersetzt wird. |
-| **Ersatzattributname** |Optional |String |Name des Attributs, das für den Ersatzwert verwendet werden soll, wenn die Quelle keinen Wert besitzt. |
-| **Vorlage** |Optional |String |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Quellwert ersetzt. |
+| **Quelle** |Erforderlich |Zeichenfolge |Normalerweise der Name des Attributs aus dem Quellobjekt |
+| **AlterWert** |Optional |Zeichenfolge |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
+| **RegexMuster** |Optional |Zeichenfolge |Regex-Muster für den Wert, der in der **Quelle**ersetzt wird. Wenn "Ersatzeigenschaftsname" verwendet wird, das Muster, das zum Extrahieren des Werts aus der Ersatzeigenschaft verwendet wird. |
+| **RegexGruppenname** |Optional |Zeichenfolge |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von „Ersatzeigenschaftsname“ wird der Wert dieser Gruppe als „Ersatzwert“ aus der Ersatzeigenschaft extrahiert. |
+| **Ersatzwert** |Optional |Zeichenfolge |Neuer Wert, durch den der alte Wert ersetzt wird. |
+| **Ersatzattributname** |Optional |Zeichenfolge |Name des Attributs, das für den Ersatzwert verwendet werden soll, wenn die Quelle keinen Wert besitzt. |
+| **Vorlage** |Optional |Zeichenfolge |Bei Angabe des Werts **Vorlage** wird **AlterWert** in der Vorlage gesucht und durch den Quellwert ersetzt. |
+
+- - -
+### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
+**Funktion:**<br> SingleAppRoleAssignment([appRoleAssignments])
+
+**Beschreibung:**<br> Gibt eine einzelne appRoleAssignment aus der Liste aller appRoleAssignments zurück, die einem Benutzer für eine bestimmte Anwendung zugewiesen sind. Diese Funktion ist erforderlich, um das appRoleAssignments-Objekt in eine einzelne Namenszeichenfolge für eine Rolle zu konvertieren. Beachten Sie, dass die bewährte Methode darin besteht, sicherzustellen, dass einem Benutzer nur jeweils eine appRoleAssignment zugewiesen ist. Wenn mehrere Rollen zugewiesen sind, ist die zurückgegebene Zeichenfolge für die Rolle möglicherweise nicht vorhersehbar.
+
+**Parameter:**<br> 
+
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
+| --- | --- | --- | --- |
+| **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]**-Objekt |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -147,9 +159,9 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |String |**Quelle** , der aktualisiert werden soll. |
+| **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
 
 - - -
 ### <a name="switch"></a>Switch
@@ -159,12 +171,12 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 
 **Parameter:**<br> 
 
-| Name | Erforderlich/wiederholt | Typ | Hinweise |
+| NAME | Erforderlich/wiederholt | Typ | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |String |**Source** , der aktualisiert werden soll. |
-| **defaultValue** |Optional |String |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
-| **key** |Erforderlich |String |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
-| **value** |Erforderlich |String |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
+| **Quelle** |Erforderlich |Zeichenfolge |**Source** , der aktualisiert werden soll. |
+| **defaultValue** |Optional |Zeichenfolge |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
+| **key** |Erforderlich |Zeichenfolge |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
+| **value** |Erforderlich |Zeichenfolge |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
 ## <a name="examples"></a>Beispiele
 ### <a name="strip-known-domain-name"></a>Entfernen eines bekannten Domänennamens

@@ -1,5 +1,5 @@
 ---
-title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft-Dokumentation"
+title: "Lokales Entwickeln und Ausführen von Azure Functions | Microsoft Docs"
 description: "Erfahren Sie, wie Sie Azure-Funktionen auf dem lokalen Computer codieren und testen, bevor Sie sie in Azure Functions ausführen."
 services: functions
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6bc12c407a32388b7155a815b099b3b285fef18
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 081da55bb956db2879d7f2c5c91d25f5c36d5507
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Lokales Codieren und Testen von Azure Functions
 
@@ -126,13 +126,13 @@ Die Datei „local.settings.json“ speichert App-Einstellungen, Verbindungszeic
   }
 }
 ```
-| Einstellung      | Beschreibung                            |
+| Einstellung      | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | Wenn dies auf **TRUE** festgelegt wird, werden alle Werte mithilfe eines Schlüssels des lokalen Computers verschlüsselt. Wird mit `func settings`-Befehlen verwendet. Der Standardwert ist **false**. |
 | **Werte** | Eine Sammlung von Anwendungseinstellungen, die bei der lokalen Ausführung verwendet wird. **AzureWebJobsStorage** und **AzureWebJobsDashboard** sind Beispiele. Eine vollständige Liste finden Sie in der [Referenz zu App-Einstellungen](functions-app-settings.md).  |
 | **Host** | Die Einstellungen in diesem Abschnitt passen den Hostprozess von Functions bei der lokalen Ausführung an. | 
 | **LocalHttpPort** | Legt den Standardport fest, der bei der Ausführung des lokalen Functions-Host verwendet wird (`func host start` und `func run`). Die Befehlszeilenoption `--port` hat Vorrang vor diesem Wert. |
-| **CORS** | Definiert die für die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) zulässigen Ursprünge. Ursprünge werden als durch Trennzeichen getrennte Liste ohne Leerzeichen bereitgestellt. Den Platzhalterwert (**\***) wird unterstützt, wodurch Anforderungen von einem beliebigen Ursprung zulässig sind. |
+| **CORS** | Definiert die für die [Ressourcenfreigabe zwischen verschiedenen Ursprüngen (CORS)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) zulässigen Ursprünge. Ursprünge werden als durch Trennzeichen getrennte Liste ohne Leerzeichen bereitgestellt. Den Platzhalterwert (\*) wird unterstützt, wodurch Anforderungen von einem beliebigen Ursprung zulässig sind. |
 | **ConnectionStrings** | Enthält die Datenbank-Verbindungszeichenfolgen für Ihre Funktionen. Verbindungszeichenfolgen in diesem Objekt werden der Umgebung mit dem Anbietertyp **System.Data.SqlClient** hinzugefügt.  | 
 
 Die meisten Trigger und Bindungen verfügen über eine **Connection**-Eigenschaft, die dem Namen einer Umgebungsvariablen oder App-Einstellung entspricht. Für jede Verbindungseigenschaft muss eine App-Einstellung in der Datei „local.settings.json“ definiert sein. 
@@ -171,7 +171,7 @@ func new
 ``` 
 `func new` unterstützt die folgenden optionalen Argumente:
 
-| Argument     | Beschreibung                            |
+| Argument     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **`--language -l`** | Die Vorlagenprogrammiersprache, z.B. C#, F# oder JavaScript. |
 | **`--template -t`** | Der Name der Vorlage. |
@@ -199,7 +199,7 @@ func host start
 
 `func host start` unterstützt die folgenden Optionen:
 
-| Option     | Beschreibung                            |
+| Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 |**`--port -p`** | Der lokale Port, auf dem gelauscht werden soll. Standardwert: 7071. |
 | **`--debug <type>`** | Die Optionen sind `VSCode` und `VS`. |
@@ -295,7 +295,7 @@ Sie können eine Funktion auch direkt aufrufen, indem Sie `func run <FunctionNam
 
 `func run` unterstützt die folgenden Optionen:
 
-| Option     | Beschreibung                            |
+| Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **`--content -c`** | Inlineinhalt. |
 | **`--debug -d`** | Anfügen eines Debuggers an den Hostprozess vor dem Ausführen der Funktion.|
@@ -319,7 +319,7 @@ func azure functionapp publish <FunctionAppName>
 
 Sie können die folgenden Optionen verwenden:
 
-| Option     | Beschreibung                            |
+| Option     | BESCHREIBUNG                            |
 | ------------ | -------------------------------------- |
 | **`--publish-local-settings -i`** |  Einstellungen zur Veröffentlichung in Azure in „local.settings.json“. Wenn die Einstellung bereits vorhanden ist, werden Sie gefragt, ob sie überschrieben werden soll.|
 | **`--overwrite-settings -y`** | Muss zusammen mit `-i` verwendet werden. Überschreibt AppSettings in Azure mit dem lokalen Wert, falls abweichend. Standard ist die Eingabeaufforderung.|

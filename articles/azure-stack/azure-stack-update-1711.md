@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/11/2017
 ms.author: andredm
-ms.openlocfilehash: b9f45462fb108ff9cc9039cdb0d0a9ef318fc218
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 578d17bcfbb7e12c9855132772c2068a5cdf1f62
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-stack-1711-update"></a>Azure Stack-Update 1711
 
@@ -51,6 +51,7 @@ Dieses Update enthält die folgenden Verbesserungen und Fehlerbehebungen für Az
 - Benutzer können nun virtuelle Windows-Computer automatisch aktivieren.
 - Ein PowerShell-Cmdlet für privilegierten Endpunkt zum Abrufen von BitLocker-Wiederherstellungsschlüsseln für die Archivierung wurde hinzugefügt.
 - Unterstützung für die Aktualisierung der Offlineimages bei der Aktualisierung der Infrastruktur
+- Aktivieren der Infrastruktursicherung mit dem Dienst Sicherung aktivieren
 
 #### <a name="fixes"></a>Fehlerbehebungen
 
@@ -123,6 +124,7 @@ Dieser Abschnitt enthält bekannte Probleme, die für Build **20171201.3** nach 
 - Beim Erstellen eines Netzwerklastenausgleichs müssen Sie eine NAT-Regel (Network Address Translation, Netzwerkadressübersetzung) erstellen. Andernfalls wird ein Fehler ausgegeben, wenn Sie versuchen, eine NAT-Regel hinzufügen, nachdem der Lastenausgleich erstellt wurde.
 - Sie können die Zuordnung einer öffentlichen IP-Adresse zu einem virtuellen Computer nicht aufheben, nachdem der virtuelle Computer erstellt und dieser IP-Adresse zugeordnet wurde. Die Aufhebung der Zuordnung war scheinbar erfolgreich, die zuvor zugewiesene öffentliche IP-Adresse bleibt dem ursprünglichen virtuellen Computer jedoch zugeordnet. Dieses Verhalten tritt auch dann auf, wenn Sie die IP-Adresse einem neuen virtuellen Computer neu zuordnen (gewöhnlich als *VIP-Austausch* bezeichnet). Alle künftigen Versuche, eine Verbindung über diese IP-Adresse herzustellen, führen dazu, dass eine Verbindung mit dem ursprünglich zugeordneten virtuellen Computer (und nicht mit dem neuen) hergestellt wird. Derzeit müssen Sie ausschließlich neue öffentliche IP-Adressen für die Erstellung neuer virtueller Computer verwenden.
 - Azure Stack-Benutzer können möglicherweise VNETs oder Netzwerksicherheitsgruppen nicht bereitstellen, löschen oder ändern. Dieses Problem tritt in erster Linie bei nachfolgenden Updateversuchen desselben Pakets auf. Die Ursache ist ein Packproblem beim Update, das derzeit geprüft wird.
+- Der interne Lastenausgleich (ILB) behandelt MAC-Adressen für Back-End-VMs nicht ordnungsgemäß, wodurch Linux-Instanzen gestört werden.
  
 #### <a name="sqlmysql"></a>SQL/MySQL
 - Es kann bis zu einer Stunde dauern, bevor Mandanten Datenbanken in einer neuen SQL SKU oder MySQL SKU erstellen können. 
@@ -137,6 +139,17 @@ In Umgebungen, die in Azure Active Directory-Verbunddienste (AD FS) bereitgestel
 
 > [!IMPORTANT]
 > Obwohl das Konto **azurestack\cloudadmin** in Umgebungen, die in AD FS bereitgestellt wurden, der Besitzer des Standardabonnements des Anbieters ist, verfügt es nicht über die Berechtigung für RDP-Verbindungen mit dem Host. Verwenden Sie weiterhin das Konto **azurestack\azurestackadmin** oder das lokale Administratorkonto, um sich bei Bedarf auf dem Host anzumelden, auf diesen zuzugreifen oder ihn zu verwalten.
+
+#### <a name="infrastructure-backup-sevice"></a>Infrastruktur-Sicherungsdienst
+<!-- 1974890-->
+
+- **Sicherungen vor Update 1711 werden für die Cloud-Wiederherstellung nicht unterstützt.**  
+  Sicherungen vor Update 1711 sind mit der Cloud-Wiederherstellung nicht kompatibel. Sie müssen zuerst ein Update auf 1711 ausführen und Sicherungen aktivieren. Wenn Sie Sicherungen bereits aktiviert haben, achten Sie darauf, nach dem Update auf 1711 eine Sicherung zu erstellen. Sicherungen vor Update 1711 sollten gelöscht werden.
+
+- **Das Aktivieren der Sicherung auf ASDK dient nur zu Testzwecken.**  
+  Infrastruktursicherungen können zum Wiederherstellen von Lösungen mit mehreren Knoten verwendet werden. Sie können die Infrastruktursicherung auf ASDK aktivieren, es besteht aber keine Möglichkeit, die Wiederherstellung zu testen.
+
+Weitere Informationen finden Sie unter [Sicherung und Datenwiederherstellung für Azure Stack mit dem Dienst zur Infrastruktursicherung](C:\Git\MS\azure-docs-pr\articles\azure-stack\azure-stack-backup-infrastructure-backup.md).
 
 ## <a name="download-the-update"></a>Herunterladen des Updates
 

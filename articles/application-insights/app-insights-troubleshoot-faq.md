@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7dcfea240a8dbb416226e76f8941cfe8147e2b39
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9f6cf019d681ce6e844481ca58de1ff472b3d32c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: Häufig gestellte Fragen
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/01/2017
 * [.NET-App](app-insights-asp-net-troubleshoot-no-data.md)
 * [Überwachen einer bereits ausgeführten App](app-insights-monitor-performance-live-website-now.md#troubleshooting-runtime-configuration-of-application-insights)
 * [Azure-Diagnose](app-insights-azure-diagnostics.md)
-* [Java-Web-Apps](app-insights-java-troubleshoot.md)
+* [Java-Web-App](app-insights-java-troubleshoot.md)
 
 *Ich erhalte keine Daten von meinem Server.*
 
@@ -95,7 +95,7 @@ Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `Application
 
 Eine Desktop-App, die Sie auf Ihrem IIS-Webserver zum Konfigurieren von Application Insights in Web-Apps verwenden können. Sie sammelt keine Telemetriedaten; Sie können sie beenden, wenn Sie keine App konfigurieren. 
 
-[Weitere Informationen](app-insights-monitor-performance-live-website-now.md#questions).
+[Weitere Informationen](app-insights-monitor-performance-live-website-now.md#questions)
 
 ## <a name="what-telemetry-is-collected-by-application-insights"></a>Welche Telemetriedaten werden von Application Insights gesammelt?
 
@@ -140,7 +140,7 @@ Mit [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/) wird die IP-Adress
 * Browsertelemetrie: Die IP-Adresse des Absenders wird gesammelt.
 * Servertelemetrie: Das Application Insights-Modul sammelt die Client-IP-Adresse. Sie wird nicht gesammelt, wenn `X-Forwarded-For` festgelegt ist.
 
-Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](http://apmtips.com/blog/2016/07/05/client-ip-address/).
+Sie können in der Konfiguration festlegen, dass `ClientIpHeaderTelemetryInitializer` die IP-Adresse aus einem anderen Header akzeptiert. In manchen Systemen wird sie z.B. von einem Proxy, durch den Lastenausgleich oder das CDN nach `X-Originating-IP` verschoben. [Weitere Informationen](http://apmtips.com/blog/2016/07/05/client-ip-address/)
 
 Sie können [mit Power BI](app-insights-export-power-bi.md) die Anforderungstelemetriedaten auf einer Karte anzeigen.
 
@@ -242,7 +242,7 @@ Dies gilt unabhängig davon, wo Ihre Application Insights-Ressource gehostet wir
 
 ## <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Kann ich Telemetriedaten an das Application Insights-Portal senden?
 
-Es wird empfohlen, unsere SDKs und die SDK-API („app-insights-api-custom-events-metrics.md“) zu verwenden. Es gibt Varianten des SDK für verschiedene [Plattformen](app-insights-platforms.md). Diese SDKs behandeln Pufferung, Komprimierung, Drosselung, Wiederholungen usw. Das [Erfassungsschema](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) und das [Endpunktprotokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) sind jedoch öffentlich.
+Es wird empfohlen, unsere SDKs und die [SDK-API](app-insights-api-custom-events-metrics.md) zu verwenden. Es gibt Varianten des SDK für verschiedene [Plattformen](app-insights-platforms.md). Diese SDKs behandeln Pufferung, Komprimierung, Drosselung, Wiederholungen usw. Das [Erfassungsschema](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) und das [Endpunktprotokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) sind jedoch öffentlich.
 
 ## <a name="can-i-monitor-an-intranet-web-server"></a>Kann ich einen Intranetwebserver überwachen?
 

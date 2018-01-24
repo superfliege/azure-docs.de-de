@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/11/2017
+ms.date: 12/11/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 22379dd7cb0118983505237fa16f01a865a53306
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 309396badf3a4daa4c339a280f774bcd500ce3bb
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -61,7 +61,10 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 * Verwenden Sie `{iothubhostname}/{device_id}/api-version=2016-11-14` für das Feld **Benutzername**, wobei {iothubhostname} der vollständige CNAME für den IoT Hub ist.
 
     Beispiel: Wenn der Name für den IoT Hub **contoso.azure devices.net** und der Name des Geräts **MyDevice01** lautet, sollte das vollständige Feld **Benutzername** den Namen `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14` enthalten.
-* Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie das für die Protokolle HTTPS und AMQP:<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`.
+* Verwenden Sie im Feld **Kennwort** ein SAS-Token. Das Format des SAS-Tokens ist das gleiche wie das für die Protokolle HTTPS und AMQP:<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`(Fixierte Verbindung) festgelegt ist(Fixierte Verbindung) festgelegt ist.
+
+    >[!NOTE]
+    >Bei Verwendung der X.509-Zertifikatauthentifizierung sind keine SAS-Tokenkennwörter erforderlich. Weitere Informationen finden Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub][lnk-x509].
 
     Weitere Informationen zum Generieren von SAS-Token finden Sie unter [Verwenden von IoT Hub-Sicherheitstoken][lnk-sas-tokens] im Abschnitt zu Geräten.
 
@@ -116,7 +119,7 @@ client.connect(subdomain+".azure-devices.net", port=8883)
 
 ### <a name="sending-device-to-cloud-messages"></a>Senden von D2C-Nachrichten
 
-Nachdem Sie erfolgreich eine Verbindung hergestellt haben, kann ein Gerät Nachrichten mithilfe von `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Themenname** an IoT Hub senden. Das `{property_bag}` -Element ermöglicht dem Gerät das Senden von Nachrichten mit zusätzlichen Eigenschaften in einem URL-codierten Format. Beispiel:
+Nachdem Sie erfolgreich eine Verbindung hergestellt haben, kann ein Gerät Nachrichten mithilfe von `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Themenname** an IoT Hub senden. Das `{property_bag}` -Element ermöglicht dem Gerät das Senden von Nachrichten mit zusätzlichen Eigenschaften in einem URL-codierten Format. Beispiel: 
 
 ```
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
@@ -137,7 +140,7 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zum Messaging][lnk-messa
 
 ### <a name="receiving-cloud-to-device-messages"></a>Empfangen von C2D-Nachrichten
 
-Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#` als **Themenfilter** einrichten. Der Platzhalter mit mehreren Ebenen **#** im Themenfilter wird nur verwendet, um dem Gerät das Empfangen zusätzlicher Eigenschaften im Themennamen zu erlauben. IoT Hub lässt sich nicht die Verwendung der Platzhalter **#** und **?** für die Filterung von Unterthemen zu. Da IoT Hub kein allgemeiner Nachrichtenbrokerdienst für das Veröffentlichen und Abonnieren ist, werden nur die dokumentierten Themennamen und -filter unterstützt.
+Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#` als **Themenfilter** einrichten. Der Platzhalter mit mehreren Ebenen `#` im Themenfilter wird nur verwendet, um dem Gerät das Empfangen zusätzlicher Eigenschaften im Themennamen zu erlauben. IoT Hub lässt die Verwendung des Platzhalters `#` oder `?` für die Filterung von Unterthemen nicht zu. Da IoT Hub kein allgemeiner Nachrichtenbrokerdienst für das Veröffentlichen und Abonnieren ist, werden nur die dokumentierten Themennamen und -filter unterstützt.
 
 Das Gerät empfängt erst Nachrichten von der IoT Hub-Instanz, nachdem es deren gerätespezifischen Endpunkt erfolgreich abonniert hat, der vom Themenfilter `devices/{device_id}/messages/devicebound/#` dargestellt wird. Nachdem das Abonnement erfolgreich eingerichtet wurde, beginnt das Gerät mit dem Empfangen von ausschließlich C2D-Nachrichten, die nach der Zeit des Abonnements an das Gerät gesendet wurden. Wenn das Gerät eine Verbindung mit auf **0** festgelegtem **CleanSession**-Flag herstellt, behält das Abonnement verschiedene Sitzungen übergreifend bei. In diesem Fall empfängt das Gerät beim nächsten Verbindungsaufbau mit **CleanSession 0** ausstehende Nachrichten, die ihm gesendet wurden, als es vom Netzwerk getrennt war. Wenn das Gerät das auf **1** festgelegte **CleanSession**-Flag verwendet, empfängt es erst dann Nachrichten von der IoT Hub-Instanz, wenn es deren Geräteendpunkt abonniert.
 
@@ -170,7 +173,7 @@ Der Text des Eintrags in der Identitätsregistrierung ist auf den Member „prop
 
 Die möglichen Statuscodes lauten:
 
-|Status | Beschreibung |
+|Status | BESCHREIBUNG |
 | ----- | ----------- |
 | 200 | Erfolgreich |
 | 429 | Zu viele Anforderungen (gedrosselt), siehe [IoT Hub-Drosselung][lnk-quotas] |
@@ -184,12 +187,12 @@ Die folgende Sequenz beschreibt, wie ein Gerät die gemeldeten Eigenschaften in 
 
 1. Ein Gerät muss zuerst das Thema `$iothub/twin/res/#` abonnieren, um die Antworten des Vorgangs von IoT Hub zu empfangen.
 
-1. Ein Gerät sendet eine Nachricht, die das Gerätezwillingsupdate enthält, an das Thema `$iothub/twin/PATCH/properties/reported/?$rid={request id}`. Diese Nachricht enthält einen **Anforderungs-ID**-Wert.
+1. Ein Gerät sendet eine Nachricht, die das Gerätezwillingsupdate enthält, an das Thema `$iothub/twin/PATCH/properties/reported/?$rid={request id}`. Diese Nachricht enthält einen **request ID**-Wert.
 
-1. Anschließend sendet der Dienst eine Antwortnachricht, die den neuen ETag-Wert für die Sammlung der gemeldeten Eigenschaften enthält, im Thema `$iothub/twin/res/{status}/?$rid={request id}`. Diese Antwortnachricht verwendet die gleiche **Anforderungs-ID** wie die Anforderung.
+1. Anschließend sendet der Dienst eine Antwortnachricht, die den neuen ETag-Wert für die Sammlung der gemeldeten Eigenschaften enthält, im Thema `$iothub/twin/res/{status}/?$rid={request id}`. Diese Antwortnachricht verwendet den gleichen **request id**-Wert wie die Anforderung.
 
 Der Text der Antwortnachricht enthält ein JSON-Dokument, mit dem neue Werte für die gemeldeten Eigenschaften bereitgestellt werden (keine anderen Eigenschaftsdaten oder Metadaten können geändert werden).
-Jeder Member im JSON-Dokument wird aktualisiert, oder der entsprechende Member wird im Dokument des Gerätezwillings hinzugefügt. Wenn ein Member auf `null` festgelegt ist, wird der Member aus dem enthaltenden Objekt gelöscht. Beispiel:
+Jeder Member im JSON-Dokument wird aktualisiert, oder der entsprechende Member wird im Dokument des Gerätezwillings hinzugefügt. Wenn ein Member auf `null` festgelegt ist, wird der Member aus dem enthaltenden Objekt gelöscht. Beispiel: 
 
         {
             "telemetrySendFrequency": "35m",
@@ -198,7 +201,7 @@ Jeder Member im JSON-Dokument wird aktualisiert, oder der entsprechende Member w
 
 Die möglichen Statuscodes lauten:
 
-|Status | Beschreibung |
+|Status | BESCHREIBUNG |
 | ----- | ----------- |
 | 200 | Erfolgreich |
 | 400 | Ungültige Anforderung; falsch formatierter JSON-Code |
@@ -209,7 +212,7 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][ln
 
 ### <a name="receiving-desired-properties-update-notifications"></a>Empfangen von Aktualisierungsbenachrichtigungen für gewünschte Eigenschaften
 
-Wenn die Verbindung für ein Gerät hergestellt wird, sendet IoT Hub Benachrichtigungen an das Thema `$iothub/twin/PATCH/properties/desired/?$version={new version}`. Die Benachrichtigungen enthalten den Inhalt der Aktualisierung, die vom Lösungs-Back-End durchgeführt wird. Beispiel:
+Wenn die Verbindung für ein Gerät hergestellt wird, sendet IoT Hub Benachrichtigungen an das Thema `$iothub/twin/PATCH/properties/desired/?$version={new version}`. Die Benachrichtigungen enthalten den Inhalt der Aktualisierung, die vom Lösungs-Back-End durchgeführt wird. Beispiel: 
 
         {
             "telemetrySendFrequency": "5m",
@@ -228,7 +231,7 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zu Gerätezwillingen][ln
 
 Als Erstes muss ein Gerät `$iothub/methods/POST/#` abonnieren. IoT Hub sendet Methodenanforderungen an das Thema `$iothub/methods/POST/{method name}/?$rid={request id}`, die entweder gültigen JSON-Code oder leeren Text enthalten.
 
-Als Antwort sendet das Gerät eine Nachricht mit gültigem JSON-Code oder leerem Text an das Thema `$iothub/methods/res/{status}/?$rid={request id}`, wobei die **request id** mit der ID in der Anforderungsnachricht übereinstimmen und **status** eine ganze Zahl sein muss.
+Als Antwort sendet das Gerät eine Nachricht mit gültigem JSON-Code oder leerem Text an das Thema `$iothub/methods/res/{status}/?$rid={request id}`, wobei **request id** mit der ID in der Anforderungsnachricht übereinstimmen und **status** eine ganze Zahl sein muss.
 
 Weitere Informationen finden Sie im [Entwicklerhandbuch zu direkten Methoden][lnk-methods].
 
@@ -270,6 +273,7 @@ Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
 [lnk-scaling]: iot-hub-scaling.md
 [lnk-devguide]: iot-hub-devguide.md
 [lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+[lnk-x509]: iot-hub-security-x509-get-started.md
 
 [lnk-methods]: iot-hub-devguide-direct-methods.md
 [lnk-messaging]: iot-hub-devguide-messaging.md

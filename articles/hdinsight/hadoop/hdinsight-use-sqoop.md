@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: 96d6d707d69f80a866f6ac17addabc0db076b079
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>Verwenden von Sqoop mit Hadoop in HDInsight
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -47,14 +47,14 @@ Der HDInsight-Cluster wird mit einigen Beispieldaten geliefert. Sie verwenden di
   
   | Feld | Datentyp |
   | --- | --- |
-  | clientid |string |
-  | querytime |string |
-  | market |string |
-  | deviceplatform |string |
-  | devicemake |string |
-  | devicemodel |string |
-  | state |string |
-  | country |string |
+  | clientid |Zeichenfolge |
+  | querytime |Zeichenfolge |
+  | market |Zeichenfolge |
+  | deviceplatform |Zeichenfolge |
+  | devicemake |Zeichenfolge |
+  | devicemodel |Zeichenfolge |
+  | state |Zeichenfolge |
+  | country |Zeichenfolge |
   | querydwelltime |double |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
@@ -94,7 +94,7 @@ Wenn Sie den Cluster und die SQL-Datenbank lieber mit Azure PowerShell erstellen
      
         Die folgenden Werte sind im Abschnitt mit den Variablen hartcodiert:
         
-        |Name|Wert|
+        |NAME|Wert|
         |----|-----|
         | Name des Standard-Speicherkontos | &lt;Clustername>store |
         | Servername der Azure SQL-Datenbank | &lt;Clustername>dbserver |
@@ -171,7 +171,7 @@ Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unte
 ## <a name="appendix-a---a-powershell-sample"></a>Anhang A – PowerShell-Beispiel
 Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
 
-1. Stelle Sie eine Verbindung zu Azure her.
+1. Herstellen einer Verbindung zu Azure.
 2. Erstellen Sie eine Azure-Ressourcengruppe. Weitere Informationen finden Sie unter [Verwenden von Windows PowerShell mit dem Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md)
 3. Erstellen Sie einen Azure SQL-Datenbank-Server, eine Azure SQL-Datenbank und zwei Tabellen. 
    
@@ -221,7 +221,7 @@ Im PowerShell-Beispiel werden die folgenden Schritte ausgeführt:
    > Mit Ausnahme der Verbindungszeichenfolgen sollten die Schritte in diesem Abschnitt sowohl für Azure SQL-Datenbanken als auch für SQL Server funktionieren. Diese Schritte wurden mithilfe der folgenden Konfiguration getestet:
    > 
    > * **Virtuelles Azure-Netzwerk mit Punkt-zu-Standort-Konfiguration**: Ein virtuelles Netzwerk verbindet das HDInsight-Cluster mit einem SQL Server in einem privaten Rechenzentrum. Weitere Informationen finden Sie unter [Konfigurieren eines Punkt-zu-Standort-VPN im Verwaltungsportal](../../vpn-gateway/vpn-gateway-point-to-site-create.md) .
-   > * **Azure HDInsight 3.1**: Informationen zur Erstellung eines Clusters in einem virtuellen Netzwerk finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mit benutzerdefinierten Optionen](../hdinsight-hadoop-provision-linux-clusters.md) .
+   > * **Azure HDInsight:** Informationen zum Erstellen eines Clusters in einem virtuellen Netzwerk finden Sie unter [Erstellen von Hadoop-Clustern in HDInsight mit benutzerdefinierten Optionen](../hdinsight-hadoop-provision-linux-clusters.md).
    > * **SQL Server 2014**: Konfiguriert für die Authentifizierung und mit dem Konfigurationspaket für VPN-Clients für eine sichere Verbindung zum virtuellen Netzwerk.
    > 
    > 

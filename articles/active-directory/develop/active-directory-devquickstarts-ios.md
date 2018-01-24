@@ -1,5 +1,5 @@
 ---
-title: Integrieren von Azure AD in eine iOS-Anwendung | Microsoft-Dokumentation
+title: Erste Schritte mit iOS in Azure AD | Microsoft-Dokumentation
 description: "In diesem Thema erfahren Sie, wie eine iOS-Anwendung erstellt wird, die sich für die Anmeldung in Azure AD integriert und über OAuth durch Azure AD geschützte APIs aufruft."
 services: active-directory
 documentationcenter: ios
@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e497b9e02e21967e71fc9b4fef8dfe0e63e682c3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 36c6f6d2449d1e137f85e0f657f0399f9df8ee55
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="integrate-azure-ad-into-an-ios-app"></a>Integrieren von Azure AD in eine iOS-Anwendung
+# <a name="azure-ad-ios-getting-started"></a>Erste Schritte mit iOS in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
-
-> [!TIP]
-> Testen Sie die Vorschau unseres neuen [Entwicklerportals](https://identity.microsoft.com/Docs/iOS), mit dem Sie Azure Active Directory innerhalb weniger Minuten betriebsbereit machen.  Im Entwicklerportal werden Sie durch den Vorgang zum Registrieren einer App und die Integration von Azure AD in Ihren Code geleitet.  Nach dem Durchführen dieser Schritte verfügen Sie über eine einfache Anwendung zur Authentifizierung von Benutzern in Ihrem Mandanten sowie über ein Back-End, das Token akzeptieren und eine Überprüfung durchführen kann. 
-> 
-> 
 
 Für iOS-Clients, die auf geschützte Ressourcen zugreifen müssen, bietet Azure Active Directory (Azure AD) die Active Directory-Authentifizierungsbibliothek (ADAL). ADAL vereinfacht den Prozess Ihrer App zum Abrufen von Zugriffstoken. Um Ihnen zu zeigen, wie einfach es geht, erstellen wir in diesem Artikel eine Objective C-Anwendung mit einer Aufgabenliste, mit der folgende Aktionen ausgeführt werden können:
 
@@ -59,14 +54,14 @@ Das iOS-Format für einen Umleitungs-URI lautet:
 ```
 
 * **aap-scheme** – Dieses Schema ist in Ihrem XCode-Projekt registriert. So können Sie andere Anwendungen aufrufen. Sie finden dieses Schema unter "Info.plist -> URL types -> URL Identifier". Sie sollten ein Schema erstellen, sofern Sie nicht bereits ein oder mehrere Schemas konfiguriert haben.
-* **bundle-id** – dies ist die Paket-ID, die sich unter "identity" in Ihren Projekteinstellungen in XCode befindet.
+* **bundle-id** – Dies ist die Paket-ID, die sich unter „identity“ in Ihren XCode-Projekteinstellungen befindet.
 
 Beispiel für diesen QuickStart-Code: ***msquickstart://com.microsoft.azureactivedirectory.samples.graph.QuickStart***
 
 ## <a name="2-register-the-directorysearcher-application"></a>2. Registrieren der Anwendung DirectorySearcher
 Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst bei Ihrem Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnisliste** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie anschließend **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.

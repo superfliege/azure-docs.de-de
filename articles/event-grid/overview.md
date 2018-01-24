@@ -1,18 +1,18 @@
 ---
 title: "Azure Event Grid – Übersicht"
-description: "Beschreibt Azure Event Grid und die zugehörigen Konzepte."
+description: "In diesem Artikel werden Azure Event Grid und die zugehörigen Begriffe beschrieben."
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 12/14/2017
 ms.author: babanisa
-ms.openlocfilehash: 5b522b40b136e354c6ca83a56ac7ad690151ad7d
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: e6665b3b0c6e92ed462f18dbd41d62ccd9304928
+ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Einführung in Azure Event Grid
 
@@ -20,9 +20,18 @@ Mit Azure Event Grid können Sie mühelos Anwendungen mit ereignisbasierten Arch
 
 Sie können Filter zum Weiterleiten bestimmter Ereignisse an verschiedene Endpunkte verwenden, Multicasts zu mehreren Endpunkten ausführen und sicherstellen, dass Ihre Ereignisse zuverlässig übermittelt werden. Event Grid bietet auch integrierte Unterstützung für benutzerdefinierte und Drittanbieterereignisse.
 
-In der Vorschauversion unterstützt Event Grid die Standorte **westus2** und **westcentralus**. Andere Regionen werden hinzugefügt.
+Event Grid unterstützt derzeit die folgenden Regionen:
 
-Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md).
+* USA (Mitte)
+*   USA (Ost)
+*   USA (Ost) 2
+*   USA, Westen-Mitte
+*   USA (Westen)
+*   USA, Westen 2
+
+Andere Regionen werden hinzugefügt.
+
+Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Verwendung von Event Grid einsteigen möchten, lesen Sie [Erstellen und Weiterleiten benutzerdefinierter Ereignisse mit Azure Event Grid](custom-event-quickstart.md). Die folgende Abbildung zeigt, wie Event Grid Verleger und Handler verbindet, bietet jedoch keine umfassende Liste der unterstützten Optionen.
 
 ![Event Grid – funktionales Modell](./media/overview/event-grid-functional-model.png)
 
@@ -30,11 +39,11 @@ Dieser Artikel enthält eine Übersicht zu Azure Event Grid. Wenn Sie in die Ver
 
 Derzeit bieten die folgenden Azure-Dienste integrierte Herausgeberunterstützung für Event Grid:
 
-* Ressourcengruppen (Verwaltungsvorgänge)
 * Azure-Abonnements (Verwaltungsvorgänge)
-* Event Hubs
-* Speicherblob
 * Benutzerdefinierte Themen
+* Event Hubs
+* Ressourcengruppen (Verwaltungsvorgänge)
+* Speicherblob
 
 Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
 
@@ -42,11 +51,12 @@ Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
 
 Derzeit bieten die folgenden Azure-Dienste integrierte Handlerunterstützung für Event Grid: 
 
-* Azure-Funktionen
-* Logik-Apps
 * Azure-Automatisierung
-* WebHooks
+* Azure-Funktionen
+* Event Hubs
+* Logic Apps
 * Microsoft Flow
+* WebHooks
 
 Weitere Azure-Dienste werden dieses Jahr hinzugefügt.
 

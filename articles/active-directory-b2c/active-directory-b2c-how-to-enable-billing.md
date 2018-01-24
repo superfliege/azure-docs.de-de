@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/05/2017
 ms.author: parja
-ms.openlocfilehash: d6b25d6b9a0d5b3bcf613046a82a9c6c99475d6c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 063c00fe47be25b9359e80d71abfaf453c7a7074
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="linking-an-azure-subscription-to-an-azure-ad-b2c-tenant"></a>Verknüpfen eines Azure-Abonnements mit einem Azure AD B2C-Mandanten
 
@@ -68,7 +68,7 @@ Wählen Sie eine Ressourcengruppe und einen Ressourcengruppenstandort aus. Die h
 
 ![Erstellen einer B2C-Ressource](./media/active-directory-b2c-how-to-enable-billing/createresourceb2c.png)
 
-## <a name="manage-your-azure-ad-b2c-tenent-resources"></a>Verwalten Ihrer Azure AD B2C-Mandantenressourcen
+## <a name="manage-your-azure-ad-b2c-tenant-resources"></a>Verwalten Ihrer Azure AD B2C-Mandantenressourcen
 
 Nach erfolgreicher Erstellung einer Azure AD B2C-Ressource innerhalb des Azure-Abonnements wird zusammen mit Ihren anderen Azure-Ressourcen eine neue Ressource vom Typ „B2C-Mandant“ angezeigt.
 

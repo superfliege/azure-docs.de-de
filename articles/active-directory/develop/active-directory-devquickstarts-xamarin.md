@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 87e58e8df16f4b87b66a9ac0846be20e09073826
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e3d0a07323189599cb86dd2bf1347c2107efa842
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-xamarin-apps"></a>Integrieren von Azure AD in Xamarin-Apps
+# <a name="azure-ad-xamarin-getting-started"></a>Erste Schritte in Azure AD Xamarin
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -49,7 +49,7 @@ Da in diesem Tutorial Projekte für iOS, Android und Windows erstellt werden, be
 Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst bei Ihrem Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen. Das geht so:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie in der oberen Leiste auf Ihr Konto. Wählen Sie dann in der Liste **Verzeichnis** den Active Directory-Mandanten aus, bei dem Sie die App registrieren möchten.
+2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie dann in der Liste **Verzeichnis** den Active Directory-Mandanten aus, bei dem Sie die App registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Bildschirmaufforderungen, und erstellen Sie eine neue **native Clientanwendung**.

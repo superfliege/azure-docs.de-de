@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 39dea03ef9f42a3ff06dadd94c8d70541cbdc06c
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Ermitteln, Identifizieren und Klassifizieren von persönlichen Daten in Microsoft Azure
 
@@ -183,9 +183,9 @@ ergänzende Informationen zur Einrichtung. Weitere Informationen zu Azure Inform
 
 Im Tutorial [Azure Cosmos DB: Wie werden Abfragen mit SQL durchgeführt?](../cosmos-db/tutorial-query-documentdb.md) werden die Grundlagen erläutert. Das Tutorial enthält ein Beispieldokument sowie zwei SQL-Beispielabfragen und -ergebnisse.
 
-Ausführlichere Anweisungen zum Erstellen von SQL-Abfragen finden Sie unter [SQL-Abfragen für Azure Cosmos DB-DocumentDB-API](../cosmos-db/documentdb-sql-query.md).
+Ausführlichere Anweisungen zum Erstellen von SQL-Abfragen finden Sie unter [SQL-Abfragen für Azure Cosmos DB-DocumentDB-API](../cosmos-db/sql-api-sql-query.md).
 
-Falls Sie noch nicht mit Azure Cosmos DB vertraut sind und mehr über die Erstellung einer Datenbank sowie das Hinzufügen einer Sammlung und von Daten erfahren möchten, besuchen Sie das Schnellstart-Tutorial [Azure Cosmos DB: Erstellen einer Web-App mit einer DocumentDB-API mit .NET und dem Azure-Portal](../cosmos-db/create-documentdb-dotnet.md). Wenn Sie eine andere Programmiersprache als .NET verwenden möchten (z. B. Java oder Python), wählen Sie auf der Website einfach Ihre bevorzugte Sprache aus.
+Falls Sie noch nicht mit Azure Cosmos DB vertraut sind und mehr über die Erstellung einer Datenbank sowie das Hinzufügen einer Sammlung und von Daten erfahren möchten, besuchen Sie das Schnellstart-Tutorial [Azure Cosmos DB: Erstellen einer SQL-API-Web-App](../cosmos-db/create-sql-api-dotnet.md). Wenn Sie eine andere Programmiersprache als .NET verwenden möchten (z. B. Java oder Python), wählen Sie auf der Website einfach Ihre bevorzugte Sprache aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

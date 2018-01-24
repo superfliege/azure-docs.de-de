@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 064b1b10f2bd776e4ae88d8460e106a0318476c7
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: eca3cddf3677aad440378e4071f080a588397cf9
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Analysieren von Trends in Visual Studio
 Mit dem Application Insights-Tool „Trends“ wird visualisiert, wie sich die wichtigen Telemetrieereignisse Ihrer Webanwendung im Laufe der Zeit ändern, damit Sie Probleme und Anomalien schnell identifizieren können. Durch die Angabe von Links zu ausführlicheren Diagnoseinformationen kann das Trends-Tool Sie in Bezug auf das Verbessern der App-Leistung, das Ermitteln der Ursachen von Ausnahmen und das Erlangen von Einblicken in benutzerdefinierte Ereignisse unterstützen.
@@ -57,7 +57,7 @@ Application Insights Trends erstellt eine Zeitreihenvisualisierung für die Tele
 
 Verwenden Sie die Steuerelemente am oberen Rand des Fensters, um anzupassen, welche Arten von Telemetriedaten angezeigt werden. Wählen Sie zuerst die Telemetrietypen aus, an denen Sie interessiert sind:
 
-* **Telemetrietyp** : Serveranforderungen, Ausnahmen, Abhängigkeiten oder benutzerdefinierte Ereignisse
+* **Telemetrietyp**: Serveranforderungen, Ausnahmen, Abhängigkeiten oder benutzerdefinierte Ereignisse
 * **Zeitbereich** : Zwischen den letzten 30 Minuten und den letzten drei Tagen
 * **Gruppieren nach** : Ausnahmetyp, Problem-ID, Land/Region usw.
 

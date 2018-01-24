@@ -3,8 +3,8 @@ title: Generischer SQL-Connector | Microsoft Docs
 description: Dieser Artikel beschreibt die Konfiguration des generischen SQL-Connectors von Microsoft.
 services: active-directory
 documentationcenter: 
-author: AndKjell
-manager: mtillman
+author: fimguy
+manager: bhu
 editor: 
 ms.assetid: fd8ccef3-6605-47ba-9219-e0c74ffc0ec9
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
-ms.author: billmath
-ms.openlocfilehash: 04a6b7290c4a17d60145355ef1374960a8b6c5ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 12/19/2017
+ms.author: davidste
+ms.openlocfilehash: a365219e433f4876401a9c35b8a656060508efbd
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Technische Referenz für den generischen SQL-Connector
 Dieser Artikel beschreibt den generischen SQL-Connector. Der Artikel bezieht sich auf folgende Produkte:
@@ -34,12 +34,12 @@ Um diesen Connector in Aktion zu sehen, lesen Sie den Artikel [Schrittweise Anle
 ## <a name="overview-of-the-generic-sql-connector"></a>Übersicht über den generischen SQL-Connector
 Der generische SQL-Connector ermöglicht die Integration des Synchronisierungsdiensts in ein Datenbanksystem mit ODBC-Konnektivität.  
 
-Im Anschluss finden Sie einen allgemeinen Überblick über die von der aktuellen Connectorversion unterstützten Features:
+Im Anschluss finden Sie einen allgemeinen Überblick über die von der aktuellen Connector-Version unterstützten Features:
 
 | Feature | Support |
 | --- | --- |
 | Verbundene Datenquelle |Der Connector wird mit allen 64-Bit-ODBC-Treibern unterstützt. Getestet wurde er mit Folgendem:  <li>Microsoft SQL Server und SQL Azure</li><li>IBM DB2 10.x</li><li>IBM DB2 9.x</li><li>Oracle 10 und 11g</li><li>MySQL 5.x</li> |
-| Szenarios |<li>Objektlebenszyklusverwaltung</li><li>Kennwortverwaltung</li> |
+| Szenarien |<li>Objektlebenszyklusverwaltung</li><li>Kennwortverwaltung</li> |
 | Vorgänge |<li>Vollständiger Import und Deltaimport, Export</li><li>Für Export: Hinzufügen, Löschen, Aktualisieren und Ersetzen</li><li>Kennwort festlegen, Kennwort ändern</li> |
 | Schema |<li>Dynamische Ermittlung von Objekten und Attributen</li> |
 
@@ -73,7 +73,7 @@ Der Konnektivitätsbildschirm ist der erste, der beim Erstellen eines neuen gene
 * DSN-Dateipfad
 * Authentifizierung
   * Benutzername
-  * Kennwort
+  * Password
 
 Die Datenbank muss eine der folgenden Authentifizierungsmethoden unterstützen:
 
@@ -223,7 +223,7 @@ Diese Schritte werden für die connectorspezifischen Ausführungsprofile konfigu
 ### <a name="full-and-delta-import"></a>Vollständiger Import und Deltaimport
 Der generische SQL-Connector unterstützt vollständige Importe und Deltaimporte mit folgenden Methoden:
 
-* Tabelle
+* Table
 * Sicht
 * Stored Procedure
 * SQL-Abfrage
@@ -231,7 +231,11 @@ Der generische SQL-Connector unterstützt vollständige Importe und Deltaimporte
 ![runstep1](./media/active-directory-aadconnectsync-connector-genericsql/runstep1.png)
 
 **Table/View**  
-Zum Importieren mehrwertiger Attribute für ein Objekt müssen Sie unter **Name der mehrwertigen Tabelle/Sichten** die kommagetrennten Tabellen-/Sichtnamen und unter **Verknüpfungsbedingung** die entsprechenden Verknüpfungsbedingungen für die übergeordnete Tabelle angeben.
+Zum Importieren mehrwertiger Attribute für ein Objekt müssen Sie unter **Name der mehrwertigen Tabelle/Sichten** die Tabellen-/Sichtnamen und unter **Verknüpfungsbedingung** die entsprechenden Verknüpfungsbedingungen für die übergeordnete Tabelle angeben. Wenn die Datenquelle mehrere mehrwertige Tabellen enthält, können Sie „union“ verwenden, um eine einzelne Sicht zu erhalten.
+
+>[!IMPORTANT]
+Der Agent für die generische SQL-Verwaltung kann nur mit einer mehrwertigen Tabelle verwendet werden. Geben Sie unter „Name der mehrwertigen Tabelle/Sichten“ nur einen Tabellennamen ein. Dies ist eine Einschränkung bei der generischen SQL-Verwaltung.
+
 
 Ein Beispiel: Sie möchten das Employee-Objekt und alle dazugehörigen mehrwertigen Attribute importieren. Es gibt zwei Tabellen: die Haupttabelle „Employee“ und die mehrwertige Tabelle „Department“.
 Gehen Sie wie folgt vor:
@@ -275,7 +279,7 @@ Im Vergleich zum vollständigen Import erfordert der Deltaimport einige weitere 
 
 Der generische SQL-Connector unterstützt vier Methoden für den Export:
 
-* Tabelle
+* Table
 * Sicht
 * Stored Procedure
 * SQL-Abfrage

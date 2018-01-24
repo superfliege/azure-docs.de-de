@@ -1,6 +1,6 @@
 ---
-title: Streamen von Azure-Diagnoseprotokollen an einen Event Hubs-Namespace | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Azure-Diagnoseprotokolle an einen Event Hubs-Namespace streamen.
+title: Streamen von Azure-Diagnoseprotokollen an Event Hubs | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure-Diagnoseprotokolle an Event Hubs streamen.
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 12/22/2017
 ms.author: johnkem
-ms.openlocfilehash: 01ba8ddfcf90e1368ac147296fd180f99420d96f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bcb9fcb2371217e7082d96ddbba4a095e6d9a00f
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="stream-azure-diagnostic-logs-to-an-event-hubs-namespace"></a>Streamen von Azure-Diagnoseprotokollen an einen Event Hubs-Namespace
-**[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Portal-Option „In Event Hubs exportieren“ oder durch Aktivieren der Service Bus-Regel-ID in einer Diagnoseeinstellung (über die Azure PowerShell-Cmdlets oder die Azure-Befehlszeilenschnittstelle).
+# <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Streamen von Azure-Diagnoseprotokollen an Event Hubs
+**[Azure-Diagnoseprotokolle](monitoring-overview-of-diagnostic-logs.md)** können nahezu in Echtzeit an eine beliebige Anwendung gestreamt werden – entweder mithilfe der integrierten Portaloption „In Event Hubs exportieren“ oder durch Aktivieren der Event Hub-Autorisierungsregel-ID in einer Diagnoseeinstellung (über die Azure PowerShell-Cmdlets oder über die Azure CLI).
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Verwendungsmöglichkeiten für Diagnoseprotokolle und Event Hubs
 Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für das Streamen von Diagnoseprotokollen:
 
-* **Streamen von Protokollen an Protokollierungs- und Telemetriesysteme von Drittanbietern:** Event Hubs-Streaming entwickelt sich mehr und mehr zum Mechanismus für die Weiterreichung von Diagnoseprotokollen an SIEMs und Protokollanalyselösungen von Drittanbietern.
+* **Streamen von Protokollen an Protokollierungs- und Telemetriesysteme von Drittanbietern**: Sie können alle Diagnoseprotokolle an einen einzelnen Event Hub streamen, um Protokolldaten an ein SIEM- oder Protokollanalysetool eines Drittanbieters weiterzureichen.
 * **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI:** Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Dieser Dokumentationsartikel](../stream-analytics/stream-analytics-power-bi-dashboard.md)bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe. Hier finden Sie einige Tipps für die Einrichtung von Diagnoseprotokollen:
   
   * Ein Event Hub wird automatisch für eine Kategorie von Diagnoseprotokollen erstellt, wenn Sie die entsprechende Option im Portal oder über PowerShell aktivieren. Es empfiehlt sich daher, den Event Hub im Namespace mit dem Namen auszuwählen, der mit **insights-** beginnt.
@@ -48,11 +48,11 @@ Im Anschluss finden Sie eine kleine Auswahl von Verwendungsmöglichkeiten für d
 Das Streamen von Diagnoseprotokollen kann programmgesteuert, über das Portal oder mithilfe der [Azure Monitor-REST-APIs](https://docs.microsoft.com/rest/api/monitor/servicediagnosticsettings)aktiviert werden. In beiden Fällen erstellen Sie eine Diagnoseeinstellung, in der Sie einen Event Hubs-Namespace und die Protokollkategorien und Metriken angeben, die an den Namespace gesendet werden sollen. Für jede aktivierte Protokollkategorie wird eine Event Hub-Instanz erstellt. Eine **Diagnoseprotokollkategorie** ist ein Protokolltyp, der von einer Ressource erfasst werden kann.
 
 > [!WARNING]
-> Zum Aktivieren und Streamen von Diagnoseprotokollen aus Computeressourcen (beispielsweise virtuelle Computer oder Service Fabric) müssen [andere Schritte](../event-hubs/event-hubs-streaming-azure-diags-data.md)ausgeführt werden.
+> Zum Aktivieren und Streamen von Diagnoseprotokollen aus Computeressourcen (beispielsweise virtuelle Computer oder Service Fabric) müssen [andere Schritte](../event-hubs/event-hubs-streaming-azure-diags-data.md) ausgeführt werden.
 > 
 > 
 
-Der Service Bus- oder Event Hubs-Namespace muss sich nicht unter demselben Abonnement befinden, das Protokolle ausgibt, sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt.
+Der Event Hubs-Namespace muss sich nicht im selben Abonnement befinden wie die Ressource, die das Protokolle ausgibt – sofern der Benutzer, der die Einstellung konfiguriert, über den entsprechenden RBAC-Zugriff auf beide Abonnements verfügt.
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>Streamen von Diagnoseprotokollen mithilfe des Portals
 1. Navigieren Sie im Portal zu Azure Monitor, und klicken Sie auf **Diagnoseeinstellungen**.
@@ -73,11 +73,11 @@ Der Service Bus- oder Event Hubs-Namespace muss sich nicht unter demselben Abonn
    
    ![Diagnoseeinstellung hinzufügen – Einstellungen vorhanden](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
     
-   Der ausgewählte Namespace fungiert als Ziel für die Event Hub-Erstellung (falls Sie erstmals Diagnoseprotokolle streamen) oder für das Streaming (falls bereits Ressourcen vorhanden sind, die diese Protokollkategorie an diesen Namespace streamen), und die Richtlinie definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an einen Event Hub werden aktuell Berechtigungen für das Verwalten, Senden und Lauschen benötigt. Sie können freigegebene Zugriffsrichtlinien für Ihren Event Hubs-Namespace im Portal auf der Registerkarte „Konfigurieren“ für Ihren Namespace erstellen oder ändern. Zum Aktualisieren einer dieser Diagnoseeinstellungen muss der Client in der Event Hubs-Autorisierungsregel über die „ListKey“-Berechtigung verfügen.
+   Der ausgewählte Namespace fungiert als Ziel für die Event Hub-Erstellung (falls Sie erstmals Diagnoseprotokolle streamen) oder für das Streaming (falls bereits Ressourcen vorhanden sind, die diese Protokollkategorie an diesen Namespace streamen), und die Richtlinie definiert die Berechtigungen für den Streamingmechanismus. Für das Streaming an einen Event Hub werden aktuell Berechtigungen für das Verwalten, Senden und Lauschen benötigt. Sie können freigegebene Zugriffsrichtlinien für Ihren Event Hubs-Namespace im Portal auf der Registerkarte „Konfigurieren“ für Ihren Namespace erstellen oder ändern. Zum Aktualisieren einer dieser Diagnoseeinstellungen muss der Client in der Event Hubs-Autorisierungsregel über die „ListKey“-Berechtigung verfügen. Sie können optional auch einen Event Hub-Namen angeben. Wenn Sie einen Event Hub-Namen angeben, werden Protokolle nicht an einen neu erstellten Event Hub gemäß Protokollkategorie, sondern an diesen Event Hub geroutet.
 
 4. Klicken Sie auf **Speichern**.
 
-Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Diagnoseprotokolle werden an dieses Speicherkonto gestreamt, sobald neue Ereignisdaten generiert werden.
+Nach einigen Augenblicken wird die neue Einstellung in Ihrer Liste der Einstellungen für diese Ressource angezeigt, und Diagnoseprotokolle werden an diesen Event Hub gestreamt, sobald neue Ereignisdaten generiert werden.
 
 ### <a name="via-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
 Wenn Sie das Streaming über die [Azure PowerShell-Cmdlets](insights-powershell-samples.md) aktivieren möchten, können Sie das Cmdlet `Set-AzureRmDiagnosticSetting` mit folgenden Parametern verwenden:
@@ -86,7 +86,7 @@ Wenn Sie das Streaming über die [Azure PowerShell-Cmdlets](insights-powershell-
 Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -ServiceBusRuleId [your Service Bus rule ID] -Enabled $true
 ```
 
-Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format: `{Service Bus resource ID}/authorizationrules/{key name}`. Beispiel: `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`.
+Die Service Bus-Regel-ID (ServiceBusRuleId) ist eine Zeichenfolge im folgenden Format: `{Service Bus resource ID}/authorizationrules/{key name}`. Beispiel: `/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey`. Sie können zurzeit mit PowerShell keinen bestimmten Event Hub-Namen auswählen.
 
 ### <a name="via-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 Wenn Sie das Streaming über die [Azure-Befehlszeilenschnittstelle](insights-cli-samples.md) aktivieren möchten, können Sie den Befehl `insights diagnostic set` wie folgt verwenden:
@@ -95,7 +95,7 @@ Wenn Sie das Streaming über die [Azure-Befehlszeilenschnittstelle](insights-cli
 azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serviceBusRuleID> --enabled true
 ```
 
-Die Service Bus-Regel-ID muss im gleichen Format angegeben werden wie bei Verwendung des PowerShell-Cmdlets.
+Die Service Bus-Regel-ID muss im gleichen Format angegeben werden wie bei Verwendung des PowerShell-Cmdlets. Sie können zurzeit mit der Azure CLI keinen bestimmten Event Hub-Namen auswählen.
 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Nutzen der Protokolldaten aus Event Hubs
 Hier sehen Sie ein Beispiel für eine Datenausgabe aus Event Hubs:
@@ -161,15 +161,15 @@ Hier sehen Sie ein Beispiel für eine Datenausgabe aus Event Hubs:
 }
 ```
 
-| Elementname | Beschreibung |
+| Elementname | BESCHREIBUNG |
 | --- | --- |
 | records |Ein Array sämtlicher Protokollereignisse in dieser Nutzlast. |
 | time |Der Zeitpunkt, zu dem das Ereignis aufgetreten ist. |
 | category |Die Protokollkategorie für dieses Ereignis. |
-| resourceId |Die Ressourcen-ID der Ressource, die dieses Ereignis generiert hat. |
+| Ressourcen-ID |Die Ressourcen-ID der Ressource, die dieses Ereignis generiert hat. |
 | operationName |Der Name des Vorgangs. |
 | level |Optional. Gibt die Protokollereignisebene an. |
-| properties |Die Eigenschaften des Ereignisses. |
+| Eigenschaften |Die Eigenschaften des Ereignisses. |
 
 Eine Liste mit allen Ressourcenanbietern, die das Streamen an Event Hubs unterstützen, finden Sie [hier](monitoring-overview-of-diagnostic-logs.md).
 

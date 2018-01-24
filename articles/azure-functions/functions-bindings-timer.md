@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: tdykstra
 ms.custom: 
-ms.openlocfilehash: fd9c1d40ba1398c7ca3f48f0423457482da9a483
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: eeb8833470b2ba003ba74b1db57bbd2bbbb7f65d
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Trigger mit Timer für Azure Functions 
 
@@ -33,14 +33,14 @@ Dieser Artikel erläutert das Arbeiten mit Triggern mit Timer in Azure Functions
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#trigger---c-example)
-* [C#-Skript](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C#-Skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="c-example"></a>C#-Beispiel
 
-Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die alle fünf Minuten ausgeführt wird:
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die alle fünf Minuten ausgeführt wird:
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -136,7 +136,7 @@ module.exports = function (context, myTimer) {
 
 ## <a name="attributes"></a>Attribute
 
-Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) definierte Attribut [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs).
+Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions) definierte [TimerTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs)-Attribut.
 
 Der Konstruktor des Attributs nimmt einen CRON-Ausdruck an, wie das folgende Beispiel zeigt:
 
@@ -150,13 +150,13 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, TraceWr
 
 Sie können `TimeSpan` anstelle eines CRON-Ausdrucks angeben, wenn die Funktions-App für einen App Service-Plan (keinen Verbrauchsplan) ausgeführt wird.
 
-Ein vollständiges Beispiel finden Sie unter [Vorkompiliertes C#-Beispiel](#c-example).
+Ein vollständiges Beispiel finden Sie unter [C#-Beispiel](#c-example).
 
 ## <a name="configuration"></a>Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `TimerTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type** | – | Muss auf „timerTrigger“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf „in“ festgelegt werden. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |

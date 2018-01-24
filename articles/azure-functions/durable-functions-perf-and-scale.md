@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 10ce74097388a0283797e4692126c5039e8d4dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc4c643b8d0e8de1b5c38ca7bb1b0193d6b0f05b
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Leistung und Skalierbarkeit in Durable Functions (Azure Functions)
 
@@ -32,9 +32,9 @@ Die Verlaufstabelle ist eine Azure Storage-Tabelle, die die Verlaufsereignisse f
 
 ## <a name="internal-queue-triggers"></a>Interne Warteschlangentrigger
 
-Orchestrator-und Aktivitätsfunktionen werden beide durch interne Warteschlangen im Standardspeicherkonto der Funktions-App ausgelöst. Es gibt zwei Arten von Warteschlangen in Durable Functions: die **control queue** (Steuerelement-Warteschlange) und die **work item queue** (Warteschlange für Arbeitsaufgaben).
+Orchestrator-und Aktivitätsfunktionen werden beide durch interne Warteschlangen im Standardspeicherkonto der Funktions-App ausgelöst. Es gibt zwei Arten von Warteschlangen in Durable Functions: die **Steuerelement-Warteschlange** ( control queue) und die **Warteschlange für Arbeitsaufgaben** (work-item queue).
 
-### <a name="the-work-item-queue"></a>Die Warteschlange für Arbeitsaufgaben
+### <a name="the-work-item-queue"></a>Warteschlange für Arbeitsaufgaben
 
 In Durable Functions gibt es eine Warteschlange für Arbeitsaufgaben pro Aufgabenhub. Dies ist eine grundlegende Warteschlange, und sie verhält sich ähnlich wie jede andere `queueTrigger`-Warteschlange in Azure Functions. Diese Warteschlange wird verwendet, um zustandslose *Aktivitätsfunktionen* auszulösen. Wenn eine Durable Functions-Anwendung für mehrere virtuelle Computer horizontal hochskaliert wird, konkurrieren alle diese virtuellen Computer miteinander, um Arbeitsaufgaben aus der Warteschlange für Arbeitsaufgaben abzurufen.
 
@@ -59,13 +59,13 @@ Wie Sie sehen können, können alle virtuellen Computer in der Warteschlange fü
 Orchestrierungsinstanzen sind auf Steuerelement-Warteschlangeninstanzen verteilt, durch Ausführen einer internen Hashfunktion mit der Instanz-ID der Orchestrierung. Instanz-IDs werden automatisch generiert und sind standardmäßig zufällig, wodurch sicherstellt ist, dass Instanzen gleichmäßig auf alle verfügbaren Steuerelement-Warteschlangen verteilt werden. Die aktuelle Standardanzahl von unterstützten Steuerelement-Warteschlangen-Partitionen ist **4**.
 
 > [!NOTE]
-> Es ist aktuell nicht möglich, die Anzahl von Partitionen in Azure Functions zu konfigurieren. [Work to support this configuration option is being tracked (Arbeit im Hinblick auf die Unterstützung der Nachverfolgung dieser Konfigurationsoption)](https://github.com/Azure/azure-functions-durable-extension/issues/73).
+> Es ist aktuell nicht möglich, die Anzahl von Partitionen für Steuerelement-Warteschlangen in Azure Functions zu konfigurieren. [Work to support this configuration option is being tracked (Arbeit im Hinblick auf die Unterstützung der Nachverfolgung dieser Konfigurationsoption)](https://github.com/Azure/azure-functions-durable-extension/issues/73).
 
 Im Allgemeinen sollten Orchestratorfunktionen einfach sein und nicht viel Rechenleistung in Anspruch nehmen. Aus diesem Grund ist es nicht erforderlich, eine große Anzahl von Steuerelement-Warteschlange-Partitionen zu erstellen, um einen erhöhten Durchsatz zu erzielen. Stattdessen erfolgt der größte Teil der schweren Arbeit in zustandslosen Aktivitätsfunktionen, die unbegrenzt horizontal skaliert werden können.
 
 ## <a name="auto-scale"></a>Automatische Skalierung
 
-Wie bei allen Azure Functions, die im Nutzungsplan ausgeführt werden, unterstützen Durable Functions die automatische Skalierung über den [Azure Functions-Skalierungscontroller](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling). Der Skalierungscontroller überwacht die Länge der Warteschlange für Arbeitsaufgaben und jede der Steuerelement-Warteschlangen, indem er VM-Ressourcen entsprechend hinzufügt oder entfernt. Wenn die Längen der Steuerelement-Warteschlangen mit der Zeit zunehmen, wird der Skalierungscontroller das Hinzufügen von Instanzen so lange fortsetzen, bis die Anzahl von Steuerelement-Warteschlangenpartitionen erreicht ist. Wenn die Längen der Warteschlangen für Arbeitsaufgaben mit der Zeit zunehmen, wird der Skalierungscontroller das Hinzufügen von VM-Ressourcen so lange fortsetzen, bis eine Übereinstimmung mit der Last erreicht ist, unabhängig von der Anzahl von Steuerelement-Warteschlangenpartitionen.
+Wie bei allen Azure Functions, die im Nutzungsplan ausgeführt werden, unterstützen Durable Functions die automatische Skalierung über den [Azure Functions-Skalierungscontroller](https://docs.microsoft.com/azure/azure-functions/functions-scale#runtime-scaling). Der Skalierungscontroller überwacht die Länge der Warteschlange für Arbeitsaufgaben und jede der Steuerelement-Warteschlangen, indem er VM-Instanzen entsprechend hinzufügt oder entfernt. Wenn die Längen der Steuerelement-Warteschlangen mit der Zeit zunehmen, wird der Skalierungscontroller das Hinzufügen von VM-Instanzen so lange fortsetzen, bis die Anzahl von Steuerelement-Warteschlangenpartitionen erreicht ist. Wenn die Längen der Warteschlangen für Arbeitsaufgaben mit der Zeit zunehmen, wird der Skalierungscontroller das Hinzufügen von VM-Instanzen so lange fortsetzen, bis eine Übereinstimmung mit der Last erreicht ist, unabhängig von der Anzahl von Steuerelement-Warteschlangenpartitionen.
 
 ## <a name="thread-usage"></a>Verwendung von Threads
 

@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie virtuelle Datenträger auf einer Linux-VM mi
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 2a23b6fa-6941-4998-9804-8efe93b647b3
@@ -13,16 +13,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/05/2017
+ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 172b4c8f5c098d776cb689543f5d8f163b8895b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2489d4bfda5d9a08b35e8d80b6cc9d00bf69117b
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Verschlüsseln virtueller Datenträger auf einer Linux-VM
-Zum Verbessern der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger in Azure verschlüsselt werden. Die Verschlüsselung der Datenträger basiert auf kryptografischen Schlüsseln, die in Azure Key Vault gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. In diesem Artikel wird erläutert, wie Sie virtuelle Datenträger auf einer Linux-VM mithilfe der Azure CLI 2.0 verschlüsseln. Sie können diese Schritte auch mit [Azure CLI 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
+Zum Verbessern der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger und der virtuelle Computer selbst verschlüsselt werden. Die Verschlüsselung der virtuellen Computer basiert auf kryptografischen Schlüsseln, die in Azure Key Vault gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. In diesem Artikel wird erläutert, wie Sie virtuelle Datenträger auf einer Linux-VM mithilfe der Azure CLI 2.0 verschlüsseln. Sie können diese Schritte auch per [Azure CLI 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) ausführen.
 
 ## <a name="quick-commands"></a>Schnellbefehle
 Der folgende Abschnitt enthält Informationen zu den grundlegenden Befehlen für die Verschlüsselung virtueller Datenträger auf Ihrem virtuellen Computer. Ausführlichere Informationen und Kontext für die einzelnen Schritte finden Sie im übrigen Dokument ([ab hier](#overview-of-disk-encryption)).
@@ -39,7 +39,7 @@ az group create --name myResourceGroup --location eastus
 Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#create) einen Azure-Schlüsseltresor, und aktivieren Sie den Schlüsseltresor zur Verwendung der Datenträgerverschlüsselung. Geben Sie einen eindeutigen Key Vault-Namen für *keyvault_name* an, wie nachfolgend gezeigt:
 
 ```azurecli
-keyvault_name=mykeyvaultikf
+keyvault_name=myuniquekeyvaultname
 az keyvault create \
     --name $keyvault_name \
     --resource-group myResourceGroup \
@@ -69,7 +69,7 @@ az keyvault set-policy --name $keyvault_name --spn $sp_id \
     --secret-permissions set
 ```
 
-Erstellen Sie mit [az vm create](/cli/azure/vm#create) eine VM, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines **CentOS 7.2n**-Images ein virtueller Computer namens `myVM` erstellt:
+Erstellen Sie mit [az vm create](/cli/azure/vm#create) eine VM, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines *CentOS 7.2n*-Images ein virtueller Computer mit dem Namen *myVM* erstellt:
 
 ```azurecli
 az vm create \
@@ -81,9 +81,9 @@ az vm create \
     --data-disk-sizes-gb 5
 ```
 
-Stellen Sie mithilfe des SSH-Netzwerkprotokolls eine Verbindung mit Ihrer VM her, und verwenden Sie dabei die in der Ausgabe des vorherigen Befehls enthaltene `publicIpAddress`. Erstellen Sie eine Partition und ein Dateisystem, und binden Sie dann den Datenträger ein. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer Linux-VM zum Einbinden des neuen Datenträgers](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk). Schließen Sie Ihre SSH-Sitzung.
+Stellen Sie mithilfe des SSH-Netzwerkprotokolls eine Verbindung mit Ihrer VM her, und verwenden Sie dabei die in der Ausgabe des vorherigen Befehls enthaltene *publicIpAddress*. Erstellen Sie eine Partition und ein Dateisystem, und binden Sie dann den Datenträger ein. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer Linux-VM zum Einbinden des neuen Datenträgers](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk). Schließen Sie Ihre SSH-Sitzung.
 
-Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#enable). Das folgende Beispiel verwendet die Variablen `$sp_id` und `$sp_password` aus dem vorherigen Befehl `ad sp create-for-rbac`:
+Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#enable). Das folgende Beispiel verwendet die Variablen *$sp_id* und *$sp_password* aus dem vorherigen Befehl `ad sp create-for-rbac`:
 
 ```azurecli
 az vm encryption enable \
@@ -108,13 +108,14 @@ Der Status wird als **EncryptionInProgress** angezeigt. Warten Sie, bis der Stat
 az vm restart --resource-group myResourceGroup --name myVM
 ```
 
-Der Vorgang zur Datenträgerverschlüsselung wird während des Starts abgeschlossen, warten Sie deshalb einige Minuten, bevor Sie den Status der Verschlüsselung mit **az vm encryption show** erneut überprüfen:
+Der Vorgang zur Datenträgerverschlüsselung wird während des Starts abgeschlossen, warten Sie deshalb einige Minuten, bevor Sie den Status der Verschlüsselung mit [az vm encryption show](/cli/azure/vm/encryption#show) erneut überprüfen:
 
 ```azurecli
 az vm encryption show --resource-group myResourceGroup --name myVM
 ```
 
 Der Status sollte jetzt sowohl für den Betriebssystemdatenträger als auch für die Datenträger als **Encrypted** angezeigt werden.
+
 
 ## <a name="overview-of-disk-encryption"></a>Übersicht über die Datenträgerverschlüsselung
 Virtuelle Datenträger auf virtuellen Linux-Computern werden im Ruhezustand mithilfe von [dm-crypt](https://wikipedia.org/wiki/Dm-crypt) verschlüsselt. Für die Verschlüsselung virtueller Datenträger in Azure fallen keine Gebühren an. Kryptografische Schlüssel werden in Azure Key Vault mit Softwareschutz gespeichert. Alternativ können Sie Schlüssel aber auch in Hardwaresicherheitsmodulen (HSMs) mit FIPS 140-2 Level 2-Zertifizierung importieren oder generieren. Diese kryptografischen Schlüssel werden allein von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. Die kryptografischen Schlüssel dienen zum Verschlüsseln und Entschlüsseln virtueller Datenträger, die an Ihren virtuellen Computer angefügt sind. Über einen Azure Active Directory-Dienstprinzipal werden die kryptografischen Schlüssel beim Ein- und Ausschalten virtueller Computer sicher ausgegeben.
@@ -143,14 +144,18 @@ Unterstützte Szenarien und Voraussetzungen für die Datenträgerverschlüsselun
 
 * Folgende Linux-Server-SKUs: Ubuntu, CentOS, SUSE und SUSE Linux Enterprise Server (SLES) sowie Red Hat Enterprise Linux
 * Alle Ressourcen (wie Key Vault, Speicherkonto und virtueller Computer) müssen sich in der gleichen Azure-Region und im gleichen Abonnement befinden.
-* Virtuelle Computer der standardmäßigen A-, D-, DS-, G- und GS-Serie
+* Virtuelle Computer der standardmäßigen Serien A, D, DS, G, GS usw.
+* Bei Aktualisierung der kryptografischen Schlüssel auf einem bereits verschlüsselten virtuellen Linux-Computer
 
 Die Datenträgerverschlüsselung wird derzeit in folgenden Szenarien nicht unterstützt:
 
 * Bei virtuellen Computern des Basic-Tarifs
 * Bei virtuellen Computern, die mit dem klassischen Bereitstellungsmodell erstellt wurden
 * Bei Deaktivierung der Betriebssystem-Datenträgerverschlüsselung auf virtuellen Linux-Computern
-* Bei Aktualisierung der kryptografischen Schlüssel auf einem bereits verschlüsselten virtuellen Linux-Computer
+* Bei Verwendung von benutzerdefinierten Linux-Images
+
+Weitere Informationen zu unterstützten Szenarien und Einschränkungen finden Sie unter [Azure Disk Encryption für virtuelle IaaS-Computer](../../security/azure-security-disk-encryption.md).
+
 
 ## <a name="create-azure-key-vault-and-keys"></a>Erstellen der Azure Key Vault-Instanz und der Schlüssel
 Die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2) muss installiert sein, und Sie müssen mithilfe von [az login](/cli/azure/#login) bei einem Azure-Konto angemeldet sein. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Beispielparameternamen sind u. a. *myResourceGroup*, *myKey* und *myVM*.
@@ -167,7 +172,7 @@ az group create --name myResourceGroup --location eastus
 Die Azure Key Vault-Instanz mit den kryptografischen Schlüsseln und die dazugehörigen Computeressourcen wie Speicher und der eigentliche virtuelle Computer müssen sich in der gleichen Region befinden. Erstellen Sie mit [az keyvault create](/cli/azure/keyvault#create) einen Azure-Schlüsseltresor, und aktivieren Sie den Schlüsseltresor zur Verwendung der Datenträgerverschlüsselung. Geben Sie einen eindeutigen Key Vault-Namen für *keyvault_name* an, wie nachfolgend gezeigt:
 
 ```azurecli
-keyvault_name=myUniqueKeyVaultName
+keyvault_name=myuniquekeyvaultname
 az keyvault create \
     --name $keyvault_name \
     --resource-group myResourceGroup \
@@ -175,7 +180,7 @@ az keyvault create \
     --enabled-for-disk-encryption True
 ```
 
-Kryptografische Schlüssel können mit Softwareschutz oder mit HSM-Schutz (Hardwaresicherheitsmodul) gespeichert werden. Für die Verwendung eines HSMs wird eine Key Vault-Premiuminstanz benötigt. Die Erstellung einer Key Vault-Premiuminstanz ist im Gegensatz zur Verwendung einer Key Vault-Standardinstanz, bei der Schlüssel mit Softwareschutz gespeichert werden, mit zusätzlichen Kosten verbunden. Wenn Sie eine Key Vault-Premiuminstanz erstellen möchten, fügen Sie dem Befehl aus dem vorherigen Schritt `--sku Premium` hinzu. Im folgenden Beispiel werden softwaregeschützte Schlüssel verwendet, da wir eine Key Vault-Standardinstanz erstellt haben.
+Kryptografische Schlüssel können mit Softwareschutz oder mit HSM-Schutz (Hardwaresicherheitsmodul) gespeichert werden. Für die Verwendung eines HSMs wird eine Key Vault-Premiuminstanz benötigt. Die Erstellung einer Key Vault-Premiuminstanz ist im Gegensatz zur Verwendung einer Key Vault-Standardinstanz, bei der Schlüssel mit Softwareschutz gespeichert werden, mit zusätzlichen Kosten verbunden. Wenn Sie eine Key Vault-Premiuminstanz erstellen möchten, fügen Sie dem Befehl aus dem vorherigen Schritt `--sku Premium` hinzu. Im folgenden Beispiel werden softwaregeschützte Schlüssel verwendet, da Sie eine Key Vault-Standardinstanz erstellt haben.
 
 Bei beiden Schutzmodellen muss der Azure-Plattform Zugriff gewährt werden, um beim Start des virtuellen Computers die kryptografischen Schlüssel anfordern und die virtuellen Datenträger entschlüsseln zu können. Erstellen Sie mithilfe von [az keyvault key create](/cli/azure/keyvault/key#create) einen kryptografischen Schlüssel in Ihrem Schlüsseltresor. Im folgenden Beispiel wird ein Schlüssel mit dem Namen *myKey* erstellt:
 
@@ -205,7 +210,7 @@ az keyvault set-policy --name $keyvault_name --spn $sp_id \
 
 
 ## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-In diesem Abschnitt erstellen wir eine VM und fügen einen Datenträger hinzu, um die Verschlüsselung virtueller Datenträger in der Praxis anzuwenden. Erstellen Sie mit [az vm create](/cli/azure/vm#create) eine VM für die Verschlüsselung, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines **CentOS 7.2n**-Images ein virtueller Computer mit dem Namen *myVM* erstellt:
+Erstellen Sie mit [az vm create](/cli/azure/vm#create) eine VM für die Verschlüsselung, und fügen Sie einen 5-GB-Datenträger an die VM an. Nur bestimmte Marketplace-Images unterstützen die Datenträgerverschlüsselung. Im folgenden Beispiel wird unter Verwendung eines *CentOS 7.2n*-Images ein virtueller Computer mit dem Namen *myVM* erstellt:
 
 ```azurecli
 az vm create \
@@ -217,7 +222,7 @@ az vm create \
     --data-disk-sizes-gb 5
 ```
 
-Stellen Sie mithilfe des SSH-Netzwerkprotokolls eine Verbindung mit Ihrer VM her, und verwenden Sie dabei die in der Ausgabe des vorherigen Befehls enthaltene `publicIpAddress`. Erstellen Sie eine Partition und ein Dateisystem, und binden Sie dann den Datenträger ein. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer Linux-VM zum Einbinden des neuen Datenträgers](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk). Schließen Sie Ihre SSH-Sitzung.
+Stellen Sie mithilfe des SSH-Netzwerkprotokolls eine Verbindung mit Ihrer VM her, und verwenden Sie dabei die in der Ausgabe des vorherigen Befehls enthaltene *publicIpAddress*. Erstellen Sie eine Partition und ein Dateisystem, und binden Sie dann den Datenträger ein. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit einer Linux-VM zum Einbinden des neuen Datenträgers](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#connect-to-the-linux-vm-to-mount-the-new-disk). Schließen Sie Ihre SSH-Sitzung.
 
 
 ## <a name="encrypt-virtual-machine"></a>Verschlüsseln eines virtuellen Computers
@@ -228,7 +233,7 @@ Um die virtuellen Datenträger zu verschlüsseln, müssen alle vorherigen Kompon
 3. Geben Sie die kryptografischen Schlüssel für die eigentliche Ver- und Entschlüsselung an.
 4. Geben Sie an, ob Sie den Betriebssystem-Datenträger, die allgemeinen Datenträger oder alles verschlüsseln möchten.
 
-Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#enable). Das folgende Beispiel verwendet die Variablen `$sp_id` und `$sp_password` aus dem vorherigen Befehl `ad sp create-for-rbac`:
+Verschlüsseln Sie Ihre VM mit [az vm encryption enable](/cli/azure/vm/encryption#enable). Das folgende Beispiel verwendet die Variablen *$sp_id* und *$sp_password* aus dem vorherigen Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac):
 
 ```azurecli
 az vm encryption enable \

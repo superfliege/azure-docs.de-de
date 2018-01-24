@@ -3,7 +3,7 @@ title: "Verwenden von Azure DevTest Labs für virtuelle Computer und PaaS-Testum
 description: "Hier erfahren Sie, wie Sie Azure DevTest Labs für virtuelle Computer und PaaS-Testumgebungen verwenden."
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: d4e2c334-643a-40c9-9051-625b8f39fc86
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: tarcher
-ms.openlocfilehash: 6926fe1be44c078482dd5073788e36d7ae77efef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: v-craic
+ms.openlocfilehash: dc54b1638fbea577f383ead47b83d29e677cd78f
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azure-devtest-labs-for-vm-and-paas-test-environments"></a>Verwenden von Azure DevTest Labs für virtuelle Computer und PaaS-Testumgebungen
 
@@ -43,7 +43,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Erstellen eines Labs in Azure DevTest Labs](devtest-lab-create-lab.md) |Erfahren Sie, wie im Azure-Portal ein Lab in Azure DevTest Labs erstellt wird. |
 2. **Erstellen von virtuellen Computern innerhalb weniger Minuten mithilfe von vordefinierten Marketplace-Images und benutzerdefinierten Images** 
@@ -54,7 +54,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
   
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Konfigurieren von Azure Marketplace-Images](devtest-lab-configure-marketplace-images.md) |Erfahren Sie, wie Sie Azure Marketplace-Images der Positivliste hinzufügen, sodass nur Images zur Auswahl stehen, die Sie für die Tester verwenden möchten.|
    | [Erstellen eines benutzerdefinierten Images](devtest-lab-create-template.md) |Erstellen Sie ein benutzerdefiniertes Image, indem Sie die benötigte Software vorinstallieren, sodass Tester mithilfe des benutzerdefinierten Images schnell einen virtuellen Computer erstellen können.|
@@ -66,7 +66,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Verwalten von DevTest Labs-Formeln zum Erstellen virtueller Computer](devtest-lab-manage-formulas.md) |Erfahren Sie, wie Sie eine Formel erstellen, indem Sie ein Image, eine Größe für den virtuellen Computer (Kombination aus CPU und Arbeitsspeicher) und ein virtuelles Netzwerk auswählen.|
 
@@ -78,7 +78,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
 
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Erstellen von Umgebungen mit mehreren virtuellen Computern und PaaS-Ressourcen mit Azure Resource Manager-Vorlagen](devtest-lab-create-environment-from-arm.md) |Erfahren Sie, wie Sie für Ihre Testumgebung mehrere virtuelle Computer in einem konsistenten Zustand bereitstellen.|
 
@@ -94,7 +94,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
 
    Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Erstellen benutzerdefinierter Artefakte für Ihre DevTest Labs-VM](devtest-lab-artifact-author.md) |Erstellen Sie eigene benutzerdefinierte Artefakte für die virtuellen Computer im Lab.|
    | [Hinzufügen eines Git-Repositorys zum Speichern von benutzerdefinierten Artefakten und Azure Resource Manager-Vorlagen für die Verwendung in Azure DevTest Labs](devtest-lab-add-artifact-repo.md) |Erfahren Sie, wie Sie Ihre benutzerdefinierten Artefakte in einem eigenen privaten Git-Repository speichern.|
@@ -109,7 +109,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Definieren von Labrichtlinien.](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
    | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Tests abgeschlossen sind.|
@@ -122,7 +122,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Konfigurieren eines virtuellen Netzwerks in Azure DevTest Labs](devtest-lab-configure-vnet.md) |Erfahren Sie, wie Sie mit dem Azure-Portal ein virtuelles Netzwerk in Azure DevTest Labs konfigurieren.|
 
@@ -132,7 +132,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Hinzufügen eines Testers zu einem Lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Verwenden Sie das Azure-Portal, um Ihrem Lab Tester hinzuzufügen.|
    | [Hinzufügen von Testern zum Lab mithilfe eines PowerShell-Skripts](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Automatisieren Sie mithilfe von PowerShell das Hinzufügen von Testern zu Ihrem Lab. |
@@ -144,7 +144,7 @@ Dieser Artikel enthält Informationen zu verschiedenen Azure DevTest Labs-Featur
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
-   | Task | Lerninhalt |
+   | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
 

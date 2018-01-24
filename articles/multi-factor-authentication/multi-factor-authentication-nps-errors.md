@@ -15,11 +15,11 @@ ms.date: 07/14/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 53c9bde37215e4b7e315b6bc28f0e638816a48f4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7960a398ac25ad0192300632dd6d5add94fd4a7c
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
@@ -106,9 +106,10 @@ Wenn Ihre Benutzer [Probleme mit der zweistufigen Überprüfung haben](./end-use
 
 Wenn Sie zusätzliche Hilfe benötigen, wenden Sie sich über [Azure Multi-Factor Authentication-Server – Support](https://support.microsoft.com/oas/default.aspx?prid=14947) an einen Supportspezialisten. Es ist hilfreich, wenn Sie uns so viele Informationen wie möglich über Ihr Problem geben, wenn Sie sich mit uns in Verbindung setzen. Diese Informationen können die Seite umfassen, auf der der Fehler aufgetreten ist, den spezifischen Fehlercode, die spezifische Sitzungs-ID, die ID des Benutzers, der den Fehler beobachtet hat, und Debugprotokolle.
 
-Um Debugprotokolle zur Unterstützung der Diagnose zu erfassen, verwenden Sie die folgenden Schritte: 
+Um Debugprotokolle zur Unterstützung der Diagnose zu erfassen, führen Sie die folgenden Schritte auf dem NPS-Server aus:
 
-1. Öffnen Sie eine Administratoreingabeaufforderung, und führen Sie diese Befehle aus:
+1. Öffnen Sie den Registrierungs-Editor, und wechseln Sie zu „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa“. Legen Sie **VERBOSE_LOG** auf **TRUE** fest.
+2. Öffnen Sie eine Administratoreingabeaufforderung, und führen Sie diese Befehle aus:
 
    ```
    Mkdir c:\NPS
@@ -118,9 +119,9 @@ Um Debugprotokolle zur Unterstützung der Diagnose zu erfassen, verwenden Sie di
    logman update trace "NPSExtension" -p {EC2E6D3A-C958-4C76-8EA4-0262520886FF} 0xffffffffffffffff 0xff -ets
    ```
 
-2. Reproduzieren Sie das Problem.
+3. Reproduzieren Sie das Problem.
 
-3. Beenden Sie die Ablaufverfolgung mit diesen Befehlen:
+4. Beenden Sie die Ablaufverfolgung mit diesen Befehlen:
 
    ```
    logman stop "NPSExtension" -ets
@@ -131,6 +132,7 @@ Um Debugprotokolle zur Unterstützung der Diagnose zu erfassen, verwenden Sie di
    Start .
    ```
 
-4. Zippen Sie den Inhalt des Ordners „C:\NPS“, und fügen Sie die ZIP-Datei an die Supportanfrage an.
+5. Öffnen Sie den Registrierungs-Editor, und wechseln Sie zu „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa“. Legen Sie **VERBOSE_LOG** auf **FALSE** fest.
+6. Zippen Sie den Inhalt des Ordners „C:\NPS“, und fügen Sie die ZIP-Datei an die Supportanfrage an.
 
 

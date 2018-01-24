@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: ee499b57733cd19dfe411e0e463dd3c65e82a52d
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 184a30c91de0d4141d6bd8a8b9db93c539e083b5
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-basic-virtual-machine-in-azure-with-ansible"></a>Erstellen eines einfachen virtuellen Computers in Azure mit Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird gezeigt, wie Sie einen einfachen virtuellen Computer mit Ansible erstellen. Sie können sich auch darüber informieren, wie Sie [eine vollständige Umgebung mit virtuellen Computern mit Ansible erstellen](ansible-create-complete-vm.md).
@@ -37,7 +37,7 @@ Um Azure-Ressourcen mit Ansible verwalten zu können, benötigen Sie Folgendes:
 
 
 ## <a name="create-supporting-azure-resources"></a>Erstellen unterstützender Azure-Ressourcen
-In diesem Beispiel erstellen wir ein Runbook, das einen virtuellen Computer in einer vorhandenen Infrastruktur bereitstellt. Erstellen Sie zunächst mit [az group create](/cli/azure/vm#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
+In diesem Beispiel erstellen wir ein Runbook, das eine VM in einer vorhandenen Infrastruktur bereitstellt. Erstellen Sie zunächst mit [az group create](/cli/azure/vm#create) eine Ressourcengruppe. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -56,7 +56,7 @@ az network vnet create \
 
 
 ## <a name="create-and-run-ansible-playbook"></a>Erstellen und Ausführen von Ansible-Playbooks
-Erstellen Sie das Ansible-Playbook **azure_create_vm.yml**, und fügen Sie den folgenden Inhalt ein. In diesem Beispiel wird ein einzelner virtueller Computer erstellt, und es werden SSH-Anmeldeinformationen konfiguriert. Geben Sie Ihre eigenen öffentlichen Schlüsseldaten wie folgt im *key_data*-Paar ein:
+Erstellen Sie das Ansible-Playbook *azure_create_vm.yml*, und fügen Sie den folgenden Inhalt ein. In diesem Beispiel wird ein einzelner virtueller Computer erstellt, und es werden SSH-Anmeldeinformationen konfiguriert. Geben Sie Ihre eigenen öffentlichen Schlüsseldaten wie folgt im *key_data*-Paar ein:
 
 ```yaml
 - name: Create Azure VM

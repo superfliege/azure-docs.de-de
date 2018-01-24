@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 11/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 4dd24e4dddfedf58f1016511dfad087f91a0dbf8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3ca9157823a52bd0e4e8dd3b2656fc2724c8b4b6
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Bedingter Zugriff in Azure Active Directory
 
@@ -187,7 +187,7 @@ Eine vollständige Liste der Client-Apps, die Sie in der Richtlinie für bedingt
 
 
 
-## <a name="common-scenarios"></a>Gängige Szenarien
+## <a name="common-scenarios"></a>Häufige Szenarios
 
 ### <a name="requiring-multi-factor-authentication-for-apps"></a>Erzwingen von Multi-Factor Authentication für Apps
 
@@ -209,6 +209,9 @@ Anders ausgedrückt: Sie können beispielsweise die Multi-Factor Authentication 
 Wenn Sie Intune in Ihrer Umgebung verwenden, können Sie sofort damit beginnen, die Oberfläche für Richtlinien für den bedingten Zugriff in der Azure-Konsole zu verwenden.
 
 Viele Intune-Kunden nutzen den bedingten Zugriff, um sicherzustellen, dass nur vertrauenswürdige Geräte auf Office 365-Dienste zugreifen können. Dies bedeutet, dass mobile Geräte bei Intune registriert werden und die Anforderungen der Konformitätsrichtlinien erfüllen und dass Windows-PCs in eine lokale Domäne eingebunden werden. Eine wichtige Verbesserung besteht darin, dass Sie eine Richtlinie nicht für jeden Office 365-Dienst neu festlegen müssen.  Konfigurieren Sie die Cloud-Apps beim Erstellen einer neuen Richtlinie so, dass alle O365-Apps einbezogen werden, die Sie mit bedingtem Zugriff schützen möchten.
+
+### <a name="switching-a-device-from-corporate-owned-to-bring-your-own-device-byod"></a>Umstellen eines unternehmenseigenen Geräts auf BYOD (Bring Your Own Device)
+Wenn Sie registrierte Geräte blockieren möchten, indem Sie Unternehmensgeräte in persönliche Geräte umwandeln, können Sie den bedingten Zugriff mit Azure Active Directory (AAD) verwenden. Sie müssen zunächst eine Richtlinie für bedingten Zugriff erstellen, für die über das Blatt **Gewähren** der Zugriffssteuerungen die Option **Zugriff blockieren** ausgewählt wird. Erstellen Sie als Nächstes eine Gruppe vom Typ **Dynamisches Gerät**, indem Sie für die Eigenschaft **deviceOwnership** die Option **Persönlich** festlegen. Wenden Sie die oben genannte Richtlinie dann auf die neue Gruppe an.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

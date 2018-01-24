@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Service Bus-Namespace mithilfe einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
-description: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Service Bus-Namespace
+title: Erstellen eines Service Bus Messaging-Namespace mithilfe einer Azure Resource Manager-Vorlage | Microsoft-Dokumentation
+description: Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Service Bus Messaging-Namespace
 services: service-bus-messaging
 documentationcenter: .net
 author: sethmanheim
@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 08/07/2017
+ms.date: 12/21/2017
 ms.author: sethm;shvija
-ms.openlocfilehash: c8a42638c79a8a53f80102fc344eccb521e4c1c5
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f184cc9418e4af95423c0ede65bca312dfca7393
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="create-a-service-bus-namespace-using-an-azure-resource-manager-template"></a>Erstellen eines Service Bus-Namespace mithilfe einer Azure Resource Manager-Vorlage
 
@@ -41,6 +41,7 @@ Die vollständige Vorlage finden Sie unter [Service Bus namespace template][Serv
 > 
 
 ## <a name="what-will-you-deploy"></a>Was möchten Sie bereitstellen?
+
 Mit dieser Vorlage können Sie einen Service Bus-Namespace mit einer [Standard- oder Premium-SKU](https://azure.microsoft.com/pricing/details/service-bus/) bereitstellen.
 
 Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuführen:
@@ -48,11 +49,13 @@ Klicken Sie auf folgende Schaltfläche, um die Bereitstellung automatisch auszuf
 [![In Azure bereitstellen](./media/service-bus-resource-manager-namespace/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-servicebus-create-namespace%2Fazuredeploy.json)
 
 ## <a name="parameters"></a>Parameter
+
 Mit dem Azure-Ressourcen-Manager definieren Sie die Parameter für Werte, die Sie bei der Bereitstellung der Vorlage angeben möchten. Die Vorlage enthält einen Abschnitt namens `Parameters` , der alle Parameterwerte enthält. Definieren Sie einen Parameter für die Werte, die basierend auf dem bereitgestellten Projekt oder der bereitgestellten Umgebung variieren. Definieren Sie keine Parameter für Werte, die sich nicht ändern. Jeder Parameterwert wird in der Vorlage verwendet, um die bereitgestellten Ressourcen zu definieren.
 
 Diese Vorlage definiert die folgenden Parameter:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
+
 Der Name des zu erstellenden Service Bus-Namespace.
 
 ```json
@@ -65,6 +68,7 @@ Der Name des zu erstellenden Service Bus-Namespace.
 ```
 
 ### <a name="servicebussku"></a>serviceBusSKU
+
 Der Name der zu erstellenden Service Bus- [SKU](https://azure.microsoft.com/pricing/details/service-bus/) .
 
 ```json
@@ -86,6 +90,7 @@ Die Vorlage definiert die Werte, die für diesen Parameter zulässig sind (Stand
 Weitere Informationen zu Service Bus-Preisen finden Sie unter [Service Bus – Preise und Abrechnung][Service Bus pricing and billing].
 
 ### <a name="servicebusapiversion"></a>serviceBusApiVersion
+
 Die Service Bus-API-Version der Vorlage.
 
 ```json
@@ -98,7 +103,9 @@ Die Service Bus-API-Version der Vorlage.
 ```
 
 ## <a name="resources-to-deploy"></a>Bereitzustellende Ressourcen
+
 ### <a name="service-bus-namespace"></a>Service Bus-Namespace
+
 Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**.
 
 ```json
@@ -120,15 +127,18 @@ Erstellt einen standardmäßigen Service Bus-Namespace des Typs **Messaging**.
 ```
 
 ## <a name="commands-to-run-deployment"></a>Befehle zum Ausführen der Bereitstellung
+
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
+
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json
 ```
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
-```azurecli
+
+```azurecli-interactive
 azure config mode arm
 
 azure group deployment create <my-resource-group> <my-deployment-name> --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-servicebus-create-namespace/azuredeploy.json

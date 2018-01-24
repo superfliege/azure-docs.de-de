@@ -1,40 +1,42 @@
 ---
 title: "Tutorial für Azure Container Instances – Bereitstellungs-App"
-description: "Tutorial für Azure Container Instances – Bereitstellungs-App"
+description: "Tutorial für Azure Container Instances (Teil 3 von 3) – Bereitstellen der Anwendung"
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 11/20/2017
+ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a6b36349c7fae09e70178ae7e7c2b6c15c0c26d4
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 471caa1b24dc7017c70782c072b2068f9635244b
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>Bereitstellen eines Containers für Azure Container Instances
 
-Dies ist der letzte Teil eines dreiteiligen Tutorials. In vorhergehenden Abschnitten wurde [ein Containerimage erstellt](container-instances-tutorial-prepare-app.md) und [per Push an eine Azure Container Registry übermittelt](container-instances-tutorial-prepare-acr.md). Mit diesem Abschnitt wird das Tutorial abgeschlossen, indem der Container in Azure Container Instances bereitgestellt wird. Folgende Schritte werden ausgeführt:
+Dies ist das letzte Tutorial einer dreiteiligen Reihe. In den vorhergehenden Teilen der Reihe wurde [ein Containerimage erstellt](container-instances-tutorial-prepare-app.md) und [mithilfe von Push an eine Azure Container Registry-Instanz übermittelt](container-instances-tutorial-prepare-acr.md). Zum Abschluss der Tutorialreihe wird der Container in diesem Tutorial für Azure Container Instances bereitgestellt.
+
+Dieses Tutorial umfasst Folgendes:
 
 > [!div class="checklist"]
-> * Bereitstellen des Containers aus der Azure Container Registry mithilfe der Azure-Befehlszeilenschnittstelle
+> * Bereitstellen des Containers aus der Azure Container Registry-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 > * Anzeigen der Anwendung im Browser
 > * Anzeigen der Containerprotokolle
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Für dieses Tutorial müssen Sie mindestens Version 2.0.21 der Azure-Befehlszeilenschnittstelle ausführen. Führen Sie `az --version` aus, um die Version zu finden. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) Informationen dazu.
+Für dieses Tutorial benötigen Sie mindestens Version 2.0.23 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um die Version zu finden. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI 2.0][azure-cli-install].
 
-Für dieses Tutorial ist eine Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac](https://docs.docker.com/docker-for-mac/)-, [Windows](https://docs.docker.com/docker-for-windows/)- oder [Linux](https://docs.docker.com/engine/installation/#supported-platforms)-System konfiguriert werden kann.
+Für dieses Tutorial ist eine lokal installierte Docker-Entwicklungsumgebung erforderlich. Für Docker sind Pakete erhältlich, mit denen Docker problemlos auf einem [Mac-][docker-mac], [Windows-][docker-windows] oder [Linux-][docker-linux]System konfiguriert werden kann.
 
-Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Aus diesem Grund empfehlen wir Ihnen eine lokale Installation der Azure CLI und der Docker-Entwicklungsumgebung.
+Azure Cloud Shell umfasst keine Docker-Komponenten, die zum Abschließen der einzelnen Schritte dieses Tutorials erforderlich sind. Die Azure-Befehlszeilenschnittstelle und die Docker-Entwicklungsumgebung müssen zur Absolvierung dieses Tutorials auf Ihrem lokalen Computer installiert sein.
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Bereitstellen des Containers mithilfe der Azure-Befehlszeilenschnittstelle
 
-Mithilfe der Azure-Befehlszeilenschnittstelle kann ein Container mit einem einzelnen Befehl in Azure Container Instances bereitgestellt werden. Da das Containerimage in der privaten Azure Container Registry gehostet wird, müssen Sie die erforderlichen Anmeldeinformationen einschließen, um darauf zugreifen zu können. Bei Bedarf können Sie diese abfragen wie weiter unten dargestellt.
+Mithilfe der Azure-Befehlszeilenschnittstelle kann ein Container mit einem einzelnen Befehl in Azure Container Instances bereitgestellt werden. Da das Containerimage in der privaten Azure Container Registry gehostet wird, müssen Sie die erforderlichen Anmeldeinformationen einschließen, um darauf zugreifen zu können. Rufen Sie die Anmeldeinformationen mit den folgenden Azure-CLI-Befehlen ab.
 
 Anmeldeserver für die Containerregistrierung (durch den Namen Ihrer Registrierung ersetzen):
 
@@ -51,23 +53,23 @@ az acr credential show --name <acrName> --query "passwords[0].value"
 Um das Containerimage aus der Containerregistrierung mit einer Ressourcenanforderung von einem CPU-Kern und 1 GB Speicher bereitzustellen, führen Sie den folgenden Befehl aus. Ersetzen Sie `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den beiden vorhergehenden Befehlen abgerufen haben.
 
 ```azurecli
-az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80 -g myResourceGroup
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80
 ```
 
-Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Verwenden Sie zum Anzeigen des Status der Bereitstellung [az container show](/cli/azure/container#az_container_show):
+Innerhalb weniger Sekunden sollten Sie eine erste Antwort vom Azure Resource Manager erhalten. Verwenden Sie zum Anzeigen des Bereitstellungsstatus den Befehl [az container show][az-container-show]:
 
 ```azurecli
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query instanceView.state
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
 ```
 
-Wiederholen Sie den Befehl `az container show`, bis der Status von *Ausstehend* in *Wird ausgeführt* geändert wird. Das sollte maximal eine Minute dauern. Wenn für den Container *Wird ausgeführt* angezeigt wird, fahren Sie mit dem nächsten Schritt fort.
+Führen Sie den Befehl [az container show][az-container-show] erneut aus, bis der Status nicht mehr *Ausstehend*, sondern *Wird ausgeführt* lautet. Das sollte nach maximal einer Minute der Fall sein. Wenn für den Container *Wird ausgeführt* angezeigt wird, fahren Sie mit dem nächsten Schritt fort.
 
 ## <a name="view-the-application-and-container-logs"></a>Anzeigen der Anwendungs- und Containerprotokolle
 
-Wenn die Bereitstellung erfolgreich war, zeigen Sie die öffentliche IP-Adresse des Containers mit dem Befehl [az container show](/cli/azure/container#az_container_show) an:
+Wenn die Bereitstellung erfolgreich war, zeigen Sie mit dem Befehl [az container show][az-container-show] die öffentliche IP-Adresse des Containers an:
 
 ```bash
-az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.ip
 ```
 
 Beispielausgabe: `"13.88.176.27"`
@@ -79,7 +81,7 @@ Zum Anzeigen der ausgeführten Anwendung navigieren Sie in Ihrem bevorzugten Bro
 Sie können auch die Protokollausgabe des Containers anzeigen:
 
 ```azurecli
-az container logs --name aci-tutorial-app -g myResourceGroup
+az container logs --resource-group myResourceGroup --name aci-tutorial-app
 ```
 
 Ausgabe:
@@ -92,7 +94,7 @@ listening on port 80
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie in dieser Tutorialreihe erstellte Ressourcen nicht mehr benötigen, können Sie den Befehl [az group delete](/cli/azure/group#delete) ausführen, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Dieser Befehl löscht die von Ihnen erstellte Containerregistrierung sowie den ausgeführten Container und alle zugehörigen Ressourcen.
+Wenn Sie die in dieser Tutorialreihe erstellten Ressourcen nicht mehr benötigen, können Sie den Befehl [az group delete][az-group-delete] ausführen, um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu entfernen. Dieser Befehl löscht die von Ihnen erstellte Containerregistrierung sowie den ausgeführten Container und alle zugehörigen Ressourcen.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -100,15 +102,26 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Ihre Container in Azure Container Instances bereitgestellt. Die folgenden Schritte wurden ausgeführt:
+In diesem Tutorial haben Sie Ihre Container in Azure Container Instances bereitgestellt. Die folgenden Schritte wurden durchgeführt:
 
 > [!div class="checklist"]
-> * Bereitstellen des Containers aus der Azure Container Registry mithilfe der Azure-Befehlszeilenschnittstelle
+> * Bereitstellen des Containers aus der Azure Container Registry-Instanz mithilfe der Azure-Befehlszeilenschnittstelle
 > * Anzeigen der Anwendung im Browser
 > * Anzeigen der Containerprotokolle
 
-<!-- LINKS -->
-[prepare-app]: ./container-instances-tutorial-prepare-app.md
-
 <!-- IMAGES -->
 [aci-app-browser]: ./media/container-instances-quickstart/aci-app-browser.png
+
+<!-- LINKS - external -->
+[docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
+[docker-login]: https://docs.docker.com/engine/reference/commandline/login/
+[docker-mac]: https://docs.docker.com/docker-for-mac/
+[docker-push]: https://docs.docker.com/engine/reference/commandline/push/
+[docker-tag]: https://docs.docker.com/engine/reference/commandline/tag/
+[docker-windows]: https://docs.docker.com/docker-for-windows/
+
+<!-- LINKS - internal -->
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-delete]: /cli/azure/group#az_group_delete
+[azure-cli-install]: /cli/azure/install-azure-cli
+[prepare-app]: ./container-instances-tutorial-prepare-app.md

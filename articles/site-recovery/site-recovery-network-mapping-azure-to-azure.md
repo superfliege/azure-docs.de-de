@@ -4,7 +4,7 @@ description: "Azure Site Recovery koordiniert Replikation, Failover und Wiederhe
 services: site-recovery
 documentationcenter: 
 author: mayanknayar
-manager: gauravd
+manager: rochakm
 editor: 
 ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
 ms.service: site-recovery
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/22/2017
+ms.date: 12/15/2017
 ms.author: manayar
-ms.openlocfilehash: 85baa829020529b628dfaa5578e5d76724834b33
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: bf3d557c77e3cb6ade6f1bb3773c807f9c8b43f6
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>Netzwerkzuordnung zwischen zwei Azure-Regionen
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/28/2017
 In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Netzwerke aus zwei Azure-Regionen einander zuordnen. Durch die Netzwerkzuordnung wird sichergestellt, dass ein replizierter virtueller Computer in der Azure-Zielregion in dem virtuellen Netzwerk erstellt wird, das dem virtuellen Netzwerk des virtuellen Quellcomputers zugeordnet ist.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Vergewissern Sie sich vor dem Zuordnen von Netzwerken, dass Sie [virtuelle Azure-Netzwerke](../virtual-network/virtual-networks-overview.md) sowohl in der Azure-Quellregion als auch in der Azure-Zielregion erstellt haben.
+Stellen Sie vor dem Zuordnen von Netzwerken sicher, dass Sie [virtuelle Azure-Netzwerke](../virtual-network/virtual-networks-overview.md) sowohl in der Azure-Quellregion als auch in der Azure-Zielregion erstellt haben.
 
 ## <a name="map-networks"></a>Zuordnen von Netzwerken
 
@@ -42,7 +42,8 @@ Wählen Sie das Quell- und das Zielnetzwerk aus, und klicken Sie dann auf „OK�
 ![Netzwerkzuordnung](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 
 
-Führen Sie dieselben Schritte aus, um eine Netzwerkzuordnung von „Asien, Südosten“ mit „Asien, Osten“ zu erstellen.  
+Wiederholen Sie den oben beschriebenen Vorgang, um eine Netzwerkzuordnung von „Asien, Südosten“ mit „Asien, Osten“ zu erstellen.
+
 ![Netzwerkzuordnung](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)
 
 
@@ -70,7 +71,7 @@ Wenn die Netzwerkzuordnung bereits erfolgt ist, können Sie das virtuelle Zielne
 
 
 ## <a name="subnet-selection"></a>Subnetzauswahl
-Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz, das in der alphabetischen Reihenfolge an erster Stelle steht, als Zielsubnetz ausgewählt. Sie können dieses Subnetz ändern, indem Sie zu den Einstellungen für Compute und Netzwerk des virtuellen Computers navigieren.
+Das Subnetz des virtuellen Zielcomputers wird basierend auf dem Namen des Subnetzes des virtuellen Quellcomputers ausgewählt. Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie der virtuelle Quellcomputer verfügbar ist, wird dieses Subnetz für den virtuellen Zielcomputer ausgewählt. Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das Subnetz, das in der alphabetischen Reihenfolge an erster Stelle steht, als Zielsubnetz ausgewählt. Sie können dieses Subnetz ändern, indem Sie zu den Einstellungen für Compute und Netzwerk des virtuellen Computers navigieren.
 
 ![Ändern des Subnetzes](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
@@ -87,14 +88,14 @@ Wenn die Netzwerkschnittstelle des virtuellen Quellcomputers eine statische IP-A
 
 #### <a name="same-address-space"></a>Gleicher Adressraum
 
-Wenn das Quellsubnetz und das Zielsubnetz über denselben Adressraum verfügen, wird die Ziel-IP-Adresse auf die IP-Adresse der Netzwerkschnittstelle des virtuellen Quellcomputers festgelegt. Wenn dieselbe IP nicht verfügbar ist, wird eine andere verfügbare IP als die Ziel-IP festgelegt.
+Wenn das Quellsubnetz und das Zielsubnetz über denselben Adressraum verfügen, wird die IP-Adresse der Netzwerkschnittstelle des virtuellen Quellcomputers als Ziel-IP-Adresse festgelegt. Wenn dieselbe IP-Adresse nicht verfügbar ist, wird die nächste verfügbare IP-Adresse als Ziel-IP-Adresse festgelegt.
 
 #### <a name="different-address-space"></a>Unterschiedlicher Adressraum
 
-Wenn das Quellsubnetz und das Zielsubnetz über unterschiedliche Adressräume verfügen, wird die Ziel-IP-Adresse auf eine der verfügbaren IP-Adressen im Zielsubnetz festgelegt.
+Wenn das Quellsubnetz und das Zielsubnetz über unterschiedliche Adressräume verfügen, wird die nächste verfügbare IP-Adresse im Zielsubnetz als Ziel-IP-Adresse festgelegt.
 
-Sie können die Ziel-IP für jede Netzwerkschnittstelle ändern, indem Sie zu den Einstellungen für Compute und Netzwerk des virtuellen Computers navigieren.
+Sie können die Ziel-IP-Adresse für jede Netzwerkschnittstelle ändern, indem Sie zu den Einstellungen für Compute und Netzwerk des virtuellen Computers navigieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zu [Netzwerkrichtlinien zum Replizieren von virtuellen Azure-Computern](site-recovery-azure-to-azure-networking-guidance.md)
+Weitere Informationen zu [Netzwerkrichtlinien zum Replizieren von virtuellen Azure-Computern](site-recovery-azure-to-azure-networking-guidance.md)

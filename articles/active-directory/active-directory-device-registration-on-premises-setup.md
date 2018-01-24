@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2017
+ms.date: 12/14/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4117414f4605b73d8aab8acc2e788720deff8b99
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9c4b8364f88548cfc4595261302248cc2840c233
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Einrichten des lokalen bedingten Zugriffs mithilfe der Azure Active Directory-Geräteregistrierung
 Wenn Sie von Benutzern verlangen, ihre persönlichen Geräte mithilfe des Geräteregistrierungsdiensts mit Azure Active Directory (Azure AD) über den Arbeitsplatz einzubinden, können deren Geräte als Ihrer Organisation bekannt markiert werden. Im Folgenden wird eine Schritt-für-Schritt-Anleitung aufgeführt, die zeigt, wie Sie mithilfe der Active Directory-Verbunddienste (AD FS) unter Windows Server 2012 R2 den bedingten Zugriff auf lokale Anwendungen ermöglichen.
@@ -69,7 +69,7 @@ Wenn Sie den Azure Active Directory-Geräteregistrierungsdienst für Ihren Azure
 ## <a name="part-1-enable-azure-active-directory-device-registration"></a>Teil 1: Aktivieren der Azure Active Directory-Geräteregistrierung
 Führen Sie die Schritte in der Checkliste durch, um den Azure Active Directory-Geräteregistrierungsdienst zu aktivieren und zu konfigurieren.
 
-| Task | Referenz | 
+| Aufgabe | Verweis | 
 | --- | --- |
 | Aktivieren Sie die Geräteregistrierung in Ihrem Azure Active Directory-Mandanten, damit Geräte dem Arbeitsplatz beitreten können. Azure Multi-Factor Authentication ist standardmäßig nicht für den Dienst aktiviert. Es wird jedoch empfohlen, bei der Registrierung eines Geräts Multi-Factor Authentication zu verwenden. Stellen Sie vor der Aktivierung von Multi-Factor Authentication im Active Directory-Registrierungsdienst sicher, dass AD FS für einen MFA-Anbieter (Multi-Factor Authentication) konfiguriert ist. |[Aktivieren der Azure Active Directory-Geräteregistrierung](active-directory-device-registration-get-started.md)| 
 |Geräte ermitteln den Azure Active Directory-Geräteregistrierungsdienst, indem sie nach bekannten DNS-Einträgen suchen. Konfigurieren Sie den DNS-Eintrag für Ihr Unternehmen so, dass Geräte den Azure Active Directory-Geräteregistrierungsdienst ermitteln können. |[Konfigurieren der Ermittlung für die Azure Active Directory-Geräteregistrierung](active-directory-device-registration-get-started.md)| 
@@ -77,13 +77,13 @@ Führen Sie die Schritte in der Checkliste durch, um den Azure Active Directory-
 
 ## <a name="part-2-deploy-and-configure-windows-server-2012-r2-active-directory-federation-services-and-set-up-a-federation-relationship-with-azure-ad"></a>Teil 2: Bereitstellen und Konfigurieren von Windows Server 2012 R2 Active Directory-Verbunddiensten und Einrichten einer Partnerbeziehung mit Azure AD
 
-| Task | Referenz |
+| Aufgabe | Verweis |
 | --- | --- |
 | Stellen Sie die Active Directory Domain Services mit den Windows Server 2012 R2-Schemaerweiterungen bereit. Es ist nicht erforderlich, ein Upgrade Ihrer Domänencontroller auf Windows Server 2012 R2 auszuführen. Das Upgrade des Schemas ist die einzige Anforderung. |[Durchführen eines Upgrades des Active Directory Domain Services-Schemas](#upgrade-your-active-directory-domain-services-schema) |
 | Geräte ermitteln den Azure Active Directory-Geräteregistrierungsdienst, indem sie nach bekannten DNS-Einträgen suchen. Konfigurieren Sie den DNS-Eintrag für Ihr Unternehmen so, dass Geräte den Azure Active Directory-Geräteregistrierungsdienst ermitteln können. |[Vorbereiten von Unterstützungsgeräten für Active Directory](#prepare-your-active-directory-to-support-devices) |
 
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>Teil 3: Aktivieren des Geräterückschreibens in Azure AD
-| Task | Referenz |
+| Aufgabe | Verweis |
 | --- | --- |
 | Führen Sie Teil 2 von „Aktivieren des Geräterückschreibens in Azure AD Connect“ durch. Danach können Sie zu den Anweisungen dieses Handbuchs zurückkehren. |[Aktivieren des Geräterückschreibens in Azure AD Connect](#upgrade-your-active-directory-domain-services-schema) |
 
@@ -93,7 +93,7 @@ Es wird dringend empfohlen, eine der verschiedenen Optionen für Multi-Factor Au
 ## <a name="part-5-verification"></a>Teil 5: Überprüfung
 Die Bereitstellung ist nun abgeschlossen, sodass Sie einige Szenarien ausprobieren können. Folgen Sie den unten angegebenen Links, um mit dem Dienst zu experimentieren und sich mit den Funktionen vertraut zu machen.
 
-| Task | Referenz |
+| Aufgabe | Verweis |
 | --- | --- |
 | Verknüpfen Sie einige Geräte mit dem Arbeitsplatz, indem Sie den Azure Active Directory-Geräteregistrierungsdienst verwenden. Sie können iOS-, Windows- und Android-Geräte verknüpfen. |[Beitritt zum Arbeitsplatz für Geräte mithilfe des Azure Active Directory-Geräteregistrierungsdiensts](#join-devices-to-your-workplace-using-azure-active-directory-device-registration) |
 | Zeigen Sie registrierte Geräte mithilfe des Administratorportals an, und aktivieren bzw. deaktivieren Sie sie. In dieser Aufgabe zeigen Sie einige registrierte Geräte mit dem Administratorportal an. |[Überblick über den Azure Active Directory-Geräteregistrierungsdienst](active-directory-device-registration-get-started.md) |
@@ -101,19 +101,13 @@ Die Bereitstellung ist nun abgeschlossen, sodass Sie einige Szenarien ausprobier
 | Da Benutzer ihre Geräte jetzt registrieren können, können Sie Richtlinien für den Anwendungszugriff in AD FS erstellen, bei denen nur registrierte Geräte zugelassen sind. In dieser Aufgabe erstellen Sie eine Regel für den Anwendungszugriff und eine benutzerdefinierte Meldung „Zugriff verweigert“. |[Erstellen einer Anwendungszugriffsrichtlinie und einer benutzerdefinierten Meldung „Zugriff verweigert“](#create-an-application-access-policy-and-custom-access-denied-message) |
 
 ## <a name="integrate-azure-active-directory-with-on-premises-active-directory"></a>Integrieren von Azure Active Directory in die lokale Active Directory-Instanz
-Durch diesen Schritt können Sie Ihren Azure AD-Mandanten mithilfe von Azure AD Connect in Ihre lokale Active Directory-Instanz integrieren. Auch wenn die Schritte im klassischen Azure-Portal verfügbar sind, sollten Sie die speziellen Anweisungen in diesem Abschnitt beachten.
 
-1. Melden Sie sich beim klassischen Azure-Portal mit einem Konto an, dem in Azure AD die Rolle eines globalen Administrators zugewiesen ist.
-2. Wählen Sie im linken Bereich **Active Directory**aus.
-3. Wählen Sie auf der Registerkarte **Verzeichnis** Ihr Verzeichnis aus.
-4. Wechseln Sie zur Registerkarte **Verzeichnisintegration** .
-5. Führen Sie im Abschnitt **Bereitstellen und Verwalten** die Schritte 1 bis 3 durch, um Azure Active Directory in Ihr lokales Verzeichnis zu integrieren.
-   
-   1. Fügen Sie Domänen hinzu.
-   2. Installieren Sie Azure AD Connect gemäß den Anweisungen unter [Benutzerdefinierte Installation von Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md), und führen Sie Azure AD Connect aus.
-   3. Überprüfen und verwalten Sie die Verzeichnissynchronisierung. In diesem Schritt sind Anweisungen zum einmaligen Anmelden enthalten.
-   
-   Konfigurieren Sie darüber hinaus den Verbund mit AD FS wie unter [Benutzerdefinierte Installation von Azure AD Connect](connect/active-directory-aadconnect-get-started-custom.md) beschrieben.
+**Siehe:**
+
+- [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](./connect/active-directory-aadconnect.md) (konzeptionelle Informationen)
+
+- [Benutzerdefinierte Installation von Azure AD Connect](./connect/active-directory-aadconnect-get-started-custom.md) (Installationsanweisungen)
+
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Ausführen eines Upgrades des Schemas der Active Directory Domain Services
 > [!NOTE]

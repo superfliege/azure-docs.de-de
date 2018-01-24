@@ -15,14 +15,15 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afa863e2a900d4f823b77453d92f034db7d5a93f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1f0182f27cfb8441a09abd2031b365a4ab4315a
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?
 In diesem Artikel werden die verschiedenen Quellen von Warnungen in Microsoft Azure, der Zweck dieser Warnungen, die damit verbundenen Vorteile und die ersten Schritte bei der Verwendung beschrieben. Er bezieht sich insbesondere auf Azure Monitor, enthält aber auch Verweise auf andere Dienste mit Warnungen. Warnungen stellen ein Verfahren für die Überwachung in Azure dar, bei dem Sie Bedingungen für Daten konfigurieren können und benachrichtigt werden, wenn die Bedingungen mit den aktuellen Überwachungsdaten übereinstimmen.
+
 
 ## <a name="taxonomy-of-azure-alerts"></a>Taxonomie von Azure-Warnungen
 In Azure werden die folgenden Begriffe verwendet, um Warnungen und ihre Funktionen zu beschreiben:
@@ -32,10 +33,15 @@ In Azure werden die folgenden Begriffe verwendet, um Warnungen und ihre Funktion
 * **Benachrichtigung**: Die Aktion, die durchgeführt wird, wenn eine Warnung aktiv wird.
 * **Aktion**: Ein bestimmte Kontaktaufnahme, die an den Empfänger einer Benachrichtigung gesendet wird (z.B. E-Mail an eine Adresse oder das Posten an eine Webhook-URL). Benachrichtigungen können in der Regel mehrere Aktionen auslösen.
 
+    > [!NOTE]
+    > Im Rahmen der Weiterentwicklung von Warnungen in Azure ist eine neue einheitliche Oberfläche in der Vorschauversion verfügbar. Die neue Oberfläche „Warnungen (Vorschauversion)“ verwendet eine andere Taxonomie. Erfahren Sie mehr über [Warnungen (Vorschauversion)](monitoring-overview-unified-alerts.md). 
+    >
+
 ## <a name="alerts-in-different-azure-services"></a>Warnungen bei unterschiedlichen Azure-Diensten
 Warnungen sind übergreifend für mehrere Azure-Überwachungsdienste verfügbar. Informationen dazu, wie und wann Sie diese Dienste verwenden können, finden Sie in [diesem Artikel](./monitoring-overview.md). Hier ist eine Aufstellung der Warnungstypen angegeben, die in Azure verfügbar sind:
 
-| Dienst | Warnungstyp | Unterstützte Dienste | Beschreibung |
+
+| Dienst | Warnungstyp | Unterstützte Dienste | BESCHREIBUNG |
 |---|---|---|---|
 | Azure Monitor | [Metrikwarnungen](./insights-alerts-portal.md) | [Unterstützte Metriken von Azure Monitor](./monitoring-supported-metrics.md) | Sie erhalten eine Benachrichtigung, wenn eine beliebige Metrik auf Plattformebene eine bestimmte Bedingung erfüllt (z.B. CPU-Prozentsatz von mehr als 90 auf einer VM während der letzten fünf Minuten). |
 |Azure Monitor | [Near Real-Time Metric Alerts (Preview)](./monitoring-near-real-time-metric-alerts.md)| [Unterstützte Ressourcen aus Azure Monitor](./monitoring-near-real-time-metric-alerts.md#what-resources-can-i-create-near-real-time-metric-alerts-for) | Erhalten Sie eine Benachrichtigung schneller als Metrikwarnungen, wenn mindestens eine Metrik auf Plattformebene angegebene Bedingungen erfüllt (z. B. die CPU-Auslastung auf einem virtuellen Computer innerhalb der letzten 5 Minuten größer als 90 % und der Dateneingangsverkehr im Netzwerk größer als 500 MB war). |
@@ -50,10 +56,10 @@ Es gibt drei Typen von Warnungen für Daten, die über Azure Monitor verfügbar 
 * **Metrikwarnungen**: Diese Warnung wird ausgelöst, wenn der Wert für eine bestimmte Metrik einen von Ihnen definierten Schwellenwert überschreitet. Die Warnung generiert eine Benachrichtigung, wenn die Warnung den Status „Aktiviert“ (nach Überschreitung des Schwellenwerts und Erfüllung der Warnungsbedingung) oder „Gelöst“ (nach der erneuten Überschreitung des Schwellenwerts und Nichterfüllung der Bedingung) hat. Eine laufend ergänzte Liste verfügbarer Metriken, die vom Azure-Monitor unterstützt werden, finden Sie unter [Unterstützte Metriken von Azure Monitor](monitoring-supported-metrics.md).
 * **Near Real-Time Metric Alerts (Preview)**: Diese Warnungen sind Metrikwarnungen ähnlich, unterscheiden sich aber in einigen Aspekten. Wie der Name bereits vermuten lässt, können diese Warnungen nahezu in Echtzeit (schon nach einer Minute) ausgelöst werden. Außerdem unterstützen sie die Überwachung mehrerer (zurzeit zwei) Metriken.  Die Warnung generiert eine Benachrichtigung, wenn die Warnung den Status „Aktiviert“ (nach gleichzeitiger Überschreitung der Schwellenwerte für jede Metrik und Erfüllung der Warnungsbedingung) oder „Gelöst“ (wenn der Schwellenwert durch mindestens eine Metrik erneut überschritten und die Bedingung nicht mehr erfüllt wird) aufweist.
 
-> [!NOTE]
-> Feature Real-Time Metric Alerts sind zurzeit als öffentliche Preview verfügbar. Die Funktionen und die Benutzeroberfläche können jederzeit geändert werden.
->
->
+    > [!NOTE]
+    > Feature Real-Time Metric Alerts sind zurzeit als öffentliche Preview verfügbar. Die Funktionen und die Benutzeroberfläche können jederzeit geändert werden.
+    >
+    >
 
 * **Aktivitätsprotokollwarnungen**: Eine Streamingprotokollwarnung, die ausgelöst wird, wenn ein Aktivitätsprotokollereignis generiert wird, das von Ihnen zugewiesene Filterkriterien erfüllt. Diese Warnungen haben nur einen Status: „Aktiviert“. Dies liegt daran, dass das Warnungsmodul die Filterkriterien einfach auf ein neues Ereignis anwendet. Diese Warnungen können zum Empfangen von Benachrichtigungen für den Fall verwendet werden, dass ein neuer Service Health-Vorfall eintritt oder ein Benutzer oder eine Anwendung in Ihrem Abonnement einen Vorgang durchführt, z.B. „Virtuellen Computer löschen“.
 
@@ -91,3 +97,4 @@ Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:
 * Weitere Informationen zu [Near Real-Time Metric Alerts](monitoring-near-real-time-metric-alerts.md)
 * Weitere Informationen zu [Dienstbenachrichtigungen](monitoring-service-notifications.md)
 * Weitere Informationen zu [Aktionsgruppen](monitoring-action-groups.md)
+* Konfigurieren von [Warnungen über Warnungen (Vorschauversion)](monitor-alerts-unified-usage.md)

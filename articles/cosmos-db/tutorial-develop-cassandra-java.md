@@ -16,17 +16,17 @@ ms.workload:
 ms.date: 11/15/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7e1a17517890f8ed738b6afdcbe073a2bf1ebc6f
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 53987e5863d9fc11b4fa377295d198293819269c
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="azure-cosmosdb-develop-with-the-cassandra-api-in-java"></a>Azure Cosmos DB: Entwickeln mit der Cassandra-API in Java
 
 Azure Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren Modellen. Sie können schnell Dokument-, Schlüssel/Wert- und Graph-Datenbanken erstellen und abfragen und dabei stets die Vorteile der globalen Verteilung und der horizontalen Skalierung nutzen, die Azure Cosmos DB zugrunde liegen. 
 
-In diesem Tutorial erfahren Sie, wie Sie ein Azure Cosmos DB-Konto im Azure-Portal erstellen und dann mit der [Cassandra-API](cassandra-introduction.md) eine Cassandra-Tabelle („documentdb-partition-data.md#partition-keys“) erstellen. Durch die Definition eines Primärschlüssels beim Erstellen einer Tabelle wird Ihre Anwendung auf müheloses Skalieren bei einem Wachstum des Datenbestands vorbereitet. 
+In diesem Tutorial erfahren Sie, wie Sie ein Azure Cosmos DB-Konto im Azure-Portal erstellen und dann mit der [Cassandra-API](cassandra-introduction.md) eine Cassandra-Tabelle (sql-api-partition-data.md#partition-keys) erstellen. Durch die Definition eines Primärschlüssels beim Erstellen einer Tabelle wird Ihre Anwendung auf müheloses Skalieren bei einem Wachstum des Datenbestands vorbereitet. 
 
 Dieses Tutorial behandelt die Ausführung folgender Aufgaben mithilfe der Cassandra-API:
 
@@ -50,7 +50,7 @@ Außerdem haben Sie folgende Möglichkeiten:
     * Achten Sie darauf, dass die Umgebungsvariable „JAVA_HOME“ auf den Ordner verweist, in dem das JDK installiert ist.
 * Ein binäres [Maven](http://maven.apache.org/)-Archiv ([Download](http://maven.apache.org/download.cgi)/[Installationsanleitung](http://maven.apache.org/install.html))
     * Unter Ubuntu können Sie `apt-get install maven` ausführen, um Maven zu installieren.
-* [Git](https://www.git-scm.com/)
+* [Git-Client](https://www.git-scm.com/)
     * Unter Ubuntu können Sie `sudo apt-get install git` ausführen, um Git zu installieren.
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos

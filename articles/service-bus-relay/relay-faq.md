@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2017
+ms.date: 12/20/2017
 ms.author: sethm
-ms.openlocfilehash: e8c146f4b6d02449be6ad9e991e52db8dfd58e04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89042badbfefc69582e7979a8379260a7b08d7da
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay – häufig gestellte Fragen
 
@@ -32,7 +32,7 @@ Der [Azure Relay-Dienst](relay-what-is-it.md) vereinfacht Ihre Hybridanwendungen
 Ein [Namespace](relay-create-namespace-portal.md) ist ein Bereichscontainer für die Adressierung von Relay-Ressourcen innerhalb Ihrer Anwendung. Um Relay verwenden zu können, müssen Sie einen Namespace erstellen. Dies ist einer der ersten Schritte.
 
 ### <a name="what-happened-to-service-bus-relay-service"></a>Was ist aus dem Service Bus Relay-Dienst geworden?
-Der frühere Service Bus Relay-Dienst heißt jetzt WCF-Relay. Sie können den Dienst weiter wie gewohnt verwenden. Der Hybrid Connections-Dienst ist die aktualisierte Version eines Diensts, der aus Azure BizTalk Services übernommen wurde. WCF-Relay und Hybrid Connections werden weiterhin unterstützt.
+Der früher „Relay“ genannte Service Bus-Dienst heißt jetzt [WCF-Relay](relay-wcf-dotnet-get-started.md). Sie können den Dienst weiter wie gewohnt verwenden. Der Hybrid Connections-Dienst ist die aktualisierte Version eines Diensts, der aus Azure BizTalk Services übernommen wurde. WCF-Relay und Hybrid Connections werden weiterhin unterstützt.
 
 ## <a name="pricing"></a>Preise
 In diesem Abschnitt werden einige häufig gestellte Fragen zur Relay-Preisstruktur beantwortet. Allgemeine Informationen zu Azure-Preisen finden Sie unter [Häufig gestellte Fragen zum Azure-Support](http://go.microsoft.com/fwlink/?LinkID=185083). Vollständige Informationen zu Relay-Preisen finden Sie unter [Service Bus-Preise][Pricing overview].
@@ -78,12 +78,12 @@ Relays, die anhand der WCF-Bindung **netTCPRelay** geöffnet werden, behandeln N
 ## <a name="quotas"></a>Kontingente
 | Namen des Kontingents | Umfang | Typ | Verhalten beim Überschreiten | Wert |
 | --- | --- | --- | --- | --- |
-| Gleichzeitige Listener für ein Relay |Entität |statisch |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
-| Gleichzeitige Relay-Listener |Systemweit |statisch |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |2.000 |
-| Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Systemweit |statisch |- |5.000 |
-| Relayendpunkte pro Dienstnamespace |Systemweit |statisch |- |10.000 |
+| Gleichzeitige Listener für ein Relay |Entität |statischen |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |25 |
+| Gleichzeitige Relay-Listener |Systemweit |statischen |Nachfolgende Anforderungen für zusätzliche Verbindungen werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |2.000 |
+| Gleichzeitige Relayverbindungen für alle Relayendpunkte eines Dienstnamespace |Systemweit |statischen |- |5.000 |
+| Relayendpunkte pro Dienstnamespace |Systemweit |statischen |- |10.000 |
 | Nachrichtengröße für [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx)- und [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx)-Relays |Systemweit |statisch |Eingehende Nachrichten, die diese Kontingente überschreiten, werden abgelehnt, und vom aufrufenden Code wird eine Ausnahme empfangen. |64 KB |
-| Nachrichtengröße für [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx)- und [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx)-Relays |Systemweit |statisch |- |Unbegrenzt |
+| Nachrichtengröße für [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx)- und [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx)-Relays |Systemweit |statischen |- |Unbegrenzt |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Verfügt Relay über Verwendungskontingente?
 Microsoft legt für jeden Clouddienst standardmäßig ein aggregiertes monatliches Nutzungskontingent fest, das abonnementübergreifend für einen Kunden berechnet wird. Wir wissen, dass Ihre Anforderungen diese Limits zuweilen überschreiten können. Wenden Sie sich an unseren Kundendienst, und teilen Sie uns Ihre Anforderungen mit, damit wir diese Werte entsprechend anpassen können. Für Service Bus gelten die folgenden aggregierten Nutzungskontingente:

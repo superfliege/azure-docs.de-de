@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 11/13/2017
 ms.author: genemi
-ms.openlocfilehash: 66dbc9c2c3ba9b9f0c7eb405dbafbd002ce50fbc
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: ce223fbd6a69bc789f902f9478b5255edfd44844
+ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Verwenden von Dienstendpunkten und Regeln eines virtuellen Netzwerks für Azure SQL-Datenbank
 
@@ -65,7 +65,7 @@ Eine Regel für ein virtuelles Netzwerk weist Ihren Azure SQL-Datenbankserver an
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Vorteile einer Regel für ein virtuelles Netzwerk
 
-Bis Sie Maßnahmen ergreifen, können die virtuellen Computer in Ihren Subnetzen nicht mit Ihrer Azure SQL-Datenbank-Instanz kommunizieren. Die Begründung der Entscheidung für eine Regel für ein virtuelles Netzwerk zum Zulassen der Kommunikation erfordert eine Erörterung der Vor- und Nachteile, die die von der Firewall gebotenen konkurrierenden Sicherheitsoptionen berücksichtigt.
+Bis Sie Maßnahmen ergreifen, können die virtuellen Computer in Ihren Subnetzen nicht mit Ihrer Azure SQL-Datenbank-Instanz kommunizieren. Eine Aktion zum Herstellen der Kommunikation stellt die Erstellung einer Regel für virtuelle Netzwerke dar. Die Begründung der Entscheidung für eine VNET-Regel erfordert eine Erörterung der Vor- und Nachteile, die die von der Firewall gebotenen konkurrierenden Sicherheitsoptionen berücksichtigt.
 
 #### <a name="a-allow-access-to-azure-services"></a>A: Zugriff auf Azure-Dienste erlauben
 
@@ -115,16 +115,16 @@ Bei der Verwaltung der Dienstendpunkte des virtuellen Netzwerks erfolgt eine Tre
 - **Netzwerkadministrator:**&nbsp; Aktivieren des Endpunkts.
 - **Datenbankadministrator:**&nbsp; Aktualisieren der Zugriffssteuerungsliste durch Hinzufügen des angegebenen Subnetzes zum Azure SQL-Datenbankserver.
 
-*Alternative zur rollenbasierten Zugriffssteuerung:* 
+*Alternative zur rollenbasierten Zugriffssteuerung:*
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von Regeln für ein virtuelles Netzwerk erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
 Sie können mit der [rollenbasierten Zugriffssteuerung (RBAC)][rbac-what-is-813s] in Azure arbeiten, um eine einzelne benutzerdefinierte Sicherheitsrolle zu erstellen, die nur über die benötigte Teilmenge von Zugriffsrechten verfügt. Die benutzerdefinierte Rolle kann definiert werden, anstatt den Netzwerk- oder Datenbankadministrator einzubeziehen. Die auf die Sicherheit bezogene Angriffsfläche ist kleiner, wenn Sie einen Benutzer einer benutzerdefinierte Rolle hinzufügen und ihn nicht den beiden anderen wichtigen Administratorrollen hinzufügen.
 
-
-
-
-
+> [!NOTE]
+> In einigen Fällen befinden sich die Azure SQL-Datenbank und das VNET-Subnetz in unterschiedlichen Abonnements. In diesen Fällen müssen Sie folgende Konfigurationen sicherstellen:
+> - Beide Abonnements müssen demselben Azure Active Directory-Mandanten zugeordnet sein.
+> - Der Benutzer muss über die erforderlichen Berechtigungen zum Initiieren der Vorgänge verfügen. Dazu gehören z.B. das Aktivieren von Dienstendpunkten und das Hinzufügen eines VNET-Subnetzes auf dem angegebenen Server.
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -158,8 +158,32 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
+## <a name="impact-of-removing-allow-all-azure-services"></a>Auswirkungen des Entfernens von „Alle Azure-Dienste zulassen“
+
+Viele Benutzer möchten **Alle Azure-Dienste zulassen** von ihren Azure SQL-Servern entfernen und durch eine VNET-Firewallregel ersetzen.
+Das Entfernen wirkt sich jedoch auf die folgenden Azure-SQLDB-Features aus:
+
+#### <a name="import-export-service"></a>Import/Export-Dienst
+Der Dienst Azure SQLDB-Import/Export wird auf virtuellen Computern in Azure ausgeführt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET und erhalten daher beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen von **Alle Azure-Dienste zulassen** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
+Sie können das Problem umgehen. Führen Sie den BACPAC-Import oder -Export mithilfe der mithilfe der DACFx-API direkt im Code aus. Stellen Sie sicher, dass die Bereitstellung auf einem virtuellen Computer in dem VNET-Subnetz erfolgt, für das Sie die Firewallregel festgelegt haben.
+
+#### <a name="sql-database-query-editor"></a>Abfrage-Editor für SQL-Datenbank
+Der Abfrage-Editor für Azure SQL-Datenbank wird auf virtuellen Computern in Azure bereitgestellt. Diese virtuellen Computer befinden sich nicht in Ihrem VNET. Aus diesem Grund erhalten die virtuellen Computer beim Verbinden mit Ihrer Datenbank eine Azure-IP-Adresse. Beim Entfernen von **Alle Azure-Dienste zulassen** können diese virtuellen Computer nicht mehr auf Ihre Datenbanken zugreifen.
+
+#### <a name="table-auditing"></a>Tabellenüberwachung
+Derzeit stehen Ihnen zwei Möglichkeiten zum Aktivieren der Überwachung für Ihre SQL-Datenbank-Instanz zur Verfügung. Die Tabellenüberwachung führt zu einem Fehler, nachdem Sie Dienstendpunkte in Ihrer Azure SQL Server-Instanz aktiviert haben. Um dieses Problem zu umgehen, wechseln Sie zur Blobüberwachung.
 
 
+## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage
+
+In Azure Storage ist dasselbe Feature implementiert, mit dem Sie die Konnektivität zu Ihrem Speicherkonto beschränken können.
+Wenn Sie dieses Feature mit einem Speicherkonto verwenden, das von einer Azure SQL Server-Instanz verwendet wird, können Probleme auftreten. Im Folgenden finden Sie eine Liste mit Erläuterungen der Azure SQLDB-Features, die davon betroffen sind.
+
+#### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
+PolyBase wird häufig verwendet, um Daten aus Speicherkonten in Azure SQLDW zu laden. Wenn das Speicherkonto, aus dem Sie Daten laden, den Zugriff auf einen Satz von VNET-Subnetzen beschränkt, wird die Konnektivität zwischen PolyBase und dem Konto unterbrochen.
+
+#### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB-Blobüberwachung
+Bei der Blobüberwachung werden die Überwachungsprotokolle in Ihr eigenes Speicherkonto gepusht. Wenn dieses Speicherkonto das Feature für VNET-Dienstendpunkte verwendet, wird die Konnektivität zwischen Azure SQLDB und dem Speicherkonto unterbrochen.
 
 
 ## <a name="errors-40914-and-40615"></a>Fehler 40914 und 40615
@@ -217,16 +241,17 @@ Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Dienstendpunkt für 
 3. Legen Sie das Steuerelement **Zugriff auf Azure-Dienste erlauben** auf AUS fest.
 
     > [!IMPORTANT]
-    > Wenn Sie das Steuerelement auf EIN festgelegt lassen, akzeptiert der Azure SQL-Datenbankserver Nachrichten aus allen Subnetzen, was aus Sicht der Sicherheit möglicherweise einen unerwünschten Zugriff darstellt. Mithilfe des Microsoft Azure Virtual Network-Dienstendpunkts und Regeln für ein virtuelles Netzwerk von SQL-Datenbank können Sie die sicherheitsbezogene Angriffsfläche verkleinern.
+    > Wenn Sie das Steuerelement auf ON festgelegt lassen, akzeptiert der Azure SQL-Datenbank-Server Kommunikation von beliebigen Subnetzen. Das Steuerelement auf ON festgelegt zu lassen, führt also möglicherweise aus Sicht der Sicherheit zu einem übermäßigen Zugriff. Mithilfe des Microsoft Azure Virtual Network-Dienstendpunkts und Regeln für ein virtuelles Netzwerk von SQL-Datenbank können Sie die sicherheitsbezogene Angriffsfläche verkleinern.
 
 4. Klicken Sie im Abschnitt **Virtuelle Netzwerke** auf **+ Vorhandene hinzufügen**.
 
     ![Klicken Sie auf „Vorhandene hinzufügen“ (Subnetzendpunkt, als SQL-Regel).][image-portal-firewall-vnet-add-existing-10-png]
 
 5. Füllen Sie im Bereich **Erstellen/Aktualisieren** die Steuerelemente mit den Namen Ihrer Azure-Ressourcen aus.
- 
+
     > [!TIP]
-    > Sie müssen das richtige **Adresspräfix** für Ihr Subnetz hinzufügen. Den Wert finden Sie im Portal. Navigieren Sie zu **Alle Ressourcen**&gt;**Alle Typen**&gt;**Virtuelle Netzwerke**. Der Filter zeigt Ihre virtuellen Netzwerke an. Klicken Sie auf das virtuelle Netzwerk und dann auf **Subnetze**. Die Spalte **ADRESSBEREICH** weist das Adresspräfix auf, das Sie benötigen.
+    > Sie müssen das richtige **Adresspräfix** für Ihr Subnetz hinzufügen. Den Wert finden Sie im Portal.
+    > Navigieren Sie zu **Alle Ressourcen**&gt;**Alle Typen**&gt;**Virtuelle Netzwerke**. Der Filter zeigt Ihre virtuellen Netzwerke an. Klicken Sie auf das virtuelle Netzwerk und dann auf **Subnetze**. Die Spalte **ADRESSBEREICH** weist das Adresspräfix auf, das Sie benötigen.
 
     ![Füllen Sie Felder für die neue Regel aus.][image-portal-firewall-create-update-vnet-rule-20-png]
 
@@ -237,22 +262,26 @@ Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Dienstendpunkt für 
     ![Sie finden die neue Regel im Firewallbereich.][image-portal-firewall-vnet-result-rule-30-png]
 
 
-
-
+> [!NOTE]
+> Für die Regeln gelten die folgenden Status oder Zustände:
+> - **Bereit:** gibt an, dass der von Ihnen initiierte Vorgang erfolgreich war
+> - **Fehlerhaft:** gibt an, dass der von Ihnen initiierte Vorgang zu einem Fehler geführt hat
+> - **Gelöscht:** gilt nur für den Löschvorgang und gibt an, dass die Regel gelöscht wurde und nicht mehr angewendet wird
+> - **InBearbeitung:** gibt an, dass der Vorgang ausgeführt wird. In diesem Zustand wird die alte Regel weiter angewendet.
 
 
 <a name="anchor-how-to-links-60h" />
 
 ## <a name="related-articles"></a>Verwandte Artikel
 
-- [Verwenden von PowerShell zum Erstellen eines Endpunkts und einer Regel für den virtuellen Dienst für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 - [Dienstendpunkte von virtuellen Netzwerken (Vorschauversion)][vm-virtual-network-service-endpoints-overview-649d]
 - [Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank][sql-db-firewall-rules-config-715d]
 
-Die Funktionen „Microsoft Azure Virtual Network-Dienstendpunkte“ und „Regel für virtuelles Netzwerk“ für Azure SQL-Datenbank sind seit Ende September 2017 verfügbar.
+Das Feature für Regeln für virtuelle Netzwerke für Azure SQL-Datenbank wurde Ende September 2017 eingeführt.
 
+## <a name="next-steps"></a>Nächste Schritte
 
-
+- [Verwenden von PowerShell zum Erstellen eines Dienstendpunkts und einer Regel für das virtuelle Netzwerk für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
 
 
 <!-- Link references, to images. -->
@@ -304,4 +333,3 @@ Die Funktionen „Microsoft Azure Virtual Network-Dienstendpunkte“ und „Rege
 
 - ARM templates
 -->
-

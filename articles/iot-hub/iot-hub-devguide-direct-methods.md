@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d23bf20e4483b102fe5d946cb017dce1769b39a1
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: f0520e97a8b4f218b87683464d342bf7a08b2383
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Verstehen und Aufrufen direkter Methoden von IoT Hub
 IoT Hub gibt Ihnen die Möglichkeit, direkte Methoden auf Geräten von der Cloud aus aufzurufen. Direkte Methoden stellen eine Anforderung-Antwort-Interaktion mit einem Gerät dar, die einem HTTP-Aufruf darin ähnelt, dass sie unverzüglich (nach einem vom Benutzer angegebenen Timeout) zu einem Erfolg oder Fehler führt. Diese Methode ist hilfreich für Szenarien, in denen die unmittelbare Vorgehensweise davon abhängt, ob das Gerät antworten konnte, z.B. beim Senden eines SMS-Weckrufs an ein Gerät, wenn es offline ist (da eine SMS teurer als ein Methodenaufruf ist).
@@ -30,10 +30,10 @@ Jeder Benutzer mit der Berichtigung **Dienstverbindung** für IoT Hub kann eine 
 
 Direkte Methoden entsprechen einem Anforderung-Antwort-Schema und sind für Kommunikation bestimmt, die sofortige Bestätigung ihres Ergebnisses erfordert, in der Regel über interaktive Steuerung des Geräts, z.B. Einschalten eines Lüfters.
 
-Falls Sie weitere Informationen zur Verwendung von gewünschten Eigenschaften, direkten Methoden oder C2D-Nachrichten benötigen, hilft Ihnen das Thema [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance] weiter.
+Falls Sie weitere Informationen dazu benötigen, was die Verwendung von gewünschten Eigenschaften, direkten Methoden oder C2D-Nachrichten betrifft, hilft Ihnen der [Leitfaden zur C2D-Kommunikation][lnk-c2d-guidance] weiter.
 
 ## <a name="method-lifecycle"></a>Methodenlebenszyklus
-Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnungsgemäße Instanziierung null oder mehr Eingaben in der Methodennutzlast erfordern. Sie rufen eine direkte Methode über einen dienstseitigen URI (`{iot hub}/twins/{device id}/methods/`) auf. Ein Gerät empfängt direkte Methoden in einem gerätespezifischen MQTT-Thema (`$iothub/methods/POST/{method name}/`). Möglicherweise wird in Zukunft eine Unterstützung für direkte Methoden über weitere geräteseitige Netzwerkprotokolle eingeführt.
+Direkte Methoden werden auf dem Gerät implementiert und können für eine ordnungsgemäße Instanziierung null oder mehr Eingaben in der Methodennutzlast erfordern. Sie rufen eine direkte Methode über einen dienstseitigen URI (`{iot hub}/twins/{device id}/methods/`) auf. Ein Gerät empfängt direkte Methoden über ein gerätespezifisches MQTT-Thema (`$iothub/methods/POST/{method name}/`) oder über AMQP-Links (Anwendungseigenschaften `IoThub-methodname` und `IoThub-status`). 
 
 > [!NOTE]
 > Wenn Sie eine direkte Methode auf einem Gerät aufrufen, können Eigenschaftennamen und -werte nur druckbare alphanumerische US-ASCII-Zeichen mit Ausnahme der folgenden enthalten: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
@@ -68,15 +68,14 @@ Direkte Methodenaufrufe auf einem Gerät sind HTTPS-Aufrufe, die Folgendes umfas
 
 Timeout in Sekunden. Wenn kein Timeout festgelegt ist, lautet der Standardwert 30 Sekunden.
 
-### <a name="response"></a>Antwort
+### <a name="response"></a>response
 Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
 
 * *HTTP-Statuscode*, der für Fehler von IoT Hub verwendet wird. Dazu gehören z.B. 404-Fehler für Geräte, die derzeit nicht verbunden sind
 * *Header*, die ETag, Anforderungs-ID, Inhaltstyp und Inhaltscodierung enthalten
 * Einen JSON-*Haupttext* im folgenden Format:
 
-   ```
-   {
+   ```   {
        "status" : 201,
        "payload" : {...}
    }
@@ -85,7 +84,8 @@ Die Back-End-App empfängt eine Antwort, die Folgendes umfasst:
    `status` und `body` werden vom Gerät bereitgestellt und für die Antwort mit dem Statuscode und/oder der Beschreibung des Geräts verwendet.
 
 ## <a name="handle-a-direct-method-on-a-device"></a>Behandeln einer direkten Methode auf einem Gerät
-### <a name="method-invocation"></a>Methodenaufruf
+### <a name="mqtt"></a>MQTT
+#### <a name="method-invocation"></a>Methodenaufruf
 Geräte empfangen direkte Methodenanforderungen zum MQTT-Thema: `$iothub/methods/POST/{method name}/?$rid={request id}`
 
 Der vom Gerät empfangene Text weist das folgende Format auf:
@@ -99,13 +99,30 @@ Der vom Gerät empfangene Text weist das folgende Format auf:
 
 Methodenanforderungen sind QoS 0.
 
-### <a name="response"></a>Antwort
+#### <a name="response"></a>response
 Das Gerät sendet Antworten an `$iothub/methods/res/{status}/?$rid={request id}`, wobei Folgendes gilt:
 
 * Die `status`-Eigenschaft ist der vom Gerät bereitgestellte Status der Methodenausführung.
 * Die `$rid`-Eigenschaft ist die Anforderungs-ID des von IoT Hub empfangenen Methodenaufrufs.
 
 Der Haupttext wird durch das Gerät festgelegt und kann jeden beliebigen Status aufweisen.
+
+### <a name="amqp"></a>AMQP
+#### <a name="method-invocation"></a>Methodenaufruf
+Das Gerät empfängt Anforderungen direkter Methoden durch Erstellen eines Empfangslinks für die Adresse `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound`.
+
+Die AMQP-Nachricht geht bei dem Empfangslink ein, der die Methodenanforderung darstellt. Sie umfasst Folgendes:
+* Die Korrelations-ID-Eigenschaft, die eine Anforderungs-ID enthält, die mit der entsprechenden Methodenantwort zurückgegeben werden soll
+* Eine Anwendungseigenschaft namens `IoThub-methodname`, die den Namen der aufgerufenen Methode enthält
+* Den AMQP-Nachrichtentext mit der Methodennutzlast im JSON-Format
+
+#### <a name="response"></a>Antwort
+Das Gerät erstellt einen Sendelink, um die Methodenantwort an der Adresse `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` zurückzugeben.
+
+Die Antwort der Methode wird über den Sendelink zurückgegeben und umfasst Folgendes:
+* Die Korrelations-ID-Eigenschaft, die die Anforderungs-ID enthält, die in der Anforderungsnachricht der Methode übergeben wurde
+* Eine Anwendungseigenschaft namens `IoThub-status`, die den vom Benutzer angegebenen Methodenstatus enthält
+* Den AMQP-Nachrichtentext mit der Methodenantwort im JSON-Format
 
 ## <a name="additional-reference-material"></a>Weiteres Referenzmaterial
 Weitere Referenzthemen im IoT Hub-Entwicklerhandbuch:

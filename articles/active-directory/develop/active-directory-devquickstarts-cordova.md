@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: vittorib
 ms.custom: aaddev
-ms.openlocfilehash: eceeccc0d6225613fdd75a92b894290665168fc6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b489add83a462d1d3902831d63be0b70e2443718
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-an-apache-cordova-app"></a>Integrieren von Azure AD in eine Apache Cordova-App
+# <a name="azure-ad-cordova-getting-started"></a>Azure AD Cordova – Erste Schritte
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -55,7 +55,7 @@ Falls Sie noch nicht über einen Azure AD-Mandanten verfügen, finden Sie [hier]
 
 Falls Sie Apache Cordova noch nicht auf Ihrem Computer eingerichtet haben, installieren Sie Folgendes:
 
-* [Git](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+* [Git-Client](http://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * [Node.js](https://nodejs.org/download/)
 * [Cordova-Befehlszeilenschnittstelle](https://cordova.apache.org/) (einfache Installation per NPM-Paket-Manager: `npm install -g cordova`)
 
@@ -86,7 +86,7 @@ Dieser Schritt ist optional. In diesem Tutorial werden vorab bereitgestellte Wer
 
 Azure AD stellt Token nur für bekannte Anwendungen aus. Bevor Sie Azure AD über Ihre App nutzen können, müssen Sie dafür einen Eintrag in Ihrem Mandanten erstellen. Gehen Sie wie folgt vor, um in Ihrem Mandanten eine neue Anwendung zu registrieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.

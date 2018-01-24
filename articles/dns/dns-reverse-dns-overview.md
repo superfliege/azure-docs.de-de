@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: jonatul
-ms.openlocfilehash: 70a1ad070e812951fca3d2b19da12c67f0725dd0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08f4f4aca20efad8f51ebc9ca8c6df8de8d0d4c7
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Übersicht über Reverse-DNS und die Unterstützung in Azure
 
@@ -34,7 +34,7 @@ Reverse-DNS-Einträge werden in speziellen DNS-Zonen (so genannten ARPA-Zonen) g
 
 Der DNS-Eintrag „www.contoso.com“ wird also beispielsweise unter Verwendung eines DNS-A-Eintrags namens „www“ in der Zone „contoso.com“ implementiert.  Dieser A-Eintrag verweist auf die entsprechende IP-Adresse (in diesem Fall: 64.4.6.100).  Das Reverse-Lookup wird separat implementiert. Hierbei wird ein PTR-Eintrag namens „100“ in der Zone „6.4.64.in-addr.arpa“ verwendet. (Beachten Sie, dass IP-Adressen in ARPA-Zonen umgekehrt werden.)  Bei korrekter Konfiguration verweist dieser PTR-Eintrag auf den Namen „www.contoso.com“.
 
-Wenn einer Organisation ein IP-Adressblock zugewiesen wird, erhält sie auch die Berechtigung zum Verwalten der entsprechenden ARPA-Zone. Die ARPA-Zonen, die den von Azure verwendeten IP-Adressblöcken entsprechen, werden von Microsoft gehostet und verwaltet. Ihr Internetdienstanbieter hostet unter Umständen die ARPA-Zone für Ihre eigenen IP-Adressen für Sie oder ermöglicht Ihnen, die ARPA-Zone in einem DNS-Dienst Ihrer Wahl zu hosten, z.B. Azure DNS.
+Wenn einer Organisation ein IP-Adressblock zugewiesen wird, erhält sie auch die Berechtigung zum Verwalten der entsprechenden ARPA-Zone. Die ARPA-Zonen, die den von Azure verwendeten IP-Adressblöcken entsprechen, werden von Microsoft gehostet und verwaltet. Ihr Internetdienstanbieter hostet unter Umständen die ARPA-Zone für Ihre eigenen IP-Adressen für Sie oder ermöglicht es Ihnen, die ARPA-Zone in einem DNS-Dienst Ihrer Wahl zu hosten (beispielsweise in Azure DNS).
 
 > [!NOTE]
 > DNS-Forward-Lookups und DNS-Reverse-Lookups werden in separaten, parallelen DNS-Hierarchien implementiert. Das Reverse-Lookup für „www.contoso.com“ wird **nicht** in der Zone „contoso.com“ gehostet, sondern in der ARPA-Zone für den entsprechenden IP-Adressblock. Für IPv4- und IPv6-Adressblöcke werden separate Zonen verwendet.

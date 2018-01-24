@@ -12,11 +12,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/29/2017
 ms.author: tdykstra
-ms.openlocfilehash: f24c2aecf44dd44fec05dc9a4d156ff408b0c953
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: aa64bbc764fe96d7c15d62660114222458e5acf4
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-Bindungen in Azure Functions
 
@@ -28,13 +28,13 @@ Dieser Artikel erläutert das Senden von E-Mail-Nachrichten mithilfe von [SendGr
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#c-example)
-* [C#-Skript](#c-script-example)
+* [C#](#c-example)
+* [C#-Skript (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C#-Beispiel
 
-Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die einen Service Bus-Warteschlangentrigger und eine SendGrid-Ausgabebindung verwendet.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die einen Service Bus-Warteschlangentrigger und eine SendGrid-Ausgabebindung verwendet.
 
 ```cs
 [FunctionName("SendEmail")]
@@ -155,7 +155,7 @@ module.exports = function (context, input) {
 
 ## <a name="attributes"></a>Attribute
 
-Verwenden Sie für [vorkompilierte C#](functions-dotnet-class-library.md)-Funktionen das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) definierte Attribut [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs).
+In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.SendGrid](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) definierte Attribut [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs).
 
 Weitere Informationen zu Attributeigenschaften, die Sie konfigurieren können, finden Sie unter [Konfiguration](#configuration). Hier ist ein Beispiel für ein `SendGrid`-Attribut in einer Methodensignatur:
 
@@ -169,13 +169,13 @@ public static void Run(
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Vorkompiliertes C#-Beispiel](#c-example).
+Ein vollständiges Beispiel finden Sie unter [C#-Beispiel](#c-example).
 
 ## <a name="configuration"></a>Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `SendGrid` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type**|| Erforderlich – muss auf `sendGrid` festgelegt sein.|
 |**direction**|| Erforderlich – muss auf `out` festgelegt sein.|

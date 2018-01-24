@@ -5,7 +5,7 @@ Nachdem eine Welle für eine geplante Wartung geplant und Benachrichtigungen ges
 
 Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Klicken Sie im linken Navigationsbereich auf **Virtuelle Computer**.
 
@@ -15,14 +15,13 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
    **Wartung**: Enthält den Wartungsstatus für den virtuellen Computer. Mögliche Werte:
       
-      | Wert | Beschreibung |
+      | Wert | BESCHREIBUNG |
       |-------|-------------|
       | Jetzt starten | Der virtuelle Computer befindet sich im Zeitfenster für die Self-Service-Wartung, in dem Sie die Wartung selbst initiieren können. Informationen zum Starten der Wartung für Ihren virtuellen Computer finden Sie weiter unten. | 
       | Geplant | Die Wartung für den virtuellen Computer ist geplant und kann nicht von Ihnen initiiert werden. Informationen zum Wartungszeitfenster erhalten Sie, indem Sie in dieser Ansicht das Fenster „Automatisch geplant“ auswählen oder auf den virtuellen Computer klicken. | 
       | Abgeschlossen | Sie haben die Wartung für Ihren virtuellen Computer erfolgreich initiiert und abgeschlossen. | 
-      | Übersprungen| Sie haben erfolglos versucht, die Wartung zu initiieren. Azure hat die Wartung für Ihren virtuellen Computer abgebrochen und plant die Wartung für einen späteren Zeitpunkt. | 
-      | Versuchen Sie es später noch mal.| Sie haben versucht, die Wartung zu initiieren, die Anforderung konnte von Azure jedoch nicht erfüllt werden. In diesem Fall können Sie den Vorgang zu einem späteren Zeitpunkt wiederholen. | 
-   
+      | Übersprungen| Sie haben erfolglos versucht, die Wartung zu initiieren. Die Option für die Self-Service-Wartung kann nicht verwendet werden. Ihr virtueller Computer muss während der Phase der geplanten Wartung von Azure neu gestartet werden. | 
+
    **Wartung – Proaktives Fenster**: Zeigt das Zeitfenster an, in dem Sie die Wartung für Ihre virtuellen Computer selbst starten können.
    
    **Wartung – automatisch geplantes Fenster**: Zeigt das Zeitfenster an, in dem Azure Ihren virtuellen Computer neu startet, um die Wartung abzuschließen. 
@@ -34,7 +33,7 @@ Sie können im Azure-Portal nach VMs suchen, für die eine Wartung geplant ist.
 
 Azure sendet eine E-Mail an die Gruppe der Abonnementbesitzer und -mitbesitzer, um sie über den Zeitplan für eine geplante Wartung zu informieren. Sie können Azure-Aktivitätsprotokollwarnungen erstellen, um weitere Empfänger und Kanäle hinzuzufügen. Weitere Informationen finden Sie unter [Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md).
 
-1. Melden Sie sich auf dem [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie im Menü auf der linken Seite auf **Überwachen**. 
 3. Klicken Sie im Bereich **Monitor - Activity log** (Überwachen – Aktivitätsprotokoll) auf **Warnungen**.
 4. Klicken Sie im Bereich **Monitor - Alerts** (Überwachen – Warnungen) auf **+ Aktivitätsprotokollwarnung hinzufügen**.

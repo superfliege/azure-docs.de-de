@@ -3,7 +3,7 @@ title: Aktualisieren von Azure-Modulen in Azure Automation | Microsoft-Dokumenta
 description: "In diesem Artikel wird beschrieben, wie Sie jetzt häufig verwendete Azure PowerShell-Module, die standardmäßig in Azure Automation bereitgestellt werden, aktualisieren können."
 services: automation
 documentationcenter: 
-author: eslesar
+author: georgewallace
 manager: carmonm
 editor: tysonn
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 6bd259f3da1005228b8137415c30660221507909
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f5e7c66cfd26bd6927d48ffd8bc0f82e9a3e2d13
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Aktualisieren von Azure PowerShell-Modulen in Azure Automation
 
@@ -28,11 +28,11 @@ Da Module von der Produktgruppe regelmäßig aktualisiert werden, können Änder
 
 ## <a name="updating-azure-modules"></a>Aktualisieren von Azure-Modulen
 
-1. Auf dem Blatt „Module“ Ihres Automation-Kontos gibt es eine Option namens **Azure-Module aktualisieren**.  Sie ist immer aktiviert.<br><br> ![Option zum Aktualisieren von Azure-Modulen auf dem Blatt „Module“](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
+1. Auf der Seite „Module“ Ihres Automation-Kontos gibt es eine Option namens **Azure-Module aktualisieren**. Sie ist immer aktiviert.<br><br> ![Option zum Aktualisieren von Azure-Modulen auf der Seite „Module“](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
 2. Klicken Sie auf **Azure-Module aktualisieren**. Dann wird eine Bestätigungsbenachrichtigung angezeigt, in der Sie gefragt werden, ob Sie den Vorgang fortsetzen möchten.<br><br> ![Benachrichtigung zum Aktualisieren von Azure-Modulen](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
 
-3. Klicken Sie auf **Ja**, und der Aktualisierungsvorgang für die Module wird gestartet.  Der Aktualisierungsvorgang dauert etwa 15 bis 20 Minuten, und die folgenden Module werden aktualisiert:
+3. Klicken Sie auf **Ja**, um den Aktualisierungsvorgang für die Module zu starten. Der Aktualisierungsvorgang dauert etwa 15 bis 20 Minuten, und die folgenden Module werden aktualisiert:
 
   * Azure
   * Azure.Storage
@@ -43,12 +43,12 @@ Da Module von der Produktgruppe regelmäßig aktualisiert werden, können Änder
   * AzureRm.Sql
   * AzureRm.Storage
 
-    Wenn die Module bereits auf dem neuesten Stand sind, ist der Prozess in wenigen Sekunden abgeschlossen.  Wenn der Aktualisierungsvorgang abgeschlossen ist, werden Sie benachrichtigt.<br><br> ![Aktualisierungsstatus beim Aktualisieren der Azure-Module](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
+    Wenn die Module bereits auf dem neuesten Stand sind, ist der Prozess in wenigen Sekunden abgeschlossen. Wenn der Aktualisierungsvorgang abgeschlossen ist, werden Sie benachrichtigt.<br><br> ![Aktualisierungsstatus beim Aktualisieren der Azure-Module](media/automation-update-azure-modules/automation-update-azure-modules-updatestatus.png)
 
 > [!NOTE]
-> In Azure Automation werden die neueste Module in Ihrem Automation-Konto verwendet, wenn ein neuer geplanter Auftrag ausgeführt wird.    
+> In Azure Automation werden die neuesten Module in Ihrem Automation-Konto verwendet, wenn ein neuer geplanter Auftrag ausgeführt wird.    
 
-Wenn Sie Cmdlets aus diesen Azure PowerShell-Modulen in Ihren Runbooks zum Verwalten von Azure-Ressourcen verwenden, dann sollten Sie diesen Aktualisierungsvorgang ungefähr jeden Monat ausführen, um sicherzustellen, dass Sie die neuesten Module haben.
+Wenn Sie Cmdlets aus diesen Azure PowerShell-Modulen in Ihren Runbooks zum Verwalten von Azure-Ressourcen verwenden, dann sollten Sie diesen Aktualisierungsvorgang ungefähr jeden Monat ausführen, um sicherzustellen, dass Sie über die neuesten Module verfügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

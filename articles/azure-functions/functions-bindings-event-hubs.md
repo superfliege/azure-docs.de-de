@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/08/2017
 ms.author: wesmc
-ms.openlocfilehash: 5e0ff1b98be73eb5990601ae7c5528e4a7af670b
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 0d48d0b008d76cfb2d7d7815a69774976e184467
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Azure Event Hubs-Bindungen für Azure Functions
 
@@ -59,14 +59,14 @@ Wenn alle Funktionsausführungen fehlerfrei verlaufen, werden Prüfpunkte dem zu
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#trigger---c-example)
-* [C#-Skript](#trigger---c-script-example)
+* [C#](#trigger---c-example)
+* [C#-Skript (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
 * [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Trigger: C#-Beispiel
 
-Das folgende Beispiel zeigt [vorkompilierten C#](functions-dotnet-class-library.md)-Code, der den Nachrichtentext des Event Hub-Triggers protokolliert.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die den Nachrichtentext des Event Hub-Triggers protokolliert.
 
 ```csharp
 [FunctionName("EventHubTriggerCSharp")]
@@ -199,7 +199,7 @@ module.exports = function (context, myEventHubMessage) {
 
 ## <a name="trigger---attributes"></a>Trigger: Attribute
 
-Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobsServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) definierte Attribut [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs).
+Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) definierte Attribut [EventHubTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs).
 
 Der Konstruktor des Attributs nimmt den Namen des Event Hubs, den Namen der Consumergruppe und den Namen einer App-Einstellung an, die die Verbindungszeichenfolge enthält. Weitere Informationen zu diesen Einstellungen finden Sie im Abschnitt [Triggerkonfiguration](#trigger---configuration). Dieses Beispiel zeigt ein Attribut `EventHubTriggerAttribute`:
 
@@ -211,13 +211,13 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Trigger: vorkompiliertes C#-Beispiel](#trigger---c-example).
+Ein vollständiges Beispiel finden Sie unter [Trigger: C#-Beispiel](#trigger---c-example).
 
 ## <a name="trigger---configuration"></a>Trigger: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `EventHubTrigger` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type** | – | Muss auf `eventHubTrigger` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen.|
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
@@ -234,7 +234,7 @@ Die Datei [host.json](functions-host-json.md#eventhub) enthält Einstellungen, d
 
 [!INCLUDE [functions-host-json-event-hubs](../../includes/functions-host-json-event-hubs.md)]
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 
 Mit der Event Hubs-Ausgabebindung werden Ereignisse in einen Ereignisdatenstrom geschrieben. Um Ereignisse in einen Event Hub schreiben zu können, müssen Sie über eine Sendeberechtigung verfügen.
 
@@ -242,14 +242,14 @@ Mit der Event Hubs-Ausgabebindung werden Ereignisse in einen Ereignisdatenstrom 
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#output---c-example)
-* [C#-Skript](#output---c-script-example)
+* [C#](#output---c-example)
+* [C#-Skript (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
 
-Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die eine Nachricht in einen Event Hub schreibt. Dabei wird der Rückgabewert der Methode als Ausgabe verwendet:
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Nachricht in einen Event Hub schreibt. Dabei wird der Rückgabewert der Methode als Ausgabe verwendet:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -371,7 +371,7 @@ module.exports = function(context) {
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
 
-Verwenden Sie für Funktionen mit [vorkompiliertem C#-Code](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobsServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) definierte Attribut [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs).
+Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) definierte Attribut [EventHubAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs).
 
 Der Konstruktor des Attributs nimmt den Namen des Event Hubs und den Namen einer App-Einstellung an, die die Verbindungszeichenfolge enthält. Weitere Informationen zu diesen Einstellungen finden Sie unter [Ausgabe: Konfiguration](#output---configuration). Dieses Beispiel zeigt ein Attribut `EventHub`:
 
@@ -384,13 +384,13 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: vorkompiliertes C#-Beispiel](#output---c-example).
+Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `EventHub` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type** | – | Muss auf „eventHub“ festgelegt werden. |
 |**direction** | – | Muss auf „out“ festgelegt werden. Dieser Parameter wird automatisch festgelegt, wenn Sie die Bindung im Azure Portal erstellen. |

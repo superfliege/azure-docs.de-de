@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae97045c27f3ad8b62e7798b2060ea59ccd66ac5
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 52a45f1b67e3194739fe97daad56de2d3515dee3
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Twilio-Bindung für Azure Functions
 
@@ -32,13 +32,13 @@ Dieser Artikel erläutert das Senden von Textnachrichten mithilfe von [Twilio](h
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#c-example)
-* [C#-Skript](#c-script-example)
+* [C#](#c-example)
+* [C#-Skript (.csx)](#c-script-example)
 * [JavaScript](#javascript-example)
 
 ### <a name="c-example"></a>C#-Beispiel
 
-Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die eine Textnachricht sendet, wenn sie durch eine Warteschlangennachricht ausgelöst wird.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die eine Textnachricht sendet, wenn sie durch eine Warteschlangennachricht ausgelöst wird.
 
 ```cs
 [FunctionName("QueueTwilio")]
@@ -195,7 +195,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>Attribute
 
-Verwenden Sie für [vorkompilierte C#](functions-dotnet-class-library.md)-Funktionen das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) definierte Attribut [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs).
+In [C#-Klassenbibliotheken](functions-dotnet-class-library.md) verwenden Sie das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) definierte Attribut [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs).
 
 Weitere Informationen zu Attributeigenschaften, die Sie konfigurieren können, finden Sie unter [Konfiguration](#configuration). Hier ist ein Beispiel für ein `TwilioSms`-Attribut in einer Methodensignatur:
 
@@ -213,13 +213,13 @@ public static SMSMessage Run(
 }
  ```
 
-Ein vollständiges Beispiel finden Sie unter [Vorkompiliertes C#-Beispiel](#c-example).
+Ein vollständiges Beispiel finden Sie unter [C#-Beispiel](#c-example).
 
 ## <a name="configuration"></a>Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `TwilioSms` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 |**type**|| auf `twilioSms` festgelegt werden muss.|
 |**direction**|| auf `out` festgelegt werden muss.|

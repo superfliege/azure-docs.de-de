@@ -12,23 +12,26 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: bc525e7ca8b21e9e5f1e36b3152d71420b041700
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a51d4552df2643a25ce492b8525b9aa7fa36e21c
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Übersicht über die .NET Framework-API in Event Hubs
+
 In diesem Artikel werden einige der wichtigsten .NET Framework-Client-APIs von Event Hubs zusammengefasst. Es gibt zwei Kategorien: Verwaltungs- und Laufzeit-APIs. Laufzeit-APIs umfassen alle Vorgänge, die zum Senden und Empfangen einer Nachricht erforderlich sind. Verwaltungsvorgänge ermöglichen das Verwalten des Entitätszustands von Event Hubs durch das Erstellen, Aktualisieren und Löschen von Entitäten.
 
-Überwachungsszenarien umfassen sowohl die Verwaltung als auch Laufzeit. Eine ausführliche Referenzdokumentation zu den .NET-APIs finden Sie in den Referenzen zu [Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) und zur [EventProcessorHost-API](/dotnet/api/microsoft.azure.eventhubs.processor).
+[Überwachungsszenarien](event-hubs-metrics-azure-monitor.md) umfassen sowohl Verwaltung als auch Laufzeit. Eine ausführliche Referenzdokumentation zu den .NET-APIs finden Sie in den Referenzen zu [Service Bus .NET](/dotnet/api/microsoft.servicebus.messaging) und zur [EventProcessorHost-API](/dotnet/api/microsoft.azure.eventhubs.processor).
 
 ## <a name="management-apis"></a>Verwaltungs-APIs
+
 Um die folgenden Verwaltungsvorgänge auszuführen, benötigen Sie **Verwaltungsberechtigungen** für den Event Hubs-Namespace:
 
 ### <a name="create"></a>Erstellen
+
 ```csharp
 // Create the event hub
 var ehd = new EventHubDescription(eventHubName);
@@ -37,6 +40,7 @@ await namespaceManager.CreateEventHubAsync(ehd);
 ```
 
 ### <a name="update"></a>Aktualisieren
+
 ```csharp
 var ehd = await namespaceManager.GetEventHubAsync(eventHubName);
 
@@ -49,18 +53,21 @@ await namespaceManager.UpdateEventHubAsync(ehd);
 ```
 
 ### <a name="delete"></a>Löschen
+
 ```csharp
-await namespaceManager.DeleteEventHubAsync("Event Hub name");
+await namespaceManager.DeleteEventHubAsync("event hub name");
 ```
 
 ## <a name="run-time-apis"></a>Laufzeit-APIs
 ### <a name="create-publisher"></a>Herausgeber erstellen
+
 ```csharp
 // EventHubClient model (uses implicit factory instance, so all links on same connection)
-var eventHubClient = EventHubClient.Create("Event Hub name");
+var eventHubClient = EventHubClient.Create("event hub name");
 ```
 
 ### <a name="publish-message"></a>Meldung veröffentlichen
+
 ```csharp
 // Create the device/temperature metric
 var info = new MetricEvent() { DeviceId = random.Next(SampleManager.NumDevices), Temperature = random.Next(100) };
@@ -79,6 +86,7 @@ await client.SendAsync(data);
 ```
 
 ### <a name="create-consumer"></a>Consumer erstellen
+
 ```csharp
 // Create the Event Hubs client
 var eventHubClient = EventHubClient.Create(EventHubName);
@@ -97,6 +105,7 @@ var consumer = await defaultConsumerGroup.CreateReceiverAsync(partitionId: index
 ```
 
 ### <a name="consume-message"></a>Meldung verarbeiten
+
 ```csharp
 var message = await consumer.ReceiveAsync();
 
@@ -109,6 +118,7 @@ msg = UnicodeEncoding.UTF8.GetString(info);
 ```
 
 ## <a name="event-processor-host-apis"></a>Ereignisprozessorhost-APIs
+
 Diese APIs bieten Flexibilität für Arbeitsprozesse, die möglicherweise nicht mehr verfügbar sind, indem Partitionen auf verfügbare Worker aufgeteilt werden.
 
 ```csharp

@@ -1,5 +1,5 @@
 ---
-title: "Erste Schritte für das Anmelden und Abmelden bei Azure AD mit node.js | Microsoft-Dokumentation"
+title: Erste Schritte mit der Node.js-Web-App in Azure AD | Microsoft-Dokumentation
 description: "Hier erfahren Sie, wie eine Express-MVC-Web-App mit node.js erstellen, die für die Anmeldung in Azure AD integriert wird."
 services: active-directory
 documentationcenter: nodejs
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 3a9bc44ec9fc5a7c5e18139070bac837421efff5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a0079c1f4265e1c2564b85247cf5f5e0289799db
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="nodejs-web-app-sign-in-and-sign-out-with-azure-ad"></a>An- und Abmeldung bei NodeJS-Web-Apps mit Azure AD
+# <a name="azure-ad-nodejs-web-app-getting-started"></a>Erste Schritte mit der Node.js-Web-App in Azure AD
 Hier wird Passport für Folgendes verwendet:
 
 * Anmelden des Benutzers bei der App mit Azure Active Directory (Azure AD).
@@ -44,7 +44,7 @@ Der Code für dieses Tutorial wird [auf GitHub](https://github.com/AzureADQuickS
 Die fertige Anwendung wird außerdem am Ende dieses Lernprogramms bereitgestellt.
 
 ## <a name="step-1-register-an-app"></a>Schritt 1: Registrieren einer App
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 2. Wählen im Menü oben auf der Seite Ihr Konto aus. Wählen Sie in der **Verzeichnisliste** den Active Directory-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 

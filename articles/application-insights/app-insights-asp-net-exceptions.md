@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: cb87b166a32c47395f99c9cd59442a7ccd65b7ed
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Diagnostizieren von Ausnahmen in Ihren Web-Apps mit Application Insights
 Ausnahmen in Ihrer Live-Web-App werden von [Application Insights](app-insights-overview.md) gemeldet. Auf diese Weise können Sie Anforderungsfehler mit Ausnahmen und anderen Ereignissen auf dem Client und auf dem Server zueinander in Beziehung setzen und dadurch die Ursachen schnell diagnostizieren.
@@ -105,7 +105,7 @@ Anforderungsdetails enthalten nicht die Daten, die in einem POST-Aufruf an Ihre 
 ## <a name="exceptions"></a> Erfassen von Ausnahmen und zugehörigen Diagnosedaten
 Zunächst werden im Portal nicht alle Ausnahmen angezeigt, die in Ihrer App zu Fehlern führen. Sie sehen alle Browserausnahmen (bei Verwendung des [JavaScript-SDK](app-insights-javascript.md) in Ihren Webseiten). Die meisten Serverausnahmen werden jedoch von IIS abgefangen, und Sie müssen ein wenig Code schreiben, um sie anzuzeigen.
 
-Sie können:
+Ihre Möglichkeiten:
 
 * **Ausnahmen explizit protokollieren** durch Einfügen von Code in Ausnahmehandlern, um Ausnahmen zu melden.
 * **Ausnahmen automatisch erfassen** durch Konfigurieren Ihres ASP.NET-Frameworks. Die erforderlichen Änderungen unterscheiden sich für verschiedene Frameworktypen.
@@ -301,7 +301,7 @@ Sie könnten dieses außer Kraft gesetzte Attribut bestimmten Controllern oder d
 
 [Beispiel](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet werden können. Beispiel:
+Es gibt eine Reihe von Fällen, die von den Ausnahmefiltern nicht verarbeitet werden können. Beispiel: 
 
 * Von Controllerkonstruktoren ausgelöste Ausnahmen.
 * Von Meldungshandlern ausgelöste Ausnahmen

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 3c29c43f88608760cc6d5f19f27f692c8448ebd9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: a1e4f15747031ba75ba5ae589557750919a71853
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Mobile Apps-Bindungen für Azure Functions 
 
@@ -37,8 +37,7 @@ Die Mobile Apps-Eingabebindung lädt einen Datensatz aus einem mobilen Tabellene
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-<!-- * [Precompiled C#](#input---c-example)-->
-* [C#-Skript](#input---c-script-example)
+* [C#-Skript (.csx)](#input---c-script-example)
 * [JavaScript](#input---javascript-example)
 
 ### <a name="input---c-script-example"></a>Eingabe: C#-Skriptbeispiel
@@ -129,7 +128,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>Eingabe: Attribute
 
-Verwenden Sie für [vorkompilierte C#](functions-dotnet-class-library.md)-Funktionen das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) definierte Attribut [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs).
+Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) definierte Attribut [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs).
 
 Weitere Informationen zu Attributeigenschaften, die Sie konfigurieren können, finden Sie im [folgenden Konfigurationsabschnitt](#input---configuration).
 
@@ -137,7 +136,7 @@ Weitere Informationen zu Attributeigenschaften, die Sie konfigurieren können, f
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `MobileTable` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 | **type**|| Muss auf „mobileTable“ festgelegt werden|
 | **direction**||Muss auf „in“ festgelegt werden|
@@ -160,7 +159,7 @@ In JavaScript-Funktionen wird der Datensatz an das `context.bindings.<name>`-Obj
 
 In C#- und F#-Funktionen werden alle Änderungen am Eingabedatensatz (Eingabeparameter) automatisch wieder an die Tabelle zurückgesendet, wenn die Funktion erfolgreich beendet wird. Sie können einen Datensatz nicht in JavaScript-Funktionen ändern.
 
-## <a name="output"></a>Ausgabe
+## <a name="output"></a>Output
 
 Schreiben Sie unter Verwendung der Mobile Apps-Ausgabebindung einen neuen Datensatz in eine Mobile Apps-Tabelle.  
 
@@ -168,13 +167,13 @@ Schreiben Sie unter Verwendung der Mobile Apps-Ausgabebindung einen neuen Datens
 
 Sehen Sie sich das sprachspezifische Beispiel an:
 
-* [Vorkompilierter C#-Code](#output---c-example)
-* [C#-Skript](#output---c-script-example)
+* [C#](#output---c-example)
+* [C#-Skript (.csx)](#output---c-script-example)
 * [JavaScript](#output---javascript-example)
 
 ### <a name="output---c-example"></a>Ausgabe: C#-Beispiel
 
-Das folgende Beispiel zeigt eine [vorkompilierte C#-Funktion](functions-dotnet-class-library.md), die durch eine Warteschlangennachricht ausgelöst wird und einen Datensatz in einer Mobile Apps-Tabelle erstellt.
+Das folgende Beispiel zeigt eine [C#-Funktion](functions-dotnet-class-library.md), die durch eine Warteschlangennachricht ausgelöst wird und einen Datensatz in einer Mobile Apps-Tabelle erstellt.
 
 ```csharp
 [FunctionName("MobileAppsOutput")]        
@@ -275,7 +274,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>Ausgabe: Attribute
 
-Verwenden Sie für [vorkompilierte C#](functions-dotnet-class-library.md)-Funktionen das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) definierte Attribut [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs).
+Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) das im NuGet-Paket [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) definierte Attribut [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs).
 
 Weitere Informationen zu Attributeigenschaften, die Sie konfigurieren können, finden Sie unter [Ausgabe: Konfiguration](#output---configuration). Hier ist ein Beispiel für ein `MobileTable`-Attribut in einer Methodensignatur:
 
@@ -290,13 +289,13 @@ public static object Run(
 }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: vorkompiliertes C#-Beispiel](#output---c-example).
+Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 
 Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaften, die Sie in der Datei *function.json* und im Attribut `MobileTable` festlegen:
 
-|Eigenschaft von „function.json“ | Attributeigenschaft |Beschreibung|
+|Eigenschaft von „function.json“ | Attributeigenschaft |BESCHREIBUNG|
 |---------|---------|----------------------|
 | **type**|| Muss auf „mobileTable“ festgelegt werden|
 | **direction**||Muss auf „out“ festgelegt werden|
@@ -312,7 +311,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 
 ## <a name="output---usage"></a>Ausgabe: Verwendung
 
-Verwenden Sie in C#-Skriptfunktionen einen benannten Ausgabeparameter vom Typ `out object`, um auf den Ausgabedatensatz zuzugreifen. In vorkompilierten C#-Funktionen kann das `MobileTable`-Attribut mit den folgenden Typen verwendet werden:
+Verwenden Sie in C#-Skriptfunktionen einen benannten Ausgabeparameter vom Typ `out object`, um auf den Ausgabedatensatz zuzugreifen. In C#-Klassenbibliotheken kann das `MobileTable`-Attribut mit den folgenden Typen verwendet werden:
 
 * `ICollector<T>` oder `IAsyncCollector<T>`, wobei `T` entweder `JObject` oder ein Typ mit einer `public string Id`-Eigenschaft ist.
 * `out JObject`

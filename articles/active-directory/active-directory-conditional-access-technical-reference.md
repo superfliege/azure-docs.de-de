@@ -1,30 +1,30 @@
 ---
-title: Technische Referenz zum bedingten Azure Active Directory-Zugriff | Microsoft-Dokumentation
-description: "Es wird beschrieben, wie Sie die bedingte Zugriffssteuerung in Azure Active Directory verwenden. Geben Sie die Bedingungen für die Authentifizierung von Benutzern an, und steuern Sie den Zugriff auf Ihre Anwendung. Wenn die angegebenen Bedingungen erfüllt sind, werden die Benutzer authentifiziert und erhalten Zugriff auf Ihre Anwendung."
+title: "Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff | Microsoft-Dokumentation"
+description: "Verschaffen Sie sich einen Überblick über die unterstützten Einstellungen in einer Richtlinie für den bedingten Azure Active Directory-Zugriff."
 services: active-directory.
 documentationcenter: 
 author: MarkusVi
-manager: femila
+manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2017
+ms.date: 12/12/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 5fad793bcf9ac86c2a1bc67e74dfb62af9876100
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 12/23/2017
 ---
-# <a name="azure-active-directory-conditional-access-technical-reference"></a>Technische Referenz zum bedingten Azure Active Directory-Zugriff
+# <a name="azure-active-directory-conditional-access-settings-reference"></a>Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff
 
-Sie können den [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) verwenden, um präzise zu steuern, wie autorisierte Benutzer auf Ihre Ressourcen zugreifen können.   
+Sie können den [bedingten Zugriff von Azure Active Directory (Azure AD)](active-directory-conditional-access-azure-portal.md) verwenden, um zu steuern, wie autorisierte Benutzer auf Ihre Ressourcen zugreifen können.   
 
-Dieser Artikel enthält unterstützende Informationen zu den folgenden Konfigurationsoptionen für eine Richtlinie für bedingten Zugriff: 
+Dieser Artikel enthält unterstützende Informationen zu den folgenden Konfigurationsoptionen in einer Richtlinie für den bedingten Zugriff: 
 
 - Zuweisungen von Cloudanwendungen
 
@@ -35,6 +35,7 @@ Dieser Artikel enthält unterstützende Informationen zu den folgenden Konfigura
 - Genehmigte Clientanwendungsanforderung
 
 
+Falls Sie andere Informationen benötigen, hinterlassen Sie einen Kommentar am Ende dieses Artikels.
 
 ## <a name="cloud-apps-assignments"></a>Zuweisungen von Cloud-Apps
 
@@ -57,7 +58,7 @@ Sie können folgenden Cloud-Apps von Microsoft eine Richtlinie für bedingten Zu
 
 - Microsoft Office 365 Exchange Online
 
-- Microsoft Office 365 SharePoint Online (einschließlich OneDrive for Business)
+- Microsoft Office 365 SharePoint Online (einschließlich OneDrive for Business und Project Online)
 
 - Microsoft Power BI 
 
@@ -198,7 +199,7 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 
 
 
-**Hinweise:**
+**Anmerkungen**
 
 - Die genehmigten Client-Apps unterstützen das Intune-Feature für die mobile Anwendungsverwaltung.
 

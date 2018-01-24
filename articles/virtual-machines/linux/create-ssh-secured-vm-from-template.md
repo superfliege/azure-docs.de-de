@@ -13,48 +13,50 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 938304efe5e4a13736a50348bd0531c475149aec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7bd5b8c0534a51c6b6c9e8871be513194d38788
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Erstellen eines virtuellen Linux-Computers mithilfe von Azure Resource Manager-Vorlagen
-In diesem Artikel erfahren Sie, wie Sie schnell einen virtuellen Linux-Computer (VM) mithilfe von Azure Resource Manager-Vorlagen und der Azure CLI 2.0 bereitstellen. Sie können diese Schritte auch mit [Azure CLI 1.0](create-ssh-secured-vm-from-template-nodejs.md) ausführen.
+In diesem Artikel erfahren Sie, wie Sie schnell einen virtuellen Linux-Computer (VM) mithilfe von Azure Resource Manager-Vorlagen und der Azure CLI 2.0 bereitstellen. Sie können diese Schritte auch per [Azure CLI 1.0](create-ssh-secured-vm-from-template-nodejs.md) ausführen.
 
 
 ## <a name="templates-overview"></a>Übersicht über Vorlagen
 Azure Resource Manager-Vorlagen sind JSON-Dateien, die die Infrastruktur und Konfiguration Ihrer Azure-Lösung definieren. Mit einer Vorlage können Sie die Lösung während ihres Lebenszyklus wiederholt bereitstellen und sicher sein, dass Ihre Ressourcen einheitlich bereitgestellt werden. Weitere Informationen zum Format der Vorlage und zur Erstellung finden Sie unter [Erstellen Ihrer ersten Azure Resource Manager-Vorlage](../../azure-resource-manager/resource-manager-create-first-template.md). Die JSON-Syntax für Ressourcentypen finden Sie unter [Define resources in Azure Resource Manager templates](/azure/templates/) (Definieren von Ressourcen in Azure Resource Manager-Vorlagen).
 
 
-## <a name="create-resource-group"></a>Ressourcengruppe erstellen
+## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *eastus* erstellt:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
-Im folgenden Beispiel wird eine VM aus [dieser Azure Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) mit [az group deployment create](/cli/azure/group/deployment#create) erstellt. Geben Sie den Wert Ihres eigenen öffentlichen SSH-Schlüssels ein, etwa den Inhalt von *~/.ssh/id_rsa.pub*. Informationen zum Erstellen eines SSH-Schlüsselpaars finden Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars für Linux-VMs in Azure](mac-create-ssh-keys.md).
+## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
+Im folgenden Beispiel wird eine VM aus [dieser Azure Resource Manager-Vorlage](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) mit [az group deployment create](/cli/azure/group/deployment#create) erstellt. Nur die SSH-Authentifizierung ist zulässig. Geben Sie bei Aufforderung den Wert Ihres eigenen öffentlichen SSH-Schlüssels ein, etwa den Inhalt von *~/.ssh/id_rsa.pub*. Informationen zum Erstellen eines SSH-Schlüsselpaars finden Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars für Linux-VMs in Azure](mac-create-ssh-keys.md).
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json \
-  --parameters '{"sshKeyData": {"value": "ssh-rsa AAAAB3N{snip}B9eIgoZ"}}'
+    --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json
 ```
 
-In diesem Beispiel haben Sie eine in GitHub gespeicherte Vorlage angegeben. Sie können eine Vorlage außerdem herunterladen oder erstellen und den lokalen Pfad mithilfe des gleichen Parameters `--template-file` angeben.
+Im vorherigen Beispiel haben Sie eine in GitHub gespeicherte Vorlage angegeben. Sie können eine Vorlage außerdem herunterladen oder erstellen und den lokalen Pfad mit dem Parameter `--template-file` angeben.
 
-Rufen Sie die öffentliche IP-Adresse mit [az network public-ip show](/cli/azure/network/public-ip#show), um Ihre VM mit SSH zu schützen:
+
+## <a name="connect-to-virtual-machine"></a>Herstellen der Verbindung mit dem virtuellen Computer
+Rufen Sie die öffentliche IP-Adresse mit [az vm show](/cli/azure/vm#show) auf, um Ihre VM mit SSH zu schützen:
 
 ```azurecli
-az network public-ip show \
+az vm show \
     --resource-group myResourceGroup \
-    --name sshPublicIP \
-    --query [ipAddress] \
+    --name sshvm \
+    --show-details \
+    --query publicIps \
     --output tsv
 ```
 

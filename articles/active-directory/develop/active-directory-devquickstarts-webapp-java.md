@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 0e849f99edfc80f7f175c0829552f39da456a204
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 21dfd8cc79c83b2c091249c7f214d394ad119c4c
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="java-web-app-sign-in-and-sign-out-with-azure-ad"></a>An- und Abmeldung bei Java-Web-Apps mit Azure AD
+# <a name="azure-ad-java-web-app-getting-started"></a>Erste Schritte mit Java-Web-Apps in Azure AD
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
 Azure Active Directory (Azure AD) erleichtert die Auslagerung der Identitätsverwaltung für Web-Apps, indem eine einmalige An- und Abmeldung (Single Sign-on und Single Sign-out) mit nur wenigen Codezeilen ermöglicht wird. Mithilfe der Microsoft-Implementierung der von der Community gestützten Azure Active Directory Authentication Library for Java (ADAL4J) können Sie Benutzern das An- und Abmelden bei Java-Web-Apps ermöglichen.

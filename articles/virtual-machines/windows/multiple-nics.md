@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 941791ba398a3abbaa5137c36391fd23789cd3b1
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: fab9f4ab1f0e974da68e1e9f36bc10687ea0b631
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="create-and-manage-a-windows-virtual-machine-that-has-multiple-nics"></a>Erstellen und Verwalten eines virtuellen Windows-Computers mit mehrere Netzwerkkarten
 Virtuelle Computer (VMs) in Azure können über mehrere virtuelle Netzwerkkarten (Network Interface Cards, NICs) verfügen. Häufige Szenarien hierfür sind z.B. unterschiedliche Subnetze für Front-End- und Back-End-Verbindung oder ein Netzwerk für eine Überwachungs- oder Sicherungslösung. In diesem Artikel erfahren Sie, wie Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Außerdem erfahren Sie, wie Sie Netzwerkkarten zu einem vorhandenen virtuellen Computer hinzufügen oder davon entfernen. Verschiedene [VM-Größen](sizes.md) unterstützen eine unterschiedliche Anzahl von Netzwerkkarten, passen Sie die Größe Ihres virtuellen Computers daher entsprechend an.
@@ -232,6 +232,60 @@ Sie können einem Ressourcennamen auch mithilfe von `copyIndex()` eine Nummer an
 ```
 
 Hier finden Sie auch ein vollständiges Beispiel für das [Erstellen von mehreren Netzwerkkarten mithilfe von Resource Manager-Vorlagen](../../virtual-network/virtual-network-deploy-multinic-arm-template.md).
+
+## <a name="configure-guest-os-for-multiple-nics"></a>Konfigurieren von Gastbetriebssystem für mehrere Netzwerkadapter
+
+Azure weist der ersten (primären) Netzwerkschnittstelle, die an den virtuellen Computer angefügt ist, ein Standardgateway zu. Azure weist zusätzlichen (sekundären) Netzwerkschnittstellen, die an einen virtuellen Computer angefügt sind, kein Standardgateway zu. Daher können Sie standardmäßig nicht mit Ressourcen außerhalb des Subnetzes kommunizieren, in dem sich eine sekundäre Netzwerkschnittstelle befindet. Sekundäre Netzwerkschnittstellen können jedoch mit Ressourcen außerhalb ihres Subnetzes kommunizieren. Die Schritte zum Aktivieren der Kommunikation unterscheiden sich allerdings je nach Betriebssystem.
+
+1. Führen Sie an einer Windows-Eingabeaufforderung den Befehl `route print` aus, der für einen virtuellen Computer mit zwei angefügten Netzwerkschnittstellen eine Ausgabe ähnlich der folgenden zurückgibt:
+
+    ```
+    ===========================================================================
+    Interface List
+    3...00 0d 3a 10 92 ce ......Microsoft Hyper-V Network Adapter #3
+    7...00 0d 3a 10 9b 2a ......Microsoft Hyper-V Network Adapter #4
+    ===========================================================================
+    ```
+ 
+    In diesem Beispiel ist **Microsoft Hyper-V Network Adapter #4** (Schnittstelle 7) die sekundäre Netzwerkschnittstelle, der kein Standardgateway zugeordnet ist.
+
+2. Führen Sie an einer Eingabeaufforderung den Befehl `ipconfig` aus, um zu prüfen, welche IP-Adresse der sekundären Netzwerkschnittstelle zugewiesen ist. In diesem Beispiel ist 192.168.2.4 der Schnittstelle 7 zugewiesen. Für die sekundäre Netzwerkschnittstelle wird keine Standardgateway-Adresse zurückgegeben.
+
+3. Um den gesamten Datenverkehr für Adressen außerhalb des Subnetzes der sekundären Netzwerkschnittstelle an das Gateway des Subnetzes zu leiten, führen Sie den folgenden Befehl aus:
+
+    ```
+    route add -p 0.0.0.0 MASK 0.0.0.0 192.168.2.1 METRIC 5015 IF 7
+    ```
+
+    Die Gatewayadresse für das Subnetz ist die erste IP-Adresse (mit der Endung .1) im für das Subnetz definierten Adressbereich. Wenn Sie nicht den gesamten Datenverkehr außerhalb des Subnetzes weiterleiten möchten, können Sie stattdessen einzelne Routen zu bestimmten Zielen hinzufügen. Wenn Sie beispielsweise nur den Datenverkehr von der sekundären Netzwerkschnittstelle an das Netzwerk 192.168.3.0 weiterleiten möchten, geben Sie den folgenden Befehl ein:
+
+      ```
+      route add -p 192.168.3.0 MASK 255.255.255.0 192.168.2.1 METRIC 5015 IF 7
+      ```
+  
+4. Um beispielsweise eine erfolgreiche Kommunikation mit einer Ressource im Netzwerk 192.168.3.0 zu bestätigen, geben Sie den folgenden Befehl ein, um 192.168.3.4 über die Schnittstelle 7 (192.168.2.4) zu pingen:
+
+    ```
+    ping 192.168.3.4 -S 192.168.2.4
+    ```
+
+    Möglicherweise müssen Sie ICMP über die Windows-Firewall des Geräts öffnen, das Sie mit dem folgenden Befehl pingen:
+  
+      ```
+      netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
+      ```
+  
+5. Um zu bestätigen, dass die hinzugefügte Route in der Routentabelle enthalten ist, geben Sie den Befehl `route print` ein, der eine Ausgabe ähnlich dem folgenden Text liefert:
+
+    ```
+    ===========================================================================
+    Active Routes:
+    Network Destination        Netmask          Gateway       Interface  Metric
+              0.0.0.0          0.0.0.0      192.168.1.1      192.168.1.4     15
+              0.0.0.0          0.0.0.0      192.168.2.1      192.168.2.4   5015
+    ```
+
+    Die mit *192.168.1.1* unter **Gateway** aufgeführte Route ist die Route, die standardmäßig für die primäre Netzwerkschnittstelle vorhanden ist. Die Route mit *192.168.2.1* unter **Gateway** ist die von Ihnen hinzugefügte Route.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Überprüfen Sie die [Größen für virtuelle Windows-Computer](sizes.md), wenn Sie einen virtuellen Computer mit mehreren Netzwerkkarten erstellen. Achten Sie auf die maximale Anzahl von Netzwerkkarten, die von jeder VM-Größe unterstützt wird. 

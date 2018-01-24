@@ -4,7 +4,7 @@ description: "Hier erfahren Sie, wie Sie mit Azure Load Balancer eine hochverfü
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 08/11/2017
+ms.date: 12/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6738d88d5a0430abaf3855dbf97a618e4c83617f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6eee852e703d25ccc4b13401c3e4ab46d09655da
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="how-to-load-balance-windows-virtual-machines-in-azure-to-create-a-highly-available-application"></a>Gewusst wie: Durchführen eines Lastenausgleichs bei virtuellen Windows-Computern in Azure, um eine hochverfügbare Anwendung zu erstellen
-Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial erhalten Sie Informationen zu den verschiedenen Komponenten des Azure Load Balancers, mit denen der Datenverkehr verteilt und hohe Verfügbarkeit bereitgestellt wird. Folgendes wird vermittelt:
+Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der eingehenden Anforderungen auf mehrere virtuelle Computer. In diesem Tutorial lernen Sie die verschiedenen Komponenten von Azure Load Balancer kennen, die den Datenverkehr verteilen und Hochverfügbarkeit bereitstellen. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen einer Azure Load Balancer-Instanz
@@ -32,13 +32,13 @@ Lastenausgleich bietet ein höheres Maß an Verfügbarkeit durch Verteilung der 
 > * Verwenden der Benutzerdefinierten Skripterweiterung zum Erstellen einer einfachen IIS-Website
 > * Erstellen und Anfügen von virtuellen Computern an einen Lastenausgleich
 > * Anzeigen eines Load Balancers im Betrieb
-> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Lastenausgleich
+> * Hinzufügen und Entfernen von virtuellen Computern zu bzw. aus einem Load Balancer
 
 Für dieses Tutorial ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-azurerm-ps) Informationen dazu.
 
 
 ## <a name="azure-load-balancer-overview"></a>Übersicht über den Azure Load Balancer
-Ein Azure Load Balancer ist ein Load Balancer der Schicht 4 (TCP, UDP), der hohe Verfügbarkeit durch Verteilen des eingehenden Datenverkehrs auf fehlerfreie virtuelle Computer bietet. Der Integritätstest eines Load Balancers überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer.
+Ein Azure Load Balancer ist ein Load Balancer der Schicht 4 (TCP, UDP), der Hochverfügbarkeit durch Verteilen des eingehenden Datenverkehrs auf fehlerfreie virtuelle Computer bietet. Der Integritätstest eines Load Balancers überwacht einen bestimmten Port auf jedem virtuellen Computer und verteilt Datenverkehr nur an einen betriebsbereiten virtuellen Computer.
 
 Sie definieren eine Front-End-IP-Konfiguration, die eine oder mehrere öffentliche IP-Adressen enthält. Mit dieser Front-End-IP-Konfiguration sind der Load Balancer und Ihre Anwendungen über das Internet zugänglich. 
 
@@ -68,7 +68,7 @@ $publicIP = New-AzureRmPublicIpAddress `
 ```
 
 ### <a name="create-a-load-balancer"></a>Einrichten eines Load Balancers
-Erstellen Sie eine Front-End-IP-Adresse mit [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Im folgenden Beispiel wird eine Front-End-IP-Adresse namens *myFrontEndPool* erstellt: 
+Erstellen Sie einen Front-End-IP-Pool mit [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Im folgenden Beispiel wird ein Front-End-IP-Pools namens *myFrontEndPool* erstellt und die Adresse *myPublicIP* angefügt: 
 
 ```powershell
 $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
@@ -76,13 +76,13 @@ $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
   -PublicIpAddress $publicIP
 ```
 
-Erstellen Sie einen Back-End-Adresspool mit [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). Im folgenden Beispiel wird ein Back-End-Adresspool namens *myBackEndPool* erstellt:
+Erstellen Sie einen Back-End-Adresspool mit [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). In den verbleibenden Schritten werden die virtuellen Computer an diesen Back-End-Pool angefügt. Im folgenden Beispiel wird ein Back-End-Adresspool namens *myBackEndPool* erstellt:
 
 ```powershell
 $backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name myBackEndPool
 ```
 
-Erstellen Sie nun mit [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) den Load Balancer. Im folgenden Beispiel wird unter Verwendung der *myPublicIP*-Adresse ein Load Balancer namens *myLoadBalancer* erstellt:
+Erstellen Sie nun mit [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer) den Load Balancer. Im folgenden Beispiel wird mithilfe der in den vorherigen Schritten erstellten Front-End- und Back-End-IP-Pools ein Lastenausgleich namens *myLoadBalancer* erstellt:
 
 ```powershell
 $lb = New-AzureRmLoadBalancer `
@@ -96,9 +96,9 @@ $lb = New-AzureRmLoadBalancer `
 ### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
 Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. Falls bei einem virtuellen Computer innerhalb eines Intervalls von 15 Sekunden zwei aufeinanderfolgende Fehler auftreten, wird er standardmäßig aus der Load Balancer-Verteilung entfernt. Integritätstests werden auf der Grundlage eines Protokolls oder einer spezifischen Integritätsprüfungsseite für Ihre App erstellt. 
 
-Im folgenden Beispiel wird ein TCP-Test erstellt. Sie können auch benutzerdefinierte HTTP-Tests für differenziertere Integritätsprüfungen erstellen. Bei Verwendung eines benutzerdefinierten HTTP-Tests müssen Sie die Integritätsprüfungsseite erstellen, z.B. *healthcheck.aspx*. Der Test muss die Antwort **HTTP 200 OK** zurückgeben, damit der Load Balancer den Host nicht aus der Rotation entfernt.
+Im folgenden Beispiel wird ein TCP-Test erstellt. Sie können auch benutzerdefinierte HTTP-Tests für differenziertere Integritätsprüfungen erstellen. Bei Verwendung eines benutzerdefinierten HTTP-Tests müssen Sie die Integritätsprüfungsseite erstellen, z.B. *healthcheck.aspx*. Der Test muss die HTTP-Antwort **200 OK** zurückgeben, damit der Load Balancer den Host nicht aus der Rotation entfernt.
 
-Um einen TCP-Integritätstest zu erstellen, verwenden Sie [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Im folgenden Beispiel wird ein benannter Integritätstest namens *myHealthProbe* erstellt, der die einzelnen virtuellen Computer überwacht:
+Um einen TCP-Integritätstest zu erstellen, verwenden Sie [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Im folgenden Beispiel wird ein Integritätstest namens *myHealthProbe* erstellt, der die einzelnen virtuellen Computer an *TCP*-Port *80* überwacht:
 
 ```powershell
 Add-AzureRmLoadBalancerProbeConfig `
@@ -110,7 +110,7 @@ Add-AzureRmLoadBalancerProbeConfig `
   -ProbeCount 2
 ```
 
-Aktualisieren Sie den Load Balancer mit [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
+Aktualisieren Sie zum Anwenden des Integritätstests den Lastenausgleich mit [Set-AzureRmLoadBalancer](/powershell/module/azurerm.network/set-azurermloadbalancer):
 
 ```powershell
 Set-AzureRmLoadBalancer -LoadBalancer $lb
@@ -119,7 +119,7 @@ Set-AzureRmLoadBalancer -LoadBalancer $lb
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie VMs Datenverkehr empfangen, definieren Sie auch den zu verwendenden Integritätstest.
 
-Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Load Balancer-Regel mit dem Namen *myLoadBalancerRule* erstellt und der Datenverkehr an Port *80* ausgeglichen:
+Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Lastenausgleichsregel mit dem Namen *myLoadBalancerRule* erstellt und der Datenverkehr an *TCP*-Port *80* ausgeglichen:
 
 ```powershell
 $probe = Get-AzureRmLoadBalancerProbeConfig -LoadBalancer $lb -Name myHealthProbe
@@ -213,7 +213,7 @@ for ($i=1; $i -le 3; $i++)
 ```
 
 ## <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
-Fügen Sie die virtuellen Computer in eine Verfügbarkeitsgruppe ein, um die hohe Verfügbarkeit Ihrer App zu optimieren.
+Fügen Sie die virtuellen Computer in eine Verfügbarkeitsgruppe ein, um die Hochverfügbarkeit Ihrer App zu optimieren.
 
 Erstellen Sie mithilfe von [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) eine Verfügbarkeitsgruppe. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens *myAvailabilitySet* erstellt:
 
@@ -303,7 +303,7 @@ Get-AzureRmPublicIPAddress `
   -Name myPublicIP | select IpAddress
 ```
 
-Geben Sie die öffentliche IP-Adresse in einen Webbrowser ein. Die Website wird mit dem Hostnamen der VM angezeigt, an die der Load Balancer den Datenverkehr wie im folgenden Beispiel verteilt hat:
+Geben Sie die öffentliche IP-Adresse in einem Webbrowser ein. Die Website wird mit dem Hostnamen der VM angezeigt, an die der Load Balancer den Datenverkehr wie im folgenden Beispiel verteilt hat:
 
 ![Ausführen der IIS-Website](./media/tutorial-load-balancer/running-iis-website.png)
 

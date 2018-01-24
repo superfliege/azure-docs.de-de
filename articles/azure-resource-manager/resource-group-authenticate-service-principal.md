@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/28/2017
 ms.author: tomfitz
-ms.openlocfilehash: 57eec4277e584c3c2828e0fe029b9db10428934e
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 9431483293bcc252b79d02ba2d655a3aa86aaa4a
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>Erstellen eines Dienstprinzipals für den Zugriff auf Ressourcen mithilfe von Azure PowerShell
 
@@ -27,10 +27,10 @@ Wenn eine App oder ein Skript Zugriff auf Ressourcen benötigt, können Sie eine
 * Sie können der App-Identität Berechtigungen zuweisen, die sich von Ihren eigenen Berechtigungen unterscheiden. In der Regel sind diese Berechtigungen genau auf die Aufgaben der App beschränkt.
 * Sie können ein Zertifikat für die Authentifizierung beim Ausführen eines unbeaufsichtigten Skripts verwenden.
 
-In diesem Thema erfahren Sie, wie Sie mithilfe von [Azure PowerShell](/powershell/azure/overview) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von [Azure PowerShell](/powershell/azure/overview) alle Komponenten und Einstellungen einrichten, die Sie benötigen, um eine Anwendung mit eigenen Anmeldeinformationen und einer eigenen Identität auszuführen.
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
-Zum Abschließen dieses Themas benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Azure Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
+Zum Abschließen dieses Artikels benötigen Sie sowohl in der Azure Active Directory-Instanz als auch im Azure-Abonnement ausreichende Berechtigungen. Insbesondere müssen Sie eine App in der Azure Active Directory-Instanz erstellen und den Dienstprinzipal einer Rolle zuweisen können. 
 
 Die einfachste Möglichkeit zum Überprüfen, ob Ihr Konto über die erforderlichen Berechtigungen verfügt, ist über das Portal. Siehe [Überprüfen der erforderlichen Berechtigung](resource-group-create-service-principal-portal.md#required-permissions).
 
@@ -44,7 +44,7 @@ Fahren Sie nun mit dem Abschnitt für die gewünschte Authentifizierungsmethode 
 
 Zum Einrichten eines Dienstprinzipals verwenden Sie diese Befehle:
 
-| Befehl | Beschreibung |
+| Get-Help | BESCHREIBUNG |
 | ------- | ----------- | 
 | [New-AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) | Erstellt einen Azure Active Directory-Dienstprinzipal. |
 | [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) | Weist dem angegebenen Dienstprinzipal die angegebene RBAC-Rolle im angegebenen Bereich zu. |
@@ -105,9 +105,10 @@ Param (
     $Scope = (Get-AzureRmResourceGroup -Name $ResourceGroup -ErrorAction Stop).ResourceId
  }
 
+ $SecurePassword = convertto-securestring $Password -asplaintext -force
  
  # Create Service Principal for the AD app
- $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $Password
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -Password $SecurePassword
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -377,7 +378,7 @@ Verwenden Sie Folgendes zum Hinzufügen eines Kennworts:
 New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -Password p@ssword!
 ```
 
-Zum Hinzufügen eines Zertifikatwerts erstellen Sie ein selbstsigniertes Zertifikat, wie in diesem Thema gezeigt. Verwenden Sie anschließend Folgendes:
+Zum Hinzufügen eines Zertifikatwerts erstellen Sie ein selbstsigniertes Zertifikat, wie in diesem Artikel gezeigt. Verwenden Sie anschließend Folgendes:
 
 ```powershell
 New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -CertValue $keyValue -EndDate $cert.NotAfter -StartDate $cert.NotBefore

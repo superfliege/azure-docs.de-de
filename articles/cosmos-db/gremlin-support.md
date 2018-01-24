@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 11/15/2017
+ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: f95a0abcd50b94714a76b36a0b5f9c73da909879
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 59d926f54c8dfc2991929f2eb42b20056e3a09c3
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Unterstützung für Gremlin-Diagramme in Azure Cosmos DB
 Azure Cosmos DB unterstützt die Graph-Traversalsprache [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) von [Apache Tinkerpop](http://tinkerpop.apache.org). Dabei handelt es sich um eine Graph-API zur Erstellung von Diagrammentitäten und zur Durchführung von Diagrammabfragen. Mithilfe der Gremlin-Sprache können Sie Diagrammentitäten (Vertices und Edges) erstellen, Eigenschaften innerhalb dieser Entitäten ändern, Abfragen und Traversierungen ausführen und Entitäten löschen. 
 
 Azure Cosmos DB liefert für Unternehmen konzipierte Funktionen für Diagrammdatenbanken. Hierzu zählen globale Verteilung, die unabhängige Skalierung von Speicher und Durchsatz, planbare Wartezeiten im einstelligen Millisekundenbereich, automatische Indizierung, SLAs und Leseverfügbarkeit von Datenbankkonten, die sich über mindestens zwei Azure-Regionen erstrecken. Da Azure Cosmos DB TinkerPop/Gremlin unterstützt, können Sie mühelos mit einer anderen Diagrammdatenbank geschriebene Anwendungen migrieren, ohne Codeänderungen vorzunehmen. Darüber hinaus wird Azure Cosmos DB aufgrund der Unterstützung für Gremlin nahtlos in TinkerPop-fähige Analyseframeworks wie [Apache Spark GraphX](http://spark.apache.org/graphx/) integriert. 
 
-Dieser Artikel enthält eine kurze exemplarische Vorgehensweise zu Gremlin und listet die Funktionen und Schritte von Gremlin auf, die in der Vorschau der Unterstützung für die Graph-API unterstützt werden.
+Dieser Artikel enthält eine kurze exemplarische Vorgehensweise zu Gremlin und listet die Funktionen und Schritte von Gremlin auf, die von der Graph-API unterstützt werden.
 
 ## <a name="gremlin-by-example"></a>Gremlin anhand eines Beispiels
 Anhand eines Beispieldiagramms wird erläutert, wie Abfragen in Gremlin ausgedrückt werden können. Die folgende Abbildung zeigt eine Geschäftsanwendung, die Daten zu Benutzern, Interessen und Geräten in Form eines Diagramms verwaltet.  
@@ -78,9 +78,9 @@ TinkerPop ist ein Standard, der eine große Bandbreite an Diagrammtechnologien a
 
 Die folgende Tabelle enthält die TinkerPop-Funktionen, die von Azure Cosmos DB implementiert werden: 
 
-| Kategorie | Implementierung von Azure Cosmos DB |  Hinweise | 
+| Category (Kategorie) | Implementierung von Azure Cosmos DB |  Notizen | 
 | --- | --- | --- |
-| Diagrammfunktionen | Stellen Persistenz und ConcurrentAccess in der Vorschau bereit. Sind zur Unterstützung für Transaktionen ausgelegt. | Computermethoden können über den Spark-Connector implementiert werden. |
+| Diagrammfunktionen | Stellen Persistenz und ConcurrentAccess bereit. Sind zur Unterstützung für Transaktionen ausgelegt. | Computermethoden können über den Spark-Connector implementiert werden. |
 | Variablenfunktionen | Unterstützen Boolean-, Integer-, Byte-, Double-, Float-, Long- und String-Datentypen | Unterstützen primitive Typen; ist mit komplexen Typen über Datenmodelle kompatibel |
 | Vertex-Funktionen | Unterstützen RemoveVertices MetaProperties, AddVertices MultiProperties, StringIds UserSuppliedIds, AddProperty, RemoveProperty  | Unterstützen die Erstellung, Änderung und Löschung von Vertices |
 | Vertex-Eigenschafts-Funktionen | StringIds, UserSuppliedIds, AddProperty, RemoveProperty, BooleanValues, ByteValues, DoubleValues, FloatValues, IntegerValues, LongValues, StringValues | Unterstützen die Erstellung, Änderung und Löschung von Vertex-Eigenschaften |
@@ -132,18 +132,18 @@ Der folgende Ausschnitt zeigt z.B. eine GraphSON-Darstellung eines Vertex in Azu
 
 Für Vertices werden folgende Eigenschaften von GraphSON verwendet:
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | id | Die ID für den Vertex. Muss eindeutig sein (in Kombination mit dem Wert von „_partition“, falls zutreffend). |
 | label | Die Bezeichnung des Vertex. Diese ist optional und dient zur Beschreibung des Entitätstyps. |
-| Typ | Dient zur Unterscheidung von Vertices von anderen Dokumenten, die keine Diagramme sind. |
-| properties | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Vertex. Jede Eigenschaft kann mehrere Werte enthalten. |
+| type | Dient zur Unterscheidung von Vertices von anderen Dokumenten, die keine Diagramme sind. |
+| Eigenschaften | Sammlung von benutzerdefinierten Eigenschaften in Verbindung mit dem Vertex. Jede Eigenschaft kann mehrere Werte enthalten. |
 | _partition (konfigurierbar) | Der Partitionsschlüssel des Vertex. Kann zur Skalierung von Diagrammen auf mehreren Servern verwendet werden. |
 | outE | Enthält eine Liste von externen Edges aus einem Vertex. Die Speicherung von Informationen zur Nähe zum Vertex ermöglicht die schnelle Ausführung von Traversierungen. Edges werden basierend auf deren Bezeichnungen gruppiert. |
 
 Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teilen des Diagramms unterstützen können.
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | id | Die ID für den Edge. Muss eindeutig sein (in Kombination mit dem Wert von „_partition“, falls zutreffend). |
 | label | Die Bezeichnung des Edge. Diese Eigenschaft ist optional, und dient zur Beschreibung des Beziehungstyps. |
@@ -152,7 +152,7 @@ Zudem enthalten Edges folgende Informationen, die die Navigation in anderen Teil
 
 Jede Eigenschaft kann mehrere Werte in einem Array speichern. 
 
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | value | Der Wert der Eigenschaft.
 
@@ -165,7 +165,7 @@ Gremlin-Vorgänge funktionieren nahtlos in Diagrammdaten, die sich über mehrere
 ## <a name="gremlin-steps"></a>Gremlin-Schritte
 Sehen wir uns nun die Gremlin-Schritte an, die von Azure Cosmos DB unterstützt werden. Eine vollständige Referenz zu Gremlin finden Sie in der [TinkerPop-Referenz](http://tinkerpop.apache.org/docs/current/reference).
 
-| Schritt | Beschreibung | Dokumentation zu TinkerPop 3.2 | Hinweise |
+| Schritt | BESCHREIBUNG | Dokumentation zu TinkerPop 3.2 | Notizen |
 | --- | --- | --- | --- |
 | `addE` | Fügt einen Edge zwischen zwei Vertices hinzu | [addE-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addedge-step) | |
 | `addV` | Fügt einen Vertex zum Diagramm hinzu | [addV-Schritt](http://tinkerpop.apache.org/docs/current/reference/#addvertex-step) | |

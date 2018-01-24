@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 0823cc54731ac1cd7f39de256a899696683375a8
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: f5ffbb6c2d699da143e12c51c38cba602f5a8526
+ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Konfigurieren von Service Map in Operations Management Suite
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In dieser Lösung können Sie die Server ihrer Funktion gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -26,21 +26,21 @@ Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-S
 In diesem Artikel werden das Konfigurieren von Service Map und das Onboarding von Agents beschrieben. Weitere Informationen zum Verwenden von Service Map finden Sie unter [Verwenden von Service Map in der Operations Management Suite (OMS)](operations-management-suite-service-map.md).
 
 ## <a name="dependency-agent-downloads"></a>Dependency-Agent – Downloads
-| Datei | Betriebssystem | Version | SHA-256 |
+| File | Betriebssystem | Version | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.2.1 | CBF050BFEA78B56A138CB1313DE0E75ABC30187C1B96EF9B4CBDEDD9EDFF6A17 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.2.1 | F4560E951F6C57A7466C82052BAFBF9515DC80DDA794ED8FB4DB02CEBA743277 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.3.0 | 1F5261CAAF6C8DF4E03E4927DA918B3461B40B41C6BF5845803878D7CF975693 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.3.0 | 7BADFF2411899114F0214766160E4E871A2462DC137141CEEDEFAF528F428ADD  |
 
 
 ## <a name="connected-sources"></a>Verbundene Quellen
 Die Dienstzuordnung ruft ihre Daten vom Microsoft Dependency-Agent ab. Der Dependency-Agent ist abhängig vom OMS-Agent, da er dessen Verbindungen mit Operations Management Suite benötigt. Dies bedeutet, dass auf einem Server zunächst der OMS-Agent installiert und konfiguriert werden muss, bevor der Dependency-Agent installiert werden kann. In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die von Service Map unterstützt werden.
 
-| Verbundene Quelle | Unterstützt | Beschreibung |
+| Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 |:--|:--|:--|
-| Windows-Agents | Ja | Service Map analysiert und erfasst Daten von Windows-Agent-Computern. <br><br>Zusätzlich zum [OMS-Agent](../log-analytics/log-analytics-windows-agents.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
+| Windows-Agents | Ja | Service Map analysiert und erfasst Daten von Windows-Agent-Computern. <br><br>Zusätzlich zum [OMS-Agent](../log-analytics/log-analytics-windows-agent.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
 | Linux-Agents | Ja | Service Map analysiert und erfasst Daten von Linux-Agent-Computern. <br><br>Zusätzlich zum [OMS-Agent](../log-analytics/log-analytics-linux-agents.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
 | System Center Operations Manager-Verwaltungsgruppe | Ja | Service Map analysiert und erfasst Daten von Windows- und Linux-Agents in einer verbundenen [System Center Operations Manager-Verwaltungsgruppe](../log-analytics/log-analytics-om-agents.md). <br><br>Es ist eine direkte Verbindung des System Center Operations Manager-Agents mit der Operations Management Suite erforderlich. Daten werden von der Verwaltungsgruppe an das Operations Management Suite-Repository weitergeleitet.|
-| Azure-Speicherkonto | Nein | Da Service Map Daten von Agent-Computern erfasst, sind keine Daten aus dem Azure-Speicher zu erfassen. |
+| Azure-Speicherkonto | Nein  | Da Service Map Daten von Agent-Computern erfasst, sind keine Daten aus dem Azure-Speicher zu erfassen. |
 
 Beachten Sie, dass Service Map nur 64-Bit-Plattformen unterstützt.
 
@@ -74,7 +74,7 @@ Der Dependency-Agent wird auf Windows-Computern mithilfe von „InstallDependenc
 
 Führen Sie die folgenden Schritte aus, um den Dependency-Agent auf jedem Windows-Computer zu installieren:
 
-1.  Stellen Sie mithilfe der Anweisungen unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agents.md) sicher, dass der OMS-Agent installiert ist.
+1.  Stellen Sie mithilfe der Anweisungen unter [Verbinden von Windows-Computern mit dem Log Analytics-Dienst in Azure](../log-analytics/log-analytics-windows-agent.md) sicher, dass der OMS-Agent installiert ist.
 2.  Laden Sie den Windows-Agent herunter, und starten Sie ihn mit dem folgenden Befehl: <br>`InstallDependencyAgent-Windows.exe`
 3.  Folgen Sie den Anweisungen des Assistenten, um den Assistenten zu installieren.
 4.  Wenn der Dependency-Agent nicht gestartet wird, suchen Sie in den Protokollen ausführliche Fehlerinformationen. Für Windows-Agents lautet das Protokollverzeichnis „%Programfiles%\Microsoft Dependency Agent\logs“. 
@@ -84,7 +84,7 @@ Verwenden Sie Optionen aus der folgenden Tabelle, um über die Befehlszeile zu i
 
     InstallDependencyAgent-Windows.exe /?
 
-| Flag | Beschreibung |
+| Flag | BESCHREIBUNG |
 |:--|:--|
 | /? | Ruft eine Liste der Befehlszeilenoptionen ab. |
 | /S | Führt eine automatische Installation ohne Benutzereingaben aus. |
@@ -106,7 +106,7 @@ Um eine Liste der Installationsflags anzuzeigen, führen Sie das Installationspr
 
     InstallDependencyAgent-Linux64.bin -help
 
-| Flag | Beschreibung |
+| Flag | BESCHREIBUNG |
 |:--|:--|
 | -help | Ruft eine Liste der Befehlszeilenoptionen ab. |
 | -s | Führt eine automatische Installation ohne Benutzereingaben aus. |
@@ -114,7 +114,7 @@ Um eine Liste der Installationsflags anzuzeigen, führen Sie das Installationspr
 
 Dateien für den Dependency-Agent befinden sich in den folgenden Verzeichnissen:
 
-| Dateien | Standort |
+| Dateien | Speicherort |
 |:--|:--|
 | Hauptdateien | /opt/microsoft/dependency-agent |
 | Protokolldateien | /var/opt/microsoft/dependency-agent/log |
@@ -254,7 +254,7 @@ Es kann hilfreich sein, zuerst selbst die [neuesten Laufzeitbibliotheken](https:
 
 Die folgende Tabelle enthält Codenummern und Lösungsvorschläge.
 
-| Code | Beschreibung | Lösung |
+| Code | BESCHREIBUNG | Lösung |
 |:--|:--|:--|
 | 0x17 | Für das Bibliothekinstallationsprogramm ist ein Windows-Update erforderlich, das noch nicht installiert wurde. | Suchen Sie im letzten Protokoll des Bibliothekinstallationsprogramms.<br><br>Wenn einem Verweis auf „Windows8.1-KB2999226-x64.msu“ die Zeile „Fehler 0x80240017: Fehler beim Ausführen des MSU-Pakets“ folgt, wurden nicht alle Voraussetzungen für die Installation von KB2999226 erfüllt. Befolgen Sie die Anweisungen im Abschnitt mit den Voraussetzungen in [Universal C Runtime in Windows](https://support.microsoft.com/kb/2999226). Möglicherweise müssen Sie Windows Update ausführen und mehrere Neustarts durchführen müssen, um die Voraussetzungen zu installieren.<br><br>Führen Sie das Installationsprogramm für den Microsoft Dependency Agent erneut aus. |
 
@@ -286,7 +286,7 @@ Vom Dependency-Agent werden i.d.R. 0,1 % des Systemspeichers und 0,1 % der Syste
 ## <a name="supported-azure-regions"></a>Unterstützte Azure-Regionen
 Service Map ist derzeit in den folgenden Azure-Regionen verfügbar:
 - USA (Ost)
-- Westeuropa
+- Europa, Westen
 - USA, Westen-Mitte
 - Asien, Südosten
 
@@ -318,7 +318,7 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 | Betriebssystemversion | Kernelversion |
 |:--|:--|
 | 7.0 | 3.10.0-123 |
-| 7,1 | 3.10.0-229 |
+| 7.1 | 3.10.0-229 |
 | 7.2 | 3.10.0-327 |
 | 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
@@ -350,8 +350,8 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 
 | Betriebssystemversion | Kernelversion |
 |:--|:--|
-| 16.04 | 4.4.0-98 |
-| 14.04 | 3.13.0-135<br>4.4.0-98 |
+| 16.04 | 4.4.0-103<br>4.11.0-1016 |
+| 14.04 | 3.13.0-137<br>4.4.0-103 |
 
 ### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Oracle Enterprise Linux mit Unbreakable Enterprise Kernel
 #### <a name="oracle-linux-6"></a>Oracle Linux 6
@@ -367,8 +367,6 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 
 | Betriebssystemversion | Kernelversion
 |:--|:--|
-| 5.8 | Oracle 2.6.32-300 (UEK R1) |
-| 5.9 | Oracle 2.6.39-300 (UEK R2) |
 | 5.10 | Oracle 2.6.39-400 (UEK R2) |
 | 5.11 | Oracle 2.6.39-400 (UEK R2) |
 
@@ -377,16 +375,10 @@ In den folgenden Abschnitten sind die unterstützten Betriebssysteme für den De
 #### <a name="suse-linux-11"></a>SUSE Linux 11
 | Betriebssystemversion | Kernelversion
 |:--|:--|
-| 11 | 2.6.27 |
-| 11 SP1 | 2.6.32 |
-| 11 SP2 | 3.0.13 |
-| 11 SP3 | 3.0.76 |
-| 11 SP4 | 3.0.101 |
+| 11 SP2 | 3.0.101-0.7 |
+| 11 SP3 | 3.0.101-0.47 |
+| 11 SP4 | 3.0.101-65 |
 
-#### <a name="suse-linux-10"></a>SUSE Linux 10
-| Betriebssystemversion | Kernelversion
-|:--|:--|
-| 10 SP4 | 2.6.16.60 |
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnose- und Nutzungsdaten
 Wenn Sie den Service Map-Dienst verwenden, sammelt Microsoft automatisch Nutzungs- und Leistungsdaten. Microsoft verwendet diese Daten, um die Qualität, Sicherheit und Integrität des Service Map-Diensts sicherzustellen und zu verbessern. Zu den Daten gehören Informationen zur Konfiguration Ihrer Software, z.B. Betriebssystem und Betriebssystemversion. Zudem gehören zu den Daten IP-Adresse, DNS-Name und Name der Arbeitsstation, um exakte und effiziente Funktionen für die Problembehandlung bereitzustellen. Wir erfassen weder Namen noch Adressen oder andere Kontaktinformationen.

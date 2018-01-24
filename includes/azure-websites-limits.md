@@ -18,23 +18,22 @@
 | benutzerdefinierte Domäne [SSL-Unterstützung](../articles/app-service/app-service-web-tutorial-custom-ssl.md) | | |Unbegrenzte Anzahl von SNI SSL-Verbindungen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |Unbegrenzte Anzahl von SNI SSL-Verbindungen und 1 IP-SSL-Verbindung inbegriffen |
 | Integrierter Lastenausgleich | |X |X |X |X |
 | [Immer aktiviert](../articles/app-service/web-sites-configure.md) | | |X |X |X |
-| [Geplante Sicherungen](../articles/app-service/web-sites-backup.md) | | | |12 pro Tag |Alle 5 Minuten<sup>8</sup> |
+| [Geplante Sicherungen](../articles/app-service/web-sites-backup.md) | | | | Geplante Sicherungen alle 2 Stunden, höchstens 12 Sicherungen pro Tag (manuell + geplant) | Geplante Sicherungen jede Stunde, höchstens 50 Sicherungen pro Tag (manuell + geplant) |
 | [Automatische Skalierung](../articles/app-service/web-sites-scale.md) | | | |X |X |
-| [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>9</sup> |X |X |X |X |X |
+| [WebJobs](../articles/app-service/web-sites-create-web-jobs.md)<sup>8</sup> |X |X |X |X |X |
 | [Azure Scheduler](https://azure.microsoft.com/services/scheduler/) -Unterstützung: | |X |X |X |X |
 | [Endpunktüberwachung](../articles/app-service/web-sites-monitor.md) | | |X |X |X |
 | [Stagingslots](../articles/app-service/web-sites-staged-publishing.md) | | | |5 |20 |
 | Benutzerdefinierte Domänen pro App</a> | |500 |500 |500 |500 |
-| SLA | |<p> |99,9 % |99,95 %<sup>10</sup> |99,95 %<sup>10</sup> |
+| SLA | |<p> |99,9 % |99,95 %<sup>10</sup> |99,95 %<sup>9</sup> |
 
 <sup>1</sup>Sofern nicht anderweitig vermerkt, gelten Apps- und Speicherkontingente gemäß dem App Service-Plan.  
 <sup>2</sup>Die tatsächliche Anzahl der Apps, die Sie auf diesen Computern hosten können, hängt von der Aktivität der Apps, der Größe der Computerinstanzen und der entsprechenden Ressourcenauslastung ab.  
-<sup>3</sup>Dedizierte Instanzen können unterschiedliche Größen aufweisen. Weitere Informationen finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/data-transfers/pricing/details/app-service/).  
+<sup>3</sup>Dedizierte Instanzen können unterschiedliche Größen aufweisen. Weitere Informationen finden Sie unter [App Service – Preise](https://azure.microsoft.com/pricing/details/app-service/).  
 <sup>4</sup>Im Premium-Tarif sind bei Verwendung von App Service-Umgebungen bis zu 50 Serverinstanzen (sofern verfügbar) und 500 GB Speicherplatz zulässig, andernfalls 20 Serverinstanzen und 250 GB Speicherplatz.  
 <sup>5</sup>Die Speicherbegrenzung ist die gesamte Inhaltsgröße aller Apps im gleichen App Service-Plan. Weitere Speicheroptionen sind unter [App Service-Umgebung](../articles/app-service/environment/app-service-web-configure-an-app-service-environment.md#storage) verfügbar.  
 <sup>6</sup>Diese Ressourcen werden durch physische Ressourcen auf den dedizierten Instanzen (die Instanzengröße und die Anzahl der Instanzen) beschränkt.  
 <sup>7</sup>Wenn Sie eine App im Basic-Tarif auf zwei Instanzen skalieren, stehen Ihnen 350 gleichzeitige Verbindungen für jede der beiden Instanzen zur Verfügung.  
-<sup>8</sup>Im Premium-Tarif sind bei Verwendung von App Service-Umgebungen Sicherungsintervalle von bis zu alle 5 Minuten möglich, andernfalls 50 Sicherungen pro Tag.  
-<sup>9</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Für geplante WebJobs ist Azure Scheduler Free oder Standard erforderlich. Es gibt keinen vordefinierten Grenzwert für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Aber es gibt praktische Grenzwerte, die sich danach richten, was mit dem Anwendungscode erreicht werden soll.   
-<sup>10</sup>Die SLA von 99,95 % gilt für Bereitstellungen mit mehreren Instanzen, bei denen Azure Traffic Manager für Failover konfiguriert ist.  
+<sup>8</sup>Sie können benutzerdefinierte ausführbare Dateien und/oder Skripts bei Bedarf, nach Zeitplan oder fortwährend als Hintergrundaufgabe in Ihrer App Service-Instanz ausführen. Für die fortlaufende WebJobs-Ausführung ist „Immer bereit“ erforderlich. Für geplante WebJobs ist Azure Scheduler Free oder Standard erforderlich. Es gibt keinen vordefinierten Grenzwert für die Anzahl der WebJobs, die in einer App Service-Instanz ausgeführt werden können. Aber es gibt praktische Grenzwerte, die sich danach richten, was mit dem Anwendungscode erreicht werden soll.   
+<sup>9</sup>Die SLA von 99,95 % gilt für Bereitstellungen mit mehreren Instanzen, bei denen Azure Traffic Manager für Failover konfiguriert ist.  
 

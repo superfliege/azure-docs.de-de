@@ -12,19 +12,23 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 01/09/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4b94092f1284abfa2462ddef04b6e84136e54dde
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 55cc0eb3cc187d87e0d2ae96e2433cb9682ab370
+ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/10/2018
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Knotenaktionen für Skalierungseinheiten in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
 Dieser Artikel beschreibt das Anzeigen des Status einer Skalierungseinheit und der zugehörigen Knoten und das Verwenden der verfügbaren Knotenaktionen. Knotenaktionen sind Ein-/Ausschalten, Entladen, Fortsetzen und Reparieren. Normalerweise verwenden Sie diese Knotenaktionen für den Austausch von Teilen im Betrieb oder bei Wiederherstellungsszenarien für Knoten.
+
+> [!Important]  
+> Alle in diesem Artikel beschriebenen Knotenaktionen dürfen immer nur auf einen Knoten gleichzeitig ausgerichtet sein.
+
 
 ## <a name="view-the-status-of-a-scale-unit-and-its-nodes"></a>Anzeigen des Status einer Skalierungseinheit und ihrer Knoten
 
@@ -75,13 +79,17 @@ Der Betriebszustand des Knotens bestimmt, welche Optionen verfügbar sind.
 
 Die Aktion **Ausschalten** schaltet den Knoten aus. Dies entspricht dem Drücken des Netzschalters. Es wird **kein** Signal zum Herunterfahren an das Betriebssystem gesendet. Stellen Sie bei geplanten Ausschaltvorgängen sicher, dass Sie den Knoten der Skalierungseinheit zunächst entladen.
 
-Diese Aktion wird normalerweise verwendet, wenn ein Knoten nicht mehr reagiert und keine Anforderungen mehr verarbeitet.  
+Diese Aktion wird normalerweise verwendet, wenn ein Knoten nicht mehr reagiert und keine Anforderungen mehr verarbeitet.
+
+> [!Important] 
+> Diese Funktionalität steht nur über PowerShell zur Verfügung. Sie wird zu einem späteren Zeitpunkt wieder im Azure Stack-Administratorportal verfügbar sein.
+
 
 So führen Sie die Ausschaltaktion mithilfe von PowerShell aus
 
-  ````PowerShell
+````PowerShell
   Stop-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ```` 
+```` 
 
 Verwenden Sie in dem unwahrscheinlichen Fall, dass die Ausschaltaktion nicht funktioniert, stattdessen die BMC-Webbenutzeroberfläche.
 
@@ -89,11 +97,14 @@ Verwenden Sie in dem unwahrscheinlichen Fall, dass die Ausschaltaktion nicht fun
 
 Die Aktion **Einschalten** schaltet den Knoten ein. Dies entspricht dem Drücken des Netzschalters. 
 
+> [!Important] 
+> Diese Funktionalität steht nur über PowerShell zur Verfügung. Sie wird zu einem späteren Zeitpunkt wieder im Azure Stack-Administratorportal verfügbar sein.
+
 So führen Sie die Einschaltaktion mithilfe von PowerShell aus
 
-  ````PowerShell
+````PowerShell
   Start-AzsScaleUnitNode -Region <RegionName> -Name <NodeName>
-  ````
+````
 
 Verwenden Sie in dem unwahrscheinlichen Fall, dass die Einschaltaktion nicht funktioniert, stattdessen die BMC-Webbenutzeroberfläche.
 

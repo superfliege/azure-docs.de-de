@@ -4,7 +4,7 @@ description: "Ein Überblick über die verwaltete Dienstidentität für Azure-Re
 services: active-directory
 documentationcenter: 
 author: skwan
-manager: mbaldwin
+manager: mtillman
 editor: 
 ms.assetid: 0232041d-b8f5-4bd2-8d11-27999ad69370
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 10/31/2017
-ms.author: skwan
-ms.openlocfilehash: 5444e9d54bd9a2f7250ce590c3b6ced6b8b7bc51
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 12/19/2017
+ms.author: bryanla
+ms.openlocfilehash: a2a42f13c81a6f6bb34a8e6aafabf380f3d220e1
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 12/22/2017
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Verwaltete Dienstidentität (Managed Service Identity, MSI) für Azure-Ressourcen
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/02/2017
 
 Eine gängige Herausforderung beim Erstellen von Cloudanwendungen ist die Verwaltung der Anmeldeinformationen, die für die Authentifizierung bei Clouddiensten im Code enthalten sein müssen. Der Schutz dieser Anmeldeinformationen ist eine wichtige Aufgabe. Im Idealfall werden sie nie auf Entwicklerarbeitsstationen angezeigt oder in die Quellcodeverwaltung eingecheckt. Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe von MSI (Managed Service Identity, verwaltete Dienstidentität) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
-## <a name="how-does-it-work"></a>Funktionsweise
+## <a name="how-does-it-work"></a>Wie funktioniert dies?
 
 Wenn Sie die verwaltete Dienstidentität für einen Azure-Dienst aktivieren, erstellt Azure in dem Azure AD-Mandanten, der von Ihrem Azure-Abonnement verwendet wird, automatisch eine Identität für die Dienstinstanz.  Im Hintergrund stellt Azure der Dienstinstanz die Anmeldeinformationen für die Identität bereit.  Der Code kann dann eine lokale Anforderung zum Abrufen von Zugriffstokens für Dienste senden, die die Azure AD-Authentifizierung unterstützen.  Azure übernimmt die Weitergabe der von der Dienstinstanz verwendeten Anmeldeinformationen.  Wenn die Dienstinstanz gelöscht wird, bereinigt Azure automatisch die Anmeldeinformationen und die Identität in Azure AD.
 
@@ -72,22 +72,25 @@ Azure-Dienste, die verwaltete Dienstidentitäten unterstützen, können MSI zur 
 
 Die folgenden Azure-Dienste unterstützen verwaltete Dienstidentitäten.
 
-| Dienst | Status | Date | Konfigurieren | Abrufen von Token |
+| Dienst | Status | Datum | Konfigurieren | Abrufen von Token |
 | ------- | ------ | ---- | --------- | ----------- |
-| Azure Virtual Machines | Vorschau | September 2017 | [Azure-Portal](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure-Befehlszeilenschnittstelle](msi-qs-configure-cli-windows-vm.md)<br>[Azure-Ressourcen-Manager-Vorlagen](msi-qs-configure-template-windows-vm.md) | [REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Go](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
-| Azure App Service | Vorschau | September 2017 | [Azure-Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
-| Azure-Funktionen | Vorschau | September 2017 | [Azure-Portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Virtual Machines | Vorschau | September 2017 | [Azure portal](msi-qs-configure-portal-windows-vm.md)<br>[PowerShell](msi-qs-configure-powershell-windows-vm.md)<br>[Azure-CLI](msi-qs-configure-cli-windows-vm.md)<br>[Azure-Ressourcen-Manager-Vorlagen](msi-qs-configure-template-windows-vm.md) | [REST](msi-how-to-use-vm-msi-token.md#get-a-token-using-http)<br>[.NET](msi-how-to-use-vm-msi-token.md#get-a-token-using-c)<br>[Bash/Curl](msi-how-to-use-vm-msi-token.md#get-a-token-using-curl)<br>[Go](msi-how-to-use-vm-msi-token.md#get-a-token-using-go)<br>[PowerShell](msi-how-to-use-vm-msi-token.md#get-a-token-using-azure-powershell) |
+| Azure App Service | Vorschau | September 2017 | [Azure portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure-Funktionen | Vorschau | September 2017 | [Azure portal](/azure/app-service/app-service-managed-service-identity#using-the-azure-portal)<br>[Azure Resource Manager-Vorlage](/azure/app-service/app-service-managed-service-identity#using-an-azure-resource-manager-template) | [.NET](/azure/app-service/app-service-managed-service-identity#asal)<br>[REST](/azure/app-service/app-service-managed-service-identity#using-the-rest-protocol) |
+| Azure Data Factory V2 | Vorschau | November 2017 | [Azure portal](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity)<br>[PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-powershell)<br>[REST](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-rest-api)<br>[SDK](~/articles/data-factory/data-factory-service-identity.md#generate-service-identity-using-sdk) |
 
 ### <a name="azure-services-that-support-azure-ad-authentication"></a>Azure-Dienste, die die Azure AD-Authentifizierung unterstützen
 
 Die folgenden Dienste unterstützen die Azure AD-Authentifizierung und wurden mit Clientdiensten getestet, die verwaltete Dienstidentitäten verwenden.
 
-| Dienst | Ressourcen-ID | Status | Date | Zuweisen des Zugriffs |
+| Dienst | Ressourcen-ID | Status | Datum | Zuweisen des Zugriffs |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com/ | Verfügbar | September 2017 | [Azure-Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure-Befehlszeilenschnittstelle](msi-howto-assign-access-CLI.md) |
+| Azure Resource Manager | https://management.azure.com/ | Verfügbar | September 2017 | [Azure portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure-CLI](msi-howto-assign-access-CLI.md) |
 | Azure Key Vault | https://vault.azure.net/ | Verfügbar | September 2017 | |
 | Azure Data Lake | https://datalake.azure.net/ | Verfügbar | September 2017 | |
 | Azure SQL | https://database.windows.net/ | Verfügbar | Oktober 2017 | |
+| Azure Event Hubs | https://eventhubs.azure.net/ | Verfügbar | Dezember 2017 | |
+| Azure-Servicebus | https://servicebus.azure.net/ | Verfügbar | Dezember 2017 | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>Wie viel kosten verwaltete Dienstidentitäten?
 

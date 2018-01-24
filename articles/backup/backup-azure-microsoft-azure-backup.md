@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 7/20/2017
-ms.author: masaran;trinadhk;pullabhk;markgal
-ms.openlocfilehash: c54468d71e0b383916e49847576a98303d659d38
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: masaran;trinadhk;pullabhk;markgal;adigan
+ms.openlocfilehash: addb4312ce1eb57ce86afae449eb3d31d0037418
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Vorbereiten der Sicherung von Workloads per Azure Backup Server
 > [!div class="op_single_selector"]
@@ -57,6 +57,7 @@ Wenn Sie den Basisserver nicht in Azure ausführen möchten, können Sie den Ser
 
 | Betriebssystem | Plattform | SKU |
 |:--- | --- |:--- |
+| Windows Server 2016 und die neuesten SPs |64-Bit |Standard, Datacenter, Essentials (ab MABS v2) |
 | Windows Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 und die neuesten SPs |64-Bit |Datacenter, Foundation, Standard |
 | Windows Storage Server 2012 R2 und die neuesten SPs |64-Bit |Standard, Workgroup |
@@ -79,7 +80,7 @@ Die Software muss unabhängig davon über eine Verbindung mit Azure verfügen, o
 
 So erstellen Sie einen Recovery Services-Tresor:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie im Hub-Menü auf **Durchsuchen**, und geben Sie in der Liste mit den Ressourcen **Recovery Services** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Klicken Sie auf **Recovery Services-Tresor**.
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-microsoft-azure-backup/open-recovery-services-vault.png) <br/>
@@ -96,7 +97,7 @@ So erstellen Sie einen Recovery Services-Tresor:
 5. Klicken Sie auf **Abonnement** , um die Liste mit den verfügbaren Abonnements anzuzeigen. Falls Sie nicht sicher sind, welches Abonnement geeignet ist, können Sie das Standardabonnement bzw. das vorgeschlagene Abonnement verwenden. Es sind nur dann mehrere Auswahlmöglichkeiten verfügbar, wenn Ihr Organisationskonto mehreren Azure-Abonnements zugeordnet ist.
 6. Klicken Sie auf **Ressourcengruppe**, um die Liste mit den verfügbaren Ressourcengruppen anzuzeigen, oder klicken Sie auf **Neu**, um eine neue Ressourcengruppe zu erstellen. Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über den Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).
 7. Klicken Sie auf **Standort** , um die geografische Region für den Tresor auszuwählen.
-8. Klicken Sie auf **Erstellen**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal.
+8. Klicken Sie auf **Create**. Es kann einige Zeit dauern, bis der Recovery Services-Tresor erstellt wurde. Verfolgen Sie die Benachrichtigungen oben rechts im Portal.
    Nachdem der Tresor erstellt wurde, wird er im Portal geöffnet.
 
 ### <a name="set-storage-replication"></a>Festlegen der Speicherreplikation

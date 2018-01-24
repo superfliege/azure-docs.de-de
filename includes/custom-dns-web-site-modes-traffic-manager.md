@@ -1,4 +1,4 @@
-Ein benutzerdefinierter Domänenname für Web-Apps in Azure App Service, für die mit Traffic Manager ein Lastenausgleich durchgeführt wird, kann nur für Websites im Modus **Standard** festgelegt werden. Bevor Sie den Modus einer Web-App vom Modus "Kostenlos" in den Modus "Freigegeben", "Basic" oder "Standard" ändern, müssen Sie zunächst das für Ihr App Service-Abonnement geltende Ausgabenlimit aufheben. 
+Das Festlegen eines benutzerdefinierten Domänennamens für eine in Traffic Manager integrierte Web-App ist nur für den Tarif **Standard** verfügbar.  
 
-Weitere Informationen zu App Service-Planmodi, darunter auch Informationen zum Ändern des Websitemodus, finden Sie unter [Skalieren von Websites](../articles/app-service/web-sites-scale.md).
+Weitere Informationen zu den Tarifen von App Service, darunter auch Informationen zum Ändern des App-Tarifs, finden Sie unter [Zentrales Hochskalieren einer App in Azure](../articles/app-service/web-sites-scale.md).
 

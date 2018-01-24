@@ -14,18 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/27/2017
 ms.author: saysa
-ms.openlocfilehash: 89b356c3959b7cb63a746805d60535e07f0d6898
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 80c52cfeab007030203b6af4bb220f1a847e9426
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Verwenden von Jenkins zum Erstellen und Bereitstellen Ihrer Linux-Anwendungen
 Jenkins ist ein beliebtes Tool für Continuous Integration und Continuous Deployment für Ihre Apps. Hier wird beschrieben, wie Sie Ihre Azure Service Fabric-Anwendung mit Jenkins erstellen und bereitstellen.
 
 ## <a name="general-prerequisites"></a>Allgemeine Voraussetzungen
 - Lokale Git-Installation. Sie können die richtige Git-Version über die [Git-Downloadseite](https://git-scm.com/downloads) für Ihr Betriebssystem installieren. Wenn Git neu für Sie ist, hilft Ihnen die [Git-Dokumentation](https://git-scm.com/docs) weiter.
-- Sie benötigen das Service Fabric-Jenkins-Plug-In. Der Download ist auf der Seite mit den [Service Fabric-Downloads](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi) möglich. Wenn Sie Edge-Browser verwenden, benennen Sie die Erweiterung der heruntergeladenen Datei von ZIP in HPI um.
 
 ## <a name="set-up-jenkins-inside-a-service-fabric-cluster"></a>Einrichten von Jenkins in einem Service Fabric-Cluster
 
@@ -129,8 +128,8 @@ Docker muss installiert sein. Sie können die folgenden Befehle verwenden, um Do
 Wenn Sie nun ``docker info`` im Terminal ausführen, wird in der Ausgabe angezeigt, dass der Docker-Dienst ausgeführt wird.
 
 ### <a name="steps"></a>Schritte
-  1. Rufen Sie das Service Fabric-Jenkins-Containerimage per Pullvorgang ab: ``docker pull rapatchi/jenkins:v9``
-  2. Führen Sie das Containerimage aus: ``docker run -itd -p 8080:8080 rapatchi/jenkins:v9``
+  1. Rufen Sie das Service Fabric-Jenkins-Containerimage per Pullvorgang ab: ``docker pull rapatchi/jenkins:v10``. Dieses Image ist beim Service Fabric-Jenkins-Plug-In vorinstalliert.
+  2. Führen Sie das Containerimage aus: ``docker run -itd -p 8080:8080 rapatchi/jenkins:v10``
   3. Rufen Sie die ID der Containerimageinstanz ab. Mit dem Befehl ``docker ps –a`` können Sie eine Liste mit allen Docker-Containern anzeigen.
   4. Melden Sie sich mit den folgenden Schritten am Jenkins-Portal an:
 
@@ -151,11 +150,6 @@ Wenn Sie nun ``docker info`` im Terminal ausführen, wird in der Ausgabe angezei
 
 Stellen Sie sicher, dass der Cluster oder der Computer, in bzw. auf dem das Jenkins-Containerimage gehostet wird, über eine öffentliche IP-Adresse verfügt. Die Jenkins-Instanz kann dann Benachrichtigungen von GitHub empfangen.
 
-## <a name="install-the-service-fabric-jenkins-plug-in-from-the-portal"></a>Installieren des Service Fabric-Jenkins-Plug-Ins über das Portal
-
-1. Besuchen Sie ``http://PublicIPorFQDN:8081``.
-2. Wählen Sie im Jenkins-Dashboard die Optionen **Manage Jenkins (Jenkins verwalten)** > **Manage Plugins (Plug-Ins verwalten)** > **Advanced (Erweitert)**.
-Hier können Sie ein Plug-In hochladen. Wählen Sie die Option **Choose file** (Datei auswählen) und anschließend die Datei **serviceFabric.hpi** aus, die Sie im Rahmen der Vorbereitung heruntergeladen haben. Sie können sie auch [hier](https://servicefabricdownloads.blob.core.windows.net/jenkins/serviceFabric.hpi) herunterladen. Nach dem Auswählen von **Upload** wird das Plug-In von Jenkins automatisch installiert. Lassen Sie einen Neustart zu, falls die entsprechende Bestätigungsmeldung angezeigt wird.
 
 ## <a name="create-and-configure-a-jenkins-job"></a>Erstellen und Konfigurieren eines Jenkins-Auftrags
 

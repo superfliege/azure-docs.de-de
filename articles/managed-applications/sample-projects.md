@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: d21619519d87fc032799356b0e8ea2f9ee0145f8
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 9acc769355b44628ca617550e44c9ed9724cfdcb
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="sample-projects-for-azure-managed-applications"></a>Beispielprojekte für verwaltete Azure-Anwendungen
 
@@ -26,6 +26,7 @@ Die folgende Tabelle enthält Links zu Beispielen für verwaltete Azure-Anwendun
 |  |  |
 | --- | --- |
 | **Beispiele** | |
+| [Verwaltete Anwendung (Test- oder Produktionsumgebung) in einem neuen oder vorhandenen virtuellen Netzwerk](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-app-using-existing-vnet) | Veranschaulicht, wie Sie flexible Bereitstellungsoptionen für Kunden erstellen können. Diese verwaltete Anwendung kann in einem neuen virtuellen Netzwerk oder einem vorhandenen virtuellen Netzwerk bereitgestellt werden. Kunden können entweder eine Test- oder eine Produktionsversion der verwalteten Anwendungen angeben. |
 | [Managed Azure Storage Account](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-storage-account) (Verwaltetes Azure-Speicherkonto) | Bereitstellen eines einzelnen Speicherkontos. Verwenden Sie dieses Beispielprojekt als Einführung in die Erstellung von verwalteten Anwendungen. |
 | [Managed Service Fabric with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-service-fabric) (Verwaltete Service Fabric-Instanz mit Azure-Verwaltungsdiensten) | Bereitstellen von Service Fabric-Clustern und VM-Skalierungsgruppen. Enthält Speicherkonten für Protokollierung und Diagnose. |
 | [Managed Web Application (IaaS) with Azure management services](https://github.com/Azure/azure-managedapp-samples/tree/master/samples/201-managed-web-app) (Verwaltete Webanwendung (IaaS) mit Azure-Verwaltungsdiensten) | Bereitstellen eines virtuellen Computers, der eine Webanwendung hostet |

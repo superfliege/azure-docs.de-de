@@ -1,32 +1,31 @@
 ---
-title: "Hinzufügen der Anmeldung bei einer Node.js-Web-App für Azure B2C | Microsoft Docs"
-description: 'Gewusst wie: Erstellen einer Node.js-Web-App, die Benutzer mithilfe eines B2C-Mandanten anmeldet'
+title: "Hinzufügen der Anmeldung zu einer Node.js-Web-App – Azure Active Directory B2C"
+description: Erstellen einer Node.js-Web-App, die Benutzer mit Azure Active Directory B2C anmeldet
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+author: PatAltimore
 manager: mtillman
-editor: 
-ms.assetid: db97f84a-1f24-447b-b6d2-0265c6896b27
+editor: dstrockis
+ms.custom: seo
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: article
 ms.date: 03/10/2017
 ms.author: xerners
-ms.openlocfilehash: b306a79d0daa1c6d51557b6abad617182c76e9ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b4a5db7e6769d7ebb0bcf0287b3a1bfb7932984a
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Hinzufügen der Anmeldung bei einer Node.js-Web-App
 
-**Passport** ist eine Authentifizierungs-Middleware für Node.js. Das äußerst flexible und modular aufgebaute Passport kann unauffällig in jeder Express-basierten oder Restify-Webanwendung installiert werden. Ein umfassender Satz an Strategien unterstützt die Authentifizierung mittels eines Benutzernamens und Kennworts in Facebook, Twitter und anderen Anwendungen.
+**Passport** ist eine Authentifizierungs-Middleware für Node.js. Das flexible und modular aufgebaute Passport kann unauffällig in jeder Express- oder Restify-basierten Webanwendung installiert werden. Ein umfassender Satz an Strategien unterstützt die Authentifizierung mittels eines Benutzernamens und Kennworts in Facebook, Twitter und anderen Anwendungen.
 
-Wir haben eine Strategie für Azure Active Directory (Azure AD) entwickelt. Sie installieren dieses Modul und fügen dann das Azure AD-`passport-azure-ad`-Plug-In hinzu.
+Für Azure Active Directory (Azure AD) können Sie dieses Modul installieren und dann das `passport-azure-ad`-Plug-In von Azure AD hinzufügen.
 
-Gehen Sie hierzu wie folgt vor:
+Sie müssen folgende Schritte durchführen:
 
 1. Registrieren Sie eine Anwendung mithilfe von Azure AD.
 2. Legen Sie fest, dass Ihre App das `passport-azure-ad`-Plug-In verwendet.
@@ -52,11 +51,9 @@ Als Nächstes müssen Sie in Ihrem B2C-Verzeichnis eine App erstellen. Dadurch w
 - Erstellen Sie einen **geheimen Schlüssel** für Ihre Anwendung, und kopieren Sie ihn. Sie benötigen sie später. Beachten Sie, dass dieser Wert vor der Verwendung in [XML-Escapezeichen](https://www.w3.org/TR/2006/REC-xml11-20060816/#dt-escape) gesetzt werden muss.
 - Kopieren Sie die **Anwendungs-ID** , die Ihrer App zugewiesen ist. Diese benötigen Sie später ebenfalls.
 
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
-
 ## <a name="create-your-policies"></a>Erstellen der Richtlinien
 
-In Azure AD B2C wird jede Benutzeroberfläche durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält drei Oberflächen für die Identität: Registrierung, Anmeldung und Facebook-Anmeldung. Sie müssen diese Richtlinie für jeden Typ erstellen, wie im [Artikel zu Richtlinienreferenzen](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)beschrieben. Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
+In Azure AD B2C wird jede Benutzererfahrung durch eine [Richtlinie](active-directory-b2c-reference-policies.md)definiert. Diese App enthält drei Oberflächen für die Identität: Registrierung, Anmeldung und Facebook-Anmeldung. Sie müssen diese Richtlinie für jeden Typ erstellen, wie im [Artikel zu Richtlinienreferenzen](active-directory-b2c-reference-policies.md#create-a-sign-up-policy)beschrieben. Beachten Sie beim Erstellen der drei Richtlinien Folgendes:
 
 - Wählen Sie den **Anzeigenamen** und andere Registrierungsattribute in der Registrierungsrichtlinie aus.
 - Wählen Sie den **Anzeigenamen** und die **Objekt-ID** als Anwendungsansprüche in jeder Richtlinie aus. Sie können auch andere Ansprüche auswählen.
@@ -104,7 +101,7 @@ Konfigurieren Sie die Express-Middleware für die Verwendung des OpenID Connect-
 Öffnen Sie die Datei `app.js` im Stammverzeichnis des Projekts. Fügen Sie den folgenden Aufruf hinzu, um die Strategie `OIDCStrategy` aufzurufen, die in `passport-azure-ad` enthalten ist.
 
 
-```JavaScript
+```javascript
 var OIDCStrategy = require('passport-azure-ad').OIDCStrategy;
 
 // Add some logging
@@ -115,7 +112,7 @@ var log = bunyan.createLogger({
 
 Verwenden Sie die gerade referenzierte Strategie zum Verarbeiten von Anmeldeanforderungen.
 
-```JavaScript
+```javascript
 // Use the OIDCStrategy in Passport (Section 2).
 //
 //   Strategies in Passport require a "validate" function that accepts
@@ -158,7 +155,7 @@ Dieser Code verwendet alle Benutzer, die der Server authentifiziert. Dies wird a
 
 Fügen Sie die Methoden hinzu, mit denen die angemeldeten Benutzer nachverfolgt werden können, wie es von Passport gefordert wird. Dies umfasst die Serialisierung und Deserialisierung von Benutzerinformationen:
 
-```JavaScript
+```javascript
 
 // Passport session setup. (Section 2)
 
@@ -194,7 +191,7 @@ var findByEmail = function(email, fn) {
 
 Fügen Sie den Code hinzu, um das Express-Modul zu laden. Im Folgenden sehen Sie, dass die Standardmuster `/views` und `/routes` verwendet werden, die Express bereitstellt.
 
-```JavaScript
+```javascript
 
 // configure Express (Section 2)
 
@@ -221,7 +218,7 @@ app.configure(function() {
 
 Fügen Sie die `POST`-Routen hinzu, die die eigentlichen Anmeldeanforderungen an das Modul `passport-azure-ad` übergeben:
 
-```JavaScript
+```javascript
 
 // Our Auth routes (Section 3)
 
@@ -271,7 +268,7 @@ Ihre Anwendung ist nun ordnungsgemäß für die Kommunikation mit dem v2.0-Endpu
 
 Fügen Sie zunächst Ihrer Datei `app.js` die Standard-, Anmelde-, Konto- und Abmeldemethoden hinzu:
 
-```JavaScript
+```javascript
 
 //Routes (Section 4)
 
@@ -306,7 +303,7 @@ So überprüfen Sie diese Methoden im Detail:
 
 Fügen Sie für den letzten Teil `app.js` die Methode `EnsureAuthenticated`, die in der Route `/account` verwendet wird, hinzu.
 
-```JavaScript
+```javascript
 
 // Simple route middleware to ensure that the user is authenticated. (Section 4)
 
@@ -323,7 +320,7 @@ function ensureAuthenticated(req, res, next) {
 
 Erstellen Sie als Letztes den Server selbst in `app.js`.
 
-```JavaScript
+```javascript
 
 app.listen(3000);
 
@@ -336,7 +333,7 @@ app.listen(3000);
 
 Erstellen der Route `/routes/index.js` im Stammverzeichnis
 
-```JavaScript
+```javascript
 
 /*
  * GET home page.
@@ -349,7 +346,7 @@ exports.index = function(req, res){
 
 Erstellen der Route `/routes/user.js` im Stammverzeichnis
 
-```JavaScript
+```javascript
 
 /*
  * GET users listing.
@@ -364,7 +361,7 @@ Diese einfachen Routen übergeben lediglich Anforderungen an die Ansichten. Dazu
 
 Erstellen Sie die Ansicht `/views/index.ejs` im Stammverzeichnis. Dies ist eine einfache Seite, die die Anmelde- und Abmelderichtlinien aufruft. Sie können sie auch zum Erfassen von Kontoinformationen verwenden. Beachten Sie, dass die bedingte Anweisung `if (!user)` verwendet werden kann, da das Übergeben des Benutzers in der Anforderung belegt, dass er angemeldet ist.
 
-```JavaScript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login/?p=your facebook policy">Sign in with Facebook</a>
@@ -379,7 +376,7 @@ Erstellen Sie die Ansicht `/views/index.ejs` im Stammverzeichnis. Dies ist eine 
 
 Erstellen Sie die Ansicht `/views/account.ejs` im Stammverzeichnis, sodass zusätzliche Informationen angezeigt werden können, die von `passport-azure-ad` in die Benutzeranforderung eingefügt wurden.
 
-```Javascript
+```javascript
 <% if (!user) { %>
     <h2>Welcome! Please sign in.</h2>
     <a href="/login">Sign in</a>

@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/08/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: 9313f3bd09b24db8e33b1f89eb5aebea871605b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d222300a591bcba556be5813ada2de555d25a1f0
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Grundlegendes zum Azure-Ausgabenlimit und zu dessen Entfernung
 
@@ -48,10 +48,12 @@ Führen Sie die folgenden Schritte aus, um das Ausgabenlimit zu entfernen:
 
 1. Melden Sie sich beim [Kontocenter](https://account.windowsazure.com/Subscriptions) an.
 1. Wählen Sie ein Abonnement aus.
-1. Wenn das Abonnement deaktiviert wurde, weil das Ausgabenlimit erreicht wurde, klicken Sie auf die Benachrichtigung „Abonnement hat das Ausgabenlimit erreicht und wurde deaktiviert, um zu verhindern, dass Kosten anfallen.“ Klicken Sie andernfalls im Bereich **ABONNEMENTSTATUS** auf **Ausgabenlimit entfernen**.
+zu erstellen und zu verwalten. Wenn das Abonnement deaktiviert wurde, weil das Ausgabenlimit erreicht wurde, klicken Sie auf die Benachrichtigung „Abonnement hat das Ausgabenlimit erreicht und wurde deaktiviert, um zu verhindern, dass Kosten anfallen.“ Klicken Sie andernfalls im Bereich **ABONNEMENTSTATUS** auf **Ausgabenlimit entfernen**.
 1. Wählen Sie die gewünschte Option aus.
 
-|Option|Effekt|
+![Auswählen einer Option zum Entfernen des Ausgabenlimits](./media/billing-spending-limit/remove-spending-limit.PNG)
+
+|Option|Wirkung|
 |-------|-----|
 |Ausgabenlimit auf unbestimmte Zeit deaktivieren|Entfernt das Ausgabenlimit, ohne es automatisch am Anfang des nächsten Abrechnungszeitraums wieder zu aktivieren.|
 |Ausgabenlimit für den aktuellen Abrechnungszeitraum deaktivieren|Entfernt das Ausgabenlimit, sodass es automatisch am Anfang des nächsten Abrechnungszeitraums wieder aktiviert wird.|
@@ -80,8 +82,10 @@ Derzeit stehen keine benutzerdefinierten Ausgabenlimits zur Verfügung. Sie kön
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Können mit dem Ausgabenlimit alle Gebühren von Azure verhindert werden?
 
-Bei einigen [Microsoft-Diensten und Diensten von Drittanbietern](billing-understand-your-azure-marketplace-charges.md) können selbst dann Gebühren anfallen und über die jeweilige Zahlungsmethode abgerechnet werden, wenn ein Ausgabenlimit festgelegt ist. Beispiele sind Visual Studio-Lizenzen, Azure Active Directory Premium, Supportpläne und die meisten Drittanbieterdienste, die über den [Azure Marketplace](https://azure.microsoft.com/marketplace/) vertrieben werden.
+[Einige im Azure Marketplace veröffentlichte externe Dienste](billing-understand-your-azure-marketplace-charges.md) können nicht mit Ihrem Abonnementguthaben verwendet werden und können separate Gebühren verursachen, selbst wenn ein Ausgabenlimit festgelegt ist. Beispiele sind Visual Studio-Lizenzen, Azure Active Directory Premium, Supportpläne und die meisten Drittanbieterdienste. Wenn Sie einen neuen externen Dienst bereitstellen, wird eine Warnung angezeigt, um darauf hinzuweisen, dass die Dienste separat in Rechnung gestellt werden:
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+![Warnung beim Erwerb von Marketplace-Angeboten](./media/billing-understand-your-azure-marketplace-charges/marketplace-warning.PNG)
+
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

@@ -1,24 +1,16 @@
 ---
-title: "Überprüfen der Architektur für die Hyper-V-Replikation in Azure mit Azure Site Recovery | Microsoft-Dokumentation"
+title: Architektur der Hyper-V-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
 description: "Dieser Artikel bietet einen Überblick über die Komponenten und Architektur, die beim Replizieren von lokalen virtuellen Hyper-V-Computern (ohne VMM) in Azure mit dem Azure Site Recovery-Dienst verwendet werden."
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 737cd30b-3994-4b18-9bd4-78c723601310
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 991c72352eaa4c3b12fcdc1e4112063fb698e772
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa27d75c5a1efe3971cabfe2b6a39433c772a40a
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="hyper-v-to-azure-replication-architecture"></a>Architektur der Replikation von Hyper-V in Azure
 
@@ -42,7 +34,7 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 **Hyper-V-in-Azure-Architektur (ohne VMM)**
 
-![Architektur](./media/concepts-hyper-v-to-azure-architecture/arch-onprem-azure-hypervsite.png)
+![Architecture](./media/concepts-hyper-v-to-azure-architecture/arch-onprem-azure-hypervsite.png)
 
 
 
@@ -149,6 +141,7 @@ Sobald Ihre lokale Infrastruktur wieder funktioniert und ausgeführt werden kann
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Überprüfen Sie die Supportmatrix. Folgen Sie dem Tutorial, um die Replikation von Hyper-V in Azure zu aktivieren.
-Führen Sie ein Failover und ein Failback aus.
+
+Absolvieren Sie [dieses Tutorial](tutorial-prepare-azure.md), um sich mit der Hyper-V-zu-Azure-Replikation vertraut zu machen.
+
 

@@ -15,21 +15,21 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: e38c69ec55d894053792fbf284d07944d7f44dc0
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 9b79e3b498e51e626e7e9a87d2bb1a66366acff5
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Bereitstellen in Azure App Service mit dem Jenkins-Plug-In 
 
 Zum Bereitstellen einer Java-Web-App für Azure können Sie die Azure-Befehlszeilenschnittstelle in der [Jenkins-Pipeline](/azure/jenkins/execute-cli-jenkins-pipeline) oder das [Jenkins-Plug-In für Azure App Service](https://plugins.jenkins.io/azure-app-service) verwenden. Version 1.0 des Jenkins-Plug-Ins unterstützt die kontinuierliche Bereitstellung mithilfe der Web-Apps-Funktion von Azure App Service über:
-* Git und FTP
+* Git oder FTP
 * Docker für Web-Apps unter Linux
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Konfigurieren von Jenkins zum Bereitstellen von Web-Apps über Git und FTP
+> * Konfigurieren von Jenkins zum Bereitstellen von Web-Apps über Git oder FTP
 > * Konfigurieren von Jenkins zum Bereitstellen von Web-App für Container
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Erstellen und Konfigurieren einer Jenkins-Instanz
@@ -64,7 +64,7 @@ Ein Azure-Dienstprinzipal ist für die Bereitstellung in Azure erforderlich.
 3. Wählen Sie zum Hinzufügen eines Microsoft Azure-Dienstprinzipals die Option **Anmeldeinformationen hinzufügen** aus. Füllen Sie die Felder **Abonnement-ID**, **Client-ID**, **Geheimer Clientschlüssel** und **OAuth 2.0-Token-Endpunkt** aus. Legen Sie das Feld **ID** auf **mySp** fest. Diese ID wird für spätere Aktionen in diesem Artikel verwendet.
 
 
-## <a name="configure-jenkins-to-deploy-web-apps-through-git-and-ftp"></a>Konfigurieren von Jenkins zum Bereitstellen von Web-Apps über Git und FTP
+## <a name="configure-jenkins-to-deploy-web-apps-by-uploading-files"></a>Konfigurieren von Jenkins zum Bereitstellen von Web-Apps durch das Hochladen von Dateien
 
 Zum Bereitstellen Ihres Projekts für Web-Apps können Sie Ihre Buildartefakte (z.B. eine WAR-Datei in Java) per Git oder FTP hochladen.
 
@@ -104,11 +104,11 @@ Vor dem Einrichten des Auftrags in Jenkins benötigen Sie einen Azure App Servic
 8. Wenn Sie die Bereitstellung für einen anderen Slot als den Produktionsslot durchführen möchten, können Sie auch den **Slot**-Namen festlegen.
 9. Speichern Sie das Projekt, und führen Sie den Buildvorgang durch. Ihre Web-App wird in Azure bereitgestellt, wenn der Buildvorgang abgeschlossen ist.
 
-### <a name="deploy-web-apps-through-ftp-by-using-jenkins-pipeline"></a>Bereitstellen von Web-Apps per FTP mithilfe der Jenkins-Pipeline
+### <a name="deploy-web-apps-by-uploading-files-using-jenkins-pipeline"></a>Bereitstellen von Web-Apps durch das Hochladen von Dateien unter Verwendung der Jenkins-Pipeline
 
 Das Jenkins-Plug-In für Azure App Service ist für die Pipeline vorbereitet. Das folgende Beispiel finden Sie im GitHub-Repository.
 
-1. Öffnen Sie in der GitHub-Benutzeroberfläche die Datei „**Jenkinsfile_ftp_plugin**“. Klicken Sie zum Bearbeiten der Datei auf das Stiftsymbol. Aktualisieren Sie jeweils die Definitionen **resourceGroup** und **webAppName** in Zeile 11 und 12 für Ihre Web-App:
+1. Öffnen Sie in der GitHub-Benutzeroberfläche die Datei **Jenkinsfile_ftp_plugin**. Klicken Sie zum Bearbeiten der Datei auf das Stiftsymbol. Aktualisieren Sie jeweils die Definitionen **resourceGroup** und **webAppName** in Zeile 11 und 12 für Ihre Web-App:
     ```java
     def resourceGroup = '<myResourceGroup>'
     def webAppName = '<myAppName>'
@@ -133,12 +133,12 @@ Das Jenkins-Plug-In für Azure App Service ist für die Pipeline vorbereitet. Da
 
 Web-Apps unter Linux unterstützen die Bereitstellung mithilfe von Docker. Für die Bereitstellung Ihrer Web-App mit Docker müssen Sie eine Dockerfile-Datei angeben, mit der Ihre Web-App mit einer Dienstruntime als Docker-Image verpackt wird. Das Jenkins-Plug-In erstellt dann das Image, übermittelt es mittels Push an eine Docker-Registrierung und stellt das Image für Ihre Web-App bereit.
 
-Für Web-Apps unter Linux werden auch herkömmliche Bereitstellungsmethoden wie Git und FTP unterstützt. Dies gilt jedoch nur für integrierte Sprachen (.NET Core, Node.js, PHP und Ruby). Für andere Sprachen müssen Sie Ihren Anwendungscode und die Dienstruntime zusammen in einem Docker-Image verpacken und Docker zum Bereitstellen verwenden.
+Für Web-Apps unter Linux werden auch herkömmliche Bereitstellungsmethoden wie Git und FTP unterstützt. Dies gilt jedoch nur für integrierte Sprachen (.NET Core, Node.js, PHP und Ruby). Für andere Sprachen müssen Sie Ihren Anwendungscode und die Dienstruntime gemeinsam in ein Docker-Image packen und Docker zum Bereitstellen verwenden.
 
-Vor dem Einrichten des Auftrags in Jenkins benötigen Sie eine Web-App unter Linux. Außerdem ist eine Containerregistrierung zum Speichern und Verwalten Ihrer privaten Docker-Containerimages erforderlich. Sie können DockerHub zum Erstellen der Containerregistrierung verwenden. In diesem Beispiel wird die Azure-Containerregistrierung verwendet.
+Vor dem Einrichten des Auftrags in Jenkins benötigen Sie eine Web-App unter Linux. Außerdem ist eine Containerregistrierung zum Speichern und Verwalten Ihrer privaten Docker-Containerimages erforderlich. Sie können DockerHub zum Erstellen der Containerregistrierung verwenden. In diesem Beispiel wird Azure Container Registry verwendet.
 
 * [Erstellen einer Web-App unter Linux](../app-service/containers/quickstart-nodejs.md).
-* Die Azure-Containerregistrierung ist ein verwalteter Dienst vom Typ [Docker-Registrierung](https://docs.docker.com/registry/), der auf Version 2.0 der Open Source-Docker-Registrierung basiert. [Erstellen einer Azure-Containerregistrierung](/azure/container-registry/container-registry-get-started-azure-cli). Sie können auch DockerHub verwenden.
+* Azure Container Registry ist ein verwalteter Dienst vom Typ [Docker-Registrierung](https://docs.docker.com/registry/), der auf Version 2.0 der Open Source-Docker-Registrierung basiert. [Erstellen einer Azure-Containerregistrierung](/azure/container-registry/container-registry-get-started-azure-cli). Sie können auch DockerHub verwenden.
 
 ### <a name="set-up-the-jenkins-job-for-docker"></a>Einrichten des Jenkins-Auftrags für Docker
 
@@ -154,7 +154,7 @@ Vor dem Einrichten des Auftrags in Jenkins benötigen Sie eine Web-App unter Lin
 6. Wählen Sie im Abschnitt **App-Konfiguration** die Ressourcengruppe und eine Linux-Web-App Ihres Abonnements aus.
 7. Wählen Sie die Option **Publish via Docker** (Über Docker veröffentlichen) aus.
 8. Geben Sie den Pfadwert der **Dockerfile**-Datei ein. Sie können die Standardeinstellung „/Dockerfile“ beibehalten.
-Geben Sie als **Docker registry URL** (URL für die Docker-Registrierung) die URL im Format „https://&lt;IhreRegistrierung>.azurecr.io“ an, wenn Sie die Azure-Containerregistrierung verwenden. Lassen Sie das Feld leer, wenn Sie DockerHub verwenden.
+Geben Sie als **Docker registry URL** (URL für die Docker-Registrierung) die URL im Format „https://&lt;IhreRegistrierung>.azurecr.io“ an, wenn Sie Azure Container Registry verwenden. Lassen Sie das Feld leer, wenn Sie DockerHub verwenden.
 9. Fügen Sie als Wert für **Registry credentials** (Anmeldeinformationen für die Registrierung) die Anmeldeinformationen für die Containerregistrierung hinzu. Sie können die Benutzer-ID und das Kennwort abrufen, indem Sie in der Azure-Befehlszeilenschnittstelle die folgenden Befehle ausführen. Mit dem ersten Befehl wird das Administratorkonto aktiviert:
     ```azurecli-interactive
     az acr update -n <yourRegistry> --admin-enabled true
@@ -165,13 +165,13 @@ Geben Sie als **Docker registry URL** (URL für die Docker-Registrierung) die UR
     > [!NOTE]
     > Stellen Sie sicher, dass Sie entweder den Imagenamen im Azure-Portal angeben oder auf der Registerkarte **Erweitert** einen Wert für das **Docker-Image** bereitstellen. Legen Sie in diesem Beispiel den Wert für das **Docker-Image** auf „&lt;Ihre_Registrierung >.azurecr.io/calculator“ fest, und lassen Sie das Feld für das **Docker Image Tag** (Docker-Imagetag) leer.
 
-11. Die Bereitstellung schlägt fehlt, wenn Sie eine integrierte Docker-Imageeinstellung verwenden. Ändern Sie die Docker-Konfiguration so, dass das benutzerdefinierte Image in der **Docker-Container**-Einstellung im Azure-Portal verwendet wird. Verwenden Sie für ein integriertes Image den Dateiuploadansatz, um die Bereitstellung durchzuführen.
+11. Die Bereitstellung schlägt fehl, wenn Sie eine integrierte Docker-Imageeinstellung verwenden. Ändern Sie die Docker-Konfiguration so, dass das benutzerdefinierte Image in der **Docker-Container**-Einstellung im Azure-Portal verwendet wird. Verwenden Sie für ein integriertes Image den Dateiuploadansatz, um die Bereitstellung durchzuführen.
 12. Ähnlich wie beim Dateiuploadansatz können Sie einen anderen **Slot**-Namen als den **Produktionsslot** auswählen.
 13. Speichern und erstellen Sie das Projekt. Ihr Containerimage wird per Pushvorgang in Ihre Registrierung übermittelt und die Web-App bereitgestellt.
 
 ### <a name="deploy-web-app-for-containers-by-using-jenkins-pipeline"></a>Bereitstellen von Web-App für Container mithilfe der Jenkins-Pipeline
 
-1. Öffnen Sie in der GitHub-Benutzeroberfläche die Datei „**Jenkinsfile_container_plugin**“. Klicken Sie zum Bearbeiten der Datei auf das Stiftsymbol. Aktualisieren Sie jeweils die Definitionen **resourceGroup** und **webAppName** in Zeile 11 und 12 für Ihre Web-App:
+1. Öffnen Sie in der GitHub-Benutzeroberfläche die Datei **Jenkinsfile_container_plugin**. Klicken Sie zum Bearbeiten der Datei auf das Stiftsymbol. Aktualisieren Sie jeweils die Definitionen **resourceGroup** und **webAppName** in Zeile 11 und 12 für Ihre Web-App:
     ```java
     def resourceGroup = '<myResourceGroup>'
     def webAppName = '<myAppName>'

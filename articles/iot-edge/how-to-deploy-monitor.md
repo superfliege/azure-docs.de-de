@@ -6,14 +6,14 @@ keywords:
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/05/2017
+ms.date: 12/07/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: b507b9108dca2fd3aee4acdac231acad9c9154e8
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: cc7d1e290465d9254cbd7fe9e8ba71cc740b0368
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale---preview"></a>Bereitstellen und Überwachen von IoT Edge-Modulen im großen Maßstab – Vorschau
 
@@ -40,7 +40,7 @@ Weitere Informationen zu Gerätezwillingen und Tags finden Sie unter [Verstehen 
 
 ## <a name="create-a-deployment"></a>Erstellen einer Bereitstellung
 
-1. Melden Sie sich beim [Azure-Portal][lnk-portal] an, und navigieren Sie zu Ihrem IoT Hub. 
+1. Navigieren Sie im [Azure-Portal][lnk-portal] zu Ihrem IoT-Hub. 
 1. Wählen Sie **IoT Edge (Vorschau)** aus.
 1. Wählen Sie **IoT Edge-Bereitstellung hinzufügen** aus.
 
@@ -61,26 +61,25 @@ Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle vorhandenen Modu
 >[!NOTE]
 >Azure Machine Learning und Azure Functions unterstützen die automatisierte Azure-Dienstbereitstellung noch nicht. Verwenden Sie die benutzerdefinierte Modulbereitstellung, um diese Dienste manuell zu Ihrer Bereitstellung hinzuzufügen. 
 
-So fügen Sie ein Modul aus einem Azure-Dienst hinzu:
-1. Wählen Sie **Add Azure Service IoT Edge Module** (IoT Edge-Modul aus Azure-Dienst hinzufügen) aus.
+Führen Sie die folgenden Schritte aus, um ein Modul aus Azure Stream Analytics hinzuzufügen:
+1. Wählen Sie **Import Azure Stream Analytics IoT Edge module** (Azure Stream Analytics-IoT-Edge-Modul importieren) aus.
 1. Wählen Sie über die Dropdownmenüs die Azure-Dienstinstanzen aus, die Sie bereitstellen möchten.
-1. Klicken Sie auf **Speichern**, um die Module zur Bereitstellung hinzuzufügen. 
+1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
 
 So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul manuell hinzu:
-1. Wählen Sie **Add Custom IoT Edge Module** (Benutzerdefiniertes IoT Edge-Modul hinzufügen) aus.
+1. Wählen Sie **IoT Edge-Modul hinzufügen** aus.
 1. Geben Sie dem Modul einen **Namen**.
-1. Geben Sie im Feld **Image** das Docker-Containerimage für dieses Modul an: `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`.
-1. Geben Sie über die Dropdownmenüs unter **OS** (Betriebssystem) und **Architektur** die Eigenschaften des Docker-Containers an, der dieses Modul darstellt. 
-1. Geben Sie unter **Create Options** (Erstellungsoptionen) alle erforderlichen Optionen an, die an den Container übergeben werden sollen. Weitere Informationen finden Sie unter [docker create][lnk-docker-create].
+1. Geben Sie im Feld **Image-URI** das Image des Docker-Containers für Ihr Modul ein. 
+1. Legen Sie alle **Optionen zur Containererstellung** fest, die an den Container übergeben werden sollen. Weitere Informationen finden Sie unter [docker create][lnk-docker-create].
 1. Wählen Sie über das Dropdownmenü eine **Neustartrichtlinie** aus. Sie können zwischen folgenden Optionen wählen: 
    * **Immer**: Das Modul wird stets neu gestartet, wenn es aus irgendeinem Grund beendet wird.
    * **Nie**: Das Modul wird niemals neu gestartet, wenn es aus irgendeinem Grund beendet wird.
    * **On-failed** (Bei Absturz): Das Modul wird neu gestartet, wenn es abgestürzt ist, aber nicht ordnungsgemäß heruntergefahren wurde. 
    * **On-unhealthy** (Bei Fehler): Das Modul wird neu gestartet, wenn es abstürzt oder einen Integritätsfehlerstatus zurückgibt. Die Implementierung der Integritätsstatusfunktion ist modulspezifisch unterschiedlich. 
-1. Wählen Sie über das Dropdownmenü den **Startstatus** für das Modul aus. Sie können zwischen folgenden Optionen wählen:
+1. Wählen Sie über das Dropdownmenü den **Gewünschten Status** für das Modul aus. Sie können zwischen folgenden Optionen wählen:
    * **Wird ausgeführt**: Dies ist die Standardoption. Das Modul wird unmittelbar nach Bereitstellung gestartet.
    * **Beendet**: Nach der Bereitstellung verbleibt das Modul im Leerlauf, bis der Start durch Sie oder ein anderes Modul ausgelöst wird.
-1. Klicken Sie auf **Edit Module Twin** (Modulzwilling bearbeiten), wenn Sie Tags oder gewünschte Eigenschaften zum Modul hinzufügen möchten. 
+1. Wählen Sie **Aktivieren** aus, wenn Sie dem Modulzwilling Tags oder gewünschte Eigenschaften hinzufügen möchten. 
 1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
 
 Nachdem Sie alle Module für eine Bereitstellung konfiguriert haben, klicken Sie auf **Weiter**, um mit Schritt 3 fortzufahren.
@@ -149,7 +148,7 @@ Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen:
 1. Nehmen Sie die gewünschten Änderungen an den folgenden Feldern vor: 
    * Zielbedingung 
    * Bezeichnungen 
-   * Priority 
+   * Priorität 
 1. Wählen Sie **Speichern** aus.
 1. Führen Sie die unter [Überwachen eine Bereitstellung][anchor-monitor] beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten. 
 
@@ -172,7 +171,7 @@ Wenn Sie eine Bereitstellung löschen, übernehmen alle Geräte die Bereitstellu
 Weitere Informationen über das [Bereitstellen von Modulen auf Edge-Geräten][lnk-deployments]
 
 <!-- Images -->
-[1]: ./media/how-to-deploy-monitor/view-deployments.png
+[1]: ./media/how-to-deploy-monitor/iot-edge-deployments.png
 
 <!-- Links -->
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md

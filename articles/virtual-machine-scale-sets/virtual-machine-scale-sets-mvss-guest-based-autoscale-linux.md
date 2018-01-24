@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie die Autoskalierung mit Gastmetriken in einer
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
-ms.openlocfilehash: 98635ea6695fdb1e55456b5b6a293a3b4ad9d839
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e822d83dd3bafabfea60ad50224c87df226bdc6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Autoskalierung mit Gastmetriken in einer Linux-Skalierungsgruppenvorlage
 
@@ -29,9 +29,9 @@ Hostmetriken sind einfacher und zuverlässiger. Sie erfordern keine zusätzliche
 
 ## <a name="change-the-template-definition"></a>Ändern der Vorlagendefinition
 
-Unsere Vorlage für die kleinstmögliche Skalierungsgruppe finden Sie [hier](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), und unsere Vorlage für die Bereitstellung der Linux-Skalierungsgruppe mit gastbasierter Autoskalierung finden Sie [hier](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json). Sehen wir uns die Diff zum Erstellen dieser Vorlage (`git diff minimum-viable-scale-set existing-vnet`) Stück für Stück an:
+Die Vorlage für die kleinstmögliche Skalierungsgruppe finden Sie [hier](https://raw.githubusercontent.com/gatneil/mvss/minimum-viable-scale-set/azuredeploy.json), und die Vorlage für die Bereitstellung der Linux-Skalierungsgruppe mit gastbasierter automatischer Skalierung finden Sie [hier](https://raw.githubusercontent.com/gatneil/mvss/guest-based-autoscale-linux/azuredeploy.json). Sehen wir uns die Diff zum Erstellen dieser Vorlage (`git diff minimum-viable-scale-set existing-vnet`) Stück für Stück an:
 
-Zunächst fügen wir Parameter für `storageAccountName` und `storageAccountSasToken` hinzu. Der Diagnose-Agent speichert Metrikdaten in einer [Tabelle](../cosmos-db/table-storage-how-to-use-dotnet.md) in diesem Speicherkonto. Ab Version 3.0 des Linux-Diagnose-Agents wird der Speicherzugriffsschlüssel nicht mehr unterstützt. Daher müssen wir ein [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md) verwenden.
+Fügen Sie zunächst Parameter für `storageAccountName` und `storageAccountSasToken` hinzu. Der Diagnose-Agent speichert Metrikdaten in einer [Tabelle](../cosmos-db/table-storage-how-to-use-dotnet.md) in diesem Speicherkonto. Ab Version 3.0 des Linux-Diagnose-Agents wird der Speicherzugriffsschlüssel nicht mehr unterstützt. Verwenden Sie daher stattdessen ein [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ```diff
      },
@@ -47,7 +47,7 @@ Zunächst fügen wir Parameter für `storageAccountName` und `storageAccountSasT
    },
 ```
 
-Im nächsten Schritt fügen wir der Skalierungsgruppe `extensionProfile` die Diagnoseerweiterung hinzu. Bei dieser Konfiguration geben wir die Ressourcen-ID der Skalierungsgruppe an, von der Metriken gesammelt werden sollen. Weiterhin geben wir das Speicherkonto und das SAS-Token an, die zum Speichern der Metriken verwendet werden sollen. Ferner geben wir an, wie häufig die Metriken aggregiert werden (hier minütlich) und welche Metriken verfolgt werden sollen (hier Prozent des verbrauchten Speichers). Weitere Informationen über diese Konfiguration und andere Metriken als den Prozentsatz des verbrauchten Speichers finden Sie in [dieser Dokumentation](../virtual-machines/linux/diagnostic-extension.md).
+Fügen Sie im nächsten Schritt der Skalierungsgruppe `extensionProfile` die Diagnoseerweiterung hinzu. Geben Sie bei dieser Konfiguration die Ressourcen-ID der Skalierungsgruppe an, von der Metriken gesammelt werden sollen. Geben Sie weiterhin das Speicherkonto und das SAS-Token an, die zum Speichern der Metriken verwendet werden sollen. Geben Sie ferner an, wie häufig die Metriken aggregiert werden (hier minütlich) und welche Metriken verfolgt werden sollen (hier Prozent des belegten Speichers). Weitere Informationen über diese Konfiguration und andere Metriken als den Prozentsatz des verbrauchten Speichers finden Sie in [dieser Dokumentation](../virtual-machines/linux/diagnostic-extension.md).
 
 ```diff
                  }
@@ -110,7 +110,7 @@ Im nächsten Schritt fügen wir der Skalierungsgruppe `extensionProfile` die Dia
        }
 ```
 
-Schließlich fügen wir eine `autoscaleSettings`-Ressource hinzu, damit wir basierend auf diesen Metriken die Autoskalierung konfigurieren können. Diese Ressource verfügt über eine `dependsOn`-Klausel, die auf die Skalierungsgruppe verweist. So wird vor dem Autoskalierungsversuch sichergestellt, dass die Skalierungsgruppe existiert. Wenn wir eine andere Metrik für die Autoskalierung auswählen, würden wir den `counterSpecifier` aus der Konfiguration der Diagnoseerweiterung als `metricName` in der Autoskalierungskonfiguration verwenden. Weitere Informationen über das Konfigurieren der Autoskalierung finden Sie in [Bewährte Methoden für die automatische Skalierung](..//monitoring-and-diagnostics/insights-autoscale-best-practices.md) und der Referenzdokumentation der [Azure Monitor REST-API](https://msdn.microsoft.com/library/azure/dn931928.aspx).
+Fügen Sie schließlich eine `autoscaleSettings`-Ressource hinzu, um basierend auf diesen Metriken die automatische Skalierung konfigurieren zu können. Diese Ressource verfügt über eine `dependsOn`-Klausel, die auf die Skalierungsgruppe verweist. So wird vor dem Autoskalierungsversuch sichergestellt, dass die Skalierungsgruppe existiert. Wenn Sie eine andere Metrik für die automatische Skalierung auswählen, würden Sie den `counterSpecifier` aus der Konfiguration der Diagnoseerweiterung als `metricName` in der Konfiguration der automatischen Skalierung verwenden. Weitere Informationen über das Konfigurieren der Autoskalierung finden Sie in [Bewährte Methoden für die automatische Skalierung](..//monitoring-and-diagnostics/insights-autoscale-best-practices.md) und der Referenzdokumentation der [Azure Monitor REST-API](https://msdn.microsoft.com/library/azure/dn931928.aspx).
 
 ```diff
 +    },

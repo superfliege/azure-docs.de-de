@@ -4,7 +4,7 @@ description: Informationen zum Installieren und Konfigurieren von MongoDB auf ei
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 3f55b546-86df-4442-9ef4-8a25fae7b96e
 ms.service: virtual-machines-linux
@@ -12,16 +12,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/23/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: e19c09558285497f29eb78b4f4ae5b15d7f1a191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a9797e1fe3d03840e3a20589a50c90968ea5de0
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer
-[MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. In diesem Artikel wird das Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 beschrieben. Sie können diese Schritte auch mit [Azure CLI 1.0](install-mongodb-nodejs.md) ausführen. Hier finden Sie Beispiele mit Informationen zu den folgenden Schritten:
+[MongoDB](http://www.mongodb.org) ist eine beliebte, leistungsfähige Open Source-NoSQL-Datenbank. In diesem Artikel wird das Installieren und Konfigurieren von MongoDB auf einem virtuellen Linux-Computer mithilfe von Azure CLI 2.0 beschrieben. Sie können diese Schritte auch per [Azure CLI 1.0](install-mongodb-nodejs.md) ausführen. Hier finden Sie Beispiele mit Informationen zu den folgenden Schritten:
 
 * [Manuelles Installieren und Konfigurieren einer einfachen MongoDB-Instanz](#manually-install-and-configure-mongodb-on-a-vm)
 * [Erstellen einer einfachen MongoDB-Instanz mithilfe einer Resource Manager-Vorlage](#create-basic-mongodb-instance-on-centos-using-a-template)
@@ -57,18 +57,18 @@ ssh azureuser@<publicIpAddress>
 Erstellen Sie zum Hinzufügen der Installationsquellen für MongoDB wie folgt eine **yum**-Repositorydatei:
 
 ```bash
-sudo touch /etc/yum.repos.d/mongodb-org-3.4.repo
+sudo touch /etc/yum.repos.d/mongodb-org-3.6.repo
 ```
 
-Öffnen Sie die MongoDB-Repositorydatei zur Bearbeitung. Fügen Sie die folgenden Zeilen hinzu:
+Öffnen Sie die MongoDB-Repositorydatei zur Bearbeitung, wie z.B. mit `vi` oder `nano`. Fügen Sie die folgenden Zeilen hinzu:
 
 ```sh
-[mongodb-org-3.4]
+[mongodb-org-3.6]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.4/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.6/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-3.6.asc
 ```
 
 Installieren Sie MongoDB wie folgt per **yum**:
@@ -125,26 +125,17 @@ Zum Erstellen dieser Umgebung muss die neueste Version von [Azure CLI 2.0](/cli/
 az group create --name myResourceGroup --location eastus
 ```
 
-Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#create) die MongoDB-Vorlage bereit. Definieren Sie bei Bedarf Ihre eigenen Ressourcennamen und -größen, z.B. für *newStorageAccountName*, *virtualNetworkName* und *vmSize*:
+Stellen Sie als Nächstes mit dem Befehl [az group deployment create](/cli/azure/group/deployment#create) die MongoDB-Vorlage bereit. Geben Sie bei Aufforderung Ihre eigenen eindeutigen Werte für *newStorageAccountName*, *dnsNameForPublicIP* sowie den Administratorbenutzernamen und das Kennwort an:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
-  --parameters '{"newStorageAccountName": {"value": "mystorageaccount"},
-    "adminUsername": {"value": "azureuser"},
-    "adminPassword": {"value": "P@ssw0rd!"},
-    "dnsNameForPublicIP": {"value": "mypublicdns"},
-    "virtualNetworkName": {"value": "myVnet"},
-    "vmSize": {"value": "Standard_DS2_v2"},
-    "vmName": {"value": "myVM"},
-    "publicIPAddressName": {"value": "myPublicIP"},
-    "nicName": {"value": "myNic"}}' \
   --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 ```
 
 Melden Sie sich bei dem virtuellen Computer mit der öffentlichen DNS-Adresse des virtuellen Computers an. Sie können die öffentliche DNS-Adresse mit dem Befehl [az vm show](/cli/azure/vm#show) anzeigen:
 
 ```azurecli
-az vm show -g myResourceGroup -n myVM -d --query [fqdns] -o tsv
+az vm show -g myResourceGroup -n myLinuxVM -d --query [fqdns] -o tsv
 ```
 
 Stellen Sie eine SSH-Verbindung mit dem virtuellen Computer unter Verwendung Ihres eigenen Benutzernamens und der öffentlichen DNS-Adresse her:
@@ -172,7 +163,7 @@ test
 
 
 ## <a name="create-a-complex-mongodb-sharded-cluster-on-centos-using-a-template"></a>Erstellen eines komplexen MongoDB-Shardclusters unter CentOS mithilfe einer Vorlage
-Sie können mithilfe der folgenden Azure-Schnellstartvorlage von GitHub einen komplexen MongoDB-Shardcluster erstellen. Diese Vorlage basiert auf den [bewährten Methoden für MongoDB-Shardcluster](https://docs.mongodb.com/manual/core/sharded-cluster-components/), um Redundanz und hohe Verfügbarkeit zu gewährleisten. Die Vorlage erstellt zwei Shards mit drei Knoten in jeder Replikatgruppe. Darüber hinaus werden eine Konfigurationsserver-Replikatgruppe mit drei Knoten sowie zwei **mongos**-Routerserver erstellt, um Konsistenz für Anwendungen auf allen Shards zu ermöglichen.
+Sie können mithilfe der folgenden Azure-Schnellstartvorlage von GitHub einen komplexen MongoDB-Shardcluster erstellen. Diese Vorlage basiert auf den [bewährten Methoden für MongoDB-Shardcluster](https://docs.mongodb.com/manual/core/sharded-cluster-components/), um Redundanz und Hochverfügbarkeit zu gewährleisten. Die Vorlage erstellt zwei Shards mit drei Knoten in jeder Replikatgruppe. Darüber hinaus werden eine Konfigurationsserver-Replikatgruppe mit drei Knoten sowie zwei **mongos**-Routerserver erstellt, um Konsistenz für Anwendungen auf allen Shards zu ermöglichen.
 
 * [MongoDB Sharding Cluster on CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-sharding-centos) (MongoDB-Shardcluster unter CentOS) – https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-sharding-centos/azuredeploy.json
 

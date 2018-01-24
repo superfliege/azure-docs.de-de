@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: e18645667cfb126ae2f2f9c8074fdcff5a6ade1b
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 1988bc7ab5b498db32d7bb40623f1194d7290b94
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Firewallregeln auf Server- und Datenbankebene für Azure SQL-Datenbank 
 
@@ -45,6 +45,10 @@ Verbindungsversuche über das Internet und Azure müssen zunächst die Firewall 
 * **Firewallregeln auf Datenbankebene**: Diese Regeln ermöglichen Clients, auf bestimmte (sichere) Datenbanken innerhalb desselben logischen Servers zuzugreifen. Sie können diese Regeln für jede Datenbank (einschließlich der Datenbank **master**) erstellen, die in den einzelnen Datenbanken gespeichert werden. Firewallregeln auf Datenbankebene für Master- und Benutzerdatenbanken können nur mithilfe von Transact-SQL-Anweisungen erstellt und verwaltet werden und erst dann, nachdem Sie die erste Firewall auf Serverebene konfiguriert haben. Wenn Sie in der Firewallregel auf Datenbankebene einen IP-Adressbereich angeben, der außerhalb des Bereichs liegt, der in der Firewallregel auf Serverebene angegeben ist, können nur die Clients auf die Datenbank zugreifen, die IP-Adressen in dem auf Datenbankebene angegebenen Bereich aufweisen. Es können maximal 128 Firewallregeln auf Datenbankebene für eine Datenbank verwendet werden. Weitere Informationen zum Konfigurieren von Firewallregeln auf Datenbankebene finden Sie im Beispiel weiter unten in diesem Artikel und unter [sp_set_database_firewall_rule (Azure SQL-Datenbanken)](https://msdn.microsoft.com/library/dn270010.aspx).
 
 **Empfehlung:** Microsoft empfiehlt, nach Möglichkeit Firewallregeln auf Datenbankebene zu verwenden, um die Sicherheit und die Portabilität der Datenbank zu verbessern. Verwenden Sie Firewallregeln auf Serverebene für Administratoren und wenn Sie über viele Datenbanken mit identischen Zugriffsanforderungen verfügen und die Datenbanken nicht einzeln konfigurieren möchten.
+
+> [!Important]
+> Microsoft Azure SQL-Datenbank unterstützt maximal 128 Firewallregeln.
+>
 
 > [!Note]
 > Informationen zu portablen Datenbanken im Kontext der Geschäftskontinuität finden Sie unter [Authentifizierungsanforderungen für die Notfallwiederherstellung](sql-database-geo-replication-security-config.md).
@@ -109,7 +113,7 @@ Die Übersichtsseite für Ihren Server wird geöffnet, die den vollqualifizierte
 2. Klicken Sie auf der Symbolleiste auf **Client-IP-Adresse hinzufügen**, um die IP-Adresse des Computers hinzuzufügen, den Sie derzeit verwenden. Klicken Sie dann auf **Speichern**. Eine Firewallregel auf Serverebene wird für Ihre aktuelle IP-Adresse erstellt.
 
 ## <a name="manage-firewall-rules-using-transact-sql"></a>Verwalten von Firewallregeln mit Transact-SQL
-| Katalogsicht oder gespeicherte Prozedur | Ebene | Beschreibung |
+| Katalogsicht oder gespeicherte Prozedur | Ebene | BESCHREIBUNG |
 | --- | --- | --- |
 | [sys.firewall_rules](https://msdn.microsoft.com/library/dn269980.aspx) |Server |Zeigt die aktuellen Firewallregeln auf Serverebene an. |
 | [sp_set_firewall_rule](https://msdn.microsoft.com/library/dn270017.aspx) |Server |Erstellt oder aktualisiert Firewallregeln auf Serverebene. |
@@ -139,7 +143,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ```   
 
 ## <a name="manage-firewall-rules-using-azure-powershell"></a>Verwalten von Firewallregeln mit Azure PowerShell
-| Cmdlet | Ebene | Beschreibung |
+| Cmdlet | Ebene | BESCHREIBUNG |
 | --- | --- | --- |
 | [Get-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/get-azurermsqlserverfirewallrule) |Server |Gibt die aktuellen Firewallregeln auf Serverebene zurück. |
 | [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) |Server |Erstellt eine neue Firewallregel auf Serverebene. |
@@ -160,7 +164,7 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 >
 
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Verwalten von Firewallregeln mit Azure CLI
-| Cmdlet | Ebene | Beschreibung |
+| Cmdlet | Ebene | BESCHREIBUNG |
 | --- | --- | --- |
 |[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Server|Erstellt eine Serverfirewallregel|
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Server|Listet die Firewallregeln auf einem Server auf|
@@ -180,7 +184,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 >
 
 ## <a name="manage-firewall-rules-using-rest-api"></a>Verwalten von Firewallregeln mithilfe der REST-API
-| API | Ebene | Beschreibung |
+| API | Ebene | BESCHREIBUNG |
 | --- | --- | --- |
 | [List Firewall Rules](https://docs.microsoft.com/rest/api/sql/FirewallRules/ListByServer) |Server |Zeigt die aktuellen Firewallregeln auf Serverebene an. |
 | [Create or Update Firewall Rule](https://docs.microsoft.com/rest/api/sql/FirewallRules/CreateOrUpdate) |Server |Erstellt oder aktualisiert Firewallregeln auf Serverebene. |

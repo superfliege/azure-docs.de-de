@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte in Azure AD .NET | Microsoft-Dokumentation
+title: Erste Schritte mit .NET-Desktop (WPF) in Azure AD | Microsoft-Dokumentation
 description: "In diesem Thema erfahren Sie, wie eine .NET Windows Desktop-Anwendung erstellt wird, die sich für die Anmeldung in Azure AD integriert und über OAuth durch Azure AD geschützte APIs aufruft."
 services: active-directory
 documentationcenter: .net
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 41abe20d778a8c51c6b19733ddf5426d12d8751e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e1ca92b1d1ae015add539ef03a358f7a53bc3a6d
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
-# <a name="integrate-azure-ad-into-a-windows-desktop-wpf-app"></a>Integrieren von Azure AD in einer Windows-Desktop-WPF-Anwendung
+# <a name="azure-ad-net-desktop-wpf-getting-started"></a>Erste Schritte mit .NET-Desktop (WPF) in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -45,7 +45,7 @@ Beginnen Sie, indem Sie das [Anwendungsgerüst](https://github.com/AzureADQuickS
 ## <a name="1-register-the-directorysearcher-application"></a>1. Registrieren der Anwendung DirectorySearcher
 Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen**.
@@ -85,7 +85,7 @@ public MainWindow()
 }
 ```
 
-* Suchen Sie jetzt die Methode `Search(...)` , die aufgerufen wird, wenn der Benutzer auf die Suchschaltfläche in der Benutzeroberfläche der Anwendung klickt.  Diese Methode übergibt der Azure AD Graph-API eine GET-Anforderung für die Suche nach Benutzern, deren UPNs mit dem angegebenen Suchbegriff beginnen.  Für die Abfrage der Graph-API müssen Sie dem `Authorization`-Header der Anforderung jedoch ein Zugriffstoken hinzufügen – und hier kommt ADAL ins Spiel.
+* Suchen Sie jetzt die Methode `Search(...)` , die aufgerufen wird, wenn der Benutzer auf die Suchschaltfläche auf der Benutzeroberfläche der App klickt.  Diese Methode übergibt der Azure AD Graph-API eine GET-Anforderung für die Suche nach Benutzern, deren UPNs mit dem angegebenen Suchbegriff beginnen.  Für die Abfrage der Graph-API müssen Sie dem `Authorization`-Header der Anforderung jedoch ein Zugriffstoken hinzufügen – und hier kommt ADAL ins Spiel.
 
 ```C#
 private async void Search(object sender, RoutedEventArgs e)
@@ -162,9 +162,9 @@ public async void CheckForCachedToken()
 
 Glückwunsch! Sie haben nun eine funktionierende .NET WPF-Anwendung, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann.  Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen.  Führen Sie danach Ihre DirectorySearcher-Anwendung aus, und melden Sie sich unter einem dieser Benutzer an.  Suchen Sie anhand des UPN nach anderen Benutzern.  Schließen Sie die Anwendung, und führen Sie sie erneut aus.  Wie Sie sehen, bleibt die Benutzersitzung erhalten.  Melden Sie sich ab und unter einem anderen Benutzer wieder an.
 
-ADAL erleichtert Ihnen die Integration all dieser allgemeinen Identitätsfunktionen in Ihrer Anwendung.  Es übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Tokens und vieles mehr.  Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `authContext.AcquireTokenAsync(...)`.
+ADAL erleichtert Ihnen die Integration all dieser allgemeinen Identitätsfunktionen in Ihrer Anwendung.  Die Datei übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Token und vieles mehr.  Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `authContext.AcquireTokenAsync(...)`.
 
-Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)das vollständige Beispiel (ohne Ihre Konfigurationswerte) bereit.  Sie können sich nun weiteren Szenarien zuwenden.  Wie wäre es zum Beispiel mit Folgendem:
+Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClient-DotNet/archive/complete.zip)das vollständige Beispiel (ohne Ihre Konfigurationswerte) bereit.  Sie können sich nun weiteren Szenarien zuwenden.  Sie können beispielsweise Folgendes testen:
 
 [Schützen einer .NET Web-API mit Azure AD &gt;&gt;](active-directory-devquickstarts-webapi-dotnet.md)
 

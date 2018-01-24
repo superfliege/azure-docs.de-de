@@ -1,24 +1,16 @@
 ---
-title: "Überprüfen der Architektur für die Hyper-V-Replikation an einem sekundären Standort mit Azure Site Recovery | Microsoft-Dokumentation"
+title: "Architektur der Replikation von Hyper-V zu einem sekundären Standort in Azure Site Recovery | Microsoft-Dokumentation"
 description: "Dieser Artikel bietet einen Überblick über die Architektur zum Replizieren lokaler virtueller Hyper-V-Computer an einem sekundären System Center-VMM-Standort mit Azure Site Recovery."
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 26475782-a21a-408a-b089-35382d7e010e
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: a7a493097a4eaacc2c8d8449906b4a57eb411827
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3380d189518f811ca6cf628608a253e5d93b2730
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="hyper-v-replication-to-a-secondary-site"></a>Hyper-V-Replikation an einem sekundären Standort
 
@@ -51,20 +43,18 @@ Die folgende Tabelle und Grafik bietet eine Übersicht der Komponenten, die für
 
 ## <a name="failover-and-failback-process"></a>Failover- und Failbackprozesse
 
-1. Sie können ein Failover für einen einzelnen Computer ausführen oder Wiederherstellungspläne erstellen, um das Failover von mehreren Computern zu orchestrieren.
-2. Sie können ein geplantes oder ungeplantes Failover zwischen lokalen Standorten ausführen. Wenn Sie ein geplantes Failover durchführen, werden die Quell-VMs heruntergefahren, um sicherzustellen, dass kein Datenverlust auftritt.
+- Sie können ein Failover für einen einzelnen Computer ausführen oder Wiederherstellungspläne erstellen, um das Failover von mehreren Computern zu orchestrieren.
+- Sie können ein geplantes oder ungeplantes Failover zwischen lokalen Standorten ausführen. Wenn Sie ein geplantes Failover durchführen, werden die Quell-VMs heruntergefahren, um sicherzustellen, dass kein Datenverlust auftritt.
     - Nach einem nicht geplanten Failover zu einem sekundären Standort sind die Computer am sekundären Standort nicht geschützt.
     - Nach einem geplanten Failover sind die Computer am sekundären Standort geschützt.
-3. Nachdem das erste Failover ausgeführt wird, committen Sie es, um von der Replikat-VM auf die Workload zuzugreifen.
-
-Sie können ein Failback ausführen, wenn der primäre Standort wieder verfügbar ist.
-
-1. Leiten Sie eine umgekehrte Replikation ein, um die Replikation vom sekundären an den primären Standort zu starten. Die umgekehrte Replikation versetzt die virtuellen Computer in einen geschützten Zustand, aber das sekundäre Rechenzentrum bleibt weiterhin aktiv.
-2. Initiieren Sie ein geplantes Failover vom sekundären zum primären Standort, und führen Sie anschließend eine erneute umgekehrte Replikation durch, um den primären Standort wieder zum aktiven Standort zu machen.
+- Nachdem das erste Failover ausgeführt wird, committen Sie es, um von der Replikat-VM auf die Workload zuzugreifen.
+- Sie können ein Failback ausführen, wenn der primäre Standort wieder verfügbar ist.
+    - Leiten Sie eine umgekehrte Replikation ein, um die Replikation vom sekundären an den primären Standort zu starten. Die umgekehrte Replikation versetzt die virtuellen Computer in einen geschützten Zustand, aber das sekundäre Rechenzentrum bleibt weiterhin aktiv.
+    - Initiieren Sie ein geplantes Failover vom sekundären zum primären Standort, und führen Sie anschließend eine erneute umgekehrte Replikation durch, um den primären Standort wieder zum aktiven Standort zu machen.
 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Überprüfen Sie die Supportmatrix. Folgen Sie dem Tutorial, um die Hyper-V-Replikation zwischen VMM-Clouds zu aktivieren.
-Führen Sie ein Failover und ein Failback aus.
+
+Absolvieren Sie [dieses Tutorial](tutorial-vmm-to-vmm.md), um die Hyper-V-Replikation zwischen VMM-Clouds zu aktivieren.

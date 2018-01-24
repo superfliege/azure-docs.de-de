@@ -4,21 +4,21 @@ description: Erneutes Bereitstellen von virtuellen Linux-Computern zum Beheben v
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 tags: azure-resource-manager,top-support-issue
 ms.assetid: e9530dd6-f5b0-4160-b36b-d75151d99eb7
 ms.service: virtual-machines-linux
 ms.devlang: azurecli
-ms.topic: troubleshooting
+ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/23/2017
+ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 7bf69b2a3c006faa0dc0144313e5ebb64e941e2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29e41b100f594d044e00054c91fb0095679ca627
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="redeploy-linux-virtual-machine-to-new-azure-node"></a>Erneutes Bereitstellen eines virtuellen Linux-Computers in einem neuen Azure-Knoten
 Wenn Sie Schwierigkeiten mit der Problembehandlung bei SSH oder dem Anwendungszugriff auf einen virtuellen Linux-Computer in Azure haben, lassen sich diese u.U. durch erneutes Bereitstellen des virtuellen Computers beseitigen. Wenn Sie einen virtuellen Computer erneut bereitstellen, wird er innerhalb der Azure-Infrastruktur auf einen neuen Knoten verschoben und dann wieder eingeschaltet. Dabei werden alle Ihre Konfigurationsoptionen und zugehörigen Ressourcen beibehalten. In diesem Artikel erfahren Sie, wie ein virtueller Computer mithilfe der Azure-Befehlszeilenschnittstelle oder dem Azure-Portal erneut bereitgestellt wird.
@@ -33,7 +33,7 @@ Sie können einen virtuellen Computer mithilfe einer der folgenden Optionen erne
 - [Azure-Portal](#using-azure-portal)
 
 ## <a name="use-the-azure-cli-20"></a>Verwenden von Azure CLI 2.0
-Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei einem Azure-Konto an.
+Installieren Sie die neueste Version von [Azure CLI 2.0](/cli/azure/install-az-cli2), und melden Sie sich mit [az login](/cli/azure/#login) bei Ihrem Azure-Konto an.
 
 Stellen Sie mit [az vm redeploy](/cli/azure/vm#redeploy) Ihren virtuellen Computer erneut bereit. Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* erneut bereitgestellt:
 
@@ -42,7 +42,7 @@ az vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="use-the-azure-cli-10"></a>Verwenden der Azure-Befehlszeilenschnittstelle 1.0
-Installieren Sie die [Azure-Befehlszeilenschnittstelle 1.0](../../cli-install-nodejs.md), melden Sie sich bei einem Azure-Konto an, und stellen Sie sicher, dass der Resource Manager-Modus (`azure config mode arm`) aktiviert ist.
+Installieren Sie die [neueste Version von Azure CLI 1.0](../../cli-install-nodejs.md), und melden Sie sich bei Ihrem Azure-Konto an. Stellen Sie sicher, dass Sie sich im Resource Manager-Modus befinden (`azure config mode arm`).
 
 Im folgenden Beispiel wird die VM *myVM* in der Ressourcengruppe *myResourceGroup* erneut bereitgestellt:
 

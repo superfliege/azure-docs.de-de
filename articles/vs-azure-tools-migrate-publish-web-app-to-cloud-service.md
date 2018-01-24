@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
 ms.author: kraigb
-ms.openlocfilehash: d5d41ab47c17a024900efc88ba0a006da63ab246
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 1ced364bed821a9391f8ffd049f61ac236d98309
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="how-to-migrate-and-publish-a-web-application-to-an-azure-cloud-service-from-visual-studio"></a>Vorgehensweise: Migrieren und Veröffentlichen einer Webanwendung in einem Azure-Clouddienst aus Visual Studio
 
@@ -29,7 +29,7 @@ Um die Vorteile der Hostingdienste und der Skalierbarkeit von Azure zu nutzen, k
 
 ## <a name="migrate-a-project-to-cloud-services"></a>Migrieren eines Projekts zu Clouddiensten
 
-1. Klicken Sie mit der rechten Maustaste auf das Webanwendungsprojekt, und wählen Sie **Konvertieren > In Microsoft Azure Cloud Services-Projekt konvertieren**. (Dieser Befehl wird nicht angezeigt, wenn Sie bereits über ein Webrollenprojekt in der Projektmappe verfügen.)
+1. Klicken Sie mit der rechten Maustaste auf das Webanwendungsprojekt, und wählen Sie **Konvertieren > In Microsoft Azure Cloud Services-Projekt konvertieren**. (Beachten Sie, dass dieser Befehl nicht angezeigt wird, wenn Sie bereits über ein Webrollenprojekt in der Projektmappe verfügen.)
 1. Visual Studio erstellt in der Projektmappe ein Clouddienstprojekt, das die erforderliche Webrolle enthält. Der Name dieses Projekts ist der Name Ihres Anwendungsprojekts mit dem angehängten Suffix `.Azure`.
 1. Visual Studio legt außerdem die **Copy Local**-Eigenschaft für alle Assemblys, die für MVC 2-, MVC 3-, MVC 4- und Silverlight-Geschäftsanwendungen erforderlich sind, auf „true“ fest. Diese Eigenschaft fügt diese Assemblys dem Dienstpaket hinzu, das für die Bereitstellung verwendet wird.
 

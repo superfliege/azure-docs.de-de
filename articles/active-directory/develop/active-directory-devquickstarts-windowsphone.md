@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5edaee6a4adedc440b16e936462df5e224fe8609
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87cf0464a515c8616363d13a16844220acaa51f3
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-a-windows-phone-app"></a>Integrieren von Azure AD in einer Windows Phone-App
+# <a name="azure-ad-windows-phone-getting-started"></a>Erste Schritte mit Windows Phone in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -36,7 +36,7 @@ Bei der Entwicklung einer Windows Phone 8.1-App können Sie Ihre Benutzer mit Az
 > 
 > 
 
-Für systemeigene .NET- Clients, die auf geschützte Ressourcen zugreifen müssen, bietet Azure AD die Active Directory-Authentifizierungsbibliothek (ADAL).  Die einzige Aufgabe von ADAL besteht darin, Ihrer Anwendung das Abrufen von Zugriffstoken zu erleichtern.  Wir wollen Ihnen nun zeigen, wie einfach das geht. Dazu erstellen wir die Windows Phone 8.1-App „Directory Searcher“ mit folgenden Funktionen:
+Für systemeigene .NET- Clients, die auf geschützte Ressourcen zugreifen müssen, bietet Azure AD die Active Directory-Authentifizierungsbibliothek (ADAL).  Die einzige Aufgabe der ADAL besteht darin, Ihrer App das Abrufen von Zugriffstoken zu erleichtern.  Wir wollen Ihnen nun zeigen, wie einfach das geht. Dazu erstellen wir die Windows Phone 8.1-App „Directory Searcher“ mit folgenden Funktionen:
 
 * Abrufen der Zugriffstoken zum Aufrufen der Azure AD Graph-API mit dem [OAuth 2.0-Authentifizierungsprotokoll](https://msdn.microsoft.com/library/azure/dn645545.aspx)
 * Durchsuchen eines Verzeichnisses nach Benutzern mit einem bestimmten UPN
@@ -53,7 +53,7 @@ Beginnen Sie, indem Sie [ein Projektgerüst](https://github.com/AzureADQuickStar
 ## <a name="1-register-the-directory-searcher-application"></a>1. Registrieren der Anwendung DirectorySearcher
 Damit Ihre Anwendung Tokens abrufen kann, müssen Sie sie zunächst beim Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto, und wählen Sie in der Liste **Verzeichnis** den Active Directory-Mandanten aus, für den Sie Ihre Anwendungen registrieren möchten.
 3. Klicken Sie im linken Navigationsbereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen**.
@@ -156,7 +156,7 @@ private async void QueryGraph(AuthenticationResult result)
     ...
 }
 ```
-* Mit dem Objekt `AuthenticationResult` können Sie in Ihrer Anwendung auch Informationen zum Benutzer anzeigen. So zeigt das Ergebnis, in der `QueryGraph(...)` -Methode verwendet, die Benutzer-ID auf der Seite an:
+* Mit dem Objekt `AuthenticationResult` können Sie in Ihrer Anwendung auch Informationen zum Benutzer anzeigen. Verwenden Sie in der `QueryGraph(...)`-Methode das Ergebnis, um die ID des Benutzers auf der Seite anzuzeigen:
 
 ```C#
 // Update the Page UI to represent the signed in user
@@ -176,9 +176,9 @@ private void SignOut()
 
 Glückwunsch! Sie haben nun eine funktionierende Windows Phone-App, die Benutzer authentifizieren, Web-APIs über OAuth 2.0 sicher aufrufen und grundlegende Benutzerinformationen abfragen kann.  Sofern nicht bereits geschehen, ist es nun an der Zeit, Ihren Mandanten mit Benutzern zu füllen.  Führen Sie danach Ihre DirectorySearcher-Anwendung aus, und melden Sie sich unter einem dieser Benutzer an.  Suchen Sie anhand des UPN nach anderen Benutzern.  Schließen Sie die Anwendung, und führen Sie sie erneut aus.  Wie Sie sehen, bleibt die Benutzersitzung erhalten.  Melden Sie sich ab und unter einem anderen Benutzer wieder an.
 
-ADAL erleichtert Ihnen die Integration all dieser allgemeinen Identitätsfunktionen in Ihrer Anwendung.  Es übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Tokens und vieles mehr.  Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `authContext.AcquireToken*(…)`.
+ADAL erleichtert Ihnen die Integration all dieser allgemeinen Identitätsfunktionen in Ihrer Anwendung.  Die Datei übernimmt die unangenehmen Verwaltungsarbeiten für Sie – die Cacheverwaltung, die Unterstützung des OAuth-Protokolls, die Anzeige einer Anmeldeschnittstelle für den Benutzer, die Aktualisierung abgelaufener Token und vieles mehr.  Das Einzige, womit Sie sich noch beschäftigen müssen, ist der API-Aufruf `authContext.AcquireToken*(…)`.
 
-Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClient-WindowsPhone/archive/complete.zip)das vollständige Beispiel (ohne Ihre Konfigurationswerte) bereit.  Sie können sich nun weiteren Identitätsszenarien zuwenden.  Wie wäre es zum Beispiel mit Folgendem:
+Als Referenz stellen wir [hier](https://github.com/AzureADQuickStarts/NativeClient-WindowsPhone/archive/complete.zip)das vollständige Beispiel (ohne Ihre Konfigurationswerte) bereit.  Sie können sich nun weiteren Identitätsszenarien zuwenden.  Sie können beispielsweise Folgendes testen:
 
 [Schützen einer .NET Web-API mit Azure AD &gt;&gt;](active-directory-devquickstarts-webapi-dotnet.md)
 

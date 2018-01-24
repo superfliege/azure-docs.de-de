@@ -1,6 +1,6 @@
 ---
 title: "Azure AD Android – Erste Schritte | Microsoft Docs"
-description: "In diesem Thema erfahren Sie, wie eine Android-Anwendung erstellt wird, die sich für die Anmeldung in Azure AD integriert und über OAuth durch Azure AD geschützte APIs aufruft."
+description: "In diesem Thema erfahren Sie, wie eine Android-Anwendung erstellt wird, die sich für die Anmeldung in Azure AD integriert und über OAuth 2.0 durch Azure AD geschützte APIs aufruft."
 services: active-directory
 documentationcenter: android
 author: danieldobalian
@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 11/30/2017
 ms.author: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 1ea39854766332a87eae4f44f52a4853848d2120
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 619334b3ca65654fd845a62c2fc068156d94d6fc
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-into-an-android-app"></a>Integrieren von Azure AD in eine Android-App
+# <a name="azure-ad-android-getting-started"></a>Azure AD Android – Erste Schritte
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
-
-> [!TIP]
-> Testen Sie die Vorschau unseres neuen [Entwicklerportals](https://identity.microsoft.com/Docs/Android), mit dem Sie Azure AD innerhalb weniger Minuten betriebsbereit machen. Im Entwicklerportal werden Sie durch den Vorgang zum Registrieren einer App und die Integration von Azure AD in Ihren Code geleitet. Nach dem Durchführen dieser Schritte verfügen Sie über eine einfache Anwendung zur Authentifizierung von Benutzern in Ihrem Mandanten sowie über ein Back-End, das Token akzeptieren und eine Überprüfung durchführen kann.
->
->
 
 Bei der Entwicklung einer Desktopanwendung ist es für Sie mit Azure Active Directory (Azure AD) einfach und problemlos möglich, Ihre Benutzer über deren lokale Active Directory-Konten zu authentifizieren. Außerdem kann Ihre Anwendung damit auf sichere Weise alle Web-APIs nutzen, die per Azure AD geschützt sind, z. B. die Office 365-APIs oder die Azure-API.
 
@@ -55,7 +50,7 @@ In diesem Schritt registrieren Sie die Web-API, die Sie lokal zum Testen dieses 
 
 Es wird davon ausgegangen, dass Sie die zuvor erwähnte TODO-REST-API registrieren. Dies funktioniert allerdings für alle Web-APIs, die Sie mit Azure Active Directory schützen möchten.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
@@ -73,7 +68,7 @@ Es wird davon ausgegangen, dass Sie die zuvor erwähnte Beispielanwendung regist
 > [!NOTE]
 > Sie könnten sich fragen, warum Sie eine Anwendung und eine Web-API auf einem Mandanten bereitstellen. Wie Sie vielleicht schon vermuten, können Sie eine App erstellen, von der auf eine externe API zugegriffen wird, die von einem anderen Mandanten aus in Azure AD registriert wurde. Wenn Sie dies tun, werden Ihre Kunden aufgefordert, der Verwendung der API in der Anwendung zuzustimmen. Die Active Directory Authentication Library für iOS führt diese Zustimmung für Sie durch. Wenn wir uns mit den erweiterten Funktionen beschäftigen, werden Sie feststellen, dass dies ein wichtiger Teil der Aufgaben ist, die für den Zugriff auf die Suite der Microsoft-APIs von Azure und Office sowie anderer Dienstanbieter erforderlich sind. Da Sie aber nun sowohl Ihre Web-API als auch Ihre Anwendung unter dem gleichen Mandanten registriert haben, wird Ihnen keine Aufforderung zur Zustimmung angezeigt. Dies ist eher die Regel, wenn Sie eine Anwendung nur für Ihr eigenes Unternehmen entwickeln.
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie in der **Verzeichnis** den Azure AD-Mandanten aus, bei dem Sie Ihre Anwendung registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
@@ -283,7 +278,7 @@ Für eine automatische Tokenanforderung wird die Popup-Benutzeroberfläche nicht
 
 Mit dieser Methode können Sie auch einen Synchronisierungsaufruf durchführen. Sie können „null“ auf „callback“ (Rückruf) festlegen oder acquireTokenSilentSync verwenden.
 
-### <a name="diagnostics"></a>Diagnose
+### <a name="diagnostics"></a>Diagnostics
 Dies sind die wichtigsten Informationsquellen zum Diagnostizieren von Problemen:
 
 * Ausnahmen

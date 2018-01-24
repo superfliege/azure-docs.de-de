@@ -13,20 +13,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 01/03/2018
 ms.author: cynthn
-ms.openlocfilehash: b389151b8a1dd0c7a367f83db968bac7b832897a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 3471792bba92879e446837434cbdba667cf679ad
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrieren von Azure-VMs zu Managed Disks in Azure
 
 Azure Managed Disks vereinfacht die Speicherverwaltung dadurch, dass die gesonderte Verwaltung von Speicherkonten entfällt.  Sie können auch Ihre vorhandenen Azure-VMs zu Managed Disks migrieren, um von der höheren Zuverlässigkeit von VMs in einer Verfügbarkeitsgruppe zu profitieren. Es wird sichergestellt, dass die Datenträger verschiedener VMs in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Datenträger verschiedener VMs werden automatisch in einer Verfügbarkeitsgruppe in unterschiedlichen Skalierungseinheiten von Speicher (sog. „Stamps“) platziert. Dadurch werden die Auswirkungen des Ausfalls einzelner Speicherskalierungseinheiten eingedämmt, die von Hardware- und Softwarefehlern verursacht werden.
 Je nach Anforderungen stehen zwei Typen von Speicheroptionen zur Wahl:
 
-- [Verwaltete Premium-Datenträger](premium-storage.md) sind SSD-basierte (Solid State Drives) Speichermedien, die für virtuelle Computer mit E/A-intensiven Workloads eine hohe Datenträgerleistung mit niedriger Latenz bieten. Durch Migration zu Premium Managed Disks können Sie von der Geschwindigkeit und Leistung dieser Laufwerke profitieren.
+- [Verwaltete Premium-Datenträger](premium-storage.md) sind SSD-basierte (Solid State Drive) Speichermedien, die für virtuelle Computer mit E/A-intensiven Workloads eine hohe Datenträgerleistung mit niedriger Latenz bieten. Durch Migration zu Premium Managed Disks können Sie von der Geschwindigkeit und Leistung dieser Laufwerke profitieren.
 
 - [Standard Managed Disks](standard-storage.md) (verwaltete Standard-Datenträger) arbeiten mit HDD-basierten Speichermedien (mit Magnetfestplatten) und eignen sich hervorragend für Entwicklungs- und Testaufgaben sowie andere weniger häufig anfallende Workloads, bei denen Leistungsschwankungen keine große Rolle spielen.
 
@@ -48,7 +48,7 @@ Sie können in folgenden Szenarien zu Managed Disks migrieren:
 Dieser Abschnitt hilft Ihnen, hinsichtlich VM- und Datenträgertypen die beste Entscheidung zu treffen.
 
 
-## <a name="location"></a>Standort
+## <a name="location"></a>Speicherort
 
 Wählen Sie einen Standort, an dem Azure Managed Disks verfügbar sind. Wenn Sie zu Premium Managed Disks wechseln, stellen Sie außerdem sicher, dass Storage Premium in der Region verfügbar ist, zu der der Wechsel erfolgen soll. Aktuelle Informationen zu verfügbaren Standorten finden Sie unter [Azure-Dienste nach Region](https://azure.microsoft.com/regions/#services).
 
@@ -63,21 +63,21 @@ Sehen Sie sich die Leistungsmerkmale von virtuellen Computern für Storage Premi
 
 Es gibt sieben verwaltete Premium-Datenträgertypen, die Sie mit Ihrer VM verwenden können. Jeder Typ weist bestimmte IOPS- und Durchsatzeinschränkungen auf. Berücksichtigen Sie diese Beschränkungen beim Auswählen des Premium-Datenträgertyps für Ihren virtuellen Computer je nach Anforderungen Ihrer Anwendung hinsichtlich Kapazität, Leistung, Skalierbarkeit und Spitzenlasten.
 
-| Premium-Datenträgertyp  | P4    | P6    | P10   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| Datenträgergröße           | 128 GB| 512 GB| 128 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| IOPS pro Datenträger       | 120   | 240   | 500   | 2.300              | 5.000              | 7.500              | 7.500              | 
-| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde |
+| Premium-Datenträgertyp  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Datenträgergröße           | 128 GB| 512 GB| 128 GB| 256 GB|512 GB | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
+| IOPS pro Datenträger       | 120   | 240   | 500   | 1100  |2.300              | 5.000              | 7.500              | 7.500              | 
+| Durchsatz pro Datenträger | 25 MB pro Sekunde  | 50 MB pro Sekunde  | 100 MB pro Sekunde | 125 MB pro Sekunde |150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde |
 
 **Verwaltete Standard-Datenträger**
 
 Es gibt sieben Arten von verwalteten Standard-Datenträgern, die mit Ihrer VM verwendet werden können. Jede davon bietet unterschiedliche Kapazität, jedoch gelten für alle dieselben IOPS- und Durchsatzgrenzwerte. Wählen Sie den Typ der verwalteten Standard-Datenträger basierend auf den Kapazitätsanforderungen Ihrer Anwendung.
 
-| Standard-Datenträgertyp  | S4               | S6               | S10              | S20              | S30              | S40              | S50              | 
-|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------| 
-| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
-| IOPS pro Datenträger       | 500              | 500              | 500              | 500              | 500              | 500             | 500              | 
-| Durchsatz pro Datenträger | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 
+| Standard-Datenträgertyp  | S4               | S6               | S10              | S15              | S20              | S30              | S40              | S50              | 
+|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------| 
+| Datenträgergröße           | 30 GB            | 64 GB            | 128 GB           | 256 GB           |512 GB           | 1024 GB (1 TB)   | 2048 GB (2 TB)    | 4095 GB (4 TB)   | 
+| IOPS pro Datenträger       | 500              | 500              | 500              | 500              |500              | 500              | 500             | 500              | 
+| Durchsatz pro Datenträger | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde |60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 60 MB pro Sekunde | 
 
 ## <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger
 
@@ -87,7 +87,7 @@ Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-
 
 ## <a name="pricing"></a>Preise
 
-Überprüfen Sie die [Preise für Managed Disks](https://azure.microsoft.com/en-us/pricing/details/managed-disks/). Die Preise für Premium Managed Disks (verwaltete Premium-Datenträger) sind identisch mit denen für Premium Unmanaged Disks (nicht verwaltete Premium-Datenträger). Doch die Preise für verwaltete Standard-Datenträger unterscheiden sich von denen für nicht verwaltete Standard-Datenträger.
+Überprüfen Sie die [Preise für Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). Die Preise für Premium Managed Disks (verwaltete Premium-Datenträger) sind identisch mit denen für Premium Unmanaged Disks (nicht verwaltete Premium-Datenträger). Doch die Preise für verwaltete Standard-Datenträger unterscheiden sich von denen für nicht verwaltete Standard-Datenträger.
 
 
 

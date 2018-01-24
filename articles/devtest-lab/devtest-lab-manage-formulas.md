@@ -3,7 +3,7 @@ title: Verwalten von Formeln in Azure DevTest Labs zum Erstellen virtueller Comp
 description: Erfahren Sie, wie Sie Azure DevTest Labs-Formeln aktualisieren und entfernen.
 services: devtest-lab,virtual-machines
 documentationcenter: na
-author: tomarcher
+author: craigcaseyMSFT
 manager: douge
 editor: 
 ms.assetid: 841dd95a-657f-4d80-ba26-59a9b5104fe4
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2017
-ms.author: tarcher
+ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bfdab5def50158f9b764bbb1e50c2624cc6d5fb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
 
@@ -38,7 +38,7 @@ Weitere Informationen zum Hinzufügen von Benutzern und Berechtigungen finden Si
 ### <a name="create-a-formula-from-a-base"></a>Erstellen einer Formel anhand einer Basis
 In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis eines benutzerdefinierten Images, eines Marketplace-Images oder auf Grundlage einer anderen Formel erstellen.
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 
 2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 
@@ -64,7 +64,7 @@ In den folgenden Schritten wird beschrieben, wie Sie eine Formel auf der Basis e
     * **Kennwort**: Geben Sie einen Wert ein, der dem geheimen Schlüssel bzw. dem Kennwort zugeordnet ist, das für den angegebenen Benutzer verwendet werden soll, oder wählen Sie diesen Wert aus der Dropdownliste aus. Weitere Informationen zu den Geheimnissen finden Sie unter [Azure DevTest Labs: Personal secret store](https://azure.microsoft.com/updates/azure-devtest-labs-keep-your-secrets-safe-and-easy-to-use-with-the-new-personal-secret-store/) (Azure DevTest Labs: Persönlicher Geheimnisspeicher).
     * **Datenträgertyp des virtuellen Computers**: Geben Sie entweder HDD (Festplattenlaufwerk) oder SSD (Solid-State Drive) als den Speichertyp an, der für die mit diesem Basisimage bereitgestellten virtuellen Computer zulässig ist.
     * ** Größe des virtuellen Computers**: Wählen Sie eines der vordefinierten Elemente aus, die die Prozessorkerne, die RAM-Größe und die Größe der Festplatte für den zu erstellenden virtuellen Computer angeben. 
-    * **Artefakte**: Wählen Sie diese Option aus, um das Blatt **Artefakte hinzufügen** zu öffnen, auf dem Sie die Artefakte auswählen und konfigurieren, die Sie dem Basisimage hinzufügen möchten. Weitere Informationen zu Artefakten finden Sie unter [Verwalten von VM-Artefakten in Azure DevTest Labs](./devtest-lab-add-vm-with-artifacts.md).
+    * **Artefakte**: Wählen Sie diese Option aus, um das Blatt **Artefakte hinzufügen** zu öffnen, auf dem Sie die Artefakte auswählen und konfigurieren, die Sie dem Basisimage hinzufügen möchten. Weitere Informationen zu Artefakten finden Sie unter [Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer](devtest-lab-artifact-author.md).
     * **Erweiterte Einstellungen**: Wählen Sie diese Option aus, um das Blatt **Erweitert** zu öffnen, auf dem Sie die folgenden Einstellungen konfigurieren:
         * **Virtuelles Netzwerk** : Geben Sie das gewünschte virtuelle Netzwerk an.
         * **Subnetz** : Geben Sie das gewünschte Subnetz an.    
@@ -86,7 +86,7 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 > 
 > 
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt **Übersicht** des Labs den virtuellen Computer aus, aus dem Sie die Formel erstellen möchten.
@@ -103,7 +103,7 @@ Die folgenden Schritte führen Sie durch den Prozess der Erstellung einer neuen 
 ## <a name="modify-a-formula"></a>Ändern einer Formel
 Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt für das Lab die Option **Formulas (reusable bases)**(Formeln (wiederverwendbare Basis)) aus.
@@ -115,7 +115,7 @@ Um eine Formel zu ändern, gehen Sie folgendermaßen vor:
 ## <a name="delete-a-formula"></a>Löschen einer Formel
 Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich beim [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
+1. Melden Sie sich auf dem [Azure-Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040)an.
 2. Wählen Sie **Weitere Dienste** und dann in der Liste **DevTest Labs** aus.
 3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.  
 4. Wählen Sie auf dem Blatt **Einstellungen** für das Lab **Formeln**.
@@ -135,5 +135,5 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 * [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nachdem Sie eine Formel erstellt haben, die zum Erstellen virtueller Computer verwendet werden soll, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm-with-artifacts.md).
+Nachdem Sie eine Formel erstellt haben, die zum Erstellen virtueller Computer verwendet werden soll, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm.md).
 

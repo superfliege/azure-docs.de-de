@@ -3,7 +3,7 @@
 | Ressource | Standardlimit | Maximales Limit |
 | --- | --- | --- |
 | Virtuelle Netzwerke |50 |100 |
-| Lokale Netzwerksites |20 |Support kontaktieren |
+| Lokale Netzwerksites |20 |an den Support wenden |
 | DNS-Server pro virtuellem Netzwerk |20 |100 |
 | Private IP-Adressen pro virtuellem Netzwerk |4096 |4096 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |500K |
@@ -12,8 +12,8 @@
 | Benutzerdefinierte Routentabellen |100 |200 |
 | Benutzerdefinierte Routen pro Routentabelle |100 |400 |
 | Öffentliche IP-Adressen (dynamisch) |5 |an den Support wenden |
-| Reservierte öffentliche IP-Adressen |20 |Support kontaktieren |
-| Öffentliche VIP-Adressen pro Bereitstellung |5 |Support kontaktieren |
+| Reservierte öffentliche IP-Adressen |20 |an den Support wenden |
+| Öffentliche VIP-Adressen pro Bereitstellung |5 |an den Support wenden |
 | Private VIP-Adressen (ILB) pro Bereitstellung |1 |1 |
 | Endpunkt-Zugriffssteuerungslisten (ACLs) |50 |50 |
 
@@ -32,16 +32,16 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Netzwerkschnittstellen |350 |20000 |
 | Netzwerksicherheitsgruppen |100 |5.000 |
 | NSG-Regeln pro NSG |200 |500 |
-| Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsregel |2000 |4000 |
+| Angegebene IP-Adressen und -Bereiche für die Quelle oder das Ziel in einer Sicherheitsgruppe |2000 |4000 |
 | Anwendungssicherheitsgruppen |200 |500 |
 | Anwendungssicherheitsgruppen pro IP-Konfiguration pro NIC |10 |20 |
 | IP-Konfigurationen pro Anwendungssicherheitsgruppe |1000 |4000 |
 | Anwendungssicherheitsgruppen, die in allen Sicherheitsregeln einer Netzwerksicherheitsgruppe angegeben werden können |50 |100 |
 | Benutzerdefinierte Routentabellen |100 |200 |
 | Benutzerdefinierte Routen pro Routentabelle |100 |400 |
-| Öffentliche IP-Adressen – dynamisch |(Basic) 60 |Support kontaktieren |
-| Öffentliche IP-Adressen – statisch |(Basic) 20 |Support kontaktieren |
-| Öffentliche IP-Adressen – statisch |(Standard) 20 |Support kontaktieren |
+| Öffentliche IP-Adressen – dynamisch |(Basic) 60 |an den Support wenden |
+| Öffentliche IP-Adressen – statisch |(Basic) 20 |an den Support wenden |
+| Öffentliche IP-Adressen – statisch |(Standard) 20 |an den Support wenden |
 | Punkt-zu-Standort-Stammzertifikate pro VPN Gateway |20 |20 |
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte
@@ -52,10 +52,10 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Regeln pro Ressource, Basic | 150 | 250 |
 | Regeln pro Ressource, Standard | 1250 | 1500 |
 | Regeln pro IP-Konfiguration | 299 |299 |
-| Front-End-IP-Konfiguration, Basic | 10 | Support kontaktieren |
+| Front-End-IP-Konfiguration, Basic | 10 | an den Support wenden |
 | Front-End-IP-Konfiguration, Standard | 10 | 600 |
 | Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe | - |
-| Back-End-Pool, Standard | 1000, einzelnes VNET | Support kontaktieren |
+| Back-End-Pool, Standard | 1000, einzelnes VNET | an den Support wenden |
 | Hochverfügbarkeitsports, Standard | 1 pro internem Front-End | - |
 
 [Wenden Sie sich an den Support](../articles/azure-supportability/resource-manager-core-quotas-request.md ), falls Sie Limits der Standardwerte erhöhen müssen.

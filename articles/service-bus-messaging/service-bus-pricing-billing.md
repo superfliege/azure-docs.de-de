@@ -12,16 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 8f693bc51fc9635fae4376137e7e573bf74da7cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ccb44b5009588c28bc79bb45e1a7640ead6c817
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="service-bus-pricing-and-billing"></a>Service Bus – Preise und Abrechnung
-Service Bus wird in den Tarifen Standard und [Premium](service-bus-premium-messaging.md) angeboten. Sie können einen Diensttarif für jeden von Ihnen erstellten Service Bus-Dienstnamespace auswählen, und diese Tarifauswahl gilt für alle Warteschlangen, Entitäten, die in diesem Namespace erstellt werden.
+
+Azure Service Bus wird in den Tarifen „Standard“ und [Premium](service-bus-premium-messaging.md) angeboten. Sie können einen Diensttarif für jeden von Ihnen erstellten Service Bus-Dienstnamespace auswählen, und diese Tarifauswahl gilt für alle Warteschlangen, Entitäten, die in diesem Namespace erstellt werden.
 
 > [!NOTE]
 > Ausführliche Informationen zu den aktuellen Service Bus-Preisen finden Sie auf der [Azure Service Bus-Preisseite](https://azure.microsoft.com/pricing/details/service-bus/) und in den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#pricing).
@@ -42,9 +43,10 @@ Beachten Sie, dass die Basisgebühr für den Standard-Tarif nur einmal pro Monat
 In der Tabelle [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/) sind die Funktionsunterschiede zwischen den Tarifen Standard und Premium zusammengefasst.
 
 ## <a name="messaging-operations"></a>Messagingvorgänge
-Als Teil des neuen Preismodells ändert sich die Abrechnung für Warteschlangen und Themen/Abonnements. Diese Entitäten wechseln aus einer Abrechnung pro Nachricht zu einer Abrechnung pro Vorgang. Ein „Vorgang“ bezieht sich auf jeden API-Aufruf für einen Warteschlangen- oder Themen-/Abonnementdienstendpunkt. Dies umfasst Verwaltungs-, Sende-/Empfangs- und Sitzungsstatusvorgänge.
 
-| Vorgangstyp | Beschreibung |
+Warteschlangen und Themen/Abonnements werden pro Vorgang abgerechnet, nicht pro Nachricht. Ein Vorgang bezieht sich auf jeden API-Aufruf für einen Warteschlangen- oder Themen-/Abonnementdienstendpunkt. Dies umfasst Verwaltungs-, Sende-/Empfangs- und Sitzungsstatusvorgänge.
+
+| Vorgangstyp | BESCHREIBUNG |
 | --- | --- |
 | Verwaltung |Erstellen, Lesen, Aktualisieren und Löschen (CRUD) von Warteschlangen oder Themen/Abonnements. |
 | Nachrichten |Senden und Empfangen von Nachrichten mit Warteschlangen oder Themen/Abonnements. |
@@ -53,7 +55,8 @@ Als Teil des neuen Preismodells ändert sich die Abrechnung für Warteschlangen 
 Details zu den Kosten finden Sie auf der Seite [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 
 ## <a name="brokered-connections"></a>Brokerverbindungen
-*Brokerverbindungen* ermöglichen Nutzungsmuster von Kunden, die eine große Anzahl „dauerhaft verbundener“ Absender/Empfänger für Warteschlangen, Themen oder Abonnements umfassen. Dauerhaft verbundene Absender/Empfänger sind die Absender/Empfänger, die mithilfe von AMQP oder HTTP mit einem Empfangstimeout ungleich null eine Verbindung herstellen (z. B. langer HTTP-Abruf). HTTP-Absender und -Empfänger mit einem sofortigen Timeout generieren keine Brokerverbindungen.
+
+*Brokerverbindungen* ermöglichen Nutzungsmuster, die eine große Anzahl „dauerhaft verbundener“ Absender/Empfänger für Warteschlangen, Themen oder Abonnements umfassen. Dauerhaft verbundene Absender/Empfänger sind die Absender/Empfänger, die mithilfe von AMQP oder HTTP mit einem Empfangstimeout ungleich null eine Verbindung herstellen (z. B. langer HTTP-Abruf). HTTP-Absender und -Empfänger mit einem sofortigen Timeout generieren keine Brokerverbindungen.
 
 Informationen zu Verbindungskontingenten und anderen Diensteinschränkungen finden Sie im Artikel [Service Bus-Kontingente](service-bus-quotas.md). Weitere Informationen zu Brokerverbindungen finden Sie weiter unten im Abschnitt [Häufig gestellte Fragen](#faq) weiter unten in diesem Artikel.
 
@@ -78,6 +81,7 @@ Brokerverbindungen werden im Tarif „Premium“ nicht in Rechnung gestellt.
 ## <a name="faq"></a>Häufig gestellte Fragen
 
 ### <a name="what-are-brokered-connections-and-how-do-i-get-charged-for-them"></a>Was sind Brokerverbindungen, und wie erfolgt ihre Abrechnung?
+
 Eine Brokerverbindung ist als eine der folgenden Verbindungen definiert:
 
 1. Eine AMQP-Verbindung von einem Client mit einer Service Bus-Warteschlange oder einem Service Bus-Thema bzw. -Abonnement.
@@ -85,15 +89,17 @@ Eine Brokerverbindung ist als eine der folgenden Verbindungen definiert:
 
 Für Service Bus wird die höchste Anzahl gleichzeitiger Brokerverbindungen in Rechnung gestellt, die die enthaltene Menge (1.000 Verbindungen im Tarif Standard“) überschreiten. Spitzenwerte werden stündlich gemessen, anteilig (dividiert durch 744 Stunden pro Monat) ermittelt und für den monatlichen Abrechnungszeitraum addiert. Die enthaltene Menge (1.000 Brokerverbindungen pro Monat) wird am Ende des Abrechnungszeitraums auf die Summe der anteiligen stündlichen Spitzenwerte angewendet.
 
-Beispiel:
+Beispiel: 
 
 1. Alle 10.000 Geräte stellen eine Verbindung über eine einzelne AMQP-Verbindung her und empfangen Befehle von einem Service Bus-Thema. Die Geräte senden Telemetrieereignisse an einen Event Hub. Wenn alle Geräte jeden Tag 12 Stunden verbunden sind, entstehen die folgenden Verbindungsgebühren (zusätzlich zu eventuellen weiteren Gebühren für das Service Bus-Thema): 10.000 Verbindungen * 12 Stunden * 31 Tage / 744 = 5.000 Brokerverbindungen. Nach Abzug der monatlich zulässigen Menge von 1.000 Brokerverbindungen werden Ihnen 4.000 Brokerverbindungen zu einem Tarif von 0,03 US-Dollar pro Brokerverbindung berechnet. Dies ergibt eine Summe von 120 US-Dollar.
 2. 10.000 Geräte empfangen Nachrichten von einer Service Bus-Warteschlange über HTTP mit einem festgelegten Timeout ungleich null. Wenn alle Geräte 12 Stunden täglich verbunden sind, entstehen die folgenden Verbindungsgebühren (zusätzlich zu eventuellen weiteren Service Bus-Gebühren): 10.000 HTTP Empfangsverbindungen * 12 Stunden pro Tag * 31 Tage/744 Stunden = 5.000 Brokerverbindungen.
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>Gelten für Warteschlangen und Themen/Abonnements Gebühren für Brokerverbindungen?
+
 Ja. Es gibt keine Verbindungsgebühren für das Senden von Ereignissen über HTTP, unabhängig von der Anzahl der sendenden Systeme oder Geräte. Durch das Empfangen von Ereignissen mit HTTP mithilfe eines Timeouts größer als null (manchmal als "langer Abruf" bezeichnet) entstehen Gebühren für Brokerverbindungen. Durch AMQP-Verbindungen entstehen Gebühren für Brokerverbindungen, unabhängig davon, ob die Verbindungen zum Senden oder Empfangen verwendet werden. Die ersten 1.000 Brokerverbindungen in allen Standard-Namespaces in einem Azure-Abonnement sind ohne zusätzliche Kosten (über die Basisgebühr hinaus) enthalten. Da diese Kontingente für viele Dienst-zu-Dienst-Messaging-Szenarios ausreichend sind, werden Gebühren für Brokerverbindungen normalerweise nur dann relevant, wenn geplant ist, lange AMQP-oder HTTP-Abrufe mit einer großen Anzahl von Clients zu verwenden (z. B., um effizienteres Ereignisstreaming zu erreichen oder die bidirektionale Kommunikation mit zahlreichen Geräten oder Anwendungsinstanzen zu ermöglichen).
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 * Weitere Informationen zu Service Bus-Preisen finden Sie auf der Seite [Service Bus-Preise](https://azure.microsoft.com/pricing/details/service-bus/).
 * In den [häufig gestellten Fragen zu Service Bus](service-bus-faq.md#pricing) werden einige allgemeine Fragen zur Preisgestaltung und Abrechnung für Service Bus beantwortet.
 

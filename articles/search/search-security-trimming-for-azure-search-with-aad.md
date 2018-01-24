@@ -1,6 +1,6 @@
 ---
-title: "Sicherheitskürzung in Azure Search mit Azure Active Directory | Microsoft-Dokumentation"
-description: "Implementieren Sie eine Sicherheitskürzung mithilfe von Azure Search-Filtern und Azure Active Directory."
+title: "Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten | Microsoft-Dokumentation"
+description: "Zugriffssteuerung für Azure Search-Inhalte mithilfe von Sicherheitsfiltern und Active Directory-Identitäten"
 services: search
 author: revitalbarletz
 manager: jlembicz
@@ -8,15 +8,15 @@ ms.service: search
 ms.topic: article
 ms.date: 11/07/2017
 ms.author: revitalb
-ms.openlocfilehash: 8d277ff43aa0d5d14471426632b5aa369df0e316
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 2113b59d6fec15067acbef8b4d4c1fc34c141e62
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 12/15/2017
 ---
-# <a name="security-trimming-in-azure-search-with-azure-active-directory"></a>Sicherheitskürzung in Azure Search mit Azure Active Directory
+# <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten
 
-Dieser Artikel zeigt, wie Sie mithilfe von Azure Active Directory (AAD) und Azure Search den Dokumentzugriff basierend auf der Benutzergruppenmitgliedschaft einschränken.
+Dieser Artikel zeigt, wie Sie mithilfe von Azure Active Directory-Sicherheitsidentitäten (AAD) und Filtern in Azure Suchergebnisse basierend auf der Benutzergruppenmitgliedschaft einschränken.
 
 In diesem Artikel werden die folgenden Aufgaben behandelt:
 > [!div class="checklist"]
@@ -27,7 +27,7 @@ In diesem Artikel werden die folgenden Aufgaben behandelt:
 - Ausgeben einer Suchanfrage mit Gruppenbezeichnerfilter
 
 >[!NOTE]
-> Beispielcodeausschnitte in diesem Artikel sind in C# geschrieben. Den vollständigen Quellcode finden Sie [bei GitHub](http://aka.ms/search-dotnet-howto). 
+> Beispielcodeausschnitte in diesem Artikel sind in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](http://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -187,5 +187,6 @@ In dieser exemplarischen Vorgehensweise haben Sie Techniken zur Verwendung von A
 
 ## <a name="see-also"></a>Weitere Informationen
 
-+ [Sicherheitskürzung mit Azure Search](search-security-trimming-for-azure-search.md)
++ [Identitätsbasierte Zugriffssteuerung mit Azure Search-Filtern](search-security-trimming-for-azure-search.md)
 + [Filter in Azure Search](search-filters.md)
++ [Datensicherheit und Zugriffssteuerung in Azure Search-Vorgängen](search-security-overview.md)

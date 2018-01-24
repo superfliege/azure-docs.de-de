@@ -11,14 +11,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 03/31/2017
+ms.topic: reference
+ms.date: 12/18/2017
 ms.author: jeannt
-ms.openlocfilehash: 54bef3e257363300ee1a13f7f45fc983e465ddbf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15e68e9b4e6432d14c403e3532b934bfad58b35b
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Erläuterungen zur Spezifikationssprache Net# für neuronale Netzwerke für Azure Machine Learning
 ## <a name="overview"></a>Übersicht
@@ -56,7 +56,7 @@ Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindun
 Die Verwendung von Net# zum Definieren der Struktur eines neuronalen Netzwerks macht es möglich, komplexe Strukturen wie Deep Neural Networks oder Konvolutionen beliebiger Dimensionen zu definieren, die bekanntermaßen das Lernen aus Daten wie Bildern, Audio und Video verbessern.  
 
 ## <a name="supported-customizations"></a>Unterstützte Anpassungen
-Die Architektur der neuronalen Netzwerkmodelle, die Sie in Azure Machine Learning erstellen, kann mithilfe von Net# umfassend angepasst werden. Sie können:  
+Die Architektur der neuronalen Netzwerkmodelle, die Sie in Azure Machine Learning erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:  
 
 * verdeckte Schichten erstellen und die Anzahl der Knoten in jeder Schicht steuern;
 * angeben, wie Schichten miteinander verbunden werden sollen;
@@ -86,16 +86,16 @@ Mit der folgenden Anweisung wird beispielsweise eine Konstante **x** definiert:
 
     Const X = 28;  
 
-Um zwei oder mehr Konstanten gleichzeitig zu definieren, schließen Sie die Bezeichnernamen und -werte in geschweifte Klammern ein, und verwenden Sie Semikolons als Trennzeichen. Beispiel:  
+Um zwei oder mehr Konstanten gleichzeitig zu definieren, schließen Sie die Bezeichnernamen und -werte in geschweifte Klammern ein, und verwenden Sie Semikolons als Trennzeichen. Beispiel:   
 
     Const { X = 28; Y = 4; }  
 
-Bei der rechten Seite eines Zuweisungsausdrucks kann es sich um eine ganze Zahl, eine reelle Zahl, einen booleschen Wert (True oder False) oder einen mathematischen Ausdruck handeln. Beispiel:  
+Bei der rechten Seite eines Zuweisungsausdrucks kann es sich um eine ganze Zahl, eine reelle Zahl, einen booleschen Wert (True oder False) oder einen mathematischen Ausdruck handeln. Beispiel:   
 
     Const { X = 17 * 2; Y = true; }  
 
 ## <a name="layer-declaration"></a>Schichtdeklaration
-Die Schichtdeklaration ist erforderlich. Sie definiert die Größe und die Quelle der Schicht, einschließlich ihrer Verbindungsbündel und Attribute. Die Deklarationsanweisung beginnt mit den Namen der Schicht (input, hidden oder output), gefolgt von den Dimensionen der Schicht (ein Tupel positiver ganzer Zahlen). Beispiel:  
+Die Schichtdeklaration ist erforderlich. Sie definiert die Größe und die Quelle der Schicht, einschließlich ihrer Verbindungsbündel und Attribute. Die Deklarationsanweisung beginnt mit den Namen der Schicht (input, hidden oder output), gefolgt von den Dimensionen der Schicht (ein Tupel positiver ganzer Zahlen). Beispiel:   
 
     input Data auto;
     hidden Hidden[5,20] from Data all;

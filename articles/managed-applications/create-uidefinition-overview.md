@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: d8f04d8ed2e56cecb1b7a850bed55a02a9492bb5
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: bdbde834695040df4e333bef42fab7d29614ab75
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung
 In diesem Dokument werden die grundlegenden Konzepte der Datei „createUiDefinition.json“ vorgestellt. Das Azure-Portal verwendet diese Datei zum Generieren der Benutzeroberfläche zum Erstellen einer verwalteten Anwendung.
@@ -58,7 +58,19 @@ Die steps-Eigenschaft kann null oder mehr zusätzliche steps-Elemente für die A
 ## <a name="outputs"></a>Ausgaben
 Mit der `outputs`-Eigenschaft ordnet das Azure-Portal Elemente aus `basics` und `steps` den Parametern der Azure Resource Manager-Bereitstellungsvorlage zu. Die Schlüssel dieses Wörterbuchs stellen die Namen der Vorlagenparameter dar, und die Werte sind Eigenschaften der Ausgabeobjekte von den referenzierten Elementen.
 
-## <a name="functions"></a>Functions
+Um den Ressourcennamen der verwalteten Anwendung festzulegen, müssen Sie einen Wert mit dem Namen `applicationResourceName` in die Ausgabeeigenschaft eingeben. Wenn Sie diesen Wert nicht festlegen, weist die Anwendung eine GUID für den Namen zu. Sie können ein Textfeld in die Benutzeroberfläche aufnehmen, das einen Namen vom Benutzer anfordert.
+
+```json
+"outputs": {
+    "vmName": "[steps('appSettings').vmName]",
+    "trialOrProduction": "[steps('appSettings').trialOrProd]",
+    "userName": "[steps('vmCredentials').adminUsername]",
+    "pwd": "[steps('vmCredentials').vmPwd.password]",
+    "applicationResourceName": "[steps('appSettings').vmName]"
+}
+```
+
+## <a name="functions"></a>Funktionen
 Ähnlich wie bei Vorlagenfunktionen in Azure Resource Manager (sowohl in Bezug auf Syntax als auch auf Funktionalität) stellt das CreateUiDefinition-Element Funktionen zum Arbeiten mit Ein- und Ausgaben von Elementen sowie Features wie konditionelle Abschnitte bereit.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -67,6 +79,6 @@ Die Datei „createUiDefinition.json“ besitzt selbst ein einfaches Schema. Die
 - [CreateUiDefinition-Elemente](create-uidefinition-elements.md)
 - [Funktionen](create-uidefinition-functions.md)
 
-Ein aktuelles JSON-Schema für „createUiDefinition“ ist hier verfügbar: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json. 
+Ein aktuelles JSON-Schema für „createUiDefinition“ ist hier verfügbar: https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json.
 
-Spätere Versionen werden ebenfalls dort verfügbar sein. Ersetzen Sie den Teil `0.1.2-preview` der URL und den Wert für `version` mit der Versions-ID, die Sie verwenden möchten. Die derzeit unterstützten Versions-IDs sind `0.0.1-preview`, `0.1.0-preview`, `0.1.1-preview` und `0.1.2-preview`.
+Ein Beispiel für eine Benutzeroberflächendatei finden Sie unter [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json).

@@ -14,123 +14,92 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: b3b9457e6c8ce501a7295859923838460e7ab6cc
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 0319a7b9248dec9d7cdabba9c18a25463d94284b
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/14/2017
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics-oms"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics (OMS)
-Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Microsoft Operations Management Suite (OMS) Log Analytics-Arbeitsbereich senden.  Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Log Analytics bietet folgende Vorteile:
+Automation kann Runbookauftragsstatus und Auftragsdatenströme an Ihren Microsoft Operations Management Suite (OMS) Log Analytics-Arbeitsbereich senden. Auftragsprotokolle und -streams werden im Azure-Portal oder mit PowerShell für einzelne Aufträge angezeigt, d.h., Sie können einfache Untersuchen durchführen. Log Analytics bietet folgende Vorteile:
 
-* Gewinnen Sie Einblicke in Ihre Automation-Aufträge
+* Gewinnen Sie Einblicke in Ihre Automation-Aufträge.
 * Lösen Sie basierend auf Ihrem Runbookauftragsstatus (beispielsweise „Fehler“ oder „Angehalten“) das Senden einer E-Mail oder einer Warnung aus.
-* Schreiben Sie erweiterte Abfragen für Ihre Auftragsdatenströme
-* Korrelieren Sie Aufträge über Automation-Konten hinweg
-* Visualisieren Sie Ihren Auftragsverlauf     
+* Schreiben Sie erweiterte Abfragen für Ihre Auftragsdatenströme.
+* Korrelieren Sie Aufträge über Automation-Konten hinweg.
+* Visualisieren Sie Ihren Auftragsverlauf.
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Voraussetzungen und Überlegungen zur Bereitstellung
 Zum Senden Ihrer Automation-Protokolle an Log Analytics benötigen Sie:
 
-1. Die [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)-Version von November 2016 (v2.3.0) oder höher.
-2. Einen Log Analytics-Arbeitsbereich Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md). 
-3. Die Ressourcen-ID für Ihr Azure Automation-Konto
+* Die [Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/)-Version von November 2016 (v2.3.0) oder höher.
+* Einen Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics](../log-analytics/log-analytics-get-started.md). 
+* Die Ressourcen-ID für Ihr Azure Automation-Konto
 
-Um die Ressourcen-ID für Ihr Azure Automation-Konto und Ihren Log Analytics-Arbeitsbereich zu suchen, führen Sie den folgenden PowerShell-Befehl aus:
 
-```powershell
+So ermitteln Sie die Ressourcen-ID für Ihr Azure Automation-Konto:
+
+```powershell-interactive
 # Find the ResourceId for the Automation Account
 Find-AzureRmResource -ResourceType "Microsoft.Automation/automationAccounts"
+```
 
+Führen Sie zum Ermitteln der Ressourcen-ID für Ihren Log Analytics-Arbeitsbereich den folgenden PowerShell-Befehl aus:
+
+```powershell-interactive
 # Find the ResourceId for the Log Analytics workspace
 Find-AzureRmResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 ```
 
-Wenn Sie mehrere Automation-Konten oder -Arbeitsbereiche haben, suchen Sie in der Ausgabe der vorherigen Befehle den *Namen*, den Sie konfigurieren müssen, und kopieren Sie den Wert für *ResourceId*.
+Sollten Sie über mehrere Automation-Konten (oder über mehrere Arbeitsbereiche) verfügen, suchen Sie in der Ausgabe der vorherigen Befehle den *Namen*, den Sie konfigurieren müssen, und kopieren Sie den Wert für *ResourceId*.
 
-Wenn Sie den *Namen* Ihres Automation-Kontos suchen müssen, wählen Sie im Azure-Portal auf dem Blatt **Automation-Konto** Ihr Automation-Konto aus, und wählen Sie dann **Alle Einstellungen**.  Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften** aus.  Die Werte werden auf dem Blatt **Eigenschaften** angezeigt.<br> ![Automation-Konto – Eigenschaften](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
+Wenn Sie den *Namen* Ihres Automation-Kontos suchen müssen, wählen Sie im Azure-Portal auf dem Blatt **Automation-Konto** Ihr Automation-Konto aus, und wählen Sie dann **Alle Einstellungen**. Wählen Sie auf dem Blatt **Alle Einstellungen** unter **Kontoeinstellungen** die Option **Eigenschaften** aus.  Die Werte werden auf dem Blatt **Eigenschaften** angezeigt.<br> ![Automation-Konto – Eigenschaften](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
 
 ## <a name="set-up-integration-with-log-analytics"></a>Einrichten der Integration in Log Analytics
-1. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm**.  
-2. Kopieren und fügen Sie den folgenden PowerShell-Befehl ein, und bearbeiten Sie den Wert für `$workspaceId` und `$automationAccountId`.  Gültige Werte für den Parameter `-Environment` sind *AzureCloud* oder *AzureUSGovernment*, je nachdem, in welcher Cloudumgebung Sie arbeiten.     
 
-```powershell
-[cmdletBinding()]
-    Param
-    (
-        [Parameter(Mandatory=$True)]
-        [ValidateSet("AzureCloud","AzureUSGovernment")]
-        [string]$Environment="AzureCloud"
-    )
+1. Starten Sie auf Ihrem Computer **Windows PowerShell** über den **Startbildschirm**.
+2. Führen Sie das folgende PowerShell-Skript aus, und bearbeiten Sie den Wert für `[your resource id]` und `[resource id of the log analytics workspace]` mit den Werten aus dem vorherigen Schritt.
 
-#Check to see which cloud environment to sign into.
-Switch ($Environment)
-   {
-       "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
-   }
+   ```powershell-interactive
+   $workspaceId = "[resource id of the log analytics workspace]"
+   $automationAccountId = "[resource id of your automation account]"
 
-# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
-$workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+   Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
+   ```
 
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
+Nach dem Ausführen dieses Skripts werden in Log Analytics innerhalb von zehn Minuten Datensätze neu geschriebener Auftragsprotokolle oder -streams angezeigt.
 
-Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
-
-```
-
-Nach dem Ausführen dieses Skripts werden in Log Analytics innerhalb von zehn Minuten Datensätze neuer Auftragsprotokolle oder -streams angezeigt, die geschrieben werden.
-
-Um die Protokolle anzuzeigen, führen Sie die folgende Abfrage in der Log Analytics-Protokollsuche durch: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
+Um die Protokolle anzuzeigen, führen Sie die folgende Abfrage in der Log Analytics-Protokollsuche durch: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION""`
 
 ### <a name="verify-configuration"></a>Überprüfen der Konfiguration
-Zum Sicherstellen, dass Ihr Automation-Konto Protokolle an Ihren Log Analytics-Arbeitsbereich sendet, überprüfen Sie mit folgendem PowerShell-Befehl, ob die Diagnose für das Automation-Konto ordnungsgemäß festgelegt ist:
+Vergewissern Sie sich, dass Ihr Automation-Konto Protokolle an Ihren Log Analytics-Arbeitsbereich sendet. Überprüfen Sie hierzu mithilfe des folgenden PowerShell-Befehls, ob die Diagnose für das Automation-Konto ordnungsgemäß konfiguriert ist:
 
-```powershell
-[cmdletBinding()]
-    Param
-    (
-        [Parameter(Mandatory=$True)]
-        [ValidateSet("AzureCloud","AzureUSGovernment")]
-        [string]$Environment="AzureCloud"
-    )
-
-#Check to see which cloud environment to sign into.
-Switch ($Environment)
-   {
-       "AzureCloud" {Login-AzureRmAccount}
-       "AzureUSGovernment" {Login-AzureRmAccount -EnvironmentName AzureUSGovernment} 
-   }
-# if you have one Log Analytics workspace you can use the following command to get the resource id of the workspace
-$workspaceId = (Get-AzureRmOperationalInsightsWorkspace).ResourceId
-
-$automationAccountId = "/SUBSCRIPTIONS/ec11ca67-1234-421e-5678-c25/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.AUTOMATION/ACCOUNTS/DEMO" 
-
+```powershell-interactive
 Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 Überprüfen Sie in der Ausgabe Folgendes:
-+ Der Wert für *Aktiviert* unter *Protokolle* ist *True*.
-+ Der Wert für *WorkspaceId* ist auf die Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs festgelegt.
-
++ Unter *Protokolle* muss *Aktiviert* den Wert *True* haben.
++ Der Wert für *WorkspaceId* muss der Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs entsprechen.
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
-Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Log Analytics; sie sind als **Type=AzureDiagnostics** gekennzeichnet.
+
+Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Log Analytics und kennzeichnet sie als **AzureDiagnostics**. In den folgenden Abfragen wird die aktualisierte Abfragesprache für Log Analytics verwendet. Informationen zu allgemeinen Abfragen zwischen der alten Abfragesprache und der neuen Azure Log Analytics-Abfragesprache finden Sie unter [Legacy to new Azure Log Analytics Query Language cheat sheet](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language) (Cheat Sheet: Gegenüberstellung von alter Abfragesprache und Azure Log Analytics-Abfragesprache).
 
 ### <a name="job-logs"></a>Auftragsprotokolle
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Ausführungsdatum und -uhrzeit des Runbookauftrags. |
 | RunbookName_s |Der Name des Runbooks. |
-| Caller_s |Der Benutzer oder das System, von dem der Vorgang initiiert wurde.  Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
+| Caller_s |Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
-| ResultType |Der Status des Runbookauftrags.  Mögliche Werte:<br>- Neu<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
-| Kategorie | Klassifizierung des Datentyps.  Für Automation lautet der Wert „JobLogs“. |
-| NameVorgang | Gibt den Typ des in Azure ausgeführten Vorgangs an.  Für Automation lautet der Wert „Job“. |
+| ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>- Neu<br>- Gestartet<br>- Beendet<br>- Ausgesetzt<br>- Fehler<br>- Abgeschlossen |
+| Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobLogs“. |
+| NameVorgang | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Ressource | Name des Automation-Kontos |
 | SourceSystem | So wurden die Daten von Log Analytics gesammelt. Immer *Azure* für Azure-Diagnose. |
-| ResultDescription |Beschreibt den resultierenden Zustand des Runbookauftrags.  Mögliche Werte:<br>- Auftrag gestartet<br>- Fehler beim Ausführen des Auftrags<br>- Auftrag abgeschlossen |
+| ResultDescription |Beschreibt den resultierenden Zustand des Runbookauftrags. Mögliche Werte:<br>- Auftrag gestartet<br>- Fehler beim Ausführen des Auftrags<br>- Auftrag abgeschlossen |
 | CorrelationId |Die GUID, bei der es sich um die Korrelations-ID des Runbookauftrags handelt. |
 | ResourceId |Gibt die Ressourcen-ID des Runbooks für das Azure Automation-Konto an. |
 | SubscriptionId | Die Azure-Abonnement-ID (GUID) für das Automation-Konto. |
@@ -140,17 +109,17 @@ Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Log An
 
 
 ### <a name="job-streams"></a>Auftragsdatenströme
-| Eigenschaft | Beschreibung |
+| Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Ausführungsdatum und -uhrzeit des Runbookauftrags. |
 | RunbookName_s |Der Name des Runbooks. |
-| Caller_s |Der Benutzer oder das System, von dem der Vorgang initiiert wurde.  Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
+| Caller_s |Der Benutzer oder das System, von dem der Vorgang initiiert wurde. Mögliche Werte sind entweder eine E-Mail-Adresse oder, bei geplanten Aufträgen, ein System. |
 | StreamType_s |Der Typ des Auftragsstreams. Mögliche Werte:<br>- Status<br>- Ausgabe<br>- Warnung<br>- Fehler<br>- Debuggen<br>- Ausführlich |
 | Tenant_g | GUID, die den Mandanten für den Aufrufer identifiziert. |
 | JobId_g |Die GUID, bei der es sich um die ID des Runbookauftrags handelt. |
-| ResultType |Der Status des Runbookauftrags.  Mögliche Werte:<br>– In Bearbeitung |
-| Kategorie | Klassifizierung des Datentyps.  Für Automation lautet der Wert „JobStreams“. |
-| NameVorgang | Gibt den Typ des in Azure ausgeführten Vorgangs an.  Für Automation lautet der Wert „Job“. |
+| ResultType |Der Status des Runbookauftrags. Mögliche Werte:<br>– In Bearbeitung |
+| Category (Kategorie) | Klassifizierung des Datentyps. Für Automation lautet der Wert „JobStreams“. |
+| NameVorgang | Gibt den Typ des in Azure ausgeführten Vorgangs an. Für Automation lautet der Wert „Job“. |
 | Ressource | Name des Automation-Kontos |
 | SourceSystem | So wurden die Daten von Log Analytics gesammelt. Immer *Azure* für Azure-Diagnose. |
 | ResultDescription |Enthält den Ausgabedatenstrom des Runbooks. |
@@ -162,47 +131,47 @@ Die Diagnose von Azure Automation erstellt zwei Typen von Datensätzen in Log An
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>Anzeigen von Automation-Protokollen in Log Analytics
-Nachdem Sie begonnen haben, Ihre Automation-Auftragsprotokolle an Log Analytics zu senden, sehen wir uns nun an, wie Sie diese Protokolle in Log Analytics verwenden können.
+Nachdem Sie damit begonnen haben, Ihre Automation-Auftragsprotokolle an Log Analytics zu senden, sehen wir uns nun an, wie Sie diese Protokolle in Log Analytics verwenden können.
 
-Führen Sie die folgende Abfrage aus, um die Protokolle anzuzeigen: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION"`
+Führen Sie die folgende Abfrage aus, um die Protokolle anzuzeigen: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Senden einer E-Mail, wenn ein Runbookauftrag mit einem Fehler abgebrochen oder angehalten wird
-Eine der häufigsten Anfragen unserer Kunden betrifft die Möglichkeit, eine E-Mail oder eine SMS zu senden, wenn es bei einem Runbookauftrag ein Problem gibt.   
+Einer der häufigsten Kundenwünsche ist die Möglichkeit, eine E-Mail oder SMS zu senden, wenn bei einem Runbookauftrag ein Problem auftritt.   
 
-Zum Erstellen einer Warnungsregel erstellen Sie zunächst eine Protokollsuche für die Datensätze des Runbookauftrags, die die Warnung auslösen sollen.  Klicken Sie auf die Schaltfläche **Warnung**, um die Warnungsregel zu erstellen und zu konfigurieren.
+Zum Erstellen einer Warnungsregel erstellen Sie zunächst eine Protokollsuche für die Datensätze des Runbookauftrags, die die Warnung auslösen sollen. Klicken Sie auf die Schaltfläche **Warnung**, um die Warnungsregel zu erstellen und zu konfigurieren.
 
 1. Klicken Sie auf der Seite mit der Log Analytics-Übersicht auf **Protokollsuche**.
-2. Erstellen Sie eine Protokollsuchabfrage für die Warnung, indem Sie folgenden Suchtext in das Abfragefeld eingeben: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended)` Sie können auch nach dem Runbook-Namen gruppieren, indem Sie folgende Abfrage verwenden: `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs (ResultType=Failed OR ResultType=Suspended) | measure Count() by RunbookName_s`   
+2. Erstellen Sie eine Protokollsuchabfrage für die Warnung, indem Sie folgenden Suchtext in das Abfragefeld eingeben: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` Sie können auch nach dem Runbook-Namen gruppieren, indem Sie folgende Abfrage verwenden: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
-   Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement oder Automation-Konto gruppieren.  Der Name des Automation-Kontos kann vom Ressourcenfeld in der JobLogs-Suche abgeleitet werden.  
-3. Klicken Sie oben auf der Seite auf **Warnung**, um den Bildschirm **Warnungsregel hinzufügen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md#alert-rules).
+   Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement und Automation-Konto gruppieren. Der Name des Automation-Kontos kann dem Ressourcenfeld in der JobLogs-Suche entnommen werden.
+1. Klicken Sie oben auf der Seite auf **Warnung**, um den Bildschirm **Warnungsregel hinzufügen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md#alert-rules).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Durchführen einer Suche nach allen Aufträgen, die mit Fehlern abgeschlossen wurden
-Neben dem Erstellen von Warnungen für Fehler können Sie auch ermitteln, wenn ein Runbook-Auftrag einen Fehler ohne Abbruch aufweist. In diesen Fällen erzeugt PowerShell einen Fehlerdatenstrom, die Fehler ohne Abbruch verursachen jedoch kein Anhalten oder Fehlschlagen Ihres Auftrags.    
+Neben dem Erstellen von Warnungen für Fehler können Sie auch ermitteln, wenn ein Runbook-Auftrag einen Fehler ohne Abbruch aufweist. In diesen Fällen erzeugt PowerShell einen Fehlerdatenstrom, die Fehler ohne Abbruch führen jedoch nicht dazu, dass der Auftrag unterbrochen wird oder fehlschlägt.    
 
 1. Klicken Sie in Ihrem Log Analytics-Arbeitsbereich auf **Protokollsuche**.
-2. Geben Sie in das Abfragefeld `Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams StreamType_s=Error | measure count() by JobId_g` ein und klicken Sie dann auf **Search**.
+2. Geben Sie in das Abfragefeld `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` ein, und klicken Sie dann auf die Schaltfläche **Suchen**.
 
 ### <a name="view-job-streams-for-a-job"></a>Anzeigen von Auftragsdatenströmen für einen Auftrag
-Wenn Sie einen Auftrag debuggen, sollten Sie möglicherweise auch einen Blick in die Auftragsdatenströme werfen.  Mit der folgenden Abfrage werden alle Datenströme für einen einzelnen Auftrag mit der GUID „2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0“ abgerufen:   
+Wenn Sie einen Auftrag debuggen, sollten Sie ggf. auch einen Blick in die Auftragsdatenströme werfen. Mit der folgenden Abfrage werden alle Datenströme für einen einzelnen Auftrag mit der GUID „2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0“ abgerufen:   
 
-`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobStreams JobId_g="2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort TimeGenerated | select ResultDescription`
+`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and JobId_g == "2ebd22ea-e05e-4eb9-9d76-d73cbd4356e0" | sort by TimeGenerated asc | project ResultDescription`
 
 ### <a name="view-historical-job-status"></a>Anzeigen des Auftragsstatusverlaufs
-Abschließend möchten Sie möglicherweise Ihren Auftragsverlauf visualisieren.  Sie können die folgende Abfrage verwenden, um nach dem Statusverlauf Ihrer Aufträge zu suchen.
+Abschließend möchten Sie möglicherweise Ihren Auftragsverlauf visualisieren. Sie können die folgende Abfrage verwenden, um nach dem Statusverlauf Ihrer Aufträge zu suchen.
 
-`Type=AzureDiagnostics ResourceProvider="MICROSOFT.AUTOMATION" Category=JobLogs NOT(ResultType="started") | measure Count() by ResultType interval 1hour`  
+`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![Diagramm zum Auftragsstatusverlauf in OMS](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="summary"></a>Zusammenfassung
 Sie erhalten einen besseren Einblick in den Status Ihrer Automation-Aufträge, wenn Sie den Status und die Streamdaten Ihres Automation-Auftrags an Log Analytics senden und:
-+ Warnungen einrichten, um bei Problemen benachrichtigt zu werden
++ Warnungen einrichten, um bei Problemen benachrichtigt zu werden.
 + Benutzerdefinierte Ansichten und Suchabfragen zum Anzeigen von Runbook-Ergebnissen, Runbook-Auftragsstatus und anderer wichtiger Schlüsselindikatoren oder Metriken verwenden.  
 
 Log Analytics bietet eine höhere operative Transparenz für Ihre Automation-Aufträge, sodass schneller auf Vorfälle reagiert werden kann.  
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum Erstellen verschiedener Suchabfragen und zur Überprüfung der Automation-Auftragsprotokolle mit Log Analytics finden Sie unter [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md)
-* Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md)
-* Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md)
-* Weitere Informationen zu OMS Log Analytics und Datenerfassungsquellen finden Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](../log-analytics/log-analytics-azure-storage.md)
+* Weitere Informationen zum Erstellen verschiedener Suchabfragen und zum Überprüfen der Automation-Auftragsprotokolle mit Log Analytics finden Sie unter [Protokollsuchen in Log Analytics](../log-analytics/log-analytics-log-searches.md).
+* Unter [Runbookausgabe und -meldungen](automation-runbook-output-and-messages.md) erfahren Sie, wie Sie die Ausgabe und Fehlermeldungen von Runbooks erstellen und abrufen.
+* Weitere Informationen zum Ausführen von Runbooks, zum Überwachen von Runbookaufträgen sowie andere technische Details finden Sie unter [Verfolgen eines Runbookauftrags](automation-runbook-execution.md).
+* Weitere Informationen zu OMS Log Analytics und Datenerfassungsquellen finden Sie unter [Herstellen einer Verbindung zwischen Azure-Speichern und Log Analytics](../log-analytics/log-analytics-azure-storage.md).

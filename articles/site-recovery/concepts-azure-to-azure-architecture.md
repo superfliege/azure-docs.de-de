@@ -1,29 +1,21 @@
 ---
-title: "Überprüfen der Architektur für die Replikation von Azure-VMs zwischen Azure-Regionen | Microsoft-Dokumentation"
+title: Architektur der Azure-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
 description: "Dieser Artikel bietet einen Überblick über die Komponenten und die Architektur, die beim Replizieren von Azure-VMs zwischen Azure-Regionen mit dem Azure Site Recovery-Dienst verwendet werden."
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/08/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: 8251534b2e1e0d223f5e1df5dbd33831604615cb
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b37af3462a58f4418653d0e1b2300b5805e0a864
+ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="azure-to-azure-replication-architecture"></a>Architektur der Azure-zu-Azure-Replikation
 
 
-Dieser Artikel beschreibt die Architektur und Prozesse, die mithilfe des Dienstes [Azure Site Recovery](site-recovery-overview.md) bei der Replikation, bei der Ausführung eines Failovers und beim Wiederherstellen von virtuellen Azure-Computern (VMs) zwischen Azure-Regionen verwendet werden.
+Dieser Artikel beschreibt die Architektur, die unter Verwendung des [Azure Site Recovery](site-recovery-overview.md)-Diensts für die Replikation, die Ausführung eines Failovers und die Wiederherstellung von virtuellen Azure-Computern (VMs) zwischen Azure-Regionen verwendet wird.
 
 >[!NOTE]
 >Die Replikation von Azure-VMs mit dem Site Recovery-Dienst ist derzeit in der Vorschau verfügbar.
@@ -45,7 +37,7 @@ Die folgende Abbildung enthält einen allgemeinen Überblick über eine Azure-VM
 
 ### <a name="step-1"></a>Schritt 1
 
-Wenn Sie die Replikation für Azure-VMs aktivieren, werden die unten genannten Ressourcen automatisch in der Zielregion und auf Grundlage der Einstellungen in der Quellregion erstellt. Bei Bedarf können Sie die Zielressourceneinstellungen anpassen. 
+Wenn Sie die Azure-VM-Replikation aktivieren, werden die folgenden Ressourcen auf Grundlage der Einstellungen in der Quellregion automatisch in der Zielregion erstellt. Bei Bedarf können Sie die Zielressourceneinstellungen anpassen.
 
 ![Schritt 1: Aktivieren des Replikationsprozesses](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
 
@@ -53,7 +45,7 @@ Wenn Sie die Replikation für Azure-VMs aktivieren, werden die unten genannten R
 --- | ---
 **Zielressourcengruppe** | Die Ressourcengruppe, zu denen replizierte VMs nach einem Failover gehören.
 **Virtuelles Zielnetzwerk** | Das virtuelle Netzwerk, in dem sich nach einem Failover replizierte VMs befinden. Eine Netzwerkzuordnung von virtuellen Quell- zu Zielnetzwerken (und umgekehrt) wird erstellt.
-**Cachespeicherkonten** | Bevor Änderungen an Quell-VMs in ein Zielspeicherkonto repliziert werden, werden sie nachverfolgt und an das Cachespeicherkonto am Zielstandort gesendet. Dadurch wird sichergestellt, dass die Auswirkungen auf Produktion-Apps, die auf der VM ausgeführt werden, so gering wie möglich sind.
+**Cachespeicherkonten** | Bevor Änderungen an Quell-VMs in ein Zielspeicherkonto repliziert werden, werden sie nachverfolgt und an das Cachespeicherkonto im Quellspeicherort gesendet. Dieser Schritt stellt sicher, dass die Auswirkungen auf die auf dem virtuellen Computer ausgeführten Produktion-Apps so gering wie möglich sind.
 **Zielspeicherkonten**  | Speicherkonten am Zielstandort, an dem die Daten repliziert werden.
 **Zielverfügbarkeitsgruppen**  | Verfügbarkeitsgruppen, in denen sich nach einem Failover die replizierten VMs befinden.
 
@@ -67,8 +59,17 @@ Da die Replikation aktiviert ist, wird automatisch die Site Recovery-Erweiterung
 
    ![Schritt 2: Aktivieren des Replikationsprozesses](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
 
-  
- Site Recovery benötigt nie eingehende Verbindungen mit der VM. Es ist nur ausgehende Konnektivität mit den URLs oder IP-Adressen des Site Recovery-Diensts, den URLs oder IP-Adressen der Office 365-Authentifizierung und den IP-Adressen des Cachespeicherkontos erforderlich.
+
+ Site Recovery benötigt nie eingehende Verbindungen mit der VM. Für Folgendes ist nur ausgehende Konnektivität erforderlich.
+
+ - URLs/IP-Adressen des Site Recovery-Diensts
+ - URLs/IP-Adressen für die Office 365-Authentifizierung
+ - IP-Adressen des Cachespeicherkontos
+
+Wenn Sie die Multi-VM-Konsistenz aktivieren, kommunizieren Computer in der Replikationsgruppe über den Port 20004 miteinander. Stellen Sie sicher, dass die interne Kommunikation zwischen den VMs über Port 20004 nicht durch eine Firewallappliance blockiert wird.
+
+> [!IMPORTANT]
+Wenn Sie Linux-VMs in eine Replikationsgruppe einschließen möchten, stellen Sie sicher, dass der ausgehende Datenverkehr auf Port 20004 gemäß den Anweisungen für die jeweilige Linux-Version manuell geöffnet wird.
 
 ### <a name="step-3"></a>Schritt 3
 
@@ -82,5 +83,4 @@ Bei der Initiierung eines Failovers werden die VMs in der Zielressourcengruppe, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Überprüfen Sie die Supportmatrix. Folgen Sie dem Tutorial, um die Replikation von Azure-VMs in eine sekundäre Region zu aktivieren.
-Führen Sie ein Failover und ein Failback aus.
+[Schnelles Replizieren](azure-to-azure-quickstart.md) einer Azure-VM in eine sekundäre Region

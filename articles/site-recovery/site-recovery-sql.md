@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: pratshar
-ms.openlocfilehash: 04fb9ebc8a235dd15817fbb5efd08922ae287aa1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 7981173b419632683a40a54bc07f51f0fccab531
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>Schützen von SQL Server mit der Notfallwiederherstellung von SQL Server und Azure Site Recovery
 
@@ -50,7 +50,7 @@ Site Recovery kann zum Schützen von SQL Server verwendet werden. Dies ist in de
 **Hyper-V** | Ja | Ja
 **VMware** | Ja | Ja
 **Physischer Server** | Ja | Ja
-**Azure**|NA| Ja
+**Azure**|Nicht verfügbar| Ja
 
 ### <a name="supported-sql-server-versions"></a>Unterstützte SQL Server-Versionen
 Diese SQL Server-Versionen werden für die unterstützten Szenarien unterstützt:
@@ -66,7 +66,7 @@ Site Recovery kann zur Bereitstellung einer Notfallwiederherstellungslösung mit
 
 **Feature** | **Details** | **SQL Server** |
 --- | --- | ---
-**AlwaysOn-Verfügbarkeitsgruppe** | Mehrere eigenständige Instanzen von SQL Server werden jeweils in einem Failovercluster mit mehreren Knoten ausgeführt.<br/><br/>Datenbanken können in Failovergruppen zusammengefasst werden, die in SQL Server-Instanzen kopiert (gespiegelt) werden können, sodass kein freigegebener Speicher erforderlich ist.<br/><br/>Ermöglicht die Notfallwiederherstellung zwischen einem primären und einem oder mehreren sekundären Standorten. Zwei Knoten können in einem Shared-Nothing-Cluster mit SQL Server-Datenbanken in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover eingerichtet werden. | SQL Server 2014 und 2012 Enterprise Edition
+**AlwaysOn-Verfügbarkeitsgruppe** | Mehrere eigenständige Instanzen von SQL Server werden jeweils in einem Failovercluster mit mehreren Knoten ausgeführt.<br/><br/>Datenbanken können in Failovergruppen zusammengefasst werden, die in SQL Server-Instanzen kopiert (gespiegelt) werden können, sodass kein freigegebener Speicher erforderlich ist.<br/><br/>Ermöglicht die Notfallwiederherstellung zwischen einem primären und einem oder mehreren sekundären Standorten. Zwei Knoten können in einem Shared-Nothing-Cluster mit SQL Server-Datenbanken in einer Verfügbarkeitsgruppe mit synchroner Replikation und automatischem Failover eingerichtet werden. | SQL Server 2016, SQL Server 2014 und SQL Server 2012 Enterprise Edition
 **Failoverclustering (Always On-FCI)** | SQL Server nutzt das Windows-Failoverclustering für Hochverfügbarkeit der lokalen SQL Server-Workloads.<br/><br/>Knoten, auf denen Instanzen von SQL Server mit freigegebenen Datenträgern ausgeführt werden, werden in einem Failovercluster konfiguriert. Fällt eine Instanz aus, wird für den Cluster ein Failover zu einer anderen Instanz durchgeführt.<br/><br/>Der Cluster schützt nicht vor Fehlern oder Ausfällen im freigegebenen Speicher. Der freigegebene Datenträger kann mit iSCSI, Fibre Channel oder freigegebenen VHDX-Dateien implementiert werden. | SQL Server Enterprise Editions<br/><br/>SQL Server Standard Edition (auf zwei Knoten beschränkt)
 **Datenbankspiegelung (Modus für hohe Sicherheit)** | Schützt eine einzelne Datenbank mittels einer sekundären Kopie. Replikationsmodi mit hoher Sicherheit (synchron) oder mit hoher Leistung (asynchron) verfügbar. Kein Failovercluster erforderlich. | SQL Server 2008 R2<br/><br/>SQL Server Enterprise (alle Editionen)
 **Eigenständige SQL Server-Instanz** | SQL Server und die Datenbank werden auf einem einzelnen Server (physisch oder virtuell) gehostet. Bei einem virtuellen Server wird Hostclustering verwendet, um Hochverfügbarkeit zu gewährleisten. Keine Hochverfügbarkeit auf Gastebene. | Enterprise oder Standard
@@ -118,7 +118,7 @@ Das müssen Sie tun:
 
 SQL Always On bietet keine native Unterstützung für ein Testfailover. Daher empfehlen wir Folgendes:
 
-1. Richten Sie [Azure Backup](../backup/backup-azure-vms.md) auf dem virtuellen Computer ein, auf dem das Replikat der Verfügbarkeitsgruppe in Azure gehostet wird.
+1. Richten Sie [Azure Backup](../backup/backup-azure-arm-vms.md) auf dem virtuellen Computer ein, auf dem das Replikat der Verfügbarkeitsgruppe in Azure gehostet wird.
 
 1. Vor dem Auslösen des Testfailovers des Wiederherstellungsplans stellen Sie den virtuellen Computer aus der im vorherigen Schritt erstellten Sicherung wieder her.
 

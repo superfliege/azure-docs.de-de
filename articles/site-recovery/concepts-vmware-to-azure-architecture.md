@@ -1,24 +1,16 @@
 ---
-title: "Überprüfen der Architektur für die VMware-Replikation in Azure | Microsoft-Dokumentation"
+title: Architektur der VMware-zu-Azure-Replikation in Azure Site Recovery | Microsoft-Dokumentation
 description: "Dieser Artikel bietet einen Überblick über die Komponenten und Architektur, die beim Replizieren von lokalen virtuellen VMware-Computern in Azure mit dem Azure Site Recovery-Dienst verwendet werden."
-services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
-manager: carmonm
-editor: 
-ms.assetid: d03d2dd3-2455-4ca8-a942-a342030ee6ce
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 12/19/2017
 ms.author: raynew
-ms.openlocfilehash: ac1151d15a88650f5845cb879cd210e9f7cba0fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1c991298d8f59c7f161b965541571b4c8ac3d8f9
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>VMware in der Architektur für die Azure-Replikation
 
@@ -85,5 +77,4 @@ Wenn Ihr primärer lokaler Standort wieder verfügbar ist, können Sie das Failb
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Überprüfen Sie die Supportmatrix. Folgen Sie dem Tutorial, um VMware in der Azure-Replikation zu aktivieren.
-Führen Sie ein Failover und ein Failback aus.
+Absolvieren Sie [dieses Tutorial](tutorial-vmware-to-azure.md), um eine VMware-zu-Azure-Replikation zu ermöglichen.

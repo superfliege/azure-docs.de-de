@@ -14,26 +14,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 12/22/2017
 ms.author: genli
-ms.openlocfilehash: f0fb408557f58ddf434cbebb8978dc81342c87c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b573a3745cbaa3deb583458159faaa0ac93f202
+ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/23/2017
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?
 
-Ihr Azure-Abonnement kann gegebenenfalls deaktiviert werden, weil Sie Ihr Ausgabenlimit erreicht haben, eine Rechnung überfällig ist, das Kreditkartenlimit erreicht ist oder das Abonnement vom Kontoadministrator gekündigt wurde. Prüfen Sie, welches Problem für Sie vorliegen könnte, und führen Sie die Schritte in diesem Artikel aus, um Ihr Abonnement reaktivieren zu lassen.
+Ihr Azure-Abonnement kann gegebenenfalls deaktiviert werden, weil Ihre Gutschrift abgelaufen ist, Sie Ihr Ausgabenlimit erreicht haben, eine Rechnung überfällig ist, das Kreditkartenlimit erreicht ist oder das Abonnement vom Kontoadministrator gekündigt wurde. Prüfen Sie, welches Problem für Sie vorliegen könnte, und führen Sie die Schritte in diesem Artikel aus, um Ihr Abonnement reaktivieren zu lassen.
+
+## <a name="your-credit-is-expired"></a>Ihre Gutschrift ist abgelaufen
+
+Wenn Sie sich für ein kostenloses Azure-Konto registrieren, erhalten Sie ein kostenloses Testabonnement, das Ihnen eine Azure-Gutschrift in Höhe von 200 $ für 30 Tage sowie 12 Monate kostenlose Dienste zur Verfügung stellt. Nach Ablauf der 30 Tage deaktiviert Azure Ihr Abonnement. Ihr Abonnement wird deaktiviert, um zu verhindern, dass versehentlich Kosten für die Nutzung anfallen, die die für das Abonnement festgelegte Gutschrift und die kostenlosen Dienste übersteigen. Um Azure-Dienste weiterhin zu verwenden, müssen Sie [ein Upgrade Ihres Abonnements auf ein Abonnement mit nutzungsbasierter Bezahlung ausführen](billing-upgrade-azure-subscription.md). Nach dem Upgrade hat Ihr Abonnement noch 12 Monate lang Zugriff auf kostenlose Dienste. Es wird Ihnen nur die Nutzung in Rechnung gestellt, die über die kostenlosen Dienste und Mengen hinausgeht.
 
 ## <a name="you-reached-your-spending-limit"></a>Sie haben Ihr Ausgabenlimit erreicht
 
-Wenn das in Ihrem Abonnement enthaltene monatliche Ressourcenkontingent durch Ihre Nutzung ausgeschöpft wurde, deaktivieren wir den Dienst für den Rest des Abrechnungszeitraums. Der Dienst wird für Sie deaktiviert, um zu verhindern, dass versehentlich Kosten für die Nutzung anfallen, die den für das Abonnement festgelegten Betrag übersteigen. Informationen zum Entfernen Ihres Ausgabenlimits finden Sie unter [Entfernen des Ausgabenlimits im Kontocenter](billing-spending-limit.md#remove).
+Für Azure-Abonnements mit Gutschrift, wie etwa die kostenlose Testversion und Visual Studio Enterprise, gelten Ausgabenlimits. Dies bedeutet, dass Sie nur Dienste bis zur Höhe der enthaltenen Gutschrift verwenden können. Wenn Ihre Nutzung das Ausgabenlimit erreicht, deaktiviert Azure Ihr Abonnement für den Rest des Abrechnungszeitraums. Ihr Abonnement wird deaktiviert, um zu verhindern, dass versehentlich Kosten für die Nutzung anfallen, die die für das Abonnement festgelegte Gutschrift übersteigen. Informationen zum Entfernen Ihres Ausgabenlimits finden Sie unter [Entfernen des Ausgabenlimits im Kontocenter](billing-spending-limit.md#remove).
 
 > [!NOTE] 
-> Wenn Sie über ein Abonnement vom Typ „Kostenlose Testversion“ verfügen und das Ausgabenlimit entfernen, wird das Abonnement am Ende des Testzeitraums auf „Nutzungsbasierte Zahlung“ umgestellt.
+> Wenn Sie über ein Abonnement vom Typ „Kostenlose Testversion“ verfügen und das Ausgabenlimit entfernen, wird das Abonnement am Ende des Testzeitraums auf „Nutzungsbasierte Zahlung“ umgestellt. Sie behalten Ihr Restguthaben für die vollen 30 Tage nach Erstellung des Abonnements. Sie haben auch Zugang zu kostenlosen Diensten für 12 Monate.
 
 Weitere Informationen zum Überwachen und Verwalten von Abrechnungsaktivitäten für Azure finden Sie unter [Vermeiden unerwarteter Kosten bei der Azure-Abrechnung und -Kostenverwaltung](billing-getting-started.md) und [Einrichten von Abrechnungsbenachrichtigungen für Microsoft Azure-Abonnements](billing-set-up-alerts.md).
+
 
 ## <a name="your-bill-is-past-due"></a>Ihre Rechnung ist überfällig
 
@@ -55,6 +60,6 @@ Wenn Sie der Kontoadministrator sind und versehentlich ein Abonnement mit nutzun
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie andere Abonnementtypen verwenden, um Ihr Abonnement reaktivieren zu lassen.
 
-## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
+## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Support kontaktieren
 
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

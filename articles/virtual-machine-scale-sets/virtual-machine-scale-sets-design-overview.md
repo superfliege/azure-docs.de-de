@@ -5,7 +5,7 @@ keywords: "virtueller Linux-Computer, Skalierungsgruppen für virtuelle Computer
 services: virtual-machine-scale-sets
 documentationcenter: 
 author: gatneil
-manager: madhana
+manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
@@ -16,21 +16,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
-ms.openlocfilehash: 0b05359938f4da544c4cb2a6fe60cfaf228478e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efb9f7f7daa5dbb8cd3120b21ef812106fdc7fb9
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="design-considerations-for-scale-sets"></a>Überlegungen zum Entwurf von Skalierungsgruppen
-In diesem Thema werden Überlegungen zum Entwurf von Skalierungsgruppen für virtuelle Computer erörtert. Informationen darüber, was Skalierungsgruppen für virtuelle Computer sind, finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
+In diesem Artikel werden Überlegungen zum Entwurf von VM-Skalierungsgruppen erörtert. Informationen darüber, was Skalierungsgruppen für virtuelle Computer sind, finden Sie unter [Übersicht über VM-Skalierungsgruppen](virtual-machine-scale-sets-overview.md).
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>Wann sollten Sie Skalierungsgruppen statt virtuellen Computern verwenden?
-Im Allgemeinen sind Skalierungsgruppen nützlich für das Bereitstellen hochgradig verfügbarer Infrastruktur, wenn eine Reihe Computer ähnlich konfiguriert sind. Jedoch sind einige Funktionen nur in Skalierungsgruppen verfügbar, andere nur bei virtuellen Computern. Um eine fundierte Entscheidung über die jeweils geeignete Technologie treffen zu können, müssen wir uns zunächst mit einigen häufig verwendeten Funktionen beschäftigen, die nur in Skalierungsgruppen und nicht bei virtuellen Computern verfügbar sind:
+Im Allgemeinen sind Skalierungsgruppen nützlich für das Bereitstellen hochgradig verfügbarer Infrastruktur, wenn eine Reihe Computer ähnlich konfiguriert sind. Jedoch sind einige Funktionen nur in Skalierungsgruppen verfügbar, andere nur bei virtuellen Computern. Um eine fundierte Entscheidung über die jeweils geeignete Technologie treffen zu können, müssen Sie sich zunächst mit einigen häufig verwendeten Funktionen beschäftigen, die nur in Skalierungsgruppen und nicht bei VMs verfügbar sind:
 
 ### <a name="scale-set-specific-features"></a>Skalierungsgruppenspezifische Funktionen
 
-- Nach der Festlegung einer Skalierungsgruppenkonfiguration können Sie einfach die Eigenschaft „Kapazität“ aktualisieren, um mehrere virtuelle Computer parallel bereitzustellen. Dies ist viel einfacher, als ein Skript zu schreiben, um viele einzelne virtuelle Computer parallel zu orchestrieren.
+- Nach der Festlegung einer Skalierungsgruppenkonfiguration können Sie die Eigenschaft „capacity“ aktualisieren, um mehrere VMs parallel bereitzustellen. Dies ist viel einfacher, als ein Skript zu schreiben, um viele einzelne virtuelle Computer parallel zu orchestrieren.
 - Sie können [Azure Autoscale dazu verwenden, Skalierungsgruppen automatisch zu skalieren](./virtual-machine-scale-sets-autoscale-overview.md), nicht jedoch einzelne virtuelle Computer.
 - Sie können [ein Reimaging für virtuelle Computer in einer Skalierungsgruppe ](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-a-vm) durchführen, [nicht jedoch für einzelne virtuelle Computer](https://docs.microsoft.com/rest/api/compute/virtualmachines).
 - Sie können virtuelle Computer in einer Skalierungsgruppe [überbereitstellen](./virtual-machine-scale-sets-design-overview.md), um eine höhere Zuverlässigkeit und kürzere Bereitstellungszeiten zu erreichen. Mit einzelnen virtuellen Computern ist dies nur mit benutzerdefiniertem Code möglich.
@@ -38,14 +38,14 @@ Im Allgemeinen sind Skalierungsgruppen nützlich für das Bereitstellen hochgrad
 
 ### <a name="vm-specific-features"></a>Spezifische Funktionen von virtuellen Computern
 
-Einige Funktionen stehen wiederum nur bei virtuellen Computern zur Verfügung (zumindest zum derzeitigen Zeitpunkt):
+Einige Features sind derzeit nur auf VMs verfügbar:
 
 - Sie können Datenträger an spezifische einzelne virtuelle Computer anfügen, aber die angefügten Datenträger werden für alle virtuellen Computer in der Skalierungsgruppe konfiguriert.
 - Sie können nicht leere Datenträger an einzelne virtuelle Computer anfügen, nicht jedoch an virtuelle Computer in einer Skalierungsgruppe.
 - Sie können Momentaufnahmen von einzelnen virtuellen Computern erstellen, nicht jedoch von virtuellen Computern in einer Skalierungsgruppe.
 - Sie können ein Image von einem einzelnen virtuellen Computer erfassen, nicht jedoch von einem virtuellen Computer in einer Skalierungsgruppe.
 - Sie können einen einzelnen virtuellen Computer von einem nativen Datenträger zu einem verwalteten Datenträger migrieren, für virtuelle Computer in einer Skalierungsgruppe ist dies hingegen nicht möglich.
-- Sie können den NICs von virtuellen Computern öffentliche IPv6-IP-Adressen zuweisen, für virtuelle Computer in einer Skalierungsgruppe ist dies hingegen nicht möglich. Bitte beachten Sie, dass Sie Load Balancern sowohl bei virtuellen Computern als auch bei virtuellen Computern in einer Skalierungsgruppe öffentliche IPv6-IP-Adressen zuweisen können.
+- Sie können den NICs von virtuellen Computern öffentliche IPv6-IP-Adressen zuweisen, für virtuelle Computer in einer Skalierungsgruppe ist dies hingegen nicht möglich. Sie können Load Balancern sowohl bei VMs als auch bei VMs in einer Skalierungsgruppe öffentliche IPv6-Adressen zuweisen.
 
 ## <a name="storage"></a>Speicher
 
@@ -68,7 +68,7 @@ Während die Überbereitstellung die Erfolgsquoten bei der Bereitstellung verbes
 
 Wenn die Skalierungsgruppe vom Benutzer verwalteten Speicher nutzt und Sie die Überbereitstellung deaktivieren, sind mehr als 20 VMs pro Speicherkonto möglich, doch aus Gründen der E/A-Leistung werden nur maximal 40 empfohlen. 
 
-## <a name="limits"></a>Grenzen
+## <a name="limits"></a>Einschränkungen
 Eine für ein Marketplace-Image (auch Plattformimage genannt) erstellte Skalierungsgruppe, die für die Verwendung von Azure Managed Disks konfiguriert ist, unterstützt eine Kapazität von bis zu 1.000 VMs. Wenn Sie Ihre Skalierungsgruppe für eine Unterstützung von mehr als 100 VMs konfiguriert haben, funktionieren nicht alle Szenarien identisch (z.B. der Lastenausgleich). Weitere Informationen finden Sie unter [Verwenden umfangreicher VM-Skalierungsgruppen](virtual-machine-scale-sets-placement-groups.md). 
 
 Eine Skalierungsgruppe mit vom Benutzer verwalteten Speicherkonten ist derzeit auf 100 VMs begrenzt (und für diese Skalierung werden 5 Speicherkonten empfohlen).

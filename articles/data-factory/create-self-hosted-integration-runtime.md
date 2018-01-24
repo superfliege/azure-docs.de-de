@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: abnarain
-ms.openlocfilehash: 0fcc245369d90042066cbfc516a8c32db7272bd3
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 2c7df5c0a976aae8e3e0b99b083bbde942493bfa
+ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 12/21/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit
 Bei der Integrationslaufzeit (Integration Runtime, IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integrationslaufzeit finden Sie unter [Integration Runtime Overview](concepts-integration-runtime.md) (Übersicht über Integrationslaufzeit).
@@ -110,7 +110,20 @@ Eine selbstgehostete Integration Runtime kann mehreren lokalen Computern zugeord
 Sie können mehrere Knoten zuordnen, indem Sie einfach die Software für die selbstgehostete Integration Runtime aus dem [Download Center](https://www.microsoft.com/download/details.aspx?id=39717) installieren und registrieren und einen der Authentifizierungsschlüssel verwenden, der mit dem New-AzureRmDataFactoryV2IntegrationRuntimeKey-Cmdlet ermittelt wurde. Dies ist im entsprechenden [Tutorial](tutorial-hybrid-copy-powershell.md) beschrieben.
 
 > [!NOTE]
-> Für die Zuordnung zu den einzelnen Knoten müssen Sie nicht jeweils eine neue selbstgehostete Integrationslaufzeit erstellen.
+> Für die Zuordnung zu den einzelnen Knoten müssen Sie nicht jeweils eine neue selbstgehostete Integrationslaufzeit erstellen. Sie können die selbstgehostete Integration Runtime auf einem anderen Computer installieren und mit dem gleichen Authentifizierungsschlüssel registrieren. 
+
+> [!NOTE]
+> Vergewissern Sie sich vor dem Hinzufügen eines weiteren Knotens für **Hochverfügbarkeit und Skalierbarkeit**, dass die Option **Remote access to intranet** (Remotezugriff auf das Intranet) für den ersten Knoten **aktiviert** ist. Navigieren Sie hierzu zu „Konfigurations-Manager für Microsoft Integration Runtime“ > „Einstellungen“ > „Remote access to intranet“ (Remotezugriff auf das Intranet). 
+
+### <a name="tlsssl-certificate-requirements"></a>TLS/SSL-Zertifikatanforderungen
+Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schützen der Kommunikation zwischen Integration Runtime-Knoten verwendet wird:
+
+- Das Zertifikat muss ein öffentlich vertrauenswürdiges Zertifikat vom Typ „X509 v3“ sein. Wir empfehlen Ihnen die Verwendung von Zertifikaten, die von einer öffentlichen Zertifizierungsstelle (Drittanbieter) ausgestellt werden.
+- Jeder Integration Runtime-Knoten muss diesem Zertifikat vertrauen.
+- Platzhalterzertifikate werden unterstützt. Wenn der FQDN **node1.domain.contoso.com** lautet, können Sie ***.domain.contoso.com** als Antragstellernamen des Zertifikats verwenden.
+- SAN-Zertifikate sind nicht empfehlenswert, da nur das letzte Element des alternativen Antragstellernamens verwendet wird und alle anderen aufgrund von aktuellen Einschränkungen ignoriert werden. Beispiel: Wenn Sie ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** haben, können Sie dieses Zertifikat nur auf dem Computer mit dem FQDN **node2.domain.contoso.com** verwenden.
+- Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
+- Zertifikate mit CNG-Schlüsseln werden nicht unterstützt. Unterstützt keine Zertifikate, die CNG-Schlüssel verwenden.
 
 ## <a name="system-tray-icons-notifications"></a>Symbole und Benachrichtigungen in der Taskleiste
 Wenn Sie den Cursor auf das Taskleistensymbol bzw. die Benachrichtigungsmeldung bewegen, können Sie auf Details zum Status der selbstgehosteten Integrationslaufzeit zugreifen.
@@ -124,7 +137,7 @@ Zwei Firewalls müssen berücksichtigt werden: Die **Unternehmensfirewall**, die
 
 Auf Ebene der **Unternehmensfirewall** müssen Sie die folgenden Domänen und ausgehenden Ports konfigurieren:
 
-Domänennamen | Ports | Beschreibung
+Domänennamen | Ports | BESCHREIBUNG
 ------------ | ----- | ------------
 *.servicebus.windows.net | 443, 80 | Wird für die Kommunikation mit dem Back-End für den Datenverschiebungsdienst verwendet
 *.core.windows.net | 443 | Wird für das gestaffelte Kopieren mit einem Azure-Blob (sofern konfiguriert) verwendet
@@ -169,7 +182,7 @@ Der Hostdienst der Integrationslaufzeit wird automatisch neu gestartet, nachdem 
 Wenn Sie nach der erfolgreichen Registrierung der selbstgehosteten Integrationslaufzeit die Proxyeinstellungen anzeigen oder aktualisieren möchten, können Sie den Konfigurations-Manager für die Integrationslaufzeit verwenden.
 
 1.  Starten Sie den **Konfigurations-Manager für die Azure Data Factory-Integrationslaufzeit**.
-2.  Wechseln Sie zur Registerkarte **Einstellungen** .
+2.  Wechseln Sie zur Registerkarte **Einstellungen**.
 3.  Klicken Sie im Abschnitt **HTTP-Proxy** auf den Link **Ändern**, um das Dialogfeld **HTTP-Proxy festlegen** zu öffnen.
 4.  Nachdem Sie auf die Schaltfläche **Weiter** geklickt haben, wird ein Dialogfeld mit einer Warnung angezeigt, in dem Sie bestätigen müssen, dass die Proxyeinstellung gespeichert und der Hostdienst der Integrationslaufzeit neu gestartet werden soll.
 
@@ -225,14 +238,20 @@ Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies me
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
-### <a name="open-port-8060-for-credential-encryption"></a>Öffnen von Port 8060 für die Verschlüsselung der Anmeldeinformationen
-Für die Anwendung **Anmeldeinformationen festlegen** (derzeit nicht unterstützt) wird der eingehende Port 8060 verwendet, um Anmeldeinformationen an die selbstgehostete Integrationslaufzeit weiterzuleiten, wenn Sie im Azure-Portal einen lokalen verknüpften Dienst einrichten. Während der Einrichtung der selbstgehosteten Integrationslaufzeit wird sie vom entsprechenden Installationsvorgang auf dem Computer für die selbstgehostete Integrationslaufzeit geöffnet.
+### <a name="enable-remote-access-from-intranet"></a>Aktivieren des Remotezugriffs über das Intranet  
+Falls Sie **PowerShell** oder die **Anwendung für die Anmeldeinformationsverwaltung** verwenden, um Anmeldeinformationen eines anderen Computers im Netzwerk zu verschlüsseln, auf dem die selbstgehostete Integration Runtime nicht installiert ist, muss die Option **Remotezugriff über das Intranet** aktiviert sein. Falls Sie **PowerShell** oder die **Anwendung für die Anmeldeinformationsverwaltung** verwenden, um Anmeldeinformationen auf dem gleichen Computer zu verschlüsseln, auf dem auch die selbstgehostete Integration Runtime installiert ist, muss die Option **Remotezugriff über das Intranet** nicht aktiviert sein.
 
-Bei Verwendung einer Drittanbieterfirewall können Sie den Port 8050 manuell öffnen. Falls beim Einrichten der selbstgehosteten Integrationslaufzeit Firewallprobleme auftreten, können Sie mit dem unten angegebenen Befehl versuchen, die selbstgehostete Integrationslaufzeit zu installieren, ohne die Firewall zu konfigurieren.
+Der Remotezugriff über das Intranet muss **aktiviert** werden, bevor ein weiterer Knoten für **Hochverfügbarkeit und Skalierbarkeit** hinzugefügt wird.  
+
+Während der Einrichtung der selbstgehosteten Integration Runtime (ab Version 3.3.xxxx.x) wird **Remotezugriff über das Intranet** durch die Installation der selbstgehosteten Integration Runtime auf dem Computer für die selbstgehostete Integration Runtime deaktiviert.
+
+Bei Verwendung einer Drittanbieterfirewall können Sie den Port 8060 (oder den vom Benutzer konfigurierten Port) manuell öffnen. Falls beim Einrichten der selbstgehosteten Integrationslaufzeit Firewallprobleme auftreten, können Sie mit dem unten angegebenen Befehl versuchen, die selbstgehostete Integrationslaufzeit zu installieren, ohne die Firewall zu konfigurieren.
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 ```
+> [!NOTE]
+> Die **Anwendung für die Anmeldeinformationsverwaltung** steht noch nicht für die Verschlüsselung von Anmeldeinformationen in ADFv2 zur Verfügung. Diese Unterstützung wird aber noch hinzugefügt.  
 
 Falls Sie den Port 8060 auf dem Computer für die selbstgehostete Integrationslaufzeit nicht öffnen, sollten Sie andere Verfahren als die Anwendung „Anmeldeinformationen festlegen“ nutzen, um Anmeldeinformationen für den Datenspeicher zu konfigurieren. Beispielsweise können Sie das New-AzureRmDataFactoryV2LinkedServiceEncryptCredential-PowerShell-Cmdlet verwenden. Informationen zum Festlegen von Datenspeicher-Anmeldeinformationen finden Sie unter „Festlegen von Anmeldeinformationen und Sicherheit“.
 

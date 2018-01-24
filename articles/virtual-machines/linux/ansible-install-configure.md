@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: c5257ef5c635080f5eaca371e1882b13cc37e0fd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 13b043f3d6154852647f6bb738d3717be6802fa9
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Installieren und Konfigurieren von Ansible für das Verwalten von virtuellen Computern in Azure
 In diesem Artikel wird erläutert, wie Sie Ansible und die erforderlichen Python-SDK-Module für Azure unter einigen der am häufigsten verwendeten Linux-Distributionen installieren. Sie können Ansible auf anderen Distributionen installieren, indem Sie die installierten Pakete entsprechend an Ihre Plattform anpassen. Damit Sie Azure-Ressourcen auf sichere Weise erstellen können, erfahren Sie auch, wie Sie Anmeldeinformationen für Ansible erstellen und definieren. 
@@ -34,7 +34,7 @@ Erstellen Sie zunächst mit [az group create](/cli/azure/group#create) eine Ress
 az group create --name myResourceGroupAnsible --location eastus
 ```
 
-Nun erstellen Sie einen virtuellen Computer und installieren Ansible für eine der folgenden Distributionen:
+Nun erstellen Sie eine VM und installieren Ansible für eine der folgenden Distributionen Ihrer Wahl:
 
 - [Ubuntu 16.04 LTS](#ubuntu1604-lts)
 - [CentOS 7.3](#centos-73)
@@ -43,7 +43,7 @@ Nun erstellen Sie einen virtuellen Computer und installieren Ansible für eine d
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -74,7 +74,7 @@ Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#cre
 ### <a name="centos-73"></a>CentOS 7.3
 Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -106,7 +106,7 @@ Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#cre
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
 Erstellen Sie mit [az vm create](/cli/azure/vm#create) einen virtuellen Computer. Im folgenden Beispiel wird der virtuelle Computer *myVMAnsible* erstellt:
 
-```bash
+```azurecli
 az vm create \
     --name myVMAnsible \
     --resource-group myResourceGroupAnsible \
@@ -125,11 +125,14 @@ Installieren Sie die erforderlichen Pakete für die Python-SDK-Module für Azure
 
 ```bash
 ## Install pre-requisite packages
-sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 python-devel \
-    libopenssl-devel libtool python-pip python-setuptools
+sudo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make \
+    python-devel libopenssl-devel libtool python-pip python-setuptools
 
 ## Install Ansible and Azure SDKs via pip
 sudo pip install ansible[azure]
+
+# Remove conflicting Python cryptography package
+sudo pip uninstall -y cryptography
 ```
 
 Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#create-azure-credentials) fort.
@@ -138,26 +141,26 @@ Fahren Sie anschließend mit dem [Erstellen von Azure-Anmeldeinformationen](#cre
 ## <a name="create-azure-credentials"></a>Erstellen von Azure-Anmeldeinformationen
 Ansible kommuniziert mit Azure unter Verwendung von Benutzername und Kennwort oder eines Dienstprinzipals. Ein Azure-Dienstprinzipal ist eine Sicherheitsidentität, die Sie mit Apps, Diensten und Automatisierungstools wie Ansible verwenden können. Sie steuern und definieren die Berechtigungen hinsichtlich der Vorgänge, die der Dienstprinzipal in Azure ausführen können soll. Zur Erhöhung der Sicherheit über die Bereitstellung eines Benutzernamens und Kennworts hinaus wird in diesem Beispiel ein einfacher Dienstprinzipal erstellt.
 
-Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) einen Dienstprinzipalnamen, und geben Sie die Anmeldeinformationen aus, die Ansible benötigt:
+Erstellen Sie mit [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) einen Dienstprinzipal, und geben Sie die von Ansible benötigten Anmeldeinformationen aus:
 
 ```azurecli
-az ad sp create-for-rbac --query [appId,password,tenant]
+az ad sp create-for-rbac --query [client_id: appId, secret: password, tenant: tenant]
 ```
 
 Ein Beispiel der Ausgabe der vorherigen Befehle lautet wie folgt:
 
 ```json
-[
-  "eec5624a-90f8-4386-8a87-02730b5410d5",
-  "531dcffa-3aff-4488-99bb-4816c395ea3f",
-  "72f988bf-86f1-41af-91ab-2d7cd011db47"
-]
+{
+  "client_id": "eec5624a-90f8-4386-8a87-02730b5410d5",
+  "secret": "531dcffa-3aff-4488-99bb-4816c395ea3f",
+  "tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+}
 ```
 
 Zur Authentifizierung bei Azure müssen Sie auch Ihre Azure-Abonnement-ID mit [az account show](/cli/azure/account#show) abrufen:
 
 ```azurecli
-az account show --query [id] --output tsv
+az account show --query "{ subscription_id: id }"
 ```
 
 Die Ausgabe dieser beiden Befehle verwenden Sie im nächsten Schritt.
@@ -173,7 +176,7 @@ mkdir ~/.azure
 vi ~/.azure/credentials
 ```
 
-Die Datei mit den *Anmeldeinformationen* selbst kombiniert die Abonnement-ID mit der Ausgabe der Erstellung eines Dienstprinzipals. Die Ausgabe aus dem vorherigen Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) entspricht der erforderlichen Reihenfolge von *client_id*, *secret* und *tenant*. Das folgende Beispiel zeigt die Werte aus der vorherigen Ausgabe in der Datei mit den *Anmeldeinformationen*. Geben Sie Ihre eigenen Werte wie folgt ein:
+Die Datei mit den *Anmeldeinformationen* selbst kombiniert die Abonnement-ID mit der Ausgabe der Erstellung eines Dienstprinzipals. Die Ausgabe aus dem vorherigen Befehl [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) ist identisch mit der erforderlichen Ausgabe von *client_id*, *secret* und *tenant*. Das folgende Beispiel zeigt die Werte aus der vorherigen Ausgabe in der Datei mit den *Anmeldeinformationen*. Geben Sie Ihre eigenen Werte wie folgt ein:
 
 ```bash
 [default]

@@ -12,23 +12,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
+ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 8e6d68612be4b7d4e1d6cea13e0f29636931abd8
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: e19833cb58f37f5f8b83d5558d74255583137684
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Bereitstellen mehrerer Instanzen einer Ressource oder Eigenschaft in Azure Resource Manager-Vorlagen
-In diesem Thema erfahren Sie, wie Sie die Azure Resource Manager-Vorlage durchlaufen können, um mehrere Instanzen einer Ressource oder mehrere Instanzen einer Eigenschaft für eine Ressource zu erstellen.
+In diesem Artikel erfahren Sie, wie Sie eine Ressource bedingt bereitstellen und wie Sie die Azure Resource Manager-Vorlage durchlaufen, um mehrere Instanzen einer Ressource zu erstellen.
 
-Wenn Sie der Vorlage Logik hinzufügen müssen, mit der Sie angeben können, ob eine Ressource bereitgestellt wird, sehen Sie [Bedingtes Bereitstellen von Ressourcen](#conditionally-deploy-resource) ein.
+## <a name="conditionally-deploy-resource"></a>Bedingtes Bereitstellen von Ressourcen
 
-Ein Beispiel zum Erstellen von mehreren Elementen in einer Arrayvariablen finden Sie unter [Variables](resource-group-authoring-templates.md#variables).
+Wenn Sie sich während der Bereitstellung entscheiden müssen, eine oder keine der Instanzen einer Ressource zu erstellen, verwenden Sie das `condition`-Element. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert „true“ ist, wird die Ressource bereitgestellt. Ist der Wert „false“, wird die Ressource nicht bereitgestellt. Verwenden Sie beispielsweise Folgendes, um anzugeben, ob ein neues Speicherkonto bereitgestellt wird oder ob ein vorhandenes Speicherkonto verwendet wird:
+
+```json
+{
+    "condition": "[equals(parameters('newOrExisting'),'new')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[variables('storageAccountName')]",
+    "apiVersion": "2017-06-01",
+    "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "[variables('storageAccountType')]"
+    },
+    "kind": "Storage",
+    "properties": {}
+}
+```
 
 ## <a name="resource-iteration"></a>Ressourceniteration
-Fügen Sie zum Erstellen mehrerer Instanzen eines Ressourcentyps ein `copy`-Element zum Ressourcentyp hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten. Resource Manager erstellt die Ressourcen gleichzeitig. Aus diesem Grund ist die Reihenfolge, in der sie erstellt werden, nicht garantiert. Um Ressourcen durch mehrfaches Durchlaufen zu erstellen, finden Sie unter [Serielle Kopie](#serial-copy). 
+Wenn Sie sich während der Bereitstellung entscheiden müssen, eine oder mehrere Instanzen einer Ressource zu erstellen, fügen Sie dem Ressourcentyp ein `copy`-Element hinzu. Im copy-Element geben Sie die Anzahl von Iterationen und einen Namen für diese Schleife an. Der count-Wert muss eine positive ganze Zahl sein und darf 800 nicht überschreiten. 
 
 Die Ressource zum mehrfachen Erstellen übernimmt das folgende Format:
 
@@ -112,151 +127,40 @@ Namen:
 * storagefabrikam
 * storagecoho
 
-## <a name="serial-copy"></a>Serielle Kopie
+Resource Manager erstellt die Ressourcen standardmäßig gleichzeitig. Aus diesem Grund ist die Reihenfolge, in der sie erstellt werden, nicht garantiert. Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird.
 
-Wenn Sie das copy-Element verwenden, um mehrere Instanzen eines Ressourcentyps zu erstellen, stellt Resource Manager diese Instanzen standardmäßig parallel bereit. Es ist aber möglicherweise sinnvoll, anzugeben, dass die Ressource sequenziell bereitgestellt werden. Wenn Sie z.B. eine Produktionsumgebung aktualisieren, möchten Sie die Updates möglicherweise staffeln, sodass nur eine bestimmte Anzahl von Ressourcen gleichzeitig aktualisiert wird.
+Legen Sie zum seriellen Bereitstellen mehrerer Instanzen einer Ressource `mode` auf **serial** und `batchSize` auf die Anzahl der Instanzen fest, die zu einem Zeitpunkt bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn das vorherige Batch abgeschlossen wurde.
 
-Resource Manager bietet Eigenschaften für das copy-Element, mit denen Sie mehrere Instanzen seriell bereitstellen können. Legen Sie im copy-Element `mode` auf **serial** und `batchSize` auf die Anzahl von Instanzen fest, die gleichzeitig bereitgestellt werden sollen. Im seriellen Modus erstellt Resource Manager eine Abhängigkeit von früheren Instanzen in der Schleife, sodass ein Batch erst dann gestartet wird, wenn das vorherige Batch abgeschlossen wurde.
-
-```json
-"copy": {
-    "name": "iterator",
-    "count": "[parameters('numberToDeploy')]",
-    "mode": "serial",
-    "batchSize": 2
-},
-```
-
-Die mode-Eigenschaft akzeptiert auch **parallel**, wobei es sich um den Standardwert handelt.
-
-Um das serielle Kopieren zu testen, ohne tatsächlich Ressourcen zu erstellen, verwenden Sie folgende Vorlage, die leere geschachtelte Vorlagen bereitstellt:
-
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "numberToDeploy": {
-      "type": "int",
-      "minValue": 2,
-      "defaultValue": 5
-    }
-  },
-  "resources": [
-    {
-      "apiVersion": "2015-01-01",
-      "type": "Microsoft.Resources/deployments",
-      "name": "[concat('loop-', copyIndex())]",
-      "copy": {
-        "name": "iterator",
-        "count": "[parameters('numberToDeploy')]",
-        "mode": "serial",
-        "batchSize": 1
-      },
-      "properties": {
-        "mode": "Incremental",
-        "template": {
-          "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [],
-          "outputs": {
-          }
-        }
-      }
-    }
-  ],
-  "outputs": {
-  }
-}
-```
-
-Beachten Sie im Bereitstellungsverlauf, dass die geschachtelten Bereitstellungen sequenziell verarbeitet werden.
-
-![Serielle Bereitstellung](./media/resource-group-create-multiple/serial-copy.png)
-
-Das folgende Beispiel bietet ein etwas realistischeres Szenario und stellt gleichzeitig zwei Instanzen eines virtuellen Linux-Computers aus einer geschachtelten Vorlage bereit:
+Zum seriellen Bereitstellen von zwei Speicherkonten gleichzeitig verwenden Sie beispielsweise:
 
 ```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "adminUsername": {
-            "type": "string",
-            "metadata": {
-                "description": "User name for the Virtual Machine."
-            }
-        },
-        "adminPassword": {
-            "type": "securestring",
-            "metadata": {
-                "description": "Password for the Virtual Machine."
-            }
-        },
-        "dnsLabelPrefix": {
-            "type": "string",
-            "metadata": {
-                "description": "Unique DNS Name for the Public IP used to access the Virtual Machine."
-            }
-        },
-        "ubuntuOSVersion": {
-            "type": "string",
-            "defaultValue": "16.04.0-LTS",
-            "allowedValues": [
-                "12.04.5-LTS",
-                "14.04.5-LTS",
-                "15.10",
-                "16.04.0-LTS"
-            ],
-            "metadata": {
-                "description": "The Ubuntu version for the VM. This will pick a fully patched image of this given Ubuntu version."
-            }
-        }
-    },
-    "variables": {
-        "templatelink": "https://raw.githubusercontent.com/rjmax/Build2017/master/Act1.TemplateEnhancements/Chapter03.LinuxVM.json"
-    },
     "resources": [
         {
-            "apiVersion": "2015-01-01",
-            "name": "[concat('nestedDeployment',copyIndex())]",
-            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2016-01-01",
+            "type": "Microsoft.Storage/storageAccounts",
+            "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
+            "location": "[resourceGroup().location]",
+            "sku": {
+                "name": "Standard_LRS"
+            },
+            "kind": "Storage",
+            "properties": {},
             "copy": {
-                "name": "myCopySet",
+                "name": "storagecopy",
                 "count": 4,
                 "mode": "serial",
                 "batchSize": 2
-            },
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[variables('templatelink')]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "adminUsername": {
-                        "value": "[parameters('adminUsername')]"
-                    },
-                    "adminPassword": {
-                        "value": "[parameters('adminPassword')]"
-                    },
-                    "dnsLabelPrefix": {
-                        "value": "[parameters('dnsLabelPrefix')]"
-                    },
-                    "ubuntuOSVersion": {
-                        "value": "[parameters('ubuntuOSVersion')]"
-                    },
-                    "index":{
-                        "value": "[copyIndex()]"
-                    }
-                }
             }
         }
-    ]
+    ],
+    "outputs": {}
 }
-```
+``` 
+
+Die mode-Eigenschaft akzeptiert auch **parallel**, wobei es sich um den Standardwert handelt.
 
 ## <a name="property-iteration"></a>Iteration von Eigenschaften
 
@@ -352,50 +256,56 @@ Sie können die Ressourcen- und die Eigenschaften-Iteration zusammen verwenden. 
 }
 ```
 
-Sie können nur ein copy-Element in die Eigenschaften jeder Ressource einschließen. Wenn Sie eine Iterationsschleife für mehrere Eigenschaften angeben möchten, definieren Sie mehrere Objekte im copy-Array. Jedes Objekt wird einzeln durchlaufen. Wenn beispielsweise mehrere Instanzen der `frontendIPConfigurations`-Eigenschaft und der `loadBalancingRules`-Eigenschaft für einen Lastenausgleich erstellt werden sollen, definieren Sie beide Objekte in einem einzigen copy-Element: 
+## <a name="variable-iteration"></a>Variableniteration
+
+Um mehrere Instanzen einer Variable zu erstellen, verwenden Sie das `copy`-Element im Abschnitt „variables“. Sie können mehrere Instanzen von Objekten mit den verknüpften Werten erstellen und anschließend diese Werte Instanzen der Ressource zuweisen. Sie können copy zum Erstellen eines Objekts mit einer array-Eigenschaft oder einem Array verwenden. Im folgenden Beispiel sind beide Ansätze dargestellt:
 
 ```json
 {
-    "name": "[variables('loadBalancerName')]",
-    "type": "Microsoft.Network/loadBalancers",
-    "properties": {
-        "copy": [
-          {
-              "name": "frontendIPConfigurations",
-              "count": 2,
-              "input": {
-                  "name": "[concat('loadBalancerFrontEnd', copyIndex('frontendIPConfigurations', 1))]",
-                  "properties": {
-                      "publicIPAddress": {
-                          "id": "[variables(concat('publicIPAddressID', copyIndex('frontendIPConfigurations', 1)))]"
-                      }
-                  }
-              }
-          },
-          {
-              "name": "loadBalancingRules",
-              "count": 2,
-              "input": {
-                  "name": "[concat('LBRuleForVIP', copyIndex('loadBalancingRules', 1))]",
-                  "properties": {
-                      "frontendIPConfiguration": {
-                          "id": "[variables(concat('frontEndIPConfigID', copyIndex('loadBalancingRules', 1)))]"
-                      },
-                      "backendAddressPool": {
-                          "id": "[variables('lbBackendPoolID')]"
-                      },
-                      "protocol": "tcp",
-                      "frontendPort": "[variables(concat('frontEndPort' copyIndex('loadBalancingRules', 1))]",
-                      "backendPort": "[variables(concat('backEndPort' copyIndex('loadBalancingRules', 1))]",
-                      "probe": {
-                          "id": "[variables('lbProbeID')]"
-                      }
-                  }
-              }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {
+    "disk-array-on-object": {
+      "copy": [
+        {
+          "name": "disks",
+          "count": 5,
+          "input": {
+            "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+            "diskSizeGB": "1",
+            "diskIndex": "[copyIndex('disks')]"
           }
-        ],
-        ...
+        }
+      ]
+    },
+    "copy": [
+      {
+        "name": "disks-top-level-array",
+        "count": 5,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks-top-level-array')]"
+        }
+      }
+    ]
+  },
+  "resources": [],
+  "outputs": {
+    "exampleObject": {
+      "value": "[variables('disk-array-on-object')]",
+      "type": "object"
+    },
+    "exampleArrayOnObject": {
+      "value": "[variables('disk-array-on-object').disks]",
+      "type" : "array"
+    },
+    "exampleArray": {
+      "value": "[variables('disks-top-level-array')]",
+      "type" : "array"
     }
+  }
 }
 ```
 
@@ -435,7 +345,7 @@ Sie geben an, dass eine Ressource nach einer anderen Ressource bereitgestellt wi
 }
 ```
 
-## <a name="create-multiple-instances-of-a-child-resource"></a>Erstellen mehrerer Instanzen einer untergeordneten Ressource
+## <a name="iteration-for-a-child-resource"></a>Iteration für eine untergeordnete Ressource
 Für eine untergeordnete Ressource kann keine Kopierschleife verwendet werden. Um mehrere Instanzen einer Ressource zu erstellen, die Sie in der Regel als innerhalb einer anderen Ressource geschachtelt definieren, müssen Sie diese Ressource stattdessen als Ressource oberster Ebene erstellen. Sie definieren die Beziehung zur übergeordneten Ressource mithilfe der Eigenschaften „type“ und „name“.
 
 Angenommen, Sie definieren ein Dataset als untergeordnete Ressource innerhalb einer Data Factory.
@@ -485,28 +395,19 @@ Das folgende Beispiel zeigt die Implementierung:
 }]
 ```
 
-## <a name="conditionally-deploy-resource"></a>Bedingtes Bereitstellen von Ressourcen
+## <a name="example-templates"></a>Beispielvorlagen
 
-Verwenden Sie das `condition`-Element, um anzugeben, ob eine Ressource bereitgestellt wird. Der Wert für dieses Element wird mit „true“ oder „false“ aufgelöst. Wenn der Wert „true“ ist, wird die Ressource bereitgestellt. Ist der Wert „false“, wird die Ressource nicht bereitgestellt. Verwenden Sie beispielsweise Folgendes, um anzugeben, ob ein neues Speicherkonto bereitgestellt wird oder ob ein vorhandenes Speicherkonto verwendet wird:
+Die folgenden Beispiele zeigen allgemeine Szenarien für das Erstellen mehrerer Ressourcen oder Eigenschaften.
 
-```json
-{
-    "condition": "[equals(parameters('newOrExisting'),'new')]",
-    "type": "Microsoft.Storage/storageAccounts",
-    "name": "[variables('storageAccountName')]",
-    "apiVersion": "2017-06-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-        "name": "[variables('storageAccountType')]"
-    },
-    "kind": "Storage",
-    "properties": {}
-}
-```
-
-Ein Beispiel für die Verwendung einer neuen oder einer vorhandenen Ressource finden Sie unter [Vorlage für neue oder vorhandene Ressourcenbedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResources.NewOrExisting.json).
-
-Ein Beispiel für die Verwendung eines Kennworts oder eines SSH-Schlüssels zum Bereitstellen von virtuellen Computern finden Sie unter [Vorlage für Benutzername- oder SSH-Bedingung](https://github.com/rjmax/Build2017/blob/master/Act1.TemplateEnhancements/Chapter05.ConditionalResourcesUsernameOrSsh.json).
+|Vorlage  |BESCHREIBUNG  |
+|---------|---------|
+|[Speicher kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |Stellt mehrere Speicherkonten mit einer Indexnummer im Namen bereit |
+|[Speicher seriell kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |Stellt mehrere Speicherkonten nacheinander bereit. Der Name enthält die Indexnummer. |
+|[Speicher mit Array kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |Stellt mehrere Speicherkonten bereit. Der Name enthält einen Wert aus einem Array. |
+|[VM mit neuem oder vorhandenem VNET, Speicher und öffentlicher IP-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-new-or-existing-conditions) |Stellt bedingt neue oder vorhandene Ressourcen mit einem virtuellen Computer bereit |
+|[VM-Bereitstellung mit einer variablen Anzahl von Datenträgern](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |Stellt mehrere Datenträger mit einem virtuellen Computer bereit |
+|[Variablen kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |Veranschaulicht die verschiedenen Methoden zum Durchlaufen von Variablen |
+|[Mehrere Sicherheitsregeln](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Stellt mehrere Sicherheitsregeln in einer Netzwerksicherheitsgruppe bereit. Die Sicherheitsregeln werden aus einem Parameter generiert. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zu den Abschnitten einer Vorlage finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](resource-group-authoring-templates.md).

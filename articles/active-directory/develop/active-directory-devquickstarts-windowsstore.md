@@ -1,5 +1,5 @@
 ---
-title: Erste Schritte in Azure AD Windows Store | Microsoft-Dokumentation
+title: Erste Schritte mit der universellen Windows-Plattform (UWP/XAML) in Azure AD | Microsoft-Dokumentation
 description: "Erstellen Sie Windows Store-Apps, die für die Anmeldung in Azure AD integriert sind und über OAuth durch Azure AD geschützte APIs aufrufen."
 services: active-directory
 documentationcenter: windows
@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: mobile-windows-store
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/16/2016
+ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: f76324e4415dcc300a0c2e21a89d30301c17ebab
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2282a59c9dd5d5d76a5b3e19f602e9d3dcc0b4ef
+ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 12/20/2017
 ---
-# <a name="integrate-azure-ad-with-windows-store-apps"></a>Integrieren von Azure AD in Windows Store-Apps
+# <a name="azure-ad-windows-universal-platform-uwpxaml-getting-started"></a>Erste Schritte mit der universellen Windows-Plattform (UWP/XAML) in Azure AD
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
 
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -47,7 +47,7 @@ Wenn Sie bereit sind, führen Sie die Verfahren in den folgenden drei Abschnitte
 Damit Ihre Anwendung Token abrufen kann, müssen Sie sie zunächst bei Ihrem Azure AD-Mandanten registrieren und ihr die Berechtigung für den Zugriff auf die Azure AD Graph-API erteilen. Das geht so:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie in der oberen Leiste auf Ihr Konto. Wählen Sie dann in der Liste **Verzeichnis** den Active Directory-Mandanten aus, bei dem Sie die App registrieren möchten.
+2. Klicken Sie auf der oberen Leiste auf Ihr Konto. Wählen Sie dann in der Liste **Verzeichnis** den Active Directory-Mandanten aus, bei dem Sie die App registrieren möchten.
 3. Klicken Sie im linken Bereich auf **Weitere Dienste**, und wählen Sie **Azure Active Directory** aus.
 4. Klicken Sie auf **App-Registrierungen**, und wählen Sie **Hinzufügen** aus.
 5. Folgen Sie den Aufforderungen zum Erstellen einer **nativen Clientanwendung**.

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7b37f9e103644d2492f69f4a4cc80d3fd57d4aa4
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 4727560df897f6c1a0aaa6d7f5d4e1c76fc02a46
+ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture---preview"></a>Grundlegendes zur Azure IoT Edge-Laufzeit und ihre Architektur – Vorschau
 
@@ -99,7 +99,15 @@ Jedes Element im Modulwörterbuch enthält spezielle Informationen zu einem Modu
    * Bei Fehler – Wenn das Modul abstürzt, wird es vom Edge-Agent neu gestartet. Wenn das Modul ordnungsgemäß heruntergefahren wird, führt der Edge-Agent keinen Neustart des Moduls aus.
    * Fehlerhaft – Wenn das Modul abstürzt oder als fehlerhaft angesehen wird, startet es der Edge-Agent neu.
    * Immer – Wenn das Modul abstürzt, als fehlerhaft angesehen wird oder auf irgend eine Weise heruntergefahren wird, führt der Edge-Agent den Neustart des Moduls aus. 
-   
+
+IoT Edge-Agent sendet eine Runtimeantwort an IoT Hub. Im Folgenden sehen Sie eine Liste der möglichen Antworten:
+  * 200 – OK
+  * 400 – Die Bereitstellungskonfiguration ist falsch formatiert oder ungültig.
+  * 417 – Für das Gerät ist keine Bereitstellungskonfiguration festgelegt.
+  * 412 – Die Schemaversion der Bereitstellungskonfiguration ist ungültig.
+  * 406 – Das Edgegerät ist offline oder sendet keine Statusberichte.
+  * 500 – Ein Fehler ist in der Edgeruntime aufgetreten.
+
 ### <a name="security"></a>Sicherheit
 
 Der IoT Edge-Agent hat eine wichtige Funktion für die Sicherheit eines IoT Edge-Geräts. Er überprüft beispielsweise das Image eines Moduls, bevor er es startet. Diese Features werden bei allgemeiner Verfügbarkeit von V2-Features hinzugefügt. 

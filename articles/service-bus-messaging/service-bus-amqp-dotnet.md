@@ -12,21 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/28/2017
+ms.date: 12/21/2017
 ms.author: sethm
-ms.openlocfilehash: 58a37c0dd24d54996f517961f3a7f1ec36639cfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0eb68c97ca26a862a79de9ffb83b1fc630ba2af4
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="using-service-bus-from-net-with-amqp-10"></a>Verwenden von Service Bus aus .NET mit AMQP 1.0
+# <a name="use-service-bus-from-net-with-amqp-10"></a>Verwenden von Service Bus aus .NET mit AMQP 1.0
 
-## <a name="downloading-the-service-bus-sdk"></a>Herunterladen des Service Bus SDK
+Unterstützung für AMQP 1.0 ist im Service Bus-Paket ab Version 2.1 verfügbar. Sie können sicherstellen, dass Sie über die aktuelle Version verfügen, indem Sie die Service Bus-Komponenten von[NuGet][NuGet] herunterladen.
 
-Unterstützung für AMQP 1.0 ist im Service Bus SDK ab Version 2.1 verfügbar. Sie können sicherstellen, dass Sie über die aktuelle Version verfügen, indem Sie die Service Bus-Komponenten von[NuGet][NuGet] herunterladen.
-
-## <a name="configuring-net-applications-to-use-amqp-10"></a>Konfigurieren von .NET-Anwendungen für das Verwenden von AMQP 1.0
+## <a name="configure-net-applications-to-use-amqp-10"></a>Konfigurieren von .NET-Anwendungen für das Verwenden von AMQP 1.0
 
 Mithilfe eines dedizierten SOAP-basierten Protokolls kommuniziert die .NET-Clientbibliothek von Service Bus standardmäßig mit dem Service Bus-Dienst. Wenn Sie anstatt des Standardprotokolls AMQP 1.0 verwenden möchten, ist eine explizite Konfiguration der Service Bus-Verbindungszeichenfolge erforderlich, die im nächsten Abschnitt beschrieben wird. Abgesehen von dieser Änderung bleibt der Anwendungscode bei Verwendung von AMQP 1.0 unverändert.
 
@@ -34,7 +32,7 @@ In der aktuellen Version gibt es ein paar API-Features, die bei Verwendung von A
 
 ### <a name="configuration-using-appconfig"></a>Konfiguration mithilfe von "App.config"
 
-Es ist empfehlenswert, für Anwendungen die Konfigurationsdatei "App.config" zu verwenden, um die Einstellungen zu speichern. Bei Service Bus-Anwendungen können Sie die Datei „App.config“ verwenden, um die Service Bus-Verbindungszeichenfolge zu speichern. Es folgt ein Beispiel der Datei "App.config":
+Es ist empfehlenswert, für Anwendungen die Konfigurationsdatei „App.config“ zu verwenden, um die Einstellungen zu speichern. Bei Service Bus-Anwendungen können Sie die Datei „App.config“ verwenden, um die Service Bus-Verbindungszeichenfolge zu speichern. Es folgt ein Beispiel der Datei "App.config":
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -64,7 +62,7 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 
 | .NET Body-Objekttyp | Zugeordneter AMQP-Typ | AMQP Body-Abschnittstyp |
 | --- | --- | --- |
-| bool |Boolescher Wert |AMQP Value |
+| bool |boolean |AMQP Value |
 | byte |ubyte |AMQP Value |
 | ushort |ushort |AMQP Value |
 | uint |uint |AMQP Value |
@@ -73,16 +71,16 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 | short |short |AMQP Value |
 | int |int |AMQP Value |
 | lang |lang |AMQP Value |
-| float |float |AMQP Value |
+| Gleitkommawert |Gleitkommawert |AMQP Value |
 | double |double |AMQP Value |
 | decimal |decimal128 |AMQP Value |
 | char |char |AMQP Value |
-| DateTime |timestamp |AMQP Value |
-| GUID |uuid |AMQP Value |
+| Datetime |timestamp |AMQP Value |
+| Guid |uuid |AMQP Value |
 | Byte[] |binary |AMQP Value |
-| string |string |AMQP Value |
+| Zeichenfolge |Zeichenfolge |AMQP Value |
 | System.Collections.IList |list |AMQP Value: Diese Auflistung kann nur Elemente enthalten, die in dieser Tabelle definiert sind. |
-| System.Array |array |AMQP Value: Diese Auflistung kann nur Elemente enthalten, die in dieser Tabelle definiert sind. |
+| System.Array |Array |AMQP Value: Diese Auflistung kann nur Elemente enthalten, die in dieser Tabelle definiert sind. |
 | System.Collections.IDictionary |map |AMQP Value: Diese Auflistung kann nur Elemente enthalten, die in dieser Tabelle definiert sind. Hinweis: nur "String"-Schlüssel werden unterstützt. |
 | Uri |Beschriebene Zeichenfolge (siehe die folgende Tabelle) |AMQP Value |
 | DateTimeOffset |Lange Beschreibung (siehe die folgende Tabelle) |AMQP Value |
@@ -90,11 +88,11 @@ Um die Interoperabilität mit Nicht-.NET-Clients zu erleichtern, verwenden Sie n
 | Datenstrom |binary |AMQP Data (können mehrere sein). Die "Data"-Abschnitte enthalten die rohen Bytes, die aus dem "Stream"-Objekt gelesen. |
 | Other Object |binary |AMQP Data (können mehrere sein). Enthält die serialisierten Binärdaten des Objekts, das "DataContractSerializer" oder einen von der Anwendung bereitgestellten Serialisierer verwendet. |
 
-| .NET-Typ | Zugeordneter beschriebener AMQP-Typ | Hinweise |
+| .NET-Typ | Zugeordneter beschriebener AMQP-Typ | Notizen |
 | --- | --- | --- |
 | Uri |`<type name=”uri” class=restricted source=”string”> <descriptor name=”com.microsoft:uri” /></type>` |Uri.AbsoluteUri |
-| Datetimeoffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
-| TimeSpan |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
+| DateTimeOffset |`<type name=”datetime-offset” class=restricted source=”long”> <descriptor name=”com.microsoft:datetime-offset” /></type>` |DateTimeOffset.UtcTicks |
+| Zeitraum |`<type name=”timespan” class=restricted source=”long”> <descriptor name=”com.microsoft:timespan” /></type> ` |TimeSpan.Ticks |
 
 ## <a name="unsupported-features-restrictions-and-behavioral-differences"></a>Nicht unterstützte Features, Einschränkungen und Verhaltensunterschiede
 
@@ -109,7 +107,7 @@ Es gibt bei Verwenden von AMQP im Vergleich zum Standardprotokoll auch einige kl
 * `MessageReceiver.Receive(TimeSpan.Zero)` wird als `MessageReceiver.Receive(TimeSpan.FromSeconds(10))` implementiert.
 * Das Abschließen von Nachrichten durch Sperrtoken kann nur von den Nachrichtenempfängern durchgeführt werden, die die Nachrichten ursprünglich erhalten haben.
 
-## <a name="controlling-amqp-protocol-settings"></a>Steuern von AMQP-Protokolleinstellungen
+## <a name="control-amqp-protocol-settings"></a>Steuern von AMQP-Protokolleinstellungen
 
 Die [.NET-APIs](/dotnet/api/) stellen mehrere Einstellungen zum Steuern des Verhaltens des AMQP-Protokolls zur Verfügung:
 
@@ -124,7 +122,6 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 
 * [Übersicht über Service Bus AMQP]
 * [Leitfaden zum AMQP 1.0-Protokoll]
-* [AMQP in Service Bus für Windows Server]
 
 [Create a Service Bus namespace using the Azure portal]: service-bus-create-namespace-portal.md
 [DataContractSerializer]: https://msdn.microsoft.com/library/system.runtime.serialization.datacontractserializer.aspx
@@ -135,4 +132,4 @@ Möchten Sie mehr erfahren? Nutzen Sie die folgenden Links:
 [Azure portal]: https://portal.azure.com
 [Übersicht über Service Bus AMQP]: service-bus-amqp-overview.md
 [Leitfaden zum AMQP 1.0-Protokoll]: service-bus-amqp-protocol-guide.md
-[AMQP in Service Bus für Windows Server]: https://msdn.microsoft.com/library/dn574799.aspx
+

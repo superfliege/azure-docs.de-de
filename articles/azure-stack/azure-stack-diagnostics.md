@@ -7,14 +7,14 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 12/15/2017
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: 16b56c71e2c81bead7c578a973840391996e845b
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: fdbf9b1b77c2c64b3ebfcdbc5463916f317e4881
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-Diagnosetools
 
@@ -29,11 +29,11 @@ Mit unseren Diagnosetools wird sichergestellt, dass der Mechanismus für die Pro
  
 ## <a name="trace-collector"></a>Collector der Ablaufverfolgung
  
-Der Collector der Ablaufverfolgung ist standardmäßig aktiviert und wird dauerhaft im Hintergrund ausgeführt, um alle ETW-Protokolle (Ereignisablaufverfolgung für Windows) von Azure Stack-Komponentendiensten zu sammeln. ETW-Protokolle werden für fünf Tage in einer gemeinsamen lokalen Freigabe gespeichert. Nachdem dieser Grenzwert erreicht wurde, werden die ältesten Dateien gelöscht, wenn neue Dateien erstellt werden. Die zulässige maximale Standardgröße jeder Datei ist 200 MB. Die Größe wird regelmäßig überprüft (alle 2 Minuten), und wenn die aktuelle Datei größer als 200 MB ist, wird sie gespeichert, und es wird eine neue Datei generiert. Außerdem gilt ein Grenzwert von 8 GB für die Gesamtdateigröße, die pro Ereignissitzung generiert werden kann. 
+Der Collector der Ablaufverfolgung ist standardmäßig aktiviert und wird dauerhaft im Hintergrund ausgeführt, um alle ETW-Protokolle (Ereignisablaufverfolgung für Windows) von Azure Stack-Komponentendiensten zu sammeln. ETW-Protokolle werden für fünf Tage in einer gemeinsamen lokalen Freigabe gespeichert. Nachdem dieser Grenzwert erreicht wurde, werden die ältesten Dateien gelöscht, wenn neue Dateien erstellt werden. Die maximal zulässige Standardgröße pro Datei beträgt 200 MB. Die Größe wird alle zwei Minuten überprüft. Ab einer Größe von 200 MB wird die aktuelle Datei gespeichert und eine neue Datei generiert. Für die Gesamtdateigröße, die pro Ereignissitzung generiert werden kann, gilt außerdem eine Obergrenze von 8 GB. 
 
 ## <a name="log-collection-tool"></a>Tool für die Protokollsammlung
  
-Das PowerShell-Cmdlet **Get-AzureStackLog** kann verwendet werden, um Protokolle für alle Komponenten einer Azure Stack-Umgebung zu sammeln. Sie werden an einem vom Benutzer angegebenen Ort in ZIP-Dateien gespeichert. Wenn unser Team für den technischen Support Ihre Protokolle für die Behandlung eines Problems benötigt, werden Sie unter Umständen gebeten, dieses Tool auszuführen.
+Das PowerShell-Cmdlet **Get-AzureStackLog** kann verwendet werden, um Protokolle für alle Komponenten einer Azure Stack-Umgebung zu sammeln. Sie werden an einem vom Benutzer angegebenen Ort in ZIP-Dateien gespeichert. Wenn das Team für den technischen Support für Azure Stack Ihre Protokolle für die Behandlung eines Problems benötigt, werden Sie unter Umständen gebeten, dieses Tool auszuführen.
 
 > [!CAUTION]
 > Es kann sein, dass diese Protokolldateien personenbezogene Informationen enthalten. Berücksichtigen Sie dies, bevor Sie Protokolldateien öffentlich bereitstellen.
@@ -136,11 +136,11 @@ if($s)
 
 
 ### <a name="collect-logs-using-a-graphical-user-interface"></a>Erfassen von Protokollen mithilfe einer grafischen Benutzeroberfläche
-Anstatt die erforderlichen Parameter für das Cmdlet Get-AzureStackLog zum Abrufen von Azure Stack-Protokollen bereitzustellen, können Sie auch die verfügbaren Open-Source-Tools für Azure Stack verwenden, die Sie im GitHub-Repository unter http://aka.ms/AzureStackTools finden.
+Anstatt die erforderlichen Parameter für das Cmdlet Get-AzureStackLog zum Abrufen von Azure Stack-Protokollen bereitzustellen, können Sie auch die verfügbaren Open-Source-Tools für Azure Stack verwenden, die Sie im GitHub-Toolrepository unter http://aka.ms/AzureStackTools finden.
 
-Das PowerShell-Skript **ERCS_AzureStackLogs.ps1** ist im GitHub-Toolrepository enthalten und wird regelmäßig aktualisiert. Beim Start aus einer PowerShell-Administratorsitzung stellt das Skript eine Verbindung mit dem privilegierten Endpunkt her und führt Get-AzureStackLog mit den angegebenen Parametern aus. Wenn keine Parameter angegeben werden, fordert das Skript standardmäßig zur Eingabe der Parameter über eine grafische Benutzeroberfläche auf.
+Das PowerShell-Skript **ERCS_AzureStackLogs.ps1** ist im GitHub-Toolrepository enthalten und wird regelmäßig aktualisiert. Laden Sie es am besten direkt von http://aka.ms/ERCS herunter, um sicherzugehen, dass Sie über die neueste Version verfügen. Beim Start aus einer PowerShell-Administratorsitzung stellt das Skript eine Verbindung mit dem privilegierten Endpunkt her und führt Get-AzureStackLog mit den angegebenen Parametern aus. Wenn keine Parameter angegeben werden, fordert das Skript standardmäßig über eine grafische Benutzeroberfläche zur Eingabe von Parametern auf.
 
-Weitere Informationen zum PowerShell-Skript „ERCS_AzureStackLogs.ps1“ erhalten Sie in [einem kurzen Video](https://www.youtube.com/watch?v=Utt7pLsXEBc) und in der [Infodatei](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) des Skripts, das sich im GitHub-Toolrepository zu Azure Stack befindet. 
+Weitere Informationen zum PowerShell-Skript „ERCS_AzureStackLogs.ps1“ erhalten Sie in [einem kurzen Video](https://www.youtube.com/watch?v=Utt7pLsXEBc) und in der [Infodatei](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) des Skripts, das sich im GitHub-Toolrepository für Azure Stack befindet. 
 
 ### <a name="additional-considerations"></a>Zusätzliche Überlegungen
 

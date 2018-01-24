@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 89e1115291fbb2ba3499801981b70e10eb23eb94
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: e6b11145506780f9a08799c4c9daf55ba17b366d
+ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="create-and-publish-a-product"></a>Erstellen und Veröffentlichen eines Produkts  
 
@@ -34,8 +34,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Absolvieren Sie das folgende Schnellstarttutorial: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md).
-+ Schließen Sie darüber hinaus das folgende Tutorial ab: [Import and publish your first API](import-and-publish.md) (Importieren und Veröffentlichen Ihrer ersten API).
++ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
++ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -48,18 +48,18 @@ In diesem Tutorial lernen Sie Folgendes:
 
     Beim Hinzufügen eines Produkts müssen Sie die folgenden Informationen angeben: 
 
-    |Name|Beschreibung|
+    |NAME|BESCHREIBUNG|
     |---|---|
     |Anzeigename|Der Name, wie er im **Entwicklerportal** angezeigt werden soll|
-    |Name|Ein beschreibender Name des Produkts|
-    |Beschreibung|Das Feld **Beschreibung** enthält detaillierte Daten zum Produkt wie etwa dessen Zweck, die bereitgestellten APIs und sonstige nützliche Informationen.|
-    |Zustand|Klicken Sie auf **Veröffentlicht**, wenn Sie das Produkt veröffentlichen möchten. Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Standardmäßig sind neue Produkte nicht veröffentlicht und nur für die Gruppe **Administratoren** sichtbar.|
+    |NAME|Ein beschreibender Name des Produkts|
+    |BESCHREIBUNG|Das Feld **Beschreibung** enthält detaillierte Daten zum Produkt wie etwa dessen Zweck, die bereitgestellten APIs und sonstige nützliche Informationen.|
+    |State (Zustand)|Klicken Sie auf **Veröffentlicht**, wenn Sie das Produkt veröffentlichen möchten. Bevor die APIs eines Produkts aufgerufen werden können, müssen Sie das Produkt veröffentlichen. Standardmäßig sind neue Produkte nicht veröffentlicht und nur für die Gruppe **Administratoren** sichtbar.|
     |Genehmigung erforderlich|Wenn Sie möchten, dass ein Administrator Abonnements für dieses Produkt prüfen und ablehnen oder akzeptieren muss, markieren Sie die Option **Abonnementgenehmigung erforderlich** . Wenn das Kontrollkästchen nicht markiert ist, werden Abonnements automatisch genehmigt. |
     |Grenzwert für Abonnementanzahl|Geben Sie einen Grenzwert für Abonnements ein, um die Anzahl mehrerer gleichzeitiger Abonnements zu beschränken. |
     |Rechtliche Bedingungen|Sie können die Nutzungsbedingungen für das Produkt hinzufügen, denen Abonnenten zustimmen müssen, um das Produkt verwenden zu können.|
-    |APIs|Produkte sind Zuordnungen von einer API oder mehreren APIs. Sie können eine Reihe von APIs aufnehmen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/> Sie können während der Produkterstellung eine vorhandene API hinzufügen. Eine API kann dem Produkt auch später hinzugefügt werden – und zwar entweder über die Seite mit den **Einstellungen** des Produkts oder beim Erstellen einer API.|<br/>Entwickler müssen zuerst ein Produkt abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt.<br/> Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.|
+    |APIs|Bei Produkten handelt es sich um API-Zuordnungen. Sie können eine Reihe von APIs aufnehmen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/> Sie können während der Produkterstellung eine vorhandene API hinzufügen. Eine API kann dem Produkt auch später hinzugefügt werden – und zwar entweder über die Seite mit den **Einstellungen** des Produkts oder beim Erstellen einer API.|<br/>Entwickler müssen zuerst ein Produkt abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt.<br/> Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben dadurch standardmäßig alle Produkte abonniert.|
 
-3. Klicken Sie auf **Speichern**, um das neue Produkt zu erstellen.
+3. Klicken Sie auf **Erstellen**, um das neue Produkt zu erstellen.
 
 ### <a name="add-more-configurations"></a>Hinzufügen weiterer Konfigurationen
 

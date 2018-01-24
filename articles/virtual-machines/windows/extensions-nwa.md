@@ -15,17 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 508b3755556bcae6aa2c7d17a2d86a1430a8109a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 68855e0070916dc672914fbc8ca3587a5d3c25f6
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>VM-Erweiterung für den Network Watcher-Agent für Windows
 
 ## <a name="overview"></a>Übersicht
 
-[Azure Network Watcher](https://review.docs.microsoft.com/azure/network-watcher/) ist ein Dienst zur Überwachung, Diagnose und Analyse der Netzwerkleistung, der die Überwachung von Azure-Netzwerken ermöglicht. Die VM-Erweiterung für den Network Watcher-Agent ist eine Voraussetzung für einige der Network Watcher-Features auf virtuellen Azure-Computern. Dies schließt das Erfassen des Netzwerkdatenverkehrs bei Bedarf und andere erweiterte Funktionen ein.
+[Azure Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md) ist ein Dienst zur Überwachung, Diagnose und Analyse der Netzwerkleistung, der die Überwachung von Azure-Netzwerken ermöglicht. Die VM-Erweiterung des Network Watcher-Agents ist eine Voraussetzung für die bedarfsgesteuerte Erfassung von Netzwerkdatenverkehr und andere erweiterte Funktionalität auf virtuellen Azure-Computern.
+
 
 Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen und Bereitstellungsoptionen für die VM-Erweiterung für den Network Watcher-Agent für Windows.
 
@@ -33,15 +34,15 @@ Dieses Dokument enthält ausführliche Informationen zu den unterstützten Platt
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Network Watcher-Agent-Erweiterung für Windows kann unter Windows Server 2008 R2, 2012, 2012 R2 und 2016 ausgeführt werden. Beachten Sie, dass Nano Server zurzeit nicht unterstützt wird.
+Die Network Watcher-Agent-Erweiterung für Windows kann unter Windows Server 2008 R2, 2012, 2012 R2 und 2016 ausgeführt werden. Nano Server wird nicht unterstützt.
 
 ### <a name="internet-connectivity"></a>Internetkonnektivität
 
-Für einige Funktionen des Network Watcher-Agents muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Ohne die Fähigkeit, ausgehende Verbindungen herzustellen, treten bei einigen Features des Network Watcher-Agents möglicherweise Fehler auf, oder sie sind nicht verfügbar. Weitere Informationen finden Sie in der [Dokumentation zu Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md).
+Für einige Funktionen des Network Watcher-Agents muss der virtuelle Zielcomputer mit dem Internet verbunden sein. Ohne die Möglichkeit zum Herstellen ausgehender Verbindungen kann der Network Watcher-Agent keine Paketerfassungen in Ihr Speicherkonto hochladen. Weitere Informationen finden Sie in der [Dokumentation zu Network Watcher](../../network-watcher/network-watcher-monitoring-overview.md).
 
 ## <a name="extension-schema"></a>Erweiterungsschema
 
-Der folgende JSON-Code zeigt das Schema für die Network Watcher-Agent-Erweiterung. Die Erweiterung erfordert oder unterstützt zurzeit keine vom Benutzer bereitgestellten Einstellungen, sondern verwendet ausschließlich die Standardkonfiguration.
+Der folgende JSON-Code zeigt das Schema für die Network Watcher-Agent-Erweiterung. Die Erweiterung erfordert oder unterstützt keine vom Benutzer bereitgestellten Einstellungen, sondern verwendet ausschließlich die Standardkonfiguration.
 
 ```json
 {
@@ -63,37 +64,38 @@ Der folgende JSON-Code zeigt das Schema für die Network Watcher-Agent-Erweiteru
 
 ### <a name="property-values"></a>Eigenschaftswerte
 
-| Name | Wert/Beispiel |
+| NAME | Wert/Beispiel |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | Herausgeber | Microsoft.Azure.NetworkWatcher |
-| Typ | NetworkWatcherAgentWindows |
+| type | NetworkWatcherAgentWindows |
 | typeHandlerVersion | 1.4 |
 
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Das im vorherigen Abschnitt erläuterte JSON-Schema kann in einer Azure Resource Manager-Vorlage verwendet werden, um die Network Watcher-Agent-Erweiterung während einer Bereitstellung über eine Azure Resource Manager-Vorlage auszuführen.
+Sie können Azure-VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen bereitstellen. Sie können das im vorherigen Abschnitt erläuterte JSON-Schema in einer Azure Resource Manager-Vorlage verwenden, um die Network Watcher-Agent-Erweiterung während einer Bereitstellung über eine Azure Resource Manager-Vorlage auszuführen.
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
-Mit dem Befehl `Set-AzureRmVMExtension` können Sie die VM-Erweiterung für den Network Watcher-Agent auf einem vorhandenen virtuellen Computer bereitstellen.
+Mit dem Befehl `Set-AzureRmVMExtension` können Sie die VM-Erweiterung für den Network Watcher-Agent auf einem vorhandenen virtuellen Computer bereitstellen:
 
 ```powershell
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup1" `
-                       -Location "WestUS" `
-                       -VMName "myVM1" `
-                       -Name "networkWatcherAgent" `
-                       -Publisher "Microsoft.Azure.NetworkWatcher" `
-                       -Type "NetworkWatcherAgentWindows" `
-                       -TypeHandlerVersion "1.4"
+Set-AzureRmVMExtension `
+  -ResourceGroupName "myResourceGroup1" `
+  -Location "WestUS" `
+  -VMName "myVM1" `
+  -Name "networkWatcherAgent" `
+  -Publisher "Microsoft.Azure.NetworkWatcher" `
+  -Type "NetworkWatcherAgentWindows" `
+  -TypeHandlerVersion "1.4"
 ```
 
 ## <a name="troubleshooting-and-support"></a>Problembehandlung und Support
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe des Azure PowerShell-Moduls abgerufen werden. Führen Sie über das Azure PowerShell-Modul den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für einen bestimmten virtuellen Computer anzuzeigen.
+Sie können Daten zum Status von Erweiterungsbereitstellungen über das Azure-Portal und mithilfe von PowerShell abrufen. Führen Sie über das Azure PowerShell-Modul den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für eine bestimmte VM anzuzeigen:
 
 ```powershell
 Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent

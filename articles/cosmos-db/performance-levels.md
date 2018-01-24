@@ -1,6 +1,6 @@
 ---
-title: Leistungsebenen der DocumentDB-API | Microsoft-Dokumentation
-description: "Erfahren Sie, wie Sie mithilfe von Leistungsebenen der DocumentDB-API den Durchsatz auf Containerbasis reservieren können."
+title: Nicht mehr verwendete Azure Cosmos DB-Leistungsebenen | Microsoft-Dokumentation
+description: "Erfahren Sie etwas über die Leistungsstufen S1, S2 und S3, die zuvor in Azure Cosmos DB verfügbar waren."
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -15,17 +15,19 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 62767163213383c577e74e0aa8fbd07f891cb694
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 9ddce64b53e8c5627050ca77f11de2ba144276a1
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>Aussondern der Leistungsebenen S1, S2 und S3
 
 > [!IMPORTANT] 
-> Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue DocumentDB-API-Konten nicht mehr verfügbar.
+> Die in diesem Artikel beschriebenen Leistungsebenen S1, S2 und S3 werden ausgesondert und sind für neue Azure Cosmos DB-Konten nicht mehr verfügbar.
 >
+
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3. Es wird beschrieben, wie die Sammlungen, für die diese Leistungsebenen verwendet werden, zum Ende des Jahres 2017 zu Sammlungen mit nur einer Partition migriert werden. Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 
@@ -44,7 +46,7 @@ Dieser Artikel enthält eine Übersicht über die Leistungsebenen S1, S2 und S3.
 
 ## <a name="why-are-the-s1-s2-and-s3-performance-levels-being-retired"></a>Warum werden die Leistungsebenen S1, S2 und S3 ausgesondert?
 
-Die Leistungsebenen S1, S2 und S3 bieten nicht die gleiche Flexibilität wie DocumentDB-API-Sammlungen. Bei den Leistungsebenen S1, S2 und S3 waren sowohl der Durchsatz als auch die Speicherkapazität voreingestellt. Sie haben keine Elastizität bereitgestellt. Mit Azure Cosmos DB können Sie den Durchsatz und den Speicher jetzt anpassen, sodass Sie viel flexibler skalieren können, wenn sich Ihre Anforderungen ändern.
+Die Leistungsebenen S1, S2 und S3 bieten nicht die gleiche Flexibilität wie das Azure Cosmos DB-Standardangebot. Bei den Leistungsebenen S1, S2 und S3 waren sowohl der Durchsatz als auch die Speicherkapazität voreingestellt. Sie haben keine Elastizität bereitgestellt. Mit Azure Cosmos DB können Sie den Durchsatz und den Speicher jetzt anpassen, sodass Sie viel flexibler skalieren können, wenn sich Ihre Anforderungen ändern.
 
 <a name="compare"></a>
 
@@ -93,7 +95,7 @@ Angenommen, Sie verfügen über zehn S1-Sammlungen mit jeweils 1 GB Speicher in 
 
 ## <a name="what-if-i-need-more-than-10-gb-of-storage"></a>Welche Möglichkeiten habe ich, wenn ich mehr als 10 GB Speicher benötige?
 
-Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 10 GB Speicher verfügbar sind: Sie können das Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](documentdb-partition-data.md). 
+Es spielt keine Rolle, ob Sie eine Sammlung mit der Leistungsebene S1, S2 oder S3 oder eine Sammlung mit nur einer Partition verwenden, für die jeweils 10 GB Speicher verfügbar sind: Sie können das Cosmos DB-Datenmigrationstool verwenden, um Ihre Daten zu einer partitionierten Sammlung mit praktisch unbegrenztem Speicher zu migrieren. Informationen zu den Vorteilen einer partitionierten Sammlung finden Sie unter [Partitionieren und Skalieren von Daten in Azure Cosmos DB](sql-api-partition-data.md). 
 
 <a name="change-before"></a>
 
@@ -132,7 +134,7 @@ Sie können von den Leistungsebenen S1, S2 und S3 die Migration zu Sammlungen mi
 
 4. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
 
-    Wenn Sie feststellen, dass Sie einen höheren Durchsatz (über 10.000 RU/s) oder mehr Speicher (über 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Informationen zur Migration einer Sammlung mit nur einer Partition zu einer partitionierten Sammlung finden Sie unter [Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen](documentdb-partition-data.md#migrating-from-single-partition).
+    Wenn Sie feststellen, dass Sie einen höheren Durchsatz (über 10.000 RU/s) oder mehr Speicher (über 10 GB) benötigen, können Sie eine partitionierte Sammlung erstellen. Informationen zur Migration einer Sammlung mit nur einer Partition zu einer partitionierten Sammlung finden Sie unter [Migrieren von Sammlungen mit nur einer Partitionen zu partitionierten Sammlungen](sql-api-partition-data.md#migrating-from-single-partition).
 
     > [!NOTE]
     > Die Umstellung von S1, S2 oder S3 auf Standard kann bis zu zwei Minuten dauern.
@@ -141,7 +143,7 @@ Sie können von den Leistungsebenen S1, S2 und S3 die Migration zu Sammlungen mi
 
 **So migrieren Sie Sammlungen mit nur einer Partition über das .NET SDK**
 
-Eine weitere Möglichkeit zum Ändern der Leistungsstufen Ihrer Sammlungen sind die Azure Cosmos DB SDKs. In diesem Abschnitt wird nur das Ändern der Leistungsstufe einer Sammlung mithilfe der [DocumentDB-.NET-API](documentdb-sdk-dotnet.md) behandelt. Die Vorgehensweise ist bei den anderen SDKs jedoch ähnlich.
+Eine weitere Möglichkeit zum Ändern der Leistungsstufen Ihrer Sammlungen sind die Azure Cosmos DB SDKs. In diesem Abschnitt wird nur das Ändern der Leistungsstufe einer Sammlung mithilfe der [SQL-.NET-API](sql-api-sdk-dotnet.md) behandelt. Die Vorgehensweise ist bei den anderen SDKs jedoch ähnlich.
 
 Hier ist ein Codeausschnitt zum Ändern des Sammlungsdurchsatzes auf 5.000 Anforderungseinheiten pro Sekunde angegeben:
     
@@ -175,6 +177,6 @@ EA-Kunden genießen bis zum Ablauf ihres aktuellen Vertrags Preissicherheit.
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Preisen und der Datenverwaltung mit Azure Cosmos DB finden Sie in folgenden Ressourcen:
 
-1.  [Partitionierung von Daten in Cosmos DB](documentdb-partition-data.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
+1.  [Partitionierung von Daten in Cosmos DB](sql-api-partition-data.md). Es werden die Unterschiede zwischen Containern mit nur einer Partition und partitionierten Containern beschrieben, und Sie erhalten Tipps zur Implementierung einer Partitionierungsstrategie für die nahtlose Skalierung.
 2.  [Cosmos DB-Preise](https://azure.microsoft.com/pricing/details/cosmos-db/). Enthält Informationen zu den Kosten für den Bereitstellungsdurchsatz und für den Speicherverbrauch.
 3.  [Anforderungseinheiten](request-units.md): Enthält Informationen zum Verbrauch des Durchsatzes für verschiedene Vorgangstypen, z.B. Lesen, Schreiben, Abfragen.

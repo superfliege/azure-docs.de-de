@@ -4,7 +4,7 @@ description: "Erfahren Sie, wie Sie Remotedesktop (XRDP) zum Herstellen einer Ve
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: virtual-machines-linux
@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: d8d6130a270285c84c1dd057a3512cdeb39287f6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cdd8c5e932815c5741b1091a743d235de882c5b1
+ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/16/2017
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -85,16 +85,10 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel für den Remotedesktop-Datenverkehr
 Um zuzulassen, dass Remotedesktop-Datenverkehr Ihren virtuellen Linux-Computer erreicht, muss eine Netzwerksicherheitsgruppen-Regel erstellt werden, die TCP an Port 3389 an Ihren virtuellen Computer durchlässt. Weitere Informationen zu Netzwerksicherheitsgruppen-Regeln finden Sie unter [Was ist eine Netzwerksicherheitsgruppe?](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Alternativ können Sie [das Azure-Portal zum Erstellen einer Netzwerksicherheitsgruppen-Regel verwenden](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-In den folgenden Beispielen wird mit [az network nsg rule create](/cli/azure/network/nsg/rule#create) eine Netzwerksicherheitsgruppen-Regel mit dem Namen *myNetworkSecurityGroupRule* erstellt, um Datenverkehr auf *TCP*-Port *3389* *zuzulassen*.
+Im folgenden Beispiel wird eine Netzwerksicherheitsgruppen-Regel mit [az vm open-port](/cli/azure/vm#open-port) für Port *3389* erstellt.
 
 ```azurecli
-az network nsg rule create \
-    --resource-group myResourceGroup \
-    --nsg-name myNetworkSecurityGroup \
-    --name myNetworkSecurityGroupRule \
-    --protocol tcp \
-    --priority 1010 \
-    --destination-port-range 3389
+az vm open-port --resource-group myResourceGroup --name myVM --port 3389
 ```
 
 
@@ -109,7 +103,7 @@ Nach der Authentifizierung wird die XFCE-Desktopumgebung geladen. Sie sieht ähn
 
 
 ## <a name="troubleshoot"></a>Problembehandlung
-Wenn Sie keine Verbindung mit Ihrem virtuellen Linux-Computer mithilfe eines Remotedesktopclients herstellen können, verwenden Sie `netstat` auf dem virtuellen Linux-Computer, um zu überprüfen, ob der virtuelle Computer nach RDP-Verbindungen lauscht, wie hier dargestellt:
+Wenn Sie keine Verbindung mit Ihrem virtuellen Linux-Computer mithilfe eines Remotedesktopclients herstellen können, überprüfen Sie unter Verwendung von `netstat` auf dem virtuellen Linux-Computer, ob der virtuelle Computer nach RDP-Verbindungen lauscht, wie hier dargestellt:
 
 ```bash
 sudo netstat -plnt | grep rdp
@@ -122,13 +116,13 @@ tcp     0     0      127.0.0.1:3350     0.0.0.0:*     LISTEN     53192/xrdp-sesm
 tcp     0     0      0.0.0.0:3389       0.0.0.0:*     LISTEN     53188/xrdp
 ```
 
-Wenn der XRDP-Dienst nicht lauscht, starten Sie den Dienst auf einem virtuellen Ubuntu-Computer in folgender Weise neu:
+Wenn der Dienst *xrdp-sesman* nicht lauscht, starten Sie diesen auf einem virtuellen Ubuntu-Computer in folgender Weise neu:
 
 ```bash
 sudo service xrdp restart
 ```
 
-Gehen Sie die Protokolle in „*/var/log*Thug“ auf Ihrem virtuellen Ubuntu-Computer auf Hinweise durch, warum der Dienst nicht reagiert. Sie können auch während eines Verbindungsversuchs per Remotedesktop das syslog-Protokoll überwachen, um eventuelle Fehler anzuzeigen:
+Gehen Sie die Protokolle in */var/log* auf Ihrem virtuellen Ubuntu-Computer auf Hinweise durch, warum der Dienst nicht reagiert. Sie können auch während eines Verbindungsversuchs per Remotedesktop das syslog-Protokoll überwachen, um eventuelle Fehler anzuzeigen:
 
 ```bash
 tail -f /var/log/syslog

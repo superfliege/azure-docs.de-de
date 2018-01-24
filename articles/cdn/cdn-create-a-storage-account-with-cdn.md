@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbdf263d9d7fdfbe4fbc47db9ba9f30637e8c3ad
+ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/02/2018
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Integrieren eines Azure-Speicherkontos in CDN
 Zum Zwischenspeichern von Inhalten aus Ihrem Azure-Speicher kann CDN aktiviert werden. Das Azure Content Delivery Network (CDN) bietet Entwicklern eine globale Lösung für die Übermittlung von Inhalten mit hohen Breitbandenanforderungen. Dazu werden Blobs und statische Inhalte von Compute-Instanzen an physischen Knotenpunkten in den USA, Europa, Asien, Australien und Südamerika zwischengespeichert.
@@ -55,7 +55,7 @@ Um ein Speicherkonto zu erstellen, müssen Sie entweder der Dienstadministrator 
 5. Wählen Sie das **Abonnement** aus, das für das Speicherkonto verwendet werden soll.
 6. Wählen Sie eine **Ressourcengruppe**aus, oder erstellen Sie eine.  Weitere Informationen zu Ressourcengruppen finden Sie unter [Übersicht über Azure Resource Manager](../azure-resource-manager/resource-group-overview.md#resource-groups).
 7. Wählen Sie einen Standort für Ihr Speicherkonto aus.
-8. Klicken Sie auf **Erstellen**. Das Erstellen des Speicherkontos kann einige Minuten dauern.
+8. Klicken Sie auf **Create**. Das Erstellen des Speicherkontos kann einige Minuten dauern.
 
 ## <a name="step-2-enable-cdn-for-the-storage-account"></a>Schritt 2: Aktivieren von CDN für das Speicherkonto
 
@@ -82,7 +82,7 @@ Mit der neuesten Integration können Sie jetzt CDN für Ihr Speicherkonto aktivi
     ![CDN – Neuer Endpunkt für Speicherkonto][cdn-storage-new-endpoint]
 
 > [!NOTE]
-> Sie können CDN auch über die Azure CDN-Erweiterung aktivieren.[Tutorial](#Tutorial-cdn-create-profile).
+> Sie können CDN auch über die Azure CDN-Erweiterung aktivieren. [Tutorial](#Tutorial-cdn-create-profile)
 > 
 > 
 

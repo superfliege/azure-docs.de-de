@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/15/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c80281a520159965066c6cd166f47ecac66e552b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e0f4a284a46ba56ba4e3229a72e99efef0cf9dc2
+ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 12/15/2017
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Verwenden von Vorlagen zum Erstellen von Azure Data Factory-Entitäten
 > [!NOTE]
@@ -231,7 +231,7 @@ Ausführliche Informationen zu den JSON-Eigenschaften für das Definieren einer 
 }
 ```
 ## <a name="parameterizing-data-factory-template"></a>Parametrisieren einer Data Factory-Vorlage
-Informationen zu bewährten Vorgehensweisen bei der Parametrisierung finden Sie im Artikel [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-template-best-practices.md#parameters). Im Allgemeinen sollten so wenig Parameter wie möglich verwendet werden. Dies gilt insbesondere dann, wen stattdessen Variablen verwendet werden können. Verwenden Sie Parameter nur für folgende Szenarios:
+Informationen zu bewährten Vorgehensweisen bei der Parametrisierung finden Sie unter [Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-manager-template-best-practices.md). Im Allgemeinen sollten so wenig Parameter wie möglich verwendet werden. Dies gilt insbesondere dann, wen stattdessen Variablen verwendet werden können. Verwenden Sie Parameter nur für folgende Szenarios:
 
 * Einstellungen variieren nach Umgebung (Beispiel: Entwicklung, Test und Produktion)
 * Geheime Schlüssel (z.B. Kennwörter)

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: 949715317de69064bb66fb470a805e367512bd6f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 80c3f248edb40b66e3177c512f3caf77295c6c5d
+ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/12/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Verwenden des privilegierten Endpunkts in Azure Stack
 
 *Gilt für: integrierte Azure Stack-Systeme und Azure Stapel Development Kit*
 
-Als Azure Stack-Operator sollten Sie das Administratorportal, PowerShell oder APIs des Azure Resource Manager für die meisten alltäglichen Verwaltungsaufgaben verwenden. Für einige weniger häufig ausgeführten Vorgänge müssen Sie jedoch den *privilegierten Endpunkt* verwenden. Dieser Endpunkt ist eine vorkonfigurierte Remote-PowerShell-Konsole, die Ihnen gerade ausreichende Funktionen zur Verfügung stellt, damit Sie eine erforderliche Aufgabe ausführen können. Der Endpunkt nutzt PowerShell JEA (Just Enough Administration), um nur einen eingeschränkten Satz von Cmdlets verfügbar zu machen. Es wird ein Konto mit geringen Berechtigungen verwendet, um auf den privilegierten Endpunkt zuzugreifen und den eingeschränkten Satz von Cmdlets aufzurufen. Es sind keine Administratorkonten erforderlich. Zur Erhöhung der Sicherheit ist die Skripterstellung nicht zulässig.
+Als Azure Stack-Operator sollten Sie das Administratorportal, PowerShell oder APIs des Azure Resource Manager für die meisten alltäglichen Verwaltungsaufgaben verwenden. Für einige weniger häufig ausgeführten Vorgänge müssen Sie jedoch den *privilegierten Endpunkt* (PEP) verwenden. Dieser Endpunkt ist eine vorkonfigurierte Remote-PowerShell-Konsole, die Ihnen gerade ausreichende Funktionen zur Verfügung stellt, damit Sie eine erforderliche Aufgabe ausführen können. Der Endpunkt nutzt PowerShell JEA (Just Enough Administration), um nur einen eingeschränkten Satz von Cmdlets verfügbar zu machen. Es wird ein Konto mit geringen Berechtigungen verwendet, um auf den privilegierten Endpunkt zuzugreifen und den eingeschränkten Satz von Cmdlets aufzurufen. Es sind keine Administratorkonten erforderlich. Zur Erhöhung der Sicherheit ist die Skripterstellung nicht zulässig.
 
 Sie können den privilegierten Endpunkt verwenden, um Aufgaben wie die folgenden auszuführen:
 
@@ -98,6 +98,7 @@ Es wird empfohlen, nur über den Hardwarelebenszyklushost oder über einen dediz
     - Remove-CloudAdminUser
     - Select-Object
     - Set-CloudAdminUserPassword
+    - Test-AzureStack
     - Stop-AzureStack
     - Get-ClusterLog
 

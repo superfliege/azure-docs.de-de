@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: d6ca3bcb91261a863444bc331c78adf44844be56
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 89e83dc02f32f6f2a781cf2e35040b29cc3d3c06
+ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 01/04/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
@@ -273,7 +273,7 @@ HDInsight Tools for Visual Studio Code unterstützen folgende Features:
 ## <a name="next-steps"></a>Nächste Schritte
 
 ### <a name="demo"></a>Demo
-* HDInsight for Visual Studio Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
+* HDInsight für VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>Tools und Erweiterungen
 
@@ -286,6 +286,7 @@ HDInsight Tools for Visual Studio Code unterstützen folgende Features:
 * [Verwenden von externen Paketen mit Jupyter Notebooks](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [Visualisieren von Hive-Daten mit Microsoft Power BI in Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
+* [Visualize Interactive Query Hive data with Microsoft Power BI using direct query in Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md) (Visualisieren von Interactive Query-Hive-Daten mit Microsoft Power BI mittels direkter Abfrage in Azure HDInsight)
 * [Einrichten der PySpark Interactive-Umgebung für Visual Studio Code](set-up-pyspark-interactive-environment.md)
 * [Verwenden von Zeppelin zum Ausführen von Hive-Abfragen in Azure HDInsight](./hdinsight-connect-hive-zeppelin.md).
 
@@ -302,7 +303,7 @@ HDInsight Tools for Visual Studio Code unterstützen folgende Features:
 
 ### <a name="manage-resources"></a>Verwalten von Ressourcen
 * [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](spark/apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight(Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](spark/apache-spark-job-debugging.md)
+* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](spark/apache-spark-job-debugging.md)
 
 
 

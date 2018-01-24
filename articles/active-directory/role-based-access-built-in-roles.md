@@ -4,7 +4,7 @@ description: "Dieses Thema beschreibt die integrierten Rollen der rollenbasierte
 services: active-directory
 documentationcenter: 
 author: andredm7
-manager: femila
+manager: mtillman
 editor: 
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
@@ -16,11 +16,11 @@ ms.date: 06/28/2017
 ms.author: andredm
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9a5de00793621cfdecea887c53a22d482a25d1b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e7c563547f04a16a1059ed709d9ded25d60792f
+ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure umfasst die folgenden integrierten Rollen, die Benutzern, Gruppen und Diensten zugewiesen werden können. Die Definitionen integrierter Rollen können nicht geändert werden. Sie können jedoch [benutzerdefinierte Rollen in Azure RBAC](role-based-access-control-custom-roles.md) zur Anpassung an die spezifischen Anforderungen Ihrer Organisation erstellen.
@@ -28,7 +28,7 @@ Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure
 ## <a name="roles-in-azure"></a>Rollen in Azure
 Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klicken Sie auf den Rollennamen, um eine ausführliche Liste der **actions** und **notactions** für die Rolle anzuzeigen. Die **Aktions** -Eigenschaft gibt die zulässigen Aktionen für Azure-Ressourcen an. Für Aktionszeichenfolgen dürfen Platzhalter verwendet werden. Die **notactions** -Eigenschaft gibt die Aktionen an, die von den zulässigen Aktionen ausgeschlossen sind.
 
-Die Aktion definiert, welche Art von Vorgängen für einen bestimmten Ressourcentyp ausgeführt werden können. Beispiel:
+Die Aktion definiert, welche Art von Vorgängen für einen bestimmten Ressourcentyp ausgeführt werden können. Beispiel: 
 - **Schreiben** ermöglicht Ihnen das Ausführen von PUT-, POST-, PATCH- und DELETE-Vorgängen.
 - **Lesen** ermöglicht Ihnen das Ausführen von GET-Vorgängen.
 
@@ -38,7 +38,7 @@ In diesem Artikel werden nur die heute vorhandenen verschiedenen Rollen behandel
 > Die Definitionen von Azure-Rollen werden ständig weiterentwickelt. Dieser Artikel wird so aktuell wie möglich gehalten. Die aktuellsten Definitionen von Rollen finden Sie jedoch immer in Azure PowerShell. Verwenden Sie das Cmdlet [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition), um alle aktuellen Rollen aufzulisten. Mithilfe von `(get-azurermroledefinition "<role name>").actions` oder `(get-azurermroledefinition "<role name>").notactions` können Sie in eine bestimmte Rolle weiter eintauchen. Verwenden Sie [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation), um die Vorgänge von bestimmten Azure-Ressourcenanbietern aufzulisten.
 
 
-| Rollenname | Beschreibung |
+| Rollenname | BESCHREIBUNG |
 | --- | --- |
 | [Mitwirkender des API-Verwaltungsdienstes](#api-management-service-contributor) |Kann API-Verwaltungsdienste und die APIs verwalten |
 | [Operatorrolle des API Management-Diensts](#api-management-service-operator-role) | Kann den API Management-Dienst, aber nicht die APIs selbst verwalten |
@@ -55,7 +55,7 @@ In diesem Artikel werden nur die heute vorhandenen verschiedenen Rollen behandel
 | [Mitwirkender von Data Factory](#data-factory-contributor) |Kann Data Factorys und darin enthaltene untergeordnete Ressourcen erstellen und verwalten. |
 | [DevTest Labs-Benutzer](#devtest-labs-user) |Kann alles anzeigen sowie virtuelle Maschinen verbinden, starten, neu starten und herunterfahren |
 | [DNS Zone Contributor](#dns-zone-contributor) |Kann DNS-Zonen und -Einträge verwalten |
-| [Azure Cosmos DB-Kontomitwirkender](#documentdb-account-contributor) |Kann Azure Cosmos DB-Konten verwalten |
+| [Mitwirkender von DocumentDB-Konto](#documentdb-account-contributor) |Kann Azure Cosmos DB-Konten verwalten |
 | [Mitwirkender von Intelligent Systems-Konto](#intelligent-systems-account-contributor) |Kann Intelligent Systems-Konten verwalten |
 | Mitwirkender für Logik-Apps | Kann alle Aspekte einer Logik-App verwalten, aber keine Neuerstellung durchführen |
 | Logik-App-Operator |Kann Workflows starten und beenden, die in einer Logik-App definiert sind |
@@ -371,13 +371,13 @@ Kann DNS-Zonen und -Einträge verwalten.
 | Microsoft.Resources/subscriptions/resourceGroups/read |Lesen von Ressourcengruppen |
 | Microsoft.Support/\* |Erstellen und Verwalten von Supporttickets |
 
-### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB-Kontomitwirkender
-Kann Azure Cosmos DB-Konten verwalten
+### <a name="documentdb-account-contributor"></a>Mitwirkender von DocumentDB-Konto
+Kann Azure Cosmos DB-Konten verwalten. Azure Cosmos DB wurde früher als DocumentDB bezeichnet.
 
 | **Aktionen** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
-| Microsoft.DocumentDb/databaseAccounts/* |Erstellen und Verwalten von DocumentDB-Konten |
+| Microsoft.DocumentDb/databaseAccounts/* |Kann Azure Cosmos DB-Konten erstellen und verwalten |
 | Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
@@ -453,7 +453,7 @@ Kann New Relic Application Performance Management-Konten und -Anwendungen verwal
 | Microsoft.Support/* |Erstellen und Verwalten von Support-Tickets |
 | NewRelic.APM/accounts/* |Erstellen und Verwalten von New Relic Application Performance Management-Konten |
 
-### <a name="owner"></a>Besitzer
+### <a name="owner"></a>Owner (Besitzer)
 Kann alles verwalten, einschließlich des Zugriffs
 
 | **Aktionen** |  |
@@ -703,7 +703,7 @@ Kann SQL-Server und SQL-Datenbanken verwalten, jedoch nicht die zugehörigen sic
 
 | **Aktionen** |  |
 | --- | --- |
-| Microsoft.Authorization/*/read |Lesen von Autorisierungen |
+| Microsoft.Authorization/*/read |Lesen von Rollen und Rollenzuweisungen |
 | Microsoft.Insights/alertRules/* |Erstellen und Verwalten von Insights-Warnungsregeln |
 | Microsoft.ResourceHealth/availabilityStatuses/read |Lesen des Status der Ressourcen |
 | Microsoft.Resources/deployments/* |Erstellen und Verwalten von Ressourcengruppenbereitstellungen |

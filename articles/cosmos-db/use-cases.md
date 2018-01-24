@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: cd10147047a7d5d8b0a15be08fbba24a07adffad
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: bcafc999c30d1e72971c8e26e951169ea6b56416
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="common-azure-cosmos-db-use-cases"></a>Häufige Anwendungsfälle für Azure Cosmos DB
 Dieser Artikel bietet eine Übersicht über verschiedene häufige Anwendungsfälle für Azure Cosmos DB.  Die Empfehlungen in diesem Artikel dienen als Ausgangspunkt für die Entwicklung Ihrer Anwendung mit Cosmos DB.   
@@ -33,13 +33,11 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 ## <a name="introduction"></a>Einführung
 [Azure Cosmos DB](../cosmos-db/introduction.md) ist der global verteilte Microsoft-Datenbankdienst. Mit diesem Dienst können Kunden Durchsatz und Speicher in beliebig vielen geografischen Regionen bereitstellen und flexibel skalieren. Azure Cosmos DB ist der erste weltweit verteilte Datenbankdienst auf dem Markt, der umfassende [Vereinbarungen zum Servicelevel (SLAs)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) bereitstellt, die Durchsatz, Latenz, Verfügbarkeit und Konsistenz beinhalten. 
 
-Das Azure Cosmos DB-Projekt wurde 2011 als „Project Florence“ eingeführt, um die Problembereiche zu beseitigen, mit denen sich Entwickler umfangreicher Anwendungen bei Microsoft konfrontiert sahen. Aufgrund der Feststellung, dass diese Probleme nicht nur für Microsoft-Anwendungen gelten, entschieden wir, Azure Cosmos DB 2015 in Form von [Azure DocumentDB](https://azure.microsoft.com/blog/documentdb-moving-to-general-availability/) für externe Entwickler allgemein zur Verfügung zu stellen. Der Dienst wird intern bei Microsoft verwendet, und es handelt sich um einen der am schnellsten wachsenden Dienste, die extern von Azure-Entwicklern verwendet werden. 
-
-Azure Cosmos DB ist eine weltweit verteilte Datenbank mit mehreren Modellen, die in einer Vielzahl von Anwendungen und Anwendungsfällen verwendet wird. Sie eignet sich für alle [serverlosen](http://azure.com/serverless) Anwendungen, die kurze Antwortzeiten im Millisekundenbereich benötigen sowie schnell und weltweit skaliert werden müssen. Es unterstützt mehrere Datenmodelle (Schlüssel-Wert, Dokumente, Graphen und Spaltenbasis) sowie viele APIs für den nativen und erweiterbaren Datenzugriff, einschließlich [MongoDB-API](mongodb-introduction.md), [DocumentDB-API (SQL)](documentdb-introduction.md), [Graph-API (Gremlin)](graph-introduction.md) und [Tabellen-API](table-introduction.md). 
+Azure Cosmos DB ist eine weltweit verteilte Datenbank mit mehreren Modellen, die in einer Vielzahl von Anwendungen und Anwendungsfällen verwendet wird. Sie eignet sich für alle [serverlosen](http://azure.com/serverless) Anwendungen, die kurze Antwortzeiten im Millisekundenbereich benötigen sowie schnell und weltweit skaliert werden müssen. Es unterstützt mehrere Datenmodelle (Schlüssel-Wert, Dokumente, Graphen und Spalten) sowie viele APIs für den nativen und erweiterbaren Datenzugriff, einschließlich [MongoDB-API](mongodb-introduction.md), [SQL-API](documentdb-introduction.md), [Graph-API (Gremlin)](graph-introduction.md) und [Tabellen-API](table-introduction.md). 
 
 Aufgrund der folgenden Attribute eignet sich Azure Cosmos DB besonders gut für Hochleistungsanwendungen mit weltweiten Zielen.
 
-* Azure Cosmos DB partitioniert Ihre Daten systemintern, um eine höhere Verfügbarkeit und Skalierbarkeit zu gewährleisten. Azure Cosmos DB bietet für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz eine Garantie von 99,99 Prozent in puncto Verfügbarkeit, Durchsatz und geringer Wartezeit und garantiert eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen.
+* Azure Cosmos DB partitioniert Ihre Daten systemintern, um Hochverfügbarkeit und Skalierbarkeit zu gewährleisten. Azure Cosmos DB bietet für alle Konten mit einer einzelnen Region und für alle Konten mit mehreren Regionen und gelockerter Konsistenz eine Garantie von 99,99 Prozent in puncto Verfügbarkeit, Durchsatz und geringer Wartezeit und garantiert eine Leseverfügbarkeit von 99,999 Prozent für alle Datenbankkonten mit mehreren Regionen.
 * Azure Cosmos DB verfügt über SSD-gestützten Speicher mit niedriger Latenz und kurzen Antwortzeiten im Millisekundenbereich.
 * Da Azure Cosmos DB Konsistenzebenen wie „eventual (letztlich)“, „consistent prefix (Präfixkonsistenz)“, „session (Sitzung)“ und „bounded-staleness (begrenzte Veraltung)“ unterstützt, werden vollständige Flexibilität und ein optimales Preis-Leistungsverhältnis ermöglicht. Kein Datenbankdienst bietet so viel Flexibilität bei der Ebenenkonsistenz wie Azure Cosmos DB. 
 * Azure Cosmos DB weist ein flexibles, datenfreundliches Preismodell auf, das Speicher und Durchsatz unabhängig voneinander misst.
@@ -107,7 +105,7 @@ JSON ist ein von Cosmos DB unterstütztes effektives Format zur Darstellung von 
 ![Web-App-Referenzarchitektur für Azure Cosmos DB](./media/use-cases/personalization.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Führen Sie für Ihre ersten Schritte mit Azure Cosmos DB die Schritte in den [Schnellstart](create-documentdb-dotnet.md)-Dokumenten aus. Darin werden das Erstellen eines Kontos und die ersten Schritte mit Cosmos DB beschrieben. 
+Führen Sie für Ihre ersten Schritte mit Azure Cosmos DB die Schritte in den [Schnellstart](create-sql-api-dotnet.md)-Dokumenten aus. Darin werden das Erstellen eines Kontos und die ersten Schritte mit Cosmos DB beschrieben. 
 
 Wenn Sie mehr zu Kunden erfahren möchten, die Cosmos DB verwenden, stehen Ihnen folgende Kundenberichte zur Verfügung:
 

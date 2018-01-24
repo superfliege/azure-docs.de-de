@@ -15,11 +15,11 @@ ms.date: 07/20/2017
 ms.author: asmalser
 ms.reviewer: luleon
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 763007f004ab82ef5a6b2cac6dbef1ab221a060f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cedba7397e29cb397560c65a2408cd27442ec01c
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="configuring-single-sign-on-to-applications-that-are-not-in-the-azure-active-directory-application-gallery"></a>Konfigurieren des einmaligen Anmeldens für Anwendungen, die nicht im Azure Active Directory-Anwendungskatalog enthalten sind
 In diesem Artikel geht es um eine Funktion, die Administratoren das Konfigurieren der einmaligen Anmeldung bei Anwendungen, die im Azure Active Directory-App-Katalog nicht vorhanden sind, *ohne Schreiben von Code* ermöglicht. Diese Funktion wurde über die technische Vorschau am 18. November 2015 veröffentlicht und steht in [Azure Active Directory Premium](active-directory-editions.md) zur Verfügung. Wenn Sie stattdessen nach einer Anleitung für Entwickler zum Integrieren von benutzerdefinierten Apps in Azure AD mithilfe von Code suchen, finden Sie diese unter [Authentifizierungsszenarien für Azure AD](active-directory-authentication-scenarios.md).
@@ -57,9 +57,9 @@ Wählen Sie diese Option aus, um die SAML-basierte Authentifizierung für die An
 
 ![][4]
 
-Diese sind wie folgt:
+Dies sind:
 
-* **Anmelde-URL (nur SP-initiiert):** Hiermit melden sich Benutzer an dieser Anwendung an. Sofern die Anwendung für die Durchführung des vom Dienstanbieter (Service Provider, SP) initiierten einmaligen Anmeldens konfiguriert ist, passiert Folgendes, wenn ein Benutzer zu dieser URL navigiert: Der Dienstanbieter führt die Umleitung an Azure AD durch, um den Benutzer zu authentifizieren und anzumelden. Wenn dieses Feld ausgefüllt wird, verwendet Azure AD diese URL zum Starten der Anwendung aus Office 365 und über den Azure AD-Zugriffsbereich. Falls Sie dieses Feld leer lassen, führt Azure AD stattdessen eine vom Identitätsanbieter initiierte Anmeldung aus, wenn die App über Office 365, den Azure AD-Zugriffsbereich oder die Azure AD-URL für das einmalige Anmelden (kann von der Dashboard-Registerkarte kopiert werden) gestartet wird.
+* **Anmelde-URL (nur SP-initiiert):** Hiermit melden sich Benutzer an dieser Anwendung an. Sofern die Anwendung für die Durchführung des vom Dienstanbieter (Service Provider, SP) initiierten einmaligen Anmeldens konfiguriert ist, passiert Folgendes, wenn ein Benutzer zu dieser URL navigiert: Der Dienstanbieter führt die Umleitung an Azure AD durch, um den Benutzer zu authentifizieren und anzumelden. Wenn dieses Feld ausgefüllt wird, verwendet Azure AD diese URL zum Starten der Anwendung aus Office 365 und über den Azure AD-Zugriffsbereich. Falls Sie dieses Feld leer lassen, führt Azure AD stattdessen eine vom Identitätsanbieter initiierte Anmeldung aus, wenn die App über Office 365, den Azure AD-Zugriffsbereich oder die Azure AD-URL für einmaliges Anmelden (kann von der Dashboard-Registerkarte kopiert werden) gestartet wird.
 * **Aussteller-URL:** Mit der Aussteller-URL sollte die Anwendung, für die das einmalige Anmelden konfiguriert wird, eindeutig identifiziert werden. Dies ist der Wert, der von Azure AD als **Audience**-Parameter des SAML-Tokens zurück an die Anwendung gesendet wird, und von der Anwendung wird erwartet, dass sie ihn überprüft. Dieser Wert ist auch als **Entitäts-ID** in SAML-Metadaten enthalten, die von der Anwendung bereitgestellt werden. Die SAML-Dokumentation der Anwendung enthält Details dazu, wie die Entitäts-ID bzw. der Wert für „Audience“ lautet. Unten ist ein Beispiel dafür angegeben, wie die Audience-URL im SAML-Token angezeigt wird, das von der Anwendung zurückgegeben wird:
 
 ```

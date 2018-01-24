@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/27/2017
+ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: 46cc2737c23b02c6542320e355607f83042bd058
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f2750b652b7de3c7a41ac5712071999c97d435db
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -70,40 +70,7 @@ Zum Wiederherstellen von Dateien oder Ordnern aus dem Wiederherstellungspunkt we
 
    Für Linux benötigt das Skript zum Herstellen der Verbindung mit dem Wiederherstellungspunkt die Komponenten „open-iscsi“ und „lshw“. Wenn die Komponenten auf dem Computer, auf dem das Skript ausgeführt wird, nicht vorhanden sind, wird um die Erlaubnis zum Installieren der Komponenten gebeten. Geben Sie die Zustimmung zur Installation der erforderlichen Komponenten.  
          
-   Sie können das Skript auf allen Computern ausführen, die dasselbe (oder ein kompatibles) Betriebssystem wie die gesicherte VM haben. Siehe hierzu die Tabelle [Kompatible Betriebssysteme](backup-azure-restore-files-from-vm.md#compatible-os) mit den kompatiblen Betriebssystemen. Wenn der geschützte virtuelle Azure-Computer das Feature „Windows-Speicherplätze“ (für virtuelle Windows-Computer) oder LVM/RAID-Arrays (für virtuelle Linux-Computer) verwendet, können Sie die ausführbare Datei bzw. das Skript nicht auf diesem virtuellen Computer ausführen. Führen Sie die ausführbare Datei bzw. das Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
-
-### <a name="compatible-os"></a>Kompatible Betriebssysteme
-
-#### <a name="for-windows"></a>Für Windows
-
-Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetriebssystemen. Dateien können nicht in einem vorhergehenden oder künftigen Betriebssystem wiederhergestellt werden. Beispielsweise kann eine Datei von einem virtuellen Windows Server 2016-Computer nicht auf einem Windows Server 2012- oder Windows 8-Computer wiederhergestellt werden. Sie können Dateien von einem virtuellen Computer im gleichen Serverbetriebssystem oder im kompatiblen Clientbetriebssystem wiederherstellen.   
-
-|Serverbetriebssystem | Kompatibles Clientbetriebssystem  |
-| --------------- | ---- |
-| Windows Server 2016    | Windows 10 |
-| Windows Server 2012 R2 | Windows 8.1 |
-| Windows Server 2012    | Windows 8  |
-| Windows Server 2008 R2 | Windows 7   |
-
-#### <a name="for-linux"></a>Für Linux
-
-Unter Linux muss das Betriebssystem des Computers zum Wiederherstellen von Dateien das Dateisystem des geschützten virtuellen Computers unterstützen. Achten Sie bei der Auswahl eines Computers zum Ausführen des Skripts darauf, dass der Computer über ein kompatibles Betriebssystem verfügt und eine der in folgenden Tabelle angegebenen Versionen verwendet:
-
-|Linux-Betriebssystem | Versionen  |
-| --------------- | ---- |
-| Ubuntu | ab 12.04 |
-| CentOS | ab 6.5  |
-| RHEL | ab 6.7 |
-| Debian | ab 7 |
-| Oracle Linux | ab 6.4 |
-
-Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden und eine sichere Verbindung mit dem Wiederherstellungspunkt herstellen.
-
-|Komponente | Version  |
-| --------------- | ---- |
-| Bash | ab 4 |
-| Python | ab 2.6.6  |
-
+   Sie können das Skript auf allen Computern ausführen, die dasselbe (oder ein kompatibles) Betriebssystem wie die gesicherte VM haben. Siehe hierzu die Tabelle [Kompatible Betriebssysteme](backup-azure-restore-files-from-vm.md#system-requirements) mit den kompatiblen Betriebssystemen. Wenn der geschützte virtuelle Azure-Computer das Feature „Windows-Speicherplätze“ (für virtuelle Windows-Computer) oder LVM/RAID-Arrays (für virtuelle Linux-Computer) verwendet, können Sie die ausführbare Datei bzw. das Skript nicht auf diesem virtuellen Computer ausführen. Führen Sie die ausführbare Datei bzw. das Skript stattdessen auf einem beliebigen anderen Computer mit einem kompatiblen Betriebssystem aus.
 
 ### <a name="identifying-volumes"></a>Bestimmen von Volumes
 
@@ -192,6 +159,41 @@ $ mount [RAID Disk Path] [/mountpath]
 ```
 
 Wenn auf dem RAID-Laufwerk eine andere LVM konfiguriert ist, führen Sie das vorhergehende Verfahren für LVM-Partitionen durch, verwenden aber der Volumenamen anstelle des Namens des RAID-Datenträgers.
+
+## <a name="system-requirements"></a>Systemanforderungen
+
+### <a name="for-windows"></a>Für Windows
+
+Die folgende Tabelle zeigt die Kompatibilität zwischen Server- und Clientbetriebssystemen. Dateien können nicht in einem vorhergehenden oder künftigen Betriebssystem wiederhergestellt werden. Beispielsweise kann eine Datei von einem virtuellen Windows Server 2016-Computer nicht auf einem Windows Server 2012- oder Windows 8-Computer wiederhergestellt werden. Sie können Dateien von einem virtuellen Computer im gleichen Serverbetriebssystem oder im kompatiblen Clientbetriebssystem wiederherstellen.   
+
+|Serverbetriebssystem | Kompatibles Clientbetriebssystem  |
+| --------------- | ---- |
+| Windows Server 2016    | Windows 10 |
+| Windows Server 2012 R2 | Windows 8.1 |
+| Windows Server 2012    | Windows 8  |
+| Windows Server 2008 R2 | Windows 7   |
+
+### <a name="for-linux"></a>Für Linux
+
+Unter Linux muss das Betriebssystem des Computers zum Wiederherstellen von Dateien das Dateisystem des geschützten virtuellen Computers unterstützen. Achten Sie bei der Auswahl eines Computers zum Ausführen des Skripts darauf, dass der Computer über ein kompatibles Betriebssystem verfügt und eine der in folgenden Tabelle angegebenen Versionen verwendet:
+
+|Linux-Betriebssystem | Versionen  |
+| --------------- | ---- |
+| Ubuntu | ab 12.04 |
+| CentOS | ab 6.5  |
+| RHEL | ab 6.7 |
+| Debian | ab 7 |
+| Oracle Linux | ab 6.4 |
+| SLES | ab 12 |
+| openSUSE | ab 42.2 |
+
+Das Skript erfordert auch, dass Python- und Bash-Komponenten ausgeführt werden und eine sichere Verbindung mit dem Wiederherstellungspunkt herstellen.
+
+|Komponente | Version  |
+| --------------- | ---- |
+| Bash | ab 4 |
+| Python | ab 2.6.6  |
+| TLS | 1.2 muss unterstützt werden.  |
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

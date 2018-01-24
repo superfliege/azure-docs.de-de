@@ -14,11 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 10/13/2017
 ms.author: heidist
-ms.openlocfilehash: 5b4d88cb9c9662fe45de8c11534232a2905cf5a4
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 02a027845e56407bc8cc95f54a46d9534cb6de92
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-search"></a>Erstellen eines Facettenfilters in Azure Search 
 
@@ -33,7 +33,7 @@ Die Facettennavigation wird zum selbstgesteuerten Filtern von Abfrageergebnissen
 
 Facets sind dynamisch und werden für eine Abfrage zurückgegeben. Suchantworten verfügen über die Facetkategorien, die zum Navigieren durch die Ergebnisse verwendet werden. Wenn Sie mit Facets nicht vertraut sind, hilft Ihnen die Darstellung einer Struktur für die Facetnavigation im folgenden Beispiel weiter.
 
-  ![](./media/search-filters/facet-nav.png)
+  ![](./media/search-filters-facets/facet-nav.png)
 
 Benötigen Sie ausführlichere Informationen zur Facetnavigation? Sie finden diese Informationen unter [Implementieren der Facettennavigation in Azure Search](search-faceted-navigation.md).
 
@@ -48,7 +48,7 @@ Alle [Feldtypen](https://docs.microsoft.com/rest/api/searchservice/supported-dat
 + Edm.String
 + Edm.DateTimeOffset
 + Edm.Boolean
-+ Edm.Collections (siehe [Facettieren von komplexen Datentypen](#facet-complex-fields) weiter unten in diesem Artikel)
++ Edm.Collections
 + Numerische Feldtypen: Edm.Int32, Edm.Int64, Edm.Double
 
 Es ist nicht möglich, Edm.GeographyPoint für die Facettennavigation zu verwenden. Facets werden aus für Menschen lesbarem Text oder Zahlen erstellt. Daher werden Facets für Geokoordinaten nicht unterstützt. Sie benötigen ein Feld für einen Ort oder eine Region, um das Facettieren nach dem Standort durchzuführen.

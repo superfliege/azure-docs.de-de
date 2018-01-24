@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: eaa9d2208406afece5c77859546e888c1e49e902
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: d93b6a25c1781c7d4f1f0534eda146963f439dd5
+ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 01/03/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure-Speichertabelle – Entwurfshandbuch: Entwerfen von skalierbaren und leistungsfähigen Tabellen
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -41,7 +41,7 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>Zeitstempel</th>
 <th></th>
 </tr>
 <tr>
@@ -51,8 +51,8 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <td>
 <table>
 <tr>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -71,8 +71,8 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <td>
 <table>
 <tr>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -108,8 +108,8 @@ Das folgende Beispiel zeigt einen einfachen Tabellenentwurf zum Speichern von Mi
 <td>
 <table>
 <tr>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -204,12 +204,12 @@ In den folgenden Beispielen wird angenommen, dass der Tabellenspeicherdienst Ent
 
 | *Spaltenname* | *Datentyp* |
 | --- | --- |
-| **PartitionKey** (Abteilungsname) |String |
-| **RowKey** (Mitarbeiter-ID) |String |
-| **Vorname** |String |
-| **Nachname** |String |
-| **Alter** |Integer |
-| **EmailAddress** |String |
+| **PartitionKey** (Abteilungsname) |Zeichenfolge |
+| **RowKey** (Mitarbeiter-ID) |Zeichenfolge |
+| **Vorname** |Zeichenfolge |
+| **Nachname** |Zeichenfolge |
+| **Alter** |Ganze Zahl  |
+| **EmailAddress** |Zeichenfolge |
 
 Im Abschnitt [Übersicht über den Azure-Tabellenspeicherdienst](#overview) weiter oben werden einige der wichtigsten Funktionen des Azure-Tabellenspeicherdiensts beschrieben, die direkten Einfluss auf den Entwurf für Abfragen haben. Dadurch ergeben sich die folgenden allgemeinen Richtlinien für den Entwurf von Abfragen für den Tabellenspeicherdienst. Beachten Sie, dass die in den Beispielen unten verwendete Filtersyntax aus dem REST-API-Tabellenspeicherdienst stammt. Weitere Informationen finden Sie unter [Query Entities](http://msdn.microsoft.com/library/azure/dd179421.aspx) (Abfragen von Entitäten).  
 
@@ -251,7 +251,7 @@ Der Tabellenspeicherdienst indiziert die Entitäten automatisch unter Verwendung
 Viele Entwürfe müssen Anforderungen erfüllen, um die Suche nach Entitäten auf Grundlage mehrerer Kriterien zu ermöglichen. Suchen Sie z. B. Mitarbeiterentitäten auf Grundlage der E-Mail-Adresse, Mitarbeiter-ID oder Nachname. Die folgenden Muster im Abschnitt [Entwurfsmuster für die Tabelle](#table-design-patterns) befassen sich mit diesen Arten von Anforderungen und beschreiben Möglichkeiten zum Umgehen der Tatsache, dass der Tabellenspeicherdienst keine sekundären Indizes zur Verfügung stellt:  
 
 * [Sekundäres Indexmuster für Intra-Partition](#intra-partition-secondary-index-pattern) – Speichern mehrerer Kopien jeder Entität mit unterschiedlichen **RowKey**-Werten (in der gleichen Partition) zur Ermöglichung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey**-Werten.  
-* [Sekundäres Indexmuster für Inter-Partition](#inter-partition-secondary-index-pattern) – Speichern mehrerer Kopien der einzelnen Entitäten mithilfe verschiedener RowKey-Werte in separaten Partitionen oder in separaten Tabellen ermöglichen schnelle und effiziente Suchvorgänge und alternative Sortierreihenfolgen mit anderen **RowKey** -Werten.  
+* [Sekundäres Indexmuster für Inter-Partition](#inter-partition-secondary-index-pattern) – Speichern mehrerer Kopien der einzelnen Entitäten mithilfe verschiedener **RowKey**-Werte in separaten Partitionen oder in separaten Tabellen zur Aktivierung schneller und effizienter Suchvorgänge und alternativer Sortierreihenfolgen mit unterschiedlichen **RowKey**-Werten.  
 * [Indexmuster für Entitäten](#index-entities-pattern) – Verwalten von Indexentitäten, um effiziente Suchvorgänge zu ermöglichen, die Listen mit Entitäten zurückgeben.  
 
 ### <a name="sorting-data-in-the-table-service"></a>Sortieren von Daten im Tabellenspeicherdienst
@@ -651,7 +651,7 @@ In einer relationalen Datenbank normalisieren Sie typischerweise Daten, um Dupli
 ![][16]
 
 #### <a name="solution"></a>Lösung
-Anstatt die Daten in zwei separaten Entitäten zu speichern, denormalisieren Sie die Daten und bewahren eine Kopie der Details des Managers in der Abteilungsentität auf. Beispiel:  
+Anstatt die Daten in zwei separaten Entitäten zu speichern, denormalisieren Sie die Daten und bewahren eine Kopie der Details des Managers in der Abteilungsentität auf. Beispiel:   
 
 ![][17]
 
@@ -1107,7 +1107,7 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>Zeitstempel</th>
 <th></th>
 </tr>
 <tr>
@@ -1117,8 +1117,8 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <td>
 <table>
 <tr>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -1137,8 +1137,8 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <td>
 <table>
 <tr>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -1174,8 +1174,8 @@ Der Tabellenspeicherdienst ist ein *schemaloser* Tabellenspeicher. Das bedeutet,
 <td>
 <table>
 <tr>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -1199,7 +1199,7 @@ Beachten Sie, dass jede Entität trotzdem über **PartitionKey**-, **RowKey**- u
 <tr>
 <th>PartitionKey</th>
 <th>RowKey</th>
-<th>Timestamp</th>
+<th>Zeitstempel</th>
 <th></th>
 </tr>
 <tr>
@@ -1209,9 +1209,9 @@ Beachten Sie, dass jede Entität trotzdem über **PartitionKey**-, **RowKey**- u
 <td>
 <table>
 <tr>
-<th>EventType</th>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>EntityType</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -1232,8 +1232,8 @@ Beachten Sie, dass jede Entität trotzdem über **PartitionKey**-, **RowKey**- u
 <table>
 <tr>
 <th>EntityType</th>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>
@@ -1273,8 +1273,8 @@ Beachten Sie, dass jede Entität trotzdem über **PartitionKey**-, **RowKey**- u
 <table>
 <tr>
 <th>EntityType</th>
-<th>Vorname</th>
-<th>Nachname</th>
+<th>FirstName</th>
+<th>LastName</th>
 <th>Alter</th>
 <th>E-Mail</th>
 </tr>

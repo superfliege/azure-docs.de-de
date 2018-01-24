@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/25/2017
+ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 8f0e2fff8ea32874729cf9c4645d547df2449089
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: 88e1f17184be07ec8499ad3049f7210b56fdfc15
+ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 12/19/2017
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Erstellen einer vollständigen Linux-VM-Umgebung in Azure mit Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Computer (VMs) in Azure wie jede andere Ressource verwalten. In diesem Artikel wird gezeigt, wie Sie eine vollständige Linux-Umgebung erstellen und Ressourcen mit Ansible unterstützen. Sie können sich auch darüber informieren, wie Sie [einen einfachen virtuellen Computer mit Ansible erstellen](ansible-create-vm.md).
@@ -127,7 +127,7 @@ Der letzte Schritt besteht im Erstellen eines virtuellen Computers und dem Verwe
 ```
 
 ## <a name="complete-ansible-playbook"></a>Vollständiges Ansible-Playbook
-Um alle diese Abschnitte zusammenzuführen, erstellen Sie das Ansible-Playbook *azure_create_complete_vm.yml* und fügen den folgenden Inhalt ein:
+Um alle diese Abschnitte zusammenzuführen, erstellen Sie das Ansible-Playbook *azure_create_complete_vm.yml* und fügen den folgenden Inhalt ein: Geben Sie Ihre eigenen öffentlichen Schlüsseldaten im *key_data*-Paar ein:
 
 ```yaml
 - name: Create Azure VM

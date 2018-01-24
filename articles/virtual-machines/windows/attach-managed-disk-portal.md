@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2017
+ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: f0cf88a06c5470ef173b22e7213419a6c8760723
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1c57ea841080fd87c7014e4e4520f17ccf15b156
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Anfügen eines verwalteten Datenträgers an eine Windows-VM im Azure-Portal
 
@@ -35,21 +35,21 @@ Sie können auch [einen Datenträger mithilfe von PowerShell anfügen](attach-di
 ## <a name="add-a-data-disk"></a>Hinzufügen eines Datenträgers
 1. Klicken Sie im Menü auf der linken Seite auf **Virtuelle Computer**.
 2. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
-3. Klicken Sie auf dem Blatt des virtuellen Computers auf **Datenträger**.
-   4. Klicken Sie auf dem Blatt **Datenträger** auf **+ Datenträger anfügen**.
-5. Wählen Sie in der Dropdownliste für den neuen Datenträger **Leer erstellen** aus.
-6. Geben Sie auf dem Blatt **Verwalteten Datenträger erstellen** einen Namen für den Datenträger ein, und passen Sie die anderen Einstellungen nach Bedarf an. Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
-7. Klicken Sie auf dem Blatt **Datenträger** auf „Speichern“, um die neue Datenträgerkonfiguration für den virtuellen Computer zu speichern.
-6. Nachdem der Datenträger von Azure erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger**angezeigt.
+3. Klicken Sie auf der Seite des virtuellen Computers auf **Datenträger**.
+4. Klicken Sie auf der Seite **Datenträger** auf **+ Datenträger hinzufügen**.
+5. Wählen Sie in der Dropdownliste für den neuen Datenträger **Datenträger erstellen** aus.
+6. Geben Sie auf der Seite **Verwalteten Datenträger erstellen** einen Namen für den Datenträger ein, und passen Sie die anderen Einstellungen nach Bedarf an. Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
+7. Klicken Sie auf der Seite **Datenträger** auf **Speichern**, um die neue Datenträgerkonfiguration für den virtuellen Computer zu speichern.
+6. Nachdem der Datenträger von Azure erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **Datenträger** angezeigt.
 
 
 ## <a name="initialize-a-new-data-disk"></a>Initialisieren eines neuen Datenträgers
 
 1. Stellen Sie eine Verbindung mit der VM her.
-1. Klicken Sie im virtuellen Computer auf **Start**, geben Sie **diskmgmt.msc** ein, und drücken Sie die EINGABETASTE. Dadurch wird das Snap-In „Datenträgerverwaltung“ gestartet.
-2. Die Datenträgerverwaltung erkennt, dass es einen neuen nicht initialisierten Datenträger gibt, weshalb das Fenster „Datenträger initialisieren“ eingeblendet wird.
+1. Klicken Sie im virtuellen Computer auf **Start**, geben Sie **diskmgmt.msc** ein, und drücken Sie die EINGABETASTE. Das Snap-In für die Datenträgerverwaltung wird geöffnet.
+2. Die Datenträgerverwaltung erkennt, dass es einen neuen nicht initialisierten Datenträger gibt, weshalb das Fenster **Datenträger initialisieren** eingeblendet wird.
 3. Stellen Sie sicher, dass der neue Datenträger ausgewählt ist, und klicken Sie auf **OK**, um ihn zu initialisieren.
-4. Der neue Datenträger wird jetzt als **Nicht zugeordnet** angezeigt. Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen **Neues einfaches Volume** aus. Der **Assistent zum Erstellen neuer einfacher Volumes** wird gestartet.
+4. Der neue Datenträger wird als **Nicht zugeordnet** angezeigt. Klicken Sie mit der rechten Maustaste auf den Datenträger, und wählen **Neues einfaches Volume** aus. Der **Assistent zum Erstellen neuer einfacher Volumes** wird geöffnet.
 5. Durchlaufen Sie den Assistenten, und behalten alle Standardeinstellungen bei. Klicken Sie abschließend auf **Fertig stellen**.
 6. Schließen Sie die Datenträgerverwaltung.
 7. In einem Popupfenster werden Sie informiert, dass Sie den neuen Datenträger formatieren müssen, ehe Sie ihn verwenden können. Klicken Sie auf **Datenträger formatieren**.

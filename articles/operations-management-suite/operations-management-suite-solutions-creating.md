@@ -1,5 +1,5 @@
 ---
-title: "Erstellen einer Verwaltungslösung in OMS | Microsoft Docs"
+title: "Erstellen einer Verwaltungslösung in OMS | Microsoft-Dokumentation"
 description: "Verwaltungslösungen erweitern die Funktionalität der Operations Management Suite (OMS), indem sie Pakete mit Verwaltungsszenarien bereitstellen, die Kunden zu ihrem OMS-Arbeitsbereich hinzufügen können.  Diese Artikel beschreibt, wie Sie Verwaltungslösungen erstellen, die Sie in Ihrer Umgebung verwenden oder Ihren Kunden zur Verfügung stellen möchten."
 services: operations-management-suite
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ea959f1e95ea46c07eec3afa9d46bfeb72ca3e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a17c73393ecbdff693e9b200d1506887e0f1d71e
+ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/18/2017
 ---
 # <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Entwerfen und Erstellen einer Verwaltungslösung in der Operations Management Suite (OMS) (Vorschau)
 > [!NOTE]
@@ -37,7 +37,7 @@ Die grundlegende Strategie besteht darin, Ihre Verwaltungslösung damit zu begin
 ## <a name="design-your-solution"></a>Entwerfen der Lösung
 Das bekannteste Muster für eine Verwaltungslösung ist im folgenden Diagramm abgebildet.  Die verschiedenen Komponenten in diesem Muster werden weiter unten behandelt.
 
-![OMS-Lösungsübersicht](media/operations-management-suite-solutions/solution-overview.png)
+![OMS-Lösungsübersicht](media/operations-management-suite-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>Datenquellen
@@ -52,7 +52,7 @@ Können bestimmte benötigte Daten nicht über eine der verfügbaren Datenquelle
 
 Sie sollten alle Abfragen definieren, die Sie für den Benutzer als hilfreich erachten, auch wenn sie nicht von Ansichten oder Warnungen verwendet werden.  Sie stehen den Benutzern im Portal als gespeicherte Suchvorgänge zur Verfügung, und Sie können sie auch einer [Visualisierungskomponente „Liste der Abfragen“](../log-analytics/log-analytics-view-designer-parts.md#list-of-queries-part) in Ihrer benutzerdefinierte Ansicht hinzufügen.
 
-### <a name="alerts"></a>Warnungen
+### <a name="alerts"></a>Alerts
 [Warnungen in Log Analytics](../log-analytics/log-analytics-alerts.md) identifizieren Probleme über [Protokollsuchvorgänge](#log-searches) in den Daten des Repositorys.  Entweder benachrichtigen sie den Benutzer oder führen automatisch eine Aktion als Antwort aus. Sie sollten verschiedene Warnungsbedingungen für Ihre Anwendung definieren und entsprechende Warnungsregeln zu Ihrer Lösungsdatei hinzufügen.
 
 Wenn ein Problem prinzipiell mit einem automatisierten Prozess behoben werden kann, empfiehlt es sich in der Regel, ein Runbook in Azure Automation zu erstellen, mit dem die entsprechende Korrektur durchgeführt wird.  Die meisten Azure-Dienste lassen sich mit [Cmdlets](/powershell/azure/overview) verwalten, die vom Runbook zum Ausführen solcher Funktionen verwendet werden können.

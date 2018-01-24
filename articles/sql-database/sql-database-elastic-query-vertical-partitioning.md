@@ -4,7 +4,7 @@ description: "Einrichten von datenbankübergreifenden Abfragen über vertikale P
 services: sql-database
 documentationcenter: 
 manager: jhubbard
-author: torsteng
+author: MladjoA
 ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
 ms.custom: scale out apps
@@ -12,13 +12,13 @@ ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: d57f45066387f451463a38d76d3fe6adab77e41f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 12/12/2017
+ms.author: mlandzic
+ms.openlocfilehash: f3bf919aa4aab8d37a5a97b90138b1f5434eb6ea
+ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 12/14/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Ausführen von Abfragen über Clouddatenbanken mit unterschiedlichen Schemas hinweg (Vorschau)
 ![Abfrage über Tabellen in unterschiedlichen Datenbanken hinweg][1]
@@ -43,7 +43,7 @@ Vertikal partitionierte Datenbanken verwenden verschiedene Sätze von Tabellen i
 ## <a name="create-database-scoped-master-key-and-credentials"></a>Erstellen des Datenbankhauptschlüssels und der Anmeldeinformationen
 Die Anmeldeinformationen werden von der elastischen Abfrage für die Verbindung mit Ihren Remotedatenbanken verwendet.  
 
-    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'password';
+    CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
     SECRET = '<password>'
     [;]
@@ -155,14 +155,14 @@ Die folgende Abfrage führt eine Dreiwegeverknüpfung zwischen den zwei lokalen 
 
 
 ## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Gespeicherte Prozedur für T-SQL-Remoteausführung: sp\_execute_remote
-Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Shards bietet. Die gespeicherte Prozedur heißt [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um gespeicherte Remoteprozeduren oder T-SQL-Code in den Remotedatenbanken auszuführen. Hierfür werden die folgenden Parameter verwendet: 
+Mit der elastischen Abfrage wurde auch eine gespeicherte Prozedur eingeführt, die einen Direktzugriff auf die Remotedatenbank bietet. Die gespeicherte Prozedur heißt [sp\_execute \_remote](https://msdn.microsoft.com/library/mt703714) und kann verwendet werden, um gespeicherte Remoteprozeduren oder T-SQL-Code in der Remotedatenbank auszuführen. Hierfür werden die folgenden Parameter verwendet: 
 
 * Datenquellenname (nvarchar): Der Name der externen Datenquelle vom Typ RDBMS. 
-* Abfrage (nvarchar): Die T-SQL-Abfrage, die für die einzelnen Shards ausgeführt wird. 
+* Abfrage (nvarchar): T-SQL-Abfrage, die für die Remotedatenbank ausgeführt werden soll 
 * Parameterdeklaration (nvarchar) – optional: Zeichenfolge mit Datentypdefinitionen für die Parameter, die im „Query“-Parameter verwendet werden (z. B. sp_executesql). 
 * Parameterwertliste – optional: Durch Trennzeichen getrennte Liste von Parameterwerten (z.B. sp_executesql).
 
-Die Prozedur „sp\_execute\_remote“ verwendet die externe Datenquelle, die in den Aufrufparametern angegeben ist, um die jeweilige T-SQL-Anweisung in den Remotedatenbanken auszuführen. Die Anmeldeinformationen der externen Datenquelle werden verwendet, um die Verbindung mit der ShardMapManager-Datenbank und den Remotedatenbanken herzustellen.  
+Die Prozedur „sp\_execute\_remote“ verwendet die externe Datenquelle, die in den Aufrufparametern angegeben ist, um die jeweilige T-SQL-Anweisung in der Remotedatenbank auszuführen. Dabei werden die Anmeldeinformationen der externen Datenquelle verwendet, um die Verbindung mit der Remotedatenbank herzustellen.  
 
 Beispiel: 
 
